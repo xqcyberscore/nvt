@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_dns_random_txid.nasl 10579 2018-07-23 13:27:53Z cfischer $
+# $Id: gb_nmap_dns_random_txid.nasl 10607 2018-07-25 09:09:12Z cfischer $
 #
 # Wrapper for Nmap DNS Random TXID NSE script.
 #
@@ -29,10 +29,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801689");
-  script_version("$Revision: 10579 $");
+  script_version("$Revision: 10607 $");
   script_cve_id("CVE-2008-1447");
   script_bugtraq_id(30131);
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:27:53 +0200 (Mon, 23 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 11:09:12 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-01-06 14:34:14 +0100 (Thu, 06 Jan 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -41,7 +41,8 @@ if(description)
   script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");
   script_family("Nmap NSE");
-  script_dependencies("nmap_nse.nasl");
+  script_dependencies("nmap_nse.nasl", "dns_server.nasl");
+  script_require_udp_ports("Services/udp/domain", 53);
   script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
 
   script_tag(name:"summary", value:"This script attempts to check a DNS server for the predictable-TXID
@@ -58,11 +59,11 @@ if((! get_kb_item("Tools/Present/nmap5.21") &&
  exit(0);
 }
 
-port = 53;
-if(! get_udp_port_state(port)){
-  exit(0);
-}
+port = get_kb_item("Services/udp/domain");
+if(!port) port = 53;
+if(!get_udp_port_state(port)) exit(0);
 
+# nb: The NSE script is only supporting UDP...
 res = pread(cmd: "nmap", argv: make_list("nmap", "-sU", "--script=dns-random-txid.nse", "-p", port, get_host_ip()));
 if(res)
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_upnp_info.nasl 10579 2018-07-23 13:27:53Z cfischer $
+# $Id: gb_nmap_upnp_info.nasl 10595 2018-07-24 13:51:36Z cfischer $
 #
 # Wrapper for Nmap UPnP Info NSE script.
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801699");
-  script_version("$Revision: 10579 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:27:53 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10595 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-24 15:51:36 +0200 (Tue, 24 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-01-10 13:49:23 +0100 (Mon, 10 Jan 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -39,7 +39,8 @@ if(description)
   script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");
   script_family("Nmap NSE");
-  script_dependencies("nmap_nse.nasl");
+  script_dependencies("nmap_nse.nasl", "gb_upnp_detect.nasl");
+  script_require_udp_ports("Services/udp/upnp", 1900);
   script_mandatory_keys("Tools/Present/nmap5.21", "Tools/Launch/nmap_nse");
 
   script_add_preference(name:"upnp-info.override :", value:"", type:"entry");
@@ -62,34 +63,36 @@ if(! get_kb_item("Tools/Present/nmap5.21") ||
  exit(0);
 }
 
-port = 1900;
-
-argv = make_list("nmap", "-sU", "--script=upnp-info.nse", "-p", port, get_host_ip());
-
 i = 0;
 if( pref = script_get_preference("upnp-info.override :")){
-  args[i++] = "upnp-info.override="+pref;
+  args[i++] = "upnp-info.override=" + pref;
 }
 
 if( pref = script_get_preference("max-newtargets :")){
-  args[i++] = "max-newtargets="+pref;
+  args[i++] = "max-newtargets=" + pref;
 }
 
 if( pref = script_get_preference("newtargets :")){
-  args[i++] = "newtargets="+pref;
+  args[i++] = "newtargets=" + pref;
 }
 
 if( pref = script_get_preference("http-max-cache-size :")){
-  args[i++] = "http-max-cache-size="+pref;
+  args[i++] = "http-max-cache-size=" + pref;
 }
 
 if( pref = script_get_preference("http.useragent :")){
-  args[i++] = "http.useragent="+pref;
+  args[i++] = "http.useragent=" + pref;
 }
 
 if( pref = script_get_preference("http.pipeline :")){
-  args[i++] = "http.pipeline="+pref;
+  args[i++] = "http.pipeline=" + pref;
 }
+
+port = get_kb_item("Services/udp/upnp");
+if(!port) port = 1900;
+if(!get_udp_port_state(port)) exit(0);
+
+argv = make_list("nmap", "-sU", "--script=upnp-info.nse", "-p", port, get_host_ip());
 
 if(i > 0)
 {

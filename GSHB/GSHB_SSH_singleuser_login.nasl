@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_singleuser_login.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_SSH_singleuser_login.nasl 10612 2018-07-25 12:26:01Z cfischer $
 #
 # Read /etc/inittab, /etc/init/rcS.conf and /etc/event.d/rcS-sulogin
 #
@@ -9,8 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
-#
-#
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -26,26 +24,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This plugin uses ssh to Read /etc/inittab, /etc/init/rcS.conf and /etc/event.d/rcS-sulogin.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96078");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10612 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-04-09 15:04:43 +0200 (Fri, 09 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Read /etc/inittab, /etc/init/rcS.conf and /etc/event.d/rcS-sulogin");
-
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("find_service.nasl", "gather-package-list.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("compliance_tests.nasl", "find_service.nasl", "gather-package-list.nasl");
+
+  script_tag(name:"summary", value:"This plugin uses ssh to Read /etc/inittab, /etc/init/rcS.conf and /etc/event.d/rcS-sulogin.");
+
   exit(0);
 }
 
@@ -97,10 +93,10 @@ else if (rcSsulogin =~ '.*o such file or directory.*') rcSsulogin = "none";
 
 if(inittab >!< "none" && inittab >!< "noperm"){
   inittabS = egrep(string:inittab, pattern:"(.){1,4}:S:.*:.*", icase:1);
-  
+
   inittab1 = egrep(string:inittab, pattern:"(.){1,4}:1:.*:.*", icase:1);
   if (inittabS == "") inittabS = "none";
-  if (inittab1 == "") inittab1 = "none";  
+  if (inittab1 == "") inittab1 = "none";
   set_kb_item(name: "GSHB/inittab", value:1);
   set_kb_item(name: "GSHB/inittabS", value:inittabS);
   set_kb_item(name: "GSHB/inittab1", value:inittab1);

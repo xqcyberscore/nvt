@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_dgn2200_detect.nasl 9186 2018-03-23 09:48:58Z asteins $
+# $Id: gb_netgear_dgn2200_detect.nasl 10601 2018-07-25 08:14:14Z asteins $
 #
 # NETGEAR DGN2200 Routers Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107228");
-  script_version("$Revision: 9186 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-23 10:48:58 +0100 (Fri, 23 Mar 2018) $");
+  script_version("$Revision: 10601 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 10:14:14 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-06-28 14:43:29 +0200 (Wed, 28 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -64,6 +64,7 @@ res = http_keepalive_send_recv(port: port, data: req);
 
 if ('WWW-Authenticate: Basic realm="NETGEAR DGN2200' >< res) {
   set_kb_item(name: "netgear_dgn2200/detected", value: TRUE);
+  set_kb_item(name: "netgear/router/detected", value: TRUE);
 
   version = 'unknown';
 
@@ -74,9 +75,9 @@ if ('WWW-Authenticate: Basic realm="NETGEAR DGN2200' >< res) {
     set_kb_item(name: "netgear_/version", value: version);
   }
 
-  cpe = build_cpe(value: version, exp: "^([0-9]+)", base: "cpe:/a:netgear:dgn2200:");
+  cpe = build_cpe(value: version, exp: "^([0-9]+)", base: "cpe:/h:netgear:dgn2200:");
   if (!cpe)
-    cpe = 'cpe:/a:netgear:dgn2200';
+    cpe = 'cpe:/h:netgear:dgn2200';
 
   register_product(cpe: cpe, location: "/", port: port);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_098.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M4_098.nasl 10610 2018-07-25 11:37:44Z cfischer $
 #
 # IT-Grundschutz, 10. EL, Maßnahme 4.098
 #
@@ -34,16 +34,13 @@ tag_summary = "IT-Grundschutz M4.098: Kommunikation durch Paketfilter auf Minimu
   Grundschutz. Die detaillierte Beschreibung zu dieser Maßnahme findet sich unter
   nachfolgendem Verweis. Es ist zu beachten, dass der dortige Text sich immer auf
   die aktuellste Ergänzungslieferung bezieht. Titel und Inhalt können sich bei einer
-  Aktualisierung ändern, allerdings nicht die Kernthematik.
-
-";
-
+  Aktualisierung ändern, allerdings nicht die Kernthematik.";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94098");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10610 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-01-26 13:42:28 +0100 (Tue, 26 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,8 +50,7 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-10");
-  script_mandatory_keys("Tools/Present/wmi");
-  script_mandatory_keys("Compliance/Launch/GSHB-10");
+  script_mandatory_keys("Compliance/Launch/GSHB-10", "Tools/Present/wmi");
   script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_WinFirewallStat.nasl");
   script_require_keys("WMI/WinFirewall");
   script_tag(name : "summary" , value : tag_summary);

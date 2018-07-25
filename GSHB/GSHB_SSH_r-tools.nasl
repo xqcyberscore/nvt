@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_r-tools.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_SSH_r-tools.nasl 10612 2018-07-25 12:26:01Z cfischer $
 #
 # Check for rlogin, rsh, rcp tools and configuration
 #
@@ -9,8 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
-#
-#
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -26,30 +24,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Check for rlogin, rsh, rcp tools and configuration
-  
-  Lists /etc/inetd.conf, /etc/hosts.equiv, /etc/ftpusers,
-  searchs for .rhost, .netrc, rlogind and rshd";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96100");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10612 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-06-21 10:39:50 +0200 (Mon, 21 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Check for rlogin, rsh, rcp tools and configuration");
-
-
   script_category(ACT_GATHER_INFO);
   script_timeout(2400);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("find_service.nasl", "gather-package-list.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("compliance_tests.nasl", "find_service.nasl", "gather-package-list.nasl");
+
+  script_tag(name:"summary", value:"Check for rlogin, rsh, rcp tools and configuration
+
+  Lists /etc/inetd.conf, /etc/hosts.equiv, /etc/ftpusers,
+  searches for .rhost, .netrc, rlogind and rshd");
+
   exit(0);
 }
 
@@ -115,22 +111,22 @@ if (rhosts != "not found"){
     if (val) rhosts = val;
     else rhosts = "not found";
   }
-}    
-####    
-#List /etc/hosts.equiv    
+}
 ####
-lshostsequiv = ssh_cmd(socket:sock, cmd:"LANG=C ls -l /etc/hosts.equiv");    
+#List /etc/hosts.equiv
+####
+lshostsequiv = ssh_cmd(socket:sock, cmd:"LANG=C ls -l /etc/hosts.equiv");
 if (lshostsequiv =~ ".*No such file or directory.*") lshostsequiv = "none";
 if (lshostsequiv != "none"){
   hostsequiv = ssh_cmd(socket:sock, cmd:"LANG=C grep -v '^#' /etc/hosts.equiv");
   if (hostsequiv == "" || hostsequiv =~ "^.?$") hostsequiv = "noentry";
 }
 else hostsequiv = "none";
-  
+
 ####
 #List /etc/inetd.conf
 ####
-inetdconf = ssh_cmd(socket:sock, cmd:"LANG=C grep -v '^#' /etc/inetd.conf");    
+inetdconf = ssh_cmd(socket:sock, cmd:"LANG=C grep -v '^#' /etc/inetd.conf");
 if (inetdconf == "" || inetdconf =~ "^.?$") inetdconf = "noentry";
 else if ("cat: /etc/inetd.conf:" >< inetdconf) inetdconf = "none";
 
@@ -138,7 +134,7 @@ else if ("cat: /etc/inetd.conf:" >< inetdconf) inetdconf = "none";
 ####
 #List /etc/ftpusers
 ####
-ftpusers = ssh_cmd(socket:sock, cmd:"LANG=C grep -v '^#' /etc/ftpusers");    
+ftpusers = ssh_cmd(socket:sock, cmd:"LANG=C grep -v '^#' /etc/ftpusers");
 if (ftpusers == "" || ftpusers =~ "^.?$") ftpusers = "noentry";
 else if ("cat: /etc/ftpusers:" >< ftpusers) ftpusers = "none";
 
@@ -154,7 +150,7 @@ else if ("mlocate:" >< rlogind) rlogind = ssh_cmd(socket:sock, cmd:"LANG=C sloca
 if (!rlogind) rlogind = "not found";
 else if ("slocate:" >< rlogind) rlogind = ssh_cmd(socket:sock, cmd:"LANG=C find / -name rlogind");
 if (!rlogind) rlogind = "not found";
-rlogind = "not found"; 
+rlogind = "not found";
 if (rlogind != "not found"){
   val = "";
   Lst = split(rlogind, keep:0);
@@ -167,7 +163,7 @@ if (rlogind != "not found"){
     else rlogind = "not found";
   }
   else if (rlogind !~ ".*/rlogind$") rlogind = "not found";
-}   
+}
 ####
 #Search rshd
 ####
@@ -191,7 +187,7 @@ if (rshd != "not found"){
     else rshd = "not found";
   }
   else if (rshd !~ ".*/rshd$") rshd = "not found";
-} 
+}
 
 ####
 #Search .netrc
@@ -216,7 +212,7 @@ if (netrc != "not found"){
     else netrc = "not found";
   }
   else if (netrc !~ '.*/.netrc') netrc = "not found";
-} 
+}
 
 set_kb_item(name: "GSHB/R-TOOL/rhosts", value:rhosts);
 set_kb_item(name: "GSHB/R-TOOL/hostsequiv", value:hostsequiv);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_prev_root_login.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_SSH_prev_root_login.nasl 10612 2018-07-25 12:26:01Z cfischer $
 #
 # Read configs to prevent root login.
 #
@@ -9,8 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
-#
-#
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -26,31 +24,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This plugin uses ssh to Read configs to prevent root login:
-
-  Check for /etc/securettys show all non console, check if root login is not 
-  possible via SSH, check for SYSLOG_SU_ENAB in /etc/login.defs, 
-  check for perm 0644 on /etc/securettys /etc/login.defs /etc/sshd/sshd_config,
-  check if root_squash is enabled on all NFS mounts";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96079");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10612 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-06-02 09:25:45 +0200 (Wed, 02 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"package");  
+  script_tag(name:"qod_type", value:"package");
   script_name("Read configs to prevent root login ");
-
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("gather-package-list.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("compliance_tests.nasl", "gather-package-list.nasl");
+
+  script_tag(name:"summary", value:"This plugin uses ssh to Read configs to prevent root login:
+
+  Check for /etc/securettys show all non console, check if root login is not
+  possible via SSH, check for SYSLOG_SU_ENAB in /etc/login.defs,
+  check for perm 0644 on /etc/securettys /etc/login.defs /etc/sshd/sshd_config,
+  check if root_squash is enabled on all NFS mounts");
+
   exit(0);
 }
 
@@ -121,8 +117,8 @@ else if ("cat: cannot access /etc/ssh/sshd_config:" >< sshdconfig) sshdconfig = 
 else if ("cat: /etc/ssh/sshd_config:" >< sshdconfig) sshdconfig = "none";
 else {
   rootlogin = egrep (string:sshdconfig, pattern:"PermitRootLogin", icase:0);
-  Lst = split(rootlogin,keep:0); 
-  if (Lst){    
+  Lst = split(rootlogin,keep:0);
+  if (Lst){
     for (i=0; i<max_index(Lst); i++){
       result = eregmatch(string:Lst[i], pattern:'^ *#', icase:0);
       if (!result) login += Lst[i];
@@ -142,8 +138,8 @@ else if ("cat: cannot access /etc/login.defs:" >< logindefs) logindefs = "none";
 else if ("cat: /etc/login.defs:" >< logindefs) logindefs = "none";
 else {
   syslogsuenab = egrep(string:logindefs, pattern:"SYSLOG_SU_ENAB", icase:0);
-  Lst = split(syslogsuenab,keep:0); 
-  if (Lst){    
+  Lst = split(syslogsuenab,keep:0);
+  if (Lst){
     for (i=0; i<max_index(Lst); i++){
       result = eregmatch(string:Lst[i], pattern:'^ *#', icase:0);
       if (!result) syslog += Lst[i] + '\n';
@@ -176,8 +172,8 @@ else {
     }
   }
   nfsexports = val;
-  Lst = split(nfsexports,keep:0); 
-  if (Lst){    
+  Lst = split(nfsexports,keep:0);
+  if (Lst){
     for (i=0; i<max_index(Lst); i++){
       result = eregmatch(string:Lst[i], pattern:'no_root_squash', icase:0);
       if (!result){
@@ -194,7 +190,7 @@ else {
     else norootsquash = nfsexports;
   } else norootsquash = nfsexports;
   }
-  
+
 if(norootsquash =~ '^ *\n') norootsquash = "none";
 if(rootsquash =~ '^ *\n') rootsquash = "none";
 if (!nfsexports && org_nfsexports) nfsexports = org_nfsexports;
@@ -203,21 +199,21 @@ if (!nfsexports && org_nfsexports) nfsexports = org_nfsexports;
 
 if (lssecuretty =~ ".*No such file or directory.*") lssecuretty = "none";
 else if (!lssecuretty) lssecuretty = "none";
-else{ 
+else{
   Lst = split(lssecuretty, sep:" ", keep:0);
   lssecuretty = Lst[0] + ":" + Lst[2] + ":"  + Lst[3];
 }
 
 if (lssshdconfig =~ ".*No such file or directory.*") lssshdconfig = "none";
 else if (!lssshdconfig) lssshdconfig = "none";
-else{ 
+else{
   Lst = split(lssshdconfig, sep:" ", keep:0);
   lssshdconfig = Lst[0] + ":" + Lst[2] + ":"  + Lst[3];
 }
 
 if (lslogindefs =~ ".*No such file or directory.*") lslogindefs = "none";
 else if (!lslogindefs) lslogindefs = "none";
-else{ 
+else{
   Lst = split(lslogindefs, sep:" ", keep:0);
   lslogindefs = Lst[0] + ":" + Lst[2] + ":"  + Lst[3];
 }

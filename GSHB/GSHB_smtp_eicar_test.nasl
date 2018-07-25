@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_smtp_eicar_test.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_smtp_eicar_test.nasl 10612 2018-07-25 12:26:01Z cfischer $
 #
 # Sent Eicar Testfiles
 #
@@ -28,34 +28,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Sent Eicar Testfiles";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96053");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10612 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"remote_app");  
+  script_tag(name:"qod_type", value:"remote_app");
   script_name("Sent Eicar Testfiles");
-
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
-   
 #  script_require_ports("Services/smtp", 25);
-  script_dependencies("find_service.nasl", "smtp_settings.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("compliance_tests.nasl", "find_service.nasl", "smtp_settings.nasl");
+
+  script_tag(name:"summary", value:"Sent Eicar Testfiles");
+
   exit(0);
 }
-
-#
-# The script code starts here
-#
 
 include("smtp_func.inc");
 
@@ -69,16 +62,16 @@ foreach p (portlist) if (p == "25") Port=p;
 if(!port)port = 25;
 
 if(!get_port_state(port)){
-    set_kb_item(name:"GSHB/Eicar", value:"error");    
-    set_kb_item(name:"GSHB/Eicar/log", value:"get_port_state on Port " + port + " failed.");      
+    set_kb_item(name:"GSHB/Eicar", value:"error");
+    set_kb_item(name:"GSHB/Eicar/log", value:"get_port_state on Port " + port + " failed.");
 exit(0);
 }
 
 
 s = open_sock_tcp(port);
-if (!s){ 
-    set_kb_item(name:"GSHB/Eicar", value:"error");    
-    set_kb_item(name:"GSHB/Eicar/log", value:"open_sock_tcp on Port " + port + " failed.");            
+if (!s){
+    set_kb_item(name:"GSHB/Eicar", value:"error");
+    set_kb_item(name:"GSHB/Eicar/log", value:"open_sock_tcp on Port " + port + " failed.");
 exit(0);
 }
 
@@ -110,7 +103,7 @@ level2.zip; which includes level1.zip
 level3.zip; which includes level2.zip
 level4.zip; which includes level3.zip
 
-If all attachments included and the Content not cleaned, 
+If all attachments included and the Content not cleaned,
 you have an problem with your Antivirus-Engine.
 
 ################################################################################
@@ -201,15 +194,15 @@ send(socket: s, data: string("QUIT\r\n"));
 close(s);
 
 if (v > 0) {
-  log_message(port: port, 
-	data:string(	"The Eicar Testfiles was sent ", v, 
+  log_message(port: port,
+	data:string(	"The Eicar Testfiles was sent ", v,
 			" times. If there is an antivirus in your MTA, it might\n",
 			"have blocked it. Please check the default OpenVAS Mailfolder right now, as it is\n",
-			"not possible to do so remotely\n")); 
-  set_kb_item(name:"GSHB/Eicar", value:"true");                    
+			"not possible to do so remotely\n"));
+  set_kb_item(name:"GSHB/Eicar", value:"true");
 }else if (v == 0) {
-  log_message(port: port, 
+  log_message(port: port,
 	data: "For some reason, we could not send the Eicar Testfiles to this MTA");
-  set_kb_item(name:"GSHB/Eicar", value:"fail");        
+  set_kb_item(name:"GSHB/Eicar", value:"fail");
 }
-exit(0); 
+exit(0);

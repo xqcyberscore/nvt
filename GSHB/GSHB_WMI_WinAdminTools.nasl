@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_WinAdminTools.nasl 10530 2018-07-17 14:15:42Z asteins $
+# $Id: GSHB_WMI_WinAdminTools.nasl 10610 2018-07-25 11:37:44Z cfischer $
 #
 # Find Windows Admin Tools over WMI if IIS installed(win)
 #
@@ -41,27 +41,23 @@ tag_summary = "If IIS installed, find Windows Admin Tools over WMI:
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96016");
-  script_version("$Revision: 10530 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
+  script_version("$Revision: 10610 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");  
   script_name("Find Windows Admin Tools over WMI if IIS installed (win)");
-
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
-  script_mandatory_keys("Compliance/Launch/GSHB");
-  script_mandatory_keys("Tools/Present/wmi");
-   
-#  script_require_ports(139, 445);
+  script_mandatory_keys("Compliance/Launch/GSHB", "Tools/Present/wmi");
   script_dependencies("secpod_reg_enum.nasl", "GSHB/GSHB_WMI_IIS_OpenPorts.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
+
   script_tag(name : "summary" , value : tag_summary);
+
   exit(0);
 }
-
 
 include("wmi_file.inc");
 include("wmi_os.inc");

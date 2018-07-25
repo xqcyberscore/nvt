@@ -1,16 +1,14 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_passwords.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_SSH_passwords.nasl 10612 2018-07-25 12:26:01Z cfischer $
 #
-# Get User without Password and User which have an PW and days since last Pasword change
+# Get User without Password and User which have an PW and days since last Password change
 #
 # Authors:
 # Thomas Rotter <T.Rotter@dn-systems.de>
 #
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
-#
-#
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -26,29 +24,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This plugin uses ssh to get User without Password and User which have an PW and
-  
-  days since last Pasword change. If the testuser have no access to /etc/shadow
-  an KB entry will set.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96071");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10612 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-03-18 11:06:19 +0100 (Thu, 18 Mar 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
-  script_name("Get User without Password and User which have an PW and days since last Pasword change");
-
-
+  script_name("Get User without Password and User which have an PW and days since last Password change");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("gather-package-list.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("compliance_tests.nasl", "gather-package-list.nasl");
+
+  script_tag(name:"summary", value:"This plugin uses ssh to get User without Password and User which have an PW and
+
+  days since last Password change. If the testuser have no access to /etc/shadow
+  an KB entry will set.");
+
   exit(0);
 }
 
@@ -71,7 +67,7 @@ if(!sock) {
     set_kb_item(name: "GSHB/PWChange", value:"error");
     set_kb_item(name: "GSHB/PASS_MAX_DAYS", value:"error");
     set_kb_item(name: "GSHB/PASS_MIN_DAYS", value:"error");
-    set_kb_item(name: "GSHB/PASS_WARN_AGE", value:"error");    
+    set_kb_item(name: "GSHB/PASS_WARN_AGE", value:"error");
     set_kb_item(name: "GSHB/etc_shadow/log", value:error);
     exit(0);
 }
@@ -81,7 +77,7 @@ if (("windows" >< windowstest && "interpreter" >< windowstest) || ("Windows" >< 
     set_kb_item(name: "GSHB/etc_shadow", value:"windows");
     set_kb_item(name: "GSHB/NoPWUser", value:"windows");
     set_kb_item(name: "GSHB/PWUser", value:"windows");
-    set_kb_item(name: "GSHB/PWChange", value:"windows");            
+    set_kb_item(name: "GSHB/PWChange", value:"windows");
     set_kb_item(name: "GSHB/PASS_MAX_DAYS", value:"windows");
     set_kb_item(name: "GSHB/PASS_MIN_DAYS", value:"windows");
     set_kb_item(name: "GSHB/PASS_WARN_AGE", value:"windows");
@@ -105,19 +101,19 @@ if (logindefs >!< "nologindefs" && logindefs >!< "nopermission"){
     PASS_MAX_DAYS = PASS_MAX_DAYS - "PASS_MAX_DAYS";
     PASS_MAX_DAYS = PASS_MAX_DAYS - " ";
     PASS_MAX_DAYS = PASS_MAX_DAYS - '\t';
-    PASS_MAX_DAYS = PASS_MAX_DAYS - '\n';        
+    PASS_MAX_DAYS = PASS_MAX_DAYS - '\n';
   }else PASS_MAX_DAYS = "none";
   if (PASS_MIN_DAYS){
     PASS_MIN_DAYS = PASS_MIN_DAYS - "PASS_MIN_DAYS";
     PASS_MIN_DAYS = PASS_MIN_DAYS - " ";
     PASS_MIN_DAYS = PASS_MIN_DAYS - '\t';
-    PASS_MIN_DAYS = PASS_MIN_DAYS - '\n';        
+    PASS_MIN_DAYS = PASS_MIN_DAYS - '\n';
   }else PASS_MIN_DAYS = "none";
   if (PASS_WARN_AGE){
     PASS_WARN_AGE = PASS_WARN_AGE - "PASS_WARN_AGE";
     PASS_WARN_AGE = PASS_WARN_AGE - " ";
     PASS_WARN_AGE = PASS_WARN_AGE - '\t';
-    PASS_WARN_AGE = PASS_WARN_AGE - '\n';        
+    PASS_WARN_AGE = PASS_WARN_AGE - '\n';
   }else PASS_WARN_AGE = "none";
 }else {
   PASS_MAX_DAYS = logindefs;
@@ -130,8 +126,8 @@ uname = ereg_replace(pattern:'\n',replace:'', string:uname);
 
 secondssince = ssh_cmd(socket:sock, cmd:"date +'%s'");
 dayssince = secondssince / 86400;
-dayssince = ereg_replace(string:dayssince, pattern:"(\.[0-9].*|,[0-9].*)" ,replace:""); 
-  
+dayssince = ereg_replace(string:dayssince, pattern:"(\.[0-9].*|,[0-9].*)" ,replace:"");
+
 shadow = ssh_cmd(socket:sock, cmd:"cat /etc/shadow");
 if ("cat: /etc/aliases:" >< shadow) shadow = "noshadow";
 if ("Permission denied" >< shadow || "Keine Berechtigung" >< shadow) shadow = "nopermission";
@@ -197,7 +193,7 @@ if (shadow >!< "noshadow" && shadow >!< "nopermission"){
         }
       }
     }
-  }  
+  }
 }
 
 if (!PWUser) PWUser = "none";

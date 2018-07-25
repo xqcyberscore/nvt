@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_TerminalServerSettings.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: GSHB_WMI_TerminalServerSettings.nasl 10610 2018-07-25 11:37:44Z cfischer $
 #
 # Get Windows Terminal Server Settings
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96213");
-  script_version("$Revision: 7076 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 10610 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-12-14 11:30:03 +0100 (Wed, 14 Dec 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,8 +40,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
-  script_mandatory_keys("Compliance/Launch/GSHB");
-  script_mandatory_keys("Tools/Present/wmi");
+  script_mandatory_keys("Compliance/Launch/GSHB", "Tools/Present/wmi");
   script_dependencies("toolcheck.nasl", "GSHB_WMI_OSInfo.nasl");
 
   script_tag(name : "summary" , value : "The script reads the Windows Terminal Server Settings.");

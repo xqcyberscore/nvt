@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 24 Jul 2018 14:04:39 +0200
+# Automatically created on:  Wed, 25 Jul 2018 14:59:47 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -229,7 +229,6 @@
 2008/phplistpro_remote_file_include.nasl: GPLv2
 2008/phpMyAgenda_30final_file_include.nasl: GPLv2
 2008/phpwebthings_rfi.nasl: GPLv2
-2008/pjl_detect.nasl: GPLv2
 2008/pnscan.nasl: GPLv2+
 2008/punbb_register_lfi.nasl: GPLv2
 2008/qk_smtp_server_dos.nasl: GPLv2
@@ -38944,6 +38943,8 @@
 2018/debian/deb_4251.nasl: GPLv2+
 2018/debian/deb_4252.nasl: GPLv2+
 2018/debian/deb_4253.nasl: GPLv2+
+2018/debian/deb_4254.nasl: GPLv2+
+2018/debian/deb_4255.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39295,6 +39296,11 @@
 2018/debian/deb_dla_1436.nasl: GPLv2+
 2018/debian/deb_dla_1437.nasl: GPLv2+
 2018/debian/deb_dla_1438.nasl: GPLv2+
+2018/debian/deb_dla_1439.nasl: GPLv2+
+2018/debian/deb_dla_1440.nasl: GPLv2+
+2018/debian/deb_dla_1441.nasl: GPLv2+
+2018/debian/deb_dla_1442.nasl: GPLv2+
+2018/debian/deb_dla_1443.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -40839,6 +40845,7 @@
 2018/nagiosxi/gb_nagios_fusion_mult_xss_vuln.nasl: GPLv2+
 2018/nagiosxi/gb_nagiosxi_mult_vuln_apr18.nasl: GPLv2+
 2018/nagiosxi/gb_nagios_xi_mult_vuln.nasl: GPLv2+
+2018/netgear/gb_netgear_routers_information_disclosure.nasl: GPLv2+
 2018/nextcloud/gb_nextcloud_server_auth_bypass_vuln_may18_lin.nasl: GPLv2+
 2018/nextcloud/gb_nextcloud_server_auth_bypass_vuln_may18_win.nasl: GPLv2+
 2018/nextcloud/gb_nextcloud_server_image_preview_access_control_vuln_lin.nasl: GPLv2+
@@ -41274,6 +41281,7 @@
 2018/trendmicro/gb_trend_micro_officescan_code_exec_n_xss_vuln_june18.nasl: GPLv2+
 2018/trendmicro/gb_trend_micro_officescan_mult_vuln_june18.nasl: GPLv2+
 2018/trendmicro/gb_trendmicro_smart_protection_server_mult_vuln_1119385.nasl: GPLv2+
+2018/trendnet/gb_trendnet_camera_default_credentials.nasl: GPLv2+
 2018/trendnet/gb_trendnet_routers_info_disc.nasl: GPLv2+
 2018/typo3/gb_typo3_pers_xss_vuln_apr18_lin.nasl: GPLv2+
 2018/typo3/gb_typo3_pers_xss_vuln_apr18_win.nasl: GPLv2+
@@ -42080,6 +42088,7 @@ gb_device42_appliance_managerdefault_credentials.nasl: GPLv2+
 gb_dgs_1500_detect.nasl: GPLv2+
 gb_dialup_admin_detect.nasl: GPLv2+
 gb_didiwiki_detect.nasl: GPLv2+
+gb_digital_watchdog_spectrum_detect.nasl: GPLv2+
 gb_directadmin_detect.nasl: GPLv2+
 gb_diskboss_enterprise_detect.nasl: GPLv2+
 gb_disk_pulse_enterprise_server_detect.nasl: GPLv2+
@@ -42678,6 +42687,7 @@ gb_netapp_storagegrid_webscale_detect.nasl: GPLv2+
 gb_netcharts_server_detect.nasl: GPLv2+
 gb_netgain_em_detect.nasl: GPLv2+
 gb_netgear_dgn2200_detect.nasl: GPLv2+
+gb_netgear_dgnd3700_detect.nasl: GPLv2+
 gb_netgear_nighthawk_router_detect.nasl: GPLv2+
 gb_netgear_prosafe_consolidation.nasl: GPLv2+
 gb_netgear_prosafe_http_detect.nasl: GPLv2+
@@ -42707,6 +42717,7 @@ gb_nmap_os_detection.nasl: GPLv2+
 gb_nodejs_detect_macosx.nasl: GPLv2+
 gb_nodejs_detect_win.nasl: GPLv2+
 gb_norman_security_suite_detect.nasl: GPLv2+
+gb_northernep_inverter_monitor_detect.nasl: GPLv2+
 gb_norton_remove_n_reinstall_detect.nasl: GPLv2+
 gb_notepadpp_detect_portable_win.nasl: GPLv2+
 gb_notepadpp_detect_win.nasl: GPLv2+
@@ -43160,6 +43171,7 @@ gb_trend_micro_office_scan_detect_remote.nasl: GPLv2+
 gb_trendmicro_smart_protection_server_detect.nasl: GPLv2+
 gb_trend_micro_wfbss_detect.nasl: GPLv2+
 gb_trend_micro_worry_free_business_security_detect.nasl: GPLv2+
+gb_trendnet_camera_detect.nasl: GPLv2+
 gb_trendnet_router_detect.nasl: GPLv2+
 gb_trillian_detect.nasl: GPLv2+
 gb_trueconf_detect.nasl: GPLv2+
@@ -43194,6 +43206,7 @@ gb_vibnode_ftp_detect.nasl: GPLv2+
 gb_vibnode_http_detect.nasl: GPLv2+
 gb_vibnode_telnet_detect.nasl: GPLv2+
 gb_vicidial_detect.nasl: GPLv2+
+gb_vicon_device_detect_http.nasl: GPLv2+
 gb_vicon_device_detect_snmp.nasl: GPLv2+
 gb_vicon_device_detect_telnet.nasl: GPLv2+
 gb_videoiq_camera_detect.nasl: GPLv2+
@@ -59109,6 +59122,7 @@ gsf/2018/microsoft/gb_sharepoint_server_excel_services_kb4018343.nasl: GPLv2+
 gsf/2018/microsoft/gb_sharepoint_server_kb4018336.nasl: GPLv2+
 gsf/2018/microsoft/gb_sharepoint_server_kb4018342.nasl: GPLv2+
 gsf/2018/moxa/gb_moxa_edr810_info_discl_vuln.nasl: GPLv2+
+gsf/2018/moxa/gb_moxa_nport_dos_vuln.nasl: GPLv2+
 gsf/2018/myscada/gb_myscada_mypro7_hardcoded_ftp_credentials_vuln.nasl: GPLv2+
 gsf/2018/nch/gb_axon_virtual_pbx_mult_vuln.nasl: GPLv2+
 gsf/2018/netapp/gb_netapp_oncommand_um_code_exec_vuln.nasl: GPLv2+
@@ -59128,6 +59142,7 @@ gsf/2018/netiq/gb_netiq_imanager_mult_vuln_0318.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_imanager_mult_vuln_0517.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_imanager_rce_vuln.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_sentinel_info_discl_vuln.nasl: GPLv2+
+gsf/2018/northernep/gb_northernep_inverter_monitor_info_disc_vuln.nasl: GPLv2+
 gsf/2018/octopus/gb_octopus_deploy_info_disc_vuln1.nasl: GPLv2+
 gsf/2018/octopus/gb_octopus_deploy_info_disc_vuln.nasl: GPLv2+
 gsf/2018/octopus/gb_octopus_deploy_mult_vuln.nasl: GPLv2+
@@ -60493,6 +60508,7 @@ phpshop_detect.nasl: GPLv2+
 phpWebThings_detect.nasl: GPLv2+
 ping_host.nasl: GPLv2+
 pingpong.inc: GPLv2
+pjl_detect.nasl: GPLv2
 pkg-lib-bsd.inc: GPLv2
 pkg-lib-deb.inc: GPLv2
 pkg-lib-gentoo.inc: GPLv2

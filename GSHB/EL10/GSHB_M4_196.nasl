@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_196.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M4_196.nasl 10610 2018-07-25 11:37:44Z cfischer $
 #
 # IT-Grundschutz, 10. EL, Maßnahme 4.196
 #
@@ -8,7 +8,7 @@
 # Thomas Rotter <T.Rotter@dn-systems.de>
 #
 # Copyright:
-# Copyright (c) 2009 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -33,16 +33,13 @@ tag_summary = "IT-Grundschutz M4.196: Sicherer Betrieb eines Apache-Webservers (
   Grundschutz. Die detaillierte Beschreibung zu dieser Maßnahme findet sich unter
   nachfolgendem Verweis. Es ist zu beachten, dass der dortige Text sich immer auf
   die aktuellste Ergänzungslieferung bezieht. Titel und Inhalt können sich bei einer
-  Aktualisierung ändern, allerdings nicht die Kernthematik.
-
-";
-
+  Aktualisierung ändern, allerdings nicht die Kernthematik.";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94196");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10610 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-01-14 14:29:35 +0100 (Thu, 14 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,10 +47,9 @@ if(description)
   script_xref(name : "URL", value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04196.html");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"general_note");
-  script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-10");
-  script_mandatory_keys("Tools/Present/wmi");
-  script_mandatory_keys("Compliance/Launch/GSHB-10");
+  script_mandatory_keys("Compliance/Launch/GSHB-10", "Tools/Present/wmi");
   script_dependencies("GSHB/GSHB_WMI_Apache.nasl","GSHB/GSHB_Read_Apache_Customlogfile.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
    script_require_keys("WMI/Apache");
   script_tag(name : "summary" , value : tag_summary);

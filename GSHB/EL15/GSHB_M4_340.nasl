@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_340.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M4_340.nasl 10610 2018-07-25 11:37:44Z cfischer $
 #
 # IT-Grundschutz, 15. EL, Maﬂnahme 4.340
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94245");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10610 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,15 +38,12 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
-  script_mandatory_keys("Tools/Present/wmi");
-  script_mandatory_keys("Compliance/Launch/GSHB-15");
+  script_mandatory_keys("Compliance/Launch/GSHB-15", "Tools/Present/wmi");
   script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/EL15/GSHB_WMI_UAC_config.nasl");
   script_require_keys("WMI/UAC");
-  script_tag(name : "summary" , value :
-"IT-Grundschutz M4.340: Einsatz der Windows Benutzerkontensteuerung UAC ab Windows Vista.
+  script_tag(name : "summary" , value :"IT-Grundschutz M4.340: Einsatz der Windows Benutzerkontensteuerung UAC ab Windows Vista.
 
-Stand: 15. Erg‰nzungslieferung (15. EL).
-");
+Stand: 15. Erg‰nzungslieferung (15. EL).");
 
   exit(0);
 }

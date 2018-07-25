@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_373bbbd408_nodejs-uri-js_fc28.nasl 10247 2018-06-19 07:14:03Z santu $
+# $Id: gb_fedora_2018_373bbbd408_nodejs-uri-js_fc28.nasl 10597 2018-07-25 05:30:00Z cfischer $
 #
 # Fedora Update for nodejs-uri-js FEDORA-2018-373bbbd408
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874686");
-  script_version("$Revision: 10247 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-19 09:14:03 +0200 (Tue, 19 Jun 2018) $");
+  script_version("$Revision: 10597 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 07:30:00 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-17 06:05:58 +0200 (Sun, 17 Jun 2018)");
   script_cve_id("CVE-2017-16021");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for nodejs-uri-js FEDORA-2018-373bbbd408");
   script_tag(name:"summary", value:"Check the version of nodejs-uri-js");

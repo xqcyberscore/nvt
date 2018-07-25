@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vicon_device_detect_telnet.nasl 10572 2018-07-23 10:19:30Z mmartin $
+# $Id: gb_vicon_device_detect_telnet.nasl 10594 2018-07-24 13:31:16Z mmartin $
 #
 # Vicon Devices Detection (Telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107334");
-  script_version("$Revision: 10572 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 12:19:30 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10594 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-24 15:31:16 +0200 (Tue, 24 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-23 11:32:40 +0200 (Mon, 23 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -79,22 +79,22 @@ if( egrep( string:banner, pattern:"^IQinVision .* Version ", icase:FALSE ) ||
 
   type = eregmatch( pattern:"IQ(eye)?([0578ADMPR])", string:banner );
   
-  type_list['0'] = "3 Series / 4 Series";
-  type_list['5'] = "5 Series";
-  type_list['7'] = "7 Series";
-  type_list['8'] = "Sentinel Series";
-  type_list['9'] = "9 Series";
+  type_list['0'] = "3_Series_/_4_ Series";
+  type_list['5'] = "5_Series";
+  type_list['7'] = "7_Series";
+  type_list['8'] = "Sentinel_Series";
+  type_list['9'] = "9_Series";
   type_list['A'] = "Alliance-pro";
   type_list['D'] = "Alliance-mini";
   type_list['M'] = "Alliance-mx";
   type_list['P'] = "PTZ";
-  type_list['R'] = "R5 series";
+  type_list['R'] = "R5_series";
 
   if( type_list[type[2]] ) {
     type = type_list[type[2]];
   
   } else {
-    type = "Unknown";
+    type = "unknown";
     }
 
   if( "IQinVision" >!< banner && "Software version " >< banner && "MAC address " >< banner ) {

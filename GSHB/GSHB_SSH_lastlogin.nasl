@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_lastlogin.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_SSH_lastlogin.nasl 10612 2018-07-25 12:26:01Z cfischer $
 #
 # List Users, who was since 84 days not loged in to the System.
 #
@@ -9,8 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
-#
-#
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -26,26 +24,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This plugin uses ssh to List Users, who was since 84 days not loged in to the System.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96074");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10612 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-06-02 09:25:45 +0200 (Wed, 02 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("List Users, who was since 84 days not loged in to the System.");
-
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("find_service.nasl", "gather-package-list.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("compliance_tests.nasl", "find_service.nasl", "gather-package-list.nasl");
+
+  script_tag(name:"summary", value:"This plugin uses ssh to List Users, who was since 84 days not loged in to the System.");
+
   exit(0);
 }
 
@@ -63,7 +59,7 @@ if(!sock) {
     if (!error) error = "No SSH Port or Connection!";
     log_message(port:port, data:error);
     set_kb_item(name: "GSHB/lastlogin", value:"error");
-    set_kb_item(name: "GSHB/LockedUser", value:"error"); 
+    set_kb_item(name: "GSHB/LockedUser", value:"error");
     set_kb_item(name: "GSHB/UserShell", value:"error");
     set_kb_item(name: "GSHB/lastlogin/log", value:error);
     exit(0);
@@ -72,7 +68,7 @@ if(!sock) {
 windowstest = ssh_cmd(socket:sock, cmd:"cmd /?");
 if (("windows" >< windowstest && "interpreter" >< windowstest) || ("Windows" >< windowstest && "interpreter" >< windowstest)){
     set_kb_item(name: "GSHB/lastlogin", value:"windows");
-    set_kb_item(name: "GSHB/LockedUser", value:"windows"); 
+    set_kb_item(name: "GSHB/LockedUser", value:"windows");
     set_kb_item(name: "GSHB/UserShell", value:"windows");
   exit(0);
 }
@@ -91,7 +87,7 @@ for(i=0; i<max_index(LockLst); i++){
   if (LockUserLst[1] != "x" && LockUserLst[1] != "") LockUser += LockUserLst[0] + '\n';
 }
 if (!LockUser) LockUser = "none";
-set_kb_item(name: "GSHB/LockedUser", value:LockUser); 
+set_kb_item(name: "GSHB/LockedUser", value:LockUser);
 
 lowpasswd = tolower(passwd);
 ShellLst = split(lowpasswd, keep:0);
@@ -101,5 +97,5 @@ for(i=0; i<max_index(ShellLst); i++){
 }
 if (!ShellUser) ShellUser = "none";
 set_kb_item(name: "GSHB/UserShell", value:ShellUser);
- 
+
 exit(0);

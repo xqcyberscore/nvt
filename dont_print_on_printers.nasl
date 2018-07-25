@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dont_print_on_printers.nasl 10248 2018-06-19 07:28:49Z cfischer $
+# $Id: dont_print_on_printers.nasl 10600 2018-07-25 08:04:18Z cfischer $
 #
 # Do not print on AppSocket and socketAPI printers
 #
@@ -9,7 +9,7 @@
 # 99% based on dont_scan_printers by Michel Arboi <arboi@alussinan.org>
 #
 # Copyright:
-# Copyright (C) 2004 by Laurent Facq
+# Copyright (C) 2005 by Laurent Facq
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2,
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12241");
-  script_version("$Revision: 10248 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-19 09:28:49 +0200 (Tue, 19 Jun 2018) $");
+  script_version("$Revision: 10600 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 10:04:18 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Do not print on AppSocket and socketAPI printers");
   script_category(ACT_SETTINGS);
-  script_copyright("This script is Copyright (C) 2004 by Laurent Facq");
+  script_copyright("This script is Copyright (C) 2005 by Laurent Facq");
   script_family("Settings");
   script_dependencies("gb_snmp_sysdesc.nasl", "nmap_mac.nasl");
 
-  script_add_preference(name:"Exclude PJL printer ports from scan", type:"entry", value:"9100,9101,9102,9103,9112,9113,9114,9115,9116");
+  script_add_preference(name:"Exclude PJL printer ports from scan", type:"entry", value:"9100,9101,9102,9103,9104,9105,9106,9107,9112,9113,9114,9115,9116");
 
   script_tag(name:"summary", value:"The host seems to be an AppSocket or socketAPI printer.
-  Scanning it will waste paper. So ports 9100-9103 & 9112-9116 won't be scanned by default.");
+  Scanning it will waste paper. So ports 9100-9107 & 9112-9116 won't be scanned by default.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -110,11 +110,11 @@ pjl_ports = script_get_preference( "Exclude PJL printer ports from scan" );
 if( strlen( pjl_ports ) > 0 ) {
   pjl_ports = str_replace( string:pjl_ports, find:" ", replace:"" );
   if( ! check_pjl_port_list( list:pjl_ports ) ) {
-    report = '"Exclude PJL printer ports from scan" has wrong format or contains an invalid port and was ignored. Please use a\ncomma separated list of ports without spaces. Example: 9100,9101,9102,9103,9112,9113,9114,9115,9116\n\n';
-    report += 'The following default ports were excluded from the scan to avoid printing out paper on this printer during a scan:\n\n9100,9101,9102,9103,9112,9113,9114,9115,9116';
+    report = '"Exclude PJL printer ports from scan" has wrong format or contains an invalid port and was ignored. Please use a\ncomma separated list of ports without spaces. Example: 9100,9101,9102,9103,9104,9105,9106,9107,9112,9113,9114,9115,9116\n\n';
+    report += 'The following default ports were excluded from the scan to avoid printing out paper on this printer during a scan:\n\n9100,9101,9102,9103,9104,9105,9106,9107,9112,9113,9114,9115,9116';
     invalid_list = TRUE;
     log_message( port:0, data:report );
-    pjl_ports_list = make_list( 9100, 9101, 9102, 9103, 9112, 9113, 9114, 9115, 9116 );
+    pjl_ports_list = make_list( 9100, 9101, 9102, 9103, 9104, 9105, 9106, 9107, 9112, 9113, 9114, 9115, 9116 );
   } else {
     pjl_report = pjl_ports;
     ports = split( pjl_ports, sep:",", keep:FALSE );
@@ -123,8 +123,8 @@ if( strlen( pjl_ports ) > 0 ) {
     }
   }
 } else {
-  pjl_report = "9100,9101,9102,9103,9112,9113,9114,9115,9116";
-  pjl_ports_list = make_list( 9100, 9101, 9102, 9103, 9112, 9113, 9114, 9115, 9116 );
+  pjl_report = "9100,9101,9102,9103,9104,9105,9106,9107,9112,9113,9114,9115,9116";
+  pjl_ports_list = make_list( 9100, 9101, 9102, 9103, 9104, 9105, 9106, 9107, 9112, 9113, 9114, 9115, 9116 );
 }
 
 # First try SNMP on default 161
@@ -180,7 +180,7 @@ if( get_udp_port_state( port ) ) {
 
 if( is_printer ) report( data:"Detected UDP AppSocket on port " + port + '/udp' );
 
-#TBD: Also test 9101-9103 & 9112-9116?
+#TBD: Also test 9101-9107 & 9112-9116?
 #The ( ! r && se == ETIMEDOUT ) might cause false positives here
 port = 9100;
 if( get_port_state( port ) ) {

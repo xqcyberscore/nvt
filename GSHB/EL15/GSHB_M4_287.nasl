@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_287.nasl 7883 2017-11-23 11:22:59Z emoss $
+# $Id: GSHB_M4_287.nasl 10612 2018-07-25 12:26:01Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maﬂnahme 4.287
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94226");
-  script_version("$Revision: 7883 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-23 12:22:59 +0100 (Thu, 23 Nov 2017) $");
+  script_version("$Revision: 10612 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,7 +37,7 @@ if(description)
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15");
-  script_dependencies("find_service.nasl","sip_detection.nasl","ssh_proto_version.nasl");
+  script_dependencies("compliance_tests.nasl", "find_service.nasl","sip_detection.nasl","ssh_proto_version.nasl");
 
   script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04287.html");
 
@@ -61,7 +61,7 @@ sshver = get_kb_item("SSH/supportedversions/22");
 http = http_open_socket(80);
 
 Lst = split(sshver, sep:",", keep:0);
-for(i=0; i<max_index(Lst); i++){  
+for(i=0; i<max_index(Lst); i++){
   if (Lst[i] =~ " 2.0:.*") continue;
   if (Lst[i] =~ " 1.99:.*") continue;
   if (Lst[i] =~ " 1.*:.*") val += Lst[i] + ",";
@@ -84,11 +84,11 @@ if(!sip){
 
 if (!result){
   result = string("Fehler");
-  desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.'); 
+  desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.');
 }
 
 if(http) http_close_socket(http);
-  
+
 set_kb_item(name:"GSHB/M4_287/result", value:result);
 set_kb_item(name:"GSHB/M4_287/desc", value:desc);
 set_kb_item(name:"GSHB/M4_287/name", value:name);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_064.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M5_064.nasl 10612 2018-07-25 12:26:01Z cfischer $
 #
 # IT-Grundschutz, 11. EL, Maßnahme 5.064
 #
@@ -24,7 +24,25 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "IT-Grundschutz M5.064: Secure Shell.
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.895064");
+  script_version("$Revision: 10612 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2010-02-08 15:35:47 +0100 (Mon, 08 Feb 2010)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("IT-Grundschutz M5.064: Secure Shell");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05064.html");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
+  script_family("IT-Grundschutz-11");
+  script_mandatory_keys("Compliance/Launch/GSHB-11");
+#  script_require_ports("Services/ssh", 22);
+  script_dependencies("compliance_tests.nasl", "find_service.nasl", "ssh_detect.nasl");
+
+  script_tag(name:"summary", value:"IT-Grundschutz M5.064: Secure Shell.
 
   ACHTUNG: Dieser Test wird nicht mehr unterstützt. Er wurde ersetzt durch
   den entsprechenden Test der nun permanent and die aktuelle EL angepasst
@@ -34,29 +52,10 @@ tag_summary = "IT-Grundschutz M5.064: Secure Shell.
   Grundschutz. Die detaillierte Beschreibung zu dieser Maßnahme findet sich unter
   nachfolgendem Verweis. Es ist zu beachten, dass der dortige Text sich immer auf
   die aktuellste Ergänzungslieferung bezieht. Titel und Inhalt können sich bei einer
-  Aktualisierung ändern, allerdings nicht die Kernthematik.
+  Aktualisierung ändern, allerdings nicht die Kernthematik.");
 
-";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.895064");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2010-02-08 15:35:47 +0100 (Mon, 08 Feb 2010)");
-  script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("IT-Grundschutz M5.064: Secure Shell");
-  script_xref(name : "URL", value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05064.html");
-  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
-  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
-  script_family("IT-Grundschutz-11");
-  script_mandatory_keys("Compliance/Launch/GSHB-11");
-#  script_require_ports("Services/ssh", 22);
-  script_dependencies("find_service.nasl", "ssh_detect.nasl");
-  script_tag(name : "summary" , value : tag_summary);
   script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_TELNET_Cisco_Voice.nasl 9567 2018-04-23 13:22:46Z cfischer $
+# $Id: GSHB_TELNET_Cisco_Voice.nasl 10612 2018-07-25 12:26:01Z cfischer $
 #
 # List reject Rule on Cisco Voip Devices over Telnet
 #
@@ -25,28 +25,26 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This plugin list reject Rule on Cisco Voip Devices over Telnet.
-  To use this test, you must configure Username and password for this test in the preferences.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96107");
-  script_version("$Revision: 9567 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-23 15:22:46 +0200 (Mon, 23 Apr 2018) $");
+  script_version("$Revision: 10612 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-06-10 15:20:25 +0200 (Thu, 10 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"remote_app");  
+  script_tag(name:"qod_type", value:"remote_app");
   script_name("IT-Grundschutz: List reject Rule on Cisco Voip Devices over Telnet");
   script_add_preference(name:"Telnet Testuser Name", type:"entry", value:"UserName");
-  script_add_preference(name:"Telnet Testuser Password", type:"password", value:"PassWord");
-
-  script_category(ACT_GATHER_INFO);
+  script_add_preference(name:"Telnet Testuser Password", type:"password", value:"PassWord");  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("find_service.nasl", "ssh_authorization.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("compliance_tests.nasl", "find_service.nasl", "ssh_authorization.nasl");
+
+  script_tag(name:"summary", value:"This plugin list reject Rule on Cisco Voip Devices over Telnet.
+  To use this test, you must configure Username and password for this test in the preferences.");
+
   exit(0);
 }
 
@@ -56,7 +54,6 @@ include("default_account.inc");
 telnet_port = get_kb_item("Services/telnet");
 if (!telnet_port) telnet_port = 23;
 
-
 login = script_get_preference("Telnet Testuser Name");
 password = script_get_preference("Telnet Testuser Password");
 
@@ -65,7 +62,7 @@ password = script_get_preference("Telnet Testuser Password");
 
 if (!login || login == "UserName" || login == "" || !password || password == "PassWord" || password == ""){
   set_kb_item(name: "GSHB/Voice", value:"no credentials set");
-  exit(0);  
+  exit(0);
 }
 
 soc = open_sock_tcp(telnet_port);
@@ -118,19 +115,19 @@ for(i=0; i<max_index(val); i++){
   if (val[i] == "" || val[i] =~ ".*#$" || val[i] == "show version  | include oice" || val[i] =~ ".*#show version  | include oice") continue;
   retvoice += val[i] + '\n';
 }
- 
+
 val = split(transla, sep:'\r\n', keep:0);
 for(i=0; i<max_index(val); i++){
   if (val[i] == "" || val[i] =~ ".*#$" || val[i] == "show running-config | include (R|r)ule .* (R|r)eject" || val[i] =~ ".*#show running-config | include (R|r)ule .* (R|r)eject") continue;
   rettransla += val[i] + '\n';
-} 
- 
+}
+
 #val = split(acl, sep:'\r\n', keep:0);
 #for(i=0; i<max_index(val); i++){
 #  if (val[i] == "" || val[i] =~ ".*#$" || val[i] == "show running-config  | include acl" || val[i] =~ ".*#show running-config  | include acl") continue;
 #  retacl += val[i] + '\n';
-#} 
- 
+#}
+
 if (!retvoice){
   set_kb_item(name: "GSHB/Voice", value:"novoice");
 exit(0);

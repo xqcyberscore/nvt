@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_db2_info.nasl 10579 2018-07-23 13:27:53Z cfischer $
+# $Id: gb_nmap_db2_info.nasl 10595 2018-07-24 13:51:36Z cfischer $
 #
 # Wrapper for Nmap DB2 Info NSE script.
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801694");
-  script_version("$Revision: 10579 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:27:53 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10595 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-24 15:51:36 +0200 (Tue, 24 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-01-06 14:34:14 +0100 (Thu, 06 Jan 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -40,6 +40,7 @@ if(description)
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");
   script_family("Nmap NSE");
   script_dependencies("nmap_nse.nasl");
+  script_require_ports(523);
   script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
 
   script_tag(name:"summary", value:"This script attempts to extract information from IBM DB2 Server
@@ -57,6 +58,7 @@ if((! get_kb_item("Tools/Present/nmap5.21") &&
 }
 
 port = 523;
+if(!get_port_state(port)) exit(0);
 
 res = pread(cmd: "nmap", argv: make_list("nmap", "--script=db2-info.nse", "-p", port, get_host_ip()));
 if(res)

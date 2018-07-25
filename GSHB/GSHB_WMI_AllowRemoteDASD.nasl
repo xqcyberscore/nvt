@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_AllowRemoteDASD.nasl 7061 2017-09-05 11:50:40Z teissa $
+# $Id: GSHB_WMI_AllowRemoteDASD.nasl 10610 2018-07-25 11:37:44Z cfischer $
 #
 # Read Status of Policy All Removable Storage: Allow direct access in remote sessions (Windows)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96048");
-  script_version("$Revision: 7061 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-05 13:50:40 +0200 (Tue, 05 Sep 2017) $");
+  script_version("$Revision: 10610 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,17 +40,14 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
-  script_mandatory_keys("Compliance/Launch/GSHB");
-  script_mandatory_keys("Tools/Present/wmi");
+  script_mandatory_keys("Compliance/Launch/GSHB", "Tools/Present/wmi");
    
-#  script_require_ports(139, 445);
   script_dependencies("secpod_reg_enum.nasl", "GSHB_WMI_OSInfo.nasl");
 
   script_tag(name : "summary" , value : "The script Read Status of: Policy All Removable Storage: Allow direct access in remote sessions.");
 
   exit(0);
 }
-
 
 host    = get_host_ip();
 usrname = get_kb_item("SMB/login");

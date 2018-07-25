@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 10431 2018-07-06 06:55:46Z cfischer $
+# $Id: misc_func.inc 10600 2018-07-25 08:04:18Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10431 $
+# $Revision: 10600 $
 #
 ###############################################################################
 
@@ -874,12 +874,12 @@ function register_all_pjl_ports( ports ) {
   local_var ports, port;
 
   if( isnull( ports ) || typeof( ports ) != "array" ) {
-    ports = make_list( 9100, 9101, 9102, 9103, 9112, 9113, 9114, 9115, 9116 );
+    ports = make_list( 9100, 9101, 9102, 9103, 9104, 9105, 9106, 9107, 9112, 9113, 9114, 9115, 9116 );
   }
 
   foreach port( ports ) {
     if( get_port_state( port ) ) {
-      register_service( port:port, proto:"PJL" ); #TBD Use Services/jedirect like in 2008/pjl_detect.nasl?
+      register_service( port:port, proto:"hp-pjl" );
       register_service( port:port, proto:"fragile_port" );
       replace_kb_item( name:"BannerHex/" + port, value:"aeaeaeaeae" );
       replace_kb_item( name:"Banner/" + port, value:"ignore-this-banner" );

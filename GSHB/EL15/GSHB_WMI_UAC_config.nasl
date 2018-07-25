@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_UAC_config.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_WMI_UAC_config.nasl 10610 2018-07-25 11:37:44Z cfischer $
 #
 # Read the config of the User Account Control feature over WMI (Windows)
 #
@@ -27,32 +27,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Read the config of the User Account Control feature over WMI.";
-
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96046");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10610 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-01-15 16:20:21 +0100 (Fri, 15 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
   script_name("Read the config of the User Account Control feature over WMI");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
-  script_mandatory_keys("Compliance/Launch/GSHB");
-  script_mandatory_keys("Tools/Present/wmi");
-   
-#  script_require_ports(139, 445);
+  script_mandatory_keys("Compliance/Launch/GSHB", "Tools/Present/wmi");
   script_dependencies("secpod_reg_enum.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name : "summary" , value : "Read the config of the User Account Control feature over WMI.");
   exit(0);
 }
-
 
 host    = get_host_ip();
 usrname = get_kb_item("SMB/login");

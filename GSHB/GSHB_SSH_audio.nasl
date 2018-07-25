@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_audio.nasl 10396 2018-07-04 09:13:46Z cfischer $
+# $Id: GSHB_SSH_audio.nasl 10612 2018-07-25 12:26:01Z cfischer $
 #
 # Test if Audio Server installed and list access rights of /dev/audio
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96088");
-  script_version("$Revision: 10396 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 11:13:46 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 10612 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-05-11 16:10:57 +0200 (Tue, 11 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,12 +36,14 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
-  script_dependencies("gather-package-list.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
+  script_dependencies("compliance_tests.nasl", "gather-package-list.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("Compliance/Launch/GSHB");
 
   script_tag(name:"summary", value:"Test if Audio Server is installed and list access rights of /dev/audio.
 
   This Script tests if the following Audio-Servers are installed:
+
   esound, paudio, pulseaudio, artsd, phonon.");
 
   script_tag(name:"qod_type", value:"package");

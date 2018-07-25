@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_smtp_mailbomb_test.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_smtp_mailbomb_test.nasl 10612 2018-07-25 12:26:01Z cfischer $
 #
 # Sent Recursive Archive (Mailbomb)
 #
@@ -28,35 +28,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script sends the Universum.zip recursive archive to the
-mail server.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96054");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10612 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"remote_app");  
+  script_tag(name:"qod_type", value:"remote_app");
   script_name("Sent Recursive Archive (Mailbomb)");
-
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
-   
 #  script_require_ports("Services/smtp", 25);
-  script_dependencies("find_service.nasl", "smtp_settings.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("compliance_tests.nasl", "find_service.nasl", "smtp_settings.nasl");
+
+  script_tag(name:"summary", value:"This script sends the Universum.zip recursive archive to the
+mail server.");
+
   exit(0);
 }
-
-#
-# The script code starts here
-#
 
 include("smtp_func.inc");
 
@@ -70,15 +63,15 @@ if(!port)port = 25;
 
 if(!get_port_state(port)){
     set_kb_item(name:"GSHB/Mailbomb", value:"error");
-    set_kb_item(name:"GSHB/Mailbomb/log", value:"get_port_state on Port " + port + " failed.");        
+    set_kb_item(name:"GSHB/Mailbomb/log", value:"get_port_state on Port " + port + " failed.");
 exit(0);
 }
 
 
 s = open_sock_tcp(port);
-if (!s){ 
+if (!s){
     set_kb_item(name:"GSHB/Mailbomb", value:"error");
-    set_kb_item(name:"GSHB/Mailbomb/log", value:"open_sock_tcp on Port " + port + " failed.");            
+    set_kb_item(name:"GSHB/Mailbomb/log", value:"open_sock_tcp on Port " + port + " failed.");
 exit(0);
 }
 
@@ -103,15 +96,15 @@ Content-Transfer-Encoding: 8bit
 
 This Mail should include the following Files:
 
-Universum.zip witch includes Galaxy.zip, 
+Universum.zip witch includes Galaxy.zip,
 witch includes Solarsystem.zip,
-witch includes World.zip, 
-witch includes Continent.zip, 
-witch includes State.zip, 
+witch includes World.zip,
+witch includes Continent.zip,
+witch includes State.zip,
 witch includes Country.zip,
-witch includes City.zip, 
+witch includes City.zip,
 witch includes Hotel.zip,
-witch includes Etage.zip, 
+witch includes Etage.zip,
 witch includes Room.zip and
 Bed.txt which is 1.86GB great!
 
@@ -122,19 +115,19 @@ can possibly be damaged by Similar files.
 
 Diese Mail sollte folgende Anhänge anthalten:
 
-Universum.zip mit eingeschlossem File Galaxy.zip, 
+Universum.zip mit eingeschlossem File Galaxy.zip,
 mit eingeschlossem File Solarsystem.zip,
-mit eingeschlossem File World.zip, 
-mit eingeschlossem File Continent.zip, 
-mit eingeschlossem File State.zip, 
+mit eingeschlossem File World.zip,
+mit eingeschlossem File Continent.zip,
+mit eingeschlossem File State.zip,
 mit eingeschlossem File Country.zip,
-mit eingeschlossem File City.zip, 
+mit eingeschlossem File City.zip,
 mit eingeschlossem File Hotel.zip,
-mit eingeschlossem File Etage.zip, 
+mit eingeschlossem File Etage.zip,
 mit eingeschlossem File Room.zip und
 Bed.txt welches 1,86GB groß ist!
 
-Sollte die Mail durchgekommen sein, besteht die Gefahr, dass der Server oder 
+Sollte die Mail durchgekommen sein, besteht die Gefahr, dass der Server oder
 Client durch ähnliche Files evtl. geschädigt werden kann.
 
 --------------030509000404040305080206
@@ -177,15 +170,15 @@ send(socket: s, data: string("QUIT\r\n"));
 close(s);
 
 if (n > 0) {
-  log_message(port: port, 
-	data:string(	"The Mailbomb Testfiles was sent ", n, 
+  log_message(port: port,
+	data:string(	"The Mailbomb Testfiles was sent ", n,
 			" times. If there is an antivirus in your MTA, it might\n",
 			"have broken. Please check the default OpenVAS Mailfolder and MTA right now, as it is\n",
 			"not possible to do so remotely\n"));
   set_kb_item(name:"GSHB/Mailbomb", value:"true");
 }else if (n == 0) {
-  log_message(port: port, 
+  log_message(port: port,
 	data: "For some reason, we could not send the Mailbomb Testfiles to this MTA");
-  set_kb_item(name:"GSHB/Mailbomb", value:"fail");        
+  set_kb_item(name:"GSHB/Mailbomb", value:"fail");
 }
-exit(0); 
+exit(0);

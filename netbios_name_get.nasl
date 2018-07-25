@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: netbios_name_get.nasl 8140 2017-12-15 12:08:32Z cfischer $
+# $Id: netbios_name_get.nasl 10596 2018-07-24 14:11:30Z cfischer $
 #
 # Using NetBIOS to retrieve information from a Windows host
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10150");
-  script_version("$Revision: 8140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10596 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-24 16:11:30 +0200 (Tue, 24 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -46,14 +46,11 @@ if(description)
   script_family("Windows");
   script_dependencies("cifs445.nasl");
 
-  tag_summary = "The NetBIOS port is open (UDP:137). A remote attacker may use this to gain
+  script_tag(name:"solution", value:"Block those ports from outside communication.");
+
+  script_tag(name:"summary", value:"The NetBIOS port is open (UDP:137). A remote attacker may use this to gain
   access to sensitive information such as computer name, workgroup/domain
-  name, currently logged on user name, etc.";
-
-  tag_solution = "Block those ports from outside communication";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  name, currently logged on user name, etc.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -61,6 +58,7 @@ if(description)
 }
 
 include("host_details.inc");
+include("misc_func.inc");
 
 SCRIPT_DESC = 'Using NetBIOS to retrieve information from a Windows host';
 
@@ -133,6 +131,8 @@ close( soc );
 
 if( strlen( result ) > 56 ) {
 
+  register_service( port:dsport, proto:"netbios-ns", ipproto:"udp" );
+
   hole_answer = "";
   hole_data = result;
   location = 0;
@@ -189,7 +189,7 @@ if( strlen( result ) > 56 ) {
         }
       }
 
-      # Set the current logged in user based on the last entry
+      # nb: Set the current logged in user based on the last entry
       if( hole_data[subloc] == raw_string( 3 ) ) {
         # Ugh, we can get multiple usernames with TS or Citrix
         # Also, the entry is the same for the local workstation or user name
@@ -219,7 +219,7 @@ if( strlen( result ) > 56 ) {
       }
     }
 
-    # Set the workgroup info on WinXP
+    # nb: Set the workgroup info on WinXP
     if( hole_data[loc] == raw_string( 196 ) ) {
 
       subloc = location + 15 + name_count * 18;
@@ -270,7 +270,7 @@ if( strlen( result ) > 56 ) {
         }
       }
 
-      # Set the current logged in user based on the last entry
+      # nb: Set the current logged in user based on the last entry
       if( hole_data[subloc] == raw_string( 3 ) ) {
         # Ugh, we can get multiple usernames with TS or Citrix
         username = name;
@@ -298,7 +298,7 @@ if( strlen( result ) > 56 ) {
 
     loc = location + 16 + name_count * 18;
 
-    # Set the workgroup info on WinNT
+    # nb: Set the workgroup info on WinNT
     if( hole_data[loc] == raw_string( 132 ) ) {
 
       subloc = location + 15 + name_count * 18;

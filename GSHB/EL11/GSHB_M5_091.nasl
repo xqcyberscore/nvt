@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_091.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M5_091.nasl 10610 2018-07-25 11:37:44Z cfischer $
 #
 # IT-Grundschutz, 11. EL, Maßnahme 5.091
 #
@@ -40,16 +40,13 @@ tag_summary = "IT-Grundschutz M5.091: Einsatz von Personal Firewalls für Interne
   
   Getestet wird auf die Microsoft Windows Firewall. Für Vista und Windows 7 
   auf jegliche Firewall die sich systemkonform installiert. 
-  Auf Linux, soweit möglich, anzeige der iptables Regeln.
-
-";
-
+  Auf Linux, soweit möglich, anzeige der iptables Regeln.";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.895091");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10610 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-01-26 13:42:28 +0100 (Tue, 26 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,8 +56,7 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-11");
-  script_mandatory_keys("Tools/Present/wmi");
-  script_mandatory_keys("Compliance/Launch/GSHB-11");
+  script_mandatory_keys("Compliance/Launch/GSHB-11", "Tools/Present/wmi");
   script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_WinFirewallStat.nasl", "GSHB/GSHB_SSH_iptables.nasl");
 #  script_require_keys("WMI/WinFirewall");
   script_tag(name : "summary" , value : tag_summary);

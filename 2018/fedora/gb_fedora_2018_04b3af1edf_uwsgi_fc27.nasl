@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_04b3af1edf_uwsgi_fc27.nasl 10585 2018-07-24 06:26:46Z santu $
+# $Id: gb_fedora_2018_04b3af1edf_uwsgi_fc27.nasl 10597 2018-07-25 05:30:00Z cfischer $
 #
 # Fedora Update for uwsgi FEDORA-2018-04b3af1edf
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874837");
-  script_version("$Revision: 10585 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-24 08:26:46 +0200 (Tue, 24 Jul 2018) $");
+  script_version("$Revision: 10597 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 07:30:00 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-21 06:05:30 +0200 (Sat, 21 Jul 2018)");
   script_cve_id("CVE-2018-6758", "CVE-2018-7490");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for uwsgi FEDORA-2018-04b3af1edf");
   script_tag(name:"summary", value:"Check the version of uwsgi");

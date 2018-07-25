@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_SAMBA_ntfs_ACL_ADS.nasl 10396 2018-07-04 09:13:46Z cfischer $
+# $Id: GSHB_SSH_SAMBA_ntfs_ACL_ADS.nasl 10612 2018-07-25 12:26:01Z cfischer $
 #
 # Check if NTFS Access Control Lists and NTFS Alternate Data Streams supported
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96090");
-  script_version("$Revision: 10396 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 11:13:46 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 10612 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-05-12 13:28:00 +0200 (Wed, 12 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,7 +36,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
-  script_dependencies("gather-package-list.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
+  script_dependencies("compliance_tests.nasl", "gather-package-list.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("Compliance/Launch/GSHB");
 
   script_tag(name:"summary", value:"Check if NTFS Access Control Lists and NTFS Alternate Data Streams supported.");

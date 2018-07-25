@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_nport_telnet_detect.nasl 7808 2017-11-17 09:30:16Z ckuersteiner $
+# $Id: gb_moxa_nport_telnet_detect.nasl 10599 2018-07-25 07:48:49Z jschulte $
 #
-# Moxa NPort Devices Detection (telnet) 
+# Moxa NPort Devices Detection (telnet)
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106588");
-  script_version("$Revision: 7808 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-17 10:30:16 +0100 (Fri, 17 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2017-02-16 09:18:30 +0700 (Thu, 16 Feb 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10599 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 09:48:49 +0200 (Wed, 25 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-16 09:18:30 +0700 (Thu, 16 Feb 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -40,8 +40,8 @@ if(description)
 
   script_tag(name:"summary", value:"Detection of Moxa NPort devices
 
-The script sends a telnet connection request to the device and attempts to detect the presence of Moxa NPort
-devices and to extract its version.");
+  The script sends a telnet connection request to the device and attempts to detect the presence of Moxa NPort
+  devices and to extract its version.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
@@ -88,12 +88,12 @@ if (!isnull(vers[2])) {
 
 set_kb_item(name: "moxa/nport/detected", value: TRUE);
 
-cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:moxa:nport_" + tolower(model) + ":");
+cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/h:moxa:nport_" + tolower(model) + ":");
 if (!cpe)
   cpe = 'cpe:/h:moxa:nport_' + tolower(model);
 
 register_product(cpe: cpe, location: port + "/tcp", port: port, service: 'telnet');
- 
+
 log_message(data: build_detection_report(app: "Moxa NPort " + model, version: version, install: port + '/tcp',
                                          cpe: cpe, concluded: vers[0], extra: "Build: " + build),
             port: port);

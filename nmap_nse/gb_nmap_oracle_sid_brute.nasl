@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_oracle_sid_brute.nasl 10579 2018-07-23 13:27:53Z cfischer $
+# $Id: gb_nmap_oracle_sid_brute.nasl 10607 2018-07-25 09:09:12Z cfischer $
 #
 # Wrapper for Nmap Oracle SID Brute NSE script.
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801815");
-  script_version("$Revision: 10579 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:27:53 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10607 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 11:09:12 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-01-21 13:17:02 +0100 (Fri, 21 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -39,7 +39,8 @@ if(description)
   script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");
   script_family("Nmap NSE");
-  script_dependencies("nmap_nse.nasl");
+  script_dependencies("nmap_nse.nasl", "oracle_tnslsnr_version.nasl");
+  script_require_ports("Services/oracle_tnslsnr", 1521);
   script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
 
   script_add_preference(name:"oraclesids :", value:"", type:"entry");
@@ -58,10 +59,14 @@ if((! get_kb_item("Tools/Present/nmap5.21") &&
  exit(0);
 }
 
-argv = make_list("nmap", "--script=oracle-sid-brute.nse", "-p", "1521-1560", get_host_ip());
+port = get_kb_item("Services/oracle_tnslsnr");
+if(!port) port = 1521;
+if(!get_port_state(port)) exit(0);
+
+argv = make_list("nmap", "--script=oracle-sid-brute.nse", "-p", port, get_host_ip());
 
 if( pref = script_get_preference("oraclesids :")){
-  argv = make_list(argv, "--script-args=oraclesids="+pref);
+  argv = make_list(argv, "--script-args=oraclesids=" + pref);
 }
 
 res = pread(cmd: "nmap", argv: argv);

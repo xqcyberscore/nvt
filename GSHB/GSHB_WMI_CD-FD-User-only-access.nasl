@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_CD-FD-User-only-access.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_WMI_CD-FD-User-only-access.nasl 10610 2018-07-25 11:37:44Z cfischer $
 #
 # CD-ROM and FDD local User only access
 #
@@ -8,7 +8,7 @@
 # Thomas Rotter <T.Rotter@dn-systems.de>
 #
 # Copyright:
-# Copyright (c) 2009 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # Set in an Workgroup Environment under Vista with enabled UAC this DWORD to access WMI:
 # HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\system\LocalAccountTokenFilterPolicy to 1
@@ -33,26 +33,23 @@ tag_summary = "The script detects whether only local users on CD-ROM and FDD can
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96002");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10610 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");  
   script_name("CD-ROM and FDDlocal User only access (Windows)");
-
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
-  script_mandatory_keys("Compliance/Launch/GSHB");
-  script_mandatory_keys("Tools/Present/wmi");
-   
-#  script_require_ports(139, 445);
+  script_mandatory_keys("Compliance/Launch/GSHB", "Tools/Present/wmi");
   script_dependencies("secpod_reg_enum.nasl", "GSHB_WMI_OSInfo.nasl");
+
   script_tag(name : "summary" , value : tag_summary);
+
   exit(0);
 }
-
 
 host    = get_host_ip();
 usrname = get_kb_item("SMB/login");

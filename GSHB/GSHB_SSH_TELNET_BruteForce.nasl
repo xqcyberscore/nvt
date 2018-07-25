@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_TELNET_BruteForce.nasl 9567 2018-04-23 13:22:46Z cfischer $
+# $Id: GSHB_SSH_TELNET_BruteForce.nasl 10612 2018-07-25 12:26:01Z cfischer $
 #
 # SSH and Telnet BruteForce attack
 #
@@ -9,7 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
-#
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -25,28 +24,26 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "SSH and Telnet BruteForce attack.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96104");
-  script_version("$Revision: 9567 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-23 15:22:46 +0200 (Mon, 23 Apr 2018) $");
+  script_version("$Revision: 10612 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-09-28 12:16:21 +0200 (Tue, 28 Sep 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("IT-Grundschutz: SSH and Telnet BruteForce attack");
   script_add_preference(name:"BruteForce Attacke with Default-Usern and -Passwords", type:"checkbox", value:"no");
-  
-
   script_category(ACT_ATTACK);
   script_timeout(2400);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("find_service.nasl", "ssh_authorization.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("compliance_tests.nasl", "find_service.nasl", "ssh_authorization.nasl");
+
+  script_tag(name:"summary", value:"SSH and Telnet BruteForce attack.");
+
   exit(0);
 }
 
@@ -63,8 +60,8 @@ if (!telnet_port) telnet_port = 23;
 
 start = script_get_preference("BruteForce Attacke with Default-Usern and -Passwords");
 if (start == "no"){
-set_kb_item(name: "GSHB/BRUTEFORCE/SSH", value:"deactivated"); 
-set_kb_item(name: "GSHB/BRUTEFORCE/TELNET", value:"deactivated"); 
+set_kb_item(name: "GSHB/BRUTEFORCE/SSH", value:"deactivated");
+set_kb_item(name: "GSHB/BRUTEFORCE/TELNET", value:"deactivated");
 exit(0);
 }
 
@@ -132,7 +129,7 @@ for(i=0; i<max_index(BruteForcePWList); i++){
 }
 if (telnet_port == 0) telnet_result = "notelnet";
 
-set_kb_item(name: "GSHB/BRUTEFORCE/SSH", value:ssh_result); 
-set_kb_item(name: "GSHB/BRUTEFORCE/TELNET", value:telnet_result); 
+set_kb_item(name: "GSHB/BRUTEFORCE/SSH", value:ssh_result);
+set_kb_item(name: "GSHB/BRUTEFORCE/TELNET", value:telnet_result);
 exit(0);
 

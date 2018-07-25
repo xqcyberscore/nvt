@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_AppArmor_SeLinux.nasl 8271 2018-01-02 15:08:13Z emoss $
+# $Id: GSHB_SSH_AppArmor_SeLinux.nasl 10612 2018-07-25 12:26:01Z cfischer $
 #
 # Check for App-Armor and SeLinux
 #
@@ -27,20 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109039");
-  script_version("$Revision: 8271 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-02 16:08:13 +0100 (Tue, 02 Jan 2018) $");
+  script_version("$Revision: 10612 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-01-02 10:56:23 +0200 (Tue, 02 Jan 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Test existence of App-Armor, SeLinux");
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("find_service.nasl", "gather-package-list.nasl");
+  script_dependencies("compliance_tests.nasl", "find_service.nasl", "gather-package-list.nasl");
+
   script_tag(name:"summary", value:"This script checks the existence of App-Armor
-      and SeLinux on a Linux host.");
+  and SeLinux on a Linux host.");
+
   exit(0);
 }
 
@@ -112,7 +114,7 @@ if( SELinux_Utils != '1' ){
   set_kb_item(name:"GSHB/SeLinux_Utils", value:"1");
   cmd = '/usr/sbin/sestatus -b';
   sestatus = ssh_cmd(socket:sock, cmd:cmd);
-  if( ! sestatus || "command not found" >< tolower(sestatus) || 
+  if( ! sestatus || "command not found" >< tolower(sestatus) ||
       "no such file or directory" >< tolower(sestatus) ){
     set_kb_item(name:"GSHB/SeLinux_Status", value:"error");
   }else{

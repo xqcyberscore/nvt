@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_Netstat_natcp.nasl 10563 2018-07-22 10:40:42Z cfischer $
+# $Id: GSHB_WMI_Netstat_natcp.nasl 10612 2018-07-25 12:26:01Z cfischer $
 #
 # Get Windows TCP Netstat over win_cmd_exec
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94251");
-  script_version("$Revision: 10563 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-22 12:40:42 +0200 (Sun, 22 Jul 2018) $");
+  script_version("$Revision: 10612 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:12:52 +0200 (Tue, 08 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,7 +36,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
-  script_dependencies("smb_login.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
+  script_dependencies("compliance_tests.nasl", "smb_login.nasl", "smb_nativelanman.nasl", "netbios_name_get.nasl");
   script_mandatory_keys("Compliance/Launch/GSHB", "SMB/password", "SMB/login");
   script_require_ports(139, 445);
   script_exclude_keys("SMB/samba");

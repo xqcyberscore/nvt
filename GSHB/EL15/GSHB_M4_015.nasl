@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_015.nasl 9438 2018-04-11 10:28:36Z cfischer $
+# $Id: GSHB_M4_015.nasl 10610 2018-07-25 11:37:44Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maﬂnahme 4.015
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94182");
-  script_version("$Revision: 9438 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:28:36 +0200 (Wed, 11 Apr 2018) $");
+  script_version("$Revision: 10610 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,16 +36,13 @@ if(description)
   script_name("IT-Grundschutz M4.015: Gesichertes Login");
   script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04015.html");
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
-  script_mandatory_keys("Tools/Present/wmi");
-  script_mandatory_keys("Compliance/Launch/GSHB-15");
+  script_mandatory_keys("Compliance/Launch/GSHB-15", "Tools/Present/wmi");
   script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_SSH_PAM.nasl", "GSHB/GSHB_WMI_PolSecSet.nasl");
-  script_tag(name : "summary" , value :
-"IT-Grundschutz M4.015: Gesichertes Login
+  script_tag(name : "summary" , value :"IT-Grundschutz M4.015: Gesichertes Login
 
-Stand: 14. Erg‰nzungslieferung (14. EL).
-");
+Stand: 14. Erg‰nzungslieferung (14. EL).");
 
   exit(0);
 }

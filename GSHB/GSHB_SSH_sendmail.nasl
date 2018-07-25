@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_sendmail.nasl 7279 2017-09-26 13:40:36Z cfischer $
+# $Id: GSHB_SSH_sendmail.nasl 10612 2018-07-25 12:26:01Z cfischer $
 #
 # Check Sendmail Configuration over SSH
 #
@@ -9,8 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
-#
-#
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -29,23 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96099");
-  script_version("$Revision: 7279 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:40:36 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 10612 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-05-03 15:59:29 +0200 (Mon, 03 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Check Sendmail Configuration over SSH");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("find_service.nasl", "gather-package-list.nasl", "smtpserver_detect.nasl", "gb_sendmail_detect.nasl");
+  script_dependencies("compliance_tests.nasl", "find_service.nasl", "gather-package-list.nasl", "smtpserver_detect.nasl", "gb_sendmail_detect.nasl");
 
   script_tag(name:"summary", value:"Check Sendmail Configuration over an SSH Connection.
-  
-  The Script checks various configuration parameter and filesystem permissions 
+
+  The Script checks various configuration parameter and filesystem permissions
   if sendmail installed.");
 
   exit(0);
@@ -86,14 +83,14 @@ else{
     if (!loc_sendmailcnf) loc_sendmailcnf = "not found";
     else if ("slocate:" >< loc_sendmailcnf) loc_sendmailcnf = "not found";
     if (loc_sendmailcnf >!< "not found"){
-    
+
       Lst = split(loc_sendmailcnf, keep:0);
       for(i=0; i<max_index(Lst); i++){
-      
+
         if (Lst[i] =~ ".*sendmail.cf$") lssendmailcnf = ssh_cmd(socket:sock, cmd:"ls -l " + Lst[i]);
         if (Lst[i] =~ ".*sendmail.cf$") lssendmailcnfdir = ssh_cmd(socket:sock, cmd:"ls -ld " + Lst[i] - "/sendmail.cf");
       }
-    
+
     }
     else{
       lssendmailcnf = "none";
@@ -106,11 +103,11 @@ else{
       if(sendmailcnf[i] =~ ".*sendmail.c.*")sendmailcnf = sendmailcnf[i];
       }
   } else sendmailcnf = "none";
-  
-############  
+
+############
   if (sendmailcnf >!< "none")
   {
-  
+
     mlocal = ssh_cmd(socket:sock, cmd:"grep Mlocal " + sendmailcnf);
     if (mlocal){
       Lst = split(mlocal, sep:",", keep:0);
@@ -128,10 +125,10 @@ else{
       mlocalp = "none";
       lsmlocalp = "none";
     }
-#############    
+#############
     fx = ssh_cmd(socket:sock, cmd:"grep FX " + sendmailcnf);
     if (!fx) fx = "none";
-#############    
+#############
     statusfile = ssh_cmd(socket:sock, cmd:"grep '^O *.tatus.ile' " + sendmailcnf);
     if (statusfile){
       statusfile = split (statusfile, sep:"=", keep:0);
@@ -148,11 +145,11 @@ else{
       if (lsstatusfile =~ ".*Datei oder Verzeichnis nicht gefunden.*" ||  lsstatusfile =~ ".*No such file or directory.*") lsstatusfile = "nofile";
     }else{
       lsstatusfiledir = "none";
-      lsstatusfile = "none";     
-      statusfile = "none"; 
-      statusfiledir = "none";   
+      lsstatusfile = "none";
+      statusfile = "none";
+      statusfiledir = "none";
     }
-          
+
 ############
     loc_forward = ssh_cmd(socket:sock, cmd:"locate .forward");
     if (!loc_forward) loc_forward = "not found";
@@ -169,10 +166,10 @@ else{
       }
     }
     else lsforward = "none";
-###############      
+###############
     queuedir = ssh_cmd(socket:sock, cmd:"grep '^O *.ueue.irectory' " + sendmailcnf);
     if (queuedir){
-      queuedir = split (queuedir, sep:"=", keep:0); 
+      queuedir = split (queuedir, sep:"=", keep:0);
       lsqueuedir = ssh_cmd(socket:sock, cmd:"ls -ld " + queuedir[1]);
       queuedir = queuedir[1];
       lsqueue = ssh_cmd(socket:sock, cmd:"ls -l " + queuedir);
@@ -182,7 +179,7 @@ else{
       lsqueuedir = "none";
       lsqueue = "none";
     }
-################    
+################
   aliases = ssh_cmd(socket:sock, cmd:"grep '^O *.lias.ile' " + sendmailcnf);
     if (aliases){
       aliases = ereg_replace (string:aliases, pattern:'\n', replace:"");

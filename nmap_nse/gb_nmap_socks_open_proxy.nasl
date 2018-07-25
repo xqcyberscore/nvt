@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_socks_open_proxy.nasl 10579 2018-07-23 13:27:53Z cfischer $
+# $Id: gb_nmap_socks_open_proxy.nasl 10595 2018-07-24 13:51:36Z cfischer $
 #
 # Wrapper for Nmap Socks Open Proxy NSE script.
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801803");
-  script_version("$Revision: 10579 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:27:53 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10595 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-24 15:51:36 +0200 (Tue, 24 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-01-20 07:52:11 +0100 (Thu, 20 Jan 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,8 @@ if(description)
   script_tag(name:"qod_type", value:"remote_analysis");
   script_copyright("NSE-Script: The Nmap Security Scanner; NASL-Wrapper: Greenbone Networks GmbH");
   script_family("Nmap NSE");
-  script_dependencies("nmap_nse.nasl");
+  script_dependencies("nmap_nse.nasl", "socks.nasl");
+  script_require_ports("Services/socks4", "Services/socks5", 1080);
   script_mandatory_keys("Tools/Present/nmap", "Tools/Launch/nmap_nse");
 
   script_add_preference(name:"proxy.url :", value:"", type:"entry");
@@ -59,11 +60,24 @@ if((! get_kb_item("Tools/Present/nmap5.21") &&
  exit(0);
 }
 
-port = 1080;
-
-argv = make_list("nmap", "--script=socks-open-proxy.nse", "-p", port, get_host_ip());
+include("http_func.inc"); # make_list_unique
 
 i = 0;
+
+s = get_kb_list("Services/socks4");
+if(!isnull(s))
+  s = make_list(s);
+else
+  s = make_list();
+
+s2 = get_kb_list("Services/socks5");
+if(!isnull(s2))
+  s2 = make_list(s2);
+else
+  s2 = make_list();
+
+ports = make_list_unique(1080, s, s2);
+
 if( pref = script_get_preference("proxy.url :")){
   args[i++] = "proxy.url="+pref;
 }
@@ -72,39 +86,44 @@ if( pref = script_get_preference("proxy.pattern :")){
   args[i++] = "proxy.pattern="+pref;
 }
 
-if (i>0)
-{
-  scriptArgs= "--script-args=";
-  foreach arg(args) {
-    scriptArgs += arg + ",";
-  }
-  argv = make_list(argv,scriptArgs);
-}
+foreach port (ports){
 
-res = pread(cmd: "nmap", argv: argv);
-if(res)
-{
-  foreach line (split(res))
+  argv = make_list("nmap", "--script=socks-open-proxy.nse", "-p", port, get_host_ip());
+
+  if (i>0)
   {
-    if(ereg(pattern:"^\|",string:line)) {
-      result +=  substr(chomp(line),2) + '\n';
+    scriptArgs= "--script-args=";
+    foreach arg(args) {
+      scriptArgs += arg + ",";
     }
-
-    error = eregmatch(string:line, pattern:"^nmap: (.*)$");
-    if (error) {
-      msg = string('Nmap command failed with following error message:\n', line);
-      log_message(data : msg, port:port);
-    }
+    argv = make_list(argv,scriptArgs);
   }
 
-  if("socks-open-proxy" >< result) {
-    msg = string('Result found by Nmap Security Scanner (socks-open-proxy.nse) ',
-                'http://nmap.org:\n\n', result);
-    security_message(data : msg, port:port);
+  res = pread(cmd: "nmap", argv: argv);
+  if(res)
+  {
+    foreach line (split(res))
+    {
+      if(ereg(pattern:"^\|",string:line)) {
+        result +=  substr(chomp(line),2) + '\n';
+      }
+
+      error = eregmatch(string:line, pattern:"^nmap: (.*)$");
+      if (error) {
+        msg = string('Nmap command failed with following error message:\n', line);
+        log_message(data : msg, port:port);
+      }
+    }
+
+    if("socks-open-proxy" >< result) {
+      msg = string('Result found by Nmap Security Scanner (socks-open-proxy.nse) ',
+                  'http://nmap.org:\n\n', result);
+      security_message(data : msg, port:port);
+    }
   }
-}
-else
-{
-  msg = string('Nmap command failed entirely:\n');
-  log_message(data : msg, port:port);
+  else
+  {
+    msg = string('Nmap command failed entirely:\n');
+    log_message(data : msg, port:port);
+  }
 }

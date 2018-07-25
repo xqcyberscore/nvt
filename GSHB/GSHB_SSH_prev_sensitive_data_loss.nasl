@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_prev_sensitive_data_loss.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_SSH_prev_sensitive_data_loss.nasl 10612 2018-07-25 12:26:01Z cfischer $
 #
 # Check accessrights of ps, finger, who, last and /var/log/?tmp*
 #
@@ -9,8 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
-#
-#
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -26,28 +24,26 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This plugin uses ssh to Check accessrights of ps, finger, who, last and /var/log/?tmp*.
-  
-  Check if ps, finger, who and last is not user executable, check perm 660 for /var/log/?tmp*";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96080");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10612 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 14:21:58 +0200 (Tue, 13 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Check accessrights of ps, finger, who, last and /var/log/?tmp*");
-
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("find_service.nasl", "gather-package-list.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+  script_dependencies("compliance_tests.nasl", "find_service.nasl", "gather-package-list.nasl");
+
+  script_tag(name:"summary", value:"This plugin uses ssh to Check accessrights of ps, finger, who, last and /var/log/?tmp*.
+
+  Check if ps, finger, who and last is not user executable, check perm 660 for /var/log/?tmp*");
+
   exit(0);
 }
 
@@ -83,7 +79,6 @@ if (("windows" >< windowstest && "interpreter" >< windowstest) || ("Windows" >< 
   exit(0);
 }
 
-#Check if ps, finger, who and last is not user executable, check perm 660 for /var/log/?tmp*
 
 ps = ssh_cmd(socket:sock, cmd:"LANG=C ls -l /bin/ps");
 finger = ssh_cmd(socket:sock, cmd:"LANG=C ls -l /usr/bin/finger");
@@ -93,35 +88,35 @@ tmpfiles = ssh_cmd(socket:sock, cmd:"LANG=C ls -l /var/log/?tmp*");
 
 if (ps =~ ".*such.file.*directory") ps = "none";
 else if (!ps) ps = "none";
-else{ 
+else{
   Lst = split(ps, sep:" ", keep:0);
   ps = Lst[0] + ":" + Lst[2] + ":"  + Lst[3];
 }
 
 if (finger =~ ".*such.file.*directory") finger = "none";
 else if (!finger) finger = "none";
-else{ 
+else{
   Lst = split(finger, sep:" ", keep:0);
   finger = Lst[0] + ":" + Lst[2] + ":"  + Lst[3];
 }
 
 if (who =~ ".*such.file.*directory") who = "none";
 else if (!who) who = "none";
-else{ 
+else{
   Lst = split(who, sep:" ", keep:0);
   who = Lst[0] + ":" + Lst[2] + ":"  + Lst[3];
 }
 
 if (last =~ ".*such.file.*directory") last = "none";
 else if (!last) last = "none";
-else{ 
+else{
   Lst = split(last, sep:" ", keep:0);
   last = Lst[0] + ":" + Lst[2] + ":"  + Lst[3];
 }
 
 if (tmpfiles =~ ".*such.file.*directory") tmpfiles = "none";
 else if (!tmpfiles) tmpfiles = "none";
-else{ 
+else{
   Lst = split(tmpfiles, keep:0);
   tmpfiles = "";
   for (i=0; i<max_index(Lst); i++){
