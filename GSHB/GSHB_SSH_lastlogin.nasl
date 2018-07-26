@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_lastlogin.nasl 10612 2018-07-25 12:26:01Z cfischer $
+# $Id: GSHB_SSH_lastlogin.nasl 10616 2018-07-25 13:37:26Z cfischer $
 #
-# List Users, who was since 84 days not loged in to the System.
+# List Users, who was since 84 days not logged in to the System.
 #
 # Authors:
 # Thomas Rotter <T.Rotter@dn-systems.de>
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96074");
-  script_version("$Revision: 10612 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10616 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 15:37:26 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-06-02 09:25:45 +0200 (Wed, 02 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
-  script_name("List Users, who was since 84 days not loged in to the System.");
+  script_name("List Users, who was since 84 days not logged in to the System.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
   script_dependencies("compliance_tests.nasl", "find_service.nasl", "gather-package-list.nasl");
 
-  script_tag(name:"summary", value:"This plugin uses ssh to List Users, who was since 84 days not loged in to the System.");
+  script_tag(name:"summary", value:"This plugin uses ssh to List Users, who was since 84 days not logged in to the System.");
 
   exit(0);
 }

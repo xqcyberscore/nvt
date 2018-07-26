@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mesosphere_marathon_detect.nasl 10582 2018-07-23 15:30:28Z tpassfeld $
+# $Id: gb_mesosphere_marathon_detect.nasl 10621 2018-07-25 14:18:59Z tpassfeld $
 #
 # Mesosphere Marathon UI Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114011");
-  script_version("$Revision: 10582 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-07-23 17:30:28 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10621 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-07-25 16:18:59 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name: "creation_date", value: "2018-07-20 11:00:14 +0200 (Fri, 20 Jul 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -58,9 +58,6 @@ include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-include("network_func.inc");
-
-if( islocalnet() || islocalhost() || is_private_addr() ) exit( 0 );
 
 port = get_http_port(default: 8080);
 url = "/ui/main.js";

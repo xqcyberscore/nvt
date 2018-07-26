@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_021.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M4_021.nasl 10624 2018-07-25 15:18:47Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.021
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94191");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10624 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:18:47 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("IT-Grundschutz M4.021: Verhinderung des unautorisierten Erlangens von Administratorrechten");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04021.html");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04021.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15");
   script_dependencies("GSHB/GSHB_SSH_prev_root_login.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
-  script_tag(name : "summary" , value :
-"IT-Grundschutz M4.021: Verhinderung des unautorisierten Erlangens von Administratorrechten.
+  script_tag(name:"summary", value:"IT-Grundschutz M4.021: Verhinderung des unautorisierten Erlangens von Administratorrechten.
 
 Stand: 14. Ergänzungslieferung (14. EL).
 ");
@@ -68,7 +67,7 @@ permlogindefs = get_kb_item("GSHB/logindefs/perm");
 log = get_kb_item("GSHB/securetty/log");
 uname = get_kb_item("GSHB/uname");
 
-   
+
 OSNAME = get_kb_item("WMI/WMI_OSNAME");
 
 if(OSNAME >!< "none"){
@@ -101,47 +100,47 @@ if (result != "nicht zutreffend" && result != "Fehler"){
       result_nfs = string("Fehler");
       desc += string('Fehler: Beim Testen des Systems wurde festgestellt,\ndass die Datei /etc/exports nicht gefunden werden\nkonnte.\n');
     }
- 
+
     if(ttynonconsole == "nocat" || SSHDPermitRootLogin == "nocat" || syslogsuenab == "nocat" || nfsexports == "nocat"){
       result_tty = string("Fehler");
       result_nfs = string("Fehler");
       result_sshd = string("Fehler");
       result_nfs = string("Fehler");
-      desc = string('Fehler: Beim Testen des Systems wurde der Befehl\ncat nicht gefunden.\n'); 
+      desc = string('Fehler: Beim Testen des Systems wurde der Befehl\ncat nicht gefunden.\n');
     }
   }
 #################
     if(uname !~ "SunOS.*"){
       if (ttynonconsole >< "noperm"){
         result_tty = string("Fehler");
-        desc += string('Fehler: Beim Testen des Systems wurde festgestellt,\ndass Sie keine Berechtigung haben die Datei\n/etc/securetty zu lesen.\n \n'); 
+        desc += string('Fehler: Beim Testen des Systems wurde festgestellt,\ndass Sie keine Berechtigung haben die Datei\n/etc/securetty zu lesen.\n \n');
       }else if(ttynonconsole >< "secure"){
         result_tty = "ok";
-        desc += string('Beim Testen des Systems wurden keine fehlerhafte\nEinträge in der Datei /etc/securetty gefunden.\n \n'); 
+        desc += string('Beim Testen des Systems wurden keine fehlerhafte\nEinträge in der Datei /etc/securetty gefunden.\n \n');
       }else {
         result_tty = "fail";
-        desc += string('Fehler: Beim Testen des Systems wurden folgende zu\nentfernende Einträge in der Datei\n/etc/securetty gefunden:\n' + ttynonconsole + '\n \n'); 
+        desc += string('Fehler: Beim Testen des Systems wurden folgende zu\nentfernende Einträge in der Datei\n/etc/securetty gefunden:\n' + ttynonconsole + '\n \n');
       }
     }
-#################  
+#################
     if (SSHDPermitRootLogin >< "noperm"){
       result_sshd = string("Fehler");
-      desc += string('Fehler: Beim Testen des Systems wurde festgestellt,\ndass Sie keine Berechtigung haben die Datei\n/etc/ssh/sshd_config zu lesen.\n \n'); 
+      desc += string('Fehler: Beim Testen des Systems wurde festgestellt,\ndass Sie keine Berechtigung haben die Datei\n/etc/ssh/sshd_config zu lesen.\n \n');
     }else if(SSHDPermitRootLogin == "norootlogin"){
       result_sshd = "ok";
-      desc += string('Beim Testen des Systems wurde festgestellt, dass\nPermitRootLogin in der Datei /etc/ssh/sshd_config\nauf no gesetzt ist.\n \n'); 
+      desc += string('Beim Testen des Systems wurde festgestellt, dass\nPermitRootLogin in der Datei /etc/ssh/sshd_config\nauf no gesetzt ist.\n \n');
     }else if(SSHDPermitRootLogin == "rootlogin"){
       result_sshd = "fail";
-      desc += string('Fehler: Beim Testen des Systems wurde festgestellt,\ndass PermitRootLogin in der Datei\n/etc/ssh/sshd_config auf yes gesetzt ist.\nÄndern Sie den Wert wenn möglich auf no.\n \n'); 
-    } 
+      desc += string('Fehler: Beim Testen des Systems wurde festgestellt,\ndass PermitRootLogin in der Datei\n/etc/ssh/sshd_config auf yes gesetzt ist.\nÄndern Sie den Wert wenn möglich auf no.\n \n');
+    }
 #################
     if(uname !~ "SunOS.*"){
       if (syslogsuenab >< "noperm"){
         result_syslog = string("Fehler");
-        desc += string('Fehler: Beim Testen des Systems wurde festgestellt,\ndass Sie keine Berechtigung haben die Datei\n/etc/login.defs zu lesen.\n \n'); 
+        desc += string('Fehler: Beim Testen des Systems wurde festgestellt,\ndass Sie keine Berechtigung haben die Datei\n/etc/login.defs zu lesen.\n \n');
       }else if(syslogsuenab == "syslogsuenab"){
         result_syslog = "ok";
-        desc += string('Beim Testen des Systems wurde festgestellt, dass\nSYSLOG_SU_ENAB in der Datei /etc/login.defs\nauf yes gesetzt ist.\n \n'); 
+        desc += string('Beim Testen des Systems wurde festgestellt, dass\nSYSLOG_SU_ENAB in der Datei /etc/login.defs\nauf yes gesetzt ist.\n \n');
       }else if(syslogsuenab == "nosyslogsuenab"){
         result_syslog = "fail";
         desc += string('Fehler: Beim Testen des Systems wurde festgestellt,\ndass SYSLOG_SU_ENAB in der Datei /etc/login.defs auf\nno gesetzt ist. Ändern Sie den Wert wenn möglich\nauf yes.\n \n');
@@ -151,16 +150,16 @@ if (result != "nicht zutreffend" && result != "Fehler"){
     if(uname !~ "SunOS.*"){
       if (nfsexports >< "noperm"){
         result_nfs = string("Fehler");
-        desc += string('Fehler: Beim Testen des Systems wurde festgestellt,\ndass Sie keine Berechtigung haben die Datei\n/etc/exports zu lesen.\n \n'); 
+        desc += string('Fehler: Beim Testen des Systems wurde festgestellt,\ndass Sie keine Berechtigung haben die Datei\n/etc/exports zu lesen.\n \n');
       }else if(nfsnorootsquash != "none"){
         result_nfs = "fail";
-        desc += string('Fehler: Beim Testen des Systems wurde festgestellt,\ndass der Eintrag root_squash in der Datei /etc/exports\nbei folgenden Einträgen fehlt:\n' + nfsnorootsquash +'\n \n'); 
+        desc += string('Fehler: Beim Testen des Systems wurde festgestellt,\ndass der Eintrag root_squash in der Datei /etc/exports\nbei folgenden Einträgen fehlt:\n' + nfsnorootsquash +'\n \n');
       }else if(nfsnorootsquash == "none" && nfsrootsquash != "none"){
         result_nfs = "ok";
-        desc += string('Beim Testen des Systems wurde festgestellt, dass der\nEintrag root_squash in der Datei /etc/exports bei\nallen Einträgen gesetzt ist.\n \n'); 
+        desc += string('Beim Testen des Systems wurde festgestellt, dass der\nEintrag root_squash in der Datei /etc/exports bei\nallen Einträgen gesetzt ist.\n \n');
       }else if(nfsnorootsquash == "none" && nfsrootsquash == "none"){
         result_nfs = "ok";
-        desc += string('Beim Testen des Systems wurde festgestellt, dass keine\nEinträge/Freigaben in der Datei /etc/exports gibt.\n \n'); 
+        desc += string('Beim Testen des Systems wurde festgestellt, dass keine\nEinträge/Freigaben in der Datei /etc/exports gibt.\n \n');
       }
     }
 #################
@@ -182,35 +181,35 @@ if (result != "nicht zutreffend" && result != "Fehler"){
   if(permsecuretty != "none"){
     if (permsecuretty =~ "-rw-(r|-)--(r|-)--.*"){
       result_permsecuretty = string("ok");
-      desc += string('Beim Testen des Systems wurden für die Datei\n/etc/securetty folgende korrekte Sicherheits-\neinstellungen festgestellt:\n' + permsecuretty + '\n \n'); 
+      desc += string('Beim Testen des Systems wurden für die Datei\n/etc/securetty folgende korrekte Sicherheits-\neinstellungen festgestellt:\n' + permsecuretty + '\n \n');
     }
     else{
       result_permsecuretty = string("fail");
-      desc += string('Fehler: Beim Testen des Systems wurden für die Datei\n/etc/securetty folgende fehlerhafte Sicherheitsein-\nstellungen festgestellt: ' + permsecuretty + '\nBitte ändern Sie diese auf "-rw-r--r--".\n \n' ); 
+      desc += string('Fehler: Beim Testen des Systems wurden für die Datei\n/etc/securetty folgende fehlerhafte Sicherheitsein-\nstellungen festgestellt: ' + permsecuretty + '\nBitte ändern Sie diese auf "-rw-r--r--".\n \n' );
     }
 #################
-  } 
+  }
   if(permsshdconfig != "none"){
     if (permsshdconfig =~ "-rw-(r|-)--(r|-)--.*"){
       result_permsshdconfig = string("ok");
-      desc += string('Beim Testen des Systems wurden für die Datei\n/etc/ssh/sshd_config folgende korrekte Sicherheitsein-\nstellungen festgestellt: ' + permsshdconfig + '\n \n'); 
+      desc += string('Beim Testen des Systems wurden für die Datei\n/etc/ssh/sshd_config folgende korrekte Sicherheitsein-\nstellungen festgestellt: ' + permsshdconfig + '\n \n');
     }
     else{
       result_permsshdconfig = string("fail");
-      desc += string('Fehler: Beim Testen des Systems wurden für die Datei\n/etc/ssh/sshd_config folgende fehlerhafte Sicherheits-\neinstellungen festgestellt: ' + permsshdconfig + '\nBitte ändern Sie diese auf "-rw-r--r--".\n \n' ); 
+      desc += string('Fehler: Beim Testen des Systems wurden für die Datei\n/etc/ssh/sshd_config folgende fehlerhafte Sicherheits-\neinstellungen festgestellt: ' + permsshdconfig + '\nBitte ändern Sie diese auf "-rw-r--r--".\n \n' );
     }
 #################
   }
   if(permlogindefs != "none"){
     if (permlogindefs =~ "-rw-(r|-)--(r|-)--.*"){
       result_permlogindefs = string("ok");
-      desc += string('Beim Testen des Systems wurden für die Datei\n/etc/login.defs folgende korrekte Sicherheitsein-\nstellungen festgestellt: ' + permlogindefs+ '\n \n'); 
+      desc += string('Beim Testen des Systems wurden für die Datei\n/etc/login.defs folgende korrekte Sicherheitsein-\nstellungen festgestellt: ' + permlogindefs+ '\n \n');
     }
     else{
       result_permlogindefs = string("fail");
-      desc += string('Fehler: Beim Testen des Systems wurden für die Datei\n/etc/login.defs folgende fehlerhafte Sicherheitsein-\nstellungen festgestellt: ' + permlogindefs + '\nBitte ändern Sie diese auf "-rw-r--r--".\n \n' ); 
+      desc += string('Fehler: Beim Testen des Systems wurden für die Datei\n/etc/login.defs folgende fehlerhafte Sicherheitsein-\nstellungen festgestellt: ' + permlogindefs + '\nBitte ändern Sie diese auf "-rw-r--r--".\n \n' );
     }
-  } 
+  }
 #################
   if(!result && (result_tty == "fail" ||  result_sshd == "fail" || result_syslog == "fail" || result_nfs == "fail" || result_permsecuretty == "fail" || result_permsshdconfig == "fail" || result_permlogindefs == "fail")) result = string("nicht erfüllt");
   else if(!result && (result_tty == "Fehler"|| result_sshd == "Fehler" || result_syslog == "Fehler" || result_nfs == "Fehler" || result_permsecuretty == "Fehler" || result_permsshdconfig == "Fehler" || result_permlogindefs == "Fehler")) result = string("Fehler");
@@ -220,7 +219,7 @@ if (result != "nicht zutreffend" && result != "Fehler"){
 
 if (!result){
       result = string("Fehler");
-      desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.'); 
+      desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.');
 }
 
 set_kb_item(name:"GSHB/M4_021/result", value:result);

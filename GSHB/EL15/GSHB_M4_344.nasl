@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_344.nasl 10610 2018-07-25 11:37:44Z cfischer $
+# $Id: GSHB_M4_344.nasl 10623 2018-07-25 15:14:01Z cfischer $
 #
 # IT-Grundschutz, 15. EL, Maßnahme 4.344
 #
@@ -27,21 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94248");
-  script_version("$Revision: 10610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
   script_name("IT-Grundschutz M4.344: Überwachung von Windows-Systemen ab Windows Vista und Windows Server 2008");
-  script_xref(name : "URL" , value : " http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04344.html");
+  script_xref(name:"URL", value:" http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04344.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15", "Tools/Present/wmi");
-  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_NtpServer.nasl", "GSHB/GSHB_WMI_EventLogPolSet.nasl", "GSHB/GSHB_WMI_PolSecSet.nasl", "Policy/Microsoft/WindowsGeneral/win_AdvancedPolicySettings.nasl"); 
+  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_NtpServer.nasl", "GSHB/GSHB_WMI_EventLogPolSet.nasl", "GSHB/GSHB_WMI_PolSecSet.nasl", "Policy/Microsoft/WindowsGeneral/win_AdvancedPolicySettings.nasl");
   script_require_keys("WMI/ELCP/GENERAL");
-  script_tag(name : "summary" , value :"IT-Grundschutz M4.344: Überwachung von Windows-Systemen ab Windows Vista und Windows Server 2008
+  script_tag(name:"summary", value:"IT-Grundschutz M4.344: Überwachung von Windows-Systemen ab Windows Vista und Windows Server 2008
 
 Stand: 15. Ergänzungslieferung (15. EL).");
 
@@ -217,9 +217,9 @@ if (ELCP == "ok" && Domainrole == "0"){
 #  if (LocAppEventLRetention != "0" && LocAppEventLRetention != "None")LocAppEventLRetention = hex2dec(xvalue:LocAppEventLRetention);
 #  if (LocSecEventLRetention != "0" && LocSecEventLRetention != "None")LocSecEventLRetention = hex2dec(xvalue:LocSecEventLRetention);
 #  if (LocSysEventLRetention != "0" && LocSysEventLRetention != "None")LocSysEventLRetention = hex2dec(xvalue:LocSysEventLRetention);
-  
+
   LocAppEventLMaxSize = LocAppEventLMaxSize / "1024";
-  LocSecEventLMaxSize = LocSecEventLMaxSize / "1024";  
+  LocSecEventLMaxSize = LocSecEventLMaxSize / "1024";
   LocSysEventLMaxSize = LocSysEventLMaxSize / "1024";
 
 }
@@ -235,7 +235,7 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
 }else if(!CPSGENERAL){
   result = string("Fehler");
   desc = string("Beim Testen des Systems trat ein Fehler auf.\nEs konnte keine RSOP Abfrage durchgeführt werden.");
-}else if(OSVER  >=  "6.0"){ 
+}else if(OSVER  >=  "6.0"){
   if(Domainrole == "1")  #Hier beginnt die Prüfung für Domainmitglieder
   {
 
@@ -245,8 +245,8 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
       desc = string('Soweit konfigurierbar, entspricht das System der\nIT-Grundschutz Maßnahme M4.344.');
     }else
     {
-      result = string("nicht erfüllt");    
-      
+      result = string("nicht erfüllt");
+
        if (AuditAccountLogon >< "None")val += '\n' + "Anmeldeversuche überwachen: " + AuditAccountLogon;
        else{
              if (AuditAccountLogon[1] != "True") val += '\n' + "Anmeldeversuche überwachen Fehlgeschlagen: " + AuditAccountLogon[1];
@@ -298,18 +298,18 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
          if (AppEventLChannelAccess !~ "\(D;;0x.*;;;BG\)") val += '\n' + "Auf das Anwendungsprotokoll wurde mit der Richtlinie\n-Protokollzugriff-, den -Built-in guests- der Zugriff\nnicht verweigert";
          if (AppEventLChannelAccess =~ "\(A;;0x.*;;;BG\)") val += '\n' + "Auf das Anwendungsprotokoll wurde mit der Richtlinie\n-Protokollzugriff-, den -Built-in guests-\nZugriff gewährt";
          if (AppEventLChannelAccess =~ "\(A;;0x.*;;;AN\)") val += '\n' + "Auf das Anwendungsprotokoll wurde mit der Richtlinie\n-Protokollzugriff-, -Anonymous logon- Zugriff gewährt";
-       } 
+       }
        if (SecEventLChannelAccess =~ "\(A;;0x.*;;;BG\)" || SecEventLChannelAccess =~ "\(A;;0x.*;;;AN\)")
        {
          if (SecEventLChannelAccess =~ "\(A;;0x.*;;;BG\)") val += '\n' + "Auf das Sicherheitsprotokoll wurde mit der Richtlinie\n-Protokollzugriff-, den -Built-in guests-\nZugriff gewährt";
          if (SecEventLChannelAccess =~ "\(A;;0x.*;;;AN\)") val += '\n' + "Auf das Sicherheitsprotokoll wurde mit der Richtlinie\n-Protokollzugriff-, -Anonymous logon- Zugriff gewährt";
-       } 
+       }
        if (SetEventLChannelAccess =~ "\(A;;0x.*;;;BG\)" || SetEventLChannelAccess =~ "\(A;;0x.*;;;AN\)" || SetEventLChannelAccess !~ "\(D;;0x.*;;;BG\)")
        {
          if (SetEventLChannelAccess !~ "\(D;;0x.*;;;BG\)") val += '\n' + "Auf das Setupprotokoll wurde mit der Richtlinie\n-Protokollzugriff-, den -Built-in guests- der Zugriff\nnicht verweigert";
          if (SetEventLChannelAccess =~ "\(A;;0x.*;;;BG\)") val += '\n' + "Auf das Setupprotokoll wurde mit der Richtlinie\n-Protokollzugriff-, den -Built-in guests-\nZugriff gewährt";
          if (SetEventLChannelAccess =~ "\(A;;0x.*;;;AN\)") val += '\n' + "Auf das Setupprotokoll wurde mit der Richtlinie\n-Protokollzugriff-, -Anonymous logon- Zugriff gewährt";
-       } 
+       }
        if (SysEventLChannelAccess =~ "\(A;;0x.*;;;BG\)" || SysEventLChannelAccess =~ "\(A;;0x.*;;;AN\)" || SysEventLChannelAccess !~ "\(D;;0x.*;;;BG\)")
        {
          if (SysEventLChannelAccess !~ "\(D;;0x.*;;;BG\)") val += '\n' + "Auf das Systemprotokoll wurde mit der Richtlinie\n-Protokollzugriff-, den -Built-in guests-\nder Zugriff nicht verweigert";
@@ -325,24 +325,24 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
   else #Hier beginnt die Prüfung für nichtmitglieder
   {
     if (LocAppEventLMaxSize >= 30080 &&  LocSysEventLMaxSize >= 30080 &&  LocSecEventLMaxSize >= 100992 && LocAppEventLRetention == "FFFFFFFF" && LocSecEventLRetention == "FFFFFFFF" && LocSysEventLRetention == "FFFFFFFF" && LocAppEventLRestrictGuestAccess == "1" && LocSecEventLRestrictGuestAccess == "1" && LocSysEventLRestrictGuestAccess == "1" && LocAppEventLAutoBackupLogFiles == "1" && LocSecEventLAutoBackupLogFiles == "1" && LocSysEventLAutoBackupLogFiles == "1"){
-    
+
       result = string("unvollständig");
       desc = string('Das System ist kein Domainmitglied und deshalb kann\nnicht alles überprüft werden.\nDie Einstellungen für\nEventlog - Größe, - Aufbewahrung, - Archivierung und\ndie Einschränkungen für den Gastzugriff sind richtig \nkonfiguriert.');
     }else{
-    
+
        if (LocAppEventLMaxSize < 30080) val += '\n' + "Maximale Größe des Anwendungsprotokolls: " + LocAppEventLMaxSize + " Kilobyte";
        if (LocSysEventLMaxSize < 30080) val += '\n' + "Maximale Größe des Systemprotokolls: " + LocSysEventLMaxSize + " Kilobyte";
        if (LocSecEventLMaxSize < 100992) val += '\n' + "Maximale Größe des Sicherheitsprotokolls: " + LocSecEventLMaxSize + " Kilobyte";
        if (LocAppEventLAutoBackupLogFiles != 1 && LocAppEventLRetention != "FFFFFFFF") val += '\n' + "Für den Anwendungs-Protokolldienst wurde die\nEinstellung 'Volles Protokoll archivieren, Ereignisse\nüberschreiben- nicht aktiviert";
        if (LocSecEventLAutoBackupLogFiles != 1 && LocSecEventLRetention != "FFFFFFFF") val += '\n' + "Für den Sicherheits-Protokolldienst wurde die\nEinstellung 'Volles Protokoll archivieren, Ereignisse\nüberschreiben- nicht aktiviert";
-       if (LocSysEventLAutoBackupLogFiles != 1 && LocSysEventLRetention != "FFFFFFFF") val += '\n' + "Für den System-Protokolldienst wurde die Einstellung\n'Volles Protokoll archivieren, Ereignisse\nüberschreiben- nicht aktiviert";    
+       if (LocSysEventLAutoBackupLogFiles != 1 && LocSysEventLRetention != "FFFFFFFF") val += '\n' + "Für den System-Protokolldienst wurde die Einstellung\n'Volles Protokoll archivieren, Ereignisse\nüberschreiben- nicht aktiviert";
        if (LocAppEventLRestrictGuestAccess != "1") val += '\n' + "Für den Anwendungs-Protokolldienst wurde die Ein-\nstellung -RestrictGuestAccess- in der Registry\nauf '0' gesetzt";
        if (LocSecEventLRestrictGuestAccess != "1") val += '\n' + "Für den Sicherheits-Protokolldienst wurde die\nEinstellung -RestrictGuestAccess- in der Registry\nauf '0' gesetzt";
        if (LocSysEventLRestrictGuestAccess != "1") val += '\n' + "Für den System-Protokolldienst wurde die Einstellung\n-RestrictGuestAccess- in der Registry auf '0' gesetzt";
       result = string("unvollständig");
-      desc = string('Das System ist kein Domainmitglied und deshalb kann\nnicht alles überprüft werden.\nFolgende Einstellungen\nsind nicht richtig konfiguriert:' + val);    
-             
-        
+      desc = string('Das System ist kein Domainmitglied und deshalb kann\nnicht alles überprüft werden.\nFolgende Einstellungen\nsind nicht richtig konfiguriert:' + val);
+
+
       }
   }
 }else{

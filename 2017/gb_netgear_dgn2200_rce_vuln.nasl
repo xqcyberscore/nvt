@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_dgn2200_rce_vuln.nasl 10601 2018-07-25 08:14:14Z asteins $
+# $Id: gb_netgear_dgn2200_rce_vuln.nasl 10629 2018-07-25 18:06:02Z cfischer $
 #
 # NETGEAR DGN2200 CVE-2017-6334 Remote Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/h:netgear:dgn2200";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107229");
-  script_version("$Revision: 10601 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 10:14:14 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 20:06:02 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-06-28 17:33:05 +0200 (Wed, 28 Jun 2017)");
   script_cve_id("CVE-2017-6334");
 
@@ -60,7 +60,7 @@ if(description)
   script_family("Web application abuses");
 
   script_dependencies("gb_netgear_dgn2200_detect.nasl");
-  script_mandatory_keys("netgear/dgn2200/detected");
+  script_mandatory_keys("netgear_dgn2200/detected");
   script_require_ports("Services/www", 8080);
 
   # This script was deprecated to avoid false positive, since the firmware version could not be obtained without authentication.

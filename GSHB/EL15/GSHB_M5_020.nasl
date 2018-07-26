@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_020.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M5_020.nasl 10624 2018-07-25 15:18:47Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 5.020
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95057");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10624 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:18:47 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("IT-Grundschutz M5.020: Einsatz der Sicherheitsmechanismen von rlogin, rsh und rcp");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05020.html");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05020.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15");
-  script_dependencies ("GSHB/GSHB_SSH_r-tools.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
-  script_tag(name : "summary" , value :
-"IT-Grundschutz M5.020: Einsatz der Sicherheitsmechanismen von rlogin, rsh und rcp.
+  script_dependencies("GSHB/GSHB_SSH_r-tools.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
+  script_tag(name:"summary", value:"IT-Grundschutz M5.020: Einsatz der Sicherheitsmechanismen von rlogin, rsh und rcp.
 
 Stand: 14. Ergänzungslieferung (14. EL).
 ");
@@ -83,13 +82,13 @@ if(OSNAME >!< "none"){
   desc = string('Es muss sichergestellt werden, dass die Dateien\n$HOME/.rhosts und /etc/hosts.equiv nicht vorhanden sind oder\ndass sie leer sind und der Benutzer keine Zugriffsrechte auf\nsie hat.');
    if (rhosts != "not found") desc += string('\nFolgende .rhost Dateien wurden gefunden:\n' + rhosts);
    if (hostsequiv != "none"){
-     val = split(lshostsequiv, sep:" ", keep:0);   
+     val = split(lshostsequiv, sep:" ", keep:0);
      desc += string('\nFolgende Zugriffsrechte gelten für -/etc/hosts.equiv- :\n' + val[0] + " " + val[2] + " "+ val[3]);
    }
    if (hostsequiv != "noentry" && hostsequiv != "none")desc += string('\nFolgende Einträge wurden in  -/etc/hosts.equiv- gefunden:\n' + hostsequiv);
-   
+
    if ("+" >< hostsequiv) desc += string('\nSollte die Benutzung der Datei -/etc/hosts.equiv- unumgänglich\nsein, muss sichergestellt sein, dass kein Eintrag + vorhanden\nist, da hierdurch jeder Rechner vertrauenswürdig würde.');
-   
+
    if (rlogind != "not found" || rshd != "not found"){
      desc += string('\nEs sollte verhindert werden, dass die Daemons rlogind und rshd\ngestartet werden können. (siehe hierzu die Datei\n/etc/inetd.conf und Maßnahme M 5.16)');
      if (inetdconf != "none" && inetdconf != "noentry")desc += string('\nFolgende Einträge stehen in Ihrer -/etc/inetd.conf-:\n' + inetdconf);
@@ -100,7 +99,7 @@ if(OSNAME >!< "none"){
 
 if (!result){
   result = string("Fehler");
-  desc = string('Beim Testen des Systems trat ein unbekannter Fehler auf\nbzw. es konnte kein Ergebnis ermittelt werden.'); 
+  desc = string('Beim Testen des Systems trat ein unbekannter Fehler auf\nbzw. es konnte kein Ergebnis ermittelt werden.');
 }
 
 set_kb_item(name:"GSHB/M5_020/result", value:result);

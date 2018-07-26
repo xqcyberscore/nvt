@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: GSHB_SLAD_logwatchlow.nasl 10620 2018-07-25 14:15:31Z cfischer $
 #
 # Fetch results of SLAD queries from a remote machine
 #
@@ -27,11 +28,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ################################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96096");
-  script_version("$Revision: 10612 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10620 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 16:15:31 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-06-02 09:25:45 +0200 (Wed, 02 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +43,6 @@ if (description)
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
   script_dependencies("compliance_tests.nasl", "find_service.nasl", "ssh_authorization.nasl");
-  script_require_ports(22, "Services/ssh");
 
   script_tag(name:"summary", value:"This script connects to SLAD on a remote host to run
 remote LOGWATCH.

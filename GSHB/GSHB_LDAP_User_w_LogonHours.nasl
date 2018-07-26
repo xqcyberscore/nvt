@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_LDAP_User_w_LogonHours.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_LDAP_User_w_LogonHours.nasl 10628 2018-07-25 15:52:40Z cfischer $
 #
 # Search in LDAP, Users with conf. LogonHours
 #
@@ -9,10 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
-#
-# Set in an Workgroup Environment under Vista with enabled UAC this DWORD to access WMI:
-# HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\system\LocalAccountTokenFilterPolicy to 1
-#
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -28,37 +24,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script search in LDAP, Users who have configurated
-  Login Timeslots (logonHours in Windows LDAP).";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96055");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10628 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:52:40 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-02-08 10:22:28 +0100 (Mon, 08 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Search in LDAP, Users with conf. LogonHours");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
-#  script_require_ports(139, 445, 389);
-  script_dependencies("secpod_reg_enum.nasl", "GSHB_WMI_OSInfo.nasl");
+  script_dependencies("smb_reg_service_pack.nasl", "GSHB_WMI_OSInfo.nasl");
+
   script_add_preference(name:"Testuser Common Name", type:"entry", value:"CN");
   script_add_preference(name:"Testuser Organization Unit", type:"entry", value:"OU");
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_tag(name:"summary", value:"This script search in LDAP, Users who have configurated
+  Login Timeslots (logonHours in Windows LDAP).");
+
   exit(0);
 }
 
 include("misc_func.inc");
+include("smb_nt.inc");
 
 WindowsDomain = get_kb_item("WMI/WMI_WindowsDomain");
 WindowsDomainrole = get_kb_item("WMI/WMI_WindowsDomainrole");
-passwd  = get_kb_item("SMB/password");
+passwd = kb_smb_password();
 
 CN = script_get_preference("Testuser Common Name");
 OU = script_get_preference("Testuser Organization Unit");
@@ -125,9 +121,9 @@ function args(bind,CN,passwd)
   argv[i++] = "-h";
   argv[i++] = get_host_ip();
   argv[i++] = "-b";
-  argv[i++] = bindloop; 
+  argv[i++] = bindloop;
   argv[i++] = "-D";
-  argv[i++] = CN + "," + OU +"," + bindloop; 
+  argv[i++] = CN + "," + OU +"," + bindloop;
   argv[i++] = "-w";
   argv[i++] = passwd;
   argv[i++] = "(&(objectCategory=person)(objectClass=user)(logonHours=*))";
@@ -164,16 +160,16 @@ split_res = split (res, sep:'#', keep:0);
 
 for(i=1; i<max_index(split_res); i++){
 
-  dnpatt = 'dn:(.*)'; 
+  dnpatt = 'dn:(.*)';
   dn = eregmatch(string:split_res[i], pattern:dnpatt, icase:1);
   dn = split (dn[0], sep:'\n', keep:0);
   dn = ereg_replace(pattern:'dn: ', string:dn[0], replace:'');
 
-  lhpatt = 'logonHours:(.*)'; 
+  lhpatt = 'logonHours:(.*)';
   lh = eregmatch(string:split_res[i], pattern:lhpatt, icase:1);
   lh = split (lh[0], sep:'\n', keep:0);
   lh = ereg_replace(pattern:'logonHours:: +', string:lh[0], replace:'');
-  
+
   if (lh){
     lh = base64_decode(str:lh);
     lh = bintohex(bin:lh, start:0, end:15);

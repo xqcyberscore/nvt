@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_007.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M4_007.nasl 10623 2018-07-25 15:14:01Z cfischer $
 #
 # IT-Grundschutz, 10. EL, Maßnahme 4.007
 #
@@ -8,7 +8,7 @@
 # Thomas Rotter <T.Rotter@dn-systems.de>
 #
 # Copyright:
-# Copyright (c) 2009 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -24,7 +24,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "IT-Grundschutz M4.007: Änderung voreingestellter Passwörter.
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.94007");
+  script_version("$Revision: 10623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2010-06-08 16:42:11 +0200 (Tue, 08 Jun 2010)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("IT-Grundschutz M4.007: Änderung voreingestellter Passwörter");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04007.html");
+  # ACT_ATTACK because it depends on GSHB_SSH_TELNET_BruteForce.nasl which is in ACT_ATTACK as well.
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
+  script_family("IT-Grundschutz-10");
+  script_mandatory_keys("Compliance/Launch/GSHB-10");
+  script_dependencies("GSHB/GSHB_SSH_TELNET_BruteForce.nasl");
+  script_tag(name:"summary", value:"IT-Grundschutz M4.007: Änderung voreingestellter Passwörter.
 
   ACHTUNG: Dieser Test wird nicht mehr unterstützt. Er wurde ersetzt durch
   den entsprechenden Test der nun permanent and die aktuelle EL angepasst
@@ -36,27 +53,7 @@ tag_summary = "IT-Grundschutz M4.007: Änderung voreingestellter Passwörter.
   die aktuellste Ergänzungslieferung bezieht. Titel und Inhalt können sich bei einer
   Aktualisierung ändern, allerdings nicht die Kernthematik.
 
-";
-
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.94007");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2010-06-08 16:42:11 +0200 (Tue, 08 Jun 2010)");
-  script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("IT-Grundschutz M4.007: Änderung voreingestellter Passwörter");
-  script_xref(name : "URL", value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04007.html");
-  # ACT_ATTACK because it depends on GSHB_SSH_TELNET_BruteForce.nasl which is in ACT_ATTACK as well.
-  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
-  script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
-  script_family("IT-Grundschutz-10");
-  script_mandatory_keys("Compliance/Launch/GSHB-10");
-  script_dependencies("GSHB/GSHB_SSH_TELNET_BruteForce.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+");
   script_tag(name:"deprecated", value:TRUE);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_064.nasl 10612 2018-07-25 12:26:01Z cfischer $
+# $Id: GSHB_M5_064.nasl 10616 2018-07-25 13:37:26Z cfischer $
 #
 # IT-Grundschutz, 12. EL, Maﬂnahme 5.064
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95013");
-  script_version("$Revision: 10612 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10616 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 15:37:26 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-11-07 13:38:53 +0100 (Mon, 07 Nov 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,6 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-12");
   script_mandatory_keys("Compliance/Launch/GSHB-12");
-#  script_require_ports("Services/ssh", 22);
   script_dependencies("compliance_tests.nasl", "find_service.nasl", "ssh_detect.nasl");
 
   script_tag(name:"summary", value:"IT-Grundschutz M5.064: Secure Shell.

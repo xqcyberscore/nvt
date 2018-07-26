@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_018.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M4_018.nasl 10624 2018-07-25 15:18:47Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.018
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94185");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10624 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:18:47 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("IT-Grundschutz M4.018: Administrative und technische Absicherung des Zugangs zum Monitor- und Single-User-Modus");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04018.html");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04018.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15");
   script_dependencies("GSHB/GSHB_SSH_singleuser_login.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
-  script_tag(name : "summary" , value :
-"IT-Grundschutz M4.018: Administrative und technische Absicherung des Zugangs zum Monitor- und Single-User-Modus.
+  script_tag(name:"summary", value:"IT-Grundschutz M4.018: Administrative und technische Absicherung des Zugangs zum Monitor- und Single-User-Modus.
 
 Stand: 14. Ergänzungslieferung (14. EL).
 ");
@@ -61,7 +60,7 @@ inittab1 = get_kb_item("GSHB/inittab1");
 rcSconf = get_kb_item("GSHB/rcSconf");
 rcSsulogin = get_kb_item("GSHB/rcSsulogin");
 log = get_kb_item("GSHB/inittab/log");
-   
+
 OSNAME = get_kb_item("WMI/WMI_OSNAME");
 
 if(OSNAME >!< "none"){
@@ -79,27 +78,27 @@ if(OSNAME >!< "none"){
   desc = string('Beim Testen des Systems wurde festgestellt, dass die\nDateie etc/inittab, /etc/init/rcS.conf und\n/etc/event.d/rcS-sulogin nicht gefunden werden konnte.');
 }else if(inittab >< "nocat" || rcSconf >< "nocat" || rcSsulogin >< "nocat"){
   result = string("Fehler");
-  desc = string('Beim Testen des Systems wurde der Befehl\ncat nicht gefunden.'); 
+  desc = string('Beim Testen des Systems wurde der Befehl\ncat nicht gefunden.');
 }
 else{
   if (inittab != "none" && inittab == "noperm"){
     result = string("Fehler");
-    desc += string('Beim Testen des Systems wurde festgestellt, dass Sie\nkeine Berechtigung haben die Datei /etc/inittab\nzu lesen.'); 
+    desc += string('Beim Testen des Systems wurde festgestellt, dass Sie\nkeine Berechtigung haben die Datei /etc/inittab\nzu lesen.');
   }else if (inittab != "none" && inittab != "noperm" && inittabS != "none" && inittab1 != "none"){
     if("sulogin" >< inittabS){
       result = string("erfüllt");
-      desc = string('Folgender Eintrag wurde für den Single-User-Modus in\nder Datei /etc/inittab gefunden:\n' + inittabS); 
+      desc = string('Folgender Eintrag wurde für den Single-User-Modus in\nder Datei /etc/inittab gefunden:\n' + inittabS);
     }else if ("sulogin" >< inittab1){
       result = string("erfüllt");
-      desc = string('Folgender Eintrag wurde für den Single-User-Modus in\nder Datei /etc/inittab gefunden:\n' + inittab1); 
+      desc = string('Folgender Eintrag wurde für den Single-User-Modus in\nder Datei /etc/inittab gefunden:\n' + inittab1);
     }else{
       result = string("nicht erfüllt");
-      desc = string('Folgender Eintrag wurde für den Single-User-Modus in\nder Datei /etc/inittab gefunden:\n' + inittabS + '\nFolgender Eintrag wurde für den Single-User-Modus in\nder Datei /etc/inittab gefunden:\n' + inittab1); 
-    }       
+      desc = string('Folgender Eintrag wurde für den Single-User-Modus in\nder Datei /etc/inittab gefunden:\n' + inittabS + '\nFolgender Eintrag wurde für den Single-User-Modus in\nder Datei /etc/inittab gefunden:\n' + inittab1);
+    }
   }
   if (rcSconf != "none" && rcSconf == "noperm"){
     result = string("Fehler");
-    desc += string('Beim Testen des Systems wurde festgestellt, das Sie\nkeine Berechtigung haben die Datei /etc/init/rcS.conf\nzu lesen.'); 
+    desc += string('Beim Testen des Systems wurde festgestellt, das Sie\nkeine Berechtigung haben die Datei /etc/init/rcS.conf\nzu lesen.');
   }else if (rcSconf != "none" && rcSconf != "noperm"){
       if(rcSconf =~ "right:.*"){
         rcSconf = split(rcSconf, sep:":", keep:0);
@@ -114,10 +113,10 @@ else{
         result = string("nicht erfüllt");
         desc = string('Es konnte nicht korrekt ermittel werden, ob eine Shell\noder sulogin genutzt wird. Folgender Eintrag wurde für\nden Single-User-Modus in der Datei /etc/init/rcS.conf\ngefunden:\n' + rcSconf[1] + ":" + rcSconf[2] );
       }
-  }  
+  }
   if (rcSsulogin != "none" && rcSsulogin == "noperm"){
     result = string("Fehler");
-    desc += string('Beim Testen des Systems wurde festgestellt, das Sie\nkeine Berechtigung haben die Datei\n/etc/event.d/rcS-sulogin zu lesen.'); 
+    desc += string('Beim Testen des Systems wurde festgestellt, das Sie\nkeine Berechtigung haben die Datei\n/etc/event.d/rcS-sulogin zu lesen.');
   }else if (rcSsulogin != "none" && rcSsulogin != "noperm"){
       if(rcSsulogin =~ "right:.*"){
       rcSsulogin = split(rcSsulogin, sep:":", keep:0);
@@ -132,12 +131,12 @@ else{
       result = string("nicht erfüllt");
       desc = string('Es konnte nicht korrekt ermittel werden, ob eine Shell\noder sulogin genutzt wird.\nFolgender Eintrag wurde\nfür den Single-User-Modus in der Datei\n/etc/event.d/rcS-sulogin gefunden:\n' + rcSsulogin[1] + ":" + rcSsulogin[2] );
     }
-  
+
   }
 }
 if (!result){
       result = string("Fehler");
-      desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.'); 
+      desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.');
 }
 
 set_kb_item(name:"GSHB/M4_018/result", value:result);

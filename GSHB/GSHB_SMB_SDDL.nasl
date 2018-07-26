@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SMB_SDDL.nasl 10121 2018-06-07 12:44:05Z cfischer $
+# $Id: GSHB_SMB_SDDL.nasl 10628 2018-07-25 15:52:40Z cfischer $
 #
 # File and Folder ACL (Windows)
 #
@@ -9,9 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2009 Greenbone Networks GmbH, http://www.greenbone.net
-#
-# Set in an Workgroup Environment under Vista with enabled UAC this DWORD to access WMI:
-# HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\system\LocalAccountTokenFilterPolicy to 1
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -30,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96041");
-  script_version("$Revision: 10121 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 14:44:05 +0200 (Thu, 07 Jun 2018) $");
+  script_version("$Revision: 10628 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:52:40 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +37,7 @@ if(description)
   script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Tools/Present/wmi", "Compliance/Launch/GSHB");
-  script_dependencies("secpod_reg_enum.nasl", "GSHB_WMI_OSInfo.nasl");
+  script_dependencies("smb_reg_service_pack.nasl", "GSHB_WMI_OSInfo.nasl");
 
   script_tag(name:"summary", value:"The script List File and Folder ACL (Windows).");
 
@@ -57,7 +54,7 @@ domain  = kb_smb_domain();
 if (domain){
   usrname = domain + '\\' + usrname;
 }
-passwd  = kb_smb_password();
+passwd = kb_smb_password();
 
 OSVER = get_kb_item("WMI/WMI_OSVER");
 osdrive = get_kb_item("WMI/WMI_OSDRIVE");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_189.nasl 10610 2018-07-25 11:37:44Z cfischer $
+# $Id: GSHB_M4_189.nasl 10625 2018-07-25 15:24:35Z cfischer $
 #
 # IT-Grundschutz, 11. EL, Maßnahme 4.189
 #
@@ -24,7 +24,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "IT-Grundschutz M4.189: Schutz vor unzulässigen Programmaufrufen beim IIS-Einsatz.
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.894189");
+  script_version("$Revision: 10625 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:24:35 +0200 (Wed, 25 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2010-01-14 14:29:35 +0100 (Thu, 14 Jan 2010)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("IT-Grundschutz M4.189: Schutz vor unzulässigen Programmaufrufen beim IIS-Einsatz (Windows)");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04189.html");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"general_note");
+  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
+  script_family("IT-Grundschutz-11");
+  script_mandatory_keys("Compliance/Launch/GSHB-11", "Tools/Present/wmi");
+  script_dependencies("GSHB/GSHB_IIS_metabase.nasl","GSHB/GSHB_WMI_IIS_exec_cmd.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
+
+  script_tag(name:"summary", value:"IT-Grundschutz M4.189: Schutz vor unzulässigen Programmaufrufen beim IIS-Einsatz.
 
   ACHTUNG: Dieser Test wird nicht mehr unterstützt. Er wurde zudem in neueren
   EL gestrichen.
@@ -33,27 +50,10 @@ tag_summary = "IT-Grundschutz M4.189: Schutz vor unzulässigen Programmaufrufen b
   Grundschutz. Die detaillierte Beschreibung zu dieser Maßnahme findet sich unter
   nachfolgendem Verweis. Es ist zu beachten, dass der dortige Text sich immer auf
   die aktuellste Ergänzungslieferung bezieht. Titel und Inhalt können sich bei einer
-  Aktualisierung ändern, allerdings nicht die Kernthematik.";
+  Aktualisierung ändern, allerdings nicht die Kernthematik.");
 
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.894189");
-  script_version("$Revision: 10610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
-  script_tag(name:"creation_date", value:"2010-01-14 14:29:35 +0100 (Thu, 14 Jan 2010)");
-  script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("IT-Grundschutz M4.189: Schutz vor unzulässigen Programmaufrufen beim IIS-Einsatz (Windows)");
-  script_xref(name : "URL", value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04189.html");
-  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"general_note");
-  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
-  script_family("IT-Grundschutz-11");
-  script_mandatory_keys("Compliance/Launch/GSHB-11", "Tools/Present/wmi");
-  script_dependencies("GSHB/GSHB_IIS_metabase.nasl","GSHB/GSHB_WMI_IIS_exec_cmd.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
-#  script_require_keys("GSHB/AspEnableParentPaths", "WMI/SSIEnableCmdDirective");
-  script_tag(name : "summary" , value : tag_summary);
   script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
 

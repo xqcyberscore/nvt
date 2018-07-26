@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.1.3.nasl 9774 2018-05-09 10:20:10Z emoss $
+# $Id: GSHB_SYS.1.3.nasl 10624 2018-07-25 15:18:47Z cfischer $
 #
 # IT-Grundschutz Baustein: SYS.1.3 Server unter Unix
 #
@@ -27,23 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109036");
-  script_version("$Revision: 9774 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 12:20:10 +0200 (Wed, 09 May 2018) $");
+  script_version("$Revision: 10624 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:18:47 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 14:42:28 +0200 (Wed, 15 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
-  script_tag(name:"qod", value:"97");  
+  script_tag(name:"qod", value:"97");
   script_name('SYS.1.3 Server unter Unix');
 
-  script_xref(name : "URL" , value : " https://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKompendium/bausteine/SYS/SYS_1_3_Server_unter_Unix.html ");
-  
+  script_xref(name:"URL", value:" https://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKompendium/bausteine/SYS/SYS_1_3_Server_unter_Unix.html ");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_dependencies("gather-package-list.nasl", "GSHB/GSHB_SSH_AppArmor_SeLinux.nasl");
   script_mandatory_keys("Compliance/Launch/GSHB-ITG");
-  script_tag(name : "summary" , value : 'Zielsetzung des Bausteins ist der Schutz von Informationen, die von Unix-Servern verarbeitet werden.');
-  
+
+  script_tag(name:"summary", value:"Zielsetzung des Bausteins ist der Schutz von Informationen, die von Unix-Servern verarbeitet werden.");
+
   exit(0);
 }
 
@@ -71,7 +72,7 @@ if( !sock ) {
   if( !error )
     error = "No SSH Port or Connection!";
     log_message(port:port, data:error);
-    exit(0); 
+    exit(0);
 }
 
 
@@ -126,7 +127,7 @@ if( "permission denied" >< tolower(Group) || ! Group ){
   res = 'error';
 }else{
   GIDs = split(Group, keep:FALSE);
-  
+
   cmd = 'cat /etc/passwd';
   Users = ssh_cmd(socket:sock, cmd:cmd);
   if( "permission denied" >< tolower(Users) || ! Users ){
@@ -148,7 +149,7 @@ if( "permission denied" >< tolower(Group) || ! Group ){
   }
 }
 
-desc += 'Bitte überprüfen Sie manuell, dass Gruppen nur die unbedingt notwendigen 
+desc += 'Bitte überprüfen Sie manuell, dass Gruppen nur die unbedingt notwendigen
 Benutzer enthalten.\n';
 SYS_1_3_A2 += desc + '\n';
 
@@ -161,7 +162,7 @@ res = 'erfüllt';
 cmd = 'dpkg -s autofs';
 Autofs = ssh_cmd(socket:sock, cmd:cmd);
 if( "install ok installed" >< tolower(Autofs) ){
-  desc = 'Das Paket "autofs" ist auf dem Host vorhanden. 
+  desc = 'Das Paket "autofs" ist auf dem Host vorhanden.
 Dies kann automatisches Einbinden von Wechsellaufwerken zur Folge haben und sollte
 daher entfernt werden.\n';
   res = 'nicht erfüllt';
@@ -175,7 +176,7 @@ daher entfernt werden.\n';
 cmd = 'dpkg -s usbmount';
 USBmount = ssh_cmd(socket:sock, cmd:cmd);
 if( "install ok installed" >< tolower(USBmount) ){
-  desc += 'Das Paket "usbmount" ist auf dem Host vorhanden. 
+  desc += 'Das Paket "usbmount" ist auf dem Host vorhanden.
 Dies kann automatisches Einbinden von USB-Laufwerken zur Folge haben und sollte
 daher entfernt werden.\n\n';
   res = 'nicht erfüllt';
@@ -324,7 +325,7 @@ if( AppArmor_Basic == '1' ) {
   desc = 'Das Paket "apparmor" ist auf dem Host installiert.\n';
   res = 'erfüllt';
   if( AppArmor_Utils != '1' ){
-    desc += 'Das Paket "apparmor-utils" ist nicht auf dem Host installiert. 
+    desc += 'Das Paket "apparmor-utils" ist nicht auf dem Host installiert.
   für eine weitere Analyse von AppArmor muss dieses Paket installiert sein.\n';
   }else{
     AppArmor_Status = get_kb_item("GSHB/AppArmor_Status");
@@ -346,14 +347,14 @@ if( SELinux_Basics == '1' ){
   desc += 'Das Paket "selinux-bascis" ist auf dem Host installiert.\n';
   res = 'erfüllt';
   if( SELinux_Utils != '1' ){
-    desc += 'Das Paket "selinux-utils" ist auf dem Host nicht installiert. 
+    desc += 'Das Paket "selinux-utils" ist auf dem Host nicht installiert.
   für eine weitere Analyse von SELinux muss dieses Paket installiert sein.\n';
     res = 'error';
   }else{
     desc += 'Das Paket "selinux-utils" ist auf dem Host installiert.\n';
     sestatus = get_kb_item("GSHB/SeLinux_Status");
     if( ! sestatus || sestatus == "error" ){
-      desc += 'Der Befehl "sestatus" ist dem System nicht bekannt. 
+      desc += 'Der Befehl "sestatus" ist dem System nicht bekannt.
   Es koennen keine Informationen über SELinux gefunden werden.\n';
     }else{
       desc += 'SELinux ist in folgendem Zustand:\n' + sestatus + '\n';
@@ -395,7 +396,7 @@ Es scheint sich nicht um einen NFS-Server zu handeln.\n';
 }
 
 if( res != 'nicht zutreffend' ){
-  desc += 'Aufgrund der installierten Pakete wird davon ausgegangen, dass es sich 
+  desc += 'Aufgrund der installierten Pakete wird davon ausgegangen, dass es sich
 um einen NFS-Server handelt. Bitte überprüfen Sie manuell, ob nur unbedingt notwendige
 Verzeichnisse exportiert werden und die mountbaren Verzeichnisse auf das notwendige Maß
 reduziert werden\n.';
@@ -440,7 +441,7 @@ if( "'nis' is not installed" >< NIS ){
     desc += 'Diese sollte konfiguriert werden, damit nur Anfragen von festgelegten Rechnern beantwortet werden.\n\n';
     res = 'nicht erfüllt';
   }else{
-    desc += 'Auf dem Server existiert die Datei "/var/yp/securenets". Die legt die 
+    desc += 'Auf dem Server existiert die Datei "/var/yp/securenets". Die legt die
 Rechner fest, von denen der Server-Prozess "ypserv" Anfragen beantwortet. Die Einträge
 müssen manuell überprüft werden.\n';
   }
@@ -463,7 +464,7 @@ if( "permission denied" >< tolower(AdminLock) || ! AdminLock ){
   pattern = 'PermitRootLogin [a-z,A-Z,-]+';
   PermitRootLogin=eregmatch(string:AdminLock, pattern:pattern, multiline:TRUE);
   if( ! PermitRootLogin ){
-    desc = 'Der Eintrag "PermitRootLogin" in "/etc/ssh/sshd_config" sollte auf "no" 
+    desc = 'Der Eintrag "PermitRootLogin" in "/etc/ssh/sshd_config" sollte auf "no"
 gesetzt sein, um eine Anmeldung von root über SSH am System zu verhindern.\n';
     res = 'nicht erfüllt';
   }else{
@@ -472,7 +473,7 @@ gesetzt sein, um eine Anmeldung von root über SSH am System zu verhindern.\n';
       desc = 'Der Eintrag "PermitRootLogin" in der Datei "/etc/ssh/sshd_config" ist auf den Wert "no" gesetzt.\n';
       desc += '"root" kann sich nicht direkt am System über SSH anmelden\n';
     }else{
-    desc = 'Der Eintrag "PermitRootLogin" in "/etc/ssh/sshd_config" sollte auf "no" 
+    desc = 'Der Eintrag "PermitRootLogin" in "/etc/ssh/sshd_config" sollte auf "no"
 gesetzt sein, um eine Anmeldung von root über SSH am System zu verhindern.\n';
     res = 'nicht erfüllt';
     }
@@ -480,13 +481,13 @@ gesetzt sein, um eine Anmeldung von root über SSH am System zu verhindern.\n';
   pattern = 'MaxAuthTries [0-9]+';
   MaxAuthTries=eregmatch(string:AdminLock, pattern:pattern, multiline:TRUE);
   if( ! MaxAuthTries ){
-    desc += 'Der Eintrag "MaxAuthTries" in "/etc/ssh/sshd_config" sollte auf einen 
+    desc += 'Der Eintrag "MaxAuthTries" in "/etc/ssh/sshd_config" sollte auf einen
 angemessenen Wert gesetzt sein, um Brute-Force-Angriffe über SSH am System zu verhindern.\n';
     res = 'nicht erfüllt';
   }else{
     MaxAuthTries=split(MaxAuthTries[0], sep:' ',keep:FALSE);
     if( MaxAuthTries[1] > '0' && MaxAuthTries [1] <= '5' ){
-      desc += 'Benutzer haben ' + MaxAuthTries[1] + ' Anmeldeversuche, bevor das Konto 
+      desc += 'Benutzer haben ' + MaxAuthTries[1] + ' Anmeldeversuche, bevor das Konto
 gesperrt wird.\n';
     }
   }
@@ -502,7 +503,7 @@ set_kb_item(name:"GSHB/SYS.1.3.A13/desc", value:desc);
 SYS_1_3_A14 = 'SYS.1.3.A14 Verhinderung des Ausspaehens von System- und Benutzerinformationen (C):\n';
 res = 'Diese Vorgabe muss manuell überprüft werden.';
 desc = '';
-filenames = ["/etc/issue", 
+filenames = ["/etc/issue",
           "/proc/version",
           "/etc/debian_version",
           "/proc/sys/kernel/ostype",

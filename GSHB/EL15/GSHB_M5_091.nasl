@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_091.nasl 10610 2018-07-25 11:37:44Z cfischer $
+# $Id: GSHB_M5_091.nasl 10625 2018-07-25 15:24:35Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 5.091
 #
@@ -27,27 +27,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95070");
-  script_version("$Revision: 10610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10625 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:24:35 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
   script_name("IT-Grundschutz M5.091: Einsatz von Personal Firewalls für Clients");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05091.html");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05091.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15", "Tools/Present/wmi");
   script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_WinFirewallStat.nasl", "GSHB/GSHB_SSH_iptables.nasl");
-#  script_require_keys("WMI/WinFirewall");
-  script_tag(name : "summary" , value :"IT-Grundschutz M5.091: Einsatz von Personal Firewalls für Clients.
+
+  script_tag(name:"summary", value:"IT-Grundschutz M5.091: Einsatz von Personal Firewalls für Clients.
 
 Stand: 14. Ergänzungslieferung (14. EL).
 
 Hinweis:
-Getestet wird auf die Microsoft Windows Firewall. Für Vista und Windows 7 
-auf jegliche Firewall die sich systemkonform installiert. 
+Getestet wird auf die Microsoft Windows Firewall. Für Vista und Windows 7
+auf jegliche Firewall die sich systemkonform installiert.
 Auf Linux, soweit möglich, anzeige der iptables Regeln.");
 
   exit(0);
@@ -80,7 +80,7 @@ matches = get_kb_item("GSHB/iptables/matches");
 iptableslog = get_kb_item("GSHB/iptables/log");
 uname = get_kb_item("GSHB/iptables/uname");
 sunipfilter = get_kb_item("GSHB/iptables/ipfilter");
-sunipfilterstat = get_kb_item("GSHB/iptables/ipfilterstat");  
+sunipfilterstat = get_kb_item("GSHB/iptables/ipfilterstat");
 
 gshbm = "GSHB Maßnahme 5.091: ";
 
@@ -97,10 +97,10 @@ if (OSVER != "none"){
     result = string("erfüllt");
     desc = string("Auf dem System ist eine Personal Firewall aktiviert.");
   }else if(OSVER == "5.2" && OSTYPE != "none" && OSTYPE > 1){
-  
+
     IPFilter = split(IPFilter, sep:'\n', keep:0);
     IPFilter = split(IPFilter[1], sep:'|', keep:0);
-    NWCard = IPFilter[0];  
+    NWCard = IPFilter[0];
     IPFilter = IPFilter[2];
 
     if (IPFilter == "True"){
@@ -114,12 +114,12 @@ if (OSVER != "none"){
 
     Firewall_Name = split(Firewall_Name, sep:'\n', keep:0);
     Firewall_Name = split(Firewall_Name[1], sep:'|', keep:0);
-    Firewall_Name = Firewall_Name[0];  
-  
+    Firewall_Name = Firewall_Name[0];
+
     Firewall_State = split(Firewall_State, sep:'\n', keep:0);
     Firewall_State = split(Firewall_State[1], sep:'|', keep:0);
     Firewall_State = Firewall_State[1];
-  
+
     if(Firewall_State == "266256"){
       result = string("erfüllt");
       desc = string("Auf dem System ist folgende Firewall Software aktiviert:\n" + Firewall_Name);
@@ -135,14 +135,14 @@ if (OSVER != "none"){
     }else if(Firewall_State == "262160" && Domainrole == "1" && DOM =="off"){
       result = string("nicht erfüllt");
       desc = string("Auf dem System ist keine Personal Firewall aktiviert.");
-    } 
+    }
   }else if(Domainrole == "0" || Domainrole == "2"){
     if (STD == "off" && PUB == "off"){
       result = string("nicht erfüllt");
       desc = string("Auf dem System ist keine Personal Firewall aktiviert.");
     }else if (STD == "1" && PUB == "1"){
       result = string("erfüllt");
-      desc = string("Auf dem System ist die Windows Firewall aktiviert.");  
+      desc = string("Auf dem System ist die Windows Firewall aktiviert.");
     }else if (STD == "off" && PUB == "1"){
       result = string("unvollständig");
       desc = string("\nAuf dem System ist die Windows Firewall nur für\n-Öffentliche Netzwerke- aktiviert. Sie sollten die Windows\nFirewall für sämtliche Netzwerke aktivieren.");
@@ -156,7 +156,7 @@ if (OSVER != "none"){
       desc = string("Auf dem System ist keine Personal Firewall aktiviert.");
     }else if (DOM == "1"){
       result = string("erfüllt");
-      desc = string("Auf dem System ist die Windows Firewall aktiviert.");  
+      desc = string("Auf dem System ist die Windows Firewall aktiviert.");
     }
   }
 }else{
@@ -184,7 +184,7 @@ if (OSVER != "none"){
         desc = string('Beim Aufruf des Befehls ipfstat -io wurden keine IP Filter\nzurückgegeben.');
       }else{
         result = string("unvollständig");
-        desc = string('Bitte überprüfen Sie das iptables ruleset:\n' + sunipfilterstat);  
+        desc = string('Bitte überprüfen Sie das iptables ruleset:\n' + sunipfilterstat);
       }
     }else if(sunipfilter != "off" && sunipfilter != "on"){
       result = string("Fehler");
@@ -205,13 +205,13 @@ if (OSVER != "none"){
     desc = string('Es war nicht möglich den Befehl iptabels auszuführen und es\nwurden keine iptables Module im proc Filesystem gefunden.');
   }else{
     result = string("unvollständig");
-    desc = string('Bitte überprüfen Sie das iptables ruleset:\n' + ruleset);  
+    desc = string('Bitte überprüfen Sie das iptables ruleset:\n' + ruleset);
   }
 }
 
 if (!result){
   result = string("Fehler");
-  desc = string('Beim Testen des Systems trat ein unbekannter Fehler auf\nbzw. es konnte kein Ergebnis ermittelt werden.'); 
+  desc = string('Beim Testen des Systems trat ein unbekannter Fehler auf\nbzw. es konnte kein Ergebnis ermittelt werden.');
 }
 
 set_kb_item(name:"GSHB/M5_091/result", value:result);

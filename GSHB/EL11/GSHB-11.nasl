@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB-11.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB-11.nasl 10623 2018-07-25 15:14:01Z cfischer $
 #
 # IT-Grundschutz, 11. Ergänzungslieferung
 #
@@ -23,19 +23,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-tag_summary = "Zusammenfassung von Tests gemäß IT-Grundschutz
-  (in 11. Ergänzungslieferung).
-
-  ACHTUNG: Dieser Test wird nicht mehr unterstützt. Er wurde ersetzt durch
-  den entsprechenden Test der nun permanent and die aktuelle EL angepasst
-  wird: OID 1.3.6.1.4.1.25623.1.0.94171
-
-  Diese Routinen prüfen sämtliche Maßnahmen des
-  IT-Grundschutz des Bundesamts für Sicherheit
-  in der Informationstechnik (BSI) auf den
-  Zielsystemen soweit die Maßnahmen auf automatisierte
-  Weise abgeprüft werden können.";
 massnahmen = make_list("M4_001", "M4_002", "M4_003", "M4_004", "M4_005",
  "M4_006", "M4_007", "M4_008", "M4_009", "M4_010", "M4_011", "M4_012", "M4_013",
  "M4_014", "M4_015", "M4_016", "M4_017", "M4_018", "M4_019", "M4_020", "M4_021",
@@ -119,8 +106,8 @@ depend = make_list("M4_001", "M4_002", "M4_003", "M4_004", "M4_005", "M4_007",
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.895000");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-01-14 14:29:35 +0100 (Thu, 14 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -136,7 +123,18 @@ if(description)
   script_require_keys("GSHB-11/silence");
   script_dependencies("compliance_tests.nasl");
   foreach d (depend) script_dependencies("GSHB/EL11/GSHB_" + d + ".nasl");
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"Zusammenfassung von Tests gemäß IT-Grundschutz
+  (in 11. Ergänzungslieferung).
+
+  ACHTUNG: Dieser Test wird nicht mehr unterstützt. Er wurde ersetzt durch
+  den entsprechenden Test der nun permanent and die aktuelle EL angepasst
+  wird: OID 1.3.6.1.4.1.25623.1.0.94171
+
+  Diese Routinen prüfen sämtliche Maßnahmen des
+  IT-Grundschutz des Bundesamts für Sicherheit
+  in der Informationstechnik (BSI) auf den
+  Zielsystemen soweit die Maßnahmen auf automatisierte
+  Weise abgeprüft werden können.");
   script_tag(name:"deprecated", value:TRUE);
   exit(0);
 }

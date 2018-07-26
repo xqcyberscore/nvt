@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_021.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M5_021.nasl 10624 2018-07-25 15:18:47Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 5.021
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95058");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10624 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:18:47 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("IT-Grundschutz M5.021: Sicherer Einsatz von telnet, ftp, tftp und rexec");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05021.html");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05021.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15");
-  script_dependencies ("GSHB/GSHB_SSH_r-tools.nasl", "GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_TFTP_s-option.nasl");
-  script_tag(name : "summary" , value :
-"IT-Grundschutz M5.021: Sicherer Einsatz von telnet, ftp, tftp und rexec.
+  script_dependencies("GSHB/GSHB_SSH_r-tools.nasl", "GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_TFTP_s-option.nasl");
+  script_tag(name:"summary", value:"IT-Grundschutz M5.021: Sicherer Einsatz von telnet, ftp, tftp und rexec.
 
 Stand: 14. Ergänzungslieferung (14. EL).
 ");
@@ -68,7 +67,7 @@ if (inetdconf >!< "noentry" && inetdconf >!< "none"){
   for(i=0; i<max_index(Lst); i++){
     if (Lst[i] =~ "^ftp.*") val_ftp = "yes";
     if (Lst[i] =~ "^tftp.*") val_tftp = "yes";
-    if (Lst[i] =~ "^telnet.*") val_telnet = "yes";    
+    if (Lst[i] =~ "^telnet.*") val_telnet = "yes";
   }
 }
 
@@ -88,7 +87,7 @@ if(OSNAME >!< "none"){
   if (val_tftp == "yes") desc += string('\nDer Einsatz des Daemons tftpd muss verhindert werden (z. B.\ndurch Entfernen\ndes entsprechenden Eintrags in der Datei\n/etc/inetd.conf).');
   if (val_ftp == "yes") desc += string('\nFühren Sie bitte einen NVT-Scan aus, um mögliche Sicherheits-\nlücken im installierten FTP-Server zu finden.');
   if (val_ftp == "yes" && ftpusers == "noentry")desc += string('Es konnten keine Einträge in der Datei -/etc/ftpusers- gefunden\nwerden. In die Datei /etc/ftpusers sollten alle Benutzernamen\neingetragen werden, für die ein ftp-Zugang nicht erlaubt werden\nsoll. Hierzu gehören z. B. root, uucp und bin.');
-  if (val_ftp == "yes" && ftpusers != "none")desc += string('\nIn die Datei /etc/ftpusers sollten alle Benutzernamen\neingetragen werden, für die ein\nftp-Zugang nicht erlaubt\nwerden soll. Hierzu gehören z. B. root, uucp und bin. Folgende\nEinträge wurden in der Datei -/etc/ftpusers- gefunden: \n' + ftpusers);  
+  if (val_ftp == "yes" && ftpusers != "none")desc += string('\nIn die Datei /etc/ftpusers sollten alle Benutzernamen\neingetragen werden, für die ein\nftp-Zugang nicht erlaubt\nwerden soll. Hierzu gehören z. B. root, uucp und bin. Folgende\nEinträge wurden in der Datei -/etc/ftpusers- gefunden: \n' + ftpusers);
   if (val_telnet == "yes") desc += string('\nAuf dem Zilesystem wurde ein Telnet-Server in der\n-/etc/inetd.conf- gefunden. Sie sollten SSH anstelle von\ntelnet nutzen.');
   if (tftp == "fail") desc += string('Es muss sichergestellt sein, dass beim Einsatz von tftp den\nBenutzern aus dem Login-Verzeichnis nur eingeschränkte\nDateizugriffe möglich sind. In diesem Fall war es möglich auf\ndie Datei -/etc/passwd- zuzugreifen. Starten Sie den\ntftp-Daemon mit der Option -s verzeichnis.');
 }else{
@@ -101,7 +100,7 @@ if(OSNAME >!< "none"){
 
 if (!result){
   result = string("Fehler");
-  desc = string('Beim Testen des Systems trat ein unbekannter Fehler auf\nbzw. es konnte kein Ergebnis ermittelt werden.'); 
+  desc = string('Beim Testen des Systems trat ein unbekannter Fehler auf\nbzw. es konnte kein Ergebnis ermittelt werden.');
 }
 
 set_kb_item(name:"GSHB/M5_021/result", value:result);

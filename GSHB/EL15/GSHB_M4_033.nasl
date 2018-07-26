@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_033.nasl 10610 2018-07-25 11:37:44Z cfischer $
+# $Id: GSHB_M4_033.nasl 10623 2018-07-25 15:14:01Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.033
 #
@@ -27,21 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94199");
-  script_version("$Revision: 10610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
   script_name("IT-Grundschutz M4.033: Einsatz eines Viren-Suchprogramms bei Datenträgeraustausch und Datenübertragung");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04033.html");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04033.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15", "Tools/Present/wmi");
   script_dependencies("GSHB/GSHB_WMI_Antivir.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
   script_require_keys("WMI/Antivir");
-  script_tag(name : "summary" , value :"IT-Grundschutz M4.033: Einsatz eines Viren-Suchprogramms bei Datenträgeraustausch und Datenübertragung.
+  script_tag(name:"summary", value:"IT-Grundschutz M4.033: Einsatz eines Viren-Suchprogramms bei Datenträgeraustausch und Datenübertragung.
 
 Stand: 14. Ergänzungslieferung (14. EL).");
 

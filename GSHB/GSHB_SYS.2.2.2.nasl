@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.2.2.2.nasl 9015 2018-03-02 15:20:47Z emoss $
+# $Id: GSHB_SYS.2.2.2.nasl 10628 2018-07-25 15:52:40Z cfischer $
 #
 # IT-Grundschutz Baustein: SYS.2.2.2 Clients unter Windows 8.1
 #
@@ -27,22 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109037");
-  script_version("$Revision: 9015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-02 16:20:47 +0100 (Fri, 02 Mar 2018) $");
+  script_version("$Revision: 10628 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:52:40 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-11-24 07:42:28 +0200 (Fri, 24 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
-  script_tag(name:"qod", value:"97");  
+  script_tag(name:"qod", value:"97");
   script_name('SYS.2.2.2 Clients unter Windows 8.1');
-  script_xref(name : "URL" , value : " https://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKompendium/bausteine/SYS/SYS_2_2_2_Clients_unter_Windows_8_1.html ");
+  script_xref(name:"URL", value:" https://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKompendium/bausteine/SYS/SYS_2_2_2_Clients_unter_Windows_8_1.html ");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB-ITG");
   script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_Antivir.nasl", "GSHB/GSHB_SMB_UAC_Config.nasl", "GSHB/GSHB_WMI_EFS.nasl");
-  script_tag(name : "summary" , value : 'Zielsetzung dieses Bausteins ist der Schutz von Informationen, 
-      die durch und auf Windows 8.1-Clients verarbeiten werden.');
-  
+  script_require_ports(139, 445);
+
+  script_tag(name:"summary", value:"Zielsetzung dieses Bausteins ist der Schutz von Informationen,
+  die durch und auf Windows 8.1-Clients verarbeiten werden.");
+
   exit(0);
 }
 
@@ -66,12 +68,12 @@ oder es konnte keine Verbindung zum Host hergestellt werden.");
 }
 
 host    = get_host_ip();
-usrname = kb_smb_login(); 
+usrname = kb_smb_login();
 domain  = kb_smb_domain();
 if( domain ){
   usrname = domain + '\\' + usrname;
 }
-passwd  = kb_smb_password();
+passwd = kb_smb_password();
 
 handle = wmi_connect(host:host, username:usrname, password:passwd, ns:'root\\rsop\\computer');
 if( !handle ){
@@ -147,10 +149,9 @@ if( max_index(SecurityCenter2) <= 1 ){
   desc = 'Folgende Schutzprogramme sind installiert:\n';
   result = 'erfüllt';
 
-  # get state of each AntiVir program (can be more than one)
   foreach line (SecurityCenter2){
     line = split(line, sep:'|', keep:FALSE);
-    
+
     # skip header
     if( tolower(line[0]) == 'displayname' ){
       continue;
@@ -158,7 +159,7 @@ if( max_index(SecurityCenter2) <= 1 ){
 
     desc += line[0] + '\n';
     ProductState = dec2hex(num:line[4]);
-    
+
     ProtectionStatus = hexstr(substr( ProductState, 1, 1));
     if( ProtectionStatus == "00" || ProtectionStatus == "01" ){
       ProtectionStatus_Res = "nicht aktiv";
@@ -194,12 +195,12 @@ SYS_2_2_2_A4 += 'Diese Vorgabe muss manuell überprüft werden.\n\n';
 SYS_2_2_2_A5 = 'SYS.2.2.2.A5 Lokale Sicherheitsrichtlinien:\n';
 result = 'erfüllt';
 AuditPolicy = wmi_rsop_auditpolicy(handle:handle, select:"Category");
-if( AuditPolicy ){    
+if( AuditPolicy ){
   AuditPolicy = split(AuditPolicy, keep:FALSE);
   desc = 'Folgende Überwachungsrichtlinien sind auf dem Host aktiviert:\n';
   foreach line (AuditPolicy){
     line = split(line, sep:'|', keep:FALSE);
- 
+
     if( tolower(line[0]) == 'category' ){
       continue;
     }
@@ -218,13 +219,13 @@ if( UserPrivilegeRight ){
   desc += 'Folgende Benutzerrechte sind zugewiesen:\n';
   foreach line (UserPrivilegeRight){
     line = split(line, sep:'|', keep:FALSE);
-    
+
     if( tolower(line[0]) == 'accountlist' ){
       continue;
     }
 
     desc += line[max_index(line)-1] + ' : ';
-    
+
     for( y = 0; y <= max_index(line)-3; y++ ){
       desc += line[y];
       if( y == max_index(line)-3 ){
@@ -234,7 +235,7 @@ if( UserPrivilegeRight ){
       }
     }
   }
-  
+
   desc += '\n';
 }else{
   desc += 'Die zugewiesenen Benutzerrechte konnten nicht ausgelesen werden.\n';

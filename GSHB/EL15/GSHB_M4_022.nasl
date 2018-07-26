@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_022.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M4_022.nasl 10624 2018-07-25 15:18:47Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.022
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94193");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10624 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:18:47 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("IT-Grundschutz M4.022: Verhinderung des Vertraulichkeitsverlusts schutzbedürftiger Daten im Unix-System");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04022.html");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04022.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15");
   script_dependencies("GSHB/GSHB_SSH_prev_sensitive_data_loss.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
-  script_tag(name : "summary" , value :
-"IT-Grundschutz M4.022: Verhinderung des Vertraulichkeitsverlusts schutzbedürftiger Daten im Unix-System.
+  script_tag(name:"summary", value:"IT-Grundschutz M4.022: Verhinderung des Vertraulichkeitsverlusts schutzbedürftiger Daten im Unix-System.
 
 Stand: 14. Ergänzungslieferung (14. EL).
 ");
@@ -63,7 +62,7 @@ last = get_kb_item("GSHB/last");
 tmpfiles = get_kb_item("GSHB/tmpfiles");
 log = get_kb_item("GSHB/ps/log");
 
-   
+
 OSNAME = get_kb_item("WMI/WMI_OSNAME");
 
 if(OSNAME >!< "none"){
@@ -104,52 +103,52 @@ if (result != "nicht zutreffend" && result != "Fehler"){
   if(ps != "none"){
     if (ps =~ "-(r|-)(w|-)(x|-)(r|-)(w|-)(x|-)---.*"){
       result_ps = string("ok");
-      desc += string('Beim Testen des Systems wurden für die Datei /bin/ps\nfolgende korrekte Sicherheiteinstellungen\nfestgestellt: ' + ps + '\n\n'); 
+      desc += string('Beim Testen des Systems wurden für die Datei /bin/ps\nfolgende korrekte Sicherheiteinstellungen\nfestgestellt: ' + ps + '\n\n');
     }
     else{
       result_ps = string("fail");
       if (ps =~ "-(rwx)(r|-)(w|-)(x|-).*")secval = "-rwxr-x---";
       else if (ps =~ "-(r-x)(r|-)(w|-)(x|-).*")secval = "-r-xr-x---";
-      desc += string('Fehler: Beim Testen des Systems wurden für die Datei\n/bin/ps folgende fehlerhafte Sicherheitseinstellungen\nfestgestellt: ' + ps + '\nBitte ändern Sie diese auf ' + secval + ' \n\n' ); 
+      desc += string('Fehler: Beim Testen des Systems wurden für die Datei\n/bin/ps folgende fehlerhafte Sicherheitseinstellungen\nfestgestellt: ' + ps + '\nBitte ändern Sie diese auf ' + secval + ' \n\n' );
     }
   }
 ##############
   if(finger != "none"){
     if (finger =~ "-(r|-)(w|-)(x|-)(r|-)(w|-)(x|-)---.*"){
       result_finger = string("ok");
-      desc += string('Beim Testen des Systems wurden für die Datei\n/usr/bin/finger folgende korrekte Sicherheitsein-\nstellungen festgestellt: ' + finger + '\n\n'); 
+      desc += string('Beim Testen des Systems wurden für die Datei\n/usr/bin/finger folgende korrekte Sicherheitsein-\nstellungen festgestellt: ' + finger + '\n\n');
     }
     else{
       result_finger = string("fail");
       if (finger =~ "-(rwx)(r|-)(w|-)(x|-).*")secval = "-rwxr-x---";
       else if (finger =~ "-(r-x)(r|-)(w|-)(x|-).*")secval = "-r-xr-x---";
-      desc += string('Fehler: Beim Testen des Systems wurden für die Datei\n/usr/bin/finger folgende fehlerhafte Sicherheitsein-\nstellungen festgestellt: ' + finger + '\nBitte ändern Sie diese auf ' + secval + ' \n\n' ); 
+      desc += string('Fehler: Beim Testen des Systems wurden für die Datei\n/usr/bin/finger folgende fehlerhafte Sicherheitsein-\nstellungen festgestellt: ' + finger + '\nBitte ändern Sie diese auf ' + secval + ' \n\n' );
     }
   }
 ##############
   if(who != "none"){
     if (who =~ "-(r|-)(w|-)(x|-)(r|-)(w|-)(x|-)---.*"){
       result_who = string("ok");
-      desc += string('Beim Testen des Systems wurden für die Datei\n/usr/bin/who folgende korrekte Sicherheitsein-\nstellungen festgestellt: ' + who + '\n\n'); 
+      desc += string('Beim Testen des Systems wurden für die Datei\n/usr/bin/who folgende korrekte Sicherheitsein-\nstellungen festgestellt: ' + who + '\n\n');
     }
     else{
       result_who = string("fail");
       if (who =~ "-(rwx)(r|-)(w|-)(x|-).*")secval = "-rwxr-x---";
       else if (who =~ "-(r-x)(r|-)(w|-)(x|-).*")secval = "-r-xr-x---";
-      desc += string('Fehler: Beim Testen des Systems wurden für die Datei\n/usr/bin/who folgende fehlerhafte Sicherheitsein-\nstellungen festgestellt: ' + who + '\nBitte ändern Sie diese auf ' + secval + ' \n\n' ); 
+      desc += string('Fehler: Beim Testen des Systems wurden für die Datei\n/usr/bin/who folgende fehlerhafte Sicherheitsein-\nstellungen festgestellt: ' + who + '\nBitte ändern Sie diese auf ' + secval + ' \n\n' );
     }
   }
 ##############
   if(last != "none"){
     if (last =~ "-(r|-)(w|-)(x|-)(r|-)(w|-)(x|-)---.*"){
       result_last = string("ok");
-      desc += string('Beim Testen des Systems wurden für die Datei\n/usr/bin/last folgende korrekte Sicherheitsein-\nstellungen festgestellt: ' + last + '\n\n'); 
+      desc += string('Beim Testen des Systems wurden für die Datei\n/usr/bin/last folgende korrekte Sicherheitsein-\nstellungen festgestellt: ' + last + '\n\n');
     }
     else{
       result_last = string("fail");
       if (last =~ "-(rwx)(r|-)(w|-)(x|-).*")secval = "-rwxr-x---";
       else if (last =~ "-(r-x)(r|-)(w|-)(x|-).*")secval = "-r-xr-x---";
-      desc += string('Fehler: Beim Testen des Systems wurden für die Datei\n/usr/bin/last folgende fehlerhafte Sicherheitsein-\nstellungen festgestellt: ' + last + '\nBitte ändern Sie diese auf ' + secval + ' \n\n' ); 
+      desc += string('Fehler: Beim Testen des Systems wurden für die Datei\n/usr/bin/last folgende fehlerhafte Sicherheitsein-\nstellungen festgestellt: ' + last + '\nBitte ändern Sie diese auf ' + secval + ' \n\n' );
     }
   }
 ##############
@@ -159,15 +158,15 @@ if (result != "nicht zutreffend" && result != "Fehler"){
         if (Lst[i] !~ "-rw-(r|-)(w|-)----.*"){
           faillist += Lst[i] + '\n';
         }
-    } 
+    }
     if(!faillist){
       result_tmpfiles = string("ok");
-      desc += string('Beim Testen des Systems wurden für die Dateien\n/var/log/?tmp* folgende korrekte Sicherheitsein-\nstellungen festgestellt: ' + tmpfiles + '\n\n'); 
+      desc += string('Beim Testen des Systems wurden für die Dateien\n/var/log/?tmp* folgende korrekte Sicherheitsein-\nstellungen festgestellt: ' + tmpfiles + '\n\n');
     }
     else{
       result_tmpfiles = string("fail");
       desc += string('Fehler: Beim Testen des Systems wurden für die Dateien\n/var/log/?tmp* folgende fehlerhafte Sicherheitsein-\nstellungen festgestellt: ' + faillist + '\nBitte ändern Sie diese auf -rw-rw----.\n\n' );
-    }   
+    }
   }
 ##############
   if(!result && (result_ps == "fail" ||  result_finger == "fail" || result_who == "fail" || result_last == "fail" || result_tmpfiles == "fail")) result = string("nicht erfüllt");
@@ -176,7 +175,7 @@ if (result != "nicht zutreffend" && result != "Fehler"){
 }
 if (!result){
       result = string("Fehler");
-      desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.'); 
+      desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.');
 }
 
 set_kb_item(name:"GSHB/M4_022/result", value:result);

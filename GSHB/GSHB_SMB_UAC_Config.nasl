@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SMB_UAC_Config.nasl 10612 2018-07-25 12:26:01Z cfischer $
+# $Id: GSHB_SMB_UAC_Config.nasl 10617 2018-07-25 13:47:49Z cfischer $
 #
 # Read the config of the User Account Control feature over SMB (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109033");
-  script_version("$Revision: 10612 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10617 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 15:47:49 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-12-06 09:20:21 +0100 (Wed, 06 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,7 @@ include("smb_nt.inc");
 
 OSVER = get_kb_item("SMB/WindowsVersion");
 
-if(OSVER  <  "6.0"){
+if(OSVER < "6.0"){
   set_kb_item(name:"SMB/UAC", value:"error");
   set_kb_item(name:"SMB/UAC/log", value:"Can not get access to the host. Can not perform test on those systems.");
   exit(0);

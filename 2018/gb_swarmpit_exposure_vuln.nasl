@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_swarmpit_exposure_vuln.nasl 10582 2018-07-23 15:30:28Z tpassfeld $
+# $Id: gb_swarmpit_exposure_vuln.nasl 10621 2018-07-25 14:18:59Z tpassfeld $
 #
 # Swarmpit Web UI exposure
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114014");
-  script_version("$Revision: 10582 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 17:30:28 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10621 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 16:18:59 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-23 17:04:15 +0200 (Mon, 23 Jul 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -37,7 +37,8 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_swarmpit_detect.nasl");
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_exclude_keys("keys/islocalhost", "keys/islocalnet", "keys/is_private_addr");
+  script_mandatory_keys("Swarmpit/installed");
 
   script_xref(name:"URL", value:"https://info.lacework.com/hubfs/Containers%20At-Risk_%20A%20Review%20of%2021,000%20Cloud%20Environments.pdf");
 
@@ -54,28 +55,38 @@ if(description)
 		  That includes managing applications, containers, starting workloads, adding and
 		  modifying applications, and setting key security controls.");
 
-  script_tag(name:"solution", value:"It is highly recommended to consider the following: 
-  - Regardless of network policy, use MFA for all access;
-  - Apply strict controls to network access, especially for UI and API ports;
-  - Use SSL for all servers and use valid certificates with proper expiration and enforcement policies;
-  - Investigate VPN (bastion), reverse proxy or direct connect connections to sensitive servers;
+  script_tag(name:"solution", value:"It is highly recommended to consider the following:
+
+  - Regardless of network policy, use MFA for all access.
+  
+  - Apply strict controls to network access, especially for UI and API ports.
+  
+  - Use SSL for all servers and use valid certificates with proper expiration and enforcement policies.
+  
+  - Investigate VPN (bastion), reverse proxy or direct connect connections to sensitive servers.
+  
   - Look into product and services such as Lacework in order to discover, detect, prevent, and secure your container services.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
-
-  script_timeout(600);
 
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("network_func.inc");
+include("host_details.inc");
 
-port = get_http_port(default:8888);
+if( islocalnet() || islocalhost() || is_private_addr() ) exit( 0 );
 
-if(get_kb_item("Swarmpit/installed")) {
+CPE = "cpe:/a:swarmpit:swarmpit";
+
+if(!port = get_app_port(cpe:CPE)) exit(0);
+
+if(get_kb_item("Swarmpit/"+port+"/installed")) {
   report = "Swarmpit UI is exposed to the public under the following URL: " + report_vuln_url(port:port, url: "/", url_only: TRUE);
+  get_app_location(cpe:CPE, port:port, nofork:TRUE);
   security_message(port:port, data:report);
   exit(0);
 }

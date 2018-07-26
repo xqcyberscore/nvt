@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_tools_detect_win.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_vmware_tools_detect_win.nasl 10637 2018-07-26 09:34:03Z santu $
 #
 # VMware Tools Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809030");
-  script_version("$Revision: 5877 $");
+  script_version("$Revision: 10637 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-26 11:34:03 +0200 (Thu, 26 Jul 2018) $");
   script_tag(name:"creation_date", value:"2016-09-02 13:07:24 +0530 (Fri, 02 Sep 2016)");
   script_name("VMware Tools Version Detection (Windows)");
 
@@ -56,68 +56,61 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## variable Initialization
-cpe = "";
-os_arch = "";
-key = "";
-vmtoolPath = "";
-vmtoolVer = "";
-vmtoolName = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Confirm VMware Tools
 if(!registry_key_exists(key:"SOFTWARE\VMware, Inc.\VMware Tools") &&
    !registry_key_exists(key:"SOFTWARE\Wow6432Node\VMware, Inc.\VMware Tools")){
   exit(0);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
-  key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
+  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-## Check for 64 bit platform
 else if("x64" >< os_arch){
-  key = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
+  key_list =  make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\",
+                        "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
+
 }
 
+if(isnull(key_list)){
+  exit(0);
+}
 
-foreach item (registry_enum_keys(key:key))
+foreach key (key_list)
 {
-  vmtoolName = registry_get_sz(key:key + item, item:"DisplayName");
-
-  ## Confirm for VMware Tools
-  if("VMware Tools" >< vmtoolName)
+  foreach item (registry_enum_keys(key:key))
   {
-    vmtoolVer = registry_get_sz(key:key + item, item:"DisplayVersion");
+    vmtoolName = registry_get_sz(key:key + item, item:"DisplayName");
 
-    if(vmtoolVer)
+    if("VMware Tools" >< vmtoolName)
     {
-      vmtoolPath = registry_get_sz(key:key + item, item:"InstallLocation");
-      if(!vmtoolPath){
-        vmtoolPath = "Unable to find the install location from registry";
+      vmtoolVer = registry_get_sz(key:key + item, item:"DisplayVersion");
+
+      if(vmtoolVer)
+      {
+        vmtoolPath = registry_get_sz(key:key + item, item:"InstallLocation");
+        if(!vmtoolPath){
+          vmtoolPath = "Unable to find the install location from registry";
+        }
+
+        set_kb_item(name:"VMwareTools/Win/Ver", value:vmtoolVer);
+
+        cpe = build_cpe(value:vmtoolVer, exp:"^([0-9.]+)", base:"cpe:/a:vmware:tools:");
+        if(isnull(cpe))
+          cpe = "cpe:/a:vmware:tools";
+
+        register_product(cpe:cpe, location:vmtoolPath);
+        log_message(data: build_detection_report(app: "VMware Tools",
+                                                 version: vmtoolVer,
+                                                 install: vmtoolPath,
+                                                 cpe: cpe,
+                                                 concluded: vmtoolVer));
+        exit(0);
       }
-
-      set_kb_item(name:"VMwareTools/Win/Ver", value:vmtoolVer);
-
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:vmtoolVer, exp:"^([0-9.]+)", base:"cpe:/a:vmware:tools:");
-      if(isnull(cpe))
-        cpe = "cpe:/a:vmware:tools";
-
-      ## Register Product and Build Report
-      register_product(cpe:cpe, location:vmtoolPath);
-      log_message(data: build_detection_report(app: "VMware Tools",
-                                               version: vmtoolVer,
-                                               install: vmtoolPath,
-                                               cpe: cpe,
-                                               concluded: vmtoolVer));
-      exit(0);
     }
   }
 }

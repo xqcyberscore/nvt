@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dsl_detect.nasl 9331 2018-04-05 12:19:35Z jschulte $
+# $Id: gb_dlink_dsl_detect.nasl 10637 2018-07-26 09:34:03Z santu $
 #
 # Dlink DSL Devices Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812377");
-  script_version("$Revision: 9331 $");
+  script_version("$Revision: 10637 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 14:19:35 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-26 11:34:03 +0200 (Thu, 26 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-01-03 16:00:40 +0530 (Wed, 03 Jan 2018)");
   script_name("Dlink DSL Devices Detection");
 
@@ -65,33 +65,32 @@ if(!dlinkPort = get_http_port(default:80)){
   exit(0);
 }
 
-banner = get_http_banner(port:dlinkPort);
-if(!banner){
-  exit(0);
-}
-
-if(("Server: micro_httpd" >< banner || "Server: Boa" >< banner) && 'WWW-Authenticate: Basic realm="DSL-' >< banner)
+foreach file( make_list( "/", "/cgi-bin/webproc" ) )
 {
-  dlinkVer = "Unknown";
-
-  set_kb_item(name:"host_is_dlink_dsl", value:TRUE);
-
-  model = eregmatch(pattern:'"DSL-([0-9A-Z]+)"', string:banner);
-  if(model[1])
+  res = http_get_cache(port: dlinkPort, item: file);
+  if((("Server: micro_httpd" >< res || "Server: Boa" >< res) && 'WWW-Authenticate: Basic realm="DSL-' >< res) ||
+     ("DSL Router" >< res && res =~ "Copyright.*D-Link Systems"))
   {
-    set_kb_item(name:"Dlink/DSL/model", value:model[1]);
-    Model = model[1];
-  } else {
-    Model = "Unknown";
+    dlinkVer = "Unknown";
+    set_kb_item(name:"host_is_dlink_dsl", value:TRUE);
+    model = eregmatch(pattern:"DSL-([0-9A-Z]+)", string:res);
+    if(model[1])
+    {
+      set_kb_item(name:"Dlink/DSL/model", value:model[1]);
+      Model = model[1];
+    } 
+    else{
+      Model = "Unknown";
+    }
+
+    cpe = "cpe:/h:dlink:dsl-";
+
+    register_product(cpe:cpe, location:dlinkPort + '/tcp', port:dlinkPort);
+
+    log_message(data: build_detection_report(app:"Dlink DSL" , version:dlinkVer, install:dlinkPort + '/tcp', cpe:cpe,
+                concluded:"DLink DSL Device Version:" + dlinkVer + ", Model:" + Model),
+                port:dlinkPort);
+    exit(0);
   }
-
-  cpe = "cpe:/h:dlink:dsl-";
-
-  register_product(cpe:cpe, location:dlinkPort + '/tcp', port:dlinkPort);
-
-  log_message(data: build_detection_report(app:"Dlink DSL" , version:dlinkVer, install:dlinkPort + '/tcp', cpe:cpe,
-              concluded:"DLink DSL Device Version:" + dlinkVer + ", Model:" + Model),
-              port:dlinkPort);
-  exit(0);
 }
 exit(0);

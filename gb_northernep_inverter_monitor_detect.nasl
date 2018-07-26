@@ -1,6 +1,6 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_northernep_inverter_monitor_detect.nasl 10608 2018-07-25 10:02:33Z asteins $
+# $Id: gb_northernep_inverter_monitor_detect.nasl 10638 2018-07-26 12:05:11Z cfischer $
 #
 # Northern Electric & Power (NEP) Inverter Monitor Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112335");
-  script_version("$Revision: 10608 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 12:02:33 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10638 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-26 14:05:11 +0200 (Thu, 26 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-25 11:05:12 +0200 (Wed, 25 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -67,12 +67,12 @@ foreach dir ( make_list_unique( "/", "/nep/status/index", cgi_dirs( port: port )
   install = dir;
   if( dir == "/" ) dir = "";
 
-  url = dir;
+  url = dir + "/";
   resp = http_get_cache( item: url, port: port );
 
   if( eregmatch( pattern: "<title>(Null|NEP) Inverter Monitor</title>", string: resp, icase: TRUE) && ( 'Energy Output</a>' >< resp || 'Auto-refresh Inverter Status</label>' >< resp ) ) {
 
-    set_kb_item( name: "norternep/inverter_monitor/detected", value: TRUE );
+    set_kb_item( name: "northernep/inverter_monitor/detected", value: TRUE );
     version = "unknown";
 
     version_match = eregmatch( pattern: 'Version:([0-9.]+)', string: resp );

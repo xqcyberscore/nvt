@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_097.nasl 7883 2017-11-23 11:22:59Z emoss $
+# $Id: GSHB_M4_097.nasl 10628 2018-07-25 15:52:40Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maﬂnahme 4.097
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94212");
-  script_version("$Revision: 7883 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-23 12:22:59 +0100 (Thu, 23 Nov 2017) $");
+  script_version("$Revision: 10628 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:52:40 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,6 +55,7 @@ include("wmi_svc.inc");
 include("wmi_user.inc");
 include("wmi_misc.inc");
 include("misc_func.inc");
+include("smb_nt.inc");
 
 name = 'IT-Grundschutz M4.097: Ein Dienst pro Server\n';
 
@@ -66,23 +67,21 @@ OSNAME = get_kb_item("WMI/WMI_OSNAME");
 log = get_kb_item("WMI/WMI_OS/log");
 WMIOSLOG = get_kb_item("WMI/WMI_OS/log");
 
-
-
 host    = get_host_ip();
-usrname = get_kb_item("SMB/login");
-domain  = get_kb_item("SMB/domain");
+usrname = kb_smb_login();
+domain  = kb_smb_domain();
 if (domain){
   usrname = domain + '\\' + usrname;
 }
-passwd  = get_kb_item("SMB/password");
+passwd = kb_smb_password();
 
 if(host && usrname && passwd){
- handle = wmi_connect(host:host, username:usrname, password:passwd); 
- 
+ handle = wmi_connect(host:host, username:usrname, password:passwd);
+
  vhdsvc = wmi_svc_prop(handle:handle, svcName:"vhdsvc");
  nvspwmi = wmi_svc_prop(handle:handle, svcName:"nvspwmi");
  vmms = wmi_svc_prop(handle:handle, svcName:"vmms");
- 
+
  if (vhdsvc){
    val = split(vhdsvc, "\n", keep:0);
    for(i=1; i<max_index(val); i++)

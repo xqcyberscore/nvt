@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_Kompendium.nasl 9933 2018-05-23 11:13:32Z emoss $
+# $Id: GSHB_Kompendium.nasl 10624 2018-07-25 15:18:47Z cfischer $
 #
 # IT-Grundschutz Kompendium
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109040");
-  script_version("$Revision: 9933 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 13:13:32 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 10624 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:18:47 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-01-29 10:14:11 +0100 (Mon, 29 Jan 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,8 +40,7 @@ if(description)
   script_add_preference(name:"Berichtformat", type:"radio", value:"Text;Tabellarisch;Text und Tabellarisch");
   script_mandatory_keys("GSHB/silence", "Compliance/Launch/GSHB-ITG");
   script_dependencies("compliance_tests.nasl", "GSHB/GSHB_SYS.1.2.2.nasl", "GSHB/GSHB_SYS.1.3.nasl", "GSHB/GSHB_SYS.2.2.2.nasl", "GSHB/GSHB_SYS.2.2.3.nasl", "GSHB/GSHB_SYS.2.3.nasl");
-  script_tag(name : "summary" , value :
-"Zusammenfassung von Tests gemδί IT-Grundschutz Kompendium.
+  script_tag(name:"summary", value:"Zusammenfassung von Tests gemδί IT-Grundschutz Kompendium.
 
 Diese Routinen prόfen sδmtliche Massnahmen des
 IT-Grundschutz Kompendiums des Bundesamts fuer Sicherheit
@@ -65,7 +64,7 @@ foreach m (mtitle) {
   m_num = m[0];
   m_title = m[1];
   m_level = m[2];
-  
+
   if ((level == 'Basis' && m_level == 'Standard') ||
       (level == 'Basis' && m_level == 'Kern')){
     continue;
@@ -78,7 +77,7 @@ foreach m (mtitle) {
   desc = get_kb_item("GSHB/" + m_num + "/desc");
 
   if (!result){
-    if (m_num >< depend){ 
+    if (m_num >< depend){
       result = 'Diese Vorgabe muss manuell όberprόft werden.';
     }else{
       result = 'Prόfroutine fόr diese Maίnahme ist nicht verfόgbar.';
@@ -86,7 +85,7 @@ foreach m (mtitle) {
   }
 
   if (!desc) {
-    if (m_num >< depend){ 
+    if (m_num >< depend){
       desc = 'Diese Vorgabe muss manuell όberprόft werden.';
     }else{
       desc = 'Prόfroutine fόr diese Maίnahme ist nicht verfόgbar.';
@@ -96,7 +95,7 @@ foreach m (mtitle) {
     read_desc = ereg_replace(pattern:'\n',replace:'\\n', string:desc);
     read_desc = ereg_replace(pattern:'\\\\n',replace:'\\n                ', string:read_desc);
   }
-  
+
   report = report + ' \n' + m_num + " " + m_title + '\n' + 'Ergebnis:       ' + result +
            '\nDetails:        ' + read_desc + '\n_______________________________________________________________________________\n';
 
@@ -114,7 +113,7 @@ foreach m (mtitle) {
   log_desc = ereg_replace(pattern:'\n',replace:' ', string:desc);
   log_desc = ereg_replace(pattern:'\\\\n',replace:' ', string:log_desc);
 
-  log = log + string('"' + ip + '"|"' + m_num + '"|"' + result + '"|"' + log_desc + '"') + '\n'; 
+  log = log + string('"' + ip + '"|"' + m_num + '"|"' + result + '"|"' + log_desc + '"') + '\n';
 
 }
 

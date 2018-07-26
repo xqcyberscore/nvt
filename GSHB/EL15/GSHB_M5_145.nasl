@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_145.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M5_145.nasl 10624 2018-07-25 15:18:47Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 5.145
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95075");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10624 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:18:47 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("IT-Grundschutz M5.145: Sicherer Einsatz von CUPS");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05145.html");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05145.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15");
   script_dependencies("GSHB/GSHB_SSH_cups.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
-  script_tag(name : "summary" , value :
-"IT-Grundschutz M5.145: Sicherer Einsatz von CUPS.
+  script_tag(name:"summary", value:"IT-Grundschutz M5.145: Sicherer Einsatz von CUPS.
 
 Stand: 14. Ergänzungslieferung (14. EL).
 ");
@@ -122,7 +121,7 @@ if(OSNAME >!< "none"){
   for (i=0; i<max_index(Lst); i++){
     if (Lst[i] =~ ".*#.*(D|d)(E|e)(F|f)(A|a)(U|u)(L|l)(T|t)(A|a)(U|u)(T|t)(H|h)(T|t)(Y|y)(P|p)(E|e).*") continue;
     DefaultAuthType += Lst[i] + '\n';
-  }    
+  }
   Lst = split(cupsd, keep:0);
     for (i=0; i<max_index(Lst); i++){
       AdminLst += Lst[i] + ";";
@@ -134,7 +133,7 @@ if(OSNAME >!< "none"){
   }
   if(!Adminconf || Adminconf == "")AdminResult = "none";
   else AdminResult = ereg_replace(string:Adminconf, pattern:";", replace:'\n');
-      
+
   if (!ServerName) ServerName = "none";
   if (!Encryption) Encryption = "none";
   if (!Listen) Listen = "none";
@@ -153,7 +152,7 @@ if(OSNAME >!< "none"){
     }
     else if (cupsclient >< "empty"){
       result = string("nicht erfüllt");
-      desc = string('Beim Testen des Systems wurde festgestellt, dass der CUPS-\nClient installiert ist. Allerdings ist die Datei\n/etc/cups/client.conf leer. Demnach kann das System nicht\nentsprechend Massnahme 5.145 konfiguriert sein.');  
+      desc = string('Beim Testen des Systems wurde festgestellt, dass der CUPS-\nClient installiert ist. Allerdings ist die Datei\n/etc/cups/client.conf leer. Demnach kann das System nicht\nentsprechend Massnahme 5.145 konfiguriert sein.');
     }else{
       if(ServerName >< "none" || Encryption >< "none"){
         result = string("nicht erfüllt");
@@ -182,7 +181,7 @@ if(OSNAME >!< "none"){
     }
     else if (cupsd >< "empty"){
       result = string("nicht erfüllt");
-      desc = string('Beim Testen des Systems wurde festgestellt, dass der CUPS-\nServer installiert ist. Allerdings ist die Datei\n"/etc/cups/cupsd.conf" leer. Demnach kann das System nicht\nentsprechend Massnahme 5.145 konfiguriert sein.');  
+      desc = string('Beim Testen des Systems wurde festgestellt, dass der CUPS-\nServer installiert ist. Allerdings ist die Datei\n"/etc/cups/cupsd.conf" leer. Demnach kann das System nicht\nentsprechend Massnahme 5.145 konfiguriert sein.');
     }else{
       if(Listen >< "none" || Browsing >< "none" || LogLevel >< "none" || PreserveJobs >< "none" || AdminResult >< "none" || DefaultAuthType >< "none"){
         result = string("nicht erfüllt");
@@ -196,7 +195,7 @@ if(OSNAME >!< "none"){
       }else if(Listen >!< "none" && Browsing >!< "none" && LogLevel >!< "none" && PreserveJobs >!< "none" && AdminResult >!< "none" && DefaultAuthType >!< "none"){
         result = string("unvollständig");
         desc = string('\nBitte prüfen Sie, ob die Optionen -Listen-, -Browsing-,\n-LogLevel-, -PreserveJobs- und -<Location /admin>- den\nAnforderungen der Maßnahme 5.145 genügen:\n' + Listen + '\n' + Browsing + '\n' + LogLevel + '\n' + PreserveJobs + '\n' + DefaultAuthType + '\n' + AdminResult + '\n');
-      }  
+      }
     }
   }
 
@@ -209,7 +208,7 @@ if(OSNAME >!< "none"){
     }
     else if (cupsd >< "empty"){
       result = string("nicht erfüllt");
-      desc = string('Beim Testen des Systems wurde festgestellt, dass der CUPS-\nServer installiert ist. Allerdings ist die Datei\n/etc/cups/cupsd.conf leer. Demnach kann das System nicht\nentsprechend Massnahme 5.145 konfiguriert sein.\n');  
+      desc = string('Beim Testen des Systems wurde festgestellt, dass der CUPS-\nServer installiert ist. Allerdings ist die Datei\n/etc/cups/cupsd.conf leer. Demnach kann das System nicht\nentsprechend Massnahme 5.145 konfiguriert sein.\n');
     }
     if (cupsclient >< "no client.conf"){
       result = string("nicht erfüllt");
@@ -217,7 +216,7 @@ if(OSNAME >!< "none"){
     }
     else if (cupsclient >< "empty"){
       result = string("nicht erfüllt");
-      desc += string('Beim Testen des Systems wurde festgestellt, dass der CUPS-Client installiert ist.\nAllerdings ist die Datei /etc/cups/client.conf leer.\nDemnach kann das System nicht entsprechend Massnahme 5.145 konfiguriert sein.');  
+      desc += string('Beim Testen des Systems wurde festgestellt, dass der CUPS-Client installiert ist.\nAllerdings ist die Datei /etc/cups/client.conf leer.\nDemnach kann das System nicht entsprechend Massnahme 5.145 konfiguriert sein.');
     }
     else if (cupsclient >!< "empty" && cupsclient >!< "no client.conf" && cupsd >!< "no cupsd.conf" && cupsd >!< "empty"){
       if(ServerName >< "none" || Encryption >< "none" || Listen >< "none" || Browsing >< "none" || LogLevel >< "none" || PreserveJobs >< "none" || AdminResult >< "none" || DefaultAuthType >< "none"){
@@ -246,7 +245,7 @@ if(OSNAME >!< "none"){
 }
 if (!result){
   result = string("Fehler");
-  desc = string('Beim Testen des Systems trat ein unbekannter Fehler auf\nbzw. es konnte kein Ergebnis ermittelt werden.'); 
+  desc = string('Beim Testen des Systems trat ein unbekannter Fehler auf\nbzw. es konnte kein Ergebnis ermittelt werden.');
 }
 
 set_kb_item(name:"GSHB/M5_145/result", value:result);

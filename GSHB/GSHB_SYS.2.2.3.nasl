@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.2.2.3.nasl 10530 2018-07-17 14:15:42Z asteins $
+# $Id: GSHB_SYS.2.2.3.nasl 10628 2018-07-25 15:52:40Z cfischer $
 #
 # IT-Grundschutz Baustein: SYS.2.2.3 Clients unter Windows 10
 #
@@ -27,21 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109034");
-  script_version("$Revision: 10530 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
+  script_version("$Revision: 10628 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:52:40 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-12-13 07:42:28 +0200 (Wed, 13 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
   script_tag(name:"qod", value:"97");
   script_name('SYS.2.2.3 Clients unter Windows 10');
-  script_xref(name : "URL" , value : " https://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKompendium/bausteine/SYS/SYS_2_2_3_Clients_unter_Windows_10.html ");
+  script_xref(name:"URL", value:" https://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKompendium/bausteine/SYS/SYS_2_2_3_Clients_unter_Windows_10.html ");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB-ITG");
   script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_Antivir.nasl", "GSHB/GSHB_SMB_UAC_Config.nasl", "GSHB/GSHB_WMI_EFS.nasl");
-  script_tag(name : "summary" , value : 'Ziel dieses Bausteins ist der Schutz von Informationen,
-      die durch und auf Windows 10-Clients verarbeiten werden.');
+  script_require_ports(139, 445);
+
+  script_tag(name:"summary", value:"Ziel dieses Bausteins ist der Schutz von Informationen,
+  die durch und auf Windows 10-Clients verarbeiten werden.");
 
   exit(0);
 }
@@ -70,7 +72,7 @@ if( domain ){
   usrname_handle = domain + '\\' + usrname;
   usrname_WmiCmd = domain + '/' + usrname;
 }
-passwd  = kb_smb_password();
+passwd = kb_smb_password();
 handle = wmi_connect(host:host, username:usrname_handle, password:passwd, ns:'root\\rsop\\computer');
 if( !handle ){
   for( i=1; i<=25; i++){
@@ -121,7 +123,7 @@ if( max_index(SecurityCenter2) <= 1 ){
 }else{
   desc = 'Folgende Schutzprogramme sind installiert:\n';
 
-  # get state of each AntiVir program (can be more than one)
+  # nb: get state of each AntiVir program (can be more than one)
   foreach line (SecurityCenter2){
     line = split(line, sep:'|', keep:FALSE);
 

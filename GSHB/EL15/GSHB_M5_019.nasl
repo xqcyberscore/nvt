@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_019.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M5_019.nasl 10624 2018-07-25 15:18:47Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 5.019
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95056");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10624 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:18:47 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("IT-Grundschutz M5.019: Einsatz der Sicherheitsmechanismen von sendmail");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05019.html");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05019.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15");
-  script_dependencies ("GSHB/GSHB_SMTP_sendmail.nasl", "GSHB/GSHB_SSH_sendmail.nasl");
-  script_tag(name : "summary" , value :
-"IT-Grundschutz M5.019: Einsatz der Sicherheitsmechanismen von sendmail.
+  script_dependencies("GSHB/GSHB_SMTP_sendmail.nasl", "GSHB/GSHB_SSH_sendmail.nasl");
+  script_tag(name:"summary", value:"IT-Grundschutz M5.019: Einsatz der Sicherheitsmechanismen von sendmail.
 
 Stand: 14. Ergänzungslieferung (14. EL).
 ");
@@ -86,7 +85,7 @@ sendmail = get_kb_item("SMTP/sendmail");
 
 if (!sendmail){
   result = string("nicht zutreffend");
-  desc = string("Auf dem System konnte Sendmail nicht entdeckt werden.");  
+  desc = string("Auf dem System konnte Sendmail nicht entdeckt werden.");
 }else if(DEBUG == "error" || EXPN == "error" || VRFX == "error"){
   result = string("Fehler");
   desc = string('Beim Abfragen des Sendmail-Servers konnte kein Ergebnis\nermittelt werden.');
@@ -143,12 +142,12 @@ else{
     if (lsaliases  !~ "-......--- . root root.*"){
       valcheck += "FAIL";
       aliaspath = ereg_replace(string:aliaspath, pattern:'\n', replace:"", icase:0);
-      desc += string('Die Datei -' + aliaspath + '- hat nicht die in der\nMaßnahme 5.019 geforderten Berechtigungen.\n' + lsaliases + '\n');      
+      desc += string('Die Datei -' + aliaspath + '- hat nicht die in der\nMaßnahme 5.019 geforderten Berechtigungen.\n' + lsaliases + '\n');
     }
     else valcheck += "OK";
     if (lsaliasesdb  !~ "-......--- . root root.*"){
       valcheck += "FAIL";
-      desc += string('Die Datei -' + aliaspath + '.db- hat nicht die in der\nMaßnahme 5.019 geforderten Berechtigungen.\n' + lsaliasesdb + '\n');      
+      desc += string('Die Datei -' + aliaspath + '.db- hat nicht die in der\nMaßnahme 5.019 geforderten Berechtigungen.\n' + lsaliasesdb + '\n');
     }
     else valcheck += "OK";
     if (aliases != "none"){
@@ -158,7 +157,7 @@ else{
       }
       if ("fail" >< aliasval){
         valcheck += "FAIL";
-        desc += string('Aus der Alias-Datei sollte jedes ausführbare Programm\nentfernt werden.');  
+        desc += string('Aus der Alias-Datei sollte jedes ausführbare Programm\nentfernt werden.');
       }
       else valcheck += "OK";
     }
@@ -199,8 +198,8 @@ else{
     }
   }
   else {
-    result = string("Fehler");  
-    desc = string("Die Datei -/etc/mail/sendmail.cf- konnte nicht gefunden werden.");  
+    result = string("Fehler");
+    desc = string("Die Datei -/etc/mail/sendmail.cf- konnte nicht gefunden werden.");
   }
 }
 
@@ -216,7 +215,7 @@ if("FAIL" >< valcheck){
 
 if (!result){
   result = string("Fehler");
-  desc = string('Beim Testen des Systems trat ein unbekannter Fehler auf\nbzw. es konnte kein Ergebnis ermittelt werden.'); 
+  desc = string('Beim Testen des Systems trat ein unbekannter Fehler auf\nbzw. es konnte kein Ergebnis ermittelt werden.');
 }
 
 set_kb_item(name:"GSHB/M5_019/result", value:result);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_017.nasl 10610 2018-07-25 11:37:44Z cfischer $
+# $Id: GSHB_M5_017.nasl 10623 2018-07-25 15:14:01Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 5.017
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95052");
-  script_version("$Revision: 10610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_active");
   script_name("IT-Grundschutz M5.017: Einsatz der Sicherheitsmechanismen von NFS");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05017.html");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05017.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15", "Tools/Present/wmi");
   script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_SSH_NFS.nasl");
-  script_tag(name : "summary" , value :"IT-Grundschutz M5.017: Einsatz der Sicherheitsmechanismen von NFS
+  script_tag(name:"summary", value:"IT-Grundschutz M5.017: Einsatz der Sicherheitsmechanismen von NFS
 
 Stand: 14. Ergänzungslieferung (14. EL).");
 
@@ -105,46 +105,46 @@ if(OSNAME >!< "none"){
   }
   if (val1 || val2 && (nfsd == "false" && mountd == "false")){
     cli_result = string("ne");
-    cli_desc = string('Beim Testen des Systems wurden folgende Fehler\ngefunden:\n\n'); 
+    cli_desc = string('Beim Testen des Systems wurden folgende Fehler\ngefunden:\n\n');
     if (val1) cli_desc += string('In der Datei /etc/fstab stehen folgende\nunzureichenden Einträge:\n' + val1 + '\n\n');
     if (val2) cli_desc += string('In der Datei /etc/vfstab stehen\nfolgende unzureichenden Einträge:\n' + val2);
   }else if (val1 || val2 && (nfsd != "false" && mountd != "false")){
     cli_result = string("ne");
-    cli_desc = string('Beim Testen des Systems wurde festgestellt das das System als\nNFS Server und Client läuft. Außerdem wurden folgende Fehler\ngefunden:\n\n'); 
+    cli_desc = string('Beim Testen des Systems wurde festgestellt das das System als\nNFS Server und Client läuft. Außerdem wurden folgende Fehler\ngefunden:\n\n');
     if (val1) cli_desc += string('In der Datei /etc/fstab stehen folgende\nunzureichenden Einträge:\n' + val1 + '\n\n');
     if (val2) cli_desc += string('In der Datei /etc/vfstab stehen folgende\nunzureichenden Einträge:\n' + val2 + '\n\n');
   }else if (((fstab =~ ".*nfs.*" && fstab =~ ".*:.*") || (vfstab =~ ".*nfs.*" && vfstab =~ ".*:.*")) && (nfsd != "false" && mountd != "false")){
     cli_result = string("ne");
-    cli_desc = string('Beim Testen des Systems wurde festgestellt das das System als\nNFS Server und Client läuft.\n\n'); 
+    cli_desc = string('Beim Testen des Systems wurde festgestellt das das System als\nNFS Server und Client läuft.\n\n');
   }else if (((fstab !~ ".*nfs.*" && fstab !~ ".*:.*") || (vfstab !~ ".*nfs.*" && vfstab !~ ".*:.*")) && (nfsd == "false" && mountd == "false")){# ||!val1 && !val2  ){
     cli_result = string("e");
     if (fstab != "none" && vfstab != "none")cli_desc = string('Beim Testen des Systems wurde kein Fehler in der\nKonfigurationsdatei /etc/fstab und /etc/vfstab festgestellt.\n\n');
     else if (fstab != "none" && vfstab == "none")cli_desc = string('Beim Testen des Systems wurde kein Fehler in der\nKonfigurationsdatei /etc/fstab festgestellt.\n\n');
-    else if (fstab == "none" && vfstab != "none")cli_desc = string('Beim Testen des Systems wurde kein Fehler in der\nKonfigurationsdatei /etc/vfstab festgestellt.\n\n');  
+    else if (fstab == "none" && vfstab != "none")cli_desc = string('Beim Testen des Systems wurde kein Fehler in der\nKonfigurationsdatei /etc/vfstab festgestellt.\n\n');
   }
-  
+
 
 #Hier folgen die Serverabfragen
   if (exports == "ok" && (nfsd == "true" && mountd == "true")){
     serv_result = string("e");
-    serv_desc = string('Beim Testen des Systems wurde kein Fehler in der\nKonfigurationsdatei /etc/exports festgestellt.\n\n'); 
+    serv_desc = string('Beim Testen des Systems wurde kein Fehler in der\nKonfigurationsdatei /etc/exports festgestellt.\n\n');
   }else if ((exports == "ok" || exports == "none") && (nfsd == "false" && mountd == "false")){
     serv_result = string("e");
-    serv_desc = string('Beim Testen des Systems wurde festgestellt,\ndass kein NFS Server läuft.\n\n'); 
+    serv_desc = string('Beim Testen des Systems wurde festgestellt,\ndass kein NFS Server läuft.\n\n');
   }else if (exports != "none" && exports != "ok" && (nfsd == "true" && mountd == "true")){
-    serv_result = string("ne");  
-    serv_desc = string('Beim Testen des Systems wurden in der Konfigurationsdatei\n/etc/exports folgende Fehlerhafte Einträge gefunden:\n' + exports + '\n\n');     
+    serv_result = string("ne");
+    serv_desc = string('Beim Testen des Systems wurden in der Konfigurationsdatei\n/etc/exports folgende Fehlerhafte Einträge gefunden:\n' + exports + '\n\n');
   }else if (exports == "none" && (nfsd == "true" && mountd == "true")){
-    serv_result = string("ne");  
-    serv_desc = string('Beim Testen des Systems wurde festgestellt, das der NFS\nServer läuft, aber die Konfigurationsdatei /etc/exports wurde\nnicht gefunden.\n\n'); 
+    serv_result = string("ne");
+    serv_desc = string('Beim Testen des Systems wurde festgestellt, das der NFS\nServer läuft, aber die Konfigurationsdatei /etc/exports wurde\nnicht gefunden.\n\n');
   }
 
   if (dfstab != "none" && dfstab == "ok"){
     serv_result = string("e");
-    serv_desc += string('Beim Testen des Systems wurde kein Fehler in der\nKonfigurationsdatei /etc/dfstab festgestellt.\n\n');     
+    serv_desc += string('Beim Testen des Systems wurde kein Fehler in der\nKonfigurationsdatei /etc/dfstab festgestellt.\n\n');
   }else if (dfstab != "none" && dfstab != "ok"){
     serv_result = string("ne");
-    serv_desc += string('Beim Testen des Systems wurden in der Konfigurationsdatei\n/etc/dfs/dfstab folgende Fehlerhafte Einträge gefunden:\n' + dfstab + '\n\n');     
+    serv_desc += string('Beim Testen des Systems wurden in der Konfigurationsdatei\n/etc/dfs/dfstab folgende Fehlerhafte Einträge gefunden:\n' + dfstab + '\n\n');
   }
 
 #Hier folgen die passwd Abfrage
@@ -174,11 +174,11 @@ if(OSNAME >!< "none"){
   }
   if (lsfstab != "none" && lsfstab !~"-rw-r--r--.*"){
     lsfstab_result = string("ne");
-    lsfstab_desc = string('Die Zugriffrechte auf /etc/fstab sollten immer 644 sein.\n\n');    
+    lsfstab_desc = string('Die Zugriffrechte auf /etc/fstab sollten immer 644 sein.\n\n');
   }
   if (lsvfstab != "none" && lsvfstab !~"-rw-r--r--.*"){
-    lsvfstab_result = string("ne"); 
-    lsvfstab_desc = string('Die Zugriffrechte auf /etc/vfstab sollten immer 644 sein.\n\n');    
+    lsvfstab_result = string("ne");
+    lsvfstab_desc = string('Die Zugriffrechte auf /etc/vfstab sollten immer 644 sein.\n\n');
   }
 }
 
@@ -192,7 +192,7 @@ if (serv_result == "ne" || cli_result == "ne" || passwd_result == "ne" || lsexpo
 
 if (!result){
   result = string("Fehler");
-  desc = string('Beim Testen des Systems trat ein unbekannter Fehler auf\nbzw. es konnte kein Ergebnis ermittelt werden.'); 
+  desc = string('Beim Testen des Systems trat ein unbekannter Fehler auf\nbzw. es konnte kein Ergebnis ermittelt werden.');
 }
 
 set_kb_item(name:"GSHB/M5_017/result", value:result);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_Read_Apache_Config.nasl 10530 2018-07-17 14:15:42Z asteins $
+# $Id: GSHB_Read_Apache_Config.nasl 10623 2018-07-25 15:14:01Z cfischer $
 #
 # Reading Apache Config (win)
 #
@@ -8,7 +8,7 @@
 # Thomas Rotter <T.Rotter@dn-systems.de>
 #
 # Copyright:
-# Copyright (c) 2009 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96020");
-  script_version("$Revision: 10530 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
+  script_version("$Revision: 10623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Reading Apache Config (win)");
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
-  script_dependencies("secpod_reg_enum.nasl", "GSHB/GSHB_WMI_Apache.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
+  script_dependencies("smb_reg_service_pack.nasl", "GSHB/GSHB_WMI_Apache.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
 
   script_tag(name:"summary", value:"Reading Apache Config");
 

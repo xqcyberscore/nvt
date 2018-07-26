@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_015.nasl 10610 2018-07-25 11:37:44Z cfischer $
+# $Id: GSHB_M4_015.nasl 10623 2018-07-25 15:14:01Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.015
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94182");
-  script_version("$Revision: 10610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("IT-Grundschutz M4.015: Gesichertes Login");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04015.html");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04015.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15", "Tools/Present/wmi");
   script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_SSH_PAM.nasl", "GSHB/GSHB_WMI_PolSecSet.nasl");
-  script_tag(name : "summary" , value :"IT-Grundschutz M4.015: Gesichertes Login
+  script_tag(name:"summary", value:"IT-Grundschutz M4.015: Gesichertes Login
 
 Stand: 14. Ergänzungslieferung (14. EL).");
 
@@ -126,10 +126,10 @@ if(OSNAME >!< "none"){
 }else if (uname =~ "SunOS .*"){
   if (solpamconf >< "none"){
     result = string("Fehler");
-    desc = string('Beim Testen des Systems trat ein Fehler auf:\n/etc/pam.conf konnte nicht gelesen werden.'); 
+    desc = string('Beim Testen des Systems trat ein Fehler auf:\n/etc/pam.conf konnte nicht gelesen werden.');
   }else if (solpamconf >< "read"){
     result = string("unvollständig");
-    desc = string('Das System ist ein ' + uname + ' System.\nZur Zeit können diese Systeme noch nicht getestet\nwerden.'); 
+    desc = string('Das System ist ein ' + uname + ' System.\nZur Zeit können diese Systeme noch nicht getestet\nwerden.');
   }
 }else if(pamlogin >< "error"){
   result = string("Fehler");
@@ -158,8 +158,8 @@ if(OSNAME >!< "none"){
         else if (limits == "novalentrys") val = "nur mit auskommentierten Einträgen gefüllt.";
         login_desc = string('pam_lastlog.so, pam_limits.so und pam_tally.so sind in\nder Konfigurationsdatei /etc/pam.d/login gesetzt.\nAllerdings ist die Datei /etc/security/limits.conf\n' + val);
       }
-    } 
-  
+    }
+
   }else{
     login_result = string("F");
     login_desc = string('Die Konfigurationsdatei /etc/pam.d/login wurde nicht\ngefunden');
@@ -182,10 +182,10 @@ if(OSNAME >!< "none"){
         else if (limits == "novalentrys") val = "nur mit auskommentierten Einträgen gefüllt.";
         sshd_desc = string('pam_lastlog.so, pam_limits.so und pam_tally.so sind in\nder Konfigurationsdatei /etc/pam.d/sshd gesetzt.\nAllerdings ist die Datei /etc/security/limits.conf\n' + val);
       }
-    } 
+    }
   }else{
     sshd_result = string("F");
-    sshd_desc = string('Die Konfigurationsdatei /etc/pam.d/sshd wurde nicht\ngefunden');  
+    sshd_desc = string('Die Konfigurationsdatei /etc/pam.d/sshd wurde nicht\ngefunden');
   }
   if (pamgdm == "read"){
     if(gdm_pamlastlog == "fail" || gdm_pamlimits == "fail" || gdm_pamtally == "fail"){
@@ -205,10 +205,10 @@ if(OSNAME >!< "none"){
         else if (limits == "novalentrys") val = "nur mit auskommentierten Einträgen gefüllt.";
         gdm_desc = string('pam_lastlog.so, pam_limits.so und pam_tally.so sind in\nder Konfigurationsdatei /etc/pam.d/gdm gesetzt.\nAllerdings ist die Datei /etc/security/limits.conf\n' + val);
       }
-    }  
+    }
   }else{
     gdm_result = string("nz");
-    gdm_desc = string('Die Konfigurationsdatei /etc/pam.d/gdm wurde nicht\ngefunden');    
+    gdm_desc = string('Die Konfigurationsdatei /etc/pam.d/gdm wurde nicht\ngefunden');
   }
   if (pamxdm == "read"){
     if(xdm_pamlastlog == "fail" || xdm_pamlimits == "fail" || xdm_pamtally == "fail"){
@@ -228,10 +228,10 @@ if(OSNAME >!< "none"){
         else if (limits == "novalentrys") val = "nur mit auskommentierten Einträgen gefüllt.";
         xdm_desc = string('pam_lastlog.so, pam_limits.so und pam_tally.so sind in\nder Konfigurationsdatei /etc/pam.d/xdm gesetzt.\nAllerdings ist die Datei /etc/security/limits.conf\n' + val);
       }
-    }   
+    }
   }else{
     xdm_result = string("nz");
-    xdm_desc = string('Die Konfigurationsdatei /etc/pam.d/xdm wurde nicht\ngefunden');      
+    xdm_desc = string('Die Konfigurationsdatei /etc/pam.d/xdm wurde nicht\ngefunden');
   }
   if (pamkde == "read"){
     if(kde_pamlastlog == "fail" || kde_pamlimits == "fail" || kde_pamtally == "fail"){
@@ -251,10 +251,10 @@ if(OSNAME >!< "none"){
         else if (limits == "novalentrys") val = "nur mit auskommentierten Einträgen gefüllt.";
         kde_desc = string('pam_lastlog.so, pam_limits.so und pam_tally.so sind in\nder Konfigurationsdatei /etc/pam.d/kde gesetzt.\nAllerdings ist die Datei /etc/security/limits.conf\n' + val);
       }
-    }   
+    }
   }else{
     kde_result = string("nz");
-    kde_desc = string('Die Konfigurationsdatei /etc/pam.d/kde wurde nicht\ngefunden');     
+    kde_desc = string('Die Konfigurationsdatei /etc/pam.d/kde wurde nicht\ngefunden');
   }
   if (sshd_result == "ne" || sshd_result == "ne" || gdm_result == "ne" || xdm_result == "ne" || kde_result == "ne"){
     result = string("nicht erfüllt");
@@ -263,7 +263,7 @@ if(OSNAME >!< "none"){
     if (gdm_result == "ne") desc += '\n' + gdm_desc;
     if (xdm_result == "ne") desc += '\n' + xdm_desc;
     if (kde_result == "ne") desc += '\n' + kde_desc;
-  }else{ 
+  }else{
     result = string("erfüllt");
     if (login_result != "ne") desc = login_desc;
     if (sshd_result != "ne") desc += '\n' + sshd_desc;
@@ -274,7 +274,7 @@ if(OSNAME >!< "none"){
 }
 if (!result){
   result = string("Fehler");
-  desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.'); 
+  desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.');
 }
 
 set_kb_item(name:"GSHB/M4_015/result", value:result);

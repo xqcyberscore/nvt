@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_338.nasl 10610 2018-07-25 11:37:44Z cfischer $
+# $Id: GSHB_M4_338.nasl 10623 2018-07-25 15:14:01Z cfischer $
 #
 # IT-Grundschutz, 11. EL, Maßnahme 4.338
 #
@@ -24,7 +24,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "IT-Grundschutz M4.338: Einsatz von Windows Vista File und Registry VirtualizationWin).
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.894338");
+  script_version("$Revision: 10623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2010-01-20 09:34:33 +0100 (Wed, 20 Jan 2010)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("IT-Grundschutz M4.338: Einsatz von Windows Vista File und Registry Virtualization (Windows)");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04338.html");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"registry");
+  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
+  script_family("IT-Grundschutz-11");
+  script_mandatory_keys("Compliance/Launch/GSHB-11", "Tools/Present/wmi");
+  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/EL15/GSHB_WMI_UAC_config.nasl");
+  script_require_keys("WMI/UAC");
+  script_tag(name:"summary", value:"IT-Grundschutz M4.338: Einsatz von Windows Vista File und Registry VirtualizationWin).
 
   ACHTUNG: Dieser Test wird nicht mehr unterstützt. Er wurde ersetzt durch
   den entsprechenden Test der nun permanent and die aktuelle EL angepasst
@@ -37,27 +54,8 @@ tag_summary = "IT-Grundschutz M4.338: Einsatz von Windows Vista File und Registr
   Aktualisierung ändern, allerdings nicht die Kernthematik.
 
   Hinweis:
-  
-  Nur ein genereller Test, ob Vista File und Registry Virtualization aktiviert ist.";
 
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.894338");
-  script_version("$Revision: 10610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
-  script_tag(name:"creation_date", value:"2010-01-20 09:34:33 +0100 (Wed, 20 Jan 2010)");
-  script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("IT-Grundschutz M4.338: Einsatz von Windows Vista File und Registry Virtualization (Windows)");
-  script_xref(name : "URL", value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04338.html");
-  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"registry");
-  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
-  script_family("IT-Grundschutz-11");
-  script_mandatory_keys("Compliance/Launch/GSHB-11", "Tools/Present/wmi");
-  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/EL15/GSHB_WMI_UAC_config.nasl");
-  script_require_keys("WMI/UAC");
-  script_tag(name : "summary" , value : tag_summary);
+  Nur ein genereller Test, ob Vista File und Registry Virtualization aktiviert ist.");
   script_tag(name:"deprecated", value:TRUE);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.1.2.2.nasl 9015 2018-03-02 15:20:47Z emoss $
+# $Id: GSHB_SYS.1.2.2.nasl 10628 2018-07-25 15:52:40Z cfischer $
 #
 # IT-Grundschutz Baustein: SYS.1.2.2 Windows Server 2012
 #
@@ -27,24 +27,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109035");
-  script_version("$Revision: 9015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-02 16:20:47 +0100 (Fri, 02 Mar 2018) $");
+  script_version("$Revision: 10628 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:52:40 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 14:42:28 +0200 (Wed, 15 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
-  script_tag(name:"qod", value:"97");  
+  script_tag(name:"qod", value:"97");
   script_name('SYS.1.2.2 Windows Server 2012');
 
-  script_xref(name : "URL" , value : " https://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKompendium/bausteine/SYS/SYS_1_2_2_Windows_Server_2012.html ");
-  
+  script_xref(name:"URL", value:" https://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKompendium/bausteine/SYS/SYS_1_2_2_Windows_Server_2012.html ");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB-ITG");
   script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/EL15/GSHB_M4_097.nasl", "gb_ms_ie_detect.nasl");
-  script_tag(name : "summary" , value : 'Zielsetzung dieses Bausteins ist der Schutz von Informationen und Prozessen,
-      die durch Serversysteme auf Basis von Windows Server 2012 (R2) im Regelbetrieb verarbeitet bzw. gesteuert werden.');
-  
+  script_require_ports(139, 445);
+  script_tag(name:"summary", value:"Zielsetzung dieses Bausteins ist der Schutz von Informationen und Prozessen,
+  die durch Serversysteme auf Basis von Windows Server 2012 (R2) im Regelbetrieb verarbeitet bzw. gesteuert werden.");
+
   exit(0);
 }
 
@@ -64,12 +65,12 @@ if( "windows server 2012" >!< tolower(Windows_OSName) ){
 }
 
 host    = get_host_ip();
-usrname = kb_smb_login(); 
+usrname = kb_smb_login();
 domain  = kb_smb_domain();
 if( domain ){
   usrname = domain + '\\' + usrname;
 }
-passwd  = kb_smb_password();
+passwd = kb_smb_password();
 
 handle = wmi_connect(host:host, username:usrname, password:passwd);
 if( !handle ){
@@ -121,7 +122,7 @@ if( res == '' ){
       }
     }
   }
-  
+
   if( result == 'nicht erfüllt'){
     desc = 'Folgende lokale Accounts benötigen kein Passwort zum Log-In:\n' + InsecureLocalAccount;
   }else{
@@ -147,7 +148,7 @@ if( Installed_IE ){
   if( registry_key_exists(key:reg_key, type:"HKLM") ){
     ESC_Admins = registry_get_dword(key:reg_key, item:"IsInstalled", type:"HKLM");
   }
-  
+
   if( ESC_Admins != '1' ){
     desc += 'Die Enhanced Security Configuration des Internet Explorers ist nicht für Administratoren aktiviert.\n';
     result = 'nicht erfüllt';
@@ -160,7 +161,7 @@ if( Installed_IE ){
   if( registry_key_exists(key:reg_key, type:"HKLM") ){
     ESC_Users = registry_get_dword(key:reg_key, item:"IsInstalled", type:"HKLM" );
   }
-  
+
   if( ESC_Users != '1' ){
     desc += 'Die Enhanced Security Configuration ist nicht für User aktiviert.\n';
     result = 'nicht erfüllt';
@@ -173,7 +174,7 @@ if( Installed_IE ){
   if( registry_key_exists(key:reg_key, type:"HKLM") ){
     EPM = registry_get_sz(key: reg_key, item:"Isolation", type:"HKLM");
   }
-  
+
   if( EPM != 'PMEM' ){
     desc += 'Der Enhanced Protected Mode wird nicht genutzt.\n';
     result = 'nicht erfüllt';
@@ -197,7 +198,7 @@ SYS_1_2_2_A6 += 'SYS.1.2.2.A6 Sichere Authentisierung und Autorisierung in Windo
 result = 'erfüllt';
 
 GROUPUSER = wmi_user_groupuser(handle:handle);
-GROUPUSER = split(GROUPUSER, sep:'\n', keep:FALSE);                                                                                                                                                                                                                        
+GROUPUSER = split(GROUPUSER, sep:'\n', keep:FALSE);
 foreach USER (GROUPUSER) {
   USER = split(USER, sep:'|', keep:FALSE);
   if( "Win32_UserAccount" >< USER[1] ){
@@ -288,8 +289,8 @@ Firewall_Public = "netsh advfirewall show public state";
 Firewall_Domain = "netsh advfirewall show domain state";
 result = 'erfüllt';
 
-usrname = get_kb_item("SMB/login");
-domain = get_kb_item("SMB/domain");
+usrname = kb_smb_login();
+domain = kb_smb_domain();
 if ( domain ){
   usrname = domain + '/' + usrname;
 }

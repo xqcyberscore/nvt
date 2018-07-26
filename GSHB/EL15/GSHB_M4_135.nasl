@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_135.nasl 10610 2018-07-25 11:37:44Z cfischer $
+# $Id: GSHB_M4_135.nasl 10623 2018-07-25 15:14:01Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.135
 #
@@ -27,21 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94215");
-  script_version("$Revision: 10610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_active");
   script_name("IT-Grundschutz M4.135: Restriktive Vergabe von Zugriffsrechten auf Systemdateien");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04135.html");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04135.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15", "Tools/Present/wmi");
   script_dependencies("GSHB/GSHB_SSH_sys_dir_write_perm.nasl", "GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_SMB_SDDL.nasl");
   script_require_keys("GSHB/ROOTSDDL");
-  script_tag(name : "summary" , value :"IT-Grundschutz M4.135: Restriktive Vergabe von Zugriffsrechten auf Systemdateien.
+  script_tag(name:"summary", value:"IT-Grundschutz M4.135: Restriktive Vergabe von Zugriffsrechten auf Systemdateien.
 
 Stand: 14. Ergänzungslieferung (14. EL).");
 
@@ -97,7 +97,7 @@ if(OSVER >!< "none" && stat){
       if(ace_flags[B] == NULL)
           break;
 
-      aceflaglength = strlen(SPLROOTSDDL[1]); 
+      aceflaglength = strlen(SPLROOTSDDL[1]);
       if(ace_flags[B] >< SPLROOTSDDL[1] && aceflaglength == 2)
         ACEFLAG = ace_flags[B + 1];
       else if(ace_flags[B] >< SPLROOTSDDL[1] && aceflaglength > 2){
@@ -106,7 +106,7 @@ if(OSVER >!< "none" && stat){
       }
     }
 ######################################
-    ACM = NULL; 
+    ACM = NULL;
     if (SPLROOTSDDL[2] =~ "0x(.*){8}")
     {
       for(C = 0; C >= 0; C++)
@@ -120,15 +120,15 @@ if(OSVER >!< "none" && stat){
         if(access_mask_hex[C] >< ACM_hex)
           ACM = access_mask_hex[C + 1];
         if (!ACM) ACM = ACM_hex;
-      }  
+      }
     }else
    {
       for(C = 0; C >= 0; C++)
       {
         if(ace_access_mask[C] == NULL)
             break;
-          
-        acemasklength = strlen(SPLROOTSDDL[2]); 
+
+        acemasklength = strlen(SPLROOTSDDL[2]);
         if(ace_access_mask[C] >< SPLROOTSDDL[2] && acemasklength == 2)
           ACM = ace_access_mask[C + 1];
         else if(ace_access_mask[C] >< SPLROOTSDDL[2] && acemasklength > 2){
@@ -136,7 +136,7 @@ if(OSVER >!< "none" && stat){
           else ACM += "/" + ace_access_mask[C + 1];
         }
       }
-    }  
+    }
 ##########################################
     for(D = 0; D >= 0; D++)
     {
@@ -146,7 +146,7 @@ if(OSVER >!< "none" && stat){
       if(sid_codes[D] == SPLROOTSDDL[5])
         SID = sid_codes[D + 1];
     }
-  
+
   ROOTFULLACE +=  ACE + ":" + ACEFLAG +  ":" + ACM + ":::" + SID + '\n';
   }
 
@@ -177,7 +177,7 @@ if(OSVER >!< "none" && stat){
       if(ace_flags[B] == NULL)
           break;
 
-      aceflaglength = strlen(SPLWINSDDL[1]); 
+      aceflaglength = strlen(SPLWINSDDL[1]);
       if(ace_flags[B] >< SPLWINSDDL[1] && aceflaglength == 2)
         ACEFLAG = ace_flags[B + 1] + ":";
       else if(ace_flags[B] >< SPLWINSDDL[1] && aceflaglength > 2){
@@ -186,7 +186,7 @@ if(OSVER >!< "none" && stat){
       }
     }
 ######################################
-    ACM = NULL;   
+    ACM = NULL;
     if (SPLWINSDDL[2] =~ "0x(.*){8}")
     {
       for(C = 0; C >= 0; C++)
@@ -200,15 +200,15 @@ if(OSVER >!< "none" && stat){
         if(access_mask_hex[C] >< ACM_hex)
           ACM = access_mask_hex[C + 1];
           if (!ACM) ACM = ACM_hex;
-      }  
+      }
     }else
     {
       for(C = 0; C >= 0; C++)
       {
         if(ace_access_mask[C] == NULL)
             break;
-          
-        acemasklength = strlen(SPLWINSDDL[2]); 
+
+        acemasklength = strlen(SPLWINSDDL[2]);
         if(ace_access_mask[C] >< SPLWINSDDL[2] && acemasklength == 2)
           ACM = ace_access_mask[C + 1];
         else if(ace_access_mask[C] >< SPLWINSDDL[2] && acemasklength > 2){
@@ -216,7 +216,7 @@ if(OSVER >!< "none" && stat){
           else ACM += "/" + ace_access_mask[C + 1];
         }
       }
-    }  
+    }
 ##########################################
     for(D = 0; D >= 0; D++)
     {
@@ -235,19 +235,19 @@ if(OSVER >!< "none" && stat){
     if (!log)desc = string("Beim Testen des Systems trat ein Fehler auf.");
     if (log)desc = string("Beim Testen des Systems trat ein Fehler auf:\n" + log);
   }
-  #Windows 2000 und kleiner:
+  #nb: Windows 2000 und kleiner:
   else if(OSVER <= '5.0')
   {
      result = string("unvollständig");
      desc = string("Ungeprüft");
   }
 
-  #Windows XP und 2003:
+  #nb: #Windows XP und 2003:
   else if(OSVER > '5.0' && OSVER < '6.0' && OSTYPE != 2)
   {
 
     if (ROOTSDDL == "O:BAG:SYD:(A;OICI;0x001f01ff;;;BA)(A;OICI;0x001f01ff;;;SY)(A;OICIIO;GA;;;CO)(A;OICI;0x001200a9;;;S-1-5-32-545)(A;CI;LC;;;S-1-5-32-545)(A;CIIO;DC;;;S-1-5-32-545)(A;;0x001200a9;;;WD)" && WINSDDL == "O:BAG:SYD:PAI(A;;0x001200a9;;;S-1-5-32-545)(A;OICIIO;GRGX;;;S-1-5-32-545)(A;;0x001301bf;;;S-1-5-32-547)(A;OICIIO;SDGRGWGX;;;S-1-5-32-547)(A;;0x001f01ff;;;BA)(A;OICIIO;GA;;;BA)(A;;0x001f01ff;;;SY)(A;OICIIO;GA;;;SY)(A;;0x001f01ff;;;BA)(A;OICIIO;GA;;;CO)"){
-  
+
       result = string("nicht erfüllt");
       desc = string('Für das Systemlaufwerk und für das Windows-Verzeichnis\nsind die Default-Sicherheitseinstellungen hinterlegt.\nBitte überprüfen Sie die Sicherheitseinstellungen und\npassen sie diese ggf. an.' + '\nRechte Systemlaufwerk:\n' + DEFINITION + '\n' + ROOTFULLACE + '\nRechte Windows-Verzeichnis:\n' + DEFINITION + '\n' + WINFULLACE);
 
@@ -267,11 +267,11 @@ if(OSVER >!< "none" && stat){
     }
   }
 
-  #Windows 2003 Domaincontroller:
+  #nb: Windows 2003 Domaincontroller:
   else if(OSVER == '5.2' && OSTYPE == 2 )
   {
     if (ROOTSDDL == "O:BAG:SYD:(A;OICI;0x001f01ff;;;BA)(A;OICI;0x001f01ff;;;SY)(A;OICIIO;GA;;;CO)(A;OICI;0x001200a9;;;S-1-5-32-545)(A;CI;LC;;;S-1-5-32-545)(A;CIIO;DC;;;S-1-5-32-545)(A;;0x001200a9;;;WD)" && WINSDDL == "O:BAG:SYD:PAI(A;;0x001200a9;;;AU)(A;OICIIO;GRGX;;;AU)(A;;0x001301bf;;;S-1-5-32-549)(A;OICIIO;SDGRGWGX;;;S-1-5-32-549)(A;;0x001f01ff;;;BA)(A;OICIIO;GA;;;BA)(A;;0x001f01ff;;;SY)(A;OICIIO;GA;;;SY)(A;;0x001f01ff;;;BA)(A;OICIIO;GA;;;CO)"){
-  
+
       result = string("nicht erfüllt");
       desc = string('Für das Systemlaufwerk und für das Windows-Verzeichnis\nsind die Default-Sicherheitseinstellungen hinterlegt.\nBitte überprüfen Sie die Sicherheitseinstellungen und\npassen sie diese ggf. an.' + '\nRechte Systemlaufwerk:\n' + DEFINITION + '\n' + ROOTFULLACE + '\nRechte Windows-Verzeichnis:\n' + DEFINITION + '\n' + WINFULLACE);
 
@@ -291,11 +291,11 @@ if(OSVER >!< "none" && stat){
   }
 
 
-  #Vista und Windows 7
+  #nb: Vista und Windows 7
   else if(OSVER >= '6.0' && OSTYPE == 1)
   {
     if (ROOTSDDL == "O:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464G:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:PAI(A;;0x001f01ff;;;BA)(A;OICIIO;GA;;;BA)(A;;0x001f01ff;;;SY)(A;OICIIO;GA;;;SY)(A;OICI;0x001200a9;;;S-1-5-32-545)(A;OICIIO;SDGRGWGX;;;AU)(A;;LC;;;AU)" && WINSDDL == "O:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464G:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:PAI(A;;0x001f01ff;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;CIIO;GA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;;0x001301bf;;;SY)(A;OICIIO;GA;;;SY)(A;;0x001301bf;;;BA)(A;OICIIO;GA;;;BA)(A;;0x001200a9;;;S-1-5-32-545)(A;OICIIO;GRGX;;;S-1-5-32-545)(A;OICIIO;GA;;;CO)"){
-  
+
       result = string("nicht erfüllt");
       desc = string('Für das Systemlaufwerk und für das Windows-Verzeichnis\nsind die Default-Sicherheitseinstellungen hinterlegt.\nBitte überprüfen Sie die Sicherheitseinstellungen und\npassen sie diese ggf. an.' + '\nRechte Systemlaufwerk:\n' + DEFINITION + '\n' + ROOTFULLACE + '\nRechte Windows-Verzeichnis:\n' + DEFINITION + '\n' + WINFULLACE);
 
@@ -314,15 +314,15 @@ if(OSVER >!< "none" && stat){
     }
   }
 
-  #Windows 2008 und 2008 R2 NON Domaincontroller
+  #nb: Windows 2008 und 2008 R2 NON Domaincontroller
   else if(OSVER >= '6.0' && OSTYPE == 3)
   {
 
     if (ROOTSDDL == "O:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464G:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:PAI(A;;0x001f01ff;;;BA)(A;OICIIO;GA;;;BA)(A;;0x001f01ff;;;SY)(A;OICIIO;GA;;;SY)(A;OICI;0x001200a9;;;S-1-5-32-545)(A;OICIIO;SDGRGWGX;;;AU)(A;;LC;;;AU)" && WINSDDL == "O:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464G:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:PAI(A;;0x001f01ff;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;CIIO;GA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;;0x001301bf;;;SY)(A;OICIIO;GA;;;SY)(A;;0x001301bf;;;BA)(A;OICIIO;GA;;;BA)(A;;0x001200a9;;;S-1-5-32-545)(A;OICIIO;GRGX;;;S-1-5-32-545)(A;OICIIO;GA;;;CO)"){
-  
+
       result = string("nicht erfüllt");
       desc = string('Für das Systemlaufwerk und für das Windows-Verzeichnis\nsind die Default-Sicherheitseinstellungen hinterlegt.\nBitte überprüfen Sie die Sicherheitseinstellungen und\npassen sie diese ggf. an.' + '\nRechte Systemlaufwerk:\n' + DEFINITION + '\n' + ROOTFULLACE + '\nRechte Windows-Verzeichnis:\n' + DEFINITION + '\n' + WINFULLACE);
-    
+
     }else if(ROOTSDDL != "O:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464G:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:PAI(A;;0x001f01ff;;;BA)(A;OICIIO;GA;;;BA)(A;;0x001f01ff;;;SY)(A;OICIIO;GA;;;SY)(A;OICI;0x001200a9;;;S-1-5-32-545)(A;OICIIO;SDGRGWGX;;;AU)(A;;LC;;;AU)" && WINSDDL == "O:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464G:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:PAI(A;;0x001f01ff;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;CIIO;GA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;;0x001301bf;;;SY)(A;OICIIO;GA;;;SY)(A;;0x001301bf;;;BA)(A;OICIIO;GA;;;BA)(A;;0x001200a9;;;S-1-5-32-545)(A;OICIIO;GRGX;;;S-1-5-32-545)(A;OICIIO;GA;;;CO)"){
 
       result = string("unvollständig");
@@ -338,15 +338,15 @@ if(OSVER >!< "none" && stat){
     }
   }
 
-  #Windows 2008 und 2008 R2 Domaincontroller
+  #nb: Windows 2008 und 2008 R2 Domaincontroller
   else if(OSVER >= '6.0' && OSTYPE == 2)
   {
 
     if (ROOTSDDL == "O:BAG:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:PAI(A;OICIIO;0x001f01ff;;;CO)(A;OICI;0x001f01ff;;;SY)(A;OICI;0x001f01ff;;;BA)(A;CIIO;0x00100002;;;S-1-5-32-545)(A;CI;0x00100004;;;S-1-5-32-545)(A;OICI;0x001200a9;;;S-1-5-32-545)" && WINSDDL == "O:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464G:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:PAI(A;;0x001f01ff;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;CIIO;GA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;;0x001301bf;;;SY)(A;OICIIO;GA;;;SY)(A;;0x001301bf;;;BA)(A;OICIIO;GA;;;BA)(A;;0x001200a9;;;S-1-5-32-545)(A;OICIIO;GRGX;;;S-1-5-32-545)(A;OICIIO;GA;;;CO)"){
-  
+
       result = string("nicht erfüllt");
       desc = string('Für das Systemlaufwerk und für das Windows-Verzeichnis\nsind die Default-Sicherheitseinstellungen hinterlegt.\nBitte überprüfen Sie die Sicherheitseinstellungen und\npassen sie diese ggf. an.' + '\nRechte Systemlaufwerk:\n' + DEFINITION + '\n' + ROOTFULLACE + '\nRechte Windows-Verzeichnis:\n' + DEFINITION + '\n' + WINFULLACE);
-    
+
     }else if(ROOTSDDL != "O:BAG:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:PAI(A;OICIIO;0x001f01ff;;;CO)(A;OICI;0x001f01ff;;;SY)(A;OICI;0x001f01ff;;;BA)(A;CIIO;0x00100002;;;S-1-5-32-545)(A;CI;0x00100004;;;S-1-5-32-545)(A;OICI;0x001200a9;;;S-1-5-32-545)" && WINSDDL == "O:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464G:S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464D:PAI(A;;0x001f01ff;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;CIIO;GA;;;S-1-5-80-956008885-3418522649-1831038044-1853292631-2271478464)(A;;0x001301bf;;;SY)(A;OICIIO;GA;;;SY)(A;;0x001301bf;;;BA)(A;OICIIO;GA;;;BA)(A;;0x001200a9;;;S-1-5-32-545)(A;OICIIO;GRGX;;;S-1-5-32-545)(A;OICIIO;GA;;;CO)"){
 
       result = string("unvollständig");
@@ -389,7 +389,7 @@ if(OSVER >!< "none" && stat){
 
 if (!result){
       result = string("Fehler");
-      desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.'); 
+      desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.');
 }
 
 set_kb_item(name:"GSHB/M4_135/result", value:result);

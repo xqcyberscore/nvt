@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_wmi_everyone_file-shares.nasl 10563 2018-07-22 10:40:42Z cfischer $
+# $Id: gb_ms_wmi_everyone_file-shares.nasl 10626 2018-07-25 15:30:18Z cfischer $
 #
 # Get Windows File-Shares, shared for Everyone
 #
@@ -9,10 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2015 Greenbone Networks GmbH, http://www.greenbone.net
-#
-# Set in an Workgroup Environment under Windows Vista and greater,
-# with enabled UAC this DWORD to access WMI:
-# HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\system\LocalAccountTokenFilterPolicy to 1
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -50,8 +46,8 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96198");
-  script_version("$Revision: 10563 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-22 12:40:42 +0200 (Sun, 22 Jul 2018) $");
+  script_version("$Revision: 10626 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:30:18 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:13:18 +0200 (Tue, 08 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");

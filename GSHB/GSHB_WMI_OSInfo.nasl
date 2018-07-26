@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_OSInfo.nasl 10396 2018-07-04 09:13:46Z cfischer $
+# $Id: GSHB_WMI_OSInfo.nasl 10628 2018-07-25 15:52:40Z cfischer $
 #
 # Get OS Version, OS Type, OS Servicepack and OS Name over WMI (win)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96999");
-  script_version("$Revision: 10396 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 11:13:46 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 10628 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:52:40 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,7 +55,7 @@ domain  = kb_smb_domain();
 if (domain){
   usrname = domain + '\\' + usrname;
 }
-passwd  = kb_smb_password();
+passwd = kb_smb_password();
 samba = kb_smb_is_samba();
 
 errorval = "none";

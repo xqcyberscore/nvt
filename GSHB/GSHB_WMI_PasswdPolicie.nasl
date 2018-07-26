@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_PasswdPolicie.nasl 7421 2017-10-13 08:32:05Z emoss $
+# $Id: GSHB_WMI_PasswdPolicie.nasl 10628 2018-07-25 15:52:40Z cfischer $
 #
 # Read the Windows Password Policy over WMI (Windows)
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96033");
-  script_version("$Revision: 7421 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 10:32:05 +0200 (Fri, 13 Oct 2017) $");
+  script_version("$Revision: 10628 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:52:40 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2009 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
-  script_dependencies("secpod_reg_enum.nasl", "GSHB_WMI_OSInfo.nasl");
+  script_dependencies("smb_reg_service_pack.nasl", "GSHB_WMI_OSInfo.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("WMI/access_successful");
 
   script_tag(name:"summary", value:"This script reads the Windows Password Policy configuration over WMI.");
@@ -53,7 +54,7 @@ include("smb_nt.inc");
 
 host    = get_host_ip();
 usrname = kb_smb_login();
-passwd  = kb_smb_password();
+passwd = kb_smb_password();
 domain  = kb_smb_domain();
 if( domain ) usrname = domain + "\" + usrname;
 

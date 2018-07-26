@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_040.nasl 10610 2018-07-25 11:37:44Z cfischer $
+# $Id: GSHB_M4_040.nasl 10623 2018-07-25 15:14:01Z cfischer $
 #
 # IT-Grundschutz, 12. EL, Maßnahme 4.040
 #
@@ -24,7 +24,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "IT-Grundschutz M4.040: Verhinderung der unautorisierten Nutzung des Rechnermikrofons.
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.94044");
+  script_version("$Revision: 10623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2011-11-07 13:38:53 +0100 (Mon, 07 Nov 2011)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("IT-Grundschutz M4.040: Verhinderung der unautorisierten Nutzung des Rechnermikrofons");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04040.html");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"package");
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("IT-Grundschutz-12");
+  script_mandatory_keys("Compliance/Launch/GSHB-12", "Tools/Present/wmi");
+  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_SSH_audio.nasl");
+  script_tag(name:"summary", value:"IT-Grundschutz M4.040: Verhinderung der unautorisierten Nutzung des Rechnermikrofons.
 
 ACHTUNG: Dieser Test wird nicht mehr unterstützt. Er wurde ersetzt durch
 den entsprechenden Test der nun permanent and die aktuelle EL angepasst
@@ -38,25 +54,7 @@ Aktualisierung ändern, allerdings nicht die Kernthematik.
 
 Hinweis:
 
-Nur für Linux umgesetzt. Es ist unter Windows nicht möglich den Status des Mikrofons über Registry/WMI auszulesen";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.94044");
-  script_version("$Revision: 10610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
-  script_tag(name:"creation_date", value:"2011-11-07 13:38:53 +0100 (Mon, 07 Nov 2011)");
-  script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("IT-Grundschutz M4.040: Verhinderung der unautorisierten Nutzung des Rechnermikrofons");
-  script_xref(name : "URL", value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04040.html");
-  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"package");
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("IT-Grundschutz-12");
-  script_mandatory_keys("Compliance/Launch/GSHB-12", "Tools/Present/wmi");
-  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_SSH_audio.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+Nur für Linux umgesetzt. Es ist unter Windows nicht möglich den Status des Mikrofons über Registry/WMI auszulesen");
   script_tag(name:"deprecated", value:TRUE);
   exit(0);
 }

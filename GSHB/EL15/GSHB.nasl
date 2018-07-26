@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB.nasl 10624 2018-07-25 15:18:47Z cfischer $
 #
 # IT-Grundschutz, 14. Erg‰nzungslieferung
 #
@@ -131,8 +131,8 @@ depend = make_list("M4_001", "M4_002", "M4_003", "M4_004", "M4_005", "M4_007",
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94171");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10624 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:18:47 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -148,8 +148,7 @@ if(description)
   script_require_keys("GSHB-15/silence");
   script_dependencies("compliance_tests.nasl");
   foreach d (depend) script_dependencies("GSHB/EL15/GSHB_" + d + ".nasl");
-  script_tag(name : "summary" , value :
-"Zusammenfassung von Tests gem‰ﬂ der IT-Grundschutz Kataloge
+  script_tag(name:"summary", value:"Zusammenfassung von Tests gem‰ﬂ der IT-Grundschutz Kataloge
 mit Stand 15. Erg‰nzungslieferung.
 
 
@@ -278,7 +277,7 @@ M4.112 Diese Maﬂnahme ist mit der 10. Erg‰nzungslieferung entfallen
 M4.113 Nutzung eines Authentisierungsservers bei Remote-Access-VPNs
 M4.114 Nutzung der Sicherheitsmechanismen von Mobiltelefonen
 M4.115 Sicherstellung der Energieversorgung von Mobiltelefonen
-M4.116 Sichere Installation von Lotus Notes/Domino 
+M4.116 Sichere Installation von Lotus Notes/Domino
 M4.117 Diese Maﬂnahme ist mit der 13. Erg‰nzungslieferung entfallen
 M4.118 Diese Maﬂnahme ist mit der 13. Erg‰nzungslieferung entfallen
 M4.119 Diese Maﬂnahme ist mit der 13. Erg‰nzungslieferung entfallen
@@ -558,7 +557,7 @@ M4.392 Authentisierung bei Webanwendungen
 M4.393 Umfassende Ein- und Ausgabevalidierung bei Webanwendungen und\n                Web-Services
 M4.394 Session-Management bei Webanwendungen und Web-Services
 M4.395 Fehlerbehandlung durch Webanwendungen und Web-Services
-M4.396 Schutz vor unerlaubter automatisierter Nutzung von\n                Webanwendungen 
+M4.396 Schutz vor unerlaubter automatisierter Nutzung von\n                Webanwendungen
 M4.397 Protokollierung sicherheitsrelevanter Ereignisse von\n                Web-Anwendungen und Web-Services
 M4.398 Sichere Konfiguration von Webanwendungen
 M4.399 Kontrolliertes Einbinden von Daten und Inhalten bei\n                Webanwendungen
@@ -831,7 +830,7 @@ M5.165 Deaktivieren nicht benˆtigter Mac OS X-Netzdienste
 M5.166 Konfiguration der Mac OS X Personal Firewall
 M5.167 Sicherheit beim Fernzugriff unter Mac OS X
 M5.168 Sichere Anbindung von Hintergrundsystemen an Webanwendungen\n                und Web-Services
-M5.169 Systemarchitektur einer Webanwendung 
+M5.169 Systemarchitektur einer Webanwendung
 M5.170 Sichere Kommunikationsverbindungen beim Einsatz von OpenLDAP
 M5.171 Sichere Kommunikation zu einem zentralen\n                Protokollierungsserver
 M5.172 Sichere Zeitsynchronisation bei der zentralen Protokollierung

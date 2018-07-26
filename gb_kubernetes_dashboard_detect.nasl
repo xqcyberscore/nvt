@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kubernetes_dashboard_detect.nasl 10582 2018-07-23 15:30:28Z tpassfeld $
+# $Id: gb_kubernetes_dashboard_detect.nasl 10621 2018-07-25 14:18:59Z tpassfeld $
 #
 # Kubernetes Dashboard UI Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114009");
-  script_version("$Revision: 10582 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-07-23 17:30:28 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10621 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-07-25 16:18:59 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name: "creation_date", value: "2018-07-16 15:22:55 +0200 (Mon, 16 Jul 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,7 +48,6 @@ extract its version if possible.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("global_settings.nasl", "find_service.nasl", "http_version.nasl");
-  script_exclude_keys("keys/islocalhost", "keys/islocalnet", "keys/is_private_addr");
 
   script_xref(name: "URL", value: "https://github.com/kubernetes/dashboard");
 
@@ -59,9 +58,6 @@ include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-include("network_func.inc");
-
-if(islocalnet() || islocalhost() || is_private_addr()) exit(0);
 
 port = get_http_port(default: 80);
 res1 = http_get_cache(port: port, item:"/");

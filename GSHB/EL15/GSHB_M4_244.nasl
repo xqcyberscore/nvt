@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_244.nasl 10610 2018-07-25 11:37:44Z cfischer $
+# $Id: GSHB_M4_244.nasl 10623 2018-07-25 15:14:01Z cfischer $
 #
 # IT-Grundschutz, 15. EL, Maßnahme 4.244
 #
@@ -27,21 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94221");
-  script_version("$Revision: 10610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
   script_name("IT-Grundschutz M4.244: Sichere Systemkonfiguration von Windows Client-Betriebssystemen.");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04244.html");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04244.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15", "Tools/Present/wmi");
   script_dependencies("GSHB/GSHB_WMI_list_Services.nasl", "GSHB/GSHB_WMI_PolSecSet.nasl", "GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_PasswdPolicie.nasl", "GSHB/GSHB_WMI_CD-Autostart.nasl", "GSHB/GSHB_WMI_XP-InetComm.nasl");
   script_require_keys("WMI/WMI_OSVER");
-  script_tag(name : "summary" , value :"IT-Grundschutz M4.244: Sichere Systemkonfiguration von Windows Client-Betriebssystemen.
+  script_tag(name:"summary", value:"IT-Grundschutz M4.244: Sichere Systemkonfiguration von Windows Client-Betriebssystemen.
 
 Stand: 15. Ergänzungslieferung (15. EL).");
 
@@ -502,7 +502,7 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
 }else if("error" >< CPSGENERAL){
   result = string("Fehler");
   if (!log) desc = string("Beim Testen des Systems trat ein Fehler auf.");
-  if (log) desc = string("Beim Testen des Systems trat ein Fehler auf:\n" + log);  
+  if (log) desc = string("Beim Testen des Systems trat ein Fehler auf:\n" + log);
 }else if(OSVER < '5.1' || ( OSVER == '5.2' && OSNAME >!< 'Microsoft(R) Windows(R) XP Professional x64 Edition') || (OSVER > '5.2' && OSTYPE != '1')){
   result = string("nicht zutreffend");
   desc = string("Das System ist kein Windows Client-Betriebssystem.");
@@ -617,8 +617,8 @@ if (WMIOSLOG == "On the Target System runs Samba, it is not an Microsoft System.
     for(i=0; i<max_index(NullSessionShares); i++)
     {
       NullSessionSharesval += NullSessionShares[i] + ';\n';
-    }    
-    
+    }
+
     val = val + '\n\n' + "Netzwerkzugriff: Freigaben, auf die anonym zugegriffen\nwerden kann:\n" + NullSessionSharesval;
   }
   if (ObCaseInsensitive != "1") val = val + '\n\n' + "Systemobjekte: Groß-/Kleinschreibung für Nicht-\nWindows-Subsysteme ignorieren: " + ObCaseInsensitive;

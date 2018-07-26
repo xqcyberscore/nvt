@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.2.3.nasl 9774 2018-05-09 10:20:10Z emoss $
+# $Id: GSHB_SYS.2.3.nasl 10623 2018-07-25 15:14:01Z cfischer $
 #
 # IT-Grundschutz Baustein: SYS.2.3 Clients unter Unix
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109038");
-  script_version("$Revision: 9774 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 12:20:10 +0200 (Wed, 09 May 2018) $");
+  script_version("$Revision: 10623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-12-19 15:30:28 +0100 (Tue, 19 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -111,7 +111,7 @@ if( "status: install ok installed" >< tolower(sudo) ){
 sollte installiert sein.\n';
 }
 
-desc += 'Bitte stellen Sie sicher, dass Administratoren sich nicht im Normalbetrieb 
+desc += 'Bitte stellen Sie sicher, dass Administratoren sich nicht im Normalbetrieb
 als root anmelden.\n';
 
 SYS_2_3_A1 += desc + '\n';
@@ -178,7 +178,7 @@ res = 'erfüllt';
 cmd = 'dpkg -s autofs';
 Autofs = ssh_cmd(socket:sock, cmd:cmd);
 if( "install ok installed" >< tolower(Autofs) ){
-  desc = 'Das Paket "autofs" scheint auf dem Host installiert zu sein. 
+  desc = 'Das Paket "autofs" scheint auf dem Host installiert zu sein.
 Dies kann automatisches Einbinden von Wechsellaufwerken zur Folge haben und sollte
 daher entfernt werden.\n';
   res = 'nicht erfüllt';
@@ -192,7 +192,7 @@ daher entfernt werden.\n';
 cmd = 'dpkg -s usbmount';
 USBmount = ssh_cmd(socket:sock, cmd:cmd);
 if( "install ok installed" >< tolower(USBmount) ){
-  desc += 'Das Paket "usbmount" scheint auf dem Host installiert zu sein. 
+  desc += 'Das Paket "usbmount" scheint auf dem Host installiert zu sein.
 Dies kann automatisches Einbinden von USB-Laufwerken zur Folge haben und sollte
 daher entfernt werden.\n';
   res = 'nicht erfüllt';
@@ -250,7 +250,7 @@ if( GlobalDirectories ){
 nicht gesetzt:\n ' + NoStickyBit;
     res = 'nicht erfüllt';
   }else{
-    desc = 'Es wurden keine global les- und schreibbare Verzeichnisse ohne das 
+    desc = 'Es wurden keine global les- und schreibbare Verzeichnisse ohne das
 StickyBit gefunden.\n';
   }
 }else{
@@ -268,7 +268,7 @@ desc = '';
 AppArmor_Basic = get_kb_item("GSHB/AppArmor_Basic");
 if( AppArmor_Basic == '1' ) {
   desc += 'App-Armor ist auf dem Host installiert. Anwendungen sollten durch
-Whitelisting reglementiert und Profile sollten im Enforced Mode oder mit 
+Whitelisting reglementiert und Profile sollten im Enforced Mode oder mit
 geeigneten Alternativen verwendet werden.\n';
   res = 'erfüllt';
 }
@@ -276,7 +276,7 @@ geeigneten Alternativen verwendet werden.\n';
 SELinux_Basics = get_kb_item("GSHB/SeLinux_Basics");
 if( SELinux_Basics == '1' ){
   desc += 'SeLinux ist auf dem Host installiert. Anwendungen sollten durch
-Whitelisting reglementiert und Profile sollten im Enforced Mode oder mit 
+Whitelisting reglementiert und Profile sollten im Enforced Mode oder mit
 geeigneten Alternativen verwendet werden.\n';
   res = 'erfüllt';
 }
@@ -322,7 +322,7 @@ desc = 'Absicherung des Bootloaders:\n';
 if( GrubPasswd ){
   desc += 'Der Bootloader "Grub" wird verwendet und ein Passwortschutz ist ' + GrubPasswd + '\n';
 }else{
-  desc += 'Der Bootloader "Grub" wird nicht verwendet oder es konnte keine 
+  desc += 'Der Bootloader "Grub" wird nicht verwendet oder es konnte keine
 Grub-Konfigurationsdatei gefunden werden. Ein Bootloader sollte mit einem Passwort
 abgesichert werden.\n';
 }
@@ -335,12 +335,12 @@ sollten genutzt werden.\n';
 }else{
   SecureBoot = ssh_cmd(socket:sock, cmd:"mokutil --sb-state");
   if( "command not found" >< SecureBoot ){
-    desc += 'UEFI wird verwendet, der Status von Secure Boot konnte jedoch 
+    desc += 'UEFI wird verwendet, der Status von Secure Boot konnte jedoch
 nicht ermittelt werden. Secure Boot oder äquivalente Lösungen sollte genutzt werden.\n';
   }else if( "enabled" >< SecureBoot ){
     desc += 'UEFI und Secure Boot wird genutzt.\n';
   }else{
-    desc += 'UEFI wird verwendet, Secure Boot wird jedoch nicht genutzt. 
+    desc += 'UEFI wird verwendet, Secure Boot wird jedoch nicht genutzt.
 Secure Boot oder äquivalente Lösungen sollten genutzt werden.\n';
     res = 'nicht erfüllt';
   }
@@ -365,7 +365,7 @@ werden, um eine Überlastung der Festplatten zu verhindern.\n';
   desc = 'Fehler: Die Datei "/etc/fstab" konnte nicht gelesen werden.\n';
   res = 'error';
 }else{
-  desc = 'Folgende Geräte und Partitionen werden mit Quota eingeschränkt:\n' + 
+  desc = 'Folgende Geräte und Partitionen werden mit Quota eingeschränkt:\n' +
     fstabQuota + '\n';
 }
 
@@ -395,11 +395,11 @@ PAM_PKCS11 = ssh_cmd( socket:sock, cmd:'cat /etc/pam.d/login | grep "required" |
 PAM_POLDI = ssh_cmd( socket:sock, cmd:'cat /etc/pam.d/login | grep "required" | grep -v "^#" | grep "pam_poldi.so"');
 
 if( PAM_PKCS11 ){
-  desc = 'Das Modul "pam_pkcs11" zur Authentifizierung mittels einer SmartCard 
+  desc = 'Das Modul "pam_pkcs11" zur Authentifizierung mittels einer SmartCard
 ist auf dem Client vorhanden. Die korrekte Konfiguration für eine Zwei-Faktor-
 Authentisierung sollte manuell geprüft werden.\n';
 }else if( PAM_POLDI ){
-  desc = 'Das Modul "pam_poldi" zur Authentifizierung mittels einer SmartCard 
+  desc = 'Das Modul "pam_poldi" zur Authentifizierung mittels einer SmartCard
 ist auf dem Client vorhanden. Die korrekte Konfiguration für eine Zwei-Faktor-
 Authentisierung sollte manuell geprüft werden.\n';
 }else{
@@ -419,7 +419,7 @@ res = 'nicht erfüllt';
 cmd = 'cat /etc/sysctl.conf | grep -v "^#" | grep "kernel.modules_disabled=1"';
 AutoloadKernelModules = ssh_cmd(socket:sock, cmd:cmd);
 
-if( "permission denied" >< tolower(AutoloadKernelModules) || 
+if( "permission denied" >< tolower(AutoloadKernelModules) ||
     "no such file" >< tolower(AutoloadKernelModules) ){
   desc = 'Fehler: Die Systemeinstellungen konnten nicht gelesen werden.\n';
   res = 'error';
@@ -427,7 +427,7 @@ if( "permission denied" >< tolower(AutoloadKernelModules) ||
   desc = 'Neue Kernelmodule können nicht automatisch geladen und aktiviert werden.\n';
   res = 'erfüllt';
 }else{
-  desc = 'Neue Kernelmodule können automatisch geladen und aktiviert werden. 
+  desc = 'Neue Kernelmodule können automatisch geladen und aktiviert werden.
 Dies sollte verhindert werden.\n';
 }
 
@@ -440,7 +440,7 @@ set_kb_item(name:"GSHB/SYS.2.3.A14/desc", value:desc);
 SYS_2_3_A15 = 'SYS.2.3.A15 Zusätzlicher Schutz vor der Ausführung unerwünschter Dateien (CI):\n';
 MntWithoutNoexec = ssh_cmd(socket:sock, cmd:'findmnt -l | grep rw | grep -v "noexec"');
 res = 'nicht erfüllt';
-if( "command not found" >< tolower(MntWithoutNoexec) || 
+if( "command not found" >< tolower(MntWithoutNoexec) ||
     "permission denied" >< tolower(MntWithoutNoexec) ){
   desc = 'Fehler: Die gemounteten Partitionen und Verzeichnisse konnten
     nicht gelesen werden.\n';
@@ -473,7 +473,7 @@ sollte manuell überprüft werden.\n';
   desc = 'Das Paket "seccomp" ist nicht installiert. Dies sollte installiert
 und konfiguriert werden.\n';
 }
-desc += 'Zusätzlich sollten die aktiven Profile von "SeLinux" oder "AppArmor" 
+desc += 'Zusätzlich sollten die aktiven Profile von "SeLinux" oder "AppArmor"
 manuell überprüft werden.\n';
 
 SYS_2_3_A17 += desc + '\n';
@@ -495,7 +495,7 @@ res = "Diese Vorgabe muss manuell überprüft werden.";
 SysRq = ssh_cmd(socket:sock, cmd:"cat /proc/sys/kernel/sysrq");
 if( "permission denied" >< tolower(SysRq) ||
     "no such file" >< tolower(SysRq) ){
-  desc = 'Fehler: Die Datei "/proc/sys/kernel/sysrq" konnte nicht gelesen 
+  desc = 'Fehler: Die Datei "/proc/sys/kernel/sysrq" konnte nicht gelesen
     werden.\n';
     res = 'error';
 }else if( "no such file or directory" >< tolower(SysRq) ||
@@ -510,7 +510,7 @@ if( "permission denied" >< tolower(SysRq) ||
 ob diese notwendig oder kritisch sind.\n';
   res = 'nicht erüllt';
 }else{
-  desc = 'Fehler: Ein unbekannter Fehler ist aufgetreten. Bitte prüfen Sie manuell, 
+  desc = 'Fehler: Ein unbekannter Fehler ist aufgetreten. Bitte prüfen Sie manuell,
 ob kritische SysRq-Funktionen abgeschaltet sind.\n';
   res = "error";
 }

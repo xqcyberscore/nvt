@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_swarmpit_detect.nasl 10582 2018-07-23 15:30:28Z tpassfeld $
+# $Id: gb_swarmpit_detect.nasl 10621 2018-07-25 14:18:59Z tpassfeld $
 #
 # Swarmpit UI Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114013");
-  script_version("$Revision: 10582 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-07-23 17:30:28 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10621 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-07-25 16:18:59 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name: "creation_date", value: "2018-07-23 16:27:09 +0200 (Mon, 23 Jul 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,9 +59,6 @@ include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-include("network_func.inc");
-
-if( islocalnet() || islocalhost() || is_private_addr() ) exit( 0 );
 
 port = get_http_port(default: 8888);
 url1 = "/version";
@@ -70,7 +67,7 @@ res1 = http_get_cache(port:port, item:url1);
 res2 = http_get_cache(port:port, item:url2);
 
 # res1 example -> {"name":"swarmpit","version":"1.5","revision":"3ee51a8e6b96038fd47c0c306075f0ded16952ff","docker":{"api":1.37,"engine":"18.03.1-ce"}}
-if('"name":"swarmpit"' >< res1 || "swarmpit" >< res2) {
+if('"name":"swarmpit"' >< res1 || "swarmpit.component.page-login" >< res2 || "swarmpit.component.mixin" >< res2) {
    version = "unknown";
    install = "/";
 

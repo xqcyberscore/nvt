@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_004.nasl 10610 2018-07-25 11:37:44Z cfischer $
+# $Id: GSHB_M4_004.nasl 10623 2018-07-25 15:14:01Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.004
 #
@@ -27,21 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94175");
-  script_version("$Revision: 10610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"registry");  
+  script_tag(name:"qod_type", value:"registry");
   script_name("IT-Grundschutz M4.004: Geeigneter Umgang mit Laufwerken für Wechselmedien und externen Datenspeichern");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04004.html");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04004.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15", "Tools/Present/wmi");
   script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_removable-media.nasl", "GSHB/GSHB_SSH_USB_storage.nasl");
   script_require_keys("WMI/CD_driver_start", "WMI/FD_driver_start", "WMI/SF_driver_start", "WMI/USB_driver_start", "WMI/StorageDevicePolicies");
-  script_tag(name : "summary" , value :"IT-Grundschutz M4.004: Geeigneter Umgang mit Laufwerken für Wechselmedien und externen Datenspeicher.
+  script_tag(name:"summary", value:"IT-Grundschutz M4.004: Geeigneter Umgang mit Laufwerken für Wechselmedien und externen Datenspeicher.
 
 Stand: 14. Ergänzungslieferung (14. EL).");
 
@@ -54,7 +54,7 @@ name = 'IT-Grundschutz M4.004: Geeigneter Umgang mit Laufwerken für Wechselmedie
 
 OSNAME = get_kb_item("WMI/WMI_OSNAME");
 
-cdstart = get_kb_item("WMI/CD_driver_start"); 
+cdstart = get_kb_item("WMI/CD_driver_start");
 fdstart = get_kb_item("WMI/FD_driver_start");
 sfstart = get_kb_item("WMI/SF_driver_start");
 usbstart = get_kb_item("WMI/USB_driver_start");
@@ -65,7 +65,7 @@ usbmodules = get_kb_item("GSHB/usbmodules");
 usbstorage = get_kb_item("GSHB/usbstorage");
 usbbus = get_kb_item("GSHB/usbbus");
 sshlog = get_kb_item("GSHB/usbmodules/log");
-    
+
 
 gshbm =  "IT-Grundschutz M4.004: ";
 
@@ -98,18 +98,18 @@ if (OSNAME >!< "none" || "windows" >< usbbus){
     if (sshlog) desc = string("Beim Testen des Systems trat ein Fehler auf:\n" + sshlog);
   } else if (usbmodules >< "none" && usbstorage >< "none" && usbbus >< "none"){
     result = string("erfüllt");
-    desc = string("Es konnte kein angeschlossenes USB-Storage Gerät\ngefunden werden. Des weiteren wurde keine USB-Storage\nKernelmodule gefunden.");  
+    desc = string("Es konnte kein angeschlossenes USB-Storage Gerät\ngefunden werden. Des weiteren wurde keine USB-Storage\nKernelmodule gefunden.");
   } else{
     result = string("nicht erfüllt");
     if (usbstorage != "none") desc = string('Es wurden folgende angeschlossenen USB-Storage Gerät\ngefunden:\n' + usbstorage + '\n');
     if (usbmodules != "none") desc += string('Es wurden folgende USB-Storage Kernelmodule gefunden:\n' + usbmodules + '\n');
-    if (usbbus != "none") desc += string('Aufgrund der vorgefundenen Verzeichnisstrucktur\n-/sys/bus/usb/drivers/usb-storage- muss davon aus-\ngegangen werden, dass USB-Storage Kernelmodule\nvorhanden sind:\n' + usbbus + '\n');    
+    if (usbbus != "none") desc += string('Aufgrund der vorgefundenen Verzeichnisstrucktur\n-/sys/bus/usb/drivers/usb-storage- muss davon aus-\ngegangen werden, dass USB-Storage Kernelmodule\nvorhanden sind:\n' + usbbus + '\n');
   }
 }
 
 if (!result){
   result = string("Fehler");
-  desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.'); 
+  desc = string('Beim Testen des Systems trat ein unbekannter Fehler\nauf bzw. es konnte kein Ergebnis ermittelt werden.');
 }
 
 

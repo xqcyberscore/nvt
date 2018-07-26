@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_009.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M4_009.nasl 10624 2018-07-25 15:18:47Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.009
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94180");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10624 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:18:47 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("IT-Grundschutz M4.009: Einsatz der Sicherheitsmechanismen von X-Window");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04009.html");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04009.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15");
   script_dependencies("GSHB/GSHB_SSH_xwindow.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
-  script_tag(name : "summary" , value :
-"IT-Grundschutz M4.009: Einsatz der Sicherheitsmechanismen von X-Window.
+  script_tag(name:"summary", value:"IT-Grundschutz M4.009: Einsatz der Sicherheitsmechanismen von X-Window.
 
 Stand: 14. Ergänzungslieferung (14. EL).
 ");
@@ -59,7 +58,7 @@ sshd = get_kb_item("GSHB/xwindow/sshd");
 sshdlow = tolower(sshd);
 lsxhost = get_kb_item("GSHB/xwindow/lsxhost");
 log = get_kb_item("GSHB/xwindow/log");
-   
+
 OSNAME = get_kb_item("WMI/WMI_OSNAME");
 
 if(OSNAME >!< "none"){
@@ -77,16 +76,16 @@ if(OSNAME >!< "none"){
   desc = string('Beim Testen des Systems wurde festgestellt, das\n/etc/ssh/sshd_config nicht gefunden wurde!');
 }else if (sshd >< "nogrep"){
   result = string("Fehler");
-  desc += string('Beim Testen des Systems wurde der Befehl\ngrep nicht gefunden.'); 
+  desc += string('Beim Testen des Systems wurde der Befehl\ngrep nicht gefunden.');
 }else if (sshd >< "noperm"){
   result = string("Fehler");
-  desc += string('Beim Testen des Systems wurde festgestellt, dass Sie\nkeine Berechtigung haben die Datei\n/etc/ssh/sshd_config zu lesen.'); 
+  desc += string('Beim Testen des Systems wurde festgestellt, dass Sie\nkeine Berechtigung haben die Datei\n/etc/ssh/sshd_config zu lesen.');
 }else if (lsxhost =~ ".........x .*"){
   result = string("nicht erfüllt");
-  desc += string('Beim Testen des Systems wurde festgestellt, dass\nnormale Benutzer den Befehl /usr/bin/xhost auführen\nkönnen. Folgende Einstellungen wurden vorgefunden:\n' + lsxhost); 
+  desc += string('Beim Testen des Systems wurde festgestellt, dass\nnormale Benutzer den Befehl /usr/bin/xhost auführen\nkönnen. Folgende Einstellungen wurden vorgefunden:\n' + lsxhost);
 }else if (sshdlow =~ ".*#.*x11forwarding"|| sshdlow =~ 'x11forwarding[ \t]+no.*'){
   result = string("nicht erfüllt");
-  desc += string('Beim Testen des Systems wurde festgestellt, dass\nX11Forwarding in der Datei /etc/ssh/sshd_config nicht\naktiviert ist.\nFolgende Einstellungen wurden vorgefunden:\n' + sshd); 
+  desc += string('Beim Testen des Systems wurde festgestellt, dass\nX11Forwarding in der Datei /etc/ssh/sshd_config nicht\naktiviert ist.\nFolgende Einstellungen wurden vorgefunden:\n' + sshd);
 }else{
   result = string("erfüllt");
   if (lsxhost >!< "noxhost")desc = string('X11Forwarding wurde in der Datei /etc/ssh/sshd_config\naktiviert und normale Benutzer haben keine\nBerechtigung /usr/bin/xhost auszuführen:\nEinstellungen /etc/ssh/sshd_config: ' + sshd + '\nEinstellungen für /usr/bin/xhost: ' + lsxhost + '\nBitte prüfen Sie auch local die XHOST Tabelle.');

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_XP-InetComm.nasl 10610 2018-07-25 11:37:44Z cfischer $
+# $Id: GSHB_WMI_XP-InetComm.nasl 10628 2018-07-25 15:52:40Z cfischer $
 #
 # Checks XP Internetcommunication of some Programs (Windows)
 #
@@ -9,9 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
-#
-# Set in an Workgroup Environment under Vista with enabled UAC this DWORD to access WMI:
-# HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\system\LocalAccountTokenFilterPolicy to 1
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,7 +24,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The script Checks XP Internetcommunication of some Programs:
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.96038");
+  script_version("$Revision: 10628 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:52:40 +0200 (Wed, 25 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"qod_type", value:"registry");
+  script_name("Checks XP Internetcommunication of some Programs (Windows)");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
+  script_family("IT-Grundschutz");
+  script_mandatory_keys("Compliance/Launch/GSHB", "Tools/Present/wmi");
+  script_dependencies("smb_reg_service_pack.nasl", "GSHB_WMI_OSInfo.nasl");
+
+  script_tag(name:"summary", value:"The script Checks XP Internetcommunication of some Programs:
 
     * Internet Explorer
 
@@ -51,36 +64,21 @@ tag_summary = "The script Checks XP Internetcommunication of some Programs:
 
     * Webdienst Assoziation
 
-    * Fehlerberichterstattung";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.96038");
-  script_version("$Revision: 10610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
-  script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
-  script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"registry");  
-  script_name("Checks XP Internetcommunication of some Programs (Windows)");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
-  script_family("IT-Grundschutz");
-  script_mandatory_keys("Compliance/Launch/GSHB", "Tools/Present/wmi");
-  script_dependencies("secpod_reg_enum.nasl", "GSHB_WMI_OSInfo.nasl");
-
-  script_tag(name : "summary" , value : tag_summary);
+    * Fehlerberichterstattung");
 
   exit(0);
 }
 
+include("smb_nt.inc");
+
 host    = get_host_ip();
-usrname = get_kb_item("SMB/login");
-domain  = get_kb_item("SMB/domain");
+usrname = kb_smb_login();
+domain  = kb_smb_domain();
 if (domain){
   usrname = domain + '\\' + usrname;
 }
-passwd  = get_kb_item("SMB/password");
+passwd = kb_smb_password();
+
 OSVER = get_kb_item("WMI/WMI_OSVER");
 OSTYPE = get_kb_item("WMI/WMI_OSTYPE");
 

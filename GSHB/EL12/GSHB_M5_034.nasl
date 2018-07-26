@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_034.nasl 10610 2018-07-25 11:37:44Z cfischer $
+# $Id: GSHB_M5_034.nasl 10623 2018-07-25 15:14:01Z cfischer $
 #
 # IT-Grundschutz, 12. EL, Maßnahme 5.034
 #
@@ -24,7 +24,23 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "IT-Grundschutz M5.034: Einsatz von Einmalpasswörtern
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.95010");
+  script_version("$Revision: 10623 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2011-11-07 13:38:53 +0100 (Mon, 07 Nov 2011)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("IT-Grundschutz M5.034: Einsatz von Einmalpasswörtern");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m05034.html");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"package");
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
+  script_family("IT-Grundschutz-12");
+  script_mandatory_keys("Compliance/Launch/GSHB-12", "Tools/Present/wmi");
+  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_SSH_Opie.nasl");
+  script_tag(name:"summary", value:"IT-Grundschutz M5.034: Einsatz von Einmalpasswörtern
 
 ACHTUNG: Dieser Test wird nicht mehr unterstützt. Er wurde ersetzt durch
 den entsprechenden Test der nun permanent and die aktuelle EL angepasst
@@ -34,25 +50,7 @@ Diese Prüfung bezieht sich auf die 12. Ergänzungslieferung (12. EL) des IT-
 Grundschutz. Die detaillierte Beschreibung zu dieser Maßnahme findet sich unter
 nachfolgendem Verweis. Es ist zu beachten, dass der dortige Text sich immer auf
 die aktuellste Ergänzungslieferung bezieht. Titel und Inhalt können sich bei einer
-Aktualisierung ändern, allerdings nicht die Kernthematik.";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.95010");
-  script_version("$Revision: 10610 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 13:37:44 +0200 (Wed, 25 Jul 2018) $");
-  script_tag(name:"creation_date", value:"2011-11-07 13:38:53 +0100 (Mon, 07 Nov 2011)");
-  script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("IT-Grundschutz M5.034: Einsatz von Einmalpasswörtern");
-  script_xref(name : "URL", value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m05034.html");
-  script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"package");
-  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
-  script_family("IT-Grundschutz-12");
-  script_mandatory_keys("Compliance/Launch/GSHB-12", "Tools/Present/wmi");
-  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_SSH_Opie.nasl");
-  script_tag(name : "summary" , value : tag_summary);
+Aktualisierung ändern, allerdings nicht die Kernthematik.");
   script_tag(name:"deprecated", value:TRUE);
   exit(0);
 }

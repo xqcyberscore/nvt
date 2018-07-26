@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB-13.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB-13.nasl 10624 2018-07-25 15:18:47Z cfischer $
 #
 # IT-Grundschutz, 13. Ergänzungslieferung
 #
@@ -67,7 +67,7 @@ massnahmen = make_list("M4_001", "M4_002", "M4_003", "M4_004", "M4_005",
  "M4_318", "M4_319", "M4_320", "M4_321", "M4_322", "M4_323", "M4_324", "M4_325",
  "M4_326", "M4_327", "M4_328", "M4_329", "M4_330", "M4_331", "M4_332", "M4_333",
  "M4_334", "M4_335", "M4_336", "M4_337", "M4_338", "M4_339", "M4_340", "M4_341",
- "M4_342", "M4_343", "M4_344", "M4_345", "M4_346", "M4_347", "M4_348", "M4_349", 
+ "M4_342", "M4_343", "M4_344", "M4_345", "M4_346", "M4_347", "M4_348", "M4_349",
  "M4_350", "M4_351", "M4_352", "M4_353", "M4_354", "M4_355", "M4_356", "M4_357",
  "M4_358", "M4_359", "M4_360", "M4_361", "M4_362", "M4_363", "M4_364", "M4_365",
  "M4_366", "M4_367", "M4_368", "M4_369", "M4_370", "M4_371", "M4_372", "M4_373",
@@ -119,8 +119,8 @@ depend = make_list("M4_001", "M4_002", "M4_003", "M4_004", "M4_005", "M4_007",
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94999");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10624 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:18:47 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2013-11-20 12:24:13 +0100 (Wed, 20 Nov 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -136,8 +136,7 @@ if(description)
   script_require_keys("GSHB-13/silence");
   script_dependencies("compliance_tests.nasl");
   foreach d (depend) script_dependencies("GSHB/EL13/GSHB_" + d + ".nasl");
-  script_tag(name : "summary" , value :
-"Zusammenfassung von Tests gemäß IT-Grundschutz
+  script_tag(name:"summary", value:"Zusammenfassung von Tests gemäß IT-Grundschutz
 (in 13. Ergänzungslieferung).
 
 ACHTUNG: Dieser Test wird nicht mehr unterstützt. Er wurde ersetzt durch

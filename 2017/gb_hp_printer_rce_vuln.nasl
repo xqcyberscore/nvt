@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printer_rce_vuln.nasl 10600 2018-07-25 08:04:18Z cfischer $
+# $Id: gb_hp_printer_rce_vuln.nasl 10629 2018-07-25 18:06:02Z cfischer $
 #
 # HP Printers Arbitrary Code Execution Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106920");
-  script_version("$Revision: 10600 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 10:04:18 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10629 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 20:06:02 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-07-05 09:03:32 +0700 (Wed, 05 Jul 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,7 +48,7 @@ if (description)
   script_family("Remote file access");
   script_dependencies("pjl_detect.nasl");
   script_require_ports("Services/hp-pjl", 9100);
-  # nb: Don't add an script_mandatory_keys(from e.g. pjl_detect.nasl)
+  # nb: Don't add an script_mandatory_keys from e.g. pjl_detect.nasl
   # as some HP printers doesn't answer to the PJL probe request.
 
   script_tag(name:"summary", value:"A potential security vulnerability has been identified with certain HP

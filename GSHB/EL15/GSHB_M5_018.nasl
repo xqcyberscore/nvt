@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_018.nasl 9365 2018-04-06 07:34:21Z cfischer $
+# $Id: GSHB_M5_018.nasl 10624 2018-07-25 15:18:47Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 5.018
 #
@@ -27,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95054");
-  script_version("$Revision: 9365 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:34:21 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10624 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:18:47 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_active");
   script_name("IT-Grundschutz M5.018: Einsatz der Sicherheitsmechanismen von NIS");
-  script_xref(name : "URL" , value : "http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05018.html");
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m05/m05018.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15");
-  script_dependencies ("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_SSH_NIS.nasl");
-  script_tag(name : "summary" , value :
-"IT-Grundschutz M5.018: Einsatz der Sicherheitsmechanismen von NIS.
+  script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_SSH_NIS.nasl");
+  script_tag(name:"summary", value:"IT-Grundschutz M5.018: Einsatz der Sicherheitsmechanismen von NIS.
 
 Stand: 14. Ergänzungslieferung (14. EL).
 ");
@@ -125,19 +124,19 @@ if ((server == "windows" && client == "windows") || (server == "error" && client
       if (NisPlusUserwopw == "yes" || NisPlusGroupwopw == "yes" || NisPlusGenUserwopw == "yes" || NisPlusGenGroupwopw == "yes")desc += string('\n\nEs muss auf jeden Fall ein Eintrag im Passwortfeld vorhanden\nsein, damit nicht im Falle einer (beabsichtigten oder nicht\nbeabsichtigten) Nichtbenutzung von NIS\nversehentlich ein\nZugang mit dem Benutzernamen + ohne Passwort geschaffen wird.');
       if (LocalUID0 == "no" || LocalUID0 == "not first") desc += string('\nUm zu verhindern, dass der NIS-Administrator auf allen NIS-\nClients root-Rechte hat, sollte auf jedem NIS-Client ein\nlokaler Benutzer mit der UID 0 eingerichtet werden.');
       if (LocalUID0 == "no") desc += string('\nAuf Ihrem System wurde kein solcher User gefunden.');
-      else if (LocalUID0 == "not first") desc += string('\nAuf Ihrem System wurde zwar ein solcher User gefunden, dieser\nsollte aber vor dem -NIS User- mit der UID 0 stehen.');      
+      else if (LocalUID0 == "not first") desc += string('\nAuf Ihrem System wurde zwar ein solcher User gefunden, dieser\nsollte aber vor dem -NIS User- mit der UID 0 stehen.');
     }else{
       result = string("erfüllt");
       desc = string('Die Einstellungen für Ihren  NIS (Network Information Service)\nClient, entspechen den Empfehlungen der Maßnahme 5.018.');
       if (NisPlusUserwpw == "yes" || NisPlusGenUserwpw == "yes" ) desc += string('\nDer Eintrag +:*:0:0::: bzw. +:*::::: in der Passwortdatei\n/etc/passwd sollte dokumentiert werden.');
-      if (NisPlusGroupwpw == "yes" || NisPlusGenGroupwpw == "yes") desc += string('\nDer Eintrag +:*:0 bzw. +:*: in der Passwortdatei /etc/passwd\nsollte dokumentiert werden.');      
+      if (NisPlusGroupwpw == "yes" || NisPlusGenGroupwpw == "yes") desc += string('\nDer Eintrag +:*:0 bzw. +:*: in der Passwortdatei /etc/passwd\nsollte dokumentiert werden.');
     }
   }
 }
 
 if (!result){
   result = string("Fehler");
-  desc = string('Beim Testen des Systems trat ein unbekannter Fehler auf\nbzw. es konnte kein Ergebnis ermittelt werden.'); 
+  desc = string('Beim Testen des Systems trat ein unbekannter Fehler auf\nbzw. es konnte kein Ergebnis ermittelt werden.');
 }
 
 set_kb_item(name:"GSHB/M5_018/result", value:result);

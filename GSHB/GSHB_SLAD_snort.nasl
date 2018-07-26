@@ -1,5 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
+# $Id: GSHB_SLAD_snort.nasl 10620 2018-07-25 14:15:31Z cfischer $
 #
 # Fetch results of SLAD queries from a remote machine
 #
@@ -30,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96095");
-  script_version("$Revision: 10612 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10620 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-25 16:15:31 +0200 (Wed, 25 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-12-01 10:53:45 +0100 (Wed, 01 Dec 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,7 +42,6 @@ if(description)
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB");
   script_dependencies("compliance_tests.nasl", "find_service.nasl", "ssh_authorization.nasl");
-  script_require_ports(22, "Services/ssh");
 
   script_tag(name:"summary", value:"This script connects to SLAD on a remote host to fetch the SNORT results.
 To work properly, this script requires to be provided
