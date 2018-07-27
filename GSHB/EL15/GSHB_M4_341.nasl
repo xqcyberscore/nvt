@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_341.nasl 10623 2018-07-25 15:14:01Z cfischer $
+# $Id: GSHB_M4_341.nasl 10646 2018-07-27 07:00:22Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.341
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94246");
-  script_version("$Revision: 10623 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10646 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:00:22 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,12 +41,14 @@ if(description)
   script_mandatory_keys("Compliance/Launch/GSHB-15", "Tools/Present/wmi");
   script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/EL15/GSHB_WMI_UAC_config.nasl", "GSHB/GSHB_WMI_ProtectedMode.nasl");
   script_require_keys("WMI/UAC");
+
   script_tag(name:"summary", value:"IT-Grundschutz M4.341: Integritätsschutz ab Windows Vista.
 
-Stand: 14. Ergänzungslieferung (14. EL).
+  Stand: 14. Ergänzungslieferung (14. EL).
 
-Hinweis:
-Soweit technisch möglich umgesetzt (aktiviertes UAC und geschützter Modus in verschiedenen Zonen).");
+  Hinweis:
+
+  Soweit technisch möglich umgesetzt (aktiviertes UAC und geschützter Modus in verschiedenen Zonen).");
 
   exit(0);
 }

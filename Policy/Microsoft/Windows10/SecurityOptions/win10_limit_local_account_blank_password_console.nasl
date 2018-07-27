@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win10_limit_local_account_blank_password_console.nasl 9746 2018-05-07 12:15:27Z emoss $
+# $Id: win10_limit_local_account_blank_password_console.nasl 10649 2018-07-27 07:16:55Z emoss $
 #
 # Check value for Accounts: Limit local account use of blank passwords to console logon only (WMI)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109154");
-  script_version("$Revision: 9746 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 14:15:27 +0200 (Mon, 07 May 2018) $");
+  script_version("$Revision: 10649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:16:55 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-05-04 14:20:46 +0200 (Fri, 04 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,6 +38,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_add_preference(name:"Value", type:"radio", value:"0;1");
   script_mandatory_keys("Compliance/Launch");
   script_tag(name: "summary", value: "The Accounts: Limit local account use of 
 blank passwords to console logon only policy setting determines whether remote 
@@ -67,11 +68,28 @@ if('windows 10' >!< tolower(WindowsName)){
 type = 'HKLM';
 key = 'SYSTEM\\CurrentControlSet\\Control\\Lsa';
 item = 'LimitBlankPasswordUse';
+title = 'Accounts: Limit local account use of blank passwords to console logon only';
+fixtext = 'Set following UI path accordingly:
+Computer Configuration/Windows Settings/Security Settings/Local Policies/Security Options/' + title;
+default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
+
 if( value == ''){
-  value = 'none';
+  value = '0';
 }
-policy_logging_registry(type:type,key:key,item:item,value:value);
+
+if(int(value) == int(default)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
+policy_fixtext(fixtext:fixtext);
+policy_control_name(title:title);
 policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

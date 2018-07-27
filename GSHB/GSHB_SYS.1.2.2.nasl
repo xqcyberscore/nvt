@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.1.2.2.nasl 10628 2018-07-25 15:52:40Z cfischer $
+# $Id: GSHB_SYS.1.2.2.nasl 10647 2018-07-27 07:07:45Z cfischer $
 #
 # IT-Grundschutz Baustein: SYS.1.2.2 Windows Server 2012
 #
@@ -27,22 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109035");
-  script_version("$Revision: 10628 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:52:40 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10647 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:07:45 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 14:42:28 +0200 (Wed, 15 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
   script_tag(name:"qod", value:"97");
   script_name('SYS.1.2.2 Windows Server 2012');
-
-  script_xref(name:"URL", value:" https://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKompendium/bausteine/SYS/SYS_1_2_2_Windows_Server_2012.html ");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB-ITG");
   script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/EL15/GSHB_M4_097.nasl", "gb_ms_ie_detect.nasl");
-  script_require_ports(139, 445);
+
+  script_xref(name:"URL", value:" https://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKompendium/bausteine/SYS/SYS_1_2_2_Windows_Server_2012.html ");
+
   script_tag(name:"summary", value:"Zielsetzung dieses Bausteins ist der Schutz von Informationen und Prozessen,
   die durch Serversysteme auf Basis von Windows Server 2012 (R2) im Regelbetrieb verarbeitet bzw. gesteuert werden.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_ab62814cee_nodejs-mixin-deep_fc28.nasl 10041 2018-05-31 12:51:28Z santu $
+# $Id: gb_fedora_2018_ab62814cee_nodejs-mixin-deep_fc28.nasl 10645 2018-07-27 05:27:50Z cfischer $
 #
 # Fedora Update for nodejs-mixin-deep FEDORA-2018-ab62814cee
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874630");
-  script_version("$Revision: 10041 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 14:51:28 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 10645 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 07:27:50 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-05-31 05:56:04 +0200 (Thu, 31 May 2018)");
   script_cve_id("CVE-2018-3719");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for nodejs-mixin-deep FEDORA-2018-ab62814cee");
   script_tag(name:"summary", value:"Check the version of nodejs-mixin-deep");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_344.nasl 10623 2018-07-25 15:14:01Z cfischer $
+# $Id: GSHB_M4_344.nasl 10646 2018-07-27 07:00:22Z cfischer $
 #
 # IT-Grundschutz, 12. EL, Maßnahme 4.344
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94099");
-  script_version("$Revision: 10623 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10646 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:00:22 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2011-11-07 13:38:53 +0100 (Mon, 07 Nov 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,7 +41,8 @@ if(description)
   script_mandatory_keys("Compliance/Launch/GSHB-12", "Tools/Present/wmi");
   script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_NtpServer.nasl", "GSHB/GSHB_WMI_EventLogPolSet.nasl", "GSHB/GSHB_WMI_PolSecSet.nasl");
   script_require_keys("WMI/ELCP/GENERAL");
-  script_tag(name:"summary", value:"IT-Grundschutz M4.344: Überwachung eines Windows Vista SystemsWin).
+
+  script_tag(name:"summary", value:"IT-Grundschutz M4.344: Überwachung eines Windows Vista Systems.
 
 ACHTUNG: Dieser Test wird nicht mehr unterstützt. Er wurde ersetzt durch
 den entsprechenden Test der nun permanent and die aktuelle EL angepasst
@@ -52,7 +53,9 @@ Grundschutz. Die detaillierte Beschreibung zu dieser Maßnahme findet sich unter
 nachfolgendem Verweis. Es ist zu beachten, dass der dortige Text sich immer auf
 die aktuellste Ergänzungslieferung bezieht. Titel und Inhalt können sich bei einer
 Aktualisierung ändern, allerdings nicht die Kernthematik.");
+
   script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
 

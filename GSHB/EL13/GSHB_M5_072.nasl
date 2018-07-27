@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_072.nasl 10624 2018-07-25 15:18:47Z cfischer $
+# $Id: GSHB_M5_072.nasl 10646 2018-07-27 07:00:22Z cfischer $
 #
 # IT-Grundschutz, 13. EL, Maßnahme 5.072
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95042");
-  script_version("$Revision: 10624 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:18:47 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10646 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:00:22 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2013-11-20 16:14:39 +0100 (Wed, 20 Nov 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,17 +40,19 @@ if(description)
   script_family("IT-Grundschutz-13");
   script_mandatory_keys("Compliance/Launch/GSHB-13");
   script_dependencies("GSHB/GSHB_SLAD_Netstat_natcp.nasl", "GSHB/GSHB_SSH_netstat.nasl");
+
   script_tag(name:"summary", value:"IT-Grundschutz M5.072: Deaktivieren nicht benötigter Netzdienste.
 
-ACHTUNG: Dieser Test wird nicht mehr unterstützt. Er wurde ersetzt durch
-den entsprechenden Test der nun permanent and die aktuelle EL angepasst
-wird: OID 1.3.6.1.4.1.25623.1.0.95068
+  ACHTUNG: Dieser Test wird nicht mehr unterstützt. Er wurde ersetzt durch
+  den entsprechenden Test der nun permanent and die aktuelle EL angepasst
+  wird: OID 1.3.6.1.4.1.25623.1.0.95068
 
-Stand: 13. Ergänzungslieferung (13. EL).
+  Stand: 13. Ergänzungslieferung (13. EL).
 
-Hinweis:
-Lediglich Anzeige der in Frage kommenden Dienste.
-");
+  Hinweis:
+
+  Lediglich Anzeige der in Frage kommenden Dienste.");
+
   script_tag(name:"deprecated", value:TRUE);
 
   exit(0);

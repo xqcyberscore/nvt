@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_passwd_min_age.nasl 10120 2018-06-07 12:17:10Z emoss $
+# $Id: win_passwd_min_age.nasl 10649 2018-07-27 07:16:55Z emoss $
 #
 # Check value for Minimum password age (WMI)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109105");
-  script_version("$Revision: 10120 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 14:17:10 +0200 (Thu, 07 Jun 2018) $");
+  script_version("$Revision: 10649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:16:55 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 10:59:13 +0200 (Wed, 25 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -37,7 +37,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
-  script_dependencies("gb_wmi_access.nasl", "smb_reg_service_pack.nasl");;
+  script_dependencies("gb_wmi_access.nasl", "smb_reg_service_pack.nasl");
+  script_add_preference(name:"Minimum", type:"entry", value:"1");
   script_mandatory_keys("Compliance/Launch");
   script_require_keys("WMI/access_successful");
   script_tag(name: "summary", value: "This test checks the setting for policy 
@@ -64,23 +65,30 @@ Operating System.');
   exit(0);
 }
 
-type = 'Minimum password age';
+title = 'Minimum password age';
 select = 'Setting';
 keyname = 'MinimumPasswordAge';
 fixtext = 'Set following UI path accordingly:
-Computer Configuration/Windows Settings/Security Settings/Account Policies/Password Policy/Minimum Password Age';
+Computer Configuration/Windows Settings/Security Settings/Account Policies/Password Policy/' + title;
+default = script_get_preference("Minimum");
 
 value = rsop_securitysettingsnumeric(select:select,keyname:keyname);
 if( value == ''){
-  policy_logging(text:'Unable to detect setting for: "' + type + '".');
-  policy_set_kb(val:'error');
-}else{
-  policy_logging(text:'"' + type + '" is set to: ' + value);
-  policy_set_kb(val:value);
+  value = '0';
 }
 
-policy_fixtext(fixtext:fixtext);
-policy_control_name(title:type);
+if(int(value) >= int(default)){
+  compliant = "yes";
+}else{
+  compliant = "no";
+}
 
-wmi_close(wmi_handle:handle);
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
+policy_fixtext(fixtext:fixtext);
+policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
+
 exit(0);

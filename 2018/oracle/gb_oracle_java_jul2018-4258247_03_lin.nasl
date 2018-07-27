@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_jul2018-4258247_03_lin.nasl 10538 2018-07-18 10:58:40Z santu $
+# $Id: gb_oracle_java_jul2018-4258247_03_lin.nasl 10645 2018-07-27 05:27:50Z cfischer $
 #
 # Oracle Java SE Security Updates-03 (jul2018-4258247) Linux
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813685");
-  script_version("$Revision: 10538 $");
+  script_version("$Revision: 10645 $");
   script_cve_id("CVE-2018-2972");
-  script_tag(name:"cvss_base", value:"3.7");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-18 12:58:40 +0200 (Wed, 18 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 07:27:50 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-18 11:26:47 +0530 (Wed, 18 Jul 2018)");
   script_name("Oracle Java SE Security Updates-03 (jul2018-4258247) Linux");
 

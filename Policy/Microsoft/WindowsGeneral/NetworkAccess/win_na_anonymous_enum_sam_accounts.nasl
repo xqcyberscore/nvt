@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_na_anonymous_enum_sam_accounts.nasl 10146 2018-06-08 15:21:07Z emoss $
+# $Id: win_na_anonymous_enum_sam_accounts.nasl 10649 2018-07-27 07:16:55Z emoss $
 #
 # Check value for Network access: Do not allow anonymous enumeration of SAM accounts
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109218");
-  script_version("$Revision: 10146 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 17:21:07 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 10649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:16:55 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-08 16:24:47 +0200 (Fri, 08 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");

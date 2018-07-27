@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_249.nasl 10624 2018-07-25 15:18:47Z cfischer $
+# $Id: GSHB_M4_249.nasl 10646 2018-07-27 07:00:22Z cfischer $
 #
 # IT-Grundschutz, 13. EL, Maßnahme 4.249
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94144");
-  script_version("$Revision: 10624 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:18:47 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10646 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:00:22 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2013-11-20 14:56:11 +0100 (Wed, 20 Nov 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,17 +40,19 @@ if(description)
   script_family("IT-Grundschutz-13");
   script_mandatory_keys("Compliance/Launch/GSHB-13");
   script_dependencies("GSHB/GSHB_SLAD_MBSA_updates.nasl", "GSHB/GSHB_WMI_OSInfo.nasl");
+
   script_tag(name:"summary", value:"IT-Grundschutz M4.249: Windows Client-Systeme aktuell halten.
 
-ACHTUNG: Dieser Test wird nicht mehr unterstützt. Er wurde ersetzt durch
-den entsprechenden Test der nun permanent and die aktuelle EL angepasst
-wird: OID 1.3.6.1.4.1.25623.1.0.94222
+  ACHTUNG: Dieser Test wird nicht mehr unterstützt. Er wurde ersetzt durch
+  den entsprechenden Test der nun permanent and die aktuelle EL angepasst
+  wird: OID 1.3.6.1.4.1.25623.1.0.94222
 
-Stand: 13. Ergänzungslieferung (13. EL).
+  Stand: 13. Ergänzungslieferung (13. EL).
 
-Hinweis:
-Ein Test von Vista und Windows 7 ist bei aktiviertem UAC zur Zeit noch nicht möglich.
-");
+  Hinweis:
+
+  Ein Test von Vista und Windows 7 ist bei aktiviertem UAC zur Zeit noch nicht möglich.");
+
   script_tag(name:"deprecated", value:TRUE);
 
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_238.nasl 10623 2018-07-25 15:14:01Z cfischer $
+# $Id: GSHB_M4_238.nasl 10646 2018-07-27 07:00:22Z cfischer $
 #
 # IT-Grundschutz, 13. EL, Maßnahme 4.238
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94142");
-  script_version("$Revision: 10623 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10646 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:00:22 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2013-11-20 14:54:11 +0100 (Wed, 20 Nov 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -43,15 +43,16 @@ if(description)
   script_require_keys("WMI/WinFirewall");
   script_tag(name:"summary", value:"IT-Grundschutz M4.238: Einsatz eines lokalen Paketfilters (Windows).
 
-ACHTUNG: Dieser Test wird nicht mehr unterstützt. Er wurde ersetzt durch
-den entsprechenden Test der nun permanent and die aktuelle EL angepasst
-wird: OID 1.3.6.1.4.1.25623.1.0.94220
+  ACHTUNG: Dieser Test wird nicht mehr unterstützt. Er wurde ersetzt durch
+  den entsprechenden Test der nun permanent and die aktuelle EL angepasst
+  wird: OID 1.3.6.1.4.1.25623.1.0.94220
 
-Stand: 13. Ergänzungslieferung (13. EL).
+  Stand: 13. Ergänzungslieferung (13. EL).
 
-Hinweis:
-Getestet wird auf die Microsoft Windows Firewall. Für Vista und Windows 7
-auf jegliche Firewall die sich systemkonform installiert.");
+  Hinweis:
+
+  Getestet wird auf die Microsoft Windows Firewall. Für Vista und Windows 7
+  auf jegliche Firewall die sich systemkonform installiert.");
 
   script_tag(name:"deprecated", value:TRUE);
 

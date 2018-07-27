@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_0e72ef852a_libjpeg-turbo_fc28.nasl 10359 2018-06-28 11:32:28Z santu $
+# $Id: gb_fedora_2018_0e72ef852a_libjpeg-turbo_fc28.nasl 10645 2018-07-27 05:27:50Z cfischer $
 #
 # Fedora Update for libjpeg-turbo FEDORA-2018-0e72ef852a
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874744");
-  script_version("$Revision: 10359 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-28 13:32:28 +0200 (Thu, 28 Jun 2018) $");
+  script_version("$Revision: 10645 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 07:27:50 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-27 06:03:19 +0200 (Wed, 27 Jun 2018)");
   script_cve_id("CVE-2018-11813");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libjpeg-turbo FEDORA-2018-0e72ef852a");
   script_tag(name:"summary", value:"Check the version of libjpeg-turbo");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win10_debug_programs.nasl 9679 2018-04-30 14:05:59Z emoss $
+# $Id: win10_debug_programs.nasl 10649 2018-07-27 07:16:55Z emoss $
 #
 # Check value for Debug programs (WMI)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109126");
-  script_version("$Revision: 9679 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-30 16:05:59 +0200 (Mon, 30 Apr 2018) $");
+  script_version("$Revision: 10649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:16:55 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-04-30 12:32:40 +0200 (Mon, 30 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,6 +38,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("gb_wmi_access.nasl", "smb_reg_service_pack.nasl");
+  script_add_preference(name:"Value", type:"entry", value:"Administrators");
   script_mandatory_keys("Compliance/Launch");
   script_require_keys("WMI/access_successful");
   script_tag(name: "summary", value: "This policy setting determines which users 
@@ -63,17 +64,30 @@ if('windows 10' >!< tolower(WindowsName)){
   exit(0); 
 }
 
-type = 'Debug programs';
+title = 'Debug programs';
 select = 'AccountList';
 keyname = 'SeDebugPrivilege';
+fixtext = 'Set following UI path accordingly:
+Computer Configuration/Windows Settings/Security Settings/Local Policies/User Rights Assignment/' + title;
+default = script_get_preference('Value');
 
 value = rsop_userprivilegeright(select:select,keyname:keyname);
 if( value == ''){
-  policy_logging(text:'Unable to detect setting for: "' + type + '".');
-  policy_set_kb(val:'error');
-}else{
-  policy_logging(text:'"' + type + '" is set to: ' + value);
-  policy_set_kb(val:value);
+  value = 'None';
 }
+
+if(tolower(chomp(value)) == tolower(default)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
+policy_fixtext(fixtext:fixtext);
+policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

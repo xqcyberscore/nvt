@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win10_rename_guest_account.nasl 9746 2018-05-07 12:15:27Z emoss $
+# $Id: win10_rename_guest_account.nasl 10649 2018-07-27 07:16:55Z emoss $
 #
 # Check value for Accounts: Rename guest account (WMI)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109156");
-  script_version("$Revision: 9746 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 14:15:27 +0200 (Mon, 07 May 2018) $");
+  script_version("$Revision: 10649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:16:55 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-05-04 14:00:00 +0200 (Fri, 04 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -75,20 +75,33 @@ handle = wmi_connect(host:host, username:usrname, password:passwd);
   exit(0);
 }
 
+title = 'Accounts: Rename guest account';
+fixtext = 'Set following UI path accordingly:
+Computer Configuration/Windows Settings/Security Settings/Local Policies/Security Options/' + title;
+default = 'Guest';
+
 query = "SELECT Name FROM Win32_UserAccount WHERE (SID LIKE 'S-1-5-21-%-501')";
 res = wmi_query(wmi_handle:handle, query:query);
 lines = split(res,keep:FALSE);
 name = split(lines[1],sep:'|', keep:FALSE);
 value = name[1];
 
-type = 'Accounts: Rename guest account';
 if( value == ''){
-  policy_logging(text:'Unable to detect setting for: "' + type + '".');
-  policy_set_kb(val:'error');
-}else{
-  policy_logging(text:'"' + type + '" is set to: ' + value);
-  policy_set_kb(val:value);
+  value = 'Guest';
 }
 
+if(tolower(chomp(value)) == tolower(default)){
+  compliant = 'no';
+}else{
+  compliant = 'yes';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
+policy_fixtext(fixtext:fixtext);
+policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 wmi_close(wmi_handle:handle);
 exit(0);

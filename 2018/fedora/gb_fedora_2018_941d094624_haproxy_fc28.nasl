@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_941d094624_haproxy_fc28.nasl 10637 2018-07-26 09:34:03Z santu $
+# $Id: gb_fedora_2018_941d094624_haproxy_fc28.nasl 10645 2018-07-27 05:27:50Z cfischer $
 #
 # Fedora Update for haproxy FEDORA-2018-941d094624
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874847");
-  script_version("$Revision: 10637 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 11:34:03 +0200 (Thu, 26 Jul 2018) $");
+  script_version("$Revision: 10645 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 07:27:50 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-24 06:10:04 +0200 (Tue, 24 Jul 2018)");
   script_cve_id("CVE-2018-11469");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for haproxy FEDORA-2018-941d094624");
   script_tag(name:"summary", value:"Check the version of haproxy");

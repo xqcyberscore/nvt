@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test support library
-# $Id: policy_functions.inc 10333 2018-06-26 13:47:29Z emoss $
+# $Id: policy_functions.inc 10649 2018-07-27 07:16:55Z emoss $
 #
 # Supporting methods for Policy NVTs.
 #
@@ -37,11 +37,28 @@ function policy_logging(text)
   }
 }
 
+function policy_add_oid(){
+  set_kb_item(name:"PolicyOIDs", value:get_script_oid());
+}
+
+function policy_set_compliance(compliant){
+  local_var compliant, name;
+  name = get_script_oid() + "/COMPLIANT";
+  set_kb_item(name:name, value:compliant);
+}
+
 function policy_set_kb(val){
   local_var val;
-  oid = get_script_oid();
+  name = get_script_oid() + "/RESULT";
   # save as string, because value can be "0", which would lead to not set the kb_entry
-  set_kb_item(name:oid, value:string(val));
+  set_kb_item(name:name, value:chomp(string(val)));
+}
+
+function policy_set_dval(dval){
+  local_var dval;
+  name = get_script_oid() + "/DEFAULT";
+  # save as string, because value can be "0", which would lead to not set the kb_entry
+  set_kb_item(name:name, value:chomp(string(dval))); 
 }
 
 function policy_fixtext(fixtext){
@@ -187,4 +204,13 @@ function win32_useraccount(select,name){
   wmi_close(wmi_handle:handle);
   
 	return(res);
+}
+
+function policy_get_kb(oid){
+  oid = '1.3.6.1.4.1.25623.1.0.' + oid;
+  value = get_kb_item(oid);
+  fixtext = get_kb_item(oid + '/FIX');
+  name = get_kb_item(oid + '/NAME');
+  ret = make_list(value, fixtext, name);
+  return ret;
 }

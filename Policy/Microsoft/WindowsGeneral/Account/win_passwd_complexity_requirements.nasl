@@ -1,6 +1,6 @@
-##############################################################################
+##############################################################################type
 # OpenVAS Vulnerability Test
-# $Id: win_passwd_complexity_requirements.nasl 9961 2018-05-25 13:02:30Z emoss $
+# $Id: win_passwd_complexity_requirements.nasl 10649 2018-07-27 07:16:55Z emoss $
 #
 # Check value for Password must meet complexity requirements (WMI)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109107");
-  script_version("$Revision: 9961 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-25 15:02:30 +0200 (Fri, 25 May 2018) $");
+  script_version("$Revision: 10649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:16:55 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 10:59:13 +0200 (Wed, 25 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,6 +40,7 @@ if(description)
   script_dependencies("gb_wmi_access.nasl", "smb_reg_service_pack.nasl");
   script_mandatory_keys("Compliance/Launch");
   script_require_keys("WMI/access_successful");
+  script_add_preference(name:"Required", type:"radio", value:"True;False");
   script_tag(name: "summary", value: "This test checks the setting for policy 
 'Password must meet complexity requirements' on Windows hosts (at least Windows 7).
 
@@ -64,17 +65,30 @@ Operating System.');
   exit(0);
 }
 
-type = 'Password must meet complexity requirements';
+title = 'Password must meet complexity requirements';
 select = 'Setting';
 keyname = 'PasswordComplexity';
+fixtext = 'Set following UI path accordingly:
+Computer Configuration/Windows Settings/Security Settings/Account Policies/Password Policy/' + title;
+default = script_get_preference('Required');
 
 value = rsop_securitysettingsboolean(select:select,keyname:keyname);
 if( value == ''){
-  policy_logging(text:'Unable to detect setting for: "' + type + '".');
-  policy_set_kb(val:'error');
-}else{
-  policy_logging(text:'"' + type + '" is set to: ' + value);
-  policy_set_kb(val:value);
+  value = 'false';
 }
+
+if(tolower(chomp(value)) == tolower(default)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
+policy_fixtext(fixtext:fixtext);
+policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3718_1.nasl 10637 2018-07-26 09:34:03Z santu $
+# $Id: gb_ubuntu_USN_3718_1.nasl 10645 2018-07-27 05:27:50Z cfischer $
 #
 # Ubuntu Update for linux USN-3718-1
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843595");
-  script_version("$Revision: 10637 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 11:34:03 +0200 (Thu, 26 Jul 2018) $");
+  script_version("$Revision: 10645 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 07:27:50 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-24 05:59:46 +0200 (Tue, 24 Jul 2018)");
   script_cve_id("CVE-2018-1108", "CVE-2018-1094", "CVE-2018-10940", "CVE-2018-1095", 
                 "CVE-2018-11508", "CVE-2018-7755"); 
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-3718-1");
   script_tag(name:"summary", value:"Check the version of linux");

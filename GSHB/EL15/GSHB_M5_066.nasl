@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M5_066.nasl 10624 2018-07-25 15:18:47Z cfischer $
+# $Id: GSHB_M5_066.nasl 10646 2018-07-27 07:00:22Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maﬂnahme 5.066
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95067");
-  script_version("$Revision: 10624 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:18:47 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10646 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:00:22 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,10 +40,10 @@ if(description)
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15");
   script_dependencies("GSHB/GSHB_test_WebServer_Cert.nasl");
+
   script_tag(name:"summary", value:"IT-Grundschutz M5.066: Clientseitige Verwendung von SSL/TLS.
 
-Stand: 14. Erg‰nzungslieferung (14. EL).
-");
+  Stand: 14. Erg‰nzungslieferung (14. EL).");
 
   exit(0);
 }

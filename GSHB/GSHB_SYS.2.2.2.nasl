@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.2.2.2.nasl 10628 2018-07-25 15:52:40Z cfischer $
+# $Id: GSHB_SYS.2.2.2.nasl 10647 2018-07-27 07:07:45Z cfischer $
 #
 # IT-Grundschutz Baustein: SYS.2.2.2 Clients unter Windows 8.1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109037");
-  script_version("$Revision: 10628 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:52:40 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10647 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:07:45 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-11-24 07:42:28 +0200 (Fri, 24 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,7 +40,6 @@ if(description)
   script_family("IT-Grundschutz");
   script_mandatory_keys("Compliance/Launch/GSHB-ITG");
   script_dependencies("GSHB/GSHB_WMI_OSInfo.nasl", "GSHB/GSHB_WMI_Antivir.nasl", "GSHB/GSHB_SMB_UAC_Config.nasl", "GSHB/GSHB_WMI_EFS.nasl");
-  script_require_ports(139, 445);
 
   script_tag(name:"summary", value:"Zielsetzung dieses Bausteins ist der Schutz von Informationen,
   die durch und auf Windows 8.1-Clients verarbeiten werden.");
@@ -149,6 +148,7 @@ if( max_index(SecurityCenter2) <= 1 ){
   desc = 'Folgende Schutzprogramme sind installiert:\n';
   result = 'erfüllt';
 
+  # nb: get state of each AntiVir program (can be more than one)
   foreach line (SecurityCenter2){
     line = split(line, sep:'|', keep:FALSE);
 

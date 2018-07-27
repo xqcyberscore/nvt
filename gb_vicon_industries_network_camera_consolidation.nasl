@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vicon_industries_network_camera_consolidation.nasl 10627 2018-07-25 15:49:36Z mmartin $
+# $Id: gb_vicon_industries_network_camera_consolidation.nasl 10643 2018-07-26 15:02:54Z mmartin $
 #
 # Vicon Industries Network Camera Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107335");
-  script_version("$Revision: 10627 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:49:36 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10643 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-26 17:02:54 +0200 (Thu, 26 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-25 17:21:25 +0200 (Wed, 25 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -105,8 +105,8 @@ if( version != "unknown" && detected_version == "unknown" ) {
 detected_type = str_replace( string:type, find:" ", replace:"_");
 
 if( detected_type != "unknown" ) {
-  hw_cpe   = "cpe:/h:vicon_industries:network_camera:" + tolower( detected_type );
-  sw_cpe   = "cpe:/a:vicon_industries:network_camera:" + tolower( detected_type ) + "_firmware";
+  hw_cpe   = "cpe:/h:vicon_industries:network_camera_" + tolower( detected_type ) +":" ;
+  sw_cpe   = "cpe:/a:vicon_industries:network_camera_" + tolower( detected_type ) + "_firmware";
   app_type = type;
 } else {
   hw_cpe = "cpe:/h:vicon_industries:network_camera:unknown_device";

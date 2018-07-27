@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_guest_account_status.nasl 9961 2018-05-25 13:02:30Z emoss $
+# $Id: win_guest_account_status.nasl 10649 2018-07-27 07:16:55Z emoss $
 #
 # Check value for Accounts: Administrator account status (WMI)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109153");
-  script_version("$Revision: 9961 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-25 15:02:30 +0200 (Fri, 25 May 2018) $");
+  script_version("$Revision: 10649 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:16:55 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-05-04 14:00:00 +0200 (Fri, 04 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,6 +38,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("gb_wmi_access.nasl", "smb_reg_service_pack.nasl");
+  script_add_preference(name:"Status", type:"entry", value:"Degraded");
   script_mandatory_keys("Compliance/Launch");
   script_require_keys("WMI/access_successful");
   script_tag(name: "summary", value: "This test checks the setting for policy 
@@ -69,20 +70,33 @@ Operating System.');
   exit(0);
 }
 
-type = 'Accounts: Guest account status';
+title = 'Accounts: Guest account status';
 select = 'Status';
 name = 'Guest';
+fixtext = 'Set following UI path accordingly:
+Computer Configuration/Windows Settings/Security Settings/Local Policies/Security Options/' + title;
+default = script_get_preference('Status');
 
 result = win32_useraccount(select:select,name:name);
 lines = split(result, keep:FALSE);
 status = split(lines[1],sep:'|', keep:FALSE);
 value = status[2];
 if( value == ''){
-  policy_logging(text:'Unable to detect setting for: "' + type + '".');
-  policy_set_kb(val:'error');
-}else{
-  policy_logging(text:'"' + type + '" is set to: ' + value);
-  policy_set_kb(val:value);
+  value = "Error";
 }
+
+if(tolower(chomp(value)) == tolower(default)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
+policy_fixtext(fixtext:fixtext);
+policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

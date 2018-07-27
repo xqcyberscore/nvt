@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2010_1.nasl 10558 2018-07-20 14:08:23Z santu $
+# $Id: gb_suse_2018_2010_1.nasl 10645 2018-07-27 05:27:50Z cfischer $
 #
 # SuSE Update for perl openSUSE-SU-2018:2010-1 (perl)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851818");
-  script_version("$Revision: 10558 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 16:08:23 +0200 (Fri, 20 Jul 2018) $");
+  script_version("$Revision: 10645 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 07:27:50 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 05:54:42 +0200 (Fri, 20 Jul 2018)");
   script_cve_id("CVE-2018-12015");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for perl openSUSE-SU-2018:2010-1 (perl)");
   script_tag(name:"summary", value:"Check the version of perl");

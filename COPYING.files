@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 26 Jul 2018 15:27:58 +0200
+# Automatically created on:  Fri, 27 Jul 2018 11:18:25 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39305,6 +39305,9 @@
 2018/debian/deb_dla_1441.nasl: GPLv2+
 2018/debian/deb_dla_1442.nasl: GPLv2+
 2018/debian/deb_dla_1443.nasl: GPLv2+
+2018/debian/deb_dla_1444.nasl: GPLv2+
+2018/debian/deb_dla_1445.nasl: GPLv2+
+2018/debian/deb_dla_1446.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -41910,6 +41913,7 @@ gb_bournal_detect.nasl: GPLv2+
 gb_bozotic_http_server_detect.nasl: GPLv2+
 gb_bpftp_detect.nasl: GPLv2+
 gb_bpsoft_hex_workshop_detect.nasl: GPLv2+
+gb_brickcom_network_camera_detect.nasl: GPLv2+
 gb_broadwin_webaccess_detect.nasl: GPLv2+
 gb_brocade_fabricos_consolidation.nasl: GPLv2+
 gb_brocade_fabricos_http_detect.nasl: GPLv2+

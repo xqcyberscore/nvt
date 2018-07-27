@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SMB_UAC_Config.nasl 10617 2018-07-25 13:47:49Z cfischer $
+# $Id: GSHB_SMB_UAC_Config.nasl 10647 2018-07-27 07:07:45Z cfischer $
 #
 # Read the config of the User Account Control feature over SMB (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109033");
-  script_version("$Revision: 10617 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 15:47:49 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10647 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:07:45 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-12-06 09:20:21 +0100 (Wed, 06 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,6 @@ if(description)
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("IT-Grundschutz");
   script_dependencies("compliance_tests.nasl", "smb_reg_service_pack.nasl");
-  script_require_ports(139, 445);
   script_mandatory_keys("Compliance/Launch/GSHB", "SMB/WindowsVersion");
 
   script_tag(name:"summary", value:"Read the config of the User Account Control feature over SMB from Registry");
