@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_domain_require_strong_session_key.nasl 10052 2018-06-01 13:46:54Z emoss $
+# $Id: win_domain_require_strong_session_key.nasl 10661 2018-07-27 13:27:42Z emoss $
 #
 # Check value for Domain member: Require strong session key
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109160");
-  script_version("$Revision: 10052 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-01 15:46:54 +0200 (Fri, 01 Jun 2018) $");
+  script_version("$Revision: 10661 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 15:27:42 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-01 15:03:15 +0200 (Fri, 01 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,14 +38,15 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_add_preference(name:"Status", type:"radio", value:"1;0");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
+  script_tag(name: "summary", value: "This test checks the setting for policy
 'Domain member: Require strong session key' on Windows hosts (at least Windows 7).
 
-The policy setting determines whether a secure channel can be established with a 
-domain controller that is not capable of encrypting secure channel traffic with 
-a 128-bit session key. Enabling the setting prevents establishing a secure 
-channel with any domain controller that cannot encrypt secure channel data with 
+The policy setting determines whether a secure channel can be established with a
+domain controller that is not capable of encrypting secure channel traffic with
+a 128-bit session key. Enabling the setting prevents establishing a secure
+channel with any domain controller that cannot encrypt secure channel data with
 a strong key. Disabling the policy setting allows 64-bit session keys.");
   exit(0);
 }
@@ -60,8 +61,8 @@ to query the registry.');
 }
 
 if(get_kb_item("SMB/WindowsVersion") < "6.1"){
-  policy_logging(text:'Host is not at least a Microsoft Windows 7 system. 
-Older versions of Windows are not supported any more. Please update the 
+  policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
+Older versions of Windows are not supported any more. Please update the
 Operating System.');
   exit(0);
 }
@@ -69,11 +70,29 @@ Operating System.');
 type = 'HKLM';
 key = 'SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters';
 item = 'RequireStrongKey';
+title = 'Domain member: Require strong (Windows 2000 or later) session key';
+fixtext = 'Set following UI path accordingly:
+Computer Configuration/Windows Settings/Security Settings/Local Policies/Security Options/' + title;
+default = script_get_preference('Status');
 value = registry_get_dword(key:key, item:item, type:type);
+value = chomp(value);
+
 if( value == ''){
-  value = 'none';
+  value = '0';
 }
-policy_logging_registry(type:type,key:key,item:item,value:value);
+
+if(int(value) == int(default)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
+policy_fixtext(fixtext:fixtext);
+policy_control_name(title:title);
 policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

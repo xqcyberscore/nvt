@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_docker.nasl 5114 2017-01-26 14:05:13Z mime $
+# $Id: gb_policy_docker.nasl 10678 2018-07-30 09:29:11Z cfischer $
 #
 # Docker Compliance Check
 #
@@ -32,9 +32,9 @@ if (description)
    script_oid("1.3.6.1.4.1.25623.1.0.140121");
    script_tag(name:"cvss_base", value:"0.0");
    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-   script_version("$Revision: 5114 $" );
+   script_version("$Revision: 10678 $");
 
-   script_tag(name: "qod", value: "98");
+   script_tag(name:"qod", value:"98");
 
    script_name("Docker Compliance Check");
    script_category(ACT_GATHER_INFO);
@@ -43,11 +43,12 @@ if (description)
    script_dependencies("gb_gather_linux_host_infos.nasl", "gb_docker_service_detection_lsc.nasl");
    script_mandatory_keys("docker/info");
 
-   script_tag(name: "last_modification", value: "$Date: 2017-01-26 15:05:13 +0100 (Thu, 26 Jan 2017) $");
-   script_tag(name: "creation_date", value: "2017-01-19 10:34:29 +0100 (Thu, 19 Jan 2017)");
+   script_tag(name:"last_modification", value:"$Date: 2018-07-30 11:29:11 +0200 (Mon, 30 Jul 2018) $");
+   script_tag(name:"creation_date", value:"2017-01-19 10:34:29 +0100 (Thu, 19 Jan 2017)");
 
-   script_tag(name: "summary", value: "Runs the Docker Compliance Check." );
-   script_tag(name:"insight", value:"These tests are inspired by the CIS Docker Benchmark.");
+   script_tag(name:"summary", value:"Runs the Docker Compliance Check.
+
+  These tests are inspired by the CIS Docker Benchmark." );
 
    script_xref(name:"URL", value:"https://benchmarks.cisecurity.org/tools2/docker/CIS_Docker_1.6_Benchmark_v1.0.0.pdf");
    script_xref(name:"URL", value:"https://benchmarks.cisecurity.org/tools2/docker/CIS_Docker_1.11.0_Benchmark_v1.0.0.pdf");

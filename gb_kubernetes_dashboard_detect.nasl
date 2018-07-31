@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kubernetes_dashboard_detect.nasl 10621 2018-07-25 14:18:59Z tpassfeld $
+# $Id: gb_kubernetes_dashboard_detect.nasl 10683 2018-07-30 14:01:27Z cfischer $
 #
 # Kubernetes Dashboard UI Detection
 #
@@ -28,28 +28,30 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114009");
-  script_version("$Revision: 10621 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-07-25 16:18:59 +0200 (Wed, 25 Jul 2018) $");
-  script_tag(name: "creation_date", value: "2018-07-16 15:22:55 +0200 (Mon, 16 Jul 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10683 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-30 16:01:27 +0200 (Mon, 30 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2018-07-16 15:22:55 +0200 (Mon, 16 Jul 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Kubernetes Dashboard UI Detection");
 
-  script_tag(name: "summary" , value: "Detection of Kubernetes Dashboard/Web UI.
+  script_tag(name:"summary", value:"Detection of Kubernetes Dashboard/Web UI.
 
-The script sends a connection request to the server and attempts to detect Kubernetes Dashboard UI and to
-extract its version if possible.");
-  
+  The script sends a connection request to the server and attempts to detect Kubernetes Dashboard UI and to
+  extract its version if possible.");
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("global_settings.nasl", "find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://github.com/kubernetes/dashboard");
+  script_xref(name:"URL", value:"https://github.com/kubernetes/dashboard");
 
   exit(0);
 }
@@ -60,23 +62,23 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default: 80);
-res1 = http_get_cache(port: port, item:"/");
-res2 = http_get_cache(port: port, item:"/api/v1/overview");
+res1 = http_get_cache(port: port, item: "/");
+res2 = http_get_cache(port: port, item: "/api/v1/overview");
 
 # ng-app="kubernetesDashboard">
 if(egrep(pattern: "[Kk]ubernetesDashboard", string: res1) ||
     "system:serviceaccount:kube-system:kubernetes-dashboard" >< res2) {
    version = "unknown";
    install = "/";
-   
-   id = eregmatch(pattern:'src="static/app\\.([^.]+)\\.js">', string:res1);
-   
+
+   id = eregmatch(pattern: 'src="static/app\\.([^.]+)\\.js">', string: res1);
+
    if(id[1]){
       url = "/static/app." + id[1] + ".js";
-      conclUrl = report_vuln_url(port:port, url:url, url_only:TRUE);
+      conclUrl = report_vuln_url(port: port, url: url, url_only: TRUE);
 
       res3 = http_get_cache(port: port, item: url);
-      vers = eregmatch(pattern:'dashboardVersion="v([0-9.]+)"', string:res3);
+      vers = eregmatch(pattern: 'dashboardVersion="v([0-9.]+)"', string: res3);
 
       if(vers[1]) version = vers[1];
    }
@@ -86,13 +88,13 @@ if(egrep(pattern: "[Kk]ubernetesDashboard", string: res1) ||
    set_kb_item(name: "KubernetesDashboard/" + port + "/installed", value: TRUE);
 
    cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:kubernetes:dashboard:"); # CPE is not registered yet
-   
+
    if(!cpe) cpe = 'cpe:/a:kubernetes:dashboard';
 
    register_product(cpe: cpe, location: install, port: port);
 
    log_message(data: build_detection_report(app: "Kubernetes Dashboard", version: version, install: install, cpe: cpe,
-                                            concluded: vers[0], concludedUrl:conclUrl),port: port);
+                                            concluded: vers[0], concludedUrl: conclUrl),port: port);
 
 }
 

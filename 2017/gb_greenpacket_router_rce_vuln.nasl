@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenpacket_router_rce_vuln.nasl 9605 2018-04-25 11:32:44Z jschulte $
+# $Id: gb_greenpacket_router_rce_vuln.nasl 10663 2018-07-27 13:48:41Z cfischer $
 #
 # Green Packet Routers OS Command Injection Vulnerability
 #
@@ -25,19 +25,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106986");
-  script_version("$Revision: 9605 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-25 13:32:44 +0200 (Wed, 25 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-07-26 17:10:09 +0700 (Wed, 26 Jul 2017)");
-  script_tag(name: "cvss_base", value: "7.5");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 10663 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 15:48:41 +0200 (Fri, 27 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-26 17:10:09 +0700 (Wed, 26 Jul 2017)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("Green Packet Routers OS Command Injection Vulnerability");
 
@@ -49,15 +48,16 @@ if (description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("lighttpd/banner");
 
-  script_tag(name: "summary", value: "Green Packet Routers are prone to an arbitrary OS command injection
-vulnerability.");
+  script_tag(name:"summary", value:"Green Packet Routers are prone to an arbitrary OS command injection
+  vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 25th April, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_xref(name: "URL", value: "https://iscouncil.blogspot.com/2017/07/command-injection-in-green-packet-dx.html");
+  script_xref(name:"URL", value:"https://iscouncil.blogspot.com/2017/07/command-injection-in-green-packet-dx.html");
 
   exit(0);
 }

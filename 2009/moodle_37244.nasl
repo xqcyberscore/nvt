@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: moodle_37244.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: moodle_37244.nasl 10674 2018-07-30 08:24:18Z asteins $
 #
 # Moodle Multiple Vulnerabilities
 #
@@ -24,46 +24,43 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Moodle is prone to multiple vulnerabilities including cross-site
-request-forgery, security bypass, information-disclosure and SQL-
-injection issues.
-
-Attackers can exploit these issues to bypass certain security
-restrictions, gain access to sensitive information, perform
-unauthorized actions, compromise the application, access or modify
-data, or exploit latent vulnerabilities in the underlying database.
-
-These issues affect Moodle versions prior to 1.8.11 and 1.9.7.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100384");
- script_version("$Revision: 9350 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2009-12-09 12:14:51 +0100 (Wed, 09 Dec 2009)");
- script_cve_id("CVE-2009-4297");
- script_bugtraq_id(37244);
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.100384");
+  script_version("$Revision: 10674 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-30 10:24:18 +0200 (Mon, 30 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2009-12-09 12:14:51 +0100 (Wed, 09 Dec 2009)");
+  script_cve_id("CVE-2009-4297");
+  script_bugtraq_id(37244);
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
- script_name("Moodle Multiple Vulnerabilities");
+  script_name("Moodle Multiple Vulnerabilities");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/37244");
- script_xref(name : "URL" , value : "http://www.moodle.org");
- script_xref(name : "URL" , value : "http://moodle.org/security/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37244");
+  script_xref(name:"URL", value:"http://www.moodle.org");
+  script_xref(name:"URL", value:"http://moodle.org/security/");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("gb_moodle_cms_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("Moodle/Version");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("gb_moodle_cms_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("Moodle/Version");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"Moodle is prone to multiple vulnerabilities including cross-site
+request-forgery, security bypass, information-disclosure and SQL-
+injection issues.");
+
+  script_tag(name:"impact", value:"Attackers can exploit these issues to bypass certain security
+restrictions, gain access to sensitive information, perform
+unauthorized actions, compromise the application, access or modify
+data, or exploit latent vulnerabilities in the underlying database.");
+
+  script_tag(name:"affected", value:"These issues affect Moodle versions prior to 1.8.11 and 1.9.7.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  exit(0);
 }
 
 include("http_func.inc");
@@ -87,8 +84,8 @@ if(!isnull(vers) && vers >!< "unknown") {
     if(version_is_less(version: vers, test_version: "1.9.7")) {
       security_message(port:port);
       exit(0);
-    }  
- }  
+    }
+ }
 }
 
 exit(0);

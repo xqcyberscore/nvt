@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_routers_information_disclosure.nasl 10608 2018-07-25 10:02:33Z asteins $
+# $Id: gb_netgear_routers_information_disclosure.nasl 10665 2018-07-27 14:42:41Z cfischer $
 #
 # Netgear DGN2200 & DGND3700 Admin Password Disclosure
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112333");
-  script_version("$Revision: 10608 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 12:02:33 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10665 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 16:42:41 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-25 09:39:41 +0200 (Wed, 25 Jul 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,16 +48,19 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_netgear_dgn2200_detect.nasl", "gb_netgear_dgnd3700_detect.nasl");
   script_mandatory_keys("netgear/router/detected");
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"A vulnerability exists in the 'BSW_cxttongr.htm' page which can allow a remote
   attacker to access this page without any authentication.");
+
   script_tag(name:"vuldetect", value:"Sends a request to the vulnerable page and tries to obtain the admin password.");
+
   script_tag(name:"insight", value:"When the request is processed, it
   exposes the admin's password in clear text before it gets redirected to
   absw_vfysucc.cgia.");
+
   script_tag(name:"impact", value:"An attacker can use this password to gain administrator
   access of the targeted routers web interface.");
+
   script_tag(name:"affected", value:"Netgear DGN2200 running firmware version DGN2200-V1.0.0.50_7.0.50.
 
   Netgear DGND3700 running firmware version DGND3700-V1.0.0.17_1.0.17.");

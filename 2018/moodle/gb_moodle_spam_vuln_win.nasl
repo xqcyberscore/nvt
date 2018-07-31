@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_spam_vuln_win.nasl 9939 2018-05-23 14:50:30Z cfischer $
+# $Id: gb_moodle_spam_vuln_win.nasl 10674 2018-07-30 08:24:18Z asteins $
 #
 # Moodle 3.x Spam Vulnerability - Mar'18 (Windows)
 #
@@ -28,13 +28,13 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113172");
-  script_version("$Revision: 9939 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:50:30 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 10674 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-30 10:24:18 +0200 (Mon, 30 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-05-08 11:03:45 +0200 (Tue, 08 May 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_il_machine_acc_lockout_threshold.nasl 10146 2018-06-08 15:21:07Z emoss $
+# $Id: win_il_machine_acc_lockout_threshold.nasl 10661 2018-07-27 13:27:42Z emoss $
 #
 # Check value for Interactive logon: Machine account lockout threshold
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109197");
-  script_version("$Revision: 10146 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 17:21:07 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 10661 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 15:27:42 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-06-01 15:28:39 +0200 (Fri, 01 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,22 +38,23 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_add_preference(name:"Maximum", type:"entry", value:"10");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'Interactive logon: Machine account lockout threshold' on Windows hosts (at 
+  script_tag(name: "summary", value: "This test checks the setting for policy
+'Interactive logon: Machine account lockout threshold' on Windows hosts (at
 least Windows 8.1).
 
-The setting allows to set a threshold for the number of failed logon attempts 
-that causes the device to be locked by using BitLocker. This means, if the 
-specified maximum number of failed logon attempts is exceeded, the device will 
-invalidate the Trusted Platform Module (TPM) protector and any other protector 
-except the 48-digit recovery password, and then reboot. During Device Lockout 
-mode, the computer or device only boots into the touch-enabled Windows Recovery 
-Environment (WinRE) until an authorized user enters the recovery password to 
+The setting allows to set a threshold for the number of failed logon attempts
+that causes the device to be locked by using BitLocker. This means, if the
+specified maximum number of failed logon attempts is exceeded, the device will
+invalidate the Trusted Platform Module (TPM) protector and any other protector
+except the 48-digit recovery password, and then reboot. During Device Lockout
+mode, the computer or device only boots into the touch-enabled Windows Recovery
+Environment (WinRE) until an authorized user enters the recovery password to
 restore full access.
 
-Failed password attempts on workstations or member servers that have been locked 
-by using either Ctrl+Alt+Delete or password-protected screen savers count as 
+Failed password attempts on workstations or member servers that have been locked
+by using either Ctrl+Alt+Delete or password-protected screen savers count as
 failed logon attempts.");
   exit(0);
 }
@@ -68,8 +69,8 @@ to query the registry.');
 }
 
 if(get_kb_item("SMB/WindowsVersion") < "6.3"){
-  policy_logging(text:'Host is not at least a Microsoft Windows 7 system. 
-Older versions of Windows are not supported any more. Please update the 
+  policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
+Older versions of Windows are not supported any more. Please update the
 Operating System.');
   exit(0);
 }
@@ -77,11 +78,31 @@ Operating System.');
 type = 'HKLM';
 key = 'Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System';
 item = 'MaxDevicePasswordFailedAttempts';
+title = 'Interactive logon: Machine account lockout threshold';
+fixtext = 'Set following UI path accordingly:
+Computer Configuration/Windows Settings/Security Settings/Local Policies/Security Options/' + title;
+default = script_get_preference('Maximum');
 value = registry_get_dword(key:key, item:item, type:type);
+value = chomp(value);
+
 if( value == ''){
-  value = 'none';
+  value = '0';
 }
-policy_logging_registry(type:type,key:key,item:item,value:value);
+
+if(int(value) == 0 && int(default) == 0){
+  compliant = 'yes';
+}else if(int(value) <= int(default) && int(value) > 0){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
+policy_fixtext(fixtext:fixtext);
+policy_control_name(title:title);
 policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

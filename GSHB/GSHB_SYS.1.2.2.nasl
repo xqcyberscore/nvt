@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SYS.1.2.2.nasl 10647 2018-07-27 07:07:45Z cfischer $
+# $Id: GSHB_SYS.1.2.2.nasl 10682 2018-07-30 13:19:35Z cfischer $
 #
 # IT-Grundschutz Baustein: SYS.1.2.2 Windows Server 2012
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109035");
-  script_version("$Revision: 10647 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:07:45 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 10682 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-30 15:19:35 +0200 (Mon, 30 Jul 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 14:42:28 +0200 (Wed, 15 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -133,7 +133,6 @@ if( res == '' ){
 SYS_1_2_2_A3 += desc + '\n';
 set_kb_item(name:"GSHB/SYS.1.2.2.A3/result", value:result);
 set_kb_item(name:"GSHB/SYS.1.2.2.A3/desc", value:desc);
-
 
 # SYS.1.2.2.A4  Sichere Konfiguration von Windows Server 2012
 SYS_1_2_2_A4 = 'SYS.1.2.2.A4 Sichere Konfiguration von Windows Server 2012:\n';
@@ -248,7 +247,6 @@ SYS_1_2_2_A6 += desc + '\n';
 set_kb_item(name:"GSHB/SYS.1.2.2.A6/result", value:result);
 set_kb_item(name:"GSHB/SYS.1.2.2.A6/desc", value:desc);
 
-
 # SYS.1.2.2.A7 Sicherheitsprüfung von Windows Server 2012
 SYS_1_2_2_A7 = 'SYS.1.2.2.A7 Sicherheitsprüfung von Windows Server 2012:\n';
 SYS_1_2_2_A7 += 'Diese Maßnahme muss manuell überprüft werden.\n\n';
@@ -280,7 +278,6 @@ SYS_1_2_2_A8 += desc + '\n';
 set_kb_item(name:"GSHB/SYS.1.2.2.A8/result", value:result);
 set_kb_item(name:"GSHB/SYS.1.2.2.A8/desc", value:desc);
 
-
 # SYS.1.2.2.A9 Lokale Kommunikationsfilterung (CI)
 SYS_1_2_2_A9 = 'SYS_1_2_2_A9 Lokale Kommunikationsfilterung (CI):\n';
 Firewall_Private = "netsh advfirewall show private state";
@@ -294,31 +291,41 @@ if ( domain ){
   usrname = domain + '/' + usrname;
 }
 
-Firewall_Private_Stat = win_cmd_exec(cmd:Firewall_Private, password:passwd, username:usrname);
-Firewall_Private_Stat = eregmatch(string:Firewall_Private_Stat, pattern:'State[ ]+(ON|OFF)');
-if( Firewall_Private_Stat[1] ){
-  desc = 'Der Status des privaten Firewallprofils ist: ' + Firewall_Private_Stat[1] + '\n';
-}else{
+disabled_win_cmd_exec = get_kb_item("win/lsc/disable_win_cmd_exec");
+disabled_win_cmd_exec_report = "Die Verwendung der benoetigten win_cmd_exec Funktion wurde in 'Options for Local Security Checks (OID: 1.3.6.1.4.1.25623.1.0.100509)' manuell deaktiviert.";
+
+if( ! disabled_win_cmd_exec ){
+  Firewall_Private_Stat = win_cmd_exec(cmd:Firewall_Private, password:passwd, username:usrname);
+  Firewall_Private_Stat = eregmatch(string:Firewall_Private_Stat, pattern:'State[ ]+(ON|OFF)');
+  if( Firewall_Private_Stat[1] ){
+    desc = 'Der Status des privaten Firewallprofils ist: ' + Firewall_Private_Stat[1] + '\n';
+  }else{
+    desc = 'Das private Firewallprofil konnte nicht ermittelt werden.\n';
+    result = 'error';
+  }
+
+  Firewall_Public_Stat = win_cmd_exec(cmd:Firewall_Public, password:passwd, username:usrname);
+  Firewall_Public_Stat = eregmatch(string:Firewall_Public_Stat, pattern:'State[ ]+(ON|OFF)');
+  if( Firewall_Public_Stat[1] ){
+    desc += 'Der Status des öffentlichen Firewallprofils ist: ' + Firewall_Public_Stat[1] + '\n';
+  }else{
+    desc += 'Das öffentliche Firewallprofil konnte nicht ermittelt werden.\n';
+    result = 'error';
+  }
+
+  Firewall_Domain_Stat = win_cmd_exec(cmd:Firewall_Domain, password:passwd, username:usrname);
+  Firewall_Domain_Stat = eregmatch(string:Firewall_Domain_Stat, pattern:'State[ ]+(ON|OFF)');
+  if( Firewall_Domain_Stat[1] ){
+    desc += 'Der Status des Firewallprofils "Domäne" ist: ' + Firewall_Domain_Stat[1] + '\n';
+  }else{
+    desc += 'Das domänen Firewallprofil konnte nicht ermittelt werden.\n';
+    result = 'error';
+  }
+} else {
   desc = 'Das private Firewallprofil konnte nicht ermittelt werden.\n';
-  result = 'error';
-}
-
-
-Firewall_Public_Stat = win_cmd_exec(cmd:Firewall_Public, password:passwd, username:usrname);
-Firewall_Public_Stat = eregmatch(string:Firewall_Public_Stat, pattern:'State[ ]+(ON|OFF)');
-if( Firewall_Public_Stat[1] ){
-  desc += 'Der Status des öffentlichen Firewallprofils ist: ' + Firewall_Public_Stat[1] + '\n';
-}else{
-  desc += 'Das private Firewallprofil konnte nicht ermittelt werden.\n';
-  result = 'error';
-}
-
-Firewall_Domain_Stat = win_cmd_exec(cmd:Firewall_Domain, password:passwd, username:usrname);
-Firewall_Domain_Stat = eregmatch(string:Firewall_Domain_Stat, pattern:'State[ ]+(ON|OFF)');
-if( Firewall_Domain_Stat[1] ){
-  desc += 'Der Status des Firewallprofils "Domäne" ist: ' + Firewall_Domain_Stat[1] + '\n';
-}else{
+  desc += 'Das öffentliche Firewallprofil konnte nicht ermittelt werden.\n';
   desc += 'Das domänen Firewallprofil konnte nicht ermittelt werden.\n';
+  desc += disabled_win_cmd_exec_report + '\n';
   result = 'error';
 }
 
@@ -330,10 +337,19 @@ set_kb_item(name:"GSHB/SYS.1.2.2.A9/desc", value:desc);
 SYS_1_2_2_A10 = 'SYS.1.2.2.A10 Festplattenverschlüsselung bei Windows Server 2012 (C):\n';
 result = 'erfüllt';
 desc = '';
-cmd = "wmic logicaldisk get caption,drivetype";
-res = win_cmd_exec(cmd:cmd, password:passwd, username:usrname);
-if( "not recognized" >< res ){
-  desc = '"wmic" wurde auf dem Host nicht erkannt.\n\n';
+
+if( ! disabled_win_cmd_exec ){
+  cmd = "wmic logicaldisk get caption,drivetype";
+  res = win_cmd_exec(cmd:cmd, password:passwd, username:usrname);
+}
+
+if( "not recognized" >< res || disabled_win_cmd_exec ){
+  desc = "Der BitLocker status konnte nicht ermittelt werden. ";
+  if( disabled_win_cmd_exec ) {
+    desc += disabled_win_cmd_exec_report + '\n\n';
+  } else {
+    desc += '"wmic" wurde auf dem Host nicht erkannt.\n\n';
+  }
   result = 'error';
 }else{
   res = split(res, keep:FALSE);
@@ -359,10 +375,10 @@ if( "not recognized" >< res ){
       }
     }
   }
-}
-if( ! BitLockerInstalled ){
-  desc = 'BitLocker wird nicht verwendet.\n';
-  result = 'nicht erfüllt';
+  if( ! BitLockerInstalled ){
+    desc = 'BitLocker wird nicht verwendet.\n';
+    result = 'nicht erfüllt';
+  }
 }
 
 SYS_1_2_2_A10 += desc + '\n';
@@ -384,8 +400,6 @@ SYS_1_2_2_A13 += 'Diese Vorgabe muss manuell überprüft werden.\n\n';
 # SYS.1.2.2.A14 Herunterfahren verschlüsselter Server und virtueller Maschinen (CI)
 SYS_1_2_2_A14 = 'SYS.1.2.2.A14 Herunterfahren verschlüsselter Server und virtueller Maschinen (CI):\n';
 SYS_1_2_2_A14 += 'Diese Vorgabe muss manuell überprüft werden.\n\n';
-
-
 
 message += 'Basis-Absicherung:\n\n' + SYS_1_2_2_A1 + SYS_1_2_2_A2 + SYS_1_2_2_A3;
 LEVEL = get_kb_item("GSHB/level");

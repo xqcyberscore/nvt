@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_39150.nasl 8447 2018-01-17 16:12:19Z teissa $
+# $Id: gb_moodle_39150.nasl 10674 2018-07-30 08:24:18Z asteins $
 #
 # Moodle Prior to 1.9.8/1.8.12 Multiple Vulnerabilities
 #
@@ -24,52 +24,55 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Moodle is prone to multiple vulnerabilities, including:
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100569");
+  script_version("$Revision: 10674 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-30 10:24:18 +0200 (Mon, 30 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2010-04-12 18:40:45 +0200 (Mon, 12 Apr 2010)");
+  script_bugtraq_id(39150);
+  script_tag(name:"cvss_base", value:"2.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
+
+  script_name("Moodle Prior to 1.9.8/1.8.12 Multiple Vulnerabilities");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/39150");
+  script_xref(name:"URL", value:"http://docs.moodle.org/en/Moodle_1.9.8_release_notes");
+  script_xref(name:"URL", value:"http://www.moodle.org");
+  script_xref(name:"URL", value:"http://moodle.org/security/");
+
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("gb_moodle_cms_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("Moodle/Version");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"Moodle is prone to multiple vulnerabilities, including:
 
 - multiple cross-site scripting issues
-- a security-bypass issue
-- an information-disclosure issue
-- multiple SQL-injection issues
-- an HTML-injection issue
-- a session-fixation issue
 
-Attackers can exploit these issues to bypass certain security
+- a security-bypass issue
+
+- an information-disclosure issue
+
+- multiple SQL-injection issues
+
+- an HTML-injection issue
+
+- a session-fixation issue");
+
+  script_tag(name:"impact", value:"Attackers can exploit these issues to bypass certain security
 restrictions, obtain sensitive information, perform unauthorized
 actions, compromise the application, access or modify data, or exploit
 latent vulnerabilities in the underlying database. Other attacks may
-also be possible.
+also be possible.");
 
-These issues affect versions prior to Moodle 1.9.8 and 1.8.12.";
+  script_tag(name:"affected", value:"These issues affect versions prior to Moodle 1.9.8 and 1.8.12.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-tag_solution = "Updates are available. Please see the references for more information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100569");
- script_version("$Revision: 8447 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-17 17:12:19 +0100 (Wed, 17 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-04-12 18:40:45 +0200 (Mon, 12 Apr 2010)");
- script_bugtraq_id(39150);
- script_tag(name:"cvss_base", value:"2.6");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-
- script_name("Moodle Prior to 1.9.8/1.8.12 Multiple Vulnerabilities");
-
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/39150");
- script_xref(name : "URL" , value : "http://docs.moodle.org/en/Moodle_1.9.8_release_notes");
- script_xref(name : "URL" , value : "http://www.moodle.org");
- script_xref(name : "URL" , value : "http://moodle.org/security/");
-
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_moodle_cms_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("Moodle/Version");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
@@ -79,14 +82,14 @@ port = get_http_port(default:80);
 if(vers = get_version_from_kb(port:port,app:"moodle")) {
 
   if(vers =~ "1\.8") {
-    
+
     if(version_is_less(version: vers, test_version: "1.8.9")) {
       security_message(port:port);
       exit(0);
     }
-  
+
   } else if(vers =~ "1\.9") {
-  
+
     if(version_is_less(version: vers, test_version: "1.9.8")) {
       security_message(port:port);
       exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ping_host.nasl 10223 2018-06-15 14:26:20Z cfischer $
+# $Id: ping_host.nasl 10678 2018-07-30 09:29:11Z cfischer $
 #
 # Ping Host
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100315");
-  script_version("$Revision: 10223 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 16:26:20 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 10678 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-30 11:29:11 +0200 (Mon, 30 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-10-26 10:02:32 +0100 (Mon, 26 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,9 +55,8 @@ if(description)
 
   script_tag(name:"summary", value:"This check tries to determine whether a remote host is up (alive).
 
-  Several methods are used for this depending on configuration of this check.");
-
-  script_tag(name:"insight", value:"Whether a host is up can be detected in 3 different ways:
+  Several methods are used for this depending on configuration of this check. Whether a host is up can
+  be detected in 3 different ways:
 
   - A ICMP message is sent to the host and a response is taken as alive sign.
 
@@ -80,7 +79,7 @@ if(description)
   The available methods might fail for the following reasons:
 
   - ICMP: This might be disabled for a environment and would then cause false
-  negatives as hosts are believed to be dead that actually are alive. In constrast
+  negatives as hosts are believed to be dead that actually are alive. In contrast
   it is also possible that a Firewall between the scanner and the target host is answering
   to the ICMP message and thus hosts are believed to be alive that actually are dead.
 
@@ -299,8 +298,7 @@ if( "yes" >< use_nmap ) {
 
   if( "yes" >< icmp_ping ) {
 
-    # Try ICMP (Ping) first
-
+    # nb: Try ICMP (Ping) first
     if( TARGET_IS_IPV6() ) {
 
       # ICMPv6

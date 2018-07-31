@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sensitive_file_disclosures_http.nasl 10553 2018-07-20 10:47:37Z cfischer $
+# $Id: gb_sensitive_file_disclosures_http.nasl 10660 2018-07-27 13:15:32Z cfischer $
 #
 # Sensitive File Disclosure (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107305");
-  script_version("$Revision: 10553 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 12:47:37 +0200 (Fri, 20 Jul 2018) $");
+  script_version("$Revision: 10660 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 15:15:32 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-04-20 16:04:01 +0200 (Fri, 20 Apr 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"cvss_base", value:"5.0");
@@ -110,7 +110,11 @@ genericfiles = make_array(
 "/temp.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
 "/users.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
 "/translate.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
-"/mysqldump.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )'
+"/mysqldump.sql", 'Database backup file publicly accessible.#-#^(-- MySQL dump |INSERT INTO |DROP TABLE |CREATE TABLE )',
+# e.g.
+# {"php":"7.2.4-1+ubuntu16.04.1+deb.sury.org+1","version":"2.11.1:v2.11.1#ad94441c17b8ef096e517acccdbf3238af8a2da8","rules":{"binary_operator_spaces":true,"blank_line_after_opening_tag":true,"blank_line_before_statement":{"statements":
+# {"php":"5.6.26-1+deb.sury.org~xenial+1","version":"2.0.0","rules":{"array_syntax":{"syntax":"short"},"combine_consecutive_unsets":true,"general_phpdoc_annotation_remove":
+"/.php_cs.cache", 'Cache file .php_cs.cache of PHP-CS-Fixer could expose a listing of PHP files.#-#^{"php":"#-#"(version|rules|binary_operator_spaces|blank_line_after_opening_tag|blank_line_before_statement|array_syntax|syntax|statements)":"'
 );
 
 # https://doc.nette.org/en/configuring or https://github.com/nette/examples/blob/master/CD-collection/app/config.neon

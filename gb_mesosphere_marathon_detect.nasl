@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mesosphere_marathon_detect.nasl 10621 2018-07-25 14:18:59Z tpassfeld $
+# $Id: gb_mesosphere_marathon_detect.nasl 10683 2018-07-30 14:01:27Z cfischer $
 #
 # Mesosphere Marathon UI Detection
 #
@@ -28,28 +28,29 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114011");
-  script_version("$Revision: 10621 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-07-25 16:18:59 +0200 (Wed, 25 Jul 2018) $");
-  script_tag(name: "creation_date", value: "2018-07-20 11:00:14 +0200 (Fri, 20 Jul 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10683 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-30 16:01:27 +0200 (Mon, 30 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2018-07-20 11:00:14 +0200 (Fri, 20 Jul 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Mesoshpere Marathon UI Detection");
 
-  script_tag(name: "summary" , value: "Detection of Mesosphere Marathon Web UI.
+  script_tag(name:"summary", value:"Detection of Mesosphere Marathon Web UI.
 
-The script sends a connection request to the server and attempts to detect Mesoshpere Marathon UI and to
-extract its version if possible.");
-  
+  The script sends a connection request to the server and attempts to detect Mesoshpere Marathon UI and to
+  extract its version if possible.");
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("global_settings.nasl", "find_service.nasl", "http_version.nasl");
-  script_exclude_keys("keys/islocalhost", "keys/islocalnet", "keys/is_private_addr");
-  script_xref(name: "URL", value: "https://mesosphere.github.io/marathon/");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 8080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_xref(name:"URL", value:"https://mesosphere.github.io/marathon/");
 
   exit(0);
 }
@@ -61,16 +62,16 @@ include("http_keepalive.inc");
 
 port = get_http_port(default: 8080);
 url = "/ui/main.js";
-res = http_get_cache(port:port, item:url);
+res = http_get_cache(port: port, item: url);
 
 # marathon-ui - The web UI for Mesosphere's Marathon.
-if( "marathon-ui - The web UI for Mesosphere's Marathon." >< res ||
+if("marathon-ui - The web UI for Mesosphere's Marathon." >< res ||
     'function(e,t){e.exports={name:"marathon-ui"' >< res) {
    version = "unknown";
    install = "/";
 
-   vers = eregmatch( pattern:"version v([0-9.]+)", string:res);
-   conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
+   vers = eregmatch(pattern: "version v([0-9.]+)", string: res);
+   conclUrl = report_vuln_url(port: port, url: url, url_only: TRUE);
 
    if(vers[1]) version = vers[1];
 
@@ -79,13 +80,13 @@ if( "marathon-ui - The web UI for Mesosphere's Marathon." >< res ||
    set_kb_item(name: "Mesosphere/Marathon/" + port + "/installed", value: TRUE);
 
    cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:mesosphere:marathon:"); # CPE is not registered yet
-   
-   if (!cpe) cpe = 'cpe:/a:mesosphere:marathon';
+
+   if(!cpe) cpe = 'cpe:/a:mesosphere:marathon';
 
    register_product(cpe: cpe, location: install, port: port);
 
    log_message(data: build_detection_report(app: "Mesosphere Marathon", version: version, install: install, cpe: cpe,
-                                            concludedUrl:conclUrl),port: port);
+                                            concludedUrl: conclUrl),port: port);
 
 }
 

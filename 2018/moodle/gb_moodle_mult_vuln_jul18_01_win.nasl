@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_mult_vuln_jul18_01_win.nasl 10488 2018-07-12 09:23:44Z asteins $
+# $Id: gb_moodle_mult_vuln_jul18_01_win.nasl 10674 2018-07-30 08:24:18Z asteins $
 #
 # Moodle CMS <= 3.1.12, 3.2.x, 3.3.x <= 3.3.6, 3.4.x <= 3.4.3, 3.5.0 Multiple Vulnerabilities (Windows)
 #
@@ -28,13 +28,13 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113229");
-  script_version("$Revision: 10488 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-12 11:23:44 +0200 (Thu, 12 Jul 2018) $");
+  script_version("$Revision: 10674 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-30 10:24:18 +0200 (Mon, 30 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-12 10:10:32 +0200 (Thu, 12 Jul 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"solution_type", value:"VendorFix");
 

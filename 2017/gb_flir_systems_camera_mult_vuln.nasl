@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flir_systems_camera_mult_vuln.nasl 9747 2018-05-07 12:56:58Z asteins $
+# $Id: gb_flir_systems_camera_mult_vuln.nasl 10663 2018-07-27 13:48:41Z cfischer $
 #
 # FLIR Systems Cameras Multiple Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:flir_systems:camera";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140401");
-  script_version("$Revision: 9747 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-07 14:56:58 +0200 (Mon, 07 May 2018) $");
-  script_tag(name: "creation_date", value: "2017-09-26 16:38:33 +0700 (Tue, 26 Sep 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 10663 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 15:48:41 +0200 (Fri, 27 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2017-09-26 16:38:33 +0700 (Tue, 26 Sep 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("FLIR Systems Cameras Multiple Vulnerabilities");
 
@@ -49,28 +49,28 @@ if (description)
   script_dependencies("gb_flir_systems_detect.nasl");
   script_mandatory_keys("flir_camera/detected");
 
-  script_tag(name: "summary", value: "FLIR Systems FLIR Thermal/Infrared Camera FC-Series S, FC-Series ID,
-PT-Series are prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"FLIR Systems FLIR Thermal/Infrared Camera FC-Series S, FC-Series ID,
+  PT-Series are prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "FLIR Systems FLIR Thermal/Infrared Camera FC-Series S, FC-Series ID,
-PT-Series are prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"FLIR Systems FLIR Thermal/Infrared Camera FC-Series S, FC-Series ID,
+  PT-Series are prone to multiple vulnerabilities:
 
-- Information disclosure
+  - Information disclosure
 
-- Stream disclosure
+  - Stream disclosure
 
-- Unauthenticated Remote Code Execution
+  - Unauthenticated Remote Code Execution
 
-- Authenticated Remote Code Execution
+  - Authenticated Remote Code Execution
 
-- Hard-coded Credentials");
+  - Hard-coded Credentials");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 07th May, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 27th July, 2018. Information
+  regarding this issue will be updated once solution details are available.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/3411");
+  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3411");
 
   exit(0);
 }

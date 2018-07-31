@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_file_checksums.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: policy_file_checksums.nasl 10678 2018-07-30 09:29:11Z cfischer $
 #
 # Check File Checksums
 #
@@ -28,9 +28,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103940");
-  script_version("$Revision: 7823 $");
+  script_version("$Revision: 10678 $");
   script_name("File Checksums");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-30 11:29:11 +0200 (Mon, 30 Jul 2018) $");
   script_tag(name:"creation_date", value:"2013-08-14 16:47:16 +0200 (Wed, 14 Aug 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,8 +46,9 @@ if(description)
   script_add_preference(name:"Target checksum File", type:"file", value:"");
   script_add_preference(name:"List all and not only the first 100 entries", type:"checkbox", value:"no");
 
-  script_tag(name:"summary", value:"Checks the checksums (MD5 or SHA1) of specified files");
-  script_tag(name:"insight", value:"The SSH protocol is used to log in and to gather the needed information");
+  script_tag(name:"summary", value:"Checks the checksums (MD5 or SHA1)of specified files.
+
+  The SSH protocol is used to log in and to gather the needed information");
 
   script_tag(name:"qod", value:"98"); # direct authenticated file analysis is pretty reliable
 

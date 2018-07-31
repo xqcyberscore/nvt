@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1444.nasl 10650 2018-07-27 09:00:20Z cfischer $
+# $Id: deb_dla_1444.nasl 10664 2018-07-27 13:57:41Z cfischer $
 #
 # Auto-generated from advisory DLA 1444-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891444");
-  script_version("$Revision: 10650 $");
+  script_version("$Revision: 10664 $");
   script_cve_id("CVE-2018-11319");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1444-1] vim-syntastic security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 11:00:20 +0200 (Fri, 27 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 15:57:41 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-27 00:00:00 +0200 (Fri, 27 Jul 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"8.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

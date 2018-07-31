@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geovision_ip_camera_mult_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_geovision_ip_camera_mult_vuln.nasl 10663 2018-07-27 13:48:41Z cfischer $
 #
 # Geovision Inc. IP Camera Multiple Vulnerabilities
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/h:geovision:geovisionip_camera";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812759");
-  script_version("$Revision: 9758 $");
+  script_version("$Revision: 10663 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-27 15:48:41 +0200 (Fri, 27 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 13:00:22 +0530 (Thu, 08 Feb 2018)");
   script_name("Geovision Inc. IP Camera Multiple Vulnerabilities");
 
-  script_tag(name:"summary", value:"The host is running Geovision Inc. IP Camera 
+  script_tag(name:"summary", value:"The host is running Geovision Inc. IP Camera
   and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send the crafted http GET request
@@ -51,26 +51,26 @@ if(description)
 
   - Multiple input validation errors in several '.cgi' scripts.
 
-  - An improper access control for GET and PUT operations for pages under 
+  - An improper access control for GET and PUT operations for pages under
     '/PSIA' directory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to execute arbitrary commands, cause information disclosure and 
+  attacker to execute arbitrary commands, cause information disclosure and
   cause Stack Overflow condition.
 
   Impact Level: System/Application");
 
   script_tag(name:"affected", value:"Geovision Inc. IP Camera.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 07th May, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 27th July, 2018. Information
+  regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/43983");
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/43982");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/43983");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/43982");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -89,8 +89,8 @@ if (!gePort = get_app_port(cpe:CPE))
   exit(0);
 
 url = '/PSIA/indexr';
-if (http_vuln_check(port:gePort, url:url , pattern: '<ResourceList.*version=.*>', 
-                    extra_check:make_list('<type>resource</type>', '<version>[0-9.]+</version>', 
+if (http_vuln_check(port:gePort, url:url , pattern: '<ResourceList.*version=.*>',
+                    extra_check:make_list('<type>resource</type>', '<version>[0-9.]+</version>',
                                          '<name>[a-ZA-z]+</name>'), check_header: TRUE)) {
   report = report_vuln_url(port:gePort, url:url);
   security_message(port:gePort, data:report);

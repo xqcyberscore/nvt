@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022172.nasl 10585 2018-07-24 06:26:46Z santu $
+# $Id: gb_ms_kb4022172.nasl 10671 2018-07-30 06:31:58Z cfischer $
 #
 # Microsoft Office 2016 Defense in Depth Update (KB4022172)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813721");
-  script_version("$Revision: 10585 $");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-24 08:26:46 +0200 (Tue, 24 Jul 2018) $");
+  script_version("$Revision: 10671 $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-30 08:31:58 +0200 (Mon, 30 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 16:35:35 +0530 (Fri, 20 Jul 2018)");
   script_name("Microsoft Office 2016 Defense in Depth Update (KB4022172)");
 
@@ -40,12 +40,11 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-
   script_tag(name:"insight", value:"Microsoft has released an update for Microsoft
   Office that provides enhanced security as a defense-in-depth measure.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to compromise on availability, confidentiality and integrity of the system. 
+  to compromise on availability, confidentiality and integrity of the system.
 
   Impact Level: System/Application");
 
@@ -57,7 +56,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-gb/help/4022172");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-gb/help/4022172");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -67,7 +66,6 @@ if(description)
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("host_details.inc");
@@ -79,6 +77,7 @@ if(!offVer || !(offVer =~ "^16\.")){
   exit(0);
 }
 
+os_arch = get_kb_item("SMB/Windows/Arch");
 
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion");

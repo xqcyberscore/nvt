@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_db_core_rdbms_component_unspecified_vuln.nasl 10538 2018-07-18 10:58:40Z santu $
+# $Id: gb_oracle_db_core_rdbms_component_unspecified_vuln.nasl 10669 2018-07-30 02:51:08Z ckuersteiner $
 #
 # Oracle Database Server 'Core RDBMS' Component Unspecified Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:oracle:database_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813692");
-  script_version("$Revision: 10538 $");
+  script_version("$Revision: 10669 $");
   script_cve_id("CVE-2018-2939");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-18 12:58:40 +0200 (Wed, 18 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"3.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-30 04:51:08 +0200 (Mon, 30 Jul 2018) $");
   script_tag(name:"creation_date", value:"2018-07-18 12:59:43 +0530 (Wed, 18 Jul 2018)");
   script_name("Oracle Database Server 'Core RDBMS' Component Unspecified Vulnerability");
 

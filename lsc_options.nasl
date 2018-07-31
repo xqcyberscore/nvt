@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: lsc_options.nasl 10564 2018-07-22 10:45:26Z cfischer $
+# $Id: lsc_options.nasl 10678 2018-07-30 09:29:11Z cfischer $
 #
 # This script allows to set some Options for LSC.
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100509");
-  script_version("$Revision: 10564 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-22 12:45:26 +0200 (Sun, 22 Jul 2018) $");
+  script_version("$Revision: 10678 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-30 11:29:11 +0200 (Mon, 30 Jul 2018) $");
   script_tag(name:"creation_date", value:"2010-02-26 12:01:21 +0100 (Fri, 26 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,11 +47,10 @@ if(description)
 
   script_add_preference(name:"Disable the usage of win_cmd_exec for remote commands on Windows", type:"checkbox", value:"no");
 
-  script_tag(name:"summary", value:"This script allows users to set some Options for Local Security Checks.
+  script_tag(name:"summary", value:"This script allows users to set some Options for Local Security Checks which
+  are stored in the knowledge base and used by other tests. Description of the options:
 
-  These data are stored in the knowledge base and used by other tests.");
-
-  script_tag(name:"insight", value:"- Also use 'find' command to search for Applications:
+  - Also use 'find' command to search for Applications:
 
   Setting this option to 'no' disables the use of the 'find' command via SSH against Unixoide targets. This reduces scan
   time but might reduce detection coverage of e.g. local installed applications.
