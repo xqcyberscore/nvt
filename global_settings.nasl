@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: global_settings.nasl 8106 2017-12-13 14:42:54Z cfischer $
+# $Id: global_settings.nasl 10691 2018-07-31 13:09:21Z cfischer $
 #
 # Global variable settings
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12288");
-  script_version("$Revision: 8106 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 15:42:54 +0100 (Wed, 13 Dec 2017) $");
+  script_version("$Revision: 10691 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-31 15:09:21 +0200 (Tue, 31 Jul 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -41,7 +41,7 @@ if(description)
   script_add_preference(name:"Add historic /scripts and /cgi-bin to directories for CGI scanning", type:"checkbox", value:"no");
   script_add_preference(name:"Regex pattern to exclude directories from CGI scanning : ", type:"entry", value:"/(index\.php|image|img|css|js$|js/|javascript|style|theme|icon|jquery|graphic|grafik|picture|bilder)");
   script_add_preference(name:"Use regex pattern to exclude directories from CGI scanning : ", type:"checkbox", value:"yes");
-
+  script_add_preference(name:"Exclude directories containing detected known server manuals from CGI scanning", type:"checkbox", value:"yes");
   script_add_preference(name:"Enable generic web application scanning", type:"checkbox", value:"no");
 
   script_add_preference(name:"Network type", type:"radio", value:"Mixed (use RFC 1918);Private LAN; Public WAN (Internet)");
@@ -75,6 +75,9 @@ if( opt == "yes" ) set_kb_item( name:"global_settings/mark_host_dead_failed_icmp
 
 opt = script_get_preference( "Enable CGI scanning" );
 if( opt == "no" ) set_kb_item( name:"Settings/disable_cgi_scanning", value:TRUE );
+
+opt = script_get_preference( "Exclude directories containing detected known server manuals from CGI scanning" );
+if( ! opt || opt == "yes" ) set_kb_item( name:"global_settings/cgi_dirs_exclude_servermanual", value:TRUE );
 
 opt = script_get_preference( "Enable generic web application scanning" );
 if( opt == "no" ) set_kb_item( name:"global_settings/disable_generic_webapp_scanning", value:TRUE );

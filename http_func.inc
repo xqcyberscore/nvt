@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 10406 2018-07-05 05:54:02Z cfischer $
+# $Id: http_func.inc 10691 2018-07-31 13:09:21Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10406 $
+# $Revision: 10691 $
 #
 ###############################################################################
 
@@ -149,7 +149,7 @@ function get_http_banner( port, file, ignore_broken ) {
     if( http_is_marked_broken( port:port ) ) return NULL; # TBD: Really return NULL if marked as broken? We still could use the banner version in NVTs...
 
   # nb: Always keep http_get() before http_open_socket() as the first could
-  # fork with multiple vhosts and the childs would share the same socket
+  # fork with multiple vhosts and the child's would share the same socket
   # causing race conditions and similar.
   req = http_get( item:file, port:port );
   soc = http_open_socket( port );
@@ -264,7 +264,7 @@ function http_is_dead( port, retry ) {
 
   # nb: http_head does not work against SWAT & VNC (& probably others...)
   # nb: Always keep http_get() before http_open_socket() as the first could
-  # fork with multiple vhosts and the childs would share the same socket
+  # fork with multiple vhosts and the child's would share the same socket
   # causing race conditions and similar.
   url = strcat( "/OpenVASTest", rand(), ".html" );
   req = http_get( item:url, port:port );
@@ -327,7 +327,7 @@ function do_check_win_dir_trav( port, url, quickcheck ) {
   if( _http_debug ) display( "DEBUG: check_win_dir_trav(port=", port, ", url=", url, ", quickcheck=", quickcheck, ")\n" );
 
   # nb: Always keep http_get() before http_open_socket() as the first could
-  # fork with multiple vhosts and the childs would share the same socket
+  # fork with multiple vhosts and the child's would share the same socket
   # causing race conditions and similar.
   req = http_get( item:url, port:port );
   soc = http_open_socket( port );
@@ -543,12 +543,27 @@ function http_send_recv( port, data ) {
 
 }
 
-function cgi_dirs( port ) {
+# @brief This function returns the detected directories (e.g. by webmirror.nasl
+#        and/or DDI_Directory_Scanner.nasl) on the remote web server. Additionally
+#        it includes all user specified directories via the scanner preference
+#        'cgi_path'. If CGI Scanning is is disabled the function will exit.
+#
+# @param port the port of the remote server for which the detected directories
+#             should be returned. This parameter is optional and if not passed
+#             the directories of all web servers on the remote host are returned.
+# @param host the hostname of the remote server (e.g. from http_host_name or
+#             get_host_name) for which the detected directories should be returned.
+#             This parameter is optional and if not passed the directories of all
+#             web servers and all hostnames of the remote host are returned.
+#
+# @return The directories on the remote web server as defined in the description above.
+#
+function cgi_dirs( port, host ) {
 
-  local_var port, kb, optimize, usercgis;
+  local_var port, host, kb, optimize, usercgis;
   # nb: http_cgi_disabled and optimize_test_enabled are global vars
 
-  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#cgi_dirs" );
+  if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#cgi_dirs" );
 
   if( http_cgi_disabled ) {
     if( optimize_test_enabled && "yes" >< optimize_test_enabled ) {
@@ -558,10 +573,18 @@ function cgi_dirs( port ) {
     exit( 0 ); # Throws a "nasl_array_iterator: unhandled type 57" message if cgi_dirs() is called within a foreach but not within a make_list()
   }
 
-  if( port ) {
-    kb = get_kb_list( "www/" + port + "/content/directories" );
+  # TBD: Use http_host_name() if(!host) ?
+  # This would require an additional parameter to skip this if
+  # the NVT dev wants to get the directories of all hosts...
+
+  if( port && host ) {
+    kb = get_kb_list( "www/" + host + "/" + port + "/content/directories" );
+  } else if( port && ! host ) {
+    kb = get_kb_list( "www/*/" + port + "/content/directories" );
+  } else if( ! port && host ) {
+    kb = get_kb_list( "www/" + host + "/*/content/directories" );
   } else {
-    kb = get_kb_list( "www/*/content/directories" );
+    kb = get_kb_list( "www/*/*/content/directories" );
   }
 
   usercgis = get_kb_list( "/user/cgis" );

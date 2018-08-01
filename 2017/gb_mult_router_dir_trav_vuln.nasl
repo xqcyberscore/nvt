@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_router_dir_trav_vuln.nasl 9565 2018-04-23 10:00:20Z ckuersteiner $
+# $Id: gb_mult_router_dir_trav_vuln.nasl 10688 2018-07-31 06:55:11Z asteins $
 #
 # Multiple Router Directory Traversal Vulnerability
 #
@@ -28,17 +28,17 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140448");
-  script_version("$Revision: 9565 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-23 12:00:20 +0200 (Mon, 23 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-10-24 09:17:33 +0700 (Tue, 24 Oct 2017)");
+  script_version("$Revision: 10688 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-31 08:55:11 +0200 (Tue, 31 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2017-10-24 09:17:33 +0700 (Tue, 24 Oct 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2017-15647");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("Multiple Router Directory Traversal Vulnerability");
 
@@ -50,19 +50,19 @@ if (description)
   script_mandatory_keys("mini_httpd/banner");
   script_require_ports("Services/www", 8080);
 
-  script_tag(name: "summary", value: "Multiple home router products are prone to a directory traversal
+  script_tag(name:"summary", value:"Multiple home router products are prone to a directory traversal
 vulnerability.");
 
-  script_tag(name: "insight", value: "On multiple home router products (e.g. FiberHome, PLC Systems), a directory
+  script_tag(name:"insight", value:"On multiple home router products (e.g. FiberHome, PLC Systems), a directory
 traversal vulnerability exists in /cgi-bin/webproc via the getpage parameter in conjunction with a crafted
 var:page value.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 23th April, 2018. Information
+  script_tag(name:"solution", value:"No known solution is available as of 31st July, 2018. Information
 regarding this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/3472");
+  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3472");
 
   exit(0);
 }

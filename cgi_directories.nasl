@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 10283 2018-06-21 11:10:20Z cfischer $
+# $Id: cgi_directories.nasl 10691 2018-07-31 13:09:21Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 10283 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 13:10:20 +0200 (Thu, 21 Jun 2018) $");
+  script_version("$Revision: 10691 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-31 15:09:21 +0200 (Tue, 31 Jul 2018) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -92,28 +92,30 @@ maxItems = int( script_get_preference( "Maximum number of items shown for each l
 if( maxItems <= 0 ) maxItems = 100;
 
 port = get_http_port( default:80 );
+host = http_host_name( port:port );
 
-cgiDirs          = cgi_dirs( port:port );
+cgiDirs          = cgi_dirs( port:port, host:host );
 httpVersion      = get_kb_item( "http/" + port );
-authRequireDirs  = get_kb_list( "www/" + port + "/content/auth_required" );
-cgiList          = get_kb_list( "www/" + port + "/content/cgis/*" );
-excludedCgiList  = get_kb_list( "www/" + port + "/content/excluded_cgis/*" );
-dirIndexList     = get_kb_list( "www/" + port + "/content/dir_index" );
-phpinfoList      = get_kb_list( "www/" + port + "/content/phpinfo_script" );
-phpPathList      = get_kb_list( "www/" + port + "/content/php_physical_path" );
-guardianList     = get_kb_list( "www/" + port + "/content/guardian" );
-coffeecupList    = get_kb_list( "www/" + port + "/content/coffeecup" );
-chOptOutList     = get_kb_list( "www/" + port + "/content/coinhive_optout" );
-chOptInList      = get_kb_list( "www/" + port + "/content/coinhive_optin" );
-chNoOptOutList   = get_kb_list( "www/" + port + "/content/coinhive_nooptout" );
-chObfuscatedList = get_kb_list( "www/" + port + "/content/coinhive_obfuscated" );
-frontpageList    = get_kb_list( "www/" + port + "/content/frontpage_results" );
-skippedDirList   = get_kb_list( "www/" + port + "/content/skipped_directories" );
-excludedDirList  = get_kb_list( "www/" + port + "/content/excluded_directories" );
-recursionUrlList = get_kb_list( "www/" + port + "/content/recursion_urls" );
-maxPagesReached  = get_kb_item( "www/" + port + "/content/max_pages_reached" );
+authRequireDirs  = get_kb_list( "www/" + host + "/" + port + "/content/auth_required" );
+cgiList          = get_kb_list( "www/" + host + "/" + port + "/content/cgis/*" );
+excludedCgiList  = get_kb_list( "www/" + host + "/" + port + "/content/excluded_cgis/*" );
+dirIndexList     = get_kb_list( "www/" + host + "/" + port + "/content/dir_index" );
+phpinfoList      = get_kb_list( "www/" + host + "/" + port + "/content/phpinfo_script" );
+phpPathList      = get_kb_list( "www/" + host + "/" + port + "/content/php_physical_path" );
+guardianList     = get_kb_list( "www/" + host + "/" + port + "/content/guardian" );
+coffeecupList    = get_kb_list( "www/" + host + "/" + port + "/content/coffeecup" );
+chOptOutList     = get_kb_list( "www/" + host + "/" + port + "/content/coinhive_optout" );
+chOptInList      = get_kb_list( "www/" + host + "/" + port + "/content/coinhive_optin" );
+chNoOptOutList   = get_kb_list( "www/" + host + "/" + port + "/content/coinhive_nooptout" );
+chObfuscatedList = get_kb_list( "www/" + host + "/" + port + "/content/coinhive_obfuscated" );
+frontpageList    = get_kb_list( "www/" + host + "/" + port + "/content/frontpage_results" );
+skippedDirList   = get_kb_list( "www/" + host + "/" + port + "/content/skipped_directories" );
+excludedDirList  = get_kb_list( "www/" + host + "/" + port + "/content/excluded_directories" );
+srvmanualDirList = get_kb_list( "www/" + host + "/" + port + "/content/servermanual_directories" );
+recursionUrlList = get_kb_list( "www/" + host + "/" + port + "/content/recursion_urls" );
+maxPagesReached  = get_kb_item( "www/" + host + "/" + port + "/content/max_pages_reached" );
 
-#report = 'The hostname "' + http_host_name( port:port ) + '" is used.\n\n'; #TODO is this forking?
+report = 'The Hostname/IP:port "' + host + '" was used to access the remote host.\n\n';
 
 #TODO: Add no404.nasl
 
@@ -250,6 +252,27 @@ if( ! isnull( excludedDirList ) ) {
     currentItems++;
     if( currentItems >= maxItems ) continue;
     tmpreport += report_vuln_url( port:port, url:dir, url_only:TRUE ) + '\n';
+  }
+  if( currentItems >= maxItems )
+    tmpreport = prepend_max_items_text( curReport:tmpreport, currentItems:currentItems, maxItems:maxItems );
+  report += tmpreport + '\n';
+}
+
+if( ! isnull( srvmanualDirList ) ) {
+
+  currentItems = 0;
+
+  tmpreport  = "The following directories were excluded from CGI scanning because";
+  tmpreport += ' of the "Exclude directories containing detected known server manuals from CGI scanning"';
+  tmpreport += ' setting of the NVT "Global variable settings" (OID: 1.3.6.1.4.1.25623.1.0.12288):\n\n';
+
+  # Sort to not report changes on delta reports if just the order is different
+  srvmanualDirList = sort( srvmanualDirList );
+
+  foreach dir( srvmanualDirList ) {
+    currentItems++;
+    if( currentItems >= maxItems ) continue;
+    tmpreport += dir + '\n';
   }
   if( currentItems >= maxItems )
     tmpreport = prepend_max_items_text( curReport:tmpreport, currentItems:currentItems, maxItems:maxItems );

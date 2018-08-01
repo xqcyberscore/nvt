@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonos_info_discl_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_sonos_info_discl_vuln.nasl 10688 2018-07-31 06:55:11Z asteins $
 #
 # Sonos Speaker Information Disclosure Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:sonos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141020");
-  script_version("$Revision: 9758 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-04-24 10:15:48 +0700 (Tue, 24 Apr 2018)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 10688 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-31 08:55:11 +0200 (Tue, 31 Jul 2018) $");
+  script_tag(name:"creation_date", value:"2018-04-24 10:15:48 +0700 (Tue, 24 Apr 2018)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("Sonos Speaker Information Disclosure Vulnerability");
 
@@ -49,18 +49,18 @@ if (description)
   script_dependencies("gb_sonos_detect.nasl");
   script_mandatory_keys("sonos_speaker/detected");
 
-  script_tag(name: "summary", value: "Sonos Speakers are prone to an information disclosure vulnerability.");
+  script_tag(name:"summary", value:"Sonos Speakers are prone to an information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "insight", value: "By accessing /status or /tools it is possible for an unauthenticated attacker
+  script_tag(name:"insight", value:"By accessing /status or /tools it is possible for an unauthenticated attacker
 to gather information about the device settings and possible other information. This may lead to further
 attacks.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 24th April, 2018. Information
+  script_tag(name:"solution", value:"No known solution is available as of 31st July, 2018. Information
 regarding this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "https://conference.hitb.org/hitbsecconf2018ams/materials/D1%20COMMSEC%20-%20Stephen%20Hilt%20-%20Hacking%20IoT%20Speakers.pdf");
+  script_xref(name:"URL", value:"https://conference.hitb.org/hitbsecconf2018ams/materials/D1%20COMMSEC%20-%20Stephen%20Hilt%20-%20Hacking%20IoT%20Speakers.pdf");
 
   exit(0);
 }

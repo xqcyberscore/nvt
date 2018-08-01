@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_cisco-sa-20170726-anidos.nasl 9738 2018-05-07 04:50:48Z ckuersteiner $
+# $Id: gb_cisco_ios_cisco-sa-20170726-anidos.nasl 10687 2018-07-31 06:36:09Z asteins $
 #
 # Cisco IOS Software Autonomic Networking Infrastructure Denial of Service Vulnerability
 #
@@ -31,35 +31,35 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106991");
  script_cve_id("CVE-2017-6663");
- script_tag(name: "cvss_base", value: "6.1");
- script_tag(name: "cvss_base_vector", value: "AV:A/AC:L/Au:N/C:N/I:N/A:C");
- script_version("$Revision: 9738 $");
+ script_tag(name:"cvss_base", value:"6.1");
+ script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
+ script_version("$Revision: 10687 $");
 
  script_name("Cisco IOS Software Autonomic Networking Infrastructure Denial of Service Vulnerability");
 
  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170726-anidos");
 
- script_tag(name: "vuldetect" , value: "Check the version.");
+ script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
- script_tag(name: "solution", value: "No solution or patch is available as of 07th May, 2018. Information
-regarding this issue will be updated once solution details are available.");
+ script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+ Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
- script_tag(name: "summary", value: "A vulnerability in the Autonomic Networking feature of Cisco IOS Software
+ script_tag(name:"summary", value:"A vulnerability in the Autonomic Networking feature of Cisco IOS Software
 could allow an unauthenticated, adjacent attacker to cause autonomic nodes of an affected system to reload,
 resulting in a denial of service (DoS) condition.");
 
- script_tag(name: "insight", value: "The vulnerability is due to an unknown condition in the Autonomic Networking
+ script_tag(name:"insight", value:"The vulnerability is due to an unknown condition in the Autonomic Networking
 code of the affected software. An attacker could exploit this vulnerability by replaying captured packets to reset
 the Autonomic Control Plane (ACP) channel of an affected system.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to reset the ACP channel of an
+ script_tag(name:"impact", value:"A successful exploit could allow the attacker to reset the ACP channel of an
 affected system and consequently cause the affected device to reload, resulting in a DoS condition.");
 
- script_tag(name: "qod_type", value: "package");
- script_tag(name: "solution_type", value: "NoneAvailable");
+ script_tag(name:"qod_type", value:"package");
+ script_tag(name:"solution_type", value:"WillNotFix");
 
- script_tag(name: "last_modification", value: "$Date: 2018-05-07 06:50:48 +0200 (Mon, 07 May 2018) $");
- script_tag(name: "creation_date", value: "2017-07-28 09:13:57 +0700 (Fri, 28 Jul 2017)");
+ script_tag(name:"last_modification", value:"$Date: 2018-07-31 08:36:09 +0200 (Tue, 31 Jul 2018) $");
+ script_tag(name:"creation_date", value:"2017-07-28 09:13:57 +0700 (Fri, 28 Jul 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");

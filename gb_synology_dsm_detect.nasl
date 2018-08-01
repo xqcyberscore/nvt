@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_dsm_detect.nasl 8477 2018-01-21 17:07:22Z cfischer $
+# $Id: gb_synology_dsm_detect.nasl 10692 2018-07-31 13:51:55Z santu $
 #
 # Synology DiskStation Detection
 #
@@ -31,8 +31,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103786");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8477 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-21 18:07:22 +0100 (Sun, 21 Jan 2018) $");
+ script_version ("$Revision: 10692 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-07-31 15:51:55 +0200 (Tue, 31 Jul 2018) $");
  script_tag(name:"creation_date", value:"2013-09-12 10:58:59 +0200 (Thu, 12 Sep 2013)");
  script_tag(name:"qod_type", value:"remote_banner");
  script_name("Synology DiskStation Manager Detection");
@@ -63,9 +63,8 @@ foreach url ( urls )
 {
   req = http_get(item:url, port:port);
   buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
-
-  if(buf =~ "Synology(&nbsp;| )DiskStation" && ("SYNO.SDS.Session" >< buf || '<meta name="description" content="DiskStation provides a full-featured' >< buf )) {
-
+  if(((buf =~ "Synology(&nbsp;| )DiskStation")||(buf =~ "synology.com" && 'content="DiskStation' >< buf )) && ("SYNO.SDS.Session" >< buf || '<meta name="description" content="DiskStation provides a full-featured' >< buf ))
+  {
     set_kb_item(name:"synology_dsm/installed",value:TRUE);
     cpe = 'cpe:/o:synology:dsm';
 
@@ -75,5 +74,4 @@ foreach url ( urls )
     exit(0);
   }
 }
-
 exit(0);

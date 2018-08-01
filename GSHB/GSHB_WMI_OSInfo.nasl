@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_OSInfo.nasl 10682 2018-07-30 13:19:35Z cfischer $
+# $Id: GSHB_WMI_OSInfo.nasl 10695 2018-07-31 15:51:04Z cfischer $
 #
 # Get OS Version, OS Type, OS Servicepack and OS Name over WMI (win)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96999");
-  script_version("$Revision: 10682 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-30 15:19:35 +0200 (Mon, 30 Jul 2018) $");
+  script_version("$Revision: 10695 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-07-31 17:51:04 +0200 (Tue, 31 Jul 2018) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -77,7 +77,6 @@ if(samba){
 }
 
 if(!host || !usrname || !passwd){
-  log_message("wmi_connect: WMI Connect failed.");
   set_kb_item(name:"WMI/WMI_WindowsDomain", value:errorval);
   set_kb_item(name:"WMI/WMI_WindowsDomainrole", value:errorval);
   set_kb_item(name:"WMI/WMI_OSVER", value:errorval);
@@ -97,7 +96,6 @@ if(wmi_access)
   handle = wmi_connect(host:host, username:usrname, password:passwd);
 
 if(!handle){
-  log_message("wmi_connect: WMI Connect failed.");
   set_kb_item(name:"WMI/WMI_WindowsDomain", value:errorval);
   set_kb_item(name:"WMI/WMI_WindowsDomainrole", value:errorval);
   set_kb_item(name:"WMI/WMI_OSVER", value:errorval);
