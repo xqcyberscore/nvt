@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmirror.nasl 10691 2018-07-31 13:09:21Z cfischer $
+# $Id: webmirror.nasl 10713 2018-08-01 14:21:58Z cfischer $
 #
 # WEBMIRROR 2.0
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10662");
-  script_version("$Revision: 10691 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-31 15:09:21 +0200 (Tue, 31 Jul 2018) $");
+  script_version("$Revision: 10713 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 16:21:58 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-10-02 19:48:14 +0200 (Fri, 02 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -195,7 +195,6 @@ function add_auth( url, basic, realm, port, host ) {
     if( ! Check401 && url != "/" ) return;
 
     set_kb_item( name:"www/content/auth_required", value:TRUE );
-    set_kb_item( name:"www/" + port + "/content/auth_required", value:url );
     set_kb_item( name:"www/" + host + "/" + port + "/content/auth_required", value:url );
 
     URLs_auth_hash[url] = 1;
@@ -1082,7 +1081,7 @@ function parse_main( current, data, port, host ) {
 #                                MAIN()                                #
 #----------------------------------------------------------------------#
 port = get_http_port( default:80 );
-host = http_host_name( port:port );
+host = http_host_name( dont_add_port:TRUE );
 
 dirs = cgi_dirs( port:port, host:host );
 
@@ -1158,7 +1157,7 @@ while( TRUE ) {
   }
 
   if( max_index( URLs_discovered ) > 0 ) {
-    # Set the discovered URLs into the list for the next iteration
+    # nb: Set the discovered URLs into the list for the next iteration
     URLs = URLs_discovered;
     # And reset the discovered list
     URLs_discovered = make_list();

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lotus_domino_detect.nasl 8138 2017-12-15 11:42:07Z cfischer $
+# $Id: gb_lotus_domino_detect.nasl 10711 2018-08-01 13:58:38Z cfischer $
 #
 # Lotus/IBM Domino Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100597");
-  script_version("$Revision: 8138 $");
+  script_version("$Revision: 10711 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 15:58:38 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-04-22 20:18:17 +0200 (Thu, 22 Apr 2010)");
   script_name("Lotus/IBM Domino Detection");
   script_category(ACT_GATHER_INFO);
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/smtp", 25, 465, 587, "Services/pop3", 110,
                        "Services/imap", 143, "Services/www", 80);
 
-  script_tag(name:"summary", value:"Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Lotus/IBM Domino.
 
   The script connects to SMTP (25), IMAP (143), POP3 (110) or HTTP (80) port,
@@ -95,7 +95,6 @@ foreach port( ports ) {
       set_kb_item( name:"SMTP/domino", value:TRUE );
       set_kb_item( name:"SMTP/" + port + "/Domino", value:domino_ver );
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe( value:domino_ver, exp:"([0-9][^ ]+)", base:"cpe:/a:ibm:lotus_domino:" );
       if( isnull( cpe ) )
         cpe = "cpe:/a:ibm:lotus_domino";
@@ -131,7 +130,6 @@ foreach port( ports ) {
       set_kb_item( name:"Domino/Version", value:domino_ver );
       set_kb_item( name:"Domino/Installed", value:TRUE );
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe( value:domino_ver, exp:"([0-9][^ ]+)", base:"cpe:/a:ibm:lotus_domino:" );
       if( isnull( cpe ) )
         cpe = "cpe:/a:ibm:lotus_domino";
@@ -167,7 +165,6 @@ foreach port( ports ) {
       set_kb_item( name:"Domino/Version", value:domino_ver );
       set_kb_item( name:"Domino/Installed", value:TRUE );
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe( value:domino_ver, exp:"([0-9][^ ]+)", base:"cpe:/a:ibm:lotus_domino:" );
       if( isnull( cpe ) )
         cpe = "cpe:/a:ibm:lotus_domino";
@@ -197,12 +194,13 @@ versionFiles = make_array( "/download/filesets/l_LOTUS_SCRIPT.inf", "Version=([0
                            "/iNotes/Forms9.nsf", "<!-- Domino Release ([0-9.]+)",
                            "/homepage.nsf", ">Domino Administrator ([0-9.]+) Help</" ); # Last fallback to get the major version
 
-port = get_http_port( default:80 );
-
-nsfList = get_kb_list( "www/" + port + "/content/extensions/nsf" );
-
 cgis = "/domcfg.nsf";
 final_ver = "unknown";
+
+port = get_http_port( default:80 );
+host = http_host_name( dont_add_port:TRUE );
+
+nsfList = get_http_kb_file_extensions( port:port, host:host, ext:"nsf" );
 
 tmpCgis = make_list_unique( "/", cgi_dirs( port:port ) );
 foreach tmpCgi( tmpCgis ) {
@@ -285,7 +283,6 @@ if( installed ) {
   set_kb_item( name:"dominowww/installed", value:TRUE );
   set_kb_item( name:"Domino/Installed", value:TRUE );
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe( value:final_ver, exp:"([0-9][^ ]+)", base:"cpe:/a:ibm:lotus_domino:" );
   if( isnull( cpe ) ) {
     cpe = build_cpe( value:final_ver, exp:"([0-9]+)", base:"cpe:/a:ibm:lotus_domino:" );

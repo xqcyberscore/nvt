@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test support library
-# $Id: policy_functions.inc 10649 2018-07-27 07:16:55Z emoss $
+# $Id: policy_functions.inc 10714 2018-08-01 14:49:06Z emoss $
 #
 # Supporting methods for Policy NVTs.
 #
@@ -28,7 +28,7 @@ function policy_logging(text)
 {
   # This function is used by basic policy tests. The silence value is set in
   # compliance_tests.nasl. If you start the test within a standard policy like
-  # IT-Grundschutz, the results are silent by default. If you start the basic 
+  # IT-Grundschutz, the results are silent by default. If you start the basic
   # policy test by themselves, they are verbose.
   local_var verbose, text;
   verbose = get_kb_item("Compliance/verbose");
@@ -58,7 +58,7 @@ function policy_set_dval(dval){
   local_var dval;
   name = get_script_oid() + "/DEFAULT";
   # save as string, because value can be "0", which would lead to not set the kb_entry
-  set_kb_item(name:name, value:chomp(string(dval))); 
+  set_kb_item(name:name, value:chomp(string(dval)));
 }
 
 function policy_fixtext(fixtext){
@@ -77,11 +77,7 @@ function policy_control_name(title){
 
 function policy_logging_registry(type,key,item,value){
 	local_var type,key,item,value;
-	if(value == 'none'){
-			policy_logging(text:'Unable to detect registry value ' + type + '\\' + key + '!' + item + '.');
-		}else{
-			policy_logging(text:'Registry value ' + type + '\\' + key + '!' + item + ' is set to: ' + value);
-		}
+	policy_logging(text:'Registry value ' + type + '\\' + key + '!' + item + ' is set to: ' + value);
 }
 
 function rsop_securitysettingsboolean(select,keyname){
@@ -101,7 +97,7 @@ function rsop_securitysettingsboolean(select,keyname){
     wmi_close(wmi_handle:handle);
     exit(0);
   }
-  
+
   query = "SELECT " + select + " FROM RSOP_SecuritySettingBoolean WHERE KeyName = '" + keyname + "' AND precedence = '1'";
   res = wmi_query_rsop(wmi_handle:handle, query:query);
   splitRes = split(res, sep:"|", keep:FALSE);
@@ -131,7 +127,7 @@ function rsop_securitysettingsnumeric(select,keyname){
     wmi_close(wmi_handle:handle);
     exit(0);
   }
-  
+
   query = "SELECT " + select + " FROM RSOP_SecuritySettingNumeric WHERE KeyName = '" + keyname + "' AND precedence = '1'";
   res = wmi_query_rsop(wmi_handle:handle, query:query);
   splitRes = split(res, sep:"|", keep:FALSE);
@@ -161,13 +157,13 @@ function rsop_userprivilegeright(select,keyname){
     wmi_close(wmi_handle:handle);
     exit(0);
   }
-  
+
   query = "SELECT " + select + " FROM RSOP_UserPrivilegeRight WHERE UserRight = '" + keyname + "'";
   res = wmi_query_rsop(wmi_handle:handle, query:query);
   if(res == ''){
     return "None";
   }
-  
+
   splitRes = split(res, keep:FALSE);
   accountList = split(splitRes[1], sep:"|", keep:FALSE);
   MaxIndexAccountList = max_index(accountList);
@@ -177,7 +173,7 @@ function rsop_userprivilegeright(select,keyname){
       returnValue += ', ';
     }
   }
-  
+
   wmi_close(wmi_handle:handle);
   return(string(returnValue));
 }
@@ -202,15 +198,6 @@ function win32_useraccount(select,name){
   query = "SELECT " + select + " FROM Win32_UserAccount WHERE Name = '" + name + "'";
   res = wmi_query(wmi_handle:handle, query:query);
   wmi_close(wmi_handle:handle);
-  
-	return(res);
-}
 
-function policy_get_kb(oid){
-  oid = '1.3.6.1.4.1.25623.1.0.' + oid;
-  value = get_kb_item(oid);
-  fixtext = get_kb_item(oid + '/FIX');
-  name = get_kb_item(oid + '/NAME');
-  ret = make_list(value, fixtext, name);
-  return ret;
+	return(res);
 }

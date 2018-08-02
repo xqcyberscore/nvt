@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 10406 2018-07-05 05:54:02Z cfischer $
+# $Id: ssh_func.inc 10707 2018-08-01 10:58:06Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10406 $
+# $Revision: 10707 $
 #
 ###############################################################################
 
@@ -2552,9 +2552,9 @@ function get_ssh_server_banner( port ) {
   return banner;
 }
 
-# @brief This function cleans a passed string from various known messages
-#        returned by @ref ssh_cmd which might interfere with various
-#        detection pattern relying on a string without those messages.
+# @brief Cleans a passed string from various known messages returned
+#        by @ref ssh_cmd which might interfere with various detection
+#        pattern relying on a string without those messages.
 #
 # @param data the string to clean
 #

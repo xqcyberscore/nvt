@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 10691 2018-07-31 13:09:21Z cfischer $
+# $Id: http_func.inc 10708 2018-08-01 11:56:31Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10691 $
+# $Revision: 10708 $
 #
 ###############################################################################
 
@@ -111,8 +111,8 @@ function hex2dec( xvalue ) {
   return int( ret );
 }
 
-# @brief This function creates a HTTP GET request for "/" or a specific URL,
-#        sends the request to the target, receives the response and extracts
+# @brief Creates a HTTP GET request for "/" or a specific URL, sends
+#        the request to the target, receives the response and extracts
 #        the HTTP header (banner) without the body from the response.
 #        If a header was received it is saved into the knowledge base.
 #        If a header was requested which was requested previously the cached
@@ -164,8 +164,8 @@ function get_http_banner( port, file, ignore_broken ) {
   return banner;
 }
 
-# @brief This function returns all HTTP ports of the target system which
-#        are saved in the KB entry "Services/www" found by the scanner.
+# @brief Returns all HTTP ports of the target system which are saved
+#        in the KB entry "Services/www" found by the scanner.
 #        If no ports where found open it will exit. In the case if the
 #        "unscanned_closed" scanner setting is set to "no" it will return
 #        the port passed via the default parameter.
@@ -240,8 +240,8 @@ function php_ver_match( banner, pattern ) {
   return( 0 );
 }
 
-# @brief This function checks if the remote web server is responding
-#        to an HTTP GET request.
+# @brief Checks if the remote web server is responding
+#        to a HTTP GET request.
 #
 # @param port  the port of the remote server to check
 # @param retry the amount of retries until the check is considered as failed.
@@ -298,8 +298,8 @@ function http_is_dead( port, retry ) {
   return FALSE;
 }
 
-# @brief This function requests a specified URL and checks the response if it
-#        is containing pattern for windows related files (autoexec.bat, win.ini
+# @brief Requests a specified URL and checks the response if it contains
+#        a pattern for windows related files (autoexec.bat, win.ini
 #        and boot.ini).
 #
 # @param port        the port of the remote server to check
@@ -355,8 +355,8 @@ function do_check_win_dir_trav( port, url, quickcheck ) {
   return FALSE;
 }
 
-# @brief This function requests a specified URL and checks the response if it
-#        is containing pattern for windows related files (autoexec.bat, win.ini
+# @brief Requests a specified URL and checks the response if it contains
+#        a pattern for windows related files (autoexec.bat, win.ini
 #        and boot.ini). It is an extension to @ref do_check_win_dir_trav and
 #        is additionally checking if the web server is responding with the
 #        expected pattern on a non-existent random file.
@@ -543,18 +543,19 @@ function http_send_recv( port, data ) {
 
 }
 
-# @brief This function returns the detected directories (e.g. by webmirror.nasl
-#        and/or DDI_Directory_Scanner.nasl) on the remote web server. Additionally
+# @brief Returns the detected directories (e.g. by webmirror.nasl and/or
+#        DDI_Directory_Scanner.nasl) on the remote web server. Additionally
 #        it includes all user specified directories via the scanner preference
 #        'cgi_path'. If CGI Scanning is is disabled the function will exit.
 #
 # @param port the port of the remote server for which the detected directories
 #             should be returned. This parameter is optional and if not passed
 #             the directories of all web servers on the remote host are returned.
-# @param host the hostname of the remote server (e.g. from http_host_name or
-#             get_host_name) for which the detected directories should be returned.
-#             This parameter is optional and if not passed the directories of all
-#             web servers and all hostnames of the remote host are returned.
+# @param host the hostname of the remote server (e.g. from http_host_name with the
+#             dont_add_port:TRUE parameter or get_host_name) for which the detected
+#             directories should be returned. This parameter is optional and if not
+#             passed the directories of all web servers and all hostnames of the
+#             remote host are returned.
 #
 # @return The directories on the remote web server as defined in the description above.
 #
@@ -573,7 +574,7 @@ function cgi_dirs( port, host ) {
     exit( 0 ); # Throws a "nasl_array_iterator: unhandled type 57" message if cgi_dirs() is called within a foreach but not within a make_list()
   }
 
-  # TBD: Use http_host_name() if(!host) ?
+  # TBD: Use http_host_name(dont_add_port:TRUE) if(!host) ?
   # This would require an additional parameter to skip this if
   # the NVT dev wants to get the directories of all hosts...
 
@@ -793,11 +794,20 @@ function http_gunzip( buf, onlybody ) {
   return buf;
 }
 
-function http_host_name( port, use_ip ) {
+# @brief Returns the hostname of the remote HTTP server. If the port parameter
+#        is passed the function is also adding the port of the remote server
+#        to the hostname if the port is not 80 and not 443. If no port is passed
+#        the dont_add_port parameter needs to be set to TRUE.
+#
+# @param port          the port of the remote server
+# @param use_ip        if set to TRUE the IP of the remote server is returned, otherwise the hostname
+# @param dont_add_port if set to TRUE no port is added to the IP/hostname, otherwise the port is added
+#
+# @return The hostname or IP of the remote server controlled by the described parameters.
+#
+function http_host_name( port, use_ip, dont_add_port ) {
 
-  local_var port, use_ip, host;
-
-  if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_host_name" );
+  local_var port, use_ip, dont_add_port, host;
 
   if( use_ip ) {
     host = get_host_ip();
@@ -805,7 +815,15 @@ function http_host_name( port, use_ip ) {
     host = get_host_name();
   }
 
+  if( dont_add_port )
+    return host;
+
+  if( ! port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_host_name" );
+
   if( port ) {
+    # nb: Some IPS/WAF might block our requests if we're adding a port to the
+    # Host: header so at least don't include it for 80 and 443 which complies
+    # with the RFC.
     if( port != 80 && port != 443 )
       host += ':' + port;
   }
@@ -1016,8 +1034,8 @@ function extract_basic_auth( data ) {
   return infos;
 }
 
-# @brief This function returns the info if a remote web server was internally
-#        (in the KB) marked as "broken". It will also save the information in
+# @brief Returns the info if a remote web server was internally (in the KB)
+#        marked as "broken". It will also save the information in
 #        an internal array to avoid that redis is queried.
 #
 # @param port the port of the remote server
@@ -1051,4 +1069,72 @@ function http_is_marked_broken( port ) {
     _http_is_broken_array[port] = FALSE;
 
   return marked_broken;
+}
+
+# @brief Returns all files identified on a remote web page and which are saved in
+#        the knowledge base (by e.g. webmirror.nasl) within the following KB tree:
+#        "www/" + host + "/" + port + "/content/extensions/".
+#
+# @note Add a dependency to at least DDI_Directory_Scanner.nasl and webmirror.nasl
+#       when using this function within an NVT.
+#
+# @param port the port of the remote server for which the detected files should
+#             be returned. This parameter is optional and if not passed the
+#             files of all web servers on the remote host are returned.
+# @param host the hostname of the remote server (e.g. from http_host_name with the
+#             dont_add_port:TRUE parameter or get_host_name) for which the detected
+#             files should be returned. This parameter is optional and if not passed
+#             the files of all web servers and all hostnames of the remote host are
+#             returned.
+# @param ext  the file extension for which the detected files should be returned.
+#             A "php" passed to this parameter would e.g. return /index.php
+#             and /index2.php. A wildcard like "php*" could be used as well which
+#             would return /index.php and /index.php5. Similar a full wildcard like
+#             "*" can be passed as well which would return all detected files. This
+#             parameter is optional and if not passed the files of all web servers
+#             and all hostnames of the remote host are returned.
+#
+# @return a list of files matching the specified parameters, NULL in the case no files
+#         have matched the parameters or none have been identified at all.
+#
+function get_http_kb_file_extensions( port, host, ext ) {
+
+  local_var port, host, ext, list;
+
+  if( ! port ) port = "*";
+  if( ! host ) host = "*";
+  if( ! ext  ) ext  = "*";
+
+  list = get_kb_list( "www/" + host + "/" + port + "/content/extensions/" + ext );
+  return list;
+}
+
+# @brief Returns all files/directories requiring authentication on a remote web page and
+#        which are saved in the knowledge base (by e.g. webmirror.nasl) within the following
+#        KB tree: "www/" + host + "/" + port + "/content/auth_required".
+#
+# @note Add a dependency to at least DDI_Directory_Scanner.nasl and webmirror.nasl
+#       when using this function within an NVT.
+#
+# @param port the port of the remote server for which the detected files/directories
+#             should be returned. This parameter is optional and if not passed the
+#             files/directories of all web servers on the remote host are returned.
+# @param host the hostname of the remote server (e.g. from http_host_name with the
+#             dont_add_port:TRUE parameter or get_host_name) for which the detected
+#             files/directories should be returned. This parameter is optional and if
+#             not passed the files/directories of all web servers and all hostnames
+#             of the remote host are returned.
+#
+# @return a list of files/directories requiring authentication, NULL in the case no files/
+#         directories have matched the parameters or none have been identified at all.
+#
+function get_http_kb_auth_required( port, host ) {
+
+  local_var port, host, list;
+
+  if( ! port ) port = "*";
+  if( ! host ) host = "*";
+
+  list = get_kb_list( "www/" + host + "/" + port + "/content/auth_required" );
+  return list;
 }

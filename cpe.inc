@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cpe.inc 10552 2018-07-20 10:33:43Z cfischer $
+# $Id: cpe.inc 10707 2018-08-01 10:58:06Z cfischer $
 #
 # CPE Support Functions
 #
@@ -28,12 +28,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10552 $
+# $Revision: 10707 $
 #
 ###############################################################################
 
-# @brief This function extens a given CPE base (like e.g. cpe:/a:vendor:product:)
-#        with a given value if the passed expression in the exp is matching this value.
+# @brief Extends a given CPE base (like e.g. cpe:/a:vendor:product:) with
+#        a given value if the passed expression in the exp is matching this value.
 #
 # @param value the value to append to the given CPE base
 # @param exp   the regex expression where the given value needs to be match against
@@ -75,7 +75,7 @@ function build_cpe( value, exp, base ) {
   return NULL;
 }
 
-# @brief This function registers a given product CPE with the given info in the knowledge base.
+# @brief Registers a given product CPE with the given info in the knowledge base.
 #        Additionally it will build a report message about this detection and sends it via a
 #        log_message() to the manager.
 #

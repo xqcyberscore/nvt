@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_Directory_Scanner.nasl 10691 2018-07-31 13:09:21Z cfischer $
+# $Id: DDI_Directory_Scanner.nasl 10713 2018-08-01 14:21:58Z cfischer $
 #
 # Directory Scanner
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11032");
-  script_version("$Revision: 10691 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-31 15:09:21 +0200 (Tue, 31 Jul 2018) $");
+  script_version("$Revision: 10713 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 16:21:58 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -124,9 +124,6 @@ function add_auth_dir_list( dir, port, host, basic, realm ) {
     }
 
     set_kb_item( name:"www/content/auth_required", value:TRUE );
-    dir_key = "www/" + port + "/content/auth_required";
-    if( debug ) display( "Setting KB key: ", dir_key, " to '", dir, "'\n" );
-    set_kb_item( name:dir_key, value:dir );
     dir_key = "www/" + host + "/" + port + "/content/auth_required";
     if( debug ) display( "Setting KB key: ", dir_key, " to '", dir, "'\n" );
     set_kb_item( name:dir_key, value:dir );
@@ -1006,8 +1003,8 @@ failedReqs = 0;
 #TBD: Make this configurable?
 maxFailedReqs = 3;
 
-host = http_host_name( port:port );
-if( debug ) display( ":: Checking directories on Hostname/IP:Port " + host + "...\n" );
+host = http_host_name( dont_add_port:TRUE );
+if( debug ) display( ":: Checking directories on Hostname/IP:port " + host + ":" + port + "...\n" );
 
 # pull the robots.txt file
 if( debug ) display( ":: Checking for robots.txt...\n" );

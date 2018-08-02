@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twonky_unprotected_web.nasl 8139 2017-12-15 11:57:25Z cfischer $
+# $Id: gb_twonky_unprotected_web.nasl 10712 2018-08-01 14:15:12Z cfischer $
 #
 # Twonky Server Unprotected Web Console
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:twonky:twonky_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108007");
-  script_version("$Revision: 8139 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10712 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 16:15:12 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-09-28 12:00:00 +0200 (Wed, 28 Sep 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -70,6 +70,7 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
+host = http_host_name( dont_add_port:TRUE );
 install = dir;
 if( dir == "/" ) dir = "";
 url = dir + "/rpc/info_status";
@@ -79,7 +80,7 @@ buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
 if( buf =~ "HTTP/1.. 401" ) {
   set_kb_item( name:"www/content/auth_required", value:TRUE );
-  set_kb_item( name:"www/" + port + "/content/auth_required", value:url );
+  set_kb_item( name:"www/" + host + "/" + port + "/content/auth_required", value:url );
 }
 
 if( buf =~ "HTTP/1.. 200" && ( "serverkind|" >< buf || "serverplatform|" >< buf || "version|" >< buf ) ) {

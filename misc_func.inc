@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 10600 2018-07-25 08:04:18Z cfischer $
+# $Id: misc_func.inc 10707 2018-08-01 10:58:06Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10600 $
+# $Revision: 10707 $
 #
 ###############################################################################
 
@@ -1441,8 +1441,8 @@ function get_all_udp_ports_list( ) {
   return ports;
 }
 
-# @brief This function gets the hostname of the target via get_host_name()
-#        and if no IPv4/IPv6 address was returned by this function it
+# @brief Gets the hostname of the target via get_host_name() and
+#        if no IPv4/IPv6 address was returned by this function it
 #        returns a list containing the parts of the target hostname.
 #
 #        For example a hostname of www.example.com returns a list containing

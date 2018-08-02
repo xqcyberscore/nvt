@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: femitter_httpd_36656.nasl 8654 2018-02-05 08:19:22Z cfischer $
+# $Id: femitter_httpd_36656.nasl 10711 2018-08-01 13:58:38Z cfischer $
 #
 # Acritum Femitter Server HTTP Request Remote File Disclosure Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100304");
-  script_version("$Revision: 8654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:19:22 +0100 (Mon, 05 Feb 2018) $");
+  script_version("$Revision: 10711 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 15:58:38 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-10-15 20:14:59 +0200 (Thu, 15 Oct 2009)");
   script_bugtraq_id(36656);
   script_tag(name:"cvss_base", value:"5.0");
@@ -41,23 +41,25 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "Acritum Femitter Server is prone to a remote file-disclosure
-  vulnerability because it fails to properly sanitize user-supplied input.";
-
-  tag_impact = "An attacker can exploit this vulnerability to view the source code of
-  the files in the context of the server process. This may aid in
-  further attacks.";
-
-  tag_affected = "Acritum Femitter Server 1.03 is affected; other versions may be
-  vulnerable as well.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/36656");
   script_xref(name:"URL", value:"http://www.acritum.com/fem/index.htm");
 
+  script_tag(name:"summary", value:"Acritum Femitter Server is prone to a remote file-disclosure
+  vulnerability because it fails to properly sanitize user-supplied input.");
+
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to view the source code of
+  the files in the context of the server process. This may aid in
+  further attacks.");
+
+  script_tag(name:"affected", value:"Acritum Femitter Server 1.03 is affected. Other versions may be
+  vulnerable as well.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by
+  another one.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
@@ -65,16 +67,17 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
-port = get_http_port(default:80);
 
-files = get_kb_list(string("www/", port, "/content/extensions/htm*"));
+port = get_http_port(default:80);
+host = http_host_name( dont_add_port:TRUE );
+
+files = get_http_kb_file_extensions( port:port, host:host, ext:"htm*" );
 if(!files) {
   file = "/index.htm";
 } else {
-  files = make_list(files); 
+  files = make_list(files);
   file  = files[0];
-}  
+}
 
 url = file;
 buf = http_get_cache(item:url, port:port);
@@ -95,7 +98,7 @@ if(egrep(pattern: "Content-Type", string: buf, icase: TRUE)) {
       if(content_typ[1] >!< content_typ1[1] && "application/binary" >< content_typ1[1]) {
         security_message(port:port);
         exit(0);
-      }   
+      }
     }
   }
 }

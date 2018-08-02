@@ -1,6 +1,6 @@
   ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_event_collector.nasl 10179 2018-06-13 14:25:47Z emoss $
+# $Id: win_event_collector.nasl 10714 2018-08-01 14:49:06Z emoss $
 #
 # Check value for Windows Event Collector (Wecsvc)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109283");
-  script_version("$Revision: 10179 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-13 16:25:47 +0200 (Wed, 13 Jun 2018) $");
+  script_version("$Revision: 10714 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 16:49:06 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-13 15:22:32 +0200 (Wed, 13 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,13 +38,14 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_add_preference(name:"Value", type:"radio", value:"4;0;1;2;3");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
+  script_tag(name: "summary", value: "This test checks the setting for policy
 'Windows Event Collector (Wecsvc)' on Windows hosts (at least Windows 7).
 
-The service manages persistent subscriptions to events from remote sources that 
-support WS-Management protocol. This includes Windows Vista event logs, hardware 
-and IPMI-enabled event sources. The service stores forwarded events in a local 
+The service manages persistent subscriptions to events from remote sources that
+support WS-Management protocol. This includes Windows Vista event logs, hardware
+and IPMI-enabled event sources. The service stores forwarded events in a local
 Event Log.");
   exit(0);
 }
@@ -59,8 +60,8 @@ to query the registry.');
 }
 
 if(get_kb_item("SMB/WindowsVersion") < "6.1"){
-  policy_logging(text:'Host is not at least a Microsoft Windows 7 system. 
-Older versions of Windows are not supported any more. Please update the 
+  policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
+Older versions of Windows are not supported any more. Please update the
 Operating System.');
   exit(0);
 }
@@ -73,12 +74,22 @@ key = 'SYSTEM\\CurrentControlSet\\Services\\Wecsvc';
 item = 'Start';
 value = registry_get_dword(key:key, item:item, type:type);
 if(!value){
-  value = 'none';
+  val = '3';
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+if(int(value) == int(default)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
+policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 policy_control_name(title:title);
 
 exit(0);

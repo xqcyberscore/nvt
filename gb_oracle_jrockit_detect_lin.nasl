@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_jrockit_detect_lin.nasl 10692 2018-07-31 13:51:55Z santu $
+# $Id: gb_oracle_jrockit_detect_lin.nasl 10703 2018-08-01 09:01:01Z cfischer $
 #
 # Oracle JRockit JVM Version Detection (Linux)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813733");
-  script_version("$Revision: 10692 $");
+  script_version("$Revision: 10703 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-31 15:51:55 +0200 (Tue, 31 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 11:01:01 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-30 14:23:59 +0530 (Mon, 30 Jul 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Oracle JRockit JVM Version Detection (Linux)");
@@ -42,7 +42,7 @@ if(description)
   queries the found file for Oracle JRockit and version information.");
 
   script_category(ACT_GATHER_INFO);
-  script_xref(name : "URL" , value : "https://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-jrockit-2192437.html");
+  script_xref(name:"URL", value:"https://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-jrockit-2192437.html");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
@@ -59,18 +59,18 @@ include("host_details.inc");
 jr_sock = ssh_login_or_reuse_connection();
 if(!jr_sock) exit( 0 );
 
-jrName = find_file(file_name:"ReleaseInformation.xml", file_path:"/", sock:ps_sock);
+jrName = find_file(file_name:"ReleaseInformation.xml", file_path:"/", sock:jr_sock);
 foreach fileName (jrName)
 {
   catRes  = ssh_cmd(socket:jr_sock, timeout:120, cmd:"cat " + fileName);
-  
+
   if(catRes && "product_name>Oracle JRockit<" >< catRes)
   {
     rocVer = eregmatch(pattern:"<product_version>([0-9u]+) (R([0-9.]+))<", string:catRes);
     jrockitVer = rocVer[2];
     jrockitjreVer = rocVer[1];
     path = eregmatch(pattern:"(.*)/jre/lib/ReleaseInformation.xml", string:fileName);
-    jrockitPath = path[1]; 
+    jrockitPath = path[1];
 
     if(jrockitVer)
     {

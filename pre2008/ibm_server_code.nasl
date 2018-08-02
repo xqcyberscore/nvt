@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ibm_server_code.nasl 10125 2018-06-07 14:10:35Z cfischer $
+# $Id: ibm_server_code.nasl 10711 2018-08-01 13:58:38Z cfischer $
 #
 # IBM-HTTP-Server View Code
 #
@@ -32,8 +32,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10799");
-  script_version("$Revision: 10125 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 16:10:35 +0200 (Thu, 07 Jun 2018) $");
+  script_version("$Revision: 10711 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 15:58:38 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3518);
   script_tag(name:"cvss_base", value:"5.1");
@@ -44,9 +44,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("www/ibm-http");
-
-  script_tag(name:"solution", value:"None yet.");
+  script_mandatory_keys("www/ibm-http");
 
   script_tag(name:"summary", value:"IBM's HTTP Server on the AS/400 platform is vulnerable to an attack
   that will show the source code of the page -- such as an .html or .jsp
@@ -55,7 +53,12 @@ if(description)
   Example:
   http://www.example.com/getsource.jsp/");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by
+  another one.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_analysis");
 
   exit(0);
@@ -76,8 +79,9 @@ files = make_list(
 "/home.jsp" );
 
 port = get_http_port( default:80 );
+host = http_host_name( dont_add_port:TRUE );
 
-kb_files = get_kb_list( "www/" + port + "/content/extensions/jsp" );
+kb_files = get_http_kb_file_extensions( port:port, host:host, ext:"jsp" );
 if( ! isnull( kb_files ) ) {
   files = make_list_unique( files, kb_files );
 }

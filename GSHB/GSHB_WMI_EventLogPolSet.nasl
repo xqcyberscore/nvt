@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_EventLogPolSet.nasl 10628 2018-07-25 15:52:40Z cfischer $
+# $Id: GSHB_WMI_EventLogPolSet.nasl 10699 2018-08-01 07:31:54Z cfischer $
 #
 # Read all EventLog Config Policy(ELCP) Settings (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96050");
-  script_version("$Revision: 10628 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:52:40 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10699 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 09:31:54 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -71,7 +71,7 @@ if (OSVER < '6.0'){
 handlereg = wmi_connect_reg(host:host, username:usrname, password:passwd);
 
 if(!handlereg){
-  log_message("wmi_connect: WMI Connect failed.");
+  log_message(port:0, data:"wmi_connect: WMI Connect failed.");
   set_kb_item(name:"WMI/ELCP/GENERAL", value:"error");
   set_kb_item(name:"WMI/ELCP/GENERAL/log", value:"wmi_connect: WMI Connect failed.");
   wmi_close(wmi_handle:handlereg);

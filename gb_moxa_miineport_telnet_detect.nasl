@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_miineport_telnet_detect.nasl 4742 2016-12-12 10:34:28Z ckuerste $
+# $Id: gb_moxa_miineport_telnet_detect.nasl 10701 2018-08-01 08:07:55Z ckuersteiner $
 #
 # Moxa MiiNePort Detection (telnet) 
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106467");
-  script_version("$Revision: 4742 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-12 11:34:28 +0100 (Mon, 12 Dec 2016) $");
+  script_version("$Revision: 10701 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 10:07:55 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-12-12 11:02:51 +0700 (Mon, 12 Dec 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,12 +55,7 @@ include("cpe.inc");
 include("host_details.inc");
 include("telnet_func.inc");
 
-port = get_kb_item("Services/telnet");
-if (!port)
-  port = 23;
-
-if (!get_port_state(port))
-  exit(0);
+port = get_telnet_port(default: 23);
 
 banner = get_telnet_banner(port: port);
 if (!isnull(banner))

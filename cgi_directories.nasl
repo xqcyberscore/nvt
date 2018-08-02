@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 10691 2018-07-31 13:09:21Z cfischer $
+# $Id: cgi_directories.nasl 10709 2018-08-01 12:30:27Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 10691 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-31 15:09:21 +0200 (Tue, 31 Jul 2018) $");
+  script_version("$Revision: 10709 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 14:30:27 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -92,11 +92,11 @@ maxItems = int( script_get_preference( "Maximum number of items shown for each l
 if( maxItems <= 0 ) maxItems = 100;
 
 port = get_http_port( default:80 );
-host = http_host_name( port:port );
+host = http_host_name( dont_add_port:TRUE );
 
 cgiDirs          = cgi_dirs( port:port, host:host );
 httpVersion      = get_kb_item( "http/" + port );
-authRequireDirs  = get_kb_list( "www/" + host + "/" + port + "/content/auth_required" );
+authRequireDirs  = get_http_kb_auth_required( port:port, host:host );
 cgiList          = get_kb_list( "www/" + host + "/" + port + "/content/cgis/*" );
 excludedCgiList  = get_kb_list( "www/" + host + "/" + port + "/content/excluded_cgis/*" );
 dirIndexList     = get_kb_list( "www/" + host + "/" + port + "/content/dir_index" );
@@ -115,7 +115,7 @@ srvmanualDirList = get_kb_list( "www/" + host + "/" + port + "/content/serverman
 recursionUrlList = get_kb_list( "www/" + host + "/" + port + "/content/recursion_urls" );
 maxPagesReached  = get_kb_item( "www/" + host + "/" + port + "/content/max_pages_reached" );
 
-report = 'The Hostname/IP:port "' + host + '" was used to access the remote host.\n\n';
+report = 'The Hostname/IP "' + host + '" was used to access the remote host.\n\n';
 
 #TODO: Add no404.nasl
 

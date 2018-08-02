@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_detect.nasl 8557 2018-01-27 15:03:34Z cfischer $
+# $Id: gb_owncloud_detect.nasl 10712 2018-08-01 14:15:12Z cfischer $
 #
 # ownCloud Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103564");
-  script_version("$Revision: 8557 $");
+  script_version("$Revision: 10712 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-27 16:03:34 +0100 (Sat, 27 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 16:15:12 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-09-12 14:18:24 +0200 (Wed, 12 Sep 2012)");
   script_name("ownCloud Detection");
   script_category(ACT_GATHER_INFO);
@@ -58,6 +58,7 @@ include("host_details.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
 
 foreach dir( make_list_unique( "/", "/oc", "/owncloud", "/ownCloud", "/OwnCloud", "/cloud", cgi_dirs( port:port ) ) ) {
 
@@ -69,7 +70,7 @@ foreach dir( make_list_unique( "/", "/oc", "/owncloud", "/ownCloud", "/OwnCloud"
   url = dir + "/status.php";
   buf = http_get_cache( item:url, port:port );
 
-  # Try again with the IP which might be included in the trusted_domain setting.
+  # nb: Try again with the IP which might be included in the trusted_domain setting.
   # This could could allow us to gather the version.
   if( "You are accessing the server from an untrusted domain" >< buf ) {
     req = http_get_req( port:port, url:url, host_header_use_ip:TRUE );
@@ -83,7 +84,7 @@ foreach dir( make_list_unique( "/", "/oc", "/owncloud", "/ownCloud", "/OwnCloud"
   if( "egroupware" >!< tolower( buf ) && # EGroupware is using the very same status.php
       '"productname":"Nextcloud"' >!< buf && # Don't detect Nextcloud as ownCloud
     ( egrep( string:buf, pattern:'"installed":("true"|true),("maintenance":("true"|true|"false"|false),)?("needsDbUpgrade":("true"|true|"false"|false),)?"version":"([0-9.a]+)","versionstring":"([0-9. a-zA-Z]+)","edition":"(.*)"' ) ||
-      ( "You are accessing the server from an untrusted domain" >< buf && ">ownCloud<" >< buf ) || 
+      ( "You are accessing the server from an untrusted domain" >< buf && ">ownCloud<" >< buf ) ||
       '"productname":"ownCloud"' >< buf ) ) { # Last fallback if the syntax of the status has changed
 
     version = "unknown";
@@ -98,7 +99,7 @@ foreach dir( make_list_unique( "/", "/oc", "/owncloud", "/ownCloud", "/OwnCloud"
 
       if( buf2 =~ "^HTTP/1\.[01] 401" ) {
         set_kb_item( name:"www/content/auth_required", value:TRUE );
-        set_kb_item( name:"www/" + port + "/content/auth_required", value:authurl );
+        set_kb_item( name:"www/" + host + "/" + port + "/content/auth_required", value:authurl );
         break;
       }
     }

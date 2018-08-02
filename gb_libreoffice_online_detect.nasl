@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_online_detect.nasl 8854 2018-02-17 16:06:28Z cfischer $
+# $Id: gb_libreoffice_online_detect.nasl 10712 2018-08-01 14:15:12Z cfischer $
 #
 # LibreOffice Online Detection
 #
@@ -30,8 +30,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.108000");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8854 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-17 17:06:28 +0100 (Sat, 17 Feb 2018) $");
+  script_version("$Revision: 10712 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 16:15:12 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-09-15 09:00:00 +0200 (Thu, 15 Sep 2016)");
   script_name("LibreOffice Online Detection");
   script_category(ACT_GATHER_INFO);
@@ -59,6 +59,7 @@ include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:9980 );
+host = http_host_name( dont_add_port:TRUE );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
@@ -94,7 +95,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
       if( buf2 =~ "^HTTP/1\.[01] 401" ) {
         set_kb_item( name:"www/content/auth_required", value:TRUE );
-        set_kb_item( name:"www/" + port + "/content/auth_required", value:url );
+        set_kb_item( name:"www/" + host + "/" + port + "/content/auth_required", value:url );
         reportUrl += report_vuln_url( port:port, url:url, url_only:TRUE ) + '\n';
         break;
       }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: telnet_func.inc 10434 2018-07-06 09:33:22Z cfischer $
+# $Id: telnet_func.inc 10707 2018-08-01 10:58:06Z cfischer $
 #
 # Methods to handle telnet
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10434 $
+# $Revision: 10707 $
 #
 ###############################################################################
 
@@ -66,7 +66,7 @@ function get_telnet_banner( port, timeout ) {
   return( banner );
 }
 
-# @brief This function negotiate a telnet connection via the passed socket
+# @brief Negotiate a telnet connection via the passed socket
 #        and returns any received data from the connected service.
 #
 # @param socket  the socket of the remote system to connect to.

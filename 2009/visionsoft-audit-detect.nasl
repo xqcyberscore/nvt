@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: visionsoft-audit-detect.nasl 4692 2016-12-06 15:44:12Z cfi $
+# $Id: visionsoft-audit-detect.nasl 10700 2018-08-01 08:00:30Z cfischer $
 #
 # Visionsoft Audit multiple vulnerability detection
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100951");
-  script_version("$Revision: 4692 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 16:44:12 +0100 (Tue, 06 Dec 2016) $");
+  script_version("$Revision: 10700 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 10:00:30 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-07-10 19:42:14 +0200 (Fri, 10 Jul 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -51,7 +51,9 @@ if(description)
   script_xref(name:"URL", value:"http://www.portcullis-security.com/206.php");
   script_xref(name:"URL", value:"http://www.portcullis-security.com/207.php");
 
-  tag_summary = "Visionsoft Audit multiple vulnerability detection
+  script_tag(name:"solution", value:"We recommend that Visionsoft are contacted for a patch.");
+
+  script_tag(name:"summary", value:"Visionsoft Audit multiple vulnerability detection
 
   The Visionsoft Audit on Demand service may be vulnerable to multiple issues which can be exploited remotely without authentication:
   Heap overflow via LOG command (CVE-2007-4148)
@@ -64,37 +66,38 @@ if(description)
   Visionsoft Audit 12.4.0.0
 
   We recommend you mitigate in the following manner:
-  Filter inbound traffic to 5957/tcp to only known management hosts";
-
-  tag_solution = "We recommend that Visionsoft are contacted for a patch.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  Filter inbound traffic to 5957/tcp to only known management hosts");
 
   script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
 
+include("misc_func.inc");
+
 port = 5957;
 if( ! get_port_state( port ) ) exit( 0 );
-
+if( known_service( port:port ) ) exit( 0 );
 socket = open_sock_tcp( port );
 if( ! socket ) exit( 0 );
 
-banner = recv_line(socket:socket, length:1024);
+banner = recv_line( socket:socket, length:1024 );
 
-if ("Visionsoft Audit on Demand Service" >< banner) {
+if( "Visionsoft Audit on Demand Service" >< banner ) {
 
-  banner = recv_line(socket:socket, length:1024);
+  register_service( port:port, proto:"visionsoft-audit" );
+  banner = recv_line( socket:socket, length:1024 );
+  close( socket );
 
-  if ("Version: 12.4.0.0" >< banner) {
-    security_message(protocol:"tcp", port:port, "Visionsoft Audit on Demand service seems to be running on this port and appears to be the known vulnerable version: " + banner);
+  if( "Version: 12.4.0.0" >< banner ) {
+    security_message( port:port, data:"Visionsoft Audit on Demand service seems to be running on this port and appears to be the known vulnerable version: " + banner );
+    exit( 0 );
   } else {
-    log_message(protocol:"tcp", port:port, "Visionsoft Audit on Demand service seems to be running on this port: " + banner);
+    log_message( port:port, data:"Visionsoft Audit on Demand service seems to be running on this port: " + banner );
+    exit( 99 );
   }
 }
 
 close( socket );
-
-exit( 0 );
+exit( 99 );

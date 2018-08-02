@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_detect.nasl 8138 2017-12-15 11:42:07Z cfischer $
+# $Id: gb_apache_activemq_detect.nasl 10712 2018-08-01 14:15:12Z cfischer $
 #
 # Apache ActiveMQ Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105330");
-  script_version("$Revision: 8138 $");
+  script_version("$Revision: 10712 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 16:15:12 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-08-24 12:33:07 +0200 (Mon, 24 Aug 2015)");
   script_name("Apache ActiveMQ Detection");
   script_category(ACT_GATHER_INFO);
@@ -133,6 +133,7 @@ port = get_http_port( default:8161 );
 url = "/admin/index.jsp";
 buf = http_get_cache( item:url, port:port );
 if( ! buf ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
 
 if( egrep( pattern:"(Apache )?ActiveMQ( Console)?</title>", string:buf, icase:TRUE ) ||
     'WWW-Authenticate: basic realm="ActiveMQRealm"' >< buf ) {
@@ -141,10 +142,10 @@ if( egrep( pattern:"(Apache )?ActiveMQ( Console)?</title>", string:buf, icase:TR
   appVer = "unknown";
   conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
 
-  #Basic auth check for default_http_auth_credentials.nasl
+  # nb: Basic auth check for default_http_auth_credentials.nasl
   if( 'WWW-Authenticate: basic realm="ActiveMQRealm"' >< buf ) {
     set_kb_item( name:"www/content/auth_required", value:TRUE );
-    set_kb_item( name:"www/" + port + "/content/auth_required", value:url );
+    set_kb_item( name:"www/" + host + "/" + port + "/content/auth_required", value:url );
     set_kb_item( name:"www/" + port + "/ActiveMQ/Web/auth_required", value:url );
     set_kb_item( name:"ActiveMQ/Web/auth_required", value:TRUE );
     set_kb_item( name:"ActiveMQ/Web/auth_or_unprotected", value:TRUE );
@@ -154,7 +155,7 @@ if( egrep( pattern:"(Apache )?ActiveMQ( Console)?</title>", string:buf, icase:TR
     set_kb_item( name:"ActiveMQ/Web/auth_or_unprotected", value:TRUE );
   }
 
-  ##Getting version from admin page, in some cases admin page is accessible where we can get the version
+  # nb: Getting version from admin page, in some cases admin page is accessible where we can get the version
   version = eregmatch( pattern:'Version.*<td><b>([0-9.]+).*<td>ID', string:buf );
   if( version[1] ) appVer = version[1];
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_Antivir.nasl 10628 2018-07-25 15:52:40Z cfischer $
+# $Id: GSHB_WMI_Antivir.nasl 10699 2018-08-01 07:31:54Z cfischer $
 #
 # WMI AntiVirus Test
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96011");
-  script_version("$Revision: 10628 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:52:40 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10699 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 09:31:54 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -91,7 +91,7 @@ if(OSVER == '5.1' || (OSVER == '5.2' && OSNAME >< 'Microsoft(R) Windows(R) XP Pr
 
 
       if(!handle){
-          log_message("wmi_connect: WMI Connect failed.");
+          log_message(port:0, data:"wmi_connect: WMI Connect failed.");
           set_kb_item(name:"WMI/Antivir", value:"error");
       exit(0);
       }
@@ -118,7 +118,7 @@ if((OSVER == '6.0' || OSVER == '6.1' || OSVER == '6.2' || OSVER == '6.3' || OSVE
     handle = wmi_connect(host:host, username:usrname, password:passwd, ns:ns);
 
     if(!handle){
-        log_message("wmi_connect: WMI Connect failed.");
+        log_message(port:0, data:"wmi_connect: WMI Connect failed.");
         set_kb_item(name:"WMI/Antivir", value:"error");
         exit(0);
     }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: default_http_auth_credentials.nasl 9573 2018-04-24 06:48:30Z cfischer $
+# $Id: default_http_auth_credentials.nasl 10709 2018-08-01 12:30:27Z cfischer $
 #
 # HTTP Brute Force Logins With Default Credentials
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108041");
-  script_version("$Revision: 9573 $");
+  script_version("$Revision: 10709 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 08:48:30 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 14:30:27 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-09-06 14:38:09 +0200 (Tue, 06 Sep 2011)");
   script_name("HTTP Brute Force Logins With Default Credentials");
   script_category(ACT_ATTACK);
@@ -78,8 +78,9 @@ function _check_response( res ) {
 }
 
 port = get_http_port( default:80 );
+host = http_host_name( dont_add_port:TRUE );
 
-if( ! urls = get_kb_list( "www/" + port + "/content/auth_required" ) ) exit( 0 );
+if( ! urls = get_http_kb_auth_required( port:port, host:host ) ) exit( 0 );
 
 set_kb_item( name:"default_http_auth_credentials/started", value:TRUE );
 
@@ -122,8 +123,8 @@ foreach url( urls ) {
         continue;
     }
 
-    # Check the type defined in default_credentials.inc if the credentials
-    # should be used by this NVT.
+    # nb: Check the type defined in default_credentials.inc if the
+    # credentials should be used by this NVT.
     type = user_pass_type[3];
     if( "all" >!< type && "http" >!< type ) continue;
 
@@ -181,7 +182,7 @@ foreach url( urls ) {
   }
 }
 
-# Set kb entry that no timeout was happening for further reporting
+# nb: Set kb entry that no timeout was happening for further reporting
 set_kb_item( name:"default_http_auth_credentials/" + port + "/no_timeout", value:TRUE );
 
 exit( 0 );

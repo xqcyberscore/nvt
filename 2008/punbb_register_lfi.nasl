@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: punbb_register_lfi.nasl 9502 2018-04-17 07:42:19Z cfischer $
-# Description: PunBB language Parameter Local File Include Vulnerability
+# $Id: punbb_register_lfi.nasl 10702 2018-08-01 08:27:30Z cfischer $
+#
+# PunBB language Parameter Local File Include Vulnerability
 #
 # Authors:
 # Justin Seitz <jms@bughunter.ca>
@@ -20,27 +22,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The remote web server contains a PHP script that is affected by a
-local file include issue. 
-
-Description:
-
-The version of PunBB installed on the remote host fails to sanitize
-input to the 'language' parameter before storing it in the
-'register.php' script as a user's preferred language setting.  By
-registering with a specially-crafted value, an attacker can leverage
-this issue to view arbitrary files and possibly execute arbitrary code
-on the affected host.";
-
-tag_solution = "Update to version 1.2.14 or later.";
+###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80080");
-  script_version("$Revision: 9502 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-17 09:42:19 +0200 (Tue, 17 Apr 2018) $");
+  script_version("$Revision: 10702 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 10:27:30 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,16 +37,30 @@ if(description)
   script_xref(name:"OSVDB", value:"30132");
   script_name("PunBB language Parameter Local File Include Vulnerability");
   script_category(ACT_DESTRUCTIVE_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2006 Justin Seitz");
   script_family("Web application abuses");
-  script_dependencies("punBB_detect.nasl");	  
+  script_dependencies("punBB_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("punBB/installed");
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/450055/30/0/threaded");
-  script_xref(name : "URL" , value : "http://forums.punbb.org/viewtopic.php?id=13496");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/450055/30/0/threaded");
+  script_xref(name:"URL", value:"http://forums.punbb.org/viewtopic.php?id=13496");
+
+  script_tag(name:"solution", value:"Update to version 1.2.14 or later.");
+
+  script_tag(name:"summary", value:"The remote web server contains the PHP script PunBB that is
+  affected by a local file include issue.");
+
+  script_tag(name:"insight", value:"The version of PunBB installed on the remote host fails to sanitize
+  input to the 'language' parameter before storing it in the 'register.php' script as a user's preferred
+  language setting.");
+
+  script_tag(name:"impact", value:"By registering with a specially-crafted value, an attacker can leverage
+  this issue to view arbitrary files and possibly execute arbitrary code on the affected host.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -72,7 +74,8 @@ if (isnull(install)) exit(0);
 matches = eregmatch(string:install, pattern:"^(.+) under (/.*)$");
 if (!isnull(matches)) {
 dir = matches[2];
-
+install = dir;
+if (dir == "/") dir = "";
 
 #
 #
@@ -90,7 +93,7 @@ registeruser = http_post(port:port,item:string(dir,"/register.php"),data:url);
 registeruser = ereg_replace(string:registeruser, pattern:"Content-Length: ", replace: string("Content-Type: application/x-www-form-urlencoded\r\nContent-Length: "));
 reg_response = http_keepalive_send_recv(port:port, data: registeruser, bodyonly:FALSE);
 if(isnull(reg_response) || "punbb_cookie=" >!< reg_response) exit(0);
-   
+
 #
 #
 #	Let's grab the cookie sent back with the poisoned language variable and use it to authenticate and check the local file include.
@@ -105,7 +108,7 @@ if("expires" >< punbb_cookie) {
 }
 if(isnull(punbb_cookie)) exit(0);
 
-   
+
 #
 #
 #	Now verify that we can read the contents of the file.
@@ -135,12 +138,10 @@ if("<Limit GET POST PUT>" >< attackres) {
 }
 
 if (htaccess) {
-	if(dir == "") dir = "/";
-
-	info = string("The version of PunBB installed in directory '", dir, "'\n",
+	info = string("The version of PunBB installed in directory '", install, "'\n",
 	"is vulnerable to this issue. Here is the contents of 'cache/.htaccess'\n",
 	"from the remote host: \n\n", htaccess);
-	
+
 	security_message(data:info, port:port);
 }
 }

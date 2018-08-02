@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apache_mod_negotiation_info_disclosure.nasl 9219 2018-03-27 11:58:13Z cfischer $
+# $Id: sw_apache_mod_negotiation_info_disclosure.nasl 10709 2018-08-01 12:30:27Z cfischer $
 #
 # Apache mod_negotiation MultiViews Information Disclosure
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111109");
-  script_version("$Revision: 9219 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-27 13:58:13 +0200 (Tue, 27 Mar 2018) $");
+  script_version("$Revision: 10709 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 14:30:27 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-07-06 16:00:00 +0200 (Wed, 06 Jul 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -82,6 +82,7 @@ foreach ext( make_list( "php", "html", "txt" ) ) {
   if( curLimit <= maxLimit ) break;
 
   urls = get_kb_list( "www/" + port + "/content/extensions/" + ext );
+  if( isnull( urls ) ) continue;
 
   foreach url( urls ) {
 

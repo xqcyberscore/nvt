@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: secpod_smb_func.inc 10552 2018-07-20 10:33:43Z cfischer $
+# $Id: secpod_smb_func.inc 10707 2018-08-01 10:58:06Z cfischer $
 #
 # SMB Functions
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10552 $
+# $Revision: 10707 $
 #
 ###############################################################################
 
@@ -127,7 +127,7 @@ function GetVersion( socket, uid, tid, fid, offset, verstr, debug ) {
   return NULL;
 }
 
-# @brief This function enumerates existing registry values for a given key.
+# @brief Enumerates existing registry values for a given key.
 #        It will gather all required info about the SMB registry
 #        from the knowledge base.
 #
@@ -251,8 +251,8 @@ function registry_enum_values( key, type ) {
   return list;
 }
 
-# @brief This function enumerates registry keys via SMB.
-#        It will gather all required info about the SMB registry
+# @brief Enumerates registry keys via SMB. It will gather
+#        all required info about the SMB registry
 #        from the knowledge base.
 #
 # @param key the registry key to enumerate

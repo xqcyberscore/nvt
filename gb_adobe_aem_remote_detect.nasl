@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_aem_remote_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: gb_adobe_aem_remote_detect.nasl 10712 2018-08-01 14:15:12Z cfischer $
 #
 # Adobe Experience Manager Remote Version Detection
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807067");
-  script_version("$Revision: 9633 $");
+  script_version("$Revision: 10712 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 16:15:12 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-02-11 14:43:49 +0530 (Thu, 11 Feb 2016)");
   script_name("Adobe Experience Manager Remote Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Adobe Experience Manager.
 
   This script sends HTTP GET request and try to get the version from the
@@ -56,6 +56,7 @@ include("http_keepalive.inc");
 include("host_details.inc");
 
 if( ! port = get_http_port( default:80 ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
 
 extra = "";
 url = "/libs/granite/core/content/login.html?";
@@ -77,7 +78,7 @@ if( rcvRes =~ "HTTP/1\.. 200" && ( "<title>AEM Sign In" >< rcvRes ||
     rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
     if( rcvRes =~ "HTTP/1.. 401" && "OSGi Management Console" >< rcvRes ) {
       set_kb_item( name:"www/content/auth_required", value:TRUE );
-      set_kb_item( name:"www/" + port + "/content/auth_required", value:url );
+      set_kb_item( name:"www/" + host + "/" + port + "/content/auth_required", value:url );
       extra = "The OSGi Management Console is reachable at: " + report_vuln_url( port:port, url:url, url_only:TRUE );
       break;
     }

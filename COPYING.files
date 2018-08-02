@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 01 Aug 2018 09:23:55 +0200
+# Automatically created on:  Thu, 02 Aug 2018 08:16:53 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38959,6 +38959,7 @@
 2018/debian/deb_4256.nasl: GPLv2+
 2018/debian/deb_4257.nasl: GPLv2+
 2018/debian/deb_4258.nasl: GPLv2+
+2018/debian/deb_4259.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39544,6 +39545,7 @@
 2018/drupal/gb_drupal_core_rce_vuln_SA-CORE-2018-003_win.nasl: GPLv2+
 2018/drupal/gb_drupal_core_rce_vuln_SA-CORE-2018-004_lin.nasl: GPLv2+
 2018/drupal/gb_drupal_core_rce_vuln_SA-CORE-2018-004_win.nasl: GPLv2+
+2018/dvr/gb_web_remote_viewer_default_credentials.nasl: GPLv2+
 2018/e107/gb_e107_csrf_vuln.nasl: GPLv2+
 2018/eclipse/gb_eclipse_jetty_server_fake_pipeline_sec_bypass_vuln.nasl: GPLv2+
 2018/eclipse/gb_eclipse_jetty_server_invalidfileexception_info_disclosure_vuln.nasl: GPLv2+
@@ -40510,6 +40512,7 @@
 2018/joomla/gb_joomla_unpublished_tags_info_disc_vuln.nasl: GPLv2+
 2018/joomla/gb_joomla_uri_class_xss_vuln.nasl: GPLv2+
 2018/joomla/gb_joomla_user_notes_list_view_sqli_vuln.nasl: GPLv2+
+2018/kamailio/gb_kamailio_dos_vuln.nasl: GPLv2+
 2018/kamailio/gb_kamailio_heap_overflow_vuln.nasl: GPLv2+
 2018/kaseya/gb_kaseya_vsa_privilege_escalation_vuln.nasl: GPLv2+
 2018/kaspersky/gb_kaspersky_password_manager_dll_hijacking_code_exec_vuln_may18_win.nasl: GPLv2+
@@ -42443,8 +42446,10 @@ gb_httpdx_server_detect.nasl: GPLv2+
 gb_http_file_server_detect.nasl: GPLv2+
 gb_http_security_headers_detect.nasl: GPLv2+
 gb_huawei_dp300_detect.nasl: GPLv2+
+gb_huawei_espace_unified_gateway_telnet_detect.nasl: GPLv2+
 gb_huawei_ibmc_http_detect.nasl: GPLv2+
 gb_huawei_ibmc_upnp_detect.nasl: GPLv2+
+gb_huawei_softco_telnet_detect.nasl: GPLv2+
 gb_huawei_switch_detect.nasl: GPLv2+
 gb_huawei_te_detect.nasl: GPLv2+
 gb_huawei_VP9660_mcu_detect.nasl: GPLv2+
@@ -42946,6 +42951,7 @@ gb_plone_detect.nasl: GPLv2+
 gb_plotsoft_pdfill_pdf_editor_detect.nasl: GPLv2+
 gb_pmwiki_detect.nasl: GPLv2+
 gb_pootle_detect.nasl: GPLv2+
+gb_portainer_detect.nasl: GPLv2+
 gb_postfixadmin_detect.nasl: GPLv2+
 gb_postgres_tls_support.nasl: GPLv2+
 gb_powerfolder_detection.nasl: GPLv2+
@@ -43332,6 +43338,7 @@ gb_weblate_detect.nasl: GPLv2+
 gb_webMAID_detect.nasl: GPLv2+
 gb_webnms_detect.nasl: GPLv2+
 gb_weborf_webserver_detect.nasl: GPLv2+
+gb_web_remote_viewer_detect.nasl: GPLv2+
 gb_websense_triton_detect.nasl: GPLv2+
 gb_webuzo_detect.nasl: GPLv2+
 gb_wedgeos_management_console_detect.nasl: GPLv2+
@@ -58639,6 +58646,7 @@ gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180418-ucm.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180516-cucm-cup-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180606-cucm-xfs.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180606-ucm-xss.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180801-ucm-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucmim_cisco-sa-20180620-ucmim-ps-csrf.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucmim_cisco-sa-20180718-ucmim-ps-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_esa_cisco-sa-20180117-esasma.nasl: GPLv2+
@@ -58716,6 +58724,7 @@ gsf/2018/cisco/gb_cisco_ise_cisco-sa-20180516-ident-se-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ise_cisco-sa-20180516-iseeap.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ise_cisco-sa-20180516-ise-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ise_cisco-sa-20180606-ise-xss.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ise_cisco-sa-20180801-ise-csrf.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_jabber_mult_xss_vuln_cisco-sa-20180221-jcf_jcf1_win.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180502-cms-cx.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180516-msms.nasl: GPLv2+
@@ -58757,6 +58766,7 @@ gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180606-prime-password-recovery.nasl: GPLv
 gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180606-prime-password-reset.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180606-prime-rmi.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180606-prime-sql.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180801-pcp-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pis_cisco-sa-20180117-cpi.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pis_cisco-sa-20180117-prime-infrastructure.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pis_cisco-sa-20180502-prime-upload.nasl: GPLv2+
@@ -58976,12 +58986,14 @@ gsf/2018/hp/gb_hp_van_sdn_controller_cmd_inj_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_micro_focus_operations_orchestration_KM03103896.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ar3200_huawei-sa-20180613-01-openssl-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_dp300_mult_vuln.nasl: GPLv2+
+gsf/2018/huawei/gb_huawei_espace_huawei-sa-20180703-01-algorithm-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180131-01-ibmc-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180509-01-bypass-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180523-01-json-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180530-01-server-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180530-02-server-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_ibmc_huawei-sa-20180530-03-server-en.nasl: GPLv2+
+gsf/2018/huawei/gb_huawei_softco_huawei-sa-20180703-01-algorithm-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_te_devices_mult_vuln.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_usg6300_huawei-sa-20170802-01-usg-en.nasl: GPLv2+
 gsf/2018/huawei/gb_huawei_usg9500_dos_vuln.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongoose_42051.nasl 8228 2017-12-22 07:29:52Z teissa $
+# $Id: gb_mongoose_42051.nasl 10711 2018-08-01 13:58:38Z cfischer $
 #
 # Mongoose Slash Character Remote File Disclosure Vulnerability
 #
@@ -24,75 +24,79 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Mongoose is prone to a remote file-disclosure vulnerability because it
-fails to properly sanitize user-supplied input.
-
-An attacker can exploit this vulnerability to view the source code
-of files in the context of the server process, which may aid in
-further attacks.
-
-This issue affects Mongoose 2.8; other versions may be
-vulnerable as well.";
-
-
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100735");
- script_version("$Revision: 8228 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-22 08:29:52 +0100 (Fri, 22 Dec 2017) $");
- script_tag(name:"creation_date", value:"2010-08-02 14:28:14 +0200 (Mon, 02 Aug 2010)");
- script_bugtraq_id(42051);
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.100735");
+  script_version("$Revision: 10711 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 15:58:38 +0200 (Wed, 01 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2010-08-02 14:28:14 +0200 (Mon, 02 Aug 2010)");
+  script_bugtraq_id(42051);
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2009-4535");
+  script_name("Mongoose Slash Character Remote File Disclosure Vulnerability");
+  script_category(ACT_ATTACK);
+  script_family("Web Servers");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl","webmirror.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_name("Mongoose Slash Character Remote File Disclosure Vulnerability");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/42051");
+  script_xref(name:"URL", value:"http://code.google.com/p/mongoose/");
 
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/42051");
- script_xref(name : "URL" , value : "http://code.google.com/p/mongoose/");
+  script_tag(name:"summary", value:"Mongoose is prone to a remote file-disclosure vulnerability because it
+  fails to properly sanitize user-supplied input.");
 
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web Servers");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl","webmirror.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to view the source code
+  of files in the context of the server process, which may aid in further attacks.");
+
+  script_tag(name:"affected", value:"This issue affects Mongoose 2.8. Other versions may be
+  vulnerable as well.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by
+  another one.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"remote_vul");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
-port = get_http_port(default:8080);
 
-if(!get_port_state(port))exit(0);
-banner = get_http_banner(port:port);
-if(!banner || "Server:" >< banner)exit(0);
+port = get_http_port( default:8080 );
+banner = get_http_banner( port:port );
+if( ! banner || "Server:" >< banner ) exit( 0 );
 
-phps = get_kb_list("www/"+port+"/content/extensions/php");
-if(!isnull(phps)) {
-  phps = make_list(phps);
+host = http_host_name( dont_add_port:TRUE );
+
+phps = get_http_kb_file_extensions( port:port, host:host, ext:"php" );
+if( ! isnull( phps ) ) {
+  phps = make_list( phps );
 } else {
-  phps = make_list("/index.php");
-}  
-
-foreach php (phps) {
-
-  x++;
-  url = php +"/";
-
-  if(buf = http_vuln_check(port:port,url:url,pattern:"<\?(php)?",check_header:TRUE)) {
-   if("Content-Type: text/plain" >< buf) { 
-     if(!http_vuln_check(port:port, url:php,pattern:"<\?(php)?")) {
-       security_message(port:port);
-       exit(0);
-     }  
-    }
-  }  
-  if(x>=3)exit(0);
+  phps = make_list( "/index.php" );
 }
 
-exit(0);
+foreach php( phps ) {
+
+  x++;
+  url = php + "/";
+
+  if( buf = http_vuln_check( port:port, url:url, pattern:"<\?(php)?", check_header:TRUE ) ) {
+    if( "Content-Type: text/plain" >< buf ) {
+      if( ! http_vuln_check( port:port, url:php, pattern:"<\?(php)?" ) ) {
+        report = report_vuln_url( port:port, url:url );
+        security_message( port:port, data:report );
+        exit( 0 );
+      }
+    }
+  }
+  if( x>=3 )
+    exit( 0 );
+}
+
+exit( 99 );

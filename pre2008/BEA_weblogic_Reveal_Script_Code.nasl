@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: BEA_weblogic_Reveal_Script_Code.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: BEA_weblogic_Reveal_Script_Code.nasl 10711 2018-08-01 13:58:38Z cfischer $
 #
 # BEA WebLogic Scripts Server scripts Source Disclosure
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10715");
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_version("$Revision: 10711 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 15:58:38 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2527);
   script_tag(name:"cvss_base", value:"5.0");
@@ -43,20 +43,17 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_solution = "Use the official patch available at http://www.bea.com";
+  script_tag(name:"solution", value:"Use the official patch available at http://www.bea.com");
 
-  tag_summary = "BEA WebLogic may be tricked into revealing the source code of JSP scripts
+  script_tag(name:"summary", value:"BEA WebLogic may be tricked into revealing the source code of JSP scripts
   by using simple URL encoding of characters in the filename extension.
 
   e.g.: default.js%70 (=default.jsp) won't be considered as a script but
-  rather as a simple document.
+  rather as a simple document.");
 
-  Vulnerable systems: WebLogic version 5.1.0 SP 6
+  script_tag(name:"affected", value:"Vulnerable systems: WebLogic version 5.1.0 SP 6
 
-  Immune systems: WebLogic version 5.1.0 SP 8";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  Immune systems: WebLogic version 5.1.0 SP 8");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -70,6 +67,7 @@ include("http_keepalive.inc");
 signature = "<%="; #signature of Jsp.
 
 port = get_http_port( default:80 );
+host = http_host_name( dont_add_port:TRUE );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
@@ -86,8 +84,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   }
 }
 
-# Try with a known jsp file
-files = get_kb_list( "www/" + port + "/content/extensions/jsp" );
+files = get_http_kb_file_extensions( port:port, host:host, ext:"jsp" );
 if( isnull( files ) ) exit( 0 );
 
 files = make_list( files );

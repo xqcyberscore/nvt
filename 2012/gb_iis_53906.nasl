@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iis_53906.nasl 6720 2017-07-13 14:25:27Z cfischer $
+# $Id: gb_iis_53906.nasl 10709 2018-08-01 12:30:27Z cfischer $
 #
 # Microsoft IIS Authentication Bypass and Source Code Disclosure Vulnerabilities
 #
@@ -27,38 +27,45 @@
 
 CPE = "cpe:/a:microsoft:iis";
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103507");
- script_bugtraq_id(53906);
- script_version ("$Revision: 6720 $");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.103507");
+  script_bugtraq_id(53906);
+  script_version("$Revision: 10709 $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_name("Microsoft IIS Authentication Bypass and Source Code Disclosure Vulnerabilities");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 14:30:27 +0200 (Wed, 01 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-07-03 10:23:40 +0200 (Tue, 03 Jul 2012)");
+  script_category(ACT_ATTACK);
+  script_family("Web Servers");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("secpod_ms_iis_detect.nasl","webmirror.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("IIS/installed");
 
- script_name("Microsoft IIS Authentication Bypass and Source Code Disclosure Vulnerabilities");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53906");
+  script_xref(name:"URL", value:"http://www.microsoft.com/windowsserver2003/iis/default.mspx");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53906");
- script_xref(name : "URL" , value : "http://www.microsoft.com/windowsserver2003/iis/default.mspx");
+  script_tag(name:"summary", value:"Microsoft IIS is prone to an authentication-bypass vulnerability and a
+  source-code disclosure vulnerability because it fails to properly sanitize user-supplied input.");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
- script_tag(name:"creation_date", value:"2012-07-03 10:23:40 +0200 (Tue, 03 Jul 2012)");
- script_category(ACT_ATTACK);
- script_family("Web Servers");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("secpod_ms_iis_detect.nasl","webmirror.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("IIS/installed");
+  script_tag(name:"insight", value:"An attacker can exploit these vulnerabilities to gain unauthorized
+  access to password-protected resources and view the source code of files in the context of the server
+  process. This may aid in further attacks.");
 
- script_tag(name : "summary" , value : "Microsoft IIS is prone to an authentication-bypass vulnerability and a
- source-code disclosure vulnerability because it fails to properly sanitize user-supplied input.");
- script_tag(name : "insight" , value : "An attacker can exploit these vulnerabilities to gain unauthorized
- access to password-protected resources and view the source code of files in the context of the server
- process; this may aid in further attacks.");
- script_tag(name : "affected" , value : "Microsoft IIS 6.0 and 7.5 are vulnerable; other versions may also
- be affected.");
+  script_tag(name:"affected", value:"Microsoft IIS 6.0 and 7.5 are vulnerable. Other versions may also
+  be affected.");
 
- script_tag(name:"qod_type", value:"remote_vul");
- exit(0);
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by
+  another one.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"WillNotFix");
+
+  exit(0);
 }
 
 include("http_func.inc");
@@ -66,8 +73,9 @@ include("host_details.inc");
 include("http_keepalive.inc");
 
 if(!port = get_app_port(cpe:CPE))exit(0);
+host = http_host_name(dont_add_port:TRUE );
 
-auth_req = get_kb_list("www/" + port + "/content/auth_required");
+auth_req = get_http_kb_auth_required(port:port, host:host);
 if(!auth_req) exit(0);
 
 protected = make_list(auth_req);
@@ -93,9 +101,9 @@ foreach p (protected) {
          ia = asp_ia;
        } else {
          ia = php_ia;
-       } 
+       }
 
-       url = p + file; 
+       url = p + file;
 
        buf = http_get_cache(item:url, port:port);
 
@@ -109,14 +117,14 @@ foreach p (protected) {
        if(buf =~ "HTTP/1.. 200") {
          security_message(port:port);
          exit(0);
-       }  
-    }  
-  }  
+       }
+    }
+  }
 
   if(x > 5) {
     exit(0);
-  }  
+  }
 
-}  
+}
 
 exit(99);

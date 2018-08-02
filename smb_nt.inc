@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: smb_nt.inc 10406 2018-07-05 05:54:02Z cfischer $
+# $Id: smb_nt.inc 10707 2018-08-01 10:58:06Z cfischer $
 #
 # Methods for handling SMB
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10406 $
+# $Revision: 10707 $
 #
 ###############################################################################
 
@@ -143,7 +143,7 @@ function kb_smb_transport() {
   return transport;
 }
 
-# @brief This function returns the info if the remote host is a Samba server.
+# @brief Returns the info if the remote host is a Samba server.
 #
 # @note NVTs calling this function needs a dependency to netbios_name_get.nasl
 #       and smb_nativelanman.nasl.

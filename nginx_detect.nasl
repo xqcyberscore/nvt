@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nginx_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
+# $Id: nginx_detect.nasl 10711 2018-08-01 13:58:38Z cfischer $
 #
 # nginx Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100274");
-  script_version("$Revision: 8139 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10711 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 15:58:38 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-10-01 18:57:31 +0200 (Thu, 01 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -69,7 +69,8 @@ if( banner && egrep( pattern:"Server: nginx", string:banner, icase:TRUE ) ) {
     vers = chomp( version[1] );
   } else {
     # Some configs are reporting the version in the banner if a index.php is called
-    phpList = get_kb_list( "www/" + port + "/content/extensions/php" );
+    host = http_host_name( dont_add_port:TRUE );
+    phpList = get_http_kb_file_extensions( port:port, host:host, ext:"php" );
     if( phpList ) phpFiles = make_list( phpList );
 
     if( phpFiles[0] ) {

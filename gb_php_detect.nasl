@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_detect.nasl 9792 2018-05-10 12:04:16Z cfischer $
+# $Id: gb_php_detect.nasl 10711 2018-08-01 13:58:38Z cfischer $
 #
 # PHP Version Detection (Remote)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800109");
-  script_version("$Revision: 9792 $");
+  script_version("$Revision: 10711 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-10 14:04:16 +0200 (Thu, 10 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 15:58:38 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-10-07 16:11:33 +0200 (Tue, 07 Oct 2008)");
   script_name("PHP Version Detection (Remote)");
   script_category(ACT_GATHER_INFO);
@@ -41,7 +41,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of PHP.
+  script_tag(name:"summary", value:"Detects the installed version of PHP.
   This script sends HTTP GET request and try to get the version from the
   response, and sets the result in KB.");
 
@@ -58,6 +58,7 @@ include("host_details.inc");
 checkFiles = make_list();
 
 port = get_http_port( default:80 );
+host = http_host_name( dont_add_port:TRUE );
 
 phpinfoBanner = get_kb_item( "php/phpinfo/phpversion/" + port );
 
@@ -67,7 +68,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   checkFiles = make_list( checkFiles, dir + "/", dir + "/index.php" );
 }
 
-phpFilesList = get_kb_list( "www/" + port + "/content/extensions/php" );
+phpFilesList = get_http_kb_file_extensions( port:port, host:host, ext:"php" );
 if( phpFilesList ) checkFiles = make_list_unique( checkFiles, phpFilesList );
 
 foreach checkFile( checkFiles ) {

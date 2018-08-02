@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sicunet_access_controller_mult_vuln.nasl 9151 2018-03-21 07:36:51Z asteins $
+# $Id: gb_sicunet_access_controller_mult_vuln.nasl 10710 2018-08-01 13:04:05Z asteins $
 #
 # SICUNET Access Controller Multiple Vulnerabilities
 #
@@ -28,15 +28,15 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106672");
-  script_version("$Revision: 9151 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-21 08:36:51 +0100 (Wed, 21 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2017-03-21 09:07:37 +0700 (Tue, 21 Mar 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 10710 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 15:04:05 +0200 (Wed, 01 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-21 09:07:37 +0700 (Tue, 21 Mar 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "WillNotFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("SICUNET Access Controller Multiple Vulnerabilities");
 
@@ -48,11 +48,11 @@ if (description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("lighttpd/banner");
 
-  script_tag(name: "summary", value: "SICUNET Access Controller is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"SICUNET Access Controller is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP request and checks the response.");
 
-  script_tag(name: "insight", value: "SICUNET Access Controller is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"SICUNET Access Controller is prone to multiple vulnerabilities:
 
 - Multiple software components are outdated which include different vulnerabilities.
 
@@ -64,17 +64,16 @@ if (description)
 
 - Password stored in plaintext");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may gain complete control over the device.");
+  script_tag(name:"impact", value:"An unauthenticated attacker may gain complete control over the device.");
 
-  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure of this vulnerability.
-      Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features,
-      remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features,
+  remove the product or replace the product by another one.");
 
-  script_xref(name: "URL", value: "http://seclists.org/fulldisclosure/2017/Mar/25");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Mar/25");
 
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");

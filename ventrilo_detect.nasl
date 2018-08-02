@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ventrilo_detect.nasl 10033 2018-05-31 07:51:19Z ckuersteiner $
-# Description: Ventrilo Server Detection
+# $Id: ventrilo_detect.nasl 10700 2018-08-01 08:00:30Z cfischer $
+#
+# Ventrilo Server Detection
 #
 # Authors:
 # Tenable Network Security
@@ -20,34 +22,34 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-if (description) {
+if(description)
+{
   script_oid("1.3.6.1.4.1.25623.1.0.80092");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10033 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 09:51:19 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 10700 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 10:00:30 +0200 (Wed, 01 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
-
   script_name("Ventrilo Server Detection");
-
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_family("Service detection");
   script_copyright("This script is Copyright (C) 2005-2008 Tenable Network Security");
   script_require_udp_ports(3784);
 
-  script_tag(name: "solution", value: "Make sure the use of this software is made in accordance to your local
-security policy since Ventrilo is often associated with multi-player online games.");
+  script_xref(name:"URL", value:"http://www.ventrilo.com/");
 
-  script_tag(name: "summary", value: "A VoIP service is listening on the remote host.
+  script_tag(name:"solution", value:"Make sure the use of this software is made in accordance to your local
+  security policy since Ventrilo is often associated with multi-player online games.");
 
-Description :
+  script_tag(name:"summary", value:"A VoIP service is listening on the remote host.
 
-The remote host is running Ventrilo, a voice over IP (VoIP) software developed by Flagship Industries.");
+  Description :
 
-  script_xref(name: "URL", value: "http://www.ventrilo.com/");
+  The remote host is running Ventrilo, a voice over IP (VoIP) software developed by Flagship Industries.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
@@ -62,7 +64,6 @@ SCRIPT_DESC = "Ventrilo Server Detection";
 port = 3784;
 if (!get_udp_port_state(port)) exit(0);
 
-
 # fetch big-endian 16-bit value (string s, offset o)
 #
 # nb: taken from dns_xfer.nasl.
@@ -72,7 +73,6 @@ function ntohs(s, o) {
   ret_lo = ord(s[o+1]);
   return (ret_hi + ret_lo);
 }
-
 
 # See <http://aluigi.altervista.org/papers.htm#ventrilo>, especially
 # the UDP status algorithm 0.1 and the status retriever 0.1.
@@ -119,7 +119,7 @@ ventrilo_udp_encdata_data = make_list(
 );
 
 function ventrilo_udp_head_dec(data) {
-  # nb: a1 and a2 are supposed to be chars so trucate as necessary.
+  # nb: a1 and a2 are supposed to be chars so truncate as necessary.
   local_var i, p, a1, a2;
   local_var c, j;
 
@@ -150,7 +150,7 @@ function ventrilo_udp_head_dec(data) {
 }
 
 function ventrilo_udp_data_dec(data, len, key) {
-  # nb: a1 and a2 are supposed to be chars so trucate as necessary.
+  # nb: a1 and a2 are supposed to be chars so truncate as necessary.
   local_var i, a1, a2;
   local_var c;
 
@@ -267,32 +267,31 @@ while (1) {
   if (totlen == stat_totlen) break;
 }
 
-
 # Extract the version number and report if found.
 if (full) {
   ver = strstr(full, "VERSION: ");
   if (ver) {
     ver = ver - "VERSION: ";
     ver = ver - strstr(ver, '\n');
-
     set_kb_item(name:"Ventrilo/version", value:ver);
-
-    cpe = build_cpe(value:ver, exp:"^([0-9.]+)", base:"cpe:/a:flagship_industries:ventrilo:");
-    if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
-
-    if (report_verbosity)
-    {
-      report = string(
-        "\n",
-        "Ventrilo server version ", ver, " was detected on the remote host."
-      );
-      log_message(port:port, protocol:"udp", extra:report);
-    }
-    else log_message(port:port, protocol:"udp");
-
-    # nb: Ventrilo uses the same port number for both UDP and TCP.
-    register_service(port:port, ipproto:"udp", proto:"ventrilo");
-    register_service(port:port, ipproto:"tcp", proto:"ventrilo");
+  } else {
+    ver = "unknown";
   }
+
+  cpe = build_cpe(value:ver, exp:"^([0-9.]+)", base:"cpe:/a:flagship_industries:ventrilo:");
+  if (isnull(cpe))
+    cpe = "cpe:/a:flagship_industries:ventrilo";
+
+  log_message(data:build_detection_report(app:"Ventrilo server",
+                                          version:ver,
+                                          install:port,
+                                          cpe:cpe,
+                                          concluded:full),
+                                          port:port, protocol:"udp");
+
+  # nb: Ventrilo uses the same port number for both UDP and TCP.
+  register_service(port:port, ipproto:"udp", proto:"ventrilo");
+  register_service(port:port, ipproto:"tcp", proto:"ventrilo");
 }
+
+exit( 0 );

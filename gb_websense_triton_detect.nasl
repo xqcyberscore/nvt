@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_websense_triton_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_websense_triton_detect.nasl 10702 2018-08-01 08:27:30Z cfischer $
 #
 # Websense Triton Detection
 #
@@ -25,44 +25,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106001");
- script_version ("$Revision: 5877 $");
- script_tag(name: "last_modification", value: "$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
- script_tag(name: "creation_date", value: "2015-06-03 10:11:53 +0700 (Wed, 03 Jun 2015)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.106001");
+  script_version("$Revision: 10702 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-01 10:27:30 +0200 (Wed, 01 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2015-06-03 10:11:53 +0700 (Wed, 03 Jun 2015)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("Websense Triton Detection");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 9443);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name: "qod_type", value: "remote_active");
+  script_tag(name:"summary", value:"Detection of Websense Triton.
 
- script_name("Websense Triton Detection");
+  The script sends a connection request to the server and attempts to detect Websense Triton.");
 
- script_tag(name: "summary" , value: "Detection of Websense Triton
+  script_tag(name:"qod_type", value:"remote_active");
 
-The script sends a connection request to the server and attempts to detect Websense Triton.");
-
- script_category(ACT_GATHER_INFO);
-
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_family("Product detection");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 9443);
- script_exclude_keys("Settings/disable_cgi_scanning");
-
-
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port(default: 9443);
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
+
+  install = dir;
   if (dir == "/")
     dir = "";
 
@@ -86,11 +83,9 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
     if (isnull(cpe))
       cpe = 'cpe:/a:websense:triton';
 
-    if (dir == "")
-      dir = "/";
-    register_product(cpe: cpe, location: dir, port: port);
+    register_product(cpe: cpe, location: install, port: port);
 
-    log_message(data: build_detection_report(app:"Websense Triton", version: vers, install: dir,
+    log_message(data: build_detection_report(app:"Websense Triton", version: vers, install: install,
                                              cpe: cpe, concluded: version[0]), port: port);
   }
 }
