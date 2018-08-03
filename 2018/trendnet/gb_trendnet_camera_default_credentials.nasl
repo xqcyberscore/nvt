@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendnet_camera_default_credentials.nasl 10613 2018-07-25 12:36:04Z asteins $
+# $Id: gb_trendnet_camera_default_credentials.nasl 10729 2018-08-02 09:47:33Z jschulte $
 #
 # Trendnet Internet Camera Default Credentials
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112338");
-  script_version("$Revision: 10613 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:36:04 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10729 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 11:47:33 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-25 14:03:42 +0200 (Wed, 25 Jul 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,7 +49,7 @@ if( description )
 
   script_tag(name:"summary", value:"Trendnet IP cameras use the default credentials admin:admin.");
   script_tag(name:"vuldetect", value:"Tries to login using default credentials.");
-  script_tag(name:"affected", value:"All Trendnet IP camers.");
+  script_tag(name:"affected", value:"All Trendnet IP cameras.");
   script_tag(name:"solution", value:"Change the default password for the admin account.");
 
   script_xref(name:"URL", value:"https://www.trendnet.com/");

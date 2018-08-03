@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_passwd_min_length.nasl 10649 2018-07-27 07:16:55Z emoss $
+# $Id: win_passwd_min_length.nasl 10740 2018-08-02 14:13:50Z emoss $
 #
 # Check value for Minimum password length (WMI)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109106");
-  script_version("$Revision: 10649 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:16:55 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 10740 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 16:13:50 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 10:59:13 +0200 (Wed, 25 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -41,10 +41,10 @@ if(description)
   script_add_preference(name:"Minimum", type:"entry", value:"14");
   script_mandatory_keys("Compliance/Launch");
   script_require_keys("WMI/access_successful");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
+  script_tag(name: "summary", value: "This test checks the setting for policy
 'Minimum password length' on Windows hosts (at least Windows 7).
 
-The policy setting determines the least number of characters that can make up a 
+The policy setting determines the least number of characters that can make up a
 password for a user account.");
   exit(0);
 }
@@ -59,8 +59,8 @@ to query the registry.');
 }
 
 if(get_kb_item("SMB/WindowsVersion") < "6.1"){
-  policy_logging(text:'Host is not at least a Microsoft Windows 7 system. 
-Older versions of Windows are not supported any more. Please update the 
+  policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
+Older versions of Windows are not supported any more. Please update the
 Operating System.');
   exit(0);
 }
@@ -68,20 +68,7 @@ Operating System.');
 type = 'Minimum password length';
 select = 'Setting';
 keyname = 'MinimumPasswordLength';
-
-value = rsop_securitysettingsnumeric(select:select,keyname:keyname);
-if( value == ''){
-  policy_logging(text:'Unable to detect setting for: "' + type + '".');
-  policy_set_kb(val:'error');
-}else{
-  policy_logging(text:'"' + type + '" is set to: ' + value);
-  policy_set_kb(val:value);
-}
-
-
 title = 'Minimum password length';
-select = 'Setting';
-keyname = 'PasswordHistorySize';
 fixtext = 'Set following UI path accordingly:
 Computer Configuration/Windows Settings/Security Settings/Account Policies/Password Policy/' + title;
 default = script_get_preference("Minimum");

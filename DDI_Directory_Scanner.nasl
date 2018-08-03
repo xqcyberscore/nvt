@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_Directory_Scanner.nasl 10713 2018-08-01 14:21:58Z cfischer $
+# $Id: DDI_Directory_Scanner.nasl 10726 2018-08-02 07:46:22Z cfischer $
 #
 # Directory Scanner
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11032");
-  script_version("$Revision: 10713 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 16:21:58 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 10726 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 09:46:22 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -91,16 +91,12 @@ function add_discovered_list( dir, port, host ) {
 
     if( use_cgi_dirs_exclude_pattern ) {
       if( egrep( pattern:cgi_dirs_exclude_pattern, string:dir ) ) {
-        set_kb_item( name:"www/" + port + "/content/excluded_directories", value:dir );
         set_kb_item( name:"www/" + host + "/" + port + "/content/excluded_directories", value:dir );
         return;
       }
     }
 
     #TBD: Do a check_cgi_dir( dir:dir, port:port ); before?
-    dir_key = "www/" + port + "/content/directories";
-    if( debug ) display( "Setting KB key: ", dir_key, " to '", dir, "'\n" );
-    set_kb_item( name:dir_key, value:dir );
     dir_key = "www/" + host + "/" + port + "/content/directories";
     if( debug ) display( "Setting KB key: ", dir_key, " to '", dir, "'\n" );
     set_kb_item( name:dir_key, value:dir );
@@ -117,7 +113,6 @@ function add_auth_dir_list( dir, port, host, basic, realm ) {
 
     if( use_cgi_dirs_exclude_pattern ) {
       if( egrep( pattern:cgi_dirs_exclude_pattern, string:dir ) ) {
-        set_kb_item( name:"www/" + port + "/content/excluded_directories", value:dir );
         set_kb_item( name:"www/" + host + "/" + port + "/content/excluded_directories", value:dir );
         return;
       }
@@ -133,7 +128,6 @@ function add_auth_dir_list( dir, port, host, basic, realm ) {
       set_kb_item( name:"www/basic_auth/detected", value:TRUE );
       set_kb_item( name:"www/pw_input_field_or_basic_auth/detected", value:TRUE );
       # Used in 2018/gb_http_cleartext_creds_submit.nasl
-      set_kb_item( name:"www/" + port + "/content/basic_auth/" + dir, value:report_vuln_url( port:port, url:dir, url_only:TRUE ) + ":" + realm );
       set_kb_item( name:"www/" + host + "/" + port + "/content/basic_auth/" + dir, value:report_vuln_url( port:port, url:dir, url_only:TRUE ) + ":" + realm );
     }
   }
@@ -1136,7 +1130,6 @@ foreach cdir( testDirList ) {
     if( url =~ "^/manual" ) {
       res = http_get_cache( item:"/manual/en/index.html", port:port );
       if( "Documentation - Apache HTTP Server" >< res ) {
-        set_kb_item( name:"www/" + port + "/content/servermanual_directories", value:report_vuln_url( port:port, url:url, url_only:TRUE ) + ", Content: Apache HTTP Server Manual" );
         set_kb_item( name:"www/" + host + "/" + port + "/content/servermanual_directories", value:report_vuln_url( port:port, url:url, url_only:TRUE ) + ", Content: Apache HTTP Server Manual" );
         continue;
       }
@@ -1146,7 +1139,6 @@ foreach cdir( testDirList ) {
     if( url =~ "^/tomcat-docs" ) {
       res = http_get_cache( item:"/tomcat-docs/", port:port );
       if( "Apache Tomcat" >< res && "Documentation Index" >< res ) {
-        set_kb_item( name:"www/" + port + "/content/servermanual_directories", value:report_vuln_url( port:port, url:url, url_only:TRUE ) + ", Content: Apache Tomcat Documentation" );
         set_kb_item( name:"www/" + host + "/" + port + "/content/servermanual_directories", value:report_vuln_url( port:port, url:url, url_only:TRUE ) + ", Content: Apache Tomcat Documentation" );
         continue;
       }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_nc_digitally_sign_communications_server_agrees.nasl 10146 2018-06-08 15:21:07Z emoss $
+# $Id: win_nc_digitally_sign_communications_server_agrees.nasl 10740 2018-08-02 14:13:50Z emoss $
 #
 # Check value for Microsoft network client: Digitally sign communications (if server agrees)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109210");
-  script_version("$Revision: 10146 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 17:21:07 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 10740 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 16:13:50 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-08 14:44:47 +0200 (Fri, 08 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,14 +38,15 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_add_preference(name:"Value", type:"radio", value:"1;0");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'Microsoft network client: Digitally sign communications (if server agrees)' on Windows 
+  script_tag(name: "summary", value: "This test checks the setting for policy
+'Microsoft network client: Digitally sign communications (if server agrees)' on Windows
 hosts (at least Windows 7).
 
-The server message block (SMB) protocol provides the basis for many network 
-operations. Digitally signed SMB packets aid in preventing man-in-the-middle 
-attacks. If enabled, the SMB client will communicate with an SMB server with SMB 
+The server message block (SMB) protocol provides the basis for many network
+operations. Digitally signed SMB packets aid in preventing man-in-the-middle
+attacks. If enabled, the SMB client will communicate with an SMB server with SMB
 packet signing, if possible");
   exit(0);
 }
@@ -60,25 +61,37 @@ to query the registry.');
 }
 
 if(get_kb_item("SMB/WindowsVersion") < "6.1"){
-  policy_logging(text:'Host is not at least a Microsoft Windows 7 system. 
-Older versions of Windows are not supported any more. Please update the 
+  policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
+Older versions of Windows are not supported any more. Please update the
 Operating System.');
   exit(0);
 }
 
 title = 'Microsoft network client: Digitally sign communications (if server agrees)';
 fixtext = 'Set following UI path accordingly:
-Computer Configuration/Windows Settings/Security Settings/Local Policies/Security Options/Microsoft network client: Digitally sign communications (if server agrees)';
+Computer Configuration/Windows Settings/Security Settings/Local Policies/Security Options/' + title;
 type = 'HKLM';
 key = 'SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation\\Parameters';
 item = 'EnableSecuritySignature';
+default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
+
 if( value == ''){
-  value = 'none';
+  value = '0';
 }
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+
+if(int(value) == int(default)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

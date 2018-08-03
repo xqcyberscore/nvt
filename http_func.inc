@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 10708 2018-08-01 11:56:31Z cfischer $
+# $Id: http_func.inc 10742 2018-08-02 17:42:25Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10708 $
+# $Revision: 10742 $
 #
 ###############################################################################
 
@@ -599,6 +599,13 @@ function cgi_dirs( port, host ) {
   return( make_list_unique( kb ) );
 }
 
+# @brief Returns if a remote web server is able to host or support hosting PHP files.
+#
+# @param port the port of the remote server to check
+#
+# @return TRUE if the remote web server is able to host or support hosting PHP files,
+#         FALSE otherwise and NULL in the case where no port parameter was passed.
+#
 function can_host_php( port ) {
 
   local_var port, banner, files, srv_pattern;
@@ -610,7 +617,9 @@ function can_host_php( port ) {
 
   if( get_kb_item( "www/" + port + "/PHP" ) ) return TRUE;
 
-  files = get_kb_list( "www/" + port + "/content/extensions/php*" );
+  # nb: * in host is expected as webserver hosting .php* files on one vhost
+  # is most likely supporting PHP on another vhost as well.
+  files = get_http_kb_file_extensions( port:port, host:"*", ext:"php*" );
   if( ! isnull( files ) ) return TRUE; # Hosting .php* files
 
   if( get_kb_item( "greenbone/gos/http/" + port + "/detected" ) ) return FALSE;
@@ -649,6 +658,13 @@ function can_host_php( port ) {
   }
 }
 
+# @brief Returns if a remote web server is able to host or support hosting .asp and/or .aspx files.
+#
+# @param port the port of the remote server to check
+#
+# @return TRUE if the remote web server is able to host or support hosting .asp and/or .aspx files,
+#         FALSE otherwise and NULL in the case where no port parameter was passed.
+#
 function can_host_asp( port ) {
 
   local_var port, banner, files, srv_pattern;
@@ -658,7 +674,9 @@ function can_host_asp( port ) {
     return;
   }
 
-  files = get_kb_list( "www/" + port + "/content/extensions/asp*" );
+  # nb: * in host is expected as webserver hosting .asp* files on one vhost
+  # is most likely supporting .asp/.aspx on another vhost as well.
+  files = get_http_kb_file_extensions( port:port, host:"*", ext:"asp*" );
   if( ! isnull( files ) ) return TRUE; # Hosting .asp / .aspx files
 
   if( get_kb_item( "greenbone/gos/http/" + port + "/detected" ) ) return FALSE;
@@ -1099,13 +1117,26 @@ function http_is_marked_broken( port ) {
 #
 function get_http_kb_file_extensions( port, host, ext ) {
 
-  local_var port, host, ext, list;
+  local_var port, host, ext, list, item;
 
   if( ! port ) port = "*";
   if( ! host ) host = "*";
   if( ! ext  ) ext  = "*";
 
   list = get_kb_list( "www/" + host + "/" + port + "/content/extensions/" + ext );
+
+  # TODO: Just use is_array() from misc_func.inc once openvas-nasl-lint is able
+  # to not report an undefined function within includes if the calling function
+  # is never used.
+  if( ! list || typeof( list ) != "array" )
+    return NULL;
+
+  if( max_index( list ) == 0 ) {
+    foreach item( list )
+      return list;
+
+    return NULL;
+  }
   return list;
 }
 
@@ -1130,11 +1161,70 @@ function get_http_kb_file_extensions( port, host, ext ) {
 #
 function get_http_kb_auth_required( port, host ) {
 
-  local_var port, host, list;
+  local_var port, host, list, item;
 
   if( ! port ) port = "*";
   if( ! host ) host = "*";
 
   list = get_kb_list( "www/" + host + "/" + port + "/content/auth_required" );
+
+  # TODO: Just use is_array() from misc_func.inc once openvas-nasl-lint is able
+  # to not report an undefined function within includes if the calling function
+  # is never used.
+  if( ! list || typeof( list ) != "array" )
+    return NULL;
+
+  if( max_index( list ) == 0 ) {
+    foreach item( list )
+      return list;
+
+    return NULL;
+  }
+  return list;
+}
+
+# @brief Returns all CGIs (namely scripts with a parameter) on a remote web page and
+#        which are saved in the knowledge base (by e.g. webmirror.nasl) within the
+#        following KB tree: "www/" + host + "/" + port + "/content/cgis/plain_cgis".
+#        The returned syntax is the following:
+#        /url - var [] -> This would match to http://example.com/url?var=
+#        /url - var [param] -> This would match to http://example.com/url?var=param
+#
+# @note Add a dependency to at least DDI_Directory_Scanner.nasl and webmirror.nasl
+#       when using this function within an NVT.
+#
+# @param port the port of the remote server for which the detected CGIs should
+#             be returned. This parameter is optional and if not passed the
+#             CGIs of all web servers on the remote host are returned.
+# @param host the hostname of the remote server (e.g. from http_host_name with the
+#             dont_add_port:TRUE parameter or get_host_name) for which the detected
+#             CGIs should be returned. This parameter is optional and if not passed
+#             the CGIs of all web servers and all hostnames of the remote host are
+#             returned.
+#
+# @return a list of CGIs in the syntax shown in the function description, NULL in the
+#         case no CGIs have matched the parameters or none have been identified at all.
+#
+function get_http_kb_cgis( port, host ) {
+
+  local_var port, host, list, item;
+
+  if( ! port ) port = "*";
+  if( ! host ) host = "*";
+
+  list = get_kb_list( "www/" + host + "/" + port + "/content/cgis/plain_cgis" );
+
+  # TODO: Just use is_array() from misc_func.inc once openvas-nasl-lint is able
+  # to not report an undefined function within includes if the calling function
+  # is never used.
+  if( ! list || typeof( list ) != "array" )
+    return NULL;
+
+  if( max_index( list ) == 0 ) {
+    foreach item( list )
+      return list;
+
+    return NULL;
+  }
   return list;
 }

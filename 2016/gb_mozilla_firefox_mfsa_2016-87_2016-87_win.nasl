@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-87_2016-87_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2016-87_2016-87_win.nasl 10743 2018-08-03 02:50:31Z ckuersteiner $
 #
 # Mozilla Firefox Security Updates( mfsa_2016-87_2016-87 )-Windows
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809390");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 10743 $");
   script_cve_id("CVE-2016-5287", "CVE-2016-5288");
   script_bugtraq_id(93810);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-03 04:50:31 +0200 (Fri, 03 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-10-21 15:08:42 +0530 (Fri, 21 Oct 2016)");
   script_name("Mozilla Firefox Security Updates( mfsa_2016-87_2016-87 )-Windows");
 

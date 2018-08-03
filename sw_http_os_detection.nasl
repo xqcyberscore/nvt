@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 10666 2018-07-27 18:15:54Z cfischer $
+# $Id: sw_http_os_detection.nasl 10724 2018-08-02 06:39:54Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 10666 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 20:15:54 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 10724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 08:39:54 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -41,7 +41,8 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"This script performs HTTP based OS detection from the HTTP/PHP banner or default test pages.");
+  script_tag(name:"summary", value:"This script performs HTTP based OS detection from the HTTP/PHP
+  banner or default test pages.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -685,11 +686,11 @@ function check_http_banner( port ) {
   return;
 }
 
-function check_php_banner( port ) {
+function check_php_banner( port, host ) {
 
-  local_var phpList, phpFiles, phpinfoBanner, banner_type;
+  local_var port, host, phpList, phpFiles, phpinfoBanner, banner_type;
 
-  phpList = get_kb_list( "www/" + port + "/content/extensions/php" );
+  phpList = get_http_kb_file_extensions( port:port, host:host, ext:"php" );
   if( phpList ) phpFiles = make_list( phpList );
   phpinfoBanner = get_kb_item( "php/phpinfo/phpversion/" + port );
 
@@ -1101,9 +1102,10 @@ function check_x_powered_by_banner( port ) {
 }
 
 port = get_http_port( default:80 );
+host = http_host_name( dont_add_port:TRUE );
 
 # nb: The order matters here, e.g. we might have a "Server: Apache (Debian)" banner but a more detailed Debian Release in the PHP banner
-check_php_banner( port:port );
+check_php_banner( port:port, host:host );
 serverbanner = check_http_banner( port:port );
 defaultpage  = check_default_page( port:port );
 check_x_powered_by_banner( port:port );

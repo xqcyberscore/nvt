@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_javascript_rce_vuln_win.nasl 10558 2018-07-20 14:08:23Z santu $
+# $Id: gb_foxit_phantompdf_javascript_rce_vuln_win.nasl 10723 2018-08-02 06:12:10Z santu $
 #
 # Foxit PhantomPDF 'JavaScript' Remote Code Execution Vulnerabilities (Windows)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813264");
-  script_version("$Revision: 10558 $");
-  script_cve_id("CVE-2018-3924", "CVE-2018-3939"); 
+  script_version("$Revision: 10723 $");
+  script_cve_id("CVE-2018-14295"); 
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 16:08:23 +0200 (Fri, 20 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 08:12:10 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 15:00:12 +0530 (Fri, 20 Jul 2018)");
   script_name("Foxit PhantomPDF 'JavaScript' Remote Code Execution Vulnerabilities (Windows)");
 

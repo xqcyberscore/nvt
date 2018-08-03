@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 02 Aug 2018 08:16:53 +0200
+# Automatically created on:  Fri, 03 Aug 2018 08:06:33 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38537,6 +38537,7 @@
 2018/apache/gb_apache_activemq_xss_lin.nasl: GPLv2+
 2018/apache/gb_apache_activemq_xss_win.nasl: GPLv2+
 2018/apache/gb_apache_ambari_directory_traversal_vuln_may18.nasl: GPLv2+
+2018/apache/gb_apache_ambari_inf_disc_vuln.nasl: GPLv2+
 2018/apache/gb_apache_cassandra_rce_vuln.nasl: GPLv2+
 2018/apache/gb_apache_couchdb_priv_esc_vuln_win.nasl: GPLv2+
 2018/apache/gb_apache_hadoop_inf_disc_vuln.nasl: GPLv2+
@@ -41551,6 +41552,7 @@
 2018/ubuntu/gb_ubuntu_USN_3725_1.nasl: GPLv2+
 2018/vbulletin/gb_vbulletin_url_param_open_redirect_vuln.nasl: GPLv2+
 2018/vertiv/gb_emerson_liebert_intellislot_default_credentials.nasl: GPLv2+
+2018/viconindustries/gb_vicon_industries_network_camera_default_credentials.nasl: GPLv2+
 2018/vlc/gb_vlc_media_player_dos_vuln_may18_macosx.nasl: GPLv2+
 2018/vlc/gb_vlc_media_player_dos_vuln_may18_win.nasl: GPLv2+
 2018/vlc/gb_vlc_mkv_files_arbitrary_code_exec_macosx.nasl: GPLv2+
@@ -59108,6 +59110,7 @@ gsf/2018/mcafee/gb_mcafee_epolicy_orchestrator_eol.nasl: GPLv2+
 gsf/2018/mcafee/gb_mcafee_epolicy_orchestrator_mult_vuln.nasl: GPLv2+
 gsf/2018/mcafee/gb_mcafee_epolicy_orchestrator_SB10240.nasl: GPLv2+
 gsf/2018/mcafee/gb_mcafee_nsm_mult_vuln.nasl: GPLv2+
+gsf/2018/mcafee/gb_mcafee_nsm_xss_vuln.nasl: GPLv2+
 gsf/2018/mcafee/gb_mcafee_saas_endpoint_protection_eol.nasl: GPLv2+
 gsf/2018/mcafee/gb_mcafee_virusscan_enterprise_eol_lin.nasl: GPLv2+
 gsf/2018/mcafee/gb_mcafee_web_gateway_auth_bypass_vuln.nasl: GPLv2+

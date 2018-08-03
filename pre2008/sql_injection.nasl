@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sql_injection.nasl 8106 2017-12-13 14:42:54Z cfischer $
+# $Id: sql_injection.nasl 10736 2018-08-02 11:55:29Z cfischer $
 #
 # Test for generic SQL injection in Web Applications
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11139");
-  script_version("$Revision: 8106 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 15:42:54 +0100 (Wed, 13 Dec 2017) $");
+  script_version("$Revision: 10736 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 13:55:29 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,18 +48,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.securiteam.com/securityreviews/5DP0N1P76E.html");
   script_xref(name:"URL", value:"http://www.securitydocs.com/library/2651");
 
-  tag_summary = "This script attempts to use SQL injection techniques on CGI scripts.
+  script_tag(name:"summary", value:"This script attempts to use SQL injection techniques on CGI scripts.
 
   NOTE: Please enable 'Enable generic web application scanning' within the NVT 'Global variable settings'
-  (OID: 1.3.6.1.4.1.25623.1.0.12288) if you want to run this script.";
+  (OID: 1.3.6.1.4.1.25623.1.0.12288) if you want to run this script.");
 
-  tag_impact = "An attacker may exploit this flaws to bypass authentication or to take the control of the remote database.";
+  script_tag(name:"impact", value:"An attacker may exploit this flaws to bypass authentication or to take the control of the remote database.");
 
-  tag_solution = "Modify the relevant CGIs so that they properly escape arguments.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"solution", value:"Modify the relevant CGIs so that they properly escape arguments.");
 
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_active");
@@ -71,6 +67,9 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+
+# TODO: Create a separate "reporting" NVT which reports found items
+# by this NVT if it reached a timeout or exit(0) was used due to the failed requests.
 
 # nb: We also don't want to run if optimize_test is set to "no"
 if( get_kb_item( "Settings/disable_cgi_scanning" ) ||
@@ -95,13 +94,11 @@ poison[11] = " or 1=1--";
 poison[12] = single_quote + " or " + single_quote + "a" + single_quote + "=" + single_quote + "a";
 poison[13] = single_quote + ") or (" + single_quote + "a" + single_quote + "=" + single_quote + "a";
 
-
 # blind sql injection methods that we will pass
 # if they are putting the user-supplied variable within single quotes, then we trick them with this
 blinder[0] = single_quote + "+AND+" + single_quote + "a" + single_quote + ">" + single_quote + "b";
 # otherwise, this will work most of the time
 blinder[1] = "+AND+1=1";
-
 
 posreply[0] = "Can't find record in";
 posreply[1] = "Column count doesn't match value count at row";
@@ -136,131 +133,68 @@ posreply[29] = "Microsoft SQL Native Client error";
 posreply[30] = "Query failed: ERROR: syntax error at or near";
 
 port = get_http_port( default:80 );
+host = http_host_name( dont_add_port:TRUE );
 
 unsafe_urls = "";
 blind_urls = "";
 mywarningcount = 0;
 blindwarningcount = 0;
 
-cgi = get_kb_item( "www/" + port + "/cgis" );
-if( ! cgi ) exit( 0 );
+cgis = get_http_kb_cgis( port:port, host:host );
+if( ! cgis ) exit( 0 );
 
-# populate two arrays param[] and data[]
-everythingrray = split( cgi, sep:" ", keep:FALSE );
+foreach cgi( cgis ) {
 
-if( everythingrray[0] =~ ".*/$") {
-  isdir = TRUE;
-} else {
-  isdir = FALSE;
-}
+  # populate two arrays param[] and data[]
+  everythingrray = split( cgi, sep:" ", keep:FALSE );
 
-#counter for current failed requests
-failedReqs = 0;
-#counter for max failed requests
-#The NVT will exit if this is reached
-#TBD: Make this configurable?
-maxFailedReqs = 5;
+  if( everythingrray[0] =~ ".*/$") {
+    isdir = TRUE;
+  } else {
+    isdir = FALSE;
+  }
 
-if( ! isdir ) {
-  vrequest = string( everythingrray[0], "?" );
-  bogus_vrequest = string( everythingrray[0], "?", rand() );
-  pseudocount = 0;
-  foreach rrayval( everythingrray ) {
-    if( pseudocount >= 2 ) {
-      if( "]" >< rrayval ) {
-        pseudocount--;
-        tmpf = ereg_replace( pattern:"\[|\]", string:rrayval, replace:"" );
-        data[pseudocount] = tmpf;
-        vrequest = string( vrequest, "=" ,tmpf );
+  #counter for current failed requests
+  failedReqs = 0;
+  #counter for max failed requests
+  #The NVT will exit if this is reached
+  #TBD: Make this configurable?
+  maxFailedReqs = 5;
+
+  if( ! isdir ) {
+    vrequest = string( everythingrray[0], "?" );
+    bogus_vrequest = string( everythingrray[0], "?", rand() );
+    pseudocount = 0;
+    foreach rrayval( everythingrray ) {
+      if( pseudocount >= 2 ) {
+        if( "]" >< rrayval ) {
+          pseudocount--;
+          tmpf = ereg_replace( pattern:"\[|\]", string:rrayval, replace:"" );
+          data[pseudocount] = tmpf;
+          vrequest = string( vrequest, "=" ,tmpf );
+        } else {
+          param[pseudocount] = rrayval;
+            if( pseudocount == 2 ) {
+            vrequest = string( vrequest, rrayval );
+          } else {
+            vrequest = string( vrequest, "&", rrayval );
+          }
+        }
       } else {
         param[pseudocount] = rrayval;
-        if( pseudocount == 2 ) {
-          vrequest = string( vrequest, rrayval );
-        } else {
-          vrequest = string( vrequest, "&", rrayval );
-        }
       }
-    } else {
-      param[pseudocount] = rrayval;
-    }
-    pseudocount++;
-  }
-}
-
-for( z = 2; param[z]; z++ ) {
-
-  blind = '';
-  url = vrequest;
-  req = http_get( item:url, port:port );
-  res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-
-  if( ( res == NULL ) || ( ! egrep( string:res, pattern:"^HTTP/1\.[01] (200|302)" ) ) ) {
-    failedReqs++;
-    if( failedReqs >= maxFailedReqs ) {
-      exit( 0 );
-    }
-    continue;
-  }
-
-  if( "Content-Length: 0" >< res ) continue; # there is no body to compare later. dell omsa fp workaround
-
-  res_saved = strstr( res, string( "\r\n\r\n" ) );
-  req = http_get( item:bogus_vrequest, port:port );
-  bres = http_keepalive_send_recv( port:port, data:req );
-
-  if( egrep( string:bres, pattern:"^HTTP/1\.[01] 200" ) ) {
-    continue;
-  }
-
-  for( i = 0; posreply[i]; i ++ ) {
-    if( posreply[i] >< res ) {
-      exit( 0 );
+      pseudocount++;
     }
   }
 
-  for( poo = 0; poison[poo]; poo++ ) {
+  for( z = 2; param[z]; z++ ) {
 
-    doblind = 0;
-    qa = '';
-    url = string( param[0], "?" );
-    blind = string( param[0], "?" );
-    for( i = 2; param[i]; i++ ) {
-      if( i == z ) {
-        if( blinder[poo] ) {
-          doblind++;
-          qa = string( blind, param[i], "=", data[i], "'" );
-          blind = string(blind,param[i],"=",data[i], blinder[poo]);
-        }
-
-        if (data[i]) {
-          url = string( url, param[i], "=", poison[poo] );
-        } else {
-          url = string( url, param[i], "=", poison[poo] );
-        }
-      } else {
-        if( blinder[poo] ) {
-          qa = string( qa, param[i], "=", data[i] );
-          blind = string( blind, param[i], "=", data[i] );
-        }
-
-        if( data[i] ) {
-          url = string( url, param[i], "=", data[i] );
-        } else {
-          url = string( url, param[i], "=" );
-        }
-      }
-
-      if( param[i + 1] ) {
-        url = string( url, "&" );
-        blind = string( blind, "&" );
-        qa = string( qa, "&" );
-      }
-    }
-
+    blind = '';
+    url = vrequest;
     req = http_get( item:url, port:port );
-    inbuff = http_keepalive_send_recv( port:port, data:req );
+    res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-    if( inbuff == NULL ) {
+    if( ( isnull( res ) ) || ( ! egrep( string:res, pattern:"^HTTP/1\.[01] (200|302)" ) ) ) {
       failedReqs++;
       if( failedReqs >= maxFailedReqs ) {
         exit( 0 );
@@ -268,55 +202,65 @@ for( z = 2; param[z]; z++ ) {
       continue;
     }
 
-    if( "Content-Length: 0" >< inbuff ) continue;
+    if( "Content-Length: 0" >< res ) continue; # there is no body to compare later. dell omsa fp workaround
 
-    for( mu = 0; posreply[mu]; mu++ ) {
-      if( posreply[mu] >< inbuff ) {
-        unsafe_urls = string( unsafe_urls, report_vuln_url( port:port, url:url, url_only:TRUE ), ":", posreply[mu],  "\n" );
-        mywarningcount++;
+    res_saved = strstr( res, string( "\r\n\r\n" ) );
+    req = http_get( item:bogus_vrequest, port:port );
+    bres = http_keepalive_send_recv( port:port, data:req );
+
+    if( egrep( string:bres, pattern:"^HTTP/1\.[01] 200" ) ) {
+      continue;
+    }
+
+    for( i = 0; posreply[i]; i ++ ) {
+      if( posreply[i] >< res ) {
+        exit( 0 );
       }
     }
 
-    if( doblind > 0 ) {
+    for( poo = 0; poison[poo]; poo++ ) {
 
-      req_blind = http_get( item:blind, port:port );
-      inbuff = http_keepalive_send_recv( port:port, data:req_blind );
+      doblind = 0;
+      qa = '';
+      url = string( param[0], "?" );
+      blind = string( param[0], "?" );
+      for( i = 2; param[i]; i++ ) {
+        if( i == z ) {
+          if( blinder[poo] ) {
+            doblind++;
+            qa = string( blind, param[i], "=", data[i], "'" );
+            blind = string(blind,param[i],"=",data[i], blinder[poo]);
+          }
 
-      if( inbuff == NULL ) {
-        failedReqs++;
-        if( failedReqs >= maxFailedReqs ) {
-          exit( 0 );
+          if (data[i]) {
+            url = string( url, param[i], "=", poison[poo] );
+          } else {
+            url = string( url, param[i], "=", poison[poo] );
+          }
+        } else {
+          if( blinder[poo] ) {
+            qa = string( qa, param[i], "=", data[i] );
+            blind = string( blind, param[i], "=", data[i] );
+          }
+
+          if( data[i] ) {
+            url = string( url, param[i], "=", data[i] );
+          } else {
+            url = string( url, param[i], "=" );
+          }
         }
-        continue;
+
+        if( param[i + 1] ) {
+          url = string( url, "&" );
+          blind = string( blind, "&" );
+          qa = string( qa, "&" );
+        }
       }
 
-      if( "Content-Length: 0" >< inbuff ) continue;
+      req = http_get( item:url, port:port );
+      inbuff = http_keepalive_send_recv( port:port, data:req );
 
-      buff_body = strstr( inbuff, string( "\r\n\r\n" ) );
-      if( buff_body == res_saved ) {
-        req_qa = http_get( item:qa, port:port );
-        inbuff = http_keepalive_send_recv( port:port, data:req_qa );
-        qa_body = strstr( inbuff, string( "\r\n\r\n" ) );
-
-        if( "Content-Length: 0" >< inbuff ) continue;
-
-        if( qa_body != res_saved ) {
-          blind_urls = string( blind_urls, report_vuln_url( port:port, url:blind, url_only:TRUE ), "\n" );
-          blindwarningcount++;
-        }
-      }
-    }
-
-    if( safe_checks() == 0 ) {
-
-      # create a POST req
-      tmppost = split( url, sep:"?", keep:FALSE );
-      mypostdata = tmppost[1];
-      postreq = http_post( item:param[0], port:port, data:mypostdata );
-
-      # Test the POST req
-      inbuff = http_keepalive_send_recv( port:port, data:postreq );
-      if( inbuff == NULL ) {
+      if( isnull( inbuff ) ) {
         failedReqs++;
         if( failedReqs >= maxFailedReqs ) {
           exit( 0 );
@@ -328,20 +272,17 @@ for( z = 2; param[z]; z++ ) {
 
       for( mu = 0; posreply[mu]; mu++ ) {
         if( posreply[mu] >< inbuff ) {
-          unsafe_urls = string( unsafe_urls, report_vuln_url( port:port, url:url, url_only:TRUE ), ":", posreply[mu], "\n" );
+          unsafe_urls = string( unsafe_urls, report_vuln_url( port:port, url:url, url_only:TRUE ), ":", posreply[mu],  "\n" );
           mywarningcount++;
         }
       }
 
       if( doblind > 0 ) {
 
-        # create a blind POST req
-        tmppost = split( blind, sep:"?", keep:FALSE );
-        mypostdata = tmppost[1];
-        postreq = http_post( item:param[0], port:port, data:mypostdata );
+        req_blind = http_get( item:blind, port:port );
+        inbuff = http_keepalive_send_recv( port:port, data:req_blind );
 
-        inbuff = http_keepalive_send_recv( port:port, data:postreq );
-        if( inbuff == NULL ) {
+        if( isnull( inbuff ) ) {
           failedReqs++;
           if( failedReqs >= maxFailedReqs ) {
             exit( 0 );
@@ -352,13 +293,12 @@ for( z = 2; param[z]; z++ ) {
         if( "Content-Length: 0" >< inbuff ) continue;
 
         buff_body = strstr( inbuff, string( "\r\n\r\n" ) );
-
         if( buff_body == res_saved ) {
-          qapost = split( blind, sep:"?", keep:FALSE );
-          qapostdata = tmppost[1];
-          qareq = http_post( item:param[0], port:port, data:qapostdata );
-          qabuff = http_keepalive_send_recv( port:port, data:qareq );
-          qa_body = strstr( qabuff, string( "\r\n\r\n" ) );
+          req_qa = http_get( item:qa, port:port );
+          inbuff = http_keepalive_send_recv( port:port, data:req_qa );
+          qa_body = strstr( inbuff, string( "\r\n\r\n" ) );
+
+          if( "Content-Length: 0" >< inbuff ) continue;
 
           if( qa_body != res_saved ) {
             blind_urls = string( blind_urls, report_vuln_url( port:port, url:blind, url_only:TRUE ), "\n" );
@@ -366,8 +306,69 @@ for( z = 2; param[z]; z++ ) {
           }
         }
       }
+
+      if( safe_checks() == 0 ) {
+
+        # create a POST req
+        tmppost = split( url, sep:"?", keep:FALSE );
+        mypostdata = tmppost[1];
+        postreq = http_post( item:param[0], port:port, data:mypostdata );
+
+        # Test the POST req
+        inbuff = http_keepalive_send_recv( port:port, data:postreq );
+        if( isnull( inbuff ) ) {
+          failedReqs++;
+          if( failedReqs >= maxFailedReqs ) {
+            exit( 0 );
+          }
+          continue;
+        }
+
+        if( "Content-Length: 0" >< inbuff ) continue;
+
+        for( mu = 0; posreply[mu]; mu++ ) {
+          if( posreply[mu] >< inbuff ) {
+            unsafe_urls = string( unsafe_urls, report_vuln_url( port:port, url:url, url_only:TRUE ), ":", posreply[mu], "\n" );
+            mywarningcount++;
+          }
+        }
+
+        if( doblind > 0 ) {
+
+          # create a blind POST req
+          tmppost = split( blind, sep:"?", keep:FALSE );
+          mypostdata = tmppost[1];
+          postreq = http_post( item:param[0], port:port, data:mypostdata );
+
+          inbuff = http_keepalive_send_recv( port:port, data:postreq );
+          if( isnull( inbuff ) ) {
+            failedReqs++;
+            if( failedReqs >= maxFailedReqs ) {
+              exit( 0 );
+            }
+            continue;
+          }
+
+          if( "Content-Length: 0" >< inbuff ) continue;
+
+          buff_body = strstr( inbuff, string( "\r\n\r\n" ) );
+
+          if( buff_body == res_saved ) {
+            qapost = split( blind, sep:"?", keep:FALSE );
+            qapostdata = tmppost[1];
+            qareq = http_post( item:param[0], port:port, data:qapostdata );
+            qabuff = http_keepalive_send_recv( port:port, data:qareq );
+            qa_body = strstr( qabuff, string( "\r\n\r\n" ) );
+
+            if( qa_body != res_saved ) {
+              blind_urls = string( blind_urls, report_vuln_url( port:port, url:blind, url_only:TRUE ), "\n" );
+              blindwarningcount++;
+            }
+          }
+        }
+      }
+      # end the non-safe check
     }
-    # end the non-safe check
   }
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3686_1.nasl 10222 2018-06-15 14:05:12Z cfischer $
+# $Id: gb_ubuntu_USN_3686_1.nasl 10743 2018-08-03 02:50:31Z ckuersteiner $
 #
 # Ubuntu Update for file USN-3686-1
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843561");
-  script_version("$Revision: 10222 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 16:05:12 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 10743 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-03 04:50:31 +0200 (Fri, 03 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-15 05:47:38 +0200 (Fri, 15 Jun 2018)");
   script_cve_id("CVE-2014-9620", "CVE-2014-9653", "CVE-2015-8865", "CVE-2018-10360",
                 "CVE-2014-9621");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for file USN-3686-1");
   script_tag(name:"summary", value:"Check the version of file");

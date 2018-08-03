@@ -1,9 +1,10 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_uac_uiaccess_apps.nasl 10167 2018-06-12 13:43:58Z emoss $
+# $Id: win_uac_uiaccess_apps.nasl 10740 2018-08-02 14:13:50Z emoss $
 #
-# Check value for User Account Control: Allow UIAccess applications to prompt for elevation without using the secure desktop
-# 
+# Check value for User Account Control: Allow UIAccess applications to prompt
+# for elevation without using the secure desktop
+#
 # Authors:
 # Emanuel Moss <emanuel.moss@greenbone.net>
 #
@@ -27,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109242");
-  script_version("$Revision: 10167 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-12 15:43:58 +0200 (Tue, 12 Jun 2018) $");
+  script_version("$Revision: 10740 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 16:13:50 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-12 14:34:04 +0200 (Tue, 12 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,13 +39,14 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_add_preference(name:"Value", type:"radio", value:"0;1");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'User Account Control: Allow UIAccess applications to prompt for elevation 
+  script_tag(name: "summary", value: "This test checks the setting for policy
+'User Account Control: Allow UIAccess applications to prompt for elevation
 without using the secure desktop' on Windows hosts (at least Windows 7).
 
-The policy setting controls whether User Interface Accessibility (UIAccess or 
-UIA) programs can automatically disable the secure desktop for elevation prompts 
+The policy setting controls whether User Interface Accessibility (UIAccess or
+UIA) programs can automatically disable the secure desktop for elevation prompts
 that are used by a standard user.");
   exit(0);
 }
@@ -59,8 +61,8 @@ to query the registry.');
 }
 
 if(get_kb_item("SMB/WindowsVersion") < "6.1"){
-  policy_logging(text:'Host is not at least a Microsoft Windows 7 system. 
-Older versions of Windows are not supported any more. Please update the 
+  policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
+Older versions of Windows are not supported any more. Please update the
 Operating System.');
   exit(0);
 }
@@ -71,14 +73,25 @@ Computer Configuration/Windows Settings/Security Settings/Local Policies/Securit
 type = 'HKLM';
 key = 'Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System';
 item = 'EnableUIADesktopToggle';
+default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
 if(!value){
-  value = 'none';
+  val = '0';
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+if(int(value) == int(default)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
+policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 policy_control_name(title:title);
 
 exit(0);

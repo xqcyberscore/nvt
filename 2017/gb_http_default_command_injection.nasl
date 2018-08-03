@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_default_command_injection.nasl 8106 2017-12-13 14:42:54Z cfischer $
+# $Id: gb_http_default_command_injection.nasl 10736 2018-08-02 11:55:29Z cfischer $
 #
 # Generic HTTP Command Injection Check
 #
@@ -29,36 +29,36 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112054");
-  script_version("$Revision: 8106 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 15:42:54 +0100 (Wed, 13 Dec 2017) $");
+  script_version("$Revision: 10736 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 13:55:29 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-09-27 09:42:21 +0200 (Wed, 27 Sep 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-
-  script_tag(name:"qod_type", value:"exploit");
-
-  script_tag(name:"solution_type", value:"VendorFix");
-
   script_name("Generic HTTP Command Injection Check");
-
   script_category(ACT_ATTACK);
-
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Web application abuses");
-  script_dependencies("http_version.nasl", "find_service.nasl", "webmirror.nasl", "os_detection.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning", "global_settings/disable_generic_webapp_scanning");
 
+  script_xref(name:"URL", value:"https://www.owasp.org/index.php/Code_Injection");
+
   script_tag(name:"summary", value:"The script checks for generic code vulnerabilities in web pages.
 
-           NOTE: Please enable 'Enable generic web application scanning' within the NVT 'Global variable settings'
-           (OID: 1.3.6.1.4.1.25623.1.0.12288) if you want to run this script.");
+  NOTE: Please enable 'Enable generic web application scanning' within the NVT 'Global variable settings'
+  (OID: 1.3.6.1.4.1.25623.1.0.12288) if you want to run this script.");
 
-  script_tag(name:"vuldetect", value:"Tries to inject commands into the machine via GET parameter. If successful, the vulnerability is confirmed.");
-  script_tag(name:"impact", value:"Successful exploitation would allow an attacker to execute arbitrary commands on the host machine.");
+  script_tag(name:"vuldetect", value:"Tries to inject commands into the machine via GET parameter. If successful,
+  the vulnerability is confirmed.");
+
+  script_tag(name:"impact", value:"Successful exploitation would allow an attacker to execute arbitrary commands
+  on the host machine.");
+
   script_tag(name:"solution", value:"Please contact the specific vendor for a solution.");
 
-  script_xref(name:"URL", value:"https://www.owasp.org/index.php/Code_Injection");
+  script_tag(name:"qod_type", value:"exploit");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
@@ -74,7 +74,9 @@ if( get_kb_item( "Settings/disable_cgi_scanning" ) ||
   exit( 0 );
 
 port = get_http_port(default:80);
-cgis = get_kb_list("www/" + port + "/cgis");
+host = http_host_name(dont_add_port:TRUE);
+
+cgis = get_http_kb_cgis(port:port, host:host);
 if(!cgis) exit(0);
 
 cmds = exploit_commands();

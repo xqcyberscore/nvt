@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: brio_dir_traversal.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: brio_dir_traversal.nasl 10741 2018-08-02 14:44:11Z cfischer $
 #
 # Brio Unix Directory Traversal
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15849");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 10741 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 16:44:11 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("Brio Unix Directory Traversal");
   script_tag(name:"cvss_base", value:"5.0");
@@ -42,21 +42,18 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_solution = "Check www.brio.com for updated software.";
+  script_tag(name:"summary", value:"The Brio web application interface has a directory traversal
+  in the component 'odscgi'.");
 
-  tag_summary = "The Brio web application interface has a directory traversal 
-  in the component 'odscgi'.";
+  script_tag(name:"solution", value:"Check www.brio.com for updated software.");
 
-  tag_impact = "An attacker may exploit this flaw to read
+  script_tag(name:"impact", value:"An attacker may exploit this flaw to read
   arbitrary files on the remote host by submitting a URL like :
 
-  http://www.example.com/ods-cgi/odscgi?HTMLFile=../../../../../../etc/passwd";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
+  http://www.example.com/ods-cgi/odscgi?HTMLFile=../../../../../../etc/passwd");
 
   script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
@@ -71,6 +68,7 @@ files = traversal_files();
 foreach file( keys( files ) ) {
 
   foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
+    if( dir == "/" ) dir = "";
     url = dir + "/ods-cgi/odscgi?HTMLFile=../../../../../../../../../../../../../../../" + files[file];
     if( http_vuln_check( port:port, url:url, pattern:file ) ) {
       report = report_vuln_url( port:port, url:url );

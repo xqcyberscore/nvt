@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_classloader_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: gb_apache_struts_classloader_vuln.nasl 10736 2018-08-02 11:55:29Z cfischer $
 #
 # Apache Struts ClassLoader Manipulation Vulnerabilities
 #
@@ -32,10 +32,10 @@ if(description)
   script_name("Apache Struts ClassLoader Manipulation Vulnerabilities");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 6724 $");
+  script_version("$Revision: 10736 $");
   script_bugtraq_id(65999, 67064);
   script_cve_id("CVE-2014-0094", "CVE-2014-0112");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 13:55:29 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-05-14 13:53:39 +0700 (Wed, 14 May 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -51,11 +51,16 @@ if(description)
 
   script_tag(name:"summary", value:"ClassLoader Manipulation allows remote attackers to to execute
   arbitrary Java code");
+
   script_tag(name:"vuldetect", value:"Check installed version or check the found apps.");
+
   script_tag(name:"solution", value:"Upgrade Apache Struts to 2.3.16.2 or higher.");
+
   script_tag(name:"insight", value:"The ParametersInterceptor allows remote attackers to manipulate
   the ClassLoader via the class parameter, which is passed to the getClass method.");
+
   script_tag(name:"affected", value:"Apache Struts 2.0.0 to 2.3.16.1");
+
   script_tag(name:"impact", value:"A remote attacker can execute arbitrary Java code via crafted
   parameters");
 
@@ -84,22 +89,24 @@ if (port = get_app_port(cpe:CPE)) {
 }
 
 port = get_http_port(default:80);
+host = http_host_name(dont_add_port:TRUE);
 
 # See if we have some apps deployed to check
-if(!app = get_kb_item("www/" + port + "/cgis")) exit(0);
+if(!apps = get_http_kb_cgis(port:port, host:host)) exit(0);
 
-# Check with the .action files
-if (".action" >< app) {
-  end = strstr(app, " ");
-  dir = app - end;
-  url = dir + '?Class.classLoader.resources.dirContext.cacheObjectMaxSize=x';
-  req = http_get(item:url, port:port);
-  res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-    
-  if ("No result defined for action" >< res) {
-    report = report_vuln_url(port:port, url:url);
-    security_message(port:port, data:report);
-    exit(0);
+foreach app (apps) {
+  if (".action" >< app) {
+    end = strstr(app, " ");
+    dir = app - end;
+    url = dir + '?Class.classLoader.resources.dirContext.cacheObjectMaxSize=x';
+    req = http_get(item:url, port:port);
+    res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
+
+    if ("No result defined for action" >< res) {
+      report = report_vuln_url(port:port, url:url);
+      security_message(port:port, data:report);
+      exit(0);
+    }
   }
 }
 

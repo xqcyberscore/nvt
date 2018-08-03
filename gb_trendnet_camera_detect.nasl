@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendnet_camera_detect.nasl 10613 2018-07-25 12:36:04Z asteins $
+# $Id: gb_trendnet_camera_detect.nasl 10735 2018-08-02 10:50:00Z asteins $
 #
 # Trendnet Internet Camera Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112337");
-  script_version("$Revision: 10613 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:36:04 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10735 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 12:50:00 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-25 13:49:11 +0200 (Wed, 25 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,14 +65,14 @@ port = get_http_port(default: 80);
 req = http_get(port: port, item: "/");
 res = http_keepalive_send_recv(port: port, data: req);
 
-if('WWW-Authenticate: Basic realm="netcam' >< res) {
+if('[Ww]{3}-[Aa]uthenticate:[ ]?[Bb]asic[ ]?[Rr]ealm="[Nn]etcam' >< res) {
   set_kb_item(name: "trendnet/ip_camera/detected", value: TRUE);
   set_kb_item(name: "trendnet/ip_camera/http_port", value: port);
 
   version = "unknown";
 
   register_and_report_cpe(app: "Trendnet IP Camera", ver: version, base: CPE, expr: "([^0-9.]+)", insloc: "/", regPort: port);
-
+  exit(0);
 }
 
 exit(0);

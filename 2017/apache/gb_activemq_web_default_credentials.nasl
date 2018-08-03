@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_activemq_web_default_credentials.nasl 7428 2017-10-13 11:45:53Z cfischer $
+# $Id: gb_activemq_web_default_credentials.nasl 10726 2018-08-02 07:46:22Z cfischer $
 #
 # Apache ActiveMQ Web Console Default / No Credentials
 #
@@ -30,9 +30,9 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108253");
-  script_version("$Revision: 7428 $");
+  script_version("$Revision: 10726 $");
   script_name("Apache ActiveMQ Web Console Default / No Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 13:45:53 +0200 (Fri, 13 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 09:46:22 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-13 10:31:0 +0200 (Fri, 13 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -70,9 +70,11 @@ get_app_location( cpe:CPE, port:port, nofork:TRUE ); # To have a reference to th
 vuln = FALSE;
 report = "It was possible to access the Apache ActiveMQ Web Console at:";
 
-# Set by gb_apache_activemq_detect.nasl
-unprotectedUrls = get_kb_list( "www/" + port + "/ActiveMQ/Web/unprotected" );
-authRequireUrls = get_kb_list( "www/" + port + "/ActiveMQ/Web/auth_required" );
+host = http_host_name( dont_add_port:TRUE );
+
+# nb: Set by gb_apache_activemq_detect.nasl
+unprotectedUrls = get_kb_list( "www/" + host + "/" + port + "/ActiveMQ/Web/unprotected" );
+authRequireUrls = get_kb_list( "www/" + host + "/" + port + "/ActiveMQ/Web/auth_required" );
 
 if( ! isnull( unprotectedUrls) ) {
 

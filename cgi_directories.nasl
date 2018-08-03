@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 10709 2018-08-01 12:30:27Z cfischer $
+# $Id: cgi_directories.nasl 10736 2018-08-02 11:55:29Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 10709 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 14:30:27 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 10736 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 13:55:29 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -97,7 +97,7 @@ host = http_host_name( dont_add_port:TRUE );
 cgiDirs          = cgi_dirs( port:port, host:host );
 httpVersion      = get_kb_item( "http/" + port );
 authRequireDirs  = get_http_kb_auth_required( port:port, host:host );
-cgiList          = get_kb_list( "www/" + host + "/" + port + "/content/cgis/*" );
+cgiList          = get_kb_list( "www/" + host + "/" + port + "/content/cgis/cgis_reporting/*" );
 excludedCgiList  = get_kb_list( "www/" + host + "/" + port + "/content/excluded_cgis/*" );
 dirIndexList     = get_kb_list( "www/" + host + "/" + port + "/content/dir_index" );
 phpinfoList      = get_kb_list( "www/" + host + "/" + port + "/content/phpinfo_script" );

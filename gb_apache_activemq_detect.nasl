@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_detect.nasl 10712 2018-08-01 14:15:12Z cfischer $
+# $Id: gb_apache_activemq_detect.nasl 10726 2018-08-02 07:46:22Z cfischer $
 #
 # Apache ActiveMQ Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105330");
-  script_version("$Revision: 10712 $");
+  script_version("$Revision: 10726 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 16:15:12 +0200 (Wed, 01 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 09:46:22 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-08-24 12:33:07 +0200 (Mon, 24 Aug 2015)");
   script_name("Apache ActiveMQ Detection");
   script_category(ACT_GATHER_INFO);
@@ -146,11 +146,11 @@ if( egrep( pattern:"(Apache )?ActiveMQ( Console)?</title>", string:buf, icase:TR
   if( 'WWW-Authenticate: basic realm="ActiveMQRealm"' >< buf ) {
     set_kb_item( name:"www/content/auth_required", value:TRUE );
     set_kb_item( name:"www/" + host + "/" + port + "/content/auth_required", value:url );
-    set_kb_item( name:"www/" + port + "/ActiveMQ/Web/auth_required", value:url );
+    set_kb_item( name:"www/" + host + "/" + port + "/ActiveMQ/Web/auth_required", value:url );
     set_kb_item( name:"ActiveMQ/Web/auth_required", value:TRUE );
     set_kb_item( name:"ActiveMQ/Web/auth_or_unprotected", value:TRUE );
   } else if( egrep( pattern:"(Apache )?ActiveMQ( Console)?</title>", string:buf, icase:TRUE ) ) {
-    set_kb_item( name:"www/" + port + "/ActiveMQ/Web/unprotected", value:url );
+    set_kb_item( name:"www/" + host + "/" + port + "/ActiveMQ/Web/unprotected", value:url );
     set_kb_item( name:"ActiveMQ/Web/unprotected", value:TRUE );
     set_kb_item( name:"ActiveMQ/Web/auth_or_unprotected", value:TRUE );
   }

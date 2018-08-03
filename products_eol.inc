@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 10332 2018-06-26 13:42:18Z asteins $
+# $Id: products_eol.inc 10734 2018-08-02 10:35:39Z asteins $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10332 $
+# $Revision: 10734 $
 #
 ###############################################################################
 
@@ -161,7 +161,7 @@ eol_cpes[ 'cpe:/a:mediawiki:mediawiki' ] = make_array(
 # https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=exchange%20server&Filter=FilterNO
 eol_cpes[ 'cpe:/a:microsoft:exchange_server' ] = make_array(
   'versions',      '2013sp3:2017-10-01;2013sp2:2017-01-01;2013sp1:2017-01-01;2013:2017-01-01;2007:2017-01-01;5.5:2010-01-01',
-  'version_regex', '^([0-9.]+)(sp[0-9])?'
+  'version_regex', '^([0-9]+)\\.?(sp[0-9])?'
 );
 
 # IIS EOL dates are mostly coupled to the EOL of the OS, see os_eol.inc
@@ -173,13 +173,13 @@ eol_cpes[ 'cpe:/a:microsoft:iis' ] = make_array(
 # https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=sharepoint%20foundation&Filter=FilterNO
 eol_cpes[ 'cpe:/a:microsoft:sharepoint_foundation' ] = make_array(
   'versions',      '2013sp1:2023-04-11;2013:2015-04-14;2010sp2:2020-10-13;2010sp1:2014-10-14;2010:2012-07-10',
-  'version_regex', '^([0-9.]+)(sp[0-9])?'
+  'version_regex', '^([0-9]+)\\.?(sp[0-9])?'
 );
 
 # https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=sharepoint%20server&Filter=FilterNO
 eol_cpes[ 'cpe:/a:microsoft:sharepoint_server' ] = make_array(
   'versions',      '2016:2026-07-14;2013sp1:2023-04-11;2013:2015-04-14;2010sp2:2020-10-13;2010sp1:2014-10-14;2010:2012-07-10;2007sp3:2017-10-10;2007sp2:2013-01-08;2007sp1:2010-07-13;2007:2009-01-13;2003:2014-04-08',
-  'version_regex', '^([0-9.]+)(sp[0-9])?'
+  'version_regex', '^([0-9.+)\\.?(sp[0-9])?'
 );
 
 # https://support.microsoft.com/en-us/lifecycle/search?sort=PN&alpha=sql%20server&Filter=FilterNO
@@ -196,6 +196,61 @@ eol_cpes[ 'cpe:/a:microsoft:sql_server' ] = make_array(
 eol_cpes[ 'cpe:/a:mysql:mysql' ] = make_array(
   'versions',      '5.1:2013-12-04;5.0:2012-01-09;4.1:2009-12-31;4.0:2008-12-31;3.2:2006-08-01',
   'version_regex', '^([0-9]+\\.[0-9]+)'
+);
+
+# https://www.microfocus.com/lifecycle/
+eol_cpes[ 'cpe:/a:netiq:access_manager' ] = make_array(
+  'versions',      '4.4:2019-08-31;4.3:2018-09-30;4.2:2017-11-30;4.1:2016-11-30;4.0:2016-05-31',
+  'version_regex', '^([0-9]+\\.[0-9]+)'
+);
+
+# https://www.microfocus.com/lifecycle/
+eol_cpes[ 'cpe:/a:netiq:edirectory' ] = make_array(
+  'versions',      '9.1:2020-02-28;9.0:2019-02-01;8.8:2017-10-31',
+  'version_regex', '^([0-9]+\\.[0-9]+)'
+);
+
+# https://www.microfocus.com/lifecycle/
+eol_cpes[ 'cpe:/a:netiq:imanager' ] = make_array(
+  'versions',      '3.0:2020-02-28;2.7:2017-10-31',
+  'version_regex', '^([0-9]+\\.[0-9]+)'
+);
+
+# https://www.microfocus.com/lifecycle/
+eol_cpes[ 'cpe:/a:netiq:sentinel' ] = make_array(
+  'versions',      '8.2:2019-11-30;8.1:2019-07-31;8.0:2018-06-30;7.4:2017-11-30;7.3:2016-12-31;7.2:2016-02-29;7.1:2015-07-31;7.0:2014-06-30',
+  'version_regex', '^([0-9]+\\.[0-9]+)'
+);
+
+# https://www.microfocus.com/lifecycle/
+eol_cpes[ 'cpe:/a:novell:edirectory' ] = make_array(
+  'versions',      '9.1:2020-02-28;9.0:2019-02-01;8.8:2017-10-31',
+  'version_regex', '^([0-9]+\\.[0-9]+)'
+);
+
+# https://www.microfocus.com/lifecycle/
+# nb: versions 2014 & 2012 have been reduced to 14 & 12
+eol_cpes[ 'cpe:/a:novell:groupwise' ] = make_array(
+  'versions',      '18:2020-12-11;14:2018-06-30;12:2015-06-30;8:2014-06-30;7:2010-04-02',
+  'version_regex', '^([0-9]+)'
+);
+
+# https://www.microfocus.com/lifecycle/
+eol_cpes[ 'cpe:/a:novell:imanager' ] = make_array(
+  'versions',      '3.0:2020-02-28;2.7:2017-10-31',
+  'version_regex', '^([0-9]+\\.[0-9]+)'
+);
+
+# https://www.microfocus.com/lifecycle/
+eol_cpes[ 'cpe:/a:novell:open_enterprise_server' ] = make_array(
+  'versions',      '2018:2022-11-28;2015.sp1:2019-03-31;2015:2017-06-14;11sp3:2017-06-13;11sp2:2017-06-13;11sp1:2015-01-29:11:2013-08-28;2sp3:2012-12-22;2sp2:2009-11-11;2sp1:2008-12-01',
+  'version_regex', '^([0-9]+)\\.?([sp0-9])?'
+);
+
+# https://www.microfocus.com/lifecycle/
+eol_cpes[ 'cpe:/a:novell:service_desk' ] = make_array(
+  'versions',      '7:2018-04-27',
+  'version_regex', '^([0-9]+)'
 );
 
 # https://www.openssl.org/policies/releasestrat.html

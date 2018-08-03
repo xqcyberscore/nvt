@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apache_mod_negotiation_info_disclosure.nasl 10709 2018-08-01 12:30:27Z cfischer $
+# $Id: sw_apache_mod_negotiation_info_disclosure.nasl 10724 2018-08-02 06:39:54Z cfischer $
 #
 # Apache mod_negotiation MultiViews Information Disclosure
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111109");
-  script_version("$Revision: 10709 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 14:30:27 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 10724 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 08:39:54 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-07-06 16:00:00 +0200 (Wed, 06 Jul 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -41,6 +41,8 @@ if(description)
   script_dependencies("secpod_apache_detect.nasl", "webmirror.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("apache/installed");
+
+  script_xref(name:"URL", value:"http://www.wisec.it/sectou.php?id=4698ebdc59d15");
 
   script_tag(name:"summary", value:"The script attempts to identify if the Apache webserver is prone to an
   information disclosure vulnerability.");
@@ -57,8 +59,6 @@ if(description)
   script_tag(name:"solution", value:"Disable the MultiViews directive within the webservers configuration or don't place
   files within the webservers directory which shouldn't be accessible/guessable by an attacker.");
 
-  script_xref(name:"URL", value:"http://www.wisec.it/sectou.php?id=4698ebdc59d15");
-
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); #The webserver might disclose only public available files
 
@@ -70,18 +70,20 @@ include("http_keepalive.inc");
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 ); # To have a reference to the Detection-NVT in the GSA
+if( ! dir = get_app_location( cpe:CPE, port:port, nofork:TRUE ) ) exit( 0 ); # To have a reference to the Detection-NVT in the GSA
 
 maxLimit = 10;
 curLimit = 0;
 vulnReport = make_list();
 vuln = FALSE;
 
+host = http_host_name( dont_add_port:TRUE );
+
 foreach ext( make_list( "php", "html", "txt" ) ) {
 
   if( curLimit <= maxLimit ) break;
 
-  urls = get_kb_list( "www/" + port + "/content/extensions/" + ext );
+  urls = get_http_kb_file_extensions( port:port, host:host, ext:ext );
   if( isnull( urls ) ) continue;
 
   foreach url( urls ) {

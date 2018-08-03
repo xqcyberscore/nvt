@@ -1,6 +1,6 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
+# $Id: gb_apache_ambari_detect.nasl 10728 2018-08-02 09:11:35Z jschulte $
 #
 # Apache Ambari Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808648");
-  script_version("$Revision: 8140 $");
+  script_version("$Revision: 10728 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 11:11:35 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-08-09 18:35:29 +0530 (Tue, 09 Aug 2016)");
   script_name("Apache Ambari Detection");
   script_category(ACT_GATHER_INFO);
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Apache Ambari.
 
   This script sends HTTP GET request and try to get the version of Apache
@@ -61,7 +61,7 @@ port = get_http_port( default:8080 );
 url = "/javascripts/app.js";
 
 req = http_get_req( port:port, url:url, add_headers:make_array( "Accept-Encoding", "gzip, deflate" ) );
-rcvRes = http_keepalive_send_recv( port:port, data:req ); 
+rcvRes = http_keepalive_send_recv( port:port, data:req );
 
 if( rcvRes =~ "HTTP/1\.[0-1] 200" && "Ambari" >< rcvRes && rcvRes =~ "Licensed under the Apache License" ) {
 

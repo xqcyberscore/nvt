@@ -1,9 +1,9 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_laps_passwd_age.nasl 10217 2018-06-15 11:38:58Z emoss $
+# $Id: win_laps_passwd_age.nasl 10740 2018-08-02 14:13:50Z emoss $
 #
 # Check value for Password Settings: Password Age (Days)
-# 
+#
 # Authors:
 # Emanuel Moss <emanuel.moss@greenbone.net>
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109303");
-  script_version("$Revision: 10217 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 13:38:58 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 10740 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 16:13:50 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-15 10:41:02 +0200 (Fri, 15 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,8 +38,9 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_add_preference(name:"Maximum", type:"entry", value:"30");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
+  script_tag(name: "summary", value: "This test checks the setting for policy
 'Password Settings: Password Age (Days)' on Windows hosts (at least Windows 7).
 
 This setting controls password parameters.
@@ -57,8 +58,8 @@ to query the registry.');
 }
 
 if(get_kb_item("SMB/WindowsVersion") < "6.1"){
-  policy_logging(text:'Host is not at least a Microsoft Windows 7 system. 
-Older versions of Microsoft Windows are not supported any more. 
+  policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
+Older versions of Microsoft Windows are not supported any more.
 Please update the system.');
   exit(0);
 }
@@ -69,14 +70,24 @@ Computer Configuration/Policies/Administrative Templates/LAPS/' + title;
 type = 'HKLM';
 key = 'Software\\Policies\\Microsoft Services\\AdmPwd';
 item = 'PasswordAgeDays';
+default = script_get_preference('Minimum');
 value = registry_get_dword(key:key, item:item, type:type);
 if(!value){
-  value = 'none';
+  value = '30';
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+if(int(value) <= int(default)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

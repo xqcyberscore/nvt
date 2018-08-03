@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_detect.nasl 10712 2018-08-01 14:15:12Z cfischer $
+# $Id: gb_nextcloud_detect.nasl 10726 2018-08-02 07:46:22Z cfischer $
 #
 # Nextcloud Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809413");
-  script_version("$Revision: 10712 $");
+  script_version("$Revision: 10726 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 16:15:12 +0200 (Wed, 01 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 09:46:22 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-09-27 12:37:02 +0530 (Tue, 27 Sep 2016)");
   script_name("Nextcloud Detection");
   script_category(ACT_GATHER_INFO);
@@ -122,7 +122,7 @@ foreach dir( make_list_unique( "/", "/nc", "/nextcloud", "/Nextcloud", "/cloud",
 
     if( ! isNC ) continue;
 
-    set_kb_item( name:"nextcloud/install/" + port + "/" + install, value:TRUE ); # For gb_owncloud_detect.nasl to avoid double detection of Nextcloud and ownCloud
+    set_kb_item( name:"nextcloud/install/" + host + "/" + port + "/" + install, value:TRUE ); # For gb_owncloud_detect.nasl to avoid double detection of Nextcloud and ownCloud
     set_kb_item( name:"owncloud_or_nextcloud/installed", value:TRUE );
     set_kb_item( name:"nextcloud/installed", value:TRUE );
 

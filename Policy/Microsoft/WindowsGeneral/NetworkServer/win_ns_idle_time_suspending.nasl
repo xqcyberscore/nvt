@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_ns_idle_time_suspending.nasl 10146 2018-06-08 15:21:07Z emoss $
+# $Id: win_ns_idle_time_suspending.nasl 10740 2018-08-02 14:13:50Z emoss $
 #
 # Check value for Microsoft network server: Amount of idle time required before suspending session
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109212");
-  script_version("$Revision: 10146 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 17:21:07 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 10740 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 16:13:50 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-08 15:44:47 +0200 (Fri, 08 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,13 +38,14 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_add_preference(name:"Maximum", type:"entry", value:"15");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'Microsoft network server: Amount of idle time required before suspending session' 
+  script_tag(name: "summary", value: "This test checks the setting for policy
+'Microsoft network server: Amount of idle time required before suspending session'
 on Windows hosts (at least Windows 7).
 
-The policy setting allows you to specify the amount of continuous idle time that 
-must pass in an SMB session before the session is suspended because of inactivity. 
+The policy setting allows you to specify the amount of continuous idle time that
+must pass in an SMB session before the session is suspended because of inactivity.
 If client activity resumes, the session is automatically reestablished.");
   exit(0);
 }
@@ -59,25 +60,39 @@ to query the registry.');
 }
 
 if(get_kb_item("SMB/WindowsVersion") < "6.1"){
-  policy_logging(text:'Host is not at least a Microsoft Windows 7 system. 
-Older versions of Windows are not supported any more. Please update the 
+  policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
+Older versions of Windows are not supported any more. Please update the
 Operating System.');
   exit(0);
 }
 
 title = 'Microsoft network server: Amount of idle time required before suspending session';
 fixtext = 'Set following UI path accordingly:
-Computer Configuration/Windows Settings/Security Settings/Local Policies/Security Options/Microsoft network server: Amount of idle time required before suspending session';
+Computer Configuration/Windows Settings/Security Settings/Local Policies/Security Options/' + title;
 type = 'HKLM';
 key = 'SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters';
 item = 'AutoDisconnect';
+default = script_get_preference('Maximum');
 value = registry_get_dword(key:key, item:item, type:type);
+
 if( value == ''){
-  value = 'none';
+  value = '-1';
 }
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+
+if(int(value) == 0 && int(default) == 0){
+  compliant = 'yes';
+}else if((int(value) <= int(default)) && (int(default) > 0)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

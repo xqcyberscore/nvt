@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808753");
-  script_version("$Revision: 10712 $");
+  script_version("$Revision: 10726 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 16:15:12 +0200 (Wed, 01 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 09:46:22 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-08-08 15:37:50 +0530 (Mon, 08 Aug 2016)");
   script_name("OrientDB Server Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -87,7 +87,7 @@ if (found) {
 
   if (dbs = eregmatch(pattern: '"databases":\\[(.*)\\]', string: buf)) {
     databases = split(dbs[1],sep:",", keep:FALSE);
-    set_kb_item(name: "OrientDB/" + port + "/databases", value: dbs[1]);
+    set_kb_item(name: "OrientDB/" + host + "/" + port + "/databases", value: dbs[1]);
 
     extra = 'The following databases were found on the OrientDB Server:\n';
 
@@ -104,7 +104,7 @@ if (found) {
       if ('"code": 401' >< res && '"reason": "Unauthorized"' >< res &&  '"content": "401 Unauthorized."' >< res) {
         set_kb_item( name: "www/" + host + "/" + port + "/content/auth_required", value: url);
         set_kb_item(name: "www/content/auth_required", value: TRUE);
-        set_kb_item(name: "www/" + port + "/OrientDB/auth_required", value: url);
+        set_kb_item(name: "www/" + host + "/" + port + "/OrientDB/auth_required", value: url);
         set_kb_item(name: "OrientDB/auth_required", value: TRUE );
       }
     }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_multiple_vuln.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_owncloud_multiple_vuln.nasl 10741 2018-08-02 14:44:11Z cfischer $
 #
 # ownCloud Cross-Site Scripting and File Upload Vulnerabilities
 #
@@ -26,58 +26,61 @@
 
 CPE = "cpe:/a:owncloud:owncloud";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803741");
-  script_version("$Revision: 9984 $");
-  script_cve_id("CVE-2012-5606", "CVE-2012-5607", "CVE-2012-5608", "CVE-2012-5609",
-                "CVE-2012-5610");
+  script_version("$Revision: 10741 $");
+  script_cve_id("CVE-2012-5606", "CVE-2012-5607", "CVE-2012-5608", "CVE-2012-5609", "CVE-2012-5610");
   script_bugtraq_id(56658, 56764);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 16:44:11 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 16:55:36 +0530 (Wed, 21 Aug 2013)");
   script_name("ownCloud Cross-Site Scripting and File Upload Vulnerabilities");
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
+  script_family("Web application abuses");
+  script_dependencies("gb_owncloud_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("owncloud/installed");
 
-  script_tag(name : "summary" , value : "This host is running ownCloud and is prone to cross-site scripting and file
-upload vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP request and check whether it is able to read
-cookie or not.");
-  script_tag(name : "solution" , value : "Upgrade to ownCloud 4.5.2 or later,
-For updates refer to http://owncloud.org");
-  script_tag(name : "insight" , value : "Multiple flaws are due to,
+  script_tag(name:"summary", value:"This host is running ownCloud and is prone to cross-site scripting and file
+  upload vulnerabilities.");
 
-- An input passed via the filename to apps/files_versions/js/versions.js
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP request and check whether it is able to read
+  cookie or not.");
+
+  script_tag(name:"solution", value:"Upgrade to ownCloud 4.5.2 or later,
+  For updates refer to http://owncloud.org");
+
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
+  - An input passed via the filename to apps/files_versions/js/versions.js
   and apps/files/js/filelist.js and event title to
   3rdparty/fullcalendar/js/fullcalendar.js is not properly sanitised before
   being returned to the user.
 
-- Certain unspecified input passed to apps/user_webdavauth/settings.php is
+  - Certain unspecified input passed to apps/user_webdavauth/settings.php is
   not properly sanitised before being returned to the user.
 
-- An error due to the lib/migrate.php and lib/filesystem.php scripts are not
+  - An error due to the lib/migrate.php and lib/filesystem.php scripts are not
   properly verifying uploaded files.");
-  script_tag(name : "affected" , value : "ownCloud versions before 4.0.9 and 4.5.0, 4.5.x before 4.5.2");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attacker to execute arbitrary HTML
-or script code or discloses sensitive information resulting in loss of
-confidentiality.
+
+  script_tag(name:"affected", value:"ownCloud versions before 4.0.9 and 4.5.0, 4.5.x before 4.5.2");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to execute arbitrary HTML
+  or script code or discloses sensitive information resulting in loss of confidentiality.
 
   Impact Level: Application");
 
-  script_xref(name : "URL" , value : "http://owncloud.org/changelog");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/51357");
-  script_xref(name : "URL" , value : "https://github.com/owncloud/core/commit/ce66759");
-  script_xref(name : "URL" , value : "https://github.com/owncloud/core/commit/e45f36c");
-  script_xref(name : "URL" , value : "https://github.com/owncloud/core/commit/e5f2d46");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2012/11/30/3");
-  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
-  script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
-  script_family("Web application abuses");
-  script_dependencies("gb_owncloud_detect.nasl");
-  script_mandatory_keys("owncloud/installed");
-  script_require_ports("Services/www", 80);
+  script_xref(name:"URL", value:"http://owncloud.org/changelog");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/51357");
+  script_xref(name:"URL", value:"https://github.com/owncloud/core/commit/ce66759");
+  script_xref(name:"URL", value:"https://github.com/owncloud/core/commit/e45f36c");
+  script_xref(name:"URL", value:"https://github.com/owncloud/core/commit/e5f2d46");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2012/11/30/3");
 
+  script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
@@ -87,21 +90,16 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-if(!port = get_app_port(cpe:CPE)){
-  exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+
+if( dir == "/" ) dir = "";
+url = dir + "/apps/files_versions/js/versions.js?filename='><script>alert(document.cookie)</script>";
+
+if( http_vuln_check( port:port, url:url, pattern:"><script>alert\(document\.cookie\)</script>", check_header:TRUE, extra_check:"revertFile" ) ) {
+  report = report_vuln_url( port:port, url:url );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-if(!dir = get_app_location(cpe:CPE, port:port)){
-  exit(0);
-}
-
-url = string(dir, "/apps/files_versions/js/versions.js?filename='",
-                  "><script>alert(document.cookie)</script>");
-
-if(http_vuln_check(port:port, url:url, pattern:"><script>alert" +
-                  "\(document\.cookie\)</script>",
-                   check_header:TRUE, extra_check:"revertFile"))
-{
-  security_message(port:port);
-  exit(0);
-}
+exit( 99 );

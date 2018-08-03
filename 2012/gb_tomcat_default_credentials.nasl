@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tomcat_default_credentials.nasl 4609 2016-11-24 06:23:38Z cfi $
+# $Id: gb_tomcat_default_credentials.nasl 10726 2018-08-02 07:46:22Z cfischer $
 #
 # Apache Tomcat Manager Remote Unauthorized Access Vulnerability
 #
@@ -30,9 +30,9 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103550");
-  script_version("$Revision: 4609 $");
+  script_version("$Revision: 10726 $");
   script_name("Apache Tomcat Manager Remote Unauthorized Access Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-24 07:23:38 +0100 (Thu, 24 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 09:46:22 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-08-22 17:19:15 +0200 (Wed, 22 Aug 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -85,17 +85,20 @@ credentials = make_list( "tomcat:tomcat",
                          "root:changethis",
                          "admin:changethis" );
 
-host = http_host_name( port:port );
+# nb: This is expected to be here, the port will be added with a later call...
+host = http_host_name( dont_add_port:TRUE );
 
 vuln = FALSE;
 report = "";
 
-# Set by gb_apache_tomcat_detect.nasl
-authRequireUrls = get_kb_list( "www/" + port + "/ApacheTomcat/auth_required" );
+# nb: Set by gb_apache_tomcat_detect.nasl
+authRequireUrls = get_kb_list( "www/" + host + "/" + port + "/ApacheTomcat/auth_required" );
 if( isnull ( authRequireUrls ) ) exit( 0 );
 
 # Sort to not report changes on delta reports if just the order is different
 authRequireUrls = sort( authRequireUrls );
+
+host = http_host_name( port:port );
 
 foreach url( authRequireUrls ) {
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_CVE_2017_12611.nasl 8106 2017-12-13 14:42:54Z cfischer $
+# $Id: gb_apache_struts_CVE_2017_12611.nasl 10736 2018-08-02 11:55:29Z cfischer $
 #
 # Apache Struts 'CVE-2017-12611' Remote Code Execution Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108243");
-  script_version("$Revision: 8106 $");
+  script_version("$Revision: 10736 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 15:42:54 +0100 (Wed, 13 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 13:55:29 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-09-11 12:00:00 +0200 (Mon, 11 Sep 2017)");
   script_cve_id("CVE-2017-12611");
   script_name("Apache Struts 'CVE-2017-12611' Remote Code Execution Vulnerability");
@@ -58,7 +58,7 @@ if(description)
 
   script_tag(name:"affected", value:"Struts 2.0.1 - Struts 2.3.33, Struts 2.5 - Struts 2.5.10.");
 
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"exploit");
 
   exit(0);
@@ -76,8 +76,9 @@ if( get_kb_item( "Settings/disable_cgi_scanning" ) ||
   exit( 0 );
 
 port = get_http_port( default:80 );
+host = http_host_name( dont_add_port:TRUE );
 
-cgis = get_kb_list( "www/" + port + "/cgis" );
+cgis = get_http_kb_cgis( port:port, host:host );
 if( ! cgis ) exit( 0 );
 
 foreach cgi( cgis ) {

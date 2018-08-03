@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brickcom_network_camera_detect.nasl 10644 2018-07-26 15:06:04Z asteins $
+# $Id: gb_brickcom_network_camera_detect.nasl 10742 2018-08-02 17:42:25Z cfischer $
 #
 # Brickcom Network Camera Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112339");
-  script_version("$Revision: 10644 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 17:06:04 +0200 (Thu, 26 Jul 2018) $");
+  script_version("$Revision: 10742 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 19:42:25 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-26 16:22:11 +0200 (Thu, 26 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -44,7 +44,7 @@ if(description)
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
-	script_exclude_keys("Settings/disable_cgi_scanning");
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"Detection of Brickcom Network Camera devices.");
 
@@ -62,17 +62,15 @@ CPE = "cpe:/h:brickcom:network_camera:";
 app = "Brickcom Network Camera";
 
 port = get_http_port(default: 80);
+res = http_get_cache(port: port, item: "/");
 
-req = http_get(port: port, item: "/");
-res = http_keepalive_send_recv(port: port, data: req);
-
-if('WWW-Authenticate: Basic realm="Brickcom' >< res) {
+if(res =~ '[Ww]{3}-[Aa]uthenticate:[ ]?[Bb]asic[ ]?[Rr]ealm="[Bb]rickcom') {
   set_kb_item(name: "brickcom/network_camera/detected", value: TRUE);
   set_kb_item(name: "brickcom/network_camera/http_port", value: port);
 
   version = "unknown";
 
-  model_match = eregmatch(pattern: 'WWW-Authenticate: Basic realm="Brickcom ([A-Za-z0-9-]+)"', string: res);
+  model_match = eregmatch(pattern: '[Ww]{3}-[Aa]uthenticate:[ ]?[Bb]asic[ ]?[Rr]ealm="[Bb]rickcom ([A-Za-z0-9-]+)"', string: res);
 
   if(model_match[1]) {
     model = model_match[1];
@@ -80,10 +78,7 @@ if('WWW-Authenticate: Basic realm="Brickcom' >< res) {
     app = "Brickcom " + model;
     set_kb_item(name: "brickcom/network_camera/model", value: model);
   }
-
   register_and_report_cpe(app: app, ver: version, base: CPE, expr: "([^0-9.]+)", insloc: "/", regPort: port);
-
-  exit(0);
 }
 
 exit(0);

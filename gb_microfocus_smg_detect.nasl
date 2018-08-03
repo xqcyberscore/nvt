@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microfocus_smg_detect.nasl 10427 2018-07-05 14:58:13Z ckuersteiner $
+# $Id: gb_microfocus_smg_detect.nasl 10734 2018-08-02 10:35:39Z asteins $
 #
 # Micro Focus Secure Messaging Gateway Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141275");
-  script_version("$Revision: 10427 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-07-05 16:58:13 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 10734 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-08-02 12:35:39 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name: "creation_date", value: "2018-07-05 13:21:23 +0200 (Thu, 05 Jul 2018)");
   script_tag(name: "cvss_base", value: "0.0");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,7 +41,7 @@ if(description)
   script_tag(name: "summary" , value: "Detection of Micro Focus Secure Messaging Gateway.
 
 The script sends a connection request to the server and attempts to detect Micro Focus Secure Messaging Gateway.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_coinhive_js_miner_detect.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_coinhive_js_miner_detect.nasl 10726 2018-08-02 07:46:22Z cfischer $
 #
 # Coinhive JavaScript Miner Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108334");
-  script_version("$Revision: 9758 $");
+  script_version("$Revision: 10726 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 09:46:22 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-02-12 15:41:40 +0100 (Mon, 12 Feb 2018)");
   script_name("Coinhive JavaScript Miner Detection");
   script_category(ACT_GATHER_INFO);
@@ -58,12 +58,12 @@ if(description)
 
   NOTE: There are various obfuscation technologies available to hide such JavaScript from the scanner, thus the mentioned
   'rudimentary checks' above.
-  
+
   NOTE2: No vulnerability is reported if the Coinhive JavaScript is loaded from the authedmine.com domain. This JavaScript
   code only run after an explicit opt-in / agreement from the user.");
 
   script_tag(name:"impact", value:"If the Coinhive JavaScript Miner is started without a configured OptOut possibility for the
-  client, unauthorized resouces of this client will be used.");
+  client, unauthorized resources of this client will be used.");
 
   script_tag(name:"solution", value:"Inspect all reported web pages / URLs if the Coinhive JavaScript Miner was
   deployed legitimately and remove it if not.");
@@ -77,10 +77,11 @@ if(description)
 include("http_func.inc");
 
 port = get_http_port( default:80 );
+host = http_host_name( dont_add_port:TRUE );
 
-chOptOutList     = get_kb_list( "www/" + port + "/content/coinhive_optout" );
-chNoOptOutList   = get_kb_list( "www/" + port + "/content/coinhive_nooptout" );
-chObfuscatedList = get_kb_list( "www/" + port + "/content/coinhive_obfuscated" );
+chOptOutList     = get_kb_list( "www/" + host + "/" + port + "/content/coinhive_optout" );
+chNoOptOutList   = get_kb_list( "www/" + host + "/" + port + "/content/coinhive_nooptout" );
+chObfuscatedList = get_kb_list( "www/" + host + "/" + port + "/content/coinhive_obfuscated" );
 
 if( ! isnull( chOptOutList ) || ! isnull( chNoOptOutList ) || ! isnull( chObfuscatedList ) ) {
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_default_dir_trav.nasl 10263 2018-06-20 04:40:23Z ckuersteiner $
+# $Id: gb_http_default_dir_trav.nasl 10736 2018-08-02 11:55:29Z cfischer $
 #
 # Generic HTTP Directory Traversal Check
 #
@@ -29,7 +29,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113002");
-  script_version("$Revision: 10263 $");
+  script_version("$Revision: 10736 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"last_modification", value:"$Date: 2017-12-13 21:42:54 +0700 (Wed, 13 Dec 2017)$");
@@ -38,7 +38,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("http_version.nasl", "find_service.nasl", "webmirror.nasl", "os_detection.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning", "global_settings/disable_generic_webapp_scanning");
 
@@ -54,10 +54,11 @@ if(description)
 
   script_tag(name:"summary", value:"Generic check for HTTP directory traversal vulnerabilities.
 
-      NOTE: Please enable 'Enable generic web application scanning' within the NVT 'Global variable settings'
-      (OID: 1.3.6.1.4.1.25623.1.0.12288) if you want to run this script.");
+  NOTE: Please enable 'Enable generic web application scanning' within the NVT 'Global variable settings'
+  (OID: 1.3.6.1.4.1.25623.1.0.12288) if you want to run this script.");
 
   script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
@@ -71,10 +72,6 @@ include("host_details.inc");
 if( get_kb_item( "Settings/disable_cgi_scanning" ) ||
     get_kb_item( "global_settings/disable_generic_webapp_scanning" ) )
   exit( 0 );
-
-port = get_http_port( default:80 );
-cgis = get_kb_list( "www/" + port + "/cgis" );
-if( ! cgis ) exit( 0 );
 
 traversal = make_list( "/",
                       crap( data: "../", length: 3*6 ),
@@ -91,6 +88,11 @@ traversal = make_list( "/",
                       crap( data: "%252e%252e%255c", length: 15*6 ) );
 
 files = traversal_files();
+
+port = get_http_port( default:80 );
+host = http_host_name( dont_add_port:TRUE );
+cgis = get_http_kb_cgis( port:port, host:host );
+if( ! cgis ) exit( 0 );
 
 foreach cgi ( cgis ) {
   cgiArray = split( cgi, sep:" ", keep:FALSE );

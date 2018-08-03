@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: httpver.nasl 10310 2018-06-25 08:19:12Z cfischer $
+# $Id: httpver.nasl 10739 2018-08-02 13:33:18Z cfischer $
 #
 # HTTP-Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100034");
-  script_version("$Revision: 10310 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 10:19:12 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 10739 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 15:33:18 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -75,9 +75,10 @@ function set_http_ver_nd_exit( port, httpver ) {
 port = get_http_port( default:80 );
 
 # nb: Always keep http_host_name() before http_open_socket() as the first
-# could fork with multiple vhosts and the childs would share the same
+# could fork with multiple vhosts and the child's would share the same
 # socket causing race conditions and similar.
 host = http_host_name( port:port );
+host_plain = http_host_name( dont_add_port:TRUE );
 
 soc = http_open_socket( port );
 if( ! soc ) exit( 0 );
@@ -97,8 +98,9 @@ if( isnull( buf ) || buf == "" ) exit( 0 );
 # Don't check for 505 as some servers might return 505 for a HTTP/1.1 request if they support only 1.0
 # TBD: Other 50x to check here? What about servers which might throw a 500 on "/" but not on subdirs / files?
 if( buf =~ "^HTTP/1\.[0-1] 50[0-4]" ) {
-  set_kb_item( name:"Services/www/" + port + "/broken/", value:TRUE );
-  set_kb_item( name:"Services/www/" + port + "/broken/reason", value:"50x" );
+  # TBD: Since the beginning the KB key below was set with an ending "/" and in no404.nasl it was set without it
+  set_kb_item( name:"www/" + host_plain + "/" + port + "/is_broken/", value:TRUE );
+  set_kb_item( name:"www/" + host_plain + "/" + port + "/is_broken/reason", value:"50x" );
   exit( 0 );
 }
 
@@ -125,8 +127,9 @@ else {
   # Don't check for 505 as some servers might return 505 for a HTTP/1.0 request if they support only 0.9
   # TBD: Other 50x to check here? What about servers which might throw a 500 on "/" but not on subdirs / files?
   if( buf =~ "^HTTP/1\.[0-1] 50[0-4]" ) {
-    set_kb_item( name:"Services/www/" + port + "/broken/", value:TRUE );
-    set_kb_item( name:"Services/www/" + port + "/broken/reason", value:"50x" );
+    # TBD: Since the beginning the KB key below was set with an ending "/" and in no404.nasl it was set without it
+    set_kb_item( name:"www/" + host_plain + "/" + port + "/is_broken/", value:TRUE );
+    set_kb_item( name:"www/" + host_plain + "/" + port + "/is_broken/reason", value:"50x" );
     exit( 0 );
   }
 

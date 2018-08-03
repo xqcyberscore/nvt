@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_cleartext_creds_submit.nasl 9501 2018-04-17 07:38:14Z cfischer $
+# $Id: gb_http_cleartext_creds_submit.nasl 10726 2018-08-02 07:46:22Z cfischer $
 #
 # Cleartext Transmission of Sensitive Information via HTTP
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108440");
-  script_version("$Revision: 9501 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-17 09:38:14 +0200 (Tue, 17 Apr 2018) $");
+  script_version("$Revision: 10726 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 09:46:22 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-16 15:31:23 +0200 (Mon, 16 Apr 2018)");
   script_tag(name:"cvss_base", value:"4.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:N");
@@ -81,8 +81,9 @@ basicAuthReport  = 'The following URLs requires Basic Authentication (URL:realm 
 
 port = get_http_port( default:80 );
 if( get_port_transport( port ) > ENCAPS_IP ) exit( 99 );
+host = http_host_name( dont_add_port:TRUE );
 
-inputFieldList = get_kb_list( "www/" + port + "/content/pw_input_field/*" );
+inputFieldList = get_kb_list( "www/" + host + "/" + port + "/content/pw_input_field/*" );
 if( ! isnull( inputFieldList ) ) {
 
   # Sort to not report changes on delta reports if just the order is different
@@ -94,7 +95,7 @@ if( ! isnull( inputFieldList ) ) {
   }
 }
 
-basicAuthList = get_kb_list( "www/" + port + "/content/basic_auth/*" );
+basicAuthList = get_kb_list( "www/" + host + "/" + port + "/content/basic_auth/*" );
 if( ! isnull( basicAuthList ) ) {
 
   # Sort to not report changes on delta reports if just the order is different

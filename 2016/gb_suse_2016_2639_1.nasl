@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_2639_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_2639_1.nasl 10743 2018-08-03 02:50:31Z ckuersteiner $
 #
 # SuSE Update for Mozilla Firefox openSUSE-SU-2016:2639-1 (Mozilla Firefox)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851421");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 10743 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-03 04:50:31 +0200 (Fri, 03 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-10-26 12:51:02 +0200 (Wed, 26 Oct 2016)");
   script_cve_id("CVE-2016-5287", "CVE-2016-5288");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for Mozilla Firefox openSUSE-SU-2016:2639-1 (Mozilla Firefox)");
   script_tag(name: "summary", value: "Check the version of Mozilla Firefox");

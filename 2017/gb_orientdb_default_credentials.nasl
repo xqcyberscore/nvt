@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orientdb_default_credentials.nasl 7426 2017-10-13 10:45:11Z asteins $
+# $Id: gb_orientdb_default_credentials.nasl 10726 2018-08-02 07:46:22Z cfischer $
 #
 # OrientDB Server Default Credentials
 #
@@ -30,9 +30,9 @@ CPE = "cpe:/a:orientdb:orientdb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112080");
-  script_version("$Revision: 7426 $");
+  script_version("$Revision: 10726 $");
   script_name("OrientDB Server Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 12:45:11 +0200 (Fri, 13 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 09:46:22 +0200 (Thu, 02 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-13 08:49:15 +0200 (Fri, 13 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -44,10 +44,14 @@ if(description)
   script_mandatory_keys("OrientDB/auth_required");
 
   script_tag(name:"solution", value:"Change the passwords.");
+
   script_tag(name:"summary", value:"OrientDB is prone to a default account authentication bypass vulnerability.");
+
   script_tag(name:"impact", value:"This issue may be exploited by a remote attacker to gain access to sensitive information.");
+
   script_tag(name:"insight", value:"By convention, each time you create a new database OrientDB creates three default users (admin, writer, reader).
-      The passwords for these users are the same as the usernames. That is, by default the admin user has a password of admin.");
+  The passwords for these users are the same as the usernames. That is, by default the admin user has a password of admin.");
+
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_app");
 
@@ -69,8 +73,10 @@ credentials = make_list(  "admin:admin",
 vuln = FALSE;
 report = 'It was possible to login into the OrientDB Server at: ';
 
-# Set by gb_orientdb_server_detect.nasl
-authRequireUrls = get_kb_list( "www/" + port + "/OrientDB/auth_required" );
+host = http_host_name( dont_add_port:TRUE );
+
+# nb: Set by gb_orientdb_server_detect.nasl
+authRequireUrls = get_kb_list( "www/" + host + "/" + port + "/OrientDB/auth_required" );
 if( isnull ( authRequireUrls ) ) exit( 0 );
 
 # Sort to not report changes on delta reports if just the order is different

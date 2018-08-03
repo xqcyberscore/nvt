@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: monkeyweb_too_big_post.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: MonkeyWeb POST with too much data
+# $Id: monkeyweb_too_big_post.nasl 10736 2018-08-02 11:55:29Z cfischer $
+#
+# MonkeyWeb POST with too much data
 #
 # Authors:
 # Michel Arboi <arboi@alussinan.org>
@@ -20,14 +22,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "Your web server crashes when it receives a POST command
-with too much data.
-It *may* even be possible to make this web server execute
-arbitrary code with this attack.";
-
-tag_solution = "Upgrade your web server.";
+###############################################################################
 
 # Ref:
 # From: "Matthew Murphy" <mattmurphy@kc.rr.com>
@@ -37,86 +32,86 @@ tag_solution = "Upgrade your web server.";
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.11544");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_cve_id("CVE-2003-0218");
- script_bugtraq_id(7202);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- 
- name = "MonkeyWeb POST with too much data";
- script_name(name);
- 
- 
- script_category(ACT_MIXED_ATTACK);
+  script_oid("1.3.6.1.4.1.25623.1.0.11544");
+  script_version("$Revision: 10736 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-02 13:55:29 +0200 (Thu, 02 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_cve_id("CVE-2003-0218");
+  script_bugtraq_id(7202);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("MonkeyWeb POST with too much data");
+  script_category(ACT_MIXED_ATTACK);
+  script_copyright("This script is Copyright (C) 2003 Michel Arboi");
+  script_family("Gain a shell remotely");
+  script_dependencies("gb_get_http_banner.nasl");
+  # The listening port in the example configuration file is 2001
+  # I suspect that some people might leave it unchanged.
+  script_require_ports("Services/www",80, 2001);
+  script_mandatory_keys("Monkey/banner");
+
+  script_tag(name:"solution", value:"Upgrade to Monkey web server 0.6.2.");
+
+  script_tag(name:"summary", value:"The Monkey web server crashes when it receives a
+  POST command with too much data.
+
+  It *may* even be possible to make this web server execute arbitrary code with this attack.");
+
+  script_tag(name:"insight", value:"The version of Monkey web server that is running
+  is vulnerable to a buffer overflow on a POST command with too much data.");
+
+  script_tag(name:"impact", value:"It is possible to make this web server crash or execute
+  arbitrary code.");
+
   script_tag(name:"qod_type", value:"remote_banner");
- 
- 
- script_copyright("This script is Copyright (C) 2003 Michel Arboi");
- family = "Gain a shell remotely";
- script_family(family);
- script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("Monkey/banner");
- # The listening port in the example configuration file is 2001
- # I suspect that some people might leave it unchanged.
- script_require_ports("Services/www",80, 2001);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
-}
-
-include("http_func.inc");
-
-port = get_http_port(default:80); # 2001 ?
-
-if (safe_checks())
-{
-  banner = get_http_banner(port: port);
-  if (banner =~ "Server: *Monkey/0\.([0-5]\.|6\.[01])")
-  {
-    report = "
-The version of Monkey web server that you are running
-is vulnerable to a buffer overflow on a POST command 
-with too much data.
-It is possible to make this web server crash or execute 
-arbitrary code.
-
-Solution: Upgrade to Monkey server 0.6.2";
-
-    security_message(port: port, data: report);
-  }
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
 
-if (http_is_dead(port:port)) exit(0);
+include("http_func.inc");
+include("version_func.inc");
 
-l = get_kb_list(string("www/", port, "/cgis"));
-if (isnull(l) || max_index(l) == 0)
+port = get_http_port( default:80 );
+
+if( safe_checks() ) {
+
+  banner = get_http_banner( port:port );
+  if( banner =~ "Server: *Monkey/0\.([0-5]\.|6\.[01])" ) {
+    report = report_fixed_ver( installed_version:"See server banner", fixed_version:"0.6.2" );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
+  exit( 99 );
+}
+
+if( http_is_dead( port:port ) ) exit( 0 );
+l = get_http_kb_cgis( port:port, host:"*" );
+if( isnull( l ) )
   script = "/";
-else
-{
+else {
   # Let's take a random CGI.
-  n = rand() % max_index(l);
-  script = ereg_replace(string: l[n], pattern: " - .*", replace: "");
-  if (! script) script = "/";	# Just in case the KB is corrupted
+  n = rand() % max_index( l );
+  script = ereg_replace( string:l[n], pattern: " - .*", replace: "" );
+  if( ! script )
+    script = "/"; # Just in case the KB is corrupted
 }
 
-soc = http_open_socket(port);
-if (! soc) exit(0);
+soc = http_open_socket( port );
+if( ! soc ) exit( 0 );
 req = http_post(item: script, port: port, data: crap(10000));
-if ("Content-Type:" >!< req)
-  req = ereg_replace(string: req, pattern: 'Content-Length:', 
-	replace: 'Content-Type: application/x-www-form-urlencoded\r\nContent-Length:');
 
-send(socket: soc, data: req);
-r = http_recv(socket: soc);
-http_close_socket(soc);
+if( "Content-Type:" >!< req )
+  req = ereg_replace( string:req, pattern:'Content-Length:', replace:'Content-Type: application/x-www-form-urlencoded\r\nContent-Length:' );
 
-if (http_is_dead(port: port))
-{
-  security_message(port);
-  set_kb_item(name:"www/too_big_post_crash", value:TRUE);
+send( socket:soc, data:req );
+r = http_recv( socket:soc );
+http_close_socket( soc );
+
+if( http_is_dead( port:port ) ) {
+  security_message( port:port );
+  set_kb_item( name:"www/too_big_post_crash", value:TRUE );
+  exit( 0 );
 }
+
+exit( 99 );
