@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_canon_printer_lbp6030w_auth_bypass_vuln.nasl 10247 2018-06-19 07:14:03Z santu $
+# $Id: gb_canon_printer_lbp6030w_auth_bypass_vuln.nasl 10778 2018-08-06 02:57:15Z ckuersteiner $
 #
 # Canon LBP6030w Authentication Bypass Vulnerability
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/h:canon:lbp6030w";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813607");
-  script_version("$Revision: 10247 $");
+  script_version("$Revision: 10778 $");
   script_cve_id("CVE-2018-12049");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-19 09:14:03 +0200 (Tue, 19 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 04:57:15 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-15 12:23:19 +0530 (Fri, 15 Jun 2018)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Canon LBP6030w Authentication Bypass Vulnerability");
@@ -44,18 +44,18 @@ if(description)
   request and check whether it is able to bypass authentication or not.");
 
   script_tag(name:"insight", value:"The flaw is due to an improper
-  authentication mechanism for the System Manager Mode on the Canon LBP6030w 
+  authentication mechanism for the System Manager Mode on the Canon LBP6030w
   web interface.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow remote 
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass the System Manager Mode and get full access to the device.
 
   Impact Level: Application");
 
   script_tag(name:"affected", value:"Canon Printer LBP6030w.");
 
-  script_tag(name:"solution", value:"No known solution is available as of 
-  15th June, 2018. Information regarding this issue will be updated once solution 
+  script_tag(name:"solution", value:"No known solution is available as of
+  15th June, 2018. Information regarding this issue will be updated once solution
   details are available. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
@@ -86,7 +86,7 @@ req = http_post_req( port: http_port, url: "/checkLogin.cgi", data: "iToken=&i00
                      accept_header: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
 res = http_keepalive_send_recv( port: http_port, data: req );
 
-if(egrep(string: res, pattern: 'Set-Cookie', icase: TRUE)) 
+if(egrep(string: res, pattern: 'Set-Cookie', icase: TRUE))
 {
   cookie_match = eregmatch( string: res, pattern: '[Ss]et-[Cc]ookie: sessid=([^\r\n]+);' );
   if(isnull( cookie_match[1] )) exit(0);

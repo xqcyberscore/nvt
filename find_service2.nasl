@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service2.nasl 10315 2018-06-25 12:19:08Z asteins $
+# $Id: find_service2.nasl 10773 2018-08-04 16:22:23Z cfischer $
 #
 # Service Detection with 'HELP' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11153");
-  script_version("$Revision: 10315 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 14:19:08 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 10773 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-04 18:22:23 +0200 (Sat, 04 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -604,9 +604,10 @@ if( r =~ '^1000 +2\n43\nunexpected message received' || "gethostbyaddr: No such 
 }
 
 # Veritas Backup Exec Remote Agent (6103/tcp)
+# or Windows 2000 BackupExec
 if( r == '\xf6\xff\xff\xff\x10' ) {
   register_service( port:port, proto:"backup_exec" );
-  log_message( port:port, data:"Veritas Backup Exec Remote Agent seems to be running on this port" );
+  log_message( port:port, data:"A BackupExec server or Veritas Backup Exec Remote Agent seems to be running on this port" );
   exit( 0 );
 }
 
@@ -669,13 +670,6 @@ if( r =~ '^OK Welcome .*DirectUpdate server' ) {
 if( r == "HELLO XBOX!" ) {
   register_service( port:port, proto:"xns" );
   log_message( port:port, data:"A XNS streaming server seems to be running on this port" );
-  exit( 0 );
-}
-
-# Windows 2000 BackupExec
-if( r == '\xf6\xff\xff\xff\x10' ) {
-  register_service( port:port, proto:"backupexec" );
-  log_message( port:port, data:"A BackupExec server seems to be running on this port" );
   exit( 0 );
 }
 
@@ -1345,7 +1339,6 @@ if( "Hello, this is zebra " >< r ) {
   register_service( port:port, proto:"zebra" );
   set_kb_item( name:"zebra/banner/" + port, value:r );
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe( value:r, exp:"^([0-9.]+([a-z])?)", base:"cpe:/a:gnu:zebra:" );
   if( ! isnull( cpe ) )
     register_host_detail( name:"App", value:cpe );
@@ -1509,6 +1502,41 @@ if( match( string:r, pattern:'"IMPLEMENTATION" "Cyrus timsieved v*"*"SASL"*' ) )
 if( "IODETTE FTP READY" >< r ) {
   register_service( port:port, proto:"odette-ftp" );
   report_and_exit( port:port, data:"A service providing a ODETTE File Transfer Protocol seems to be running on this port." );
+}
+
+# Running on a Hama IR110 WiFi Radio on port 514/tcp
+# (Thread0): [      2.185608] I2S    (2): After waiting approx. 0.0 seconds...
+# (Thread0): [      2.185860] I2S    (2): Timer fired at 0x00215C2E
+# (Thread0): [      2.186123] SPDIF  (2): Timer fired at 0x00215E40
+# (Thread2): [     16.463611] NET    (2): Notify Eth Link i/f 1 UP
+# (Thread2): [     21.894697] NET    (2): Notify IP i/f 1 (192.168.0.1) UP
+# (Thread2): [     22.072539] HTTP   (2): Found existing handle 1 (hama.wifiradiofrontier.com:80)
+# (Thread2): [     22.158205] CB     (2): Received interface callback data ok.
+# (Thread2): [     23.451059] UI     (2): IntSetupWizard connected
+# (Thread0): [     25.139968] I2S    (2): After waiting approx. 0.0 seconds...
+# (Thread0): [     25.140278] I2S    (2): Timer fired at 0x017F9D9A
+# (Thread0): [     25.140583] SPDIF  (2): Timer fired at 0x017FA01F
+# (Thread2): [     49.340946] RSA    (2): fsRsaGenerateKeyTask: Key created. Time taken 49299ms
+#
+# or
+#
+# (Thread0): [  11828.608232] I2S    (2): After waiting approx. 0.0 seconds...
+# (Thread0): [  11828.608552] I2S    (2): Timer fired at 0xC10A3F89
+# (Thread0): [  11828.608895] SPDIF  (2): Timer fired at 0xC10A4232
+# nb: The same is also checked in find_service1.nasl but sometimes the requests are
+# coming in late or not coming in at all and find_service1.nasl is missing the detection.
+if( "(Thread" >< r && ( "Notify Wlan Link " >< r ||
+    "Notify Eth Link " >< r ||
+    "Received unknown command on socket" >< r ||
+    "fsfsFlashFileHandleOpen" >< r ||
+    "Found existing handle " >< r ||
+    "After waiting approx. " >< r ||
+    "Timer fired at " >< r ||
+    "ControlSocketServerInstructClientToLeave" >< r ||
+    ( "WFSAPI" >< r && "File not found" >< r ) ) ) {
+  register_service( port:port, proto:"wifiradio-setup", message:"A WiFi radio setup service seems to be running on this port." );
+  log_message( port:port, data:"A WiFi radio setup service seems to be running on this port." );
+  exit( 0 );
 }
 
 # Keep qotd at the end of the list, as it may generate false detection

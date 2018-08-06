@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_router_os_winbox_info_disc_vuln_active.nasl 10444 2018-07-06 14:02:50Z ckuersteiner $
+# $Id: gb_mikrotik_router_os_winbox_info_disc_vuln_active.nasl 10776 2018-08-06 01:09:39Z ckuersteiner $
 #
 # Mikrotik RouterOS 'Winbox Service' Information Disclosure Vulnerability (Active Check)
 #
@@ -30,15 +30,17 @@ CPE = "cpe:/o:mikrotik:routeros";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141279");
-  script_version("$Revision: 10444 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-07-06 16:02:50 +0200 (Fri, 06 Jul 2018) $");
-  script_tag(name: "creation_date", value: "2018-07-06 14:10:44 +0200 (Fri, 06 Jul 2018)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 10776 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 03:09:39 +0200 (Mon, 06 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-07-06 14:10:44 +0200 (Fri, 06 Jul 2018)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_cve_id("CVE-2018-14847");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"exploit");
+
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Mikrotik RouterOS 'Winbox Service' Information Disclosure Vulnerability (Active Check)");
 
@@ -50,24 +52,24 @@ if (description)
   script_mandatory_keys("mikrotik/detected");
   script_require_ports(8291);
 
-  script_tag(name: "summary", value: "This host is running Mikrotik RouterOS and is prone to information
+  script_tag(name:"summary", value:"This host is running Mikrotik RouterOS and is prone to information
 disclosure vulnerability.");
 
-  script_tag(name: "insight", value: "The flaw exists due to an error in the winbox service of routeros which
+  script_tag(name:"insight", value:"The flaw exists due to an error in the winbox service of routeros which
 allows remote users to download a user database file without successful authentication.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted request and checks the response.");
 
-  script_tag(name: "impact", value: "Successful exploitation will allow a remote attacker to connect to the WinBox
+  script_tag(name:"impact", value:"Successful exploitation will allow a remote attacker to connect to the WinBox
 port and download a user database file. The remote user can then log in and take control of the router.");
 
-  script_tag(name: "affected", value: "MikroTik Router OS versions 6.29 through 6.42, 6.43rcx prior to 6.43rc4.");
+  script_tag(name:"affected", value:"MikroTik Router OS versions 6.29 through 6.42, 6.43rcx prior to 6.43rc4.");
 
-  script_tag(name: "solution", value: "Upgrade to MikroTik Router OS version 6.42.1 or 6.43rc4 or later.");
+  script_tag(name:"solution", value:"Upgrade to MikroTik Router OS version 6.42.1 or 6.43rc4 or later.");
 
-  script_xref(name: "URL", value: "https://forum.mikrotik.com/viewtopic.php?t=133533");
-  script_xref(name: "URL", value: "https://n0p.me/winbox-bug-dissection/");
-  script_xref(name: "URL", value: "https://github.com/BasuCert/WinboxPoC");
+  script_xref(name:"URL", value:"https://forum.mikrotik.com/viewtopic.php?t=133533");
+  script_xref(name:"URL", value:"https://n0p.me/winbox-bug-dissection/");
+  script_xref(name:"URL", value:"https://github.com/BasuCert/WinboxPoC");
 
   exit(0);
 }
@@ -153,7 +155,7 @@ foreach entry (entries) {
         break;
       else
         password += raw_string(ord(pw[i]) ^ ord(key[i % strlen(key)]));
-    } 
+    }
   }
 
   credentials += 'Username:  ' + username + '\nPassword:  ' + password + '\n\n';

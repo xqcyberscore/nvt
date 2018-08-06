@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gcards_dir_transversal.nasl 9349 2018-04-06 07:02:25Z cfischer $
-# Description: gCards Multiple Vulnerabilities
+# $Id: gcards_dir_transversal.nasl 10781 2018-08-06 07:41:20Z cfischer $
+#
+# gCards Multiple Vulnerabilities
 #
 # Authors:
 # Josh Zlatin-Amishav (josh at ramat dot cc)
@@ -20,33 +22,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The remote web server contains a PHP application that is prone to
-multiple vulnerabilities. 
-
-Description :
-
-The remote host is running gCards, a free electronic greeting card
-system written in PHP. 
-
-The installed version of gCards fails to sanitize user input to the
-'setLang' parameter in the 'inc/setLang.php' script which is called by
-'index.php'.  An unauthenticated attacker may be able to exploit this
-issue to read arbitrary local files or execute code from local files
-subject to the permissions of the web server user id. 
-
-There are also reportedly other flaws in the installed application,
-including a directory traversal issue that allows reading of local
-files as well as a SQL injection and a cross-site scripting issue.";
-
-tag_solution = "Upgrade to gCards version 1.46 or later.";
+###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80065");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10781 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 09:41:20 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -57,17 +39,39 @@ if(description)
   script_xref(name:"OSVDB", value:"24018");
   script_name("gCards Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2006 Josh Zlatin-Amishav");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://retrogod.altervista.org/gcards_145_xpl.html");
-  script_xref(name : "URL" , value : "http://www.gregphoto.net/index.php/2006/03/27/gcards-146-released-due-to-security-issues/");
+  script_xref(name:"URL", value:"http://retrogod.altervista.org/gcards_145_xpl.html");
+  script_xref(name:"URL", value:"http://www.gregphoto.net/index.php/2006/03/27/gcards-146-released-due-to-security-issues/");
+
+  script_tag(name:"solution", value:"Upgrade to gCards version 1.46 or later.");
+
+  script_tag(name:"summary", value:"The remote web server contains a PHP application that is prone to
+  multiple vulnerabilities.
+
+  Description :
+
+  The remote host is running gCards, a free electronic greeting card
+  system written in PHP.
+
+  The installed version of gCards fails to sanitize user input to the
+  'setLang' parameter in the 'inc/setLang.php' script which is called by
+  'index.php'.");
+
+  script_tag(name:"impact", value:"An unauthenticated attacker may be able to exploit this
+  issue to read arbitrary local files or execute code from local files subject to the permissions
+  of the web server user id.
+
+  There are also reportedly other flaws in the installed application,
+  including a directory traversal issue that allows reading of local
+  files as well as a SQL injection and a cross-site scripting issue.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }
@@ -81,12 +85,11 @@ if (!can_host_php(port:port)) exit(0);
 foreach dir( make_list_unique( "/gcards", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  # Try to exploit the flaw in setLang.php to read /etc/passwd.
-  lang = SCRIPT_NAME;
+  lang = "vuln-test";
   url = string( dir, "/index.php?setLang=", lang, "&lang[", lang, "][file]=../../../../../../../../../../../../etc/passwd");
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-  if (res == NULL) continue;
+  if (isnull(res)) continue;
 
   # There's a problem if...
   if (
@@ -106,15 +109,13 @@ foreach dir( make_list_unique( "/gcards", cgi_dirs( port:port ) ) ) {
     if (content)
       report = string(
         "Here are the contents of the file '/etc/passwd' that\n",
-        "OpenVAS was able to read from the remote host :\n",
+        "the scanner was able to read from the remote host :\n",
         "\n",
         content
       );
     else report = "";
 
     security_message(port:port, data:report);
-    set_kb_item(name: 'www/'+port+'/XSS', value: TRUE);
-    set_kb_item(name: 'www/'+port+'/SQLInjection', value: TRUE);
     exit(0);
   }
 }

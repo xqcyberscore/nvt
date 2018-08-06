@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: iis_unc_mapped_virt_host_vuln.nasl 10711 2018-08-01 13:58:38Z cfischer $
+# $Id: iis_unc_mapped_virt_host_vuln.nasl 10763 2018-08-03 14:17:54Z cfischer $
 #
 # Microsoft IIS UNC Mapped Virtual Host Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11443");
-  script_version("$Revision: 10711 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 15:58:38 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 10763 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-03 16:17:54 +0200 (Fri, 03 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1081);
   script_tag(name:"cvss_base", value:"5.0");
@@ -38,7 +38,6 @@ if(description)
   script_copyright("Copyright (C) 2001 tony@libpcap.net");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
-  script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");

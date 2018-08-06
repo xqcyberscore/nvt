@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_na_remote_access_reg_paths.nasl 10158 2018-06-12 07:57:57Z emoss $
+# $Id: win_na_remote_access_reg_paths.nasl 10762 2018-08-03 14:03:15Z emoss $
 #
 # Check value for Network access: Remotely accessible registry paths
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109223");
-  script_version("$Revision: 10158 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-12 09:57:57 +0200 (Tue, 12 Jun 2018) $");
+  script_version("$Revision: 10762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-03 16:03:15 +0200 (Fri, 03 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-11 12:07:28 +0200 (Mon, 11 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,12 +38,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_add_preference(name:"Paths", type:"entry", value:"System\CurrentControlSet\Control\ProductOptions, System\CurrentControlSet\Control\Server Applications, Software\Microsoft\Windows NT\CurrentVersion");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'Network access: Remotely accessible registry paths' on Windows hosts (at least 
+  script_tag(name: "summary", value: "This test checks the setting for policy
+'Network access: Remotely accessible registry paths' on Windows hosts (at least
 Windows 7).
 
-The policy setting determines which registry paths are accessible when an 
+The policy setting determines which registry paths are accessible when an
 application or process references the WinReg key to determine access permissions.");
   exit(0);
 }
@@ -58,23 +59,26 @@ to query the registry.');
 }
 
 if(get_kb_item("SMB/WindowsVersion") < "6.1"){
-  policy_logging(text:'Host is not at least a Microsoft Windows 7 system. 
-Older versions of Windows are not supported any more. Please update the 
+  policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
+Older versions of Windows are not supported any more. Please update the
 Operating System.');
   exit(0);
 }
 
 title = 'Network access: Remotely accessible registry paths';
 fixtext = 'Set following UI path accordingly:
-Computer Configuration/Windows Settings/Security Settings/Local Policies/Security Options/Network access: Remotely accessible registry paths';
+Computer Configuration/Windows Settings/Security Settings/Local Policies/Security Options/' + title;
 type = 'HKLM';
 key = 'System\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedExactPaths';
 item = 'Machine';
+default = script_get_preference('Paths');
 value = registry_get_sz(key:key, item:item, type:type);
+
 if(!value){
-  val = 'none';
+  val = 'None';
 }else{
-# item is MULTI_SZ, which are multiple lines. Could not find another way to replace the "newline" char.
+# item is MULTI_SZ, which are multiple lines.
+# Could not find another way to replace the "newline" char.
   for(i = 0; i<strlen(value)-1; i++){
     if( hexstr(value[i]) == '00'){
       val += ', ';
@@ -84,9 +88,18 @@ if(!value){
   }
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:val);
-policy_set_kb(val:val);
+if(val == default){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + val);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:val);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sftp_ftp_pw_exposure.nasl 10058 2018-06-04 08:35:21Z cfischer $
+# $Id: gb_sftp_ftp_pw_exposure.nasl 10768 2018-08-04 09:55:39Z cfischer $
 #
 # SCP/SFTP/FTP Sensitive Data Exposure via Config File
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108346");
-  script_version("$Revision: 10058 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 10:35:21 +0200 (Mon, 04 Jun 2018) $");
+  script_version("$Revision: 10768 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-04 11:55:39 +0200 (Sat, 04 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-02-26 08:28:37 +0100 (Mon, 26 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -56,6 +56,8 @@ if(description)
 
   - WinSCP.ini, winscp.ini (WinSCP)
 
+  - .vscode/sftp.json (sftp extension for vs code)
+
   - .vscode/ftp-sync.json (Ftp Sync plugin for Visual Studio Code)
 
   - .ftpconfig, .remote-sync.json, deployment-config.json (Remote FTP, Remote Sync and SFTP-Deployment packages for Atom.io)
@@ -74,7 +76,7 @@ if(description)
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_timeout(600);
+  script_timeout(720);
 
   exit(0);
 }
@@ -96,6 +98,8 @@ files = make_array( "/sftp-config.json", '^[\\s/]*(The tab key will cycle throug
                     # https://github.com/OliverKohlDSc/Terminals/blob/master/DLLs/Tools/winscp553/WinSCP.ini
                     "/WinSCP.ini", "^[\s]*\[(Configuration|SshHostKeys)\]",
                     "/winscp.ini", "^[\s]*\[(Configuration|SshHostKeys)\]",
+                    # https://github.com/liximomo/vscode-sftp/wiki/config
+                    "/.vscode/sftp.json", '^[\\s]*("username": ?".+",|"password": ?".+",|"passphrase": ?".+",|"privateKeyPath": ?".+",)',
                     # https://github.com/lukasz-wronski/vscode-ftp-sync/wiki/Sample-FTP-Sync-configs
                     "/.vscode/ftp-sync.json", '^[\\s]*("username": ?".+",|"password": ?".+",|"passphrase": ?".+",|"privateKeyPath": ?".+",)',
                     # https://atom.io/packages/sftp-deployment

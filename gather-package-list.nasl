@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 10509 2018-07-16 10:19:56Z cfischer $
+# $Id: gather-package-list.nasl 10752 2018-08-03 09:11:45Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 10509 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-16 12:19:56 +0200 (Mon, 16 Jul 2018) $");
+  script_version("$Revision: 10752 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-03 11:11:45 +0200 (Fri, 03 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -435,7 +435,7 @@ uname = ssh_cmd( socket:sock, cmd:"uname -a", return_errors:TRUE, pty:TRUE, time
 if( isnull( uname ) ) exit( 0 );
 
 buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 npm list" );
-if( ! isnull( buf ) && "command not found" >!< buf ) register_npms( buf:buf );
+if( ! isnull( buf ) && buf != "" && "command not found" >!< buf ) register_npms( buf:buf );
 
 if( "HyperIP Command Line Interface" >< uname ) {
 
@@ -3374,6 +3374,33 @@ if( "Darwin" >< uname ) {
   exit( 0 );
 }
 
+# Minix 127.0.0.1 3.3.0 Minix 3.3.0 (GENERIC) i386
+# nb: Keep down below to only catch the "uname -a" from FreeBSD above which doesn't
+# contain the full PTY output / banner of Minix.
+if( uname =~ "^Minix " ) {
+
+  set_kb_item( name:"ssh/login/minix", value:TRUE );
+
+  # e.g.:
+  # openssh-6.6.1        Open Source Secure shell client and server (remote login program)
+  # openssl-1.0.1g       Secure Socket Layer and cryptographic library
+  buf = chomp( ssh_cmd( socket:sock, cmd:"pkgin list" ) );
+  set_kb_item( name:"ssh/login/pkgin_pkgs", value:buf );
+
+  minix_cpe = "cpe:/o:minix3:minix";
+  minix_version = eregmatch( pattern:"^Minix .* Minix ([0-9.]+) ", string:uname );
+  report = "We are able to login and detect that you are running MINIX3";
+
+  if( ! isnull( minix_version[1] ) ) {
+    report += " " + minix_version[1];
+    register_and_report_os( os:"MINIX3", version:minix_version[1], cpe:minix_cpe, banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+  } else {
+    register_and_report_os( os:"MINIX3", cpe:minix_cpe, banner_type:"SSH login", desc:SCRIPT_DESC, runs_key:"unixoide" );
+  }
+  log_message( data:report + ". Note: Local Security Checks (LSC) are not available for this OS." );
+  exit( 0 );
+}
+
 # TODO:
 #{ "NetBSD",     "????????????????",         },
 #{ "WhiteBox",   "????????????????",         },
@@ -3385,6 +3412,7 @@ if( "Darwin" >< uname ) {
 #{ "Yellow Dog", "/etc/yellowdog-release",   },
 
 if( uname ) {
+  _unknown_os_info = 'uname: ' + uname + '\n\n' + _unknown_os_info;
   report  = 'System identifier unknown:\n\n';
   report += uname;
   report += '\n\nTherefore no local security checks applied (missing list of installed packages) ';
@@ -3397,7 +3425,6 @@ if( uname ) {
 log_message( port:port, data:report );
 
 if( _unknown_os_info ) {
-  if( uname ) _unknown_os_info = 'uname: ' + uname + '\n\n' + _unknown_os_info;
   register_unknown_os_banner( banner:_unknown_os_info, banner_type_name:SCRIPT_DESC, banner_type_short:"gather_package_list", port:port );
 }
 

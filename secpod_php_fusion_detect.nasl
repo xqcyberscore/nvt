@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_fusion_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: secpod_php_fusion_detect.nasl 10764 2018-08-03 14:25:59Z cfischer $
 #
 # Detection of PHP-Fusion Version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900612");
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_version("$Revision: 10764 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-03 16:25:59 +0200 (Fri, 03 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-07 09:44:25 +0200 (Tue, 07 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -58,20 +58,16 @@ include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );
-
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-## set th kb and CPE
 function _SetCpe( version, tmp_version, dir ) {
 
-  ## set the kb
   set_kb_item( name:"www/" + port + "/php-fusion", value: tmp_version );
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:php-fusion:php-fusion:" );
 
   if( isnull( cpe ) )
     cpe = "cpe:/a:php-fusion:php-fusion";
 
-  ## set the CPE
   register_product( cpe:cpe, location:dir, port:port );
   log_message( data:build_detection_report( app:"PHP-Fusion",
                                             version:version,
@@ -83,26 +79,24 @@ function _SetCpe( version, tmp_version, dir ) {
 
 foreach dir( make_list_unique( "/", "/php-fusion", "/phpfusion", cgi_dirs( port:port ) ) ) {
 
-  flag = 0;
+  flag = FALSE;
   tmp_version= "";
   version= "";
 
   install = dir;
   if( dir == "/" ) dir = "";
 
-  foreach subdir( make_list( "/", "/files", "/php-files" ) ) {
+  foreach subdir( make_list( "", "/files", "/php-files" ) ) {
 
-    sndReq = http_get( item:dir + subdir + "/news.php", port:port );
-    rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
+    res = http_get_cache( item:dir + subdir + "/news.php", port:port );
 
-    if( rcvRes =~ "HTTP/1.. 200 OK" && ( "PHP-Fusion Powered" >< rcvRes ||
-        ">Powered by <a href='https://www.php-fusion.co.uk'>PHP-Fusion</a>" >< rcvRes ) ) {
+    if( res =~ "^HTTP/1\.[01] 200" && ( "PHP-Fusion Powered" >< res ||
+        ">Powered by <a href='https://www.php-fusion.co.uk'>PHP-Fusion</a>" >< res ) ) {
 
       set_kb_item( name:"php-fusion/installed", value:TRUE );
-      flag = 1;
+      flag = TRUE;
 
-      ## Match the version from response
-      matchline = egrep( pattern:"></a> v[0-9.]+", string:rcvRes );
+      matchline = egrep( pattern:"></a> v[0-9.]+", string:res );
       matchVersion = eregmatch( pattern:"> v([0-9.]+)", string:matchline );
       if( matchVersion[1] != NULL ) {
         version = matchVersion[1];
@@ -114,21 +108,16 @@ foreach dir( make_list_unique( "/", "/php-fusion", "/phpfusion", cgi_dirs( port:
     }
   }
 
-  ## If PHP-Fusion is installed and not get the version from news.php
-  ## check for the version in readme-en.html
   if( ! version ) {
 
-    sndReq = http_get( item:dir + "/readme-en.html", port:port );
-    rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
+    res = http_get_cache( item:dir + "/readme-en.html", port:port );
 
-    ## Confirm its PHP-Fusion Readme only
-    if( rcvRes =~ "HTTP/1.. 200 OK" && "PHP-Fusion Readme" >< rcvRes ) {
+    if( res =~ "^HTTP/1\.[01] 200" && "PHP-Fusion Readme" >< res ) {
 
       set_kb_item( name:"php-fusion/installed", value:TRUE );
-      flag = 1;
+      flag = TRUE;
 
-      ## Match the version
-      matchline = egrep( pattern:"Version:</[a-z]+> [0-9.]+", string:rcvRes );
+      matchline = egrep( pattern:"Version:</[a-z]+> [0-9.]+", string:res );
       matchVersion = eregmatch( pattern:"> ([0-9.]+)", string:matchline );
 
       if( matchVersion[1] != NULL ) {
@@ -136,15 +125,12 @@ foreach dir( make_list_unique( "/", "/php-fusion", "/phpfusion", cgi_dirs( port:
         tmp_version = matchVersion[1] + " under " + install;
       }
 
-      ## set the cpe and version
       if( version ) {
         _SetCpe( version:version, tmp_version:tmp_version, dir:install );
       }
     }
   }
 
-  ## If PHP-Fusion is installed and not able get the version from any
-  ## of the file set the version as "unknown" and CPE
   if( ! version && flag ) {
     version = "Unknown";
     tmp_version = version + " under " + install;

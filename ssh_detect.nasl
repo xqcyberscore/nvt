@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_detect.nasl 7902 2017-11-24 11:02:42Z cfischer $
+# $Id: ssh_detect.nasl 10769 2018-08-04 12:29:23Z cfischer $
 #
 # SSH Server type and version
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10267");
-  script_version("$Revision: 7902 $");
+  script_version("$Revision: 10769 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 12:02:42 +0100 (Fri, 24 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-04 14:29:23 +0200 (Sat, 04 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_name("SSH Server type and version");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 1999 SecuriTeam");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "find_service2.nasl", "external_svc_ident.nasl");
+  script_dependencies("find_service.nasl", "find_service6.nasl", "external_svc_ident.nasl");
   script_require_ports("Services/ssh", 22);
 
   script_tag(name:"summary", value:"This detects the SSH Server's type and version by connecting to the server

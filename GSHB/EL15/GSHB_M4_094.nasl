@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_094.nasl 10646 2018-07-27 07:00:22Z cfischer $
+# $Id: GSHB_M4_094.nasl 10757 2018-08-03 11:35:43Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maßnahme 4.094
 #
@@ -27,37 +27,42 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94210");
-  script_version("$Revision: 10646 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 09:00:22 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 10757 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-03 13:35:43 +0200 (Fri, 03 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"qod_type", value:"remote_banner");
   script_name("IT-Grundschutz M4.094: Schutz der Webserver-Dateien");
-  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04094.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("IT-Grundschutz-15");
   script_mandatory_keys("Compliance/Launch/GSHB-15");
   script_dependencies("GSHB/GSHB_nikto.nasl");
 
+  script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04094.html");
+
   script_tag(name:"summary", value:"IT-Grundschutz M4.094: Schutz der Webserver-Dateien.
 
   Stand: 14. Ergänzungslieferung (14. EL).");
+
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
 
 include("itg.inc");
+include("http_func.inc");
 
 name = 'IT-Grundschutz M4.094: Schutz der Webserver-Dateien\n';
-
 gshbm =  "IT-Grundschutz M4.094: ";
 
-
+# nb: Don't use get_http_port() as we want to report a missing
+# web server in any case and the function would exit without one...
 port = get_kb_item("Services/www");
-if (!port) port = "80";
-brokenwww = get_kb_item("Services/www/" + port + "/broken");
+if (!port) port = 80;
+
+host = http_host_name(dont_add_port:TRUE);
+brokenwww = http_is_marked_broken(port:port, host:host);
 
 nikto = get_kb_item("GSHB/NIKTO");
 
@@ -70,10 +75,10 @@ if(brokenwww == "1"){
 }else if(!nikto){
   result = string("Fehler");
   desc = string("Beim Testen des Systems trat ein Fehler auf, es konnte\nvon Nikto kein Ergebniss ermittelt werden.");
-}else if(nikto == "none" && !brockenwww){
+}else if(nikto == "none" && !brokenwww){
     result = string("erfüllt");
     desc = string('Nikto konnte keinen in der -Open Source Vulnerability\nDatabase- aufgeführten Fehler finden.');
-}else if(nikto != "none" && !brockenwww){
+}else if(nikto != "none" && !brokenwww){
     result = string("nicht erfüllt");
     desc = string('Nikto hat folgende in der -Open Source Vulnerability\nDatabase- aufgeführten Fehler gefunden:\n' + nikto);
 }

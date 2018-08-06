@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuuo_devices_web_detect.nasl 10016 2018-05-30 06:57:23Z ckuersteiner $
+# $Id: gb_nuuo_devices_web_detect.nasl 10779 2018-08-06 05:48:16Z ckuersteiner $
 #
 # NUUO Device Detection
 #
@@ -30,12 +30,13 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105855");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 10016 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-30 08:57:23 +0200 (Wed, 30 May 2018) $");
+ script_version("$Revision: 10779 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-06 07:48:16 +0200 (Mon, 06 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-08-08 18:28:02 +0200 (Mon, 08 Aug 2016)");
+
  script_name("NUUO Device Detection");
 
- script_tag(name: "summary" , value: "This script performs HTTP based detection of NUUO devices");
+ script_tag(name:"summary", value:"This script performs HTTP based detection of NUUO devices");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
@@ -45,6 +46,7 @@ if (description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
+
  exit(0);
 }
 
@@ -85,8 +87,9 @@ if( _vers )
 }
 
 register_product( cpe:cpe, location:"/", port:port, service:"www" );
-report = build_detection_report( app:"NUUO Network Video Recorder", version:vers, install:"/", cpe:cpe, concluded:version[0] );
 
-log_message( port:port, data:report );
+log_message( data:build_detection_report( app:"NUUO Network Video Recorder", version:vers, install:"/", cpe:cpe,
+                                          concluded:version[0] ),
+             port:port);
+
 exit( 0 );
-

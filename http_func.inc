@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 10742 2018-08-02 17:42:25Z cfischer $
+# $Id: http_func.inc 10759 2018-08-03 13:01:23Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10742 $
+# $Revision: 10759 $
 #
 ###############################################################################
 
@@ -141,12 +141,13 @@ function get_http_banner( port, file, ignore_broken ) {
   banner = get_kb_item( sb );
   if( banner ) return banner;
 
+  # nb: This is set in nasl/nasl_builtin_find_service.c of openvas-scanner as well...
   sb = strcat( "www/banner/", port, file );
   banner = get_kb_item( sb );
   if( banner ) return banner;
 
   if( ! ignore_broken )
-    if( http_is_marked_broken( port:port ) ) return NULL; # TBD: Really return NULL if marked as broken? We still could use the banner version in NVTs...
+    if( http_is_marked_broken( port:port, host:"*" ) ) return NULL; # TBD: Really return NULL if marked as broken? We still could use the banner version in NVTs...
 
   # nb: Always keep http_get() before http_open_socket() as the first could
   # fork with multiple vhosts and the child's would share the same socket
@@ -165,26 +166,39 @@ function get_http_banner( port, file, ignore_broken ) {
 }
 
 # @brief Returns all HTTP ports of the target system which are saved
-#        in the KB entry "Services/www" found by the scanner.
-#        If no ports where found open it will exit. In the case if the
-#        "unscanned_closed" scanner setting is set to "no" it will return
-#        the port passed via the default parameter.
+#        in the KB entry "Services/www" found by the scanner. If no
+#        ports where found open or no "default" parameter is passed
+#        (if "nodefault" isn't set to TRUE) it will exit. In the case
+#        where the "unscanned_closed" scanner setting is set to "no"
+#        it will return the port passed via the default parameter.
 #
-# @param default             the port to return if "unscanned_closed" is set to "no" and no ports have been found open
-# @param ignore_broken       returns the ports even if they are known to be "broken"
-# @param ignore_cgi_disabled returns the ports even if CGI scanning is disabled
+# @param default             the port to return if "unscanned_closed" is set to "no" and no ports have been found open.
+# @param nodefault           don't exit if no "default" parameter is passed, it still will return if no HTTP servers are detected at all.
+# @param host                the hostname (e.g. from http_host_name with the dont_add_port:TRUE
+#                            parameter or get_host_name) of the remote server. If no host parameter
+#                            is passed http_host_name will be called automatically and a debug
+#                            message is logged into the KB (currently commented out).
+# @param ignore_broken       returns the ports even if they are known to be "broken".
+# @param ignore_cgi_disabled returns the ports even if CGI scanning is disabled.
+# @param dont_use_vhosts     allows to specify if http_host_name is called internally (which would fork on multiple vhosts).
 #
-# @return the open / found HTTP ports or the port passed via the default parameter in the case of no found ports and "unscanned_closed" is set to "no"
+# @return the open / found HTTP ports or the port passed via the default parameter in the case of no found ports
+#         and "unscanned_closed" is set to "no".
 #
-function get_http_port( default, ignore_broken, ignore_cgi_disabled ) {
+function get_http_port( default, nodefault, host, ignore_broken, ignore_cgi_disabled, dont_use_vhosts ) {
 
-  local_var default, port, p, ignore_broken, ignore_cgi_disabled;
+  local_var default, nodefault, host, ignore_broken, ignore_cgi_disabled, dont_use_vhosts;
+  local_var port, p;
   # nb: http_cgi_disabled and optimize_test_enabled are global vars
 
-  if( ! default ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_http_port" );
+  if( ! default && ! nodefault ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#default#-#get_http_port" );
+    exit( 0 );
+  }
 
-  port = get_kb_item( "Services/www" );
+  port = get_kb_item( "Services/www" ); # nb: This will fork on multiple open ports
   if( port ) default = port;
+  if( ! default ) exit( 0 ); # TBD: Try/return 80?
 
   # Includes e.g. PJL ports which are printing everything
   # sent to them so exit for such a port here
@@ -199,11 +213,18 @@ function get_http_port( default, ignore_broken, ignore_cgi_disabled ) {
     }
   }
 
+  if( ! dont_use_vhosts && ! host ) {
+    host = http_host_name( dont_add_port:TRUE );
+    #set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#get_http_port" );
+  }
+
   if( ! ignore_broken ) {
-    p = http_is_marked_broken( port:default );
+    if( ! host ) host = "*";
+    p = http_is_marked_broken( port:default, host:host );
     if( p ) exit( 0 );
   }
 
+  # TBD: It seems this is never set...
   p = get_kb_item( "Services/www/" + default + "/working" );
   if( p ) return default;
 
@@ -1053,38 +1074,60 @@ function extract_basic_auth( data ) {
 }
 
 # @brief Returns the info if a remote web server was internally (in the KB)
-#        marked as "broken". It will also save the information in
-#        an internal array to avoid that redis is queried.
+#        marked as "broken" by no404.nasl. It will also save the information
+#        in an internal array to avoid that redis is queried.
 #
 # @param port the port of the remote server
+# @param host the hostname (e.g. from http_host_name with the dont_add_port:TRUE
+#             parameter or get_host_name) of the remote server. If no host parameter
+#             is passed http_host_name will be called automatically and a debug
+#             message is logged into the KB. A special "*" string can be passed
+#             where the function will return TRUE if any of the remote hostnames
+#             are marked as "broken".
 #
 # @return TRUE if the remote web server was marked as broken, FALSE otherwise and
 #         NULL in the case where the port parameter wasn't passed.
 #
-function http_is_marked_broken( port ) {
+function http_is_marked_broken( port, host ) {
 
-  local_var port, marked_broken;
+  local_var port, host, marked_broken, marked_broken_list, mb;
   # nb: _http_is_broken_array is a global_var (see on top)
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#extract_location_from_redirect" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_is_marked_broken" );
     return NULL;
+  }
+
+  if( ! host ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#http_is_marked_broken" );
+    host = http_host_name( dont_add_port:TRUE );
   }
 
   # Used to not query redis with the get_kb_item below
   # to save some requests.
-  if( ! isnull( _http_is_broken_array[port] ) ) {
-    if( _http_is_broken_array[port] )
+  if( ! isnull( _http_is_broken_array[host+port] ) ) {
+    if( _http_is_broken_array[host+port] )
       return TRUE;
     else
       return FALSE;
   }
 
-  marked_broken = get_kb_item( "Services/www/" + port + "/broken" );
+  if( host == "*" ) {
+    marked_broken_list = get_kb_list( "www/*/" + port + "/is_broken" );
+    foreach mb( marked_broken_list ) {
+      if( mb ) {
+        marked_broken = TRUE;
+        break;
+      }
+    }
+  } else {
+    marked_broken = get_kb_item( "www/" + host + "/" + port + "/is_broken" );
+  }
+
   if( marked_broken )
-    _http_is_broken_array[port] = TRUE;
+    _http_is_broken_array[host+port] = TRUE;
   else
-    _http_is_broken_array[port] = FALSE;
+    _http_is_broken_array[host+port] = FALSE;
 
   return marked_broken;
 }

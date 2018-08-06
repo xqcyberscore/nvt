@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netiq_access_manager_mult_vuln_12_14.nasl 6759 2017-07-19 09:56:33Z teissa $
+# $Id: gb_netiq_access_manager_mult_vuln_12_14.nasl 10772 2018-08-04 15:54:37Z cfischer $
 #
 # NetIQ Access Manager XSS / CSRF / XXE Injection / Disclosure
 #
@@ -27,71 +27,62 @@
 
 CPE = "cpe:/a:netiq:access_manager";
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105149");
- script_cve_id("CVE-2014-5214","CVE-2014-5216","CVE-2014-5217","CVE-2014-5215");
- script_version ("$Revision: 6759 $");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P"); 
+  script_oid("1.3.6.1.4.1.25623.1.0.105149");
+  script_cve_id("CVE-2014-5214", "CVE-2014-5216", "CVE-2014-5217", "CVE-2014-5215");
+  script_version("$Revision: 10772 $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_name("NetIQ Access Manager XSS / CSRF / XXE Injection / Disclosure");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-04 17:54:37 +0200 (Sat, 04 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-12-19 15:05:33 +0100 (Fri, 19 Dec 2014)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_netiq_access_manager_detect.nasl");
+  script_require_ports("Services/www", 443);
+  script_mandatory_keys("netiq_access_manager/installed");
 
- script_name("NetIQ Access Manager XSS / CSRF / XXE Injection / Disclosure");
+  script_xref(name:"URL", value:"https://www.novell.com/support/kb/doc.php?id=7015993");
+  script_xref(name:"URL", value:"https://www.novell.com/support/kb/doc.php?id=7015994");
+  script_xref(name:"URL", value:"https://www.novell.com/support/kb/doc.php?id=7015996");
+  script_xref(name:"URL", value:"https://www.novell.com/support/kb/doc.php?id=7015997");
+  script_xref(name:"URL", value:"https://www.novell.com/support/kb/doc.php?id=7015995");
 
- script_xref(name:"URL", value:"https://www.novell.com/support/kb/doc.php?id=7015993");
- script_xref(name:"URL", value:"https://www.novell.com/support/kb/doc.php?id=7015994");
- script_xref(name:"URL", value:"https://www.novell.com/support/kb/doc.php?id=7015996");
- script_xref(name:"URL", value:"https://www.novell.com/support/kb/doc.php?id=7015997");
- script_xref(name:"URL", value:"https://www.novell.com/support/kb/doc.php?id=7015995");
+  script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response.");
 
- script_tag(name: "vuldetect" , value:"Send a special crafted HTTP GET request and check the response.");
+  script_tag(name:"insight", value:"An attacker without an account on the NetIQ Access Manager is be able to gain
+  administrative access by combining different attack vectors. Though this host may not always be accessible from
+  a public network, an attacker is still able to compromise the system when directly targeting administrative users.
 
- script_tag(name: "insight" , value:"An attacker without an account on the NetIQ Access Manager is be able to gain
-administrative access by combining different attack vectors. Though this host
-may not always be accessible from a public network, an attacker is still able
-to compromise the system when directly targeting administrative users.
+  Because the NetIQ Access Manager is used for authentication, an attacker
+  compromising the system can use it to gain access to other systems.");
 
-Because the NetIQ Access Manager is used for authentication, an attacker
-compromising the system can use it to gain access to other systems.");
+  script_tag(name:"solution", value:"Update to 4.0 SP1 Hot Fix 3 or higher");
 
- script_tag(name: "solution" , value:"Update to 4.0 SP1 Hot Fix 3 or higher");
+  script_tag(name:"summary", value:"NetIQ Access Manager suffers from cross site request forgery, external entity
+  injection, information disclosure, and cross site scripting vulnerabilities.");
 
- script_tag(name: "summary" , value:"NetIQ Access Manager suffers from cross site request forgery, external entity
-injection, information disclosure, and cross site scripting vulnerabilities.");
+  script_tag(name:"affected", value:"NetIQ Access Manager version 4.0 SP1 ");
 
- script_tag(name: "affected" , value:"NetIQ Access Manager version 4.0 SP1 ");
-
- script_tag(name:"solution_type", value: "VendorFix");
-
- script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
- script_tag(name:"creation_date", value:"2014-12-19 15:05:33 +0100 (Fri, 19 Dec 2014)");
- script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_netiq_access_manager_detect.nasl");
- script_require_ports("Services/www", 443);
- script_mandatory_keys("netiq_access_manager/installed");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 
 url = '/nidp/jsp/x509err.jsp?error=%3Cscript%3Ealert%28%27openvas-xss-test%27%29%3C/script%3E';
-
-if( http_vuln_check( port:port, url:url, pattern:"<script>alert\('openvas-xss-test'\)</script>", extra_check:"HTTP/1.. 200" ) )
-{
+if( http_vuln_check( port:port, url:url, pattern:"<script>alert\('openvas-xss-test'\)</script>", extra_check:"HTTP/1.. 200" ) ) {
   report = report_vuln_url( port:port, url:url);
   security_message( port:port, data:report );
   exit( 0 );
 }
 
 exit( 99 );
-
-
-

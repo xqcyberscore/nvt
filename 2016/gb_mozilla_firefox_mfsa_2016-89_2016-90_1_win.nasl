@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-89_2016-90_1_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2016-89_2016-90_1_win.nasl 10778 2018-08-06 02:57:15Z ckuersteiner $
 #
 # Mozilla Firefox Security Updates( mfsa_2016-89_2016-90 )-Windows
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/a:mozilla:firefox:x64";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809809");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 10778 $");
   script_cve_id("CVE-2016-9072");
   script_bugtraq_id(94336);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 04:57:15 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-11-16 12:21:41 +0530 (Wed, 16 Nov 2016)");
   script_name("Mozilla Firefox Security Updates (mfsa_2016-89_2016-90)-Windowsx64");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox and is prone to arbitrary code execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to,
+  script_tag(name:"insight", value:"The flaw exists due to, 
   64-bit NPAPI sandbox is not enabled on fresh profile.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to execute arbitrary code.
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before
+  script_tag(name:"affected", value:"Mozilla Firefox version before
   50 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 50
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 50
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");

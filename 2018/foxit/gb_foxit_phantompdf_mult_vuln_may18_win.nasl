@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_mult_vuln_may18_win.nasl 9934 2018-05-23 11:48:03Z santu $
+# $Id: gb_foxit_phantompdf_mult_vuln_may18_win.nasl 10761 2018-08-03 13:48:17Z cfischer $
 #
 # Foxit PhantomPDF Multiple Vulnerabilities-May18 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813196");
-  script_version("$Revision: 9934 $");
+  script_version("$Revision: 10761 $");
   script_cve_id("CVE-2017-17557", "CVE-2017-14458", "CVE-2018-3842", "CVE-2018-3853",
                 "CVE-2018-3850", "CVE-2018-10303", "CVE-2018-10302", "CVE-2018-3843");
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 13:48:03 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-03 15:48:17 +0200 (Fri, 03 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-18 12:43:57 +0530 (Fri, 18 May 2018)");
   script_name("Foxit PhantomPDF Multiple Vulnerabilities-May18 (Windows)");
 

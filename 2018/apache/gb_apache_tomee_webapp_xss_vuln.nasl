@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomee_webapp_xss_vuln.nasl 10692 2018-07-31 13:51:55Z santu $
+# $Id: gb_apache_tomee_webapp_xss_vuln.nasl 10760 2018-08-03 13:20:15Z cfischer $
 #
 # Apache TomEE console (tomee-webapp) Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomee";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813736");
-  script_version("$Revision: 10692 $");
+  script_version("$Revision: 10760 $");
   script_cve_id("CVE-2018-8031");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-31 15:51:55 +0200 (Tue, 31 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-03 15:20:15 +0200 (Fri, 03 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-31 09:20:00 +0530 (Tue, 31 Jul 2018)");
   ## unreliable installation via tomee-webapp are vulnerable
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Apache TomEE
   and is prone to cross site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an unspecified error in
   the 'tomee-webapp' web application which is typically used to add TomEE features
@@ -82,12 +81,11 @@ if(!tomPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE);
+if(!infos = get_app_version_and_location(cpe:CPE, port:tomPort, exit_no_version:TRUE)) exit(0);
 tomeeversion = infos['version'];
 path = infos['location'];
 
-if(version_is_less(version:tomeeversion, test_version:"7.0.5"))
-{
+if(version_is_less(version:tomeeversion, test_version:"7.0.5")){
   report = report_fixed_ver(installed_version:tomeeversion, fixed_version:"7.0.5", install_path:path);
   security_message(port:tomPort, data:report);
   exit(0);

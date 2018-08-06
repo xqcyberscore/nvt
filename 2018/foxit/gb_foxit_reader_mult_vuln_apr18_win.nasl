@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_vuln_apr18_win.nasl 10140 2018-06-08 12:58:24Z asteins $
+# $Id: gb_foxit_reader_mult_vuln_apr18_win.nasl 10782 2018-08-06 07:56:21Z santu $
 #
 # Foxit Reader Multiple Vulnerabilities-Apr18 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813156");
-  script_version("$Revision: 10140 $");
+  script_version("$Revision: 10782 $");
   script_cve_id("CVE-2017-14458", "CVE-2017-17557", "CVE-2018-10302", "CVE-2018-10303",
                 "CVE-2018-10473", "CVE-2018-10474", "CVE-2018-10475", "CVE-2018-10476",
                 "CVE-2018-10477", "CVE-2018-10478", "CVE-2018-10479", "CVE-2018-10480",
@@ -54,10 +54,10 @@ if(description)
                 "CVE-2018-9972", "CVE-2018-9973", "CVE-2018-9974", "CVE-2018-9975",
                 "CVE-2018-9976", "CVE-2018-9977", "CVE-2018-9978", "CVE-2018-9979",
                 "CVE-2018-9980", "CVE-2018-9981", "CVE-2018-9982", "CVE-2018-9983",
-                "CVE-2018-9984");
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
+                "CVE-2018-9984", "CVE-2018-3924", "CVE-2018-3939");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 09:56:21 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 14:35:06 +0530 (Wed, 25 Apr 2018)");
   script_name("Foxit Reader Multiple Vulnerabilities-Apr18 (Windows)");
 

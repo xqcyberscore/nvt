@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: landesk_detect.nasl 10326 2018-06-26 09:54:59Z cfischer $
+# $Id: landesk_detect.nasl 10757 2018-08-03 11:35:43Z cfischer $
 #
 # LANDesk Management Agent Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100328");
-  script_version("$Revision: 10326 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 11:54:59 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 10757 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-03 13:35:43 +0200 (Fri, 03 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-10-30 14:42:19 +0100 (Fri, 30 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,11 +52,13 @@ include("http_keepalive.inc");
 include("misc_func.inc");
 include("host_details.inc");
 
+host = http_host_name( dont_add_port:TRUE );
+
 # nb: 9595 is plain HTTP, 9593 is HTTPS
 foreach port( make_list( 9595, 9593 ) ) {
 
   if( ! get_port_state( port ) ) continue;
-  if( http_is_marked_broken( port:port ) ) continue;
+  if( http_is_marked_broken( port:port, host:host ) ) continue;
 
   req = http_get( item:"/", port:port );
   buf = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );

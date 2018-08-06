@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssh_func.inc 10707 2018-08-01 10:58:06Z cfischer $
+# $Id: ssh_func.inc 10753 2018-08-03 10:08:48Z cfischer $
 #
 # Methods for handling SSH
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10707 $
+# $Revision: 10753 $
 #
 ###############################################################################
 
@@ -2483,6 +2483,15 @@ function get_bin_version( full_prog_name, version_argv, ver_pattern, sock ) {
   return( loc_version );
 }
 
+# @brief Checks if the "locate" command is available on the remote SSH server.
+#        Additionally save the reason (namely the result of the SSH command)
+#        why the locate isn't available within the KB key ssh/locate/broken.
+#
+# @param sock the SSH socket of the connection to the remote SSH server.
+#
+# @return TRUE if the locate command is available, FALSE otherwise and NULL
+#              if no sock parameter was passed.
+#
 function ssh_check_locate( sock ) {
 
   local_var sock, r;
@@ -2496,16 +2505,23 @@ function ssh_check_locate( sock ) {
   if( get_kb_item( "ssh/no_linux_shell" ) )   return FALSE;
   if( get_kb_item( "ssh/locate/broken" ) )    return FALSE;
 
-  r = ssh_cmd( socket:sock, cmd:"locate -S", timeout:60 );
+  r = ssh_cmd( socket:sock, cmd:"locate -S", timeout:60, return_errors:TRUE );
 
   # nb: slocate (and maybe other variants?) don't have the database statistic command
   # Just try a search instead, if the database isn't build it will return something like
-  # warning: locate: could not open database: /path/to/db: No such file or directory
-  if( "locate: invalid option -- S" >< r ) {
+  # warning: locate: could not open database: /path/to/db: No such file or directory or
+  # locate: fatal error: Could not find user database '/path/to/db':  No such file or directory
+  if( "locate: invalid option -- S" >< r || "locate: unknown option -- S" >< r ) {
     r = ssh_cmd( socket:sock, cmd:"locate /bin/bash", timeout:60 ); # nb: Assuming that /bin/bash exists on the target system
     if( "locate:" >!< r && "/bin/bash" >< r ) {
       set_kb_item( name:"ssh/locate/available", value:TRUE );
       return TRUE;
+    } else if( "locate:" >!< r ) {
+      r = ssh_cmd( socket:sock, cmd:"locate /bin/sh", timeout:60 ); # nb: Another try for /bin/sh if /bin/bash doesn't exists
+      if( "locate:" >!< r && "/bin/sh" >< r ) {
+        set_kb_item( name:"ssh/locate/available", value:TRUE );
+        return TRUE;
+      }
     }
   }
 
@@ -2515,6 +2531,7 @@ function ssh_check_locate( sock ) {
         "Filenames"   >!< r &&
         "file names"  >!< r ) ) ||
         "command not found" >< r ||
+        "locate: not found" >< r ||
         "locate:" >< r ) { # nb: Also includes an outdated database like "locate: warning: database /var/cache/locate/locatedb is more than 8 days old (actual age is 9,3 days)"
 
     set_kb_item( name:"ssh/locate/broken", value:r );

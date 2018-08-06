@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: net2ftp_detect.nasl 5255 2017-02-10 08:56:42Z cfi $
+# $Id: net2ftp_detect.nasl 10765 2018-08-03 14:31:52Z cfischer $
 #
 # net2ftp Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100125");
-  script_version("$Revision: 5255 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 09:56:42 +0100 (Fri, 10 Feb 2017) $");
+  script_version("$Revision: 10765 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-03 16:31:52 +0200 (Fri, 03 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-12 20:09:50 +0200 (Sun, 12 Apr 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -59,36 +59,30 @@ if( ! can_host_php( port:port ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/ftp", "/webftp", "/net2ftp", cgi_dirs( port:port ) ) ) {
 
+  install = dir;
+  if( dir == "/" ) dir = "";
   buf = http_get_cache( item:dir + "/index.php", port:port );
   buf2 = http_get_cache( item:dir + "/help.html", port:port );
 
   if( egrep( pattern:'Powered by net2ftp', string:buf, icase:TRUE ) ||
-      egrep( pattern: '<title>net2ftp - a web based FTP client</title>', string:buf, icase:TRUE ) ||
+      egrep( pattern:'<title>net2ftp - a web based FTP client</title>', string:buf, icase:TRUE ) ||
       "<title>net2ftp help</title>" >< buf2 ) {
-
-    install = dir;
-    if( dir == "/" ) dir = "";
 
     vers = "unknown";
 
-    ### try to get version from main page
-    version = eregmatch(string: buf, pattern: "<!-- net2ftp version ([0-9.]+) -->", icase:TRUE);
+    version = eregmatch( string:buf, pattern:"<!-- net2ftp version ([0-9.]+) -->", icase:TRUE );
 
     if( ! isnull( version[1] ) ) {
       vers = chomp( version[1] );
     } else {
-       ### try to get version from version.js
-       req = http_get( item:dir + "/version.js", port:port );
-       buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-
-       version = eregmatch( string:buf, pattern:"latest_stable_version = '([0-9.]+)';", icase:TRUE );
+       res = http_get_cache( item:dir + "/version.js", port:port );
+       version = eregmatch( string:res, pattern:"latest_stable_version = '([0-9.]+)';", icase:TRUE );
        if( ! isnull( version[1] ) ) vers = version[1];
     }
 
     tmp_version = vers + " under " + install;
     set_kb_item( name:"www/" + port + "/net2ftp", value:tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:net2ftp:net2ftp:" );
     if( isnull( cpe ) )
       cpe = "cpe:/a:net2ftp:net2ftp";

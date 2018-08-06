@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 10734 2018-08-02 10:35:39Z asteins $
+# $Id: products_eol.inc 10756 2018-08-03 11:33:05Z asteins $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10734 $
+# $Revision: 10756 $
 #
 ###############################################################################
 
@@ -230,6 +230,7 @@ eol_cpes[ 'cpe:/a:novell:edirectory' ] = make_array(
 
 # https://www.microfocus.com/lifecycle/
 # nb: versions 2014 & 2012 have been reduced to 14 & 12
+# TODO: version not yet determined by detection script
 eol_cpes[ 'cpe:/a:novell:groupwise' ] = make_array(
   'versions',      '18:2020-12-11;14:2018-06-30;12:2015-06-30;8:2014-06-30;7:2010-04-02',
   'version_regex', '^([0-9]+)'

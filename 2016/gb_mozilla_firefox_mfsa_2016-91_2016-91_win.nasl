@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-91_2016-91_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2016-91_2016-91_win.nasl 10778 2018-08-06 02:57:15Z ckuersteiner $
 #
 # Mozilla Firefox Security Updates( mfsa_2016-91_2016-91 )-Windows
 #
@@ -29,33 +29,33 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809823");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 10778 $");
   script_cve_id("CVE-2016-9078");
   script_bugtraq_id(94569);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 04:57:15 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-12-01 12:04:46 +0530 (Thu, 01 Dec 2016)");
   script_name("Mozilla Firefox Security Updates( mfsa_2016-91_2016-91 )-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox and is prone to URL redirection vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The Flaw exists as data: URL can inherit
+  script_tag(name:"insight", value:"The Flaw exists as data: URL can inherit
   wrong origin after an HTTP redirect.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   will allow remote attackers to redirect a URL maliciously, current data suggests
   it does not have any capacity to impact the host system.
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox versions 49.0 and 50.0
+  script_tag(name:"affected", value:"Mozilla Firefox versions 49.0 and 50.0
   on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 50.0.1
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 50.0.1
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");

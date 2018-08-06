@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service6.nasl 6849 2017-08-04 07:21:15Z cfischer $
+# $Id: find_service6.nasl 10769 2018-08-04 12:29:23Z cfischer $
 #
 # Service Detection with 'BINARY' Request
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108204");
-  script_version("$Revision: 6849 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 09:21:15 +0200 (Fri, 04 Aug 2017) $");
+  script_version("$Revision: 10769 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-04 14:29:23 +0200 (Sat, 04 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-08-04 09:08:04 +0200 (Fri, 04 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -86,6 +86,28 @@ if( "rlogind: Permission denied." >< r ) {
 if( "Where are you?" >< r ) {
   register_service( port:port, proto:"rexec", message:"A rexec service seems to be running on this port." );
   log_message( port:port, data:"A rexec service seems to be running on this port." );
+  exit( 0 );
+}
+
+# 0x00:  53 53 48 2D 32 2E 30 2D 6C 69 62 73 73 68 5F 30    SSH-2.0-libssh_0
+# 0x10:  2E 37 2E 39 30 0D 0A                               .7.90..
+# on e.g. TeamSpeak3 running on port 10022/tcp
+#
+# 0x00:  53 53 48 2D 32 2E 30 2D 6C 69 62 73 73 68 2D 30    SSH-2.0-libssh-0
+# 0x10:  2E 35 2E 32 0A                                     .5.2.
+#
+# 0x00:  53 53 48 2D 32 2E 30 2D 6C 69 62 73 73 68 0A       SSH-2.0-libssh.
+#
+# nb:  Sometimes this isn't detected via find_service.nasl as SSH
+# nb2: Keep in single quotes so that the "\r" and "\n" are matching...
+if( r =~ '^SSH-2.0-libssh[_-][0-9.]+[^\\r\\n]+$' ||
+    r == 'SSH-2.0-libssh\n' ) {
+  register_service( port:port, proto:"ssh", message:"A SSH service seems to be running on this port." );
+  log_message( port:port, data:"A SSH service seems to be running on this port." );
+  # nb3: Neither ssh_detect.nasl nor get_ssh_banner() is sometimes able to get the text
+  # banner above so set the SSH banner manually here...
+  replace_kb_item( name:"SSH/server_banner/" + port, value:r );
+  replace_kb_item( name:"SSH/banner/" + port, value:r );
   exit( 0 );
 }
 

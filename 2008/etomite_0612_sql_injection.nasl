@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: etomite_0612_sql_injection.nasl 9502 2018-04-17 07:42:19Z cfischer $
-# Description: Etomite CMS id Parameter SQL Injection
+# $Id: etomite_0612_sql_injection.nasl 10781 2018-08-06 07:41:20Z cfischer $
+#
+# Etomite CMS id Parameter SQL Injection
 #
 # Authors:
 # Justin Seitz <jms@bughunter.ca>
@@ -20,57 +22,59 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The remote web server contains a PHP script that is affected by a SQL
-injection vulnerability. 
-
-Description:
-
-The remote web server is running Etomite CMS, a PHP-based content
-management system. 
-
-The version of Etomite CMS installed on the remote host fails to
-sanitize input to the 'id' parameter before using it in the
-'index.php' script in a database query.  Provided PHP's
-'magic_quotes_gpc' setting is disabled, an unauthenticated attacker
-can exploit this issue to manipulate SQL queries, possibly leading to
-disclosure of sensitive data, attacks against the underlying database,
-and the like.";
-
-tag_solution = "No patches or upgrades have been reported by the vendor at this time.";
+###############################################################################
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.80057");
- script_version("$Revision: 9502 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-17 09:42:19 +0200 (Tue, 17 Apr 2018) $");
- script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_cve_id("CVE-2006-6048");
- script_bugtraq_id(21135);
- script_xref(name:"OSVDB", value:"30442");
- script_name("Etomite CMS id Parameter SQL Injection");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_copyright("This script is Copyright (C) 2006 Justin Seitz");
- script_family("Web application abuses");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/451838/30/0/threaded");
+  script_oid("1.3.6.1.4.1.25623.1.0.80057");
+  script_version("$Revision: 10781 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 09:41:20 +0200 (Mon, 06 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2006-6048");
+  script_bugtraq_id(21135);
+  script_xref(name:"OSVDB", value:"30442");
+  script_name("Etomite CMS id Parameter SQL Injection");
+  script_category(ACT_ATTACK);
+  script_copyright("This script is Copyright (C) 2006 Justin Seitz");
+  script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- exit(0);
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by
+  another one.");
+
+  script_tag(name:"summary", value:"The remote web server contains a PHP script that is affected by a SQL
+  injection vulnerability.
+
+  Description:
+
+  The remote web server is running Etomite CMS, a PHP-based content
+  management system.
+
+  The version of Etomite CMS installed on the remote host fails to
+  sanitize input to the 'id' parameter before using it in the
+  'index.php' script in a database query.");
+
+  script_tag(name:"impact", value:"Provided PHP's 'magic_quotes_gpc' setting is disabled, an unauthenticated
+  attacker can exploit this issue to manipulate SQL queries, possibly leading to disclosure of sensitive data,
+  attacks against the underlying database, and the like.");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/451838/30/0/threaded");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"remote_vul");
+
+  exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
 if(!can_host_php(port:port)) exit(0);
@@ -83,22 +87,20 @@ foreach dir( make_list_unique( "/etomite", "/cms", cgi_dirs( port:port ) ) ) {
   url = string(dir, "/index.php?id=", injectstring, "'");
   req = http_get(item:url,port:port);
   res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
-  if (res == NULL) continue;
-	
+  if (isnull(res)) continue;
+
   sqlstring = "";
   if(string("etomite_site_content.id = '", injectstring) >< res) {
-    if (report_verbosity > 1) {
-      sqlstring = res;
-      if("<span id='sqlHolder'>" >< sqlstring) sqlstring = strstr(sqlstring,"SELECT");
-      if("</span></b>" >< sqlstring) sqlstring = sqlstring - strstr(sqlstring, "</span></b>");			
-      info = string("The version of Etomite CMS installed in directory '", dir, "'\n",
-                    "is vulnerable to this issue. Here is the resulting SQL string\n",
-                    "from the remote host when using a test string of '",injectstring,"'  :\n\n", sqlstring);
-    }
-    else info = "";
+    sqlstring = res;
+    if("<span id='sqlHolder'>" >< sqlstring)
+      sqlstring = strstr(sqlstring,"SELECT");
+    if("</span></b>" >< sqlstring)
+      sqlstring = sqlstring - strstr(sqlstring, "</span></b>");
 
+    info = string("The version of Etomite CMS installed in directory '", dir, "'\n",
+                  "is vulnerable to this issue. Here is the resulting SQL string\n",
+                  "from the remote host when using a test string of '",injectstring,"'  :\n\n", sqlstring);
     security_message(data:info, port:port);
-    set_kb_item(name: 'www/'+port+'/SQLInjection', value: TRUE);
     exit(0);
   }
 }

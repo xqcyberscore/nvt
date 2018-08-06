@@ -1,9 +1,9 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_na_sharing_security_model_local.nasl 10158 2018-06-12 07:57:57Z emoss $
+# $Id: win_na_sharing_security_model_local.nasl 10762 2018-08-03 14:03:15Z emoss $
 #
 # Check value for Network access: Sharing and security model for local accounts
-# 
+#
 # Authors:
 # Emanuel Moss <emanuel.moss@greenbone.net>
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109228");
-  script_version("$Revision: 10158 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-12 09:57:57 +0200 (Tue, 12 Jun 2018) $");
+  script_version("$Revision: 10762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-03 16:03:15 +0200 (Fri, 03 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-11 15:15:37 +0200 (Mon, 11 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,14 +38,15 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_add_preference(name:"Value", type:"radio", value:"0;1");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'Network access: Sharing and security model for local accounts' on Windows hosts (at 
+  script_tag(name: "summary", value: "This test checks the setting for policy
+'Network access: Sharing and security model for local accounts' on Windows hosts (at
 least Windows 7).
 
-The policy setting controls how network logons that use local accounts are 
-authenticated. If set to Classic, network logons that use local account 
-credentials authenticate with those credentials. If set to Guest only, network 
+The policy setting controls how network logons that use local accounts are
+authenticated. If set to Classic, network logons that use local account
+credentials authenticate with those credentials. If set to Guest only, network
 logons that use local accounts are automatically mapped to the Guest account.");
   exit(0);
 }
@@ -60,8 +61,8 @@ to query the registry.');
 }
 
 if(get_kb_item("SMB/WindowsVersion") < "6.1"){
-  policy_logging(text:'Host is not at least a Microsoft Windows 7 system. 
-Older versions of Windows are not supported any more. Please update the 
+  policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
+Older versions of Windows are not supported any more. Please update the
 Operating System.');
   exit(0);
 }
@@ -72,14 +73,24 @@ Computer Configuration/Windows Settings/Security Settings/Local Policies/Securit
 type = 'HKLM';
 key = 'System\\CurrentControlSet\\Control\\Lsa';
 item = 'ForceGuest';
+default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
 if(!value){
-  val = 'none';
+  val = '0';
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+if(int(value) == int(default)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

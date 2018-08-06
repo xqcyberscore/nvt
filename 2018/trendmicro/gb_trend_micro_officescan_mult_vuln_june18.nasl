@@ -1,9 +1,9 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_officescan_mult_vuln_june18.nasl 10371 2018-06-29 13:27:39Z santu $
+# $Id: gb_trend_micro_officescan_mult_vuln_june18.nasl 10778 2018-08-06 02:57:15Z ckuersteiner $
 #
 # Trend Micro OfficeScan Multiple Vulnerabilities June18
-# 
+#
 # Authors:
 # Rinu Kuriakose <krinu@secpod.com>
 #
@@ -29,48 +29,48 @@ CPE = "cpe:/a:trend_micro:office_scan";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813615");
-  script_version("$Revision: 10371 $");
-  script_cve_id("CVE-2018-10358", "CVE-2018-10359", "CVE-2018-10505", "CVE-2018-10506",
+  script_version("$Revision: 10778 $");
+  script_cve_id("CVE-2018-10358", "CVE-2018-10359", "CVE-2018-10505", "CVE-2018-10506", 
                 "CVE-2018-10507", "CVE-2018-10508", "CVE-2018-10509");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-29 15:27:39 +0200 (Fri, 29 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 04:57:15 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 10:57:13 +0530 (Tue, 26 Jun 2018)");
   script_name("Trend Micro OfficeScan Multiple Vulnerabilities June18");
 
-  script_tag(name: "summary" , value: "This host is installed with Trend Micro
+  script_tag(name:"summary", value:"This host is installed with Trend Micro
   OfficeScan and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the help
+  script_tag(name:"vuldetect", value:"Get the installed version with the help
   of the detect NVT and check if the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value: "Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to, 
 
-  - The lack of proper validation of the length of user-supplied data prior to 
-    using that length to initialize a pool-based buffer within the processing of 
+  - The lack of proper validation of the length of user-supplied data prior to
+    using that length to initialize a pool-based buffer within the processing of
     IOCTL 0x2200B4, IOCTL 0x2200B4, IOCTL 0x220008 in the TMWFP driver.
 
-  - An out-of-bounds read error within processing of IOCTL 0x220004 by the tmwfp 
+  - An out-of-bounds read error within processing of IOCTL 0x220004 by the tmwfp
     driver.
 
-  - A vulnerability that render the OfficeScan Unauthorized Change Prevention 
+  - A vulnerability that render the OfficeScan Unauthorized Change Prevention
     inoperable on vulnerable installations.
 
   - A URL vulnerability to elevate account permissions on vulnerable installations.
 
   - An OfficeScan Browser Refresh vulnerability.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to disclose sensitive information, escalate privileges and to bypass other
   security restrictions on vulnerable installations of Trend Micro OfficeScan.
 
   Impact Level: System/Application.");
 
-  script_tag(name: "affected" , value:"Trend Micro OfficeScan versions XG SP1
+  script_tag(name:"affected", value:"Trend Micro OfficeScan versions XG SP1
   prior to XG SP1 CP 5147, XG (GM Version) prior to XG CP 1876 (Pre-SP1), 11.0
   SP1 prior to 11.0 SP1 CP 6540.");
 
-  script_tag(name: "solution" , value:"Upgrade to OfficeScan XG SP1 CP 5147 or
+  script_tag(name:"solution", value:"Upgrade to OfficeScan XG SP1 CP 5147 or
   XG CP 1876 (Pre-SP1) or 110.0 SP1 CP 6540 or later.
   For updates refer to Reference links.");
 
@@ -78,8 +78,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "https://success.trendmicro.com/solution/1119961");
-  script_xref(name: "URL" , value : "http://esupport.trendmicro.com");
+  script_xref(name:"URL", value:"https://success.trendmicro.com/solution/1119961");
+  script_xref(name:"URL", value:"http://esupport.trendmicro.com");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -104,7 +104,7 @@ if(trendVer =~ "^(11|12)\.")
     fix = "110.0 SP1 CP 6540";
   }
   ## http://files.trendmicro.com/products/officescan/XG/SP1/osce_xg_sp1_win_en_criticalpatch_b4406.html - XG SP1 = 12.0.4345
-  ## http://files.trendmicro.com/products/officescan/XG/SP1/osce_xg_sp1_win_en_criticalpatch_5147.html - XG SP1 CP 5147 = 12.0.5147 
+  ## http://files.trendmicro.com/products/officescan/XG/SP1/osce_xg_sp1_win_en_criticalpatch_5147.html - XG SP1 CP 5147 = 12.0.5147
   else if(version_in_range(version:trendVer, test_version:"12.0.4345", test_version2:"12.0.5146" )){
     fix = "XG SP1 CP 5147";
   }

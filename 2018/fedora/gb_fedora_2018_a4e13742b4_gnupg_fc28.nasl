@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_a4e13742b4_gnupg_fc28.nasl 10279 2018-06-21 07:32:57Z santu $
+# $Id: gb_fedora_2018_a4e13742b4_gnupg_fc28.nasl 10778 2018-08-06 02:57:15Z ckuersteiner $
 #
 # Fedora Update for gnupg FEDORA-2018-a4e13742b4
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874711");
-  script_version("$Revision: 10279 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 09:32:57 +0200 (Thu, 21 Jun 2018) $");
+  script_version("$Revision: 10778 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 04:57:15 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-20 06:21:22 +0200 (Wed, 20 Jun 2018)");
   script_cve_id("CVE-2018-12020");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for gnupg FEDORA-2018-a4e13742b4");
   script_tag(name:"summary", value:"Check the version of gnupg");

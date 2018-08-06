@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tftpd_dir_trav.nasl 10411 2018-07-05 10:15:10Z cfischer $
+# $Id: tftpd_dir_trav.nasl 10783 2018-08-06 08:17:12Z cfischer $
 #
 # TFTP directory traversal
 #
@@ -29,15 +29,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18262");
-  script_version("$Revision: 10411 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 10783 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 10:17:12 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-1999-0498", "CVE-1999-0183");
   script_bugtraq_id(6198, 11584, 11582);
   script_name("TFTP directory traversal");
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2005 Michel Arboi");
   script_family("Remote file access");
   script_dependencies("tftpd_detect.nasl", "global_settings.nasl");
@@ -48,7 +48,7 @@ if(description)
   run it in a chrooted environment");
 
   script_tag(name:"summary", value:"The TFTP (Trivial File Transfer Protocol) allows
-  remote users to read files without having to log in. This may be a big security flaw,
+  remote users to read files without having to log in. This may be a big security flaw, 
   especially if tftpd (the TFTP server) is not well configured by the admin of the remote host.");
 
   script_tag(name:"solution_type", value:"Workaround");
@@ -89,8 +89,10 @@ function tftp_grab( port, file ) {
       if( data[0] == '\0' && data[1] == '\x03' ) {
         local_var c;
         c = substr( data, 4 );
-        set_kb_item( name:'tftp/' + port + '/filename/'+ nb, value:file );
-        set_kb_item( name:'tftp/' + port + '/filecontent/'+ nb, value:c );
+        set_kb_item( name:"tftp/" + port + "/filename/" + nb, value:file );
+        set_kb_item( name:"tftp/filename_available", value:TRUE );
+        set_kb_item( name:"tftp/" + port + "/filecontent/" + nb, value:c );
+        set_kb_item( name:"tftp/filcontent_available", value:TRUE );
         nb++;
         return c;
       } else {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: no404.nasl 7190 2017-09-19 15:19:13Z cfischer $
+# $Id: no404.nasl 10757 2018-08-03 11:35:43Z cfischer $
 #
 # No 404 check
 #
@@ -29,8 +29,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10386");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7190 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-19 17:19:13 +0200 (Tue, 19 Sep 2017) $");
+  script_version("$Revision: 10757 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-03 13:35:43 +0200 (Fri, 03 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("No 404 check");
@@ -70,7 +70,7 @@ function check( url, port ) {
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( data:req, port:port );
 
-  if( res == NULL ) counter++;
+  if( isnull( res ) ) counter++;
   #TBD: Also set webserver as broken on exit?
   if( counter > 2 ) exit(0);
 
@@ -90,7 +90,7 @@ function find_err_msg( buffer ) {
   return( 0 );
 }
 
-# build list of test urls, avoids that basename contains the word "404"
+# nb: This build list of test urls, avoids that basename contains the word "404"
 basename = "404";
 while( "404" >< basename ) basename = "/" + rand_str( length:12 );
 
@@ -138,9 +138,9 @@ basename + ".cfm",
 "/scripts" + basename + ".php7",
 "/scripts" + basename + ".cfm" );
 
-function my_exit(then) {
+function my_exit( then, port, host ) {
 
-  local_var now, then;
+  local_var now, then, port, host;
 
   now = unixtime();
   if( now - then > 60 ) {
@@ -152,12 +152,13 @@ function my_exit(then) {
              "in a reasonable amount of time.";
 
     log_message( port:port, data:report );
-    set_kb_item( name:"Services/www/" + port + "/broken", value:TRUE );
+    set_kb_item( name:"www/" + host + "/" + port + "/is_broken", value:TRUE );
   }
   exit( 0 );
 }
 
 port = get_http_port( default:80 );
+host = http_host_name( dont_add_port:TRUE );
 
 found = "www/no404/" + port;
 
@@ -180,29 +181,30 @@ foreach badurl( badurls ) {
     # MailEnable-HTTP does not handle connections fast enough
     if( egrep( pattern:"^Server: MailEnable-HTTP/", string:ret ) ) {
       set_kb_item( name:found, value:"HTTP" );
-      set_kb_item( name:"Services/www/" + port + "/broken", value:TRUE );
+      set_kb_item( name:"www/" + host + "/" + port + "/is_broken", value:TRUE );
       log_message( port:port );
       exit( 0 );
     }
 
     if( egrep( pattern:"^Server: CompaqHTTPServer/", string:ret ) ) {
       set_kb_item( name:found, value:"HTTP" );
-      set_kb_item( name:"Services/www/" + port + "/broken", value:TRUE );
+      set_kb_item( name:"www/" + host + "/" + port + "/is_broken", value:TRUE );
       log_message( port:port );
       exit( 0 );
     }
 
     # This is not a web server
     if( egrep( pattern:"^DAAP-Server:", string:ret ) ) {
-      set_kb_item( name:"Services/www/" + port + "/broken", value:TRUE );
+      set_kb_item( name:"www/" + host + "/" + port + "/is_broken", value:TRUE );
       log_message( port:port );
       exit( 0 );
     }
 
     raw_http_line = egrep( pattern:"^HTTP/", string:ret );
-    # check for a 200 OK
+
     if( ereg( pattern:"^HTTP/[0-9]\.[0-9] 200 ", string:raw_http_line ) ) {
-      # look for common "not found": indications
+
+      # nb: look for common "not found" indications
       not_found = find_err_msg( buffer:ret );
       if( not_found != 0 ) {
 
@@ -210,9 +212,9 @@ foreach badurl( badurls ) {
         log_message( port:port );
 
         if( debug_level ) display( 'no404 - 200: Using string: ' + not_found + '\n' );
-        my_exit(then:then);
+        my_exit( then:then, port:port, host:host );
       } else {
-        # try to match the title
+
         title = egrep( pattern:"<title", string:ret, icase:TRUE );
         if( title ) {
           title = ereg_replace(string:title, pattern:".*<title>(.*)</title>.*", replace:"\1", icase:TRUE);
@@ -220,11 +222,10 @@ foreach badurl( badurls ) {
             if( debug_level ) display( 'no404 - using string from title tag: ' + title + '\n' );
             set_kb_item( name:found, value:title );
             log_message( port:port );
-            my_exit(then:then);
+            my_exit( then:then, port:port, host:host );
           }
         }
 
-        # try to match the body tag
         body = egrep( pattern:"<body", string:ret, icase:TRUE );
         if( body ) {
           body = ereg_replace( string:body, pattern:"<body(.*)>", replace:"\1", icase:TRUE );
@@ -232,11 +233,11 @@ foreach badurl( badurls ) {
             if( debug_level ) display( 'no404 - using string from body tag: ' + body + '\n' );
             set_kb_item( name:found, value:body );
             log_message( port:port );
-            my_exit(then:then);
+            my_exit( then:then, port:port, host:host );
           }
         }
 
-        # get mad and give up
+        # nb: get mad and give up
         if( debug_level ) display( 'no404 - argh! could not find something to match against.\n' );
         if( debug_level ) display( 'no404 - [response] ' + ret + '\n' );
 
@@ -244,21 +245,20 @@ foreach badurl( badurls ) {
 
         log_message( port:port, data:msg );
         set_kb_item( name:found, value:"HTTP" );
-        my_exit(then:then);
+        my_exit( then:then, port:port, host:host );
       }
     }
 
-    # check for a 302 Moved Temporarily or 301 Move Permanently
     if( ereg( pattern:"^HTTP/[0-9]\.[0-9] 30[12] ", string:raw_http_line ) ) {
       msg = "CGI scanning will be disabled for this host.";
 
       log_message( port:port, data:msg );
       set_kb_item( name:found, value:"HTTP" );
-      my_exit(then:then); # TODO: This is currently exiting on the first request on the root dir if that is always redirecting to e.g. /folder/
+      my_exit( then:then, port:port, host:host ); # TODO: This is currently exiting on the first request on the root dir if that is always redirecting to e.g. /folder/
     }
   } else {
     if( debug_level ) display( 'no404 - An error occurred when trying to request: ' + badurl + '\n' );
   }
 }
 
-my_exit(then:then);
+my_exit( then:then, port:port, host:host );

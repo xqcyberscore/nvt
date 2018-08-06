@@ -26,13 +26,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882592");
-  script_version("$Revision: 8029 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 13:38:42 +0100 (Thu, 07 Dec 2017) $");
+  script_version("$Revision: 10778 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 04:57:15 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-11-20 05:36:58 +0100 (Sun, 20 Nov 2016)");
   script_cve_id("CVE-2016-5290", "CVE-2016-5291", "CVE-2016-5296", "CVE-2016-5297", 
                 "CVE-2016-9064", "CVE-2016-9066");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for firefox CESA-2016:2780 centos6 ");
   script_tag(name: "vuldetect", value: "Get the installed version with the help 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_heal_is_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: gb_quick_heal_is_detect.nasl 10758 2018-08-03 12:49:20Z santu $
 #
 # Quick Heal Internet Security Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811550");
-  script_version("$Revision: 9633 $");
+  script_version("$Revision: 10758 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-03 14:49:20 +0200 (Fri, 03 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-08-03 15:26:47 +0530 (Thu, 03 Aug 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Quick Heal Internet Security Version Detection");
@@ -80,14 +80,13 @@ if("Quick Heal Internet Security" >< qhName)
     {
 
       set_kb_item(name:"QuickHeal/InternetSecurity/Installed", value:TRUE);
+      set_kb_item(name:"QuickHeal/InternetSecurity/Ver", value:qhVer);
+      register_and_report_cpe( app:qhName, ver:qhVer, base:"cpe:/a:quick_heal:internet_security:", expr:"^([0-9.]+)", insloc:qhPath );
 
       ## 64 bit apps on 64 bit platform
       if("x64" >< os_arch) {
         set_kb_item(name:"QuickHeal/InternetSecurity64/Ver", value:qhVer);
         register_and_report_cpe( app:qhName, ver:qhVer, base:"cpe:/a:quick_heal:internet_security:x64:", expr:"^([0-9.]+)", insloc:qhPath );
-      } else {
-        set_kb_item(name:"QuickHeal/InternetSecurity/Ver", value:qhVer);
-        register_and_report_cpe( app:qhName, ver:qhVer, base:"cpe:/a:quick_heal:internet_security:", expr:"^([0-9.]+)", insloc:qhPath );
       }
     }
   }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sensitive_file_disclosures_http.nasl 10660 2018-07-27 13:15:32Z cfischer $
+# $Id: gb_sensitive_file_disclosures_http.nasl 10766 2018-08-03 15:11:10Z cfischer $
 #
 # Sensitive File Disclosure (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107305");
-  script_version("$Revision: 10660 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 15:15:32 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 10766 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-03 17:11:10 +0200 (Fri, 03 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-20 16:04:01 +0200 (Fri, 20 Apr 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"cvss_base", value:"5.0");
@@ -60,7 +60,7 @@ if(description)
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_timeout(600);
+  script_timeout(900);
 
   exit(0);
 }

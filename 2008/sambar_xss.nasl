@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sambar_xss.nasl 5134 2017-01-30 08:20:15Z cfi $
+# $Id: sambar_xss.nasl 10781 2018-08-06 07:41:20Z cfischer $
 #
 # Sambar XSS
 #
@@ -33,11 +33,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80083");
-  script_version("$Revision: 5134 $");
+  script_version("$Revision: 10781 $");
   script_cve_id("CVE-2003-1284", "CVE-2003-1285");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-30 09:20:15 +0100 (Mon, 30 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 09:41:20 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_bugtraq_id(7209);
   script_name("Sambar XSS");
@@ -48,7 +48,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("www/sambar");
 
-  script_tag(name:"solution", value:"Delete these CGIs");
+  script_tag(name:"solution", value:"Delete these CGIs.");
 
   script_tag(name:"summary", value:"The Sambar web server comes with a set of CGIs that are vulnerable
   to a cross-site scripting attack.");
@@ -65,7 +65,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
-
 if( get_kb_item( "www/" + port + "/generic_xss" ) ) exit( 0 );
 
 cgis = make_list(
@@ -106,20 +105,17 @@ foreach cgi( cgis ) {
 
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-  if( res == NULL ) continue;
+  if( isnull( res ) ) continue;
 
-  if( res =~ "HTTP/1\.. 200" && "<script>foo</script>" >< res ) {
+  if( res =~ "^HTTP/1\.[01] 200" && "<script>foo</script>" >< res ) {
     tmpReport += report_vuln_url( port:port, url:url, url_only:TRUE ) + '\n';
   }
 }
 
-if( tmpReport != NULL ) {
-
+if( ! isnull( tmpReport ) ) {
   report = "The following Sambar default CGIs are vulnerable to a cross-site scripting attack:";
   report += '\n\n' + tmpReport;
-
   security_message( port:port, data:report );
-  set_kb_item( name:'www/' + port + '/XSS', value:TRUE );
   exit( 0 );
 }
 

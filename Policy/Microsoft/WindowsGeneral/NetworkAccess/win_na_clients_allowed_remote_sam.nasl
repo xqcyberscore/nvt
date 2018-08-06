@@ -1,8 +1,10 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_na_clients_allowed_remote_sam.nasl 10158 2018-06-12 07:57:57Z emoss $
+# $Id: win_na_clients_allowed_remote_sam.nasl 10762 2018-08-03 14:03:15Z emoss $
 #
-# Check value for Network access: Restrict clients allowed to make remote calls to SAM
+# Check value for Network access: Restrict clients allowed to make
+# remote calls to SAM
+#
 # Authors:
 # Emanuel Moss <emanuel.moss@greenbone.net>
 #
@@ -26,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109226");
-  script_version("$Revision: 10158 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-12 09:57:57 +0200 (Tue, 12 Jun 2018) $");
+  script_version("$Revision: 10762 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-03 16:03:15 +0200 (Fri, 03 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-11 14:40:40 +0200 (Mon, 11 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -37,12 +39,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_add_preference(name:"Value", type:"entry", value:"O:BAG:BAD:(A;;RC;;;BA)");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'Network access: Restrict clients allowed to make remote calls to SAM' on Windows 
+  script_tag(name: "summary", value: "This test checks the setting for policy
+'Network access: Restrict clients allowed to make remote calls to SAM' on Windows
 hosts (at least Windows 7).
 
-The policy setting controls which users can enumerate users and groups in the 
+The policy setting controls which users can enumerate users and groups in the
 local Security Accounts Manager (SAM) database and Active Directory.");
   exit(0);
 }
@@ -57,26 +60,37 @@ to query the registry.');
 }
 
 if(get_kb_item("SMB/WindowsVersion") < "6.1"){
-  policy_logging(text:'Host is not at least a Microsoft Windows 7 system. 
-Older versions of Windows are not supported any more. Please update the 
+  policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
+Older versions of Windows are not supported any more. Please update the
 Operating System.');
   exit(0);
 }
 
 title = 'Network access: Restrict clients allowed to make remote calls to SAM';
 fixtext = 'Set following UI path accordingly:
-Computer Configuration/Windows Settings/Security Settings/Local Policies/Security Options/Network access: Restrict clients allowed to make remote calls to SAM';
+Computer Configuration/Windows Settings/Security Settings/Local Policies/Security Options/' + title;
 type = 'HKLM';
 key = 'System\\CurrentControlSet\\Control\\Lsa';
 item = 'RestrictRemoteSam';
+default = script_get_preference('Value');
 value = registry_get_sz(key:key, item:item, type:type);
+value = chomp(value);
 if(!value){
-  value = 'none';
+  val = 'None';
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+if(value == default){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);
