@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 06 Aug 2018 10:38:35 +0200
+# Automatically created on:  Tue, 07 Aug 2018 08:28:38 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38969,6 +38969,7 @@
 2018/debian/deb_4263.nasl: GPLv2+
 2018/debian/deb_4264.nasl: GPLv2+
 2018/debian/deb_4265.nasl: GPLv2+
+2018/debian/deb_4266.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -40427,6 +40428,7 @@
 2018/gb_mesosphere_marathon_exposure_vuln.nasl: GPLv2+
 2018/gb_mult_dvr_auth_bypass.nasl: GPLv2+
 2018/gb_mult_dvr_info_discl_vuln.nasl: GPLv2+
+2018/gb_portainer_no_admin_vuln.nasl: GPLv2+
 2018/gb_portscanner_missing.nasl: GPLv2+
 2018/gb_puppet_enterprise_dos_vuln.nasl: GPLv2+
 2018/gb_puppet_enterprise_mult_vuln.nasl: GPLv2+
@@ -41240,6 +41242,7 @@
 2018/oracle/gb_oracle_webcenter_content_cpujan2018-3236628_01.nasl: GPLv2+
 2018/oracle/gb_oracle_webcenter_content_cpujan2018-3236628_02.nasl: GPLv2+
 2018/otrs/gb_otrs_info_disc_vuln.nasl: GPLv2+
+2018/otrs/gb_otrs_priv_esc_vuln.nasl: GPLv2+
 2018/otrs/gb_otrs_rce_vuln.nasl: GPLv2+
 2018/owncloud/gb_owncloud_openid_access_control_bypass_vuln_lin.nasl: GPLv2+
 2018/owncloud/gb_owncloud_openid_access_control_bypass_vuln_win.nasl: GPLv2+
@@ -41343,6 +41346,8 @@
 2018/sangoma/gb_sangoma_nsc_rce_vuln.nasl: GPLv2+
 2018/seagate/gb_seagate_personalcloud_dir_trav_vuln.nasl: GPLv2+
 2018/seagate/gb_seagate_personalcloud_rce_vuln.nasl: GPLv2+
+2018/sensiolabs/gb_sensiolabs_symfony_eol.nasl: GPLv2+
+2018/sensiolabs/gb_symfony_mult_vuln.nasl: GPLv2+
 2018/shibboleth/gb_shibboleth_sp_xmltooling_lib_sec_bypass_vuln.nasl: GPLv2+
 2018/smf/gb_simple_machines_forum_security_bypass_vuln_may18.nasl: GPLv2+
 2018/sollaesystems/gb_sollaesystems_devices_default_telnet_credentials.nasl: GPLv2+
@@ -41353,6 +41358,7 @@
 2018/squid/gb_squid_2018_2_lin.nasl: GPLv2+
 2018/squid/gb_squid_2018_2_win.nasl: GPLv2+
 2018/squid/gb_squid_dos_vuln_squid_2018_3.nasl: GPLv2+
+2018/squirrelmail/gb_squirrelmail_mult_xss_vuln.nasl: GPLv2+
 2018/sugarcrm/gb_sugarcrm_multiple_sql_inj_vuln.nasl: GPLv2+
 2018/sugarcrm/gb_sugarcrm_xxe_vuln.nasl: GPLv2+
 2018/support/gb_superantispyware_mult_vuln.nasl: GPLv2+
@@ -41587,6 +41593,7 @@
 2018/ubuntu/gb_ubuntu_USN_3723_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3724_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3725_1.nasl: GPLv2+
+2018/universal_media_server/gb_universal_media_server_xxe_vuln.nasl: GPLv2+
 2018/vbulletin/gb_vbulletin_url_param_open_redirect_vuln.nasl: GPLv2+
 2018/vertiv/gb_emerson_liebert_intellislot_default_credentials.nasl: GPLv2+
 2018/viconindustries/gb_vicon_industries_network_camera_default_credentials.nasl: GPLv2+
@@ -42834,6 +42841,7 @@ gb_nidesoft_mp3_conv_detect_win.nasl: GPLv2+
 gb_nist_win_oval_sys_char_generator.nasl: GPLv2+
 gb_nitro_pro_detect_win.nasl: GPLv2+
 gb_nmap_os_detection.nasl: GPLv2+
+gb_nntp_os_detection.nasl: GPLv2+
 gb_nodejs_detect_macosx.nasl: GPLv2+
 gb_nodejs_detect_win.nasl: GPLv2+
 gb_norman_security_suite_detect.nasl: GPLv2+
@@ -43312,6 +43320,7 @@ gb_ucs_detect.nasl: GPLv2+
 gb_ultraiso_detect.nasl: GPLv2+
 gb_uniform_server_detect.nasl: GPLv2+
 gb_unitrends_detect.nasl: GPLv2+
+gb_universal_media_server_detect.nasl: GPLv2+
 gb_unknown_os_service_reporting.nasl: GPLv2+
 gb_unrealircd_detect.nasl: GPLv2+
 gb_untangle_web_detect.nasl: GPLv2+
@@ -59021,8 +59030,10 @@ gsf/2018/hp/gb_hpe_universal_csrf_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hp_ilo2_multiple_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hp_ilo_CVE-2017-12542.nasl: GPLv2+
 gsf/2018/hp/gb_hp_ilo_CVE-2017-8987.nasl: GPLv2+
+gsf/2018/hp/gb_hp_ilo_rce_vuln.nasl: GPLv2+
 gsf/2018/hp/gb_hp_imc_mult_vuln_hpesbhf03745_win.nasl: GPLv2+
 gsf/2018/hp/gb_hp_network_automation_mult_vuln_hpesbgn03740.nasl: GPLv2+
+gsf/2018/hp/gb_hp_nnmi_c05325811.nasl: GPLv2+
 gsf/2018/hp/gb_hp_sitescope_info_disc_vuln_feb18.nasl: GPLv2+
 gsf/2018/hp/gb_hp_sitescope_mult_vuln_feb18.nasl: GPLv2+
 gsf/2018/hp/gb_hp_van_sdn_controller_cmd_inj_vuln.nasl: GPLv2+

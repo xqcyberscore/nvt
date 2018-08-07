@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 10724 2018-08-02 06:39:54Z cfischer $
+# $Id: sw_http_os_detection.nasl 10792 2018-08-06 12:08:30Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 10724 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 08:39:54 +0200 (Thu, 02 Aug 2018) $");
+  script_version("$Revision: 10792 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 14:08:30 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -65,6 +65,9 @@ function check_http_banner( port ) {
 
     # API TCP listener is cross-platform
     if( "Server: Icinga" >< banner ) return;
+
+    # Runs on Windows, Linux and Mac OS X
+    if( "Kerio Connect" >< banner || "Kerio MailServer" >< banner ) return;
 
     # Server: EWS-NIC5/15.18
     # Server: EWS-NIC5/96.55

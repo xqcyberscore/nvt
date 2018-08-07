@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_discourse_detect.nasl 10775 2018-08-04 21:43:07Z cfischer $
+# $Id: gb_discourse_detect.nasl 10795 2018-08-06 14:09:55Z cfischer $
 #
 # Discourse Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108454");
-  script_version("$Revision: 10775 $");
+  script_version("$Revision: 10795 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-04 23:43:07 +0200 (Sat, 04 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 16:09:55 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-04 23:29:30 +0200 (Sat, 04 Aug 2018)");
   script_name("Discourse Detection");
   script_category(ACT_GATHER_INFO);
@@ -55,7 +55,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("cpe.inc");
 include("host_details.inc");
 
 port = get_http_port( default:80 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_parallels_plesk_sitebuilder_mult_vuln.nasl 9710 2018-05-03 11:12:48Z asteins $
+# $Id: gb_parallels_plesk_sitebuilder_mult_vuln.nasl 10787 2018-08-06 10:11:55Z asteins $
 #
 # Parallels Plesk Sitebuilder Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:parallels:parallels_plesk_sitebuilder";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812279");
-  script_version("$Revision: 9710 $");
+  script_version("$Revision: 10787 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-03 13:12:48 +0200 (Thu, 03 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 12:11:55 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-12-27 12:18:56 +0530 (Wed, 27 Dec 2017)");
   script_name("Parallels Plesk Sitebuilder Multiple Vulnerabilities");
 
@@ -42,11 +42,11 @@ if(description)
   script_tag(name:"vuldetect", value:"Send the crafted http	GET request
   and check whether it is able to bypass authentication or not.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
-  
+  script_tag(name:"insight", value:"Multiple flaws exists due to, 
+
   - Multiple input validation errors in all modules of the page 'Wizard/Edit.aspx'.
-  
-  - An improper access control on pages 'Wizard/Pages.aspx' and 'Wizard/Edit.aspx 
+
+  - An improper access control on pages 'Wizard/Pages.aspx' and 'Wizard/Edit.aspx<F9>
     and loginpage.
 
   - Multiple input validation errors while downloading and uploading of files.");
@@ -59,16 +59,16 @@ if(description)
 
   script_tag(name:"affected", value:"Parallels Plesk Sitebuilder 4.5");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of
-  03rd May, 2018. Information regarding this issue will be updated once solution
-  details are available. For updates refer to,
+  script_tag(name:"solution", value:"No known solution is available as of
+  06th August, 2018. Information regarding this issue will be updated once solution
+  details are available. For updates refer to, 
   http://www.parallels.com");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/34593");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/34593");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");

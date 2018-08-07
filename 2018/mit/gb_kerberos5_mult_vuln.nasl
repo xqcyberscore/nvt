@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerberos5_mult_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_kerberos5_mult_vuln.nasl 10787 2018-08-06 10:11:55Z asteins $
 #
 # Kerberos5 through 1.16 Multiple Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113084");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 10787 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 12:11:55 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-01-17 14:14:14 +0100 (Wed, 17 Jan 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -57,7 +57,7 @@ if( description )
   The information disclosure vulnerability exists because 32 bits are allocated to a 16-bit variable.");
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker to access sensitive information cause a Denial of Service.");
   script_tag(name:"affected", value:"MIT Kerberos5 through version 1.16");
-  script_tag(name:"solution", value:"No solution or patch is available as of 03rd May, 2018. Information
+  script_tag(name:"solution", value:"No known solution is available as of 06th August, 2018. Information
 regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://github.com/poojamnit/Kerberos-V5-1.16-Vulnerabilities/tree/master/Integer%20Overflow");

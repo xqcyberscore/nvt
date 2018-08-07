@@ -1,14 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerio_mailserver_detect.nasl 5345 2017-02-18 22:41:52Z cfi $
+# $Id: gb_kerio_mailserver_detect.nasl 10794 2018-08-06 13:18:58Z cfischer $
 #
-# Kerio Mail Server Version Detection
+# Kerio MailServer/Connect Version Detection
 #
 # Authors:
 # Chandan S <schandan@secpod.com>
-#
-# Updated to Detect the Patch Version
-#    - By Antu Sanadi <santu@secpod.com> On 2009-08-07
 #
 # Copyright:
 # Copyright (c) 2009 Greenbone Networks GmbH, http://www.greenbone.net
@@ -30,19 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800098");
-  script_version("$Revision: 5345 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-18 23:41:52 +0100 (Sat, 18 Feb 2017) $");
+  script_version("$Revision: 10794 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 15:18:58 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-01-08 07:43:30 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("Kerio Mail Server Version Detection");
+  script_name("Kerio MailServer/Connect Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_family("Service detection");
-  script_dependencies("find_service.nasl", "find_service_3digits.nasl", "smtpserver_detect.nasl");
-  script_require_ports("Services/smtp", 25, 587, "Services/pop3", 110, "Services/imap", 143);
+  script_family("Product detection");
+  script_dependencies("find_service.nasl", "find_service_3digits.nasl", "smtpserver_detect.nasl", "nntpserver_detect.nasl");
+  script_require_ports("Services/www", 80, 443, "Services/smtp", 25, 465, 587, "Services/pop3", 110,
+                       "Services/imap", 143, 993, "Services/nntp", 119);
 
-  script_tag(name:"summary", value:"This script will detect the version of Kerio Mail Server Web Mail
+  script_tag(name:"summary", value:"This script will detect the version of Kerio MailServer or Connect
   on the remote host and sets the KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -52,56 +50,131 @@ if(description)
 
 include("cpe.inc");
 include("host_details.inc");
+include("http_func.inc");
+include("pop3_func.inc");
+include("imap_func.inc");
+include("smtp_func.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800098";
-SCRIPT_DESC = "Kerio Mail Server Version Detection";
+ports = make_array();
+report = "";
+cgi_disabled = get_kb_item( "Settings/disable_cgi_scanning" );
 
 smtpPorts = get_kb_list( "Services/smtp" );
-if( ! smtpPorts ) smtpPorts = make_list( 25, 587 );
+if( ! smtpPorts ) smtpPorts = make_list( 25, 465, 587 );
+foreach smtpPort( smtpPorts )
+  ports[smtpPort] = "smtp";
 
 imapPorts = get_kb_list( "Services/imap" );
-if( ! imapPorts ) imapPorts = make_list( 143 );
+if( ! imapPorts ) imapPorts = make_list( 143, 993 );
+foreach imapPort( imapPorts )
+  ports[imapPort] = "imap";
 
 popPorts = get_kb_list( "Services/pop3" );
 if( ! popPorts ) popPorts = make_list( 110 );
+foreach popPort( popPorts )
+  ports[popPort] = "pop3";
 
-foreach port( make_list( smtpPorts, imapPorts, popPorts ) ) {
+httpPorts = get_kb_list( "Services/www" );
+if( ! httpPorts ) httpPorts = make_list( 80, 443 );
+foreach httpPort( httpPorts )
+  ports[httpPort] = "www";
 
-  banner = get_kb_item(string("Banner/", port));
+nntpPorts = get_kb_list( "Services/nntp" );
+if( ! nntpPorts ) nntpPorts = make_list( 119 );
+foreach nntpPort( nntpPorts )
+  ports[nntpPort] = "nntp";
 
-  if("Kerio MailServer" >< banner || "Kerio Connect" >< banner)
-  {
-    kerioVer = eregmatch(pattern:"Kerio (MailServer|Connect) ([0-9.]+)(-| )?([a-zA-Z]+" +
-                                 " [0-9]+)?", string:banner);
+foreach port( keys( ports ) ) {
 
-    if(!isnull(kerioVer[1])) { 
-      server = kerioVer[1];
-    } else {
-      server = "Mail Server";
-    }  
+  if( ! get_port_state( port ) ) continue;
+  service = ports[port];
 
-    if(kerioVer[2] != NULL)
-    {
-      if(kerioVer[4] != NULL)
-       kerioVer = kerioVer[2] + "." + kerioVer[4];
-      else
-       kerioVer = kerioVer[2];
-    }
-
-    if(kerioVer != NULL)
-    {
-      kerioVer = ereg_replace(pattern:" ", replace:"", string:kerioVer);
-      set_kb_item(name:"KerioMailServer/Ver", value:kerioVer);
-      log_message(data:"Kerio " + server  + " version " + kerioVer +
-                             " was detected on the host");
-     
-      ## build cpe and store it as host_detail
-      cpe = build_cpe(value:kerioVer, exp:"^([0-9.]+([a-z0-9]+)?)", base:"cpe:/a:kerio:kerio_mailserver:");
-      if(!isnull(cpe))
-         register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-
-      exit(0);
-    }
+  if( service == "smtp" ) {
+    banner = get_smtp_banner( port:port );
+  } else if( service == "imap" ) {
+    banner = get_imap_banner( port:port );
+  } else if( service == "pop3" ) {
+    banner = get_pop3_banner( port:port );
+  } else if( service == "www" ) {
+    if( cgi_disabled ) continue;
+    banner = get_http_banner( port:port );
+    banner = egrep( string:banner, pattern: "^Server: .*", icase:TRUE );
+  } else if( service == "nntp" ) { # nb: The NNTP Service seems to be running on Kerio Connect only
+    banner = get_kb_item( "nntp/banner/" + port );
+  } else {
+    continue; # nb: something went wrong
   }
+
+  if( ! banner ) continue;
+  if( "Kerio MailServer" >!< banner && "Kerio Connect" >!< banner ) continue;
+
+  version = "unknown";
+  def_cpe = "cpe:/a:kerio:kerio_mailserver";
+  server  = "MailServer";
+  install = port + "/tcp";
+
+  # Kerio Connect #
+  # IMAP:
+  # * OK IMAP4rev1 server ready
+  # * ID ("name" "Kerio Connect")
+  # but also:
+  # * OK Kerio Connect 8.0.2 IMAP4rev1 server ready
+  # * ID ("name" "Kerio Connect" "version" " 8.0.2 ")
+  # HTTP:
+  # Server: Kerio Connect 9.2.1
+  # SMTP:
+  # 220 example.com Kerio Connect 9.2.1 ESMTP ready
+  # NNTP:
+  # 200 Kerio Connect 8.0.2 NNTP server ready
+  # 200 Kerio Connect 9.2.5 patch 3 NNTP server ready
+  #
+  # Kerio MailServer #
+  # HTTP:
+  # Server: Kerio MailServer 6.5.2
+  # Server: Kerio MailServer 6.6.2
+  # POP3:
+  # +OK Kerio MailServer 6.5.2 POP3 server ready <1168.1533545939@example.com>
+  # SMTP:
+  # 220 example.com Kerio MailServer 6.5.2 ESMTP ready
+  # IMAP:
+  # * OK Kerio MailServer 6.6.2 IMAP4rev1 server ready
+  # * ID ("name" "Kerio MailServer" "version" " 6.6.2 ")
+  vers_nd_type = eregmatch( pattern:"Kerio (MailServer|Connect) ([0-9.]+)(-| )?([a-zA-Z]+ [0-9]+)?", string:banner );
+
+  if( ! isnull( vers_nd_type[1] ) ) {
+    server = vers_nd_type[1];
+    if( server == "Connect" )
+      def_cpe = "cpe:/a:kerio:connect";
+  }
+
+  if( ! isnull( vers_nd_type[2] ) ) {
+    if( ! isnull( vers_nd_type[4] ) ) {
+      version = vers_nd_type[2] + "." + vers_nd_type[4];
+    } else {
+      version = vers_nd_type[2];
+    }
+    version = ereg_replace( pattern:" ", replace:"", string:version );
+  }
+
+  set_kb_item( name:"KerioMailServer/detected", value:TRUE );
+
+  cpe = build_cpe( value:version, exp:"^([0-9.]+([a-z0-9]+)?)", base:def_cpe + ":" );
+  if( isnull( cpe ) )
+    cpe = def_cpe;
+
+  register_product( cpe:cpe, location:install, port:port, service:service );
+
+  if( report ) report += '\n';
+  report += build_detection_report( app:"Kerio " + server,
+                                    version:version,
+                                    install:install,
+                                    cpe:cpe,
+                                    concluded:banner );
+
 }
+
+if( strlen( report ) > 0 ) {
+  log_message( port:0, data:report );
+}
+
+exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ilo_detect.nasl 10036 2018-05-31 10:17:24Z ckuersteiner $
+# $Id: ilo_detect.nasl 10800 2018-08-07 04:21:36Z ckuersteiner $
 #
 # HP Integrated Lights-Out Detection
 #
@@ -33,12 +33,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20285");
-  script_version("$Revision: 10036 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-31 12:17:24 +0200 (Thu, 31 May 2018) $");
+  script_version("$Revision: 10800 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-07 06:21:36 +0200 (Tue, 07 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+
   script_name("HP Integrated Lights-Out Detection");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Product detection");
@@ -62,11 +64,14 @@ port = get_http_port( default:443 );
 r = http_get_cache( item:"/", port:port );
 if( isnull( r ) ) exit( 0 );
 
-if( ( r =~ "(<title>HP iLO Login</title>|<title>iLO [0-9]+</title>)" && "Hewlett-Packard Development Company" >< r ) ||
-    ( "HP Integrated Lights-Out" >< r && egrep( pattern:"Copyright .+ Hewlett-Packard Development Company", string:r ) ) ||
-    ( "<title>HP Remote Insight<" >< r && egrep( pattern:"Hewlett-Packard Development Company", string:r ) ) ||
-    ( r =~ ">HP Integrated Lights-Out [0-9]+ Login<" && r =~ "Copyright.*Hewlett Packard Enterprise Development") ||
-    "Server: HP-iLO-Server" >< r || "Server: HPE-iLO-Server" >< r ) {
+if ((r =~ "(<title>HP iLO Login</title>|<title>iLO [0-9]+</title>)" &&
+     "Hewlett-Packard Development Company" >< r) ||
+    ("HP Integrated Lights-Out" >< r &&
+     egrep(pattern: "Copyright .+ Hewlett-Packard Development Company", string: r)) ||
+    ("<title>HP Remote Insight<" >< r && egrep(pattern: "Hewlett-Packard Development Company", string: r)) ||
+    (r =~ ">HP Integrated Lights-Out [0-9]+ Login<" && r =~ "Copyright.*Hewlett Packard Enterprise Development") ||
+    "Server: HP-iLO-Server" >< r || "Server: HPE-iLO-Server" >< r ||
+    ("iLO.getSVG" >< r && "iLO.getCookie" >< r)) {
 
   fw_vers  = "unknown";
   ilo_vers = "unknown";

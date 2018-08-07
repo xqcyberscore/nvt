@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_starttls_nntp.nasl 4682 2016-12-06 08:14:23Z cfi $
+# $Id: gb_starttls_nntp.nasl 10792 2018-08-06 12:08:30Z cfischer $
 #
 # NNTP STARTTLS Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105015");
-  script_version("$Revision: 4682 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 09:14:23 +0100 (Tue, 06 Dec 2016) $");
+  script_version("$Revision: 10792 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 14:08:30 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-04-25 14:18:02 +0100 (Fri, 25 Apr 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("nntpserver_detect.nasl");
   script_require_ports("Services/nntp", 119);
-  script_mandatory_keys("nntp/installed");
+  script_mandatory_keys("nntp/detected");
 
   script_tag(name:"summary", value:"The remote NNTP Server supports STARTTLS.");
 

@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_fingerprint.nasl 10573 2018-07-23 10:44:26Z cfischer $
+# $Id: os_fingerprint.nasl 10792 2018-08-06 12:08:30Z cfischer $
 #
 # ICMP based OS Fingerprinting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102002");
-  script_version("$Revision: 10573 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 12:44:26 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10792 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 14:08:30 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-05-19 12:05:50 +0200 (Tue, 19 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,7 +36,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 LSS");
   script_family("Product detection");
-  script_dependencies("gb_greenbone_os_detect.nasl", "gb_ami_megarac_sp_web_detect.nasl",  # Keep in sync with os_detection.nasl...
+  script_dependencies("gb_greenbone_os_detect.nasl", "gb_ami_megarac_sp_web_detect.nasl", # Keep in sync with os_detection.nasl...
                       "gb_ros_detect.nasl", "gb_apple_mobile_detect.nasl",
                       "gb_vmware_esx_web_detect.nasl", "gb_vmware_esx_snmp_detect.nasl",
                       "gb_ssh_cisco_ios_get_version.nasl", "gb_cisco_cucmim_version.nasl",
@@ -77,6 +77,7 @@ if(description)
                       "dcetest.nasl", "gb_hnap_os_detection.nasl",
                       "ident_process_owner.nasl", "gb_pihole_detect.nasl",
                       "gb_dropbear_ssh_detect.nasl", "gb_rtsp_os_detection.nasl",
+                      "gb_nntp_os_detection.nasl",
                       "gb_android_adb_detect.nasl", # but without gb_nmap_os_detection.nasl and the own os_fingerprint.nasl
                       "global_settings.nasl"); # nb: Extra dependency for the script_exclude_keys below
   script_exclude_keys("keys/TARGET_IS_IPV6");

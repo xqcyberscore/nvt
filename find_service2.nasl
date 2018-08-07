@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service2.nasl 10773 2018-08-04 16:22:23Z cfischer $
+# $Id: find_service2.nasl 10794 2018-08-06 13:18:58Z cfischer $
 #
 # Service Detection with 'HELP' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11153");
-  script_version("$Revision: 10773 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-04 18:22:23 +0200 (Sat, 04 Aug 2018) $");
+  script_version("$Revision: 10794 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 15:18:58 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -1267,10 +1267,10 @@ if( egrep( pattern:"^220( |-).*(SMTP|mail)", string:r, icase:TRUE ) ||
 }
 
 # NNTP
-if( egrep( pattern:"^200 .*(NNTP|NNRP)", string:r ) ||
+if( egrep( pattern:"^20[01] .*(NNTP|NNRP)", string:r ) ||
     egrep( pattern:"^100 .*commands", string:r, icase:TRUE ) ) {
   banner = egrep( pattern:"^200 ", string:r );
-  if( banner ) set_kb_item( name:"nntp/banner/" + port, value:banner );
+  if( banner ) set_kb_item( name:"nntp/banner/" + port, value:chomp( banner ) );
   register_service( port:port, proto:"nntp" );
   report_and_exit( port:port, data:"A NNTP server seems to be running on this port" );
 }

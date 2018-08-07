@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: os_detection.nasl 10573 2018-07-23 10:44:26Z cfischer $
+# $Id: os_detection.nasl 10792 2018-08-06 12:08:30Z cfischer $
 #
 # OS Detection Consolidation and Reporting
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105937");
-  script_version("$Revision: 10573 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 12:44:26 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 10792 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 14:08:30 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-02-19 11:19:54 +0100 (Fri, 19 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -80,7 +80,7 @@ if(description)
                       "dcetest.nasl", "gb_hnap_os_detection.nasl",
                       "ident_process_owner.nasl", "gb_pihole_detect.nasl",
                       "gb_dropbear_ssh_detect.nasl", "gb_rtsp_os_detection.nasl",
-                      "gb_android_adb_detect.nasl",
+                      "gb_nntp_os_detection.nasl", "gb_android_adb_detect.nasl",
                       "gb_nmap_os_detection.nasl", "os_fingerprint.nasl");
 
   script_tag(name:"summary", value:"This script consolidates the OS information detected by several NVTs and tries to find the best matching OS.

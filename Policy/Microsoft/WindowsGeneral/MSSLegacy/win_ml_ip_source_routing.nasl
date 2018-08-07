@@ -1,9 +1,10 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_ml_ip_source_routing.nasl 10217 2018-06-15 11:38:58Z emoss $
+# $Id: win_ml_ip_source_routing.nasl 10797 2018-08-06 14:54:44Z emoss $
 #
-# Check value for MSS: DisableIPSourceRouting) IP source routing protection level (protects against packet spoofing)
-# 
+# Check value for MSS: DisableIPSourceRouting) IP source routing protection level
+# (protects against packet spoofing)
+#
 # Authors:
 # Emanuel Moss <emanuel.moss@greenbone.net>
 #
@@ -27,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109309");
-  script_version("$Revision: 10217 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 13:38:58 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 10797 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 16:54:44 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-15 12:24:43 +0200 (Fri, 15 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,9 +39,10 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_add_preference(name:"Value", type:"radio", value:"2;0;1");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'MSS: (DisableIPSourceRouting) IP source routing protection level (protects 
+  script_tag(name: "summary", value: "This test checks the setting for policy
+'MSS: (DisableIPSourceRouting) IP source routing protection level (protects
 against packet spoofing)' on Windows hosts (at least Windows 7).");
   exit(0);
 }
@@ -56,7 +58,7 @@ to query the registry.');
 
 if(get_kb_item("SMB/WindowsVersion") < "6.1"){
   policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
-Older versions of Microsoft Windows are not supported any more. 
+Older versions of Microsoft Windows are not supported any more.
 Please update the system.');
   exit(0);
 }
@@ -67,14 +69,25 @@ Computer Configuration/Administrative Templates/MSS (Legacy)/' + title;
 type = 'HKLM';
 key = 'System\\CurrentControlSet\\Services\\Tcpip\\Parameters';
 item = 'DisableIPSourceRouting';
+default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
+
 if(!value){
-  value = 'none';
+  value = '0';
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+if(value == default){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 10573 2018-07-23 10:44:26Z cfischer $
+# $Id: host_details.inc 10792 2018-08-06 12:08:30Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10573 $
+# $Revision: 10792 $
 #
 ###############################################################################
 
@@ -152,6 +152,7 @@ OS_CPE_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.108342", # gb_pihole_detect.nasl
     "1.3.6.1.4.1.25623.1.0.105112", # gb_dropbear_ssh_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108451", # gb_rtsp_os_detection.nasl
+    "1.3.6.1.4.1.25623.1.0.108455", # gb_nntp_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.108447", # gb_android_adb_detect.nasl nb: Down here because an ADB service could be run on an Android emulator as well...
     "1.3.6.1.4.1.25623.1.0.108021", # gb_nmap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.102002"  # os_fingerprint.nasl
@@ -238,6 +239,7 @@ OS_TXT_SRC = make_list(
     "1.3.6.1.4.1.25623.1.0.108342", # gb_pihole_detect.nasl
     "1.3.6.1.4.1.25623.1.0.105112", # gb_dropbear_ssh_detect.nasl
     "1.3.6.1.4.1.25623.1.0.108451", # gb_rtsp_os_detection.nasl
+    "1.3.6.1.4.1.25623.1.0.108455", # gb_nntp_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.108447", # gb_android_adb_detect.nasl nb: Down here because an ADB service could be run on an Android emulator as well...
     "1.3.6.1.4.1.25623.1.0.108021", # gb_nmap_os_detection.nasl
     "1.3.6.1.4.1.25623.1.0.102002"  # os_fingerprint.nasl

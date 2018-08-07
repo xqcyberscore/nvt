@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_portainer_detect.nasl 10739 2018-08-02 13:33:18Z cfischer $
+# $Id: gb_portainer_detect.nasl 10789 2018-08-06 11:10:01Z tpassfeld $
 #
 # Portainer UI Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114015");
-  script_version("$Revision: 10739 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 15:33:18 +0200 (Thu, 02 Aug 2018) $");
+  script_version("$Revision: 10789 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 13:10:01 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-31 12:54:42 +0200 (Tue, 31 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,7 +48,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 80);
+  script_require_ports("Services/www", 9000);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name:"URL", value:"https://github.com/portainer/portainer");
@@ -61,7 +61,7 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port(default: 80);
+port = get_http_port(default: 9000);
 res1 = http_get_cache(port: port, item: "/");
 
 # src="js/app.ad12640a.js">

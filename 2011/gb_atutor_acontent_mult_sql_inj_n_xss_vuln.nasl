@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atutor_acontent_mult_sql_inj_n_xss_vuln.nasl 10698 2018-08-01 07:20:28Z cfischer $
+# $Id: gb_atutor_acontent_mult_sql_inj_n_xss_vuln.nasl 10799 2018-08-06 18:07:53Z cfischer $
 #
 # Atutor AContent Multiple SQL Injection and XSS Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801985");
-  script_version("$Revision: 10698 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 09:20:28 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 10799 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 20:07:53 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-09-14 16:05:49 +0200 (Wed, 14 Sep 2011)");
   script_bugtraq_id(49066);
   script_tag(name:"cvss_base", value:"7.5");
@@ -84,6 +84,8 @@ if(!can_host_php(port:port)) {
 }
 
 foreach dir (make_list("/AContent", "/Atutor/AContent", "/")) {
+
+  if(dir == "/") dir = "";
 
   url = dir + "/home/index.php";
   res = http_get_cache(item:url, port:port);

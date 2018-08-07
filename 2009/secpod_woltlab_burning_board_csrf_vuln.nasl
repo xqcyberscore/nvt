@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_woltlab_burning_board_csrf_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: secpod_woltlab_burning_board_csrf_vuln.nasl 10795 2018-08-06 14:09:55Z cfischer $
 #
 # WoltLab Burning Board Cross-Site Request Forgery Vulnerability
 #
@@ -24,67 +24,63 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Attackers can exploit this issue to delete private messages by
-sending malicious input in the 'pmID' parameter in a delete action in a PM
-page.
-
-Impact Level: Application";
-
-tag_affected = "WoltLab Burning Board version 3.x";
-
-tag_insight = "An error arises in index.php due to improper sanitization of
-user-supplied input which may allows remote attackers to hijack the users
-authentication.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is running WoltLab Burning Board and is prone to
-Cross-Site Request Forgery vulnerability.";
+CPE = "cpe:/a:woltlab:burning_board";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900937");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10795 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 16:09:55 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-09-16 15:34:19 +0200 (Wed, 16 Sep 2009)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2008-7192");
   script_name("WoltLab Burning Board Cross-Site Request Forgery Vulnerability");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/39990");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/487139/100/200/threaded");
-
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Web application abuses");
   script_dependencies("secpod_woltlab_burning_board_detect.nasl");
-  script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("WoltLabBurningBoard/detected");
+
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/39990");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/487139/100/200/threaded");
+
+  script_tag(name:"impact", value:"Attackers can exploit this issue to delete private messages by
+  sending malicious input in the 'pmID' parameter in a delete action in a PM page.
+
+  Impact Level: Application");
+
+  script_tag(name:"affected", value:"WoltLab Burning Board version 3.x");
+
+  script_tag(name:"insight", value:"An error arises in index.php due to improper sanitization of
+  user-supplied input which may allows remote attackers to hijack the users authentication.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore. General
+  solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
+
+  script_tag(name:"summary", value:"This host is running WoltLab Burning Board and is prone to
+  Cross-Site Request Forgery vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
-
-include("http_func.inc");
+include("host_details.inc");
 include("version_func.inc");
 
-wbbPort = get_http_port(default:80);
-if(!wbbPort)
-{
-  exit(0);
+if( ! port  = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit(0);
+vers = infos['version'];
+path = infos['location'];
+
+if( vers =~ "^3\..*" ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"WillNotFix", install_path:path );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-wbbVer = get_kb_item("www/" + wbbPort + "/BurningBoard");
-wbbVer = eregmatch(pattern:"^(.+) under (/.*)$", string:wbbVer);
-
-if(wbbVer[1] =~ "^3\..*"){
-  security_message(wbbPort);
-}
+exit( 99 );

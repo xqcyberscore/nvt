@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winamp_mult_code_exec_n_dos_vuln.nasl 9738 2018-05-07 04:50:48Z ckuersteiner $
+# $Id: gb_winamp_mult_code_exec_n_dos_vuln.nasl 10787 2018-08-06 10:11:55Z asteins $
 #
 # Winamp '.flv' File Processing Denial of Service And Code Execution Vulnerabilities
 #
@@ -29,42 +29,41 @@ CPE = "cpe:/a:nullsoft:winamp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811547");
-  script_version("$Revision: 9738 $");
+  script_version("$Revision: 10787 $");
   script_cve_id("CVE-2017-10725", "CVE-2017-10726", "CVE-2017-10727", "CVE-2017-10728");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 06:50:48 +0200 (Mon, 07 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 12:11:55 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-08-02 16:51:17 +0530 (Wed, 02 Aug 2017)");
   script_name("Winamp '.flv' File Processing Denial of Service And Code Execution Vulnerabilities");
 
-  script_tag(name: "summary" , value:"This host is installed with Winamp and
+  script_tag(name:"summary", value:"This host is installed with Winamp and
   is prone to multiple denial of service and code execution vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to multiple memory
+  script_tag(name:"insight", value:"Multiple flaws are due to multiple memory
   corruption errors when handling malicious '.flv' files.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code or cause a denial of service.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Winamp version 5.666 Build 3516(x86).");
+  script_tag(name:"affected", value:"Winamp version 5.666 Build 3516(x86).");
 
-  script_tag(name: "solution" , value:"No solution or patch is available as of 07th May, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_xref(name: "URL", value: "https://github.com/wlinzi/security_advisories/tree/master/CVE-2017-10725");
-  script_xref(name: "URL", value: "https://github.com/wlinzi/security_advisories/tree/master/CVE-2017-10728");
-  script_xref(name: "URL", value: "https://github.com/wlinzi/security_advisories/tree/master/CVE-2017-10727");
-  script_xref(name: "URL", value: "https://github.com/wlinzi/security_advisories/tree/master/CVE-2017-10726");
+  script_xref(name:"URL", value:"https://github.com/wlinzi/security_advisories/tree/master/CVE-2017-10725");
+  script_xref(name:"URL", value:"https://github.com/wlinzi/security_advisories/tree/master/CVE-2017-10728");
+  script_xref(name:"URL", value:"https://github.com/wlinzi/security_advisories/tree/master/CVE-2017-10727");
+  script_xref(name:"URL", value:"https://github.com/wlinzi/security_advisories/tree/master/CVE-2017-10726");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_family("General");
   script_dependencies("secpod_winamp_detect.nasl");
   script_mandatory_keys("Winamp/Version");
@@ -77,7 +76,6 @@ include("host_details.inc");
 if (!version = get_app_version(cpe:CPE))
   exit(0);
 
-## Check the vulnerable version, 5.666 build 3516= 5.6.6.3516
 if(version_is_equal(version:version, test_version:"5.6.6.3516")) {
   report = report_fixed_ver(installed_version:version, fixed_version:"None");
   security_message(data:report);

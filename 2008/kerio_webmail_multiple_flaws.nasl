@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: kerio_webmail_multiple_flaws.nasl 10781 2018-08-06 07:41:20Z cfischer $
+# $Id: kerio_webmail_multiple_flaws.nasl 10785 2018-08-06 09:58:05Z cfischer $
 #
 # Kerio WebMail v5 multiple flaws
 #
@@ -33,11 +33,13 @@
 # Ref 2:
 #  Abraham Lincoln" <sunninja@scientist.com>
 
+CPE = "cpe:/a:kerio:kerio_mailserver";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80069");
-  script_version("$Revision: 10781 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 09:41:20 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 10785 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 11:58:05 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,9 +55,8 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003-2007 Tenable Network Security & Copyright (C) 2004 David Maciejak");
   script_family("Gain a shell remotely");
-  script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_dependencies("gb_kerio_mailserver_detect.nasl");
+  script_mandatory_keys("KerioMailServer/detected");
 
   script_tag(name:"solution", value:"Upgrade to Kerio MailServer 5.7.7 or newer");
 
@@ -79,16 +80,15 @@ if(description)
   exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
+include("host_details.inc");
+include("version_func.inc");
 
-port = get_http_port(default:80);
+if( ! vers = get_app_version( cpe:CPE, nofork:TRUE, version_regex:"^5\." ) ) exit( 0 );
 
-res = http_get_cache(item:"/", port:port);
-if (egrep(string:res, pattern:"^Server: Kerio MailServer ([0-4]\.|5\.[0-6]\.|5\.7\.[0-6])") )
-{
-  security_message(port:port);
-  exit(0);
+if( version_is_less( version:vers, test_version:"5.7.7" ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"5.7.7" );
+  security_message( port:0, data:report );
+  exit( 0 );
 }
 
-exit(99);
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_mail_os_detection.nasl 9931 2018-05-23 08:44:55Z cfischer $
+# $Id: sw_mail_os_detection.nasl 10792 2018-08-06 12:08:30Z cfischer $
 #
 # SMTP/POP3/IMAP Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111068");
-  script_version("$Revision: 9931 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 10:44:55 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 10792 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-06 14:08:30 +0200 (Mon, 06 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-12-11 14:00:00 +0100 (Fri, 11 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -283,6 +283,11 @@ foreach port( ports ) {
       }
       continue;
     }
+
+    # Runs on Windows, Linux and Mac OS X
+    # e.g. 220 example.com Kerio Connect 9.2.1 ESMTP ready or 220 example.com Kerio MailServer 6.5.2 ESMTP ready
+    if( "Kerio Connect" >< banner || "Kerio MailServer" >< banner ) continue;
+
     register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"smtp_banner", port:port );
   }
 }
@@ -513,6 +518,11 @@ foreach port( ports ) {
       register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
       continue;
     }
+
+    # Runs on Windows, Linux and Mac OS X
+    # e.g. * OK Kerio Connect 8.0.2 IMAP4rev1 server ready or * OK Kerio MailServer 6.6.2 IMAP4rev1 server ready
+    if( "Kerio Connect" >< banner || "Kerio MailServer" >< banner ) continue;
+
     register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"imap_banner", port:port );
   }
 }
@@ -645,6 +655,10 @@ if( "Microsoft Windows POP3 Service Version" >< banner || "for Windows" >< banne
   register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
   exit( 0 );
 }
+
+# Runs on Windows, Linux and Mac OS X
+# e.g. +OK Kerio MailServer 6.5.2 POP3 server ready <1168.1533545939@example.com>
+if( "Kerio Connect" >< banner || "Kerio MailServer" >< banner ) exit( 0 );
 
 register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"pop3_banner", port:port );
 

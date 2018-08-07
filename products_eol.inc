@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: products_eol.inc 10756 2018-08-03 11:33:05Z asteins $
+# $Id: products_eol.inc 10791 2018-08-06 11:52:23Z asteins $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10756 $
+# $Revision: 10791 $
 #
 ###############################################################################
 
@@ -335,6 +335,12 @@ eol_cpes[ 'cpe:/a:redhat:jboss_operations_network' ] = make_array(
 # https://wiki.samba.org/index.php/Samba_Release_Planning
 eol_cpes[ 'cpe:/a:samba:samba' ] = make_array(
   'versions',      '4.4:2017-09-21;4.3:2017-03-07;4.2:2016-09-07;4.1:2016-03-22;4.0:2015-09-08;3.6:2015-03-04;3.5:2013-10-11;3.4:2012-12-11;3.3:2011-08-09;3.2:2010-03-01;3.0:2009-08-05',
+  'version_regex', '^([0-9]+\\.[0-9]+)'
+);
+
+# https://symfony.com/roadmap
+eol_cpes[ 'cpe:/a:sensiolabs:symfony' ] = make_array(
+  'versions',      '4.4:2022-11-30;4.3:2020-07-31;4.2:2020-01-31;4.1:2019-07-31;4.0:2019-01-31;3.4:2021-11-30;3.3:2018-07-31;3.2:2018-01-31;3.1:2017-07-31;3.0:2017-01-31;2.8:2019-11-30;2.7:2019-05-31;2.6:2016-01-31;2.5:2015-07-31;2.4:2015-01-31;2.3:2017-05-31;2.2:2014-05-31;2.1:2013-11-30;2.0:2013-09-30',
   'version_regex', '^([0-9]+\\.[0-9]+)'
 );
 
