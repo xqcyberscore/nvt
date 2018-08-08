@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_094.nasl 10757 2018-08-03 11:35:43Z cfischer $
+# $Id: GSHB_M4_094.nasl 10814 2018-08-07 12:02:33Z cfischer $
 #
 # IT-Grundschutz, 14. EL, Maﬂnahme 4.094
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94210");
-  script_version("$Revision: 10757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 13:35:43 +0200 (Fri, 03 Aug 2018) $");
+  script_version("$Revision: 10814 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-07 14:02:33 +0200 (Tue, 07 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 10:14:11 +0100 (Wed, 25 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,7 +62,7 @@ port = get_kb_item("Services/www");
 if (!port) port = 80;
 
 host = http_host_name(dont_add_port:TRUE);
-brokenwww = http_is_marked_broken(port:port, host:host);
+brokenwww = get_http_is_marked_broken(port:port, host:host);
 
 nikto = get_kb_item("GSHB/NIKTO");
 

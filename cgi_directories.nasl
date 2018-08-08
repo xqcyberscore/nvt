@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 10757 2018-08-03 11:35:43Z cfischer $
+# $Id: cgi_directories.nasl 10817 2018-08-07 12:30:17Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 10757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 13:35:43 +0200 (Fri, 03 Aug 2018) $");
+  script_version("$Revision: 10817 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-07 14:30:17 +0200 (Tue, 07 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -117,14 +117,20 @@ maxPagesReached  = get_kb_item( "www/" + host + "/" + port + "/content/max_pages
 
 report = 'The Hostname/IP "' + host + '" was used to access the remote host.\n\n';
 
-#TODO: Add no404.nasl
-
 if( get_kb_item( "global_settings/disable_generic_webapp_scanning" ) ) {
   report += 'Generic web application scanning is disabled for this host via the "Enable generic web application scanning" option within the "Global variable settings" of the scan config in use.\n\n';
 }
 
-if( http_is_marked_broken( port:port, host:host ) ) {
+if( get_http_is_marked_broken( port:port, host:host ) ) {
   report += 'This service is marked as broken and no CGI scanning is launched against it.\n\n';
+}
+
+if( no404_string = get_http_no404_string( port:port, host:host ) ) {
+  if( no404_string != "HTTP" ) { #nb: Set by no404.nasl if "generally" marked broken.
+    report += 'The service is responding with a 200 HTTP status code to non-existent files/urls. ';
+    report += 'The following pattern is used to work around possible false detections:\n\n';
+    report += no404_string + '\n\n';
+  }
 }
 
 if( httpVersion == "10" ) {

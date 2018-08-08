@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: apache_win32_dir_trav.nasl 9228 2018-03-28 06:22:51Z cfischer $
+# $Id: apache_win32_dir_trav.nasl 10831 2018-08-08 09:49:56Z cfischer $
 #
 # Apache 2.0.39 Win32 directory traversal
 #
@@ -34,8 +34,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11092");
-  script_version("$Revision: 9228 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-28 08:22:51 +0200 (Wed, 28 Mar 2018) $");
+  script_version("$Revision: 10831 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 11:49:56 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -62,6 +62,7 @@ if(description)
   script_tag(name:"affected", value:"Apache 2.0 through 2.0.39 on Windows");
 
   script_tag(name:"solution", value:"Upgrade to Apache 2.0.40 or later.
+
   As a workaround add in the httpd.conf, before the first 'Alias' or 'Redirect' directive:
   RedirectMatch 400 \\\.\.");
 
@@ -72,7 +73,6 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
 banner = get_http_banner( port:port );
@@ -80,8 +80,7 @@ if( "Apache" >!< banner ) exit( 0 );
 
 cginameandpath = make_list( "/error/%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5cautoexec.bat",
                             "/error/%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5cwinnt%5cwin.ini",
-                            "/error/%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5cboot.ini",
-                            "" );
+                            "/error/%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5cboot.ini");
 
 foreach url( cginameandpath ) {
   if( check_win_dir_trav( port:port, url:url ) ) {
@@ -92,7 +91,7 @@ foreach url( cginameandpath ) {
 }
 
 if( egrep( string:banner, pattern:"^Server: *Apache(-AdvancedExtranetServer)?/2\.0\.[0-3][0-9]* *\(Win32\)" ) ) {
-  report  = '** OpenVAS found that your server should be vulnerable according to\n';
+  report  = '** The Scanner found that your server should be vulnerable according to\n';
   report += '** its version number but could not exploit the flaw.\n';
   report += '** You may have already applied the RedirectMatch wordaround.\n';
   report += "** Anyway, you should upgrade your server to Apache 2.0.40";

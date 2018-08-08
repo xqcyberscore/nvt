@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4233.nasl 10309 2018-06-25 06:18:28Z cfischer $
+# $Id: deb_4233.nasl 10824 2018-08-08 02:52:53Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 4233-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704233");
-  script_version("$Revision: 10309 $");
+  script_version("$Revision: 10824 $");
   script_cve_id("CVE-2018-1000180");
   script_name("Debian Security Advisory DSA 4233-1 (bouncycastle - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 08:18:28 +0200 (Mon, 25 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 04:52:53 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-22 00:00:00 +0200 (Fri, 22 Jun 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

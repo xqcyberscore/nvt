@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: httpd_boa.nasl 10771 2018-08-04 15:18:29Z cfischer $
+# $Id: httpd_boa.nasl 10831 2018-08-08 09:49:56Z cfischer $
 #
 # Boa file retrieval
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10527");
-  script_version("$Revision: 10771 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-04 17:18:29 +0200 (Sat, 04 Aug 2018) $");
+  script_version("$Revision: 10831 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 11:49:56 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1770);
   script_tag(name:"cvss_base", value:"5.0");
@@ -42,7 +42,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"solution", value:"upgrade to a later version of the server found at http://www.boa.org");
+  script_tag(name:"solution", value:"Upgrade to a later version of the server found at http://www.boa.org");
 
   script_tag(name:"summary", value:"The remote Boa server allows an attacker to read arbitrary files
   on the remote web server, prefixing the pathname of the file with hex-encoded ../../..
@@ -60,7 +60,6 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 

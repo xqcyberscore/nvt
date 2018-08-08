@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zenbership_cms_detect.nasl 9161 2018-03-21 14:53:25Z asteins $
+# $Id: gb_zenbership_cms_detect.nasl 10821 2018-08-07 14:52:02Z cfischer $
 #
 # Zenbership CMS Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107220");
-  script_version("$Revision: 9161 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-21 15:53:25 +0100 (Wed, 21 Mar 2018) $");
+  script_version("$Revision: 10821 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:52:02 +0200 (Tue, 07 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-06-12 06:40:16 +0200 (Mon, 12 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of Zenbership CMS.
+  script_tag(name:"summary", value:"Detects the installed version of Zenbership CMS.
 
   The script sends an HTTP request to the server and attempts to detect the application from the reply.");
 
@@ -55,10 +55,11 @@ include("cpe.inc");
 include("host_details.inc");
 
 appPort = get_http_port(default: 80);
+if (!can_host_php(port: appPort)) exit(0);
 
 rootInstalled = FALSE;
 
-foreach dir (make_list_unique("/", "/zenbership", "/membership", "/member", "/zen", "zenbership-master", cgi_dirs(port: appPort))) {
+foreach dir (make_list_unique("/", "/zenbership", "/membership", "/member", "/zen", "/zenbership-master", cgi_dirs(port: appPort))) {
 
   if (rootInstalled) break;
 
@@ -90,7 +91,7 @@ foreach dir (make_list_unique("/", "/zenbership", "/membership", "/member", "/ze
     if (!cpe)
       cpe = 'cpe:/a:castlamp:zenbership';
 
-    register_product(cpe: cpe, location: install, port: appPort);
+    register_product(cpe: cpe, location: install, port: appPort, service: "www");
 
     log_message(data:build_detection_report(app: "Zenbership",
                                             version: vers,

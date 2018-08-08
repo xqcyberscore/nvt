@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_deny_sbp2_thunderbolt_driver.nasl 10311 2018-06-25 09:52:28Z emoss $
+# $Id: win_deny_sbp2_thunderbolt_driver.nasl 10809 2018-08-07 11:19:51Z emoss $
 #
 # Check value for Blocking the SBP-2 driver and Thunderbolt controllers
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109346");
-  script_version("$Revision: 10311 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 11:52:28 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 10809 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-07 13:19:51 +0200 (Tue, 07 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-25 09:22:15 +0200 (Mon, 25 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,21 +38,22 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_add_preference(name:"Value", type:"entry", value:"{d48179be-ec20-11d1-b6b8-00c04fa372a7}");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'Prevent installation of devices using drivers that match these device setup 
-classes: Prevent installation of devices using drivers for these device setup' 
+  script_tag(name: "summary", value: "This test checks the setting for policy
+'Prevent installation of devices using drivers that match these device setup
+classes: Prevent installation of devices using drivers for these device setup'
 on Windows hosts (at least Windows 7).
 
-A BitLocker-protected computer may be vulnerable to Direct Memory Access (DMA) 
-attacks when the computer is turned on or is in the Standby power state, 
+A BitLocker-protected computer may be vulnerable to Direct Memory Access (DMA)
+attacks when the computer is turned on or is in the Standby power state,
 including locked desktop.
-BitLocker with TPM-only authentication lets a computer to enter the power-on 
-state without any pre-boot authentication, leaving an attacker able to perform 
+BitLocker with TPM-only authentication lets a computer to enter the power-on
+state without any pre-boot authentication, leaving an attacker able to perform
 DMA attacks.
-In these configurations, an attacker may be able to search for BitLocker 
-encryption keys in system memory by spoofing the SBP-2 hardware ID by using an 
-attacking device that is plugged into a 1394 port. Alternatively, an active 
+In these configurations, an attacker may be able to search for BitLocker
+encryption keys in system memory by spoofing the SBP-2 hardware ID by using an
+attacking device that is plugged into a 1394 port. Alternatively, an active
 Thunderbolt port also provides access to system memory to perform an attack.");
   exit(0);
 }
@@ -67,8 +68,8 @@ to query the registry.');
 }
 
 if(get_kb_item("SMB/WindowsVersion") < "6.1"){
-  policy_logging(text:'Host is not at least a Microsoft Windows 7 system. 
-Older versions of Windows are not supported any more. Please update the 
+  policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
+Older versions of Windows are not supported any more. Please update the
 Operating System.');
   exit(0);
 }
@@ -79,14 +80,25 @@ Computer Configuration/Administrative Templates/System/Device Installation/Devic
 type = 'HKLM';
 key = 'Software\\Policies\\Microsoft\\Windows\\DeviceInstall\\Restrictions\\DenyDeviceClasses';
 item = '1';
+default = script_get_preference('Value');
 value = registry_get_sz(key:key, item:item, type:type);
+
 if(!value){
   value = 'none';
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+if(default >< value){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

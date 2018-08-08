@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: iis_dot_cnf.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: Check for IIS .cnf file leakage
+# $Id: iis_dot_cnf.nasl 10818 2018-08-07 14:03:55Z cfischer $
+#
+# Check for IIS .cnf file leakage
 #
 # Authors:
 # John Lampe (j_lampe@bellsouth.net)
@@ -23,89 +25,68 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The IIS web server may allow remote users to read sensitive information
-from .cnf files. This is not the default configuration.
-
-Example, http://target/_vti_pvt%5csvcacl.cnf, access.cnf,
-        svcacl.cnf, writeto.cnf, service.cnf, botinfs.cnf,
-        bots.cnf, linkinfo.cnf and services.cnf";
-
-tag_solution = "If you do not need .cnf files, then delete them, otherwise use
-suitable access control lists to ensure that the .cnf files are not
-world-readable by Anonymous users.";
+###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10575");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10818 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:03:55 +0200 (Tue, 07 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2002-1717");
   script_bugtraq_id(4078);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  
   script_name("Check for IIS .cnf file leakage");
   script_category(ACT_GATHER_INFO);
   script_family("Web Servers");
   script_copyright("Copyright (C) 2003 John Lampe....j_lampe@bellsouth.net");
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("IIS/banner");
-  script_require_ports("Services/www", 80);   
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://www.safehack.com/Advisory/IIS5webdir.txt");
+
+  script_xref(name:"URL", value:"http://www.safehack.com/Advisory/IIS5webdir.txt");
+
+  script_tag(name:"solution", value:"If you do not need .cnf files, then delete them, otherwise use
+  suitable access control lists to ensure that the .cnf files are not world-readable by Anonymous users.");
+
+  script_tag(name:"summary", value:"The IIS web server may allow remote users to read sensitive information
+  from .cnf files. This is not the default configuration.
+
+  Example, http://target/_vti_pvt%5csvcacl.cnf, access.cnf, 
+  svcacl.cnf, writeto.cnf, service.cnf, botinfs.cnf, 
+  bots.cnf, linkinfo.cnf and services.cnf");
+
+  script_tag(name:"solution_type", value:"Mitigation");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  
   exit(0);
 }
 
-
-
-#
-# The script code starts here
-
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
 
 port = get_http_port(default:80);
-if ( get_kb_item("www/no404/" + port) )  exit(0);
-
 sig = get_http_banner(port:port);
 if ( sig && "IIS" >!< sig ) exit(0);
-if(get_port_state(port)) {
-   fl[0] = "/_vti_pvt%5caccess.cnf";
-   fl[1] = "/_vti_pvt%5csvcacl.cnf";
-   fl[2] = "/_vti_pvt%5cwriteto.cnf";
-   fl[3] = "/_vti_pvt%5cservice.cnf";
-   fl[4] = "/_vti_pvt%5cservices.cnf";
-   fl[5] = "/_vti_pvt%5cbotinfs.cnf";
-   fl[6] = "/_vti_pvt%5cbots.cnf";
-   fl[7] = "/_vti_pvt%5clinkinfo.cnf";
 
-   
-   for(i = 0 ; fl[i] ; i = i + 1)
-   {
-    if(is_cgi_installed_ka(item:fl[i], port:port)){
-	res = http_keepalive_send_recv(data:http_get(item:fl[i], port:port), port:port, bodyonly:1);
-	data = "
-The IIS web server may allow remote users to read sensitive information
-from .cnf files. This is not the default configuration.
+host = http_host_name(dont_add_port:TRUE);
+if(get_http_no404_string(port:port, host:host))exit(0);
 
-Example : requesting " + fl[i] + " produces the following data : 
+fl[0] = "/_vti_pvt%5caccess.cnf";
+fl[1] = "/_vti_pvt%5csvcacl.cnf";
+fl[2] = "/_vti_pvt%5cwriteto.cnf";
+fl[3] = "/_vti_pvt%5cservice.cnf";
+fl[4] = "/_vti_pvt%5cservices.cnf";
+fl[5] = "/_vti_pvt%5cbotinfs.cnf";
+fl[6] = "/_vti_pvt%5cbots.cnf";
+fl[7] = "/_vti_pvt%5clinkinfo.cnf";
 
-" + res + "
-
-See also : http://www.safehack.com/Advisory/IIS5webdir.txt
-Solution: If you do not need .cnf files, then delete them, otherwise use
-suitable access control lists to ensure that the .cnf files are not
-world-readable by Anonymous users.";
-
-	
-   	security_message(port:port, data:data);
-	exit(0);
-	}
-   }
+for(i = 0 ; fl[i] ; i = i + 1) {
+  if(is_cgi_installed_ka(item:fl[i], port:port)){
+    res = http_keepalive_send_recv(data:http_get(item:fl[i], port:port), port:port, bodyonly:1);
+    data  = "The IIS web server may allow remote users to read sensitive information from .cnf files. This is not the default configuration.";
+    data += '\n\nExample : requesting ' + fl[i] + ' produces the following data :\n\n' + res;
+    security_message(port:port, data:data);
+    exit(0);
+  }
 }

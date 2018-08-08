@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: DDI_GlobalASA_Retrieval.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: IIS Global.asa Retrieval
+# $Id: DDI_GlobalASA_Retrieval.nasl 10826 2018-08-08 07:30:42Z cfischer $
+#
+# IIS Global.asa Retrieval
 #
 # Authors:
 # H D Moore
@@ -20,81 +22,65 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-tag_summary = "This host is running the Microsoft IIS web server.  This web server contains 
-a configuration flaw that allows the retrieval of the global.asa file.  
-
-This file may contain sensitive information such as database passwords, 
-internal addresses, and web application configuration options.  This 
-vulnerability may be caused by a missing ISAPI map of the .asa extension 
-to asp.dll.";
-
-tag_solution = "To restore the .asa map:
-
-    Open Internet Services Manager. Right-click on the affected web server and choose Properties 
-    from the context menu. Select Master Properties, then Select WWW Service --> Edit --> Home 
-    Directory --> Configuration. Click the Add button, specify C:\winnt\system32\inetsrv\asp.dll 
-    as the executable (may be different depending on your installation), enter .asa as the extension, 
-    limit the verbs to GET,HEAD,POST,TRACE, ensure the Script Engine box is checked and click OK.";
-
+CPE = "cpe:/a:microsoft:iis";
 
 if(description)
 {
-    script_oid("1.3.6.1.4.1.25623.1.0.10991");
-    script_version("$Revision: 9348 $");
-    script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
-    script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
-    script_tag(name:"cvss_base", value:"7.8");
-    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-    name = "IIS Global.asa Retrieval";
-    script_name(name);
+  script_oid("1.3.6.1.4.1.25623.1.0.10991");
+  script_version("$Revision: 10826 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 09:30:42 +0200 (Wed, 08 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_name("IIS Global.asa Retrieval");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2001 Digital Defense Inc.");
+  script_family("Web Servers");
+  script_dependencies("secpod_ms_iis_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("IIS/installed");
 
+  script_tag(name:"solution", value:"To restore the .asa map:
 
+  Open Internet Services Manager. Right-click on the affected web server and choose Properties
+  from the context menu. Select Master Properties, then Select WWW Service --> Edit --> Home
+  Directory --> Configuration. Click the Add button, specify C:\winnt\system32\inetsrv\asp.dll
+  as the executable (may be different depending on your installation), enter .asa as the extension, 
+  limit the verbs to GET, HEAD, POST, TRACE, ensure the Script Engine box is checked and click OK.");
 
-    summary = "Tries to retrieve the global.asa file";
+  script_tag(name:"summary", value:"This host is running the Microsoft IIS web server. This web server contains
+  a configuration flaw that allows the retrieval of the global.asa file.");
 
+  script_tag(name:"impact", value:"This file may contain sensitive information such as database passwords, 
+  internal addresses, and web application configuration options.");
 
+  script_tag(name:"insight", value:"This vulnerability may be caused by a missing ISAPI map of the .asa extension
+  to asp.dll.");
 
-    script_category(ACT_ATTACK);
+  script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_vul");
 
-    script_copyright("This script is Copyright (C) 2001 Digital Defense Inc.");
-
-    family = "Web application abuses";
-    script_family(family);
-    script_dependencies("secpod_ms_iis_detect.nasl");
-    script_require_ports("Services/www", 80);
-    script_tag(name : "solution" , value : tag_solution);
-    script_tag(name : "summary" , value : tag_summary);
-    script_require_keys("IIS/installed");
-    exit(0);
+  exit(0);
 }
-
-
-#
-# The script code starts here
-#
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
 
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-port = get_http_port(default:80);
+url = "/global.asa";
+req = http_get( item:url, port:port );
+res = http_keepalive_send_recv( port:port, data:req );
 
-if(!get_port_state(port)){ exit(0); }
-
-if( ! get_kb_item("IIS/" + port + "/Ver" ) ) exit( 0 );
-
-function sendrequest (request, port)
-{
-    return http_keepalive_send_recv(port:port, data:request);
+if( "RUNAT" >< res ) {
+  report = report_vuln_url( port:port, url:url );
+  security_message( port:port, data:report );
+  set_kb_item( name:"iis/global.asa.download", value:TRUE );
+  exit( 0 );
 }
 
-req = http_get(item:"/global.asa", port:port);
-reply = sendrequest(request:req, port:port);
-if ("RUNAT" >< reply)
-{
-    security_message(port:port);
-    set_kb_item(name:"iis/global.asa.download", value:TRUE);
-}
+exit( 99 );

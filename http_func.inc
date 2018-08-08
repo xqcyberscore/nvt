@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 10759 2018-08-03 13:01:23Z cfischer $
+# $Id: http_func.inc 10830 2018-08-08 09:24:37Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10759 $
+# $Revision: 10830 $
 #
 ###############################################################################
 
@@ -43,9 +43,11 @@ http_cgi_disabled     = get_kb_item( "Settings/disable_cgi_scanning" );
 optimize_test_enabled = get_preference( "optimize_test" );
 
 # Global keys to avoid that we're repeatedly asking redis for something we already know
-global_var _http_is_broken_array;
-# nb: key is the port or NULL (if not previously checked, value TRUE/FALSE if broken or not
+global_var _http_is_broken_array, _http_no404_string_array;
+# nb: key is the host+port or NULL (if not previously checked), value TRUE/FALSE if broken or not
 _http_is_broken_array = make_array();
+# nb: key is the host+port or NULL (if not previously checked), value a string or FALSE
+_http_no404_string_array = make_array();
 
 function headers_split( h ) {
 
@@ -147,7 +149,7 @@ function get_http_banner( port, file, ignore_broken ) {
   if( banner ) return banner;
 
   if( ! ignore_broken )
-    if( http_is_marked_broken( port:port, host:"*" ) ) return NULL; # TBD: Really return NULL if marked as broken? We still could use the banner version in NVTs...
+    if( get_http_is_marked_broken( port:port, host:"*" ) ) return NULL; # TBD: Really return NULL if marked as broken? We still could use the banner version in NVTs...
 
   # nb: Always keep http_get() before http_open_socket() as the first could
   # fork with multiple vhosts and the child's would share the same socket
@@ -220,7 +222,7 @@ function get_http_port( default, nodefault, host, ignore_broken, ignore_cgi_disa
 
   if( ! ignore_broken ) {
     if( ! host ) host = "*";
-    p = http_is_marked_broken( port:default, host:host );
+    p = get_http_is_marked_broken( port:default, host:host );
     if( p ) exit( 0 );
   }
 
@@ -735,22 +737,6 @@ function can_host_asp( port ) {
   }
 }
 
-function http_40x( port, code ) {
-
-  local_var no404;
-
-  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_40x" );
-  if( ! code ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#code#-#http_40x" );
-
-  if( ereg( string:code, pattern:"^HTTP/1\.[01] +40[0-9]" ) )
-    return TRUE;
-
-  no404 = get_kb_item( "www/no404/" + port );
-  if( no404 && no404 >< code )
-    return TRUE;
-  return FALSE;
-}
-
 function http_gunzip( buf, onlybody ) {
 
   local_var onlybody, lines, line, sep, header, body, h, tmpdir, tmpfile, tmpfile_gz, res;
@@ -1075,7 +1061,8 @@ function extract_basic_auth( data ) {
 
 # @brief Returns the info if a remote web server was internally (in the KB)
 #        marked as "broken" by no404.nasl. It will also save the information
-#        in an internal array to avoid that redis is queried.
+#        in an internal array to avoid that redis is queried again for the
+#        same info.
 #
 # @param port the port of the remote server
 # @param host the hostname (e.g. from http_host_name with the dont_add_port:TRUE
@@ -1088,7 +1075,7 @@ function extract_basic_auth( data ) {
 # @return TRUE if the remote web server was marked as broken, FALSE otherwise and
 #         NULL in the case where the port parameter wasn't passed.
 #
-function http_is_marked_broken( port, host ) {
+function get_http_is_marked_broken( port, host ) {
 
   local_var port, host, marked_broken, marked_broken_list, mb;
   # nb: _http_is_broken_array is a global_var (see on top)
@@ -1114,10 +1101,17 @@ function http_is_marked_broken( port, host ) {
 
   if( host == "*" ) {
     marked_broken_list = get_kb_list( "www/*/" + port + "/is_broken" );
-    foreach mb( marked_broken_list ) {
-      if( mb ) {
-        marked_broken = TRUE;
-        break;
+    # TODO: Just use is_array() from misc_func.inc once openvas-nasl-lint is able
+    # to not report an undefined function within includes if the calling function
+    # is never used.
+    if( ! marked_broken_list || typeof( marked_broken_list ) != "array" ) {
+      marked_broken = FALSE;
+    } else {
+      foreach mb( marked_broken_list ) {
+        if( mb ) {
+          marked_broken = TRUE;
+          break;
+        }
       }
     }
   } else {
@@ -1130,6 +1124,34 @@ function http_is_marked_broken( port, host ) {
     _http_is_broken_array[host+port] = FALSE;
 
   return marked_broken;
+}
+
+# @brief Sets if a remote web server should be marked as "broken" to other NVTs.
+#        The status is set within the following KB entry:
+#        "www/" + host + "/" + port + "/is_broken"
+#
+# @param port the port of the remote server
+# @param host the hostname (e.g. from http_host_name with the dont_add_port:TRUE
+#             parameter or get_host_name) of the remote server.
+#
+# @return TRUE if the string was successfully saved within the KB and
+#         NULL if no port or host parameter was passed.
+#
+function set_http_is_marked_broken( port, host ) {
+
+  local_var port, host;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#set_http_is_marked_broken" );
+    return NULL;
+  }
+
+  if( ! host ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#set_http_is_marked_broken" );
+    return NULL;
+  }
+  set_kb_item( name:"www/" + host + "/" + port + "/is_broken", value:TRUE );
+  return TRUE;
 }
 
 # @brief Returns all files identified on a remote web page and which are saved in
@@ -1270,4 +1292,251 @@ function get_http_kb_cgis( port, host ) {
     return NULL;
   }
   return list;
+}
+
+# @brief Returns a string which was identified by no404.nasl for a remote web server
+#        returning a 200 HTTP (Found) status code for non-existing pages. The string
+#        contains a pattern like e.g. "not found" which can be used by a NVT as a sign
+#        that the web server hasn't returned the expected result about the existence
+#        of a file/url. It will also save the information in an internal array to avoid
+#        that redis is queried again for the same info.
+#
+# @param port the port of the remote server
+# @param host the hostname (e.g. from http_host_name with the dont_add_port:TRUE
+#             parameter or get_host_name) of the remote server. If no host parameter
+#             is passed http_host_name will be called automatically and a debug
+#             message is logged into the KB. A special "*" string can be passed
+#             where the function will return the string of the first hostname.
+#
+# @return An identified string if the remote web server is returning a 200 status code
+#         to non-existing pages, FALSE otherwise and NULL in the case where the port
+#         parameter wasn't passed.
+#
+# @todo Maybe implement an additional "subdir" check as some pages might return different
+#       strings based on different subdirs. This would require an update to no404.nasl as well.
+#
+function get_http_no404_string( port, host ) {
+
+  local_var port, host, no404_string, _no404_string, no404_string_list;
+  # nb: _http_no404_string_array is a global_var (see on top)
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_http_no404_string" );
+    return NULL;
+  }
+
+  if( ! host ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#get_http_no404_string" );
+    host = http_host_name( dont_add_port:TRUE );
+  }
+
+  # Used to not query redis with the get_kb_item below
+  # to save some requests.
+  if( ! isnull( _http_no404_string_array[host+port] ) ) {
+    if( no404_string = _http_no404_string_array[host+port] )
+      return no404_string;
+    else
+      return FALSE;
+  }
+
+  if( host == "*" ) {
+    no404_string_list = get_kb_list( "www/*/" + port + "/no404_string" );
+    # TODO: Just use is_array() from misc_func.inc once openvas-nasl-lint is able
+    # to not report an undefined function within includes if the calling function
+    # is never used.
+    if( ! no404_string_list || typeof( no404_string_list ) != "array" ) {
+      no404_string = FALSE;
+    } else {
+      foreach _no404_string( no404_string_list ) {
+        if( _no404_string && strlen( _no404_string > 0 ) ) {
+          no404_string = _no404_string;
+          break;
+        }
+      }
+    }
+  } else {
+    no404_string = get_kb_item( "www/" + host + "/" + port + "/no404_string" );
+  }
+
+  if( no404_string && strlen( no404_string ) > 0 )
+    _http_no404_string_array[host+port] = no404_string;
+  else
+    _http_no404_string_array[host+port] = FALSE;
+
+  return no404_string;
+}
+
+# @brief Sets a specific string which should be assumed by NVTs as a sign for a
+#        "file not found" if a remote web server isn't responding with a 200 HTTP
+#        status code to non-existent files. The string is set within the following
+#        KB entry: "www/" + host "/" + port + "/no404_string"
+#
+# @param port   the port of the remote server
+# @param host   the hostname (e.g. from http_host_name with the dont_add_port:TRUE
+#               parameter or get_host_name) of the remote server.
+# @param string the string to set within the mentioned KB entry.
+#
+# @return TRUE if the string was successfully saved within the KB and
+#         NULL if no port, host or string parameter was passed.
+#
+# @todo See the todo for @ref get_http_no404_string above.
+#
+function set_http_no404_string( port, host, string ) {
+
+  local_var port, host, string;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#set_http_no404_string" );
+    return NULL;
+  }
+
+  if( ! host ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#set_http_no404_string" );
+    return NULL;
+  }
+
+  if( ! string ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#string#-#set_http_no404_string" );
+    return NULL;
+  }
+  set_kb_item( name:"www/" + host + "/" + port + "/no404_string", value:string );
+  return TRUE;
+}
+
+# @brief Checks if a specific passed data contains a 40x HTTP status code.
+#        If no such status code was identified the KB is checked additionally
+#        (by using @ref get_http_no404_string) if the remote web server is
+#        responding with a 200 HTTP status code to a non-existent file/url.
+#
+# @param port the port of the remote server
+# @param host the hostname (e.g. from http_host_name with the dont_add_port:TRUE
+#             parameter or get_host_name) of the remote server.
+# @param data The data which is checked in form of a HTTP response.
+#
+# @return TRUE if the passed data contains a 40x HTTP status code or a string
+#         as described in @ref get_http_no404_string was identified by no404.nasl,
+#         FALSE otherwise and NULL if no port, host or data parameter was passed
+#         or the data parameter doesn't contain a valid HTTP response.
+#
+# @todo See the todo for @ref get_http_no404_string above.
+#
+function http_data_has_40x( port, host, data ) {
+
+  local_var port, host, data, no404;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_data_has_40x" );
+    return NULL;
+  }
+
+  if( ! host ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#http_data_has_40x" );
+    return NULL;
+  }
+
+  if( ! data ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#http_data_has_40x" );
+    return NULL;
+  }
+
+  if( ! ereg( string:data, pattern:"^HTTP/1\.[01] +[0-9]+" ) ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#No data containing a valid HTTP status code passed in data variable of http_data_has_40x." );
+    return NULL;
+  }
+
+  if( ereg( string:data, pattern:"^HTTP/1\.[01] +40[0-9]" ) )
+    return TRUE;
+
+  no404 = get_http_no404_string( port:port, host:host );
+  if( no404 && no404 >< data )
+    return TRUE;
+  return FALSE;
+}
+
+# @brief Checks if a specific passed data contains a 200 HTTP status code.
+#        If no such status code was identified the KB is checked additionally
+#        (by using @ref get_http_no404_string) if the remote web server is
+#        responding with a 200 HTTP status code to a non-existent file/url.
+#
+# @param port the port of the remote server
+# @param host the hostname (e.g. from http_host_name with the dont_add_port:TRUE
+#             parameter or get_host_name) of the remote server.
+# @param data The data which is checked in form of a HTTP response.
+#
+# @return TRUE if the passed data contains a 200 HTTP status code or a string
+#         as described in @ref get_http_no404_string was identified by no404.nasl,
+#         FALSE otherwise and NULL if no port, host or data parameter was passed
+#         or the data parameter doesn't contain a valid HTTP response.
+#
+# @todo See the todo for @ref get_http_no404_string above.
+#
+function http_data_has_200( port, host, data ) {
+
+  local_var port, host, data, no404;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_data_has_200" );
+    return NULL;
+  }
+
+  if( ! host ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#http_data_has_200" );
+    return NULL;
+  }
+
+  if( ! data ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#http_data_has_200" );
+    return NULL;
+  }
+
+  if( ! ereg( string:data, pattern:"^HTTP/1\.[01] +[0-9]+" ) ) {
+    set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#No data containing a valid HTTP status code passed in data variable of http_data_has_200." );
+    return NULL;
+  }
+
+  if( ereg( string:data, pattern:"^HTTP/1\.[01] +200" ) ) {
+    no404 = get_http_no404_string( port:port, host:host );
+    if( ! no404 || no404 >!< data )
+      return TRUE;
+  }
+  return FALSE;
+}
+
+# @brief Creates and returns report containing the URL to a "vulnerable" location on the
+#        remote web server.
+#
+# @param port     the port of the remote server
+# @param url      the URL to the "vulnerable" location which should be included in the report
+# @param url_only If set to TRUE the "Vulnerable url:" text won't be added to the report
+#                 and only the plain URL is returned within the report.
+#
+# @return A string containing the generated report or NULL if no port or url parameter
+#         was passed.
+#
+function report_vuln_url( port, url, url_only ) {
+
+  local_var port, url, url_only, proto, host, report;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#report_vuln_url" );
+    return NULL;
+  }
+
+  if( ! url ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#url#-#report_vuln_url" );
+    return NULL;
+  }
+
+  proto = "http";
+  if( get_port_transport( port ) > ENCAPS_IP )
+    proto = "https";
+
+  host = http_host_name( port:port );
+
+  if( url_only ) {
+    report = proto + "://" + host + url;
+  } else {
+    report = "Vulnerable url: " + proto + "://" + host + url;
+  }
+  return report;
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: frontpage_overflow.nasl 10322 2018-06-26 06:37:28Z cfischer $
+# $Id: frontpage_overflow.nasl 10831 2018-08-08 09:49:56Z cfischer $
 #
 # IIS FrontPage DoS II
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10699");
-  script_version("$Revision: 10322 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 08:37:28 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 10831 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 11:49:56 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2906);
   script_cve_id("CVE-2001-0341");
@@ -48,9 +48,10 @@ if(description)
   in Microsoft Bulletin MS03-051");
 
   script_tag(name:"summary", value:"Microsoft IIS, running Frontpage extensions, is vulnerable to a remote
-  buffer overflow attack. An attacker, exploiting this bug, may gain
-  access to confidential data, critical business processes, and
-  elevated privileges on the attached network.");
+  buffer overflow attack.");
+
+  script_tag(name:"impact", value:"An attacker, exploiting this bug, may gain access to confidential data,
+  critical business processes, and elevated privileges on the attached network.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -59,7 +60,6 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 

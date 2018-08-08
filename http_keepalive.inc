@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_keepalive.inc 10707 2018-08-01 10:58:06Z cfischer $
+# $Id: http_keepalive.inc 10830 2018-08-08 09:24:37Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10707 $
+# $Revision: 10830 $
 #
 ###############################################################################
 
@@ -380,6 +380,8 @@ function check_win_dir_trav_ka( port, url ) {
 #         and NULL in the cases where wrong data is passed to the function or where the
 #         server is respondig with a 200 status code to not existing files.
 #
+# @todo Add a host parameter which needs to be passed by NVTs.
+#
 function is_cgi_installed_ka( item, port ) {
 
   local_var item, port, req, res, no404, dir, slash, dirs;
@@ -410,7 +412,9 @@ function is_cgi_installed_ka( item, port ) {
     slash = "";
   }
 
-  no404 = get_kb_item( "www/no404/" + port );
+  if( ! host ) host = http_host_name( dont_add_port:TRUE );
+
+  no404 = get_http_no404_string( port:port, host:host );
   if( strlen( no404 ) >= 1 ) return NULL;
 
   foreach dir( dirs ) {
@@ -729,27 +733,6 @@ function http_vuln_check( port, url, pattern, check_header, debug, extra_check, 
     return buf;
   }
   return FALSE;
-}
-
-function report_vuln_url( port, url, url_only ) {
-
-  local_var proto, host, report, port, url, url_only;
-
-  if( ! port ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#report_vuln_url" );
-  if( ! url ) set_kb_item( name: "nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#url#-#report_vuln_url" );
-
-  proto = 'http';
-  if( get_port_transport( port ) > ENCAPS_IP ) proto = 'https';
-
-  host = http_host_name( port:port );
-
-  if( url_only ) {
-    report = proto + '://' + host + url;
-  } else {
-    report = 'Vulnerable url: ' + proto + '://' + host + url;
-  }
-
-  return report;
 }
 
 # req = http_post_req( port:port, url:"/", data:data, accept_header:"application/json", add_headers: make_array( "Content-Type", "application/x-www-form-urlencoded" ) );

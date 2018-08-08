@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_microsoft_accounts_optional.nasl 10319 2018-06-25 14:34:14Z emoss $
+# $Id: win_microsoft_accounts_optional.nasl 10819 2018-08-07 14:11:07Z emoss $
 #
 # Check value for Allow Microsoft accounts to be optional
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109368");
-  script_version("$Revision: 10319 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:34:14 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 10819 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:11:07 +0200 (Tue, 07 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-25 12:18:07 +0200 (Mon, 25 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,13 +38,14 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+	script_add_preference(name:"Value", type:"radio", value:"1;0");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'Allow Microsoft accounts to be optional' on Windows hosts 
+  script_tag(name: "summary", value: "This test checks the setting for policy
+'Allow Microsoft accounts to be optional' on Windows hosts
 (at least Windows 7).
 
-The policy setting controls whether Microsoft accounts are optional for Windows 
-Store apps that require an account to sign in. The setting only affects Windows 
+The policy setting controls whether Microsoft accounts are optional for Windows
+Store apps that require an account to sign in. The setting only affects Windows
 Store apps that support it.");
   exit(0);
 }
@@ -70,15 +71,25 @@ Computer Configuration/Administrative Templates/Windows Components/App runtime/'
 type = 'HKLM';
 key = 'Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System';
 item = 'MSAOptional';
-
 value = registry_get_dword(key:key, item:item, type:type);
+default = script_get_preference('Value');
+
 if(!value){
-  value = 'none';
+  value = '0';
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+if(int(value) == int(default)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

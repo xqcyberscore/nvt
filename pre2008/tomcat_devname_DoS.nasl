@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tomcat_devname_DoS.nasl 4355 2016-10-26 13:50:18Z cfi $
+# $Id: tomcat_devname_DoS.nasl 10831 2018-08-08 09:49:56Z cfischer $
 #
 # Tomcat servlet engine MS/DOS device names denial of service
 #
@@ -26,15 +26,6 @@
 
 # See also script 10930 http_w98_devname_dos.nasl
 #
-# Vulnerable servers:
-# Apache Tomcat 3.3
-# Apache Tomcat 4.0.4
-# All versions prior to 4.1.x may be affected as well.
-# Apache Tomcat 4.1.10 (and probably higher) is not affected.
-# 
-# Microsoft Windows 2000
-# Microsoft Windows NT may be affected as well.
-#
 # References:
 # Date: Fri, 11 Oct 2002 13:36:55 +0200
 # From:"Olaf Schulz" <olaf.schulz@t-systems.com>
@@ -46,8 +37,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11150");
-  script_version("$Revision: 4355 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-26 15:50:18 +0200 (Wed, 26 Oct 2016) $");
+  script_version("$Revision: 10831 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 11:49:56 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -60,17 +51,26 @@ if(description)
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("ApacheTomcat/installed");
 
-  tag_summary = "It was possible to freeze or crash Windows or the web server
-  by reading a thousand of times a MS/DOS device through Tomcat 
-  servlet engine, using a file name like /examples/servlet/AUX
+  script_tag(name:"solution", value:"Upgrade your Apache Tomcat web server to version 4.1.10.");
 
-  A cracker may use this flaw to make your system crash 
-  continuously, preventing you from working properly.";
+  script_tag(name:"summary", value:"It was possible to freeze or crash Windows or the web server
+  by reading a thousand of times a MS/DOS device through Tomcat servlet engine, using a file name
+  like /examples/servlet/AUX");
 
-  tag_solution = "Upgrade your Apache Tomcat web server to version 4.1.10.";
+  script_tag(name:"impact", value:"A cracker may use this flaw to make your system crash
+  continuously, preventing you from working properly.");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"affected", value:"Apache Tomcat 3.3
+
+  Apache Tomcat 4.0.4
+
+  All versions prior to 4.1.x may be affected as well.
+
+  Apache Tomcat 4.1.10 (and probably higher) is not affected.
+
+  Microsoft Windows 2000
+
+  Microsoft Windows NT may be affected as well.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -79,7 +79,6 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
 include("host_details.inc");
 
 start_denial();

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nikto.nasl 7155 2017-09-16 18:15:09Z cfischer $
+# $Id: nikto.nasl 10818 2018-08-07 14:03:55Z cfischer $
 #
 # Nikto (NASL wrapper)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14260");
-  script_version("$Revision: 7155 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-16 20:15:09 +0200 (Sat, 16 Sep 2017) $");
+  script_version("$Revision: 10818 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:03:55 +0200 (Tue, 07 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -43,10 +43,8 @@ if(description)
   script_add_preference(name:"Force scan even without 404s", type:"checkbox", value:"no");
   script_add_preference(name:'Report broken nikto installation', value:'no', type:'checkbox');
 
-  tag_summary = "This plugin uses nikto(1) to find weak CGI scripts and other known issues
-  regarding web server security. See the preferences section for configuration options.";
-
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This plugin uses nikto(1) to find weak CGI scripts and other known issues
+  regarding web server security. See the preferences section for configuration options.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -61,13 +59,13 @@ report_broken = script_get_preference("Report broken nikto installation");
 if( find_in_path( "nikto.pl" )  ) {
   nikto = "nikto.pl";
 } else if( find_in_path( "nikto" )  ) {
-  nikto = "nikto";	
-} else {  
+  nikto = "nikto";
+} else {
   if( report_broken != 'yes' ) exit( 0 );
   text = 'Nikto could not be found in your system path.\n';
-  text += 'OpenVAS was unable to execute Nikto and to perform the scan you
-requested.\nPlease make sure that Nikto is installed and that nikto.pl or nikto is
-available in the PATH variable defined for your environment.';
+  text += 'OpenVAS was unable to execute Nikto and to perform the scan you requested.\n';
+  text += 'Please make sure that Nikto is installed and that nikto.pl or nikto is available ';
+  text += 'in the PATH variable defined for your environment.';
   log_message( port:0, data:text );
   exit( 0 );
 }
@@ -77,9 +75,10 @@ pass = get_kb_item("http/password");
 ids = get_kb_item("/Settings/Whisker/NIDS");
 
 port = get_http_port( default:80, ignore_broken:TRUE ); # Broken servers are checked later...
+host = http_host_name(dont_add_port:TRUE);
 
 # Nikto will generate many false positives if the web server is broken
-no404 = get_kb_item("www/no404/" + port);
+no404 = get_http_no404_string(port:port, host:host);
 if ( no404 )
 {
   text = 'The target server did not return 404 on requests for non-existent pages.\n';

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cern_httpd_access_ctrl.nasl 10709 2018-08-01 12:30:27Z cfischer $
+# $Id: cern_httpd_access_ctrl.nasl 10818 2018-08-07 14:03:55Z cfischer $
 #
 # CERN HTTPD access control bypass
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17230");
-  script_version("$Revision: 10709 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 14:30:27 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 10818 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:03:55 +0200 (Tue, 07 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -66,7 +66,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-# TODO: We could move this into http_func.inc and use it for other "404" checks
 function check( port, url ) {
 
   local_var port, url, no404, req, res;
@@ -87,8 +86,8 @@ function check( port, url ) {
 }
 
 port  = get_http_port( default:80 );
-no404 = get_kb_item( "www/no404/" + port );
 host  = http_host_name( dont_add_port:TRUE );
+no404 = get_http_no404_string( port:port, host:host );
 
 dirs = get_http_kb_auth_required( port:port, host:host );
 if( isnull( dirs ) ) exit( 0 );

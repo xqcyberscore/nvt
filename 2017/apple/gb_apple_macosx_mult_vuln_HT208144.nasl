@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_macosx_mult_vuln_HT208144.nasl 10090 2018-06-06 08:06:04Z cfischer $
+# $Id: gb_apple_macosx_mult_vuln_HT208144.nasl 10824 2018-08-08 02:52:53Z ckuersteiner $
 #
 # Apple Mac OS X Multiple Vulnerabilities-HT208144
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811790");
-  script_version("$Revision: 10090 $");
+  script_version("$Revision: 10824 $");
   script_cve_id("CVE-2017-7084", "CVE-2017-7074", "CVE-2017-7143", "CVE-2017-7083",
                 "CVE-2017-0381", "CVE-2017-7138", "CVE-2017-7121", "CVE-2017-7122",
                 "CVE-2017-7123", "CVE-2017-7124", "CVE-2017-7125", "CVE-2017-7126",
@@ -41,9 +41,9 @@ if(description)
                 "CVE-2016-9841", "CVE-2016-9842", "CVE-2016-9843");
   script_bugtraq_id(999551, 97074, 99276, 95131, 97049, 99502, 97078, 97076, 99177,
                     97058, 94337, 97045, 95248, 97046, 97052, 97050, 97051);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-06 10:06:04 +0200 (Wed, 06 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 04:52:53 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-09-26 12:22:46 +0530 (Tue, 26 Sep 2017)");
   script_name("Apple Mac OS X Multiple Vulnerabilities-HT208144");
 

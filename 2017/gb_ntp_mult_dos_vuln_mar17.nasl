@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_mult_dos_vuln_mar17.nasl 7571 2017-10-26 07:59:06Z cfischer $
+# $Id: gb_ntp_mult_dos_vuln_mar17.nasl 10824 2018-08-08 02:52:53Z ckuersteiner $
 #
 # NTP Multiple Denial-of-Service Vulnerabilities -Mar17
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:ntp:ntp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810678");
-  script_version("$Revision: 7571 $");
+  script_version("$Revision: 10824 $");
   script_cve_id("CVE-2017-6464", "CVE-2017-6462", "CVE-2017-6463", "CVE-2017-6455",
                 "CVE-2017-6452", "CVE-2017-6459", "CVE-2017-6458", "CVE-2017-6451",
                 "CVE-2017-6460", "CVE-2016-9042");
-  script_tag(name:"cvss_base", value:"4.9");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 04:52:53 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-03-23 11:35:22 +0530 (Thu, 23 Mar 2017)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("NTP Multiple Denial-of-Service Vulnerabilities -Mar17");

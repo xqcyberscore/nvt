@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: iis_anything_idq.nasl 10322 2018-06-26 06:37:28Z cfischer $
+# $Id: iis_anything_idq.nasl 10831 2018-08-08 09:49:56Z cfischer $
 #
 # IIS IDA/IDQ Path Disclosure
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10492");
-  script_version("$Revision: 10322 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 08:37:28 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 10831 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 11:49:56 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1065);
   script_cve_id("CVE-2000-0071");
@@ -44,13 +44,13 @@ if(description)
   script_mandatory_keys("IIS/banner");
   script_require_ports("Services/www", 80);
 
-  script_tag(name:"solution", value:"Select 'Preferences ->Home directory ->Application',
+  script_tag(name:"solution", value:"Select 'Preferences ->Home directory ->Application', 
   and check the checkbox 'Check if file exists' for the ISAPI mappings of your server.");
 
   script_tag(name:"summary", value:"IIS 4.0 allows a remote attacker to obtain the real pathname
-  of the document root by requesting non-existent files with .ida or .idq extensions.
+  of the document root by requesting non-existent files with .ida or .idq extensions.");
 
-  An attacker may use this flaw to gain more information about
+  script_tag(name:"impact", value:"An attacker may use this flaw to gain more information about
   the remote host, and hence make more focused attacks.");
 
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -60,7 +60,6 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
 
 port = get_http_port(default:80);
 

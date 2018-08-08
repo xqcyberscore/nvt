@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_block_hosted_app_access_winrt.nasl 10319 2018-06-25 14:34:14Z emoss $
+# $Id: win_block_hosted_app_access_winrt.nasl 10819 2018-08-07 14:11:07Z emoss $
 #
-# Check value for Block launching Universal Windows apps with Windows Runtime 
+# Check value for Block launching Universal Windows apps with Windows Runtime
 # API access from hosted content
 #
 # Authors:
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109369");
-  script_version("$Revision: 10319 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:34:14 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 10819 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:11:07 +0200 (Tue, 07 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-25 16:35:49 +0200 (Mon, 25 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -39,12 +39,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl", "os_detection.nasl");
+	script_add_preference(name:"Value", type:"radio", value:"1;0");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'Block launching Universal Windows apps with Windows Runtime API access from 
+  script_tag(name: "summary", value: "This test checks the setting for policy
+'Block launching Universal Windows apps with Windows Runtime API access from
 hosted content' on Windows hosts (at least Windows 10).
 
-The policy setting controls hether Universal Windows apps with Windows Runtime 
+The policy setting controls hether Universal Windows apps with Windows Runtime
 API access directly from web content can be launched.");
   exit(0);
 }
@@ -60,12 +61,12 @@ to query the registry.');
 
 HostDetails = get_kb_list("HostDetails");
 if("cpe:/o:microsoft:windows_10" >!< HostDetails){
-  policy_logging(text:'Host is not a Microsoft Windows 10 system. 
+  policy_logging(text:'Host is not a Microsoft Windows 10 system.
 This setting applies to Windows 10 systems only.');
   exit(0);
 }
 
-title = 'Block launching Universal Windows apps with Windows Runtime API access from hosted content.';
+title = 'Block launching Universal Windows apps with Windows Runtime API access from hosted content';
 fixtext = 'Set following UI path accordingly:
 Computer Configuration/Administrative Templates/Windows Components/App runtime/' + title;
 type = 'HKLM';
@@ -73,13 +74,24 @@ key = 'Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System';
 item = 'BlockHostedAppAccessWinRT';
 
 value = registry_get_dword(key:key, item:item, type:type);
+default = script_get_preference('Value');
+
 if(!value){
-  value = 'none';
+  value = '0';
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+if(int(value) == int(default)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

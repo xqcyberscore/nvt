@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2018-11_2018-12_sec_bypass_vuln_win.nasl 9923 2018-05-22 13:23:32Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2018-11_2018-12_sec_bypass_vuln_win.nasl 10824 2018-08-08 02:52:53Z ckuersteiner $
 #
 # Mozilla Firefox Security Bypass Vulnerability (mfsa_2018-11_2018-12)-Windows
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813364");
-  script_version("$Revision: 9923 $");
+  script_version("$Revision: 10824 $");
   script_cve_id("CVE-2018-5165");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:23:32 +0200 (Tue, 22 May 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 04:52:53 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-11 11:54:13 +0530 (Fri, 11 May 2018)");
   script_name("Mozilla Firefox Security Bypass Vulnerability (mfsa_2018-11_2018-12)-Windows");
 

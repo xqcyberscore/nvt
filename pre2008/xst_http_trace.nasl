@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xst_http_trace.nasl 8888 2018-02-20 14:11:44Z cfischer $
+# $Id: xst_http_trace.nasl 10828 2018-08-08 07:56:38Z cfischer $
 #
 # HTTP Debugging Methods (TRACE/TRACK) Enabled
 #
@@ -27,14 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11213");
-  script_version("$Revision: 8888 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-20 15:11:44 +0100 (Tue, 20 Feb 2018) $");
+  script_version("$Revision: 10828 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 09:56:38 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_name("HTTP Debugging Methods (TRACE/TRACK) Enabled");
-  script_cve_id("CVE-2003-1567", "CVE-2004-2320", "CVE-2004-2763", "CVE-2005-3398", "CVE-2010-0386");
-  script_bugtraq_id(9506, 9561, 11604, 15222, 33374, 37995);
+  script_cve_id("CVE-2003-1567", "CVE-2004-2320", "CVE-2004-2763", "CVE-2005-3398", "CVE-2006-4683",
+                "CVE-2007-3008", "CVE-2008-7253", "CVE-2009-2823", "CVE-2010-0386", "CVE-2012-2223",
+                "CVE-2014-7883");
+  script_bugtraq_id(9506, 9561, 11604, 15222, 19915, 24456, 33374, 36956, 36990, 37995);
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 E-Soft Inc.");
   script_family("Web application abuses");

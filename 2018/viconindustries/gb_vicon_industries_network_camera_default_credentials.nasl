@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vicon_industries_network_camera_default_credentials.nasl 10738 2018-08-02 12:59:12Z jschulte $
+# $Id: gb_vicon_industries_network_camera_default_credentials.nasl 10815 2018-08-07 12:10:30Z jschulte $
 #
 # Vicon Industries Network Cameras Default Credentials
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107336");
-  script_version("$Revision: 10738 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 14:59:12 +0200 (Thu, 02 Aug 2018) $");
+  script_version("$Revision: 10815 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-07 14:10:30 +0200 (Tue, 07 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-02 14:06:43 +0200 (Thu, 02 Aug 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -65,11 +65,9 @@ include( "http_func.inc" );
 include( "http_keepalive.inc" );
 include( "misc_func.inc" );
 
-if( ! get_kb_item("vicon_industries/network_camera/http/port") ) {
+if( ! port = get_kb_item("vicon_industries/network_camera/http/port") ) {
   exit ( 0 );
 }
-
-port = get_kb_item("vicon_industries/network_camera/http/port");
 
 username = "root";
 password = "system";
@@ -80,9 +78,9 @@ req = http_get_req( port: port, url: "/accessset.html", add_headers: auth_header
 
 buf = http_keepalive_send_recv( port: port, data: req );
 
-if( buf =~ '(Security|access) [Ss]ettings<\\/title>'||
-  ( buf =~ '(class="input">|helpbold=")change general password' || buf =~ '<td class="subtitle">Passwords'
-  || buf =~ 'helpsub="Passwords"' ) ) {
+if( buf =~ '(Security|access) Settings<\\/title>'||
+    buf =~ '(class="input">|helpbold=")change general password' || buf =~ '<td class="subtitle">Passwords'
+    || buf =~ 'helpsub="Passwords"' ) {
   report = "It was possible to login using the username '" + username + "' and the password '" + password + "'.";
   security_message( data: report, port: port );
   exit( 0 );

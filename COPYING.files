@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 07 Aug 2018 08:28:38 +0200
+# Automatically created on:  Wed, 08 Aug 2018 12:34:47 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38563,6 +38563,8 @@
 2018/apache/gb_apache_tika_server_junrar_dos_vuln.nasl: GPLv2+
 2018/apache/gb_apache_tika_server_mult_vuln.nasl: GPLv2+
 2018/apache/gb_apache_tika_server_xxe_vuln.nasl: GPLv2+
+2018/apache/gb_apache_tomcat_hostname_security_bypass_vuln_lin.nasl: GPLv2+
+2018/apache/gb_apache_tomcat_hostname_security_bypass_vuln_win.nasl: GPLv2+
 2018/apache/gb_apache_tomcat_mod_jk_bof_vuln_lin.nasl: GPLv2+
 2018/apache/gb_apache_tomcat_mod_jk_bof_vuln_win.nasl: GPLv2+
 2018/apache/gb_apache_tomcat_nio_nio2_info_disc_vuln_lin.nasl: GPLv2+
@@ -38612,6 +38614,7 @@
 2018/apple/gb_apple_xcode_code_exec_n_info_disc_vuln_macosx.nasl: GPLv2+
 2018/appnitro/gb_machform_mult_vuln.nasl: GPLv2+
 2018/asustor/gb_asustor_adm_rce_vuln.nasl: GPLv2+
+2018/autonomic_controls/gb_autonomic_controls_no_remote_auth.nasl: GPLv2+
 2018/awstats/gb_awstats_dir_trav_vuln.nasl: GPLv2+
 2018/axis/gb_axis_network_camera_dos_vuln.nasl: GPLv2+
 2018/axis/gb_axis_network_camera_mult_vuln_june18.nasl: GPLv2+
@@ -39526,6 +39529,7 @@
 2018/digium/gb_asterisk_AST-2018-008.nasl: GPLv2+
 2018/digium/gb_asterisk_mult_vuln_feb18_1.nasl: GPLv2+
 2018/digium/gb_asterisk_mult_vuln_feb18.nasl: GPLv2+
+2018/discourse/gb_discourse_stored_xss_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink-dir815_com_inj_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink-dir815_mult_vuln_2.nasl: GPLv2+
 2018/dlink/gb_dlink-dir815_mult_vuln.nasl: GPLv2+
@@ -40429,6 +40433,7 @@
 2018/gb_mult_dvr_auth_bypass.nasl: GPLv2+
 2018/gb_mult_dvr_info_discl_vuln.nasl: GPLv2+
 2018/gb_portainer_no_admin_vuln.nasl: GPLv2+
+2018/gb_portainer_no_auth_vuln.nasl: GPLv2+
 2018/gb_portscanner_missing.nasl: GPLv2+
 2018/gb_puppet_enterprise_dos_vuln.nasl: GPLv2+
 2018/gb_puppet_enterprise_mult_vuln.nasl: GPLv2+
@@ -40922,6 +40927,8 @@
 2018/mozilla/gb_mozilla_thunderbird_mfsa_2018-05_2018-13_win.nasl: GPLv2+
 2018/mozilla/gb_mozilla_thunderbird_mfsa_2018-14_2018-18_macosx.nasl: GPLv2+
 2018/mozilla/gb_mozilla_thunderbird_mfsa_2018-18_2018-18_win.nasl: GPLv2+
+2018/mozilla/gb_mozilla_thunderbird_mfsa_2018-19_2018-19_macosx.nasl: GPLv2+
+2018/mozilla/gb_mozilla_thunderbird_mfsa_2018-19_2018-19_win.nasl: GPLv2+
 2018/mybb/gb_mybb_csrf_vuln_feb18.nasl: GPLv2+
 2018/mybb/gb_mybb_mult_vuln_june18.nasl: GPLv2+
 2018/mybb/gb_mybb_open_redirect_vuln_may18.nasl: GPLv2+
@@ -40962,6 +40969,7 @@
 2018/nuuo/gb_nuuo_nvr_default_credentials.nasl: GPLv2+
 2018/nuuo/gb_nuuo_nvrmini2_file_upload_vuln.nasl: GPLv2+
 2018/nuuo/gb_nuuo_nvr_rce_vuln.nasl: GPLv2+
+2018/ocs_inventory/gb_ocs_inventory_ng_mult_vuln.nasl: GPLv2+
 2018/odoo/gb_odoo_backup_db_action_auth_bypass_vuln.nasl: GPLv2+
 2018/oicgroup/gb_exponent_cms_file_upload_vuln.nasl: GPLv2+
 2018/oicgroup/gb_exponent_cms_mult_vuln.nasl: GPLv2+
@@ -41347,6 +41355,7 @@
 2018/seagate/gb_seagate_personalcloud_dir_trav_vuln.nasl: GPLv2+
 2018/seagate/gb_seagate_personalcloud_rce_vuln.nasl: GPLv2+
 2018/sensiolabs/gb_sensiolabs_symfony_eol.nasl: GPLv2+
+2018/sensiolabs/gb_symfony_mult_vuln_aug18.nasl: GPLv2+
 2018/sensiolabs/gb_symfony_mult_vuln.nasl: GPLv2+
 2018/shibboleth/gb_shibboleth_sp_xmltooling_lib_sec_bypass_vuln.nasl: GPLv2+
 2018/smf/gb_simple_machines_forum_security_bypass_vuln_may18.nasl: GPLv2+
@@ -41593,6 +41602,8 @@
 2018/ubuntu/gb_ubuntu_USN_3723_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3724_1.nasl: GPLv2+
 2018/ubuntu/gb_ubuntu_USN_3725_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3726_1.nasl: GPLv2+
+2018/ubuntu/gb_ubuntu_USN_3727_1.nasl: GPLv2+
 2018/universal_media_server/gb_universal_media_server_xxe_vuln.nasl: GPLv2+
 2018/vbulletin/gb_vbulletin_url_param_open_redirect_vuln.nasl: GPLv2+
 2018/vertiv/gb_emerson_liebert_intellislot_default_credentials.nasl: GPLv2+
@@ -41867,6 +41878,7 @@ gb_adobe_robohelp_detect_win.nasl: GPLv2+
 gb_adobe_robohelp_server_detect.nasl: GPLv2+
 gb_advantech_mesr901_detect.nasl: GPLv2+
 gb_advantech_webaccess_detect.nasl: GPLv2+
+gb_advantech_webaccess_hmi_designer_detect_win.nasl: GPLv2+
 gb_aerohive_hiveos_detect.nasl: GPLv2+
 gb_aeromail_detect.nasl: GPLv2+
 gb_aerospike_telnet_detect.nasl: GPLv2+
@@ -41951,6 +41963,9 @@ gb_atlassian_crowd_detect.nasl: GPLv2+
 gb_atlassian_crucible_detect.nasl: GPLv2+
 gb_atlassian_fisheye_crucible_detect.nasl: GPLv2+
 gb_autodesk_backburner_detect.nasl: GPLv2+
+gb_autonomic_controls_consolidation.nasl: GPLv2+
+gb_autonomic_controls_http_detect.nasl: GPLv2+
+gb_autonomic_controls_telnet_detect.nasl: GPLv2+
 gb_autopsy_detect_win.nasl: GPLv2+
 gb_avant_browser_detect.nasl: GPLv2+
 gb_avast_av_detect_lin.nasl: GPLv2+
@@ -43307,6 +43322,7 @@ gb_trend_micro_wfbss_detect.nasl: GPLv2+
 gb_trend_micro_worry_free_business_security_detect.nasl: GPLv2+
 gb_trendnet_camera_detect.nasl: GPLv2+
 gb_trendnet_router_detect.nasl: GPLv2+
+gb_tridium_niagara_http_detect.nasl: GPLv2+
 gb_trillian_detect.nasl: GPLv2+
 gb_trueconf_detect.nasl: GPLv2+
 gb_tuleap_detect.nasl: GPLv2+
@@ -58606,6 +58622,7 @@ gsf/2017/vmware/gb_vmware_workstation_vnc_session_mult_code_exec_vuln_win.nasl: 
 gsf/2018/abb/gb_abb_ipgateway_mult_vuln.nasl: GPLv2+
 gsf/2018/abb/gb_microscada_privilege_escalation_vuln.nasl: GPLv2+
 gsf/2018/acrolinx/gb_acrolinx_dir_trav_vuln.nasl: GPLv2+
+gsf/2018/advantech/gb_advantech_webaccess_hmi_designer_mult_vuln.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_mult_vuln_jan18.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_mult_vuln_may18.nasl: GPLv2+
 gsf/2018/advantech/gb_advantech_webaccess_rce_vuln.nasl: GPLv2+
@@ -58613,6 +58630,7 @@ gsf/2018/advantech/gb_advantech_webaccess_sql_inj_vuln.nasl: GPLv2+
 gsf/2018/arista/gb_arista_eos_0029.nasl: GPLv2+
 gsf/2018/arista/gb_arista_eos_0030.nasl: GPLv2+
 gsf/2018/arista/gb_arista_eos_0032.nasl: GPLv2+
+gsf/2018/aruba/gb_arubaos_aruba_psa_2017_006.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_bamboo_arg_inj_vuln_win.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_bamboo_mult_vuln.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_bamboo_mult_xss_vuln.nasl: GPLv2+
@@ -59102,6 +59120,8 @@ gsf/2018/ibm/gb_ibm_websphere_mq_info_disc_vuln_swg22013022_lin.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_info_disc_vuln_swg22013022_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_mitm_vuln_swg22016346_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_mult_vuln.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_mq_priv_esc_vuln_ibm10716113_lin.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_websphere_mq_priv_esc_vuln_ibm10716113_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_priv_esc_vuln_swg22009918_lin.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_priv_esc_vuln_swg22009918_win.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_websphere_mq_swg22012983.nasl: GPLv2+
@@ -60788,6 +60808,7 @@ Policy/Microsoft/Windows10/SystemServices/win_xbox_live_auth_manager.nasl: GPLv2
 Policy/Microsoft/Windows10/SystemServices/win_xbox_live_game_save.nasl: GPLv2+
 Policy/Microsoft/Windows10/SystemServices/win_xbox_live_networking.nasl: GPLv2+
 Policy/Microsoft/Windows10/System/win_allow_protected_credentials.nasl: GPLv2+
+Policy/Microsoft/Windows10/System/win_device_pk_init.nasl: GPLv2+
 Policy/Microsoft/Windows10/UserRightsAssignment/win10_access_computer_from_network.nasl: GPLv2+
 Policy/Microsoft/Windows10/UserRightsAssignment/win10_access_credential_manager_trusted_caller.nasl: GPLv2+
 Policy/Microsoft/Windows10/UserRightsAssignment/win10_act_as_part_of_os.nasl: GPLv2+
@@ -61042,6 +61063,7 @@ Policy/Microsoft/WindowsGeneral/SystemServices/win_upnp_device_host.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/SystemServices/win_web_management_service.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/SystemServices/win_www_publishing.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_access_store.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_advertising_id.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_bootstart_driver_initialization.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_content_file_updates.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_continue_experience_device.nasl: GPLv2+
@@ -61052,21 +61074,43 @@ Policy/Microsoft/WindowsGeneral/System/win_deny_drivers_already_installed.nasl: 
 Policy/Microsoft/WindowsGeneral/System/win_deny_drivers_setup_classes.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_deny_sbp2_thunderbolt_driver.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_deny_sbp2_thunderbolt.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_domain_pin_logon.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_download_print_driver_http.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_enumerate_connected_users.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_enumerate_local_users.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_error_reporting.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_handwriting_data_sharing.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_handwriting_error_sharing.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_inet_connection_wizard.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_lockscreen_app_notifications.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_messenger_cust_experience.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_network_activity_standby_battery.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_network_activity_standby_plugged.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_network_selection_ui.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_no_background_policy.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_no_background_refresh_gp.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_no_gpo_list_changes.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_no_publishing_wizard.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_no_registration.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_not_showing_acc_details.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_no_web_services.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_ntp_client.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_ntp_server.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_offer_remote_assistance.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_order_print_pic_task.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_passwd_wakes_battery.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_passwd_wakes_plugged.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_perf_track.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_printing_over_http.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_process_creation_cmd_line.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_query_remote_server.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_rpc_endpoint_mapper.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_solicited_remote_assistance.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_standby_states_battery.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_standby_states_plugged.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_unauth_rpc_client.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_untrusted_font_blocking.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_user_input_methods_signin.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_admin_approval_mode.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_all_admins_approval_mode.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_apps_install_prompt.nasl: GPLv2+

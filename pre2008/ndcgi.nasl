@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: ndcgi.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: ndcgi.nasl 10818 2018-08-07 14:03:55Z cfischer $
 #
 # ndcgi.exe vulnerability
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11730");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 10818 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:03:55 +0200 (Tue, 07 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2001-0922");
-  script_bugtraq_id(3583); 
+  script_bugtraq_id(3583);
   script_name("ndcgi.exe vulnerability");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2003 John Lampe");
@@ -42,11 +42,14 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"solution", value:"remove it from /cgi-bin.
-  More info can be found at: http://marc.theaimsgroup.com/?l=bugtraq&m=100681274915525&w=2");
-  script_tag(name:"summary", value:"The file ndcgi.exe exists on this webserver.  
-  Some versions of this file are vulnerable to remote exploit.");
+  script_xref(name:"URL", value:"http://marc.theaimsgroup.com/?l=bugtraq&m=100681274915525&w=2");
 
+  script_tag(name:"solution", value:"Remove it from /cgi-bin.");
+
+  script_tag(name:"summary", value:"The file ndcgi.exe exists on this webserver.
+  Some versions of this file are vulnerable to a remote exploit.");
+
+  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   exit(0);
@@ -56,13 +59,12 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
-
-no404 = get_kb_item( "www/no404/" + port );
+host = http_host_name( dont_add_port:TRUE );
+no404 = get_http_no404_string( port:port, host:host );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-
   url = dir + "/ndcgi.exe";
 
   if( is_cgi_installed_ka( item:url, port:port ) ) {

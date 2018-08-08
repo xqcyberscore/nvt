@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: shoutcast_admin_cgi_overflow.nasl 6695 2017-07-12 11:17:53Z cfischer $
+# $Id: shoutcast_admin_cgi_overflow.nasl 10831 2018-08-08 09:49:56Z cfischer $
 #
 # admin.cgi overflow
 #
@@ -40,8 +40,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11719");
-  script_version("$Revision: 6695 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:17:53 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 10831 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 11:49:56 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(3934);
   script_cve_id("CVE-2002-0199");
@@ -55,25 +55,21 @@ if(description)
   script_mandatory_keys("shoutcast/banner");
   script_require_ports("Services/www", 8888); # Shoutcast is often on a high port
 
-  tag_summary = "The Shoutcast server crashes when a too long argument is
-  given to admin.cgi";
+  script_tag(name:"solution", value:"Upgrade Shoutcast to the latest version.");
 
-  tag_impact = "A cracker may use this flaw to prevent your server from
-  working, or worse, execute arbitrary code on your system.";
+  script_tag(name:"summary", value:"The Shoutcast server crashes when a too long argument is
+  given to admin.cgi");
 
-  tag_solution = "Upgrade Shoutcast to the latest version.";
+  script_tag(name:"impact", value:"A cracker may use this flaw to prevent your server from
+  working, or worse, execute arbitrary code on your system.");
 
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
 
 port = get_http_port( default:8888 );
 

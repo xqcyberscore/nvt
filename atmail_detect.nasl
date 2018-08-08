@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: atmail_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: atmail_detect.nasl 10821 2018-08-07 14:52:02Z cfischer $
 #
 # Atmail Detection
 #
@@ -24,27 +24,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100148");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9633 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
- script_tag(name:"creation_date", value:"2009-04-17 18:35:24 +0200 (Fri, 17 Apr 2009)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("Atmail Detection");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("Product detection");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name: "summary", value: "Detection of Atmail.
+  script_oid("1.3.6.1.4.1.25623.1.0.100148");
+  script_version("$Revision: 10821 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:52:02 +0200 (Tue, 07 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2009-04-17 18:35:24 +0200 (Fri, 17 Apr 2009)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("Atmail Detection");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
-The script sends a connection request to the server and attempts to extract the version number from the reply.");
+  script_tag(name:"summary", value:"Detection of Atmail.
 
- exit(0);
+  The script sends a connection request to the server and attempts to extract the version number from the reply.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
 }
 
 include("cpe.inc");
@@ -52,12 +54,13 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
+files = make_list("/index.php", "/index.php/admin");
+
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
-files = make_list("/index.php", "index.php/admin");
-
 foreach dir( make_list_unique( "/mail", "/webmail", "/atmail", cgi_dirs( port:port ) ) ) {
+
   install = dir;
   if( dir == "/" ) dir = "";
 
@@ -101,13 +104,13 @@ foreach dir( make_list_unique( "/mail", "/webmail", "/atmail", cgi_dirs( port:po
         }
       }
 
-      set_kb_item(name:"Atmail/installed",value:TRUE);
+      set_kb_item(name:"Atmail/installed", value:TRUE);
 
-      cpe = build_cpe(value:vers, exp:"^([0-9.]+)",base:"cpe:/a:atmail:atmail:");
+      cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:atmail:atmail:");
       if(isnull(cpe))
         cpe = 'cpe:/a:atmail:atmail';
 
-      register_product(cpe:cpe, location:install, port:port);
+      register_product(cpe:cpe, location:install, port:port, service:"www");
 
       log_message(data: build_detection_report(app: "Atmail", version: vers, install: install, cpe: cpe,
                                                concluded: version[0]),

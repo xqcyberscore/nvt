@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_process_creation_cmd_line.nasl 10305 2018-06-22 13:48:30Z emoss $
+# $Id: win_process_creation_cmd_line.nasl 10809 2018-08-07 11:19:51Z emoss $
 #
 # Check value for Include command line in process creation events
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109340");
-  script_version("$Revision: 10305 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-22 15:48:30 +0200 (Fri, 22 Jun 2018) $");
+  script_version("$Revision: 10809 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-07 13:19:51 +0200 (Tue, 07 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-22 15:16:58 +0200 (Fri, 22 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,12 +38,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_add_preference(name:"Value", type:"radio", value:"0;1");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'Include command line in process creation events' on Windows hosts (at least 
+  script_tag(name: "summary", value: "This test checks the setting for policy
+'Include command line in process creation events' on Windows hosts (at least
 Windows 8.1).
 
-The setting determines what information is logged in security audit events when 
+The setting determines what information is logged in security audit events when
 a new process has been created.
 This setting only applies when the Audit Process Creation policy is enabled.");
   exit(0);
@@ -70,14 +71,26 @@ Computer Configuration/Administrative Templates/System/Audit Process Creation/' 
 type = 'HKLM';
 key = 'Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit';
 item = 'ProcessCreationIncludeCmdLine_Enabled';
+default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
+
 if(!value){
-  value = 'none';
+  value = '0';
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+if(int(value) == int(default)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
+
 
 exit(0);

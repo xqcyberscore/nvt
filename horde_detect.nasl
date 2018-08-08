@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: horde_detect.nasl 9981 2018-05-28 11:16:52Z ckuersteiner $
-# Description: Horde Detection
+# $Id: horde_detect.nasl 10818 2018-08-07 14:03:55Z cfischer $
+#
+# Horde Detection
 #
 # Authors:
 # George A. Theall, <theall@tifaware.com>.
@@ -20,31 +22,30 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-if (description) {
+if(description)
+{
   script_oid("1.3.6.1.4.1.25623.1.0.15604");
-  script_version("$Revision: 9981 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 13:16:52 +0200 (Mon, 28 May 2018) $");
+  script_version("$Revision: 10818 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:03:55 +0200 (Tue, 07 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-
-  script_tag(name:"qod_type", value:"remote_banner");
-
   script_name("Horde Detection");
-
-  script_tag(name: "summary", value: "The script sends a connection request to the server and attempts to extract
-the version number from the reply.");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004 George A. Theall");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "http_version.nasl", "no404.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.horde.org/");
+  script_xref(name:"URL", value:"https://www.horde.org/");
+
+  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to extract
+  the version number from the reply.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
@@ -55,8 +56,9 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default: 443);
+host = http_host_name(dont_add_port: TRUE);
+if(get_http_no404_string(port: port, host: host)) exit(0);
 
-if (get_kb_item("www/no404/" + port)) exit(0);
 # Search for Horde in a couple of different locations in addition to cgi_dirs().
 dirs = make_list_unique( cgi_dirs(port:port), "/horde", "/" );
 
@@ -75,7 +77,6 @@ foreach dir (dirs) {
 
   foreach file (files) {
 
-    # Get the page.
     req = http_get(item:string(dir, file), port:port);
     res = http_keepalive_send_recv(port:port, data:req);
 
@@ -89,7 +90,7 @@ foreach dir (dirs) {
           pat = ">This is Horde (.+).</h2>";
         if("menu" >< file)
           pat = '>Horde ([0-9.]+[^<]*)<';
-        
+
       }
       #   nb: test.php available is itself a vulnerability but sometimes available.
       else if (file == "/test.php") {
@@ -128,7 +129,7 @@ foreach dir (dirs) {
       log_message(data: build_detection_report(app: "Horde", version: version, install: install, cpe: cpe,
                                                concluded: version, concludedUrl: concUrl),
                   port: port);
-      exit(0); 
+      exit(0);
     }
   }
 }

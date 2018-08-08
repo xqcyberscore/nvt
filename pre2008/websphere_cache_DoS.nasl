@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: websphere_cache_DoS.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: websphere_cache_DoS.nasl 10831 2018-08-08 09:49:56Z cfischer $
 #
 # WebSphere Edge caching proxy denial of service
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11162");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 10831 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 11:49:56 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(6002);
   script_tag(name:"cvss_base", value:"5.0");
@@ -44,21 +44,22 @@ if(description)
   script_category(ACT_DENIAL);
   script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("Denial of Service");
-  script_dependencies("find_service.nasl", "httpver.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"solution", value:"Upgrade your web server or remove this CGI.");
-  script_tag(name:"summary", value:"We could crash the WebSphere Edge caching proxy by sending a 
+
+  script_tag(name:"summary", value:"We could crash the WebSphere Edge caching proxy by sending a
   bad request to the helpout.exe CGI");
 
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
 
@@ -67,7 +68,6 @@ if( http_is_dead( port:port ) ) exit( 0 );
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-
   url = dir + "/helpout.exe";
 
   req = string( "GET ", url, " HTTP\r\n\r\n" );

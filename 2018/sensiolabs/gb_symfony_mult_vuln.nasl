@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symfony_mult_vuln.nasl 10793 2018-08-06 12:56:19Z asteins $
+# $Id: gb_symfony_mult_vuln.nasl 10812 2018-08-07 11:38:21Z asteins $
 #
-# Sensiolabs Symfony Multiple Vulnerabilities
+# Sensiolabs Symfony <= 2.7.48, 2.8.* <= 2.8.43, 3.* <= 3.3.17, 3.4.* <= 3.4.13, 4.0.* <= 4.0.13 and 4.1.* <= 4.1.2 Multiple Vulnerabilities
 #
 # Authors:
 # Adrian Steins <adrian.steins@greenbone.net>
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112350");
-  script_version("$Revision: 10793 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 14:56:19 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 10812 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-07 13:38:21 +0200 (Tue, 07 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-06 14:47:22 +0200 (Mon, 06 Aug 2018)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
@@ -40,7 +40,7 @@ if( description )
 
   script_cve_id("CVE-2018-14773", "CVE-2018-14774");
 
-  script_name("Sensiolabs Symfony Multiple Vulnerabilities");
+  script_name("Sensiolabs Symfony <= 2.7.48, 2.8.* <= 2.8.43, 3.* <= 3.3.17, 3.4.* <= 3.4.13, 4.0.* <= 4.0.13 and 4.1.* <= 4.1.2 Multiple Vulnerabilities");
 
   script_category(ACT_GATHER_INFO);
 
@@ -62,7 +62,8 @@ if( description )
   script_tag(name:"affected", value:"Symfony versions 2.7.0 to 2.7.48, 2.8.0 to 2.8.43, 3.3.0 to 3.3.17, 3.4.0 to 3.4.13, 4.0.0 to 4.0.13, and 4.1.0 to 4.1.2.");
   script_tag(name:"solution", value:"The issue has been fixed in Symfony 2.7.49, 2.8.44, 3.3.18, 3.4.14, 4.0.14, and 4.1.3.
 
-  Note that no fixes are provided for Symfony 3.0, 3.1, and 3.2 as they are not maintained anymore.");
+  NOTE: No fixes are provided for Symfony 3.0, 3.1, and 3.2 as they are not maintained anymore.
+  It is recommended to upgrade to a supported version.");
 
   script_xref(name:"URL", value:"https://symfony.com/blog/cve-2018-14774-possible-host-header-injection-when-using-httpcache");
   script_xref(name:"URL", value:"https://symfony.com/blog/cve-2018-14773-remove-support-for-legacy-and-risky-http-headers");
@@ -92,7 +93,7 @@ if( version_in_range( version: version, test_version: "2.8.0", test_version2: "2
   exit( 0 );
 }
 
-if( version_in_range( version: version, test_version: "3.3.0", test_version2: "3.3.17" ) ) {
+if( version_in_range( version: version, test_version: "3.0.0", test_version2: "3.3.17" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "3.3.18", install_path: location );
   security_message( data: report, port: port );
   exit( 0 );

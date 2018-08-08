@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_content_spoof_vuln_june18.nasl 10294 2018-06-22 06:20:56Z santu $
+# $Id: gb_open_xchange_appsuite_content_spoof_vuln_june18.nasl 10824 2018-08-08 02:52:53Z ckuersteiner $
 #
 # Open-Xchange (OX) AppSuite Content Spoofing Vulnerability(June18)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813444");
-  script_version("$Revision: 10294 $");
+  script_version("$Revision: 10824 $");
   script_cve_id("CVE-2018-5753");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-22 08:20:56 +0200 (Fri, 22 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 04:52:53 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-19 11:58:29 +0530 (Tue, 19 Jun 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Content Spoofing Vulnerability(June18)");

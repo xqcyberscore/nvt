@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: no404.nasl 10757 2018-08-03 11:35:43Z cfischer $
+# $Id: no404.nasl 10816 2018-08-07 12:16:31Z cfischer $
 #
 # No 404 check
 #
@@ -29,8 +29,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10386");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10757 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 13:35:43 +0200 (Fri, 03 Aug 2018) $");
+  script_version("$Revision: 10816 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-07 14:16:31 +0200 (Tue, 07 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("No 404 check");
@@ -45,7 +45,7 @@ if(description)
   '404 Not Found' error codes when a non-existent file is requested, perhaps returning a site map,
   search page or authentication page instead.
 
-  OpenVAS enabled some counter measures for that, however they might be insufficient. If a great
+  The Scanner enabled some counter measures for that, however they might be insufficient. If a great
   number of security holes are produced for this port, they might not all be accurate");
 
   script_tag(name:"summary", value:"Remote web server does not reply with 404 error code.");
@@ -54,6 +54,9 @@ if(description)
 
   exit(0);
 }
+
+# TODO: At some code points a log_message() is done with a reference to the no404 assumption
+# above but the server is just marked as "broken" because of an detected embedded web server.
 
 include("http_func.inc");
 include("global_settings.inc");
@@ -152,15 +155,13 @@ function my_exit( then, port, host ) {
              "in a reasonable amount of time.";
 
     log_message( port:port, data:report );
-    set_kb_item( name:"www/" + host + "/" + port + "/is_broken", value:TRUE );
+    set_http_is_marked_broken( port:port, host:host );
   }
   exit( 0 );
 }
 
 port = get_http_port( default:80 );
 host = http_host_name( dont_add_port:TRUE );
-
-found = "www/no404/" + port;
 
 then = unixtime();
 
@@ -173,29 +174,29 @@ foreach badurl( badurls ) {
 
     # WebMin's miniserv and CompaqDiag behave strangely
     if( egrep( pattern:"^Server: MiniServ/", string:ret ) ) {
-      set_kb_item( name:found, value:"HTTP" );
+      set_http_no404_string( port:port, host:host, string:"HTTP" );
       log_message( port:port );
       exit( 0 );
     }
 
     # MailEnable-HTTP does not handle connections fast enough
     if( egrep( pattern:"^Server: MailEnable-HTTP/", string:ret ) ) {
-      set_kb_item( name:found, value:"HTTP" );
-      set_kb_item( name:"www/" + host + "/" + port + "/is_broken", value:TRUE );
+      set_http_no404_string( port:port, host:host, string:"HTTP" );
+      set_http_is_marked_broken( port:port, host:host );
       log_message( port:port );
       exit( 0 );
     }
 
     if( egrep( pattern:"^Server: CompaqHTTPServer/", string:ret ) ) {
-      set_kb_item( name:found, value:"HTTP" );
-      set_kb_item( name:"www/" + host + "/" + port + "/is_broken", value:TRUE );
+      set_http_no404_string( port:port, host:host, string:"HTTP" );
+      set_http_is_marked_broken( port:port, host:host );
       log_message( port:port );
       exit( 0 );
     }
 
     # This is not a web server
     if( egrep( pattern:"^DAAP-Server:", string:ret ) ) {
-      set_kb_item( name:"www/" + host + "/" + port + "/is_broken", value:TRUE );
+      set_http_is_marked_broken( port:port, host:host );
       log_message( port:port );
       exit( 0 );
     }
@@ -207,11 +208,9 @@ foreach badurl( badurls ) {
       # nb: look for common "not found" indications
       not_found = find_err_msg( buffer:ret );
       if( not_found != 0 ) {
-
-        set_kb_item( name:found, value:string( not_found ) );
-        log_message( port:port );
-
         if( debug_level ) display( 'no404 - 200: Using string: ' + not_found + '\n' );
+        set_http_no404_string( port:port, host:host, string:string( not_found ) );
+        log_message( port:port );
         my_exit( then:then, port:port, host:host );
       } else {
 
@@ -220,7 +219,7 @@ foreach badurl( badurls ) {
           title = ereg_replace(string:title, pattern:".*<title>(.*)</title>.*", replace:"\1", icase:TRUE);
           if( title ) {
             if( debug_level ) display( 'no404 - using string from title tag: ' + title + '\n' );
-            set_kb_item( name:found, value:title );
+            set_http_no404_string( port:port, host:host, string:title );
             log_message( port:port );
             my_exit( then:then, port:port, host:host );
           }
@@ -231,7 +230,7 @@ foreach badurl( badurls ) {
           body = ereg_replace( string:body, pattern:"<body(.*)>", replace:"\1", icase:TRUE );
           if( body ) {
             if( debug_level ) display( 'no404 - using string from body tag: ' + body + '\n' );
-            set_kb_item( name:found, value:body );
+            set_http_no404_string( port:port, host:host, string:body );
             log_message( port:port );
             my_exit( then:then, port:port, host:host );
           }
@@ -240,20 +239,15 @@ foreach badurl( badurls ) {
         # nb: get mad and give up
         if( debug_level ) display( 'no404 - argh! could not find something to match against.\n' );
         if( debug_level ) display( 'no404 - [response] ' + ret + '\n' );
-
-        msg = "Unfortunately, we were unable to find a way to recognize this page, so some CGI-related checks have been disabled.";
-
-        log_message( port:port, data:msg );
-        set_kb_item( name:found, value:"HTTP" );
+        set_http_no404_string( port:port, host:host, string:"HTTP" );
+        log_message( port:port, data:"Unfortunately, we were unable to find a way to recognize this page, so some CGI-related checks have been disabled." );
         my_exit( then:then, port:port, host:host );
       }
     }
 
     if( ereg( pattern:"^HTTP/[0-9]\.[0-9] 30[12] ", string:raw_http_line ) ) {
-      msg = "CGI scanning will be disabled for this host.";
-
-      log_message( port:port, data:msg );
-      set_kb_item( name:found, value:"HTTP" );
+      log_message( port:port, data:"CGI scanning will be disabled for this host." );
+      set_http_no404_string( port:port, host:host, string:"HTTP" );
       my_exit( then:then, port:port, host:host ); # TODO: This is currently exiting on the first request on the root dir if that is always redirecting to e.g. /folder/
     }
   } else {

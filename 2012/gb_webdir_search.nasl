@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webdir_search.nasl 7170 2017-09-18 10:35:33Z cfischer $
+# $Id: gb_webdir_search.nasl 10818 2018-08-07 14:03:55Z cfischer $
 #
 # Search for specified webdirs
 #
@@ -25,48 +25,43 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- 
- script_oid("1.3.6.1.4.1.25623.1.0.103437");
- script_version("$Revision: 7170 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 12:35:33 +0200 (Mon, 18 Sep 2017) $");
- script_tag(name:"creation_date", value:"2012-02-27 16:32:37 +0100 (Mon, 27 Feb 2012)");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"cvss_base", value:"0.0");
+  script_oid("1.3.6.1.4.1.25623.1.0.103437");
+  script_version("$Revision: 10818 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:03:55 +0200 (Tue, 07 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-27 16:32:37 +0100 (Mon, 27 Feb 2012)");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("Search for specified dirs");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_family("General");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name: "qod_type", value: "remote_probe");
+  script_tag(name:"summary", value:"This Plugin is searching for the specified webdirs.");
 
- script_name("Search for specified dirs");
+  script_add_preference(name: "Search for dir(s)", value: "/admin;/manager", type: "entry");
+  script_add_preference(name: "Valid http status codes indicating that a directory was found", value: "200;301;302;401;403", type: "entry");
+  script_add_preference(name: "Run this Plugin", type:"checkbox", value: "no");
 
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_probe");
 
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_family("General");
- script_dependencies("find_service.nasl", "http_version.nasl","no404.nasl");
- script_require_ports("Services/www", 80);
-
- script_tag(name: "summary", value: "This Plugin is searching for the specified webdirs.");
-
- script_add_preference(name: "Search for dir(s)", value: "/admin;/manager", type: "entry");
- script_add_preference(name: "Valid http status codes indicating that a directory was found", value: "200;301;302;401;403", type: "entry");
- script_add_preference(name: "Run this Plugin", type:"checkbox", value: "no");
-
- exit(0);
+  exit(0);
 }
 
-run  = script_get_preference("Run this Plugin");
+run = script_get_preference("Run this Plugin");
 if("yes" >!< run)exit(0);
+
+if(get_kb_item("Settings/disable_cgi_scanning")) {
+  log_message(port:0, data:"Plugin was enabled but CGI Scanning was disabled via Scan Config, not running this test.");
+  exit(0);
+}
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
-
-if(get_kb_item("www/no404/" + port)) {
-  exit(0);
-}  
 
 function check_response(resp, codes) {
 
@@ -78,40 +73,41 @@ function check_response(resp, codes) {
       if(ereg(pattern:"HTTP/1\.[0|1] " + code, string:resp)) {
         return TRUE;
       }
-    }  
+    }
   }
   return FALSE;
-}  
+}
 
-search_dirs   = script_get_preference("Search for dir(s)");
-http_codes    =  script_get_preference("Valid http status codes indicating that a directory was found"); 
+search_dirs = script_get_preference("Search for dir(s)");
+http_codes  = script_get_preference("Valid http status codes indicating that a directory was found");
 
 dirs = split(search_dirs, sep:";", keep:FALSE);
-if(max_index(dirs) < 1)exit(0);
+if(max_index(dirs) < 1) exit(0);
 
 codes = split(http_codes, sep:";", keep:FALSE);
-if(max_index(codes) < 1)exit(0);
+if(max_index(codes) < 1) exit(0);
+
+port = get_http_port(default:80);
+host = http_host_name(dont_add_port:TRUE);
+if(get_http_no404_string(port:port, host:host)) exit(0);
 
 foreach dir (dirs) {
 
- dir = chomp(dir);
+  dir = chomp(dir);
+  if(!ereg(pattern: "^/", string: dir)) dir = "/" + dir;
 
- if(!ereg(pattern: "^/", string: dir)) dir = "/" + dir;
+  req = http_get(item:dir, port:port);
+  buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
+  if( isnull( buf ) || buf =~ "HTTP/1\.[0|1] 404") continue;
 
- req = http_get(item:dir, port:port);
- buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
- if( buf == NULL || buf =~ "HTTP/1\.[0|1] 404")continue;
-
- if(check_response(resp:buf, codes:codes)) {
-   report += 'Found dir ' + dir + '\n';
- }  
-
+  if(check_response(resp:buf, codes:codes)) {
+    report += 'Found dir ' + dir + '\n';
+  }
 }
 
 if(report) {
   log_message(port:port, data:report);
   exit(0);
-}  
+}
 
 exit(0);
-
