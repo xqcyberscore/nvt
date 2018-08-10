@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: openbb_xss.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: OpenBB XSS
+# $Id: openbb_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+#
+# OpenBB XSS
 #
 # Authors:
 # David Maciejak <david dot maciejak at kyxar dot fr>
@@ -21,26 +23,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The remote host seems to be running OpenBB, a forum management system written
-in PHP.
-
-The remote version of this software is vulnerable to cross-site scripting 
-attacks, through the script 'board.php'.
-
-Using a specially crafted URL, an attacker can cause arbitrary code execution 
-for third party users, thus resulting in a loss of integrity of their system.";
-
-tag_solution = "Upgrade to the latest version of this software.";
+###############################################################################
 
 #  Ref: gr00vy <groovy2600@yahoo.com.ar>
 
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.14822");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 10862 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(9303);
  script_xref(name:"OSVDB", value:"3220");
@@ -54,8 +45,18 @@ if(description)
  script_dependencies("find_service.nasl", "http_version.nasl", "cross_site_scripting.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name:"solution", value:"Upgrade to the latest version of this software.");
+ script_tag(name:"summary", value:"The remote host seems to be running OpenBB, a forum management system written
+in PHP.
+
+The remote version of this software is vulnerable to cross-site scripting
+attacks, through the script 'board.php'.
+
+Using a specially crafted URL, an attacker can cause arbitrary code execution
+for third party users, thus resulting in a loss of integrity of their system.");
+
+ script_tag(name:"solution_type", value:"VendorFix");
+
  exit(0);
 }
 
@@ -65,15 +66,16 @@ include("http_keepalive.inc");
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
-if ( get_kb_item("www/" + port + "/generic_xss") ) exit(0);
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/openbb", cgi_dirs( port:port ) ) ) {
 
  if( dir == "/" ) dir = "";
  req = http_get(item:string(dir, "/board.php?FID=%3Cscript%3Efoo%3C/script%3E"), port:port);
  res = http_keepalive_send_recv(port:port, data:req);
- if( res == NULL ) continue;
- if(res =~ "HTTP/1\.. 200" && egrep(pattern:"<script>foo</script>", string:res)) {
+ if( isnull( res ) ) continue;
+ if(res =~ "^HTTP/1\.[01] 200" && egrep(pattern:"<script>foo</script>", string:res)) {
    security_message(port);
    exit(0);
  }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_iis_bof_vuln.nasl 10826 2018-08-08 07:30:42Z cfischer $
+# $Id: gb_ms_iis_bof_vuln.nasl 10833 2018-08-08 10:35:26Z cfischer $
 #
 # Microsoft IIS ASP Stack Based Buffer Overflow Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801520");
-  script_version("$Revision: 10826 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 09:30:42 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 10833 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 12:35:26 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-10-08 08:29:14 +0200 (Fri, 08 Oct 2010)");
   script_bugtraq_id(43138);
   script_cve_id("CVE-2010-2730");
@@ -60,7 +60,7 @@ if(description)
   process which can be exploited using a crafted POST request to hosted 'ASP' pages.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link, 
+  update mentioned hotfixes in the advisory from the below link,
 
   http://www.microsoft.com/technet/security/bulletin/ms10-065.mspx");
 
@@ -74,7 +74,6 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );

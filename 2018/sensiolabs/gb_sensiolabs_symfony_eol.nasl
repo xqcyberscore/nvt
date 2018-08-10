@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sensiolabs_symfony_eol.nasl 10791 2018-08-06 11:52:23Z asteins $
+# $Id: gb_sensiolabs_symfony_eol.nasl 10853 2018-08-09 08:45:51Z jschulte $
 #
 # Sensiolabs Symfony End of Life Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112349");
-  script_version("$Revision: 10791 $");
+  script_version("$Revision: 10853 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 13:52:23 +0200 (Mon, 06 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 10:45:51 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-06 13:03:00 +0200 (Mon, 06 Aug 2018)");
   script_name("Sensiolabs Symfony End of Life Detection");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -58,14 +58,12 @@ if(description)
   exit(0);
 }
 
-CPE = make_list( "cpe:/a:sensiolabs:symfony" );
+CPE = "cpe:/a:sensiolabs:symfony";
 
 include( "host_details.inc" );
-include( "version_func.inc" );
 include( "products_eol.inc" );
 include( "misc_func.inc" );
-include( "http_func.inc" ); # Both http_ for report_vuln_url()
-include( "http_keepalive.inc" );
+include( "http_func.inc" ); # For report_vuln_url()
 
 if( isnull( port = get_app_port( cpe: CPE ) ) ) exit( 0 );
 if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );

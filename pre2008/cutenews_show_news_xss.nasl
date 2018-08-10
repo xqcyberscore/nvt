@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cutenews_show_news_xss.nasl 9542 2018-04-20 01:34:17Z ckuersteiner $
-# Description: CuteNews show_news.php XSS
+# $Id: cutenews_show_news_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+#
+# CuteNews show_news.php XSS
 #
 # Authors:
 # Noam Rathaus
@@ -20,20 +22,20 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 CPE = "cpe:/a:cutephp:cutenews";
 
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.12291");
- script_version("$Revision: 9542 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-20 03:34:17 +0200 (Fri, 20 Apr 2018) $");
+ script_version("$Revision: 10862 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
- script_tag(name: "solution_type", value: "VendorFix");
+ script_tag(name:"solution_type", value:"VendorFix");
 
  script_cve_id("CVE-2004-0660");
  script_bugtraq_id(10620, 10750);
@@ -46,14 +48,14 @@ if(description)
 
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_analysis");
- 
+
  script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
  script_family("Web application abuses");
  script_dependencies("cutenews_detect.nasl", "cross_site_scripting.nasl");
  script_mandatory_keys("cutenews/installed");
  script_require_ports("Services/www", 80);
- script_tag(name: "solution", value: "Upgrade to the latest version of this software.");
- script_tag(name: "summary", value: "The remote web server contains several PHP scripts that are prone to
+ script_tag(name:"solution", value:"Upgrade to the latest version of this software.");
+ script_tag(name:"summary", value:"The remote web server contains several PHP scripts that are prone to
 cross-site scripting attacks.
 
 Description :
@@ -61,7 +63,7 @@ Description :
 The installed version of CuteNews is vulnerable to cross-site scripting attacks.  An attacker may use this bug to
 steal the credentials of legitimate users of this site.");
 
- script_xref(name: "URL", value: "http://www.securityfocus.com/archive/1/367289");
+ script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/367289");
 
  exit(0);
 }
@@ -79,14 +81,15 @@ if (!dir = get_app_location(cpe: CPE, port: port))
 if (dir == "/")
   dir = "";
 
-if (  get_kb_item(string("www/", port, "/generic_xss")) ) exit(0);
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 req = http_get(item:string(dir, "/show_news.php?subaction=showcomments&id=%3Cscript%3Efoo%3C/script%3E&archive=&start_from=&ucat="),
  	       port:port);
 r = http_keepalive_send_recv(port:port, data:req);
-if( r == NULL )exit(0);
+if( isnull( r ) ) exit( 0 );
 
-if(r =~ "HTTP/1\.. 200" && "<script>foo</script>" >< r) {
+if(r =~ "^HTTP/1\.[01] 200" && "<script>foo</script>" >< r) {
   security_message(port);
   exit(0);
 }

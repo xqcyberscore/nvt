@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: siteframe_xss.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: siteframe_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # Siteframe Cross Site Scripting Bugs
 #
@@ -34,8 +34,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11448");
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(7140, 7143);
   script_tag(name:"cvss_base", value:"4.3");
@@ -48,16 +48,12 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "Siteframe 2.2.4  has a cross site scripting bug. An attacker may use it to
+  script_tag(name:"solution", value:"Upgrade to a newer version.");
+  script_tag(name:"summary", value:"Siteframe 2.2.4  has a cross site scripting bug. An attacker may use it to
   perform a cross site scripting attack on this host.
 
   In addition to this, another flaw in this package may allow an attacker to
-  obtain the physical path to the remote web root.";
-
-  tag_solution = "Upgrade to a newer version.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  obtain the physical path to the remote web root.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod", value:"50"); # No extra check, prone to false positives and doesn't match existing qod_types
@@ -71,7 +67,8 @@ include("http_keepalive.inc");
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-if( get_kb_item( "www/" + port + "/generic_xss" ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 

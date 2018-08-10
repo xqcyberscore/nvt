@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mvnforum_search_xss.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: mvnforum_search_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # MVNForum Search Cross-Site Scripting Vulnerability
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18359");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2005-1183");
   script_bugtraq_id(13213);
@@ -46,15 +46,14 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The version of mvnForum installed on the remote host is prone to
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The version of mvnForum installed on the remote host is prone to
   cross-site scripting attacks due to its failure to sanitize
-  user-supplied input to the search field.";
+  user-supplied input to the search field.");
 
-  tag_solution = "Unknown at this time.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
@@ -65,7 +64,8 @@ include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
 
-if( get_kb_item( "www/" + port + "/generic_xss" ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_default_http_credentials_report.nasl 9436 2018-04-11 09:39:34Z cfischer $
+# $Id: gb_default_http_credentials_report.nasl 10836 2018-08-08 11:55:18Z cfischer $
 #
 # HTTP Brute Force Logins With Default Credentials Reporting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103240");
-  script_version("$Revision: 9436 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 11:39:34 +0200 (Wed, 11 Apr 2018) $");
+  script_version("$Revision: 10836 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 13:55:18 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-01-06 13:47:00 +0100 (Fri, 06 Jan 2017)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -60,7 +60,6 @@ if(description)
 
 include("host_details.inc");
 include("http_func.inc");
-include("http_keepalive.inc"); # for report_vuln_url
 
 port = get_http_port( default:80 );
 

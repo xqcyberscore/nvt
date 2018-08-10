@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: yabb_xss.nasl 6046 2017-04-28 09:02:54Z teissa $
-# Description: YaBB XSS and Administrator Command Execution
+# $Id: yabb_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+#
+# YaBB XSS and Administrator Command Execution
 #
 # Authors:
 # David Maciejak <david dot maciejak at kyxar dot fr>
@@ -23,15 +25,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 #  Ref: GulfTech Security <security@gulftech.org>
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14782");
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-2402", "CVE-2004-2403");
   script_bugtraq_id(11214, 11215);
@@ -47,20 +49,23 @@ if(description)
 
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2004-09/0227.html");
 
-  script_tag(name:"solution", value:"Unknown at this time.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The 'YaBB.pl' CGI is installed. This version is affected by a
   cross-site scripting vulnerability.  This issue is due to a failure of
-  the application to properly sanitize user-supplied input. 
+  the application to properly sanitize user-supplied input.
 
   As a result of this vulnerability, it is possible for a remote
   attacker to create a malicious link containing script code that will
-  be executed in the browser of an unsuspecting user when followed. 
+  be executed in the browser of an unsuspecting user when followed.
 
   Another flaw in YaBB may allow an attacker to execute malicious
   administrative commands on the remote host by sending malformed IMG
   tags in posts to the remote YaBB forum and waiting for the forum
   administrator to view one of the posts.");
 
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
@@ -72,7 +77,8 @@ include("global_settings.inc");
 
 port = get_http_port( default:80 );
 
-if( get_kb_item( "www/" + port + "/generic_xss" ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/yabb", "/forum", cgi_dirs( port:port ) ) ) {
 
@@ -83,7 +89,7 @@ foreach dir( make_list_unique( "/yabb", "/forum", cgi_dirs( port:port ) ) ) {
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req );
 
-  if( res =~ "HTTP/1\.. 200" && egrep( pattern:"<script>foo</script>", string:res ) ) {
+  if( res =~ "^HTTP/1\.[01] 200" && egrep( pattern:"<script>foo</script>", string:res ) ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );

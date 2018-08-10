@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_modbus_detect.nasl 8491 2018-01-22 19:14:47Z cfischer $
+# $Id: gb_schneider_modbus_detect.nasl 10873 2018-08-10 07:37:56Z cfischer $
 #
 # Schneider Electric Devices Detection (modbus)
 #
@@ -29,9 +29,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106542");
-  script_version("$Revision: 8491 $");
-  script_tag(name:"last_modification", value: "$Date: 2018-01-22 20:14:47 +0100 (Mon, 22 Jan 2018) $");
-  script_tag(name:"creation_date", value: "2017-01-26 10:19:28 +0700 (Thu, 26 Jan 2017)");
+  script_version("$Revision: 10873 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 09:37:56 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-26 10:19:28 +0700 (Thu, 26 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
@@ -82,7 +82,7 @@ set_kb_item(name: "schneider_electric/detected", value: TRUE);
 
 port = get_port_for_service(default: 502, proto: "modbus");
 
-# Try to get some additional information over modbus
+# nb: Try to get some additional information over modbus
 if (get_port_state(port) && sock = open_sock_tcp(port)) {
   # CPU module
   req = raw_string(0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x00, 0x5a, 0x00, 0x02);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_woltlab_burning_board_detect.nasl 10795 2018-08-06 14:09:55Z cfischer $
+# $Id: secpod_woltlab_burning_board_detect.nasl 10851 2018-08-09 08:19:54Z cfischer $
 #
 # WoltLab Burning Board (Lite) Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800936");
-  script_version("$Revision: 10795 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 16:09:55 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 10851 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 10:19:54 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-09-16 15:34:19 +0200 (Wed, 16 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,6 +39,8 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_xref(name:"URL", value:"https://www.woltlab.com/");
 
   script_tag(name:"summary", value:"This script detects the installed version of WoltLab Burning
   Board (Lite) and sets the result in KB.");
@@ -61,19 +63,19 @@ foreach dir( make_list_unique( "/", "/wbb", cgi_dirs( port:port ) ) ) {
   install = dir;
   if( dir == "/" ) dir = "";
 
-  rcvRes = http_get_cache( item: dir + "/upload/index.php", port:port );
-  rcvRes2 = http_get_cache( item: dir + "/index.php", port:port );
-  rcvRes3 = http_get_cache( item: dir + "/acp/index.php", port:port );
+  res = http_get_cache( item:dir + "/upload/index.php", port:port );
+  res2 = http_get_cache( item:dir + "/index.php", port:port );
+  res3 = http_get_cache( item:dir + "/acp/index.php", port:port );
 
-  if( ( rcvRes =~ "^HTTP/1\.[01] 200" && "WoltLab Burning Board" >< rcvRes ) ||
-      ( rcvRes2 =~ "^HTTP/1\.[01] 200" && ( "new WBB.Board." >< rcvRes2 || "<strong>Burning Board" >< rcvRes2 ) ) ||
-      ( rcvRes3 =~ "^HTTP/1\.[01] 200" && ( ">WoltLab Burning Board" >< rcvRes3 || "new WCF.ACP.Menu" >< rcvRes3 ) ) ) {
+  if( ( res =~ "^HTTP/1\.[01] 200" && "WoltLab Burning Board" >< res ) ||
+      ( res2 =~ "^HTTP/1\.[01] 200" && ( "new WBB.Board." >< res2 || "<strong>Burning Board" >< res2 ) ) ||
+      ( res3 =~ "^HTTP/1\.[01] 200" && ( ">WoltLab Burning Board" >< res3 || "new WCF.ACP.Menu" >< res3 ) ) ) {
 
     version = "unknown";
 
-    ver = eregmatch( pattern:">Burning Board[&a-z; ]+(Lite )?([0-9.]+([A-Za-z0-9 ]+)?)<", string:rcvRes );
+    ver = eregmatch( pattern:">Burning Board[&a-z; ]+(Lite )?([0-9.]+([A-Za-z0-9 ]+)?)<", string:res );
     ver[2] = ereg_replace( pattern:" ", replace:".", string:ver[2] );
-    if( ver[2] != NULL ) {
+    if( ! isnull( ver[2] ) ) {
       if( ver[1] == "Lite " ) {
         app_name = "WoltLab Burning Board Lite";
         base_cpe = "cpe:/a:woltlab:burning_board_lite";
@@ -83,9 +85,9 @@ foreach dir( make_list_unique( "/", "/wbb", cgi_dirs( port:port ) ) ) {
       }
       version = ver[2];
     } else {
-      ver = eregmatch( pattern:"strong>Burning Board[&a-z; ]+(Lite )?([0-9.]+([A-Za-z0-9 ]+)?)<", string:rcvRes2 );
+      ver = eregmatch( pattern:"strong>Burning Board[&a-z; ]+(Lite )?([0-9.]+([A-Za-z0-9 ]+)?)<", string:res2 );
       ver[2] = ereg_replace( pattern:" ", replace:".", string:ver[2] );
-      if( ver[2] != NULL ) {
+      if( ! isnull( ver[2] ) ) {
         if( ver[1] == "Lite " ) {
           app_name = "WoltLab Burning Board Lite";
           base_cpe = "cpe:/a:woltlab:burning_board_lite";
@@ -95,12 +97,13 @@ foreach dir( make_list_unique( "/", "/wbb", cgi_dirs( port:port ) ) ) {
         }
         version = ver[2];
       } else {
-        ver = eregmatch( pattern:"Burning Board ([0-9.]+([A-Za-z0-9 ]+)?)", string:rcvRes3 );
+        ver = eregmatch( pattern:"Burning Board ([0-9.]+([A-Za-z0-9 ]+)?)", string:res3 );
         ver[1] = ereg_replace( pattern:" ", replace:".", string:ver[1] );
-        if( ver[1] != NULL ) version = ver[1];
+        if( ! isnull( ver[1] ) ) version = ver[1];
       }
     }
 
+    set_kb_item( name:"www/can_host_tapatalk", value:TRUE ); # nb: Used in sw_tapatalk_detect.nasl for plugin scheduling optimization
     set_kb_item( name:"WoltLabBurningBoard/detected", value:TRUE );
 
     cpe = build_cpe( value:version, exp:"^([0-9.]+)\.([0-9a-zA-Z.]+)", base:base_cpe + ":" );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_crestron_ctp_detect.nasl 10168 2018-06-13 03:27:59Z ckuersteiner $
+# $Id: gb_crestron_ctp_detect.nasl 10867 2018-08-10 05:04:17Z ckuersteiner $
 #
 # Crestron Device Detection (CTP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.141174");
- script_version ("$Revision: 10168 $");
- script_tag(name: "last_modification", value: "$Date: 2018-06-13 05:27:59 +0200 (Wed, 13 Jun 2018) $");
+ script_version ("$Revision: 10867 $");
+ script_tag(name: "last_modification", value: "$Date: 2018-08-10 07:04:17 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name: "creation_date", value: "2018-06-13 08:39:58 +0700 (Wed, 13 Jun 2018)");
  script_tag(name: "cvss_base", value: "0.0");
  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -68,7 +68,7 @@ if (!soc)
 
 send(socket: soc, data: raw_string(0x0d));
 recv = recv(socket: soc, length: 100);
-if ("Control Console" >!< recv) {
+if (recv !~ "(Control|MC3|CP3) Console") {
   close(soc);
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2017-27_sec_bypass_win.nasl 9923 2018-05-22 13:23:32Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2017-27_sec_bypass_win.nasl 10868 2018-08-10 05:36:57Z ckuersteiner $
 #
 # Mozilla Firefox Security Bypass Vulnerability(mfsa_2017-27)-Windows
 #
@@ -29,30 +29,30 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812322");
-  script_version("$Revision: 9923 $");
+  script_version("$Revision: 10868 $");
   script_cve_id("CVE-2017-7843");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:23:32 +0200 (Tue, 22 May 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 07:36:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-12-05 12:30:09 +0530 (Tue, 05 Dec 2017)");
   script_name("Mozilla Firefox Security Bypass Vulnerability(mfsa_2017-27)-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox and is prone to security bypass vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists as the web worker in private
+  script_tag(name:"insight", value:"The flaw exists as the web worker in private
   browsing mode can write IndexedDB data.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass security restrictions.
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 57.0.1 on Windows.");
+  script_tag(name:"affected", value:"Mozilla Firefox version before 57.0.1 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 57.0.1
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 57.0.1
   or later. For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");

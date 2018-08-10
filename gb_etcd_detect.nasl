@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_etcd_detect.nasl 9209 2018-03-27 02:21:30Z ckuersteiner $
+# $Id: gb_etcd_detect.nasl 10873 2018-08-10 07:37:56Z cfischer $
 #
 # etcd Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140887");
-  script_version("$Revision: 9209 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-27 04:21:30 +0200 (Tue, 27 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2018-03-27 08:53:26 +0700 (Tue, 27 Mar 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10873 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 09:37:56 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-03-27 08:53:26 +0700 (Tue, 27 Mar 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("etcd Detection");
 
-  script_tag(name: "summary" , value: "Detection of etcd.
+  script_tag(name:"summary", value:"Detection of etcd.
 
 The script sends a connection request to the server and attempts to detect etcd and to extract its
 version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ version.");
   script_require_ports("Services/www", 2379);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://coreos.com/etcd/");
+  script_xref(name:"URL", value:"https://coreos.com/etcd/");
 
   exit(0);
 }
@@ -74,7 +74,7 @@ if ('"etcdserver":' >< res) {
   if (!isnull(vers[1]))
     version = vers[1];
 
-  # Get some additional statistics
+  # nb: Get some additional statistics
   req = http_get(port: port, item: "/v2/stats/self");
   res = http_keepalive_send_recv(port: port, data: req);
 

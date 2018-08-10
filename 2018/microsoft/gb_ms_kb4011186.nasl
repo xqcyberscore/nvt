@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011186.nasl 10180 2018-06-13 14:35:18Z santu $
+# $Id: gb_ms_kb4011186.nasl 10868 2018-08-10 05:36:57Z ckuersteiner $
 #
 # Microsoft Publisher 2010 Service Pack 2 Privilege Elevation Vulnerability (KB4011186)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813249");
-  script_version("$Revision: 10180 $");
+  script_version("$Revision: 10868 $");
   script_cve_id("CVE-2018-8245");
-  script_tag(name:"cvss_base", value:"6.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-13 16:35:18 +0200 (Wed, 13 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 07:36:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-13 11:39:08 +0530 (Wed, 13 Jun 2018)");
   script_name("Microsoft Publisher 2010 Service Pack 2 Privilege Elevation Vulnerability (KB4011186)");
 
@@ -46,7 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   who successfully exploited the vulnerability could use a specially crafted file
-  to perform actions in the security context of the current user. 
+  to perform actions in the security context of the current user.
 
   Impact Level: System/Application");
 
@@ -58,7 +58,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4011186");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4011186");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -83,7 +83,7 @@ if(!exePath){
   exePath = "Unable to fetch the install path";
 }
 
-if(exeVer && exeVer =~ "^(14).*")
+if(exeVer && exeVer =~ "^14.*")
 {
   if(version_in_range(version:exeVer, test_version:"14.0", test_version2:"14.0.7210.4999"))
   {

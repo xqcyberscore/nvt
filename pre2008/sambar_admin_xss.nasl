@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sambar_admin_xss.nasl 5134 2017-01-30 08:20:15Z cfi $
+# $Id: sambar_admin_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # Sambar Server Administrative Interface multiple XSS
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18364");
-  script_version("$Revision: 5134 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-30 09:20:15 +0100 (Mon, 30 Jan 2017) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(13722);
   script_tag(name:"cvss_base", value:"4.3");
@@ -43,18 +43,14 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("www/sambar");
 
-  tag_summary = "The remote host runs the Sambar web server.
+  script_tag(name:"solution", value:"Upgrade at least to version 6.2.1");
+  script_tag(name:"summary", value:"The remote host runs the Sambar web server.
 
   The remote version of this software is vulnerable to multiple cross site
   scripting attacks.
 
   With a specially crafted URL, an attacker can use the remote host to perform
-  a cross site scripting against a third party.";
-
-  tag_solution = "Upgrade at least to version 6.2.1";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  a cross site scripting against a third party.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -67,7 +63,8 @@ include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
 
-if( get_kb_item( "www/" + port + "/generic_xss" ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 

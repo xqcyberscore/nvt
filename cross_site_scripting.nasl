@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cross_site_scripting.nasl 9087 2018-03-12 17:24:24Z cfischer $
+# $Id: cross_site_scripting.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # Description: Web Server Cross Site Scripting
 #
@@ -34,8 +34,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10815");
-  script_version("$Revision: 9087 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-12 18:24:24 +0100 (Mon, 12 Mar 2018) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -47,18 +47,16 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The remote web server seems to be vulnerable to a Cross Site Scripting
+  script_tag(name:"summary", value:"The remote web server seems to be vulnerable to a Cross Site Scripting
   vulnerability (XSS). The vulnerability is caused by the result being
   returned to the user when a non-existing file is requested (e.g. the
-  result contains script code provided in the request).";
-
-  tag_impact = "This vulnerability would allow an attacker to make the server present the
+  result contains script code provided in the request).");
+  script_tag(name:"impact", value:"This vulnerability would allow an attacker to make the server present the
   user with the attacker's JavaScript/HTML code.
   Since the content is presented by the server, the user will give it the trust
   level of the server (for example, the websites banks, shopping centers,
-  etc. would usually be trusted by a user).";
-
-  tag_solution = "Allaire/Macromedia Jrun:
+  etc. would usually be trusted by a user).");
+  script_tag(name:"solution", value:"Allaire/Macromedia Jrun:
 
   - http://www.macromedia.com/software/jrun/download/update/
 
@@ -84,11 +82,7 @@ if(description)
 
   - http://www.securiteam.com/exploits/Security_concerns_when_developing_a_dynamically_generated_web_site.html
 
-  - http://www.cert.org/advisories/CA-2000-02.html";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
+  - http://www.cert.org/advisories/CA-2000-02.html");
 
   script_tag(name:"qod", value:"50"); # Vuln check below is quite unreliable these days...
   script_tag(name:"solution_type", value:"Mitigation");
@@ -98,8 +92,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-port = get_http_port( default:80 );
 
 post[0] = ".jsp";
 post[1] = ".shtml";
@@ -127,6 +119,9 @@ dir[10] = ".php";
 
 confirmtext = "<SCRIPT>foo</SCRIPT>";
 
+port = get_http_port( default:80 );
+host = http_host_name( dont_add_port:TRUE );
+
 for( i = 0; dir[i]; i++ ) {
   if ( dir[i] == "MAGIC" )
     url = "/" + confirmtext;
@@ -138,7 +133,7 @@ for( i = 0; dir[i]; i++ ) {
   if( res =~ "^HTTP/1\.[01] 200" && confirmtext >< res ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
-    set_kb_item( name:"www/" + port + "/generic_xss", value:TRUE );
+    set_http_has_generic_xss( port:port, host:host );
     exit( 0 );
   }
 }

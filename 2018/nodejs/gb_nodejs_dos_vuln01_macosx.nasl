@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nodejs_dos_vuln01_macosx.nasl 10511 2018-07-16 10:57:31Z cfischer $
+# $Id: gb_nodejs_dos_vuln01_macosx.nasl 10868 2018-08-10 05:36:57Z ckuersteiner $
 #
 # Node.js Denial-of-Service Vulnerability-01 (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nodejs:node.js";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813475");
-  script_version("$Revision: 10511 $");
+  script_version("$Revision: 10868 $");
   script_cve_id("CVE-2018-7161");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-16 12:57:31 +0200 (Mon, 16 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 07:36:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-10 11:23:23 +0530 (Tue, 10 Jul 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Node.js Denial-of-Service Vulnerability-01 (Mac OS X)");
@@ -41,8 +41,7 @@ if(description)
   script_tag(name:"summary", value:"The host is installed with Node.js and is
   prone to a denial-of-service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to a cleanup bug where
   objects are used in native code after they are no longer available.");

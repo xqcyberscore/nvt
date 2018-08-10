@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telpho10_credential_dump.nasl 10322 2018-06-26 06:37:28Z cfischer $
+# $Id: gb_telpho10_credential_dump.nasl 10833 2018-08-08 10:35:26Z cfischer $
 #
 # Telpho10 Credentials Disclosure Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:telpho:telpho10";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140076");
-  script_version("$Revision: 10322 $");
+  script_version("$Revision: 10833 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 08:37:28 +0200 (Tue, 26 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 12:35:26 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-11-21 13:35:52 +0100 (Mon, 21 Nov 2016)");
   script_name("Telpho10 Credentials Disclosure Vulnerability");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -49,7 +49,7 @@ if(description)
 
   script_tag(name:"affected", value:"Telpho10 <= 2.6.31");
 
-  script_tag(name:"solution", value:"Upgrade to version 2.6.32 or later");
+  script_tag(name:"solution", value:"Upgrade to version 2.6.32 or later.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -57,10 +57,8 @@ if(description)
   exit(0);
 }
 
-include("version_func.inc");
 include("host_details.inc");
 include("http_func.inc");
-include("http_keepalive.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 url = '/telpho/system/backup.php';

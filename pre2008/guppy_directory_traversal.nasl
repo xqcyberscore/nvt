@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: guppy_directory_traversal.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: guppy_directory_traversal.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # GuppY pg Parameter Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19942");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2853");
   script_bugtraq_id(14752, 14984);
@@ -44,7 +44,8 @@ if(description)
 
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2005-09/0362.html");
 
-  tag_summary = "The remote web server contains a PHP script that is prone to cross-site
+  script_tag(name:"solution", value:"Upgrade to version 4.5.6a or later.");
+  script_tag(name:"summary", value:"The remote web server contains a PHP script that is prone to cross-site
   scripting and possibly directory traversal attacks.
 
   Description :
@@ -55,12 +56,7 @@ if(description)
   sanitize user-supplied input to the 'pg' field in the 'printfaq.php'
   script. An attacker can exploit this flaw to launch cross-site
   scripting and possibly directory traversal attacks against the affected
-  application.";
-
-  tag_solution = "Upgrade to version 4.5.6a or later.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  application.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -80,7 +76,8 @@ exss = urlencode( str:xss );
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-if( get_kb_item( "www/" + port + "/generic_xss" ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 host = http_host_name( port:port );
 
@@ -94,8 +91,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
   # If it does and looks like GuppY...
-  if( res =~ "HTTP/1\.. 200" && "<title>GuppY - " >< res ) {
-    # Try to exploit the flaw.
+  if( res =~ "^HTTP/1\.[01] 200" && "<title>GuppY - " >< res ) {
     #
     # nb: we'll use a POST since 4.5.5 prevents GETs from working but
     #     still allows us to pass data via POSTs and cookies. Also, we
@@ -110,7 +106,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
                   postdata );
     res = http_keepalive_send_recv( port:port, data:req );
 
-    if( res =~ "HTTP/1\.. 200" && xss >< res ) {
+    if( res =~ "^HTTP/1\.[01] 200" && xss >< res ) {
       report = report_vuln_url( port:port, url:url );
       security_message( port:port, data:report );
       exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022199.nasl 10180 2018-06-13 14:35:18Z santu $
+# $Id: gb_ms_kb4022199.nasl 10868 2018-08-10 05:36:57Z ckuersteiner $
 #
 # Microsoft Office 2010 Service Pack 2 Multiple Vulnerabilities (KB4022199)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813420");
-  script_version("$Revision: 10180 $");
+  script_version("$Revision: 10868 $");
   script_cve_id("CVE-2018-8246", "CVE-2018-8248");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-13 16:35:18 +0200 (Wed, 13 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 07:36:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-13 08:41:10 +0530 (Wed, 13 Jun 2018)");
   script_name("Microsoft Office 2010 Service Pack 2 Multiple Vulnerabilities (KB4022199)");
 
@@ -42,9 +42,9 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
-  
+
   - An error in Microsoft Excel software when the software fails to properly
-    handle objects in memory. 
+    handle objects in memory.
 
   - An error when Microsoft Excel improperly discloses the contents of its memory.");
 
@@ -62,7 +62,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4022199");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4022199");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_eol.nasl 9825 2018-05-14 14:05:11Z cfischer $
+# $Id: gb_owncloud_eol.nasl 10836 2018-08-08 11:55:18Z cfischer $
 #
 # ownCloud End Of Life Detection
 #
@@ -32,8 +32,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.140157");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 9825 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-14 16:05:11 +0200 (Mon, 14 May 2018) $");
+  script_version("$Revision: 10836 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 13:55:18 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-02-14 13:48:20 +0100 (Tue, 14 Feb 2017)");
   script_name("ownCloud End Of Life Detection");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -65,8 +65,7 @@ include("misc_func.inc");
 include("products_eol.inc");
 include("version_func.inc");
 include("host_details.inc");
-include("http_func.inc"); # Both http_ for report_vuln_url()
-include("http_keepalive.inc");
+include("http_func.inc"); # For report_vuln_url()
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );

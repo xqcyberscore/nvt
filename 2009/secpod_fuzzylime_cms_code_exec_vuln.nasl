@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_fuzzylime_cms_code_exec_vuln.nasl 9334 2018-04-05 13:34:45Z cfischer $
+# $Id: secpod_fuzzylime_cms_code_exec_vuln.nasl 10833 2018-08-08 10:35:26Z cfischer $
 #
 # Fuzyylime(cms) Remote Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:fuzzylime:fuzzylime_cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900584");
-  script_version("$Revision: 9334 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:34:45 +0200 (Thu, 05 Apr 2018) $");
+  script_version("$Revision: 10833 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 12:35:26 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-06-30 16:55:49 +0200 (Tue, 30 Jun 2009)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,34 +47,28 @@ if(description)
   script_xref(name:"URL", value:"http://www.milw0rm.com/exploits/8978");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/51205");
 
-  tag_impact = "Successful exploitation will allow attacker to include and execute
-  arbitrary files from local and external resources, and can gain sensitive
-  information about remote system directories when magic_quotes_gpc is disabled.
+  script_tag(name:"affected", value:"Fuzyylime(cms) version 3.03a and prior.");
 
-  Impact level: Application/System";
-
-  tag_affected = "Fuzyylime(cms) version 3.03a and prior.";
-
-  tag_insight = "The flaws are due to,
+  script_tag(name:"insight", value:"The flaws are due to,
 
   - The data passed into 'list' parameter in code/confirm.php and to the
    'template' parameter in code/display.php is not properly verified
    before being used to include files.
 
   - Input passed to the 's' parameter in code/display.php is not properly
-   verified before being used to write to a file.";
+   verified before being used to write to a file.");
 
-  tag_solution = "Upgrade to fuzzylime 3.03b or later,
-  For updates refer to http://cms.fuzzylime.co.uk/st/content/download ";
+  script_tag(name:"solution", value:"Upgrade to fuzzylime 3.03b or later,
+  For updates refer to http://cms.fuzzylime.co.uk/st/content/download ");
 
-  tag_summary = "This host is installed with Fuzyylime(cms) which is prone to
-  Remote Code Execution vulnerability.";
+  script_tag(name:"summary", value:"This host is installed with Fuzyylime(cms) which is prone to
+  Remote Code Execution vulnerability.");
 
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to include and execute
+  arbitrary files from local and external resources, and can gain sensitive
+  information about remote system directories when magic_quotes_gpc is disabled.
+
+  Impact level: Application/System");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -83,7 +77,6 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
 include("version_func.inc");
 include("host_details.inc");
 

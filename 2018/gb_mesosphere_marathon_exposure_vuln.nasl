@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mesosphere_marathon_exposure_vuln.nasl 10683 2018-07-30 14:01:27Z cfischer $
+# $Id: gb_mesosphere_marathon_exposure_vuln.nasl 10838 2018-08-08 12:05:36Z cfischer $
 #
 # Mesosphere Marathon Web UI Public WAN (Internet) Accessible
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114012");
-  script_version("$Revision: 10683 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-30 16:01:27 +0200 (Mon, 30 Jul 2018) $");
+  script_version("$Revision: 10838 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 14:05:36 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 11:40:39 +0200 (Fri, 20 Jul 2018)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -73,8 +73,7 @@ if(description)
   exit(0);
 }
 
-include("http_func.inc");
-include("http_keepalive.inc");
+include("http_func.inc"); # For report_vuln_url()
 include("network_func.inc");
 include("host_details.inc");
 

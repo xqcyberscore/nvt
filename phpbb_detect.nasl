@@ -1,14 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpbb_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: phpbb_detect.nasl 10851 2018-08-09 08:19:54Z cfischer $
 #
 # phpBB Forum Detection
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
-#
-# Updated by: Antu Sanadi <santu@secpod.com> on 2010-05-21
-#  -Update the regex to detect PL versions
 #
 # Copyright:
 # Copyright (c) 2009 Greenbone Networks GmbH
@@ -30,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100033");
-  script_version("$Revision: 9633 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+  script_version("$Revision: 10851 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 10:19:54 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -43,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name:"URL", value:"http://www.phpbb.com");
+  script_xref(name:"URL", value:"https://www.phpbb.com/");
 
   script_tag(name:"summary", value:"This host is running phpBB a widely installed Open Source forum solution.");
 
@@ -59,13 +56,11 @@ include("host_details.inc");
 include("version_func.inc");
 
 port = get_http_port( default:80 );
-
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 rootInstalled = 0;
 
-foreach dir( make_list_unique( "/", "/board", "/forum", "/phpbb", "/phpBB", "/phpBB2",
-                               "/phpBB3", "/phpBB31", cgi_dirs( port:port ) ) ) {
+foreach dir( make_list_unique( "/", "/board", "/forum", "/phpbb", "/phpBB", "/phpBB2", "/phpBB3", "/phpBB31", cgi_dirs( port:port ) ) ) {
 
   if( rootInstalled ) break;
 
@@ -74,9 +69,9 @@ foreach dir( make_list_unique( "/", "/board", "/forum", "/phpbb", "/phpBB", "/ph
 
   buf = http_get_cache( item:dir + "/index.php", port:port );
 
-  if( egrep( pattern:"^Set-Cookie: phpbb.*", string:buf ) ||
-     egrep( pattern:".*Powered.*by.*<[^>]+>phpBB</a>.*", string:buf ) ||
-     egrep( pattern:".*The phpBB Group.*: [0-9]{4}", string:buf ) ) {
+  if( buf =~ "^HTTP/1\.[01] 200" && ( egrep( pattern:"^Set-Cookie: phpbb.*", string:buf ) ||
+      egrep( pattern:".*Powered.*by.*<[^>]+>phpBB</a>.*", string:buf ) ||
+      egrep( pattern:".*The phpBB Group.*: [0-9]{4}", string:buf ) ) ) {
 
     if( dir == "" ) rootInstalled = 1;
     vers = "unknown";
@@ -128,6 +123,7 @@ foreach dir( make_list_unique( "/", "/board", "/forum", "/phpbb", "/phpBB", "/ph
       }
     }
 
+    set_kb_item( name:"www/can_host_tapatalk", value:TRUE ); # nb: Used in sw_tapatalk_detect.nasl for plugin scheduling optimization
     set_kb_item( name:"phpBB/installed",value:TRUE );
     tmp_version = vers + " under " + install;
     set_kb_item( name:"www/" + port + "/phpBB", value:tmp_version );
@@ -136,7 +132,7 @@ foreach dir( make_list_unique( "/", "/board", "/forum", "/phpbb", "/phpBB", "/ph
     if( isnull( cpe ) )
       cpe = 'cpe:/a:phpbb:phpbb';
 
-    register_product( cpe:cpe, location:install, port:port );
+    register_product( cpe:cpe, location:install, port:port, service:"www" );
 
     log_message( data:build_detection_report( app:"phpBB",
                                               version:vers,

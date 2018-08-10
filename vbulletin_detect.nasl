@@ -1,14 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vbulletin_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: vbulletin_detect.nasl 10852 2018-08-09 08:24:32Z cfischer $
 #
 # vBulletin Detection
 #
 # Authors:
 # David Maciejak <david dot maciejak at kyxar dot fr>
-#
-# Updated By: Thanga Prakash S <tprakash@secpod.com> on 2014-04-24
-# According to CR57 and new style script_tags.
 #
 # Copyright:
 # Copyright (C) 2005 David Maciejak
@@ -30,20 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17282");
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 10852 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 10:24:32 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("vBulletin Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of vBulletin discussion forum.
+  script_xref(name:"URL", value:"https://www.vbulletin.com/");
+
+  script_tag(name:"summary", value:"Detects the installed version of vBulletin discussion forum.
 
   This script sends HTTP GET request and try to get the version from the
   response, and sets the result in KB.");
@@ -53,20 +52,12 @@ if(description)
   exit(0);
 }
 
-
-##
-## The script code starts here
-##
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get http port
 port = get_http_port( default:80 );
-
-## Check Host Supports PHP
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", "/forum", "/vbulletin", "/vbulletin/forum", cgi_dirs( port:port ) ) ) {
@@ -76,36 +67,35 @@ foreach dir( make_list_unique( "/", "/forum", "/vbulletin", "/vbulletin/forum", 
     install = dir;
     if( dir == "/" ) dir = "";
 
-    rcvRes = http_get_cache( item:dir + file, port:port );
+    res = http_get_cache( item:dir + file, port:port );
 
-    if( egrep( pattern:" content=.vBulletin ", string:rcvRes, icase:TRUE ) ) {
+    if( res =~ "^HTTP/1\.[01] 200" && egrep( pattern:" content=.vBulletin ", string:res, icase:TRUE ) ) {
 
       version = "unknown";
 
-      ver = eregmatch( pattern:"vBulletin ([0-9.]+).*", string:rcvRes, icase:TRUE );
+      ver = eregmatch( pattern:"vBulletin ([0-9.]+)", string:res, icase:TRUE );
       if( isnull( ver[1] ) )
-        ver = eregmatch( pattern:'Powered by.*vBulletin.*Version ([0-9.]+)', string: rcvRes );
+        ver = eregmatch( pattern:'Powered by.*vBulletin.*Version ([0-9.]+)', string:res );
 
       if( ! isnull( ver[1] ) ) version = ver[1];
       tmp_version = version + " under " + install;
 
-      ## Set the KB
       set_kb_item( name:"www/" + port + "/vBulletin", value:tmp_version );
       set_kb_item( name:"vBulletin/installed", value:TRUE );
+      set_kb_item( name:"www/can_host_tapatalk", value:TRUE ); # nb: Used in sw_tapatalk_detect.nasl for plugin scheduling optimization
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:vbulletin:vbulletin:" );
       if( ! cpe )
         cpe = "cpe:/a:vbulletin:vbulletin";
 
-      register_product( cpe:cpe, location:install, port:port );
+      register_product( cpe:cpe, location:install, port:port, service:"www" );
 
       log_message(data:build_detection_report( app:"vBulletin",
-                                                version:version,
-                                                install:install,
-                                                cpe:cpe,
-                                                concluded:ver[1] ),
-                                                port:port );
+                                               version:version,
+                                               install:install,
+                                               cpe:cpe,
+                                               concluded:ver[0] ),
+                                               port:port );
       break;
     }
   }

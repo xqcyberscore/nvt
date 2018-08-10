@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bmforum_xss.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: bmforum_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # BMForum multiple XSS flaws
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19500");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_bugtraq_id(14396);
   script_xref(name:"OSVDB", value:"18306");
@@ -52,7 +52,10 @@ if(description)
 
   script_xref(name:"URL", value:"http://lostmon.blogspot.com/2005/07/multiple-cross-site-scripting-in.html");
 
-  tag_summary = "The remote web server contains a PHP script which is vulnerable to a
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The remote web server contains a PHP script which is vulnerable to a
   cross site scripting issue.
 
   Description :
@@ -61,14 +64,10 @@ if(description)
 
   The remote version of this software is affected by several cross-site
   scripting vulnerabilities. The issues are due to failures of the
-  application to properly sanitize user-supplied input.";
-
-  tag_solution = "Unknown at this time";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  application to properly sanitize user-supplied input.");
 
   script_tag(name:"qod", value:"50"); # No extra check, prone to false positives and doesn't match existing qod_types
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }
@@ -85,7 +84,8 @@ exss = urlencode(str:xss);
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-if( get_kb_item( "www/" + port + "/generic_xss" ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
@@ -95,7 +95,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req );
 
-  if( res =~ "HTTP/1\.. 200" && xss >< res ) {
+  if( res =~ "^HTTP/1\.[01] 200" && xss >< res ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );

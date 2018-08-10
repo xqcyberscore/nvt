@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: goaheadwebserver_source_disclosure.nasl 10323 2018-06-26 07:32:48Z cfischer $
+# $Id: goaheadwebserver_source_disclosure.nasl 10833 2018-08-08 10:35:26Z cfischer $
 #
 # GoAhead WebServer Script Source Code Disclosure
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.2000099");
-  script_version("$Revision: 10323 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 09:32:48 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 10833 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 12:35:26 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-08-22 16:09:14 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -68,7 +68,6 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
 
 function GetFileExt(file) {
  ret = split(file, sep: '.');

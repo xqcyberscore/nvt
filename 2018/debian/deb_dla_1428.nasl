@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1428.nasl 10506 2018-07-16 08:53:49Z cfischer $
+# $Id: deb_dla_1428.nasl 10868 2018-08-10 05:36:57Z ckuersteiner $
 #
 # Auto-generated from advisory DLA 1428-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891428");
-  script_version("$Revision: 10506 $");
+  script_version("$Revision: 10868 $");
   script_cve_id("CVE-2015-1854", "CVE-2017-15134", "CVE-2018-1054", "CVE-2018-10850", "CVE-2018-1089");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1428-1] 389-ds-base security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-16 10:53:49 +0200 (Mon, 16 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 07:36:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-16 00:00:00 +0200 (Mon, 16 Jul 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

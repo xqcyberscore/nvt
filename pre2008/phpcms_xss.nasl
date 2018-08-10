@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpcms_xss.nasl 9040 2018-03-07 11:52:54Z cfischer $
+# $Id: phpcms_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # phpCMS XSS
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15850");
-  script_version("$Revision: 9040 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 12:52:54 +0100 (Wed, 07 Mar 2018) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -44,18 +44,14 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The remote host runs phpCMS, a content management system
+  script_tag(name:"solution", value:"Upgrade to version 1.2.1pl1 or newer");
+  script_tag(name:"summary", value:"The remote host runs phpCMS, a content management system
   written in PHP.
 
   This version is vulnerable to cross-site scripting due to a lack of
   sanitization of user-supplied data in parser.php script.
   Successful exploitation of this issue may allow an attacker to execute
-  malicious script code on a vulnerable server.";
-
-  tag_solution = "Upgrade to version 1.2.1pl1 or newer";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  malicious script code on a vulnerable server.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod", value:"50"); # No extra check, prone to false positives and doesn't match existing qod_types
@@ -68,7 +64,8 @@ include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
 if ( ! can_host_php( port:port ) ) exit( 0 );
-if( get_kb_item("www/" + port + "/generic_xss" ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 url = "/parser/parser.php?file=<script>foo</script>";
 buf = http_get( item:url, port:port );

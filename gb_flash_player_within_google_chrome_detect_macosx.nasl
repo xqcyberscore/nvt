@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_within_google_chrome_detect_macosx.nasl 5662 2017-03-21 11:54:36Z antu123 $
+# $Id: gb_flash_player_within_google_chrome_detect_macosx.nasl 10873 2018-08-10 07:37:56Z cfischer $
 #
 # Adobe Flash Player Within Google Chrome Detection (Mac OS X)
 #
@@ -27,22 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810614");
-  script_version("$Revision: 5662 $");
+  script_version("$Revision: 10873 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 12:54:36 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 09:37:56 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-03-14 15:08:22 +0530 (Tue, 14 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Flash Player Within Google Chrome Detection (Mac OS X)");
 
-  script_tag(name : "summary" , value : "Detection of installed version of Adobe
+  script_tag(name:"summary", value:"Detects the installed version of Adobe
   Flash within google chrome.
 
   The script logs in via ssh and extracts the version from the binary file
   'libpepflashplayer.so'.");
 
   script_category(ACT_GATHER_INFO);
-  script_xref(name: "URL" , value: "https://helpx.adobe.com/flash-player/kb/flash-player-google-chrome.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/flash-player/kb/flash-player-google-chrome.html");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
@@ -54,18 +54,11 @@ include("ssh_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-##Variable initialization
-sock = 0;
-bracbin = "";
-bracVer = "";
-paths = "";
-
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);
 }
 
-## Get the installed plugins of Adobe flash player
 flashIns = ssh_cmd(socket:sock, cmd:"ls ~/Library/" +
           "Application\ Support/Google/Chrome/PepperFlash");
 
@@ -75,8 +68,8 @@ versionList =  split(versions, sep:' ', keep:FALSE);
 
 ##NOTE:: When New Flash Plugin is updated on installed
 ##a new directory is created. Always there are directories
-##of old and latest Flash plugin here.
-##Checking for latest version directory only
+##of old and latest Flash plugin here. Checking for
+##latest version directory only
 ##Lets figure out largest version present
 maxVer = versionList[1];
 foreach version (versionList)
@@ -99,15 +92,12 @@ if(isnull(flashVer) || "does not exist" >< flashVer){
   exit(0);
 }
 
-## Set the version in KB
 set_kb_item(name: "AdobeFlashPlayer/Chrome/MacOSX/Ver", value:flashVer);
 
-## Build CPE
 cpe = build_cpe(value:flashVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:flash_player_chrome:");
 if(isnull(cpe))
   cpe = "cpe:/a:adobe:flash_player_chrome";
-        
-## Register Product and Build Report
+
 register_product(cpe:cpe, location:"/Applications/");
 log_message(data: build_detection_report(app: "Flash Player Within Google Chrome",
                                                version: flashVer,

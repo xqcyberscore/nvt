@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_cms_xss_vuln.nasl 10061 2018-06-04 09:54:24Z asteins $
+# $Id: gb_modx_cms_xss_vuln.nasl 10870 2018-08-10 06:36:53Z cfischer $
 #
 # MODX Revolution CMS 2.6.3 Stored XSS Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = 'cpe:/a:modx:revolution';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112291");
-  script_version("$Revision: 10061 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-04 11:54:24 +0200 (Mon, 04 Jun 2018) $");
+  script_version("$Revision: 10870 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-08-10 08:36:53 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name: "creation_date", value: "2018-06-04 11:48:33 +0200 (Mon, 04 Jun 2018)");
   script_tag(name: "cvss_base", value: "3.5");
   script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
-  script_cve_id("CVE-2018-10382");
+  script_cve_id("CVE-2018-10382", "CVE-2017-5223");
 
   script_tag(name: "qod_type", value: "remote_banner");
 
@@ -60,6 +60,7 @@ if (description)
 
   script_tag(name: "solution", value: "Apply the changes from the referenced github commit / pull request.");
 
+  script_xref(name: "URL", value: "https://raw.githubusercontent.com/modxcms/revolution/v2.6.4-pl/core/docs/changelog.txt");
   script_xref(name: "URL", value: "https://github.com/modxcms/revolution/pull/13887");
   script_xref(name: "URL", value: "https://github.com/modxcms/revolution/pull/13887/commits/3241473d8213e9551cef4ed0e8ac4645cfbd10c4");
 
@@ -75,7 +76,7 @@ if (!port = get_app_port(cpe: CPE))
 if (!version = get_app_version(cpe: CPE, port: port))
   exit(0);
 
-if (version_is_less(version: version, test_version: "2.6.3")) {
+if (version_is_less(version: version, test_version: "2.6.4")) {
   report = report_fixed_ver(installed_version: version, fixed_version: "Apply the changes from the linked commit / pull request");
   security_message(port: port, data: report);
   exit(0);

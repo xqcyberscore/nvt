@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kamailio_heap_overflow_vuln.nasl 9594 2018-04-25 02:13:41Z ckuersteiner $
+# $Id: gb_kamailio_heap_overflow_vuln.nasl 10871 2018-08-10 07:00:33Z cfischer $
 #
 # Kamailio Heap Overflow Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:kamailio:kamailio";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140938");
-  script_version("$Revision: 9594 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-25 04:13:41 +0200 (Wed, 25 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2018-04-03 15:52:17 +0700 (Tue, 03 Apr 2018)");
+  script_version("$Revision: 10871 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 09:00:33 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-04-03 15:52:17 +0700 (Tue, 03 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-8828");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Kamailio Heap Overflow Vulnerability");
 
@@ -51,20 +51,20 @@ if (description)
   script_dependencies("gb_kamailio_detect.nasl");
   script_mandatory_keys("kamailio/installed");
 
-  script_tag(name: "summary", value: "Kamailio is prone to a heap overflow vulnerability which may result in a
+  script_tag(name:"summary", value:"Kamailio is prone to a heap overflow vulnerability which may result in a
 denial of service condition.");
 
-  script_tag(name: "vuldetect", value: "Checks the version");
+  script_tag(name:"vuldetect", value:"Checks the version");
 
-  script_tag(name: "insight", value: "A specially crafted REGISTER message with a malformed branch or From tag
+  script_tag(name:"insight", value:"A specially crafted REGISTER message with a malformed branch or From tag
 triggers an off-by-one heap overflow.");
 
-  script_tag(name: "affected", value: "Kamailio versions 4.4.x, 5.0.x and 5.1.x");
+  script_tag(name:"affected", value:"Kamailio versions 4.4.x, 5.0.x and 5.1.x");
 
-  script_tag(name: "solution", value: "Update to version 4.4.7, 5.0.6, 5.1.2 or later.");
+  script_tag(name:"solution", value:"Update to version 4.4.7, 5.0.6, 5.1.2 or later.");
 
-  script_xref(name: "URL", value: "https://www.kamailio.org/w/2018/03/kamailio-security-announcement-tmx-lcr/");
-  script_xref(name: "URL", value: "https://github.com/EnableSecurity/advisories/tree/master/ES2018-05-kamailio-heap-overflow");
+  script_xref(name:"URL", value:"https://www.kamailio.org/w/2018/03/kamailio-security-announcement-tmx-lcr/");
+  script_xref(name:"URL", value:"https://github.com/EnableSecurity/advisories/tree/master/ES2018-05-kamailio-heap-overflow");
 
   exit(0);
 }

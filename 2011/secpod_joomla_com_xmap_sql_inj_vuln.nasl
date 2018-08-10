@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_com_xmap_sql_inj_vuln.nasl 10485 2018-07-11 15:10:07Z ckuersteiner $
+# $Id: secpod_joomla_com_xmap_sql_inj_vuln.nasl 10833 2018-08-08 10:35:26Z cfischer $
 #
 # Joomla com_xmap SQL Injection Vulnerability
 #
@@ -29,20 +29,13 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902397");
-  script_version("$Revision: 10485 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-11 17:10:07 +0200 (Wed, 11 Jul 2018) $");
+  script_version("$Revision: 10833 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 12:35:26 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-07-22 12:16:19 +0200 (Fri, 22 Jul 2011)");
   script_bugtraq_id(48658);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
-  script_tag(name:"solution_type", value:"VendorFix");
-
   script_name("Joomla com_xmap SQL Injection Vulnerability");
-
-  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/103010/joomlaxmap1211-sql.txt");
-
-  script_tag(name:"qod_type", value:"remote_active");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Web application abuses");
@@ -50,25 +43,29 @@ if(description)
   script_require_ports("Services/www", 80);
   script_require_keys("joomla/installed");
 
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/103010/joomlaxmap1211-sql.txt");
+
   script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL queries by
-injecting arbitrary SQL code");
+  injecting arbitrary SQL code");
 
   script_tag(name:"affected", value:"Joomla Xmap component version 1.2.11");
 
   script_tag(name:"insight", value:"The flaw is due to input passed via 'view' parameter to 'index.php' is not
-properly sanitised before being used in a SQL query.");
+  properly sanitised before being used in a SQL query.");
 
-  script_tag(name:"solution", value:"Upgrade to Joomla Xmap component version 1.2.12 or later");
+  script_tag(name:"solution", value:"Upgrade to Joomla Xmap component version 1.2.12 or later.");
 
   script_tag(name:"summary", value:"This host is running Joomla xmap component and is prone to SQL injection
-vulnerability.");
+  vulnerability.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_active");
 
   exit(0);
 }
 
 include("host_details.inc");
 include("http_func.inc");
-include("http_keepalive.inc");
 
 if (!port = get_app_port(cpe:CPE))
   exit(0);

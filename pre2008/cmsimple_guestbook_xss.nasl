@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cmsimple_guestbook_xss.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: cmsimple_guestbook_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # CMSimple index.php guestbook XSS
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19693");
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 10862 $");
   script_bugtraq_id(12303);
   script_xref(name:"OSVDB", value:"13130");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_name("CMSimple index.php guestbook XSS");
   script_category(ACT_ATTACK);
@@ -44,16 +44,12 @@ if(description)
 
   script_xref(name:"URL", value:"http://securitytracker.com/alerts/2005/Jan/1012926.html");
 
-  tag_summary = "The remote host is running CMSimple, a CMS written in PHP.
+  script_tag(name:"solution", value:"Upgrade to version 2.4 Beta 5 or higher.");
+  script_tag(name:"summary", value:"The remote host is running CMSimple, a CMS written in PHP.
 
   The version of CMSimple installed on the remote host is prone to
   cross-site scripting attacks due to its failure to sanitize
-  user-supplied input to both the search and guestbook modules.";
-
-  tag_solution = "Upgrade to version 2.4 Beta 5 or higher.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  user-supplied input to both the search and guestbook modules.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_active");
@@ -73,7 +69,8 @@ exss = urlencode( str:xss );
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-if( get_kb_item( "www/" + port + "/generic_xss" ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
@@ -84,7 +81,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   res = http_keepalive_send_recv( port:port, data:req );
 
   # There's a problem if we see our XSS.
-  if( res =~ "HTTP/1\.. 200" && xss >< res &&
+  if( res =~ "^HTTP/1\.[01] 200" && xss >< res &&
       ( egrep( string:res, pattern:'meta name="generator" content="CMSimple .+ cmsimple\\.dk' ) ||
         egrep( string:res, pattern:'href="http://www\\.cmsimple\\.dk/".+>Powered by CMSimple<' ) ||
         egrep( string:res, pattern:string('href="', dir, '/\\?&(sitemap|print)">' ) ) ) ) {

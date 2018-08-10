@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kamailio_dos_vuln.nasl 10710 2018-08-01 13:04:05Z asteins $
+# $Id: gb_kamailio_dos_vuln.nasl 10871 2018-08-10 07:00:33Z cfischer $
 #
 # Kamailio < 5.0.7 & 5.1.x < 5.1.4 Denial of Service Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:kamailio:kamailio";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112340");
-  script_version("$Revision: 10710 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 15:04:05 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 10871 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 09:00:33 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-03 15:52:17 +0700 (Tue, 03 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_cve_id("CVE-2018-14767");
 
-  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -69,6 +69,7 @@ if (description)
   script_tag(name:"solution", value:"Apply the patch from github or make use of a release that
   includes that patch (e.g. 5.1.4 or 5.0.7). At the moment no workarounds (e.g. in the configuration) are known.");
 
+  script_xref(name:"URL", value:"https://www.kamailio.org/w/2018/07/kamailio-security-announcement-for-kamailio-core/");
   script_xref(name:"URL", value:"https://skalatan.de/blog/advisory-hw-2018-05");
   script_xref(name:"URL", value:"https://github.com/kamailio/kamailio/commit/281a6c6b6eaaf30058b603325e8ded20b99e1456");
 

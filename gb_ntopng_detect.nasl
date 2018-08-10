@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntopng_detect.nasl 9173 2018-03-22 11:21:03Z asteins $
+# $Id: gb_ntopng_detect.nasl 10833 2018-08-08 10:35:26Z cfischer $
 #
 # ntopng Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107109");
-  script_version("$Revision: 9173 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-22 12:21:03 +0100 (Thu, 22 Mar 2018) $");
+  script_version("$Revision: 10833 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 12:35:26 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-12-20 06:40:16 +0200 (Tue, 20 Dec 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 3000);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of ntopng.
+  script_tag(name:"summary", value:"Detects the installed version of ntopng.
 
   The script detects the version of ntopng on the remote host and sets the KB entry.");
 
@@ -50,7 +50,6 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 

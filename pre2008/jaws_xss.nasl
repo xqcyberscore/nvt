@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: jaws_xss.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: jaws_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # JAWS HTML injection vulnerabilities
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19394");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-1231", "CVE-2005-1800");
   script_bugtraq_id(13254, 13796);
@@ -51,17 +51,13 @@ if(description)
   script_xref(name:"URL", value:"http://seclists.org/lists/fulldisclosure/2005/Apr/0416.html");
   script_xref(name:"URL", value:"http://lists.grok.org.uk/pipermail/full-disclosure/2005-May/034354.html");
 
-  tag_summary = "The remote host is running JAWS, a content management system written in PHP.
+  script_tag(name:"solution", value:"Upgrade to JAWS 0.5.2 or later.");
+  script_tag(name:"summary", value:"The remote host is running JAWS, a content management system written in PHP.
 
   The remote version of this software does not perform a proper
   validation of user-supplied input to several variables used in the
   'GlossaryModel.php' script, and is therefore vulnerable to cross-site
-  scripting attacks.";
-
-  tag_solution = "Upgrade to JAWS 0.5.2 or later.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  scripting attacks.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -88,8 +84,8 @@ exploits = make_list(
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
-
-if( get_kb_item( "www/" + port + "/generic_xss" ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
@@ -102,7 +98,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
     req = http_get( item:url, port:port );
     res = http_keepalive_send_recv( port:port, data:req );
 
-    if( res =~ "HTTP/1\.. 200" && 'Term does not exists' >< res && xss >< res ) {
+    if( res =~ "^HTTP/1\.[01] 200" && 'Term does not exists' >< res && xss >< res ) {
       report = report_vuln_url( port:port, url:url );
       security_message( port:port, data:report );
       exit( 0 );

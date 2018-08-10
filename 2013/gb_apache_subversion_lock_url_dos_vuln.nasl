@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_lock_url_dos_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_apache_subversion_lock_url_dos_vuln.nasl 10873 2018-08-10 07:37:56Z cfischer $
 #
 # Apache Subversion 'mod_dav_svn' Module Multiple DoS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802055");
-  script_version("$Revision: 6698 $");
+  script_version("$Revision: 10873 $");
   script_bugtraq_id(58897, 58323);
   script_cve_id("CVE-2013-1847", "CVE-2013-1849");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 09:37:56 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-11 12:32:36 +0530 (Tue, 11 Jun 2013)");
   script_name("Apache Subversion 'mod_dav_svn' Module Multiple DoS Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52966/");
@@ -47,14 +47,20 @@ if(description)
   script_mandatory_keys("Apache_SVN/banner");
 
   script_tag(name:"affected", value:"Apache Subversion 1.6.x through 1.6.20 and 1.7.0 through 1.7.8");
+
   script_tag(name:"insight", value:"An error within the 'mod_dav_svn' module when handling
+
   - 'LOCK' requests against a URL for a non-existent path or invalid activity
     URL that supports anonymous locks.
+
   - 'PROPFIND' request on an activity URL.");
+
   script_tag(name:"solution", value:"Upgrade to Apache Subversion version 1.6.21 or 1.7.9 or later,
   For updates refer to http://subversion.apache.org");
+
   script_tag(name:"summary", value:"The host is running Apache Subversion and is prone to multiple
   denial of service vulnerabilities.");
+
   script_tag(name:"impact", value:"Successful exploitation will let the remote attackers to cause a segfault.
 
   Impact Level: Application
@@ -63,6 +69,7 @@ if(description)
   will be vulnerable.");
 
   script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
@@ -71,30 +78,15 @@ include("http_func.inc");
 include("misc_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-h_port = 0;
-banner = "";
-req1 = "";
-res1 = "";
-lock_body = "";
-normal_req = "";
-normal_res = "";
-crafted_req = "";
-crafted_res = "";
-
-## Get HTTP Port
 h_port = get_http_port(default:80);
 
-## Confirm the application before trying exploit
 banner = get_http_banner(port: h_port);
 if(!banner || banner !~ "Server: Apache.* SVN"){
   exit(0);
 }
 
-## Get host name
 host = http_host_name(port:h_port);
 
-## Confirm HTTP server is alive
 if(http_is_dead(port:h_port)) exit(0);
 
 ## LOCK request body
@@ -107,12 +99,10 @@ lock_body = string('<?xml version="1.0" encoding="UTF-8"?>\n',
                      '</D:owner>\n',
                      '</D:lockinfo>\n');
 
-## Iterate over possible svn repos
 foreach path (make_list_unique("/", "/repo/", "/repository/", "/trunk/", "/svn/",
                         "/svn/trunk/", "/repo/trunk/", "/repo/projects/",
                         "/projects/", "/svn/repos/", cgi_dirs(port:h_port)))
 {
-  ## Get proper working path
   req1 = http_get(item:string(path), port:h_port);
   res1 = http_keepalive_send_recv(port:h_port, data:req1);
 
@@ -131,7 +121,6 @@ foreach path (make_list_unique("/", "/repo/", "/repository/", "/trunk/", "/svn/"
   normal_req = string(proper_path, common_req);
   normal_res = http_keepalive_send_recv(port:h_port, data:normal_req);
 
-  ## Confirm proper SVN report response
   if(normal_res =~ "HTTP/1.. 405 Method Not Allowed"){
     continue;
   }
@@ -153,7 +142,7 @@ foreach path (make_list_unique("/", "/repo/", "/repository/", "/trunk/", "/svn/"
   }
 
   ## some times response has "\r\n" hence check strlen(crafted_res) < 3
-  ## Trying 2 times to make sure module is crashing
+  ## nb: Trying 2 times to make sure module is crashing
   if(isnull(crafted_res) || strlen(crafted_res) < 3)
   {
     crafted_res = http_keepalive_send_recv(port:h_port, data:crafted_req);

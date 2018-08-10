@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xedus_detect.nasl 8869 2018-02-19 14:09:59Z cfischer $
+# $Id: xedus_detect.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # Xedus detection
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14644");
-  script_version("$Revision: 8869 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-19 15:09:59 +0100 (Mon, 19 Feb 2018) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   #script_bugtraq_id(11071);
   script_tag(name:"cvss_base", value:"0.0");
@@ -44,12 +44,10 @@ if(description)
   script_require_ports("Services/www", 4274);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The remote host runs Xedus Peer to Peer webserver, it provides
-  the ability to share files, music, and any other media, as well 
-  as create robust and dynamic web sites, which can feature 
-  database access, file system access, with full .net support.";
-
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The remote host runs Xedus Peer to Peer webserver, it provides
+  the ability to share files, music, and any other media, as well
+  as create robust and dynamic web sites, which can feature
+  database access, file system access, with full .net support.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -59,7 +57,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-exit(0); # FP-prone
+exit(0); # FP-prone # TODO: Fix the detection if possible...
 
 port = get_http_port( default:4274 );
 
@@ -68,6 +66,7 @@ req = http_get( item:url, port:port );
 rep = http_keepalive_send_recv( port:port, data:req );
 
 if( egrep( pattern:"free openvas", string:rep ) ) {
+  set_kb_item( name:"xedus/running", value:TRUE );
   set_kb_item( name:"xedus/" + port + "/running", value:TRUE );
   set_kb_item( name:"Services/www/" + port + "/embedded", value:TRUE );
   log_message( port:port );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2017-27_info_disc_win.nasl 9923 2018-05-22 13:23:32Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2017-27_info_disc_win.nasl 10868 2018-08-10 05:36:57Z ckuersteiner $
 #
 # Mozilla Firefox Information Disclosure Vulnerability-Windows(mfsa_2017-27)
 #
@@ -29,30 +29,30 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812323");
-  script_version("$Revision: 9923 $");
-  script_cve_id("CVE-2017-7844" );
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:23:32 +0200 (Tue, 22 May 2018) $");
+  script_version("$Revision: 10868 $");
+  script_cve_id("CVE-2017-7844");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 07:36:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-12-05 12:43:31 +0530 (Tue, 05 Dec 2017)");
   script_name("Mozilla Firefox Information Disclosure Vulnerability-Windows(mfsa_2017-27)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox
   and is prone to information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists as visited history
+  script_tag(name:"insight", value:"The flaw exists as visited history
   information leak through SVG image.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain access to potentially sensitive information.
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version 57 on Windows.");
+  script_tag(name:"affected", value:"Mozilla Firefox version 57 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 57.0.1
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 57.0.1
   or later. For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");

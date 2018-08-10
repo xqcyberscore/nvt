@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: osticket_support_address_dos.nasl 10831 2018-08-08 09:49:56Z cfischer $
+# $Id: osticket_support_address_dos.nasl 10861 2018-08-09 13:04:38Z mmartin $
 #
 # osTicket Support Address DoS
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:osticket:osticket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.13859");
-  script_version("$Revision: 10831 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 11:49:56 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 10861 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 15:04:38 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,7 +52,7 @@ if(description)
   script_tag(name:"impact", value:"If so, a remote attacker can generate a mail loop on the target
   by opening a ticket with the support address as the contact email address.");
 
-  script_tag(name:"imsight", value:"Please see the references for details.
+  script_tag(name:"insight", value:"Please see the references for details.
 
   ***** The Scanner has determined the vulnerability exists on the target
 

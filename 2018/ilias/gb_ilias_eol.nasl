@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilias_eol.nasl 9825 2018-05-14 14:05:11Z cfischer $
+# $Id: gb_ilias_eol.nasl 10838 2018-08-08 12:05:36Z cfischer $
 #
 # ILIAS End Of Life Detection
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:ilias:ilias";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108428");
-  script_version("$Revision: 9825 $");
+  script_version("$Revision: 10838 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-14 16:05:11 +0200 (Mon, 14 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 14:05:36 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-03-12 08:45:04 +0100 (Mon, 12 Mar 2018)");
   script_name("ILIAS End Of Life Detection");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -66,8 +66,7 @@ include("misc_func.inc");
 include("products_eol.inc");
 include("version_func.inc");
 include("host_details.inc");
-include("http_func.inc"); # Both http_ for report_vuln_url()
-include("http_keepalive.inc");
+include("http_func.inc"); # For report_vuln_url()
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );

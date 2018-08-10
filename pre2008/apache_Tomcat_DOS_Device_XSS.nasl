@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: apache_Tomcat_DOS_Device_XSS.nasl 4355 2016-10-26 13:50:18Z cfi $
+# $Id: apache_Tomcat_DOS_Device_XSS.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # Apache Tomcat DOS Device Name XSS
 #
@@ -34,8 +34,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11042");
-  script_version("$Revision: 4355 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-26 15:50:18 +0200 (Wed, 26 Oct 2016) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -50,12 +50,13 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.westpoint.ltd.uk/advisories/wp-02-0008.txt");
 
-  tag_summary = "The remote Apache Tomcat web server is vulnerable to a cross site scripting 
+  script_tag(name:"solution", value:"Upgrade to Apache Tomcat v4.1.3 beta or later.");
+  script_tag(name:"summary", value:"The remote Apache Tomcat web server is vulnerable to a cross site scripting
   issue.
 
   Description :
 
-  Apache Tomcat is the servlet container that is used in the official Reference 
+  Apache Tomcat is the servlet container that is used in the official Reference
   Implementation for the Java Servlet and JavaServer Pages technologies.
 
   By making requests for DOS Device names it is possible to cause
@@ -65,12 +66,7 @@ if(description)
 
   (angle brackets omitted)
 
-  The exception also reveals the physical path of the Tomcat installation.";
-
-  tag_solution = "Upgrade to Apache Tomcat v4.1.3 beta or later.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  The exception also reveals the physical path of the Tomcat installation.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -85,14 +81,15 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-if( get_kb_item( "www/" + port + "/generic_xss" ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 url = "/COM2.<IMG%20SRC='JavaScript:alert(document.domain)'>";
 
 req = http_get( item:url, port:port );
 res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-if( res  !~ "HTTP/1\.. 200" ) exit( 0 );
+if( res  !~ "^HTTP/1\.[01] 200" ) exit( 0 );
 
 confirmed = string( "JavaScript:alert(document.domain)" );
 confirmed_too = string( "java.io.FileNotFoundException" );

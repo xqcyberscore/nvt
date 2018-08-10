@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ezpublish_xss.nasl 9087 2018-03-12 17:24:24Z cfischer $
-# Description: eZ Publish Cross Site Scripting Bugs
+# $Id: ezpublish_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+#
+# eZ Publish Cross Site Scripting Bugs
 #
 # Authors:
 # K-Otik.com <ReYn0@k-otik.com>
@@ -20,7 +22,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 CPE = 'cpe:/a:ez:ez_publish';
 
@@ -32,8 +34,8 @@ CPE = 'cpe:/a:ez:ez_publish';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.11449");
- script_version("$Revision: 9087 $");
- script_tag(name:"last_modification", value:"$Date: 2018-03-12 18:24:24 +0100 (Mon, 12 Mar 2018) $");
+ script_version("$Revision: 10862 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_bugtraq_id(7137, 7138);
  script_cve_id("CVE-2003-0310");
@@ -45,21 +47,21 @@ if (description)
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
  script_copyright("This script is Copyright (C) 2003 k-otik.com");
- script_dependencies("sw_ez_publish_detect.nasl", "no404.nasl", "cross_site_scripting.nasl");
+ script_dependencies("sw_ez_publish_detect.nasl", "cross_site_scripting.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("ez_publish/installed");
 
- script_tag(name : "solution" , value : "Upgrade to a newer version.");
- script_tag(name : "summary" , value : "eZ Publish 2.2.7  has a cross site scripting bug. An attacker may use it to 
+ script_tag(name:"solution", value:"Upgrade to a newer version.");
+ script_tag(name:"summary", value:"eZ Publish 2.2.7  has a cross site scripting bug. An attacker may use it to
  perform a cross site scripting attack on this host.
 
  In addition to this, another flaw may allow an attacker store hostile
  HTML code on the server side, which will be executed by the browser of the
  administrative user when he looks at the server logs.");
 
- script_tag(name: "qod_type", value:"remote_app");
+ script_tag(name:"qod_type", value:"remote_app");
 
- script_tag(name: "solution_type", value: "VendorFix");
+ script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 }
@@ -73,14 +75,15 @@ if (!dir = get_app_location(cpe: CPE, port: port)) exit(0);
 
 if (dir == "/") dir = "";
 
-if(get_kb_item(string("www/", port, "/generic_xss"))) exit(0);
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 url = string(dir, "/search/?SectionIDOverride=1&SearchText=<script>window.alert(document.cookie);</script>");
 req = http_get(item:url, port:port);
 buf = http_keepalive_send_recv(port:port, data:req);
-if( buf == NULL ) exit(0);
+if( isnull( buf ) ) exit( 0 );
 
-if(buf =~ "HTTP/1\.. 200" && "<script>window.alert(document.cookie);</script>" >< buf) {
+if(buf =~ "^HTTP/1\.[01] 200" && "<script>window.alert(document.cookie);</script>" >< buf) {
     security_message(port:port);
     exit(0);
 }

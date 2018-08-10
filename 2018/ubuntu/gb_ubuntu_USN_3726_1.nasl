@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3726_1.nasl 10806 2018-08-07 10:06:18Z santu $
+# $Id: gb_ubuntu_USN_3726_1.nasl 10837 2018-08-08 11:56:29Z cfischer $
 #
 # Ubuntu Update for python-django USN-3726-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843604");
-  script_version("$Revision: 10806 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 12:06:18 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 10837 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 13:56:29 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-02 05:48:36 +0200 (Thu, 02 Aug 2018)");
   script_cve_id("CVE-2018-14574");
   script_tag(name:"cvss_base", value:"5.0");
@@ -51,7 +51,7 @@ issue to perform phishing attacks.");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU18\.04 LTS");
   exit(0);
 }
 

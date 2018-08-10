@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_keepalive.inc 10830 2018-08-08 09:24:37Z cfischer $
+# $Id: http_keepalive.inc 10855 2018-08-09 09:11:30Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10830 $
+# $Revision: 10855 $
 #
 ###############################################################################
 
@@ -318,6 +318,7 @@ function http_keepalive_send_recv( port, data, bodyonly, fetch404, content_type_
   # https://tools.ietf.org/html/rfc7230#section-6.1 -> Connection options are case-insensitive.
   # Some NVTs devs might add a "Connection: close" to the header data passed to this function so doing an ereg_replace instead
   # nb: Be aware that this ereg_replace is also replacing any occurrence of "Connection: Close" somewhere in the body of the request data.
+  # TODO: Add a Connection: Keep-Alive if no Connection: Close is included in the passed request.
   data = ereg_replace( string:data, pattern:"Connection: Close", replace:"Connection: Keep-Alive", icase:TRUE );
   __ka_last_request = data;
   n = send( socket:__ka_socket, data:data );
@@ -735,124 +736,6 @@ function http_vuln_check( port, url, pattern, check_header, debug, extra_check, 
   return FALSE;
 }
 
-# req = http_post_req( port:port, url:"/", data:data, accept_header:"application/json", add_headers: make_array( "Content-Type", "application/x-www-form-urlencoded" ) );
-function http_post_req( port, url, data, add_headers, accept_header, user_agent, host_header_use_ip ) {
-
-  local_var port, url, data, add_headers, accept_header, user_agent, host_header_use_ip;
-  local_var x_header, host, req, header, len;
-
-  if( ! isnull( add_headers ) ) {
-    if( typeof( add_headers ) != "array" ) {
-      set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#add_headers_no-array#-#http_post_req" );
-      return;
-    }
-  }
-
-  if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_post_req" );
-    return;
-  }
-
-  if( ! url ) url = "/";
-  x_header = FALSE;
-
-  if( data ) len = strlen( data );
-
-  if( host_header_use_ip ) {
-    host = http_host_name( port:port, use_ip:TRUE );
-  } else {
-    host = http_host_name( port:port );
-  }
-
-  if( ! accept_header ) accept_header = '*/*';
-
-  if ( ! user_agent )
-    user_agent = OPENVAS_HTTP_USER_AGENT;
-  else
-    x_header = TRUE;
-
-  req = 'POST ' + url + ' HTTP/1.1\r\n' +
-        'Host: ' + host + '\r\n' +
-        'Pragma: no-cache\r\n' +
-        'User-Agent: ' + user_agent + '\r\n' +
-        'Accept-Language: en\r\n' +
-        'Accept-Charset: iso-8859-1,utf-8;q=0.9,*;q=0.1\r\n' +
-        'Accept: ' + accept_header + '\r\n' +
-        'Accept-Encoding: identity\r\n';
-
-  if( data ) req += 'Content-Length: ' + len + '\r\n';
-
-  if( x_header )
-    req += 'X-Scanner: OpenVAS ' + OPENVAS_VERSION + '\r\n';
-
-  if( ! isnull( add_headers ) ) {
-    foreach header( keys( add_headers ) )
-      req += header +': ' + add_headers[header] + '\r\n';
-  }
-
-  req += '\r\n';
-
-  if( data ) req += data;
-
-  return req;
-}
-
-function http_get_req( port, url, add_headers, accept_header, user_agent, host_header_use_ip ) {
-
-  local_var port, url, add_headers, accept_header, user_agent, host_header_use_ip;
-  local_var x_header, host, req, header;
-
-  if( ! isnull( add_headers ) ) {
-    if( typeof( add_headers ) != "array" ) {
-      set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#add_headers_no-array#-#http_get_req" );
-      return;
-    }
-  }
-
-  if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_get_req" );
-    return;
-  }
-
-  if( ! url ) url = "/";
-  x_header = FALSE;
-
-  if( host_header_use_ip ) {
-    host = http_host_name( port:port, use_ip:TRUE );
-  } else {
-    host = http_host_name( port:port );
-  }
-
-  if( ! accept_header ) accept_header = 'image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*';
-
-  if ( ! user_agent )
-    user_agent = OPENVAS_HTTP_USER_AGENT;
-  else
-    x_header = TRUE;
-
-  req = 'GET ' + url + ' HTTP/1.1\r\n' +
-        'Connection: Close\r\n' +
-        'Host: ' + host + '\r\n' +
-        'Pragma: no-cache\r\n' +
-        'Cache-Control: no-cache\r\n' +
-        'User-Agent: ' + user_agent + '\r\n' +
-        'Accept: ' + accept_header + '\r\n' +
-        'Accept-Language: en\r\n' +
-        'Accept-Charset: iso-8859-1,*,utf-8\r\n';
-
-  if( x_header )
-    req += 'X-Scanner: OpenVAS ' + OPENVAS_VERSION + '\r\n';
-
-  if( ! isnull( add_headers ) ) {
-    foreach header( keys( add_headers ) )
-      req += header +': ' + add_headers[header] + '\r\n';
-  }
-
-  req += '\r\n';
-
-  return req;
-}
-
 # @brief Creates a HTTP GET request for the specified URL, sends
 #        the request to the target and receives the response.
 #
@@ -863,23 +746,23 @@ function http_get_req( port, url, add_headers, accept_header, user_agent, host_h
 #
 # @return the response to the HTTP GET request or NULL if no response was received
 #
-function recv_http_buf( port, url, bodyonly, nocache ) {
+function http_ka_recv_buf( port, url, bodyonly, nocache ) {
 
   local_var port, url, bodyonly, nocache, req, res;
 
   if( ! port ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#recv_http_buf" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_ka_recv_buf" );
     return;
   }
 
   if( ! url ) {
-    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#url#-#recv_http_buf" );
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#url#-#http_ka_recv_buf" );
     return;
   }
 
   if( ! nocache ) {
     if( ! egrep( pattern:"(\?|&|#|;|\[|\]|=)", string:url ) ) {
-      if( bodyonly ) set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_get_cache: nocache set to FALSE but bodyonly set to TRUE, response will contain the body." );
+      if( bodyonly ) set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#http_ka_recv_buf: nocache set to FALSE but bodyonly set to TRUE, response will contain the body." );
       res = http_get_cache( item:url, port:port );
       return res;
     }

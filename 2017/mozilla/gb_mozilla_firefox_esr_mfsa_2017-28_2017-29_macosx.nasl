@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2017-28_2017-29_macosx.nasl 9923 2018-05-22 13:23:32Z cfischer $
+# $Id: gb_mozilla_firefox_esr_mfsa_2017-28_2017-29_macosx.nasl 10868 2018-08-10 05:36:57Z ckuersteiner $
 #
 # Mozilla Firefox ESR Security Updates(mfsa_2017-28_2017-29)-Mac OS X
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812327");
-  script_version("$Revision: 9923 $");
+  script_version("$Revision: 10868 $");
   script_cve_id("CVE-2017-7843");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:23:32 +0200 (Tue, 22 May 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 07:36:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-12-08 10:46:15 +0530 (Fri, 08 Dec 2017)");
   script_name("Mozilla Firefox ESR Security Updates(mfsa_2017-28_2017-29)-Mac OS X");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox
   ESR and is prone to security bypass vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an error in web
+  script_tag(name:"insight", value:"The flaw exists due to an error in web
   worker which in Private Browsing mode can write IndexedDB data.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   will allow remote attackers to bypass private-browsing protections uniquely
   fingerprinting visitors.
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox ESR version before
+  script_tag(name:"affected", value:"Mozilla Firefox ESR version before
   52.5.2 on Mac OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox ESR version 52.5.2
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version 52.5.2
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");

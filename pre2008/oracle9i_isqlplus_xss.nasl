@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle9i_isqlplus_xss.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: Oracle 9iAS iSQLplus XSS
+# $Id: oracle9i_isqlplus_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+#
+# Oracle 9iAS iSQLplus XSS
 #
 # Authors:
 # Frank Berger <dev.null@fm-berger.de>
@@ -21,63 +23,57 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-tag_summary = "The login-page of Oracle9i iSQLplus allows the injection of HTML and Javascript
-code via the username and password parameters.
-
-
-Description :
-
-
-The remote host is running a version of the Oracle9i 'isqlplus' CGI which
-is vulnerable to a cross site scripting issue.
-
-An attacker may exploit this flaw to to steal the cookies of legitimate 
-users on the remote host.";
-
-# This vulnerability was found by 
+# This vulnerability was found by
 # Rafel Ivgi, The-Insider <theinsider@012.net.il>
 
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.12112");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 10862 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- name = "Oracle 9iAS iSQLplus XSS";
- script_name(name);
- 
-
-
- 
- 
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_vul");
- 
+ script_name("Oracle 9iAS iSQLplus XSS");
+ script_category(ACT_ATTACK);
+ script_tag(name:"qod_type", value:"remote_vul");
  script_copyright("This script is Copyright (C) 2004 Frank Berger");
- family = "Web application abuses";
- script_family(family);
- script_dependencies("find_service.nasl", "http_version.nasl");
+ script_family("Web application abuses");
+ script_dependencies("find_service.nasl", "http_version.nasl", "cross_site_scripting.nasl");
  script_require_ports("Services/www", 80);
- script_require_keys("www/OracleApache");
- script_xref(name : "URL" , value : "http://www.securitytracker.com/alerts/2004/Jan/1008838.html");
- script_tag(name : "summary" , value : tag_summary);
+ script_mandatory_keys("www/OracleApache");
+ script_xref(name:"URL", value:"http://www.securitytracker.com/alerts/2004/Jan/1008838.html");
+ script_tag(name:"summary", value:"The login-page of Oracle9i iSQLplus allows the injection of HTML and Javascript
+code via the username and password parameters.
+
+Description :
+
+The remote host is running a version of the Oracle9i 'isqlplus' CGI which
+is vulnerable to a cross site scripting issue.
+
+An attacker may exploit this flaw to to steal the cookies of legitimate
+users on the remote host.");
+
+ script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+ of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+ disable respective features, remove the product or replace the product by another one.");
+
+ script_tag(name:"solution_type", value:"WillNotFix");
+
  exit(0);
 }
-
-# Check starts here
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-if(get_kb_item(string("www/", port, "/generic_xss"))) exit(0);
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
- req = http_get(item:"/isqlplus?action=logon&username=foo%22<script>foo</script>&password=test", port:port);	      
+ req = http_get(item:"/isqlplus?action=logon&username=foo%22<script>foo</script>&password=test", port:port);
  res = http_keepalive_send_recv(port:port, data:req);
- if ( res == NULL ) exit(0);
- if( res =~ "HTTP/1\.. 200" && '<script>foo</script>' >< res )	
+ if( isnull( res ) ) exit( 0 );
+ if( res =~ "^HTTP/1\.[01] 200" && '<script>foo</script>' >< res )
  	security_message(port);

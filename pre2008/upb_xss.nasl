@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: upb_xss.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: upb_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # Ultimate PHP Board multiple XSS flaws
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19498");
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2004");
   script_bugtraq_id(13971);
@@ -58,16 +58,12 @@ if(description)
   script_xref(name:"URL", value:"http://www.myupb.com/forum/viewtopic.php?id=26&t_id=118");
   script_xref(name:"URL", value:"http://securityfocus.com/archive/1/402461");
 
-  tag_summary = "The remote host is running Ultimate PHP Board (UPB).
+  script_tag(name:"solution", value:"Install vendor patch");
+  script_tag(name:"summary", value:"The remote host is running Ultimate PHP Board (UPB).
 
   The remote version of this software is affected by several cross-site
   scripting vulnerabilities. These issues are due to a failure of the
-  application to properly sanitize user-supplied input.";
-
-  tag_solution = "Install vendor patch";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  application to properly sanitize user-supplied input.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod", value:"50"); # No extra check, prone to false positives and doesn't match existing qod_types
@@ -87,7 +83,8 @@ exss = urlencode( str:xss );
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-if( get_kb_item( "www/" + port + "/generic_xss" ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
@@ -97,7 +94,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req );
 
-  if( res =~ "HTTP/1\.. 200" && xss >< res ) {
+  if( res =~ "^HTTP/1\.[01] 200" && xss >< res ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );

@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: lotus_domino_xss.nasl 9087 2018-03-12 17:24:24Z cfischer $
-# Description: Lotus Domino Src and BaseTarget XSS
+# $Id: lotus_domino_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+#
+# Lotus Domino Src and BaseTarget XSS
 #
 # Authors:
 # David Maciejak <david dot maciejak at kyxar dot fr>
@@ -20,13 +22,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19764");
-  script_version("$Revision: 9087 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-12 18:24:24 +0100 (Mon, 12 Mar 2018) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-3015");
   script_bugtraq_id(14845, 14846);
@@ -40,8 +42,8 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl", "cross_site_scripting.nasl");
   script_mandatory_keys("Lotus/banner");
 
-  script_tag(name : "solution" , value : "Upgrade to Domino 6.5.2 or newer");
-  script_tag(name : "summary" , value : "The remote web server is vulnerable to cross-site scripting issues.
+  script_tag(name:"solution", value:"Upgrade to Domino 6.5.2 or newer");
+  script_tag(name:"summary", value:"The remote web server is vulnerable to cross-site scripting issues.
 
   Description :
 
@@ -49,7 +51,7 @@ if(description)
 
   This version is vulnerable to multiple cross-site scripting due to a
   lack of sanitization of user-supplied data.");
-  script_tag(name : "impact" , value : "Successful exploitation of
+  script_tag(name:"impact", value:"Successful exploitation of
   this issue may allow an attacker to execute malicious script code in a
   user's browser within the context of the affected application.");
 
@@ -59,8 +61,6 @@ if(description)
   exit(0);
 }
 
-#the code
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
@@ -69,13 +69,14 @@ port = get_http_port(default:80);
 banner = get_http_banner(port: port);
 if(!banner)exit(0);
 if ( "Lotus" >!< banner ) exit(0);
-if(get_kb_item(string("www/", port, "/generic_xss"))) exit(0);
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 r = http_get_cache(item:"/", port:port);
-if( r == NULL )exit(0);
+if( isnull( r ) ) exit( 0 );
 
 matches = egrep(pattern:'src=.+(.+?OpenForm.+BaseTarget=)', string:r);
-foreach match (split(matches)) 
+foreach match (split(matches))
 {
        match = chomp(match);
        matchspec=eregmatch(pattern:'src="(.+?OpenForm.+BaseTarget=)', string:match);
@@ -83,9 +84,9 @@ foreach match (split(matches))
        {
 	       buf = http_get(item:string(matchspec[1],'";+<script>alert(foo)</script>;+var+mit="a'), port:port);
 	       r = http_keepalive_send_recv(port:port, data:buf);
-	       if( r == NULL )exit(0);
+	       if( isnull( r ) ) exit( 0 );
 
-	       if (r =~ "HTTP/1\.. 200" && "<script>alert(foo)</script>" >< r)
+	       if (r =~ "^HTTP/1\.[01] 200" && "<script>alert(foo)</script>" >< r)
 	       {
 		       security_message(port:port);
 	       }

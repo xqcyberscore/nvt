@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squirrelmail_mult_xss_vuln.nasl 10784 2018-08-06 09:36:27Z asteins $
+# $Id: gb_squirrelmail_mult_xss_vuln.nasl 10872 2018-08-10 07:11:31Z cfischer $
 #
 # SquirrelMail < 1.4.23 Multiple XSS Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112348");
-  script_version("$Revision: 10784 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 11:36:27 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 10872 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 09:11:31 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-06 11:31:46 +0200 (Mon, 06 Aug 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -52,8 +52,10 @@ if( description )
   script_tag(name:"summary", value:"SquirrelMail is prone to multiple cross-site scripting (XSS) vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"affected", value:"SquirrelMail version up to and including 1.4.22.");
-  script_tag(name:"solution", value:"Update to version 1.4.23 or later.");
+  script_tag(name:"solution", value:"Update to a upcoming version 1.4.23 or later. As an alternative apply
+  the patches listed in the references.");
 
+  script_xref(name:"URL", value:"https://github.com/hannob/squirrelpatches");
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2018/07/26/2");
   script_xref(name:"URL", value:"https://bugs.debian.org/905023");
   script_xref(name:"URL", value:"https://sourceforge.net/p/squirrelmail/bugs/2831/");

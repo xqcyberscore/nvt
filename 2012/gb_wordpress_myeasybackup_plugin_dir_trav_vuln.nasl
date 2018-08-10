@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_myeasybackup_plugin_dir_trav_vuln.nasl 10257 2018-06-19 14:04:53Z cfischer $
+# $Id: gb_wordpress_myeasybackup_plugin_dir_trav_vuln.nasl 10833 2018-08-08 10:35:26Z cfischer $
 #
 # WordPress myEASYbackup Plugin 'dwn_file' Parameter Directory Traversal Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802380");
-  script_version("$Revision: 10257 $");
+  script_version("$Revision: 10833 $");
   script_cve_id("CVE-2012-0898");
   script_bugtraq_id(51433);
   script_tag(name:"cvss_base", value:"5.0");
@@ -75,7 +75,6 @@ if(description)
 include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
 
 if(!port = get_app_port(cpe:CPE)) exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port)) exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 10817 2018-08-07 12:30:17Z cfischer $
+# $Id: cgi_directories.nasl 10833 2018-08-08 10:35:26Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 10817 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 14:30:17 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 10833 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 12:35:26 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -69,7 +69,6 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
 include("host_details.inc");
 
 if( get_kb_item( "Settings/disable_cgi_scanning" ) ) {

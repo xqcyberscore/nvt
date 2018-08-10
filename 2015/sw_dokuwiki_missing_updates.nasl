@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_dokuwiki_missing_updates.nasl 7579 2017-10-26 11:10:22Z cfischer $
+# $Id: sw_dokuwiki_missing_updates.nasl 10833 2018-08-08 10:35:26Z cfischer $
 #
 # Detection of missing Dokuwiki (security-)updates
 #
@@ -24,13 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = 'cpe:/a:dokuwiki:dokuwiki';
+CPE = "cpe:/a:dokuwiki:dokuwiki";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111043");
-  script_version("$Revision: 7579 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:10:22 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 10833 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 12:35:26 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-10-29 16:00:00 +0100 (Thu, 29 Oct 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -43,10 +43,14 @@ if(description)
   script_mandatory_keys("dokuwiki/missing_updates");
 
   script_tag(name:"summary", value:"Dokuwiki might show available and not applied (security-)updates to unauthenticated users.");
+
   script_tag(name:"vuldetect", value:"Check the notify banner shown to the user for missing (security-)updates.");
+
   script_tag(name:"impact", value:"Based on the information shown an attacker might be able to exploit known vulnerabilities
   found within this installation.");
+
   script_tag(name:"affected", value:"Not updated Dokuwiki versions.");
+
   script_tag(name:"solution", value:"The vendor has released updates at the referred URLs.");
 
   script_xref(name:"URL", value:"http://download.dokuwiki.org/");
@@ -59,7 +63,6 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
@@ -69,6 +72,6 @@ if( get_kb_item( "dokuwiki/missing_updates/" + port + loc ) ) {
   report = report_vuln_url( port:port, url:loc );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

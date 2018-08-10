@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dsstftpserver_path_trav_vuln.nasl 7579 2017-10-26 11:10:22Z cfischer $
+# $Id: gb_dsstftpserver_path_trav_vuln.nasl 10844 2018-08-08 14:38:33Z cfischer $
 #
 # DSS TFTP Server Path Traversal Vulnerability
 #
@@ -25,50 +25,46 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105957");
-  script_version("$Revision: 7579 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-10-26 13:10:22 +0200 (Thu, 26 Oct 2017) $");
-  script_tag(name : "creation_date", value : "2015-03-04 09:41:51 +0700 (Wed, 04 Mar 2015)");
-  script_tag(name : "cvss_base", value : "6.4");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:P/I:P/A:N");
-
-  script_tag(name:"qod_type", value:"remote_vul");
-
-  script_tag(name:"solution_type", value:"NoneAvailable");
-
+  script_version("$Revision: 10844 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 16:38:33 +0200 (Wed, 08 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2015-03-04 09:41:51 +0700 (Wed, 04 Mar 2015)");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
   script_name("DSS TFTP Server Path Traversal Vulnerability");
-
   script_category(ACT_ATTACK);
-
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Remote file access");
   script_dependencies("tftpd_detect.nasl", "os_detection.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
 
-  script_tag(name : "summary", value : "DSS TFTP Server is prone to a path traversal vulnerability.");
+  script_xref(name:"URL", value:"http://www.vulnerability-lab.com/get_content.php?id=1440");
 
-  script_tag(name : "vuldetect", value : "Sends a crafted GET request and checks if it can
-download some system files.");
+  script_tag(name:"summary", value:"DSS TFTP Server is prone to a path traversal vulnerability.");
 
-  script_tag(name : "insight", value : "DSS TFTP 1.0 Server is a simple TFTP server that allows user
-to download/upload files through the TFTP service from/to specified tftp root directory. The application
-is vulnerable to path traversal that enables attacker to download/upload files outside the tftp
-root directory.");
+  script_tag(name:"vuldetect", value:"Sends a crafted GET request and checks if it can
+  download some system files.");
 
-  script_tag(name : "impact", value : "Unauthenticated attackers can download/upload arbitrary files
-outside the tftp root directory.");
+  script_tag(name:"insight", value:"DSS TFTP 1.0 Server is a simple TFTP server that allows user
+  to download/upload files through the TFTP service from/to specified tftp root directory. The application
+  is vulnerable to path traversal that enables attacker to download/upload files outside the tftp
+  root directory.");
 
-  script_tag(name : "affected", value : "DSS TFTP 1.0 Server and below.");
+  script_tag(name:"impact", value:"Unauthenticated attackers can download/upload arbitrary files
+  outside the tftp root directory.");
 
-  script_tag(name : "solution", value : "No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
+  script_tag(name:"affected", value:"DSS TFTP 1.0 Server and below.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at
+  least one year since the disclosure of this vulnerability. Likely none will
   be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another
   one.");
 
-  script_xref(name : "URL", value : "http://www.vulnerability-lab.com/get_content.php?id=1440");
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }
@@ -88,9 +84,8 @@ files = traversal_files("windows");
 
 foreach file(keys(files)) {
   res = tftp_get(port:port, path:".../.../.../.../.../.../.../" + files[file]);
-
-  if (egrep(pattern:file, string:res, icase:TRUE)) {
-    security_message(port:port);
+  if( rep = egrep(pattern:file, string:res, icase:TRUE)) {
+    security_message(port:port, data:'Received file content:\n\n' + rep);
     exit(0);
   }
 }

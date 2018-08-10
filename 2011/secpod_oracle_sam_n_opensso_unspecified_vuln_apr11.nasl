@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_sam_n_opensso_unspecified_vuln_apr11.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_oracle_sam_n_opensso_unspecified_vuln_apr11.nasl 10864 2018-08-09 15:04:27Z cfischer $
 #
 # Oracle Java Access Manager and OpenSSO Unspecified Vulnerability - April11
 #
@@ -24,65 +24,60 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Apply the security updates.
-  http://www.oracle.com/technetwork/topics/security/cpuapr2011-301950.html
-
-  *****
-  NOTE: Ignore this warning if above mentioned patch is already applied.
-  *****";
-
-tag_impact = "Successful exploitation could allow remote attackers to affect confidentiality
-  and integrity via unknown vectors.
-  Impact Level: System/Application";
-tag_affected = "Sun OpenSSO Enterprise version 8.0,
-  Java System Access Manager version 7.1";
-tag_insight = "The flaw is due to unspecified errors in the application, which allow
-  remote attackers to affect confidentiality and integrity via unknown
-  vectors.";
-tag_summary = "The host is running Access Manager or OpenSSO and is prone to
-  unspecified vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902422");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10864 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 17:04:27 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_cve_id("CVE-2011-0844", "CVE-2011-0847");
   script_bugtraq_id(47490, 47481);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Oracle Java Access Manager and OpenSSO Unspecified Vulnerability - April11");
-
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuapr2011-301950.html");
-
-  script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2011 SecPod");
-  script_family("General");
-  script_dependencies("secpod_sun_opensso_detect.nasl",
-                      "secpod_sjs_access_manager_detect.nasl");
-  script_require_ports("Services/www", 8080);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_family("Web application abuses");
+  script_dependencies("secpod_sun_opensso_detect.nasl", "secpod_sjs_access_manager_detect.nasl");
+  script_mandatory_keys("JavaSysAccessManger_or_OracleOpenSSO/detected");
+
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuapr2011-301950.html");
+
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to affect confidentiality
+  and integrity via unknown vectors.
+
+  Impact Level: System/Application");
+
+  script_tag(name:"affected", value:"Sun OpenSSO Enterprise version 8.0,
+
+  Java System Access Manager version 7.1");
+
+  script_tag(name:"insight", value:"The flaw is due to unspecified errors in the application, which allow
+  remote attackers to affect confidentiality and integrity via unknown vectors.");
+
+  script_tag(name:"summary", value:"The host is running Access Manager or OpenSSO and is prone to
+  unspecified vulnerability.");
+
+  script_tag(name:"solution", value:"Apply the security updates.
+  http://www.oracle.com/technetwork/topics/security/cpuapr2011-301950.html
+
+  *****
+  NOTE: Ignore this warning if above mentioned patch is already applied.
+  *****");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable"); # nb: The version check below is completely broken...
+
   exit(0);
 }
-
 
 include("http_func.inc");
 
 am_port = get_http_port(default:8080);
-if(!am_port){
-  am_port= 8080;
-}
 
-amVer = get_kb_item("www/" + am_port + "/Sun/JavaSysAccessMang");
+amVer = get_kb_item("www/" + am_port + "/Sun/JavaSysAccessManger");
 amVer = eregmatch(pattern:"^(.+) under (/.*)$", string:amVer);
 
-# Check for Java Access Manager version 7.1
 if(amVer[1] =~ "7.1")
 {
   security_message(am_port);
@@ -92,7 +87,6 @@ if(amVer[1] =~ "7.1")
 ssoVer = get_kb_item("www/" + am_port + "/Sun/OpenSSO");
 ssoVer = eregmatch(pattern:"^(.+) under (/.*)$", string:ssoVer);
 
-# Check for Sun OpenSSO version 8.0
 if(ssoVer[1] =~ "8.0"){
   security_message(am_port);
 }

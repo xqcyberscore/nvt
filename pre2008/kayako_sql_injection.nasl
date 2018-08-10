@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: kayako_sql_injection.nasl 8170 2017-12-19 08:59:48Z cfischer $
+# $Id: kayako_sql_injection.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # Kayako eSupport SQL Injection and Cross-Site-Scripting
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16022");
-  script_version("$Revision: 8170 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 09:59:48 +0100 (Tue, 19 Dec 2017) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2004-1412", "CVE-2004-1413");
   script_bugtraq_id(12037);
@@ -38,7 +38,7 @@ if(description)
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2004 Noam Rathaus");
   script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "cross_site_scripting.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "cross_site_scripting.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -57,7 +57,8 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
-if( get_kb_item( "www/" + port + "/generic_xss" ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", "/support/esupport", "/support", cgi_dirs( port:port ) ) ) {

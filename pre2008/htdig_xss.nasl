@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: htdig_xss.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: htdig_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # ht://Dig htsearch.cgi XSS
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15706");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2002-2010");
   script_bugtraq_id(5091);
@@ -45,19 +45,16 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_solution = "Upgrade to a newer when available";
-
-  tag_summary = "The 'htsearch' CGI, which is part of the ht://Dig package,
+  script_tag(name:"solution", value:"Upgrade to a newer when available");
+  script_tag(name:"summary", value:"The 'htsearch' CGI, which is part of the ht://Dig package,
   is vulnerable to cross-site scripting attacks,
   through 'words' variable.
 
   With a specially crafted URL, an attacker can cause arbitrary
-  code execution resulting in a loss of integrity.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  code execution resulting in a loss of integrity.");
 
   script_tag(name:"qod", value:"50"); # No extra check, prone to false positives and doesn't match existing qod_types
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
@@ -66,8 +63,8 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
-
-if( get_kb_item( "www/" + port + "/generic_xss" ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 

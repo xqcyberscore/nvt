@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpsound_mult_xss_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
+# $Id: gb_phpsound_mult_xss_vuln.nasl 10844 2018-08-08 14:38:33Z cfischer $
 #
 # phpSound Multiple Cross-Site Scripting (XSS) Vulnerabilities
 #
@@ -27,14 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805105");
-  script_version("$Revision: 5790 $");
+  script_version("$Revision: 10844 $");
   script_cve_id("CVE-2014-8954");
   script_bugtraq_id(71172);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 16:38:33 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-11-27 12:05:21 +0530 (Thu, 27 Nov 2014)");
   script_name("phpSound Multiple Cross-Site Scripting (XSS) Vulnerabilities");
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
+  script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/35198");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/129104");
 
   script_tag(name:"summary", value:"This host is installed with phpSound and
   is prone to multiple xss vulnerabilities.");
@@ -54,23 +63,14 @@ if(description)
   script_tag(name:"affected", value:"phpSound version 1.0.5, prior versions
   may also be affected.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
+  script_tag(name:"solution", value:"No known solution was made available for at
+  least one year since the disclosure of this vulnerability. Likely none will
   be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another
   one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/35198");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/129104");
-
-  script_category(ACT_ATTACK);
-  script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
 
   exit(0);
 }
@@ -78,40 +78,26 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-dir = "";
-url = "";
-
 http_port = get_http_port(default:80);
 
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-## Iterate over possible paths
-foreach dir (make_list_unique("/", "/phpSound", "/sound", cgi_dirs(port:http_port)))
-{
+foreach dir (make_list_unique("/", "/phpSound", "/sound", cgi_dirs(port:http_port))) {
 
   if(dir == "/") dir = "";
-
   rcvRes = http_get_cache(item: string(dir, "/index.php"),  port:http_port);
 
-  ## confirm the Application
   if("phpSound<" >< rcvRes && "Explore new music" >< rcvRes)
   {
-    ## Vulnerable URL
-    url = dir + "/index.php?a=explore&filter=%3C/title%3E%3Cscript"
-              + "%3Ealert(document.cookie);%3C/script%3E";
-
-    ## Try attack and check the response to confirm vulnerability
+    url = dir + "/index.php?a=explore&filter=%3C/title%3E%3Cscript%3Ealert(document.cookie);%3C/script%3E";
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
       pattern:"<script>alert\(document\.cookie\);</script>",
       extra_check:">Search Results<"))
     {
-      security_message(port:http_port);
+      report = report_vuln_url(port:http_port, url:url);
+      security_message(port:http_port, data:report);
       exit(0);
     }
   }

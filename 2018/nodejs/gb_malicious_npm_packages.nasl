@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_malicious_npm_packages.nasl 10522 2018-07-17 07:43:59Z asteins $
+# $Id: gb_malicious_npm_packages.nasl 10834 2018-08-08 11:30:25Z cfischer $
 #
-# Malicious NPM package detection
+# Malicious npm package detection
 #
 # Authors:
 # Jan Philipp Schulte <jan.schulte@greenbone.net>
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113208");
-  script_version("$Revision: 10522 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-17 09:43:59 +0200 (Tue, 17 Jul 2018) $");
+  script_version("$Revision: 10834 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 13:30:25 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-12 13:13:13 +0200 (Tue, 12 Jun 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -49,18 +49,18 @@ if( description )
   "CVE-2017-16076", "CVE-2017-16077", "CVE-2017-16078", "CVE-2017-16079",
   "CVE-2017-16080", "CVE-2017-16081");
 
-  script_name("Malicious NPM package detection");
+  script_name("Malicious npm package detection");
 
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("gather-package-list.nasl");
+  script_dependencies("gb_npm_packages_detect_ssh.nasl");
   script_mandatory_keys("ssh/login/npms");
 
-  script_tag(name:"summary", value:"Several NPM packages were of malicious nature. NPM has since removed them from their registry,
+  script_tag(name:"summary", value:"Several npm packages were of malicious nature. npm has since removed them from their registry,
   but the packages could still be installed on a host.");
-  script_tag(name:"vuldetect", value:"Checks if a malicious package is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a malicious npm package is present on the target host.");
   script_tag(name:"impact", value:"The packages mostly extract information from environment variables,
   while some create a remote shell or a command-and-control infrastructure, completely comprising the target host.");
   script_tag(name:"affected", value:"Following packages are affected:

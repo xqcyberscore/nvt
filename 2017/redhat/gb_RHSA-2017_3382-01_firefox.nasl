@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2017_3382-01_firefox.nasl 8110 2017-12-14 06:39:02Z santu $
+# $Id: gb_RHSA-2017_3382-01_firefox.nasl 10868 2018-08-10 05:36:57Z ckuersteiner $
 #
 # RedHat Update for firefox RHSA-2017:3382-01
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812337");
-  script_version("$Revision: 8110 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-14 07:39:02 +0100 (Thu, 14 Dec 2017) $");
+  script_version("$Revision: 10868 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 07:36:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-12-05 07:28:46 +0100 (Tue, 05 Dec 2017)");
   script_cve_id("CVE-2017-7843");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for firefox RHSA-2017:3382-01");
   script_tag(name: "summary", value: "Check the version of firefox");

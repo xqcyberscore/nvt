@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: yacy_xss.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: YaCy Peer-To-Peer Search Engine XSS
+# $Id: yacy_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
+#
+# YaCy Peer-To-Peer Search Engine XSS
 #
 # Authors:
 # David Maciejak <david dot maciejak at kyxar dot fr>
@@ -20,32 +22,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
-
-tag_summary = "The remote host contains a peer-to-peer search engine that is prone to
-cross-site scripting attacks. 
-
-Description :
-
-The remote host runs YaCy, a peer-to-peer distributed web search
-engine and caching web proxy. 
-
-The remote version of this software is vulnerable to multiple
-cross-site scripting due to a lack of sanitization of user-supplied
-data. 
-
-Successful exploitation of this issue may allow an attacker to use the
-remote server to perform an attack against a third-party user.";
-
-tag_solution = "Upgrade to YaCy 0.32 or later.";
+###############################################################################
 
 # Ref: Donato Ferrante <fdonato@autistici.org>
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16058");
-  script_version("$Revision: 9348 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
 
   script_cve_id("CVE-2004-2651");
@@ -53,7 +38,7 @@ if(description)
   script_xref(name:"OSVDB", value:"12630");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  
+
   script_name("YaCy Peer-To-Peer Search Engine XSS");
 
   script_category(ACT_ATTACK);
@@ -64,9 +49,25 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/385453");
+  script_tag(name:"solution", value:"Upgrade to YaCy 0.32 or later.");
+  script_tag(name:"summary", value:"The remote host contains a peer-to-peer search engine that is prone to
+cross-site scripting attacks.
+
+Description :
+
+The remote host runs YaCy, a peer-to-peer distributed web search
+engine and caching web proxy.
+
+The remote version of this software is vulnerable to multiple
+cross-site scripting due to a lack of sanitization of user-supplied
+data.
+
+Successful exploitation of this issue may allow an attacker to use the
+remote server to perform an attack against a third-party user.");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/385453");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
@@ -75,13 +76,14 @@ include("http_keepalive.inc");
 
 port = get_http_port(default:8080);
 
-if ( get_kb_item("www/" + port + "/generic_xss") ) exit(0);
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 buf = http_get(item:"/index.html?urlmaskfilter=<script>foo</script>", port:port);
 r = http_keepalive_send_recv(port:port, data:buf);
-if( r == NULL )exit(0);
+if( isnull( r ) ) exit( 0 );
 
-if(r =~ "HTTP/1\.. 200" && egrep(pattern:"<title>YaCy.+ Search Page</title>.*<script>foo</script>", string:r))
+if(r =~ "^HTTP/1\.[01] 200" && egrep(pattern:"<title>YaCy.+ Search Page</title>.*<script>foo</script>", string:r))
 {
   security_message(port);
   exit(0);

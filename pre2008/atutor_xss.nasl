@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: atutor_xss.nasl 6046 2017-04-28 09:02:54Z teissa $
+# $Id: atutor_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # ATutor Cross Site Scripting Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19587");
-  script_version("$Revision: 6046 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-28 11:02:54 +0200 (Fri, 28 Apr 2017) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_cve_id("CVE-2005-2649");
   script_bugtraq_id(14598);
@@ -47,7 +47,10 @@ if(description)
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2005-08/0261.html");
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/fulldisclosure/2005-08/0600.html");
 
-  tag_summary = "The remote web server contains a PHP script which is vulnerable to a
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The remote web server contains a PHP script which is vulnerable to a
   cross site scripting issue.
 
   Description :
@@ -55,14 +58,10 @@ if(description)
   The remote host is running ATutor, a CMS written in PHP.
 
   The remote version of this software is prone to cross-site scripting
-  attacks due to its failure to sanitize user-supplied input.";
-
-  tag_solution = "Unknown at this time.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  attacks due to its failure to sanitize user-supplied input.");
 
   script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }
@@ -79,7 +78,8 @@ exss = urlencode( str:xss );
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-if( get_kb_item( "www/" + port + "/generic_xss" ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
@@ -89,7 +89,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req );
 
-  if( res =~ "HTTP/1\.. 200" && xss >< res &&
+  if( res =~ "^HTTP/1\.[01] 200" && xss >< res &&
       egrep( string:res, pattern:"Web site engine's code is copyright .+ href=.http://www\.atutor\.ca" ) ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );

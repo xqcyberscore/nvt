@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 10752 2018-08-03 09:11:45Z cfischer $
+# $Id: gather-package-list.nasl 10835 2018-08-08 11:40:01Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 10752 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 11:11:45 +0200 (Fri, 03 Aug 2018) $");
+  script_version("$Revision: 10835 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-08 13:40:01 +0200 (Wed, 08 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -419,8 +419,10 @@ function register_rpms( buf ) {
   set_kb_item( name:"ssh/login/rpms", value:";" + buf );
 }
 
-function register_npms( buf ) {
-  set_kb_item( name:"ssh/login/npms", value:buf );
+function register_uname( uname ) {
+  local_var uname;
+  replace_kb_item( name:"ssh/login/uname", value:uname );
+  replace_kb_item( name:"Host/uname", value:uname );
 }
 
 port = get_preference( "auth_port_ssh" );
@@ -433,9 +435,6 @@ if( ! sock ) exit( 0 );
 # First command: Grab uname -a of the remote system
 uname = ssh_cmd( socket:sock, cmd:"uname -a", return_errors:TRUE, pty:TRUE, timeout:60, retry:30 );
 if( isnull( uname ) ) exit( 0 );
-
-buf = ssh_cmd( socket:sock, cmd:"COLUMNS=400 npm list" );
-if( ! isnull( buf ) && buf != "" && "command not found" >!< buf ) register_npms( buf:buf );
 
 if( "HyperIP Command Line Interface" >< uname ) {
 
@@ -506,8 +505,7 @@ if( "linux" >< tolower( uname ) ) {
     u = eregmatch( pattern:'(Linux [^ ]+ [^ ]+ #[0-9]+ [^\n]+)', string:un );
 
     if( ! isnull( u[1] ) ) {
-      replace_kb_item( name:"ssh/login/uname", value:u[1] );
-      replace_kb_item( name:"Host/uname", value:u[1] );
+      register_uname( uname:u[1] );
     }
   }
 }
@@ -3249,6 +3247,8 @@ if( "HP-UX" >< uname ) {
 uname = ssh_cmd( socket:sock, cmd:"uname -a" );
 if( "FreeBSD" >< uname ) {
 
+  register_uname( uname:uname );
+
   osversion = ssh_cmd( socket:sock, cmd:"uname -r" );
 
   version = eregmatch( pattern:"^[^ ]+ [^ ]+ ([^ ]+)+", string:uname );
@@ -3299,6 +3299,8 @@ if( "FreeBSD" >< uname ) {
 # Whilst we're at it, lets check if it's Solaris
 if( "SunOS " >< uname ) {
 
+  register_uname( uname:uname );
+
   osversion = ssh_cmd( socket:sock, cmd:"uname -r" );
   set_kb_item( name:"ssh/login/solosversion", value:osversion );
 
@@ -3332,6 +3334,8 @@ if( "SunOS " >< uname ) {
 # OpenBSD $hostname 6.3 GENERIC#100 amd64
 if( "OpenBSD " >< uname ) {
 
+  register_uname( uname:uname );
+
   osversion = ssh_cmd( socket:sock, cmd:"uname -r" );
   set_kb_item( name:"ssh/login/openbsdversion", value:osversion );
 
@@ -3347,6 +3351,8 @@ if( "OpenBSD " >< uname ) {
 
 #maybe it's a real OS... like Mac OS X :)
 if( "Darwin" >< uname ) {
+
+  register_uname( uname:uname );
 
   sw_vers_buf = ssh_cmd( socket:sock, cmd:"sw_vers" );
   log_message( data:'We are able to login and detect that you are running:\n' + sw_vers_buf );
@@ -3378,6 +3384,8 @@ if( "Darwin" >< uname ) {
 # nb: Keep down below to only catch the "uname -a" from FreeBSD above which doesn't
 # contain the full PTY output / banner of Minix.
 if( uname =~ "^Minix " ) {
+
+  register_uname( uname:uname );
 
   set_kb_item( name:"ssh/login/minix", value:TRUE );
 

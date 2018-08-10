@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_authorization.nasl 7519 2017-10-20 06:32:05Z cfischer $
+# $Id: ssh_authorization.nasl 10873 2018-08-10 07:37:56Z cfischer $
 #
 # This script allows to set SSH credentials for target hosts.
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.90022");
-  script_version("$Revision: 7519 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 08:32:05 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 10873 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 09:37:56 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2007-11-01 23:55:52 +0100 (Thu, 01 Nov 2007)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,14 +56,14 @@ if(description)
 include("ssh_func.inc");
 include("host_details.inc");
 
-if( get_kb_item( "global_settings/authenticated_scans_disabled" ) ) exit( 0 ); 
+if( get_kb_item( "global_settings/authenticated_scans_disabled" ) ) exit( 0 );
 
-# Check if port for us is known
+# nb: Check if port for us is known
 port = get_preference( "auth_port_ssh" );
 if( ! port )
   port = get_kb_item( "Services/ssh" );
 
-# Check if an account was defined either by the preferences ("old") or by the server ("new").
+# nb: Check if an account was defined either by the preferences ("old") or by the server ("new").
 if( kb_ssh_login() && ( kb_ssh_password() || kb_ssh_privatekey() ) ) {
 
   if( ! port ) {

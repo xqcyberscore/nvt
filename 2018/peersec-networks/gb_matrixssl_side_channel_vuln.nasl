@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_matrixssl_side_channel_vuln.nasl 10256 2018-06-19 11:40:15Z jschulte $
+# $Id: gb_matrixssl_side_channel_vuln.nasl 10868 2018-08-10 05:36:57Z ckuersteiner $
 #
 # MatrixSSL (GUARD TLS-TK) Side-Channel Attack Vulnerability
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113210");
-  script_version("$Revision: 10256 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-19 13:40:15 +0200 (Tue, 19 Jun 2018) $");
+  script_version("$Revision: 10868 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 07:36:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-19 13:07:40 +0200 (Tue, 19 Jun 2018)");
-  script_tag(name:"cvss_base", value:"1.0");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"1.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

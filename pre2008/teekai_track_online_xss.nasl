@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: teekai_track_online_xss.nasl 9040 2018-03-07 11:52:54Z cfischer $
+# $Id: teekai_track_online_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # TeeKai Tracking Online XSS
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15707");
-  script_version("$Revision: 9040 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 12:52:54 +0100 (Wed, 07 Mar 2018) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2002-2055");
   script_bugtraq_id(4924);
@@ -45,18 +45,12 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The remote host runs Teekai Tracking Online, a PHP script used
+  script_tag(name:"solution", value:"Upgrade to the latest version of this software");
+  script_tag(name:"summary", value:"The remote host runs Teekai Tracking Online, a PHP script used
   for tracking the number of user's on a Web site. This version is vulnerable to
-  cross-site scripting attacks.";
-
-  tag_impact = "With a specially crafted URL, an attacker can cause arbitrary
-  code execution resulting in a loss of integrity.";
-
-  tag_solution = "Upgrade to the latest version of this software";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  cross-site scripting attacks.");
+  script_tag(name:"impact", value:"With a specially crafted URL, an attacker can cause arbitrary
+  code execution resulting in a loss of integrity.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod", value:"50"); # No extra check, prone to false positives and doesn't match existing qod_types
@@ -69,7 +63,8 @@ include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
-if( get_kb_item( "www/" + port + "/generic_xss" ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 url = "/page.php?action=view&id=1<script>foo</script>";
 buf = http_get( item:url, port:port );

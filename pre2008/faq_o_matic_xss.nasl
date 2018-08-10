@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: faq_o_matic_xss.nasl 6053 2017-05-01 09:02:51Z teissa $
+# $Id: faq_o_matic_xss.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # Faq-O-Matic fom.cgi XSS
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15540");
-  script_version("$Revision: 6053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-01 11:02:51 +0200 (Mon, 01 May 2017) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(4565);
   script_cve_id("CVE-2002-0230", "CVE-2002-2011");
@@ -63,7 +63,8 @@ include("http_keepalive.inc");
 
 port = get_http_port( default:80 );
 
-if( get_kb_item( "www/" + port + "/generic_xss" ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", "/fom", cgi_dirs( port:port ) ) ) {
 

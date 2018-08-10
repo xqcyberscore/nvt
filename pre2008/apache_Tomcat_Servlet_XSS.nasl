@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: apache_Tomcat_Servlet_XSS.nasl 4355 2016-10-26 13:50:18Z cfi $
+# $Id: apache_Tomcat_Servlet_XSS.nasl 10862 2018-08-09 14:51:58Z cfischer $
 #
 # Apache Tomcat /servlet Cross Site Scripting
 #
@@ -34,8 +34,8 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11041");
-  script_version("$Revision: 4355 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-26 15:50:18 +0200 (Wed, 26 Oct 2016) $");
+  script_version("$Revision: 10862 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-09 16:51:58 +0200 (Thu, 09 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,31 +49,27 @@ if(description)
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("ApacheTomcat/installed");
 
-  tag_solution = "The 'invoker' servlet (mapped to /servlet/), which executes anonymous servlet
-  classes that have not been defined in a web.xml file should be unmapped.
-
-  The entry for this can be found in the /tomcat-install-dir/conf/web.xml file.";
-
-  tag_summary = "The remote Apache Tomcat web server is vulnerable to a cross site scripting 
+  script_tag(name:"summary", value:"The remote Apache Tomcat web server is vulnerable to a cross site scripting
   issue.
 
   Description :
 
-  Apache Tomcat is the servlet container that is used in the official Reference 
+  Apache Tomcat is the servlet container that is used in the official Reference
   Implementation for the Java Servlet and JavaServer Pages technologies.
 
   By using the /servlet/ mapping to invoke various servlets / classes it is
-  possible to cause Tomcat to throw an exception, allowing XSS attacks,e.g:
+  possible to cause Tomcat to throw an exception, allowing XSS attacks, e.g:
 
   tomcat-server/servlet/org.apache.catalina.servlets.WebdavStatus/SCRIPTalert(document.domain)/SCRIPT
   tomcat-server/servlet/org.apache.catalina.ContainerServlet/SCRIPTalert(document.domain)/SCRIPT
   tomcat-server/servlet/org.apache.catalina.Context/SCRIPTalert(document.domain)/SCRIPT
   tomcat-server/servlet/org.apache.catalina.Globals/SCRIPTalert(document.domain)/SCRIPT
 
-  (angle brackets omitted)";
+  (angle brackets omitted)");
+  script_tag(name:"solution", value:"The 'invoker' servlet (mapped to /servlet/), which executes anonymous servlet
+  classes that have not been defined in a web.xml file should be unmapped.
 
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  The entry for this can be found in the /tomcat-install-dir/conf/web.xml file.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -88,14 +84,15 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-if( get_kb_item( "www/" + port + "/generic_xss" ) ) exit( 0 );
+host = http_host_name( dont_add_port:TRUE );
+if( get_http_has_generic_xss( port:port, host:host ) ) exit( 0 );
 
 url = "/servlet/org.apache.catalina.ContainerServlet/<SCRIPT>alert(document.domain)</SCRIPT>";
 
 req = http_get( item:url, port:port );
 res = http_keepalive_send_recv( port:port, data:req );
 
-confirmed = string("<SCRIPT>alert(document.domain)</SCRIPT>"); 
+confirmed = string("<SCRIPT>alert(document.domain)</SCRIPT>");
 confirmed_too = string("javax.servlet.ServletException");
 
 if( ( confirmed >< res ) && ( confirmed_too >< res ) ) {
