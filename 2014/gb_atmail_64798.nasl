@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atmail_64798.nasl 7928 2017-11-29 09:42:17Z ckuersteiner $
+# $Id: gb_atmail_64798.nasl 10904 2018-08-10 14:24:40Z mmartin $
 #
 # Atmail Multiple Unspecified Security Vulnerabilities.
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:atmail:atmail";
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103881");
- script_bugtraq_id(64798,64797,64796,64789);
- script_cve_id("CVE-2013-5034","CVE-2013-5033","CVE-2013-5032","CVE-2013-5031");
+ script_bugtraq_id(64798, 64797, 64796, 64789);
+ script_cve_id("CVE-2013-5034", "CVE-2013-5033", "CVE-2013-5032", "CVE-2013-5031");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 7928 $");
+ script_version("$Revision: 10904 $");
 
  script_name("Atmail Multiple Unspecified Security Vulnerabilities.");
 
@@ -44,8 +44,8 @@ if (description)
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64789");
  script_xref(name:"URL", value:"http://blog.atmail.com/2013/atmail-7-1-2-security-hotfix/");
  script_xref(name:"URL", value:"http://atmail.com/");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-11-29 10:42:17 +0100 (Wed, 29 Nov 2017) $");
+
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2014-01-14 12:23:14 +0100 (Tue, 14 Jan 2014)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
@@ -55,17 +55,17 @@ if (description)
  script_require_ports("Services/www", 80);
  script_mandatory_keys("Atmail/installed");
 
- script_tag(name: "impact", value: "Impact and attack vectors are unknown.");
+ script_tag(name:"impact", value:"Impact and attack vectors are unknown.");
 
- script_tag(name: "vuldetect", value: "Check the installed version.");
+ script_tag(name:"vuldetect", value:"Check the installed version.");
 
- script_tag(name: "insight", value: "Atmail is prone to multiple unspecified security vulnerabilities.");
+ script_tag(name:"insight", value:"Atmail is prone to multiple unspecified security vulnerabilities.");
 
- script_tag(name: "solution", value: "Updates are available.");
+ script_tag(name:"solution", value:"Updates are available.");
+ script_tag(name:"solution_type", value:"VendorFix");
+ script_tag(name:"summary", value:"Atmail is prone to multiple security vulnerabilities.");
 
- script_tag(name: "summary", value: "Atmail is prone to multiple security vulnerabilities.");
-
- script_tag(name: "affected", value: "Versions prior to Atmail 6.6.4 and 7.1.2 are vulnerable.");
+ script_tag(name:"affected", value:"Versions prior to Atmail 6.6.4 and 7.1.2 are vulnerable.");
 
  exit(0);
 }
@@ -82,7 +82,7 @@ if ( vers  =~ "^6\." )
 if ( vers  =~ "^7\." )
   check_version = '7.1.2';
 
-if( check_version ) {  
+if( check_version ) {
   if(version_is_less(version: vers, test_version: check_version)) {
     security_message(port:port);
     exit(0);

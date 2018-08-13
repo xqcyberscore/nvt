@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlxspot_web_detect.nasl 7194 2017-09-20 07:40:57Z ckuersteiner $
+# $Id: gb_dlxspot_web_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # Tecnovision DlxSpot Web Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140377");
-  script_version("$Revision: 7194 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-20 09:40:57 +0200 (Wed, 20 Sep 2017) $");
-  script_tag(name: "creation_date", value: "2017-09-20 12:06:46 +0700 (Wed, 20 Sep 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-09-20 12:06:46 +0700 (Wed, 20 Sep 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Tecnovision DlxSpot Web Detection");
 
-  script_tag(name: "summary" , value: "Detection of Tecnovision DlxSpot.
+  script_tag(name:"summary", value:"Detection of Tecnovision DlxSpot.
 
 The script sends a connection request to the server and attempts to detect Tecnovision DlxSpot and to extract
 its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ its version.");
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "http://www.tecnovision.com/");
+  script_xref(name:"URL", value:"http://www.tecnovision.com/");
 
   exit(0);
 }

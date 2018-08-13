@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: stun_detection.nasl 4220 2016-10-05 15:43:56Z cfi $
+# $Id: stun_detection.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Detect STUN Server
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11986");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4220 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-05 17:43:56 +0200 (Wed, 05 Oct 2016) $");
+  script_version("$Revision: 10891 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Detect STUN Server");
@@ -38,11 +38,13 @@ if(description)
   script_family("Service detection");
   script_require_udp_ports("Services/udp/stun", 3478);
 
-  tag_summary = "A VPN server is listening on the remote port.
+  script_tag(name:"solution", value:"If this service is not needed, disable it or filter incoming traffic
+  to this port.");
+  script_tag(name:"summary", value:"A VPN server is listening on the remote port.
 
   Description :
 
-  The remote host is running a STUN (Simple Traversal of User Datagram 
+  The remote host is running a STUN (Simple Traversal of User Datagram
   Protocol - RFC 3489) server.
 
   Simple Traversal of User Datagram Protocol (UDP) Through Network
@@ -56,13 +58,7 @@ if(description)
   existing NAT infrastructure.
 
   Make sure the use of this software is done in accordance with your corporate
-  security policy.";
-
-  tag_solution = "If this service is not needed, disable it or filter incoming traffic
-  to this port.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  security policy.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -149,7 +145,7 @@ if(z)
       count += 6;
 
       response = string(response, "Source Address: ", ip, ":", port, "\n");
-#      display("Soure Address\n");
+#      display("Source Address\n");
 #      display("port: ", port, "\n");
 #      display("ip: ", ip, "\n");
      }

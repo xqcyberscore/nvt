@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_live_messenger_detect.nasl 8193 2017-12-20 10:46:55Z cfischer $
+# $Id: gb_ms_win_live_messenger_detect.nasl 10883 2018-08-10 10:52:12Z cfischer $
 #
 # Microsoft Windows Live Messenger Client Version Detection
 #
@@ -9,9 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2009 Greenbone Networks GmbH, http://www.greenbone.net
-#
-# Update to detect the Messenger Plus! Live
-#  - By Sharath S <sharaths@secpod.com> on 2009-07-31
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -30,25 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800331");
-  script_version("$Revision: 8193 $");
+  script_version("$Revision: 10883 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 11:46:55 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:52:12 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-01-08 07:43:30 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Windows Live Messenger Client Version Detection");
 
-tag_summary = "Detection of installed version of Microsoft Windows Live Messenger.
+  script_tag(name:"summary", value:"Detects the installed version of Microsoft Windows Live Messenger.
 
 The script logs in via smb, searches for Microsoft Windows Live Messenger
-in the registry and gets the version from registry.";
-
-  script_tag(name : "summary" , value : tag_summary);
+in the registry and gets the version from registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -67,7 +62,6 @@ appLoc = "";
 livemgrVer = "";
 msgPlusVer  = "";
 
-## start script
 if(!get_kb_item("SMB/WindowsVersion"))
 {
   exit(-1);
@@ -84,7 +78,6 @@ if("x86" >< osArch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-## Check for 64 bit platform
 else if("x64" >< osArch){
  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
                       "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
@@ -99,28 +92,26 @@ foreach key (key_list)
   {
     appName = registry_get_sz(key:key + item, item:"DisplayName");
 
-    # Windows Live Messenger
     if("Windows Live Messenger" >< appName)
     {
       livemgrVer = registry_get_sz(key:key + item, item:"DisplayVersion");
 
-      appLoc = registry_get_sz(key:key + item, item:"InstallLocation"); 
+      appLoc = registry_get_sz(key:key + item, item:"InstallLocation");
       if(!appLoc){
         appLoc = "Couldn find the install location from registry";
       }
-      
+
       if(livemgrVer)
       {
-        ## Check if version is already set
         if (livemgrVer + ", " >< checkduplicate && appLoc + ", " >< checkduplicate_path){
           continue;
         }
         ##Assign detected version value to checkduplicate so as to check in next loop iteration
         checkduplicate  += livemgrVer + ", ";
         checkduplicate_path += appLoc + ", ";
- 
+
         set_kb_item(name:"MS/LiveMessenger/Installed", value:TRUE);
- 
+
         ## 64 bit apps on 64 bit platform
         if("x64" >< osArch && "Wow6432Node" >!< key)  {
           set_kb_item(name:"MS/LiveMessenger64/Ver", value:livemgrVer);
@@ -132,7 +123,7 @@ foreach key (key_list)
       }
     }
 
-    # Messenger Plus! 
+    # Messenger Plus!
     if("Messenger Plus!" >< appName)
     {
       msgPlusVer = registry_get_sz(key:key + item, item:"DisplayVersion");
@@ -155,7 +146,7 @@ foreach key (key_list)
         {
           file -= "MsgPlus.exe";
           msgPlusVer = fetch_file_version(sysPath:file, file_name:"MsgPlus.exe");
-        }  
+        }
       }
 
       if(!isnull(msgPlusVer))

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_uptime_infrastructure_monitor_remote_detect.nasl 5815 2017-03-31 09:50:39Z cfi $
+# $Id: gb_uptime_infrastructure_monitor_remote_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Idera Uptime Infrastructure Monitor Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808239");
-  script_version("$Revision: 5815 $");
+  script_version("$Revision: 10902 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-06-27 17:28:12 +0530 (Mon, 27 Jun 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Idera Uptime Infrastructure Monitor Remote Detection");
@@ -56,24 +56,16 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-##Variable initialization
-ver = 0;
-build = 0;
-rcvRes = "";
-ideraPort = 0;
-
 ideraPort = get_http_port(default:80);
 if(!can_host_php(port:ideraPort)) exit(0);
 
 rcvRes = http_get_cache(item:"/index.php", port:ideraPort);
 
-## Confirm the application
 if(rcvRes =~ "HTTP/1.. 200" && '<title>up.time</title>' >< rcvRes &&
-   ">Username" >< rcvRes && ">Password" >< rcvRes) 
+   ">Username" >< rcvRes && ">Password" >< rcvRes)
 {
   version = "unknown";
 
-  ## Grep for version
   ver = eregmatch(pattern:'>up.time ([0-9.]+)( .build ([0-9.]+))?', string:rcvRes);
   if(ver[1]){
     version = ver[1];
@@ -81,11 +73,9 @@ if(rcvRes =~ "HTTP/1.. 200" && '<title>up.time</title>' >< rcvRes &&
   if(ver[3]){
     build = ver[3];
     set_kb_item(name:"Idera/Uptime/Infrastructure/Monitor/build",value:build);
-  } 
-  ## Set the KB value
+  }
   set_kb_item( name:"Idera/Uptime/Infrastructure/Monitor/Installed", value:TRUE );
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value: version, exp:"^([0-9.]+)", base:"cpe:/a:idera:uptime_infrastructure_monitor:");
   if(!cpe )
     cpe = "cpe:/a:idera:uptime_infrastructure_monitor";

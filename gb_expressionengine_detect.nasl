@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_expressionengine_detect.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_expressionengine_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # ExpressionEngine CMS Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800262");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6125 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-02 08:15:32 +0200 (Thu, 02 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("ExpressionEngine CMS Version Detection");
@@ -80,12 +80,10 @@ foreach dir( make_list_unique( "/", "/system", "/cms/system", cgi_dirs( port:por
 
     set_kb_item( name:"www/" + port + "/ExpEngine", value:version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:expressionengine:expressionengine:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:expressionengine:expressionengine';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data: build_detection_report( app:"Expression Engine",

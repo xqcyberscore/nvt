@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_dir_server_detect_lin.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: secpod_sun_java_dir_server_detect_lin.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Sun Java Directory Server Version Detection (Linux)
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script detects the version of Directory Server and sets
-  the reuslt in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900705");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Sun Java Directory Server Version Detection (Linux)");
@@ -44,7 +41,8 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script detects the version of Directory Server and sets
+  the reuslt in KB.");
   exit(0);
 }
 
@@ -54,8 +52,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900705";
 SCRIPT_DESC = "Sun Java Directory Server Version Detection (Linux)";
 
 sock = ssh_login_or_reuse_connection();
@@ -77,11 +73,10 @@ foreach dirBin (dirPaths)
                        " running at location " + dirBin +
                        " was detected on the host");
     ssh_close_connection();
-   
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe(value:dirVer[1], exp:"^([0-9.]+)", base:"cpe:/a:sun:java_system_directory_server:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
     exit(0);
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4338818.nasl 10484 2018-07-11 14:03:19Z santu $
+# $Id: gb_ms_kb4338818.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4338818)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813645");
-  script_version("$Revision: 10484 $");
-  script_cve_id("CVE-2018-8282", "CVE-2018-0949", "CVE-2018-8206", "CVE-2018-8242", 
-                "CVE-2018-8287", "CVE-2018-8288", "CVE-2018-8291", "CVE-2018-8296", 
+  script_version("$Revision: 10918 $");
+  script_cve_id("CVE-2018-8282", "CVE-2018-0949", "CVE-2018-8206", "CVE-2018-8242",
+                "CVE-2018-8287", "CVE-2018-8288", "CVE-2018-8291", "CVE-2018-8296",
                 "CVE-2018-8304", "CVE-2018-8307", "CVE-2018-8308", "CVE-2018-8309",
                 "CVE-2018-8314", "CVE-2018-3665");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-11 16:03:19 +0200 (Wed, 11 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-11 09:15:58 +0530 (Wed, 11 Jul 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4338818)");
 
@@ -45,7 +45,7 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to errors,
-  
+
   - When Internet Explorer improperly accesses objects in memory.
 
   - When Windows improperly handles File Transfer Protocol (FTP) connections.
@@ -56,7 +56,7 @@ if(description)
   - When Windows kernel-mode driver fails to properly handle objects in memory.
 
   - When Windows Domain Name System (DNS) DNSAPI.dll fails to properly handle
-    DNS responses. 
+    DNS responses.
 
   - When Microsoft WordPad improperly handles embedded OLE objects.
 
@@ -65,15 +65,13 @@ if(description)
   - Involving side channel speculative execution, known as Lazy FP State Restore.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to bypass security, cause a target system to stop responding, execute arbitrary 
-  code in the context of the current user and elevate privileges on an affected 
+  to bypass security, cause a target system to stop responding, execute arbitrary
+  code in the context of the current user and elevate privileges on an affected
   system.
-  
+
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-
-  Windows 7 for 32-bit/x64 Systems Service Pack 1
+  script_tag(name:"affected", value:"Windows 7 for 32-bit/x64 Systems Service Pack 1
 
   Windows Server 2008 R2 for x64-based Systems Service Pack 1");
 
@@ -83,11 +81,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4338818");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4338818");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }

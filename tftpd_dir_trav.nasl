@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tftpd_dir_trav.nasl 10783 2018-08-06 08:17:12Z cfischer $
+# $Id: tftpd_dir_trav.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # TFTP directory traversal
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18262");
-  script_version("$Revision: 10783 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 10:17:12 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 10894 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,7 +48,7 @@ if(description)
   run it in a chrooted environment");
 
   script_tag(name:"summary", value:"The TFTP (Trivial File Transfer Protocol) allows
-  remote users to read files without having to log in. This may be a big security flaw, 
+  remote users to read files without having to log in. This may be a big security flaw,
   especially if tftpd (the TFTP server) is not well configured by the admin of the remote host.");
 
   script_tag(name:"solution_type", value:"Workaround");

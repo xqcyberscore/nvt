@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SyndeoCMS_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: gb_SyndeoCMS_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # SyndeoCMS Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100783");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9580 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+ script_version("$Revision: 10905 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2010-09-06 14:44:23 +0200 (Mon, 06 Sep 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("SyndeoCMS Detection");
@@ -40,9 +40,9 @@ if(description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : "This host is running SyndeoCMS, an Open Source Content Management
+ script_tag(name:"summary", value:"This host is running SyndeoCMS, an Open Source Content Management
 System.");
- script_xref(name : "URL" , value : "http://www.syndeocms.org");
+ script_xref(name:"URL", value:"http://www.syndeocms.org");
  exit(0);
 }
 
@@ -50,7 +50,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.100783";
 SCRIPT_DESC = "SyndeoCMS Detection";
 
 port = get_http_port(default:80);
@@ -67,7 +66,6 @@ foreach dir( make_list_unique( "/cms", cgi_dirs( port:port ) ) ) {
  if("SyndeoCMS" >< buf)  {
 
     vers = string("unknown");
-    ### try to get version 
 
     url = string(dir, "/starnet/README.txt");
     req = http_get(item:url, port:port);
@@ -86,15 +84,15 @@ foreach dir( make_list_unique( "/cms", cgi_dirs( port:port ) ) ) {
       if( buf == NULL )continue;
 
       version = eregmatch(string: buf, pattern: "Changelist for ([0-9.]+)",icase:TRUE);
-    }  
-   
+    }
+
     set_kb_item(name: string("www/", port, "/syndeocms"), value: string(vers," under ",install));
 
     if(vers != "unknown") {
-      register_host_detail(name:"App", value:string("cpe:/a:syndeocms:syndeocms:",vers), nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+      register_host_detail(name:"App", value:string("cpe:/a:syndeocms:syndeocms:",vers), desc:SCRIPT_DESC);
     } else {
-      register_host_detail(name:"App", value:string("cpe:/a:syndeocms:syndeocms:"), nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-    }  
+      register_host_detail(name:"App", value:string("cpe:/a:syndeocms:syndeocms:"), desc:SCRIPT_DESC);
+    }
 
     info = string("SyndeoCMS Version '");
     info += string(vers);

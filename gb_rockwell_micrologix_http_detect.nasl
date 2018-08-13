@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rockwell_micrologix_http_detect.nasl 8350 2018-01-10 05:26:32Z ckuersteiner $
+# $Id: gb_rockwell_micrologix_http_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # Rockwell Automation MicroLogix Detection (http)
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140662");
-  script_version("$Revision: 8350 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-10 06:26:32 +0100 (Wed, 10 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2018-01-10 10:09:48 +0700 (Wed, 10 Jan 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10913 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-01-10 10:09:48 +0700 (Wed, 10 Jan 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Rockwell Automation MicroLogix Detection (http)");
 
-  script_tag(name: "summary" , value: "Detection of Rockwell Automation MicroLogix PLC's.
+  script_tag(name:"summary", value:"Detection of Rockwell Automation MicroLogix PLC's.
 
 The script sends a connection request to the server and attempts to detect Rockwell Automation MicroLogix PLC's and
 extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ extract its version.");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("ABwww/banner");
 
-  script_xref(name: "URL", value: "http://ab.rockwellautomation.com/Programmable-Controllers/MicroLogix-Systems");
+  script_xref(name:"URL", value:"http://ab.rockwellautomation.com/Programmable-Controllers/MicroLogix-Systems");
 
   exit(0);
 }

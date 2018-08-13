@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bacnet_detect.nasl 8236 2017-12-22 10:28:23Z cfischer $
+# $Id: gb_bacnet_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # BACnet Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106127");
- script_version ("$Revision: 8236 $");
- script_tag(name: "last_modification", value: "$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
- script_tag(name: "creation_date", value: "2016-07-12 10:36:40 +0700 (Tue, 12 Jul 2016)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10891 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2016-07-12 10:36:40 +0700 (Tue, 12 Jul 2016)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("BACnet Detection");
 
- script_tag(name: "summary" , value: "A BACnet Service is running at this host.
+ script_tag(name:"summary", value:"A BACnet Service is running at this host.
 
 BACnet is a communications protocol for building automation and control networks.");
 
@@ -48,7 +48,7 @@ BACnet is a communications protocol for building automation and control networks
  script_family("Service detection");
  script_require_udp_ports(47808);
 
- script_xref(name: "URL", value: "http://www.bacnet.org/");
+ script_xref(name:"URL", value:"http://www.bacnet.org/");
 
 
  exit(0);
@@ -66,7 +66,7 @@ function bacnet_query(socket, id) {
   send(socket: socket, data: query);
   recv = recv(socket: socket, length: 512);
 
-  # Check if error occured
+  # nb: Check if an error occurred
   if (hexstr(recv[0]) != 81 || hexstr(recv[6]) == 50)
     return;
 
@@ -89,7 +89,7 @@ soc = open_sock_udp(port);
 if (!soc)
   exit(0);
 
-# Check if it is BACnet by requesting the object id
+# nb: Check if it is BACnet by requesting the object id
 query = raw_string(0x81, 0x0a, 0x00, 0x11,     # BACnet Virtual Link Control
                    0x01, 0x04,                 # BACnet NPDU
                    0x00, 0x05, 0x01, 0x0c,     # BACnet APDU
@@ -98,36 +98,29 @@ query = raw_string(0x81, 0x0a, 0x00, 0x11,     # BACnet Virtual Link Control
 send(socket: soc, data: query);
 recv = recv(socket: soc, length: 512);
 
-# Check if error occured
+# nb: Check if an error occurred
 if (hexstr(recv[0]) != 81)
   exit(0);
 
 set_kb_item(name: "bacnet/detected", value: TRUE);
 
 if (hexstr(recv[6]) != 50) {
-  # Get Vendor Name
   if (vendor_name = bacnet_query(socket: soc, id: raw_string(0x79)))
     set_kb_item(name: "bacnet/vendor", value: vendor_name);
 
-  # Get Model Name
   if (model_name = bacnet_query(socket: soc, id: raw_string(0x46)))
     set_kb_item(name: "bacnet/model_name", value: model_name);
 
-  # Get Firmware
   if (firmware = bacnet_query(socket: soc, id: raw_string(0x2c)))
     set_kb_item(name: "bacnet/firmware", value: firmware);
 
-  # Get Application Software
   if (appl_sw = bacnet_query(socket: soc, id: raw_string(0x0c)))
     set_kb_item(name: "bacnet/application_sw", value: appl_sw);
 
-  # Get Oject Name
   object_name = bacnet_query(socket: soc, id: raw_string(0x4d));
 
-  # Get Description
   description = bacnet_query(socket: soc, id: raw_string(0x1c));
 
-  # Get Location
   location = bacnet_query(socket: soc, id: raw_string(0x3a));
 
   register_service(port: port, ipproto: "udp", proto: "bacnet");
@@ -141,7 +134,7 @@ if (hexstr(recv[6]) != 50) {
            "Description:          " + description + "\n" +
            "Location:             " + location + "\n";
 
-  log_message(data: report, port: port, proto: "udp"); 
+  log_message(data: report, port: port, proto: "udp");
 }
 else {
   register_service(port: port, ipproto: "udp", proto: "bacnet");

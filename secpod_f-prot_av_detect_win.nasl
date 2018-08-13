@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_f-prot_av_detect_win.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: secpod_f-prot_av_detect_win.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # F-PROT Antivirus Version Detection (Windows)
 #
@@ -30,16 +30,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900553");
-  script_version("$Revision: 9580 $");
+  script_version("$Revision: 10891 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-06-01 09:35:57 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("F-PROT Antivirus Version Detection (Windows)");
 
 
-  script_tag(name : "summary" , value : "Detection of installed version of F-PROT Antivirus on Windows.
+  script_tag(name:"summary", value:"Detects the installed version of F-PROT Antivirus on Windows.
 
 The script logs in via smb, searches for F-PROT in the registry
 and gets the version from the DisplayVersion string.");
@@ -47,7 +47,7 @@ and gets the version from the DisplayVersion string.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -59,11 +59,6 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-fprotName = "";
-fprotVer = "";
-insLoc = "";
-
 key = "SOFTWARE\FRISK Software\F-PROT Antivirus for Windows";
 if(!registry_key_exists(key:key))
 {
@@ -73,13 +68,11 @@ if(!registry_key_exists(key:key))
   }
 }
 
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(0);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
@@ -109,7 +102,6 @@ foreach item (registry_enum_keys(key:key))
 
       set_kb_item(name:"F-Prot/AV/Win/Installed", value:TRUE);
 
-      ## Register for 64 bit app on 64 bit OS once again
       if("64" >< os_arch && "x64" >< fprotName) {
         set_kb_item(name:"F-Prot64/AV/Win/Ver", value:fprotVer);
         register_and_report_cpe( app:fprotName, ver:fprotVer, concluded:fprotVer, base:"cpe:/a:f-prot:f-prot_antivirus:x64:", expr:"^([0-9.]+)", insloc:insLoc );

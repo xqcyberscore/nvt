@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scalix_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_scalix_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Scalix Detection
 #
@@ -31,12 +31,12 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 5877 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+ script_version("$Revision: 10891 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2014-11-03 13:25:47 +0100 (Mon, 03 Nov 2014)");
  script_name("Scalix Detection");
 
- script_tag(name: "summary" , value: "The script sends a connection
+ script_tag(name:"summary", value:"The script sends a connection
 request to the server and attempts to extract the version number
 from the reply.");
 
@@ -66,7 +66,7 @@ function _report( port, version, location, concluded )
   set_kb_item( name:"scalix/installed",value:TRUE );
 
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:scalix:scalix:" );
-  if( isnull( cpe) ) 
+  if( isnull( cpe) )
     cpe = 'cpe:/a:scalix:scalix';
 
   register_product( cpe:cpe, location:location, port:port );
@@ -106,7 +106,7 @@ foreach port ( ports )
           {
             _report( port:port, version:version[1], location:"/webmail/", concluded:version[0] );
             break;
-          }  
+          }
         }
       }
     }

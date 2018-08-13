@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linknat_vos_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_linknat_vos_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Linknat VOS SoftSwitch Detection (SIP)
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106084");
- script_version ("$Revision: 8078 $");
- script_tag(name: "last_modification", value: "$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
- script_tag(name: "creation_date", value: "2016-05-25 12:53:28 +0700 (Wed, 25 May 2016)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10891 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2016-05-25 12:53:28 +0700 (Wed, 25 May 2016)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Linknat VOS SoftSwitch Detection (SIP)");
 
- script_tag(name: "summary" , value: "Detection of Linknat VOS SoftSwitch
+ script_tag(name:"summary", value:"Detection of Linknat VOS SoftSwitch
 
 The script attempts to identify Linknat VOS SoftSwitch via SIP banner to extract the model and version
 number.");
@@ -50,7 +50,7 @@ number.");
  script_dependencies("sip_detection.nasl", "find_service.nasl");
  script_mandatory_keys("sip/detected");
 
- script_xref(name: "URL", value: "http://www.linknat.com"); 
+ script_xref(name:"URL", value:"http://www.linknat.com");
 
  exit(0);
 }

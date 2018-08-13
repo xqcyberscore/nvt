@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: external_svc_ident.nasl 5488 2017-03-05 10:28:39Z cfi $
+# $Id: external_svc_ident.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # external services identification
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14664");
-  script_version("$Revision: 5488 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-05 11:28:39 +0100 (Sun, 05 Mar 2017) $");
+  script_version("$Revision: 10902 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -42,16 +42,14 @@ if(description)
   script_dependencies("secpod_open_tcp_ports.nasl", "gb_open_udp_ports.nasl");
   script_mandatory_keys("external_svc_ident/available");
 
-  tag_summary = "This plugin performs service detection.
+  script_tag(name:"summary", value:"This plugin performs service detection.
 
   Description :
 
   This plugin registers services that were identified
   by external scanners (amap, nmap, etc...).
 
-  It does not perform any fingerprinting by itself.";
-
-  script_tag(name:"summary", value:tag_summary);
+  It does not perform any fingerprinting by itself.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -86,7 +84,7 @@ foreach ipp( make_list( 'tcp', 'udp' ) ) {
         svc = amapcvt[s];
         if( ! svc ) {
           if( match( string:s, pattern:'dns-*' ) ) {
-            svc = 'dns';	# not used yet  
+            svc = 'dns';	# not used yet
           } else if ( match( string:s, pattern:'http-*' ) ) {
             svc = 'www';
           } else if ( match( string:s, pattern:'nntp-*' ) ) {

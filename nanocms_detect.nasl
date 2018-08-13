@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nanocms_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: nanocms_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # NanoCMS Detection
 #
@@ -28,11 +28,11 @@ if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100140");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9580 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+ script_version("$Revision: 10922 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2009-04-16 19:20:22 +0200 (Thu, 16 Apr 2009)");
  script_tag(name:"cvss_base", value:"0.0");
- script_name("NanoCMS Detection");  
+ script_name("NanoCMS Detection");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("General");
@@ -40,8 +40,8 @@ if(description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : "This host is running NanoCMS, a content management system.");
- script_xref(name : "URL" , value : "http://nanocms.in");
+ script_tag(name:"summary", value:"This host is running NanoCMS, a content management system.");
+ script_xref(name:"URL", value:"http://nanocms.in");
  exit(0);
 }
 
@@ -55,16 +55,15 @@ foreach dir( make_list_unique( "/cms", "/nanocms", cgi_dirs( port:port ) ) ) {
 
  install = dir;
  if( dir == "/" ) dir = "";
- url = string(dir, "/data/nanoadmin.php"); 
+ url = string(dir, "/data/nanoadmin.php");
  req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);  
+ buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
  if( buf == NULL )continue;
- 
- if(egrep(pattern: 'NanoCMS Admin Login', string: buf, icase: TRUE)) 
- { 
+
+ if(egrep(pattern: 'NanoCMS Admin Login', string: buf, icase: TRUE))
+ {
     vers = string("unknown");
 
-    ### try to get version.
     files = make_list("/gnu-license-mini.txt","/README%20FIRST.txt");
 
     foreach file (files) {
@@ -72,13 +71,13 @@ foreach dir( make_list_unique( "/cms", "/nanocms", cgi_dirs( port:port ) ) ) {
      req = http_get(item:url, port:port);
      buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
      if( buf == NULL )continue;
- 
+
      version = eregmatch(string: buf, pattern: 'NanoCMS v([0-9.]+)',icase:TRUE);
-    
+
      if ( !isnull(version[1]) ) {
         vers=chomp(version[1]);
 	break;
-     } 
+     }
     }
 
     set_kb_item(name: string("www/", port, "/nanocms"), value: string(vers," under ",install));
@@ -86,7 +85,7 @@ foreach dir( make_list_unique( "/cms", "/nanocms", cgi_dirs( port:port ) ) ) {
     info = string("NanoCMS Version '");
     info += string(vers);
     info += string("' was detected on the remote host in the following directory(s):\n\n");
-    info += string(install, "\n"); 
+    info += string(install, "\n");
 
     log_message(port:port,data:info);
     exit(0);

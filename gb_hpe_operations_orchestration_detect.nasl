@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_operations_orchestration_detect.nasl 9267 2018-03-29 13:08:08Z santu $
+# $Id: gb_hpe_operations_orchestration_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # HPE Operations Orchestration Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813101");
-  script_version("$Revision: 9267 $");
+  script_version("$Revision: 10891 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-29 15:08:08 +0200 (Thu, 29 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-03-26 17:54:51 +0530 (Mon, 26 Mar 2018)");
   script_name("HPE Operations Orchestration Remote Detection");
 
@@ -87,7 +87,7 @@ if((">HPE Operations Orchestration<" >< res && "Server: OO" >< res)||
       if(res =~ "HTTP/1.. 200 OK" && 'productName="Operations Orchestration' >< res && "Help Center" >< res &&
         res =~ "topicTitle.*Operations Orchestration")
       {
-        ##productName="Operations Orchestration" productVersion="10.70" 
+        ##productName="Operations Orchestration" productVersion="10.70"
         version = eregmatch(pattern:'productVersion="([0-9.]+)"', string:res);
         if(version[1])
         {

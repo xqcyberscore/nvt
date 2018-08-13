@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sun_dir_server_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
+# $Id: sun_dir_server_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Sun Java System Directory Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100437");
-  script_version("$Revision: 8143 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-01-12 12:22:08 +0100 (Tue, 12 Jan 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -81,7 +81,7 @@ for( i = 0; i <= linenumber; i++ ) {
     if( ( i * 16 + j ) < len ) {
       if( ord( data[ i * 16 + j ] ) == "48" && ord( data[ i * 16 + j + 2 ] ) == '4' ) {
         str += "#";
-      } else {  
+      } else {
         c = data[ i * 16 + j ];
         if( isprint( c:c ) ) {
           str += c;

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_electro_industries_gaugetech_total_web_solutions_detect.nasl 10510 2018-07-16 10:53:51Z cfischer $
+# $Id: gb_electro_industries_gaugetech_total_web_solutions_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Electro Industries GaugeTech Total Web Solutions Remote Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813628");
-  script_version("$Revision: 10510 $");
+  script_version("$Revision: 10891 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-16 12:53:51 +0200 (Mon, 16 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-04 11:28:37 +0530 (Wed, 04 Jul 2018)");
   script_name("Electro Industries GaugeTech Total Web Solutions Remote Detection");
 
@@ -59,7 +59,7 @@ elePort = get_http_port(default:80);
 
 res = http_get_cache(item:"/", port:elePort);
 
-if(res =~ "HTTP/1.. 200" && "<title>Total Web Solutions</title>" >< res && 
+if(res =~ "HTTP/1.. 200" && "<title>Total Web Solutions</title>" >< res &&
    "Server: EIG Embedded Web Server" >< res)
 {
   res = http_get_cache(item:"/voltage.htm", port:elePort);
@@ -69,8 +69,8 @@ if(res =~ "HTTP/1.. 200" && "<title>Total Web Solutions</title>" >< res &&
     version = "unknown";
 
     set_kb_item( name:"ElectroIndustries/GaugeTech/TotalWebSolutions/installed", value:TRUE );
-    
-    ## Created new cpe 
+
+    ## Created new cpe
     cpe = 'cpe:/h:electroindustries_gaugetech:total_websolutions';
 
     register_product( cpe:cpe, port:elePort, location:"/");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ruby_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: secpod_ruby_detect_lin.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # Ruby Version Detection (Linux)
 #
@@ -24,19 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Detection of installed version of Ruby.
-
-The script logs in via ssh, searches for executable 'ruby' and
-queries the found executables via command line option '--version'.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900569";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
+  script_oid("1.3.6.1.4.1.25623.1.0.900569");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+ script_version("$Revision: 10898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-06-23 10:30:45 +0200 (Tue, 23 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Ruby Version Detection (Linux)");
@@ -48,7 +41,10 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"Detects the installed version of Ruby.
+
+The script logs in via ssh, searches for executable 'ruby' and
+queries the found executables via command line option '--version'.");
   exit(0);
 }
 
@@ -58,7 +54,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
 SCRIPT_DESC = "Ruby Version Detection (Linux)";
 
 sock = ssh_login_or_reuse_connection();
@@ -101,11 +96,10 @@ foreach binaryName (rubyName)
     }
     set_kb_item(name:"Ruby/Lin/Ver", value:rubyVer);
     ssh_close_connection();
-   
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe(value:rubyVer, exp:"^([0-9.]+([a-z0-9]+)?)", base:"cpe:/a:ruby-lang:ruby:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
     log_message(data:'Detected Ruby version: ' + rubyVer +
         '\nLocation: ' + binaryName +

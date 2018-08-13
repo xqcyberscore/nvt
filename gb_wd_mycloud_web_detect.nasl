@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_mycloud_web_detect.nasl 8408 2018-01-12 18:47:24Z cfischer $
+# $Id: gb_wd_mycloud_web_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Western Digital MyCloud Products Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108034");
-  script_version("$Revision: 8408 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-12 19:47:24 +0100 (Fri, 12 Jan 2018) $");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-01-04 10:00:00 +0100 (Wed, 04 Jan 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -92,7 +92,7 @@ if( res =~ "^HTTP/1\.[01] 200" && ( 'MODEL_ID = "WDMyCloud"' >< res || "/web/ima
   }
 
   set_kb_item( name:"WD-MyCloud/www/detected", value:TRUE );
-  
+
   register_and_report_cpe( app:"Western Digital MyCloud NAS", ver:version, concluded:vers[0], base:"cpe:/a:western_digital:mycloud_nas:",
                            expr:"^([0-9.]+)", insloc:"/", regPort:port, regService:"www", conclUrl:conclUrl, extra:extra );
 }

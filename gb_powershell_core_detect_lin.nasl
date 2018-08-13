@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_powershell_core_detect_lin.nasl 10558 2018-07-20 14:08:23Z santu $
+# $Id: gb_powershell_core_detect_lin.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # PowerShell Version Detection (Linux)
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812746");
-  script_version("$Revision: 10558 $");
+  script_version("$Revision: 10905 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 16:08:23 +0200 (Fri, 20 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-01-31 10:53:40 +0530 (Wed, 31 Jan 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("PowerShell Version Detection (Linux)");
 
-  script_tag(name : "summary" , value:"Detection of installed version of PowerShell.
+  script_tag(name:"summary", value:"Detects the installed version of PowerShell.
 
   The script logs in via ssh, searches for executable 'pwsh' and queries the
   found executables via command line option '-v'");
@@ -63,7 +63,7 @@ foreach bin (paths)
   psVer = get_bin_version(full_prog_name:chomp(bin), sock:ps_sock, version_argv:"-v",
                            ver_pattern:"PowerShell v([0-9a-z.-]+)");
 
-  if(psVer[1]) 
+  if(psVer[1])
   {
     ##For preview versions
     psVer = ereg_replace(pattern:"-preview", string:psVer[1], replace:"");

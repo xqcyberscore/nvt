@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805199");
-  script_version("$Revision: 5820 $");
+  script_version("$Revision: 10888 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-06-22 16:44:50 +0530 (Mon, 22 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Bomgar Remote Support Detection");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Bomgar Remote Support.
 
   This script sends HTTP GET request and try to confirm the application from
@@ -56,11 +56,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-
 http_port = get_http_port(default:80);
 
 foreach dir (make_list_unique("/", "/bomgar", cgi_dirs(port:http_port)))
@@ -71,10 +66,8 @@ foreach dir (make_list_unique("/", "/bomgar", cgi_dirs(port:http_port)))
 
   rcvRes = http_get_cache(item:string(dir, "/"), port:http_port);
 
-  ## Confirm application
   if("Bomgar Corporation" >< rcvRes && "Support Portal" >< rcvRes)
   {
-    ## Get version from the response
     bomgarVer = eregmatch(pattern:"Version: ([0-9.]+)", string:rcvRes);
     if(bomgarVer[1]){
       version = bomgarVer[1];
@@ -82,10 +75,8 @@ foreach dir (make_list_unique("/", "/bomgar", cgi_dirs(port:http_port)))
       version = "Unknown";
     }
 
-    ## Set the KB
     set_kb_item(name:"Bomgar/installed",value:TRUE);
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:bomgar:remote_support:");
     if(isnull(cpe))
       cpe = "cpe:/a:bomgar:remote_support";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netscape_fasttrack_server_detect.nasl 6813 2017-07-31 08:25:50Z santu $
+# $Id: gb_netscape_fasttrack_server_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Netscape FastTrack Server Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811544");
-  script_version("$Revision: 6813 $");
+  script_version("$Revision: 10922 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-31 10:25:50 +0200 (Mon, 31 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-07-28 13:24:46 +0530 (Fri, 28 Jul 2017)");
   script_name("Netscape FastTrack Server Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -53,41 +53,30 @@ if(description)
 
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("cpe.inc");
 include("host_details.inc");
 
 
-##variable initialization
-netport = 0;
-netver = "";
-cpe = "";
-
-##Get HTTP Port
 if(!netport = get_http_port(default:80)){
   exit(0);
 }
 
-## Get banner
 banner = get_http_banner(port:netport);
 
-#Confirm application
 if(banner && "Server: Netscape-FastTrack" >< banner)
 {
   netver = "Unknown";
 
-  ## Set kb
   set_kb_item(name:"Netscape/FastTrack/Server/Installed", value:TRUE);
 
-  ## Grep for version
   netver = eregmatch( pattern:'Netscape-FastTrack/([0-9.]+)', string:banner);
   if(netver[1])
   {
-    netver = netver[1]; 
+    netver = netver[1];
     set_kb_item(name:"Netscape/FastTrack/Server/version", value:netver);
   }
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value: netver, exp:"^([0-9.]+)", base:"cpe:/a:netscape:fasttrack_server:");
   if(!cpe)
     cpe = "cpe:/a:netscape:fasttrack_server";

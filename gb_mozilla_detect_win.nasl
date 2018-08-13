@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_detect_win.nasl 9584 2018-04-24 10:34:07Z jschulte $
+# $Id: gb_mozilla_detect_win.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Mozilla Version Detection (Windows)
 #
@@ -24,32 +24,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800883";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
+  script_oid("1.3.6.1.4.1.25623.1.0.800883");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9584 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-09-07 19:45:38 +0200 (Mon, 07 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"registry");
   script_name("Mozilla Version Detection (Windows)");
 
-  tag_summary =
-"Detection of installed version of Mozilla on Windows.
+
+  script_tag(name:"summary", value:"Detects the installed version of Mozilla on Windows.
 
 The script logs in via smb, searches for Mozilla in the registry and gets
-the version from registry.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+the version from registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -132,24 +127,15 @@ function mozillaGetVersion(file, share)
   return ver;
 }
 
-osArch = "";
-path = "";
-mozillaName = "";
-mozillaPath = "";
-mozillaVer = "";
-
-## Get the OS architecture
 osArch = get_kb_item("SMB/Windows/Arch");
 if(!osArch){
   exit(0);
 }
 
-## if os is 32 bit iterate over comman path
 if("x86" >< osArch){
   path = "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Mozilla.exe";
 }
 
-## Check for 64 bit platform
 else if("x64" >< osArch){
   path = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\App Paths\Mozilla.exe";
 }
@@ -169,7 +155,6 @@ if("mozilla.org" >< mozillaName)
     set_kb_item(name:"Mozilla/Win/Ver", value:mozillaVer);
     set_kb_item( name:"Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:mozillaVer, exp:"^([0-9.]+)", base:"cpe:/a:mozilla:mozilla:");
     if(isnull(cpe))
       cpe = "cpe:/a:mozilla:mozilla";

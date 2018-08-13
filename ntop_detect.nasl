@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ntop_detect.nasl 7278 2017-09-26 13:20:44Z cfischer $
+# $Id: ntop_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Ntop Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100256");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7278 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:20:44 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 10929 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-08-23 12:14:46 +0200 (Sun, 23 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Ntop Detection");
@@ -52,7 +52,7 @@ if(description)
 
 
 include("http_func.inc");
-include("global_settings.inc");
+
 include("cpe.inc");
 include("host_details.inc");
 
@@ -64,7 +64,6 @@ if( egrep( pattern:"Server: ntop" , string:buf, icase:TRUE ) ) {
   version = "unknown";
   install = "/";
 
-  ### try to get version 
   ver = eregmatch(string: buf, pattern: "Server: ntop/([0-9.]+)",icase:TRUE);
 
   if( ! isnull( ver[1] ) ) {
@@ -74,10 +73,9 @@ if( egrep( pattern:"Server: ntop" , string:buf, icase:TRUE ) ) {
   set_kb_item( name:"www/" + port + "/ntop", value:version );
   set_kb_item( name:"ntop/installed", value:TRUE );
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:ntop:ntop:" );
   if( isnull( cpe ) )
-    cpe = 'cpe:/a:ntop:ntop'; 
+    cpe = 'cpe:/a:ntop:ntop';
 
   register_product( cpe:cpe, location:install, port:port );
 

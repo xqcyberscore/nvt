@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cambium_epmp1000_detect.nasl 8238 2017-12-22 10:33:38Z ckuersteiner $
+# $Id: gb_cambium_epmp1000_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
-# Cambium Networks ePMP 1000 Detection 
+# Cambium Networks ePMP 1000 Detection
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106627");
-  script_version("$Revision: 8238 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-22 11:33:38 +0100 (Fri, 22 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-03-03 10:33:24 +0700 (Fri, 03 Mar 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10922 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-03 10:33:24 +0700 (Fri, 03 Mar 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -50,7 +50,7 @@ ePMP 1000 and to extract its version.");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "http://www.cambiumnetworks.com/products/access/epmp-1000/");
+  script_xref(name:"URL", value:"http://www.cambiumnetworks.com/products/access/epmp-1000/");
 
   exit(0);
 }

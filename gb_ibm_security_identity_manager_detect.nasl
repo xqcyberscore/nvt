@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_security_identity_manager_detect.nasl 10294 2018-06-22 06:20:56Z santu $
+# $Id: gb_ibm_security_identity_manager_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # IBM Security Identity Manager Detection
 #
@@ -28,15 +28,15 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813523");
-  script_version("$Revision: 10294 $");
+  script_version("$Revision: 10890 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-22 08:20:56 +0200 (Fri, 22 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-12 17:05:24 +0530 (Tue, 12 Jun 2018)");
   script_name("IBM Security Identity Manager Detection");
 
-  script_tag(name:"summary" , value:"Detection of installed path and version of
-  IBM Security Identity Manager.   
+  script_tag(name:"summary", value:"Detection of installed path and version of
+  IBM Security Identity Manager.
 
   The script sends HTTP GET requests and try to confirm the IBM Security Identity
   Manager installation and sets the results in KB.");

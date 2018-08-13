@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_codoforum_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: gb_codoforum_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Codoforum Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806024");
-  script_version("$Revision: 9608 $");
+  script_version("$Revision: 10911 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-08-19 14:54:43 +0530 (Wed, 19 Aug 2015)");
   script_name("Codoforum Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -40,7 +40,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of Codoforum.
+  script_tag(name:"summary", value:"Detects the installed version of Codoforum.
 
   This script sends HTTP GET request and try to get the version from the
   response, and sets the result in KB.");

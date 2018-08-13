@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apache_axis_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: sw_apache_axis_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Apache Axis Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111093");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5877 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-04-06 07:12:12 +0200 (Wed, 06 Apr 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache Axis Detection");
@@ -101,7 +101,6 @@ foreach dir( make_list_unique( "/axis", "/imcws", "/WebServiceImpl", "/dswsbobje
       conclUrl = report_vuln_url( url:url, port:port, url_only:TRUE );
     }
 
-    # Try to get exposed web services
     url = dir + "/servlet/AxisServlet";
     req = http_get( item:url, port:port );
     buf = http_keepalive_send_recv( port:port, data:req );
@@ -119,7 +118,6 @@ foreach dir( make_list_unique( "/axis", "/imcws", "/WebServiceImpl", "/dswsbobje
       extra += report_vuln_url( url:url, port:port, url_only:TRUE ) + ' lists available web services\n';
     }
 
-    # Try to get Axis Happiness Page
     url = dir + "/happyaxis.jsp";
     req = http_get( item:url, port:port );
     buf = http_keepalive_send_recv( port:port, data:req );
@@ -128,7 +126,6 @@ foreach dir( make_list_unique( "/axis", "/imcws", "/WebServiceImpl", "/dswsbobje
       extra += report_vuln_url( url:url, port:port, url_only:TRUE ) + ' exposes the system configuration\n';
     }
 
-    # Try to get the AdminService
     url = dir + "/services/AdminService?wsdl";
     req = http_get( item:url, port:port );
     buf = http_keepalive_send_recv( port:port, data:req );
@@ -146,7 +143,6 @@ foreach dir( make_list_unique( "/axis", "/imcws", "/WebServiceImpl", "/dswsbobje
       }
     }
 
-    # Try to get the EchoHeaders webservice
     url = dir + "/EchoHeaders.jws?wsdl";
     req = http_get( item:url, port:port );
     buf = http_keepalive_send_recv( port:port, data:req );
@@ -164,7 +160,6 @@ foreach dir( make_list_unique( "/axis", "/imcws", "/WebServiceImpl", "/dswsbobje
       }
     }
 
-    # Try to get SOAPMonitor Page
     url = dir + "/SOAPMonitor";
     req = http_get( item:url, port:port );
     buf = http_keepalive_send_recv( port:port, data:req );
@@ -173,7 +168,6 @@ foreach dir( make_list_unique( "/axis", "/imcws", "/WebServiceImpl", "/dswsbobje
       extra += report_vuln_url( url:url, port:port, url_only:TRUE ) + ' expostes the SOAPMonitor Page\n';
     }
 
-    # Try to get AdminServlet
     url = dir + "/servlet/AdminServlet";
     req = http_get( item:url, port:port );
     buf = http_keepalive_send_recv( port:port, data:req );
@@ -182,7 +176,6 @@ foreach dir( make_list_unique( "/axis", "/imcws", "/WebServiceImpl", "/dswsbobje
       extra += report_vuln_url( url:url, port:port, url_only:TRUE ) + ' exposes the AdminServlet\n';
     }
 
-    # Try to get MyServlet
     url = dir + "/servlet/MyServlet";
     req = http_get( item:url, port:port );
     buf = http_keepalive_send_recv( port:port, data:req );

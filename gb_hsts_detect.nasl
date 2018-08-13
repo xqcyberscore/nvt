@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hsts_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
+# $Id: gb_hsts_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # SSL/TLS: HTTP Strict Transport Security (HSTS) Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105876");
-  script_version("$Revision: 8140 $");
+  script_version("$Revision: 10896 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-08-22 13:07:41 +0200 (Mon, 22 Aug 2016)");
   script_name("SSL/TLS: HTTP Strict Transport Security (HSTS) Detection");
   script_category(ACT_GATHER_INFO);
@@ -56,7 +56,7 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 
 port = get_http_port( default:443, ignore_cgi_disabled:TRUE );
 if( get_port_transport( port ) < ENCAPS_SSLv23 ) exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: OpenVAS_detect.nasl 9754 2018-05-08 11:00:12Z cfischer $
+# $Id: OpenVAS_detect.nasl 10878 2018-08-10 08:52:28Z cfischer $
 #
 # OpenVAS Scanner Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100076");
-  script_version("$Revision: 9754 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 13:00:12 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 10878 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 10:52:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-03-24 18:59:36 +0100 (Tue, 24 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -54,11 +54,11 @@ include("host_details.inc");
 
 port = get_unknown_port( default:9391 );
 
-# Set by nessus_detect.nasl if we have hit a service described in the notes below
+# nb: Set by nessus_detect.nasl if we have hit a service described in the notes below
 # No need to continue here as well...
 if( get_kb_item( "generic_echo_test/" + port + "/failed" ) ) exit( 0 );
 
-# Set by nessus_detect.nasl as well. We don't need to do the same test
+# nb: Set by nessus_detect.nasl as well. We don't need to do the same test
 # multiple times...
 if( ! get_kb_item( "generic_echo_test/" + port + "/tested" ) ) {
   soc = open_sock_tcp( port );

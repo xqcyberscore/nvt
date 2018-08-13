@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gnu_gcc_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_gnu_gcc_detect_lin.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # GCC Version Detection (Linux)
 #
@@ -29,13 +29,13 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.806083");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_version("$Revision: 10901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 11:46:09 +0530 (Tue, 13 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("GCC Version Detection (Linux)");
 
-  script_tag(name : "summary" , value:"Detection of installed version of GCC.
+  script_tag(name:"summary", value:"Detects the installed version of GCC.
 
   The script logs in via ssh, searches for executable 'gcc' and queries the
   found executables via command line option '-v'");

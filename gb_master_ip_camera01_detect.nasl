@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_master_ip_camera01_detect.nasl 8539 2018-01-25 14:37:09Z gveerendra $
+# $Id: gb_master_ip_camera01_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # MASTER IP CAMERA 01 Remote Detection
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812657");
-  script_version("$Revision: 8539 $");
+  script_version("$Revision: 10902 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 15:37:09 +0100 (Thu, 25 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-01-22 12:19:43 +0530 (Mon, 22 Jan 2018)");
   script_name("MASTER IP CAMERA 01 Remote Detection");
 
   script_tag(name:"summary", value:"Detection of running version of
   MASTER IP CAMERA 01.
-  
+
   This script sends HTTP GET request and try to ensure the presence of
   MASTER IP CAMERA 01.");
 
@@ -73,11 +73,9 @@ if(rcvRes =~ "Server:.thttpd" && ("<title>ipCAM<" >< rcvRes || "<title>Camera<" 
 
   version = "unknown";
 
-  ## Set the KB value
   set_kb_item(name:"MasterIP/Camera/Detected", value:TRUE);
 
   ## creating new cpe for this product
-  ## build cpe and store it as host_detail
   cpe = "cpe:/h:masterip:masterip_camera";
 
   register_product(cpe:cpe, location:"/", port:ipPort);

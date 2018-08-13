@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_old_adobe_reader_detect_win.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_old_adobe_reader_detect_win.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Adobe Reader Old Version Detection (Windows)
 #
@@ -27,28 +27,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804623");
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 10905 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-06-04 14:46:32 +0530 (Wed, 04 Jun 2014)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Reader Old Version Detection (Windows)");
 
-  tag_summary =
-"Detection of installed version of Adobe Reader (less or equal to version 6.0)
+
+  script_tag(name:"summary", value:"Detects the installed version of Adobe Reader (less or equal to version 6.0)
 on Windows.
 
 The script logs in via smb, searches for Adobe Reader in the registry,
-gets the path of '.exe' from registry and fetches version from executable.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+gets the path of '.exe' from registry and fetches version from executable.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -60,26 +57,15 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## variable Initialization
-os_arch = "";
-key_list = "";
-key = "";
-readPath = "";
-readVer = "";
-readName = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\AcroRd32.exe");
 }
 
-# Check for 64 bit platform, Currently only 32-bit application is available
 else if("x64" >< os_arch)
 {
   key_list =  make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\App Paths\AcroRd32.exe");
@@ -89,14 +75,12 @@ if(isnull(key_list)){
   exit(0);
 }
 
-## Confirm Application
 if(!registry_key_exists(key:"SOFTWARE\Adobe")){
   if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\Adobe")){
     exit(0);
   }
 }
 
-## Get Version from Registry
 foreach key (key_list)
 {
   readPath = registry_get_sz(key:key, item:"Path");
@@ -112,7 +96,6 @@ foreach key (key_list)
     {
       set_kb_item(name:"Adobe/Reader-Old/Ver", value:readVer[0]);
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe(value:readVer[0], exp:"^([0-9.]+)", base:"cpe:/a:adobe:acrobat_reader:");
       if(isnull(cpe))
         cpe = "cpe:/a:adobe:acrobat_reader";

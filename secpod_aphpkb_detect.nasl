@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_aphpkb_detect.nasl 8144 2017-12-15 13:19:55Z cfischer $
+# $Id: secpod_aphpkb_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # Andy's PHP Knowledgebase Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902520");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8144 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10906 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-06-01 11:16:16 +0200 (Wed, 01 Jun 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Andy's PHP Knowledgebase Version Detection");
@@ -54,7 +54,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get http port
 port = get_http_port( default:80 );
 
 if( ! can_host_php( port:port ) ) exit( 0 );
@@ -67,27 +66,22 @@ foreach dir( make_list_unique( "/aphpkb", "/kb", cgi_dirs( port:port ) ) ) {
   ## Send and Receive the response
   rcvRes = http_get_cache( item: dir + "/index.php", port:port );
 
-  ## Confirm the application
   if( rcvRes =~ "HTTP/1.. 200" && ">Andy's PHP Knowledgebase" >< rcvRes) {
 
-    ## Try to get the version
     ver = eregmatch(pattern:">Andy's PHP Knowledgebase (.+)</a>", string:rcvRes);
     version = chomp(ver[1]);
     if( ! version =~ '[0-9.]+') {
       version = "unknown";
     }
 
-    ## Set the KB value
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/aphpkb", value:tmp_version );
     set_kb_item( name:"aphpkb/installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:aphpkb:aphpkb:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:aphpkb:aphpkb';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data: build_detection_report( app:"Andy's PHP Knowledgebase",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_metasploit_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_metasploit_detect_lin.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Metasploit Version Detection (Linux)
 #
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811588");
-  script_version("$Revision: 7823 $");
+  script_version("$Revision: 10894 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-08-30 17:46:40 +0530 (Wed, 30 Aug 2017)");
   script_name("Metasploit Version Detection (Linux)");
 
-  script_tag(name : "summary" , value : "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Metasploit on Linux.
 
   The script logs in via ssh, searches for executable and queries the
   version from 'version.yml' file.");
-  
+
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -56,12 +56,6 @@ include("ssh_func.inc");
 include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-##Variable initialization
-sock = 0;
-bracbin = "";
-bracVer = "";
-paths = "";
 
 sock = ssh_login_or_reuse_connection();
 if(!sock){
@@ -89,8 +83,7 @@ foreach executableFile (paths)
       if(metUpdate[1] != NULL){
         set_kb_item(name:"Metasploit/Linux/VerUpdate", value:metUpdate[1]);
       }
- 
-      ## build cpe
+
       cpe = build_cpe(value:metVer[1], exp:"^([0-9.]+)", base:"cpe:/a:rapid7:metasploit:");
       if(!cpe)
          cpe = "cpe:/a:rapid7:metasploit";

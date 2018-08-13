@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cmscout_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
+# $Id: gb_cmscout_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # CMScout Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800790");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8139 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10894 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-06-09 08:34:53 +0200 (Wed, 09 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("CMScout Version Detection");
@@ -64,12 +64,10 @@ foreach dir( make_list_unique( "/", "/cmscout", "/cmscout", cgi_dirs( port:port 
 
   rcvRes = http_get_cache( item: dir + "/index.php", port:port );
 
-  ## Confirm the application
   if( rcvRes =~ "HTTP/1.. 200" && ( ":: CMScout ::" >< rcvRes || ">Welcome to CMScout" >< rcvRes ) ) {
 
     version = "unknown";
 
-    ## Grep for the version
     ver = eregmatch( pattern:"CMScout ([0-9.]+)", string:rcvRes );
     if( ver[1] != NULL ) version = ver[1];
 
@@ -77,12 +75,10 @@ foreach dir( make_list_unique( "/", "/cmscout", "/cmscout", cgi_dirs( port:port 
     set_kb_item( name:"www/" + port + "/CMScout", value:tmp_version );
     set_kb_item( name:"CMScout/installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:cmscout:cmscout:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:cmscout:cmscout';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"CMScout",

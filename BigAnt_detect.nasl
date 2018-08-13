@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: BigAnt_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
+# $Id: BigAnt_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # BigAnt IM Server Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100280");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9996 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
+ script_version("$Revision: 10929 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
  script_tag(name:"creation_date", value:"2009-10-01 18:57:31 +0200 (Thu, 01 Oct 2009)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -42,14 +42,14 @@ if (description)
  script_dependencies("gb_get_http_banner.nasl");
  script_mandatory_keys("AntServer/banner");
  script_require_ports("Services/www", 6660);
- script_tag(name : "summary" , value : "This host is running BigAnt IM Server, a instant messaging solution
+ script_tag(name:"summary", value:"This host is running BigAnt IM Server, a instant messaging solution
 for enterprise.");
- script_xref(name : "URL" , value : "http://www.bigantsoft.com/");
+ script_xref(name:"URL", value:"http://www.bigantsoft.com/");
  exit(0);
 }
 
 include("http_func.inc");
-include("global_settings.inc");
+
 include("misc_func.inc");
 
 port = get_http_port(default:6660);

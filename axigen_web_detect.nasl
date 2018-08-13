@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: axigen_web_detect.nasl 8052 2017-12-08 10:13:55Z ckuersteiner $
+# $Id: axigen_web_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # Axigen Web Detection
 #
@@ -30,15 +30,15 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100176");
-  script_version("$Revision: 8052 $");
+  script_version("$Revision: 10890 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 11:13:55 +0100 (Fri, 08 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Axigen Web Detection");
 
-  script_tag(name: "summary", value: "Detection of installed version of Axigen.
+  script_tag(name:"summary", value:"Detects the installed version of Axigen.
 
 This script sends HTTP GET request and try to get the version from the response, and sets the result in KB.");
 
@@ -91,7 +91,6 @@ if (egrep(pattern: 'Server: Axigen-.*', string: buf, icase: TRUE)) {
 
   set_kb_item(name: "axigen/installed", value: TRUE);
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value: vers, exp: "^([0-9.]+)", base: "cpe:/a:gecad_technologies:axigen_mail_server:");
   if (isnull(cpe))
     cpe = "cpe:/a:gecad_technologies:axigen_mail_server";

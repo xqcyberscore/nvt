@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_maildrop_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: gb_maildrop_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Maildrop Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800291");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9580 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+ script_version("$Revision: 10911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-02-08 10:53:20 +0100 (Mon, 08 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Maildrop Version Detection");
@@ -41,7 +41,7 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : "This script finds the installed Maildrop version and saves
+  script_tag(name:"summary", value:"This script finds the installed Maildrop version and saves
   the result in KB.");
   exit(0);
 }
@@ -52,8 +52,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800291";
 SCRIPT_DESC = "Maildrop Version Detection";
 
 sock = ssh_login_or_reuse_connection();
@@ -70,13 +68,12 @@ foreach binary_mailName (mailName)
   if(mailVer[1])
   {
     set_kb_item(name:"Maildrop/Linux/Ver", value:mailVer[1]);
-    log_message(data:"Maildrop version " + mailVer[1] + " running at location " 
+    log_message(data:"Maildrop version " + mailVer[1] + " running at location "
                           + binary_mailName + " was detected on the host");
-      
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe(value:mailVer[1], exp:"^([0-9.]+)", base:"cpe:/a:maildrop:maildrop:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
   }
 }

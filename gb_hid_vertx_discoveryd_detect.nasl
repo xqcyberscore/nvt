@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hid_vertx_discoveryd_detect.nasl 10097 2018-06-06 10:50:30Z cfischer $
+# $Id: gb_hid_vertx_discoveryd_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # HID VertX Detection (discoveryd)
 #
@@ -28,17 +28,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141137");
-  script_version("$Revision: 10097 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-06 12:50:30 +0200 (Wed, 06 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2018-06-04 12:33:52 +0700 (Mon, 04 Jun 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-06-04 12:33:52 +0700 (Mon, 04 Jun 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("HID VertX Detection (discoveryd)");
 
-  script_tag(name: "summary" , value: "Detection of HID VertX Access Control Devices.
+  script_tag(name:"summary", value:"Detection of HID VertX Access Control Devices.
 
 The script sends a connection request to the server and attempts to detect HID VertX Access Control Devices and to
 extract its version.");
@@ -50,7 +50,7 @@ extract its version.");
   script_dependencies("gb_open_udp_ports.nasl");
   script_require_udp_ports("Services/udp/unknown", 4050, 4070);
 
-  script_xref(name: "URL", value: "https://www.hidglobal.com/products/controllers");
+  script_xref(name:"URL", value:"https://www.hidglobal.com/products/controllers");
 
   exit(0);
 }
@@ -106,7 +106,6 @@ if (recv =~ "^discovered;") {
     if (i == 7)
       version = data[i];
 
-    # Build date
     if (i == 8)
       extra += '\nBuild Date:     ' + data[i];
   }

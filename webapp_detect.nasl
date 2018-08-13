@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: webapp_detect.nasl 9745 2018-05-07 11:45:41Z cfischer $
+# $Id: webapp_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # WebAPP Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102009");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9745 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:45:41 +0200 (Mon, 07 May 2018) $");
+  script_version("$Revision: 10908 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("WebAPP Detection");
@@ -92,8 +92,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
     tmp_version = ver + " under " + install;
     set_kb_item( name:"www/" + port + "/webapp", value:tmp_version );
     set_kb_item( name:"WebAPP/installed", value:TRUE );
- 
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe( value:ver, exp:"^([0-9.]+)", base:"cpe:/a:web_app.net:webapp:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:web_app.net:webapp';

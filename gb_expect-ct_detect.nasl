@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_expect-ct_detect.nasl 7830 2017-11-20 12:43:05Z cfischer $
+# $Id: gb_expect-ct_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # SSL/TLS: Expect Certificate Transparency (Expect-CT) Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113045");
-  script_version("$Revision: 7830 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 13:43:05 +0100 (Mon, 20 Nov 2017) $");
+  script_version("$Revision: 10922 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-11-07 10:06:44 +0100 (Tue, 07 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,7 +57,7 @@ if( description )
 }
 
 include( "http_func.inc" );
-include( "http_keepalive.inc" );
+
 
 port = get_http_port( default: 443, ignore_cgi_disabled: TRUE );
 if( get_port_transport( port ) < ENCAPS_SSLv23 ) exit( 0 );

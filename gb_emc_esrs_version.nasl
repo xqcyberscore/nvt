@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_esrs_version.nasl 5151 2017-01-31 15:55:21Z mime $
+# $Id: gb_emc_esrs_version.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # EMC Secure Remote Services Detection
 #
@@ -30,11 +30,11 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140136");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5151 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-31 16:55:21 +0100 (Tue, 31 Jan 2017) $");
+ script_version("$Revision: 10905 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2017-01-31 14:38:46 +0100 (Tue, 31 Jan 2017)");
  script_name("EMC Secure Remote Services Detection");
- script_tag(name: "summary" , value: "This script performs SSH based detection of EMC Secure Remote Services");
+ script_tag(name:"summary", value:"This script performs SSH based detection of EMC Secure Remote Services");
  script_tag(name:"qod_type", value:"package");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");

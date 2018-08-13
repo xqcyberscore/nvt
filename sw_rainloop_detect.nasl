@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_rainloop_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: sw_rainloop_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # RainLoop Webmail Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111009");
-  script_version("$Revision: 7000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_version("$Revision: 10911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-03-26 12:00:00 +0100 (Thu, 26 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : "The script sends a HTTP
+  script_tag(name:"summary", value:"The script sends a HTTP
   request to the server and attempts to extract the version from
   the reply.");
 
@@ -59,7 +59,6 @@ port = get_http_port( default:80 );
 
 if( !can_host_php( port:port ) ) exit( 0 );
 
-##Iterate possible paths
 foreach dir ( make_list_unique( "/", "/rainloop", "/webmail", "/mail", cgi_dirs(port:port) ) )
 {
 

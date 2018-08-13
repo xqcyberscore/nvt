@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysaid_detect.nasl 5787 2017-03-30 10:26:10Z cfi $
+# $Id: gb_sysaid_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # SysAid Help Desk Detection
 #
@@ -28,15 +28,15 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106004");
- script_version ("$Revision: 5787 $");
- script_tag(name: "last_modification", value: "$Date: 2017-03-30 12:26:10 +0200 (Thu, 30 Mar 2017) $");
- script_tag(name: "creation_date", value: "2015-06-11 10:02:43 +0700 (Thu, 11 Jun 2015)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name: "qod_type", value: "remote_active");
+ script_version("$Revision: 10929 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2015-06-11 10:02:43 +0700 (Thu, 11 Jun 2015)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_tag(name:"qod_type", value:"remote_active");
  script_name("SysAid Help Desk Detection");
 
- script_tag(name: "summary" , value: "Detection of SysAid Help Desk Software
+ script_tag(name:"summary", value:"Detection of SysAid Help Desk Software
 
 The script sends a connection request to the server and attempts to detect SysAid Help Desk Software.");
 
@@ -52,7 +52,7 @@ The script sends a connection request to the server and attempts to detect SysAi
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 include("cpe.inc");
 include("host_details.inc");
 

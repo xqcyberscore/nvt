@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-filemaker.nasl 8145 2017-12-15 13:31:58Z cfischer $
+# $Id: remote-detect-filemaker.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # FileMaker service detection
 #
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80003");
-  script_version("$Revision: 8145 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-09-09 16:54:39 +0200 (Tue, 09 Sep 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -87,7 +87,7 @@ if( get_port_state( port ) ) {
     close( soc );
     if( isnull( reply ) ) exit ( 0 );
 
-    # Check that Filemaker is not tcpwrapped. And that it's really Filemaker
+    # nb: Check that Filemaker is not tcpwrapped. And that it's really Filemaker
     if( stridx( reply, "GIOP", 0 ) ) is_filemaker = TRUE;
   }
 }

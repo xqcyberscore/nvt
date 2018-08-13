@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iball_baton_150m_wireless_router_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_iball_baton_150m_wireless_router_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # iBall Baton 150M Wireless Router Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811312");
-  script_version("$Revision: 8078 $");
+  script_version("$Revision: 10896 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-08-31 11:28:00 +0530 (Thu, 31 Aug 2017)");
   script_name("iBall Baton 150M Wireless Router Detection");
 
@@ -54,33 +54,22 @@ if(description)
 
 include("host_details.inc");
 include("http_func.inc");
-include("http_keepalive.inc");
 
-##Variable Initialization
-banner = "";
-netPort = "";
-location = "";
-version ="";
-cpe = "";
 
 netPort = get_http_port(default:80);
 if(!netPort){
   exit(0);
 }
 
-##Get http banner
 banner = get_http_banner(port:netPort);
 
-##Confirm Application
 if(banner && 'WWW-Authenticate: Basic realm="iBall Baton 150M Wireless-N ADSL2+ Router' >< banner)
-{ 
+{
   location = "/";
   version = "Unknown";
 
-  ##Set kb
   set_kb_item(name:"iBall_Baton_150M_Router/detected", value: TRUE);
 
-  ## build cpe and store it as host_detail
   cpe = "cpe:/h:iball:baton_150m_wireless-n_router";
 
 

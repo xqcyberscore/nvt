@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firewall_builder_detect_lin.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: gb_firewall_builder_detect_lin.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # Firewall Builder Version Detection (Linux)
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script detects the installed version of Firewall Builder
-  and sets the result in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800995");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 10901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-03-18 15:44:57 +0100 (Thu, 18 Mar 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Firewall Builder Version Detection (Linux)");
@@ -44,7 +41,8 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script detects the installed version of Firewall Builder
+  and sets the result in KB.");
   exit(0);
 }
 
@@ -54,8 +52,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800995";
 SCRIPT_DESC = "Firewall Builder Version Detection (Linux)";
 
 sock = ssh_login_or_reuse_connection();
@@ -71,13 +67,12 @@ foreach fwbuildbin (paths)
   if(fwbuildVer[1] != NULL)
    {
      set_kb_item(name:"FirewallBuilder/Linux/Ver", value:fwbuildVer[1]);
-     log_message(data:"Firewall Builder version " + fwbuildVer[1] + " running" + 
+     log_message(data:"Firewall Builder version " + fwbuildVer[1] + " running" +
                         " at location " + fwbuildbin + " was detected on the host");
-      
-      ## build cpe and store it as host_detail
+
       cpe = build_cpe(value:fwbuildVer[1], exp:"^([0-9.]+)", base:"cpe:/a:fwbuilder:firewall_builder:");
       if(!isnull(cpe))
-         register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+         register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
   }
 }

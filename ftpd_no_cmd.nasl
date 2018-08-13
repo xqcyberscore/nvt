@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ftpd_no_cmd.nasl 4780 2016-12-16 08:45:05Z cfi $
+# $Id: ftpd_no_cmd.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # Fake FTP server does not accept any command
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80064");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4780 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-16 09:45:05 +0100 (Fri, 16 Dec 2016) $");
+  script_version("$Revision: 10901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Fake FTP server does not accept any command");
@@ -39,14 +39,10 @@ if(description)
   script_dependencies("find_service.nasl", "find_service_3digits.nasl");
   script_require_ports("Services/ftp", 21);
 
-  tag_insight = "The remote server advertises itself as being a FTP server, but it does
+  script_tag(name:"insight", value:"The remote server advertises itself as being a FTP server, but it does
   not accept any command, which indicates that it may be a backdoor or a proxy.
-  Further FTP tests on this port will be disabled to avoid false alerts.";
-
-  tag_summary = "The remote FTP service is not working properly";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
+  Further FTP tests on this port will be disabled to avoid false alerts.");
+  script_tag(name:"summary", value:"The remote FTP service is not working properly");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

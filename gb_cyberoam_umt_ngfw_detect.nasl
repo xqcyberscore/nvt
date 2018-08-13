@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cyberoam_umt_ngfw_detect.nasl 6318 2017-06-13 06:49:17Z ckuersteiner $
+# $Id: gb_cyberoam_umt_ngfw_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # Sophos Cyberoam UMT/NGFW Detection
 #
@@ -27,21 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106864");
-  script_version("$Revision: 6318 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-13 08:49:17 +0200 (Tue, 13 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-12 15:55:23 +0700 (Mon, 12 Jun 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10896 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-12 15:55:23 +0700 (Mon, 12 Jun 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Sophos Cyberoam UMT/NGFW Detection");
 
-  script_tag(name: "summary" , value: "Detection of Sophos Cyberoam UMT/NGFW.
+  script_tag(name:"summary", value:"Detection of Sophos Cyberoam UMT/NGFW.
 
 The script sends a connection request to the server and attempts to detect Sophos Cyberoam UMT/NGFW
 devices and to extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -50,7 +50,7 @@ devices and to extract its version.");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.cyberoam.com/networksecurity.html");
+  script_xref(name:"URL", value:"https://www.cyberoam.com/networksecurity.html");
 
   exit(0);
 }

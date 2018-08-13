@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oraclebi_discoverer_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_oraclebi_discoverer_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # OracleBI Discoverer Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803130");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 10888 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-12-19 10:33:12 +0530 (Wed, 19 Dec 2012)");
   script_name("OracleBI Discoverer Version Detection");
 
@@ -41,13 +41,13 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : "Detection of OracleBI Discoverer.
+  script_tag(name:"summary", value:"Detection of OracleBI Discoverer.
 
   The script sends a connection request to the server and attempts to
   extract the version number from the reply.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  
+
 
   exit(0);
 }
@@ -57,15 +57,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## Constant values
-port = "";
-dir = "";
-url = "";
-req = "";
-res = "";
-ver = "";
-cpe  = "";
 
 port = get_http_port(default:80);
 
@@ -89,7 +80,6 @@ foreach dir (make_list_unique("/", "/discoverer" , cgi_dirs(port:port)))
      set_kb_item(name: string("www/", port, "/OracleBIDiscoverer"), value: string(ver[1]," under ",install));
      set_kb_item(name:"OracleBIDiscoverer/installed", value:TRUE);
 
-     ## build cpe and store it as host_detail
      cpe = build_cpe(value:ver[1], exp:"^([0-9.]+)", base:"cpe:/a:oracle:oraclebi_discoverer:");
      if(isnull(cpe))
        cpe = "cpe:/a:oracle:oraclebi_discoverer";

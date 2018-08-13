@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongoose_web_server_detect.nasl 10502 2018-07-13 13:19:46Z santu $
+# $Id: gb_mongoose_web_server_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # Mongoose Web Server Remote Detection
 #
@@ -28,16 +28,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813630");
-  script_version("$Revision: 10502 $");
+  script_version("$Revision: 10890 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-13 15:19:46 +0200 (Fri, 13 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-09 14:45:19 +0530 (Mon, 09 Jul 2018)");
   script_name("Mongoose Web Server Remote Detection");
 
   script_tag(name:"summary", value:"Detection of Mongoose Web Server.
 
-  The script sends a connection request to the remote host and attempts to 
+  The script sends a connection request to the remote host and attempts to
   detect if the remote host is Mongoose Web Server and get the version.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -53,7 +53,7 @@ if(description)
 include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
+
 
 mongoPort = get_http_port(default:80);
 
@@ -66,7 +66,7 @@ if(version[1])
   version = version[1];
 
 set_kb_item( name:"Cesanta/Mongoose/installed", value:TRUE );
- 
+
 cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:cesanta:mongoose:");
 if(!cpe)
   cpe = 'cpe:/a:cesanta:mongoose';

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap.nasl 9277 2018-04-03 09:52:47Z cfischer $
+# $Id: nmap.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Nmap (NASL wrapper)
 #
@@ -52,8 +52,8 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14259");
-  script_version("$Revision: 9277 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-03 11:52:47 +0200 (Tue, 03 Apr 2018) $");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -107,7 +107,6 @@ include("network_func.inc");
 
 if( get_kb_item( "Host/dead" ) ) exit( 0 );
 
-# Check if this scanner supports scan phases
 phase = 0;
 if( defined_func( "scan_phase" ) ) {
   phase = scan_phase();

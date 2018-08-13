@@ -1,6 +1,6 @@
 ####################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_vip_access_detect_win.nasl 7022 2017-08-30 08:57:06Z santu $
+# $Id: gb_symantec_vip_access_detect_win.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Symantec VIP Access Desktop Detection (Windows)
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811713");
-  script_version("$Revision: 7022 $");
+  script_version("$Revision: 10908 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-30 10:57:06 +0200 (Wed, 30 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-08-22 15:55:14 +0530 (Tue, 22 Aug 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Symantec VIP Access Desktop Detection (Windows)");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Symantec VIP Access Desktop.
 
   The script logs in via smb, searches for 'Symantec VIP Access Desktop' and
@@ -44,7 +44,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -57,14 +57,6 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## variable Initialization
-os_arch = "";
-nitPath = "";
-nitName = "";
-nitVer = "";
-key = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(0);
@@ -80,13 +72,11 @@ if(!registry_key_exists(key:"SOFTWARE\Symantec\VIP Access Client"))
   }
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
 ## Presently 64bit application is not available
-## Check for 32 bit App on 64 bit platform
 else if("x64" >< os_arch){
   key = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
@@ -100,19 +90,15 @@ foreach item (registry_enum_keys(key:key))
   appName = registry_get_sz(key:key + item, item:"DisplayName");
   if("VIP Access" >< appName)
   {
-    ##Get Version
     appVer = registry_get_sz(key:key + item, item:"DisplayVersion");
     if(appVer)
     {
-      ## Get the Installed Path
       insloc = registry_get_sz(key:key + item, item:"InstallLocation");
       if(!insloc){
         insloc = "Could not find install location.";
       }
-      ## Set KB
       set_kb_item(name:"Symantec/VIP/Win/Ver", value:appVer);
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe(value:appVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:vip_access_for_desktop:");
       if(isnull(cpe))
         cpe = "cpe:/a:symantec:vip_access_for_desktop";

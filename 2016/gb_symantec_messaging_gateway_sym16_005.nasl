@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_sym16_005.nasl 8372 2018-01-11 10:19:36Z cfischer $
+# $Id: gb_symantec_messaging_gateway_sym16_005.nasl 10881 2018-08-10 10:27:02Z mmartin $
 #
 # Symantec Messaging Gateway Multiple Security Issues (SYM16-005)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105620");
-  script_version("$Revision: 8372 $");
+  script_version("$Revision: 10881 $");
   script_cve_id("CVE-2016-2203","CVE-2016-2204");
   script_bugtraq_id(86137,86138);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:M/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:19:36 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:27:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-04-22 10:36:01 +0200 (Fri, 22 Apr 2016)");
   script_name("Symantec Messaging Gateway Multiple Security Issues (SYM16-005)");
 
@@ -44,7 +44,7 @@ if(description)
   script_tag(name:"impact", value:'Successful exploitation could result in elevated access to the SMG Appliance management console or to the network environment.');
   script_tag(name:"affected", value:'SMG 10.6.0-7 and earlier');
   script_tag(name:"solution", value:'Update to SMG 10.6.1 or higher.');
-
+  script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year&suid=20160418_00");
 
   script_category(ACT_GATHER_INFO);

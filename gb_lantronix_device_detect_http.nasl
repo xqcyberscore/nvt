@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_device_detect_http.nasl 10464 2018-07-09 10:21:17Z cfischer $
+# $Id: gb_lantronix_device_detect_http.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # Lantronix Devices Detection Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108304");
-  script_version("$Revision: 10464 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 12:21:17 +0200 (Mon, 09 Jul 2018) $");
+  script_version("$Revision: 10896 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-11-29 12:03:31 +0100 (Wed, 29 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,7 +56,7 @@ buf  = http_get_cache( item:"/", port:port );
 
 if( ( buf =~ "^HTTP/1\.[0-1] 403" && "<TITLE>Lantronix - Authentication for " >< buf ) ||
     ( buf =~ "^HTTP/1\.[0-1] 200" &&
-      ( '<meta http-equiv="refresh" content="1; URL=secure/ltx_conf.htm">' >< buf || 
+      ( '<meta http-equiv="refresh" content="1; URL=secure/ltx_conf.htm">' >< buf ||
         'var sTargetURL = "secure/ltx_conf.htm";' >< buf ||
         "<title>Lantronix WEB-Manager</title>" >< buf ||
         "<title>Lantronix Web Manager</title>" >< buf ||

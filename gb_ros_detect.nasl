@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ros_detect.nasl 5992 2017-04-20 14:42:07Z cfi $
+# $Id: gb_ros_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # Rugged Operating System Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103633");
-  script_version("$Revision: 5992 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 16:42:07 +0200 (Thu, 20 Apr 2017) $");
+  script_version("$Revision: 10901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-01-04 12:11:14 +0100 (Fri, 04 Jan 2013)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -77,10 +77,10 @@ function check_http() {
         if(!isnull(version[1])) {
           concluded = version[0];
           return version[1];
-        }  
-      }  
-    }  
-  }  
+        }
+      }
+    }
+  }
 }
 
 function check_telnet() {
@@ -105,8 +105,8 @@ function check_telnet() {
     if(!isnull(version[1])) {
       concluded = version[0];
       return version[1];
-    }  
-  }  
+    }
+  }
 }
 
 vers = check_http();
@@ -130,6 +130,6 @@ if(vers && !isnull(vers)) {
   log_message(data: build_detection_report(app:"Rugged Operating System", version:vers, install:"OS", cpe:cpe, concluded: concluded),port:0);
   exit(0);
 
-}  
+}
 
 exit(0);

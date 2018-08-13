@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_varnish_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: gb_varnish_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # Varnish Version Detection
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script detects the installed version of Varnish and
-  sets the result in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800446");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 10913 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-01-28 16:24:05 +0100 (Thu, 28 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Varnish Version Detection");
@@ -44,7 +41,8 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script detects the installed version of Varnish and
+  sets the result in KB.");
   exit(0);
 }
 
@@ -54,8 +52,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800446";
 SCRIPT_DESC = "Varnish Version Detection";
 
 sock = ssh_login_or_reuse_connection();
@@ -63,7 +59,6 @@ if(!sock){
   exit(0);
 }
 
-#Set Version KB for Varnish
 varPath = find_bin(prog_name:"varnishd", sock:sock);
 foreach varFile (varPath)
 {
@@ -73,13 +68,12 @@ foreach varFile (varPath)
   {
     varVer = ereg_replace(pattern:"-", string:varVer[1], replace: ".");
     set_kb_item(name:"Varnish/Ver", value:varVer);
-    log_message(data:"Varnish version " + varVer + " running at location " 
+    log_message(data:"Varnish version " + varVer + " running at location "
                      + varFile + " was detected on the host");
-      
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe(value:varVer, exp:"^([0-9.]+)", base:"cpe:/a:varnish.projects.linpro:varnish:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
   }
 }

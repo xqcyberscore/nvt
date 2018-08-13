@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_scalance_snmp_detect.nasl 8948 2018-02-26 10:31:59Z ckuersteiner $
+# $Id: gb_simatic_scalance_snmp_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # Siemens SIMATIC SCALANCE Device Detection (SNMP)
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140748");
- script_version ("$Revision: 8948 $");
- script_tag(name: "last_modification", value: "$Date: 2018-02-26 11:31:59 +0100 (Mon, 26 Feb 2018) $");
- script_tag(name: "creation_date", value: "2018-02-05 15:43:30 +0700 (Mon, 05 Feb 2018)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10890 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2018-02-05 15:43:30 +0700 (Mon, 05 Feb 2018)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Siemens SIMATIC SCALANCE Device Detection (SNMP)");
 
- script_tag(name: "summary" , value: "This script performs SNMP based detection of Siemens SIMATIC SCALANCE
+ script_tag(name:"summary", value:"This script performs SNMP based detection of Siemens SIMATIC SCALANCE
 devices.");
 
  script_category(ACT_GATHER_INFO);
@@ -49,7 +49,7 @@ devices.");
  script_require_udp_ports("Services/udp/snmp", 161);
  script_mandatory_keys("SNMP/sysdesc/available");
 
- script_xref(name: "URL", value: "http://w3.siemens.com/mcms/industrial-communication/en/scalance/Pages/default.aspx");
+ script_xref(name:"URL", value:"http://w3.siemens.com/mcms/industrial-communication/en/scalance/Pages/default.aspx");
 
  exit(0);
 }
@@ -143,7 +143,7 @@ if (egrep(string: sysdesc, pattern: "Siemens, SIMATIC NET, SCALANCE")) {
                                            install: port + '/udp', cpe: app_cpe, concluded: sysdesc,
                                            extra: extra),
               port: port, proto: 'udp');
-  exit(0);  
+  exit(0);
 }
 
 exit(0);

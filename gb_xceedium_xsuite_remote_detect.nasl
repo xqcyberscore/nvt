@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xceedium_xsuite_remote_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_xceedium_xsuite_remote_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Xceedium Xsuite Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807087");
-  script_version("$Revision: 8078 $");
+  script_version("$Revision: 10922 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-03-03 18:23:52 +0530 (Thu, 03 Mar 2016)");
   script_name("Xceedium Xsuite Remote Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -56,7 +56,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Get HTTP Port
 port = get_http_port( default:80 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
@@ -66,17 +65,14 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   rcvRes = http_get_cache( item:dir + "/", port:port );
 
-  ## Confirm the application
   if( '<title>Xceedium Xsuite' >< rcvRes && 'User:' >< rcvRes &&
       'Password:' >< rcvRes ) {
 
     version = "unknown";
 
-    ## Set the KB value
     set_kb_item( name:"www/" + port + "/Xceedium Xsuite", value:version );
     set_kb_item( name:"Xceedium/Xsuite/Installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = "cpe:/a:xceedium:xsuite";
 
     register_product( cpe:cpe, location:install, port:port );

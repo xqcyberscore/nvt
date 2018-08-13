@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_outreach_project_tool_detect.nasl 7270 2017-09-26 09:49:58Z cfischer $
+# $Id: gb_outreach_project_tool_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Outreach Project Tool Version Detection (OPT)
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801069");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7270 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 10902 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-12-08 05:49:24 +0100 (Tue, 08 Dec 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Outreach Project Tool Version Detection (OPT)");
@@ -83,12 +83,10 @@ foreach dir( make_list_unique( "/", "/OPT127MAX/opt", "/opt", cgi_dirs( port:por
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/OPT", value:tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:lanifex:outreach_project_tool:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:lanifex:outreach_project_tool';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data: build_detection_report( app:"Outreach Project Tool",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_vs_team_foundation_server_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
+# $Id: gb_ms_vs_team_foundation_server_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Microsoft Visual Studio Team Foundation Server Detection
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802961");
-  script_version("$Revision: 9584 $");
+  script_version("$Revision: 10908 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-09-12 11:27:31 +0530 (Wed, 12 Sep 2012)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Visual Studio Team Foundation Server Detection");
 
-  script_tag(name : "summary" , value : "Detection of installed version of Microsoft Visual Studio
+  script_tag(name:"summary", value:"Detects the installed version of Microsoft Visual Studio
   Team Foundation Server.
 
   The script logs in via smb, searches for Microsoft Visual Studio Team
@@ -58,16 +58,8 @@ include("smb_nt.inc");
 include("host_details.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-cpe = "";
-key = "";
-tfVer = "";
-tfName = "";
-insPath = "";
-
 mstfkey = "SOFTWARE\Microsoft\TeamFoundationServer\";
 
-## Confirm application is installed
 if(!registry_key_exists(key:mstfkey)){
   exit(0);
 }
@@ -79,23 +71,19 @@ if(!registry_key_exists(key:key)){
 
 foreach item (registry_enum_keys(key:key))
 {
-  ## Checking for DisplayName
   tfName = registry_get_sz(key:key + item, item:"DisplayName");
 
   if("Microsoft Team Foundation Server" >< tfName )
   {
     tfNum = eregmatch(pattern:"([0-9.]+)", string:tfName);
 
-    ## Get the version
     tfVer = registry_get_sz(key:key + item, item:"DisplayVersion");
 
     if(tfVer)
     {
-      ## Get the installation path
       insPath = registry_get_sz(key:key + item, item:"InstallLocation");
       if(!insPath)
       {
-        ## Get Installed path for Microsoft Team Foundation Server 2013
         if (tfVer =~ "^12\.0"){
           insPath = registry_get_sz(key:mstfkey+ "12.0", item:"InstallPath");
         }
@@ -105,11 +93,9 @@ foreach item (registry_enum_keys(key:key))
         }
       }
 
-      ## Set the KB item
       set_kb_item(name:"MS/VS/Team/Foundation/Server/Ver", value:tfVer);
       set_kb_item(name:"MS/VS/Team/Foundation/Server/Path", value:insPath);
 
-      ## build cpe and store it as host_detail
       if(tfNum[0])
       {
         cpe = build_cpe(value:tfVer, exp:"^([0-9.]+)",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avast_av_mult_vuln_oct09_win.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_avast_av_mult_vuln_oct09_win.nasl 10921 2018-08-10 18:42:30Z cfischer $
 #
 # avast! Multiple Vulnerabilities - Oct09 (Windows)
 #
@@ -24,12 +24,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the local attackers to cause a Denial of
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.801111");
+  script_version("$Revision: 10921 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 20:42:30 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2009-10-08 08:22:29 +0200 (Thu, 08 Oct 2009)");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2009-3522", "CVE-2009-3523", "CVE-2009-3524");
+  script_bugtraq_id(36507);
+  script_name("avast! Multiple Vulnerabilities - Oct09 (Windows)");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/36858/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/506681");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2761");
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
+  script_family("Buffer overflow");
+  script_dependencies("gb_avast_av_detect_win.nasl");
+  script_mandatory_keys("Avast!/AV/Win/Ver");
+  script_tag(name:"impact", value:"Successful exploitation will let the local attackers to cause a Denial of
   Service or gain escalated privileges on the victim's system.
 
-  Impact Level: System/Application";
-tag_affected = "avast! Home and Professional version prior to 4.8.1356 on Windows";
-tag_insight = "- A boundary error exists in the 'aswMon2' kernel driver when processing
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"avast! Home and Professional version prior to 4.8.1356 on Windows");
+  script_tag(name:"insight", value:"- A boundary error exists in the 'aswMon2' kernel driver when processing
     IOCTLs. This can be exploited to cause a stack-based buffer overflow
     via a specially crafted 0xB2C80018 IOCTL.
 
@@ -37,37 +57,11 @@ tag_insight = "- A boundary error exists in the 'aswMon2' kernel driver when pro
     corrupt memory via a specially crafted 0xB2D6000C or 0xB2D60034 IOCTL.
 
   - An unspecified error exists in the ashWsFtr.dll library which can be
-    exploited to cause unknown impact.";
-tag_solution = "Upgrade to avast! version 4.8.1356 or later
-  http://www.avast.com/eng/download.html";
-tag_summary = "This host is installed with avast! AntiVirus and is prone to multiple
-  vulnerabilities.";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.801111");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2009-10-08 08:22:29 +0200 (Thu, 08 Oct 2009)");
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_cve_id("CVE-2009-3522", "CVE-2009-3523", "CVE-2009-3524");
-  script_bugtraq_id(36507);
-  script_name("avast! Multiple Vulnerabilities - Oct09 (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/36858/");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/506681");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/2761");
-
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_family("Buffer overflow");
-  script_dependencies("gb_avast_av_detect_win.nasl");
-  script_require_keys("Avast!/AV/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+    exploited to cause unknown impact.");
+  script_tag(name:"solution", value:"Upgrade to avast! version 4.8.1356 or later
+  http://www.avast.com/eng/download.html");
+  script_tag(name:"summary", value:"This host is installed with avast! AntiVirus and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -81,7 +75,6 @@ if(isnull(avastVer)){
   exit(0);
 }
 
-# Check for avast! versions prior to 4.8.1356
 if(version_is_less(version:avastVer, test_version:"4.8.1356")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

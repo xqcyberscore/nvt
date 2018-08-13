@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cms_made_simple_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: cms_made_simple_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # CMS Made Simple Detection
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100497");
-  script_version("$Revision: 9633 $");
+  script_version("$Revision: 10901 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-02-17 20:53:20 +0100 (Wed, 17 Feb 2010)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("CMS Made Simple Detection");
 
-  script_tag(name: "summary" , value: "Detection of CMS Made Simple
+  script_tag(name:"summary", value:"Detection of CMS Made Simple
 
 This script sends HTTP GET request and try to get the version from the response, and sets the result in KB.");
 
@@ -46,7 +46,7 @@ This script sends HTTP GET request and try to get the version from the response,
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name : "URL" , value : "http://www.cmsmadesimple.org/");
+  script_xref(name:"URL", value:"http://www.cmsmadesimple.org/");
 
   exit(0);
 }

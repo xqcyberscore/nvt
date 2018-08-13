@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ccproxy_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: gb_ccproxy_detect.nasl 10884 2018-08-10 11:02:52Z cfischer $
 #
 # CCProxy Version Detection
 #
@@ -24,26 +24,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script detects the version of CCProxy and sets the
-  version in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800538");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10884 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 13:02:52 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-03-16 10:38:04 +0100 (Mon, 16 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("CCProxy Version Detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_family("General");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_family("Product detection");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script detects the version of CCProxy and sets the
+  version in KB.");
   exit(0);
 }
 
@@ -53,8 +51,6 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800538";
 SCRIPT_DESC = "CCProxy Version Detection";
 
 if(!get_kb_item("SMB/WindowsVersion")){
@@ -76,13 +72,12 @@ foreach item (registry_enum_keys(key:key))
     if(ccproxyVer[1] != NULL)
     {
       set_kb_item(name:"CCProxy/Ver", value:ccproxyVer[1]);
-      log_message(data:"CCProxy version " + ccproxyVer[1] + " was detected" + 
+      log_message(data:"CCProxy version " + ccproxyVer[1] + " was detected" +
                          " on the host");
-    
-      ## build cpe and store it as host_detail
+
       cpe = build_cpe(value:ccproxyVer[1], exp:"^([0-9.]+)", base:"cpe:/a:youngzsoft:ccproxy:");
       if(!isnull(cpe))
-         register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+         register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
     }
     exit(0);

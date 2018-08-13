@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mailman_detect.nasl 8622 2018-02-01 12:11:05Z cfischer $
+# $Id: mailman_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Mailman Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.16338");
-  script_version("$Revision: 8622 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-01 13:11:05 +0100 (Thu, 01 Feb 2018) $");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -43,7 +43,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.list.org/");
 
   script_tag(name:"summary", value:"This script detects whether the remote host is running Mailman and
-  extracts version numbers and locations of any instances found. 
+  extracts version numbers and locations of any instances found.
 
   Mailman is a Python-based mailing list management package from the GNU Project.");
 

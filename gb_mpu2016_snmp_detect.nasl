@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mpu2016_snmp_detect.nasl 8146 2017-12-15 13:40:59Z cfischer $
+# $Id: gb_mpu2016_snmp_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Emerson Network Power Avocent MergePoint Unity 2016 KVM Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108088");
-  script_version("$Revision: 8146 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10922 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-01-27 18:43:12 +0100 (Mon, 27 Jan 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,7 +41,7 @@ if(description)
   script_require_udp_ports("Services/udp/snmp", 161);
   script_mandatory_keys("SNMP/sysdesc/available");
 
-  script_tag(name:"summary", value :"The script attempts to extract the version number from a previous gathered
+  script_tag(name:"summary", value:"The script attempts to extract the version number from a previous gathered
   system description from SNMP.");
 
   script_tag(name:"qod_type", value:"remote_banner");

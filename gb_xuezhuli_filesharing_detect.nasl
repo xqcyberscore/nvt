@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xuezhuli_filesharing_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_xuezhuli_filesharing_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # XuezhuLi FileSharing Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808175");
-  script_version("$Revision: 8078 $");
+  script_version("$Revision: 10913 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-06-27 14:54:44 +0530 (Mon, 27 Jun 2016)");
   script_name("XuezhuLi FileSharing Detection");
   script_tag(name:"summary", value:"Detection of installed version
@@ -53,32 +53,24 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-dir = "";
-file_Port = 0;
-rcvRes = "";
-
 file_Port = get_http_port(default:80);
 if(!can_host_php(port:file_Port)) exit(0);
 
-foreach dir(make_list_unique("/", "/FileSharing-master", "/FileSharing",  cgi_dirs(port:file_Port))) 
+foreach dir(make_list_unique("/", "/FileSharing-master", "/FileSharing",  cgi_dirs(port:file_Port)))
 {
   install = dir;
   if(dir == "/") dir = "";
 
   rcvRes = http_get_cache(item: dir + "/index.php", port:file_Port);
 
-  ##Confirm application
   if('<title>File Manager</title>' >< rcvRes && 'Username' >< rcvRes
-      && '>login<' >< rcvRes && '>signup<' >< rcvRes) 
+      && '>login<' >< rcvRes && '>signup<' >< rcvRes)
   {
     version = "unknown";
 
-    ## Set the KB value
     set_kb_item(name:"www/" + file_Port + install, value:version);
     set_kb_item(name:"XuezhuLi/FileSharing/Installed", value:TRUE);
 
-    ## build cpe and store it as host_detail
     ## created new cpe
     cpe = "cpe:/a:xuezhuLi:xuezhuli_filesharing";
 

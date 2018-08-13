@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tembria_server_monitor_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: secpod_tembria_server_monitor_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Tembria Server Monitor Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901107");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_version("$Revision: 10908 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-04-23 17:57:39 +0200 (Fri, 23 Apr 2010)");
   script_name("Tembria Server Monitor Version Detection");
   script_tag(name:"cvss_base", value:"0.0");
@@ -57,7 +57,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get Tembria Server Monitor Port
 port = get_http_port( default:8080 );
 
 if( ! can_host_asp( port:port ) ) exit( 0 );
@@ -69,12 +68,10 @@ foreach dir( make_list_unique( "/", "/tembria", cgi_dirs( port:port ) ) ) {
 
   rcvRes = http_get_cache( item: dir + "/index.asp", port:port );
 
-  ## Confirm the application
   if( rcvRes =~ "HTTP/1.. 200" && '>Tembria Server Monitor<' >< rcvRes ) {
 
     version = "unknown";
 
-    ## Get Tembria Server Monitor Version
     ver = eregmatch( pattern:"<version>v([0-9\.]+)</version>", string:rcvRes );
     if( ver[1] ) {
       bver = eregmatch( pattern:"<buildno>([0-9.]+)</buildno>", string:rcvRes );
@@ -85,16 +82,13 @@ foreach dir( make_list_unique( "/", "/tembria", cgi_dirs( port:port ) ) ) {
       }
     }
 
-    ## Set Tembria Server Monitor Version in KB
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/tembria", value:tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:tembria:server_monitor:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:tembria:server_monitor';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"Tembria Server Monitor",

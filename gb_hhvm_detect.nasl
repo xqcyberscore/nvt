@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hhvm_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_hhvm_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # HHVM Detection
 #
@@ -31,14 +31,14 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 7000 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+ script_version("$Revision: 10929 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
  script_tag(name:"creation_date", value:"2014-12-09 14:29:24 +0100 (Tue, 09 Dec 2014)");
  script_name("HHVM Detection");
 
- script_xref(name: "URL" , value: "http://hhvm.com/");
+ script_xref(name:"URL", value:"http://hhvm.com/");
 
- script_tag(name: "summary" , value: "The script sends a connection
+ script_tag(name:"summary", value:"The script sends a connection
 request to the server and attempts to extract the version number
 from the reply.");
 
@@ -54,8 +54,8 @@ from the reply.");
 
 
 include("http_func.inc");
-include("http_keepalive.inc");
-include("global_settings.inc");
+
+
 include("cpe.inc");
 include("host_details.inc");
 

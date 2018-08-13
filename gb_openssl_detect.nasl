@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
+# $Id: gb_openssl_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # OpenSSL Remote Version Detection
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806723");
-  script_version("$Revision: 8143 $");
+  script_version("$Revision: 10905 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-11-24 16:05:56 +0530 (Tue, 24 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL Remote Version Detection");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   OpenSSL.
 
   This script sends HTTP GET request and try to get the version from the
@@ -57,7 +57,7 @@ if(description)
 include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
+
 
 if( ! ports = get_kb_list( "Services/www" ) ) exit( 0 );
 
@@ -73,7 +73,6 @@ function version_already_detected( v, k )
 
 ad = make_list();
 
-##Get OpenSSL Port
 foreach sslPort ( ports )
 {
   if( ! get_port_state( sslPort ) ) continue;
@@ -85,7 +84,6 @@ foreach sslPort ( ports )
   ##Send Request and Receive Response
   banner = get_http_banner(port:sslPort);
 
-  #Confirm application
   if(banner && "OpenSSL/" >< banner)
   {
     ##Getting version from the respone
@@ -96,11 +94,9 @@ foreach sslPort ( ports )
       sslVer = version[1];
     }
 
-    ## Set the KB
     set_kb_item(name:"www/" + sslPort + "/", value:sslVer);
     set_kb_item(name:"OpenSSL/installed",value:TRUE);
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:sslVer, exp:"^([0-9a-z.-]+)", base:"cpe:/a:openssl:openssl:");
     if(isnull(cpe))
       cpe = "cpe:/a:openssl:openssl";

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siemens_scalance_default_web_credential.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_siemens_scalance_default_web_credential.nasl 10910 2018-08-10 15:10:09Z mmartin $
 #
-# Siemens Scalance Default Credentials 
+# Siemens Scalance Default Credentials
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -24,27 +24,16 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-tag_summary = "The remote Siemens Scalance is prone to a default account authentication bypass
-vulnerability. This issue may be exploited by a remote attacker to
-gain access to sensitive information or modify system configuration.
-
-It was possible to login as user 'admin' with password 'admin'.";
-
-
-tag_solution = "Change the password.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103723";
 CPE = 'cpe:/h:siemens:scalance';
 
 if (description)
 {
- 
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 6093 $");
+
+ script_oid("1.3.6.1.4.1.25623.1.0.103723");
+ script_version("$Revision: 10910 $");
  script_tag(name:"cvss_base", value:"9.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:10:09 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2013-05-30 16:44:04 +0200 (Thu, 30 May 2013)");
  script_name("Siemens Scalance Default Credentials");
 
@@ -55,16 +44,21 @@ if (description)
  script_dependencies("gb_siemens_scalance_web_detect.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("siemens_scalance/installed");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name:"solution", value:"Change the password.");
+ script_tag(name:"solution_type", value:"Mitigation");
+ script_tag(name:"summary", value:"The remote Siemens Scalance is prone to a default account authentication bypass
+vulnerability. This issue may be exploited by a remote attacker to
+gain access to sensitive information or modify system configuration.
+
+It was possible to login as user 'admin' with password 'admin'.");
  exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
+if(!port = get_app_port(cpe:CPE))exit(0);
 
 url = "/";
 req = http_get(item:url, port:port);
@@ -102,11 +96,11 @@ req = string("POST / HTTP/1.1\r\n",
              "Content-Length: ",len,"\r\n",
              "\r\n",
              login);
- 
+
 result = http_send_recv(port:port, data:req, bodyonly:FALSE);
 
 if("<title>Login Successful" >< result) {
- 
+
   security_message(port:port);
   exit(0);
 

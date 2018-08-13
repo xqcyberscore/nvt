@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_rockmongo_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: sw_rockmongo_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Rockmongo Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111029");
-  script_version("$Revision: 7076 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-08-21 18:00:00 +0200 (Fri, 21 Aug 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : "The script sends a HTTP
+  script_tag(name:"summary", value:"The script sends a HTTP
   request to the server and attempts to extract the version from
   the reply.");
 
@@ -59,7 +59,6 @@ port = get_http_port( default:80 );
 
 if( !can_host_php( port:port ) ) exit( 0 );
 
-## Iterate over the possible directories
 foreach dir (make_list_unique("/", "/rockmongo", "/rock-mongo", "/mongo", cgi_dirs(port:port)))
 {
 
@@ -70,7 +69,6 @@ foreach dir (make_list_unique("/", "/rockmongo", "/rock-mongo", "/mongo", cgi_di
   req = http_get(item: dir + "/index.php?action=login.index&host=0", port:port);
   res = http_keepalive_send_recv(port:port, data:req);
 
-  ## confirm the application
   if(res && (egrep(pattern:"Powered by.*RockMongo", string:res)))
   {
 

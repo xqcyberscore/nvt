@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synergy_detect_lin.nasl 8528 2018-01-25 07:57:36Z teissa $
+# $Id: gb_synergy_detect_lin.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Synergy Version Detection (Linux)
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script finds the installed Synergy version and saves the
-  version in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801874");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8528 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
+ script_version("$Revision: 10894 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Synergy Version Detection (Linux)");
@@ -44,7 +41,8 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script finds the installed Synergy version and saves the
+  version in KB.");
   exit(0);
 }
 
@@ -56,17 +54,14 @@ if(!sock){
   exit(0);
 }
 
-## get the possible paths
 paths = find_bin(prog_name:"synergys", sock:sock);
 foreach bin (paths)
 {
-  ## check for each path
   synVer = get_bin_version(full_prog_name:chomp(bin), sock:sock, version_argv:"--version",
                            ver_pattern:"synergys ([0-9.]+)");
 
   if(synVer[1] != NULL)
   {
-    ## Set the KB value
     set_kb_item(name:"Synergy/Lin/Ver", value:synVer[1]);
     log_message(data:"Synergy version " + synVer[1] + " was detected on the host");
   }

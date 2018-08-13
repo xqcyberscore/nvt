@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cubecart_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: secpod_cubecart_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # Detection of cubecart Version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900614");
-  script_version("$Revision: 7076 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 10898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-07 09:44:25 +0200 (Tue, 07 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -79,7 +79,6 @@ foreach dir( make_list_unique( "/", "/cart", "/store", "/shop", "/cubecart", cgi
     set_kb_item( name:"www/" + port + "/cubecart", value:tmp_version );
     set_kb_item( name:"cubecart/installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:cubecart:cubecart:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:cubecart:cubecart';

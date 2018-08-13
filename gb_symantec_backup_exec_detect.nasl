@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_backup_exec_detect.nasl 8199 2017-12-20 13:37:22Z cfischer $
+# $Id: gb_symantec_backup_exec_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Symantec Backup Exec Version Detection
 #
@@ -30,25 +30,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802105");
-  script_version("$Revision: 8199 $");
+  script_version("$Revision: 10915 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:37:22 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-06-17 11:16:31 +0200 (Fri, 17 Jun 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Symantec Backup Exec Version Detection");
 
-  tag_summary = "Detection of installed version of Symantec Backup Exec on Windows.
+  script_tag(name:"summary", value:"Detects the installed version of Symantec Backup Exec on Windows.
 
 The script logs in via smb, searches for Symantec Backup Exec and gets the
-version from 'Version' string in registry.";
-
-  script_tag(name : "summary" , value : tag_summary);
+version from 'Version' string in registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -59,12 +57,6 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-appName = "";
-ilsPath = "";
-symVer = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
@@ -84,10 +76,8 @@ foreach item (registry_enum_keys(key:key))
     ilsPath = "Couldn find the install location from registry";
   }
 
-  ## Check for Symantec Backup Exec for Windows Servers DisplayName
   if((eregmatch(pattern:"^Symantec Backup Exec(.*) Windows Servers$", string:appName)))
   {
-    ## Get the Symantec Backup Exec version
     symVer = registry_get_sz(key:key + item, item:"DisplayVersion");
     if(symVer != NULL)
     {
@@ -105,7 +95,6 @@ foreach item (registry_enum_keys(key:key))
 
   else if("Symantec Backup Exec" >< appName)
   {
-    ## Get the Symantec Backup Exec version
     symVer = registry_get_sz(key:key + item, item:"DisplayVersion");
 
     if(symVer != NULL)

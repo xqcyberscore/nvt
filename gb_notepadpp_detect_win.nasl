@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_notepadpp_detect_win.nasl 10110 2018-06-07 09:04:19Z cfischer $
+# $Id: gb_notepadpp_detect_win.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Notepad++ Version Detection (Windows)
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805317");
-  script_version("$Revision: 10110 $");
+  script_version("$Revision: 10922 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 11:04:19 +0200 (Thu, 07 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-01-09 13:19:25 +0530 (Fri, 09 Jan 2015)");
   script_name("Notepad++ Version Detection (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
 
-  script_tag(name:"summary", value:"Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Notepad++ on Windows.
 
   This script logs in via smb, searches for 'Notepad++' in the registry and

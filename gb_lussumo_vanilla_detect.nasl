@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lussumo_vanilla_detect.nasl 8138 2017-12-15 11:42:07Z cfischer $
+# $Id: gb_lussumo_vanilla_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # Vanilla Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800622");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8138 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10890 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-06-04 10:49:28 +0200 (Thu, 04 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Vanilla Version Detection");
@@ -76,12 +76,10 @@ foreach dir( make_list_unique( "/", "/Vanilla117", "/Vanilla118", "/Vanilla113rc
     set_kb_item( name:"www/" + port + "/Lussumo/Vanilla", value:tmp_version );
     set_kb_item( name:"Lussumo/Vanilla/installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+\.[0-9])\.?([a-z0-9]+)?", base:"cpe:/a:lussumo:vanilla:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:lussumo:vanilla';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"Vanilla",

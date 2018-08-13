@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_security_essentials_mal_prot_eng_rce_vuln_apr18.nasl 9387 2018-04-06 12:53:16Z santu $
+# $Id: gb_ms_security_essentials_mal_prot_eng_rce_vuln_apr18.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Malware Protection Engine on Security Essentials RCE Vulnerability - Apr 2018
 #
@@ -27,24 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813117");
-  script_version("$Revision: 9387 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-0986");
   script_bugtraq_id(103593);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:53:16 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-04 18:34:03 +0530 (Wed, 04 Apr 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Malware Protection Engine on Security Essentials RCE Vulnerability - Apr 2018");
 
-  script_tag(name: "summary" , value:"This host is missing a critical security
+  script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Security Updates released for Microsoft Malware
   Protection Engine dated 03-04-2018");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"The flaw exists when the Microsoft Malware
+  script_tag(name:"insight", value:"The flaw exists when the Microsoft Malware
   Protection Engine does not properly scan a specially crafted file, leading to
   memory corruption.");
 
@@ -63,11 +63,12 @@ if(description)
   of updates will apply the update itself.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-0986");
+  script_xref(name:"URL", value:"https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-0986");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -77,13 +78,11 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Windows Essential Key exists
 key = "SOFTWARE\Microsoft\Microsoft Antimalware";
 if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-## Get Security Essentials engine version
 def_version = registry_get_sz(key:"SOFTWARE\Microsoft\Microsoft Antimalware\Signature Updates",
                               item:"EngineVersion");
 if(!def_version){

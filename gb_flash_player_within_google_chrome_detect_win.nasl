@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_within_google_chrome_detect_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_flash_player_within_google_chrome_detect_win.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Adobe Flash Player Within Google Chrome Detection (Windows)
 #
@@ -27,27 +27,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810612");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 10902 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-03-13 12:06:29 +0530 (Mon, 13 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Flash Player Within Google Chrome Detection (Windows)");
 
-  script_tag(name : "summary" , value : "Detection of installed version of Adobe
+  script_tag(name:"summary", value:"Detects the installed version of Adobe
   Flash within google chrome.
 
   The script logs in via smb, searches for file 'pepflashplayer.dll' and gets
   version from the file.");
 
   script_category(ACT_GATHER_INFO);
-  script_xref(name: "URL" , value: "https://helpx.adobe.com/flash-player/kb/flash-player-google-chrome.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/flash-player/kb/flash-player-google-chrome.html");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_mandatory_keys("GoogleChrome/Win/Ver");
-  script_require_ports(139, 445);
+
   exit(0);
 }
 

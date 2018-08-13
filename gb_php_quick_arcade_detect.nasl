@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_quick_arcade_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_php_quick_arcade_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # PHP Quick Arcade (PHPQA) Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801363");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6032 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-06-21 15:32:44 +0200 (Mon, 21 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("PHP Quick Arcade (PHPQA) Version Detection");
@@ -65,25 +65,20 @@ foreach dir( make_list_unique( "/", "/phpqa", "/phpqa/phpqa", cgi_dirs( port:por
 
   rcvRes = http_get_cache( item: dir + "/index.php", port:port );
 
-  ## Confirm the application
   if( ">PHP-Quick-Arcade<" >< rcvRes ) {
 
     version = "unknown";
 
-    ## Grep for the version
     ver = eregmatch( pattern:"a> ([0-9.]+)", string:rcvRes );
     if( ver[1] != NULL ) version = ver[1];
 
-    ## Set the KB value
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/PHP-Quick-Arcade", value:tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:jcink:php-quick-arcade:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:jcink:php-quick-arcade';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data: build_detection_report( app:"PHP Quick Arcade",

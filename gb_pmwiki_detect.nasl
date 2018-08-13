@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pmwiki_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_pmwiki_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # PmWiki Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801209");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6032 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("PmWiki Version Detection");
@@ -57,7 +57,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get HTTP Port
 port = get_http_port( default:80 );
 
 if( ! can_host_php( port:port ) ) exit( 0 );
@@ -71,25 +70,20 @@ foreach dir( make_list_unique( "/", "/pmwiki", "/wiki", cgi_dirs( port:port ) ) 
   sndReq = http_get( item: dir + "/pmwiki.php?n=PmWiki.ReleaseNotes", port:port );
   rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
-  ## Confirm the application
   if( "PmWiki / Release Notes </title>" >< rcvRes ) {
 
     version = "unknown";
 
-    ## Get PmWiki Version
     ver = eregmatch( pattern:">Version ([0-9.]+)", string:rcvRes );
     if( ver[1] != NULL ) version = ver[1];
 
-    ## Set the version of PmWiki in KB
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/PmWiki", value: tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:pmwiki:pmwiki:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:pmwiki:pmwiki';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"PmWiki",

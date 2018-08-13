@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_detect.nasl 10769 2018-08-04 12:29:23Z cfischer $
+# $Id: ssh_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # SSH Server type and version
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10267");
-  script_version("$Revision: 10769 $");
+  script_version("$Revision: 10902 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-04 14:29:23 +0200 (Sat, 04 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_name("SSH Server type and version");
   script_category(ACT_GATHER_INFO);
@@ -95,7 +95,6 @@ if( server_banner ) {
 
   # TODO: Move into own detection NVT
   if( "OpenSSH" >< server_banner ) {
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:server_banner, exp:"OpenSSH[_ ]([.a-zA-Z0-9]*)[- ]?.*", base:"cpe:/a:openbsd:openssh:");
     set_kb_item( name:"openssh/detected", value:TRUE );
     if( isnull( cpe ) )

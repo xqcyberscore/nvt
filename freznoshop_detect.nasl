@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: freznoshop_detect.nasl 9791 2018-05-10 09:39:02Z ckuersteiner $
+# $Id: freznoshop_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # FreznoShop Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100142");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9791 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-10 11:39:02 +0200 (Thu, 10 May 2018) $");
+ script_version("$Revision: 10890 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2009-04-16 19:20:22 +0200 (Thu, 16 Apr 2009)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -43,10 +43,10 @@ if (description)
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name: "summary", value: "This host is running FreznoShop, a shopping cart system.");
+ script_tag(name:"summary", value:"This host is running FreznoShop, a shopping cart system.");
 
- script_xref(name: "URL", value: "http://www.freznoshop.de/");
- script_xref(name: "URL", value: "http://sourceforge.net/projects/freznoshop/");
+ script_xref(name:"URL", value:"http://www.freznoshop.de/");
+ script_xref(name:"URL", value:"http://sourceforge.net/projects/freznoshop/");
 
  exit(0);
 }
@@ -66,8 +66,8 @@ foreach dir( make_list_unique( "/shop", cgi_dirs( port:port ) ) ) {
  url = dir + "/index.php";
  buf = http_get_cache( item:url, port:port );
  if( buf == NULL ) continue;
- 
- if(egrep(pattern: "Powered by.*FreznoShop", string: buf, icase: TRUE)) { 
+
+ if(egrep(pattern: "Powered by.*FreznoShop", string: buf, icase: TRUE)) {
     vers = "unknown";
 
     version = eregmatch(string: buf, pattern: "FreznoShop.* v([0-9.]+)",icase:TRUE);
@@ -75,7 +75,7 @@ foreach dir( make_list_unique( "/shop", cgi_dirs( port:port ) ) ) {
         vers = version[1];
 
     set_kb_item(name: "freznoshop/installed", value: TRUE);
-   
+
     cpe = build_cpe(value: vers, exp:"^([0-9.]+)", base:"cpe:/a:freznoshop:freznoshop:");
     if(!cpe)
       cpe = 'cpe:/a:freznoshop:freznoshop';

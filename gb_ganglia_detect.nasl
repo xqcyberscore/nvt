@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ganglia_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_ganglia_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Ganglia Detection
 #
@@ -30,8 +30,8 @@ if(description)
   script_tag(name:"cvss_base", value:"0.0");
   script_oid("1.3.6.1.4.1.25623.1.0.103534");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 10929 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-08-13 12:20:02 +0200 (Mon, 13 Aug 2012)");
   script_name("Ganglia Detection");
   script_category(ACT_GATHER_INFO);
@@ -53,7 +53,7 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 include("cpe.inc");
 include("host_details.inc");
 
@@ -74,7 +74,6 @@ foreach dir( make_list_unique("/", "/ganglia","/gang", "/gweb", cgi_dirs( port:p
 
     vers = "unknown";
 
-    ### try to get version 
     version = eregmatch( string:buf, pattern:"Ganglia Web Frontend version ([0-9.]+)", icase:TRUE );
 
     if( ! isnull( version[1] ) ) {

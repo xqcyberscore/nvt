@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: squirrelmail_detect.nasl 6009 2017-04-21 15:30:58Z ckuerste $
+# $Id: squirrelmail_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 # Description: SquirrelMail Detection
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12647");
-  script_version("$Revision: 6009 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 17:30:58 +0200 (Fri, 21 Apr 2017) $");
+  script_version("$Revision: 10891 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -35,7 +35,7 @@ if(description)
 
   script_name("SquirrelMail Detection");
 
-  script_tag(name: "summary" , value: "Detection of SquirrelMail.
+  script_tag(name:"summary", value:"Detection of SquirrelMail.
 
 The script sends a connection request to the server and attempts to detect SquirrelMail and to extract its
 version.");
@@ -48,8 +48,8 @@ version.");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name : "URL" , value : "http://www.squirrelmail.org/");
-  
+  script_xref(name:"URL", value:"http://www.squirrelmail.org/");
+
   exit(0);
 }
 

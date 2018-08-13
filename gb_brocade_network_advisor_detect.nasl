@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brocade_network_advisor_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: gb_brocade_network_advisor_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Brocade Network Advisor Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106515");
-  script_version("$Revision: 9608 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 10922 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-01-16 10:12:31 +0700 (Mon, 16 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,7 @@ Advisor and to extract its version.");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "http://www.brocade.com/de/products-services/network-management/brocade-network-advisor.html");
+  script_xref(name:"URL", value:"http://www.brocade.com/de/products-services/network-management/brocade-network-advisor.html");
 
   exit(0);
 }

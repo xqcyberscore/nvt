@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_win_media_player_detect_900173.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: secpod_ms_win_media_player_detect_900173.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Authors:
 # Sharath S <sharaths@secpod.com>
@@ -28,16 +28,16 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900173");
-  script_version("$Revision: 9580 $");
+  script_version("$Revision: 10894 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-11-11 15:58:44 +0100 (Tue, 11 Nov 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Windows Media Player Version Detection");
 
 
-  script_tag(name : "summary" , value : "Detection of installed version of Windows Media Player.
+  script_tag(name:"summary", value:"Detects the installed version of Windows Media Player.
 
 The script logs in via smb, searches for Windows Media Player CLSID
 in the registry, gets version and set it in the KB item.");
@@ -45,7 +45,7 @@ in the registry, gets version and set it in the KB item.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 SecPod");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -55,16 +55,6 @@ include("smb_nt.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable initialization
-os_arch = "";
-key_list = "";
-key = "";
-wmpVer = "";
-wmpVer = "";
-insloc = "";
-pathKey = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
@@ -79,7 +69,7 @@ if(isnull(key_list)){
 
 foreach key (key_list)
 {
-  # CLSID matchs with Win Media Player versions 7 or above
+  # CLSID matches with Win Media Player versions 7 or above
   wmpVer = registry_get_sz(key:key + "{6BF52A52-394A-11d3-B153-00C04F79FAA6}",
                          item:"Version");
   if(!wmpVer)
@@ -87,7 +77,7 @@ foreach key (key_list)
     wmpVer = registry_get_sz(key:key + "{22d6f312-b0f6-11d0-94ab-0080c74c7e95}",
                            item:"Version");
   }
-  
+
   if(!wmpVer){
     exit(0);
   }
@@ -95,7 +85,6 @@ foreach key (key_list)
   # For replacing comma (,) with dot (.)
   wmpVer = ereg_replace(string:wmpVer, pattern:",", replace:".");
 
-  ##Try to get Path
   pathKey = "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\wmplayer.exe";
   if(registry_key_exists(key:pathKey))
   {
@@ -106,10 +95,8 @@ foreach key (key_list)
   if(!insloc)
     insloc = "Could not find the install location from registry";
 
-  # Set the KB item for Windows Media Player.
   set_kb_item(name:"Win/MediaPlayer/Ver", value:wmpVer);
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value:wmpVer, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:windows_media_player:");
   if(isnull(cpe))
     cpe = "cpe:/a:microsoft:windows_media_player";
@@ -119,7 +106,6 @@ foreach key (key_list)
   {
     set_kb_item(name:"Win/MediaPlayer64/Ver", value:wmpVer);
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:wmpVer, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:windows_media_player:x64:");
     if(isnull(cpe))
       cpe = "cpe:/a:microsoft:windows_media_player:x64";

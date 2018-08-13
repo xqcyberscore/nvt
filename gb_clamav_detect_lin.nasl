@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_detect_lin.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: gb_clamav_detect_lin.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # CalmAV Version Detection (Linux)
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800553");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9633 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+ script_version("$Revision: 10891 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("ClamAV Version Detection (Linux)");
@@ -41,7 +41,7 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : "This script retrieves ClamAV Version and saves the result
+  script_tag(name:"summary", value:"This script retrieves ClamAV Version and saves the result
   in KB.");
   exit(0);
 }
@@ -71,7 +71,7 @@ foreach binaryFile (getPath)
     log_message(data:"Clam Anti Virus version " + avVer[1] + " running at" +
                        " location " + binaryFile + " was detected on the host");
     ssh_close_connection();
-   
+
     cpe = build_cpe(value:avVer[1], exp:"^([0-9.]+)", base:"cpe:/a:clamav:clamav:");
     if(!isnull(cpe))
        register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);

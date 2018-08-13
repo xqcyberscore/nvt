@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_storage_resource_monitor_detect.nasl 8370 2018-01-11 09:44:52Z cfischer $
+# $Id: gb_solarwinds_storage_resource_monitor_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # SolarWinds Storage Resource Monitor Remote Version Detection
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809426");
-  script_version("$Revision: 8370 $");
+  script_version("$Revision: 10901 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-10-03 15:20:26 +0530 (Mon, 03 Oct 2016)");
   script_name("SolarWinds Storage Resource Monitor Remote Version Detection");
-  script_tag(name : "summary" , value : "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   SolarWinds Storage Resource Monitor.
 
   This script sends HTTP GET request and try to get the version from the
@@ -54,15 +54,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable initialization
-srmport = 0;
-req = "";
-buf = "";
-cookie = "";
-res = "";
-version = "";
-
-##Get HTTP Port
 if(!srmport = get_http_port(default:9000)){
   exit(0);
 }
@@ -79,7 +70,6 @@ req = http_post_req( port:srmport,
 
 buf = http_keepalive_send_recv( port:srmport, data:req, bodyonly:FALSE );
 
-##confirm the application
 if(buf =~ "HTTP/1\.. 200" && "SolarWinds - Storage Manager" ><  buf)
 {
   cookie = eregmatch( pattern:"Set-Cookie: ([0-9a-zA-Z=]+);", string:buf );
@@ -94,7 +84,6 @@ if(buf =~ "HTTP/1\.. 200" && "SolarWinds - Storage Manager" ><  buf)
                "Connection: keep-alive\r\n\r\n");
   res = http_keepalive_send_recv(port:srmport, data:req);
 
-  ## Grep the version from response
   vers = eregmatch(pattern:"Storage Manager  ?v([0-9.]+)", string:res);
   if(vers[1]){
     version = vers[1];

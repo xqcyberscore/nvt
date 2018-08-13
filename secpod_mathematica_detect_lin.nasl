@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mathematica_detect_lin.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: secpod_mathematica_detect_lin.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Mathematica Version Detection (Linux)
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script finds the installed Mathematica version and saves the
-  result in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901118");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 10908 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-06-01 15:40:11 +0200 (Tue, 01 Jun 2010)");
   script_name("Mathematica Version Detection (Linux)");
   script_tag(name:"cvss_base", value:"0.0");
@@ -44,7 +41,8 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script finds the installed Mathematica version and saves the
+  result in KB.");
   exit(0);
 }
 
@@ -54,8 +52,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.901118";
 SCRIPT_DESC = "Mathematica Version Detection (Linux)";
 
 sock = ssh_login_or_reuse_connection();
@@ -63,7 +59,6 @@ if(!sock){
   exit(0);
 }
 
-## Get Mathematica Path
 paths = find_file(file_name:".VersionID", file_path:"/",
                   useregex:TRUE, regexpar:"$", sock:sock);
 
@@ -71,7 +66,6 @@ if(paths != NULL)
 {
   foreach path (paths)
   {
-    ## Check path is having "Mathematica" in it
     if("Mathematica" >< path)
     {
       ## Read Mathematica Version From .VersionID File
@@ -80,16 +74,14 @@ if(paths != NULL)
                              ver_pattern:"([0-9.]+)", sock:sock);
       if(mVer[1] != NULL)
       {
-        ## Set Mathematica Version in KB
         set_kb_item(name:"Mathematica/Ver", value:mVer[1]);
         log_message(data:"Mathematica version " + mVer[1] +
                            " running at location " + path +
                            " was detected on the host");
-      
-        ## build cpe and store it as host_detail
+
         cpe = build_cpe(value:mVer[1], exp:"^([0-9.]+)", base:"cpe:/a:wolfram_research:mathematica:");
         if(!isnull(cpe))
-           register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+           register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
       }
     }

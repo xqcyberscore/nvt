@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pegasus_mail_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: gb_pegasus_mail_detect.nasl 10880 2018-08-10 09:27:43Z cfischer $
 #
 # Pegasus Mail Version Detection
 #
@@ -28,19 +28,19 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800969");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9633 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+ script_version("$Revision: 10880 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 11:27:43 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-11-05 12:25:48 +0100 (Thu, 05 Nov 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Pegasus Mail Version Detection");
-  script_family("Service detection");
+  script_family("Product detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : "This script retrieves the installed version of Pegasus Mail and
+  script_tag(name:"summary", value:"This script retrieves the installed version of Pegasus Mail and
   saves the result in KB.");
   exit(0);
 }

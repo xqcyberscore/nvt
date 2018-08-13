@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_koha_mult_vulns_02_14.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_koha_mult_vulns_02_14.nasl 10904 2018-08-10 14:24:40Z mmartin $
 #
 # Koha Multiple Vulnerabilities
 #
@@ -25,38 +25,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "Bug 11660: tools/pdfViewer.pl could be used to read arbitrary files on the server
-
-Bug 11661: the staff interface help editor could be used to modify or create arbitrary
-files on the server with the privileges of the Apache user
-
-Bug 11662: member-picupload.pl could be used to write to arbitrary files on the server with
-the privileges of the Apache user
-
-Bug 11666: the MARC framework import/export function did not require authentication, and could
-be used to perform unexpected SQL commands";
-
-tag_affected = "Koha
-< 3.14.3
-< 3.12.10
-< 3.10.13
-< 3.8.23";
-
-tag_summary = "Koha is prone to multiple vulnerabilities.";
-tag_solution = "Updates are available.";
-
-tag_vuldetect = "Try to read a local file via tools/pdfViewer.pl.";
-
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103904");
- script_cve_id("CVE-2014-1922","CVE-2014-1923","CVE-2014-1924","CVE-2014-1925");
+ script_cve_id("CVE-2014-1922", "CVE-2014-1923", "CVE-2014-1924", "CVE-2014-1925");
  script_tag(name:"cvss_base", value:"6.4");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 7577 $");
+ script_version("$Revision: 10904 $");
  script_name("Koha Multiple Vulnerabilities");
  script_xref(name:"URL", value:"http://koha-community.org/security-release-february-2014/");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2014-02-10 15:39:58 +0100 (Mon, 10 Feb 2014)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -66,11 +44,25 @@ if (description)
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+ script_tag(name:"vuldetect", value:"Try to read a local file via tools/pdfViewer.pl.");
+ script_tag(name:"insight", value:"Bug 11660: tools/pdfViewer.pl could be used to read arbitrary files on the server
+
+Bug 11661: the staff interface help editor could be used to modify or create arbitrary
+files on the server with the privileges of the Apache user
+
+Bug 11662: member-picupload.pl could be used to write to arbitrary files on the server with
+the privileges of the Apache user
+
+Bug 11666: the MARC framework import/export function did not require authentication, and could
+be used to perform unexpected SQL commands");
+ script_tag(name:"solution", value:"Updates are available.");
+ script_tag(name:"solution_type", value:"VendorFix");
+ script_tag(name:"summary", value:"Koha is prone to multiple vulnerabilities.");
+ script_tag(name:"affected", value:"Koha
+< 3.14.3
+< 3.12.10
+< 3.10.13
+< 3.8.23");
 
  exit(0);
 }

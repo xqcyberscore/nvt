@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dnp3_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
+# $Id: gb_dnp3_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Distributed Network Protocol (DNP3) Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140597");
- script_version ("$Revision: 9996 $");
- script_tag(name: "last_modification", value: "$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
- script_tag(name: "creation_date", value: "2017-12-13 16:47:57 +0700 (Wed, 13 Dec 2017)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10922 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2017-12-13 16:47:57 +0700 (Wed, 13 Dec 2017)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Distributed Network Protocol (DNP3) Detection");
 
- script_tag(name: "summary" , value: "A Distributed Network Protocol (DNP3) Service is running at this host.
+ script_tag(name:"summary", value:"A Distributed Network Protocol (DNP3) Service is running at this host.
 
 DNP3 (Distributed Network Protocol) is a set of communications protocols used between components in process
 automation systems. DNP3 has become widely utilized in adjacent industries such as water/waste water,
@@ -53,7 +53,7 @@ The protocol is used by several devices of different SCADA vendors.");
  script_dependencies("find_service.nasl");
  script_require_ports("Services/unknown", 20000);
 
- script_xref(name: "URL", value: "https://www.dnp.org");
+ script_xref(name:"URL", value:"https://www.dnp.org");
 
  exit(0);
 }

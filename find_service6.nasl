@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service6.nasl 10769 2018-08-04 12:29:23Z cfischer $
+# $Id: find_service6.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # Service Detection with 'BINARY' Request
 #
@@ -28,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108204");
-  script_version("$Revision: 10769 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-04 14:29:23 +0200 (Sat, 04 Aug 2018) $");
+  script_version("$Revision: 10896 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-08-04 09:08:04 +0200 (Fri, 04 Aug 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Service Detection with 'BINARY' Request");
-  script_category(ACT_GATHER_INFO); 
+  script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2017 Greenbone Networks GmbH");
   script_family("Service detection");
   script_dependencies("find_service5.nasl");
@@ -42,7 +42,7 @@ if(description)
 
   script_tag(name:"summary", value:"This plugin performs service detection.
 
-  This plugin is a complement of find_service.nasl. It sends a 'BINARY' 
+  This plugin is a complement of find_service.nasl. It sends a 'BINARY'
   request to the remaining unknown services and tries to identify them.");
 
   script_tag(name:"qod_type", value:"remote_banner");

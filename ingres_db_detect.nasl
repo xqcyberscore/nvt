@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ingres_db_detect.nasl 10147 2018-06-11 03:00:29Z ckuersteiner $
+# $Id: ingres_db_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # Ingres Database Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100479");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 10147 $");
- script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:00:29 +0200 (Mon, 11 Jun 2018) $");
+ script_version("$Revision: 10906 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2010-01-29 17:41:41 +0100 (Fri, 29 Jan 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Ingres Database Detection");
@@ -42,10 +42,10 @@ if (description)
  script_dependencies("find_service.nasl");
  script_require_ports("Services/unknown", 21071);
 
- script_tag(name: "summary", value: "This host is running Ingres Database. Ingres Database is an open source
+ script_tag(name:"summary", value:"This host is running Ingres Database. Ingres Database is an open source
 database management system.");
 
- script_xref(name: "URL", value: "http://www.ingres.com/products/ingres-database.php");
+ script_xref(name:"URL", value:"http://www.ingres.com/products/ingres-database.php");
 
  exit(0);
 }

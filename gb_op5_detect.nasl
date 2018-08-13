@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_op5_detect.nasl 4425 2016-11-07 10:45:45Z ckuerste $
+# $Id: gb_op5_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # OP5 Monitor Detection
 #
@@ -31,8 +31,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103379");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 4425 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-07 11:45:45 +0100 (Mon, 07 Nov 2016) $");
+ script_version("$Revision: 10908 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2012-01-09 10:33:57 +0100 (Mon, 09 Jan 2012)");
  script_tag(name:"qod_type", value:"remote_banner");
  script_name("OP5 Monitor Detection");
@@ -42,12 +42,12 @@ if (description)
  script_dependencies("find_service.nasl");
  script_require_ports("Services/www", 443);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : "Detection of op5 Monitor
+ script_tag(name:"summary", value:"Detection of op5 Monitor
 
 The script sends a connection request to the server and attempts to detect the presence of op5 Monitor and to
 extract its version");
 
- script_xref(name: "URL", value: "https://www.op5.com/");
+ script_xref(name:"URL", value:"https://www.op5.com/");
 
  exit(0);
 }
@@ -65,19 +65,18 @@ buf = http_get_cache(item: "/", port: port);
 if (egrep(pattern: "Welcome to op5 portal", string: buf, icase: TRUE))
 {
    version = "unknown";
-   ### try to get version 
    vers = eregmatch(string: buf, pattern: 'Version: *([0-9.]+) *\\| *<a +href=".*/monitor"');
 
    if ( !isnull(vers[1]) ) {
      version = vers[1];
-     set_kb_item(name: "op5/version", value: version); 
+     set_kb_item(name: "op5/version", value: version);
    }
 
    set_kb_item(name: "OP5/installed", value: TRUE);
 
    cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:op5:monitor:");
    if (!cpe)
-     cpe = 'cpe:/a:op5:monitor'; 
+     cpe = 'cpe:/a:op5:monitor';
 
    register_product(cpe:cpe, location:"/", port:port);
 

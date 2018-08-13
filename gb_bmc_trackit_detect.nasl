@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bmc_trackit_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_bmc_trackit_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # BMC Track-It! Detection
 #
@@ -30,9 +30,9 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.105931");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version ("$Revision: 6032 $");
+  script_version("$Revision: 10898 $");
   script_name("BMC Track-It! Detection");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-11-26 11:10:03 +0700 (Wed, 26 Nov 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");

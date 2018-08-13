@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sahana_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: sahana_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Sahana Detection
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running Sahana, a Free and Open Source Disaster
-Management system.";
-
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100335");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 10911 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2009-11-04 12:36:10 +0100 (Wed, 04 Nov 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Sahana Detection");
@@ -43,8 +40,9 @@ if(description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://sahana.lk/");
+ script_tag(name:"summary", value:"This host is running Sahana, a Free and Open Source Disaster
+Management system.");
+ script_xref(name:"URL", value:"http://sahana.lk/");
  exit(0);
 }
 
@@ -53,8 +51,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100335";
 SCRIPT_DESC = "Sahana Detection";
 
 port = get_http_port(default:80);
@@ -74,7 +70,6 @@ foreach dir( make_list_unique( "/sahana", cgi_dirs( port:port ) ) ) {
     vers = string("unknown");
     string = ereg_replace(string:buf,pattern:'\n',replace:"");
 
-    ### try to get version 
     version = eregmatch(string: string, pattern: 'Sahana Version</td>[^<]+<td>([0-9.]+)</td>',icase:TRUE);
 
     if ( !isnull(version[1]) ) {
@@ -83,11 +78,10 @@ foreach dir( make_list_unique( "/sahana", cgi_dirs( port:port ) ) ) {
 
     tmp_version = string(vers," under ",install);
     set_kb_item(name: string("www/", port, "/sahana"), value: tmp_version);
-  
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:sahana:sahana:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
     info = string("\n\nSahana Version '");
     info += string(vers);

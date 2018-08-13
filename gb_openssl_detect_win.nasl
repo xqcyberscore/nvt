@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_detect_win.nasl 8193 2017-12-20 10:46:55Z cfischer $
+# $Id: gb_openssl_detect_win.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # OpenSSL Version Detection (Windows)
 #
@@ -30,28 +30,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800257");
-  script_version("$Revision: 8193 $");
+  script_version("$Revision: 10906 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 11:46:55 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-02 08:15:32 +0200 (Thu, 02 Apr 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("OpenSSL Version Detection (Windows)");
 
-  tag_summary =
-"This script finds the installed OpenSSL version and saves the result in KB
+
+  script_tag(name:"summary", value:"This script finds the installed OpenSSL version and saves the result in KB
 item.
 
 The script logs in via smb, searches for OpenSSL in the registry and gets the
-version from registry";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+version from registry");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
    exit(0);
@@ -63,26 +60,15 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-# Variable Initialization
-os_arch = "";
-key_list = "";
-key= "";
-sslname = "";
-sslver = "";
-sslPath = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-## Check for 64 bit platform
 else if("x64" >< os_arch){
   key_list =  make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\",
                         "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");

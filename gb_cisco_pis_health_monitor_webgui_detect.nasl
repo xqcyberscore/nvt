@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_health_monitor_webgui_detect.nasl 6233 2017-05-29 10:07:04Z ckuerste $
+# $Id: gb_cisco_pis_health_monitor_webgui_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Cisco Prime Infrastructure Health Monitor Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105840");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6233 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-29 12:07:04 +0200 (Mon, 29 May 2017) $");
+ script_version("$Revision: 10922 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-08-01 09:56:19 +0200 (Mon, 01 Aug 2016)");
  script_name("Cisco Prime Infrastructure Health Monitor Detection");
 
- script_tag(name: "summary" , value: "The script sends a connection request to the server and attempts to extract the version number from the reply.");
+ script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to extract the version number from the reply.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 

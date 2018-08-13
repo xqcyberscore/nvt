@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_artifactory_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
+# $Id: gb_artifactory_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Artifactory Detection
 #
@@ -25,23 +25,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103918";   
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103918");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 9584 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
+ script_version("$Revision: 10929 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
  script_tag(name:"creation_date", value:"2014-03-13 10:13:17 +0100 (Thu, 13 Mar 2014)");
  script_name("Artifactory Detection");
 
- tag_summary = "The script sends a connection request to the server and attempts
- to extract the version number from the reply.";
-
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name:"summary", value:"The script sends a connection request to the server and attempts
+ to extract the version number from the reply.");
 
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
@@ -54,7 +50,7 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 include("cpe.inc");
 include("host_details.inc");
 
@@ -73,7 +69,6 @@ foreach dir( make_list_unique( "/artifactory", cgi_dirs( port:port ) ) ) {
   {
 
     vers = "unknown";
-    ### try to get version 
     version = eregmatch( string: buf, pattern: '<span class="version">Artifactory ([0-9.]+)',icase:TRUE );
 
     if ( ! isnull( version[1] ) ) vers = chomp( version[1] );

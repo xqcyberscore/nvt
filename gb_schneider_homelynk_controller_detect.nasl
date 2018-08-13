@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_homelynk_controller_detect.nasl 5942 2017-04-12 14:42:13Z ckuerste $
+# $Id: gb_schneider_homelynk_controller_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # Schneider Electric homeLYnk Controller Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106745");
- script_version ("$Revision: 5942 $");
- script_tag(name: "last_modification", value: "$Date: 2017-04-12 16:42:13 +0200 (Wed, 12 Apr 2017) $");
- script_tag(name: "creation_date", value: "2017-04-12 11:57:47 +0200 (Wed, 12 Apr 2017)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10913 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2017-04-12 11:57:47 +0200 (Wed, 12 Apr 2017)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Schneider Electric homeLYnk Controller Detection");
 
- script_tag(name: "summary" , value: "Detection of Schneider Electric homeLYnk Controller 
+ script_tag(name:"summary", value:"Detection of Schneider Electric homeLYnk Controller
 
 The script sends a connection request to the server and attempts to detect Schneider Electric homeLYnk Controller
 and to extract its version.");
@@ -51,7 +51,7 @@ and to extract its version.");
  script_require_ports("Services/www", 8081);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_xref(name: "URL", value: "http://www.schneider-electric.com/en/product-range/62143-homelynk/");
+ script_xref(name:"URL", value:"http://www.schneider-electric.com/en/product-range/62143-homelynk/");
 
  exit(0);
 }

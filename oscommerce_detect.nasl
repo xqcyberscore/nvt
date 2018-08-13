@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oscommerce_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
+# $Id: oscommerce_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # osCommerce Detection
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running osCommerce, a widely installed open source shopping e-commerce solution.
-See http://www.oscommerce.com for more information.";
-
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100001");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8137 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
+ script_version("$Revision: 10888 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2009-02-26 04:52:45 +0100 (Thu, 26 Feb 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("osCommerce Detection");
@@ -43,7 +40,8 @@ if (description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name:"summary", value:"This host is running osCommerce, a widely installed open source shopping e-commerce solution.
+See http://www.oscommerce.com for more information.");
  exit(0);
 }
 
@@ -64,7 +62,7 @@ foreach dir( make_list_unique("/", "/osc", "/oscommerce", "/store", "/catalog", 
  buf = http_get_cache(item:url, port:port);
  if( buf == NULL ) continue;
 
- if( buf =~ "HTTP/1\.. 200" && ( "osCsid" >< buf || buf =~ "Powered by.*osCommerce" ) ) { 
+ if( buf =~ "HTTP/1\.. 200" && ( "osCsid" >< buf || buf =~ "Powered by.*osCommerce" ) ) {
    installations[x] = install;
  }
  x++;
@@ -74,10 +72,10 @@ cpe = 'cpe:/a:oscommerce:oscommerce';
 
 if(installations)
 {
-  info = string("\n\nOsCommerce was detected on the remote host in the following directory(s):\n\n"); 
+  info = string("\n\nOsCommerce was detected on the remote host in the following directory(s):\n\n");
   foreach found (installations) {
     set_kb_item(name:"Software/osCommerce", value: TRUE);
-    info += string(found, "\n"); 
+    info += string(found, "\n");
     set_kb_item(name:"Software/osCommerce/dir", value: found);
     set_kb_item(name: string("www/", port, "/oscommerce"), value: string("unknown under ",found));
     register_product( cpe:cpe, location:found, port:port );

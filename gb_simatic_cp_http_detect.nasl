@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_cp_http_detect.nasl 8873 2018-02-20 08:28:02Z cfischer $
+# $Id: gb_simatic_cp_http_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Siemens SIMATIC CP Device Detection (HTTP)
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140737");
- script_version ("$Revision: 8873 $");
- script_tag(name: "last_modification", value: "$Date: 2018-02-20 09:28:02 +0100 (Tue, 20 Feb 2018) $");
- script_tag(name: "creation_date", value: "2018-02-01 17:03:54 +0700 (Thu, 01 Feb 2018)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10899 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2018-02-01 17:03:54 +0700 (Thu, 01 Feb 2018)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Siemens SIMATIC CP Device Detection (HTTP)");
 
- script_tag(name: "summary" , value: "This script performs HTTP based detection of Siemens SIMATIC CP devices.");
+ script_tag(name:"summary", value:"This script performs HTTP based detection of Siemens SIMATIC CP devices.");
 
  script_category(ACT_GATHER_INFO);
 

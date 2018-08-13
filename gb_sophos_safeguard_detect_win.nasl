@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sophos_safeguard_detect_win.nasl 10419 2018-07-05 11:32:38Z asteins $
+# $Id: gb_sophos_safeguard_detect_win.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Sophos SafeGuard Version Detection (Windows)
 #
@@ -27,14 +27,14 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107326");
-  script_version("$Revision: 10419 $");
+  script_version("$Revision: 10905 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 13:32:38 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-02 15:11:48 +0200 (Mon, 02 Jul 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Sophos SafeGuard Version Detection (Windows)");
-  script_tag(name:"summary" , value:"Detection of installed version of Sophos SafeGuard on Windows.
+  script_tag(name:"summary", value:"Detects the installed version of Sophos SafeGuard on Windows.
   The script logs in via smb, searches for Sophos SafeGuard in the registry
   and gets the version from the 'DisplayVersion' string.");
   script_category(ACT_GATHER_INFO);

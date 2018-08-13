@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011692.nasl 9102 2018-03-14 14:51:53Z santu $
+# $Id: gb_ms_kb4011692.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Office Web Apps Server 2013 RCE And Information Disclosure Vulnerabilities (KB4011692)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813022");
-  script_version("$Revision: 9102 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-0919", "CVE-2018-0922");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-14 15:51:53 +0100 (Wed, 14 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 11:17:28 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft Office Web Apps Server 2013 RCE And Information Disclosure Vulnerabilities (KB4011692)");
 
@@ -43,14 +43,14 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
-  - Microsoft Office software reads out of bound memory due to an uninitialized 
+  - Microsoft Office software reads out of bound memory due to an uninitialized
     variable.
 
   - Office software fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to run arbitrary code in the context of the current user. If the current user 
-  is logged on with administrative user rights, an attacker could take control 
+  to run arbitrary code in the context of the current user. If the current user
+  is logged on with administrative user rights, an attacker could take control
   of the affected system and also to view out of bound memory.
 
   Impact Level: System/Application");
@@ -64,7 +64,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4011692");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4011692");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

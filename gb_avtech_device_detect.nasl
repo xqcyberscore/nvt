@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avtech_device_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_avtech_device_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # AVTECH Device Detection
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809066");
-  script_version("$Revision: 8078 $");
+  script_version("$Revision: 10890 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-10-18 11:30:44 +0530 (Tue, 18 Oct 2016)");
   script_name("AVTECH Device Detection");
 
-  script_tag(name : "summary" , value : "Detection of AVTECH Device.
+  script_tag(name:"summary", value:"Detection of AVTECH Device.
 
   This script sends HTTP GET request and try to ensure the presence of
   AVTECH Device from the response.");
@@ -52,33 +52,23 @@ if(description)
 
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("host_details.inc");
 
 
-## Variable initialization
-avPort = 0;
-banner = "";
-avVer = "";
-
-##Get HTTP Port
 avPort = get_http_port(default:8080);
 
-## Get banner
 banner = get_http_banner(port:avPort);
 
-## Confirm the application
 if(banner !~ "HTTP/1.. 200 OK" || banner !~ "Server:.*Avtech"){
   exit(0);
 }
 
 avVer = "Unknown";
 
-## Set kb
 set_kb_item(name:"AVTECH/Device/Installed", value:TRUE);
 
 ## Created new cpe
-## build cpe and store it as host_detail
 cpe = "cpe:/o:avtech:avtech_device";
 
 register_product(cpe:cpe, location:"/", port:avPort);

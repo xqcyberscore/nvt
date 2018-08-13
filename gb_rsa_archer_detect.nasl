@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rsa_archer_detect.nasl 6504 2017-07-03 09:37:46Z ckuersteiner $
+# $Id: gb_rsa_archer_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # RSA Archer Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106918");
-  script_version("$Revision: 6504 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-03 11:37:46 +0200 (Mon, 03 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-03 15:23:44 +0700 (Mon, 03 Jul 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-03 15:23:44 +0700 (Mon, 03 Jul 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("RSA Archer Detection");
 
-  script_tag(name: "summary" , value: "Detection of RSA Archer.
+  script_tag(name:"summary", value:"Detection of RSA Archer.
 
 The script sends a connection request to the server and attempts to detect RSA Archer and to extract its
 version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ version.");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.rsa.com/en-us/products/governance-risk-and-compliance/archer-platform");
+  script_xref(name:"URL", value:"https://www.rsa.com/en-us/products/governance-risk-and-compliance/archer-platform");
 
   exit(0);
 }

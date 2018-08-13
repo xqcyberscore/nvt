@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mini_stream_prdts_detect.nasl 8141 2017-12-15 12:43:22Z cfischer $
+# $Id: secpod_mini_stream_prdts_detect.nasl 10883 2018-08-10 10:52:12Z cfischer $
 #
 # Mini-Stream Products Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900624");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8141 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10883 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:52:12 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Mini-Stream Products Version Detection");
@@ -40,10 +40,10 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : "The script will detect the Mini-Stream products installed on
+  script_tag(name:"summary", value:"The script will detect the Mini-Stream products installed on
   this host and set the result in KB.");
   exit(0);
 }
@@ -52,7 +52,6 @@ include("smb_nt.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## start script
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
@@ -68,7 +67,6 @@ if(ssRVer[1]!=NULL)
   set_kb_item(name:"MiniStream/Products/Installed", value:TRUE);
   # set the version of Mini-stream Shadow Stream Recorder
   set_kb_item(name:"MiniStream/SSRecorder/Ver", value:ssRVer[1]);
-  ##build cpe and store it as host_detail
   register_and_report_cpe(app:ssRecName, ver:ssRVer[1], base:"cpe:/a:mini-stream:shadow_stream_recorder:",
                           expr:"^([0-9.]+)");
 }
@@ -82,7 +80,6 @@ if(rmTmpVer[1]!=NULL)
   set_kb_item(name:"MiniStream/Products/Installed", value:TRUE);
   #set the version of Mini-stream RM-MP3 Converter
   set_kb_item(name:"MiniStream/RmToMp3/Conv/Ver", value:rmTmpVer[1]);
-  ## build cpe and store it as host_detail
   register_and_report_cpe(app:rmTmp, ver:rmTmpVer[1], base:"cpe:/a:mini-stream:easy_rm-mp3_converter:",
                           expr:"^([0-9.]+)");
 }
@@ -96,7 +93,6 @@ if(wmDownVer[1]!=NULL)
   set_kb_item(name:"MiniStream/Products/Installed", value:TRUE);
   #set the version of Mini-stream WM Downloader
   set_kb_item(name:"MiniStream/WMDown/Ver", value:wmDownVer[1]);
-  ## build cpe and store it as host_detail
   register_and_report_cpe(app:wmDown, ver:wmDownVer[1], base:"cpe:/a:mini-stream:wm_downloader:",
                           expr:"^([0-9.]+)");
 }
@@ -110,7 +106,6 @@ if(rmDownVer[1]!=NULL)
   #set the version of Mini-stream RM Downloader
   rmDownVer = ereg_replace(pattern:" ", string:rmDownVer[1], replace:"");
   set_kb_item(name:"MiniStream/RMDown/Ver", value:rmDownVer);
-  ## build cpe and store it as host_detail
   register_and_report_cpe(app:rmDown, ver:rmDownVer[1], base:"cpe:/a:mini-stream:mini-stream_rm_downloader:",
                                expr:"^([0-9.]+)");
 }
@@ -124,7 +119,6 @@ if(asx2mpVer[1]!=NULL)
   set_kb_item(name:"MiniStream/Products/Installed", value:TRUE);
   #set the version of Mini-stream ASX to MP3 Converter
   set_kb_item(name:"MiniStream/AsxToMp3/Conv/Ver", value:asx2mpVer[1]);
-  ## build cpe and store it as host_detail
   register_and_report_cpe(app:asx2mpName, ver:asx2mpVer[1], base:"cpe:/a:mini-stream:mini-stream_to_mp3_converter:",
                           expr:"^([0-9.]+)");
 }
@@ -138,7 +132,6 @@ if(msRipperVer[1]!=NULL)
   set_kb_item(name:"MiniStream/Products/Installed", value:TRUE);
   #set the version of Mini-stream Ripper
   set_kb_item(name:"MiniStream/Ripper/Ver", value:msRipperVer[1]);
-  ## build cpe and store it as host_detail
   register_and_report_cpe(app:msRipper, ver:msRipperVer[1], base:"cpe:/a:mini-stream:ripper:",
                           expr:"^([0-9.]+)");
 }
@@ -154,7 +147,6 @@ if("Mini-stream" >< nameRipper)
   if(castripperVer[1] != NULL){
     set_kb_item(name:"MiniStream/Products/Installed", value:TRUE);
     set_kb_item(name:"MiniStream/CastRipper/Ver", value:castripperVer[1]);
-    ## build cpe and store it as host_detail
     register_and_report_cpe(app:nameRipper, ver:castripperVer[1], base:"cpe:/a:mini-stream:castripper:",
                             expr:"^([0-9.]+)");
   }

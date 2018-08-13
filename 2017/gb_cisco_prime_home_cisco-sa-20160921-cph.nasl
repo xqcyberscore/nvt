@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_prime_home_cisco-sa-20160921-cph.nasl 5179 2017-02-03 07:04:40Z cfi $
+# $Id: gb_cisco_prime_home_cisco-sa-20160921-cph.nasl 10895 2018-08-10 13:11:24Z cfischer $
 #
 # Cisco Prime Home Web-Based User Interface XML External Entity Vulnerability
 #
@@ -33,22 +33,20 @@ if (description)
  script_cve_id("CVE-2016-6408");
  script_tag(name:"cvss_base", value:"4.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5179 $");
+ script_version("$Revision: 10895 $");
 
  script_name("Cisco Prime Home Web-Based User Interface XML External Entity Vulnerability");
 
- script_xref(name:"URL", value:"");
-
- script_tag(name: "insight" , value:"The vulnerability is due to improper handling of an XML External Entity (XXE) when parsing an XML file. An attacker could exploit this vulnerability by sending a crafted XML file to the affected system.");
- script_tag(name: "vuldetect" , value:"Check the version.");
- script_tag(name: "solution" , value:"Update to 5.2.1.2 or later.");
- script_tag(name: "summary" , value:"A vulnerability in the web-based user interface of Cisco Prime Home could allow an unauthenticated, remote attacker to have read access to part of the information stored in the affected system.");
- script_tag(name: "affected" , value:"Cisco Prime Home 5.2 < 5.2.1.2");
- script_tag(name:"solution_type", value: "VendorFix");
+ script_tag(name:"insight", value:"The vulnerability is due to improper handling of an XML External Entity (XXE) when parsing an XML file. An attacker could exploit this vulnerability by sending a crafted XML file to the affected system.");
+ script_tag(name:"vuldetect", value:"Check the version.");
+ script_tag(name:"solution", value:"Update to 5.2.1.2 or later.");
+ script_tag(name:"summary", value:"A vulnerability in the web-based user interface of Cisco Prime Home could allow an unauthenticated, remote attacker to have read access to part of the information stored in the affected system.");
+ script_tag(name:"affected", value:"Cisco Prime Home 5.2 < 5.2.1.2");
+ script_tag(name:"solution_type", value:"VendorFix");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-02-03 08:04:40 +0100 (Fri, 03 Feb 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:11:24 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2017-02-02 16:06:02 +0100 (Thu, 02 Feb 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

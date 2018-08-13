@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: netop_detect_tcp.nasl 10209 2018-06-15 08:15:11Z cfischer $
+# $Id: netop_detect_tcp.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # NetOp products TCP detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15765");
-  script_version("$Revision: 10209 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 10:15:11 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,7 +37,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This NASL script is Copyright 2004 Corsaire Limited and Danware Data A/S.");
   script_family("Service detection");
-  script_dependencies("find_service.nasl","find_service2.nasl");
+  script_dependencies("find_service.nasl", "find_service2.nasl");
   script_require_ports("Services/unknown", 6502, 1971);
 
   script_tag(name:"summary", value:"This script detects if the remote system has a Danware NetOp

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4093109.nasl 10218 2018-06-15 11:49:52Z jschulte $
+# $Id: gb_ms_kb4093109.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4093109)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813072");
-  script_version("$Revision: 10218 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-0870", "CVE-2018-0887", "CVE-2018-8116", "CVE-2018-0892",
                 "CVE-2018-0956", "CVE-2018-0957", "CVE-2018-0960", "CVE-2018-0966",
                 "CVE-2018-0967", "CVE-2018-0968", "CVE-2018-0969", "CVE-2018-0970",
@@ -42,7 +42,7 @@ if(description)
                 "CVE-2018-1009");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 13:49:52 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 08:56:10 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4093109)");
 
@@ -101,11 +101,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4093109");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4093109");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }

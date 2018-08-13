@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rdp_version_detect_win.nasl 8208 2017-12-21 07:33:41Z cfischer $
+# $Id: gb_rdp_version_detect_win.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Microsoft Remote Desktop Protocol Version Detection (Windows)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808281");
-  script_version("$Revision: 8208 $");
+  script_version("$Revision: 10911 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 08:33:41 +0100 (Thu, 21 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-08-03 17:52:03 +0530 (Wed, 03 Aug 2016)");
   script_name("Microsoft Remote Desktop Protocol Version Detection (Windows)");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Remote Desktop Protocol.
 
   The script logs in via smb and check the version of mstscax.dll file.");
@@ -43,7 +43,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
   exit(0);
@@ -55,16 +55,11 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## variable Initialization
-sysPath = "";
-
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-## Get Mstscax.dll file version
 rdpVer = fetch_file_version(sysPath, file_name:"system32\Mstscax.dll");
 
 if(rdpVer) {

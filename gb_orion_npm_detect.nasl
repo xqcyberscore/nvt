@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orion_npm_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: gb_orion_npm_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # SolarWinds Orion Network Performance Monitor Detection
 #
@@ -30,13 +30,13 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100940");
-  script_version("$Revision: 9633 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+  script_version("$Revision: 10929 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-12-09 13:44:03 +0100 (Thu, 09 Dec 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("SolarWinds Orion Network Performance Monitor Detection");
 
@@ -48,14 +48,14 @@ if (description)
   script_require_ports("Services/www", 8787);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name: "summary", value: "Checks for the presence of SolarWinds Orion Network Performance Monitor.");
-  script_xref(name: "URL" , value: "http://www.solarwinds.com/products/orion/");
+  script_tag(name:"summary", value:"Checks for the presence of SolarWinds Orion Network Performance Monitor.");
+  script_xref(name:"URL", value:"http://www.solarwinds.com/products/orion/");
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 include("cpe.inc");
 include("host_details.inc");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tp_link_wireless_range_extender_detect.nasl 10514 2018-07-16 13:14:35Z mmartin $
+# $Id: gb_tp_link_wireless_range_extender_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # TP-Link Wireless Range Extender Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107330");
-  script_version("$Revision: 10514 $");
+  script_version("$Revision: 10915 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-16 15:14:35 +0200 (Mon, 16 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-16 13:52:46 +0200 (Mon, 16 Jul 2018)");
   script_name("TP-Link Wireless Range Extender Detection");
 
@@ -53,7 +53,7 @@ if(description)
 
 include("host_details.inc");
 include("http_func.inc");
-include("http_keepalive.inc");
+
 
 tlPort = get_http_port(default:80);
 if(!tlPort){

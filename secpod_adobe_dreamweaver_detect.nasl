@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_dreamweaver_detect.nasl 9117 2018-03-16 13:48:01Z santu $
+# $Id: secpod_adobe_dreamweaver_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # Adobe Dreamweaver Version Detection
 #
@@ -32,15 +32,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901148");
-  script_version("$Revision: 9117 $");
+  script_version("$Revision: 10896 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-16 14:48:01 +0100 (Fri, 16 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Dreamweaver Version Detection");
 
-  script_tag(name : "summary" , value : "Detection of installed version of Adobe Dreamweaver on 
+  script_tag(name:"summary", value:"Detects the installed version of Adobe Dreamweaver on
   Windows.
 
   The script logs in via smb, searches for Adobe Dreamweaver in the
@@ -49,7 +49,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -80,7 +80,6 @@ if("x86" >< os_arch){
 }
 
 ## Presently Gzip Wizard 64bit application is not available
-## Check for 32 bit App on 64 bit platform
 else if("x64" >< os_arch){
   key =  "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011602.nasl 8364 2018-01-10 16:59:46Z gveerendra $
+# $Id: gb_ms_kb4011602.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Excel 2007 Service Pack 3 Remote Code Execution Vulnerability (KB4011602)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812612");
-  script_version("$Revision: 8364 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-0796");
   script_bugtraq_id(102372);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-10 17:59:46 +0100 (Wed, 10 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 10:12:54 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft Excel 2007 Service Pack 3 Remote Code Execution Vulnerability (KB4011602)");
 
@@ -59,14 +59,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4011602");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4011602");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/Excel/Version");
-  script_require_ports(139, 445);
+
   exit(0);
 }
 

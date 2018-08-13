@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zte_zxdsl_831CII_telnet_detect.nasl 8158 2017-12-18 13:18:20Z cfischer $
+# $Id: gb_zte_zxdsl_831CII_telnet_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # ZTE ZXDSL 831CII Detection (Telnet)
 #
@@ -30,13 +30,13 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.811354");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8158 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-18 14:18:20 +0100 (Mon, 18 Dec 2017) $");
+ script_version("$Revision: 10888 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2017-11-28 16:53:25 +0530 (Tue, 28 Nov 2017)");
  script_name("ZTE ZXDSL 831CII Detection (Telnet)");
 
- script_tag(name: "summary" , value:"The script sends a connection request to 
- the server and attempts to confirm application and detect version from the 
+ script_tag(name:"summary", value:"The script sends a connection request to
+ the server and attempts to confirm application and detect version from the
  reply.");
 
  script_tag(name:"qod_type", value:"remote_banner");

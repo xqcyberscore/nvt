@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_engine_v8_dos_vuln_lin.nasl 7545 2017-10-24 11:45:30Z cfischer $
+# $Id: gb_mongodb_engine_v8_dos_vuln_lin.nasl 10881 2018-08-10 10:27:02Z mmartin $
 #
 # MongoDB engine_v8 Denial of Service Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mongodb:mongodb";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808149");
-  script_version("$Revision: 7545 $");
+  script_version("$Revision: 10881 $");
   script_cve_id("CVE-2013-3969");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:45:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:27:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 10:55:52 +0530 (Tue, 07 Jun 2016)");
   script_name("MongoDB engine_v8 Denial of Service Vulnerability (Linux)");
 
@@ -51,7 +51,7 @@ if (description)
 
   script_tag(name : "solution" , value:"Upgrade to MongoDB version 2.4.5 or 2.5.1 or later,
   For updates refer to http://www.mongodb.org");
-
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name : "summary" , value : "This host is running MongoDB and is prone
   to a denial of service vulnerability.");
 

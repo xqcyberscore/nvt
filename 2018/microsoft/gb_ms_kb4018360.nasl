@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4018360.nasl 9953 2018-05-25 04:01:23Z ckuersteiner $
+# $Id: gb_ms_kb4018360.nasl 10919 2018-08-10 17:56:20Z cfischer $
 #
 # Microsoft Office Web Apps 2010 Service Pack 2 RCE Vulnerability (KB4018360)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812594");
-  script_version("$Revision: 9953 $");
+  script_version("$Revision: 10919 $");
   script_cve_id("CVE-2018-1028");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-25 06:01:23 +0200 (Fri, 25 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:56:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 10:43:18 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Office Web Apps 2010 Service Pack 2 RCE Vulnerability (KB4018360)");
 
@@ -57,13 +57,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4018360");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4018360");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_office_web_apps_detect.nasl");
-  script_mandatory_keys("MS/Office/Web/Apps/Ver");
   script_require_ports(139, 445);
+  script_mandatory_keys("MS/Office/Web/Apps/Ver");
+
   exit(0);
 }
 

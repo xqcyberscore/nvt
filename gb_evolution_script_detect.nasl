@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_evolution_script_detect.nasl 9224 2018-03-27 16:11:47Z asteins $
+# $Id: gb_evolution_script_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Evolution Script CMS Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107218");
-  script_version("$Revision: 9224 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-27 18:11:47 +0200 (Tue, 27 Mar 2018) $");
+  script_version("$Revision: 10894 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-06-12 06:40:16 +0200 (Mon, 12 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of Evolution Script CMS.
+  script_tag(name:"summary", value:"Detects the installed version of Evolution Script CMS.
 
   The script tries to detect the version of Evolution Script CMS remote host and sets the KB entries.");
 

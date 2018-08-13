@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: invision_power_board_detect.nasl 10212 2018-06-15 09:51:23Z ckuersteiner $
+# $Id: invision_power_board_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # IP.Board Detection
 #
@@ -34,8 +34,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100107");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10212 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 11:51:23 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-06 18:10:45 +0200 (Mon, 06 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
 
@@ -49,7 +49,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name: "summary", value: "Detection of IP.Board.
+  script_tag(name:"summary", value:"Detection of IP.Board.
 
 The script sends a connection request to the server and attempts to extract the version number from the reply.");
 

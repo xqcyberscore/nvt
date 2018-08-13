@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: radmin_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: radmin_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 # Description: radmin detection
 #
 # Authors:
@@ -22,21 +22,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "radmin is running on this port. 
-Make sure that you use a strong password, otherwise a cracker
-may brute-force it and control your machine.
-
-If you did not install this on the computer, you may have
-been hacked into.
-See: http://www.secnap.com/security/radmin001.html";
-
-tag_solution = "disable it if you do not use it";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11123");
-  script_version("$Revision: 9347 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -48,8 +38,14 @@ if(description)
   script_dependencies("find_service2.nasl");
   script_require_ports("Services/unknown", 4899);
 
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"solution", value:"disable it if you do not use it");
+  script_tag(name:"summary", value:"radmin is running on this port.
+Make sure that you use a strong password, otherwise a cracker
+may brute-force it and control your machine.
+
+If you did not install this on the computer, you may have
+been hacked into.
+See: http://www.secnap.com/security/radmin001.html");
   exit(0);
 }
 
@@ -75,15 +71,15 @@ close(soc);
 #         00 00 00 00 00 00 00 00 00 00 00 00 00 00
 # 0000056
 #
-# Noam Rathaus <noamr@beyondsecurity.com> saw differents replies,
+# Noam Rathaus <noamr@beyondsecurity.com> saw different replies,
 # depending on the security settings:
 #  password security => 6th byte (r[5]) == 0
 #  NTLM security     => 6th byte (r[5]) == 1
 # I tried, and always got the same answer, whatever the security setting is.
 # Odd...
-# 
+#
 
-#xp = raw_string(0x01, 0x00, 0x00, 0x00, 0x25, 0x00, 0x00, 0x01, 
+#xp = raw_string(0x01, 0x00, 0x00, 0x00, 0x25, 0x00, 0x00, 0x01,
 #                0x10, 0x08, 0x01, 0x00, 0x00, 0x08, 0x00, 0x00);
 
 xp1 = "010000002500";

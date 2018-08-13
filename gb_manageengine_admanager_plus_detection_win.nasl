@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_admanager_plus_detection_win.nasl 9186 2018-03-23 09:48:58Z asteins $
+# $Id: gb_manageengine_admanager_plus_detection_win.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # ManageEngine ADManager Plus Detection (Windows)
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107129");
-  script_version("$Revision: 9186 $");
+  script_version("$Revision: 10922 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-23 10:48:58 +0100 (Fri, 23 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-01-18 16:11:25 +0700 (Wed, 18 Jan 2017)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ManageEngine ADManager Plus Version Detection (Windows)");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   ManageEngine ADManager Plus.
 
   The script logs in via smb, searches for ManageEngine ADManager Plus in the registry and gets the version from 'DisplayVersion' string from registry.");
@@ -43,7 +43,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -53,7 +53,6 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get OS Architecture
 arch = get_kb_item("SMB/Windows/Arch");
 if(!arch){
   exit(0);

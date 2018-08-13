@@ -1,14 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_detect_win.nasl 7582 2017-10-26 11:56:51Z cfischer $
+# $Id: gb_vmware_prdts_detect_win.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # VMware products version detection (Windows)
 #
 # Authors:
 # Chandan S <schandan@secpod.com>
-#
-# Updated By: Shakeel <bshakeel@secpod.com> on 2014-08-04
-# According to CR57 and to support 32 and 64 bit.
 #
 # Copyright:
 # Copyright (C) 2008 Greenbone Networks GmbH, http://www.greenbone.net
@@ -31,30 +28,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800000");
-  script_version("$Revision: 7582 $");
+  script_version("$Revision: 10890 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-09-25 10:10:31 +0200 (Thu, 25 Sep 2008)");
-  script_tag(name:"qod_type", value:"registry"); 
+  script_tag(name:"qod_type", value:"registry");
   script_name("VMWare products version detection (Windows)");
 
-  tag_summary =
-"This script retrieves all VMWare Products version from registry and saves
-those in KB.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script retrieves all VMWare Products version from registry and saves
+  those in KB.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -62,22 +54,11 @@ include("cpe.inc");
 include("host_details.inc");
 
 
-## Variable Initialization
-os_arch = "";
-key_list = "";
-vmkey = "";
-vmace = "";
-vmVer = "";
-vmwareCode = "";
-vmwareBuild = "";
-
-# Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
-  exit(-1);
+  exit(0);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
   key_list1 = make_list("SOFTWARE\VMware, Inc.\VMware GSX Server",
@@ -87,7 +68,6 @@ if("x86" >< os_arch){
                           "SOFTWARE\VMware, Inc.\VMware ACE");
 }
 
-## Check for 64 bit platform, Currently only 32-bit application is available
 else if("x64" >< os_arch){
   key_list =  make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
   key_list1 = make_list("SOFTWARE\Wow6432Node\VMware, Inc.\VMware GSX Server",
@@ -101,7 +81,6 @@ if(isnull(key_list && key_list1)){
   exit(0);
 }
 
-# Check for latest version of VMware ACE product
 if(registry_key_exists(key:"SOFTWARE\VMware, Inc.\VMware ACE\Dormant"))
 {
   foreach vmkey (key_list)
@@ -123,7 +102,6 @@ buildflag = 0;
 
 if(!vmVer)
 {
-  # Check for all 5 VMware Products
   foreach vmkey (key_list1)
   {
     vmVer = registry_get_sz(key:vmkey, item:"ProductVersion");
@@ -151,9 +129,9 @@ if(!vmVer)
       }
       break;
     }
-    
+
     ## Vmware workstation player 12.1.1 has vmVer but not vmwareCode
-    ## Adding the below condition to avoid the iteration over the keys after fetching vmware player verion
+    ## Adding the below condition to avoid the iteration over the keys after fetching vmware player version
     else if(vmVer != NULL && vmPath != NULL)
     {
       buildflag = 1; ##build no is coming along with the version, i.e setting flag as 1
@@ -174,7 +152,6 @@ if(vmVer != NULL)
     }
   }
 
-  ##Try to get Build version from file
   if(vmPath && !vmwareBuild)
   {
     share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:vmPath);
@@ -257,7 +234,6 @@ if(vmVer != NULL)
     close(soc);
   }
 
-  # Check for strange vmware workstation versions
   if(vmwareBuild == "19175" && vmwareVer == "5.5.0"){
     vmwareVer = "5.5.1";
   }
@@ -270,7 +246,6 @@ if(vmVer != NULL)
                          string:vmkey, replace:"\1", icase:TRUE);
   }
 
-  # Set KB's for GSX Server, Workstation, Player, Server or ACE
   set_kb_item(name:"VMware/Win/Installed", value:TRUE);
   set_kb_item(name:"VMware/" + product + "/Win/Ver", value:vmwareVer);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2960358.nasl 9354 2018-04-06 07:15:32Z cfischer $
+# $Id: gb_microsoft_security_advisory_2960358.nasl 10904 2018-08-10 14:24:40Z mmartin $
 #
 # Microsoft .NET Framework 'RC4' Information Disclosure Vulnerability (2960358)
 #
@@ -27,54 +27,37 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804587");
-  script_version("$Revision: 9354 $");
+  script_version("$Revision: 10904 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-05-15 15:17:33 +0530 (Thu, 15 May 2014)");
   script_name("Microsoft .NET Framework 'RC4' Information Disclosure Vulnerability (2960358)");
 
-  tag_summary =
-"This host is missing an important security update according to
-Microsoft Security Advisory 2960358.";
 
-  tag_vuldetect =
-"Get the vulnerable file version and check appropriate patch is applied
-or not.";
-
-  tag_insight =
-"The flaw is due to the RC4 encryption algorithm is used in Transport
-Layer Security (TLS).";
-
-  tag_impact =
-"Successful exploitation could allow an attacker to perform man-in-the-middle
+  script_tag(name:"summary", value:"This host is missing an important security update according to
+Microsoft Security Advisory 2960358.");
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
+or not.");
+  script_tag(name:"insight", value:"The flaw is due to the RC4 encryption algorithm is used in Transport
+Layer Security (TLS).");
+  script_tag(name:"impact", value:"Successful exploitation could allow an attacker to perform man-in-the-middle
 attacks and recover plaintext from encrypted sessions.
 
-Impact Level: Application";
-
-  tag_affected =
-"Microsoft .NET Framework 3.5, 3.5.1, 4.0 and 4.5 and 4.5.X";
-
-  tag_solution =
-"Run Windows Update and update the listed hotfixes or download and
+Impact Level: Application");
+  script_tag(name:"affected", value:"Microsoft .NET Framework 3.5, 3.5.1, 4.0 and 4.5 and 4.5.X");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
 update mentioned hotfixes in the advisory from the below link,
-For updates refer to https://technet.microsoft.com/en-us/library/security/2960358.aspx";
+For updates refer to https://technet.microsoft.com/en-us/library/security/2960358.aspx");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2960358");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/2960358.aspx");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/2960358");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/2960358.aspx");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
@@ -87,33 +70,21 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-key = "";
-item = "";
-path = "";
-dllVer = "";
-dllv4 = "";
-sysVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, win8:1,
                    win8_1:1, win8_1x64:1, win2012:1) <= 0){
   exit(0);
 }
 
-## Confirm .NET
 key = "SOFTWARE\Microsoft\ASP.NET\";
 if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-## Try to Get Version
 foreach item (registry_enum_keys(key:key))
 {
   path = registry_get_sz(key:key + item, item:"Path");
   if(path && "\Microsoft.NET\Framework" >< path)
   {
-    ## Get version from system.dll file
     dllVer = fetch_file_version(sysPath:path, file_name:"system.dll");
     if(dllVer)
     {
@@ -123,7 +94,7 @@ foreach item (registry_enum_keys(key:key))
        (version_in_range(version:dllVer, test_version:"4.0.30319.34000", test_version2:"4.0.30319.34110")||
         version_in_range(version:dllVer, test_version:"4.0.30319.36000", test_version2:"4.0.30319.36117")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -132,7 +103,7 @@ foreach item (registry_enum_keys(key:key))
          (version_in_range(version:dllVer, test_version:"4.0.30319.34000", test_version2:"4.0.30319.34110")||
           version_in_range(version:dllVer, test_version:"4.0.30319.36000", test_version2:"4.0.30319.36112")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -143,7 +114,7 @@ foreach item (registry_enum_keys(key:key))
          (version_in_range(version:dllVer, test_version:"4.0.30319.34000", test_version2:"4.0.30319.34113")||
           version_in_range(version:dllVer, test_version:"4.0.30319.36000", test_version2:"4.0.30319.36116")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -152,7 +123,7 @@ foreach item (registry_enum_keys(key:key))
         (version_in_range(version:dllVer, test_version:"4.0.30319.1000", test_version2:"4.0.30319.1023")||
          version_in_range(version:dllVer, test_version:"4.0.30319.2000", test_version2:"4.0.30319.2037")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -161,7 +132,7 @@ foreach item (registry_enum_keys(key:key))
          (version_in_range(version:dllVer, test_version:"2.0.50727.5400", test_version2:"2.0.50727.5483")||
           version_in_range(version:dllVer, test_version:"2.0.50727.7000", test_version2:"2.0.50727.7057")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -170,7 +141,7 @@ foreach item (registry_enum_keys(key:key))
          (version_in_range(version:dllVer, test_version:"2.0.50727.6000", test_version2:"2.0.50727.6416")||
           version_in_range(version:dllVer, test_version:"2.0.50727.7000", test_version2:"2.0.50727.7057")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -180,7 +151,7 @@ foreach item (registry_enum_keys(key:key))
        (version_in_range(version:dllVer, test_version:"2.0.50727.8000", test_version2:"2.0.50727.8003")||
         version_in_range(version:dllVer, test_version:"2.0.50727.8600", test_version2:"2.0.50727.8606")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }

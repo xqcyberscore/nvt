@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_notepadpp_detect_portable_win.nasl 10118 2018-06-07 11:42:43Z mmartin $
+# $Id: gb_notepadpp_detect_portable_win.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Notepad++ Portable Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107319");
-  script_version("$Revision: 10118 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 13:42:43 +0200 (Thu, 07 Jun 2018) $");
+  script_version("$Revision: 10891 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-23 09:33:28 +0200 (Mon, 23 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -100,7 +100,7 @@ versList = split( versList, keep:FALSE );
 foreach vers( versList ) {
 # From gb_notepadpp_detect_win.nasl to avoid a doubled detection of
   if( vers == "Version" ) continue; # Just ignore the header of the list...
-  # Version of the Notepad++.exe file is something like notepad++7.5.6.0 
+  # Version of the Notepad++.exe file is something like notepad++7.5.6.0
   # so we need to catch only the first three parts of the version.
   if( vers && version = eregmatch( string:vers, pattern:"([0-9]+\.[0-9]+\.[0-9]+\.[0-9])$" ) ) {
 

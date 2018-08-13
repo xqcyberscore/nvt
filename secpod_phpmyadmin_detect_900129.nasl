@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_phpmyadmin_detect_900129.nasl 9742 2018-05-07 10:16:05Z cfischer $
+# $Id: secpod_phpmyadmin_detect_900129.nasl 10908 2018-08-10 15:00:08Z cfischer $
 # Description: phpMyAdmin Detection
 #
 # Authors:
@@ -29,10 +29,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900129");
-  script_version("$Revision: 9742 $");
+  script_version("$Revision: 10908 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 12:16:05 +0200 (Mon, 07 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-10-03 15:12:54 +0200 (Fri, 03 Oct 2008)");
   script_name("phpMyAdmin Detection");
   script_category(ACT_GATHER_INFO);
@@ -60,7 +60,7 @@ include("host_details.inc");
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-# check if there is some kind of "alias" accepting any spelling of "phpmyadmin". If yes, stop after first detection.
+# nb: check if there is some kind of "alias" accepting any spelling of "phpmyadmin". If yes, stop after first detection.
 check_dirs = make_list( "/pHpmyADmiN", "/PhPmyAdMin", "/phPmYaDmiN", "/phpMyadMiN" );
 
 alias = TRUE;
@@ -198,7 +198,7 @@ foreach dir( make_list_unique( "/", "/phpmyadmin", "/phpMyAdmin", "/pma", "/PHPM
       info = '- Protected by Username/Password';
     }
 
-    #check if /setup/ dir is unprotected
+    # nb: Sometimes the if /setup/ dir is unprotected
     url = dir + "/setup/";
     res1 = http_get_cache( item:url, port:port );
     if( "<title>phpMyAdmin setup</title>" >< res1 ) {

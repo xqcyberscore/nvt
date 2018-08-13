@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracuda_load_balancer_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_barracuda_load_balancer_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Barracuda Load Balancer Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106151");
- script_version ("$Revision: 6032 $");
- script_tag(name: "last_modification", value: "$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
- script_tag(name: "creation_date", value: "2016-07-25 13:42:49 +0700 (Mon, 25 Jul 2016)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10891 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2016-07-25 13:42:49 +0700 (Mon, 25 Jul 2016)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Barracuda Load Balancer Detection");
 
- script_tag(name: "summary" , value: "Detection of Barracuda Load Balancer
+ script_tag(name:"summary", value:"Detection of Barracuda Load Balancer
 
 The script sends a connection request to the server and attempts to detect the presence of Barracuda Load
 Balancer and to extract its version");
@@ -51,7 +51,7 @@ Balancer and to extract its version");
  script_require_ports("Services/www", 8000);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_xref(name: "URL", value: "https://www.barracuda.com/products/loadbalancer");
+ script_xref(name:"URL", value:"https://www.barracuda.com/products/loadbalancer");
 
 
  exit(0);

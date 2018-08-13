@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4055000.nasl 8699 2018-02-07 08:01:50Z asteins $
+# $Id: gb_ms_kb4055000.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft .NET Framework DoS And Security Feature Bypas Vulnerability (KB4055000)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812703");
-  script_version("$Revision: 8699 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-0764", "CVE-2018-0786");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-07 09:01:50 +0100 (Wed, 07 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 10:03:51 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft .NET Framework DoS And Security Feature Bypas Vulnerability (KB4055000)");
 
@@ -43,7 +43,7 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
-  - .NET Framework (and .NET Core) components do not completely validate 
+  - .NET Framework (and .NET Core) components do not completely validate
     certificates.
 
   - .NET, and .NET core, improperly process XML documents.");
@@ -54,10 +54,8 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
+  script_tag(name:"affected", value:"Microsoft .NET Framework 4.6
 
-  Microsoft .NET Framework 4.6
-   
   Microsoft .NET Framework 4.6.1
 
   Microsoft .NET Framework 4.6.2
@@ -66,16 +64,16 @@ if(description)
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
-  from the below link,  
+  from the below link,
   https://support.microsoft.com/en-us/help/4055000.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4055000");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4055000");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
   exit(0);

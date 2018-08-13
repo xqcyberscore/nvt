@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: alcatel_backdoor_switch.nasl 4718 2016-12-08 13:32:01Z cfi $
+# $Id: alcatel_backdoor_switch.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # Alcatel OmniSwitch 7700/7800 switches backdoor
 #
@@ -13,7 +13,7 @@
 # -  replaced open_sock_udp by open_sock_tcp()
 # -  added script id
 # -  attributed copyright properly to deepquest
-# -  merged some ideas from Georges Dagousset <georges.dagousset@alert4web.com> 
+# -  merged some ideas from Georges Dagousset <georges.dagousset@alert4web.com>
 #    who wrote a duplicate of this script
 #
 # Copyright:
@@ -40,15 +40,15 @@
 # -  replaced open_sock_udp by open_sock_tcp()
 # -  added script id
 # -  attributed copyright properly to deepquest
-# -  merged some ideas from Georges Dagousset <georges.dagousset@alert4web.com> 
+# -  merged some ideas from Georges Dagousset <georges.dagousset@alert4web.com>
 #    who wrote a duplicate of this script
 ###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11170");
-  script_version("$Revision: 4718 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 14:32:01 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 10896 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(6220);
   script_tag(name:"cvss_base", value:"10.0");
@@ -63,20 +63,16 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.cert.org/advisories/CA-2002-32.html");
 
-  tag_summary = "The remote host seems to be a backdoored
-  Alcatel OmniSwitch 7700/7800.";
-
   tag_impact = "An attacker can gain full access to any device
   running AOS version 5.1.1, which can result in,
   but is not limited to, unauthorized access,
   unauthorized monitoring, information leakage,
   or denial of service.";
 
-  tag_solution = "Block access to port 6778/TCP or update to
-  AOS 5.1.1.R02 or AOS 5.1.1.R03.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"solution", value:"Block access to port 6778/TCP or update to
+  AOS 5.1.1.R02 or AOS 5.1.1.R03.");
+  script_tag(name:"summary", value:"The remote host seems to be a backdoored
+  Alcatel OmniSwitch 7700/7800.");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");

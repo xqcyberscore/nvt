@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_telepresence_server_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_cisco_telepresence_server_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Cisco TelePresence Server Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105284");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7000 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+ script_version("$Revision: 10894 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2015-06-03 11:50:04 +0200 (Wed, 03 Jun 2015)");
  script_name("Cisco TelePresence Server Detection");
 
- script_tag(name: "summary" , value: "The script sends a connection
+ script_tag(name:"summary", value:"The script sends a connection
 request to the server and attempts to extract the version number
 from the reply.");
 
@@ -77,14 +77,14 @@ if ( ! isnull( version[1] ) )
 }
 
 _build = eregmatch( string: buf, pattern: "<buildVersion>([^<]+)</buildVersion>", icase:TRUE );
-if ( ! isnull( _build[1] ) ) 
+if ( ! isnull( _build[1] ) )
 {
   build = _build[1];
   set_kb_item( name:"cisco_telepresence_server/build",value:build );
 }
 
 _model = eregmatch( string: buf, pattern: "<model>Telepresence Server (on )?([^<]+)</model>", icase:TRUE );
-if ( ! isnull( _model[2] ) ) 
+if ( ! isnull( _model[2] ) )
 {
   model = _model[2];
   if( "Virtual Machine" >< model ) model = "VM";

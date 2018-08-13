@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: novell_imanager_detect.nasl 8415 2018-01-14 16:55:37Z cfischer $
+# $Id: novell_imanager_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Novell / NetIQ / Micro Focus iManager Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100434");
-  script_version("$Revision: 8415 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-14 17:55:37 +0100 (Sun, 14 Jan 2018) $");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-01-11 11:18:50 +0100 (Mon, 11 Jan 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -101,7 +101,7 @@ if( buf =~ "^HTTP/1\.[01] 200" && ( "iManager" >< buf || "<title>NetIQ Access Ma
       req = http_get( item:url, port:port );
       buf = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
       # e.g. PRODUCT_NAME=NetIQ iManager 2.7.7
-      # nb: This is less reliable as the version.properties is returing 2.7.7.5 on the same system
+      # nb: This is less reliable as the version.properties is returning 2.7.7.5 on the same system
       # on e.g. newer releases of the NAM appliance we're even getting an 403/forbidden
       vers = eregmatch( string:buf, pattern:"PRODUCT_NAME=(NetIQ|Novell) iManager ([0-9.]+)", icase:TRUE );
       if( ! isnull( vers[2] ) ) {
@@ -110,7 +110,7 @@ if( buf =~ "^HTTP/1\.[01] 200" && ( "iManager" >< buf || "<title>NetIQ Access Ma
       }
     }
   }
- 
+
   set_kb_item( name:"www/" + port + "/imanager", value:version );
   set_kb_item( name:"novellimanager/installed", value:TRUE );
 

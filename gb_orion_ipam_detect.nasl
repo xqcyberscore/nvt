@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orion_ipam_detect.nasl 6000 2017-04-21 11:07:29Z cfi $
+# $Id: gb_orion_ipam_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # SolarWinds Orion IP Address Manager Detection
 #
@@ -28,13 +28,13 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105961");
-  script_version("$Revision: 6000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
+  script_version("$Revision: 10929 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-03-06 15:14:16 +0700 (Fri, 06 Mar 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("SolarWinds Orion IP Address Manager Detection");
 
@@ -46,14 +46,14 @@ if (description)
   script_require_ports("Services/www", 8787);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name: "summary", value: "Checks for the presence of SolarWinds Orion IP Address Manager.");
-  script_xref(name: "URL" , value: "http://www.solarwinds.com/products/orion/");
+  script_tag(name:"summary", value:"Checks for the presence of SolarWinds Orion IP Address Manager.");
+  script_xref(name:"URL", value:"http://www.solarwinds.com/products/orion/");
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 include("cpe.inc");
 include("host_details.inc");
 

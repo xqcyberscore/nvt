@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts2_detection.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_apache_struts2_detection.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Apache Struts2 Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107006");
-  script_version("$Revision: 8078 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-06-01 06:40:16 +0200 (Wed, 01 Jun 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of Apache Struts2
+  script_tag(name:"summary", value:"Detects the installed version of Apache Struts2
 
   The script detects the version of Apache Struts2 on remote host and sets the KB.");
 
@@ -65,7 +65,7 @@ if( "Coyote" >!< banner && "tomcat" >!< banner ) {
   exit( 0 );
 }
 
-# TBD: Whats the purpose of this? See also set_kb_item for apacheVer below
+# TBD: What's the purpose of this? See also set_kb_item for apacheVer below
 tmpVer = eregmatch( pattern:"Server: Apache-Coyote/([0-9]+\.[0-9]+?)", string:banner );
 if( tmpVer[0] ) apacheVer = tmpVer[0];
 

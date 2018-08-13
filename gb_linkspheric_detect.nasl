@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linkspheric_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_linkspheric_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # linkSpheric Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801112");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 10891 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-10-08 08:22:29 +0200 (Thu, 08 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("linkSpheric Version Detection");
@@ -89,12 +89,10 @@ foreach dir( make_list_unique( "/linkSpheric", "/Spheric", "/", cgi_dirs( port:p
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/linkSpheric", value:tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+)\.([0-9a-zA-Z.]+)", base:"cpe:/a:dataspheric:linkspheric:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:dataspheric:linkspheric';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"linkSpheric",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bonita_bpm_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_bonita_bpm_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Bonita BPM Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106009");
- script_version ("$Revision: 8078 $");
- script_tag(name: "last_modification", value: "$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
- script_tag(name: "creation_date", value: "2015-06-16 09:22:17 +0700 (Tue, 16 Jun 2015)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10929 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2015-06-16 09:22:17 +0700 (Tue, 16 Jun 2015)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_active");
+ script_tag(name:"qod_type", value:"remote_active");
 
  script_name("Bonita BPM Detection");
 
- script_tag(name: "summary" , value: "Detection of Bonita BPM
+ script_tag(name:"summary", value:"Detection of Bonita BPM
 
 The script sends a connection request to the server and attempts to detect Bonita BPM.");
 
@@ -55,7 +55,7 @@ The script sends a connection request to the server and attempts to detect Bonit
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 include("host_details.inc");
 
 port = get_http_port(default: 8080);

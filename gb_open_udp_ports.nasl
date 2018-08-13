@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_udp_ports.nasl 8106 2017-12-13 14:42:54Z cfischer $
+# $Id: gb_open_udp_ports.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Checks for open UDP ports
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103978");
-  script_version("$Revision: 8106 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-13 15:42:54 +0100 (Wed, 13 Dec 2017) $");
+  script_version("$Revision: 10894 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-02-08 21:19:00 +0200 (Wed, 08 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -60,13 +60,12 @@ if( silent == 'yes' ) {
 
 set_unknown = get_kb_item( "global_settings/non-default_udp_service_discovery" );
 
-## Get all udp ports
 udp_ports = get_kb_list( "Ports/udp/*" );
 
 if( ! udp_ports ) {
   if( ! be_silent ) {
     log_message( port:0, data:"Open UDP ports: [None found]", proto:"udp" );
-  }  
+  }
   exit( 0 );
 }
 

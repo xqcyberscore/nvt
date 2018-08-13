@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_memcached_detect_udp.nasl 9075 2018-03-09 14:44:19Z cfischer $
+# $Id: gb_memcached_detect_udp.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Memcached Version Detection (UDP)
 #
@@ -32,8 +32,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108356");
-  script_version("$Revision: 9075 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-09 15:44:19 +0100 (Fri, 09 Mar 2018) $");
+  script_version("$Revision: 10908 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-02-28 09:06:33 +0100 (Wed, 28 Feb 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -84,7 +84,7 @@ if( ! res || strlen( res ) < 8 ) exit( 0 );
 res_str = bin2string( ddata:res, noprint_replacement:' ' );
 
 # nb: The service normally will answer with the same "req" raw_string above following by the version
-# 0x0000:  00 01 00 00 00 01 00 00 56 45 52 53 49 4F 4E 20    ........VERSION 
+# 0x0000:  00 01 00 00 00 01 00 00 56 45 52 53 49 4F 4E 20    ........VERSION
 # 0x0010:  31 2E 34 2E 33 33 0D 0A                            1.4.33..
 # but the check here is done more generic as some servers have responded
 # with malloc_fails messages like the one below:

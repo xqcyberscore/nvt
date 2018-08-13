@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_ncm_detect.nasl 9340 2018-04-06 04:54:54Z ckuersteiner $
+# $Id: gb_manageengine_ncm_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # ManageEngine Network Configuration Manager Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140774");
-  script_version("$Revision: 9340 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-06 06:54:54 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-15 15:59:46 +0700 (Thu, 15 Feb 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-15 15:59:46 +0700 (Thu, 15 Feb 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("ManageEngine Network Configuration Manager Detection");
 
-  script_tag(name: "summary" , value: "Detection of ManageEngine Network Configuration Manager.
+  script_tag(name:"summary", value:"Detection of ManageEngine Network Configuration Manager.
 
 The script sends a connection request to the server and attempts to detect ManageEngine Network Configuration
 Manager and to extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ Manager and to extract its version.");
   script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.manageengine.com/network-configuration-manager/");
+  script_xref(name:"URL", value:"https://www.manageengine.com/network-configuration-manager/");
 
   exit(0);
 }

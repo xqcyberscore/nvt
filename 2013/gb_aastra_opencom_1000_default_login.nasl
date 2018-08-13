@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aastra_opencom_1000_default_login.nasl 5842 2017-04-03 13:15:19Z cfi $
+# $Id: gb_aastra_opencom_1000_default_login.nasl 10910 2018-08-10 15:10:09Z mmartin $
 #
 # Aastra OpenCom 1000 Default Login
 #
@@ -25,24 +25,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote Aastra OpenCom 1000 is prone to a default account
-authentication bypass vulnerability. This issue may be exploited by
-a remote attacker to gain access to sensitive information or modify
-system configuration without requiring authentication.
-
-It was possible to login as user 'Admin' with password 'Admin'.";
-
-
-tag_solution = "Change the password.";
-
 CPE = 'cpe:/h:aastra_telecom:opencom_1000';
 
 if (description)
 {
- 
+
  script_oid("1.3.6.1.4.1.25623.1.0.103684");
- script_version ("$Revision: 5842 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:15:19 +0200 (Mon, 03 Apr 2017) $");
+ script_version("$Revision: 10910 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:10:09 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2013-03-20 17:03:03 +0100 (Wed, 20 Mar 2013)");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,8 +44,14 @@ if (description)
  script_dependencies("gb_aastra_opencom_detect.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("aastra_opencom/model");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name:"solution", value:"Change the password.");
+ script_tag(name:"solution_type", value:"Mitigation");
+ script_tag(name:"summary", value:"The remote Aastra OpenCom 1000 is prone to a default account
+authentication bypass vulnerability. This issue may be exploited by
+a remote attacker to gain access to sensitive information or modify
+system configuration without requiring authentication.
+
+It was possible to login as user 'Admin' with password 'Admin'.");
  exit(0);
 }
 

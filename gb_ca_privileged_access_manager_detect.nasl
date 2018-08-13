@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ca_privileged_access_manager_detect.nasl 10240 2018-06-19 04:09:23Z ckuersteiner $
+# $Id: gb_ca_privileged_access_manager_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # CA Privileged Access Manager Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141190");
-  script_version("$Revision: 10240 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-19 06:09:23 +0200 (Tue, 19 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2018-06-19 10:04:45 +0700 (Tue, 19 Jun 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10890 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-06-19 10:04:45 +0700 (Tue, 19 Jun 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("CA Privileged Access Manager Detection");
 
-  script_tag(name: "summary" , value: "Detection of CA Privileged Access Manager.
+  script_tag(name:"summary", value:"Detection of CA Privileged Access Manager.
 
 The script sends a connection request to the server and attempts to detect CA Privileged Access Manager and to
 extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ extract its version.");
   script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.ca.com/us/products/ca-privileged-access-manager.html");
+  script_xref(name:"URL", value:"https://www.ca.com/us/products/ca-privileged-access-manager.html");
 
   exit(0);
 }

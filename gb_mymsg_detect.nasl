@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mymsg_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: gb_mymsg_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # MyMsg Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800951");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7076 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 10911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-10-15 15:35:39 +0200 (Thu, 15 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("MyMsg Version Detection");
@@ -75,12 +75,10 @@ foreach dir( make_list_unique( "/", "/mymsg", cgi_dirs( port:port ) ) ) {
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/MyMsg", value:tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:al4us:mymsg:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:al4us:mymsg';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data: build_detection_report( app:"MyMsg",

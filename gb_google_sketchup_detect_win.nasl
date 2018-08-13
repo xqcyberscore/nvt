@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_sketchup_detect_win.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: gb_google_sketchup_detect_win.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Google SketchUp Version Detection (Windows)
 #
@@ -30,23 +30,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800434");
-  script_version("$Revision: 9580 $");
+  script_version("$Revision: 10899 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Google SketchUp Version Detection (Windows)");
 
 
-  script_tag(name : "summary" , value : "Detection of installed version of Google SketchUp.
+  script_tag(name:"summary", value:"Detects the installed version of Google SketchUp.
 
 The script logs in via smb, searches for Google SketchUp in the registry
 and gets the version from registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -58,20 +58,12 @@ include("version_func.inc");
 include("host_details.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-osArch = "";
-key_list = "";
-gsName = "";
-gsVer = "";
-path = "";
-
 osArch = get_kb_item("SMB/Windows/Arch");
 if(!osArch)
 {
   exit(-1);
 }
 
-#Check if Adobe Application is installed
 if(!registry_key_exists(key:"SOFTWARE\Google") &&
    !registry_key_exists(key:"SOFTWARE\Wow6432Node\Google")){
   exit(0);
@@ -82,7 +74,6 @@ if("x86" >< osArch){
   key_list = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
-## Check for 64 bit platform
 else if("x64" >< osArch){
  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
                       "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
@@ -103,7 +94,6 @@ foreach key (key_list)
         {
           set_kb_item(name:"Google/SketchUp/Win/Ver", value:gsVer);
 
-          ## Build CPE
           cpe = build_cpe(value:gsVer, exp:"^([0-9.]+)", base:"cpe:/a:google:sketchup:");
           if(isnull(cpe))
             cpe = 'cpe:/a:google:sketchup';
@@ -112,13 +102,11 @@ foreach key (key_list)
           {
             set_kb_item(name:"Google/SketchUp64/Win/Ver", value:gsVer);
 
-            ## Build CPE
             cpe = build_cpe(value:gsVer, exp:"^([0-9.]+)", base:"cpe:/a:google:sketchup:x64:");
             if(isnull(cpe))
               cpe = 'cpe:/a:google:sketchup:x64';
           }
 
-          ##register cpe
           register_product(cpe:cpe, location:path);
           log_message(data: build_detection_report(app: "Google SketchUp",
                                                    version: gsVer,

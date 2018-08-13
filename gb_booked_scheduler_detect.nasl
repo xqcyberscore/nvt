@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_booked_scheduler_detect.nasl 5723 2017-03-24 15:46:34Z cfi $
+# $Id: gb_booked_scheduler_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Booked Scheduler Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105259");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5723 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 16:46:34 +0100 (Fri, 24 Mar 2017) $");
+ script_version("$Revision: 10929 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
  script_tag(name:"creation_date", value:"2015-04-20 14:04:38 +0200 (Mon, 20 Apr 2015)");
  script_name("Booked Scheduler Detection");
 
- script_tag(name: "summary" , value: "The script sends a connection
+ script_tag(name:"summary", value:"The script sends a connection
  request to the server and attempts to extract the version number from the reply.");
 
  script_tag(name:"qod_type", value:"remote_active");
@@ -51,7 +51,7 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 include("cpe.inc");
 include("host_details.inc");
 

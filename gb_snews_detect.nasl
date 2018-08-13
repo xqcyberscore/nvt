@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snews_detect.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: gb_snews_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # sNews Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801242");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 10906 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-08-04 08:26:41 +0200 (Wed, 04 Aug 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("sNews Version Detection");
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : "The script detects the version of sNews on remote host
+  script_tag(name:"summary", value:"The script detects the version of sNews on remote host
   and sets the KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -53,7 +53,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get http port
 port = get_http_port(default:80);
 
 if( !can_host_php( port:port ) ) exit( 0 );
@@ -73,15 +72,12 @@ foreach dir (make_list_unique("/sNews", "/snews", "/", cgi_dirs(port:port)))
 
     version = "unknown";
 
-    ## Get version
     ver = eregmatch(pattern:'<title>sNews ([0-9.]+)</title>', string:rcvRes);
     if(ver[1] == NULL)
     {
-      ## Get Version from readme file
       ver = eregmatch(pattern:'sNews v([0-9.]+)', string:rcvRes2);
       if(ver[1] == NULL)
       {
-        ## Get Version from readme file
         ver = eregmatch(pattern:'<title>sNews ([0-9.]+) ReadMe</title>', string:rcvRes3);
         if(ver[1] != NULL) version = ver[1];
       } else {
@@ -91,11 +87,9 @@ foreach dir (make_list_unique("/sNews", "/snews", "/", cgi_dirs(port:port)))
       version = ver[1];
     }
 
-    ## Set the KB value
     tmp_version = version + " under " + install;
     set_kb_item(name:"www/" + port + "/snews", value:tmp_version);
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:solucija:snews:");
     if( isnull( cpe ) )
       cpe = 'cpe:/a:solucija:snews';

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_limny_detect.nasl 4709 2016-12-08 09:44:07Z cfi $
+# $Id: gb_limny_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Limny Version Detection
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800295");
-  script_version("$Revision: 4709 $");
+  script_version("$Revision: 10891 $");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 10:44:07 +0100 (Thu, 08 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-03-02 12:02:59 +0100 (Tue, 02 Mar 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Limny Version Detection");
@@ -55,15 +55,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## Variable Initialization
-limPort = "";
-dir = "";
-sndReq = "";
-rcvRes = "";
-limVer = "";
-tmp_version = "";
-cpe = "";
 
 limPort = get_http_port(default:80);
 

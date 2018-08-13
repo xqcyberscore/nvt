@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_webcenter_content_detect.nasl 9039 2018-03-07 10:56:54Z santu $
+# $Id: gb_oracle_webcenter_content_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Oracle WebCenter Content Detection
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811709");
-  script_version("$Revision: 9039 $");
+  script_version("$Revision: 10899 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 11:56:54 +0100 (Wed, 07 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-08-18 12:44:35 +0530 (Fri, 18 Aug 2017)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle WebCenter Content Detection");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Oracle WebCenter Content.
 
   This script sends HTTP GET request and try to get the version from the
@@ -83,7 +83,7 @@ if(rcvRes && ">Oracle WebCenter Content Sign In<" >< rcvRes &&
   version = "unknown";
   version_url = "/_ocsh/help/state?navSetId=help_for_translation_MA_user_en_MA" +
                 "_user_html_l10n_adtuh_hlpbk&navId=1";
-               
+
   sndReq = http_get(item:version_url, port:owPort);
   rcvRes = http_keepalive_send_recv(port:owPort, data:sndReq);
 

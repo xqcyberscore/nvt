@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_detect_snmp.nasl 8142 2017-12-15 13:00:23Z cfischer $
+# $Id: gb_cisco_ios_xr_detect_snmp.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Cisco IOS XR Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105079");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8142 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
+ script_version("$Revision: 10902 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2014-09-04 09:48:32 +0200 (Thu, 04 Sep 2014)");
  script_name("Cisco IOS XR Detection");
 
- script_tag(name: "summary" , value: "This script performs SNMP based detection of Cisco IOS XR.");
+ script_tag(name:"summary", value:"This script performs SNMP based detection of Cisco IOS XR.");
 
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
@@ -59,8 +59,8 @@ sysdesc = get_snmp_sysdesc(port:port);
 if(!sysdesc) exit(0);
 
 # Cisco IOS XR Software (Cisco 12816/PRP), Version 4.3.2[Default] Copyright (c) 2014 by Cisco Systems, Inc.
-# Cisco IOS XR Software (Cisco ASR9K Series), Version 5.1.1[Default]  Copyright (c) 2014 by Cisco Systems, Inc. 
-# Cisco IOS XR Software (Cisco 12404/PRP), Version 3.6.0[00] Copyright (c) 2007 by Cisco Systems, Inc. 
+# Cisco IOS XR Software (Cisco ASR9K Series), Version 5.1.1[Default]  Copyright (c) 2014 by Cisco Systems, Inc.
+# Cisco IOS XR Software (Cisco 12404/PRP), Version 3.6.0[00] Copyright (c) 2007 by Cisco Systems, Inc.
 if( "Cisco IOS XR" >!< sysdesc )exit( 0 );
 
 set_kb_item( name:"cisco_ios_xr/detected", value:TRUE );

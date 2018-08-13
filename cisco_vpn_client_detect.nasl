@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: cisco_vpn_client_detect.nasl 7281 2017-09-26 14:10:31Z cfischer $
+# $Id: cisco_vpn_client_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 # Description: Cisco VPN Client Version Detection
 #
 # Authors:
@@ -26,26 +26,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80037");
-  script_version("$Revision: 7281 $");
+  script_version("$Revision: 10896 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 16:10:31 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Cisco VPN Client Version Detection");
 
-tag_summary =
-"Detection of installed version of Cisco VPN Client.
+
+  script_tag(name:"summary", value:"Detects the installed version of Cisco VPN Client.
 
 The script logs in via smb, searches for Cisco VPN Client in the registry
-and gets the version from registry.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+and gets the version from registry.");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2007 Ferdy Riphagen");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -78,7 +75,6 @@ if("x86" >< osArch){
   vpnKey = "SOFTWARE\Cisco Systems\VPN Client";
 }
 
-## Check for 64 bit platform
 else if("x64" >< osArch){
  vpnKey = "SOFTWARE\Wow6432Node\Cisco Systems\VPN Client";
 }
@@ -96,7 +92,6 @@ if(!vpnVer){
 
 set_kb_item(name:"SMB/CiscoVPNClient/Version", value:vpnVer);
 
-## build cpe
 cpe = build_cpe(value:vpnVer, exp:"^([0-9.]+)", base:"cpe:/a:llnl:slurm:");
 if(isnull(cpe))
   cpe = "cpe:/a:llnl:slurm";
@@ -108,13 +103,11 @@ if("x64" >< osArch && "Wow6432Node" >< vpnKey)
 {
   set_kb_item(name:"SMB/CiscoVPNClient64/Version", value:vpnVer);
 
-  ## build cpe
   cpe = build_cpe(value:vpnVer, exp:"^([0-9.]+)", base:"cpe:/a:llnl:slurm:x64:");
   if(isnull(cpe))
     cpe = "cpe:/a:llnl:slurm:x64";
 }
 
-## Register Product
 register_product(cpe:cpe, location:vpnPath);
 log_message(data: build_detection_report(app: "Cisco Systems VPN Client",
                                          version: vpnVer,

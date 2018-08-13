@@ -1,22 +1,11 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaspersky_av_detect.nasl 9600 2018-04-25 08:48:41Z asteins $
+# $Id: gb_kaspersky_av_detect.nasl 10876 2018-08-10 08:38:41Z cfischer $
 #
 # Kaspersky AntiVirus Version Detection
 #
 # Authors:
 # Sujit Ghosal <sghosal@secpod.com>
-#
-# Updated to detect Kaspersky Internet Security and Anti-Virus for
-# Windows File Servers.
-# By - Nikita MR <rnikita@secpod.com> on 2010-01-06
-#
-# Updated By: Shakeel <bshakeel@secpod.com> on 2014-08-04
-# According to CR57 and to support 32 and 64 bit.
-#
-# Updated By: Rinu Kuriakose <krinu@secpod.com> on 2017-01-06
-# for detecting 2017 version of anti virus, total security and internet security
-# and adding one more key for application confirmation
 #
 # Copyright:
 # Copyright (C) 2009 Greenbone Networks GmbH, http://www.greenbone.net
@@ -38,30 +27,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800241");
-  script_version("$Revision: 9600 $");
+  script_version("$Revision: 10876 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 10:48:41 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 10:38:41 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-02-16 16:42:20 +0100 (Mon, 16 Feb 2009)");
-  script_tag(name:"qod_type", value:"registry");
   script_name("Kaspersky AntiVirus Version Detection");
-
-  tag_summary =
-"This script finds the installed Kaspersky Products-Kaspersky AntiVirus, 
-kaspersky total security and Kaspersky Internet Security and saves the version.
-
-The script logs in via smb, searches for Kaspersky AntiVirus and Kaspersky
-Internet Security in the registry and gets the version from registry";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
+
+  script_tag(name:"summary", value:"This script finds the installed Kaspersky Products-Kaspersky AntiVirus,
+  kaspersky total security and Kaspersky Internet Security and saves the version.
+
+  The script logs in via smb, searches for Kaspersky AntiVirus and Kaspersky
+  Internet Security in the registry and gets the version from registry");
+
+  script_tag(name:"qod_type", value:"registry");
+
   exit(0);
 }
 
@@ -92,18 +78,15 @@ TOTSEC_LIST = make_list("^(15\..*)", "cpe:/a:kaspersky:total_security_2015:",
                         "^(17\..*)", "cpe:/a:kaspersky:kaspersky_total_security_2017:");
 TOTSEC_MAX = max_index(TOTSEC_LIST);
 
-# Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
-## Check for 64 bit platform, Currently only 32-bit application is available
 else if("x64" >< os_arch){
   key = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
@@ -112,7 +95,6 @@ if(isnull(key)){
   exit(0);
 }
 
-##Confirm Application
 if(registry_key_exists(key:"SOFTWARE\KasperskyLab")){
   set_kb_item(name:"Kaspersky/products/installed", value:TRUE);
 } else{
@@ -125,7 +107,6 @@ foreach item (registry_enum_keys(key:key))
 
   if("Kaspersky" >< prdtName)
   {
-    # Check for Kaspersky Anti-Virus for Windows Workstations.
     if("Anti-Virus" >< prdtName && "Windows Workstations" >< prdtName)
     {
       kavwVer = registry_get_sz(key:key + item, item:"DisplayVersion");
@@ -137,14 +118,12 @@ foreach item (registry_enum_keys(key:key))
       {
         set_kb_item(name:"Kaspersky/products/installed", value:TRUE);
         set_kb_item(name:"Kaspersky/AV-Workstation/Ver", value:kavwVer);
-        ## build cpe and store it as host_detail
         register_and_report_cpe(app:"Kaspersky Anti-Virus", ver:kavwVer, base:"cpe:/a:kaspersky_lab:kaspersky_anti-virus:6.0::workstations",
                                 expr:"^(6\.0)", insloc:insloc);
       }
     }
   }
 
-  # Check for Kaspersky Anti-Virus for Windows File Servers.
   if("Anti-Virus" >< prdtName && "File Servers" >< prdtName)
   {
     kavsVer = registry_get_sz(key:key + item, item:"DisplayVersion");
@@ -152,19 +131,17 @@ foreach item (registry_enum_keys(key:key))
     if(!insloc){
         insloc = "Could not determine install Path";
     }
-    if(kavsVer != NULL)
+    if(!isnull(kavsVer))
     {
       set_kb_item(name:"Kaspersky/products/installed", value:TRUE);
       set_kb_item(name:"Kaspersky/AV-FileServer/Ver", value:kavsVer);
 
-      ## build cpe and store it as host_detail
       register_and_report_cpe(app:"Kaspersky Anti-Virus", ver:kavsVer,
                               base:"cpe:/a:kaspersky_lab:kaspersky_anti-virus:6.0.3.837::windows_file_servers:",
                               expr:"^(6\.0)", insloc:insloc);
     }
   }
 
-  # Check for Kaspersky Anti-Virus.
   if(prdtName =~ "Kaspersky Anti-Virus [0-9]+" || prdtName =~ "Kaspersky Anti-Virus")
   {
     kavVer = registry_get_sz(key:key + item, item:"DisplayVersion");
@@ -172,12 +149,11 @@ foreach item (registry_enum_keys(key:key))
     if(!insloc){
         insloc = "Could not determine install Path";
     }
-    if(kavVer != NULL)
+    if(!isnull(kavVer))
     {
       set_kb_item(name:"Kaspersky/products/installed", value:TRUE);
       set_kb_item(name:"Kaspersky/AV/Ver", value:kavVer);
 
-      ## build cpe and store it as host_detail
       for (i = 0; i < AV_MAX-1; i = i + 2){
         register_and_report_cpe(app:"Kaspersky Anti-Virus", ver:kavVer,
                               base:AV_LIST[i+1],
@@ -186,7 +162,6 @@ foreach item (registry_enum_keys(key:key))
     }
   }
 
-  # Check for Kaspersky Internet Security.
   if("Internet Security" >< prdtName)
   {
     kisVer = registry_get_sz(key:key + item, item:"DisplayVersion");
@@ -195,12 +170,11 @@ foreach item (registry_enum_keys(key:key))
       insloc = "Could not determine install Path";
     }
 
-    if(kisVer != NULL)
+    if(!isnull(kisVer))
     {
       set_kb_item(name:"Kaspersky/products/installed", value:TRUE);
       set_kb_item(name:"Kaspersky/IntNetSec/Ver", value:kisVer);
 
-      ## build cpe and store it as host_detail
       for (i = 0; i < INTNETSEC_MAX-1; i = i + 2)
       {
         register_and_report_cpe(app:"Kaspersky Internet Security", ver:kisVer,
@@ -218,12 +192,11 @@ foreach item (registry_enum_keys(key:key))
       insloc = "Could not determine install Path";
     }
 
-    if(kisVer != NULL)
+    if(!isnull(kisVer))
     {
       set_kb_item(name:"Kaspersky/products/installed", value:TRUE);
       set_kb_item(name:"Kaspersky/TotNetSec/Ver", value:kisVer);
 
-      ## build cpe and store it as host_detail
       for (i = 0; i < TOTSEC_MAX-1; i = i + 2)
       {
         register_and_report_cpe(app:"Kaspersky Total Security", ver:kisVer,

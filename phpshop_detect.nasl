@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpshop_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: phpshop_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # PhpShop Detection
 #
@@ -24,14 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running PhpShop, a PHP-powered shopping cart application.";
-
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100382");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 10888 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2009-12-08 22:02:24 +0100 (Tue, 08 Dec 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("PhpShop Detection");
@@ -42,8 +40,8 @@ if(description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.phpshop.org/");
+ script_tag(name:"summary", value:"This host is running PhpShop, a PHP-powered shopping cart application.");
+ script_xref(name:"URL", value:"http://www.phpshop.org/");
  exit(0);
 }
 
@@ -53,8 +51,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100382";
 SCRIPT_DESC = "PhpShop Detection";
 
 port = get_http_port(default:80);
@@ -71,7 +67,6 @@ foreach dir( make_list_unique( "/shop", "/phpshop", cgi_dirs( port:port ) ) ) {
  if(egrep(pattern: "Powered by <a [^>]+>phpShop", string: buf, icase: TRUE))
  {
     vers = string("unknown");
-    ### try to get version 
     version = eregmatch(string: buf, pattern: "Powered by <a [^>]+>phpShop</a> ([0-9.]+)",icase:TRUE);
 
     if ( !isnull(version[1]) ) {
@@ -84,18 +79,17 @@ foreach dir( make_list_unique( "/shop", "/phpshop", cgi_dirs( port:port ) ) ) {
            version = eregmatch(string: buf, pattern:"phpShop version ([0-9.]+)");
 	   if(!isnull(version[1]) && version[1] != vers) {
              vers = version[1];
-	   }  
-	 }  
-       }  
-     }	 
-    
+	   }
+	 }
+       }
+     }
+
     tmp_version =  string(vers," under ",install);
     set_kb_item(name: string("www/", port, "/phpshop"), value: tmp_version);
-    
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:edikon:phpshop:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
     info = string("PhpShop Version '");
     info += string(vers);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_serimux_ssh_console_switch_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_serimux_ssh_console_switch_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # Serimux SSH Console Switch Detection
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807894");
-  script_version("$Revision: 8078 $");
+  script_version("$Revision: 10913 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-10-05 16:18:47 +0530 (Wed, 05 Oct 2016)");
   script_name("Serimux SSH Console Switch Detection");
 
-  script_tag(name:"summary", value:"Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Serimux SSH Console Switch.
 
   This script sends HTTP GET request and try to ensure the presence of
@@ -52,7 +52,7 @@ if(description)
 
 include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
+
 
 serPort = get_http_port( default:80 );
 if( ! can_host_asp( port:serPort ) ) exit( 0 );
@@ -66,16 +66,13 @@ foreach dir(make_list_unique("/", "/cgi_dir", cgi_dirs(port:serPort))) {
   sndReq = http_get(item: dir + "/nti/login.asp", port:serPort);
   rcvRes = http_send_recv(port:serPort, data:sndReq);
 
-  ##Confirm application
   if(">SERIMUX-S-x Console Switch" >< rcvRes && ">Welcome, please log in" >< rcvRes)
   {
     version = "unknown";
 
-    ## Set the KB value
     set_kb_item(name:"Serimux/Console/Switch/Installed", value:TRUE);
 
     ## Created new cpe
-    ## build cpe and store it as host_detail
     cpe = "cpe:/a:serimux:serimux_console_switch";
 
     register_product(cpe:cpe, location:install, port:serPort);

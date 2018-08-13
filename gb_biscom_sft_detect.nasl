@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_biscom_sft_detect.nasl 6923 2017-08-15 10:09:03Z ckuersteiner $
+# $Id: gb_biscom_sft_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # Biscom Secure File Transfer Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140300");
- script_version ("$Revision: 6923 $");
- script_tag(name: "last_modification", value: "$Date: 2017-08-15 12:09:03 +0200 (Tue, 15 Aug 2017) $");
- script_tag(name: "creation_date", value: "2017-08-15 16:05:13 +0700 (Tue, 15 Aug 2017)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10898 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2017-08-15 16:05:13 +0700 (Tue, 15 Aug 2017)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Biscom Secure File Transfer Detection");
 
- script_tag(name: "summary" , value: "Detection of Biscom Secure File Transfer.
+ script_tag(name:"summary", value:"Detection of Biscom Secure File Transfer.
 
 The script sends a connection request to the server and attempts to detect Biscom Secure File Transfer and to
 extract its firmware version.");
@@ -51,7 +51,7 @@ extract its firmware version.");
  script_require_ports("Services/www", 443);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_xref(name: "URL", value: "https://www.biscom.com/secure-file-transfer/");
+ script_xref(name:"URL", value:"https://www.biscom.com/secure-file-transfer/");
 
  exit(0);
 }
@@ -91,7 +91,7 @@ foreach dir (make_list_unique("/fm", "/bds", "/aps", "/filestore", cgi_dirs(port
                                              install: install, cpe: cpe, concluded: vers[0]),
                 port: port);
     exit(0);
-  } 
+  }
 }
 
 exit(0);

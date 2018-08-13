@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_sec_bypass_vuln_july18.nasl 10502 2018-07-13 13:19:46Z santu $
+# $Id: gb_asp_dotnet_sec_bypass_vuln_july18.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft ASP.NET Core Security Feature Bypass Vulnerability July18
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813674");
-  script_version("$Revision: 10502 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-8171");
   script_bugtraq_id(104659);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-13 15:19:46 +0200 (Fri, 13 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-13 15:50:36 +0530 (Fri, 13 Jul 2018)");
   script_name("Microsoft ASP.NET Core Security Feature Bypass Vulnerability July18");
 
@@ -42,16 +42,16 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version of affected package
   and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exists because system does not properly 
+  script_tag(name:"insight", value:"The flaw exists because system does not properly
   validate the number of incorrect login attempts.");
 
-  script_tag(name:"impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass security controls on the target system.
 
   Impact Level: Application.");
 
-  script_tag(name:"affected", value:"Any ASP.NET Core based application that uses 
-  'Microsoft.AspNetCore.Identity' with versions 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 
+  script_tag(name:"affected", value:"Any ASP.NET Core based application that uses
+  'Microsoft.AspNetCore.Identity' with versions 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4,
   1.0.5. 1.1.0, 1.1.1, 1.1.2, 1.1.3, 1.1.4, 1.1.5, 2.0.0, 2.0.1, 2.0.2, 2.0.3,
   2.1.0, 2.1.1.");
 
@@ -68,7 +68,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Windows");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
-  script_require_ports(139, 445);
+
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
   exit(0);
 }

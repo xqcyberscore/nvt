@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_squid_detect.nasl 8800 2018-02-13 17:01:31Z cfischer $
+# $Id: secpod_squid_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # Squid Proxy Server Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900611");
-  script_version("$Revision: 8800 $");
+  script_version("$Revision: 10898 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-13 18:01:31 +0100 (Tue, 13 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-07 09:44:25 +0200 (Tue, 07 Apr 2009)");
   script_name("Squid Proxy Server Detection");
   script_category(ACT_GATHER_INFO);
@@ -43,7 +43,7 @@ if(description)
   script_require_ports("Services/http_proxy", 3128, "Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of squid.
+  script_tag(name:"summary", value:"Detects the installed version of squid.
 
   This script sends HTTP GET request and try to get the version from the
   response, and sets the result in KB.");

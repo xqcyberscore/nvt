@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_achievo_xss_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_achievo_xss_vuln.nasl 10916 2018-08-10 16:01:30Z cfischer $
 #
 # Achievo Cross Site Scripting vulnerability-Mar16
 #
@@ -30,37 +30,36 @@ CPE = "cpe:/a:achievo:achievo";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807623");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 10916 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 18:01:30 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:24:56 +0530 (Wed, 06 Apr 2016)");
   script_name("Achievo Cross Site Scripting vulnerability-Mar16");
 
-  script_tag(name: "summary" , value:"The host is installed with Achievo and is
+  script_tag(name:"summary", value:"The host is installed with Achievo and is
   prone to cross site scripting vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted HTTP GET request and check
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check
   whether it is possible to read a cookie or not.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an improper sanitization
+  script_tag(name:"insight", value:"The flaw exists due to an improper sanitization
   of input to 'index.php' page.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to obtain potentially sensitive information, which may lead to
   further attacks.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Achievo 1.4.5");
+  script_tag(name:"affected", value:"Achievo 1.4.5");
 
-  script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.
-");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2016/Mar/74");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2016/Mar/74");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -74,27 +73,18 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-url = "";
-report = "";
-achPort = "";
-
-## Get HTTP Port
 if(!achPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Get install location
 if(!dir = get_app_location(cpe:CPE, port:achPort)){
   exit(0);
 }
 
-##Construct Attack URL
 url = dir + '/index.php?%27%22--%3E%3C%2Fstyle%3E%3C%2Fscript%3E%3Cscript%3Ealert(document.cookie)%3C%2Fscript%3E';
 
-##Send Request and check vulnerability
 if(http_vuln_check(port:achPort, url:url, check_header:TRUE,
-   pattern:"<script>alert\(document\_cookie\)</script>", 
+   pattern:"<script>alert\(document\_cookie\)</script>",
    extra_check:make_list("Achievo", ">Login", ">Username")))
 {
   report = report_vuln_url( port:achPort, url:url );

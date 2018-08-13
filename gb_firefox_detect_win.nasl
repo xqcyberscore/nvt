@@ -1,26 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefox_detect_win.nasl 9887 2018-05-17 13:35:46Z cfischer $
+# $Id: gb_firefox_detect_win.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # Mozilla Firefox Version Detection (Windows)
 #
 # Authors:
 # Chandan S <schandan@secpod.com>
-#
-# Updated By: Madhuri D <dmadhuri@secpod.com> on 2010-09-17
-#    - To detect beta versions
-#
-# Update By:  Rachana Shetty <srachana@secpod.com> on 2012-11-27
-# Updated to detect Firefox ESR version and according to CR-57
-#
-# Update By:  Thanga Prakash S <tprakash@secpod.com> on 2013-09-23
-# According to new style script_tags and Fixed issue in identifying ESR.
-#
-# Updated By: Shakeel <bshakeel@secpod.com> on 2014-06-24
-# According to CR57 and to support 32 and 64 bit.
-#
-# Updated By: Thanga Prakash S <tprakash@secpod.com> on 2015-01-07
-# Updated to detect 32bit version on 64bit OS
 #
 # Copyright:
 # Copyright (C) 2008 Greenbone Networks GmbH, http://www.greenbone.net
@@ -42,19 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800014");
-  script_version("$Revision: 9887 $");
+  script_version("$Revision: 10901 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 15:35:46 +0200 (Thu, 17 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-10-06 13:07:14 +0200 (Mon, 06 Oct 2008)");
   script_name("Mozilla Firefox Version Detection (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name:"summary", value:"Detection of installed version of Mozilla Firefox on Windows.
+  script_tag(name:"summary", value:"Detects the installed version of Mozilla Firefox on Windows.
 
   The script logs in via smb, searches for Mozilla Firefox in the registry
   and gets the version from registry.");
@@ -111,7 +97,6 @@ foreach key(key_list){
   ##Clear Flag
   ESR = FALSE;
 
-  # Check for Firefox browser
   foxVer = registry_get_sz(key:key + "\Mozilla Firefox", item:"CurrentVersion");
   if(!foxVer){
     # 32bit version on 64bit os key is different
@@ -168,9 +153,7 @@ foreach key(key_list){
 
     if(!location) continue;
 
-    # Check for ESR installation
     if(!ESR){
-      ##Check contents of application.ini
       exePath = appPath + "\application.ini";
       share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:exePath);
       file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:exePath);
@@ -185,7 +168,6 @@ foreach key(key_list){
     }
 
     if(!ESR){
-      ##Check contents of platform.ini
       exePath = appPath + "\platform.ini";
       share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:exePath);
       file = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:exePath);
@@ -201,7 +183,6 @@ foreach key(key_list){
     }
 
     if(!ESR){
-      ##Check for ESR in update-settings.ini
       exePath = appPath + "\update-settings.ini";
 
       share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:exePath);
@@ -227,7 +208,6 @@ foreach key(key_list){
       if(isnull(cpe))
         cpe = 'cpe:/a:mozilla:firefox_esr';
 
-      ## Register for 64 bit app on 64 bit OS once again
       if("64" >< os_arch && "Wow6432Node" >!< key){
         set_kb_item(name:"Firefox-ESR64/Win/Ver", value:foxVer);
         cpe = build_cpe(value:foxVer, exp:"^([0-9.]+)([0-9a-zA-Z]*)", base:"cpe:/a:mozilla:firefox_esr:x64:");
@@ -245,7 +225,6 @@ foreach key(key_list){
       if(isnull(cpe))
         cpe = 'cpe:/a:mozilla:firefox';
 
-      ## Register for 64 bit app on 64 bit OS once again
       if("64" >< os_arch && "Wow6432Node" >!< key){
         set_kb_item(name:"Firefox64/Win/Ver", value:foxVer);
         cpe = build_cpe(value:foxVer, exp:"^([0-9.]+)([0-9a-zA-Z]*)", base:"cpe:/a:mozilla:firefox:x64:");

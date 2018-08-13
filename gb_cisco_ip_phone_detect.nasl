@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ip_phone_detect.nasl 5709 2017-03-24 08:56:58Z cfi $
+# $Id: gb_cisco_ip_phone_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Cisco Unified IP Phone Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105533");
-  script_version("$Revision: 5709 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-02-09 09:44:27 +0100 (Tue, 09 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -76,7 +76,7 @@ if( ! isnull( mod[2] ) )
 }
 
 hn = eregmatch( pattern:'Cisco (Unified )?IP Phone ([^ ),]+ \\(([^)]+)\\))', string:buf );
-if( ! isnull( hn[3] ) ) 
+if( ! isnull( hn[3] ) )
 {
   hostname = hn[3];
   set_kb_item( name:"cisco/ip_phone/hostname", value:hostname );

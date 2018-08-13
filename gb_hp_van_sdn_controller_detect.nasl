@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_van_sdn_controller_detect.nasl 10483 2018-07-11 13:15:07Z ckuersteiner $
+# $Id: gb_hp_van_sdn_controller_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # HP VAN SDN Controller Detection
 #
@@ -28,20 +28,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141287");
-  script_version("$Revision: 10483 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-07-11 15:15:07 +0200 (Wed, 11 Jul 2018) $");
-  script_tag(name: "creation_date", value: "2018-07-10 13:22:20 +0200 (Tue, 10 Jul 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10890 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-07-10 13:22:20 +0200 (Tue, 10 Jul 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("HP VAN SDN Controller Detection");
 
-  script_tag(name: "summary" , value: "Detection of HP VAN SDN Controller.
+  script_tag(name:"summary", value:"Detection of HP VAN SDN Controller.
 
 The script sends a connection request to the server and attempts to detect HP VAN SDN Controller.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -50,7 +50,7 @@ The script sends a connection request to the server and attempts to detect HP VA
   script_require_ports("Services/www", 8080, 8443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.hpe.com/");
+  script_xref(name:"URL", value:"https://www.hpe.com/");
 
   exit(0);
 }

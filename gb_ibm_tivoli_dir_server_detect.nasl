@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tivoli_dir_server_detect.nasl 7133 2017-09-14 14:31:13Z cfischer $
+# $Id: gb_ibm_tivoli_dir_server_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # IBM Tivoli Directory Server Version Detection
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801812");
-  script_version("$Revision: 7133 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-14 16:31:13 +0200 (Thu, 14 Sep 2017) $");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -79,7 +79,6 @@ send(socket:soc, data:req);
 result = recv(socket:soc, length:2000);
 close(soc);
 
-## Confirm the IBM Tivoli Directory Server
 if("International Business Machines" >< result && "ibmdirectoryversion1" >< result)
 {
   ## Extract Version From Response
@@ -99,12 +98,10 @@ if("International Business Machines" >< result && "ibmdirectoryversion1" >< resu
 
   if(tdsVer)
   {
-    ## Set IBM Tivoli Directory Server Version in KB
     set_kb_item(name:"IBM/TDS/Ver",value:tdsVer);
     log_message(port:port, data:"Tivoli Directory Server version " + tdsVer +
                        " was detected on the host");
-      
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe(value:tdsVer, exp:"^([0-9.]+)", base:"cpe:/a:ibm:tivoli_directory_server:");
     if(!isnull(cpe))
        register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);

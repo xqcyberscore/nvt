@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_github_enterprise_version.nasl 5800 2017-03-30 17:07:21Z mime $
+# $Id: gb_github_enterprise_version.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # GitHub Enterprise Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140226");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5800 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 19:07:21 +0200 (Thu, 30 Mar 2017) $");
+ script_version("$Revision: 10894 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2017-03-30 13:47:37 +0200 (Thu, 30 Mar 2017)");
  script_name("GitHub Enterprise Detection");
 
- script_tag(name: "summary" , value: "This script performs ssh based detection of GitHub Enterprise");
+ script_tag(name:"summary", value:"This script performs ssh based detection of GitHub Enterprise");
 
  script_tag(name:"qod_type", value:"package");
 

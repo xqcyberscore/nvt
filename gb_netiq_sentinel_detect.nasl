@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netiq_sentinel_detect.nasl 9065 2018-03-09 09:57:38Z ckuersteiner $
+# $Id: gb_netiq_sentinel_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # NetIQ Sentinel Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105618");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 9065 $");
- script_tag(name:"last_modification", value:"$Date: 2018-03-09 10:57:38 +0100 (Fri, 09 Mar 2018) $");
+ script_version("$Revision: 10888 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-04-21 16:30:22 +0200 (Thu, 21 Apr 2016)");
  script_name("NetIQ Sentinel Detection");
 
- script_tag(name: "summary" , value: "Detection of NetIQ Sentinel
+ script_tag(name:"summary", value:"Detection of NetIQ Sentinel
 
 The script sends a connection request to the server and attempts to extract the version number from the reply.");
 
@@ -86,7 +86,7 @@ if( "version" >< buf )
 if( '"rev":"' >< buf )
 {
   _r = eregmatch( pattern:'"rev":"([0-9]+[^"]+)"', string:buf );
-  if( ! isnull( _r[1] ) ) 
+  if( ! isnull( _r[1] ) )
   {
     set_kb_item( name:"netiq_sentinel/rev", value:_r[1] );
     revision = _r[1];

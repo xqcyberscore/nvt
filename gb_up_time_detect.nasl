@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_up_time_detect.nasl 5815 2017-03-31 09:50:39Z cfi $
+# $Id: gb_up_time_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # up.time Detection
 #
@@ -24,14 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running up.time, a server monitoring software.";
-
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103147");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5815 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:50:39 +0200 (Fri, 31 Mar 2017) $");
+ script_version("$Revision: 10929 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
  script_tag(name:"creation_date", value:"2011-04-29 15:04:36 +0200 (Fri, 29 Apr 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("up.time Detection");
@@ -42,14 +40,14 @@ if (description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 9999);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.uptimesoftware.com/");
+ script_tag(name:"summary", value:"This host is running up.time, a server monitoring software.");
+ script_xref(name:"URL", value:"http://www.uptimesoftware.com/");
  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);

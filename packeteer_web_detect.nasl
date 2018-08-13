@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: packeteer_web_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
+# $Id: packeteer_web_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 # Description: Packeteer/Bluecoat Web Management Interface Detection
 #
 # Authors:
@@ -24,17 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "Packeteer Web Management Interface Detection.
-The script sends a connection request to the server and attempts to
-determine if the host is a Packeteer/Bluecoat PacketShaper from the reply.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.80031";
-
 if (description)
     {
-    script_oid(SCRIPT_OID);
-    script_version("$Revision: 9584 $");
-    script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
+    script_oid("1.3.6.1.4.1.25623.1.0.80031");
+    script_version("$Revision: 10915 $");
+    script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
     script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
     script_tag(name:"cvss_base", value:"0.0");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -44,8 +38,10 @@ if (description)
     script_category(ACT_GATHER_INFO);
     script_copyright("This script is Copyright (c) 2006-2007 nnposter");
     script_dependencies("http_version.nasl");
-    script_require_ports("Services/www",80);
-    script_tag(name : "summary" , value : tag_summary);
+    script_require_ports("Services/www", 80);
+    script_tag(name:"summary", value:"Packeteer Web Management Interface Detection.
+The script sends a connection request to the server and attempts to
+determine if the host is a Packeteer/Bluecoat PacketShaper from the reply.");
     exit(0);
     }
 

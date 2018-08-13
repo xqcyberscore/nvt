@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dsl_detect.nasl 10637 2018-07-26 09:34:03Z santu $
+# $Id: gb_dlink_dsl_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Dlink DSL Devices Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812377");
-  script_version("$Revision: 10637 $");
+  script_version("$Revision: 10905 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 11:34:03 +0200 (Thu, 26 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-01-03 16:00:40 +0530 (Wed, 03 Jan 2018)");
   script_name("Dlink DSL Devices Detection");
 
@@ -78,7 +78,7 @@ foreach file( make_list( "/", "/cgi-bin/webproc" ) )
     {
       set_kb_item(name:"Dlink/DSL/model", value:model[1]);
       Model = model[1];
-    } 
+    }
     else{
       Model = "Unknown";
     }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ctorrent_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
+# $Id: secpod_ctorrent_detect.nasl 10883 2018-08-10 10:52:12Z cfischer $
 #
 # CTorrent/Enhanced CTorrent Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900556");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10883 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:52:12 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-06-01 09:35:57 +0200 (Mon, 01 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("CTorrent/Enhanced CTorrent Version Detection");
@@ -41,18 +41,16 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : "This script retrieves CTorrent/Enhanced
+  script_tag(name:"summary", value:"This script retrieves CTorrent/Enhanced
   CTorrent version and saves the result in KB.");
   exit(0);
 }
-
 
 include("ssh_func.inc");
 include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## start script
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);
@@ -69,14 +67,12 @@ foreach binaryFile (getPath)
       set_kb_item(name:"CTorrent/CTorrent_or_Enhanced/Installed", value:TRUE);
       set_kb_item(name:"Enhanced/CTorrent/Ver", value:ctorrentVer[4]);
 
-      ## build cpe and store it as host_detail
       register_and_report_cpe(app:"CTorrent/Enhanced CTorrent", ver:ctorrentVer[4], base:"cpe:/a:rahul:dtorrent:",
                               expr:"^([0-9.]+)", insloc:binaryFile);
     } else {
       set_kb_item(name:"CTorrent/CTorrent_or_Enhanced/Installed", value:TRUE);
       set_kb_item(name:"CTorrent/Ver", value:ctorrentVer[4]);
 
-      ## build cpe and store it as host_detail
       register_and_report_cpe(app:"CTorrent/Enhanced CTorrent", ver:ctorrentVer[4], base:"cpe:/a:rahul:dtorrent:",
                               expr:"^([0-9.]+)", insloc:binaryFile);
     }

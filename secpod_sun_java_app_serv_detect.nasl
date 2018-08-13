@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_java_app_serv_detect.nasl 9927 2018-05-23 04:13:59Z ckuersteiner $
+# $Id: secpod_sun_java_app_serv_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Sun Java System Application Server Version Detection
 #
@@ -33,8 +33,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900200");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9927 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 06:13:59 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 10902 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-02-06 06:53:35 +0100 (Fri, 06 Feb 2009)");
   script_tag(name:"cvss_base", value:"0.0");
 
@@ -45,7 +45,7 @@ if(description)
   script_dependencies("http_version.nasl");
   script_require_ports("Services/www", 80, 8080);
 
-  script_tag(name: "summary" , value: "This script detects the installed version of Application Server and sets
+  script_tag(name:"summary", value:"This script detects the installed version of Application Server and sets
 the version in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -69,12 +69,10 @@ if (rcvRes == NULL)
 ## Sun GlassFish Enterprise Server
 ## http://www.sun.com/software/products/appsrvr/index.jsp
 
-## Get Version from Response headers Sample Headers,
 ## Server: Sun-ONE-Application-Server/7.0.0_11
 ## Server: Sun-Java-System-Application-Server/7 2004Q2UR6
 ## Sun Java System Application Server Platform Edition 9.0_01
 
-## Grep for Sun Java System Application Server Version from Response Headers.
 appservVer = eregmatch(pattern:"Server: Sun[- a-zA-Z]+Application[- ]Server/?([a-zA-Z0-9._ ]+)", string: rcvRes);
 
 if (appservVer[1] != NULL) {
@@ -82,7 +80,6 @@ if (appservVer[1] != NULL) {
   appservVer = chomp(appservVer);
   set_kb_item(name:"sun_java_appserver/installed", value: TRUE);
 
-  ## build cpe and store it as host_detail
   register_and_report_cpe(app:"Sun Java Application Server", ver:appservVer,
                           base:"cpe:/a:sun:java_system_application_server:",
                           expr:"^([0-9.]+)", insloc:"/");
@@ -90,14 +87,12 @@ if (appservVer[1] != NULL) {
 }
 
 if (egrep(pattern:"Sun Java System Application Server .*", string:rcvRes)) {
-  # Grep the Java Application Server Version from response
   appservVer = eregmatch(pattern:"Platform Edition ([0-9.]+)", string:rcvRes);
   if(appservVer[1] != NULL){
     set_kb_item(name:"sun_java_appserver/installed", value: TRUE);
 
-    ## build cpe and store it as host_detail
-    register_and_report_cpe(app:"Sun Java Application Server", ver:appservVer[1], 
-                          base:"cpe:/a:sun:java_system_application_server:", 
+    register_and_report_cpe(app:"Sun Java Application Server", ver:appservVer[1],
+                          base:"cpe:/a:sun:java_system_application_server:",
                           expr:"^([0-9.]+)", insloc:"/");
     exit(0);
   }

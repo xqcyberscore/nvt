@@ -1,17 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mantis_detect.nasl 8139 2017-12-15 11:57:25Z cfischer $
+# $Id: mantis_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Mantis Detection
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
-#
-# Updated By: Madhuri D <dmadhuri@secpod.com> on 2010-09-13
-#    - To detect recent versions
-#
-# Updated By: Shakeel <bshakeel@secpod.com> on 2014-03-20
-# According to CR57 and new style script_tags.
 #
 # Copyright:
 # Copyright (c) 2009 Greenbone Networks GmbH
@@ -33,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100061");
-  script_version("$Revision: 8139 $");
+  script_version("$Revision: 10894 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:57:25 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-03-19 11:22:36 +0100 (Thu, 19 Mar 2009)");
   script_name("Mantis Detection");
   script_category(ACT_GATHER_INFO);
@@ -48,7 +42,7 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.mantisbt.org/");
 
-  script_tag(name:"summary", value:"Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Mantis a free popular web-based bugtracking system.
 
   This script sends HTTP GET request and try to get the version from the
@@ -99,7 +93,7 @@ foreach dir( make_list_unique( "/mantis", "/mantisbt", "/bugs", "/bugtracker", c
     }
 
     if( version == "unknown" ) {
-      ### Try to get the version from a possible unprotected /doc dir
+      # nb: /doc dir is sometimes unprotected
       url = dir + "/doc/RELEASE";
       req = http_get( item:url, port:port );
       buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
@@ -125,7 +119,6 @@ foreach dir( make_list_unique( "/mantis", "/mantisbt", "/bugs", "/bugtracker", c
     set_kb_item( name:"www/" + port + "/mantis", value: version + " under " + install );
     set_kb_item( name:"mantisbt/installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     ## not possible to combine cpe regex due to
     ## way cpe.inc is handling regular expression
 

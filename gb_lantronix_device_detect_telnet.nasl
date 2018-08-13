@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_device_detect_telnet.nasl 10541 2018-07-19 07:53:28Z mmartin $
+# $Id: gb_lantronix_device_detect_telnet.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Lantronix Devices Detection (Telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108302");
-  script_version("$Revision: 10541 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-19 09:53:28 +0200 (Thu, 19 Jul 2018) $");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-11-29 08:03:31 +0100 (Wed, 29 Nov 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -68,7 +68,7 @@ if( egrep( string:banner, pattern:"^Lantronix .* Version ", icase:FALSE ) ||
     # Some branded devices not providing the "Lantronix" banner but still using their firmware.
     # nb: Only use / report if this was detected on the (on some devices) hardcoded port 9999/tcp.
     ( port == 9999 && "Software version " >< banner && "MAC address " >< banner ) ) {
- 
+
   set_kb_item( name:"lantronix_device/detected", value:TRUE );
   set_kb_item( name:"lantronix_device/telnet/detected", value:TRUE );
   set_kb_item( name:"lantronix_device/telnet/port", value:port );
@@ -101,7 +101,7 @@ if( egrep( string:banner, pattern:"^Lantronix .* Version ", icase:FALSE ) ||
   } else if( _type = eregmatch( pattern:"Lantronix ([A-Z0-9-]+) ", string:banner ) ) {
     type = _type[1];
   }
-  
+
   if ( type == "unknown" ) {
     username = "login";
     access = FALSE;
@@ -114,10 +114,10 @@ if( egrep( string:banner, pattern:"^Lantronix .* Version ", icase:FALSE ) ||
       if ( "prompt for assistance" >< recv1 && "Username>" >< recv1 ) {
         send( socket:soc, data:username + '\r\n' );
         recv2 = recv( socket:soc, length:2048, timeout:10 );
- 
+
         if ( recv2 =~ "Local_.+>" ) {
           access = TRUE;
-          set_kb_item(name:"lantronix_device/telnet/" + port + "/access", value:TRUE );      
+          set_kb_item(name:"lantronix_device/telnet/" + port + "/access", value:TRUE );
         }
       }
 
@@ -138,7 +138,7 @@ if( egrep( string:banner, pattern:"^Lantronix .* Version ", icase:FALSE ) ||
   }
 
   set_kb_item( name:"lantronix_device/telnet/" + port + "/type", value:type );
-  
+
   if( mac = eregmatch( pattern:"MAC address ([0-9a-fA-F]{12})", string:bin2string( ddata:banner, noprint_replacement:'' ) ) ) {
     plain_mac = mac[1];
     for( i = 0; i < 12; i++ ) {

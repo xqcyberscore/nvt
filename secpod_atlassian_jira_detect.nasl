@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_atlassian_jira_detect.nasl 8433 2018-01-16 08:59:34Z ckuersteiner $
+# $Id: secpod_atlassian_jira_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Atlassian JIRA Detection
 #
@@ -27,30 +27,30 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902046");
-  script_version("$Revision: 8433 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-16 09:59:34 +0100 (Tue, 16 Jan 2018) $");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-04-30 15:20:35 +0200 (Fri, 30 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  
+
   script_name("Atlassian JIRA Detection");
 
-  script_tag(name: "summary" , value: "Detection of Atlassian JIRA
+  script_tag(name:"summary", value:"Detection of Atlassian JIRA
 
 The script sends a connection request to the server and attempts to detect the presence of Atlassian JIRA
 and to extract its version");
-  
+
   script_category(ACT_GATHER_INFO);
-  
+
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.atlassian.com/software/jira");
+  script_xref(name:"URL", value:"https://www.atlassian.com/software/jira");
 
 
   exit(0);
@@ -70,7 +70,6 @@ foreach dir (make_list_unique("/jira", cgi_dirs(port: port))) {
 
   rcvRes = http_get_cache(port: port, item: dir + "/login.jsp");
 
-  ## Confirm Atlassian JIRA Application
   if("Atlassian JIRA" >< rcvRes && "/secure/Dashboard.jspa" >< rcvRes)
   {
     version = "unknown";

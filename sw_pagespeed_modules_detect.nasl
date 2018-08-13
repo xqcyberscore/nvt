@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_pagespeed_modules_detect.nasl 7113 2017-09-13 06:03:30Z cfischer $
+# $Id: sw_pagespeed_modules_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # PageSpeed Modules (mod_pagespeed/ngx_pagespeed) Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111099");
-  script_version("$Revision: 7113 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-13 08:03:30 +0200 (Wed, 13 Sep 2017) $");
+  script_version("$Revision: 10898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-05-03 17:00:00 +0200 (Tue, 03 May 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,7 +49,7 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("host_details.inc");
 include("cpe.inc");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_manager_detect.nasl 5892 2017-04-07 13:36:48Z ckuerste $
+# $Id: gb_cisco_ucs_manager_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Cisco UCS Manager Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103804");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5892 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-07 15:36:48 +0200 (Fri, 07 Apr 2017) $");
+ script_version("$Revision: 10915 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2013-10-10 18:42:38 +0200 (Thu, 10 Oct 2013)");
  script_name("Cisco UCS Manager Detection");
 
@@ -42,7 +42,7 @@ if (description)
  script_require_ports("Services/www", 443);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "summary" , value : "The script sends a connection request to the server and attempts to
+ script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to
  extract the version number from the reply.");
 
  script_tag(name:"qod_type", value:"remote_banner");
@@ -84,7 +84,7 @@ else
 
 register_product(cpe:cpe, location:"/", port:port);
 
-log_message(data: build_detection_report(app:"Cisco UCS Manager", version:vers, install:"/", cpe:cpe, concluded: version[0]), 
+log_message(data: build_detection_report(app:"Cisco UCS Manager", version:vers, install:"/", cpe:cpe, concluded: version[0]),
             port:port);
 
 exit(0);

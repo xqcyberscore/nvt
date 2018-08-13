@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_eventlog_analyzer_detect.nasl 10475 2018-07-10 08:55:35Z ckuersteiner $
+# $Id: gb_manageengine_eventlog_analyzer_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # ManageEngine EventLog Analyzer Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140952");
-  script_version("$Revision: 10475 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-07-10 10:55:35 +0200 (Tue, 10 Jul 2018) $");
-  script_tag(name: "creation_date", value: "2018-04-06 11:12:19 +0700 (Fri, 06 Apr 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-04-06 11:12:19 +0700 (Fri, 06 Apr 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("ManageEngine EventLog Analyzer Detection");
 
-  script_tag(name: "summary" , value: "Detection of ManageEngine EventLog Analyzer.
+  script_tag(name:"summary", value:"Detection of ManageEngine EventLog Analyzer.
 
 The script sends a connection request to the server and attempts to detect ManageEngine EventLog Analyzer and to
 extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ extract its version.");
   script_require_ports("Services/www", 80, 443, 8400);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.manageengine.com/products/eventlog/");
+  script_xref(name:"URL", value:"https://www.manageengine.com/products/eventlog/");
 
   exit(0);
 }

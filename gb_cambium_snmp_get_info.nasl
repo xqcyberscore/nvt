@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cambium_snmp_get_info.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_cambium_snmp_get_info.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # Cambium Device Get SNMP Information Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140247");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7236 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+ script_version("$Revision: 10896 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2017-04-11 17:39:31 +0200 (Tue, 11 Apr 2017)");
  script_name("Cambium Device Get SNMP Information Detection");
 
- script_tag(name: "summary" , value: "This script request some information from the remote Cambium device via SNMP.");
+ script_tag(name:"summary", value:"This script request some information from the remote Cambium device via SNMP.");
 
  script_tag(name:"qod_type", value:"remote_active");
 

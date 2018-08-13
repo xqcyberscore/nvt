@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_magento_detect.nasl 8461 2018-01-18 11:46:03Z cfischer $
+# $Id: sw_magento_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Magento Shop Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105227");
-  script_version("$Revision: 8461 $");
+  script_version("$Revision: 10915 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-18 12:46:03 +0100 (Thu, 18 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-02-09 12:00:00 +0100 (Mon, 09 Feb 2015)");
   script_name("Magento Shop Detection");
   script_category(ACT_GATHER_INFO);
@@ -75,20 +75,16 @@ foreach dir( make_list_unique( "/", "/magento", "/shop", cgi_dirs( port:port ) )
   CE = FALSE;
   EE = FALSE;
 
-  ##Try to identify Magento from the admin backend
   url1 = dir + "/admin/";
   res1 = http_get_cache( item:url1, port:port );
 
-  ##Try to identify Magento from the main page
   url2 = dir + "/";
   res2 = http_get_cache( item:url2, port:port );
 
-  ##Try to identify Magento from the RELEASE_NOTES.txt
   url3 = dir + "/RELEASE_NOTES.txt";
   req  = http_get( item:url3, port:port );
   res3 = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-  ##Try to identify Magento from the Connet Manager login
   url4 = dir + "/downloader/";
   req  = http_get( item:url4, port:port );
   res4 = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
@@ -99,7 +95,6 @@ foreach dir( make_list_unique( "/", "/magento", "/shop", cgi_dirs( port:port ) )
     version = "unknown";
     if( dir == "" ) rootInstalled = TRUE;
 
-    ##Try to get version from the RELEASE_NOTES.txt
     ver = eregmatch( pattern:"==== ([0-9\.]+) ====", string:res3 );
 
     #The RELEASE_NOTES.txt is not updated anymore in versions later then 1.7.0.2
@@ -113,7 +108,6 @@ foreach dir( make_list_unique( "/", "/magento", "/shop", cgi_dirs( port:port ) )
     }
 
     if( ! flag )  {
-      ##Try go get the version from the Connect Manager login
       ver = eregmatch( pattern:"Magento Connect Manager ver. ([0-9\.]+)", string:res4 );
       if( ver[1] && version_is_less_equal( version:ver[1], test_version:"1.7.0.2" ) && ! outdatedChangelog ) {
         conclUrl = report_vuln_url( port:port, url:url4, url_only:TRUE );
@@ -121,22 +115,18 @@ foreach dir( make_list_unique( "/", "/magento", "/shop", cgi_dirs( port:port ) )
       }
     }
 
-    ##Try to identify either Community-Edition is installed or Enterprise Edition
     ##First try to read from Release Notes
     if( res3 && "magento" >< res3 && "=== Improvements ===" >< res3 ) {
-      ##Check for string Community_Edition from Release Notes
       if( res3 =~ "(c|C)ommunity_(e|E)dition" ) {
         CE    = TRUE;
         extra = '\nEdition gathered from:\n' + report_vuln_url( port:port, url:url3, url_only:TRUE );
       }
-      ##Check for string Enterprise Edition from Release Notes
       else if( res3 =~ "(e|E)nterprise (E|e)dition" ) {
         EE    = TRUE;
         extra = '\nEdition gathered from:\n' + report_vuln_url( port:port, url:url3, url_only:TRUE );
       }
     }
 
-    ##Try to get edition from License
     ##License opens up on accessing URL: /css/styles.css
     if( ! EE || ! CE )  {
       ##URL for Enterprise Edition

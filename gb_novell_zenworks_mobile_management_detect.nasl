@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_zenworks_mobile_management_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
+# $Id: gb_novell_zenworks_mobile_management_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Novell ZENworks Mobile Management Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103733");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 9996 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
+ script_version("$Revision: 10891 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2013-06-10 12:53:22 +0200 (Mon, 10 Jun 2013)");
  script_name("Novell ZENworks Mobile Management Detection");
 

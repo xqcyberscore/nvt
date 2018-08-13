@@ -1,20 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_detect_win.nasl 8143 2017-12-15 13:11:11Z cfischer $
+# $Id: secpod_php_detect_win.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # PHP Version Detection (Windows, local)
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
-#
-# Updated By : Rachana Shetty <srachana@secpod.com> on 2011-09-06
-# Updated to detect old versions.
-#
-# Updated By : Madhuri D <dmadhuri@secpod.com> on 2012-09-25
-# Updated to detect RC versions.
-#
-# Updated By: Thanga Prakash S <tprakash@secpod.com> on 2014-07-22
-# Updated to support 32 and 64 bit
 #
 # Copyright:
 # Copyright (c) 2011 SecPod, http://www.secpod.com
@@ -36,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902435");
-  script_version("$Revision: 8143 $");
+  script_version("$Revision: 10906 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-06-02 11:54:09 +0200 (Thu, 02 Jun 2011)");
   script_name("PHP Version Detection (Windows, local)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
 
-  script_tag(name:"summary", value:"Detection of installed version of PHP.
+  script_tag(name:"summary", value:"Detects the installed version of PHP.
 
   The script logs in via smb, searches for PHP in the registry and gets the
   version from registry");
@@ -66,11 +57,6 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-phpPath = "";
-phpVer = "";
-
-## Confirm  PHP
 key = "SOFTWARE\PHP\";
 if(!registry_key_exists(key:key))
 {
@@ -80,31 +66,26 @@ if(!registry_key_exists(key:key))
   }
 }
 
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
 ## Presently 64bit application is not available
-## Check for 32 bit App on 64 bit platform
 else if("x64" >< os_arch){
   key =  "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
-## Get PHP version
 phpVer = registry_get_sz(key:key, item:"version");
 phpPath = registry_get_sz(key:key, item:"InstallDir");
 if(!phpPath){
   phpPath = "Could not find the install location from registry";
 }
-
-## Get PHP version for old version
+#nb: older versions
 if(!phpVer)
 {
   if(!registry_key_exists(key:key)){
@@ -129,11 +110,9 @@ if( phpVer != NULL ) {
     phpVer = version[1] + "." + version[2];
   }
 
-  ## Set PHP version in KB
   set_kb_item( name:"PHP/Ver/win", value:phpVer );
   set_kb_item( name:"php/installed", value:TRUE );
 
-  ## build cpe and store it as host_detail
   if( ver ) {
     cpe = build_cpe( value:ver, exp:"([0-9.]+)(RC([0-9]+))?", base:"cpe:/a:php:php:" );
   } else {

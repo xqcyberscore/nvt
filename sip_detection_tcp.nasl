@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sip_detection_tcp.nasl 10183 2018-06-14 07:16:58Z cfischer $
+# $Id: sip_detection_tcp.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Detect SIP Compatible Hosts (TCP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108020");
-  script_version("$Revision: 10183 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 09:16:58 +0200 (Thu, 14 Jun 2018) $");
+  script_version("$Revision: 10929 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -51,7 +51,7 @@ if(description)
   exit(0);
 }
 
-include("global_settings.inc");
+
 include("misc_func.inc");
 include("sip.inc");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webnms_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_webnms_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # WebNMS Framework Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105859");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6063 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+ script_version("$Revision: 10911 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-08-09 11:21:09 +0200 (Tue, 09 Aug 2016)");
  script_name("WebNMS Framework Detection");
 
- script_tag(name: "summary" , value: "The script sends a connection request to the server and attempts to extract the version number from the reply.");
+ script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to extract the version number from the reply.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 

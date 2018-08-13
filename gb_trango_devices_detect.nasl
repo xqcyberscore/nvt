@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trango_devices_detect.nasl 4493 2016-11-14 10:52:54Z ckuerste $
+# $Id: gb_trango_devices_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Trango Systems Devices Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106387");
-  script_version("$Revision: 4493 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-14 11:52:54 +0100 (Mon, 14 Nov 2016) $");
+  script_version("$Revision: 10911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-11-14 16:34:55 +0700 (Mon, 14 Nov 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
 
   script_name("Trango Systems Devices Detection");
 
-  script_tag(name:"summary", value:"Detection of Trango Systems Devices 
+  script_tag(name:"summary", value:"Detection of Trango Systems Devices
 
   The script sends a connection request to the server and attempts to detect the presence of Trango Systems
 Devices and to extract its version.");
@@ -90,7 +90,7 @@ if ("WWW-Authenticate: Basic realm=" >< res && res =~ "(TrangoLINK|(Apex Lynx)|(
   set_kb_item(name: "trangosystems/detected", value: TRUE);
   set_kb_item(name: "trangosystems/model", value: model);
 
-  cpemod = tolower(str_replace(string: model, find: " ", replace: "")); 
+  cpemod = tolower(str_replace(string: model, find: " ", replace: ""));
   cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:trango:" + cpemod + ":");
   if (!cpe)
     cpe = "cpe:/a:trango:" + cpemod;

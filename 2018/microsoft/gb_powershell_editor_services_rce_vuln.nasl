@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_powershell_editor_services_rce_vuln.nasl 10538 2018-07-18 10:58:40Z santu $
+# $Id: gb_powershell_editor_services_rce_vuln.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft PowerShell Editor Services Remote Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813676");
-  script_version("$Revision: 10538 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-8327");
   script_bugtraq_id(104649);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-18 12:58:40 +0200 (Wed, 18 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 14:49:04 +0530 (Tue, 17 Jul 2018)");
   script_name("Microsoft PowerShell Editor Services Remote Code Execution Vulnerability");
 
@@ -45,14 +45,14 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an improper way of securing
   local connections by PowerShell Editor Services.");
 
-  script_tag(name:"impact" , value:"Successful exploitation will allow attackers 
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to execute malicious code on a vulnerable system.
 
   Impact Level: System/Application");
 
   script_tag(name:"affected", value:"PowerShell Editor Services 1.7.0 and below.");
 
-  script_tag(name:"solution", value:"Upgrade PowerShell Editor Services to 
+  script_tag(name:"solution", value:"Upgrade PowerShell Editor Services to
   version 1.8.0 or later. For updates refer to Reference links.");
 
   script_tag(name:"qod_type", value:"executable_version");
@@ -64,7 +64,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Windows");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
-  script_require_ports(139, 445);
+
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
   exit(0);
 }

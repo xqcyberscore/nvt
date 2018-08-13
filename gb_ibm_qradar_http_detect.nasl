@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_qradar_http_detect.nasl 9995 2018-05-29 06:29:32Z ckuersteiner $
+# $Id: gb_ibm_qradar_http_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # IBM QRadar Detection (HTTP)
 #
@@ -28,20 +28,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141118");
-  script_version("$Revision: 9995 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-29 08:29:32 +0200 (Tue, 29 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-05-29 10:38:49 +0700 (Tue, 29 May 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10896 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-05-29 10:38:49 +0700 (Tue, 29 May 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("IBM QRadar Detection (HTTP)");
 
-  script_tag(name: "summary" , value: "Detection of IBM QRadar.
+  script_tag(name:"summary", value:"Detection of IBM QRadar.
 
 The script sends a connection request to the server and attempts to detect IBM QRadar.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -50,7 +50,7 @@ The script sends a connection request to the server and attempts to detect IBM Q
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.ibm.com/security/security-intelligence/qradar");
+  script_xref(name:"URL", value:"https://www.ibm.com/security/security-intelligence/qradar");
 
   exit(0);
 }

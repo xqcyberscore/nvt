@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dnsmasq_54353.nasl 4451 2016-11-09 08:36:47Z cfi $
+# $Id: gb_dnsmasq_54353.nasl 10932 2018-08-13 02:58:36Z ckuersteiner $
 #
 # Dnsmasq Remote Denial of Service Vulnerability
 #
@@ -31,11 +31,12 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103509");
   script_bugtraq_id(54353);
-  script_version("$Revision: 4451 $");
+  script_cve_id("CVE-2012-3411");
+  script_version("$Revision: 10932 $");
   script_name("Dnsmasq Remote Denial of Service Vulnerability");
-  script_tag(name:"cvss_base", value:"9.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-09 09:36:47 +0100 (Wed, 09 Nov 2016) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-13 04:58:36 +0200 (Mon, 13 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-07-11 11:18:48 +0200 (Wed, 11 Jul 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
@@ -47,19 +48,11 @@ if(description)
   script_xref(name:"URL", value:"http://www.thekelleys.org.uk/dnsmasq/doc.html");
   script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=833033");
 
-  tag_summary = "Dnsmasq is prone to a denial-of-service vulnerability.";
-
-  tag_impact = "An attacker can exploit this issue to cause denial-of-service
-  conditions through a stream of spoofed DNS queries producing large results.";
-
-  tag_affected = "Dnsmasq versions 2.62 and prior are vulnerable.";
-
-  tag_solution = "Updates are available. Please see the references for details.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"An attacker can exploit this issue to cause denial-of-service
+  conditions through a stream of spoofed DNS queries producing large results.");
+  script_tag(name:"affected", value:"Dnsmasq versions 2.62 and prior are vulnerable.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
+  script_tag(name:"summary", value:"Dnsmasq is prone to a denial-of-service vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -71,7 +64,7 @@ include("version_func.inc");
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_proto( cpe:CPE, port:port ) ) exit( 0 );
+if( ! infos = get_app_version_and_proto( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );
 
 version = infos["version"];
 proto = infos["proto"];

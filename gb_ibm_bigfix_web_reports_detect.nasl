@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_bigfix_web_reports_detect.nasl 4583 2016-11-21 16:00:27Z mime $
+# $Id: gb_ibm_bigfix_web_reports_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # IBM BigFix Web Reports Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140069");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 4583 $");
- script_tag(name:"last_modification", value:"$Date: 2016-11-21 17:00:27 +0100 (Mon, 21 Nov 2016) $");
+ script_version("$Revision: 10899 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-11-21 10:22:25 +0100 (Mon, 21 Nov 2016)");
  script_name("IBM BigFix Web Reports Detection");
 
- script_tag(name: "summary" , value: "The script sends a connection request to the server and attempts to extract the version number from the reply.");
+ script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to extract the version number from the reply.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 

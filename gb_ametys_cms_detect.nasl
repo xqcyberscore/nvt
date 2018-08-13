@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ametys_cms_detect.nasl 9252 2018-03-29 06:39:56Z asteins $
+# $Id: gb_ametys_cms_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Ametys CMS Detection
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107256");
-  script_version("$Revision: 9252 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-29 08:39:56 +0200 (Thu, 29 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2017-11-13 09:55:00 +0700 (Mon, 13 Nov 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10922 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-11-13 09:55:00 +0700 (Mon, 13 Nov 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Ametys CMS Detection");
 
-  script_tag(name: "summary" , value: "Detection of Ametys CMS.
+  script_tag(name:"summary", value:"Detection of Ametys CMS.
 
 The script sends a connection request to the server and attempts to detect Ametys CMS and to extract its version.");
 
@@ -49,7 +49,7 @@ The script sends a connection request to the server and attempts to detect Amety
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.ametys.org/");
+  script_xref(name:"URL", value:"https://www.ametys.org/");
 
   exit(0);
 }

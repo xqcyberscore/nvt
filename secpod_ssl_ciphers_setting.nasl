@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ssl_ciphers_setting.nasl 8899 2018-02-21 10:29:08Z cfischer $
+# $Id: secpod_ssl_ciphers_setting.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # SSL/TLS: Cipher Settings
 #
@@ -58,7 +58,7 @@ sslv3_tls_ciphers['TLS_DH_anon_WITH_DES_CBC_SHA : Medium cipher'] = raw_string( 
 sslv3_tls_ciphers['TLS_DH_anon_WITH_3DES_EDE_CBC_SHA : Medium cipher'] = raw_string( 0x00, 0x1B );
 sslv3_tls_ciphers['TLS_FORTEZZA_KEA_WITH_NULL_SHA : Null cipher'] = raw_string( 0x00, 0x1C );
 sslv3_tls_ciphers['TLS_FORTEZZA_KEA_WITH_FORTEZZA_CBC_SHA : Weak cipher'] = raw_string( 0x00, 0x1D );
- 
+
 # Cipher suite ID 0x001E is double-attributed.
 sslv3_tls_ciphers['TLS_FORTEZZA_KEA_WITH_RC4_128_SHA or TLS_KRB5_WITH_DES_CBC_SHA : Weak cipher'] = raw_string( 0x00, 0x1E );
 
@@ -456,8 +456,8 @@ cipher_arrays = make_list( keys( sslv3_tls_ciphers ) );
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900238");
-  script_version("$Revision: 8899 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-21 11:29:08 +0100 (Wed, 21 Feb 2018) $");
+  script_version("$Revision: 10891 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-04-16 11:02:50 +0200 (Fri, 16 Apr 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kmccontrols_bac_devices_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_kmccontrols_bac_devices_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # KMC Controls BAC Devices Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106128");
- script_version ("$Revision: 6065 $");
- script_tag(name: "last_modification", value: "$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
- script_tag(name: "creation_date", value: "2016-07-12 10:36:40 +0700 (Tue, 12 Jul 2016)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10922 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2016-07-12 10:36:40 +0700 (Tue, 12 Jul 2016)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("KMC Controls BAC Devices Detection");
 
- script_tag(name: "summary" , value: "Detection of KMC Controls BAC-Devices
+ script_tag(name:"summary", value:"Detection of KMC Controls BAC-Devices
 
 Tries to detect KMC Controls BAC devices over the BACnet protocol.");
 
@@ -49,7 +49,7 @@ Tries to detect KMC Controls BAC devices over the BACnet protocol.");
  script_dependencies("gb_bacnet_detect.nasl");
  script_mandatory_keys("bacnet/vendor", "bacnet/model_name");
 
- script_xref(name: "URL", value: "http://www.kmccontrols.com");
+ script_xref(name:"URL", value:"http://www.kmccontrols.com");
 
 
  exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_abb_ipgateway_detect.nasl 10094 2018-06-06 10:07:35Z ckuersteiner $
+# $Id: gb_abb_ipgateway_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # ABB Welcome IP-Gateway Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141147");
-  script_version("$Revision: 10094 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-06 12:07:35 +0200 (Wed, 06 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2018-06-06 13:57:48 +0700 (Wed, 06 Jun 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10896 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-06-06 13:57:48 +0700 (Wed, 06 Jun 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("ABB Welcome IP-Gateway Detection");
 
-  script_tag(name: "summary" , value: "Detection of ABB Welcome IP-Gateway.
+  script_tag(name:"summary", value:"Detection of ABB Welcome IP-Gateway.
 
 The script sends a connection request to the server and attempts to detect ABB Welcome IP-Gateway and to extract
 its firmware version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ its firmware version.");
   script_require_ports("Services/www", 8081);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.busch-jaeger.de");
+  script_xref(name:"URL", value:"https://www.busch-jaeger.de");
 
   exit(0);
 }

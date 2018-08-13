@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvpn_udp_detect.nasl 7366 2017-10-06 10:55:39Z cfischer $
+# $Id: gb_openvpn_udp_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # OpenVPN Detection (UDP)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108028");
-  script_version("$Revision: 7366 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-06 12:55:39 +0200 (Fri, 06 Oct 2017) $");
+  script_version("$Revision: 10911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-05-28 12:39:47 +0100 (Wed, 28 May 2014)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("OpenVPN Detection (UDP)");  
+  script_name("OpenVPN Detection (UDP)");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
@@ -56,7 +56,7 @@ function vpn_req() {
 }
 
 port = get_unknown_port( default:1194, ipproto:"udp" );
-  
+
 soc = open_sock_udp( port );
 if( ! soc ) exit( 0 );
 

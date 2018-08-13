@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netscaler_ssh_detect.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
+# $Id: gb_netscaler_ssh_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Citrix Netscaler Detection (SSH)
 #
@@ -29,17 +29,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140667");
-  script_version("$Revision: 8384 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2018-01-12 09:26:50 +0700 (Fri, 12 Jan 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10894 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-01-12 09:26:50 +0700 (Fri, 12 Jan 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "package");
+  script_tag(name:"qod_type", value:"package");
 
   script_name("Citrix Netscaler Detection (SSH)");
 
-  script_tag(name: "summary", value: "Detection of Citrix Netscaler
+  script_tag(name:"summary", value:"Detection of Citrix Netscaler
 
 This script performs SSH based detection of Citrix NetScaler.");
 
@@ -49,7 +49,7 @@ This script performs SSH based detection of Citrix NetScaler.");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("citrix_netscaler/found");
 
-  script_xref(name: "URL", value: "https://www.citrix.com/products/netscaler-adc/");
+  script_xref(name:"URL", value:"https://www.citrix.com/products/netscaler-adc/");
 
   exit(0);
 }

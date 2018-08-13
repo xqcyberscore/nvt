@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_multiple_vuln.nasl 9834 2018-05-15 08:51:49Z santu $
+# $Id: gb_asp_dotnet_core_multiple_vuln.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # ASP.NET Core Multiple Vulnerabilities (Windows)
 #
@@ -28,38 +28,37 @@ CPE = "cpe:/a:microsoft:asp.net_core";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812950");
-  script_version("$Revision: 9834 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-0785", "CVE-2018-0784");
   script_bugtraq_id(102379, 102377);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 10:51:49 +0200 (Tue, 15 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-02-27 12:03:33 +0530 (Tue, 27 Feb 2018)");
   script_name("ASP.NET Core Multiple Vulnerabilities (Windows)");
 
-  script_tag(name:"summary" , value:"This host is installed with ASP.NET Core
+  script_tag(name:"summary", value:"This host is installed with ASP.NET Core
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - An error in the ASP.NET Core web application, created using vulnerable
     project templates, which fails to properly sanitize web requests.
 
   - An error in the individual authentication templates for ASP.NET Core.");
 
-  script_tag(name:"impact" , value:"Successful exploitation will allow an attacker
+  script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   who successfully exploited these vulnerabilities to change the recovery codes
   associated with the victim's user account without his/her consent.
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected" , value:"ASP.NET Core 2.0 with .NET SDK version
+  script_tag(name:"affected", value:"ASP.NET Core 2.0 with .NET SDK version
   2.0.0, 2.0.2, 2.0.3, 2.1.2 and 2.1.3");
 
-  script_tag(name:"solution" , value:"Upgrade to ASP.NET Core 2.0 with .NET SDK
+  script_tag(name:"solution", value:"Upgrade to ASP.NET Core 2.0 with .NET SDK
   version 2.1.4 or later. For details refer to,
   https://github.com/aspnet/Announcements/issues/284
   https://github.com/aspnet/Announcements/issues/285");
@@ -68,8 +67,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://github.com/aspnet/Announcements/issues/284");
-  script_xref(name : "URL" , value : "https://github.com/aspnet/Announcements/issues/285");
+  script_xref(name:"URL", value:"https://github.com/aspnet/Announcements/issues/284");
+  script_xref(name:"URL", value:"https://github.com/aspnet/Announcements/issues/285");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icewarp_web_detect.nasl 9845 2018-05-15 13:33:19Z cfischer $
+# $Id: gb_icewarp_web_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # IceWarp Web Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140329");
-  script_version("$Revision: 9845 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-15 15:33:19 +0200 (Tue, 15 May 2018) $");
-  script_tag(name: "creation_date", value: "2017-08-28 14:59:29 +0700 (Mon, 28 Aug 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-28 14:59:29 +0700 (Mon, 28 Aug 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("IceWarp Web Detection");
 
-  script_tag(name: "summary" , value: "Detection of IceWarp Web UI.
+  script_tag(name:"summary", value:"Detection of IceWarp Web UI.
 
 The script sends a connection request to the server and attempts to detect IceWarp Web UI and to
 extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -50,7 +50,7 @@ extract its version.");
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("IceWarp/banner");
 
-  script_xref(name: "URL", value: "http://www.icewarp.com/");
+  script_xref(name:"URL", value:"http://www.icewarp.com/");
 
   exit(0);
 }
@@ -58,7 +58,7 @@ extract its version.");
 include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
-include("http_keepalive.inc");
+
 
 port = get_http_port(default: 80);
 

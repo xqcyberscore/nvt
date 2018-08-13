@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_web_console_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_sun_java_web_console_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Sun Java Web Console Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800825");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5499 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_version("$Revision: 10908 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-07-09 10:58:23 +0200 (Thu, 09 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Sun Java Web Console Version Detection");
@@ -40,7 +40,7 @@ if(description)
   script_dependencies("find_service.nasl");
   script_require_ports("Services/www", 6789);
 
-  script_tag(name : "summary" , value : "This script detects the installed version of Java Web Console
+  script_tag(name:"summary", value:"This script detects the installed version of Java Web Console
   and sets the result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -60,11 +60,9 @@ jwcPort = get_http_port( default:6789 );
 sndReq1 = http_get( item:"/console/faces/jsp/login/BeginLogin.jsp", port:jwcPort );
 rcvRes1 = http_keepalive_send_recv( port:jwcPort, data:sndReq1, bodyonly:FALSE );
 
-# Check for Login Page with proper Response
 if( rcvRes1 =~ "<title>Log In - Sun Java\(TM\) Web Console<" &&
    egrep( pattern:"^HTTP/.* 200 OK", string:rcvRes1 ) ) {
 
-  # Grep the Version Page Path in Login Page
   jspPath = eregmatch( pattern:"versionWin = window.open\('([a-zA_Z0-9/_.]+)'",
                       string:rcvRes1 );
 
@@ -72,11 +70,9 @@ if( rcvRes1 =~ "<title>Log In - Sun Java\(TM\) Web Console<" &&
   sndReq2 = http_get( item:jspPath[1], port:jwcPort );
   rcvRes2 = http_keepalive_send_recv( port:jwcPort, data:sndReq2, bodyonly:FALSE );
 
-  # Check for Version Page with proper Response
   if( rcvRes2 =~ ">Display Product Version - Sun Java\(TM\) Web Console<" &&
      egrep( pattern:"^HTTP/.* 200 OK", string:rcvRes2 ) ) {
 
-    # Grep and Set KB for Java Web Console version
     jwcVer = eregmatch( pattern:">([0-9]\.[0-9.]+)<", string:rcvRes2 );
     if( jwcVer[1] != NULL ) {
       set_kb_item( name:"Sun/JavaWebConsole/Ver", value:jwcVer[1] );
@@ -85,12 +81,10 @@ if( rcvRes1 =~ "<title>Log In - Sun Java\(TM\) Web Console<" &&
 
   set_kb_item( name:"Sun/JavaWebConsole/installed", value:TRUE );
 
-  ## Build the CPE
   cpe = build_cpe(value:jwcVer[1], exp:"^([0-9.]+)", base:"cpe:/a:sun:java_web_console:");
   if( isnull( cpe ) )
     cpe = 'cpe:/a:sun:java_web_console';
 
-  ## Register the product
   register_product( cpe:cpe, location:jwcPort + '/tcp', port:jwcPort );
 
   log_message( data: build_detection_report(app:"Sun Java Web Console",

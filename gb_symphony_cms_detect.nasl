@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symphony_cms_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_symphony_cms_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # Symphony CMS Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801219");
-  script_version("$Revision: 7000 $");
+  script_version("$Revision: 10896 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-06-11 14:27:58 +0200 (Fri, 11 Jun 2010)");
   script_name("Symphony CMS Version Detection");
 
@@ -53,7 +53,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get http Port
 cmsPort = get_http_port(default:80);
 if(!cmsPort){
   exit(0);
@@ -73,23 +72,20 @@ foreach dir(make_list_unique("/", "/cms", "/symphony", cgi_dirs( port:cmsPort)))
   sndReq2 = http_get( item: dir + "/index.php?mode=administration", port:cmsPort);
   rcvRes2 = http_keepalive_send_recv( port:cmsPort, data:sndReq2);
 
-  ## Confirm the application
   if( ( rcvRes =~ "HTTP/1.. 200" && ( "<title>Login &ndash; Symphony</title>" >< rcvRes || "<title>Login &ndash; Symphony CMS</title>" >< rcvRes || "<h1>Symphony</h1>" >< rcvRes || "<legend>Login</legend>" >< rcvRes ) ) ||
       ( rcvRes2 =~ "HTTP/1.. 200" && ( "<title>Login &ndash; Symphony</title>" >< rcvRes2 || "<title>Login &ndash; Symphony CMS</title>" >< rcvRes2 || "<h1>Symphony</h1>" >< rcvRes2 || "<legend>Login</legend>" >< rcvRes2 ) ) ) {
 
-    ## Get log file
     req = http_get( item: dir + "/manifest/logs/main", port:cmsPort);
     res = http_keepalive_send_recv(port:cmsPort, data:req);
 
     version = "unknown";
 
-    ## Get Version from log file
     ver = eregmatch( pattern:"[v|V]ersion: ([0-9.]+)", string:res);
     if(!isnull(ver[1])){
       version = ver[1];
     } else
     {
-      ## Get README file for Symphony 1.7.x
+      # nb: for Symphony 1.7.x
       req = http_get( item: dir + "/README", port:cmsPort);
       res = http_keepalive_send_recv( port:cmsPort, data:req );
       ver = eregmatch( pattern:"Symphony ([0-9.]+)", string:res);
@@ -97,7 +93,7 @@ foreach dir(make_list_unique("/", "/cms", "/symphony", cgi_dirs( port:cmsPort)))
         version = ver[1];
       } else
       {
-        ## Get README.markdown file for Symphony 2.x
+        # nb: for Symphony 2.x
         req = http_get( item: dir + "/README.markdown", port:cmsPort);
         res = http_keepalive_send_recv( port:cmsPort, data:req);
         ver = eregmatch(pattern:"[v|V]ersion: ([0-9.]+)", string:res);
@@ -105,12 +101,10 @@ foreach dir(make_list_unique("/", "/cms", "/symphony", cgi_dirs( port:cmsPort)))
       }
     }
 
-    ## Set Symphony CMS version in KB
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + cmsPort + "/symphony", value:tmp_version );
     set_kb_item( name:"symphony/installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:symphony-cms:symphony_cms:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:symphony-cms:symphony_cms';

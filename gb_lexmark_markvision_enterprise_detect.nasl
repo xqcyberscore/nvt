@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lexmark_markvision_enterprise_detect.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: gb_lexmark_markvision_enterprise_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Lexmark MarkVision Enterprise Detection
 #
@@ -31,12 +31,12 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 7052 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+ script_version("$Revision: 10894 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2015-01-16 13:40:56 +0100 (Fri, 16 Jan 2015)");
  script_name("Lexmark MarkVision Enterprise Detection");
 
- script_tag(name: "summary" , value: "The script sends a connection
+ script_tag(name:"summary", value:"The script sends a connection
 request to the server and attempts to extract the version number
 from the reply.");
 

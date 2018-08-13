@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_log_event_manager_web_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
+# $Id: gb_solarwinds_log_event_manager_web_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # SolarWinds Log & Event Manager Web Interface Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105448");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8137 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
+ script_version("$Revision: 10929 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
  script_tag(name:"creation_date", value:"2015-11-12 14:10:31 +0100 (Thu, 12 Nov 2015)");
  script_name("SolarWinds Log & Event Manager Web Interface Detection");
 
- script_tag(name: "summary" , value: "The script sends a connection request to the server and attempts to extract the version number from the reply.");
+ script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to extract the version number from the reply.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
@@ -51,7 +51,7 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 include("host_details.inc");
 
 port = get_http_port( default:8080 );

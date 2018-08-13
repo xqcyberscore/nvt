@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cobbler_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
+# $Id: gb_cobbler_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Cobbler Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_oid("1.3.6.1.4.1.25623.1.0.103514");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9996 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
+ script_version("$Revision: 10902 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2012-07-12 16:08:56 +0200 (Thu, 12 Jul 2012)");
  script_name("Cobbler Detection");
  script_category(ACT_GATHER_INFO);
@@ -42,7 +42,7 @@ if (description)
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "summary" , value : "Detection of Cobbler
+ script_tag(name:"summary", value:"Detection of Cobbler
 
 The script sends a connection request to the server and attempts to
 extract the version number from the reply.");

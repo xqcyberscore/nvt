@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pis_ssh_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
+# $Id: gb_cisco_pis_ssh_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Cisco Prime Infrastructure Detection (SSH)
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105612");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8137 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
+ script_version("$Revision: 10888 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-04-20 15:22:13 +0200 (Wed, 20 Apr 2016)");
  script_name("Cisco Prime Infrastructure Detection (SSH)");
 
- script_tag(name: "summary" , value: "This Script performs SSH based detection of Cisco Prime Infrastructure");
+ script_tag(name:"summary", value:"This Script performs SSH based detection of Cisco Prime Infrastructure");
 
  script_tag(name:"qod_type", value:"package");
 
@@ -64,7 +64,7 @@ vers = 'unknown';
 # Cisco Application Deployment Engine OS Release: 2.3
 # ADE-OS Build Version: 2.3.0.101-root
 # ADE-OS System Architecture: x86_64
-# 
+#
 # Copyright (c) 2005-2010 by Cisco Systems, Inc.
 # All rights reserved.
 # Hostname: cpi
@@ -72,7 +72,7 @@ vers = 'unknown';
 #
 # Version information of installed applications
 # ---------------------------------------------
-# 
+#
 # Cisco Prime Infrastructure
 # ********************************************************
 # Version : 3.0.0
@@ -97,7 +97,7 @@ if( ! isnull( version[1] ) )
 }
 
 _build = eregmatch( pattern:'Build\\s*:\\s*([0-9]+[^\r\n]+)', string:system );
-if( ! isnull( _build[1] ) ) 
+if( ! isnull( _build[1] ) )
 {
   build =  _build[1];
   set_kb_item( name:"cisco_pis/" + source + "/build", value:build );
@@ -150,10 +150,10 @@ set_kb_item( name:"cisco_pis/" + source + "/version", value:vers );
 
 if( installed_patches )  set_kb_item( name:"cisco_pis/" + source + "/installed_patches", value:installed_patches );
 
-report = 'Detected Cisco Prime Infrastructure\n' + 
-         'Version: ' + vers + '\n' + 
-         'Location: ' + source + '\n' + 
-         'CPE: ' + cpe + '\n' + 
+report = 'Detected Cisco Prime Infrastructure\n' +
+         'Version: ' + vers + '\n' +
+         'Location: ' + source + '\n' +
+         'CPE: ' + cpe + '\n' +
          'Concluded: "' + version[0] + '"';
 
 if( build ) report += '\nBuild: ' + build;

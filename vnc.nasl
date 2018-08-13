@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vnc.nasl 4944 2017-01-04 17:15:26Z mime $
+# $Id: vnc.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # VNC Server and Protocol Version Detection
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10342");
-  script_version("$Revision: 4944 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-04 18:15:26 +0100 (Wed, 04 Jan 2017) $");
+  script_version("$Revision: 10906 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -43,17 +43,13 @@ if(description)
   script_dependencies("find_service2.nasl");
   script_require_ports("Services/vnc", 5900, 5901, 5902);
 
-  tag_summary = "The remote host is running a remote display software (VNC)
+  script_tag(name:"solution", value:"Make sure the use of this software is done in accordance with your
+  corporate security policy, filter incoming traffic to this port.");
+  script_tag(name:"summary", value:"The remote host is running a remote display software (VNC)
   which permits a console to be displayed remotely.
 
-  This allows authenticated users of the remote host to take its 
-  control remotely.";
-
-  tag_solution = "Make sure the use of this software is done in accordance with your
-  corporate security policy, filter incoming traffic to this port.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  This allows authenticated users of the remote host to take its
+  control remotely.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

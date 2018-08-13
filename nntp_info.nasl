@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: nntp_info.nasl 10254 2018-06-19 10:43:15Z jschulte $
+# $Id: nntp_info.nasl 10922 2018-08-10 19:21:48Z cfischer $
 # Description: Misc information on News server
 #
 # Authors:
@@ -28,7 +28,7 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.11033");
- script_version("$Revision: 10254 $");
+ script_version("$Revision: 10922 $");
  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018)$");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
@@ -56,8 +56,8 @@ if(description)
  #
  script_add_preference(name:"Local distribution", type:"checkbox", value:"yes");
  script_add_preference(name:"No archive", type:"checkbox", value:"no");
- script_tag(name :"solution", value :"Disable the server if it is not used");
- script_tag(name :"summary", value :"This script detects if the NNTP server is open to outside,
+ script_tag(name:"solution", value:"Disable the server if it is not used");
+ script_tag(name:"summary", value:"This script detects if the NNTP server is open to outside,
 counts the number of groups, and tries to post outside.
 This channel may been used by virus or trojan.");
  exit(0);

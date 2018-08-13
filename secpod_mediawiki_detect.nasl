@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mediawiki_detect.nasl 9540 2018-04-19 13:04:40Z jschulte $
+# $Id: secpod_mediawiki_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # MediaWiki Version Detection
 #
@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900420");
-  script_version("$Revision: 9540 $");
+  script_version("$Revision: 10913 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 15:04:40 +0200 (Thu, 19 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-12-29 13:55:43 +0100 (Mon, 29 Dec 2008)");
   script_name("MediaWiki Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -39,7 +39,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of MediaWiki.
+  script_tag(name:"summary", value:"Detects the installed version of MediaWiki.
 
   This script sends HTTP GET request and try to get the version from the
   response, and sets the result in KB.");

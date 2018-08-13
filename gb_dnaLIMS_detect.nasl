@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dnaLIMS_detect.nasl 5565 2017-03-14 07:18:33Z cfi $
+# $Id: gb_dnaLIMS_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # dnaLIMS Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140182");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5565 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-14 08:18:33 +0100 (Tue, 14 Mar 2017) $");
+ script_version("$Revision: 10915 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2017-03-13 16:23:57 +0100 (Mon, 13 Mar 2017)");
  script_name("dnaLIMS Detection");
 
- script_tag(name: "summary" , value: "The script sends a connection request to the server and attempts to extract the version number from the reply.");
+ script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to extract the version number from the reply.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 

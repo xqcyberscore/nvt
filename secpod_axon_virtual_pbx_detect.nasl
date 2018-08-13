@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_axon_virtual_pbx_detect.nasl 10065 2018-06-04 12:10:31Z asteins $
+# $Id: secpod_axon_virtual_pbx_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Axon Virtual PBX Version Detection (SIP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900983");
-  script_version("$Revision: 10065 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 14:10:31 +0200 (Mon, 04 Jun 2018) $");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-11-26 06:39:46 +0100 (Thu, 26 Nov 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -67,15 +67,13 @@ if( "Axon Virtual PBX" >< banner ) {
   set_kb_item( name:"Axon-Virtual-PBX/installed", value:TRUE );
   set_kb_item( name:"Axon-Virtual-PBX/sip/" + port + "/ver", value:version );
   set_kb_item( name:"Axon-Virtual-PBX/sip/installed", value:TRUE );
-  
-  ## build cpe and store it as host_detail
+
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:nch:axon_virtual_pbx:" );
   if( isnull( cpe ) )
     cpe = 'cpe:/a:nch:axon_virtual_pbx';
 
   location = port + "/" + proto;
 
-  ## Register Product and Build Report
   register_product( cpe:cpe, port:port, location:location, service:"sip", proto:proto );
   log_message( data:build_detection_report( app:"Axon Virtual PBX",
                                             version:version,

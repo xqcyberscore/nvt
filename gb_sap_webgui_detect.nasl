@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_webgui_detect.nasl 9959 2018-05-25 11:00:34Z ckuersteiner $
+# $Id: gb_sap_webgui_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # SAP Web GUI Detection
 #
@@ -28,20 +28,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141116");
-  script_version("$Revision: 9959 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-25 13:00:34 +0200 (Fri, 25 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-05-25 13:20:49 +0700 (Fri, 25 May 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10908 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-05-25 13:20:49 +0700 (Fri, 25 May 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("SAP Web GUI Detection");
 
-  script_tag(name: "summary" , value: "Detection of SAP Web GUI.
+  script_tag(name:"summary", value:"Detection of SAP Web GUI.
 
 SAP Web GUI offers the equivalent functions as a SAP GUI Client over HTTP/S accessible through a browser.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -50,7 +50,7 @@ SAP Web GUI offers the equivalent functions as a SAP GUI Client over HTTP/S acce
   script_require_ports("Services/www", 80, 443, 8000);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://wiki.scn.sap.com/wiki/display/ATopics/SAP+GUI+Family");
+  script_xref(name:"URL", value:"https://wiki.scn.sap.com/wiki/display/ATopics/SAP+GUI+Family");
 
   exit(0);
 }

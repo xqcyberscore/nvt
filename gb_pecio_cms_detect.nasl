@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pecio_cms_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: gb_pecio_cms_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # Pecio CMS Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801443");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9633 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+  script_version("$Revision: 10913 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-09-10 16:37:50 +0200 (Fri, 10 Sep 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Pecio CMS Version Detection");
@@ -40,7 +40,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : "This script detects the installed version of Pecio CMS and
+  script_tag(name:"summary", value:"This script detects the installed version of Pecio CMS and
   sets the result in KB.");
   script_tag(name:"qod_type", value:"remote_banner");
   exit(0);

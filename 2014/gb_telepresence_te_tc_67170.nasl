@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telepresence_te_tc_67170.nasl 8373 2018-01-11 10:29:41Z cfischer $
+# $Id: gb_telepresence_te_tc_67170.nasl 10904 2018-08-10 14:24:40Z mmartin $
 #
 # Cisco TelePresence TC and TE Software Multiple Security Vulnerabilities
 #
@@ -27,12 +27,35 @@
 
 CPE = "cpe:/a:cisco:telepresence_mcu_mse_series_software";
 
-tag_impact = "Attackers can exploit these issues to execute arbitrary code in the
+if (description)
+{
+ script_oid("1.3.6.1.4.1.25623.1.0.105026");
+ script_bugtraq_id(67170);
+ script_cve_id("CVE-2014-2162", "CVE-2014-2163", "CVE-2014-2164", "CVE-2014-2165", "CVE-2014-2166", "CVE-2014-2167", "CVE-2014-2168", "CVE-2014-2169", "CVE-2014-2170", "CVE-2014-2171", "CVE-2014-2172", "CVE-2014-2173", "CVE-2014-2175");
+ script_tag(name:"cvss_base", value:"10.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+ script_version("$Revision: 10904 $");
+
+ script_name("Cisco TelePresence TC and TE Software Multiple Security Vulnerabilities");
+
+ script_xref(name:"URL", value:"http://www.securityfocus.com/bid/67170");
+ script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140430-tcte");
+
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2014-05-12 16:46:52 +0200 (Mon, 12 May 2014)");
+ script_category(ACT_GATHER_INFO);
+ script_tag(name:"qod_type", value:"remote_banner");
+ script_family("CISCO");
+ script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+ script_dependencies("gb_cisco_telepresence_detect_snmp.nasl", "gb_cisco_telepresence_detect_ftp.nasl");
+ script_mandatory_keys("cisco/telepresence/typ", "cisco/telepresence/version");
+
+ script_tag(name:"impact", value:"Attackers can exploit these issues to execute arbitrary code in the
 context of the device, bypass authentication mechanisms, gain
 unauthorized access, execute arbitrary commands, or cause denial-of-
-service conditions; other attacks may also be possible.";
-
-tag_insight = "Cisco TelePresence TC and TE Software are prone to
+service conditions; other attacks may also be possible.");
+ script_tag(name:"vuldetect", value:"Check the Firmware-Version.");
+ script_tag(name:"insight", value:"Cisco TelePresence TC and TE Software are prone to
 the following security vulnerabilities:
 
 1. Multiple remote denial-of-service vulnerabilities
@@ -42,51 +65,18 @@ the following security vulnerabilities:
 5. A heap-based buffer-overflow vulnerability
 6. A local buffer-overflow vulnerability
 7. A local authentication-bypass vulnerability
-8. A remote denial-of-service vulnerability";
-
-tag_affected = "Cisco TelePresence MX Series
+8. A remote denial-of-service vulnerability");
+ script_tag(name:"solution", value:"Updates are available.");
+ script_tag(name:"solution_type", value:"VendorFix");
+ script_tag(name:"summary", value:"Cisco TelePresence TC and TE Software are prone to multiple
+security vulnerabilities.");
+ script_tag(name:"affected", value:"Cisco TelePresence MX Series
 Cisco TelePresence System EX Series
 Cisco TelePresence Integrator C Series
 Cisco TelePresence Profiles Series
 Cisco TelePresence Quick Set Series
 Cisco TelePresence System T Series
-Cisco TelePresence VX Clinical Assistant";
-
-tag_summary = "Cisco TelePresence TC and TE Software are prone to multiple
-security vulnerabilities.";
-
-tag_solution = "Updates are available.";
-tag_vuldetect = "Check the Firmware-Version.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.105026");
- script_bugtraq_id(67170);
- script_cve_id("CVE-2014-2162","CVE-2014-2163","CVE-2014-2164","CVE-2014-2165","CVE-2014-2166","CVE-2014-2167","CVE-2014-2168","CVE-2014-2169","CVE-2014-2170","CVE-2014-2171","CVE-2014-2172","CVE-2014-2173","CVE-2014-2175");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 8373 $");
-
- script_name("Cisco TelePresence TC and TE Software Multiple Security Vulnerabilities");
-
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/67170");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20140430-tcte");
- 
- script_tag(name:"last_modification", value:"$Date: 2018-01-11 11:29:41 +0100 (Thu, 11 Jan 2018) $");
- script_tag(name:"creation_date", value:"2014-05-12 16:46:52 +0200 (Mon, 12 May 2014)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_telepresence_detect_snmp.nasl","gb_cisco_telepresence_detect_ftp.nasl");
- script_mandatory_keys("cisco/telepresence/typ","cisco/telepresence/version");
-
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+Cisco TelePresence VX Clinical Assistant");
 
  exit(0);
 }
@@ -94,7 +84,7 @@ if (description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! vers =  get_app_version(cpe:CPE) ) exit( 0 ); 
+if( ! vers =  get_app_version(cpe:CPE) ) exit( 0 );
 if( ! typ = get_kb_item( "cisco/telepresence/typ" ) ) exit( 0 );
 
 if( typ !~ ' T(1|3)$' && typ !~ ' EX(6|9)0$' && typ !~ ' C(2|4|6|9)0$' &&

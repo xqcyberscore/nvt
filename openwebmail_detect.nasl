@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: openwebmail_detect.nasl 9045 2018-03-07 13:52:25Z cfischer $
+# $Id: openwebmail_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Open WebMail Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14221");
-  script_version("$Revision: 9045 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 14:52:25 +0100 (Wed, 07 Mar 2018) $");
+  script_version("$Revision: 10894 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -42,13 +42,11 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.openwebmail.org");
 
-  tag_summary = "This script detects whether the target is running Open WebMail and
+  script_tag(name:"summary", value:"This script detects whether the target is running Open WebMail and
   extracts version numbers and locations of any instances found.
 
   Open WebMail is a webmail package written in Perl that provides access
-  to mail accounts via POP3 or IMAP.";
-
-  script_tag(name:"summary", value:tag_summary);
+  to mail accounts via POP3 or IMAP.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -108,13 +106,11 @@ foreach dir( make_list_unique( "/", "/cgi-bin/openwebmail", "/openwebmail-cgi", 
         if( ! isnull( data_url ) ) data_url = data_url[1];
         break; # nb: only worried about first match.
       }
-      # Try to get doc/changes.txt under data directory.
       if( ! isnull( data_url ) ) {
         url = data_url + "/doc/changes.txt";
         req = http_get( item:url, port:port );
         res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-        # Try to get version number.
         # nb: this won't identify intermediate releases, only full ones.
         if( ! isnull( res ) && egrep( string:res, pattern:"^HTTP/1\.[01] 200" ) ) {
           pat = "^[0-1][0-9]/[0-3][0-9]/20[0-9][0-9]( +.version .+)?";

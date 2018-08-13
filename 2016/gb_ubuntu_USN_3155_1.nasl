@@ -26,15 +26,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842991");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 10909 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:03:01 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-12-14 05:53:54 +0100 (Wed, 14 Dec 2016)");
   script_cve_id("CVE-2016-9080", "CVE-2016-9893", "CVE-2016-9894", "CVE-2016-9895",
 		"CVE-2016-9896", "CVE-2016-9897", "CVE-2016-9898", "CVE-2016-9899",
 		"CVE-2016-9900", "CVE-2016-9901", "CVE-2016-9902", "CVE-2016-9903",
 		"CVE-2016-9904");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for firefox USN-3155-1");
   script_tag(name: "summary", value: "Check the version of firefox");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_diagnostics_server_detect.nasl 8952 2018-02-26 11:51:34Z santu $
+# $Id: gb_hp_diagnostics_server_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # HP Diagnostics Server Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802389");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8952 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-26 12:51:34 +0100 (Mon, 26 Feb 2018) $");
+  script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-02-02 10:43:19 +0530 (Thu, 02 Feb 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("HP Diagnostics Server Version Detection");
@@ -40,7 +40,7 @@ if(description)
   script_dependencies("find_service.nasl");
   script_require_ports(2006);
 
-  script_tag(name : "summary" , value : "Detection of HP Diagnostics Server
+  script_tag(name:"summary", value:"Detection of HP Diagnostics Server
 
   The script sends a connection request to the server and attempts to
   extract the version number from the reply.");
@@ -60,7 +60,6 @@ if(!get_port_state(hpdsPort)){
   exit(0);
 }
 
-## Confirm the application
 rcvRes = http_get_cache(item: "/", port:hpdsPort);
 
 if ((">HP Diagnostics" >< rcvRes && "Hewlett-Packard Development" >< rcvRes) ||
@@ -73,7 +72,6 @@ if ((">HP Diagnostics" >< rcvRes && "Hewlett-Packard Development" >< rcvRes) ||
 
   if(hpdiagVer[1])
   {
-    ## Set HP Diagnostics Server Version in KB
     hpdiagVer = hpdiagVer[1];
     set_kb_item(name:"www/"+ hpdsPort + "/HP/Diagnostics_Server/Ver", value:hpdiagVer);
   }
@@ -84,7 +82,6 @@ if ((">HP Diagnostics" >< rcvRes && "Hewlett-Packard Development" >< rcvRes) ||
 
   set_kb_item(name:"hpdiagnosticsserver/installed",value:TRUE);
 
-  ## Build CPE
   cpe = build_cpe(value:hpdiagVer, exp:"^([0-9.]+)", base:"cpe:/a:hp:diagnostics_server:");
   if(isnull(cpe))
     cpe = 'cpe:/a:hp:diagnostics_server';

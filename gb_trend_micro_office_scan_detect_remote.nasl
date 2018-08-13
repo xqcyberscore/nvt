@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_office_scan_detect_remote.nasl 7755 2017-11-14 11:47:13Z santu $
+# $Id: gb_trend_micro_office_scan_detect_remote.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # Trend Micro OfficeScan Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811885");
-  script_version("$Revision: 7755 $");
+  script_version("$Revision: 10901 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-14 12:47:13 +0100 (Tue, 14 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-11-02 17:15:23 +0530 (Thu, 02 Nov 2017)");
   script_name("Trend Micro OfficeScan Remote Detection");
   script_tag(name:"summary", value:"Detection of installed version
@@ -56,7 +56,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get port
 if(!trendPort = get_http_port(default:4343)){
   exit(0);
 }
@@ -71,7 +70,6 @@ if(rcvRes =~ "HTTP/1.. 200 OK" && rcvRes =~ "<title>OfficeScan.*</title>" &&
 {
   version = "unknown";
 
-  ## Grep for version
   MatchVerLine =   egrep(pattern:"<title>OfficeScan.*</title>", string:rcvRes, icase:TRUE );
   if(MatchVerLine)
   {

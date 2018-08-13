@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_opmanager_detect.nasl 8820 2018-02-15 05:56:30Z ckuersteiner $
+# $Id: gb_manage_engine_opmanager_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # Zoho ManageEngine OpManager Detection
 #
@@ -27,14 +27,14 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.805471");
- script_version("$Revision: 8820 $");
+ script_version("$Revision: 10890 $");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2018-02-15 06:56:30 +0100 (Thu, 15 Feb 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2015-03-20 11:52:44 +0530 (Fri, 20 Mar 2015)");
  script_name("Zoho ManageEngine OpManager Detection");
 
- script_tag(name: "summary" , value: "Detection of ManageEngine OpManager.
+ script_tag(name:"summary", value:"Detection of ManageEngine OpManager.
 
 The script sends a connection request to the server and attempts to detect ManageEngine OpManager and to extract
 its version.");

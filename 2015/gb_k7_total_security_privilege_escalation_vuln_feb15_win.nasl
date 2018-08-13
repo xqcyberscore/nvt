@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_k7_total_security_privilege_escalation_vuln_feb15_win.nasl 8160 2017-12-18 15:33:57Z cfischer $
+# $Id: gb_k7_total_security_privilege_escalation_vuln_feb15_win.nasl 10881 2018-08-10 10:27:02Z mmartin $
 #
 # K7 Total Security Privilege Escalation Vulnerability Feb15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:k7computing:total_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805454");
-  script_version("$Revision: 8160 $");
+  script_version("$Revision: 10881 $");
   script_cve_id("CVE-2014-9643");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:33:57 +0100 (Mon, 18 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:27:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-01-27 17:11:51 +0530 (Tue, 27 Jan 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("K7 Total Security Privilege Escalation Vulnerability Feb15 (Windows)");
@@ -59,7 +59,7 @@ if(description)
 
   script_tag(name: "solution" , value:"Upgrade to K7 Total Security version
   14.2.0.253 or later, For updates refer to http://www.k7computing.co.uk/");
-
+  script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/35992/");
   script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130246/");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

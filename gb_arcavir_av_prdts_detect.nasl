@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arcavir_av_prdts_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_arcavir_av_prdts_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # ArcaVir AntiVirus Products Version Detection
 #
@@ -30,27 +30,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800719");
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 10908 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-06-04 07:18:37 +0200 (Thu, 04 Jun 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ArcaVir AntiVirus Products Version Detection");
 
-  tag_summary =
-"Detection of installed version of ArcaVir AntiVirus Products on Windows.
+
+  script_tag(name:"summary", value:"Detects the installed version of ArcaVir AntiVirus Products on Windows.
 
 The script logs in via smb, searches for ArcaVir in the registry
-and gets the install version from the registry.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+and gets the install version from the registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -63,11 +60,6 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-arcaName = "";
-arcaPath = "";
-arcaVer = "";
-
 key = "SOFTWARE\ArcaBit";
 if(!registry_key_exists(key:key))
 {
@@ -77,18 +69,15 @@ if(!registry_key_exists(key:key))
   }
 }
 
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(0);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-## Check for 64 bit platform
 else if("x64" >< os_arch)
 {
   key_list =  make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
@@ -120,19 +109,16 @@ foreach key (key_list)
         }
         set_kb_item(name:"ArcaVir/AntiVirus/Ver", value:arcaVer);
 
-        ## build cpe
         ## 2009 version is not available for download
         ## Latest version is 2014, so haven't changed the cpe setting.
         cpe = build_cpe(value:arcaVer, exp:"^(9\..*)", base:"cpe:/a:arcabit:arcavir_2009_antivirus_protection:");
         if(isnull(cpe))
           cpe = "cpe:/a:arcabit:arcavir_2009_antivirus_protection";
 
-        ## Register for 64 bit app on 64 bit OS once again
         if("64" >< os_arch && "Wow6432Node" >!< key)
         {
           set_kb_item(name:"ArcaVir64/AntiVirus/Ver", value:arcaVer);
 
-          ## Build CPE
           cpe = build_cpe(value:arcaVer, exp:"^(9\..*)", base:"cpe:/a:arcabit:arcavir_2009_antivirus_protection:x64:");
           if(isnull(cpe))
             cpe = "cpe:/a:arcabit:arcavir_2009_antivirus_protection:x64";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011703.nasl 9076 2018-03-09 14:58:13Z cfischer $
+# $Id: gb_ms_kb4011703.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Office Word Viewer Remote Code Execution Vulnerability (KB4011703)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812916");
-  script_version("$Revision: 9076 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-0851");
   script_bugtraq_id(102870);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-09 15:58:13 +0100 (Fri, 09 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-02-14 13:30:47 +0530 (Wed, 14 Feb 2018)");
   script_name("Microsoft Office Word Viewer Remote Code Execution Vulnerability (KB4011703)");
 
@@ -48,7 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   who successfully exploited the vulnerability to run arbitrary code in the context
-  of the current user. 
+  of the current user.
 
   Impact Level: System/Application");
 
@@ -61,7 +61,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4011703");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4011703");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

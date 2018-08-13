@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vegadns_detect.nasl 4222 2016-10-06 08:17:50Z cfi $
+# $Id: gb_vegadns_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # VegaDNS Detection
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106274");
-  script_version("$Revision: 4222 $");
-  script_tag(name:"last_modification", value: "$Date: 2016-10-06 10:17:50 +0200 (Thu, 06 Oct 2016) $");
-  script_tag(name:"creation_date", value: "2016-09-22 09:06:56 +0700 (Thu, 22 Sep 2016)");
-  script_tag(name:"cvss_base", value: "0.0");
-  script_tag(name:"cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-22 09:06:56 +0700 (Thu, 22 Sep 2016)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("VegaDNS Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
@@ -41,7 +41,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name:"URL", value: "http://www.vegadns.org/");
+  script_xref(name:"URL", value:"http://www.vegadns.org/");
 
   script_tag(name:"summary", value:"Detection of VegaDNS
 

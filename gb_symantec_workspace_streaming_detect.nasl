@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_workspace_streaming_detect.nasl 8159 2017-12-18 15:10:39Z cfischer $
+# $Id: gb_symantec_workspace_streaming_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # Symantec Workspace Streaming (SWS) Agent Version Detection (Windows)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805541");
-  script_version("$Revision: 8159 $");
+  script_version("$Revision: 10898 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-04-28 18:51:34 +0530 (Tue, 28 Apr 2015)");
   script_name("Symantec Workspace Streaming (SWS) Agent Version Detection (Windows)");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Symantec Workspace Streaming Agent.
 
   The script logs in via smb, searches for 'Symantec Workspace Streaming Agent'
@@ -45,18 +45,11 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
 }
-
-## variable Initialization
-os_arch = "";
-key = "";
-agentPath = "";
-symVer = "";
-agentName = "";
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -65,13 +58,12 @@ include("host_details.inc");
 include("version_func.inc");
 
 
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(0);
 }
 
-## Key is same for 32 bit and 64 bit platform 
+## Key is same for 32 bit and 64 bit platform
 key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 if(!registry_key_exists(key:key)){
   exit(0);
@@ -82,7 +74,6 @@ foreach item (registry_enum_keys(key:key))
 {
   agentName = registry_get_sz(key:key + item, item:"DisplayName");
 
-  #### Confirm Application
   if("Symantec Workspace Streaming Agent" >< agentName)
   {
     agentVer = registry_get_sz(key:key + item, item:"DisplayVersion");

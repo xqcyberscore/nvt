@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_timelive_time_n_expense_tracking_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: secpod_timelive_time_n_expense_tracking_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # TimeLive Time And Expense Tracking Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902480");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-09-30 15:58:03 +0200 (Fri, 30 Sep 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("TimeLive Time And Expense Tracking Version Detection");
@@ -54,7 +54,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get the default port
 port = get_http_port( default:80 );
 
 if( ! can_host_asp( port:port ) ) exit( 0 );
@@ -68,7 +67,7 @@ foreach dir( make_list_unique( "/TimeLive", "/TimeTracking", "/", cgi_dirs( port
   rcvRes = http_get_cache( item: dir + "/default.aspx", port:port );
 
   ## Cinfirm the application
-  if( rcvRes =~ "HTTP/1.. 200" && "Livetecs LLC" >< rcvRes && 
+  if( rcvRes =~ "HTTP/1.. 200" && "Livetecs LLC" >< rcvRes &&
       "TimeLive - Online web timesheet and time tracking solution" >< rcvRes ) {
 
     version = "unknown";
@@ -78,15 +77,12 @@ foreach dir( make_list_unique( "/TimeLive", "/TimeTracking", "/", cgi_dirs( port
     if( ver[1] != NULL ) version = ver[1];
 
     tmp_version = version + " under " + install;
-    ## Set the version in KB
     set_kb_item( name:"www/"+ port + "/TimeLive", value:tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:livetecs:timeline:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:livetecs:timeline';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"TimeLive Time And Expense Tracking",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_fsm_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_solarwinds_fsm_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Solarwinds Firewall Security Manager Detection
 #
@@ -28,17 +28,17 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106013");
- script_version ("$Revision: 8078 $");
- script_tag(name: "last_modification", value: "$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
- script_tag(name: "creation_date", value: "2015-06-30 10:54:34 +0700 (Tue, 30 Jun 2015)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10899 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2015-06-30 10:54:34 +0700 (Tue, 30 Jun 2015)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_active");
+ script_tag(name:"qod_type", value:"remote_active");
 
  script_name("Solarwinds Firewall Security Manager Detection");
 
- script_tag(name: "summary" , value: "Detection of Solarwinds Firewall Security Manager
+ script_tag(name:"summary", value:"Detection of Solarwinds Firewall Security Manager
 
 The script sends a connection request to the server and attempts to detect Solarwinds Firewall
 Security Manager (FSM).");
@@ -77,7 +77,7 @@ foreach dir( make_list_unique( "/fsm", cgi_dirs( port:port ) ) ) {
 
     register_product(cpe: cpe, location: install, port: port);
 
-    log_message(data: build_detection_report(app:"Solarwinds Firewall Security Manager", 
+    log_message(data: build_detection_report(app:"Solarwinds Firewall Security Manager",
                                              version: vers, install: install, cpe: cpe),
                 port: port);
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4338826.nasl 10484 2018-07-11 14:03:19Z santu $
+# $Id: gb_ms_kb4338826.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4338826)
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813650");
-  script_version("$Revision: 10484 $");
-  script_cve_id("CVE-2018-8282", "CVE-2018-8284", "CVE-2018-0949", "CVE-2018-8125", 
-                "CVE-2018-8202", "CVE-2018-8206", "CVE-2018-8222", "CVE-2018-8242", 
-                "CVE-2018-8260", "CVE-2018-8274", "CVE-2018-8275", "CVE-2018-8276", 
-                "CVE-2018-8279", "CVE-2018-8280", "CVE-2018-8286", "CVE-2018-8287", 
-                "CVE-2018-8288", "CVE-2018-8290", "CVE-2018-8291", "CVE-2018-8296", 
-                "CVE-2018-8304", "CVE-2018-8307", "CVE-2018-8308", "CVE-2018-8309", 
+  script_version("$Revision: 10918 $");
+  script_cve_id("CVE-2018-8282", "CVE-2018-8284", "CVE-2018-0949", "CVE-2018-8125",
+                "CVE-2018-8202", "CVE-2018-8206", "CVE-2018-8222", "CVE-2018-8242",
+                "CVE-2018-8260", "CVE-2018-8274", "CVE-2018-8275", "CVE-2018-8276",
+                "CVE-2018-8279", "CVE-2018-8280", "CVE-2018-8286", "CVE-2018-8287",
+                "CVE-2018-8288", "CVE-2018-8290", "CVE-2018-8291", "CVE-2018-8296",
+                "CVE-2018-8304", "CVE-2018-8307", "CVE-2018-8308", "CVE-2018-8309",
                 "CVE-2018-8313", "CVE-2018-8324", "CVE-2018-8356", "CVE-2016-7279");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-11 16:03:19 +0200 (Wed, 11 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-11 11:24:45 +0530 (Wed, 11 Jul 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4338826)");
 
@@ -48,15 +48,15 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to errors,
-  
+
   - When Windows improperly handles File Transfer Protocol (FTP) connections.
-  
+
   - When Windows improperly handles objects in memory.
 
   - When the Windows kernel fails to properly handle objects in memory.
 
   - When Microsoft WordPad improperly handles embedded OLE objects.
-  
+
   - When Microsoft Edge improperly handles objects in memory.
 
   - When the scripting engine improperly handles objects in memory in
@@ -64,7 +64,7 @@ if(description)
 
   - When the Chakra scripting engine improperly handles objects in memory in
     Microsoft Edge.
-  
+
   - When the Windows kernel-mode driver fails to properly handle objects in memory.
 
   - Microsoft Chakra scripting engine that allows Control Flow Guard (CFG) to be
@@ -74,7 +74,7 @@ if(description)
     resources.
 
   - When the Windows Kernel API improperly enforces permissions.
-  
+
   - A security feature bypass vulnerability exists in Device Guard.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
@@ -92,11 +92,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4338826");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4338826");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }

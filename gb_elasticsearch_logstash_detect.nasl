@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808093");
-  script_version("$Revision: 8997 $");
+  script_version("$Revision: 10929 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 13:45:32 +0100 (Thu, 01 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-06-21 12:44:48 +0530 (Tue, 21 Jun 2016)");
   script_name("Elasticsearch Logstash Version Detection");
 
-  script_tag(name : "summary" , value : "Check for the version of Elasticsearch
+  script_tag(name:"summary", value:"Check for the version of Elasticsearch
   Logstash.
 
   This script sends HTTP GET request and try to get the version of
@@ -47,7 +47,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl","http_version.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 9200);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -64,12 +64,11 @@ exit(66);
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 include("cpe.inc");
 include("host_details.inc");
 
 
-##Get Port
 port = get_http_port(default:9200);
 if(!port){
   exit(0);
@@ -84,11 +83,9 @@ if(!buf = http_get_cache( item:"/", port:port )){
  exit(0);
 }
 
-##Confirm application
 if( "application/json" >< buf && "build_hash" >< buf && ( "build_timestamp" >< buf || "build_date" >< buf )&&
     "lucene_version" >< buf )
 {
-  ### try to get version 
   vers = eregmatch(string:buf, pattern:'number" : "([0-9a-z.]+)",', icase:TRUE);
   if(vers[1]){
     version = vers[1];
@@ -100,7 +97,6 @@ if( "application/json" >< buf && "build_hash" >< buf && ( "build_timestamp" >< b
   set_kb_item(name:string("www/", port, "/Elastisearch/Logstash"), value: vers);
   set_kb_item(name:"Elastisearch/Logstash/Installed",value:TRUE);
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value:version, exp:"^([0-9a-z.]+)", base:"cpe:/a:elasticsearch:logstash:");
   if(!cpe)
     cpe= "cpe:/a:elasticsearch:logstash";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trane_tracer_sc_web_detect.nasl 6868 2017-08-08 09:39:18Z ckuersteiner $
+# $Id: gb_trane_tracer_sc_web_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Trane Tracer SC Web Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140280");
- script_version ("$Revision: 6868 $");
- script_tag(name: "last_modification", value: "$Date: 2017-08-08 11:39:18 +0200 (Tue, 08 Aug 2017) $");
- script_tag(name: "creation_date", value: "2017-08-08 08:28:33 +0700 (Tue, 08 Aug 2017)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10922 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2017-08-08 08:28:33 +0700 (Tue, 08 Aug 2017)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Trane Tracer SC Web Detection");
 
- script_tag(name: "summary" , value: "Detection of Web UI of Trane Trace SC.
+ script_tag(name:"summary", value:"Detection of Web UI of Trane Trace SC.
 
 The script sends a connection request to the server and attempts to detect the Web UI of Trane Trace SC and to
 extract its version.");
@@ -51,7 +51,7 @@ extract its version.");
  script_require_ports("Services/www", 80, 443);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_xref(name: "URL", value: "https://www.trane.com/commercial/north-america/us/en/controls/building-Management/tracer-sc.html");
+ script_xref(name:"URL", value:"https://www.trane.com/commercial/north-america/us/en/controls/building-Management/tracer-sc.html");
 
  exit(0);
 }

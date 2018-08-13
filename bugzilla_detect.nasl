@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bugzilla_detect.nasl 8527 2018-01-25 07:33:25Z ckuersteiner $
+# $Id: bugzilla_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Bugzilla Detection
 #
@@ -30,8 +30,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100093");
-  script_version("$Revision: 8527 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:33:25 +0100 (Thu, 25 Jan 2018) $");
+  script_version("$Revision: 10894 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-03-31 18:59:35 +0200 (Tue, 31 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -45,7 +45,7 @@ if (description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name: "summary", value: "Detection of Bugzilla.
+  script_tag(name:"summary", value:"Detection of Bugzilla.
 
 The script sends a connection request to the server and attempts to extract the version number from the reply.");
 

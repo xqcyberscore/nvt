@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_ssh_version.nasl 7822 2017-11-20 08:46:09Z cfischer $
+# $Id: gb_cisco_wlc_ssh_version.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Cisco Wireless LAN Controller Detection (SSH)
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105429");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7822 $");
- script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:46:09 +0100 (Mon, 20 Nov 2017) $");
+ script_version("$Revision: 10902 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2015-10-30 14:08:04 +0100 (Fri, 30 Oct 2015)");
  script_name("Cisco Wireless LAN Controller Detection (SSH)");
 
- script_tag(name: "summary" , value: "This script performs SSH based detection of Cisco Wireless LAN Controller");
+ script_tag(name:"summary", value:"This script performs SSH based detection of Cisco Wireless LAN Controller");
 
  script_tag(name:"qod_type", value:"package");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_desktop_central_detect.nasl 10526 2018-07-17 10:24:27Z ckuersteiner $
+# $Id: gb_manage_engine_desktop_central_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # ManageEngine Desktop Central MSP Detection
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805717");
-  script_version("$Revision: 10526 $");
+  script_version("$Revision: 10905 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-17 12:24:27 +0200 (Tue, 17 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-07-08 18:54:23 +0530 (Wed, 08 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ManageEngine Desktop Central MSP Version Detection");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   ManageEngine Desktop Central MSP.
 
   This script sends HTTP GET request and try to get the version from the

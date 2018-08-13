@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_within_google_chrome_detect_lin.nasl 7268 2017-09-26 08:43:43Z cfischer $
+# $Id: gb_flash_player_within_google_chrome_detect_lin.nasl 10883 2018-08-10 10:52:12Z cfischer $
 #
 # Adobe Flash Player Within Google Chrome Detection (Linux)
 #
@@ -27,22 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810613");
-  script_version("$Revision: 7268 $");
+  script_version("$Revision: 10883 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 10:43:43 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:52:12 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-03-13 13:47:05 +0530 (Mon, 13 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Flash Player Within Google Chrome Detection (Linux)");
 
-  script_tag(name : "summary" , value : "Detection of installed version of Adobe
+  script_tag(name:"summary", value:"Detects the installed version of Adobe
   Flash within google chrome.
 
   The script logs in via ssh and extracts the version from the binary file
   'libpepflashplayer.so'.");
 
   script_category(ACT_GATHER_INFO);
-  script_xref(name: "URL" , value: "https://helpx.adobe.com/flash-player/kb/flash-player-google-chrome.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/flash-player/kb/flash-player-google-chrome.html");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
@@ -55,22 +55,15 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-flash_sock = "";
-flashName = "";
-version = "";
-flashVer = "";
-insPath = "";
-checkduplicate = "";
-checkduplicate_path = "";
-
-## start script
 flash_sock = ssh_login_or_reuse_connection();
 if(!flash_sock){
   exit(0);
 }
 
-##Locate file "libpepflashplayer.so"
+# nb: To make openvas-nasl-lint happy
+checkduplicate = "";
+checkduplicate_path = "";
+
 flashName = find_file(file_name:"libpepflashplayer.so", file_path:"/",
                       useregex:TRUE, regexpar:"$", sock:flash_sock);
 if(flashName != NULL)
@@ -86,7 +79,6 @@ if(flashName != NULL)
         insPath = version[1];
       }
 
-      ## Check if version is already set
       if (flashVer + ", " >< checkduplicate && insPath + ", " >< checkduplicate_path){
         continue;
       }
@@ -96,12 +88,10 @@ if(flashName != NULL)
 
       set_kb_item(name:"AdobeFlashPlayer/Chrome/Lin/Ver", value:flashVer);
 
-      ## Build CPE
       cpe = build_cpe(value:flashVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:flash_player_chrome:");
       if(isnull(cpe))
         cpe = "cpe:/a:adobe:flash_player_chrome";
 
-      ## Register Product and Build Report
       register_product(cpe:cpe, location:insPath);
       log_message(data: build_detection_report(app: "Flash Player Within Google Chrome",
                                                version: flashVer,

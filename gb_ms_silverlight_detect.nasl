@@ -1,17 +1,11 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_silverlight_detect.nasl 8190 2017-12-20 09:44:30Z cfischer $
+# $Id: gb_ms_silverlight_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Microsoft Silverlight Version Detection
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
-#
-# Updated: Veerendra GG <veerendragg@secpod.com> on 2013-08-09
-# According to CR57 and New Style script_tags.
-#
-# Updated By: Shakeel <bshakeel@secpod.com> on 2014-07-02
-# To support 32 and 64 bit.
 #
 # Copyright:
 # Copyright (C) 2013 Greenbone Networks GmbH, http://www.greenbone.net
@@ -33,27 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801934");
-  script_version("$Revision: 8190 $");
+  script_version("$Revision: 10905 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:44:30 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-05-16 15:25:30 +0200 (Mon, 16 May 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Silverlight Version Detection");
 
-  tag_summary =
-"Detection of installed version of Microsoft Silverlight on Windows.
+
+  script_tag(name:"summary", value:"Detects the installed version of Microsoft Silverlight on Windows.
 
 The script logs in via smb, searches for Silverlight in the registry
-and gets the version from registry.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+and gets the version from registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -65,33 +56,21 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-os_arch = "";
-key_list = "";
-key="";
-cpe = "";
-ins_loc = "";
-msl_ver = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check Silverlight is present or not
 if(!registry_key_exists(key:"SOFTWARE\Microsoft\Silverlight")){
   if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\Microsoft\Silverlight")){
     exit(0);
   }
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Silverlight");
 }
 
-## Check for 64 bit platform
 else if("x64" >< os_arch){
   key_list =  make_list("SOFTWARE\Wow6432Node\Microsoft\Silverlight",
                         "SOFTWARE\Microsoft\Silverlight");
@@ -112,7 +91,6 @@ foreach key (key_list)
 
   foreach item (registry_enum_keys(key:unKey))
   {
-    ## Get application name
     app_name = registry_get_sz(key:unKey + item, item:"DisplayName");
     if("Microsoft Silverlight" >!< app_name){
        continue;
@@ -120,12 +98,10 @@ foreach key (key_list)
 
     set_kb_item(name:"Microsoft/Silverlight/Installed", value:TRUE);
 
-    ## Get version if not available in previous path
     if(!msl_ver || msl_ver == "0"){
       msl_ver = registry_get_sz(key:unKey + item, item:"DisplayVersion");
     }
 
-    ## Get installed location
     ins_loc = registry_get_sz(key:unKey + item, item:"InstallLocation");
     break;
   }

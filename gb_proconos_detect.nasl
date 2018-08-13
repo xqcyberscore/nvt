@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_proconos_detect.nasl 8971 2018-02-28 06:08:38Z ckuersteiner $
+# $Id: gb_proconos_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # ProConOS Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140498");
- script_version ("$Revision: 8971 $");
- script_tag(name: "last_modification", value: "$Date: 2018-02-28 07:08:38 +0100 (Wed, 28 Feb 2018) $");
- script_tag(name: "creation_date", value: "2017-11-13 10:14:34 +0700 (Mon, 13 Nov 2017)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10899 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2017-11-13 10:14:34 +0700 (Mon, 13 Nov 2017)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("ProConOS Detection");
 
- script_tag(name: "summary" , value: "A ProConOS Service is running at this host.
+ script_tag(name:"summary", value:"A ProConOS Service is running at this host.
 
 ProConOS is a high performance PLC run time engine designed for both embedded and PC based control applications.");
 
@@ -49,7 +49,7 @@ ProConOS is a high performance PLC run time engine designed for both embedded an
  script_dependencies("find_service.nasl");
  script_require_ports(20547);
 
- script_xref(name: "URL", value: "https://www.plantautomation.com/doc/proconos-0001");
+ script_xref(name:"URL", value:"https://www.plantautomation.com/doc/proconos-0001");
 
  exit(0);
 }

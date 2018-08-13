@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_calendar_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: secpod_php_calendar_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # PHP-Calendar Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901089");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-12-31 08:44:14 +0100 (Thu, 31 Dec 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("PHP-Calendar Version Detection");
@@ -82,18 +82,16 @@ foreach dir( make_list_unique( "/", "/php-calendar", "/calendar", cgi_dirs( port
         }
       }
     }
-     
+
     version = ereg_replace( pattern:"-", replace:".", string:version );
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/PHP-Calendar", value:tmp_version );
     set_kb_item( name:"PHP-Calendar/installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:php-calendar:php-calendar:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:php-calendar:php-calendar';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"PHP-Calendar",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_south_river_webdrive_detect.nasl 8087 2017-12-12 13:12:04Z teissa $
+# $Id: gb_south_river_webdrive_detect.nasl 10880 2018-08-10 09:27:43Z cfischer $
 #
 # South River WebDrive Version Detection
 #
@@ -24,26 +24,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script detects the installed South River WebDrive and
-  saves the version in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800158");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8087 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
+ script_version("$Revision: 10880 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 11:27:43 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-01-28 16:24:05 +0100 (Thu, 28 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("South River WebDrive Version Detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
-  script_family("Service detection");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_family("Product detection");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script detects the installed South River WebDrive and
+  saves the version in KB.");
   exit(0);
 }
 
@@ -53,11 +51,8 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800158";
 SCRIPT_DESC = "South River WebDrive Version Detection";
 
-## Windows Confirmation
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
@@ -67,7 +62,6 @@ if(!registry_key_exists(key:"SOFTWARE\South River Technologies\WebDrive")){
   exit(0);
 }
 
-## Get the South River Web Drive Version
 key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 if(!registry_key_exists(key:key)) {
     exit(0);
@@ -84,11 +78,10 @@ foreach item (registry_enum_keys(key:key))
        set_kb_item(name:"SouthRiverWebDrive/Win/Ver", value:webDriveVer);
        log_message(data:"South River WebDrive version " + webDriveVer +
                          " was detected on the host");
-      
-       ## build cpe and store it as host_detail
+
        cpe = build_cpe(value:webDriveVer, exp:"^([0-9.]+)", base:"cpe:/a:south_river_technologies:webdrive:");
        if(!isnull(cpe))
-          register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+          register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
     }
     exit(0);

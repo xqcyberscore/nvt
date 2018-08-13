@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_detect_900182.nasl 10163 2018-06-12 11:26:57Z cfischer $
+# $Id: secpod_wordpress_detect_900182.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # WordPress Version Detection
 #
@@ -9,12 +9,6 @@
 #
 # Copyright:
 # Copyright (c) 2008 SecPod, http://www.secpod.com
-#
-# Modified to Detect Versions, When it is Under Root folder
-#  - By Sharath S <sharaths@secpod.com> On 2009-08-18
-#
-# Updated By: Thanga Prakash S <tprakash@secpod.com> on 2013-09-04
-# According to CR57 and new style script_tags.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -33,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900182");
-  script_version("$Revision: 10163 $");
+  script_version("$Revision: 10922 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-12 13:26:57 +0200 (Tue, 12 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-12-26 14:23:17 +0100 (Fri, 26 Dec 2008)");
   script_name("WordPress Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -46,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   WordPress/WordPress-Mu.
 
   This script sends HTTP GET request and try to get the version from the
@@ -97,7 +91,6 @@ foreach dir( make_list_unique( "/", "/blog", "/wordpress", "/wordpress-mu", cgi_
       vers = eregmatch( pattern:"WordPress ([0-9]\.[0-9.]+)", string:res );
       if( vers[1] ) {
         version = vers[1];
-        ## Check if the version is already set
         if( version + ", " >< checkduplicate ) {
           continue;
         }
@@ -115,7 +108,6 @@ foreach dir( make_list_unique( "/", "/blog", "/wordpress", "/wordpress-mu", cgi_
     }
   }
 
-  ##Try to get version from the /wp-links-opml.php page
   if( ( ! wpMuFound && ! wpFound ) || version == "unknown" ) {
 
     url = dir + "/wp-links-opml.php";
@@ -132,7 +124,6 @@ foreach dir( make_list_unique( "/", "/blog", "/wordpress", "/wordpress-mu", cgi_
       vers = eregmatch( pattern:'<!-- generator="WordPress/([0-9.]+)', string:res );
       if( vers[1] ) {
         version = vers[1];
-        ## Check if the version is already set
         if( version + ", " >< checkduplicate ) {
           continue;
         }
@@ -142,7 +133,6 @@ foreach dir( make_list_unique( "/", "/blog", "/wordpress", "/wordpress-mu", cgi_
     }
   }
 
-  ##Try to get version from the /feed/ url
   if( ( ! wpMuFound && ! wpFound ) || version == "unknown" ) {
 
     url = dir + "/feed/";
@@ -157,7 +147,6 @@ foreach dir( make_list_unique( "/", "/blog", "/wordpress", "/wordpress-mu", cgi_
       vers = eregmatch( pattern:"v=([0-9.]+)</generator>", string:res );
       if( vers[1] ) {
         version = vers[1];
-        ## Check if the version is already set
         if( version + ", " >< checkduplicate ) {
           continue;
         }
@@ -167,7 +156,6 @@ foreach dir( make_list_unique( "/", "/blog", "/wordpress", "/wordpress-mu", cgi_
     }
   }
 
-  ##Try to get version from the /wp-login.php page
   if( ( ! wpMuFound && ! wpFound ) || version == "unknown" ) {
 
     url = dir + "/wp-login.php";
@@ -189,7 +177,6 @@ foreach dir( make_list_unique( "/", "/blog", "/wordpress", "/wordpress-mu", cgi_
       vers = eregmatch( pattern:"ver=([0-9.]+)", string:res );
       if( vers[1] ) {
         version = vers[1];
-        ## Check if the version is already set
         if( version + ", " >< checkduplicate ) {
           continue;
         }
@@ -231,7 +218,6 @@ foreach dir( make_list_unique( "/", "/blog", "/wordpress", "/wordpress-mu", cgi_
       vers = eregmatch( pattern:"<br />.*Version ([0-9.]+).*</h1>", string:res );
       if( vers[1] ) {
         version = vers[1];
-        ## Check if the version is already set
         if( version + ", " >< checkduplicate ) {
           continue;
         }

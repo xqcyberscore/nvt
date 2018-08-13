@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_cassandra_detect.nasl 10369 2018-06-29 11:18:22Z asteins $
+# $Id: gb_apache_cassandra_detect.nasl 10878 2018-08-10 08:52:28Z cfischer $
 #
 # Apache Cassandra Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105065");
-  script_version("$Revision: 10369 $");
+  script_version("$Revision: 10878 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-29 13:18:22 +0200 (Fri, 29 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 10:52:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-07-18 18:29:45 +0200 (Fri, 18 Jul 2014)");
   script_name("Apache Cassandra Detection");
   script_category(ACT_GATHER_INFO);
@@ -56,11 +56,11 @@ include("host_details.inc");
 
 port = get_unknown_port( default:9160 ); # rpc_port can be changed
 
-# Set by nessus_detect.nasl if we have hit a service described in the notes below
+# nb: Set by nessus_detect.nasl if we have hit a service described in the notes below
 # No need to continue here as well...
 if( get_kb_item( "generic_echo_test/" + port + "/failed" ) ) exit( 0 );
 
-# Set by nessus_detect.nasl as well. We don't need to do the same test
+# nb: Set by nessus_detect.nasl as well. We don't need to do the same test
 # multiple times...
 if( ! get_kb_item( "generic_echo_test/" + port + "/tested" ) ) {
   soc = open_sock_tcp( port );

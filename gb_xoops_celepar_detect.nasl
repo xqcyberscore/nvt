@@ -1,6 +1,6 @@
 ###############################################################################
 # Openvas Vulnerability Test
-# $Id: gb_xoops_celepar_detect.nasl 7270 2017-09-26 09:49:58Z cfischer $
+# $Id: gb_xoops_celepar_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Xoops Celepar Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801152");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7270 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 11:49:58 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-03-23 15:59:14 +0100 (Tue, 23 Mar 2010)");
   script_name("Xoops Celepar Version Detection");
   script_tag(name:"cvss_base", value:"0.0");
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : "This script is detects the installed version of Xoops Celepar
+  script_tag(name:"summary", value:"This script is detects the installed version of Xoops Celepar
   and sets the result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -78,7 +78,6 @@ foreach dir (make_list_unique("/xoopscelepar", "/" , cgi_dirs(port:xoopsPort))) 
     set_kb_item(name:"www/" + xoopsPort + "/XoopsCelepar",
                 value:tmp_version);
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:alexandre_amaral:xoops_celepar:");
     if(!cpe)
       cpe = 'cpe:/a:alexandre_amaral:xoops_celepar';

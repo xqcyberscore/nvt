@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symfony_http_detect.nasl 10338 2018-06-27 07:46:49Z mmartin $
+# $Id: gb_symfony_http_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Sensiolabs Symfony Detection (HTTP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107323");
-  script_version("$Revision: 10338 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-27 09:46:49 +0200 (Wed, 27 Jun 2018) $");
+  script_version("$Revision: 10911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 16:20:53 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -134,7 +134,7 @@ foreach dir( make_list( "/", "/symfony", cgi_dirs( port:port ) ) ) {
   url = dir + "/src/Symfony/Component/Console/CHANGELOG.md";
   req = http_get( item:url, port:port);
   buf = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE) ;
-  
+
   if( buf =~ "^CHANGELOG" && egrep( string:buf, pattern:"^=========" ) && vers = egrep( string:buf, pattern:"^([0-9.]+)" ) ) {
     vers = eregmatch( string:vers, pattern:"^([0-9.]+)");
     version = vers[1];

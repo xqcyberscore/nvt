@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_gollem_detect.nasl 8161 2017-12-18 16:10:24Z cfischer $
+# $Id: gb_horde_gollem_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # Horde Gollem Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801869");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8161 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 17:10:24 +0100 (Mon, 18 Dec 2017) $");
+  script_version("$Revision: 10913 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Horde Gollem Version Detection");
@@ -54,7 +54,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get http port
 port = get_http_port( default:80 );
 
 if( ! can_host_php( port:port ) ) exit( 0 );
@@ -66,7 +65,6 @@ foreach dir(make_list_unique( "/horde/gollem", "/gollem", cgi_dirs( port:port ) 
 
   rcvRes = http_get_cache( item: dir + "/index.php", port:port );
 
-  ## Confirm the application
   if( ">File Manager Login<" >< rcvRes ) {
 
     version = "unknown";
@@ -75,11 +73,9 @@ foreach dir(make_list_unique( "/horde/gollem", "/gollem", cgi_dirs( port:port ) 
     sndReq = http_get( item: dir + "/test.php", port:port );
     rcvRes = http_keepalive_send_recv( port:port, data:sndReq, bodyonly:TRUE );
 
-    ## Get the version
     ver = eregmatch( pattern:">Gollem: H. \(([0-9.]+)\)<", string:rcvRes );
 
     if( ver[1] == NULL ) {
-      ## Get Version from CHANGES file
       sndReq = http_get( item: dir + "/docs/CHANGES", port:port );
       rcvRes = http_keepalive_send_recv( port:port, data:sndReq, bodyonly:TRUE );
       ver = eregmatch( pattern:"v([0-9.]+)", string:rcvRes );
@@ -93,12 +89,10 @@ foreach dir(make_list_unique( "/horde/gollem", "/gollem", cgi_dirs( port:port ) 
     set_kb_item( name:"www/" + port + "/gollem", value:tmp_version );
     set_kb_item( name:"horde/gollem/installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:horde:gollem:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:horde:gollem';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"Horde Gollem",

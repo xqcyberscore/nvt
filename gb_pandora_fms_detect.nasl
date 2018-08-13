@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pandora_fms_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: gb_pandora_fms_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Pandora FMS Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100926");
-  script_version("$Revision: 7076 $");
+  script_version("$Revision: 10929 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-12-01 14:30:53 +0100 (Wed, 01 Dec 2010)");
   script_name("Pandora FMS Detection");
   script_category(ACT_GATHER_INFO);
@@ -39,7 +39,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
- 
+
  script_xref(name:"URL", value:"http://pandorafms.org");
 
  script_tag(name:"summary", value:"The script sends a connection request to
@@ -55,7 +55,7 @@ include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 
 port = get_http_port( default:80 );
 
@@ -72,7 +72,6 @@ foreach dir( make_list_unique( "/", "/pandora_console", "/fms", cgi_dirs( port:p
 
     version = "unknown";
 
-    ### try to get version
     ver = eregmatch( string:buf, pattern:">v([0-9.]+(SP[0-9]+)?( Build [a-zA-Z0-9]+)?)", icase:TRUE );
 
     if( ! isnull( ver[1] ) ) {

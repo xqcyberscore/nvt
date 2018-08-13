@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_norman_security_suite_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
+# $Id: gb_norman_security_suite_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # Norman Security Suite Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"cvss_base", value:"0.0");
  script_oid("1.3.6.1.4.1.25623.1.0.103693");
- script_version ("$Revision: 9996 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
+ script_version("$Revision: 10906 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2013-04-10 13:55:18 +0200 (Wed, 10 Apr 2013)");
  script_name("Norman Security Suite Detection");
  script_category(ACT_GATHER_INFO);
@@ -41,7 +41,7 @@ if (description)
  script_dependencies("gb_get_http_banner.nasl");
  script_mandatory_keys("Norman_Security/banner");
  script_require_ports("Services/www", 2868);
- script_tag(name : "summary" , value : "Detection of Norman Security Suite.
+ script_tag(name:"summary", value:"Detection of Norman Security Suite.
 
 The script sends a connection request to the server and attempts to
 detect Norman Security Suite from the reply.");
@@ -49,7 +49,7 @@ detect Norman Security Suite from the reply.");
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("host_details.inc");
 
 port = get_http_port(default:2868);

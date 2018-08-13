@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_abyss_detect.nasl 7988 2017-12-05 06:22:41Z ckuersteiner $
+# $Id: gb_abyss_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # Abyss Web Server Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140580");
-  script_version("$Revision: 7988 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-05 07:22:41 +0100 (Tue, 05 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-12-05 13:03:00 +0700 (Tue, 05 Dec 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-05 13:03:00 +0700 (Tue, 05 Dec 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Abyss Web Server Detection");
 
-  script_tag(name: "summary" , value: "Detection of Abyss Web Server.
+  script_tag(name:"summary", value:"Detection of Abyss Web Server.
 
 The script sends a connection request to the server and attempts to detect Abyss Web Server and to extract
 its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ its version.");
   script_require_ports("Services/www", 80, 443, 5000, 5001);
   script_mandatory_keys("Abyss/banner");
 
-  script_xref(name: "URL", value: "https://aprelium.com/");
+  script_xref(name:"URL", value:"https://aprelium.com/");
 
   exit(0);
 }
@@ -59,7 +59,7 @@ its version.");
 include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
-include("http_keepalive.inc");
+
 
 port = get_http_port(default: 5000);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4056891.nasl 8699 2018-02-07 08:01:50Z asteins $
+# $Id: gb_ms_kb4056891.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4056891)
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812293");
-  script_version("$Revision: 8699 $");
-  script_cve_id("CVE-2018-0743", "CVE-2018-0744", "CVE-2018-0745", "CVE-2018-0746", 
-                "CVE-2018-0747", "CVE-2018-0748", "CVE-2018-0749", "CVE-2018-0751", 
-                "CVE-2018-0752", "CVE-2018-0753", "CVE-2018-0754", "CVE-2018-0758", 
-                "CVE-2018-0762", "CVE-2018-0766", "CVE-2018-0767", "CVE-2018-0769", 
-                "CVE-2018-0770", "CVE-2018-0772", "CVE-2018-0776", "CVE-2018-0777", 
+  script_version("$Revision: 10918 $");
+  script_cve_id("CVE-2018-0743", "CVE-2018-0744", "CVE-2018-0745", "CVE-2018-0746",
+                "CVE-2018-0747", "CVE-2018-0748", "CVE-2018-0749", "CVE-2018-0751",
+                "CVE-2018-0752", "CVE-2018-0753", "CVE-2018-0754", "CVE-2018-0758",
+                "CVE-2018-0762", "CVE-2018-0766", "CVE-2018-0767", "CVE-2018-0769",
+                "CVE-2018-0770", "CVE-2018-0772", "CVE-2018-0776", "CVE-2018-0777",
                 "CVE-2018-0780", "CVE-2018-0803", "CVE-2018-0781", "CVE-2017-5753",
                 "CVE-2017-5715", "CVE-2017-5754", "CVE-2018-0764", "CVE-2018-0786");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-07 09:01:50 +0100 (Wed, 07 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-01-04 15:51:45 +0530 (Thu, 04 Jan 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4056891)");
 
@@ -55,7 +55,7 @@ if(description)
 
   - The scripting engine handles objects in memory in Microsoft Browsers.
 
-  - Windows Adobe Type Manager Font Driver (ATMFD.dll) fails to properly 
+  - Windows Adobe Type Manager Font Driver (ATMFD.dll) fails to properly
     handle objects in memory.
 
   - Microsoft Edge PDF Reader improperly handles objects in memory.
@@ -81,11 +81,11 @@ if(description)
   - .NET, and .NET core, improperly process XML documents.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to elevate privileges, execute arbitrary code in the context of the current 
-  user, potentially read data that was not intended to be disclosed, impersonate 
-  processes, interject cross-process communication, or interrupt system 
+  to elevate privileges, execute arbitrary code in the context of the current
+  user, potentially read data that was not intended to be disclosed, impersonate
+  processes, interject cross-process communication, or interrupt system
   functionality, bypass certain security checks in the operating system and can
-  cause a target system to stop responding and conduct bounds check bypass, 
+  cause a target system to stop responding and conduct bounds check bypass,
   branch target injection, rogue data cache load.
 
   Impact Level: System");
@@ -99,11 +99,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4056891");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4056891");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }

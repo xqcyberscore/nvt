@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_sec_bypass_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_ntp_sec_bypass_vuln.nasl 10881 2018-08-10 10:27:02Z mmartin $
 #
 # NTP EVP_VerifyFinal() Security Bypass Vulnerability
 #
@@ -39,8 +39,8 @@ tag_summary = "This host has NTP installed and is prone to security bypass
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800408");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10881 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:27:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-01-15 16:11:17 +0100 (Thu, 15 Jan 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -61,6 +61,7 @@ if(description)
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name : "summary" , value : tag_summary);
   exit(0);
 }

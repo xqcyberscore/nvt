@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deluxeBB_detect.nasl 9583 2018-04-24 09:48:35Z ckuersteiner $
+# $Id: deluxeBB_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # deluxeBB Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100063");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9583 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-24 11:48:35 +0200 (Tue, 24 Apr 2018) $");
+ script_version("$Revision: 10911 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2009-03-20 11:01:53 +0100 (Fri, 20 Mar 2009)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -43,10 +43,10 @@ if (description)
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name: "summary", value: "This host is running deluxeBB a widely installed Open Source forum
+ script_tag(name:"summary", value:"This host is running deluxeBB a widely installed Open Source forum
 solution.");
 
- script_xref(name: "URL", value: "http://www.deluxebb.com/");
+ script_xref(name:"URL", value:"http://www.deluxebb.com/");
 
  exit(0);
 }
@@ -69,16 +69,16 @@ foreach dir( make_list_unique( "/board", "/forum", "/deluxebb", "/forums", cgi_d
  if ((egrep(pattern: "^Set-Cookie: lastvisita.*", string: buf) &&
       egrep(pattern: ".*DeluxeBB.*", string: buf)) ||
       egrep(pattern: "DeluxeBB .*</a> is copyrighted to the DeluxeBB.*", string: buf) ||
-      egrep(pattern: ".*powered by DeluxeBB.*", string: buf)) { 
+      egrep(pattern: ".*powered by DeluxeBB.*", string: buf)) {
    vers = "unknown";
 
    version = eregmatch(string: buf, pattern: ">DeluxeBB ([0-9]+\.+[0-9.]*)</a> is copyrighted.*");
 
    if ( !isnull(version[1]) )
         vers=version[1];
-    
+
    set_kb_item(name: "deluxebb/installed", value: TRUE);
-   
+
    cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:deluxebb:deluxebb:");
    if(!cpe)
      cpe = 'cpe:/a:deluxebb:deluxebb';
@@ -89,7 +89,7 @@ foreach dir( make_list_unique( "/board", "/forum", "/deluxebb", "/forums", cgi_d
                                             concluded: version[0]),
                port: port);
    exit(0);
- } 
+ }
 }
 
 exit(0);

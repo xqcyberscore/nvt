@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitecore_detect.nasl 8146 2017-12-15 13:40:59Z cfischer $
+# $Id: gb_sitecore_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Sitecore CMS Detection
 #
@@ -32,8 +32,8 @@ if(description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:N");
 
- script_version ("$Revision: 8146 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
+ script_version("$Revision: 10915 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2017-10-16 15:54:00 +0200 (Mon, 16 Oct 2017)");
 
  script_name("Sitecore CMS Detection");
@@ -80,7 +80,6 @@ foreach dir( make_list_unique( "/", "/sitecore", cgi_dirs( port:port ) ) ) {
     found = TRUE;
     version = "unknown";
 
-    # try various patterns to get the version
     if( ! ver = eregmatch( pattern:"Sitecore version.*\(Sitecore ([0-9.]+)\)", string:res ) )
       if( ! ver = eregmatch( pattern:"Sitecore\.NET ([0-9.]+) \(rev\. ([0-9.]+) Hotfix ([0-9\-]+)\)", string:res ) )
         if( ! ver = eregmatch( pattern:"Sitecore\.NET ([0-9.]+) \(rev\. ([0-9.]+)\)", string:res ) )

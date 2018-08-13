@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_fisheye_crucible_detect.nasl 7004 2017-08-25 09:54:04Z ckuersteiner $
+# $Id: gb_atlassian_fisheye_crucible_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # Atlassian FishEye and Crucible Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140326");
-  script_version("$Revision: 7004 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-08-25 11:54:04 +0200 (Fri, 25 Aug 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-25 14:18:37 +0700 (Fri, 25 Aug 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10890 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-25 14:18:37 +0700 (Fri, 25 Aug 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Atlassian FishEye and Crucible Detection");
 
-  script_tag(name: "summary" , value: "Detection of Atlassian FishEye and Crucible.
+  script_tag(name:"summary", value:"Detection of Atlassian FishEye and Crucible.
 
 The script sends a connection request to the server and attempts to detect Atlasian FishEye and Crucible and to
 extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -51,8 +51,8 @@ extract its version.");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.atlassian.com/software/fisheye");
-  script_xref(name: "URL", value: "https://www.atlassian.com/software/crucible");
+  script_xref(name:"URL", value:"https://www.atlassian.com/software/fisheye");
+  script_xref(name:"URL", value:"https://www.atlassian.com/software/crucible");
 
   exit(0);
 }
@@ -93,7 +93,7 @@ foreach dir (make_list_unique("/", "/crucible", "/fisheye", cgi_dirs(port: port)
 
     register_product(cpe: cpe, location: install, port: port);
     register_product(cpe: cpe2, location: install, port: port);
-    
+
     log_message(data: build_detection_report(app: "Atlassian FishEye and Crucible", version: version,
                                              install: install, cpe: cpe, concluded: vers[0]),
                 port: port);

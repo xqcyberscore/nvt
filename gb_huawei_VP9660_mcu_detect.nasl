@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_VP9660_mcu_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_huawei_VP9660_mcu_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Huawei VP9660 Multi-Point Control Unit Detection (SNMP)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806636");
-  script_version("$Revision: 7236 $");
+  script_version("$Revision: 10891 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-12-01 11:03:03 +0530 (Tue, 01 Dec 2015)");
   script_name("Huawei VP9660 Multi-Point Control Unit Detection (SNMP)");
 
-  script_tag(name: "summary" , value: "This script performs SNMP based detection
+  script_tag(name:"summary", value:"This script performs SNMP based detection
   of Huawei VP9660 Multi-Point Control Unit");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -57,10 +57,8 @@ port    = get_snmp_port(default:161);
 sysdesc = get_snmp_sysdesc(port:port);
 if(!sysdesc) exit(0);
 
-##Confirm device
 if("HUAWEI VP9660" >!< sysdesc ) exit( 0 );
 
-##Get version
 version = eregmatch( pattern:'HUAWEI VP9660 ([A-Z0-9a-z]+) ', string:sysdesc);
 if(isnull(version[1])){
   huaVer = "Unknown";
@@ -68,11 +66,9 @@ if(isnull(version[1])){
   huaVer = version[1];
 }
 
-##Set KB
 set_kb_item(name:"huawei/mcu/installed", value:TRUE);
 set_kb_item(name:"huawei/mcu/version/snmp", value:huaVer);
 
-##Build CPE
 cpe = build_cpe(value:huaVer, exp:"([0-9A-Za-z]+)", base:"cpe:/o:huawei:vp_9660_firmware:");
 if(!cpe)
   cpe = "cpe:/o:huawei:vp_9660_firmware:";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_proxmox_ve_detect.nasl 8474 2018-01-20 12:07:54Z cfischer $
+# $Id: sw_proxmox_ve_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Proxmox Virtual Environment Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111090");
-  script_version("$Revision: 8474 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-20 13:07:54 +0100 (Sat, 20 Jan 2018) $");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-03-17 10:42:39 +0100 (Thu, 17 Mar 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,7 +59,7 @@ port = get_http_port( default:8006 );
 banner = get_http_banner( port:port );
 res = http_get_cache( item:"/", port:port );
 
-if( "erver: pve-api-daemon" >< banner || "Proxmox Virtual Environment</title>" >< res || 
+if( "erver: pve-api-daemon" >< banner || "Proxmox Virtual Environment</title>" >< res ||
     "/pve2/css/ext-pve.css" >< res || "/pve2/css/ext6-pve.css" >< res || ( "PVE.UserName" >< res && "PVE.CSRFPreventionToken" >< res ) ) {
 
   version = "unknown";

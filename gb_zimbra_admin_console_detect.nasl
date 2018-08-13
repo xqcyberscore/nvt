@@ -1,15 +1,15 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zimbra_admin_console_detect.nasl 8745 2018-02-09 14:30:40Z santu $
+# $Id: gb_zimbra_admin_console_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Zimbra Collaboration Detection (WebGUI)
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
-# 
+#
 # Copyright:
 # Copyright (c) 2013 Greenbone Networks GmbH
-# 
+#
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
 # as published by the Free Software Foundation; either version 2
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103852");
-  script_version("$Revision: 8745 $");
+  script_version("$Revision: 10908 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-09 15:30:40 +0100 (Fri, 09 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-11 11:35:08 +0100 (Wed, 11 Dec 2013)");
   script_name("Zimbra Collaboration Detection (WebGUI)");
   script_category(ACT_GATHER_INFO);
@@ -65,10 +65,10 @@ foreach dir( make_list_unique( "/", "/zimbraAdmin", cgi_dirs( port:port ) ) ) {
   buf = http_get_cache( item: dir + "/", port:port );
 
   if( buf =~ "HTTP/1.. 200" && ( ( "www.zimbra.com" >< buf && "zimbraMail" >< buf ) ||
-      "Zimbra Collaboration Suite Web Client" >< buf || 
+      "Zimbra Collaboration Suite Web Client" >< buf ||
       "<title>Zimbra Administration" >< buf ||
       "<title>Zimbra Web Client Sign In" >< buf ) ) {
- 
+
     version = "unknown";
 
     url = dir + "/js/zimbraMail/share/model/ZmSettings.js";

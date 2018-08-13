@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intelbras_roteador_wireless_n_wrn_devices_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_intelbras_roteador_wireless_n_wrn_devices_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Intelbras Roteador Wireless N WRN Devices Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812014");
-  script_version("$Revision: 8078 $");
+  script_version("$Revision: 10915 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-06 20:08:22 +0530 (Fri, 06 Oct 2017)");
   script_name("Intelbras Roteador Wireless N WRN Devices Detection");
 
@@ -56,22 +56,13 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-##Variable Initialization
-netPort = "";
-version ="";
-cpe = "";
-res = "";
-
-## Get port
 netPort = get_http_port(default:80);
 if(!netPort){
   exit(0);
 }
 
-##Get response
 res = http_get_cache(port:netPort, item: "/login.asp");
 
-##Confirm Router
 if(res =~ "title>Roteador Wireless N WRN ([0-9]+)</title>" && 'name="Login' >< res)
 {
   set_kb_item(name: "intelbras/roteador/N-WRN/detected", value: TRUE);

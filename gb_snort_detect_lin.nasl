@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snort_detect_lin.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: gb_snort_detect_lin.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Snort Version Detection (Linux)
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801138");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9633 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+ script_version("$Revision: 10911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-11-02 14:39:30 +0100 (Mon, 02 Nov 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Snort Version Detection (Linux)");
@@ -41,7 +41,7 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : "This script detects the installed version of Snort and
+  script_tag(name:"summary", value:"This script detects the installed version of Snort and
   sets the reuslt in KB.");
   exit(0);
 }
@@ -75,7 +75,7 @@ foreach binName (paths)
       set_kb_item(name:"Snort/Linux/Build", value:snortVer);
       log_message(data:"Snort version " + snortVer + " running at location "
                       + binName + " was detected on the host");
- 
+
       cpe = build_cpe(value:snortVer, exp:"^([0-9.]+)", base:"cpe:/a:snort:snort:");
       if(!isnull(cpe))
          register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);

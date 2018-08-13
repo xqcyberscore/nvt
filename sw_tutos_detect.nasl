@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_tutos_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: sw_tutos_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # TUTOS Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111040");
-  script_version("$Revision: 7076 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-10-07 14:00:00 +0200 (Wed, 07 Oct 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : "The script sends a HTTP
+  script_tag(name:"summary", value:"The script sends a HTTP
   request to the server and attempts to extract the version from
   the reply.");
 
@@ -61,7 +61,6 @@ if( !can_host_php( port:port ) ) exit( 0 );
 
 dirs = make_list_unique( "/", "/tutos", cgi_dirs( port:port ) );
 
-##Iterate possible paths
 foreach dir ( dirs ) {
 
   install = dir;

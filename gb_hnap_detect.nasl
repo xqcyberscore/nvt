@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hnap_detect.nasl 7589 2017-10-27 07:03:33Z cfischer $
+# $Id: gb_hnap_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # HNAP Detection
 #
@@ -30,8 +30,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103908");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7589 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 09:03:33 +0200 (Fri, 27 Oct 2017) $");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-02-18 11:22:35 +0100 (Tue, 18 Feb 2014)");
   script_name("HNAP Detection");
   script_category(ACT_GATHER_INFO);
@@ -50,7 +50,7 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 
 port = get_http_port( default:8080 );
 
@@ -65,8 +65,8 @@ if( "soap:Envelope" >< buf && "SOAPActions" >< buf && "http://purenetworks.com/H
       set_kb_item(name:"HNAP/" + port + "/vendor", value:vendor[1]);
       set_kb_item(name:"HNAP/vendor", value:TRUE);
       report += 'Vendor: ' + vendor[1] + '\n';
-    }  
-  }  
+    }
+  }
 
   if( "<ModelName>" >< buf ) {
     model = eregmatch( pattern:"<ModelName>([^<]+)</ModelName>", string:buf );
@@ -74,7 +74,7 @@ if( "soap:Envelope" >< buf && "SOAPActions" >< buf && "http://purenetworks.com/H
       set_kb_item(name:"HNAP/" + port + "/model", value:model[1]);
       set_kb_item(name:"HNAP/model", value:TRUE);
       report += 'Model: ' + model[1] + '\n';
-    }  
+    }
   }
 
   if( "<FirmwareVersion>" >< buf ) {
@@ -83,11 +83,11 @@ if( "soap:Envelope" >< buf && "SOAPActions" >< buf && "http://purenetworks.com/H
       set_kb_item(name:"HNAP/" + port + "/firmware", value:fw[1]);
       set_kb_item(name:"HNAP/firmware", value:TRUE);
       report += 'Firmware: ' + fw[1] + '\n';
-    }  
-  }  
+    }
+  }
 
   set_kb_item( name:"HNAP/port", value:port );
   log_message( data:'The remote host supports the Home Network Administration Protocol (HNAP).\n' + report, port:port );
-}  
+}
 
 exit( 0 );

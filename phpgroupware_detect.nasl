@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpgroupware_detect.nasl 8144 2017-12-15 13:19:55Z cfischer $
+# $Id: phpgroupware_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # phpgroupware Detection
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100092");
-  script_version("$Revision: 8144 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:19:55 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10908 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-03-30 14:26:52 +0200 (Mon, 30 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_name("phpGroupWare Detection");  
+  script_name("phpGroupWare Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
@@ -73,7 +73,7 @@ foreach dir( make_list_unique( "/phpgroupware", "/phpgw", cgi_dirs( port:port ) 
   if( egrep( pattern:'<meta name="AUTHOR" content="phpGroupWare http://www.phpgroupware.org" />', string:buf ) ||
       egrep( pattern:'powered by phpGroupWare', string:buf ) ||
       egrep( pattern:'http://www.phpgroupware.org"><img src=.*logo.gif" alt="phpGroupWare"', string:buf ) ||
-      ( egrep( pattern:">phpGroupWare [0-9.]<", string:buf ) && egrep( pattern:'type="hidden" name="passwd_type"', string:buf ) ) ) { 
+      ( egrep( pattern:">phpGroupWare [0-9.]<", string:buf ) && egrep( pattern:'type="hidden" name="passwd_type"', string:buf ) ) ) {
 
     if( dir == "" ) rootInstalled = TRUE;
     vers = "unknown";
@@ -86,12 +86,12 @@ foreach dir( make_list_unique( "/phpgroupware", "/phpgw", cgi_dirs( port:port ) 
       if( ! isnull( version[1] ) ) {
         vers = version[1];
       }
-    }	
-    
+    }
+
     tmp_version = vers + " under " + install;
     set_kb_item( name:"www/" + port + "/phpGroupWare", value:tmp_version );
     set_kb_item( name:"phpGroupWare/installed", value:TRUE );
-   
+
     cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:phpgroupware:phpgroupware:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:phpgroupware:phpgroupware';

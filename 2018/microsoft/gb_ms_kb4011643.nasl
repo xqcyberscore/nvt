@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011643.nasl 8539 2018-01-25 14:37:09Z gveerendra $
+# $Id: gb_ms_kb4011643.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Word 2016 Multiple Remote Code Execution Vulnerabilities (KB4011643)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812623");
-  script_version("$Revision: 8539 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-0792", "CVE-2018-0793", "CVE-2018-0794", "CVE-2018-0797",
                 "CVE-2018-0798", "CVE-2018-0801", "CVE-2018-0802", "CVE-2018-0804",
                 "CVE-2018-0805", "CVE-2018-0806", "CVE-2018-0807", "CVE-2018-0812",
                 "CVE-2018-0845", "CVE-2018-0848", "CVE-2018-0849", "CVE-2018-0862");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 15:37:09 +0100 (Thu, 25 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 12:59:14 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft Word 2016 Multiple Remote Code Execution Vulnerabilities (KB4011643)");
 
@@ -49,7 +49,7 @@ if(description)
   - An error in the way that Microsoft Outlook parses specially crafted email
     messages.
 
-  - Multipe errors in Microsoft Office software when the software fails to
+  - Multiple errors in Microsoft Office software when the software fails to
     properly handle objects in memory.
 
   - An error in Microsoft Office software when the Office software fails to
@@ -69,13 +69,13 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4011643");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4011643");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/Word/Version");
-  script_require_ports(139, 445);
+
   exit(0);
 }
 
@@ -85,17 +85,11 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## variable Initialization
-exeVer = "";
-exePath = "";
-
-##Get version and install path
 exeVer = get_kb_item("SMB/Office/Word/Version");
 if(!exeVer){
   exit(0);
 }
 
-##Get Install Path
 exePath = get_kb_item("SMB/Office/Word/Install/Path");
 if(!exePath){
   exePath = "Unable to fetch the install path";

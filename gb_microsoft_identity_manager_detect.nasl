@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_identity_manager_detect.nasl 8962 2018-02-27 09:44:31Z ckuersteiner $
+# $Id: gb_microsoft_identity_manager_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Microsoft Identity Manager Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140818");
-  script_version("$Revision: 8962 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-27 10:44:31 +0100 (Tue, 27 Feb 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-27 14:00:04 +0700 (Tue, 27 Feb 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-27 14:00:04 +0700 (Tue, 27 Feb 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Microsoft Identity Manager Detection");
 
-  script_tag(name: "summary" , value: "Detection of Microsoft Identity Manager.
+  script_tag(name:"summary", value:"Detection of Microsoft Identity Manager.
 
 The script sends a connection request to the server and attempts to detect Microsoft Identity Manager and to
 extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ extract its version.");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.microsoft.com/en-us/cloud-platform/microsoft-identity-manager");
+  script_xref(name:"URL", value:"https://www.microsoft.com/en-us/cloud-platform/microsoft-identity-manager");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_frontaccounting_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: secpod_frontaccounting_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # FrontAccounting Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900256");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-11-30 15:32:46 +0100 (Mon, 30 Nov 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("FrontAccounting Detection");
@@ -69,7 +69,6 @@ foreach dir( make_list_unique( "/frontaccount", "/account", "/", cgi_dirs( port:
 
     version = "unknown";
 
-    # Grep version
     ver = eregmatch( pattern:"(FrontAccounting |Version )([0-9.]+) ?([a-zA-Z]+ ?[0-9]+?)?",
                      string:buf, icase:TRUE );
     if( ! isnull( ver[2] ) ) {
@@ -84,7 +83,6 @@ foreach dir( make_list_unique( "/frontaccount", "/account", "/", cgi_dirs( port:
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/FrontAccounting", value:tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+) ?([a-zA-Z]+ ?[0-9]+?)?", base:"cpe:/a:frontaccounting:frontaccounting:" );
     if( ! cpe )
       cpe = "cpe:/a:frontaccounting:frontaccounting";
@@ -98,6 +96,6 @@ foreach dir( make_list_unique( "/frontaccount", "/account", "/", cgi_dirs( port:
                                                concluded:ver[0] ),
                                                port:port );
   }
-}  
+}
 
 exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: flatpress_detect.nasl 9721 2018-05-04 06:43:25Z ckuersteiner $
+# $Id: flatpress_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Flatpress Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100294");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9721 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-04 08:43:25 +0200 (Fri, 04 May 2018) $");
+ script_version("$Revision: 10902 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2009-10-06 18:45:43 +0200 (Tue, 06 Oct 2009)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -43,9 +43,9 @@ if (description)
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name: "summary", value: "This host is running Flatpress, an open-source blogging engine.");
+ script_tag(name:"summary", value:"This host is running Flatpress, an open-source blogging engine.");
 
- script_xref(name: "URL", value: "http://www.flatpress.org");
+ script_xref(name:"URL", value:"http://www.flatpress.org");
 
  exit(0);
 }
@@ -75,7 +75,7 @@ foreach dir ( make_list_unique( "/flatpress", "/blog", cgi_dirs( port: port))) {
        vers = version[1];
 
    set_kb_item(name: "flatpress/installed", value: TRUE);
-   
+
    cpe = build_cpe(value: vers, exp: "^([0-9.]+([a-z0-9]+)?)", base: "cpe:/a:flatpress:flatpress:");
    if (!cpe)
      cpe = 'cpe:/a:flatpress:flatpress';

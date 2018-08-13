@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: www_multiple_get.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: www_multiple_get.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # Several GET locks web server
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18366");
-  script_version("$Revision: 9580 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+  script_version("$Revision: 10898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name( "Several GET locks web server");
+  script_name("Several GET locks web server");
   # It is not really destructive, but it is useless in safe_checks mode
   script_category(ACT_DESTRUCTIVE_ATTACK);
   script_copyright("This script is Copyright (C) 2005 Michel Arboi");

@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805362");
-  script_version("$Revision: 5499 $");
+  script_version("$Revision: 10913 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-04-08 10:37:27 +0530 (Wed, 08 Apr 2015)");
   script_name("Foxit PhantomPDF Version Detection");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Foxit PhantomPDF.
 
   The script logs in via smb, searches for Foxit Reader in the registry and
@@ -43,7 +43,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -56,26 +56,15 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## variable Initialization
-os_arch = "";
-key_list = "";
-key = "";
-cpe = "";
-foxitVer = "";
-foxitPath = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Foxit Software\Foxit PhantomPDF");
 }
 
-## Check for 64 bit platform
 else if("x64" >< os_arch)
 {
   key_list =  make_list("SOFTWARE\Wow6432Node\Foxit Software\Foxit PhantomPDF");
@@ -85,14 +74,12 @@ if(isnull(key_list)){
   exit(0);
 }
 
-## Confirm Application
 if(!registry_key_exists(key:"SOFTWARE\Foxit Software\Foxit PhantomPDF")){
   if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\Foxit Software\Foxit PhantomPDF")){
     exit(0);
   }
 }
 
-## Get Version from Registry
 foreach key (key_list)
 {
   foxitVer = registry_get_sz(key:key, item:"Version");
@@ -131,7 +118,6 @@ foreach key (key_list)
     if(!foxitPath){
       foxitPath = 'Could not find the install path from registry';
     }
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:foxitVer, exp:"^([0-9.]+)", base:"cpe:/a:foxitsoftware:phantompdf:");
     if(isnull(cpe))
       cpe = "cpe:/a:foxitsoftware:phantompdf";

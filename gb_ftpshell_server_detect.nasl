@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftpshell_server_detect.nasl 4780 2016-12-16 08:45:05Z cfi $
+# $Id: gb_ftpshell_server_detect.nasl 10886 2018-08-10 11:29:21Z cfischer $
 #
 # FTPShell Server Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800225");
-  script_version("$Revision: 4780 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-16 09:45:05 +0100 (Fri, 16 Dec 2016) $");
+  script_version("$Revision: 10886 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 13:29:21 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-02-06 13:48:17 +0100 (Fri, 06 Feb 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -36,14 +36,14 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl", "secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
 
   script_tag(name:"summary", value:"This script finds the installed FTPShell Server Version and sets
   the result in KB.");
 
-  script_tag(name: "qod_type", value: "registry");
+  script_tag(name:"qod_type", value:"registry");
 
   exit(0);
 }
@@ -53,8 +53,6 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800225";
 SCRIPT_DESC = "FTPShell Server Version Detection";
 
 if(!get_kb_item("SMB/WindowsVersion")){
@@ -77,10 +75,9 @@ foreach item (registry_enum_keys(key:key))
       set_kb_item(name:"FTPShell/Version", value:ftpVer);
       log_message(data:"FTPShell version " + ftpVer + " was detected on the host");
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe(value:ftpVer, exp:"^([0-9.]+)", base:"cpe:/a:ftpshell:ftpshell_server:");
       if(!isnull(cpe))
-         register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+         register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
     }
     exit(0);

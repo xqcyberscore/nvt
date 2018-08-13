@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winftp_serv_detect.nasl 4777 2016-12-15 14:28:45Z cfi $
+# $Id: gb_winftp_serv_detect.nasl 10886 2018-08-10 11:29:21Z cfischer $
 #
 # WinFTP Server Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800345");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4777 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-15 15:28:45 +0100 (Thu, 15 Dec 2016) $");
+  script_version("$Revision: 10886 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 13:29:21 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-02-04 15:43:54 +0100 (Wed, 04 Feb 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("WinFTP Server Version Detection");
@@ -37,11 +37,11 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "find_service.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
 
-  script_tag(name: "summary" , value: "Detection of WinFTP Server
+  script_tag(name:"summary", value:"Detection of WinFTP Server
 
 This script detects the installed version of WinFTP Server and sets the result in KB.");
 
@@ -54,8 +54,6 @@ include("smb_nt.inc");
 include("ftp_func.inc");
 include("secpod_smb_func.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800345";
 SCRIPT_DESC = "WinFTP Server Version Detection";
 
 if(!get_kb_item("SMB/WindowsVersion")){
@@ -78,9 +76,8 @@ if(winFtpVer){
   log_message(data:"WinFTP Server version " + winFtpVer +
             " running at location " + exePath +  " was detected on the host");
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value: winFtpVer, exp:"^([0-9.]+)",base:"cpe:/a:wftpserver:winftp_ftp_server:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
 }

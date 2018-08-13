@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: websense_detect.nasl 8869 2018-02-19 14:09:59Z cfischer $
+# $Id: websense_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Websense reporting console detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18177");
-  script_version("$Revision: 8869 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-19 15:09:59 +0100 (Mon, 19 Feb 2018) $");
+  script_version("$Revision: 10908 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -41,16 +41,13 @@ if(description)
   script_require_ports("Services/www", 8010);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "The remote host appears to be running Websense, connections are allowed 
+  script_tag(name:"solution", value:"Filter incoming traffic to this port");
+  script_tag(name:"solution_type", value:"Mitigation");
+  script_tag(name:"summary", value:"The remote host appears to be running Websense, connections are allowed
   to the web reporting console.
 
-  Letting attackers know that you are using this software will help them 
-  to focus their attack or will make them change their strategy.";
-
-  tag_solution = "Filter incoming traffic to this port";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  Letting attackers know that you are using this software will help them
+  to focus their attack or will make them change their strategy.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flexera_installanywhere_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_flexera_installanywhere_detect_lin.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Flexera InstallAnywhere Version Detection (Linux)
 #
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809016");
-  script_version("$Revision: 7823 $");
+  script_version("$Revision: 10915 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-08-29 13:05:30 +0530 (Mon, 29 Aug 2016)");
   script_name("Flexera InstallAnywhere Version Detection (Linux)");
 
-  script_tag(name : "summary" , value : "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Flexera InstallAnywhere on Linux.
 
   The script logs in via ssh, searches for executable and queries the
   version from 'config.json' file.");
-  
+
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -57,19 +57,12 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-##Variable initialization
-sock = 0;
-installVer = "";
-paths = "";
-path = "";
-
 sock = ssh_login_or_reuse_connection();
 
 if(!sock){
   exit(0);
 }
 
-## Get installation path
 paths = find_file(file_name: "InstallAnywhere.lax",file_path: "/", useregex:TRUE,
                   regexpar:"$", sock:sock);
 
@@ -84,10 +77,8 @@ foreach path (paths)
 
   if(installVer[1] != NULL)
   {
-    ## Set kb
     set_kb_item(name:"InstallAnywhere/Linux/Ver", value:installVer[1]);
- 
-    ## build cpe
+
     cpe = build_cpe(value:installVer[1], exp:"^([0-9.]+)", base:"cpe:/a:flexerasoftware:installanywhere:");
     if(!cpe)
       cpe = "cpe:/a:flexerasoftware:installanywhere";

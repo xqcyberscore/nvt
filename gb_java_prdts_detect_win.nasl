@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_prdts_detect_win.nasl 10078 2018-06-05 09:49:52Z cfischer $
+# $Id: gb_java_prdts_detect_win.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Sun/Oracle Java Products Version Detection (Windows)
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800383");
-  script_version("$Revision: 10078 $");
+  script_version("$Revision: 10915 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-05 11:49:52 +0200 (Tue, 05 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Sun/Oracle Java Products Version Detection (Windows)");
 
-  script_tag(name:"summary", value:"Detection of installed version of Java Products.
+  script_tag(name:"summary", value:"Detects the installed version of Java Products.
 
   The script logs in via smb, searches for Java Products in the registry and
   gets the version from 'Version' string in registry.");
@@ -43,7 +43,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
 
@@ -135,7 +135,6 @@ foreach jreKey(adkeylist){
               cpe = "cpe:/a:oracle:jre";
           }
 
-          ## register the separate CPE for 64 apps on 64 bit OS
           if(!isnull(jreVer[1]) && "x64" >< osArch && "Wow6432Node" >!< jreKey){
             set_kb_item(name:"Sun/Java64/JRE64/Win/Ver", value:jreVer[1]);
             if(version_is_less(version:jrVer, test_version:"1.4.2.38") ||

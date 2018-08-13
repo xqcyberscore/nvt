@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_hw_encryption_restrict_crypto.nasl 10319 2018-06-25 14:34:14Z emoss $
+# $Id: win_hw_encryption_restrict_crypto.nasl 10893 2018-08-10 13:07:24Z emoss $
 #
 # Check value for Configure use of hardware-based encryption for fixed data drives:
 # Restrict crypto algorithms or cipher suites to the following
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109382");
-  script_version("$Revision: 10319 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:34:14 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 10893 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:07:24 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-25 15:58:06 +0200 (Mon, 25 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -39,16 +39,17 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+	script_add_preference(name:"Value", type:"entry", value:"2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'Configure use of hardware-based encryption for fixed data drives: Restrict 
-crypto algorithms or cipher suites to the following' on Windows hosts (at least 
+  script_tag(name:"summary", value:"This test checks the setting for policy
+'Configure use of hardware-based encryption for fixed data drives: Restrict
+crypto algorithms or cipher suites to the following' on Windows hosts (at least
 Windows 8.1).
 
-The policy setting controls BitLockers use of hardware-based encryption on fixed 
-data drives and specify which encryption algorithms it can use with 
+The policy setting controls BitLockers use of hardware-based encryption on fixed
+data drives and specify which encryption algorithms it can use with
 hardware-based encryption.
-The option allows to restrict the encryption algorithms that BitLocker can use 
+The option allows to restrict the encryption algorithms that BitLocker can use
 with hardware encryption.");
   exit(0);
 }
@@ -76,15 +77,25 @@ BitLocker Drive Encryption/Fixed Data Drives/' + title;
 type = 'HKLM';
 key = 'Software\\Policies\\Microsoft\\FVE';
 item = 'FDVAllowedHardwareEncryptionAlgorithms';
-
 value = registry_get_sz(key:key, item:item, type:type);
+default = script_get_preference('Value');
+
 if(!value){
-  value = 'none';
+  value = 'None';
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+if(value == default){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

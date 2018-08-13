@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cuteftp_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
+# $Id: gb_cuteftp_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # CuteFTP Version Detection (Windows)
 #
@@ -30,16 +30,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800947");
-  script_version("$Revision: 9584 $");
+  script_version("$Revision: 10911 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-10-20 14:26:56 +0200 (Tue, 20 Oct 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("CuteFTP Version Detection (Windows)");
 
 
-  script_tag(name : "summary" , value : "Detection of installed version of CuteFTP on Windows.
+  script_tag(name:"summary", value:"Detects the installed version of CuteFTP on Windows.
 
 The script logs in via smb, searches for CuteFTP in the registry
 and gets the install location and extract version from the file.");
@@ -47,7 +47,7 @@ and gets the install location and extract version from the file.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -60,14 +60,6 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-appExists = FALSE;
-cftpName = "";
-exeName = "";
-cftpVer = "";
-cName = "";
-
-## Check for 7-Zip
 appKey_list = make_list("SOFTWARE\GlobalSCAPE", "SOFTWARE\GlobalSCAPE Inc.",
                         "SOFTWARE\Wow6432Node\GlobalSCAPE", "SOFTWARE\Wow6432Node\GlobalSCAPE Inc.");
 foreach appKey (appKey_list)
@@ -81,19 +73,16 @@ foreach appKey (appKey_list)
 
 if (!appExists) exit(0);
 
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(0);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
 ## Presently CuteFTP 64bit application is not available
-## Check for 32 bit App on 64 bit platform
 else if("x64" >< os_arch){
   key_list =  make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
@@ -102,10 +91,8 @@ foreach key (key_list)
 {
   foreach item (registry_enum_keys(key:key))
   {
-    ## Get the Application name
     cName = registry_get_sz(key:key + item, item:"DisplayName");
 
-    ## Confirm the Application
     if("CuteFTP" >< cName)
     {
       ## To check whether it is Home/Lite/Professional
@@ -121,7 +108,6 @@ foreach key (key_list)
 
       exeName = cpath_list[max_index(cpath_list)-1];
 
-      ## Get the version
       cftpVer = fetch_file_version(sysPath: cPath - exeName, file_name: exeName);
 
       if(cftpVer)
@@ -135,7 +121,6 @@ foreach key (key_list)
         ## Used for Common application Detection
         set_kb_item(name:"CuteFTP/Win/Ver", value:cftpVer);
 
-        ## Build CPE
         cpe = build_cpe(value:cftpVer, exp:"^([0-9.]+([a-z0-9]+)?)", base:"cpe:/a:globalscape:cuteftp:");
         if(isnull(cpe))
           cpe = "cpe:/a:globalscape:cuteftp";

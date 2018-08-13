@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dns_os_detection.nasl 10185 2018-06-14 07:39:38Z cfischer $
+# $Id: gb_dns_os_detection.nasl 10931 2018-08-11 13:51:20Z cfischer $
 #
 # DNS Server OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108014");
-  script_version("$Revision: 10185 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 09:39:38 +0200 (Thu, 14 Jun 2018) $");
+  script_version("$Revision: 10931 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 15:51:20 +0200 (Sat, 11 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-11-03 14:13:48 +0100 (Thu, 03 Nov 2016)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -148,12 +148,14 @@ foreach proto( make_list( "udp", "tcp" ) ) {
     }
 
     # Those are only running on Unix-like OS variantes
-    # keep at the bottom so the pattern above are evaluated first
+    # keep at the bottom so the pattern above are evaluated first.
+    # dnsmasq-pi-hole-2.79
+    # dnsmasq-2.76
     if( banner =~ "^dnsmasq" || banner =~ "^PowerDNS Authoritative Server" || banner =~ "^PowerDNS Recursor" || "jenkins@autotest.powerdns.com" >< banner || banner =~ "^Knot DNS" ) {
       # Doesn't have any OS info so just reqister Linux/Unix
       register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:BANNER_TYPE, port:port, proto:proto, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       # Only continue here for the pattern without OS info so we register an unknown OS down below if there is any additional data in the banner we want to know
-      if( banner == "dnsmasq" || egrep( pattern:"^dnsmasq-([0-9.]+)$", string:banner ) ||
+      if( banner == "dnsmasq" || egrep( pattern:"^dnsmasq-(pi-hole-)?([0-9.]+)$", string:banner ) ||
           egrep( pattern:"^PowerDNS Authoritative Server ([0-9.]+)$", string:banner ) ||
           egrep( pattern:"^PowerDNS Recursor ([0-9.]+)$", string:banner ) ||
           egrep( pattern:"^Knot DNS ([0-9.]+)$", string:banner ) ) {

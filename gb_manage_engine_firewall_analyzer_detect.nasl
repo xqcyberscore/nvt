@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_firewall_analyzer_detect.nasl 8825 2018-02-15 10:45:17Z ckuersteiner $
+# $Id: gb_manage_engine_firewall_analyzer_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # ManageEngine Firewall Analyzer Detection
 #
@@ -27,14 +27,14 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.811533");
- script_version("$Revision: 8825 $");
+ script_version("$Revision: 10896 $");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2018-02-15 11:45:17 +0100 (Thu, 15 Feb 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2017-07-19 13:54:26 +0530 (Wed, 19 Jul 2017)");
  script_name("ManageEngine Firewall Analyzer Detection");
 
- script_tag(name: "summary" , value: "Detection of ManageEngine Firewall Analyzer.
+ script_tag(name:"summary", value:"Detection of ManageEngine Firewall Analyzer.
 
 The script sends a connection request to the server and attempts to detect ManageEngine Firewall Analyzer and to
 extract its version.");
@@ -63,7 +63,7 @@ buf = http_get_cache(item :url, port: http_port);
 if ("Firewall Analyzer" >< buf &&
     buf =~ ">Firewall Log Analytics Software from ManageEngine.*Copyright.*ZOHO Corp") {
   version = "unknown";
- 
+
   set_kb_item(name:"me_firewall_analyzer/installed",value:TRUE);
 
   # <h2>Firewall Analyzer<span>v 12.0</span></h2>

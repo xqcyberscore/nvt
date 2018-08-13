@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_an_guestbook_lfi_vuln.nasl 9350 2018-04-06 07:03:33Z cfischer $
+# $Id: gb_an_guestbook_lfi_vuln.nasl 10881 2018-08-10 10:27:02Z mmartin $
 #
 # AN Guestbook Local File Inclusion Vulnerability
 #
@@ -41,8 +41,8 @@ tag_summary = "This host is running AN Guestbook and is prone to Local File Incl
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800526");
-  script_version("$Revision: 9350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:03:33 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10881 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:27:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-07-07 11:58:41 +0200 (Tue, 07 Jul 2009)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
@@ -62,6 +62,7 @@ if(description)
   script_tag(name : "affected" , value : tag_affected);
   script_tag(name : "insight" , value : tag_insight);
   script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name : "summary" , value : tag_summary);
   script_tag(name : "impact" , value : tag_impact);
   exit(0);

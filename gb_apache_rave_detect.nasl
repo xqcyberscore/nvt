@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_rave_detect.nasl 5820 2017-03-31 11:20:49Z cfi $
+# $Id: gb_apache_rave_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Apache Rave Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803179");
-  script_version("$Revision: 5820 $");
+  script_version("$Revision: 10929 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-14 16:52:17 +0530 (Thu, 14 Mar 2013)");
   script_name("Apache Rave Version Detection");
 
@@ -41,7 +41,7 @@ if(description)
  script_require_ports("Services/www", 8080);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "summary" , value : "Detection of Apache Rave.
+ script_tag(name:"summary", value:"Detection of Apache Rave.
 
  The script sends a connection request to the server and attempts to
  extract the version number from the reply.");
@@ -54,19 +54,8 @@ if(description)
 include("cpe.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-include("host_details.inc");
 
-## Variables Initialization
-cpe = "";
-url = "";
-req = "";
-buf = "";
-vers = "";
-dirs = "";
-port = "";
-version = "";
-install = "";
+include("host_details.inc");
 
 port = get_http_port(default:8080);
 
@@ -80,13 +69,11 @@ foreach dir (make_list_unique("/", "/rave", "/portal", "/social", cgi_dirs(port:
   buf = http_get_cache(item:url, port:port);
   if( buf == NULL ) continue;
 
-  ## Confirm the application
   if(">RAVE<" >< buf && ">Apache Rave" >< buf)
   {
 
     vers = string("unknown");
 
-    ### try to get version
     version = eregmatch(string:buf, pattern:'>Apache Rave ([0-9.]+)',icase:TRUE);
     if(!isnull(version[1])) {
       vers=chomp(version[1]);
@@ -97,12 +84,10 @@ foreach dir (make_list_unique("/", "/rave", "/portal", "/social", cgi_dirs(port:
                 value: string(vers," under ",install));
     set_kb_item(name:"ApacheRave/installed", value:TRUE);
 
-    ## build cpe
     cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:apache:rave:");
     if(isnull(cpe))
       cpe = 'cpe:/a:apache:rave';
 
-    ## register the product
     register_product(cpe:cpe, location:install, port:port);
     log_message(data: build_detection_report(app:"Apache Rave",
                                              version:vers,

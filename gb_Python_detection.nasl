@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_Python_detection.nasl 9754 2018-05-08 11:00:12Z cfischer $
+# $Id: gb_Python_detection.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Python Version Detection (Remote)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107020");
-  script_version("$Revision: 9754 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 13:00:12 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 10908 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-07-04 19:31:49 +0200 (Mon, 04 Jul 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Python/banner");
 
-  script_tag(name:"summary", value:"Detection of installed version of Python.
+  script_tag(name:"summary", value:"Detects the installed version of Python.
 
   The script detects the version of Python on the remote host and sets the KB entries.");
 

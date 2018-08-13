@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_smart_protection_server_detect.nasl 9740 2018-05-07 08:32:23Z ckuersteiner $
+# $Id: gb_trendmicro_smart_protection_server_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Trend Micro Smart Protection Server Remote Version Detection
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811915");
-  script_version("$Revision: 9740 $");
+  script_version("$Revision: 10911 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 10:32:23 +0200 (Mon, 07 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-05 17:44:54 +0530 (Thu, 05 Oct 2017)");
   script_name("Trend Micro Smart Protection Server Remote Version Detection");
 
-  script_tag(name: "summary", value: "Detection of Trend Micro Smart Protection Server.
+  script_tag(name:"summary", value:"Detection of Trend Micro Smart Protection Server.
 
 This script sends HTTP GET request and try to get the version from the response.");
 

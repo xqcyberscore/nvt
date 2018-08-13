@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4056898.nasl 8506 2018-01-24 03:45:11Z ckuersteiner $
+# $Id: gb_ms_kb4056898.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4056898)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812386");
-  script_version("$Revision: 8506 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2017-5753", "CVE-2017-5715", "CVE-2017-5754", "CVE-2018-0744",
                 "CVE-2018-0753", "CVE-2018-0754", "CVE-2018-0788", "CVE-2018-0752",
                 "CVE-2018-0751", "CVE-2018-0749", "CVE-2018-0747", "CVE-2018-0748",
                 "CVE-2018-0746");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-24 04:45:11 +0100 (Wed, 24 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-01-04 16:27:57 +0530 (Thu, 04 Jan 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4056898)");
 
@@ -65,7 +65,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to execute arbitrary code and take control of an affected system, gain access to
-  sensitive data, cause a target system to stop responding,  impersonate processes,
+  sensitive data, cause a target system to stop responding, impersonate processes,
   interject cross-process communication, interrupt system functionality, bypass
   certain security checks and conduct bounds check bypass, branch target injection,
   rogue data cache load.
@@ -83,12 +83,13 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4056898");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4056898");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }

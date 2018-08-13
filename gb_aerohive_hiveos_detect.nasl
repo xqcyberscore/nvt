@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aerohive_hiveos_detect.nasl 6356 2017-06-16 09:38:18Z ckuersteiner $
+# $Id: gb_aerohive_hiveos_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Aerohive Networks HiveOS Detection
 #
@@ -27,21 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106875");
-  script_version("$Revision: 6356 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-16 11:38:18 +0200 (Fri, 16 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-16 11:44:13 +0700 (Fri, 16 Jun 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-16 11:44:13 +0700 (Fri, 16 Jun 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Aerohive Networks HiveOS Detection");
 
-  script_tag(name: "summary" , value: "Detection of Aerohive Networks HiveOS.
+  script_tag(name:"summary", value:"Detection of Aerohive Networks HiveOS.
 
 The script sends a connection request to the server and attempts to detect Aerohive Networks HiveOS and to
 extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -50,7 +50,7 @@ extract its version.");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "http://www.aerohive.com/");
+  script_xref(name:"URL", value:"http://www.aerohive.com/");
 
   exit(0);
 }

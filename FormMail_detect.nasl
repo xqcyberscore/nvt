@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: FormMail_detect.nasl 9791 2018-05-10 09:39:02Z ckuersteiner $
+# $Id: FormMail_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # FormMail Detection
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100201");
-  script_version("$Revision: 9791 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-10 11:39:02 +0200 (Thu, 10 May 2018) $");
+  script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-05-14 20:19:12 +0200 (Thu, 14 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
 
-  script_name("FormMail Detection");  
+  script_name("FormMail Detection");
 
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
@@ -73,7 +73,7 @@ foreach dir( make_list_unique( "/formmail", cgi_dirs( port:port ) ) ) {
 
     if( egrep( pattern:'FormMail', string:buf, icase:TRUE ) &&
         ( egrep( pattern:'A Free Product of', string:buf, icase:TRUE ) ||
-          egrep( pattern:'Bad Referrer', string:buf, icase:TRUE ) ) ) { 
+          egrep( pattern:'Bad Referrer', string:buf, icase:TRUE ) ) ) {
 
       vers = "unknown";
 

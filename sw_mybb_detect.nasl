@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_mybb_detect.nasl 7749 2017-11-14 07:03:27Z cfischer $
+# $Id: sw_mybb_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # MyBB Forum Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111023");
-  script_version("$Revision: 7749 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-14 08:03:27 +0100 (Tue, 14 Nov 2017) $");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-07-20 13:14:40 +0200 (Mon, 20 Jul 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -89,15 +89,13 @@ foreach dir( make_list_unique( "/" , "/forum" , "/forums" , "/mybb" , "/MyBB" , 
     set_kb_item(name:"MyBB/installed",value:TRUE);
     tmp_version = mybbVer + " under " + install;
     set_kb_item( name:"www/" + port + "/MyBB", value:tmp_version );
-   
-    ## Build CPE
+
     cpe = build_cpe( value:mybbVer, exp:"^([0-9.]+)", base:"cpe:/a:mybb:mybb:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:mybb:mybb';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
- 
+
     log_message( data: build_detection_report( app:"MyBB",
                                                version:mybbVer,
                                                install:install,

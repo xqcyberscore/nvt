@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_3com_officeconnect_vpn_firewall_default_login.nasl 7161 2017-09-18 07:43:57Z cfischer $
+# $Id: gb_3com_officeconnect_vpn_firewall_default_login.nasl 10910 2018-08-10 15:10:09Z mmartin $
 #
 # 3Com OfficeConnect VPN Firewall Default Password Security Bypass Vulnerability
 #
@@ -25,27 +25,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote 3Com OfficeConnect VPN Firewall is prone to a default account
-authentication bypass vulnerability. This issue may be exploited by a
-remote attacker to gain access to sensitive information or modify system
-configuration.
-
-It was possible to login as Admin with password 'admin'.";
-
-
-tag_solution = "Change the password.";
-
 CPE = "cpe:/o:hp:3com_officeconnect_vpn_firewall";
 
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103711");
- script_version ("$Revision: 7161 $");
+ script_version("$Revision: 10910 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("3Com OfficeConnect VPN Firewall Default Password Security Bypass Vulnerability");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:43:57 +0200 (Mon, 18 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:10:09 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2013-05-14 11:24:55 +0200 (Tue, 14 May 2013)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -54,8 +44,14 @@ if (description)
  script_dependencies("gb_3com_officeconnect_vpn_firewall_detect.nasl");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("3com_officeconnect_vpn_firewall/installed");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name:"solution", value:"Change the password.");
+ script_tag(name:"solution_type", value:"Mitigation");
+ script_tag(name:"summary", value:"The remote 3Com OfficeConnect VPN Firewall is prone to a default account
+authentication bypass vulnerability. This issue may be exploited by a
+remote attacker to gain access to sensitive information or modify system
+configuration.
+
+It was possible to login as Admin with password 'admin'.");
  exit(0);
 }
 
@@ -103,7 +99,7 @@ if(result =~ "HTTP/1.. 200" && "INPUT type=hidden name=tk" >< result) {
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ",len,"\r\n",
              "\r\n",
-             login_data); 
+             login_data);
 
   result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
@@ -116,8 +112,8 @@ if(result =~ "HTTP/1.. 200" && "INPUT type=hidden name=tk" >< result) {
     if("<title>administration menu" >< tolower(buf)) {
       security_message(port:port);
       exit(0);
-    }  
+    }
 
-  }  
-}  
+  }
+}
 

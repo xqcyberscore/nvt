@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_click2run_mult_vuln_may18.nasl 9906 2018-05-18 10:34:56Z santu $
+# $Id: gb_ms_office_click2run_mult_vuln_may18.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Office 2016 Click-to-Run (C2R) Multiple Vulnerabilities-May18
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813180");
-  script_version("$Revision: 9906 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-8147", "CVE-2018-8148", "CVE-2018-8162", "CVE-2018-8163",
                 "CVE-2018-8150", "CVE-2018-8157", "CVE-2018-8158");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 12:34:56 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 11:32:57 +0530 (Wed, 09 May 2018)");
   script_name("Microsoft Office 2016 Click-to-Run (C2R) Multiple Vulnerabilities-May18");
 
@@ -66,13 +66,13 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/office/mt465751");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/office/mt465751");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_office_click2run_detect_win.nasl");
   script_mandatory_keys("MS/Off/C2R/Ver", "MS/Office/C2R/UpdateChannel");
-  script_require_ports(139, 445);
+
   exit(0);
 }
 

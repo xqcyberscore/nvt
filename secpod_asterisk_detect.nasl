@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_asterisk_detect.nasl 7702 2017-11-09 04:34:57Z ckuersteiner $
+# $Id: secpod_asterisk_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Asterisk Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900811");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7702 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-09 05:34:57 +0100 (Thu, 09 Nov 2017) $");
+  script_version("$Revision: 10894 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-08-05 14:14:14 +0200 (Wed, 05 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Asterisk Version Detection");
@@ -42,8 +42,8 @@ if(description)
   script_dependencies("sip_detection.nasl", "find_service.nasl");
   script_mandatory_keys("sip/detected");
 
-  script_tag(name : "summary" , value : "Detection of Asterisk
-                     
+  script_tag(name:"summary", value:"Detection of Asterisk
+
   The script sends a connection request to the server and attempts to
   extract the version number from the reply.");
 
@@ -83,7 +83,6 @@ if("Asterisk PBX" >< banner || "FPBX-" >< banner ) {
   }
 
   set_kb_item(name:"Asterisk-PBX/Installed", value:TRUE);
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value:version, exp:"^([0-9.]+\.[0-9]+)\.?((rc[0-9]+)|(cert[1-9]))?", base:"cpe:/a:digium:asterisk:");
   if(isnull(cpe))
     cpe = 'cpe:/a:digium:asterisk';

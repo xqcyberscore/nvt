@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_forefront_unified_access_gateway_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_ms_forefront_unified_access_gateway_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Microsoft Forefront Unified Access Gateway (UAG) Detection
 #
@@ -27,27 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802746");
-  script_version("$Revision: 5499 $");
+  script_version("$Revision: 10891 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-04-13 10:46:45 +0530 (Fri, 13 Apr 2012)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Forefront Unified Access Gateway (UAG) Detection");
 
-tag_summary =
-"Detection of installed version of Microsoft Forefront Unified Access Gateway.
+
+  script_tag(name:"summary", value:"Detects the installed version of Microsoft Forefront Unified Access Gateway.
 
 The script logs in via smb, searches for Microsoft Forefront Unified Access
-Gateway in the registry and gets the version from registry.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+Gateway in the registry and gets the version from registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -59,14 +56,6 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-key = "";
-uagName = "";
-uagVer = "";
-cpe = "";
-os_arch = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!osArch)
 {
@@ -94,15 +83,12 @@ foreach item (registry_enum_keys(key:key))
     continue;
   }
 
-  ## Confirm the application
   if("Microsoft Forefront Unified Access Gateway" >< uagName)
   {
-    ## Get version from registry
     uagVer = registry_get_sz(key:key + item, item:"DisplayVersion");
 
     if(uagVer)
     {
-      ## Set the KB item
       set_kb_item(name:"MS/Forefront/UAG/Ver", value:uagVer);
       cpe = build_cpe(value:uagVer, exp:"^([0-9.]+)",
                     base:"cpe:/a:microsoft:forefront_unified_access_gateway:");

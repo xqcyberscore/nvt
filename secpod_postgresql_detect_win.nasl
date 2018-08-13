@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_postgresql_detect_win.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: secpod_postgresql_detect_win.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # PostgreSQL Version Detection (Windows)
 #
@@ -30,28 +30,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900479");
-  script_version("$Revision: 5499 $");
+  script_version("$Revision: 10901 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-03-26 11:19:12 +0100 (Thu, 26 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("PostgreSQL Version Detection (Windows)");
 
-  tag_summary =
-"This script detects the installed version of PostgreSQL and saves the result
+
+  script_tag(name:"summary", value:"This script detects the installed version of PostgreSQL and saves the result
 in KB.
 
 The script logs in via smb, searches for PostgreSQL in the registry and gets
-version from registry.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+version from registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -64,25 +61,15 @@ include("secpod_smb_func.inc");
 include("version_func.inc");
 
 
-## Variable initialization
-os_arch = "";
-key_list = "";
-key = "";
-insloc = "";
-gresqlVer = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\PostgreSQL Global Development Group\PostgreSQL\");
 }
 
-## Check for 64 bit platform
 else if("x64" >< os_arch){
   key_list =  make_list("SOFTWARE\PostgreSQL Global Development Group\PostgreSQL\",
                         "SOFTWARE\Wow6432Node\PostgreSQL Global Development Group\PostgreSQL\");
@@ -92,7 +79,6 @@ if(isnull(key_list)){
   exit(0);
 }
 
-##Confirm Application
 if(!registry_key_exists(key:"SOFTWARE\PostgreSQL")){
   if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\PostgreSQL")){
     exit(0);
@@ -110,7 +96,6 @@ foreach key (key_list)
   {
     set_kb_item(name:"PostgreSQL/Win/Ver", value:gresqlVer);
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value: gresqlVer, exp:"^([0-9.]+)",base:"cpe:/a:postgresql:postgresql:");
     if(isnull(cpe))
       cpe = "cpe:/a:postgresql:postgresql";

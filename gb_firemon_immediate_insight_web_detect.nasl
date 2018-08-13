@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firemon_immediate_insight_web_detect.nasl 4868 2016-12-29 10:59:13Z mime $
+# $Id: gb_firemon_immediate_insight_web_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # FireMon Immediate Insight Webinterface Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140109");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 4868 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-29 11:59:13 +0100 (Thu, 29 Dec 2016) $");
+ script_version("$Revision: 10908 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-12-29 10:28:13 +0100 (Thu, 29 Dec 2016)");
  script_name("FireMon Immediate Insight Webinterface Detection");
 
- script_tag(name: "summary" , value: "This script performs HTTP based detection of FireMon Immediate Insight Webinterface");
+ script_tag(name:"summary", value:"This script performs HTTP based detection of FireMon Immediate Insight Webinterface");
 
  script_tag(name:"qod_type", value:"remote_banner");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_canon_printers_detect.nasl 10247 2018-06-19 07:14:03Z santu $
+# $Id: gb_canon_printers_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Canon Printer Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803719");
-  script_version("$Revision: 10247 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-19 09:14:03 +0200 (Tue, 19 Jun 2018) $");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-20 13:42:47 +0530 (Thu, 20 Jun 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -65,7 +65,7 @@ buf2 = http_get_cache( item:"/", port:port );
 if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) ||
     "CANON HTTP Server" >< buf || ( "erver: Catwalk" >< buf2 && "com.canon.meap.service" >< buf2 ) ||
     ( (('canonlogo.gif" alt="CANON"' >< buf2) || ('canonlogo.gif" alt=' >< buf2) || ("canonlogo.gif" >< buf2 && "Series</title>" >< buf2)) &&
-       ">Copyright CANON INC" >< buf2 ) ) 
+       ">Copyright CANON INC" >< buf2 ) )
 {
   set_kb_item( name:"target_is_printer", value:TRUE );
   set_kb_item( name:"canon_printer/installed", value:TRUE );
@@ -91,7 +91,7 @@ if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) ||
       # <span id="deviceName">iR-ADV 8595 / iR-ADV 8595 / </span>
       printer_model = eregmatch( pattern:'<span id="deviceName">([^/<]+)', string:buf2 );
     }
-    if( printer_model[1] ) 
+    if( printer_model[1] )
     {
       ##Remove Non-Breaking SPace
       if("&nbsp;" >< printer_model[1]){
@@ -99,7 +99,7 @@ if( ( '>Canon' >< buf && ">Copyright CANON INC" >< buf && "Printer" >< buf ) ||
       } else {
         canon_model =  printer_model[1] ;
       }
-      
+
       model = chomp( canon_model );
 
       set_kb_item( name:"canon_printer_model", value:model );

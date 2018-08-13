@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_mse_cmx_ssh_detect.nasl 6239 2017-05-30 01:48:49Z ckuerste $
+# $Id: gb_cisco_mse_cmx_ssh_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Cisco Mobility Service Engine Detection (SSH)
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105462");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6239 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-30 03:48:49 +0200 (Tue, 30 May 2017) $");
+ script_version("$Revision: 10888 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2015-11-20 12:48:40 +0100 (Fri, 20 Nov 2015)");
  script_name("Cisco Mobility Service Engine Detection (SSH)");
 
- script_tag(name: "summary" , value: "This script performs SSH based detection of Cisco Mobility Service Engine");
+ script_tag(name:"summary", value:"This script performs SSH based detection of Cisco Mobility Service Engine");
 
  script_tag(name:"qod_type", value:"package");
 

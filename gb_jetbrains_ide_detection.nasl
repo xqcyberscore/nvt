@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jetbrains_ide_detection.nasl 9204 2018-03-26 10:15:13Z asteins $
+# $Id: gb_jetbrains_ide_detection.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # JetBrains IDE Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.107232");
- script_version ("$Revision: 9204 $");
- script_tag(name: "last_modification", value: "$Date: 2018-03-26 12:15:13 +0200 (Mon, 26 Mar 2018) $");
- script_tag(name: "creation_date", value: "2017-08-25 11:19:19 +0700 (Fri, 25 Aug 2017)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10891 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2017-08-25 11:19:19 +0700 (Fri, 25 Aug 2017)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("JetBrains IDE Detection");
 
- script_tag(name: "summary" , value: "Detection of JetBrains IDE products.
+ script_tag(name:"summary", value:"Detection of JetBrains IDE products.
 
 This script tries to detect various JetBrains IDE products via HTTP GET request.");
 
@@ -50,7 +50,7 @@ This script tries to detect various JetBrains IDE products via HTTP GET request.
  script_require_ports("Services/www", 8080, 8090, 63342);
  script_mandatory_keys("JetBrainsIDEs/banner");
 
- script_xref(name: "URL", value: "https://www.jetbrains.com/");
+ script_xref(name:"URL", value:"https://www.jetbrains.com/");
 
  exit(0);
 }

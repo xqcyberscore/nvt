@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_haraka_detect.nasl 5117 2017-01-27 07:37:57Z ckuerste $
+# $Id: gb_haraka_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Haraka SMTP Server Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106546");
- script_version ("$Revision: 5117 $");
- script_tag(name: "last_modification", value: "$Date: 2017-01-27 08:37:57 +0100 (Fri, 27 Jan 2017) $");
- script_tag(name: "creation_date", value: "2017-01-27 12:28:21 +0700 (Fri, 27 Jan 2017)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10905 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2017-01-27 12:28:21 +0700 (Fri, 27 Jan 2017)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Haraka SMTP Server Detection");
 
- script_tag(name: "summary" , value: "Detection of Haraka SMTP Server
+ script_tag(name:"summary", value:"Detection of Haraka SMTP Server
 
 The script sends a connection request to the server and attempts to detect Haraka SMTP server and its version
 number from the reply.");
@@ -50,7 +50,7 @@ number from the reply.");
  script_dependencies("smtpserver_detect.nasl");
  script_require_ports("Services/smtp", 25, 465, 587);
 
- script_xref(name: "URL", value: "https://haraka.github.io/");
+ script_xref(name:"URL", value:"https://haraka.github.io/");
 
  exit(0);
 }
@@ -71,7 +71,7 @@ if (get_port_state(port)) {
   banner = get_smtp_banner(port: port);
   quit = get_kb_item("smtp/" + port + "/quit");
   ehlo = get_kb_item("smtp/" + port + "/ehlo");
-  
+
   if (("ESMTP Haraka" >< banner || "Haraka is at your service" >< ehlo) && "Have a jolly good day" >< quit) {
     version = "unknown";
 

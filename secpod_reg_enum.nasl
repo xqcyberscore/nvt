@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_reg_enum.nasl 10207 2018-06-15 07:38:47Z cfischer $
+# $Id: secpod_reg_enum.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Enumerates List of Windows Hotfixes
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900012");
-  script_version("$Revision: 10207 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 09:38:47 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -206,7 +206,7 @@ foreach item(list){
 
 close(soc);
 
-## Check for Windows Vista, Windows 7, windows 2008
+# nb: Windows Vista, Windows 7, windows 2008
 key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages\";
 if(!registry_key_exists(key:key)){
   exit(0);

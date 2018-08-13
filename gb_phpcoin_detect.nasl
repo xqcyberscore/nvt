@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpcoin_detect.nasl 4709 2016-12-08 09:44:07Z cfi $
+# $Id: gb_phpcoin_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # phpCOIN Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800735");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4709 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-08 10:44:07 +0100 (Thu, 08 Dec 2016) $");
+  script_version("$Revision: 10890 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-03-18 15:44:57 +0100 (Thu, 18 Mar 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("phpCOIN Version Detection");
@@ -76,12 +76,10 @@ foreach dir( make_list_unique( "/phpcoin", "/phpCoin165", "/", cgi_dirs( port:po
     set_kb_item( name:"www/" + port + "/phpCOIN", value:version );
     set_kb_item( name:"phpcoin/installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:phpcoin:phpcoin:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:phpcoin:phpcoin';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data: build_detection_report( app:"phpCOIN",

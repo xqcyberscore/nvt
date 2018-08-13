@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netcharts_server_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_netcharts_server_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # NetCharts Server Version Detection
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805642");
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 10922 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-06-03 12:12:21 +0530 (Wed, 03 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("NetCharts Server Version Detection");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Visual Mining NetCharts Server.
 
   This script sends HTTP GET request and try to get the version from the
@@ -58,16 +58,6 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variables Initialization
-ncPort  = "";
-dir  = "";
-sndReq = "";
-rcvRes = "";
-ncVer = "";
-cpe = "";
-url = "";
-
-##Get NetCharts Server Port
 ncPort = get_http_port(default:8001);
 if(!ncPort){
   exit(0);
@@ -78,7 +68,6 @@ if(!ncPort){
 sndReq = http_get(item:string("/Documentation/misc/about.jsp"), port:ncPort);
 rcvRes = http_keepalive_send_recv(port:ncPort, data:sndReq);
 
-#Confirm application
 if(rcvRes && "NetCharts Server" >< rcvRes && "Visual Mining" >< rcvRes)
 {
   Ver = eregmatch(pattern:"Version.*[0-9.]+.*&copy", string:rcvRes);
@@ -89,11 +78,9 @@ if(rcvRes && "NetCharts Server" >< rcvRes && "Visual Mining" >< rcvRes)
     ncVer = ncVer[0];
   }
 
-  ## Set the KB
   set_kb_item(name:"www/" + ncPort + "/", value:ncVer);
   set_kb_item(name:"netchart/installed",value:TRUE);
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value:ncVer, exp:"^([0-9.]+)", base:"cpe:/a:visual_mining:netcharts_server:");
   if(isnull(cpe))
     cpe = "cpe:/a:visual_mining:netcharts_server";

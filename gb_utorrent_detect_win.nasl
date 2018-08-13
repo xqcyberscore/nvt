@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_utorrent_detect_win.nasl 10193 2018-06-14 10:06:30Z cfischer $
+# $Id: gb_utorrent_detect_win.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # uTorrent Version Detection
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114007");
-  script_version("$Revision: 10193 $");
+  script_version("$Revision: 10908 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 12:06:30 +0200 (Thu, 14 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-08 15:54:21 +0200 (Fri, 08 Jun 2018)");
   script_name("uTorrent Version Detection");
 
-  script_tag(name:"summary", value:"Detection of installed version of uTorrent.
+  script_tag(name:"summary", value:"Detects the installed version of uTorrent.
 
   The script logs in via smb, searches for uTorrent in the registry and gets the version from registry.");
 
@@ -42,7 +42,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 

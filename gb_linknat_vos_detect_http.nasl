@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linknat_vos_detect_http.nasl 7166 2017-09-18 09:14:09Z cfischer $
+# $Id: gb_linknat_vos_detect_http.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Linknat VOS SoftSwitch Detection (HTTP)
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106086");
- script_version ("$Revision: 7166 $");
- script_tag(name: "last_modification", value: "$Date: 2017-09-18 11:14:09 +0200 (Mon, 18 Sep 2017) $");
- script_tag(name: "creation_date", value: "2016-05-26 11:12:13 +0700 (Thu, 26 May 2016)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10891 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2016-05-26 11:12:13 +0700 (Thu, 26 May 2016)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Linknat VOS SoftSwitch Detection (HTTP)");
 
- script_tag(name: "summary" , value: "Detection of Linknat VOS SoftSwitch
+ script_tag(name:"summary", value:"Detection of Linknat VOS SoftSwitch
 
 The script attempts to identify Linknat VOS SoftSwitch via HTTP requests to extract the
 model and version number.");
@@ -52,7 +52,7 @@ model and version number.");
  script_exclude_keys("Settings/disable_cgi_scanning");
 
 
- script_xref(name: "URL", value: "http://www.linknat.com"); 
+ script_xref(name:"URL", value:"http://www.linknat.com");
 
  exit(0);
 }

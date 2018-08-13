@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cpcreator_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_cpcreator_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # cP Creator Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801005");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5877 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-10-06 07:21:15 +0200 (Tue, 06 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("cP Creator Version Detection");
@@ -75,12 +75,10 @@ foreach dir( make_list_unique( "/", "/cPcreator", "/cp", cgi_dirs( port:port ) )
     tmp_version = version + " under " + install;
     set_kb_item(name:"www/" + port + "/cPCreator", value:tmp_version);
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:cpecreator:cp_creator:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:cpecreator:cp_creator';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data: build_detection_report( app:"Cp Creator",

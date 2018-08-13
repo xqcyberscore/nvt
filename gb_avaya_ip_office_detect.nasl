@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avaya_ip_office_detect.nasl 5856 2017-04-04 12:59:37Z cfi $
+# $Id: gb_avaya_ip_office_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Avaya IP Office Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106322");
- script_version ("$Revision: 5856 $");
- script_tag(name: "last_modification", value: "$Date: 2017-04-04 14:59:37 +0200 (Tue, 04 Apr 2017) $");
- script_tag(name: "creation_date", value: "2016-10-04 13:39:10 +0700 (Tue, 04 Oct 2016)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10908 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2016-10-04 13:39:10 +0700 (Tue, 04 Oct 2016)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Avaya IP Office Detection");
 
- script_tag(name: "summary" , value: "Detection of Avaya IP Office
+ script_tag(name:"summary", value:"Detection of Avaya IP Office
 
 The script sends a connection request to the server and attempts to detect the presence of Avaya IP Office and to
 extract its version.");
@@ -51,7 +51,7 @@ extract its version.");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_xref(name: "URL", value: "https://support.avaya.com/products/P0160/ip-office-platform");
+ script_xref(name:"URL", value:"https://support.avaya.com/products/P0160/ip-office-platform");
 
  exit(0);
 }

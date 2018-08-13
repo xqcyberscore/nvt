@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netware_core_protocol_detect.nasl 8392 2018-01-12 10:46:21Z cfischer $
+# $Id: gb_netware_core_protocol_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # NetWare Core Protocol (NCP) Detection
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108316");
-  script_version("$Revision: 8392 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-12 11:46:21 +0100 (Fri, 12 Jan 2018) $");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-01-12 08:57:15 +0100 (Fri, 12 Jan 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("NetWare Core Protocol (NCP) Detection");
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
-  script_family("Product detection"); 
+  script_family("Product detection");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/unknown", 524);
 

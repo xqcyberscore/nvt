@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_lighttpd_detect.nasl 7052 2017-09-04 11:50:51Z teissa $
+# $Id: sw_lighttpd_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Lighttpd Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111079");
-  script_version("$Revision: 7052 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:50:51 +0200 (Mon, 04 Sep 2017) $");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-01-27 11:00:00 +0100 (Wed, 27 Jan 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -63,10 +63,8 @@ if( "server: lighttpd" >< tolower( banner ) ) {
 
   version = "unknown";
 
-  ##Grep for version
   ver = eregmatch( pattern: "Server: lighttpd/([0-9.]+)(-[0-9.]+)?", string: banner, icase:TRUE );
 
-  ##Check if version info is available
   if( ver[1] ) {
     version = ver[1];
     concluded = ver[0];

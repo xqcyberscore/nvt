@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_email_security_detect.nasl 7474 2017-10-18 09:48:16Z asteins $
+# $Id: gb_dell_sonicwall_email_security_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Dell SonicWall EMail Security Detection
 #
@@ -31,21 +31,18 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 7474 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-18 11:48:16 +0200 (Wed, 18 Oct 2017) $");
+ script_version("$Revision: 10929 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
  script_tag(name:"creation_date", value:"2014-03-28 12:48:51 +0100 (Fri, 28 Mar 2014)");
  script_name("Dell SonicWall EMail Security Detection");
 
- tag_summary =
-"The script sends a connection request to the server and attempts
-to extract the version number from the reply.";
 
-
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name:"summary", value:"The script sends a connection request to the server and attempts
+to extract the version number from the reply.");
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl","smtpserver_detect.nasl");
+ script_dependencies("find_service.nasl", "http_version.nasl", "smtpserver_detect.nasl");
  script_require_ports("Services/www", 80, "Services/smtp", 25);
  script_exclude_keys("Settings/disable_cgi_scanning");
  exit(0);
@@ -53,8 +50,8 @@ to extract the version number from the reply.";
 
 
 include("http_func.inc");
-include("http_keepalive.inc");
-include("global_settings.inc");
+
+
 include("smtp_func.inc");
 include("cpe.inc");
 include("host_details.inc");

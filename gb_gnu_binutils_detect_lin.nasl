@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gnu_binutils_detect_lin.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: gb_gnu_binutils_detect_lin.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # GNU Binutils Version Detection (Linux)
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806085");
-  script_version("$Revision: 9633 $");
+  script_version("$Revision: 10906 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 15:03:47 +0530 (Tue, 13 Oct 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("GNU Binutils Version Detection (Linux)");
 
-  script_tag(name : "summary" , value:"This script finds the GNU Binutils
+  script_tag(name:"summary", value:"This script finds the GNU Binutils
   installed version on Linux.
 
   The script logs in via ssh, execute the command 'dpkg' and get version.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_opera_detect.nasl 4810 2016-12-20 05:39:07Z ckuerste $
+# $Id: gb_oracle_opera_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Oracle OPERA Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106482");
- script_version ("$Revision: 4810 $");
- script_tag(name:"last_modification", value:"$Date: 2016-12-20 06:39:07 +0100 (Tue, 20 Dec 2016) $");
+ script_version("$Revision: 10922 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-12-20 08:18:50 +0700 (Tue, 20 Dec 2016)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if (description)
 
  script_name("Oracle OPERA Detection");
 
- script_tag(name: "summary" , value: "Detection of Oracle OPERA
+ script_tag(name:"summary", value:"Detection of Oracle OPERA
 
 The script sends a HTTP connection request to the server and attempts to detect the presence of Oracle OPERA and
 to extract its version.");

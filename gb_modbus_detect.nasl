@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modbus_detect.nasl 10368 2018-06-29 09:48:41Z ckuersteiner $
+# $Id: gb_modbus_detect.nasl 10878 2018-08-10 08:52:28Z cfischer $
 #
 # Modbus Detection
 #
@@ -29,17 +29,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106522");
- script_version("$Revision: 10368 $");
- script_tag(name: "last_modification", value: "$Date: 2018-06-29 11:48:41 +0200 (Fri, 29 Jun 2018) $");
- script_tag(name: "creation_date", value: "2017-01-26 10:19:28 +0700 (Thu, 26 Jan 2017)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10878 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 10:52:28 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2017-01-26 10:19:28 +0700 (Thu, 26 Jan 2017)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Modbus Detection");
 
- script_tag(name: "summary" , value: "A Modbus Service is running at this host.
+ script_tag(name:"summary", value:"A Modbus Service is running at this host.
 
 Modbus is a serial communications protocol for use with programmable logic controllers (PLCs).");
 
@@ -51,7 +51,7 @@ Modbus is a serial communications protocol for use with programmable logic contr
                                                                  # echo tests.
  script_require_ports("Services/unknown", 502, 503);
 
- script_xref(name: "URL", value: "http://www.modbus.org/");
+ script_xref(name:"URL", value:"http://www.modbus.org/");
 
  exit(0);
 }
@@ -60,11 +60,11 @@ include("misc_func.inc");
 
 port = get_unknown_port(default: 502);
 
-# Set by nessus_detect.nasl if we have hit a service which echos everything back
+# nb: Set by nessus_detect.nasl if we have hit a service which echos everything back
 if (get_kb_item("generic_echo_test/" + port + "/failed"))
   exit(0);
 
-# Set by nessus_detect.nasl as well. We don't need to do the same test multiple times...
+# nb: Set by nessus_detect.nasl as well. We don't need to do the same test multiple times...
 if (!get_kb_item("generic_echo_test/" + port + "/tested")) {
   soc = open_sock_tcp(port);
   if (!soc)

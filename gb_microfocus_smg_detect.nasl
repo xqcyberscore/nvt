@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microfocus_smg_detect.nasl 10734 2018-08-02 10:35:39Z asteins $
+# $Id: gb_microfocus_smg_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # Micro Focus Secure Messaging Gateway Detection
 #
@@ -28,17 +28,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141275");
-  script_version("$Revision: 10734 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-08-02 12:35:39 +0200 (Thu, 02 Aug 2018) $");
-  script_tag(name: "creation_date", value: "2018-07-05 13:21:23 +0200 (Thu, 05 Jul 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10890 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-07-05 13:21:23 +0200 (Thu, 05 Jul 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Micro Focus Secure Messaging Gateway Detection");
 
-  script_tag(name: "summary" , value: "Detection of Micro Focus Secure Messaging Gateway.
+  script_tag(name:"summary", value:"Detection of Micro Focus Secure Messaging Gateway.
 
 The script sends a connection request to the server and attempts to detect Micro Focus Secure Messaging Gateway.");
 
@@ -50,7 +50,7 @@ The script sends a connection request to the server and attempts to detect Micro
   script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.microfocus.com/products/secure-gateway/");
+  script_xref(name:"URL", value:"https://www.microfocus.com/products/secure-gateway/");
 
   exit(0);
 }

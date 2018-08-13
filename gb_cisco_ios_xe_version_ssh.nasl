@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_version_ssh.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: gb_cisco_ios_xe_version_ssh.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Cisco IOS XE Software Version Detection (ssh)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105658");
-  script_version("$Revision: 9580 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+  script_version("$Revision: 10908 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-05-09 15:41:31 +0200 (Mon, 09 May 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_tag(name : "summary" , value : "Get Cisco IOS XE Software Version via SSH.");
+  script_tag(name:"summary", value:"Get Cisco IOS XE Software Version via SSH.");
   script_dependencies("gb_cisco_show_version.nasl");
   script_mandatory_keys("cisco/show_version");
   exit(0);
@@ -81,7 +81,7 @@ if( ! isnull( vers[2] ) )
 if( show_ver =~ 'Cisco IOS Software, ASR[0-9]+' )
 {
   m = eregmatch( pattern:'Cisco IOS Software, ASR([0-9]+)', string:show_ver );
-  if( ! isnull( m[1] ) ) 
+  if( ! isnull( m[1] ) )
     set_kb_item( name:'cisco_ios_xe/' + source + '/model', value:'ASR' + m[1] );
 }
 else

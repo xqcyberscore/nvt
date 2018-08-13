@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_edr_g903_remote_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_moxa_edr_g903_remote_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # Moxa EDR G903 Router Remote Version Detection
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808219");
-  script_version("$Revision: 8078 $");
+  script_version("$Revision: 10890 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-06-09 13:45:38 +0530 (Thu, 09 Jun 2016)");
   script_name("Moxa EDR G903 Router Remote Version Detection");
 
-  script_tag(name : "summary" , value : "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Moxa EDR G903 Router.
 
-  This script sends HTTP GET request and check for the presence of Moxa EDR G903 
+  This script sends HTTP GET request and check for the presence of Moxa EDR G903
   Router from the response and sets the result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -61,18 +61,15 @@ url = "/Login.asp";
 
 rcvRes = http_get_cache(item:url, port:edrPort);
 
-#Confirm application
 #Project model is different for different edr series
 if("<TITLE>Moxa EDR</TITLE>" >< rcvRes && "Moxa EtherDevice Secure Router" >< rcvRes &&
-   "Username :" >< rcvRes && "Password :" >< rcvRes && 
+   "Username :" >< rcvRes && "Password :" >< rcvRes &&
    ("ProjectModel = 1" >< rcvRes || ">EDR-G903<" >< rcvRes))
 {
   edrVer = "Unknown";
 
-  ## Set kb
   set_kb_item(name:"Moxa/EDR/G903/Installed", value:TRUE);
 
-  ## build cpe and store it as host_detail
   cpe = "cpe:/h:moxa:edr-g903";
 
   register_product(cpe:cpe, location:"/", port:edrPort);

@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipam_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: gb_ipam_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # phpIPAM Web Application Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.107046");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9608 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+ script_version("$Revision: 10901 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-09-12 13:18:59 +0200 (Mon, 12 Sep 2016)");
  script_name("phpIPAM Web Application Detection");
 
- script_tag(name: "summary" , value: "This script performs HTTP based detection of phpIPAM Web Application");
+ script_tag(name:"summary", value:"This script performs HTTP based detection of phpIPAM Web Application");
 
  script_tag(name:"qod_type", value:"remote_banner");
 

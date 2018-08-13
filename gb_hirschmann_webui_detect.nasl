@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hirschmann_webui_detect.nasl 8463 2018-01-18 14:32:46Z cfischer $
+# $Id: gb_hirschmann_webui_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # Hirschmann Devices Detection (Web UI)
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140575");
-  script_version("$Revision: 8463 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-18 15:32:46 +0100 (Thu, 18 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2017-12-04 14:40:12 +0700 (Mon, 04 Dec 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-04 14:40:12 +0700 (Mon, 04 Dec 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Hirschmann Devices Detection (Web UI)");
 
-  script_tag(name: "summary" , value: "Detection of Hirschmann devices over HTTP.
+  script_tag(name:"summary", value:"Detection of Hirschmann devices over HTTP.
 
 The script sends a connection request to the server and attempts to detect Hirschmann devices and to extract
 its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ its version.");
   script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "http://www.hirschmann.com/en/Hirschmann_Produkte/index.phtml");
+  script_xref(name:"URL", value:"http://www.hirschmann.com/en/Hirschmann_Produkte/index.phtml");
 
   exit(0);
 }

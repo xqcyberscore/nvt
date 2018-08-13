@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: gb_ipmi_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Detection of IPMI
 #
@@ -28,8 +28,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103835");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9608 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+ script_version("$Revision: 10908 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2013-11-26 11:39:47 +0100 (Tue, 26 Nov 2013)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -41,7 +41,7 @@ if (description)
  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
  script_require_udp_ports(623);
 
- script_tag(name : "summary" , value : "An IPMI Service is running at this host.
+ script_tag(name:"summary", value:"An IPMI Service is running at this host.
 
 The Intelligent Platform Management Interface (IPMI) is a standardized computer system
 interface used by system administrators for out-of-band management of computer systems

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_smb_accessible_shares.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: secpod_ms_smb_accessible_shares.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Microsoft Windows SMB Accessible Shares
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The script detects the Windows SMB Accessible Shares and sets the
-  result into KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902425");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 10911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-02-29 12:08:36 +0530 (Wed, 29 Feb 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Microsoft Windows SMB Accessible Shares");
@@ -43,7 +40,8 @@ if(description)
   script_dependencies("smb_login.nasl");
   script_require_keys("SMB/transport", "SMB/name", "SMB/login", "SMB/password");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"The script detects the Windows SMB Accessible Shares and sets the
+  result into KB.");
   exit(0);
 }
 
@@ -69,12 +67,10 @@ port = kb_smb_transport();
 login  = kb_smb_login();
 pass   = kb_smb_password();
 
-## Get the SMB Port
 if(!port){
   port = 139;
 }
 
-## Check the port status
 if(!get_port_state(port)){
  exit(0);
 }
@@ -93,7 +89,6 @@ if(!r)
   exit(0);
 }
 
-## Get the protocol
 prot = smb_neg_prot(soc:soc);
 if(!prot)
 {
@@ -113,7 +108,6 @@ if(!r)
   }
 }
 
-## Get the uid
 uid = session_extract_uid(reply:r);
 if(!uid)
 {

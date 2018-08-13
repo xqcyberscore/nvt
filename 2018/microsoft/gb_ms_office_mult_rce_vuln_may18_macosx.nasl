@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_mult_rce_vuln_may18_macosx.nasl 9979 2018-05-28 08:58:29Z santu $
+# $Id: gb_ms_office_mult_rce_vuln_may18_macosx.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Office Multiple Remote Code Execution Vulnerabilities-May18 (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813379");
-  script_version("$Revision: 9979 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-8147", "CVE-2018-8162", "CVE-2018-8176");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:58:29 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-25 14:22:04 +0530 (Fri, 25 May 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Remote Code Execution Vulnerabilities-May18 (Mac OS X)");
@@ -50,10 +50,15 @@ if(description)
   - Microsoft Excel software fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to run arbitrary code in the context of the current user. If the current user 
-  is logged on with administrative user rights, an attacker could take control 
-  of the affected system. An attacker could then install programs, view, change, 
-  or delete data; or create new accounts with full user rights.
+  to run arbitrary code in the context of the current user. If the current user
+  is logged on with administrative user rights, an attacker could take control
+  of the affected system.  An attacker could then:
+
+  - install programs
+
+  - view, change, or delete data
+
+  - create new accounts with full user rights.
 
   Impact Level: System/Application");
 
@@ -64,7 +69,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.office.com/en-gb/article/release-notes-for-office-2016-for-mac-ed2da564-6d53-4542-9954-7e3209681a41?ui=en-US&rs=en-GB&ad=GB");
+  script_xref(name:"URL", value:"https://support.office.com/en-gb/article/release-notes-for-office-2016-for-mac-ed2da564-6d53-4542-9954-7e3209681a41?ui=en-US&rs=en-GB&ad=GB");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_nuke_detect.nasl 5744 2017-03-28 07:25:23Z cfi $
+# $Id: secpod_php_nuke_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # PHP-Nuke Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900338");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5744 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-28 09:25:23 +0200 (Tue, 28 Mar 2017) $");
+  script_version("$Revision: 10901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-24 16:23:28 +0200 (Fri, 24 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("PHP-Nuke Version Detection");
@@ -102,17 +102,15 @@ foreach dir( dirs ) {
         }
       }
     }
-    
+
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/"+ port + "/php-nuke", value:tmp_version );
     set_kb_item( name:"php-nuke/installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:phpnuke:php-nuke:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:phpnuke:php-nuke';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data: build_detection_report( app:"PHP-Nuke",

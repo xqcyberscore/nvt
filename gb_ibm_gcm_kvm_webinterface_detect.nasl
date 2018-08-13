@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_gcm_kvm_webinterface_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_ibm_gcm_kvm_webinterface_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # IBM GCM16 and GCM32 Global Console Managers Detection
 #
@@ -31,12 +31,12 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 6065 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version("$Revision: 10906 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2015-01-21 12:16:43 +0100 (Wed, 21 Jan 2015)");
  script_name("IBM GCM16 and GCM32 Global Console Managers iWebinterface Detection");
 
- script_tag(name: "summary" , value: "The script sends a connection request to the server and attempts to detect
+ script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to detect
 the IBM GCM16 and GCM32 Global Console Managers Webinterface from the reply.");
 
 
@@ -50,7 +50,7 @@ the IBM GCM16 and GCM32 Global Console Managers Webinterface from the reply.");
 
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("host_details.inc");
 
 http_port = get_http_port( default:443 );

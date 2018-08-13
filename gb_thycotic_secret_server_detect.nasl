@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thycotic_secret_server_detect.nasl 6817 2017-07-31 09:41:03Z ckuersteiner $
+# $Id: gb_thycotic_secret_server_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Thycotic Secret Server Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140257");
-  script_version("$Revision: 6817 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-31 11:41:03 +0200 (Mon, 31 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-31 13:26:04 +0700 (Mon, 31 Jul 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-31 13:26:04 +0700 (Mon, 31 Jul 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Thycotic Secret Server Detection");
 
-  script_tag(name: "summary" , value: "Detection of Thycotic Secret Server.
+  script_tag(name:"summary", value:"Detection of Thycotic Secret Server.
 
 The script sends a connection request to the server and attempts to detect Thycotic Secret Server and to extract
 its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ its version.");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://thycotic.com/products/secret-server/");
+  script_xref(name:"URL", value:"https://thycotic.com/products/secret-server/");
 
   exit(0);
 }

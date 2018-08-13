@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: yppasswdd.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: yppasswdd.nasl 10929 2018-08-11 11:39:44Z cfischer $
 # Description: yppasswdd overflow
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.80035");
- script_version("$Revision: 9633 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+ script_version("$Revision: 10929 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
  script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
  script_bugtraq_id(2763);
 script_cve_id("CVE-2001-0779");
@@ -42,16 +42,17 @@ script_cve_id("CVE-2001-0779");
  script_family("Gain a shell remotely");
  script_dependencies("secpod_rpc_portmap.nasl");
  script_require_keys("rpc/portmap");
- script_tag(name : "solution" , value : "disable this service if you don't use
+ script_tag(name:"solution", value:"disable this service if you don't use
   26 it, or contact Sun for a patch");
- script_tag(name : "summary" , value : "The remote RPC service 100009 (yppasswdd) is vulnerable
+ script_tag(name:"solution_type", value:"Mitigation");
+ script_tag(name:"summary", value:"The remote RPC service 100009 (yppasswdd) is vulnerable
 to a buffer overflow which allows any user to obtain a root
 shell on this host.");
  exit(0);
 }
 
 include("misc_func.inc");
-include("global_settings.inc");
+
 include("byte_func.inc");
 
 port = get_rpc_port(program:100009, protocol:IPPROTO_UDP);

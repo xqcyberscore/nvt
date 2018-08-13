@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_detect.nasl 10149 2018-06-11 08:16:28Z ckuersteiner $
+# $Id: gb_splunk_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # Splunk Detection
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100693");
-  script_version("$Revision: 10149 $");
+  script_version("$Revision: 10913 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 10:16:28 +0200 (Mon, 11 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-07-05 12:40:56 +0200 (Mon, 05 Jul 2010)");
   script_name("Splunk Detection");
 
-  script_tag(name: "summary" , value: "Detection of installed version of Splunk.
+  script_tag(name:"summary", value:"Detects the installed version of Splunk.
 
   This script sends HTTP GET request and try to get the version from the
   response, and sets the result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name : "URL" , value : "http://www.splunk.com/");
+  script_xref(name:"URL", value:"http://www.splunk.com/");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");

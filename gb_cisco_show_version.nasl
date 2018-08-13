@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_show_version.nasl 6239 2017-05-30 01:48:49Z ckuerste $
+# $Id: gb_cisco_show_version.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Cisco show version
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105531");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6239 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-30 03:48:49 +0200 (Tue, 30 May 2017) $");
+ script_version("$Revision: 10899 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-01-27 10:22:48 +0100 (Wed, 27 Jan 2016)");
  script_name("Cisco show version");
 
- script_tag(name: "summary" , value: "This script execute 'show version' on the target and store the result in the KB for later use");
+ script_tag(name:"summary", value:"This script execute 'show version' on the target and store the result in the KB for later use");
  script_tag(name:"qod_type", value:"package");
 
  script_category(ACT_GATHER_INFO);

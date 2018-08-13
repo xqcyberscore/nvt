@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_windows_iexpress_untrusted_search_path_vuln.nasl 10758 2018-08-03 12:49:20Z santu $
+# $Id: gb_windows_iexpress_untrusted_search_path_vuln.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Windows IExpress Untrusted Search Path Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813808");
-  script_version("$Revision: 10758 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-0598");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 14:49:20 +0200 (Fri, 03 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-02 11:18:18 +0530 (Thu, 02 Aug 2018)");
   script_name("Windows IExpress Untrusted Search Path Vulnerability");
 
@@ -60,12 +60,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "http://jvn.jp/en/jp/JVN72748502/index.html");
-  script_xref(name : "URL" , value : "https://blogs.technet.microsoft.com/srd/2018/04/04/triaging-a-dll-planting-vulnerability");
+  script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN72748502/index.html");
+  script_xref(name:"URL", value:"https://blogs.technet.microsoft.com/srd/2018/04/04/triaging-a-dll-planting-vulnerability");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
   exit(0);

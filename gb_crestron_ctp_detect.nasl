@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_crestron_ctp_detect.nasl 10867 2018-08-10 05:04:17Z ckuersteiner $
+# $Id: gb_crestron_ctp_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Crestron Device Detection (CTP)
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.141174");
- script_version ("$Revision: 10867 $");
- script_tag(name: "last_modification", value: "$Date: 2018-08-10 07:04:17 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name: "creation_date", value: "2018-06-13 08:39:58 +0700 (Wed, 13 Jun 2018)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10905 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2018-06-13 08:39:58 +0700 (Wed, 13 Jun 2018)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Crestron Device Detection (CTP)");
 
- script_tag(name: "summary" , value: "Detection of Crestron devices.
+ script_tag(name:"summary", value:"Detection of Crestron devices.
 
 The script sends a Crestron Terminal Protocol (CTP) connection request to the server and attempts to detect
 Crestron devices and to extract its firmware version.");
@@ -49,7 +49,7 @@ Crestron devices and to extract its firmware version.");
  script_family("Product detection");
  script_require_ports(41795);
 
- script_xref(name: "URL", value: "https://www.crestron.com/");
+ script_xref(name:"URL", value:"https://www.crestron.com/");
 
  exit(0);
 }

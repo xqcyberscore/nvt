@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_zikula_detect.nasl 9126 2018-03-17 16:19:49Z cfischer $
+# $Id: secpod_zikula_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Detection of zikula or Post-Nuke Version
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900620");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9126 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 17:19:49 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 10902 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-06-02 12:54:52 +0200 (Tue, 02 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Detecting the zikula or PostNuke version");
@@ -175,12 +175,10 @@ foreach dir( make_list_unique( "/", "/postnuke", "/PostNuke", "/zikula", "/frame
     set_kb_item( name:"www/"+ port + "/zikula", value:tmp_version );
     set_kb_item( name:"zikula/installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:zikula:zikula_application_framework:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:zikula:zikula_application_framework';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"Zikula",

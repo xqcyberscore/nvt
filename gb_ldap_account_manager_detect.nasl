@@ -1,12 +1,12 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ldap_account_manager_detect.nasl 9267 2018-03-29 13:08:08Z santu $
+# $Id: gb_ldap_account_manager_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # LDAP Account Manager Detection
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
-# 
+#
 # Modified in accordance to Latest format, functions and output
 #  - By Rajat Mishra <rajatm@secpod.com> On 2018-03-26
 #
@@ -30,15 +30,15 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103158");
- script_version("$Revision: 9267 $");
+ script_version("$Revision: 10906 $");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_tag(name:"last_modification", value:"$Date: 2018-03-29 15:08:08 +0200 (Thu, 29 Mar 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2011-05-03 13:15:04 +0200 (Tue, 03 May 2011)");
  script_name("LDAP Account Manager Detection");
- 
- script_tag(name : "summary" , value : "This host is running LDAP Account Manager
- , a webfrontend for managing entries (e.g. users, groups, DHCP settings) stored
+
+ script_tag(name:"summary", value:"This host is running LDAP Account Manager
+, a webfrontend for managing entries (e.g. users, groups, DHCP settings) stored
  in an LDAP directory.");
 
  script_tag(name:"qod_type", value:"remote_banner");
@@ -74,7 +74,6 @@ foreach dir( make_list_unique( "/ldap", "/ldap-account-manager", cgi_dirs( port:
  if("<title>LDAP Account Manager</title>" >< buf && "LAM configuration" >< buf)
  {
     lamvers = string("unknown");
-    ### try to get version 
     version  = eregmatch(string: buf, pattern: "LDAP Account Manager - ([0-9.]+)",icase:TRUE);
 
     if ( !isnull(version[1]) ) {

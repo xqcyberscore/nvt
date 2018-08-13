@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_pcanywhere_access_server_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_symantec_pcanywhere_access_server_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Symantec pcAnywhere Access Server Remote Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802883");
-  script_version("$Revision: 8078 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_version("$Revision: 10894 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-07-09 11:16:49 +0530 (Mon, 09 Jul 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -83,7 +83,6 @@ if("The Symantec pcAnywhere Access Server does not support" >< pcanydata ||
 {
   set_kb_item(name:"Symantec/pcAnywhere-server/Installed", value:TRUE);
 
-  ## build cpe and store it as host_detail
   cpe = 'cpe:/a:symantec:pcanywhere';
 
   register_service(port: pcAnyport, ipproto:"tcp", proto:"pcanywheredata");

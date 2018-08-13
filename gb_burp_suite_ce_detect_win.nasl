@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_burp_suite_ce_detect_win.nasl 10371 2018-06-29 13:27:39Z santu $
+# $Id: gb_burp_suite_ce_detect_win.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # Burp Suite Community Edition Version Detection (Windows)
 #
@@ -27,23 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813609");
-  script_version("$Revision: 10371 $");
+  script_version("$Revision: 10906 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-29 15:27:39 +0200 (Fri, 29 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-19 16:08:53 +0530 (Tue, 19 Jun 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Burp Suite Community Edition Version Detection (Windows)");
-  script_tag(name:"summary", value:"Detection of installed version of Burp Suite
-  Community Edition on Windows. 
+  script_tag(name:"summary", value:"Detects the installed version of Burp Suite
+  Community Edition on Windows.
 
-  The script logs in via smb, searches for Burp Suite Community Edition in the 
+  The script logs in via smb, searches for Burp Suite Community Edition in the
   registry and gets the version from registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -79,7 +79,7 @@ foreach key (key_list)
   {
     burpName = registry_get_sz(key:key + item, item:"DisplayName");
 
-    if("Burp Suite Community Edition" >< burpName) 
+    if("Burp Suite Community Edition" >< burpName)
     {
       burpVer = registry_get_sz(key:key + item, item:"DisplayVersion");
       burpPath = registry_get_sz(key:key + item, item:"InstallLocation");
@@ -92,7 +92,7 @@ foreach key (key_list)
       set_kb_item(name:"BurpSuite/CommunityEdition/Win/Ver", value:burpVer);
       register_and_report_cpe( app:"Burp Suite Community Edition", ver:burpVer, base:"cpe:/a:portswigger:burp_suite:", expr:"^([0-9.]+)", insloc:burpPath );
 
-      if("64" >< os_arch && "Wow6432Node" >!< key) 
+      if("64" >< os_arch && "Wow6432Node" >!< key)
       {
         set_kb_item(name:"BurpSuite/CommunityEdition64/Win/Ver", value:burpVer);
         register_and_report_cpe( app:"Burp Suite Community Edition", ver:burpVer, base:"cpe:/a:portswigger:burp_suite:x64:", expr:"^([0-9.]+)", insloc:burpPath );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vicon_industries_network_camera_consolidation.nasl 10643 2018-07-26 15:02:54Z mmartin $
+# $Id: gb_vicon_industries_network_camera_consolidation.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # Vicon Industries Network Camera Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107335");
-  script_version("$Revision: 10643 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 17:02:54 +0200 (Thu, 26 Jul 2018) $");
+  script_version("$Revision: 10913 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-25 17:21:25 +0200 (Wed, 25 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,28 +37,28 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
-  script_dependencies("gb_vicon_industries_network_camera_detect_snmp.nasl", 
+  script_dependencies("gb_vicon_industries_network_camera_detect_snmp.nasl",
                       "gb_vicon_industries_network_camera_detect_telnet.nasl",
                       "gb_vicon_industries_network_camera_detect_http.nasl");
   script_mandatory_keys("vicon_industries/network_camera/detected");
 
   script_tag(name:"summary", value:"The script reports a detected Vicon Industries Network Camera including the
-  version number and exposed services. 
+  version number and exposed services.
 
   The exposed Part Number of the device is referenced to identify the Camera Series.
-  
-  Example:  IQ	A	1	2	S	I	-	B2   
 
-  A ->  Camera Type: '0' covers 3/4 Series  '5' covers 5 Series  '7' covers 7 Series  '8' covers Sentinel Series  
+  Example:  IQ	A	1	2	S	I	-	B2
+
+  A ->  Camera Type: '0' covers 3/4 Series  '5' covers 5 Series  '7' covers 7 Series  '8' covers Sentinel Series
 
                      'A' covers Alliance-pro  'D' covers Aliance-mini  'M' covers Alliance-mx 'P' covers PTZ  'R' covers R5 Series etc.
-  
-  1 ->  Revision / Architecture: '0' or '1' covers Original  '2' covers MJPEG w / VGA H.264  '3' covers Full Res H.264  
 
-			         '4' covers Basic Architecture  '5' covers Day / Night  '6' covers Full Res H.264 / Focus etc. 
-		      
+  1 ->  Revision / Architecture: '0' or '1' covers Original  '2' covers MJPEG w / VGA H.264  '3' covers Full Res H.264
+
+			         '4' covers Basic Architecture  '5' covers Day / Night  '6' covers Full Res H.264 / Focus etc.
+
   2 ->  Resolution: '0' covers VGA / HD 480p  '1' covers 1.3 MP / HD 720p  '2' covers 2.0 MP/HD 1080p  '3' covers 3 MP
-				
+
 		    '5' covers 5 MP etc.
 
   S ->  Option 1: 'N' covers  Day / Night  'S' covers Standard etc.
@@ -85,7 +85,7 @@ foreach source( make_list( "snmp", "telnet", "http" ) ) {
 
   version_list = get_kb_list( "vicon_industries/network_camera/" + source + "/*/version" );
   foreach version( version_list ) {
-    
+
 if( version != "unknown" && detected_version == "unknown" ) {
       detected_version = version;
       set_kb_item( name:"vicon_industries/network_camera/version", value:version );

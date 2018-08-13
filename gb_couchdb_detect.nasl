@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_couchdb_detect.nasl 7849 2017-11-21 14:29:21Z cfischer $
+# $Id: gb_couchdb_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # CouchDB Detection
 #
@@ -24,16 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running CouchDB. Apache CouchDB is a document-oriented
-database that can be queried and indexed in a MapReduce fashion using
-JavaScript. CouchDB also offers incremental replication with
-bi-directional conflict detection and resolution.";
-
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100571");
- script_version("$Revision: 7849 $");
- script_tag(name:"last_modification", value:"$Date: 2017-11-21 15:29:21 +0100 (Tue, 21 Nov 2017) $");
+ script_version("$Revision: 10906 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2010-04-12 18:40:45 +0200 (Mon, 12 Apr 2010)");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"cvss_base", value:"0.0");
@@ -45,8 +40,11 @@ if (description)
  script_dependencies("gb_get_http_banner.nasl");
  script_mandatory_keys("CouchDB/banner");
  script_require_ports("Services/www", 5984);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://couchdb.apache.org/");
+ script_tag(name:"summary", value:"This host is running CouchDB. Apache CouchDB is a document-oriented
+database that can be queried and indexed in a MapReduce fashion using
+JavaScript. CouchDB also offers incremental replication with
+bi-directional conflict detection and resolution.");
+ script_xref(name:"URL", value:"http://couchdb.apache.org/");
  exit(0);
 }
 
@@ -76,7 +74,7 @@ if(!isnull(version[1])) {
 
   register_product(cpe: cpe, location: "/", port: port, service: "www");
 
-  log_message(data: build_detection_report(app: "Apache CouchDB", 
+  log_message(data: build_detection_report(app: "Apache CouchDB",
                                            version: vers,
                                            install: "/",
                                            cpe: cpe, concluded: version[0]),

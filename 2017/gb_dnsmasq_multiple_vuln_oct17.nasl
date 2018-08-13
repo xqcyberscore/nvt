@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dnsmasq_multiple_vuln_oct17.nasl 7466 2017-10-18 05:09:06Z teissa $
+# $Id: gb_dnsmasq_multiple_vuln_oct17.nasl 10928 2018-08-11 11:29:48Z cfischer $
 #
 # Dnsmasq Multiple Vulnerabilities - Oct17
 #
@@ -30,21 +30,20 @@ CPE = 'cpe:/a:thekelleys:dnsmasq';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812010");
-  script_version("$Revision: 7466 $");
+  script_version("$Revision: 10928 $");
   script_cve_id("CVE-2017-13704", "CVE-2017-14491", "CVE-2017-14492", "CVE-2017-14493",
                 "CVE-2017-14494", "CVE-2017-14496", "CVE-2017-14495");
   script_bugtraq_id(101085);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-18 07:09:06 +0200 (Wed, 18 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:29:48 +0200 (Sat, 11 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-04 16:39:44 +0530 (Wed, 04 Oct 2017)");
   script_name("Dnsmasq Multiple Vulnerabilities - Oct17");
 
   script_tag(name:"summary", value:"This host has Dnsmasq and is prone to multiple
   vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
   - A regression error.
@@ -65,7 +64,7 @@ if(description)
 
   script_tag(name:"affected", value:"Dnsmasq all versions less than 2.78");
 
-  script_tag(name:"solution", value:"Upgrade to version 2.78 or later. 
+  script_tag(name:"solution", value:"Upgrade to version 2.78 or later.
   For updates refer to http://www.thekelleys.org.uk");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
@@ -84,26 +83,17 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-##Variable Initialization
-dnsPort = "";
-version = "";
-infos = "";
-proto = "";
-
-##Get port
 if(!dnsPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Get info
-if(!infos = get_app_version_and_proto(cpe:CPE, port:dnsPort)){
+if(!infos = get_app_version_and_proto(cpe:CPE, port:dnsPort, exit_no_version:TRUE)){
   exit(0);
 }
 
 version = infos["version"];
 proto = infos["proto"];
 
-##Check for vulnerable versions
 if(version_is_less(version:version, test_version:"2.78"))
 {
   report = report_fixed_ver(installed_version:version, fixed_version:"2.78");

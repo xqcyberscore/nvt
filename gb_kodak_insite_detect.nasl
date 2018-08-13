@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kodak_insite_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: gb_kodak_insite_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Kodak inSite Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106820");
- script_version ("$Revision: 9608 $");
- script_tag(name: "last_modification", value: "$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
- script_tag(name: "creation_date", value: "2017-05-22 16:58:14 +0700 (Mon, 22 May 2017)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10891 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2017-05-22 16:58:14 +0700 (Mon, 22 May 2017)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Kodak inSite Detection");
 
- script_tag(name: "summary" , value: "Detection of Kodak inSite.
+ script_tag(name:"summary", value:"Detection of Kodak inSite.
 
 The script sends a connection request to the server and attempts to detect Kodak inSite and to extract its
 version.");
@@ -51,7 +51,7 @@ version.");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_xref(name: "URL", value: "http://www.kodak.com/US/en/prinergy-workflow/platform/insite-prepress-portal/default.htm");
+ script_xref(name:"URL", value:"http://www.kodak.com/US/en/prinergy-workflow/platform/insite-prepress-portal/default.htm");
 
  exit(0);
 }

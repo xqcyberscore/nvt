@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service.nasl 8188 2017-12-20 08:01:27Z cfischer $
+# $Id: find_service.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Wrapper for calling built-in NVT "find_service" which was previously
 # a binary ".nes".
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10330");
-  script_version("$Revision: 8188 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 09:01:27 +0100 (Wed, 20 Dec 2017) $");
+  script_version("$Revision: 10922 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-01-14 10:12:23 +0100 (Fri, 14 Jan 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -73,7 +73,7 @@ plugin_run_find_service();
 
 if( ! COMMAND_LINE ) {
 
-  # Check for zebos_routing_shell and register it to avoid wrong service detection (dns, sip, yahoo messenger, ...)
+  # nb: Check for zebos_routing_shell and register it to avoid wrong service detection (dns, sip, yahoo messenger, ...)
   p = 2650;
   if( get_port_state( p ) ) {
     soc = open_sock_tcp( p );

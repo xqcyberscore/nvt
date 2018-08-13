@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rip_detect.nasl 8236 2017-12-22 10:28:23Z cfischer $
+# $Id: rip_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # RIP detection
 #
@@ -69,8 +69,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11822");
-  script_version("$Revision: 8236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
+  script_version("$Revision: 10902 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -109,7 +109,7 @@ function rip_test( port, priv ) {
 
   r = "";
   for( v = 2; v >= 1 && strlen( r ) == 0; v --) {
-    req = raw_string( 1, v, 0, 0, 0, 0, 0, 0, 
+    req = raw_string( 1, v, 0, 0, 0, 0, 0, 0,
                       0, 0, 0, 0,
                       0, 0, 0, 0,
                       0, 0, 0, 0,

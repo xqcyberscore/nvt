@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_severalnines_clustercontrol_detect.nasl 9796 2018-05-11 05:41:39Z ckuersteiner $
+# $Id: gb_severalnines_clustercontrol_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Severalnines ClusterControl Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141080");
-  script_version("$Revision: 9796 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-11 07:41:39 +0200 (Fri, 11 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-05-11 12:16:39 +0700 (Fri, 11 May 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-05-11 12:16:39 +0700 (Fri, 11 May 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Severalnines ClusterControl Detection");
 
-  script_tag(name: "summary" , value: "Detection of Severalnines ClusterControl.
+  script_tag(name:"summary", value:"Detection of Severalnines ClusterControl.
 
 The script sends a connection request to the server and attempts to detect Severalnines ClusterControl and to
 extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ extract its version.");
   script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://severalnines.com/product/clustercontrol");
+  script_xref(name:"URL", value:"https://severalnines.com/product/clustercontrol");
 
   exit(0);
 }

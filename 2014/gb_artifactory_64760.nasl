@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_artifactory_64760.nasl 6759 2017-07-19 09:56:33Z teissa $
+# $Id: gb_artifactory_64760.nasl 10904 2018-08-10 14:24:40Z mmartin $
 #
 # Artifactory XStream Remote Code Execution Vulnerability
 #
@@ -24,37 +24,23 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103919";
 CPE = "cpe:/a:jfrog:artifactory";
-
-tag_insight = "Artifactory prior to version 3.1.1.1 using a XStream library
-which is prone to a remote code execution vulnerability.";
-
-tag_impact = "Successfully exploiting this issue may allow an attacker to execute
-arbitrary code in the context of the user running the affected
-application.";
-
-tag_affected = "Artifactory < 3.1.1.1";
-tag_summary = "Artifactory is prone to a remote code-execution vulnerability.";
-tag_solution = "Update to Artifactory 3.1.1.1";
-tag_vuldetect = "Check the installed version.";
 
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103919");
  script_bugtraq_id(64760);
  script_cve_id("CVE-2013-7285");
  script_tag(name:"cvss_base", value:"6.8");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6759 $");
+ script_version("$Revision: 10904 $");
 
  script_name("Artifactory XStream Remote Code Execution Vulnerability");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64760");
  script_xref(name:"URL", value:"http://www.jfrog.com/confluence/display/RTF/Artifactory+3.1.1");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2014-03-13 10:30:44 +0100 (Thu, 13 Mar 2014)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
@@ -64,12 +50,16 @@ if (description)
  script_require_ports("Services/www", 80);
  script_mandatory_keys("artifactory/installed");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+ script_tag(name:"impact", value:"Successfully exploiting this issue may allow an attacker to execute
+arbitrary code in the context of the user running the affected
+application.");
+ script_tag(name:"vuldetect", value:"Check the installed version.");
+ script_tag(name:"insight", value:"Artifactory prior to version 3.1.1.1 using a XStream library
+which is prone to a remote code execution vulnerability.");
+ script_tag(name:"solution", value:"Update to Artifactory 3.1.1.1");
+ script_tag(name:"solution_type", value:"VendorFix");
+ script_tag(name:"summary", value:"Artifactory is prone to a remote code-execution vulnerability.");
+ script_tag(name:"affected", value:"Artifactory < 3.1.1.1");
 
  exit(0);
 }
@@ -77,8 +67,8 @@ if (description)
 include("host_details.inc");
 include("version_func.inc");
 
-if( ! port = get_app_port( cpe:CPE, nvt:SCRIPT_OID ) ) exit( 0 );
-if( vers = get_app_version( cpe:CPE, nvt:SCRIPT_OID, port:port ) )
+if( ! port = get_app_port( cpe:CPE) ) exit( 0 );
+if( vers = get_app_version( cpe:CPE, port:port ) )
 {
   if( version_is_less( version: vers, test_version: "3.1.1.1" ) )
   {

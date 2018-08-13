@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geovap_reliance_scada_detect.nasl 8159 2017-12-18 15:10:39Z cfischer $
+# $Id: gb_geovap_reliance_scada_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Geovap Reliance SCADA Detection
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112149");
-  script_version("$Revision: 8159 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:10:39 +0100 (Mon, 18 Dec 2017) $");
+  script_version("$Revision: 10894 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-12-06 15:47:24 +0100 (Wed, 06 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,7 +56,7 @@ if( description )
 include( "cpe.inc" );
 include( "host_details.inc" );
 include( "http_func.inc" );
-include( "http_keepalive.inc" );
+
 
 port = get_http_port( default: 80 );
 foreach dir ( make_list_unique( "/", cgi_dirs( port: port ) ) ) {
@@ -88,10 +88,10 @@ foreach dir ( make_list_unique( "/", cgi_dirs( port: port ) ) ) {
       set_kb_item( name: "geovap/reliance-scada/version", value: version );
     }
 
-    # Build CPE for versions like '4.7.3 Update 1'
+    # nb: versions like '4.7.3 Update 1'
     if ( version_match[4] )
       exp = "^([0-9.]+).*([0-9])";
-    # Build CPE for versions like '4.6.3.22616'
+    # nb: versions like '4.6.3.22616'
     else
       exp = "^([0-9.]+)";
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_money_detect.nasl 8209 2017-12-21 08:12:18Z cfischer $
+# $Id: gb_ms_money_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Microsoft Money Version Detection
 #
@@ -28,24 +28,22 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800217");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8209 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-21 09:12:18 +0100 (Thu, 21 Dec 2017) $");
+  script_version("$Revision: 10911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-01-08 14:06:04 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Money Version Detection");
 
-tag_summary = "Detection of installed version of Microsoft Money on Windows.
+  script_tag(name:"summary", value:"Detects the installed version of Microsoft Money on Windows.
 
 The script logs in via smb, searches for Microsoft Money in the registry
-and gets the version from registry.";
-
-  script_tag(name : "summary" , value : tag_summary);
+and gets the version from registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -76,7 +74,6 @@ if("x86" >< osArch){
   key_list = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
-## Check for 64 bit platform
 else if("x64" >< osArch){
  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
                       "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");

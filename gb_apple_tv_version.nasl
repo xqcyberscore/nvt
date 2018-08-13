@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_tv_version.nasl 9400 2018-04-09 07:04:37Z cfischer $
+# $Id: gb_apple_tv_version.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Apple TV Version Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140000");
-  script_version("$Revision: 9400 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-09 09:04:37 +0200 (Mon, 09 Apr 2018) $");
+  script_version("$Revision: 10911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-09-28 12:12:23 +0200 (Wed, 28 Sep 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -41,7 +41,7 @@ if(description)
   script_require_ports("Services/www", 7000);
   script_mandatory_keys("apple_tv/detected");
 
-  script_tag(name:"summary", value: "The script sends a connection request to the server and attempts to extract the version number from the reply.");
+  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to extract the version number from the reply.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

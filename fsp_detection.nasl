@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: fsp_detection.nasl 9927 2018-05-23 04:13:59Z ckuersteiner $
+# $Id: fsp_detection.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # Detect FSP Compatible Hosts
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11987");
-  script_version("$Revision: 9927 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 06:13:59 +0200 (Wed, 23 May 2018) $");
+  script_version("$Revision: 10906 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -41,10 +41,10 @@ if(description)
 
   script_xref(name:"URL", value:"http://fsp.sourceforge.net/");
 
-  script_tag(name:"solution", value: "If this service is not needed, disable it or filter incoming traffic to this
+  script_tag(name:"solution", value:"If this service is not needed, disable it or filter incoming traffic to this
 port.");
 
-  script_tag(name:"summary", value: "A file transfer program is listening on the remote port.
+  script_tag(name:"summary", value:"A file transfer program is listening on the remote port.
 
 Description :
 

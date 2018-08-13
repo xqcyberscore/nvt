@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_tableau_server_detect.nasl 7568 2017-10-26 05:34:38Z ckuersteiner $
+# $Id: sw_tableau_server_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # Tableau Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111048");
-  script_version("$Revision: 7568 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 07:34:38 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 10913 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-11-09 12:00:00 +0100 (Mon, 09 Nov 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,7 +42,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : "The script sends a HTTP
+  script_tag(name:"summary", value:"The script sends a HTTP
   request to the server and attempts to identify a Tableau Server
   and its version from the reply.");
 

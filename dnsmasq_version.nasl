@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dnsmasq_version.nasl 4460 2016-11-09 15:19:22Z cfi $
+# $Id: dnsmasq_version.nasl 10931 2018-08-11 13:51:20Z cfischer $
 #
 # Dnsmasq Detection
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100266");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4460 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-09 16:19:22 +0100 (Wed, 09 Nov 2016) $");
+  script_version("$Revision: 10931 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 15:51:20 +0200 (Sat, 11 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-09-01 22:29:29 +0200 (Tue, 01 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Dnsmasq Detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -57,18 +57,20 @@ function getVersion( data, port, proto ) {
   if( "dnsmasq" >!< tolower( data ) ) return;
 
   version = "unknown";
-  ver = eregmatch( pattern:"dnsmasq-([0-9.]+)", string:data, icase:TRUE );
-  if( ver[1] ) version = ver[1];
+  # dnsmasq-pi-hole-2.79
+  # dnsmasq-2.76
+  ver = eregmatch( pattern:"dnsmasq-(pi-hole-)?([0-9.]+)", string:data, icase:TRUE );
+  if( ver[2] ) version = ver[2];
 
   set_kb_item( name:"dnsmasq/version", value:version );
   set_kb_item( name:"dnsmasq/installed", value:TRUE );
 
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:thekelleys:dnsmasq:" );
   if( ! cpe )
-    cpe = 'cpe:/a:thekelleys:dnsmasq';
+    cpe = "cpe:/a:thekelleys:dnsmasq";
 
   register_product( cpe:cpe, location:port + "/" + proto, port:port, proto:proto );
-  log_message( data:build_detection_report( app: "Dnsmasq",
+  log_message( data:build_detection_report( app:"Dnsmasq",
                                             version:version,
                                             install:port + "/" + proto,
                                             cpe:cpe,

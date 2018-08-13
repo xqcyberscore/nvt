@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_stardict_detect_lin.nasl 8528 2018-01-25 07:57:36Z teissa $
+# $Id: gb_stardict_detect_lin.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # StarDict Version Detection (Linux)
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script detects the installed version of StarDict and
-  sets the result in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800643");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8528 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
+ script_version("$Revision: 10908 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-07-07 11:58:41 +0200 (Tue, 07 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("StarDict Version Detection (Linux)");
@@ -44,7 +41,8 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script detects the installed version of StarDict and
+  sets the result in KB.");
   exit(0);
 }
 
@@ -54,8 +52,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800643";
 SCRIPT_DESC = "StarDict Version Detection (Linux)";
 
 stardict_sock = ssh_login_or_reuse_connection();
@@ -76,11 +72,10 @@ foreach stardictbin (paths)
                        " running at location " + stardictbin +
                        " was detected on the host");
     ssh_close_connection();
-   
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe(value:stardictVer[1], exp:"^([0-9.]+)", base:"cpe:/a:stardict:stardict:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
   }
 }

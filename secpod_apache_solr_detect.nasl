@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_solr_detect.nasl 7278 2017-09-26 13:20:44Z cfischer $
+# $Id: secpod_apache_solr_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Apache Solr Version Detection
 #
@@ -9,7 +9,7 @@
 #
 # Updated by: kashinath T <tkashinath@sepcod.com>
 # Updated to support detection of newer versions.
-# 
+#
 # Copyright:
 # Copyright (C) 2014 Greenbone Networks GmbH, http://www.greenbone.net
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903506");
-  script_version("$Revision: 7278 $");
+  script_version("$Revision: 10894 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 15:20:44 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-01-29 13:13:35 +0530 (Wed, 29 Jan 2014)");
   script_name("Apache Solr Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -43,7 +43,7 @@ if(description)
   script_require_ports("Services/www", 8983);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of Apache Solr.
+  script_tag(name:"summary", value:"Detects the installed version of Apache Solr.
 
   This script sends HTTP GET request and try to get the version from the
   response, and sets the result in KB.");
@@ -67,7 +67,6 @@ foreach dir( make_list_unique( "/", "/solr", "/apachesolr", cgi_dirs( port:solrP
 
   rcvRes = http_get_cache( item: dir + "/" , port:solrPort );
 
-  #Confirm Application
   if( rcvRes =~ "HTTP/1.. 200" && (">Solr Admin<" >< rcvRes || "Solr admin page" >< rcvRes )) {
     version = "unknown";
 
@@ -104,8 +103,7 @@ foreach dir( make_list_unique( "/", "/solr", "/apachesolr", cgi_dirs( port:solrP
     }
 
     set_kb_item(name:"Apache/Solr/Installed", value:TRUE);
- 
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:apache:solr:" );
     if( ! cpe )
       cpe = "cpe:/a:apache:solr";

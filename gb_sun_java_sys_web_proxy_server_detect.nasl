@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_proxy_server_detect.nasl 5398 2017-02-23 05:49:38Z antu123 $
+# $Id: gb_sun_java_sys_web_proxy_server_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Sun Java System Web Proxy Server Version Detection
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800864");
-  script_version("$Revision: 5398 $");
+  script_version("$Revision: 10908 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-23 06:49:38 +0100 (Thu, 23 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-08-12 19:54:51 +0200 (Wed, 12 Aug 2009)");
   script_name("Sun Java System Web Proxy Server Version Detection");
 
-  script_tag(name : "summary" , value : "Detection of Java System Web Proxy Server.
+  script_tag(name:"summary", value:"Detection of Java System Web Proxy Server.
 
   The script sends a connection request to the server and attempts to
   extract the version number from the reply.");
@@ -54,16 +54,8 @@ include("http_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-sunPort = "";
-banner = "";
-wpsVer = "";
-version = "";
-
-# Get the Default HTTP Port for Web Proxy Server
 sunPort = get_http_port(default:80);
 
-# Get for HTTP Banner
 banner = get_http_banner(port:sunPort);
 
 ##  Confirm the application
@@ -71,23 +63,19 @@ if("Server: Sun-Java-System-Web-Proxy-Server" >< banner)
 {
   version = "unknown";
 
-  # Grep for Web Proxy Server Version
   wpsVer = eregmatch(pattern:"Server: Sun-Java-System-Web-Proxy-Server" + "/([0-9.]+)", string:banner);
   if(wpsVer[1]) {
     version = wpsVer[1];
   }
 
-  # Set KB for Web Proxy Server Version
   set_kb_item(name:"Sun/JavaWebProxyServ/Ver", value:version);
   set_kb_item(name:"Sun/JavaWebProxyServ/Installed", value:TRUE);
   set_kb_item(name:"Sun/JavaWebProxyServ/Port", value:sunPort);
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:sun:java_system_web_proxy_server:");
   if(isnull(cpe))
     cpe = "cpe:/a:sun:java_system_web_proxy_server";
 
-  ## Register the product
   register_product(cpe:cpe, location:sunPort + "/tcp", port:sunPort);
   log_message(data: build_detection_report(app:"Sun-Java-System-Web-Proxy-Server",
                                          version:version,

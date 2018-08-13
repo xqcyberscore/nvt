@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dorg_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_dorg_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # Disc Organization System (DORG) Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806696");
-  script_version("$Revision: 8078 $");
+  script_version("$Revision: 10898 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:24:58 +0530 (Wed, 06 Apr 2016)");
   script_name("Disc Organization System (DORG) Remote Version Detection");
 
@@ -54,18 +54,10 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-##Variable initialize
-dorgPort = 0;
-dir = "";
-dorgReq = "";
-dorgRes = "";
-
-##Get HTTP Port
 if(!dorgPort = get_http_port( default:80)){
   exit(0);
 }
 
-##Iterate over possible paths
 foreach dir(make_list_unique( "/", "/dorg", cgi_dirs(port:dorgPort)))
 {
   install = dir;
@@ -78,12 +70,10 @@ foreach dir(make_list_unique( "/", "/dorg", cgi_dirs(port:dorgPort)))
   dorgReq = http_get(port:dorgPort, item: url);
   dorgRes = http_keepalive_send_recv(port:dorgPort, data:dorgReq);
 
-  ## Confirm the application
   if(dorgRes =~ '<title>DORG.*admin panel<' && '>Disc Organization System<' >< dorgRes)
   {
     version = "unknown";
 
-    ## Set the KB value
     set_kb_item(name:"www/" + dorgPort + "/dorg", value:version);
     set_kb_item( name:"DORG/Installed", value:TRUE);
 

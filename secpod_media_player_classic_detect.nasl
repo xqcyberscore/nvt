@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_media_player_classic_detect.nasl 9181 2018-03-22 17:42:56Z cfischer $
+# $Id: secpod_media_player_classic_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # Gabest Media Player Classic Version Detection
 #
@@ -30,26 +30,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900947");
-  script_version("$Revision: 9181 $");
+  script_version("$Revision: 10890 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-22 18:42:56 +0100 (Thu, 22 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-09-18 08:01:03 +0200 (Fri, 18 Sep 2009)");
   script_name("Gabset Media Player Classic Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
 
-  tag_summary = "This script detects the installed version of Gabset Media Player
+  script_tag(name:"summary", value:"This script detects the installed version of Gabset Media Player
   Classic and sets the result in KB.
 
   The script logs in via smb, searches for Media Player Classic in the registry,
-  gets the version from registry.";
-
-  script_tag(name:"summary", value:tag_summary);
+  gets the version from registry.");
 
   script_tag(name:"qod_type", value:"registry");
 
@@ -67,11 +65,9 @@ if(!os_arch){
   exit(0);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Gabest\Media Player Classic\");
 }
-## Check for 64 bit platform, only 32-bit application is present
 else if("x64" >< os_arch){
   key_list = make_list("SOFTWARE\Wow6432Node\Gabest\Media Player Classic\");
 }

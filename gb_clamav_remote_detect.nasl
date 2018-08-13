@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clamav_remote_detect.nasl 8137 2017-12-15 11:26:42Z cfischer $
+# $Id: gb_clamav_remote_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # ClamAV Version Detection
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100651");
-  script_version("$Revision: 8137 $");
+  script_version("$Revision: 10888 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:26:42 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-06-17 14:03:59 +0530 (Wed, 17 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ClamAV Version Detection");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   ClamAV Anti Virus.
 
   This script sends a connection request to the server and try
@@ -54,7 +54,6 @@ include("global_settings.inc");
 include("host_details.inc");
 include("cpe.inc");
 
-## Get ClamAV Port
 clamPort = get_kb_item("Services/clamd");
 if(!clamPort) clamPort = 3310;
 if(!get_port_state(clamPort))exit(0);
@@ -76,16 +75,13 @@ if(!version){
   version = version[1];
 }
 
-## Set the KB
 set_kb_item(name:"ClamAV/installed", value:TRUE);
 set_kb_item(name:"ClamAV/remote/Ver", value: version);
 
-## build cpe and store it as host_detail
 cpe = build_cpe(value: version, exp:"([0-9.]+)", base:"cpe:/a:clamav:clamav:");
 if(isnull(cpe))
   cpe = "cpe:/a:clamav:clamav";
 
-## Register Product and Build Report
 register_product(cpe:cpe, location:clamPort, port:clamPort);
 log_message(data: build_detection_report(app: "ClamAV",
                                          version:version,
@@ -95,7 +91,7 @@ log_message(data: build_detection_report(app: "ClamAV",
                                          port:clamPort);
 
 info = string("ClamAV Version (" + version + ") was detected on the remote host.\n");
-if(report_verbosity > 0) 
+if(report_verbosity > 0)
 {
   security_message(port:clamPort,data:info);
   exit(0);

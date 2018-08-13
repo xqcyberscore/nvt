@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netapp_storagegrid_webscale_detect.nasl 9398 2018-04-09 06:17:02Z cfischer $
+# $Id: gb_netapp_storagegrid_webscale_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # NetApp StorageGRID Webscale Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140337");
-  script_version("$Revision: 9398 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-09 08:17:02 +0200 (Mon, 09 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-08-30 16:31:32 +0700 (Wed, 30 Aug 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-30 16:31:32 +0700 (Wed, 30 Aug 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("NetApp StorageGRID Webscale Detection");
 
-  script_tag(name: "summary" , value: "Detection of NetApp StorageGRID Webscale.
+  script_tag(name:"summary", value:"Detection of NetApp StorageGRID Webscale.
 
 The script sends a connection request to the server and attempts to detect NetApp StorageGRID Webscale and to
 extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ extract its version.");
   script_mandatory_keys("StorageGRID/banner");
   script_require_ports("Services/www", 443);
 
-  script_xref(name: "URL", value: "http://www.netapp.com/us/products/data-management-software/object-storage-grid-sds.aspx");
+  script_xref(name:"URL", value:"http://www.netapp.com/us/products/data-management-software/object-storage-grid-sds.aspx");
 
   exit(0);
 }
@@ -59,7 +59,7 @@ extract its version.");
 include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
-include("http_keepalive.inc");
+
 
 port = get_http_port(default: 443);
 

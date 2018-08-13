@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_communigatepro_imap_detect.nasl 8423 2018-01-15 10:43:49Z ckuersteiner $
+# $Id: gb_communigatepro_imap_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # CommuniGatePro Detection (IMAP)
 #
@@ -28,20 +28,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140687");
-  script_version("$Revision: 8423 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-15 11:43:49 +0100 (Mon, 15 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2018-01-15 15:48:28 +0700 (Mon, 15 Jan 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-01-15 15:48:28 +0700 (Mon, 15 Jan 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("CommuniGate Pro Detection (IMAP)");
 
-  script_tag(name: "summary" , value: "Detection of CommuniGate Pro.
+  script_tag(name:"summary", value:"Detection of CommuniGate Pro.
 
 This script performs IMAP based detection of CommuniGate Pro.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -49,7 +49,7 @@ This script performs IMAP based detection of CommuniGate Pro.");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/imap", 143, 993);
 
-  script_xref(name: "URL", value: "https://www.stalker.com/");
+  script_xref(name:"URL", value:"https://www.stalker.com/");
 
   exit(0);
 }

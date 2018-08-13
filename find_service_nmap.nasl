@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service_nmap.nasl 9702 2018-05-03 06:35:02Z cfischer $
+# $Id: find_service_nmap.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Service Detection with nmap
 #
@@ -37,8 +37,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.66286");
-  script_version("$Revision: 9702 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-03 08:35:02 +0200 (Thu, 03 May 2018) $");
+  script_version("$Revision: 10922 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-11-18 19:41:26 +0100 (Wed, 18 Nov 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -84,7 +84,7 @@ if( ! port ) exit( 0 );
 if( ! get_port_state( port ) ) exit( 0 );
 if( ! service_is_unknown( port:port ) ) exit( 0 );
 
-# Check if we can still open that port before throwing nmap on it
+# nb: Check if we can still open that port before throwing nmap on it
 soc = open_sock_tcp( port, transport:ENCAPS_IP );
 if( ! soc )
   exit( 0 );

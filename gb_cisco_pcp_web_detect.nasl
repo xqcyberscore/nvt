@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_pcp_web_detect.nasl 6239 2017-05-30 01:48:49Z ckuerste $
+# $Id: gb_cisco_pcp_web_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Cisco Prime Collaboration Provisioning Web Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105548");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6239 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-30 03:48:49 +0200 (Tue, 30 May 2017) $");
+ script_version("$Revision: 10915 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-02-16 10:35:13 +0100 (Tue, 16 Feb 2016)");
  script_name("Cisco Prime Collaboration Provisioning Web Detection");
 
- script_tag(name: "summary" , value: "This Script performs HTTP(s) based detection of the Cisco Prime Collaboration Provisioning Web Interface");
+ script_tag(name:"summary", value:"This Script performs HTTP(s) based detection of the Cisco Prime Collaboration Provisioning Web Interface");
 
  script_tag(name:"qod_type", value:"remote_banner");
 

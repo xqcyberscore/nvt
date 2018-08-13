@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mysql_version.nasl 9657 2018-04-27 10:38:29Z cfischer $
+# $Id: mysql_version.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Detection of MySQL/MariaDB
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100152");
-  script_version("$Revision: 9657 $");
+  script_version("$Revision: 10929 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 12:38:29 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("MySQL/MariaDB Detection");
   script_category(ACT_GATHER_INFO);
@@ -39,7 +39,7 @@ if(description)
   script_dependencies("find_service1.nasl", "sw_sphinxsearch_detect.nasl");
   script_require_ports("Services/mysql", 3306);
 
-  script_tag(name:"summary", value:"Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   MySQL/MariaDB.
 
   Detect a running MySQL/MariaDB by getting the banner, extract the version
@@ -50,7 +50,7 @@ if(description)
   exit(0);
 }
 
-include("global_settings.inc");
+
 include("misc_func.inc");
 include("mysql.inc");
 include("cpe.inc");

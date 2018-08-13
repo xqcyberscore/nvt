@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmedia_explorer_detect.nasl 9043 2018-03-07 12:38:58Z cfischer $
+# $Id: webmedia_explorer_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Webmedia Explorer Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100224");
-  script_version("$Revision: 9043 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 13:38:58 +0100 (Wed, 07 Mar 2018) $");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-06-21 16:51:00 +0200 (Sun, 21 Jun 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -42,12 +42,10 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.webmediaexplorer.com/");
 
-  tag_summary = "This host is running Webmedia Explorer an free Open Source PHP
+  script_tag(name:"summary", value:"This host is running Webmedia Explorer an free Open Source PHP
   engine that reads your hard disc as a conventional disc explorer and
   generates a website realtime taking advantage of a very powerful
-  rendering and data fetching caching system.";
-
-  script_tag(name:"summary", value:tag_summary);
+  rendering and data fetching caching system.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

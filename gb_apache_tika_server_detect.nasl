@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tika_server_detect.nasl 5829 2017-04-03 07:00:29Z cfi $
+# $Id: gb_apache_tika_server_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # Apache Tika Server Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810251");
-  script_version("$Revision: 5829 $");
+  script_version("$Revision: 10896 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 09:00:29 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-12-20 17:03:54 +0530 (Tue, 20 Dec 2016)");
   script_name("Apache Tika Server Version Detection");
   script_tag(name:"summary", value:"Detection of installed version
@@ -54,21 +54,12 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable initialization
-tikaPort = "";
-req = "";
-rcvRes = "";
-version = "";
-ver = "";
-
 tikaPort = get_http_port(default:9998);
 
 rcvRes = http_get_cache(item: "/", port: tikaPort);
 
-## Confirm the application
-if(rcvRes && rcvRes =~ "<title>Welcome to the Apache Tika.*Server</title>") 
+if(rcvRes && rcvRes =~ "<title>Welcome to the Apache Tika.*Server</title>")
 {
-  ## Grep for the version
   ver = eregmatch( pattern:'<title>Welcome to the Apache Tika ([0-9.]+) Server</title>', string:rcvRes );
   if( ver[1] ){
     version = ver[1];
@@ -77,10 +68,8 @@ if(rcvRes && rcvRes =~ "<title>Welcome to the Apache Tika.*Server</title>")
     version = "unknown";
   }
 
-  ## Set the KB value
   set_kb_item(name:"Apache/Tika/Server/Installed", value:TRUE);
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:apache:tika:");
   if( ! cpe )
     cpe = "cpe:/a:apache:tika";

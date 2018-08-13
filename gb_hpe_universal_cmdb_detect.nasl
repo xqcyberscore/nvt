@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hpe_universal_cmdb_detect.nasl 9602 2018-04-25 10:12:55Z ckuersteiner $
+# $Id: gb_hpe_universal_cmdb_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # HPE / Micro Focus Universal CMDB Version Detection
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808250");
-  script_version("$Revision: 9602 $");
+  script_version("$Revision: 10901 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 12:12:55 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-07-14 16:30:56 +0530 (Thu, 14 Jul 2016)");
   script_name("HPE / Micro Focus Universal CMDB Version Detection");
 
-  script_tag(name:"summary", value:"Detection of installed version of HPE / Micro Focus Universal CMDB.
+  script_tag(name:"summary", value:"Detects the installed version of HPE / Micro Focus Universal CMDB.
 
   This script sends HTTP GET request and try to get the version from the response.");
 
@@ -46,7 +46,7 @@ if(description)
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://software.microfocus.com/en-us/products/configuration-management-system-database/overview");
+  script_xref(name:"URL", value:"https://software.microfocus.com/en-us/products/configuration-management-system-database/overview");
 
   exit(0);
 }

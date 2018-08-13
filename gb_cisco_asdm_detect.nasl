@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asdm_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_cisco_asdm_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Cisco ASDM Detection
 #
@@ -31,12 +31,12 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 6065 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version("$Revision: 10929 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
  script_tag(name:"creation_date", value:"2015-02-03 11:47:01 +0100 (Tue, 03 Feb 2015)");
  script_name("Cisco ASDM Detection");
 
- script_tag(name: "summary" , value: "The script sends a connection
+ script_tag(name:"summary", value:"The script sends a connection
 request to the server and attempts to extract the version number
 from the reply.");
 
@@ -51,8 +51,8 @@ from the reply.");
 
 
 include("http_func.inc");
-include("http_keepalive.inc");
-include("global_settings.inc");
+
+
 include("cpe.inc");
 include("host_details.inc");
 

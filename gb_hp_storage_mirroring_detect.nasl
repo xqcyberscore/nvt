@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_storage_mirroring_detect.nasl 8162 2017-12-19 06:15:07Z cfischer $
+# $Id: gb_hp_storage_mirroring_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # HP StorageWorks Storage Mirroring Version Detection
 #
@@ -30,25 +30,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801356");
-  script_version("$Revision: 8162 $");
+  script_version("$Revision: 10888 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:15:07 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-06-15 06:05:27 +0200 (Tue, 15 Jun 2010)");
   script_name("HP StorageWorks Storage Mirroring Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
 
-  tag_summary = "Detection of installed version of HP StorageWorks Storage Mirroring on Windows.
+  script_tag(name:"summary", value:"Detects the installed version of HP StorageWorks Storage Mirroring on Windows.
 
   The script logs in via smb, searches for HP Storage Mirroring in the
-  registry and gets the version.";
-
-  script_tag(name:"summary", value:tag_summary);
+  registry and gets the version.");
 
   script_tag(name:"qod_type", value:"registry");
 
@@ -61,23 +59,15 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-hpsmName = "";
-hpsmVer = "";
-insLoc = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-## Check for 64 bit platform
 else if("x64" >< os_arch)
 {
   key_list =  make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
@@ -103,7 +93,6 @@ foreach key( key_list ) {
 
         set_kb_item(name:"HP/SWSM/Installed", value:TRUE);
 
-        ## Register for 64 bit app on 64 bit OS once again
         if("64" >< os_arch && "Wow6432Node" >!< key) {
           set_kb_item(name:"HP/SWSM64/Ver", value:hpsmVer);
           register_and_report_cpe( app:hpsmName, ver:hpsmVer, concluded:hpsmVer, base:"cpe:/a:hp:storageworks_storage_mirroring:x64:", expr:"^([0-9.]+)", insloc:insLoc );

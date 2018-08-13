@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teamviewer_detect_lin.nasl 10692 2018-07-31 13:51:55Z santu $
+# $Id: gb_teamviewer_detect_lin.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # TeamViewer Version Detection (Linux)
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813269");
-  script_version("$Revision: 10692 $");
+  script_version("$Revision: 10898 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-31 15:51:55 +0200 (Tue, 31 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-30 16:57:40 +0530 (Mon, 30 Jul 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("TeamViewer Version Detection (Linux)");
-  script_tag(name:"summary", value:"Detection of installed version of TeamViewer.
+  script_tag(name:"summary", value:"Detects the installed version of TeamViewer.
 
   The script logs in via SSH, searches for the executable 'TeamViewer.' and
   queries the found executables via the command line option '--version'");
 
   script_category(ACT_GATHER_INFO);
-  script_xref(name : "URL" , value : "https://www.teamviewer.com/en");
+  script_xref(name:"URL", value:"https://www.teamviewer.com/en");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gather-package-list.nasl");
@@ -57,7 +57,7 @@ include("host_details.inc");
 sock = ssh_login_or_reuse_connection();
 if( ! sock ) exit( 0 );
 
-binaries = find_file( file_name:"teamviewer", file_path:"/", useregex:TRUE, regexpar:"$", sock:sock ); 
+binaries = find_file( file_name:"teamviewer", file_path:"/", useregex:TRUE, regexpar:"$", sock:sock );
 foreach binary( binaries )
 {
   binary  = chomp( binary );

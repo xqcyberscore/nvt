@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yawcam_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: gb_yawcam_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # yawcam Detection
 #
@@ -28,17 +28,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140683");
-  script_version("$Revision: 9633 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2018-01-15 14:18:25 +0700 (Mon, 15 Jan 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10894 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-01-15 14:18:25 +0700 (Mon, 15 Jan 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("yawcam Detection");
 
-  script_tag(name: "summary" , value: "Detection of yawcam (Yet Another Webcam Software).
+  script_tag(name:"summary", value:"Detection of yawcam (Yet Another Webcam Software).
 
 The script sends a connection request to the server and attempts to detect yawcam and to extract its version.");
 
@@ -50,7 +50,7 @@ The script sends a connection request to the server and attempts to detect yawca
   script_require_ports("Services/www", 80, 8081, 8888);
   script_mandatory_keys("yawcam/banner");
 
-  script_xref(name: "URL", value: "http://www.yawcam.com/");
+  script_xref(name:"URL", value:"http://www.yawcam.com/");
 
   exit(0);
 }
@@ -58,7 +58,7 @@ The script sends a connection request to the server and attempts to detect yawca
 include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
-include("http_keepalive.inc");
+
 
 port = get_http_port(default: 8081);
 

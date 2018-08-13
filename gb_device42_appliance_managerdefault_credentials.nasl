@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_device42_appliance_managerdefault_credentials.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_device42_appliance_managerdefault_credentials.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Device42 DCIM Appliance Manager Default Credentials
 #
@@ -28,11 +28,11 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105123");
- script_version("$Revision: 7006 $");
+ script_version("$Revision: 10922 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Device42 DCIM Appliance Manager Default Credentials");
- script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2014-11-28 12:02:06 +0200 (Fri, 28 Nov 2014)");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
@@ -40,16 +40,16 @@ if (description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 4242);
 
- script_tag(name: "summary" , value: 'The remote Device42 DCIM Appliance Manager web interface
+ script_tag(name:"summary", value: 'The remote Device42 DCIM Appliance Manager web interface
 is prone to a default account authentication bypass vulnerability.');
 
- script_tag(name: "impact" , value:'This issue may be exploited by a remote attacker to gain
+ script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain
 access to sensitive information or modify system configuration.');
 
- script_tag(name: "vuldetect" , value: 'Try to login with default credentials.');
- script_tag(name: "insight" , value: 'It was possible to login with default credentials: d42admin/default');
- script_tag(name: "solution" , value: 'Change the password.');
-
+ script_tag(name:"vuldetect", value: 'Try to login with default credentials.');
+ script_tag(name:"insight", value: 'It was possible to login with default credentials: d42admin/default');
+ script_tag(name:"solution", value: 'Change the password.');
+ script_tag(name:"solution_type", value:"Mitigation");
  script_tag(name:"qod_type", value:"remote_app");
  exit(0);
 }
@@ -89,7 +89,7 @@ req = 'POST /accounts/login/ HTTP/1.1\r\n' +
       'Accept-Language: de,en-US;q=0.7,en;q=0.3\r\n' +
       'Accept-Encoding: identity\r\n' +
       'Referer: http://' +  host + ':' + port + '/accounts/login/?next=/\r\n' +
-      'Cookie: csrftoken=' + csrf  + '; d42amid=' + d42amid + '\r\n' + 
+      'Cookie: csrftoken=' + csrf  + '; d42amid=' + d42amid + '\r\n' +
       'Content-Type: application/x-www-form-urlencoded\r\n' +
       'Content-Length: ' + len + '\r\n' +
       '\r\n' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_ancm_dos_vuln_win.nasl 9488 2018-04-16 05:42:12Z cfischer $
+# $Id: gb_asp_dotnet_core_ancm_dos_vuln_win.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # ASP.NET Core ANCM Denial of Service Vulnerability (Windows)
 #
@@ -29,45 +29,45 @@ CPE = "cpe:/a:microsoft:asp.net_core";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813044");
-  script_version("$Revision: 9488 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-0808");
   script_bugtraq_id(103225);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:42:12 +0200 (Mon, 16 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-03-16 11:09:04 +0530 (Fri, 16 Mar 2018)");
   script_name("ASP.NET Core ANCM Denial of Service Vulnerability (Windows)");
 
-  script_tag(name:"summary" , value:"This host is installed with ASP.NET Core
+  script_tag(name:"summary", value:"This host is installed with ASP.NET Core
   and is prone to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight" , value:"The flaw exists when ASP.NET Core improperly 
+  script_tag(name:"insight", value:"The flaw exists when ASP.NET Core improperly
   handles web requests.");
 
-  script_tag(name:"impact" , value:"Successful exploitation will allow an attacker
+  script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to cause a denial of service against an ASP.NET Core web application.
 
   Impact Level: Application");
 
-  script_tag(name:"affected" , value:"Microsoft ASP.NET Core 1.0, 1.1 and 2.0
+  script_tag(name:"affected", value:"Microsoft ASP.NET Core 1.0, 1.1 and 2.0
   running AspNetCoreModule (ANCM) prior to 7.1.1990.0");
 
-  script_tag(name:"solution" , value:"Upgrade to AspNetCoreModule (ANCM) version
+  script_tag(name:"solution", value:"Upgrade to AspNetCoreModule (ANCM) version
   7.1.1990.0 or later.
   For details refer to https://github.com/aspnet/Announcements/issues/294");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "https://github.com/aspnet/Announcements/issues/294");
-  script_xref(name : "URL" , value : "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-0808");
+  script_xref(name:"URL", value:"https://github.com/aspnet/Announcements/issues/294");
+  script_xref(name:"URL", value:"https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-0808");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows");
   script_dependencies("gb_asp_dotnet_core_detect_win.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("ASP.NET/Core/Ver");
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ExaGrid_default_ssh_login.nasl 7252 2017-09-25 15:28:16Z cfischer $
+# $Id: gb_ExaGrid_default_ssh_login.nasl 10881 2018-08-10 10:27:02Z mmartin $
 #
 # Exagrid SSH Known SSH Private Key
 #
@@ -28,11 +28,11 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105597");
- script_version("$Revision: 7252 $");
+ script_version("$Revision: 10881 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Exagrid SSH Known SSH Private Key");
- script_tag(name:"last_modification", value:"$Date: 2017-09-25 17:28:16 +0200 (Mon, 25 Sep 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:27:02 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-04-07 17:30:40 +0200 (Thu, 07 Apr 2016)");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
@@ -45,6 +45,7 @@ if (description)
 
  script_tag(name: "vuldetect" , value: 'Try to login with known private key.');
  script_tag(name: "solution" , value: 'Delete the known key.');
+ script_tag(name:"solution_type", value:"Mitigation");
  script_dependencies("find_service.nasl");
  script_tag(name:"qod_type", value:"exploit");
  exit(0);

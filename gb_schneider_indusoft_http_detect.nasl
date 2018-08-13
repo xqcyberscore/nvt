@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_indusoft_http_detect.nasl 9529 2018-04-19 08:22:51Z ckuersteiner $
+# $Id: gb_schneider_indusoft_http_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Schneider Electric InduSoft Web Studio Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141011");
-  script_version("$Revision: 9529 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-19 10:22:51 +0200 (Thu, 19 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2018-04-19 13:02:45 +0700 (Thu, 19 Apr 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-04-19 13:02:45 +0700 (Thu, 19 Apr 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Schneider Electric InduSoft Web Studio Detection");
 
-  script_tag(name: "summary" , value: "Detection of Schneider Electric InduSoft Web Studio.
+  script_tag(name:"summary", value:"Detection of Schneider Electric InduSoft Web Studio.
 
 The script sends a connection request to the server and attempts to detect Schneider Electric InduSoft Web Studio
 and to extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ and to extract its version.");
   script_require_ports("Services/www", 80, 81, 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "http://www.indusoft.com/");
+  script_xref(name:"URL", value:"http://www.indusoft.com/");
 
   exit(0);
 }

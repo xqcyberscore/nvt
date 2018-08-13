@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_sma_detection.nasl 9234 2018-03-28 08:11:31Z asteins $
+# $Id: gb_dell_sonicwall_sma_detection.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # Dell SonicWALL Secure Mobile Access / Secure Remote Access Detection
 #
@@ -29,9 +29,9 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.107118");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9234 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-28 10:11:31 +0200 (Wed, 28 Mar 2018) $");
-  script_tag(name:"creation_date", value: "2017-01-09 13:26:09 +0700 (Mon, 09 Jan 2017)");
+  script_version("$Revision: 10898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-09 13:26:09 +0700 (Mon, 09 Jan 2017)");
   script_name("Dell SonicWALL Secure Mobile Access / Secure Remote Access Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
@@ -66,10 +66,9 @@ if ( ! isnull( Pro[1] ) )
 
 set_kb_item( name:"sonicwall/" + tolower( Product ) + "/detected", value:TRUE );
 
-## Check for Virtual Appliance (No Serie in the SNMP banner)
 
 vers = "unknown";
-serie = "unknown";
+series = "unknown";
 if( sysdesc =~ 'Dell SonicWALL S[R|M]A Virtual Appliance' )
 {
   version = eregmatch( string:sysdesc, pattern:'Dell SonicWALL S[R|M]A Virtual Appliance [(]SonicOS SSL[-]VPN (([0-9.]+)[-][0-9]{2}sv)', icase:TRUE );
@@ -81,7 +80,7 @@ else
 
   if( ! isnull( version[2] ) ) vers = chomp( version[2] );
 
-  if( ! isnull( version[1] ) ) serie = version[1];
+  if( ! isnull( version[1] ) ) series = version[1];
 }
 if ( Product == "SMA" )
 {
@@ -97,7 +96,7 @@ else if ( Product == "SRA" )
     cpe = 'cpe:/o:dell:sonicwall_secure_remote_access_firmware:';
 
 }
-if ( ! isnull(serie)) set_kb_item( name:'sonicwall/' + tolower( Product ) + '/serie', value:serie );
+if ( ! isnull(series)) set_kb_item( name:'sonicwall/' + tolower( Product ) + '/serie', value:series );
 if ( ! isnull(vers)) set_kb_item( name:'sonicwall/' + tolower( Product ) + '/version', value:vers );
 
 register_product( cpe:cpe, location:port + "/udp", port:port, proto:"udp", service:"snmp" );

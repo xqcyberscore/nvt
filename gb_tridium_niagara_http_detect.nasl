@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tridium_niagara_http_detect.nasl 10825 2018-08-08 05:37:56Z ckuersteiner $
+# $Id: gb_tridium_niagara_http_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Tridium Niagara Detection (HTTP)
 #
@@ -28,20 +28,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141355");
-  script_version("$Revision: 10825 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-08-08 07:37:56 +0200 (Wed, 08 Aug 2018) $");
-  script_tag(name: "creation_date", value: "2018-08-07 16:23:44 +0700 (Tue, 07 Aug 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-08-07 16:23:44 +0700 (Tue, 07 Aug 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Tridium Niagara Detection (HTTP)");
 
-  script_tag(name: "summary" , value: "Detection of Tridium Niagara Detection.
+  script_tag(name:"summary", value:"Detection of Tridium Niagara Detection.
 
 This script performs HTTP based detection of Tridium Niagara devices and attempts to extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -50,7 +50,7 @@ This script performs HTTP based detection of Tridium Niagara devices and attempt
   script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.tridium.com");
+  script_xref(name:"URL", value:"https://www.tridium.com");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_detect.nasl 9628 2018-04-26 12:03:30Z santu $
+# $Id: gb_typo3_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # TYPO3 Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803979");
-  script_version("$Revision: 9628 $");
+  script_version("$Revision: 10906 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 14:03:30 +0200 (Thu, 26 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-16 18:17:29 +0530 (Mon, 16 Dec 2013)");
   script_name("TYPO3 Detection");
   script_category(ACT_GATHER_INFO);
@@ -75,20 +75,16 @@ foreach dir ( make_list_unique( "/", "/cms", "/typo", "/typo3", cgi_dirs( port:p
   install = dir;
   if( dir == "/" ) dir = "";
 
-  ##Try to identify TYPO3 from the meta generator tag of the index page
   url = dir + "/";
   res = http_get_cache( item:url, port:port );
 
-  ##Try to identify TYPO3 from the meta generator tag of the admin login
   url2 = dir + "/typo3/index.php";
   res2 = http_get_cache( item:url2, port:port );
 
-  ##Try to identify TYPO3 from the ChangeLog
   url3 = dir + "/typo3_src/ChangeLog";
   req  = http_get( item:url3, port:port );
   res3 = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-  ##Check for Changelog File in other location
   if( res3 !~  "TYPO3 Release Team" ) {
     url3 = dir + "/ChangeLog";
     res3 = http_get_cache( item:url3 , port:port );
@@ -97,18 +93,14 @@ foreach dir ( make_list_unique( "/", "/cms", "/typo", "/typo3", cgi_dirs( port:p
   generator_pattern = '<meta name="generator" content="TYPO3';
   pattern = 'content="TYPO3 ([0-9a-z.]+)';
 
-  ##Check Responses
   if( res3 && res3 =~ "^HTTP/1\.[01] 200" && "TYPO3 Release Team" >< res3 ) {
-    ##Try to get minor version from the ChangeLog
     ver3 = eregmatch( pattern:"Release of TYPO3 ([0-9a-z.]+)", string:res3 );
     installed = TRUE;
     flag = TRUE;
   } else if( res && res =~ "^HTTP/1\.[01] 200" && generator_pattern >< res || ("typo3conf" >< res && "typo3temp" >< res ) ) {
-    ##Try to get the major version from the meta generator tag of the index page
     ver = eregmatch( pattern:pattern, string:res );
     installed = TRUE;
   } else if( res2 && res2 =~ "^HTTP/1\.[01] 200" && generator_pattern >< res2 || "typo3temp" >< res2 ) {
-    ##Try to get the major version from the meta generator tag of the admin login
     ver2 = eregmatch( pattern:pattern, string:res2 );
     installed = TRUE;
   }
@@ -125,10 +117,10 @@ foreach dir ( make_list_unique( "/", "/cms", "/typo", "/typo3", cgi_dirs( port:p
     conclUrl = report_vuln_url( port:port, url:url2, url_only:TRUE );
     concl = ver2[0];
     typoVer = ver2[1];
-  } 
-  else 
+  }
+  else
   {
-    reqs = make_list("/typo3/sysext/recordlist/composer.json", "/typo3/sysext/sys_note/composer.json", 
+    reqs = make_list("/typo3/sysext/recordlist/composer.json", "/typo3/sysext/sys_note/composer.json",
                      "/typo3/sysext/t3editor/composer.json", "/typo3/sysext/opendocs/composer.json");
     foreach url(reqs)
     {
@@ -164,7 +156,6 @@ foreach dir ( make_list_unique( "/", "/cms", "/typo", "/typo3", cgi_dirs( port:p
     set_kb_item( name:"TYPO3/installed", value:TRUE );
     register_and_report_cpe( app:"TYPO3", ver:typoVer, concluded:concl, base:"cpe:/a:typo3:typo3:", expr:"([0-9a-z.]+)", insloc:install, regPort:port, conclUrl:conclUrl );
   }
-  ##Try to get version after logging in if no detailed version could be identified
   if( ! flag && installed ) {
     res = http_get_cache( item:dir + "/typo3/index.php", port:port );
 

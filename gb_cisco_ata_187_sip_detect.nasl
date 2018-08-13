@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ata_187_sip_detect.nasl 8141 2017-12-15 12:43:22Z cfischer $
+# $Id: gb_cisco_ata_187_sip_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Cisco ATA 187 Detection (SIP)
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140085");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8141 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
+ script_version("$Revision: 10899 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-12-01 14:02:18 +0100 (Thu, 01 Dec 2016)");
  script_name("Cisco ATA 187 Detection (SIP)");
 
- script_tag(name: "summary" , value: "This script performs SIP based detection of Cisco ATA 187 devices");
+ script_tag(name:"summary", value:"This script performs SIP based detection of Cisco ATA 187 devices");
 
  script_tag(name:"qod_type", value:"remote_banner");
 

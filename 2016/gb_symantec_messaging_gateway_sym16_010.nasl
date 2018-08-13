@@ -1,9 +1,9 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_sym16_010.nasl 6493 2017-06-30 07:00:59Z ckuersteiner $
+# $Id: gb_symantec_messaging_gateway_sym16_010.nasl 10881 2018-08-10 10:27:02Z mmartin $
 #
 # Symantec Messaging Gateway Decomposer Engine Multiple Parsing Vulnerabilities
-# 
+#
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:symantec:messaging_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105783");
-  script_version("$Revision: 6493 $");
+  script_version("$Revision: 10881 $");
   script_cve_id("CVE-2016-2207","CVE-2016-2209","CVE-2016-2210","CVE-2016-2211","CVE-2016-3644","CVE-2016-3645","CVE-2016-3646");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-30 09:00:59 +0200 (Fri, 30 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:27:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-06-29 15:43:27 +0200 (Wed, 29 Jun 2016)");
   script_name("Symantec Messaging Gateway Decomposer Engine Multiple Parsing Vulnerabilities)");
 
@@ -42,7 +42,7 @@ In the TNEF unpacker, the overflow does not result in any detrimental actions du
   script_tag(name:"vuldetect", value:'Check the version');
   script_tag(name:"affected", value:' SMG 10.6.1-3 and prior');
   script_tag(name:"solution", value:'Update to SMG 10.6.1-4');
-
+  script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=&suid=20160628_00");
 
   script_category(ACT_GATHER_INFO);

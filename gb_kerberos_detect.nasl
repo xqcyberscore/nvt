@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kerberos_detect.nasl 4822 2016-12-21 07:19:58Z cfi $
+# $Id: gb_kerberos_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Kerberos Detection (TCP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103854");
-  script_version("$Revision: 4822 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 08:19:58 +0100 (Wed, 21 Dec 2016) $");
+  script_version("$Revision: 10891 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-12 11:31:47 +0100 (Thu, 12 Dec 2013)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -39,9 +39,7 @@ if(description)
   script_dependencies("find_service.nasl");
   script_require_ports(88);
 
-  tag_summary = "The script sends a connection request to detect a running kerberos server.";
-
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The script sends a connection request to detect a running kerberos server.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -131,7 +129,6 @@ register_service( port:port, ipproto:"tcp", proto:'kerberos' );
 
 stime = parse_resp( res:res, byte:'\x18' );
 
-# try to get the realm
 req = raw_string(0x00,0x00,0x00,0x59,0x6a,0x57,0x30,0x55,0xa1,0x03,0x02,0x01,0x05,0xa2,0x03,0x02,
                  0x01,0x0a,0xa4,0x49,0x30,0x47,0xa0,0x07,0x03,0x05,0x00,0x40,0x00,0x00,0x10,0xa2,
                  0x09,0x1b,0x07,0x4f,0x70,0x65,0x6e,0x56,0x41,0x53,0xa5,0x11,0x18,0x0f,0x32,0x30,

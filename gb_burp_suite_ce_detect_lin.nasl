@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_burp_suite_ce_detect_lin.nasl 10371 2018-06-29 13:27:39Z santu $
+# $Id: gb_burp_suite_ce_detect_lin.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # Burp Suite Community Edition Version Detection (Linux)
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813613");
-  script_version("$Revision: 10371 $");
+  script_version("$Revision: 10896 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-29 15:27:39 +0200 (Fri, 29 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-25 12:43:58 +0530 (Mon, 25 Jun 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Burp Suite Community Edition Version Detection (Linux)");
 
-  script_tag(name : "summary" , value:"Detection of installed version of 
+  script_tag(name:"summary", value:"Detects the installed version of
   Burp Suite Community Edition.
 
   The script logs in via ssh, searches for executable 'BurpSuiteCommunity' and queries

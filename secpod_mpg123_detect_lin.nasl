@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mpg123_detect_lin.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: secpod_mpg123_detect_lin.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # mpg123 Player Version Detection (Linux)
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script detects the installed version of mpg123 Player
-  and sets the reuslt in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900543");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 10906 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-28 07:58:48 +0200 (Tue, 28 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("mpg123 Player Version Detection (Linux)");
@@ -44,7 +41,8 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script detects the installed version of mpg123 Player
+  and sets the reuslt in KB.");
   exit(0);
 }
 
@@ -53,8 +51,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900543";
 SCRIPT_DESC = "mpg123 Player Version Detection (Linux)";
 
 sock = ssh_login_or_reuse_connection();
@@ -76,11 +72,10 @@ foreach binName (paths)
     log_message(data:"mpg123 Player version " + mpgVer[0] +
               " running at location " + binName + " was detected on the host");
     ssh_close_connection();
-   
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe(value:mpgVer[0], exp:"^([0-9.]+)", base:"cpe:/a:mpg123:mpg123:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
     exit(0);
   }

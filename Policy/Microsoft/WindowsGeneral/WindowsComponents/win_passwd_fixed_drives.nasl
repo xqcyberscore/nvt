@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_passwd_fixed_drives.nasl 10319 2018-06-25 14:34:14Z emoss $
+# $Id: win_passwd_fixed_drives.nasl 10893 2018-08-10 13:07:24Z emoss $
 #
 # Check value for Configure use of passwords for fixed data drives
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109383");
-  script_version("$Revision: 10319 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:34:14 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 10893 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:07:24 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-25 16:02:06 +0200 (Mon, 25 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,12 +38,13 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+	script_add_preference(name:"Value", type:"radio", value:"0;1");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'Configure use of passwords for fixed data drives' on Windows hosts (at least 
+  script_tag(name:"summary", value:"This test checks the setting for policy
+'Configure use of passwords for fixed data drives' on Windows hosts (at least
 Windows 7).
 
-The policy setting controls whether a password is required to unlock 
+The policy setting controls whether a password is required to unlock
 BitLocker-protected fixed data drives.");
   exit(0);
 }
@@ -59,7 +60,7 @@ to query the registry.');
 
 if(get_kb_item("SMB/WindowsVersion") < "6.1"){
   policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
-Older versions of Microsoft Windows are not supported any more. 
+Older versions of Microsoft Windows are not supported any more.
 Please update the system.');
   exit(0);
 }
@@ -73,13 +74,24 @@ key = 'Software\\Policies\\Microsoft\\FVE';
 item = 'FDVPassphrase';
 
 value = registry_get_dword(key:key, item:item, type:type);
+default = script_get_preference('Value');
+
 if(!value){
-  value = 'none';
+  value = '1';
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+if(int(value) == int(default)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

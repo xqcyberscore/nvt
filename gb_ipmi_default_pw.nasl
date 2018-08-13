@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_default_pw.nasl 9335 2018-04-05 13:50:33Z cfischer $
+# $Id: gb_ipmi_default_pw.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
-# IPMI Default Password Vulnerability 
+# IPMI Default Password Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -28,31 +28,31 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105923");
-  script_version("$Revision: 9335 $");
+  script_version("$Revision: 10898 $");
   script_tag(name:"cvss_base", value:"8.5");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:P/I:C/A:N");
-  script_tag(name : "last_modification", value : "$Date: 2018-04-05 15:50:33 +0200 (Thu, 05 Apr 2018) $");
-  script_tag(name : "creation_date", value : "2014-10-29 11:12:02 +0700 (Wed, 29 Oct 2014)"); 
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-10-29 11:12:02 +0700 (Wed, 29 Oct 2014)");
   script_name("IPMI Default Password Vulnerability");
 
-  script_tag(name : "summary", value : "It was possible to find default password/username
+  script_tag(name:"summary", value:"It was possible to find default password/username
 combinations for the IPMI protocol.");
 
-  script_tag(name : "vuldetect", value : "Tries to get a RAKP Message 2 (IPMI v2.0) to check the password hash
+  script_tag(name:"vuldetect", value:"Tries to get a RAKP Message 2 (IPMI v2.0) to check the password hash
 or activate a session (IPMI v1.5).");
 
-  script_tag(name : "insight", value : "Many IPMI enabled devices have set default username/password
+  script_tag(name:"insight", value:"Many IPMI enabled devices have set default username/password
 combinations. If these are not changed or disabled if opens up an easy exploitable vulnerability.");
 
-  script_tag(name : "impact", value : "An attacker can log into the IPMI enabled device often with
+  script_tag(name:"impact", value:"An attacker can log into the IPMI enabled device often with
 privileged permissions and gain access to the host operating system.
 
 Impact Level: System");
 
-  script_tag(name : "solution", value : "Change the default passwords or disable the default accounts
+  script_tag(name:"solution", value:"Change the default passwords or disable the default accounts
 if possible. Filter traffic to UDP port 623.");
 
-  script_xref(name : "URL", value : "http://packetstormsecurity.com/files/105730/Supermicro-IPMI-Default-Accounts.html");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/105730/Supermicro-IPMI-Default-Accounts.html");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -142,7 +142,7 @@ if (get_kb_item("ipmi/version/2.0")) {
     if (!recv || hexstr(recv) !~ "0600ff070611") {
       exit(0);                          # Not the right response, so exit
     }
-    if (hexstr(recv[17]) == "01") {     # Try to handle "Insufficient Resources" 
+    if (hexstr(recv[17]) == "01") {     # Try to handle "Insufficient Resources"
       sleep(3);
       continue;
     }
@@ -178,7 +178,7 @@ if (get_kb_item("ipmi/version/2.0")) {
       continue;
     }
     else {
-      # Get the HMAC hash
+      # HMAC hash
       sha1_hash = substr(recv, 56);
       if (hexstr(sha1_hash) == "0000000000000000000000000000000000000000") {
         continue;
@@ -187,7 +187,6 @@ if (get_kb_item("ipmi/version/2.0")) {
       bmc_random_id = substr(recv, 24, 39);
       bmc_guid = substr(recv, 40, 55);
 
-      # Check for default passwords
       foreach password (passwords) {
         salt = create_rakp_salt(sid:sessionid, bmcsid: bmc_session_id, randid: console_random_id,
                                 bmcrandid: bmc_random_id, bmcguid: bmc_guid, username: username);
@@ -206,7 +205,7 @@ if (get_kb_item("ipmi/version/2.0")) {
 }
 # IPMI v1.5
 else {
-  # Get Channel Capabilities 
+  # Channel Capabilities
   getChannelAuthCap = raw_string(0x06, 0x00, 0xff, 0x07,        # RMCP
                                  0x00,                          # Auth Type = NONE
                                  0x00, 0x00, 0x00, 0x00,        # Session Seq Number
@@ -244,7 +243,7 @@ else {
   }
 
   foreach username (usernames) {
-    # Get Session Challenge
+    # Session Challenge
     paddedUsername = username;
     while (strlen(paddedUsername) < 16) {
       paddedUsername = paddedUsername + raw_string(0x00);
@@ -277,7 +276,7 @@ else {
 
       sessionID = substr(recv, 21, 24);
       challenge = substr(recv, 25, 40);
-      sequenceNum = raw_string(0x00, 0x00, 0x00, 0x00); 
+      sequenceNum = raw_string(0x00, 0x00, 0x00, 0x00);
 
       # Activate Session
       paddedPassword = password;
@@ -290,7 +289,7 @@ else {
                         0xaa, 0x9b, 0x59, 0x3a, chksum);
       authCode = createHash(alg: authAlg, password: paddedPassword, sessionid: sessionID,
                             data: data, seqnr: sequenceNum);
-      
+
       activateSession = raw_string(0x06, 0x00, 0xff, 0x07,      # RMCP
                                    authType,                    # Auth Type
                                    0x00, 0x00, 0x00, 0x00,      # Session Seq Number
@@ -328,7 +327,7 @@ else {
         break;
       }
     }
-  } 
+  }
 }
 
 close(soc);

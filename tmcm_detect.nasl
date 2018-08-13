@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: tmcm_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: tmcm_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Trend Micro TMCM console management detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18178");
-  script_version("$Revision: 9580 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+  script_version("$Revision: 10908 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,10 +42,10 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"solution", value:"Filter incoming traffic to this port");
-  script_tag(name:"summary", value:"The remote host appears to run Trend Micro Control Manager, connections 
+  script_tag(name:"summary", value:"The remote host appears to run Trend Micro Control Manager, connections
   are allowed to the web console management.
 
-  Letting attackers know that you are using this software will help them to 
+  Letting attackers know that you are using this software will help them to
   focus their attack or will make them change their strategy.");
 
   script_tag(name:"qod_type", value:"remote_banner");

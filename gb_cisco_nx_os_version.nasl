@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_version.nasl 5709 2017-03-24 08:56:58Z cfi $
+# $Id: gb_cisco_nx_os_version.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Report Cisco NX-OS Software Version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105690");
-  script_version("$Revision: 5709 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-05-12 12:21:43 +0200 (Thu, 12 May 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -71,7 +71,7 @@ if( model = get_kb_item( "cisco/nx_os/" + source + "/model" )  )
   set_kb_item( name:'cisco_nx_os/model', value:model );
 }
 
-if( device = get_kb_item( "cisco/nx_os/" + source + "/device")  ) 
+if( device = get_kb_item( "cisco/nx_os/" + source + "/device")  )
 {
   set_kb_item( name:'cisco_nx_os/device', value:device );
 }
@@ -79,8 +79,8 @@ if( device = get_kb_item( "cisco/nx_os/" + source + "/device")  )
 register_product( cpe:cpe, location:source );
 register_and_report_os( os:"Cisco NX OS", cpe:cpe, banner_type:toupper( source ), desc:"Report Cisco NX-OS Software Version", runs_key:"unixoide" );
 
-report = 'Detected Cisco NX-OS\n' + 
-         'Version: ' + version + '\n' + 
+report = 'Detected Cisco NX-OS\n' +
+         'Version: ' + version + '\n' +
          'CPE:     ' + cpe + '\n';
 
 if( model ) report += 'Model:   ' + model + '\n';

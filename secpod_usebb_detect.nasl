@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_usebb_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: secpod_usebb_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # UseBB Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901056");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5499 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-11-26 06:39:46 +0100 (Thu, 26 Nov 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("UseBB Version Detection");
@@ -80,12 +80,10 @@ foreach dir( make_list_unique( "/", "/UseBB", "/usebb", "/forum", cgi_dirs( port
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/"+ port + "/UseBB", value:tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+)\.([0-9a-zA-Z.]+)", base:"cpe:/a:usebb:usebb:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:usebb:usebb';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"UseBB",

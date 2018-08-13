@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siemens_ruggedcom_consolidation.nasl 9424 2018-04-10 11:34:04Z cfischer $
+# $Id: gb_siemens_ruggedcom_consolidation.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Siemens RUGGEDCOM Detection Consolidation
 #
@@ -28,19 +28,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140811");
-  script_version("$Revision: 9424 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-10 13:34:04 +0200 (Tue, 10 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-26 14:49:15 +0700 (Mon, 26 Feb 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-26 14:49:15 +0700 (Mon, 26 Feb 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Siemens RUGGEDCOM Detection Consolidation");
 
-  script_tag(name: "summary" , value: "The script reports a detected Siemens RUGGEDCOM device including the
+  script_tag(name:"summary", value:"The script reports a detected Siemens RUGGEDCOM device including the
 version number and exposed services.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -48,7 +48,7 @@ version number and exposed services.");
   script_dependencies("gb_siemens_ruggedcom_snmp_detect.nasl", "gb_siemens_ruggedcom_telnet_detect.nasl");
   script_mandatory_keys("siemens_ruggedcom/detected");
 
-  script_xref(name: "URL", value: "http://w3.siemens.com/mcms/industrial-communication/en/rugged-communication/pages/ruggedcom.aspx");
+  script_xref(name:"URL", value:"http://w3.siemens.com/mcms/industrial-communication/en/rugged-communication/pages/ruggedcom.aspx");
 
   exit(0);
 }

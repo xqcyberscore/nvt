@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seagate_nas_detect.nasl 10205 2018-06-15 04:59:05Z ckuersteiner $
+# $Id: gb_seagate_nas_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Seagate NAS Device Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141184");
-  script_version("$Revision: 10205 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-15 06:59:05 +0200 (Fri, 15 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2018-06-15 09:53:35 +0700 (Fri, 15 Jun 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10894 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-06-15 09:53:35 +0700 (Fri, 15 Jun 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Seagate NAS Device Detection");
 
-  script_tag(name: "summary" , value: "Detection of Seagate NAS devices.
+  script_tag(name:"summary", value:"Detection of Seagate NAS devices.
 
 The script sends a connection request to the server and attempts to detect Seagate NAS devices and to extract
 its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ its version.");
   script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.seagate.com/");
+  script_xref(name:"URL", value:"https://www.seagate.com/");
 
   exit(0);
 }

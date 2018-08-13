@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_technicolor_tc7200_snmp_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_technicolor_tc7200_snmp_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # Technicolor TC7200 Modem/Router Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811655");
-  script_version("$Revision: 7236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 10901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-09-08 12:12:54 +0530 (Fri, 08 Sep 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -57,13 +57,11 @@ port    = get_snmp_port(default:161);
 sysdesc = get_snmp_sysdesc(port:port);
 if(!sysdesc) exit(0);
 
-# Check for Technicolor
 if("VENDOR: Technicolor" >< sysdesc && "TC7200" >< sysdesc)
 {
   model = "unknown";
   version = "unknown";
 
-  # Check for Technicolor
   mod = eregmatch(pattern:"MODEL: ([0-9A-Z]+).", string:sysdesc);
   if(!isnull(mod[1])){
     model = mod[1];

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: support_incident_tracker_detect.nasl 5943 2017-04-12 14:44:26Z antu123 $
+# $Id: support_incident_tracker_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # SiT! Support Incident Tracker Detection
 #
@@ -34,8 +34,8 @@ if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100466");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5943 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-12 16:44:26 +0200 (Wed, 12 Apr 2017) $");
+ script_version("$Revision: 10901 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2010-01-26 20:04:43 +0100 (Tue, 26 Jan 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("SiT! Support Incident Tracker Detection");
@@ -46,10 +46,10 @@ if(description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : "This host is running SiT! Support Incident Tracker, a web based
+ script_tag(name:"summary", value:"This host is running SiT! Support Incident Tracker, a web based
  application which uses PHP and MySQL for tracking technical support
  calls/emails.");
- script_xref(name : "URL" , value : "http://sitracker.org/wiki/Main_Page");
+ script_xref(name:"URL", value:"http://sitracker.org/wiki/Main_Page");
  exit(0);
 }
 
@@ -73,7 +73,6 @@ foreach dir( make_list_unique( "/tracker", "/support", "/sit", cgi_dirs( port:po
     "SiT! - Login" >< buf )
  {
     vers = string("unknown");
-    ### try to get version 
     version = eregmatch(string: buf, pattern: "Support Incident Tracker v(([0-9.]+).?([a-zA-Z0-9]+))",icase:TRUE);
     if (!isnull(version[1])){
       vers = ereg_replace(pattern:" |-", string:version[1], replace:".");
@@ -92,7 +91,6 @@ foreach dir( make_list_unique( "/tracker", "/support", "/sit", cgi_dirs( port:po
     set_kb_item(name:"www/" + port + "/support_incident_tracker", value:tmp_version);
     set_kb_item(name:"sit/installed",value:TRUE);
 
-    ## build cpe and store it as host detail
     register_and_report_cpe(app:"SiT! Support Incident Tracker", ver:tmp_version, base:"cpe:/a:sitracker:support_incident_tracker:",
                             expr:"^([0-9.]+)", insloc:install);
     exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_freesshd_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: secpod_freesshd_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # freeSSHd Version Detection
 #
@@ -30,27 +30,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900959");
-  script_version("$Revision: 5877 $");
+  script_version("$Revision: 10894 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-10-01 12:15:29 +0200 (Thu, 01 Oct 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("freeSSHd Version Detection");
 
-  tag_summary =
-"Detection of installed version of freeSSHd on Windows.
+
+  script_tag(name:"summary", value:"Detects the installed version of freeSSHd on Windows.
 
 The script logs in via smb, searches for freeSSHd in the registry
-and extract version from the name.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+and extract version from the name.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -62,23 +59,16 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-sshdName = "";
-sshdVer = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(0);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
 ## Presently freeSSHd 64bit application is not available
-## Check for 32 bit App on 64 bit platform
 else if("x64" >< os_arch){
   key =  "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
@@ -104,7 +94,6 @@ foreach item (registry_enum_keys(key:key))
 
       set_kb_item(name:"freeSSHd/Ver", value:sshdVer[1]);
 
-      ## build cpe
       cpe = build_cpe(value:sshdVer[1], exp:"^([0-9.]+)", base:"cpe:/a:freesshd:freesshd:");
       if(isnull(cpe))
         cpe = "cpe:/a:freesshd:freesshd";

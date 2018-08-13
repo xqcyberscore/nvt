@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_sametime_detect.nasl 8929 2018-02-23 05:05:21Z ckuersteiner $
+# $Id: gb_ibm_sametime_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # IBM Sametime Detection
 #
@@ -28,20 +28,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140798");
-  script_version("$Revision: 8929 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-23 06:05:21 +0100 (Fri, 23 Feb 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-23 09:32:05 +0700 (Fri, 23 Feb 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-23 09:32:05 +0700 (Fri, 23 Feb 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("IBM Sametime Detection");
 
-  script_tag(name: "summary" , value: "Detection of IBM Sametime.
+  script_tag(name:"summary", value:"Detection of IBM Sametime.
 
 The script sends a connection request to the server and attempts to detect IBM Sametime.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -50,7 +50,7 @@ The script sends a connection request to the server and attempts to detect IBM S
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.ibm.com/us-en/marketplace/sametime");
+  script_xref(name:"URL", value:"https://www.ibm.com/us-en/marketplace/sametime");
 
   exit(0);
 }

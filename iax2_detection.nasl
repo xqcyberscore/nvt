@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: iax2_detection.nasl 10036 2018-05-31 10:17:24Z ckuersteiner $
+# $Id: iax2_detection.nasl 10899 2018-08-10 13:49:35Z cfischer $
 # Description: Inter-Asterisk eXchange Protocol Detection
 #
 # Authors:
@@ -25,8 +25,8 @@
 if (description) {
  script_oid("1.3.6.1.4.1.25623.1.0.20834");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 10036 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-31 12:17:24 +0200 (Thu, 31 May 2018) $");
+ script_version("$Revision: 10899 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -38,10 +38,10 @@ if (description) {
  script_copyright("This script is Copyright (C) 2006 Ferdy Riphagen");
  script_require_udp_ports(4569);
 
- script_tag(name: "solution", value: "If possible, filter incoming connections to the port so that it is used by
+ script_tag(name:"solution", value:"If possible, filter incoming connections to the port so that it is used by
 trusted sources only.");
 
- script_tag(name: "summary", value: "The remote system is running a server that speaks the Inter-Asterisk eXchange
+ script_tag(name:"summary", value:"The remote system is running a server that speaks the Inter-Asterisk eXchange
 Protocol.
 
 Description :
@@ -49,7 +49,7 @@ Description :
 The Inter-Asterisk eXchange protocol (IAX2) is used by the Asterisk PBX Server and other IP Telephony
 clients/servers to enable voice communication between them.");
 
- script_xref(name: "URL", value: "http://en.wikipedia.org/wiki/IAX");
+ script_xref(name:"URL", value:"http://en.wikipedia.org/wiki/IAX");
 
  exit(0);
 }

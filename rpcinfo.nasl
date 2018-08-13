@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rpcinfo.nasl 4827 2016-12-21 10:31:05Z cfi $
+# $Id: rpcinfo.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Obtain list of all port mapper registered programs via RPC
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11111");
-  script_version("$Revision: 4827 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-21 11:31:05 +0100 (Wed, 21 Dec 2016) $");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -148,12 +148,12 @@ xid2 = rand() % 256;
 xid3 = rand() % 256;
 xid4 = rand() % 256;
 
-pack = 
+pack =
 raw_string(	0x80, 0, 0, 0x28,	# Last fragment; fragment length = 40
 		xid1, xid2, xid3, xid4,	# XID
 		0, 0, 0, 0,		# Call
 		0, 0, 0, 2,		# RPC version = 2
-		0, 1, 0x86, 0xA0,	# Programm = portmapper (10000)
+		0, 1, 0x86, 0xA0,	# Program = portmapper (10000)
 		0, 0, 0, 2,		# Program version = 2
 		0, 0, 0, 4,		# Procedure = 4
 		0, 0, 0, 0, 0, 0, 0, 0,	# Null credential
@@ -270,10 +270,10 @@ while (vf)
   {
     req = string("^[a-zA-Z0-9_-]+[ \t]+", program);
     str = egrep(string:rpc_names, pattern: req);
-    name = ereg_replace(string: str, 
+    name = ereg_replace(string: str,
 		pattern: string("^([a-zA-Z0-9_-]+)[ \t]+.*"),
 		replace: "\1");
-    alias =  ereg_replace(string: str, 
+    alias =  ereg_replace(string: str,
 		pattern: string("^[a-zA-Z0-9_-]+[ \t]+[0-9]+[ \t]*(.*)[\r\n]+"),
 		replace: "\1");
     #if (! name) name="";
@@ -296,7 +296,7 @@ while (vf)
        else      register_service(port: port, proto: string("RPC/", program));
       }
     }
-    if (proto == 17) report_udp[port] += m + '/UDP\n\n'; 
+    if (proto == 17) report_udp[port] += m + '/UDP\n\n';
     i=i+1;
   }
 }
@@ -308,12 +308,12 @@ while (vf)
 result = "These are the registered RPC programs:\n\n";
 
 foreach port (keys(report_tcp))
-{ 
+{
   if (port > 0 && port <= 65535) result += report_tcp[port];
 }
 
 foreach port (keys(report_udp))
-{ 
+{
   if (port > 0 && port <= 65535) result += report_udp[port];
 }
 

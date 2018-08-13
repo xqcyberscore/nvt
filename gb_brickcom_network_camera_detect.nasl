@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brickcom_network_camera_detect.nasl 10747 2018-08-03 07:42:21Z asteins $
+# $Id: gb_brickcom_network_camera_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # Brickcom Network Camera Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112339");
-  script_version("$Revision: 10747 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 09:42:21 +0200 (Fri, 03 Aug 2018) $");
+  script_version("$Revision: 10906 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-26 16:22:11 +0200 (Thu, 26 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,7 +56,7 @@ if(description)
 include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
-include("http_keepalive.inc");
+
 
 CPE = "cpe:/h:brickcom:network_camera:";
 app = "Brickcom Network Camera";

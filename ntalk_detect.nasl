@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: ntalk_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: ntalk_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 # Description: Detect talkd server port and protocol version
 #
 # Authors:
@@ -29,8 +29,8 @@
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.10168");
- script_version("$Revision: 9633 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+ script_version("$Revision: 10915 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -46,14 +46,14 @@ if(description)
 
  script_require_udp_ports(518);
 
- script_tag(name : "solution" , value : "Disable talkd access from the network by adding the approriate rule on your
+ script_tag(name:"solution", value:"Disable talkd access from the network by adding the appropriate rule on your
  firewall. If you do not need talkd, comment out the relevant line in
  /etc/inetd.conf and restart the inetd process.");
- script_tag(name : "summary" , value : "The remote host is running a 'talkd' daemon.
+ script_tag(name:"summary", value:"The remote host is running a 'talkd' daemon.
 
 talkd is the server that notifies a user that someone else wants to initiate
 a conversation with him.");
- script_xref(name : "URL" , value : "http://www.cert.org/advisories/CA-1997-04.html");
+ script_xref(name:"URL", value:"http://www.cert.org/advisories/CA-1997-04.html");
  exit(0);
 }
 
@@ -79,7 +79,7 @@ include("misc_func.inc");
  a4 = ereg_replace(pattern:"[0-9]*\.[0-9]*\.[0-9]*\.([0-9]*)",
                   string:srcaddr,
                   replace:"\1"); a4 = a4 % 255;
-		
+
  dstaddr = get_host_ip();
 
  b1 = ereg_replace(pattern:"([0-9]*)\.[0-9]*\.[0-9]*\.[0-9]*",
@@ -99,8 +99,8 @@ include("misc_func.inc");
  b4 = ereg_replace(pattern:"[0-9]*\.[0-9]*\.[0-9]*\.([0-9]*)",
                   string:dstaddr,
                   replace:"\1"); b4 = b4 % 255;
-		
-		
+
+
  sendata = raw_string(
  0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x00, 0x00, 0x02, 0x00, 0x00, a1,   a2,

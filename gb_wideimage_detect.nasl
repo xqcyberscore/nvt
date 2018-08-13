@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wideimage_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_wideimage_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # WideImage Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805693");
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 10915 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-08-03 12:36:53 +0530 (Mon, 03 Aug 2015)");
   script_name("WideImage Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   WideImage.
 
   This script sends HTTP GET request and try to get the version from the
@@ -57,30 +57,25 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Get http port
 port = get_http_port( default:80 );
 
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-##Iterate over possible paths
 foreach dir( make_list_unique( "/", "/WideImage-master", "/wideimage", cgi_dirs( port:port ) ) ) {
 
   install = dir;
   if( dir == "/" ) dir = "";
 
-  ##Check for different pages
   foreach url( make_list( "/index.php", "/doc/index.html", "/composer.json" ) ) {
 
     path = dir + url;
 
     rcvRes = http_get_cache( item:path, port:port );
 
-    #Confirm application
     if( rcvRes =~ "HTTP/1.. 200" && ( "<title>WideImage" >< rcvRes || rcvRes =~ "homepage.*wideimage" ) ) {
 
       installed = TRUE;
 
-      ## Grep for version
       version = eregmatch( pattern:"(WideImage.v|((V|v)ersion.:..))([0-9.]+)", string:rcvRes );
       if( version[4] ) {
         wideVersion = version[4];
@@ -95,11 +90,9 @@ foreach dir( make_list_unique( "/", "/WideImage-master", "/wideimage", cgi_dirs(
     ##If version information not available set to unknown
     if( ! wideVersion ) wideVersion = "Unknown";
 
-    ## Set the KB
     set_kb_item( name:"www/" + port + "/WideImage", value:wideVersion );
     set_kb_item( name:"WideImage/installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:wideVersion, exp:"^([0-9.]+)", base:"cpe:/a:wideimage:wideimage:" );
     if( isnull( cpe ) )
       cpe = "cpe:/a:wideimage:wideimage";

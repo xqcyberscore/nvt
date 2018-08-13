@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011580.nasl 8378 2018-01-11 14:38:57Z gveerendra $
+# $Id: gb_ms_kb4011580.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Office 2013 Service Pack 1 Remote Code Execution Vulnerabilities (KB4011580)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812618");
-  script_version("$Revision: 8378 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-0798", "CVE-2018-0801", "CVE-2018-0802", "CVE-2018-0812");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 15:38:57 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 11:52:29 +0530 (Wed, 10 Jan 2018)");
   script_name("Microsoft Office 2013 Service Pack 1 Remote Code Execution Vulnerabilities (KB4011580)");
 
@@ -58,7 +58,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4011580");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4011580");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -74,19 +74,12 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## variable Initialization
-commonpath = "";
-officeVer = "";
-offPath = "";
-offexeVer = "";
-
 ## MS Office Version
 officeVer = get_kb_item("MS/Office/Ver");
 if(!officeVer){
   exit(0);
 }
 
-## Get Common File Path
 commonpath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                             item:"CommonFilesDir");
 if(!commonpath){
@@ -102,7 +95,6 @@ if(officeVer =~ "^(15\.)")
     exit(0);
   } else
   {
-    ##Check presence of file
     report = report_fixed_ver( file_checked:offPath + "\eqnedt32.exe",
                                file_version:msdllVer, vulnerable_range:"File 'eqnedt32.exe' present");
     security_message(data:report);

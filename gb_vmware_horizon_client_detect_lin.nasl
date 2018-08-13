@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_horizon_client_detect_lin.nasl 10182 2018-06-14 07:00:55Z santu $
+# $Id: gb_vmware_horizon_client_detect_lin.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # VMware Horizon Client Version Detection (Linux)
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813388");
-  script_version("$Revision: 10182 $");
+  script_version("$Revision: 10890 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-14 09:00:55 +0200 (Thu, 14 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-05 11:48:39 +0530 (Tue, 05 Jun 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("VMware Horizon Client Version Detection (Linux)");
 
-  script_tag(name : "summary" , value:"Detection of installed version of 
+  script_tag(name:"summary", value:"Detects the installed version of
   VMware Horizon Client.
 
   The script logs in via ssh, searches for executable 'vmware-view' and queries
@@ -64,7 +64,7 @@ foreach bin (paths)
   vmVer = get_bin_version(full_prog_name:chomp(bin), sock:vm_sock, version_argv:"--version",
                            ver_pattern:"VMware Horizon Client ([0-9.]+)");
 
-  if(vmVer[1]) 
+  if(vmVer[1])
   {
     set_kb_item(name:"VMware/HorizonClient/Linux/Ver", value:vmVer[1]);
 

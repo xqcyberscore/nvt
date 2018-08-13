@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-firebird.nasl 8645 2018-02-02 15:53:17Z cfischer $
+# $Id: remote-detect-firebird.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # This script ensure that a Firebird/InterBase database server is installed and running
 #
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80004");
-  script_version("$Revision: 8645 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-02 16:53:17 +0100 (Fri, 02 Feb 2018) $");
+  script_version("$Revision: 10922 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-09-09 16:54:39 +0200 (Tue, 09 Sep 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -37,10 +37,10 @@ if(description)
   script_dependencies("find_service.nasl", "find_service6.nasl");
   script_require_ports("Services/unknown", 3050);
 
-  script_tag(name:"summary", value:"The remote host is running the Firebird/InterBase database Server. 
-  Firebird is a RDBMS offering many ANSI SQL:2003 features. 
+  script_tag(name:"summary", value:"The remote host is running the Firebird/InterBase database Server.
+  Firebird is a RDBMS offering many ANSI SQL:2003 features.
 
-  It runs on Linux, Windows, and a variety of Unix platforms 
+  It runs on Linux, Windows, and a variety of Unix platforms
   and Started as a fork of Borland's open source release of InterBase");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -79,7 +79,7 @@ function check_firebird_response( res ) {
 
 port = get_unknown_port( default:3050 );
 
-# forge the firebird negotiation protocol for < 2.5 
+# forge the firebird negotiation protocol for < 2.5
 # This was initially used in this NVT in 2008 so keep in here for now
 firebird_auth_packet1 = raw_string(
 0x00,0x00,0x00,0x01,0x00,0x00,0x00,0x13,0x00,0x00,0x00,0x02,0x00,

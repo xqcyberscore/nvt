@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_rv13x_detect.nasl 8765 2018-02-12 10:44:36Z ckuersteiner $
+# $Id: gb_cisco_rv13x_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Cisco Small Business RV13x Series Router Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140762");
-  script_version("$Revision: 8765 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-02-12 11:44:36 +0100 (Mon, 12 Feb 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-12 11:15:29 +0700 (Mon, 12 Feb 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-12 11:15:29 +0700 (Mon, 12 Feb 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Cisco Small Business RV13x Series Router Detection");
 
-  script_tag(name: "summary" , value: "Detection of Cisco Small Business RV13x Series Router.
+  script_tag(name:"summary", value:"Detection of Cisco Small Business RV13x Series Router.
 
 The script sends a connection request to the server and attempts to detect Cisco Small Business RV13x Series
 Router.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ Router.");
   script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.cisco.com/c/en/us/products/routers/small-business-rv-series-routers/index.html");
+  script_xref(name:"URL", value:"https://www.cisco.com/c/en/us/products/routers/small-business-rv-series-routers/index.html");
 
   exit(0);
 }
@@ -74,7 +74,7 @@ if ('router.appname="RV13' >< res && "router.ciscosb" >< res) {
   model = mod[1];
 
   cpe = 'cpe:/a:cisco:' + tolower(model);
-  
+
   set_kb_item(name: "cisco_rv13x/detected", value: TRUE);
 
   register_product(cpe: cpe, location: "/", port: port);

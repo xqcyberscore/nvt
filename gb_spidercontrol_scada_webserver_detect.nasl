@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_spidercontrol_scada_webserver_detect.nasl 9398 2018-04-09 06:17:02Z cfischer $
+# $Id: gb_spidercontrol_scada_webserver_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # SpiderControl SCADA Web Server Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140323");
-  script_version("$Revision: 9398 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-09 08:17:02 +0200 (Mon, 09 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-08-24 16:22:38 +0700 (Thu, 24 Aug 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10894 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-24 16:22:38 +0700 (Thu, 24 Aug 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("SpiderControl SCADA Web Server Detection");
 
-  script_tag(name: "summary" , value: "Detection of SpiderControl SCADA Web Server.
+  script_tag(name:"summary", value:"Detection of SpiderControl SCADA Web Server.
 
 The script sends a connection request to the server and attempts to detect SpiderControl SCADA Web Server and to
 extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ extract its version.");
   script_require_ports("Services/www", 80, 81);
   script_mandatory_keys("spidercontrol-scada/banner");
 
-  script_xref(name: "URL", value: "http://spidercontrol.net/products-solutions/scada/");
+  script_xref(name:"URL", value:"http://spidercontrol.net/products-solutions/scada/");
 
   exit(0);
 }
@@ -59,7 +59,7 @@ extract its version.");
 include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
-include("http_keepalive.inc");
+
 
 port = get_http_port(default: 80);
 

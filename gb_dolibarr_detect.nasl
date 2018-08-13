@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_detect.nasl 9949 2018-05-24 12:33:20Z jschulte $
+# $Id: gb_dolibarr_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # Dolibarr Detection
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103143");
-  script_version("$Revision: 9949 $");
+  script_version("$Revision: 10890 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-24 14:33:20 +0200 (Thu, 24 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-04-29 15:04:36 +0200 (Fri, 29 Apr 2011)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Dolibarr Detection");
 
-  script_tag(name:"summary", value:"Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Dolibarr, an opensource ERP/CRM Software.
 
   This script sends HTTP GET request and try to get the version from the
@@ -47,7 +47,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_xref(name : "URL" , value : "http://www.dolibarr.org/");
+  script_xref(name:"URL", value:"http://www.dolibarr.org/");
   exit(0);
 }
 

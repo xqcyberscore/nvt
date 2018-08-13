@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrumworkspro_detect.nasl 9153 2018-03-21 09:31:39Z asteins $
+# $Id: gb_scrumworkspro_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Scrumworks Pro Detection
 #
@@ -28,17 +28,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107246");
-  script_version("$Revision: 9153 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-21 10:31:39 +0100 (Wed, 21 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2017-09-25 16:22:38 +0700 (Mon, 25 Sep 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10902 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-09-25 16:22:38 +0700 (Mon, 25 Sep 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Scrumworks Pro Detection");
 
-  script_tag(name: "summary" , value: "Detection of ScrumWorks Pro.
+  script_tag(name:"summary", value:"Detection of ScrumWorks Pro.
 
 The script sends a connection request to the server and attempts to detect Scrumworks Pro and to extract its version.");
 
@@ -51,7 +51,7 @@ The script sends a connection request to the server and attempts to detect Scrum
   script_require_ports("Services/www", 8080, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.collab.net/products/scrumworks");
+  script_xref(name:"URL", value:"https://www.collab.net/products/scrumworks");
 
   exit(0);
 }

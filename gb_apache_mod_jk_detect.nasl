@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_jk_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
+# $Id: gb_apache_mod_jk_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Apache mod_jk Module Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800279");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9996 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-17 09:00:01 +0200 (Fri, 17 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache mod_jk Module Version Detection");
@@ -40,7 +40,7 @@ if(description)
   script_dependencies("gb_get_http_banner.nasl");
   script_mandatory_keys("mod_jk/banner");
   script_require_ports("Services/www", 80);
-  script_tag(name : "summary" , value : "This script detects the installed version of Apache mod_jk Module
+  script_tag(name:"summary", value:"This script detects the installed version of Apache mod_jk Module
   and saves the result in KB.");
   exit(0);
 }

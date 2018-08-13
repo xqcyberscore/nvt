@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_uniform_server_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_uniform_server_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Uniform Server Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800786");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_version("$Revision: 10891 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-06-04 09:43:24 +0200 (Fri, 04 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Uniform Server Version Detection");
@@ -59,25 +59,20 @@ uniPort = get_http_port(default:80);
 ## Send and receive response
 rcvRes = http_get_cache(item:"/", port:uniPort);
 
-## Confirm the application
 if( ">Uniform Server" >< rcvRes ) {
 
   version = "unknown";
   install = "/";
 
-  ## Grep for the version
   ver = eregmatch( pattern:"Uniform Server (([0-9.]+).?([a-zA-Z]+))", string:rcvRes );
   if( ver[1] != NULL ) version = ver[1];
 
-  ## Set the KB value
   set_kb_item( name:"www/" + uniPort + "/Uniform-Server", value:version );
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:uniformserver:uniformserver:" );
   if( isnull( cpe ) )
     cpe = 'cpe:/a:uniformserver:uniformserver';
 
-  ## Register Product and Build Report
   register_product( cpe:cpe, location:install, port:uniPort );
 
   log_message( data:build_detection_report( app:"Uniform Server",

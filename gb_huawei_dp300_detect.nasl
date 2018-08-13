@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_dp300_detect.nasl 10377 2018-07-02 11:31:15Z ckuersteiner $
+# $Id: gb_huawei_dp300_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Huawei DP300 Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141253");
-  script_version("$Revision: 10377 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-07-02 13:31:15 +0200 (Mon, 02 Jul 2018) $");
-  script_tag(name: "creation_date", value: "2018-07-02 09:32:17 +0200 (Mon, 02 Jul 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10908 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-07-02 09:32:17 +0200 (Mon, 02 Jul 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Huawei DP300 Detection");
 
-  script_tag(name: "summary" , value: "Detection of Huawei DP300.
+  script_tag(name:"summary", value:"Detection of Huawei DP300.
 
 The script sends a connection request to the server and attempts to detect Huawei DP300 and to extract its
 version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -50,7 +50,7 @@ version.");
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 5000);
 
-  script_xref(name: "URL", value: "https://e.huawei.com/en/products/cloud-communications/telepresence-video-conferencing/personal-systems/dp300");
+  script_xref(name:"URL", value:"https://e.huawei.com/en/products/cloud-communications/telepresence-video-conferencing/personal-systems/dp300");
 
   exit(0);
 }

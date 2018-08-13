@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_electric_pelco_sarix_ip_cam_detect.nasl 10748 2018-08-03 08:29:18Z mmartin $
+# $Id: gb_schneider_electric_pelco_sarix_ip_cam_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Schneider Electric Pelco Sarix IP Camera Remote Detection
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813064");
-  script_version("$Revision: 10748 $");
+  script_version("$Revision: 10894 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 10:29:18 +0200 (Fri, 03 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-03 14:44:14 +0530 (Tue, 03 Apr 2018)");
   script_name("Schneider Electric Pelco Sarix IP Camera Remote Detection");
 
-  script_tag(name:"summary", value:"Detection of presence of Schneider 
+  script_tag(name:"summary", value:"Detection of presence of Schneider
   Electric Pelco Sarix IP Camera.
 
   The script sends a HTTP GET connection request to the server and attempts
@@ -69,7 +69,7 @@ if("<title>Sarix&trade;</title>" >< res && "Pelco.com" >< res &&
   set_kb_item(name:"Schneider_Electric/Pelco_Sarix/IP_Camera/installed", value:TRUE);
 
   ## Created new cpe
-  ## According to information from NVD, it varies according to firmware version 
+  ## According to information from NVD, it varies according to firmware version
   cpe = "cpe:/a:schneider_electric:pelco_sarix_professional";
 
   register_product(cpe:cpe, location:install, port:ipPort);

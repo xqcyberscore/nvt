@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_openadmin_tool_detect.nasl 7028 2017-08-31 09:47:19Z ckuersteiner $
+# $Id: gb_ibm_openadmin_tool_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # IBM Open Admin Tool Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802158");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7028 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-31 11:47:19 +0200 (Thu, 31 Aug 2017) $");
+  script_version("$Revision: 10908 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-09-14 16:05:49 +0200 (Wed, 14 Sep 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("IBM Open Admin Tool Version Detection");
@@ -62,27 +62,22 @@ if( ! can_host_php( port:port ) ) exit( 0 );
 sndReq = http_get( item:"/openadmin/index.php?act=help&do=aboutOAT", port:port );
 rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
-## Confirm the application
 if( ">OpenAdmin Tool" >< rcvRes || "> OpenAdmin Tool Community Edition <" >< rcvRes ) {
 
   version = "unknown";
   install = "/";
 
-  ## Grep for the version
   ver = eregmatch( pattern:">Version:.*[^\n]", string:rcvRes );
   ver = eregmatch( pattern:"([0-9.]+)", string:ver[0] );
   if( ver[1] != NULL ) version = ver[1];
 
-  ## Set the KB value
   set_kb_item(name: "ibm_openadmin/installed", value: TRUE);
   set_kb_item( name:"www/" + port + "/IBM/Open/Admin/Tool", value:version );
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:ibm:openadmin_tool:" );
   if( isnull( cpe ) )
     cpe = 'cpe:/a:ibm:openadmin_tool';
 
-  ## Register Product and Build Report
   register_product( cpe:cpe, location:install, port:port );
 
   log_message( data:build_detection_report( app:"IBM Open Admin Tool",

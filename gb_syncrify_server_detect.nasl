@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_syncrify_server_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
+# $Id: gb_syncrify_server_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Syncrify Server Remote Version Detection
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805550");
-  script_version("$Revision: 9996 $");
+  script_version("$Revision: 10911 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-05-11 18:53:08 +0530 (Mon, 11 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Syncrify Server Remote Version Detection");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Syncrify Server.
 
   This script sends HTTP GET request and try to get the version from the
@@ -73,7 +73,6 @@ if(rcvRes && rcvRes =~ ">Powered by.*>Syncrify")
     }
 
     ## CPE currently not available, Need to update once available.
-    ## using cpe:/a:syncrify:server: as CPE currently
     cpe = build_cpe(value:serVer, exp:"^([0-9.]+)", base:"cpe:/a:syncrify:server:");
     if(isnull(cpe))
       cpe = "cpe:/a:syncrify:server";

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20160104-iosxr.nasl 5598 2017-03-17 10:00:43Z teissa $
+# $Id: gb_cisco_ios_xr_cisco-sa-20160104-iosxr.nasl 10881 2018-08-10 10:27:02Z mmartin $
 #
-# Cisco IOS XR Software OSPF Link State Advertisement PCE Vulnerability 
+# Cisco IOS XR Software OSPF Link State Advertisement PCE Vulnerability
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -33,7 +33,7 @@ if (description)
  script_cve_id("CVE-2015-6432");
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5598 $");
+ script_version ("$Revision: 10881 $");
  script_tag(name: "qod_type", value:"package");
 
  script_name("Cisco IOS XR Software OSPF Link State Advertisement PCE Vulnerability");
@@ -44,11 +44,11 @@ if (description)
  script_tag(name: "vuldetect" , value:"Check the IOS XR Version");
  script_tag(name: "insight" , value:"The vulnerability is due to the number of OSPF Path Computation Elements (PCEs) that are configured for an OSPF LSA opaque area update. An attacker could exploit this vulnerability by sending a crafted OSPF LSA update to an affected device that is running the vulnerable software and OSPF configuration.");
  script_tag(name: "solution" , value:"Cisco has released software updates that address this vulnerability.");
-
+ script_tag(name:"solution_type", value:"VendorFix");
  script_tag(name: "summary" , value:"A vulnerability in Open Shortest Path First (OSPF) Link State Advertisement (LSA) handling by Cisco IOS XR Software could allow an unauthenticated, remote attacker to cause a denial of service (DoS) condition.");
  script_tag(name: "affected" , value:"Cisco IOS XR Software Releases 4.1.1, 4.2.0, 4.2.3, 4.3.0, 4.3.2, 5.0.0, 5.1.0, 5.2.0, 5.2.2, 5.2.4, 5.3.0, and 5.3.2 are vulnerable.");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-17 11:00:43 +0100 (Fri, 17 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:27:02 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-01-26 15:02:08 +0100 (Tue, 26 Jan 2016)");
  script_category(ACT_GATHER_INFO);
  script_family("CISCO");

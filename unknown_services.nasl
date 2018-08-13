@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: unknown_services.nasl 10600 2018-07-25 08:04:18Z cfischer $
+# $Id: unknown_services.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Collect banner of unknown services
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11154");
-  script_version("$Revision: 10600 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 10:04:18 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -96,7 +96,7 @@ if(description)
                       "vnc_security_types.nasl", "xmpp_detect.nasl",
                       "X.nasl", "xtel_detect.nasl",
                       "xtelw_detect.nasl", "yahoo_msg_running.nasl",
-                      "zabbix_detect.nasl" );
+                      "zabbix_detect.nasl");
   script_require_ports("Services/unknown");
 
   script_tag(name:"summary", value:"This plugin collect the banner from unknown/unidentified services

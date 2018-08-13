@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_jackrabbit_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_apache_jackrabbit_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Apache Jackrabbit Detection
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807896");
-  script_version("$Revision: 5888 $");
+  script_version("$Revision: 10899 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-10-06 14:29:25 +0530 (Thu, 06 Oct 2016)");
   script_name("Apache Jackrabbit Detection");
 
-  script_tag(name:"summary", value:"Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Apache Jackrabbit.
 
-  This script sends HTTP GET request and try to get the version from the 
+  This script sends HTTP GET request and try to get the version from the
   response.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -55,14 +55,6 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-dir = "";
-jackPort = 0;
-rcvRes = "";
-sndReq = "";
-version = "";
-
-##Get HTTP Port
 if(!jackPort = get_http_port(default:80)){
   exit(0);
 }
@@ -74,7 +66,6 @@ dir = "/";
 sndReq = http_get(port: jackPort, item: dir);
 rcvRes = http_keepalive_send_recv(port:jackPort, data:sndReq);
 
-##Confirm Application
 if(">Jackrabbit JCR Server" >< rcvRes && "jackrabbit.apache.org" >< rcvRes)
 {
   url = "/repository/default/";
@@ -82,7 +73,6 @@ if(">Jackrabbit JCR Server" >< rcvRes && "jackrabbit.apache.org" >< rcvRes)
   sndReq = http_get(port:jackPort, item: url);
   rcvRes = http_keepalive_send_recv(port:jackPort, data:sndReq);
 
-  ## Grep for version
   vers = eregmatch(pattern: ">Jackrabbit<.*version ([0-9.]+)<", string: rcvRes);
   if(vers[1]){
     version = vers[1];

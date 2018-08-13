@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: awstats_detect.nasl 8317 2018-01-08 09:24:18Z ckuersteiner $
+# $Id: awstats_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # AWStats Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100376");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8317 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-08 10:24:18 +0100 (Mon, 08 Jan 2018) $");
+ script_version("$Revision: 10911 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2009-12-03 12:57:42 +0100 (Thu, 03 Dec 2009)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -43,10 +43,10 @@ if (description)
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name: "summary", value: "This host is running AWStats, a free powerful and featureful tool that
+ script_tag(name:"summary", value:"This host is running AWStats, a free powerful and featureful tool that
 generates advanced web, streaming, ftp or mail server statistics, graphically.");
 
- script_xref(name: "URL", value: "http://awstats.sourceforge.net/");
+ script_xref(name:"URL", value:"http://awstats.sourceforge.net/");
 
  exit(0);
 }

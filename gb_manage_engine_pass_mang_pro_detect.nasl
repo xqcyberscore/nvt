@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_pass_mang_pro_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_manage_engine_pass_mang_pro_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # ManageEngine Password Manager Version Detection
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805714");
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 10913 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-07-07 15:16:06 +0530 (Tue, 07 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ManageEngine Password Manager Version Detection");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   ManageEngine Password Manager pro.
 
   This script sends HTTP GET request and try to get the version from the
@@ -60,14 +60,12 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-##Get ManageEngine Password Manager Port
 mePort = get_http_port(default:7272);
 
 ##Send Request and Receive Response
 req = http_get(item:"/PassTrixMain.cc", port:mePort);
 res = http_keepalive_send_recv(port:mePort, data:req);
 
-#Confirm application
 if("<title>ManageEngine Password Manager Pro</title>" >< res && "PMP_User_Locale" >< res && "ZOHO Corp" >< res)
 {
   meVer = eregmatch(pattern:"/themes/passtrix/V([0-9]+)", string:res);
@@ -79,11 +77,9 @@ if("<title>ManageEngine Password Manager Pro</title>" >< res && "PMP_User_Locale
 
   tmp_version = "Build version " + meVer ;
 
-  ## Set the KB
   set_kb_item(name:"www/" + mePort + "/", value:meVer);
   set_kb_item(name:"ManageEngine/Password_Manager/installed",value:TRUE);
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value:meVer, exp:"^([0-9]+)", base:"cpe:/a:manageengine:password_manager_pro:");
   if(isnull(cpe))
     cpe = "cpe:/a:manageengine:password_manager_pro";

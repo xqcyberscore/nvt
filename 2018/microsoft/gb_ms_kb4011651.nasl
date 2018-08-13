@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011651.nasl 8539 2018-01-25 14:37:09Z gveerendra $
+# $Id: gb_ms_kb4011651.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Office Word Multiple Vulnerabilities (KB4011651)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812711");
-  script_version("$Revision: 8539 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-0793", "CVE-2018-0794", "CVE-2018-0797", "CVE-2018-0798",
                 "CVE-2018-0804", "CVE-2018-0805", "CVE-2018-0806", "CVE-2018-0807",
                 "CVE-2018-0845", "CVE-2018-0848", "CVE-2018-0849", "CVE-2018-0862");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 15:37:09 +0100 (Thu, 25 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 12:33:34 +0530 (Wed, 10 Jan 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Multiple Vulnerabilities (KB4011651)");
@@ -53,10 +53,15 @@ if(description)
   - Microsoft Office software fails to properly handle RTF files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
-  to execute arbitrary code in the context of the current user, perform other 
-  actions in the security context of the current user and also to take control 
-  of an affected system. An attacker could then install programs; view, change, 
-  or delete data; or create new accounts with full user rights.
+  to execute arbitrary code in the context of the current user, perform other
+  actions in the security context of the current user and also to take control
+  of an affected system. An attacker could then:
+
+  - install programs
+
+  - view, change, or delete data
+
+  - create new accounts with full user rights.
 
   Impact Level: System/Application");
 
@@ -68,7 +73,7 @@ if(description)
   https://support.microsoft.com/en-us/help/4011651");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4011651");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4011651");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

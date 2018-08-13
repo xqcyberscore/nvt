@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sybase_tcp_listen_detect.nasl 5119 2017-01-27 10:12:40Z mime $
+# $Id: gb_sybase_tcp_listen_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Sybase TCP/IP listener
 #
@@ -30,19 +30,19 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140129");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 5119 $");
- script_tag(name:"last_modification", value:"$Date: 2017-01-27 11:12:40 +0100 (Fri, 27 Jan 2017) $");
+ script_version("$Revision: 10922 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2017-01-27 09:57:51 +0100 (Fri, 27 Jan 2017)");
  script_name("Sybase TCP/IP listener Detection");
 
- script_tag(name: "summary" , value: "This script detects a Sybase TCP/IP listener server by sending a login packet and checking the response.");
+ script_tag(name:"summary", value:"This script detects a Sybase TCP/IP listener server by sending a login packet and checking the response.");
 
  script_tag(name:"qod_type", value:"remote_active");
 
  script_category(ACT_GATHER_INFO);
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl","mssql_version.nasl","oracle_tnslsnr_version.nasl");
+ script_dependencies("find_service.nasl", "mssql_version.nasl", "oracle_tnslsnr_version.nasl");
  script_require_ports("Services/unknown", 5000);
  exit(0);
 }

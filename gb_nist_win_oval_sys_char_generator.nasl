@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nist_win_oval_sys_char_generator.nasl 8346 2018-01-09 14:56:22Z cfischer $
+# $Id: gb_nist_win_oval_sys_char_generator.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # Create System Characteristics for NIST Windows OVAL Definitions
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802042");
-  script_version("$Revision: 8346 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-09 15:56:22 +0100 (Tue, 09 Jan 2018) $");
+  script_version("$Revision: 10898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-07-05 12:24:54 +0530 (Thu, 05 Jul 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Create System Characteristics for NIST Windows OVAL Definitions");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_copyright ("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_add_preference(name:"Create OVAL System Characteristics for NIST Windows OVAL Definitions", type:"checkbox", value:"no");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
@@ -61,7 +61,6 @@ include("host_details.inc");
 
 SCRIPT_DESC = 'Create System Characteristics for NIST Windows OVAL Definitions';
 
-## Set preference value
 create_sc = script_get_preference("Create OVAL System Characteristics for NIST Windows OVAL Definitions");
 if (create_sc == "no") {
   exit (0);
@@ -89,7 +88,6 @@ function get_system_info_using_wmi(host_ip)
 {
   sys_info = "";
 
-  ## Get host details from KB
   usrname = get_kb_item("SMB/login");
   passwd  = get_kb_item("SMB/password");
   domain  = get_kb_item("SMB/domain");
@@ -153,7 +151,6 @@ function create_registry_system_data_char_xml(reg_key, reg_item, reg_type, reg_h
     reg_hive = 'HKEY_LOCAL_MACHINE';
   }
 
-  ## Set proper data type depend upon registry type
   if(reg_type == 'reg_sz'){
     data_type = '';
   } else if(reg_type == 'reg_dword'){
@@ -258,10 +255,8 @@ function create_file_item_sys_data_xml(path, file_name)
     return(ret_list);
   }
 
-  ## Get File Version
   file_ver = fetch_file_version(sysPath:path, file_name:file_name);
 
-  ## Set Status does not present
   if(!file_ver){
     status = ' status="does not exist" ';
   }
@@ -272,7 +267,6 @@ function create_file_item_sys_data_xml(path, file_name)
   file_xml += '\t\t\t<filepath>' + c_path + '</filepath>';
   file_xml += '\t\t\t<path' + status + '>' + path + '</path>';
 
-  ## Set file version if found
   if(file_ver)
   {
     file_xml += '\t\t\t<filename>' + file_name + '</filename>';
@@ -322,7 +316,6 @@ collected_obj_xml = string (collected_obj_xml, '\t<collected_objects>');
 ## Generate further details only if it's Windows
 if(get_kb_item("SMB/WindowsVersion"))
 {
-  ## Construct System Info
   win_os = get_kb_item("SMB/WindowsName");
   win_sp = get_kb_item("SMB/CSDVersion");
   win_os_ver = get_kb_item("SMB/WindowsVersion");
@@ -414,7 +407,6 @@ if(get_kb_item("SMB/WindowsVersion"))
     msi_prd_min_coll_obj_xml = create_collected_obj_xml(comment:msi_prd_min_comment, flag:msi_prd_min_flag, obj_id:msi_prd_min_obj_id, version:msi_prd_min_version, item_ref:msi_prd_min_item_ref);
 
 
-    ## Build Major Version
     msi_build_mjr_list = create_registry_system_data_char_xml(reg_key:ms_exchange_key, reg_item:msi_build_mjr_reg_item, reg_type:"reg_dword");
     msi_build_mjr_sys_data_xml = msi_build_mjr_list[0];
     msi_build_mjr_value = msi_build_mjr_list[1];
@@ -430,7 +422,6 @@ if(get_kb_item("SMB/WindowsVersion"))
     msi_build_mjr_coll_obj_xml = create_collected_obj_xml(comment:msi_build_mjr_comment, flag:msi_build_mjr_flag, obj_id:msi_build_mjr_obj_id, version:msi_build_mjr_version, item_ref:msi_build_mjr_item_ref);
 
 
-    ## Build Minor Version
     msi_build_min_list = create_registry_system_data_char_xml(reg_key:ms_exchange_key, reg_item:msi_build_min_reg_item, reg_type:"reg_dword");
     msi_build_min_sys_data_xml = msi_build_min_list[0];
     msi_build_min_value = msi_build_min_list[1];

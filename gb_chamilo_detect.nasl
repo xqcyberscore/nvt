@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_chamilo_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: gb_chamilo_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Chamilo Detection
 #
@@ -24,14 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running Chamilo, an e-learning portal.";
-
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103070");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 10929 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
  script_tag(name:"creation_date", value:"2011-02-08 13:20:01 +0100 (Tue, 08 Feb 2011)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Chamilo Detection");
@@ -42,14 +40,14 @@ if(description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://code.google.com/p/chamilo/");
+ script_tag(name:"summary", value:"This host is running Chamilo, an e-learning portal.");
+ script_xref(name:"URL", value:"http://code.google.com/p/chamilo/");
  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
@@ -64,9 +62,8 @@ foreach dir( make_list_unique( "/chamilo", cgi_dirs( port:port ) ) ) {
 
  if(egrep(pattern:'Portal <a [^>]+>Chamilo' , string: buf, icase: TRUE) &&
     egrep(pattern: "Set-Cookie: ch_sid", string: buf))  {
- 
+
     vers = string("unknown");
-    ### try to get version 
     version = eregmatch(string: buf, pattern: "Portal <a [^>]+>Chamilo ([0-9.]+)",icase:TRUE);
 
     if ( !isnull(version[1]) ) {

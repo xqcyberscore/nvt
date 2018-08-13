@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_xitami_server_detect.nasl 9541 2018-04-19 13:42:33Z cfischer $
+# $Id: secpod_xitami_server_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # Xitami Server Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900547");
-  script_version("$Revision: 9541 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 15:42:33 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 10896 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-05-06 08:04:28 +0200 (Wed, 06 May 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -74,7 +74,6 @@ if("Xitami" >< rcvRes){
     if (isnull(xitaVer[1])) {
       ftpPort = get_ftp_port(default: 21);
 
-      # Get the version from banner
       banner = get_ftp_banner(port:ftpPort);
       xitaVer = eregmatch(pattern: "Xitami FTP ([0-9a-z.]+)", string: banner);
       if (!isnull(xitaVer[1])) {

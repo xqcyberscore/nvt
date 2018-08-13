@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axon_virtual_pbx_web_detect.nasl 10065 2018-06-04 12:10:31Z asteins $
+# $Id: gb_axon_virtual_pbx_web_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # Axon Virtual PBX Version Detection (HTTP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108033");
-  script_version("$Revision: 10065 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 14:10:31 +0200 (Mon, 04 Jun 2018) $");
+  script_version("$Revision: 10901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-01-02 10:00:00 +0100 (Mon, 02 Jan 2017)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -67,15 +67,13 @@ if( "title>Axon - Login" >< res || "Main Page'>Axon</td>" >< res || "target=_bla
   set_kb_item( name:"Axon-Virtual-PBX/installed", value:TRUE );
   set_kb_item( name:"Axon-Virtual-PBX/www/" + port + "/ver", value:version );
   set_kb_item( name:"Axon-Virtual-PBX/www/installed", value:TRUE );
-  
-  ## build cpe and store it as host_detail
+
   cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:nch:axon_virtual_pbx:" );
   if( isnull( cpe ) )
     cpe = 'cpe:/a:nch:axon_virtual_pbx';
 
   location = "/";
 
-  ## Register Product and Build Report
   register_product( cpe:cpe, port:port, location:location, service:"www" );
   log_message( data:build_detection_report( app:"Axon Virtual PBX",
                                             version:version,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_h2o_http_server_detect.nasl 8962 2018-02-27 09:44:31Z ckuersteiner $
+# $Id: gb_h2o_http_server_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # H2O HTTP Server Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806993");
-  script_version("$Revision: 8962 $");
+  script_version("$Revision: 10891 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-27 10:44:31 +0100 (Tue, 27 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-01-25 13:12:26 +0530 (Mon, 25 Jan 2016)");
   script_name("H2O HTTP Server Version Detection");
 
@@ -54,7 +54,7 @@ if(description)
 include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
+
 
 h2oport = get_http_port(default:443);
 

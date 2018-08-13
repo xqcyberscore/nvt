@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_jetspeed_mult_vuln.nasl 5860 2017-04-04 15:38:42Z cfi $
+# $Id: gb_apache_jetspeed_mult_vuln.nasl 10916 2018-08-10 16:01:30Z cfischer $
 #
 # Apache Jetspeed Multiple Vulnerabilities-Mar16
 #
@@ -32,10 +32,10 @@ if (description)
   script_oid("1.3.6.1.4.1.25623.1.0.807648");
   script_cve_id("CVE-2016-0709", "CVE-2016-0710", "CVE-2016-0711", "CVE-2016-0712",
                 "CVE-2016-2171");
-  script_version("$Revision: 5860 $");
+  script_version("$Revision: 10916 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-04 17:38:42 +0200 (Tue, 04 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 18:01:30 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-04-01 13:19:30 +0530 (Fri, 01 Apr 2016)");
   script_name("Apache Jetspeed Multiple Vulnerabilities-Mar16");
 
@@ -46,12 +46,17 @@ if (description)
   whether it is possible to read a cookie or not.");
 
   script_tag(name:"insight", value:"The multiple flaws are due to,
+
   - An improper validation of file names before writing them to disk in
     'Import/Export' function in the Portal Site Manager.
+
   - An authorization flaw in jetspeed user manager services.
+
   - An insufficient validation of 'user' and 'role' parameters in
     jetspeed User Manager service.
+
   - An error in the URI path directory after '/portal'.
+
   - Some errors in the functionality to add a link, page, or folder.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
@@ -90,24 +95,16 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-url = "";
-jetPort = "";
-
-## Get HTTP Port
 if(!jetPort = get_app_port(cpe:CPE)){
   jetPort = 8080;
 }
 
-##Get install location
 if(!dir = get_app_location(cpe:CPE, port:jetPort)){
   exit(0);
 }
 
-##Construct Attack URL
 url = dir + '/foo%22onmouseover%3d%22alert%28document.cookie%29?URL=foo/bar';
 
-##Send Request and check vulnerability
 if(http_vuln_check(port:jetPort, url:url, check_header:TRUE,
    pattern:"alert\(document\.cookie\)",
    extra_check:make_list("Jetspeed","Username", "Password")))

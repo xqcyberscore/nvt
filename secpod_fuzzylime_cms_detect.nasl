@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_fuzzylime_cms_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: secpod_fuzzylime_cms_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # Fuzzylime(cms) Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900583");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 10913 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-06-30 16:55:49 +0200 (Tue, 30 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Fuzzylime(cms) Version Detection");
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : "This script detects the installed version of Fuzzylime(cms)
+  script_tag(name:"summary", value:"This script detects the installed version of Fuzzylime(cms)
   and sets the version in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -91,7 +91,6 @@ foreach dir (make_list_unique("/cms", "/", "/docs", "/fuzzylime", cgi_dirs(port:
     set_kb_item(name:"www/"+ cmsPort + "/Fuzzylime(cms)", value:tmp_version);
     set_kb_item(name:"fuzzylimecms/installed", value:TRUE);
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:version, exp:"^([0-9.]+\.[0-9])\.?([a-z0-9]+)?", base:"cpe:/a:fuzzylime:fuzzylime_cms:");
     if( isnull( cpe ) )
       cpe = 'cpe:/a:fuzzylime:fuzzylime_cms';

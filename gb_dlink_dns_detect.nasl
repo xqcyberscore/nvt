@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dns_detect.nasl 7853 2017-11-21 15:12:03Z cfischer $
+# $Id: gb_dlink_dns_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # D-Link DNS Devices Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106015");
- script_version("$Revision: 7853 $");
- script_tag(name: "last_modification", value: "$Date: 2017-11-21 16:12:03 +0100 (Tue, 21 Nov 2017) $");
- script_tag(name: "creation_date", value: "2015-07-10 14:32:27 +0700 (Fri, 10 Jul 2015)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10913 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2015-07-10 14:32:27 +0700 (Fri, 10 Jul 2015)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("D-Link DNS Devices Detection");
 
- script_tag(name: "summary" , value: "Detection of D-Link DNS Devices
+ script_tag(name:"summary", value:"Detection of D-Link DNS Devices
 
 The script sends a connection request to the server and attempts to detect D-Link DNS Devices.");
 
@@ -73,12 +73,12 @@ if ("Server: lighttpd/" >< banner) {
     url = "/xml/info.xml";
     req = http_get(item: url, port: port);
     res = http_keepalive_send_recv(port: port, data: req);
-   
+
     if (res =~ "<info>" && res =~ "www.dlink.com") {
       dlink_typ = eregmatch(pattern: "<hw_ver>(.*)</hw_ver>", string: res);
       if (!isnull(dlink_typ[1]))
         typ = dlink_typ[1];
-      
+
       fw_version = eregmatch(pattern: "<version>(.*)</version>", string: res);
       if (!isnull(fw_version[1]))
         fw = fw_version[1];
@@ -107,7 +107,7 @@ if (fw && typ) {
     tmp_cpe = 'cpe:/h:d-link:' + tolower(typ);
   else
     tmp_cpe = 'cpe:/h:d-link:dns-' + typ;
-  
+
   cpe = build_cpe(value: fw, exp: "^([0-9.]+)", base: tmp_cpe + ":");
   if (isnull(cpe))
     cpe = tmp_cpe;

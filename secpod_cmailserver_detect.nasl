@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cmailserver_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
+# $Id: secpod_cmailserver_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # CMailServer Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900917");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-08-20 09:27:17 +0200 (Thu, 20 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("CMailServer Version Detection");
@@ -39,7 +39,7 @@ if(description)
   script_family("Service detection");
   script_dependencies("find_service.nasl");
   script_require_ports("Services/smtp", 25, "Services/imap", 143, "Services/pop3", 110);
-  script_tag(name : "summary" , value : "The script detects the installed version of CMailServer and sets the result into the knowledgebase." );
+  script_tag(name:"summary", value:"The script detects the installed version of CMailServer and sets the result into the knowledgebase.");
   exit(0);
 }
 

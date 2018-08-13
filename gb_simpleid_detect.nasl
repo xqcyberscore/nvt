@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simpleid_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_simpleid_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # SimpleID Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801415");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6032 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-08-06 17:02:44 +0200 (Fri, 06 Aug 2010)");
   script_name("SimpleID Version Detection");
   script_tag(name:"cvss_base", value:"0.0");
@@ -54,7 +54,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get HTTP Port
 port = get_http_port( default:80 );
 
 if( ! can_host_php( port:port ) ) exit( 0 );
@@ -66,25 +65,20 @@ foreach dir( make_list_unique( "/simpleid", "/SimpleID", "/simpleid/www", "/Simp
 
   rcvRes = http_get_cache( item: dir + "/index.php", port:port );
 
-  ## Confirm it is SimpleID
   if( rcvRes =~ "HTTP/1.. 200" && ">SimpleID<" >< rcvRes ) {
 
     version = "unknown";
 
-    ## Grep the version
     ver = eregmatch( pattern:"SimpleID ([0-9.]+)", string:rcvRes );
     if( ! isnull( ver[1] ) ) version = ver[1];
 
-    ## Set the KB item
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/SimpleID/Ver", value:tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:kelvin_mo:simpleid:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:kelvin_mo:simpleid';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"SimpleID",

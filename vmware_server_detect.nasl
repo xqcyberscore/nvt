@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vmware_server_detect.nasl 4944 2017-01-04 17:15:26Z mime $
+# $Id: vmware_server_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # VMware ESX/GSX Server detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.20301");
-  script_version("$Revision: 4944 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-04 18:15:26 +0100 (Wed, 04 Jan 2017) $");
+  script_version("$Revision: 10908 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -41,13 +41,11 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.vmware.com/");
 
-  tag_summary = "The remote host appears to be running VMware ESX or GSX Server.
+  script_tag(name:"summary", value:"The remote host appears to be running VMware ESX or GSX Server.
 
   Description :
 
-  According to its banner, the remote host appears to be running a VMWare server authentication daemon, which likely indicates the remote host is running VMware ESX or GSX Server.";
-
-  script_tag(name:"summary", value:tag_summary);
+  According to its banner, the remote host appears to be running a VMWare server authentication daemon, which likely indicates the remote host is running VMware ESX or GSX Server.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

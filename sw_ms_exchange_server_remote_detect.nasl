@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_ms_exchange_server_remote_detect.nasl 9477 2018-04-13 11:33:30Z santu $
+# $Id: sw_ms_exchange_server_remote_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # Microsoft Exchange Server Remote Detection
 #
@@ -30,15 +30,15 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111085");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9477 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-13 13:33:30 +0200 (Fri, 13 Apr 2018) $");
+  script_version("$Revision: 10898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-02-04 15:00:00 +0100 (Thu, 04 Feb 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Microsoft Exchange Server Remote Detection");
- 
+
   script_copyright("This script is Copyright (C) 2016 SCHUTZWERK GmbH");
   script_category(ACT_GATHER_INFO);
-  script_family("Product detection"); 
+  script_family("Product detection");
   script_dependencies("smtpserver_detect.nasl");
   script_require_ports("Services/smtp", 25, 465, 587, "Services/pop3", 110, "Services/imap", 143);
 
@@ -89,7 +89,7 @@ foreach port ( ports ) {
 }
 
       set_kb_item(name:"SMTP/microsoft_esmtp_5", value:TRUE);
-      set_kb_item(name:"exchange_server/Installed", value:TRUE);      
+      set_kb_item(name:"exchange_server/Installed", value:TRUE);
       cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:exchange_server:");
       if(isnull(cpe))
        cpe = "cpe:/a:microsoft:exchange_server";
@@ -114,7 +114,7 @@ foreach port ( ports ) {
   if( get_port_state( port ) ) {
 
     banner = get_imap_banner( port:port );
-    
+
     if( "The Microsoft Exchange IMAP4 service is ready" >< banner ||
         "Microsoft Exchange Server" >< banner ) {
       version = "unknown";
@@ -126,7 +126,7 @@ foreach port ( ports ) {
       ver = eregmatch( pattern:"Microsoft Exchange Server .* ([0-9.]+)", string:banner );
       if( ver[1] ) version = ver[1];
 }
-      set_kb_item(name:"exchange_server/Installed", value:TRUE); 
+      set_kb_item(name:"exchange_server/Installed", value:TRUE);
       cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:exchange_server:");
       if(isnull(cpe))
        cpe = "cpe:/a:microsoft:exchange_server";
@@ -148,7 +148,7 @@ if( ! port ) port = 110;
 if( get_port_state( port ) ) {
 
   banner = get_pop3_banner( port:port );
-  
+
   if( "Microsoft Windows POP3 Service Version" >< banner ||
       "The Microsoft Exchange POP3 service is ready." >< banner ||
       "Microsoft Exchange Server" >< banner ||
@@ -166,7 +166,7 @@ if( get_port_state( port ) ) {
         version = ver[1];
     }
 }
-    set_kb_item(name:"exchange_server/Installed", value:TRUE); 
+    set_kb_item(name:"exchange_server/Installed", value:TRUE);
     cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:exchange_server:");
     if(isnull(cpe))
       cpe = "cpe:/a:microsoft:exchange_server";

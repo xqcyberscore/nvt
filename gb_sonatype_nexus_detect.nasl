@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonatype_nexus_detect.nasl 8167 2017-12-19 07:04:10Z ckuersteiner $
+# $Id: gb_sonatype_nexus_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Sonatype Nexus OSS/Pro Version Detection
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805324");
-  script_version("$Revision: 8167 $");
+  script_version("$Revision: 10888 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:04:10 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-01-20 13:00:12 +0530 (Tue, 20 Jan 2015)");
   script_name("Sonatype Nexus OSS/Pro Version Detection");
 
-  script_tag(name: "summary" , value: "Detection of installed version of Sonatype Nexus.
+  script_tag(name:"summary", value:"Detects the installed version of Sonatype Nexus.
 
 This script sends HTTP GET request and try to get the version from the response, and sets the result in KB.");
 
@@ -47,7 +47,7 @@ This script sends HTTP GET request and try to get the version from the response,
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name: "URL", value: "http://www.sonatype.org/nexus/");
+  script_xref(name:"URL", value:"http://www.sonatype.org/nexus/");
 
   exit(0);
 }
@@ -61,7 +61,6 @@ nexusPort = get_http_port(default:8081);
 
 banner = get_http_banner(port:nexusPort);
 
-## Confirm the server from banner
 if(banner && "erver: Nexus" >< banner) {
   installed = TRUE;
   version = "unknown";
@@ -81,7 +80,6 @@ if(!nexusVer) {
     ## if version is not available in banner request for '/#welcome' page
     rcvRes = http_get_cache(item: dir + "/#welcome", port:nexusPort);
 
-    ##Confirm Application with '/#welcome' page
     if(rcvRes && (">Sonatype Nexus<" >< rcvRes || ">Sonatype Nexus Professional<" >< rcvRes)) {
       installed = TRUE;
       version = "unknown";

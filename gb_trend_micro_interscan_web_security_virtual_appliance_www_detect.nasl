@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_www_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_www_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Trend Micro Interscan Web Security Virtual Appliance Detection (HTTP) Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140242");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8078 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+ script_version("$Revision: 10929 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
  script_tag(name:"creation_date", value:"2017-04-10 16:22:10 +0200 (Mon, 10 Apr 2017)");
  script_name("Trend Micro Interscan Web Security Virtual Appliance Detection (HTTP) Detection");
 
- script_tag(name: "summary" , value: "This script performs http based detection of Trend Micro Interscan Web Security Virtual Appliance.");
+ script_tag(name:"summary", value:"This script performs http based detection of Trend Micro Interscan Web Security Virtual Appliance.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
@@ -51,7 +51,7 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 include("host_details.inc");
 
 port = get_http_port( default:8443 );
@@ -66,7 +66,7 @@ if( "<title>Trend Micro InterScan Web Security Virtual Appliance</title>" >< buf
   register_product( cpe:CPE, location:port + "/tcp", service:'www', port:port );
 
   report = 'Detected Trend Micro Interscan Web Security Virtual Appliance (http)\n' +
-           'Version: unknown\n' + 
+           'Version: unknown\n' +
            'CPE: ' + CPE;
 
   log_message( port:port, data:report );

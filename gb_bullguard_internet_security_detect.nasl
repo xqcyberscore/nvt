@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bullguard_internet_security_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_bullguard_internet_security_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # BullGuard Internet Security Version Detection (Windows)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805286");
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 10913 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-02-23 13:54:02 +0530 (Mon, 23 Feb 2015)");
   script_name("BullGuard Internet Security Version Detection (Windows)");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   BullGuard Internet Security.
 
   The script logs in via smb, searches for 'BullGuard Internet Security' in the
@@ -46,7 +46,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -59,20 +59,11 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## variable Initialization
-os_arch = "";
-bgPath = "";
-bgName = "";
-bgVer = "";
-key = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-##Confirm Application
 if(!registry_key_exists(key:"SOFTWARE\BullGuard Ltd.")){
   exit(0);
 }
@@ -83,13 +74,10 @@ if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-##Grep for app Name
 bgName = registry_get_sz(key:key, item:"DisplayName");
 
-##Confirm Application
 if("BullGuard Internet Security" >< bgName)
 {
-  ##Get Installation Path
   bgPath = registry_get_sz(key:key, item:"InstallLocation");
 
   if(bgPath)
@@ -106,32 +94,27 @@ if("BullGuard Internet Security" >< bgName)
 
     if(bgVer)
     {
-      ##Set version in KB
       set_kb_item(name:"BullGuard/Internet/Security/Ver", value:bgVer);
 
-      ## Build CPE
       cpe = build_cpe(value:bgVer, exp:"^([0-9.]+)", base:"cpe:/a:bullguard:internet_security:");
       if(isnull(cpe))
         cpe = 'cpe:/a:bullguard:internet_security';
 
-      ## Register for 64 bit app on 64 bit OS once again
       if("64" >< os_arch)
       {
         set_kb_item(name:"BullGuard/Internet/Security64/Ver", value:bgVer);
 
-        ## Build CPE
         cpe = build_cpe(value:bgVer, exp:"^([0-9.]+)", base:"cpe:/a:bullguard:internet_security:x64:");
         if(isnull(cpe))
           cpe = "cpe:/a:bullguard:internet_security:x64";
 
       }
-      ##register cpe
       register_product(cpe:cpe, location:bgPath);
       log_message(data: build_detection_report(app: bgName,
                                                version: bgVer,
                                                install: bgPath,
                                                cpe: cpe,
                                                concluded: bgVer));
-    } 
+    }
   }
 }

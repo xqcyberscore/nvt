@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gnu_assembler_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_gnu_assembler_detect_lin.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # GNU Assembler Version Detection (Linux)
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806084");
-  script_version("$Revision: 7823 $");
+  script_version("$Revision: 10911 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 12:00:27 +0530 (Tue, 13 Oct 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("GNU_Assembler Version Detection (Linux)");
 
-  script_tag(name : "summary" , value:"This script finds the GNU Assembler
+  script_tag(name:"summary", value:"This script finds the GNU Assembler
   installed version on Linux.
 
   The script logs in via ssh, execute the command 'dpkg' and sets the version
@@ -68,17 +68,15 @@ if('GNU assembler' >!< res)
   exit(0);
 }
 
-## Grep for the version
 gnuVer = eregmatch(pattern:'([0-9.]+)', string:res);
 if(gnuVer[0] != NULL)
 {
   set_kb_item(name:"GNU/assembler/Linux/Ver", value:gnuVer[0]);
 
-  ##Building cpe
   cpe = build_cpe(value:gnuVer[0], exp:"^([0-9.]+)", base:"cpe:/a:gnu:binutils:");
   if(isnull(cpe))
     cpe = "cpe:/a:gnu:binutils";
- 
+
   register_product(cpe:cpe, location:"/");
 
   log_message(data: build_detection_report(app: "GNU assembler", version:gnuVer[0],

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: postgresql_detect.nasl 8230 2017-12-22 08:51:56Z cfischer $
+# $Id: postgresql_detect.nasl 10930 2018-08-11 11:41:05Z cfischer $
 #
 # PostgreSQL Detection
 #
@@ -33,8 +33,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100151");
-  script_version("$Revision: 8230 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 09:51:56 +0100 (Fri, 22 Dec 2017) $");
+  script_version("$Revision: 10930 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:41:05 +0200 (Sat, 11 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-23 21:21:19 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -60,7 +60,7 @@ if(description)
 
 include("cpe.inc");
 include("host_details.inc");
-include("global_settings.inc");
+
 include("misc_func.inc");
 include("dump.inc");
 
@@ -209,7 +209,7 @@ close(soc);
 
 if (!res || res[0] >!< "(E|R)" ) {
   # The response was empty or does not match typical PostgrSQL
-  # elements. Therfore it is concluded this is not PostgreSQL
+  # elements. Therefore it is concluded this is not PostgreSQL
   # running on this port.
   exit(0);
 }

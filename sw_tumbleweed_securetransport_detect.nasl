@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_tumbleweed_securetransport_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: sw_tumbleweed_securetransport_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # Tumbleweed SecureTransport Detection
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111018");
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 10906 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-04-22 08:00:00 +0200 (Wed, 22 Apr 2015)");
   script_name("Tumbleweed SecureTransport Detection");
 
-  script_tag(name: "summary" , value:"Detection of the installation and version
+  script_tag(name:"summary", value:"Detection of the installation and version
   of a Tumbleweed SecureTransport.
 
   The script sends HTTP GET requests and try to comfirm the Tumbleweed SecureTransport
@@ -68,10 +68,8 @@ if( concluded = eregmatch( string: banner, pattern: "Server: SecureTransport[/]?
   }
 }
 
-##Check Responses
 if( res && "<title>Tumbleweed SecureTransport Login" >< res ) {
 
-  ##Try to get version from the admin login
   ver = eregmatch( pattern:'"SecureTransport", "([0-9.]+)"', string:res );
 
   if( ver[1] ) {
@@ -87,14 +85,12 @@ if( installed ) {
   set_kb_item( name:"www/" + port + "/tumbleweed_securetransport", value:tumblVer );
   set_kb_item( name:"tumbleweed_securetransport/installed", value:TRUE );
 
-  ## Build CPE
   cpe = build_cpe( value:tumblVer, exp:"([0-9a-z.]+)", base:"cpe:/a:tumbleweed:securetransport_server_app:" );
   if( isnull( cpe ) )
     cpe = 'cpe:/a:tumbleweed:securetransport_server_app';
 
-  ## Register Product and Build Report
   register_product( cpe:cpe, location:"/", port:port );
- 
+
   log_message( data: build_detection_report( app:"Tumbleweed SecureTransport",
                                              version:tumblVer,
                                              install:"/",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_ibmc_http_detect.nasl 10085 2018-06-06 04:38:22Z ckuersteiner $
+# $Id: gb_huawei_ibmc_http_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # Huawei iBMC Detection (HTTP)
 #
@@ -28,20 +28,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141140");
-  script_version("$Revision: 10085 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-06 06:38:22 +0200 (Wed, 06 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2018-06-06 08:31:14 +0700 (Wed, 06 Jun 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-06-06 08:31:14 +0700 (Wed, 06 Jun 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Huawei iBMC Detection (HTTP)");
 
-  script_tag(name: "summary" , value: "Detection of Huawei iBMC over HTTP.
+  script_tag(name:"summary", value:"Detection of Huawei iBMC over HTTP.
 
 The script sends a connection request to the server and attempts to detect Huawei iBMC.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

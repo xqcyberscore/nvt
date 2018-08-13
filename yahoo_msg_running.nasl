@@ -24,8 +24,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102001");
-  script_version("$Revision: 9745 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:45:41 +0200 (Mon, 07 May 2018) $");
+  script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:34:11 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -42,12 +42,10 @@ if(description)
   script_xref(name:"URL", value:"http://www.ycoderscookbook.com/");
   script_xref(name:"URL", value:"http://www.venkydude.com/articles/yahoo.htm");
 
-  tag_summary = "Yahoo Messenger is running on this machine and this port. It can
+  script_tag(name:"summary", value:"Yahoo Messenger is running on this machine and this port. It can
   be used to share files and chat with other users.
 
-  Tested with Yahoo Messenger versions 7 and 8.";
-
-  script_tag(name:"summary", value:tag_summary);
+  Tested with Yahoo Messenger versions 7 and 8.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -66,8 +64,7 @@ ymsg = string("YMSG");
 #          NOTE: The last three bytes of this may just be padding bytes.
 #          NOTE: In the network byte order version field looks
 #          like 0x00 0x09 0x00 0x00, last 2 bytes represent zero padding.
-
-#using Yahoo Messenger 7! Wireshark shows YMSG version 13 (hex 0x0d).
+#nb: using Yahoo Messenger 7! Wireshark shows YMSG version 13 (hex 0x0d).
 #The latest version of YahooMsg 9 uses YMSG 16 (hex 0x10)
 version = raw_string(0x00 ,0x10 ,0x00 ,0x00);
 

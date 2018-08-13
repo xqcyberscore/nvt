@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_acrolinx_detect.nasl 9225 2018-03-28 03:45:56Z ckuersteiner $
+# $Id: gb_acrolinx_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Acrolinx Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140892");
-  script_version("$Revision: 9225 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-28 05:45:56 +0200 (Wed, 28 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2018-03-28 10:10:01 +0700 (Wed, 28 Mar 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10922 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-03-28 10:10:01 +0700 (Wed, 28 Mar 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Acrolinx Detection");
 
-  script_tag(name: "summary" , value: "Detection of Acrolinx.
+  script_tag(name:"summary", value:"Detection of Acrolinx.
 
 The script sends a connection request to the server and attempts to detect Acrolinx and to extract its
 version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ version.");
   script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.acrolinx.com/");
+  script_xref(name:"URL", value:"https://www.acrolinx.com/");
 
   exit(0);
 }
@@ -68,7 +68,6 @@ res = http_get_cache(port: port, item: "/dashboard.html");
 if ("<title>Acrolinx Dashboard</title>" >< res && "acrolinx-dashboard/config/environment" >< res) {
   version = "unknown";
 
-  # Get first the dynamic CRSF protection value
   req = http_get(port: port,
                  item: "/com.acrolinx.dashboard.Dashboard/com.acrolinx.dashboard.Dashboard.nocache.js");
   res = http_keepalive_send_recv(port: port, data: req);

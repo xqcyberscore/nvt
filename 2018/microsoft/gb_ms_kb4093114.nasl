@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4093114.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
+# $Id: gb_ms_kb4093114.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4093114)
 #
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812865");
-  script_version("$Revision: 9974 $");
-  script_cve_id("CVE-2018-0870", "CVE-2018-0887", "CVE-2018-8116", "CVE-2018-0957", 
-                "CVE-2018-0960", "CVE-2018-0967", "CVE-2018-0968", "CVE-2018-0969", 
-                "CVE-2018-0970", "CVE-2018-0971", "CVE-2018-0972", "CVE-2018-0973", 
-                "CVE-2018-0974", "CVE-2018-0975", "CVE-2018-0976", "CVE-2018-0981", 
-                "CVE-2018-0987", "CVE-2018-0988", "CVE-2018-0989", "CVE-2018-0991", 
-                "CVE-2018-1003", "CVE-2018-1004", "CVE-2018-1008", "CVE-2018-1009", 
-                "CVE-2018-1010", "CVE-2018-1012", "CVE-2018-1013", "CVE-2018-1015", 
-                "CVE-2018-1016", "CVE-2018-1018", "CVE-2018-1020", "CVE-2018-0996", 
+  script_version("$Revision: 10918 $");
+  script_cve_id("CVE-2018-0870", "CVE-2018-0887", "CVE-2018-8116", "CVE-2018-0957",
+                "CVE-2018-0960", "CVE-2018-0967", "CVE-2018-0968", "CVE-2018-0969",
+                "CVE-2018-0970", "CVE-2018-0971", "CVE-2018-0972", "CVE-2018-0973",
+                "CVE-2018-0974", "CVE-2018-0975", "CVE-2018-0976", "CVE-2018-0981",
+                "CVE-2018-0987", "CVE-2018-0988", "CVE-2018-0989", "CVE-2018-0991",
+                "CVE-2018-1003", "CVE-2018-1004", "CVE-2018-1008", "CVE-2018-1009",
+                "CVE-2018-1010", "CVE-2018-1012", "CVE-2018-1013", "CVE-2018-1015",
+                "CVE-2018-1016", "CVE-2018-1018", "CVE-2018-1020", "CVE-2018-0996",
                 "CVE-2018-0997", "CVE-2018-1000", "CVE-2018-1001");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 09:29:12 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4093114)");
 
@@ -50,7 +50,7 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to errors,
-  
+
   - When the Windows font library improperly handles specially crafted embedded
     fonts.
 
@@ -58,7 +58,7 @@ if(description)
 
   - When the Windows kernel fails to properly initialize a memory address.
 
-  - When the scripting engine does not properly handle objects in memory in 
+  - When the scripting engine does not properly handle objects in memory in
     Internet Explorer.
 
   - In Windows Adobe Type Manager Font Driver (ATMFD).
@@ -70,25 +70,25 @@ if(description)
 
   - In the way that the VBScript engine handles objects in memory.
 
-  - When Windows improperly handles objects in memory and incorrectly maps kernel 
+  - When Windows improperly handles objects in memory and incorrectly maps kernel
     memory.
 
   - In the way that Windows handles objects in memory.
 
-  - In Remote Desktop Protocol (RDP) when an attacker connects to the target 
+  - In Remote Desktop Protocol (RDP) when an attacker connects to the target
     system using RDP and sends specially crafted requests.
 
-  - When Windows Hyper-V on a host operating system fails to properly validate 
+  - When Windows Hyper-V on a host operating system fails to properly validate
     input from an authenticated user on a guest operating system.
 
-  - In the Microsoft JET Database Engine that could allow remote code execution on 
+  - In the Microsoft JET Database Engine that could allow remote code execution on
     an affected system.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to take control of the affected system, obtain information to further compromise
   the user's system, execute arbitrary code, retrieve the memory address of a
   kernel object, cause a target system to stop responding.
-  
+
   Impact Level: System");
 
   script_tag(name:"affected", value:"Microsoft Windows 8.1 for 32-bit/x64
@@ -101,11 +101,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4093114");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4093114");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }

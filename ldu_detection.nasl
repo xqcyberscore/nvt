@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ldu_detection.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: ldu_detection.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Detects LDU version
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19602");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6032 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Detects LDU version");
@@ -42,17 +42,15 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.neocrome.net/");
 
-  tag_summary = "The remote web server contains a content management system written in
-  PHP. 
+  script_tag(name:"summary", value:"The remote web server contains a content management system written in
+  PHP.
 
   Description :
 
   This script detects whether the remote host is running Land Down Under
-  (LDU) and extracts the version number and location if found. 
+  (LDU) and extracts the version number and location if found.
 
-  Land Down Under is a content management system using PHP and MySQL.";
-
-  script_tag(name:"summary", value:tag_summary);
+  Land Down Under is a content management system using PHP and MySQL.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -78,7 +76,7 @@ foreach dir( make_list_unique( "/" , cgi_dirs(port:port) ) ) {
   if( # Cookie from LDU
       "^Set-Cookie: LDUC" >< res ||
       # Meta tag (generator) from LDU
-      'content="Land Down Under Copyright Neocrome' >< res || 
+      'content="Land Down Under Copyright Neocrome' >< res ||
       # Meta tag (keywords) from LDU
       'content="LDU,land,down,under' >< res ) {
 
@@ -120,15 +118,13 @@ foreach dir( make_list_unique( "/" , cgi_dirs(port:port) ) ) {
     set_kb_item( name:"ldu/installed", value:TRUE );
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/ldu", value:tmp_version );
-   
-    ## Build CPE
+
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:neocrome:land_down_under:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:neocrome:land_down_under';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
- 
+
     log_message( data: build_detection_report( app:"Land Down Under",
                                                version:version,
                                                install:install,

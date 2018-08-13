@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: hp_data_protector_installed.nasl 8141 2017-12-15 12:43:22Z cfischer $
+# $Id: hp_data_protector_installed.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # HP/HPE (OpenView Storage) Data Protector Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19601");
-  script_version("$Revision: 8141 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -103,7 +103,6 @@ if( "HP OpenView Storage Data Protector" >< response ||
   set_kb_item( name:"hp_data_protector/" + port + "/version", value:versions[1] );
   set_kb_item( name:"hp_data_protector/" + port + "/build", value:builds[1] );
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe( value:versions[1], exp:"^[a-zA-Z]\.([0-9.]+)", base:"cpe:/a:hp:data_protector:" );
   if( isnull( cpe ) )
     cpe = "cpe:/a:hp:data_protector";

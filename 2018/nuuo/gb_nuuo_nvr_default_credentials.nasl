@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuuo_nvr_default_credentials.nasl 10525 2018-07-17 10:10:14Z asteins $
+# $Id: gb_nuuo_nvr_default_credentials.nasl 10875 2018-08-10 08:37:14Z asteins $
 #
 # NUUO Network Video Recorder Devices Default Credentials
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:nuuo:nuuo";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112328");
-  script_version("$Revision: 10525 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-17 12:10:14 +0200 (Tue, 17 Jul 2018) $");
+  script_version("$Revision: 10875 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 10:37:14 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 11:26:00 +0200 (Tue, 17 Jul 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -74,6 +74,17 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 cookie = get_kb_item("nuuo/web/cookie");
 if( isnull( cookie ) ) exit( 0 );
+
+# GET request to fetch a fresh cookie
+req = http_get( port:port , item:"/" );
+res = http_keepalive_send_recv( port:port, data:req );
+
+cookie_match = eregmatch( pattern:'Set-Cookie: ([^\r\n]+)', string:res );
+if( cookie_match[1] ){
+  cookie = cookie_match[1];
+} else {
+  exit(0);
+}
 
 vuln = FALSE;
 report = "";

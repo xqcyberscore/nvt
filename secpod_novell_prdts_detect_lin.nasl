@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_prdts_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: secpod_novell_prdts_detect_lin.nasl 10883 2018-08-10 10:52:12Z cfischer $
 #
 # Novell Products Version Detection (Linux)
 #
@@ -32,8 +32,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900598");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_version("$Revision: 10883 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:52:12 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-07-29 08:37:44 +0200 (Wed, 29 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Novell Products Version Detection (Linux)");
@@ -45,24 +45,21 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : "This script retrieves the installed
+  script_tag(name:"summary", value:"This script retrieves the installed
   version of Novell products and saves the result in KB.");
   exit(0);
 }
-
 
 include("ssh_func.inc");
 include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## start script
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);
 }
 
-#Set Version KB for Novell eDir Client
 eDirPath = find_bin(prog_name:"ndsd", sock:sock);
 foreach eDirFile (eDirPath)
 {
@@ -71,7 +68,7 @@ foreach eDirFile (eDirPath)
 
 
   if(!isnull(eDirVer[1])) {
-  
+
     if(eDirVer[2] != NULL){
         eDirVer = eDirVer[1] + "." + eDirVer[2];
     }
@@ -80,13 +77,11 @@ foreach eDirFile (eDirPath)
 
     set_kb_item(name:"Novell/eDir/Lin/Ver", value:eDirVer);
 
-    ## build cpe and store it as host_detail
     register_and_report_cpe(app:"Novell eDirectory version", ver:eDirVer, base:"cpe:/a:novell:edirectory:",
                             expr:"^([0-9.]+([a-z0-9]+)?)", insloc:eDirFile);
-  }  
+  }
 }
 
-#Set Version KB for Novell iPrint Client
 iPrintPaths = find_file(file_name:"iprntcmd", file_path:"/", useregex:TRUE,
                        regexpar:"$", sock:sock);
 foreach iPrintBin (iPrintPaths)
@@ -96,7 +91,6 @@ foreach iPrintBin (iPrintPaths)
   if(iPrintVer[1] != NULL) {
     set_kb_item(name:"Novell/iPrint/Client/Linux/Ver", value:iPrintVer[1]);
 
-    ## build cpe and store it as host_detail
     register_and_report_cpe(app:"Novell iPrint Client", ver:iPrintVer[1], base:"cpe:/a:novell:iprint_client:",
                             expr:"^([0-9]\.[0-9]+)", insloc:iPrintBin);
   }

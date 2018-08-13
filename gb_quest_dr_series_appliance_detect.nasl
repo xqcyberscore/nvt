@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quest_dr_series_appliance_detect.nasl 9387 2018-04-06 12:53:16Z santu $
+# $Id: gb_quest_dr_series_appliance_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Quest DR Series Appliance Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813011");
-  script_version("$Revision: 9387 $");
+  script_version("$Revision: 10888 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:53:16 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-03-12 13:08:38 +0530 (Mon, 12 Mar 2018)");
   script_name("Quest DR Series Appliance Remote Detection");
 
@@ -56,7 +56,7 @@ include("http_keepalive.inc");
 drPort = get_http_port(default:80);
 
 res = http_get_cache(port:drPort, item:"/");
-if('title="Quest Software Inc' >< res && 'ng-app="drConsoleApp' >< res && 
+if('title="Quest Software Inc' >< res && 'ng-app="drConsoleApp' >< res &&
    '<dr-masthead-application-name>' >< res)
 {
   version = "unknown";
@@ -64,7 +64,7 @@ if('title="Quest Software Inc' >< res && 'ng-app="drConsoleApp' >< res &&
 
   cpe = 'cpe:/a:quest:dr_appliance';
   register_product( cpe:cpe, location:"/", port:drPort,  service:"www");
-  log_message(data: build_detection_report(app: "Quest DR Series Appliance", version:version, install: "/", 
+  log_message(data: build_detection_report(app: "Quest DR Series Appliance", version:version, install: "/",
                                            cpe: cpe, concluded: "Quest DR Series Appliance Detected"),
                                            port: drPort);
   exit(0) ;

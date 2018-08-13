@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_endpoint_encryption_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_symantec_endpoint_encryption_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # Symantec Endpoint Encryption (SEE) Version Detection (Windows)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808069");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 10901 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 11:23:59 +0530 (Tue, 07 Jun 2016)");
   script_name("Symantec Endpoint Encryption (SEE) Version Detection (Windows)");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Symantec Endpoint Encryption (SEE).
 
   The script logs in via smb, searches for 'Symantec Endpoint Encryption'
@@ -45,7 +45,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -57,20 +57,12 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## variable Initialization
-os_arch = "";
-key = "";
-seePath = "";
-seeVer = "";
-seeName = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(0);
 }
 
-## Key is same for 32 bit and 64 bit platform 
+## Key is same for 32 bit and 64 bit platform
 key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 if(!registry_key_exists(key:key)){
   exit(0);
@@ -81,7 +73,6 @@ foreach item (registry_enum_keys(key:key))
 {
   seeName = registry_get_sz(key:key + item, item:"DisplayName");
 
-  #### Confirm Application
   if("Symantec Endpoint Encryption" >< seeName)
   {
     seeVer = registry_get_sz(key:key + item, item:"DisplayVersion");
@@ -94,24 +85,20 @@ foreach item (registry_enum_keys(key:key))
     {
       set_kb_item(name:"Symantec/Endpoint/Encryption/Win/Ver", value:seeVer);
 
-    ## build cpe and store it as host_detail
       cpe = build_cpe(value:seeVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:endpoint_encryption:");
       if(isnull(cpe))
         cpe = "cpe:/a:symantec:endpoint_encryption";
 
-      ## Register for 64 bit app on 64 bit OS once again
       if("64" >< os_arch)
       {
         set_kb_item(name:"Symantec/Endpoint/Encryption/Win64/Ver", value:seeVer);
 
-        ## Build CPE
         cpe = build_cpe(value:seeVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:endpoint_encryption:x64:");
 
         if(isnull(cpe))
           cpe = "cpe:/a:symantec:endpoint_encryption:x64";
       }
 
-      ## Register Product and Build Report
       register_product(cpe:cpe, location:seePath);
       log_message(data: build_detection_report(app: seeName,
                                                version: seeVer,

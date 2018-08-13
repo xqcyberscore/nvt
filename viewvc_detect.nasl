@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: viewvc_detect.nasl 8087 2017-12-12 13:12:04Z teissa $
+# $Id: viewvc_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # ViewVC Detection
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running ViewVC, a browser interface for CVS and
-Subversion version control repositories.";
-
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100261");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8087 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
+ script_version("$Revision: 10901 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2009-08-26 20:38:31 +0200 (Wed, 26 Aug 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("ViewVC Detection");
@@ -43,8 +40,9 @@ if(description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.viewvc.org/");
+ script_tag(name:"summary", value:"This host is running ViewVC, a browser interface for CVS and
+Subversion version control repositories.");
+ script_xref(name:"URL", value:"http://www.viewvc.org/");
  exit(0);
 }
 
@@ -53,8 +51,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.100261";
 SCRIPT_DESC = "ViewVC Detection";
 
 port = get_http_port(default:80);
@@ -77,7 +73,6 @@ foreach dir( make_list_unique( "/svn", "/scm", cgi_dirs( port:port ) ) ) {
      egrep(pattern: "<meta.*generator.*ViewVC", string: buf, icase: TRUE) )
   {
      vers = string("unknown");
-     ### try to get version 
      version = eregmatch(string: buf, pattern: "ViewVC ([0-9.]+[-dev]*)",icase:TRUE);
 
      if ( !isnull(version[1]) ) {
@@ -86,17 +81,16 @@ foreach dir( make_list_unique( "/svn", "/scm", cgi_dirs( port:port ) ) ) {
 
      tmp_version = string(vers," under ",install);
      set_kb_item(name: string("www/", port, "/viewvc"), value: tmp_version);
-   
-     ## build cpe and store it as host_detail
+
      cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+-?([a-z0-9]+)?)", base:"cpe:/a:viewvc:viewvc:");
      if(!isnull(cpe))
-        register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
- 
+        register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
+
      info = string("ViewVC Version '");
      info += string(vers);
      info += string("' was detected on the remote host in the following directory(s):\n\n");
      info += string(install, "\n");
-     
+
      log_message(port:port,data:info);
      exit(0);
    }

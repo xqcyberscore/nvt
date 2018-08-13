@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_4images_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
+# $Id: gb_4images_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # 4images Detection
 #
@@ -25,22 +25,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Detection of 4images.
-                    
-The script sends a connection request to the server and attempts to
-extract the version number from the reply.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103741";   
-
 if (description)
 {
- 
+
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"qod_type", value:"remote_banner");
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 9584 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103741");
+ script_version("$Revision: 10888 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2013-06-17 17:38:29 +0200 (Mon, 17 Jun 2013)");
  script_name("4images Detection");
  script_category(ACT_GATHER_INFO);
@@ -49,7 +42,10 @@ if (description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name:"summary", value:"Detection of 4images.
+
+The script sends a connection request to the server and attempts to
+extract the version number from the reply.");
  exit(0);
 }
 
@@ -72,7 +68,6 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
  if(egrep(pattern: "Powered by <b>4images</b>", string: buf, icase: TRUE))
  {
     vers = string("unknown");
-    ### try to get version 
     version = eregmatch(string: buf, pattern: "Powered by <b>4images</b> ([0-9.]+)",icase:TRUE);
 
     if ( !isnull(version[1]) ) {

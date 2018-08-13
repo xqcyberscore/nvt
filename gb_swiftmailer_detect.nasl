@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_swiftmailer_detect.nasl 4890 2016-12-30 13:26:31Z antu123 $
+# $Id: gb_swiftmailer_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # SwiftMailer Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809772");
-  script_version("$Revision: 4890 $");
+  script_version("$Revision: 10908 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 14:26:31 +0100 (Fri, 30 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-12-29 17:59:59 +0530 (Thu, 29 Dec 2016)");
   script_name("SwiftMailer Detection");
 
@@ -52,22 +52,14 @@ if(description)
 include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
 
-## Variable Initialization
-dir = "";
-phpPort = 0;
-rcvRes = "";
-version = "";
 
-##Get HTTP Port
 if(!phpPort = get_http_port(default:80)){
   exit(0);
 }
 
 if(!can_host_php(port:phpPort)) exit(0);
 
-##Iterate over possible paths
 foreach dir(make_list_unique("/", "/swiftmailer", "/SwiftMailer", cgi_dirs(port:phpPort)))
 {
   install = dir;
@@ -81,7 +73,6 @@ foreach dir(make_list_unique("/", "/swiftmailer", "/SwiftMailer", cgi_dirs(port:
       sndReq = http_get(item: dir + path + file, port:phpPort);
       rcvRes = http_send_recv(port:phpPort, data:sndReq);
 
-      ##Confirm application
       if((rcvRes =~ "^HTTP/.* 200 OK") &&
          ('swiftmailer"' >< rcvRes && '"MIT"' >< rcvRes && 'swiftmailer.org"' >< rcvRes) ||
          ("Swift Mailer, by Chris Corbyn" >< rcvRes && "swiftmailer.org" >< rcvRes)||
@@ -95,14 +86,12 @@ foreach dir(make_list_unique("/", "/swiftmailer", "/SwiftMailer", cgi_dirs(port:
 
           if(rcvRes1 =~ "^HTTP/.* 200 OK")
           {
-            ##Grep for version
             version = eregmatch(pattern:'Swift-([0-9.]+)([A-Za-z0-9]-)?', string: rcvRes1);
             if(version[1])
             {
               version = version[1];
               version = ereg_replace(pattern:"-", string:version, replace:".");
 
-              ## Set the KB value
               set_kb_item(name:"www/" + phpPort + "/swiftmailer", value:version);
               set_kb_item(name:"swiftmailer/Installed", value:TRUE);
 

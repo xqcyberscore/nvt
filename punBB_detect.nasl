@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: punBB_detect.nasl 8146 2017-12-15 13:40:59Z cfischer $
+# $Id: punBB_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 # Description: PunBB detection
 #
 # Authors:
@@ -22,22 +22,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "The remote web server contains a database management application
-written in PHP. 
-
-Description :
-
-This script detects whether the remote host is running PunBB and
-extracts the version number and location if found. 
-
-PunBB is an open-source discussion board written in PHP.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15936");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8146 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10922 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("PunBB detection");
@@ -48,8 +38,16 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
   script_require_ports("Services/www", 80);
-  script_xref(name : "URL" , value : "http://www.punbb.org/");
-  script_tag(name : "summary" , value : tag_summary);
+  script_xref(name:"URL", value:"http://www.punbb.org/");
+  script_tag(name:"summary", value:"The remote web server contains a database management application
+written in PHP.
+
+Description :
+
+This script detects whether the remote host is running PunBB and
+extracts the version number and location if found.
+
+PunBB is an open-source discussion board written in PHP.");
   exit(0);
 }
 
@@ -58,8 +56,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.15936";
 SCRIPT_DESC = "PunBB detection";
 
 port = get_http_port(default:80);
@@ -91,11 +87,10 @@ foreach dir( make_list_unique( "/punbb", "/forum", "/forums", cgi_dirs( port:por
     tmp_version = version + " under " + install;
     set_kb_item(name:"www/" + port + "/punBB", value:tmp_version);
     set_kb_item(name:"punBB/installed", value:TRUE);
-   
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+\.[0-9])\.?([a-z0-9]+)?", base:"cpe:/a:punbb:punbb:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
     exit(0);
   }

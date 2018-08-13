@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_symphony_detect_lin.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: gb_ibm_lotus_symphony_detect_lin.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # IBM Lotus Symphony Version Detection (Linux)
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script finds the installed IBM Lotus Symphony version and
-  saves the result in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802230");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9347 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-08-05 09:04:20 +0200 (Fri, 05 Aug 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("IBM Lotus Symphony Version Detection (Linux)");
@@ -44,7 +41,8 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script finds the installed IBM Lotus Symphony version and
+  saves the result in KB.");
   exit(0);
 }
 
@@ -83,7 +81,6 @@ if(paths != NULL)
 {
   foreach path (paths)
   {
-    ## Confirm Symphony Path
     if("com.ibm.symphony" >< path) {
       file = ssh_cmd(socket:sock, cmd: "cat " + path);
     }
@@ -93,12 +90,10 @@ if(paths != NULL)
 close(sock);
 ssh_close_connection();
 
-## Confirm Symphony File
 if(isnull(file) || "Symphony" >!< file){
   exit(0);
 }
 
-## Get Version
 foreach line(split(file))
 {
   version = eregmatch(pattern:"1=([0-9.]+).?([a-zA-Z0-9]+)?", string:line);
@@ -114,7 +109,6 @@ foreach line(split(file))
 
 if(symVer)
 {
-  ## Set Symphony Version in KB
   set_kb_item(name:"IBM/Lotus/Symphony/Lin/Ver", value:symVer);
   log_message(data:"IBM Lotus Symphony version " + symVer +
                      " was detected on the host");

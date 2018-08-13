@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bullguard_backup_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_bullguard_backup_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # BullGuard Backup Version Detection (Windows)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805288");
-  script_version("$Revision: 5888 $");
+  script_version("$Revision: 10908 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-02-23 13:21:29 +0530 (Mon, 23 Feb 2015)");
   script_name("BullGuard Backup Version Detection (Windows)");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   BullGuard Backup.
 
   The script logs in via smb, searches for 'BullGuard Backup' in the registry,
@@ -46,7 +46,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -59,20 +59,11 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## variable Initialization
-os_arch = "";
-bgPath = "";
-bgName = "";
-bgVer = "";
-key = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-##Confirm Application
 if(!registry_key_exists(key:"SOFTWARE\BullGuard Ltd.")){
   exit(0);
 }
@@ -83,13 +74,10 @@ if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-##Grep for app Name
 bgName = registry_get_sz(key:key, item:"DisplayName");
 
-##Confirm Application
 if("BullGuard Backup" >< bgName)
 {
-  ##Get Installation Path
   bgPath = registry_get_sz(key:key, item:"InstallLocation");
 
   if(bgPath)
@@ -106,26 +94,21 @@ if("BullGuard Backup" >< bgName)
 
     if(bgVer)
     {
-      ##Set version in KB
       set_kb_item(name:"BullGuard/Backup/Ver", value:bgVer);
 
-      ## Build CPE
       cpe = build_cpe(value:bgVer, exp:"^([0-9.]+)", base:"cpe:/a:bullguard:online_backup:");
       if(isnull(cpe))
         cpe = 'cpe:/a:bullguard:online_backup';
 
-      ## Register for 64 bit app on 64 bit OS once again
       if("64" >< os_arch)
       {
         set_kb_item(name:"BullGuard/Backup64/Ver", value:bgVer);
 
-        ## Build CPE
         cpe = build_cpe(value:bgVer, exp:"^([0-9.]+)", base:"cpe:/a:bullguard:online_backup:x64:");
         if(isnull(cpe))
           cpe = "cpe:/a:bullguard:online_backup:x64";
       }
-     
-      ##register cpe
+
       register_product(cpe:cpe, location:bgPath);
       log_message(data: build_detection_report(app: bgName,
                                              version: bgVer,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle_webLogic_server_detect.nasl 9544 2018-04-20 07:54:47Z ckuersteiner $
+# $Id: oracle_webLogic_server_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Oracle WebLogic Server Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100493");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9544 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 09:54:47 +0200 (Fri, 20 Apr 2018) $");
+  script_version("$Revision: 10929 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-02-14 12:35:00 +0100 (Sun, 14 Feb 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -40,7 +40,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_require_ports("Services/www", 7001);
   script_dependencies("find_service.nasl", "http_version.nasl");
-  script_tag(name: "summary", value: "Detection of Oracle WebLogic Server.
+  script_tag(name:"summary", value:"Detection of Oracle WebLogic Server.
 
 The script sends a connection request to the server and attempts to extract the version number from the reply.");
   exit(0);
@@ -49,7 +49,7 @@ The script sends a connection request to the server and attempts to extract the 
 include("cpe.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 include("host_details.inc");
 
 port = get_http_port(default:7001);

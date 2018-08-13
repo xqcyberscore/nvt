@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_opera_detection_linux_900037.nasl 9584 2018-04-24 10:34:07Z jschulte $
+# $Id: secpod_opera_detection_linux_900037.nasl 10917 2018-08-10 16:48:12Z cfischer $
 #
 # Opera Version Detection for Linux
 #
@@ -30,19 +30,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ################################################################################
 
-tag_summary = "Detection of installed version of Opera.
-
-The script logs in via ssh, searches for executable 'opera' and
-greps the version executable found.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900037";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
+  script_oid("1.3.6.1.4.1.25623.1.0.900037");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9584 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
+  script_version("$Revision: 10917 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 18:48:12 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-08-22 10:29:01 +0200 (Fri, 22 Aug 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"executable_version");
@@ -54,24 +47,17 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"Detects the installed version of Opera.
+
+The script logs in via ssh, searches for executable 'opera' and
+greps the version executable found.");
   exit(0);
 }
-
 
 include("ssh_func.inc");
 include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
-
-## Variable Initialization
-sock = 0;
-result = "";
-operaVer = "";
-operaName = "";
-binaryName = "";
-checkdupOpera = "";
-operaBuildVer = "";
 
 sock = ssh_login_or_reuse_connection();
 if(!sock){
@@ -87,6 +73,7 @@ garg[2] = "-a";
 garg[3] = string("Opera [0-9]\\+\\.[0-9]\\+");
 garg[5] = string("Internal\\ build\\ [0-9]\\+");
 garg[6] = string("Build\\ number:.*");
+checkdupOpera = "";
 
 operaName = find_file(file_name:"opera", file_path:"/", useregex:TRUE,
                       regexpar:"$", sock:sock);
@@ -96,21 +83,17 @@ foreach binaryName(operaName)
 {
   binaryName = chomp(binaryName);
 
-  ## Grep the version from Opera cmd
   operaVer = get_bin_version(full_prog_name:binaryName, version_argv:"-version",
                              ver_pattern:"Opera ([0-9.]+) (Build ([0-9]+))?", sock:sock);
 
-  ## Get the build version if found
   if(operaVer && operaVer[1] && operaVer[3]){
     operaBuildVer = operaVer[1] + "." + operaVer[3];
   }
 
-  ## Get the opera version
   if(operaVer && operaVer[1]){
      operaVer = operaVer[1];
   }
 
-  ## Get the version from file if cmd not found
   if(!operaVer)
   {
     if(islocalhost())
@@ -136,17 +119,14 @@ foreach binaryName(operaName)
 
   if(!isnull(operaVer))
   {
-    ## Check if version is already set
     if(operaVer + ", ">< checkdupOpera){
       continue;
     }
 
     checkdupOpera  +=  operaVer + ", ";
 
-    ## Set the KB version
     set_kb_item(name:"Opera/Linux/Version", value:operaVer);
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:operaVer, exp:"^([0-9.]+)", base:"cpe:/a:opera:opera:");
     if(!isnull(cpe))
        register_product(cpe:cpe, location:binaryName);
@@ -156,7 +136,6 @@ foreach binaryName(operaName)
       '\nCPE: '+ cpe +
       '\n\nConcluded from version identification result:\n' + operaVer);
 
-    ## If build version not found then get it from file
     if(!operaBuildVer)
     {
       operaBuildVer = get_bin_version(full_prog_name:grep, version_argv:arg2,

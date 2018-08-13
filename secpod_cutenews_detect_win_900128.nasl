@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cutenews_detect_win_900128.nasl 9542 2018-04-20 01:34:17Z ckuersteiner $
+# $Id: secpod_cutenews_detect_win_900128.nasl 10911 2018-08-10 15:16:34Z cfischer $
 # Description: CuteNews Version Detection for Windows
 #
 # Authors:
@@ -27,8 +27,8 @@ if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.900128");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9542 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-20 03:34:17 +0200 (Fri, 20 Apr 2018) $");
+ script_version("$Revision: 10911 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2008-12-02 11:52:55 +0100 (Tue, 02 Dec 2008)");
  script_copyright("Copyright (C) 2008 SecPod");
  script_tag(name:"cvss_base", value:"0.0");
@@ -47,7 +47,7 @@ if(description)
 
  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name: "deprecated", value: TRUE);
+ script_tag(name:"deprecated", value: TRUE);
 
  exit(0);
 }
@@ -80,12 +80,10 @@ foreach dir( make_list_unique( "/cutenews", cgi_dirs( port:port ) ) ) {
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/"+ port + "/cutenews", value:tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:cutephp:cutenews:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:cutephp:cutenews';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"CuteNews",

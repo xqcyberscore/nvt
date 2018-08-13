@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_amarok_detect_lin.nasl 8528 2018-01-25 07:57:36Z teissa $
+# $Id: secpod_amarok_detect_lin.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Amarok Player Version Detection (Linux)
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The script detects the version of Amarok Player for Linux on
-  remote host and sets the reuslt into KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900430");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8528 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
+ script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-01-22 12:00:13 +0100 (Thu, 22 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Amarok Player Version Detection (Linux)");
@@ -44,7 +41,8 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"The script detects the version of Amarok Player for Linux on
+  remote host and sets the reuslt into KB.");
   exit(0);
 }
 
@@ -54,8 +52,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900430";
 SCRIPT_DESC = "Amarok Player Version Detection (Linux)";
 
 sock = ssh_login_or_reuse_connection();
@@ -77,10 +73,9 @@ foreach amarokBin (amarokPaths)
            " running at location " + amarokBin + " was detected on the host");
     ssh_close_connection();
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:amarokVer[1], exp:"^([0-9.]+)", base:"cpe:/a:amarok:amarok:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
     exit(0);
   }

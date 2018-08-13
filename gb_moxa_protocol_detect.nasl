@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_protocol_detect.nasl 8236 2017-12-22 10:28:23Z cfischer $
+# $Id: gb_moxa_protocol_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Moxa Management Protocol Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106693");
- script_version ("$Revision: 8236 $");
- script_tag(name: "last_modification", value: "$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
- script_tag(name: "creation_date", value: "2017-03-24 14:13:08 +0700 (Fri, 24 Mar 2017)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10905 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2017-03-24 14:13:08 +0700 (Fri, 24 Mar 2017)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Moxa Management Protocol Detection");
 
- script_tag(name: "summary" , value: "Moxa's proprietary management protocol is running on UDP port 4800 at this
+ script_tag(name:"summary", value:"Moxa's proprietary management protocol is running on UDP port 4800 at this
 host.
 
 It is used for Broadcast, Monitor, Get current settings, RealCOM Port mapping.");
@@ -81,7 +81,6 @@ set_kb_item(name: "moxa_mgmt_proto/detected", value: TRUE);
 data = substr(recv, 4);
 set_kb_item(name: "moxa_mgmt_proto/req_data", value: data);
 
-# Try to find the model
 model_data = substr(data, 4, 9);
 model = moxa_get_model(data: model_data);
 

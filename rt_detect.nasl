@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rt_detect.nasl 5744 2017-03-28 07:25:23Z cfi $
+# $Id: rt_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # RT: Request Tracker Detection
 #
@@ -33,19 +33,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100385");
-  script_version("$Revision: 5744 $");
+  script_version("$Revision: 10891 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-28 09:25:23 +0200 (Tue, 28 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-12-09 13:16:50 +0100 (Wed, 09 Dec 2009)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("RT: Request Tracker Detection");
 
-  tag_summary = "Detection of installed version of Request Tracker.
+  script_tag(name:"summary", value:"Detects the installed version of Request Tracker.
 
-  This script sends HTTP GET request and try to get the version from the response.";
-
-  script_tag(name : "summary" , value : tag_summary);
+  This script sends HTTP GET request and try to get the version from the response.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
@@ -74,7 +72,6 @@ foreach dir( make_list_unique( "/rt", "/tracker", cgi_dirs( port:http_port ) ) )
   if(egrep(pattern: "&#187;&#124;&#171; RT.*Best Practical Solutions, LLC", string: buf, icase: TRUE))
   {
     vers = string("unknown");
-    ### try to get version
     version = eregmatch(string: buf, pattern: "&#187;&#124;&#171; RT ([0-9.]+)(rc[0-9]+)?",icase:TRUE);
 
     if( !isnull(version[1]) && !isnull(version[2])) {
@@ -88,7 +85,6 @@ foreach dir( make_list_unique( "/rt", "/tracker", cgi_dirs( port:http_port ) ) )
     set_kb_item(name: string("www/", http_port, "/rt_tracker"), value: tmp_version);
     set_kb_item(name:"RequestTracker/installed", value:TRUE);
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:best_practical_solutions:request_tracker:");
     if(!cpe)
       cpe = "cpe:/a:best_practical_solutions:request_tracker";

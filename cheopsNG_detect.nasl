@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cheopsNG_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: cheopsNG_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # Cheops NG Agent Detection
 #
@@ -24,33 +24,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote host is running a network management tool.
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.20160");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10890 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("Cheops NG Agent Detection");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2005 Michel Arboi");
+  script_family("Service detection");
+  script_dependencies("find_service.nasl", "find_service2.nasl");
+  script_require_ports("Services/unknown", 2300);
+
+  script_xref(name:"URL", value:"http://cheops-ng.sourceforge.net/");
+
+  script_tag(name:"summary", value:"The remote host is running a network management tool.
 
 Description :
 
 The remote host is running a Cheops NG agent.  Cheops NG is an
 open-source network management tool, and the cheops-agent provides a
 way for remote hosts to communicate with the tool and use it to map
-your network, port scan machines and identify running services.";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.20160");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
-  script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
-  script_tag(name:"cvss_base", value:"0.0");
-  script_name( "Cheops NG Agent Detection");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("This script is Copyright (C) 2005 Michel Arboi");
-  script_family("Service detection");
-  script_dependencies("find_service.nasl", "find_service2.nasl");
-  script_require_ports("Services/unknown", 2300 );
-
-  script_xref(name:"URL", value:"http://cheops-ng.sourceforge.net/");
- 
-  script_tag(name:"summary", value:tag_summary);
+your network, port scan machines and identify running services.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

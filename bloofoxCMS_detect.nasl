@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: bloofoxCMS_detect.nasl 8527 2018-01-25 07:33:25Z ckuersteiner $
+# $Id: bloofoxCMS_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # bloofoxCMS Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100311");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8527 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:33:25 +0100 (Thu, 25 Jan 2018) $");
+ script_version("$Revision: 10898 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2009-10-20 18:54:22 +0200 (Tue, 20 Oct 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("bloofoxCMS Detection");
@@ -41,10 +41,10 @@ if (description)
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name: "summary", value: "This host is running bloofoxCMS, a free open source content management
+ script_tag(name:"summary", value:"This host is running bloofoxCMS, a free open source content management
 system.");
 
- script_xref(name: "URL", value: "http://www.bloofox.com");
+ script_xref(name:"URL", value:"http://www.bloofox.com");
  exit(0);
 }
 
@@ -67,7 +67,6 @@ foreach dir( make_list_unique( "/cms", cgi_dirs( port:port ) ) ) {
     egrep(pattern: "Powered by <a [^>]+>bloofoxCMS", string: buf, icase: TRUE))
  {
     vers = "unknown";
-    ### try to get version 
     url = dir + "/ChangeLog.txt";
     buf = http_get_cache(item:url, port:port);
 
@@ -79,12 +78,12 @@ foreach dir( make_list_unique( "/cms", cgi_dirs( port:port ) ) ) {
     }
 
     set_kb_item(name: "bloofoxcms/installed", value: TRUE);
-   
+
     cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:bloofox:bloofoxcms:");
     if (!cpe)
       cpe = 'cpe:/a:bloofox:bloofoxcms';
 
-    register_product(cpe: cpe, location: install, port: port);    
+    register_product(cpe: cpe, location: install, port: port);
 
     log_message(data: build_detection_report(app: "bloofoxCMS", version: vers, install: install, cpe: cpe,
                                              concluded: version[0], concludedUrl: concUrl),

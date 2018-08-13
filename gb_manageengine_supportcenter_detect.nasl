@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805806");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 10891 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-06-25 12:03:58 +0530 (Thu, 25 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("ManageEngine SupportCenter Plus Remote Detection");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   ManageEngine SupportCenter.
 
   This script sends HTTP GET request and try to confirm the application from
@@ -55,12 +55,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-
-## Get HTTP Port
 http_port = get_http_port(default:8080);
 if(!http_port){
   exit(0);
@@ -72,7 +66,6 @@ rcvRes = http_get_cache(item:"/", port:http_port);
 if(">ManageEngine SupportCenter Plus<" >< rcvRes &&
                            "ZOHO Corp" >< rcvRes)
 {
-  ## Get version from the response
   appVer = eregmatch(pattern:"style.css\?([0-9.]+)", string:rcvRes);
 
   if(appVer[1]){
@@ -81,10 +74,8 @@ if(">ManageEngine SupportCenter Plus<" >< rcvRes &&
     appVer = "Unknown";
   }
 
-  ## Set the KB
   set_kb_item(name:"ManageEngine/SupportCenter/Plus/installed",value:TRUE);
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value:appVer, exp:"^([0-9.]+)", base:"cpe:/a:manageengine:supportcenter_plus:");
   if(isnull(cpe))
     cpe = "cpe:/a:manageengine:supportcenter_plus";

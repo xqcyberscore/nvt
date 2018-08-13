@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_humax_gateway_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_humax_gateway_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # HUMAX Gateway Detection
 #
@@ -28,20 +28,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106916");
-  script_version("$Revision: 8078 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-03 11:22:04 +0700 (Mon, 03 Jul 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-03 11:22:04 +0700 (Mon, 03 Jul 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("HUMAX Gateway Detection");
 
-  script_tag(name: "summary" , value: "Detection of HUMAX Gateway devices.
+  script_tag(name:"summary", value:"Detection of HUMAX Gateway devices.
 
 The script sends a connection request to the server and attempts to detect HUMAX Gateway devices.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -50,7 +50,7 @@ The script sends a connection request to the server and attempts to detect HUMAX
   script_require_ports("Services/www", 8081);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "http://americas.humaxdigital.com/gateway/");
+  script_xref(name:"URL", value:"http://americas.humaxdigital.com/gateway/");
 
   exit(0);
 }

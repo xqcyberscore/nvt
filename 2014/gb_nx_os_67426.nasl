@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nx_os_67426.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: gb_nx_os_67426.nasl 10904 2018-08-10 14:24:40Z mmartin $
 #
-# Cisco NX-OS Software Arbitrary File Read Vulnerability 
+# Cisco NX-OS Software Arbitrary File Read Vulnerability
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -25,13 +25,42 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "This issue is being tracked by Cisco Bug ID CSCul05217 and CSCul23419";
+if (description)
+{
+ script_oid("1.3.6.1.4.1.25623.1.0.105069");
+ script_bugtraq_id(67426);
+ script_cve_id("CVE-2013-6975");
+ script_tag(name:"cvss_base", value:"4.6");
+ script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:N/A:N");
+ script_version("$Revision: 10904 $");
 
-tag_impact = "Exploiting this issue can allow a local attacker to gain read
+ script_name("Cisco NX-OS Software Arbitrary File Read Vulnerability");
+
+
+ script_xref(name:"URL", value:"http://www.securityfocus.com/bid/67426");
+ script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCul23419");
+ script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCul23419");
+
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2014-08-21 11:10:24 +0100 (Thu, 21 Aug 2014)");
+ script_category(ACT_GATHER_INFO);
+ script_tag(name:"qod_type", value:"remote_banner");
+ script_family("CISCO");
+ script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+ script_dependencies("gb_cisco_nx_os_version.nasl");
+ script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
+
+ script_tag(name:"impact", value:"Exploiting this issue can allow a local attacker to gain read
 access to arbitrary files. Information harvested may aid in launching further
-attacks.";
-
-tag_affected = "This vulnerability affects the following platforms which are based on Cisco NX-OS:
+attacks.");
+ script_tag(name:"vuldetect", value:"Check the NX OS version.");
+ script_tag(name:"insight", value:"This issue is being tracked by Cisco Bug ID CSCul05217 and CSCul23419");
+ script_tag(name:"solution", value:"Updates are available.");
+ script_tag(name:"solution_type", value:"VendorFix");
+ script_tag(name:"summary", value:"A vulnerability in the command-line interface (CLI) of Cisco
+NX-OS Software could allow an authenticated, local attacker to access the
+contents of arbitrary files on the affected device.");
+ script_tag(name:"affected", value:"This vulnerability affects the following platforms which are based on Cisco NX-OS:
 Cisco Nexus 7000
 Cisco MDS 9000
 Cisco Nexus 6000
@@ -43,46 +72,7 @@ Cisco Nexus 3000
 Cisco Nexus 1000V
 Cisco Connected Grid Router 1000 Series
 Cisco Unified Computing System Fabric Interconnect 6200
-Cisco Unified Computing System Fabric Interconnect 6100";
-
-tag_summary = "A vulnerability in the command-line interface (CLI) of Cisco
-NX-OS Software could allow an authenticated, local attacker to access the 
-contents of arbitrary files on the affected device.";
-
-tag_solution = "Updates are available.";
-tag_vuldetect = "Check the NX OS version.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.105069");
- script_bugtraq_id(67426);
- script_cve_id("CVE-2013-6975");
- script_tag(name:"cvss_base", value:"4.6");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:N/A:N");
- script_version ("$Revision: 6724 $");
-
- script_name("Cisco NX-OS Software Arbitrary File Read Vulnerability");
-
-
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/67426");
- script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCul23419");
- script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCul23419");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
- script_tag(name:"creation_date", value:"2014-08-21 11:10:24 +0100 (Thu, 21 Aug 2014)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_nx_os_version.nasl");
- script_mandatory_keys("cisco_nx_os/version","cisco_nx_os/model","cisco_nx_os/device");
-
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+Cisco Unified Computing System Fabric Interconnect 6100");
 
  exit(0);
 }

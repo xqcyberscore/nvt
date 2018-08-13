@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_project_server_detect.nasl 6922 2017-08-15 07:12:37Z asteins $
+# $Id: gb_ms_project_server_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Microsoft Project Server Detection
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805168");
-  script_version("$Revision: 6922 $");
+  script_version("$Revision: 10902 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-15 09:12:37 +0200 (Tue, 15 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 16:57:38 +0530 (Wed, 15 Apr 2015)");
   script_name("Microsoft Project Server Detection");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Microsoft Project Server.
 
   The script logs in via smb, searches for Microsoft Project Server in the
@@ -46,6 +46,7 @@ if(description)
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -56,12 +57,6 @@ include("smb_nt.inc");
 include("host_details.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-cpe = "";
-psVer = "";
-psName = "";
-insPath = "";
-
 key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 if(!registry_key_exists(key:key)){
   exit(0);
@@ -71,19 +66,16 @@ foreach item (registry_enum_keys(key:key))
 {
   if(psName = registry_get_sz(key:key + item, item:"DisplayName"))
   {
-    ## Check for Project Server
     if("Microsoft Project Server" >< psName)
     {
       psVer = registry_get_sz(key:key + item, item:"DisplayVersion");
       if(psVer)
       {
-        ## Get the installation path
         insPath = registry_get_sz(key:key + item, item:"InstallLocation");
         if(!insPath){
           insPath = "Could not find the install location from registry";
         }
 
-        ## Set the KB item
         set_kb_item(name:"MS/ProjectServer/Server/Ver", value:psVer);
         cpe = build_cpe(value:psVer, exp:"^([0-9.]+[a-z0-9]*)",
                              base:"cpe:/a:microsoft:project_server:");

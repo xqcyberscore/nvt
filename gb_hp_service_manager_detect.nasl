@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_service_manager_detect.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_hp_service_manager_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # HP Service Manager Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106125");
- script_version ("$Revision: 7006 $");
- script_tag(name: "last_modification", value: "$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
- script_tag(name: "creation_date", value: "2016-07-11 12:33:22 +0700 (Mon, 11 Jul 2016)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10899 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2016-07-11 12:33:22 +0700 (Mon, 11 Jul 2016)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("HP Service Manager Detection");
 
- script_tag(name: "summary" , value: "Detection of HP Service Manager
+ script_tag(name:"summary", value:"Detection of HP Service Manager
 
 The script sends a connection request to the server and attempts to detect the presence of HP Service Manager
 and to extract its version.");
@@ -51,7 +51,7 @@ and to extract its version.");
  script_require_ports("Services/www", 443);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_xref(name: "URL", value: "http://www8.hp.com/us/en/software-solutions/service-desk/index.html");
+ script_xref(name:"URL", value:"http://www8.hp.com/us/en/software-solutions/service-desk/index.html");
 
 
  exit(0);
@@ -72,7 +72,7 @@ foreach dir (make_list_unique("/sm", "/sm7", "/sc", "/hpsm", cgi_dirs(port: port
   url = dir + "/index.do";
   res = http_get_cache(port: port, item: url);
 
-  if (res =~ "<title>(HP )?Service Manager: Login</title>" && 
+  if (res =~ "<title>(HP )?Service Manager: Login</title>" &&
       "Hewlett-Packard Development Company, L.P." >< res && 'id="old.password"  name="old.password"/>' >< res) {
     version = "unknown";
 
@@ -86,7 +86,7 @@ foreach dir (make_list_unique("/sm", "/sm7", "/sc", "/hpsm", cgi_dirs(port: port
         version = ver[2];
     }
 
-    
+
 
     set_kb_item(name: "hp_service_manager/installed", value: TRUE);
     if (version != "unknown")

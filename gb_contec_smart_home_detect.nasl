@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_contec_smart_home_detect.nasl 9291 2018-04-04 07:45:18Z emoss $
+# $Id: gb_contec_smart_home_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Contec Smart Home Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140936");
-  script_version("$Revision: 9291 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-04 09:45:18 +0200 (Wed, 04 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2018-04-03 14:04:04 +0700 (Tue, 03 Apr 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-04-03 14:04:04 +0700 (Tue, 03 Apr 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Contec Smart Home Detection");
 
-  script_tag(name: "summary" , value: "Detection of Contec Smart Home.
+  script_tag(name:"summary", value:"Detection of Contec Smart Home.
 
 The script sends a connection request to the server and attempts to detect Contec Smart Home and to extract its
 version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ version.");
   script_require_ports("Services/www", 9000);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "http://www.contec-touch.com/");
+  script_xref(name:"URL", value:"http://www.contec-touch.com/");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ldap_null_base.nasl 5190 2017-02-03 11:52:51Z cfi $
+# $Id: ldap_null_base.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # LDAP allows null bases
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10722");
-  script_version("$Revision: 5190 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-03 12:52:51 +0100 (Fri, 03 Feb 2017) $");
+  script_version("$Revision: 10896 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -40,20 +40,16 @@ if(description)
   script_require_ports("Services/ldap", 389, 636);
   script_mandatory_keys("ldap/detected");
 
-  tag_summary = "It is possible to disclose LDAP information.
+  script_tag(name:"solution", value:"Disable NULL BASE queries on your LDAP server");
+  script_tag(name:"summary", value:"It is possible to disclose LDAP information.
 
   Description :
 
-  Improperly configured LDAP servers will allow the directory BASE 
+  Improperly configured LDAP servers will allow the directory BASE
   to be set to NULL. This allows information to be culled without
-  any prior knowledge of the directory structure.  Coupled with a 
-  NULL BIND, an anonymous user can query your LDAP server using a 
-  tool such as 'LdapMiner'";
-
-  tag_solution = "Disable NULL BASE queries on your LDAP server";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  any prior knowledge of the directory structure.  Coupled with a
+  NULL BIND, an anonymous user can query your LDAP server using a
+  tool such as 'LdapMiner'");
 
   script_tag(name:"qod_type", value:"remote_probe");
   script_tag(name:"solution_type", value:"Workaround");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_sphinxsearch_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: sw_sphinxsearch_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Sphinx search server Detection
 #
@@ -28,19 +28,19 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111034");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5888 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-08-31 18:00:00 +0200 (Mon, 31 Aug 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Sphinx search server Detection");
- 
+
   script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
   script_category(ACT_GATHER_INFO);
-  script_family("Product detection"); 
+  script_family("Product detection");
   script_dependencies("find_service1.nasl");
   script_require_ports("Services/sphinxql", 9306, "Services/sphinxapi", 9312);
 
-  script_tag(name : "summary" , value : "The script checks the presence of a Sphinx search server
+  script_tag(name:"summary", value:"The script checks the presence of a Sphinx search server
   and sets the version in the kb.");
   script_tag(name:"qod_type", value:"remote_banner");
   exit(0);
@@ -73,12 +73,10 @@ foreach port ( ports ) {
         set_kb_item( name:"sphinxsearch/" + port + "/installed", value: TRUE );
 
         ## CPE is currently not registered
-        ## build cpe and store it as host_detail
         cpe = build_cpe( value: version[1], exp:"^([0-9.]+)",base:"cpe:/a:sphinxsearch:sphinxsearch:" );
         if( isnull( cpe ) )
           cpe = 'cpe:/a:sphinxsearch:sphinxsearch';
 
-        ## Register Product and Build Report
         register_product( cpe:cpe, location:port + '/tcp', port:port );
 
         log_message( data: build_detection_report( app:"Sphinx search server",
@@ -116,7 +114,6 @@ if( get_port_state( port ) ) {
       ## CPE is currently not registered
       cpe = 'cpe:/a:sphinxsearch:sphinxsearch';
 
-      ## Register Product and Build Report
       register_product( cpe:cpe, location:port + '/tcp', port:port );
 
       log_message( data: build_detection_report( app:"Sphinx search server",

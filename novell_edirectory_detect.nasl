@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: novell_edirectory_detect.nasl 8392 2018-01-12 10:46:21Z cfischer $
+# $Id: novell_edirectory_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Novell/NetIQ eDirectory Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100339");
-  script_version("$Revision: 8392 $");
+  script_version("$Revision: 10929 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-12 11:46:21 +0100 (Fri, 12 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-11-06 12:41:10 +0100 (Fri, 06 Nov 2009)");
   script_name("Novell/NetIQ eDirectory Detection");
   script_category(ACT_GATHER_INFO);
@@ -51,7 +51,7 @@ This script performs LDAP based detection of Novell/NetIQ eDirectory");
 
 include("misc_func.inc");
 include("dump.inc");
-include("global_settings.inc");
+
 include("host_details.inc");
 include("ldap.inc");
 

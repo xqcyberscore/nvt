@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_proto_version.nasl 4484 2016-11-12 14:03:28Z cfi $
+# $Id: ssh_proto_version.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # SSH Protocol Versions Supported
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100259");
-  script_version("$Revision: 4484 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-12 15:03:28 +0100 (Sat, 12 Nov 2016) $");
+  script_version("$Revision: 10929 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-08-25 21:06:41 +0200 (Tue, 25 Aug 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -39,19 +39,17 @@ if(description)
   script_dependencies("gb_ssh_algos.nasl");
   script_require_ports("Services/ssh", 22);
 
-  tag_summary = "Identification of SSH protocol versions supported by the remote
+  script_tag(name:"summary", value:"Identification of SSH protocol versions supported by the remote
   SSH Server. Also reads the corresponding fingerprints from the service.
 
-  The following versions are tried: 1.33, 1.5, 1.99 and 2.0";
-
-  script_tag(name:"summary", value:tag_summary);
+  The following versions are tried: 1.33, 1.5, 1.99 and 2.0");
 
   script_tag(name:"qod_type", value:"remote_active");
 
   exit(0);
 }
 
-include("global_settings.inc");
+
 include("ssh_func.inc");
 include("misc_func.inc");
 include("host_details.inc");

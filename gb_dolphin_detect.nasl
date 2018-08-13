@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolphin_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_dolphin_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Dolphin Version Detection
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808217");
-  script_version("$Revision: 8078 $");
+  script_version("$Revision: 10915 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-06-06 15:55:57 +0530 (Mon, 06 Jun 2016)");
   script_name("Dolphin Version Detection");
 
-  script_tag(name : "summary" , value : "Check for the presence of Dolphin 
+  script_tag(name:"summary", value:"Check for the presence of Dolphin
   Software.
 
   This script sends HTTP GET request and try to ensure the presence of Dolphin
@@ -52,18 +52,15 @@ if(description)
 
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("host_details.inc");
 
 
-##Get HTTP Port
 dol_port = get_http_port(default:80);
 
-# Check Host Supports PHP
 if(! can_host_php(port:dol_port)) exit(0);
 
-##Iterate over possible paths
-foreach dir(make_list_unique("/", "/dolph", "/dolphin", cgi_dirs(port:dol_port))) 
+foreach dir(make_list_unique("/", "/dolph", "/dolphin", cgi_dirs(port:dol_port)))
 {
 
   install = dir;
@@ -74,16 +71,13 @@ foreach dir(make_list_unique("/", "/dolph", "/dolphin", cgi_dirs(port:dol_port))
   sndReq = http_get(item:url, port:dol_port);
   rcvRes = http_send_recv(port:dol_port, data:sndReq);
 
-  ## Confirm the application
   if("Dolphin" >< rcvRes && "boonex" >< rcvRes && "<title>Login</title>" >< rcvRes &&
      'id="admin_username"' >< rcvRes && 'id="admin_password"' >< rcvRes)
   {
     version = "unknown";
 
-    ## Set KB
     set_kb_item(name:"Dolphin/Installed", value:TRUE);
 
-    ## build cpe and store it as host_detail
     cpe = "cpe:/a:boonex:dolphin";
 
     register_product(cpe:cpe, location:install, port:dol_port);

@@ -1,9 +1,9 @@
 # OpenVAS Vulnerability Test
-# $Id: sonicwall_vpn_client_detect.nasl 6456 2017-06-28 11:19:33Z cfischer $
+# $Id: sonicwall_vpn_client_detect.nasl 10880 2018-08-10 09:27:43Z cfischer $
 # Description: SonicWall Global VPN Client Detection
 #
 # Authors:
-# Ferdy Riphagen 
+# Ferdy Riphagen
 # Modified by Michael Meyer <michael.meyer@greenbone.net>
 #
 # Copyright:
@@ -26,23 +26,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80044");
-  script_version("$Revision: 6456 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 13:19:33 +0200 (Wed, 28 Jun 2017) $");
+  script_version("$Revision: 10880 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 11:27:43 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("SonicWall Global VPN Client Detection");
   script_category(ACT_GATHER_INFO);
-  script_family("Service detection");
+  script_family("Product detection");
   script_copyright("This script is Copyright (C) 2008 Ferdy Riphagen");
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  tag_summary = "This script detects the installed version of
-  SonicWall Global VPN Client and sets the result in KB.";
-
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This script detects the installed version of
+  SonicWall Global VPN Client and sets the result in KB.");
 
   script_tag(name:"qod_type", value:"executable_version");
 
@@ -54,8 +52,6 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.80044";
 SCRIPT_DESC = "SonicWall Global VPN Client Detection";
 
 if(!get_kb_item("SMB/WindowsVersion")){
@@ -78,13 +74,12 @@ if(path) {
     set_kb_item(name:"SMB/SonicWallGlobalVPNClient/Version", value:version);
     set_kb_item(name:"SMB/SonicWallGlobalVPNClient/Path", value:path);
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:sonicwall:global_vpn_client:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
     exit(0);
-  }  
-}  
+  }
+}
 
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sophos_utm_remote_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_sophos_utm_remote_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Sophos UTM Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807073");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 10891 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-02-18 10:58:19 +0530 (Thu, 18 Feb 2016)");
   script_name("Sophos UTM Remote Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -56,18 +56,15 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-##Get HTTP Port
 port = get_http_port( default:8080 );
 
 rcvRes = http_get_cache( item: "/", port:port );
 
-## Confirm the application
 if( 'Sophos UTM' >< rcvRes && 'copyright">Powered by UTM Web Protection' >< rcvRes ) {
 
   install = "/";
   version = "unknown";
 
-  ## Set the KB value
   set_kb_item( name:"www/" + port + "/Sophos/UTM", value:version );
   set_kb_item( name:"Sophos/UTM/Installed", value:TRUE );
 

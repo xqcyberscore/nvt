@@ -1,5 +1,5 @@
 ###############################################################################                                                                 # OpenVAS Vulnerability Test
-# $Id: gb_kaspersky_password_manager_detect_win.nasl 9802 2018-05-11 11:53:28Z santu $
+# $Id: gb_kaspersky_password_manager_detect_win.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Kaspersky Password Manager Detection (Windows)
 #
@@ -27,14 +27,14 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812870");
-  script_version("$Revision: 9802 $");
+  script_version("$Revision: 10922 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-11 13:53:28 +0200 (Fri, 11 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 16:59:41 +0530 (Wed, 02 May 2018)");
   script_name("Kaspersky Password Manager Detection (Windows)");
 
-  script_tag(name:"summary" , value:"Detection of installed version of Kaspersky
+  script_tag(name:"summary", value:"Detects the installed version of Kaspersky
   password manager. The script logs in via smb, searches for Kaspersky password
   manager in the registry and gets the version from registry.");
 
@@ -42,7 +42,7 @@ if (description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
 
@@ -95,8 +95,8 @@ foreach item (registry_enum_keys(key:key))
                                            cpe: cpe,
                                            concluded: kver));
       exit(0);
-      
-    
+
+
   }
 }
 exit(0);

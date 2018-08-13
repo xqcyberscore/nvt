@@ -1,14 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ossim_web_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: gb_ossim_web_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # AlienVault OSSIM/USM Detection
 #
 # Authors:
 # Michael Meyer
-#
-# Updated By: Thanga Prakash S <tprakash@secpod.com> on 2013-10-22
-# According to CR57 and new style script_tags.
 #
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH
@@ -30,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100543");
-  script_version("$Revision: 7076 $");
+  script_version("$Revision: 10915 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-03-19 11:14:17 +0100 (Fri, 19 Mar 2010)");
   script_name("AlienVault OSSIM Detection");
 
-  script_tag(name:"summary", value:"Detection of installed version of AlienVault OSSIM (Open Source Security
+  script_tag(name:"summary", value:"Detects the installed version of AlienVault OSSIM (Open Source Security
   Information Management) and USM (Unified Security Management)
 
   This script sends HTTP GET request and try to get the version from the
@@ -62,7 +59,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Get HTTP Port
 port = get_http_port( default:443 );
 
 if( ! can_host_php( port:port ) ) exit( 0 );
@@ -92,7 +88,6 @@ foreach dir (make_list_unique( "/ossim", cgi_dirs( port:port ) ) ) {
 
     set_kb_item(name: "OSSIM/installed", value: TRUE);
 
-    ## Register Product
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data: build_detection_report( app: "AlienVault " + model,

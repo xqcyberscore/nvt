@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: packeteer_web_login.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: packeteer_web_login.nasl 10901 2018-08-10 14:09:57Z cfischer $
 # Description: Packeteer Web Management Interface Login
 #
 # Authors:
@@ -22,42 +22,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "It is possible to log onto the remote web application. 
+if (description)
+    {
+    script_oid("1.3.6.1.4.1.25623.1.0.80032");
+    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+    script_version("$Revision: 10901 $");
+    script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
+    script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
+    script_tag(name:"cvss_base", value:"0.0");
+  script_name("Packeteer Web Management Interface Login");
+
+    summary="Logs into Packeteer web management interface";
+  script_family("Web application abuses");
+
+    script_category(ACT_GATHER_INFO);
+    script_tag(name:"qod_type", value:"remote_banner");
+    script_copyright("This script is Copyright (c) 2006-2007 nnposter");
+    script_dependencies("logins.nasl", "packeteer_web_detect.nasl");
+    script_mandatory_keys("bluecoat_packetshaper/installed", "http/password");
+    script_require_ports("Services/www", 80);
+    script_tag(name:"summary", value:"It is possible to log onto the remote web application.
 
 Description :
 
 OpenVAS was able to log onto the remote Packeteer web management
 interface with the given credentials and has stored the authentication
-cookie in the KB for use with other plugins.";
-
-if (description)
-    {
-    script_oid("1.3.6.1.4.1.25623.1.0.80032");
-    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-    script_version("$Revision: 9347 $");
-    script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
-    script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
-    script_tag(name:"cvss_base", value:"0.0");
-    name="Packeteer Web Management Interface Login";
-    script_name(name);
-
-    summary="Logs into Packeteer web management interface";
-
-    family="Web application abuses";
-    script_family(family);
-
-    script_category(ACT_GATHER_INFO);
-    script_tag(name:"qod_type", value:"remote_banner");
-    script_copyright("This script is Copyright (c) 2006-2007 nnposter");
-    script_dependencies("logins.nasl","packeteer_web_detect.nasl");
-    script_mandatory_keys("bluecoat_packetshaper/installed","http/password");
-    script_require_ports("Services/www",80);
-    script_tag(name : "summary" , value : tag_summary);
+cookie in the KB for use with other plugins.");
     exit(0);
     }
 
 # Notes:
-# - logins.nasl will not process the HTTP password preference if the HTTP 
+# - logins.nasl will not process the HTTP password preference if the HTTP
 #   username is left blank. To compensate for this behavior this script assumes
 #   that a username tha consists of a single non-alphanumeric character is not
 #   really meant to be used.

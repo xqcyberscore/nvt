@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_62403.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_cisco_nx_os_62403.nasl 10904 2018-08-10 14:24:40Z mmartin $
 #
 # Cisco Open Network Environment Platform Denial of Service Vulnerability
 #
@@ -25,51 +25,39 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103878";
-
-tag_insight = "This issue is being tracked by Cisco Bug ID CSCui51551.";
-
-tag_impact = "Successful exploits will cause the network element to reload, denying
-service to legitimate users.";
-
-tag_affected = "Nexus 3000 Series with NX-OS 6.0(2)U1(2) and 6.0(2)U1(1)";
-
-tag_summary = "Cisco Open Network Environment Platform running on NX-OS is prone to a
-denial-of-service vulnerability";
-
-tag_solution = "Updates are available.";
-tag_vuldetect = "Check the NX OS version.";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103878");
  script_bugtraq_id(62403);
  script_cve_id("CVE-2013-5496");
  script_tag(name:"cvss_base", value:"6.3");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:C");
- script_version ("$Revision: 7000 $");
+ script_version("$Revision: 10904 $");
 
  script_name("Cisco Open Network Environment Platform  Denial of Service Vulnerability");
 
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62403");
  script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCui51551");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2014-01-10 12:10:24 +0100 (Fri, 10 Jan 2014)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"remote_banner");
  script_family("CISCO");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
  script_dependencies("gb_cisco_nx_os_version.nasl");
- script_mandatory_keys("cisco_nx_os/version","cisco_nx_os/model","cisco_nx_os/device");
+ script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+ script_tag(name:"impact", value:"Successful exploits will cause the network element to reload, denying
+service to legitimate users.");
+ script_tag(name:"vuldetect", value:"Check the NX OS version.");
+ script_tag(name:"insight", value:"This issue is being tracked by Cisco Bug ID CSCui51551.");
+ script_tag(name:"solution", value:"Updates are available.");
+ script_tag(name:"solution_type", value:"VendorFix");
+ script_tag(name:"summary", value:"Cisco Open Network Environment Platform running on NX-OS is prone to a
+denial-of-service vulnerability");
+ script_tag(name:"affected", value:"Nexus 3000 Series with NX-OS 6.0(2)U1(2) and 6.0(2)U1(1)");
 
  exit(0);
 }
@@ -86,7 +74,7 @@ if ( nx_ver  == "6.0(2)U1(1)" || nx_ver == "6.0(2)U1(2)"  )
 {
   security_message(port:0, data:'Installed Version: ' + nx_ver + '\nFixed Version:     6.0(2)U1(3)');
   exit(0);
-}  
+}
 
 exit(99);
 

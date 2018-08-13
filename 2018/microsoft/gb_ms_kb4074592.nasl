@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4074592.nasl 9144 2018-03-20 09:25:46Z asteins $
+# $Id: gb_ms_kb4074592.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4074592)
 #
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812762");
-  script_version("$Revision: 9144 $");
-  script_cve_id("CVE-2018-0742", "CVE-2018-0756", "CVE-2018-0757", "CVE-2018-0763", 
-                "CVE-2018-0771", "CVE-2018-0809", "CVE-2018-0820", "CVE-2018-0821", 
-                "CVE-2018-0822", "CVE-2018-0825", "CVE-2018-0826", "CVE-2018-0827", 
-                "CVE-2018-0829", "CVE-2018-0830", "CVE-2018-0831", "CVE-2018-0832", 
-                "CVE-2018-0834", "CVE-2018-0835", "CVE-2018-0836", "CVE-2018-0837", 
-                "CVE-2018-0838", "CVE-2018-0839", "CVE-2018-0840", "CVE-2018-0842", 
-                "CVE-2018-0844", "CVE-2018-0846", "CVE-2018-0847", "CVE-2018-0856", 
-                "CVE-2018-0857", "CVE-2018-0859", "CVE-2018-0860", "CVE-2018-0861", 
+  script_version("$Revision: 10918 $");
+  script_cve_id("CVE-2018-0742", "CVE-2018-0756", "CVE-2018-0757", "CVE-2018-0763",
+                "CVE-2018-0771", "CVE-2018-0809", "CVE-2018-0820", "CVE-2018-0821",
+                "CVE-2018-0822", "CVE-2018-0825", "CVE-2018-0826", "CVE-2018-0827",
+                "CVE-2018-0829", "CVE-2018-0830", "CVE-2018-0831", "CVE-2018-0832",
+                "CVE-2018-0834", "CVE-2018-0835", "CVE-2018-0836", "CVE-2018-0837",
+                "CVE-2018-0838", "CVE-2018-0839", "CVE-2018-0840", "CVE-2018-0842",
+                "CVE-2018-0844", "CVE-2018-0846", "CVE-2018-0847", "CVE-2018-0856",
+                "CVE-2018-0857", "CVE-2018-0859", "CVE-2018-0860", "CVE-2018-0861",
                 "CVE-2018-0866");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-20 10:25:46 +0100 (Tue, 20 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-02-14 09:33:29 +0530 (Wed, 14 Feb 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4074592)");
 
@@ -50,39 +50,39 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
-  
-  - The scripting engine improperly handles objects in memory in Microsoft 
-    browsers. 
 
-  - The windows kernel fails to properly handle objects in memory. 
+  - The scripting engine improperly handles objects in memory in Microsoft
+    browsers.
 
-  - The windows Common Log File System (CLFS) driver improperly handles 
-    objects in memory. 
+  - The windows kernel fails to properly handle objects in memory.
 
-  - The VBScript improperly discloses the contents of its memory. 
+  - The windows Common Log File System (CLFS) driver improperly handles
+    objects in memory.
 
-  - The scripting engine improperly handles objects in memory in Microsoft Edge. 
+  - The VBScript improperly discloses the contents of its memory.
+
+  - The scripting engine improperly handles objects in memory in Microsoft Edge.
 
   - The scripting engine improperly handles objects in memory in Internet Explorer.
 
-  - The storage Services improperly handles objects in memory. 
- 
-  - The NTFS improperly handles objects. 
+  - The storage Services improperly handles objects in memory.
 
-  - The AppContainer improperly implements constrained impersonation. 
+  - The NTFS improperly handles objects.
 
-  - Microsoft has deprecated the Document Signing functionality in XPS Viewer. 
+  - The AppContainer improperly implements constrained impersonation.
+
+  - Microsoft has deprecated the Document Signing functionality in XPS Viewer.
 
   - Microsoft Edge improperly handles requests of different origins.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  an attacker who successfully exploited the vulnerability to gain the same 
-  user rights as the current user, run arbitrary code in kernel mode, run 
-  processes in an elevated context, circumvent a User Mode Code Integrity 
-  (UMCI) policy on the machine, spoof content, perform phishing attacks, or 
-  otherwise manipulate content of a document, force the browser to send data 
-  that would otherwise be restricted and retrieve the memory address of a 
-  kernel object. 
+  an attacker who successfully exploited the vulnerability to gain the same
+  user rights as the current user, run arbitrary code in kernel mode, run
+  processes in an elevated context, circumvent a User Mode Code Integrity
+  (UMCI) policy on the machine, spoof content, perform phishing attacks, or
+  otherwise manipulate content of a document, force the browser to send data
+  that would otherwise be restricted and retrieve the memory address of a
+  kernel object.
 
   Impact Level: System");
 
@@ -95,11 +95,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4074592");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4074592");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: msdns-server-hostname-disclosure.nasl 7153 2017-09-15 15:03:32Z cfischer $
+# $Id: msdns-server-hostname-disclosure.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # Microsoft DNS server internal hostname disclosure detection
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100950");
-  script_version("$Revision: 7153 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 17:03:32 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 10906 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-07-10 19:42:14 +0200 (Fri, 10 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -44,18 +44,12 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.openvas.org/blog.php?id=31");
 
-  tag_summary = "Microsoft DNS server internal hostname disclosure detection";
-
-  tag_insight = "Microsoft DNS server may disclose the internal hostname of the server in response to requests for the hardcoded zones 0.in-addr.arpa and 255.in-addr.arpa.";
-
-  tag_solution = "On the following platforms, we recommend you resolve in the described manner:
+  script_tag(name:"insight", value:"Microsoft DNS server may disclose the internal hostname of the server in response to requests for the hardcoded zones 0.in-addr.arpa and 255.in-addr.arpa.");
+  script_tag(name:"solution", value:"On the following platforms, we recommend you resolve in the described manner:
   All default Microsoft DNS server configurations
 
-  http://support.microsoft.com/default.aspx?id=198410";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  http://support.microsoft.com/default.aspx?id=198410");
+  script_tag(name:"summary", value:"Microsoft DNS server internal hostname disclosure detection");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -99,15 +93,14 @@ function packet_parse( _dns_query, _dns_response, port ) {
   # Retry interval
   # Expiry limit
   # Minimum TTL
-  # is it a valid response?
+  # nb: is it a valid response?
   if( ( _dns_response != "" ) && ( ( ord( _dns_response[3] ) & 2 ) != 2 ) && ( ( ord( _dns_response[3] ) & 3 ) != 3 ) && ( ( ord( _dns_response[3] ) & 5 ) != 5 ) ) {
     _hostdata = substr( _dns_response, 12 + strlen( _dns_query ) + 18 );
     _hostname = "";
 
-    # Checking length before accessing possible non-existing data later
     if( strlen( _hostdata ) < 2 ) exit( 0 );
 
-    # is it using DNS compression with a pointer offset to the DNS query?
+    # nb: is it using DNS compression with a pointer offset to the DNS query?
     if( ( ord( _hostdata[0] ) != 192 ) && ( ord( _hostdata[1] ) != 12 ) ) {
       _counter1 = 0;
       while( ord( _hostdata[_counter1] ) != 0 ) {

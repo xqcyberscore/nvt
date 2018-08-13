@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: embedded_web_server_detect.nasl 8869 2018-02-19 14:09:59Z cfischer $
+# $Id: embedded_web_server_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # Embedded Web Server Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.19689");
-  script_version("$Revision: 8869 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-19 15:09:59 +0100 (Mon, 19 Feb 2018) $");
+  script_version("$Revision: 10896 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 17:55:15 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -44,10 +44,8 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  tag_summary = "This plugin determines if the remote web server is an embedded service 
-  (without any user-supplied CGIs) or not";
-
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This plugin determines if the remote web server is an embedded service
+  (without any user-supplied CGIs) or not");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

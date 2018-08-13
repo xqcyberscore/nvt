@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hastymail2_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_hastymail2_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # Hastymail2 Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801575");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5888 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_version("$Revision: 10906 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-01-21 14:38:54 +0100 (Fri, 21 Jan 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Hastymail2 Version Detection");
@@ -53,7 +53,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Get HTTP Port
 port = get_http_port( default:80 );
 
 if( ! can_host_php( port:port ) ) exit( 0 );
@@ -65,12 +64,10 @@ foreach dir( make_list_unique( "/", "/Hastymail2", "/hastymail2", "/hastymail","
 
   rcvRes = http_get_cache( item: dir + "/index.php", port:port );
 
-  ## Confirm the application
-  if( "Login | Hastymail2<" >< rcvRes && "Hastymail Development Group" >< rcvRes ) { 
+  if( "Login | Hastymail2<" >< rcvRes && "Hastymail Development Group" >< rcvRes ) {
 
     version = "unknown";
 
-    ## Check for upgrading.txt file for version
     sndReq = http_get( item: dir + "/UPGRADING", port:port );
     rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
@@ -86,7 +83,6 @@ foreach dir( make_list_unique( "/", "/Hastymail2", "/hastymail2", "/hastymail","
     if( "RC" >< ver[5] ) version = version + ' ' + ver[5];
 
     tmp_version = version + " under " + install;
-    ## Set the version of Hastymail2 in KB
     set_kb_item( name:"www/" + port + "/Hastymail2", value: tmp_version );
 
     if( version != "unknown" ) {
@@ -95,7 +91,6 @@ foreach dir( make_list_unique( "/", "/Hastymail2", "/hastymail2", "/hastymail","
       cpe = "cpe:/a:hastymail:hastymail2";
     }
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"Hastymail2",

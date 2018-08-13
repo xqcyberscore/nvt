@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_detect_win.nasl 8162 2017-12-19 06:15:07Z cfischer $
+# $Id: gb_perl_detect_win.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Perl Version Detection (Windows)
 #
@@ -30,27 +30,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800966");
-  script_version("$Revision: 8162 $");
+  script_version("$Revision: 10891 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 07:15:07 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-11-05 12:25:48 +0100 (Thu, 05 Nov 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Perl Version Detection (Windows)");
 
-  tag_summary =
-"Detection of installed version of Active or Strawberry Perl.
+
+  script_tag(name:"summary", value:"Detects the installed version of Active or Strawberry Perl.
 
 The script logs in via smb, searches for Active or Strawberry Perl in the
-registry and gets the version from registry";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+registry and gets the version from registry");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -62,27 +59,16 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-os_arch = "";
-key_list = "";
-key= "";
-perlName= "";
-perlLoc = "";
-perlVer = "";
 
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-## Check for 64 bit platform
 else if("x64" >< os_arch){
   key_list =  make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\",
                         "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
@@ -98,17 +84,14 @@ foreach key (key_list)
   {
     perlName = registry_get_sz(key:key + item, item:"DisplayName");
 
-    # Check for Strawberry Perl
     if("Strawberry Perl" >< perlName)
     {
-      ## Get Location
       perlLoc = registry_get_sz(key:key + item, item:"InstallLocation");
       if(!perlLoc)
       {
         perlLoc = "Location not found";
       }
 
-      ## Get Version
       perlVer = registry_get_sz(key:key + item, item:"Comments");
       perlVer = eregmatch(pattern:"Strawberry Perl .* ([0-9.]+)", string:perlVer);
       if(!isnull(perlVer[1]))
@@ -128,16 +111,13 @@ foreach key (key_list)
       }
     }
 
-    # Check for ActivePerl
     if("ActivePerl"  >< perlName)
     {
-      ## Get Location
       perlLoc = registry_get_sz(key:key + item, item:"InstallLocation");
       if(!perlLoc){
         perlLoc = "Location not found";
       }
 
-      ## Get Version
       perlVer = eregmatch(pattern:"ActivePerl ([0-9.]+)", string:perlName);
       if(!isnull(perlVer[1]))
       {

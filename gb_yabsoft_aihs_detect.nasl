@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yabsoft_aihs_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_yabsoft_aihs_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # YABSoft Advanced Image Hosting Script (AIHS) Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801091");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-12-17 08:14:37 +0100 (Thu, 17 Dec 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("YABSoft Advanced Image Hosting Script (AIHS) Version Detection");
@@ -75,12 +75,10 @@ foreach dir( make_list_unique( "/", "/aihs", "/gallery", cgi_dirs( port:port ) )
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/YABSoft/AIHS", value:tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:yabsoft:advanced_image_hosting_script:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:yabsoft:advanced_image_hosting_script';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data: build_detection_report( app:"YABSoft Advanced Image Hosting Script (AIHS)",

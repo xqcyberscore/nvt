@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_agent_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: gb_mcafee_agent_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # McAfee Agent Version Detection (Windows)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805293");
-  script_version("$Revision: 7076 $");
+  script_version("$Revision: 10922 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-03-02 14:04:22 +0530 (Mon, 02 Mar 2015)");
   script_name("McAfee Agent Version Detection (Windows)");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   McAfee Agent.
 
   The script logs in via smb, searches for string 'McAfee' in the registry
@@ -43,19 +43,12 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
 }
 
-
-## variable Initialization
-os_arch = "";
-agentPath = "";
-agentName = "";
-agentVer = "";
-key = "";
 
 
 include("smb_nt.inc");
@@ -64,18 +57,15 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-## Check for 64 bit platform
 else if("x64" >< os_arch){
   key_list =  make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
                         "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
@@ -92,7 +82,6 @@ foreach key (key_list)
   {
     agentName = registry_get_sz(key:key + item, item:"DisplayName");
 
-    #### Confirm Application
     if("McAfee Agent" >< agentName)
     {
       agentVer = registry_get_sz(key:key + item, item:"DisplayVersion");
@@ -105,12 +94,10 @@ foreach key (key_list)
       {
         set_kb_item(name:"McAfee/Agent/Win/Ver", value:agentVer);
 
-        ## build cpe and store it as host_detail
         cpe = build_cpe(value:agentVer, exp:"^([0-9.]+)", base:"cpe:/a:mcafee:mcafee_agent:");
         if(isnull(cpe))
           cpe = "cpe:/a:mcafee:mcafee_agent";
-      
-        ## Register for 64 bit app on 64 bit OS once again
+
         if("64" >< os_arch && "Wow6432Node" >!< key)
         {
           set_kb_item(name:"McAfee/Agent64/Win/Ver", value:agentVer);
@@ -120,7 +107,6 @@ foreach key (key_list)
           }
         }
 
-        ## Register Product and Build Report
         register_product(cpe:cpe, location:agentPath);
 
         log_message(data: build_detection_report(app: "McAfee Agent",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mozilloCMS_detect.nasl 5255 2017-02-10 08:56:42Z cfi $
+# $Id: mozilloCMS_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # moziloCMS Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100123");
-  script_version("$Revision: 5255 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-10 09:56:42 +0100 (Fri, 10 Feb 2017) $");
+  script_version("$Revision: 10911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-12 20:09:50 +0200 (Sun, 12 Apr 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -76,7 +76,6 @@ foreach dir( make_list_unique( "/moziloCMS", "/cms", cgi_dirs( port:port ) ) ) {
     tmp_version = vers + " under " + install;
     set_kb_item( name:"www/" + port + "/moziloCMS", value:tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:mozilo:mozilocms:" );
     if( isnull( cpe ) )
       cpe = "cpe:/a:mozilo:mozilocms";

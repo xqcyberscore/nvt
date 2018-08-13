@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nakid_cms_detect.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: secpod_nakid_cms_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # Nakid CMS Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902083");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7076 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_version("$Revision: 10906 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-06-25 16:56:31 +0200 (Fri, 25 Jun 2010)");
   script_name("Nakid CMS Version Detection");
   script_tag(name:"cvss_base", value:"0.0");
@@ -54,7 +54,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get HTTP Port
 port = get_http_port( default:80 );
 
 if( ! can_host_php( port:port ) ) exit( 0 );
@@ -64,22 +63,19 @@ foreach dir( make_list_unique( "/nakid", "/Nakid", "/", cgi_dirs( port:port ) ) 
   install = dir;
   if( dir == "/" ) dir = "";
 
-  ## Send and Receive the respose
   rcvRes = http_get_cache( item:dir + "/index.php", port:port );
 
-  ## Confirm it is Nakid CMS
   if( ">Nakid CMS<" >< rcvRes ) {
 
     version = "unknown";
 
     ver = eregmatch( pattern:"> v.([0-9.]+)", string:rcvRes );
     if( ver[1] != NULL ) version = ver[1];
-     
+
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/Nakid/CMS/Ver", value:tmp_version );
     set_kb_item( name:"NakidCMS/installed", value:TRUE );
-      
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:jeffkilroy:nakid_cms:");
     if( isnull( cpe ) )
       cpe = 'cpe:/a:jeffkilroy:nakid_cms';

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_imagemagick_detect_lin.nasl 8830 2018-02-15 13:14:42Z jschulte $
+# $Id: secpod_imagemagick_detect_lin.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # ImageMagick Version Detection (Linux)
 #
@@ -31,15 +31,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900563");
-  script_version("$Revision: 8830 $");
+  script_version("$Revision: 10913 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-15 14:14:42 +0100 (Thu, 15 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-06-02 08:16:42 +0200 (Tue, 02 Jun 2009)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("ImageMagick version Detection (Linux)");
 
-  script_tag(name: "summary" , value:"Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   ImageMagick on Linux.
 
   The script logs in via ssh, searches for executable 'identify' and
@@ -60,12 +60,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-sock = "";
-path = "";
-imageVer = "";
-getPath = "";
-
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(-1);
@@ -84,7 +78,6 @@ foreach executableFile (getPath)
     set_kb_item(name:"ImageMagick/Lin/Ver", value:imageVer[1]);
     ssh_close_connection();
 
-    ## build cpe and store it as host_detail
     log_message( data: register_and_report_cpe( app: "ImageMagick",
                                                 ver: imageVer[1],
                                                 concluded: imageVer[0],

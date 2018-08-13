@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zkteco_zktimeweb_detect.nasl 7988 2017-12-05 06:22:41Z ckuersteiner $
+# $Id: gb_zkteco_zktimeweb_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # ZKTeco ZKTime Web Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140578");
-  script_version("$Revision: 7988 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-05 07:22:41 +0100 (Tue, 05 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-12-05 11:22:53 +0700 (Tue, 05 Dec 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-05 11:22:53 +0700 (Tue, 05 Dec 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("ZKTeco ZKTime Web Detection");
 
-  script_tag(name: "summary" , value: "Detection of ZKTeco ZKTime Web.
+  script_tag(name:"summary", value:"Detection of ZKTeco ZKTime Web.
 
 The script sends a connection request to the server and attempts to detect ZKTeco ZKTime Web and to extract
 its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ its version.");
   script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "http://www.zkteco.com/product/ZKTime_Web_2.0_435.html");
+  script_xref(name:"URL", value:"http://www.zkteco.com/product/ZKTime_Web_2.0_435.html");
 
   exit(0);
 }

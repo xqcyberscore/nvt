@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_prdts_detect_lin.nasl 9064 2018-03-09 09:14:44Z cfischer $
+# $Id: gb_java_prdts_detect_lin.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Multiple Java Products Version Detection (Linux)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800385");
-  script_version("$Revision: 9064 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-09 10:14:44 +0100 (Fri, 09 Mar 2018) $");
+  script_version("$Revision: 10894 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -43,7 +43,7 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name:"summary", value:"Detection of installed version of Java products
+  script_tag(name:"summary", value:"Detects the installed version of Java products
   on Linux systems. It covers the following:
 
   - Sun Java
@@ -70,7 +70,6 @@ include("host_details.inc");
 sock = ssh_login_or_reuse_connection();
 if( ! sock ) exit( 0 );
 
-# Check for Java Web Start
 jwspaths = find_bin( prog_name:"javaws", sock:sock );
 if( jwspaths ) {
   foreach executableFile( jwspaths ) {
@@ -82,7 +81,6 @@ if( jwspaths ) {
   }
 }
 
-# Check for Java JRE
 javapaths = find_bin( prog_name:"java", sock:sock );
 if( javapaths ) {
   foreach executableFile( javapaths ) {

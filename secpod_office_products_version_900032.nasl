@@ -1,41 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_office_products_version_900032.nasl 9785 2018-05-09 14:27:34Z santu $#
+# $Id: secpod_office_products_version_900032.nasl 10901 2018-08-10 14:09:57Z cfischer $#
 #
 # MS Office Products Version Detection
 #
 # Authors:
 # Chandan S <schandan@secpod.com>
-#
-# Retrieving Version from file (Removed old method and updated with GetVer).
-# - By Chandan S <schandan@secpod.com> 10:46:00 2009-04-24
-#
-# Updated to include detect mechanism for Word Viewer and Word Converter - Sharath S
-#
-# Updated to include detect mechanism for Excel Viewer - Sharath S
-#
-# Updated to include detect mechanism for Power Point Viewer - Sharath S
-#
-# Updated to include detect mechanism for Office Publisher - Sharath S
-#
-# Updated to include detect mechanism for Office Outlook
-#  - By Antu Sanadi <santu@secpod.com> On 2009/10/14
-#
-# Updated to include detect mechanism for Office Groove and Office Compatibility Pack
-#  - By Sharath S <sharaths@secpod.com> On 2009-10-20 #5269
-#
-# Updated to include detect mechanism for Office Visio Viewer 2007
-#  - By Sharath S <sharaths@secpod.com> On 2009-10-29 #5269
-#
-# Updated to check office installation by adding registrty key check
-#  - By Antu Sanadi <santu@secpod.com> on 2010-03-10 #7621
-#
-# Updated By : Antu Sanadi <santu@secpod.com> on 2012-02-15
-#  - Updated to detect Microsoft Office PowerPoint Viewer
-#  - Updated to detect Microsoft Office Visio Viewer 2010
-#
-# Updated By : Kashinath T <tkashinath@secpod.com> on 2016-06-07
-#  - Updated to detect office 2016 products
 #
 # Copyright:
 # Copyright (c) 2009 SecPod, http://www.secpod.com
@@ -58,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900032");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9785 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-09 16:27:34 +0200 (Wed, 09 May 2018) $");
+  script_version("$Revision: 10901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-08-19 14:38:55 +0200 (Tue, 19 Aug 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("MS Office Products Version Detection");
@@ -67,10 +37,10 @@ if(description)
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2008 SecPod");
   script_family("Windows");
-  script_dependencies("secpod_reg_enum.nasl", "secpod_ms_office_detection_900025.nasl");
+  script_dependencies("smb_reg_service_pack.nasl", "secpod_ms_office_detection_900025.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : "Retrieve the version of MS Office products
+  script_tag(name:"summary", value:"Retrieve the version of MS Office products
   from file and sets KB.");
   exit(0);
 }
@@ -262,7 +232,7 @@ foreach key(key_list)
       }
     }
     if("Microsoft Office PowerPoint Viewer" >< registry_get_sz(key:key + item, item:"DisplayName")||
-       "Microsoft PowerPoint Viewer" >< registry_get_sz(key:key + item, item:"DisplayName")) 
+       "Microsoft PowerPoint Viewer" >< registry_get_sz(key:key + item, item:"DisplayName"))
     {
       pptviewVer = registry_get_sz(key:key + item, item:"DisplayVersion");
       if(pptviewVer != NULL)
@@ -292,7 +262,7 @@ foreach key(key_list)
           if(pptviewVer != NULL){
             set_kb_item(name:"SMB/Office/PPView/Version", value:pptviewVer);
             set_kb_item(name:"SMB/Office/PPView/FilePath", value:ppviewFile);
-            set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );  
+            set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
             for (i = 0; i < PPVIEW_MAX-1; i = i + 2) {
               # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
@@ -360,7 +330,7 @@ if(registry_key_exists(key:"SOFTWARE\Microsoft\Office"))
       # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
       if( ppcnvVer =~ "^(12\..*)" ) {
         ##Need to update base value
-        register_and_report_cpe(app:"Microsoft Offic Power Point", ver:ppcnvVer, insloc:ppcnvFile,
+        register_and_report_cpe(app:"Microsoft Office Power Point", ver:ppcnvVer, insloc:ppcnvFile,
                                 base:"", expr:"^(12\..)*");
       }
     }
@@ -377,7 +347,6 @@ if(visioPath || visioPath1)
 {
   foreach path (make_list("Office12", "Office14", "Office15", "Office16"))
   {
-    ## Get Version from msptls.dll
     exePath = visioPath + "\Microsoft Office\" + path;
     visiovVer = fetch_file_version(sysPath:exePath, file_name:"Vpreview.exe");
     if(!visiovVer) {
@@ -388,7 +357,7 @@ if(visioPath || visioPath1)
     {
       set_kb_item(name:"SMB/Office/VisioViewer/Path", value:exePath);
       set_kb_item(name:"SMB/Office/VisioViewer/Ver", value:visiovVer);
-      set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE ); 
+      set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
       for (i = 0; i < VISIO_MAX-1; i = i + 2) {
         # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
@@ -420,7 +389,7 @@ if(wordFile)
   wordVer = GetVer(file:word, share:share);
   if(wordVer){
     set_kb_item(name:"SMB/Office/Word/Version", value:wordVer);
-    set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE ); 
+    set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
 
     for (i = 0; i < WORD_MAX-1; i = i + 2) {
       # Special handling as register_and_report_cpe would register the product without a version if the expr doesn't match
@@ -558,7 +527,7 @@ if(pubFile)
 {
   set_kb_item(name:"SMB/Office/Publisher/Installed/Path", value:pubFile);
   set_kb_item( name:"MS/Office/Prdts/Installed", value:TRUE );
- 
+
   share = ereg_replace(pattern:"([A-Z]):.*", replace:"\1$", string:pubFile);
   pub = ereg_replace(pattern:"[A-Z]:(.*)", replace:"\1", string:pubFile + "\MSPUB.exe");
   pubVer = GetVer(file:pub, share:share);

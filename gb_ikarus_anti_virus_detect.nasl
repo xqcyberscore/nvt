@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ikarus_anti_virus_detect.nasl 8347 2018-01-09 15:41:09Z cfischer $
+# $Id: gb_ikarus_anti_virus_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # IKARUS anti.virus Detection (Windows)
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112156");
-  script_version("$Revision: 8347 $");
+  script_version("$Revision: 10890 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-09 16:41:09 +0100 (Tue, 09 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-01-04 09:35:57 +0100 (Thu, 04 Jan 2018)");
 
   script_name("IKARUS anti.virus Detection (Windows)");
 
-  script_tag(name:"summary" , value:"Detection of the installed version of IKARUS anti.virus.
+  script_tag(name:"summary", value:"Detection of the installed version of IKARUS anti.virus.
 
   The script logs in via SMB, searches for the installation of 'IKARUS anti.virus' in the registry
   and tries to obtain the version information.");

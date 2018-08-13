@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samsung_syncthru_web_service_detect.nasl 10849 2018-08-09 07:20:42Z santu $
+# $Id: gb_samsung_syncthru_web_service_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Samsung Syncthru Web Service Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813744");
-  script_version("$Revision: 10849 $");
+  script_version("$Revision: 10899 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 09:20:42 +0200 (Thu, 09 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-06 17:37:28 +0530 (Mon, 06 Aug 2018)");
   script_name("Samsung Syncthru Web Service Remote Detection");
 
@@ -42,7 +42,7 @@ if(description)
   the response.");
 
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name : "URL" , value :"http://www.samsungsetup.com/ts/manual/Samsung%20M2070%20Series/English/manual/CHDIBFBI.htm");
+  script_xref(name:"URL", value:"http://www.samsungsetup.com/ts/manual/Samsung%20M2070%20Series/English/manual/CHDIBFBI.htm");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");

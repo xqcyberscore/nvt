@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_light_detect.nasl 5275 2017-02-12 13:58:21Z cfi $
+# $Id: gb_splunk_light_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Splunk Light Remote Detection
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809012");
-  script_version("$Revision: 5275 $");
+  script_version("$Revision: 10915 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-12 14:58:21 +0100 (Sun, 12 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-08-26 17:00:30 +0530 (Fri, 26 Aug 2016)");
   script_name("Splunk Light Remote Detection");
-  script_tag(name: "summary" , value: "Detection of installed version of 
+  script_tag(name:"summary", value:"Detects the installed version of
   Splunk Light.
 
   This script sends HTTP GET request and try to get the version from the
@@ -73,16 +73,14 @@ foreach dir (make_list_unique("/", "/splunk/en-US/", "/en-US", cgi_dirs(port:spP
   req = http_get(item:string(dir, "/account/login"), port:spPort);
   buf = http_keepalive_send_recv(port:spPort, data:req, bodyonly:FALSE);
 
-  ##Confirm Application
-  if(egrep(pattern:'content="Splunk Inc."', string: buf, icase: TRUE) && 
+  if(egrep(pattern:'content="Splunk Inc."', string: buf, icase: TRUE) &&
      ('Splunk Light' >< buf || 'product_type":"lite' >< buf))
   {
 
     vers = string("unknown");
 
-    ### try to get version
     version = eregmatch(string:buf, pattern:'version":"([0-9.]+)', icase:TRUE);
-    
+
     if(!isnull(version[1])){
       vers=chomp(version[1]);
     }
@@ -92,13 +90,12 @@ foreach dir (make_list_unique("/", "/splunk/en-US/", "/en-US", cgi_dirs(port:spP
         vers=chomp(version[1]);
     }
 
-    ## check for build version
     b= eregmatch(string:buf, pattern:'build":"([0-9a-z.]+)', icase:TRUE);
-    
+
     if(!isnull(b[1])){
       build = b[1];
     }
-    
+
     ## set core version
     set_kb_item(name: string("www/", spPort, "/splunklight"), value: string(vers));
 
@@ -109,7 +106,6 @@ foreach dir (make_list_unique("/", "/splunk/en-US/", "/en-US", cgi_dirs(port:spP
 
     set_kb_item(name:"SplunkLight/installed", value:TRUE);
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/a:splunk:light:");
     if(!cpe){
       cpe = "cpe:/a:splunk:light";

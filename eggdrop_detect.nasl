@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: eggdrop_detect.nasl 9675 2018-04-30 03:15:06Z ckuersteiner $
+# $Id: eggdrop_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Eggdrop Detection
 #
@@ -28,21 +28,21 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100206");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9675 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-30 05:15:06 +0200 (Mon, 30 Apr 2018) $");
+ script_version("$Revision: 10902 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2009-05-16 14:32:16 +0200 (Sat, 16 May 2009)");
  script_tag(name:"cvss_base", value:"0.0");
 
- script_name("Eggdrop Detection");  
+ script_name("Eggdrop Detection");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_family("Product detection");
  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
  script_dependencies("find_service.nasl");
- script_require_ports("Services/eggdrop",3333 );
- script_tag(name: "summary", value: "This Host is running Eggdrop, an Open Source IRC bot.");
+ script_require_ports("Services/eggdrop", 3333);
+ script_tag(name:"summary", value:"This Host is running Eggdrop, an Open Source IRC bot.");
 
- script_xref(name: "URL", value: "http://www.eggheads.org/");
+ script_xref(name:"URL", value:"http://www.eggheads.org/");
 
  script_timeout(3600);
 
@@ -70,7 +70,7 @@ if(egrep(pattern:"Eggdrop", string: banner, icase:TRUE)) {
   version = eregmatch(string: banner, pattern: "\(Eggdrop v([0-9.]+[^ ]*) \(",icase:TRUE);
 
   if (!isnull(version[1]))
-    vers = version[1]; 
+    vers = version[1];
 
   set_kb_item(name: "eggdrop/installed", value: TRUE);
 
@@ -85,5 +85,5 @@ if(egrep(pattern:"Eggdrop", string: banner, icase:TRUE)) {
               port: port);
   exit(0);
 }
- 
+
 exit(0);

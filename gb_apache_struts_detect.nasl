@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_detect.nasl 8915 2018-02-22 07:21:54Z cfischer $
+# $Id: gb_apache_struts_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Apache Struts Version Detection
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800276");
-  script_version("$Revision: 8915 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-22 08:21:54 +0100 (Thu, 22 Feb 2018) $");
+  script_version("$Revision: 10908 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -59,12 +59,12 @@ include("version_func.inc");
 
 asPort = get_http_port( default:8080 );
 
-foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) ) 
+foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) )
 {
   install = dir;
   if( dir == "/" ) dir = "";
 
-  ## For some versions path has "/docs/docs/" 
+  ## For some versions path has "/docs/docs/"
   ## While for some versions path has only "/docs"
   foreach url (make_list(dir + "/docs/docs", dir +"/docs"))
   {
@@ -138,17 +138,16 @@ foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) )
           "Apache Struts" >< rcvRes5  || "var StrutsUtils =" >< rcvRes6 )
     {
 
-      ##Check version of Struts2 first         
       strutsVer = eregmatch( pattern:"Struts 2 Core ([0-9A-Z.-]+) API", string:rcvRes1);
       if(strutsVer[1]){
         strutsVersion = strutsVer[1] ;
-      } else 
+      } else
       {
         strutsdata = eregmatch( pattern:"<modelVersion(.*)<packaging>", string:rcvRes2);
         strutsVer = eregmatch( pattern:"<version>([0-9A-Z.-]+)</version>", string:strutsdata[1]);
         if(strutsVer[1]){
           strutsVersion = strutsVer[1] ;
-        } else 
+        } else
         {
           strutsVer = eregmatch( pattern:">Version Notes (([0-9]+).([0-9]+).([0-9.]+))", string:rcvRes4);
           ## >Version Notes 2.5.10.1<
@@ -157,12 +156,12 @@ foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) )
           ## Else if version detected is 2.5.10.1, it can be 2.5.10.1 or later.
           if(strutsVer[1] && version_is_less(version: strutsVer[1], test_version: "2.5.10.1")){
             strutsVersion = strutsVer[1] ;
-          } else 
+          } else
           {
             strutsVer = eregmatch( pattern:"Release Notes ([0-9]\.[0-9.]+)", string:rcvRes3);
             if(strutsVer[1]){
               strutsVersion = strutsVer[1] ;
-            } else 
+            } else
             {
               strutsVer = eregmatch( pattern:"Release Notes ([0-9]\.[0-9.]+)", string:rcvRes4 );
               ##>Release Notes 2.0.14<
@@ -190,9 +189,9 @@ foreach dir( make_list_unique("/", "/struts", cgi_dirs( port:asPort ) ) )
       cpe = build_cpe( value:strutsVersion, exp: "^([0-9A-Z.-]+)", base: "cpe:/a:apache:struts:" );
       if(isnull(cpe))
         cpe = 'cpe:/a:apache:struts';
-  
+
       register_product(cpe: cpe, location: install, port: asPort);
- 
+
       log_message( data: build_detection_report( app:"Apache Struts",
                                                  version: strutsVersion,
                                                  install: install,

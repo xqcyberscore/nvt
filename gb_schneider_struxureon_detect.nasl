@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_struxureon_detect.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: gb_schneider_struxureon_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # Schneider Electric StruxureOn Gateway Detection
 #
@@ -28,17 +28,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140785");
-  script_version("$Revision: 9608 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-16 13:00:31 +0700 (Fri, 16 Feb 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10896 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-16 13:00:31 +0700 (Fri, 16 Feb 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Schneider Electric StruxureOn Gateway Detection");
 
-  script_tag(name: "summary" , value: "Detection of Schneider Electric StruxureOn Gateway.
+  script_tag(name:"summary", value:"Detection of Schneider Electric StruxureOn Gateway.
 
 The script sends a connection request to the server and attempts to detect Schneider Electric StruxureOn Gateway
 and to extract its version.");
@@ -51,7 +51,7 @@ and to extract its version.");
   script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://struxureon.com//");
+  script_xref(name:"URL", value:"https://struxureon.com//");
 
   exit(0);
 }

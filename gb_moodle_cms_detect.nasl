@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_cms_detect.nasl 9752 2018-05-08 09:42:26Z jschulte $
+# $Id: gb_moodle_cms_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Moodle CMS Version Detection
 #
@@ -30,8 +30,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800239");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9752 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 11:42:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 10891 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-03-03 06:56:37 +0100 (Tue, 03 Mar 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Moodle CMS Version Detection");
@@ -105,12 +105,10 @@ foreach dir( make_list_unique( "/moodle", cgi_dirs( port:port ) ) ) {
     set_kb_item( name:"www/" + port + "/moodle", value:tmp_version );
     set_kb_item( name:"Moodle/Version", value:version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:moodle:moodle:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:moodle:moodle';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"moodle",

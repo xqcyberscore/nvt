@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: netscaler_web_detect.nasl 8399 2018-01-12 13:03:38Z asteins $
+# $Id: netscaler_web_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # Citrix NetScaler Detection (HTTP)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80024");
-  script_version("$Revision: 8399 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-12 14:03:38 +0100 (Fri, 12 Jan 2018) $");
+  script_version("$Revision: 10906 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -39,12 +39,12 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (c) 2007 nnposter");
   script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www",80);
+  script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name:"URL", value:"https://www.citrix.com/networking/");
 
-  script_tag(name:"summary", value: "Detection of Citrix Netscaler Web UI.
+  script_tag(name:"summary", value:"Detection of Citrix Netscaler Web UI.
 
 The script sends a connection request to the server and attempts to detect Citrix Netscaler and to extract its
 version.");

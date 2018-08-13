@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_limesurvey_detect.nasl 8370 2018-01-11 09:44:52Z cfischer $
+# $Id: secpod_limesurvey_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # LimeSurvey Version Detection
 #
@@ -27,13 +27,13 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900352");
-  script_version("$Revision: 8370 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2009-05-26 15:05:11 +0200 (Tue, 26 May 2009)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10896 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2009-05-26 15:05:11 +0200 (Tue, 26 May 2009)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("LimeSurvey Version Detection");
 
@@ -42,7 +42,7 @@ if (description)
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
 
-  script_tag(name: "summary", value: "Detection of LimeSurvey
+  script_tag(name:"summary", value:"Detection of LimeSurvey
 
 The script sends a connection request to the server and attempts to detect LimeSurvey.");
 
@@ -70,9 +70,9 @@ foreach dir( make_list_unique("/limesurvey", "/phpsurveyor", "/survey", "/PHPSur
 
   if ('meta name="generator" content="LimeSurvey http://www.limesurvey.org"' >< rcvRes) {
     version = string("unknown");
-    
+
     req = http_get(item: string(dir, "/docs/release_notes.txt"), port: surveyPort);
-    res = http_keepalive_send_recv(port:surveyPort, data:req); 
+    res = http_keepalive_send_recv(port:surveyPort, data:req);
 
     if (res != NULL) {
       surveyVer = eregmatch(pattern: "Changes from ([]0-9.RCa-z+ ()]+) to ([]0-9.RCa-z+ ()]+)",
@@ -88,7 +88,7 @@ foreach dir( make_list_unique("/limesurvey", "/phpsurveyor", "/survey", "/PHPSur
                     value:version);
     set_kb_item(name: "limesurvey/installed", value: TRUE);
 
-    cpe = build_cpe(value: version, exp: "([]0-9.RCa-z+ ()_]+)", 
+    cpe = build_cpe(value: version, exp: "([]0-9.RCa-z+ ()_]+)",
                     base: "cpe:/a:limesurvey:limesurvey:");
     if (isnull(cpe))
       cpe = "cpe:/a:limesurvey:limesurvey";

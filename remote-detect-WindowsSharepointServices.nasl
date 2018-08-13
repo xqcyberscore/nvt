@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-WindowsSharepointServices.nasl 6760 2017-07-19 14:00:26Z cfischer $
+# $Id: remote-detect-WindowsSharepointServices.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # This script ensure that Windows SharePointServices is installed and running
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.101018");
-  script_version("$Revision: 6760 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 16:00:26 +0200 (Wed, 19 Jul 2017) $");
+  script_version("$Revision: 10906 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-01 22:29:14 +0200 (Wed, 01 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -82,14 +82,12 @@ if( mstsVersion ) {
   set_kb_item( name:"WindowsSharePointServices/installed", value:TRUE );
   set_kb_item( name:"MicrosoftSharePointTeamServices/version", value:mstsVersion[1] );
 
-  ## build cpe and store it as host_detail
   register_host_detail( name:"App", value:"cpe:/a:microsoft:sharepoint_team_services:2007" );
 
   if( eregmatch( pattern:"(6.0.2.[0-9]+)", string:mstsVersion[1], icase:TRUE ) ) {
     wssVersion = "2.0";
     set_kb_item( name:"WindowsSharePointServices/version", value:wssVersion );
 
-    ## build cpe and store it as host_detail
     register_and_report_cpe( app:"WindowsSharePointServices", ver:wssVersion, base:"cpe:/a:microsoft:sharepoint_services:", expr:"^([0-9]\.[0-9])", regPort:port, insloc:"/" );
   }
 
@@ -97,7 +95,6 @@ if( mstsVersion ) {
     wssVersion = "3.0";
     set_kb_item( name:"WindowsSharePointServices/version", value:wssVersion) ;
 
-    ## build cpe and store it as host_detail
     register_and_report_cpe( app:"WindowsSharePointServices", ver:wssVersion, base:"cpe:/a:microsoft:sharepoint_services:", expr:"^([0-9]\.[0-9])", regPort:port, insloc:"/" );
   }
 
@@ -163,7 +160,6 @@ if( dotNetServer ) {
   set_kb_item( name:"IIS/installed", value:TRUE );
   set_kb_item( name:"IIS/" + port + "/Ver", value:dotNetServer[1] );
 
-  ## build cpe and store it as host_detail
   register_and_report_cpe( app:"Microsoft-IIS", ver:dotNetServer[1], base:"cpe:/a:microsoft:iis:", expr:"^([0-9.]+)", regPort:port, insloc:"/" );
   report += '\n' + dotNetServer[0];
   if( osVersion ) {

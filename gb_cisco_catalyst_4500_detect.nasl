@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_catalyst_4500_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_cisco_catalyst_4500_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Cisco Catalyst 4500 Detection (SNMP)
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105379");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7236 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+ script_version("$Revision: 10891 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2015-09-21 13:29:25 +0200 (Mon, 21 Sep 2015)");
  script_name("Cisco Catalyst 4500 Detection");
 
- script_tag(name: "summary" , value: "This script performs SNMP based detection of Cisco Catalyst 4500");
+ script_tag(name:"summary", value:"This script performs SNMP based detection of Cisco Catalyst 4500");
 
  script_tag(name:"qod_type", value:"remote_banner");
 

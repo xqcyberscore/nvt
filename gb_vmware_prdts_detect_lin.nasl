@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_prdts_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_vmware_prdts_detect_lin.nasl 10883 2018-08-10 10:52:12Z cfischer $
 #
 # VMware products version detection (Linux)
 #
@@ -32,15 +32,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800001");
-  script_version("$Revision: 7823 $");
+  script_version("$Revision: 10883 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:52:12 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-09-25 10:10:31 +0200 (Thu, 25 Sep 2008)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("VMware products version detection (Linux)");
-  
-  script_tag(name : "summary" , value:"This script retrieves all VMware Products 
+
+  script_tag(name:"summary", value:"This script retrieves all VMware Products
   version and saves those in KB.");
 
   script_category(ACT_GATHER_INFO);
@@ -58,7 +58,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## start script
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);
@@ -73,7 +72,6 @@ if("VMware GSX Server" >< version)
   if(!isnull(gsxVer)){
      set_kb_item(name:"VMware/GSX-Server/Linux/Ver", value:gsxVer);
 
-     ## build cpe and store it as host_detail
      register_and_report_cpe(app:"VMware GSX Server", ver:gsxVer, base:"cpe:/a:vmware:gsx_server:",
                              expr:"^([0-9.]+)");
   }
@@ -97,7 +95,6 @@ else if("VMware Workstation" >< version)
   if(!isnull(wrkstnVer)){
     set_kb_item(name:"VMware/Workstation/Linux/Ver", value:wrkstnVer);
 
-    ## build cpe and store it as host_detail
     register_and_report_cpe(app:"VMware Workstation", ver:wrkstnVer, base:"cpe:/a:vmware:workstation:",
                              expr:"^([0-9.]+)");
   }
@@ -121,7 +118,6 @@ else if("VMware Server" >< version)
   if(!isnull(svrVer)){
     set_kb_item(name:"VMware/Server/Linux/Ver", value:svrVer);
 
-    ## build cpe and store it as host_detail
     register_and_report_cpe(app:"VMware Server", ver:svrVer, base:"cpe:/a:vmware:server:",
                             expr:"^([0-9.]+)");
   }
@@ -138,7 +134,6 @@ else if("VMware Server" >< version)
   exit(0);
 }
 
-## Set VMware ESX version
 else if("VMware ESX" >< version)
 {
   svrVer = ereg_replace(string:version, replace:"\1",
@@ -152,7 +147,6 @@ else if("VMware ESX" >< version)
   exit(0);
 }
 
-## Set Vmware player version
 path = ssh_cmd(socket:sock, cmd:"which vmplayer", timeout:120);
 if(!isnull(path))
 {
@@ -165,7 +159,6 @@ if(!isnull(path))
       set_kb_item(name:"VMware/Player/Linux/Ver", value:vmpVer[1]);
       set_kb_item(name:"VMware/Linux/Installed", value:TRUE);
 
-      ## build cpe and store it as host_detail
       register_and_report_cpe(app:"Vmware player", ver:vmpVer[1], base:"cpe:/a:vmware:player:",
                             expr:"^([0-9.]+)", insloc:path);
     }

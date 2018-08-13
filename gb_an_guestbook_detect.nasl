@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_an_guestbook_detect.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_an_guestbook_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # AN Guestbook Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800523");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5877 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_version("$Revision: 10898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-07-07 11:58:41 +0200 (Tue, 07 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("AN Guestbook Version Detection");
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : "This script detects the installed version of AN Guestbook and
+  script_tag(name:"summary", value:"This script detects the installed version of AN Guestbook and
   sets the result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -82,8 +82,7 @@ foreach dir (make_list_unique("/ag", "/ang", "/guestbook", "/anguestbook", cgi_d
   {
     tmp_version = angVer[2] + " under " + install;
     set_kb_item(name:"www/" + wwwPort + "/AN-Guestbook", value:tmp_version);
-   
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe(value:angVer[2], exp:"^([0-9.]+)", base:"cpe:/a:an_guestbook:an_guestbook:");
     if( isnull( cpe ) )
       cpe = 'cpe:/a:an_guestbook:an_guestbook';

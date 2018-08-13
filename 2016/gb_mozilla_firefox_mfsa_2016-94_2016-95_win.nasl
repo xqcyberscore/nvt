@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2016-94_2016-95_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2016-94_2016-95_win.nasl 10909 2018-08-10 15:03:01Z cfischer $
 #
 # Mozilla Firefox Security Updates( mfsa_2016-94_2016-95 )-Windows
 #
@@ -29,23 +29,23 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809836");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 10909 $");
   script_cve_id("CVE-2016-9894", "CVE-2016-9899", "CVE-2016-9895", "CVE-2016-9896",
 		"CVE-2016-9897", "CVE-2016-9898", "CVE-2016-9900", "CVE-2016-9904",
 		"CVE-2016-9901", "CVE-2016-9902", "CVE-2016-9903", "CVE-2016-9080",
-		"CVE-2016-9893" );
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+		"CVE-2016-9893");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:03:01 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-12-15 13:39:25 +0530 (Thu, 15 Dec 2016)");
   script_name("Mozilla Firefox Security Updates( mfsa_2016-94_2016-95 )-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with
+  script_tag(name:"summary", value:"This host is installed with
   Mozilla Firefox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
   - A buffer overflow error in SkiaGL.
   - An use-after-free error while manipulating DOM events and audio elements.
   - A CSP bypass error using marquee tag.
@@ -59,16 +59,16 @@ if(description)
   - A XSS injection vulnerability in add-ons SDK.
   - Some memory safety bugs.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this
+  script_tag(name:"impact", value:"Successful exploitation of this
   vulnerability will allow remote attackers to cause denial of service, gain
   sensitive information and also could run arbitrary code.
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before
+  script_tag(name:"affected", value:"Mozilla Firefox version before
   50.1 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 50.1
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 50.1
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");

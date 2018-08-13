@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonos_detect.nasl 9572 2018-04-24 04:48:31Z ckuersteiner $
+# $Id: gb_sonos_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Sonos Speaker Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141019");
-  script_version("$Revision: 9572 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-24 06:48:31 +0200 (Tue, 24 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2018-04-24 09:33:03 +0700 (Tue, 24 Apr 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-04-24 09:33:03 +0700 (Tue, 24 Apr 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Sonos Speaker Detection");
 
-  script_tag(name: "summary" , value: "Detection of Sonos Speaker.
+  script_tag(name:"summary", value:"Detection of Sonos Speaker.
 
 The script sends a connection request to the server and attempts to detect Sonos Speaker and to extract its
 version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ version.");
   script_require_ports("Services/www", 1400);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.sonos.com/");
+  script_xref(name:"URL", value:"https://www.sonos.com/");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_dng_converter_detect_win.nasl 7051 2017-09-04 11:38:56Z cfischer $
+# $Id: gb_adobe_dng_converter_detect_win.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Adobe DNG Converter Detection (Windows)
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809761");
-  script_version("$Revision: 7051 $");
+  script_version("$Revision: 10908 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-04 13:38:56 +0200 (Mon, 04 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-12-15 15:01:50 +0530 (Thu, 15 Dec 2016)");
   script_name("Adobe DNG Converter Detection (Windows)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("gb_wmi_access.nasl");
-  script_require_ports(139, 445);
+
   script_mandatory_keys("WMI/access_successful");
 
-  script_tag(name:"summary", value:"Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Adobe DNG Converter.
 
   The script runs a wmi query for 'Adobe DNG Converter.exe' and extracts the

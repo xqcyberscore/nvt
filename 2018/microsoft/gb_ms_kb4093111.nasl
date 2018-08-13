@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4093111.nasl 9974 2018-05-28 03:25:02Z ckuersteiner $
+# $Id: gb_ms_kb4093111.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4093111)
 #
@@ -27,21 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813078");
-  script_version("$Revision: 9974 $");
-  script_cve_id("CVE-2018-0870", "CVE-2018-0887", "CVE-2018-8116", "CVE-2018-0956", 
-                "CVE-2018-0957", "CVE-2018-0960", "CVE-2018-0966", "CVE-2018-0967", 
-                "CVE-2018-0968", "CVE-2018-0969", "CVE-2018-0970", "CVE-2018-0971", 
-                "CVE-2018-0972", "CVE-2018-0973", "CVE-2018-0974", "CVE-2018-0975", 
-                "CVE-2018-0976", "CVE-2018-0979", "CVE-2018-0980", "CVE-2018-0981", 
-                "CVE-2018-0987", "CVE-2018-0988", "CVE-2018-0989", "CVE-2018-0990", 
-                "CVE-2018-0991", "CVE-2018-0993", "CVE-2018-0994", "CVE-2018-0995", 
-                "CVE-2018-0996", "CVE-2018-0997", "CVE-2018-1000", "CVE-2018-1001", 
-                "CVE-2018-1009", "CVE-2018-1010", "CVE-2018-1012", "CVE-2018-1013", 
-                "CVE-2018-1015", "CVE-2018-1016", "CVE-2018-1018", "CVE-2018-1020", 
+  script_version("$Revision: 10918 $");
+  script_cve_id("CVE-2018-0870", "CVE-2018-0887", "CVE-2018-8116", "CVE-2018-0956",
+                "CVE-2018-0957", "CVE-2018-0960", "CVE-2018-0966", "CVE-2018-0967",
+                "CVE-2018-0968", "CVE-2018-0969", "CVE-2018-0970", "CVE-2018-0971",
+                "CVE-2018-0972", "CVE-2018-0973", "CVE-2018-0974", "CVE-2018-0975",
+                "CVE-2018-0976", "CVE-2018-0979", "CVE-2018-0980", "CVE-2018-0981",
+                "CVE-2018-0987", "CVE-2018-0988", "CVE-2018-0989", "CVE-2018-0990",
+                "CVE-2018-0991", "CVE-2018-0993", "CVE-2018-0994", "CVE-2018-0995",
+                "CVE-2018-0996", "CVE-2018-0997", "CVE-2018-1000", "CVE-2018-1001",
+                "CVE-2018-1009", "CVE-2018-1010", "CVE-2018-1012", "CVE-2018-1013",
+                "CVE-2018-1015", "CVE-2018-1016", "CVE-2018-1018", "CVE-2018-1020",
                 "CVE-2018-1023", "CVE-2018-1003", "CVE-2018-1004", "CVE-2018-1008");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 05:25:02 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 10:29:16 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4093111)");
 
@@ -52,9 +52,9 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
-  
+
   - Windows font library improperly handles specially crafted embedded fonts.
- 
+
   - Internet Explorer improperly accesses objects in memory.
 
   - Windows kernel fails to properly initialize a memory address.
@@ -68,7 +68,7 @@ if(description)
   - Chakra scripting engine handles objects in memory in Microsoft Edge.
 
   - A Kernel Address Space Layout Randomization (ASLR) bypass error in windows.
- 
+
   - Windows SNMP Service improperly handles malformed SNMP traps.
 
   - A security feature bypass exists when Device Guard incorrectly validates an
@@ -79,7 +79,7 @@ if(description)
   - Windows kernel improperly handles objects in memory.
 
   - VBScript engine improperly handles objects in memory.
- 
+
   - An error in  Remote Desktop Protocol (RDP).
 
   - An error in HTTP 2.
@@ -105,11 +105,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4093111");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4093111");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }

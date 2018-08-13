@@ -1,20 +1,11 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sun_virtualbox_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: secpod_sun_virtualbox_detect_lin.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Oracle VirtualBox Version Detection (Linux)
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
-#
-# Updated by: <santu@secpod.com> on 2011-01-28
-# Updated to detect the recent versions also
-#
-# Updated by: <jan-oliver.wagner@greenbone.net> on 2011-11-21
-# Revsied to comply with Change Request #57.
-#
-# Updated by: Shakeel <bshakeel@secpod.com> on 2013-10-28
-# According to new style script_tags
 #
 # Copyright:
 # Copyright (c) 2009 SecPod, http://www.secpod.com
@@ -36,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901051");
-  script_version("$Revision: 7823 $");
+  script_version("$Revision: 10891 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-11-20 06:52:52 +0100 (Fri, 20 Nov 2009)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Oracle VirtualBox Version Detection (Linux)");
 
-  script_tag(name : "summary" , value : "Detection of installed versions of Sun/Oracle VirtualBox,
+  script_tag(name:"summary", value:"Detection of installed versions of Sun/Oracle VirtualBox,
 a hypervisor tool, on Linux systems.
 
 The script logs in via ssh, searches for executables of VirtualBox and
@@ -85,12 +76,12 @@ foreach executableFile (getPath)
       {
         register_and_report_cpe(app:"Oracle/Sun Virtual Box", ver:Ver, concluded:Ver,
                                 base:"cpe:/a:sun:virtualbox:", expr:"^(3\..*)", insloc:executableFile);
-        register_and_report_cpe(app:"Oracle/Sun Virtual Box", ver:Ver, concluded:Ver, 
+        register_and_report_cpe(app:"Oracle/Sun Virtual Box", ver:Ver, concluded:Ver,
                                 base:"cpe:/a:sun:xvm_virtualbox:", expr:"^([0-2]\..*)", insloc:executableFile);
       }
       else
       {
-        register_and_report_cpe(app:"Oracle/Sun Virtual Box", ver:Ver, concluded:Ver, 
+        register_and_report_cpe(app:"Oracle/Sun Virtual Box", ver:Ver, concluded:Ver,
                                 base:"cpe:/a:oracle:vm_virtualbox:", expr:"^([3-9]\..*)", insloc:executableFile);
       }
     }

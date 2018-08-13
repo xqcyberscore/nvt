@@ -1,12 +1,12 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_shibboleth_sp_detect_win.nasl 9191 2018-03-23 13:45:26Z santu $
+# $Id: gb_shibboleth_sp_detect_win.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Shibboleth Service Provider Version Detection
 #
 # Authors:
 # Sharath S <sharaths@secpod.com>
-# Updated by Rinu Kuriakose <krinu@secpod.com> 
+# Updated by Rinu Kuriakose <krinu@secpod.com>
 # Updated to new format
 #
 # Copyright:
@@ -29,21 +29,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801115");
-  script_version("$Revision: 9191 $");
+  script_version("$Revision: 10922 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-23 14:45:26 +0100 (Fri, 23 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-10-15 15:35:39 +0200 (Thu, 15 Oct 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Shibboleth Service Provider Version Detection");
-  
-  script_tag(name: "summary" , value: "This script detects the installed version of 
+
+  script_tag(name:"summary", value:"This script detects the installed version of
   Shibboleth Service Provider.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -82,13 +82,12 @@ foreach item (registry_enum_keys(key:key))
     if(shibVer)
     {
       set_kb_item(name:"Shibboleth/SP/Win/Ver", value:shibVer);
-   
-      ## build cpe and store it as host_detail
+
       cpe = build_cpe(value:shibVer, exp:"^([0-9.]+)", base:"cpe:/a:internet2:shibboleth-sp:");
       if(!cpe)
         cpe = "cpe:/a:internet2:shibboleth-sp";
       register_and_report_cpe(app:"Shibboleth SP", ver:shibVer, concluded: shibVer,
-                              cpename:cpe, insloc:shibloc); 
+                              cpename:cpe, insloc:shibloc);
       exit(0);
     }
   }

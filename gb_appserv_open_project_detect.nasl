@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_appserv_open_project_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
+# $Id: gb_appserv_open_project_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # AppServ Open Project Version Detection
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802428");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9996 $");
+  script_version("$Revision: 10908 $");
   script_tag(name:"cvss_base", value:"0.0");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-04-16 13:02:43 +0530 (Mon, 16 Apr 2012)");
   script_name("AppServ Open Project Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
 
-  script_tag(name : "summary" , value : "Detection of AppServ Open Project, a open source web
+  script_tag(name:"summary", value:"Detection of AppServ Open Project, a open source web
   server (http://www.appservnetwork.com/?appserv).
 
   The script sends a connection request to the web server and attempts to

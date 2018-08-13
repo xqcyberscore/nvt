@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4088787.nasl 9488 2018-04-16 05:42:12Z cfischer $
+# $Id: gb_ms_kb4088787.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4088787)
 #
@@ -27,27 +27,27 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812831");
-  script_version("$Revision: 9488 $");
-  script_cve_id("CVE-2018-0811", "CVE-2018-0813", "CVE-2018-0814", "CVE-2018-0886", 
-                "CVE-2018-0888", "CVE-2018-0889", "CVE-2018-0891", "CVE-2018-0893", 
-                "CVE-2018-0894", "CVE-2018-0895", "CVE-2018-0896", "CVE-2018-0897", 
-                "CVE-2018-0898", "CVE-2018-0899", "CVE-2018-0900", "CVE-2018-0901", 
-                "CVE-2018-0902", "CVE-2018-0904", "CVE-2018-0926", "CVE-2018-0927", 
-                "CVE-2018-0929", "CVE-2018-0931", "CVE-2018-0932", "CVE-2018-0933", 
-                "CVE-2018-0934", "CVE-2018-0935", "CVE-2018-0942", "CVE-2018-0977", 
-                "CVE-2018-0983", "CVE-2018-0816", "CVE-2018-0817", "CVE-2018-0868", 
-                "CVE-2018-0872", "CVE-2018-0873", "CVE-2018-0874", "CVE-2018-0876", 
-                "CVE-2018-0877", "CVE-2018-0878", "CVE-2018-0880", "CVE-2018-0881", 
+  script_version("$Revision: 10918 $");
+  script_cve_id("CVE-2018-0811", "CVE-2018-0813", "CVE-2018-0814", "CVE-2018-0886",
+                "CVE-2018-0888", "CVE-2018-0889", "CVE-2018-0891", "CVE-2018-0893",
+                "CVE-2018-0894", "CVE-2018-0895", "CVE-2018-0896", "CVE-2018-0897",
+                "CVE-2018-0898", "CVE-2018-0899", "CVE-2018-0900", "CVE-2018-0901",
+                "CVE-2018-0902", "CVE-2018-0904", "CVE-2018-0926", "CVE-2018-0927",
+                "CVE-2018-0929", "CVE-2018-0931", "CVE-2018-0932", "CVE-2018-0933",
+                "CVE-2018-0934", "CVE-2018-0935", "CVE-2018-0942", "CVE-2018-0977",
+                "CVE-2018-0983", "CVE-2018-0816", "CVE-2018-0817", "CVE-2018-0868",
+                "CVE-2018-0872", "CVE-2018-0873", "CVE-2018-0874", "CVE-2018-0876",
+                "CVE-2018-0877", "CVE-2018-0878", "CVE-2018-0880", "CVE-2018-0881",
                 "CVE-2018-0882", "CVE-2018-0883", "CVE-2018-0884", "CVE-2018-0885");
   script_bugtraq_id(103232, 103250, 103251, 103265, 103262, 103295, 103309, 103288,
                     103231, 103238, 103240, 103241, 103242, 103243, 103244, 103245,
                     103266, 103246, 103247, 103310, 103299, 103273, 103307, 103274,
                     103275, 103298, 103312, 103380, 103381, 103248, 103249, 103236,
                     103267, 103268, 103269, 103289, 103227, 103230, 103239, 103256,
-                    103257, 103259, 103260, 103261);  
+                    103257, 103259, 103260, 103261);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-16 07:42:12 +0200 (Mon, 16 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 09:57:59 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4088787)");
 
@@ -58,56 +58,56 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
-  
-  - The way that the scripting engine handles objects in memory in Microsoft 
-    Edge and Internet Explorer. 
- 
-  - Windows Hyper-V on a host operating system fails to properly validate 
-    Input from an authenticated user on a guest operating system. 
 
-  - Windows Scripting Host which could allow an attacker to bypass Device 
-    Guard. 
+  - The way that the scripting engine handles objects in memory in Microsoft
+    Edge and Internet Explorer.
 
-  - When Microsoft Hyper-V Network Switch on a host server fails to properly 
-    validate input from a privileged user on a guest operating system. 
+  - Windows Hyper-V on a host operating system fails to properly validate
+    Input from an authenticated user on a guest operating system.
 
-  - The Credential Security Support Provider protocol (CredSSP). 
- 
-  - Windows when the Windows kernel-mode driver fails to properly handle 
-    objects in memory. 
+  - Windows Scripting Host which could allow an attacker to bypass Device
+    Guard.
 
-  - Windows when Desktop Bridge does not properly manage the virtual registry. 
- 
-  - When Windows when the Microsoft Video Control mishandles objects in memory. 
- 
-  - When Windows Shell does not properly validate file copy destinations. 
+  - When Microsoft Hyper-V Network Switch on a host server fails to properly
+    validate input from a privileged user on a guest operating system.
 
-  - When Storage Services improperly handles objects in memory.  
+  - The Credential Security Support Provider protocol (CredSSP).
 
-  - When Internet Explorer fails a check, allowing sandbox escape. 
+  - Windows when the Windows kernel-mode driver fails to properly handle
+    objects in memory.
 
-  - The Windows kernel that could allow an attacker to retrieve information 
-    that could lead to a Kernel Address Space Layout Randomization (ASLR) bypass. 
+  - Windows when Desktop Bridge does not properly manage the virtual registry.
 
-  - The Windows Installer when the Windows Installer fails to properly sanitize 
-    input leading to an insecure library loading behavior.  
+  - When Windows when the Microsoft Video Control mishandles objects in memory.
 
-  - When the Windows kernel improperly initializes objects in memory. 
+  - When Windows Shell does not properly validate file copy destinations.
 
-  - The Cryptography Next Generation (CNG) kernel-mode driver (cng. 
+  - When Storage Services improperly handles objects in memory.
 
-  - Windows when the Desktop Bridge VFS does not take into acccount user/kernel 
+  - When Internet Explorer fails a check, allowing sandbox escape.
+
+  - The Windows kernel that could allow an attacker to retrieve information
+    that could lead to a Kernel Address Space Layout Randomization (ASLR) bypass.
+
+  - The Windows Installer when the Windows Installer fails to properly sanitize
+    input leading to an insecure library loading behavior.
+
+  - When the Windows kernel improperly initializes objects in memory.
+
+  - The Cryptography Next Generation (CNG) kernel-mode driver (cng.
+
+  - Windows when the Desktop Bridge VFS does not take into acccount user/kernel
     mode when managing file paths.
 
-  - When Windows Remote Assistance incorrectly processes XML External Entities 
-    (XXE). 
+  - When Windows Remote Assistance incorrectly processes XML External Entities
+    (XXE).
 
-  - The way that the Windows Graphics Device Interface (GDI) handles objects in 
+  - The way that the Windows Graphics Device Interface (GDI) handles objects in
     memory. ");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to gain access to information, crash server and run arbitrary code in system
-  mode. 
+  mode.
 
   Impact Level: System");
 
@@ -122,11 +122,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4088787");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4088787");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -140,12 +141,10 @@ include("secpod_smb_func.inc");
 sysPath = "";
 edgeVer = "";
 
-## Check for OS and Service Pack
 if(hotfix_check_sp(win10:1, win10x64:1, win2016:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);

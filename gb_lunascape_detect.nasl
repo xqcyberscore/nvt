@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lunascape_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: gb_lunascape_detect.nasl 10880 2018-08-10 09:27:43Z cfischer $
 #
 # Lunascape Version Detection
 #
@@ -28,19 +28,19 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800893");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9580 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+ script_version("$Revision: 10880 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 11:27:43 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-09-08 18:25:53 +0200 (Tue, 08 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Lunascape Version Detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_family("Service detection");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_family("Product detection");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : "This script detects the installed version of Lunascape Browser
+  script_tag(name:"summary", value:"This script detects the installed version of Lunascape Browser
   and sets the result in KB.");
   exit(0);
 }
@@ -51,8 +51,6 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.800893";
 SCRIPT_DESC = "Lunascape Version Detection";
 
 if(!get_kb_item("SMB/WindowsVersion"))
@@ -80,11 +78,10 @@ foreach item (make_list("Lunascape4", "Lunascape5"))
     {
      set_kb_item(name:"Lunascape/Ver", value:lunaVer);
      log_message(data:"Lunascape version " + lunaVer + " was detected on the host");
-     
-     ## build cpe and store it as host_detail
+
      cpe = build_cpe(value:lunaVer, exp:"^([0-9.]+)", base:"cpe:/a:lunascape:lunascape:");
      if(!isnull(cpe))
-        register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+        register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
     }
   }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tdiary_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_tdiary_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # tDiary Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800991");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6065 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-03-10 15:48:25 +0100 (Wed, 10 Mar 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("tDiary Version Detection");
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : "This script finds the installed version of tDiary and sets
+  script_tag(name:"summary", value:"This script finds the installed version of tDiary and sets
   the result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -53,7 +53,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get HTTP Ports
 diaryPort = get_http_port(default:80);
 
 foreach path (make_list_unique("/tdiary", "/", cgi_dirs(port:diaryPort)))
@@ -66,7 +65,6 @@ foreach path (make_list_unique("/tdiary", "/", cgi_dirs(port:diaryPort)))
   sndReq = http_get(item: path + "/index.rb", port:diaryPort);
   rcvRes = http_keepalive_send_recv(port:diaryPort, data:sndReq);
 
-  ## Check tDiary in the response
   if(">tDiary<" >< rcvRes) {
 
     version = "unknown";
@@ -78,8 +76,7 @@ foreach path (make_list_unique("/tdiary", "/", cgi_dirs(port:diaryPort)))
 
     tmp_version = version + " under " + install;
     set_kb_item(name:"www/" + diaryPort + "/tdiary", value:tmp_version);
-      
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:tdiary:tdiary:");
     if( isnull( cpe ) )
       cpe = 'cpe:/a:tdiary:tdiary';

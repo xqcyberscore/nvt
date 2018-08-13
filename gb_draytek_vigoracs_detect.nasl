@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_draytek_vigoracs_detect.nasl 9622 2018-04-26 09:01:06Z ckuersteiner $
+# $Id: gb_draytek_vigoracs_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Draytek VigorACS Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141032");
-  script_version("$Revision: 9622 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-26 11:01:06 +0200 (Thu, 26 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2018-04-26 11:30:45 +0700 (Thu, 26 Apr 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10891 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-04-26 11:30:45 +0700 (Thu, 26 Apr 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Draytek VigorACS Detection");
 
-  script_tag(name: "summary" , value: "Detection of Draytek VigorACS.
+  script_tag(name:"summary", value:"Detection of Draytek VigorACS.
 
 The script sends a connection request to the server and attempts to detect Draytek VigorACS and to extract its
 version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ version.");
   script_require_ports("Services/www", 80, 443, 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.draytek.com/");
+  script_xref(name:"URL", value:"https://www.draytek.com/");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_remote_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
+# $Id: gb_ibm_db2_remote_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # IBM DB2 Remote Version Detection
 #
@@ -24,25 +24,21 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.801502";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
+  script_oid("1.3.6.1.4.1.25623.1.0.801502");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9584 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-09-03 15:47:26 +0200 (Fri, 03 Sep 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("IBM DB2 Remote Version Detection");
 
-  tag_summary = "Detection of IBM DB2.
+  script_tag(name:"summary", value:"Detection of IBM DB2.
 
 The script sends a connection request to the server and attempts to
-extract the version number from the reply.";
-
-  script_tag(name : "summary" , value : tag_summary);
+extract the version number from the reply.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
@@ -54,13 +50,7 @@ extract the version number from the reply.";
 include("cpe.inc");
 include("host_details.inc");
 
-## Variabe Initialization
-raw_data = "";
-result = "";
 udp_port = 523;
-soc = "";
-ver = "";
-cpe = "";
 
 if(!get_udp_port_state(udp_port)){
   exit(0);
@@ -79,7 +69,6 @@ if(soc)
     exit(0);
   }
 
-  ## Confirm the Database
   if(ord(result[0]) == 68 && ord(result[1] == 66) && ord(result[2]) == 50 &&
      ord(result[11]) == 83 && ord(result[12]) == 81 && ord(result[13]== 76))
   {
@@ -96,7 +85,6 @@ if(soc)
       set_kb_item(name:"IBM-DB2/Remote/" + udp_port + "/ver", value:ver[1]);
       set_kb_item(name:"OpenDatabase/found", value:TRUE);
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe(value:ver[1], exp:"^([0-9.]+)", base:"cpe:/a:ibm:db2:");
       if(isnull(cpe))
         cpe = 'cpe:/a:ibm:db2';

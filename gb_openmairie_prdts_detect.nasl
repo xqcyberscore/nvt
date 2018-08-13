@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openmairie_prdts_detect.nasl 7407 2017-10-12 06:55:43Z cfischer $
+# $Id: gb_openmairie_prdts_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # OpenMairie Products Version Detection
 #
@@ -34,8 +34,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800779");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7407 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-12 08:55:43 +0200 (Thu, 12 Oct 2017) $");
+  script_version("$Revision: 10913 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("OpenMairie Products Version Detection");
@@ -46,7 +46,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : "This script finds the installed OpenMairie products version and
+  script_tag(name:"summary", value:"This script finds the installed OpenMairie products version and
   saves the result in KB.");
   script_tag(name:"qod_type", value:"remote_banner");
   exit(0);
@@ -78,155 +78,128 @@ foreach dir(list)
 
   rcvRes = http_get_cache(item:string(dir , "/index.php"), port:openPort);
 
-  ## Checking for openAnnuaire product
   if(">Open Annuaire&" >< rcvRes)
   {
     openVer = eregmatch(pattern:"Version&nbsp;([0-9.]+)", string:rcvRes);
     if(openVer[1] != NULL)
     {
-      ## Set the version of Open Annuaire
       tmp_version = openVer[1] + " under " + install;
       set_kb_item(name:"www/" + openPort + "/OpenMairie/Open_Annuaire",
                   value:tmp_version);
 
-      ## build cpe and store it as host_detail
       register_and_report_cpe(app:"Open Annuaire", ver:tmp_version, base:"cpe:/a:openmairie:openannuaire:",
                               expr:"^([0-9.]+)", insloc:install);
     }
   }
 
-  ## Checking for openCourrier product
   if(">Open Courrier&" >< rcvRes)
   {
     openVer = eregmatch(pattern:"Version&nbsp;([0-9.]+)([a-z]*)", string:rcvRes);
     if(openVer[1] != NULL)
     {
-      ## Set the version of Open Courrier
       tmp_version = openVer[1] + " under " + install;
       set_kb_item(name:"www/" + openPort + "/OpenMairie/Open_Courrier",
                   value:tmp_version);
 
-      ## build cpe and store it as host_detail
       register_and_report_cpe(app:"Open Courrier", ver:tmp_version, base:"cpe:/a:openmairie:opencourrier:",
                               expr:"^([0-9.]+)", insloc:install);
      # exit(0);
     }
   }
 
-  ## Checking for openCourrier product
   if("courrier" >< rcvRes)
   {
     openVer = eregmatch(pattern:"> V e r s i o n ([0-9.]+)", string:rcvRes);
     if(openVer[1] != NULL)
     {
-      ## Set the version of Open Courrier
       tmp_version = openVer[1] + " under " + install;
       set_kb_item(name:"www/" + openPort + "/OpenMairie/Open_Courrier",
                 value:tmp_version);
 
-      ## build cpe and store it as host_detail
       register_and_report_cpe(app:"Open Courrier", ver:tmp_version, base:"cpe:/a:openmairie:opencourrier:",
                               expr:"^([0-9.]+)", insloc:install);
      }
    }
 
-   ## Checking for openPresse product
    if("presse" >< rcvRes)
    {
      openVer = eregmatch(pattern:"> V e r s i o n ([0-9.]+)", string:rcvRes);
      if(openVer[1] != NULL)
      {
-       ## Set the version of Open Presse
        tmp_version = openVer[1] + " under " + install;
        set_kb_item(name:"www/" + openPort + "/OpenMairie/Open_Presse",
                 value:tmp_version);
 
-       ## build cpe and store it as host_detail
        register_and_report_cpe(app:"Open Presse", ver:tmp_version, base:"cpe:/a:openmairie:openpresse:",
                               expr:"^([0-9.]+)", insloc:install);
       }
    }
 
-  ## Checking for openPlanning product
   if(">Open Planning&" >< rcvRes)
   {
     openVer = eregmatch(pattern:"Version&nbsp;([0-9.]+)", string:rcvRes);
     if(openVer[1] != NULL)
     {
-      ## Set the version of Open Planning
       tmp_version = openVer[1] + " under " + install;
       set_kb_item(name:"www/" + openPort + "/OpenMairie/Open_Planning",
                   value:tmp_version);
 
-      ## build cpe and store it as host_detail
       register_and_report_cpe(app:"Open Planning", ver:tmp_version, base:"cpe:/a:openmairie:openplanning:",
                               expr:"^([0-9.]+)", insloc:install);
     }
   }
 
-  ## Checking for openComInterne product
   if("Communication Interne" >< rcvRes)
   {
     openVer = eregmatch(pattern:"> V e r s i o n ([0-9.]+)", string:rcvRes);
     if(openVer[1] != NULL)
     {
-      ## Set the version of Open Cominterne
       tmp_version = openVer[1] + " under " + install;
       set_kb_item(name:"www/" + openPort + "/OpenMairie/Open_ComInterne",
                 value:tmp_version);
 
-      ## build cpe and store it as host_detail
       register_and_report_cpe(app:"Open ComInterne", ver:tmp_version, base:"cpe:/a:openmairie:opencominterne:",
                               expr:"^([0-9.]+)", insloc:install);
     }
   }
 
-  ## Checking for openCimetiere product
   if(">opencimetiere" >< rcvRes)
   {
     openVer = eregmatch(pattern:"Version&nbsp;([0-9.]+)", string:rcvRes);
     if(openVer[1] != NULL)
     {
-      ## Set the version of Open Cimetiere
       tmp_version = openVer[1] + " under " + install;
       set_kb_item(name:"www/" + openPort + "/OpenMairie/Open_Cimetiere",
                 value:tmp_version);
 
-      ## build cpe and store it as host_detail
       register_and_report_cpe(app:"Open Cimetiere", ver:tmp_version, base:"cpe:/a:openmairie:opencimetiere:",
                               expr:"^([0-9.]+)", insloc:install);
     }
   }
 
-  ## Checking for openRegistreCIL product
   if(">Open Registre CIL&" >< rcvRes)
   {
     openVer = eregmatch(pattern:"Version&nbsp;([0-9.]+)", string:rcvRes);
     if(openVer[1] != NULL)
     {
-      ## Set the version of Open Registre CIL
       tmp_version = openVer[1] + " under " + install;
       set_kb_item(name:"www/" + openPort + "/OpenMairie/Open_Registre_CIL",
                    value:tmp_version);
 
-      ## build cpe and store it as host_detail
       register_and_report_cpe(app:"Open Registre CIL", ver:tmp_version, base:"cpe:/a:openmairie:openregistrecil:",
                               expr:"^([0-9.]+)", insloc:install);
      }
    }
 
-  ## Checking for openFoncier product
   if(">openFoncier<" >< rcvRes || "Fonciere" >< rcvRes)
   {
     openVer = eregmatch(pattern:"Version&nbsp;([0-9.]+)", string:rcvRes);
     if(openVer[1] != NULL)
     {
-      ## Set the version of Open Foncier
       tmp_version = openVer[1] + " under " + install;
       set_kb_item(name:"www/" + openPort + "/OpenMairie/Open_Foncier",
                 value:tmp_version);
 
-      ## build cpe and store it as host_detail
       register_and_report_cpe(app:"Open Foncier", ver:tmp_version, base:"cpe:/a:openmairie:openfoncier:",
                               expr:"^([0-9.]+)", insloc:install);
     }
@@ -235,19 +208,16 @@ foreach dir(list)
     openVer[1] = ereg_replace(pattern:" ", string:openVer[1], replace:".");
     if(openVer[1] != NULL)
     {
-      ## Set the version of Open Foncier
       tmp_version = openVer[1] + " under " + install;
       set_kb_item(name:"www/" + openPort + "/OpenMairie/Open_Foncier",
                 value:tmp_version);
 
-      ## build cpe and store it as host_detail
       register_and_report_cpe(app:"Open Foncier", ver:tmp_version, base:"cpe:/a:openmairie:openfoncier:",
                               expr:"^([0-9.]+)", insloc:install);
     }
   }
 }
 
-## Checking for the Opencatalogue product
 foreach dir (make_list_unique("/openmairie_catalogue", "/Openmairie_Catalogue", cgi_dirs(port:openPort)))
 {
 
@@ -258,21 +228,17 @@ foreach dir (make_list_unique("/openmairie_catalogue", "/Openmairie_Catalogue", 
   sndReq = http_get(item:string(dir , "/doc/catalogue.html"), port:openPort);
   rcvRes = http_keepalive_send_recv(port:openPort, data:sndReq);
 
-  ## Confirm the product
   if("OPENCATALOGUE" >< rcvRes || "[Cc]atalogue" >< rcvRes)
   {
     rcvRes = http_get_cache(item:string(dir , "/index.php"), port:openPort);
 
-    ## Grep for version
     openVer = eregmatch(pattern:"> V e r s i o n ([0-9.]+)", string:rcvRes);
     if(openVer[1] != NULL)
     {
-      ## Set the version of Opencatalogue
       tmp_version = openVer[1] + " under " + install;
       set_kb_item(name:"www/" + openPort + "/OpenMairie/Open_Catalogue",
                 value:tmp_version);
 
-      ## build cpe and store it as host_detail
       register_and_report_cpe(app:"Open Catalogue", ver:tmp_version, base:"cpe:/a:openmairie:opencatalogue:",
                               expr:"^([0-9.]+)", insloc:install);
     }

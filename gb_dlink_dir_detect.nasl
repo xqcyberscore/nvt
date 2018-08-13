@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_detect.nasl 9111 2018-03-15 15:16:12Z cfischer $
+# $Id: gb_dlink_dir_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # D-Link DIR Devices Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103689");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9111 $");
- script_tag(name:"last_modification", value:"$Date: 2018-03-15 16:16:12 +0100 (Thu, 15 Mar 2018) $");
+ script_version("$Revision: 10896 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2013-04-08 13:52:56 +0200 (Mon, 08 Apr 2013)");
  script_name("D-Link DIR Devices Detection");
  script_category(ACT_GATHER_INFO);
@@ -42,7 +42,7 @@ if (description)
  script_require_ports("Services/www", 80, 8080);
  script_mandatory_keys("D-LinkDIR/banner");
 
- script_tag(name: "summary" , value: "Detection of D-Link DIR Devices
+ script_tag(name:"summary", value:"Detection of D-Link DIR Devices
 
 The script sends a connection request to the server and attempts to
 determine if the remote host is a Dlink DIR device from the reply.");

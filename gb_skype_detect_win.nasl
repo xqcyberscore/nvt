@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_skype_detect_win.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: gb_skype_detect_win.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Skype Version Detection (Windows)
 #
@@ -30,28 +30,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801301");
-  script_version("$Revision: 5877 $");
+  script_version("$Revision: 10888 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Skype Version Detection (Windows)");
 
 
-  tag_summary =
-"This script finds the installed version of Skype and saves the result in KB.
+  script_tag(name:"summary", value:"This script finds the installed version of Skype and saves the result in KB.
 
 The script logs in via smb, searches for Skype in the registry
-and gets the version from 'DisplayVersion' string from registry.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+and gets the version from 'DisplayVersion' string from registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -63,26 +59,15 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## variable Initialization
-os_arch = "";
-key_list = "";
-key = "";
-skPath = "";
-skVer = "";
-skName = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-## Check for 64 bit platform, Currently only 32-bit application is available
 else if("x64" >< os_arch)
 {
   key_list =  make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
@@ -92,21 +77,18 @@ if(isnull(key_list)){
     exit(0);
 }
 
-#Confirm Application is present
 if(!registry_key_exists(key:"SOFTWARE\Skype")){
   if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\Skype")){
     exit(0);
   }
 }
 
-#Iterate over 
 foreach key (key_list)
 {
   foreach item(registry_enum_keys(key:key))
   {
     skName = registry_get_sz(key:key + item, item:"DisplayName");
 
-    ## Confirm the application
     if("Skype" >< skName)
     {
       skVer = registry_get_sz(key:key + item, item:"DisplayVersion");
@@ -118,7 +100,6 @@ foreach key (key_list)
         }
         set_kb_item(name:"Skype/Win/Ver", value:skVer);
 
-        ## build cpe and store it as host_detail
         cpe = build_cpe(value:skVer, exp:"^([0-9.]+)", base:"cpe:/a:skype:skype:");
         if(isnull(cpe))
           cpe = "cpe:/a:skype:skype";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linksys_devices_detect.nasl 7589 2017-10-27 07:03:33Z cfischer $
+# $Id: gb_linksys_devices_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Linksys Devices Remote Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812041");
-  script_version("$Revision: 7589 $");
+  script_version("$Revision: 10894 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 09:03:33 +0200 (Fri, 27 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-19 12:33:14 +0530 (Thu, 19 Oct 2017)");
   script_name("Linksys Devices Remote Detection");
   script_category(ACT_GATHER_INFO);
@@ -72,7 +72,7 @@ if( ! vendor ) {
        && '">WAN IP<' >< res && '">LAN IP<' >< res ) {
       vendor = "Linksys";
     }
-  }   
+  }
 }
 
 if( "linksys" >< tolower( vendor ) ) {

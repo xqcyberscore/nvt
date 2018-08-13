@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ztree_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: gb_ztree_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # zTree Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806900");
-  script_version("$Revision: 5499 $");
+  script_version("$Revision: 10894 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-12-16 11:04:52 +0530 (Wed, 16 Dec 2015)");
   script_name("zTree Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -56,10 +56,8 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-##Get HTTP Port
 port = get_http_port( default:80 );
 
-##Iterate over possible paths
 foreach dir( make_list_unique( "/", "/zTree", "/zTree/demo", cgi_dirs( port:port ) ) ) {
 
   install = dir;
@@ -69,10 +67,8 @@ foreach dir( make_list_unique( "/", "/zTree", "/zTree/demo", cgi_dirs( port:port
   sndReq = http_get( item: dir + "/en/index.html", port:port );
   rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
-  ##Confirm application
   if( rcvRes =~ "HTTP/1.. 200" && 'class="ztree"' >< rcvRes ) {
 
-    ##Grep for js
     req2 =  eregmatch(pattern:"/js/jquery.ztree.core-([0-9.]+).js", string:rcvRes);
     if( ! req2[0] ) continue;
 
@@ -83,15 +79,12 @@ foreach dir( make_list_unique( "/", "/zTree", "/zTree/demo", cgi_dirs( port:port
 
     version = "unknown";
 
-    ## Grep for the version
     ver = eregmatch( pattern:"JQuery zTree core v([0-9.]+)", string:rcvRes );
     if( ver[1] ) version = ver[1];
 
-    ## Set the KB value
     set_kb_item( name:"www/" + port + "/zTree", value:version );
     set_kb_item( name:"zTree/Installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:ztree_project:ztree:" );
     if( ! cpe )
       cpe = "cpe:/a:ztree_project:ztree";

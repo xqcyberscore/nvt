@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vicon_industries_network_camera_detect_telnet.nasl 10627 2018-07-25 15:49:36Z mmartin $
+# $Id: gb_vicon_industries_network_camera_detect_telnet.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Vicon Industries Network Camera Detection (Telnet)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107334");
-  script_version("$Revision: 10627 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:49:36 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10891 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-23 11:32:40 +0200 (Mon, 23 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -53,12 +53,12 @@ include("misc_func.inc");
 include("telnet_func.inc");
 include("host_details.inc");
 
-port   = get_telnet_port( default:23 ); 
+port   = get_telnet_port( default:23 );
 banner = get_telnet_banner( port:port );
 
 if( egrep( string:banner, pattern:"^IQinVision .* Version ", icase:FALSE ) ||
-      ( banner =~ "IQinVision " && banner =~ "Type HELP at the .* prompt for assistance" ) ) { 
-    
+      ( banner =~ "IQinVision " && banner =~ "Type HELP at the .* prompt for assistance" ) ) {
+
   set_kb_item( name:"vicon_industries/network_camera/detected", value:TRUE );
   set_kb_item( name:"vicon_industries/network_camera/telnet/detected", value:TRUE );
   set_kb_item( name:"vicon_industries/network_camera/telnet/port", value:port );
@@ -66,7 +66,7 @@ if( egrep( string:banner, pattern:"^IQinVision .* Version ", icase:FALSE ) ||
   version = "unknown";
 
   vers = eregmatch( pattern:"(Software version|Version) [VB]?([0-9.]+)", string:banner );
-  
+
   if( vers[2] ) {
     version = vers[2];
     set_kb_item( name:"vicon_industries/network_camera/telnet/" + port + "/concluded", value:vers[0] );
@@ -78,7 +78,7 @@ if( egrep( string:banner, pattern:"^IQinVision .* Version ", icase:FALSE ) ||
   type = "unknown";
 
   type = eregmatch( pattern:"IQ(eye)?([0578ADMPR])", string:banner );
-  
+
   type_list['0'] = "3 Series / 4 Series";
   type_list['5'] = "5 Series";
   type_list['7'] = "7 Series";
@@ -92,15 +92,15 @@ if( egrep( string:banner, pattern:"^IQinVision .* Version ", icase:FALSE ) ||
 
   if( type_list[type[2]] ) {
     type = type_list[type[2]];
-  
+
   } else {
     type = "unknown";
     }
 
   if( "IQinVision" >!< banner && "Software version " >< banner && "MAC address " >< banner ) {
     type = "Branded";
-  } 
-  
+  }
+
   if ( type == "unknown" ) {
     username = "login";
     access = FALSE;
@@ -113,10 +113,10 @@ if( egrep( string:banner, pattern:"^IQinVision .* Version ", icase:FALSE ) ||
       if ( "prompt for assistance" >< recv1 && "Username>" >< recv1 ) {
         send( socket:soc, data:username + '\r\n' );
         recv2 = recv( socket:soc, length:2048, timeout:10 );
- 
+
         if ( recv2 =~ "Local_.+>" ) {
           access = TRUE;
-          set_kb_item(name:"vicon_industries/network_camera/telnet/" + port + "/access", value:TRUE );      
+          set_kb_item(name:"vicon_industries/network_camera/telnet/" + port + "/access", value:TRUE );
         }
       }
 
@@ -134,7 +134,7 @@ if( egrep( string:banner, pattern:"^IQinVision .* Version ", icase:FALSE ) ||
   }
 
   set_kb_item( name:"vicon_industries/network_camera/telnet/" + port + "/type", value:type );
- 
+
   if( mac = eregmatch( pattern:"MAC address ([0-9a-fA-F]{12})", string:bin2string( ddata:banner, noprint_replacement:'' ) ) ) {
     plain_mac = mac[1];
     for( i = 0; i < 12; i++ ) {

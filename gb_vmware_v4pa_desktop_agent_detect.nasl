@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_v4pa_desktop_agent_detect.nasl 9074 2018-03-09 14:00:19Z cfischer $
+# $Id: gb_vmware_v4pa_desktop_agent_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Vmware vRealize Operations Published Applications (V4PA) Desktop Agent Detection (Windows)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812788");
-  script_version("$Revision: 9074 $");
+  script_version("$Revision: 10922 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-09 15:00:19 +0100 (Fri, 09 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-03-06 11:00:32 +0530 (Tue, 06 Mar 2018)");
   script_name("Vmware vRealize Operations Published Applications (V4PA) Desktop Agent Detection (Windows)");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Vmware V4PA Desktop Agent.
 
   The script logs in via smb, searches for 'vRealize Operations for Published
@@ -46,7 +46,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);

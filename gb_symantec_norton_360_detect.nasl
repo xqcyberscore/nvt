@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_norton_360_detect.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_symantec_norton_360_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Symantec Norton 360 Version Detection (Windows)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808515");
-  script_version("$Revision: 5888 $");
+  script_version("$Revision: 10902 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-07-05 12:26:57 +0530 (Tue, 05 Jul 2016)");
   script_name("Symantec Norton 360 Version Detection (Windows)");
 
-  script_tag(name: "summary" , value: "Detection of installed version of Symantec
+  script_tag(name:"summary", value:"Detects the installed version of Symantec
   Norton 360.
 
   The script logs in via smb, searches for string 'Norton 360' in the registry
@@ -44,7 +44,7 @@ if(description)
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -56,25 +56,15 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## variable Initialization
-os_arch = "";
-nortonPath = "";
-nortonName = "";
-nortonVer = "";
-key = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
-## Check for 64 bit platform
 else if("x64" >< os_arch){
   key = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
@@ -87,7 +77,6 @@ foreach item (registry_enum_keys(key:key))
 {
   nortonName = registry_get_sz(key:key + item, item:"DisplayName");
 
-  #### Confirm Application
   if("Norton 360" >< nortonName)
   {
     nortonVer = registry_get_sz(key:key + item, item:"DisplayVersion");
@@ -100,13 +89,11 @@ foreach item (registry_enum_keys(key:key))
     {
       set_kb_item(name:"Symantec/Norton/360/Ver", value:nortonVer);
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe(value:nortonVer, exp:"^([0-9.]+)", base:"cpe:/a:symantec:norton_360:");
       if(isnull(cpe))
         cpe = "cpe:/a:symantec:norton_360";
     }
 
-    ## Register Product and Build Report
     register_product(cpe:cpe, location:nortonPath);
 
     log_message(data: build_detection_report(app: "Norton 360",

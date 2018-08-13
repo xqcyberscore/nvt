@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_justsystems_ichitaro_prdts_detect.nasl 8146 2017-12-15 13:40:59Z cfischer $
+# $Id: gb_justsystems_ichitaro_prdts_detect.nasl 10883 2018-08-10 10:52:12Z cfischer $
 #
 # JustSystems Ichitaro Product(s) Version Detection
 #
@@ -28,23 +28,22 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800542");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8146 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:40:59 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10883 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:52:12 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-02 08:15:32 +0200 (Thu, 02 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("JustSystems Ichitaro Product(s) Version Detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_family("General");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_family("Product detection");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : "This script finds the installed product version of Ichitaro
+  script_tag(name:"summary", value:"This script finds the installed product version of Ichitaro
   and Ichitaro viewer and sets the result in KB.");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -52,9 +51,6 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## Constant values
-
-## start script
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
@@ -74,7 +70,6 @@ if(viewerPath)
     set_kb_item(name:"Ichitaro/Ichitaro_or_Viewer/Installed", value:TRUE);
     set_kb_item(name:"Ichitaro/Viewer/Ver", value:viewerVer);
 
-    ## build cpe and store it as host_detail
     register_and_report_cpe(app:"Ichitaro Viewer", ver:viewerVer, base:"cpe:/a:justsystem:ichitaro_viewer:5.1",
                             expr:"^(19\..*)", insloc:viewerPath);
   }
@@ -95,8 +90,7 @@ foreach item (registry_enum_keys(key:key))
     {
       set_kb_item(name:"Ichitaro/Ichitaro_or_Viewer/Installed", value:TRUE);
       set_kb_item(name:"Ichitaro/Ver", value:appVer[1]);
- 
-      ## build cpe and store it as host_detail
+
      register_and_report_cpe(app:"Ichitaro", ver:appVer[1], base:"cpe:/a:ichitaro:ichitaro:",
                             expr:"^([0-9.]+)");
     }

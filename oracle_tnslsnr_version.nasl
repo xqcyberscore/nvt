@@ -1,18 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: oracle_tnslsnr_version.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: oracle_tnslsnr_version.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Oracle Version Detection
 #
 # Authors:
 # James W. Abendschan <jwa@jammed.com>
-# modified by Axel Nennker 20020306
-# modified by Sullo 20041206
-#
-# Update By: Shashi Kiran N <nskiran@secpod.com> on 2013-11-06
-# According to cr57 and new style script_tags. And moved made this
-# script as only detect script. Moved the vulnerability logic to
-# "gb_oracle_database_listener_sec_bypass_vuln.nasl" file.
 #
 # Copyright:
 # Copyright (C) 2001 James W. Abendschan <jwa@jammed.com>
@@ -34,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10658");
-  script_version("$Revision: 9633 $");
+  script_version("$Revision: 10929 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
-  script_name( "Oracle Version Detection");
+  script_name("Oracle Version Detection");
 
-  script_tag(name : "summary" , value : "Detection of installed version of Oracle.
+  script_tag(name:"summary", value:"Detects the installed version of Oracle.
 
   This script sends  'CONNECT_DATA=(COMMAND=VERSION)' command via Oracle
   tnslsnr, a network interface to the remote Oracle database and try to get
@@ -62,7 +55,7 @@ if(description)
 include("cpe.inc");
 include("host_details.inc");
 include("misc_func.inc");
-include("global_settings.inc");
+
 
 function tnscmd(sock, command)
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rabbitmq_web_management_detect.nasl 9443 2018-04-11 12:28:11Z cfischer $
+# $Id: gb_rabbitmq_web_management_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # RabbitMQ Web Management Detection
 #
@@ -31,12 +31,12 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 9443 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:28:11 +0200 (Wed, 11 Apr 2018) $");
+ script_version("$Revision: 10922 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2015-01-22 17:22:26 +0100 (Thu, 22 Jan 2015)");
  script_name("RabbitMQ Web Management Detection");
 
- script_tag(name: "summary" , value: "The script sends a connection
+ script_tag(name:"summary", value:"The script sends a connection
 request to the server and attempts to detect the RabbitMQ webmanagement interface from the reply.");
 
  script_category(ACT_GATHER_INFO);

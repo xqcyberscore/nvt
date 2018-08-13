@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_live_meeting_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_ms_live_meeting_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # Microsoft Live Meeting Version Detection
 #
@@ -27,27 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804597");
-  script_version("$Revision: 6063 $");
+  script_version("$Revision: 10898 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-06-11 14:04:01 +0530 (Wed, 11 Jun 2014)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Live Meeting Version Detection");
 
-  tag_summary =
-"Detection of installed version of Microsoft Live Meeting on Windows.
+
+  script_tag(name:"summary", value:"Detects the installed version of Microsoft Live Meeting on Windows.
 
 The script logs in via smb, searches for Live Meeting in the
-registry and gets the version.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+registry and gets the version.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -59,12 +56,6 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-appName = "";
-appPath = "";
-appVer = "";
-
-## Confirm app is installed
 if(!registry_key_exists(key:"SOFTWARE\Microsoft\Live Meeting"))
 {
   if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\Microsoft\Live Meeting")){
@@ -72,19 +63,16 @@ if(!registry_key_exists(key:"SOFTWARE\Microsoft\Live Meeting"))
   }
 }
 
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
 ## Presently Microsoft Office Live Meeting 64bit application is not available
-## Check for 32 bit App on 64 bit platform
 else if("x64" >< os_arch){
   key = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
@@ -110,7 +98,6 @@ foreach item (registry_enum_keys(key:key))
 
       set_kb_item(name:"MS/OfficeLiveMeeting/Ver", value:appVer);
 
-      ## build cpe and store it as host_detail
       cpe = build_cpe(value:appVer, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:office_live_meeting:");
       if(isnull(cpe))
         cpe = "cpe:/a:microsoft:office_live_meeting";

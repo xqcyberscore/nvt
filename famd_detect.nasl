@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: famd_detect.nasl 9689 2018-05-02 09:58:46Z ckuersteiner $
+# $Id: famd_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # famd detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18186");
-  script_version("$Revision: 9689 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-02 11:58:46 +0200 (Wed, 02 May 2018) $");
+  script_version("$Revision: 10898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -98,7 +98,7 @@ else {
  if (!lan)
   r += 'Exposing it on Internet is definitely not a good idea.\n';
 
- r += '\nSolution : to restrict it to the loopback interface, 
+ r += '\nSolution : to restrict it to the loopback interface,
 run it with -L or set "local_only = false" in /etc/fam.conf';
  log_message(port: port, data: r);
  exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3162075.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
+# $Id: gb_ms_kb3162075.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Infopath 2013 Service Pack 1 Elevation of Privilege Vulnerability (KB3162075)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813182");
-  script_version("$Revision: 10148 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-8173");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 14:32:27 +0530 (Wed, 09 May 2018)");
   script_name("Microsoft Infopath 2013 Service Pack 1 Elevation of Privilege Vulnerability (KB3162075)");
 
@@ -57,7 +57,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3162075");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3162075");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_karaf_default_ssh_login.nasl 5689 2017-03-23 10:00:49Z teissa $
+# $Id: gb_apache_karaf_default_ssh_login.nasl 10910 2018-08-10 15:10:09Z mmartin $
 #
 # Apache Karaf SSH Default Credentials
 #
@@ -28,30 +28,32 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105593");
- script_version("$Revision: 5689 $");
+ script_version("$Revision: 10910 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Apache Karaf SSH Default Credentials");
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:10:09 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-04-01 15:59:09 +0200 (Fri, 01 Apr 2016)");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
  script_require_ports("Services/ssh", 8101);
 
- script_tag(name: "summary" , value: 'The remote Apache Karaf is prone to a default account authentication bypass vulnerability.');
+ script_tag(name:"summary", value: 'The remote Apache Karaf is prone to a default account authentication bypass vulnerability.');
 
- script_tag(name: "impact" , value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
+ script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
 
- script_tag(name: "vuldetect" , value: 'Try to login with default credentials.');
- script_tag(name: "insight" , value: 'It was possible to login with default credentials: karaf/karaf');
- script_tag(name: "solution" , value: 'Change the password.');
+ script_tag(name:"vuldetect", value: 'Try to login with default credentials.');
+ script_tag(name:"insight", value: 'It was possible to login with default credentials: karaf/karaf');
+ script_tag(name:"solution", value: 'Change the password.');
+ script_tag(name:"solution_type", value:"Mitigation");
  script_dependencies("find_service.nasl");
  script_tag(name:"qod_type", value:"exploit");
  exit(0);
 }
 
 include("ssh_func.inc");
+
 
 port = get_kb_item( "Services/ssh" );
 if( ! port ) port = 8101;

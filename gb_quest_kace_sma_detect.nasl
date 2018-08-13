@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quest_kace_sma_detect.nasl 10097 2018-06-06 10:50:30Z cfischer $
+# $Id: gb_quest_kace_sma_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Quest KACE Systems Management Applicance (SMA) Detection
 #
@@ -28,17 +28,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141135");
-  script_version("$Revision: 10097 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-06 12:50:30 +0200 (Wed, 06 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2018-06-01 10:51:22 +0700 (Fri, 01 Jun 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-06-01 10:51:22 +0700 (Fri, 01 Jun 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Quest KACE Systems Management Applicance (SMA) Detection");
 
-  script_tag(name: "summary" , value: "Detection of Quest KACE Systems Management Applicance (SMA).
+  script_tag(name:"summary", value:"Detection of Quest KACE Systems Management Applicance (SMA).
 
 The script sends a connection request to the server and attempts to detect Quest KACE Systems Management
 Applicance (SMA) and to extract its version.");
@@ -51,7 +51,7 @@ Applicance (SMA) and to extract its version.");
   script_mandatory_keys("KACE-Appliance/banner");
   script_require_ports("Services/www", 80, 443);
 
-  script_xref(name: "URL", value: "https://www.quest.com/kace/");
+  script_xref(name:"URL", value:"https://www.quest.com/kace/");
 
   exit(0);
 }
@@ -59,7 +59,7 @@ Applicance (SMA) and to extract its version.");
 include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
-include("http_keepalive.inc");
+
 
 port = get_http_port(default: 443);
 

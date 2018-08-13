@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 10434 2018-07-06 09:33:22Z cfischer $
+# $Id: find_service1.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 10434 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-06 11:33:22 +0200 (Fri, 06 Jul 2018) $");
+  script_version("$Revision: 10898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -556,7 +556,7 @@ if( "Connection from client using unsupported AMQP attempted" >< r || "amqp:deco
 # 0x0180:  6F 6E 09 00 06 35 2E 31 34 2E 35                   on...5.14.5
 
 if( "ActiveMQ" >< r && ( "PlatformDetails" >< r || "StackTraceEnable" >< r || "ProviderVersion" >< r || "TcpNoDelayEnabled" >< r ) ) {
-  # Set the response for later use in gb_apache_activemq_detect.nasl
+  # nb: Set the response for later use in gb_apache_activemq_detect.nasl
   set_kb_item( name:"ActiveMQ/JMS/banner/" + port, value:bin2string( ddata:r ) );
   register_service( port:port, proto:"activemq_jms", message:"A ActiveMQ JMS service seems to be running on this port." );
   log_message( port:port, data:"A ActiveMQ JMS service seems to be running on this port." );
@@ -871,8 +871,7 @@ if( port == 5441 &&
   exit( 0 );
 }
 
-#### Some spontaneous banners are coming slowly, so they are wrongly
-#### registered as answers to GET
+# Some spontaneous banners are coming slowly, so they are wrongly registered as answers to GET
 if( r =~ '^(\\|/dev/[a-z0-9/-]+\\|[^|]*\\|[^|]*\\|[^|]\\|)+$' ) {
   report_service( port:port, svc:"hddtemp" );
   exit( 0 );

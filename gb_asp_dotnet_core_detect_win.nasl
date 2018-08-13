@@ -1,6 +1,6 @@
 ####################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_detect_win.nasl 9834 2018-05-15 08:51:49Z santu $
+# $Id: gb_asp_dotnet_core_detect_win.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # ASP.NET Core/.NET Core SDK Detection (Windows)
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812949");
-  script_version("$Revision: 9834 $");
+  script_version("$Revision: 10891 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 10:51:49 +0200 (Tue, 15 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-02-26 16:34:26 +0530 (Mon, 26 Feb 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("ASP.NET Core/.NET Core SDK Detection (Windows)");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   ASP.NET Core.
 
   The script logs in via smb, searches for 'Microsoft .NET Core in the registry
@@ -44,7 +44,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -133,7 +133,7 @@ foreach key (key_list1)
           cpe = "cpe:/a:microsoft:asp.net_core:x64";
       }
       register_and_report_cpe(app:"ASP .NET Core", ver:coreVer, concluded: "ASP .NET Core " + coreVer,
-                              cpename:cpe, insloc:"Couldn find the install location from registry"); 
+                              cpename:cpe, insloc:"Couldn find the install location from registry");
       break;
     }
   }

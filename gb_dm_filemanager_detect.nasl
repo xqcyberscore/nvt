@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dm_filemanager_detect.nasl 7170 2017-09-18 10:35:33Z cfischer $
+# $Id: gb_dm_filemanager_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # DM FileManager Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800818");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7170 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 12:35:33 +0200 (Mon, 18 Sep 2017) $");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-07-03 15:23:01 +0200 (Fri, 03 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("DM FileManager Version Detection");
@@ -73,7 +73,6 @@ foreach dir1( make_list_unique( "/dm-filemanager", "/dmf", "/", cgi_dirs( port:p
     tmp_version1 = version1 + " under " + install1;
     set_kb_item( name:"www/" + port + "/DM-FileManager", value:tmp_version1 );
 
-    ## build cpe and store it as host_detail
     cpe1 = build_cpe( value: version1, exp:"^([0-9.]+)", base:"cpe:/a:dutchmonkey:dm_filemanager:" );
     if( isnull( cpe1 ) )
       cpe1 = 'cpe:/a:dutchmonkey:dm_filemanager';
@@ -98,12 +97,11 @@ foreach dir1( make_list_unique( "/dm-filemanager", "/dmf", "/", cgi_dirs( port:p
         tmp_version2 = version2 + " under " + install2;
         set_kb_item( name:"www/" + port + "/DM-Albums", value:tmp_version2 );
 
-        ## build cpe and store it as host_detail
         cpe2 = build_cpe( value: version2, exp:"^([0-9.]+)", base:"cpe:/a:dutchmonkey:dm_album:" );
         if( isnull( cpe2 ) )
           cpe2 = 'cpe:/a:dutchmonkey:dm_album';
 
-        register_and_report_cpe(app:"DM Albums", ver:version2, concluded:ver2[0], 
+        register_and_report_cpe(app:"DM Albums", ver:version2, concluded:ver2[0],
                             cpename:cpe2, insloc:install2, regPort:port);
       }
     }

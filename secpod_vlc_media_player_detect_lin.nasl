@@ -1,14 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_vlc_media_player_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: secpod_vlc_media_player_detect_lin.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # VLC Media Player Version Detection (Linux)
 #
 # Authors:
 # Nikita MR <rnikita@secpod.com>
-#
-# Updated By: Shashi Kiran N <nskiran@secpod.com> on 2013-10-22
-# According to CR57 and new style script_tags.#
 #
 # Copyright:
 # Copyright (c) 2009 SecPod, http://www.secpod.com
@@ -30,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900529");
-  script_version("$Revision: 7823 $");
+  script_version("$Revision: 10901 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-03-26 11:19:12 +0100 (Thu, 26 Mar 2009)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("VLC Media Player Version Detection (Linux)");
 
-  script_tag(name: "summary" , value:"Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   VLC Media Player version on Linux.
 
   This script logs in via shh, extracts the version from the binary file
@@ -60,12 +57,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-sock = "";
-path = "";
-vlcVer = "";
-vlcBinPath = "";
-
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);
@@ -82,15 +73,12 @@ foreach binPath (vlcBinPath)
     set_kb_item(name:"VLCPlayer/Lin/Ver", value:vlcVer[1]);
     ssh_close_connection();
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:vlcVer[1], exp:"^([0-9.]+([a-z0-9]+)?)", base:"cpe:/a:videolan:vlc_media_player:");
     if(isnull(cpe))
        cpe = "cpe:/a:videolan:vlc_media_player";
 
-    ## Register Product
     register_product(cpe:cpe, location: path);
 
-    ## Build Report
     log_message(data: build_detection_report(app: "VLC Media Player",
                                              version: vlcVer[1],
                                              install: path,

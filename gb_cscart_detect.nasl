@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cscart_detect.nasl 4561 2016-11-18 06:13:39Z ckuerste $
+# $Id: gb_cscart_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # CS-Cart Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106397");
-  script_version("$Revision: 4561 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-18 07:13:39 +0100 (Fri, 18 Nov 2016) $");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-11-18 10:07:02 +0700 (Fri, 18 Nov 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -98,7 +98,7 @@ foreach dir (make_list_unique("/", "/cart", "/cs", "/store", "/cscart", "/cs-car
       cpe = 'cpe:/a:cs-cart:cs-cart';
 
     register_product(cpe: cpe, location: install, port: port);
-    
+
     log_message(data: build_detection_report(app: "CS-Cart", version: version, install: install, cpe: cpe,
                                              concluded: vers[0]),
                 port: port);

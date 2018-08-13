@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_mult_vuln_may18_04_lin.nasl 10363 2018-06-29 05:51:28Z ckuersteiner $
+# $Id: gb_moodle_mult_vuln_may18_04_lin.nasl 10928 2018-08-11 11:29:48Z cfischer $
 #
 # Moodle 3.x Multiple Vulnerabilities - May'18 (Linux)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113200");
-  script_version("$Revision: 10363 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-29 07:51:28 +0200 (Fri, 29 Jun 2018) $");
+  script_version("$Revision: 10928 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:29:48 +0200 (Sat, 11 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-29 10:06:08 +0200 (Tue, 29 May 2018)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
@@ -61,8 +61,8 @@ if( description )
   - Students who posted on forums and exported the posts to portfolios can download any stored Moodle file
     by changing the download URL.
 
-  - An authenticated user is allowed to add HTML blocks containing scripts to their Dashboard;
-    this is normally not a security issue because a personal dashboard is visible to this user only.
+  - An authenticated user is allowed to add HTML blocks containing scripts to their Dashboard.
+    This is normally not a security issue because a personal dashboard is visible to this user only.
     Through this security vulnerability,
     users can move such a block to other pages where they can be viewed by other users.
 
@@ -89,7 +89,7 @@ include( "host_details.inc" );
 include( "version_func.inc" );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_location( cpe: CPE, port: port ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe: CPE, port: port, exit_no_version: TRUE ) ) exit( 0 );
 
 version = infos['version'];
 path = infos['location'];

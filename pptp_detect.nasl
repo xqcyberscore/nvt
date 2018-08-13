@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: pptp_detect.nasl 4688 2016-12-06 12:48:55Z cfi $
+# $Id: pptp_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # PPTP detection and versioning
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10622");
-  script_version("$Revision: 4688 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 13:48:55 +0100 (Tue, 06 Dec 2016) $");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,9 +39,11 @@ if(description)
   script_dependencies("find_service.nasl");
   script_require_ports(1723);
 
-  script_xref(name:"URL" , value:"http://www.counterpane.com/pptp-faq.html");
+  script_xref(name:"URL", value:"http://www.counterpane.com/pptp-faq.html");
 
-  tag_summary = "The remote host seems to be running a PPTP (VPN) service, this service
+  script_tag(name:"solution", value:"Restrict access to this port from untrusted networks. Make sure
+  only encrypt channels are allowed through the PPTP (VPN) connection.");
+  script_tag(name:"summary", value:"The remote host seems to be running a PPTP (VPN) service, this service
   allows remote users to connect to the internal network and play a trusted
   rule in it. This service should be protect with encrypted username
   & password combinations, and should be accessible only to trusted
@@ -50,13 +52,7 @@ if(description)
   attacker better prepare her next attack.
 
   Also note that PPTP is not configured as being cryptographically
-  secure, and you should use another VPN method if you can";
-
-  tag_solution = "Restrict access to this port from untrusted networks. Make sure
-  only encrypt channels are allowed through the PPTP (VPN) connection.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  secure, and you should use another VPN method if you can");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

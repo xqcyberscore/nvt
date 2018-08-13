@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: mssql_version.nasl 7582 2017-10-26 11:56:51Z cfischer $
+# $Id: mssql_version.nasl 10883 2018-08-10 10:52:12Z cfischer $
 #
 # Microsoft's SQL Version Query
 #
@@ -9,7 +9,7 @@
 # modified by Michael Scheidell SECNAP Network security
 # to poll the smb registry (udp ping returned wrong info)
 # modified by Tenable Network Security to get file version
-# to reduce false possitive (registry key is not allways correct)
+# to reduce false positive (registry key is not always correct)
 #
 # Copyright:
 # Copyright (C) 2003 John Lampe
@@ -28,10 +28,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###################################################################
 
-# Supercedes MS02-034 MS02-020 MS02-007 MS01-060 MS01-032 MS00-092 MS00-048
+# Supersedes MS02-034 MS02-020 MS02-007 MS01-060 MS01-032 MS00-092 MS00-048
 #            MS00-041 MS00-014 MS01-041
 #
-# CAN-2002-0056, CAN-2002-0154, CAN-2002-0624, 
+# CAN-2002-0056, CAN-2002-0154, CAN-2002-0624,
 # CAN-2002-0641, CAN-2002-0642  CVE-2001-0879
 # CVE-2000-0603  CAN-2000-1082  CAN-2000-1083
 # CAN-2000-1084  CAN-2000-1085  CAN-2001-0509
@@ -40,8 +40,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11217");
-  script_version("$Revision: 7582 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 10883 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:52:12 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 18:10:09 +0200 (Sun, 26 Mar 2006)");
   script_bugtraq_id(1292, 2030, 2042, 2043, 2863, 3733, 4135, 4847, 5014, 5205);
   script_tag(name:"cvss_base", value:"7.5");
@@ -58,24 +58,18 @@ if(description)
   script_require_ports(139, 445, 1433, "Services/mssql");
   script_mandatory_keys("SMB/WindowsVersion");
 
-  tag_summary = "The plugin attempts a smb connection to read version from
-  the registry key 
+  script_tag(name:"solution", value:"Apply current service packs and hotfixes");
+  script_tag(name:"impact", value:"Some versions may allow remote access, denial of service
+  attacks, and the ability of a hacker to run code of their choice.");
+  script_tag(name:"summary", value:"The plugin attempts a smb connection to read version from
+  the registry key
   SOFTWARE\Microsoft\MSSQLServer\MSSQLServer\CurrentVersion
   to determine the Version of SQL and Service Pack the host
-  is running.";
-
-  tag_impact = "Some versions may allow remote access, denial of service
-  attacks, and the ability of a hacker to run code of their choice.";
-
-  tag_solution = "Apply current service packs and hotfixes";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"summary", value:tag_summary);
+  is running.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
- 
+
   exit(0);
 }
 
@@ -190,29 +184,22 @@ version[102] = "6.00.139";  desc[102] = "6.0 SP2   ";
 version[103] = "6.00.124";  desc[103] = "6.0 SP1   ";
 version[104] = "6.00.121";  desc[104] = "6.0 No SP  ";
 
-#
-# The script code starts here
-#
-
 include("smb_nt.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.11217";
 SCRIPT_DESC = "Microsoft's SQL Version Query";
 
 MSSQL_LIST = make_list("^(8\..*)", "cpe:/a:microsoft:sql_server:2000",
                        "^(9\..*)", "cpe:/a:microsoft:sql_server:2005");
 MSSQL_MAX = max_index(MSSQL_LIST);
 
-## start script
 function GetRealFileVersion(socket, uid, tid, fid)
 {
  local_var i, fsize, data, off, tmp, version, v, len, tab;
 
  fsize = smb_get_file_size(socket:socket, uid:uid, tid:tid, fid:fid);
- if  ( fsize < 180224 ) 
+ if  ( fsize < 180224 )
 	off = 0;
  else
 	off = fsize - 180224;
@@ -289,7 +276,6 @@ if(rootfile)
   value = GetRealFileVersion(socket:soc, uid:uid, tid:tid, fid:fid);
   set_kb_item(name:"mssql/SQLVersion",value:value);
 
-  ## build cpe and store it as host_detail  
   for (i = 0; i < MSSQL_MAX-1; i = i + 2) {
      register_and_report_cpe(app:"mssql", ver:value, base:MSSQL_LIST[i+1], expr:MSSQL_LIST[i]);
   }
@@ -306,14 +292,13 @@ if (!value)
  if(!value)value = registry_get_sz(key:key, item:"CurrentVersion");
  if(!value)exit(0);
  set_kb_item(name:"mssql/SQLVersion",value:value);
- 
- ## build cpe and store it as host_detail  
+
  for (i = 0; i < MSSQL_MAX-1; i = i + 2) {
     register_and_report_cpe(app:"mssql", ver:value, base:MSSQL_LIST[i+1], expr:MSSQL_LIST[i]);
  }
 }
 
-for (i=0; version[i] ; i = i + 1) 
+for (i=0; version[i] ; i = i + 1)
 {
  if ( version[i] >< value )
  {

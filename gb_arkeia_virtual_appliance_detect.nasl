@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arkeia_virtual_appliance_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
+# $Id: gb_arkeia_virtual_appliance_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # Arkeia Appliance Detection
 #
@@ -27,14 +27,14 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803759");
-  script_version("$Revision: 9996 $");
+  script_version("$Revision: 10896 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-09-18 13:34:54 +0530 (Wed, 18 Sep 2013)");
   script_name("Arkeia Appliance Detection");
 
-  script_tag(name : "summary" , value : "The script sends a connection request to the Arkeia Appliance and attempts
+  script_tag(name:"summary", value:"The script sends a connection request to the Arkeia Appliance and attempts
   to extract the version number from the reply.");
 
   script_category(ACT_GATHER_INFO);

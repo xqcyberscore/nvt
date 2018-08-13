@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_detect.nasl 8370 2018-01-11 09:44:52Z cfischer $
+# $Id: gb_symantec_web_gateway_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Symantec Web Gateway Detection
 #
@@ -28,15 +28,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103483");
-  script_version("$Revision: 8370 $");
+  script_version("$Revision: 10911 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-11 10:44:52 +0100 (Thu, 11 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-05-04 17:35:57 +0200 (Fri, 04 May 2012)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Symantec Web Gateway Detection");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Symantec Web Gateway.
 
   The script sends a connection request to the server and attempts to
@@ -56,12 +56,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-##Variable Initialization
-symPort = "";
-url = "";
-req = "";
-buf = "";
-
 symPort = get_http_port(default:80);
 if(!can_host_php(port:symPort))exit(0);
 
@@ -78,7 +72,6 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:symPort ) ) ) {
   {
     vers = string("unknown");
 
-    ### try to get version
     version = eregmatch(string: buf, pattern: ">(Version ([0-9.]+))<",icase:TRUE);
 
     if ( !isnull(version[2]) ) {

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaseya_vsa_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
+# $Id: gb_kaseya_vsa_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
-# Kaseya VSA Detection 
+# Kaseya VSA Detection
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106738");
-  script_version("$Revision: 8143 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-04-10 14:46:29 +0200 (Mon, 10 Apr 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-10 14:46:29 +0200 (Mon, 10 Apr 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -50,7 +50,7 @@ to extract its version.");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.kaseya.com/products/vsa");
+  script_xref(name:"URL", value:"https://www.kaseya.com/products/vsa");
 
   exit(0);
 }

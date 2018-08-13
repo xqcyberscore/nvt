@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xe_version.nasl 5709 2017-03-24 08:56:58Z cfi $
+# $Id: gb_cisco_ios_xe_version.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Report Cisco IOS XE Software Version
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105659");
-  script_version("$Revision: 5709 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-24 09:56:58 +0100 (Fri, 24 Mar 2017) $");
+  script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-05-09 15:46:47 +0200 (Mon, 09 May 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,7 +36,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("gb_snmp_os_detection.nasl","gb_cisco_ios_xe_version_ssh.nasl");
+  script_dependencies("gb_snmp_os_detection.nasl", "gb_cisco_ios_xe_version_ssh.nasl");
   script_mandatory_keys("cisco_ios_xe/detected");
 
   script_tag(name:"summary", value:"Report the Cisco IOS XE Software Version.");
@@ -70,7 +70,7 @@ if( model = get_kb_item( "cisco_ios_xe/" + source + "/model")  )
   set_kb_item( name:'cisco_ios_xe/model', value:model );
 }
 
-if( image = get_kb_item( "cisco_ios_xe/" + source + "/image")  ) 
+if( image = get_kb_item( "cisco_ios_xe/" + source + "/image")  )
 {
   set_kb_item( name:'cisco_ios_xe/image', value:image );
 }
@@ -78,8 +78,8 @@ if( image = get_kb_item( "cisco_ios_xe/" + source + "/image")  )
 register_product( cpe:cpe, location:source );
 register_and_report_os( os:"Cisco IOS XE", cpe:cpe, banner_type:toupper( source ), desc:"Report Cisco IOS XE Software Version", runs_key:"unixoide" );
 
-report = 'Detected Cisco IOS XE\n' + 
-         'Version: ' + version + '\n' + 
+report = 'Detected Cisco IOS XE\n' +
+         'Version: ' + version + '\n' +
          'CPE: ' + cpe + '\n';
 
 if( model ) report += 'Model:   ' + model + '\n';

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nghttp2_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
+# $Id: gb_nghttp2_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # nghttp2 Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106171");
- script_version ("$Revision: 6701 $");
- script_tag(name: "last_modification", value: "$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
- script_tag(name: "creation_date", value: "2016-08-05 14:02:45 +0700 (Fri, 05 Aug 2016)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10906 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2016-08-05 14:02:45 +0700 (Fri, 05 Aug 2016)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("nghttp2 Detection");
 
- script_tag(name: "summary" , value: "Detection of nghttp2 web server
+ script_tag(name:"summary", value:"Detection of nghttp2 web server
 
 The script sends a connection request to the server and attempts to detect the presence of nghttp2 and
 to extract its version");
@@ -51,7 +51,7 @@ to extract its version");
  script_require_ports("Services/www", 80);
  script_mandatory_keys("nghttpx/banner");
 
- script_xref(name: "URL", value: "https://nghttp2.org/");
+ script_xref(name:"URL", value:"https://nghttp2.org/");
 
 
  exit(0);
@@ -60,7 +60,7 @@ to extract its version");
 include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
-include("http_keepalive.inc");
+
 
 port = get_http_port(default: 80);
 banner = get_http_banner(port: port);

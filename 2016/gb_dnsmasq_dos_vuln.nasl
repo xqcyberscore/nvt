@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dnsmasq_dos_vuln.nasl 5689 2017-03-23 10:00:49Z teissa $
+# $Id: gb_dnsmasq_dos_vuln.nasl 10928 2018-08-11 11:29:48Z cfischer $
 #
 # Dnsmasq DoS Vulnerability
 #
@@ -30,9 +30,9 @@ CPE = 'cpe:/a:thekelleys:dnsmasq';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106095");
-  script_version("$Revision: 5689 $");
-  script_tag(name:"last_modification", value: "$Date: 2017-03-23 11:00:49 +0100 (Thu, 23 Mar 2017) $");
-  script_tag(name:"creation_date", value: "2016-06-15 12:45:27 +0700 (Wed, 15 Jun 2016)");
+  script_version("$Revision: 10928 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:29:48 +0200 (Sat, 11 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-06-15 12:45:27 +0700 (Wed, 15 Jun 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_cve_id("CVE-2015-8899");
@@ -69,7 +69,7 @@ include("version_func.inc");
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
-if( ! infos = get_app_version_and_proto( cpe:CPE, port:port ) ) exit( 0 );
+if( ! infos = get_app_version_and_proto( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );
 
 version = infos["version"];
 proto = infos["proto"];

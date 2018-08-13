@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_system_center_configmgr_detect_win.nasl 9584 2018-04-24 10:34:07Z jschulte $
+# $Id: gb_ms_system_center_configmgr_detect_win.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # Microsoft System Center Configuration Manager Version Detection
 #
@@ -24,31 +24,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Detection of installed version of Microsoft System
-  Center Configuration Manager.
-
-The script logs in via smb, searches for Microsoft System Center Configuration
-Manager in the registry and gets the version from 'DisplayVersion' string in
-registry";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803023";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 9584 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803023");
+  script_version("$Revision: 10890 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-09-12 09:47:47 +0530 (Wed, 12 Sep 2012)");
   script_name("Microsoft System Center Configuration Manager Version Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"Detects the installed version of Microsoft System
+  Center Configuration Manager.
+
+The script logs in via smb, searches for Microsoft System Center Configuration
+Manager in the registry and gets the version from 'DisplayVersion' string in
+registry");
   exit(0);
 }
 
@@ -59,36 +56,20 @@ include("smb_nt.inc");
 include("secpod_smb_func.inc");
 
 
-## Variable Initialization
-keylist = "";
-osArch = "";
-key =  "";
-item = "";
-confmgrName = "";
-confmgrPath = "";
-confmgrVer = "";
-smsVer = "";
-smsPath = "";
-cpe = "";
-
-## Confirm target is Windows
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
 
 
-## Check Processor Architecture
 osArch = get_kb_item("SMB/Windows/Arch");
 if(!osArch){
   exit(0);
 }
 
-## Check for 32 bit platform
 if("x86" >< osArch){
  keylist = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-## Check for 64 bit platform
 else if("x64" >< osArch)
 {
   keylist =  make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
@@ -99,21 +80,16 @@ if(isnull(keylist)){
   exit(0);
 }
 
-## Iterate over all registry paths
 foreach key (keylist)
 {
-  ## Check the key existence
   if(registry_key_exists(key:key))
   {
-    ## Iterate over all sub keys
     foreach item (registry_enum_keys(key:key))
     {
-      ## Get the SCCM product name
       baseKey = key - "\Windows\CurrentVersion\Uninstall\";
 
       confmgrName = registry_get_sz(key:key + item, item:"DisplayName");
 
-      ## Set KB item for Microsoft Systems Management Server 2003
       if("Microsoft Systems Management Server 2003" >< confmgrName )
       {
         newKey = baseKey + "\SMS\Setup";
@@ -126,19 +102,15 @@ foreach key (keylist)
 
             set_kb_item(name:"MS/SMS_or_ConfigMgr/Installed", value:TRUE);
 
-            ## Set Version in KB
             set_kb_item(name:"MS/SMS/Version", value:smsVer);
 
-            ## Get Install Location
             smsPath = registry_get_sz(key: newKey, item:"UI Installation Directory");
             if(! smsPath){
               smsPath = "Could not find the install Location from registry";
             }
 
-            ## Set Path in KB
             set_kb_item(name:"MS/SMS/Path", value:smsPath);
 
-            ## Build CPE
             cpe = build_cpe(value:smsVer, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:systems_management_server:");
             if(isnull(cpe))
               cpe = 'cpe:/a:microsoft:systems_management_server';
@@ -151,7 +123,6 @@ foreach key (keylist)
         }
       }
 
-      ## Set the KB item for Microsoft System Center Configuration Manager 2007
       if("Microsoft System Center Configuration Manager 2007" >< confmgrName &&
          !(confmgrName =~ "R2|R3"))
       {
@@ -165,19 +136,15 @@ foreach key (keylist)
 
             set_kb_item(name:"MS/SMS_or_ConfigMgr/Installed", value:TRUE);
 
-            ## Set Version in KB
             set_kb_item(name:"MS/ConfigMgr/Version", value:confmgrVer);
 
-            ## Get Install Location
             confmgrPath = registry_get_sz(key: newKey, item:"UI Installation Directory");
             if(! confmgrPath){
               confmgrPath = "Could not find the install Location from registry";
             }
 
-            ## Set Path in KB
             set_kb_item(name:"MS/ConfigMgr/Path", value:confmgrPath);
 
-            ## Build CPE
             cpe = build_cpe(value:confmgrVer, exp:"^([0-9.]+)", base:"cpe:/a:microsoft:system_center_configuration_manager:2007:");
             if(isnull(cpe))
               cpe = 'cpe:/a:microsoft:system_center_configuration_manager:2007';
@@ -207,12 +174,10 @@ foreach key (keylist)
           set_kb_item(name:"MS/SMS_or_ConfigMgr/Installed", value:TRUE);
 
           if(confmgrName =~ "R3"){
-            ## Set Version in KB
             set_kb_item(name:"MS/ConfigMgr-R3/Version", value:confmgrVer);
           }
 
           if(confmgrName =~ "R2"){
-            ## Set Version in KB
             set_kb_item(name:"MS/ConfigMgr-R2/Version", value:confmgrVer);
           }
         }

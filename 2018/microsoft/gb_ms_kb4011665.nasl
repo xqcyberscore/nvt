@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011665.nasl 9430 2018-04-11 01:54:49Z ckuersteiner $
+# $Id: gb_ms_kb4011665.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Access Remote Code Execution Vulnerability (KB4011665)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813031");
-  script_version("$Revision: 9430 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-0903");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 03:54:49 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-03-14 09:45:51 +0530 (Wed, 14 Mar 2018)");
   script_name("Microsoft Access Remote Code Execution Vulnerability (KB4011665)");
 
@@ -41,13 +41,13 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name:"insight", value:"The flaw exists when Microsoft Access software 
+  script_tag(name:"insight", value:"The flaw exists when Microsoft Access software
   fails to properly handle objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to run arbitrary code in the context of the current user. If the current user is
   logged on with administrative user rights, an attacker could take control of the
-  affected system. 
+  affected system.
 
   Impact Level: System/Application");
 
@@ -60,7 +60,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4011665");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4011665");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

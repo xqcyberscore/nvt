@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_detect_ssh.nasl 7769 2017-11-15 10:07:45Z asteins $
+# $Id: gb_pfsense_detect_ssh.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # pfSense Detection (SSH)
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105328");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7769 $");
- script_tag(name:"last_modification", value:"$Date: 2017-11-15 11:07:45 +0100 (Wed, 15 Nov 2017) $");
+ script_version("$Revision: 10890 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2015-08-21 14:51:09 +0200 (Fri, 21 Aug 2015)");
  script_name("pfSense Detection (SSH)");
 
- script_tag(name: "summary" , value: "This script performs SSH based detection of pfSense");
+ script_tag(name:"summary", value:"This script performs SSH based detection of pfSense");
 
  script_tag(name:"qod_type", value:"package");
 

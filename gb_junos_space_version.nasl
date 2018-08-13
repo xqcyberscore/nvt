@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_space_version.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_junos_space_version.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # JunOS Space Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105407");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version("$Revision: 10899 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2015-10-16 19:26:14 +0200 (Fri, 16 Oct 2015)");
  script_name("JunOS Space Detection");
 
- script_tag(name: "summary" , value: "The script performs ssh based detection of JunOS Space");
+ script_tag(name:"summary", value:"The script performs ssh based detection of JunOS Space");
  script_tag(name:"qod_type", value:"package");
 
  script_category(ACT_GATHER_INFO);

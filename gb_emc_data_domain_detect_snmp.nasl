@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_data_domain_detect_snmp.nasl 8141 2017-12-15 12:43:22Z cfischer $
+# $Id: gb_emc_data_domain_detect_snmp.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # EMC Data Domain Detection (SNMP)
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.140142");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8141 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
+ script_version("$Revision: 10899 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2017-02-01 12:25:05 +0100 (Wed, 01 Feb 2017)");
  script_name("EMC Data Domain Detection (SNMP)");
 
- script_tag(name: "summary" , value: "This script performs SNMP based detection of EMC Data Domain.");
+ script_tag(name:"summary", value:"This script performs SNMP based detection of EMC Data Domain.");
 
  script_tag(name:"qod_type", value:"package");
 

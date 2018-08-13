@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dcetest.nasl 8145 2017-12-15 13:31:58Z cfischer $
+# $Id: dcetest.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # DCE/RPC and MSRPC Services Enumeration
 #
@@ -40,8 +40,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108044");
-  script_version("$Revision: 8145 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -73,8 +73,8 @@ include("misc_func.inc");
 include("host_details.inc");
 
 # nb: Some of the enumerated tcp/udp ports might expose several services
-# Those lists are used for handling a list of already registered so we don't
-# register those services multiple times on the same port.
+# Those lists are used for handling a list of already registered so we
+# don't register those services multiple times on the same port.
 udp_services_list = make_list();
 tcp_services_list = make_list();
 
@@ -486,7 +486,7 @@ function dce_parse( result ) {
   local_var majver, proto, ncaproto, ncahost, ncaport, ncaunk;
   local_var annotation, floor, addr_type, addr_data, decoded;
 
-  # Check whether we got RESPONSEPACKET
+  # nb: RESPONSEPACKET
   if( ord( result[2] ) != 0x02 ) {
     return( -1 );
   }
@@ -695,12 +695,10 @@ function read_dce_pdu( sock ) {
   # Read response header
   __r0 = recv( socket:sock, length:16 );
 
-  # Check length
   if( strlen( __r0 ) != 16 ) {
     return( "" );
   }
 
-  # Check endianness
   if( ord( __r0[4] ) & 0xF0 == 0x10 ) {
     little_endian = TRUE;
   } else {
@@ -711,7 +709,6 @@ function read_dce_pdu( sock ) {
   __r1len = load_short( b:__r0, t:8 ) - 16;
   __r1 = recv( socket:sock, length:__r1len );
 
-  # Check length
   if( strlen( __r1 ) != __r1len ) {
     return( "" );
   }

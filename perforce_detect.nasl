@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: perforce_detect.nasl 4303 2016-10-19 10:04:27Z cfi $
+# $Id: perforce_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Perforce Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100268");
-  script_version("$Revision: 4303 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-19 12:04:27 +0200 (Wed, 19 Oct 2016) $");
+  script_version("$Revision: 10902 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-09-07 09:47:24 +0200 (Mon, 07 Sep 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -41,11 +41,9 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.perforce.com/perforce/products/p4d.html");
 
-  tag_summary = "This host is running an Perforce Server. The Perforce Server, P4D, manages
+  script_tag(name:"summary", value:"This host is running an Perforce Server. The Perforce Server, P4D, manages
   access to versioned files, tracks user operations and records all activity in a
-  centralized database.";
-
-  script_tag(name:"summary", value:tag_summary);
+  centralized database.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -99,7 +97,6 @@ if( strlen( ddata ) ) {
 
     set_kb_item( name:"perforce/" + port + "/version", value:vers );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:vers, exp:"^([0-9]{4}[.]{1}[0-9]+/[0-9]{6})", base:"cpe:/a:perforce:perforce_server:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:perforce:perforce_server';

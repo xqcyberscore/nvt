@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_aria2_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: gb_aria2_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Aria2 Version Detection
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script finds the Aria2 installed version and saves
-  the version in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801340");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 10894 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Aria2 Version Detection");
@@ -44,7 +41,8 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script finds the Aria2 installed version and saves
+  the version in KB.");
   exit(0);
 }
 
@@ -53,8 +51,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.801340";
 SCRIPT_DESC = "Aria2 Version Detection";
 
 sock = ssh_login_or_reuse_connection();
@@ -72,11 +68,10 @@ foreach aria2bin (paths)
     set_kb_item(name:"Aria2/Ver", value:aria2Ver[1]);
     log_message(data:"Aria2 version " + aria2Ver[1] +
                  " running at location " + aria2bin + " was detected on the host");
-      
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe(value:aria2Ver[1], exp:"^([0-9.]+)", base:"cpe:/a:tatsuhiro_tsujikawa:aria2:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
   }
 }

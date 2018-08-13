@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_desktop_board_bios_info_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_desktop_board_bios_info_detect_lin.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # Desktop Boards BIOS Information Detection for Linux
 #
@@ -8,7 +8,6 @@
 # Veerendra GG <veerendragg@secpod.com>
 #
 # Updated Veerendra GG <veerendragg@secpod.com>
-# Checking proper output in command output
 #
 # Copyright:
 # Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
@@ -30,15 +29,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800163");
-  script_version("$Revision: 7823 $");
+  script_version("$Revision: 10913 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-02-11 16:37:59 +0100 (Thu, 11 Feb 2010)");
   script_name("Desktop Boards BIOS Information Detection for Linux");
 
-  script_tag(name: "summary" , value:
-"Detection of installed version of Desktop Boards BIOS.
+  script_tag(name:"summary", value:
+"Detects the installed version of Desktop Boards BIOS.
 
 The script logs in via ssh and queries for the version using the command
 line tool 'dmidecode'. Usually this command requires root privileges to
@@ -75,18 +74,15 @@ base_board_ver_cmd = "dmidecode -s baseboard-version";
 base_board_manu_cmd = "dmidecode -s baseboard-manufacturer";
 base_board_prod_cmd = "dmidecode -s baseboard-product-name";
 
-## Get BIOS Version and Vendor
 bios_ver = ssh_cmd(socket:sock, cmd:bios_ver_cmd, timeout:120);
 bios_vendor = ssh_cmd(socket:sock, cmd:bios_vend_cmd, timeout:120);
 
-## Get Base Board Version, Manufacturer and Product Name
 base_board_ver = ssh_cmd(socket:sock, cmd:base_board_ver_cmd, timeout:120);
 base_board_manu = ssh_cmd(socket:sock, cmd:base_board_manu_cmd, timeout:120);
 base_board_prod_name = ssh_cmd(socket:sock, cmd:base_board_prod_cmd, timeout:120);
 
 report = "";
 
-## Set BIOS Version
 if(bios_ver != NULL && !(bios_ver =~ "command not found|dmidecode:|(p|P)ermission denied"))
 {
   set_kb_item(name:"DesktopBoards/BIOS/Ver", value:chomp(bios_ver));
@@ -94,7 +90,6 @@ if(bios_ver != NULL && !(bios_ver =~ "command not found|dmidecode:|(p|P)ermissio
   register_host_detail(name:"BIOSVersion", value:chomp(bios_ver), desc:SCRIPT_DESC);
 }
 
-## Set BIOS Vendor
 if(bios_vendor != NULL && !(bios_vendor =~ "command not found|dmidecode:|(p|P)ermission denied"))
 {
   set_kb_item(name:"DesktopBoards/BIOS/Vendor", value:chomp(bios_vendor));
@@ -102,7 +97,6 @@ if(bios_vendor != NULL && !(bios_vendor =~ "command not found|dmidecode:|(p|P)er
   register_host_detail(name:"BIOSVendor", value:chomp(bios_vendor), desc:SCRIPT_DESC);
 }
 
-## Set Base Board Version
 if(base_board_ver != NULL && !(base_board_ver =~ "command not found|dmidecode:|(p|P)ermission denied"))
 {
   set_kb_item(name:"DesktopBoards/BaseBoard/Ver", value:chomp(base_board_ver));
@@ -110,7 +104,6 @@ if(base_board_ver != NULL && !(base_board_ver =~ "command not found|dmidecode:|(
   register_host_detail(name:"BaseBoardVersion", value:chomp(base_board_ver), desc:SCRIPT_DESC);
 }
 
-## Set Base Board Manufacturer
 if(base_board_manu != NULL && !(base_board_manu =~ "command not found|dmidecode:|(p|P)ermission denied"))
 {
   set_kb_item(name:"DesktopBoards/BaseBoard/Manufacturer",
@@ -119,7 +112,6 @@ if(base_board_manu != NULL && !(base_board_manu =~ "command not found|dmidecode:
   register_host_detail(name:"BaseBoardManufacturer", value:chomp(base_board_manu), desc:SCRIPT_DESC);
 }
 
-## Set Base Board Product Name
 if(base_board_prod_name != NULL && !(base_board_prod_name =~ "dmidecode:|command not found|(p|P)ermission denied"))
 {
   set_kb_item(name:"DesktopBoards/BaseBoard/ProdName",

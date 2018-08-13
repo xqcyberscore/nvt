@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4095873.nasl 10262 2018-06-20 02:57:24Z ckuersteiner $
+# $Id: gb_ms_kb4095873.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft .NET Framework Multiple Vulnerabilities (KB4095873)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812876");
-  script_version("$Revision: 10262 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-0765", "CVE-2018-1039");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-20 04:57:24 +0200 (Wed, 20 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 13:39:10 +0530 (Wed, 09 May 2018)");
   script_name("Microsoft .NET Framework Multiple Vulnerabilities (KB4095873)");
 
@@ -53,8 +53,7 @@ if(description)
   Integrity (UMCI) policy on the machine.
 
   Impact Level: System/Application");
-  script_tag(name:"affected", value:"
-  Microsoft .NET Framework 3.0 Service Pack 2 on Windows Server 2008
+  script_tag(name:"affected", value:"Microsoft .NET Framework 3.0 Service Pack 2 on Windows Server 2008
   Microsoft .NET Framework 2.0 Service Pack 2 on Windows Server 2008");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -63,11 +62,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4095873");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4095873");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }

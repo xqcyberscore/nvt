@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4338815.nasl 10731 2018-08-02 09:53:51Z cfischer $
+# $Id: gb_ms_kb4338815.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4338815)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813652");
-  script_version("$Revision: 10731 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-8282", "CVE-2018-0949", "CVE-2018-8206", "CVE-2018-8242",
                 "CVE-2018-8287", "CVE-2018-8288", "CVE-2018-8291", "CVE-2018-8296",
                 "CVE-2018-8304", "CVE-2018-8307", "CVE-2018-8308", "CVE-2018-8309",
@@ -36,7 +36,7 @@ if(description)
   script_bugtraq_id(104705);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 11:53:51 +0200 (Thu, 02 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-11 11:49:36 +0530 (Wed, 11 Jul 2018)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4338815)");
 
@@ -78,9 +78,7 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-
-  Microsoft Windows 8.1 for 32-bit/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8.1 for 32-bit/x64
 
   Microsoft Windows Server 2012 R2.");
 

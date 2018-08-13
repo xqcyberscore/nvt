@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_prosafe_consolidation.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_netgear_prosafe_consolidation.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # NETGEAR ProSAFE Devices Detection Consolidation
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108307");
-  script_version("$Revision: 8078 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_version("$Revision: 10898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-12-05 09:03:31 +0100 (Tue, 05 Dec 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -56,7 +56,7 @@ detected_model      = "unknown";
 detected_fw_version = "unknown";
 detected_fw_build   = "unknown";
 
-# nb: Telnet and HTTP are currently only providing the model 
+# nb: Telnet and HTTP are currently only providing the model
 foreach source( make_list( "snmp", "http", "telnet" ) ) {
 
   fw_version_list = get_kb_list( "netgear/prosafe/" + source + "/*/fw_version" );

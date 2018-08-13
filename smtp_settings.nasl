@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtp_settings.nasl 5877 2017-04-06 09:01:48Z teissa $
+# $Id: smtp_settings.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # SMTP settings
 #
@@ -34,8 +34,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80086");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5877 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_version("$Revision: 10902 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SMTP settings");
@@ -50,7 +50,7 @@ if(description)
                         value:"postmaster@[AUTO_REPLACED_IP]");
   # AUTO_REPLACED_IP and AUTO_REPLACED_ADDR are... automatically replaced!
 
-  tag_summary = "This script just sets a couple of SMTP parameters.
+  script_tag(name:"summary", value:"This script just sets a couple of SMTP parameters.
 
   Several checks need to use a third party host/domain name to work properly.
 
@@ -63,9 +63,7 @@ if(description)
 
   Note that you absolutely need this option to be set to a
   *third party* domain. This means a domain that has *nothing
-  to do* with the domain name of the network you are testing.";
-
-  script_tag(name:"summary", value:tag_summary);
+  to do* with the domain name of the network you are testing.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

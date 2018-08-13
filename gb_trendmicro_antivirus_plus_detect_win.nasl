@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_antivirus_plus_detect_win.nasl 9938 2018-05-23 14:43:09Z cfischer $
+# $Id: gb_trendmicro_antivirus_plus_detect_win.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # Trend Micro Antivirus Plus Security Version Detection (Windows)
 #
@@ -27,23 +27,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813332");
-  script_version("$Revision: 9938 $");
+  script_version("$Revision: 10890 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 16:43:09 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-08 13:30:09 +0530 (Tue, 08 May 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Trend Micro Antivirus Plus Security Version Detection (Windows)");
   script_tag(name:"summary", value:"Detection of installed version
-  of Trend Micro Antivirus Plus on Windows. 
+  of Trend Micro Antivirus Plus on Windows.
 
-  The script logs in via smb, searches for Trend Micro Antivirus Plus in the 
+  The script logs in via smb, searches for Trend Micro Antivirus Plus in the
   registry and gets the version from registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -88,11 +88,11 @@ foreach item (registry_enum_keys(key:key))
       set_kb_item(name:"TrendMicro/AV/Ver", value:AppVer);
       register_and_report_cpe( app:AppName, ver:AppVer, base:"cpe:/a:trendmicro:antivirus\+:", expr:"^([0-9.]+)", insloc:insLoc );
 
-      if("64" >< osArch) 
+      if("64" >< osArch)
       {
         set_kb_item(name:"TrendMicro/AV64/Ver", value:AppVer);
         register_and_report_cpe( app:AppName, ver:AppVer, base:"cpe:/a:trendmicro:antivirus\+:x64:", expr:"^([0-9.]+)", insloc:insLoc );
-      } 
+      }
     }
   }
 }

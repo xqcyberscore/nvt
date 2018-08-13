@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_detect.nasl 4427 2016-11-07 12:08:00Z cfi $
+# $Id: gb_twiki_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # TWiki Version Detection
 #
@@ -36,10 +36,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800399");
-  script_version("$Revision: 4427 $");
+  script_version("$Revision: 10922 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-07 13:08:00 +0100 (Mon, 07 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-05-11 08:41:11 +0200 (Mon, 11 May 2009)");
   script_name("TWiki Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -49,7 +49,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name: "summary" , value:"Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   TWiki.
 
   This script sends HTTP GET request and try to get the version from the
@@ -92,7 +92,7 @@ foreach dir( dirs ) {
   if( rcvRes =~ "HTTP/1.. 200" && ( egrep( pattern:"[p|P]owered by TWiki", string:rcvRes ) || "This site is powered by the TWiki collaboration platform" >< rcvRes ) ) {
 
     # Ignore special pages like edit or rdiff
-    if( "(edit)</title>" >< rcvRes || "( vs. )</title>" >< rcvRes || "This Wiki topic does not exist" >< rcvRes || 
+    if( "(edit)</title>" >< rcvRes || "( vs. )</title>" >< rcvRes || "This Wiki topic does not exist" >< rcvRes ||
         "/bin/view/TWiki/bin" >< dir || "/bin/rdiff/TWiki/bin" >< dir ) continue;
 
     version = "unknown";
@@ -109,17 +109,14 @@ foreach dir( dirs ) {
       }
     }
 
-    ##Set the KB
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/TWiki", value:tmp_version );
     set_kb_item( name:"twiki/installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:exp, base:"cpe:/a:twiki:twiki:" );
     if( isnull( cpe ) )
       cpe = "cpe:/a:twiki:twiki";
 
-    ##Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data: build_detection_report( app:"TWiki",

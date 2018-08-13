@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808087");
-  script_version("$Revision: 7534 $");
+  script_version("$Revision: 10890 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-23 17:14:06 +0200 (Mon, 23 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-06-21 12:44:48 +0530 (Tue, 21 Jun 2016)");
   script_name("Elasticsearch Kibana/X-Pack Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -93,7 +93,6 @@ foreach dir( make_list_unique( "/", "/kibana", cgi_dirs( port:port ) ) ) {
                                               port:port );
   }
 
-  # Check for the X-Pack Login page
   # nb: The X-Pack version is always matching the Kibana version
   # The redirect if X-Pack is installed looks like:
   # location: /login?next=%2Fkibana%2Fapp%2Fkibana

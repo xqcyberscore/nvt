@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cyberark_password_vault_detect.nasl 9457 2018-04-12 08:34:17Z ckuersteiner $
+# $Id: gb_cyberark_password_vault_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # CyberArk Enterprise Password Vault Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140960");
-  script_version("$Revision: 9457 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-12 10:34:17 +0200 (Thu, 12 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2018-04-12 14:10:27 +0700 (Thu, 12 Apr 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10902 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-04-12 14:10:27 +0700 (Thu, 12 Apr 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("CyberArk Enterprise Password Vault Detection");
 
-  script_tag(name: "summary" , value: "Detection of CyberArk Enterprise Password Vault.
+  script_tag(name:"summary", value:"Detection of CyberArk Enterprise Password Vault.
 
 The script sends a connection request to the server and attempts to detect CyberArk Enterprise Password Vault and
 to extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ to extract its version.");
   script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.cyberark.com/products/privileged-account-security-solution/enterprise-password-vault/");
+  script_xref(name:"URL", value:"https://www.cyberark.com/products/privileged-account-security-solution/enterprise-password-vault/");
 
   exit(0);
 }

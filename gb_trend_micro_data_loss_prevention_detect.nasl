@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_data_loss_prevention_detect.nasl 9996 2018-05-29 07:18:44Z cfischer $
+# $Id: gb_trend_micro_data_loss_prevention_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Trend Micro Data Loss Prevention Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103181");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9996 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
+ script_version("$Revision: 10922 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2011-06-14 13:57:36 +0200 (Tue, 14 Jun 2011)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -41,9 +41,9 @@ if (description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 8443);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : "This host is running Trend Micro Data Loss Prevention, a network and
+ script_tag(name:"summary", value:"This host is running Trend Micro Data Loss Prevention, a network and
 endpoint-based data loss prevention (DLP) solution.");
- script_xref(name : "URL" , value : "http://us.trendmicro.com/us/products/enterprise/data-loss-prevention/index.html");
+ script_xref(name:"URL", value:"http://us.trendmicro.com/us/products/enterprise/data-loss-prevention/index.html");
  exit(0);
 }
 

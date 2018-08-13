@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecava_integraxor_66554.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_ecava_integraxor_66554.nasl 10904 2018-08-10 14:24:40Z mmartin $
 #
 # Ecava IntegraXor Account Information Disclosure Vulnerability
 #
@@ -25,44 +25,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103934";
-
-tag_impact = "Attackers can exploit this issue to obtain sensitive information that
-may lead to further attacks.";
-
-tag_affected = "Versions prior to IntegraXor 4.1.4393 are vulnerable.";
-tag_summary = "Ecava IntegraXor is prone to an information-disclosure vulnerability.";
-tag_solution = "Updates are available.";
-tag_vuldetect = "Check the version";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
+ script_oid("1.3.6.1.4.1.25623.1.0.103934");
  script_bugtraq_id(66554);
  script_tag(name:"cvss_base", value:"5.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 6637 $");
+ script_version("$Revision: 10904 $");
 
  script_name("Ecava IntegraXor Account Information Disclosure Vulnerability");
 
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/66554");
  script_xref(name:"URL", value:"http://www.integraxor.com/");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2014-04-03 13:12:18 +0200 (Thu, 03 Apr 2014)");
  script_category(ACT_GATHER_INFO);
  script_tag(name:"qod_type", value:"registry");
  script_family("Web Servers");
  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("secpod_reg_enum.nasl");
+ script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
  script_mandatory_keys("SMB/WindowsVersion");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+ script_tag(name:"impact", value:"Attackers can exploit this issue to obtain sensitive information that
+may lead to further attacks.");
+ script_tag(name:"vuldetect", value:"Check the version");
+ script_tag(name:"solution", value:"Updates are available.");
+ script_tag(name:"solution_type", value:"VendorFix");
+ script_tag(name:"summary", value:"Ecava IntegraXor is prone to an information-disclosure vulnerability.");
+ script_tag(name:"affected", value:"Versions prior to IntegraXor 4.1.4393 are vulnerable.");
 
  exit(0);
 }
@@ -92,7 +85,7 @@ foreach item (registry_enum_keys(key:key))
     {
       if(version_is_less(version:ecavaigVer, test_version:"4.1.4393"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }

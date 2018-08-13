@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4018337.nasl 9903 2018-05-18 09:08:09Z asteins $
+# $Id: gb_ms_kb4018337.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Excel 2016 Remote Code Execution Vulnerability (KB4018337)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812856");
-  script_version("$Revision: 9903 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-1029");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 08:47:27 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Excel 2016 Remote Code Execution Vulnerability (KB4018337)");
 
@@ -58,13 +58,13 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4018337");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4018337");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/Excel/Version");
-  script_require_ports(139, 445);
+
   exit(0);
 }
 

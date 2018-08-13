@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powershell_sec_bypass_vuln_july18_lin.nasl 10558 2018-07-20 14:08:23Z santu $
+# $Id: gb_ms_powershell_sec_bypass_vuln_july18_lin.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft PowerShell Core Security Feature Bypass Vulnerability July18 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:powershell";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813698");
-  script_version("$Revision: 10558 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-8356");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 16:08:23 +0200 (Fri, 20 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 11:49:16 +0530 (Fri, 20 Jul 2018)");
   script_name("Microsoft PowerShell Core Security Feature Bypass Vulnerability July18 (Linux)");
 
@@ -44,25 +44,25 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect nvt and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exists when Microsoft .NET Framework 
+  script_tag(name:"insight", value:"The flaw exists when Microsoft .NET Framework
   components do not correctly validate certificates.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers 
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to present expired certificates when challenged.
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"PowerShell Core versions 6.x prior to 6.0.3 
+  script_tag(name:"affected", value:"PowerShell Core versions 6.x prior to 6.0.3
   and 6.1.x prior to 6.1.0-preview.4 on Linux.");
 
-  script_tag(name:"solution", value:"Update PowerShell Core to version 6.0.3 or 
+  script_tag(name:"solution", value:"Update PowerShell Core to version 6.0.3 or
   6.1.0-preview.4 or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://github.com/PowerShell/PowerShell");
-  script_xref(name : "URL" , value : "https://github.com/PowerShell/Announcements/issues/6");
-  script_xref(name : "URL" , value : "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8356");
+  script_xref(name:"URL", value:"https://github.com/PowerShell/PowerShell");
+  script_xref(name:"URL", value:"https://github.com/PowerShell/Announcements/issues/6");
+  script_xref(name:"URL", value:"https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8356");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

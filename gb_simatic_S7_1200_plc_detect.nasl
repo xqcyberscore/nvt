@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_S7_1200_plc_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_simatic_S7_1200_plc_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Siemens SIMATIC S7-1200 PLC Detection
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103583");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7236 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+ script_version("$Revision: 10929 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
  script_tag(name:"creation_date", value:"2012-10-10 11:28:02 +0200 (Wed, 10 Oct 2012)");
  script_name("Siemens SIMATIC S7-1200 PLC Detection");
  script_category(ACT_GATHER_INFO);
@@ -41,8 +41,8 @@ if (description)
  script_require_ports("Services/www", 80);
  script_require_udp_ports("Services/udp/snmp", 161);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : "Detection of Siemens SIMATIC S7-1200 PLC.
-                    
+ script_tag(name:"summary", value:"Detection of Siemens SIMATIC S7-1200 PLC.
+
  The script sends a connection request to the server and attempts to
  extract the version number from the reply.
 
@@ -56,7 +56,7 @@ exit(66);
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 include("cpe.inc");
 include("host_details.inc");
 
@@ -64,7 +64,7 @@ function report_simatic_version(vers,install,concluded,port) {
 
    local_var vers,install,concluded,port;
 
-   set_kb_item(name:"simatic_s7_1200/installed", value:TRUE); 
+   set_kb_item(name:"simatic_s7_1200/installed", value:TRUE);
 
    cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/h:siemens:simatic_s7-1200_plc:");
    if(isnull(cpe))
@@ -95,8 +95,8 @@ if(get_port_state(port)) {
       if(!isnull(version[1])) {
         report_simatic_version(vers:version[1], install:port + "/udp", concluded:sysdesc, port:port);
         exit(0);
-      }  
-    }  
+      }
+    }
 
   }
 
@@ -110,7 +110,7 @@ buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 if( buf == NULL )continue;
 
 if(egrep(pattern:"<title>.*SIMATIC.*1200.*</title>" , string: buf, icase: TRUE)) {
-  
+
   vers = 'unknown';
 
   x = 0;
@@ -124,12 +124,12 @@ if(egrep(pattern:"<title>.*SIMATIC.*1200.*</title>" , string: buf, icase: TRUE))
         vers = version[1];
         concluded = lines[x+1];
         break;
-      }  
+      }
     }
 
     x++;
 
-  }  
+  }
 
   install = '/';
 

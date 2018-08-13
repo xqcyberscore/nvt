@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_webex_meetings_server_detect.nasl 8940 2018-02-23 13:47:02Z santu $
+# $Id: gb_cisco_webex_meetings_server_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Cisco WebEx Meetings Server Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106191");
- script_version ("$Revision: 8940 $");
- script_tag(name: "last_modification", value: "$Date: 2018-02-23 14:47:02 +0100 (Fri, 23 Feb 2018) $");
- script_tag(name: "creation_date", value: "2016-08-19 11:08:48 +0700 (Fri, 19 Aug 2016)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10899 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2016-08-19 11:08:48 +0700 (Fri, 19 Aug 2016)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Cisco WebEx Meetings Server Detection");
 
- script_tag(name: "summary" , value: "Detection of Cisco WebEx Meetings Server
+ script_tag(name:"summary", value:"Detection of Cisco WebEx Meetings Server
 
 The script sends a connection request to the server and attempts to detect the presence of Cisco WebEx Meetings
 Server and to extract its version");
@@ -51,7 +51,7 @@ Server and to extract its version");
  script_require_ports("Services/www", 443);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_xref(name: "URL", value: "https://www.cisco.com/c/en/us/products/conferencing/webex-meetings-server/index.html");
+ script_xref(name:"URL", value:"https://www.cisco.com/c/en/us/products/conferencing/webex-meetings-server/index.html");
 
 
  exit(0);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_authorization.nasl 7993 2017-12-05 09:04:08Z cfischer $
+# $Id: smb_authorization.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Set information for smb authorization in KB.
 #
@@ -29,14 +29,13 @@
 # are not handled here yet. They are still managed in logins.nasl.
 
 # Unlike the old code in logins.nasl, here only a single
-# set of credentials in managed. Thus the strange name
-# used for the KB.
+# set of credentials in managed. Thus the strange name used for the KB.
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.90023");
-  script_version("$Revision: 7993 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-05 10:04:08 +0100 (Tue, 05 Dec 2017) $");
+  script_version("$Revision: 10902 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-06-02 00:42:27 +0200 (Mon, 02 Jun 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_open_tcp_ports.nasl 7922 2017-11-28 10:06:28Z cfischer $
+# $Id: secpod_open_tcp_ports.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Checks for open TCP ports
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900239");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7922 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-28 11:06:28 +0100 (Tue, 28 Nov 2017) $");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-04-16 11:02:50 +0200 (Fri, 16 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Checks for open TCP ports");
@@ -56,9 +56,8 @@ opened_tcp_ports = "";
 silent = script_get_preference( "Silent" );
 if( silent == 'yes' ) {
   be_silent = TRUE;
-}  
+}
 
-## Get all TCP ports
 tcp_ports = get_kb_list( "Ports/tcp/*" );
 
 if( ! tcp_ports  ) {
@@ -77,7 +76,7 @@ foreach port( keys( tcp_ports ) ) {
   }
 
   # Includes e.g. PJL ports which are printing everything
-  # sent to them so dont include this ports here
+  # sent to them so don't include this ports here
   if( ! is_fragile_port( port:Port[1] ) ) {
     set_kb_item( name:"TCP/PORTS", value:Port[1] );
   }
@@ -90,10 +89,8 @@ if( strlen( opened_tcp_ports ) ) {
   opened_tcp_ports = ereg_replace( string:chomp( opened_tcp_ports ), pattern:",$", replace:"" );
   opened_tcp_ports_kb = str_replace( string:opened_tcp_ports, find:" ", replace:"" );
   set_kb_item( name:"Ports/open/tcp", value:opened_tcp_ports_kb );
-  register_host_detail( name:"ports", value:opened_tcp_ports_kb,
-    nvt:"1.3.6.1.4.1.25623.1.0.900239", desc:"Check Open TCP Ports" );
-  register_host_detail( name:"tcp_ports", value:opened_tcp_ports_kb,
-    nvt:"1.3.6.1.4.1.25623.1.0.900239", desc:"Check Open TCP Ports" );
+  register_host_detail( name:"ports", value:opened_tcp_ports_kb, desc:"Check Open TCP Ports" );
+  register_host_detail( name:"tcp_ports", value:opened_tcp_ports_kb, desc:"Check Open TCP Ports" );
 
   if( be_silent ) exit( 0 );
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_detect.nasl 7239 2017-09-22 16:10:31Z cfischer $
+# $Id: gb_cisco_nx_os_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Cisco NX-OS Detection (SNMP)
 #
@@ -30,8 +30,8 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.103799");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7239 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-22 18:10:31 +0200 (Fri, 22 Sep 2017) $");
+ script_version("$Revision: 10891 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2013-10-09 16:24:09 +0200 (Wed, 09 Oct 2013)");
  script_name("Cisco NX-OS Detection (SNMP)");
  script_category(ACT_GATHER_INFO);
@@ -41,7 +41,7 @@ if (description)
  script_require_udp_ports("Services/udp/snmp", 161);
  script_mandatory_keys("SNMP/sysdesc/available");
 
- script_tag(name : "summary" , value : "This script performs SNMP based detection of Cisco NX-OS.");
+ script_tag(name:"summary", value:"This script performs SNMP based detection of Cisco NX-OS.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
@@ -126,8 +126,8 @@ for (i=0; i<3; i++) {
   if(!soc)continue;
 
   # snmpget -v<version> -c <community> <host> 1.3.6.1.2.1.47.1.1.1.1.2.149
-  sendata = raw_string(0x30,len,0x02,0x01,i,0x04,sz) + 
-            community + 
+  sendata = raw_string(0x30,len,0x02,0x01,i,0x04,sz) +
+            community +
             raw_string(0xa0,0x21,0x02,0x04,0x7f,0x45,0x71,0x96,
                        0x02,0x01,0x00,0x02,0x01,0x00,0x30,0x13,
                        0x30,0x11,0x06,0x0d,0x2b,0x06,0x01,0x02,

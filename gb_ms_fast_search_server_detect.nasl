@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_fast_search_server_detect.nasl 9584 2018-04-24 10:34:07Z jschulte $
+# $Id: gb_ms_fast_search_server_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Microsoft FAST Search Server Detection
 #
@@ -24,18 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Detection of installed version of Microsoft FAST Search Server.
-
-The script logs in via smb, searches for Microsoft FAST Search Server in the
-registry and gets the version from 'Version' string in registry";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.802980";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 9584 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 12:34:07 +0200 (Tue, 24 Apr 2018) $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802980");
+  script_version("$Revision: 10902 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-10-10 10:36:03 +0530 (Wed, 10 Oct 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -45,8 +38,12 @@ if(description)
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"Detects the installed version of Microsoft FAST Search Server.
+
+The script logs in via smb, searches for Microsoft FAST Search Server in the
+registry and gets the version from 'Version' string in registry");
   exit(0);
 }
 
@@ -56,26 +53,15 @@ include("smb_nt.inc");
 include("host_details.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-fsName = "";
-cpe = "";
-fsVer = "";
-key = "";
-fsKey = "";
-insPath = "";
-item = "";
-
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
 
-## Confirm application installation
 fsKey = "SOFTWARE\Microsoft\FAST Search Server";
 if(!registry_key_exists(key:fsKey)){
   exit(0);
 }
 
-## Get the installation path
 fsKey = fsKey + "\Setup";
 insPath = registry_get_sz(key:fsKey, item:"Path");
 if(!insPath){
@@ -89,7 +75,6 @@ if(!registry_key_exists(key:key)){
 
 foreach item (registry_enum_keys(key:key))
 {
-  ## Check for the DisplayName
   fsName = registry_get_sz(key:key + item, item:"DisplayName");
   if(!fsName){
     continue;
@@ -99,11 +84,9 @@ foreach item (registry_enum_keys(key:key))
   {
     ver = eregmatch(string:fsName, pattern:"([0-9]+)");
 
-    ## Get the version
     fsVer = registry_get_sz(key:key + item, item:"DisplayVersion");
     if(fsVer)
     {
-      ## Set the KB item
       set_kb_item(name:"MS/SharePoint/Server/Ver", value:fsVer);
       set_kb_item(name:"MS/SharePoint/Install/Path", value:insPath);
 

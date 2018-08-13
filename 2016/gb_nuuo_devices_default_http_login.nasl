@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuuo_devices_default_http_login.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: gb_nuuo_devices_default_http_login.nasl 10910 2018-08-10 15:10:09Z mmartin $
 #
 # NUUO Network Video Recorder Default Credentials
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:nuuo:nuuo';
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105856");
- script_version("$Revision: 5759 $");
+ script_version("$Revision: 10910 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("NUUO Network Video Recorder Default Credentials");
- script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:10:09 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-08-08 19:16:36 +0200 (Mon, 08 Aug 2016)");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
@@ -42,14 +42,14 @@ if (description)
  script_dependencies("gb_nuuo_devices_web_detect.nasl");
  script_require_ports("Services/www", 80, 443);
 
- script_tag(name: "summary" , value: 'The remote NUUO Network Video Recorder web interface is prone to a default account authentication bypass vulnerability.');
+ script_tag(name:"summary", value: 'The remote NUUO Network Video Recorder web interface is prone to a default account authentication bypass vulnerability.');
 
- script_tag(name: "impact" , value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
+ script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
 
- script_tag(name: "vuldetect" , value: 'Try to login with default credentials.');
- script_tag(name: "insight" , value: 'It was possible to login with default credentials: admin/admin');
- script_tag(name: "solution" , value: 'Change the password.');
-
+ script_tag(name:"vuldetect", value: 'Try to login with default credentials.');
+ script_tag(name:"insight", value: 'It was possible to login with default credentials: admin/admin');
+ script_tag(name:"solution", value: 'Change the password.');
+ script_tag(name:"solution_type", value:"Mitigation");
  script_tag(name:"qod_type", value:"remote_vul");
  script_mandatory_keys("nuuo/web/detected");
  exit(0);
@@ -58,6 +58,7 @@ if (description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+
 
 if( ! port = get_app_port( cpe:CPE, service:'www' ) ) exit( 0 );
 

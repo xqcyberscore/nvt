@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843080");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 10909 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:03:01 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-03-08 05:53:19 +0100 (Wed, 08 Mar 2017)");
   script_cve_id("CVE-2017-5398", "CVE-2017-5399", "CVE-2017-5400", "CVE-2017-5401",
                 "CVE-2017-5402", "CVE-2017-5403", "CVE-2017-5404", "CVE-2017-5405",
@@ -36,8 +36,8 @@ if(description)
                 "CVE-2017-5416", "CVE-2017-5417", "CVE-2017-5418", "CVE-2017-5419",
                 "CVE-2017-5420", "CVE-2017-5421", "CVE-2017-5422", "CVE-2017-5426",
                 "CVE-2017-5427", "CVE-2016-5412");
-  script_tag(name:"cvss_base", value:"4.6");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for firefox USN-3216-1");
   script_tag(name: "summary", value: "Check the version of firefox");

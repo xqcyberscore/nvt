@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: pligg_cms_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: pligg_cms_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Pligg CMS Detection
 #
@@ -24,14 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running Pligg CMS, an open source CMS.";
-
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100374");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 10888 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2009-12-03 12:57:42 +0100 (Thu, 03 Dec 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Pligg CMS Detection");
@@ -42,8 +40,8 @@ if(description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.pligg.com/");
+ script_tag(name:"summary", value:"This host is running Pligg CMS, an open source CMS.");
+ script_xref(name:"URL", value:"http://www.pligg.com/");
  exit(0);
 }
 
@@ -51,7 +49,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.100374";
 SCRIPT_DESC = "Pligg CMS Detection";
 
 port = get_http_port(default:80);
@@ -68,12 +65,12 @@ foreach dir( make_list_unique( "/pligg", "/cms", cgi_dirs( port:port ) ) ) {
  if(egrep(pattern: "Copyright.*Pligg <a.*http://www.pligg.com.*Content Management System", string: buf, icase: TRUE))
  {
     vers = string("unknown");
-    
+
     url = string(dir, "/readme.html");
     req = http_get(item:url, port:port);
     buf = http_keepalive_send_recv(port:port, data:req,bodyonly:TRUE);
-    
-    if("Pligg Readme" >< buf) { 
+
+    if("Pligg Readme" >< buf) {
       version = eregmatch(string: buf, pattern: "Version ([0-9.]+)",icase:TRUE);
       if ( !isnull(version[1]) ) {
          vers=chomp(version[1]);
@@ -85,19 +82,19 @@ foreach dir( make_list_unique( "/pligg", "/cms", cgi_dirs( port:port ) ) ) {
       buf = http_keepalive_send_recv(port:port, data:req,bodyonly:TRUE);
 
       if("Pligg English language" >< buf) {
-        version = eregmatch(string: buf, pattern: "//<VERSION>([0-9.]+)</VERSION> ",icase:TRUE);   
+        version = eregmatch(string: buf, pattern: "//<VERSION>([0-9.]+)</VERSION> ",icase:TRUE);
 	if ( !isnull(version[1]) ) {
           vers=chomp(version[1]);
-        }	  
-      }	
-    }  
+        }
+      }
+    }
 
     set_kb_item(name: string("www/", port, "/pligg"), value: string(vers," under ",install));
     if("unknown" >!< vers) {
-      register_host_detail(name:"App", value:string("cpe:/a:pligg:pligg_cms:",vers), nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+      register_host_detail(name:"App", value:string("cpe:/a:pligg:pligg_cms:",vers), desc:SCRIPT_DESC);
     } else {
-      register_host_detail(name:"App", value:string("cpe:/a:pligg:pligg_cms"), nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-    }  
+      register_host_detail(name:"App", value:string("cpe:/a:pligg:pligg_cms"), desc:SCRIPT_DESC);
+    }
 
     info = string("Pligg CMS Version '");
     info += string(vers);

@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: smtpserver_detect.nasl 7133 2017-09-14 14:31:13Z cfischer $
+# $Id: smtpserver_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 # Description: SMTP Server type and version
 #
 # Authors:
@@ -25,8 +25,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10263");
-  script_version("$Revision: 7133 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-14 16:31:13 +0200 (Thu, 14 Sep 2017) $");
+  script_version("$Revision: 10908 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -49,9 +49,6 @@ if(description)
   exit(0);
 }
 
-#
-# The script code starts here
-#
 include("smtp_func.inc");
 include("host_details.inc");
 
@@ -73,7 +70,7 @@ if( get_port_state( port ) ) {
       close( soc );
       exit( 0 );
     }
-  
+
     if( "220" >!< banner ) {
       # Doesn't look like SMTP...
       close( soc );

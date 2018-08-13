@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_schneider_modicon_m340_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_schneider_modicon_m340_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # Schneider Electric Modicon M340 Detection (http)
 #
@@ -31,12 +31,12 @@ if (description)
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"qod_type", value:"remote_banner");
- script_version ("$Revision: 6032 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+ script_version("$Revision: 10896 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2013-12-16 11:11:45 +0100 (Mon, 16 Dec 2013)");
  script_name("Schneider Electric Modicon M340 Detection (http)");
 
-  script_tag(name: "summary" , value: "Detection of Schneider Electric Modicon M340 over HTTP.
+  script_tag(name:"summary", value:"Detection of Schneider Electric Modicon M340 over HTTP.
 
 The script sends a HTTP request to the server and attempts to detect a Schneider Modicon M340 from the reply.");
 
@@ -51,7 +51,7 @@ The script sends a HTTP request to the server and attempts to detect a Schneider
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("host_details.inc");
 
 port = get_http_port(default:80);

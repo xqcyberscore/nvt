@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_net_ana_detect.nasl 9186 2018-03-23 09:48:58Z asteins $
+# $Id: gb_nagios_net_ana_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # Nagios Network Analyzer Detection
 #
@@ -29,9 +29,9 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.107062");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9186 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-23 10:48:58 +0100 (Fri, 23 Mar 2018) $");
-  script_tag(name:"creation_date", value: "2016-10-19 13:26:09 +0700 (Wed, 19 Oct 2016)");
+  script_version("$Revision: 10894 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-19 13:26:09 +0700 (Wed, 19 Oct 2016)");
   script_name("Nagios Network Analyzer Detection");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
@@ -77,7 +77,6 @@ foreach dir(make_list_unique("/nagiosna", "/nagios", cgi_dirs(port:port))) {
     }
 
     vers = "unknown";
-    ### try to get version
     version = eregmatch(string:buf, pattern:'var NA_VERSION = "([0-9.]+)"', icase:TRUE);
 
     if (isnull(version[1])) {

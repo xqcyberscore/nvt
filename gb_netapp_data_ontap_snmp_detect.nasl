@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netapp_data_ontap_snmp_detect.nasl 8142 2017-12-15 13:00:23Z cfischer $
+# $Id: gb_netapp_data_ontap_snmp_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # NetApp Data ONTAP Detection (SNMP)
 #
@@ -28,20 +28,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140349");
-  script_version("$Revision: 8142 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-15 14:00:23 +0100 (Fri, 15 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-09-05 09:15:15 +0700 (Tue, 05 Sep 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-09-05 09:15:15 +0700 (Tue, 05 Sep 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("NetApp Data ONTAP Detection (SNMP)");
 
-  script_tag(name: "summary" , value: "Detection of NetApp Data ONTAP.
+  script_tag(name:"summary", value:"Detection of NetApp Data ONTAP.
 
 This script performs SNMP based detection of NetApp Data ONTAP devices.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -50,7 +50,7 @@ This script performs SNMP based detection of NetApp Data ONTAP devices.");
   script_require_udp_ports("Services/udp/snmp", 161);
   script_mandatory_keys("SNMP/sysdesc/available");
 
-  script_xref(name: "URL", value: "http://www.netapp.com/us/products/data-management-software/ontap.aspx");
+  script_xref(name:"URL", value:"http://www.netapp.com/us/products/data-management-software/ontap.aspx");
 
   exit(0);
 }

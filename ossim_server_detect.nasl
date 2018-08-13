@@ -1,11 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ossim_server_detect.nasl 4322 2016-10-21 12:37:44Z cfi $
+# $Id: ossim_server_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # OSSIM Server Detection
 #
 # Authors:
-# Ferdy Riphagen 
+# Ferdy Riphagen
 #
 # Copyright:
 # Copyright (C) 2007 Ferdy Riphagen
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.9000001");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 4322 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-21 14:37:44 +0200 (Fri, 21 Oct 2016) $");
+  script_version("$Revision: 10913 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-08-21 14:43:25 +0200 (Thu, 21 Aug 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("OSSIM Server Detection");
@@ -41,19 +41,15 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.ossim.net");
 
-  tag_summary = "A OSSIM server is listening on the remote system. 
+  script_tag(name:"solution", value:"If possible, filter incoming connections to the service so that it is
+  used by trusted sources only.");
+  script_tag(name:"summary", value:"A OSSIM server is listening on the remote system.
 
   Description :
 
   The remote system is running an OSSIM server. OSSIM (Open Source
-  Security Information Management) is a centralized security management 
-  information system.";
-
-  tag_solution = "If possible, filter incoming connections to the service so that it is
-  used by trusted sources only.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  Security Information Management) is a centralized security management
+  information system.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -67,7 +63,7 @@ soc = open_sock_tcp( port );
 if( ! soc ) exit( 0 );
 
 rand = rand() % 10;
-data = 'connect id="' + rand + '" type="sensor"\n'; 
+data = 'connect id="' + rand + '" type="sensor"\n';
 send( socket:soc, data:data );
 recv = recv( socket:soc, length:64 );
 close( soc );

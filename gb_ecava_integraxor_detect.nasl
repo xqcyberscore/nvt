@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecava_integraxor_detect.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_ecava_integraxor_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Ecava IntegraXor Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804298");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 10922 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-05-19 16:21:28 +0530 (Mon, 19 May 2014)");
   script_name("Ecava IntegraXor Version Detection");
 
@@ -57,7 +57,6 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Get http port
 port = get_http_port( default:7131 );
 
 foreach dir( make_list_unique( "/", "/DEM0", "/project", "/ecava", "/integraxor", cgi_dirs( port:port ) ) ) {
@@ -81,12 +80,10 @@ foreach dir( make_list_unique( "/", "/DEM0", "/project", "/ecava", "/integraxor"
     set_kb_item( name:"www/" + port + "/Ecava/IntegraXor", value:version );
     set_kb_item( name:"EcavaIntegraXor/Installed", value:TRUE );
 
-    ## Build the CPE
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:ecava:integraxor:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:ecava:integraxor';
 
-    ## Register the product
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"Ecava IntegraXor",

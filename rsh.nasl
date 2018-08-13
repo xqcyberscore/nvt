@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rsh.nasl 4378 2016-10-28 09:01:50Z cfi $
+# $Id: rsh.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Check for rsh Service
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100080");
-  script_version("$Revision: 4378 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-28 11:01:50 +0200 (Fri, 28 Oct 2016) $");
+  script_version("$Revision: 10902 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-03-26 19:23:59 +0100 (Thu, 26 Mar 2009)");
   #Remark: NIST don't see "configuration issues" as software flaws so this CVSS has a value of 0.0.
   #However we still should report such a configuration issue with a criticality so this has been commented
@@ -45,15 +45,11 @@ if(description)
 
   script_xref(name:"URL", value:"https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-1999-0651");
 
-  tag_solution = "Disable rsh and use ssh instead.";
-
-  tag_summary = "rsh Service is running at this Host.
+  script_tag(name:"solution", value:"Disable rsh and use ssh instead.");
+  script_tag(name:"summary", value:"rsh Service is running at this Host.
   rsh (remote shell) is a command line computer program which can execute
   shell commands as another user, and on another computer across a computer
-  network.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  network.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");

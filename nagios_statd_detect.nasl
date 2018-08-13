@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nagios_statd_detect.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: nagios_statd_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # Nagios-statd Daemon Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100187");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 6040 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+ script_version("$Revision: 10906 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2009-05-06 14:55:27 +0200 (Wed, 06 May 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("Nagios-statd Daemon Detection");
@@ -40,8 +40,8 @@ if (description)
  script_dependencies("find_service2.nasl");
  script_require_ports("Services/nagios-statd", 1040);
 
- script_tag(name : "solution" , value : "Limit incoming traffic to this port.");
- script_tag(name : "summary" , value : "Nagios-statd Daemon is running at this port.
+ script_tag(name:"solution", value:"Limit incoming traffic to this port.");
+ script_tag(name:"summary", value:"Nagios-statd Daemon is running at this port.
 
  Nagios-statd (nagios-statd  Daemon)  is the daemon program for
  nagios-stat.  These programs together comprise a  systems monitoring
@@ -69,38 +69,37 @@ if(!get_tcp_port_state(port))exit(0);
 
 soc = open_sock_tcp(port);
 if(!soc)exit(0);
-  
+
 req = string("version\r\n");
 send(socket:soc, data:req);
 while (data = recv_line(socket:soc, length:100)) {
    ret += data;
-}    
-  
+}
+
 
 if("nagios-statd" >< ret) {
 
  vers = string("unknown");
 
  version = eregmatch(pattern:"^nagios-statd ([0-9.]+)$", string: ret);
- 
+
  if(!isnull(version[1])) {
   vers = version[1];
- } 
+ }
 
  set_kb_item(name:"nagios_statd/"+port+"/Version", value:vers);
  register_service(port:port, ipproto:"tcp", proto:"nagios-statd");
 
- ## build cpe and store it as host_detail
  cpe = build_cpe(value: vers, exp:"^([0-9.]+)",base:"cpe:/a:nagios:nagios:");
  if(!isnull(cpe))
     register_host_detail(name:"App", value:cpe);
 
  tests = make_list("uptime","disk");
- 
+
  foreach do (tests) {
 
-   soc = open_sock_tcp(port); 
-   req = string(do, "\r\n"); 
+   soc = open_sock_tcp(port);
+   req = string(do, "\r\n");
    send(socket:soc, data:req);
 
    result += string(do,":\n");
@@ -120,11 +119,11 @@ if("nagios-statd" >< ret) {
    info = string("Here are a few Information from the nagios-statd daemon received by OpenVAS:\n\n");
    info += result;
 
- }  
+ }
 
-  if(report_verbosity > 0) { 
+  if(report_verbosity > 0) {
      log_message(port:port,data:info);
-   }  
+   }
 
   exit(0);
 

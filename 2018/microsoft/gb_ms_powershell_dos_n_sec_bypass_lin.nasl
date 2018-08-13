@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powershell_dos_n_sec_bypass_lin.nasl 8699 2018-02-07 08:01:50Z asteins $
+# $Id: gb_ms_powershell_dos_n_sec_bypass_lin.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft PowerShell Core DoS And Security Feature Bypass Vulnerabilities (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:powershell";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812747");
-  script_version("$Revision: 8699 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-0764", "CVE-2018-0786");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-07 09:01:50 +0100 (Wed, 07 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-01-30 15:21:20 +0530 (Tue, 30 Jan 2018)");
   script_name("Microsoft PowerShell Core DoS And Security Feature Bypass Vulnerabilities (Linux)");
 
@@ -45,16 +45,16 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
-  - An error in the open source versions of PowerShell Core when improper 
+  - An error in the open source versions of PowerShell Core when improper
     processing of XML documents by .NET Core occurs.
 
-  - An error in the open source versions of PowerShell Core where an attacker 
-    could present a certificate that is marked invalid for a specific use, 
-    but a .NET Core component uses it for that purpose. This action disregards 
+  - An error in the open source versions of PowerShell Core where an attacker
+    could present a certificate that is marked invalid for a specific use,
+    but a .NET Core component uses it for that purpose. This action disregards
     the Enhanced Key Usage tagging.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to cause a denial of service to an application using PowerShell 
+  attackers to cause a denial of service to an application using PowerShell
   to process requests and also to bypass security.
 
   Impact Level: Application");
@@ -66,7 +66,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://github.com/PowerShell/Announcements/issues/2");
+  script_xref(name:"URL", value:"https://github.com/PowerShell/Announcements/issues/2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

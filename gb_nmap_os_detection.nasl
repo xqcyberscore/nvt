@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_os_detection.nasl 9702 2018-05-03 06:35:02Z cfischer $
+# $Id: gb_nmap_os_detection.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # Nmap OS Identification (NASL wrapper)
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108021");
-  script_version("$Revision: 9702 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-03 08:35:02 +0200 (Thu, 03 May 2018) $");
+  script_version("$Revision: 10896 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-11-21 12:08:04 +0100 (Mon, 21 Nov 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -99,7 +99,7 @@ if( reports && max_index( keys( reports ) ) == 1 ) {
   # nb: This key might have multiple entries, don't use get_kb_item here to avoid forking.
   confidence = get_kb_list( "Host/OS/ICMP/Confidence" );
 
-  # Check if the ICMP OS detection has multiple OS detected
+  # nb: This checks if the ICMP OS detection has multiple OS detected
   if( confidence && max_index( keys( confidence ) ) == 1 ) {
     # We only want to start if the confidence is low
     if( int( confidence["Host/OS/ICMP/Confidence"] ) >= 95 ) exit( 0 );

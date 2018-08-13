@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_bitbucket_detect.nasl 8687 2018-02-06 13:51:01Z asteins $
+# $Id: gb_atlassian_bitbucket_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Atlassian Bitbucket Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106759");
- script_version ("$Revision: 8687 $");
- script_tag(name: "last_modification", value: "$Date: 2018-02-06 14:51:01 +0100 (Tue, 06 Feb 2018) $");
- script_tag(name: "creation_date", value: "2017-04-18 10:53:03 +0200 (Tue, 18 Apr 2017)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10899 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2017-04-18 10:53:03 +0200 (Tue, 18 Apr 2017)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Atlassian Bitbucket Detection");
 
- script_tag(name: "summary" , value: "Detection of Atlassian Bitbucket. 
+ script_tag(name:"summary", value:"Detection of Atlassian Bitbucket.
 
 The script sends a connection request to the server and attempts to detect Atlassian Bitbucket and to extract
 the version number from the reply.");
@@ -51,7 +51,7 @@ the version number from the reply.");
  script_require_ports("Services/www", 443);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_xref(name: "URL", value: "https://www.atlassian.com/software/bitbucket");
+ script_xref(name:"URL", value:"https://www.atlassian.com/software/bitbucket");
 
  exit(0);
 }

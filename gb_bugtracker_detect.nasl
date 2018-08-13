@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bugtracker_detect.nasl 6000 2017-04-21 11:07:29Z cfi $
+# $Id: gb_bugtracker_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # BugTracker.NET Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801278");
-  script_version("$Revision: 6000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 13:07:29 +0200 (Fri, 21 Apr 2017) $");
+  script_version("$Revision: 10913 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-09-15 08:47:45 +0200 (Wed, 15 Sep 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -64,29 +64,24 @@ foreach dir( make_list_unique( "/btnet", "/bugtracker", "/bugtrackernet", "/", c
   rcvRes = http_get_cache( item: dir + "/about.html", port:port );
   rcvRes2 = http_get_cache( item: dir + "/default.aspx", port:port );
 
-  ## Confirm the application
   if( ( rcvRes =~ "HTTP/1.. 200" && ">BugTracker.NET<" >< rcvRes ) ||
       ( rcvRes2 =~ "HTTP/1.. 200" && ">BugTracker.NET<" >< rcvRes &&
         '"Logon"' >< rcvRes2 && ">User:<" >< rcvRes2 && ">Password:<" >< rcvRes2 ) ) {
 
     version = "unknown";
 
-    ## Get BugTracker.NET Version
     ver = eregmatch( pattern:'Version ([0-9.]+)', string:rcvRes );
     if( ! isnull( ver[1] ) ) version = ver[1];
 
-    ## Set the KB value
     ## BugTracker.NET 3.4.4 showing its version as 3.4.3
     tmp_version = version +" under "+ install;
     set_kb_item( name:"www/" + port + "/btnet", value:tmp_version );
     set_kb_item( name:"BugTrackerNET/installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:ifdefined:bugtracker.net:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:ifdefined:bugtracker.net';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"BugTracker.NET",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yahoo_msg_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: gb_yahoo_msg_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Yahoo! Messenger Version Detection
 #
@@ -30,16 +30,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801149");
-  script_version("$Revision: 9580 $");
+  script_version("$Revision: 10899 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-12-08 05:49:24 +0100 (Tue, 08 Dec 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Yahoo! Messenger Version Detection");
 
 
-  script_tag(name : "summary" , value : "This script detects the installed version of Yahoo! Messenger and sets the
+  script_tag(name:"summary", value:"This script detects the installed version of Yahoo! Messenger and sets the
 result in KB.
 
 The script logs in via smb, search for the product name in the registry, gets
@@ -48,7 +48,7 @@ application Path from the registry and fetches the version from exe file.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -61,28 +61,17 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## variable initialization
-os_arch = "";
-key_list = "";
-key= "";
-ymsgName = "";
-ymsgPath = "";
-ymsgVer = "";
 
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform, Only 32-bit application is available
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Yahoo! Messenger");
   key_list2 = make_list("SOFTWARE\Yahoo\pager");
 }
 
-## Check for 64 bit platform
 else if("x64" >< os_arch){
   key_list =  make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Yahoo! Messenger");
   key_list2 = make_list("SOFTWARE\Wow6432Node\Yahoo\pager");

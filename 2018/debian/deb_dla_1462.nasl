@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1462.nasl 10869 2018-08-10 06:10:37Z cfischer $
+# $Id: deb_dla_1462.nasl 10907 2018-08-10 14:55:29Z emoss $
 #
 # Auto-generated from advisory DLA 1462-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891462");
-  script_version("$Revision: 10869 $");
+  script_version("$Revision: 10907 $");
   script_cve_id("CVE-2018-14526");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1462-1] wpa security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 08:10:37 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:55:29 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-10 00:00:00 +0200 (Fri, 10 Aug 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -57,11 +57,11 @@ We recommend that you upgrade your wpa packages.");
   script_tag(name:"summary",  value:"The following vulnerability was discovered in wpa_supplicant.
 
 CVE-2018-14526:
-| An issue was discovered in rsn_supp/wpa.c in wpa_supplicant 2.0
-| through 2.6. Under certain conditions, the integrity of EAPOL-Key
-| messages is not checked, leading to a decryption oracle. An attacker
-| within range of the Access Point and client can abuse the
-| vulnerability to recover sensitive information.");
+An issue was discovered in rsn_supp/wpa.c in wpa_supplicant 2.0
+through 2.6. Under certain conditions, the integrity of EAPOL-Key
+messages is not checked, leading to a decryption oracle. An attacker
+within range of the Access Point and client can abuse the
+vulnerability to recover sensitive information.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
   exit(0);

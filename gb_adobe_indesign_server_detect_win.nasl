@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_indesign_server_detect_win.nasl 4799 2016-12-19 10:37:16Z antu123 $
+# $Id: gb_adobe_indesign_server_detect_win.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Adobe InDesign Server Version Detection (Windows)
 #
@@ -27,23 +27,23 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810239");
-  script_version("$Revision: 4799 $");
+  script_version("$Revision: 10922 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-19 11:37:16 +0100 (Mon, 19 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-12-15 12:59:49 +0530 (Thu, 15 Dec 2016)");
   script_name("Adobe InDesign Server Version Detection (Windows)");
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Adobe InDesign Server.
 
-  The script logs in via smb, searches for Adobe InDesign Server in the 
+  The script logs in via smb, searches for Adobe InDesign Server in the
   registry and gets the version from 'DisplayVersion' string from registry.");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -54,20 +54,12 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-digName="";
-digPath="";
-digVer="";
-osArch = "";
-key_list = "";
-
 osArch = get_kb_item("SMB/Windows/Arch");
 if(!osArch)
 {
   exit(-1);
 }
 
-#Check if Adobe Application is installed
 if(!registry_key_exists(key:"SOFTWARE\Adobe") &&
    !registry_key_exists(key:"SOFTWARE\Wow6432Node\Adobe"))
 {
@@ -79,7 +71,6 @@ if("x86" >< osArch){
   key_list =  make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-## Check for 64 bit platform
 else if("x64" >< osArch){
  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
                       "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
@@ -91,14 +82,11 @@ foreach key (key_list)
   {
     digName = registry_get_sz(key:key + item, item:"DisplayName");
 
-    ## confirm the application
     if(digName =~ "Adobe Indesign.*Server")
     {
 
-      ## Get the version
       digVer = registry_get_sz(key:key + item, item:"DisplayVersion");
 
-      ## Get the installed path
       digPath = registry_get_sz(key:key + item, item:"InstallLocation");
       if(!digPath){
         digPath = "Couldn find the install location from registry";
@@ -108,7 +96,6 @@ foreach key (key_list)
       {
         set_kb_item(name:"AdobeIndesignServer/Win/Ver", value:digVer);
 
-        ## build cpe
         cpe = build_cpe(value:digVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:indesign_server:");
         if(!cpe)
           cpe = "cpe:/a:adobe:indesign_server";

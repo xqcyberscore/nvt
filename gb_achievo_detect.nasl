@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_achievo_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_achievo_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # Achievo Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807645");
-  script_version("$Revision: 8078 $");
+  script_version("$Revision: 10901 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:25:00 +0530 (Wed, 06 Apr 2016)");
   script_name("Achievo Detection");
 
@@ -53,32 +53,24 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-dir = "";
-achPort = 0;
-rcvRes = "";
-
 achPort = get_http_port(default:80);
 
 if(!can_host_php(port:achPort)) exit(0);
 
-foreach dir(make_list_unique("/", "/achievo", "/cms",  cgi_dirs(port:achPort))) 
+foreach dir(make_list_unique("/", "/achievo", "/cms",  cgi_dirs(port:achPort)))
 {
   install = dir;
   if(dir == "/") dir = "";
 
   rcvRes = http_get_cache(item: dir + "/index.php", port:achPort);
 
-  ##Confirm application
-  if('<title>Achievo</title>' >< rcvRes && 'login' >< rcvRes) 
+  if('<title>Achievo</title>' >< rcvRes && 'login' >< rcvRes)
   {
     version = "unknown";
 
-    ## Set the KB value
     set_kb_item(name:"www/" + achPort + "/achievo", value:version);
     set_kb_item(name:"Achievo/Installed", value:TRUE);
 
-    ## build cpe and store it as host_detail
     cpe = "cpe:/a:achievo:achievo";
 
     register_product(cpe:cpe, location:install, port:achPort);

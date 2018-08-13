@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_syncrify_detect.nasl 8528 2018-01-25 07:57:36Z teissa $
+# $Id: gb_syncrify_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Syncrify Detection
 #
@@ -24,16 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running Syncrify, an incremental, and cloud-ready backup
-that implements the rsync protocol over HTTP.";
-
 if (description)
 {
- 
+
  script_oid("1.3.6.1.4.1.25623.1.0.100819");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8528 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
+ script_version("$Revision: 10908 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2010-09-22 16:24:51 +0200 (Wed, 22 Sep 2010)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -46,8 +43,9 @@ if (description)
  script_require_ports("Services/www", 5800);
  script_mandatory_keys("Apache-Coyote/banner");
 
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://web.synametrics.com/Syncrify.htm");
+ script_tag(name:"summary", value:"This host is running Syncrify, an incremental, and cloud-ready backup
+that implements the rsync protocol over HTTP.");
+ script_xref(name:"URL", value:"http://web.synametrics.com/Syncrify.htm");
  exit(0);
 }
 
@@ -77,7 +75,7 @@ if("Syncrify" >< buf && "Synametrics Technologies" && "Fast incremental backup" 
        vers=chomp(version[1]);
        if(!isnull(version[2])) {
          vers = vers + "." + version[2]; # ver string: Version: 2.1 build 420 -> version in kb 2.1.420
-       }	 
+       }
     }
 
     set_kb_item(name: string("www/", port, "/syncrify"), value: string(vers," under ",install));

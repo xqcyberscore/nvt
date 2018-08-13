@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_raidenftpd_server_detect.nasl 8168 2017-12-19 07:30:15Z teissa $
+# $Id: secpod_raidenftpd_server_detect.nasl 10886 2018-08-10 11:29:21Z cfischer $
 #
 # RaidenFTPD Server Version Detection
 #
@@ -24,26 +24,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script finds the installed version of RaidenFTPD Server
-  and sets the result in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900510");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8168 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 08:30:15 +0100 (Tue, 19 Dec 2017) $");
+  script_version("$Revision: 10886 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 13:29:21 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-02-26 05:27:20 +0100 (Thu, 26 Feb 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("RaidenFTPD Server Version Detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 SecPod");
-  script_family("FTP");
-  script_dependencies("find_service.nasl", "secpod_reg_enum.nasl");
+  script_family("Product detection");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script finds the installed version of RaidenFTPD Server
+  and sets the result in KB.");
   exit(0);
 }
 
@@ -53,8 +51,6 @@ include("smb_nt.inc");
 include("ftp_func.inc");
 include("secpod_smb_func.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900510";
 SCRIPT_DESC = "RaidenFTPD Server Version Detection";
 
 if(!get_kb_item("SMB/WindowsVersion")){
@@ -77,9 +73,8 @@ if(rftpdVer != NULL){
   log_message(data:"RaidenFTPD Server version " + rftpdVer + " running at" +
                      " location " + exePath +  " was detected on the host");
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value: rftpdVer, exp:"^([0-9.]+)",base:"cpe:/a:raidenftpd:raidenftpd:");
   if(!isnull(cpe))
-     register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+     register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
 }

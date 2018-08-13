@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ssl_ciphers.nasl 8138 2017-12-15 11:42:07Z cfischer $
+# $Id: secpod_ssl_ciphers.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # SSL/TLS: Check Supported Cipher Suites
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900234");
-  script_version("$Revision: 8138 $");
+  script_version("$Revision: 10891 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 12:42:07 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 17:43:57 +0200 (Tue, 13 Apr 2010)");
   script_name("SSL/TLS: Check Supported Cipher Suites");
   script_category(ACT_GATHER_INFO);
@@ -74,7 +74,7 @@ if( tls_type && tls_type == "mysql" )
 else
   check_all_cipher( tls_versions:tls_versions, sslPort:sslPort );
 
-# Set kb entry that no timeout was happening for further reporting
+# nb: The kb entry is used to report that no timeout was happening during the runtime.
 set_kb_item( name:"secpod_ssl_ciphers/" + sslPort + "/no_timeout", value:TRUE );
 
 exit( 0 );

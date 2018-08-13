@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_overlook_detect.nasl 8528 2018-01-25 07:57:36Z teissa $
+# $Id: secpod_overlook_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # OPEN IT OverLook Version Detection
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The script detects the version of OverLook on remote host and
-  sets the KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902513");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8528 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
+ script_version("$Revision: 10894 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("OPEN IT OverLook Version Detection");
@@ -42,7 +39,8 @@ if(description)
   script_family("Service detection");
   script_dependencies("http_version.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"The script detects the version of OverLook on remote host and
+  sets the KB.");
   exit(0);
 }
 
@@ -52,11 +50,8 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.902513";
 SCRIPT_DESC = "OPEN IT OverLook Version Detection";
 
-## Get http port
 port = get_http_port(default:80);
 if(!port){
   exit(0);
@@ -68,30 +63,25 @@ foreach dir (make_list("/overlook"))
   sndReq = http_get(item:string(dir, "/src/login.php"), port:port);
   rcvRes = http_keepalive_send_recv(port:port, data:sndReq);
 
-  ## Confirm the application
   if(">OverLook by Open IT<" >< rcvRes)
   {
-    ## Get Version From README File
     sndReq = http_get(item:string(dir, "/README"), port:port);
     rcvRes = http_keepalive_send_recv(port:port, data:sndReq);
 
     if("OverLook" >< rcvRes)
     {
-      ## Try to get the version
       ver = eregmatch(pattern:"Version \.+ ([0-9.]+)", string:rcvRes);
       if(ver[1])
       {
-        ## Set the KB value
         tmp_version = ver[1] + " under " + dir;
         set_kb_item(name:"www/" + port + "/OverLook", value:tmp_version);
         log_message(data:"OverLook version " + ver[1] +
                            " running at location "  + dir +
                            " was detected on the host", port:port);
-      
-        ## build cpe and store it as host_detail
+
         cpe = build_cpe(value:tmp_version, exp:"^([0-9.]+)", base:"cpe:/a:openit:overlook:");
         if(!isnull(cpe))
-           register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+           register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
       }
     }

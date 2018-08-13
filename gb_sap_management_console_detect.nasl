@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_management_console_detect.nasl 10190 2018-06-14 09:45:05Z ckuersteiner $
+# $Id: gb_sap_management_console_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # SAP Management Console Detection
 #
@@ -28,15 +28,15 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103829");
- script_version ("$Revision: 10190 $");
- script_tag(name:"last_modification", value:"$Date: 2018-06-14 11:45:05 +0200 (Thu, 14 Jun 2018) $");
+ script_version("$Revision: 10905 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2013-11-13 12:08:59 +0100 (Wed, 13 Nov 2013)");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
  script_tag(name:"cvss_base", value:"0.0");
 
  script_name("SAP Management Console Detection");
 
- script_tag(name: "summary", value: "The script sends a connection request to the server and attempts to extract
+ script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to extract
 the version number from the reply.");
 
  script_category(ACT_GATHER_INFO);
@@ -52,7 +52,7 @@ the version number from the reply.");
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("host_details.inc");
 
 port = get_http_port(default:50013);

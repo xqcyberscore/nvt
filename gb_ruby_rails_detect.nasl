@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_rails_detect.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: gb_ruby_rails_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Ruby On Rails Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800911");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_version("$Revision: 10891 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-07-17 12:47:28 +0200 (Fri, 17 Jul 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Ruby On Rails Version Detection");
@@ -69,10 +69,9 @@ foreach rorBin (rorPaths)
   {
     set_kb_item(name:"Ruby-Rails/Linux/Ver", value:rorVer[1]);
     set_kb_item(name:"RubyOnRails/installed", value:TRUE);
-    log_message(data:"Ruby On Rails version " + rorVer[1] + 
+    log_message(data:"Ruby On Rails version " + rorVer[1] +
                  " running at location " + rorBin + " was detected on the host");
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value: rorVer[1], exp:"^([0-9.]+)",base:"cpe:/a:rubyonrails:ruby_on_rails:");
     if(!isnull(cpe))
        register_host_detail(name:"App", value:cpe);

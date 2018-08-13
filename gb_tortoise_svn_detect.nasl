@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tortoise_svn_detect.nasl 9580 2018-04-24 08:44:20Z jschulte $
+# $Id: gb_tortoise_svn_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # TortoiseSVN Version Detection
 #
@@ -30,16 +30,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801289");
-  script_version("$Revision: 9580 $");
+  script_version("$Revision: 10894 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:44:20 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-09-21 16:43:08 +0200 (Tue, 21 Sep 2010)");
   script_tag(name:"qod_type", value:"registry");
   script_name("TortoiseSVN Version Detection");
 
 
-  script_tag(name : "summary" , value : "Detection of installed version of TortoiseSVN on Windows.
+  script_tag(name:"summary", value:"Detects the installed version of TortoiseSVN on Windows.
 
 The script logs in via smb, searches for TortoiseSVN in the
 registry and gets the version.");
@@ -47,7 +47,7 @@ registry and gets the version.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -59,17 +59,10 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-AppName = "";
-AppVer = "";
-insLoc = "";
-
-## Confirm TortoiseSVN
 if(!registry_key_exists(key:"SOFTWARE\TortoiseSVN\")){
   exit(0);
 }
 
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
@@ -81,7 +74,6 @@ if(!registry_key_exists(key:key)) {
     exit(0);
 }
 
-## Get TortoiseSVN Version from Registry
 foreach item (registry_enum_keys(key:key))
 {
   AppName = registry_get_sz(key:key + item, item:"DisplayName");
@@ -97,7 +89,6 @@ foreach item (registry_enum_keys(key:key))
 
       set_kb_item(name:"TortoiseSVN/Installed", value:TRUE);
 
-      ## Register for 64 bit app on 64 bit OS once again
       if("64" >< os_arch) {
         set_kb_item(name:"TortoiseSVN64/Ver", value:AppVer);
         register_and_report_cpe( app:AppName, ver:AppVer, concluded:AppVer, base:"cpe:/a:tigris:tortoisesvn:x64:", expr:"^([0-9.]+)", insloc:insLoc );

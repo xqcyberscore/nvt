@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: radius_detect.nasl 8236 2017-12-22 10:28:23Z cfischer $
+# $Id: radius_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Radius Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100254");
-  script_version("$Revision: 8236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
+  script_version("$Revision: 10911 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-07-31 12:39:44 +0200 (Fri, 31 Jul 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -51,7 +51,7 @@ port = 1812;
 ip = split( get_host_ip(), sep:".", keep:0 );
 username = string( "OpenVAS" );
 
-data = 
+data =
 raw_string( 0x40, 0xfa, 0xb3, 0x17, 0x23, 0xfd, 0xe5, 0x7f,
 0x4a, 0x02, 0x74, 0x55, 0x15, 0x0c, 0x45, 0xeb ) +
 
@@ -73,7 +73,7 @@ if( get_udp_port_state( port ) ) {
   if( buf && ord( buf[0] ) == 3 ) { # Radius-Code: Access-Rejected (3)
     register_service( port:port, proto:"radius", ipproto:"udp" );
     log_message( port:port, proto:"udp" );
-  } 
+  }
   close(soc);
 }
 

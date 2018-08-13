@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_bamboo_detect.nasl 8668 2018-02-05 15:42:45Z asteins $
+# $Id: gb_atlassian_bamboo_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Atlassian Bamboo Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807265");
-  script_version("$Revision: 8668 $");
+  script_version("$Revision: 10899 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 16:42:45 +0100 (Mon, 05 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-02-17 09:47:57 +0530 (Wed, 17 Feb 2016)");
   script_name("Atlassian Bamboo Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 8085, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Atlassian Bamboo.
 
   This script sends HTTP GET request and try to get the version from the
@@ -59,7 +59,7 @@ include("host_details.inc");
 port = get_http_port(default:80);
 found = FALSE;
 
-## There exists a couple of different parameters after 'userlogin', so we're gonna check both.
+## There exists a couple of different parameters after 'userlogin', so we're going to check both.
 creds = make_list("/userlogin!default.action", "/userlogin!doDefault.action");
 
 foreach dir( make_list_unique( "/", "/bamboo", cgi_dirs( port:port ) ) ) {
@@ -88,7 +88,6 @@ foreach dir( make_list_unique( "/", "/bamboo", cgi_dirs( port:port ) ) ) {
     set_kb_item( name:"AtlassianBamboo/Installed", value:TRUE );
     set_kb_item( name:"www/" + port + "/AtlassianBamboo", value:version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:atlassian:bamboo:" );
     if( ! cpe )
       cpe= "cpe:/a:atlassian:bamboo";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_spectre_variant2_branch_tar_inj_update_disable.nasl 8607 2018-01-31 13:32:54Z santu $
+# $Id: gb_spectre_variant2_branch_tar_inj_update_disable.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Spectre Variant 2 (CVE 2017-5715) Branch Target Injection Update Disable (KB4078130)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812678");
-  script_version("$Revision: 8607 $");
+  script_version("$Revision: 10918 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 14:32:54 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-01-29 16:17:29 +0530 (Mon, 29 Jan 2018)");
   script_name("Spectre Variant 2 (CVE 2017-5715) Branch Target Injection Update Disable (KB4078130)");
 
@@ -57,8 +57,7 @@ if(description)
 
   Impact Level: System.");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows Server 2016
+  script_tag(name:"affected", value:"Microsoft Windows Server 2016
 
   Microsoft Windows Server 2012 R2
 
@@ -80,13 +79,14 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4078130");
-  script_xref(name : "URL" , value : "https://newsroom.intel.com/news/root-cause-of-reboot-issue-identified-updated-guidance-for-customers-and-partners");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4078130");
+  script_xref(name:"URL", value:"https://newsroom.intel.com/news/root-cause-of-reboot-issue-identified-updated-guidance-for-customers-and-partners");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }

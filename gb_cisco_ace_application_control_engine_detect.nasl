@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ace_application_control_engine_detect.nasl 8078 2017-12-11 14:28:55Z cfischer $
+# $Id: gb_cisco_ace_application_control_engine_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
-# Cisco ACE Application Control Engine Detection 
+# Cisco ACE Application Control Engine Detection
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106257");
- script_version ("$Revision: 8078 $");
- script_tag(name: "last_modification", value: "$Date: 2017-12-11 15:28:55 +0100 (Mon, 11 Dec 2017) $");
- script_tag(name: "creation_date", value: "2016-09-16 15:00:47 +0700 (Fri, 16 Sep 2016)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10888 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2016-09-16 15:00:47 +0700 (Fri, 16 Sep 2016)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Cisco ACE Application Control Engine Detection");
 
- script_tag(name: "summary" , value: "Detection of Cisco ACE Application Control Engine
+ script_tag(name:"summary", value:"Detection of Cisco ACE Application Control Engine
 
 The script sends a connection request to the server and attempts to extract the version number from the reply.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_rfc_detect.nasl 10011 2018-05-30 01:12:59Z ckuersteiner $
+# $Id: gb_sap_rfc_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # SAP RFC Interface Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141120");
-  script_version("$Revision: 10011 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-30 03:12:59 +0200 (Wed, 30 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-05-30 08:06:33 +0700 (Wed, 30 May 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-05-30 08:06:33 +0700 (Wed, 30 May 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("SAP RFC Interface Detection");
 
-  script_tag(name: "summary" , value: "Detection of SAP RFC Interface.
+  script_tag(name:"summary", value:"Detection of SAP RFC Interface.
 
 The RFC (Remote Function Call) interface enables function calls between two SAP systems, or between an SAP system
 and an external system.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ and an external system.");
   script_require_ports("Services/www", 80, 443, 8000);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://archive.sap.com/documents/docs/DOC-60424");
+  script_xref(name:"URL", value:"https://archive.sap.com/documents/docs/DOC-60424");
 
   exit(0);
 }

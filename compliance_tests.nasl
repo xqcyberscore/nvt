@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: compliance_tests.nasl 9961 2018-05-25 13:02:30Z emoss $
+# $Id: compliance_tests.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Compliance Tests
 #
@@ -24,13 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script controls various compliance tests like IT-Grundschutz.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95888");
-  script_version("$Revision: 9961 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-25 15:02:30 +0200 (Fri, 25 May 2018) $");
+  script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -59,11 +57,10 @@ if(description)
   script_add_preference(name:"Testuser Organization Unit", type:"entry", value:"OU");
   script_add_preference(name:"Windows Domaenenfunktionsmodus", type:"radio", value:"Unbekannt;Windows 2000 gemischt und Windows 2000 pur;Windows Server 2003 Interim;Windows Server 2003;Windows Server 2008;Windows Server 2008 R2");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script controls various compliance tests like IT-Grundschutz.");
   exit(0);
 }
 
-# Set KB item if IT-Grundschutz is enabled
 launch_gshb_10 = script_get_preference("Launch IT-Grundschutz (10. EL)");
 if (launch_gshb_10 == "yes") {
   set_kb_item(name: "Compliance/Launch/GSHB-10", value: TRUE);
@@ -95,7 +92,6 @@ if (launch_gshb == "yes") {
   set_kb_item(name: "Compliance/Launch/GSHB", value: TRUE);
   set_kb_item(name: "Compliance/Launch", value: TRUE);
 }
-# Set KB item if IT-Grundschutz silence is requested
 verbose_gshb = script_get_preference("Verbose IT-Grundschutz results");
 if (verbose_gshb == "no") {
   set_kb_item(name: "GSHB-10/silence", value: "Wahr");
@@ -109,45 +105,38 @@ if (verbose_gshb == "no") {
 security_level = script_get_preference("Level of Security (IT-Grundschutz)");
 set_kb_item(name:"GSHB/level", value: security_level);
 
-# Set KB item if PCI-DSS 2.0 is enabled
 launch_pci_dss = script_get_preference("Launch PCI-DSS (Version 2.0)");
 if (launch_pci_dss == "yes") {
   set_kb_item(name: "Compliance/Launch/PCI-DSS_2.0", value: TRUE);
   set_kb_item(name: "Compliance/Launch/GSHB", value: TRUE);
 }
-# Set KB item if latest PCI-DSS is enabled
 launch_pci_dss = script_get_preference("Launch latest PCI-DSS version");
 if (launch_pci_dss == "yes") {
   set_kb_item(name: "Compliance/Launch/PCI-DSS", value: TRUE);
   set_kb_item(name: "Compliance/Launch/GSHB", value: TRUE);
 }
-# Set KB item with PCI-DSS Report language
 lang_pci_dss = script_get_preference("PCI-DSS Berichtsprache/Report Language");
 if (lang_pci_dss == "Deutsch")  set_kb_item(name: "PCI-DSS/lang", value: "ger");
 else if (lang_pci_dss == "English")  set_kb_item(name: "PCI-DSS/lang", value: "eng");
 else set_kb_item(name: "PCI-DSS/lang", value: "eng");
 
-# Set KB item if PCI-DSS silence is requested
 verbose_pci_dss = script_get_preference("Verbose PCI-DSS results");
 if (verbose_pci_dss == "no") {
   set_kb_item(name: "PCI-DSS/silence", value: "Wahr");
 }
 
-# Set KB item if Cyber Essentials is enabled
 launch_ce = script_get_preference("Launch Cyber Essentials");
 if(launch_ce == "yes"){
   set_kb_item(name: "Compliance/Launch/CE", value:TRUE);
   set_kb_item(name: "Compliance/Launch", value:TRUE);
 }
 
-# Set KB item if EU GDPR is enabled
 launch_gdpr = script_get_preference("Launch EU GDPR");
 if(launch_gdpr == "yes"){
   set_kb_item(name: "Compliance/Launch/GDPR", value:TRUE);
   set_kb_item(name: "Compliance/Launch", value:TRUE);
 }
 
-# Set kb entry to start and verbose policy control nvts
 verbose_policy_controls = script_get_preference("Verbose Policy Controls");
 if (verbose_policy_controls == "yes"){
   set_kb_item(name: "Compliance/Launch", value: TRUE);

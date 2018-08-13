@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_apic_em_web_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_cisco_apic_em_web_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Cisco Application Policy Infrastructure Controller Enterprise Modul Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105536");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6065 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version("$Revision: 10911 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-02-11 12:25:49 +0100 (Thu, 11 Feb 2016)");
  script_name("Cisco Application Policy Infrastructure Controller Enterprise Modul Detection");
 
- script_tag(name: "summary" , value: "This Script performs HTTP(s) based detection of Cisco Application Policy Infrastructure Controller Enterprise Modul.
+ script_tag(name:"summary", value:"This Script performs HTTP(s) based detection of Cisco Application Policy Infrastructure Controller Enterprise Modul.
 When HTTP(s) credentials are given, the script is able to extract version and patch information from the application.");
 
  script_tag(name:"qod_type", value:"remote_banner");
@@ -79,16 +79,16 @@ if( user && pass )
   len = strlen( data );
 
   req = 'POST /grapevine/api/auth/login HTTP/1.1\r\n' +
-        'Host: ' + host + '\r\n' + 
+        'Host: ' + host + '\r\n' +
         'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
         'Accept: application/json, text/javascript, */*; q=0.01\r\n' +
-        'Accept-Language: en-US,en;q=0.5\r\n' + 
+        'Accept-Language: en-US,en;q=0.5\r\n' +
         'Accept-Encoding: identify\r\n' +
         'Content-Type: application/json; charset=UTF-8\r\n' +
         'token: undefined\r\n' +
         'X-Requested-With: XMLHttpRequest\r\n' +
         'Content-Length: ' + len + '\r\n' +
-        'Connection: close\r\n' + 
+        'Connection: close\r\n' +
         '\r\n' +
         data;
 
@@ -103,10 +103,10 @@ if( user && pass )
     if( token )
     {
       req = 'GET /grapevine/api/release/current HTTP/1.1\r\n' +
-            'Host: ' + host + '\r\n' + 
+            'Host: ' + host + '\r\n' +
             'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
             'Accept: */*\r\n' +
-            'Accept-Language: en-US,en;q=0.5\r\n' + 
+            'Accept-Language: en-US,en;q=0.5\r\n' +
             'Accept-Encoding: identify\r\n' +
             'Content-Type: application/json; charset=UTF-8\r\n' +
             'token: ' + token + '\r\n' +
@@ -166,7 +166,7 @@ else
   if( login_credentials )
     if( login_success )
       extra_report = '\n\n** The scanner was able to login but failed to get the version **.\n\n';
-    else 
+    else
       extra_report = '\n\n** The scanner was not able to login using the given credentials **.\n\n';
   else
     extra_report = '\n\n** No HTTP(s) credentials where given. Scanner was not able to to extract version and patch information from the application. **\n\n';

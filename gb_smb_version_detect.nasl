@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smb_version_detect.nasl 5438 2017-02-27 17:47:46Z cfi $
+# $Id: gb_smb_version_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # SMB Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807830");
-  script_version("$Revision: 5438 $");
+  script_version("$Revision: 10898 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-27 18:47:46 +0100 (Mon, 27 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-06-08 09:14:21 +0530 (Wed, 08 Jun 2016)");
   script_name("SMB Remote Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -52,11 +52,6 @@ if(description)
 
 include("smb_nt.inc");
 
-##Variable Initialization
-smb1_support = "";
-smb2_support = "";
-smb3_support = "";
-
 function smb_neg_prot_smb_1_check( target, port ) {
 
   local_var target, port, soc, r, neg_prot;
@@ -70,14 +65,12 @@ function smb_neg_prot_smb_1_check( target, port ) {
     return FALSE;
   }
 
-  #constructing SMB header, also incudes the message type and length
   neg_prot = raw_string( 0x00, 0x00, 0x00, 0xbe,
                          0xff, 0x53, 0x4d, 0x42, 0x72, 0x00, 0x00, 0x00, 0x00,
                          0x08, 0x01, 0xc8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0x33,
                          0x0c, 0x00, 0x00, 0x00, 0x00 );
 
-  #constructing negotiation protocol request
   #Requested Dialects:
   #       Dialect: PC NETWORK PROGRAM 1.0
   #       Dialect: MICROSOFT NETWORKS 1.03
@@ -132,14 +125,12 @@ function smb_neg_prot_smb2_check( target, port ) {
     return FALSE;
   }
 
-  #constructing SMB header, also incudes the message type and length
   neg_prot = raw_string( 0x00, 0x00, 0x00, 0xd4, 0xff, 0x53, 0x4d, 0x42,
                          0x72, 0x00, 0x00, 0x00, 0x00, 0x08, 0x01, 0xc8,
                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                          0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0x33, 0x0c,
                          0x00, 0x00, 0x00, 0x00 );
 
-  #constructing negotiation protocol request
   #Requested Dialects:
   #Dialect: PC NETWORK PROGRAM 1.0
   #Dialect: MICROSOFT NETWORKS 1.03
@@ -200,7 +191,6 @@ function smb_neg_prot_smb_2_3_check( target, port ) {
     return FALSE;
   }
 
-  #constructing SMB header, also incudes the message type and length
   neg_prot = raw_string( 0x00, 0x00, 0x00, 0xb6, 0xfe, 0x53, 0x4d, 0x42,
                          0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -226,7 +216,6 @@ function smb_neg_prot_smb_2_3_check( target, port ) {
                          0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x01, 0x00,
                          0x02, 0x00 );
 
-   #constructing negotiation protocol request
    #Requested Dialects:
    #Dialect 0x0202
    #Dialect 0x0210
@@ -243,7 +232,6 @@ function smb_neg_prot_smb_2_3_check( target, port ) {
 
    if( strlen( r ) < 74 ) return FALSE;
 
-   ## Check dialect starts from 3
    if( ord( r[73] ) == 3 ) return TRUE;
 }
 

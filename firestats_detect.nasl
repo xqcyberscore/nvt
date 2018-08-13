@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: firestats_detect.nasl 9721 2018-05-04 06:43:25Z ckuersteiner $
+# $Id: firestats_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # FireStats Detection
 #
@@ -28,8 +28,8 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100226");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9721 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-04 08:43:25 +0200 (Fri, 04 May 2018) $");
+ script_version("$Revision: 10915 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2009-06-21 16:51:00 +0200 (Sun, 21 Jun 2009)");
  script_tag(name:"cvss_base", value:"0.0");
 
@@ -44,9 +44,9 @@ if (description)
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name: "summary", value: "This host is running FireStats, a web statistics system.");
+ script_tag(name:"summary", value:"This host is running FireStats, a web statistics system.");
 
- script_xref(name: "URL", value: "http://firestats.cc/");
+ script_xref(name:"URL", value:"http://firestats.cc/");
 
  exit(0);
 }
@@ -64,9 +64,9 @@ foreach dir (make_list_unique( "/firestats", "/stats", cgi_dirs( port:port))) {
  install = dir;
  if (dir == "/") dir = "";
 
- url = dir + "/tools.php?file_id=reset_password"; 
+ url = dir + "/tools.php?file_id=reset_password";
  req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);  
+ buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
  if (buf == NULL) continue;
 
  if (egrep(pattern: '<title>FireStats</title>', string: buf, icase: TRUE) &&

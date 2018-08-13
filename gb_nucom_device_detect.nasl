@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nucom_device_detect.nasl 10383 2018-07-03 13:42:14Z ckuersteiner $
+# $Id: gb_nucom_device_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # NuCom Device Detection
 #
@@ -28,20 +28,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141262");
-  script_version("$Revision: 10383 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-07-03 15:42:14 +0200 (Tue, 03 Jul 2018) $");
-  script_tag(name: "creation_date", value: "2018-07-03 10:57:39 +0200 (Tue, 03 Jul 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-07-03 10:57:39 +0200 (Tue, 03 Jul 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("NuCom Device Detection");
 
-  script_tag(name: "summary" , value: "Detection of NuCom devices.
+  script_tag(name:"summary", value:"Detection of NuCom devices.
 
 The script sends a connection request to the server and attempts to detect NuCom devices.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -50,7 +50,7 @@ The script sends a connection request to the server and attempts to detect NuCom
   script_require_ports("Services/www", 80, 443, 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "http://www.nucom.es/");
+  script_xref(name:"URL", value:"http://www.nucom.es/");
 
   exit(0);
 }

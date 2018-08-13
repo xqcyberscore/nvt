@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_appserver_io_application_server_detect.nasl 6853 2017-08-04 11:45:08Z santu $
+# $Id: gb_appserver_io_application_server_detect.nasl 10916 2018-08-10 16:01:30Z cfischer $
 #
-# appserver.io Application Server Remote Detect 
+# appserver.io Application Server Remote Detect
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811267");
-  script_version("$Revision: 6853 $");
+  script_version("$Revision: 10916 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-04 13:45:08 +0200 (Fri, 04 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 18:01:30 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-08-02 10:05:20 +0530 (Wed, 02 Aug 2017)");
   script_name("appserver.io Application Server Remote Detect");
 
@@ -55,29 +55,17 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable initialization
-appPort = "";
-req = "";
-rcvRes = "";
-version = "";
-ver = "";
-
-## get port
 appPort = get_http_port(default:9080);
 
-# Check Host Supports PHP
 if(!can_host_php(port:appPort)){
   exit(0);
 }
 
-## send request and receive response
 rcvRes = http_get_cache(item: "/", port: appPort);
 
-## Confirm the application>
 if("Server: appserver" >< rcvRes && rcvRes =~ ">&copy;.*>appserver.io<"
     && "<title>Congratulations! appserver.io" >< rcvRes)
 {
-  ## Grep for the version
   ver = eregmatch(pattern:"appserver/([0-9.-]+) ", string:rcvRes);
 
   if(ver[1])
@@ -89,10 +77,8 @@ if("Server: appserver" >< rcvRes && rcvRes =~ ">&copy;.*>appserver.io<"
     version = "unknown";
   }
 
-  ## Set the KB value
   set_kb_item(name:"appserver/io/ApplicationServer/Installed", value:TRUE);
 
-  ## build cpe and store it as host_detail
   cpe = build_cpe(value:version, exp:"^([ 0-9.]+)", base:"cpe:/a:appserver:io:");
   if(!cpe )
     cpe = "cpe:/a:appserver:io:";

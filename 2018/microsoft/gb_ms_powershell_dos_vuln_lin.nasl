@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powershell_dos_vuln_lin.nasl 9478 2018-04-13 13:28:27Z cfischer $
+# $Id: gb_ms_powershell_dos_vuln_lin.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft PowerShell Core Denial of Service Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:powershell";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813041");
-  script_version("$Revision: 9478 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-0875");
   script_bugtraq_id(103225);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-13 15:28:27 +0200 (Fri, 13 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-03-16 11:09:04 +0530 (Fri, 16 Mar 2018)");
   script_name("Microsoft PowerShell Core Denial of Service Vulnerability (Linux)");
 
@@ -44,10 +44,10 @@ if(description)
   script_tag(name:"vuldetect", value:"Get the installed version with the help
   of detect nvt and check the version is vulnerable or not.");
 
-  script_tag(name:"insight", value:"The flaw exists when .NET Core improperly 
+  script_tag(name:"insight", value:"The flaw exists when .NET Core improperly
   handles specially crafted requests causing a hash collision.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers 
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to cause performance degrade resulting in a denial of service condition.
 
   Impact Level: Application");
@@ -59,9 +59,9 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://github.com/PowerShell/PowerShell/issues/6401");
-  script_xref(name : "URL" , value : "https://github.com/PowerShell/PowerShell/releases/tag/v6.0.2");
-  script_xref(name : "URL" , value : "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-0875");
+  script_xref(name:"URL", value:"https://github.com/PowerShell/PowerShell/issues/6401");
+  script_xref(name:"URL", value:"https://github.com/PowerShell/PowerShell/releases/tag/v6.0.2");
+  script_xref(name:"URL", value:"https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-0875");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pelco_videoxpert_detect.nasl 6661 2017-07-11 03:32:46Z ckuersteiner $
+# $Id: gb_pelco_videoxpert_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # Pelco VideoXpert Detection
 #
@@ -28,20 +28,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106935");
-  script_version("$Revision: 6661 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-11 05:32:46 +0200 (Tue, 11 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2017-07-11 08:49:25 +0700 (Tue, 11 Jul 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-07-11 08:49:25 +0700 (Tue, 11 Jul 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("Pelco VideoXpert Detection");
 
-  script_tag(name: "summary" , value: "Detection of Pelco VideoXpert.
+  script_tag(name:"summary", value:"Detection of Pelco VideoXpert.
 
 The script sends a connection request to the server and attempts to detect Pelco VideoXpert.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -50,7 +50,7 @@ The script sends a connection request to the server and attempts to detect Pelco
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.pelco.com/video-management-system/videoxpert");
+  script_xref(name:"URL", value:"https://www.pelco.com/video-management-system/videoxpert");
 
   exit(0);
 }

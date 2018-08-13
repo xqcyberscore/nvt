@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804475");
-  script_version("$Revision: 6759 $");
+  script_version("$Revision: 10910 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:10:09 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-07-21 12:35:29 +0530 (Mon, 21 Jul 2014)");
   script_name("ZKSoftware WebServer Default Admin Credentials");
 
@@ -45,7 +45,7 @@ if(description)
   Impact Level: Application");
   script_tag(name:"affected", value:"ZKSoftware WebServer");
   script_tag(name:"solution", value:"Change the default credentials.");
-
+  script_tag(name:"solution_type", value:"Mitigation");
   script_xref(name:"URL", value:"http://blog.infobytesec.com/2014/07/perverting-embedded-devices-zksoftware_2920.html");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -62,22 +62,13 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-zkRes = "";
-zkReq = "";
-kPort = 0;
-kBanner = "";
-
-## Get HTTP Port
 kPort = get_http_port(default:80);
 
-## Confirm the application before trying exploit
 kBanner = get_http_banner(port: kPort);
 if(!kBanner || "Server: ZK Web Server" >!< kBanner) exit(0);
 
 host = http_host_name(port:kPort);
 
-## Construct the attack requuest
 postdata = "username=administrator&userpwd=123456";
 zkReq = string("POST /csl/check HTTP/1.1\r\n",
                 "Host: ", host, "\r\n",
@@ -88,7 +79,6 @@ zkReq = string("POST /csl/check HTTP/1.1\r\n",
 ## Send request and receive the response
 zkRes = http_keepalive_send_recv(port:kPort, data:zkReq);
 
-## Confirm the exploit
 if(zkRes =~ "HTTP/1.. 200 OK"  && ">Department Name<" >< zkRes &&
    ">Privilege<" >< zkRes && ">Name<" >< zkRes)
 {

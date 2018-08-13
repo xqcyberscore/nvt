@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_allegro_rompager_detect.nasl 4326 2016-10-24 06:19:49Z cfi $
+# $Id: gb_allegro_rompager_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # Allegro RomPager Detection
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105153");
-  script_version ("$Revision: 4326 $");
+  script_version("$Revision: 10915 $");
   script_name("Allegro RomPager Detection");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-24 08:19:49 +0200 (Mon, 24 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-12-23 10:00:24 +0100 (Tue, 23 Dec 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");

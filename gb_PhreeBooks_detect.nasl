@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_PhreeBooks_detect.nasl 9347 2018-04-06 06:58:53Z cfischer $
+# $Id: gb_PhreeBooks_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # PhreeBooks Detection
 #
@@ -24,16 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This host is running PhreeBooks. PhreeBooks accounting is an open
-source ERP (Enterprise Resource Planning) web-based application written
-for the small business community.";
-
 if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100669");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 9347 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018) $");
+ script_version("$Revision: 10929 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
  script_tag(name:"creation_date", value:"2010-06-10 10:47:44 +0200 (Thu, 10 Jun 2010)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("PhreeBooks Detection");
@@ -44,14 +40,16 @@ if(description)
  script_dependencies("find_service.nasl", "http_version.nasl");
  script_require_ports("Services/www", 80);
  script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.phreebooks.com/");
+ script_tag(name:"summary", value:"This host is running PhreeBooks. PhreeBooks accounting is an open
+source ERP (Enterprise Resource Planning) web-based application written
+for the small business community.");
+ script_xref(name:"URL", value:"http://www.phreebooks.com/");
  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);

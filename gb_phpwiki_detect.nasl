@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpwiki_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_phpwiki_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # PhpWiki Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806033");
-  script_version("$Revision: 6065 $");
+  script_version("$Revision: 10898 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-09-02 11:34:10 +0530 (Wed, 02 Sep 2015)");
   script_name("PhpWiki Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -58,13 +58,10 @@ include("cpe.inc");
 include("host_details.inc");
 
 
-##Get HTTP Port
 port = get_http_port(default:80);
 
-# Check Host Supports PHP
 if( ! can_host_php( port:port ) ) exit(0);
 
-##Iterate over possible paths
 foreach dir( make_list_unique( "/", "/phpwiki", "/wiki", cgi_dirs( port:port ) ) ) {
 
   install = dir;
@@ -73,22 +70,18 @@ foreach dir( make_list_unique( "/", "/phpwiki", "/wiki", cgi_dirs( port:port ) )
   ## Send and receive response
   rcvRes = http_get_cache( item: dir + "/index.php", port:port );
 
-  ## Confirm the application
   if( rcvRes =~ "HTTP/1.. 200" && 'content="PhpWiki' >< rcvRes ) {
 
     version = "unknown";
 
-    ## Grep for the version
     ver = eregmatch( pattern:'PHPWIKI_VERSION" content="([0-9A-Z.]+)', string:rcvRes );
     if( ver[1] ) version = ver[1];
 
-    ## Set the KB value
     tmp_version = version + " under " + install;
-  
+
     set_kb_item( name:"www/" + port + "/PhpWiki", value:tmp_version );
     set_kb_item( name:"PhpWiki/Installed", value:TRUE );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value: version, exp:"^([0-9A-Z.]+)", base:"cpe:/a:phpwiki:phpwiki:" );
     if( ! cpe )
       cpe = "cpe:/a:phpwiki:phpwiki";

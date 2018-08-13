@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilias_detect.nasl 9966 2018-05-25 14:32:54Z cfischer $
+# $Id: gb_ilias_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # ILIAS Detection
 #
@@ -28,17 +28,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140443");
-  script_version("$Revision: 9966 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-25 16:32:54 +0200 (Fri, 25 May 2018) $");
-  script_tag(name: "creation_date", value: "2017-10-20 10:51:43 +0700 (Fri, 20 Oct 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-10-20 10:51:43 +0700 (Fri, 20 Oct 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("ILIAS Detection");
 
-  script_tag(name: "summary" , value: "Detection of ILIAS eLearning.
+  script_tag(name:"summary", value:"Detection of ILIAS eLearning.
 
 The script sends a connection request to the server and attempts to detect ILIAS and to extract its
 version.");
@@ -51,7 +51,7 @@ version.");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.ilias.de");
+  script_xref(name:"URL", value:"https://www.ilias.de");
 
   exit(0);
 }

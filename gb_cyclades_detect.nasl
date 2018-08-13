@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cyclades_detect.nasl 8143 2017-12-15 13:11:11Z cfischer $
+# $Id: gb_cyclades_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Cyclades Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105068");
-  script_version("$Revision: 8143 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:11:11 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10902 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-08-19 11:37:55 +0200 (Tue, 19 Aug 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -94,7 +94,7 @@ foreach url( urls ) {
       match = eregmatch( pattern:'([^ <]+)', string:lines[x] );
       if( ! isnull( match[1] ) ) info[f] = match[1];
     }
-  }  
+  }
 }
 
 if( ! CL || ! info ) exit( 0 );
@@ -107,7 +107,7 @@ if( ! isnull( info[2] ) ) host = info[2];
 if( ! isnull( info[3] ) ) {
   version = eregmatch( pattern:'V_([^ ]+)', string: info[3] );
   if( ! isnull( version[1] ) ) vers = version[1];
-}  
+}
 
 set_kb_item( name:'cyclades/model', value:model );
 set_kb_item( name:'cyclades/fw_version', value:vers );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpBugTracker_detect.nasl 5505 2017-03-07 10:00:18Z teissa $
+# $Id: phpBugTracker_detect.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # phpBugTracker Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100217");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 5505 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
+ script_version("$Revision: 10913 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2009-06-01 13:46:24 +0200 (Mon, 01 Jun 2009)");
  script_tag(name:"cvss_base", value:"0.0");
  script_name("phpBugTracker Detection");
@@ -75,7 +75,6 @@ foreach dir( make_list_unique( "/phpbt", "/bugtracker", "/bugs", cgi_dirs( port:
 
     version = "unknown";
 
-    ### try to get version
     req = http_get( item:dir + "/CHANGELOG", port:port );
     buf = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
 
@@ -86,13 +85,11 @@ foreach dir( make_list_unique( "/phpbt", "/bugtracker", "/bugs", cgi_dirs( port:
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/" + port + "/phpBugTracker", value:tmp_version );
     set_kb_item( name:"phpBugTracker/installed", value:TRUE );
- 
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe( value:version, exp:"^([0-9.]+?)", base:"cpe:/a:benjamin_curtis:phpbugtracker:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:benjamin_curtis:phpbugtracker';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"phpBugTracker",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_niagara_fox_detect.nasl 9702 2018-05-03 06:35:02Z cfischer $
+# $Id: gb_niagara_fox_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Niagara Fox Protocol Detection
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140278");
- script_version ("$Revision: 9702 $");
- script_tag(name: "last_modification", value: "$Date: 2018-05-03 08:35:02 +0200 (Thu, 03 May 2018) $");
- script_tag(name: "creation_date", value: "2017-08-07 10:20:07 +0700 (Mon, 07 Aug 2017)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10902 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2017-08-07 10:20:07 +0700 (Mon, 07 Aug 2017)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Niagara Fox Protocol Detection");
 
- script_tag(name: "summary" , value: "A Niagara Fox Service is running at this host.
+ script_tag(name:"summary", value:"A Niagara Fox Service is running at this host.
 
 The Fox protocol, developed as part of the Niagara framework from Tridium, is most commonly used in building
 automation systems.");
@@ -50,7 +50,7 @@ automation systems.");
  script_dependencies("find_service.nasl");
  script_require_ports(1911);
 
- script_xref(name: "URL", value: "https://www.tridium.com");
+ script_xref(name:"URL", value:"https://www.tridium.com");
 
  exit(0);
 }

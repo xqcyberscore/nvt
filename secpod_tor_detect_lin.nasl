@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tor_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: secpod_tor_detect_lin.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # Tor Version Detection (Linux)
 #
@@ -33,19 +33,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900418");
-  script_version("$Revision: 7823 $");
+  script_version("$Revision: 10898 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-12-31 15:14:17 +0100 (Wed, 31 Dec 2008)");
   script_tag(name:"qod_type", value:"executable_version");
 
   script_name("Tor Version Detection (Linux)");
-  script_tag(name: "summary" , value: "Detection of installed version of Tor.
+  script_tag(name:"summary", value:"Detects the installed version of Tor.
 
   The script logs in via ssh, searches for executable 'tor' and
   queries the found executables via command line option '--version'.");
-  
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
@@ -61,7 +61,6 @@ include("host_details.inc");
 include("ssh_func.inc");
 include("version_func.inc");
 
-## Constant values
 tor_sock = ssh_login_or_reuse_connection();
 if(!tor_sock){
   exit(0);

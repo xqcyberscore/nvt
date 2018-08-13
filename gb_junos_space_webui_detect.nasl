@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_space_webui_detect.nasl 9121 2018-03-17 13:28:53Z cfischer $
+# $Id: gb_junos_space_webui_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
 #
 # Junos Space Web-UI Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105411");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 9121 $");
- script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
+ script_version("$Revision: 10929 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
  script_tag(name:"creation_date", value:"2015-10-19 11:11:38 +0200 (Mon, 19 Oct 2015)");
  script_name("Junos Space Web-UI Detection");
 
- script_tag(name: "summary" , value: "This script performs HTTP based detection of the Junos Space Web-UI.");
+ script_tag(name:"summary", value:"This script performs HTTP based detection of the Junos Space Web-UI.");
 
  script_tag(name:"qod_type", value:"remote_banner");
 
@@ -51,7 +51,7 @@ if (description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 include("host_details.inc");
 
 port = get_http_port( default:443 );

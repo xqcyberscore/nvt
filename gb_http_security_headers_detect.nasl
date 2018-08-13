@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_security_headers_detect.nasl 8141 2017-12-15 12:43:22Z cfischer $
+# $Id: gb_http_security_headers_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # HTTP Security Headers Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112081");
-  script_version("$Revision: 8141 $");
+  script_version("$Revision: 10899 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:43:22 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-13 13:12:41 +0200 (Fri, 13 Oct 2017)");
   script_name("HTTP Security Headers Detection");
   script_category(ACT_GATHER_INFO);
@@ -54,7 +54,7 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("misc_func.inc");
 
 port = get_http_port( default:80 );

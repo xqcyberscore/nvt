@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_click2run_detect_win.nasl 9477 2018-04-13 11:33:30Z santu $
+# $Id: gb_ms_office_click2run_detect_win.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Microsoft Office ClicktoRun Version Detection (Windows)
 #
@@ -28,14 +28,14 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812996");
-  script_version("$Revision: 9477 $");
+  script_version("$Revision: 10905 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-13 13:33:30 +0200 (Fri, 13 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-03-23 08:52:52 +0530 (Fri, 23 Mar 2018)");
   script_name("Microsoft Office ClicktoRun Version Detection (Windows)");
 
-  script_tag(name:"summary" , value:"Detection of installed version of Microsoft
+  script_tag(name:"summary", value:"Detects the installed version of Microsoft
   Office ClicktoRun on Windows.
 
   The script logs in via smb, searches for 'Office ClicktoRun' in the registry
@@ -45,7 +45,7 @@ if (description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -60,7 +60,6 @@ if(!os_arch){
   exit(0);
 }
 
-##Confirm Offiec ClickToRun in installed
 if(!registry_key_exists(key:"SOFTWARE\Microsoft\Office\ClickToRun"))
 {
   if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\Microsoft\Office\ClickToRun")){
@@ -70,7 +69,7 @@ if(!registry_key_exists(key:"SOFTWARE\Microsoft\Office\ClickToRun"))
 
 TMP_OFFICE_LIST = make_list( "^(14\..*)", "cpe:/a:microsoft:office:2010:c2r:", "Microsoft Office Click-to-Run 2010",
                              "^(15\..*)", "cpe:/a:microsoft:office:2013:c2r:", "Microsoft Office Click-to-Run 2013",
-                             "^(16\..*)", "cpe:/a:microsoft:office:2016:c2r:", "Microsoft Office Click-to-Run 2016"); 
+                             "^(16\..*)", "cpe:/a:microsoft:office:2016:c2r:", "Microsoft Office Click-to-Run 2016");
 MAX = max_index(TMP_OFFICE_LIST);
 
 
@@ -105,7 +104,7 @@ foreach key (key_list)
       if("492350f6-3a01-4f97-b9c0-c7c6ddf67d60" >< UpChannel) {
         UpdateChannel = "Monthly Channel";
       }
-      else if("7ffbc6bf-bc32-4f92-8982-f9dd17fd3114" >< UpChannel) 
+      else if("7ffbc6bf-bc32-4f92-8982-f9dd17fd3114" >< UpChannel)
       {
         UpdateChannel = "Semi-Annual Channel"; ##formerly Deferred Channel Supported till July 2018
         if(MSOffVer =~ "(8201|7766|7369|6965|6741|6001)\."){
@@ -126,7 +125,6 @@ foreach key (key_list)
     set_kb_item(name:"MS/Off/C2R/InstallPath", value:MSOffPath);
     set_kb_item(name:"MS/Off/C2R/Ver", value:MSOffVer);
 
-    ## build cpe and store it as host_detail
     for (i = 0; i < MAX-1; i = i + 3)
     {
       cpe = build_cpe(value:MSOffVer, exp:TMP_OFFICE_LIST[i], base:TMP_OFFICE_LIST[i+1]);
@@ -136,7 +134,6 @@ foreach key (key_list)
       app = TMP_OFFICE_LIST[i+2];
     }
 
-    ##Get Platform
     Platform = registry_get_sz(key:key , item:"Platform");
     if(Platform && "x86" >!< Platform && "x64" >< os_arch)
     {

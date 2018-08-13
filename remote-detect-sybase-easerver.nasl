@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: remote-detect-sybase-easerver.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: remote-detect-sybase-easerver.nasl 10901 2018-08-10 14:09:57Z cfischer $
 # Description: This script ensure that the Sybase EAServer is installed and running
 #
 # remote-detect-sybase-easerver.nasl
@@ -25,8 +25,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80006");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6032 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_version("$Revision: 10901 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-09-09 16:54:39 +0200 (Tue, 09 Sep 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Sybase Enterprise Application Server service detection");
@@ -36,19 +36,15 @@ if(description)
   script_dependencies("find_service.nasl");
   script_require_ports("Services/www", 80);
 
-  script_tag(name : "solution" , value : "It's recommended to allow connection to this host only from trusted hosts or networks,
+  script_tag(name:"solution", value:"It's recommended to allow connection to this host only from trusted hosts or networks,
   or disable the service if not used.");
-  script_tag(name : "summary" , value : "The remote host is running the Sybase Enterprise Application Server. 
-  Sybase EAServer is the open application server from Sybase Inc 
+  script_tag(name:"summary", value:"The remote host is running the Sybase Enterprise Application Server.
+  Sybase EAServer is the open application server from Sybase Inc
   an enterprise software and services company exclusively focused on managing and mobilizing information.");
   script_tag(name:"qod_type", value:"remote_banner");
   exit(0);
 
 }
-
-#
-# The script code starts here
-#
 
 include("http_func.inc");
 include("http_keepalive.inc");

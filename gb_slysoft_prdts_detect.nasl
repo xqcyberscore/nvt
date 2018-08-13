@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_slysoft_prdts_detect.nasl 8147 2017-12-15 13:51:17Z cfischer $
+# $Id: gb_slysoft_prdts_detect.nasl 10883 2018-08-10 10:52:12Z cfischer $
 #
 # SlySoft Product(s) Version Detection
 #
@@ -28,23 +28,22 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800391");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8147 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:51:17 +0100 (Fri, 15 Dec 2017) $");
+  script_version("$Revision: 10883 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:52:12 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-16 16:39:16 +0200 (Thu, 16 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SlySoft Product(s) Version Detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
-  script_family("Service detection");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_family("Product detection");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
-  script_tag(name : "summary" , value : "This script detects the installed version of SlySoft Product(s)
+  script_tag(name:"summary", value:"This script detects the installed version of SlySoft Product(s)
   and sets the result in KB.");
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
@@ -52,7 +51,6 @@ include("cpe.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## start script
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
@@ -64,7 +62,6 @@ if(!registry_key_exists(key:"SOFTWARE\SlySoft"))
   }
 }
 
-# Get the Version for AnyDVD
 anydvdPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
                                  "\App Paths\AnyDVD.exe", item:"Path");
 if(anydvdPath)
@@ -75,13 +72,11 @@ if(anydvdPath)
     set_kb_item(name:"Slysoft/Products/Installed", value:TRUE);
     set_kb_item(name:"AnyDVD/Ver", value:anydvdVer);
 
-    ## build cpe and store it as host_detail
     register_and_report_cpe(app:"AnyDVD", ver:anydvdVer, base:"cpe:/a:slysoft:anydvd:",
                             expr:"^([0-9.]+)", insloc:anydvdPath);
   }
 }
 
-# Get the Version for CloneDVD
 clonedvdPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
                                    "\App Paths\CloneDVD2.exe", item:"Path");
 if(clonedvdPath)
@@ -92,7 +87,6 @@ if(clonedvdPath)
     set_kb_item(name:"Slysoft/Products/Installed", value:TRUE);
     set_kb_item(name:"CloneDVD/Ver", value:dvdVer);
 
-    ## build cpe and store it as host_detail
     register_and_report_cpe(app:"CloneDVD", ver:dvdVer, base:"cpe:/a:slysoft:clonedvd:",
                             expr:"^([0-9.]+)", insloc:clonedvdPath);
   }
@@ -107,13 +101,11 @@ else
     set_kb_item(name:"Slysoft/Products/Installed", value:TRUE);
     set_kb_item(name:"CloneDVD/Ver", value:dvdVer);
 
-    ## build cpe and store it as host_detail
     register_and_report_cpe(app:"CloneDVD", ver:dvdVer, base:"cpe:/a:slysoft:clonedvd:",
                             expr:"^([0-9.]+)", insloc:clonedvdPath);
   }
 }
 
-# Get the Version for CloneCD
 clonecdPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
                                   "\App Paths\CloneCD.exe", item:"Path");
 if(clonecdPath)
@@ -124,13 +116,11 @@ if(clonecdPath)
     set_kb_item(name:"Slysoft/Products/Installed", value:TRUE);
     set_kb_item(name:"CloneCD/Ver", value:cdVer);
 
-    ## build cpe and store it as host_detail
     register_and_report_cpe(app:"CloneCD", ver:cdVer, base:"cpe:/a:slysoft:clonecd:",
                             expr:"^([0-9.]+)", insloc:clonecdPath);
   }
 }
 
-# Get the Version for Virtual CloneDrive
 drivePath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
                                 "\App Paths\VCDPrefs.exe", item:"Path");
 if(drivePath)
@@ -141,7 +131,6 @@ if(drivePath)
     set_kb_item(name:"Slysoft/Products/Installed", value:TRUE);
     set_kb_item(name:"VirtualCloneDrive/Ver", value:driveVer);
 
-    ## build cpe and store it as host_detail
     register_and_report_cpe(app:"Virtual CloneDrive", ver:driveVer, base:"cpe:/a:slysoft:virtualclonedrive:",
                             expr:"^([0-9.]+)", insloc:drivePath);
   }

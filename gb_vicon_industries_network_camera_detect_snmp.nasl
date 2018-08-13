@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vicon_industries_network_camera_detect_snmp.nasl 10627 2018-07-25 15:49:36Z mmartin $
+# $Id: gb_vicon_industries_network_camera_detect_snmp.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # Vicon Industries Network Camera Detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107333");
-  script_version("$Revision: 10627 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:49:36 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-23 12:16:49 +0200 (Mon, 23 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,10 +62,10 @@ if( sysdesc =~ "IQinVision" ) {
 
   version = "unknown";
   type    = "unknown";
-  
+
   vers = eregmatch( pattern:"(V|B|Version )(V[0-9.]+)", string:sysdesc, icase:FALSE );
   if( vers[2] ) version = vers[2];
-  
+
   type = eregmatch( pattern:"IQ(eye)?([0578ADMPR])", string:sysdesc, icase:FALSE );
 
   type_list['0'] = "3 Series / 4 Series";
@@ -84,7 +84,7 @@ if( sysdesc =~ "IQinVision" ) {
 
   } else {
     type = "unknown";
-    } 
+    }
 
   set_kb_item( name:"vicon_industries/network_camera/snmp/" + port + "/type", value:type );
   set_kb_item( name:"vicon_industries/network_camera/snmp/" + port + "/version", value:version );

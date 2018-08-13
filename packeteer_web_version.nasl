@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: packeteer_web_version.nasl 8087 2017-12-12 13:12:04Z teissa $
+# $Id: packeteer_web_version.nasl 10888 2018-08-10 12:08:02Z cfischer $
 # Description: Packeteer Web Management Interface Version
 #
 # Authors:
@@ -22,37 +22,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-tag_summary = "It is possible to determine the version of the remote web application. 
-
-Description :
-
-OpenVAS was able to determine the software version of the Packeteer web
-management interface running on the remote host.";
-
 if (description)
     {
     script_oid("1.3.6.1.4.1.25623.1.0.80033");
     script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-    script_version("$Revision: 8087 $");
-    script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
+    script_version("$Revision: 10888 $");
+    script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
     script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
     script_tag(name:"cvss_base", value:"0.0");
-    name="Packeteer Web Management Interface Version";
-    script_name(name);
+  script_name("Packeteer Web Management Interface Version");
 
 
     summary="Tests for Packeteer web interface version";
-
-    family="Web application abuses";
-    script_family(family);
+  script_family("Web application abuses");
 
     script_category(ACT_GATHER_INFO);
     script_tag(name:"qod_type", value:"remote_banner");
     script_copyright("This script is Copyright (c) 2006-2007 nnposter");
     script_dependencies("packeteer_web_login.nasl");
     script_require_keys("bluecoat_packetshaper/installed");
-    script_require_ports("Services/www",80);
-    script_tag(name : "summary" , value : tag_summary);
+    script_require_ports("Services/www", 80, 139, 445);
+    script_tag(name:"summary", value:"It is possible to determine the version of the remote web application.
+
+Description :
+
+OpenVAS was able to determine the software version of the Packeteer web
+management interface running on the remote host.");
     exit(0);
     }
 

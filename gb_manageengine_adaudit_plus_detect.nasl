@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_adaudit_plus_detect.nasl 10016 2018-05-30 06:57:23Z ckuersteiner $
+# $Id: gb_manageengine_adaudit_plus_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # ManageEngine ADAudit Plus Detection
 #
@@ -28,21 +28,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141122");
-  script_version("$Revision: 10016 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-30 08:57:23 +0200 (Wed, 30 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-05-30 11:14:38 +0700 (Wed, 30 May 2018)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10922 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-05-30 11:14:38 +0700 (Wed, 30 May 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("ManageEngine ADAudit Plus Detection");
 
-  script_tag(name: "summary" , value: "Detection of ManageEngine ADAudit Plus.
+  script_tag(name:"summary", value:"Detection of ManageEngine ADAudit Plus.
 
 The script sends a connection request to the server and attempts to detect ManageEngine ADAudit Plus and to
 extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -51,7 +51,7 @@ extract its version.");
   script_require_ports("Services/www", 80, 443, 8081);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.manageengine.com/products/active-directory-audit/");
+  script_xref(name:"URL", value:"https://www.manageengine.com/products/active-directory-audit/");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011717.nasl 9903 2018-05-18 09:08:09Z asteins $
+# $Id: gb_ms_kb4011717.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Office Compatibility Pack Service Pack 3 Multiple RCE Vulnerabilities (KB4011717)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813128");
-  script_version("$Revision: 9903 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-1027", "CVE-2018-1029");
   script_bugtraq_id(103616, 103617);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 11:08:09 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 09:51:50 +0530 (Wed, 11 Apr 2018)");
   script_name("Microsoft Office Compatibility Pack Service Pack 3 Multiple RCE Vulnerabilities (KB4011717)");
 
@@ -43,11 +43,11 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to an error in
-  Microsoft Excel software when the software fails to properly handle objects 
+  Microsoft Excel software when the software fails to properly handle objects
   in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to run arbitrary code in the context of the current user. 
+  to run arbitrary code in the context of the current user.
 
   Impact Level: System/Application");
 
@@ -59,7 +59,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4011717");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4011717");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

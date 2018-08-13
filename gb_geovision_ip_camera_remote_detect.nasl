@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geovision_ip_camera_remote_detect.nasl 8745 2018-02-09 14:30:40Z santu $
+# $Id: gb_geovision_ip_camera_remote_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Geovision Inc. IP Camera Remote Detection
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812758");
-  script_version("$Revision: 8745 $");
+  script_version("$Revision: 10888 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-09 15:30:40 +0100 (Fri, 09 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 17:51:20 +0530 (Thu, 08 Feb 2018)");
   script_name("Geovision Inc. IP Camera Remote Detection");
 
   script_tag(name:"summary", value:"Detection of running version of Geovision
   Inc. IP Camera.
-  
+
   This script sends HTTP GET request and try to ensure the presence of
   Geovision Inc. IP Camera.");
 

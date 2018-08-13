@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sun_java_sys_web_serv_mult_vuln.nasl 9996 2018-05-29 07:18:44Z cfischer $
+# $Id: gb_sun_java_sys_web_serv_mult_vuln.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Sun Java System Web Server Multiple Vulnerabilities
 #
@@ -27,21 +27,21 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.100567");
- script_version("$Revision: 9996 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-29 09:18:44 +0200 (Tue, 29 May 2018) $");
+ script_version("$Revision: 10902 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2010-04-12 18:40:45 +0200 (Mon, 12 Apr 2010)");
- script_bugtraq_id(37874,37910);
- script_cve_id("CVE-2010-0272","CVE-2010-0273", "CVE-2010-0360",
-               "CVE-2010-0361","CVE-2010-0388", "CVE-2010-0389");
+ script_bugtraq_id(37874, 37910);
+ script_cve_id("CVE-2010-0272", "CVE-2010-0273", "CVE-2010-0360",
+               "CVE-2010-0361", "CVE-2010-0388", "CVE-2010-0389");
 
  script_name("Sun Java System Web Server Multiple Vulnerabilities");
 
- script_xref(name : "URL" , value : "http://intevydis.com/sjws_demo.html");
- script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/55812");
- script_xref(name : "URL" , value : "http://intevydis.blogspot.com/2010/01/sun-java-system-web-server-70-admin.html");
- script_xref(name : "URL" , value : "http://intevydis.blogspot.com/2010/01/sun-java-system-web-server-70-webdav.html");
- script_xref(name : "URL" , value : "http://intevydis.blogspot.com/2010/01/sun-java-system-web-server-70u7-trace.html");
- script_xref(name : "URL" , value : "http://intevydis.blogspot.com/2010/01/sun-java-system-web-server-70u7-webdav.html");
+ script_xref(name:"URL", value:"http://intevydis.com/sjws_demo.html");
+ script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/55812");
+ script_xref(name:"URL", value:"http://intevydis.blogspot.com/2010/01/sun-java-system-web-server-70-admin.html");
+ script_xref(name:"URL", value:"http://intevydis.blogspot.com/2010/01/sun-java-system-web-server-70-webdav.html");
+ script_xref(name:"URL", value:"http://intevydis.blogspot.com/2010/01/sun-java-system-web-server-70u7-trace.html");
+ script_xref(name:"URL", value:"http://intevydis.blogspot.com/2010/01/sun-java-system-web-server-70u7-webdav.html");
 
 script_tag(name:"cvss_base", value:"10.0");
 script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,13 +52,13 @@ script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
 script_dependencies("gb_sun_java_sys_web_serv_detect.nasl");
 script_require_ports("Services/www", 8989);
  script_mandatory_keys("java_system_web_server/installed");
- script_tag(name : "impact" , value : "Successful exploitation lets the attackers to discover process memory
+ script_tag(name:"impact", value:"Successful exploitation lets the attackers to discover process memory
 locations or execute arbitrary code in the context of an affected system
 or cause the application to crash via a long URI in an HTTP OPTIONS request.
 
 Impact Level: System/Application");
- script_tag(name : "affected" , value : "Sun Java System Web Server 7.0 Update 7 and prior.");
- script_tag(name : "insight" , value : "- An error exists in WebDAV implementation in webservd and can be exploited
+ script_tag(name:"affected", value:"Sun Java System Web Server 7.0 Update 7 and prior.");
+ script_tag(name:"insight", value:"- An error exists in WebDAV implementation in webservd and can be exploited
   to cause Stack-based buffer overflow via long URI in an HTTP OPTIONS request.
 
 - An unspecified error that can be exploited to cause a heap-based buffer
@@ -72,11 +72,11 @@ Impact Level: System/Application");
 
 - An unspecified error in admin server that can be exploited to cause
   denial of service via an HTTP request that lacks a method token.");
- script_tag(name : "solution" , value : "No known solution was made available for at least one year
+ script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.");
- script_tag(name : "summary" , value : "This host has Sun Java Web Server running which is prone to
+ script_tag(name:"summary", value:"This host has Sun Java Web Server running which is prone to
 Multiple Vulnerabilities.");
  script_tag(name:"solution_type", value:"WillNotFix");
 exit(0);

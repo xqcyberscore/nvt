@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asr_1000_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_cisco_asr_1000_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # Cisco ASR 1000 Router Detection (SNMP)
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105342");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 7236 $");
- script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+ script_version("$Revision: 10908 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2015-09-01 15:55:24 +0200 (Tue, 01 Sep 2015)");
  script_name("Cisco ASR 1000 Router Detection");
 
- script_tag(name: "summary" , value: "This script performs SNMP based detection of Cisco ASR 1000 Router");
+ script_tag(name:"summary", value:"This script performs SNMP based detection of Cisco ASR 1000 Router");
 
  script_tag(name:"qod_type", value:"remote_banner");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vx_search_enterprise_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: gb_vx_search_enterprise_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # VX Search Enterprise Version Detection
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809060");
-  script_version("$Revision: 9633 $");
+  script_version("$Revision: 10891 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-10-10 10:19:35 +0530 (Mon, 10 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("VX Search Enterprise Version Detection");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   VX Search Enterprise.
 
   This script sends HTTP GET request and try to get the version from the
@@ -58,13 +58,6 @@ include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-
-## Variables Initialization
-cpe = "";
-sndReq = "";
-rcvRes = "";
-vxPort  = "";
-vxVer = "";
 
 vxPort = get_http_port(default:80);
 if(!vxPort){

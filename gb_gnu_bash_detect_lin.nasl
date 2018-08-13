@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gnu_bash_detect_lin.nasl 8686 2018-02-06 13:38:19Z emoss $
+# $Id: gb_gnu_bash_detect_lin.nasl 10905 2018-08-10 14:32:11Z cfischer $
 #
 # GNU Bash Version Detection (Linux)
 #
@@ -29,8 +29,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.108258");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 8686 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-06 14:38:19 +0100 (Tue, 06 Feb 2018) $");
+  script_version("$Revision: 10905 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-20 12:31:0 +0200 (Fri, 20 Oct 2017)");
   script_name("GNU Bash Version Detection (Linux)");
   script_category(ACT_GATHER_INFO);
@@ -40,7 +40,7 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name:"summary", value:"Detection of installed version of GNU bash.
+  script_tag(name:"summary", value:"Detects the installed version of GNU bash.
 
   The script logs in via SSH, searches for the executable 'bash' and queries the
   found executables via the command line option '--version'");

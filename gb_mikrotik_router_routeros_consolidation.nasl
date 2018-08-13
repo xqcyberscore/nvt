@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mikrotik_router_routeros_consolidation.nasl 9628 2018-04-26 12:03:30Z santu $
+# $Id: gb_mikrotik_router_routeros_consolidation.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # MikroTik RouterOS Detection Consolidation
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810608");
-  script_version("$Revision: 9628 $");
+  script_version("$Revision: 10901 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 14:03:30 +0200 (Thu, 26 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-03-09 15:28:48 +0530 (Thu, 09 Mar 2017)");
   script_name("MikroTik RouterOS Detection Consolidation");
   script_category(ACT_GATHER_INFO);
@@ -108,7 +108,7 @@ if( ftp_ports = get_kb_list( "mikrotik/ftp/port" ) ) {
   }
 }
 
-if( version != "unknown" ) 
+if( version != "unknown" )
   register_and_report_os( os:"Mikrotik Router OS", version:version, cpe:"cpe:/o:mikrotik:routeros", desc:"MikroTik RouterOS Detection Consolidation", runs_key:"unixoide" );
 else
   register_and_report_os( os:"Mikrotik Router OS", cpe:CPE, desc:"MikroTik RouterOS Detection Consolidation", runs_key:"unixoide" );

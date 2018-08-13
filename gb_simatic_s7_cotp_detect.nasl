@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_cotp_detect.nasl 8729 2018-02-09 03:26:54Z ckuersteiner $
+# $Id: gb_simatic_s7_cotp_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Siemens SIMATIC S7 Device Detection (COTP)
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106099");
- script_version ("$Revision: 8729 $");
- script_tag(name: "last_modification", value: "$Date: 2018-02-09 04:26:54 +0100 (Fri, 09 Feb 2018) $");
- script_tag(name: "creation_date", value: "2016-06-17 17:08:52 +0700 (Fri, 17 Jun 2016)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10922 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2016-06-17 17:08:52 +0700 (Fri, 17 Jun 2016)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Siemens SIMATIC S7 Device Detection (COTP)");
 
- script_tag(name: "summary" , value: "This script performs COTP (Connection-Oriented Transport Protocol)
+ script_tag(name:"summary", value:"This script performs COTP (Connection-Oriented Transport Protocol)
 based detection of Siemens SIMATIC S7 devices.");
 
  script_category(ACT_GATHER_INFO);
@@ -130,7 +130,7 @@ if (!recv || hexstr(recv[5]) != "d0") {
   if (!soc)
     exit(0);
 
-  # Try an alternative request
+  # nb: Try an alternative request
   connectionReq = raw_string(0x03, 0x00, 0x00, 0x16, 0x11, 0xe0, 0x00, 0x00,
                              0x00, 0x05, 0x00, 0xc1, 0x02, 0x01, 0x00, 0xc2,
                              0x02, 0x02, 0x00, 0xc0, 0x01, 0x0a);
@@ -160,7 +160,7 @@ negotiatePdu = raw_string(0x03, 0x00, 0x00, 0x19,	# TPKT header
 
 recv = cotp_send_recv(req: negotiatePdu, soc: soc);
 
-# Check for S7 Comm response ACK
+# nb: S7 Comm response ACK
 if (!recv || hexstr(recv[8] != "03"))
   exit(0);
 
@@ -211,7 +211,7 @@ if (strlen(dataPacket) >= 96) {
   set_kb_item(name: "simatic_s7/cotp/module", value: module);
 }
 
-# Register the service since we can be quite sure that this talks COTP
+# nb: Register the service since we can be quite sure that this talks COTP
 register_service(port: port, proto: "cotp", ipproto: "tcp");
 
 # Read the component identifications to extract the model

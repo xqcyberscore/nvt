@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zycoo_ip_phone_system_detect.nasl 7119 2017-09-13 15:12:25Z cfischer $
+# $Id: gb_zycoo_ip_phone_system_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
-# ZYCOO IP Phone System Detection 
+# ZYCOO IP Phone System Detection
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.106213");
- script_version ("$Revision: 7119 $");
- script_tag(name: "last_modification", value: "$Date: 2017-09-13 17:12:25 +0200 (Wed, 13 Sep 2017) $");
- script_tag(name: "creation_date", value: "2016-08-29 14:37:34 +0700 (Mon, 29 Aug 2016)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10891 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2016-08-29 14:37:34 +0700 (Mon, 29 Aug 2016)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("ZYCOO IP Phone System Detection");
 
- script_tag(name: "summary" , value: "Detection of ZYCOO IP Phone System
+ script_tag(name:"summary", value:"Detection of ZYCOO IP Phone System
 
 The script sends a connection request to the server and attempts to detect the presence of ZYCOO IP Phone System
 and to extract its version.");
@@ -50,7 +50,7 @@ and to extract its version.");
  script_dependencies("find_service.nasl");
  script_require_ports("Services/www", 9999);
 
- script_xref(name: "URL", value: "http://www.zycoo.com/html/IP_Phone_System.html");
+ script_xref(name:"URL", value:"http://www.zycoo.com/html/IP_Phone_System.html");
 
  exit(0);
 }

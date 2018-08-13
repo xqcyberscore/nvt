@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_amt_webui_detect.nasl 6701 2017-07-12 13:04:06Z cfischer $
+# $Id: gb_intel_amt_webui_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Intel Active Management Technology WebUI interface Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105337");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6701 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 15:04:06 +0200 (Wed, 12 Jul 2017) $");
+ script_version("$Revision: 10891 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2015-08-28 16:12:01 +0200 (Fri, 28 Aug 2015)");
  script_name("Intel Active Management Technology WebUI interface Detection");
 
- script_tag(name: "summary" , value: "The script sends a connection request to the server and attempts to extract the version number
+ script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to extract the version number
 from the reply.");
 
  script_tag(name:"qod_type", value:"remote_banner");
@@ -52,7 +52,7 @@ from the reply.");
 
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("host_details.inc");
 
 port = get_http_port( default:16992 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netsparker_detect_win.nasl 8199 2017-12-20 13:37:22Z cfischer $
+# $Id: gb_netsparker_detect_win.nasl 10913 2018-08-10 15:35:20Z cfischer $
 #
 # Netsparker Version Detection (Windows)
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805960");
-  script_version("$Revision: 8199 $");
+  script_version("$Revision: 10913 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 14:37:22 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-08-19 15:48:22 +0530 (Wed, 19 Aug 2015)");
    script_tag(name:"qod_type", value:"registry");
   script_name("Netsparker Version Detection (Windows)");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Netsparker.
 
   The script logs in via smb, searches for 'Netsparker - Web Application Security
@@ -45,7 +45,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -57,26 +57,15 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## variable Initialization
-os_arch = "";
-key_list = "";
-key = "";
-netPath = "";
-netVer = "";
-netName = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(0);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\");
 }
 
-## Check for 64 bit platform
 ## 64 bit App is not available
 else if("x64" >< os_arch){
   key_list =  make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
@@ -90,10 +79,8 @@ foreach key (key_list)
 {
   foreach item (registry_enum_keys(key:key))
   {
-    ##Get Application Name
     netName = registry_get_sz(key:key + item, item:"DisplayName");
 
-    ## Confirm application
     if("Netsparker - Web Application Security Scanner" >< netName)
     {
       netVer = registry_get_sz(key:key + item, item:"DisplayVersion");

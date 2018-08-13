@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_helion_eucalyptus_detect.nasl 4994 2017-01-12 09:33:09Z ckuerste $
+# $Id: gb_hp_helion_eucalyptus_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # HP Helion Eucalyptus Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106511");
-  script_version("$Revision: 4994 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-12 10:33:09 +0100 (Thu, 12 Jan 2017) $");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-01-12 13:24:55 +0700 (Thu, 12 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -50,7 +50,7 @@ Eucalyptus and to extract its version.");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "http://www8.hp.com/us/en/cloud/helion-eucalyptus.html");
+  script_xref(name:"URL", value:"http://www8.hp.com/us/en/cloud/helion-eucalyptus.html");
 
   exit(0);
 }

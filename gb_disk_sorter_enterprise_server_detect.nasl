@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_disk_sorter_enterprise_server_detect.nasl 8147 2017-12-15 13:51:17Z cfischer $
+# $Id: gb_disk_sorter_enterprise_server_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Disk Sorter Enterprise Server Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810300");
-  script_version("$Revision: 8147 $");
+  script_version("$Revision: 10922 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:51:17 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-12-06 10:26:00 +0530 (Tue, 06 Dec 2016)");
   script_name("Disk Sorter Enterprise Server Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -41,7 +41,7 @@ if(description)
   script_mandatory_keys("Host/runs_windows");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"summary", value:"Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Disk Sorter Enterprise Server.
 
   This script sends HTTP GET request and try to get the version from the
@@ -64,7 +64,7 @@ rcvRes = http_get_cache( item:"/login", port:sorterPort );
 if( "Disk Sorter Enterprise Login" >< rcvRes && ">User Name" >< rcvRes && ">Password" >< rcvRes ) {
 
   install = "/";
-  sorterVer = "unknown"; 
+  sorterVer = "unknown";
 
   vers = eregmatch( pattern:">Disk Sorter Enterprise v([0-9.]+)", string:rcvRes );
   if( vers[1] ) sorterVer = vers[1];

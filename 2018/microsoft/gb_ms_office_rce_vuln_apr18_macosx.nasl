@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_rce_vuln_apr18_macosx.nasl 9477 2018-04-13 11:33:30Z santu $
+# $Id: gb_ms_office_rce_vuln_apr18_macosx.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Microsoft Office Remote Code Execution Vulnerability-Apr18 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813136");
-  script_version("$Revision: 9477 $");
+  script_version("$Revision: 10918 $");
   script_cve_id("CVE-2018-1029");
   script_bugtraq_id(103617);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-13 13:33:30 +0200 (Fri, 13 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-12 12:13:26 +0530 (Thu, 12 Apr 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Remote Code Execution Vulnerability-Apr18 (Mac OS X)");
@@ -61,7 +61,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.office.com/en-gb/article/release-notes-for-office-2016-for-mac-ed2da564-6d53-4542-9954-7e3209681a41");
+  script_xref(name:"URL", value:"https://support.office.com/en-gb/article/release-notes-for-office-2016-for-mac-ed2da564-6d53-4542-9954-7e3209681a41");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");

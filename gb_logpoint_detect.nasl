@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_logpoint_detect.nasl 6318 2017-06-13 06:49:17Z ckuersteiner $
+# $Id: gb_logpoint_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
 #
 # LogPoint Detection
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106866");
-  script_version("$Revision: 6318 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-13 08:49:17 +0200 (Tue, 13 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-13 09:55:00 +0700 (Tue, 13 Jun 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10899 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-13 09:55:00 +0700 (Tue, 13 Jun 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("LogPoint Detection");
 
-  script_tag(name: "summary" , value: "Detection of LogPoint.
+  script_tag(name:"summary", value:"Detection of LogPoint.
 
 The script sends a connection request to the server and attempts to detect LogPoint and to extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -49,7 +49,7 @@ The script sends a connection request to the server and attempts to detect LogPo
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.logpoint.com");
+  script_xref(name:"URL", value:"https://www.logpoint.com");
 
   exit(0);
 }

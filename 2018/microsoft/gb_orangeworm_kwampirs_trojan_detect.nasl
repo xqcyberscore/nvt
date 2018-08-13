@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orangeworm_kwampirs_trojan_detect.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_orangeworm_kwampirs_trojan_detect.nasl 10918 2018-08-10 17:32:46Z cfischer $
 #
 # Orangeworm Kwampirs Trojan Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107306");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 10918 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-26 15:23:05 +0100 (Thu, 26 Apr 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"cvss_base", value:"10.0");
@@ -37,7 +37,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows");
   script_dependencies("gb_wmi_access.nasl");
-  script_require_ports(139, 445);
+
   script_mandatory_keys("WMI/access_successful");
 
   script_xref(name:"URL", value:"https://www.symantec.com/blogs/threat-intelligence/orangeworm-targets-healthcare-us-europe-asia");

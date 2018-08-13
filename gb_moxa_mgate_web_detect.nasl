@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_mgate_web_detect.nasl 8145 2017-12-15 13:31:58Z cfischer $
+# $Id: gb_moxa_mgate_web_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
 #
 # Moxa MGate Detection (HTTP)
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105821");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 8145 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-15 14:31:58 +0100 (Fri, 15 Dec 2017) $");
+ script_version("$Revision: 10911 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-07-25 12:58:51 +0200 (Mon, 25 Jul 2016)");
  script_name("Moxa MGate Detection (HTTP)");
 
- script_tag(name: "summary" , value: "This script performs HTTP based detection of Moxa MGate");
+ script_tag(name:"summary", value:"This script performs HTTP based detection of Moxa MGate");
 
  script_tag(name:"qod_type", value:"remote_banner");
 

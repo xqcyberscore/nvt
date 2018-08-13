@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_esxi_init.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: gb_vmware_esxi_init.nasl 10894 2018-08-10 13:09:25Z cfischer $
 #
 # VMware ESXi scan initialization.
 #
@@ -25,30 +25,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This NVT initiate an authenticated scan against ESXi and store some results in KB.";
-
 if (description)
 {
- 
+
  script_tag(name:"cvss_base", value:"0.0");
  script_oid("1.3.6.1.4.1.25623.1.0.103447");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7000 $");
- script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+ script_version("$Revision: 10894 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2012-03-14 14:54:53 +0100 (Wed, 14 Mar 2012)");
  script_name("VMware ESXi scan initialization");
  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
  script_family("VMware Local Security Checks");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esx_web_detect.nasl","gb_esxi_authorization.nasl");
+ script_dependencies("gb_vmware_esx_web_detect.nasl", "gb_esxi_authorization.nasl");
  script_require_ports("Services/www", 443);
- script_mandatory_keys("VMware/ESX/typ/ESXi","VMware/ESX/port");
+ script_mandatory_keys("VMware/ESX/typ/ESXi", "VMware/ESX/port");
 
  script_add_preference(name:"ESXi login name:", type:"entry", value:"");
  script_add_preference(name:"ESXi login password:", type:"password", value:"");
 
- script_tag(name : "summary" , value : tag_summary);
+ script_tag(name:"summary", value:"This NVT initiate an authenticated scan against ESXi and store some results in KB.");
  exit(0);
 }
 
@@ -59,14 +57,14 @@ port = get_kb_item("VMware/ESX/port");
 
 if(!port || !get_port_state(port)) {
   exit(0);
-}  
+}
 
 user = get_kb_item("esxi/login_filled/0");
 if( ! user )
   user = script_get_preference("ESXi login name:");
 
 pass = get_kb_item("esxi/password_filled/0");
-if( ! pass ) 
+if( ! pass )
   pass = script_get_preference("ESXi login password:");
 
 if( ! user || ! pass ) {

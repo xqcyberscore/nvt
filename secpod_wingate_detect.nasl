@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wingate_detect.nasl 5499 2017-03-06 13:06:09Z teissa $
+# $Id: secpod_wingate_detect.nasl 10902 2018-08-10 14:20:55Z cfischer $
 #
 # Qbik WinGate Version Detection
 #
@@ -27,27 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900324");
-  script_version("$Revision: 5499 $");
+  script_version("$Revision: 10902 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-06 14:06:09 +0100 (Mon, 06 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-03-26 11:19:12 +0100 (Thu, 26 Mar 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Qbik WinGate Version Detection");
 
-tag_summary =
-"Detection of installed version of Qbik WinGate.
+
+  script_tag(name:"summary", value:"Detects the installed version of Qbik WinGate.
 
 The script logs in via smb, searches for Qbik WinGate in the registry and
-gets the version from registry.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+gets the version from registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPOd");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -76,7 +73,6 @@ if("x86" >< osArch){
   key_list = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
 }
 
-## Check for 64 bit platform
 else if("x64" >< osArch){
  key_list = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\",
                       "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\");
@@ -97,7 +93,6 @@ foreach key (key_list)
       winGateVer = fetch_file_version(sysPath:appLoc, file_name:"WinGate.exe");
       if(winGateVer)
       {
-        # Set KB for WinGate
         set_kb_item(name:"WinGate/Ver", value:winGateVer);
 
         cpe = build_cpe(value:winGateVer, exp:"^([0-9.]+)", base:"cpe:/a:qbik:wingate:");
@@ -114,7 +109,6 @@ foreach key (key_list)
             cpe = "cpe:/a:qbik:wingate:x64";
 
         }
-        ## Register Product and Build Report
         register_product(cpe:cpe, location:appLoc);
         log_message(data: build_detection_report(app: appName,
                                                  version: winGateVer,

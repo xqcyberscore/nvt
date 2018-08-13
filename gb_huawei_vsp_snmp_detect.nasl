@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_huawei_vsp_snmp_detect.nasl 10253 2018-06-19 10:24:48Z ckuersteiner $
+# $Id: gb_huawei_vsp_snmp_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Huawei Versatile Security Platform (VSP) Detection (SNMP)
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.141199");
- script_version ("$Revision: 10253 $");
- script_tag(name: "last_modification", value: "$Date: 2018-06-19 12:24:48 +0200 (Tue, 19 Jun 2018) $");
- script_tag(name: "creation_date", value: "2018-06-19 16:42:10 +0700 (Tue, 19 Jun 2018)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10888 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2018-06-19 16:42:10 +0700 (Tue, 19 Jun 2018)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Huawei Versatile Security Platform (VSP) Detection (SNMP)");
 
- script_tag(name: "summary" , value: "Detection of Huawei Versatile Security Platform (VSP)
+ script_tag(name:"summary", value:"Detection of Huawei Versatile Security Platform (VSP)
 
 This script performs SNMP based detection of Huawei Versatile Security Platform (VSP).");
 
@@ -50,7 +50,7 @@ This script performs SNMP based detection of Huawei Versatile Security Platform 
  script_require_udp_ports("Services/udp/snmp", 161);
  script_mandatory_keys("SNMP/sysdesc/available");
 
- script_xref(name: "URL", value: "https://e.huawei.com/en/");
+ script_xref(name:"URL", value:"https://e.huawei.com/en/");
 
  exit(0);
 }
@@ -67,7 +67,7 @@ if (!sysdesc)
 # Huawei Storage & Network Security Versatile Security Platform Software
 # Software Version: VSP (R) Software, Version 3.30 USG5300 V100R003C01SPC600
 #
-# Huawei Versatile Security Platform 
+# Huawei Versatile Security Platform
 # Software Version: VRP (R) software, Version 5.30 USG5160 V300R001C00SPC700
 if (sysdesc =~ "Huawei (Storage & Network Security |Symantec )?Versatile Security Platform") {
   mo = eregmatch(pattern: "Version [0-9.]+ ([^ ]+)", string: sysdesc);

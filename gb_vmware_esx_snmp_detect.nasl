@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_esx_snmp_detect.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_vmware_esx_snmp_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
 #
 # VMware ESX detection (SNMP)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103417");
-  script_version("$Revision: 7236 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+  script_version("$Revision: 10896 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-02-14 10:38:50 +0100 (Tue, 14 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -69,13 +69,13 @@ if(!isnull(version[1]) && !isnull(version[3])) {
   vers = version[3];
 
   if(vers > 0) {
-    cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/o:vmware:esx:"); # even if it is an "ESXi", there is just "ESX" in sysdescr. 
+    cpe = build_cpe(value:vers, exp:"^([0-9.]+)", base:"cpe:/o:vmware:esx:"); # even if it is an "ESXi", there is just "ESX" in sysdescr.
     set_kb_item(name:"VMware/GSX-Server/snmp/version",value:vers);
   } else {
     cpe = "cpe:/o:vmware:esx";
     set_kb_item(name:"VMware/GSX-Server/snmp/version",value:"unknown");
     vers = "unknown";
-  }  
+  }
 
   register_and_report_os( os:"VMware ESX(i)", cpe:cpe, banner_type:"SNMP sysdesc", banner:sysdesc, port:port, proto:"udp", desc:SCRIPT_DESC, runs_key:"unixoide" );
 
@@ -85,8 +85,8 @@ if(!isnull(version[1]) && !isnull(version[3])) {
     build = eregmatch(pattern:" build-([0-9]+)",string:sysdesc);
     if(!isnull(build[1])) {
       replace_kb_item(name:"VMware/ESX/build", value:build[1]);
-    }   
-  }  
+    }
+  }
 
   result_txt = 'Detected ' + typ  + ' Version: ';
   result_txt += vers;
@@ -99,4 +99,4 @@ if(!isnull(version[1]) && !isnull(version[3])) {
 
   exit(0);
 
-}  
+}

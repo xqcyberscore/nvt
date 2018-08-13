@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_openoffice_detect_lin.nasl 7823 2017-11-20 08:54:04Z cfischer $
+# $Id: secpod_openoffice_detect_lin.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # OpenOffice Version Detection (Linux)
 #
@@ -24,17 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The script detects the version of OpenOffice and sets the
-  result in KB.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900073";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
+  script_oid("1.3.6.1.4.1.25623.1.0.900073");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 7823 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 09:54:04 +0100 (Mon, 20 Nov 2017) $");
+ script_version("$Revision: 10915 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-01-29 15:16:47 +0100 (Thu, 29 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("OpenOffice Version Detection (Linux)");
@@ -46,7 +41,8 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"The script detects the version of OpenOffice and sets the
+  result in KB.");
   exit(0);
 }
 
@@ -56,7 +52,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
 SCRIPT_DESC = "OpenOffice Version Detection (Linux)";
 
 sock = ssh_login_or_reuse_connection();
@@ -79,11 +74,10 @@ foreach binaryName (openName)
   {
     set_kb_item(name:"OpenOffice/Linux/Ver", value:openVer[0]);
     ssh_close_connection();
-   
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe(value:openVer[0], exp:"^([0-9.]+)", base:"cpe:/a:openoffice:openoffice.org:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
     log_message(data:'Detected OpenOffice version: ' + openVer[0] +
                 '\nLocation: ' + binaryName +

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_campsite_detect.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: secpod_campsite_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
 #
 # Campsite Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900384");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7000 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_version("$Revision: 10906 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-06-30 16:55:49 +0200 (Tue, 30 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Campsite Version Detection");
@@ -66,7 +66,6 @@ foreach dir( make_list_unique( "/", "/campsite", "/campsite/src", "/campsite/imp
   rcvRes = http_get_cache( item: dir + "/admin/login.php", port:port );
   rcvRes2 = http_get_cache( item: dir + "/index.php", port:port );
 
-  # Check for Campsite and Proper Response
   if( ( rcvRes =~ "HTTP/1.. 200" && ( "Campsite" >< rcvRes || "Campware" >< rcvRes || "campware.org" >< rcvRes || "Sourcefabric" >< rcvRes || "sourcefabric.org" >< rcvRes ) ) ||
       ( rcvRes2 =~ "HTTP/1.. 200" && ( 'generator" content="Campsite' >< rcvRes2 || ( "Campsite" >< rcvRes2 || "Campware" >< rcvRes2 && ( "http://campsite.sourcefabric.org" >< rcvRes2
         || "http://www.campware.org" >< rcvRes2 ) ) ) ) ) {
@@ -81,12 +80,10 @@ foreach dir( make_list_unique( "/", "/campsite", "/campsite/src", "/campsite/imp
     tmp_version = version + " under " + install;
     set_kb_item( name:"www/"+ port + "/Campsite", value:tmp_version );
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe( value:version, exp:"^([0-9]\.[0-9]\.[0-9]+)\.?([a-z0-9]+)?", base:"cpe:/a:campware.org:campsite:" );
     if( isnull( cpe ) )
       cpe = 'cpe:/a:campware.org:campsite';
 
-    ## Register Product and Build Report
     register_product( cpe:cpe, location:install, port:port );
 
     log_message( data:build_detection_report( app:"Campsite",

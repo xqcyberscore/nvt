@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_detect_lin.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: gb_foxit_reader_detect_lin.nasl 10901 2018-08-10 14:09:57Z cfischer $
 #
 # Foxit Reader Version Detection (Linux)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809332");
-  script_version("$Revision: 9633 $");
+  script_version("$Revision: 10901 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-11-08 17:20:13 +0530 (Tue, 08 Nov 2016)");
   script_name("Foxit Reader Version Detection (Linux)");
-  script_tag(name : "summary" , value : "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Foxit Reader on Linux.
 
   The script logs in via ssh, searches for foxitreader and queries the
@@ -87,7 +87,7 @@ foreach binaryName(Foxit_Name)
     exit(0);
   }
 
-  ##Replace non readble chars with ''
+  ##Replace non readable chars with ''
   FoxitVer = str_replace(find:raw_string(0x00), replace:"",string:FoxitVer);
 
   ##Match the version

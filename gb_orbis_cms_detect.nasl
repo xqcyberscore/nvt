@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_orbis_cms_detect.nasl 6063 2017-05-03 09:03:05Z teissa $
+# $Id: gb_orbis_cms_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
 #
 # Orbis CMS Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801403");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 6063 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-03 11:03:05 +0200 (Wed, 03 May 2017) $");
+  script_version("$Revision: 10922 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-07-16 19:44:55 +0200 (Fri, 16 Jul 2010)");
   script_name("Orbis CMS Version Detection");
   script_tag(name:"cvss_base", value:"0.0");
@@ -40,7 +40,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary" , value : "This script finds the running Orbis CMS version and
+  script_tag(name:"summary", value:"This script finds the running Orbis CMS version and
   saves the result in KB.");
 
   script_tag(name:"qod_type", value:"remote_banner");
@@ -53,7 +53,6 @@ include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Get HTTP Port
 orbisPort = get_http_port(default:80);
 
 if( !can_host_php( port:orbisPort ) ) exit( 0 );
@@ -68,7 +67,6 @@ foreach path (make_list_unique("/orbis", "/Orbis", "/", cgi_dirs(port:orbisPort)
   sndReq = http_get(item: path + "/admin/login.php", port:orbisPort);
   rcvRes = http_keepalive_send_recv(port:orbisPort, data:sndReq);
 
-  ## Confirm it's Orbis CMS
   if(">Powered by Orbis CMS<" >< rcvRes)
   {
     sndReq = http_get(item: path + "/CHANGELOG.txt", port:orbisPort);
@@ -76,7 +74,6 @@ foreach path (make_list_unique("/orbis", "/Orbis", "/", cgi_dirs(port:orbisPort)
 
     version = "unknown";
 
-    ## Get Version and Set the version
     orbisVer = eregmatch(pattern:"Version ([0-9.]+)", string:rcvRes);
 
     if(orbisVer[1] != NULL) version = orbisVer[1];
@@ -84,7 +81,6 @@ foreach path (make_list_unique("/orbis", "/Orbis", "/", cgi_dirs(port:orbisPort)
     tmp_version = version + " under " + install;
     set_kb_item(name:"www/" + orbisPort + "/Orbis/CMS/Ver", value:tmp_version);
 
-    ## build cpe and store it as host_detail
     cpe = build_cpe(value:version, exp:"^([0-9.]+)", base:"cpe:/a:novo-ws:orbis_cms:");
     if( isnull( cpe ) )
       cpe = 'cpe:/a:novo-ws:orbis_cms';

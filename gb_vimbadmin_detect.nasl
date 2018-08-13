@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vimbadmin_detect.nasl 6330 2017-06-14 05:02:45Z ckuersteiner $
+# $Id: gb_vimbadmin_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # ViMbAdmin Detection
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106871");
-  script_version("$Revision: 6330 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-14 07:02:45 +0200 (Wed, 14 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-14 10:53:56 +0700 (Wed, 14 Jun 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-14 10:53:56 +0700 (Wed, 14 Jun 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
   script_name("ViMbAdmin Detection");
 
-  script_tag(name: "summary" , value: "Detection of ViMbAdmin.
+  script_tag(name:"summary", value:"Detection of ViMbAdmin.
 
 The script sends a connection request to the server and attempts to detect ViMbAdmin and to extract its version.");
-  
+
   script_category(ACT_GATHER_INFO);
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -49,7 +49,7 @@ The script sends a connection request to the server and attempts to detect ViMbA
   script_require_ports("Services/www", 80, 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_xref(name: "URL", value: "https://www.vimbadmin.net/");
+  script_xref(name:"URL", value:"https://www.vimbadmin.net/");
 
   exit(0);
 }

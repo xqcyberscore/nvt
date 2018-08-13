@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_hw_encryption_bitlocker.nasl 10319 2018-06-25 14:34:14Z emoss $
+# $Id: win_hw_encryption_bitlocker.nasl 10893 2018-08-10 13:07:24Z emoss $
 #
 # Check value for Configure use of hardware-based encryption for fixed data drives:
 # Use BitLocker software-based encryption when hardware encryption is not available
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109380");
-  script_version("$Revision: 10319 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:34:14 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 10893 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:07:24 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-25 15:43:08 +0200 (Mon, 25 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -39,16 +39,17 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+	script_add_preference(name:"Value", type:"radio", value:"1;0");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'Configure use of hardware-based encryption for fixed data drives: Use BitLocker 
-software-based encryption when hardware encryption is not available' on Windows 
+  script_tag(name:"summary", value:"This test checks the setting for policy
+'Configure use of hardware-based encryption for fixed data drives: Use BitLocker
+software-based encryption when hardware encryption is not available' on Windows
 hosts (at least Windows 8.1).
 
-The policy setting controls BitLockers use of hardware-based encryption on fixed 
-data drives and specify which encryption algorithms it can use with 
+The policy setting controls BitLockers use of hardware-based encryption on fixed
+data drives and specify which encryption algorithms it can use with
 hardware-based encryption.
-The option determines if BitLockers software-based encryption will be used in case 
+The option determines if BitLockers software-based encryption will be used in case
 hardware-based encryption is not available.");
   exit(0);
 }
@@ -78,13 +79,24 @@ key = 'Software\\Policies\\Microsoft\\FVE';
 item = 'FDVAllowSoftwareEncryptionFailover';
 
 value = registry_get_dword(key:key, item:item, type:type);
+default = script_get_preference('Value');
+
 if(!value){
-  value = 'none';
+  value = '1';
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+if(int(value) == int(default)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nasl_detect_lin.nasl 8087 2017-12-12 13:12:04Z teissa $
+# $Id: secpod_nasl_detect_lin.nasl 10898 2018-08-10 13:38:13Z cfischer $
 #
 # NASL Version Detection (Linux)
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script detect the installed version of NASL and set the
-  result in KB.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900189");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8087 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-12 14:12:04 +0100 (Tue, 12 Dec 2017) $");
+ script_version("$Revision: 10898 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-01-22 12:00:13 +0100 (Thu, 22 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("NASL Version Detection (Linux)");
@@ -44,7 +41,8 @@ if(description)
   script_mandatory_keys("login/SSH/success");
   script_exclude_keys("ssh/no_linux_shell");
 
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script detect the installed version of NASL and set the
+  result in KB.");
   exit(0);
 }
 
@@ -54,8 +52,6 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.900189";
 SCRIPT_DESC = "NASL Version Detection (Linux)";
 
 sock = ssh_login_or_reuse_connection();
@@ -76,11 +72,10 @@ foreach naslBin (paths)
     log_message(data:"NASL version " + naslVer[1] + " running at location "+
                        naslBin +  " was detected on the host");
     ssh_close_connection();
-  
-    ## build cpe and store it as host_detail
+
     cpe = build_cpe(value:naslVer[1], exp:"^([0-9.]+)", base:"cpe:/a:nessus:nessus:");
     if(!isnull(cpe))
-       register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
+       register_host_detail(name:"App", value:cpe, desc:SCRIPT_DESC);
 
     exit(0);
   }

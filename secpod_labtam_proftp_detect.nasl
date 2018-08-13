@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_labtam_proftp_detect.nasl 5505 2017-03-07 10:00:18Z teissa $
+# $Id: secpod_labtam_proftp_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
 #
 # Labtam ProFTP Version Detection
 #
@@ -30,28 +30,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900979");
-  script_version("$Revision: 5505 $");
+  script_version("$Revision: 10890 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-07 11:00:18 +0100 (Tue, 07 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-11-23 07:01:19 +0100 (Mon, 23 Nov 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Labtam ProFTP Version Detection");
 
-  tag_summary =
-"This script detects the installed version of Labtam ProFTP and
+
+  script_tag(name:"summary", value:"This script detects the installed version of Labtam ProFTP and
 sets the result in KB.
 
 The script logs in via smb, searches for ProFTP in the registry
-and gets the version from registry.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+and gets the version from registry.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
   script_require_ports(139, 445);
   exit(0);
@@ -63,28 +60,17 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## variable Initialization
-os_arch = "";
-key_list = "";
-key = "";
-ftpPath = "";
-ftpVer = "";
-insloc = "";
-
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(-1);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Lab-NC\ProFTP",
                        "SOFTWARE\Labtam\ProFtp");
   key_list2 = make_list("SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\ProFTP");
 
 }
-## Check for 64 bit platform, Currently only 32-bit application is available
 else if("x64" >< os_arch)
 {
   ##For some versions the path is not coming like below.
@@ -93,7 +79,6 @@ else if("x64" >< os_arch)
   key_list2 = make_list("SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\App Paths\ProFTP");
 }
 
-##Confirm application
 if(!registry_key_exists(key:"SOFTWARE\Lab-NC\ProFTP")){
   if(!registry_key_exists(key:"SOFTWARE\Labtam\ProFtp")){
     if(!registry_key_exists(key:"SOFTWARE\Wow6432Node\Lab-NC\ProFTP")){
@@ -116,7 +101,6 @@ foreach key (key_list)
     {
       ftpVer = item;
 
-      ##Try to get Path
       foreach key1 (key_list2)
       {
         ftpPath = registry_get_sz(key:key1, item:"Path");
@@ -129,7 +113,6 @@ foreach key (key_list)
       {
         set_kb_item(name:"Labtam/ProFTP/Ver", value:ftpVer);
 
-        ## build cpe and store it as host_detail
         cpe = build_cpe(value:item, exp:"^([0-9.]+)", base:"cpe:/a:labtam-inc:proftp:");
         if(isnull(cpe))
           cpe = "cpe:/a:labtam-inc:proftp:";

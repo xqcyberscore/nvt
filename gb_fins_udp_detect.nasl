@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fins_udp_detect.nasl 8236 2017-12-22 10:28:23Z cfischer $
+# $Id: gb_fins_udp_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
 #
 # Factory Interface Network Service (FINS) Detection (UDP)
 #
@@ -28,17 +28,17 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140538");
- script_version ("$Revision: 8236 $");
- script_tag(name: "last_modification", value: "$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
- script_tag(name: "creation_date", value: "2017-11-24 15:03:31 +0700 (Fri, 24 Nov 2017)");
- script_tag(name: "cvss_base", value: "0.0");
- script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+ script_version("$Revision: 10891 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2017-11-24 15:03:31 +0700 (Fri, 24 Nov 2017)");
+ script_tag(name:"cvss_base", value:"0.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name: "qod_type", value: "remote_banner");
+ script_tag(name:"qod_type", value:"remote_banner");
 
  script_name("Factory Interface Network Service (FINS) Detection (UDP)");
 
- script_tag(name: "summary" , value: "A Factory Interface Network Service (FINS) over UDP is running at this host.
+ script_tag(name:"summary", value:"A Factory Interface Network Service (FINS) over UDP is running at this host.
 
 Factory Interface Network Service, is a network protocol used by Omron PLCs. The FINS communications service was
 developed by Omron to provide a consistent way for PLCs and computers on various networks to communicate.");
@@ -49,7 +49,7 @@ developed by Omron to provide a consistent way for PLCs and computers on various
  script_family("Service detection");
  script_require_udp_ports(9600);
 
- script_xref(name: "URL", value: "http://www.omron.com/");
+ script_xref(name:"URL", value:"http://www.omron.com/");
 
  exit(0);
 }

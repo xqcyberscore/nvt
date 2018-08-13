@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cambium_cnpilot_snmp_detect.nasl 8238 2017-12-22 10:33:38Z ckuersteiner $
+# $Id: gb_cambium_cnpilot_snmp_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
 #
 # Cambium Networks cnPilot Detection (SNMP)
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140629");
-  script_version("$Revision: 8238 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-12-22 11:33:38 +0100 (Fri, 22 Dec 2017) $");
-  script_tag(name: "creation_date", value: "2017-12-22 16:10:50 +0700 (Fri, 22 Dec 2017)");
-  script_tag(name: "cvss_base", value: "0.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 10888 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-22 16:10:50 +0700 (Fri, 22 Dec 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -49,7 +49,7 @@ This script performs SNMP based detection of Cambium Networks cnPilot.");
   script_require_udp_ports("Services/udp/snmp", 161);
   script_mandatory_keys("SNMP/sysdesc/available");
 
-  script_xref(name: "URL", value: "https://www.cambiumnetworks.com/products/wifi/");
+  script_xref(name:"URL", value:"https://www.cambiumnetworks.com/products/wifi/");
 
   exit(0);
 }

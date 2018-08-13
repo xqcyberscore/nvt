@@ -1,20 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: opencart_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: opencart_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
 #
 # OpenCart Detection
 #
 # Authors:
 # Michael Meyer
-#
-# Updated By : Sooraj KS <kssooraj@secpod.com> on 2010-06-15
-#   Added code for detecting version from /admin/index.php
-#
-# Updated By : Madhuri D <dmadhuri@secpod.com> on 2012-04-23
-#   Updated according to CR57
-#
-# Updated By : Shakeel <bshakeel@secpod.com> on 2013-12-09
-#   According to new style script_tags.
 #
 # Copyright:
 # Copyright (C) 2009 Greenbone Networks GmbH
@@ -36,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100178");
-  script_version("$Revision: 9633 $");
+  script_version("$Revision: 10915 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenCart Detection");
 
-  script_tag(name : "summary" , value : "Detection of installed version of OpenCart,free online store system.
+  script_tag(name:"summary", value:"Detects the installed version of OpenCart, free online store system.
 
   The script sends a request to access the 'admin/index.php' and attempts to
   extract the version number from the reply.");

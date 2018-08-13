@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_vrealize_operations_manager_web_detect.nasl 6065 2017-05-04 09:03:08Z teissa $
+# $Id: gb_vmware_vrealize_operations_manager_web_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
 #
 # VMware vRealize Operations Manager Detection
 #
@@ -30,12 +30,12 @@ if (description)
  script_oid("1.3.6.1.4.1.25623.1.0.105862");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version ("$Revision: 6065 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-04 11:03:08 +0200 (Thu, 04 May 2017) $");
+ script_version("$Revision: 10908 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2016-08-11 15:53:38 +0200 (Thu, 11 Aug 2016)");
  script_name("VMware vRealize Operations Manager Detection");
 
- script_tag(name: "summary" , value: "This Script performs HTTP based detection of VMware vRealize Operations Manager");
+ script_tag(name:"summary", value:"This Script performs HTTP based detection of VMware vRealize Operations Manager");
 
  script_tag(name:"qod_type", value:"remote_banner");
 

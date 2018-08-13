@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_space_webui_default_credentials.nasl 6207 2017-05-24 09:04:07Z teissa $
+# $Id: gb_junos_space_webui_default_credentials.nasl 10910 2018-08-10 15:10:09Z mmartin $
 #
 # Junos Space Web Management Interface Default Credentials
 #
@@ -28,11 +28,11 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105412");
- script_version("$Revision: 6207 $");
+ script_version("$Revision: 10910 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Junos Space Web Management Interface Default Credentials");
- script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:10:09 +0200 (Fri, 10 Aug 2018) $");
  script_tag(name:"creation_date", value:"2015-10-19 12:48:28 +0200 (Mon, 19 Oct 2015)");
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
@@ -40,13 +40,14 @@ if (description)
  script_dependencies("gb_junos_space_webui_detect.nasl");
  script_require_ports("Services/www", 80);
 
- script_tag(name: "summary" , value: 'The remote Junos Space Web Management Interface is prone to a default account authentication bypass vulnerability.');
+ script_tag(name:"summary", value: 'The remote Junos Space Web Management Interface is prone to a default account authentication bypass vulnerability.');
 
- script_tag(name: "impact" , value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
+ script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
 
- script_tag(name: "vuldetect" , value: 'Try to login with default credentials.');
- script_tag(name: "insight" , value: 'It was possible to login with default credentials: super/juniper123');
- script_tag(name: "solution" , value: 'Change the password.');
+ script_tag(name:"vuldetect", value: 'Try to login with default credentials.');
+ script_tag(name:"insight", value: 'It was possible to login with default credentials: super/juniper123');
+ script_tag(name:"solution", value: 'Change the password.');
+ script_tag(name:"solution_type", value:"Mitigation");
  script_mandatory_keys("junos_space_webui/installed");
 
  script_tag(name:"qod_type", value:"exploit");
@@ -59,6 +60,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 cpe = 'cpe:/a:juniper:junos_space';
+
 
 if( ! port = get_app_port( cpe:cpe ) ) exit( 0 );
 
@@ -94,23 +96,23 @@ len = strlen( data );
 host = http_host_name( port:port );
 
 req = 'POST /mainui/j_security_check HTTP/1.1\r\n' +
-      'Host: ' + host + '\r\n' + 
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' + 
+      'Host: ' + host + '\r\n' +
+      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
-      'Accept-Language: de,en-US;q=0.7,en;q=0.3\r\n' + 
+      'Accept-Language: de,en-US;q=0.7,en;q=0.3\r\n' +
       'Accept-Encoding: identity\r\n' +
-      'DNT: 1\r\n' + 
+      'DNT: 1\r\n' +
       'Referer: http://' + host + '/mainui/\r\n' +
-      'Cookie: ' + co + '\r\n' + 
+      'Cookie: ' + co + '\r\n' +
       'Connection: close\r\n' +
       'Content-Type: application/x-www-form-urlencoded\r\n' +
       'Content-Length: ' + len + '\r\n' +
-      '\r\n' + 
+      '\r\n' +
       data;
 
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-req = 'GET /mainui/ HTTP/1.1\r\n' + 
+req = 'GET /mainui/ HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
       'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
