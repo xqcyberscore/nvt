@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linux_rootkit_nginx_iframe_injection.nasl 6697 2017-07-12 11:40:05Z cfischer $
+# $Id: gb_linux_rootkit_nginx_iframe_injection.nasl 10941 2018-08-13 14:33:26Z asteins $
 #
 # 64-bit Debian Linux Rootkit with nginx Doing iFrame Injection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802045");
-  script_version("$Revision: 6697 $");
+  script_version("$Revision: 10941 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-12-03 13:43:19 +0530 (Mon, 03 Dec 2012)");
   script_name("64-bit Debian Linux Rootkit with nginx Doing iFrame Injection");
 
@@ -55,8 +55,8 @@ if(description)
   nginx.");
   script_tag(name:"insight", value:"64-bit Debian Squeeze Linux Rootkit in combination with nginx
   launching iframe injection attacks.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
   features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The host is running Debian Squeeze Linux Rootkit with nginx and
@@ -71,29 +71,19 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-port = 0;
-banner = "";
-bad_req = "";
-bad_res = "";
-
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Confirm the application before trying exploit
 banner = get_http_banner(port: port);
 if(!banner || "Server: nginx" >!< banner){
   exit(0);
 }
 
-## Construct BAD Request with wrong host header
 bad_req = string( "GET / HTTP/1.1\r\n",
                   "Hostttt ", get_host_name(), "\r\n\r\n");
 
 ## Send bad request
 bad_res = http_keepalive_send_recv(port:port, data:bad_req);
 
-## Check iframe is injected by the rootkit or not
 if("HTTP/1.1 400 Bad Request" >< bad_res && "Server: nginx" >< bad_res &&
    egrep(pattern:"<iframe\s+src=.*</iframe>", string:bad_res, icase:TRUE)){
   security_message(port:port);

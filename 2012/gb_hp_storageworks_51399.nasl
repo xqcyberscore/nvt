@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_storageworks_51399.nasl 5977 2017-04-19 09:02:22Z teissa $
+# $Id: gb_hp_storageworks_51399.nasl 10941 2018-08-13 14:33:26Z asteins $
 #
 # HP StorageWorks Default Accounts and Directory Traversal Vulnerabilities
 #
@@ -29,12 +29,12 @@ if(description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.103431");
  script_bugtraq_id(51399);
- script_cve_id("CVE-2011-4788","CVE-2012-0697");
+ script_cve_id("CVE-2011-4788", "CVE-2012-0697");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 5977 $");
+ script_version("$Revision: 10941 $");
  script_name("HP StorageWorks Default Accounts and Directory Traversal Vulnerabilities");
- script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
  script_tag(name:"creation_date", value:"2012-02-21 13:19:06 +0100 (Tue, 21 Feb 2012)");
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51399");
@@ -46,7 +46,7 @@ if(description)
  script_category(ACT_ATTACK);
  script_family("Default Accounts");
  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl","ssh_detect.nasl","telnetserver_detect_type_nd_version.nasl");
+ script_dependencies("gb_get_http_banner.nasl", "ssh_detect.nasl", "telnetserver_detect_type_nd_version.nasl");
  script_require_ports("Services/www", 80, "Services/ssh", 22, "Services/telnet", 23);
  script_mandatory_keys("WindRiver-WebServer/banner");
 

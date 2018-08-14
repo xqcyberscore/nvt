@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2011-0012.nasl 10639 2018-07-26 13:36:15Z cfischer $
+# $Id: gb_VMSA-2011-0012.nasl 10941 2018-08-13 14:33:26Z asteins $
 #
 # VMSA-2011-0012.3 VMware ESXi and ESX updates to third party libraries and ESX Service Console
 #
@@ -43,15 +43,15 @@ if(description)
                 "CVE-2011-1495");
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:N");
-  script_version("$Revision: 10639 $");
+  script_version("$Revision: 10941 $");
   script_name("VMSA-2011-0012.3 VMware ESXi and ESX updates to third party libraries and ESX Service Console");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 15:36:15 +0200 (Thu, 26 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-03-16 12:42:13 +0100 (Fri, 16 Mar 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("VMware Local Security Checks");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("gb_vmware_esxi_init.nasl");
-  script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
+  script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
 
   script_tag(name:"summary", value:"The remote ESXi is missing one or more security related Updates from VMSA-2011-0012.3.
 

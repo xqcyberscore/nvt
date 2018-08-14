@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netcharts_server_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
+# $Id: gb_netcharts_server_detect.nasl 10935 2018-08-13 07:46:25Z cfischer $
 #
 # NetCharts Server Version Detection
 #
@@ -27,13 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805642");
-  script_version("$Revision: 10922 $");
+  script_version("$Revision: 10935 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-13 09:46:25 +0200 (Mon, 13 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-06-03 12:12:21 +0530 (Wed, 03 Jun 2015)");
-  script_tag(name:"qod_type", value:"remote_banner");
   script_name("NetCharts Server Version Detection");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 8001);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"Detects the installed version of
   Visual Mining NetCharts Server.
@@ -41,55 +46,42 @@ if(description)
   This script sends HTTP GET request and try to get the version from the
   response, and sets the result in KB.");
 
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_family("Product detection");
-  script_dependencies("find_service.nasl");
-  script_require_ports("Services/www", 8001);
+  script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
-
-##
-### Code Starts Here
-##
 
 include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-ncPort = get_http_port(default:8001);
-if(!ncPort){
-  exit(0);
-}
+port = get_http_port( default:8001 );
 
-##Server Listening on root directory
-##Send Request and Receive Response
-sndReq = http_get(item:string("/Documentation/misc/about.jsp"), port:ncPort);
-rcvRes = http_keepalive_send_recv(port:ncPort, data:sndReq);
+# nb: The Server is Listening on root directory
+res = http_get_cache( item:"/Documentation/misc/about.jsp", port:port );
 
-if(rcvRes && "NetCharts Server" >< rcvRes && "Visual Mining" >< rcvRes)
-{
-  Ver = eregmatch(pattern:"Version.*[0-9.]+.*&copy", string:rcvRes);
-  ncVer = eregmatch(pattern:"([0-9.]+)", string:Ver[0]);
-  if(!ncVer){
-    ncVer = "Unknown";
-  } else{
-    ncVer = ncVer[0];
-  }
+if( res && "NetCharts Server" >< res && "Visual Mining" >< res ) {
 
-  set_kb_item(name:"www/" + ncPort + "/", value:ncVer);
-  set_kb_item(name:"netchart/installed",value:TRUE);
+  install = "/";
+  version = "unknown";
 
-  cpe = build_cpe(value:ncVer, exp:"^([0-9.]+)", base:"cpe:/a:visual_mining:netcharts_server:");
-  if(isnull(cpe))
+  vers = eregmatch( pattern:"Version.*([0-9.]+).*&copy", string:res );
+  if( ! isnull( vers[1] ) ) version = vers[1];
+
+  set_kb_item( name:"netchart/installed", value:TRUE );
+
+  cpe = build_cpe( value:version, exp:"^([0-9.]+)", base:"cpe:/a:visual_mining:netcharts_server:" );
+  if( isnull( cpe ) )
     cpe = "cpe:/a:visual_mining:netcharts_server";
 
-  register_product(cpe:cpe, location:dir, port:ncPort);
-  log_message(data: build_detection_report(app:"Visual Mining/NetChart",
-                                           version:ncVer,
-                                           install:"/",
-                                           cpe:cpe,
-                                           concluded:ncVer),
-                                           port:ncPort);
+  register_product( cpe:cpe, location:install, port:port, service:"www" );
+  log_message( data:build_detection_report( app:"Visual Mining/NetChart",
+                                            version:version,
+                                            install:install,
+                                            cpe:cpe,
+                                            concluded:vers[0] ),
+                                            port:port );
 }
+
+exit( 0 );

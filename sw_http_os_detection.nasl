@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 10792 2018-08-06 12:08:30Z cfischer $
+# $Id: sw_http_os_detection.nasl 10934 2018-08-13 07:19:58Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 10792 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 14:08:30 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 10934 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-13 09:19:58 +0200 (Mon, 13 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -628,16 +628,6 @@ function check_http_banner( port ) {
       return banner;
     }
 
-    if( egrep( pattern:"^Server: Linux", string:banner, icase:TRUE ) ) {
-      version = eregmatch( pattern:"Server: Linux(/|\-)([0-9.x]+)", string:banner, icase:TRUE );
-      if( ! isnull( version[2] ) ) {
-        register_and_report_os( os:"Linux", version:version[2], cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      } else {
-        register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      }
-      return banner;
-    }
-
     # Runs only on Unix-like OS. Keep down below to catch more detailed OS infos above first.
     # e.g. Server: nginx + Phusion Passenger 5.1.12
     # Server: nginx/1.8.1 + Phusion Passenger 5.0.27
@@ -683,6 +673,21 @@ function check_http_banner( port ) {
       } else {
         return; # No OS info so just skip this IceWarp banner...
       }
+    }
+
+    # nb: Keep at the bottom to catch all the more detailed patterns above...
+    # Server: Compal Broadband Networks, Inc/Linux/2.6.39.3 UPnP/1.1 MiniUPnPd/1.7
+    # SERVER: Linux/3.0.8, UPnP/1.0, Portable SDK for UPnP devices/1.6.6
+    # SERVER: LINUX-2.6 UPnP/1.0 MiniUPnPd/1.5
+    # Server: Linux, WEBACCESS/1.0, DIR-850L Ver 1.10WW
+    if( egrep( pattern:"^Server: .*Linux", string:banner, icase:TRUE ) ) {
+      version = eregmatch( pattern:"Server: .*Linux(/|\-)([0-9.x]+)", string:banner, icase:TRUE );
+      if( ! isnull( version[2] ) ) {
+        register_and_report_os( os:"Linux", version:version[2], cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      } else {
+        register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      }
+      return banner;
     }
     register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"http_banner", port:port );
   }

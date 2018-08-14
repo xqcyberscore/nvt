@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_toolspack_backdoor_2012.nasl 10028 2018-05-30 13:13:04Z cfischer $
+# $Id: gb_wordpress_toolspack_backdoor_2012.nasl 10941 2018-08-13 14:33:26Z asteins $
 #
 # Backdoored WordPress ToolsPack Plugin
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:wordpress:wordpress";
 
 if (description)
 {
- script_xref(name : "URL" , value : "http://www.wordpress.org");
- script_xref(name : "URL" , value : "http://blog.sucuri.net/2012/02/new-wordpress-toolspack-plugin.html");
+ script_xref(name:"URL", value:"http://www.wordpress.org");
+ script_xref(name:"URL", value:"http://blog.sucuri.net/2012/02/new-wordpress-toolspack-plugin.html");
  script_oid("1.3.6.1.4.1.25623.1.0.103445");
- script_version("$Revision: 10028 $");
+ script_version("$Revision: 10941 $");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
  script_name("Backdoored WordPress ToolsPack Plugin");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-30 15:13:04 +0200 (Wed, 30 May 2018) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
  script_tag(name:"creation_date", value:"2012-03-08 10:26:15 +0100 (Thu, 08 Mar 2012)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -47,13 +47,13 @@ if (description)
  script_require_ports("Services/www", 80);
  script_mandatory_keys("wordpress/installed");
 
- script_tag(name : "summary" , value : "The WordPress ToolsPack Plugin on this host contains a Backdoor.");
- script_tag(name : "impact" , value : "Attackers can exploit this issue to execute arbitrary code within the
+ script_tag(name:"summary", value:"The WordPress ToolsPack Plugin on this host contains a Backdoor.");
+ script_tag(name:"impact", value:"Attackers can exploit this issue to execute arbitrary code within the
 context of the affected webserver process.");
- script_tag(name : "solution" , value : "Remove the plugin and do a full review of the website - check all your files,
+ script_tag(name:"solution", value:"Remove the plugin and do a full review of the website - check all your files,
 update WordPress, change passwords, etc.");
 
- script_tag(name:"solution_type", value:"NoneAvailable");
+ script_tag(name:"solution_type", value:"Workaround");
 
  exit(0);
 }

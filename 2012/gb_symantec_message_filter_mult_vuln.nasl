@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_message_filter_mult_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_symantec_message_filter_mult_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
 #
 # Symantec Message Filter Multiple Vulnerabilities
 #
@@ -25,7 +25,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Symantec Message Filter is prone to multiple vulnerabilities.
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103501");
+  script_bugtraq_id(54136, 54135, 54134, 54133);
+  script_cve_id("CVE-2012-0300", "CVE-2012-0301", "CVE-2012-0302", "CVE-2012-0303");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 10941 $");
+
+  script_name("Symantec Message Filter Multiple Vulnerabilities");
+
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-06-27 12:18:39 +0200 (Wed, 27 Jun 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"The vendor has released an advisory and fixes. Please see the
+references for more information.");
+  script_tag(name:"summary", value:"Symantec Message Filter is prone to multiple vulnerabilities.
 
 1. A remote information-disclosure vulnerability.
 
@@ -35,7 +59,7 @@ information that may aid in further attacks.
 2. A session-fixation vulnerability.
 
 Successfully exploiting this issue, an attacker can hijack an arbitrary session
-and gain unauthorized access to the affected application. 
+and gain unauthorized access to the affected application.
 
 3. An unspecified cross-site scripting vulnerability because it fails to
 sufficiently sanitize user-supplied input.
@@ -49,56 +73,29 @@ launch other attacks.
 
 Exploiting this issue may allow a remote attacker to perform certain
 administrative actions and gain unauthorized access to the affected application.
-Other attacks are also possible. 
+Other attacks are also possible.
 
-Symantec Message Filter 6.3 is vulnerable.";
-
-tag_solution = "The vendor has released an advisory and fixes. Please see the
-references for more information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103501");
- script_bugtraq_id(54136,54135,54134,54133);
- script_cve_id("CVE-2012-0300","CVE-2012-0301","CVE-2012-0302","CVE-2012-0303");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 9352 $");
-
- script_name("Symantec Message Filter Multiple Vulnerabilities");
-
-
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-06-27 12:18:39 +0200 (Wed, 27 Jun 2012)");
- script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54136");
- script_xref(name : "URL" , value : "http://www.symantec.com");
- script_xref(name : "URL" , value : "http://www.symantec.com/business/support/index?page=content&id=TECH191487");
- exit(0);
+Symantec Message Filter 6.3 is vulnerable.");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54136");
+  script_xref(name:"URL", value:"http://www.symantec.com");
+  script_xref(name:"URL", value:"http://www.symantec.com/business/support/index?page=content&id=TECH191487");
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
+
 port = get_http_port(default:80);
 if(!get_port_state(port))exit(0);
 
-url = '/brightmail/index.jsp'; 
+url = '/brightmail/index.jsp';
 
 if(http_vuln_check(port:port, url:url,pattern:"<title>Symantec.*Message Filter.*login</title>")) {
 
   url = '/brightmail/about.jsp';
- 
+
   # http://www.symantec.com/business/support/index?page=content&id=TECH191487
   #
   # Verification
@@ -113,14 +110,14 @@ if(http_vuln_check(port:port, url:url,pattern:"<title>Symantec.*Message Filter.*
   #  Expected results:
   #
   #   1. You are redirected to the user logon page.
-  #   2. An error page with Symantec logo is displayed indicating "Bad Request". 
+  #   2. An error page with Symantec logo is displayed indicating "Bad Request".
 
   if(http_vuln_check(port:port, url:url,pattern:"About Symantec",extra_check:make_list("iframe.*legal.html"),check_header:TRUE)) {
     security_message(port:port);
     exit(0);
-  }  
+  }
 
-} 
+}
 
 exit(0);
 

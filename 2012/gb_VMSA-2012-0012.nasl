@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2012-0012.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_VMSA-2012-0012.nasl 10941 2018-08-13 14:33:26Z asteins $
 #
 # VMSA-2012-0012 VMware ESXi update addresses several security issues.
 #
@@ -25,7 +25,25 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote ESXi is missing one or more security related Updates from VMSA-2012-0012.
+
+if (description)
+{
+ script_oid("1.3.6.1.4.1.25623.1.0.103517");
+ script_cve_id("CVE-2010-4008", "CVE-2010-4494", "CVE-2011-0216", "CVE-2011-1944", "CVE-2011-2821", "CVE-2011-2834", "CVE-2011-3905", "CVE-2011-3919", "CVE-2012-0841");
+ script_tag(name:"cvss_base", value:"10.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+ script_version("$Revision: 10941 $");
+ script_name("VMSA-2012-0012 VMware ESXi update addresses several security issues.");
+
+
+ script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+ script_tag(name:"creation_date", value:"2012-07-13 17:02:01 +0100 (Fri, 13 Jul 2012)");
+ script_category(ACT_GATHER_INFO);
+ script_family("VMware Local Security Checks");
+ script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+ script_dependencies("gb_vmware_esxi_init.nasl");
+ script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
+ script_tag(name:"summary", value:"The remote ESXi is missing one or more security related Updates from VMSA-2012-0012.
 
 Summary
 VMware ESXi update addresses several security issues.
@@ -41,30 +59,10 @@ a. ESXi update to third party component libxml2
 The libxml2 third party library has been updated which addresses multiple security issues.
 
 Solution
-Apply the missing patch(es).";
-
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103517");
- script_cve_id("CVE-2010-4008","CVE-2010-4494","CVE-2011-0216","CVE-2011-1944","CVE-2011-2821","CVE-2011-2834","CVE-2011-3905","CVE-2011-3919","CVE-2012-0841");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 9352 $");
- script_name("VMSA-2012-0012 VMware ESXi update addresses several security issues.");
-
-
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-07-13 17:02:01 +0100 (Fri, 13 Jul 2012)");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esxi_init.nasl");
- script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
- script_tag(name : "summary" , value : tag_summary);
+Apply the missing patch(es).");
  script_tag(name:"qod_type", value:"package");
  script_tag(name:"solution_type", value:"VendorFix");
- script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2012-0012.html");
+ script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2012-0012.html");
  exit(0);
 }
 

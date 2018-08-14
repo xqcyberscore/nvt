@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-080.nasl 8649 2018-02-03 12:16:43Z teissa $
+# $Id: secpod_ms12-080.nasl 10941 2018-08-13 14:33:26Z asteins $
 #
 # MS Exchange Server Remote Code Execution Vulnerabilities (2784126)
 #
@@ -24,40 +24,21 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow an attacker to cause a denial of service
-  condition or run arbitrary code as LocalService on the affected Exchange
-  server.
-  Impact Level: System/Application";
-tag_affected = "Microsoft Exchange Server 2007 Service Pack 3
-  Microsoft Exchange Server 2010 Service Pack 1
-  Microsoft Exchange Server 2010 Service Pack 2";
-tag_insight = "The flaws are due to
-  - Error in the WebReady Document Viewing when used to preview a
-    specially crafted file through Outlook Web Access.
-  - Improper handling of RSS feeds rendering the Information Store service
-    unresponsive until the process is forcibly terminated and corrupt the
-    databases.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-077";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS12-080.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902697");
-  script_version("$Revision: 8649 $");
+  script_version("$Revision: 10941 $");
   script_cve_id("CVE-2012-3214", "CVE-2012-3217", "CVE-2012-4791");
-  script_bugtraq_id(55977 ,55993 ,56836);
+  script_bugtraq_id(55977, 55993, 56836);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-12-12 12:01:07 +0530 (Wed, 12 Dec 2012)");
   script_name("MS Exchange Server Remote Code Execution Vulnerabilities (2784126)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/51474");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1027669");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1027857");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms12-077");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/51474");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1027669");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1027857");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms12-077");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
@@ -66,11 +47,24 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow an attacker to cause a denial of service
+  condition or run arbitrary code as LocalService on the affected Exchange
+  server.
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Microsoft Exchange Server 2007 Service Pack 3
+  Microsoft Exchange Server 2010 Service Pack 1
+  Microsoft Exchange Server 2010 Service Pack 2");
+  script_tag(name:"insight", value:"The flaws are due to
+  - Error in the WebReady Document Viewing when used to preview a
+    specially crafted file through Outlook Web Access.
+  - Improper handling of RSS feeds rendering the Information Store service
+    unresponsive until the process is forcibly terminated and corrupt the
+    databases.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://technet.microsoft.com/en-us/security/bulletin/ms12-077");
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+  Microsoft Bulletin MS12-080.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -83,14 +77,7 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 
-## Variables Initialization
-key = "";
-version = "";
-exeVer = "";
-exchangePath = "";
 
-
-## Confirm the application
 if(!registry_key_exists(key:"SOFTWARE\Microsoft\Exchange")){
   exit(0);
 }
@@ -104,18 +91,16 @@ foreach version (make_list("Microsoft Exchange v14", "Microsoft Exchange"))
 
   if(exchangePath)
   {
-    ## Get Version from ExSetup.exe file version
     exeVer = fetch_file_version(sysPath:exchangePath,
              file_name:"Bin\ExSetup.exe");
 
     if(exeVer)
     {
-      ## Check for ExSetup.exe version
       if(version_is_less(version:exeVer, test_version:"8.3.297.2") ||
          (exeVer =~ "^(14.0|14.1)" && version_is_less(version:exeVer, test_version:"14.1.438.0")) ||
          version_in_range(version:exeVer, test_version:"14.2", test_version2:"14.2.328.9"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }

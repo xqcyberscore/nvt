@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_database_open_access_vuln.nasl 8230 2017-12-22 08:51:56Z cfischer $
+# $Id: secpod_database_open_access_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
 #
 # Database Open Access Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902799");
-  script_version("$Revision: 8230 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 09:51:56 +0100 (Fri, 22 Dec 2017) $");
+  script_version("$Revision: 10941 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-03-01 17:10:53 +0530 (Thu, 01 Mar 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -43,7 +43,14 @@ if(description)
 
   script_xref(name:"URL", value:"https://www.pcisecuritystandards.org/security_standards/index.php?id=pci_dss_v1-2.pdf");
 
-  tag_affected = "- MySQL/MariaDB
+  script_tag(name:"impact", value:"Successful exploitation could allow an attacker to obtain the sensitive
+  information of the database.
+
+  Impact Level: Application");
+  script_tag(name:"insight", value:"Do not restricting direct access of databases to the remote systems.");
+  script_tag(name:"summary", value:"The host is running a Database server and is prone to information
+  disclosure vulnerability.");
+  script_tag(name:"affected", value:"- MySQL/MariaDB
 
   - IBM DB2
 
@@ -53,25 +60,8 @@ if(description)
 
   - Oracle Database
 
-  - Microsoft SQL Server";
-
-  tag_solution = "Restrict Database access to remote systems.";
-
-  tag_impact = "Successful exploitation could allow an attacker to obtain the sensitive
-  information of the database.
-
-  Impact Level: Application";
-
-  tag_insight = "Do not restricting direct access of databases to the remote systems.";
-
-  tag_summary = "The host is running a Database server and is prone to information
-  disclosure vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  - Microsoft SQL Server");
+  script_tag(name:"solution", value:"Restrict Database access to remote systems.");
 
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_banner");

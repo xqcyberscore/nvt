@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_CoDeSys_56300.nasl 7818 2017-11-20 03:52:36Z ckuersteiner $
+# $Id: gb_CoDeSys_56300.nasl 10941 2018-08-13 14:33:26Z asteins $
 #
 # CODESYS Multiple Vulnerabilities
 #
@@ -27,32 +27,33 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103599");
- script_cve_id("CVE-2012-6069", "CVE-2012-6068");
- script_bugtraq_id(56300);
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 7818 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103599");
+  script_cve_id("CVE-2012-6069", "CVE-2012-6068");
+  script_bugtraq_id(56300);
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 10941 $");
 
- script_name("CoDeSys Directory Traversal Vulnerability");
+  script_name("CoDeSys Directory Traversal Vulnerability");
 
- script_xref(name: "URL", value: "http://www.securityfocus.com/bid/56300");
- script_xref(name: "URL", value: "http://www.digitalbond.com/2012/10/25/new-project-basecamp-tools-for-codesys-200-vendors-affected/");
- script_xref(name: "URL", value: "http://www.3s-software.com/");
- script_xref(name: "URL", value: "https://ics-cert.us-cert.gov/advisories/ICSA-13-011-01");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56300");
+  script_xref(name:"URL", value:"http://www.digitalbond.com/2012/10/25/new-project-basecamp-tools-for-codesys-200-vendors-affected/");
+  script_xref(name:"URL", value:"http://www.3s-software.com/");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-13-011-01");
 
- script_tag(name:"last_modification", value:"$Date: 2017-11-20 04:52:36 +0100 (Mon, 20 Nov 2017) $");
- script_tag(name:"creation_date", value:"2012-10-29 18:46:26 +0100 (Mon, 29 Oct 2012)");
- script_category(ACT_ATTACK);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-10-29 18:46:26 +0100 (Mon, 29 Oct 2012)");
+  script_category(ACT_ATTACK);
 
- script_tag(name:"qod_type", value:"exploit");
- script_family("General");
+  script_tag(name:"qod_type", value:"exploit");
+  script_family("General");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_codesys_detect.nasl");
- script_mandatory_keys("codesys/detected");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("gb_codesys_detect.nasl");
+  script_mandatory_keys("codesys/detected");
 
- script_tag(name: "summary", value: "The Runtime Toolkit in CODESYS Runtime System 2.3.x and 2.4.x does not
+  script_tag(name:"summary", value:"The Runtime Toolkit in CODESYS Runtime System 2.3.x and 2.4.x does not
 require authentication, which allows remote attackers to execute commands via the command-line interface in the
 TCP listener service or transfer files via requests to the TCP listener service. (CVE-2012-6068)
 
@@ -60,8 +61,9 @@ The CoDeSys Runtime Toolkit's file transfer functionality does not perform input
 attacker to access files and directories outside the intended scope. This allows an attacker to upload and
 download any file on the device. This could allow the attacker to affect the availability, integrity, and
 confidentiality of the device. (CVE-2012-6069)");
+  script_tag(name:"solution", value:"Update to the latest available version.");
 
- exit(0);
+  exit(0);
 }
 
 include("byte_func.inc");
@@ -89,11 +91,9 @@ lile_query = raw_string(0xcc, 0xcc, 0x01, 0x00, cmd_len_little, 0x00, 0x00, 0x00
 bige_query = raw_string(0xcc, 0xcc, 0x01, 0x00, cmd_len_big, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                         0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x23, cmd_len_big, 0x00, cmd);
 
-# try first little endian request
 send(socket: soc, data: lile_query);
 recv = recv(socket: soc, length: 512);
 
-# try big endian request
 if (!recv) {
   send(socket: soc, data: bige_query);
   recv = recv(socket: soc, length: 512);

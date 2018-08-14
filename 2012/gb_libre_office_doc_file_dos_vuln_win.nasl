@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libre_office_doc_file_dos_vuln_win.nasl 10138 2018-06-08 12:45:06Z asteins $
+# $Id: gb_libre_office_doc_file_dos_vuln_win.nasl 10941 2018-08-13 14:33:26Z asteins $
 #
 # LibreOffice 'DOC' File Denial of Service Vulnerability (Windows)
 #
@@ -27,35 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802557");
-  script_version("$Revision: 10138 $");
+  script_version("$Revision: 10941 $");
   script_cve_id("CVE-2011-2713");
   script_bugtraq_id(49969);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:45:06 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-01-10 16:22:59 +0530 (Tue, 10 Jan 2012)");
   script_name("LibreOffice 'DOC' File Denial of Service Vulnerability (Windows)");
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2011/Oct/21");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id?102615");
-  script_xref(name : "URL" , value : "http://www.libreoffice.org/advisories/CVE-2011-2713/");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2011/Oct/21");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id?102615");
+  script_xref(name:"URL", value:"http://www.libreoffice.org/advisories/CVE-2011-2713/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_libreoffice_detect_portable_win.nasl");
   script_require_keys("LibreOffice/Win/Ver");
-  script_tag(name : "insight" , value : "The flaw is due to an error in 'OpenOffice.org'. A remote user can create
+  script_tag(name:"insight", value:"The flaw is due to an error in 'OpenOffice.org'. A remote user can create
   a specially crafted Word document that, when loaded by the target user, will
   trigger an out-of-bounds read and potentially execute arbitrary code on the
   target system.");
-  script_tag(name : "solution" , value : "Upgrade to LibreOffice version 3.4.3 or later.
+  script_tag(name:"solution", value:"Upgrade to LibreOffice version 3.4.3 or later.
   For updates refer to http://www.libreoffice.org/download/");
-  script_tag(name : "summary" , value : "This host is installed with LibreOffice and is prone to denial of
+  script_tag(name:"summary", value:"This host is installed with LibreOffice and is prone to denial of
   service vulnerability.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary code
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
   on the target system or cause denial of service.
   Impact Level: Application.");
-  script_tag(name : "affected" , value : "LibreOffice version 3.3.0 and 3.4.0 through 3.4.2");
+  script_tag(name:"affected", value:"LibreOffice version 3.3.0 and 3.4.0 through 3.4.2");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
