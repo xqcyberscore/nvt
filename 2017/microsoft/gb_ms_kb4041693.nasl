@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4041693.nasl 7470 2017-10-18 07:59:52Z cfischer $
+# $Id: gb_ms_kb4041693.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4041693)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812022");
-  script_version("$Revision: 7470 $");
+  script_version("$Revision: 10967 $");
   script_cve_id("CVE-2017-11762", "CVE-2017-8694", "CVE-2017-8717", "CVE-2017-8718",
                 "CVE-2017-11763", "CVE-2017-11765", "CVE-2017-8727", "CVE-2017-11771",
                 "CVE-2017-11772", "CVE-2017-11779", "CVE-2017-11780", "CVE-2017-11781",
@@ -41,7 +41,7 @@ if(description)
                     101122, 101099, 101128, 101274);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-18 09:59:52 +0200 (Wed, 18 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 09:41:11 +0530 (Wed, 11 Oct 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4041693)");
 
@@ -56,51 +56,51 @@ if(description)
   - A spoofing vulnerability in the Windows implementation of wireless networking (KRACK)
 
   - An error when Windows improperly handles calls to Advanced Local Procedure
-    Call (ALPC). 
+    Call (ALPC).
 
   - An error in the Microsoft Server Block Message (SMB) when an attacker sends
-    specially crafted requests to the server. 
+    specially crafted requests to the server.
 
   - An error in the Windows kernel that could allow an attacker to retrieve
     information that could lead to a Kernel Address Space Layout Randomization
-    (ASLR) bypass. 
+    (ASLR) bypass.
 
   - An error in certain Trusted Platform Module (TPM) chipsets.
 
   - An error when the Windows kernel improperly handles objects in memory.
 
   - An error when the Windows font library improperly handles specially crafted
-    embedded fonts. 
+    embedded fonts.
 
   - An error when the Windows kernel-mode driver fails to properly handle objects
-    in  memory. 
+    in  memory.
 
   - An error when Internet Explorer improperly accesses objects in memory.
 
   - An error in the Microsoft JET Database Engine that could allow remote code
-    execution on an affected system. 
+    execution on an affected system.
 
   - An error when the Windows Graphics Component improperly handles objects in
     memory.
 
   - An error in the way that the scripting engine handles objects in memory in
-    Internet Explorer. 
+    Internet Explorer.
 
   - An error when Internet Explorer improperly accesses objects in memory via
-    the Microsoft Windows Text Services Framework. 
+    the Microsoft Windows Text Services Framework.
 
-  - An error in Windows Domain Name System (DNS) DNSAPI. 
+  - An error in Windows Domain Name System (DNS) DNSAPI.
 
   - An error when Windows Search improperly handles objects in memory.
 
   - An error when Windows Search handles objects in memory.
 
   - An error in Microsoft Windows storage when it fails to validate an
-    integrity-level check. 
+    integrity-level check.
 
   - An error in the way that the Windows Graphics Device Interface (GDI) handles
     objects in memory, allowing an attacker to retrieve information from a targeted
-     system. 
+     system.
 
   - An error in the way that the Windows SMB Server handles certain requests.");
 
@@ -109,7 +109,7 @@ if(description)
   security context of the local system, cause the affected system to crash, gain
   access to potentially sensitive information, take control of an affected system
   and gain the same user rights as the current user.
-  
+
   Impact Level: System");
 
   script_tag(name:"affected", value:"Microsoft Windows 8.1 for 32-bit/x64
@@ -123,11 +123,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4041693");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4041693");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -138,16 +139,10 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-fileVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
@@ -159,7 +154,6 @@ if(!fileVer){
   exit(0);
 }
 
-## Check for gdi32.dll version
 if(version_is_less(version:fileVer, test_version:"6.3.9600.18818"))
 {
   report = 'File checked:     ' + sysPath + "\gdi32.dll" + '\n' +

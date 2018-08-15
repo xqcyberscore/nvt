@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_priv_esc_vuln.nasl 7992 2017-12-05 08:34:22Z teissa $
+# $Id: gb_asp_dotnet_core_priv_esc_vuln.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Microsoft ASP.NET Core Elevation Of Privilege Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812098");
-  script_version("$Revision: 7992 $");
+  script_version("$Revision: 10967 $");
   script_cve_id("CVE-2017-11879");
   script_bugtraq_id(101713);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-11-20 14:14:33 +0530 (Mon, 20 Nov 2017)");
   script_name("Microsoft ASP.NET Core Elevation Of Privilege Vulnerability");
 
@@ -48,7 +48,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw exists due to an open redirect
   vulnerability in ASP.NET Core.");
 
-  script_tag(name:"impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain elevated privileges on affected system.
 
   Impact Level: System/Application.");
@@ -68,7 +68,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Windows");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
-  script_require_ports(139, 445);
+
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3213551.nasl 7347 2017-10-05 10:01:37Z cfischer $
+# $Id: gb_ms_kb3213551.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Microsoft Office 2016 Remote Code Execution Vulnerability (KB3213551)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811788");
-  script_version("$Revision: 7347 $");
+  script_version("$Revision: 10967 $");
   script_cve_id("CVE-2017-8744");
   script_bugtraq_id(100748);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-05 12:01:37 +0200 (Thu, 05 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-04 13:06:13 +0530 (Wed, 04 Oct 2017)");
   script_name("Microsoft Office 2016 Remote Code Execution Vulnerability (KB3213551)");
 
@@ -47,7 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   who successfully exploited the vulnerability could use a specially crafted file
-  to perform actions in the security context of the current user. 
+  to perform actions in the security context of the current user.
 
   Impact Level: System/Application");
 
@@ -60,7 +60,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3213551");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3213551");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -76,31 +76,22 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable initialization
-officeVer = "";
-offPath = "";
-offdllVer = "";
-
-## Check for office 2016
 officeVer = get_kb_item("MS/Office/Ver");
 if(!officeVer || !(officeVer =~ "^(16\.)")){
   exit(0);
 }
 
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(0);
 }
 
-## Check for 32 bit platform
 if("x86" >< os_arch){
   key_list = make_list("SOFTWARE\Microsoft\Office\16.0\Common\FilesPaths\");
 }
 
-## Check for 64-bit OS
 else if("x64" >< os_arch){
-  key_list = make_list("SOFTWARE\Wow6432Node\Microsoft\Office\16.0\Common\FilesPaths\", 
+  key_list = make_list("SOFTWARE\Wow6432Node\Microsoft\Office\16.0\Common\FilesPaths\",
                        "SOFTWARE\Microsoft\Office\16.0\Common\FilesPaths\");
 }
 
@@ -117,13 +108,11 @@ foreach key (key_list)
 
     offPath = offPath[0] + "TEXTCONV";
 
-    ## Get Version from wpft532.cnv
     offdllVer = fetch_file_version(sysPath:offPath, file_name:"wpft532.cnv");
     if(!offdllVer){
       continue;
     }
-    
-    ##Check for vulnerable version
+
     if(offdllVer =~ "^(2012\.1600\.)" && version_is_less(version:offdllVer, test_version:"2012.1600.8326.2107"))
     {
       report = 'File checked:     ' + offPath + "\wpft532.cnv" + '\n' +

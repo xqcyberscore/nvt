@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2018-10_2018-10_win.nasl 9923 2018-05-22 13:23:32Z cfischer $
+# $Id: gb_mozilla_firefox_esr_mfsa_2018-10_2018-10_win.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
 #
 # Mozilla Firefox ESR Security Updates(mfsa_2018-10_2018-10)-Windows
 #
@@ -29,33 +29,33 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813058");
-  script_version("$Revision: 9923 $");
+  script_version("$Revision: 10965 $");
   script_cve_id("CVE-2018-5148");
   script_bugtraq_id(103506);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:23:32 +0200 (Tue, 22 May 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-03-27 16:44:32 +0530 (Tue, 27 Mar 2018)");
   script_name("Mozilla Firefox ESR Security Updates(mfsa_2018-10_2018-10)-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with
+  script_tag(name:"summary", value:"This host is installed with
   Mozilla Firefox ESR and is prone to an use after free vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to a use after free
+  script_tag(name:"insight", value:"The flaw exists due to a use after free
   error in the compositor during certain graphics operations when a raw pointer
   is used instead of a reference counted one.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow an
+  script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to crash the affected application and denying service to legitimate
   users.
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox ESR version before 52.7.3 on Windows.");
+  script_tag(name:"affected", value:"Mozilla Firefox ESR version before 52.7.3 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox ESR version 52.7.3
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version 52.7.3
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: microsoft-iis-nlst-stack-overflow.nasl 5002 2017-01-13 10:17:13Z teissa $
+# $Id: microsoft-iis-nlst-stack-overflow.nasl 10957 2018-08-14 13:26:50Z mmartin $
 #
 # Microsoft IIS FTPd NLST stack overflow
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100952");
-  script_version("$Revision: 5002 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-13 11:17:13 +0100 (Fri, 13 Jan 2017) $");
+  script_version("$Revision: 10957 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:26:50 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-09-02 01:41:39 +0200 (Wed, 02 Sep 2009)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -60,7 +60,7 @@ if(description)
   We recommend you mitigate in the following manner:
   Filter inbound traffic to 21/tcp to only known management hosts
   Consider removing directories writable by 'anonymous'");
-
+  script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mfsa_2018-06_2018-07_win.nasl 9923 2018-05-22 13:23:32Z cfischer $
+# $Id: gb_mozilla_firefox_esr_mfsa_2018-06_2018-07_win.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
 #
 # Mozilla Firefox ESR Security Updates(mfsa_2018-06_2018-07)-Windows
 #
@@ -29,21 +29,21 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813037");
-  script_version("$Revision: 9923 $");
+  script_version("$Revision: 10965 $");
   script_cve_id("CVE-2018-5127", "CVE-2018-5129", "CVE-2018-5130", "CVE-2018-5131",
                 "CVE-2018-5144", "CVE-2018-5125", "CVE-2018-5145");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:23:32 +0200 (Tue, 22 May 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-03-15 11:51:52 +0530 (Thu, 15 Mar 2018)");
   script_name("Mozilla Firefox ESR Security Updates(mfsa_2018-06_2018-07)-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox ESR
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox ESR
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - A buffer overflow error when manipulating SVG animatedPathSegList through script.
 
@@ -58,15 +58,15 @@ if(description)
 
   - Memory safety bugs fixed.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to crash the affected system, conduct sandbox escape, access sensitive data
   and bypass security restrictions.
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox ESR version before 52.7 on Windows.");
+  script_tag(name:"affected", value:"Mozilla Firefox ESR version before 52.7 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox ESR version 52.7
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version 52.7
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");

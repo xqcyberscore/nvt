@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_9296823b6c_cantata_fc27.nasl 10480 2018-07-11 10:23:47Z santu $
+# $Id: gb_fedora_2018_9296823b6c_cantata_fc27.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
 #
 # Fedora Update for cantata FEDORA-2018-9296823b6c
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874778");
-  script_version("$Revision: 10480 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-11 12:23:47 +0200 (Wed, 11 Jul 2018) $");
+  script_version("$Revision: 10965 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-07 06:06:11 +0200 (Sat, 07 Jul 2018)");
   script_cve_id("CVE-2018-12562", "CVE-2018-12561", "CVE-2018-12560", "CVE-2018-12559");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for cantata FEDORA-2018-9296823b6c");
   script_tag(name:"summary", value:"Check the version of cantata");

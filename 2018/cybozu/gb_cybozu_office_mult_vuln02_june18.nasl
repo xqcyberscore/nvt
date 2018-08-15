@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cybozu_office_mult_vuln02_june18.nasl 10569 2018-07-23 09:01:04Z cfischer $
+# $Id: gb_cybozu_office_mult_vuln02_june18.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
 #
 # Cybozu Office Multiple Vulnerabilities-02 June18
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:cybozu:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813618");
-  script_version("$Revision: 10569 $");
+  script_version("$Revision: 10965 $");
   script_cve_id("CVE-2018-0565", "CVE-2018-0566", "CVE-2018-0567");
-  script_tag(name:"cvss_base", value:"3.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 11:01:04 +0200 (Mon, 23 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-27 11:07:13 +0530 (Wed, 27 Jun 2018)");
   script_name("Cybozu Office Multiple Vulnerabilities-02 June18");
 

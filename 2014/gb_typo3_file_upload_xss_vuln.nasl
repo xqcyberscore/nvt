@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_file_upload_xss_vuln.nasl 6995 2017-08-23 11:52:03Z teissa $
+# $Id: gb_typo3_file_upload_xss_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
 #
 # TYPO3 File Upload Cross Site Scripting Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803985");
-  script_version("$Revision: 6995 $");
+  script_version("$Revision: 10952 $");
   script_cve_id("CVE-2008-2717", "CVE-2008-2718");
   script_bugtraq_id(29657);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-24 16:42:36 +0530 (Tue, 24 Dec 2013)");
   script_name("TYPO3 File Upload Cross Site Scripting Vulnerabilities");
 
@@ -43,8 +43,7 @@ if(description)
   code and script code.
 
   Impact Level: System/Application");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of detect NVT and check the version
-  is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple error exists in the application,
    - Insufficiently restrictive default fileDenyPattern for Apache which allows
    bypass security restrictions and upload configuration files such as
@@ -54,6 +53,7 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.0.9 or 4.1.7 or 4.2.1 or later, or apply the patch
   mentioned in the below link
   http://typo3.org/teams/security/security-bulletins/typo3-core/TYPO3-20080611-1");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with TYPO3 and is prone to file upload and cross site
   scripting vulnerabilities.");
   script_tag(name:"affected", value:"TYPO3 versions before 4.0.9, 4.1.0 to 4.1.7 and 4.2.0");
@@ -75,25 +75,17 @@ if(description)
 include("http_func.inc");
 include("version_func.inc");
 include("host_details.inc");
-include("global_settings.inc");
 
-## Variable initialisation
-typoPort = "";
-typoVer = "";
 
-## Get Application HTTP Port
 if(!typoPort = get_app_port(cpe:CPE)) exit(0);
 
-## Get the banner
 banner = get_http_banner(port:typoPort);
 
-## Confirm the server as the vulnerability exits with Apache server
 if(!banner && "Apache" >!< banner) exit(0);
 
 if(typoVer = get_app_version(cpe:CPE, port:typoPort))
 {
   if( typoVer !~ "[0-9]+\.[0-9]+\.[0-9]+" ) exit( 0 ); # Version is not exact enough
-  ## Check for version
   if(version_is_less(version:typoVer, test_version:"4.0.9") ||
      version_in_range(version:typoVer, test_version:"4.1.0", test_version2:"4.1.7") ||
      version_is_equal(version:typoVer, test_version:"4.2.0"))

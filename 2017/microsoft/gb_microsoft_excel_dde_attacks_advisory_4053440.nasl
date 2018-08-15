@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_excel_dde_attacks_advisory_4053440.nasl 7747 2017-11-14 06:11:31Z santu $
+# $Id: gb_microsoft_excel_dde_attacks_advisory_4053440.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Microsoft Excel 'Dynamic Data Exchange (DDE)' Attacks Security Advisory (4053440)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812074");
-  script_version("$Revision: 7747 $");
+  script_version("$Revision: 10967 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-14 07:11:31 +0100 (Tue, 14 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-11-10 10:53:35 +0530 (Fri, 10 Nov 2017)");
   script_name("Microsoft Excel 'Dynamic Data Exchange (DDE)' Attacks Security Advisory (4053440)");
 
@@ -53,8 +53,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Excel 2016
+  script_tag(name:"affected", value:"Microsoft Excel 2016
   Microsoft Excel 2013
   Microsoft Excel 2010
   Microsoft Excel 2007");
@@ -66,7 +65,7 @@ if(description)
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/4053440");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/4053440");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -124,7 +123,7 @@ workbooklinkwarning = registry_get_dword(key:keyOff, item:"WorkbookLinkWarnings"
 ##DDE disabled == 2
 if(workbooklinkwarning == "2"){
   exit(0);
-} else 
+} else
 {
   ##If item not present or workbooklinkwarning == 0, then DDE enabled
   report = report_fixed_ver(installed_version: excelVer, fixed_version: "Disable DDE", install_path:excelPath);

@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871726");
-  script_version("$Revision: 6690 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:51:07 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 10965 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-12-05 09:52:36 +0100 (Mon, 05 Dec 2016)");
   script_cve_id("CVE-2016-9079");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for thunderbird RHSA-2016:2850-01");
   script_tag(name: "summary", value: "Check the version of thunderbird");

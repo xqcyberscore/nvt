@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nmap.nasl 10888 2018-08-10 12:08:02Z cfischer $
+# $Id: nmap.nasl 10958 2018-08-14 13:49:12Z cfischer $
 #
 # Nmap (NASL wrapper)
 #
@@ -31,7 +31,7 @@
 # <http://nmap.org>
 
 # nb: Keep above the description part as it is used there
-include("gos_funcs.inc");
+include("misc_func.inc");
 include("version_func.inc");
 
 # nb: includes in the description phase won't work anymore from GOS 4.2.11 (OpenVAS TBD)
@@ -52,8 +52,8 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14259");
-  script_version("$Revision: 10888 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 10958 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:49:12 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -103,7 +103,6 @@ if(description)
 
 include("host_details.inc");
 include("network_func.inc");
-#nb: misc_func.inc is included down below only when needed
 
 if( get_kb_item( "Host/dead" ) ) exit( 0 );
 
@@ -375,7 +374,6 @@ if( ! res ) {
   }
 
   if( log_output ) {
-    include("misc_func.inc");
     log_message( port:0, data:"nmap command: " + join( list:argv ) + '\n\n' + res );
   }
 

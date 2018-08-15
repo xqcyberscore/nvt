@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracudadrive_mult_xss_vuln01_june.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: gb_barracudadrive_mult_xss_vuln01_june.nasl 10953 2018-08-14 12:06:42Z mmartin $
 #
 # BarracudaDrive Multiple XSS Vulnerabilities -01 June14
 #
@@ -29,49 +29,31 @@ CPE = "cpe:/a:barracudadrive:barracudadrive";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804610");
-  script_version("$Revision: 6724 $");
+  script_version("$Revision: 10953 $");
   script_cve_id("CVE-2014-2526");
   script_bugtraq_id(66269);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:06:42 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-06-02 11:00:40 +0530 (Mon, 02 Jun 2014)");
   script_name("BarracudaDrive Multiple XSS Vulnerabilities -01 June14");
 
- tag_summary =
-"This host is running BarracudaDrive and is prone to multiple XSS
-vulnerabilities.";
 
- tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"Multiple flaws exist. For more details refer the reference section.";
-
-  tag_impact =
-"Successful exploitation will allow attackers to execute arbitrary
+  script_tag(name:"summary", value:"This host is running BarracudaDrive and is prone to multiple XSS
+vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Multiple flaws exist. For more details refer the reference section.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
 HTML and script code in a user's browser session in the context of a
 vulnerable site.
 
-Impact Level: Application";
+Impact Level: Application");
+  script_tag(name:"affected", value:"BarracudaDrive before version 6.7");
+  script_tag(name:"solution", value:"Upgrade to BarracudaDrive version 6.7 or later. For updates refer
+http://barracudadrive.com");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  tag_affected =
-"BarracudaDrive before version 6.7";
-
-  tag_solution =
-"Upgrade to BarracudaDrive version 6.7 or later. For updates refer
-http://barracudadrive.com";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-
-  script_xref(name : "URL" , value : "http://secpod.org/advisories/SecPod_BarracudaDrive_Mult_XSS_Vuln.txt");
+  script_xref(name:"URL", value:"http://secpod.org/advisories/SecPod_BarracudaDrive_Mult_XSS_Vuln.txt");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -85,22 +67,15 @@ http://barracudadrive.com";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-bdVer = "";
-bdPort = "";
-
-## Get Application HTTP Port
 if(!bdPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get application version
 bdVer = get_app_version(cpe:CPE, port:bdPort);
 if(!bdVer){
   exit(0);
 }
 
-## Check ecava IntegraXor version
 if(version_is_less(version:bdVer, test_version:"6.7"))
 {
   security_message(bdPort);

@@ -1,9 +1,9 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_rm_bitlocker_recovery_ad_backup.nasl 10333 2018-06-26 13:47:29Z emoss $
+# $Id: win_rm_bitlocker_recovery_ad_backup.nasl 10961 2018-08-14 14:21:06Z emoss $
 #
 # Check value for Choose how BitLocker-protected removable drives can be
-# recovered: Save BitLocker recovery information to AD DS for removable data 
+# recovered: Save BitLocker recovery information to AD DS for removable data
 # drives
 #
 # Authors:
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109415");
-  script_version("$Revision: 10333 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 15:47:29 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 10961 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 16:21:06 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 11:54:06 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,16 +40,17 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+	script_add_preference(name:"Value", type:"radio", value:"0;1");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'Choose how BitLocker-protected removable drives can be recovered: Save BitLocker 
-recovery information to AD DS for removable data drives' on Windows hosts (at 
+  script_tag(name:"summary", value:"This test checks the setting for policy
+'Choose how BitLocker-protected removable drives can be recovered: Save BitLocker
+recovery information to AD DS for removable data drives' on Windows hosts (at
 least Windows 7).
 
-The setting controls how BitLocker-protected removable data drives are recovered 
+The setting controls how BitLocker-protected removable data drives are recovered
 in the absence of the required credentials.
 This policy setting is applied when you turn on BitLocker.
-The option controls if BitLocker stores recovery information in AD DS for 
+The option controls if BitLocker stores recovery information in AD DS for
 removable data drives.");
   exit(0);
 }
@@ -65,7 +66,7 @@ to query the registry.');
 
 if(get_kb_item("SMB/WindowsVersion") < "6.1"){
   policy_logging(text:'Host is not at least a Microsoft Windows 7 system.
-Older versions of Microsoft Windows are not supported any more. 
+Older versions of Microsoft Windows are not supported any more.
 Please update the system.');
   exit(0);
 }
@@ -79,13 +80,24 @@ type = 'HKLM';
 key = 'Software\\Policies\\Microsoft\\FVE';
 item = 'RDVActiveDirectoryBackup';
 value = registry_get_dword(key:key, item:item, type:type);
+default = script_get_preference('Value');
+
 if(!value){
-  value = 'none';
+  value = '1';
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+if(int(value) == int(default)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

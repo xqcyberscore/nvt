@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms10_024.nasl 8510 2018-01-24 07:57:42Z teissa $
+# $Id: gb_ms10_024.nasl 10957 2018-08-14 13:26:50Z mmartin $
 #
 # Microsoft Windows SMTP Server MX Record Denial of Service Vulnerability
 #
@@ -24,45 +24,42 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The Microsoft Windows Simple Mail Transfer Protocol (SMTP) Server is
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100596");
+  script_version("$Revision: 10957 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:26:50 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2010-04-22 20:18:17 +0200 (Thu, 22 Apr 2010)");
+ script_bugtraq_id(39308, 39381);
+  script_cve_id("CVE-2010-0024", "CVE-2010-0025");
+
+  script_name("Microsoft Windows SMTP Server MX Record Denial of Service Vulnerability");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/39308");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/39381");
+  script_xref(name:"URL", value:"http://www.microsoft.com");
+  script_xref(name:"URL", value:"http://support.avaya.com/css/P8/documents/100079218");
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/Bulletin/MS10-024.mspx");
+
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("SMTP problems");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "smtpserver_detect.nasl");
+  script_require_ports("Services/smtp", 25);
+  script_tag(name:"solution", value:"Microsoft released fixes to address this issue. Please see the
+references for more information.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The Microsoft Windows Simple Mail Transfer Protocol (SMTP) Server is
 prone to a denial-of-service vulnerability and to to an information-disclosure vulnerability.
 
 Successful exploits of the denial-of-service vulnerability will cause the
 affected SMTP server to stop responding, denying service to legitimate users.
 
 Attackers can exploit the information-disclosure issue to gain access to
-sensitive information. Any information obtained may lead to further attacks.";
-
-tag_solution = "Microsoft released fixes to address this issue. Please see the
-references for more information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100596");
- script_version("$Revision: 8510 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-04-22 20:18:17 +0200 (Thu, 22 Apr 2010)");
- script_bugtraq_id(39308,39381);
- script_cve_id("CVE-2010-0024","CVE-2010-0025");
-
- script_name("Microsoft Windows SMTP Server MX Record Denial of Service Vulnerability");
-
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/39308");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/39381");
- script_xref(name : "URL" , value : "http://www.microsoft.com");
- script_xref(name : "URL" , value : "http://support.avaya.com/css/P8/documents/100079218");
- script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/Bulletin/MS10-024.mspx");
-
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("SMTP problems");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "smtpserver_detect.nasl");
- script_require_ports("Services/smtp", 25);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+sensitive information. Any information obtained may lead to further attacks.");
  exit(0);
 }
 
@@ -87,13 +84,13 @@ function check_version(vers,range,fixed) {
     if(int(version[3]) >= int(r[3])) {
      if(version_is_less(version:version[3], test_version: fix[3])) {
        return TRUE;
-     }  
-    }  
-  }  
+     }
+    }
+  }
 
   return FALSE;
 
-}  
+}
 
 banner = get_smtp_banner(port:port);
 if(!banner || "Microsoft ESMTP MAIL" >!< banner)exit(0);
@@ -114,15 +111,15 @@ if(
   ) {
       security_message(port:port);
       exit(0);
-    }  
+    }
 
 else if (
-# extra check for some windows 2008 versions 
-         (vers =~ "^[6-7]\.0\.6001\." && 
-	  version_in_range(version: vers, test_version:"6.0.6001.22000", test_version2:"7.0.6001.22647")) || # Server 2008 32bit/x64 
-	 (vers =~ "^[6-7]\.0\.6002\." && 
+# extra check for some windows 2008 versions
+         (vers =~ "^[6-7]\.0\.6001\." &&
+	  version_in_range(version: vers, test_version:"6.0.6001.22000", test_version2:"7.0.6001.22647")) || # Server 2008 32bit/x64
+	 (vers =~ "^[6-7]\.0\.6002\." &&
 	  version_in_range(version: vers, test_version:"6.0.6002.18000", test_version2:"7.0.6002.18221"))    # Server 2008 SP2 32bit/x64
-	
+
         ) {
             security_message(port:port);
 	    exit(0);

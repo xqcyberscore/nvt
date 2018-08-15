@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4042067.nasl 7571 2017-10-26 07:59:06Z cfischer $
+# $Id: gb_ms_kb4042067.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4042067)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811860");
-  script_version("$Revision: 7571 $");
+  script_version("$Revision: 10967 $");
   script_cve_id("CVE-2017-11771", "CVE-2017-11772");
   script_bugtraq_id(101114, 101116);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 10:00:54 +0530 (Wed, 11 Oct 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4042067)");
 
@@ -46,10 +46,15 @@ if(description)
   Windows Search improperly handles objects in memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
-  an attacker who successfully exploited the vulnerability to obtain 
-  information to further compromise the user's system. An attacker could 
-  then install programs; view, change, or delete data; or create new accounts 
-  with full user rights.
+  an attacker who successfully exploited the vulnerability to obtain
+  information to further compromise the user's system. An attacker could
+  then:
+
+  - install programs
+
+  - view, change, or delete data
+
+  - create new accounts with full user rights.
 
   Impact Level: System");
 
@@ -62,12 +67,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4042067");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4042067");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
-  script_require_ports(139, 445);
+
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
   exit(0);
 }
@@ -76,11 +81,6 @@ if(description)
 include("secpod_reg.inc");
 include("version_func.inc");
 
-## Variables Initialization
-sysPath = "";
-fileVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2008:3, win2008x64:3) <= 0){
   exit(0);
 }
@@ -124,7 +124,7 @@ foreach ver( split( fileVer ) ) {
 }
 
 if( maxVer ) {
-  if( version_is_less( version:maxVer, test_version:"7.0.6002.24201" ) ) 
+  if( version_is_less( version:maxVer, test_version:"7.0.6002.24201" ) )
   {
     report = 'File checked:     ' + winPath + "tquery.dll" + '\n' +
              'File version:     ' + maxVer  + '\n' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xceedium_xsuite_mult_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_xceedium_xsuite_mult_vuln.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
 #
 # Xceedium Xsuite Multiple Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:xceedium:xsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807086");
-  script_version("$Revision: 7577 $");
-  script_cve_id("CVE-2015-4665", "CVE-2015-4666", "CVE-2015-4667", "CVE-2015-4668", 
+  script_version("$Revision: 10965 $");
+  script_cve_id("CVE-2015-4665", "CVE-2015-4666", "CVE-2015-4667", "CVE-2015-4668",
                 "CVE-2015-4669", "CVE-2015-4664");
   script_bugtraq_id(76501, 76500);
-  script_tag(name:"cvss_base", value:"9.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-03-03 18:23:47 +0530 (Thu, 03 Mar 2016)");
   script_name("Xceedium Xsuite Multiple Vulnerabilities");
 
@@ -47,9 +47,9 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
   - An insufficient validation of input via 'id' POST  parameter.
-  - An insufficient validation of input via 'fileName' parameter in 
+  - An insufficient validation of input via 'fileName' parameter in
     'ajax_cmd.php' script.
-  - An insufficient input validation via 'logFile' parameter in 
+  - An insufficient input validation via 'logFile' parameter in
     read_sessionlog.php script.
   - An insufficient input validation via 'spadmind' process.
   - An improper password management.
@@ -57,8 +57,8 @@ if(description)
     openwin.php script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to inject arbitrary commands, read arbitrary files, to bypass 
-  security restrictions, to inject arbitrary web script or HTML and 
+  attackers to inject arbitrary commands, read arbitrary files, to bypass
+  security restrictions, to inject arbitrary web script or HTML and
   allows local  users to escalate their privileges.
 
   Impact Level: Application");
@@ -71,8 +71,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37708");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132809");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/37708");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/132809");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -87,35 +87,23 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-dir = "";
-url = "";
-sndReq = "";
-rcvRes = "";
-
-# Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Application Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## iterate over list
 files = traversal_files();
 
 foreach file (keys(files))
 {
-  ## Construct Vulnerable URL
   url = dir + '/opm/read_sessionlog.php?logFile=....//....//....//....//' + files[file];
 
-  ##Send request and receive response
   sndReq = http_get(item:url,  port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ##Check the response to confirm vulnerability
   if(rcvRes =~ 'HTTP/1.. 200 OK' &&
      (rcvRes =~ 'root:.*:0:[01]:' || '; for 16-bit app support' >< rcvRes ||
      '[boot loader]' >< rcvRes))

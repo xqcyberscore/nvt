@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_pw_hashing_dos_vuln.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_drupal_pw_hashing_dos_vuln.nasl 10953 2018-08-14 12:06:42Z mmartin $
 #
 # Drupal Password Hashing Denial of Service Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105934");
-  script_version("$Revision: 6663 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
-  script_tag(name : "creation_date", value : "2014-12-09 16:56:24 +0700 (Tue, 09 Dec 2014)");
-  script_tag(name : "cvss_base", value : "5.0");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 10953 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:06:42 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-12-09 16:56:24 +0700 (Tue, 09 Dec 2014)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
   script_cve_id("CVE-2014-9016");
   script_bugtraq_id(71202);
@@ -51,25 +51,25 @@ if (description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("drupal/installed");
 
-  script_tag(name : "summary", value : "A vulnerability in the password hashing API of Drupal 7 can lead
+  script_tag(name:"summary", value:"A vulnerability in the password hashing API of Drupal 7 can lead
 to a DoS.");
 
-  script_tag(name : "vuldetect", value : "Check the version of Drupal.");
+  script_tag(name:"vuldetect", value:"Check the version of Drupal.");
 
-  script_tag(name : "insight", value : "Drupal 7 includes a password hashing API to ensure that user
+  script_tag(name:"insight", value:"Drupal 7 includes a password hashing API to ensure that user
 supplied passwords are not stored in plain text. An attacker can send specially crafted requests
 resulting in CPU and memory exhaustion.");
 
-  script_tag(name : "impact", value : "An unauthenticated attacker can cause a denial of service.
+  script_tag(name:"impact", value:"An unauthenticated attacker can cause a denial of service.
 
 Impact Level: Application");
 
-  script_tag(name : "affected", value : "Drupal 7");
+  script_tag(name:"affected", value:"Drupal 7");
 
-  script_tag(name : "solution", value : "Upgrade to Drupal 7.34 or later");
-
-  script_xref(name : "URL", value : "https://www.drupal.org/SA-CORE-2014-006");
-  script_xref(name : "URL", value : "http://www.behindthefirewalls.com/2014/12/cve-2014-9016-and-cve-2014-9034-PoC.html");
+  script_tag(name:"solution", value:"Upgrade to Drupal 7.34 or later");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"https://www.drupal.org/SA-CORE-2014-006");
+  script_xref(name:"URL", value:"http://www.behindthefirewalls.com/2014/12/cve-2014-9016-and-cve-2014-9034-PoC.html");
 
   exit(0);
 }

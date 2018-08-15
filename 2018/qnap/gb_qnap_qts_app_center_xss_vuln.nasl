@@ -1,11 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_app_center_xss_vuln.nasl 10324 2018-06-26 07:40:01Z santu $
+# $Id: gb_qnap_qts_app_center_xss_vuln.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
 #
 # QNAP QTS App Center XSS Vulnerability
 #
 # Authors:
-# Rajat Mishra <rajatm@secpod.com> 
+# Rajat Mishra <rajatm@secpod.com>
 #
 # Copyright:
 # Copyright (C) 2018 Greenbone Networks GmbH, http://www.greenbone.net
@@ -27,43 +27,42 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813521");
-  script_version("$Revision: 10324 $");
+  script_version("$Revision: 10965 $");
   script_cve_id("CVE-2017-13072");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 09:40:01 +0200 (Tue, 26 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-12 11:14:29 +0530 (Tue, 12 Jun 2018)");
   script_name("QNAP QTS App Center XSS Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is running QNAP QTS and is prone
+  script_tag(name:"summary", value:"This host is running QNAP QTS and is prone
   to XSS vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"The flaw exists due to insufficient 
+  script_tag(name:"insight", value:"The flaw exists due to insufficient
   sanitization of user-supplied data in App Center.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject Javascript code in the compromised application.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"QNAP QTS versions 4.2.6 build 20171208 and
+  script_tag(name:"affected", value:"QNAP QTS versions 4.2.6 build 20171208 and
   earlier, 4.3.3 build 20171213 and earlier, 4.3.4 build 20171223 and earlier.");
 
-  script_tag(name: "solution" , value:"Upgrade to QNAP QTS 4.2.6 build 20180504,
+  script_tag(name:"solution", value:"Upgrade to QNAP QTS 4.2.6 build 20180504,
   4.3.3 build 20180126 or 4.3.4 build 20171230 or later. For updates refer to
   Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name:"URL" , value:"https://www.qnap.com/en-in/security-advisory/nas-201805-16");
+  script_xref(name:"URL", value:"https://www.qnap.com/en-in/security-advisory/nas-201805-16");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_dependencies("gb_qnap_nas_detect.nasl");
-  script_mandatory_keys("qnap/qts","qnap/version","qnap/build", "qnap/port");
+  script_mandatory_keys("qnap/qts", "qnap/version", "qnap/build", "qnap/port");
   script_require_ports("Services/www", 80, 8080);
   exit(0);
 }
@@ -101,4 +100,4 @@ if(fix)
   exit( 0 );
 }
 
-exit(99); 
+exit(99);

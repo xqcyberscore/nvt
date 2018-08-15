@@ -26,15 +26,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843027");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 10965 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-01-28 05:41:18 +0100 (Sat, 28 Jan 2017)");
   script_cve_id("CVE-2016-9893", "CVE-2017-5373", "CVE-2016-9895", "CVE-2016-9897",
 		"CVE-2016-9898", "CVE-2016-9899", "CVE-2016-9900", "CVE-2016-9904",
 		"CVE-2016-9905", "CVE-2017-5375", "CVE-2017-5376", "CVE-2017-5378",
 		"CVE-2017-5380", "CVE-2017-5383", "CVE-2017-5390", "CVE-2017-5396");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for thunderbird USN-3165-1");
   script_tag(name: "summary", value: "Check the version of thunderbird");

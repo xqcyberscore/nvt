@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_mult_vuln_kb4052978.nasl 8587 2018-01-30 14:49:19Z cfischer $
+# $Id: gb_ms_ie_mult_vuln_kb4052978.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (KB4052978)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812336");
-  script_version("$Revision: 8587 $");
+  script_version("$Revision: 10967 $");
   script_cve_id("CVE-2017-11907", "CVE-2017-11912", "CVE-2017-11886", "CVE-2017-11887",
                 "CVE-2017-11890", "CVE-2017-11894", "CVE-2017-11895", "CVE-2017-11901",
                 "CVE-2017-11903", "CVE-2017-11906", "CVE-2017-11913", "CVE-2017-11919",
@@ -38,7 +38,7 @@ if(description)
                     102047, 102078, 102091, 102093, 102058);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-30 15:49:19 +0100 (Tue, 30 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-12-13 10:40:44 +0530 (Wed, 13 Dec 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (KB4052978)");
@@ -65,19 +65,20 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Microsoft Internet Explorer version 9.x,
+  script_tag(name:"affected", value:"Microsoft Internet Explorer version 9.x,
   10.x and 11.x");
 
-  script_tag(name: "solution" , value:"Run Windows Update and update the listed
+  script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
   https://support.microsoft.com/en-us/help/4052978");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4052978");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4052978");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_ie_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
   exit(0);
 }
@@ -91,25 +92,21 @@ include("secpod_smb_func.inc");
 iePath = "";
 iedllVer  = NULL;
 
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2008:3, win2008x64:3, win7:2, win7x64:2, win2008r2:2, win2012:1,  win2012R2:1,
                    win8_1:1, win8_1x64:1) <= 0){
   exit(0);
 }
 
-##Get IE Version
 ieVer = get_app_version(cpe:CPE);
 if(!ieVer || !(ieVer =~ "^(9|10|11)")){
   exit(0);
 }
 
-## Get System Path
 iePath = smb_get_system32root();
 if(!iePath ){
   exit(0);
 }
 
-## Get Version from Mshtml.dll
 iedllVer = fetch_file_version(sysPath:iePath, file_name:"Mshtml.dll");
 if(!iedllVer){
   exit(0);
@@ -118,7 +115,6 @@ if(!iedllVer){
 ##Server 2008
 if(hotfix_check_sp(win2008:3, win2008x64:3) > 0)
 {
-  ## Check for Mshtml.dll version
   if(version_is_less(version:iedllVer, test_version:"9.0.8112.21084")){
     Vulnerable_range = "Less than 9.0.8112.21084";
   }
@@ -127,17 +123,13 @@ if(hotfix_check_sp(win2008:3, win2008x64:3) > 0)
 # Win 2012
 else if(hotfix_check_sp(win2012:1) > 0)
 {
-  ## Check for Mshtml.dll version
   if(version_is_less(version:iedllVer, test_version:"10.0.9200.22314")){
     Vulnerable_range = "Less than 10.0.9200.22314";
   }
 }
 
-#Windows 8.1 and Windows Server 2012 R2
-#Windows 7 and Server 2008r2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1, win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Mshtml.dll version
   if(version_is_less(version:iedllVer, test_version:"11.0.9600.18860")){
      Vulnerable_range = "Less than 11.0.9600.18860";
   }

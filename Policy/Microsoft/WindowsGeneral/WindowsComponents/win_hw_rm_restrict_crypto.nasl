@@ -1,9 +1,9 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_hw_rm_restrict_crypto.nasl 10333 2018-06-26 13:47:29Z emoss $
+# $Id: win_hw_rm_restrict_crypto.nasl 10961 2018-08-14 14:21:06Z emoss $
 #
-# Check value for Configure use of hardware-based encryption for removable 
-# data drives: Restrict crypto algorithms or cipher suites to the following 
+# Check value for Configure use of hardware-based encryption for removable
+# data drives: Restrict crypto algorithms or cipher suites to the following
 #
 # Authors:
 # Emanuel Moss <emanuel.moss@greenbone.net>
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109421");
-  script_version("$Revision: 10333 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 15:47:29 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 10961 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 16:21:06 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 12:20:38 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -39,13 +39,14 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
+	script_add_preference(name:"Value", type:"entry", value:"2.16.840.1.101.3.4.1.2;2.16.840.1.101.3.4.1.42");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'Configure use of hardware-based encryption for removable data drives: Restrict 
-crypto algorithms or cipher suites to the following' on Windows hosts (at least 
+  script_tag(name:"summary", value:"This test checks the setting for policy
+'Configure use of hardware-based encryption for removable data drives: Restrict
+crypto algorithms or cipher suites to the following' on Windows hosts (at least
 Windows 8.1).
 
-The setting controls which encryption algorithms and cipher suites used with 
+The setting controls which encryption algorithms and cipher suites used with
 hardware-based encryption.");
   exit(0);
 }
@@ -74,13 +75,24 @@ type = 'HKLM';
 key = 'Software\\Policies\\Microsoft\\FVE';
 item = 'RDVAllowedHardwareEncryptionAlgorithms';
 value = registry_get_sz(key:key, item:item, type:type);
+default = script_get_preference('Value');
+
 if(!value){
-  value = 'none';
+  value = 'None';
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+if(value == default){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

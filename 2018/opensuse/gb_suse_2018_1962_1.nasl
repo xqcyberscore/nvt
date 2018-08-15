@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1962_1.nasl 10558 2018-07-20 14:08:23Z santu $
+# $Id: gb_suse_2018_1962_1.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
 #
 # SuSE Update for nodejs6 openSUSE-SU-2018:1962-1 (nodejs6)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851816");
-  script_version("$Revision: 10558 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 16:08:23 +0200 (Fri, 20 Jul 2018) $");
+  script_version("$Revision: 10965 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-14 05:52:33 +0200 (Sat, 14 Jul 2018)");
   script_cve_id("CVE-2018-7167");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for nodejs6 openSUSE-SU-2018:1962-1 (nodejs6)");
   script_tag(name:"summary", value:"Check the version of nodejs6");

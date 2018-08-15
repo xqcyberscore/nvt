@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_RHSA-2018_0061-01_thunderbird.nasl 8323 2018-01-08 14:50:05Z gveerendra $
+# $Id: gb_RHSA-2018_0061-01_thunderbird.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
 #
 # RedHat Update for thunderbird RHSA-2018:0061-01
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812606");
-  script_version("$Revision: 8323 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-08 15:50:05 +0100 (Mon, 08 Jan 2018) $");
+  script_version("$Revision: 10965 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-01-08 07:38:10 +0100 (Mon, 08 Jan 2018)");
   script_cve_id("CVE-2017-7829", "CVE-2017-7846", "CVE-2017-7847", "CVE-2017-7848");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for thunderbird RHSA-2018:0061-01");
   script_tag(name: "summary", value: "Check the version of thunderbird");

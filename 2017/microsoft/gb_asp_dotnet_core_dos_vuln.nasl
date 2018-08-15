@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_dos_vuln.nasl 8063 2017-12-09 11:46:24Z teissa $
+# $Id: gb_asp_dotnet_core_dos_vuln.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Microsoft ASP.NET Core Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812099");
-  script_version("$Revision: 8063 $");
+  script_version("$Revision: 10967 $");
   script_cve_id("CVE-2017-11883");
   script_bugtraq_id(101835);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-09 12:46:24 +0100 (Sat, 09 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-11-20 15:14:33 +0530 (Mon, 20 Nov 2017)");
   script_name("Microsoft ASP.NET Core Denial of Service Vulnerability");
 
@@ -48,7 +48,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw exists due to an error in ASP.NET
   Core which improperly handles certain crafted web requests.");
 
-  script_tag(name:"impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial-of-service condition.
 
   Impact Level: Application.");
@@ -62,7 +62,7 @@ if(description)
   2.0.0 and 2.0.1.");
 
   script_tag(name:"solution", value:"Upgrade Microsoft ASP.NET Core 1.0 to use
-  package 'Microsoft.AspNetCore.Server.WebListener' and 'Microsoft.Net.Http.Server' 
+  package 'Microsoft.AspNetCore.Server.WebListener' and 'Microsoft.Net.Http.Server'
   version 1.0.6 or later. Also upgrade Microsoft ASP.NET Core 1.1 to use package
   'Microsoft.AspNetCore.Server.WebListener' and 'Microsoft.Net.Http.Server' version
   1.1.4 or later. Upgrade Microsoft ASP.NET Core 2.0 to use package
@@ -76,7 +76,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Windows");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
-  script_require_ports(139, 445);
+
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
   exit(0);
 }

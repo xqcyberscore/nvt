@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_registry_access.nasl 10393 2018-07-04 07:23:20Z cfischer $
+# $Id: smb_registry_access.nasl 10958 2018-08-14 13:49:12Z cfischer $
 #
 # Check for SMB accessible registry
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10400");
-  script_version("$Revision: 10393 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 09:23:20 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 10958 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:49:12 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-09-10 10:22:48 +0200 (Wed, 10 Sep 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -55,7 +55,7 @@ if(description)
 
 include("smb_nt.inc");
 include("host_details.inc");
-include("gos_funcs.inc");
+include("misc_func.inc");
 include("version_func.inc");
 
 gos_version = get_local_gos_version();

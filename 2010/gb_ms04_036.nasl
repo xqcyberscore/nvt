@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms04_036.nasl 8246 2017-12-26 07:29:20Z teissa $
+# $Id: gb_ms04_036.nasl 10957 2018-08-14 13:26:50Z mmartin $
 #
 # Windows NT NNTP Component Buffer Overflow
 #
@@ -24,38 +24,35 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The Network News Transfer Protocol (NNTP) component of Microsoft
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.100608");
+  script_version("$Revision: 10957 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:26:50 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2010-04-26 19:54:51 +0200 (Mon, 26 Apr 2010)");
+  script_cve_id("CVE-2004-0574");
+
+  script_name("Windows NT NNTP Component Buffer Overflow");
+
+  script_xref(name:"URL", value:"http://www.microsoft.com/technet/security/bulletin/ms04-036.mspx");
+
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Buffer overflow");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "nntpserver_detect.nasl");
+  script_require_ports("Services/nntp", 119);
+  script_tag(name:"solution", value:"Microsoft has released a bulletin that includes fixes to address this
+issue for supported versions of the operating system.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The Network News Transfer Protocol (NNTP) component of Microsoft
 Windows NT Server 4.0, Windows 2000 Server, Windows Server 2003,
 Exchange 2000 Server, and Exchange Server 2003 allows remote attackers
 to execute arbitrary code via XPAT patterns, possibly related to
 improper length validation and an unchecked buffer, leading to
-off-by-one and heap-based buffer overflows.";
-
-tag_solution = "Microsoft has released a bulletin that includes fixes to address this
-issue for supported versions of the operating system.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.100608");
- script_version("$Revision: 8246 $");
- script_tag(name:"last_modification", value:"$Date: 2017-12-26 08:29:20 +0100 (Tue, 26 Dec 2017) $");
- script_tag(name:"creation_date", value:"2010-04-26 19:54:51 +0200 (Mon, 26 Apr 2010)");
- script_cve_id("CVE-2004-0574");
-
- script_name("Windows NT NNTP Component Buffer Overflow");
-
- script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms04-036.mspx");
-
-script_tag(name:"cvss_base", value:"10.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-script_tag(name:"qod_type", value:"remote_banner");
-script_category(ACT_GATHER_INFO);
-script_family("Buffer overflow");
-script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
-script_dependencies("find_service.nasl", "nntpserver_detect.nasl");
-script_require_ports("Services/nntp", 119);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+off-by-one and heap-based buffer overflows.");
 exit(0);
 }
 
@@ -75,21 +72,21 @@ VULN = FALSE;
 
 if(version[1] =~ "^5\.5\.") {
   if(version_is_less(version: version[1], test_version:"5.5.1877.79"))  {
-   VULN = TRUE; 
-  }  
+   VULN = TRUE;
+  }
 }
 
 else if(version[1] =~ "^5\.0\.") {
   if(version_is_less(version: version[1], test_version:"5.0.2195.6972")) {
     VULN = TRUE;
-  }  
-} 
+  }
+}
 
 else if(version[1] =~ "^6\.0\.") {
   if(version_is_less(version: version[1], test_version:"6.0.3790.206")) {
     VULN = TRUE;
-  }  
-} 
+  }
+}
 
 if(VULN) {
   security_message(port:port);

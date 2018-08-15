@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 10934 2018-08-13 07:19:58Z cfischer $
+# $Id: sw_http_os_detection.nasl 10963 2018-08-14 15:46:05Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 10934 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 09:19:58 +0200 (Mon, 13 Aug 2018) $");
+  script_version("$Revision: 10963 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 17:46:05 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -62,6 +62,9 @@ function check_http_banner( port ) {
   banner = get_http_banner( port:port );
 
   if( banner && banner = egrep( pattern:"^Server:(.*)$", string:banner, icase:TRUE ) ) {
+
+    # BigIP Load Balancer on the frontend, registering this could report/use a wrong OS for the backend server
+    if( banner == "Server: BigIP" || banner == 'Server: BigIP\r\n' ) return;
 
     # API TCP listener is cross-platform
     if( "Server: Icinga" >< banner ) return;

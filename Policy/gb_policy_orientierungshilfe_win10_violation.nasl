@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_policy_orientierungshilfe_win10_violation.nasl 10530 2018-07-17 14:15:42Z asteins $
+# $Id: gb_policy_orientierungshilfe_win10_violation.nasl 10958 2018-08-14 13:49:12Z cfischer $
 #
 # AKIF Orientierungshilfe Windows 10: Nicht erfuellt
 #
@@ -26,7 +26,7 @@
 ###############################################################################
 
 # nb: Keep above the description part as it is used there
-include("gos_funcs.inc");
+include("misc_func.inc");
 include("version_func.inc");
 
 # nb: includes in the description phase won't work anymore from GOS 4.2.11 (OpenVAS TBD)
@@ -47,15 +47,15 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108080");
-  script_version("$Revision: 10530 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-17 16:15:42 +0200 (Tue, 17 Jul 2018) $");
+  script_version("$Revision: 10958 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:49:12 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-02-10 10:55:08 +0100 (Fri, 10 Feb 2017)");
   if( use_severity ) {
-    script_tag(name:"cvss_base", value:"10.0");
-    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   } else {
-    script_tag(name:"cvss_base", value:"0.0");
-    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   }
   script_name("AKIF Orientierungshilfe Windows 10: Nicht erfuellt");
   script_category(ACT_GATHER_INFO);

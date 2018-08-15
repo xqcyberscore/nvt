@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_xss_vuln_PMASA-2018-3_win.nasl 10352 2018-06-28 07:09:51Z santu $
+# $Id: gb_phpmyadmin_xss_vuln_PMASA-2018-3_win.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
 #
 # phpMyAdmin Cross-Site Scripting Vulnerability (PMASA-2018-3)-Windows
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813450");
-  script_version("$Revision: 10352 $");
+  script_version("$Revision: 10965 $");
   script_cve_id("CVE-2018-12581");
   script_bugtraq_id(104530);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-28 09:09:51 +0200 (Thu, 28 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 12:47:09 +0530 (Tue, 26 Jun 2018)");
   script_name("phpMyAdmin Cross-Site Scripting Vulnerability (PMASA-2018-3)-Windows");
 

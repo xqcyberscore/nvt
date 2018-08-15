@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_ssl_cert_get_hostname.nasl 10425 2018-07-05 14:11:33Z cfischer $
+# $Id: sw_ssl_cert_get_hostname.nasl 10947 2018-08-14 08:11:02Z cfischer $
 #
 # SSL/TLS: Hostname discovery from server certificate
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111010");
-  script_version("$Revision: 10425 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 16:11:33 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 10947 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 10:11:02 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-03-27 12:00:00 +0100 (Fri, 27 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -72,7 +72,7 @@ ipv6pattern = "(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7
 # Some packages have e.g. a ping6 binary, others just a symlink from ping6 to ping.
 #
 # First check if the ping command supports the -6/-4 parameter
-check = pread( cmd:"ping", argv:make_list( "--usage" ), cd:1 );
+check = pread( cmd:"ping", argv:make_list( "ping", "--usage" ), cd:TRUE );
 if( "Usage: ping" >< check && "64]" >< check ) {
   param64 = TRUE;
 }
@@ -127,7 +127,7 @@ if ( ! isnull( tmpHostnames ) ) {
       # Same goes for IP addresses within the CN/SAN
       if( eregmatch( pattern:ipv4pattern, string:tmpHostname ) || eregmatch( pattern:ipv6pattern, string:tmpHostname ) ) continue;
 
-      cnIp     = pread( cmd:ping_cmd, argv:make_list( ping_args , tmpHostname ), cd:1 );
+      cnIp     = pread( cmd:ping_cmd, argv:make_list( ping_cmd, ping_args, tmpHostname ), cd:TRUE );
       cnIpPing = eregmatch( pattern:pattern, string:cnIp );
 
       if( cnIpPing ) {

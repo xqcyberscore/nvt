@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rt_remote_dos_vuln_july14.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_rt_remote_dos_vuln_july14.nasl 10954 2018-08-14 12:43:10Z mmartin $
 #
 # Request Tracker (RT) 'Email::Address::List' Remote Denial of Service Vulnerability
 #
@@ -29,50 +29,32 @@ CPE = "cpe:/a:best_practical_solutions:request_tracker";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804718");
-  script_version("$Revision: 6750 $");
+  script_version("$Revision: 10954 $");
   script_cve_id("CVE-2014-1474");
   script_bugtraq_id(68690);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:43:10 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-07-24 15:22:19 +0530 (Thu, 24 Jul 2014)");
   script_name("Request Tracker (RT) 'Email::Address::List' Remote Denial of Service Vulnerability");
 
-  tag_summary =
-"This host is installed with Request Tracker (RT) and is prone to remote
-denial of service vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the
-version is vulnerable or not.";
-
-  tag_insight =
-"An algorithmic complexity flaw is in Perl CPAN Email::Address::List that is
-triggered when handling a specially crafted string without an address.";
-
-  tag_impact =
-"Successful exploitation will allow attacker to consume CPU resource resulting
+  script_tag(name:"summary", value:"This host is installed with Request Tracker (RT) and is prone to remote
+denial of service vulnerability.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"An algorithmic complexity flaw is in Perl CPAN Email::Address::List that is
+triggered when handling a specially crafted string without an address.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to consume CPU resource resulting
 in denial of service.
 
-Impact Level: System/Application";
+Impact Level: System/Application");
+  script_tag(name:"affected", value:"Request Tracker (RT) version 4.2.0 through 4.2.2");
+  script_tag(name:"solution", value:"Upgrade to version 4.2.5 or higher,
+For updates refer to http://bestpractical.com/rt");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  tag_affected =
-"Request Tracker (RT) version 4.2.0 through 4.2.2";
-
-  tag_solution =
-"Upgrade to version 4.2.5 or higher,
-For updates refer to http://bestpractical.com/rt";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-
-  script_xref(name : "URL" , value : "http://blog.bestpractical.com/2014/01/security-vulnerability-in-rt-42.html");
-  script_xref(name : "URL" , value : "http://lists.bestpractical.com/pipermail/rt-announce/2014-June/000257.html");
+  script_xref(name:"URL", value:"http://blog.bestpractical.com/2014/01/security-vulnerability-in-rt-42.html");
+  script_xref(name:"URL", value:"http://lists.bestpractical.com/pipermail/rt-announce/2014-June/000257.html");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -87,22 +69,14 @@ For updates refer to http://bestpractical.com/rt";
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# get the version
 if(!RTVer = get_app_version(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## check the version
 if(version_in_range(version:RTVer, test_version:"4.2.0", test_version2:"4.2.2"))
 {
   security_message(http_port);

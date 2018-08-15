@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongoose_web_server_dos_vuln_lin.nasl 10537 2018-07-18 07:58:47Z cfischer $
+# $Id: gb_mongoose_web_server_dos_vuln_lin.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
 #
 # Mongoose Web Server 'mg_handle_cgi' Function Denial of Service Vulnerability (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:cesanta:mongoose";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813632");
-  script_version("$Revision: 10537 $");
+  script_version("$Revision: 10965 $");
   script_cve_id("CVE-2018-10945");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-18 09:58:47 +0200 (Wed, 18 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-09 14:45:19 +0530 (Mon, 09 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Mongoose Web Server 'mg_handle_cgi' Function Denial of Service Vulnerability (Linux)");

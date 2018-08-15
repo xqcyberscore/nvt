@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.882711");
-  script_version("$Revision: 6659 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 13:52:22 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 10965 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-05-10 06:52:26 +0200 (Wed, 10 May 2017)");
   script_cve_id("CVE-2016-10195", "CVE-2016-10196", "CVE-2016-10197", "CVE-2017-5429", 
                 "CVE-2017-5432", "CVE-2017-5433", "CVE-2017-5434", "CVE-2017-5435", 
@@ -37,8 +37,8 @@ if(description)
                 "CVE-2017-5451", "CVE-2017-5454", "CVE-2017-5459", "CVE-2017-5460", 
                 "CVE-2017-5464", "CVE-2017-5465", "CVE-2017-5466", "CVE-2017-5467", 
                 "CVE-2017-5469");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("CentOS Update for thunderbird CESA-2017:1201 centos6 ");
   script_tag(name: "summary", value: "Check the version of thunderbird");

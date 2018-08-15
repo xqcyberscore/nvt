@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_core_info_disc_vuln.nasl 7992 2017-12-05 08:34:22Z teissa $
+# $Id: gb_asp_dotnet_core_info_disc_vuln.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Microsoft ASP.NET Core Information Disclosure Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812097");
-  script_version("$Revision: 7992 $");
+  script_version("$Revision: 10967 $");
   script_cve_id("CVE-2017-8700");
   script_bugtraq_id(101712);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-11-17 12:17:13 +0530 (Fri, 17 Nov 2017)");
   script_name("Microsoft ASP.NET Core Information Disclosure Vulnerability");
 
@@ -48,7 +48,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw exists due to an unspecified error
   where Cross-Origin Resource Sharing (CORS) can be bypassed.");
 
-  script_tag(name:"impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain access to potentially sensitive information.
 
   Impact Level: System/Application.");
@@ -70,7 +70,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Windows");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
-  script_require_ports(139, 445);
+
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
   exit(0);
 }
@@ -81,7 +81,6 @@ include("version_func.inc");
 include("secpod_smb_func.inc");
 
 
-##Check for packages in projects
 host    = get_host_ip();
 usrname = get_kb_item( "SMB/login" );
 passwd  = get_kb_item( "SMB/password" );
@@ -134,7 +133,7 @@ foreach ver2(split( fileVer2 ))
   file2 = ver2[1] + "Microsoft.AspNetCore.Mvc.Cors.dll";
 
   if(version2 =~ "^(1\.0)" && version_is_less(version:version2, test_version:"1.0.6"))
-  {   
+  {
     fix2 = "1.0.6";
     break;
   }

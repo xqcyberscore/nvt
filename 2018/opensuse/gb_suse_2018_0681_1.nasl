@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_0681_1.nasl 9132 2018-03-19 11:22:37Z santu $
+# $Id: gb_suse_2018_0681_1.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
 #
 # SuSE Update for MozillaFirefox openSUSE-SU-2018:0681-1 (MozillaFirefox)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851715");
-  script_version("$Revision: 9132 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-19 12:22:37 +0100 (Mon, 19 Mar 2018) $");
+  script_version("$Revision: 10965 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-03-17 08:44:24 +0100 (Sat, 17 Mar 2018)");
   script_cve_id("CVE-2018-5125", "CVE-2018-5127", "CVE-2018-5129", "CVE-2018-5130", 
                 "CVE-2018-5131", "CVE-2018-5144", "CVE-2018-5145");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for MozillaFirefox openSUSE-SU-2018:0681-1 (MozillaFirefox)");
   script_tag(name: "summary", value: "Check the version of MozillaFirefox");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4042723.nasl 7862 2017-11-22 10:11:26Z cfischer $
+# $Id: gb_ms_kb4042723.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Windows Server 2008 Defense in Depth (KB4042723)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811950");
-  script_version("$Revision: 7862 $");
+  script_version("$Revision: 10967 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-22 11:11:26 +0100 (Wed, 22 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-11-10 18:23:04 +0530 (Fri, 10 Nov 2017)");
   script_name("Windows Server 2008 Defense in Depth (KB4042723)");
 
@@ -46,7 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to compromise integrity, availability, and confidentiality of the
-  system.  
+  system.
 
   Impact Level: System");
 
@@ -58,13 +58,13 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4042723");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4042723");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("WMI/access_successful", "SMB/WindowsVersion");
-  script_require_ports(139, 445);
+
   exit(0);
 }
 

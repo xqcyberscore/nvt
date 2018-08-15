@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011250.nasl 7773 2017-11-15 13:21:06Z santu $
+# $Id: gb_ms_kb4011250.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Microsoft Word 2013 Service Pack 1 Defense in Depth Update (KB4011250)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812122");
-  script_version("$Revision: 7773 $");
+  script_version("$Revision: 10967 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 14:21:06 +0100 (Wed, 15 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 00:12:14 +0530 (Wed, 15 Nov 2017)");
   script_name("Microsoft Word 2013 Service Pack 1 Defense in Depth Update (KB4011250)");
 
@@ -45,7 +45,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to compromise system's availability, integrity and confidentiality.
- 
+
   Impact Level: System/Application");
 
   script_tag(name:"affected", value:"Microsoft Word 2013 Service Pack 1");
@@ -57,13 +57,13 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4011250");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4011250");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/Word/Version");
-  script_require_ports(139, 445);
+
   exit(0);
 }
 

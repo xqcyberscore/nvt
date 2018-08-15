@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2017-01_2017-02_macosx.nasl 9341 2018-04-06 05:27:04Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2017-01_2017-02_macosx.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
 #
 # Mozilla Firefox Security Updates(mfsa_2017-01_2017-02)-MAC OS X
 #
@@ -29,26 +29,25 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809876");
-  script_version("$Revision: 9341 $");
-  script_cve_id("CVE-2017-5375", "CVE-2017-5376", "CVE-2017-5377", "CVE-2017-5378", 
-		"CVE-2017-5379", "CVE-2017-5380", "CVE-2017-5390", "CVE-2017-5389", 
-		"CVE-2017-5396", "CVE-2017-5381", "CVE-2017-5382", "CVE-2017-5383", 
-		"CVE-2017-5384", "CVE-2017-5385", "CVE-2017-5386", "CVE-2017-5374", 
-		"CVE-2017-5391", "CVE-2017-5388", "CVE-2017-5393", "CVE-2017-5373", 
+  script_version("$Revision: 10965 $");
+  script_cve_id("CVE-2017-5375", "CVE-2017-5376", "CVE-2017-5377", "CVE-2017-5378",
+		"CVE-2017-5379", "CVE-2017-5380", "CVE-2017-5390", "CVE-2017-5389",
+		"CVE-2017-5396", "CVE-2017-5381", "CVE-2017-5382", "CVE-2017-5383",
+		"CVE-2017-5384", "CVE-2017-5385", "CVE-2017-5386", "CVE-2017-5374",
+		"CVE-2017-5391", "CVE-2017-5388", "CVE-2017-5393", "CVE-2017-5373",
 		"CVE-2017-5387");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 07:27:04 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-01-27 12:08:46 +0530 (Fri, 27 Jan 2017)");
   script_name("Mozilla Firefox Security Updates(mfsa_2017-01_2017-02)-MAC OS X");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple flaws exists due to,
+  script_tag(name:"insight", value:"The multiple flaws exists due to,
   - Excessive JIT code allocation allows bypass of ASLR and DEP.
   - Use-after-free in XSL.
   - Memory corruption with transforms to create gradients in Skia.
@@ -69,17 +68,17 @@ if(description)
   - Disclosure of local file existence through TRACK tag error messages.
   - WebRTC can be used to generate a large amount of UDP traffic for DDOS attacks.");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   will allow remote attackers to execute arbitrary code, to delete arbitrary files
   by leveraging certain local file execution, to obtain sensitive information,
-  and to cause a denial of service. 
+  and to cause a denial of service.
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before
+  script_tag(name:"affected", value:"Mozilla Firefox version before
   51 on MAC OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 51
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 51
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -97,15 +96,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"51.0"))
 {
   report = report_fixed_ver(installed_version:ffVer, fixed_version:"51.0");

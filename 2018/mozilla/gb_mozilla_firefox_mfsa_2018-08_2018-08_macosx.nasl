@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2018-08_2018-08_macosx.nasl 9923 2018-05-22 13:23:32Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2018-08_2018-08_macosx.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
 #
 # Mozilla Firefox Security Updates(mfsa_2018-08_2018-08)-MAC OS X
 #
@@ -29,33 +29,33 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813046");
-  script_version("$Revision: 9923 $");
+  script_version("$Revision: 10965 $");
   script_cve_id("CVE-2018-5146");
   script_bugtraq_id(103432);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-22 15:23:32 +0200 (Tue, 22 May 2018) $");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-03-22 10:57:46 +0530 (Thu, 22 Mar 2018)");
   script_name("Mozilla Firefox Security Updates( mfsa_2018-08_2018-08 )-MAC OS X");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox
   and is prone to remote code execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an out of bounds
+  script_tag(name:"insight", value:"The flaw exists due to an out of bounds
   memory write error in libvorbis library.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to execute arbitrary code within the context of the user running the affected
   application. Failed exploit attempts will likely cause denial-of-service
   conditions.
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 59.0.1 on MAC OS X.");
+  script_tag(name:"affected", value:"Mozilla Firefox version before 59.0.1 on MAC OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 59.0.1
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 59.0.1
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");

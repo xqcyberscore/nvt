@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_crestron_ctp_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
+# $Id: gb_crestron_ctp_detect.nasl 10950 2018-08-14 10:01:57Z ckuersteiner $
 #
 # Crestron Device Detection (CTP)
 #
@@ -28,8 +28,8 @@
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.141174");
- script_version("$Revision: 10905 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+ script_version("$Revision: 10950 $");
+ script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:01:57 +0200 (Tue, 14 Aug 2018) $");
  script_tag(name:"creation_date", value:"2018-06-13 08:39:58 +0700 (Wed, 13 Jun 2018)");
  script_tag(name:"cvss_base", value:"0.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,7 +47,8 @@ Crestron devices and to extract its firmware version.");
 
  script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
  script_family("Product detection");
- script_require_ports(41795);
+ script_dependencies("telnet.nasl");
+ script_require_ports("Services/telnet", 41795);
 
  script_xref(name:"URL", value:"https://www.crestron.com/");
 
@@ -56,11 +57,9 @@ Crestron devices and to extract its firmware version.");
 
 include("cpe.inc");
 include("host_details.inc");
+include("telnet_func.inc");
 
-port = 41795;
-
-if (!get_port_state(port))
-  exit(0);
+port = get_telnet_port(default: 41795);
 
 soc = open_sock_tcp(port);
 if (!soc)

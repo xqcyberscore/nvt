@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmturbo_operations_manager_69225.nasl 6756 2017-07-18 13:31:14Z cfischer $
+# $Id: gb_vmturbo_operations_manager_69225.nasl 10951 2018-08-14 10:24:44Z jschulte $
 #
 # VMTurbo Operations Manager '/cgi-bin/vmtadmin.cgi' Remote Command Execution Vulnerability
 #
@@ -27,24 +27,6 @@
 
 CPE = "cpe:/a:vmturbo:operations_manager";
 
-tag_insight = 'Input passed via the "fileDate" GET parameter to /cgi-bin/vmtadmin.cgi
-(when "callType" is set to "DOWN" and "actionType" is set to  "GETBRAND", "GETINTEGRATE",
-"FULLBACKUP", "CFGBACKUP", "EXPORTBACKUP", "EXPERTDIAGS", or "EXPORTDIAGS") is not 
-properly sanitised before being used to execute commands. This can be exploited to inject
-and execute arbitrary shell commands with privileges of the "wwwrun" user.';
-
-tag_impact = "An attacker may leverage this issue to execute arbitrary OS commands
-in the context of the affected application.";
-
-tag_affected = "VMTurbo Operations Manager 4.6 and prior are vulnerable.";
-
-tag_summary = "VMTurbo Operations Manager is prone to a remote command-execution
-vulnerability.";
-
-tag_solution = "Update to VMTurbo Operations Manager >= 4.6-28657.";
-
-tag_vuldetect = "Send two special crafted HTTP GET requests and check the response.";
-
 if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.105067");
@@ -52,15 +34,15 @@ if (description)
  script_cve_id("CVE-2014-5073");
  script_tag(name:"cvss_base", value:"7.5");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6756 $");
+ script_version("$Revision: 10951 $");
 
  script_name("VMTurbo Operations Manager '/cgi-bin/vmtadmin.cgi' Remote Command Execution Vulnerability");
 
 
  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/69225");
  script_xref(name:"URL", value:"http://secunia.com/secunia_research/2014-8/");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
+
+ script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:24:44 +0200 (Tue, 14 Aug 2018) $");
  script_tag(name:"creation_date", value:"2014-08-18 14:14:43 +0200 (Mon, 18 Aug 2014)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -70,21 +52,28 @@ if (description)
  script_require_ports("Services/www", 80);
  script_mandatory_keys("vmturbo/installed");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+ script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary OS commands
+in the context of the affected application.");
+ script_tag(name:"vuldetect", value:"Send two special crafted HTTP GET requests and check the response.");
+ script_tag(name:"insight", value:"Input passed via the 'fileDate' GET parameter to /cgi-bin/vmtadmin.cgi
+(when 'callType' is set to 'DOWN' and 'actionType' is set to  'GETBRAND', 'GETINTEGRATE',
+'FULLBACKUP', 'CFGBACKUP', 'EXPORTBACKUP', 'EXPERTDIAGS', or 'EXPORTDIAGS') is not
+properly sanitised before being used to execute commands. This can be exploited to inject
+and execute arbitrary shell commands with privileges of the 'wwwrun' user.");
+ script_tag(name:"solution_type", value:"VendorFix");
+ script_tag(name:"solution", value:"Update to VMTurbo Operations Manager >= 4.6-28657.");
+ script_tag(name:"summary", value:"VMTurbo Operations Manager is prone to a remote command-execution
+vulnerability.");
+ script_tag(name:"affected", value:"VMTurbo Operations Manager 4.6 and prior are vulnerable.");
 
  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
+
+
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 
 rand = 'OpenVAS_' + rand();

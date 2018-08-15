@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_microsoft_consumer_experiences.nasl 10333 2018-06-26 13:47:29Z emoss $
+# $Id: win_microsoft_consumer_experiences.nasl 10961 2018-08-14 14:21:06Z emoss $
 #
 # Check value for Turn off Microsoft consumer experiences
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109430");
-  script_version("$Revision: 10333 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 15:47:29 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 10961 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 16:21:06 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 13:57:38 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,11 +38,12 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl", "os_detection.nasl");
+	script_add_preference(name:"Value", type:"radio", value:"1;0");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Turn off Microsoft consumer experiences' on Windows hosts (at least Windows 10).
 
-The policy setting turns off experiences that help consumers make the most of 
+The policy setting turns off experiences that help consumers make the most of
 their devices and Microsoft account.
 Note: This setting only applies to Enterprise and Education SKUs.");
   exit(0);
@@ -59,7 +60,7 @@ to query the registry.');
 
 HostDetails = get_kb_list("HostDetails");
 if("cpe:/o:microsoft:windows_10" >!< HostDetails){
-  policy_logging(text:'Host is not a Microsoft Windows 10 system. 
+  policy_logging(text:'Host is not a Microsoft Windows 10 system.
 This setting applies to Windows 10 systems only.');
   exit(0);
 }
@@ -72,13 +73,24 @@ key = 'Software\\Policies\\Microsoft\\Windows\\CloudContent';
 item = 'DisableWindowsConsumerFeatures';
 
 value = registry_get_dword(key:key, item:item, type:type);
+default = script_get_preference('Value');
+
 if(!value){
-  value = 'none';
+  value = '0';
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+if(int(value) == int(default)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

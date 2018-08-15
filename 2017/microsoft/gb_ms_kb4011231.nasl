@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4011231.nasl 9313 2018-04-05 06:23:26Z cfischer $
+# $Id: gb_ms_kb4011231.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Microsoft Office Web Apps Server 2013 Service Pack 1 RCE Vulnerability (KB4011231)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811926");
-  script_version("$Revision: 9313 $");
+  script_version("$Revision: 10967 $");
   script_cve_id("CVE-2017-11826");
   script_bugtraq_id(101219);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 08:23:26 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 09:59:58 +0530 (Wed, 11 Oct 2017)");
   script_name("Microsoft Office Web Apps Server 2013 Service Pack 1 RCE Vulnerability (KB4011231)");
 
@@ -59,7 +59,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4011231");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4011231");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb3213648.nasl 7689 2017-11-08 05:46:44Z teissa $
+# $Id: gb_ms_kb3213648.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Microsoft Word 2007 Service Pack 3 Remote Code Execution Vulnerability (KB3213648)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812019");
-  script_version("$Revision: 7689 $");
+  script_version("$Revision: 10967 $");
   script_cve_id("CVE-2017-11826");
   script_bugtraq_id(101219);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-08 06:46:44 +0100 (Wed, 08 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 09:10:55 +0530 (Wed, 11 Oct 2017)");
   script_name("Microsoft Word 2007 Service Pack 3 Remote Code Execution Vulnerability (KB3213648)");
 
@@ -47,7 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   who successfully exploited the vulnerability to run arbitrary code in the
-  context of the current user. 
+  context of the current user.
 
   Impact Level: System/Application");
 
@@ -60,13 +60,13 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/3213648");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/3213648");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("SMB/Office/Word/Version");
-  script_require_ports(139, 445);
+
   exit(0);
 }
 
@@ -76,23 +76,16 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## variable Initialization
-exeVer = "";
-exePath = "";
-
-##Get version and install path
 exeVer = get_kb_item("SMB/Office/Word/Version");
 if(!exeVer){
   exit(0);
 }
 
-##Get Install Path
 exePath = get_kb_item("SMB/Office/Word/Install/Path");
 if(!exePath){
   exePath = "Unable to fetch the install path";
 }
 
-##Check for vulnerable Microsoft Word 2007 version
 if(exeVer =~ "^(12\.)" && version_is_less(version:exeVer, test_version:"12.0.6779.5000"))
 {
   report = 'File checked: ' + exePath + "winword.exe"  + '\n' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4048954.nasl 8063 2017-12-09 11:46:24Z teissa $
+# $Id: gb_ms_kb4048954.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4048954)
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812089");
-  script_version("$Revision: 8063 $");
-  script_cve_id("CVE-2017-11839", "CVE-2017-11840", "CVE-2017-11841", "CVE-2017-11842", 
-                "CVE-2017-11843", "CVE-2017-11768", "CVE-2017-11873", "CVE-2017-11874", 
-                "CVE-2017-11880", "CVE-2017-11788", "CVE-2017-11791", "CVE-2017-11803", 
-                "CVE-2017-11827", "CVE-2017-11830", "CVE-2017-11831", "CVE-2017-11833", 
-                "CVE-2017-11834", "CVE-2017-11836", "CVE-2017-11837", "CVE-2017-11838", 
-                "CVE-2017-11844", "CVE-2017-11845", "CVE-2017-11846", "CVE-2017-11847", 
-                "CVE-2017-11848", "CVE-2017-11849", "CVE-2017-11850", "CVE-2017-11851", 
-                "CVE-2017-11853", "CVE-2017-11855", "CVE-2017-11856", "CVE-2017-11858", 
-                "CVE-2017-11861", "CVE-2017-11863", "CVE-2017-11866", "CVE-2017-11869", 
+  script_version("$Revision: 10967 $");
+  script_cve_id("CVE-2017-11839", "CVE-2017-11840", "CVE-2017-11841", "CVE-2017-11842",
+                "CVE-2017-11843", "CVE-2017-11768", "CVE-2017-11873", "CVE-2017-11874",
+                "CVE-2017-11880", "CVE-2017-11788", "CVE-2017-11791", "CVE-2017-11803",
+                "CVE-2017-11827", "CVE-2017-11830", "CVE-2017-11831", "CVE-2017-11833",
+                "CVE-2017-11834", "CVE-2017-11836", "CVE-2017-11837", "CVE-2017-11838",
+                "CVE-2017-11844", "CVE-2017-11845", "CVE-2017-11846", "CVE-2017-11847",
+                "CVE-2017-11848", "CVE-2017-11849", "CVE-2017-11850", "CVE-2017-11851",
+                "CVE-2017-11853", "CVE-2017-11855", "CVE-2017-11856", "CVE-2017-11858",
+                "CVE-2017-11861", "CVE-2017-11863", "CVE-2017-11866", "CVE-2017-11869",
                 "CVE-2017-11870", "CVE-2017-11871", "CVE-2017-11872");
   script_bugtraq_id(101735, 101734, 101719, 101740, 101705, 101728, 101750, 101755,
                     101711, 101715, 101704, 101703, 101714, 101721, 101706, 101725,
@@ -45,7 +45,7 @@ if(description)
                     101748, 101732, 101742, 101731, 101730, 101749);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-09 12:46:24 +0100 (Sat, 09 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 08:37:02 +0530 (Wed, 15 Nov 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4048954)");
 
@@ -62,10 +62,10 @@ if(description)
   - A security feature bypass when Device Guard incorrectly validates an untrusted
     file.
 
-  - An error in the way that Microsoft Edge handles cross-origin requests. 
+  - An error in the way that Microsoft Edge handles cross-origin requests.
 
   - An error when the scripting engine does not properly handle objects in memory
-    in Internet Explorer. 
+    in Internet Explorer.
 
   - An error in the way the scripting engine handles objects in memory in Microsoft
     browsers.
@@ -82,11 +82,11 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   to gain access to potentially sensitive information, fake unsigned file appear
-  to be signed , determine the origin of all web pages in the affected browser,
+  to be signed, determine the origin of all web pages in the affected browser,
   gain the same user rights as the current user, cause a remote denial of service
   against a system, test for the presence of files on disk, force the browser to
   send data that would otherwise be restricted to a destination website of the
-  attacker's choice and run arbitrary code in kernel mode. 
+  attacker's choice and run arbitrary code in kernel mode.
 
   Impact Level: System");
 
@@ -99,11 +99,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4048954");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4048954");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }

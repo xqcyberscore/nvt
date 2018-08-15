@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_infusionsoft_gravity_forms_file_upload_vuln.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: gb_wp_infusionsoft_gravity_forms_file_upload_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
 #
 # Wordpress Infusionsoft Gravity Forms Add-on Arbitrary File Upload Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804769");
-  script_version("$Revision: 6724 $");
+  script_version("$Revision: 10952 $");
   script_cve_id("CVE-2014-6446");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-29 17:24:16 +0530 (Mon, 29 Sep 2014)");
 
   script_name("Wordpress Infusionsoft Gravity Forms Add-on Arbitrary File Upload Vulnerability");
@@ -58,9 +58,9 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to version 1.5.11 or later,
   For updates refer to https://wordpress.org/plugins/infusionsoft");
-
-  script_xref(name : "URL" , value : "http://research.g0blin.co.uk/cve-2014-6446");
-  script_xref(name : "URL" , value : "https://wordpress.org/plugins/infusionsoft/changelog/");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://research.g0blin.co.uk/cve-2014-6446");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/infusionsoft/changelog/");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -77,22 +77,14 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Construct the attack request
 url = dir + '/wp-content/plugins/infusionsoft/Infusionsoft/utilities/code_generator.php';
 
 wpReq = http_get(item: url,  port:http_port);
@@ -116,17 +108,14 @@ if(">Code Generator<" >< wpRes &&
   ## Send request and receive the response
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ## Checking File has been created
   if('Generating Code' >< rcvRes && 'Creating File:' >< rcvRes)
   {
     ## Uploaded file URL
     url = dir + '/wp-content/plugins/infusionsoft/Infusionsoft/utilities/out/' + fileName;
 
-    ## Confirm the Exploit and Deleting uploaded file
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
        pattern:">phpinfo\(\)<", extra_check:">PHP Documentation<"))
     {
-      ## Confirm Deletion
       if(http_vuln_check(port:http_port, url:url,
          check_header:FALSE, pattern:"HTTP/1.. 404"))
       {

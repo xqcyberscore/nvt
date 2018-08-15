@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mfsa_2017-08_2017-08_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mfsa_2017-08_2017-08_win.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
 #
 # Mozilla Firefox Security Updates(mfsa_2017-08_2017-08)-Windows
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810819");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 10965 $");
   script_cve_id("CVE-2017-5428");
   script_bugtraq_id(96959);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-03-20 13:40:58 +0530 (Mon, 20 Mar 2017)");
   script_name("Mozilla Firefox Security Updates(mfsa_2017-08_2017-08)-Windows");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox
   and is prone to buffer overflow vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an integer overflow
+  script_tag(name:"insight", value:"The flaw exists due to an integer overflow
   in createImageBitmap().");
 
-  script_tag(name: "impact" , value:"Successful exploitation of this vulnerability
+  script_tag(name:"impact", value:"Successful exploitation of this vulnerability
   will allow remote attackers to cause buffer overflow.
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 52.0.1
+  script_tag(name:"affected", value:"Mozilla Firefox version before 52.0.1
   on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 52.0.1
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 52.0.1
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");

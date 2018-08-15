@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_loadbalancer_org_enterprise_va_static_ssh_key.nasl 6759 2017-07-19 09:56:33Z teissa $
+# $Id: gb_loadbalancer_org_enterprise_va_static_ssh_key.nasl 10954 2018-08-14 12:43:10Z mmartin $
 #
 # Loadbalancer.org Enterprise VA 7.5.2 Static SSH Key
 #
@@ -25,37 +25,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103922";
-
-tag_insight = "Loadbalancer.org Enterprise VA versions 7.5.2 and below
-come with a static public and private key installed for their
-appliances. When the keys are regenerated, it fails to remove the
-public key from the authorized_keys2 file, allowing anyone to use the
-private default key for access.";
-
-tag_impact = "A remote attacker can exploit this issue to gain unauthorized root
-access to affected devices. Successfully exploiting this issue allows
-attackers to completely compromise the devices.";
-
-tag_affected = "Loadbalancer.org Enterprise VA versions 7.5.2 and below";
-tag_summary = "Loadbalancer.org Enterprise VA 7.5.2 contains a default
-SSH private key";
-
-tag_solution = "Upgrade to version 7.5.3 or newer";
-tag_vuldetect = "Try to login as root using the known static private key";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 6759 $");
+ script_oid("1.3.6.1.4.1.25623.1.0.103922");
+ script_version("$Revision: 10954 $");
  script_tag(name:"cvss_base", value:"10.0");
  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
  script_name("Loadbalancer.org Enterprise VA 7.5.2 Static SSH Key");
 
 
  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125754/Loadbalancer.org-Enterprise-VA-7.5.2-Static-SSH-Key.html");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+
+ script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:43:10 +0200 (Tue, 14 Aug 2018) $");
  script_tag(name:"creation_date", value:"2014-03-18 11:16:16 +0100 (Tue, 18 Mar 2014)");
  script_category(ACT_ATTACK);
  script_tag(name:"qod_type", value:"remote_vul");
@@ -64,12 +45,20 @@ if (description)
  script_dependencies("ssh_detect.nasl");
  script_require_ports("Services/ssh", 22);
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+ script_tag(name:"impact", value:"A remote attacker can exploit this issue to gain unauthorized root
+access to affected devices. Successfully exploiting this issue allows
+attackers to completely compromise the devices.");
+ script_tag(name:"vuldetect", value:"Try to login as root using the known static private key");
+ script_tag(name:"insight", value:"Loadbalancer.org Enterprise VA versions 7.5.2 and below
+come with a static public and private key installed for their
+appliances. When the keys are regenerated, it fails to remove the
+public key from the authorized_keys2 file, allowing anyone to use the
+private default key for access.");
+ script_tag(name:"solution", value:"Upgrade to version 7.5.3 or newer");
+ script_tag(name:"solution_type", value:"VendorFix");
+ script_tag(name:"summary", value:"Loadbalancer.org Enterprise VA 7.5.2 contains a default
+SSH private key");
+ script_tag(name:"affected", value:"Loadbalancer.org Enterprise VA versions 7.5.2 and below");
 
  exit(0);
 }
@@ -110,7 +99,7 @@ if( login == 0 )
     close( soc );
     exit(0);
   }
-} 
+}
 
 close( soc );
 exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4041676.nasl 7470 2017-10-18 07:59:52Z cfischer $
+# $Id: gb_ms_kb4041676.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4041676)
 #
@@ -27,28 +27,28 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811865");
-  script_version("$Revision: 7470 $");
+  script_version("$Revision: 10967 $");
   script_cve_id("CVE-2017-8694", "CVE-2017-8703", "CVE-2017-8715", "CVE-2017-11780",
-                "CVE-2017-8717", "CVE-2017-11762", "CVE-2017-11763", "CVE-2017-11765", 
-                "CVE-2017-8718", "CVE-2017-8726", "CVE-2017-8727", "CVE-2017-11769", 
-                "CVE-2017-11771", "CVE-2017-11772", "CVE-2017-11781", "CVE-2017-11783", 
-                "CVE-2017-11785", "CVE-2017-11790", "CVE-2017-11792", "CVE-2017-11793", 
-                "CVE-2017-11794", "CVE-2017-11796", "CVE-2017-11798", "CVE-2017-11799", 
-                "CVE-2017-11802", "CVE-2017-11804", "CVE-2017-11805", "CVE-2017-11806", 
-                "CVE-2017-11807", "CVE-2017-11808", "CVE-2017-11809", "CVE-2017-11810", 
-                "CVE-2017-11811", "CVE-2017-11812", "CVE-2017-11814", "CVE-2017-11815", 
-                "CVE-2017-11816", "CVE-2017-11817", "CVE-2017-11818", "CVE-2017-11821", 
-                "CVE-2017-11822", "CVE-2017-11823", "CVE-2017-11824", "CVE-2017-11829", 
+                "CVE-2017-8717", "CVE-2017-11762", "CVE-2017-11763", "CVE-2017-11765",
+                "CVE-2017-8718", "CVE-2017-8726", "CVE-2017-8727", "CVE-2017-11769",
+                "CVE-2017-11771", "CVE-2017-11772", "CVE-2017-11781", "CVE-2017-11783",
+                "CVE-2017-11785", "CVE-2017-11790", "CVE-2017-11792", "CVE-2017-11793",
+                "CVE-2017-11794", "CVE-2017-11796", "CVE-2017-11798", "CVE-2017-11799",
+                "CVE-2017-11802", "CVE-2017-11804", "CVE-2017-11805", "CVE-2017-11806",
+                "CVE-2017-11807", "CVE-2017-11808", "CVE-2017-11809", "CVE-2017-11810",
+                "CVE-2017-11811", "CVE-2017-11812", "CVE-2017-11814", "CVE-2017-11815",
+                "CVE-2017-11816", "CVE-2017-11817", "CVE-2017-11818", "CVE-2017-11821",
+                "CVE-2017-11822", "CVE-2017-11823", "CVE-2017-11824", "CVE-2017-11829",
                 "CVE-2017-8689", "CVE-2017-8693", "CVE-2017-11779", "CVE-2017-13080");
-  script_bugtraq_id(101100, 101164, 101163, 101161, 101108, 101109, 101111, 101162, 
-                    101084, 101142, 101112, 101114, 101116, 101140, 101144, 101149, 
-                    101077, 101078, 101141, 101079, 101080, 101125, 101126, 101130, 
-                    101131, 101132, 101133, 101134, 101135, 101137, 101081, 101138, 
-                    101139, 101093, 101136, 101094, 101095, 101101, 101123, 101122, 
+  script_bugtraq_id(101100, 101164, 101163, 101161, 101108, 101109, 101111, 101162,
+                    101084, 101142, 101112, 101114, 101116, 101140, 101144, 101149,
+                    101077, 101078, 101141, 101079, 101080, 101125, 101126, 101130,
+                    101131, 101132, 101133, 101134, 101135, 101137, 101081, 101138,
+                    101139, 101093, 101136, 101094, 101095, 101101, 101123, 101122,
                     101102, 101099, 101213, 101128, 101096, 101166, 101110, 101274);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-18 09:59:52 +0200 (Wed, 18 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 11:02:49 +0530 (Wed, 11 Oct 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4041676)");
 
@@ -78,11 +78,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4041676");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4041676");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -93,16 +94,10 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-edgeVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
@@ -114,7 +109,6 @@ if(!edgeVer){
   exit(0);
 }
 
-## Windows 10
 if(version_in_range(version:edgeVer, test_version:"11.0.15063.0", test_version2:"11.0.15063.673"))
 {
   report = 'File checked:     ' + sysPath + "\Edgehtml.dll" + '\n' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_2905247.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_microsoft_security_advisory_2905247.nasl 10957 2018-08-14 13:26:50Z mmartin $
 #
 # Microsoft ASP.NET Insecure Site Configuration Vulnerability (2905247)
 #
@@ -27,52 +27,36 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804038");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 10957 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:26:50 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-12 15:24:42 +0530 (Thu, 12 Dec 2013)");
   script_name("Microsoft ASP.NET Insecure Site Configuration Vulnerability (2905247)");
-
-  tag_summary =
-"This host is missing an important security update according to Microsoft
-advisory (2905247).";
-
-  tag_vuldetect =
-"Get the vulnerable file version and check appropriate patch is applied
-or not.";
-
-  tag_insight =
-"Flaw is due to the view state that exists when Machine Authentication Code
-(MAC) validation is disabled through configuration settings.";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to use specially crafted
+  script_tag(name:"summary", value:"This host is missing an important security update according to Microsoft
+advisory (2905247).");
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
+or not.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+update mentioned hotfixes in the advisory from the below link,
+https://technet.microsoft.com/en-us/security/advisory/2905247");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"insight", value:"Flaw is due to the view state that exists when Machine Authentication Code
+(MAC) validation is disabled through configuration settings.");
+  script_tag(name:"affected", value:"Microsoft .NET Framework versions 1.1, 2.0, 3.5, 3.5.1, 4.0, 4.5 and 4.5.1");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to use specially crafted
 HTTP content to inject code to be run in the context of the service account
 on the ASP.NET server.
 
-Impact Level: System/Application ";
-
-  tag_affected =
-"Microsoft .NET Framework versions 1.1, 2.0, 3.5, 3.5.1, 4.0, 4.5 and 4.5.1";
-
-  tag_solution =
-"Run Windows Update and update the listed hotfixes or download and
-update mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/advisory/2905247";
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2905247");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/advisory/2905247");
+Impact Level: System/Application ");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2905247");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/advisory/2905247");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Windows");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -82,32 +66,22 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-key = "";
-item = "";
-path = "";
-exeVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(xp:4, xpx64:3, win2003:3, win2003x64:3, winVista:3, win7:2,
              win7x64:2, win2008:3, win2008r2:2, win8:1, win8_1:1, win8_1x64:1,
              win2012:1) <= 0){
   exit(0);
 }
 
-## Confirm .NET
 key = "SOFTWARE\Microsoft\ASP.NET\";
 if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-## Try to Get Version
 foreach item (registry_enum_keys(key:key))
 {
   path = registry_get_sz(key:key + item, item:"Path");
   if(path && "\Microsoft.NET\Framework" >< path)
   {
-    ## Get version from System.dll file
     exeVer = fetch_file_version(sysPath:path, file_name:"aspnet_wp.exe");
     if(exeVer)
     {
@@ -116,7 +90,7 @@ foreach item (registry_enum_keys(key:key))
       if((hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, winVista:3, win2008:3) > 0) &&
          (version_in_range(version:exeVer, test_version:"4.0.30319.18000", test_version2:"4.0.30319.18339")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -125,7 +99,7 @@ foreach item (registry_enum_keys(key:key))
       if((hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, winVista:3, win2008:3) > 0) &&
          (version_in_range(version:exeVer, test_version:"4.0.30319.18000", test_version2:"4.0.30319.18441")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -134,7 +108,7 @@ foreach item (registry_enum_keys(key:key))
          (version_in_range(version:exeVer, test_version:"4.0.30319.18000", test_version2:"4.0.30319.18446")||
           version_in_range(version:exeVer, test_version:"4.0.30319.19000", test_version2:"4.0.30319.19452")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -143,7 +117,7 @@ foreach item (registry_enum_keys(key:key))
       if((hotfix_check_sp(win8_1:1, win8_1x64:1) > 0) &&
          (version_in_range(version:exeVer, test_version:"4.0.30319.34000", test_version2:"4.0.30319.34005")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -153,7 +127,7 @@ foreach item (registry_enum_keys(key:key))
          (version_in_range(version:exeVer, test_version:"4.0.30319.18000", test_version2:"4.0.30319.18060")||
           version_in_range(version:exeVer, test_version:"4.0.30319.19000", test_version2:"4.0.30319.19125")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -162,7 +136,7 @@ foreach item (registry_enum_keys(key:key))
          (version_in_range(version:exeVer, test_version:"4.0.30319.18000", test_version2:"4.0.30319.18061")||
           version_in_range(version:exeVer, test_version:"4.0.30319.19000", test_version2:"4.0.30319.19126")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -171,7 +145,7 @@ foreach item (registry_enum_keys(key:key))
       if(version_in_range(version:exeVer, test_version:"4.0.30319.0000", test_version2:"4.0.30319.1016")||
          version_in_range(version:exeVer, test_version:"4.0.30319.2000", test_version2:"4.0.30319.2027"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -180,7 +154,7 @@ foreach item (registry_enum_keys(key:key))
          (version_in_range(version:exeVer, test_version:"2.0.50727.5400", test_version2:"2.0.50727.5476")||
           version_in_range(version:exeVer, test_version:"2.0.50727.7000", test_version2:"2.0.50727.7040")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -189,7 +163,7 @@ foreach item (registry_enum_keys(key:key))
          (version_in_range(version:exeVer, test_version:"2.0.50727.6000", test_version2:"2.0.50727.6411")||
           version_in_range(version:exeVer, test_version:"2.0.50727.7000", test_version2:"2.0.50727.7040")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -198,7 +172,7 @@ foreach item (registry_enum_keys(key:key))
       if((hotfix_check_sp(win8_1:1, win8_1x64:1) > 0) &&
          (version_in_range(version:exeVer, test_version:"2.0.50727.7000", test_version2:"2.0.50727.7999")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -207,7 +181,7 @@ foreach item (registry_enum_keys(key:key))
          (version_in_range(version:exeVer, test_version:"2.0.50727.3000", test_version2:"2.0.50727.3656")||
           version_in_range(version:exeVer, test_version:"2.0.50727.7000", test_version2:"2.0.50727.7042")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -216,7 +190,7 @@ foreach item (registry_enum_keys(key:key))
          (version_in_range(version:exeVer, test_version:"2.0.50727.4000", test_version2:"2.0.50727.4246")||
           version_in_range(version:exeVer, test_version:"2.0.50727.7000", test_version2:"2.0.50727.7040")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -224,7 +198,7 @@ foreach item (registry_enum_keys(key:key))
       if((hotfix_check_sp(win2003:3) > 0) &&
          (version_in_range(version:exeVer, test_version:"1.1.4322.2000", test_version2:"1.1.4322.2503")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }

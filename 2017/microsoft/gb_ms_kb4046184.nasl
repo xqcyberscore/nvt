@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4046184.nasl 7992 2017-12-05 08:34:22Z teissa $
+# $Id: gb_ms_kb4046184.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Microsoft Windows Information Disclosure Vulnerability (KB4046184)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812135");
-  script_version("$Revision: 7992 $");
+  script_version("$Revision: 10967 $");
   script_cve_id("CVE-2017-11831");
   script_bugtraq_id(101721);
   script_tag(name:"cvss_base", value:"4.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 08:06:37 +0530 (Wed, 15 Nov 2017)");
   script_name("Microsoft Windows Information Disclosure Vulnerability (KB4046184)");
 
@@ -46,7 +46,7 @@ if(description)
   to properly initialize a memory address.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
-  to obtain information to further compromise the user's system. 
+  to obtain information to further compromise the user's system.
 
   Impact Level: System");
 
@@ -58,11 +58,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4046184");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4046184");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }

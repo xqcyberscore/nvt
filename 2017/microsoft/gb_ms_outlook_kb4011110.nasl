@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_outlook_kb4011110.nasl 10017 2018-05-30 07:17:29Z cfischer $
+# $Id: gb_ms_outlook_kb4011110.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Microsoft Office Outlook Defense In Depth Update (KB4011110)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811787");
-  script_version("$Revision: 10017 $");
+  script_version("$Revision: 10967 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-09-20 14:40:52 +0530 (Wed, 20 Sep 2017)");
   script_name("Microsoft Office Outlook Defense In Depth Update (KB4011110)");
 
@@ -58,11 +58,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4011110");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4011110");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/Office/Outlook/Version");
 
   exit(0);

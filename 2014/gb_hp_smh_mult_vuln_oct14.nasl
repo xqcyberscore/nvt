@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_mult_vuln_oct14.nasl 6995 2017-08-23 11:52:03Z teissa $
+# $Id: gb_hp_smh_mult_vuln_oct14.nasl 10953 2018-08-14 12:06:42Z mmartin $
 #
 # HP System Management Homepage Multiple Vulnerabilities - Oct14
 #
@@ -29,43 +29,44 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804858");
-  script_version("$Revision: 6995 $");
+  script_version("$Revision: 10953 $");
   script_cve_id("CVE-2014-2640", "CVE-2014-2641", "CVE-2014-2642");
   script_bugtraq_id(70208);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:06:42 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-10-14 11:52:11 +0530 (Tue, 14 Oct 2014)");
 
   script_name("HP System Management Homepage Multiple Vulnerabilities - Oct14");
 
-  script_tag(name: "summary" , value:"This host is running HP System Management
+  script_tag(name:"summary", value:"This host is running HP System Management
   Homepage (SMH) and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version of HP SMH with
+  script_tag(name:"vuldetect", value:"Get the installed version of HP SMH with
   the help of detect NVT and check it is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are exists due to,
+  script_tag(name:"insight", value:"Multiple flaws are exists due to,
   - An error as HTTP requests to certain scripts do not require multiple steps,
     explicit confirmation, or a unique token when performing sensitive actions.
   - An error as application does not validate user-supplied input.
   - An unspecified error.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to perform clickjacking attacks, perform a Cross-Site Request
   Forgery attack or execute arbitrary script code in a user's browser session
   within the trust relationship between their browser and the server.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"HP System Management Homepage (SMH) before
+  script_tag(name:"affected", value:"HP System Management Homepage (SMH) before
   version 7.4");
 
-  script_tag(name: "solution" , value:"Upgrade to HP System Management Homepage
+  script_tag(name:"solution", value:"Upgrade to HP System Management Homepage
   (SMH) 7.4 or later. For updates refer to
   http://h18013.www1.hp.com/products/servers/management/agents/index.html");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://h20564.www2.hp.com/portal/site/hpsc/public/kb/docDisplay?docId=emr_na-c04463322");
+  script_xref(name:"URL", value:"https://h20564.www2.hp.com/portal/site/hpsc/public/kb/docDisplay?docId=emr_na-c04463322");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -80,17 +81,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-smhPort = 0;
-smhVer = NULL;
-
-## Get HP SMH Port
 if(!smhPort = get_app_port(cpe:CPE)) exit(0);
 
-## Get HP SMH Version
 if(!smhVer = get_app_version(cpe:CPE, port:smhPort)) exit(0);
 
-## Check for HP System Management Homepage versions
 if(version_is_less(version:smhVer, test_version:"7.4"))
 {
   security_message(smhPort);

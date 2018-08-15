@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_web_gateway_info_disc_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_mcafee_web_gateway_info_disc_vuln.nasl 10954 2018-08-14 12:43:10Z mmartin $
 #
 # McAfee Web Gateway Information Disclosure Vulnerability
 #
@@ -29,39 +29,39 @@ CPE = "cpe:/a:mcafee:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804839");
-  script_version("$Revision: 6769 $");
+  script_version("$Revision: 10954 $");
   script_cve_id("CVE-2014-6064");
   script_bugtraq_id(69556);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:43:10 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-09 17:31:29 +0530 (Tue, 09 Sep 2014)");
 
   script_name("McAfee Web Gateway Information Disclosure Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with McAfee Web
+  script_tag(name:"summary", value:"This host is installed with McAfee Web
   Gateway and is prone to information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version of McAfee Web
+  script_tag(name:"vuldetect", value:"Get the installed version of McAfee Web
   Gateway with the help of detect NVT and check the version is vulnerable or
   not.");
 
-  script_tag(name: "insight" , value: "The flaw is due to an error in admin
+  script_tag(name:"insight", value:"The flaw is due to an error in admin
   interface while viewing the top level Accounts tab");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow an
+  script_tag(name:"impact", value:"Successful exploitation will allow an
   authenticated remote attacker to gain access to SHA1 hashed MWG administrator
   password information.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value: "McAfee Web Gateway before 7.3.2.9 and
+  script_tag(name:"affected", value:"McAfee Web Gateway before 7.3.2.9 and
   7.4.x before 7.4.2");
 
-  script_tag(name: "solution" , value: "Upgrade to McAfee Web Gateway version
+  script_tag(name:"solution", value:"Upgrade to McAfee Web Gateway version
   7.3.2.9 or 7.4.2 or later, For updates refer to http://www.mcafee.com/us");
-
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1030675");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1030675");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");
@@ -76,16 +76,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable initialization
-mwgPort = "";
-mwgVer = "";
-
-## Get Application HTTP Port
 if(!mwgPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get application version
 mwgVer = get_app_version(cpe:CPE, port:mwgPort);
 if(!mwgVer){
   exit(0);

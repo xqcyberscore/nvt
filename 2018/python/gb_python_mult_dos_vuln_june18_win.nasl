@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_mult_dos_vuln_june18_win.nasl 10371 2018-06-29 13:27:39Z santu $
+# $Id: gb_python_mult_dos_vuln_june18_win.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
 #
 # Python Multiple Denial of Service Vulnerabilities June18 (Windows)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:python:python";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813546");
-  script_version("$Revision: 10371 $");
+  script_version("$Revision: 10965 $");
   script_cve_id("CVE-2018-1060", "CVE-2018-1061");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-29 15:27:39 +0200 (Fri, 29 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 13:48:30 +0530 (Tue, 26 Jun 2018)");
   script_name("Python Multiple Denial of Service Vulnerabilities June18 (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with python and is
   prone to multiple denial of service vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
 

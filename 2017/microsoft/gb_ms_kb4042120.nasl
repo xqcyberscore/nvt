@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4042120.nasl 7689 2017-11-08 05:46:44Z teissa $
+# $Id: gb_ms_kb4042120.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4042120)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811920");
-  script_version("$Revision: 7689 $");
-  script_cve_id("CVE-2017-8694", "CVE-2017-11765", "CVE-2017-11814", "CVE-2017-11824", 
+  script_version("$Revision: 10967 $");
+  script_cve_id("CVE-2017-8694", "CVE-2017-11765", "CVE-2017-11814", "CVE-2017-11824",
                 "CVE-2017-8689");
   script_bugtraq_id(101100, 101111, 101093, 101099, 101128);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-08 06:46:44 +0100 (Wed, 08 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 08:44:10 +0530 (Wed, 11 Oct 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4042120)");
 
@@ -44,7 +44,7 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
-  
+
   - The Windows kernel improperly handles objects in memory.
 
   - The Windows kernel-mode driver fails to properly handle objects in memory.
@@ -57,8 +57,7 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2");
+  script_tag(name:"affected", value:"Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
@@ -67,11 +66,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4042120");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4042120");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -82,16 +82,10 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-fileVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2008:3, win2008x64:3) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
@@ -103,7 +97,6 @@ if(!fileVer){
   exit(0);
 }
 
-## Check for win32k.sys version
 if(version_is_less(version:fileVer, test_version:"6.0.6002.24200"))
 {
   report = 'File checked:     ' + sysPath + "\win32k.sys" + '\n' +

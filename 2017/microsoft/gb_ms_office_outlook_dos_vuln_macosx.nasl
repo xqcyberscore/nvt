@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_outlook_dos_vuln_macosx.nasl 7202 2017-09-20 12:47:53Z santu $
+# $Id: gb_ms_office_outlook_dos_vuln_macosx.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Microsoft Office Outlook Denial of Service Vulnerability (Mac OS X)
 #
@@ -29,28 +29,26 @@ CPE = "cpe:/a:microsoft:office";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811832");
-  script_version("$Revision: 7202 $");
+  script_version("$Revision: 10967 $");
   script_cve_id("CVE-2014-2730");
   script_bugtraq_id(78020);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 14:47:53 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-09-19 15:38:09 +0530 (Tue, 19 Sep 2017)");
-  ##Checking for outlook 2007 2010 and 2013, Will Result in FP if its patched already
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("Microsoft Office Outlook Denial of Service Vulnerability (Mac OS X)");
 
   script_tag(name:"summary", value:"This host is installed with Microsoft Office Outlook
   and is prone to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"The flaw is due to the XML parser in Microsoft 
+  script_tag(name:"insight", value:"The flaw is due to the XML parser in Microsoft
   Office does not properly detect recursion during entity expansion.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allows remote 
-  attackers to cause a denial of service (memory consumption and persistent 
+  script_tag(name:"impact", value:"Successful exploitation will allows remote
+  attackers to cause a denial of service (memory consumption and persistent
   application hang) via a crafted XML document.
 
   Impact Level: Application");
@@ -63,7 +61,7 @@ if(description)
   mitigates the attack.");
 
   script_tag(name:"solution_type", value:"Mitigation");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/531722/100/0/threaded");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/531722/100/0/threaded");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
@@ -75,18 +73,12 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-offVer = "";
-report = "";
-
-## Get the version from KB
 if(!offVer = get_kb_item("MS/Office/MacOSX/Ver")){
   exit(0);
 }
 
-## Check for Outlook 2011 for Mac
 if(offVer =~ "^(14\.)")
-{ 
+{
   report = report_fixed_ver(installed_version: offVer, fixed_version: "Mitigation");
   security_message(data:report);
   exit(0);

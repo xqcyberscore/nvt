@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_easy_post_types_xss_vuln.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_wordpress_easy_post_types_xss_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
 #
 # WordPress Easy Post Types 'media.php' Cross Site Scripting Vulnerability
 #
@@ -29,49 +29,32 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804758");
-  script_version("$Revision: 6637 $");
+  script_version("$Revision: 10952 $");
   script_cve_id("CVE-2014-4524");
   script_bugtraq_id(69210);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-08-26 16:39:24 +0530 (Tue, 26 Aug 2014)");
   script_name("WordPress Easy Post Types 'media.php' Cross Site Scripting Vulnerability");
 
-  tag_summary =
-"This host is installed with WordPress Easy Post Types Plugin and is prone
-to cross site scripting vulnerability.";
 
-  tag_vuldetect =
-"Send a crafted data via HTTP GET request and check whether it is able to read
-cookie or not.";
-
-  tag_insight =
-"Flaw exists as the classes/custom-image/media.php script does not validate
-input to the 'ref' GET parameter before returning it to users.";
-
-  tag_impact =
-"Successful exploitation will allow attacker to execute arbitrary HTML and
+  script_tag(name:"summary", value:"This host is installed with WordPress Easy Post Types Plugin and is prone
+to cross site scripting vulnerability.");
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to read
+cookie or not.");
+  script_tag(name:"insight", value:"Flaw exists as the classes/custom-image/media.php script does not validate
+input to the 'ref' GET parameter before returning it to users.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
 script code in a user's browser session in the context of an affected site.
 
-Impact Level: Application";
+Impact Level: Application");
+  script_tag(name:"affected", value:"WordPress WP Easy Post Types Plugin version 1.4.3, and possibly prior.");
+  script_tag(name:"solution", value:"Upgrade to version 1.4.4 or higher,
+For updates refer to http://wordpress.org/plugins/easy-post-types");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  tag_affected =
-"WordPress WP Easy Post Types Plugin version 1.4.3, and possibly prior.";
-
-  tag_solution =
-"Upgrade to version 1.4.4 or higher,
-For updates refer to http://wordpress.org/plugins/easy-post-types";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-
-  script_xref(name : "URL" , value : "http://codevigilant.com/disclosure/wp-plugin-easy-post-types-a3-cross-site-scripting-xss");
+  script_xref(name:"URL", value:"http://codevigilant.com/disclosure/wp-plugin-easy-post-types-a3-cross-site-scripting-xss");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -87,29 +70,20 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Construct the attack request
 url = dir + '/wp-content/plugins/easy-post-types/classes/custom-image/media.php?'
           + 'ref=ref"</script><script>alert(document.cookie)</script>&#';
 
-## Confirm the Exploit
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
    pattern:"><script>alert\(document.cookie\)</script>",
-   extra_check:">Images Avaliable<"))
+   extra_check:">Images Available<"))
 {
   security_message(http_port);
   exit(0);

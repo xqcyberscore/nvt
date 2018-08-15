@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4042123.nasl 7604 2017-11-01 06:48:12Z asteins $
+# $Id: gb_ms_kb4042123.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Windows Shell Memory Corruption Vulnerability (KB4042123)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812020");
-  script_version("$Revision: 7604 $");
+  script_version("$Revision: 10967 $");
   script_cve_id("CVE-2017-8727");
   script_bugtraq_id(101142);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-01 07:48:12 +0100 (Wed, 01 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 09:16:21 +0530 (Wed, 11 Oct 2017)");
   script_name("Windows Shell Memory Corruption Vulnerability (KB4042123)");
 
@@ -48,7 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker
   who successfully exploited the vulnerability to gain the same user rights as
-  the current user. 
+  the current user.
 
   Impact Level: System");
 
@@ -61,11 +61,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4042123");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4042123");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -76,16 +77,10 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-fileVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2008:3, win2008x64:3) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
@@ -97,7 +92,6 @@ if(!fileVer){
   exit(0);
 }
 
-## Check for msctf.dll version
 if(version_is_less(version:fileVer, test_version:"6.0.6002.24202"))
 {
   report = 'File checked:     ' + sysPath + "\msctf.dll" + '\n' +

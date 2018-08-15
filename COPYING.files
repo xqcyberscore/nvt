@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 14 Aug 2018 09:01:32 +0200
+# Automatically created on:  Wed, 15 Aug 2018 09:16:21 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38985,6 +38985,7 @@
 2018/debian/deb_4268.nasl: GPLv2+
 2018/debian/deb_4269.nasl: GPLv2+
 2018/debian/deb_4270.nasl: GPLv2+
+2018/debian/deb_4271.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -40541,6 +40542,7 @@
 2018/grammarly/gb_grammarly_ext_google_chrome_info_disc_vuln_lin.nasl: GPLv2+
 2018/grammarly/gb_grammarly_ext_google_chrome_info_disc_vuln_macosx.nasl: GPLv2+
 2018/grammarly/gb_grammarly_ext_google_chrome_info_disc_vuln_win.nasl: GPLv2+
+2018/grandstream/gb_grandstream_web_default_credentials.nasl: GPLv2+
 2018/graphicsmagick/gb_graphicsmagick_dos_vuln_win.nasl: GPLv2+
 2018/graphicsmagick/gb_graphicsmagick_mult_dos_vuln_lin.nasl: GPLv2+
 2018/graphicsmagick/gb_graphicsmagick_mult_dos_vuln_win.nasl: GPLv2+
@@ -40592,6 +40594,7 @@
 2018/invoiceplane/gb_invoiceplane_xss_vuln.nasl: GPLv2+
 2018/isc/gb_isc_bind_access_control_vuln_jun18_lin.nasl: GPLv2+
 2018/isc/gb_isc_bind_access_control_vuln_jun18_win.nasl: GPLv2+
+2018/isc/gb_isc_bind_deny_answer_aliases_dos_vuln.nasl: GPLv2+
 2018/isc/gb_isc_bind_dos_vuln_jan18_lin.nasl: GPLv2+
 2018/isc/gb_isc_bind_dos_vuln_jan18_win.nasl: GPLv2+
 2018/isc/gb_isc_bind_mult_dos_vuln_may18.nasl: GPLv2+
@@ -40641,6 +40644,8 @@
 2018/mantisbt/gb_mantisbt_sql_param_sql_inj_vuln_feb18_win.nasl: GPLv2+
 2018/mantisbt/gb_mantisbt_view_all_bug_page_path_disc_vuln_lin.nasl: GPLv2+
 2018/mantisbt/gb_mantisbt_view_all_bug_page_path_disc_vuln_win.nasl: GPLv2+
+2018/mantisbt/gb_mantisbt_view_n_edit_filters_mult_xss_vuln_lin.nasl: GPLv2+
+2018/mantisbt/gb_mantisbt_view_n_edit_filters_mult_xss_vuln_win.nasl: GPLv2+
 2018/mariadb/gb_mariadb_access_bypass_vuln_lin.nasl: GPLv2+
 2018/mariadb/gb_mariadb_access_bypass_vuln_win.nasl: GPLv2+
 2018/mautic/gb_mautic_inf_disc_vuln.nasl: GPLv2+
@@ -41034,6 +41039,7 @@
 2018/openaudit/gb_open_audit_groups_page_xss_vuln.nasl: GPLv2+
 2018/opencart/gb_opencart_mult_vuln.nasl: GPLv2+
 2018/openemr/gb_openemr_mult_vuln_0318.nasl: GPLv2+
+2018/openemr/gb_openemr_mult_vuln_0818.nasl: GPLv2+
 2018/openemr/gb_openemr_mult_vuln.nasl: GPLv2+
 2018/openemr/gb_openemr_newlistname_sql_injec_vuln.nasl: GPLv2+
 2018/openoffice/gb_openoffice_writer_odt_info_disclosure_vuln_may18_win.nasl: GPLv2+
@@ -41231,6 +41237,7 @@
 2018/oracle/gb_oracle_db_database_vault_component_unspecified_vuln.nasl: GPLv2+
 2018/oracle/gb_oracle_db_emctl_component_unspecified_vuln01.nasl: GPLv2+
 2018/oracle/gb_oracle_db_emctl_component_unspecified_vuln02.nasl: GPLv2+
+2018/oracle/gb_oracle_db_java_vm_component_unspecified_vuln_aug18.nasl: GPLv2+
 2018/oracle/gb_oracle_db_java_vm_component_unspecified_vuln_july18.nasl: GPLv2+
 2018/oracle/gb_oracle_db_java_vm_component_unspecified_vuln.nasl: GPLv2+
 2018/oracle/gb_oracle_db_mult_unspecified_vuln01_mar18.nasl: GPLv2+
@@ -41394,6 +41401,7 @@
 2018/qnap/gb_qnap_qts_info_disc_vuln_apr18.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_mult_clamav_vuln_june18.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_mult_php_vuln_june18.nasl: GPLv2+
+2018/qnap/gb_qnap_qts_nas-201808-13.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_rce_vuln_jun18.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_vpnfilter_malware.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_xss_vuln_apr18.nasl: GPLv2+
@@ -41696,6 +41704,7 @@
 2018/vlc/gb_vlc_media_player_dos_vuln_may18_win.nasl: GPLv2+
 2018/vlc/gb_vlc_mkv_files_arbitrary_code_exec_macosx.nasl: GPLv2+
 2018/vlc/gb_vlc_mkv_files_arbitrary_code_exec_win.nasl: GPLv2+
+2018/vmware/gb_vmware_horizon_client_out_of_bounds_read_vuln_win.nasl: GPLv2+
 2018/vmware/gb_vmware_tools_sf_out_of_bounds_read_vuln_win.nasl: GPLv2+
 2018/wampserver/gb_wampserver_csrf_vuln.nasl: GPLv2+
 2018/wampserver/gb_wampserver_xss_vuln.nasl: GPLv2+
@@ -41756,6 +41765,8 @@
 2018/wordpress/gb_wordpress_nextgen-gallery_local_file_incl_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_ninja-forms_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_photo-gallery_xss_vuln.nasl: GPLv2+
+2018/wordpress/gb_wordpress_php_file_upload_vuln_aug18_lin.nasl: GPLv2+
+2018/wordpress/gb_wordpress_php_file_upload_vuln_aug18_win.nasl: GPLv2+
 2018/wordpress/gb_wordpress_pixelyoursite_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_simple-download-monitor_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_smart-google-code-inserter_mult_vuln.nasl: GPLv2+
@@ -42280,6 +42291,7 @@ gb_corel_pdf_fusion_detect_win.nasl: GPLv2+
 gb_coremailxt_detect.nasl: GPLv2+
 gb_couchdb_detect.nasl: GPLv2+
 gb_cpcreator_detect.nasl: GPLv2+
+gb_crestron_cip_detect.nasl: GPLv2+
 gb_crestron_ctp_detect.nasl: GPLv2+
 gb_crux_products_detect.nasl: GPLv2+
 gb_cscart_detect.nasl: GPLv2+
@@ -42517,6 +42529,7 @@ gb_gpon_home_router_detect.nasl: GPLv2+
 gb_grabit_detect.nasl: GPLv2+
 gb_grandstream_gxp_detect.nasl: GPLv2+
 gb_grandstream_ucm_detect.nasl: GPLv2+
+gb_grandstream_web_detect.nasl: GPLv2+
 gb_graphicsmagick_detect_lin.nasl: GPLv2+
 gb_graphicsmagick_detect_win.nasl: GPLv2+
 gb_graylog_web_detect.nasl: GPLv2+
@@ -43466,6 +43479,7 @@ gb_vmware_esxi_init.nasl: GPLv2+
 gb_vmware_esx_snmp_detect.nasl: GPLv2+
 gb_vmware_esx_web_detect.nasl: GPLv2+
 gb_vmware_horizon_client_detect_lin.nasl: GPLv2+
+gb_vmware_horizon_client_detect_win.nasl: GPLv2+
 gb_vmware_nsx_version_api.nasl: GPLv2+
 gb_vmware_nsx_version.nasl: GPLv2+
 gb_vmware_nsx_webgui_detect.nasl: GPLv2+
@@ -43608,7 +43622,6 @@ GlassFish_detect.nasl: GPLv2+
 global_settings.inc: GPLv2
 global_settings.nasl: GPLv2
 gnutella_detect.nasl: GPLv2
-gos_funcs.inc: GPLv2+
 gravity_board_x_detect.nasl: GPLv2+
 gsf/2008/debian/deb_001_1.nasl: GPLv2
 gsf/2008/debian/deb_002_1.nasl: GPLv2
@@ -58746,6 +58759,7 @@ gsf/2018/atlassian/gb_atlassian_crowd_oauth_ssrf_vuln.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_crucible_improper_auth_vuln.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_crucible_xss_vuln.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_fisheye_crucible_arg_inj_vuln_win.nasl: GPLv2+
+gsf/2018/atlassian/gb_atlassian_fisheye_crucible_fe-7081_cruc-8304.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_fisheye_crucible_mult_vuln.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_fisheye_crucible_oauth_ssrf_vuln.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_fisheye_crucible_path_trav_vuln.nasl: GPLv2+
@@ -58976,6 +58990,7 @@ gsf/2018/citrix/gb_xenserver_ctx234679.nasl: GPLv2+
 gsf/2018/citrix/gb_xenserver_ctx235225.nasl: GPLv2+
 gsf/2018/citrix/gb_xenserver_ctx235745.nasl: GPLv2+
 gsf/2018/citrix/gb_xenserver_ctx235748.nasl: GPLv2+
+gsf/2018/citrix/gb_xenserver_ctx236548.nasl: GPLv2+
 gsf/2018/communigate/gb_communigatepro_spoof_vuln.nasl: GPLv2+
 gsf/2018/communigate/gb_communigatepro_xss_vuln.nasl: GPLv2+
 gsf/2018/crestron/gb_crestron_cmd_inj_vuln.nasl: GPLv2+
@@ -59023,6 +59038,7 @@ gsf/2018/f5/gb_f5_big_ip_K15217245.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K15526101.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K16355.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K16674.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K16845.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K17403481.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K18015201.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K18174924.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_session_hijacking_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: gb_drupal_session_hijacking_vuln.nasl 10953 2018-08-14 12:06:42Z mmartin $
 #
 # Drupal Session Hijacking Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105935");
-  script_version("$Revision: 6692 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
-  script_tag(name : "creation_date", value : "2014-12-09 16:55:49 +0700 (Tue, 09 Dec 2014)");
-  script_tag(name : "cvss_base", value : "6.8");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 10953 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:06:42 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-12-09 16:55:49 +0700 (Tue, 09 Dec 2014)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2014-9015");
   script_bugtraq_id(71195);
@@ -51,22 +51,22 @@ if (description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("drupal/installed");
 
-  script_tag(name : "summary", value : "Drupal is vulnerable to session hijacking.");
+  script_tag(name:"summary", value:"Drupal is vulnerable to session hijacking.");
 
-  script_tag(name : "vuldetect", value : "Check the version of Drupal.");
+  script_tag(name:"vuldetect", value:"Check the version of Drupal.");
 
-  script_tag(name : "insight", value : "A special crafted request can give a user access to another
+  script_tag(name:"insight", value:"A special crafted request can give a user access to another
 user's session, allowing an attacker to hijack a random session.");
 
-  script_tag(name : "impact", value : "An attacker may gain unauthorized access to the application.
+  script_tag(name:"impact", value:"An attacker may gain unauthorized access to the application.
 
 Impact Level: Application");
 
-  script_tag(name : "affected", value : "Drupal 6.x versions prior to 6.34. Drupal 7.x versions prior to 7.34.");
+  script_tag(name:"affected", value:"Drupal 6.x versions prior to 6.34. Drupal 7.x versions prior to 7.34.");
 
-  script_tag(name : "solution", value : "Upgrade to Drupal 6.34, 7.34 or later");
-
-  script_xref(name : "URL", value : "https://www.drupal.org/SA-CORE-2014-006");
+  script_tag(name:"solution", value:"Upgrade to Drupal 6.34, 7.34 or later");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"https://www.drupal.org/SA-CORE-2014-006");
 
   exit(0);
 }

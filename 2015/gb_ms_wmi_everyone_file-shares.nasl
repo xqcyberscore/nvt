@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_wmi_everyone_file-shares.nasl 10626 2018-07-25 15:30:18Z cfischer $
+# $Id: gb_ms_wmi_everyone_file-shares.nasl 10958 2018-08-14 13:49:12Z cfischer $
 #
 # Get Windows File-Shares, shared for Everyone
 #
@@ -25,7 +25,7 @@
 ###############################################################################
 
 # nb: Keep above the description part as it is used there
-include("gos_funcs.inc");
+include("misc_func.inc");
 include("version_func.inc");
 
 # nb: includes in the description phase won't work anymore from GOS 4.2.11 (OpenVAS TBD)
@@ -46,8 +46,8 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96198");
-  script_version("$Revision: 10626 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:30:18 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 10958 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:49:12 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:13:18 +0200 (Tue, 08 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -63,13 +63,13 @@ if(description)
   if( old_routine ) {
     script_add_preference(name:"Run routine (please see NOTE)", type:"checkbox", value:"no");
 
-    script_tag(name:"summary", value:"Get Windows File-Shares, shared for Everyone.
+  script_tag(name:"summary", value:"Get Windows File-Shares, shared for Everyone.
 
     NOTE: This plugin is using the 'win_cmd_exec' command from openvas-smb which is deploying a
     service 'winexesvc.exe' to the target system. Because of this the plugin is disabled by default
     to avoid modifications on the target system. Please see the script preferences on how to enable this.");
   } else {
-    script_tag(name:"summary", value:"Get Windows File-Shares, shared for Everyone.");
+  script_tag(name:"summary", value:"Get Windows File-Shares, shared for Everyone.");
   }
 
   script_tag(name:"qod_type", value:"registry");

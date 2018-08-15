@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_contact_form_7integrations_mult_xss_vuln.nasl 6995 2017-08-23 11:52:03Z teissa $
+# $Id: gb_wp_contact_form_7integrations_mult_xss_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
 #
 # Wordpress Contact Form 7 Integrations Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804770");
-  script_version("$Revision: 6995 $");
+  script_version("$Revision: 10952 $");
   script_cve_id("CVE-2014-6445");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-30 10:23:50 +0530 (Tue, 30 Sep 2014)");
 
   script_name("Wordpress Contact Form 7 Integrations Multiple Cross Site Scripting Vulnerabilities");
@@ -59,9 +59,9 @@ if(description)
 
   script_tag(name:"solution", value:"Upgrade to version 1.3.11 or later,
   For updates refer to https://wordpress.org/plugins/contact-form-7-integrations");
-
-  script_xref(name : "URL" , value : "http://research.g0blin.co.uk/cve-2014-6445");
-  script_xref(name : "URL" , value : "https://wordpress.org/plugins/contact-form-7-integrations/changelog");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://research.g0blin.co.uk/cve-2014-6445");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/contact-form-7-integrations/changelog");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -78,26 +78,17 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Construct the attack request
 url = dir + "/wp-content/plugins/contact-form-7-integrations/includes"
           + "/toAdmin.php?uE=1&uC=');alert(document.cookie);%3C/script%3E";
 
-## Confirm the Exploit
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
    pattern:"alert\(document.cookie\);</script>",
    extra_check:">Loading your ContactUs.com Admin Panel<"))

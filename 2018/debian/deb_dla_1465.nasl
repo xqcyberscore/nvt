@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1465.nasl 10943 2018-08-14 06:02:20Z cfischer $
+# $Id: deb_dla_1465.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
 #
 # Auto-generated from advisory DLA 1465-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,17 +31,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891465");
-  script_version("$Revision: 10943 $");
+  script_version("$Revision: 10965 $");
   script_cve_id("CVE-2017-12081", "CVE-2017-12082", "CVE-2017-12086", "CVE-2017-12099", "CVE-2017-12100",
                 "CVE-2017-12101", "CVE-2017-12102", "CVE-2017-12103", "CVE-2017-12104", "CVE-2017-12105",
                 "CVE-2017-2899", "CVE-2017-2900", "CVE-2017-2901", "CVE-2017-2902", "CVE-2017-2903",
                 "CVE-2017-2904", "CVE-2017-2905", "CVE-2017-2906", "CVE-2017-2907", "CVE-2017-2908",
                 "CVE-2017-2918");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1465-1] blender security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 08:02:20 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-14 00:00:00 +0200 (Tue, 14 Aug 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

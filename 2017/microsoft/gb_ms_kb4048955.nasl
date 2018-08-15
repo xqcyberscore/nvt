@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4048955.nasl 7992 2017-12-05 08:34:22Z teissa $
+# $Id: gb_ms_kb4048955.nasl 10967 2018-08-15 05:53:29Z cfischer $
 #
 # Microsoft Windows Multiple Vulnerabilities (KB4048955)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812088");
-  script_version("$Revision: 7992 $");
-  script_cve_id("CVE-2017-11839", "CVE-2017-11840", "CVE-2017-11841", "CVE-2017-11843", 
-                "CVE-2017-11873", "CVE-2017-11874", "CVE-2017-11791", "CVE-2017-11803", 
-                "CVE-2017-11827", "CVE-2017-11833", "CVE-2017-11834", "CVE-2017-11836", 
-                "CVE-2017-11837", "CVE-2017-11838", "CVE-2017-11844", "CVE-2017-11846", 
-                "CVE-2017-11848", "CVE-2017-11855", "CVE-2017-11856", "CVE-2017-11858", 
-                "CVE-2017-11861", "CVE-2017-11862", "CVE-2017-11863", "CVE-2017-11866", 
+  script_version("$Revision: 10967 $");
+  script_cve_id("CVE-2017-11839", "CVE-2017-11840", "CVE-2017-11841", "CVE-2017-11843",
+                "CVE-2017-11873", "CVE-2017-11874", "CVE-2017-11791", "CVE-2017-11803",
+                "CVE-2017-11827", "CVE-2017-11833", "CVE-2017-11834", "CVE-2017-11836",
+                "CVE-2017-11837", "CVE-2017-11838", "CVE-2017-11844", "CVE-2017-11846",
+                "CVE-2017-11848", "CVE-2017-11855", "CVE-2017-11856", "CVE-2017-11858",
+                "CVE-2017-11861", "CVE-2017-11862", "CVE-2017-11863", "CVE-2017-11866",
                 "CVE-2017-11869", "CVE-2017-11870", "CVE-2017-11871");
   script_bugtraq_id(101735, 101734, 101740, 101728, 101750, 101715, 101704, 101703,
                     101706, 101725, 101727, 101722, 101737, 101707, 101741, 101709,
@@ -41,7 +41,7 @@ if(description)
                     101730);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-05 09:34:22 +0100 (Tue, 05 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 07:53:29 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-11-15 08:12:00 +0530 (Wed, 15 Nov 2017)");
   script_name("Microsoft Windows Multiple Vulnerabilities (KB4048955)");
 
@@ -52,23 +52,23 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
-  
+
   - An error when Internet Explorer improperly accesses objects in memory.
 
   - An error in the way that Microsoft Edge handles cross-origin requests.
 
   - An error when the scripting engine does not properly handle objects in memory
-    in Internet Explorer. 
+    in Internet Explorer.
 
   - An error in the way the scripting engine handles objects in memory in Microsoft
     browsers.
 
   - An error in the way that the scripting engine handles objects in memory in
-    Microsoft Edge. 
+    Microsoft Edge.
 
   - An error in Microsoft Edge as a result of how memory is accessed in code
     compiled by the Edge Just-In-Time (JIT) compiler that allows Control Flow Guard
-    (CFG) to be bypassed. 
+    (CFG) to be bypassed.
 
   - An error in the way that Microsoft browsers access objects in memory.
 
@@ -76,10 +76,10 @@ if(description)
 
   - An error when Internet Explorer improperly handles page content, which could
     allow an attacker to detect the navigation of the user leaving a maliciously
-    crafted page. 
+    crafted page.
 
   - An error when the scripting engine does not properly handle objects in memory
-    in Microsoft browsers. 
+    in Microsoft browsers.
 
   - An error in Microsoft Edge when the Edge Content Security Policy (CSP) fails to
     properly validate certain specially crafted documents.");
@@ -88,7 +88,7 @@ if(description)
   to gain the same user rights as the current user, determine the origin of all
   webpages in the affected browser, gain access to potentially sensitive
   information, bypass certain security features and trick a user into loading a
-  page containing malicious content. 
+  page containing malicious content.
 
   Impact Level: System");
 
@@ -103,11 +103,12 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/help/4048955");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/help/4048955");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }

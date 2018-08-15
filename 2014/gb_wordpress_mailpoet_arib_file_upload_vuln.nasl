@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mailpoet_arib_file_upload_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
+# $Id: gb_wordpress_mailpoet_arib_file_upload_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
 #
 # WordPress MailPoet Newsletters Plugin Remote File Upload Vulnerability
 #
@@ -29,51 +29,34 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804724");
-  script_version("$Revision: 6759 $");
+  script_version("$Revision: 10952 $");
   script_cve_id("CVE-2014-4725");
   script_bugtraq_id(68310);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-07-28 12:35:07 +0530 (Mon, 28 Jul 2014)");
   script_name("WordPress MailPoet Newsletters Plugin Remote File Upload Vulnerability");
 
-  tag_summary =
-"This host is installed with Wordpress MailPoet Plugin and is prone to remote
-file upload vulnerability.";
 
-  tag_vuldetect =
-"Send a crafted data via HTTP GET request and check whether it is is able to
-upload file or not.";
-
-  tag_insight =
-"Flaw is due to the program uses the admin_init hook to determine if a user
-is an admin.";
-
-  tag_impact =
-"Successful exploitation will allow unauthenticated remote attacker to upload
+  script_tag(name:"summary", value:"This host is installed with Wordpress MailPoet Plugin and is prone to remote
+file upload vulnerability.");
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is is able to
+upload file or not.");
+  script_tag(name:"insight", value:"Flaw is due to the program uses the admin_init hook to determine if a user
+is an admin.");
+  script_tag(name:"impact", value:"Successful exploitation will allow unauthenticated remote attacker to upload
 files in an affected site.
 
-Impact Level: Application";
+Impact Level: Application");
+  script_tag(name:"affected", value:"WordPress MailPoet Newsletters Plugin version prior to 2.6.7.");
+  script_tag(name:"solution", value:"Upgrade to version 2.6.7 or later,
+For updates refer to http://wordpress.org/plugins/wysija-newsletters");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  tag_affected =
-"WordPress MailPoet Newsletters Plugin version prior to 2.6.7.";
-
-  tag_solution =
-"Upgrade to version 2.6.7 or later,
-For updates refer to http://wordpress.org/plugins/wysija-newsletters";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/33991");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127363");
-  script_xref(name : "URL" , value : "http://blog.sucuri.net/2014/07/remote-file-upload-vulnerability-on-mailpoet-wysija-newsletters.html");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/33991");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127363");
+  script_xref(name:"URL", value:"http://blog.sucuri.net/2014/07/remote-file-upload-vulnerability-on-mailpoet-wysija-newsletters.html");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -89,22 +72,14 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Construct the attack request
 url = dir + '/wp-admin/admin-post.php?page=wysija_campaigns&action=themes';
 
 zipFile = raw_string(
@@ -178,11 +153,9 @@ rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 ## Uploaded file URL
 url = dir + '/wp-content/uploads/wysija/themes/EXP1A1B1C/EXP2A2B2C.php';
 
-## Confirm the Exploit and Deleting uploaded file
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
    pattern:">phpinfo\(\)<", extra_check:">PHP Documentation<"))
 {
-  ## Confirm Deletion
   if(http_vuln_check(port:http_port, url:url,
      check_header:FALSE, pattern:"HTTP/1.. 404"))
   {
