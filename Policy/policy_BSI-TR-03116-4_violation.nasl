@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: policy_BSI-TR-03116-4_violation.nasl 10958 2018-08-14 13:49:12Z cfischer $
+# $Id: policy_BSI-TR-03116-4_violation.nasl 10987 2018-08-15 13:55:40Z cfischer $
 #
 # List negative results from Policy for BSI-TR-03116-4 Test
 #
@@ -46,8 +46,8 @@ if( defined_func( "get_local_gos_version" ) &&
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96179");
-  script_version("$Revision: 10958 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 15:49:12 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 10987 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 15:55:40 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-03-07 09:23:42 +0100 (Mon, 07 Mar 2016)");
   if( use_severity ) {
   script_tag(name:"cvss_base", value:"10.0");
@@ -96,9 +96,9 @@ result = get_kb_item( "policy/BSI-TR-03116-4/" + sslPort + "/fail" );
 
 if( result ) {
   if( use_severity )
-    security_message( port:sslPort, data:report );
+    security_message( port:sslPort, data:result );
   else
-    log_message( port:sslPort, data:report );
+    log_message( port:sslPort, data:result );
 }
 
 exit( 0 );

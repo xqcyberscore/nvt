@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smbcl_func.inc 6841 2017-08-03 11:59:21Z emoss $
+# $Id: smbcl_func.inc 10986 2018-08-15 13:38:20Z cfischer $
 # Description: functions for smb client tool
 #
 # Authors:
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 6841 $
+# $Revision: 10986 $
 #
 ###############################################################################
 
@@ -91,6 +91,10 @@ function smbversion() {
 }
 
 function is_domain() {
+
+  # TODO: Remove once openvas-nasl-lint can handle such a missing include
+  # from within the same include.
+  if(!defined_func("kb_smb_domain")) include("smb_nt.inc");
 
   local_var domain;
 

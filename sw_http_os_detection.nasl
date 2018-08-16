@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 10963 2018-08-14 15:46:05Z cfischer $
+# $Id: sw_http_os_detection.nasl 10982 2018-08-15 12:47:39Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 10963 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 17:46:05 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 10982 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:47:39 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -55,16 +55,16 @@ include("http_keepalive.inc");
 
 SCRIPT_DESC = "HTTP OS Identification";
 
-function check_http_banner( port ) {
+function check_http_banner( port, banner ) {
 
   local_var port, banner, banner_type, version;
 
-  banner = get_http_banner( port:port );
+  if( banner && banner = egrep( pattern:"^Server:.*$", string:banner, icase:TRUE ) ) {
 
-  if( banner && banner = egrep( pattern:"^Server:(.*)$", string:banner, icase:TRUE ) ) {
+    banner = chomp( banner );
 
     # BigIP Load Balancer on the frontend, registering this could report/use a wrong OS for the backend server
-    if( banner == "Server: BigIP" || banner == 'Server: BigIP\r\n' ) return;
+    if( banner == "Server: BigIP" ) return;
 
     # API TCP listener is cross-platform
     if( "Server: Icinga" >< banner ) return;
@@ -76,23 +76,75 @@ function check_http_banner( port ) {
     # Server: EWS-NIC5/96.55
     # Running on different printers from e.g. Xerox, Dell or Epson. The OS is undefined so just return...
     # nb: Keep in single quotes
-    if( egrep( pattern:'^Server: EWS-NIC5/([0-9.]+)[\r\n]*$', string:banner ) ) return;
+    if( egrep( pattern:"^Server: EWS-NIC5/[0-9.]+$", string:banner ) ) return;
 
     # Server: CTCFC/1.0
     # Commtouch Anti-Spam Daemon (ctasd.bin) running on Windows and Linux (e.g. IceWarp Suite)
     # nb: Keep in single quotes
-    if( egrep( pattern:'^Server: CTCFC/([0-9.]+)[\r\n]*$', string:banner ) ) return;
+    if( egrep( pattern:"^Server: CTCFC/[0-9.]+$", string:banner ) ) return;
 
     # e.g. Server: SimpleHTTP/0.6 Python/2.7.5 -> Python is cross-platform
     # nb: Keep in single quotes
-    if( egrep( pattern:'^Server: SimpleHTTP/([0-9.]+) Python/([0-9.]+)[\r\n]*$', string:banner ) ) return;
+    if( egrep( pattern:"^Server: SimpleHTTP/[0-9.]+ Python/[0-9.]+$", string:banner ) ) return;
 
     # e.g. Server: MX4J-HTTPD/1.0 -> Java implementation, cross-patform
     # nb: Keep in single quotes
-    if( egrep( pattern:'^Server: MX4J-HTTPD/([0-9.]+)[\r\n]*$', string:banner ) ) return;
+    if( egrep( pattern:"^Server: MX4J-HTTPD/[0-9.]+$", string:banner ) ) return;
 
     # e.g. Server: libwebsockets or server: libwebsockets
-    if( egrep( pattern:'^Server: libwebsockets[\r\n]*$', string:banner, icase:TRUE ) ) return;
+    if( egrep( pattern:"^Server: libwebsockets$", string:banner, icase:TRUE ) ) return;
+
+    if( banner == "Server:" ||
+        banner == "Server: " ||
+        banner == "Server: Undefined" || # Unknown
+        banner == "Server: squid" ||
+        banner == "Server: nginx" ||
+        banner == "Server: Apache" ||
+        banner == "Server: lighttpd" ||
+        banner == "Server: sfcHttpd" ||
+        banner == "Server: Allegro-Software-RomPager" || # Vendor: "Works with any OS vendor and will function without an OS if needed"
+        banner == "Server: Apache-Coyote/1.0" ||
+        banner == "Server: Apache-Coyote/1.1" ||
+        banner == "Server: HASP LM" || # Is running under windows and linux
+        banner == "Server: Mbedthis-Appweb" || # Is running under various OS variants
+        banner == "Server: Embedthis-Appweb" || # Is running under various OS variants
+        banner == "Server: Embedthis-http" || # Is running under various OS variants
+        banner == "Server: GoAhead-Webs" || # Is running under various OS variants
+        banner == "Server: Mojolicious (Perl)" || # Cross-platform
+        banner == "Server: Java/0.0" || # Cross-platform, running on e.g. VIBNODE devices
+        banner == "Server: NessusWWW" || # Nessus could be running on Windows, Linux/Unix or MacOS
+        banner == "Server: Embedded Web Server" ||
+        "erver: BBC " >< banner || # OV Communication Broker runs on various different OS variants
+        "Server: PanWeb Server/" >< banner || # Already covered by gb_palo_alto_webgui_detect.nasl
+        egrep( pattern:"^Server: DHost/[0-9.]+ HttpStk/[0-9.]+$", string:banner ) || # DHost/9.0 HttpStk/1.0 from Novell / NetIQ eDirectory, runs on various OS variants
+        egrep( pattern:"^Server: Tomcat/[0-9.]+$", string:banner ) || # Quite outdated Tomcat, e.g. Server: Tomcat/2.1
+        egrep( pattern:"^Server: Themis [0-9.]+$", string:banner ) || # Currently unknown
+        egrep( pattern:"^Server: Mordac/[0-9.]+$", string:banner ) || # Currently unknown
+        egrep( pattern:"^Server: eHTTP v[0-9.]+$", string:banner ) || # Currently unknown, have seen this on HP ProCurves but also on some login pages without any info
+        egrep( pattern:"^Server: Agranat-EmWeb/[0-9_R]+$" ) || # Currently unknown, might be an Alcatel device...
+        egrep( pattern:"^Server: gSOAP/[0-9.]+$", string:banner ) || # Cross-platform
+        egrep( pattern:"^Server: squid/[0-9.]+$", string:banner ) ||
+        egrep( pattern:"^Server: squid/[0-9.]+\.STABLE[0-9.]+$", string:banner ) || # e.g. Server: squid/2.7.STABLE5
+        egrep( pattern:"^Server: Jetty\([0-9.v]+\)$", string:banner ) || # e.g. Server: Jetty(7.3.1.v20110307)
+        egrep( pattern:"^Server: nginx/[0-9.]+$", string:banner ) ||
+        egrep( pattern:"^Server: Apache/[0-9.]+$", string:banner ) ||
+        egrep( pattern:"^Server: lighttpd/[0-9.]+$", string:banner ) ||
+        egrep( pattern:"^Server: CompaqHTTPServer/[0-9.]+$", string:banner ) || # HP SMH, cross-platform, e.g. Server: CompaqHTTPServer/2.1
+        egrep( pattern:"^Server: http server [0-9.]+$", string:banner ) || # e.g. Server: http server 1.0
+        egrep( pattern:"^Server: Web Server [0-9.]+$", string:banner ) || # e.g. Server: Web Server 1.1
+        egrep( pattern:"^Server: MiniServ/[0-9.]+$", string:banner ) || # From Webmin/Usermin, cross-platform,  e.g. Server: MiniServ/1.550
+        egrep( pattern:"^Server: RealVNC/[0-9.]+$", string:banner ) || # Cross-platform, e.g. Server: RealVNC/4.0
+        egrep( pattern:"^Server: HASP LM/[0-9.]+$", string:banner ) || # Is running under windows and linux
+        egrep( pattern:"^Server: Mbedthis-Appweb/[0-9.]+$", string:banner ) || # Is running under various OS variants
+        egrep( pattern:"^Server: Embedthis-http/[0-9.]+$", string:banner ) || # Is running under various OS variants, banner e.g. Server: Embedthis-http/4.0.0
+        egrep( pattern:"^Server: Embedthis-Appweb/[0-9.]+$", string:banner ) || # Is running under various OS variants
+        egrep( pattern:"^Server: GoAhead-Webs/[0-9.]+$", string:banner ) || # Is running under various OS variants
+        egrep( pattern:"^Server: Allegro-Software-RomPager/[0-9.]+$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
+        egrep( pattern:"^Server: CompaqHTTPServer/[0-9.]+ HPE System Management Homepage$", string:banner ) || # Is running under various OS variants
+        egrep( pattern:"^Server: CompaqHTTPServer/[0-9.]+ HP System Management Homepage/[0-9.]+$", string:banner ) || # e.g. Server: CompaqHTTPServer/9.9 HP System Management Homepage/2.1.2.127, is running under various OS variants
+        egrep( pattern:"^Server: Payara Server +[0-9.]+ #badassfish$", string:banner ) ) { # Cross-platform, e.g. Server: Payara Server  4.1.2.172 #badassfish
+      return;
+    }
 
     banner_type = "HTTP Server banner";
 
@@ -242,7 +294,7 @@ function check_http_banner( port ) {
     # Server: Boa/0.94.14rc21
     if( "Server: GoTTY" >< banner || "Server: Boa" >< banner ) {
       register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      return banner;
+      return;
     }
 
     if( "Microsoft-WinCE" >< banner ) {
@@ -268,32 +320,33 @@ function check_http_banner( port ) {
       return;
     }
 
-    if( banner == 'Server: CPWS\r\n' ) {
+    if( banner == "Server: CPWS" ) {
       register_and_report_os( os:"Check Point Gaia", cpe:"cpe:/o:checkpoint:gaia_os", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      return banner;
+      return;
     }
 
     # Embedded Linux
     if( "MoxaHttp" >< banner ) {
       register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      return banner;
+      return;
     }
 
     if( "NetApp" >< banner ) {
-      # e.g. Server: NetApp/7.3.7 or Server: NetApp//8.2.3P3
+      # Server: NetApp/7.3.7
+      # Server: NetApp//8.2.3P3
       version = eregmatch( pattern:"NetApp//?([0-9a-zA-Z.]+)", string:banner );
       if( ! isnull( version[1] ) ) {
         register_and_report_os( os:"NetApp Data ONTAP", version:version[1], cpe:"cpe:/o:netapp:data_ontap", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       } else {
         register_and_report_os( os:"NetApp Data ONTAP", cpe:"cpe:/o:netapp:data_ontap", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       }
-      return banner;
+      return;
     }
 
     # UPS / USV on embedded OS
     if( "ManageUPSnet Web Server" >< banner ) {
       register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      return banner;
+      return;
     }
 
     # Examples:
@@ -305,55 +358,55 @@ function check_http_banner( port ) {
       if( "(Windows" >< banner ) {
         if( "(Windows Server 2016" >< banner ) {
           register_and_report_os( os:"Microsoft Windows Server 2016", cpe:"cpe:/o:microsoft:windows_server_2016", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( "(Windows 10" >< banner ) {
           register_and_report_os( os:"Microsoft Windows 10", cpe:"cpe:/o:microsoft:windows_10", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( "(Windows Server 2012 R2" >< banner ) {
           register_and_report_os( os:"Microsoft Windows Server 2012 R2", cpe:"cpe:/o:microsoft:windows_server_2012:r2", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( "(Windows 8.1" >< banner ) {
           register_and_report_os( os:"Microsoft Windows 8.1", cpe:"cpe:/o:microsoft:windows_8.1", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( "(Windows Server 2012" >< banner ) {
           register_and_report_os( os:"Microsoft Windows Server 2012", cpe:"cpe:/o:microsoft:windows_server_2012", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( "(Windows 8" >< banner ) {
           register_and_report_os( os:"Microsoft Windows 8", cpe:"cpe:/o:microsoft:windows_8", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( "(Windows Server 2008 R2" >< banner ) {
           register_and_report_os( os:"Microsoft Windows Server 2008 R2", cpe:"cpe:/o:microsoft:windows_server_2008:r2", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( "(Windows 7" >< banner ) {
           register_and_report_os( os:"Microsoft Windows 7", cpe:"cpe:/o:microsoft:windows_7", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( "(Windows Server 2008" >< banner ) {
           register_and_report_os( os:"Microsoft Windows Server 2008", cpe:"cpe:/o:microsoft:windows_server_2008", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( "(Windows Vista" >< banner ) {
           register_and_report_os( os:"Microsoft Windows Vista", cpe:"cpe:/o:microsoft:windows_vista", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( "(Windows Server 2003" >< banner || "(Windows 2003" >< banner ) {
           register_and_report_os( os:"Microsoft Windows Server 2003", cpe:"cpe:/o:microsoft:windows_server_2003", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( "(Windows XP" >< banner ) {
           register_and_report_os( os:"Microsoft Windows XP Professional", cpe:"cpe:/o:microsoft:windows_xp", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( "(Windows 2000" >< banner ) {
           register_and_report_os( os:"Microsoft Windows 2000", cpe:"cpe:/o:microsoft:windows_2000", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
 
         # Currently unknown but definitely not Windows NT:
@@ -363,7 +416,7 @@ function check_http_banner( port ) {
         register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
         # nb: We also want to report an unknown OS if none of the above patterns for Windows is matching
         register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"http_banner", port:port );
-        return banner;
+        return;
       }
       if( "(Linux" >< banner ) {
         version = eregmatch( pattern:"\(Linux/([0-9.]+)", string:banner );
@@ -372,35 +425,35 @@ function check_http_banner( port ) {
         } else {
           register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         }
-        return banner;
+        return;
       }
     }
 
     if( "HPE-iLO-Server" >< banner || "HP-iLO-Server" >< banner ) {
       register_and_report_os( os:"HP iLO", cpe:"cpe:/o:hp:integrated_lights-out", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      return banner;
+      return;
     }
 
     if( "AirTunes" >< banner ) {
       register_and_report_os( os:"Apple TV", cpe:"cpe:/o:apple:tv", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      return banner;
+      return;
     }
 
     # Cisco Secure Access Control Server
-    if( banner =~ "ACS ([0-9.]+)" ) {
+    if( banner =~ "ACS [0-9.]+" ) {
       register_and_report_os( os:"Cisco", cpe:"cpe:/o:cisco", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      return banner;
+      return;
     }
 
     if( "Microsoft-HTTPAPI" >< banner || ( "Apache" >< banner && ( "(Win32)" >< banner || "(Win64)" >< banner ) ) ) {
       register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-      return banner;
+      return;
     }
 
     # MS Lync
-    if( egrep( pattern:"^Server: RTC/(5\.0|6\.0)", string:banner ) ) {
+    if( egrep( pattern:"^Server: RTC/[56]\.0", string:banner ) ) {
       register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-      return banner;
+      return;
     }
 
     # https://en.wikipedia.org/wiki/Internet_Information_Services#History
@@ -415,88 +468,88 @@ function check_http_banner( port ) {
           #register_and_report_os( os:"Microsoft Windows Server 2016", cpe:"cpe:/o:microsoft:windows_server_2016", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           #register_and_report_os( os:"Microsoft Windows 10", cpe:"cpe:/o:microsoft:windows_10", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           register_and_report_os( os:"Microsoft Windows Server 2016 or Microsoft Windows 10", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( version[1] == "8.5" ) {
           #register_and_report_os( os:"Microsoft Windows Server 2012 R2", cpe:"cpe:/o:microsoft:windows_server_2012:r2", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           #register_and_report_os( os:"Microsoft Windows 8.1", cpe:"cpe:/o:microsoft:windows_8.1", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           register_and_report_os( os:"Microsoft Windows Server 2012 R2 or Microsoft Windows 8.1", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( version[1] == "8.0" ) {
           #register_and_report_os( os:"Microsoft Windows Server 2012", cpe:"cpe:/o:microsoft:windows_server_2012", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           #register_and_report_os( os:"Microsoft Windows 8", cpe:"cpe:/o:microsoft:windows_8", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           register_and_report_os( os:"Microsoft Windows Server 2012 or Microsoft Windows 8", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( version[1] == "7.5" ) {
           #register_and_report_os( os:"Microsoft Windows Server 2008 R2", cpe:"cpe:/o:microsoft:windows_server_2008:r2", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           #register_and_report_os( os:"Microsoft Windows 7", cpe:"cpe:/o:microsoft:windows_7", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           register_and_report_os( os:"Microsoft Windows Server 2008 R2 or Microsoft Windows 7", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( version[1] == "7.0" ) {
           #register_and_report_os( os:"Microsoft Windows Server 2008", cpe:"cpe:/o:microsoft:windows_server_2008", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           #register_and_report_os( os:"Microsoft Windows Vista", cpe:"cpe:/o:microsoft:windows_vista", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           register_and_report_os( os:"Microsoft Windows Server 2008 or Microsoft Windows Vista", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( version[1] == "6.0" ) {
           register_and_report_os( os:"Microsoft Windows Server 2003", cpe:"cpe:/o:microsoft:windows_server_2003", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
           register_and_report_os( os:"Microsoft Windows XP Professional x64", cpe:"cpe:/o:microsoft:windows_xp:::x64", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( version[1] == "5.1" ) {
           register_and_report_os( os:"Microsoft Windows XP Professional", cpe:"cpe:/o:microsoft:windows_xp", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( version[1] == "5.0" ) {
           register_and_report_os( os:"Microsoft Windows 2000", cpe:"cpe:/o:microsoft:windows_2000", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( version[1] == "4.0" ) {
           register_and_report_os( os:"Microsoft Windows NT 4.0 Option Pack", cpe:"cpe:/o:microsoft:windows_nt:4.0", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( version[1] == "3.0" ) {
           register_and_report_os( os:"Microsoft Windows NT 4.0 SP2", cpe:"cpe:/o:microsoft:windows_nt:4.0:sp2", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( version[1] == "2.0" ) {
           register_and_report_os( os:"Microsoft Windows NT 4.0", cpe:"cpe:/o:microsoft:windows_nt:4.0", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
         if( version[1] == "1.0" ) {
           register_and_report_os( os:"Microsoft Windows NT 3.51", cpe:"cpe:/o:microsoft:windows_nt:3.51", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
-          return banner;
+          return;
         }
       }
       register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
       # nb: We also want to report an unknown OS if none of the above patterns for Windows is matching
       register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"http_banner", port:port );
-      return banner;
+      return;
     }
 
     if( "Apache" >< banner || "nginx" >< banner || "lighttpd" >< banner ) {
 
       if( "(SunOS," >< banner || "(SunOS)" >< banner ) {
         register_and_report_os( os:"SunOS", cpe:"cpe:/o:sun:sunos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return banner;
+        return;
       }
 
       if( "/NetBSD" >< banner ) {
         register_and_report_os( os:"NetBSD", cpe:"cpe:/o:netbsd:netbsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return banner;
+        return;
       }
 
       if( "(FreeBSD)" >< banner || "-freebsd-" >< banner  ) {
         register_and_report_os( os:"FreeBSD", cpe:"cpe:/o:freebsd:freebsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return banner;
+        return;
       }
 
       if( "OpenBSD" >< banner ) {
         register_and_report_os( os:"OpenBSD", cpe:"cpe:/o:openbsd:openbsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return banner;
+        return;
       }
 
       if( "(Debian)" >< banner || "(Debian GNU/Linux)" >< banner || "devel-debian" >< banner || "~dotdeb+" >< banner || "(Raspbian)" >< banner ) {
@@ -506,17 +559,17 @@ function check_http_banner( port ) {
         } else {
           register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         }
-        return banner;
+        return;
       }
 
       if( "(Gentoo)" >< banner || "-gentoo" >< banner ) {
         register_and_report_os( os:"Gentoo", cpe:"cpe:/o:gentoo:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return banner;
+        return;
       }
 
       if( "(Linux/SUSE)"  >< banner || "/SuSE)" >< banner ) {
         register_and_report_os( os:"SUSE Linux", cpe:"cpe:/o:novell:suse_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return banner;
+        return;
       }
 
       if( "(CentOS)" >< banner ) {
@@ -527,7 +580,7 @@ function check_http_banner( port ) {
         } else {
           register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         }
-        return banner;
+        return;
       }
 
       # TODO: Check and add banners of all Ubuntu versions. Take care of versions which
@@ -538,55 +591,55 @@ function check_http_banner( port ) {
         } else {
           register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
         }
-        return banner;
+        return;
       }
 
       if( "(Red Hat Enterprise Linux)" >< banner ) {
         register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return banner;
+        return;
       }
 
       if( "(Red Hat)" >< banner ) {
         register_and_report_os( os:"Redhat Linux", cpe:"cpe:/o:redhat:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return banner;
+        return;
       }
 
       if( "(Fedora)" >< banner ) {
         register_and_report_os( os:"Fedora", cpe:"cpe:/o:fedoraproject:fedora", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return banner;
+        return;
       }
 
       if( "(Oracle)" >< banner ) {
         register_and_report_os( os:"Oracle Linux", cpe:"cpe:/o:oracle:linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return banner;
+        return;
       }
 
       if( "(Unix)" >< banner ) {
         register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return banner;
+        return;
       }
 
       if( "mini-http" >< banner && "(unix)" >< banner ) {
         register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return banner;
+        return;
       }
 
       if( "(Univention)" >< banner ) {
         register_and_report_os( os:"Univention Corporate Server", cpe:"cpe:/o:univention:univention_corporate_server", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return banner;
+        return;
       }
 
       # Server: Apache-AdvancedExtranetServer/1.3.23 (Mandrake Linux/4.1mdk) mod_ssl/2.8.7 OpenSSL/0.9.6c PHP/4.1.2
       # Server: Apache-AdvancedExtranetServer/2.0.53 (Mandrakelinux/PREFORK-9mdk) mod_ssl/2.0.53 OpenSSL/0.9.7e PHP/4.3.10 mod_perl/1.999.21 Perl/v5.8.6
       if( banner =~ "\(Mandrake ?[Ll]inux" ) {
         register_and_report_os( os:"Mandrake", cpe:"cpe:/o:mandrakesoft:mandrake_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return banner;
+        return;
       }
     }
 
     if( "Nginx on Linux Debian" >< banner ) {
       register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      return banner;
+      return;
     }
 
     # e.g.
@@ -605,30 +658,30 @@ function check_http_banner( port ) {
       } else {
         register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       }
-      return banner;
+      return;
     }
 
     if( "Nginx centOS" >< banner ) {
       register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      return banner;
+      return;
     }
 
     if( "Nginx (OpenBSD)" >< banner || ( "Lighttpd" >< banner && "OpenBSD" >< banner ) ) {
       register_and_report_os( os:"OpenBSD", cpe:"cpe:/o:openbsd:openbsd", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      return banner;
+      return;
     }
 
     # Proxmox VE is only running on unix-like OS
-    if( egrep( pattern:"^Server: pve-api-daemon/([0-9.]+)", string:banner, icase:TRUE ) ) {
+    if( egrep( pattern:"^Server: pve-api-daemon/[0-9.]+", string:banner, icase:TRUE ) ) {
       register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      return banner;
+      return;
     }
 
     # SERVER: POSIX, UPnP/1.0, Intel MicroStack/1.0.2126
     # Server: POSIX, UPnP/1.0, Intel MicroStack/1.0.2777
     if( "server: posix, upnp/1.0, intel microstack" >< tolower( banner ) ) {
       register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      return banner;
+      return;
     }
 
     # Runs only on Unix-like OS. Keep down below to catch more detailed OS infos above first.
@@ -637,7 +690,7 @@ function check_http_banner( port ) {
     # Server: Apache/2.4.18 (Ubuntu) OpenSSL/1.0.2g SVN/1.9.3 Phusion_Passenger/5.0.27 mod_perl/2.0.9 Perl/v5.22.1
     if( banner =~ "^Server: .* Phusion[ _]Passenger" ) {
       register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
-      return banner;
+      return;
     }
 
     # Server: IceWarp WebSrv/3.1
@@ -661,7 +714,7 @@ function check_http_banner( port ) {
           } else {
             register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           }
-          exit( 0 );
+          return;
         } else if( "UBUNTU" >< os_info[3] ) {
           version = eregmatch( pattern:"UBUNTU([0-9.]+)", string:os_info[3] );
           if( ! isnull( version[1] ) ) {
@@ -670,12 +723,25 @@ function check_http_banner( port ) {
           } else {
             register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
           }
-          exit( 0 );
+          return;
         }
-        # nb: No return here as we want to report an unknown OS later...
+        # nb: No return at this level here as we want to report an unknown OS later...
       } else {
         return; # No OS info so just skip this IceWarp banner...
       }
+    }
+
+    # CUPS is running only on MacOS and other UNIX-like operating systems
+    if( "Server: CUPS/" >< banner ) {
+      register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+
+      # Some CUPS deployments servers might provide additional OS pattern, report an unknown OS as well
+      # if none of the generic known pattern below is matching...
+      if( ! egrep( pattern:"^Server: CUPS/[0-9.]+ IPP/[0-9.]+$", string:banner ) &&
+          ! egrep( pattern:"^Server: CUPS/[0-9.]+$", string:banner ) ) {
+        register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"http_banner", port:port );
+      }
+      return;
     }
 
     # nb: Keep at the bottom to catch all the more detailed patterns above...
@@ -690,7 +756,7 @@ function check_http_banner( port ) {
       } else {
         register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       }
-      return banner;
+      return;
     }
     register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"http_banner", port:port );
   }
@@ -711,7 +777,9 @@ function check_php_banner( port, host ) {
     phpBanner = get_http_banner( port:port, file:"/index.php" );
   }
 
-  if( phpBanner && phpBanner = egrep( pattern:"^X-Powered-By: PHP/(.*)$", string:phpBanner, icase:TRUE ) ) {
+  if( phpBanner && phpBanner = egrep( pattern:"^X-Powered-By: PHP/.*$", string:phpBanner, icase:TRUE ) ) {
+
+    phpBanner = chomp( phpBanner );
 
     banner_type = "PHP Server banner";
 
@@ -888,98 +956,98 @@ function check_default_page( port ) {
 
       if( check >< buf ) {
         register_and_report_os( os:"Red Hat Enterprise Linux", cpe:"cpe:/o:redhat:enterprise_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       check = "powered by CentOS</title>";
 
       if( check >< buf ) {
         register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       check = "on CentOS</title>";
 
       if( check >< buf ) {
         register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       check = "on Fedora Core</title>";
 
       if( check >< buf ) {
         register_and_report_os( os:"Fedora Core", cpe:"cpe:/o:fedoraproject:fedora_core", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       check = "on Fedora</title>";
 
       if( check >< buf ) {
         register_and_report_os( os:"Fedora", cpe:"cpe:/o:fedoraproject:fedora", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       check = "powered by Ubuntu</title>";
 
       if( check >< buf ) {
         register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       check = "powered by Debian</title>";
 
       if( check >< buf ) {
         register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       check = "on Mageia</title>";
 
       if( check >< buf ) {
         register_and_report_os( os:"Mageia", cpe:"cpe:/o:mageia:linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       check = "on EPEL</title>";
 
       if( check >< buf ) {
         register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       check = "on Scientific Linux</title>";
 
       if( check >< buf ) {
         register_and_report_os( os:"Scientific Linux", cpe:"cpe:/o:scientificlinux:scientificlinux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       check = "on the Amazon Linux AMI</title>";
 
       if( check >< buf ) {
         register_and_report_os( os:"Amazon Linux", cpe:"cpe:/o:amazon:linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       check = "on CloudLinux</title>";
 
       if( check >< buf ) {
         register_and_report_os( os:"CloudLinux", cpe:"cpe:/o:cloudlinux:cloudlinux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       check = "on SLES Expanded Support Platform</title>";
 
       if( check >< buf ) {
         register_and_report_os( os:"SUSE Linux Enterprise Server", cpe:"cpe:/o:suse:linux_enterprise_server", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       check = "on Oracle Linux</title>";
 
       if( check >< buf ) {
         register_and_report_os( os:"Oracle Linux", cpe:"cpe:/o:oracle:linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       # Seen on e.g. Oracle Linux 7.4
@@ -987,12 +1055,13 @@ function check_default_page( port ) {
 
       if( check >< buf ) {
         register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       if( check = eregmatch( string:buf, pattern:"<title>(Test Page for the (Apache|Nginx) HTTP Server|Apache HTTP Server Test Page) (powered by|on).*</title>" ) ) {
         register_unknown_os_banner( banner:check[0], banner_type_name:banner_type, banner_type_short:"http_test_banner", port:port );
       }
+      return;
     }
 
     if( "<TITLE>Welcome to Jetty" >< buf ) {
@@ -1001,12 +1070,13 @@ function check_default_page( port ) {
 
       if( check >< buf ) {
         register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       if( check = eregmatch( string:buf, pattern:"<TITLE>Welcome to Jetty.*on.*</TITLE>" ) ) {
         register_unknown_os_banner( banner:check[0], banner_type_name:banner_type, banner_type_short:"http_test_banner", port:port );
       }
+      return;
     }
 
     if( "<title>Welcome to nginx" >< buf ) {
@@ -1015,33 +1085,34 @@ function check_default_page( port ) {
 
       if( check >< buf ) {
         register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       check = "on Ubuntu!</title>";
 
       if( check >< buf ) {
         register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       check = "on Fedora!</title>";
 
       if( check >< buf ) {
         register_and_report_os( os:"Fedora", cpe:"cpe:/o:fedoraproject:fedora", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       check = "on Slackware!</title>";
 
       if( check >< buf ) {
         register_and_report_os( os:"Slackware", cpe:"cpe:/o:slackware:slackware_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       if( check = eregmatch( string:buf, pattern:"<title>Welcome to nginx on.*!</title>" ) ) {
         register_unknown_os_banner( banner:check[0], banner_type_name:banner_type, banner_type_short:"http_test_banner", port:port );
       }
+      return;
     }
 
     if( "<title>Apache2" >< buf && "Default Page: It works</title>" >< buf ) {
@@ -1050,44 +1121,65 @@ function check_default_page( port ) {
 
       if( check >< buf ) {
         register_and_report_os( os:"Debian GNU/Linux", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       check = "<title>Apache2 Ubuntu Default Page";
 
       if( check >< buf ) {
         register_and_report_os( os:"Ubuntu", cpe:"cpe:/o:canonical:ubuntu_linux", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       check = "<title>Apache2 centos Default Page";
 
       if( check >< buf ) {
         register_and_report_os( os:"CentOS", cpe:"cpe:/o:centos:centos", banner_type:banner_type, port:port, banner:check, desc:SCRIPT_DESC, runs_key:"unixoide" );
-        return buf;
+        return;
       }
 
       if( check = eregmatch( string:buf, pattern:"<title>Apache2 .* Default Page: It works</title>" ) ) {
         register_unknown_os_banner( banner:check[0], banner_type_name:banner_type, banner_type_short:"http_test_banner", port:port );
       }
+      return;
     }
-    return buf;
+
+    # CUPS is running only on MacOS and other UNIX-like operating systems
+    if( check = eregmatch( string:buf, pattern:"<TITLE>(Forbidden|Home|Not Found|Bad Request) - CUPS.*</TITLE>", icase:TRUE ) ) {
+      register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:check[0], desc:SCRIPT_DESC, runs_key:"unixoide" );
+    }
+    return;
+  }
+
+  # TODO: There might be more of such default pages for other Distros...
+  # But at least Ubuntu is using the index.nginx-debian.html as well.
+  url = "/index.nginx-debian.html";
+  buf = http_get_cache( item:url, port:port );
+  if( buf && buf =~ "^HTTP/1\.[01] 200" && "<title>Welcome to nginx!</title>" >< buf ) {
+    register_and_report_os( os:"Debian GNU/Linux or Ubuntu", cpe:"cpe:/o:debian:debian_linux", banner_type:banner_type, port:port, banner:report_vuln_url( port:port, url:url, url_only:TRUE ), desc:SCRIPT_DESC, runs_key:"unixoide" );
   }
   return;
 }
 
-function check_x_powered_by_banner( port ) {
+function check_x_powered_by_banner( port, banner ) {
 
   local_var port, banner, banner_type;
 
-  banner = get_http_banner( port:port );
+  if( banner && banner = egrep( pattern:"^X-Powered-By:.*$", string:banner, icase:TRUE ) ) {
 
-  if( banner && banner = egrep( pattern:"^X-Powered-By: (.*)$", string:banner, icase:TRUE ) ) {
+    banner = chomp( banner );
+
+    if( banner == "X-Powered-By:" || banner == "X-Powered-By: " ) return;
+
+    # Both covered by check_php_banner()
+    if( " PHP" >< banner ) return;
+    # e.g. X-Powered-By: PHP/7.0.19 or X-Powered-By: PHP/7.0.19-1
+    if( egrep( pattern:"^X-Powered-By: PHP/[0-9.]+(-[0-9]+)?$", string:banner, icase:TRUE ) ) return;
+
+    # Express Framework is supported on Windows, Linux/Unix etc.
+    if( banner == "X-Powered-By: Express" ) return;
 
     banner_type = "X-Powered-By Server banner";
-
-    # Covered by check_php_banner()
-    if( " PHP" >< banner ) return;
 
     if( "PleskWin" >< banner || "ASP.NET" >< banner ) {
       register_and_report_os( os:"Microsoft Windows", cpe:"cpe:/o:microsoft:windows", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"windows" );
@@ -1106,51 +1198,47 @@ function check_x_powered_by_banner( port ) {
       register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
       return;
     }
-
     register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"http_x_powered_by_banner", port:port );
   }
   return;
 }
 
-port = get_http_port( default:80 );
-host = http_host_name( dont_add_port:TRUE );
+function check_user_agent_banner( port, banner ) {
+
+  local_var port, banner, banner_type;
+
+  if( banner && banner = egrep( pattern:"^User-Agent:.*$", string:banner, icase:TRUE ) ) {
+
+    banner = chomp( banner );
+
+    if( banner == "User-Agent:" || banner == "User-Agent: " ) return;
+
+    # If our user agent is echoed back to us just ignore it...
+    if( OPENVAS_HTTP_USER_AGENT >< banner ) return;
+
+    banner_type = "HTTP User Agent banner";
+
+    # LibreOffice Online WebSocket server: https://github.com/LibreOffice/online/blob/master/wsd/README
+    # This is the only service i have seen so far which is responding with a User-Agent: header
+    # nb: loolwsd is only running on Linux/Unix
+    if( "LOOLWSD WOPI Agent" >< banner ) {
+      register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      return;
+    }
+    register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"http_user_agent_banner", port:port );
+  }
+  return;
+}
+
+port   = get_http_port( default:80 );
+banner = get_http_banner( port:port );
+host   = http_host_name( dont_add_port:TRUE );
 
 # nb: The order matters here, e.g. we might have a "Server: Apache (Debian)" banner but a more detailed Debian Release in the PHP banner
 check_php_banner( port:port, host:host );
-serverbanner = check_http_banner( port:port );
-defaultpage  = check_default_page( port:port );
-check_x_powered_by_banner( port:port );
-
-# CUPS is running only on MacOS and other UNIX-like operating systems
-if( ( serverbanner && "Server: CUPS/" >< serverbanner ) || defaultpage =~ "<TITLE>(Forbidden|Home|Not Found|Bad Request) - CUPS.*</TITLE>" ) {
-  register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:"HTTP Server banner and/or CUPS title page", port:port, banner:chomp( serverbanner ) + " and/or CUPS title page", desc:SCRIPT_DESC, runs_key:"unixoide" );
-  exit( 0 );
-}
-
-# nb: Using the defaultpage response here as the "serverbanner" is overwritten in check_server_banner if no Server: header exists
-if( defaultpage && user_agent = egrep( pattern:"^User-Agent:(.*)$", string:defaultpage, icase:TRUE ) ) {
-
-  banner_type = "HTTP Server banner";
-
-  # If our user agent is echoed back to us just ignore it...
-  if( OPENVAS_HTTP_USER_AGENT >< user_agent ) exit( 0 );
-
-  # LibreOffice Online WebSocket server: https://github.com/LibreOffice/online/blob/master/wsd/README
-  # This is the only service i have seen so far which is responding with a User-Agent: header
-  # nb: loolwsd is only running on Linux/Unix
-  if( "LOOLWSD WOPI Agent" >< user_agent ) {
-    register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:user_agent, desc:SCRIPT_DESC, runs_key:"unixoide" );
-    exit( 0 );
-  }
-  register_unknown_os_banner( banner:user_agent, banner_type_name:banner_type, banner_type_short:"http_user_agent_banner", port:port );
-}
-
-# TODO: There might be more of such default pages for other Distros...
-# But at least Ubuntu is using the index.nginx-debian.html as well.
-url = "/index.nginx-debian.html";
-buf = http_get_cache( item:url, port:port );
-if( buf && buf =~ "^HTTP/1\.[01] 200" && "<title>Welcome to nginx!</title>" >< buf ) {
-  register_and_report_os( os:"Debian GNU/Linux or Ubuntu", cpe:"cpe:/o:debian:debian_linux", banner_type:"HTTP Server default page", port:port, banner:report_vuln_url( port:port, url:url, url_only:TRUE ), desc:SCRIPT_DESC, runs_key:"unixoide" );
-}
+check_http_banner( port:port, banner:banner );
+check_default_page( port:port );
+check_x_powered_by_banner( port:port, banner:banner );
+check_user_agent_banner( port:port, banner:banner );
 
 exit( 0 );

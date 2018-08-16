@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ssl_ciphers.inc 8899 2018-02-21 10:29:08Z cfischer $
+# $Id: secpod_ssl_ciphers.inc 10986 2018-08-15 13:38:20Z cfischer $
 #
 # Check SSL Weak Ciphers and Supported Ciphers
 #
@@ -28,7 +28,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 8899 $
+# $Revision: 10986 $
 #
 ###############################################################################
 
@@ -585,6 +585,11 @@ function report_cipher( cipher_name, ssl_port, ssl_ver ) {
 
 function check_cipher_specs_supported( cipher_list, cipher_names, version, sslPort )
 {
+
+  # TODO: Remove once openvas-nasl-lint can handle such a missing include
+  # from within the same include.
+  if(!defined_func("open_ssl_socket")) include("ssl_funcs.inc");
+
   local_var cipher_list, cipher_names, version, max_req, all_done, hello_done, hello, soc, data, record, server_cipher, x, v, sslPort;
 
   if( ! cipher_list )

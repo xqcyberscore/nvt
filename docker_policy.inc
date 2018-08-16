@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Include File
 #
-# $Id: docker_policy.inc 5895 2017-04-07 14:44:59Z mime $
+# $Id: docker_policy.inc 10986 2018-08-15 13:38:20Z cfischer $
 #
 # Functions for Docker Policy Tests
 #
@@ -26,7 +26,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 5895 $
+# $Revision: 10986 $
 #
 ###############################################################################
 
@@ -85,7 +85,7 @@ function docker_test_init( )
 
   if( ! docker_cmd )
   {
-    log_message( port:0, data:'Docker Policy test failed. Unable to read docker deamon command line.\n' );
+    log_message( port:0, data:'Docker Policy test failed. Unable to read docker daemon command line.\n' );
     exit( 0 );
   }
 
@@ -179,6 +179,11 @@ function docker_test_set_error( id, reason )
 
 function docker_run_cmd( cmd )
 {
+
+  # TODO: Remove once openvas-nasl-lint can handle such a missing include
+  # from within the same include.
+  if(!defined_func("ssh_cmd_exec")) include("ssh_func.inc");
+
   local_var cmd, buf;
 
   cmd = 'LANG=C; LC_ALL=C; ' + cmd;
@@ -269,6 +274,11 @@ function docker_inspect( inspect )
 
 function docker_running_containers_short_id_list()
 {
+
+  # TODO: Remove once openvas-nasl-lint can handle such a missing include
+  # from within the same include.
+  if(!defined_func("docker_truncate_id")) include("docker.inc");
+
   ret = make_list();
 
   foreach container ( docker_running_containers )

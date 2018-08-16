@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_device42_appliance_managerdefault_credentials.nasl 10922 2018-08-10 19:21:48Z cfischer $
+# $Id: gb_device42_appliance_managerdefault_credentials.nasl 10984 2018-08-15 12:54:14Z mmartin $
 #
 # Device42 DCIM Appliance Manager Default Credentials
 #
@@ -27,30 +27,30 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105123");
- script_version("$Revision: 10922 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("Device42 DCIM Appliance Manager Default Credentials");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2014-11-28 12:02:06 +0200 (Fri, 28 Nov 2014)");
- script_category(ACT_ATTACK);
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 4242);
+  script_oid("1.3.6.1.4.1.25623.1.0.105123");
+  script_version("$Revision: 10984 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("Device42 DCIM Appliance Manager Default Credentials");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-11-28 12:02:06 +0200 (Fri, 28 Nov 2014)");
+  script_category(ACT_ATTACK);
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 4242);
 
- script_tag(name:"summary", value: 'The remote Device42 DCIM Appliance Manager web interface
+  script_tag(name:"summary", value: 'The remote Device42 DCIM Appliance Manager web interface
 is prone to a default account authentication bypass vulnerability.');
 
- script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain
+  script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain
 access to sensitive information or modify system configuration.');
 
- script_tag(name:"vuldetect", value: 'Try to login with default credentials.');
- script_tag(name:"insight", value: 'It was possible to login with default credentials: d42admin/default');
- script_tag(name:"solution", value: 'Change the password.');
- script_tag(name:"solution_type", value:"Mitigation");
- script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"vuldetect", value: 'Try to login with default credentials.');
+  script_tag(name:"insight", value: 'It was possible to login with default credentials: d42admin/default');
+  script_tag(name:"solution", value: 'Change the password.');
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"qod_type", value:"remote_app");
  exit(0);
 }
 

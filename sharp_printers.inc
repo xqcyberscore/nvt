@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: sharp_printers.inc 7288 2017-09-27 07:21:24Z cfischer $
+# $Id: sharp_printers.inc 10986 2018-08-15 13:38:20Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7288 $
+# $Revision: 10986 $
 #
 ###############################################################################
 
@@ -147,12 +147,9 @@ function check_sharp_default_login( model, port ) {
         sharp_last_pass = password;
         return 1;
       }
-
     }
   }
-
   return FALSE;
-
 }
 
 function sharp_login_details( model, port ) {
@@ -207,7 +204,6 @@ function sharp_login_details( model, port ) {
     sharp['login_success'] = '<!--Logoff \\(L\\)-->';
 
     return sharp;
-
   }
 
   else if(model == "MX-B201D" ||
@@ -244,25 +240,24 @@ function sharp_login_details( model, port ) {
     sharp['login_success'] = '<title>Password Setup Page';
 
     return sharp;
-
   }
-
   exit(0); # we don't know this printer
-
 }
 
 function build_sharp_cpe(model) {
-
 
   model = tolower(model);
 
   if(model == "") return 'cpe:/h:sharp';
 
   return 'cpe:/h:sharp:' + model;
-
 }
 
 function sharp_set_cookie( url, port ) {
+
+  # TODO: Remove once openvas-nasl-lint can handle such a missing include
+  # from within the same include.
+  if(!defined_func("http_send_recv")) include("http_func.inc");
 
   local_var url, port;
 
@@ -276,9 +271,7 @@ function sharp_set_cookie( url, port ) {
     sharp_cookie = co[1];
     return TRUE;
   }
-
   return FALSE;
-
 }
 
 function update_cookie(buf) {
@@ -292,9 +285,7 @@ function update_cookie(buf) {
     sharp_cookie = co[1];
     return TRUE;
   }
-
   return FALSE;
-
 }
 
 function sharp_error_exit(buf) {
@@ -302,5 +293,4 @@ function sharp_error_exit(buf) {
   if(!buf || ereg(pattern:"HTTP/1.(0|1) (404|500)", string: buf))exit(0);
 
   return TRUE;
-
 }

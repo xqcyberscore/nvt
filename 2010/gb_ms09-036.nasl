@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms09-036.nasl 8469 2018-01-19 07:58:21Z teissa $
+# $Id: gb_ms09-036.nasl 10984 2018-08-15 12:54:14Z mmartin $
 #
 # Microsoft Windows ASP.NET Denial of Service Vulnerability(970957)
 #
@@ -24,36 +24,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to cause the application
-  pool on the affected web server to become unresponsive, denying service to
-  legitimate users.
-  Impact Level: System/Application";
-tag_affected = "Microsoft .NET Framework 3.5/SP 1
-  Microsoft .NET Framework 2.0 SP 1/SP 2";
-tag_insight = "The flaws is caused by caused by an error in ASP.NET when managing request
-  scheduling, which could allow attackers to create specially crafted anonymous
-  HTTP requests and cause the web server with ASP.NET in integrated mode to
-  become non-responsive.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/MS09-036";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS09-036.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801482");
-  script_version("$Revision: 8469 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-19 08:58:21 +0100 (Fri, 19 Jan 2018) $");
+  script_version("$Revision: 10984 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-12-13 14:33:55 +0100 (Mon, 13 Dec 2010)");
   script_cve_id("CVE-2009-1536");
   script_bugtraq_id(35985);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:P");
   script_name("Microsoft Windows ASP.NET Denial of Service Vulnerability(970957)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/36127/");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2009/2231");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/MS09-036");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/36127/");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2009/2231");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/MS09-036");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
@@ -63,11 +47,22 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause the application
+  pool on the affected web server to become unresponsive, denying service to
+  legitimate users.
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Microsoft .NET Framework 3.5/SP 1
+  Microsoft .NET Framework 2.0 SP 1/SP 2");
+  script_tag(name:"insight", value:"The flaws is caused by caused by an error in ASP.NET when managing request
+  scheduling, which could allow attackers to create specially crafted anonymous
+  HTTP requests and cause the web server with ASP.NET in integrated mode to
+  become non-responsive.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://technet.microsoft.com/en-us/security/bulletin/MS09-036");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+  Microsoft Bulletin MS09-036.");
   exit(0);
 }
 
@@ -81,7 +76,6 @@ if(hotfix_check_sp(winVista:3, win2008:3) <= 0){
   exit(0);
 }
 
-## Check Hotfix MS09-036
 if((hotfix_missing(name:"972591") == 0) || (hotfix_missing(name:"972592") == 0)||
    (hotfix_missing(name:"972593") == 0) || (hotfix_missing(name:"972594") == 0)){
     exit(0);
@@ -97,18 +91,15 @@ foreach item (registry_enum_keys(key:key))
   path = registry_get_sz(key:key + item, item:"Path");
   if("\Microsoft.NET\Framework" >< path)
   {
-    # Get the version of system.web.dll
     Ver = fetch_file_version(sysPath:path, file_name:"system.web.dll");
     if(Ver)
     {
-      ## Windows Vista and 2008 Server
       if(hotfix_check_sp(winVista:3, win2008:3) > 0)
       {
-        ## Check for the version system.web.dll
         if(version_in_range(version:Ver, test_version:"2.0.50727.1000", test_version2:"2.0.50727.1870") ||
            version_in_range(version:Ver, test_version:"2.0.50727.3000", test_version2:"2.0.50727.3600"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }

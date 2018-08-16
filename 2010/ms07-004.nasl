@@ -23,36 +23,34 @@
 # <http://www.gnu.org/licenses/>.
 ###################################################################
 
-tag_solution = "Run Windows Update or apply patches available on the following web site:
-  http://www.microsoft.com/technet/security/Bulletin/MS07-004.mspx";
-tag_summary = "Remote exploitation of an integer overflow vulnerability in the 
-  Vector Markup Language (VML) support in multiple Microsoft products 
-  allows attackers to execute arbitrary code within the context of the user 
-  running the vulnerable application.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102053");
-  script_version("$Revision: 9745 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:45:41 +0200 (Mon, 07 May 2018) $");
+  script_version("$Revision: 10984 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_bugtraq_id(21930);
   script_cve_id("CVE-2007-0024");
   script_name("Microsoft Windows Vector Markup Language Vulnerabilities (929969)");
-  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/122084");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/23677");
-  script_xref(name : "URL" , value : "http://labs.idefense.com/intelligence/vulnerabilities/display.php?id=462");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/122084");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/23677");
+  script_xref(name:"URL", value:"http://labs.idefense.com/intelligence/vulnerabilities/display.php?id=462");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2010 LSS");
-  script_family("Windows : Microsoft Bulletins"); 
+  script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_ie_detect.nasl");
   script_mandatory_keys("MS/IE/Version");
   script_require_ports(139, 445);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"solution", value:"Run Windows Update or apply patches available on the following web site:
+  http://www.microsoft.com/technet/security/Bulletin/MS07-004.mspx");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Remote exploitation of an integer overflow vulnerability in the
+  Vector Markup Language (VML) support in multiple Microsoft products
+  allows attackers to execute arbitrary code within the context of the user
+  running the vulnerable application.");
   exit(0);
 }
 
@@ -96,7 +94,7 @@ if(hotfix_check_sp(win2k:5) > 0)
   {
     if(version_in_range(version:vers, test_version:"6.0",
                        test_version2:"6.0.2800.1588")){
-     security_message(0); exit(0);
+     security_message( port: 0, data: "The target host was found to be vulnerable" ); exit(0);
     }
   }
 
@@ -110,10 +108,10 @@ else if(hotfix_check_sp(xp:4) > 0)
                         test_version2:"6.0.2900.3051") ||
 	   version_in_range(version:vers, test_version:"7.0",
                         test_version2:"7.0.6000.16386")){
-      security_message(0); exit(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" ); exit(0);
     }
   }
-  
+
 }
 else if(hotfix_check_sp(win2003:3) > 0)
 {
@@ -124,7 +122,7 @@ else if(hotfix_check_sp(win2003:3) > 0)
                         test_version2:"6.0.3790.2851") ||
 	   version_in_range(version:vers, test_version:"7.0",
                         test_version2:"7.0.6000.16386")){
-      security_message(0); exit(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" ); exit(0);
     }
   }
 }

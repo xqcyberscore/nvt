@@ -89,6 +89,12 @@ function is_f5_vulnerable( ca, version )
 # unaffected -> 11.4.1_HF10
 function f5_is_unaffected( version, unaffected )
 {
+
+  # TODO: Remove once openvas-nasl-lint can handle such a missing include
+  # from within the same include.
+  if(!defined_func("is_array")) include("misc_func.inc");
+  if(!defined_func("version_in_range")) include("version_func.inc");
+
   local_var version, unaffected, ua, uav, v_h, c_version, c_hotfix, both, first, last, first_hotfix, last_hotfix;
 
   if( ! version ) return;

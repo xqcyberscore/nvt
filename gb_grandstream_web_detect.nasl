@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_grandstream_web_detect.nasl 10962 2018-08-14 14:29:12Z asteins $
+# $Id: gb_grandstream_web_detect.nasl 10978 2018-08-15 11:28:35Z tpassfeld $
 #
 # Grandstream Web UI Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114018");
-  script_version("$Revision: 10962 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 16:29:12 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 10978 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 13:28:35 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-08 12:42:30 +0200 (Wed, 08 Aug 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -47,7 +47,7 @@ if(description)
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 8081);
+  script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_xref(name:"URL", value:"http://www.grandstream.com/");
@@ -60,7 +60,7 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-port = get_http_port(default: 8081);
+port = get_http_port(default: 80);
 
 res = http_get_cache(port: port, item: "/");
 
@@ -74,7 +74,7 @@ if("<b>Grandstream Device Configuration</b>" >< res || '<font size="1">All Right
    set_kb_item(name: "Grandstream/WebUI/installed", value: TRUE);
    set_kb_item(name: "Grandstream/WebUI/" + port + "/installed", value: TRUE);
 
-   register_and_report_cpe(app: "Grandstream Web UI", ver: version, base: "cpe:/a:grandstream:web_ui:", expr: "^([0-9.]+)", insloc: install, regPort: port, conclUrl: conclUrl);
+   register_and_report_cpe(app: "Grandstream Web UI", ver: version, base: "cpe:/a:grandstream:web_ui:", expr: "^([0-9.]+)", insloc: install, regPort: port, conclUrl: conclUrl, extra: "Login required for version detection.");
 }
 
 exit(0);

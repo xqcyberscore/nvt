@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ntp_open.nasl 7535 2017-10-23 15:49:28Z cfischer $
+# $Id: ntp_open.nasl 10985 2018-08-15 12:56:20Z cfischer $
 #
 # NTP read variables
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10884");
-  script_version("$Revision: 7535 $");
+  script_version("$Revision: 10985 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-23 17:49:28 +0200 (Mon, 23 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:56:20 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_name("NTP read variables");
   script_category(ACT_GATHER_INFO);
@@ -180,7 +180,7 @@ if( r ) {
           register_and_report_os( os:"NetApp Data ONTAP", cpe:"cpe:/o:netapp:data_ontap", banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
         }
       } else {
-        # Setting the runs_key to unixoide makes sure that we still schedule NVTs using Host/runs_unixoide as a fallback
+        # nb: Setting the runs_key to unixoide makes sure that we still schedule NVTs using Host/runs_unixoide as a fallback
         register_and_report_os( os:os, banner_type:banner_type, banner:s, port:port, proto:proto, desc:SCRIPT_DESC, runs_key:"unixoide" );
         register_unknown_os_banner( banner:s, banner_type_name:banner_type, banner_type_short:"ntp_banner", port:port, proto:proto );
       }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_prdts_detect_lin.nasl 10894 2018-08-10 13:09:25Z cfischer $
+# $Id: gb_java_prdts_detect_lin.nasl 10979 2018-08-15 12:00:56Z santu $
 #
 # Multiple Java Products Version Detection (Linux)
 #
@@ -30,8 +30,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800385");
-  script_version("$Revision: 10894 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 10979 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:00:56 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-23 08:16:04 +0200 (Thu, 23 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -84,7 +84,7 @@ if( jwspaths ) {
 javapaths = find_bin( prog_name:"java", sock:sock );
 if( javapaths ) {
   foreach executableFile( javapaths ) {
-    javaVer = get_bin_version( full_prog_name:chomp( executableFile ), sock:sock, version_argv:"-fullversion ", ver_pattern:'java.? full version \"(.*)\"' );
+    javaVer = get_bin_version( full_prog_name:chomp( executableFile ), sock:sock, version_argv:"-fullversion ", ver_pattern:'java.? full version (.*)' );
     # LibGCJ
     if( "gcj" >< javaVer[1] ) {
       gcjVer = eregmatch( pattern:"([0-9]\.[0-9_.]+)", string:javaVer[2] ); # TODO: This doesn't match the regex in get_bin_version above...
@@ -94,12 +94,25 @@ if( javapaths ) {
       }
     }
     # IBM Java
-    else if( "IBM" >< javaVer[1] ) {
-      ibmVer = eregmatch( pattern:"([0-9]\.[0-9._]+).*(SR[0-9]+)", string:javaVer[1] );
-      if( ibmVer[1] && ! isnull( ibmVer[2] ) ) {
-        ibmVer = ibmVer[1] + "." + ibmVer[2];
-        set_kb_item( name:"IBM/Java/JRE/Linux/Ver", value:ibmVer );
-        log_message( data:'Detected IBM Java JRE version: ' + ibmVer + '\nLocation: ' + executableFile + '\n\nConcluded from version identification result:\n' + javaVer[max_index(javaVer)-1]);
+    else if( "IBM" >< javaVer[1] )
+    {
+      ibmjreVer = eregmatch( pattern:"([0-9]\.[0-9._]+).*(SR[0-9]+)", string:javaVer[1] );
+      if( ibmjreVer[1] && ! isnull( ibmjreVer[2]))
+      {
+        ibmjreVer = ibmjreVer[1] + "." + ibmjreVer[2];
+        set_kb_item( name:"IBM/Java/JRE/Linux/Ver", value:ibmjreVer );
+        log_message( data:'Detected IBM Java JRE version: ' + ibmjreVer + '\nLocation: ' + executableFile + '\n\nConcluded from version identification result:\n' + javaVer[max_index(javaVer)-1]);
+      }
+      ibmsdkVer = eregmatch( pattern:"IBM Linux build ([0-9.]+)", string:javaVer[1] );
+      if(ibmsdkVer[1])
+      {
+        set_kb_item( name:"IBM/Java/SDK/Linux/Ver", value:ibmsdkVer[1] );
+        log_message( data:'Detected IBM Java SDK version: ' + ibmsdkVer[1] + '\nLocation: ' + executableFile + '\n\nConcluded from version identification result:\n' + javaVer[max_index(javaVer)-1]);
+        cpe = build_cpe( value:ibmsdkVer[1], exp:"^([0-9.]+)", base:"cpe:/a:ibm:java_sdk:" );
+        if( isnull( cpe ) )
+          cpe = "cpe:/a:ibm:java_sdk";
+
+        register_and_report_cpe( app:"IBM Java", ver:ibmsdkVer[1], concluded:ibmsdkVer[0], cpename:cpe, insloc:executableFile );
       }
     }
     # Sun/Oracle Java
@@ -113,8 +126,8 @@ if( javapaths ) {
         javaVer_or = javaVer1[1];
       }
 
-      if( version_is_less( version:jvVer, test_version:"1.4.2.38" ) ||
-          version_in_range( version:jvVer, test_version:"1.5", test_version2:"1.5.0.33" ) ||
+      if( version_is_less( version:jvVer, test_version:"1.4.2.38" )||
+          version_in_range( version:jvVer, test_version:"1.5", test_version2:"1.5.0.33" )||
           version_in_range( version:jvVer, test_version:"1.6", test_version2:"1.6.0.18" ) ) {
         java_name = "Sun Java";
         cpe = build_cpe( value:javaVer_or, exp:"^([:a-z0-9._]+)", base:"cpe:/a:sun:jre:" );

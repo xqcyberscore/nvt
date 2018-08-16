@@ -1,6 +1,6 @@
 ##########################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_read_file.inc 4488 2016-11-14 07:46:41Z cfi $
+# $Id: GSHB_read_file.inc 10986 2018-08-15 13:38:20Z cfischer $
 #
 # SMB Functions
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 4488 $
+# $Revision: 10986 $
 #
 ##########################################################################
 
@@ -35,6 +35,10 @@
 #        file: File path to read the content
 #        offset: Position from which to start the file read
 ##########################################################################
+
+# TODO: Remove once openvas-nasl-lint can handle such a missing include
+# from within the same include.
+if(!defined_func("kb_smb_name")) include("smb_nt.inc");
 
 name = kb_smb_name();
 domain = kb_smb_domain();

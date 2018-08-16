@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_email_gateway_sb10099_xss_vuln.nasl 6431 2017-06-26 09:59:24Z teissa $
+# $Id: gb_mcafee_email_gateway_sb10099_xss_vuln.nasl 10977 2018-08-15 11:13:28Z jschulte $
 #
 # McAfee Email Gateway Secure Web Mail Client UI Cross-Site Scripting Vulnerability
 #
@@ -29,18 +29,18 @@ CPE = "cpe:/a:mcafee:email_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805290");
-  script_version("$Revision: 6431 $");
+  script_version("$Revision: 10977 $");
   script_cve_id("CVE-2015-1619");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 13:13:28 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-03-02 11:56:43 +0530 (Mon, 02 Mar 2015)");
   script_name("McAfee Email Gateway Secure Web Mail Client UI Cross-Site Scripting Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with McAfee Email
   Gateway and is prone to cross-site scripting vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Check the installed version and hotfixes
+  script_tag(name:"vuldetect", value:"Check the installed version and hotfixes
   of McAfee Email Gateway");
 
   script_tag(name:"insight", value:"The flaw exists due to the Secure Web Mail
@@ -65,28 +65,25 @@ if(description)
 
   script_tag(name:"qod_type", value:"package");
 
-  script_xref(name : "URL" , value : "https://kc.mcafee.com/corporate/index?page=content&id=SB10099");
+  script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10099");
 
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_mcafee_email_gateway_version.nasl");
-  script_mandatory_keys("mcafee_email_gateway/product_version","mcafee_email_gateway/patches");
+  script_mandatory_keys("mcafee_email_gateway/product_version", "mcafee_email_gateway/patches");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-##Fetch Version info
 if(!version = get_app_version(cpe:CPE))exit(0);
 
-##Fetch Product info
 product = get_kb_item("mcafee_email_gateway/product_name");
 
 if(!product)product = 'McAfee Email Gateway';
 
-## Fetch Patch Level
 if(!patches = get_kb_item("mcafee_email_gateway/patches"))exit(0);
 
 ##7.0.5 before 7.0.5h1021346

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 10958 2018-08-14 13:49:12Z cfischer $
+# $Id: misc_func.inc 10974 2018-08-15 09:55:34Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10958 $
+# $Revision: 10974 $
 #
 ###############################################################################
 
@@ -1537,39 +1537,63 @@ function create_hostname_parts_list( ) {
   return list;
 }
 
-# This function checks if the NVT calling this function is executed on a GOS
-# It will return:
-# TRUE  -> If executed on a GOS
-# FALSE -> If not executed on a GOS or if a function needed for this check is missing
-function executed_on_gos( )
-{
-  if ( ! defined_func( "vendor_version" ) ) return FALSE;
+# @brief Checks if the NVT calling this function is executed on a Greenbone OS (GOS).
+#
+# @return TRUE if executed on a GOS, FALSE if not executed on a GOS and NULL if the
+#              function vendor_version() needed for this check is missing (e.g. running
+#              a GOS/GVM/OpenVAS installation not providing this function yet).
+#
+function executed_on_gos() {
 
-  if( vendor_version() =~ "^Greenbone OS" )
-  {
+  if( ! defined_func( "vendor_version" ) ) return NULL;
+
+  if( vendor_version() =~ "^Greenbone OS" ) {
     return TRUE;
-  }
-  else
-  {
+  } else {
     return FALSE;
   }
 }
 
-# This function tries to detect the local GOS version of the NVT calling this function
-# It will return:
-# The version number as a string -> If executed on a GOS and it was possible to gather the version
-# NULL -> If not executed on a GOS or it was not possible to gather the version
-function get_local_gos_version( ) 
-{
+# @brief Tries to detect the local Greenbone OS (GOS) version of the NVT calling this function.
+#
+# @return The version number as a string if executed on a GOS and it was possible to gather the version,
+#         FALSE if not executed on a GOS and NULL if it was not possible to gather the version.
+#
+function get_local_gos_version() {
+
   local_var result;
 
-  if ( ! executed_on_gos() )
-  {
+  if( isnull( executed_on_gos() ) ) {
     return NULL;
-  }
-  else
-  { 
-    result = eregmatch( pattern:"([0-9.]+)$", string:vendor_version());
+  } else if( ! executed_on_gos() ) {
+    return FALSE;
+  } else {
+    result = eregmatch( pattern:"([0-9.]+)$", string:vendor_version() );
     return result[1];
   }
+}
+
+# @brief Returns a Vulnerability Test (VT) string which can be used in VTs as e.g. a user name.
+#        Note: The returned string depends on the platform (OpenVAS/GVM/GOS) the scanner is running at.
+#
+# @param lowercase If set to TRUE the returned string will be converted
+#                  to lowercase before returning it.
+#
+# @return A string containing either "GBN-NT" or "OpenVAS-VT" depending on the platform
+#         the scanner is running at.
+#
+function get_vt_string( lowercase ) {
+
+  local_var lowercase, vt_string;
+
+  if( executed_on_gos() ) {
+    vt_string = "GBN-VT";
+  } else {
+    vt_string = "OpenVAS-VT";
+  }
+
+  if( lowercase ) {
+    vt_string = tolower( vt_string );
+  }
+  return vt_string;
 }

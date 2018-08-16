@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_office_ms13-096.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: secpod_office_ms13-096.nasl 10984 2018-08-15 12:54:14Z mmartin $
 #
 # Microsoft Office Remote Code Execution Vulnerability (2908005)
 #
@@ -24,60 +24,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.903423";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6093 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.903423");
+  script_version("$Revision: 10984 $");
   script_cve_id("CVE-2013-3906");
   script_bugtraq_id(63530);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-11 13:48:19 +0530 (Wed, 11 Dec 2013)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (2908005)");
 
-   tag_summary =
-"This host is missing a critical security update according to
-Microsoft Bulletin MS13-096.";
 
-  tag_vuldetect =
-"Get the vulnerable file version and check appropriate patch is applied
-or not.";
-
-  tag_insight =
-"The flaw is due to an error when handling TIFF files within the Microsoft
-Graphics Component (GDI+) and can be exploited to cause a memory corruption.";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to execute arbitrary
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+Microsoft Bulletin MS13-096.");
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
+or not.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
+mentioned hotfixes in the advisory from the below link,
+https://technet.microsoft.com/en-us/security/bulletin/ms13-096");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"insight", value:"The flaw is due to an error when handling TIFF files within the Microsoft
+Graphics Component (GDI+) and can be exploited to cause a memory corruption.");
+  script_tag(name:"affected", value:"Microsoft Office 2003 Service Pack 3
+ Microsoft Office 2007 Service Pack 2
+ Microsoft Office 2010 Service Pack 1");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
 code in the context of the currently logged-in user, which may lead to a
 complete compromise of an affected computer.
 
-Impact Level: System/Application ";
-
-  tag_affected =
-"Microsoft Office 2003 Service Pack 3
- Microsoft Office 2007 Service Pack 2
- Microsoft Office 2010 Service Pack 1";
-
-  tag_solution =
-"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms13-096";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2850047");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2817641");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2817670");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-096");
+Impact Level: System/Application ");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2850047");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2817641");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2817670");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms13-096");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2013 SecPod");
@@ -109,7 +90,6 @@ if(path)
 {
   foreach ver (make_list("OFFICE12", "OFFICE14"))
   {
-    ## Get Version from Ogl.dll
     offPath = path + "\Microsoft Shared\" + ver;
     dllVer = fetch_file_version(sysPath:offPath, file_name:"Ogl.dll");
 
@@ -117,7 +97,7 @@ if(path)
        (version_in_range(version:dllVer, test_version:"14.0", test_version2:"14.0.7110.5003") ||
         version_in_range(version:dllVer, test_version:"12.0", test_version2:"12.0.6688.4999")))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -134,10 +114,9 @@ msPath = path  +  "\Microsoft Office\OFFICE11";
 dllVer = fetch_file_version(sysPath:msPath, file_name:"Gdiplus.dll");
 if(dllVer)
 {
-  # Grep for Gdiplus.dll version 11.0 < 11.0.8408
   if(version_in_range(version:dllVer, test_version:"11.0", test_version2:"11.0.8407"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

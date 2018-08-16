@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 10792 2018-08-06 12:08:30Z cfischer $
+# $Id: host_details.inc 10982 2018-08-15 12:47:39Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10792 $
+# $Revision: 10982 $
 #
 ###############################################################################
 
@@ -1004,7 +1004,7 @@ function get_app_details( cpe, typ, port, exit_no_version, service, nofork, vers
         if( ! ereg( pattern:version_regex, string:app_versions ) ) return;
 
       ret_arr['version'] = app_versions;
-    }  
+    }
     else
       ret_arr['version'] = '';
 
@@ -1264,6 +1264,18 @@ function register_and_report_os( os, version, cpe, banner_type, port, proto, ban
   }
 }
 
+# @brief Registers an unknown banner in the KB which could contain info to detect an operating
+#        system for later reporting within gb_unknown_os_service_reporting.nasl
+#
+# @param banner            the banner to register. Required.
+# @param banner_type_name  short description of the banner (e.g. HTTP banner) which is included
+#                          in the later reporting. Required.
+# @param banner_type_short short keyword (e.g. http_banner) which is used internally as a keyword
+#                          for the KB key where the information is saved at. Required.
+# @param port              port (optional) where the banner was identified at, defaults to "0" if empty.
+# @param proto             protocol (optional, tcp or udp) where the banner was idenfitied at, defaults
+#                          to "tcp" if empty.
+#
 function register_unknown_os_banner( banner, banner_type_name, banner_type_short, port, proto ) {
 
   local_var banner, banner_type_name, banner_type_short, port, proto;
@@ -1288,87 +1300,36 @@ function register_unknown_os_banner( banner, banner_type_name, banner_type_short
   banner = chomp( banner ); # Few banners have newlines at the end so removing these here
 
   # Don't report known banner were we know that it doesn't contain info about an OS here
+  # TODO: Move into the related OS detection NVTs where possible. Only keep the most generic ones in here.
   if( banner == '* ID ("name" "Dovecot")' ||
       banner == "+OK Dovecot ready." ||
       banner == "220 Welcome message" || # Default welcome messages on some FTP servers
       banner == "220 Service ready for new user." || # Default welcome messages on some FTP servers
-      banner == "Server:" ||
-      banner == "Server: " ||
-      banner == "Server: Undefined" || # Unknown
-      banner == "Server: squid" ||
-      banner == "Server: nginx" ||
-      banner == "Server: Apache" ||
-      banner == "Server: lighttpd" ||
-      banner == "Server: sfcHttpd" ||
-      banner == "Server: Allegro-Software-RomPager" || # Vendor: "Works with any OS vendor and will function without an OS if needed"
       banner == "SSH-2.0-RomSShell" || # Vendor: "Works with any OS vendor and will function without an OS if needed"
       banner == "SSH-2.0-OpenSSH" ||
       banner == "SSH-2.0-OpenSSH_" ||
-      banner == "Server: Apache-Coyote/1.0" ||
-      banner == "Server: Apache-Coyote/1.1" ||
-      banner == "Server: HASP LM" || # Is running under windows and linux
-      banner == "Server: Mbedthis-Appweb" || # Is running under various OS variants
-      banner == "Server: Embedthis-Appweb" || # Is running under various OS variants
-      banner == "Server: Embedthis-http" || # Is running under various OS variants
-      banner == "Server: GoAhead-Webs" || # Is running under various OS variants
-      banner == "Server: Mojolicious (Perl)" || # Cross-platform
-      banner == "Server: Java/0.0" || # Cross-platform, running on e.g. VIBNODE devices
       banner == "+OK POP3 ready" ||
       banner == "+OK POP3" ||
       banner == "* OK IMAPrev1" ||
       banner == "220 FTP server ready" ||
       banner == "220 FTP server ready." ||
-      banner == "Server: NessusWWW" || # Nessus could be running on Windows, Linux/Unix or MacOS
-      banner == "X-Powered-By: Express" || # Express Framework is supported on Windows, Linux/Unix etc.
-      banner == "Server: Embedded Web Server" ||
       banner == "SSH-2.0-Mocana SSH" || # Cross-platform
       banner == "login:" ||
+      banner == "Server:" ||
+      banner == "Server: " ||
       "500 OOPS: could not bind listening IPv4 socket" >< banner || # Some broken FTP server
-      "erver: BBC " >< banner || # OV Communication Broker runs on various different OS variants
-      "Server: PanWeb Server/" >< banner || # Already covered by gb_palo_alto_webgui_detect.nasl
       " FTP server (MikroTik " >< banner || # Already covered by gb_mikrotik_router_routeros_consolidation.nasl
-      egrep( pattern:"^Server: DHost/([0-9.]+) HttpStk/([0-9.]+)$", string:banner ) || # DHost/9.0 HttpStk/1.0 from Novell / NetIQ eDirectory, runs on various OS variants
       egrep( pattern:"^MikroTik ", string:banner ) || # Already covered by gb_mikrotik_router_routeros_consolidation.nasl
-      egrep( pattern:"^OS String: Unix; SMB String: Samba ([0-9.]+)(a|b|c)?$", string:banner ) || # e.g. OS String: Unix; SMB String: Samba 4.0.9 set by smb_nativelanman.nasl
-      egrep( pattern:"^220 ([0-9a-zA-Z._\-]+) ESMTP( Postfix)?$", string:banner ) || # e.g. 220 hostname ESMTP or 220 mail.example.com ESMTP Postfix
-      egrep( pattern:"ESMTP Exim ([0-9._]+) ", string:banner ) || # e.g. 220 host ESMTP Exim 4.84_2 Tue, 01 Aug 2017 13:01:18 +0200
-      egrep( pattern:"^X-Powered-By: PHP/([0-9.]+)(-[0-9]+)?$", string:banner ) || # e.g. X-Powered-By: PHP/7.0.19 or X-Powered-By: PHP/7.0.19-1
-      egrep( pattern:"^Server: CUPS/([0-9.]+) IPP/([0-9.]+)$", string:banner ) || # Handled at the bottom of sw_http_os_detection.nasl
-      egrep( pattern:"^Server: CUPS/([0-9.]+)$", string:banner ) || # Handled at the bottom of sw_http_os_detection.nasl
-      egrep( pattern:"^Server: Tomcat/([0-9.]+)$", string:banner ) || # Quite outdated Tomcat, e.g. Server: Tomcat/2.1
-      egrep( pattern:"^Server: Themis ([0-9.]+)$", string:banner ) || # Currently unknown
-      egrep( pattern:"^Server: Mordac/([0-9.]+)$", string:banner ) || # Currently unknown
-      egrep( pattern:"^Server: eHTTP v([0-9.]+)$", string:banner ) || # Currently unknown, have seen this on HP ProCurves but also on some login pages without any info
-      egrep( pattern:"^Server: Agranat-EmWeb/([0-9_R]+)$" ) || # Currently unknown, might be an Alcatel device...
-      egrep( pattern:"^Server: gSOAP/([0-9.]+)$", string:banner ) || # Cross-platform
-      egrep( pattern:"^Server: squid/([0-9.]+)$", string:banner ) ||
-      egrep( pattern:"^Server: squid/([0-9.]+)\.STABLE([0-9.]+)$", string:banner ) || # e.g. Server: squid/2.7.STABLE5
-      egrep( pattern:"^Server: Jetty\(([0-9.v]+\))$", string:banner ) || # e.g. Server: Jetty(7.3.1.v20110307)
-      egrep( pattern:"^Server: nginx/([0-9.]+)$", string:banner ) ||
-      egrep( pattern:"^Server: Apache/([0-9.]+)$", string:banner ) ||
-      egrep( pattern:"^Server: lighttpd/([0-9.]+)$", string:banner ) ||
-      egrep( pattern:"^Server: CompaqHTTPServer/([0-9.]+)$", string:banner ) || # HP SMH, cross-platform, e.g. Server: CompaqHTTPServer/2.1
-      egrep( pattern:"^Server: http server ([0-9.]+)$", string:banner ) || # e.g. Server: http server 1.0
-      egrep( pattern:"^Server: Web Server ([0-9.]+)$", string:banner ) || # e.g. Server: Web Server 1.1
-      egrep( pattern:"^Server: MiniServ/([0-9.]+)$", string:banner ) || # From Webmin/Usermin, cross-platform,  e.g. Server: MiniServ/1.550
-      egrep( pattern:"^Server: RealVNC/([0-9.]+)$", string:banner ) || # Cross-platform, e.g. Server: RealVNC/4.0
-      egrep( pattern:"^Server: HASP LM/([0-9.]+)$", string:banner ) || # Is running under windows and linux
-      egrep( pattern:"^Server: Mbedthis-Appweb/([0-9.]+)$", string:banner ) || # Is running under various OS variants
-      egrep( pattern:"^Server: Embedthis-http/([0-9.]+)$", string:banner ) || # Is running under various OS variants, banner e.g. Server: Embedthis-http/4.0.0
-      egrep( pattern:"^Server: Embedthis-Appweb/([0-9.]+)$", string:banner ) || # Is running under various OS variants
-      egrep( pattern:"^Server: GoAhead-Webs/([0-9.]+)$", string:banner ) || # Is running under various OS variants
-      egrep( pattern:"^Server: Allegro-Software-RomPager/([0-9.]+)$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
-      egrep( pattern:"^Server: CompaqHTTPServer/([0-9.]+) HPE System Management Homepage$", string:banner ) || # Is running under various OS variants
-      egrep( pattern:"^Server: CompaqHTTPServer/([0-9.]+) HP System Management Homepage/([0-9.]+)$", string:banner ) || # e.g. Server: CompaqHTTPServer/9.9 HP System Management Homepage/2.1.2.127, is running under various OS variants
-      egrep( pattern:"^Server: Payara Server  ([0-9.]+) #badassfish$", string:banner ) || # Cross-platform, e.g. Server: Payara Server  4.1.2.172 #badassfish
-      egrep( pattern:"^SSH-2\.0-RomSShell_([0-9.]+)$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
-      egrep( pattern:"^([0-9.]+)$", string:banner ) || # Bind9 and MySQL. Both are often only sending e.g. 9.4.2
-      egrep( pattern:"^([0-9.]+)(-[0-9.]+)?-(MariaDB|log)$", string:banner ) || # MariaDB, e.g. 5.5.5-10.1.19-MariaDB or 5.5.49-MariaDB, MySQL e.g. 5.5.54-38.6-log or 5.6.25-log
-      egrep( pattern:"^SSH-2\.0-Mocana SSH ([0-9.]+)$", string:banner ) || # platform independent
-      egrep( pattern:"^SSH-1\.99-OpenSSH_([0-9.p]+)$", string:banner ) ||
-      egrep( pattern:"^SSH-2\.0-OpenSSH_([0-9.p]+)-FIPS_hpn([0-9v]+)$", string:banner ) || # SSH-2.0-OpenSSH_6.1-FIPS_hpn13v11
-      egrep( pattern:"^SSH-2\.0-OpenSSH_([0-9.p]+)(\-FIPS\(capable\))?$", string:banner ) ) {
-
+      egrep( pattern:"^OS String: Unix; SMB String: Samba [0-9.]+[abc]?$", string:banner ) || # e.g. OS String: Unix; SMB String: Samba 4.0.9 set by smb_nativelanman.nasl
+      egrep( pattern:"^220 [0-9a-zA-Z._\-]+ ESMTP( Postfix)?$", string:banner ) || # e.g. 220 hostname ESMTP or 220 mail.example.com ESMTP Postfix
+      egrep( pattern:"ESMTP Exim [0-9._]+ ", string:banner ) || # e.g. 220 host ESMTP Exim 4.84_2 Tue, 01 Aug 2017 13:01:18 +0200
+      egrep( pattern:"^SSH-2\.0-RomSShell_[0-9.]+$", string:banner ) || # Vendor: "Works with any OS vendor and will function without an OS if needed"
+      egrep( pattern:"^[0-9.]+$", string:banner ) || # Bind9 and MySQL. Both are often only sending e.g. 9.4.2
+      egrep( pattern:"^[0-9.]+(-[0-9.]+)?-(MariaDB|log)$", string:banner ) || # MariaDB, e.g. 5.5.5-10.1.19-MariaDB or 5.5.49-MariaDB, MySQL e.g. 5.5.54-38.6-log or 5.6.25-log
+      egrep( pattern:"^SSH-2\.0-Mocana SSH [0-9.]+$", string:banner ) || # platform independent
+      egrep( pattern:"^SSH-1\.99-OpenSSH_[0-9.p]+$", string:banner ) ||
+      egrep( pattern:"^SSH-2\.0-OpenSSH_[0-9.p]+-FIPS_hpn[0-9v]+$", string:banner ) || # SSH-2.0-OpenSSH_6.1-FIPS_hpn13v11
+      egrep( pattern:"^SSH-2\.0-OpenSSH_[0-9.p]+(\-FIPS\(capable\))?$", string:banner ) ) {
     return;
   }
 

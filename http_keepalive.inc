@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_keepalive.inc 10855 2018-08-09 09:11:30Z cfischer $
+# $Id: http_keepalive.inc 10986 2018-08-15 13:38:20Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10855 $
+# $Revision: 10986 $
 #
 ###############################################################################
 
@@ -74,6 +74,10 @@ function enable_keepalive( port ) {
 # @return 1 if keep alive is enabled, 0 otherwise and -2 if no port was passed or no socket could be opened to the target host
 #
 function http_keepalive_enabled( port ) {
+
+  # TODO: Remove once openvas-nasl-lint can handle such a missing include
+  # from within the same include.
+  if(!defined_func("http_host_name")) include("http_func.inc");
 
   local_var port, host, req, soc, r, kb;
 

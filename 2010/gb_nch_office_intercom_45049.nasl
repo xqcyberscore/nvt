@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nch_office_intercom_45049.nasl 4889 2016-12-30 13:13:50Z cfi $
+# $Id: gb_nch_office_intercom_45049.nasl 10974 2018-08-15 09:55:34Z cfischer $
 #
 # NCH Software Office Intercom SIP Invite Remote Denial of Service Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100918");
-  script_version("$Revision: 4889 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 14:13:50 +0100 (Fri, 30 Dec 2016) $");
+  script_version("$Revision: 10974 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 11:55:34 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-11-26 13:31:06 +0100 (Fri, 26 Nov 2010)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -48,9 +48,9 @@ if(description)
 
   script_tag(name:"impact", value:"Exploiting this issue allows remote attackers to cause a denial-of-
   service due to a NULL-pointer dereference. Due to the nature of this issue, remote code execution
-  may be possible; this has not been confirmed.");
+  may be possible but this has not been confirmed.");
 
-  script_tag(name:"affected", value:"Office Intercom 5.20 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"Office Intercom 5.20 is vulnerable. Other versions may also be affected.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -59,6 +59,7 @@ if(description)
 
 include("version_func.inc");
 include("sip.inc");
+include("misc_func.inc");
 
 infos = get_sip_port_proto( default_port:"5060", default_proto:"udp" );
 port = infos['port'];
@@ -68,7 +69,7 @@ banner = get_sip_banner( port:port, proto:proto );
 if( ! banner || "NCH Software Office Intercom" >!< banner ) exit( 0 );
 
 if( safe_checks() ) {
- 
+
   version = eregmatch( pattern:"NCH Software Office Intercom ([0-9.]+)", string:banner );
   if( isnull( version[1] ) ) exit( 0 );
 
@@ -83,11 +84,14 @@ if( safe_checks() ) {
 
   if( ! sip_alive( port:port, proto:proto ) ) exit( 0 );
 
+  from_default = get_vt_string();
+  from_lower   = get_vt_string( lowercase:TRUE );
+
   req = string(
-    "INVITE sip:openvas@", get_host_name(), " SIP/2.0","\r\n",
+    "INVITE sip:", from_lower, "@", get_host_name(), " SIP/2.0","\r\n",
     "Via: SIP/2.0/", toupper( proto ), " ", this_host(), ":", port, ";branch=z9hG4bKJRnTggvMGl-6233","\r\n",
-    "From: OpenVAS <sip:OpenVAS@", this_host(),">;tag=f7mXZqgqZy-6233","\r\n",
-    "To: openvas <sip:openvas@", get_host_name(), ":", port, ">","\r\n",
+    "From: ", from_default, " <sip:", from_lower, "@", this_host(),">;tag=f7mXZqgqZy-6233","\r\n",
+    "To: ", from_default, " <sip:", from_lower, "@", get_host_name(), ":", port, ">","\r\n",
     "Call-ID: ", rand(), "\r\n",
     "CSeq: 1 INVITE\r\n",
     "Max-Forwards: 70\r\n",

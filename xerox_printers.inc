@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: xerox_printers.inc 10245 2018-06-19 06:43:31Z cfischer $
+# $Id: xerox_printers.inc 10986 2018-08-15 13:38:20Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10245 $
+# $Revision: 10986 $
 #
 ###############################################################################
 
@@ -409,6 +409,10 @@ function build_xerox_cpe(model) {
 }
 
 function xerox_set_cookie( url, port ) {
+
+  # TODO: Remove once openvas-nasl-lint can handle such a missing include
+  # from within the same include.
+  if(!defined_func("http_send_recv")) include("http_func.inc");
 
   local_var url, port;
 

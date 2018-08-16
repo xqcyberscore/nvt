@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_ink_workspace.nasl 10356 2018-06-28 09:36:40Z emoss $
+# $Id: win_ink_workspace.nasl 10989 2018-08-15 14:57:51Z emoss $
 #
 # Check value for Allow Windows Ink Workspace
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109491");
-  script_version("$Revision: 10356 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-28 11:36:40 +0200 (Thu, 28 Jun 2018) $");
+  script_version("$Revision: 10989 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 16:57:51 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-28 07:56:59 +0200 (Thu, 28 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,8 +38,9 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl", "os_detection.nasl");
+  script_add_preference(name:"Maximum", type:"radio", value:"0;1;2");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Allow Windows Ink Workspace' on Windows hosts (at least Windows 10).
 
 The setting configure whether Windows Ink items are allowed above the lock screen.");
@@ -57,7 +58,7 @@ to query the registry.');
 
 HostDetails = get_kb_list("HostDetails");
 if("cpe:/o:microsoft:windows_10" >!< HostDetails){
-  policy_logging(text:'Host is not a Microsoft Windows 10 system. 
+  policy_logging(text:'Host is not a Microsoft Windows 10 system.
 This setting applies to Windows 10 systems only.');
   exit(0);
 }
@@ -70,13 +71,24 @@ type = 'HKLM';
 key = 'Software\\Policies\\Microsoft\\WindowsInkWorkspace';
 item = 'AllowWindowsInkWorkspace';
 value = registry_get_dword(key:key, item:item, type:type);
+default = script_get_preference('Maximum');
+
 if(!value){
-  value = 'none';
+  value = '2';
 }
 
-policy_logging_registry(type:type,key:key,item:item,value:value);
-policy_set_kb(val:value);
+if(int(value) <= int(default)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
+}
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

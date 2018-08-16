@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_feature_updates_received.nasl 10356 2018-06-28 09:36:40Z emoss $
+# $Id: win_feature_updates_received.nasl 10989 2018-08-15 14:57:51Z emoss $
 #
 # Check value for Select when Preview Builds and Feature Updates are received
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109507");
-  script_version("$Revision: 10356 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-28 11:36:40 +0200 (Thu, 28 Jun 2018) $");
+  script_version("$Revision: 10989 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 16:57:51 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-28 10:31:03 +0200 (Thu, 28 Jun 2018)");
-  script_tag(name:"cvss_base", value:"0.0");  
+  script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
   script_tag(name:"qod", value:"97");
   script_name('Microsoft Windows: Select when Preview Builds and Feature Updates are received');
@@ -38,12 +38,15 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl", "os_detection.nasl");
+  script_add_preference(name:"DeferFeatureUpdates", type:"radio", value:"1;0");
+  script_add_preference(name:"BranchReadinessLevel", type:"radio", value:"32;2;4;8;16");
+  script_add_preference(name:"DeferFeatureUpdatesPeriodInDays", type:"entry", value:"180");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy 
-'Select when Preview Builds and Feature Updates are received' on Windows hosts 
+  script_tag(name:"summary", value:"This test checks the setting for policy
+'Select when Preview Builds and Feature Updates are received' on Windows hosts
 (at least Windows 10).
 
-The setting specifies the level of Preview Build or Feature Updates to receive 
+The setting specifies the level of Preview Build or Feature Updates to receive
 and when.");
   exit(0);
 }
@@ -59,41 +62,59 @@ to query the registry.');
 
 HostDetails = get_kb_list("HostDetails");
 if("cpe:/o:microsoft:windows_10" >!< HostDetails){
-  policy_logging(text:'Host is not a Microsoft Windows 10 system. 
+  policy_logging(text:'Host is not a Microsoft Windows 10 system.
 This setting applies to Windows 10 systems only.');
   exit(0);
 }
 
 title = 'Select when Preview Builds and Feature Updates are received';
 fixtext = 'Set following UI path accordingly:
-Computer Configuration/Administrative Templates/Windows Components/Windows 
+Computer Configuration/Administrative Templates/Windows Components/Windows
 Update/Defer Windows Updates/' + title;
 type = 'HKLM';
 key = 'Software\\Policies\\Microsoft\\Windows\\WindowsUpdate';
+EnabledDefault = script_get_preference('DeferFeatureUpdates');
+LevelDefault = script_get_preference('BranchReadinessLevel');
+PeriodDefault = script_get_preference('DeferFeatureUpdatesPeriodInDays');
 
 EnabledItem = 'DeferFeatureUpdates';
 Enabled = registry_get_dword(key:key, item:EnabledItem, type:type);
 if(!Enabled){
-  Enabled = 'none';
+  Enabled = '1';
 }
 LevelItem = 'BranchReadinessLevel';
 Level = registry_get_dword(key:key, item:LevelItem, type:type);
 if(!Level){
-  Level = 'none';
+  Level = '2';
 }
 PeriodItem = 'DeferFeatureUpdatesPeriodInDays';
 Period = registry_get_dword(key:key, item:PeriodItem, type:type);
 if(!Period){
-  Period = 'none';
+  Period = '0';
+}
+
+if(int(Enabled) == int(EnabledDefault) &&
+  int(Level) == int(LevelDefault) &&
+  int(Period) >= int(PeriodDefault)){
+  compliant = 'yes';
+}else{
+  compliant = 'no';
 }
 
 value = 'DeferFeatureUpdates:' + Enabled;
-value += '\nBranchReadinessLevel:' + Level;
-value += '\nDeferFeatureUpdatesPeriodInDays:' + Period;
+value += ';BranchReadinessLevel:' + Level;
+value += ';DeferFeatureUpdatesPeriodInDays:' + Period;
 
-policy_logging(text:value);
-policy_set_kb(val:value);
+default = 'DeferFeatureUpdates:' + EnabledDefault;
+default += ';BranchReadinessLevel:' + LevelDefault;
+default += ';DeferFeatureUpdatesPeriodInDays:' + PeriodDefault;
+
+policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_add_oid();
+policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
+policy_set_kb(val:value);
+policy_set_compliance(compliant:compliant);
 
 exit(0);

@@ -23,27 +23,16 @@
 # <http://www.gnu.org/licenses/>.
 ###################################################################
 
-tag_solution = "Run Windows update or apply patches available from the following
-  website:
-  http://www.microsoft.com/technet/security/bulletin/ms07-057.mspx";
-tag_summary = "This critical security update resolves three privately reported 
-  vulnerabilities and one publicly disclosed vulnerability. 
-  The vulnerability with the most serious security impact could allow
-  remote code execution if a user viewed a specially crafted Web page 
-  using Internet Explorer. Users whose accounts are configured to have
-  fewer user rights on the system could be less impacted than users 
-  who operate with administrative user rights.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102060");
-  script_version("$Revision: 9745 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:45:41 +0200 (Mon, 07 May 2018) $");
+  script_version("$Revision: 10984 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-07-08 10:59:30 +0200 (Thu, 08 Jul 2010)");
   script_bugtraq_id(25915, 25916, 24911);
   script_cve_id("CVE-2007-3892", "CVE-2007-3893", "CVE-2007-3826");
   script_name("Cumulative Security Update for Internet Explorer (939653)");
-  script_xref(name : "URL" , value : "http://secunia.com/secunia_research/2007-1/");
+  script_xref(name:"URL", value:"http://secunia.com/secunia_research/2007-1/");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -54,8 +43,17 @@ if(description)
   script_mandatory_keys("MS/IE/Version");
   script_require_ports(139, 445);
 
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"solution", value:"Run Windows update or apply patches available from the following
+  website:
+  http://www.microsoft.com/technet/security/bulletin/ms07-057.mspx");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"This critical security update resolves three privately reported
+  vulnerabilities and one publicly disclosed vulnerability.
+  The vulnerability with the most serious security impact could allow
+  remote code execution if a user viewed a specially crafted Web page
+  using Internet Explorer. Users whose accounts are configured to have
+  fewer user rights on the system could be less impacted than users
+  who operate with administrative user rights.");
   exit(0);
 }
 
@@ -99,7 +97,7 @@ if(hotfix_check_sp(win2k:5) > 0)
                        test_version2:"5.0.3856.1700") ||
      version_in_range(version:vers, test_version:"6.0",
                        test_version2:"6.0.2800.1601")){
-     security_message(0); exit(0);
+     security_message( port: 0, data: "The target host was found to be vulnerable" ); exit(0);
     }
   }
 
@@ -113,10 +111,10 @@ else if(hotfix_check_sp(xp:4) > 0)
                         test_version2:"6.0.2900.3199") ||
 	   version_in_range(version:vers, test_version:"7.0",
                         test_version2:"7.0.6000.16544")){
-      security_message(0); exit(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" ); exit(0);
     }
   }
-  
+
 }
 
 else if(hotfix_check_sp(win2003:3) > 0)
@@ -128,7 +126,7 @@ else if(hotfix_check_sp(win2003:3) > 0)
                         test_version2:"6.0.3790.2993") ||
 	   version_in_range(version:vers, test_version:"7.0",
                         test_version2:"7.0.6000.16544")){
-      security_message(0); exit(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" ); exit(0);
     }
   }
   else if("Service Pack 2" >< SP)
@@ -140,7 +138,7 @@ else if(hotfix_check_sp(win2003:3) > 0)
                         test_version2:"6.0.3790.4134") ||
        version_in_range(version:vers, test_version:"7.0",
                         test_version2:"7.0.6000.16544")){
-      security_message(0); exit(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" ); exit(0);
     }
   }
   else if("Service Pack 0" >< SP)
@@ -148,7 +146,7 @@ else if(hotfix_check_sp(win2003:3) > 0)
 
     if(version_in_range(version:vers, test_version:"6.0",
                         test_version2:"6.0.3790.2993")){
-      security_message(0); exit(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" ); exit(0);
     }
   }
 }
@@ -160,8 +158,8 @@ else if(hotfix_check_sp(vista:2) > 0)
   {
     if(version_in_range(version:vers, test_version:"7.0",
                         test_version2:"7.0.6000.16546")){
-      security_message(0); exit(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" ); exit(0);
     }
-  } 
+  }
 }
 

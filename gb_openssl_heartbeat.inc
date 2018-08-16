@@ -25,6 +25,11 @@
 
 function _broken_heartbeat( version )
 {
+
+  # TODO: Remove once openvas-nasl-lint can handle such a missing include
+  # from within the same include.
+  if(!defined_func("data_len")) include("ssl_funcs.inc");
+
   local_var version, hb, payload;
 
   if( ! version ) version = TLS_10;

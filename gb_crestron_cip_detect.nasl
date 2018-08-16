@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_crestron_cip_detect.nasl 10950 2018-08-14 10:01:57Z ckuersteiner $
+# $Id: gb_crestron_cip_detect.nasl 10994 2018-08-16 06:34:59Z cfischer $
 #
 # Crestron Device Detection (CIP)
 #
@@ -27,31 +27,31 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.141365");
- script_version("$Revision: 10950 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:01:57 +0200 (Tue, 14 Aug 2018) $");
- script_tag(name:"creation_date", value:"2018-08-14 13:10:06 +0700 (Tue, 14 Aug 2018)");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.141365");
+  script_version("$Revision: 10994 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 08:34:59 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-08-14 13:10:06 +0700 (Tue, 14 Aug 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_name("Crestron Device Detection (CIP)");
+  script_name("Crestron Device Detection (CIP)");
 
- script_tag(name:"summary", value:"Detection of Crestron devices.
+  script_tag(name:"summary", value:"Detection of Crestron devices.
 
 The script sends a Crestron Internet Protocol (CTP) connection request to the server and attempts to detect
 Crestron devices and to extract its firmware version.");
 
- script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
 
- script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
- script_family("Product detection");
- script_require_udp_ports(41794);
+  script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_require_udp_ports(41794);
 
- script_xref(name:"URL", value:"https://www.crestron.com/");
+  script_xref(name:"URL", value:"https://www.crestron.com/");
 
- exit(0);
+  exit(0);
 }
 
 include("cpe.inc");
@@ -66,6 +66,8 @@ if (!get_udp_port_state(port))
 
 # Source port has to be as well 41794
 soc = open_priv_sock_udp(dport: port, sport: port);
+if (!soc)
+  exit(0);
 
 # From https://media.defcon.org/DEF%20CON%2026/DEF%20CON%2026%20presentations/DEFCON-26-Lawshae-Who-Controls-the-Controllers-Hacking-Crestron.pdf:
 # "\x14\x00\x00\x00\x01\x04\x00\x03\x00\x00" + hostname + "\x00" * (256 - hostname.length)

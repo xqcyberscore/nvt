@@ -1,7 +1,7 @@
 ###############################################################################
 # OpenVAS Include File
 #
-# $Id: citrix_version_func.inc 5595 2017-03-16 17:32:19Z mime $
+# $Id: citrix_version_func.inc 10986 2018-08-15 13:38:20Z cfischer $
 #
 # Functions for Citrix Version Checks
 #
@@ -26,7 +26,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 5595 $
+# $Revision: 10986 $
 #
 ###############################################################################
 
@@ -78,11 +78,14 @@ function report_if_citrix_xenserver_is_vulnerable( version, hotfixes, patches )
 
 function report_missing_xenserver_patch( version, fix )
 {
+
+  # TODO: Remove once openvas-nasl-lint can handle such a missing include
+  # from within the same include.
+  if(!defined_func("join")) include("misc_func.inc");
+
   local_var version, fix, report;
 
   report = 'Installed version: ' + version + '\nMissing hotfix:    ' + join( list:fix, sep:" / ");
   security_message( port:0, data:report );
   exit( 0 );
-
 }
-

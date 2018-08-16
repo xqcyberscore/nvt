@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_grandstream_web_default_credentials.nasl 10962 2018-08-14 14:29:12Z asteins $
+# $Id: gb_grandstream_web_default_credentials.nasl 10976 2018-08-15 11:06:43Z cfischer $
 #
 # Grandstream Web UI Default Credentials
 #
@@ -28,10 +28,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114019");
-  script_version("$Revision: 10962 $");
+  script_version("$Revision: 10976 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 16:29:12 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 13:06:43 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-08 13:17:57 +0200 (Wed, 08 Aug 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
@@ -95,9 +95,9 @@ foreach loginType (loginTypes) {
     data = "P2=123&Login=Login&gnkey=0b82";
   }
   req = http_post_req(port: port,
-  		                url: url2,
-            		      data: data,
-            		      add_headers: make_array("Content-Type", "application/x-www-form-urlencoded"));
+                      url: url2,
+                      data: data,
+                      add_headers: make_array("Content-Type", "application/x-www-form-urlencoded"));
 
   res = http_keepalive_send_recv(port: port, data: req);
 
@@ -117,10 +117,10 @@ foreach loginType (loginTypes) {
       url3 = "/cgi-bin/doadminlogin";
       data = "P2=admin&Login=Login&gnkey=0b82";
       req = http_post_req(port: port,
-		                      url: url3,
-	                  		  data: data,
-	                  		  add_headers: make_array("Content-Type", "application/x-www-form-urlencoded",
-				                                          "Cookie", "session_id=" + sessionID));
+                          url: url3,
+                          data: data,
+                          add_headers: make_array("Content-Type", "application/x-www-form-urlencoded",
+                                                  "Cookie", "session_id=" + sessionID));
 
       res = http_keepalive_send_recv(port: port, data: req);
 

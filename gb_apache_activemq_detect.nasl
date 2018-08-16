@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_detect.nasl 10726 2018-08-02 07:46:22Z cfischer $
+# $Id: gb_apache_activemq_detect.nasl 10985 2018-08-15 12:56:20Z cfischer $
 #
 # Apache ActiveMQ Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105330");
-  script_version("$Revision: 10726 $");
+  script_version("$Revision: 10985 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 09:46:22 +0200 (Thu, 02 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:56:20 +0200 (Wed, 15 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-08-24 12:33:07 +0200 (Mon, 24 Aug 2015)");
   script_name("Apache ActiveMQ Detection");
   script_category(ACT_GATHER_INFO);
@@ -101,7 +101,7 @@ foreach jmsPort( jmsPorts ) {
           register_and_report_os( os:"Linux", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, banner:os[0], port:jmsPort, desc:SCRIPT_DESC, runs_key:"unixoide" );
         }
       } else {
-        # Setting the runs_key to unixoide makes sure that we still schedule NVTs using Host/runs_unixoide as a fallback
+        # nb: Setting the runs_key to unixoide makes sure that we still schedule NVTs using Host/runs_unixoide as a fallback
         register_and_report_os( os:os[1], banner_type:banner_type, banner:os[0], port:jmsPort, desc:SCRIPT_DESC, runs_key:"unixoide" );
         register_unknown_os_banner( banner:os[0], banner_type_name:banner_type, banner_type_short:"activemq_os_banner", port:jmsPort );
       }
