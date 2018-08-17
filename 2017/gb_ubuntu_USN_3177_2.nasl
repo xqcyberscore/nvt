@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843035");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-02-03 05:48:02 +0100 (Fri, 03 Feb 2017)");
   script_cve_id("CVE-2016-0762", "CVE-2016-5018", "CVE-2016-5388", "CVE-2016-6794",
 		"CVE-2016-6796", "CVE-2016-6797", "CVE-2016-6816", "CVE-2016-8735",
@@ -36,9 +36,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for tomcat7 USN-3177-2");
-  script_tag(name: "summary", value: "Check the version of tomcat7");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "USN-3177-1 fixed vulnerabilities in Tomcat.
+  script_tag(name:"summary", value:"Check the version of tomcat7");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"USN-3177-1 fixed vulnerabilities in Tomcat.
   The update introduced a regression in environments where Tomcat is started with
   a security manager. This update fixes the problem.
 
@@ -82,12 +82,12 @@ information from other requests. (CVE-2016-8745)
 Paul Szabo discovered that the Tomcat package incorrectly handled upgrades
 and removals. A local attacker could possibly use this issue to obtain
 root privileges. (CVE-2016-9774, CVE-2016-9775)");
-  script_tag(name: "affected", value: "tomcat7 on Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"tomcat7 on Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3177-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3177-2/");
+  script_xref(name:"USN", value:"3177-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3177-2/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -100,7 +100,7 @@ root privileges. (CVE-2016-9774, CVE-2016-9775)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

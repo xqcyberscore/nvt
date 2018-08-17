@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842280");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-07-16 06:20:46 +0200 (Thu, 16 Jul 2015)");
   script_cve_id("CVE-2015-2721", "CVE-2015-2722", "CVE-2015-2733", "CVE-2015-2724",
                 "CVE-2015-2725", "CVE-2015-2726", "CVE-2015-2727", "CVE-2015-2728",
@@ -39,9 +39,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for firefox USN-2656-2");
-  script_tag(name: "summary", value: "Check the version of firefox");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "USN-2656-1 fixed vulnerabilities in Firefox
+  script_tag(name:"summary", value:"Check the version of firefox");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"USN-2656-1 fixed vulnerabilities in Firefox
 for Ubuntu 14.04 LTS and later releases.
 
 This update provides the corresponding update for Ubuntu 12.04 LTS.
@@ -96,10 +96,10 @@ remove a DOM object. If a user were tricked in to opening a specially
 crafted website, an attacker cou ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "firefox on Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2656-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2656-2/");
+  script_tag(name:"affected", value:"firefox on Ubuntu 12.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2656-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2656-2/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -112,7 +112,7 @@ crafted website, an attacker cou ...
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

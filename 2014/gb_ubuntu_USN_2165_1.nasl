@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2165_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2165_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for openssl USN-2165-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841774");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-04-08 12:07:01 +0530 (Tue, 08 Apr 2014)");
   script_cve_id("CVE-2014-0160", "CVE-2014-0076");
   script_tag(name:"cvss_base", value:"5.0");
@@ -38,10 +38,10 @@ if(description)
   script_name("Ubuntu Update for openssl USN-2165-1");
 
 
-  script_tag(name : "affected" , value : "openssl on Ubuntu 13.10 ,
-  Ubuntu 12.10 ,
+  script_tag(name:"affected", value:"openssl on Ubuntu 13.10,
+  Ubuntu 12.10,
   Ubuntu 12.04 LTS");
-  script_tag(name : "insight" , value : "Neel Mehta discovered that OpenSSL incorrectly handled memory
+  script_tag(name:"insight", value:"Neel Mehta discovered that OpenSSL incorrectly handled memory
 in the TLS heartbeat extension. An attacker could use this issue to obtain up
 to 64k of memory contents from the client or server, possibly leading to the
 disclosure of private keys and other sensitive information. (CVE-2014-0160)
@@ -50,11 +50,11 @@ Yuval Yarom and Naomi Benger discovered that OpenSSL incorrectly handled
 timing during swap operations in the Montgomery ladder implementation. An
 attacker could use this issue to perform side-channel attacks and possibly
 recover ECDSA nonces. (CVE-2014-0076)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2165-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2165-1/");
+  script_xref(name:"USN", value:"2165-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2165-1/");
   script_tag(name:"summary", value:"Check for the Version of openssl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -67,7 +67,7 @@ recover ECDSA nonces. (CVE-2014-0076)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

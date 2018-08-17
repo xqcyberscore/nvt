@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3737_1.nasl 10980 2018-08-15 12:39:46Z cfischer $
+# $Id: gb_ubuntu_USN_3737_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for gdm3 USN-3737-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843611");
-  script_version("$Revision: 10980 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:39:46 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-14 05:56:21 +0200 (Tue, 14 Aug 2018)");
   script_cve_id("CVE-2018-14424");
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,7 +45,7 @@ execute arbitrary code as the administrator.");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3737-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3737-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3737-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -58,7 +58,7 @@ execute arbitrary code as the administrator.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

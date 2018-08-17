@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2063_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_2063_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for nss USN-2063-1
 #
@@ -29,30 +29,30 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841667");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-23 13:30:57 +0530 (Mon, 23 Dec 2013)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:C/A:P");
   script_name("Ubuntu Update for nss USN-2063-1");
 
 
-  script_tag(name : "affected" , value : "nss on Ubuntu 13.10 ,
-  Ubuntu 13.04 ,
-  Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"nss on Ubuntu 13.10,
+  Ubuntu 13.04,
+  Ubuntu 12.10,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name : "insight" , value : "It was discovered that an intermediate certificate was
+  script_tag(name:"insight", value:"It was discovered that an intermediate certificate was
 incorrectly issued by a subordinate certificate authority of a trusted CA
 included in NSS. This intermediate certificate could be used in a
 man-in-the-middle attack, and has such been marked as untrusted in this
 update.");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2063-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2063-1/");
-  script_tag(name: "summary" , value: "Check for the Version of nss");
+  script_xref(name:"USN", value:"2063-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2063-1/");
+  script_tag(name:"summary", value:"Check for the Version of nss");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
@@ -64,7 +64,7 @@ update.");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

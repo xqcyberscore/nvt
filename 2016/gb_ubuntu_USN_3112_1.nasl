@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842931");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-11-08 15:52:48 +0530 (Tue, 08 Nov 2016)");
   script_cve_id("CVE-2016-5250", "CVE-2016-5257", "CVE-2016-5270", "CVE-2016-5272",
 		"CVE-2016-5274", "CVE-2016-5276", "CVE-2016-5277", "CVE-2016-5278",
@@ -36,9 +36,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for thunderbird USN-3112-1");
-  script_tag(name: "summary", value: "Check the version of thunderbird");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Catalin Dumitru discovered that URLs of
+  script_tag(name:"summary", value:"Check the version of thunderbird");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Catalin Dumitru discovered that URLs of
   resources loaded after a navigation start could be leaked to the following page
   via the Resource Timing API. If a user were tricked in to opening a specially
   crafted website in a browsing context, an attacker could potentially exploit
@@ -88,14 +88,14 @@ denial of service via application crash, or execute arbitrary code.
 Mei Wang discovered a use-after-free when changing text direction. If  ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "thunderbird on Ubuntu 16.04 LTS,
+  script_tag(name:"affected", value:"thunderbird on Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS,
   Ubuntu 16.10,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3112-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3112-1/");
+  script_xref(name:"USN", value:"3112-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3112-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -108,7 +108,7 @@ Mei Wang discovered a use-after-free when changing text direction. If  ...
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

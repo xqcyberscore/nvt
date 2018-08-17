@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842916");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-10-14 05:54:21 +0200 (Fri, 14 Oct 2016)");
   script_cve_id("CVE-2016-6828", "CVE-2016-6136", "CVE-2016-6480");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-ti-omap4 USN-3097-2");
-  script_tag(name: "summary", value: "Check the version of linux-ti-omap4");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Marco Grassi discovered a use-after-free
+  script_tag(name:"summary", value:"Check the version of linux-ti-omap4");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Marco Grassi discovered a use-after-free
   condition could occur in the TCP retransmit queue handling code in the Linux
   kernel. A local attacker could use this to cause a denial of service (system
   crash) or possibly execute arbitrary code. (CVE-2016-6828)
@@ -48,11 +48,11 @@ disrupt system-call auditing. (CVE-2016-6136)
 Pengfei Wang discovered a race condition in the Adaptec AAC RAID controller
 driver in the Linux kernel when handling ioctl()s. A local attacker could
 use this to cause a denial of service (system crash). (CVE-2016-6480)");
-  script_tag(name: "affected", value: "linux-ti-omap4 on Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"linux-ti-omap4 on Ubuntu 12.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3097-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3097-2/");
+  script_xref(name:"USN", value:"3097-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3097-2/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -65,7 +65,7 @@ use this to cause a denial of service (system crash). (CVE-2016-6480)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

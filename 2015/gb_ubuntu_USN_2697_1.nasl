@@ -26,25 +26,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842400");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-07-31 07:24:01 +0200 (Fri, 31 Jul 2015)");
   script_cve_id("CVE-2015-3228");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for ghostscript USN-2697-1");
-  script_tag(name: "summary", value: "Check the version of ghostscript");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "William Robinet and Stefan Cornelius discovered that Ghostscript did not
+  script_tag(name:"summary", value:"Check the version of ghostscript");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"William Robinet and Stefan Cornelius discovered that Ghostscript did not
 correctly handle certain Postscript files. If a user or automated system
 were tricked into opening a specially crafted file, an attacker could cause
 a denial of service or possibly execute arbitrary code.");
-  script_tag(name: "affected", value: "ghostscript on Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"ghostscript on Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2697-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2697-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2697-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2697-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -57,7 +57,7 @@ a denial of service or possibly execute arbitrary code.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

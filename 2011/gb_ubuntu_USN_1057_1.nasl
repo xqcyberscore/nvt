@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1057_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
+# $Id: gb_ubuntu_USN_1057_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux-source-2.6.15 vulnerabilities USN-1057-1
 #
@@ -29,14 +29,14 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1057-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1057-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840581");
-  script_version("$Revision: 9648 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-02-04 14:19:53 +0100 (Fri, 04 Feb 2011)");
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:N");
-  script_xref(name: "USN", value: "1057-1");
+  script_xref(name:"USN", value:"1057-1");
   script_cve_id("CVE-2010-2943", "CVE-2010-3297", "CVE-2010-4072");
   script_name("Ubuntu Update for linux-source-2.6.15 vulnerabilities USN-1057-1");
 
@@ -45,10 +45,10 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU6\.06 LTS");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1057-1");
-  script_tag(name : "affected" , value : "linux-source-2.6.15 vulnerabilities on Ubuntu 6.06 LTS");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "Dave Chinner discovered that the XFS filesystem did not correctly order
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1057-1");
+  script_tag(name:"affected", value:"linux-source-2.6.15 vulnerabilities on Ubuntu 6.06 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Dave Chinner discovered that the XFS filesystem did not correctly order
   inode lookups when exported by NFS. A remote attacker could exploit this to
   read or write disk blocks that had changed file assignment or had become
   unlinked, leading to a loss of privacy. (CVE-2010-2943)
@@ -68,7 +68,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 
 res = "";

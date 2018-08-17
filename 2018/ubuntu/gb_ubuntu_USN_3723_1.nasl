@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3723_1.nasl 10662 2018-07-27 13:43:28Z cfischer $
+# $Id: gb_ubuntu_USN_3723_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for tomcat8 USN-3723-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843599");
-  script_version("$Revision: 10662 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 15:43:28 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-26 06:00:51 +0200 (Thu, 26 Jul 2018)");
   script_cve_id("CVE-2018-1336", "CVE-2018-8034");
   script_tag(name:"cvss_base", value:"5.0");
@@ -45,12 +45,12 @@ issue to cause Tomcat to crash, resulting in a denial of service. (CVE-2018-1336
 It was discovered that the Tomcat WebSocket client incorrectly performed
 hostname verification. A remote attacker could possibly use this issue to
 intercept sensitive information. (CVE-2018-8034)");
-  script_tag(name:"affected", value:"tomcat8 on Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"tomcat8 on Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3723-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3723-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3723-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -63,7 +63,7 @@ intercept sensitive information. (CVE-2018-8034)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

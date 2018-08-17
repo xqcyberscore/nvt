@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2366_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2366_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for libvirt USN-2366-1
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841990");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-10-01 16:59:44 +0530 (Wed, 01 Oct 2014)");
   script_cve_id("CVE-2014-0179", "CVE-2014-5177", "CVE-2014-3633");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
   script_name("Ubuntu Update for libvirt USN-2366-1");
-  script_tag(name: "insight", value: "Daniel P. Berrange and Richard Jones discovered that libvirt incorrectly
+  script_tag(name:"insight", value:"Daniel P. Berrange and Richard Jones discovered that libvirt incorrectly
 handled XML documents containing XML external entity declarations. An
 attacker could use this issue to cause libvirtd to crash, resulting in a
 denial of service on all affected releases, or possibly read arbitrary
@@ -45,15 +45,15 @@ Luyao Huang discovered that libvirt incorrectly handled certain blkiotune
 queries. An attacker could use this issue to cause libvirtd to crash,
 resulting in a denial of service. This issue only applied to Ubuntu 12.04
 LTS and Ubuntu 14.04 LTS. (CVE-2014-3633)");
-  script_tag(name: "affected", value: "libvirt on Ubuntu 14.04 LTS ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"libvirt on Ubuntu 14.04 LTS,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "USN", value: "2366-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2366-1/");
+  script_xref(name:"USN", value:"2366-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2366-1/");
   script_tag(name:"summary", value:"Check for the Version of libvirt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -66,7 +66,7 @@ LTS and Ubuntu 14.04 LTS. (CVE-2014-3633)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842881");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-09-13 05:46:37 +0200 (Tue, 13 Sep 2016)");
   script_cve_id("CVE-2016-3458", "CVE-2016-3500", "CVE-2016-3508", "CVE-2016-3550",
  		"CVE-2016-3606");
@@ -35,9 +35,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for openjdk-6 USN-3077-1");
-  script_tag(name: "summary", value: "Check the version of openjdk-6");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "A vulnerability was discovered in the OpenJDK
+  script_tag(name:"summary", value:"Check the version of openjdk-6");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"A vulnerability was discovered in the OpenJDK
   JRE related to data integrity. An attacker could exploit this to expose sensitive
   data over the network or possibly execute arbitrary code. (CVE-2016-3458)
 
@@ -53,11 +53,11 @@ A vulnerability was discovered in the OpenJDK JRE related to information
 disclosure, data integrity, and availability. An attacker could exploit
 this to cause a denial of service, expose sensitive data over the network,
 or possibly execute arbitrary code. (CVE-2016-3606)");
-  script_tag(name: "affected", value: "openjdk-6 on Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"openjdk-6 on Ubuntu 12.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3077-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3077-1/");
+  script_xref(name:"USN", value:"3077-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3077-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -70,7 +70,7 @@ or possibly execute arbitrary code. (CVE-2016-3606)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

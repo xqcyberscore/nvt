@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842767");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-05-19 05:20:59 +0200 (Thu, 19 May 2016)");
   script_cve_id("CVE-2015-5370", "CVE-2016-2110", "CVE-2016-2111", "CVE-2016-2112",
    		"CVE-2016-2113", "CVE-2016-2114", "CVE-2016-2115", "CVE-2016-2118");
@@ -35,9 +35,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for samba USN-2950-4");
-  script_tag(name: "summary", value: "Check the version of samba");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "USN-2950-1 fixed vulnerabilities in Samba.
+  script_tag(name:"summary", value:"Check the version of samba");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"USN-2950-1 fixed vulnerabilities in Samba.
   The backported fixes introduced in Ubuntu 12.04 LTS caused interoperability
   issues. This update fixes compatibility with certain NAS devices, and allows
   connecting to Samba 3.6 servers by relaxing the 'client ipc signing' parameter
@@ -82,11 +82,11 @@ if(description)
   In addition to security fixes, the updated packages contain bug fixes,
   new features, and possibly incompatible changes. Configuration changes may
   be required in certain environments.");
-  script_tag(name: "affected", value: "samba on Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"samba on Ubuntu 12.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "2950-4");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2950-4/");
+  script_xref(name:"USN", value:"2950-4");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2950-4/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -99,7 +99,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

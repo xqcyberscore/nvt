@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843022");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-01-20 05:40:06 +0100 (Fri, 20 Jan 2017)");
   script_cve_id("CVE-2016-8318", "CVE-2016-8327", "CVE-2017-3238", "CVE-2017-3243",
 		"CVE-2017-3244", "CVE-2017-3251", "CVE-2017-3256", "CVE-2017-3258",
@@ -38,9 +38,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for mysql-5.7 USN-3174-1");
-  script_tag(name: "summary", value: "Check the version of mysql-5.7");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Multiple security issues were discovered in MySQL and this update includes
+  script_tag(name:"summary", value:"Check the version of mysql-5.7");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Multiple security issues were discovered in MySQL and this update includes
 new upstream MySQL versions to fix these issues.
 
 MySQL has been updated to 5.5.54 in Ubuntu 12.04 LTS and Ubuntu 14.04 LTS.
@@ -53,14 +53,14 @@ Please see the following for more information:
 http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-54.html
 http://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-17.html
 http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html");
-  script_tag(name: "affected", value: "mysql-5.7 on Ubuntu 16.10 ,
-  Ubuntu 16.04 LTS ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"mysql-5.7 on Ubuntu 16.10,
+  Ubuntu 16.04 LTS,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3174-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3174-1/");
+  script_xref(name:"USN", value:"3174-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3174-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -73,7 +73,7 @@ http://www.oracle.com/technetwork/security-advisory/cpujan2017-2881727.html");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

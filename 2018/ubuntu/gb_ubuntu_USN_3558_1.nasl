@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3558_1.nasl 9655 2018-04-27 09:23:07Z cfischer $
+# $Id: gb_ubuntu_USN_3558_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for systemd USN-3558-1
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843440");
-  script_version("$Revision: 9655 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-02-06 07:54:04 +0100 (Tue, 06 Feb 2018)");
   script_cve_id("CVE-2017-15908", "CVE-2018-1049");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for systemd USN-3558-1");
-  script_tag(name: "summary", value: "Check the version of systemd");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Karim Hossen &amp Thomas Imbert and Nelson
+  script_tag(name:"summary", value:"Check the version of systemd");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Karim Hossen &amp Thomas Imbert and Nelson
   William Gamazo Sanchez independently discovered that systemd-resolved
   incorrectly handled certain DNS responses. A remote attacker could possibly use
   this issue to cause systemd to temporarily stop responding, resulting in a
@@ -45,12 +45,12 @@ if(description)
   It was discovered that systemd incorrectly handled automounted volumes. A local
   attacker could possibly use this issue to cause applications to hang, resulting
   in a denial of service. (CVE-2018-1049)");
-  script_tag(name: "affected", value: "systemd on Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"systemd on Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3558-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3558-1/");
+  script_xref(name:"USN", value:"3558-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3558-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -63,7 +63,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

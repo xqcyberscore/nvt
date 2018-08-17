@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1119_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
+# $Id: gb_ubuntu_USN_1119_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux-ti-omap4 USN-1119-1
 #
@@ -29,14 +29,14 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1119-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1119-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840651");
-  script_version("$Revision: 9648 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-05-10 14:04:15 +0200 (Tue, 10 May 2011)");
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "USN", value: "1119-1");
+  script_xref(name:"USN", value:"1119-1");
   script_cve_id("CVE-2010-3904", "CVE-2010-3848", "CVE-2010-3849", "CVE-2010-3850", "CVE-2010-3081", "CVE-2010-2954", "CVE-2010-2955", "CVE-2010-2960", "CVE-2010-2962", "CVE-2010-2963", "CVE-2010-3079", "CVE-2010-3080", "CVE-2010-3437", "CVE-2010-3705", "CVE-2010-3861", "CVE-2010-3865", "CVE-2010-3873", "CVE-2010-3875", "CVE-2010-3876", "CVE-2010-3877", "CVE-2010-4072", "CVE-2010-4079", "CVE-2010-4158", "CVE-2010-4164", "CVE-2010-4165", "CVE-2010-4249", "CVE-2010-4342", "CVE-2010-4346", "CVE-2010-4527", "CVE-2010-4529");
   script_name("Ubuntu Update for linux-ti-omap4 USN-1119-1");
 
@@ -45,10 +45,10 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU10\.10");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1119-1");
-  script_tag(name : "affected" , value : "linux-ti-omap4 on Ubuntu 10.10");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "Dan Rosenberg discovered that the RDS network protocol did not correctly
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1119-1");
+  script_tag(name:"affected", value:"linux-ti-omap4 on Ubuntu 10.10");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Dan Rosenberg discovered that the RDS network protocol did not correctly
   check certain parameters. A local attacker could exploit this gain root
   privileges. (CVE-2010-3904)
 
@@ -110,7 +110,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 
 res = "";

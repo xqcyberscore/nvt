@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3689_1.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3689_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for libgcrypt20 USN-3689-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843565");
-  script_version("$Revision: 10965 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-20 06:05:46 +0200 (Wed, 20 Jun 2018)");
   script_cve_id("CVE-2018-0495");
   script_tag(name:"cvss_base", value:"1.9");
@@ -40,14 +40,14 @@ if(description)
   script_tag(name:"insight", value:"Keegan Ryan discovered that Libgcrypt was susceptible to a side-channel
 attack. A local attacker could possibly use this attack to recover ECDSA
 private keys.");
-  script_tag(name:"affected", value:"libgcrypt20 on Ubuntu 18.04 LTS ,
-  Ubuntu 17.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"libgcrypt20 on Ubuntu 18.04 LTS,
+  Ubuntu 17.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3689-1");
-  script_xref(name:"URL" , value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2018-June/004454.html");
+  script_xref(name:"URL", value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2018-June/004454.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -60,7 +60,7 @@ private keys.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

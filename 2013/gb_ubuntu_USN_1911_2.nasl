@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1911_2.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_1911_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for ghostscript USN-1911-2
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841525");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-08 11:48:17 +0530 (Thu, 08 Aug 2013)");
   script_cve_id("CVE-2013-4160");
   script_tag(name:"cvss_base", value:"5.0");
@@ -38,8 +38,8 @@ if(description)
   script_name("Ubuntu Update for ghostscript USN-1911-2");
 
 
-  script_tag(name : "affected" , value : "ghostscript on Ubuntu 13.04");
-  script_tag(name : "insight" , value : "USN-1911-1 fixed vulnerabilities in Little CMS. This update provides the
+  script_tag(name:"affected", value:"ghostscript on Ubuntu 13.04");
+  script_tag(name:"insight", value:"USN-1911-1 fixed vulnerabilities in Little CMS. This update provides the
 corresponding updates for Ghostscript.
 
 Original advisory details:
@@ -48,11 +48,11 @@ It was discovered that Little CMS did not properly verify certain memory
 allocations. If a user or automated system using Little CMS were tricked
 into opening a specially crafted file, an attacker could cause Little CMS
 to crash.");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "1911-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1911-2/");
+  script_xref(name:"USN", value:"1911-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1911-2/");
   script_tag(name:"summary", value:"Check for the Version of ghostscript");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
@@ -65,7 +65,7 @@ to crash.");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

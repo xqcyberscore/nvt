@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3619_1.nasl 9655 2018-04-27 09:23:07Z cfischer $
+# $Id: gb_ubuntu_USN_3619_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux USN-3619-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843496");
-  script_version("$Revision: 9655 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-06 09:52:06 +0200 (Fri, 06 Apr 2018)");
   script_cve_id("CVE-2017-16995", "CVE-2017-0861", "CVE-2017-1000407", "CVE-2017-11472",
                 "CVE-2017-15129", "CVE-2017-16528", "CVE-2017-16532", "CVE-2017-16536",
@@ -44,9 +44,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-3619-1");
-  script_tag(name: "summary", value: "Check the version of linux");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Jann Horn discovered that the Berkeley
+  script_tag(name:"summary", value:"Check the version of linux");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Jann Horn discovered that the Berkeley
   Packet Filter (BPF) implementation in the Linux kernel improperly performed sign
   extension in some situations. A local attacker could use this to cause a denial
   of service (system crash) or possibly execute arbitrary code. (CVE-2017-16995)
@@ -82,11 +82,11 @@ if(description)
   (system crash). (CVE-2017-16645) Andrey Konovalov discovered that the DiBcom
   DiB0700 USB DVB driver in the Linux kernel di ... Description truncated, for
   more information please check the Reference URL");
-  script_tag(name: "affected", value: "linux on Ubuntu 16.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"linux on Ubuntu 16.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3619-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3619-1/");
+  script_xref(name:"USN", value:"3619-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3619-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -99,7 +99,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

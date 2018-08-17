@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842171");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-04-21 07:19:00 +0200 (Tue, 21 Apr 2015)");
   script_cve_id("CVE-2015-3330", "CVE-2015-3329", "CVE-2015-2305", "CVE-2015-2348",
                 "CVE-2015-2783", "CVE-2015-2787");
@@ -35,9 +35,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for php5 USN-2572-1");
-  script_tag(name: "summary", value: "Check the version of php5");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that PHP incorrectly
+  script_tag(name:"summary", value:"Check the version of php5");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that PHP incorrectly
 handled cleanup when used with Apache 2.4. A remote attacker could use this
 issue to cause PHP to crash, resulting in a denial of service, or possibly
 execute arbitrary code. (CVE-2015-3330)
@@ -64,13 +64,13 @@ Taoguang Chen discovered that PHP incorrectly handled unserializing certain
 objects. A remote attacker could use this issue to cause PHP to crash,
 resulting in a denial of service, or possibly execute arbitrary code.
 (CVE-2015-2787)");
-  script_tag(name: "affected", value: "php5 on Ubuntu 14.10 ,
-  Ubuntu 14.04 LTS ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"php5 on Ubuntu 14.10,
+  Ubuntu 14.04 LTS,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2572-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2572-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2572-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2572-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -83,7 +83,7 @@ resulting in a denial of service, or possibly execute arbitrary code.
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

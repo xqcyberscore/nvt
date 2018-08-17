@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2211_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2211_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for libxfont USN-2211-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841825");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-05-19 11:24:57 +0530 (Mon, 19 May 2014)");
   script_cve_id("CVE-2014-0209", "CVE-2014-0210", "CVE-2014-0211");
   script_tag(name:"cvss_base", value:"7.5");
@@ -38,12 +38,12 @@ if(description)
   script_name("Ubuntu Update for libxfont USN-2211-1");
 
 
-  script_tag(name : "affected" , value : "libxfont on Ubuntu 14.04 LTS ,
-  Ubuntu 13.10 ,
-  Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"libxfont on Ubuntu 14.04 LTS,
+  Ubuntu 13.10,
+  Ubuntu 12.10,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name : "insight" , value : "Ilja van Sprundel discovered that libXfont incorrectly handled
+  script_tag(name:"insight", value:"Ilja van Sprundel discovered that libXfont incorrectly handled
 font metadata file parsing. A local attacker could use this issue to cause
 libXfont to crash, or possibly execute arbitrary code in order to gain
 privileges. (CVE-2014-0209)
@@ -53,11 +53,11 @@ Server replies. A malicious font server could return specially-crafted data
 that could cause libXfont to crash, or possibly execute arbitrary code.
 This issue only affected Ubuntu 10.04 LTS, Ubuntu 12.04 LTS, Ubuntu 12.10
 and Ubuntu 13.10. (CVE-2014-0210, CVE-2014-0211)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2211-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2211-1/");
+  script_xref(name:"USN", value:"2211-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2211-1/");
   script_tag(name:"summary", value:"Check for the Version of libxfont");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -70,7 +70,7 @@ and Ubuntu 13.10. (CVE-2014-0210, CVE-2014-0211)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

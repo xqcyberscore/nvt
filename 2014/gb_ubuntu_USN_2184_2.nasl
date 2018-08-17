@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2184_2.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2184_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for unity USN-2184-2
 #
@@ -29,16 +29,16 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841794");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-05-05 11:24:14 +0530 (Mon, 05 May 2014)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("Ubuntu Update for unity USN-2184-2");
 
 
-  script_tag(name : "affected" , value : "unity on Ubuntu 14.04 LTS");
-  script_tag(name : "insight" , value : "USN-2184-1 fixed lock screen vulnerabilities in Unity. Further
+  script_tag(name:"affected", value:"unity on Ubuntu 14.04 LTS");
+  script_tag(name:"insight", value:"USN-2184-1 fixed lock screen vulnerabilities in Unity. Further
 testing has uncovered more issues which have been fixed in this update. This
 update also fixes a regression with the shutdown dialogue.
 
@@ -52,11 +52,11 @@ this issue to run commands, and unlock the current session.
 Giovanni Mellini discovered that Unity could display the Dash in certain
 conditions when the screen was locked. A local attacker could possibly use
 this issue to run commands, and unlock the current session.");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2184-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2184-2/");
+  script_xref(name:"USN", value:"2184-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2184-2/");
   script_tag(name:"summary", value:"Check for the Version of unity");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -69,7 +69,7 @@ this issue to run commands, and unlock the current session.");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

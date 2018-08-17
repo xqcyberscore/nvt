@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1041_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
+# $Id: gb_ubuntu_USN_1041_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux, linux-ec2 vulnerabilities USN-1041-1
 #
@@ -29,14 +29,14 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1041-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1041-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840565");
-  script_version("$Revision: 9648 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-01-14 16:07:43 +0100 (Fri, 14 Jan 2011)");
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:N");
-  script_xref(name: "USN", value: "1041-1");
+  script_xref(name:"USN", value:"1041-1");
   script_cve_id("CVE-2010-2537", "CVE-2010-2538", "CVE-2010-2943", "CVE-2010-2962", "CVE-2010-3079", "CVE-2010-3296", "CVE-2010-3297", "CVE-2010-3298", "CVE-2010-3301", "CVE-2010-3858", "CVE-2010-3861", "CVE-2010-4072");
   script_name("Ubuntu Update for linux, linux-ec2 vulnerabilities USN-1041-1");
 
@@ -45,12 +45,12 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(9\.10|10\.10|10\.04 LTS)");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1041-1");
-  script_tag(name : "affected" , value : "linux, linux-ec2 vulnerabilities on Ubuntu 9.10 ,
-  Ubuntu 10.04 LTS ,
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1041-1");
+  script_tag(name:"affected", value:"linux, linux-ec2 vulnerabilities on Ubuntu 9.10,
+  Ubuntu 10.04 LTS,
   Ubuntu 10.10");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "Dan Rosenberg discovered that the btrfs filesystem did not correctly
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Dan Rosenberg discovered that the btrfs filesystem did not correctly
   validate permissions when using the clone function. A local attacker could
   overwrite the contents of file handles that were opened for append-only,
   or potentially read arbitrary contents, leading to a loss of privacy. Only
@@ -100,7 +100,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 
 res = "";

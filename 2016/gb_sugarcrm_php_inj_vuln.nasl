@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sugarcrm_php_inj_vuln.nasl 8372 2018-01-11 10:19:36Z cfischer $
+# $Id: gb_sugarcrm_php_inj_vuln.nasl 11026 2018-08-17 08:52:26Z cfischer $
 #
 # SugarCRM PHP Object Injection Vulnerability
 #
@@ -28,18 +28,18 @@
 
 CPE = "cpe:/a:sugarcrm:sugarcrm";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106124");
-  script_version("$Revision: 8372 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-11 11:19:36 +0100 (Thu, 11 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2016-07-08 15:37:30 +0700 (Fri, 08 Jul 2016)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_version("$Revision: 11026 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-08 15:37:30 +0700 (Fri, 08 Jul 2016)");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("SugarCRM PHP Object Injection Vulnerability");
 
@@ -50,21 +50,21 @@ if (description)
   script_dependencies("gb_sugarcrm_detect.nasl");
   script_mandatory_keys("sugarcrm/installed");
 
-  script_tag(name: "summary", value: "SugarCRM is prone to a PHP injection vulnerability.");
+  script_tag(name:"summary", value:"SugarCRM is prone to a PHP injection vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Try to execute phpinfo()");
+  script_tag(name:"vuldetect", value:"Try to execute phpinfo()");
 
-  script_tag(name: "insight", value: "User input passed through the 'rest_data' request parameter is not
-properly sanitized before being used in a call to the 'unserialize()' function. This can be exploited to
-inject arbitrary PHP objects into the application scope, and could allow unauthenticated attackers to
-execute arbitrary PHP code via specially crafted serialized objects.");
+  script_tag(name:"insight", value:"User input passed through the 'rest_data' request parameter is not
+  properly sanitized before being used in a call to the 'unserialize()' function. This can be exploited to
+  inject arbitrary PHP objects into the application scope, and could allow unauthenticated attackers to
+  execute arbitrary PHP code via specially crafted serialized objects.");
 
-  script_tag(name: "affected", value: "Version 6.5, 6.7, 7.5, 7.6 and 7.0");
+  script_tag(name:"affected", value:"Version 6.5, 6.7, 7.5, 7.6 and 7.0");
 
-  script_tag(name: "solution", value: "Update to the latest version.");
+  script_tag(name:"solution", value:"Update to the latest version.");
 
-  script_xref(name: "URL", value: "http://karmainsecurity.com/KIS-2016-07");
-  script_xref(name: "URL", value: "https://www.sugarcrm.com/security/sugarcrm-sa-2016-008");
+  script_xref(name:"URL", value:"http://karmainsecurity.com/KIS-2016-07");
+  script_xref(name:"URL", value:"https://www.sugarcrm.com/security/sugarcrm-sa-2016-008");
 
   exit(0);
 }
@@ -73,6 +73,7 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("url_func.inc");
+include("misc_func.inc");
 
 function do_ex( dir, file, ex, port )
 {

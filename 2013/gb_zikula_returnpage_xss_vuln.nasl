@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zikula_returnpage_xss_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_zikula_returnpage_xss_vuln.nasl 11041 2018-08-17 14:03:47Z mmartin $
 #
 # Zikula returnpage Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:zikula:zikula_application_framework";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803962");
-  script_version("$Revision: 6079 $");
+  script_version("$Revision: 11041 $");
   script_cve_id("CVE-2013-6168");
   script_bugtraq_id(63186);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-15 17:56:51 +0530 (Fri, 15 Nov 2013)");
   script_name("Zikula returnpage Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -77,7 +77,6 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-## Construct the attack request
 url = dir + "/index.php?module=users&type=user&func=login&returnpage=" +
             "%22%3E%3Cscript%3Ealert%28document.cookie%29;%3C/script%3E";
 match = "<script>alert\(document.cookie\);</script>";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owat_suite_multiple_vuln.nasl 4635 2016-11-28 08:14:54Z antu123 $
+# $Id: gb_owat_suite_multiple_vuln.nasl 11026 2018-08-17 08:52:26Z cfischer $
 #
 # Oracle Application Testing Suite Multiple Vulnerabilities
 #
@@ -23,12 +23,13 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:oracle:application_testing_suite";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809731");
-  script_version("$Revision: 4635 $");
+  script_version("$Revision: 11026 $");
   script_cve_id("CVE-2016-0491", "CVE-2016-0492", "CVE-2016-0489", "CVE-2016-0488",
                 "CVE-2016-0487", "CVE-2016-0490", "CVE-2016-0476", "CVE-2016-0477",
                 "CVE-2016-0478", "CVE-2016-0480", "CVE-2016-0481", "CVE-2016-0482",
@@ -37,7 +38,7 @@ if(description)
                     81184, 81169, 81199, 81105, 81173, 81163);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-28 09:14:54 +0100 (Mon, 28 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-11-25 12:07:57 +0530 (Fri, 25 Nov 2016)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Oracle Application Testing Suite Multiple Vulnerabilities");
@@ -50,29 +51,43 @@ if(description)
   file or not");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An error in the UploadFileAction servlet when fileType parameter is set as
     '*'.
+
   - Errors within the 'isAllowedUrl' function which has a list of URI entries
-    which do not require authentication. 
+    which do not require authentication.
+
   - An error within the ActionServlet servlet which bypasses authentication if
     the URI starts with a specific string.
+
   - Another error within ActionServlet servlet.
+
   - An error within the UploadServlet servletin the filename header.
+
   - An error within the DownloadServlet in the reportName parameter.
+
   - An error exists within the DownloadServlet n the repository, workspace,
     or scenario parameters.
+
   - An error within the DownloadServlet in the scriptName parameter if downloadType
     is specified as oseScript.
+
   - An error within the DownloadServlet servlet in TMAPReportImage where the
     downloadType is specified as TMAPReportImage.
+
   - An error within the DownloadServlet servlet in the scheduleReportName parameter
     where the downloadType is specified as scheduleTaskResults.
+
   - An error within the DownloadServlet servlet in file parameter where the
     downloadType is specified as subReport.
+
   - An error within the DownloadServlet servlet in the scriptPath parameter where
     the downloadType is specified as otmPkg.
+
   - An error within the DownloadServlet servlet in the reportName parameter where
     the downloadType is specified as OTMReport.
+
   - An error within the DownloadServlet servlet in exportFileName parameter where
     the downloadType is specified as OTMExportFile.");
 
@@ -82,7 +97,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected" , value:"Oracle Application Testing Suite versions
+  script_tag(name:"affected", value:"Oracle Application Testing Suite versions
   12.4.0.2 and 12.5.0.2");
 
   script_tag(name:"solution", value:"Apply update from the link mentioned below
@@ -90,31 +105,23 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/39691");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39691");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_oracle_web_app_test_suite_detect.nasl");
   script_mandatory_keys("Oracle/Application/Testing/Suite/installed");
   script_require_ports("Services/www", 8088);
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
-
-##Variable initialization
-oatPort = "";
-uploadfile = "";
-postData = "";
-req = "";
-res = "";
-
-##Get Port
 if(!oatPort = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -154,7 +161,6 @@ postData = string('-----------------------------OpenVAS\r\n',
 
 vuln_url = "/olt/Login.do/../../olt/UploadFileUpload.do";
 
-##Construct POST Req
 req = http_post_req( port:oatPort, url:vuln_url,
                      data:postData, add_headers: make_array( "Content-Type",
                      "multipart/form-data; boundary=---------------------------OpenVAS"));
@@ -162,7 +168,6 @@ req = http_post_req( port:oatPort, url:vuln_url,
 ##Send and Receive Response
 res = http_keepalive_send_recv(port: oatPort, data: req);
 
-##Confirm Upload
 if(res =~ "HTTP/1.. 200 OK" && "Upload failed" >!< res)
 {
   ##Send request to uploaded file
@@ -170,7 +175,6 @@ if(res =~ "HTTP/1.. 200 OK" && "Upload failed" >!< res)
   req = http_get(item: url, port:oatPort);
   res = http_keepalive_send_recv(port: oatPort, data: req);
 
-  ##Confirm Exploit
   if(res && "OpenVAS-File-Upload-Test" >< res)
   {
     report = report_vuln_url( port:oatPort, url:vuln_url);

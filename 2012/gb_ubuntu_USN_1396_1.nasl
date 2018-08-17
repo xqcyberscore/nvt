@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1396_1.nasl 9649 2018-04-27 08:45:50Z cfischer $
+# $Id: gb_ubuntu_USN_1396_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for eglibc USN-1396-1
 #
@@ -30,17 +30,17 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1396-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1396-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840929");
-  script_version("$Revision: 9649 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-03-12 12:42:00 +0530 (Mon, 12 Mar 2012)");
   script_cve_id("CVE-2009-5029", "CVE-2010-0015", "CVE-2011-1071", "CVE-2011-1659",
                 "CVE-2011-1089", "CVE-2011-1095", "CVE-2011-1658", "CVE-2011-2702",
                 "CVE-2011-4609", "CVE-2012-0864");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_xref(name: "USN", value: "1396-1");
+  script_xref(name:"USN", value:"1396-1");
   script_name("Ubuntu Update for eglibc USN-1396-1");
 
   script_category(ACT_GATHER_INFO);
@@ -48,13 +48,13 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.10|10\.04 LTS|11\.04|8\.04 LTS)");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1396-1");
-  script_tag(name : "affected" , value : "eglibc on Ubuntu 11.04 ,
-  Ubuntu 10.10 ,
-  Ubuntu 10.04 LTS ,
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1396-1");
+  script_tag(name:"affected", value:"eglibc on Ubuntu 11.04,
+  Ubuntu 10.10,
+  Ubuntu 10.04 LTS,
   Ubuntu 8.04 LTS");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "It was discovered that the GNU C Library did not properly handle
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"It was discovered that the GNU C Library did not properly handle
   integer overflows in the timezone handling code. An attacker could use
   this to possibly execute arbitrary code by convincing an application
   to load a maliciously constructed tzfile. (CVE-2009-5029)
@@ -111,7 +111,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

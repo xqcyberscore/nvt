@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3658_1.nasl 10349 2018-06-27 15:50:28Z cfischer $
+# $Id: gb_ubuntu_USN_3658_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for procps USN-3658-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843536");
-  script_version("$Revision: 10349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-27 17:50:28 +0200 (Wed, 27 Jun 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-24 05:46:04 +0200 (Thu, 24 May 2018)");
   script_cve_id("CVE-2018-1122", "CVE-2018-1123", "CVE-2018-1124", "CVE-2018-1125", "CVE-2018-1126");
   script_tag(name:"cvss_base", value:"7.5");
@@ -56,14 +56,14 @@ of service. (CVE-2018-1125)
 It was discovered that procps-ng incorrectly handled memory. A local
 attacker could use this issue to cause a denial of service, or possibly
 execute arbitrary code. (CVE-2018-1126)");
-  script_tag(name:"affected", value:"procps on Ubuntu 18.04 LTS ,
-  Ubuntu 17.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"procps on Ubuntu 18.04 LTS,
+  Ubuntu 17.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3658-1");
-  script_xref(name:"URL" , value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2018-May/004410.html");
+  script_xref(name:"URL", value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2018-May/004410.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -76,7 +76,7 @@ execute arbitrary code. (CVE-2018-1126)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

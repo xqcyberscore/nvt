@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1681_3.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_1681_3.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for firefox USN-1681-3
 #
@@ -31,12 +31,12 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_tag(name : "affected" , value : "firefox on Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
-  Ubuntu 11.10 ,
+  script_tag(name:"affected", value:"firefox on Ubuntu 12.10,
+  Ubuntu 12.04 LTS,
+  Ubuntu 11.10,
   Ubuntu 10.04 LTS");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "USN-1681-1 fixed vulnerabilities in Firefox. Due to an upstream regression,
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"USN-1681-1 fixed vulnerabilities in Firefox. Due to an upstream regression,
   some translations became unusable after upgrading. This update fixes the
   problem.
 
@@ -86,10 +86,10 @@ if(description)
   Jesse Ruderman discovered a flaw in the way ...
 
   Description truncated, for more information please check the Reference URL");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1681-3/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1681-3/");
   script_oid("1.3.6.1.4.1.25623.1.0.841289");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-01-24 09:34:37 +0530 (Thu, 24 Jan 2013)");
   script_cve_id("CVE-2013-0769", "CVE-2013-0749", "CVE-2013-0770", "CVE-2013-0760",
                 "CVE-2013-0761", "CVE-2013-0762", "CVE-2013-0763", "CVE-2013-0766",
@@ -102,10 +102,10 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "1681-3");
+  script_xref(name:"USN", value:"1681-3");
   script_name("Ubuntu Update for firefox USN-1681-3");
 
-  script_tag(name: "summary" , value: "Check for the Version of firefox");
+  script_tag(name:"summary", value:"Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
@@ -117,7 +117,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

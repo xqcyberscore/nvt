@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: spysweeper_corp_installed.nasl 10390 2018-07-04 06:46:11Z cfischer $
+# $Id: spysweeper_corp_installed.nasl 11028 2018-08-17 09:26:08Z cfischer $
 #
 # Webroot SpySweeper Enterprise Check
 #
@@ -29,15 +29,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80046");
-  script_version("$Revision: 10390 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 08:46:11 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 11028 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 20:38:19 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Webroot SpySweeper Enterprise Check");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2004-2005 Jeff Adams / Tenable Network Security");
-  script_family("Windows");
+  script_family("Product detection");
   script_dependencies("smb_enum_services.nasl", "smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);

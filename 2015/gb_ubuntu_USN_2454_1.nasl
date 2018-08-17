@@ -26,23 +26,23 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842069");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-01-23 12:59:14 +0100 (Fri, 23 Jan 2015)");
   script_cve_id("CVE-2014-9449");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("Ubuntu Update for exiv2 USN-2454-1");
-  script_tag(name: "summary", value: "Check the version of exiv2");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that Exiv2 incorrectly
+  script_tag(name:"summary", value:"Check the version of exiv2");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that Exiv2 incorrectly
 handled certain tag values in video files. If a user or automated system were
 tricked into opening a specially-crafted video file, a remote attacker could cause
 Exiv2 to crash, resulting in a denial of service.");
-  script_tag(name: "affected", value: "exiv2 on Ubuntu 14.10");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2454-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2454-1/");
+  script_tag(name:"affected", value:"exiv2 on Ubuntu 14.10");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2454-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2454-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);
@@ -56,7 +56,7 @@ Exiv2 to crash, resulting in a denial of service.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

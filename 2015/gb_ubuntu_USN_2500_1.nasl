@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842093");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-02-18 05:41:57 +0100 (Wed, 18 Feb 2015)");
   script_cve_id("CVE-2015-0255", "CVE-2013-6424");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for xorg-server USN-2500-1");
-  script_tag(name: "summary", value: "Check the version of xorg-server");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Olivier Fourdan discovered that the X.Org
+  script_tag(name:"summary", value:"Check the version of xorg-server");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Olivier Fourdan discovered that the X.Org
 X server incorrectly handled XkbSetGeometry requests resulting in an information
 leak. An attacker able to connect to an X server, either locally or remotely,
 could use this issue to possibly obtain sensitive information. (CVE-2015-0255)
@@ -45,12 +45,12 @@ It was discovered that the X.Org X server incorrectly handled certain
 trapezoids. An attacker able to connect to an X server, either locally or
 remotely, could use this issue to possibly crash the server. This issue
 only affected Ubuntu 12.04 LTS. (CVE-2013-6424)");
-  script_tag(name: "affected", value: "xorg-server on Ubuntu 14.10 ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"xorg-server on Ubuntu 14.10,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2500-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2500-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2500-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2500-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -63,7 +63,7 @@ only affected Ubuntu 12.04 LTS. (CVE-2013-6424)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

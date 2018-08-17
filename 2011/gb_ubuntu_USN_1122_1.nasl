@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1122_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
+# $Id: gb_ubuntu_USN_1122_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for thunderbird USN-1122-1
 #
@@ -29,14 +29,14 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1122-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1122-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840652");
-  script_version("$Revision: 9648 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-05-10 14:04:15 +0200 (Tue, 10 May 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "USN", value: "1122-1");
+  script_xref(name:"USN", value:"1122-1");
   script_cve_id("CVE-2011-0081", "CVE-2011-0069", "CVE-2011-0070", "CVE-2011-0080", "CVE-2011-0074", "CVE-2011-0075", "CVE-2011-0077", "CVE-2011-0078", "CVE-2011-0072", "CVE-2011-0065", "CVE-2011-0066", "CVE-2011-0073", "CVE-2011-0067", "CVE-2011-0071", "CVE-2011-1202");
   script_name("Ubuntu Update for thunderbird USN-1122-1");
 
@@ -45,11 +45,11 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.04 LTS|10\.10)");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1122-1");
-  script_tag(name : "affected" , value : "thunderbird on Ubuntu 10.10 ,
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1122-1");
+  script_tag(name:"affected", value:"thunderbird on Ubuntu 10.10,
   Ubuntu 10.04 LTS");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "It was discovered that there was a vulnerability in the memory handling of
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"It was discovered that there was a vulnerability in the memory handling of
   certain types of content. An attacker could exploit this to possibly run
   arbitrary code as the user running Thunderbird. (CVE-2011-0081)
 
@@ -109,7 +109,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 
 res = "";

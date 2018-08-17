@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842695");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-03-16 06:09:39 +0100 (Wed, 16 Mar 2016)");
   script_cve_id("CVE-2016-1531", "CVE-2014-2972");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for exim4 USN-2933-1");
-  script_tag(name: "summary", value: "Check the version of exim4");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that Exim incorrectly
+  script_tag(name:"summary", value:"Check the version of exim4");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that Exim incorrectly
   filtered environment variables when used with the perl_startup configuration
   option. If the perl_startup option was enabled, a local attacker could use this
   issue to escalate their privileges to the root user. This issue has been fixed
@@ -50,13 +50,13 @@ if(description)
   comparisons twice. A local attacker could possibly use this issue to
   perform arbitrary file operations as the Exim user. This issue only
   affected Ubuntu 12.04 LTS and Ubuntu 14.04 LTS. (CVE-2014-2972)");
-  script_tag(name: "affected", value: "exim4 on Ubuntu 15.10 ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"exim4 on Ubuntu 15.10,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "2933-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2933-1/");
+  script_xref(name:"USN", value:"2933-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2933-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -69,7 +69,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

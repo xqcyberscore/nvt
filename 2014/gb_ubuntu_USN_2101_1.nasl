@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2101_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2101_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for libgadu USN-2101-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841703");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-02-11 10:44:46 +0530 (Tue, 11 Feb 2014)");
   script_cve_id("CVE-2013-6487");
   script_tag(name:"cvss_base", value:"7.5");
@@ -38,18 +38,18 @@ if(description)
   script_name("Ubuntu Update for libgadu USN-2101-1");
 
 
-  script_tag(name : "affected" , value : "libgadu on Ubuntu 13.10 ,
-  Ubuntu 12.10 ,
+  script_tag(name:"affected", value:"libgadu on Ubuntu 13.10,
+  Ubuntu 12.10,
   Ubuntu 12.04 LTS");
-  script_tag(name : "insight" , value : "Yves Younan and Ryan Pentney discovered that libgadu
+  script_tag(name:"insight", value:"Yves Younan and Ryan Pentney discovered that libgadu
 incorrectly handled certain Gadu-Gadu HTTP messages. A malicious remote server
 or a man in the middle could use this issue to cause applications using libgadu
 to crash, resulting in a denial of service, or possibly execute arbitrary code.");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2101-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2101-1/");
+  script_xref(name:"USN", value:"2101-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2101-1/");
   script_tag(name:"summary", value:"Check for the Version of libgadu");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -62,7 +62,7 @@ to crash, resulting in a denial of service, or possibly execute arbitrary code."
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

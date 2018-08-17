@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3634_1.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3634_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for packagekit USN-3634-1
 #
@@ -27,24 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843508");
-  script_version("$Revision: 10148 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 08:37:17 +0200 (Wed, 25 Apr 2018)");
   script_cve_id("CVE-2018-1106");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for packagekit USN-3634-1");
-  script_tag(name: "summary", value: "Check the version of packagekit");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Matthias Gerstner discovered that PackageKit
+  script_tag(name:"summary", value:"Check the version of packagekit");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Matthias Gerstner discovered that PackageKit
   incorrectly handled authentication. A local attacker could possibly use this
   issue to install arbitrary packages and escalate privileges.");
-  script_tag(name: "affected", value: "packagekit on Ubuntu 17.10");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"packagekit on Ubuntu 17.10");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3634-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3634-1/");
+  script_xref(name:"USN", value:"3634-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3634-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -57,7 +57,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

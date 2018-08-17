@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2222_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2222_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for mod-wsgi USN-2222-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841833");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-06-02 15:02:08 +0530 (Mon, 02 Jun 2014)");
   script_cve_id("CVE-2014-0240", "CVE-2014-0242");
   script_tag(name:"cvss_base", value:"6.2");
@@ -38,10 +38,10 @@ if(description)
   script_name("Ubuntu Update for mod-wsgi USN-2222-1");
 
 
-  script_tag(name : "affected" , value : "mod-wsgi on Ubuntu 14.04 LTS ,
-  Ubuntu 13.10 ,
+  script_tag(name:"affected", value:"mod-wsgi on Ubuntu 14.04 LTS,
+  Ubuntu 13.10,
   Ubuntu 12.04 LTS");
-  script_tag(name : "insight" , value : "R&#243 bert Kisteleki discovered mod_wsgi incorrectly checked
+  script_tag(name:"insight", value:"R&#243 bert Kisteleki discovered mod_wsgi incorrectly checked
 setuid return values. A malicious application could use this issue to cause a
 local privilege escalation when using daemon mode. (CVE-2014-0240)
 
@@ -49,11 +49,11 @@ Buck Golemon discovered that mod_wsgi used memory that had been freed.
 A remote attacker could use this issue to read process memory via the
 Content-Type response header. This issue only affected Ubuntu 12.04 LTS.
 (CVE-2014-0242)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2222-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2222-1/");
+  script_xref(name:"USN", value:"2222-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2222-1/");
   script_tag(name:"summary", value:"Check for the Version of mod-wsgi");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -66,7 +66,7 @@ Content-Type response header. This issue only affected Ubuntu 12.04 LTS.
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1796_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_1796_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux USN-1796-1
 #
@@ -29,9 +29,9 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_tag(name : "affected" , value : "linux on Ubuntu 12.10");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "Andrew Jones discovered a flaw with the xen_iret function in Linux kernel's
+  script_tag(name:"affected", value:"linux on Ubuntu 12.10");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Andrew Jones discovered a flaw with the xen_iret function in Linux kernel's
   Xen virtualizeation. In the 32-bit Xen paravirt platform an unprivileged
   guest OS user could exploit this flaw to cause a denial of service (crash
   the system) or gain guest OS privilege. (CVE-2013-0228)
@@ -62,8 +62,8 @@ if(description)
   algorithm report API. A local user could exploit these flaws to leak kernel
   stack and heap memory contents. (CVE-2013-2548)");
   script_oid("1.3.6.1.4.1.25623.1.0.841392");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-04-15 10:18:02 +0530 (Mon, 15 Apr 2013)");
   script_cve_id("CVE-2013-0228", "CVE-2013-0914", "CVE-2013-1767", "CVE-2013-1792",
                 "CVE-2013-2546", "CVE-2013-2547", "CVE-2013-2548");
@@ -73,9 +73,9 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Ubuntu Update for linux USN-1796-1");
 
-  script_xref(name: "USN", value: "1796-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1796-1/");
-  script_tag(name: "summary" , value: "Check for the Version of linux");
+  script_xref(name:"USN", value:"1796-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1796-1/");
+  script_tag(name:"summary", value:"Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
@@ -87,7 +87,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3582_2.nasl 9655 2018-04-27 09:23:07Z cfischer $
+# $Id: gb_ubuntu_USN_3582_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux-aws USN-3582-2
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843459");
-  script_version("$Revision: 9655 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-02-22 15:56:55 +0100 (Thu, 22 Feb 2018)");
   script_cve_id("CVE-2017-17712", "CVE-2015-8952", "CVE-2017-12190", "CVE-2017-15115",
                 "CVE-2017-8824", "CVE-2017-5715");
@@ -36,9 +36,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-aws USN-3582-2");
-  script_tag(name: "summary", value: "Check the version of linux-aws");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "USN-3582-1 fixed vulnerabilities in the
+  script_tag(name:"summary", value:"Check the version of linux-aws");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"USN-3582-1 fixed vulnerabilities in the
   Linux kernel for Ubuntu 16.04 LTS. This update provides the corresponding
   updates for the Linux Hardware Enablement (HWE) kernel from Ubuntu 16.04 LTS for
   Ubuntu 14.04 LTS. Mohamed Ghannam discovered that the IPv4 raw socket
@@ -65,11 +65,11 @@ if(description)
   via sidechannel attacks. This flaw is known as Spectre. A local attacker could
   use this to expose sensitive information, including kernel memory.
   (CVE-2017-5715)");
-  script_tag(name: "affected", value: "linux-aws on Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"linux-aws on Ubuntu 14.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3582-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3582-2/");
+  script_xref(name:"USN", value:"3582-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3582-2/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -82,7 +82,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

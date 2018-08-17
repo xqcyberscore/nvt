@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2107_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2107_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux USN-2107-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841723");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-02-20 15:20:32 +0530 (Thu, 20 Feb 2014)");
   script_cve_id("CVE-2013-6383", "CVE-2013-7263", "CVE-2013-7264", "CVE-2013-7265", "CVE-2013-7281");
   script_tag(name:"cvss_base", value:"6.9");
@@ -38,8 +38,8 @@ if(description)
   script_name("Ubuntu Update for linux USN-2107-1");
 
 
-  script_tag(name : "affected" , value : "linux on Ubuntu 10.04 LTS");
-  script_tag(name : "insight" , value : "A flaw was discovered in the Linux kernel's compat ioctls for Adaptec
+  script_tag(name:"affected", value:"linux on Ubuntu 10.04 LTS");
+  script_tag(name:"insight", value:"A flaw was discovered in the Linux kernel's compat ioctls for Adaptec
 AACRAID scsi raid devices. An unprivileged local user could send
 administrative commands to these devices potentially compromising the data
 stored on the device. (CVE-2013-6383)
@@ -61,11 +61,11 @@ mpb reported an information leak in the Low-Rate Wireless Personal Area
 Networks support (IEEE 802.15.4) in the Linux kernel. A local user could
 exploit this flaw to obtain sensitive information from kernel stack memory.
 (CVE-2013-7281)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2107-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2107-1/");
+  script_xref(name:"USN", value:"2107-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2107-1/");
   script_tag(name:"summary", value:"Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -78,7 +78,7 @@ exploit this flaw to obtain sensitive information from kernel stack memory.
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

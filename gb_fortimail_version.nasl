@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortimail_version.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_fortimail_version.nasl 11039 2018-08-17 12:26:47Z cfischer $
 #
 # FortiMail Detection
 #
@@ -25,28 +25,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105210");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11039 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 14:26:47 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-02-10 18:02:19 +0100 (Tue, 10 Feb 2015)");
   script_name("FortiMail Detection");
 
   script_tag(name:"summary", value:"This script performs SSH based detection of FortiMail");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"summary", value:"Checks for the presence of FortiMail");
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("FortiOS/system_status");
- exit(0);
-}
 
+  exit(0);
+}
 
 include("host_details.inc");
 
@@ -112,4 +111,3 @@ report += 'CPE:     ' + cpe;
 log_message( port:0, data:report );
 
 exit( 0 );
-

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1235_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
+# $Id: gb_ubuntu_USN_1235_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for open-iscsi USN-1235-1
 #
@@ -29,14 +29,14 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1235-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1235-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840779");
-  script_version("$Revision: 9648 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-10-21 16:31:29 +0200 (Fri, 21 Oct 2011)");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_xref(name: "USN", value: "1235-1");
+  script_xref(name:"USN", value:"1235-1");
   script_cve_id("CVE-2009-1297");
   script_name("Ubuntu Update for open-iscsi USN-1235-1");
 
@@ -45,10 +45,10 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU8\.04 LTS");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1235-1");
-  script_tag(name : "affected" , value : "open-iscsi on Ubuntu 8.04 LTS");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "Colin Watson discovered that iscsi_discovery in Open-iSCSI did not safely
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1235-1");
+  script_tag(name:"affected", value:"open-iscsi on Ubuntu 8.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Colin Watson discovered that iscsi_discovery in Open-iSCSI did not safely
   create temporary files. A local attacker could exploit this to to overwrite
   arbitrary files with root privileges.");
   script_tag(name:"qod_type", value:"package");
@@ -59,7 +59,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 
 res = "";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3693_1.nasl 10388 2018-07-04 05:22:47Z cfischer $
+# $Id: gb_ubuntu_USN_3693_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for jasper USN-3693-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843570");
-  script_version("$Revision: 10388 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 07:22:47 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-28 05:48:22 +0200 (Thu, 28 Jun 2018)");
   script_cve_id("CVE-2015-5203", "CVE-2015-5221", "CVE-2016-10248", "CVE-2016-10250", "CVE-2016-8883", "CVE-2016-8887", "CVE-2016-9262", "CVE-2016-9387", "CVE-2016-9388", "CVE-2016-9389", "CVE-2016-9390", "CVE-2016-9391", "CVE-2016-9392", "CVE-2016-9393", "CVE-2016-9394", "CVE-2016-9396", "CVE-2016-9600", "CVE-2017-1000050", "CVE-2017-6850");
   script_tag(name:"cvss_base", value:"6.8");
@@ -42,12 +42,12 @@ JPEG-2000 image files. If a user or automated system using JasPer were
 tricked into opening a specially crafted image, an attacker could exploit
 this to cause a denial of service or possibly execute code with the
 privileges of the user invoking the program.");
-  script_tag(name:"affected", value:"jasper on Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"jasper on Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3693-1");
-  script_xref(name:"URL" , value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2018-June/004461.html");
+  script_xref(name:"URL", value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2018-June/004461.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -60,7 +60,7 @@ privileges of the user invoking the program.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

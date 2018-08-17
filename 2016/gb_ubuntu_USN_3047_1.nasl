@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842845");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-08-08 15:11:56 +0530 (Mon, 08 Aug 2016)");
   script_cve_id("CVE-2016-4439", "CVE-2016-4441", "CVE-2016-5238", "CVE-2016-5338", "CVE-2016-6351", "CVE-2016-4453", "CVE-2016-4454", "CVE-2016-4952", "CVE-2016-5105", "CVE-2016-5106", "CVE-2016-5107", "CVE-2016-5337", "CVE-2016-5126", "CVE-2016-5403");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for qemu USN-3047-1");
-  script_tag(name: "summary", value: "Check the version of qemu");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Li Qiang discovered that QEMU incorrectly handled 53C9X Fast SCSI
+  script_tag(name:"summary", value:"Check the version of qemu");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Li Qiang discovered that QEMU incorrectly handled 53C9X Fast SCSI
 controller emulation. A privileged attacker inside the guest could use this
 issue to cause QEMU to crash, resulting in a denial of service, or possibly
 execute arbitrary code on the host. In the default installation, when QEMU
@@ -73,13 +73,13 @@ This issue only applied to Ubuntu 14.04 LTS and Ubuntu 16.04 LTS.
 Zhenhao Hong discovered that QEMU incorrectly handled the Virtio module. A
 privileged attacker inside the guest could use this issue to cause QEMU to
 crash, resulting in a denial of service. (CVE-2016-5403)");
-  script_tag(name: "affected", value: "qemu on Ubuntu 16.04 LTS ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"qemu on Ubuntu 16.04 LTS,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3047-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3047-1/");
+  script_xref(name:"USN", value:"3047-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3047-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -92,7 +92,7 @@ crash, resulting in a denial of service. (CVE-2016-5403)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

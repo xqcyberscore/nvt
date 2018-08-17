@@ -23,57 +23,37 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804126";
 CPE = "cpe:/a:videolan:vlc_media_player";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 7174 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804126");
+  script_version("$Revision: 11041 $");
   script_cve_id("CVE-2013-6283");
-  script_bugtraq_id(61844 );
+  script_bugtraq_id(61844);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-05 02:00:13 +0530 (Tue, 05 Nov 2013)");
   script_name("VLC Media Player M3U Denial of Service Vulnerability (Mac OS X)");
 
-  tag_summary =
-"This host is installed with VLC Media Player and is prone to denial of
-service and remote code execution vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"The flaw exists due to improper handling of a specially crafted M3U file.";
-
-  tag_impact =
-"Successful exploitation will allow attackers to cause denial of service
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of service
 and possibly execute arbitrary remote code.
 
-Impact Level: System/Application";
-
-  tag_affected =
-"VLC media player version 2.0.8 and prior on Mac OS X";
-
-  tag_solution =
-"Upgrade to VLC media player version 2.1.0 or later,
-For updates refer to http://www.videolan.org/vlc";
-
-
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "summary" , value : tag_summary);
+Impact Level: System/Application");
+  script_tag(name:"affected", value:"VLC media player version 2.0.8 and prior on Mac OS X");
+  script_tag(name:"insight", value:"The flaw exists due to improper handling of a specially crafted M3U file.");
+  script_tag(name:"solution", value:"Upgrade to VLC media player version 2.1.0 or later,
+For updates refer to http://www.videolan.org/vlc");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"summary", value:"This host is installed with VLC Media Player and is prone to denial of
+service and remote code execution vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/447008.php");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/27700");
+  script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/447008.php");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/27700");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
@@ -85,19 +65,14 @@ For updates refer to http://www.videolan.org/vlc";
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-vlcVer = "";
-
-## Get the VLC version
-vlcVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID);
+vlcVer = get_app_version(cpe:CPE);
 if(!vlcVer){
   exit(0);
 }
 
-## Check for VLC Media Player Version <= 2.0.8
 if(version_is_less_equal(version:vlcVer, test_version:"2.0.8"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }
 

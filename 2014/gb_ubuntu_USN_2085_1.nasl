@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2085_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2085_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for hplip USN-2085-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841690");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-01-27 11:22:21 +0530 (Mon, 27 Jan 2014)");
   script_cve_id("CVE-2013-6402", "CVE-2013-6427");
   script_tag(name:"cvss_base", value:"6.8");
@@ -38,11 +38,11 @@ if(description)
   script_name("Ubuntu Update for hplip USN-2085-1");
 
 
-  script_tag(name : "affected" , value : "hplip on Ubuntu 13.10 ,
-  Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"hplip on Ubuntu 13.10,
+  Ubuntu 12.10,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name : "insight" , value : "It was discovered that the HPLIP Polkit daemon incorrectly
+  script_tag(name:"insight", value:"It was discovered that the HPLIP Polkit daemon incorrectly
 handled temporary files. A local attacker could possibly use this issue to
 overwrite arbitrary files. In the default installation of Ubuntu 12.04 LTS
 and higher, this should be prevented by the Yama link restrictions.
@@ -52,11 +52,11 @@ It was discovered that HPLIP contained an upgrade tool that would download
 code in an unsafe fashion. If a remote attacker were able to perform a
 man-in-the-middle attack, this flaw could be exploited to execute arbitrary
 code. (CVE-2013-6427)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2085-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2085-1/");
+  script_xref(name:"USN", value:"2085-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2085-1/");
   script_tag(name:"summary", value:"Check for the Version of hplip");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -69,7 +69,7 @@ code. (CVE-2013-6427)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

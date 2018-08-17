@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_netgear_GS108T_default_password.nasl 8025 2017-12-07 08:54:14Z cfischer $
+# $Id: sw_netgear_GS108T_default_password.nasl 11026 2018-08-17 08:52:26Z cfischer $
 #
 # NETGEAR ProSAFE GS108T Default Password
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105629");
-  script_version("$Revision: 8025 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-07 09:54:14 +0100 (Thu, 07 Dec 2017) $");
+  script_version("$Revision: 11026 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-04-29 11:25:48 +0200 (Fri, 29 Apr 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -56,6 +56,7 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if( ! port = get_kb_item( "netgear/prosafe/http/port" ) ) exit( 0 );
 

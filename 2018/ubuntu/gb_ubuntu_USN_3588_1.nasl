@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3588_1.nasl 9655 2018-04-27 09:23:07Z cfischer $
+# $Id: gb_ubuntu_USN_3588_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for memcached USN-3588-1
 #
@@ -27,28 +27,28 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843467");
-  script_version("$Revision: 9655 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-03-06 08:40:38 +0100 (Tue, 06 Mar 2018)");
   script_cve_id("CVE-2017-9951", "CVE-2018-1000115");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for memcached USN-3588-1");
-  script_tag(name: "summary", value: "Check the version of memcached");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Daniel Shapira discovered an integer
+  script_tag(name:"summary", value:"Check the version of memcached");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Daniel Shapira discovered an integer
   overflow issue in Memcached. A remote attacker could use this to cause a denial
   of service (daemon crash). (CVE-2017-9951) It was discovered that Memcached
   listened to UDP by default. A remote attacker could use this as part of a
   distributed denial of service attack. (CVE-2018-1000115)");
-  script_tag(name: "affected", value: "memcached on Ubuntu 17.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"memcached on Ubuntu 17.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3588-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3588-1/");
+  script_xref(name:"USN", value:"3588-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3588-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -61,7 +61,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

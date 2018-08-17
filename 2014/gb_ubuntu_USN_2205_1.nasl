@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2205_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2205_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for tiff USN-2205-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841820");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-05-12 09:13:38 +0530 (Mon, 12 May 2014)");
   script_cve_id("CVE-2013-4231", "CVE-2013-4232", "CVE-2013-4243", "CVE-2013-4244");
   script_tag(name:"cvss_base", value:"6.8");
@@ -38,12 +38,12 @@ if(description)
   script_name("Ubuntu Update for tiff USN-2205-1");
 
 
-  script_tag(name : "affected" , value : "tiff on Ubuntu 14.04 LTS ,
-  Ubuntu 13.10 ,
-  Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"tiff on Ubuntu 14.04 LTS,
+  Ubuntu 13.10,
+  Ubuntu 12.10,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name : "insight" , value : "Pedro Ribeiro discovered that LibTIFF incorrectly handled
+  script_tag(name:"insight", value:"Pedro Ribeiro discovered that LibTIFF incorrectly handled
 certain malformed images when using the gif2tiff tool. If a user or automated
 system were tricked into opening a specially crafted GIF image, a remote
 attacker could crash the application, leading to a denial of service, or
@@ -72,11 +72,11 @@ attacker could crash the application, leading to a denial of service, or
 possibly execute arbitrary code with user privileges. This issue only
 affected Ubuntu 10.04 LTS, Ubunu 12.04 LTS, Ubuntu 12.10 and Ubuntu 13.10.
 (CVE-2013-4244)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2205-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2205-1/");
+  script_xref(name:"USN", value:"2205-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2205-1/");
   script_tag(name:"summary", value:"Check for the Version of tiff");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -89,7 +89,7 @@ affected Ubuntu 10.04 LTS, Ubunu 12.04 LTS, Ubuntu 12.10 and Ubuntu 13.10.
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

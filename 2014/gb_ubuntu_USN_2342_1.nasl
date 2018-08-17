@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2342_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2342_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for qemu USN-2342-1
 #
@@ -28,8 +28,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841962");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-09 05:55:17 +0200 (Tue, 09 Sep 2014)");
   script_cve_id("CVE-2013-4148", "CVE-2013-4149", "CVE-2013-4150", "CVE-2013-4151",
                 "CVE-2013-4526", "CVE-2013-4527", "CVE-2013-4529", "CVE-2013-4530",
@@ -42,7 +42,7 @@ if(description)
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Ubuntu Update for qemu USN-2342-1");
-  script_tag(name: "insight", value: "Michael S. Tsirkin, Anthony Liguori, and Michael Roth discovered multiple
+  script_tag(name:"insight", value:"Michael S. Tsirkin, Anthony Liguori, and Michael Roth discovered multiple
 issues with QEMU state loading after migration. An attacker able to modify
 the state data could use these issues to cause a denial of service, or
 possibly execute arbitrary code. (CVE-2013-4148, CVE-2013-4149,
@@ -62,15 +62,15 @@ CVE-2014-0223)
 It was discovered that QEMU incorrectly handled certain PCIe bus hotplug
 operations. A malicious guest could use this issue to crash the QEMU host,
 resulting in a denial of service. (CVE-2014-3471)");
-  script_tag(name: "affected", value: "qemu on Ubuntu 14.04 LTS ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"qemu on Ubuntu 14.04 LTS,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "USN", value: "2342-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2342-1/");
+  script_xref(name:"USN", value:"2342-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2342-1/");
   script_tag(name:"summary", value:"Check for the Version of qemu");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -83,7 +83,7 @@ exit(0);
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

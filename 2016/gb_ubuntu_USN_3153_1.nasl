@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842990");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-12-10 06:13:45 +0100 (Sat, 10 Dec 2016)");
   script_cve_id("CVE-2016-5204", "CVE-2016-5205", "CVE-2016-5207", "CVE-2016-5208",
  		"CVE-2016-5209", "CVE-2016-5212", "CVE-2016-5215", "CVE-2016-5222",
@@ -38,9 +38,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for oxide-qt USN-3153-1");
-  script_tag(name: "summary", value: "Check the version of oxide-qt");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Multiple vulnerabilities were discovered
+  script_tag(name:"summary", value:"Check the version of oxide-qt");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Multiple vulnerabilities were discovered
   in Chromium. If a user were tricked in to opening a specially crafted website,
   an attacker could potentially exploit these to conduct cross-site scripting
   (XSS) attacks, read uninitialized memory, obtain sensitive information, spoof
@@ -60,13 +60,13 @@ An integer overflow was discovered in ANGLE. If a user were tricked in to
 opening a specially crafted website, an attacker could potentially exploit
 this to cause a denial of service via application crash, or execute
 arbitrary code. (CVE-2016-5221)");
-  script_tag(name: "affected", value: "oxide-qt on Ubuntu 16.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"oxide-qt on Ubuntu 16.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3153-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3153-1/");
+  script_xref(name:"USN", value:"3153-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3153-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -79,7 +79,7 @@ arbitrary code. (CVE-2016-5221)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3715_1.nasl 10556 2018-07-20 11:13:07Z cfischer $
+# $Id: gb_ubuntu_USN_3715_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for dns-root-data USN-3715-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843593");
-  script_version("$Revision: 10556 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 13:13:07 +0200 (Fri, 20 Jul 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-13 05:49:39 +0200 (Fri, 13 Jul 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -40,12 +40,12 @@ on the target host.");
   script_tag(name:"insight", value:"This update adds the latest DNSSEC validation
 trust anchor required for the upcoming Root Zone KSK Rollover and refreshes the
 list of root hints.");
-  script_tag(name:"affected", value:"dns-root-data on Ubuntu 17.10 ,
+  script_tag(name:"affected", value:"dns-root-data on Ubuntu 17.10,
   Ubuntu 16.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3715-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3715-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3715-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -58,7 +58,7 @@ list of root hints.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

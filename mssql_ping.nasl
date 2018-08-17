@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mssql_ping.nasl 10226 2018-06-15 14:47:11Z cfischer $
+# $Id: mssql_ping.nasl 11031 2018-08-17 09:42:45Z cfischer $
 #
 # Microsoft's SQL UDP Info Query
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10674");
-  script_version("$Revision: 10226 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 16:47:11 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 11031 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:42:45 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Microsoft's SQL UDP Info Query");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2001 H D Moore");
-  script_family("Windows");
+  script_family("Service detection");
   script_require_udp_ports(1434);
 
   script_tag(name:"solution", value:"If you are not running multiple instances of Microsoft SQL Server

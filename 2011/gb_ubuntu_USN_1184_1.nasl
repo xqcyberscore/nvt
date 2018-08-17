@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1184_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
+# $Id: gb_ubuntu_USN_1184_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for firefox USN-1184-1
 #
@@ -29,14 +29,14 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1184-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1184-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840727");
-  script_version("$Revision: 9648 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-08-24 09:14:07 +0200 (Wed, 24 Aug 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "USN", value: "1184-1");
+  script_xref(name:"USN", value:"1184-1");
   script_cve_id("CVE-2011-2982", "CVE-2011-2981", "CVE-2011-0084", "CVE-2011-2984", "CVE-2011-2378", "CVE-2011-2983");
   script_name("Ubuntu Update for firefox USN-1184-1");
 
@@ -45,11 +45,11 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.04 LTS|10\.10)");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1184-1");
-  script_tag(name : "affected" , value : "firefox on Ubuntu 10.10 ,
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1184-1");
+  script_tag(name:"affected", value:"firefox on Ubuntu 10.10,
   Ubuntu 10.04 LTS");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "Gary Kwong, Igor Bukanov, and Bob Clary discovered multiple memory
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Gary Kwong, Igor Bukanov, and Bob Clary discovered multiple memory
   vulnerabilities in the browser rendering engine. An attacker could use
   these to possibly execute arbitrary code with the privileges of the user
   invoking Firefox. (CVE-2011-2982)
@@ -85,7 +85,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 
 res = "";

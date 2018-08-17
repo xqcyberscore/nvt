@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1229_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
+# $Id: gb_ubuntu_USN_1229_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for postgresql-8.4 USN-1229-1
 #
@@ -29,14 +29,14 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1229-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1229-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840772");
-  script_version("$Revision: 9648 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-10-14 14:22:41 +0200 (Fri, 14 Oct 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_xref(name: "USN", value: "1229-1");
+  script_xref(name:"USN", value:"1229-1");
   script_cve_id("CVE-2011-2483");
   script_name("Ubuntu Update for postgresql-8.4 USN-1229-1");
 
@@ -45,13 +45,13 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.10|10\.04 LTS|11\.04|8\.04 LTS)");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1229-1");
-  script_tag(name : "affected" , value : "postgresql-8.4 on Ubuntu 11.04 ,
-  Ubuntu 10.10 ,
-  Ubuntu 10.04 LTS ,
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1229-1");
+  script_tag(name:"affected", value:"postgresql-8.4 on Ubuntu 11.04,
+  Ubuntu 10.10,
+  Ubuntu 10.04 LTS,
   Ubuntu 8.04 LTS");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "It was discovered that the blowfish algorithm in the pgcrypto module
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"It was discovered that the blowfish algorithm in the pgcrypto module
   incorrectly handled certain 8-bit characters, resulting in the password
   hashes being easier to crack than expected. An attacker who could obtain
   the password hashes would be able to recover the plaintext with less
@@ -64,7 +64,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 
 res = "";

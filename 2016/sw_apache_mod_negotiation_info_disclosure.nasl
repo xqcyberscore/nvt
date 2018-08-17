@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apache_mod_negotiation_info_disclosure.nasl 10724 2018-08-02 06:39:54Z cfischer $
+# $Id: sw_apache_mod_negotiation_info_disclosure.nasl 11026 2018-08-17 08:52:26Z cfischer $
 #
 # Apache mod_negotiation MultiViews Information Disclosure
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111109");
-  script_version("$Revision: 10724 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 08:39:54 +0200 (Thu, 02 Aug 2018) $");
+  script_version("$Revision: 11026 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-07-06 16:00:00 +0200 (Wed, 06 Jul 2016)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -68,6 +68,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port, nofork:TRUE ) ) exit( 0 ); # To have a reference to the Detection-NVT in the GSA

@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842178");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-04-28 05:16:57 +0200 (Tue, 28 Apr 2015)");
   script_cve_id("CVE-2014-8169");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for autofs USN-2579-1");
-  script_tag(name: "summary", value: "Check the version of autofs");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that autofs incorrectly
+  script_tag(name:"summary", value:"Check the version of autofs");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that autofs incorrectly
 filtered environment variables when using program maps. When program maps were
 configured, a local user could use this issue to escalate privileges.
 
@@ -44,10 +44,10 @@ This update changes the default behaviour by adding a prefix to environment
 variables. Sites using program maps will need to adapt to the new variable
 names, or revert to the previous names by using a new configuration option
 called FORCE_STANDARD_PROGRAM_MAP_ENV.");
-  script_tag(name: "affected", value: "autofs on Ubuntu 14.10");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2579-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2579-1/");
+  script_tag(name:"affected", value:"autofs on Ubuntu 14.10");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2579-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2579-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -60,7 +60,7 @@ called FORCE_STANDARD_PROGRAM_MAP_ENV.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

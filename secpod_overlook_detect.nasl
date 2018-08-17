@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_overlook_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: secpod_overlook_detect.nasl 11028 2018-08-17 09:26:08Z cfischer $
 #
 # OPEN IT OverLook Version Detection
 #
@@ -28,22 +28,24 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902513");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11028 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("OPEN IT OverLook Version Detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2011 SecPod");
-  script_family("Service detection");
+  script_family("Product detection");
   script_dependencies("http_version.nasl");
   script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"summary", value:"The script detects the version of OverLook on remote host and
   sets the KB.");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");

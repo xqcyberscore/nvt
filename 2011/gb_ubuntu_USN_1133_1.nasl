@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1133_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
+# $Id: gb_ubuntu_USN_1133_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux USN-1133-1
 #
@@ -29,14 +29,14 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1133-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1133-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840663");
-  script_version("$Revision: 9648 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-06-03 09:20:26 +0200 (Fri, 03 Jun 2011)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_xref(name: "USN", value: "1133-1");
+  script_xref(name:"USN", value:"1133-1");
   script_cve_id("CVE-2010-4342", "CVE-2010-4527", "CVE-2010-4529", "CVE-2011-0521", "CVE-2011-0711");
   script_name("Ubuntu Update for linux USN-1133-1");
 
@@ -45,10 +45,10 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU8\.04 LTS");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1133-1");
-  script_tag(name : "affected" , value : "linux on Ubuntu 8.04 LTS");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "Nelson Elhage discovered that Econet did not correctly handle AUN packets
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1133-1");
+  script_tag(name:"affected", value:"linux on Ubuntu 8.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Nelson Elhage discovered that Econet did not correctly handle AUN packets
   over UDP. A local attacker could send specially crafted traffic to crash
   the system, leading to a denial of service. (CVE-2010-4342)
 
@@ -76,7 +76,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 
 res = "";

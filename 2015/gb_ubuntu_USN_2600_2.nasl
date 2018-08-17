@@ -26,16 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842204");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-05-09 05:52:52 +0200 (Sat, 09 May 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-2600-2");
-  script_tag(name: "summary", value: "Check the version of linux");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "USN-2600-1 fixed vulnerabilities in the
+  script_tag(name:"summary", value:"Check the version of linux");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"USN-2600-1 fixed vulnerabilities in the
 Linux kernel, however an unrelated regression in the auditing of some path names
 was introduced. Due to the regression the system could crash under certain
 conditions.
@@ -49,10 +49,10 @@ Original advisory details:
 A race condition between chown() and execve() was discovered in the Linux
 kernel. A local attacker could exploit this race by using chown on a
 setuid-user-binary to gain administrative privileges.");
-  script_tag(name: "affected", value: "linux on Ubuntu 14.10");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2600-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2600-2/");
+  script_tag(name:"affected", value:"linux on Ubuntu 14.10");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2600-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2600-2/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -65,7 +65,7 @@ setuid-user-binary to gain administrative privileges.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

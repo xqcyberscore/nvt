@@ -26,16 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842487");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-10-15 08:48:23 +0200 (Thu, 15 Oct 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for pollinate USN-2709-2");
-  script_tag(name: "summary", value: "Check the version of pollinate");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "USN-2709-1 updated pollinate's certificate for entropy.ubuntu.com but did
+  script_tag(name:"summary", value:"Check the version of pollinate");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"USN-2709-1 updated pollinate's certificate for entropy.ubuntu.com but did
 not include a new certificate authority certificate.
 
 This update fixes the problem.
@@ -47,11 +47,11 @@ Original advisory details:
 The pollinate package bundles the certificate for entropy.ubuntu.com. This
 update refreshes the certificate to match the new certificate for the
 server.");
-  script_tag(name: "affected", value: "pollinate on Ubuntu 15.04 ,
+  script_tag(name:"affected", value:"pollinate on Ubuntu 15.04,
   Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2709-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2709-2/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2709-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2709-2/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -64,7 +64,7 @@ server.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

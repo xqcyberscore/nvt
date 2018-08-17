@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1072_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
+# $Id: gb_ubuntu_USN_1072_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux vulnerabilities USN-1072-1
 #
@@ -29,14 +29,14 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1072-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1072-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840594");
-  script_version("$Revision: 9648 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-02-28 16:24:14 +0100 (Mon, 28 Feb 2011)");
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:N");
-  script_xref(name: "USN", value: "1072-1");
+  script_xref(name:"USN", value:"1072-1");
   script_cve_id("CVE-2010-0435", "CVE-2010-2943", "CVE-2010-3296", "CVE-2010-3297", "CVE-2010-3448", "CVE-2010-3698", "CVE-2010-3699", "CVE-2010-3858", "CVE-2010-3859", "CVE-2010-3873", "CVE-2010-3875", "CVE-2010-3876", "CVE-2010-3877", "CVE-2010-3880", "CVE-2010-4072", "CVE-2010-4074", "CVE-2010-4078", "CVE-2010-4079", "CVE-2010-4080", "CVE-2010-4081", "CVE-2010-4083", "CVE-2010-4157", "CVE-2010-4160", "CVE-2010-4248");
   script_name("Ubuntu Update for linux vulnerabilities USN-1072-1");
 
@@ -45,10 +45,10 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU8\.04 LTS");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1072-1");
-  script_tag(name : "affected" , value : "linux vulnerabilities on Ubuntu 8.04 LTS");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "Gleb Napatov discovered that KVM did not correctly check certain privileged
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1072-1");
+  script_tag(name:"affected", value:"linux vulnerabilities on Ubuntu 8.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Gleb Napatov discovered that KVM did not correctly check certain privileged
   operations. A local attacker with access to a guest kernel could exploit
   this to crash the host system, leading to a denial of service.
   (CVE-2010-0435)
@@ -108,7 +108,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 
 res = "";

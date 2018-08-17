@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1263_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
+# $Id: gb_ubuntu_USN_1263_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for icedtea-web USN-1263-1
 #
@@ -29,14 +29,14 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1263-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1263-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840805");
-  script_version("$Revision: 9648 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-11-18 09:46:15 +0530 (Fri, 18 Nov 2011)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_xref(name: "USN", value: "1263-1");
+  script_xref(name:"USN", value:"1263-1");
   script_cve_id("CVE-2011-3377", "CVE-2011-3389", "CVE-2011-3521", "CVE-2011-3544",
                 "CVE-2011-3547", "CVE-2011-3548", "CVE-2011-3551", "CVE-2011-3552",
                 "CVE-2011-3553", "CVE-2011-3554", "CVE-2011-3556", "CVE-2011-3557",
@@ -48,12 +48,12 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.10|10\.04 LTS|11\.04)");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1263-1");
-  script_tag(name : "affected" , value : "icedtea-web on Ubuntu 11.04 ,
-  Ubuntu 10.10 ,
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1263-1");
+  script_tag(name:"affected", value:"icedtea-web on Ubuntu 11.04,
+  Ubuntu 10.10,
   Ubuntu 10.04 LTS");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "Deepak Bhole discovered a flaw in the Same Origin Policy (SOP)
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Deepak Bhole discovered a flaw in the Same Origin Policy (SOP)
   implementation in the IcedTea web browser plugin. This could allow a
   remote attacker to open connections to certain hosts that should
   not be permitted. (CVE-2011-3377)
@@ -114,7 +114,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 
 res = "";

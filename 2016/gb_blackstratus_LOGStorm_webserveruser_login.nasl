@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_blackstratus_LOGStorm_webserveruser_login.nasl 9437 2018-04-11 10:24:03Z cfischer $
+# $Id: gb_blackstratus_LOGStorm_webserveruser_login.nasl 11026 2018-08-17 08:52:26Z cfischer $
 #
 # BlackStratus LOGStorm Hardcoded `webserveruser` Credentials
 #
@@ -27,18 +27,18 @@
 
 CPE = 'cpe:/a:blackstratus:logstorm';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140092");
-  script_version("$Revision: 9437 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2016-12-05 17:08:53 +0100 (Mon, 05 Dec 2016)");
+  script_version("$Revision: 11026 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-05 17:08:53 +0100 (Mon, 05 Dec 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
-  script_tag(name: "qod_type", value: "remote_active");
+  script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name: "solution_type", value: "Workaround");
+  script_tag(name:"solution_type", value:"Workaround");
 
   script_name("BlackStratus LOGStorm Hardcoded `webserveruser` Credentials");
 
@@ -49,15 +49,15 @@ if (description)
   script_dependencies("gb_blackstratus_LOGStorm_web_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("blackstratus/logstorm/detected");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/40858/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40858/");
 
-  script_tag(name: "summary", value: "BlackStratus LOGStorm has hardcoded credentials `donotChangeOnInstall` for the user `webserveruser`");
+  script_tag(name:"summary", value:"BlackStratus LOGStorm has hardcoded credentials `donotChangeOnInstall` for the user `webserveruser`");
 
-  script_tag(name: "impact", value: "A remote attacker may gain sensitive information or reconfigure the service.");
+  script_tag(name:"impact", value:"A remote attacker may gain sensitive information or reconfigure the service.");
 
-  script_tag(name: "solution", value: "Change the password or ask the vendor for an update");
+  script_tag(name:"solution", value:"Change the password or ask the vendor for an update");
 
-  script_tag(name: "vuldetect", value: "Try to login with hardcoded credentials.");
+  script_tag(name:"vuldetect", value:"Try to login with hardcoded credentials.");
 
   exit(0);
 }
@@ -65,6 +65,7 @@ if (description)
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
 

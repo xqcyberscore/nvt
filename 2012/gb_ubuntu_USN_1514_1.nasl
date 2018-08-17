@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1514_1.nasl 9649 2018-04-27 08:45:50Z cfischer $
+# $Id: gb_ubuntu_USN_1514_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux-ti-omap4 USN-1514-1
 #
@@ -30,16 +30,16 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1514-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1514-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841112");
-  script_version("$Revision: 9649 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-08-14 10:40:55 +0530 (Tue, 14 Aug 2012)");
   script_cve_id("CVE-2012-2119", "CVE-2012-2136", "CVE-2012-2137", "CVE-2012-2372",
                 "CVE-2012-2373", "CVE-2012-3364", "CVE-2012-3375", "CVE-2012-3400");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_xref(name: "USN", value: "1514-1");
+  script_xref(name:"USN", value:"1514-1");
   script_name("Ubuntu Update for linux-ti-omap4 USN-1514-1");
 
   script_category(ACT_GATHER_INFO);
@@ -47,10 +47,10 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU12\.04 LTS");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1514-1");
-  script_tag(name : "affected" , value : "linux-ti-omap4 on Ubuntu 12.04 LTS");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "A flaw was discovered in the Linux kernel's macvtap device driver, which is
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1514-1");
+  script_tag(name:"affected", value:"linux-ti-omap4 on Ubuntu 12.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"A flaw was discovered in the Linux kernel's macvtap device driver, which is
   used in KVM (Kernel-based Virtual Machine) to create a network bridge
   between host and guest. A privleged user in a guest could exploit this flaw
   to crash the host, if the vhost_net module is loaded with the
@@ -96,7 +96,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

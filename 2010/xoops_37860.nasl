@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: xoops_37860.nasl 5952 2017-04-13 12:34:17Z cfi $
+# $Id: xoops_37860.nasl 11039 2018-08-17 12:26:47Z cfischer $
 #
 # XOOPS Arbitrary File Deletion and HTTP Header Injection Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:xoops:xoops";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100459");
-  script_version("$Revision: 5952 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 14:34:17 +0200 (Thu, 13 Apr 2017) $");
+  script_version("$Revision: 11039 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 14:26:47 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-01-20 19:30:24 +0100 (Wed, 20 Jan 2010)");
   script_bugtraq_id(37860);
   script_tag(name:"cvss_base", value:"5.0");
@@ -48,24 +48,24 @@ if(description)
   script_xref(name:"URL", value:"http://www.xoops.org");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/509034");
 
-  tag_summary = "XOOPS is prone to an HTTP-header-injection vulnerability and an arbitrary-file-
-  deletion vulnerability.";
+  script_tag(name:"summary", value:"XOOPS is prone to an HTTP-header-injection vulnerability and an arbitrary-file-
+  deletion vulnerability.");
 
-  tag_insight = "By inserting arbitrary headers into an HTTP response, attackers may be
+  script_tag(name:"insight", value:"By inserting arbitrary headers into an HTTP response, attackers may be
   able to launch various attacks, including cross-site request forgery,
-  cross-site scripting, and HTTP-request smuggling.";
+  cross-site scripting, and HTTP-request smuggling.");
 
-  tag_impact = "Successful file-deletion exploits may corrupt data and cause denial-of-
-  service conditions.";
+  script_tag(name:"impact", value:"Successful file-deletion exploits may corrupt data and cause denial-of-
+  service conditions.");
 
-  tag_affected = "XOOPS 2.4.3 is vulnerable; other versions may also be affected.";
+  script_tag(name:"affected", value:"XOOPS 2.4.3 is vulnerable. Other versions may also be affected.");
 
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected" , value:tag_affected);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this
+  vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable
+  respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }
@@ -77,7 +77,7 @@ if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 if( version_is_less_equal( version:vers, test_version:"2.4.3" ) ) {
-  report = report_fixed_ver( installed_version:vers, fixed_version:"unknown" );
+  report = report_fixed_ver( installed_version:vers, fixed_version:"WillNotFix" );
   security_message( port:port, data:report );
   exit( 0 );
 }

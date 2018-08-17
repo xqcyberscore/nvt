@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: netbios_name_get.nasl 10596 2018-07-24 14:11:30Z cfischer $
+# $Id: netbios_name_get.nasl 11031 2018-08-17 09:42:45Z cfischer $
 #
 # Using NetBIOS to retrieve information from a Windows host
 #
@@ -35,15 +35,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10150");
-  script_version("$Revision: 10596 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-24 16:11:30 +0200 (Tue, 24 Jul 2018) $");
+  script_version("$Revision: 11031 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:42:45 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Using NetBIOS to retrieve information from a Windows host");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 1999 SecuriTeam");
-  script_family("Windows");
+  script_family("Service detection");
   script_dependencies("cifs445.nasl");
 
   script_tag(name:"solution", value:"Block those ports from outside communication.");

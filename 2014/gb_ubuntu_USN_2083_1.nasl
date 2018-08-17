@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2083_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2083_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for graphviz USN-2083-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841687");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-01-20 10:07:40 +0530 (Mon, 20 Jan 2014)");
   script_cve_id("CVE-2014-0978", "CVE-2014-1235", "CVE-2014-1236");
   script_tag(name:"cvss_base", value:"10.0");
@@ -38,12 +38,12 @@ if(description)
   script_name("Ubuntu Update for graphviz USN-2083-1");
 
 
-  script_tag(name : "affected" , value : "graphviz on Ubuntu 13.10 ,
-  Ubuntu 13.04 ,
-  Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"graphviz on Ubuntu 13.10,
+  Ubuntu 13.04,
+  Ubuntu 12.10,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name : "insight" , value : "It was discovered that Graphviz incorrectly handled memory in
+  script_tag(name:"insight", value:"It was discovered that Graphviz incorrectly handled memory in
 the yyerror function. If a user were tricked into opening a specially crafted
 dot file, an attacker could cause Graphviz to crash, or possibly execute
 arbitrary code. (CVE-2014-0978, CVE-2014-1235)
@@ -55,11 +55,11 @@ code. (CVE-2014-1236)
 
 The default compiler options for affected releases should reduce the
 vulnerability to a denial of service.");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2083-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2083-1/");
+  script_xref(name:"USN", value:"2083-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2083-1/");
   script_tag(name:"summary", value:"Check for the Version of graphviz");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -72,7 +72,7 @@ vulnerability to a denial of service.");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

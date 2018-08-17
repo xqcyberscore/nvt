@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freepbx_rce_vuln.nasl 4009 2016-09-08 09:16:53Z ckuerste $
+# $Id: gb_freepbx_rce_vuln.nasl 11026 2018-08-17 08:52:26Z cfischer $
 #
 # FreePBX Remote Command Execution Vulnerability
 #
@@ -27,18 +27,18 @@
 
 CPE = 'cpe:/a:freepbx:freepbx';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106236");
-  script_version("$Revision: 4009 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-09-08 11:16:53 +0200 (Thu, 08 Sep 2016) $");
-  script_tag(name: "creation_date", value: "2016-09-08 13:26:09 +0700 (Thu, 08 Sep 2016)");
+  script_version("$Revision: 11026 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-08 13:26:09 +0700 (Thu, 08 Sep 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("FreePBX Remote Command Execution Vulnerability");
 
@@ -49,21 +49,21 @@ if (description)
   script_dependencies("gb_freepbx_detect.nasl");
   script_mandatory_keys("freepbx/installed");
 
-  script_tag(name: "summary", value: "FreePBX is prone to a unauthenticated remote command execution
-vulnerability.");
+  script_tag(name:"summary", value:"FreePBX is prone to a unauthenticated remote command execution
+  vulnerability.");
 
-  script_tag(name: "insight", value: "Freepbx is vulnerable to unauthenticated remote command execution due to
-multiple weak inputs validation as well as partial authenticaion bypass.");
+  script_tag(name:"insight", value:"Freepbx is vulnerable to unauthenticated remote command execution due to
+  multiple weak inputs validation as well as partial authenticaion bypass.");
 
-  script_tag(name: "impact", value: "An unauthenticated remote attacker may execute arbitrary os commands.");
+  script_tag(name:"impact", value:"An unauthenticated remote attacker may execute arbitrary os commands.");
 
-  script_tag(name: "affected", value: "FreePBX version 3.0.x");
+  script_tag(name:"affected", value:"FreePBX version 3.0.x");
 
-  script_tag(name: "solution", value: "Upgrade to version 13.0.154 or later");
+  script_tag(name:"solution", value:"Upgrade to version 13.0.154 or later");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/40345/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40345/");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP POST request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP POST request and checks the response.");
 
   exit(0);
 }
@@ -71,6 +71,7 @@ multiple weak inputs validation as well as partial authenticaion bypass.");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2149_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2149_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for librsvg USN-2149-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841758");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-03-20 09:52:09 +0530 (Thu, 20 Mar 2014)");
   script_cve_id("CVE-2013-1881");
   script_tag(name:"cvss_base", value:"4.3");
@@ -38,17 +38,17 @@ if(description)
   script_name("Ubuntu Update for librsvg USN-2149-1");
 
 
-  script_tag(name : "affected" , value : "librsvg on Ubuntu 13.10 ,
-  Ubuntu 12.10 ,
+  script_tag(name:"affected", value:"librsvg on Ubuntu 13.10,
+  Ubuntu 12.10,
   Ubuntu 12.04 LTS");
-  script_tag(name : "insight" , value : "It was discovered that librsvg would load XML external
+  script_tag(name:"insight", value:"It was discovered that librsvg would load XML external
 entities by default. If a user were tricked into viewing a specially crafted
 SVG file, an attacker could possibly obtain access to arbitrary files.");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2149-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2149-1/");
+  script_xref(name:"USN", value:"2149-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2149-1/");
   script_tag(name:"summary", value:"Check for the Version of librsvg");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -61,7 +61,7 @@ SVG file, an attacker could possibly obtain access to arbitrary files.");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

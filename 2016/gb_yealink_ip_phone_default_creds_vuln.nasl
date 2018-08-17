@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yealink_ip_phone_default_creds_vuln.nasl 4214 2016-10-05 10:17:52Z ckuerste $
+# $Id: gb_yealink_ip_phone_default_creds_vuln.nasl 11026 2018-08-17 08:52:26Z cfischer $
 #
 # Yealink IP Phone Default Credentials
 #
@@ -25,18 +25,18 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106326");
-  script_version("$Revision: 4214 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-10-05 12:17:52 +0200 (Wed, 05 Oct 2016) $");
-  script_tag(name: "creation_date", value: "2016-10-05 08:36:01 +0700 (Wed, 05 Oct 2016)");
+  script_version("$Revision: 11026 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-05 08:36:01 +0700 (Wed, 05 Oct 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
-  script_tag(name: "qod_type", value: "remote_active");
+  script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name: "solution_type", value: "Workaround");
+  script_tag(name:"solution_type", value:"Workaround");
 
   script_name("Yealink IP Phone Default Credentials");
 
@@ -49,14 +49,14 @@ if (description)
   script_exclude_keys("Settings/disable_cgi_scanning");
   script_mandatory_keys("yealink_ipphone/detected");
 
-  script_tag(name: "summary", value: "The Yealink IP Phone has default credentials set.");
+  script_tag(name:"summary", value:"The Yealink IP Phone has default credentials set.");
 
-  script_tag(name: "impact", value: "A remote attacker may gain sensitive information or reconfigure the Yealink
-IP Phone.");
+  script_tag(name:"impact", value:"A remote attacker may gain sensitive information or reconfigure the Yealink
+  IP Phone.");
 
-  script_tag(name: "solution", value: "Change the password");
+  script_tag(name:"solution", value:"Change the password");
 
-  script_tag(name: "vuldetect", value: "Try to login with the default credentials.");
+  script_tag(name:"vuldetect", value:"Try to login with the default credentials.");
 
   exit(0);
 }
@@ -64,6 +64,7 @@ IP Phone.");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default: 80);
 

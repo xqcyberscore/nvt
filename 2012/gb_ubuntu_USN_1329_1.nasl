@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1329_1.nasl 9649 2018-04-27 08:45:50Z cfischer $
+# $Id: gb_ubuntu_USN_1329_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux-ti-omap4 USN-1329-1
 #
@@ -30,15 +30,15 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1329-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1329-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840865");
-  script_version("$Revision: 9649 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-01-16 19:03:36 +0530 (Mon, 16 Jan 2012)");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
   script_cve_id("CVE-2011-3353");
-  script_xref(name: "USN", value: "1329-1");
+  script_xref(name:"USN", value:"1329-1");
   script_name("Ubuntu Update for linux-ti-omap4 USN-1329-1");
 
   script_category(ACT_GATHER_INFO);
@@ -46,10 +46,10 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU11\.04");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1329-1");
-  script_tag(name : "affected" , value : "linux-ti-omap4 on Ubuntu 11.04");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "Han-Wen Nienhuys reported a flaw in the FUSE kernel module. A local user
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1329-1");
+  script_tag(name:"affected", value:"linux-ti-omap4 on Ubuntu 11.04");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Han-Wen Nienhuys reported a flaw in the FUSE kernel module. A local user
   who can mount a FUSE file system could cause a denial of service.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -59,7 +59,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

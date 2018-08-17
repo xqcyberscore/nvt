@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842954");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-11-22 05:37:20 +0100 (Tue, 22 Nov 2016)");
   script_cve_id("CVE-2014-8354", "CVE-2014-8355", "CVE-2014-8562", "CVE-2014-8716",
 		"CVE-2014-9805", "CVE-2014-9806", "CVE-2014-9807", "CVE-2014-9808",
@@ -43,21 +43,21 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for imagemagick USN-3131-1");
-  script_tag(name: "summary", value: "Check the version of imagemagick");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that ImageMagick incorrectly
+  script_tag(name:"summary", value:"Check the version of imagemagick");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that ImageMagick incorrectly
   handled certain malformed image files. If a user or automated system using
   ImageMagick were tricked into opening a specially crafted image, an attacker could
   exploit this to cause a denial of service or possibly execute code with the
   privileges of the user invoking the program.");
-  script_tag(name: "affected", value: "imagemagick on Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"imagemagick on Ubuntu 16.04 LTS,
   Ubuntu 16.10,
-  Ubuntu 14.04 LTS ,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3131-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3131-1/");
+  script_xref(name:"USN", value:"3131-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3131-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -70,7 +70,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2389_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2389_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for libxml2 USN-2389-1
 #
@@ -27,31 +27,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842014");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-10-28 05:48:44 +0100 (Tue, 28 Oct 2014)");
   script_cve_id("CVE-2014-3660");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("Ubuntu Update for libxml2 USN-2389-1");
 
-  script_tag(name: "summary", value: "Check the version of libxml2");
+  script_tag(name:"summary", value:"Check the version of libxml2");
 
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "It was discovered that libxml2 would
+  script_tag(name:"insight", value:"It was discovered that libxml2 would
 incorrectly perform entity substitution even when requested not to. If a user or
 automated system were tricked into opening a specially crafted document, an attacker
 could possibly cause resource consumption, resulting in a denial of service.");
 
-  script_tag(name: "affected", value: "libxml2 on Ubuntu 14.04 LTS ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"libxml2 on Ubuntu 14.04 LTS,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2389-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2389-1/");
+  script_xref(name:"USN", value:"2389-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2389-1/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
@@ -63,7 +63,7 @@ could possibly cause resource consumption, resulting in a denial of service.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

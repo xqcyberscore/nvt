@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842209");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-06-09 11:05:18 +0200 (Tue, 09 Jun 2015)");
   script_cve_id("CVE-2015-3406", "CVE-2015-3407", "CVE-2015-3408", "CVE-2015-3409");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for libmodule-signature-perl USN-2607-1");
-  script_tag(name: "summary", value: "Check the version of libmodule-signature-perl");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "John Lightsey discovered that
+  script_tag(name:"summary", value:"Check the version of libmodule-signature-perl");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"John Lightsey discovered that
 Module::Signature incorrectly handled PGP signature boundaries. A remote attacker
 could use this issue to trick Module::Signature into parsing the unsigned portion
 of the SIGNATURE file as the signed portion. (CVE-2015-3406)
@@ -53,12 +53,12 @@ this issue to execute arbitrary code during signature verification.
 John Lightsey discovered that Module::Signature incorrectly handled module
 loading. A remote attacker could use this issue to execute arbitrary code
 during signature verification. (CVE-2015-3409)");
-  script_tag(name: "affected", value: "libmodule-signature-perl on Ubuntu 14.10 ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"libmodule-signature-perl on Ubuntu 14.10,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2607-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2607-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2607-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2607-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -71,7 +71,7 @@ during signature verification. (CVE-2015-3409)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

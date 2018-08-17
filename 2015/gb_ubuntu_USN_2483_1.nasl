@@ -26,16 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842074");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-01-27 05:50:43 +0100 (Tue, 27 Jan 2015)");
   script_cve_id("CVE-2014-8137", "CVE-2014-8138", "CVE-2014-8157", "CVE-2014-8158");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Ubuntu Update for jasper USN-2483-1");
-  script_tag(name: "summary", value: "Check the version of jasper");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Jose Duart discovered that JasPer
+  script_tag(name:"summary", value:"Check the version of jasper");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Jose Duart discovered that JasPer
 incorrectly handled ICC color profiles in JPEG-2000 image files. If a user were
 tricked into opening a specially crafted JPEG-2000 image file, a remote attacker
 could cause JasPer to crash or possibly execute arbitrary code with user privileges.
@@ -55,12 +55,12 @@ It was discovered that JasPer incorrectly handled memory when processing
 JPEG-2000 image files. If a user were tricked into opening a specially
 crafted JPEG-2000 image file, a remote attacker could cause JasPer to crash
 or possibly execute arbitrary code with user privileges. (CVE-2014-8158)");
-  script_tag(name: "affected", value: "jasper on Ubuntu 14.10 ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"jasper on Ubuntu 14.10,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2483-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2483-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2483-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2483-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);
@@ -74,7 +74,7 @@ or possibly execute arbitrary code with user privileges. (CVE-2014-8158)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

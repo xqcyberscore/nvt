@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2341_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2341_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for cups USN-2341-1
 #
@@ -28,26 +28,26 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841963");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-09 05:55:36 +0200 (Tue, 09 Sep 2014)");
   script_cve_id("CVE-2014-5029", "CVE-2014-5030", "CVE-2014-5031");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Ubuntu Update for cups USN-2341-1");
-  script_tag(name: "insight", value: "Salvatore Bonaccorso discovered that the
+  script_tag(name:"insight", value:"Salvatore Bonaccorso discovered that the
 CUPS web interface incorrectly validated permissions and incorrectly handled
 symlinks. An attacker could possibly use this issue to bypass file permissions
 and read arbitrary files, possibly leading to a privilege escalation.");
-  script_tag(name: "affected", value: "cups on Ubuntu 14.04 LTS ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"cups on Ubuntu 14.04 LTS,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "USN", value: "2341-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2341-1/");
+  script_xref(name:"USN", value:"2341-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2341-1/");
   script_tag(name:"summary", value:"Check for the Version of cups");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -60,7 +60,7 @@ exit(0);
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

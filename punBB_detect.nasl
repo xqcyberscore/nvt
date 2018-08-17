@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: punBB_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
+# $Id: punBB_detect.nasl 11028 2018-08-17 09:26:08Z cfischer $
 # Description: PunBB detection
 #
 # Authors:
@@ -26,28 +26,31 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.15936");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10922 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11028 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("PunBB detection");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("This script is Copyright (C) 2004 David Maciejak");
-  script_family("Web application abuses");
+  script_family("Product detection");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
   script_require_ports("Services/www", 80);
+
   script_xref(name:"URL", value:"http://www.punbb.org/");
+
   script_tag(name:"summary", value:"The remote web server contains a database management application
-written in PHP.
+  written in PHP.
 
-Description :
+  Description :
 
-This script detects whether the remote host is running PunBB and
-extracts the version number and location if found.
+  This script detects whether the remote host is running PunBB and
+  extracts the version number and location if found.
 
-PunBB is an open-source discussion board written in PHP.");
+  PunBB is an open-source discussion board written in PHP.");
+
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1265_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
+# $Id: gb_ubuntu_USN_1265_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for system-config-printer USN-1265-1
 #
@@ -29,14 +29,14 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1265-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1265-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840807");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 9648 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-11-18 09:47:10 +0530 (Fri, 18 Nov 2011)");
-  script_xref(name: "USN", value: "1265-1");
+  script_xref(name:"USN", value:"1265-1");
   script_cve_id("CVE-2011-4405");
   script_name("Ubuntu Update for system-config-printer USN-1265-1");
 
@@ -45,10 +45,10 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU11\.04");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1265-1");
-  script_tag(name : "affected" , value : "system-config-printer on Ubuntu 11.04");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "Marc Deslauriers discovered that system-config-printer's cupshelpers
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1265-1");
+  script_tag(name:"affected", value:"system-config-printer on Ubuntu 11.04");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Marc Deslauriers discovered that system-config-printer's cupshelpers
   scripts used by the Ubuntu automatic printer driver download service
   queried the OpenPrinting database using an insecure connection. If a remote
   attacker were able to perform a man-in-the-middle attack, this flaw could
@@ -61,7 +61,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 
 res = "";

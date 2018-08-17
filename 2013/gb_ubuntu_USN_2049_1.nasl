@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2049_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_2049_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux USN-2049-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841655");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-17 12:08:51 +0530 (Tue, 17 Dec 2013)");
   script_cve_id("CVE-2013-4270", "CVE-2013-4299", "CVE-2013-4343", "CVE-2013-4350",
                 "CVE-2013-4387", "CVE-2013-4470");
@@ -39,8 +39,8 @@ if(description)
   script_name("Ubuntu Update for linux USN-2049-1");
 
 
-  script_tag(name : "affected" , value : "linux on Ubuntu 13.10");
-  script_tag(name : "insight" , value : "Miroslav Vadkerti discovered a flaw in how the permissions
+  script_tag(name:"affected", value:"linux on Ubuntu 13.10");
+  script_tag(name:"insight", value:"Miroslav Vadkerti discovered a flaw in how the permissions
 for network sysctls are handled in the Linux kernel. An unprivileged local
 user could exploit this flaw to have privileged access to files in
 /proc/sys/net/. (CVE-2013-4270)
@@ -66,11 +66,11 @@ Hannes Frederic Sowa discovered a flaw in the Linux kernel's UDP
 Fragmenttation Offload (UFO). An unprivileged local user could exploit this
 flaw to cause a denial of service (system crash) or possibly gain
 administrative privileges. (CVE-2013-4470)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2049-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2049-1/");
+  script_xref(name:"USN", value:"2049-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2049-1/");
   script_tag(name:"summary", value:"Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
@@ -83,7 +83,7 @@ administrative privileges. (CVE-2013-4470)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

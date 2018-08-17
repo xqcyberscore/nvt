@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3646_1.nasl 10148 2018-06-11 03:14:29Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3646_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for php7.2 USN-3646-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843523");
-  script_version("$Revision: 10148 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 05:14:29 +0200 (Mon, 11 Jun 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-15 05:38:29 +0200 (Tue, 15 May 2018)");
   script_cve_id("CVE-2018-10545", "CVE-2018-10546", "CVE-2018-10547",
                 "CVE-2018-10548", "CVE-2018-10549");
@@ -60,14 +60,14 @@ It was discovered that PHP incorrectly handled certain exif tags in JPEG
 images. A remote attacker could possibly use this issue to cause PHP to
 crash, resulting in a denial of service. This issue only affected Ubuntu
 16.04 LTS, Ubuntu 17.10, and Ubuntu 18.04 LTS. (CVE-2018-10549)");
-  script_tag(name:"affected", value:"php7.2 on Ubuntu 18.04 LTS ,
-  Ubuntu 17.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"php7.2 on Ubuntu 18.04 LTS,
+  Ubuntu 17.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3646-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3646-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3646-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -80,7 +80,7 @@ crash, resulting in a denial of service. This issue only affected Ubuntu
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

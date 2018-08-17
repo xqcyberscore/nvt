@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3690_2.nasl 10556 2018-07-20 11:13:07Z cfischer $
+# $Id: gb_ubuntu_USN_3690_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for amd64-microcode USN-3690-2
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843581");
-  script_version("$Revision: 10556 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 13:13:07 +0200 (Fri, 20 Jul 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-06 05:49:44 +0200 (Fri, 06 Jul 2018)");
   script_cve_id("CVE-2017-5715");
   script_tag(name:"cvss_base", value:"4.7");
@@ -57,7 +57,7 @@ processors required for the corresponding Linux kernel updates.");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3690-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3690-2/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3690-2/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -70,7 +70,7 @@ processors required for the corresponding Linux kernel updates.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

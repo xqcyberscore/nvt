@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 11012 2018-08-16 16:33:20Z cfischer $
+# $Id: http_func.inc 11027 2018-08-17 08:57:39Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11012 $
+# $Revision: 11027 $
 #
 ###############################################################################
 
@@ -1598,8 +1598,6 @@ function report_vuln_url( port, url, url_only ) {
 #
 function http_post_req( port, url, data, add_headers, accept_header, user_agent, host_header_use_ip ) {
 
-  if( ! defined_func( "get_vt_string" ) ) include("misc_func.inc");
-
   local_var port, url, data, add_headers, accept_header, user_agent, host_header_use_ip;
   local_var x_header, x_scanner_string, host, req, header, len;
 
@@ -1684,8 +1682,6 @@ function http_post_req( port, url, data, add_headers, accept_header, user_agent,
 # @example req = http_get_req( port:port, url:"/", accept_header:"text/html", add_headers:make_array( "Cookie", "PHPSESSID=" + sessid ) );
 #
 function http_get_req( port, url, add_headers, accept_header, user_agent, host_header_use_ip ) {
-
-  if( ! defined_func( "get_vt_string" ) ) include("misc_func.inc");
 
   local_var port, url, add_headers, accept_header, user_agent, host_header_use_ip;
   local_var x_header, x_scanner_string, host, req, header;

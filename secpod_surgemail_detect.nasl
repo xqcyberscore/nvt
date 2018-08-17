@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_surgemail_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
+# $Id: secpod_surgemail_detect.nasl 11028 2018-08-17 09:26:08Z cfischer $
 #
 # SurgeMail Version Detection
 #
@@ -28,23 +28,23 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900839");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10908 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11028 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-09-15 09:32:43 +0200 (Tue, 15 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
-
   script_name("SurgeMail Version Detection");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
-  script_family("Service detection");
+  script_family("Product detection");
   script_dependencies("gb_get_http_banner.nasl", "find_service.nasl", "smtpserver_detect.nasl");
   script_mandatory_keys("surgemail/banner");
   script_require_ports("Services/www", 7110, 7026, "Services/smtp", 25, "Services/imap", 143, "Services/pop3", 110);
 
   script_tag(name:"summary", value:"This script detects the installed version of SurgeMail
   and sets the result into the knowledgebase.");
+
   script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 

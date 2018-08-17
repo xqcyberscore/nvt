@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842933");
-  script_version("$Revision: 10743 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 04:50:31 +0200 (Fri, 03 Aug 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-11-08 15:52:46 +0530 (Tue, 08 Nov 2016)");
   script_cve_id("CVE-2016-5287", "CVE-2016-5288");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for firefox USN-3111-1");
-  script_tag(name: "summary", value: "Check the version of firefox");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "A use-after-free was discovered in service
+  script_tag(name:"summary", value:"Check the version of firefox");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"A use-after-free was discovered in service
   workers. If a user were tricked in to opening a specially crafted website, an
   attacker could potentially exploit this to cause a denial of service via program
   crash, or execute arbitrary code. (CVE-2016-5287)
@@ -44,14 +44,14 @@ if(description)
 It was discovered that web content could access information in the HTTP
 cache in some circumstances. An attacker could potentially exploit this
 to obtain sensitive information. (CVE-2016-5288)");
-  script_tag(name: "affected", value: "firefox on Ubuntu 16.04 LTS,
+  script_tag(name:"affected", value:"firefox on Ubuntu 16.04 LTS,
   Ubuntu 16.10,
-  Ubuntu 14.04 LTS ,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3111-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3111-1/");
+  script_xref(name:"USN", value:"3111-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3111-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -64,7 +64,7 @@ to obtain sensitive information. (CVE-2016-5288)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

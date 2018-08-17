@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ms_rdp_detect.nasl 10347 2018-06-27 15:16:56Z cfischer $
+# $Id: ms_rdp_detect.nasl 11031 2018-08-17 09:42:45Z cfischer $
 #
 # Microsoft Remote Desktop Protocol Detection
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100062");
-  script_version("$Revision: 10347 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-27 17:16:56 +0200 (Wed, 27 Jun 2018) $");
+  script_version("$Revision: 11031 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:42:45 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-03-19 19:54:28 +0100 (Thu, 19 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Microsoft Remote Desktop Protocol Detection");
   script_category(ACT_GATHER_INFO);
-  script_family("Windows");
+  script_family("Service detection");
   script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "find_service1.nasl");
   script_require_ports("Services/unknown", "Services/ms-wbt-server", 3389);

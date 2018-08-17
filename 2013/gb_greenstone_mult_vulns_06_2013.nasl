@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_greenstone_mult_vulns_06_2013.nasl 5699 2017-03-23 14:53:33Z cfi $
+# $Id: gb_greenstone_mult_vulns_06_2013.nasl 11041 2018-08-17 14:03:47Z mmartin $
 #
 # Greenstone Multiple Security Vulnerabilities
 #
@@ -25,7 +25,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Greenstone is prone to the following security vulnerabilities:
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103727");
+  script_bugtraq_id(56662);
+  script_version("$Revision: 11041 $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_name("Greenstone Multiple Security Vulnerabilities");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56662");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-06-03 13:45:05 +0200 (Mon, 03 Jun 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information and contact the vendor.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Greenstone is prone to the following security vulnerabilities:
 
 1. A file-disclosure vulnerability
 2. A cross-site scripting vulnerability
@@ -34,27 +54,7 @@ tag_summary = "Greenstone is prone to the following security vulnerabilities:
 
 Attackers can exploit these issues to view local files, bypass certain
 security restriction, steal cookie-based authentication, or execute
-arbitrary scripts in the context of the browser.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103727");
- script_bugtraq_id(56662);
- script_version ("$Revision: 5699 $");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_name("Greenstone Multiple Security Vulnerabilities");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56662");
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:53:33 +0100 (Thu, 23 Mar 2017) $");
- script_tag(name:"creation_date", value:"2013-06-03 13:45:05 +0200 (Mon, 03 Jun 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
+arbitrary scripts in the context of the browser.");
  exit(0);
 }
 
@@ -74,7 +74,7 @@ foreach dir( make_list_unique( "/gsdl", "/greenstone", cgi_dirs( port:port ) ) )
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );
     exit( 0 );
-  }  
+  }
 }
 
 exit( 99 );

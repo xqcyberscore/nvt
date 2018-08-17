@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2247_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2247_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for nova USN-2247-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841862");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-06-23 16:37:31 +0530 (Mon, 23 Jun 2014)");
   script_cve_id("CVE-2013-1068", "CVE-2013-4463", "CVE-2013-4469", "CVE-2013-6491",
                 "CVE-2013-7130", "CVE-2014-0134", "CVE-2014-0167");
@@ -39,10 +39,10 @@ if(description)
   script_name("Ubuntu Update for nova USN-2247-1");
 
 
-  script_tag(name : "affected" , value : "nova on Ubuntu 14.04 LTS ,
-  Ubuntu 13.10 ,
+  script_tag(name:"affected", value:"nova on Ubuntu 14.04 LTS,
+  Ubuntu 13.10,
   Ubuntu 12.04 LTS");
-  script_tag(name : "insight" , value : "Darragh O'Reilly discovered that OpenStack Nova did not
+  script_tag(name:"insight", value:"Darragh O'Reilly discovered that OpenStack Nova did not
 properly set up its sudo configuration. If a different flaw was found in
 OpenStack Nova, this vulnerability could be used to escalate privileges. This
 issue only affected Ubuntu 13.10 and Ubuntu 14.04 LTS. (CVE-2013-1068)
@@ -76,11 +76,11 @@ Mark Heckmann discovered that OpenStack Nova did not enforce RBAC policy
 when adding security group rules via the EC2 API. A remote authenticated
 user could exploit this to gain unintended access to this API. This issue
 only affected Ubuntu 13.10. (CVE-2014-0167)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2247-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2247-1/");
+  script_xref(name:"USN", value:"2247-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2247-1/");
   script_tag(name:"summary", value:"Check for the Version of nova");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -93,7 +93,7 @@ only affected Ubuntu 13.10. (CVE-2014-0167)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

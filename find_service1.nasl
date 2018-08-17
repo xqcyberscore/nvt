@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: find_service1.nasl 11040 2018-08-17 13:31:04Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11040 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 15:31:04 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -504,7 +504,7 @@ if( r =~ "^\.NET" && ( "customErrors" >< r || "RemotingException" >< r ) ) {
   exit( 0 );
 }
 
-if( ( r =~ "^-ERR wrong number of arguments for 'get' command" && "-ERR unknown command 'Host:'" >< r ) ||
+if( r =~ "^-ERR wrong number of arguments for 'get' command" || egrep( string:r, pattern:"^-ERR unknown command 'Host:'" ) ||
     r =~ "^-DENIED Redis is running in protected mode" ) {
   register_service( port:port, proto:"redis", message:"A Redis server seems to be running on this port." );
   log_message( port:port, data:"A Redis server seems to be running on this port." );

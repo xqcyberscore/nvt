@@ -26,16 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842048");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-01-23 12:58:06 +0100 (Fri, 23 Jan 2015)");
   script_cve_id("CVE-2014-7842", "CVE-2014-8369");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
   script_name("Ubuntu Update for linux USN-2463-1");
-  script_tag(name: "summary", value: "Check the version of linux");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "A race condition with MMIO and PIO
+  script_tag(name:"summary", value:"Check the version of linux");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"A race condition with MMIO and PIO
 transactions in the KVM (Kernel Virtual Machine) subsystem of the Linux kernel
 was discovered. A guest OS user could exploit this flaw to cause a denial of service
 (guest OS crash) via a specially crafted application. (CVE-2014-7842)
@@ -45,10 +45,10 @@ miscalculates the number of memory pages during the handling of a mapping
 failure. A guest OS user could exploit this to cause a denial of service
 (host OS page unpinning) or possibly have unspecified other impact by
 leveraging guest OS privileges. (CVE-2014-8369)");
-  script_tag(name: "affected", value: "linux on Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2463-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2463-1/");
+  script_tag(name:"affected", value:"linux on Ubuntu 12.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2463-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2463-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);
@@ -62,7 +62,7 @@ leveraging guest OS privileges. (CVE-2014-8369)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842391");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-07-30 05:14:24 +0200 (Thu, 30 Jul 2015)");
   script_cve_id("CVE-2015-5477", "CVE-2012-5689");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for bind9 USN-2693-1");
-  script_tag(name: "summary", value: "Check the version of bind9");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Jonathan Foote discovered that Bind
+  script_tag(name:"summary", value:"Check the version of bind9");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Jonathan Foote discovered that Bind
 incorrectly handled certain TKEY queries. A remote attacker could use this issue
 with a specially crafted packet to cause Bind to crash, resulting in a denial of
 service. (CVE-2015-5477)
@@ -45,11 +45,11 @@ Pories Ediansyah discovered that Bind incorrectly handled certain
 configurations involving DNS64. A remote attacker could use this issue with
 a specially crafted query to cause Bind to crash, resulting in a denial of
 service. This issue only affected Ubuntu 12.04 LTS. (CVE-2012-5689)");
-  script_tag(name: "affected", value: "bind9 on Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"bind9 on Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2693-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2693-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2693-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2693-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -62,7 +62,7 @@ service. This issue only affected Ubuntu 12.04 LTS. (CVE-2012-5689)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

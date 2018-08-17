@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: cifs445.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: cifs445.nasl 11031 2018-08-17 09:42:45Z cfischer $
 #
 # SMB/CIFS Server Detection
 #
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11011");
-  script_version("$Revision: 9608 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 11031 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:42:45 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2006-03-26 18:10:09 +0200 (Sun, 26 Mar 2006)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SMB/CIFS Server Detection");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2002 Renaud Deraison");
-  script_family("Windows");
+  script_family("Service detection");
   script_dependencies("find_service.nasl");
   script_require_ports(139, 445);
 
-  script_tag(name:"summary", value:"This script detects wether port 445 and 139 are open and
+  script_tag(name:"summary", value:"This script detects whether port 445 and 139 are open and
   if they are running a CIFS/SMB server.");
 
   script_tag(name:"qod_type", value:"remote_banner");

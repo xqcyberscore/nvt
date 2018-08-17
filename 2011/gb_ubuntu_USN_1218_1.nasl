@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1218_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
+# $Id: gb_ubuntu_USN_1218_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux USN-1218-1
 #
@@ -29,14 +29,14 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1218-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1218-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840760");
-  script_version("$Revision: 9648 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-09-30 16:02:57 +0200 (Fri, 30 Sep 2011)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_xref(name: "USN", value: "1218-1");
+  script_xref(name:"USN", value:"1218-1");
   script_cve_id("CVE-2010-4076", "CVE-2010-4077", "CVE-2010-4251", "CVE-2010-4805", "CVE-2011-1020", "CVE-2011-1493", "CVE-2011-1577", "CVE-2011-2213", "CVE-2011-2484", "CVE-2011-2492", "CVE-2011-2700", "CVE-2011-2723", "CVE-2011-2918");
   script_name("Ubuntu Update for linux USN-1218-1");
 
@@ -45,10 +45,10 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU10\.04 LTS");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1218-1");
-  script_tag(name : "affected" , value : "linux on Ubuntu 10.04 LTS");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "Dan Rosenberg discovered that multiple terminal ioctls did not correctly
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1218-1");
+  script_tag(name:"affected", value:"linux on Ubuntu 10.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Dan Rosenberg discovered that multiple terminal ioctls did not correctly
   initialize structure memory. A local attacker could exploit this to read
   portions of kernel stack memory, leading to a loss of privacy.
   (CVE-2010-4076, CVE-2010-4077)
@@ -105,7 +105,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 
 res = "";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3673_1.nasl 10215 2018-06-15 10:24:04Z cfischer $
+# $Id: gb_ubuntu_USN_3673_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for unbound USN-3673-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843546");
-  script_version("$Revision: 10215 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 12:24:04 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-09 05:48:51 +0200 (Sat, 09 Jun 2018)");
   script_cve_id("CVE-2017-15105");
   script_tag(name:"cvss_base", value:"5.0");
@@ -41,14 +41,14 @@ if(description)
 handle certain NSEC records. An attacker could use this to to prove the
 non-existence (NXDOMAIN answer) of an existing wildcard record, or trick
 Unbound into accepting a NODATA proof.");
-  script_tag(name:"affected", value:"unbound on Ubuntu 18.04 LTS ,
-  Ubuntu 17.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"unbound on Ubuntu 18.04 LTS,
+  Ubuntu 17.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3673-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3673-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3673-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -61,7 +61,7 @@ Unbound into accepting a NODATA proof.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

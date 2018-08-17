@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2038_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_2038_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux USN-2038-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841647");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-04 10:29:02 +0530 (Wed, 04 Dec 2013)");
   script_cve_id("CVE-2013-0343", "CVE-2013-2140", "CVE-2013-2888", "CVE-2013-2889",
                 "CVE-2013-2892", "CVE-2013-2893", "CVE-2013-2895", "CVE-2013-2896",
@@ -40,8 +40,8 @@ if(description)
   script_name("Ubuntu Update for linux USN-2038-1");
 
 
-  script_tag(name : "affected" , value : "linux on Ubuntu 12.04 LTS");
-  script_tag(name : "insight" , value : "An information leak was discovered in the handling of ICMPv6
+  script_tag(name:"affected", value:"linux on Ubuntu 12.04 LTS");
+  script_tag(name:"insight", value:"An information leak was discovered in the handling of ICMPv6
 Router Advertisement (RA) messages in the Linux kernel's IPv6 network stack. A
 remote attacker could exploit this flaw to cause a denial of service
 (excessive retries and address-generation outage), and consequently obtain
@@ -92,12 +92,12 @@ physically proximate attacker could leverage this flaw to cause a denial of
 service (OOPS) via a specia ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2038-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2038-1/");
-  script_tag(name: "summary" , value: "Check for the Version of linux");
+  script_xref(name:"USN", value:"2038-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2038-1/");
+  script_tag(name:"summary", value:"Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
@@ -109,7 +109,7 @@ service (OOPS) via a specia ...
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

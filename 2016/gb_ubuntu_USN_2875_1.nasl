@@ -26,28 +26,28 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842607");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-01-20 06:16:22 +0100 (Wed, 20 Jan 2016)");
   script_cve_id("CVE-2015-7499", "CVE-2015-8710");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for libxml2 USN-2875-1");
-  script_tag(name: "summary", value: "Check the version of libxml2");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that libxml2 incorrectly
+  script_tag(name:"summary", value:"Check the version of libxml2");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that libxml2 incorrectly
   handled certain malformed documents. If a user or automated system were tricked
   into opening a specially crafted document, an attacker could possibly cause
   libxml2 to crash, resulting in a denial of service.");
-  script_tag(name: "affected", value: "libxml2 on Ubuntu 15.10 ,
-  Ubuntu 15.04 ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"libxml2 on Ubuntu 15.10,
+  Ubuntu 15.04,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "2875-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2875-1/");
+  script_xref(name:"USN", value:"2875-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2875-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -60,7 +60,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

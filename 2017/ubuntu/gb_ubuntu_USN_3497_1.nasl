@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3497_1.nasl 9654 2018-04-27 09:20:40Z cfischer $
+# $Id: gb_ubuntu_USN_3497_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for openjdk-7 USN-3497-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843387");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-11-30 07:34:52 +0100 (Thu, 30 Nov 2017)");
   script_cve_id("CVE-2017-10274", "CVE-2017-10281", "CVE-2017-10285", "CVE-2017-10295",
                 "CVE-2017-10345", "CVE-2017-10346", "CVE-2017-10347", "CVE-2017-10348",
@@ -38,9 +38,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for openjdk-7 USN-3497-1");
-  script_tag(name: "summary", value: "Check the version of openjdk-7");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that the Smart Card IO
+  script_tag(name:"summary", value:"Check the version of openjdk-7");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that the Smart Card IO
   subsystem in OpenJDK did not properly maintain state. An attacker could use this
   to specially construct an untrusted Java application or applet to gain access to
   a smart card, bypassing sandbox restrictions. (CVE-2017-10274) Gaston Traberg
@@ -76,11 +76,11 @@ if(description)
   component in OpenJDK did not properly limit the amount of memory allocated when
   performing deserializations. An attacker could use this to cause a denial ...
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "openjdk-7 on Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"openjdk-7 on Ubuntu 14.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3497-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3497-1/");
+  script_xref(name:"USN", value:"3497-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3497-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -93,7 +93,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

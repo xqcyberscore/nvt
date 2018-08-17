@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1907_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_1907_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for openjdk-7 USN-1907-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841509");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-01 19:12:51 +0530 (Thu, 01 Aug 2013)");
   script_cve_id("CVE-2013-1500", "CVE-2013-2454", "CVE-2013-2458", "CVE-2013-1571",
                 "CVE-2013-2407", "CVE-2013-2412", "CVE-2013-2443", "CVE-2013-2446",
@@ -45,9 +45,9 @@ if(description)
   script_name("Ubuntu Update for openjdk-7 USN-1907-1");
 
 
-  script_tag(name : "affected" , value : "openjdk-7 on Ubuntu 13.04 ,
+  script_tag(name:"affected", value:"openjdk-7 on Ubuntu 13.04,
 Ubuntu 12.10");
-  script_tag(name : "insight" , value : "Several vulnerabilities were discovered in the OpenJDK JRE
+  script_tag(name:"insight", value:"Several vulnerabilities were discovered in the OpenJDK JRE
 related to information disclosure and data integrity. An attacker could exploit
 these to expose sensitive data over the network. (CVE-2013-1500, CVE-2013-2454,
 CVE-2013-2458)
@@ -78,12 +78,12 @@ CVE-2013-2471, CVE-2013-2472, CVE-2013-2473)
 
 Several vulnerabilities were discovered in the OpenJDK JRE related to data
 integrity. (CVE-2013-2453, CVE-2013-2455, CVE-2013-2457)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "1907-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1907-1/");
-  script_tag(name: "summary" , value: "Check for the Version of openjdk-7");
+  script_xref(name:"USN", value:"1907-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1907-1/");
+  script_tag(name:"summary", value:"Check for the Version of openjdk-7");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
@@ -95,7 +95,7 @@ integrity. (CVE-2013-2453, CVE-2013-2455, CVE-2013-2457)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

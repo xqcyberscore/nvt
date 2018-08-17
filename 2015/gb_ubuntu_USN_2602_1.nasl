@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842224");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-06-09 11:08:39 +0200 (Tue, 09 Jun 2015)");
   script_cve_id("CVE-2015-2708", "CVE-2015-2709", "CVE-2015-2710", "CVE-2015-2711",
                 "CVE-2015-2712", "CVE-2015-2713", "CVE-2015-2715", "CVE-2015-2716",
@@ -36,9 +36,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for firefox USN-2602-1");
-  script_tag(name: "summary", value: "Check the version of firefox");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Jesse Ruderman, Mats Palmgren, Byron
+  script_tag(name:"summary", value:"Check the version of firefox");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Jesse Ruderman, Mats Palmgren, Byron
 Campen, Steve Fink, Gary Kwong, Andrew McCreight, Christian Holler, Jon Coppeard,
 and Milan Sreckovic discovered multiple memory safety issues in Firefox. If a
 user were tricked in to opening a specially crafted website, an attacker could
@@ -86,12 +86,12 @@ this to cause a denial of service via application crash, or execute
 arbitrary code with the privileges of the us ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "firefox on Ubuntu 14.10 ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"firefox on Ubuntu 14.10,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2602-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2602-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2602-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2602-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -104,7 +104,7 @@ arbitrary code with the privileges of the us ...
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

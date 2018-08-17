@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1212_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
+# $Id: gb_ubuntu_USN_1212_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux-ti-omap4 USN-1212-1
 #
@@ -29,14 +29,14 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1212-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1212-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840748");
-  script_version("$Revision: 9648 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-09-23 16:39:49 +0200 (Fri, 23 Sep 2011)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_xref(name: "USN", value: "1212-1");
+  script_xref(name:"USN", value:"1212-1");
   script_cve_id("CVE-2011-0463", "CVE-2011-1017", "CVE-2011-1020", "CVE-2011-1078", "CVE-2011-1079", "CVE-2011-1080", "CVE-2011-1160", "CVE-2011-1170", "CVE-2011-1171", "CVE-2011-1172", "CVE-2011-2534", "CVE-2011-1173", "CVE-2011-1180", "CVE-2011-1182", "CVE-2011-1493", "CVE-2011-1494", "CVE-2011-1495", "CVE-2011-1577", "CVE-2011-1581", "CVE-2011-1593", "CVE-2011-1598", "CVE-2011-1748", "CVE-2011-1745", "CVE-2011-2022", "CVE-2011-1746", "CVE-2011-1770", "CVE-2011-1771", "CVE-2011-1833", "CVE-2011-2484", "CVE-2011-2492", "CVE-2011-2493", "CVE-2011-2689", "CVE-2011-2699", "CVE-2011-2918");
   script_name("Ubuntu Update for linux-ti-omap4 USN-1212-1");
 
@@ -45,10 +45,10 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU11\.04");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1212-1");
-  script_tag(name : "affected" , value : "linux-ti-omap4 on Ubuntu 11.04");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "Goldwyn Rodrigues discovered that the OCFS2 filesystem did not correctly
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1212-1");
+  script_tag(name:"affected", value:"linux-ti-omap4 on Ubuntu 11.04");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Goldwyn Rodrigues discovered that the OCFS2 filesystem did not correctly
   clear memory when writing certain file holes. A local attacker could
   exploit this to read uninitialized data from the disk, leading to a loss of
   privacy. (CVE-2011-0463)
@@ -109,7 +109,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 
 res = "";

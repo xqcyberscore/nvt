@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2291_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2291_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for mysql-5.5 USN-2291-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841905");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-07-21 18:10:14 +0530 (Mon, 21 Jul 2014)");
   script_cve_id("CVE-2014-2494", "CVE-2014-4207", "CVE-2014-4258", "CVE-2014-4260");
   script_tag(name:"cvss_base", value:"6.5");
@@ -38,9 +38,9 @@ if(description)
   script_name("Ubuntu Update for mysql-5.5 USN-2291-1");
 
 
-  script_tag(name : "affected" , value : "mysql-5.5 on Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"mysql-5.5 on Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name : "insight" , value : "Multiple security issues were discovered in MySQL and this
+  script_tag(name:"insight", value:"Multiple security issues were discovered in MySQL and this
 update includes a new upstream MySQL version to fix these issues. MySQL has
 been updated to 5.5.38.
 
@@ -50,11 +50,11 @@ new features, and possibly incompatible changes.
 Please see the following for more information:
 http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-38.html
 http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2291-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2291-1/");
+  script_xref(name:"USN", value:"2291-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2291-1/");
   script_tag(name:"summary", value:"Check for the Version of mysql-5.5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -67,7 +67,7 @@ http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

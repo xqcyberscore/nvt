@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843135");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-04-22 06:45:04 +0200 (Sat, 22 Apr 2017)");
   script_cve_id("CVE-2017-5429", "CVE-2017-5430", "CVE-2017-5432", "CVE-2017-5433",
                 "CVE-2017-5434", "CVE-2017-5435", "CVE-2017-5436", "CVE-2017-5437",
@@ -44,11 +44,11 @@ if(description)
 
   script_name("Ubuntu Update for firefox USN-3260-1");
 
-  script_tag(name: "summary", value: "Check the version of firefox");
+  script_tag(name:"summary", value:"Check the version of firefox");
 
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "Multiple security issues were discovered in
+  script_tag(name:"insight", value:"Multiple security issues were discovered in
 Firefox. If a user were tricked in to opening a specially crafted website, an
 attacker could potentially exploit these to read uninitialized memory, obtain
 sensitive information, spoof the addressbar contents or other UI elements, escape
@@ -67,14 +67,14 @@ A flaw was discovered in the DRBG number generation in NSS. If an
 attacker were able to perform a man-in-the-middle attack, this flaw
 could potentially be exploited to view sensitive information.
 (CVE-2017-5462)");
-  script_tag(name: "affected", value: "firefox on Ubuntu 16.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"firefox on Ubuntu 16.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
 
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3260-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3260-1/");
+  script_xref(name:"USN", value:"3260-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3260-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -87,7 +87,7 @@ could potentially be exploited to view sensitive information.
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

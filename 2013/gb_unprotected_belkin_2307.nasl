@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unprotected_belkin_2307.nasl 5842 2017-04-03 13:15:19Z cfi $
+# $Id: gb_unprotected_belkin_2307.nasl 11041 2018-08-17 14:03:47Z mmartin $
 #
 # Belkin 2307 Unprotected Web Console
 #
@@ -25,36 +25,30 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote Belkin 2307 Web Console is not protected by a password.";
-
-
-tag_solution = "Set a password.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103704";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 5842 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_oid("1.3.6.1.4.1.25623.1.0.103704");
+  script_version("$Revision: 11041 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
- script_name("Belkin 2307 Unprotected Web Console");
+  script_name("Belkin 2307 Unprotected Web Console");
 
- script_xref(name:"URL" , value: "http://www.belkin.com");
+  script_xref(name:"URL", value:"http://www.belkin.com");
 
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:15:19 +0200 (Mon, 03 Apr 2017) $");
- script_tag(name:"creation_date", value:"2013-04-23 12:01:48 +0100 (Tue, 23 Apr 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-04-23 12:01:48 +0100 (Tue, 23 Apr 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"solution", value:"Set a password.");
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"summary", value:"The remote Belkin 2307 Web Console is not protected by a password.");
  exit(0);
 }
 
@@ -62,7 +56,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default: 80);
-                                                                  
+
 url = '/login.html';
 res = http_get(item:url, port:port);
 
@@ -70,7 +64,7 @@ if( 'content="Belkin 2307"' >< res ) {
 
   host = http_host_name(port:port);
   login = "page=&logout=&action=submit&pws=&itsbutton1=Absenden&h_language=de&is_parent_window=1";
-  len = strlen(login);  
+  len = strlen(login);
 
   req = string("POST /login.cgi HTTP/1.1\r\n",
                "Host: ", host,"\r\n",
@@ -97,10 +91,10 @@ if( 'content="Belkin 2307"' >< res ) {
   if("sysPasswd" >< buf && "sysConfirmPasswd" >< buf && "userOldPswd" >< buf) {
     security_message(port:port);
     exit(0);
-  }  
+  }
 
   exit(99);
 
-}  
+}
 
 exit(0);

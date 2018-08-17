@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3686_1.nasl 10743 2018-08-03 02:50:31Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3686_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for file USN-3686-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843561");
-  script_version("$Revision: 10743 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 04:50:31 +0200 (Fri, 03 Aug 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-15 05:47:38 +0200 (Fri, 15 Jun 2018)");
   script_cve_id("CVE-2014-9620", "CVE-2014-9653", "CVE-2015-8865", "CVE-2018-10360",
                 "CVE-2014-9621");
@@ -60,14 +60,14 @@ affected Ubuntu 14.04 LTS. (CVE-2015-8865)
 It was discovered that file incorrectly handled certain malformed ELF
 files. An attacker could use this issue to cause a denial of service.
 (CVE-2018-10360)");
-  script_tag(name:"affected", value:"file on Ubuntu 18.04 LTS ,
-  Ubuntu 17.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"file on Ubuntu 18.04 LTS,
+  Ubuntu 17.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3686-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3686-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3686-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -80,7 +80,7 @@ files. An attacker could use this issue to cause a denial of service.
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

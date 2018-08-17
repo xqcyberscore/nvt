@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843165");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-05-17 06:52:48 +0200 (Wed, 17 May 2017)");
   script_cve_id("CVE-2017-2596", "CVE-2017-7187", "CVE-2017-7261", "CVE-2017-7294",
                 "CVE-2017-7477", "CVE-2017-7616");
@@ -35,9 +35,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-3293-1");
-  script_tag(name: "summary", value: "Check the version of linux");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Dmitry Vyukov discovered that KVM
+  script_tag(name:"summary", value:"Check the version of linux");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Dmitry Vyukov discovered that KVM
   implementation in the Linux kernel improperly emulated the VMXON instruction. A
   local attacker in a guest OS could use this to cause a denial of service (memory
   consumption) in the host OS. (CVE-2017-2596) Dmitry Vyukov discovered that the
@@ -57,11 +57,11 @@ if(description)
   information leak existed in the set_mempolicy and mbind compat syscalls in the
   Linux kernel. A local attacker could use this to expose sensitive information
   (kernel memory). (CVE-2017-7616)");
-  script_tag(name: "affected", value: "linux on Ubuntu 17.04");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"linux on Ubuntu 17.04");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3293-1");
-  script_xref(name: "URL" , value: "https://www.ubuntu.com/usn/usn-3293-1");
+  script_xref(name:"USN", value:"3293-1");
+  script_xref(name:"URL", value:"https://www.ubuntu.com/usn/usn-3293-1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -74,7 +74,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

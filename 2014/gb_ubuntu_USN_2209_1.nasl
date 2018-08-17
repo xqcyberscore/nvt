@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2209_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2209_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for libvirt USN-2209-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841804");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-05-12 09:12:52 +0530 (Mon, 12 May 2014)");
   script_cve_id("CVE-2013-6456", "CVE-2013-7336");
   script_tag(name:"cvss_base", value:"5.8");
@@ -38,8 +38,8 @@ if(description)
   script_name("Ubuntu Update for libvirt USN-2209-1");
 
 
-  script_tag(name : "affected" , value : "libvirt on Ubuntu 13.10");
-  script_tag(name : "insight" , value : "It was discovered that libvirt incorrectly handled symlinks
+  script_tag(name:"affected", value:"libvirt on Ubuntu 13.10");
+  script_tag(name:"insight", value:"It was discovered that libvirt incorrectly handled symlinks
 when using the LXC driver. An attacker could possibly use this issue to delete
 host devices, create arbitrary nodes, and shutdown or power off the host.
 (CVE-2013-6456)
@@ -47,11 +47,11 @@ host devices, create arbitrary nodes, and shutdown or power off the host.
 Marian Krcmarik discovered that libvirt incorrectly handled seamless SPICE
 migrations. An attacker could possibly use this issue to cause a denial of
 service. (CVE-2013-7336)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2209-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2209-1/");
+  script_xref(name:"USN", value:"2209-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2209-1/");
   script_tag(name:"summary", value:"Check for the Version of libvirt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -64,7 +64,7 @@ service. (CVE-2013-7336)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

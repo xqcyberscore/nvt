@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2060_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_2060_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for libjpeg-turbo USN-2060-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841666");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-23 13:28:44 +0530 (Mon, 23 Dec 2013)");
   script_cve_id("CVE-2013-6629", "CVE-2013-6630");
   script_tag(name:"cvss_base", value:"5.0");
@@ -38,20 +38,20 @@ if(description)
   script_name("Ubuntu Update for libjpeg-turbo USN-2060-1");
 
 
-  script_tag(name : "affected" , value : "libjpeg-turbo on Ubuntu 13.10 ,
-  Ubuntu 13.04 ,
-  Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"libjpeg-turbo on Ubuntu 13.10,
+  Ubuntu 13.04,
+  Ubuntu 12.10,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name : "insight" , value : "Michal Zalewski discovered that libjpeg and libjpeg-turbo
+  script_tag(name:"insight", value:"Michal Zalewski discovered that libjpeg and libjpeg-turbo
 incorrectly handled certain memory operations. An attacker could use this
 issue with a specially-crafted JPEG file to possibly expose sensitive
 information.");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2060-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2060-1/");
+  script_xref(name:"USN", value:"2060-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2060-1/");
   script_tag(name:"summary", value:"Check for the Version of libjpeg-turbo");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
@@ -64,7 +64,7 @@ information.");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

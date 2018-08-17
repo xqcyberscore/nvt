@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3469_1.nasl 9654 2018-04-27 09:20:40Z cfischer $
+# $Id: gb_ubuntu_USN_3469_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux USN-3469-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843358");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-11-01 05:04:22 +0100 (Wed, 01 Nov 2017)");
   script_cve_id("CVE-2017-10911", "CVE-2017-12153", "CVE-2017-12192", "CVE-2017-14051",
                 "CVE-2017-14156", "CVE-2017-14340", "CVE-2017-14489", "CVE-2017-14991",
@@ -37,9 +37,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-3469-1");
-  script_tag(name: "summary", value: "Check the version of linux");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Anthony Perard discovered that the Xen
+  script_tag(name:"summary", value:"Check the version of linux");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Anthony Perard discovered that the Xen
   virtual block driver did not properly initialize some data structures before
   passing them to user space. A local attacker in a guest VM could use this to
   expose sensitive information from the host OS or other guest VMs.
@@ -76,11 +76,11 @@ if(description)
   the Linux kernel contained race conditions when fetching from the ring-buffer. A
   local attacker could use this to cause a denial of service (infinite loop).
   (CVE-2017-9984, CVE-2017-9985)");
-  script_tag(name: "affected", value: "linux on Ubuntu 16.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"linux on Ubuntu 16.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3469-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3469-1/");
+  script_xref(name:"USN", value:"3469-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3469-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -93,7 +93,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

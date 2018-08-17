@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842482");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-10-06 12:43:29 +0200 (Tue, 06 Oct 2015)");
   script_cve_id("CVE-2015-4500", "CVE-2015-4506", "CVE-2015-4509", "CVE-2015-4511",
                 "CVE-2015-4517", "CVE-2015-4521", "CVE-2015-4522", "CVE-2015-7174",
@@ -37,9 +37,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for thunderbird USN-2754-1");
-  script_tag(name: "summary", value: "Check the version of thunderbird");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Andrew Osmond, Olli Pettay, Andrew
+  script_tag(name:"summary", value:"Check the version of thunderbird");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Andrew Osmond, Olli Pettay, Andrew
 Sutherland, Christian Holler, David Major, Andrew McCreight, and Cameron
 McCormack discovered multiple memory safety issues in Thunderbird. If a user were
 tricked in to opening a specially crafted message, an attacker could potentially
@@ -80,12 +80,12 @@ potentially exploit this to obtain sensitive information. (CVE-2015-4519)
 Ehsan Akhgari discovered 2 issues with CORS preflight requests. An
 attacker could potentially exploit these to bypass CORS restrictions.
 (CVE-2015-4520)");
-  script_tag(name: "affected", value: "thunderbird on Ubuntu 15.04 ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"thunderbird on Ubuntu 15.04,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2754-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2754-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2754-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2754-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -98,7 +98,7 @@ attacker could potentially exploit these to bypass CORS restrictions.
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

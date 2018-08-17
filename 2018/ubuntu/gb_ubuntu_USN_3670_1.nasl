@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3670_1.nasl 10215 2018-06-15 10:24:04Z cfischer $
+# $Id: gb_ubuntu_USN_3670_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for elfutils USN-3670-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843544");
-  script_version("$Revision: 10215 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 12:24:04 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-06 05:46:57 +0200 (Wed, 06 Jun 2018)");
   script_cve_id("CVE-2016-10254", "CVE-2016-10255", "CVE-2017-7607", "CVE-2017-7608",
                 "CVE-2017-7609", "CVE-2017-7610", "CVE-2017-7611", "CVE-2017-7612",
@@ -44,12 +44,12 @@ on the target host.");
 incorrectly handled certain malformed ELF files. If a user or automated system
 were tricked into processing a specially crafted ELF file, elfutils could be made
 to crash or consume resources, resulting in a denial of service.");
-  script_tag(name:"affected", value:"elfutils on Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"elfutils on Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3670-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3670-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3670-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -62,7 +62,7 @@ to crash or consume resources, resulting in a denial of service.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_nativelanman.nasl 10399 2018-07-04 13:23:27Z cfischer $
+# $Id: smb_nativelanman.nasl 11028 2018-08-17 09:26:08Z cfischer $
 #
 # SMB NativeLanMan
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102011");
-  script_version("$Revision: 10399 $");
+  script_version("$Revision: 11028 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 15:23:27 +0200 (Wed, 04 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-09-18 16:06:42 +0200 (Fri, 18 Sep 2009)");
   script_name("SMB NativeLanMan");
   script_category(ACT_GATHER_INFO);
-  script_family("Service detection");
+  script_family("Product detection");
   script_copyright("Copyright (C) 2009 LSS");
   script_dependencies("cifs445.nasl", "netbios_name_get.nasl");
   script_require_ports(139, 445);

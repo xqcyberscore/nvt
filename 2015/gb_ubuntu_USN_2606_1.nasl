@@ -26,16 +26,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842227");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-06-09 11:09:39 +0200 (Tue, 09 Jun 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for openssl USN-2606-1");
-  script_tag(name: "summary", value: "Check the version of openssl");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "For compatibility reasons, Ubuntu 12.04
+  script_tag(name:"summary", value:"Check the version of openssl");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"For compatibility reasons, Ubuntu 12.04
 LTS shipped OpenSSL with TLSv1.2 disabled when being used as a client.
 
 This update re-enables TLSv1.2 by default now that the majority of
@@ -44,10 +44,10 @@ problematic sites have been updated to fix compatibility issues.
 For problematic environments, TLSv1.2 can be disabled again by setting the
 OPENSSL_NO_CLIENT_TLS1_2 environment variable before library
 initialization.");
-  script_tag(name: "affected", value: "openssl on Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2606-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2606-1/");
+  script_tag(name:"affected", value:"openssl on Ubuntu 12.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2606-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2606-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -60,7 +60,7 @@ initialization.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

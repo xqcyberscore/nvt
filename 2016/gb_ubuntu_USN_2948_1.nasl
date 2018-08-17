@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842713");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-04-07 05:01:24 +0200 (Thu, 07 Apr 2016)");
   script_cve_id("CVE-2015-7566", "CVE-2015-7833", "CVE-2015-8812", "CVE-2016-0723",
                 "CVE-2016-2085", "CVE-2016-2550", "CVE-2016-2782", "CVE-2016-2847");
@@ -35,9 +35,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-lts-utopic USN-2948-1");
-  script_tag(name: "summary", value: "Check the version of linux-lts-utopic");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Ralf Spenneberg discovered that the USB
+  script_tag(name:"summary", value:"Check the version of linux-lts-utopic");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Ralf Spenneberg discovered that the USB
   driver for Clie devices in the Linux kernel did not properly sanity check
   the endpoints reported by the device. An attacker with physical access could
   cause a denial of service (system crash). (CVE-2015-7566)
@@ -73,11 +73,11 @@ if(description)
   It was discovered that the Linux kernel did not enforce limits on the
   amount of data allocated to buffer pipes. A local attacker could use this
   to cause a denial of service (resource exhaustion). (CVE-2016-2847)");
-  script_tag(name: "affected", value: "linux-lts-utopic on Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"linux-lts-utopic on Ubuntu 14.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "2948-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2948-1/");
+  script_xref(name:"USN", value:"2948-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2948-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -90,7 +90,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

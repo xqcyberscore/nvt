@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3435_2.nasl 9654 2018-04-27 09:20:40Z cfischer $
+# $Id: gb_ubuntu_USN_3435_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for firefox USN-3435-2
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843323");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-06 09:15:08 +0200 (Fri, 06 Oct 2017)");
   script_cve_id("CVE-2017-7793", "CVE-2017-7810", "CVE-2017-7811", "CVE-2017-7812",
                 "CVE-2017-7813", "CVE-2017-7814", "CVE-2017-7815", "CVE-2017-7818",
@@ -38,9 +38,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for firefox USN-3435-2");
-  script_tag(name: "summary", value: "Check the version of firefox");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "USN-3435-1 fixed vulnerabilities in Firefox.
+  script_tag(name:"summary", value:"Check the version of firefox");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"USN-3435-1 fixed vulnerabilities in Firefox.
   The update caused the Flash plugin to crash in some circumstances. This update
   fixes the problem. We apologize for the inconvenience. Original advisory
   details: Multiple security issues were discovered in Firefox. If a user were
@@ -58,13 +58,13 @@ if(description)
   a specially crafted extension, an attacker could potentially exploit these to
   download and open non-executable files without interaction, or obtain elevated
   privileges. (CVE-2017-7816, CVE-2017-7821)");
-  script_tag(name: "affected", value: "firefox on Ubuntu 17.04 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"firefox on Ubuntu 17.04,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3435-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3435-2/");
+  script_xref(name:"USN", value:"3435-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3435-2/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -77,7 +77,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

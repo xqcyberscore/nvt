@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842420");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-08-21 07:50:15 +0200 (Fri, 21 Aug 2015)");
   script_cve_id("CVE-2014-3580", "CVE-2014-8108", "CVE-2015-0202", "CVE-2015-0248",
                 "CVE-2015-0251", "CVE-2015-3184", "CVE-2015-3187");
@@ -35,9 +35,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for subversion USN-2721-1");
-  script_tag(name: "summary", value: "Check the version of subversion");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that the Subversion
+  script_tag(name:"summary", value:"Check the version of subversion");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that the Subversion
 mod_dav_svn module incorrectly handled REPORT requests for a resource that does
 not exist. A remote attacker could use this issue to cause the server to crash,
 resulting in a denial of service. This issue only affected Ubuntu 12.04 LTS
@@ -71,11 +71,11 @@ Ubuntu 14.04 LTS and Ubuntu 15.04. (CVE-2015-3184)
 C. Michael Pilato discovered that Subversion incorrectly handled path-based
 authorization. A remote attacker could use this issue to obtain sensitive
 path information. (CVE-2015-3187)");
-  script_tag(name: "affected", value: "subversion on Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"subversion on Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2721-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2721-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2721-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2721-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -88,7 +88,7 @@ path information. (CVE-2015-3187)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

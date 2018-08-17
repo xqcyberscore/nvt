@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3573_1.nasl 9655 2018-04-27 09:23:07Z cfischer $
+# $Id: gb_ubuntu_USN_3573_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for quagga USN-3573-1
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843451");
-  script_version("$Revision: 9655 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-02-16 08:25:08 +0100 (Fri, 16 Feb 2018)");
   script_cve_id("CVE-2018-5379", "CVE-2018-5378", "CVE-2018-5380", "CVE-2018-5381");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for quagga USN-3573-1");
-  script_tag(name: "summary", value: "Check the version of quagga");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that a double-free
+  script_tag(name:"summary", value:"Check the version of quagga");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that a double-free
 vulnerability existed in the Quagga BGP daemon when processing certain forms
 of UPDATE message. A remote attacker could use this to cause a denial of service
 or possibly execute arbitrary code. (CVE-2018-5379)
@@ -56,13 +56,13 @@ It was discovered that the Quagga BGP daemon in some configurations
 did not properly handle invalid OPEN messages. An attacker in control
 of a configured peer could use this to cause a denial of service
 (infinite loop). (CVE-2018-5381)");
-  script_tag(name: "affected", value: "quagga on Ubuntu 17.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"quagga on Ubuntu 17.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3573-1");
-  script_xref(name: "URL" , value: "https://www.ubuntu.com/usn/usn-3573-1");
+  script_xref(name:"USN", value:"3573-1");
+  script_xref(name:"URL", value:"https://www.ubuntu.com/usn/usn-3573-1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -75,7 +75,7 @@ of a configured peer could use this to cause a denial of service
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

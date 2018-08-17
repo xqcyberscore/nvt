@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842720");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-05-06 15:29:08 +0530 (Fri, 06 May 2016)");
   script_cve_id("CVE-2014-9767", "CVE-2015-8835", "CVE-2016-3185", "CVE-2015-8838",
 		"CVE-2016-1903", "CVE-2016-2554", "CVE-2016-3141", "CVE-2016-3142");
@@ -35,9 +35,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for php5 USN-2952-1");
-  script_tag(name: "summary", value: "Check the version of php5");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that the PHP Zip
+  script_tag(name:"summary", value:"Check the version of php5");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that the PHP Zip
   extension incorrectly handled directories when processing certain zip files.
   A remote attacker could possibly use this issue to create arbitrary directories.
   (CVE-2014-9767)
@@ -90,13 +90,13 @@ if(description)
   PHP to crash, resulting in  ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "php5 on Ubuntu 15.10 ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"php5 on Ubuntu 15.10,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "2952-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2952-1/");
+  script_xref(name:"USN", value:"2952-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2952-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -109,7 +109,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

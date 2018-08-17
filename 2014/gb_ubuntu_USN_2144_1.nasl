@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2144_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2144_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for cups USN-2144-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841753");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-03-17 13:43:12 +0530 (Mon, 17 Mar 2014)");
   script_cve_id("CVE-2013-6474", "CVE-2013-6475", "CVE-2013-6476");
   script_tag(name:"cvss_base", value:"6.8");
@@ -38,8 +38,8 @@ if(description)
   script_name("Ubuntu Update for cups USN-2144-1");
 
 
-  script_tag(name : "affected" , value : "cups on Ubuntu 10.04 LTS");
-  script_tag(name : "insight" , value : "Florian Weimer discovered that the pdftoopvp filter bundled
+  script_tag(name:"affected", value:"cups on Ubuntu 10.04 LTS");
+  script_tag(name:"insight", value:"Florian Weimer discovered that the pdftoopvp filter bundled
 in the CUPS package incorrectly handled memory. An attacker could possibly use
 this issue to execute arbitrary code with the privileges of the lp user.
 (CVE-2013-6474, CVE-2013-6475)
@@ -48,11 +48,11 @@ Florian Weimer discovered that the pdftoopvp filter bundled in the CUPS
 package did not restrict driver directories. An attacker could possibly use
 this issue to execute arbitrary code with the privileges of the lp user.
 (CVE-2013-6476)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2144-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2144-1/");
+  script_xref(name:"USN", value:"2144-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2144-1/");
   script_tag(name:"summary", value:"Check for the Version of cups");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -65,7 +65,7 @@ this issue to execute arbitrary code with the privileges of the lp user.
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

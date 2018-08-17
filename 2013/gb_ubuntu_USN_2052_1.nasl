@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2052_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_2052_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for firefox USN-2052-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841651");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-17 12:05:51 +0530 (Tue, 17 Dec 2013)");
   script_cve_id("CVE-2013-5609", "CVE-2013-5610", "CVE-2013-5611", "CVE-2013-5612",
                 "CVE-2013-5614", "CVE-2013-5616", "CVE-2013-5618", "CVE-2013-5619",
@@ -41,11 +41,11 @@ if(description)
   script_name("Ubuntu Update for firefox USN-2052-1");
 
 
-  script_tag(name : "affected" , value : "firefox on Ubuntu 13.10 ,
-  Ubuntu 13.04 ,
-  Ubuntu 12.10 ,
+  script_tag(name:"affected", value:"firefox on Ubuntu 13.10,
+  Ubuntu 13.04,
+  Ubuntu 12.10,
   Ubuntu 12.04 LTS");
-  script_tag(name : "insight" , value : "Ben Turner, Bobby Holley, Jesse Ruderman, Christian Holler
+  script_tag(name:"insight", value:"Ben Turner, Bobby Holley, Jesse Ruderman, Christian Holler
 and Christoph Diehl discovered multiple memory safety issues in Firefox. If
 a user were tricked in to opening a specially crafted website, an attacker
 could potentially exploit these to cause a denial of service via application
@@ -98,12 +98,12 @@ attacker could potentially exploit this to cause a denial of service via
 application crash, ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2052-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2052-1/");
-  script_tag(name: "summary" , value: "Check for the Version of firefox");
+  script_xref(name:"USN", value:"2052-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2052-1/");
+  script_tag(name:"summary", value:"Check for the Version of firefox");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
@@ -115,7 +115,7 @@ application crash, ...
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

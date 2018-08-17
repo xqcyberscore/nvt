@@ -26,25 +26,25 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842080");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-02-03 05:45:46 +0100 (Tue, 03 Feb 2015)");
   script_cve_id("CVE-2014-9328");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Ubuntu Update for clamav USN-2488-1");
-  script_tag(name: "summary", value: "Check the version of clamav");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Sebastian Andrzej Siewior discovered that
+  script_tag(name:"summary", value:"Check the version of clamav");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Sebastian Andrzej Siewior discovered that
 ClamAV incorrectly handled certain upack packer files. An attacker could possibly
 use this issue to cause ClamAV to crash, resulting in a denial of service, or
 possibly execute arbitrary code.");
-  script_tag(name: "affected", value: "clamav on Ubuntu 14.10 ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"clamav on Ubuntu 14.10,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2488-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2488-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2488-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2488-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);
@@ -58,7 +58,7 @@ possibly execute arbitrary code.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

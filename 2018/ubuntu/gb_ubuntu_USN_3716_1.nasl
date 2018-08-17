@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3716_1.nasl 10556 2018-07-20 11:13:07Z cfischer $
+# $Id: gb_ubuntu_USN_3716_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for dnsmasq USN-3716-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843591");
-  script_version("$Revision: 10556 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 13:13:07 +0200 (Fri, 20 Jul 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-13 05:49:11 +0200 (Fri, 13 Jul 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -43,7 +43,7 @@ trust anchor required for the upcoming Root Zone KSK Rollover.");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3716-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3716-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3716-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -56,7 +56,7 @@ trust anchor required for the upcoming Root Zone KSK Rollover.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

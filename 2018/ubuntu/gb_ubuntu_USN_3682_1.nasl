@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3682_1.nasl 10215 2018-06-15 10:24:04Z cfischer $
+# $Id: gb_ubuntu_USN_3682_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for firefox USN-3682-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843555");
-  script_version("$Revision: 10215 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 12:24:04 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-13 05:45:43 +0200 (Wed, 13 Jun 2018)");
   script_cve_id("CVE-2018-6126");
   script_tag(name:"cvss_base", value:"10.0");
@@ -40,14 +40,14 @@ if(description)
   script_tag(name:"insight", value:"A heap buffer overflow was discovered in Skia.
 If a user were tricked in to opening a specially crafted website, an attacker could
 potentially exploit this to cause a denial of service, or execute arbitrary code.");
-  script_tag(name:"affected", value:"firefox on Ubuntu 18.04 LTS ,
-  Ubuntu 17.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"firefox on Ubuntu 18.04 LTS,
+  Ubuntu 17.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3682-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3682-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3682-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -60,7 +60,7 @@ potentially exploit this to cause a denial of service, or execute arbitrary code
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

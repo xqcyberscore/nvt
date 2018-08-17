@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2326_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2326_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for oxide-qt USN-2326-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841952");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-03 05:56:11 +0200 (Wed, 03 Sep 2014)");
   script_cve_id("CVE-2014-3168", "CVE-2014-3169", "CVE-2014-3171", "CVE-2014-3173",
                 "CVE-2014-3174", "CVE-2014-3175");
@@ -39,8 +39,8 @@ if(description)
   script_name("Ubuntu Update for oxide-qt USN-2326-1");
 
 
-  script_tag(name : "affected" , value : "oxide-qt on Ubuntu 14.04 LTS");
-  script_tag(name : "insight" , value : "A use-after-free was discovered in the SVG implementation in
+  script_tag(name:"affected", value:"oxide-qt on Ubuntu 14.04 LTS");
+  script_tag(name:"insight", value:"A use-after-free was discovered in the SVG implementation in
 Blink. If a user were tricked in to opening a specially crafted website, an
 attacker could potentially exploit this to cause a denial of service via renderer
 crash, or execute arbitrary code with the privileges of the sandboxed
@@ -72,11 +72,11 @@ tricked in to opening a specially crafted website, an attacker could
 potentially exploit these to read uninitialized memory, cause a denial of
 service via application crash or execute arbitrary code with the
 privileges of the user invoking the program. (CVE-2014-3175)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2326-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2326-1/");
+  script_xref(name:"USN", value:"2326-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2326-1/");
   script_tag(name:"summary", value:"Check for the Version of oxide-qt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -89,7 +89,7 @@ privileges of the user invoking the program. (CVE-2014-3175)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

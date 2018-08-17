@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3414_2.nasl 9654 2018-04-27 09:20:40Z cfischer $
+# $Id: gb_ubuntu_USN_3414_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for qemu USN-3414-2
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843314");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-09-21 07:18:56 +0200 (Thu, 21 Sep 2017)");
   script_cve_id("CVE-2017-9375", "CVE-2017-7493", "CVE-2017-8112", "CVE-2017-8380",
                 "CVE-2017-9060", "CVE-2017-9310", "CVE-2017-9330", "CVE-2017-9373",
@@ -38,9 +38,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for qemu USN-3414-2");
-  script_tag(name: "summary", value: "Check the version of qemu");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "USN-3414-1 fixed vulnerabilities in QEMU.
+  script_tag(name:"summary", value:"Check the version of qemu");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"USN-3414-1 fixed vulnerabilities in QEMU.
   The patch backport for CVE-2017-9375 was incomplete and caused a regression in
   the USB xHCI controller emulation support. This update fixes the problem. We
   apologize for the inconvenience. Original advisory details: Leo Gaspard
@@ -75,13 +75,13 @@ if(description)
   8708EM2 Host Bus Adapter emulation support. A privileged attacker inside the
   guest could use this issue to cause QEMU to crash, resulting in a denial ...
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "qemu on Ubuntu 17.04 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"qemu on Ubuntu 17.04,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3414-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3414-2/");
+  script_xref(name:"USN", value:"3414-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3414-2/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -94,7 +94,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

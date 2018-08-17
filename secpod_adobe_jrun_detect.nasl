@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_jrun_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
+# $Id: secpod_adobe_jrun_detect.nasl 11028 2018-08-17 09:26:08Z cfischer $
 #
 # Sun Adobe JRun Version Detection
 #
@@ -28,21 +28,23 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900822");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10888 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11028 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-08-26 14:01:08 +0200 (Wed, 26 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Sun Adobe JRun Version Detection");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
-  script_family("Service detection");
+  script_family("Product detection");
   script_dependencies("http_version.nasl");
   script_require_ports("Services/www", 8000);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"This script detects the installed version of Adobe JRun and
   sets the version in KB.");
   script_tag(name:"qod_type", value:"remote_banner");
+
   exit(0);
 }
 
@@ -52,9 +54,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 jrunPort = get_http_port(default:8000);
-if(!jrunPort){
-  exit(0);
-}
 
 rcvRes = http_get_cache(item:"/", port:jrunPort);
 

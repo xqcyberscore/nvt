@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1137_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
+# $Id: gb_ubuntu_USN_1137_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for eucalyptus USN-1137-1
 #
@@ -29,12 +29,12 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1137-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1137-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840661");
-  script_version("$Revision: 9648 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-06-03 09:20:26 +0200 (Fri, 03 Jun 2011)");
-  script_xref(name: "USN", value: "1137-1");
+  script_xref(name:"USN", value:"1137-1");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_cve_id("CVE-2011-0730");
@@ -45,12 +45,12 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.04 LTS|11\.04|10\.10)");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1137-1");
-  script_tag(name : "affected" , value : "eucalyptus on Ubuntu 11.04 ,
-  Ubuntu 10.10 ,
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1137-1");
+  script_tag(name:"affected", value:"eucalyptus on Ubuntu 11.04,
+  Ubuntu 10.10,
   Ubuntu 10.04 LTS");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "Juraj Somorovsky, Jorg Schwenk, Meiko Jensen and Xiaofeng Lou discovered
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Juraj Somorovsky, Jorg Schwenk, Meiko Jensen and Xiaofeng Lou discovered
   that Eucalyptus did not properly validate SOAP requests. An unauthenticated
   remote attacker could exploit this to submit arbitrary commands to the
   Eucalyptus SOAP interface in the context of an authenticated user.");
@@ -62,7 +62,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 
 res = "";

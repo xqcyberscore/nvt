@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2410_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2410_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for oxide-qt USN-2410-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842037");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-11-20 06:42:55 +0100 (Thu, 20 Nov 2014)");
   script_cve_id("CVE-2014-7904", "CVE-2014-7907", "CVE-2014-7908", "CVE-2014-7909",
                 "CVE-2014-7910");
@@ -36,11 +36,11 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Ubuntu Update for oxide-qt USN-2410-1");
 
-  script_tag(name: "summary", value: "Check the version of oxide-qt");
+  script_tag(name:"summary", value:"Check the version of oxide-qt");
 
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "A buffer overflow was discovered in Skia. If a
+  script_tag(name:"insight", value:"A buffer overflow was discovered in Skia. If a
 user were tricked in to opening a specially crafted website, an attacked could
 potentially exploit this to cause a denial of service via renderer crash or execute
 arbitrary code with the privileges of the sandboxed render process. (CVE-2014-7904)
@@ -66,13 +66,13 @@ tricked in to opening a specially crafted website, an attacker could
 potentially exploit these to read uninitialized memory, cause a denial of
 service via application crash or execute arbitrary code with the
 privileges of the user invoking the program. (CVE-2014-7910)");
-  script_tag(name: "affected", value: "oxide-qt on Ubuntu 14.10 ,
+  script_tag(name:"affected", value:"oxide-qt on Ubuntu 14.10,
   Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2410-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2410-1/");
+  script_xref(name:"USN", value:"2410-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2410-1/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
@@ -84,7 +84,7 @@ privileges of the user invoking the program. (CVE-2014-7910)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

@@ -26,29 +26,29 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842960");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-11-29 05:39:49 +0100 (Tue, 29 Nov 2016)");
   script_cve_id("CVE-2016-1248");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for vim USN-3139-1");
-  script_tag(name: "summary", value: "Check the version of vim");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Florian Larysch discovered that the Vim
+  script_tag(name:"summary", value:"Check the version of vim");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Florian Larysch discovered that the Vim
   text editor did not properly validate values for the 'filetype', 'syntax',
   and 'keymap' options. An attacker could trick a user into opening a file with
   specially crafted modelines and possibly execute arbitrary code with the
   user's privileges.");
-  script_tag(name: "affected", value: "vim on Ubuntu 16.04 LTS,
+  script_tag(name:"affected", value:"vim on Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS,
   Ubuntu 16.10,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3139-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3139-1/");
+  script_xref(name:"USN", value:"3139-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3139-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -61,7 +61,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

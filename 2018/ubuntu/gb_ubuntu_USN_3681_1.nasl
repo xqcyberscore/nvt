@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3681_1.nasl 10374 2018-07-02 04:44:41Z asteins $
+# $Id: gb_ubuntu_USN_3681_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for imagemagick USN-3681-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843556");
-  script_version("$Revision: 10374 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-02 06:44:41 +0200 (Mon, 02 Jul 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-13 05:45:46 +0200 (Wed, 13 Jun 2018)");
   script_cve_id("CVE-2017-1000445", "CVE-2017-1000476", "CVE-2017-10995", "CVE-2018-6405",
                 "CVE-2017-11352", "CVE-2017-11533", "CVE-2017-11535", "CVE-2017-11537",
@@ -73,14 +73,14 @@ handled certain malformed image files. If a user or automated system using Image
 were tricked into opening a specially crafted image, an attacker could exploit this to
 cause a denial of service or possibly execute code with the privileges of
 the user invoking the program.");
-  script_tag(name:"affected", value:"imagemagick on Ubuntu 18.04 LTS ,
-  Ubuntu 17.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"imagemagick on Ubuntu 18.04 LTS,
+  Ubuntu 17.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3681-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3681-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3681-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -93,7 +93,7 @@ the user invoking the program.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2062_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_2062_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for horizon USN-2062-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841663");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-23 13:25:29 +0530 (Mon, 23 Dec 2013)");
   script_cve_id("CVE-2013-6858");
   script_tag(name:"cvss_base", value:"1.9");
@@ -38,20 +38,20 @@ if(description)
   script_name("Ubuntu Update for horizon USN-2062-1");
 
 
-  script_tag(name : "affected" , value : "horizon on Ubuntu 13.10 ,
-  Ubuntu 13.04 ,
+  script_tag(name:"affected", value:"horizon on Ubuntu 13.10,
+  Ubuntu 13.04,
   Ubuntu 12.10");
-  script_tag(name : "insight" , value : "Chris Chapman discovered cross-site scripting (XSS)
+  script_tag(name:"insight", value:"Chris Chapman discovered cross-site scripting (XSS)
 vulnerabilities in Horizon via the Volumes and Network Topology pages.
 An authenticated attacker could exploit these to conduct stored cross-site
 scripting (XSS) attacks against users viewing these pages in order to modify
 the contents or steal confidential data within the same domain.");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2062-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2062-1/");
-  script_tag(name: "summary" , value: "Check for the Version of horizon");
+  script_xref(name:"USN", value:"2062-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2062-1/");
+  script_tag(name:"summary", value:"Check for the Version of horizon");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
@@ -63,7 +63,7 @@ the contents or steal confidential data within the same domain.");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

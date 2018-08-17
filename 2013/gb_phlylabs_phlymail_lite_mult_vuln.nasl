@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phlylabs_phlymail_lite_mult_vuln.nasl 5798 2017-03-30 15:23:49Z cfi $
+# $Id: gb_phlylabs_phlymail_lite_mult_vuln.nasl 11041 2018-08-17 14:03:47Z mmartin $
 #
 # phlyLabs phlyMail Lite Multiple Vulnerabilities
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803151");
-  script_version("$Revision: 5798 $");
+  script_version("$Revision: 11041 $");
   script_bugtraq_id(57303, 57304);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 17:23:49 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-01-15 12:12:35 +0530 (Tue, 15 Jan 2013)");
   script_name("phlyLabs phlyMail Lite Multiple Vulnerabilities");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/24087");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/24086");
-  script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013010113");
-  script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2013-5122.php");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/24087");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/24086");
+  script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2013010113");
+  script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2013-5122.php");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
@@ -47,21 +47,21 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
   HTML and script code in a user's browser session in context of an affected site
   and displaying the full webapp installation path.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "phlyLabs phlyMail Lite version 4.03.04");
-  script_tag(name : "insight" , value : "- Input passed via the 'go' parameter in 'derefer.php' script is
+  script_tag(name:"affected", value:"phlyLabs phlyMail Lite version 4.03.04");
+  script_tag(name:"insight", value:"- Input passed via the 'go' parameter in 'derefer.php' script is
   not properly verified before being used to redirect users. This can be
   exploited to redirect a user to an arbitrary website.
   - phlyMail suffers from multiple stored XSS vulnerabilities (post-auth)
   and path disclosure when input passed via several parameters to several
   scripts is not properly sanitized before being returned to the user.");
-  script_tag(name : "solution" , value : "Upgrade to phlyLabs phlyMail Lite version 4.3.57 or later.
+  script_tag(name:"solution", value:"Upgrade to phlyLabs phlyMail Lite version 4.3.57 or later.
   For updates refer to http://phlymail.com/en/index.html");
-  script_tag(name : "summary" , value : "This host is installed with phlyLabs phlyMail Lite and is prone
+  script_tag(name:"summary", value:"This host is installed with phlyLabs phlyMail Lite and is prone
   to multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -93,13 +93,11 @@ foreach dir (make_list_unique("/", "/phlymail/phlymail", cgi_dirs(port:port))) {
   if( res =~ "HTTP/1.. 200" && ">phlyMail Lite<" >< res &&
       '>Passwort vergessen?' >< res && '>Passwort:<' >< res ) {
 
-    ## Construct attack request
     req = http_get(item:string(dir,"/frontend/derefer.php?go=",
     "http://",get_host_ip(),dir,"/index.php"), port:port);
 
     res = http_keepalive_send_recv(port:port, data:req);
 
-    ## Confirm exploit worked by checking the response
     if(res =~ "HTTP/1.. 302" && res =~ "Location:.*index.php")
     {
       security_message(port:port);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3617_2.nasl 9655 2018-04-27 09:23:07Z cfischer $
+# $Id: gb_ubuntu_USN_3617_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux-gcp USN-3617-2
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843492");
-  script_version("$Revision: 9655 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-04 08:30:51 +0200 (Wed, 04 Apr 2018)");
   script_cve_id("CVE-2017-0861", "CVE-2017-1000407", "CVE-2017-15129", "CVE-2017-16532",
                 "CVE-2017-16537", "CVE-2017-16645", "CVE-2017-16646", "CVE-2017-16647",
@@ -40,9 +40,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-gcp USN-3617-2");
-  script_tag(name: "summary", value: "Check the version of linux-gcp");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "USN-3617-1 fixed vulnerabilities in the
+  script_tag(name:"summary", value:"Check the version of linux-gcp");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"USN-3617-1 fixed vulnerabilities in the
   Linux kernel for Ubuntu 17.10. This update provides the corresponding updates
   for the Linux Hardware Enablement (HWE) kernel from Ubuntu 17.10 for Ubuntu
   16.04 LTS. It was discovered that a race condition leading to a use-after-free
@@ -78,11 +78,11 @@ if(description)
   use this to cause a denial of service (system crash). (CVE-2017-16650) It was
   discovered that the HugeTLB c ... Description truncated, for more information
   please check the Reference URL");
-  script_tag(name: "affected", value: "linux-gcp on Ubuntu 16.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"linux-gcp on Ubuntu 16.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3617-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3617-2/");
+  script_xref(name:"USN", value:"3617-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3617-2/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -95,7 +95,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

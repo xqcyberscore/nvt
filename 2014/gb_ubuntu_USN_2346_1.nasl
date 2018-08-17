@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2346_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2346_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for curl USN-2346-1
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841967");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-16 06:03:56 +0200 (Tue, 16 Sep 2014)");
   script_cve_id("CVE-2014-3613", "CVE-2014-3620");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_name("Ubuntu Update for curl USN-2346-1");
-  script_tag(name: "insight", value: "Tim Ruehsen discovered that curl
+  script_tag(name:"insight", value:"Tim Ruehsen discovered that curl
 incorrectly handled partial literal IP addresses. This could lead to the
 disclosure of cookies to the wrong site, and malicious sites being able to set
 cookies for others. (CVE-2014-3613)
@@ -42,15 +42,15 @@ cookies for others. (CVE-2014-3613)
 Tim Ruehsen discovered that curl incorrectly allowed cookies to be set
 for Top Level Domains (TLDs). This could allow a malicious site to set a
 cookie that gets sent to other sites. (CVE-2014-3620)");
-  script_tag(name: "affected", value: "curl on Ubuntu 14.04 LTS ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"curl on Ubuntu 14.04 LTS,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "USN", value: "2346-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2346-1/");
+  script_xref(name:"USN", value:"2346-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2346-1/");
   script_tag(name:"summary", value:"Check for the Version of curl");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -63,7 +63,7 @@ cookie that gets sent to other sites. (CVE-2014-3620)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

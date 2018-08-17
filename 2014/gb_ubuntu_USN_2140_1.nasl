@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2140_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2140_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux USN-2140-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841737");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-03-12 09:30:54 +0530 (Wed, 12 Mar 2014)");
   script_cve_id("CVE-2014-1690", "CVE-2014-1874", "CVE-2014-2038");
   script_tag(name:"cvss_base", value:"4.4");
@@ -38,8 +38,8 @@ if(description)
   script_name("Ubuntu Update for linux USN-2140-1");
 
 
-  script_tag(name : "affected" , value : "linux on Ubuntu 13.10");
-  script_tag(name : "insight" , value : "An information leak was discovered in the Linux kernel when
+  script_tag(name:"affected", value:"linux on Ubuntu 13.10");
+  script_tag(name:"insight", value:"An information leak was discovered in the Linux kernel when
 built with the NetFilter Connection Tracking (NF_CONNTRACK) support for IRC
 protocol (NF_NAT_IRC). A remote attacker could exploit this flaw to obtain
 potentially sensitive kernel information when communicating over a client-
@@ -54,11 +54,11 @@ mode) could exploit this flaw to cause a denial of service (kernel crash).
 An information leak was discovered in the Linux kernel's NFS filesystem. A
 local users with write access to an NFS share could exploit this flaw to
 obtain potential sensative information from kernel memory. (CVE-2014-2038)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2140-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2140-1/");
+  script_xref(name:"USN", value:"2140-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2140-1/");
   script_tag(name:"summary", value:"Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -71,7 +71,7 @@ obtain potential sensative information from kernel memory. (CVE-2014-2038)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

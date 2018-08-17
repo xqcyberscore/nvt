@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2005_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_2005_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for cinder USN-2005-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841599");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-10-29 16:27:21 +0530 (Tue, 29 Oct 2013)");
   script_cve_id("CVE-2013-4183", "CVE-2013-4179", "CVE-2013-4202");
   script_tag(name:"cvss_base", value:"4.3");
@@ -38,8 +38,8 @@ if(description)
   script_name("Ubuntu Update for cinder USN-2005-1");
 
 
-  script_tag(name : "affected" , value : "cinder on Ubuntu 13.04");
-  script_tag(name : "insight" , value : "Rongze Zhu discovered that the Cinder LVM driver did not zero out data
+  script_tag(name:"affected", value:"cinder on Ubuntu 13.04");
+  script_tag(name:"insight", value:"Rongze Zhu discovered that the Cinder LVM driver did not zero out data
 when deleting snapshots. This could expose sensitive information to
 authenticated users when subsequent servers use the volume. (CVE-2013-4183)
 
@@ -47,11 +47,11 @@ Grant Murphy discovered that Cinder would allow XML entity processing. A
 remote unauthenticated attacker could exploit this using the Cinder API to
 cause a denial of service via resource exhaustion. (CVE-2013-4179,
 CVE-2013-4202)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2005-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2005-1/");
+  script_xref(name:"USN", value:"2005-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2005-1/");
   script_tag(name:"summary", value:"Check for the Version of cinder");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
@@ -64,7 +64,7 @@ CVE-2013-4202)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

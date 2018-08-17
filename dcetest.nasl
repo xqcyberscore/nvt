@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: dcetest.nasl 10911 2018-08-10 15:16:34Z cfischer $
+# $Id: dcetest.nasl 11031 2018-08-17 09:42:45Z cfischer $
 #
 # DCE/RPC and MSRPC Services Enumeration
 #
@@ -40,15 +40,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108044");
-  script_version("$Revision: 10911 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11031 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:42:45 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("DCE/RPC and MSRPC Services Enumeration");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2001 Dave Aitel (ported to NASL by rd and Pavel Kankovsky)");
-  script_family("Windows");
+  script_family("Service detection");
   script_dependencies("find_service.nasl");
   script_require_ports(135);
 

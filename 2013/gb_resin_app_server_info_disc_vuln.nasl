@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_resin_app_server_info_disc_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_resin_app_server_info_disc_vuln.nasl 11030 2018-08-17 09:42:15Z mmartin $
 #
 # Resin Application Server Source Code Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803713");
-  script_version("$Revision: 6698 $");
+  script_version("$Revision: 11030 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:42:15 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-10 16:11:12 +0530 (Mon, 10 Jun 2013)");
   script_name("Resin Application Server Source Code Disclosure Vulnerability");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/121933");
@@ -48,10 +48,7 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to an improper sensitization of the 'file'
   parameter when used for reading help files. An attacker can exploit this
   vulnerability by directly requesting a '.jsp' file.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is running Resin Application Server and prone to
   source code disclosure vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to view its
@@ -69,14 +66,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-port = "";
-banner = "";
-
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Get the banner and confirm the application
 banner = get_http_banner(port:port);
 if("Server: Resin" >!< banner){
   exit(0);

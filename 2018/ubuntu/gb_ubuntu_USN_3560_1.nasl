@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3560_1.nasl 9655 2018-04-27 09:23:07Z cfischer $
+# $Id: gb_ubuntu_USN_3560_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for qemu USN-3560-1
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843443");
-  script_version("$Revision: 9655 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 07:56:01 +0100 (Thu, 08 Feb 2018)");
   script_cve_id("CVE-2017-5715");
   script_tag(name:"cvss_base", value:"4.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for qemu USN-3560-1");
-  script_tag(name: "summary", value: "Check the version of qemu");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that microprocessors
+  script_tag(name:"summary", value:"Check the version of qemu");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that microprocessors
   utilizing speculative execution and branch prediction may allow unauthorized
   memory reads via sidechannel attacks. This flaw is known as Spectre. An attacker
   in the guest could use this to expose sensitive guest information, including
@@ -46,13 +46,13 @@ if(description)
   CPU models that match the updated microcode features were added with an -IBRS
   suffix. Certain environments will require guests to be switched manually to the
   new CPU models after microcode updates have been applied to the host.");
-  script_tag(name: "affected", value: "qemu on Ubuntu 17.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"qemu on Ubuntu 17.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3560-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3560-1/");
+  script_xref(name:"USN", value:"3560-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3560-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -65,7 +65,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

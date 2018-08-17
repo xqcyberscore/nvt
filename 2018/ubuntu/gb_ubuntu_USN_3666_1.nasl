@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3666_1.nasl 10224 2018-06-15 14:29:06Z cfischer $
+# $Id: gb_ubuntu_USN_3666_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for python-oslo.middleware USN-3666-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843541");
-  script_version("$Revision: 10224 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 16:29:06 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-05 14:03:14 +0530 (Tue, 05 Jun 2018)");
   script_cve_id("CVE-2017-2592");
   script_tag(name:"cvss_base", value:"2.1");
@@ -45,7 +45,7 @@ obtain sensitive information from OpenStack component error logs.");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3666-1");
-  script_xref(name:"URL" , value:"https://usn.ubuntu.com/3666-1");
+  script_xref(name:"URL", value:"https://usn.ubuntu.com/3666-1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -58,7 +58,7 @@ obtain sensitive information from OpenStack component error logs.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

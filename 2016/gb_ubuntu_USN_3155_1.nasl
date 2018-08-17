@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842991");
-  script_version("$Revision: 10909 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:03:01 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-12-14 05:53:54 +0100 (Wed, 14 Dec 2016)");
   script_cve_id("CVE-2016-9080", "CVE-2016-9893", "CVE-2016-9894", "CVE-2016-9895",
 		"CVE-2016-9896", "CVE-2016-9897", "CVE-2016-9898", "CVE-2016-9899",
@@ -37,21 +37,21 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for firefox USN-3155-1");
-  script_tag(name: "summary", value: "Check the version of firefox");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Multiple security vulnerabilities were
+  script_tag(name:"summary", value:"Check the version of firefox");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Multiple security vulnerabilities were
   discovered in Firefox. If a user were tricked in to opening a specially crafted
   website, an attacker could potentially exploit these to conduct cross-site
   scripting (XSS) attacks, obtain sensitive information, cause a denial of service
   via application crash, or execute arbitrary code.");
-  script_tag(name: "affected", value: "firefox on Ubuntu 16.10 ,
-  Ubuntu 16.04 LTS ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"firefox on Ubuntu 16.10,
+  Ubuntu 16.04 LTS,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3155-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3155-1/");
+  script_xref(name:"USN", value:"3155-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3155-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -64,7 +64,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

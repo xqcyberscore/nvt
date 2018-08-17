@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1990_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_1990_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for xorg-server USN-1990-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841593");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-10-18 09:16:14 +0530 (Fri, 18 Oct 2013)");
   script_cve_id("CVE-2013-4396", "CVE-2013-1056");
   script_tag(name:"cvss_base", value:"6.5");
@@ -38,10 +38,10 @@ if(description)
   script_name("Ubuntu Update for xorg-server USN-1990-1");
 
 
-  script_tag(name : "affected" , value : "xorg-server on Ubuntu 13.04 ,
-  Ubuntu 12.10 ,
+  script_tag(name:"affected", value:"xorg-server on Ubuntu 13.04,
+  Ubuntu 12.10,
   Ubuntu 12.04 LTS");
-  script_tag(name : "insight" , value : "Pedro Ribeiro discovered that the X.Org X server incorrectly handled
+  script_tag(name:"insight", value:"Pedro Ribeiro discovered that the X.Org X server incorrectly handled
 memory operations when handling ImageText requests. An attacker could use
 this issue to cause X.Org to crash, or to possibly execute arbitrary code.
 (CVE-2013-4396)
@@ -50,12 +50,12 @@ It was discovered that non-root X.Org X servers such as Xephyr incorrectly
 used cached xkb files. A local attacker could use this flaw to cause a xkb
 cache file to be loaded by another user, resulting in a denial of service.
 (CVE-2013-1056)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "1990-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1990-1/");
-  script_tag(name: "summary" , value: "Check for the Version of xorg-server");
+  script_xref(name:"USN", value:"1990-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1990-1/");
+  script_tag(name:"summary", value:"Check for the Version of xorg-server");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
@@ -67,7 +67,7 @@ cache file to be loaded by another user, resulting in a denial of service.
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

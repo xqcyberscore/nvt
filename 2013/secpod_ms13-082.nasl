@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-082.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: secpod_ms13-082.nasl 11041 2018-08-17 14:03:47Z mmartin $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerabilities (2878890)
 #
@@ -27,63 +27,46 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903412");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11041 $");
   script_cve_id("CVE-2013-3128", "CVE-2013-3860", "CVE-2013-3861");
-  script_bugtraq_id(62819,  62820, 62807);
+  script_bugtraq_id(62819, 62820, 62807);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-10-09 12:14:29 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerabilities (2878890)");
 
-  tag_summary =
-"This host is missing an critical security update according to
-Microsoft Bulletin MS13-082.";
 
-  tag_vuldetect =
-"Get the vulnerable file version and check appropriate patch is applied
-or not.";
-
-  tag_insight =
-"Multiple flaws are due to,
+  script_tag(name:"summary", value:"This host is missing an critical security update according to
+Microsoft Bulletin MS13-082.");
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
+or not.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
+mentioned hotfixes in the advisory from the below link,
+https://technet.microsoft.com/en-us/security/bulletin/ms13-082");
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 - An unspecified error when handling OpenType fonts (OTF).
 - An error when when expanding entity references.
-- An unspecified error when parsing JSON data.";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to execute the arbitrary
+- An unspecified error when parsing JSON data.");
+  script_tag(name:"affected", value:"Microsoft .NET Framework 2.x
+Microsoft .NET Framework 3.x
+Microsoft .NET Framework 4.x ");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
 code, exhaust available system resource, cause a DoS (Denial of Service)
 and compromise the system.
 
-Impact Level: System/Application ";
-
-  tag_affected =
-"Microsoft .NET Framework 2.x
-Microsoft .NET Framework 3.x
-Microsoft .NET Framework 4.x ";
-
-  tag_solution =
-"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms13-082";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+Impact Level: System/Application ");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/55043");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2878890");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms13-082");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/55043");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2878890");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-082");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -94,29 +77,19 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-key = "";
-item = "";
-path = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(xp:4, xpx64:3, win2003:3, win2003x64:3, winVista:3, win7:2,
                    win7x64:2, win2008:3, win2008r2:2, win8:1, win2012:1) <= 0){
   exit(0);
 }
 
-## Confirm .NET
 key = "SOFTWARE\Microsoft\ASP.NET\";
 if(registry_key_exists(key:key))
 {
-  ## Try to Get Version
   foreach item (registry_enum_keys(key:key))
   {
     path = registry_get_sz(key:key + item, item:"Path");
     if(path && "\Microsoft.NET\Framework" >< path)
     {
-      ## Get version from System.dll file
       dllVer = fetch_file_version(sysPath:path, file_name:"System.Security.dll");
 
       ## .NET Framework 4 on Windows XP, Windows Server 2003, Windows Vista, Windows Server 2008,
@@ -127,7 +100,7 @@ if(registry_key_exists(key:key))
         if(version_in_range(version:dllVer, test_version:"4.0.30319.1000", test_version2:"4.0.30319.1015")||
            version_in_range(version:dllVer, test_version:"4.0.30319.2000", test_version2:"4.0.30319.2025"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }
@@ -141,19 +114,18 @@ if(registry_key_exists(key:key))
            version_in_range(version:dllVer, test_version:"2.0.50727.6000", test_version2:"2.0.50727.6409")||
            version_in_range(version:dllVer, test_version:"2.0.50727.7000", test_version2:"2.0.50727.7031"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }
 
       ## .NET Framework 4.5 on Windows Vista Service Pack 2, Windows Server 2008 Service Pack 2,
-      ## Windows 7 Service Pack 1, and Windows Server 2008 R2 Service Pack 1
       if(dllVer && (hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, winVista:3, win2008:3) > 0))
       {
          if(version_in_range(version:dllVer, test_version:"4.0.30319.18000", test_version2:"4.0.30319.18054") ||
             version_in_range(version:dllVer, test_version:"4.0.30319.19000", test_version2:"4.0.30319.19107"))
          {
-           security_message(0);
+           security_message( port: 0, data: "The target host was found to be vulnerable" );
            exit(0);
          }
       }
@@ -164,7 +136,7 @@ if(registry_key_exists(key:key))
         if(version_in_range(version:dllVer, test_version:"2.0.50727.5400", test_version2:"2.0.50727.5474")||
            version_in_range(version:dllVer, test_version:"2.0.50727.7000", test_version2:"2.0.50727.7031"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }
@@ -175,7 +147,7 @@ if(registry_key_exists(key:key))
         if(version_in_range(version:dllVer, test_version:"2.0.50727.4000", test_version2:"2.0.50727.4244")||
            version_in_range(version:dllVer, test_version:"2.0.50727.7000", test_version2:"2.0.50727.7031"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
      }
@@ -186,7 +158,7 @@ if(registry_key_exists(key:key))
         if(version_in_range(version:dllVer, test_version:"2.0.50727.3000", test_version2:"2.0.50727.3651")||
            version_in_range(version:dllVer, test_version:"2.0.50727.7000", test_version2:"2.0.50727.7031"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }
@@ -211,7 +183,7 @@ if(registry_key_exists(key:key))
     if(version_in_range(version:dllv4, test_version:"4.0.30319.18000", test_version2:"4.0.30319.18058") ||
        version_in_range(version:dllv4, test_version:"4.0.30319.19000", test_version2:"4.0.30319.19113"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -222,14 +194,13 @@ if(registry_key_exists(key:key))
     if(version_in_range(version:dllv4, test_version:"4.0.30319.1000", test_version2:"4.0.30319.1013") ||
        version_in_range(version:dllv4, test_version:"4.0.30319.2000", test_version2:"4.0.30319.2020"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
 }
 
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(sysPath )
 {
@@ -241,7 +212,7 @@ if(sysPath )
     if(version_in_range(version:dllVer, test_version:"3.0.6920.4000", test_version2:"3.0.6920.4217") ||
        version_in_range(version:dllVer, test_version:"3.0.6920.7000", test_version2:"3.0.6920.7061"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -252,7 +223,7 @@ if(sysPath )
     if(version_in_range(version:dllVer, test_version:"3.0.6920.5000", test_version2:"3.0.6920.5458")||
        version_in_range(version:dllVer, test_version:"3.0.6920.7000", test_version2:"3.0.6920.7061"))
     {
-       security_message(0);
+       security_message( port: 0, data: "The target host was found to be vulnerable" );
        exit(0);
     }
   }
@@ -263,7 +234,7 @@ if(sysPath )
     if(version_in_range(version:dllVer, test_version:"3.0.6920.4000", test_version2:"3.0.6920.4057")||
        version_in_range(version:dllVer, test_version:"3.0.6920.7000", test_version2:"3.0.6920.7060"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -274,13 +245,12 @@ if(sysPath )
     if(version_in_range(version:dllVer, test_version:"3.0.6920.6000", test_version2:"3.0.6920.6408") ||
        version_in_range(version:dllVer, test_version:"3.0.6920.7000", test_version2:"3.0.6920.7061"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
 }
 
-## Get .NET Framework 3.5 Path
 key = "SOFTWARE\Microsoft\.NETFramework\AssemblyFolders\v3.5";
 if(!registry_key_exists(key:key)){
   exit(0);
@@ -291,7 +261,6 @@ if(! path) {
   exit(0);
 }
 
-## Get Version
 dllv3 = fetch_file_version(sysPath:path, file_name:"System.Web.Extensions.dll");
 if(!dllv3) {
   exit(0);
@@ -303,7 +272,7 @@ if(dllv3 && (hotfix_check_sp(xp:4, win2003:3, winVista:3, win2008:3) > 0))
   if(version_in_range(version:dllv3, test_version:"3.5.30729.4000", test_version2:"3.5.30729.4055")||
      version_in_range(version:dllv3, test_version:"3.5.30729.7000", test_version2:"3.5.30729.7055"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -314,7 +283,7 @@ if(dllv3 && (hotfix_check_sp(win8:1, win2012:1) > 0))
    if(version_in_range(version:dllv3, test_version:"3.5.30729.4000", test_version2:"3.5.30729.6406")||
       version_in_range(version:dllv3, test_version:"3.5.30729.7000", test_version2:"3.5.30729.7056"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -325,7 +294,7 @@ if((dllv3 && hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0))
   if(version_in_range(version:dllv3, test_version:"3.5.30729.5000", test_version2:"3.5.30729.5457")||
      version_in_range(version:dllv3, test_version:"3.5.30729.7000", test_version2:"3.5.30729.7056"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

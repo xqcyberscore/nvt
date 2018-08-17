@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842570");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-12-18 05:44:37 +0100 (Fri, 18 Dec 2015)");
   script_cve_id("CVE-2014-3925", "CVE-2015-7529");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for sosreport USN-2845-1");
-  script_tag(name: "summary", value: "Check the version of sosreport");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Dolev Farhi discovered an information
+  script_tag(name:"summary", value:"Check the version of sosreport");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Dolev Farhi discovered an information
 disclosure issue in SoS. If the /etc/fstab file contained passwords, the
 passwords were included in the SoS report. This issue only affected Ubuntu 14.04
 LTS. (CVE-2014-3925)
@@ -45,12 +45,12 @@ Mateusz Guzik discovered that SoS incorrectly handled temporary files. A
 local attacker could possibly use this issue to overwrite arbitrary files
 or gain access to temporary file contents containing sensitive system
 information. (CVE-2015-7529)");
-  script_tag(name: "affected", value: "sosreport on Ubuntu 15.10 ,
-  Ubuntu 15.04 ,
+  script_tag(name:"affected", value:"sosreport on Ubuntu 15.10,
+  Ubuntu 15.04,
   Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2845-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2845-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2845-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2845-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -63,7 +63,7 @@ information. (CVE-2015-7529)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

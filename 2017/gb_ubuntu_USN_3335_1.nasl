@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843212");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-06-20 06:59:41 +0200 (Tue, 20 Jun 2017)");
   script_cve_id("CVE-2017-1000364", "CVE-2014-9940", "CVE-2017-0605", "CVE-2017-1000363",
                 "CVE-2017-7294", "CVE-2017-8890", "CVE-2017-9074", "CVE-2017-9075",
@@ -36,9 +36,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-3335-1");
-  script_tag(name: "summary", value: "Check the version of linux");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that the stack guard page
+  script_tag(name:"summary", value:"Check the version of linux");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that the stack guard page
   for processes in the Linux kernel was not sufficiently large enough to prevent
   overlapping with the heap. An attacker could leverage this with another
   vulnerability to execute arbitrary code and gain administrative privileges
@@ -71,11 +71,11 @@ if(description)
   was discovered that the IPv6 stack was doing over write consistency check after
   the data was actually overwritten. A local attacker could exploit this flaw to
   cause a denial of service (system crash). (CVE-2017-9242)");
-  script_tag(name: "affected", value: "linux on Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"linux on Ubuntu 14.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3335-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3335-1/");
+  script_xref(name:"USN", value:"3335-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3335-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -88,7 +88,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

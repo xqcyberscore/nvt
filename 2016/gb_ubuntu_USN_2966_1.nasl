@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842740");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-05-10 05:21:23 +0200 (Tue, 10 May 2016)");
   script_cve_id("CVE-2015-8325", "CVE-2016-1907", "CVE-2016-1908", "CVE-2016-3115");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for openssh USN-2966-1");
-  script_tag(name: "summary", value: "Check the version of openssh");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Shayan Sadigh discovered that OpenSSH
+  script_tag(name:"summary", value:"Check the version of openssh");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Shayan Sadigh discovered that OpenSSH
   incorrectly handled environment files when the UseLogin feature is enabled.
   A local attacker could use this issue to gain privileges. (CVE-2015-8325)
 
@@ -53,13 +53,13 @@ if(description)
   It was discovered that OpenSSH incorrectly handled certain X11 forwarding
   data. A remote authenticated attacker could possibly use this issue to
   bypass certain intended command restrictions. (CVE-2016-3115)");
-  script_tag(name: "affected", value: "openssh on Ubuntu 15.10 ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"openssh on Ubuntu 15.10,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "2966-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2966-1/");
+  script_xref(name:"USN", value:"2966-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2966-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -72,7 +72,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

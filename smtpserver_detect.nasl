@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smtpserver_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
-# Description: SMTP Server type and version
+# $Id: smtpserver_detect.nasl 11039 2018-08-17 12:26:47Z cfischer $
+#
+# SMTP Server type and version
 #
 # Authors:
 # Noam Rathaus <noamr@securiteam.com>
@@ -20,13 +22,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10263");
-  script_version("$Revision: 10908 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11039 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 14:26:47 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,10 +41,6 @@ if(description)
 
   script_tag(name:"summary", value:"This detects the SMTP Server's type and version by connecting to
   the server and processing the buffer received.");
-  script_tag(name:"solution", value:"Change the login banner to something generic.");
-  script_tag(name:"summary", value:"This information gives potential
-  attackers additional information about the system they are attacking. Versions
-  and Types should be omitted where possible.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -149,8 +147,7 @@ if( get_port_state( port ) ) {
     set_kb_item(name: "SMTP/snubby", value: TRUE);
     set_kb_item(name: "SMTP/wrapped", value: TRUE);
     guess = "Snubby Mail Rejector (not a real server)";
-    log_message(port: port, data: "
-Verisign mail rejector appears to be running on this port.
+    log_message(port: port, data: "Verisign mail rejector appears to be running on this port.
 You probably mistyped your hostname and OpenVAS is scanning the wildcard
 address in the .COM or .NET domain.
 

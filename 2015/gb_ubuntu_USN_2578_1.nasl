@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842180");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-04-28 05:17:08 +0200 (Tue, 28 Apr 2015)");
   script_cve_id("CVE-2014-9093", "CVE-2015-1774");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for libreoffice USN-2578-1");
-  script_tag(name: "summary", value: "Check the version of libreoffice");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Alexander Cherepanov discovered that
+  script_tag(name:"summary", value:"Check the version of libreoffice");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Alexander Cherepanov discovered that
 LibreOffice incorrectly handled certain RTF files. If a user were tricked into
 opening a specially crafted RTF document, a remote attacker could cause LibreOffice
 to crash, and possibly execute arbitrary code. (CVE-2014-9093)
@@ -45,12 +45,12 @@ It was discovered that LibreOffice incorrectly handled certain HWP files.
 If a user were tricked into opening a specially crafted HWP document, a
 remote attacker could cause LibreOffice to crash, and possibly execute
 arbitrary code. (CVE-2015-1774)");
-  script_tag(name: "affected", value: "libreoffice on Ubuntu 14.10 ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"libreoffice on Ubuntu 14.10,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2578-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2578-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2578-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2578-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -63,7 +63,7 @@ arbitrary code. (CVE-2015-1774)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

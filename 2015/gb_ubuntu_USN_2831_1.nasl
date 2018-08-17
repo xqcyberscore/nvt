@@ -26,26 +26,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842554");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-12-08 10:56:11 +0100 (Tue, 08 Dec 2015)");
   script_cve_id("CVE-2015-8327");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for cups-filters USN-2831-1");
-  script_tag(name: "summary", value: "Check the version of cups-filters");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Michal Kowalczyk discovered that the
+  script_tag(name:"summary", value:"Check the version of cups-filters");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Michal Kowalczyk discovered that the
 cups-filters foomatic-rip filter incorrectly stripped shell escape characters. A
 remote attacker could possibly use this issue to execute arbitrary code as the lp
 user.");
-  script_tag(name: "affected", value: "cups-filters on Ubuntu 15.10 ,
-  Ubuntu 15.04 ,
+  script_tag(name:"affected", value:"cups-filters on Ubuntu 15.10,
+  Ubuntu 15.04,
   Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2831-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2831-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2831-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2831-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -58,7 +58,7 @@ user.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

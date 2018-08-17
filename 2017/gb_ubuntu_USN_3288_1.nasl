@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843163");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-05-16 06:52:35 +0200 (Tue, 16 May 2017)");
   script_cve_id("CVE-2017-6298", "CVE-2017-6299", "CVE-2017-6300", "CVE-2017-6301",
                 "CVE-2017-6302", "CVE-2017-6303", "CVE-2017-6304", "CVE-2017-6305",
@@ -36,17 +36,17 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for libytnef USN-3288-1");
-  script_tag(name: "summary", value: "Check the version of libytnef");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that libytnef incorrectly
+  script_tag(name:"summary", value:"Check the version of libytnef");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that libytnef incorrectly
   handled malformed TNEF streams. If a user were tricked into opening a specially
   crafted TNEF attachment, an attacker could cause a denial of service or possibly
   execute arbitrary code.");
-  script_tag(name: "affected", value: "libytnef on Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"libytnef on Ubuntu 14.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3288-1");
-  script_xref(name: "URL" , value: "https://www.ubuntu.com/usn/usn-3288-1");
+  script_xref(name:"USN", value:"3288-1");
+  script_xref(name:"URL", value:"https://www.ubuntu.com/usn/usn-3288-1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -59,7 +59,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

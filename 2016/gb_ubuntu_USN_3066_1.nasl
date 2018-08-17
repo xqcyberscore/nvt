@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842865");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-08-19 05:37:31 +0200 (Fri, 19 Aug 2016)");
   script_cve_id("CVE-2016-5423", "CVE-2016-5424");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for postgresql-9.5 USN-3066-1");
-  script_tag(name: "summary", value: "Check the version of postgresql-9.5");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Heikki Linnakangas discovered that PostgreSQL
+  script_tag(name:"summary", value:"Check the version of postgresql-9.5");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Heikki Linnakangas discovered that PostgreSQL
   incorrectly handled certain nested CASE/WHEN expressions. A remote attacker could
   possibly use this issue to cause PostgreSQL to crash, resulting in a denial of
   service. (CVE-2016-5423)
@@ -44,13 +44,13 @@ if(description)
 Nathan Bossart discovered that PostgreSQL incorrectly handled special
 characters in database and role names. A remote attacker could possibly use
 this issue to escalate privileges. (CVE-2016-5424)");
-  script_tag(name: "affected", value: "postgresql-9.5 on Ubuntu 16.04 LTS ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"postgresql-9.5 on Ubuntu 16.04 LTS,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3066-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3066-1/");
+  script_xref(name:"USN", value:"3066-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3066-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -63,7 +63,7 @@ this issue to escalate privileges. (CVE-2016-5424)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

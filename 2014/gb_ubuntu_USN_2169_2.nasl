@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2169_2.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2169_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for python-django USN-2169-2
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841789");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-05-02 10:10:58 +0530 (Fri, 02 May 2014)");
   script_cve_id("CVE-2014-0472", "CVE-2014-0473", "CVE-2014-0474");
   script_tag(name:"cvss_base", value:"10.0");
@@ -38,11 +38,11 @@ if(description)
   script_name("Ubuntu Update for python-django USN-2169-2");
 
 
-  script_tag(name : "affected" , value : "python-django on Ubuntu 13.10 ,
-  Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"python-django on Ubuntu 13.10,
+  Ubuntu 12.10,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name : "insight" , value : "USN-2169-1 fixed vulnerabilities in Django. The upstream
+  script_tag(name:"insight", value:"USN-2169-1 fixed vulnerabilities in Django. The upstream
 security patch for CVE-2014-0472 introduced a regression for certain
 applications. This update fixes the problem.
 
@@ -59,11 +59,11 @@ a valid cookie and perform attacks which bypass the CSRF restrictions.
 Michael Koziarski discovered that Django did not always perform explicit
 conversion of certain fields when using a MySQL database. An attacker
 could possibly use this issue to obtain unexpected results. (CVE-2014-0474)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2169-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2169-2/");
+  script_xref(name:"USN", value:"2169-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2169-2/");
   script_tag(name:"summary", value:"Check for the Version of python-django");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -76,7 +76,7 @@ could possibly use this issue to obtain unexpected results. (CVE-2014-0474)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

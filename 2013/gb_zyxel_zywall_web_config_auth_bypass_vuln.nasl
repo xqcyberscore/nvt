@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zyxel_zywall_web_config_auth_bypass_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_zyxel_zywall_web_config_auth_bypass_vuln.nasl 11030 2018-08-17 09:42:15Z mmartin $
 #
 # ZyXEL ZyWALL Web Configurator Authentication Bypass Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803199");
-  script_version("$Revision: 6698 $");
+  script_version("$Revision: 11030 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:42:15 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-05-14 17:25:01 +0530 (Tue, 14 May 2013)");
   script_name("ZyXEL ZyWALL Web Configurator Authentication Bypass Vulnerability");
 
@@ -48,10 +48,7 @@ if(description)
   (username/password combination). The web configurator account has a password of
   '1234', which is publicly known and documented. This allows remote attackers to
   trivially access the program or system and gain privileged access.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is running ZyXEL ZyWALL Web Configurator and prone to
   authentication bypass vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain
@@ -69,16 +66,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-port = "";
-req = "";
-res = "";
-banner = "";
-
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Get the banner and confirm the application
 banner = get_http_banner(port:port);
 if("Server: RomPager" >!< banner){
   exit(0);
@@ -86,20 +75,17 @@ if("Server: RomPager" >!< banner){
 
 url = '/Forms/rpAuth_1';
 
-##Construct post data
 postData = "LoginPassword=ZyXEL+ZyWALL+Series&hiddenPassword=ee11cbb19052" +
            "e40b07aac0ca060c23ee&Prestige_Login=Login";
 
 host = http_host_name(port:port);
 
-##Construct the request string
 req = string("POST ", url, " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: ", strlen(postData), "\r\n",
              "\r\n", postData);
 
-## Send request and receive the response
 res = http_keepalive_send_recv(port:port, data:req);
 if(res =~ "HTTP/1.. 303" && res =~ "Location:.*rpSys.html")
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2373_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2373_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for thunderbird USN-2373-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842008");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-10-16 06:00:32 +0200 (Thu, 16 Oct 2014)");
   script_cve_id("CVE-2014-1574", "CVE-2014-1576", "CVE-2014-1577", "CVE-2014-1578",
                 "CVE-2014-1581", "CVE-2014-1585", "CVE-2014-1586");
@@ -36,11 +36,11 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Ubuntu Update for thunderbird USN-2373-1");
 
-  script_tag(name: "summary", value: "Check the version of thunderbird");
+  script_tag(name:"summary", value:"Check the version of thunderbird");
 
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "Bobby Holley, Christian Holler,
+  script_tag(name:"insight", value:"Bobby Holley, Christian Holler,
 David Bolter, Byron Campen and Jon Coppeard discovered multiple memory
 safety issues in Thunderbird. If a user were tricked in to opening a specially
 crafted message with scripting enabled, an attacker could potentially exploit
@@ -76,13 +76,13 @@ via WebRTC in iframes, where video continues to be shared after being
 stopped and navigating to a new site doesn't turn off the camera. An
 attacker could potentially exploit this to access the camera without the
 user being aware. (CVE-2014-1585, CVE-2014-1586)");
-  script_tag(name: "affected", value: "thunderbird on Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"thunderbird on Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2373-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2373-1/");
+  script_xref(name:"USN", value:"2373-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2373-1/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
@@ -94,7 +94,7 @@ user being aware. (CVE-2014-1585, CVE-2014-1586)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

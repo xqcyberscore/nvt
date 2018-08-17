@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graylog_default_admin_http_login.nasl 9437 2018-04-11 10:24:03Z cfischer $
+# $Id: gb_graylog_default_admin_http_login.nasl 11026 2018-08-17 08:52:26Z cfischer $
 #
 # Graylog Default HTTP Login
 #
@@ -27,37 +27,38 @@
 
 CPE = 'cpe:/a:torch_gmbh:graylog2';
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105756");
- script_version ("$Revision: 9437 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("Graylog Default Admin HTTP Login");
+  script_oid("1.3.6.1.4.1.25623.1.0.105756");
+  script_version("$Revision: 11026 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("Graylog Default Admin HTTP Login");
 
- script_tag(name: "impact" , value:"Attackers can exploit this issue to obtain sensitive information that may lead to further attacks.");
- script_tag(name: "vuldetect" , value:"Try to login with default credentials admin:admin");
- script_tag(name: "solution" , value:"Change the password");
- script_tag(name: "summary" , value:"The remote Graylog installation has default credentials set.");
- script_tag(name:"solution_type", value: "Workaround");
+  script_tag(name:"impact", value:"Attackers can exploit this issue to obtain sensitive information that may lead to further attacks.");
+  script_tag(name:"vuldetect", value:"Try to login with default credentials admin:admin");
+  script_tag(name:"solution", value:"Change the password");
+  script_tag(name:"summary", value:"The remote Graylog installation has default credentials set.");
+  script_tag(name:"solution_type", value:"Workaround");
 
- script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:24:03 +0200 (Wed, 11 Apr 2018) $");
- script_tag(name:"creation_date", value:"2016-06-10 13:18:59 +0200 (Fri, 10 Jun 2016)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_graylog_web_rest_api_detect.nasl");
- script_require_ports("Services/www", 12900);
- script_mandatory_keys("graylog/rest/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-06-10 13:18:59 +0200 (Fri, 10 Jun 2016)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_graylog_web_rest_api_detect.nasl");
+  script_require_ports("Services/www", 12900);
+  script_mandatory_keys("graylog/rest/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE, service:"rest_api" ) ) exit( 0 );
 

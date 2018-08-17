@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843143");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-04-26 06:39:36 +0200 (Wed, 26 Apr 2017)");
   script_cve_id("CVE-2016-10028", "CVE-2016-8667", "CVE-2016-9602", "CVE-2016-9603",
                 "CVE-2016-9908", "CVE-2016-9912", "CVE-2017-5552", "CVE-2017-5578",
@@ -36,9 +36,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for qemu USN-3268-1");
-  script_tag(name: "summary", value: "Check the version of qemu");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Zhenhao Hong discovered that QEMU
+  script_tag(name:"summary", value:"Check the version of qemu");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Zhenhao Hong discovered that QEMU
 incorrectly handled the Virtio GPU device. An attacker inside the guest could
 use this issue to cause QEMU to crash, resulting in a denial of service.
 (CVE-2016-10028)
@@ -82,11 +82,11 @@ issue to cause QEMU to crash, resulting in a denial of service.
 Li Qiang discovered that QEMU incorrectly handled USB OHCI controller
 emulation. A privileged attacker inside the guest could use this issue to
 cause QEMU to hang, resulting in a denial of service. (CVE-2017-6505)");
-  script_tag(name: "affected", value: "qemu on Ubuntu 17.04");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"qemu on Ubuntu 17.04");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3268-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3268-1/");
+  script_xref(name:"USN", value:"3268-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3268-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -99,7 +99,7 @@ cause QEMU to hang, resulting in a denial of service. (CVE-2017-6505)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

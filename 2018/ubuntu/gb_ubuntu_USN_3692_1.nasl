@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3692_1.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3692_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for openssl USN-3692-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843569");
-  script_version("$Revision: 10965 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-27 05:49:24 +0200 (Wed, 27 Jun 2018)");
   script_cve_id("CVE-2018-0495", "CVE-2018-0732", "CVE-2018-0737");
   script_tag(name:"cvss_base", value:"5.0");
@@ -50,14 +50,14 @@ Alejandro Cabrera Aldaya, Billy Brumley, Cesar Pereida Garcia and Luis
 Manuel Alvarez Tapia discovered that OpenSSL incorrectly handled RSA key
 generation. An attacker could possibly use this issue to perform a
 cache-timing attack and recover private RSA keys. (CVE-2018-0737)");
-  script_tag(name:"affected", value:"openssl on Ubuntu 18.04 LTS ,
-  Ubuntu 17.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"openssl on Ubuntu 18.04 LTS,
+  Ubuntu 17.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3692-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3692-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3692-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -70,7 +70,7 @@ cache-timing attack and recover private RSA keys. (CVE-2018-0737)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

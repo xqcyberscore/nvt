@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3644_1.nasl 10015 2018-05-30 06:04:26Z cfischer $
+# $Id: gb_ubuntu_USN_3644_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for openjdk-8 USN-3644-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843522");
-  script_version("$Revision: 10015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 08:04:26 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-12 05:49:47 +0200 (Sat, 12 May 2018)");
   script_cve_id("CVE-2018-2790", "CVE-2018-2794", "CVE-2018-2795", "CVE-2018-2796",
                 "CVE-2018-2797", "CVE-2018-2798", "CVE-2018-2799", "CVE-2018-2800",
@@ -91,12 +91,12 @@ situations. An attacker could use this to cause a denial of service
 (memory exhaustion). (CVE-2018-28 ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name:"affected", value:"openjdk-8 on Ubuntu 17.10 ,
+  script_tag(name:"affected", value:"openjdk-8 on Ubuntu 17.10,
   Ubuntu 16.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3644-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3644-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3644-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -109,7 +109,7 @@ situations. An attacker could use this to cause a denial of service
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

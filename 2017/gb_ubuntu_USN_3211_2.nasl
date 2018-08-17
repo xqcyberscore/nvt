@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843071");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-03-03 05:50:08 +0100 (Fri, 03 Mar 2017)");
   script_cve_id("CVE-2016-7479", "CVE-2016-9137", "CVE-2016-9935", "CVE-2016-9936", "CVE-2016-10158", "CVE-2016-10159", "CVE-2016-10160", "CVE-2016-10161", "CVE-2016-10162", "CVE-2017-5340");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for php7.0 USN-3211-2");
-  script_tag(name: "summary", value: "Check the version of php7.0");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "USN-3211-1 fixed vulnerabilities in PHP by updating to the new 7.0.15
+  script_tag(name:"summary", value:"Check the version of php7.0");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"USN-3211-1 fixed vulnerabilities in PHP by updating to the new 7.0.15
 upstream release. PHP 7.0.15 introduced a regression when using MySQL with
 large blobs. This update fixes the problem with a backported fix.
 
@@ -77,12 +77,12 @@ It was discovered that PHP incorrectly handled certain invalid objects when
 unserializing data. A remote attacker could use this issue to cause PHP to
 crash, resulting in a denial of service, or possibly execute arbitrary
 code. (CVE-2017-5340)");
-  script_tag(name: "affected", value: "php7.0 on Ubuntu 16.10 ,
+  script_tag(name:"affected", value:"php7.0 on Ubuntu 16.10,
   Ubuntu 16.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3211-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3211-2/");
+  script_xref(name:"USN", value:"3211-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3211-2/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -95,7 +95,7 @@ code. (CVE-2017-5340)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

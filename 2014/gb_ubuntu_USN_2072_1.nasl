@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2072_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2072_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux-ti-omap4 USN-2072-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841668");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-01-06 15:54:41 +0530 (Mon, 06 Jan 2014)");
   script_cve_id("CVE-2013-2930", "CVE-2013-4345", "CVE-2013-4511", "CVE-2013-4513",
                 "CVE-2013-4514", "CVE-2013-4515", "CVE-2013-6383", "CVE-2013-6763",
@@ -40,8 +40,8 @@ if(description)
   script_name("Ubuntu Update for linux-ti-omap4 USN-2072-1");
 
 
-  script_tag(name : "affected" , value : "linux-ti-omap4 on Ubuntu 12.10");
-  script_tag(name : "insight" , value : "Dave Jones and Vince Weaver reported a flaw in the Linux kernel's per event
+  script_tag(name:"affected", value:"linux-ti-omap4 on Ubuntu 12.10");
+  script_tag(name:"insight", value:"Dave Jones and Vince Weaver reported a flaw in the Linux kernel's per event
 subsystem that allows normal users to enable function tracing. An
 unprivileged local user could exploit this flaw to obtain potentially
 sensitive information from the kernel. (CVE-2013-2930)
@@ -80,11 +80,11 @@ corruption) or possibly gain privileges. (CVE-2013-6763)
 Evan Huus reported a buffer overflow in the Linux kernel's radiotap header
 parsing. A remote attacker could cause a denial of service (buffer over-
 read) via a specially crafted header. (CVE-2013-7027)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2072-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2072-1/");
+  script_xref(name:"USN", value:"2072-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2072-1/");
   script_tag(name:"summary", value:"Check for the Version of linux-ti-omap4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -97,7 +97,7 @@ read) via a specially crafted header. (CVE-2013-7027)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

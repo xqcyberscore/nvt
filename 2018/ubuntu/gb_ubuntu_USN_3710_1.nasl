@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3710_1.nasl 10556 2018-07-20 11:13:07Z cfischer $
+# $Id: gb_ubuntu_USN_3710_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for curl USN-3710-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843590");
-  script_version("$Revision: 10556 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 13:13:07 +0200 (Fri, 20 Jul 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-12 05:57:41 +0200 (Thu, 12 Jul 2018)");
   script_cve_id("CVE-2018-0500");
   script_tag(name:"cvss_base", value:"5.0");
@@ -41,12 +41,12 @@ on the target host.");
   script_tag(name:"insight", value:"Peter Wu discovered that curl incorrectly
 handled certain SMTP buffers. A remote attacker could use this issue to cause curl
 to crash, resulting in a denial of service, or possibly execute arbitrary code.");
-  script_tag(name:"affected", value:"curl on Ubuntu 18.04 LTS ,
+  script_tag(name:"affected", value:"curl on Ubuntu 18.04 LTS,
   Ubuntu 17.10");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3710-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3710-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3710-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -59,7 +59,7 @@ to crash, resulting in a denial of service, or possibly execute arbitrary code."
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

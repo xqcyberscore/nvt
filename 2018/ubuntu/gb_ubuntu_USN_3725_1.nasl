@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3725_1.nasl 10721 2018-08-02 03:07:04Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3725_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for mysql-5.7 USN-3725-1
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843602");
-  script_version("$Revision: 10721 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 05:07:04 +0200 (Thu, 02 Aug 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-31 05:58:24 +0200 (Tue, 31 Jul 2018)");
-  script_cve_id("CVE-2018-2767", "CVE-2018-3054", "CVE-2018-3056", "CVE-2018-3058", 
+  script_cve_id("CVE-2018-2767", "CVE-2018-3054", "CVE-2018-3056", "CVE-2018-3058",
                 "CVE-2018-3060", "CVE-2018-3061", "CVE-2018-3062", "CVE-2018-3063",
                 "CVE-2018-3064", "CVE-2018-3065", "CVE-2018-3066", "CVE-2018-3070",
-                "CVE-2018-3071", "CVE-2018-3077", "CVE-2018-3081"); 
+                "CVE-2018-3071", "CVE-2018-3077", "CVE-2018-3081");
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
@@ -54,13 +54,13 @@ Please see the following for more information:
 http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-61.html
 http://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-23.html
 http://www.oracle.com/technetwork/security-advisory/cpujul2018-4258247.html");
-  script_tag(name:"affected", value:"mysql-5.7 on Ubuntu 18.04 LTS ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"mysql-5.7 on Ubuntu 18.04 LTS,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3725-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3725-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3725-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -73,7 +73,7 @@ http://www.oracle.com/technetwork/security-advisory/cpujul2018-4258247.html");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

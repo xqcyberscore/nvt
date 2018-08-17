@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842771");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-05-19 05:21:28 +0200 (Thu, 19 May 2016)");
   script_cve_id("CVE-2016-1660", "CVE-2016-1661", "CVE-2016-1663", "CVE-2016-1665",
 		"CVE-2016-1666", "CVE-2016-1667", "CVE-2016-1668", "CVE-2016-1669",
@@ -36,9 +36,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for oxide-qt USN-2960-1");
-  script_tag(name: "summary", value: "Check the version of oxide-qt");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "An out of bounds write was discovered in
+  script_tag(name:"summary", value:"Check the version of oxide-qt");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"An out of bounds write was discovered in
   Blink. If a user were tricked in to opening a specially crafted website, an
   attacker could potentially exploit this to cause a denial of service via
   renderer crash, or execute arbitrary code. (CVE-2016-1660)
@@ -84,13 +84,13 @@ if(description)
   A race condition was discovered in ResourceDispatcherHostImpl in Chromium.
   An attacker could potentially exploit this to make arbitrary HTTP
   requests. (CVE-2016-1670)");
-  script_tag(name: "affected", value: "oxide-qt on Ubuntu 16.04 LTS ,
-  Ubuntu 15.10 ,
+  script_tag(name:"affected", value:"oxide-qt on Ubuntu 16.04 LTS,
+  Ubuntu 15.10,
   Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "2960-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2960-1/");
+  script_xref(name:"USN", value:"2960-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2960-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -103,7 +103,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mldonkey_2_9_7_remote.nasl 10771 2018-08-04 15:18:29Z cfischer $
+# $Id: mldonkey_2_9_7_remote.nasl 11039 2018-08-17 12:26:47Z cfischer $
 #
 # MLdonkey HTTP Request Arbitrary File Download Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100057");
-  script_version("$Revision: 10771 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-04 17:18:29 +0200 (Sat, 04 Aug 2018) $");
+  script_version("$Revision: 11039 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 14:26:47 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-03-17 18:51:21 +0100 (Tue, 17 Mar 2009)");
   script_bugtraq_id(33865);
   script_cve_id("CVE-2009-0753");
@@ -54,7 +54,7 @@ if(description)
   script_tag(name:"impact", value:"Exploiting this issue will allow an attacker to view arbitrary files within
   the context of the application. Information harvested may aid in launching further attacks.");
 
-  script_tag(name:"impact", value:"MLdonkey 2.9.7 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"affected", value:"MLdonkey 2.9.7 is vulnerable. Other versions may also be affected.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");

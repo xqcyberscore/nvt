@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntopng_default_admin.nasl 4854 2016-12-26 17:10:14Z cfi $
+# $Id: gb_ntopng_default_admin.nasl 11026 2018-08-17 08:52:26Z cfischer $
 #
 # ntopng Default Admin Credentials
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:ntop:ntopng';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108032");
-  script_version("$Revision: 4854 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-26 18:10:14 +0100 (Mon, 26 Dec 2016) $");
+  script_version("$Revision: 11026 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-12-26 17:00:00 +0100 (Mon, 26 Dec 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -62,6 +62,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );

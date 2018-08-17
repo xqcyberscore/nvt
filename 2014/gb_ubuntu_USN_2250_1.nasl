@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2250_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2250_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for thunderbird USN-2250-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841861");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-06-23 16:30:58 +0530 (Mon, 23 Jun 2014)");
   script_cve_id("CVE-2014-1533", "CVE-2014-1538", "CVE-2014-1541");
   script_tag(name:"cvss_base", value:"10.0");
@@ -38,10 +38,10 @@ if(description)
   script_name("Ubuntu Update for thunderbird USN-2250-1");
 
 
-  script_tag(name : "affected" , value : "thunderbird on Ubuntu 14.04 LTS ,
-  Ubuntu 13.10 ,
+  script_tag(name:"affected", value:"thunderbird on Ubuntu 14.04 LTS,
+  Ubuntu 13.10,
   Ubuntu 12.04 LTS");
-  script_tag(name : "insight" , value : "Gary Kwong, Christoph Diehl, Christian Holler, Hannes
+  script_tag(name:"insight", value:"Gary Kwong, Christoph Diehl, Christian Holler, Hannes
 Verschore, Jan de Mooij, Ryan VanderMeulen, Jeff Walden and Kyle Huey discovered
 multiple memory safety issues in Thunderbird. If a user were tricked in to
 opening a specially crafted message with scripting enabled, an attacker could
@@ -59,11 +59,11 @@ A use-after-free was discovered in the SMIL animation controller. If a
 user had enabled scripting, an attacker could potentially exploit this
 to cause a denial of service via application crash or execute arbitrary
 code with the privileges of the user invoking Thunderbird. (CVE-2014-1541)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2250-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2250-1/");
+  script_xref(name:"USN", value:"2250-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2250-1/");
   script_tag(name:"summary", value:"Check for the Version of thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -76,7 +76,7 @@ code with the privileges of the user invoking Thunderbird. (CVE-2014-1541)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

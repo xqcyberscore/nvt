@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3640_1.nasl 10557 2018-07-20 13:48:28Z asteins $
+# $Id: gb_ubuntu_USN_3640_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for webkit2gtk USN-3640-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843519");
-  script_version("$Revision: 10557 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 15:48:28 +0200 (Fri, 20 Jul 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-09 05:33:51 +0200 (Wed, 09 May 2018)");
   script_cve_id("CVE-2018-4200");
   script_tag(name:"cvss_base", value:"6.8");
@@ -42,13 +42,13 @@ on the target host.");
 incorrectly handled certain web content. If a user were tricked into viewing a
 malicious website, a remote attacker could possibly exploit this to execute
 arbitrary code.");
-  script_tag(name:"affected", value:"webkit2gtk on Ubuntu 18.04 LTS ,
-  Ubuntu 17.10 ,
+  script_tag(name:"affected", value:"webkit2gtk on Ubuntu 18.04 LTS,
+  Ubuntu 17.10,
   Ubuntu 16.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3640-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3640-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3640-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -61,7 +61,7 @@ arbitrary code.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

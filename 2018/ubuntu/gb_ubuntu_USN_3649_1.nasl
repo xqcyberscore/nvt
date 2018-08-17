@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3649_1.nasl 10015 2018-05-30 06:04:26Z cfischer $
+# $Id: gb_ubuntu_USN_3649_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for qemu USN-3649-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843524");
-  script_version("$Revision: 10015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 08:04:26 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-17 05:36:39 +0200 (Thu, 17 May 2018)");
   script_cve_id("CVE-2017-16845", "CVE-2018-7550", "CVE-2018-7858");
   script_tag(name:"cvss_base", value:"7.5");
@@ -53,14 +53,14 @@ Ross Lagerwall discovered that QEMU incorrectly handled the Cirrus VGA
 device. A privileged attacker inside the guest could use this issue to
 cause QEMU to crash, resulting in a denial of service. This issue only
 affected Ubuntu 17.10 and Ubuntu 18.04 LTS. (CVE-2018-7858)");
-  script_tag(name:"affected", value:"qemu on Ubuntu 18.04 LTS ,
-  Ubuntu 17.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"qemu on Ubuntu 18.04 LTS,
+  Ubuntu 17.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3649-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3649-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3649-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -73,7 +73,7 @@ affected Ubuntu 17.10 and Ubuntu 18.04 LTS. (CVE-2018-7858)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

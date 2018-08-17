@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3688_1.nasl 10284 2018-06-21 11:19:30Z cfischer $
+# $Id: gb_ubuntu_USN_3688_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for mozjs52 USN-3688-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843566");
-  script_version("$Revision: 10284 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 13:19:30 +0200 (Thu, 21 Jun 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-20 06:05:50 +0200 (Wed, 20 Jun 2018)");
   script_cve_id("CVE-2017-7810", "CVE-2017-7826", "CVE-2018-5089", "CVE-2018-5125", "CVE-2018-5150");
   script_tag(name:"cvss_base", value:"10.0");
@@ -40,12 +40,12 @@ if(description)
   script_tag(name:"insight", value:"Multiple memory safety issues were fixed in Spidermonkey. An attacker
 could potentially exploit these to cause a denial of service, or execute
 arbitrary code.");
-  script_tag(name:"affected", value:"mozjs52 on Ubuntu 18.04 LTS ,
+  script_tag(name:"affected", value:"mozjs52 on Ubuntu 18.04 LTS,
   Ubuntu 17.10");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3688-1");
-  script_xref(name:"URL" , value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2018-June/004455.html");
+  script_xref(name:"URL", value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2018-June/004455.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -58,7 +58,7 @@ arbitrary code.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842211");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-06-09 11:05:38 +0200 (Tue, 09 Jun 2015)");
   script_cve_id("CVE-2014-9715", "CVE-2015-2150", "CVE-2015-2830", "CVE-2015-3331");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-2614-1");
-  script_tag(name: "summary", value: "Check the version of linux");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Vincent Tondellier discovered an integer
+  script_tag(name:"summary", value:"Check the version of linux");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Vincent Tondellier discovered an integer
 overflow in the Linux kernel's netfilter connection tracking accounting of
 loaded extensions. An attacker on the local area network (LAN) could potential
 exploit this flaw to cause a denial of service (system crash of targeted system).
@@ -57,10 +57,10 @@ Intel AES-NI accelerated code path. A remote attacker could exploit this
 flaw to cause a denial of service (system crash) or potentially escalate
 privileges on Intel base machines with AEC-GCM mode IPSec security
 association. (CVE-2015-3331)");
-  script_tag(name: "affected", value: "linux on Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2614-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2614-1/");
+  script_tag(name:"affected", value:"linux on Ubuntu 14.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2614-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2614-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -73,7 +73,7 @@ association. (CVE-2015-3331)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

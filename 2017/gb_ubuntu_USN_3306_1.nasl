@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843191");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-06-02 06:54:13 +0200 (Fri, 02 Jun 2017)");
   script_cve_id("CVE-2017-7585", "CVE-2017-7586", "CVE-2017-7741", "CVE-2017-7742",
                 "CVE-2017-8361", "CVE-2017-8362", "CVE-2017-8363", "CVE-2017-8365");
@@ -35,20 +35,20 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for libsndfile USN-3306-1");
-  script_tag(name: "summary", value: "Check the version of libsndfile");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Agostino Sarubbo and Jakub Jirasek
+  script_tag(name:"summary", value:"Check the version of libsndfile");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Agostino Sarubbo and Jakub Jirasek
 discovered that libsndfile incorrectly handled certain malformed files. A remote
 attacker could use this issue to cause libsndfile to crash, resulting in a denial
 of service, or possibly execute arbitrary code.");
-  script_tag(name: "affected", value: "libsndfile on Ubuntu 17.04 ,
-  Ubuntu 16.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"libsndfile on Ubuntu 17.04,
+  Ubuntu 16.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3306-1");
-  script_xref(name: "URL" , value: "https://www.ubuntu.com/usn/usn-3306-1");
+  script_xref(name:"USN", value:"3306-1");
+  script_xref(name:"URL", value:"https://www.ubuntu.com/usn/usn-3306-1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -61,7 +61,7 @@ of service, or possibly execute arbitrary code.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

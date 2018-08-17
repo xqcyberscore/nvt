@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842079");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-01-28 06:11:29 +0100 (Wed, 28 Jan 2015)");
   script_cve_id("CVE-2014-8634", "CVE-2014-8635", "CVE-2014-8636", "CVE-2014-8637",
                 "CVE-2014-8638", "CVE-2014-8639", "CVE-2014-8640", "CVE-2014-8641",
@@ -35,9 +35,9 @@ if(description)
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Ubuntu Update for firefox USN-2458-3");
-  script_tag(name: "summary", value: "Check the version of firefox");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "USN-2458-1 fixed vulnerabilities in Firefox.
+  script_tag(name:"summary", value:"Check the version of firefox");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"USN-2458-1 fixed vulnerabilities in Firefox.
 This update introduced a regression which could make websites that use CSP fail to
 load under some circumstances. This update fixes the problem.
 
@@ -88,12 +88,12 @@ Brian Smith discovered that OCSP responses would fail to verify if signed
 by a delegated OCSP responder certificate with the id-pkix-ocsp-nocheck
 extension, potentially allowing a user to connect to a site with a revoked
 certificate. (CVE-2014-8642)");
-  script_tag(name: "affected", value: "firefox on Ubuntu 14.10 ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"firefox on Ubuntu 14.10,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2458-3");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2458-3/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2458-3");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2458-3/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);
@@ -107,7 +107,7 @@ certificate. (CVE-2014-8642)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

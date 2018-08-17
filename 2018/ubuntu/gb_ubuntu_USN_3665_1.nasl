@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3665_1.nasl 10307 2018-06-25 05:05:34Z asteins $
+# $Id: gb_ubuntu_USN_3665_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for tomcat8 USN-3665-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843539");
-  script_version("$Revision: 10307 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 07:05:34 +0200 (Mon, 25 Jun 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-05 14:03:23 +0530 (Tue, 05 Jun 2018)");
   script_cve_id("CVE-2017-12616", "CVE-2017-12617", "CVE-2017-15706", "CVE-2018-1304",
                 "CVE-2018-1305", "CVE-2018-8014");
@@ -64,14 +64,14 @@ Ubuntu 16.04 LTS and Ubuntu 17.10. (CVE-2018-1305)
 It was discovered that the Tomcat CORS filter default settings were
 insecure and would enable 'supportsCredentials' for all origins, contrary
 to expectations. (CVE-2018-8014)");
-  script_tag(name:"affected", value:"tomcat8 on Ubuntu 18.04 LTS ,
-  Ubuntu 17.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"tomcat8 on Ubuntu 18.04 LTS,
+  Ubuntu 17.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3665-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3665-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3665-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -84,7 +84,7 @@ to expectations. (CVE-2018-8014)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

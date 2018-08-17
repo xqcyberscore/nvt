@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1698_2.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_1698_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux-ti-omap4 USN-1698-2
 #
@@ -30,26 +30,26 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1698-2/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1698-2/");
   script_oid("1.3.6.1.4.1.25623.1.0.841301");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-02-04 09:57:30 +0530 (Mon, 04 Feb 2013)");
   script_cve_id("CVE-2012-4530", "CVE-2012-5532");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
-  script_xref(name: "USN", value: "1698-2");
+  script_xref(name:"USN", value:"1698-2");
   script_name("Ubuntu Update for linux-ti-omap4 USN-1698-2");
 
-  script_tag(name: "summary" , value: "Check for the Version of linux-ti-omap4");
+  script_tag(name:"summary", value:"Check for the Version of linux-ti-omap4");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU12\.04 LTS");
-  script_tag(name : "affected" , value : "linux-ti-omap4 on Ubuntu 12.04 LTS");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "USN-1698-1 fixed vulnerabilities in the Linux kernel. Due to an unrelated
+  script_tag(name:"affected", value:"linux-ti-omap4 on Ubuntu 12.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"USN-1698-1 fixed vulnerabilities in the Linux kernel. Due to an unrelated
   regression inotify/fanotify stopped working after upgrading. This update
   fixes the problem.
 
@@ -73,7 +73,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

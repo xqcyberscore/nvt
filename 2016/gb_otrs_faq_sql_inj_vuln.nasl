@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_faq_sql_inj_vuln.nasl 4150 2016-09-27 08:36:42Z ckuerste $
+# $Id: gb_otrs_faq_sql_inj_vuln.nasl 11026 2018-08-17 08:52:26Z cfischer $
 #
 # OTRS FAQ Package Multiple SQL Injection Vulnerability
 #
@@ -27,20 +27,20 @@
 
 CPE = "cpe:/a:otrs:otrs";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106290");
-  script_version("$Revision: 4150 $");
-  script_tag(name: "last_modification", value: "$Date: 2016-09-27 10:36:42 +0200 (Tue, 27 Sep 2016) $");
-  script_tag(name: "creation_date", value: "2016-09-27 11:26:32 +0700 (Tue, 27 Sep 2016)");
-  script_tag(name: "cvss_base", value: "9.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:P/A:P");
+  script_version("$Revision: 11026 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-27 11:26:32 +0700 (Tue, 27 Sep 2016)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
 
   script_cve_id("CVE-2016-5843");
 
-  script_tag(name: "qod_type", value: "remote_analysis");
+  script_tag(name:"qod_type", value:"remote_analysis");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("OTRS FAQ Package Multiple SQL Injection Vulnerability");
 
@@ -51,19 +51,19 @@ if (description)
   script_dependencies("secpod_otrs_detect.nasl");
   script_mandatory_keys("OTRS/installed");
 
-  script_tag(name: "summary", value: "The FAQ package of OTRS is prone to multiple SQL injection
-vulnerabilities.");
+  script_tag(name:"summary", value:"The FAQ package of OTRS is prone to multiple SQL injection
+  vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Tries to inject a SQL statement and checks the response.");
+  script_tag(name:"vuldetect", value:"Tries to inject a SQL statement and checks the response.");
 
-  script_tag(name: "insight", value: "Multiple parameters in search query of the FAQ package are vulnerable to
-SQL injection.");
+  script_tag(name:"insight", value:"Multiple parameters in search query of the FAQ package are vulnerable to
+  SQL injection.");
 
-  script_tag(name: "impact", value: "An attacker could access and manipulate the database with an HTTP request.");
+  script_tag(name:"impact", value:"An attacker could access and manipulate the database with an HTTP request.");
 
-  script_tag(name: "solution", value: "Upgrade to FAQ 5.0.5, 4.0.5, 2.3.6 or later.");
+  script_tag(name:"solution", value:"Upgrade to FAQ 5.0.5, 4.0.5, 2.3.6 or later.");
 
-  script_xref(name: "URL", value: "https://www.otrs.com/security-advisory-2016-01-security-update-otrs-faq-package/");
+  script_xref(name:"URL", value:"https://www.otrs.com/security-advisory-2016-01-security-update-otrs-faq-package/");
 
   exit(0);
 }
@@ -71,6 +71,7 @@ SQL injection.");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);
@@ -81,7 +82,6 @@ if (!dir = get_app_location(cpe: CPE, port: port))
 if (dir == "/")
   dir = "";
 
-# Check if FAQ package is installed
 req = http_get(port: port, item: dir + "/public.pl?Action=PublicFAQExplorer");
 start = unixtime();
 res = http_keepalive_send_recv(port: port, data: req);
@@ -110,14 +110,13 @@ if ("Latest created FAQ articles" >< res) {
 
     if ("No FAQ data found" >!< res) {
       report = "It was possible to conduct a blind SQL-Injection into the 'LanguageIDs' parameter\n";
-      security_message(port: port, data: report);      
+      security_message(port: port, data: report);
       exit(0);
     }
   }
   exit(0);
 }
 
-# Try a time-based blind injection
 # MySQL
 query = "2) AND (SELECT * FROM (SELECT(SLEEP(5)))nwrQ) AND (4570=4570";
 data = "Action=PublicFAQSearch&Subaction=Search&Number=&Fulltext=&Title=&Keyword=&LanguageIDs=" +
@@ -135,7 +134,7 @@ stop = unixtime();
 time = stop - start;
 if (time >= 5 && time <= (5 + latency)) {
   report = "It was possible to conduct a blind SQL-Injection (MySQL: sleep) into the 'LanguageIDs' parameter.\n";
-  security_message(port: port, data: report);      
+  security_message(port: port, data: report);
   exit(0);
 }
 
@@ -157,7 +156,7 @@ time = stop - start;
 if (time >= 5 && time <= (5 + latency)) {
   report = "It was possible to conduct a blind SQL-Injection (PostgreSQL: pg_sleep) into the 'LanguageIDs'
 parameter.\n";
-  security_message(port: port, data: report);      
+  security_message(port: port, data: report);
   exit(0);
 }
 

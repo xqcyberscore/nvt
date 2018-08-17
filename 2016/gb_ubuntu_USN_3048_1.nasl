@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842849");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-08-09 05:35:24 +0200 (Tue, 09 Aug 2016)");
   script_cve_id("CVE-2016-5419", "CVE-2016-5420", "CVE-2016-5421");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for curl USN-3048-1");
-  script_tag(name: "summary", value: "Check the version of curl");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Bru Rom discovered that curl incorrectly
+  script_tag(name:"summary", value:"Check the version of curl");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Bru Rom discovered that curl incorrectly
   handled client certificates when resuming a TLS session. (CVE-2016-5419)
 
 It was discovered that curl incorrectly handled client certificates when
@@ -45,13 +45,13 @@ reusing TLS connections. (CVE-2016-5420)
 Marcelo Echeverria and Fernando Mu&#241 oz discovered that curl incorrectly
 reused a connection struct, contrary to expectations. This issue only
 applied to Ubuntu 14.04 LTS and Ubuntu 16.04 LTS. (CVE-2016-5421)");
-  script_tag(name: "affected", value: "curl on Ubuntu 16.04 LTS ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"curl on Ubuntu 16.04 LTS,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3048-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3048-1/");
+  script_xref(name:"USN", value:"3048-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3048-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -64,7 +64,7 @@ applied to Ubuntu 14.04 LTS and Ubuntu 16.04 LTS. (CVE-2016-5421)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

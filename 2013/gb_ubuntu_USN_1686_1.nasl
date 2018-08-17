@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1686_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_1686_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for freetype USN-1686-1
 #
@@ -30,33 +30,33 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1686-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1686-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841275");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-01-15 18:07:52 +0530 (Tue, 15 Jan 2013)");
   script_cve_id("CVE-2012-5668", "CVE-2012-5669", "CVE-2012-5670");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_xref(name: "USN", value: "1686-1");
+  script_xref(name:"USN", value:"1686-1");
   script_name("Ubuntu Update for freetype USN-1686-1");
 
-  script_tag(name: "summary" , value: "Check for the Version of freetype");
+  script_tag(name:"summary", value:"Check for the Version of freetype");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(12\.04 LTS|11\.10|10\.04 LTS|8\.04 LTS|12\.10)");
-  script_tag(name : "affected" , value : "freetype on Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
-  Ubuntu 11.10 ,
-  Ubuntu 10.04 LTS ,
+  script_tag(name:"affected", value:"freetype on Ubuntu 12.10,
+  Ubuntu 12.04 LTS,
+  Ubuntu 11.10,
+  Ubuntu 10.04 LTS,
   Ubuntu 8.04 LTS");
-  script_tag(name : "insight" , value : "Mateusz Jurczyk discovered that FreeType did not correctly handle certain
+  script_tag(name:"insight", value:"Mateusz Jurczyk discovered that FreeType did not correctly handle certain
   malformed BDF font files. If a user were tricked into using a specially
   crafted font file, a remote attacker could cause FreeType to crash or
   possibly execute arbitrary code with user privileges.");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -65,7 +65,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

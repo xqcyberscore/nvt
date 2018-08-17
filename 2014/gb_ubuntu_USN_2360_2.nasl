@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2360_2.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2360_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for thunderbird USN-2360-2
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841982");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-25 05:58:41 +0200 (Thu, 25 Sep 2014)");
   script_cve_id("CVE-2014-1568");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Ubuntu Update for thunderbird USN-2360-2");
-  script_tag(name: "insight", value: "USN-2360-1 fixed vulnerabilities in
+  script_tag(name:"insight", value:"USN-2360-1 fixed vulnerabilities in
 Firefox. This update provides the corresponding updates for Thunderbird.
 
 Original advisory details:
@@ -42,14 +42,14 @@ Original advisory details:
 Antoine Delignat-Lavaud and others discovered that NSS incorrectly handled
 parsing ASN.1 values. An attacker could use this issue to forge RSA
 certificates.");
-  script_tag(name: "affected", value: "thunderbird on Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"thunderbird on Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "USN", value: "2360-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2360-2/");
+  script_xref(name:"USN", value:"2360-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2360-2/");
   script_tag(name:"summary", value:"Check for the Version of thunderbird");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -62,7 +62,7 @@ certificates.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

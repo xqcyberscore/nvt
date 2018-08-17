@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tandberg_release_42827.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_tandberg_release_42827.nasl 11041 2018-08-17 14:03:47Z mmartin $
 #
 # TANDBERG MXP Series Video Conferencing Device Remote Denial Of Service Vulnerability
 #
@@ -31,11 +31,12 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103788");
   script_bugtraq_id(42827);
-  script_version ("$Revision: 6093 $");
+  script_cve_id("CVE-2009-3947");
+  script_version("$Revision: 11041 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_name("TANDBERG MXP Series Video Conferencing Device Remote Denial Of Service Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-09-12 13:33:18 +0200 (Thu, 12 Sep 2013)");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
@@ -56,7 +57,7 @@ if(description)
   script_tag(name:"solution", value:"Updates are available. Please see the references for more details.");
   script_tag(name:"summary", value:"TANDBERG MXP Series devices are prone to a remote denial-of-service
   vulnerability.");
-  script_tag(name:"affected", value:"TANDBERG MXP Series devices with version F8.2 is vulnerable; other
+  script_tag(name:"affected", value:"TANDBERG MXP Series devices with version F8.2 is vulnerable, other
   versions may also be affected.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -81,5 +82,5 @@ if(vers = get_kb_item("tandberg_codec_release")) {
       exit(0);
   }
 }
-  
+
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3629_3.nasl 9830 2018-05-15 07:16:12Z cfischer $
+# $Id: gb_ubuntu_USN_3629_3.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for mysql-5.7 USN-3629-3
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843517");
-  script_version("$Revision: 9830 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-15 09:16:12 +0200 (Tue, 15 May 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-08 09:25:32 +0200 (Tue, 08 May 2018)");
   script_cve_id("CVE-2018-2755", "CVE-2018-2758", "CVE-2018-2759", "CVE-2018-2761",
                 "CVE-2018-2762", "CVE-2018-2766", "CVE-2018-2769", "CVE-2018-2771",
@@ -63,7 +63,7 @@ http://www.oracle.com/technetwork/security-advisory/cpuapr2018-3678067.html");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3629-3");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3629-3/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3629-3/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -76,7 +76,7 @@ http://www.oracle.com/technetwork/security-advisory/cpuapr2018-3678067.html");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

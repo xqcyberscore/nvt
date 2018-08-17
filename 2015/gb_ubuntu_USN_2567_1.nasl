@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842167");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-04-14 07:18:57 +0200 (Tue, 14 Apr 2015)");
   script_cve_id("CVE-2015-1798", "CVE-2015-1799");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for ntp USN-2567-1");
-  script_tag(name: "summary", value: "Check the version of ntp");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Miroslav Lichvar discovered that NTP
+  script_tag(name:"summary", value:"Check the version of ntp");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Miroslav Lichvar discovered that NTP
 incorrectly validated MAC fields. A remote attacker could possibly use this issue
 to bypass authentication and spoof packets. (CVE-2015-1798)
 
@@ -47,12 +47,12 @@ of service. (CVE-2015-1799)
 Juergen Perlinger discovered that NTP incorrectly generated MD5 keys on
 big-endian platforms. This issue could either cause ntp-keygen to hang, or
 could result in non-random keys. (CVE number pending)");
-  script_tag(name: "affected", value: "ntp on Ubuntu 14.10 ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"ntp on Ubuntu 14.10,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2567-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2567-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2567-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2567-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -65,7 +65,7 @@ could result in non-random keys. (CVE number pending)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

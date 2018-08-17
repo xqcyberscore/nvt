@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: hp_printers.inc 11013 2018-08-17 03:38:18Z ckuersteiner $
+# $Id: hp_printers.inc 11035 2018-08-17 10:40:39Z ckuersteiner $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11013 $
+# $Revision: 11035 $
 #
 ###############################################################################
 
@@ -41,6 +41,18 @@ function get_hp_detect_urls() {
   hp_detect_urls['/hp/jetdirect/index.html']                            = '<h1>HP (Latex [0-9]+)'; # HP Latex 315 a.o.
   # HP PageWide Pro 477 a.o.
   hp_detect_urls['/DevMgmt/ProductConfigDyn.xml']                       = '<dd:MakeAndModel>HP (PageWide Pro [^<]+)';
+  # HP PageWide 352dw a.o
+  hp_detect_urls['/DevMgmt/ProductConfigDyn.xml']                       = '<dd:MakeAndModel>HP (PageWide [^<]+)';
+  # HP Deskjet 2540 a.o.
+  hp_detect_urls['/DevMgmt/ProductConfigDyn.xml']                       = '<dd:MakeAndModel>(Deskjet [^<]+)';
+  # HP ENVY 120 series a.o.
+  hp_detect_urls['/DevMgmt/ProductConfigDyn.xml']                       = '<dd:MakeAndModel>(Envy [^<]+)';
+  # HP Ink Tank Wireless 410 series a.o.
+  hp_detect_urls['/DevMgmt/ProductConfigDyn.xml']                       = '<dd:MakeAndModel>(Ink Tank [^<]+)';
+  # HP Photosmart 5510 series a.o.
+  hp_detect_urls['/DevMgmt/ProductConfigDyn.xml']                       = '<dd:MakeAndModel>(Photosmart [^<]+)';
+  # HP Smart Tank Wireless 450 series a.o.
+  hp_detect_urls['/DevMgmt/ProductConfigDyn.xml']                       = '<dd:MakeAndModel>HP (Smart Tank [^<]+)';
 
   # Detection string from dont_print_on_printers.nasl. TBD: Include here?
   # if( "<title>Hewlett Packard</title>" >< banner || egrep( pattern:"<title>.*LaserJet.*</title>", string:banner, icase:TRUE ) || "HP Officejet" >< banner || "server: hp-chai" >< tolower( banner ) || ( "Server: Virata-EmWeb/" >< banner && ( "HP" >< banner || "printer" >< banner ) ) ) {

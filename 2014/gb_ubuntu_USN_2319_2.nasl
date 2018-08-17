@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2319_2.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2319_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for openjdk-7 USN-2319-2
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841944");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-08-26 05:53:09 +0200 (Tue, 26 Aug 2014)");
   script_cve_id("CVE-2014-2483", "CVE-2014-2490", "CVE-2014-4216", "CVE-2014-4219",
                 "CVE-2014-4223", "CVE-2014-4262", "CVE-2014-4209", "CVE-2014-4244",
@@ -41,8 +41,8 @@ if(description)
   script_name("Ubuntu Update for openjdk-7 USN-2319-2");
 
 
-  script_tag(name : "affected" , value : "openjdk-7 on Ubuntu 14.04 LTS");
-  script_tag(name : "insight" , value : "USN-2319-1 fixed vulnerabilities in OpenJDK 7. Due to an
+  script_tag(name:"affected", value:"openjdk-7 on Ubuntu 14.04 LTS");
+  script_tag(name:"insight", value:"USN-2319-1 fixed vulnerabilities in OpenJDK 7. Due to an
 upstream regression, verifying of the init method call would fail when it was
 done from inside a branch when stack frames are activated. This update fixes the
 problem.
@@ -72,11 +72,11 @@ An attacker could exploit this to cause a denial of service.
 Several vulnerabilities were discovered in the OpenJDK JRE related to
 information disclosure. An attacker could exploit these to expose sensitive
 data over the network. (CVE-2014-4221, CVE-2014-4252, CVE-2014-4268)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2319-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2319-2/");
+  script_xref(name:"USN", value:"2319-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2319-2/");
   script_tag(name:"summary", value:"Check for the Version of openjdk-7");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -89,7 +89,7 @@ data over the network. (CVE-2014-4221, CVE-2014-4252, CVE-2014-4268)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

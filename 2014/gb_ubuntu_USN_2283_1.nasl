@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2283_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2283_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux USN-2283-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841899");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-07-21 17:13:19 +0530 (Mon, 21 Jul 2014)");
   script_cve_id("CVE-2014-4943", "CVE-2014-0131", "CVE-2014-4608");
   script_tag(name:"cvss_base", value:"6.9");
@@ -38,8 +38,8 @@ if(description)
   script_name("Ubuntu Update for linux USN-2283-1");
 
 
-  script_tag(name : "affected" , value : "linux on Ubuntu 12.04 LTS");
-  script_tag(name : "insight" , value : "Sasha Levin reported a flaw in the Linux kernel's
+  script_tag(name:"affected", value:"linux on Ubuntu 12.04 LTS");
+  script_tag(name:"insight", value:"Sasha Levin reported a flaw in the Linux kernel's
 point-to-point protocol (PPP) when used with the Layer Two Tunneling Protocol
 (L2TP). A local user could exploit this flaw to gain administrative privileges.
 (CVE-2014-4943)
@@ -52,11 +52,11 @@ from kernel memory. (CVE-2014-0131)
 Don Bailey discovered a flaw in the LZO decompress algorithm used by the
 Linux kernel. An attacker could exploit this flaw to cause a denial of
 service (memory corruption or OOPS). (CVE-2014-4608)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2283-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2283-1/");
+  script_xref(name:"USN", value:"2283-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2283-1/");
   script_tag(name:"summary", value:"Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -69,7 +69,7 @@ service (memory corruption or OOPS). (CVE-2014-4608)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

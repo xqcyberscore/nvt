@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_EasyIO_rce_12_16.nasl 4969 2017-01-09 10:12:25Z ckuerste $
+# $Id: gb_EasyIO_rce_12_16.nasl 11026 2018-08-17 08:52:26Z cfischer $
 #
 # EasyIO Multiple Vulnerabilities
 #
@@ -27,19 +27,19 @@
 
 CPE = "cpe:/a:easyio:easyio";
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140106");
- script_version ("$Revision: 4969 $");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.140106");
+  script_version("$Revision: 11026 $");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
- script_name("EasyIO Multiple Vulnerabilities");
+  script_name("EasyIO Multiple Vulnerabilities");
 
- script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/2908");
+  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/2908");
 
- script_tag(name: "vuldetect" , value:"Try to read /etc/passwd");
- script_tag(name: "insight" , value:"EasyIO FG-series devices are prone to multiple vulnerabilies:
+  script_tag(name:"vuldetect", value:"Try to read /etc/passwd");
+  script_tag(name:"insight", value:"EasyIO FG-series devices are prone to multiple vulnerabilies:
 
 - Unauthenticated remote code execution
 
@@ -47,27 +47,28 @@ if (description)
 
 - Authenticated directory traversal vulnerability");
 
- script_tag(name: "solution" , value:"Check with the vendor for fixed firmware versions.");
- script_tag(name: "summary" , value:"EasyIO FG-series devices are prone to multiple vulnerabilies.");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution", value:"Check with the vendor for fixed firmware versions.");
+  script_tag(name:"summary", value:"EasyIO FG-series devices are prone to multiple vulnerabilies.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-01-09 11:12:25 +0100 (Mon, 09 Jan 2017) $");
- script_tag(name:"creation_date", value:"2016-12-28 14:42:25 +0100 (Wed, 28 Dec 2016)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_EasyIO_detect.nasl");
- script_require_ports("Services/www", 80, 443);
- script_mandatory_keys("easyio/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-12-28 14:42:25 +0100 (Wed, 28 Dec 2016)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_EasyIO_detect.nasl");
+  script_require_ports("Services/www", 80, 443);
+  script_mandatory_keys("easyio/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE, service: "www" ) ) exit( 0 );
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cscart_xxe_vuln.nasl 6421 2017-06-23 13:50:13Z cfischer $
+# $Id: gb_cscart_xxe_vuln.nasl 11026 2018-08-17 08:52:26Z cfischer $
 #
 # CS-Cart XXE Vulnerability
 #
@@ -27,18 +27,18 @@
 
 CPE = "cpe:/a:cs-cart:cs-cart";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106398");
-  script_version("$Revision: 6421 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-23 15:50:13 +0200 (Fri, 23 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2016-11-18 10:07:02 +0700 (Fri, 18 Nov 2016)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:P");
+  script_version("$Revision: 11026 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-18 10:07:02 +0700 (Fri, 18 Nov 2016)");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
 
-  script_tag(name: "qod_type", value: "remote_analysis");
+  script_tag(name:"qod_type", value:"remote_analysis");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("CS-Cart XXE Vulnerability");
 
@@ -49,24 +49,24 @@ if (description)
   script_dependencies("gb_cscart_detect.nasl");
   script_mandatory_keys("cs_cart/installed");
 
-  script_tag(name: "summary", value: "CS-Cart is prone to an XML External Entity injection (XXE) vulnerability.");
+  script_tag(name:"summary", value:"CS-Cart is prone to an XML External Entity injection (XXE) vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "There is a XML External Entity injection (XXE) vulnerability in the Twigmo
-Addon and in the Amazon Payment Addon.");
+  script_tag(name:"insight", value:"There is a XML External Entity injection (XXE) vulnerability in the Twigmo
+  Addon and in the Amazon Payment Addon.");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may read arbitrary files or conduct a denial
-of service attack.");
+  script_tag(name:"impact", value:"An unauthenticated attacker may read arbitrary files or conduct a denial
+  of service attack.");
 
-  script_tag(name: "solution", value: "Update to CS-Cart 4.4.2 or later which:
+  script_tag(name:"solution", value:"Update to CS-Cart 4.4.2 or later which:
 
-  - removes the vulnerable Twigmo Addon (depreacted)
+  - removes the vulnerable Twigmo Addon (deprecated)
 
   - fixes the XXE vulnerability in the Amazon Payment Addon.");
 
-  script_xref(name: "URL", value: "http://docs.cs-cart.com/4.5.x/history/442.html#cs-cart-4-4-2-changelog");
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/40770/");
+  script_xref(name:"URL", value:"http://docs.cs-cart.com/4.5.x/history/442.html#cs-cart-4-4-2-changelog");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40770/");
 
   exit(0);
 }
@@ -74,6 +74,7 @@ of service attack.");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

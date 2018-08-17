@@ -26,24 +26,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842914");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-10-13 05:46:44 +0200 (Thu, 13 Oct 2016)");
   script_cve_id("CVE-2016-7966");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for kdepimlibs USN-3100-1");
-  script_tag(name: "summary", value: "Check the version of kdepimlibs");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Roland Tapken discovered that the KDE-PIM
+  script_tag(name:"summary", value:"Check the version of kdepimlibs");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Roland Tapken discovered that the KDE-PIM
   Libraries incorrectly filtered URLs. A remote attacker could use this issue to
  perform an HTML injection attack in the KMail plain text viewer.");
-  script_tag(name: "affected", value: "kdepimlibs on Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"kdepimlibs on Ubuntu 12.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3100-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3100-1/");
+  script_xref(name:"USN", value:"3100-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3100-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -56,7 +56,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

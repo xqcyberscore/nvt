@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3631_2.nasl 9809 2018-05-14 02:46:53Z ckuersteiner $
+# $Id: gb_ubuntu_USN_3631_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux-aws USN-3631-2
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843506");
-  script_version("$Revision: 9809 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-14 04:46:53 +0200 (Mon, 14 May 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 08:36:58 +0200 (Wed, 25 Apr 2018)");
   script_cve_id("CVE-2017-13305", "CVE-2017-16538", "CVE-2018-1000004", "CVE-2018-5750",
                 "CVE-2018-7566");
@@ -36,9 +36,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-aws USN-3631-2");
-  script_tag(name: "summary", value: "Check the version of linux-aws");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "USN-3631-1 fixed vulnerabilities in the
+  script_tag(name:"summary", value:"Check the version of linux-aws");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"USN-3631-1 fixed vulnerabilities in the
   Linux kernel for Ubuntu 16.04 LTS. This update provides the corresponding
   updates for the Linux Hardware Enablement (HWE) kernel from Ubuntu 16.04 LTS for
   Ubuntu 14.04 LTS. It was discovered that a buffer overread vulnerability existed
@@ -59,11 +59,11 @@ if(description)
   use-after-free or an out-of-bounds buffer access. A local attacker with access
   to /dev/snd/seq could use this to cause a denial of service (system crash) or
   possibly execute arbitrary code. (CVE-2018-7566)");
-  script_tag(name: "affected", value: "linux-aws on Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"linux-aws on Ubuntu 14.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3631-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3631-2/");
+  script_xref(name:"USN", value:"3631-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3631-2/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -76,7 +76,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

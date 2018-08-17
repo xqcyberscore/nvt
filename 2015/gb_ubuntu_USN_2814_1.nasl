@@ -26,26 +26,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842537");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-11-19 06:37:45 +0100 (Thu, 19 Nov 2015)");
   script_cve_id("CVE-2015-7869");
   script_tag(name:"cvss_base", value:"6.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:P/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for nvidia-graphics-drivers-304 USN-2814-1");
-  script_tag(name: "summary", value: "Check the version of nvidia-graphics-drivers-304");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that the NVIDIA graphics
+  script_tag(name:"summary", value:"Check the version of nvidia-graphics-drivers-304");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that the NVIDIA graphics
 drivers incorrectly sanitized user mode inputs. A local attacker could use this
 issue to possibly gain root privileges.");
-  script_tag(name: "affected", value: "nvidia-graphics-drivers-304 on Ubuntu 15.10 ,
-  Ubuntu 15.04 ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"nvidia-graphics-drivers-304 on Ubuntu 15.10,
+  Ubuntu 15.04,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2814-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2814-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2814-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2814-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -58,7 +58,7 @@ issue to possibly gain root privileges.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842070");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-01-23 12:59:15 +0100 (Fri, 23 Jan 2015)");
   script_cve_id("CVE-2014-6568", "CVE-2015-0374", "CVE-2015-0381", "CVE-2015-0382",
                 "CVE-2015-0411", "CVE-2015-0432");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Ubuntu Update for mysql-5.5 USN-2480-1");
-  script_tag(name: "summary", value: "Check the version of mysql-5.5");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Multiple security issues were discovered in
+  script_tag(name:"summary", value:"Check the version of mysql-5.5");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Multiple security issues were discovered in
 MySQL and this update includes a new upstream MySQL version to fix these issues.
 MySQL has been updated to 5.5.41.
 
@@ -46,12 +46,12 @@ new features, and possibly incompatible changes.
 Please see the following for more information:
 http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-41.html
 http://www.oracle.com/technetwork/topics/security/cpujan2015-1972971.html");
-  script_tag(name: "affected", value: "mysql-5.5 on Ubuntu 14.10 ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"mysql-5.5 on Ubuntu 14.10,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2480-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2480-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2480-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2480-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);
@@ -65,7 +65,7 @@ http://www.oracle.com/technetwork/topics/security/cpujan2015-1972971.html");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

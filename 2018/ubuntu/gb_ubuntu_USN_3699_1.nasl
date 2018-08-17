@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3699_1.nasl 10430 2018-07-06 05:26:03Z cfischer $
+# $Id: gb_ubuntu_USN_3699_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for zziplib USN-3699-1
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843579");
-  script_version("$Revision: 10430 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-06 07:26:03 +0200 (Fri, 06 Jul 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-04 05:56:39 +0200 (Wed, 04 Jul 2018)");
-  script_cve_id("CVE-2018-6381", "CVE-2018-6484", "CVE-2018-6540", "CVE-2018-6541", 
-                "CVE-2018-6869", "CVE-2018-7725", "CVE-2018-7726"); 
+  script_cve_id("CVE-2018-6381", "CVE-2018-6484", "CVE-2018-6540", "CVE-2018-6541",
+                "CVE-2018-6869", "CVE-2018-7725", "CVE-2018-7726");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
@@ -42,14 +42,14 @@ if(description)
 files. If a user or automated system were tricked into opening a specially
 crafted ZIP file, a remote attacker could cause zziplib to crash, resulting
 in a denial of service, or possibly execute arbitrary code.");
-  script_tag(name:"affected", value:"zziplib on Ubuntu 18.04 LTS ,
-  Ubuntu 17.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"zziplib on Ubuntu 18.04 LTS,
+  Ubuntu 17.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3699-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3699-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3699-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -62,7 +62,7 @@ in a denial of service, or possibly execute arbitrary code.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

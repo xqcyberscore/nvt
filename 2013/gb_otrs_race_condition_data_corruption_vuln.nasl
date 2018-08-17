@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_race_condition_data_corruption_vuln.nasl 6755 2017-07-18 12:55:56Z cfischer $
+# $Id: gb_otrs_race_condition_data_corruption_vuln.nasl 11041 2018-08-17 14:03:47Z mmartin $
 #
 # OTRS Race Condition Data Corruption Vulnerability
 #
@@ -23,51 +23,34 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803928";
 CPE = "cpe:/a:otrs:otrs";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6755 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803928");
+  script_version("$Revision: 11041 $");
   script_cve_id("CVE-2010-4765");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-09-22 11:18:31 +0530 (Sun, 22 Sep 2013)");
   script_name("OTRS Race Condition Data Corruption Vulnerability");
 
-tag_summary =
-"This host is installed with OTRS (Open Ticket Request System) and is prone to
-data corruption vulnerability.";
 
-tag_vuldetect =
-"Get the installed version of OTRS with the help of detect NVT and check the
-version is vulnerable or not.";
-
-tag_insight ="An error exists in Race condition in the Kernel::System::Main::FileWrite
-method which allow user to corrupt the TicketCounter.log file";
-
-tag_impact ="Successful exploitation will allow remote authenticated users to
+  script_tag(name:"impact", value:"Successful exploitation will allow remote authenticated users to
 corrupt data in TicketCounter.log file by creating tickets.
 
-Impact Level: Application";
-
-tag_affected =
-"OTRS (Open Ticket Request System) version before 2.4.8";
-
-tag_solution =
-"Upgrade to OTRS (Open Ticket Request System) version 2.4.8 or later,
-For updates refer to http://www.otrs.com/en/";
-
-
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
+Impact Level: Application");
+  script_tag(name:"vuldetect", value:"Get the installed version of OTRS with the help of detect NVT and check the
+version is vulnerable or not.");
+  script_tag(name:"insight", value:"An error exists in Race condition in the Kernel::System::Main::FileWrite
+method which allow user to corrupt the TicketCounter.log file");
+  script_tag(name:"solution", value:"Upgrade to OTRS (Open Ticket Request System) version 2.4.8 or later,
+For updates refer to http://www.otrs.com/en/");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"This host is installed with OTRS (Open Ticket Request System) and is prone to
+data corruption vulnerability.");
+  script_tag(name:"affected", value:"OTRS (Open Ticket Request System) version before 2.4.8");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -83,17 +66,11 @@ For updates refer to http://www.otrs.com/en/";
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable initialisation
-port = "";
-vers = "";
-
-## Get Application HTTP Port
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get application version
-if(vers = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:port))
+if(vers = get_app_version(cpe:CPE, port:port))
 {
   if(version_is_less(version: vers, test_version: "2.4.8"))
   {

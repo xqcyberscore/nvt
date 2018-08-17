@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2033_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_2033_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for openjdk-6 USN-2033-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841636");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-26 11:26:48 +0530 (Tue, 26 Nov 2013)");
   script_cve_id("CVE-2013-3829", "CVE-2013-5783", "CVE-2013-5804", "CVE-2013-4002",
                 "CVE-2013-5803", "CVE-2013-5823", "CVE-2013-5825", "CVE-2013-5772",
@@ -44,9 +44,9 @@ if(description)
   script_name("Ubuntu Update for openjdk-6 USN-2033-1");
 
 
-  script_tag(name : "affected" , value : "openjdk-6 on Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"openjdk-6 on Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name : "insight" , value : "Several vulnerabilities were discovered in the OpenJDK JRE
+  script_tag(name:"insight", value:"Several vulnerabilities were discovered in the OpenJDK JRE
 related to information disclosure and data integrity. An attacker could
 exploit these to expose sensitive data over the network. (CVE-2013-3829,
 CVE-2013-5783, CVE-2013-5804)
@@ -69,12 +69,12 @@ information disclosure, data integrity and availability. An attacker could
 exploit these to cause a denial of service or expose sensitive data over
 the network. (CVE-2013-5782, CVE-2013-5802, CVE-2013-5809, CVE-2013-5829,
 CVE-2013-5814, CVE-2013-5817, CVE-2013-5830, CVE-2013-5842, CVE-2013-5850)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2033-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2033-1/");
-  script_tag(name: "summary" , value: "Check for the Version of openjdk-6");
+  script_xref(name:"USN", value:"2033-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2033-1/");
+  script_tag(name:"summary", value:"Check for the Version of openjdk-6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
@@ -86,7 +86,7 @@ CVE-2013-5814, CVE-2013-5817, CVE-2013-5830, CVE-2013-5842, CVE-2013-5850)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

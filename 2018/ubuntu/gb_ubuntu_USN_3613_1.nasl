@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3613_1.nasl 9655 2018-04-27 09:23:07Z cfischer $
+# $Id: gb_ubuntu_USN_3613_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for openjdk-8 USN-3613-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843490");
-  script_version("$Revision: 9655 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-03 08:50:20 +0200 (Tue, 03 Apr 2018)");
   script_cve_id("CVE-2018-2579", "CVE-2018-2582", "CVE-2018-2588", "CVE-2018-2599",
                 "CVE-2018-2602", "CVE-2018-2603", "CVE-2018-2618", "CVE-2018-2629",
@@ -38,9 +38,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for openjdk-8 USN-3613-1");
-  script_tag(name: "summary", value: "Check the version of openjdk-8");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that a race condition
+  script_tag(name:"summary", value:"Check the version of openjdk-8");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that a race condition
   existed in the cryptography implementation in OpenJDK. An attacker could
   possibly use this to expose sensitive information. (CVE-2018-2579) It was
   discovered that the Hotspot component of OpenJDK did not properly validate uses
@@ -76,12 +76,12 @@ if(description)
   loading the GTK library. An attacker could possibly use this to execute
   arbitrary code and escape Jav ... Description truncated, for more information
   please check the Reference URL");
-  script_tag(name: "affected", value: "openjdk-8 on Ubuntu 17.10 ,
+  script_tag(name:"affected", value:"openjdk-8 on Ubuntu 17.10,
   Ubuntu 16.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3613-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3613-1/");
+  script_xref(name:"USN", value:"3613-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3613-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -94,7 +94,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

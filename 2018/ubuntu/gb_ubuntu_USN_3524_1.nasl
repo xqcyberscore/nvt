@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3524_1.nasl 9655 2018-04-27 09:23:07Z cfischer $
+# $Id: gb_ubuntu_USN_3524_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux USN-3524-1
 #
@@ -27,26 +27,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843410");
-  script_version("$Revision: 9655 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-01-10 07:40:05 +0100 (Wed, 10 Jan 2018)");
   script_cve_id("CVE-2017-5754");
   script_tag(name:"cvss_base", value:"4.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-3524-1");
-  script_tag(name: "summary", value: "Check the version of linux");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Jann Horn discovered that microprocessors
+  script_tag(name:"summary", value:"Check the version of linux");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Jann Horn discovered that microprocessors
   utilizing speculative execution and indirect branch prediction may allow
   unauthorized memory reads via sidechannel attacks. This flaw is known as
   Meltdown. A local attacker could use this to expose sensitive information,
   including kernel memory. (CVE-2017-5754)");
-  script_tag(name: "affected", value: "linux on Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"linux on Ubuntu 14.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3524-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3524-1/");
+  script_xref(name:"USN", value:"3524-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3524-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -59,7 +59,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

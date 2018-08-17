@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842531");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 06:06:51 +0100 (Wed, 11 Nov 2015)");
   script_cve_id("CVE-2015-5310", "CVE-2015-5314", "CVE-2015-5315", "CVE-2015-5316");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for wpa USN-2808-1");
-  script_tag(name: "summary", value: "Check the version of wpa");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that wpa_supplicant
+  script_tag(name:"summary", value:"Check the version of wpa");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that wpa_supplicant
 incorrectly handled WMM Sleep Mode Response frame processing. A remote attacker
 could use this issue to perform broadcast/multicast packet injections, or cause
 a denial of service. (CVE-2015-5310)
@@ -48,12 +48,12 @@ denial of service. (CVE-2015-5314, CVE-2015-5315)
 It was discovered that wpa_supplicant incorrectly handled certain EAP-pwd
 Confirm messages. A remote attacker could use this issue to cause a
 denial of service. This issue only applied to Ubuntu 15.10. (CVE-2015-5316)");
-  script_tag(name: "affected", value: "wpa on Ubuntu 15.10 ,
-  Ubuntu 15.04 ,
+  script_tag(name:"affected", value:"wpa on Ubuntu 15.10,
+  Ubuntu 15.04,
   Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2808-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2808-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2808-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2808-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -66,7 +66,7 @@ denial of service. This issue only applied to Ubuntu 15.10. (CVE-2015-5316)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1248_1.nasl 9648 2018-04-27 08:29:05Z cfischer $
+# $Id: gb_ubuntu_USN_1248_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for kde4libs USN-1248-1
 #
@@ -29,12 +29,12 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1248-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1248-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.840792");
-  script_version("$Revision: 9648 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:29:05 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-10-31 13:45:00 +0100 (Mon, 31 Oct 2011)");
-  script_xref(name: "USN", value: "1248-1");
+  script_xref(name:"USN", value:"1248-1");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_cve_id("CVE-2011-3365");
@@ -45,12 +45,12 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.10|10\.04 LTS|11\.04)");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1248-1");
-  script_tag(name : "affected" , value : "kde4libs on Ubuntu 11.04 ,
-  Ubuntu 10.10 ,
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1248-1");
+  script_tag(name:"affected", value:"kde4libs on Ubuntu 11.04,
+  Ubuntu 10.10,
   Ubuntu 10.04 LTS");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "Tim Brown discovered that KSSL in KDE-Libs did not properly perform input
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Tim Brown discovered that KSSL in KDE-Libs did not properly perform input
   validation when displaying the common name (CN) for an SSL certificate. An
   attacker could exploit this to spoof the common name which could be used in
   an attack to trick the user into accepting a fraudulent certificate. This
@@ -67,7 +67,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 
 res = "";

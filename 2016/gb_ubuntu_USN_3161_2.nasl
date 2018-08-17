@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843004");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-12-21 05:45:50 +0100 (Wed, 21 Dec 2016)");
   script_cve_id("CVE-2015-8964", "CVE-2016-4568", "CVE-2016-6213", "CVE-2016-8630",
  		"CVE-2016-8633", "CVE-2016-8645", "CVE-2016-9555");
@@ -35,9 +35,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-lts-xenial USN-3161-2");
-  script_tag(name: "summary", value: "Check the version of linux-lts-xenial");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "USN-3161-1 fixed vulnerabilities in the
+  script_tag(name:"summary", value:"Check the version of linux-lts-xenial");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"USN-3161-1 fixed vulnerabilities in the
   Linux kernel for Ubuntu 16.04 LTS. This update provides the corresponding updates
   for the Linux Hardware Enablement (HWE) kernel from Ubuntu 16.04 LTS for Ubuntu
 14.04 LTS.
@@ -73,11 +73,11 @@ to cause a denial of service (system crash). (CVE-2016-8645)
 Andrey Konovalov discovered that the SCTP implementation in the Linux
 kernel improperly handled validation of incoming data. A remote attacker
 could use this to cause a denial of service (system crash). (CVE-2016-9555)");
-  script_tag(name: "affected", value: "linux-lts-xenial on Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"linux-lts-xenial on Ubuntu 14.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3161-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3161-2/");
+  script_xref(name:"USN", value:"3161-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3161-2/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -90,7 +90,7 @@ could use this to cause a denial of service (system crash). (CVE-2016-9555)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

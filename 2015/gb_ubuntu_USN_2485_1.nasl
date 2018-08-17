@@ -26,24 +26,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842077");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-01-28 06:11:15 +0100 (Wed, 28 Jan 2015)");
   script_cve_id("CVE-2015-0235");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Ubuntu Update for eglibc USN-2485-1");
-  script_tag(name: "summary", value: "Check the version of eglibc");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that a buffer overflow
+  script_tag(name:"summary", value:"Check the version of eglibc");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that a buffer overflow
 existed in the gethostbyname and gethostbyname2 functions in the GNU C Library.
 An attacker could use this issue to execute arbitrary code or cause an application
 crash, resulting in a denial of service.");
-  script_tag(name: "affected", value: "eglibc on Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"eglibc on Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2485-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2485-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2485-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2485-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);
@@ -57,7 +57,7 @@ crash, resulting in a denial of service.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

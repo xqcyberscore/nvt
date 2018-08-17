@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1497_1.nasl 9649 2018-04-27 08:45:50Z cfischer $
+# $Id: gb_ubuntu_USN_1497_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for nova USN-1497-1
 #
@@ -30,15 +30,15 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1497-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1497-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841074");
   script_tag(name:"cvss_base", value:"5.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
- script_version("$Revision: 9649 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-07-06 09:59:13 +0530 (Fri, 06 Jul 2012)");
   script_cve_id("CVE-2012-3360", "CVE-2012-3361");
-  script_xref(name: "USN", value: "1497-1");
+  script_xref(name:"USN", value:"1497-1");
   script_name("Ubuntu Update for nova USN-1497-1");
 
   script_category(ACT_GATHER_INFO);
@@ -46,11 +46,11 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(12\.04 LTS|11\.10)");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1497-1");
-  script_tag(name : "affected" , value : "nova on Ubuntu 12.04 LTS ,
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1497-1");
+  script_tag(name:"affected", value:"nova on Ubuntu 12.04 LTS,
   Ubuntu 11.10");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "Matthias Weckbecker discovered that, when using the OpenStack API to
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Matthias Weckbecker discovered that, when using the OpenStack API to
   setup libvirt-based hypervisors, an authenticated user could inject
   files in arbitrary locations on the file system of the host running
   Nova. A remote attacker could use this to gain root privileges. This
@@ -68,7 +68,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

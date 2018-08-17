@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_opmanager_mult_vuln.nasl 8820 2018-02-15 05:56:30Z ckuersteiner $
+# $Id: gb_manageengine_opmanager_mult_vuln.nasl 11027 2018-08-17 08:57:39Z cfischer $
 #
 # ManageEngine OpManager Multiple Vulnerabilities Nov14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:zohocorp:manageengine_opmanager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805103");
-  script_version("$Revision: 8820 $");
+  script_version("$Revision: 11027 $");
   script_cve_id("CVE-2014-7866", "CVE-2014-7868", "CVE-2014-6035");
   script_bugtraq_id(71001, 71002);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-15 06:56:30 +0100 (Thu, 15 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:57:39 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-11-24 16:16:10 +0530 (Mon, 24 Nov 2014)");
   script_name("ManageEngine OpManager Multiple Vulnerabilities Nov14");
 
@@ -46,35 +46,37 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
-- /servlet/MigrateLEEData script not properly sanitizing user input, specifically path traversal style attacks
-(e.g. '../') supplied via the 'fileName' parameter.
+  - /servlet/MigrateLEEData script not properly sanitizing user input, specifically path traversal style attacks
+  (e.g. '../') supplied via the 'fileName' parameter.
 
-- /servlet/MigrateCentralData script not properly sanitizing user input, specifically path traversal style attacks
-(e.g. '../') supplied via the 'zipFileName' parameter.
+  - /servlet/MigrateCentralData script not properly sanitizing user input, specifically path traversal style attacks
+  (e.g. '../') supplied via the 'zipFileName' parameter.
 
-- /servlet/APMBVHandler script not properly sanitizing user-supplied input to the 'OPM_BVNAME' POST parameter.
+  - /servlet/APMBVHandler script not properly sanitizing user-supplied input to the 'OPM_BVNAME' POST parameter.
 
-- /servlet/DataComparisonServlet script not properly sanitizing user-supplied input to the 'query' POST
-parameter.");
+  - /servlet/DataComparisonServlet script not properly sanitizing user-supplied input to the 'query' POST
+  parameter.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to upload arbitrary files and
-execute the script within the file with the privileges of the web server, manipulate SQL queries in the backend
-database, and disclose certain sensitive information.
+  execute the script within the file with the privileges of the web server, manipulate SQL queries in the backend
+  database, and disclose certain sensitive information.
 
-Impact Level: Application");
+  Impact Level: Application");
 
   script_tag(name:"affected", value:"ManageEngine OpManager version 11.3/11.4");
 
   script_tag(name:"solution", value:"Apply the patch from the given link,
-https://support.zoho.com/portal/manageengine/helpcenter/articles/sql-injection-vulnerability-fix,
-https://support.zoho.com/portal/manageengine/helpcenter/articles/fix-for-remote-code-execution-via-file-upload-vulnerability");
+
+  https://support.zoho.com/portal/manageengine/helpcenter/articles/sql-injection-vulnerability-fix,
+
+  https://support.zoho.com/portal/manageengine/helpcenter/articles/fix-for-remote-code-execution-via-file-upload-vulnerability");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
-  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/35209");
-  script_xref(name: "URL", value: "https://support.zoho.com/portal/manageengine/helpcenter/articles/sql-injection-vulnerability-fix");
-  script_xref(name: "URL", value: "https://support.zoho.com/portal/manageengine/helpcenter/articles/fix-for-remote-code-execution-via-file-upload-vulnerability");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/35209");
+  script_xref(name:"URL", value:"https://support.zoho.com/portal/manageengine/helpcenter/articles/sql-injection-vulnerability-fix");
+  script_xref(name:"URL", value:"https://support.zoho.com/portal/manageengine/helpcenter/articles/fix-for-remote-code-execution-via-file-upload-vulnerability");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -88,6 +90,7 @@ https://support.zoho.com/portal/manageengine/helpcenter/articles/fix-for-remote-
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

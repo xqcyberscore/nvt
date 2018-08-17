@@ -26,24 +26,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842903");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-09-30 05:44:33 +0200 (Fri, 30 Sep 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for systemd USN-3094-1");
-  script_tag(name: "summary", value: "Check the version of systemd");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Andrew Ayer discovered that Systemd improperly
+  script_tag(name:"summary", value:"Check the version of systemd");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Andrew Ayer discovered that Systemd improperly
   handled zero-length notification messages. A local unprivileged attacker could use
   this to cause a denial of service (init crash leading to system
   unavailability).");
-  script_tag(name: "affected", value: "systemd on Ubuntu 16.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"systemd on Ubuntu 16.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3094-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3094-1/");
+  script_xref(name:"USN", value:"3094-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3094-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -56,7 +56,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

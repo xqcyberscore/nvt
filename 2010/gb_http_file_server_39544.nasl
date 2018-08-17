@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_file_server_39544.nasl 5306 2017-02-16 09:00:16Z teissa $
+# $Id: gb_http_file_server_39544.nasl 11039 2018-08-17 12:26:47Z cfischer $
 #
 # HTTP File Server Security Bypass and Denial of Service Vulnerabilities
 #
@@ -26,11 +26,11 @@
 
 CPE = "cpe:/a:httpfilesever:hfs";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100585");
-  script_version("$Revision: 5306 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:00:16 +0100 (Thu, 16 Feb 2017) $");
+  script_version("$Revision: 11039 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 14:26:47 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-04-19 20:46:01 +0200 (Mon, 19 Apr 2010)");
   script_bugtraq_id(39544);
   script_tag(name:"cvss_base", value:"5.0");
@@ -50,12 +50,13 @@ if (description)
   script_require_ports("Services/www", 80);
 
   script_tag(name:"affected", value:"HttpFileServer version 2.2e and prior.");
+
   script_tag(name:"solution", value:"Update to version 2.2f or later,
   For updates refer to http://www.rejetto.com/hfs");
+
   script_tag(name:"summary", value:"HTTP File Server is prone to multiple vulnerabilities including a security-
   bypass issue and a denial-of-service issue.");
-  script_tag(name:"impact", value:"Exploiting these issues will allow an attacker to download files from
-  restricted directories within the context of the application or cause denial-of-service conditions.");
+
   script_tag(name:"impact", value:"Exploiting these issues will allow an attacker to download files from
   restricted directories within the context of the application or cause denial-of-service conditions.");
 
@@ -65,14 +66,12 @@ if (description)
   exit(0);
 }
 
-
 include("version_func.inc");
 include("host_details.inc");
 
 if( ! hfsPort = get_app_port( cpe:CPE ) ) exit(0);
 if( ! hfsVer = get_app_version( cpe:CPE, port:hfsPort ) ) exit(0);
 
-## Checking for vulnerable version
 if( version_is_less( version:hfsVer, test_version:"2.2f" ) ) {
   report = report_fixed_ver( installed_version: hfsVer, fixed_version: "2.2f" );
   security_message( port:hfsPort, data:report );

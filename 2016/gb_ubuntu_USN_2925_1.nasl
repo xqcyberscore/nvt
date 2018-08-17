@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842683");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-03-10 06:17:09 +0100 (Thu, 10 Mar 2016)");
   script_cve_id("CVE-2016-1285", "CVE-2016-1286");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for bind9 USN-2925-1");
-  script_tag(name: "summary", value: "Check the version of bind9");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that Bind incorrectly
+  script_tag(name:"summary", value:"Check the version of bind9");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that Bind incorrectly
   handled input received by the rndc control channel. A remote attacker could
   possibly use this issue to cause Bind to crash, resulting in a denial of service.
   (CVE-2016-1285)
@@ -44,13 +44,13 @@ if(description)
   It was discovered that Bind incorrectly parsed resource record signatures
   for DNAME resource records. A remote attacker could possibly use this issue
   to cause Bind to crash, resulting in a denial of service. (CVE-2016-1286)");
-  script_tag(name: "affected", value: "bind9 on Ubuntu 15.10 ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"bind9 on Ubuntu 15.10,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "2925-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2925-1/");
+  script_xref(name:"USN", value:"2925-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2925-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -63,7 +63,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3632_1.nasl 9668 2018-04-28 08:25:13Z cfischer $
+# $Id: gb_ubuntu_USN_3632_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux-azure USN-3632-1
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843509");
-  script_version("$Revision: 9668 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-28 10:25:13 +0200 (Sat, 28 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 08:37:19 +0200 (Wed, 25 Apr 2018)");
   script_cve_id("CVE-2017-0861", "CVE-2017-1000407", "CVE-2017-15129", "CVE-2017-16994",
-                "CVE-2017-17448", "CVE-2017-17450", "CVE-2017-17741",  "CVE-2017-17805",
+                "CVE-2017-17448", "CVE-2017-17450", "CVE-2017-17741", "CVE-2017-17805",
                 "CVE-2017-17806", "CVE-2017-17807", "CVE-2018-1000026", "CVE-2018-5332",
                 "CVE-2018-5333", "CVE-2018-5344", "CVE-2018-8043");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux-azure USN-3632-1");
-  script_tag(name: "summary", value: "Check the version of linux-azure");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that a race condition
+  script_tag(name:"summary", value:"Check the version of linux-azure");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that a race condition
   leading to a use-after-free vulnerability existed in the ALSA PCM subsystem of
   the Linux kernel. A local attacker could use this to cause a denial of service
   (system crash) or possibly execute arbitrary code. (CVE-2017-0861) It was
@@ -76,11 +76,11 @@ if(description)
   could use this to cause a denial of service (interface unavailability).
   (CVE-2018-1000 ... Description truncated, for more information please check the
   Reference URL");
-  script_tag(name: "affected", value: "linux-azure on Ubuntu 16.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"linux-azure on Ubuntu 16.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3632-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3632-1/");
+  script_xref(name:"USN", value:"3632-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3632-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -93,7 +93,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

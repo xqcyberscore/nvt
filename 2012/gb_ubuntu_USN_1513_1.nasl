@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1513_1.nasl 9649 2018-04-27 08:45:50Z cfischer $
+# $Id: gb_ubuntu_USN_1513_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for libexif USN-1513-1
 #
@@ -30,16 +30,16 @@ include("revisions-lib.inc");
 
 if(description)
 {
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1513-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1513-1/");
   script_oid("1.3.6.1.4.1.25623.1.0.841092");
-  script_version("$Revision: 9649 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:45:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-07-26 11:10:08 +0530 (Thu, 26 Jul 2012)");
   script_cve_id("CVE-2012-2812", "CVE-2012-2813", "CVE-2012-2814", "CVE-2012-2836",
                 "CVE-2012-2837", "CVE-2012-2840", "CVE-2012-2841");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_xref(name: "USN", value: "1513-1");
+  script_xref(name:"USN", value:"1513-1");
   script_name("Ubuntu Update for libexif USN-1513-1");
 
   script_category(ACT_GATHER_INFO);
@@ -47,14 +47,14 @@ if(description)
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(10\.04 LTS|12\.04 LTS|11\.10|11\.04|8\.04 LTS)");
-  script_tag(name : "summary" , value : "Ubuntu Update for Linux kernel vulnerabilities USN-1513-1");
-  script_tag(name : "affected" , value : "libexif on Ubuntu 12.04 LTS ,
-  Ubuntu 11.10 ,
-  Ubuntu 11.04 ,
-  Ubuntu 10.04 LTS ,
+  script_tag(name:"summary", value:"Ubuntu Update for Linux kernel vulnerabilities USN-1513-1");
+  script_tag(name:"affected", value:"libexif on Ubuntu 12.04 LTS,
+  Ubuntu 11.10,
+  Ubuntu 11.04,
+  Ubuntu 10.04 LTS,
   Ubuntu 8.04 LTS");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "Mateusz Jurczyk discovered that libexif incorrectly parsed certain
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Mateusz Jurczyk discovered that libexif incorrectly parsed certain
   malformed EXIF tags. If a user or automated system were tricked into
   processing a specially crafted image file, an attacker could cause libexif
   to crash, leading to a denial of service, or possibly obtain sensitive
@@ -90,7 +90,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

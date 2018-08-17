@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuuo_devices_default_http_login.nasl 10984 2018-08-15 12:54:14Z mmartin $
+# $Id: gb_nuuo_devices_default_http_login.nasl 11026 2018-08-17 08:52:26Z cfischer $
 #
 # NUUO Network Video Recorder Default Credentials
 #
@@ -27,14 +27,14 @@
 
 CPE = 'cpe:/a:nuuo:nuuo';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105856");
-  script_version("$Revision: 10984 $");
+  script_version("$Revision: 11026 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("NUUO Network Video Recorder Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:54:14 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-08-08 19:16:36 +0200 (Mon, 08 Aug 2016)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -52,13 +52,14 @@ if (description)
   script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"qod_type", value:"remote_vul");
   script_mandatory_keys("nuuo/web/detected");
- exit(0);
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE, service:'www' ) ) exit( 0 );
 

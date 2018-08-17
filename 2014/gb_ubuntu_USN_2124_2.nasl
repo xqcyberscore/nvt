@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2124_2.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2124_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for openjdk-6 USN-2124-2
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841768");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-04-08 11:46:00 +0530 (Tue, 08 Apr 2014)");
   script_cve_id("CVE-2014-0411", "CVE-2013-5878", "CVE-2013-5907", "CVE-2014-0373",
                 "CVE-2014-0422", "CVE-2014-0428", "CVE-2013-5884", "CVE-2014-0368",
@@ -41,9 +41,9 @@ if(description)
   script_name("Ubuntu Update for openjdk-6 USN-2124-2");
 
 
-  script_tag(name : "affected" , value : "openjdk-6 on Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"openjdk-6 on Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name : "insight" , value : "USN-2124-1 fixed vulnerabilities in OpenJDK 6. Due to an
+  script_tag(name:"insight", value:"USN-2124-1 fixed vulnerabilities in OpenJDK 6. Due to an
 upstream regression, memory was not properly zeroed under certain circumstances
 which could lead to instability. This update fixes the problem.
 
@@ -81,11 +81,11 @@ In addition to the above, USN-2033-1 fixed several vulnerabilities and bugs
 in OpenJDK 6. This update introduced a regression which caused an exception
 condition in javax.xml when instantiating encryption algorithms. This
 update fixes the problem. We apologize for the inconvenience.");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2124-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2124-2/");
+  script_xref(name:"USN", value:"2124-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2124-2/");
   script_tag(name:"summary", value:"Check for the Version of openjdk-6");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -98,7 +98,7 @@ update fixes the problem. We apologize for the inconvenience.");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

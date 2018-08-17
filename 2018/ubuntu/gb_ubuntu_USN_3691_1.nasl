@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3691_1.nasl 10303 2018-06-22 13:17:13Z cfischer $
+# $Id: gb_ubuntu_USN_3691_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for openjdk-7 USN-3691-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843568");
-  script_version("$Revision: 10303 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-22 15:17:13 +0200 (Fri, 22 Jun 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-22 05:50:51 +0200 (Fri, 22 Jun 2018)");
-  script_cve_id("CVE-2018-2790", "CVE-2018-2794", "CVE-2018-2795", "CVE-2018-2796", 
+  script_cve_id("CVE-2018-2790", "CVE-2018-2794", "CVE-2018-2795", "CVE-2018-2796",
                 "CVE-2018-2797", "CVE-2018-2798", "CVE-2018-2799", "CVE-2018-2800",
-                "CVE-2018-2814", "CVE-2018-2815"); 
+                "CVE-2018-2814", "CVE-2018-2815");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
@@ -93,7 +93,7 @@ attacker could use this to cause a denial of service (memory exhaustion).
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3691-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3691-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3691-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -106,7 +106,7 @@ attacker could use this to cause a denial of service (memory exhaustion).
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

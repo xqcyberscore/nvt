@@ -26,24 +26,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843162");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-05-15 17:55:28 +0200 (Mon, 15 May 2017)");
   script_cve_id("CVE-2017-8422");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for kde4libs USN-3286-1");
-  script_tag(name: "summary", value: "Check the version of kde4libs");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Sebastian Krahmer discovered that the
+  script_tag(name:"summary", value:"Check the version of kde4libs");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Sebastian Krahmer discovered that the
   KDE-Libs Kauth component incorrectly checked services invoking D-Bus. A local
   attacker could use this issue to gain root privileges.");
-  script_tag(name: "affected", value: "kde4libs on Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"kde4libs on Ubuntu 14.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3286-1");
-  script_xref(name: "URL" , value: "https://www.ubuntu.com/usn/usn-3286-1");
+  script_xref(name:"USN", value:"3286-1");
+  script_xref(name:"URL", value:"https://www.ubuntu.com/usn/usn-3286-1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -56,7 +56,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

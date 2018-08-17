@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_confluence_55509.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_atlassian_confluence_55509.nasl 11039 2018-08-17 12:26:47Z cfischer $
 #
 # Atlassian Confluence Error Page Cross Site Scripting Vulnerability
 #
@@ -24,13 +24,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:atlassian:confluence";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103569");
   script_bugtraq_id(55509);
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11039 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 
@@ -39,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55509");
   script_xref(name:"URL", value:"http://www.atlassian.com/software/confluence/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 14:26:47 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-09-18 11:53:40 +0200 (Tue, 18 Sep 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -49,17 +50,18 @@ if (description)
   script_dependencies("gb_atlassian_confluence_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("atlassian_confluence/installed");
+
   script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+
   script_tag(name:"summary", value:"Atlassian Confluence is prone to a cross-site scripting vulnerability
-because it fails to sufficiently sanitize user-supplied data.
+  because it fails to sufficiently sanitize user-supplied data.");
 
-An attacker may leverage this issue to execute arbitrary script code
-in the browser of an unsuspecting user in the context of the affected
-site. This may allow the attacker to steal cookie-based authentication
-credentials and to launch other attacks.
+  script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script code
+  in the browser of an unsuspecting user in the context of the affected site. This may allow the attacker
+  to steal cookie-based authentication credentials and to launch other attacks.");
 
-Atlassian Confluence versions prior to 4.1.9 are vulnerable.");
-  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"affected", value:"Atlassian Confluence versions prior to 4.1.9 are vulnerable.");
+
   exit(0);
 }
 
@@ -76,11 +78,9 @@ js = urlencode(str:'<IFRAME SRC="javascript:alert(/openvas-xss-test/)">',unreser
 url = dir + '/pages/includes/status-list-mo' + js + '.vm';
 
 if(http_vuln_check(port:port, url:url,pattern:'<IFRAME SRC="javascript:alert\\(/openvas-xss-test/\\)">',check_header:TRUE)) {
-
-  security_message(port:port);
+  report = report_vuln_url(port:port, url:url);
+  security_message(port:port, data:report);
   exit(0);
-
 }
 
-exit(0);
-
+exit(99);

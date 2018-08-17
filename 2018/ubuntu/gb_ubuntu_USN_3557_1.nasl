@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3557_1.nasl 9655 2018-04-27 09:23:07Z cfischer $
+# $Id: gb_ubuntu_USN_3557_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for squid3 USN-3557-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843441");
-  script_version("$Revision: 9655 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:23:07 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-02-06 07:54:09 +0100 (Tue, 06 Feb 2018)");
   script_cve_id("CVE-2016-2569", "CVE-2016-2570", "CVE-2016-2571", "CVE-2016-3948",
                 "CVE-2018-1000024", "CVE-2018-1000027");
@@ -36,9 +36,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for squid3 USN-3557-1");
-  script_tag(name: "summary", value: "Check the version of squid3");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Mathias Fischer discovered that Squid
+  script_tag(name:"summary", value:"Check the version of squid3");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Mathias Fischer discovered that Squid
   incorrectly handled certain long strings in headers. A malicious remote server
   could possibly cause Squid to crash, resulting in a denial of service. This
   issue was only addressed in Ubuntu 16.04 LTS. (CVE-2016-2569) William Lima
@@ -58,13 +58,13 @@ if(description)
   discovered that Squid incorrectly handled certain Edge Side Includes (ESI)
   responses. A malicious remote server could possibly cause Squid to crash,
   resulting in a denial of service. (CVE-2018-1000027)");
-  script_tag(name: "affected", value: "squid3 on Ubuntu 17.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"squid3 on Ubuntu 17.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3557-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3557-1/");
+  script_xref(name:"USN", value:"3557-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3557-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -77,7 +77,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

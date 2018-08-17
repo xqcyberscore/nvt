@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1923_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_1923_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for gnupg USN-1923-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841526");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-08 11:48:18 +0530 (Thu, 08 Aug 2013)");
   script_cve_id("CVE-2013-4242");
   script_tag(name:"cvss_base", value:"1.9");
@@ -38,20 +38,20 @@ if(description)
   script_name("Ubuntu Update for gnupg USN-1923-1");
 
 
-  script_tag(name : "affected" , value : "gnupg on Ubuntu 13.04 ,
-  Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"gnupg on Ubuntu 13.04,
+  Ubuntu 12.10,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name : "insight" , value : "Yuval Yarom and Katrina Falkner discovered a timing-based information leak,
+  script_tag(name:"insight", value:"Yuval Yarom and Katrina Falkner discovered a timing-based information leak,
 known as Flush+Reload, that could be used to trace execution in programs.
 GnuPG and Libgcrypt followed different execution paths based on key-related
 data, which could be used to expose the contents of private keys.");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "1923-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1923-1/");
-  script_tag(name: "summary" , value: "Check for the Version of gnupg");
+  script_xref(name:"USN", value:"1923-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1923-1/");
+  script_tag(name:"summary", value:"Check for the Version of gnupg");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
@@ -63,7 +63,7 @@ data, which could be used to expose the contents of private keys.");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

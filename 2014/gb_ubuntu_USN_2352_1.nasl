@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2352_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2352_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for dbus USN-2352-1
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841972");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-23 05:53:39 +0200 (Tue, 23 Sep 2014)");
   script_cve_id("CVE-2014-3635", "CVE-2014-3636", "CVE-2014-3637", "CVE-2014-3638",
                 "CVE-2014-3639");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
   script_name("Ubuntu Update for dbus USN-2352-1");
-  script_tag(name: "insight", value: "Simon McVittie discovered that DBus
+  script_tag(name:"insight", value:"Simon McVittie discovered that DBus
 incorrectly handled the file descriptors message limit. A local attacker
 could use this issue to cause DBus to crash, resulting in a denial of
 service, or possibly execute arbitrary code. This issue only applied to
@@ -61,15 +61,15 @@ Alban Crequy discovered that DBus incorrectly handled incomplete
 connections. A local attacker could use this issue to cause DBus to fail
 legitimate connection attempts, resulting in a denial of service.
 (CVE-2014-3639)");
-  script_tag(name: "affected", value: "dbus on Ubuntu 14.04 LTS ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"dbus on Ubuntu 14.04 LTS,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "USN", value: "2352-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2352-1/");
+  script_xref(name:"USN", value:"2352-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2352-1/");
   script_tag(name:"summary", value:"Check for the Version of dbus");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -82,7 +82,7 @@ legitimate connection attempts, resulting in a denial of service.
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

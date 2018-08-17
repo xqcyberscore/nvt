@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3724_1.nasl 10662 2018-07-27 13:43:28Z cfischer $
+# $Id: gb_ubuntu_USN_3724_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for evolution-data-server USN-3724-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843600");
-  script_version("$Revision: 10662 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 15:43:28 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-27 06:00:29 +0200 (Fri, 27 Jul 2018)");
   script_cve_id("CVE-2016-10727");
   script_tag(name:"cvss_base", value:"5.0");
@@ -42,12 +42,12 @@ on the target host.");
 Server would automatically downgrade a connection to an IMAP server if the IMAP
 server did not support SSL. This would result in the user's password being
 unexpectedly sent in clear text, even though the user had requested to use SSL.");
-  script_tag(name:"affected", value:"evolution-data-server on Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"evolution-data-server on Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3724-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3724-1/");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3724-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -60,7 +60,7 @@ unexpectedly sent in clear text, even though the user had requested to use SSL."
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

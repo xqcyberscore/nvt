@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_storage_resource_monitor_mult_sql_inj_vuln.nasl 9425 2018-04-10 12:38:38Z cfischer $
+# $Id: gb_solarwinds_storage_resource_monitor_mult_sql_inj_vuln.nasl 11026 2018-08-17 08:52:26Z cfischer $
 #
 # SolarWinds Storage Resource Monitor Multiple SQL injection vulnerabilities
 #
@@ -29,34 +29,34 @@ CPE = "cpe:/a:solarwinds:storage_resource_monitor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809427");
-  script_version("$Revision: 9425 $");
+  script_version("$Revision: 11026 $");
   script_cve_id("CVE-2016-4350");
   script_bugtraq_id(89557);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-10 14:38:38 +0200 (Tue, 10 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-10-03 15:36:59 +0530 (Mon, 03 Oct 2016)");
   script_name("SolarWinds Storage Resource Monitor Multiple SQL injection vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with SolarWinds Storage
+  script_tag(name:"summary", value:"The host is installed with SolarWinds Storage
   Resource Monitor and is prone to multiple SQL injection vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted HTTP GET request and check
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check
   whether it is able to execute sql query or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to Web Services
+  script_tag(name:"insight", value:"Multiple flaws exist due to Web Services
   web server does not validate state parameter properly.
   Refer to reference links for more information.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary SQL commands.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"SolarWinds Storage Resource Monitor
+  script_tag(name:"affected", value:"SolarWinds Storage Resource Monitor
   before 6.2.3");
 
-  script_tag(name: "solution" , value:"Upgrade to SolarWinds Storage Resource
+  script_tag(name:"solution", value:"Upgrade to SolarWinds Storage Resource
   Monitor 6.2.3 or later.
 
   For updates refer to http://www.solarwinds.com");
@@ -65,9 +65,9 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_probe");
 
-  script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-16-253");
-  script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-16-259");
-  script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-16-262");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-16-253");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-16-259");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-16-262");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -75,22 +75,15 @@ if(description)
   script_dependencies("gb_solarwinds_storage_resource_monitor_detect.nasl");
   script_mandatory_keys("storage_manager/Installed");
   script_require_ports("Services/www", 9000);
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
-## Variable initialization
-srmport = 0;
-req = "";
-buf = "";
-cookie = "";
-res = "";
-
-## Get Port
 if(!srmport = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -108,7 +101,6 @@ req = http_post_req( port:srmport,
 
 buf = http_keepalive_send_recv( port:srmport, data:req, bodyonly:FALSE );
 
-##confirm the application
 if(buf =~ "HTTP/1\.. 200" && "SolarWinds - Storage Manager" ><  buf)
 {
   cookie = eregmatch( pattern:"Set-Cookie: ([0-9a-zA-Z=]+);", string:buf );
@@ -122,7 +114,7 @@ if(buf =~ "HTTP/1\.. 200" && "SolarWinds - Storage Manager" ><  buf)
   if(http_vuln_check(port:srmport, url:url, check_header:TRUE, cookie: cookie[1],
                    pattern:"SQL-INJECTION-TEST",
                    extra_check:make_list(">Enterprise Report<", ">Storage Manager<")))
-  { 
+  {
     report = report_vuln_url(port:srmport, url:url);
     security_message(port:srmport, data:report);
     exit(0);

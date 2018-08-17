@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843132");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-04-21 06:43:11 +0200 (Fri, 21 Apr 2017)");
   script_cve_id("CVE-2016-10028", "CVE-2016-10029", "CVE-2016-10155", "CVE-2016-7907",
                 "CVE-2016-8667", "CVE-2016-8669", "CVE-2016-9381", "CVE-2016-9602",
@@ -43,9 +43,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for qemu USN-3261-1");
-  script_tag(name: "summary", value: "Check the version of qemu");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Zhenhao Hong discovered that QEMU
+  script_tag(name:"summary", value:"Check the version of qemu");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Zhenhao Hong discovered that QEMU
 incorrectly handled the Virtio GPU device. An attacker inside the guest could use
 this issue to cause QEMU to crash, resulting in a denial of service. This issue only
 affected Ubuntu 16.04 LTS and Ubuntu 16.10. (CVE-2016-10028, CVE-2016-10029)
@@ -94,13 +94,13 @@ Li Qiang discovered that QEMU incorrectly handled the Virtio GPU device. An
 attacker inside the guest could use this iss ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "qemu on Ubuntu 16.10 ,
-  Ubuntu 16.04 LTS ,
+  script_tag(name:"affected", value:"qemu on Ubuntu 16.10,
+  Ubuntu 16.04 LTS,
   Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3261-1");
-  script_xref(name: "URL" , value: "https://www.ubuntu.com/usn/USN-3261-1");
+  script_xref(name:"USN", value:"3261-1");
+  script_xref(name:"URL", value:"https://www.ubuntu.com/usn/USN-3261-1");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -113,7 +113,7 @@ attacker inside the guest could use this iss ...
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

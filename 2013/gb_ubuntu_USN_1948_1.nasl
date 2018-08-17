@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1948_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_1948_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for python-httplib2 USN-1948-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841551");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-09-12 11:49:03 +0530 (Thu, 12 Sep 2013)");
   script_cve_id("CVE-2013-2037");
   script_tag(name:"cvss_base", value:"2.6");
@@ -38,22 +38,22 @@ if(description)
   script_name("Ubuntu Update for python-httplib2 USN-1948-1");
 
 
-  script_tag(name : "affected" , value : "python-httplib2 on Ubuntu 13.04 ,
-  Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"python-httplib2 on Ubuntu 13.04,
+  Ubuntu 12.10,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name : "insight" , value : "It was discovered that httplib2 only validated SSL certificates on the
+  script_tag(name:"insight", value:"It was discovered that httplib2 only validated SSL certificates on the
 first request to a connection, and didn't report validation failures on
 subsequent requests. If a remote attacker were able to perform a
 man-in-the-middle attack, this flaw could possibly be exploited in certain
 scenarios to alter or compromise confidential information in applications
 that used the httplib2 library.");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "1948-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1948-1/");
-  script_tag(name: "summary" , value: "Check for the Version of python-httplib2");
+  script_xref(name:"USN", value:"1948-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1948-1/");
+  script_tag(name:"summary", value:"Check for the Version of python-httplib2");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
@@ -65,7 +65,7 @@ that used the httplib2 library.");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

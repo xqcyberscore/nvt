@@ -26,28 +26,28 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842613");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-01-21 06:14:38 +0100 (Thu, 21 Jan 2016)");
   script_cve_id("CVE-2016-1572");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for ecryptfs-utils USN-2876-1");
-  script_tag(name: "summary", value: "Check the version of ecryptfs-utils");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Jann Horn discovered that
+  script_tag(name:"summary", value:"Check the version of ecryptfs-utils");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Jann Horn discovered that
   mount.ecryptfs_private would mount over certain directories in the proc
   filesystem. A local attacker could use this to escalate their privileges.
   (CVE-2016-1572)");
-  script_tag(name: "affected", value: "ecryptfs-utils on Ubuntu 15.10 ,
-  Ubuntu 15.04 ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"ecryptfs-utils on Ubuntu 15.10,
+  Ubuntu 15.04,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "2876-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2876-1/");
+  script_xref(name:"USN", value:"2876-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2876-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -60,7 +60,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842779");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-06-02 05:21:18 +0200 (Thu, 02 Jun 2016)");
   script_cve_id("CVE-2016-2117", "CVE-2015-4004", "CVE-2016-2069", "CVE-2016-2187",
  		"CVE-2016-3672", "CVE-2016-3951", "CVE-2016-3955", "CVE-2016-4485",
@@ -36,9 +36,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-2989-1");
-  script_tag(name: "summary", value: "Check the version of linux");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Justin Yackoski discovered that the Atheros
+  script_tag(name:"summary", value:"Check the version of linux");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Justin Yackoski discovered that the Atheros
   L2 Ethernet Driver in the Linux kernel incorrectly enables scatter/gather I/O.
   A remote attacker could use this to obtain potentially sensitive information from
   kernel memory. (CVE-2016-2117)
@@ -87,11 +87,11 @@ if(description)
   It was discovered that in some situations the Linux kernel did not handle
   propagated mounts correctly. A local unprivileged attacker could use this
   to cause a denial of service (system crash). (CVE-2016-4581)");
-  script_tag(name: "affected", value: "linux on Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"linux on Ubuntu 14.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "2989-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2989-1/");
+  script_xref(name:"USN", value:"2989-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2989-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -104,7 +104,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

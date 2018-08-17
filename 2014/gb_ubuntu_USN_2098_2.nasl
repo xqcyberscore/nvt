@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2098_2.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2098_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for libyaml USN-2098-2
 #
@@ -29,18 +29,18 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841710");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-02-17 11:40:03 +0530 (Mon, 17 Feb 2014)");
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:C/I:C/A:C");
   script_name("Ubuntu Update for libyaml USN-2098-2");
 
 
-  script_tag(name : "affected" , value : "libyaml on Ubuntu 13.10 ,
-  Ubuntu 12.10 ,
+  script_tag(name:"affected", value:"libyaml on Ubuntu 13.10,
+  Ubuntu 12.10,
   Ubuntu 12.04 LTS");
-  script_tag(name : "insight" , value : "USN-2098-1 fixed a vulnerability in LibYAML. The security
+  script_tag(name:"insight", value:"USN-2098-1 fixed a vulnerability in LibYAML. The security
 fix used introduced a regression that caused parsing failures for certain
 valid YAML files. This update fixes the problem.
 
@@ -51,11 +51,11 @@ Original advisory details:
 Florian Weimer discovered that LibYAML incorrectly handled certain large
 yaml documents. An attacker could use this issue to cause LibYAML to crash,
 resulting in a denial of service, or possibly execute arbitrary code.");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2098-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2098-2/");
+  script_xref(name:"USN", value:"2098-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2098-2/");
   script_tag(name:"summary", value:"Check for the Version of libyaml");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -68,7 +68,7 @@ resulting in a denial of service, or possibly execute arbitrary code.");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

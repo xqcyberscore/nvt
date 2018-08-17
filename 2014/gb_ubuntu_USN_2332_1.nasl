@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2332_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2332_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux USN-2332-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841947");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-03 05:54:56 +0200 (Wed, 03 Sep 2014)");
   script_cve_id("CVE-2014-0203", "CVE-2014-4508", "CVE-2014-4652", "CVE-2014-4653",
                 "CVE-2014-4654", "CVE-2014-4655", "CVE-2014-4656", "CVE-2014-4667",
@@ -40,8 +40,8 @@ if(description)
   script_name("Ubuntu Update for linux USN-2332-1");
 
 
-  script_tag(name : "affected" , value : "linux on Ubuntu 10.04 LTS");
-  script_tag(name : "insight" , value : "A bug was discovered in the handling of pathname components
+  script_tag(name:"affected", value:"linux on Ubuntu 10.04 LTS");
+  script_tag(name:"insight", value:"A bug was discovered in the handling of pathname components
 when used with an autofs direct mount. A local user could exploit this flaw to
 cause a denial of service (system crash) via an open system call. (CVE-2014-0203)
 
@@ -81,11 +81,11 @@ packet. (CVE-2014-4667)
 Jason Gunthorpe reported a flaw with SCTP authentication in the Linux
 kernel. A remote attacker could exploit this flaw to cause a denial of
 service (NULL pointer dereference and OOPS). (CVE-2014-5077)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2332-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2332-1/");
+  script_xref(name:"USN", value:"2332-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2332-1/");
   script_tag(name:"summary", value:"Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -98,7 +98,7 @@ service (NULL pointer dereference and OOPS). (CVE-2014-5077)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

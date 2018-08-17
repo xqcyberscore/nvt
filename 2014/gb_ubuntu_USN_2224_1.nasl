@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2224_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2224_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux-lts-raring USN-2224-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841836");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-06-02 15:44:18 +0530 (Mon, 02 Jun 2014)");
   script_cve_id("CVE-2014-1738", "CVE-2014-1737", "CVE-2014-0055", "CVE-2014-0077",
                 "CVE-2014-0101", "CVE-2014-2309", "CVE-2014-2523", "CVE-2014-2672",
@@ -40,8 +40,8 @@ if(description)
   script_name("Ubuntu Update for linux-lts-raring USN-2224-1");
 
 
-  script_tag(name : "affected" , value : "linux-lts-raring on Ubuntu 12.04 LTS");
-  script_tag(name : "insight" , value : "Matthew Daley reported an information leak in the floppy disk
+  script_tag(name:"affected", value:"linux-lts-raring on Ubuntu 12.04 LTS");
+  script_tag(name:"insight", value:"Matthew Daley reported an information leak in the floppy disk
 driver of the Linux kernel. An unprivileged local user could exploit this flaw
 to obtain potentially sensitive information from kernel memory. (CVE-2014-1738)
 
@@ -93,11 +93,11 @@ crash) or possibly gain privileges via a crafted application.
 Sasha Levin reported a bug in the Linux kernel's virtual memory management
 subsystem. An unprivileged local user could exploit this flaw to cause a
 denial of service (system crash). (CVE-2014-3122)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2224-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2224-1/");
+  script_xref(name:"USN", value:"2224-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2224-1/");
   script_tag(name:"summary", value:"Check for the Version of linux-lts-raring");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -110,7 +110,7 @@ denial of service (system crash). (CVE-2014-3122)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

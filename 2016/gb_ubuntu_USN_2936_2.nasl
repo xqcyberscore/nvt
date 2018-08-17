@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842728");
-  script_version("$Revision: 9653 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:15:50 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-05-06 15:29:29 +0530 (Fri, 06 May 2016)");
   script_cve_id("CVE-2016-2804", "CVE-2016-2806", "CVE-2016-2807", "CVE-2016-2808",
 		"CVE-2016-2811", "CVE-2016-2812", "CVE-2016-2814", "CVE-2016-2816",
@@ -36,9 +36,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for oxygen-gtk3 USN-2936-2");
-  script_tag(name: "summary", value: "Check the version of oxygen-gtk3");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "USN-2936-1 fixed vulnerabilities in Firefox.
+  script_tag(name:"summary", value:"Check the version of oxygen-gtk3");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"USN-2936-1 fixed vulnerabilities in Firefox.
   The update caused Firefox to crash on startup with the Oxygen GTK theme due to
   a pre-existing bug in the Oxygen-GTK3 theme engine. This update fixes the problem.
 
@@ -88,11 +88,11 @@ if(description)
   vulnerability allowed the injection of web content in the remote-report
   iframe, an attacker could potentially exploit this to change the user's
   sharing preferences. (CVE-2016-2820)");
-  script_tag(name: "affected", value: "oxygen-gtk3 on Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"affected", value:"oxygen-gtk3 on Ubuntu 12.04 LTS");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "2936-2");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2936-2/");
+  script_xref(name:"USN", value:"2936-2");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2936-2/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -105,7 +105,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

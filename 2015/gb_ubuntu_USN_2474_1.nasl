@@ -26,26 +26,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842049");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-01-23 12:58:08 +0100 (Fri, 23 Jan 2015)");
   script_cve_id("CVE-2014-8150");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("Ubuntu Update for curl USN-2474-1");
-  script_tag(name: "summary", value: "Check the version of curl");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Andrey Labunets discovered that curl
+  script_tag(name:"summary", value:"Check the version of curl");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Andrey Labunets discovered that curl
 incorrectly handled certain URLs when using a proxy server. If a user or
 automated system were tricked into using a specially crafted URL, an attacker
 could possibly use this issue to inject arbitrary HTTP requests.");
-  script_tag(name: "affected", value: "curl on Ubuntu 14.10 ,
-  Ubuntu 14.04 LTS ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"curl on Ubuntu 14.10,
+  Ubuntu 14.04 LTS,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2474-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2474-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2474-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2474-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
   script_category(ACT_GATHER_INFO);
@@ -59,7 +59,7 @@ could possibly use this issue to inject arbitrary HTTP requests.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

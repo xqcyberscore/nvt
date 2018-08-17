@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2006_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_2006_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for mysql-5.5 USN-2006-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841596");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-10-29 16:18:35 +0530 (Tue, 29 Oct 2013)");
   script_cve_id("CVE-2013-3839", "CVE-2013-5807");
   script_tag(name:"cvss_base", value:"4.9");
@@ -38,11 +38,11 @@ if(description)
   script_name("Ubuntu Update for mysql-5.5 USN-2006-1");
 
 
-  script_tag(name : "affected" , value : "mysql-5.5 on Ubuntu 13.04 ,
-  Ubuntu 12.10 ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"mysql-5.5 on Ubuntu 13.04,
+  Ubuntu 12.10,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name : "insight" , value : "Multiple security issues were discovered in MySQL and this update includes
+  script_tag(name:"insight", value:"Multiple security issues were discovered in MySQL and this update includes
 new upstream MySQL versions to fix these issues.
 
 MySQL has been updated to 5.1.72 in Ubuntu 10.04 LTS. Ubuntu 12.04 LTS,
@@ -56,12 +56,12 @@ Please see the following for more information:
 <A HREF='http://dev.mysql.com/doc/relnotes/mysql/5.1/en/news-5-1-72.html'>http://dev.mysql.com/doc/relnotes/mysql/5.1/en/news-5-1-72.html</A>
 <A HREF='http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-34.html'>http://dev.mysql.com/doc/relnotes/mysql/5.5/en/news-5-5-34.html</A>
 <A HREF='http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html'>http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html</A>");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2006-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2006-1/");
-  script_tag(name: "summary" , value: "Check for the Version of mysql-5.5");
+  script_xref(name:"USN", value:"2006-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2006-1/");
+  script_tag(name:"summary", value:"Check for the Version of mysql-5.5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
@@ -73,7 +73,7 @@ Please see the following for more information:
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

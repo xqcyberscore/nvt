@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-063.nasl 11011 2018-08-16 14:14:31Z mmartin $
+# $Id: secpod_ms13-063.nasl 11041 2018-08-17 14:03:47Z mmartin $
 #
 # Microsoft Windows Kernel Privilege Elevation Vulnerabilities (2859537)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902990");
-  script_version("$Revision: 11011 $");
+  script_version("$Revision: 11041 $");
   script_cve_id("CVE-2013-2556", "CVE-2013-3196", "CVE-2013-3197", "CVE-2013-3198");
   script_bugtraq_id(58566, 61682, 61683, 1684);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-14 08:43:13 +0530 (Wed, 14 Aug 2013)");
   script_name("Microsoft Windows Kernel Privilege Elevation Vulnerabilities (2859537)");
 
@@ -120,7 +120,6 @@ else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
   exit(0);
 }
 
-## Windows 7 and Windows Server 2008 R2
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
   if(version_is_less(version:exeVer, test_version:"6.1.7601.18205") ||

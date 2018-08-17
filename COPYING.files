@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 17 Aug 2018 10:54:17 +0200
+# Automatically created on:  Fri, 17 Aug 2018 17:23:25 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -223,7 +223,6 @@
 2008/nisd_overflow.nasl: GPLv2
 2008/openoffice_CB-A08-0068.nasl: GPLv2
 2008/packeteer_packetshaper_web_dos.nasl: GPLv2
-2008/patchlink_detection.nasl: GPLv2
 2008/phpeasydownload_code_injection.nasl: GPLv2
 2008/php_fusion_6_00_206_sql_injection.nasl: GPLv2
 2008/phplistpro_remote_file_include.nasl: GPLv2
@@ -238,7 +237,6 @@
 2008/sambar_default_accounts.nasl: GPLv2
 2008/sambar_info_disclosure.nasl: GPLv2
 2008/sambar_xss.nasl: GPLv2
-2008/savce_installed.nasl: GPLv2
 2008/sdbsearch.nasl: GPLv2
 2008/secpod_adobe_pagemaker_mult_bof_vuln_900168.nasl: GPLv2+
 2008/secpod_adobe_presenter_xss_vuln_900110.nasl: GPLv2+
@@ -837,7 +835,6 @@
 2009/gb_outreach_project_tool_rfi_vuln.nasl: GPLv2+
 2009/gb_panda_prdts_priv_esc_vuln.nasl: GPLv2+
 2009/gb_peazip_code_exec_vuln.nasl: GPLv2+
-2009/gb_peazip_detect_lin.nasl: GPLv2+
 2009/gb_pegasus_mail_pop3_bof_vuln.nasl: GPLv2+
 2009/gb_perl_utf8_regex_dos_vuln_win.nasl: GPLv2+
 2009/gb_pgp_desktop_dos_vuln.nasl: GPLv2+
@@ -1455,7 +1452,6 @@
 2009/secpod_opendocman_xss_n_sql_inj_vuln.nasl: GPLv2+
 2009/secpod_openfire_mult_vuln_mar09.nasl: GPLv2+
 2009/secpod_openforum_auth_bypass_vuln.nasl: GPLv2+
-2009/secpod_openjdk_detect.nasl: GPLv2+
 2009/secpod_openoffice_dos_vuln_lin.nasl: GPLv2+
 2009/secpod_openoffice_dos_vuln_win.nasl: GPLv2+
 2009/secpod_openoffice_emf_file_parser_vuln_lin.nasl: GPLv2+
@@ -1622,7 +1618,6 @@
 2009/secpod_wordpress_sec_bypass_vuln.nasl: GPLv2+
 2009/secpod_wordpress_wptrackback_dos_vuln.nasl: GPLv2+
 2009/secpod_wow_raid_manager_xss_vuln.nasl: GPLv2+
-2009/secpod_wsftp_win_detect.nasl: GPLv2+
 2009/secpod_xampp_mult_csrf_vuln.nasl: GPLv2+
 2009/secpod_xilisoft_video_conv_bof_vuln.nasl: GPLv2+
 2009/secpod_xitami_mult_format_string_vuln.nasl: GPLv2+
@@ -4937,7 +4932,6 @@
 2011/gb_freefloat_ftp_rest_cmd_bof_vuln.nasl: GPLv2+
 2011/gb_freewebshop_50694.nasl: GPLv2+
 2011/gb_fsecure_internet_gatekeeper_46381.nasl: GPLv2+
-2011/gb_fsecure_internet_gatekeeper_detect.nasl: GPLv2+
 2011/gb_fsecure_policy_manager_xss_n_path_disc_vuln.nasl: GPLv2+
 2011/gb_ftpgetter_pasv_bof_vuln.nasl: GPLv2+
 2011/gb_galilery_46506.nasl: GPLv2+
@@ -40592,6 +40586,7 @@
 2018/hp/gb_hpe_operations_orchestration_rce_vuln_hpesbgn03767.nasl: GPLv2+
 2018/hp/gb_hp_pagewide_officejet_printers_rce_vuln.nasl: GPLv2+
 2018/hp/gb_hp_printers_dll_validation_flaw.nasl: GPLv2+
+2018/hp/gb_hp_printers_fax_rce_vuln.nasl: GPLv2+
 2018/hp/gb_hp_printers_inf_disc.nasl: GPLv2+
 2018/hp/gb_hp_printers_xss_vuln.nasl: GPLv2+
 2018/hp/gb_hp_support_assistant_priv_escal_vuln_win.nasl: GPLv2+
@@ -41886,6 +41881,7 @@ adaptbb_detect.nasl: GPLv2+
 AfterLogic_WebMail_Pro_detect.nasl: GPLv2+
 alcatel_backdoor_switch.nasl: GPLv2
 amanda_detect.nasl: GPLv2
+amanda_version.nasl: GPLv2
 apache_server_info.nasl: GPLv2
 apache_SSL_complain.nasl: GPLv2
 apcnisd_detect.nasl: GPLv2+
@@ -42568,6 +42564,7 @@ gb_freerdp_detect_lin.nasl: GPLv2+
 gb_freeswitch_detect.nasl: GPLv2+
 gb_frontier_silicon_radio_detect.nasl: GPLv2+
 gb_froxlor_detect.nasl: GPLv2+
+gb_fsecure_internet_gatekeeper_detect.nasl: GPLv2+
 gb_fsecure_prdts_detect_lin.nasl: GPLv2+
 gb_fsecure_prdts_detect_win.nasl: GPLv2+
 gb_ftp_os_detection.nasl: GPLv2+
@@ -43152,6 +43149,7 @@ gb_particle_wiki_detect.nasl: GPLv2+
 gb_passman_detect.nasl: GPLv2+
 gb_paypal_merchant-sdk-php_detect.nasl: GPLv2+
 gb_pcworx_detect.nasl: GPLv2+
+gb_peazip_detect_lin.nasl: GPLv2+
 gb_peazip_detect_win.nasl: GPLv2+
 gb_pecio_cms_detect.nasl: GPLv2+
 gb_pegasus_mail_detect.nasl: GPLv2+
@@ -60529,6 +60527,7 @@ joomla_detect.nasl: GPLv2+
 junos.inc: GPLv2+
 kb_2_sc.nasl: GPLv2+
 kerio_firewall_admin_port.nasl: GPLv2
+kerio_wrf_management_detection.nasl: GPLv2
 kyocera_printers.inc: GPLv2+
 landesk_detect.nasl: GPLv2+
 lcdproc_detect.nasl: GPLv2
@@ -60943,6 +60942,7 @@ packeteer_web_detect.nasl: GPLv2
 packeteer_web_login.nasl: GPLv2
 packeteer_web_version.nasl: GPLv2
 panda_av_update_detect.nasl: GPLv2+
+patchlink_detection.nasl: GPLv2
 PC_anywhere_tcp.nasl: GPLv2
 pdns_version.nasl: GPLv2+
 perforce_detect.nasl: GPLv2+
@@ -61559,7 +61559,6 @@ pre2008/allegro_dos.nasl: GPLv2
 pre2008/Allied_Telesyn_telnet.nasl: GPLv2
 pre2008/Allied_Telesyn_web.nasl: GPLv2
 pre2008/alya.nasl: GPLv2
-pre2008/amanda_version.nasl: GPLv2
 pre2008/anaconda_doublenull.nasl: GPLv2
 pre2008/anti_nessus.nasl: GPLv2
 pre2008/aol_installed.nasl: GPLv2
@@ -61975,7 +61974,6 @@ pre2008/keene_xss.nasl: GPLv2
 pre2008/kerio_mailserver_admin_port.nasl: GPLv2
 pre2008/kerio_PF_buffer_overflow.nasl: GPLv2
 pre2008/kerio_winroute_admin_port.nasl: GPLv2
-pre2008/kerio_wrf_management_detection.nasl: GPLv2
 pre2008/knowledge_builder_code_execution.nasl: GPLv2
 pre2008/korgo.nasl: GPLv2
 pre2008/kuang2_the_virus.nasl: GPLv2
@@ -62689,6 +62687,7 @@ rt_detect.nasl: GPLv2+
 rtsp_detect.nasl: GPLv2
 sahana_detect.nasl: GPLv2+
 sap.inc: GPLv2+
+savce_installed.nasl: GPLv2
 secpod_activex.inc: GPLv2+
 secpod_admin_news_tools_detect.nasl: GPLv2+
 secpod_adobe_dreamweaver_detect.nasl: GPLv2+
@@ -62832,6 +62831,7 @@ secpod_ocs_inventory_ng_detect.nasl: GPLv2+
 secpod_office_products_version_900032.nasl: GPLv2+
 secpod_opendocman_detect.nasl: GPLv2+
 secpod_openforum_detect.nasl: GPLv2+
+secpod_openjdk_detect.nasl: GPLv2+
 secpod_openoffice_detect_lin.nasl: GPLv2+
 secpod_openoffice_detect_win.nasl: GPLv2+
 secpod_opensc_detect_win.nasl: GPLv2+
@@ -62934,6 +62934,7 @@ secpod_woltlab_burning_board_detect.nasl: GPLv2+
 secpod_wordpress_detect_900182.nasl: GPLv2+
 secpod_wow_raid_manager_detect.nasl: GPLv2+
 secpod_ws_ftp_client_detect.nasl: GPLv2+
+secpod_wsftp_win_detect.nasl: GPLv2+
 secpod_xampp_detect.nasl: GPLv2+
 secpod_xilisoft_video_conv_detect.nasl: GPLv2+
 secpod_xitami_server_detect.nasl: GPLv2+

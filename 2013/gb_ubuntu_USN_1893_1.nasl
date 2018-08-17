@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_1893_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_1893_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for subversion USN-1893-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841492");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-07-02 10:20:46 +0530 (Tue, 02 Jul 2013)");
   script_cve_id("CVE-2013-1845", "CVE-2013-1846", "CVE-2013-1847", "CVE-2013-1849",
                 "CVE-2013-1884", "CVE-2013-1968", "CVE-2013-2112");
@@ -38,19 +38,19 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_name("Ubuntu Update for subversion USN-1893-1");
 
-  script_xref(name: "USN", value: "1893-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-1893-1/");
+  script_xref(name:"USN", value:"1893-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1893-1/");
   script_tag(name:"summary", value:"Check for the Version of subversion");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(12\.04 LTS|12\.10|13\.04)");
-  script_tag(name : "affected" , value : "subversion on Ubuntu 13.04 ,
-  Ubuntu 12.10 ,
+  script_tag(name:"affected", value:"subversion on Ubuntu 13.04,
+  Ubuntu 12.10,
   Ubuntu 12.04 LTS");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
-  script_tag(name : "insight" , value : "Alexander Klink discovered that the Subversion mod_dav_svn module for
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_tag(name:"insight", value:"Alexander Klink discovered that the Subversion mod_dav_svn module for
   Apache did not properly handle a large number of properties. A remote
   authenticated attacker could use this flaw to cause memory consumption,
   leading to a denial of service. (CVE-2013-1845)
@@ -92,7 +92,7 @@ if(description)
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

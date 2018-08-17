@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: check_dns_tcp.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: check_dns_tcp.nasl 11031 2018-08-17 09:42:45Z cfischer $
 #
 # DNS Server on UDP and TCP
 #
@@ -30,15 +30,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18356");
-  script_version("$Revision: 9608 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+  script_version("$Revision: 11031 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:42:45 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:P/A:P");
   script_name("DNS Server on UDP and TCP");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2005 Michel Arboi");
-  script_family("General");
+  script_family("Service detection");
   script_dependencies('external_svc_ident.nasl', 'dns_server.nasl');
   script_require_udp_ports("Services/udp/domain", 53);
   script_mandatory_keys("DNS/identified");

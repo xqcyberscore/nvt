@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842260");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-06-26 06:24:39 +0200 (Fri, 26 Jun 2015)");
   script_cve_id("CVE-2014-0119", "CVE-2014-0227", "CVE-2014-0230", "CVE-2014-7810");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for tomcat7 USN-2654-1");
-  script_tag(name: "summary", value: "Check the version of tomcat7");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that the Tomcat XML
+  script_tag(name:"summary", value:"Check the version of tomcat7");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that the Tomcat XML
 parser incorrectly handled XML External Entities (XXE). A remote attacker could
 possibly use this issue to read arbitrary files. This issue only affected Ubuntu
 14.04 LTS. (CVE-2014-0119)
@@ -57,11 +57,11 @@ It was discovered that the Tomcat Expression Language (EL) implementation
 incorrectly handled accessible interfaces implemented by inaccessible
 classes. An attacker could possibly use this issue to bypass a
 SecurityManager protection mechanism. (CVE-2014-7810)");
-  script_tag(name: "affected", value: "tomcat7 on Ubuntu 14.10 ,
+  script_tag(name:"affected", value:"tomcat7 on Ubuntu 14.10,
   Ubuntu 14.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2654-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2654-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2654-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2654-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -74,7 +74,7 @@ SecurityManager protection mechanism. (CVE-2014-7810)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

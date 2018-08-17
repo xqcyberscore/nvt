@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3366_1.nasl 9654 2018-04-27 09:20:40Z cfischer $
+# $Id: gb_ubuntu_USN_3366_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for openjdk-8 USN-3366-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843258");
-  script_version("$Revision: 9654 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:20:40 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-07-27 07:16:15 +0200 (Thu, 27 Jul 2017)");
   script_cve_id("CVE-2017-10053", "CVE-2017-10067", "CVE-2017-10074", "CVE-2017-10078",
                 "CVE-2017-10081", "CVE-2017-10087", "CVE-2017-10089", "CVE-2017-10090",
@@ -40,9 +40,9 @@ if(description)
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for openjdk-8 USN-3366-1");
-  script_tag(name: "summary", value: "Check the version of openjdk-8");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "It was discovered that the JPEGImageReader
+  script_tag(name:"summary", value:"Check the version of openjdk-8");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"It was discovered that the JPEGImageReader
   class in OpenJDK would incorrectly read unused image data. An attacker could use
   this to specially construct a jpeg image file that when opened by a Java
   application would cause a denial of service. (CVE-2017-10053) It was discovered
@@ -77,12 +77,12 @@ if(description)
   component of OpenJDK incorrectly granted access to some internal resolvers. An
   attacker could use this to specially construct an untrusted Java applicat ...
   Description truncated, for more information please check the Reference URL");
-  script_tag(name: "affected", value: "openjdk-8 on Ubuntu 17.04 ,
+  script_tag(name:"affected", value:"openjdk-8 on Ubuntu 17.04,
   Ubuntu 16.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
 
-  script_xref(name: "USN", value: "3366-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-3366-1/");
+  script_xref(name:"USN", value:"3366-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-3366-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -95,7 +95,7 @@ if(description)
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

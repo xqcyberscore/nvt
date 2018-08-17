@@ -26,17 +26,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842223");
-  script_version("$Revision: 9652 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 11:09:48 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-06-09 11:08:34 +0200 (Tue, 09 Jun 2015)");
   script_cve_id("CVE-2015-3165", "CVE-2015-3166", "CVE-2015-3167");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for postgresql-9.4 USN-2621-1");
-  script_tag(name: "summary", value: "Check the version of postgresql-9.4");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Benkocs Norbert Attila discovered that
+  script_tag(name:"summary", value:"Check the version of postgresql-9.4");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Benkocs Norbert Attila discovered that
 PostgreSQL incorrectly handled authentication timeouts. A remote attacker could
 use this flaw to cause the unauthenticated session to crash, possibly leading
 to a security issue. (CVE-2015-3165)
@@ -48,12 +48,12 @@ library function return values, possibly leading to security issues.
 Noah Misch discovered that the pgcrypto function could return different
 error messages when decrypting using an incorrect key, possibly leading to
 a security issue. (CVE-2015-3167)");
-  script_tag(name: "affected", value: "postgresql-9.4 on Ubuntu 14.10 ,
-  Ubuntu 14.04 LTS ,
+  script_tag(name:"affected", value:"postgresql-9.4 on Ubuntu 14.10,
+  Ubuntu 14.04 LTS,
   Ubuntu 12.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
-  script_xref(name: "USN", value: "2621-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2621-1/");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
+  script_xref(name:"USN", value:"2621-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2621-1/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -66,7 +66,7 @@ a security issue. (CVE-2015-3167)");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

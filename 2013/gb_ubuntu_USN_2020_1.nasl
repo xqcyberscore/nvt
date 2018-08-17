@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2020_1.nasl 9650 2018-04-27 08:51:00Z cfischer $
+# $Id: gb_ubuntu_USN_2020_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux-lts-raring USN-2020-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841618");
-  script_version("$Revision: 9650 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:51:00 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-18 15:45:27 +0530 (Mon, 18 Nov 2013)");
   script_cve_id("CVE-2013-0343", "CVE-2013-2147", "CVE-2013-2889", "CVE-2013-2893",
                 "CVE-2013-2894", "CVE-2013-2895", "CVE-2013-2897", "CVE-2013-4343");
@@ -39,8 +39,8 @@ if(description)
   script_name("Ubuntu Update for linux-lts-raring USN-2020-1");
 
 
-  script_tag(name : "affected" , value : "linux-lts-raring on Ubuntu 12.04 LTS");
-  script_tag(name : "insight" , value : "An information leak was discovered in the handling of ICMPv6
+  script_tag(name:"affected", value:"linux-lts-raring on Ubuntu 12.04 LTS");
+  script_tag(name:"insight", value:"An information leak was discovered in the handling of ICMPv6
 Router Advertisement (RA) messages in the Linux kernel's IPv6 network stack. A
 remote attacker could exploit this flaw to cause a denial of service
 (excessive retries and address-generation outage), and consequently obtain
@@ -81,12 +81,12 @@ service (OOPS) via a specially crafted device. (CVE-2013-2897)
 Wannes Rombouts reported a vulnerability in the networking tuntap interface
 of the Linux kernel. A local user with the CAP_NET_ADMIN capability could
 leverage this flaw to gain full admin privileges. (CVE-2013-4343)");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2020-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2020-1/");
-  script_tag(name: "summary" , value: "Check for the Version of linux-lts-raring");
+  script_xref(name:"USN", value:"2020-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2020-1/");
+  script_tag(name:"summary", value:"Check for the Version of linux-lts-raring");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
@@ -98,7 +98,7 @@ leverage this flaw to gain full admin privileges. (CVE-2013-4343)");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

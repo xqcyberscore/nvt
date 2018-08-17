@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2117_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2117_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for linux USN-2117-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841715");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-02-20 15:14:40 +0530 (Thu, 20 Feb 2014)");
   script_cve_id("CVE-2013-4563", "CVE-2013-4579", "CVE-2013-4587", "CVE-2013-6367",
                 "CVE-2013-6368", "CVE-2013-6376", "CVE-2013-6382", "CVE-2013-6432",
@@ -42,8 +42,8 @@ if(description)
   script_name("Ubuntu Update for linux USN-2117-1");
 
 
-  script_tag(name : "affected" , value : "linux on Ubuntu 13.10");
-  script_tag(name : "insight" , value : "Saran Neti reported a flaw in the ipv6 UDP Fragmentation Offload (UFI) in
+  script_tag(name:"affected", value:"linux on Ubuntu 13.10");
+  script_tag(name:"insight", value:"Saran Neti reported a flaw in the ipv6 UDP Fragmentation Offload (UFI) in
 the Linux kernel. A remote attacker could exploit this flaw to cause a
 denial of service (panic). (CVE-2013-4563)
 
@@ -97,11 +97,11 @@ systemcalls when used with ISDN sockets in the Linux kernel. A local user
 could explo ...
 
   Description truncated, for more information please check the Reference URL");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2117-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2117-1/");
+  script_xref(name:"USN", value:"2117-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2117-1/");
   script_tag(name:"summary", value:"Check for the Version of linux");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -114,7 +114,7 @@ could explo ...
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

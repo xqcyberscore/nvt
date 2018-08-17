@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2385_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2385_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for openssl USN-2385-1
 #
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842011");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-10-17 05:59:12 +0200 (Fri, 17 Oct 2014)");
   script_cve_id("CVE-2014-3513", "CVE-2014-3567");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
   script_name("Ubuntu Update for openssl USN-2385-1");
 
-  script_tag(name: "summary", value: "Check the version of openssl");
+  script_tag(name:"summary", value:"Check the version of openssl");
 
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value: "It was discovered that OpenSSL incorrectly
+  script_tag(name:"insight", value:"It was discovered that OpenSSL incorrectly
 handled memory when parsing DTLS SRTP extension data. A remote attacker could
 possibly use this issue to cause OpenSSL to consume resources, resulting in a
 denial of service. This issue only affected Ubuntu 12.04 LTS and Ubuntu 14.04 LTS.
@@ -54,14 +54,14 @@ In addition, this update introduces support for the TLS Fallback Signaling
 Cipher Suite Value (TLS_FALLBACK_SCSV). This new feature prevents protocol
 downgrade attacks when certain applications such as web browsers attempt
 to reconnect using a lower protocol version for interoperability reasons.");
-  script_tag(name: "affected", value: "openssl on Ubuntu 14.04 LTS ,
-  Ubuntu 12.04 LTS ,
+  script_tag(name:"affected", value:"openssl on Ubuntu 14.04 LTS,
+  Ubuntu 12.04 LTS,
   Ubuntu 10.04 LTS");
-  script_tag(name: "solution", value: "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2385-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2385-1/");
+  script_xref(name:"USN", value:"2385-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2385-1/");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
@@ -73,7 +73,7 @@ to reconnect using a lower protocol version for interoperability reasons.");
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

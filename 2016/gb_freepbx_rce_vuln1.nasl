@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freepbx_rce_vuln1.nasl 6416 2017-06-23 10:02:44Z cfischer $
+# $Id: gb_freepbx_rce_vuln1.nasl 11026 2018-08-17 08:52:26Z cfischer $
 #
 # FreePBX Remote Command Execution Vulnerability
 #
@@ -27,18 +27,18 @@
 
 CPE = 'cpe:/a:freepbx:freepbx';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106318");
-  script_version("$Revision: 6416 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-23 12:02:44 +0200 (Fri, 23 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2016-09-30 10:47:53 +0700 (Fri, 30 Sep 2016)");
+  script_version("$Revision: 11026 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-30 10:47:53 +0700 (Fri, 30 Sep 2016)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "remote_analysis");
+  script_tag(name:"qod_type", value:"remote_analysis");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("FreePBX Remote Command Execution Vulnerability");
 
@@ -49,21 +49,21 @@ if (description)
   script_dependencies("gb_freepbx_detect.nasl");
   script_mandatory_keys("freepbx/installed");
 
-  script_tag(name: "summary", value: "FreePBX is prone to a unauthenticated remote command execution
-vulnerability.");
+  script_tag(name:"summary", value:"FreePBX is prone to a unauthenticated remote command execution
+  vulnerability.");
 
-  script_tag(name: "insight", value: "Freepbx is vulnerable to unauthenticated remote command execution in the
-Hotel Wakeup module.");
+  script_tag(name:"insight", value:"Freepbx is vulnerable to unauthenticated remote command execution in the
+  Hotel Wakeup module.");
 
-  script_tag(name: "impact", value: "An unauthenticated remote attacker may execute arbitrary commands.");
+  script_tag(name:"impact", value:"An unauthenticated remote attacker may execute arbitrary commands.");
 
-  script_tag(name: "affected", value: "FreePBX version 13.x");
+  script_tag(name:"affected", value:"FreePBX version 13.x");
 
-  script_tag(name: "solution", value: "Upgrade to version 13.0.188.1 or later");
+  script_tag(name:"solution", value:"Upgrade to version 13.0.188.1 or later");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/40434/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/40434/");
 
-  script_tag(name: "vuldetect", value: "Checks the version and checks if Hotel Wakeup module is installed.");
+  script_tag(name:"vuldetect", value:"Checks the version and checks if Hotel Wakeup module is installed.");
 
   exit(0);
 }
@@ -72,6 +72,7 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

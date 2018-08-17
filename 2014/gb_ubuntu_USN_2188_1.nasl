@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2188_1.nasl 9651 2018-04-27 08:59:56Z cfischer $
+# $Id: gb_ubuntu_USN_2188_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
 #
 # Ubuntu Update for elfutils USN-2188-1
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841793");
-  script_version("$Revision: 9651 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 10:59:56 +0200 (Fri, 27 Apr 2018) $");
+  script_version("$Revision: 11037 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-05-05 11:24:12 +0530 (Mon, 05 May 2014)");
   script_cve_id("CVE-2014-0172");
   script_tag(name:"cvss_base", value:"6.8");
@@ -38,19 +38,19 @@ if(description)
   script_name("Ubuntu Update for elfutils USN-2188-1");
 
 
-  script_tag(name : "affected" , value : "elfutils on Ubuntu 14.04 LTS ,
-  Ubuntu 13.10 ,
+  script_tag(name:"affected", value:"elfutils on Ubuntu 14.04 LTS,
+  Ubuntu 13.10,
   Ubuntu 12.10");
-  script_tag(name : "insight" , value : "Florian Weimer discovered that the elfutils libdw library
+  script_tag(name:"insight", value:"Florian Weimer discovered that the elfutils libdw library
 incorrectly handled malformed compressed debug sections in ELF files. If a user
 or automated system were tricked into processing a specially crafted ELF file,
 applications linked against libdw could be made to crash, or possibly
 execute arbitrary code.");
-  script_tag(name : "solution" , value : "Please Install the Updated Packages.");
+  script_tag(name:"solution", value:"Please Install the Updated Packages.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name: "USN", value: "2188-1");
-  script_xref(name: "URL" , value: "http://www.ubuntu.com/usn/usn-2188-1/");
+  script_xref(name:"USN", value:"2188-1");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-2188-1/");
   script_tag(name:"summary", value:"Check for the Version of elfutils");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -63,7 +63,7 @@ execute arbitrary code.");
 
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_6013.nasl 7140 2017-09-15 09:41:22Z cfischer $
+# $Id: gb_junos_cve_2013_6013.nasl 11041 2018-08-17 14:03:47Z mmartin $
 #
 # Junos flowd Buffer Overflow Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103954");
-  script_version ("$Revision: 7140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 11041 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-22 23:25:39 +0700 (Fri, 22 Nov 2013)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -48,25 +48,25 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version");
 
-  script_tag(name : "summary" , value : "A buffer overflow in the flow daemon when using telnet
+  script_tag(name:"summary", value:"A buffer overflow in the flow daemon when using telnet
 pass-through authentication might lead to a complete compromise of the system.");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "Buffer overflow in the flow daemon (flowd) when using telnet
+  script_tag(name:"insight", value:"Buffer overflow in the flow daemon (flowd) when using telnet
 pass-through authentication on the firewall.");
 
-  script_tag(name : "affected" , value : "Plattforms running Junos OS 10.4, 11.4, or 12.1X44.");
+  script_tag(name:"affected", value:"Plattforms running Junos OS 10.4, 11.4, or 12.1X44.");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper. As
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. As
 a workaround disable telnet pass-through authentication if not required.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10594");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62962");
- 
+
   exit(0);
 }
 
