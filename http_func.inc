@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_func.inc 10860 2018-08-09 12:28:41Z cfischer $
+# $Id: http_func.inc 11012 2018-08-16 16:33:20Z cfischer $
 #
 # Methods to handle HTTP
 #
@@ -24,14 +24,47 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10860 $
+# $Revision: 11012 $
 #
 ###############################################################################
 
-global_var OPENVAS_HTTP_USER_AGENT;
+# @brief Returns a HTTP User Agent string which can be used by VTs within the
+#        User-Agent: header of HTTP requests.
+#
+# @return A string containing a HTTP user agent
+#
+function get_http_user_agent() {
 
-if ( ! OPENVAS_HTTP_USER_AGENT = get_kb_item( "http/user-agent" ) )
-  OPENVAS_HTTP_USER_AGENT = 'Mozilla/5.0 [en] (X11, U; OpenVAS ' + OPENVAS_VERSION + ')';
+  local_var default, ua;
+  # nb: __http_func_user_agent is global var
+
+  # nb: Only used if the function is called by a VT running via openvas-nasl
+  # and if global_settings.nasl wasn't called before that VT.
+  # TBD: On master we don't have a "OPENVAS_VERSION" defined...
+  if( OPENVAS_VERSION )
+    default = "Mozilla/5.0 [en] (X11, U; OpenVAS-VT " + OPENVAS_VERSION + ")";
+  else
+    default = "Mozilla/5.0 [en] (X11, U; OpenVAS-VT)";
+
+  if( ! isnull( __http_func_user_agent ) ) {
+    ua = string( __http_func_user_agent );
+  } else {
+    ua = get_kb_item( "http/user-agent" );
+    if( ! isnull( ua ) ) {
+      __http_func_user_agent = string( ua );
+    } else {
+      __http_func_user_agent = default;
+      ua = default;
+    }
+  }
+  return ua;
+}
+
+global_var OPENVAS_HTTP_USER_AGENT;
+OPENVAS_HTTP_USER_AGENT = get_http_user_agent();
+
+# Global key to avoid that we're repeatedly asking redis for something we already know
+global_var __http_func_user_agent;
 
 # Enables debugging output for a few functions below
 global_var _http_debug;
@@ -1547,13 +1580,13 @@ function report_vuln_url( port, url, url_only ) {
 # @brief Crafts a raw HTTP POST request (without sending it to the target) and returns it as a string.
 #
 # @param port               the port of the remote server.
-# @param url                the URL to request, if not passed "/" will be used. 
+# @param url                the URL to request, if not passed "/" will be used.
 # @param data               the data which needs to be added in the body of the HTTP POST request
 # @param add_headers        additional headers which should be added to the HTTP POST request. Needs to be an
 #                           array in form of e.g. make_array( "Content-Type", "application/x-www-form-urlencoded" )
 # @param accept_header      the Accept: header to use (e.g. application/json), defaults to "*/*" if not passed.
-# @param user_agent         The User-Agent to use within the User-Agent: header, defaults to the content of the
-#                           OPENVAS_HTTP_USER_AGENT global var if not passed.
+# @param user_agent         The User-Agent to use within the User-Agent: header, defaults to the return of the
+#                           get_http_user_agent() function if not passed.
 # @param host_header_use_ip If set to TRUE the request will contain the IP instead of the target
 #                           hostname in the Host: header. This can be used for special targets not
 #                           accepting the hostname in the request.
@@ -1565,8 +1598,10 @@ function report_vuln_url( port, url, url_only ) {
 #
 function http_post_req( port, url, data, add_headers, accept_header, user_agent, host_header_use_ip ) {
 
+  if( ! defined_func( "get_vt_string" ) ) include("misc_func.inc");
+
   local_var port, url, data, add_headers, accept_header, user_agent, host_header_use_ip;
-  local_var x_header, host, req, header, len;
+  local_var x_header, x_scanner_string, host, req, header, len;
 
   if( ! isnull( add_headers ) ) {
     if( typeof( add_headers ) != "array" ) {
@@ -1585,18 +1620,23 @@ function http_post_req( port, url, data, add_headers, accept_header, user_agent,
 
   if( data ) len = strlen( data );
 
+  if( ! accept_header ) accept_header = '*/*';
+
+  if ( ! user_agent ) {
+    user_agent = get_http_user_agent();
+  } else {
+    x_header = TRUE;
+    if( OPENVAS_VERSION )
+      x_scanner_string = "X-Scanner: " + get_vt_string() + " " + OPENVAS_VERSION;
+    else
+      x_scanner_string = "X-Scanner: " + get_vt_string();
+  }
+
   if( host_header_use_ip ) {
     host = http_host_name( port:port, use_ip:TRUE );
   } else {
     host = http_host_name( port:port );
   }
-
-  if( ! accept_header ) accept_header = '*/*';
-
-  if ( ! user_agent )
-    user_agent = OPENVAS_HTTP_USER_AGENT;
-  else
-    x_header = TRUE;
 
   req = 'POST ' + url + ' HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
@@ -1610,7 +1650,7 @@ function http_post_req( port, url, data, add_headers, accept_header, user_agent,
   if( data ) req += 'Content-Length: ' + len + '\r\n';
 
   if( x_header )
-    req += 'X-Scanner: OpenVAS ' + OPENVAS_VERSION + '\r\n';
+    req += x_scanner_string + '\r\n';
 
   if( ! isnull( add_headers ) ) {
     foreach header( keys( add_headers ) )
@@ -1627,13 +1667,13 @@ function http_post_req( port, url, data, add_headers, accept_header, user_agent,
 # @brief Crafts a raw HTTP GET request (without sending it to the target) and returns it as a string.
 #
 # @param port               the port of the remote server.
-# @param url                the URL to request, if not passed "/" will be used. 
+# @param url                the URL to request, if not passed "/" will be used.
 # @param add_headers        additional headers which should be added to the HTTP GET request. Needs to be an
 #                           array in form of e.g. make_array( "Cookie", "PHPSESSID=" + sessid )
 # @param accept_header      the Accept: header to use (e.g. text/html), defaults to the following if not passed:
 #                           image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*
-# @param user_agent         The User-Agent to use within the User-Agent: header, defaults to the content of the
-#                           OPENVAS_HTTP_USER_AGENT global var if not passed.
+# @param user_agent         The User-Agent to use within the User-Agent: header, defaults to the result of the
+#                           get_http_user_agent() function if not passed.
 # @param host_header_use_ip If set to TRUE the request will contain the IP instead of the target
 #                           hostname in the Host: header. This can be used for special targets not
 #                           accepting the hostname in the request.
@@ -1645,8 +1685,10 @@ function http_post_req( port, url, data, add_headers, accept_header, user_agent,
 #
 function http_get_req( port, url, add_headers, accept_header, user_agent, host_header_use_ip ) {
 
+  if( ! defined_func( "get_vt_string" ) ) include("misc_func.inc");
+
   local_var port, url, add_headers, accept_header, user_agent, host_header_use_ip;
-  local_var x_header, host, req, header;
+  local_var x_header, x_scanner_string, host, req, header;
 
   if( ! isnull( add_headers ) ) {
     if( typeof( add_headers ) != "array" ) {
@@ -1663,18 +1705,23 @@ function http_get_req( port, url, add_headers, accept_header, user_agent, host_h
   if( ! url ) url = "/";
   x_header = FALSE;
 
+  if( ! accept_header ) accept_header = 'image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*';
+
+  if ( ! user_agent ) {
+    user_agent = get_http_user_agent();
+  } else {
+    x_header = TRUE;
+    if( OPENVAS_VERSION )
+      x_scanner_string = "X-Scanner: " + get_vt_string() + " " + OPENVAS_VERSION;
+    else
+      x_scanner_string = "X-Scanner: " + get_vt_string();
+  }
+
   if( host_header_use_ip ) {
     host = http_host_name( port:port, use_ip:TRUE );
   } else {
     host = http_host_name( port:port );
   }
-
-  if( ! accept_header ) accept_header = 'image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*';
-
-  if ( ! user_agent )
-    user_agent = OPENVAS_HTTP_USER_AGENT;
-  else
-    x_header = TRUE;
 
   req = 'GET ' + url + ' HTTP/1.1\r\n' +
         'Connection: Close\r\n' +
@@ -1687,7 +1734,7 @@ function http_get_req( port, url, add_headers, accept_header, user_agent, host_h
         'Accept-Charset: iso-8859-1,*,utf-8\r\n';
 
   if( x_header )
-    req += 'X-Scanner: OpenVAS ' + OPENVAS_VERSION + '\r\n';
+    req += x_scanner_string + '\r\n';
 
   if( ! isnull( add_headers ) ) {
     foreach header( keys( add_headers ) )

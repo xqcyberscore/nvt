@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: sharp_printers.inc 10986 2018-08-15 13:38:20Z cfischer $
+# $Id: sharp_printers.inc 11004 2018-08-16 11:18:32Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10986 $
+# $Revision: 11004 $
 #
 ###############################################################################
 
@@ -49,12 +49,19 @@ function sharp_default_logins() {
 
 function check_sharp_default_login( model, port ) {
 
-  local_var model, port, userame, password, sharp;
+  # TODO: Remove once openvas-nasl-lint can handle such a missing include
+  # from within the same include.
+  if(!defined_func("get_http_user_agent")) include("http_func.inc");
+
+  local_var model, port, userame, password, sharp, host, useragent;
 
   sharp = sharp_login_details( model:model, port:port );
   if(!sharp) return FALSE;
 
   logins = sharp_default_logins();
+
+  host = http_host_name( port:port );
+  useragent = get_http_user_agent();
 
   foreach login (logins) {
 
@@ -74,8 +81,8 @@ function check_sharp_default_login( model, port ) {
 
       if(sharp['login_url_success']) {
         req = string(sharp['req_type_success'], " ", sharp['login_url_success'], " HTTP/1.1\r\n",
-                     "Host: ", get_host_name(),"\r\n",
-                     "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n\r\n");
+                     "Host: ", host, "\r\n",
+                     "User-Agent: ", useragent, "\r\n\r\n");
 
         buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
         sharp_error_exit(buf:buf);
@@ -87,11 +94,11 @@ function check_sharp_default_login( model, port ) {
       }
 
       req = string("POST " , sharp['login_url'], " HTTP/1.1\r\n",
-                   "Host: ", get_host_name(),"\r\n",
+                   "Host: ", host, "\r\n",
                    "DNT: 1\r\n",
-                   "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                   "User-Agent: ", useragent, "\r\n",
                    "Content-Type: application/x-www-form-urlencoded\r\n",
-                   "Content-Length: ",len,"\r\n");
+                   "Content-Length: ", len, "\r\n");
 
       if(sharp_cookie) req +=  string("Cookie: ", sharp_cookie, "\r\n");
 
@@ -106,15 +113,15 @@ function check_sharp_default_login( model, port ) {
         userpass = username + ':' + password;
         userpass64 = base64(str:userpass);
 
-        req = string("GET ", sharp['login_url']," HTTP/1.1\r\n",
-                     "Host: ", get_host_name(),"\r\n");
+        req = string("GET ", sharp['login_url'], " HTTP/1.1\r\n",
+                     "Host: ", host, "\r\n");
 
         c_buf = http_send_recv(port:port, data:req + '\r\n', bodyonly:FALSE);
         sharp_error_exit(buf:c_buf);
 
         if(c_buf !~ "HTTP/1.. 401" && "HTTP/1.1 302" >!< c_buf) return 2; # setup without auth
 
-        req += string("Authorization: Basic ",userpass64,"\r\n\r\n");
+        req += string("Authorization: Basic ", userpass64, "\r\n\r\n");
 
       }
 
@@ -131,11 +138,11 @@ function check_sharp_default_login( model, port ) {
       if(sharp['login_url_success']) {
 
         req = string(sharp['req_type_success'], " ", sharp['login_url_success'], " HTTP/1.1\r\n",
-                    "Host: ", get_host_name(),"\r\n");
+                    "Host: ", host, "\r\n");
 
         if(sharp_cookie) req +=  string("Cookie: ", sharp_cookie, "\r\n");
 
-        req += string("User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/17.0 OpenVAS\r\n\r\n");
+        req += string("User-Agent: ", useragent, "\r\n\r\n");
 
         buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
         sharp_error_exit(buf:buf);

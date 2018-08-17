@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ox_app_suite_detect.nasl 10383 2018-07-03 13:42:14Z ckuersteiner $
+# $Id: gb_ox_app_suite_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Open-Xchange App Suite Detection
 #
@@ -27,28 +27,28 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105387");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 10383 $");
- script_tag(name:"last_modification", value:"$Date: 2018-07-03 15:42:14 +0200 (Tue, 03 Jul 2018) $");
- script_tag(name:"creation_date", value:"2015-09-25 13:13:41 +0200 (Fri, 25 Sep 2015)");
- script_name("Open-Xchange App Suite Detection");
+  script_oid("1.3.6.1.4.1.25623.1.0.105387");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2015-09-25 13:13:41 +0200 (Fri, 25 Sep 2015)");
+  script_name("Open-Xchange App Suite Detection");
 
- script_tag(name:"summary", value:"Detection of Open-Xchange App Suite.
+  script_tag(name:"summary", value:"Detection of Open-Xchange App Suite.
 
 The script sends a connection request to the server and attempts to extract the version number from the reply.");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_category(ACT_GATHER_INFO);
- script_family("Product detection");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_xref(name:"URL", value:"https://www.open-xchange.com/portfolio/ox-app-suite/");
+  script_xref(name:"URL", value:"https://www.open-xchange.com/portfolio/ox-app-suite/");
 
  exit(0);
 }

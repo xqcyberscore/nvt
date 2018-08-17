@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_roller_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
+# $Id: gb_apache_roller_detect.nasl 11020 2018-08-17 07:35:00Z cfischer $
 #
 # Apache Roller Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800677");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10899 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11020 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:35:00 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-08-12 19:54:51 +0200 (Wed, 12 Aug 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache Roller Version Detection");
@@ -67,8 +67,7 @@ foreach dir( make_list_unique( "/roller", "/roller-ui", cgi_dirs( port:port ) ) 
 
     url = dir + file;
 
-    sndReq = http_get( item:url, port:port );
-    rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
+    rcvRes = http_get_cache( item:url, port:port );
 
     if( rcvRes =~ "HTTP/1.. 200" && ( "Welcome to Roller" >< rcvRes || rcvRes =~ "Platform based on <[^>]+Roller" ) ) {
 

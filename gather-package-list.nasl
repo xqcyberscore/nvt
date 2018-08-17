@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 10835 2018-08-08 11:40:01Z cfischer $
+# $Id: gather-package-list.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 10835 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 13:40:01 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -1059,7 +1059,6 @@ if( "Unknown action 0" >< uname ) {
     register_detected_os(os:"FortiOS", oskey:"FortiOS");
     set_kb_item( name:"ssh/no_linux_shell", value:TRUE );
 
-    # set FortiOS version for all models
 
     f_version = eregmatch( pattern:"Version\s*:\s*(Forti[^ ]* )?v([0-9.]+)", string:system );
     if( ! isnull( f_version[2] ) )

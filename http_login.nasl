@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_login.nasl 10275 2018-06-20 15:56:20Z cfischer $
+# $Id: http_login.nasl 11018 2018-08-17 07:13:05Z cfischer $
 #
 # HTTP login page
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11149");
-  script_version("$Revision: 10275 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-20 17:56:20 +0200 (Wed, 20 Jun 2018) $");
+  script_version("$Revision: 11018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:13:05 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -80,7 +80,7 @@ port = get_http_port( default:80 );
 if( http_login_page ) {
 
   # nb: Always keep http_get() before http_open_socket() as the first could
-  # fork with multiple vhosts and the childs would share the same socket
+  # fork with multiple vhosts and the child's would share the same socket
   # causing race conditions and similar.
   req = http_get( port:port, item:http_login_page );
 
@@ -139,8 +139,8 @@ foreach r( h ) {
       cookies_string  = chomp( cookies_string );
     }
 
-    # set_kb_item( name:string( "/tmp/http/auth/", port ), value:cookies );
-    # set_kb_item( name:"http/auth", value:cookies );
+    # TBD: Why is this commented out? set_kb_item( name:string( "/tmp/http/auth/", port ), value:cookies );
+    # TBD: Why is this commented out? set_kb_item( name:"http/auth", value:cookies );
     c = ereg_replace( string:cookies, pattern:"^Cookie2? *: *", replace:"" );
   } else if( cookie1 ) {
     set_kb_item( name:string( "/tmp/http/auth/", port ), value:cookie1 );

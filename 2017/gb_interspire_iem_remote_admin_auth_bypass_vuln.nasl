@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_interspire_iem_remote_admin_auth_bypass_vuln.nasl 7571 2017-10-26 07:59:06Z cfischer $
+# $Id: gb_interspire_iem_remote_admin_auth_bypass_vuln.nasl 11025 2018-08-17 08:27:37Z cfischer $
 #
 # Interspire IEM Remote Authentication Admin Bypass Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:interspire:iem";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112087");
-  script_version("$Revision: 7571 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 09:59:06 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 11025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-19 08:54:12 +0200 (Thu, 19 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -56,8 +56,8 @@ if(description)
   script_tag(name:"vuldetect", value:"This script sends a specially crafted cookie to the web-server that IEM is running to bypass the admin authentication.");
   script_tag(name:"insight", value:"The application creates a login cookie to determine and verify the user/admin.
 
-A weak consideration of the type during the confirmation of the cookie's parameters causes the application to grant access to an attacker who forged this specific cookie parameter
-by replacing the randomly generated string with just a boolean value ('true').");
+  A weak consideration of the type during the confirmation of the cookie's parameters causes the application to grant access to an attacker who forged this specific cookie parameter
+  by replacing the randomly generated string with just a boolean value ('true').");
   script_tag(name:"impact", value:"Successfully exploiting the vulnerability will grant the attack full administration access to the IEM services on the host system.");
   script_tag(name:"affected", value:"IEM before version 6.1.6");
   script_tag(name:"solution", value:"Upgrade to IEM version 6.1.6 to fix the issue.");
@@ -72,6 +72,7 @@ include("host_details.inc");
 include("version_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe:CPE)) exit(0);
 if (!dir = get_app_location(cpe:CPE, port:port)) exit(0);

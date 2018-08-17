@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intelbras_roteador_wireless_wrn150_auth_bypass_vuln.nasl 7436 2017-10-16 05:44:20Z asteins $
+# $Id: gb_intelbras_roteador_wireless_wrn150_auth_bypass_vuln.nasl 11025 2018-08-17 08:27:37Z cfischer $
 #
 # Intelbras Roteador Wireless N WRN Device Authentication Bypass Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/a:intelbras_roteador:wireless-n_wrn";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812015");
-  script_version("$Revision: 7436 $");
+  script_version("$Revision: 11025 $");
   script_cve_id("CVE-2017-14942");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-16 07:44:20 +0200 (Mon, 16 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-06 20:36:50 +0530 (Fri, 06 Oct 2017)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Intelbras Roteador Wireless N WRN Device Authentication Bypass Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is running Intelbras Roteador
+  script_tag(name:"summary", value:"The host is running Intelbras Roteador
   Wireless N WRN Device and is prone to authentication bypass vulnerability.");
 
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to get specific information or not.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an insufficient
+  script_tag(name:"insight", value:"The flaw exists due to an insufficient
   access control and any attacker could bypass the admin authentication just
   by tweaking the cookie.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass authentication mechanism and gain access to sensitive data.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Intelbras Roteador Wireless WRN150 with
+  script_tag(name:"affected", value:"Intelbras Roteador Wireless WRN150 with
   firmware version 1.0.1. Other models and other firmware versions may also be
   affected.");
 
-  script_tag(name: "solution" , value:"Upgrade to the latest firmware available
+  script_tag(name:"solution", value:"Upgrade to the latest firmware available
   from the vendor. For updates refer to http://intelbras.com.br");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/42916");
-  script_xref(name : "URL" , value : "http://whiteboyz.xyz/authentication-bypass-intelbras-wrn-150.html");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/42916");
+  script_xref(name:"URL", value:"http://whiteboyz.xyz/authentication-bypass-intelbras-wrn-150.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -74,17 +74,11 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
-## Variable Initialization
-netPort = "";
-rcvRes = "";
-req = "";
-
-## get the port
 if(!netPort = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -96,7 +90,6 @@ url = "/cgi-bin/DownloadCfg/RouterCfm.cfg";
 ##Send Request
 sndReq = http_get_req(port:netPort, url:url, add_headers:make_array("Cookie", "admin:language=pt"));
 
-##Get Response
 rcvRes = http_keepalive_send_recv(port:netPort, data:sndReq);
 
 if(rcvRes =~ "HTTP/1.. 200" && "wps_device_name=INTELBRAS Wireless" >< rcvRes &&

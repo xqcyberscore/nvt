@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_draytek_vigoracs_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
+# $Id: gb_draytek_vigoracs_detect.nasl 11021 2018-08-17 07:48:11Z cfischer $
 #
 # Draytek VigorACS Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141032");
-  script_version("$Revision: 10891 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11021 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:48:11 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-26 11:30:45 +0700 (Thu, 26 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,8 +40,8 @@ if(description)
 
   script_tag(name:"summary", value:"Detection of Draytek VigorACS.
 
-The script sends a connection request to the server and attempts to detect Draytek VigorACS and to extract its
-version.");
+  The script sends a connection request to the server and attempts to detect Draytek VigorACS and to extract its
+  version.");
 
   script_category(ACT_GATHER_INFO);
 
@@ -60,6 +60,7 @@ include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default: 8080);
 

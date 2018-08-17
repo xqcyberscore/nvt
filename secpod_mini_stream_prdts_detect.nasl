@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mini_stream_prdts_detect.nasl 10883 2018-08-10 10:52:12Z cfischer $
+# $Id: secpod_mini_stream_prdts_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Mini-Stream Products Version Detection
 #
@@ -31,8 +31,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900624");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10883 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:52:12 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-04-30 06:40:16 +0200 (Thu, 30 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Mini-Stream Products Version Detection");
@@ -65,7 +65,6 @@ ssRVer = eregmatch(pattern:"Recorder ([0-9.]+)", string:ssRecName);
 if(ssRVer[1]!=NULL)
 {
   set_kb_item(name:"MiniStream/Products/Installed", value:TRUE);
-  # set the version of Mini-stream Shadow Stream Recorder
   set_kb_item(name:"MiniStream/SSRecorder/Ver", value:ssRVer[1]);
   register_and_report_cpe(app:ssRecName, ver:ssRVer[1], base:"cpe:/a:mini-stream:shadow_stream_recorder:",
                           expr:"^([0-9.]+)");
@@ -78,7 +77,6 @@ rmTmpVer = eregmatch(pattern:"Converter ([0-9]\.[0-9]\.[0-9.]+)", string:rmTmp);
 if(rmTmpVer[1]!=NULL)
 {
   set_kb_item(name:"MiniStream/Products/Installed", value:TRUE);
-  #set the version of Mini-stream RM-MP3 Converter
   set_kb_item(name:"MiniStream/RmToMp3/Conv/Ver", value:rmTmpVer[1]);
   register_and_report_cpe(app:rmTmp, ver:rmTmpVer[1], base:"cpe:/a:mini-stream:easy_rm-mp3_converter:",
                           expr:"^([0-9.]+)");
@@ -91,7 +89,6 @@ wmDownVer = eregmatch(pattern:"Converter ([0-9.]+)", string:wmDown);
 if(wmDownVer[1]!=NULL)
 {
   set_kb_item(name:"MiniStream/Products/Installed", value:TRUE);
-  #set the version of Mini-stream WM Downloader
   set_kb_item(name:"MiniStream/WMDown/Ver", value:wmDownVer[1]);
   register_and_report_cpe(app:wmDown, ver:wmDownVer[1], base:"cpe:/a:mini-stream:wm_downloader:",
                           expr:"^([0-9.]+)");
@@ -103,7 +100,6 @@ rmDownVer = eregmatch(pattern:" Downloader(..([0-9.]+))", string:rmDown);
 if(rmDownVer[1]!=NULL)
 {
   set_kb_item(name:"MiniStream/Products/Installed", value:TRUE);
-  #set the version of Mini-stream RM Downloader
   rmDownVer = ereg_replace(pattern:" ", string:rmDownVer[1], replace:"");
   set_kb_item(name:"MiniStream/RMDown/Ver", value:rmDownVer);
   register_and_report_cpe(app:rmDown, ver:rmDownVer[1], base:"cpe:/a:mini-stream:mini-stream_rm_downloader:",
@@ -117,7 +113,6 @@ asx2mpVer = eregmatch(pattern:"Converter ([0-9]\.[0-9]\.[0-9.]+)", string:asx2mp
 if(asx2mpVer[1]!=NULL)
 {
   set_kb_item(name:"MiniStream/Products/Installed", value:TRUE);
-  #set the version of Mini-stream ASX to MP3 Converter
   set_kb_item(name:"MiniStream/AsxToMp3/Conv/Ver", value:asx2mpVer[1]);
   register_and_report_cpe(app:asx2mpName, ver:asx2mpVer[1], base:"cpe:/a:mini-stream:mini-stream_to_mp3_converter:",
                           expr:"^([0-9.]+)");
@@ -130,7 +125,6 @@ msRipperVer = eregmatch(pattern:"Ripper ([0-9.]+)", string:msRipper);
 if(msRipperVer[1]!=NULL)
 {
   set_kb_item(name:"MiniStream/Products/Installed", value:TRUE);
-  #set the version of Mini-stream Ripper
   set_kb_item(name:"MiniStream/Ripper/Ver", value:msRipperVer[1]);
   register_and_report_cpe(app:msRipper, ver:msRipperVer[1], base:"cpe:/a:mini-stream:ripper:",
                           expr:"^([0-9.]+)");

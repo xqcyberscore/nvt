@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-013.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: secpod_ms13-013.nasl 11011 2018-08-16 14:14:31Z mmartin $
 #
 # Microsoft FAST Search Server 2010 SharePoint RCE Vulnerabilities (2784242)
 #
@@ -24,33 +24,20 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could run arbitrary code in the context of a user
-  account with a restricted token.
-  Impact Level: System/Application";
-
-tag_affected = "Microsoft FAST Search Server 2010 for SharePoint Service Pack 1";
-tag_insight = "The flaws are due to the error in Oracle Outside In libraries, when
-  used by the Advanced Filter Pack while parsing specially crafted files.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms13-013";
-tag_summary = "This host is missing an important security update according to
-  Microsoft Bulletin MS13-013.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902949");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11011 $");
   script_cve_id("CVE-2012-3214", "CVE-2012-3217");
   script_bugtraq_id(55977, 55993);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-02-13 11:28:37 +0530 (Wed, 13 Feb 2013)");
   script_name("Microsoft FAST Search Server 2010 SharePoint RCE Vulnerabilities (2784242)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/52136/");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2553234");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms13-013");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/52136/");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2553234");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-013");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");
@@ -58,11 +45,17 @@ if(description)
   script_mandatory_keys("MS/SharePoint/Install/Path");
   script_require_ports(139, 445);
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could run arbitrary code in the context of a user
+  account with a restricted token.
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Microsoft FAST Search Server 2010 for SharePoint Service Pack 1");
+  script_tag(name:"insight", value:"The flaws are due to the error in Oracle Outside In libraries, when
+  used by the Advanced Filter Pack while parsing specially crafted files.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://technet.microsoft.com/en-us/security/bulletin/ms13-013");
+  script_tag(name:"summary", value:"This host is missing an important security update according to
+  Microsoft Bulletin MS13-013.");
 
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -74,11 +67,6 @@ include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-## Variables Initialization
-path = "";
-dllPath = "";
-dllVer = "";
 
 ## SharePoint Server 2010
 path = get_kb_item("MS/SharePoint/Install/Path");
@@ -94,5 +82,5 @@ if(!dllVer){
 }
 
 if(version_in_range(version:dllVer, test_version:"8.3.7.000", test_version2:"8.3.7.206")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

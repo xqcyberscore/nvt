@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_director_version.nasl 10908 2018-08-10 15:00:08Z cfischer $
+# $Id: gb_cisco_ucs_director_version.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Cisco UCS Director Version Detection
 #
@@ -27,23 +27,23 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105575");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 10908 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2016-03-17 15:52:18 +0100 (Thu, 17 Mar 2016)");
- script_name("Cisco UCS Director Version Detection");
+  script_oid("1.3.6.1.4.1.25623.1.0.105575");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-03-17 15:52:18 +0100 (Thu, 17 Mar 2016)");
+  script_name("Cisco UCS Director Version Detection");
 
- script_tag(name:"summary", value:"This script performs ssh based detection of Cisco UCS Director");
+  script_tag(name:"summary", value:"This script performs ssh based detection of Cisco UCS Director");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_category(ACT_GATHER_INFO);
- script_family("Product detection");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("cisco_ucs_director/show_version");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("cisco_ucs_director/show_version");
  exit(0);
 }
 

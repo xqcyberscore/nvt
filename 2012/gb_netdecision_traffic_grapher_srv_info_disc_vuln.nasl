@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netdecision_traffic_grapher_srv_info_disc_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
+# $Id: gb_netdecision_traffic_grapher_srv_info_disc_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # Netmechanica NetDecision Traffic Grapher Server Information Disclosure Vulnerability
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802704");
-  script_version("$Revision: 6697 $");
+  script_version("$Revision: 11003 $");
   script_cve_id("CVE-2012-1466");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-03-09 13:50:32 +0530 (Fri, 09 Mar 2012)");
   script_name("Netmechanica NetDecision Traffic Grapher Server Information Disclosure Vulnerability");
 
-  script_xref(name: "URL" , value : "http://secpod.org/blog/?p=481");
-  script_xref(name: "URL" , value : "http://secpod.org/exploits/SecPod_Netmechanica_NetDecision_Traffic_Grapher_Server_SourceCode_Disc_PoC.py");
-  script_xref(name: "URL" , value : "http://secpod.org/advisories/SecPod_Netmechanica_NetDecision_Traffic_Grapher_Server_SourceCode_Disc_Vuln.txt");
+  script_xref(name:"URL", value:"http://secpod.org/blog/?p=481");
+  script_xref(name:"URL", value:"http://secpod.org/exploits/SecPod_Netmechanica_NetDecision_Traffic_Grapher_Server_SourceCode_Disc_PoC.py");
+  script_xref(name:"URL", value:"http://secpod.org/advisories/SecPod_Netmechanica_NetDecision_Traffic_Grapher_Server_SourceCode_Disc_Vuln.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
@@ -67,29 +67,18 @@ if(description)
 
 include("http_func.inc");
 
-## Variable Initialization
-port = 0;
-soc = "";
-req = "";
-res = "";
-banner = "";
-
-## Get Port
 port = get_http_port(default:8087);
 
-## Confirm the application
 banner = get_http_banner(port: port);
 if(!banner || "Server: NetDecision-HTTP-Server" >!< banner){
   exit(0);
 }
 
-## Open the socket
 soc = http_open_socket(port);
 if(!soc){
   exit(0);
 }
 
-## Construct the request
 req = string("GET /default.nd HTTP/-1111111\r\n\r\n");
 send(socket:soc, data:req);
 
@@ -108,7 +97,6 @@ if(!res)
   exit(0);
 }
 
-## Check for the source code '/default.nd' in response
 if(("NetDecision Traffic Grapher Web Interface" >< res) &&
    ("GetNetDecisionSystemDir(ND_LOG_DIR)" >< res) &&
    ("func PopulateProperty" >< res) &&

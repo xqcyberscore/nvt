@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_dos_vuln_apr13_win.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_postgresql_dos_vuln_apr13_win.nasl 11011 2018-08-16 14:14:31Z mmartin $
 #
 # PostgreSQL Denial of Service Vulnerability - Apr13 (Windows)
 #
@@ -29,34 +29,34 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803473");
-  script_version("$Revision: 9984 $");
+  script_version("$Revision: 11011 $");
   script_cve_id("CVE-2013-1899");
   script_bugtraq_id(58876);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-04-09 16:49:46 +0530 (Tue, 09 Apr 2013)");
   script_name("PostgreSQL Denial of Service Vulnerability - Apr13 (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/52837");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1028387");
-  script_xref(name : "URL" , value : "http://www.postgresql.org/about/news/1456");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/52837");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1028387");
+  script_xref(name:"URL", value:"http://www.postgresql.org/about/news/1456");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("postgresql_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/postgresql", 5432);
-  script_mandatory_keys("PostgreSQL/installed","Host/runs_windows");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary
+  script_mandatory_keys("PostgreSQL/installed", "Host/runs_windows");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   SQL query, gain access or manipulate arbitrary files, and cause denial of service.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "PostgreSQL version 9.2.x before 9.2.4, 9.1.x before 9.1.9, and
+  script_tag(name:"affected", value:"PostgreSQL version 9.2.x before 9.2.4, 9.1.x before 9.1.9, and
   9.0.x before 9.0.13");
-  script_tag(name : "insight" , value : "Improper validation of connection request that contains database name
+  script_tag(name:"insight", value:"Improper validation of connection request that contains database name
   begins with the '-' symbol");
-  script_tag(name : "solution" , value : "Upgrade to PostgreSQL 9.0.13, 9.1.9, 9.2.4 or later,
+  script_tag(name:"solution", value:"Upgrade to PostgreSQL 9.0.13, 9.1.9, 9.2.4 or later,
   For updates refer to http://www.postgresql.org/download");
-  script_tag(name : "summary" , value : "This host is installed with PostgreSQL and is prone to denial
+  script_tag(name:"summary", value:"This host is installed with PostgreSQL and is prone to denial
   of service vulnerability.");
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");

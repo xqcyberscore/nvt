@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_management_center_http_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
+# $Id: gb_cisco_firesight_management_center_http_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Cisco FireSIGHT Detection (HTTP)
 #
@@ -27,29 +27,29 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106160");
- script_version("$Revision: 10911 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2016-07-29 14:46:43 +0700 (Fri, 29 Jul 2016)");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.106160");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-29 14:46:43 +0700 (Fri, 29 Jul 2016)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_name("Cisco FireSIGHT Detection (HTTP)");
+  script_name("Cisco FireSIGHT Detection (HTTP)");
 
- script_tag(name:"summary", value:"This script performs HTTP based detection of Cisco FireSIGHT Management
+  script_tag(name:"summary", value:"This script performs HTTP based detection of Cisco FireSIGHT Management
 Center");
 
- script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
 
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_family("Product detection");
- script_dependencies("find_service.nasl");
- script_require_ports("Services/www", 443);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("find_service.nasl");
+  script_require_ports("Services/www", 443);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_xref(name:"URL", value:"https://www.cisco.com/c/en/us/products/security/firesight-management-center/index.html");
+  script_xref(name:"URL", value:"https://www.cisco.com/c/en/us/products/security/firesight-management-center/index.html");
 
 
  exit(0);

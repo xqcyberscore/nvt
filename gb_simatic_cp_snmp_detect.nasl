@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_cp_snmp_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
+# $Id: gb_simatic_cp_snmp_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Siemens SIMATIC CP Device Detection (SNMP)
 #
@@ -27,26 +27,26 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140736");
- script_version("$Revision: 10901 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2018-02-01 15:08:26 +0700 (Thu, 01 Feb 2018)");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.140736");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-01 15:08:26 +0700 (Thu, 01 Feb 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_name("Siemens SIMATIC CP Device Detection (SNMP)");
+  script_name("Siemens SIMATIC CP Device Detection (SNMP)");
 
- script_tag(name:"summary", value:"This script performs SNMP based detection of Siemens SIMATIC CP devices.");
+  script_tag(name:"summary", value:"This script performs SNMP based detection of Siemens SIMATIC CP devices.");
 
- script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
 
- script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
- script_family("Product detection");
- script_dependencies("gb_snmp_sysdesc.nasl");
- script_require_udp_ports("Services/udp/snmp", 161);
- script_mandatory_keys("SNMP/sysdesc/available");
+  script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("gb_snmp_sysdesc.nasl");
+  script_require_udp_ports("Services/udp/snmp", 161);
+  script_mandatory_keys("SNMP/sysdesc/available");
 
  exit(0);
 }

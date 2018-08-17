@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_pdf_mem_crptn_vuln.nasl 10140 2018-06-08 12:58:24Z asteins $
+# $Id: gb_foxit_reader_pdf_mem_crptn_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # Foxit Reader PDF File Handling Memory Corruption Vulnerability
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802957");
-  script_version("$Revision: 10140 $");
+  script_version("$Revision: 11003 $");
   script_cve_id("CVE-2012-4337");
   script_bugtraq_id(55150);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-09-07 11:03:23 +0530 (Fri, 07 Sep 2012)");
   script_name("Foxit Reader PDF File Handling Memory Corruption Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/50359");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1027424");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/50359");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1027424");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
@@ -44,16 +44,16 @@ if(description)
   script_family("General");
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
   script_require_keys("Foxit/Reader/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation could allow the attackers to execute arbitrary code
+  script_tag(name:"impact", value:"Successful exploitation could allow the attackers to execute arbitrary code
   on the target system.
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Foxit Reader version prior to 5.3 on Windows XP and Windows 7");
-  script_tag(name : "insight" , value : "An unspecified error when parsing PDF files and can be exploited to corrupt
+  script_tag(name:"affected", value:"Foxit Reader version prior to 5.3 on Windows XP and Windows 7");
+  script_tag(name:"insight", value:"An unspecified error when parsing PDF files and can be exploited to corrupt
   memory.");
-  script_tag(name : "solution" , value : "Upgrade to the Foxit Reader version 5.3 or later,
+  script_tag(name:"solution", value:"Upgrade to the Foxit Reader version 5.3 or later,
   For updates refer to http://www.foxitsoftware.com/Secure_PDF_Reader/");
-  script_tag(name : "solution_type" , value : "VendorFix");
-  script_tag(name : "summary" , value : "The host is installed with Foxit Reader and is prone to memory
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The host is installed with Foxit Reader and is prone to memory
   corruption vulnerability.");
   exit(0);
 }

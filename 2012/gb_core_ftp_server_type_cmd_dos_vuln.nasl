@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_core_ftp_server_type_cmd_dos_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_core_ftp_server_type_cmd_dos_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # Core FTP Server 'Type' Command Remote Denial of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802613");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11003 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-03-05 10:57:53 +0530 (Mon, 05 Mar 2012)");
   script_name("Core FTP Server 'Type' Command Remote Denial of Service Vulnerability");
 
@@ -120,7 +120,6 @@ for (i = 0; i < 3; i++)
   ftp_close(socket:soc);
   sleep(1);
 
-  ## Open the socket to confirm FTP server is alive
   soc1 = open_sock_tcp(ftpPort);
   if(! soc1)
   {

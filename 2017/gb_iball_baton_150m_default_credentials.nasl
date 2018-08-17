@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iball_baton_150m_default_credentials.nasl 7523 2017-10-20 08:20:46Z cfischer $
+# $Id: gb_iball_baton_150m_default_credentials.nasl 11025 2018-08-17 08:27:37Z cfischer $
 #
 # iBall Baton 150M Router Default Credentials
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if( description )
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113013");
-  script_version("$Revision: 7523 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 10:20:46 +0200 (Fri, 20 Oct 2017) $");
+  script_version("$Revision: 11025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 15:09:33 +0200 (Wed, 11 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -54,12 +54,13 @@ if( description )
   script_tag(name:"affected", value:"iBall Baton 150M Wireless-N Broadband Router");
   script_tag(name:"solution", value:"Change your password to something else.");
 
-  exit( 0 );
+  exit(0);
 }
 
-include( "host_details.inc" );
-include( "http_func.inc" );
-include( "http_keepalive.inc" );
+include("host_details.inc");
+include("http_func.inc");
+include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_asp( port:port ) ) exit( 0 );

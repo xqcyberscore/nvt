@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_55077.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_webid_55077.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # WeBid Remote File Include and SQL Injection Vulnerabilities
 #
@@ -28,37 +28,37 @@ CPE = "cpe:/a:webidsupport:webid";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103544");
+  script_oid("1.3.6.1.4.1.25623.1.0.103544");
  script_bugtraq_id(55077);
- script_tag(name:"cvss_base", value:"6.4");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version("$Revision: 10941 $");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_version("$Revision: 11003 $");
 
- script_name("WeBid Remote File Include and SQL Injection Vulnerabilities");
+  script_name("WeBid Remote File Include and SQL Injection Vulnerabilities");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55077");
- script_xref(name:"URL", value:"http://www.webidsupport.com/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55077");
+  script_xref(name:"URL", value:"http://www.webidsupport.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
- script_tag(name:"creation_date", value:"2012-08-20 10:23:22 +0200 (Mon, 20 Aug 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_tag(name:"solution_type", value:"VendorFix");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_webid_detect.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("webid/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-08-20 10:23:22 +0200 (Mon, 20 Aug 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("gb_webid_detect.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("webid/installed");
 
- script_tag(name:"summary", value:"WeBid to a remote file-include issue and an SQL-injection issue.
+  script_tag(name:"summary", value:"WeBid to a remote file-include issue and an SQL-injection issue.");
 
-A successful exploit may allow an attacker to execute malicious code
+  script_tag(name:"impact", value:"A successful exploit may allow an attacker to execute malicious code
 within the context of the webserver process, to compromise the
 application, to access or modify data, or to exploit latent
-vulnerabilities in the underlying database.
+vulnerabilities in the underlying database.");
 
-WeBid 1.0.4 is vulnerable; other versions may also be affected.");
- script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  script_tag(name:"affected", value:"WeBid 1.0.4 is vulnerable, other versions may also be affected.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features,
 remove the product or replace the product by another one.");
  exit(0);

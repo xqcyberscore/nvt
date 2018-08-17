@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lantronix_password_disclosure.nasl 7929 2017-11-29 09:59:29Z cfischer $
+# $Id: gb_lantronix_password_disclosure.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # Lantronix Remote Configuration Protocol Password Disclosure
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103598");
-  script_version("$Revision: 7929 $");
+  script_version("$Revision: 11003 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-29 10:59:29 +0100 (Wed, 29 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-10-29 15:28:00 +0100 (Mon, 29 Oct 2012)");
   script_name("Lantronix Remote Configuration Protocol Password Disclosure");
   script_category(ACT_GATHER_INFO);
@@ -40,17 +40,13 @@ if(description)
   script_dependencies("gb_lantronix_mgm_udp_detect.nasl", "gb_lantronix_mgm_tcp_detect.nasl");
   script_mandatory_keys("lantronix_device/lantronix_remote_conf/password_gathered");
 
-  tag_summary = "Lantronix Devices are prone to a Password Disclosure via the
+  script_tag(name:"solution", value:"Disable access to UDP port 30718 and/or TCP port 30718.");
+  script_tag(name:"summary", value:"Lantronix Devices are prone to a Password Disclosure via the
   remote configuration protocol.
 
   It was possible to retrieve the setup record from Lantronix devices via the
   config port (30718/udp or 30718/tcp, enabled by default) and to extract the
-  Telnet/HTTP password.";
-
-  tag_solution = "Disable access to UDP port 30718 and/or TCP port 30718.";
-
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  Telnet/HTTP password.");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_vul");

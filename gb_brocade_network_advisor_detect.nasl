@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brocade_network_advisor_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
+# $Id: gb_brocade_network_advisor_detect.nasl 11021 2018-08-17 07:48:11Z cfischer $
 #
 # Brocade Network Advisor Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106515");
-  script_version("$Revision: 10922 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11021 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:48:11 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-01-16 10:12:31 +0700 (Mon, 16 Jan 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,13 +40,13 @@ if(description)
 
   script_tag(name:"summary", value:"Detection of Brocade Network Advisor
 
-The script sends a HTTP connection request to the server and attempts to detect the presence of Brocade Network
-Advisor and to extract its version.");
+  The script sends a HTTP connection request to the server and attempts to detect the presence of Brocade Network
+  Advisor and to extract its version.");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("httpver.nasl");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
@@ -60,11 +60,11 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("url_func.inc");
+include("misc_func.inc");
 
 port = get_http_port(default: 443);
 
-req = http_get(port: port, item: "/login.xhtml");
-res = http_keepalive_send_recv(port: port, data: req);
+res = http_get_cache(port: port, item: "/login.xhtml");
 
 if ("<title>Network Advisor Login</title>" >< res && 'ui-menuitem-text">About Network Advisor' >< res) {
   version = "unknown";

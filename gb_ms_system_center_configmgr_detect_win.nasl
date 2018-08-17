@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_system_center_configmgr_detect_win.nasl 10890 2018-08-10 12:30:06Z cfischer $
+# $Id: gb_ms_system_center_configmgr_detect_win.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Microsoft System Center Configuration Manager Version Detection
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803023");
-  script_version("$Revision: 10890 $");
+  script_version("$Revision: 11015 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"registry");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-09-12 09:47:47 +0530 (Wed, 12 Sep 2012)");
   script_name("Microsoft System Center Configuration Manager Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -163,7 +163,6 @@ foreach key (keylist)
       ## At time only one R2/R3 version can be installed not both.
       ## If R3 installed On R2, R2 key will be deleted from registry
 
-      ## Setting KB versions for SCCM 2007 R2\R3 version
       if(confmgrName =~ "Microsoft System Center Configuration Manager 2007 [R3|R2]")
       {
         confmgrVer = registry_get_sz(key: key + item, item:"DisplayVersion");

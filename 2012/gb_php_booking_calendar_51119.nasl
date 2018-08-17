@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_booking_calendar_51119.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_php_booking_calendar_51119.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # PHP Booking Calendar 'page_info_message' Parameter Cross Site Scripting Vulnerability
 #
@@ -25,46 +25,47 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "PHP Booking Calendar is prone to a cross-site scripting vulnerability
-because it fails to sufficiently sanitize user-supplied data.
-
-An attacker may leverage this issue to execute arbitrary script code
-in the browser of an unsuspecting user in the context of the affected
-site. This may allow the attacker to steal cookie-based authentication
-credentials and launch other attacks.
-
-PHP Booking Calendar 10e is vulnerable; other versions may also
-be affected.";
-
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103376");
- script_bugtraq_id(51119);
- script_cve_id("CVE-2011-5045");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 9352 $");
- script_name("PHP Booking Calendar 'page_info_message' Parameter Cross Site Scripting Vulnerability");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51119");
- script_xref(name : "URL" , value : "http://sourceforge.net/projects/bookingcalendar/");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520929");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-01-04 15:47:28 +0100 (Wed, 04 Jan 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_oid("1.3.6.1.4.1.25623.1.0.103376");
+  script_bugtraq_id(51119);
+  script_cve_id("CVE-2011-5045");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11003 $");
+  script_name("PHP Booking Calendar 'page_info_message' Parameter Cross Site Scripting Vulnerability");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51119");
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/bookingcalendar/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/520929");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-01-04 15:47:28 +0100 (Wed, 04 Jan 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"summary", value:"PHP Booking Calendar is prone to a cross-site scripting vulnerability
+because it fails to sufficiently sanitize user-supplied data.");
+
+  script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script code
+in the browser of an unsuspecting user in the context of the affected
+site. This may allow the attacker to steal cookie-based authentication
+credentials and launch other attacks.");
+
+  script_tag(name:"affected", value:"PHP Booking Calendar 10e is vulnerable, other versions may also
+be affected.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 

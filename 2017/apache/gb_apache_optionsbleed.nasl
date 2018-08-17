@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_optionsbleed.nasl 9218 2018-03-27 11:35:33Z cfischer $
+# $Id: gb_apache_optionsbleed.nasl 11008 2018-08-16 13:26:16Z cfischer $
 #
 # Apache HTTP Server OPTIONS Memory Leak Vulnerability (Optionsbleed)
 #
@@ -32,8 +32,8 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112048");
-  script_version("$Revision: 9218 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-27 13:35:33 +0200 (Tue, 27 Mar 2018) $");
+  script_version("$Revision: 11008 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-09-20 12:53:35 +0200 (Wed, 20 Sep 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -97,6 +97,7 @@ include("host_details.inc");
 if(!port = get_app_port(cpe:CPE)) exit(0);
 get_app_location(cpe:CPE, port:port, nofork:TRUE); # To have a reference to the Detection-NVT
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 #TODO: Once this vulnerability got older we might want to consider to limit the amounts of directories to check here
@@ -108,7 +109,7 @@ foreach dir(make_list_unique("/", cgi_dirs(port:port)))
 
   req = 'OPTIONS ' + url + ' HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'Connection: Close\r\n\r\n';
 
   for(i = 0; i <= 100; i++)
@@ -122,7 +123,7 @@ foreach dir(make_list_unique("/", cgi_dirs(port:port)))
       # Allow: ,GET,HEAD,POST,OPTIONS
       # Allow: HEAD,,HEAD,POST,,HEAD,TRACE
       # Allow: POST,OPTIONS,GET,HEAD,,HEAD,write.c>
-      if(vuln = eregmatch(pattern:"(\,{2,}|\,\W+\,|^\w+\:[\s]{0,}\,|\d)", string:allow)) 
+      if(vuln = eregmatch(pattern:"(\,{2,}|\,\W+\,|^\w+\:[\s]{0,}\,|\d)", string:allow))
       {
         report = "The remote service might leak data/memory via the 'Allow' header.";
         report += '\n\nRequest:\n' + req + '\nResponse:\n' + res;

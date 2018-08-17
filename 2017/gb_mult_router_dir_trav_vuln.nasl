@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_router_dir_trav_vuln.nasl 10688 2018-07-31 06:55:11Z asteins $
+# $Id: gb_mult_router_dir_trav_vuln.nasl 11025 2018-08-17 08:27:37Z cfischer $
 #
 # Multiple Router Directory Traversal Vulnerability
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140448");
-  script_version("$Revision: 10688 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-31 08:55:11 +0200 (Tue, 31 Jul 2018) $");
+  script_version("$Revision: 11025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-24 09:17:33 +0700 (Tue, 24 Oct 2017)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -51,16 +51,16 @@ if (description)
   script_require_ports("Services/www", 8080);
 
   script_tag(name:"summary", value:"Multiple home router products are prone to a directory traversal
-vulnerability.");
+  vulnerability.");
 
   script_tag(name:"insight", value:"On multiple home router products (e.g. FiberHome, PLC Systems), a directory
-traversal vulnerability exists in /cgi-bin/webproc via the getpage parameter in conjunction with a crafted
-var:page value.");
+  traversal vulnerability exists in /cgi-bin/webproc via the getpage parameter in conjunction with a crafted
+  var:page value.");
 
   script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
   script_tag(name:"solution", value:"No known solution is available as of 31st July, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  regarding this issue will be updated once solution details are available.");
 
   script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3472");
 
@@ -69,6 +69,7 @@ regarding this issue will be updated once solution details are available.");
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default: 8080);
 

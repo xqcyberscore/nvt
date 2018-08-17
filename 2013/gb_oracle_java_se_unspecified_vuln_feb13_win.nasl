@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_unspecified_vuln_feb13_win.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: gb_oracle_java_se_unspecified_vuln_feb13_win.nasl 11007 2018-08-16 13:20:25Z mmartin $
 #
 # Oracle Java SE Unspecified Vulnerability - Feb 13 (Windows)
 #
@@ -27,34 +27,34 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803306");
-  script_version("$Revision: 10144 $");
+  script_version("$Revision: 11007 $");
   script_cve_id("CVE-2013-1490");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:20:25 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-02-06 10:54:26 +0530 (Wed, 06 Feb 2013)");
   script_name("Oracle Java SE Unspecified Vulnerability - Feb 13 (Windows)");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2013/Jan/142");
-  script_xref(name : "URL" , value : "http://www.security-database.com/detail.php?alert=CVE-2013-1490");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/javacpufeb2013-1841061.html");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/Jan/142");
+  script_xref(name:"URL", value:"http://www.security-database.com/detail.php?alert=CVE-2013-1490");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/javacpufeb2013-1841061.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_require_keys("Sun/Java/JRE/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation allows remote attackers to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary
 code via unknown vectors.
 
 Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Oracle Java version 7 Update 11 on Windows");
-  script_tag(name : "insight" , value : "An unspecified vulnerability allows remote attackers to bypass Java
+  script_tag(name:"affected", value:"Oracle Java version 7 Update 11 on Windows");
+  script_tag(name:"insight", value:"An unspecified vulnerability allows remote attackers to bypass Java
 security sandbox via unknown vectors.");
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is installed with Oracle Java SE and is prone to an
+  script_tag(name:"summary", value:"This host is installed with Oracle Java SE and is prone to an
 unspecified vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"WillNotFix");

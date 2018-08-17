@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avaya_ip_office_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
+# $Id: gb_avaya_ip_office_detect.nasl 11006 2018-08-16 12:21:56Z cfischer $
 #
 # Avaya IP Office Detection
 #
@@ -25,35 +25,35 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106322");
- script_version("$Revision: 10908 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2016-10-04 13:39:10 +0700 (Tue, 04 Oct 2016)");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.106322");
+  script_version("$Revision: 11006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 14:21:56 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-04 13:39:10 +0700 (Tue, 04 Oct 2016)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_name("Avaya IP Office Detection");
+  script_name("Avaya IP Office Detection");
 
- script_tag(name:"summary", value:"Detection of Avaya IP Office
+  script_tag(name:"summary", value:"Detection of Avaya IP Office.
 
-The script sends a connection request to the server and attempts to detect the presence of Avaya IP Office and to
-extract its version.");
+  The script sends a connection request to the server and attempts to detect the presence of Avaya IP Office and to
+  extract its version.");
 
- script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
 
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_family("Product detection");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_xref(name:"URL", value:"https://support.avaya.com/products/P0160/ip-office-platform");
+  script_xref(name:"URL", value:"https://support.avaya.com/products/P0160/ip-office-platform");
 
- exit(0);
+  exit(0);
 }
 
 include("cpe.inc");
@@ -63,11 +63,12 @@ include("http_keepalive.inc");
 
 port = get_http_port(default: 80);
 
+useragent = get_http_user_agent();
 host = http_host_name( port:port );
 
 req = 'GET /index.html HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
       'Accept-Language: en-US,en;q=0.5\r\n' +
       'Connection: close\r\n\r\n';

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ida_pro_detect.nasl 10880 2018-08-10 09:27:43Z cfischer $
+# $Id: secpod_ida_pro_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Hex-Rays IDA Pro Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901188");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 10880 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 11:27:43 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-02-28 11:12:07 +0100 (Mon, 28 Feb 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Hex-Rays IDA Pro Version Detection");

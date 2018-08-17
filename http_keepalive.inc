@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_keepalive.inc 10986 2018-08-15 13:38:20Z cfischer $
+# $Id: http_keepalive.inc 11005 2018-08-16 11:48:55Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10986 $
+# $Revision: 11005 $
 #
 ###############################################################################
 
@@ -79,7 +79,7 @@ function http_keepalive_enabled( port ) {
   # from within the same include.
   if(!defined_func("http_host_name")) include("http_func.inc");
 
-  local_var port, host, req, soc, r, kb;
+  local_var port, host, req, soc, r, kb, useragent;
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_keepalive_enabled" );
@@ -95,6 +95,8 @@ function http_keepalive_enabled( port ) {
     return( 0 );
   }
 
+  useragent = get_http_user_agent();
+
   # nb: Always keep http_host_name() before http_open_socket() as the first
   # could fork with multiple vhosts and the child's would share the same
   # socket causing race conditions and similar.
@@ -104,7 +106,7 @@ function http_keepalive_enabled( port ) {
                 'Connection: Keep-Alive\r\n',
                 'Host: ', host, '\r\n',
                 'Pragma: no-cache\r\n',
-                'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n\r\n' );
+                'User-Agent: ', useragent, '\r\n\r\n' );
 
   soc = http_open_socket( port );
   if( ! soc ) return -2;

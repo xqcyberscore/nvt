@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809483");
-  script_version("$Revision: 10905 $");
+  script_version("$Revision: 11020 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:35:00 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-12-02 19:00:32 +0530 (Fri, 02 Dec 2016)");
   script_name("Apache Ranger Version Detection");
 
@@ -55,13 +55,8 @@ include("http_keepalive.inc");
 include("host_details.inc");
 
 rangerport = get_http_port( default:6080);
-if(!rangerport){
-  exit(0);
-}
 
-## Send request and receive response
-sndReq = http_get( item:"/login.jsp" , port:rangerport );
-rcvRes = http_keepalive_send_recv( port:rangerport, data:sndReq );
+rcvRes = http_get_cache( item:"/login.jsp" , port:rangerport );
 
 if(rcvRes =~ "HTTP/1.. 200" && '<title> Ranger - Sign In</title>' >< rcvRes &&
    '> Username:<' >< rcvRes  && '> Password:<' >< rcvRes)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apache_axis_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
+# $Id: sw_apache_axis_detect.nasl 11020 2018-08-17 07:35:00Z cfischer $
 #
 # Apache Axis Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111093");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10905 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11020 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:35:00 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-04-06 07:12:12 +0200 (Wed, 06 Apr 2016)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache Axis Detection");
@@ -75,8 +75,7 @@ foreach dir( make_list_unique( "/axis", "/imcws", "/WebServiceImpl", "/dswsbobje
 
   #Index page
   url3 = dir + "/index.jsp";
-  req3 = http_get( item:url3, port:port );
-  buf3 = http_keepalive_send_recv( port:port, data:req3 );
+  buf3 = http_get_cache( item:url3, port:port );
 
   if( "<h2>AXIS error</h2>" >< buf2 || "No service is available at this URL" >< buf2 ||
       "<h1>Axis HTTP Servlet</h1>" >< buf2 ) {

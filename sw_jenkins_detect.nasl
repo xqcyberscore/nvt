@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_jenkins_detect.nasl 9884 2018-05-17 11:09:20Z jschulte $
+# $Id: sw_jenkins_detect.nasl 11018 2018-08-17 07:13:05Z cfischer $
 #
 # Jenkins CI Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111001");
-  script_version("$Revision: 9884 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 13:09:20 +0200 (Thu, 17 May 2018) $");
+  script_version("$Revision: 11018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:13:05 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-03-02 12:00:00 +0100 (Mon, 02 Mar 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -80,7 +80,7 @@ foreach dir( make_list_unique( "/", "/jenkins", cgi_dirs( port:port ) ) ) {
       }
     }
 
-    # set kb-item for LTS version of Jenkins to differentiate it from weekly version in the NVTs
+    # nb: set kb-item for LTS version of Jenkins to differentiate it from weekly version in the NVTs
     # LTS: x.x.x - Weekly: x.x
     if ( version && version != "unknown" ) {
       if ( version =~ "^([0-9]+\.[0-9]+\.[0-9]+)") {

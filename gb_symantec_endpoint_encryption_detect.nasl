@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_endpoint_encryption_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
+# $Id: gb_symantec_endpoint_encryption_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Symantec Endpoint Encryption (SEE) Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808069");
-  script_version("$Revision: 10901 $");
+  script_version("$Revision: 11015 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-06-07 11:23:59 +0530 (Tue, 07 Jun 2016)");
   script_name("Symantec Endpoint Encryption (SEE) Version Detection (Windows)");
 
@@ -68,7 +68,6 @@ if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-##Iterate
 foreach item (registry_enum_keys(key:key))
 {
   seeName = registry_get_sz(key:key + item, item:"DisplayName");

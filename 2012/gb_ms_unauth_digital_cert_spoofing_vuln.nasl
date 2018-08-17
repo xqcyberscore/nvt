@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_unauth_digital_cert_spoofing_vuln.nasl 10786 2018-08-06 10:01:42Z santu $
+# $Id: gb_ms_unauth_digital_cert_spoofing_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # Microsoft Unauthorized Digital Certificates Spoofing Vulnerability (2728973)
 #
@@ -24,51 +24,53 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow remote attackers to use the
-  certificates to spoof content, perform phishing attacks, or perform
-  man-in-the-middle attacks.
-  Impact Level: System";
-tag_affected = "Microsoft Windows XP x32 Edition Service Pack 3 and prior
-  Microsoft Windows XP x64 Edition Service Pack 2 and prior
-  Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
-  Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
-  Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
-  Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
-  Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior";
-tag_insight = "Microsoft certificate authorities, which are stored outside the recommended
-  secure storage practices can be misused. An attacker could use these
-  certificates to spoof content, perform phishing attacks, or perform
-  man-in-the-middle attacks.";
-tag_solution = "Apply the Patch from below link,
-  http://support.microsoft.com/kb/2728973";
-tag_summary = "This host is installed with Microsoft Windows operating system and
-  is prone to Spoofing vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802912");
-  script_version("$Revision: 10786 $");
+  script_version("$Revision: 11003 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 12:01:42 +0200 (Mon, 06 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-07-12 17:17:25 +0530 (Thu, 12 Jul 2012)");
   script_name("Microsoft Unauthorized Digital Certificates Spoofing Vulnerability (2728973)");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2728973");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/advisory/2728973");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2728973");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/advisory/2728973");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Windows");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to use the
+  certificates to spoof content, perform phishing attacks, or perform
+  man-in-the-middle attacks.
+  Impact Level: System");
+  script_tag(name:"affected", value:"Microsoft Windows XP x32 Edition Service Pack 3 and prior.
+
+  Microsoft Windows XP x64 Edition Service Pack 2 and prior.
+
+  Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior.
+
+  Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior.
+
+  Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior.
+
+  Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior.
+
+  Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior.");
+  script_tag(name:"insight", value:"Microsoft certificate authorities, which are stored outside the recommended
+  secure storage practices can be misused. An attacker could use these
+  certificates to spoof content, perform phishing attacks, or perform
+  man-in-the-middle attacks.");
+  script_tag(name:"solution", value:"Apply the Patch from below link:
+
+  http://support.microsoft.com/kb/2728973");
+  script_tag(name:"summary", value:"This host is installed with Microsoft Windows operating system and
+  is prone to Spoofing vulnerability.");
   exit(0);
 }
 

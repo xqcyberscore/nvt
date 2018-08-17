@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_soap_sec_bypass_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_otrs_soap_sec_bypass_vuln.nasl 11007 2018-08-16 13:20:25Z mmartin $
 #
 # OTRS SOAP Security Bypass Vulnerability
 #
@@ -32,35 +32,34 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803947");
-  script_version("$Revision: 6093 $");
+  script_version("$Revision: 11007 $");
   script_cve_id("CVE-2008-1515");
   script_bugtraq_id(74733);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:20:25 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-09-28 13:08:01 +0530 (Sat, 28 Sep 2013)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OTRS SOAP Security Bypass Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with
+  script_tag(name:"summary", value:"This host is installed with
   OTRS (Open Ticket Request System) and is prone to security bypass
   vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"An error exists in SOAP interface which
+  script_tag(name:"insight", value:"An error exists in SOAP interface which
   fails to properly validate user credentials before performing certain actions.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to read and modify objects via the OTRS SOAP interface
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"OTRS (Open Ticket Request System)
+  script_tag(name:"affected", value:"OTRS (Open Ticket Request System)
   version 2.1.0 before 2.1.8 and 2.2.0 before 2.2.6");
 
-  script_tag(name: "solution" , value:"Upgrade to OTRS version 2.1.8 or 2.2.6
+  script_tag(name:"solution", value:"Upgrade to OTRS version 2.1.8 or 2.2.6
   or later, For updates refer to http://www.otrs.com/en");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -76,25 +75,18 @@ if(description)
 
 include("version_func.inc");
 include("host_details.inc");
-include("global_settings.inc");
 
-## Variable initialisation
-otrsport = "";
-otrsVer = "";
 
-## Get Application HTTP Port
 if(!otrsport = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get application version
 if(!otrsVer = get_app_version(cpe:CPE, port:otrsport)){
   exit(0);
 }
 
 if(otrsVer =~ "^2\.(1|2)")
 {
-  ## Check for version 2.1.0 before 2.1.8 and 2.2.0 before 2.2.6
   if(version_in_range(version:otrsVer, test_version:"2.1.0", test_version2:"2.1.7")||
      version_in_range(version:otrsVer, test_version:"2.2.0", test_version2:"2.2.5"))
   {

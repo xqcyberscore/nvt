@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freeftpd_port_cmd_dos_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_freeftpd_port_cmd_dos_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # freeFTPD PORT Command Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802913");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11003 $");
   script_cve_id("CVE-2005-3812");
   script_bugtraq_id(15557);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-07-13 14:06:29 +0530 (Fri, 13 Jul 2012)");
   script_name("freeFTPD PORT Command Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -113,7 +113,6 @@ data = "PORT 50";
 ftp_send_cmd(socket:soc, cmd:data);
 ftp_close(socket:soc);
 
-## Open the socket to confirm FTP server is alive
 soc2 = open_sock_tcp(ftpPort);
 if(!soc2)
 {

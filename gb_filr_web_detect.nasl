@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_filr_web_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
+# $Id: gb_filr_web_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Filr Web Interface Detection
 #
@@ -27,24 +27,24 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105826");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 10906 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2016-07-25 16:16:12 +0200 (Mon, 25 Jul 2016)");
- script_name("Filr Web Interface Detection");
+  script_oid("1.3.6.1.4.1.25623.1.0.105826");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-25 16:16:12 +0200 (Mon, 25 Jul 2016)");
+  script_name("Filr Web Interface Detection");
 
- script_tag(name:"summary", value:"This script performs HTTP based detection of Filr Web Interface");
+  script_tag(name:"summary", value:"This script performs HTTP based detection of Filr Web Interface");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_category(ACT_GATHER_INFO);
- script_family("Product detection");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 8443);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 8443);
+  script_exclude_keys("Settings/disable_cgi_scanning");
  exit(0);
 }
 

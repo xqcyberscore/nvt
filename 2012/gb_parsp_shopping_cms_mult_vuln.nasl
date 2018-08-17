@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_parsp_shopping_cms_mult_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_parsp_shopping_cms_mult_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # Parsp Shopping CMS Multiple Vulnerabilities
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802575");
-  script_version("$Revision: 5963 $");
+  script_version("$Revision: 11003 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-02-01 15:28:20 +0530 (Wed, 01 Feb 2012)");
   script_name("Parsp Shopping CMS Multiple Vulnerabilities");
-  script_xref(name : "URL" , value : "http://1337day.com/exploits/17418");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18409/");
-  script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2012010198");
-  script_xref(name : "URL" , value : "http://www.exploitsdownload.com/search/Arab");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108953/parspshoppingcms-xssdisclose.txt");
+  script_xref(name:"URL", value:"http://1337day.com/exploits/17418");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18409/");
+  script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2012010198");
+  script_xref(name:"URL", value:"http://www.exploitsdownload.com/search/Arab");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/108953/parspshoppingcms-xssdisclose.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
@@ -46,22 +46,24 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
   web script or HTML in a user's browser session in the context of an affected
   site and gain th sensitive information related to PHP.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Parsp Shopping CMS version V5 and prior.");
-  script_tag(name : "insight" , value : "The flaws are due to an,
+  script_tag(name:"affected", value:"Parsp Shopping CMS version V5 and prior.");
+  script_tag(name:"insight", value:"The flaws are due to an,
+
    - Input passed to the 'advanced_search_in_category' parameter in 'index.php'
    is not properly sanitised before being returned to the user.
+
    - Error in 'phpinfo.php' script, this can be exploited to gain knowledge
    of sensitive information by requesting the file directly.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
   features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running Parsp Shopping CMS and is prone to multiple
+  script_tag(name:"summary", value:"This host is running Parsp Shopping CMS and is prone to multiple
   vulnerabilities.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -73,10 +75,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check host supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
@@ -88,14 +88,12 @@ foreach dir (make_list_unique("/", "/parsp", cgi_dirs(port:port)))
 
   rcvRes = http_get_cache(item: dir + "/index.php", port:port);
 
-  ## Confirm the application
   if(egrep(pattern:'>powered by .*>www.parsp.com<', string:rcvRes))
   {
     ## Attack to obtain information about php
     sndReq = http_get(item: dir + "/phpinfo.php", port:port);
     rcvRes = http_keepalive_send_recv(port:port,data:sndReq);
 
-    ## Confirm exploit worked properly or not
     if("<title>phpinfo" >< rcvRes && ">PHP Core<" >< rcvRes)
     {
       security_message(port:port);

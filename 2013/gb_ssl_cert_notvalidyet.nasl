@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_cert_notvalidyet.nasl 7248 2017-09-25 08:18:05Z cfischer $
+# $Id: gb_ssl_cert_notvalidyet.nasl 11011 2018-08-16 14:14:31Z mmartin $
 #
 # SSL/TLS: Certificate Not Valid Yet
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103956");
-  script_version("$Revision: 7248 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-25 10:18:05 +0200 (Mon, 25 Sep 2017) $");
+  script_version("$Revision: 11011 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-27 14:44:54 +0700 (Wed, 27 Nov 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -54,7 +54,7 @@ if(description)
   exit(0);
 }
 
-include("global_settings.inc");
+
 include("misc_func.inc");
 include("ssl_funcs.inc");
 include("byte_func.inc");

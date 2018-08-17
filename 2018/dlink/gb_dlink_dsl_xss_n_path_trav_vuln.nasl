@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dsl_xss_n_path_trav_vuln.nasl 10637 2018-07-26 09:34:03Z santu $
+# $Id: gb_dlink_dsl_xss_n_path_trav_vuln.nasl 11022 2018-08-17 07:57:39Z cfischer $
 #
 # D-Link DSL Devices Directory Traversal And Cross Site Scripting Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/h:dlink:dsl-";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813804");
-  script_version("$Revision: 10637 $");
+  script_version("$Revision: 11022 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 11:34:03 +0200 (Thu, 26 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-25 10:11:37 +0530 (Wed, 25 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("D-Link DSL Devices Directory Traversal And Cross Site Scripting Vulnerabilities");
@@ -47,7 +47,7 @@ if(description)
   validation for errorpage parameter.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
-  attacker to read arbitrary files on the target system and execute arbitrary 
+  attacker to read arbitrary files on the target system and execute arbitrary
   script further leading to authentication bypass easily.
 
   Impact Level: System/Application");
@@ -61,7 +61,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/45084");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/45084");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -69,12 +69,14 @@ if(description)
   script_dependencies("gb_dlink_dsl_detect.nasl");
   script_mandatory_keys("host_is_dlink_dsl");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if(!dlinkPort = get_app_port(cpe:CPE)){
   exit(0);

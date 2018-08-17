@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_51925.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_mysql_51925.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # MySQL 'yaSSL' Remote Code Execution Vulnerability
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/a:mysql:mysql";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103471");
+  script_oid("1.3.6.1.4.1.25623.1.0.103471");
  script_bugtraq_id(51925, 52154);
- script_version("$Revision: 10941 $");
- script_cve_id("CVE-2012-0882");
- script_name("MySQL 'yaSSL' Remote Code Execution Vulnerability");
+  script_version("$Revision: 11003 $");
+  script_cve_id("CVE-2012-0882");
+  script_name("MySQL 'yaSSL' Remote Code Execution Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51925");
- script_xref(name:"URL", value:"http://www.mysql.com/");
- script_xref(name:"URL", value:"https://lists.immunityinc.com/pipermail/canvas/2012-February/000011.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51925");
+  script_xref(name:"URL", value:"http://www.mysql.com/");
+  script_xref(name:"URL", value:"https://lists.immunityinc.com/pipermail/canvas/2012-February/000011.html");
 
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
- script_tag(name:"creation_date", value:"2012-04-19 11:22:35 +0200 (Thu, 19 Apr 2012)");
- script_category(ACT_GATHER_INFO);
- script_family("Databases");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("mysql_version.nasl");
- script_require_ports("Services/mysql", 3306);
- script_mandatory_keys("MySQL/installed");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-04-19 11:22:35 +0200 (Thu, 19 Apr 2012)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Databases");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("mysql_version.nasl");
+  script_require_ports("Services/mysql", 3306);
+  script_mandatory_keys("MySQL/installed");
 
- script_tag(name:"summary", value:"MySQL is prone to an unspecified remote code-execution vulnerability.");
- script_tag(name:"impact", value:"Attackers can exploit this vulnerability to execute arbitrary code in
+  script_tag(name:"summary", value:"MySQL is prone to an unspecified remote code-execution vulnerability.");
+  script_tag(name:"impact", value:"Attackers can exploit this vulnerability to execute arbitrary code in
 the context of the affected application.");
- script_tag(name:"insight", value:"Limited information is available regarding this issue. This script will
+  script_tag(name:"insight", value:"Limited information is available regarding this issue. This script will
 be updated as more information becomes available.");
- script_tag(name:"affected", value:"MySQL 5.5.20 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"affected", value:"MySQL 5.5.20 is vulnerable. Other versions may also be affected.");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 }

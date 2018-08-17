@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_cp_consolidation.nasl 10896 2018-08-10 13:24:05Z cfischer $
+# $Id: gb_simatic_cp_consolidation.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Siemens SIMATIC CP Device Detection Consolidation
 #
@@ -27,27 +27,27 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140738");
- script_version("$Revision: 10896 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2018-02-01 16:07:00 +0700 (Thu, 01 Feb 2018)");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.140738");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-01 16:07:00 +0700 (Thu, 01 Feb 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_name("Siemens SIMATIC CP Device Detection Consolidation");
+  script_name("Siemens SIMATIC CP Device Detection Consolidation");
 
- script_tag(name:"summary", value:"Report the Siemens SIMATIC CP device model, hardware and firmware version.");
+  script_tag(name:"summary", value:"Report the Siemens SIMATIC CP device model, hardware and firmware version.");
 
- script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
 
- script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
- script_family("Product detection");
- script_dependencies("gb_simatic_cp_snmp_detect.nasl", "gb_simatic_cp_http_detect.nasl", "gb_simatic_cp_ftp_detect.nasl");
- script_mandatory_keys("simatic_cp/detected");
+  script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("gb_simatic_cp_snmp_detect.nasl", "gb_simatic_cp_http_detect.nasl", "gb_simatic_cp_ftp_detect.nasl");
+  script_mandatory_keys("simatic_cp/detected");
 
- script_xref(name:"URL", value:"https://www.siemens.com");
+  script_xref(name:"URL", value:"https://www.siemens.com");
 
  exit(0);
 }

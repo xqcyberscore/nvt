@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_axis2_detect.nasl 9633 2018-04-26 14:07:08Z jschulte $
+# $Id: gb_apache_axis2_detect.nasl 11020 2018-08-17 07:35:00Z cfischer $
 #
 # Apache Axis2 Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100813");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 9633 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 16:07:08 +0200 (Thu, 26 Apr 2018) $");
+  script_version("$Revision: 11020 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:35:00 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-09-20 15:31:27 +0200 (Mon, 20 Sep 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Apache Axis2 Detection");
@@ -82,8 +82,7 @@ foreach dir( dirs ) {
 
   #Overview page
   url = dir + "/axis2-web/index.jsp";
-  req = http_get( item:url, port:port );
-  buf3 = http_keepalive_send_recv( port:port, data:req );
+  buf3 = http_get_cache( item:url, port:port );
 
   #Old location for Axis2 0.9.3 and below
   if( "Service Not found EPR is" >< buf ) {

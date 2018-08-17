@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_mult_vuln_0818.nasl 10946 2018-08-14 07:30:36Z asteins $
+# $Id: gb_openemr_mult_vuln_0818.nasl 10995 2018-08-16 07:05:33Z asteins $
 #
 # OpenEMR < 5.0.1.4 Multiple Vulnerabilities
 #
@@ -27,12 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112356");
-  script_version("$Revision: 10946 $");
+  script_version("$Revision: 10995 $");
   script_cve_id("CVE-2018-15139", "CVE-2018-15140", "CVE-2018-15141",
-  "CVE-2018-15142", "CVE-2018-15143", "CVE-2018-15144", "CVE-2018-15145");
+  "CVE-2018-15142", "CVE-2018-15143", "CVE-2018-15144", "CVE-2018-15145",
+  "CVE-2018-15146", "CVE-2018-15147", "CVE-2018-15148", "CVE-2018-15149",
+  "CVE-2018-15150", "CVE-2018-15151", "CVE-2018-15152", "CVE-2018-15153",
+  "CVE-2018-15154", "CVE-2018-15155", "CVE-2018-15156");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 09:30:36 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 09:05:33 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-14 09:22:33 +0200 (Tue, 14 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -44,7 +47,8 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaws consist of multiple SQL injection vulnerabilities,
-  directory traversal vulnerabilities and an unrestricted file upload vulnerability.");
+  directory traversal vulnerabilities, OS command injection vulnerabilities, an authentication bypass vulnerability
+  and an unrestricted file upload vulnerability.");
 
   script_tag(name:"affected", value:"OpenEMR versions before 5.0.1.4");
 
@@ -58,6 +62,8 @@ if(description)
   script_xref(name:"URL", value:"https://github.com/openemr/openemr/pull/1765/files");
   script_xref(name:"URL", value:"https://github.com/openemr/openemr/pull/1758/files");
   script_xref(name:"URL", value:"https://github.com/openemr/openemr/pull/1757/files");
+  script_xref(name:"URL", value:"https://insecurity.sh/reports/openemr.pdf");
+  script_xref(name:"URL", value:"https://www.open-emr.org/wiki/index.php/OpenEMR_Patches");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

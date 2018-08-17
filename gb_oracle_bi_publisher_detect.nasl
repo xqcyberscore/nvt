@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_bi_publisher_detect.nasl 10955 2018-08-14 12:55:20Z jschulte $
+# $Id: gb_oracle_bi_publisher_detect.nasl 11020 2018-08-17 07:35:00Z cfischer $
 #
 # Oracle BI Publisher Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809732");
-  script_version("$Revision: 10955 $");
+  script_version("$Revision: 11020 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:55:20 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:35:00 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-11-25 16:04:15 +0530 (Fri, 25 Nov 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle BI Publisher Detection");
@@ -55,12 +55,8 @@ include("host_details.inc");
 include("http_keepalive.inc");
 
 obiPort = get_http_port(default:9704);
-if(!obiPort){
-  exit(0);
-}
 
-sndReq = http_get(item:"/xmlpserver/login.jsp", port:obiPort);
-rcvRes = http_keepalive_send_recv(port:obiPort, data:sndReq);
+rcvRes = http_get_cache(item:"/xmlpserver/login.jsp", port:obiPort);
 
 if(rcvRes && "title>Oracle BI Publisher Enterprise Login<" >< rcvRes)
 {

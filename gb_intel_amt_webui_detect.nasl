@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intel_amt_webui_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
+# $Id: gb_intel_amt_webui_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Intel Active Management Technology WebUI interface Detection
 #
@@ -27,25 +27,25 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105337");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 10891 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2015-08-28 16:12:01 +0200 (Fri, 28 Aug 2015)");
- script_name("Intel Active Management Technology WebUI interface Detection");
+  script_oid("1.3.6.1.4.1.25623.1.0.105337");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2015-08-28 16:12:01 +0200 (Fri, 28 Aug 2015)");
+  script_name("Intel Active Management Technology WebUI interface Detection");
 
- script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to extract the version number
+  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to extract the version number
 from the reply.");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_category(ACT_GATHER_INFO);
- script_family("Product detection");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_require_ports("Services/www", 16992, 16993);
- script_mandatory_keys("IAMT/banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 16992, 16993);
+  script_mandatory_keys("IAMT/banner");
 
  exit(0);
 }

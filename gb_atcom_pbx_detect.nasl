@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atcom_pbx_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
+# $Id: gb_atcom_pbx_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # ATCOM PBX Detection
 #
@@ -27,29 +27,29 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106101");
- script_version("$Revision: 10899 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2016-06-20 15:49:16 +0700 (Mon, 20 Jun 2016)");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.106101");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-06-20 15:49:16 +0700 (Mon, 20 Jun 2016)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_name("ATCOM PBX Detection");
+  script_name("ATCOM PBX Detection");
 
- script_tag(name:"summary", value:"Detection of ATCOM PBX
+  script_tag(name:"summary", value:"Detection of ATCOM PBX
 
 The script attempts to identify ATCOM via SIP banner to extract the version number.");
 
- script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
 
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_family("Product detection");
- script_dependencies("sip_detection.nasl", "find_service.nasl");
- script_mandatory_keys("sip/detected");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("sip_detection.nasl", "find_service.nasl");
+  script_mandatory_keys("sip/detected");
 
- script_xref(name:"URL", value:"http://www.atcom.cn");
+  script_xref(name:"URL", value:"http://www.atcom.cn");
 
  exit(0);
 }

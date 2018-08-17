@@ -27,39 +27,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803309");
-  script_version("$Revision: 10137 $");
-  script_cve_id("CVE-2013-1618","CVE-2013-1637","CVE-2013-1638","CVE-2013-1639");
-  script_bugtraq_id(57773,57633);
+  script_version("$Revision: 11011 $");
+  script_cve_id("CVE-2013-1618", "CVE-2013-1637", "CVE-2013-1638", "CVE-2013-1639");
+  script_bugtraq_id(57773, 57633);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-02-11 13:41:27 +0530 (Mon, 11 Feb 2013)");
   script_name("Opera Multiple Vulnerabilities -01 Feb 13 (Windows)");
-  script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1042");
-  script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1043");
-  script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1044");
-  script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1045");
-  script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/unified/1213");
+  script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1042");
+  script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1043");
+  script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1044");
+  script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1045");
+  script_xref(name:"URL", value:"http://www.opera.com/docs/changelogs/unified/1213");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   code, perform distinguishing attacks and plaintext-recovery attacks or cause
   a denial of service.
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Opera version prior to 12.13 on Windows");
-  script_tag(name : "insight" , value : "- Does not send CORS preflight requests, this allows remote attackers to
+  script_tag(name:"affected", value:"Opera version prior to 12.13 on Windows");
+  script_tag(name:"insight", value:"- Does not send CORS preflight requests, this allows remote attackers to
     bypass CSRF protection mechanism via crafted site.
   - Error with particular DOM events manipulation.
   - SVG documents with crafted clipPaths allows content to overwrite memory.
   - Does not properly consider timing side-channel attacks on a MAC check
     operation during the processing of malformed CBC padding.");
-  script_tag(name : "solution" , value : "Upgrade to Opera version 12.13 or later,
+  script_tag(name:"solution", value:"Upgrade to Opera version 12.13 or later,
   For updates refer to http://www.opera.com");
-  script_tag(name : "summary" , value : "This host is installed with Opera and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Opera and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

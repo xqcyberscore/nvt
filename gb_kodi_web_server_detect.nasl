@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kodi_web_server_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
+# $Id: gb_kodi_web_server_detect.nasl 11021 2018-08-17 07:48:11Z cfischer $
 #
 # Kodi Web Server Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808282");
-  script_version("$Revision: 10922 $");
+  script_version("$Revision: 11021 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:48:11 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-08-08 18:13:32 +0530 (Mon, 08 Aug 2016)");
   script_name("Kodi Web Server Remote Detection");
   script_category(ACT_GATHER_INFO);
@@ -55,6 +55,7 @@ include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:8080 );
 res  = http_get_cache( port:port, item:"/" );

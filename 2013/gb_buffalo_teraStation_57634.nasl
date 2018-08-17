@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_buffalo_teraStation_57634.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_buffalo_teraStation_57634.nasl 11024 2018-08-17 08:18:16Z mmartin $
 #
 # Buffalo TeraStation Multiple Security Vulnerabilities
 #
@@ -27,33 +27,35 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103650");
- script_bugtraq_id(57634);
- script_tag(name:"cvss_base", value:"8.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
- script_version ("$Revision: 6093 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103650");
+  script_bugtraq_id(57634);
+  script_tag(name:"cvss_base", value:"8.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
+  script_version("$Revision: 11024 $");
 
- script_name("Buffalo TeraStation Multiple Security Vulnerabilities");
+  script_name("Buffalo TeraStation Multiple Security Vulnerabilities");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/57634");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57634");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
- script_tag(name:"creation_date", value:"2013-01-31 12:41:05 +0100 (Thu, 31 Jan 2013)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : "Buffalo TeraStation is prone to an arbitrary file download and an
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:18:16 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-01-31 12:41:05 +0100 (Thu, 31 Jan 2013)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"summary", value:"Buffalo TeraStation is prone to an arbitrary file download and an
  arbitrary command-injection vulnerability because it fails to
  sufficiently sanitize user-supplied data.");
- script_tag(name : "impact" , value : "An attacker can exploit these issues to download arbitrary files and
+  script_tag(name:"impact", value:"An attacker can exploit these issues to download arbitrary files and
  execute arbitrary-commands with root privilege within the context of
  the vulnerable system. Successful exploits will result in the complete
  compromise of affected system.");
 
- script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"qod_type", value:"remote_app");
 
  exit(0);
 }
@@ -61,7 +63,7 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port(default:80);
 
 url = '/cgi-bin/sync.cgi?gSSS=foo&gRRR=foo&gPage=information&gMode=log&gType=save&gKey=/etc/passwd';

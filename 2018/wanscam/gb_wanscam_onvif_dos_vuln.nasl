@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wanscam_onvif_dos_vuln.nasl 10395 2018-07-04 08:48:40Z jschulte $
+# $Id: gb_wanscam_onvif_dos_vuln.nasl 11022 2018-08-17 07:57:39Z cfischer $
 #
 # Wanscam HW0021 ONVIF Denial of Service Vulnerability
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if( description )
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113222");
-  script_version("$Revision: 10395 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 10:48:40 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 11022 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-03 11:23:57 +0200 (Tue, 03 Jul 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -61,13 +61,13 @@ if( description )
   script_tag(name:"solution", value:"No known solution is available as of 03rd July, 2018.
   Information regarding this issue will be updated once solution details are available.");
 
-
-  exit( 0 );
+  exit(0);
 }
 
-include( "host_details.inc" );
-include( "http_func.inc" );
-include( "http_keepalive.inc" );
+include("host_details.inc");
+include("http_func.inc");
+include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default: 8080 );
 

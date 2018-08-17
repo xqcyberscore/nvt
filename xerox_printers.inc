@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: xerox_printers.inc 10986 2018-08-15 13:38:20Z cfischer $
+# $Id: xerox_printers.inc 11004 2018-08-16 11:18:32Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10986 $
+# $Revision: 11004 $
 #
 ###############################################################################
 
@@ -65,12 +65,19 @@ function xerox_default_logins() {
 
 function check_xerox_default_login( model, port ) {
 
-  local_var model, port, userame, password, xerox;
+  # TODO: Remove once openvas-nasl-lint can handle such a missing include
+  # from within the same include.
+  if(!defined_func("get_http_user_agent")) include("http_func.inc");
+
+  local_var model, port, userame, password, xerox, host, useragent;
 
   xerox = xerox_login_details( model:model, port:port );
   if(!xerox) return FALSE;
 
   logins = xerox_default_logins();
+
+  host = http_host_name( port:port );
+  useragent = get_http_user_agent();
 
   foreach login (logins) {
 
@@ -90,8 +97,8 @@ function check_xerox_default_login( model, port ) {
 
       if(xerox['login_url_success']) {
         req = string(xerox['req_type_success'], " ", xerox['login_url_success'], " HTTP/1.1\r\n",
-                     "Host: ", get_host_name(),"\r\n",
-                     "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n\r\n");
+                     "Host: ", host, "\r\n",
+                     "User-Agent: ", useragent, "\r\n\r\n");
 
         buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
         xerox_error_exit(buf:buf);
@@ -103,11 +110,11 @@ function check_xerox_default_login( model, port ) {
       }
 
       req = string("POST " , xerox['login_url'], " HTTP/1.1\r\n",
-                   "Host: ", get_host_name(),"\r\n",
+                   "Host: ", host, "\r\n",
                    "DNT: 1\r\n",
-                   "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                   "User-Agent: ", useragent, "\r\n",
                    "Content-Type: application/x-www-form-urlencoded\r\n",
-                   "Content-Length: ",len,"\r\n");
+                   "Content-Length: ", len, "\r\n");
 
       if(xerox_cookie) req +=  string("Cookie: ", xerox_cookie, "\r\n");
 
@@ -122,8 +129,8 @@ function check_xerox_default_login( model, port ) {
         userpass = username + ':' + password;
         userpass64 = base64(str:userpass);
 
-        req = string("GET ", xerox['login_url']," HTTP/1.1\r\n",
-                     "Host: ", get_host_name(),"\r\n");
+        req = string("GET ", xerox['login_url'], " HTTP/1.1\r\n",
+                     "Host: ", host, "\r\n");
 
         c_buf = http_keepalive_send_recv(port:port, data:req + '\r\n', bodyonly:FALSE);
         xerox_error_exit(buf:c_buf);
@@ -132,7 +139,7 @@ function check_xerox_default_login( model, port ) {
 
         if(xerox_cookie) req += string("Cookie: ", xerox_cookie, "\r\n");
 
-        req += string("Authorization: Basic ",userpass64,"\r\n\r\n");
+        req += string("Authorization: Basic ", userpass64, "\r\n\r\n");
 
       }
 
@@ -146,11 +153,11 @@ function check_xerox_default_login( model, port ) {
 
       if(xerox['login_url_success']) {
         req = string(xerox['req_type_success'], " ", xerox['login_url_success'], " HTTP/1.1\r\n",
-                    "Host: ", get_host_name(),"\r\n");
+                    "Host: ", host, "\r\n");
 
         if(xerox_cookie) req +=  string("Cookie: ", xerox_cookie, "\r\n");
 
-        req += string("User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n\r\n");
+        req += string("User-Agent: ", useragent, "\r\n\r\n");
 
         buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
         xerox_error_exit(buf:buf);

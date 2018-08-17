@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_www_default_admin_password.nasl 5921 2017-04-10 16:17:55Z mime $
+# $Id: gb_trend_micro_interscan_web_security_virtual_appliance_www_default_admin_password.nasl 11025 2018-08-17 08:27:37Z cfischer $
 #
 # Default password `adminIWSS85` for admin account (http)
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:trendmicro:interscan_web_security_virtual_appliance';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140243");
-  script_version("$Revision: 5921 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 18:17:55 +0200 (Mon, 10 Apr 2017) $");
+  script_version("$Revision: 11025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-04-10 16:37:30 +0200 (Mon, 10 Apr 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -42,8 +42,8 @@ if(description)
   script_require_ports("Services/www", 8443);
   script_mandatory_keys("trend_micro/InterScan/Web_Security_Virtual_Appliance/www");
 
-  script_tag(name:"summary", value:"This script detects if the remote Trend Micro InterScan Web Security Virtual Appliance has a default password of `adminIWSS85` for the `admin` account.");
-
+  script_tag(name:"summary", value:"This script detects if the remote Trend Micro InterScan Web Security
+  Virtual Appliance has a default password of `adminIWSS85` for the `admin` account.");
 
   script_tag(name:"solution", value:"Set a password or change the identified default password.");
 
@@ -56,6 +56,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
 

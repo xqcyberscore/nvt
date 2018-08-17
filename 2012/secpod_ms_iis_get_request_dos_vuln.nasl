@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_iis_get_request_dos_vuln.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: secpod_ms_iis_get_request_dos_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # Microsoft IIS GET Request Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:microsoft:iis';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902914");
-  script_version("$Revision: 6018 $");
+  script_version("$Revision: 11003 $");
   script_cve_id("CVE-1999-0229");
   script_bugtraq_id(2218);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-05-22 12:45:33 +0530 (Tue, 22 May 2012)");
   script_name("Microsoft IIS GET Request Denial of Service Vulnerability");
 
@@ -75,7 +75,6 @@ include("host_details.inc");
 iisPort = "";
 res = "";
 
-## Check the default port
 if(!iisPort = get_app_port(cpe:CPE)) exit(0);
 
 ## Send attack request multiple time
@@ -85,7 +84,6 @@ for(i=0; i<3; i++){
 
 sleep(3);
 
-## Confirm Microsoft IIS server is dead
 if(http_is_dead(port:iisPort) && !res){
   security_message(port:iisPort);
   exit(0);

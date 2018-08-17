@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axis_network_camera_mult_vuln_june18.nasl 10324 2018-06-26 07:40:01Z santu $
+# $Id: gb_axis_network_camera_mult_vuln_june18.nasl 11022 2018-08-17 07:57:39Z cfischer $
 #
 # Axis Network Camera Multiple Vulnerabilities-June18
 #
@@ -25,15 +25,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813446");
-  script_version("$Revision: 10324 $");
+  script_version("$Revision: 11022 $");
   script_cve_id("CVE-2018-10658", "CVE-2018-10659", "CVE-2018-10660", "CVE-2018-10661",
                 "CVE-2018-10662", "CVE-2018-10663", "CVE-2018-10664");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 09:40:01 +0200 (Tue, 26 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-19 15:06:09 +0530 (Tue, 19 Jun 2018)");
   script_name("Axis Network Camera Multiple Vulnerabilities-June18");
 
@@ -43,7 +43,7 @@ if (description)
   script_tag(name:"vuldetect", value:"Send a crafted HTTP POST request and confirm
   the vulnerability from response.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - Requests to a world-readable file that are followed by a backslash and end
     with the '.srv' extension (e.g. http://CAMERA_IP/index.html/a.srv) are treated
@@ -51,13 +51,13 @@ if (description)
     granted access, while the requests are also treated as legitimate requests to
     an .srv path, and are thus handled by the .srv handler, simultaneously.
 
-  - Legitimate requests that reach /bin/ssid's .srv functionality can choose one 
+  - Legitimate requests that reach /bin/ssid's .srv functionality can choose one
     of several actions by setting the action parameter in the query-string of the
     request. One possible action is dbus, which allows the user to invoke any
     dbus request as root, without any restriction on the destination or content.
     Authorization mechanism that is intended to limit dbus request, PolicyKit, is
     configured to automatically grant access to requests originating from the root
-    user. 
+    user.
 
   - The 'parhand ShellParser' does not sanitize special shell characters and also
     does not quote the parameter's values. Some of these parameters end up in
@@ -78,7 +78,7 @@ if (description)
   - Insufficient sanitation of crafted command that can result in a code path
     that calls the UND undefined ARM instruction.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass the web-server's authorization mechanism, conduct shell
   command injections, crash the httpd process, gain access to sensitive
   information, crash '/bin/ssid' process and get unrestricted dbus access for
@@ -103,17 +103,18 @@ if (description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 9998);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 axport = get_http_port(default:80);
 
 res = http_get_cache(item: "/", port: axport);
 
-##Confirm Application
 if('content="Axis Communications AB"' >< res && "<title>AXIS</title>" >< res)
 {
   req = http_post_req( port:axport,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_storage_resource_monitor_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
+# $Id: gb_solarwinds_storage_resource_monitor_detect.nasl 11021 2018-08-17 07:48:11Z cfischer $
 #
 # SolarWinds Storage Resource Monitor Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809426");
-  script_version("$Revision: 10901 $");
+  script_version("$Revision: 11021 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:48:11 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-10-03 15:20:26 +0530 (Mon, 03 Oct 2016)");
   script_name("SolarWinds Storage Resource Monitor Remote Version Detection");
   script_tag(name:"summary", value:"Detects the installed version of
@@ -46,6 +46,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 9000);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
 
@@ -53,10 +54,10 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
-if(!srmport = get_http_port(default:9000)){
-  exit(0);
-}
+srmport = get_http_port(default:9000);
+
 
 host = get_host_name();
 
@@ -77,7 +78,6 @@ if(buf =~ "HTTP/1\.. 200" && "SolarWinds - Storage Manager" ><  buf)
     exit(0);
   }
 
-  #Send Request and Receive response
   req = string("GET /LicenseManager.do?actionName=showLicenseManager HTTP/1.1\r\n",
                "Host: ", host, "\r\n",
                "Cookie: ", cookie[1], "\r\n",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samsung_syncthru_web_service_detect.nasl 10899 2018-08-10 13:49:35Z cfischer $
+# $Id: gb_samsung_syncthru_web_service_detect.nasl 11021 2018-08-17 07:48:11Z cfischer $
 #
 # Samsung Syncthru Web Service Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813744");
-  script_version("$Revision: 10899 $");
+  script_version("$Revision: 11021 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:48:11 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-06 17:37:28 +0530 (Mon, 06 Aug 2018)");
   script_name("Samsung Syncthru Web Service Remote Detection");
 
@@ -49,16 +49,16 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
-if(!samPort = get_http_port(default:80)){
-  exit(0);
-}
+samPort = get_http_port(default:80);
 
 res = http_get_cache(port:samPort, item:"/sws/index.sws");
 

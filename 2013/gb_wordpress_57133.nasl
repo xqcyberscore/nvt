@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_57133.nasl 10033 2018-05-31 07:51:19Z ckuersteiner $
+# $Id: gb_wordpress_57133.nasl 11007 2018-08-16 13:20:25Z mmartin $
 #
 # WordPress Google Doc Embedder Plugin Arbitrary File Disclosure Vulnerability
 #
@@ -29,33 +29,33 @@ CPE = "cpe:/a:wordpress:wordpress";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103637");
- script_bugtraq_id(57133);
- script_cve_id("CVE-2012-4915");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 10033 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103637");
+  script_bugtraq_id(57133);
+  script_cve_id("CVE-2012-4915");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11007 $");
 
- script_name("WordPress Google Doc Embedder Plugin Arbitrary File Disclosure Vulnerability");
+  script_name("WordPress Google Doc Embedder Plugin Arbitrary File Disclosure Vulnerability");
 
- script_xref(name: "URL", value: "http://www.securityfocus.com/bid/57133");
- script_xref(name: "URL", value: "http://www.wordpress.org/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57133");
+  script_xref(name:"URL", value:"http://www.wordpress.org/");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-31 09:51:19 +0200 (Thu, 31 May 2018) $");
- script_tag(name:"creation_date", value:"2013-01-08 14:00:15 +0100 (Tue, 08 Jan 2013)");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:20:25 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-01-08 14:00:15 +0100 (Tue, 08 Jan 2013)");
 
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("secpod_wordpress_detect_900182.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("wordpress/installed");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("secpod_wordpress_detect_900182.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("wordpress/installed");
 
- script_tag(name: "solution", value: "Vendor updates are available. Please see the references for more
+  script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
 information.");
-
- script_tag(name: "summary", value: "The Google Doc Embedder Plugin for WordPress is prone to an arbitrary
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The Google Doc Embedder Plugin for WordPress is prone to an arbitrary
 file-disclosure vulnerability because it fails to properly sanitize user-supplied input.
 
 A remote attacker can use directory-traversal sequences to retrieve arbitrary files in the context of the affected

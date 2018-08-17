@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagiosls_mul_vul_oct_16.nasl 9600 2018-04-25 08:48:41Z asteins $#
+# $Id: gb_nagiosls_mul_vul_oct_16.nasl 11008 2018-08-16 13:26:16Z cfischer $#
 # Nagios Log Server Multiple Vulnerabilities
 #
 # Authors:
@@ -26,12 +26,12 @@
 
 CPE = "cpe:/a:nagios:nagiosls";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107059");
-  script_version("$Revision: 9600 $");
-  script_tag(name:"last_modification", value: "$Date: 2018-04-25 10:48:41 +0200 (Wed, 25 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2016-10-12 13:26:09 +0700 (Wed, 12 Oct 2016)");
+  script_version("$Revision: 11008 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-10-12 13:26:09 +0700 (Wed, 12 Oct 2016)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -79,7 +79,7 @@ if( dir == "/" ) dir = "";
 
 host = get_host_ip();
 source_ip = this_host();
-usr_agnt = OPENVAS_HTTP_USER_AGENT;
+usr_agnt = get_http_user_agent();
 session = string('a:12:{s:10:"session_id";s:32:"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";s:10:"ip_address";s:',strlen(source_ip),':', source_ip, ';s:10:"user_agent";s:', strlen(usr_agnt), ':', usr_agnt,';s:13:"last_activity";i:1476194170;s:9:"user_data";s:0:"";s:7:"user_id";s:1:"1";s:8:"username";s:4:"XXXX";s:5:"email";s:16:"test@example.com";s:12:"ls_logged_in";i:1;s:10:"apisession";i:1;s:8:"language";s:7:"default";s:17:"flash:old:message";N;}');
 
 encryption_key = SHA1(host);

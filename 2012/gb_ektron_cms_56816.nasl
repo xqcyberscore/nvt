@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ektron_cms_56816.nasl 7859 2017-11-22 09:05:55Z asteins $
+# $Id: gb_ektron_cms_56816.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # Ektron CMS 'XslCompiledTransform' Class Remote Code Execution Vulnerability
 #
@@ -25,38 +25,35 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Ektron CMS is prone to a remote code-execution vulnerability.
-
-Successful exploits will allow remote attackers to execute arbitrary
-code within the context of the affected application. Failed attacks
-may cause denial-of-service conditions.
-
-Versions prior to Ektron CMS 8.02 Service Pack 5 are vulnerable.";
-
-tag_solution = "Updates are available. Please see the references for details.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103624");
- script_bugtraq_id(56816);
- script_cve_id("CVE-2012-5357");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 7859 $");
- script_name("Ektron CMS 'XslCompiledTransform' Class Remote Code Execution Vulnerability");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/56816");
- script_tag(name:"last_modification", value:"$Date: 2017-11-22 10:05:55 +0100 (Wed, 22 Nov 2017) $");
- script_tag(name:"creation_date", value:"2012-12-10 11:13:54 +0100 (Mon, 10 Dec 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_oid("1.3.6.1.4.1.25623.1.0.103624");
+  script_bugtraq_id(56816);
+  script_cve_id("CVE-2012-5357");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11003 $");
+  script_name("Ektron CMS 'XslCompiledTransform' Class Remote Code Execution Vulnerability");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56816");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-12-10 11:13:54 +0100 (Mon, 10 Dec 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
+  script_tag(name:"summary", value:"Ektron CMS is prone to a remote code-execution vulnerability.");
+
+  script_tag(name:"impact", value:"Successful exploits will allow remote attackers to execute arbitrary
+code within the context of the affected application. Failed attacks
+may cause denial-of-service conditions.");
+
+  script_tag(name:"affected", value:"Versions prior to Ektron CMS 8.02 Service Pack 5 are vulnerable.");
+  exit(0);
 }
 
 include("http_func.inc");
@@ -68,7 +65,7 @@ if( ! can_host_asp( port:port ) ) exit( 0 );
 
 host = http_host_name( port:port );
 
-ex = 
+ex =
 '<?xml version="1.0"?>\n' +
  '<xsl:stylesheet version="1.0"\n' +
  'xmlns:xsl="http://www.w3.org/1999/XSL/Transform"\n' +

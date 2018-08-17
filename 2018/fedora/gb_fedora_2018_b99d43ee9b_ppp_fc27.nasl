@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_b99d43ee9b_ppp_fc27.nasl 10371 2018-06-29 13:27:39Z santu $
+# $Id: gb_fedora_2018_b99d43ee9b_ppp_fc27.nasl 10997 2018-08-16 09:07:13Z asteins $
 #
 # Fedora Update for ppp FEDORA-2018-b99d43ee9b
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874750");
-  script_version("$Revision: 10371 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-29 15:27:39 +0200 (Fri, 29 Jun 2018) $");
+  script_version("$Revision: 10997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 11:07:13 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-29 10:57:04 +0200 (Fri, 29 Jun 2018)");
   script_cve_id("CVE-2018-11574");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for ppp FEDORA-2018-b99d43ee9b");
   script_tag(name:"summary", value:"Check the version of ppp");

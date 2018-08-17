@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendnet_routers_info_disc.nasl 9877 2018-05-17 05:03:18Z ckuersteiner $
+# $Id: gb_trendnet_routers_info_disc.nasl 11022 2018-08-17 07:57:39Z cfischer $
 #
 # TrendNet Routers AUTHORIZED_GROUP Information Disclosure Vulnerability
 #
@@ -25,19 +25,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107299");
-  script_version("$Revision: 9877 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-17 07:03:18 +0200 (Thu, 17 May 2018) $");
+  script_version("$Revision: 11022 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 19:23:07 +0100 (Thu, 15 Feb 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2018-7034");
 
-  script_tag(name: "qod_type", value: "remote_active");
+  script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("TrendNet Routers AUTHORIZED_GROUP Information Disclosure Vulnerability");
 
@@ -49,20 +49,20 @@ if (description)
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("trendnet/detected");
 
-  script_xref(name: "URL", value: "http://seclists.org/fulldisclosure/2018/Feb/42");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Feb/42");
 
-  script_tag(name: "summary", value: "TrendNet routers are vulnerable to information disclosure attacks");
+  script_tag(name:"summary", value:"TrendNet routers are vulnerable to information disclosure attacks");
 
-  script_tag(name: "impact", value: "An attacker can use this global variable to bypass security checks
+  script_tag(name:"impact", value:"An attacker can use this global variable to bypass security checks
   and use it to read arbitrary files.");
 
-  script_tag(name: "insight", value: "The vulnerability is due to the global variable AUTHORIZED_GROUP
+  script_tag(name:"insight", value:"The vulnerability is due to the global variable AUTHORIZED_GROUP
   which can be triggered when the admin login");
 
-  script_tag(name: "solution", value: "No known solution is available as of 17th May, 2018. Information regarding
-this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 17th May, 2018. Information regarding
+  this issue will be updated once solution details are available.");
 
-  script_tag(name: "vuldetect", value: "Send a crafted request to the router and check the response.");
+  script_tag(name:"vuldetect", value:"Send a crafted request to the router and check the response.");
 
   exit(0);
 }
@@ -70,6 +70,7 @@ this issue will be updated once solution details are available.");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 cpe_list = make_list("cpe:/h:trendnet:tew-751dr", "cpe:/h:trendnet:tew-752dru", "cpe:/h:trendnet:tew-733gr");
 

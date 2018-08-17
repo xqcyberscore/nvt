@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 16 Aug 2018 09:14:47 +0200
+# Automatically created on:  Fri, 17 Aug 2018 10:54:17 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38412,6 +38412,8 @@
 2018/adobe/gb_adobe_acrobat_2017_apsb18-09_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_2017_apsb18-21_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_2017_apsb18-21_win.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_2017_apsb18-29_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_2017_apsb18-29_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_classic_apsb17-11_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_classic_apsb17-11_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_classic_apsb17-24_macosx.nasl: GPLv2+
@@ -38424,6 +38426,8 @@
 2018/adobe/gb_adobe_acrobat_dc_classic_apsb18-09_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_classic_apsb18-21_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_classic_apsb18-21_win.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_dc_classic_apsb18-29_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_dc_classic_apsb18-29_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_cont_apsb17-11_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_cont_apsb17-11_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_cont_apsb17-24_macosx.nasl: GPLv2+
@@ -38434,6 +38438,8 @@
 2018/adobe/gb_adobe_acrobat_dc_cont_apsb18-02_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_cont_apsb18-21_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_dc_cont_apsb18-21_win.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_dc_cont_apsb18-29_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_dc_cont_apsb18-29_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_2017_apsb17-24_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_2017_apsb17-24_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_2017_apsb17-36_macosx.nasl: GPLv2+
@@ -38442,6 +38448,8 @@
 2018/adobe/gb_adobe_acrobat_reader_2017_apsb18-02_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_2017_apsb18-21_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_2017_apsb18-21_win.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_reader_2017_apsb18-29_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_reader_2017_apsb18-29_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_classic_apsb17-24_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_classic_apsb17-24_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_classic_apsb17-36_macosx.nasl: GPLv2+
@@ -38450,12 +38458,16 @@
 2018/adobe/gb_adobe_acrobat_reader_dc_classic_apsb18-02_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_classic_apsb18-21_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_classic_apsb18-21_win.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_reader_dc_classic_apsb18-29_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_reader_dc_classic_apsb18-29_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_cont_apsb17-24_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_cont_apsb17-24_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_cont_apsb18-02_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_cont_apsb18-02_win.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_cont_apsb18-21_macosx.nasl: GPLv2+
 2018/adobe/gb_adobe_acrobat_reader_dc_cont_apsb18-21_win.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_reader_dc_cont_apsb18-29_macosx.nasl: GPLv2+
+2018/adobe/gb_adobe_acrobat_reader_dc_cont_apsb18-29_win.nasl: GPLv2+
 2018/adobe/gb_adobe_coldfusion_mult_vuln_apsb18-14.nasl: GPLv2+
 2018/adobe/gb_adobe_connect_auth_bypass_apsb18-18_vuln.nasl: GPLv2+
 2018/adobe/gb_adobe_connect_cmd_inj_n_file_upload_vuln.nasl: GPLv2+
@@ -38998,6 +39010,9 @@
 2018/debian/deb_4270.nasl: GPLv2+
 2018/debian/deb_4271.nasl: GPLv2+
 2018/debian/deb_4272.nasl: GPLv2+
+2018/debian/deb_4273.nasl: GPLv2+
+2018/debian/deb_4274.nasl: GPLv2+
+2018/debian/deb_4275.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -40904,6 +40919,7 @@
 2018/microsoft/gb_ms_kb4344146.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4344149.nasl: GPLv2+
 2018/microsoft/gb_ms_kb4344152.nasl: GPLv2+
+2018/microsoft/gb_ms_office_click2run_mult_vuln_aug18.nasl: GPLv2+
 2018/microsoft/gb_ms_office_click2run_mult_vuln_july18.nasl: GPLv2+
 2018/microsoft/gb_ms_office_click2run_mult_vuln_june18.nasl: GPLv2+
 2018/microsoft/gb_ms_office_click2run_mult_vuln_may18.nasl: GPLv2+
@@ -59500,6 +59516,10 @@ gsf/2018/microsoft/gb_ms_kb4293801.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4293801_remote.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4293802.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4293802_remote.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4293803.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4293803_remote.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4293805.nasl: GPLv2+
+gsf/2018/microsoft/gb_ms_kb4293805_remote.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4293807.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4293807_remote.nasl: GPLv2+
 gsf/2018/microsoft/gb_ms_kb4293808.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dorg_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
+# $Id: gb_dorg_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Disc Organization System (DORG) Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806696");
-  script_version("$Revision: 10898 $");
+  script_version("$Revision: 11015 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-04-06 16:24:58 +0530 (Wed, 06 Apr 2016)");
   script_name("Disc Organization System (DORG) Remote Version Detection");
 
@@ -66,7 +66,6 @@ foreach dir(make_list_unique( "/", "/dorg", cgi_dirs(port:dorgPort)))
   ##admin page
   url = dir + "/admin_panel/index.php";
 
-  ##Send Request and receive response
   dorgReq = http_get(port:dorgPort, item: url);
   dorgRes = http_keepalive_send_recv(port:dorgPort, data:dorgReq);
 

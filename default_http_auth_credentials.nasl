@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: default_http_auth_credentials.nasl 10709 2018-08-01 12:30:27Z cfischer $
+# $Id: default_http_auth_credentials.nasl 11006 2018-08-16 12:21:56Z cfischer $
 #
 # HTTP Brute Force Logins With Default Credentials
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108041");
-  script_version("$Revision: 10709 $");
+  script_version("$Revision: 11006 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 14:30:27 +0200 (Wed, 01 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 14:21:56 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-09-06 14:38:09 +0200 (Tue, 06 Sep 2011)");
   script_name("HTTP Brute Force Logins With Default Credentials");
   script_category(ACT_ATTACK);
@@ -89,6 +89,7 @@ set_kb_item( name:"default_http_auth_credentials/started", value:TRUE );
 urls = make_list_unique( urls );
 
 host = http_host_name( port:port );
+useragent = get_http_user_agent();
 
 foreach url( urls ) {
 
@@ -144,7 +145,7 @@ foreach url( urls ) {
 
     req = string( "GET ", url, " HTTP/1.1\r\n",
                   "Host: ", host, "\r\n",
-                  "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                  "User-Agent: ", useragent, "\r\n",
                   "Authorization: Basic ", userpass64, "\r\n",
                   "\r\n" );
     res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
@@ -162,7 +163,7 @@ foreach url( urls ) {
 
           req = string( "GET ", url, " HTTP/1.1\r\n",
                         "Host: ", host, "\r\n",
-                        "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                        "User-Agent: ", useragent, "\r\n",
                         "Authorization: Basic ", userpass64, "\r\n",
                         "\r\n" );
           res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: misc_func.inc 10974 2018-08-15 09:55:34Z cfischer $
+# $Id: misc_func.inc 11000 2018-08-16 09:46:21Z cfischer $
 #
 # Miscellaneous support methods
 #
@@ -26,7 +26,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10974 $
+# $Revision: 11000 $
 #
 ###############################################################################
 
@@ -1579,7 +1579,7 @@ function get_local_gos_version() {
 # @param lowercase If set to TRUE the returned string will be converted
 #                  to lowercase before returning it.
 #
-# @return A string containing either "GBN-NT" or "OpenVAS-VT" depending on the platform
+# @return A string containing either "GBN-VT" or "OpenVAS-VT" depending on the platform
 #         the scanner is running at.
 #
 function get_vt_string( lowercase ) {

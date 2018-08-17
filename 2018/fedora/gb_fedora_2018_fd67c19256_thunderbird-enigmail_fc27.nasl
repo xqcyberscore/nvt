@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_fd67c19256_thunderbird-enigmail_fc27.nasl 10324 2018-06-26 07:40:01Z santu $
+# $Id: gb_fedora_2018_fd67c19256_thunderbird-enigmail_fc27.nasl 10997 2018-08-16 09:07:13Z asteins $
 #
 # Fedora Update for thunderbird-enigmail FEDORA-2018-fd67c19256
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874722");
-  script_version("$Revision: 10324 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 09:40:01 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 10997 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 11:07:13 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-23 06:20:03 +0200 (Sat, 23 Jun 2018)");
   script_cve_id("CVE-2018-12019");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for thunderbird-enigmail FEDORA-2018-fd67c19256");
   script_tag(name:"summary", value:"Check the version of thunderbird-enigmail");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_platinum_seo_xss_vuln.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_wordpress_platinum_seo_xss_vuln.nasl 11011 2018-08-16 14:14:31Z mmartin $
 #
 # WordPress Platinum SEO plugin Cross Site Scripting Vulnerability
 #
@@ -29,25 +29,25 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804020");
-  script_version("$Revision: 9984 $");
+  script_version("$Revision: 11011 $");
   script_cve_id("CVE-2013-5918");
   script_bugtraq_id(62692);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-09-27 18:05:55 +0530 (Fri, 27 Sep 2013)");
   script_name("WordPress Platinum SEO plugin Cross Site Scripting Vulnerability");
 
-  script_tag(name : "summary" , value : "This host is installed with WordPress Platinum SEO plugin and is prone to
+  script_tag(name:"summary", value:"This host is installed with WordPress Platinum SEO plugin and is prone to
 cross site scripting vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send a crafted HTTP GET request and check whether it is able to read the
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check whether it is able to read the
 cookie or not.");
-  script_tag(name : "solution" , value : "Upgrade to version 1.3.8 or higher,
+  script_tag(name:"solution", value:"Upgrade to version 1.3.8 or higher,
 For Updated refer to http://wordpress.org/plugins/platinum-seo-pack");
-  script_tag(name : "insight" , value : "Input passed via the 's' parameter to platinum_seo_pack.php script is
+  script_tag(name:"insight", value:"Input passed via the 's' parameter to platinum_seo_pack.php script is
 not properly sanitized before being returned to the user.");
-  script_tag(name : "affected" , value : "WordPress Platinum SEO Plugin version 1.3.7 and prior.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML and
+  script_tag(name:"affected", value:"WordPress Platinum SEO Plugin version 1.3.7 and prior.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
 script code in a user's browser session in the context of an affected site.
 
 Impact Level: Application");

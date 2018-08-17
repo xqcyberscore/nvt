@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nexxt_authentication_bypass.nasl 7771 2017-11-15 11:52:34Z jschulte $
+# $Id: gb_nexxt_authentication_bypass.nasl 11025 2018-08-17 08:27:37Z cfischer $
 #
 # NEXXT Authentication Bypass
 #
@@ -24,11 +24,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if( description )
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113014");
-  script_version("$Revision: 7771 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-15 12:52:34 +0100 (Wed, 15 Nov 2017) $");
+  script_version("$Revision: 11025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-12 11:19:20 +0200 (Thu, 12 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,7 +52,9 @@ if( description )
   script_tag(name:"insight", value:"Setting the cookie 'admin:language=en' bypasses the authentication-");
   script_tag(name:"impact", value:"Successful exploitation allows the attacker to gain admin access without authentication.");
   script_tag(name:"affected", value:"All NEXXT Routers. Other Routers using the same authentication mechanism might be affected, too.");
-  script_tag(name:"solution", value:"The vendor ignored security researchers trying to contact them, meaning they are possibly not interested in this vulnerability. A fix is unlikely.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
 
   script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3414");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2017/Sep/42");
@@ -60,9 +62,10 @@ if( description )
   exit(0);
 }
 
-include( "host_details.inc" );
-include( "http_func.inc" );
-include( "http_keepalive.inc" );
+include("host_details.inc");
+include("http_func.inc");
+include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:80 );
 if( ! can_host_asp( port:port ) ) exit( 0 );

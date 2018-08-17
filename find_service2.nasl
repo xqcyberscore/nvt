@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service2.nasl 10794 2018-08-06 13:18:58Z cfischer $
+# $Id: find_service2.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Service Detection with 'HELP' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11153");
-  script_version("$Revision: 10794 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 15:18:58 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -694,7 +694,6 @@ if( r == '\x01\x09\xD0\x02\xFF\xFF\x01\x03\x12\x4C' ) {
   exit( 0 );
 }
 
-# Checkpoint FW-1 Client Authentication (TCP/259)
 # 00: 43 68 65 63 6b 20 50 6f 69 6e 74 20 46 69 72 65 Check Point Fire
 # 10: 57 61 6c 6c 2d 31 20 43 6c 69 65 6e 74 20 41 75 Wall-1 Client Au
 # 20: 74 68 65 6e 74 69 63 61 74 69 6f 6e 20 53 65 72 thentication Ser

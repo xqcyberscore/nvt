@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ventrilo_detect.nasl 10700 2018-08-01 08:00:30Z cfischer $
+# $Id: ventrilo_detect.nasl 11018 2018-08-17 07:13:05Z cfischer $
 #
 # Ventrilo Server Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80092");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10700 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 10:00:30 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 11018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:13:05 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-10-24 23:33:44 +0200 (Fri, 24 Oct 2008)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Ventrilo Server Detection");
@@ -64,8 +64,7 @@ SCRIPT_DESC = "Ventrilo Server Detection";
 port = 3784;
 if (!get_udp_port_state(port)) exit(0);
 
-# fetch big-endian 16-bit value (string s, offset o)
-#
+# nb: fetch big-endian 16-bit value (string s, offset o)
 # nb: taken from dns_xfer.nasl.
 function ntohs(s, o) {
   local_var ret_hi, ret_lo;

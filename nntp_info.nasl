@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: nntp_info.nasl 10922 2018-08-10 19:21:48Z cfischer $
+# $Id: nntp_info.nasl 11015 2018-08-17 06:31:19Z cfischer $
 # Description: Misc information on News server
 #
 # Authors:
@@ -27,37 +27,37 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.11033");
- script_version("$Revision: 10922 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018)$");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.11033");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-04-06 08:58:53 +0200 (Fri, 06 Apr 2018)$");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Misc information on News server");
 
 
 
 
- script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
 
- script_copyright("This script is Copyright (C) 2002 Michel Arboi");
+  script_copyright("This script is Copyright (C) 2002 Michel Arboi");
   script_family("General");
 
- script_dependencies("find_service_3digits.nasl");
- script_require_ports("Services/nntp", 119);
+  script_dependencies("find_service_3digits.nasl");
+  script_require_ports("Services/nntp", 119);
 
  #
- script_add_preference(name:"From address : ", type:"entry",
+  script_add_preference(name:"From address : ", type:"entry",
 			value:"OpenVAS <listme@listme.dsbl.org>");
- script_add_preference(name:"Test group name regex : ", type:"entry",
+  script_add_preference(name:"Test group name regex : ", type:"entry",
 			value:"f[a-z]\.tests?");
- script_add_preference(name:"Max crosspost : ", type:"entry", value:"7");
+  script_add_preference(name:"Max crosspost : ", type:"entry", value:"7");
  #
- script_add_preference(name:"Local distribution", type:"checkbox", value:"yes");
- script_add_preference(name:"No archive", type:"checkbox", value:"no");
- script_tag(name:"solution", value:"Disable the server if it is not used");
- script_tag(name:"summary", value:"This script detects if the NNTP server is open to outside,
+  script_add_preference(name:"Local distribution", type:"checkbox", value:"yes");
+  script_add_preference(name:"No archive", type:"checkbox", value:"no");
+  script_tag(name:"solution", value:"Disable the server if it is not used");
+  script_tag(name:"summary", value:"This script detects if the NNTP server is open to outside,
 counts the number of groups, and tries to post outside.
 This channel may been used by virus or trojan.");
  exit(0);

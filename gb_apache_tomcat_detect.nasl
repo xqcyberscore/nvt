@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_detect.nasl 10726 2018-08-02 07:46:22Z cfischer $
+# $Id: gb_apache_tomcat_detect.nasl 11020 2018-08-17 07:35:00Z cfischer $
 #
 # Apache Tomcat Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800371");
-  script_version("$Revision: 10726 $");
+  script_version("$Revision: 11020 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 09:46:22 +0200 (Thu, 02 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:35:00 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-03-18 14:25:01 +0100 (Wed, 18 Mar 2009)");
   script_name("Apache Tomcat Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -68,8 +68,7 @@ extraUrls = "";
 
 foreach file( make_list( "/tomcat-docs/changelog.html", "/index.jsp", "/RELEASE-NOTES.txt", "/docs/RELEASE-NOTES.txt" ) ) {
 
-  req = http_get( item:file, port:port );
-  res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+  res = http_get_cache( item:file, port:port );
 
   if( res =~ "^HTTP/1\.[0-1] 200" && "Apache Tomcat" >< res ) {
     identified = TRUE;

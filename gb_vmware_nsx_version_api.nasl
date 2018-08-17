@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_nsx_version_api.nasl 10888 2018-08-10 12:08:02Z cfischer $
+# $Id: gb_vmware_nsx_version_api.nasl 11006 2018-08-16 12:21:56Z cfischer $
 #
 # Vmware NSX Version Detection (HTTP-API)
 #
@@ -25,29 +25,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105420");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 10888 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2015-10-27 13:50:19 +0100 (Tue, 27 Oct 2015)");
- script_name("Vmware NSX Version Detection (HTTP-API)");
+  script_oid("1.3.6.1.4.1.25623.1.0.105420");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 11006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 14:21:56 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2015-10-27 13:50:19 +0100 (Tue, 27 Oct 2015)");
+  script_name("Vmware NSX Version Detection (HTTP-API)");
 
- script_tag(name:"summary", value:"This script performs HTTP-API based detection of the Vmware NSX Version");
+  script_tag(name:"summary", value:"This script performs HTTP-API based detection of the Vmware NSX Version");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_category(ACT_GATHER_INFO);
- script_family("Service detection");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_nsx_webgui_detect.nasl", "gather-package-list.nasl");
- script_mandatory_keys("vmware_nsx/webui");
- script_exclude_keys("vmware_nsx/show_ver");
+  script_category(ACT_GATHER_INFO);
+  script_family("Service detection");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_nsx_webgui_detect.nasl", "gather-package-list.nasl");
+  script_mandatory_keys("vmware_nsx/webui");
+  script_exclude_keys("vmware_nsx/show_ver");
 
- script_add_preference(name:"NSX API Username: ", value:"", type:"entry");
- script_add_preference(name:"NSX API Password: ", type:"password", value:"");
+  script_add_preference(name:"NSX API Username: ", value:"", type:"entry");
+  script_add_preference(name:"NSX API Password: ", type:"password", value:"");
 
  exit(0);
 }
@@ -70,11 +70,12 @@ url = '/api/1.0/appliance-management/global/info';
 userpass = user + ":" + pass;
 userpass64 = base64( str:userpass );
 
+useragent = get_http_user_agent();
 host = http_host_name( port:port );
 
 req = 'GET ' +  url + ' HTTP/1.1\r\n' +
       'Host: ' +  host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Authorization: Basic ' + userpass64 + '\r\n' +
       '\r\n';
 

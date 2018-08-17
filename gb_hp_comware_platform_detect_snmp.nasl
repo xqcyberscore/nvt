@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_comware_platform_detect_snmp.nasl 10915 2018-08-10 15:50:57Z cfischer $
+# $Id: gb_hp_comware_platform_detect_snmp.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # HP Comware Devices Detect (SNMP)
 #
@@ -27,22 +27,22 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105797");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 10915 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2016-07-06 11:05:47 +0200 (Wed, 06 Jul 2016)");
- script_name("HP Comware Devices Detect (SNMP)");
+  script_oid("1.3.6.1.4.1.25623.1.0.105797");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-07-06 11:05:47 +0200 (Wed, 06 Jul 2016)");
+  script_name("HP Comware Devices Detect (SNMP)");
 
- script_tag(name:"summary", value:"This script performs SNMP based detection of HP Comware Devices");
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Product detection");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_snmp_sysdesc.nasl");
- script_require_udp_ports("Services/udp/snmp", 161);
- script_mandatory_keys("SNMP/sysdesc/available");
+  script_tag(name:"summary", value:"This script performs SNMP based detection of HP Comware Devices");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_snmp_sysdesc.nasl");
+  script_require_udp_ports("Services/udp/snmp", 161);
+  script_mandatory_keys("SNMP/sysdesc/available");
 
  exit(0);
 }

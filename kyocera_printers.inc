@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: kyocera_printers.inc 7288 2017-09-27 07:21:24Z cfischer $
+# $Id: kyocera_printers.inc 11010 2018-08-16 14:11:14Z cfischer $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 7288 $
+# $Revision: 11010 $
 #
 ###############################################################################
 
@@ -66,10 +66,20 @@ function ky_default_logins() {
 
 function check_ky_default_login( model, port ) {
 
+  # TODO: Remove once openvas-nasl-lint can handle such a missing include
+  # from within the same include.
+  if(!defined_func("get_http_user_agent")) include("http_func.inc");
+
+  local_var model, port, ky, logins, host, useragent, login, user_pass;
+  local_var username, password, login_data, req, c_buf;
+
   ky = ky_login_details(model:model);
   if(!ky)return FALSE;
 
   logins = ky_default_logins();
+
+  host = http_host_name( port:port );
+  useragent = get_http_user_agent();
 
   foreach login (logins) {
 
@@ -92,11 +102,11 @@ function check_ky_default_login( model, port ) {
     if(ky['req_type'] == "POST") {
 
        req = string("POST " , ky['login_url'], " HTTP/1.1\r\n",
-                    "Host: ", get_host_name(),"\r\n",
+                    "Host: ", host,"\r\n",
                     "DNT: 1\r\n",
-                    "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                    "User-Agent: ", useragent, "\r\n",
                     "Content-Type: application/x-www-form-urlencoded\r\n",
-                    "Content-Length: ",len,"\r\n",
+                    "Content-Length: ", len, "\r\n",
                     "Connection: close\r\n",
                     "\r\n",
                     login_data);
@@ -109,18 +119,17 @@ function check_ky_default_login( model, port ) {
         userpass = username + ':' + password;
         userpass64 = base64(str:userpass);
 
-        req = string("GET ", ky['login_url']," HTTP/1.1\r\n",
-                     "Host: ", get_host_name(),"\r\n");
+        req = string("GET ", ky['login_url'], " HTTP/1.1\r\n",
+                     "Host: ", host, "\r\n");
 
         c_buf = http_send_recv(port:port, data:req + '\r\n', bodyonly:FALSE);
         ky_error_exit(buf:c_buf);
 
         if("HTTP/1.1 401" >!< c_buf && "HTTP/1.1 302" >!< c_buf) return 2; # setup without auth
 
-        req += string("Authorization: Basic ",userpass64,"\r\n\r\n");
+        req += string("Authorization: Basic ", userpass64, "\r\n\r\n");
 
       }
-
     }
 
     buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
@@ -134,9 +143,7 @@ function check_ky_default_login( model, port ) {
       }
     }
   }
-
   return 0;
-
 }
 
 function ky_login_details(model) {

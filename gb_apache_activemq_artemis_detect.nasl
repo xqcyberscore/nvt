@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_artemis_detect.nasl 8140 2017-12-15 12:08:32Z cfischer $
+# $Id: gb_apache_activemq_artemis_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Apache ActiveMQ Artemis Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809341");
-  script_version("$Revision: 8140 $");
+  script_version("$Revision: 11015 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-15 13:08:32 +0100 (Fri, 15 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-10-06 14:54:29 +0530 (Thu, 06 Oct 2016)");
   script_name("Apache ActiveMQ Artemis Detection");
   script_category(ACT_GATHER_INFO);
@@ -68,7 +68,6 @@ if( egrep( pattern:"<title>ActiveMQ Artemis Web .* API</title>", string:buf, ica
   appVer = "unknown";
   conclUrl = report_vuln_url( port:port, url:url, url_only:TRUE );
 
-  ## Getting version from admin page, in some cases admin page is accessible where we can get version
   version = eregmatch( pattern:'<title>ActiveMQ Artemis Web ([0-9.]+) API</title>', string:buf );
   if( version[1] ) appVer = version[1];
 

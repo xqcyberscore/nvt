@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tdiary_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
+# $Id: gb_tdiary_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # tDiary Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800991");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10915 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-03-10 15:48:25 +0100 (Wed, 10 Mar 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("tDiary Version Detection");
@@ -61,7 +61,6 @@ foreach path (make_list_unique("/tdiary", "/", cgi_dirs(port:diaryPort)))
   install = path;
   if(path == "/") path = "";
 
-  ## Send the request and Receive the response
   sndReq = http_get(item: path + "/index.rb", port:diaryPort);
   rcvRes = http_keepalive_send_recv(port:diaryPort, data:sndReq);
 

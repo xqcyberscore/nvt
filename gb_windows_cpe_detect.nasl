@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_windows_cpe_detect.nasl 10626 2018-07-25 15:30:18Z cfischer $
+# $Id: gb_windows_cpe_detect.nasl 11018 2018-08-17 07:13:05Z cfischer $
 #
 # Windows Application CPE Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96207");
-  script_version("$Revision: 10626 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:30:18 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 11018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:13:05 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2011-04-26 12:54:47 +0200 (Tue, 26 Apr 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -1396,7 +1396,7 @@ if (OSVER == "6.2"){
         register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x86", desc:SCRIPT_DESC);
       }
       if (OSSP == "1"){
-        #register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x86", desc:SCRIPT_DESC);
+      # TBD: Why is this commented out? register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x86", desc:SCRIPT_DESC);
       }
     }
     if (x64 == "1"){
@@ -1404,7 +1404,7 @@ if (OSVER == "6.2"){
         register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64", desc:SCRIPT_DESC);
       }
       if (OSSP == "1"){
-        #register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
+      # TBD: Why is this commented out? register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
       }
     }
   }
@@ -1413,6 +1413,7 @@ if (OSVER == "6.2"){
       register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2012:-", desc:SCRIPT_DESC);
     }
     if (OSSP == "1"){
+      # TDB: Really empty?
     }
   }
   #SMB fallback. Is not so exactly as wmi.
@@ -1422,6 +1423,7 @@ if (OSVER == "6.2"){
         register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:"cpe:/o:microsoft:windows_server_2012:-", desc:SCRIPT_DESC);
       }
       if (OSSP == "1"){
+        # TBD: Really empty?
       }
     }
     else if ("Windows 8" >< OSNAME){
@@ -1431,7 +1433,7 @@ if (OSVER == "6.2"){
           register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x86", desc:SCRIPT_DESC);
         }
         if (OSSP == "1"){
-          #register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x86", desc:SCRIPT_DESC);
+          # TBD: Why is this commented out? register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x86", desc:SCRIPT_DESC);
         }
       }
       if (x64 == "1"){
@@ -1439,7 +1441,7 @@ if (OSVER == "6.2"){
           register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:-:x64", desc:SCRIPT_DESC);
         }
         if (OSSP == "1"){
-          #register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
+          # TBD: Why is this commented out? register_and_report_os( os:OSNAME, runs_key:"windows", banner_type:BANNER_TYPE, cpe:cpe + ":-:sp1:x64", desc:SCRIPT_DESC);
         }
       }
     }
@@ -2260,7 +2262,6 @@ if (ExchProductMajor || Exch2010ProductMajor || Exch2013ProductMajor){
 
 
 if (msxml3 || msxml4 || msxml5 || msxml6){
-  #register_host_detail(name:app, value:"cpe:/a:microsoft:xml_core_services", desc:SCRIPT_DESC);
   if (msxml3)register_host_detail(name:app, value:"cpe:/a:microsoft:xml_core_services:3.0", desc:SCRIPT_DESC);
   if (msxml4)register_host_detail(name:app, value:"cpe:/a:microsoft:xml_core_services:4.0", desc:SCRIPT_DESC);
   if (msxml5)register_host_detail(name:app, value:"cpe:/a:microsoft:xml_core_services:5.0", desc:SCRIPT_DESC);
@@ -2269,7 +2270,6 @@ if (msxml3 || msxml4 || msxml5 || msxml6){
 
 
 if (worksVer){
-  #register_host_detail(name:app, value:"cpe:/a:microsoft:works", desc:SCRIPT_DESC);
   register_host_detail(name:app, value:"cpe:/a:microsoft:works:" + worksVer, desc:SCRIPT_DESC);
 }
 

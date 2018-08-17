@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_nov12_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_nov12_win.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-01 November12 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803351");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11003 $");
   script_cve_id("CVE-2012-4209", "CVE-2012-4214", "CVE-2012-4215", "CVE-2012-4216",
                 "CVE-2012-4201", "CVE-2012-4202", "CVE-2012-4207", "CVE-2012-5842",
                 "CVE-2012-5841", "CVE-2012-5829", "CVE-2012-5840", "CVE-2012-5833",
@@ -36,31 +36,31 @@ if(description)
                     56631, 56636, 56642, 56637, 56635);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 12:10:03 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 November12 (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/51358");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1027791");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1027792");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-91.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-92.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-93.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-100.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-101.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-103.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-105.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-106.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/51358");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1027791");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1027792");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-91.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-92.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-93.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-100.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-101.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-103.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-105.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-106.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to inject scripts, bypass
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject scripts, bypass
   certain security restrictions, execute arbitrary code in the context of the
   browser.
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Thunderbird version before 17.0 on Windows");
-  script_tag(name : "insight" , value : "The flaws are due to:
+  script_tag(name:"affected", value:"Thunderbird version before 17.0 on Windows");
+  script_tag(name:"insight", value:"The flaws are due to:
 
   - The 'location' property can be accessed through 'top.location' with a
     frame whose name attributes value is set to 'top'.
@@ -73,9 +73,9 @@ if(description)
     property.
 
   - Error when rendering GIF images.");
-  script_tag(name : "solution" , value : "Upgrade to Thunderbird version to 17.0 or later,
+  script_tag(name:"solution", value:"Upgrade to Thunderbird version to 17.0 or later,
   http://www.mozilla.org/en-US/thunderbird");
-  script_tag(name : "summary" , value : "This host is installed with Mozilla Thunderbird and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Mozilla Thunderbird and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

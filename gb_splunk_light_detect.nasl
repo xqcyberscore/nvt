@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_light_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
+# $Id: gb_splunk_light_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Splunk Light Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809012");
-  script_version("$Revision: 10915 $");
+  script_version("$Revision: 11015 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-08-26 17:00:30 +0530 (Fri, 26 Aug 2016)");
   script_name("Splunk Light Remote Detection");
   script_tag(name:"summary", value:"Detects the installed version of
@@ -96,10 +96,8 @@ foreach dir (make_list_unique("/", "/splunk/en-US/", "/en-US", cgi_dirs(port:spP
       build = b[1];
     }
 
-    ## set core version
     set_kb_item(name: string("www/", spPort, "/splunklight"), value: string(vers));
 
-    ## set the build version
     if(!isnull(build)){
       set_kb_item(name: string("www/", spPort, "/splunklight/build"), value: string(build));
     }

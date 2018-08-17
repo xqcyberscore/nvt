@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: toolcheck.nasl 10896 2018-08-10 13:24:05Z cfischer $
+# $Id: toolcheck.nasl 11015 2018-08-17 06:31:19Z cfischer $
 # Description: Initializing routine for checking presence of helper tools
 #
 # Authors:
@@ -31,25 +31,25 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.810000");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 10896 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2009-08-17 09:05:44 +0200 (Mon, 17 Aug 2009)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("Availability of scanner helper tools");
+  script_oid("1.3.6.1.4.1.25623.1.0.810000");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2009-08-17 09:05:44 +0200 (Mon, 17 Aug 2009)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("Availability of scanner helper tools");
 
 
- script_category(ACT_INIT);
+  script_category(ACT_INIT);
   script_tag(name:"qod_type", value:"remote_banner");
 
- script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
- script_family("General");
+  script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
+  script_family("General");
 
- script_add_preference(name:"Perform tool check", type:"checkbox", value:"yes");
- script_add_preference(name:"Silent tool check",  type:"checkbox", value:"yes");
+  script_add_preference(name:"Perform tool check", type:"checkbox", value:"yes");
+  script_add_preference(name:"Silent tool check",  type:"checkbox", value:"yes");
 
- script_tag(name:"summary", value:"This routine checks for the presence of various tools that
+  script_tag(name:"summary", value:"This routine checks for the presence of various tools that
  support the scan engine and also tests the version of the scan
  engine itself. If some tools are not accessible for the
  scan engine, one or more NVTs could not be executed properly.
@@ -133,7 +133,6 @@ Effect: Any NVTs that do rely on the built-in WMI functionality will
         will not reduce the number of executed NVTs.
         Most likely reduced are compliance tests and OVAL NVTs.
 ";
-    # set kb
     set_kb_item(name: "Tools/Present/wmi", value: FALSE);
     set_kb_item(name: "Tools/Missing/wmi", value: TRUE);
     all_tools_available = FALSE;

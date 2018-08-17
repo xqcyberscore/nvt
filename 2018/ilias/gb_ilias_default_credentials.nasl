@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ilias_default_credentials.nasl 10101 2018-06-06 14:01:29Z cfischer $
+# $Id: gb_ilias_default_credentials.nasl 11022 2018-08-17 07:57:39Z cfischer $
 #
 # Ilias Default Credentials
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107313");
-  script_version("$Revision: 10101 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-06 16:01:29 +0200 (Wed, 06 Jun 2018) $");
+  script_version("$Revision: 11022 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-29 14:54:24 +0200 (Tue, 29 May 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -64,6 +64,7 @@ CPE = "cpe:/a:ilias:ilias";
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 function check_v53( port, dir ) {
 

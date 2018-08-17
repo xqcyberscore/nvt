@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asbru_web_content_mgnt_sys_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
+# $Id: gb_asbru_web_content_mgnt_sys_detect.nasl 11020 2018-08-17 07:35:00Z cfischer $
 #
 # Asbru Web Content Management System Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807657");
-  script_version("$Revision: 10915 $");
+  script_version("$Revision: 11020 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:35:00 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-04-12 17:30:16 +0530 (Tue, 12 Apr 2016)");
   script_name("Asbru Web Content Management System Detection");
 
@@ -50,27 +50,19 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if(!asbPort = get_http_port(default:443)){
-  exit(0);
-}
+asbPort = get_http_port(default:443);
 
 foreach dir(make_list_unique( "/", "/asbru",  "/wcm" , cgi_dirs(port:asbPort)))
 {
-   install = dir;
-   if( dir == "/"){
-     dir = "";
-   }
+  install = dir;
+  if( dir == "/") dir = "";
 
   url = dir + "/index.jsp";
-
-  ##Send Request and receive response
-  asbReq = http_get(port:asbPort, item: url);
-  asbRes = http_keepalive_send_recv(port:asbPort, data:asbReq);
+  asbRes = http_get_cache(port:asbPort, item:url);
 
   if(asbRes =~ '>Asbru Web Content Management.*<' && 'www.asbrusoft.com' >< asbRes)
   {
@@ -79,9 +71,7 @@ foreach dir(make_list_unique( "/", "/asbru",  "/wcm" , cgi_dirs(port:asbPort)))
     set_kb_item(name:"www/" + asbPort + install, value:version);
     set_kb_item( name:"Asbru/Installed", value:TRUE);
 
-    ## New cpe is assigned
     cpe = "cpe:/a:asbru_web_content_management_system:asbru";
-
     register_product(cpe:cpe, location:install, port:asbPort);
 
     log_message( data:build_detection_report( app:"Asbru Web Content Management System",

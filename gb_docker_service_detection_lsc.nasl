@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_docker_service_detection_lsc.nasl 10906 2018-08-10 14:50:26Z cfischer $
+# $Id: gb_docker_service_detection_lsc.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Docker Service Detection (LSC)
 #
@@ -27,21 +27,21 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140119");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 10906 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2017-01-11 15:14:18 +0100 (Wed, 11 Jan 2017)");
- script_name("Docker Service Detection (LSC)");
- script_tag(name:"summary", value:"This script performs ssh based detection of Docker");
- script_tag(name:"qod_type", value:"package");
- script_category(ACT_GATHER_INFO);
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_family("Product detection");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("login/SSH/success");
- script_exclude_keys("ssh/no_linux_shell");
+  script_oid("1.3.6.1.4.1.25623.1.0.140119");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-01-11 15:14:18 +0100 (Wed, 11 Jan 2017)");
+  script_name("Docker Service Detection (LSC)");
+  script_tag(name:"summary", value:"This script performs ssh based detection of Docker");
+  script_tag(name:"qod_type", value:"package");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("login/SSH/success");
+  script_exclude_keys("ssh/no_linux_shell");
 
  exit(0);
 }

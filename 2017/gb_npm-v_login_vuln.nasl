@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_npm-v_login_vuln.nasl 7502 2017-10-19 09:00:57Z jschulte $
+# $Id: gb_npm-v_login_vuln.nasl 11025 2018-08-17 08:27:37Z cfischer $
 #
 # NPM-V Password Leak and Reset vulnerability
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if( description )
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113036");
-  script_version("$Revision: 7502 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-19 11:00:57 +0200 (Thu, 19 Oct 2017) $");
+  script_version("$Revision: 11025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-19 10:00:00 +0200 (Thu, 19 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -55,14 +55,15 @@ if( description )
   script_tag(name:"affected", value:"NPM-V 2.4.1 and before");
   script_tag(name:"solution", value:"Upgrade to NPM-V version 2.4.2");
 
-  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42933/?rss");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42933/");
 
-  exit( 0 );
+  exit(0);
 }
 
-include( "host_details.inc" );
-include( "http_func.inc" );
-include( "http_keepalive.inc" );
+include("host_details.inc");
+include("http_func.inc");
+include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port( default: 80 );
 

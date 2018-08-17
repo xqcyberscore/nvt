@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_humax_gateway_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
+# $Id: gb_humax_gateway_detect.nasl 11021 2018-08-17 07:48:11Z cfischer $
 #
 # HUMAX Gateway Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106916");
-  script_version("$Revision: 10905 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11021 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:48:11 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-07-03 11:22:04 +0700 (Mon, 03 Jul 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
 
   script_tag(name:"summary", value:"Detection of HUMAX Gateway devices.
 
-The script sends a connection request to the server and attempts to detect HUMAX Gateway devices.");
+  The script sends a connection request to the server and attempts to detect HUMAX Gateway devices.");
 
   script_category(ACT_GATHER_INFO);
 
@@ -58,6 +58,7 @@ The script sends a connection request to the server and attempts to detect HUMAX
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 port = get_http_port(default: 8080);
 

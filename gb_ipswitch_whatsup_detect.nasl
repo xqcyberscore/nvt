@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipswitch_whatsup_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
+# $Id: gb_ipswitch_whatsup_detect.nasl 11006 2018-08-16 12:21:56Z cfischer $
 #
 # Ipswitch WhatsUp Gold Detection
 #
@@ -25,35 +25,35 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106162");
- script_version("$Revision: 10901 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2016-08-02 08:27:33 +0700 (Tue, 02 Aug 2016)");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.106162");
+  script_version("$Revision: 11006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 14:21:56 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-08-02 08:27:33 +0700 (Tue, 02 Aug 2016)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_name("Ipswitch WhatsUp Gold Detection");
+  script_name("Ipswitch WhatsUp Gold Detection");
 
- script_tag(name:"summary", value:"Detection of Ipswitch WhatsUp Gold
+  script_tag(name:"summary", value:"Detection of Ipswitch WhatsUp Gold.
 
-The script sends a connection request to the server and attempts to detect the presence of Ipswitch WhatsUp
-Gold and to extract its version");
+  The script sends a connection request to the server and attempts to detect the presence of Ipswitch WhatsUp
+  Gold and to extract its version");
 
- script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
 
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_family("Product detection");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80, 443);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80, 443);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_xref(name:"URL", value:"https://www.ipswitch.com/application-and-network-monitoring/whatsup-gold");
+  script_xref(name:"URL", value:"https://www.ipswitch.com/application-and-network-monitoring/whatsup-gold");
 
- exit(0);
+  exit(0);
 }
 
 include("cpe.inc");
@@ -87,7 +87,7 @@ else {
 
   req = 'POST ' + url + ' HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        # Seems to need a proper User Agent, OPENVAS_HTTP_USER_AGENT doesn't work
+        # Seems to need a proper User Agent, get_http_user_agent(); doesn't work
         'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:47.0) Gecko/20100101 Firefox/47.0\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Accept-Language: en-US,en;q=0.5\r\n' +
@@ -95,7 +95,6 @@ else {
         'Connection: close\r\n' +
         'Content-Type: application/x-www-form-urlencoded\r\n' +
         'Content-Length: 0\r\n\r\n';
-
   res  = http_keepalive_send_recv(port: port, data: req);
 
   if ("Login - WhatsUp Gold" >< res) {

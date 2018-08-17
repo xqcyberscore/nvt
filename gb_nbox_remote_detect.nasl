@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nbox_remote_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
+# $Id: gb_nbox_remote_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # NBOX Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809082");
-  script_version("$Revision: 10906 $");
+  script_version("$Revision: 11015 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-11-03 18:01:01 +0530 (Thu, 03 Nov 2016)");
   script_name("NBOX Remote Detection");
 
@@ -65,7 +65,6 @@ url = "/ntop-bin/dashboard.cgi";
 ## Default credentials
 auth = base64(str:'nbox:nbox');
 
-## Send request and receive response
 req = http_get(item:url, port:nbPort);
 buf = http_keepalive_send_recv(port:nbPort, data:req, bodyonly:FALSE);
 

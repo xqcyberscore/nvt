@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2012_3817.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_junos_cve_2012_3817.nasl 11011 2018-08-16 14:14:31Z mmartin $
 #
 # Junos DNSSEC validation Denial of Service
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103948");
-  script_version ("$Revision: 7573 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 11011 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-10-15 21:39:27 +0700 (Tue, 15 Oct 2013)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -48,26 +48,26 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version");
 
-  script_tag(name : "summary" , value : "Heavy DNSSEC validation load can cause assertion failure in Bind
+  script_tag(name:"summary", value:"Heavy DNSSEC validation load can cause assertion failure in Bind
 of Junos OS.");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "BIND stores a cache of query names that are known to be failing
+  script_tag(name:"insight", value:"BIND stores a cache of query names that are known to be failing
 due to misconfigured name servers or a broken chain of trust. Under high query loads, when DNSSEC
 validation is active, it is possible for a condition to arise in which data from this cache of failing
 queries could be used before it was fully initialized, triggering an assertion failure.");
 
-  script_tag(name : "impact" , value : "An attacker that is able to generate high volume of DNSSEC
+  script_tag(name:"impact", value:"An attacker that is able to generate high volume of DNSSEC
 validation enabled queries can trigger the assertion failure that causes it to crash, resulting in a
 denial of service.");
 
-  script_tag(name : "affected" , value : "Junos OS software build before 2013-02-13.");
+  script_tag(name:"affected", value:"Junos OS software build before 2013-02-13.");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper. As
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. As
 a workaround disable the security extension if DNSSEC is not required by typing delete system services
 dns dnssec.");
 
@@ -110,7 +110,7 @@ if (ereg(pattern:"^11", string:version)) {
       security_message(port:0, data:desc);
       exit(0);
   }
-} 
+}
 
 if (ereg(pattern:"^12.1", string:version)) {
   if (version_is_less(version:version, test_version:"12.1R5")) {
@@ -128,7 +128,7 @@ if (ereg(pattern:"^12.2", string:version)) {
     security_message(port:0, data:desc);
     exit(0);
   }
-} 
+}
 
 if (ereg(pattern:"^12.3", string:version)) {
   if (version_is_less(version:version, test_version:"12.3R1")) {

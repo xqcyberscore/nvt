@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sync_breeze_enterprise_detect.nasl 10894 2018-08-10 13:09:25Z cfischer $
+# $Id: gb_sync_breeze_enterprise_detect.nasl 11019 2018-08-17 07:20:12Z cfischer $
 #
 # Sync Breeze Enterprise Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809058");
-  script_version("$Revision: 10894 $");
+  script_version("$Revision: 11019 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:20:12 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-10-10 10:19:35 +0530 (Mon, 10 Oct 2016)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Sync Breeze Enterprise Version Detection");
@@ -44,34 +44,24 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
-  script_dependencies("find_service.nasl");
+  script_dependencies("httpver.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
-
-##
-### Code Starts Here
-##
 
 include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-syncPort = get_http_port(default:80);
-if(!syncPort){
-  exit(0);
-}
+port = get_http_port(default:80);
+res = http_get_cache(item:"/login", port:port);
 
-## Send request and receive response
-sndReq = http_get(item:"/login", port:syncPort);
-rcvRes = http_keepalive_send_recv(port:syncPort, data:sndReq);
-
-if(">Sync Breeze Enterprise" >< rcvRes &&
-   ">User Name" >< rcvRes && ">Password" >< rcvRes)
+if(">Sync Breeze Enterprise" >< res &&
+   ">User Name" >< res && ">Password" >< res)
 {
-  syncVer = eregmatch(pattern:">Sync Breeze Enterprise v([0-9.]+)", string:rcvRes);
+  syncVer = eregmatch(pattern:">Sync Breeze Enterprise v([0-9.]+)", string:res);
   if(syncVer[1]){
     syncVer = syncVer[1];
   } else {
@@ -80,18 +70,17 @@ if(">Sync Breeze Enterprise" >< rcvRes &&
 
   set_kb_item(name:"Sync/Breeze/Enterprise/installed", value:TRUE);
 
-  ## Created new cpe
   cpe = build_cpe(value:syncVer, exp:"([0-9.]+)", base:"cpe:/a:sync:sync_breeze_enterprise:");
   if(isnull(cpe))
     cpe = "cpe:/a:sync:sync_breeze_enterprise";
 
-  register_product(cpe:cpe, location:"/", port:syncPort);
+  register_product(cpe:cpe, location:"/", port:port);
   log_message(data: build_detection_report(app: "Sync Breeze Enterprise",
                                            version:syncVer,
                                            install:"/",
                                            cpe:cpe,
                                            concluded:syncVer),
-                                           port:syncPort);
+                                           port:port);
   exit(0);
 }
 exit(0);

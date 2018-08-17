@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagiosxi_mult_vuln_apr18.nasl 10302 2018-06-22 13:15:51Z cfischer $
+# $Id: gb_nagiosxi_mult_vuln_apr18.nasl 11022 2018-08-17 07:57:39Z cfischer $
 #
 # Nagios XI Multiple Vulnerabilities-April18
 #
@@ -31,13 +31,13 @@ CPE = "cpe:/a:nagios:nagiosxi";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813215");
-  script_version("$Revision: 10302 $");
+  script_version("$Revision: 11022 $");
   script_cve_id("CVE-2018-8733", "CVE-2018-8734", "CVE-2018-8735", "CVE-2018-8736",
                 "CVE-2018-10736", "CVE-2018-10735", "CVE-2018-10738", "CVE-2018-10737",
                 "CVE-2018-10810");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-22 15:15:51 +0200 (Fri, 22 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-27 10:44:16 +0530 (Fri, 27 Apr 2018)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Nagios XI Multiple Vulnerabilities-April18");
@@ -79,27 +79,29 @@ if(description)
 
   script_tag(name:"affected", value:"Nagios XI versions 5.2.x through 5.4.x before 5.4.13");
 
-  script_tag(name:"solution", value:"Upgrade to Nagios X 5.4.13 or later. 
-  For updates refer to Reference links."); 
+  script_tag(name:"solution", value:"Upgrade to Nagios X 5.4.13 or later.
+  For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://www.nagios.com/downloads");
-  script_xref(name : "URL" , value : "https://gist.github.com/caleBot/f0a93b5a98574393e0139104eacc2d0f");
-  script_xref(name : "URL" , value : "https://assets.nagios.com/downloads/nagiosxi/CHANGES-5.TXT");
-  script_xref(name : "URL" , value : "https://github.com/rapid7/metasploit-framework/pull/9938");
-  script_xref(name : "URL" , value : "http://blog.redactedsec.net/exploits/2018/04/26/nagios.html");
+  script_xref(name:"URL", value:"https://www.nagios.com/downloads");
+  script_xref(name:"URL", value:"https://gist.github.com/caleBot/f0a93b5a98574393e0139104eacc2d0f");
+  script_xref(name:"URL", value:"https://assets.nagios.com/downloads/nagiosxi/CHANGES-5.TXT");
+  script_xref(name:"URL", value:"https://github.com/rapid7/metasploit-framework/pull/9938");
+  script_xref(name:"URL", value:"http://blog.redactedsec.net/exploits/2018/04/26/nagios.html");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_dependencies("gb_nagios_XI_detect.nasl");
   script_mandatory_keys("nagiosxi/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
@@ -111,7 +113,7 @@ if(!dir = get_app_location(cpe:CPE, port:http_port)){
 
 url = "/nagiosql/admin/helpedit.php";
 login_data = 'txtRootPath=nagiosql%2F&txtBasePath=%2Fvar%2Fwww%2Fhtml' +
-             '%2Fnagiosql%2F&selProtocol=http&txtTempdir=%2Ftmp&selLa' + 
+             '%2Fnagiosql%2F&selProtocol=http&txtTempdir=%2Ftmp&selLa' +
              'nguage=en_GB&txtEncoding=utf-8&txtDBserver=localhost&tx' +
              'tDBport=3306&txtDBname=nagiosql&txtDBuser=nagiosql&txtD' +
              'Bpass=n%40gweb&txtLogoff=3600&txtLines=15&selSeldisable=1';

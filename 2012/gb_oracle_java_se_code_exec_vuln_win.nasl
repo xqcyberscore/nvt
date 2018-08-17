@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_code_exec_vuln_win.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: gb_oracle_java_se_code_exec_vuln_win.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # Oracle Java SE Java Runtime Environment Code Execution Vulnerability - (Windows)
 #
@@ -27,34 +27,34 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802947");
-  script_version("$Revision: 10144 $");
+  script_version("$Revision: 11003 $");
   script_cve_id("CVE-2012-0507");
   script_bugtraq_id(52161);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-08-22 15:52:21 +0530 (Wed, 22 Aug 2012)");
   script_name("Oracle Java SE Java Runtime Environment Code Execution Vulnerability - (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/48589");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/javacpufeb2012-366318.html");
-  script_xref(name : "URL" , value : "http://www.metasploit.com/modules/exploit/multi/browser/java_atomicreferencearray");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/48589");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/javacpufeb2012-366318.html");
+  script_xref(name:"URL", value:"http://www.metasploit.com/modules/exploit/multi/browser/java_atomicreferencearray");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_require_keys("Sun/Java/JRE/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation allows remote attackers to bypass the Java sandbox
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to bypass the Java sandbox
   restriction and execute arbitrary code.
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Oracle Java SE versions 7 Update 2 and earlier, 6 Update 30 and earlier,
+  script_tag(name:"affected", value:"Oracle Java SE versions 7 Update 2 and earlier, 6 Update 30 and earlier,
   and 5.0 Update 33 and earlier");
-  script_tag(name : "insight" , value : "The 'AtomicReferenceArray' class implementation does not ensure that the
+  script_tag(name:"insight", value:"The 'AtomicReferenceArray' class implementation does not ensure that the
   array is of the Object[] type, which allows attackers to cause a denial of
   service (JVM crash) or bypass Java sandbox restrictions.");
-  script_tag(name : "solution" , value : "Apply the patch from below link
+  script_tag(name:"solution", value:"Apply the patch from below link
   http://www.oracle.com/technetwork/topics/security/javacpufeb2012-366318.html");
-  script_tag(name : "summary" , value : "This host is installed with Oracle Java SE and is prone to code
+  script_tag(name:"summary", value:"This host is installed with Oracle Java SE and is prone to code
   execution vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

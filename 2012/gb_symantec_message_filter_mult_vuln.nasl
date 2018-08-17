@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_message_filter_mult_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_symantec_message_filter_mult_vuln.nasl 11020 2018-08-17 07:35:00Z cfischer $
 #
 # Symantec Message Filter Multiple Vulnerabilities
 #
@@ -32,12 +32,12 @@ if (description)
   script_cve_id("CVE-2012-0300", "CVE-2012-0301", "CVE-2012-0302", "CVE-2012-0303");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11020 $");
 
   script_name("Symantec Message Filter Multiple Vulnerabilities");
 
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:35:00 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-06-27 12:18:39 +0200 (Wed, 27 Jun 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -86,13 +86,11 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-
 port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
 
 url = '/brightmail/index.jsp';
 
-if(http_vuln_check(port:port, url:url,pattern:"<title>Symantec.*Message Filter.*login</title>")) {
+if(http_vuln_check(port:port, url:url, pattern:"<title>Symantec.*Message Filter.*login</title>", usecache:TRUE)) {
 
   url = '/brightmail/about.jsp';
 
@@ -116,8 +114,6 @@ if(http_vuln_check(port:port, url:url,pattern:"<title>Symantec.*Message Filter.*
     security_message(port:port);
     exit(0);
   }
-
 }
 
 exit(0);
-

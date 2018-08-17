@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitweaver_56230.nasl 10005 2018-05-29 13:54:41Z cfischer $
+# $Id: gb_bitweaver_56230.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # Bitweaver Multiple Cross Site Scripting and Local File Include Vulnerabilities
 #
@@ -29,37 +29,39 @@ CPE = "cpe:/a:bitweaver:bitweaver";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103593");
+  script_oid("1.3.6.1.4.1.25623.1.0.103593");
  script_bugtraq_id(56230);
- script_cve_id("CVE-2012-5192","CVE-2012-5193");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 10005 $");
+  script_cve_id("CVE-2012-5192", "CVE-2012-5193");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11003 $");
 
- script_name("Bitweaver Multiple Cross Site Scripting and Local File Include Vulnerabilities");
+  script_name("Bitweaver Multiple Cross Site Scripting and Local File Include Vulnerabilities");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/56230");
- script_xref(name : "URL" , value : "http://bitweaver.org");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56230");
+  script_xref(name:"URL", value:"http://bitweaver.org");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-29 15:54:41 +0200 (Tue, 29 May 2018) $");
- script_tag(name:"creation_date", value:"2012-10-26 10:50:00 +0200 (Fri, 26 Oct 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("secpod_bitweaver_detect.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-10-26 10:50:00 +0200 (Fri, 26 Oct 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("secpod_bitweaver_detect.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "summary" , value : "Bitweaver is prone to multiple cross-site scripting vulnerabilities
+  script_tag(name:"summary", value:"Bitweaver is prone to multiple cross-site scripting vulnerabilities
 and a local file include vulnerability.");
- script_tag(name : "impact" , value : "An attacker may leverage these issues to execute arbitrary script code
+  script_tag(name:"impact", value:"An attacker may leverage these issues to execute arbitrary script code
 in the browser of an unsuspecting user in the context of the affected
 site, steal cookie-based authentication credentials, and open or run
 arbitrary files in the context of the web server process.");
- script_tag(name : "affected" , value : "Bitweaver 2.8.1 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"affected", value:"Bitweaver 2.8.1 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
- script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
  exit(0);
 }

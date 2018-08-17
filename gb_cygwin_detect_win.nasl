@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cygwin_detect_win.nasl 10913 2018-08-10 15:35:20Z cfischer $
+# $Id: gb_cygwin_detect_win.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Cygwin Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806089");
-  script_version("$Revision: 10913 $");
+  script_version("$Revision: 11015 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:35:20 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 17:30:01 +0530 (Tue, 13 Oct 2015)");
   script_name("Cygwin Version Detection (Windows)");
 
@@ -92,7 +92,6 @@ foreach key (key_list)
     ##Version info not available currently
     cygVer = "Unknown";
 
-    ##Setting kb
     set_kb_item(name:"Cygwin/Installed", value:TRUE);
     set_kb_item(name:"Cygwin/Win/Ver", value:cygVer);
 

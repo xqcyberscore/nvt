@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: bugbear.nasl 10911 2018-08-10 15:16:34Z cfischer $
+# $Id: bugbear.nasl 11015 2018-08-17 06:31:19Z cfischer $
 # Description: Bugbear worm
 #
 # Authors:
@@ -43,33 +43,33 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.11135");
- script_version("$Revision: 10911 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_xref(name:"IAVA", value:"2001-a-0004");
- script_bugtraq_id(2524);
- script_cve_id("CVE-2001-0154"); # For MS01-020 - should be changed later
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.11135");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_xref(name:"IAVA", value:"2001-a-0004");
+  script_bugtraq_id(2524);
+  script_cve_id("CVE-2001-0154"); # For MS01-020 - should be changed later
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
- script_name("Bugbear worm");
+  script_name("Bugbear worm");
 
 
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_copyright("This script is Copyright (C) 2002 Michel Arboi & Thomas Reinke");
+  script_copyright("This script is Copyright (C) 2002 Michel Arboi & Thomas Reinke");
   script_family("Malware");
- script_require_ports(36794);
- script_dependencies("find_service.nasl");
- script_tag(name:"solution", value:"- Use an Anti-Virus package to remove it.
+  script_require_ports(36794);
+  script_dependencies("find_service.nasl");
+  script_tag(name:"solution", value:"- Use an Anti-Virus package to remove it.
 - Close your Windows shares
 - Update your IE browser
   See 'Incorrect MIME Header Can Cause IE to Execute E-mail Attachment'
   http://www.microsoft.com/technet/security/bulletin/MS01-020.mspx");
- script_tag(name:"solution_type", value:"Mitigation");
- script_tag(name:"summary", value:"BugBear backdoor is listening on this port.
+  script_tag(name:"solution_type", value:"Mitigation");
+  script_tag(name:"summary", value:"BugBear backdoor is listening on this port.
 A cracker may connect to it to retrieve secret
 information, e.g. passwords or credit card numbers...
 

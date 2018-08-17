@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_smb_signing_disabled.nasl 5958 2017-04-17 09:02:19Z teissa $
+# $Id: gb_ms_smb_signing_disabled.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # Microsoft SMB Signing Disabled
 #
@@ -28,9 +28,9 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802726");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 5958 $");
+  script_version("$Revision: 11003 $");
   script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mon, 17 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-04-09 18:56:54 +0530 (Mon, 09 Apr 2012)");
   script_name("Microsoft SMB Signing Disabled");
   script_category(ACT_GATHER_INFO);
@@ -52,21 +52,12 @@ if(description)
 
 include("smb_nt.inc");
 
-## Variable Initialization
-name = "";
-port = "";
-soc = "";
-response = "";
-prot = "";
-
-## Get name and port
 name = kb_smb_name();
 port = kb_smb_transport();
 
 if(!port) port = 139;
 if(!get_port_state(port)) exit(0);
 
-## Open the socket
 soc = open_sock_tcp(port);
 if(!soc){
   exit(0);

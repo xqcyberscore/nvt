@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
+# $Id: gb_typo3_detect.nasl 11006 2018-08-16 12:21:56Z cfischer $
 #
 # TYPO3 Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803979");
-  script_version("$Revision: 10906 $");
+  script_version("$Revision: 11006 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 14:21:56 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-16 18:17:29 +0530 (Mon, 16 Dec 2013)");
   script_name("TYPO3 Detection");
   script_category(ACT_GATHER_INFO);
@@ -166,6 +166,7 @@ foreach dir ( make_list_unique( "/", "/cms", "/typo", "/typo3", cgi_dirs( port:p
       tmp_version = "";
       cpe = "";
       host = http_host_name( port:port );
+      useragent = get_http_user_agent();
 
       cookie = get_typo3_login_cookie( cinstall:install, tport:port, chost:host );
 
@@ -174,7 +175,7 @@ foreach dir ( make_list_unique( "/", "/cms", "/typo", "/typo3", cgi_dirs( port:p
           url = dir + "/typo3" + page;
           req = string( "GET ", url, " HTTP/1.1\r\n",
                         "Host: ", host, "\r\n",
-                        "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                        "User-Agent: ", useragent, "\r\n",
                         "Referer: http://", host, url, "\r\n",
                         "Connection: keep-alive\r\n",
                         "Cookie: ", cookie, "\r\n",

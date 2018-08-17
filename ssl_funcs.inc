@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: ssl_funcs.inc 10986 2018-08-15 13:38:20Z cfischer $
+# $Id: ssl_funcs.inc 11009 2018-08-16 13:55:00Z cfischer $
 #
 # Implementation of common ssl functions
 #
@@ -25,9 +25,13 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10986 $
+# $Revision: 11009 $
 #
 ###############################################################################
+
+# Enables debugging output for a few functions below
+global_var _ssl_funcs_debug;
+_ssl_funcs = FALSE;
 
 SSL_v2 = raw_string( 0x02, 0x00 );
 SSL_v3 = raw_string( 0x03, 0x00 );
@@ -718,7 +722,7 @@ function check_cert_validity( fprlist, port, vhost, check_for, now, timeframe ) 
   fpr = tmp[0];
 
   if( fpr[0] == "[" ) {
-    debug_print( "A SSL/TLS certificate on port ", port, " (" + vhost + ") is erroneous.", level:0 );
+    if( _ssl_funcs ) display( "A SSL/TLS certificate on port ", port, " (" + vhost + ") is erroneous." );
     return;
   }
 

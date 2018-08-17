@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_spa_voip_device_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
+# $Id: gb_cisco_spa_voip_device_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Cisco Small Business VoIP Device Detection
 #
@@ -27,28 +27,28 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106216");
- script_version("$Revision: 10908 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2016-09-01 10:53:52 +0700 (Thu, 01 Sep 2016)");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.106216");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-01 10:53:52 +0700 (Thu, 01 Sep 2016)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_name("Cisco Small Business VoIP Device Detection");
+  script_name("Cisco Small Business VoIP Device Detection");
 
- script_tag(name:"summary", value:"Detection of Cisco Small Business VoIP Device
+  script_tag(name:"summary", value:"Detection of Cisco Small Business VoIP Device
 
 The script attempts to identify various Cisco Small Business VoIP devices via SIP banner to extract the
 model and version number.");
 
- script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
 
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_family("Product detection");
- script_dependencies("sip_detection.nasl", "find_service.nasl");
- script_mandatory_keys("sip/detected");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("sip_detection.nasl", "find_service.nasl");
+  script_mandatory_keys("sip/detected");
 
  exit(0);
 }

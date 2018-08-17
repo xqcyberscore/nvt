@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: support_incident_tracker_detect.nasl 10901 2018-08-10 14:09:57Z cfischer $
+# $Id: support_incident_tracker_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # SiT! Support Incident Tracker Detection
 #
@@ -32,24 +32,24 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100466");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 10901 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2010-01-26 20:04:43 +0100 (Tue, 26 Jan 2010)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("SiT! Support Incident Tracker Detection");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("Service detection");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name:"summary", value:"This host is running SiT! Support Incident Tracker, a web based
+  script_oid("1.3.6.1.4.1.25623.1.0.100466");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2010-01-26 20:04:43 +0100 (Tue, 26 Jan 2010)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("SiT! Support Incident Tracker Detection");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("Service detection");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"summary", value:"This host is running SiT! Support Incident Tracker, a web based
  application which uses PHP and MySQL for tracking technical support
  calls/emails.");
- script_xref(name:"URL", value:"http://sitracker.org/wiki/Main_Page");
+  script_xref(name:"URL", value:"http://sitracker.org/wiki/Main_Page");
  exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_esxi_init.nasl 10894 2018-08-10 13:09:25Z cfischer $
+# $Id: gb_vmware_esxi_init.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # VMware ESXi scan initialization.
 #
@@ -28,25 +28,25 @@
 if (description)
 {
 
- script_tag(name:"cvss_base", value:"0.0");
- script_oid("1.3.6.1.4.1.25623.1.0.103447");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 10894 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2012-03-14 14:54:53 +0100 (Wed, 14 Mar 2012)");
- script_name("VMware ESXi scan initialization");
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"cvss_base", value:"0.0");
+  script_oid("1.3.6.1.4.1.25623.1.0.103447");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-03-14 14:54:53 +0100 (Wed, 14 Mar 2012)");
+  script_name("VMware ESXi scan initialization");
+  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esx_web_detect.nasl", "gb_esxi_authorization.nasl");
- script_require_ports("Services/www", 443);
- script_mandatory_keys("VMware/ESX/typ/ESXi", "VMware/ESX/port");
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_esx_web_detect.nasl", "gb_esxi_authorization.nasl");
+  script_require_ports("Services/www", 443);
+  script_mandatory_keys("VMware/ESX/typ/ESXi", "VMware/ESX/port");
 
- script_add_preference(name:"ESXi login name:", type:"entry", value:"");
- script_add_preference(name:"ESXi login password:", type:"password", value:"");
+  script_add_preference(name:"ESXi login name:", type:"entry", value:"");
+  script_add_preference(name:"ESXi login password:", type:"password", value:"");
 
- script_tag(name:"summary", value:"This NVT initiate an authenticated scan against ESXi and store some results in KB.");
+  script_tag(name:"summary", value:"This NVT initiate an authenticated scan against ESXi and store some results in KB.");
  exit(0);
 }
 

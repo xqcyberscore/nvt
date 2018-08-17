@@ -1,8 +1,8 @@
 ###############################################################################
-# OpenVAS Vulnerability Test
-# $Id: gvr_apps_auth_func.inc 2014-01-08 11:33:48Z jan$
+# OpenVAS Include File
+# $Id: gvr_apps_auth_func.inc 11006 2018-08-16 12:21:56Z cfischer $
 #
-# TYPO3 Detection
+# Supporting functions for TYPO3 Detection
 #
 # Authors:
 # Shashi Kiran N <nskiran@secpod.com>
@@ -22,15 +22,23 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+#
+# $Revision: 11006 $
+#
 ###############################################################################
-
-# $Revision: 8206 $
-
 
 #To get TYPO3 session cookie
 #TYPO3 install path, port and host need to be sent as parameter
 function get_typo3_login_cookie(cinstall, tport, chost)
 {
+
+  # TODO: Remove once openvas-nasl-lint can handle such a missing include
+  # from within the same include.
+  if(!defined_func("get_http_user_agent")) include("http_func.inc");
+
+  local_var cinstall, tport, chost, url, treq, tres, username, password, challenge;
+  local_var payload, tcookie, PHPSESSID, cCookie, req, buf, rcookie;
+
   url = cinstall + "/typo3/index.php";
   treq = http_get(item:string(url), port:tport);
   tres = http_keepalive_send_recv(port:tport, data:treq, bodyonly:FALSE);
@@ -60,7 +68,7 @@ function get_typo3_login_cookie(cinstall, tport, chost)
 
       req = string("POST ", url, " HTTP/1.1\r\n",
                    "Host: ", chost, "\r\n",
-                   "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                   "User-Agent: ", get_http_user_agent(), "\r\n",
                    "Referer: http://", chost, "/typo3/alt_menu.php\r\n",
                    "Connection: keep-alive\r\n",
                    "Cookie: ", cCookie, "\r\n",
@@ -78,22 +86,26 @@ function get_typo3_login_cookie(cinstall, tport, chost)
       else {
         cookie = rcookie[1] + ' showRefMsg=false; ' + PHPSESSID[1] + " typo3-login-cookiecheck=true";
       }
-
       return cookie;
-
     }
   }
 }
-
 
 #To logout from TYPO3 session
 #TYPO3 install path, port, cookie and host need to be sent as parameter
 function get_typo3_logout(loc, lport, lhost, lcookie)
 {
+
+  # TODO: Remove once openvas-nasl-lint can handle such a missing include
+  # from within the same include.
+  if(!defined_func("get_http_user_agent")) include("http_func.inc");
+
+  local_var loc, lport, lhost, lcookie, lurl, lreq, lres;
+
   lurl = loc + "/typo3/logout.php";
   lreq = string("GET ", lurl, " HTTP/1.1\r\n",
                 "Host: ", lhost, "\r\n",
-                "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                "User-Agent: ", get_http_user_agent(), "\r\n",
                 "Referer: http://", lhost, "/typo3/alt_menu.php\r\n",
                 "Connection: keep-alive\r\n",
                 "Cookie: ", lcookie, "\r\n",

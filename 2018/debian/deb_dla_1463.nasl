@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1463.nasl 10933 2018-08-13 05:46:44Z cfischer $
+# $Id: deb_dla_1463.nasl 10997 2018-08-16 09:07:13Z asteins $
 #
 # Auto-generated from advisory DLA 1463-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891463");
-  script_version("$Revision: 10933 $");
+  script_version("$Revision: 10997 $");
   script_cve_id("CVE-2018-12578", "CVE-2018-12601");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1463-1] sam2p security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 07:46:44 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 11:07:13 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-13 00:00:00 +0200 (Mon, 13 Aug 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

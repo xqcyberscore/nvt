@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: yppasswdd.nasl 10929 2018-08-11 11:39:44Z cfischer $
+# $Id: yppasswdd.nasl 11015 2018-08-17 06:31:19Z cfischer $
 # Description: yppasswdd overflow
 #
 # Authors:
@@ -24,28 +24,28 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.80035");
- script_version("$Revision: 10929 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
- script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
- script_bugtraq_id(2763);
-script_cve_id("CVE-2001-0779");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_tag(name:"qod_type", value:"remote_analysis");
+  script_oid("1.3.6.1.4.1.25623.1.0.80035");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2008-10-24 20:15:31 +0200 (Fri, 24 Oct 2008)");
+  script_bugtraq_id(2763);
+  script_cve_id("CVE-2001-0779");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"qod_type", value:"remote_analysis");
 
- script_name("yppasswdd overflow");
+  script_name("yppasswdd overflow");
 
- script_category(ACT_DENIAL);
+  script_category(ACT_DENIAL);
 
- script_copyright("This script is Copyright (C) 2001 Renaud Deraison");
- script_family("Gain a shell remotely");
- script_dependencies("secpod_rpc_portmap.nasl");
- script_require_keys("rpc/portmap");
- script_tag(name:"solution", value:"disable this service if you don't use
+  script_copyright("This script is Copyright (C) 2001 Renaud Deraison");
+  script_family("Gain a shell remotely");
+  script_dependencies("secpod_rpc_portmap.nasl");
+  script_require_keys("rpc/portmap");
+  script_tag(name:"solution", value:"disable this service if you don't use
   26 it, or contact Sun for a patch");
- script_tag(name:"solution_type", value:"Mitigation");
- script_tag(name:"summary", value:"The remote RPC service 100009 (yppasswdd) is vulnerable
+  script_tag(name:"solution_type", value:"Mitigation");
+  script_tag(name:"summary", value:"The remote RPC service 100009 (yppasswdd) is vulnerable
 to a buffer overflow which allows any user to obtain a root
 shell on this host.");
  exit(0);

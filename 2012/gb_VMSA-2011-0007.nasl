@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2011-0007.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_VMSA-2011-0007.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # VMSA-2011-0007 VMware ESXi and ESX Denial of Service and third party updates for Likewise components and ESX Service Console
 #
@@ -25,7 +25,25 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote ESXi is missing one or more security related Updates from VMSA-2011-0007.
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103450");
+  script_cve_id("CVE-2011-1785", "CVE-2011-1786", "CVE-2010-1324", "CVE-2010-1323", "CVE-2010-4020", "CVE-2010-4021", "CVE-2010-2240");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11003 $");
+  script_name("VMSA-2011-0007 VMware ESXi and ESX Denial of Service and third party updates for Likewise components and ESX Service Console");
+
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-03-15 17:23:21 +0100 (Thu, 15 Mar 2012)");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_esxi_init.nasl");
+  script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
+  script_tag(name:"solution", value:"Apply the missing patch(es).");
+  script_tag(name:"summary", value:"The remote ESXi is missing one or more security related Updates from VMSA-2011-0007.
 
 Summary
 
@@ -60,7 +78,7 @@ a. ESX/ESXi Socket Exhaustion
    An error message similar to the following may be written to the vmkernel logs:
 
    socreate(type=2, proto=17) failed with error 55
-        
+
 
    VMware would like to thank Jimmy Scott at inet-solutions.be for reporting this issue to us.
 
@@ -79,32 +97,10 @@ b. Likewise package update
 
 c. ESX third party update for Service Console kernel
 
-   The Service Console kernel is updated to include a fix for a security issue.";
-
-tag_solution = "Apply the missing patch(es).";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103450");
- script_cve_id("CVE-2011-1785", "CVE-2011-1786", "CVE-2010-1324", "CVE-2010-1323", "CVE-2010-4020", "CVE-2010-4021", "CVE-2010-2240");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 9352 $");
- script_name("VMSA-2011-0007 VMware ESXi and ESX Denial of Service and third party updates for Likewise components and ESX Service Console");
-
-
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-03-15 17:23:21 +0100 (Thu, 15 Mar 2012)");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esxi_init.nasl");
- script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2011-0007.html");
+   The Service Console kernel is updated to include a fix for a security issue.");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2011-0007.html");
  exit(0);
 }
 

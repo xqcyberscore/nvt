@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intramaps_56473.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_intramaps_56473.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # Intramaps Multiple Security Vulnerabilities
 #
@@ -27,27 +27,27 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103605");
+  script_oid("1.3.6.1.4.1.25623.1.0.103605");
  script_bugtraq_id(56473);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 10941 $");
- script_name("Intramaps Multiple Security Vulnerabilities");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56473");
- script_xref(name:"URL", value:"http://www.stratsec.net/Research/Advisories/Intramaps-Multiple-Vulnerabilities-%28SS-2012-007%29");
- script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
- script_tag(name:"creation_date", value:"2012-11-12 10:40:31 +0100 (Mon, 12 Nov 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_tag(name:"solution_type", value:"VendorFix");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name:"solution", value:"Reportedly these issues are fixed. Please contact the vendor for more
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11003 $");
+  script_name("Intramaps Multiple Security Vulnerabilities");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56473");
+  script_xref(name:"URL", value:"http://www.stratsec.net/Research/Advisories/Intramaps-Multiple-Vulnerabilities-%28SS-2012-007%29");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-11-12 10:40:31 +0100 (Mon, 12 Nov 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"Reportedly these issues are fixed. Please contact the vendor for more
 information.");
- script_tag(name:"summary", value:"Intramaps is prone to multiple security vulnerabilities including:
+  script_tag(name:"summary", value:"Intramaps is prone to multiple security vulnerabilities including:
 
 1. Multiple cross-site scripting vulnerabilities
 
@@ -57,18 +57,16 @@ information.");
 
 4. A cross-site request-forgery vulnerability
 
-5. An XQuery-injection vulnerability
+5. An XQuery-injection vulnerability");
 
-
-An attacker can exploit these vulnerabilities to execute arbitrary
+  script_tag(name:"impact", value:"An attacker can exploit these vulnerabilities to execute arbitrary
 script code in the browser of an unsuspecting user in the context of
 the affected site, steal cookie-based authentication credentials,
 access or modify data, exploit vulnerabilities in the underlying
 database, disclose sensitive information, and perform unauthorized
-actions. Other attacks are also possible.
+actions. Other attacks are also possible.");
 
-
-Intramaps 7.0.128 Rev 318 is vulnerable; other versions may also
+  script_tag(name:"affected", value:"Intramaps 7.0.128 Rev 318 is vulnerable, other versions may also
 be affected.");
  exit(0);
 }

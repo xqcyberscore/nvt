@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ident_process_owner.nasl 10905 2018-08-10 14:32:11Z cfischer $
+# $Id: ident_process_owner.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Identd scan
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14674");
-  script_version("$Revision: 10905 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -39,7 +39,7 @@ if(description)
   script_dependencies("find_service1.nasl", "slident.nasl", "secpod_open_tcp_ports.nasl");
   script_require_ports("Services/auth", 113);
   script_mandatory_keys("TCP/PORTS");
-  #script_exclude_keys("Host/ident_scanned");
+  #  script_exclude_keys("Host/ident_scanned");
 
   script_tag(name:"summary", value:"This plugin uses identd (RFC 1413) to determine which user is
   running each service");

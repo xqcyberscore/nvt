@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_homematic_mult_vuln.nasl 9877 2018-05-17 05:03:18Z ckuersteiner $
+# $Id: gb_homematic_mult_vuln.nasl 11022 2018-08-17 07:57:39Z cfischer $
 #
 # HomeMatic CCU2 Multiple Vulnerabilities
 #
@@ -27,21 +27,21 @@
 
 CPE = "cpe:/a:eq-3:homematic_ccu2";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140807");
-  script_version("$Revision: 9877 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-17 07:03:18 +0200 (Thu, 17 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-23 16:19:23 +0700 (Fri, 23 Feb 2018)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11022 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-23 16:19:23 +0700 (Fri, 23 Feb 2018)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2018-7296", "CVE-2018-7297", "CVE-2018-7298", "CVE-2018-7299", "CVE-2018-7300",
                 "CVE-2018-7301");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("HomeMatic CCU2 Multiple Vulnerabilities");
 
@@ -52,11 +52,11 @@ if (description)
   script_dependencies("gb_homematic_ccu2_detect.nasl");
   script_mandatory_keys("homematic/detected");
 
-  script_tag(name: "summary", value: "HomeMatic CCU2 is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"HomeMatic CCU2 is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP POST request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP POST request and checks the response.");
 
-  script_tag(name: "insight", value: "HomeMatic CCU2 is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"HomeMatic CCU2 is prone to multiple vulnerabilities:
 
 - Directory Traversal / Arbitrary File Read in User.getLanguage method allows remote attackers to read the first
 line of an arbitrary file on the CCU2's filesystem. (CVE-2018-7296)
@@ -76,15 +76,15 @@ attackers to write arbitrary files to the device's filesystem. (CVE-2018-7300)
 - Open XML-RPC port without authentication. This can be exploited by sending arbitrary XML-RPC requests to control
 the attached BidCos devices. (CVE-2018-7301)");
 
-  script_tag(name: "solution", value: "No known solution is available as of 17th May, 2018. Information regarding
+  script_tag(name:"solution", value:"No known solution is available as of 17th May, 2018. Information regarding
 this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "https://atomic111.github.io/article/homematic-ccu2-fileread");
-  script_xref(name: "URL", value: "https://atomic111.github.io/article/homematic-ccu2-remote-code-execution");
-  script_xref(name: "URL", value: "https://atomic111.github.io/article/homematic-ccu2-firmware-via-plain-http");
-  script_xref(name: "URL", value: "https://atomic111.github.io/article/homematic-ccu2-untrusted_addon");
-  script_xref(name: "URL", value: "https://atomic111.github.io/article/homematic-ccu2-filewrite");
-  script_xref(name: "URL", value: "https://atomic111.github.io/article/homematic-ccu2-xml-rpc");
+  script_xref(name:"URL", value:"https://atomic111.github.io/article/homematic-ccu2-fileread");
+  script_xref(name:"URL", value:"https://atomic111.github.io/article/homematic-ccu2-remote-code-execution");
+  script_xref(name:"URL", value:"https://atomic111.github.io/article/homematic-ccu2-firmware-via-plain-http");
+  script_xref(name:"URL", value:"https://atomic111.github.io/article/homematic-ccu2-untrusted_addon");
+  script_xref(name:"URL", value:"https://atomic111.github.io/article/homematic-ccu2-filewrite");
+  script_xref(name:"URL", value:"https://atomic111.github.io/article/homematic-ccu2-xml-rpc");
 
   exit(0);
 }
@@ -92,6 +92,7 @@ this issue will be updated once solution details are available.");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);
@@ -101,7 +102,7 @@ if (!get_app_location(cpe: CPE, port: port, nofork: TRUE))
 
 url = '/Text.exe';
 
-data = 'string stdout;\n' + 
+data = 'string stdout;\n' +
        'string stderr;\n' +
        'system.Exec("id", &stdout, &stderr);\n' +
        'WriteLine(stdout);';

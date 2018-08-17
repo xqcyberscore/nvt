@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencast_default_credentials.nasl 8053 2017-12-08 11:43:10Z cfischer $
+# $Id: gb_opencast_default_credentials.nasl 11025 2018-08-17 08:27:37Z cfischer $
 #
 # Opencast Default Credentials
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if( description )
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113058");
-  script_version("$Revision: 8053 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 12:43:10 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 11025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-11-28 16:02:03 +0100 (Tue, 28 Nov 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -56,14 +56,15 @@ if( description )
 
   script_xref(name:"URL", value:"https://docs.opencast.org/r/3.x/admin/configuration/basic/");
 
-  exit( 0 );
+  exit(0);
 }
 
 CPE = "cpe:/a:opencast:opencast";
 
-include( "host_details.inc" );
-include( "http_func.inc" );
-include( "http_keepalive.inc" );
+include("host_details.inc");
+include("http_func.inc");
+include("http_keepalive.inc");
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe: CPE, port: port ) ) exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cgi_directories.nasl 10833 2018-08-08 10:35:26Z cfischer $
+# $Id: cgi_directories.nasl 11000 2018-08-16 09:46:21Z cfischer $
 #
 # CGI Scanning Consolidation
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111038");
-  script_version("$Revision: 10833 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 12:35:26 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 11000 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 11:46:21 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-09-14 07:00:00 +0200 (Mon, 14 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -149,6 +149,8 @@ if( can_host_asp( port:port ) ) {
 } else {
   report += 'This service seems to be NOT able to host ASP scripts.\n\n';
 }
+
+report += 'The User-Agent "' + get_http_user_agent() + '" was used to access the remote host.\n\n';
 
 if( get_kb_item( "global_settings/exclude_historic_cgi_dirs" ) ) {
   report += 'Historic /scripts and /cgi-bin are not added to the directories used for CGI scanning. ';

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuuo_nvrmini2_file_upload_vuln.nasl 10387 2018-07-04 05:21:03Z cfischer $
+# $Id: gb_nuuo_nvrmini2_file_upload_vuln.nasl 11022 2018-08-17 07:57:39Z cfischer $
 #
 # NUUO NVRmini 2 File Upload Vulnerability
 #
@@ -27,20 +27,20 @@
 
 CPE = "cpe:/a:nuuo:nuuo";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141124");
-  script_version("$Revision: 10387 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-07-04 07:21:03 +0200 (Wed, 04 Jul 2018) $");
-  script_tag(name: "creation_date", value: "2018-05-30 13:34:16 +0700 (Wed, 30 May 2018)");
+  script_version("$Revision: 11022 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-05-30 13:34:16 +0700 (Wed, 30 May 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-11523");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("NUUO NVRmini 2 File Upload Vulnerability");
 
@@ -51,15 +51,15 @@ if (description)
   script_dependencies("gb_nuuo_devices_web_detect.nasl");
   script_mandatory_keys("nuuo/web/detected");
 
-  script_tag(name: "summary", value: "upload.php on NUUO NVRmini 2 devices allows Arbitrary File Upload, such as
-upload of .php files.");
+  script_tag(name:"summary", value:"upload.php on NUUO NVRmini 2 devices allows Arbitrary File Upload, such as
+  upload of .php files.");
 
-  script_tag(name: "vuldetect", value: "Tries to upload a PHP file and checks if phpinfo() can be exectuted.");
+  script_tag(name:"vuldetect", value:"Tries to upload a PHP file and checks if phpinfo() can be exectuted.");
 
-  script_tag(name: "solution", value: "No known solution is available as of 30th May, 2018. Information regarding
-this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 30th May, 2018. Information regarding
+  this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/44794/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/44794/");
 
   exit(0);
 }
@@ -67,6 +67,7 @@ this issue will be updated once solution details are available.");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe: CPE, service: "www"))
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ftpserver_detect_type_nd_version.nasl 9541 2018-04-19 13:42:33Z cfischer $
+# $Id: ftpserver_detect_type_nd_version.nasl 11018 2018-08-17 07:13:05Z cfischer $
 #
 # FTP Banner Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10092");
-  script_version("$Revision: 9541 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 15:42:33 +0200 (Thu, 19 Apr 2018) $");
+  script_version("$Revision: 11018 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:13:05 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,7 +36,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 1999 SecuriTeam");
   script_family("Product detection");
-  # get_ftp_banner() is using a FTP command internally which requires a
+  # nb: get_ftp_banner() is using a FTP command internally which requires a
   # successful login so the secpod_ftp_anonymous.nasl is expected to be
   # in here. This dependency also pulls in the logins.nasl.
   script_dependencies("find_service2.nasl", "find_service_3digits.nasl",

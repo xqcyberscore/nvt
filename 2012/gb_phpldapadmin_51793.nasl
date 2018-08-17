@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpldapadmin_51793.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_phpldapadmin_51793.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # phpLDAPadmin 'base' Parameter Cross Site Scripting Vulnerability
 #
@@ -25,45 +25,43 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "phpLDAPadmin is prone to a cross-site scripting vulnerability because
-it fails to properly sanitize user-supplied input.
-
-An attacker may leverage this issue to execute arbitrary script code
-in the browser of an unsuspecting user in the context of the affected
-site. This may allow the attacker to steal cookie-based authentication
-credentials and launch other attacks.
-
-phpLDAPadmin 1.2.2 is affected; other versions may also be vulnerable.";
-
-tag_solution = "Updates are available. Please see the references for more details.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103409");
- script_bugtraq_id(51793);
- script_version ("$Revision: 9352 $");
- script_tag(name:"cvss_base", value:"2.6");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.103409");
+  script_bugtraq_id(51793);
+  script_version("$Revision: 11003 $");
+  script_tag(name:"cvss_base", value:"2.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
 
- script_name("phpLDAPadmin 'base' Parameter Cross Site Scripting Vulnerability");
+  script_name("phpLDAPadmin 'base' Parameter Cross Site Scripting Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51793");
- script_xref(name : "URL" , value : "http://sourceforge.net/projects/phpldapadmin/develop");
- script_xref(name : "URL" , value : "http://phpldapadmin.sourceforge.net/");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521450");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51793");
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/phpldapadmin/develop");
+  script_xref(name:"URL", value:"http://phpldapadmin.sourceforge.net/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/521450");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-02-02 12:25:56 +0100 (Thu, 02 Feb 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("phpldapadmin_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("phpldapadmin/installed");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-02 12:25:56 +0100 (Thu, 02 Feb 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("phpldapadmin_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("phpldapadmin/installed");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more details.");
+  script_tag(name:"summary", value:"phpLDAPadmin is prone to a cross-site scripting vulnerability because
+it fails to properly sanitize user-supplied input.");
+
+  script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script code
+in the browser of an unsuspecting user in the context of the affected
+site. This may allow the attacker to steal cookie-based authentication
+credentials and launch other attacks.");
+
+  script_tag(name:"affected", value:"phpLDAPadmin 1.2.2 is affected, other versions may also be vulnerable.");
+
+  exit(0);
 }
 
 include("http_func.inc");

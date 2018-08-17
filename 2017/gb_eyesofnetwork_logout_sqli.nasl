@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eyesofnetwork_logout_sqli.nasl 7338 2017-10-04 08:49:04Z santu $
+# $Id: gb_eyesofnetwork_logout_sqli.nasl 11025 2018-08-17 08:27:37Z cfischer $
 #
 # Eyes Of Network (EON) 'logout.php' SQL Injection Vulnerability
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:eyes_of_network:eyes_of_network";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108174");
-  script_version("$Revision: 7338 $");
+  script_version("$Revision: 11025 $");
   script_cve_id("CVE-2017-1000060", "CVE-2017-14252", "CVE-2017-14247", "CVE-2017-14404",
                 "CVE-2017-14405", "CVE-2017-14402", "CVE-2017-14403", "CVE-2017-14401");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-04 10:49:04 +0200 (Wed, 04 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-06-07 09:31:19 +0200 (Wed, 07 Jun 2017)");
   script_name("Eyes Of Network (EON) 'logout.php' SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
@@ -55,6 +55,7 @@ if(description)
   check the response time. If the time based check fails also check the version.");
 
   script_tag(name:"insight", value:"Multiple flaws exists as,
+
   - The vulnerability is a time-based SQL injection that can be exploited by
     un-authenticated users via an HTTP GET request and affects the logout.php
     and the cookie parameter 'session_id'.
@@ -76,12 +77,13 @@ if(description)
   script_tag(name:"affected", value:"Eyes Of Network (EON) versions 5.1 and
   below are vulnerable.");
 
-  script_tag(name:"solution", value:"No Solution or patch is available as of 27th
-  Sep, 2017. Information regarding this issue will be updated once the solution
+  script_tag(name:"solution", value:"No known solution is available as of 27th
+  September, 2017. Information regarding this issue will be updated once solution
   details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_app");
+
   exit(0);
 }
 
@@ -89,6 +91,7 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
 if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FALSE ) ) exit( 0 );

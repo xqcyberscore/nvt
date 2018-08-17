@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_sitescope_mult_vuln.nasl 6367 2017-06-19 07:11:34Z ckuersteiner $
+# $Id: gb_hp_sitescope_mult_vuln.nasl 11025 2018-08-17 08:27:37Z cfischer $
 #
 # HP SiteScope Multiple Vulnerabilities
 #
@@ -27,18 +27,18 @@
 
 CPE = "cpe:/a:hp:sitescope";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106881");
-  script_version("$Revision: 6367 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-19 09:11:34 +0200 (Mon, 19 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2017-06-19 10:42:13 +0700 (Mon, 19 Jun 2017)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_version("$Revision: 11025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-19 10:42:13 +0700 (Mon, 19 Jun 2017)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "Mitigation");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   script_name("HP SiteScope Multiple Vulnerabilities");
 
@@ -49,27 +49,27 @@ if (description)
   script_dependencies("gb_hp_sitescope_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("hp/sitescope/installed");
 
-  script_tag(name: "summary", value: "HP SiteScope is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"HP SiteScope is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP POST request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP POST request and checks the response.");
 
-  script_tag(name: "insight", value: "HP SiteScope is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"HP SiteScope is prone to multiple vulnerabilities:
 
-- Missing Authentication for Critical Function
+  - Missing Authentication for Critical Function
 
-- Use of Hard-coded Cryptographic Key
+  - Use of Hard-coded Cryptographic Key
 
-- Use of a Broken or Risky Cryptographic Algorithm
+  - Use of a Broken or Risky Cryptographic Algorithm
 
-- Insufficiently Protected Credentials");
+  - Insufficiently Protected Credentials");
 
-  script_tag(name: "impact", value: "An unauthenticated, remote attacker may be able to access arbitrary files
-from the system running SiteScope, or obtain credentials to SiteScope.");
+  script_tag(name:"impact", value:"An unauthenticated, remote attacker may be able to access arbitrary files
+  from the system running SiteScope, or obtain credentials to SiteScope.");
 
-  script_tag(name: "solution", value: "Check the referenced advisories for mitigation steps.");
+  script_tag(name:"solution", value:"Check the referenced advisories for mitigation steps.");
 
-  script_xref(name: "URL", value: "https://www.kb.cert.org/vuls/id/768399");
-  script_xref(name: "URL", value: "http://bytesdarkly.com/disclosures/2017/06/exploiting-hp-sitescope-from-zero-to-compromise.html");
+  script_xref(name:"URL", value:"https://www.kb.cert.org/vuls/id/768399");
+  script_xref(name:"URL", value:"http://bytesdarkly.com/disclosures/2017/06/exploiting-hp-sitescope-from-zero-to-compromise.html");
 
   exit(0);
 }
@@ -77,6 +77,7 @@ from the system running SiteScope, or obtain credentials to SiteScope.");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

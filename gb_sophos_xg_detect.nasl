@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sophos_xg_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
+# $Id: gb_sophos_xg_detect.nasl 11020 2018-08-17 07:35:00Z cfischer $
 #
 # Sophos XG Firewall Detection
 #
@@ -27,27 +27,26 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105625");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 10929 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
- script_tag(name:"creation_date", value:"2016-04-27 12:36:42 +0200 (Wed, 27 Apr 2016)");
- script_name("Sophos XG Firewall Detection");
+  script_oid("1.3.6.1.4.1.25623.1.0.105625");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 11020 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:35:00 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-04-27 12:36:42 +0200 (Wed, 27 Apr 2016)");
+  script_name("Sophos XG Firewall Detection");
 
- script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to extract the version number from the reply.");
+  script_tag(name:"summary", value:"The script sends a connection request to the server and attempts to extract the version number from the reply.");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_category(ACT_GATHER_INFO);
- script_family("Product detection");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 4444);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 4444);
+  script_exclude_keys("Settings/disable_cgi_scanning");
  exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -57,8 +56,7 @@ include("host_details.inc");
 port = get_http_port( default:4444 );
 
 url = '/webconsole/webpages/login.jsp';
-req = http_get( item:url, port:port );
-buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+buf = http_get_cache( item:url, port:port );
 
 if( "Server: xxxx" >!< buf || buf !~ "HTTP/1\.. 200" || "<title>Sophos</title>" >!< buf ) exit( 0 );
 

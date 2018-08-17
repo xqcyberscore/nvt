@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_sp_projects_dm_mult_vuln.nasl 5759 2017-03-29 09:01:08Z teissa $
+# $Id: gb_wordpress_sp_projects_dm_mult_vuln.nasl 11008 2018-08-16 13:26:16Z cfischer $
 #
 # Wordpress SP Projects And Document Manager Multiple Vulnerabilities
 #
@@ -29,32 +29,34 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807612");
-  script_version("$Revision: 5759 $");
+  script_version("$Revision: 11008 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-29 11:01:08 +0200 (Wed, 29 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-03-16 10:39:38 +0530 (Wed, 16 Mar 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress SP Projects And Document Manager Multiple Vulnerabilities");
 
-  script_tag(name:"summary" , value:"This host is installed with Wordpress SP
+  script_tag(name:"summary", value:"This host is installed with Wordpress SP
   Projects And Document Manager plugin and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP POST request
   and check whether it is is able to read cookie value.");
 
   script_tag(name:"insight", value:"The multiple flaws exists due to,
+
   - An insufficient validation of input to the 'id' parameter in admin/ajax.php.
+
   - An insufficient validation of input to the 'email-vendor' parameter in
     admin/ajax.php.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow registerd
+  script_tag(name:"impact", value:"Successful exploitation will allow registered
   users to perform arbitrary file upload and code execution, and remote attackers
   to perform sql injections, information leakage and xss.
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected" , value:"Wordpress Sp client document manager plugin
+  script_tag(name:"affected", value:"Wordpress Sp client document manager plugin
   version 2.5.9.6.");
 
   script_tag(name:"solution", value:"Upgrade to Wordpress Sp client document
@@ -71,49 +73,38 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
-##
-## The script code starts here
-##
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-# Get HTTPs Port
 if(!http_port = get_app_port(cpe:CPE)){
-  exit(0); 
+  exit(0);
 }
 
-##Get installed locaction
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Get host name or IP
+useragent = get_http_user_agent();
 host = http_host_name(port:http_port);
-if(!host){
-  exit(0);
-}
 
-##Url
 url = dir + '/wp-content/plugins/sp-client-document-manager/admin/ajax.php?function=email-vendor';
 
-##Construct POSTDATA
 postData = "vendor_email[]=1&vendor=<script>alert(document.cookie);</script>";
 len = strlen(postData);
 
-sndReq = 'POST '+url+' HTTP/1.1\r\n' + 
-         'Host: '+host+'\r\n' +
-         'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+sndReq = 'POST ' + url + ' HTTP/1.1\r\n' +
+         'Host: ' + host + '\r\n' +
+         'User-Agent: ' + useragent + '\r\n' +
          'Content-Type: application/x-www-form-urlencoded\r\n' +
-	 'Content-Length: '+len+'\r\n' +
-	 '\r\n' + 
+	 'Content-Length: ' + len + '\r\n' +
+	 '\r\n' +
          postData;
 
-##Send and Receive Response
 res = http_keepalive_send_recv(port:http_port, data:sndReq);
 
 if(res =~ "HTTP/1\.. 200" && res =~ "<script>alert\(document.cookie\);</script>"  && 'Files Sent to' >< res)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gigaset_sx762_default_pw.nasl 10910 2018-08-10 15:10:09Z mmartin $
+# $Id: gb_gigaset_sx762_default_pw.nasl 11007 2018-08-16 13:20:25Z mmartin $
 #
 # Siemens Gigaset sx762 Default Password
 #
@@ -29,28 +29,28 @@ CPE = 'cpe:/h:siemens:gigaset:sx762';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103730");
- script_version("$Revision: 10910 $");
- script_tag(name:"cvss_base", value:"9.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:10:09 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2013-06-05 14:44:04 +0200 (Wed, 05 Jun 2013)");
- script_name("Siemens Gigaset sx762 Default Password");
- script_category(ACT_ATTACK);
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_gigaset_sx762_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("gigaset_sx762/installed");
- script_tag(name:"solution", value:"Change the password.");
- script_tag(name:"solution_type", value:"Mitigation");
- script_tag(name:"summary", value:"The remote Siemens Gigaset sx762 is prone to a default account authentication
+  script_oid("1.3.6.1.4.1.25623.1.0.103730");
+  script_version("$Revision: 11007 $");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:20:25 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-06-05 14:44:04 +0200 (Wed, 05 Jun 2013)");
+  script_name("Siemens Gigaset sx762 Default Password");
+  script_category(ACT_ATTACK);
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_gigaset_sx762_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("gigaset_sx762/installed");
+  script_tag(name:"solution", value:"Change the password.");
+  script_tag(name:"solution_type", value:"Mitigation");
+  script_tag(name:"summary", value:"The remote Siemens Gigaset sx762 is prone to a default account authentication
  bypass vulnerability. This issue may be exploited by a remote attacker to
  gain access to sensitive information or modify system configuration.
 
  It was possible to login with password 'admin'.");
 
- script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
  exit(0);
 }

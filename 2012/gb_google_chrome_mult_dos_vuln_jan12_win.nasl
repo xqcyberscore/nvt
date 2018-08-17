@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_dos_vuln_jan12_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_mult_dos_vuln_jan12_win.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # Google Chrome Multiple Denial of Service Vulnerabilities - January12 (Windows)
 #
@@ -27,34 +27,34 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802374");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11003 $");
   script_cve_id("CVE-2011-3919", "CVE-2011-3921", "CVE-2011-3922");
   script_bugtraq_id(51300);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-01-10 14:35:57 +0530 (Tue, 10 Jan 2012)");
   script_name("Google Chrome Multiple Denial of Service Vulnerabilities - January12 (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/47449/");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.com/2012/01/stable-channel-update.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/47449/");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.com/2012/01/stable-channel-update.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to execute arbitrary code or
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code or
   cause a denial of service.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Google Chrome version prior to 16.0.912.75 on Windows");
-  script_tag(name : "insight" , value : "Multiple flaws are due to,
+  script_tag(name:"affected", value:"Google Chrome version prior to 16.0.912.75 on Windows");
+  script_tag(name:"insight", value:"Multiple flaws are due to,
   - A use-after-free error when the handling of animation frames.
   - A boundary error within the 'xmlStringLenDecodeEntities()' function of
     libxml2
   - A stack based buffer overflow error in glyph handling.");
-  script_tag(name : "solution" , value : "Upgrade to the Google Chrome 16.0.912.75 or later,
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 16.0.912.75 or later,
   For updates refer to http://www.google.com/chrome");
-  script_tag(name : "summary" , value : "The host is installed with Google Chrome and is prone to multiple
+  script_tag(name:"summary", value:"The host is installed with Google Chrome and is prone to multiple
   denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mailup_mult_vuln.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_wordpress_mailup_mult_vuln.nasl 11011 2018-08-16 14:14:31Z mmartin $
 #
 # Wordpress MailUp Plugin Multiple Vulnerabilities
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803448");
-  script_version("$Revision: 9984 $");
+  script_version("$Revision: 11011 $");
   script_cve_id("CVE-2013-2640");
   script_bugtraq_id(58467);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-26 13:22:02 +0530 (Tue, 26 Mar 2013)");
   script_name("Wordpress MailUp Plugin Multiple Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/51917");
-  script_xref(name : "URL" , value : "http://plugins.trac.wordpress.org/changeset?new=682420");
-  script_xref(name : "URL" , value : "http://wordpress.org/extend/plugins/wp-mailup/changelog");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/51917");
+  script_xref(name:"URL", value:"http://plugins.trac.wordpress.org/changeset?new=682420");
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/wp-mailup/changelog");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -46,17 +46,17 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary HTML
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
   or web script via unspecified vectors in a user's browser session in context
   of an affected site and disclose sensitive information.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Wordpress MailUp Plugin version 1.3.1 and prior");
-  script_tag(name : "insight" , value : "Not properly restrict access to unspecified Ajax functions in
+  script_tag(name:"affected", value:"Wordpress MailUp Plugin version 1.3.1 and prior");
+  script_tag(name:"insight", value:"Not properly restrict access to unspecified Ajax functions in
   ajax.functions.php");
-  script_tag(name : "solution" , value : "Upgrade Wordpress MailUp Plugin 1.3.2 or later,
+  script_tag(name:"solution", value:"Upgrade Wordpress MailUp Plugin 1.3.2 or later,
   For updates refer to http://wordpress.org/extend/plugins/wp-mailup");
-  script_tag(name : "summary" , value : "This host is installed with Wordpress MailUp Plugin and is prone
+  script_tag(name:"summary", value:"This host is installed with Wordpress MailUp Plugin and is prone
   to multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");

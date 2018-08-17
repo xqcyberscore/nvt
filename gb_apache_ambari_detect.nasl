@@ -1,6 +1,6 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_ambari_detect.nasl 10728 2018-08-02 09:11:35Z jschulte $
+# $Id: gb_apache_ambari_detect.nasl 11021 2018-08-17 07:48:11Z cfischer $
 #
 # Apache Ambari Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.808648");
-  script_version("$Revision: 10728 $");
+  script_version("$Revision: 11021 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 11:11:35 +0200 (Thu, 02 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:48:11 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-08-09 18:35:29 +0530 (Tue, 09 Aug 2016)");
   script_name("Apache Ambari Detection");
   script_category(ACT_GATHER_INFO);
@@ -55,6 +55,7 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 port = get_http_port( default:8080 );
 

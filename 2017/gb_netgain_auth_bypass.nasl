@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgain_auth_bypass.nasl 10128 2018-06-08 03:58:14Z ckuersteiner $
+# $Id: gb_netgain_auth_bypass.nasl 11025 2018-08-17 08:27:37Z cfischer $
 #
 # NetGain Enterprise Manager Authentication Bypass / Local File Inclusion Vulnerability
 #
@@ -27,18 +27,18 @@
 
 CPE = "cpe:/a:netgain:enterprise_manager";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107225");
-  script_version("$Revision: 10128 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-08 05:58:14 +0200 (Fri, 08 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2017-06-20 13:53:33 +0700 (Tue, 20 Jun 2017)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_version("$Revision: 11025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-06-20 13:53:33 +0700 (Tue, 20 Jun 2017)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("NetGain Enterprise Manager Authentication Bypass / Local File Inclusion Vulnerability");
 
@@ -51,15 +51,15 @@ if (description)
   script_mandatory_keys("netgain_em/installed");
   script_require_ports("Services/www", 80);
 
-  script_tag(name: "summary", value: "NetGain EM is prone to authentication bypass and a local file inclusion
-vulnerability.");
+  script_tag(name:"summary", value:"NetGain EM is prone to authentication bypass and a local file inclusion
+  vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP POST request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP POST request and checks the response.");
 
-  script_tag(name: "solution", value: "No known solution is available as of 04th June, 2018. Information regarding
-this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
+  this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/42058/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/42058/");
 
   exit(0);
 }
@@ -67,6 +67,7 @@ this issue will be updated once solution details are available.");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

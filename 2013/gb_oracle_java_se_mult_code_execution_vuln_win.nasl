@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_code_execution_vuln_win.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: gb_oracle_java_se_mult_code_execution_vuln_win.nasl 11011 2018-08-16 14:14:31Z mmartin $
 #
 # Oracle Java SE Multiple Remote Code Execution Vulnerabilities (Windows)
 #
@@ -27,35 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803156");
-  script_version("$Revision: 10144 $");
+  script_version("$Revision: 11011 $");
   script_cve_id("CVE-2012-3174", "CVE-2013-0422");
   script_bugtraq_id(57246, 57312);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-01-17 12:41:59 +0530 (Thu, 17 Jan 2013)");
   script_name("Oracle Java SE Multiple Remote Code Execution Vulnerabilities (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/51820/");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1027972");
-  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/625617");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/java/javase/7u11-relnotes-1896856.html");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/alert-cve-2013-0422-1896849.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/51820/");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1027972");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/625617");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/java/javase/7u11-relnotes-1896856.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/alert-cve-2013-0422-1896849.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_require_keys("Sun/Java/JRE/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation allows remote attackers to execute arbitrary code
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary code
   via unspecified vectors,
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Oracle Java version 7 before Update 11 on windows");
-  script_tag(name : "solution" , value : "Upgrade to Oracle Java 7 Update 11 or later
+  script_tag(name:"affected", value:"Oracle Java version 7 before Update 11 on windows");
+  script_tag(name:"solution", value:"Upgrade to Oracle Java 7 Update 11 or later
   For updates refer to
   http://www.oracle.com/technetwork/topics/security/alert-cve-2013-0422-1896849.html");
-  script_tag(name : "summary" , value : "This host is installed with Oracle Java SE and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Oracle Java SE and is prone to multiple
   code execution vulnerabilities.");
-  script_tag(name : "insight" , value : "- An error in Java Management Extensions (JMX) MBean components which allows
+  script_tag(name:"insight", value:"- An error in Java Management Extensions (JMX) MBean components which allows
     remote attackers to execute arbitrary code via unspecified vectors.
   - An unspecified error exists within the Libraries subcomponent.
 

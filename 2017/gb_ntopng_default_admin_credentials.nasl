@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntopng_default_admin_credentials.nasl 7403 2017-10-11 13:59:13Z asteins $
+# $Id: gb_ntopng_default_admin_credentials.nasl 11025 2018-08-17 08:27:37Z cfischer $
 #
 # ntopng Default Admin Credentials Check
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:ntop:ntopng';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112078");
-  script_version("$Revision: 7403 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-11 15:59:13 +0200 (Wed, 11 Oct 2017) $");
+  script_version("$Revision: 11025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 10:51:21 +0200 (Wed, 11 Oct 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -61,6 +61,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if(!port = get_app_port(cpe:CPE)) exit(0);
 get_app_location(cpe:CPE, port:port, nofork:TRUE); # To have a reference to the Detection-NVT

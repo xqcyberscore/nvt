@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_authorization.nasl 7993 2017-12-05 09:04:08Z cfischer $
+# $Id: gb_snmp_authorization.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Set information for SNMP authorization in KB.
 #
@@ -29,8 +29,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105076");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 7993 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-05 10:04:08 +0100 (Tue, 05 Dec 2017) $");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-02 10:42:27 +0200 (Tue, 02 Sep 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("SNMP Authorization"); # nb: Don't change the script name, this name is hardcoded within some manager functions...
@@ -42,11 +42,11 @@ if(description)
   script_add_preference(name:"SNMP Community:", type:"password", value:"");
 
   if( defined_func( "snmpv3_get" ) ) {
-    script_add_preference(name:"SNMPv3 Username:", type:"entry", value:"");
-    script_add_preference(name:"SNMPv3 Password:", type:"password", value:"");
-    script_add_preference(name:"SNMPv3 Authentication Algorithm:", type:"radio", value:"md5;sha1");
-    script_add_preference(name:"SNMPv3 Privacy Password:", type:"password", value:"");
-    script_add_preference(name:"SNMPv3 Privacy Algorithm:", type:"radio", value:"aes;des");
+  script_add_preference(name:"SNMPv3 Username:", type:"entry", value:"");
+  script_add_preference(name:"SNMPv3 Password:", type:"password", value:"");
+  script_add_preference(name:"SNMPv3 Authentication Algorithm:", type:"radio", value:"md5;sha1");
+  script_add_preference(name:"SNMPv3 Privacy Password:", type:"password", value:"");
+  script_add_preference(name:"SNMPv3 Privacy Algorithm:", type:"radio", value:"aes;des");
   }
 
   script_tag(name:"summary", value:"This script allows users to enter the information

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_dml_remote_prev_escl_vuln.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_ibm_db2_dml_remote_prev_escl_vuln.nasl 11024 2018-08-17 08:18:16Z mmartin $
 #
 # IBM DB2 DML Statement Execution Remote Privilege Escalation Vulnerability
 #
@@ -23,58 +23,40 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803757";
 CPE = "cpe:/a:ibm:db2";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6086 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803757");
+  script_version("$Revision: 11024 $");
   script_cve_id("CVE-2013-4033");
   script_bugtraq_id(62018);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:18:16 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-09-05 17:26:08 +0530 (Thu, 05 Sep 2013)");
   script_name("IBM DB2 DML Statement Execution Remote Privilege Escalation Vulnerability");
 
-   tag_summary =
-"This host is running IBM DB2 and is prone to privilege escalation
-vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version of IBM DB2 with the help of detect NVT and check
-the version is vulnerable or not.";
-
-  tag_insight =
-"The flaw is due to the program failing to limit users from the EXPLAIN
+  script_tag(name:"summary", value:"This host is running IBM DB2 and is prone to privilege escalation
+vulnerability.");
+  script_tag(name:"vuldetect", value:"Get the installed version of IBM DB2 with the help of detect NVT and check
+the version is vulnerable or not.");
+  script_tag(name:"solution", value:"Apply the appropriate fix from below link,
+http://www-01.ibm.com/support/docview.wss?uid=swg21646809");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"insight", value:"The flaw is due to the program failing to limit users from the EXPLAIN
 authority, which will allow a remote attacker to potentially execute the SELECT,
-INSERT, UPDATE or DELETE DML statements with elevated privileges.";
-
-  tag_impact =
-"Successful exploitation will allow attacker to gain escalated privileges and
+INSERT, UPDATE or DELETE DML statements with elevated privileges.");
+  script_tag(name:"affected", value:"IBM DB2 versions 9.7 through FP8, 10.1 through FP2, and 10.5 through FP1");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to gain escalated privileges and
 bypass certain security restrictions.
 
-Impact Level: Application";
+Impact Level: Application");
 
-  tag_affected =
-"IBM DB2 versions 9.7 through FP8, 10.1 through FP2, and 10.5 through FP1";
-
-  tag_solution =" Apply the appropriate fix from below link,
-http://www-01.ibm.com/support/docview.wss?uid=swg21646809";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
-
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/54644");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/86093");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21646809");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/54644");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/86093");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21646809");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
@@ -89,15 +71,11 @@ include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ibmVer  = "";
-ibmPort = "";
-
-if(!ibmPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!ibmPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-if(!ibmVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:ibmPort)){
+if(!ibmVer = get_app_version(cpe:CPE, port:ibmPort)){
   exit(0);
 }
 

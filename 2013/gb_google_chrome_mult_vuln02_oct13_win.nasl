@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_oct13_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_mult_vuln02_oct13_win.nasl 11011 2018-08-16 14:14:31Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-02 Oct2013 (Windows)
 #
@@ -29,33 +29,33 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804114");
-  script_version("$Revision: 10133 $");
-  script_cve_id("CVE-2013-2928","CVE-2013-2925","CVE-2013-2926","CVE-2013-2927");
-  script_bugtraq_id(63024,63026,63028,63025);
+  script_version("$Revision: 11011 $");
+  script_cve_id("CVE-2013-2928", "CVE-2013-2925", "CVE-2013-2926", "CVE-2013-2927");
+  script_bugtraq_id(63024, 63026, 63028, 63025);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-10-23 14:30:38 +0530 (Wed, 23 Oct 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Oct2013 (Windows)");
 
 
-  script_tag(name : "summary" , value : "This host is installed with Google Chrome and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to multiple
 vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Get the installed version of Google Chrome and check the version
+  script_tag(name:"vuldetect", value:"Get the installed version of Google Chrome and check the version
 is vulnerable or not.");
-  script_tag(name : "solution" , value : "Upgrade to version 30.0.1599.101 or later
+  script_tag(name:"solution", value:"Upgrade to version 30.0.1599.101 or later
 For updates refer to http://www.google.com/chrome");
-  script_tag(name : "insight" , value : "Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 -Use-after-free vulnerability in the HTMLFormElement 'prepareForSubmission'
 function in core/html/HTMLFormElement.cpp.
 -Use-after-free vulnerability in the IndentOutdentCommand
 'tryIndentingAsListItem' function in core/editing/IndentOutdentCommand.cpp.
 -Use-after-free vulnerability in core/xml/XMLHttpRequest.cpp.
 -Another unspecified error.");
-  script_tag(name : "affected" , value : "Google Chrome before 30.0.1599.101");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to cause a denial of
+  script_tag(name:"affected", value:"Google Chrome before 30.0.1599.101");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
 service or possibly have other impact via vectors related to submission
-for FORM elements,vectors related to list elements,vectors that trigger
+for FORM elements, vectors related to list elements, vectors that trigger
 multiple conflicting uses of the same XMLHttpRequest object or via unknown
 vectors.
 
@@ -63,9 +63,9 @@ Impact Level: Application");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/63025");
-  script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/446283.php");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2013/10/stable-channel-update_15.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/63025");
+  script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/446283.php");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2013/10/stable-channel-update_15.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

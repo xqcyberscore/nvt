@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ironport_csma_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
+# $Id: gb_cisco_ironport_csma_detect.nasl 11006 2018-08-16 12:21:56Z cfischer $
 #
 # Cisco IronPort Content Security Management Appliance Detection
 #
@@ -24,13 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803753");
-  script_version("$Revision: 10896 $");
+  script_version("$Revision: 11006 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 14:21:56 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-09-03 18:58:59 +0530 (Tue, 03 Sep 2013)");
   script_name("Cisco IronPort Content Security Management Appliance Web Interface Detection");
 
@@ -44,21 +44,21 @@ if (description)
   script_dependencies("find_service.nasl");
   script_require_ports("Services/www", 443);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
 csmaPort = get_http_port(default:443);
-
+useragent = get_http_user_agent();
 csmahost = http_host_name(port:csmaPort);
 
 csmaReq = string("GET /login HTTP/1.1\r\n",
              "Host: ", csmahost, "\r\n",
-             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+             "User-Agent: ", useragent, "\r\n",
              "Cookie: sid=", rand(),"\r\n\r\n");
 csmaRes = http_keepalive_send_recv(port:csmaPort, data:csmaReq);
 

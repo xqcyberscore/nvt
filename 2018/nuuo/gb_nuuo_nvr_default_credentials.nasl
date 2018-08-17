@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nuuo_nvr_default_credentials.nasl 10875 2018-08-10 08:37:14Z asteins $
+# $Id: gb_nuuo_nvr_default_credentials.nasl 11008 2018-08-16 13:26:16Z cfischer $
 #
 # NUUO Network Video Recorder Devices Default Credentials
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:nuuo:nuuo";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112328");
-  script_version("$Revision: 10875 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 10:37:14 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11008 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 11:26:00 +0200 (Tue, 17 Jul 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -91,6 +91,7 @@ report = "";
 
 credentials = make_list( "admin:admin", "localdisplay:111111" );
 
+useragent = get_http_user_agent();
 host = http_host_name( port:port );
 
 foreach credential( credentials ) {
@@ -107,7 +108,7 @@ foreach credential( credentials ) {
 
   req = 'POST /login.php HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT +'\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Accept-Language: en-US,en;q=0.5\r\n' +
         'Referer: http://' + host + '/login.php/\r\n' +
@@ -123,7 +124,7 @@ foreach credential( credentials ) {
 
     req = 'GET /setting.php HTTP/1.1\r\n' +
           'Host: ' + host + '\r\n' +
-          'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+          'User-Agent: ' + useragent + '\r\n' +
           'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
           'Accept-Language: en-US,en;q=0.5\r\n' +
           'Referer: http://' + host + '/setting.php\r\n' +

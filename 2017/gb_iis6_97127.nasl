@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iis6_97127.nasl 9515 2018-04-17 14:42:05Z cfischer $
+# $Id: gb_iis6_97127.nasl 11008 2018-08-16 13:26:16Z cfischer $
 #
 # Microsoft Internet Information Services Buffer Overflow Vulnerability
 #
@@ -32,10 +32,10 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.140228");
   script_bugtraq_id(97127);
   script_cve_id("CVE-2017-7269");
-  script_version("$Revision: 9515 $");
+  script_version("$Revision: 11008 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-17 16:42:05 +0200 (Tue, 17 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-03-30 17:46:17 +0200 (Thu, 30 Mar 2017)");
   script_name("Microsoft Internet Information Services Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -80,11 +80,12 @@ if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
 if( vers != "6.0" ) exit( 99 );
 
+useragent = get_http_user_agent();
 host = http_host_name(  port:port );
 
 req  = 'OPTIONS / HTTP/1.1\r\n';
 req += 'Host: ' + host + '\r\n';
-req += 'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n';
+req += 'User-Agent: ' + useragent + '\r\n';
 req += '\r\n';
 
 res_1 = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );

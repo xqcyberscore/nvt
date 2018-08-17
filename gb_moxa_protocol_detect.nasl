@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moxa_protocol_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
+# $Id: gb_moxa_protocol_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Moxa Management Protocol Detection
 #
@@ -27,27 +27,27 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106693");
- script_version("$Revision: 10905 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2017-03-24 14:13:08 +0700 (Fri, 24 Mar 2017)");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.106693");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-24 14:13:08 +0700 (Fri, 24 Mar 2017)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_name("Moxa Management Protocol Detection");
+  script_name("Moxa Management Protocol Detection");
 
- script_tag(name:"summary", value:"Moxa's proprietary management protocol is running on UDP port 4800 at this
+  script_tag(name:"summary", value:"Moxa's proprietary management protocol is running on UDP port 4800 at this
 host.
 
 It is used for Broadcast, Monitor, Get current settings, RealCOM Port mapping.");
 
- script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
 
- script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
- script_family("Service detection");
- script_require_udp_ports(4800);
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_family("Service detection");
+  script_require_udp_ports(4800);
 
  exit(0);
 }

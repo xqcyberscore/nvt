@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_testlink_54990.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_testlink_54990.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # TestLink Multiple Security Vulnerabilities
 #
@@ -29,28 +29,28 @@ CPE = "cpe:/a:teamst:testlink";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103536");
+  script_oid("1.3.6.1.4.1.25623.1.0.103536");
  script_bugtraq_id(54990);
- script_tag(name:"cvss_base", value:"7.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:P/A:N");
- script_version("$Revision: 10941 $");
+  script_tag(name:"cvss_base", value:"7.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:P/A:N");
+  script_version("$Revision: 11003 $");
 
- script_name("TestLink Multiple Security Vulnerabilities");
+  script_name("TestLink Multiple Security Vulnerabilities");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54990");
- script_xref(name:"URL", value:"http://www.teamst.org/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54990");
+  script_xref(name:"URL", value:"http://www.teamst.org/");
 
- script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
- script_tag(name:"creation_date", value:"2012-08-15 10:10:37 +0200 (Wed, 15 Aug 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_tag(name:"solution_type", value:"WillNotFix");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("testlink_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("testlink/installed");
- script_tag(name:"summary", value:"TestLink is prone to multiple security vulnerabilities, including:
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-08-15 10:10:37 +0200 (Wed, 15 Aug 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("testlink_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("testlink/installed");
+  script_tag(name:"summary", value:"TestLink is prone to multiple security vulnerabilities, including:
 
 1. An arbitrary file-upload vulnerability
 
@@ -64,7 +64,7 @@ sensitive information, upload and execute arbitrary server side code
 in the context of the web server, or perform unauthorized actions on
 behalf of a user in the context of the site. This may aid in launching
 further attacks.");
- script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features,
 remove the product or replace the product by another one.");
  exit(0);

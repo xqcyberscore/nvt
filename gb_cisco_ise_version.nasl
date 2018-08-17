@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ise_version.nasl 10894 2018-08-10 13:09:25Z cfischer $
+# $Id: gb_cisco_ise_version.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Cisco Identity Services Engine Detection
 #
@@ -27,23 +27,23 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105469");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 10894 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:09:25 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2015-12-01 13:44:48 +0100 (Tue, 01 Dec 2015)");
- script_name("Cisco Identity Services Engine Detection");
+  script_oid("1.3.6.1.4.1.25623.1.0.105469");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2015-12-01 13:44:48 +0100 (Tue, 01 Dec 2015)");
+  script_name("Cisco Identity Services Engine Detection");
 
- script_tag(name:"summary", value:"This script performs ssh based detection of Cisco Identity Services Engine");
+  script_tag(name:"summary", value:"This script performs ssh based detection of Cisco Identity Services Engine");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_category(ACT_GATHER_INFO);
- script_family("Product detection");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("cisco_ise/show_ver");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("cisco_ise/show_ver");
  exit(0);
 }
 

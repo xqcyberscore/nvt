@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: global_settings.nasl 10691 2018-07-31 13:09:21Z cfischer $
+# $Id: global_settings.nasl 11000 2018-08-16 09:46:21Z cfischer $
 #
 # Global variable settings
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12288");
-  script_version("$Revision: 10691 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-31 15:09:21 +0200 (Tue, 31 Jul 2018) $");
+  script_version("$Revision: 11000 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 11:46:21 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -66,6 +66,7 @@ if(description)
 }
 
 include("network_func.inc");
+include("misc_func.inc");
 
 opt = script_get_preference( "Service discovery on non-default UDP ports (slow)" );
 if( opt == "yes" ) set_kb_item( name:"global_settings/non-default_udp_service_discovery", value:TRUE );
@@ -109,7 +110,12 @@ if( ! opt ) opt = "Mixed (RFC 1918)";
 set_kb_item( name:"global_settings/network_type", value:opt );
 
 opt = script_get_preference( "HTTP User-Agent" );
-if( ! opt ) opt = "Mozilla/5.0 [en] (X11, U; OpenVAS " + OPENVAS_VERSION + ")";
+if( ! opt ) {
+  if( OPENVAS_VERSION )
+    opt = "Mozilla/5.0 [en] (X11, U; " + get_vt_string() + " " + OPENVAS_VERSION + ")";
+  else
+    opt = "Mozilla/5.0 [en] (X11, U; " + get_vt_string() + ")";
+}
 set_kb_item( name:"global_settings/http_user_agent", value:opt );
 set_kb_item( name:"http/user-agent", value:opt );
 

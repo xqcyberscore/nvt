@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 10898 2018-08-10 13:38:13Z cfischer $
+# $Id: find_service1.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 10898 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -491,9 +491,7 @@ if( "IOR:010000002600000049444c3a536f70686f734d6573736167696e672f4d6573736167655
   exit( 0 );
 }
 
-# Check_MK Agent
 if( "<<<check_mk>>>" >< r || "<<<uptime>>>" >< r || "<<<services>>>" >< r || "<<<mem>>>" >< r ) {
-  # Check_MK Agents seems to not answer to repeated requests in a short amount of time so saving the response here for later processing.
   replace_kb_item( name:"check_mk_agent/banner/" + port, value:r );
   register_service( port:port, proto:"check_mk_agent", message:"A Check_MK Agent seems to be running on this port." );
   log_message( port:port, data:"A Check_MK Agent seems to be running on this port." );

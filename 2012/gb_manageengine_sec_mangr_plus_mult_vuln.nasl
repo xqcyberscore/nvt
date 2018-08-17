@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_sec_mangr_plus_mult_vuln.nasl 10005 2018-05-29 13:54:41Z cfischer $
+# $Id: gb_manageengine_sec_mangr_plus_mult_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
 #
 # Zoho ManageEngine Security Manager Plus Multiple Vulnerabilities
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802483");
-  script_version("$Revision: 10005 $");
+  script_version("$Revision: 11003 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 15:54:41 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-10-22 13:33:50 +0530 (Mon, 22 Oct 2012)");
   script_name("Zoho ManageEngine Security Manager Plus Multiple Vulnerabilities");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/22092/");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/22093/");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/22094/");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/117520/manageenginesmp-sql.txt");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/117522/manageengine-sql.rb.txt");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/117519/manageenginemp-traversal.txt");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/22092/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/22093/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/22094/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/117520/manageenginesmp-sql.txt");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/117522/manageengine-sql.rb.txt");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/117519/manageenginemp-traversal.txt");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -48,14 +48,14 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to perform
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to perform
 directory traversal attacks, read/download the arbitrary files and to manipulate
 SQL queries by injecting arbitrary SQL code.
 
 Impact Level: Application");
-  script_tag(name : "affected" , value : "ManageEngine Security Manager Plus version 5.5 build 5505
+  script_tag(name:"affected", value:"ManageEngine Security Manager Plus version 5.5 build 5505
 and prior");
-  script_tag(name : "insight" , value : "Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 
 - An input passed to the 'f' parameter via 'store' script is not properly
   sanitised before being used. This allows to download the complete database
@@ -64,7 +64,7 @@ and prior");
 
 - The SQL injection is possible on the 'Advanced Search', the input is not
   validated correctly.");
-  script_tag(name : "solution" , value : "Apply the patch from the below link or update to latest version,
+  script_tag(name:"solution", value:"Apply the patch from the below link or update to latest version,
 
 http://bonitas.zohocorp.com/4264259/scanfi/31May2012/SMP_Vul_fix.zip
 
@@ -73,10 +73,10 @@ For updates refer to http://www.manageengine.com/products/security-manager
 *****
 NOTE: Ignore this warning if above mentioned patch is installed.
 *****");
-  script_tag(name : "summary" , value : "This host is running Zoho ManageEngine Security Manager Plus
+  script_tag(name:"summary", value:"This host is running Zoho ManageEngine Security Manager Plus
 and is prone to multiple vulnerabilities.");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }

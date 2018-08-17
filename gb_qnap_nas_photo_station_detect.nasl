@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_nas_photo_station_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
+# $Id: gb_qnap_nas_photo_station_detect.nasl 11021 2018-08-17 07:48:11Z cfischer $
 #
 # QNAP QTS Photo Station Detection
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813164");
-  script_version("$Revision: 10915 $");
+  script_version("$Revision: 11021 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:48:11 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-03 19:51:43 +0530 (Thu, 03 May 2018)");
   script_name("QNAP QTS Photo Station Detection");
 
@@ -55,19 +55,15 @@ include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
-if(!qtsPort = get_http_port(default:80)){
-  exit(0);
-}
+qtsPort = get_http_port(default:80);
 
-dirs = make_list("/photo/", "/photo/gallery/", "/gallery/");
-
-foreach dir (dirs)
+foreach dir (make_list("/photo/", "/photo/gallery/", "/gallery/"))
 {
   req = http_get_req( url:dir, port:qtsPort, add_headers:make_array("Accept-Encoding", "gzip, deflate"));
   res = http_keepalive_send_recv(port:qtsPort, data:req);
 
-  ##Handle redirection
   if(res =~ "^HTTP/1.. 30.")
   {
     url = eregmatch(pattern: 'Location: ([^\r\n]+)', string: res);

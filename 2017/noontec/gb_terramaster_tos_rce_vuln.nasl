@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_terramaster_tos_rce_vuln.nasl 9425 2018-04-10 12:38:38Z cfischer $
+# $Id: gb_terramaster_tos_rce_vuln.nasl 11025 2018-08-17 08:27:37Z cfischer $
 #
 # TerraMaster TOS RCE Vulnerability
 #
@@ -27,20 +27,20 @@
 
 CPE = "cpe:/a:noontec:terramaster";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140376");
-  script_version("$Revision: 9425 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-10 14:38:38 +0200 (Tue, 10 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-09-19 12:13:21 +0700 (Tue, 19 Sep 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-09-19 12:13:21 +0700 (Tue, 19 Sep 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-9328");
 
-  script_tag(name: "qod_type", value: "exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("TerraMaster TOS RCE Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_terramaster_nas_detect.nasl");
   script_mandatory_keys("terramaster_nas/detected");
 
-  script_tag(name: "summary", value: "TerraMaster TOS is prone to a remote command execution vulnerability.");
+  script_tag(name:"summary", value:"TerraMaster TOS is prone to a remote command execution vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP POST request to upload a php file and checks if
-the 'id' command could be executed.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP POST request to upload a php file and checks if
+  the 'id' command could be executed.");
 
-  script_tag(name: "insight", value: "Shell metacharacter injection vulnerability in
-/usr/www/include/ajax/GetTest.php in TerraMaster TOS leads to remote code execution as root.");
+  script_tag(name:"insight", value:"Shell metacharacter injection vulnerability in
+  /usr/www/include/ajax/GetTest.php in TerraMaster TOS leads to remote code execution as root.");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker may execute arbitrary code as root.");
+  script_tag(name:"impact", value:"An unauthenticated attacker may execute arbitrary code as root.");
 
-  script_tag(name: "affected", value: "TerraMaster TOS prior to version 3.0.34.");
+  script_tag(name:"affected", value:"TerraMaster TOS prior to version 3.0.34.");
 
-  script_tag(name: "solution", value: "Update to version 3.0.34 or later.");
+  script_tag(name:"solution", value:"Update to version 3.0.34 or later.");
 
-  script_xref(name: "URL", value: "https://gist.github.com/hybriz/63bbe2d963e531357aca353c74dd1ad5");
+  script_xref(name:"URL", value:"https://gist.github.com/hybriz/63bbe2d963e531357aca353c74dd1ad5");
 
   exit(0);
 }
@@ -73,6 +73,7 @@ the 'id' command could be executed.");
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);

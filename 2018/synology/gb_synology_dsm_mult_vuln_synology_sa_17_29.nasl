@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_dsm_mult_vuln_synology_sa_17_29.nasl 10696 2018-08-01 02:23:21Z ckuersteiner $
+# $Id: gb_synology_dsm_mult_vuln_synology_sa_17_29.nasl 11022 2018-08-17 07:57:39Z cfischer $
 #
 # Synology DiskStation Manager (DSM) Multiple Vulnerabilities(Synology-SA-17:29)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/o:synology:dsm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813737");
-  script_version("$Revision: 10696 $");
+  script_version("$Revision: 11022 $");
   script_cve_id("CVE-2017-9553", "CVE-2017-9554");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 04:23:21 +0200 (Wed, 01 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-31 12:20:00 +0530 (Tue, 31 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Synology DiskStation Manager (DSM) Multiple Vulnerabilities(Synology-SA-17:29)");
@@ -75,12 +75,14 @@ if(description)
   script_dependencies("gb_synology_dsm_detect.nasl");
   script_mandatory_keys("synology_dsm/installed");
   script_require_ports("Services/www", 5000, 5001);
+
   exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 if(!dsmPort = get_app_port(cpe:CPE)){
   exit(0);

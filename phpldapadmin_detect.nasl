@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpldapadmin_detect.nasl 10929 2018-08-11 11:39:44Z cfischer $
+# $Id: phpldapadmin_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # phpLDAPadmin Detection
 #
@@ -26,25 +26,25 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100395");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 10929 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-11 13:39:44 +0200 (Sat, 11 Aug 2018) $");
- script_tag(name:"creation_date", value:"2009-12-15 19:11:56 +0100 (Tue, 15 Dec 2009)");
- script_tag(name:"cvss_base", value:"0.0");
- script_name("phpLDAPadmin Detection");
+  script_oid("1.3.6.1.4.1.25623.1.0.100395");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2009-12-15 19:11:56 +0100 (Tue, 15 Dec 2009)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_name("phpLDAPadmin Detection");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_category(ACT_GATHER_INFO);
- script_family("Product detection");
- script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_xref(name:"URL", value:"http://phpldapadmin.sourceforge.net/");
+  script_category(ACT_GATHER_INFO);
+  script_family("Product detection");
+  script_copyright("This script is Copyright (C) 2009 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_xref(name:"URL", value:"http://phpldapadmin.sourceforge.net/");
 
- script_tag(name:"summary", value:"This host is running phpLDAPadmin, a web-based LDAP administration
+  script_tag(name:"summary", value:"This host is running phpLDAPadmin, a web-based LDAP administration
 tool for managing LDAP server.");
 
  exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eXtplorer_57058.nasl 6755 2017-07-18 12:55:56Z cfischer $
+# $Id: gb_eXtplorer_57058.nasl 11007 2018-08-16 13:20:25Z mmartin $
 #
 # eXtplorer 'ext_find_user()' Function Authentication Bypass Vulnerability
 #
@@ -24,44 +24,38 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-tag_summary = "eXtplorer is prone to an authentication-bypass vulnerability.
-
-Remote attackers can exploit this issue to bypass the authentication
-mechanism and gain unauthorized access.
-
-eXtplorer 2.1.2, 2.1.1, and 2.1.0 are vulnerable.";
-
-
-tag_solution = "Updates are available; please see the references for more information.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103639";
 CPE = 'cpe:/a:extplorer:extplorer';
 
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_bugtraq_id(57058);
- script_version ("$Revision: 6755 $");
- script_tag(name:"cvss_base", value:"9.7");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.103639");
+  script_bugtraq_id(57058);
+  script_version("$Revision: 11007 $");
+  script_tag(name:"cvss_base", value:"9.7");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:P");
 
- script_name("eXtplorer 'ext_find_user()' Function Authentication Bypass Vulnerability");
+  script_name("eXtplorer 'ext_find_user()' Function Authentication Bypass Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/57058");
- script_xref(name : "URL" , value : "http://extplorer.net/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57058");
+  script_xref(name:"URL", value:"http://extplorer.net/");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
- script_tag(name:"creation_date", value:"2013-01-10 12:43:09 +0100 (Thu, 10 Jan 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_eXtplorer_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("eXtplorer/installed");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:20:25 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-01-10 12:43:09 +0100 (Thu, 10 Jan 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_eXtplorer_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("eXtplorer/installed");
+  script_tag(name:"solution", value:"Updates are available; please see the references for more information.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"eXtplorer is prone to an authentication-bypass vulnerability.
+
+Remote attackers can exploit this issue to bypass the authentication
+mechanism and gain unauthorized access.
+
+eXtplorer 2.1.2, 2.1.1, and 2.1.0 are vulnerable.");
  exit(0);
 }
 
@@ -69,8 +63,8 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if(!port = get_app_port(cpe:CPE))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
 url = dir + "/index.php";
 req = http_get(item:url, port:port);
@@ -78,7 +72,7 @@ result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
 if(!egrep(pattern:"<title>.*eXtplorer</title>", string:result))exit(0);
 
-cookie = eregmatch(pattern:"Set-Cookie: eXtplorer=([^; ]+);", string:result);   
+cookie = eregmatch(pattern:"Set-Cookie: eXtplorer=([^; ]+);", string:result);
 if(isnull(cookie[1]))exit(0);
 
 co = cookie[1];
@@ -98,14 +92,14 @@ req = string("POST ",dir,"/index.php HTTP/1.1\r\n",
              "Cache-Control: no-cache\r\n",
              "\r\n",
              ex);
-   
+
 result = http_send_recv(port:port, data:req, bodyonly:FALSE);
 
 if("'Login successful!" >< result) {
-  
+
   security_message(port:port);
   exit(0);
 
-}  
+}
 
 exit(0);

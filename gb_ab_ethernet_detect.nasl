@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ab_ethernet_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
+# $Id: gb_ab_ethernet_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # AB Ethernet Protocol (CSP) Detection
 #
@@ -27,30 +27,30 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.140694");
- script_version("$Revision: 10908 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2018-01-19 15:48:31 +0700 (Fri, 19 Jan 2018)");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.140694");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-01-19 15:48:31 +0700 (Fri, 19 Jan 2018)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_name("AB Ethernet Protocol (CSP) Detection");
+  script_name("AB Ethernet Protocol (CSP) Detection");
 
- script_tag(name:"summary", value:"An AB Ethernet (CSP) Service is running at this host.
+  script_tag(name:"summary", value:"An AB Ethernet (CSP) Service is running at this host.
 
 AB Ethernet or CSP is used by Allen Bradley inside of its software products such as RSLinx to  communicate to the
 PLCs.");
 
- script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
 
- script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
- script_family("Service detection");
- script_dependencies("find_service.nasl");
- script_require_ports("Services/unknown", 2222);
+  script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
+  script_family("Service detection");
+  script_dependencies("find_service.nasl");
+  script_require_ports("Services/unknown", 2222);
 
- script_xref(name:"URL", value:"http://ab.rockwellautomation.com/");
+  script_xref(name:"URL", value:"http://ab.rockwellautomation.com/");
 
  exit(0);
 }

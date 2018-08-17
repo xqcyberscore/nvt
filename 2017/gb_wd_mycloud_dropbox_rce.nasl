@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wd_mycloud_dropbox_rce.nasl 7942 2017-11-30 11:48:20Z cfischer $
+# $Id: gb_wd_mycloud_dropbox_rce.nasl 11025 2018-08-17 08:27:37Z cfischer $
 #
 # WD MyCloud Products Dropbox App Remote Command Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:western_digital:mycloud_nas';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108246");
-  script_version("$Revision: 7942 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-30 12:48:20 +0100 (Thu, 30 Nov 2017) $");
+  script_version("$Revision: 11025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-09-26 08:00:00 +0200 (Tue, 26 Sep 2017)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -64,6 +64,7 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );

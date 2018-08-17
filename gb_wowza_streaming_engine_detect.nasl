@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wowza_streaming_engine_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
+# $Id: gb_wowza_streaming_engine_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Wowza Streaming Engine Detection
 #
@@ -27,29 +27,29 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106224");
- script_version("$Revision: 10888 $");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2016-09-07 11:27:17 +0700 (Wed, 07 Sep 2016)");
- script_tag(name:"cvss_base", value:"0.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.106224");
+  script_version("$Revision: 11015 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-07 11:27:17 +0700 (Wed, 07 Sep 2016)");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_name("Wowza Streaming Engine Detection");
+  script_name("Wowza Streaming Engine Detection");
 
- script_tag(name:"summary", value:"Detection of Wowza Streaming Engine
+  script_tag(name:"summary", value:"Detection of Wowza Streaming Engine
 
 The script attempts to identify Wowza Streaming Engine via RSTP banner to extract the version number.");
 
- script_category(ACT_GATHER_INFO);
+  script_category(ACT_GATHER_INFO);
 
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_family("Product detection");
- script_dependencies("rtsp_detect.nasl");
- script_require_ports("Services/rtsp", 554);
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Product detection");
+  script_dependencies("rtsp_detect.nasl");
+  script_require_ports("Services/rtsp", 554);
 
- script_xref(name:"URL", value:"https://www.wowza.com/products/streaming-engine");
+  script_xref(name:"URL", value:"https://www.wowza.com/products/streaming-engine");
 
  exit(0);
 }

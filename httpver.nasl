@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: httpver.nasl 10947 2018-08-14 08:11:02Z cfischer $
+# $Id: httpver.nasl 11006 2018-08-16 12:21:56Z cfischer $
 #
 # HTTP-Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100034");
-  script_version("$Revision: 10947 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 10:11:02 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 11006 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 14:21:56 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-03-10 08:40:52 +0100 (Tue, 10 Mar 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -83,9 +83,10 @@ host_plain = http_host_name( dont_add_port:TRUE );
 soc = http_open_socket( port );
 if( ! soc ) exit( 0 );
 
+useragent = get_http_user_agent();
 req = string( "GET / HTTP/1.1\r\n",
               "Host: ", host, "\r\n",
-              "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+              "User-Agent: ", useragent, "\r\n",
               "Accept: */*\r\n",
               "Connection: close\r\n",
               "\r\n" );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_unified_commu_manager_detect.nasl 10890 2018-08-10 12:30:06Z cfischer $
+# $Id: gb_cisco_unified_commu_manager_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
 #
 # Cisco Unified Communications Manager Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805098");
-  script_version("$Revision: 10890 $");
+  script_version("$Revision: 11015 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-08-31 15:17:33 +0530 (Mon, 31 Aug 2015)");
   script_name("Cisco Unified Communications Manager Webinterface Detection");
 
@@ -47,10 +47,6 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   exit(0);
 }
-
-##
-### Code Starts Here
-##
 
 include("http_func.inc");
 include("http_keepalive.inc");

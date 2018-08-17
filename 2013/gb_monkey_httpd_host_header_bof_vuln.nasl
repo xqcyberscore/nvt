@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monkey_httpd_host_header_bof_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_monkey_httpd_host_header_bof_vuln.nasl 11007 2018-08-16 13:20:25Z mmartin $
 #
 # Monkey HTTPD Host Header Buffer Overflow Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803711");
-  script_version("$Revision: 6698 $");
+  script_version("$Revision: 11007 $");
   script_cve_id("CVE-2013-3843");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:20:25 +0200 (Thu, 16 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-05 11:55:02 +0530 (Wed, 05 Jun 2013)");
   script_name("Monkey HTTPD Host Header Buffer Overflow Vulnerability");
 
@@ -53,10 +53,7 @@ if(description)
   script_tag(name:"affected", value:"Monkey HTTPD vesion 1.2.0 and prior.");
   script_tag(name:"insight", value:"The flaw is due to an error when handling certain Long requests
   sent via 'Host' field, which can be exploited to cause a denial of service or remote code execution.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is running Monkey HTTPD and is prone to buffer overflow
   vulnerability.");
 
@@ -74,14 +71,12 @@ req = "";
 res = "";
 port = "";
 
-## Get HTTP Port
 port = get_http_port(default:2001);
 
 banner = get_http_banner(port:port);
 
 if(http_is_dead(port:port)) exit(0);
 
-## Confirm the application before trying exploit
 if("Server: Monkey" >!< banner){
   exit(0);
 }
@@ -96,7 +91,6 @@ res = http_send_recv(port:port, data:req);
 req = http_get(item:"/",  port:port);
 res = http_keepalive_send_recv(port:port, data:req);
 
-## Confirm the server is dead or not
 if(!res && http_is_dead(port:port))
 {
   security_message(port:port);

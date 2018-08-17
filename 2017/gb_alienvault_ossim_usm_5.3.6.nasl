@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alienvault_ossim_usm_5.3.6.nasl 9436 2018-04-11 09:39:34Z cfischer $
+# $Id: gb_alienvault_ossim_usm_5.3.6.nasl 11025 2018-08-17 08:27:37Z cfischer $
 #
 # AlienVault OSSIM/USM Remote Command Execution
 #
@@ -25,17 +25,17 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140234");
-  script_version("$Revision: 9436 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-11 11:39:34 +0200 (Wed, 11 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2017-04-03 17:33:13 +0200 (Mon, 03 Apr 2017)");
+  script_version("$Revision: 11025 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:27:37 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2017-04-03 17:33:13 +0200 (Mon, 03 Apr 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
-  script_tag(name: "qod_type", value: "remote_vul");
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("AlienVault OSSIM/USM Remote Command Execution");
 
@@ -47,17 +47,17 @@ if (description)
   script_require_ports("Services/www", 40011);
   script_mandatory_keys("OSSIM/installed");
 
-  script_tag(name: "summary", value: "AlienVault OSSIM and USM are pront to a Remote Command Execution vulnerability.");
+  script_tag(name:"summary", value:"AlienVault OSSIM and USM are pront to a Remote Command Execution vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP POST request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP POST request and checks the response.");
 
-  script_tag(name: "insight", value: "The vulnerability can be found in the default installation without any plugins. The function get_fqdn do not validate user input.");
+  script_tag(name:"insight", value:"The vulnerability can be found in the default installation without any plugins. The function get_fqdn do not validate user input.");
 
-  script_tag(name: "solution", value: "Update to 5.3.6 or newer versions.");
+  script_tag(name:"solution", value:"Update to 5.3.6 or newer versions.");
   script_tag(name:"affected", value:"The vulnerability was introduced in the v5.3.4 update and affects only v5.3.4 and v5.3.5 of USM Appliance and OSSIM.");
 
-  script_xref(name: "URL", value: "https://blogs.securiteam.com/index.php/archives/3085");
-  script_xref(name: "URL", value: "https://www.alienvault.com/forums/discussion/8415/alienvault-v5-3-6-hotfix-important-update");
+  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3085");
+  script_xref(name:"URL", value:"https://www.alienvault.com/forums/discussion/8415/alienvault-v5-3-6-hotfix-important-update");
 
   exit(0);
 }
@@ -65,6 +65,7 @@ if (description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 cpe_list = make_list( 'cpe:/a:alienvault:open_source_security_information_management', 'cpe:/a:alienvault:unified_security_management' );
 
