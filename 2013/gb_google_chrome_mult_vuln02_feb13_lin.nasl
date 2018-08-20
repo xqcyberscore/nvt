@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803401");
-  script_version("$Revision: 11041 $");
+  script_version("$Revision: 11045 $");
   script_cve_id("CVE-2013-0839", "CVE-2013-0840", "CVE-2013-0841", "CVE-2013-0842");
   script_bugtraq_id(57502);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-19 21:29:09 +0200 (Sun, 19 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-02-04 11:39:40 +0530 (Mon, 04 Feb 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Feb2013 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51935");
@@ -42,22 +42,33 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
-  script_dependencies("gb_google_chrome_detect_lin.nasl", "ssh_authorization_init.nasl");
-  script_require_keys("Google-Chrome/Linux/Ver");
+  script_dependencies("gb_google_chrome_detect_lin.nasl");
+  script_mandatory_keys("Google-Chrome/Linux/Ver");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
   restrictions, execute arbitrary code in the context of the browser or
   cause a denial of service or possibly have unspecified other impact.
+
   Impact Level: System/Application");
+
   script_tag(name:"affected", value:"Google Chrome versions prior to 24.0.1312.56 on Linux");
+
   script_tag(name:"insight", value:"Multiple flaws due to
+
   - Referring freed memory in canvas font handling.
+
   - Missing URL validation when opening new windows.
+
   - Unchecked array index in content blocking functionality.
+
   - Not properly handling %00 characters in path-names.");
+
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 24.0.1312.56 or later,
   For updates refer to http://www.google.com/chrome");
+
   script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");
+
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4229.nasl 10233 2018-06-18 07:03:01Z cfischer $
+# $Id: deb_4229.nasl 11044 2018-08-18 15:12:40Z cfischer $
 #
 # Auto-generated from advisory DSA 4229-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704229");
-  script_version("$Revision: 10233 $");
+  script_version("$Revision: 11044 $");
   script_cve_id("CVE-2018-10811", "CVE-2018-5388");
   script_name("Debian Security Advisory DSA 4229-1 (strongswan - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 09:03:01 +0200 (Mon, 18 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-18 17:12:40 +0200 (Sat, 18 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-14 00:00:00 +0200 (Thu, 14 Jun 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

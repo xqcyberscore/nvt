@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3596_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_3596_2.nasl 11044 2018-08-18 15:12:40Z cfischer $
 #
 # Ubuntu Update for firefox USN-3596-2
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843501");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11044 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-18 17:12:40 +0200 (Sat, 18 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-04-07 06:15:50 +0200 (Sat, 07 Apr 2018)");
   script_cve_id("CVE-2018-5125", "CVE-2018-5126", "CVE-2018-5127", "CVE-2018-5128",
                 "CVE-2018-5129", "CVE-2018-5130", "CVE-2018-5136", "CVE-2018-5137",
                 "CVE-2018-5140", "CVE-2018-5141", "CVE-2018-5142", "CVE-2018-5131",
                 "CVE-2018-5132", "CVE-2018-5134", "CVE-2018-5135", "CVE-2018-5133",
                 "CVE-2018-5143");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for firefox USN-3596-2");
   script_tag(name:"summary", value:"Check the version of firefox");

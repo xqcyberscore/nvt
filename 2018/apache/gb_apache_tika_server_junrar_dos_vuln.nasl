@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tika_server_junrar_dos_vuln.nasl 10299 2018-06-22 11:50:53Z santu $
+# $Id: gb_apache_tika_server_junrar_dos_vuln.nasl 11044 2018-08-18 15:12:40Z cfischer $
 #
 # Apache Tika Server Junrar Denial of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tika";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813536");
-  script_version("$Revision: 10299 $");
+  script_version("$Revision: 11044 $");
   script_cve_id("CVE-2018-12418");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-22 13:50:53 +0200 (Fri, 22 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-18 17:12:40 +0200 (Sat, 18 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-20 16:32:04 +0530 (Wed, 20 Jun 2018)");
   script_name("Apache Tika Server Junrar Denial of Service Vulnerability");
 

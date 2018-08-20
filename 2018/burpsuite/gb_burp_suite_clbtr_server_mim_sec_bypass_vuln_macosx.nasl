@@ -1,6 +1,6 @@
 ################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_burp_suite_clbtr_server_mim_sec_bypass_vuln_macosx.nasl 10849 2018-08-09 07:20:42Z santu $
+# $Id: gb_burp_suite_clbtr_server_mim_sec_bypass_vuln_macosx.nasl 11044 2018-08-18 15:12:40Z cfischer $
 #
 # Burp Suite 'Collaborator server certificat' Security Bypass Vulnerability (Mac OS X)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:portswigger:burp_suite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813810");
-  script_version("$Revision: 10849 $");
+  script_version("$Revision: 11044 $");
   script_cve_id("CVE-2018-10377");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 09:20:42 +0200 (Thu, 09 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-18 17:12:40 +0200 (Sat, 18 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-02 13:11:05 +0530 (Thu, 02 Aug 2018)");
   script_name("Burp Suite 'Collaborator server certificat' Security Bypass Vulnerability (Mac OS X)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4141.nasl 9131 2018-03-19 08:57:13Z cfischer $
+# $Id: deb_4141.nasl 11044 2018-08-18 15:12:40Z cfischer $
 #
 # Auto-generated from advisory DSA 4141-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704141");
-  script_version("$Revision: 9131 $");
+  script_version("$Revision: 11044 $");
   script_cve_id("CVE-2018-5147");
   script_name("Debian Security Advisory DSA 4141-1 (libvorbisidec - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-19 09:57:13 +0100 (Mon, 19 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-18 17:12:40 +0200 (Sat, 18 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-03-16 00:00:00 +0100 (Fri, 16 Mar 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

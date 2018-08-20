@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_xgroupcommand_dos_vuln.nasl 10294 2018-06-22 06:20:56Z santu $
+# $Id: gb_redis_xgroupcommand_dos_vuln.nasl 11044 2018-08-18 15:12:40Z cfischer $
 #
 # Redis 'xgroupCommand' function Denial-of-Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:redis:redis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813440");
-  script_version("$Revision: 10294 $");
+  script_version("$Revision: 11044 $");
   script_cve_id("CVE-2018-12453");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-22 08:20:56 +0200 (Fri, 22 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-18 17:12:40 +0200 (Sat, 18 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-18 17:33:41 +0530 (Mon, 18 Jun 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Redis 'xgroupCommand' function Denial-of-Service Vulnerability");

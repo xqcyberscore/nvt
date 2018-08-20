@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_6e759af8fb_python-prometheus_client_fc28.nasl 10324 2018-06-26 07:40:01Z santu $
+# $Id: gb_fedora_2018_6e759af8fb_python-prometheus_client_fc28.nasl 11044 2018-08-18 15:12:40Z cfischer $
 #
 # Fedora Update for python-prometheus_client FEDORA-2018-6e759af8fb
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874733");
-  script_version("$Revision: 10324 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 09:40:01 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 11044 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-18 17:12:40 +0200 (Sat, 18 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-24 06:01:12 +0200 (Sun, 24 Jun 2018)");
   script_cve_id("CVE-2018-12291");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for python-prometheus_client FEDORA-2018-6e759af8fb");
   script_tag(name:"summary", value:"Check the version of python-prometheus_client");

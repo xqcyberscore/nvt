@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 11006 2018-08-16 12:21:56Z cfischer $
+# $Id: sw_http_os_detection.nasl 11046 2018-08-19 19:51:19Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 11006 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 14:21:56 +0200 (Thu, 16 Aug 2018) $");
+  script_version("$Revision: 11046 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-19 21:51:19 +0200 (Sun, 19 Aug 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -1147,8 +1147,8 @@ function check_default_page( port ) {
     # CUPS is running only on MacOS and other UNIX-like operating systems
     if( check = eregmatch( string:buf, pattern:"<TITLE>(Forbidden|Home|Not Found|Bad Request) - CUPS.*</TITLE>", icase:TRUE ) ) {
       register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:check[0], desc:SCRIPT_DESC, runs_key:"unixoide" );
+      return;
     }
-    return;
   }
 
   # TODO: There might be more of such default pages for other Distros...
