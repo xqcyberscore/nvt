@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln_win_feb12.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_adobe_shockwave_player_mult_vuln_win_feb12.nasl 11058 2018-08-20 14:18:06Z asteins $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities - Feb 2012 (Windows)
 #
@@ -29,65 +29,56 @@
 
 CPE = "cpe:/a:adobe:shockwave_player";
 
-tag_impact = "Successful exploitation will allow attackers to cause denial of service or
-  execute arbitrary code by tricking a user into visiting a specially crafted
-  web page.
-  Impact Level: System/Application";
-tag_affected = "Adobe Shockwave Player Versions 11.6.3.633 and prior on Windows.";
-tag_insight = "The flaws are due to memory corruptions errors in Shockwave 3D Asset
-  component when processing malformed file.";
-tag_solution = "Upgrade to Adobe Shockwave Player version 11.6.4.634 or later,
-  For updates refer to http://get.adobe.com/shockwave/otherversions/";
-tag_summary = "This host is installed with Adobe Shockwave Player and is prone
-  to multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802398");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11058 $");
   script_cve_id("CVE-2012-0757", "CVE-2012-0759", "CVE-2012-0760", "CVE-2012-0761",
                 "CVE-2012-0762", "CVE-2012-0763", "CVE-2012-0764", "CVE-2012-0766",
                 "CVE-2012-0758", "CVE-2012-0771");
   script_bugtraq_id(51999, 52006, 52000, 52001, 52002, 52003, 52004, 52005, 52007);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 16:18:06 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-02-17 12:55:43 +0530 (Fri, 17 Feb 2012)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities - Feb 2012 (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/47932/");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1026675");
-  script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-02.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/47932/");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1026675");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb12-02.html");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_dependencies("secpod_adobe_shockwave_player_detect.nasl");
   script_mandatory_keys("Adobe/ShockwavePlayer/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of service or
+  execute arbitrary code by tricking a user into visiting a specially crafted
+  web page.
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Adobe Shockwave Player Versions 11.6.3.633 and prior on Windows.");
+  script_tag(name:"insight", value:"The flaws are due to memory corruptions errors in Shockwave 3D Asset
+  component when processing malformed file.");
+  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player version 11.6.4.634 or later,
+  For updates refer to http://get.adobe.com/shockwave/otherversions/");
+  script_tag(name:"summary", value:"This host is installed with Adobe Shockwave Player and is prone
+  to multiple vulnerabilities.");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variables Initialization
-vers = "";
-
 infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE );
 vers = infos['version'];
 path = infos['location'];
 
 
-## Check for Adobe Shockwave Player versions prior to 11.6.4.634
 if(version_is_less(version:vers, test_version:"11.6.4.634"))
 {
   report = report_fixed_ver(installed_version:vers, fixed_version:"11.6.4.634", install_path:path);
   security_message(data:report);
   exit(0);
 }
-exit(0);  
+exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_bigip_ssh_root_auth_bypass.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_f5_bigip_ssh_root_auth_bypass.nasl 11057 2018-08-20 13:59:30Z asteins $
 #
 # F5 BIG-IP remote root authentication bypass Vulnerability
 #
@@ -25,45 +25,46 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "A platform-specific remote root access vulnerability has been discovered that may
-allow a remote user to gain privileged access to affected systems using SSH.
-
-The vulnerability is caused by a publicly known SSH private key for the root user
-which is present on all vulnerable appliances.
-
-The following platforms are affected by this issue:
-
-    VIPRION B2100, B4100, and B4200
-    BIG-IP 520, 540, 1000, 2000, 2400, 5000, 5100, 1600, 3600, 3900, 6900, 8900, 8950, 11000, and 11050
-    BIG-IP Virtual Edition
-    Enterprise Manager 3000 and 4000";
-
-tag_solution = "Updates are available. See the References for more information.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103494");
- script_version ("$Revision: 9352 $");
- script_bugtraq_id(53897);
+  script_oid("1.3.6.1.4.1.25623.1.0.103494");
+  script_version("$Revision: 11057 $");
+  script_bugtraq_id(53897);
 
- script_name("F5 BIG-IP remote root authentication bypass Vulnerability");
- script_cve_id("CVE-2012-1493");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
- script_xref(name : "URL" , value : "https://www.trustmatta.com/advisories/MATTA-2012-002.txt");
- script_xref(name : "URL" , value : "http://support.f5.com/kb/en-us/solutions/public/13000/600/sol13600.html");
+  script_name("F5 BIG-IP remote root authentication bypass Vulnerability");
+  script_cve_id("CVE-2012-1493");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_xref(name:"URL", value:"https://www.trustmatta.com/advisories/MATTA-2012-002.txt");
+  script_xref(name:"URL", value:"http://support.f5.com/kb/en-us/solutions/public/13000/600/sol13600.html");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-06-14 13:35:33 +0200 (Thu, 14 Jun 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Gain a shell remotely");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("ssh_detect.nasl");
- script_require_ports("Services/ssh", 22);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:59:30 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-06-14 13:35:33 +0200 (Thu, 14 Jun 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Gain a shell remotely");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("ssh_detect.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_tag(name:"solution", value:"Updates are available. See the References for more information.");
+  script_tag(name:"summary", value:"A platform-specific remote root access vulnerability has been discovered that may
+allow a remote user to gain privileged access to affected systems using SSH.");
+
+  script_tag(name:"insight", value:"The vulnerability is caused by a publicly known SSH private key for the root user
+which is present on all vulnerable appliances.");
+
+  script_tag(name:"affected", value:"The following platforms are affected by this issue:
+
+    VIPRION B2100, B4100, and B4200
+
+
+    BIG-IP 520, 540, 1000, 2000, 2400, 5000, 5100, 1600, 3600, 3900, 6900, 8900, 8950, 11000, and 11050
+
+    BIG-IP Virtual Edition
+
+    Enterprise Manager 3000 and 4000");
+  exit(0);
 }
 
 include("ssh_func.inc");
@@ -104,8 +105,8 @@ if(login == 0) {
     security_message(port:port);
     close(soc);
     exit(0);
-  }  
+  }
 
-}  
+}
 
 close(soc);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sourcefabric_newscoop_52941.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_sourcefabric_newscoop_52941.nasl 11049 2018-08-20 08:53:50Z asteins $
 #
 # Sourcefabric Newscoop Multiple Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -25,55 +25,52 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Sourcefabric Newscoop is prone to multiple cross-site scripting and
-SQL-injection vulnerabilities because it fails to properly sanitize
-user-supplied input before using it in dynamically generated content.
-
-Exploiting these issues could allow an attacker to steal cookie-
-based authentication credentials, compromise the application,
-access or modify data, or exploit latent vulnerabilities in the
-underlying database.
-
-Sourcefabric Newscoop 3.5.4 is vulnerable; prior versions may also
-be affected.";
-
-tag_solution = "Updates are available. Please see the references for more details.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103461");
- script_bugtraq_id(52941);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 9352 $");
- script_cve_id("CVE-2012-1934");
- script_name("Sourcefabric Newscoop Multiple Cross Site Scripting and SQL Injection Vulnerabilities");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52941");
- script_xref(name : "URL" , value : "http://dev.sourcefabric.org/browse/CS-4184");
- script_xref(name : "URL" , value : "http://dev.sourcefabric.org/browse/CS-4183");
- script_xref(name : "URL" , value : "http://dev.sourcefabric.org/browse/CS-4182");
- script_xref(name : "URL" , value : "http://www.sourcefabric.org/en/products/newscoop_release/570/Newscoop-352-is-out!.htm");
- script_xref(name : "URL" , value : "http://dev.sourcefabric.org/browse/CS-4181");
- script_xref(name : "URL" , value : "http://www.sourcefabric.org/en/newscoop/latestrelease/1141/Newscoop-355-and-Newscoop-4-RC4-security-releases.htm");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-04-10 10:02:36 +0200 (Tue, 10 Apr 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_oid("1.3.6.1.4.1.25623.1.0.103461");
+  script_bugtraq_id(52941);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11049 $");
+  script_cve_id("CVE-2012-1934");
+  script_name("Sourcefabric Newscoop Multiple Cross Site Scripting and SQL Injection Vulnerabilities");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52941");
+  script_xref(name:"URL", value:"http://dev.sourcefabric.org/browse/CS-4184");
+  script_xref(name:"URL", value:"http://dev.sourcefabric.org/browse/CS-4183");
+  script_xref(name:"URL", value:"http://dev.sourcefabric.org/browse/CS-4182");
+  script_xref(name:"URL", value:"http://www.sourcefabric.org/en/products/newscoop_release/570/Newscoop-352-is-out!.htm");
+  script_xref(name:"URL", value:"http://dev.sourcefabric.org/browse/CS-4181");
+  script_xref(name:"URL", value:"http://www.sourcefabric.org/en/newscoop/latestrelease/1141/Newscoop-355-and-Newscoop-4-RC4-security-releases.htm");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-04-10 10:02:36 +0200 (Tue, 10 Apr 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more details.");
+  script_tag(name:"summary", value:"Sourcefabric Newscoop is prone to multiple cross-site scripting and
+SQL-injection vulnerabilities because it fails to properly sanitize
+user-supplied input before using it in dynamically generated content.");
 
- exit(0);
+  script_tag(name:"impact", value:"Exploiting these issues could allow an attacker to steal cookie-
+based authentication credentials, compromise the application,
+access or modify data, or exploit latent vulnerabilities in the
+underlying database.");
+
+  script_tag(name:"affected", value:"Sourcefabric Newscoop 3.5.4 is vulnerable, prior versions may also
+be affected.");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 

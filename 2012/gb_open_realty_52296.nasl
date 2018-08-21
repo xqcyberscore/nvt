@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_realty_52296.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_open_realty_52296.nasl 11049 2018-08-20 08:53:50Z asteins $
 #
 # Open Realty 'select_users_template' Parameter Local File Include Vulnerability
 #
@@ -28,15 +28,15 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103443");
- script_bugtraq_id(52296);
-  script_version("$Revision: 11003 $");
+  script_bugtraq_id(52296);
+  script_version("$Revision: 11049 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Open Realty 'select_users_template' Parameter Local File Include Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52296");
   script_xref(name:"URL", value:"http://www.open-realty.org/");
   script_xref(name:"URL", value:"http://yehg.net/lab/pr0js/advisories/%5Bopen-realty_2.5.8_2.x%5D_lfi");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-03-06 11:55:55 +0100 (Tue, 06 Mar 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

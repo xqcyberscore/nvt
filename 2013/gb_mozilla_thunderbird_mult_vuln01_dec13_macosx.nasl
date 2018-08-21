@@ -25,31 +25,27 @@
 ###############################################################################
 
 CPE = "cpe:/a:mozilla:thunderbird";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804044";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6079 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804044");
+  script_version("$Revision: 11056 $");
   script_cve_id("CVE-2013-5609", "CVE-2013-5613", "CVE-2013-5615", "CVE-2013-5616",
                 "CVE-2013-5618", "CVE-2013-6671", "CVE-2013-6673");
   script_bugtraq_id(64204, 64203, 64216, 64209, 64211, 64212, 64213);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-23 18:21:56 +0530 (Mon, 23 Dec 2013)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 Dec13 (Mac OS X)");
 
-  tag_summary =
-"This host is installed with Mozilla Thunderbird and is prone to multiple
-vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"Multiple flaws are due to,
+  script_tag(name:"summary", value:"This host is installed with Mozilla Thunderbird and is prone to multiple
+vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 24.2 or later,
+For updates refer to http://www.mozilla.com/en-US/thunderbird");
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 - Use-after-free vulnerability in the PresShell::DispatchSynthMouseMove
   function.
 - JavaScript implementation does not properly enforce certain
@@ -58,35 +54,18 @@ is vulnerable or not.";
   SubType function
 - unspecified error in nsGfxScrollFrameInner::IsLTR function.
 - Flaw is due to the program ignoring the setting to remove the trust for
-  extended validation (EV) capable root certificates.
-";
-
-  tag_impact =
-"Successful exploitation will allow attackers to conduct cross-site scripting
+  extended validation (EV) capable root certificates.");
+  script_tag(name:"affected", value:"Mozilla Thunderbird version before 24.2 on Mac OS X");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct cross-site scripting
 attacks, bypass certain security restrictions, disclose potentially sensitive
 information, and compromise a user's system.
 
-Impact Level: System/Application";
-
-  tag_affected =
-"Mozilla Thunderbird version before 24.2 on Mac OS X";
-
-  tag_solution =
-"Upgrade to Mozilla Thunderbird version 24.2 or later,
-For updates refer to http://www.mozilla.com/en-US/thunderbird";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+Impact Level: System/Application");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/56002");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2013/mfsa2013-104.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/56002");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2013/mfsa2013-104.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
@@ -99,17 +78,12 @@ For updates refer to http://www.mozilla.com/en-US/thunderbird";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-tbVer = "";
-
-## Get version
-if(!tbVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!tbVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:tbVer, test_version:"24.2"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

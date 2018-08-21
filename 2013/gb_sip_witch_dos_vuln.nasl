@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sip_witch_dos_vuln.nasl 4889 2016-12-30 13:13:50Z cfi $
+# $Id: gb_sip_witch_dos_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # SIP Witch Denial Of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803457");
-  script_version("$Revision: 4889 $");
+  script_version("$Revision: 11056 $");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 14:13:50 +0100 (Fri, 30 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-29 15:06:28 +0530 (Fri, 29 Mar 2013)");
   script_name("SIP Witch Denial Of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -52,10 +52,7 @@ if(description)
   script_tag(name:"insight", value:"Flaw is due to NULL pointer dereference in osip_lost.c of
   libosip2 library.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"This host is installed with SIP Witch and is prone to denial of
   service vulnerability.");
@@ -77,7 +74,6 @@ if( ! banner || "sipwitch" >!< banner ) exit( 0 );
 
 if( ! sip_alive( port:port, proto:proto ) ) exit( 0 );
 
-## Construct the bad request
 req = string(
   "PRACK sip:1 ()\r\n",
   "Via: SIP/2.0/", toupper( proto )," ", this_host(), ":", port, "\r\n",

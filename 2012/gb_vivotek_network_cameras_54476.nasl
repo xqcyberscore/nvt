@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vivotek_network_cameras_54476.nasl 10028 2018-05-30 13:13:04Z cfischer $
+# $Id: gb_vivotek_network_cameras_54476.nasl 11058 2018-08-20 14:18:06Z asteins $
 #
 # Vivotek Network Cameras Information Disclosure Vulnerability
 #
@@ -27,34 +27,37 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103521");
- script_bugtraq_id(54476);
- script_version ("$Revision: 10028 $");
- script_cve_id("CVE-2013-1594", "CVE-2013-1595", "CVE-2013-1596", "CVE-2013-1597", "CVE-2013-1598");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_name("Vivotek Network Cameras Information Disclosure Vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.103521");
+  script_bugtraq_id(54476);
+  script_version("$Revision: 11058 $");
+  script_cve_id("CVE-2013-1594", "CVE-2013-1595", "CVE-2013-1596", "CVE-2013-1597", "CVE-2013-1598");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_name("Vivotek Network Cameras Information Disclosure Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54476");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54476");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-30 15:13:04 +0200 (Wed, 30 May 2018) $");
- script_tag(name:"creation_date", value:"2012-07-17 14:10:13 +0200 (Tue, 17 Jul 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 16:18:06 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-07-17 14:10:13 +0200 (Tue, 17 Jul 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "summary" , value : "Vivotek Network Cameras are prone to an information-disclosure
+  script_tag(name:"summary", value:"Vivotek Network Cameras are prone to an information-disclosure
 vulnerability.");
 
- script_tag(name : "impact" , value : "Successful exploits will allow a remote attacker to gain access
+  script_tag(name:"impact", value:"Successful exploits will allow a remote attacker to gain access
 to sensitive information. Information obtained will aid in
 further attacks.");
 
- script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
 
  exit(0);
 }

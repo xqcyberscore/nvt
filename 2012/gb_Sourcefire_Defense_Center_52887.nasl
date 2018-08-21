@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_Sourcefire_Defense_Center_52887.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_Sourcefire_Defense_Center_52887.nasl 11052 2018-08-20 10:24:34Z asteins $
 #
 # Sourcefire Defense Center Multiple Security Vulnerabilities
 #
@@ -25,44 +25,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Sourcefire Defense Center is prone to multiple security
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103460");
+  script_bugtraq_id(52887);
+  script_version("$Revision: 11052 $");
+  script_name("Sourcefire Defense Center Multiple Security Vulnerabilities");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 12:24:34 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-04-05 11:02:10 +0200 (Thu, 05 Apr 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"Updates are available. Please see the reference for more details.");
+  script_tag(name:"summary", value:"Sourcefire Defense Center is prone to multiple security
 vulnerabilities, including multiple arbitrary-file-download
 vulnerabilities, an arbitrary-file-deletion vulnerability, a security-
-bypass vulonerability, and an HTML-injection vulnerability.
+bypass vulonerability, and an HTML-injection vulnerability.");
 
-Exploiting these vulnerabilities may allow an attacker to view or
+  script_tag(name:"impact", value:"Exploiting these vulnerabilities may allow an attacker to view or
 delete arbitrary files within the context of the application, gain
 unauthorized access and execute HTML and script code in the context of
 the affected site, steal cookie-based authentication credentials, or
 control how the site is rendered to the user. Information harvested
-may aid in launching further attacks.
+may aid in launching further attacks.");
 
-Sourcefire Defense Center versions prior to 4.10.2.3 are vulnerable.";
-
-tag_solution = "Updates are available. Please see the reference for more details.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103460");
- script_bugtraq_id(52887);
- script_version ("$Revision: 9352 $");
- script_name("Sourcefire Defense Center Multiple Security Vulnerabilities");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-04-05 11:02:10 +0200 (Thu, 05 Apr 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52887");
- script_xref(name : "URL" , value : "http://www.sourcefire.com/products/3D/defense_center");
- script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Apr/52");
+  script_tag(name:"affected", value:"Sourcefire Defense Center versions prior to 4.10.2.3 are vulnerable.");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52887");
+  script_xref(name:"URL", value:"http://www.sourcefire.com/products/3D/defense_center");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2012/Apr/52");
  exit(0);
 }
 

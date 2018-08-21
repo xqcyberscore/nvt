@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_b2epms_mult_sql_inj_vuln.nasl 5814 2017-03-31 09:13:55Z cfi $
+# $Id: gb_b2epms_mult_sql_inj_vuln.nasl 11055 2018-08-20 12:23:58Z asteins $
 #
 # b2ePMS Multiple SQL Injection Vulnerabilities
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802861");
-  script_version("$Revision: 5814 $");
+  script_version("$Revision: 11055 $");
   script_bugtraq_id(53690);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 14:23:58 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-06-01 13:07:29 +0530 (Fri, 01 Jun 2012)");
   script_name("b2ePMS Multiple SQL Injection Vulnerabilities");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53690");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/75923");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18935");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/113064/b2epms10-sql.txt");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53690");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/75923");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18935");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/113064/b2epms10-sql.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
@@ -46,21 +46,21 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will let attackers to cause SQL injection
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to cause SQL injection
   attack and gain sensitive information.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "b2ePMS version 1.0");
-  script_tag(name : "insight" , value : "Multiple flaws are due to input passed via phone_number,
+  script_tag(name:"affected", value:"b2ePMS version 1.0");
+  script_tag(name:"insight", value:"Multiple flaws are due to input passed via phone_number,
   msg_caller, phone_msg, msg_options, msg_recipients and signed parameters to
   'index.php' is not properly sanitised before being used in SQL queries, which
   allows attackers to execute arbitrary SQL commands in the context of an
   affected application or site.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
   features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running b2ePMS and is prone to multiple SQL
+  script_tag(name:"summary", value:"This host is running b2ePMS and is prone to multiple SQL
   injection vulnerabilities.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -70,14 +70,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-dir = "";
-req = "";
-res = "";
-host = "";
-postdata = "";
-port = 0;
 
 port = get_http_port(default:80);
 
@@ -97,7 +89,6 @@ foreach dir (make_list_unique("/", "/b2epms", cgi_dirs(port:port)))
 
   if( res =~ "HTTP/1.. 200" && "<title>b2ePMS" >< res && "New Phone Message" >< res ) {
 
-    ## Construct attack request
     postdata = "phone_number='&phone_msg=SQL-TEST&msg_options=Please+call&" +
                "msg_recipients%5B%5D=abc%40gmail.com&signed=LOC&Submit=Send";
 
@@ -108,10 +99,8 @@ foreach dir (make_list_unique("/", "/b2epms", cgi_dirs(port:port)))
                  "Content-Length: ", strlen(postdata), "\r\n\r\n",
                   postdata);
 
-    ## Send request and receive the response
     res = http_keepalive_send_recv(port:port, data:req);
 
-    ## Confirm exploit worked by checking the response
     if(res && ereg(pattern:"^HTTP/[0-9]\.[0-9] 200 .*", string:res) &&
       ('You have an error in your SQL syntax;' >< res))
     {

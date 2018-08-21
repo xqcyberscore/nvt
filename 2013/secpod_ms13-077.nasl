@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-077.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: secpod_ms13-077.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # MS Windows Service Control Manager Privilege Elevation Vulnerability (2872339)
 #
@@ -27,56 +27,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902993");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11056 $");
   script_cve_id("CVE-2013-3862");
   script_bugtraq_id(62182);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-09-11 08:13:01 +0530 (Wed, 11 Sep 2013)");
   script_name("MS Windows Service Control Manager Privilege Elevation Vulnerability (2872339)");
 
-  tag_summary =
-"This host is missing an important security update according to
-Microsoft Bulletin MS13-077.";
 
-  tag_vuldetect =
-"Get the vulnerable file version and check appropriate patch is applied
-or not.";
-
-  tag_insight =
-"The flaw is due to a double-free error in the Service Control Manager
-(services.exe) when handling service descriptions from the registry.";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to execute arbitrary
+  script_tag(name:"summary", value:"This host is missing an important security update according to
+Microsoft Bulletin MS13-077.");
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
+or not.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
+mentioned hotfixes in the advisory from the below link,
+https://technet.microsoft.com/en-us/security/bulletin/ms13-077");
+  script_tag(name:"insight", value:"The flaw is due to a double-free error in the Service Control Manager
+(services.exe) when handling service descriptions from the registry.");
+  script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
 code with kernel-mode privileges within the context of the Service Control
 Manager and or corrupt memory.
 
-Impact Level: System ";
-
-  tag_affected =
-"Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
-Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior";
-
-  tag_solution =
-"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms13-077";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+Impact Level: System ");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/54745");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2872339");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-077");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/54745");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2872339");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms13-077");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");
@@ -93,33 +75,24 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-exeVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-## Get Version from Kernel32.dll file
 exeVer = fetch_file_version(sysPath, file_name:"system32\Kernel32.dll");
 if(!exeVer){
   exit(0);
 }
 
-## Windows 7 and Windows Server 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Kernel32.dll version
   if(version_is_less(version:exeVer, test_version:"6.1.7601.18229") ||
      version_in_range(version:exeVer, test_version:"6.1.7601.22000", test_version2:"6.1.7601.22410")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

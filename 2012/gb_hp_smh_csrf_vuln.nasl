@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_csrf_vuln.nasl 4542 2016-11-16 15:31:02Z cfi $
+# $Id: gb_hp_smh_csrf_vuln.nasl 11052 2018-08-20 10:24:34Z asteins $
 #
 # HP System Management Homepage Cross-site Request Forgery Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802758");
-  script_version("$Revision: 4542 $");
+  script_version("$Revision: 11052 $");
   script_cve_id("CVE-2011-3846");
   script_bugtraq_id(52974);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-16 16:31:02 +0100 (Wed, 16 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 12:24:34 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-04-23 13:36:33 +0530 (Mon, 23 Apr 2012)");
   script_name("HP System Management Homepage Cross-site Request Forgery Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -47,28 +47,18 @@ if(description)
   script_xref(name:"URL", value:"http://secunia.com/advisories/43012");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52974");
 
-  tag_impact = "Successful exploitation will allow remote attackers to create an arbitrary
+  script_tag(name:"insight", value:"The flaw is due to certain actions via HTTP requests without
+  performing any validity checks to verify the requests.");
+  script_tag(name:"solution", value:"Upgrade to HP System Management Homepage (SMH) version 7.0 or later,
+  For updates refer to http://h18000.www1.hp.com/products/servers/management/agents/index.html");
+  script_tag(name:"summary", value:"This host is running HP System Management Homepage (SMH) and is
+  prone to cross-site request forgery vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to create an arbitrary
   user with administrative privileges, if a logged-in administrative user visits
   a malicious web site.
 
-  Impact Level: Application";
-
-  tag_affected = "HP System Management Homepage (SMH) version 6.2.2.7";
-
-  tag_insight = "The flaw is due to certain actions via HTTP requests without
-  performing any validity checks to verify the requests.";
-
-  tag_solution = "Upgrade to HP System Management Homepage (SMH) version 7.0 or later,
-  For updates refer to http://h18000.www1.hp.com/products/servers/management/agents/index.html";
-
-  tag_summary = "This host is running HP System Management Homepage (SMH) and is
-  prone to cross-site request forgery vulnerability.";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  Impact Level: Application");
+  script_tag(name:"affected", value:"HP System Management Homepage (SMH) version 6.2.2.7");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -82,7 +72,6 @@ include("version_func.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check HP SMH version is equal to 6.2.2.7
 if( version_is_equal( version:version, test_version:"6.2.2.7" ) ) {
   report = report_fixed_ver( installed_version:version, fixed_version:"7.0");
   security_message( port:port, data:report );

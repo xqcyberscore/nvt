@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freeswitch_mult_bof_vuln.nasl 4878 2016-12-29 18:43:19Z cfi $
+# $Id: gb_freeswitch_mult_bof_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # FreeSWITCH 'switch_regex.c' Multiple Buffer Overflow Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:freeswitch:freeswitch";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804025");
-  script_version("$Revision: 4878 $");
+  script_version("$Revision: 11056 $");
   script_cve_id("CVE-2013-2238");
   script_bugtraq_id(60890);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-29 19:43:19 +0100 (Thu, 29 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-10-07 18:52:44 +0530 (Mon, 07 Oct 2013)");
   script_name("FreeSWITCH 'switch_regex.c' Multiple Buffer Overflow Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -50,13 +50,9 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with FreeSWITCH and is prone to multiple buffer overflow
   vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of detect NVT and check the version
-  is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"insight", value:"Flaw is due to improper validation of user supplied input when handling the
   'index[]' variable or when handling 'substituted' variables in switch_regex.c script.");

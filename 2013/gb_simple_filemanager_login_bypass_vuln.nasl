@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803666");
-  script_version("$Revision: 6086 $");
+  script_version("$Revision: 11056 $");
   script_bugtraq_id(60579);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-19 13:47:05 +0530 (Wed, 19 Jun 2013)");
   script_name("Simple File Manager Login Bypass Vulnerability");
 
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/85008");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/26246");
-  script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013060142");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/php/simple-file-manager-v024-login-bypass-vulnerability");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/85008");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/26246");
+  script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2013060142");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/php/simple-file-manager-v024-login-bypass-vulnerability");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -46,15 +46,15 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation allow attackers to bypass security restrictions and
+  script_tag(name:"impact", value:"Successful exploitation allow attackers to bypass security restrictions and
   gain unauthorized access, other attacks may also be possible.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Simple File Manager version v.024, other versions may also be affected.");
-  script_tag(name : "insight" , value : "The flaw is due improper verification of access permissions by the fm.php
+  script_tag(name:"affected", value:"Simple File Manager version v.024, other versions may also be affected.");
+  script_tag(name:"insight", value:"The flaw is due improper verification of access permissions by the fm.php
   script, via 'u' parameter.");
-  script_tag(name : "solution" , value : "Upgrade to Simple File Manager version v.025 or later,
+  script_tag(name:"solution", value:"Upgrade to Simple File Manager version v.025 or later,
   For updates refer to http://onedotoh.sourceforge.net");
-  script_tag(name : "summary" , value : "This host is running simple file manager and is prone to login
+  script_tag(name:"summary", value:"This host is running simple file manager and is prone to login
   bypass vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -65,19 +65,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-req = "";
-res = "";
-dir = "";
-user = "";
-port = "";
-sndReq = "";
-rcvRes = "";
-
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
@@ -91,17 +80,14 @@ foreach dir (make_list_unique("/", "/sfm", "/filemanager", cgi_dirs(port:port)))
   sndReq = http_get(item:string(dir,"/fm.php"),  port:port);
   rcvRes = http_keepalive_send_recv(port:port, data:sndReq, bodyonly:TRUE);
 
-  ## Confirm the application
   if('>Simple File Manager' >< rcvRes)
   {
     ## Create a list of user names to try, by default it will be guest
     foreach user (make_list("guest", "admin", "administrator"))
     {
-      ## Construct attack request
       req = http_get(item:string(dir, "/fm.php?u=", user),  port:port);
       res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
 
-      ## Check the response to confirm vulnerability
       if('Home' >< res && 'logout' >< res){
        security_message(port:port);
        exit(0);

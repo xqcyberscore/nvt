@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_brickcom_devices_authentication_bypass.nasl 10642 2018-07-26 14:54:56Z asteins $
+# $Id: gb_brickcom_devices_authentication_bypass.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # Multiple Brickcom Devices Authentication Bypass Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103738");
-  script_version("$Revision: 10642 $");
-  script_cve_id("CVE-2013-3689","CVE-2013-3690");
+  script_version("$Revision: 11056 $");
+  script_cve_id("CVE-2013-3689", "CVE-2013-3690");
   script_bugtraq_id(60525, 60526);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 16:54:56 +0200 (Thu, 26 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-12 13:41:30 +0200 (Wed, 12 Jun 2013)");
   script_name("Multiple Brickcom Devices Authentication Bypass Vulnerability");
 

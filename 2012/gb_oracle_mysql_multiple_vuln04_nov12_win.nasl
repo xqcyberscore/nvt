@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_multiple_vuln04_nov12_win.nasl 7838 2017-11-21 05:43:57Z santu $
+# $Id: gb_oracle_mysql_multiple_vuln04_nov12_win.nasl 11055 2018-08-20 12:23:58Z asteins $
 #
 # Oracle MySQL Server Multiple Vulnerabilities-04 Nov12 (Windows)
 #
@@ -23,36 +23,22 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-tag_impact = "Successful exploitation will allow an attacker to disclose potentially
-  sensitive information, manipulate certain data, and cause a DoS
-  (Denial of Service).
-  Impact Level: Application";
-tag_affected = "Oracle MySQL version 5.5.x to 5.5.26 on windows";
-tag_insight = "The flaws are due to multiple unspecified errors in MySQL server component
-  vectors related to MySQL client and server.";
-tag_solution = "Apply the patch or upgrade to latest version,
-  https://support.oracle.com/rs?type=doc&id=1475188.1";
-tag_summary = "The host is running Oracle MySQL server and is prone to multiple
-  vulnerabilities.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803114";
 CPE = "cpe:/a:mysql:mysql";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 7838 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803114");
+  script_version("$Revision: 11055 $");
   script_cve_id("CVE-2012-3147", "CVE-2012-3149", "CVE-2012-3144");
-  script_bugtraq_id(56022, 56006 ,56008);
+  script_bugtraq_id(56022, 56006, 56008);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-21 06:43:57 +0100 (Tue, 21 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 14:23:58 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 17:58:56 +0530 (Mon, 26 Nov 2012)");
   script_name("Oracle MySQL Server Multiple Vulnerabilities-04 Nov12 (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/51008/");
-  script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/51008");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuoct2012-1515893.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/51008/");
+  script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/51008");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2012-1515893.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
@@ -60,12 +46,18 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
-  script_mandatory_keys("MySQL/installed","Host/runs_windows");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("MySQL/installed", "Host/runs_windows");
+  script_tag(name:"impact", value:"Successful exploitation will allow an attacker to disclose potentially
+  sensitive information, manipulate certain data, and cause a DoS
+  (Denial of Service).
+  Impact Level: Application");
+  script_tag(name:"affected", value:"Oracle MySQL version 5.5.x to 5.5.26 on windows");
+  script_tag(name:"insight", value:"The flaws are due to multiple unspecified errors in MySQL server component
+  vectors related to MySQL client and server.");
+  script_tag(name:"solution", value:"Apply the patch or upgrade to latest version,
+  https://support.oracle.com/rs?type=doc&id=1475188.1");
+  script_tag(name:"summary", value:"The host is running Oracle MySQL server and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
@@ -78,19 +70,16 @@ include("host_details.inc");
 sqlPort = "";
 mysqlVer = "";
 
-## Get the default port
-sqlPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID);
+sqlPort = get_app_port(cpe:CPE);
 if(!sqlPort){
   sqlPort = 3306;
 }
 
-## Check the port status
 if(!get_port_state(sqlPort)){
   exit(0);
 }
 
-## Get the MySQL version
-mysqlVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:sqlPort);
+mysqlVer = get_app_version(cpe:CPE, port:sqlPort);
 if(isnull(mysqlVer)){
   exit(0);
 }

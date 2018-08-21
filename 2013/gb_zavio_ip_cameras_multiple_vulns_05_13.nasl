@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zavio_ip_cameras_multiple_vulns_05_13.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_zavio_ip_cameras_multiple_vulns_05_13.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # Zavio IP Cameras Multiple Vulnerabilities
 #
@@ -25,11 +25,39 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Zavio IP Cameras are prone to multiple vulnerabilities.
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103721");
+  script_bugtraq_id(60189, 60191, 60190, 60188);
+  script_cve_id("CVE-2013-2567", "CVE-2013-2569", "CVE-2013-2568", "CVE-2013-2570");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11056 $");
+
+  script_name("Zavio IP Cameras Multiple Vulnerabilities");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60189");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60191");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60190");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60188");
+  script_xref(name:"URL", value:"http://www.coresecurity.com/advisories/zavio-IP-cameras-multiple-vulnerabilities");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-05-29 16:28:20 +0200 (Wed, 29 May 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("Boa/banner");
+  script_tag(name:"solution", value:"Update firmware.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Zavio IP Cameras are prone to multiple vulnerabilities.
 
 1. [CVE-2013-2567] to bypass user web interface authentication using hard-coded
    credentials.
-2. [CVE-2013-2568] to execute arbitrary commands from the administration web 
+2. [CVE-2013-2568] to execute arbitrary commands from the administration web
    interface. This flaw can also be used to obtain all credentials of registered
    users.
 3. [CVE-2013-2569] to access the camera video stream.
@@ -37,38 +65,7 @@ tag_summary = "Zavio IP Cameras are prone to multiple vulnerabilities.
    interface (post authentication only).
 
 Zavio IP Cameras running firmware version 1.6.03 and below are
-vulnerable.";
-
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103721";
-
-if (description)
-{
- script_oid(SCRIPT_OID);
- script_bugtraq_id(60189,60191,60190,60188);
- script_cve_id("CVE-2013-2567","CVE-2013-2569","CVE-2013-2568","CVE-2013-2570");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6698 $");
-
- script_name("Zavio IP Cameras Multiple Vulnerabilities");
-
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60189");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60191");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60190");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60188");
- script_xref(name:"URL", value:"http://www.coresecurity.com/advisories/zavio-IP-cameras-multiple-vulnerabilities");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
- script_tag(name:"creation_date", value:"2013-05-29 16:28:20 +0200 (Wed, 29 May 2013)");
- script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("Boa/banner");
- script_tag(name : "summary" , value : tag_summary);
+vulnerable.");
  exit(0);
 }
 
@@ -96,7 +93,7 @@ if(resp !~ "HTTP/1.. 401")exit(0);
 req = string("GET ", url," HTTP/1.1\r\n",
              "Host: ", get_host_name(),"\r\n",
              "Authorization: Basic ",userpass64,"\r\n",
-             "\r\n"); 
+             "\r\n");
 
 resp = http_send_recv(port:port, data:req);
 
@@ -105,4 +102,4 @@ if(resp =~ "HTTP/1.. 200") {
   security_message(port:port);
   exit(0);
 
-}  
+}

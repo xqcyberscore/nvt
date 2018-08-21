@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sws_dir_traversal_01_2013.nasl 11041 2018-08-17 14:03:47Z mmartin $
+# $Id: gb_sws_dir_traversal_01_2013.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # Simple Webserver Directory Traversal Vulnerability
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103632");
-  script_version("$Revision: 11041 $");
+  script_version("$Revision: 11056 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -36,7 +36,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/119239/Simple-Webserver-2.3-rc1-Directory-Traversal.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-01-04 10:25:13 +0100 (Fri, 04 Jan 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -45,7 +45,7 @@ if (description)
   script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("PMSoftware-SWS/banner");
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"summary", value:"Simple Webserver is prone to a directory-traversal vulnerability because it
 fails to properly sanitize user-supplied input.

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_loganalyzer_sql_inj_n_xss_vuln.nasl 5814 2017-03-31 09:13:55Z cfi $
+# $Id: secpod_loganalyzer_sql_inj_n_xss_vuln.nasl 11052 2018-08-20 10:24:34Z asteins $
 #
 # Adiscon LogAnalyzer Multiple SQL Injection and XSS Vulnerabilities
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902840");
-  script_version("$Revision: 5814 $");
+  script_version("$Revision: 11052 $");
   script_bugtraq_id(53664);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 12:24:34 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-05-28 15:15:15 +0530 (Mon, 28 May 2012)");
   script_name("Adiscon LogAnalyzer Multiple SQL Injection and XSS Vulnerabilities");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/49223");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/113037/CSA-12005.txt");
-  script_xref(name : "URL" , value : "http://www.codseq.it/advisories/multiple_vulnerabilities_in_loganalyzer");
-  script_xref(name : "URL" , value : "http://loganalyzer.adiscon.com/news/loganalyzer-v3-4-3-v3-stable-released");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/49223");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/113037/CSA-12005.txt");
+  script_xref(name:"URL", value:"http://www.codseq.it/advisories/multiple_vulnerabilities_in_loganalyzer");
+  script_xref(name:"URL", value:"http://loganalyzer.adiscon.com/news/loganalyzer-v3-4-3-v3-stable-released");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 SecPod");
@@ -47,20 +47,20 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to steal cookie based
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to steal cookie based
   authentication credentials, compromise the application, access or modify
   data or  exploit latent vulnerabilities in the underlying database.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Adiscon LogAnalyzer version 3.4.2 and prior");
-  script_tag(name : "insight" , value : "Multiple flaws are due to
+  script_tag(name:"affected", value:"Adiscon LogAnalyzer version 3.4.2 and prior");
+  script_tag(name:"insight", value:"Multiple flaws are due to
   - Input passed via the 'filter' parameter to index.php, the 'id' parameter to
     admin/reports.php and admin/searches.php is not properly sanitised before
     being returned to the user.
   - Input passed via the 'Columns[]' parameter to admin/views.php is not
     properly sanitised before being used in SQL queries.");
-  script_tag(name : "solution" , value : "Upgrade to Adiscon LogAnalyzer version 3.4.3 or later,
+  script_tag(name:"solution", value:"Upgrade to Adiscon LogAnalyzer version 3.4.3 or later,
   For updates refer to http://loganalyzer.adiscon.com/");
-  script_tag(name : "summary" , value : "This host is running Adiscon LogAnalyzer and is prone to multiple
+  script_tag(name:"summary", value:"This host is running Adiscon LogAnalyzer and is prone to multiple
   SQL injection and cross site scripting vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -70,11 +70,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-dir = "";
-url = "";
-port = 0;
 
 port = get_http_port(default:80);
 
@@ -91,10 +86,8 @@ foreach dir (make_list_unique("/loganalyzer", "/log", cgi_dirs(port:port)))
 
   if( res =~ "HTTP/1.. 200" && ">Adiscon LogAnalyzer<" >< res ) {
 
-    ## Construct attack request
     url += "?filter=</title><script>alert(document.cookie)</script>";
 
-    ## Try XSS and check the response to confirm vulnerability
     if(http_vuln_check( port: port, url: url, check_header: TRUE,
                         pattern: "<script>alert\(document\.cookie\)</script>",
                         extra_check: ">Adiscon LogAnalyzer<"))

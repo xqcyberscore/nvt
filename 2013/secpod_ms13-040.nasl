@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-040.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: secpod_ms13-040.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # Microsoft .NET Framework Authentication Bypass and Spoofing Vulnerabilities (2836440)
 #
@@ -24,50 +24,43 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow an attacker to bypass security mechanism
-  and gain access to restricted endpoint functions.
-  Impact Level: System/Application";
-
-tag_affected = "Microsoft .NET Framework 4
-  Microsoft .NET Framework 4.5
-  Microsoft .NET Framework 3.5
-  Microsoft .NET Framework 3.5.1
-  Microsoft .NET Framework 2.0 Service Pack 2";
-tag_insight = "The flaws are due to
-  - Improper validation of XML signatures by the CLR
-  - Error within the WCF endpoint authentication mechanism when handling
-    queries";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms13-040";
-tag_summary = "This host is missing an important security update according to
-  Microsoft Bulletin MS13-040.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903308");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11056 $");
   script_cve_id("CVE-2013-1336", "CVE-2013-1337");
   script_bugtraq_id(59789, 59790);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-05-15 12:23:29 +0530 (Wed, 15 May 2013)");
   script_name("Microsoft .NET Framework Authentication Bypass and Spoofing Vulnerabilities (2836440)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/53350");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms13-040");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/53350");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-040");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow an attacker to bypass security mechanism
+  and gain access to restricted endpoint functions.
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Microsoft .NET Framework 4
+  Microsoft .NET Framework 4.5
+  Microsoft .NET Framework 3.5
+  Microsoft .NET Framework 3.5.1
+  Microsoft .NET Framework 2.0 Service Pack 2");
+  script_tag(name:"insight", value:"The flaws are due to
+  - Improper validation of XML signatures by the CLR
+  - Error within the WCF endpoint authentication mechanism when handling
+    queries");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://technet.microsoft.com/en-us/security/bulletin/ms13-040");
+  script_tag(name:"summary", value:"This host is missing an important security update according to
+  Microsoft Bulletin MS13-040.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -78,29 +71,19 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-key = "";
-item = "";
-path = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(xp:4, xpx64:3, win2003:3, win2003x64:3, winVista:3, win7:2,
                    win7x64:2, win2008:3, win2008r2:2, win8:1, win2012:1) <= 0){
   exit(0);
 }
 
-## Confirm .NET
 key = "SOFTWARE\Microsoft\ASP.NET\";
 if(registry_key_exists(key:key))
 {
-  ## Try to Get Version
   foreach item (registry_enum_keys(key:key))
   {
     path = registry_get_sz(key:key + item, item:"Path");
     if(path && "\Microsoft.NET\Framework" >< path)
     {
-      ## Get version from System.dll file
       dllVer = fetch_file_version(sysPath:path, file_name:"System.Security.dll");
 
       ## .NET Framework 4.5 and 3.5 on Windows 8 and Windows Server 2012
@@ -111,7 +94,7 @@ if(registry_key_exists(key:key))
            version_in_range(version:dllVer, test_version:"2.0.50727.6000", test_version2:"2.0.50727.6403")||
            version_in_range(version:dllVer, test_version:"2.0.50727.7000", test_version2:"2.0.50727.7017"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }
@@ -126,7 +109,7 @@ if(registry_key_exists(key:key))
            version_in_range(version:dllVer, test_version:"4.0.30319.18000", test_version2:"4.0.30319.18037")||
            version_in_range(version:dllVer, test_version:"4.0.30319.19000", test_version2:"4.0.30319.19056"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }
@@ -141,7 +124,7 @@ if(registry_key_exists(key:key))
            version_in_range(version:dllVer, test_version:"4.0.30319.18000", test_version2:"4.0.30319.18037")||
            version_in_range(version:dllVer, test_version:"4.0.30319.19000", test_version2:"4.0.30319.19056"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }
@@ -154,7 +137,7 @@ if(registry_key_exists(key:key))
            version_in_range(version:dllVer, test_version:"2.0.50727.0000", test_version2:"2.0.50727.3645")||
            version_in_range(version:dllVer, test_version:"2.0.50727.7000", test_version2:"2.0.50727.7018"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }

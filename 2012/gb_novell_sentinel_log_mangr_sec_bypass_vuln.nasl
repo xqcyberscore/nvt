@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_sentinel_log_mangr_sec_bypass_vuln.nasl 6022 2017-04-25 12:51:04Z teissa $
+# $Id: gb_novell_sentinel_log_mangr_sec_bypass_vuln.nasl 11058 2018-08-20 14:18:06Z asteins $
 #
 # Novell Sentinel Log Manager Retention Policy Security Bypass Vulnerability
 #
@@ -27,32 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803110");
-  script_version("$Revision: 6022 $");
+  script_version("$Revision: 11058 $");
   script_bugtraq_id(55767);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Tue, 25 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 16:18:06 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-11-23 15:27:29 +0530 (Fri, 23 Nov 2012)");
   script_name("Novell Sentinel Log Manager Retention Policy Security Bypass Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/50797/");
-  script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/fulldisclosure/2012-10/0026.html");
-  script_xref(name : "URL" , value : "https://www.netiq.com/documentation/novelllogmanager12/log_manager_readme/data/log_manager_readme.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/50797/");
+  script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/fulldisclosure/2012-10/0026.html");
+  script_xref(name:"URL", value:"https://www.netiq.com/documentation/novelllogmanager12/log_manager_readme/data/log_manager_readme.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_require_ports("Services/www", 8443);
   script_dependencies("find_service.nasl", "http_version.nasl");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to bypass certain security
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
   restrictions.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Novell Sentinel Log Manager version 1.2.0.2 and prior");
-  script_tag(name : "insight" , value : "The flaw is due to an error when saving a retention policy and can be
+  script_tag(name:"affected", value:"Novell Sentinel Log Manager version 1.2.0.2 and prior");
+  script_tag(name:"insight", value:"The flaw is due to an error when saving a retention policy and can be
   exploited by a report administrator (read only role) to create new
   policies.");
-  script_tag(name : "solution" , value : "Apply the patch or upgrade to 1.2.0.3 or later,
+  script_tag(name:"solution", value:"Apply the patch or upgrade to 1.2.0.3 or later,
   https://www.netiq.com/products/sentinel-log-manager/");
-  script_tag(name : "summary" , value : "The host is running Novell Sentinel Log Manager and is prone security bypass
+  script_tag(name:"summary", value:"The host is running Novell Sentinel Log Manager and is prone security bypass
   vulnerability.");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -74,14 +74,12 @@ res2 = "";
 ## Default HTTPS port
 port = get_http_port(default:8443);
 
-## Get Host Name or IP
 host = http_host_name(port:port);
 
 ## Initial request
 req1 = http_get(item:"/novelllogmanager/views/logon.html", port:port);
 res1 = http_keepalive_send_recv(port:port, data:req1);
 
-## Confirm the application before trying the exploit
 if(res1 && ">Novell Sentinel Log Manager" >< res1 &&
    ">Novell Identity Audit<" >< res1)
 {
@@ -91,7 +89,6 @@ if(res1 && ">Novell Sentinel Log Manager" >< res1 &&
               '283BD3643E4289|com.novell.sentinel.scout.client.about.Abo' +
               'utLogManagerService|getLogManagerInfo|1|2|3|4|0|';
 
-  ## Construct the POST request
   req2 = string("POST /novelllogmanager/datastorageservice.rpc HTTP/1.1\r\n",
                 "Host: ", host, "\r\n",
                 "DNT: n",
@@ -102,7 +99,6 @@ if(res1 && ">Novell Sentinel Log Manager" >< res1 &&
   ## Receive the response
   res2 = http_keepalive_send_recv(port:port, data:req2);
 
-  ## Check Attack pattern in the response
   if("The call" >< res2 && "on the server;" >< res2 &&
      "server log for details" >< res2){
     security_message(port:port);

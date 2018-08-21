@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quantum_scalar_52566.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_quantum_scalar_52566.nasl 11049 2018-08-20 08:53:50Z asteins $
 #
 # Multiple Vendor Products Security Vulnerabilities
 #
@@ -29,11 +29,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103462");
- script_bugtraq_id(52566);
+  script_bugtraq_id(52566);
   script_cve_id("CVE-2012-1841", "CVE-2012-1842", "CVE-2012-1844");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11049 $");
 
   script_name("Multiple Vendor Products Security Vulnerabilities");
 
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.quantum.com/ServiceandSupport/SoftwareandDocumentationDownloads/SI500/Index.aspx");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/913483");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-04-11 09:50:54 +0200 (Wed, 11 Apr 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

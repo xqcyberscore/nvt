@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_rave_info_disc_vuln.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_apache_rave_info_disc_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # Apache Rave User Information Disclosure Vulnerability
 #
@@ -29,19 +29,19 @@ CPE = "cpe:/a:apache:rave";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803180");
-  script_version("$Revision: 9984 $");
+  script_version("$Revision: 11056 $");
   script_cve_id("CVE-2013-1814");
   script_bugtraq_id(58455);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-14 16:32:56 +0530 (Thu, 14 Mar 2013)");
   script_name("Apache Rave User Information Disclosure Vulnerability");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/82758");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/24744/");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120769/");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2013/Mar/127");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/525982/30/0/threaded");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/82758");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/24744/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/120769/");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/Mar/127");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/525982/30/0/threaded");
 
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -50,15 +50,15 @@ if(description)
   script_dependencies("gb_apache_rave_detect.nasl");
   script_mandatory_keys("ApacheRave/installed");
   script_require_ports("Services/www", 8080);
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to obtain sensitive
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain sensitive
   information about all user accounts via the offset parameter.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Apache Rave versions 0.11 to 0.20");
-  script_tag(name : "insight" , value : "The flaw is due to error in handling of User RPC API, returns the full user
+  script_tag(name:"affected", value:"Apache Rave versions 0.11 to 0.20");
+  script_tag(name:"insight", value:"The flaw is due to error in handling of User RPC API, returns the full user
   object, including the salted and hashed password.");
-  script_tag(name : "solution" , value : "Upgrade to Apache Rave 0.20.1 or later,
+  script_tag(name:"solution", value:"Upgrade to Apache Rave 0.20.1 or later,
   For updates refer to http://rave.apache.org/downloads.html");
-  script_tag(name : "summary" , value : "The host is running Apache Rave and is prone to information
+  script_tag(name:"summary", value:"The host is running Apache Rave and is prone to information
   disclosure vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");

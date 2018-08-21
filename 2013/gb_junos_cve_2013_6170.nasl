@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_6170.nasl 7140 2017-09-15 09:41:22Z cfischer $
+# $Id: gb_junos_cve_2013_6170.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # Junos PIM Join Flooding Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103949");
-  script_version ("$Revision: 7140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 11056 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-10-28 12:53:03 +0700 (Mon, 28 Oct 2013)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -48,31 +48,31 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version");
 
-  script_tag(name : "summary" , value : "A large number of crafted PIM join messages can crash the RPD
+  script_tag(name:"summary", value:"A large number of crafted PIM join messages can crash the RPD
 routing daemon.");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "Receipt of a large number of crafted IPv4 or IPv6 PIM join
+  script_tag(name:"insight", value:"Receipt of a large number of crafted IPv4 or IPv6 PIM join
 messages in a Next-Generation Multicast VPN (NGEN MVPN) environment can trigger the RPD routing daemon
 to crash.");
 
-  script_tag(name : "impact" , value : "Once a large amount of these PIM joins are received by the
+  script_tag(name:"impact", value:"Once a large amount of these PIM joins are received by the
 router, RPD crashes and restarts.");
 
-  script_tag(name : "affected" , value : "Junos OS 10.0 or later but only applies to PIM in an NGEN MVPN
+  script_tag(name:"affected", value:"Junos OS 10.0 or later but only applies to PIM in an NGEN MVPN
 environment.");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper. As
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. As
 a workaround ACLs or firewall filters to limit PIM access to the router only from trusted hosts.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10548");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62973");
   script_xref(name:"URL", value:"http://secunia.com/advisories/55216");
- 
+
   exit(0);
 }
 
@@ -120,6 +120,6 @@ if (version =~ "^11") {
       security_message(port:0, data:desc);
       exit(0);
   }
-} 
+}
 
 exit(99);

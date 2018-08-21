@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ckeditor_mult_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: secpod_ckeditor_mult_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # CKEditor Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:ckeditor:ckeditor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903302");
-  script_version("$Revision: 6115 $");
+  script_version("$Revision: 11056 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-02-26 18:00:48 +0530 (Tue, 26 Feb 2013)");
   script_name("CKEditor Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -76,22 +76,17 @@ if( dir == "/" ) dir = "";
 
 host = http_host_name( port:port );
 
-## Construct attack request
 url = dir + '/samples/sample_posteddata.php';
 
-##Construct post data
 postData = "<script>alert('XSS-Test')</script>[]=PATH DISCLOSURE";
 
-##Construct the request string
 req = string( "POST ", url, " HTTP/1.1\r\n",
               "Host: ", host, "\r\n",
               "Content-Type: application/x-www-form-urlencoded\r\n",
               "Content-Length: ", strlen(postData), "\r\n",
               "\r\n", postData );
-## Send request and receive the response
 res = http_keepalive_send_recv( port:port, data:req);
 
-## Confirm exploit worked by checking the response
 if(res =~ "HTTP/1\.. 200" && "<script>alert('XSS-Test')</script>" >< res && "ckeditor.com" >< res ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );

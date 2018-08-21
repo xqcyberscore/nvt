@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiki_54298.nasl 5144 2017-01-31 09:55:46Z cfi $
+# $Id: gb_tiki_54298.nasl 11052 2018-08-20 10:24:34Z asteins $
 #
 # Tiki Wiki CMS Groupware 'unserialize()' Multiple PHP Code Execution Vulnerabilities
 #
@@ -32,8 +32,8 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103508");
   script_bugtraq_id(54298);
   script_cve_id("CVE-2012-0911");
-  script_version("$Revision: 5144 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-31 10:55:46 +0100 (Tue, 31 Jan 2017) $");
+  script_version("$Revision: 11052 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 12:24:34 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-07-09 14:32:27 +0200 (Mon, 09 Jul 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -47,23 +47,15 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54298");
 
-  tag_summary = "Tiki Wiki CMS Groupware is prone to multiple remote PHP code-
-  execution vulnerabilities.";
-
-  tag_impact = "An attacker can exploit these issues to inject and execute arbitrary
+  script_tag(name:"impact", value:"An attacker can exploit these issues to inject and execute arbitrary
   malicious PHP code in the context of the affected application. This
   may facilitate a compromise of the application and the underlying
-  system; other attacks are also possible.";
-
-  tag_affected = "Tiki Wiki CMS Groupware 8.3 is vulnerable; other versions may also
-  be affected.";
-
-  tag_solution = "Updates are available. Please see the references for details.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  system, other attacks are also possible.");
+  script_tag(name:"affected", value:"Tiki Wiki CMS Groupware 8.3 is vulnerable, other versions may also
+  be affected.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
+  script_tag(name:"summary", value:"Tiki Wiki CMS Groupware is prone to multiple remote PHP code-
+  execution vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");

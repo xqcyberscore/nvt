@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_media_service_isapi_code_exec_vuln.nasl 10005 2018-05-29 13:54:41Z cfischer $
+# $Id: gb_ms_win_media_service_isapi_code_exec_vuln.nasl 11052 2018-08-20 10:24:34Z asteins $
 #
 # Microsoft Windows Media Services ISAPI Extension Code Execution Vulnerabilities
 #
@@ -29,21 +29,21 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802897");
-  script_version("$Revision: 10005 $");
+  script_version("$Revision: 11052 $");
   script_cve_id("CVE-2003-0227", "CVE-2003-0349");
   script_bugtraq_id(7727, 8035);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 15:54:41 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 12:24:34 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-07-25 16:04:16 +0530 (Wed, 25 Jul 2012)");
   script_name("Microsoft Windows Media Services ISAPI Extension Code Execution Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/9115");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/8883");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1007059");
-  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/113716");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms03-019");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms03-022");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/default.aspx?scid=kb;en-us;822343");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/9115");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/8883");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1007059");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/113716");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms03-019");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms03-022");
+  script_xref(name:"URL", value:"http://support.microsoft.com/default.aspx?scid=kb;en-us;822343");
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_active");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
@@ -51,25 +51,25 @@ if(description)
   script_dependencies("secpod_ms_iis_detect.nasl");
   script_require_ports("Services/www", 80);
   script_require_keys("IIS/installed");
-  script_tag(name : "impact" , value : "Successful exploitation could allow remote attackers to obtain sensitive
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to obtain sensitive
   information, execute arbitrary code or cause denial of service conditions.
 
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Windows Media Services 4.0 and 4.1
+  script_tag(name:"affected", value:"Windows Media Services 4.0 and 4.1
 
   Microsoft Windows NT 4.0
 
   Microsoft Windows 2000");
-  script_tag(name : "insight" , value : "Windows Media Services logging capability for multicast transmissions is
+  script_tag(name:"insight", value:"Windows Media Services logging capability for multicast transmissions is
   implemented as ISAPI extension (nsiislog.dll), which fails to processes
   incoming client or malicious HTTP requests.");
-  script_tag(name : "solution" , value : "Run Windows Update and update the listed hotfixes or download and
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
 
   http://technet.microsoft.com/en-us/security/bulletin/ms03-019
 
   http://technet.microsoft.com/en-us/security/bulletin/ms03-022");
-  script_tag(name : "summary" , value : "This host is running Microsoft Windows Media Services and is prone
+  script_tag(name:"summary", value:"This host is running Microsoft Windows Media Services and is prone
   to remote code execution vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");

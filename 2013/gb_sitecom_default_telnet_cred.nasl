@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitecom_default_telnet_cred.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: gb_sitecom_default_telnet_cred.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # Sitecom Devices Hard-coded credentials
 #
@@ -25,49 +25,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = " Attackers can exploit these issues to gain unauthorized access to the
-affected device and perform certain administrative actions.
-Impact Level: System";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103772";
-
-tag_insight = "A user can login to the Telnet service (with root privileges) using the
-hard-coded credential admin:1234. This administrative account is hard-coded
-and cannot be changed by a normal user.";
-
-
-tag_summary = "The remote Sitecom Device is prone to a hard-coded credentials bypass
-vulnerability";
-
-tag_solution = "Updates are available.";
-tag_vuldetect = "Start a telnet session with the hard-coded credentials.";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 7585 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_oid("1.3.6.1.4.1.25623.1.0.103772");
+  script_version("$Revision: 11056 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
- script_name("Sitecom Devices Hard-coded credentials");
+  script_name("Sitecom Devices Hard-coded credentials");
 
 
- script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/sitecom-n300-n600-access-bypass");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
- script_tag(name:"creation_date", value:"2013-08-21 16:02:55 +0200 (Wed, 21 Aug 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("telnetserver_detect_type_nd_version.nasl");
- script_require_ports("Services/telnet", 23);
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/sitecom-n300-n600-access-bypass");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-08-21 16:02:55 +0200 (Wed, 21 Aug 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl");
+  script_require_ports("Services/telnet", 23);
+
+  script_tag(name:"impact", value:"Attackers can exploit these issues to gain unauthorized access to the
+affected device and perform certain administrative actions.
+Impact Level: System");
+  script_tag(name:"vuldetect", value:"Start a telnet session with the hard-coded credentials.");
+  script_tag(name:"insight", value:"A user can login to the Telnet service (with root privileges) using the
+hard-coded credential admin:1234. This administrative account is hard-coded
+and cannot be changed by a normal user.");
+  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The remote Sitecom Device is prone to a hard-coded credentials bypass
+vulnerability");
 
  exit(0);
 }
@@ -85,9 +74,9 @@ if(!soc)exit(0);
 
 buf = telnet_negotiate(socket:soc);
 if("login:" >!< buf) {
-  close(soc); 
+  close(soc);
   exit(0);
-}  
+}
 
 send(socket:soc, data:'admin\r\n');
 buf = recv(socket:soc, length:1024);
@@ -95,7 +84,7 @@ buf = recv(socket:soc, length:1024);
 if("Password:" >!< buf) {
   close(soc);
   exit(0);
-}  
+}
 
 send(socket:soc, data:'1234\r\n');
 buf = recv(socket:soc, length:1024);
@@ -103,7 +92,7 @@ buf = recv(socket:soc, length:1024);
 if("#" >!< buf) {
   close(soc);
   exit(0);
-} 
+}
 
 send(socket:soc, data:'cat /etc/passwd\r\n');
 buf = recv(socket:soc, length:1024);
@@ -113,4 +102,4 @@ close(soc);
 if("admin:" >< buf && "/bin/sh" >< buf) {
   security_message(port:port);
   exit(0);
-}  
+}

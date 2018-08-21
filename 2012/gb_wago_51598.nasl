@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wago_51598.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_wago_51598.nasl 11055 2018-08-20 12:23:58Z asteins $
 #
 # WAGO Multiple Remote Vulnerabilities
 #
@@ -25,54 +25,57 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "WAGO is prone to multiple security vulnerabilities, including:
-
-1. A security-bypass vulnerability
-2. Multiple information-disclosure vulnerabilities
-3. A cross-site request forgery vulnerability
-
-Successful attacks can allow an attacker to obtain sensitive
-information, bypass certain security restrictions, and perform
-unauthorized administrative actions.";
-
 if (description)
 {
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51598");
- script_xref(name : "URL" , value : "http://dsecrg.com/pages/vul/show.php?id=401");
- script_xref(name : "URL" , value : "http://dsecrg.com/pages/vul/show.php?id=402");
- script_xref(name : "URL" , value : "http://dsecrg.com/pages/vul/show.php?id=403");
- script_xref(name : "URL" , value : "http://dsecrg.com/pages/vul/show.php?id=404");
- script_xref(name : "URL" , value : "http://www.wago.com/");
- script_oid("1.3.6.1.4.1.25623.1.0.103396");
- script_bugtraq_id(51598);
- script_version ("$Revision: 9352 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51598");
+  script_xref(name:"URL", value:"http://dsecrg.com/pages/vul/show.php?id=401");
+  script_xref(name:"URL", value:"http://dsecrg.com/pages/vul/show.php?id=402");
+  script_xref(name:"URL", value:"http://dsecrg.com/pages/vul/show.php?id=403");
+  script_xref(name:"URL", value:"http://dsecrg.com/pages/vul/show.php?id=404");
+  script_xref(name:"URL", value:"http://www.wago.com/");
+  script_oid("1.3.6.1.4.1.25623.1.0.103396");
+  script_bugtraq_id(51598);
+  script_version("$Revision: 11055 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
- script_name("WAGO Multiple Remote Vulnerabilities");
+  script_name("WAGO Multiple Remote Vulnerabilities");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-01-23 15:14:54 +0100 (Mon, 23 Jan 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- exit(0); 
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 14:23:58 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-01-23 15:14:54 +0100 (Mon, 23 Jan 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"summary", value:"WAGO is prone to multiple security vulnerabilities, including:
+
+1. A security-bypass vulnerability
+
+2. Multiple information-disclosure vulnerabilities
+
+3. A cross-site request forgery vulnerability");
+
+  script_tag(name:"impact", value:"Successful attacks can allow an attacker to obtain sensitive
+information, bypass certain security restrictions, and perform
+unauthorized administrative actions.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
-   
+
 port = get_http_port(default:80);
 if(!get_port_state(port))exit(0);
 
-url = string("/webserv/index.ssi"); 
+url = string("/webserv/index.ssi");
 
 if(http_vuln_check(port:port, url:url,pattern:"WAGO Ethernet Web-Based Management")) {
 
@@ -100,8 +103,8 @@ if(http_vuln_check(port:port, url:url,pattern:"WAGO Ethernet Web-Based Managemen
 
     }
 
-  }  
-     
+  }
+
 }
 
 exit(0);

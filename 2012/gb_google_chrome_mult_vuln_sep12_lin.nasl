@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_sep12_lin.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_google_chrome_mult_vuln_sep12_lin.nasl 11058 2018-08-20 14:18:06Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities - Sep12 (Linux)
 #
@@ -24,11 +24,32 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow the attackers to execute arbitrary code
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.802448");
+  script_version("$Revision: 11058 $");
+  script_cve_id("CVE-2012-2869", "CVE-2012-2868", "CVE-2012-2867", "CVE-2012-2866",
+                "CVE-2012-2865", "CVE-2012-2872", "CVE-2012-2871", "CVE-2012-2870");
+  script_bugtraq_id(55331);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 16:18:06 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-09-03 15:01:42 +0530 (Mon, 03 Sep 2012)");
+  script_name("Google Chrome Multiple Vulnerabilities - Sep12 (Linux)");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/50447");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55331");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2012/08/stable-channel-update_30.html");
+
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_dependencies("gb_google_chrome_detect_lin.nasl");
+  script_require_keys("Google-Chrome/Linux/Ver");
+  script_tag(name:"impact", value:"Successful exploitation could allow the attackers to execute arbitrary code
   or cause a denial of service.
-  Impact Level: System/Application";
-tag_affected = "Google Chrome version prior to 21.0.1180.89 on Linux";
-tag_insight = "Multiple flaws are due to
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Google Chrome version prior to 21.0.1180.89 on Linux");
+  script_tag(name:"insight", value:"Multiple flaws are due to
   - Out-of-bounds read in line breaking
   - Bad cast with run-ins.
   - Browser crash with SPDY.
@@ -36,38 +57,11 @@ tag_insight = "Multiple flaws are due to
   - Avoid stale buffer in URL loading.
   - Lower severity memory management issues in XPath
   - Bad cast in XSL transforms.
-  - XSS in SSL interstitial.";
-tag_solution = "Upgrade to the Google Chrome 21.0.1180.89 or later,
-  For updates refer to http://www.google.com/chrome";
-tag_summary = "This host is installed with Google Chrome and is prone to multiple
-  vulnerabilities.";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.802448");
-  script_version("$Revision: 9352 $");
-  script_cve_id("CVE-2012-2869", "CVE-2012-2868", "CVE-2012-2867", "CVE-2012-2866",
-                "CVE-2012-2865", "CVE-2012-2872", "CVE-2012-2871", "CVE-2012-2870");
-  script_bugtraq_id(55331);
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-09-03 15:01:42 +0530 (Mon, 03 Sep 2012)");
-  script_name("Google Chrome Multiple Vulnerabilities - Sep12 (Linux)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/50447");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/55331");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2012/08/stable-channel-update_30.html");
-
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_category(ACT_GATHER_INFO);
-  script_family("General");
-  script_dependencies("gb_google_chrome_detect_lin.nasl");
-  script_require_keys("Google-Chrome/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  - XSS in SSL interstitial.");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 21.0.1180.89 or later,
+  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -76,16 +70,11 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-chromeVer = "";
-
-## Get the version from KB
 chromeVer = get_kb_item("Google-Chrome/Linux/Ver");
 if(!chromeVer){
   exit(0);
 }
 
-## Check for Google Chrome Version less than 21.0.1180.89
 if(version_is_less(version:chromeVer, test_version:"21.0.1180.89")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

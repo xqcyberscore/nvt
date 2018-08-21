@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_omni_secure_56575.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_omni_secure_56575.nasl 11049 2018-08-20 08:53:50Z asteins $
 #
 # Omni-Secure 'dir' Parameter Multiple File Disclosure Vulnerabilities
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103619");
- script_bugtraq_id(56575);
-  script_version("$Revision: 11003 $");
+  script_bugtraq_id(56575);
+  script_version("$Revision: 11049 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
@@ -37,7 +37,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56575");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-12-07 10:59:11 +0100 (Fri, 07 Dec 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

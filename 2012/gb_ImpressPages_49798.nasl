@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ImpressPages_49798.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_ImpressPages_49798.nasl 11049 2018-08-20 08:53:50Z asteins $
 #
 # ImpressPages CMS 'actions.php' Remote Code Execution Vulnerability
 #
@@ -25,49 +25,46 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "ImpressPages CMS is prone to a remote-code execution vulnerability.
-
-Exploiting this issue will allow attackers to execute arbitrary code
-within the context of the affected application.
-
-ImpressPages CMS 1.0.12 is vulnerable; other versions may also
-be affected.";
-
-tag_solution = "Vendor updates are available. Please see the references for more
-information.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103378");
- script_cve_id("CVE-2011-4932");
- script_bugtraq_id(49798);
- script_version("$Revision: 9352 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("ImpressPages CMS 'actions.php' Remote Code Execution Vulnerability");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/49798");
- script_xref(name : "URL" , value : "http://www.impresspages.org/");
- script_xref(name : "URL" , value : "http://www.impresspages.org/news/impresspages-1-0-13-security-release/");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521118");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-01-06 10:27:46 +0100 (Fri, 06 Jan 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_oid("1.3.6.1.4.1.25623.1.0.103378");
+  script_cve_id("CVE-2011-4932");
+  script_bugtraq_id(49798);
+  script_version("$Revision: 11049 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("ImpressPages CMS 'actions.php' Remote Code Execution Vulnerability");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49798");
+  script_xref(name:"URL", value:"http://www.impresspages.org/");
+  script_xref(name:"URL", value:"http://www.impresspages.org/news/impresspages-1-0-13-security-release/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/521118");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-01-06 10:27:46 +0100 (Fri, 06 Jan 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
+information.");
+  script_tag(name:"summary", value:"ImpressPages CMS is prone to a remote-code execution vulnerability.");
+
+  script_tag(name:"impact", value:"Exploiting this issue will allow attackers to execute arbitrary code
+within the context of the affected application.");
+
+  script_tag(name:"affected", value:"ImpressPages CMS 1.0.12 is vulnerable, other versions may also
+be affected.");
+  exit(0);
 }
 
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-   
+
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 

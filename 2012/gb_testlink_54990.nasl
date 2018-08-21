@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_testlink_54990.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_testlink_54990.nasl 11049 2018-08-20 08:53:50Z asteins $
 #
 # TestLink Multiple Security Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:teamst:testlink";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103536");
- script_bugtraq_id(54990);
+  script_bugtraq_id(54990);
   script_tag(name:"cvss_base", value:"7.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:P/A:N");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11049 $");
 
   script_name("TestLink Multiple Security Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54990");
   script_xref(name:"URL", value:"http://www.teamst.org/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-08-15 10:10:37 +0200 (Wed, 15 Aug 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

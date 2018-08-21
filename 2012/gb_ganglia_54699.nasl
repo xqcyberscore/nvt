@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ganglia_54699.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_ganglia_54699.nasl 11049 2018-08-20 08:53:50Z asteins $
 #
 # Ganglia PHP Code Execution Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:ganglia:ganglia-web";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103535");
- script_bugtraq_id(54699);
+  script_bugtraq_id(54699);
   script_cve_id("CVE-2012-3448");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11049 $");
 
   script_name("Ganglia PHP Code Execution Vulnerability");
 
@@ -42,7 +42,7 @@ if (description)
   script_xref(name:"URL", value:"http://ganglia.sourceforge.net/");
   script_xref(name:"URL", value:"http://console-cowboys.blogspot.de/2012/07/extending-your-ganglia-install-with.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-08-13 12:40:50 +0200 (Mon, 13 Aug 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

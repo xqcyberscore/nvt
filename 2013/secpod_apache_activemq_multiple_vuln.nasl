@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_activemq_multiple_vuln.nasl 7430 2017-10-13 12:51:38Z cfischer $
+# $Id: secpod_apache_activemq_multiple_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # Apache ActiveMQ Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903306");
-  script_version("$Revision: 7430 $");
+  script_version("$Revision: 11056 $");
   script_cve_id("CVE-2012-6092", "CVE-2012-6551", "CVE-2013-3060");
   script_bugtraq_id(59400, 59401, 59402);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-13 14:51:38 +0200 (Fri, 13 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-04-27 12:08:18 +0530 (Sat, 27 Apr 2013)");
   script_name("Apache ActiveMQ Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -48,15 +48,13 @@ if(description)
   script_xref(name:"URL", value:"http://activemq.apache.org/activemq-580-release.html");
   script_xref(name:"URL", value:"https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12311210&version=12323282");
 
-  tag_impact = "Successful exploitation will allow attacker to execute arbitrary HTML and
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site
   and obtain sensitive information or cause a denial of service.
 
-  Impact Level: Application";
-
-  tag_affected = "Apache ActiveMQ before 5.8.0";
-
-  tag_insight = "- Flaw is due to an improper sanitation of user supplied input to the
+  Impact Level: Application");
+  script_tag(name:"affected", value:"Apache ActiveMQ before 5.8.0");
+  script_tag(name:"insight", value:"- Flaw is due to an improper sanitation of user supplied input to the
     webapp/websocket/chat.js and PortfolioPublishServlet.java scripts via
     'refresh' and 'subscribe message' parameters
 
@@ -64,20 +62,12 @@ if(description)
     for access.
 
   - Improper sanitation of HTTP request by the sample web applications in
-    the out of box broker when it is enabled.";
+    the out of box broker when it is enabled.");
+  script_tag(name:"solution", value:"Upgrade to version 5.8.0 or later,
 
-  tag_solution = "Upgrade to version 5.8.0 or later,
-
-  For updates refer to http://activemq.apache.org";
-
-  tag_summary = "This host is installed with Apache ActiveMQ and is prone to
-  multiple vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  For updates refer to http://activemq.apache.org");
+  script_tag(name:"summary", value:"This host is installed with Apache ActiveMQ and is prone to
+  multiple vulnerabilities.");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");

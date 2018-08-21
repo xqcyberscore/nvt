@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonexis_51994.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_sonexis_51994.nasl 11055 2018-08-20 12:23:58Z asteins $
 #
 # Sonexis ConferenceManager Multiple Information Disclosure and Security Bypass Vulnerabilities
 #
@@ -25,47 +25,44 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Sonexis ConferenceManager is prone to remote information-disclosure
-and security-bypass vulnerabilities.
-
-An attacker may exploit these issues to obtain sensitive information
-and bypass certain security restrictions.
-
-Sonexis ConferenceManager versions 10.0.40 and prior are vulnerable.";
-
-tag_solution = "Reportedly, the issue is fixed; however, Symantec has not confirmed
-this. Please contact the vendor for more information.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103420");
- script_bugtraq_id(51994);
- script_version ("$Revision: 9352 $");
- script_name("Sonexis ConferenceManager Multiple Information Disclosure and Security Bypass Vulnerabilities");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51994");
- script_xref(name : "URL" , value : "http://pentest.snosoft.com/2012/02/13/netragard-uncovers-0-days-in-sonexis-conferencemanager/");
- script_xref(name : "URL" , value : "http://www.sonexis.com/products/index.asp");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-02-15 10:59:59 +0100 (Wed, 15 Feb 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_oid("1.3.6.1.4.1.25623.1.0.103420");
+  script_bugtraq_id(51994);
+  script_version("$Revision: 11055 $");
+  script_name("Sonexis ConferenceManager Multiple Information Disclosure and Security Bypass Vulnerabilities");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51994");
+  script_xref(name:"URL", value:"http://pentest.snosoft.com/2012/02/13/netragard-uncovers-0-days-in-sonexis-conferencemanager/");
+  script_xref(name:"URL", value:"http://www.sonexis.com/products/index.asp");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 14:23:58 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-15 10:59:59 +0100 (Wed, 15 Feb 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"solution", value:"Reportedly, the issue is fixed, however, Symantec has not confirmed
+this. Please contact the vendor for more information.");
+  script_tag(name:"summary", value:"Sonexis ConferenceManager is prone to remote information-disclosure
+and security-bypass vulnerabilities.");
+
+  script_tag(name:"impact", value:"An attacker may exploit these issues to obtain sensitive information
+and bypass certain security restrictions.");
+
+  script_tag(name:"affected", value:"Sonexis ConferenceManager versions 10.0.40 and prior are vulnerable.");
 
  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port( default:80 );
 if( ! can_host_asp( port:port ) ) exit( 0 );
 
@@ -80,7 +77,7 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
       report = report_vuln_url( port:port, url:url );
       security_message( port:port, data:report );
       exit( 0 );
-    }  
+    }
   }
 }
 

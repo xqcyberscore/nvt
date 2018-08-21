@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2376_1.nasl 11042 2018-08-18 06:42:47Z santu $
+# $Id: gb_suse_2018_2376_1.nasl 11053 2018-08-20 11:27:29Z asteins $
 #
 # SuSE Update for libheimdal openSUSE-SU-2018:2376-1 (libheimdal)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851856");
-  script_version("$Revision: 11042 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-18 08:42:47 +0200 (Sat, 18 Aug 2018) $");
+  script_version("$Revision: 11053 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 13:27:29 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-17 05:57:36 +0200 (Fri, 17 Aug 2018)");
   script_cve_id("CVE-2017-17439");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for libheimdal openSUSE-SU-2018:2376-1 (libheimdal)");
   script_tag(name:"summary", value:"Check the version of libheimdal");

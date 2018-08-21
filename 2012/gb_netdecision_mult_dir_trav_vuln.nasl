@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netdecision_mult_dir_trav_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_netdecision_mult_dir_trav_vuln.nasl 11057 2018-08-20 13:59:30Z asteins $
 #
 # NetDecision Multiple Directory Traversal Vulnerabilities
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802618");
   script_bugtraq_id(52327);
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 11057 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:59:30 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-03-09 16:16:16 +0530 (Fri, 09 Mar 2012)");
   script_name("NetDecision Multiple Directory Traversal Vulnerabilities");
 
@@ -56,8 +56,8 @@ if(description)
   script_tag(name:"insight", value:"Multiple flaws are due to an input validation error in the
   NOCVision server and Traffic Grapher server when processing web requests
   can be exploited to disclose arbitrary files via directory traversal attacks.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
   features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The host is running NetDecision and is prone to multiple directory
@@ -73,10 +73,6 @@ include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-port = 0;
-banner = "";
-
 ports = get_kb_list("Services/www");
 ## Default NetDecision Ports
 if(!ports) ports = make_list(80, 8087, 8090);
@@ -84,12 +80,10 @@ if(!ports) ports = make_list(80, 8087, 8090);
 files = traversal_files("windows");
 
 foreach port (ports) {
-  ## Check Port State
   if(!get_port_state(port)) {
     continue;
   }
 
-  ## Confirm the application before trying exploit
   banner = get_http_banner(port: port);
   if(!banner || "Server: NetDecision-HTTP-Server" >!< banner) {
     continue;
@@ -97,10 +91,8 @@ foreach port (ports) {
 
   foreach file(keys(files)) {
 
-    ## Construct attack request
     path = "/.../.../.../.../.../.../.../.../" + files[file];
 
-    ## Check for patterns present in system.ini file in the response
     if(http_vuln_check(port:port, url:path, pattern:file,
                        check_header:TRUE)) {
       report = report_vuln_url( port:port, url:path);

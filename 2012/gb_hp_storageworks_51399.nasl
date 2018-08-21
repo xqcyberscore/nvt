@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_storageworks_51399.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_hp_storageworks_51399.nasl 11049 2018-08-20 08:53:50Z asteins $
 #
 # HP StorageWorks Default Accounts and Directory Traversal Vulnerabilities
 #
@@ -28,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103431");
- script_bugtraq_id(51399);
+  script_bugtraq_id(51399);
   script_cve_id("CVE-2011-4788", "CVE-2012-0697");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11049 $");
   script_name("HP StorageWorks Default Accounts and Directory Traversal Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 13:19:06 +0100 (Tue, 21 Feb 2012)");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51399");

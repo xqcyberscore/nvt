@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webcollab_http_resp_splitting_vuln.nasl 5791 2017-03-30 13:06:07Z cfi $
+# $Id: gb_webcollab_http_resp_splitting_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # WebCollab 'item' Parameter HTTP Response Splitting Vulnerability
 #
@@ -27,35 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803773");
-  script_version("$Revision: 5791 $");
+  script_version("$Revision: 11056 $");
   script_bugtraq_id(63247);
   script_cve_id("CVE-2013-2652");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-10-28 15:46:55 +0530 (Mon, 28 Oct 2013)");
   script_name("WebCollab 'item' Parameter HTTP Response Splitting Vulnerability");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to insert arbitrary HTTP
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTTP
   headers, which will be included in a response sent to the user.
 
   Impact Level: Application");
-  script_tag(name : "vuldetect" , value : "Send a crafted exploit string via HTTP GET request and check whether it
+  script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP GET request and check whether it
   is able to inject malicious data in header or not.");
-  script_tag(name : "insight" , value : "Input passed via the 'item' GET parameter to help/help_language.php is not
+  script_tag(name:"insight", value:"Input passed via the 'item' GET parameter to help/help_language.php is not
   properly sanitised before being returned to the user.");
-  script_tag(name : "solution" , value : "Upgrade to WebCollab 3.31 or later,
+  script_tag(name:"solution", value:"Upgrade to WebCollab 3.31 or later,
   For updates refer to http://webcollab.sourceforge.net ");
-  script_tag(name : "summary" , value : "This host is installed with WebCollab and is prone to HTTP response splitting
+  script_tag(name:"summary", value:"This host is installed with WebCollab and is prone to HTTP response splitting
   vulnerability.");
-  script_tag(name : "affected" , value : "WebCollab versions 3.30 and prior.");
+  script_tag(name:"affected", value:"WebCollab versions 3.30 and prior.");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/55235");
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Oct/119");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/123771");
-  script_xref(name : "URL" , value : "http://freecode.com/projects/webcollab/releases/358621");
-  script_xref(name : "URL" , value : "http://sourceforge.net/p/webcollab/mailman/message/31536457");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/webcollab-330-http-response-splitting");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/55235");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Oct/119");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/123771");
+  script_xref(name:"URL", value:"http://freecode.com/projects/webcollab/releases/358621");
+  script_xref(name:"URL", value:"http://sourceforge.net/p/webcollab/mailman/message/31536457");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/webcollab-330-http-response-splitting");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
@@ -72,12 +72,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-req = "";
-res = "";
-url = "";
-
 http_port = get_http_port(default:80);
 
 if(!can_host_php(port:http_port)){
@@ -90,14 +84,11 @@ foreach dir (make_list_unique("/", "/webcollab", "/WebCollab", cgi_dirs(port:htt
 
    res = http_get_cache(item:string(dir, "/index.php"),  port: http_port);
 
-   ## confirm the Application
    if(res && egrep(pattern:">WebCollab<", string:res))
    {
-     ## Construct Attack Request
      url = dir + '/help/help_language.php?item=%0d%0a%20FakeHeader%3a%20' +
            'Fakeheaderis%20injected&amp;lang=en&amp;type=help';
 
-     ## Check the response to confirm vulnerability
      if(http_vuln_check(port:http_port, url:url, pattern:"FakeHeader: Fakeheaderis injected",
        extra_check:">WebCollab<"))
      {

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jamwiki_num_param_xss_vuln.nasl 5950 2017-04-13 09:02:06Z teissa $
+# $Id: gb_jamwiki_num_param_xss_vuln.nasl 11057 2018-08-20 13:59:30Z asteins $
 #
 # JamWiki 'num' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,21 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802621");
-  script_version("$Revision: 5950 $");
+  script_version("$Revision: 11057 $");
   script_bugtraq_id(52829);
   script_cve_id("CVE-2012-1983");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-13 11:02:06 +0200 (Thu, 13 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:59:30 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-04-02 11:11:11 +0530 (Mon, 02 Apr 2012)");
   script_name("JamWiki 'num' Parameter Cross Site Scripting Vulnerability");
 
-  script_xref(name : "URL" , value : "http://secpod.org/blog/?p=493");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/48638");
-  script_xref(name : "URL" , value : "http://jamwiki.org/wiki/en/JAMWiki_1.1.6");
-  script_xref(name : "URL" , value : "http://jira.jamwiki.org/browse/JAMWIKI-76");
-  script_xref(name : "URL" , value : "http://secpod.org/advisories/SecPod_JamWiki_XSS_Vuln.txt");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/111410/jamwiki-xss.txt");
+  script_xref(name:"URL", value:"http://secpod.org/blog/?p=493");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/48638");
+  script_xref(name:"URL", value:"http://jamwiki.org/wiki/en/JAMWiki_1.1.6");
+  script_xref(name:"URL", value:"http://jira.jamwiki.org/browse/JAMWIKI-76");
+  script_xref(name:"URL", value:"http://secpod.org/advisories/SecPod_JamWiki_XSS_Vuln.txt");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/111410/jamwiki-xss.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
@@ -50,18 +50,18 @@ if(description)
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to insert arbitrary HTML
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTML
   and script code, which will be executed in a user's browser session in the
   context of an affected site.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "JAMWiki versions prior to 1.1.6");
-  script_tag(name : "insight" , value : "The flaw is due to an improper validation of user-supplied input to
+  script_tag(name:"affected", value:"JAMWiki versions prior to 1.1.6");
+  script_tag(name:"insight", value:"The flaw is due to an improper validation of user-supplied input to
   the 'num' parameter in Special:AllPages, which allows attackers to execute
   arbitrary HTML and script code in a user's browser session in the context
   of an affected site.");
-  script_tag(name : "solution" , value : "Upgrade to JAMWiki version 1.1.6 or later,
+  script_tag(name:"solution", value:"Upgrade to JAMWiki version 1.1.6 or later,
   For updates refer to http://jamwiki.org/wiki/en/JAMWiki");
-  script_tag(name : "summary" , value : "This host is running JAMWiki and is prone to cross-site scripting
+  script_tag(name:"summary", value:"This host is running JAMWiki and is prone to cross-site scripting
   vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -73,17 +73,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-res = "";
-req = "";
-dir = "";
-url = "";
-port = 0;
-
-## Get HTTP Port
 port = get_http_port(default:8080);
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/jamwiki", "/JAMWiki", "/wiki", cgi_dirs(port:port)))
 {
 
@@ -93,14 +84,11 @@ foreach dir (make_list_unique("/", "/jamwiki", "/JAMWiki", "/wiki", cgi_dirs(por
   req = http_get(item: dir + "/en/StartingPoints", port:port);
   res = http_keepalive_send_recv(port:port, data:req);
 
-  ## Confirm the application before trying exploit
   if(res && '>JAMWiki<' >< res)
   {
-    ## Construct the Attack Request
     url = dir + '/en/Special:AllPages?num="<script>alert(document.cookie)' +
           '</script>';
 
-    ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:port, url:url, check_header: TRUE,
        pattern:"<script>alert\(document.cookie\)</script>"))
     {

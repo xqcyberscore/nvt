@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_exprn_eval_sec_bypass_vuln.nasl 9927 2018-05-23 04:13:59Z ckuersteiner $
+# $Id: gb_oracle_glassfish_exprn_eval_sec_bypass_vuln.nasl 11058 2018-08-20 14:18:06Z asteins $
 #
 # Oracle GlassFish Server Expression Evaluation Security Bypass Vulnerability
 #
@@ -29,23 +29,23 @@ CPE = "cpe:/a:oracle:glassfish_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802927");
-  script_version("$Revision: 9927 $");
+  script_version("$Revision: 11058 $");
   script_bugtraq_id(50846);
   script_cve_id("CVE-2011-4358");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 06:13:59 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 16:18:06 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-08-07 13:44:27 +0530 (Tue, 07 Aug 2012)");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Oracle GlassFish Server Expression Evaluation Security Bypass Vulnerability");
 
-  script_xref(name: "URL", value: "http://secunia.com/advisories/49956/");
-  script_xref(name: "URL", value: "http://secunia.com/advisories/46959/");
-  script_xref(name: "URL", value: "http://java.net/jira/browse/JAVASERVERFACES-2247");
-  script_xref(name: "URL", value: "http://www.oracle.com/technetwork/topics/security/cpujul2012-392727.html");
-  script_xref(name: "URL", value: "http://www.oracle.com/technetwork/topics/security/cpujul2012verbose-392736.html#Oracle%20Sun%20Products%20Suit");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/49956/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/46959/");
+  script_xref(name:"URL", value:"http://java.net/jira/browse/JAVASERVERFACES-2247");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujul2012-392727.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujul2012verbose-392736.html#Oracle%20Sun%20Products%20Suit");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -55,18 +55,18 @@ if(description)
   script_require_keys("GlassFish/installed");
   script_require_ports("Services/www", 8080);
 
-  script_tag(name: "impact", value: "Successful exploitation will allow remote attackers to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
 script code in the browser of an unsuspecting user in the context of an affected application.");
 
-  script_tag(name: "affected", value: "Oracle GlassFish Server version 3.0.1 and 3.1.1");
+  script_tag(name:"affected", value:"Oracle GlassFish Server version 3.0.1 and 3.1.1");
 
-  script_tag(name: "insight", value: "An unspecified error in the application, allows remote attackers to bypass
+  script_tag(name:"insight", value:"An unspecified error in the application, allows remote attackers to bypass
 certain security restrictions.");
 
-  script_tag(name: "summary", value: "This host is running Oracle GlassFish Server and is prone to a security
+  script_tag(name:"summary", value:"This host is running Oracle GlassFish Server and is prone to a security
 bypass vulnerability.");
 
-  script_tag(name: "solution", value: "Apply the patch from below link,
+  script_tag(name:"solution", value:"Apply the patch from below link,
 http://www.oracle.com/technetwork/topics/security/cpujul2012-392727.html");
 
   exit(0);

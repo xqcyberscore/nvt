@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_maketext_rce_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_twiki_maketext_rce_vuln.nasl 11055 2018-08-20 12:23:58Z asteins $
 #
 # TWiki 'MAKETEXT' variable Remote Command Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:twiki:twiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802048");
-  script_version("$Revision: 5963 $");
+  script_version("$Revision: 11055 $");
   script_bugtraq_id(56950);
   script_cve_id("CVE-2012-6329", "CVE-2012-6330");
   script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 14:23:58 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-12-27 12:46:41 +0530 (Thu, 27 Dec 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("TWiki 'MAKETEXT' variable Remote Command Execution Vulnerability");
@@ -82,7 +82,6 @@ host = http_host_name(port:twikiPort);
 
 sandbox_page = "/Sandbox/OVTestPage123";
 
-## Confirm edit permission is there or not on Sandbox
 url1 = dir + "/edit" + sandbox_page + "?nowysiwyg=1";
 req1 = string("GET ", url1 , " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
@@ -92,7 +91,6 @@ req1 = string("GET ", url1 , " HTTP/1.1\r\n",
              "Content-Length: 0\r\n\r\n");
 res1 = http_keepalive_send_recv(port:twikiPort, data:req1);
 
-## Check for valid response and crypttoken
 if(!(res1 =~ "HTTP/1.. 200 OK" && 'name="crypttoken" value="' >< res1)){
   exit(0);
 }
@@ -150,7 +148,6 @@ req4 = string("POST ", url4 , " HTTP/1.1\r\n",
              post_data );
 res4 = http_keepalive_send_recv(port:twikiPort, data:req4);
 
-## Confirm is Twiki is vulnerable
 if(res1 =~ "HTTP/1.. 200 OK" && "}; `date`; {" >!< res3 &&
    egrep(string:res3, pattern:">OpenVASTest</a></span> HASH\(0x")){
   report = report_vuln_url( port:twikiPort, url:url1 );

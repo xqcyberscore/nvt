@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tomcat_http_bio_connector_info_disc_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_tomcat_http_bio_connector_info_disc_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # Apache Tomcat HTTP BIO Connector Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803780");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 11056 $");
   script_cve_id("CVE-2011-1475");
   script_bugtraq_id(47199);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-27 13:41:31 +0530 (Wed, 27 Nov 2013)");
   script_name("Apache Tomcat HTTP BIO Connector Information Disclosure Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -48,32 +48,20 @@ if(description)
   script_xref(name:"URL", value:"http://www.securitytracker.com/id?1025303");
   script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2011040175");
 
-  tag_summary = "This host is running Apache Tomcat and is prone to information disclosure
-  vulnerability.";
-
-  tag_vuldetect = "Get the installed version of Apache Tomcat with the help of detect NVT
-  and check the version is vulnerable or not.";
-
-  tag_insight = "The flaw is due to an improper handling of HTTP pipelining. A remote attacker
+  script_tag(name:"summary", value:"This host is running Apache Tomcat and is prone to information disclosure
+  vulnerability.");
+  script_tag(name:"vuldetect", value:"Get the installed version of Apache Tomcat with the help of detect NVT
+  and check the version is vulnerable or not.");
+  script_tag(name:"solution", value:"Upgrade Apache Tomcat version to 7.0.12 or later,
+  For updates refer to http://tomcat.apache.org");
+  script_tag(name:"insight", value:"The flaw is due to an improper handling of HTTP pipelining. A remote attacker
   could exploit this vulnerability to read responses intended for another user
-  and obtain sensitive information.";
-
-  tag_impact = "Successful exploitation will allow remote attackers to obtain sensitive
+  and obtain sensitive information.");
+  script_tag(name:"affected", value:"Apache Tomcat version 7.0.x before 7.0.12");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain sensitive
   information that may aid in further attacks.
 
-  Impact Level: Application";
-
-  tag_affected = "Apache Tomcat version 7.0.x before 7.0.12";
-
-  tag_solution = "Upgrade Apache Tomcat version to 7.0.12 or later,
-  For updates refer to http://tomcat.apache.org";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"impact", value:tag_impact);
+  Impact Level: Application");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

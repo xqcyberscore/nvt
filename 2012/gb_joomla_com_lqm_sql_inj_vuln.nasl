@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_lqm_sql_inj_vuln.nasl 10704 2018-08-01 10:06:44Z ckuersteiner $
+# $Id: gb_joomla_com_lqm_sql_inj_vuln.nasl 11049 2018-08-20 08:53:50Z asteins $
 #
 # Joomla lqm Component 'Itemid' Parameter SQL Injection Vulnerability
 #
@@ -29,16 +29,16 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802743");
-  script_version("$Revision: 10704 $");
+  script_version("$Revision: 11049 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 12:06:44 +0200 (Wed, 01 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-04-12 15:08:38 +0530 (Thu, 12 Apr 2012)");
 
   script_name("Joomla lqm Component 'Itemid' Parameter SQL Injection Vulnerability");
 
-  script_xref(name: "URL", value: "http://www.1337day.com/exploits/18034");
-  script_xref(name: "URL", value: "http://www.allinfosec.com/2012/04/10/webapps-0day-joomla-component-com_lqm-sql-injection-vulnerability/");
+  script_xref(name:"URL", value:"http://www.1337day.com/exploits/18034");
+  script_xref(name:"URL", value:"http://www.allinfosec.com/2012/04/10/webapps-0day-joomla-component-com_lqm-sql-injection-vulnerability/");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_active");
@@ -48,19 +48,19 @@ if(description)
   script_require_ports("Services/www", 80);
   script_require_keys("joomla/installed");
 
-  script_tag(name: "impact", value: "Successful exploitation will let attackers to manipulate SQL queries by
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL queries by
 injecting arbitrary SQL code.");
 
-  script_tag(name: "affected", value: "Joomla lqm Component.");
+  script_tag(name:"affected", value:"Joomla lqm Component.");
 
-  script_tag(name: "insight", value: "The flaw is due to an input passed via the 'Itemid' parameter to 'index.php'
+  script_tag(name:"insight", value:"The flaw is due to an input passed via the 'Itemid' parameter to 'index.php'
 (when 'option' is set to 'com_lqm') is not properly sanitised before being used in an SQL query.");
 
-  script_tag(name: "solution", value: "No known solution was made available for at least one year since the
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
 disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
 a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name: "summary", value: "This host is running Joomla lqm component and is prone to SQL injection
+  script_tag(name:"summary", value:"This host is running Joomla lqm component and is prone to SQL injection
 vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");

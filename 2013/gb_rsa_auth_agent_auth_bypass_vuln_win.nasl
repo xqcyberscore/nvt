@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rsa_auth_agent_auth_bypass_vuln_win.nasl 8160 2017-12-18 15:33:57Z cfischer $
+# $Id: gb_rsa_auth_agent_auth_bypass_vuln_win.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # RSA Authentication Agent Authentication Bypass Vulnerability (Windows)
 #
@@ -29,50 +29,37 @@ CPE = "cpe:/a:emc:rsa_authentication_agent";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803749");
-  script_version("$Revision: 8160 $");
+  script_version("$Revision: 11056 $");
   script_cve_id("CVE-2013-0931");
   script_bugtraq_id(58248);
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-18 16:33:57 +0100 (Mon, 18 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-28 11:21:00 +0530 (Wed, 28 Aug 2013)");
   script_name("RSA Authentication Agent Authentication Bypass Vulnerability (Windows)");
 
-  tag_summary = "The host is installed with RSA Authentication Agent and is prone to
-authentication bypass vulnerability.";
 
-  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight = "The flaw is triggered when a session is activated from the active screensaver
+  script_tag(name:"summary", value:"The host is installed with RSA Authentication Agent and is prone to
+authentication bypass vulnerability.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Upgrade to version 7.1.2 or later,
+For updates refer to http://www.rsa.com/node.aspx?id=2575");
+  script_tag(name:"insight", value:"The flaw is triggered when a session is activated from the active screensaver
 after the Quick PIN Unlock timeout has expired, which will result in an
-incorrect prompt for a PIN as opposed to a prompt for the full passcode.";
-
-  tag_impact = "Successful exploitation will allow local attacker to bypass certain security
+incorrect prompt for a PIN as opposed to a prompt for the full passcode.");
+  script_tag(name:"affected", value:"RSA Authentication Agent version 7.1.x before 7.1.2 on Windows.");
+  script_tag(name:"impact", value:"Successful exploitation will allow local attacker to bypass certain security
 restrictions and gain unauthorized privileged access.
 
-  Impact Level: System/Application";
-
-  tag_affected = "RSA Authentication Agent version 7.1.x before 7.1.2 on Windows.";
-
-  tag_solution = "Upgrade to version 7.1.2 or later,
-For updates refer to http://www.rsa.com/node.aspx?id=2575";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+  Impact Level: System/Application");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1028230");
-  script_xref(name : "URL" , value : "http://en.securitylab.ru/nvd/438433.php");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120606");
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Mar/att-0/ESA-2013-012.txt");
-  script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2013-03/att-0001/ESA-2013-012.txt");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1028230");
+  script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/438433.php");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/120606");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Mar/att-0/ESA-2013-012.txt");
+  script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2013-03/att-0001/ESA-2013-012.txt");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
@@ -86,22 +73,16 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-## Windows XP/2003 are vulnerable
 if(hotfix_check_sp(xp:4, xpx64:3, win2003:3, win2003x64:3) <= 0){
   exit(0);
 }
 
-## Variable Initialization
-rasAutVer = "";
-
-## Get version from KB
 rasAutVer = get_app_version(cpe:CPE);
-if(rasAutVer && rasAutVer =~ "^7.1")
+if(rasAutVer && rasAutVer =~ "^7\.1")
 {
-  ## Check for version
   if(version_is_less(version:rasAutVer, test_version:"7.1.2"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

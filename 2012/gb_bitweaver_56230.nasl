@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitweaver_56230.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_bitweaver_56230.nasl 11049 2018-08-20 08:53:50Z asteins $
 #
 # Bitweaver Multiple Cross Site Scripting and Local File Include Vulnerabilities
 #
@@ -30,18 +30,18 @@ CPE = "cpe:/a:bitweaver:bitweaver";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103593");
- script_bugtraq_id(56230);
+  script_bugtraq_id(56230);
   script_cve_id("CVE-2012-5192", "CVE-2012-5193");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11049 $");
 
   script_name("Bitweaver Multiple Cross Site Scripting and Local File Include Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56230");
   script_xref(name:"URL", value:"http://bitweaver.org");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-10-26 10:50:00 +0200 (Fri, 26 Oct 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

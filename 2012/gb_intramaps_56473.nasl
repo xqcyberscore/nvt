@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_intramaps_56473.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_intramaps_56473.nasl 11049 2018-08-20 08:53:50Z asteins $
 #
 # Intramaps Multiple Security Vulnerabilities
 #
@@ -28,14 +28,14 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103605");
- script_bugtraq_id(56473);
+  script_bugtraq_id(56473);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11049 $");
   script_name("Intramaps Multiple Security Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56473");
   script_xref(name:"URL", value:"http://www.stratsec.net/Research/Advisories/Intramaps-Multiple-Vulnerabilities-%28SS-2012-007%29");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-11-12 10:40:31 +0100 (Mon, 12 Nov 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 20 Aug 2018 09:26:28 +0200
+# Automatically created on:  Tue, 21 Aug 2018 09:11:40 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39009,6 +39009,8 @@
 2018/debian/deb_4273.nasl: GPLv2+
 2018/debian/deb_4274.nasl: GPLv2+
 2018/debian/deb_4275.nasl: GPLv2+
+2018/debian/deb_4276.nasl: GPLv2+
+2018/debian/deb_4277.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -41554,6 +41556,7 @@
 2018/samba/gb_samba_mult_vuln.nasl: GPLv2+
 2018/samsung/gb_samsung_syncthru_web_service_xss_n_csrf_vuln.nasl: GPLv2+
 2018/sangoma/gb_sangoma_nsc_rce_vuln.nasl: GPLv2+
+2018/sanyo/gb_sanyo_network_camera_default_credentials.nasl: GPLv2+
 2018/seagate/gb_seagate_personalcloud_dir_trav_vuln.nasl: GPLv2+
 2018/seagate/gb_seagate_personalcloud_rce_vuln.nasl: GPLv2+
 2018/sensiolabs/gb_sensiolabs_symfony_eol.nasl: GPLv2+
@@ -41593,6 +41596,7 @@
 2018/tomcat/gb_apache_tomcat_cors_filter_sec_bypass_vuln.nasl: GPLv2+
 2018/tomcat/gb_apache_tomcat_incor_doc_cgi_search_algo_vuln_lin.nasl: GPLv2+
 2018/tomcat/gb_apache_tomcat_incor_doc_cgi_search_algo_vuln_win.nasl: GPLv2+
+2018/tp-link/gb_tp_link_file_discl_vuln.nasl: GPLv2+
 2018/trendmicro/gb_trendmicro_3_2_mult_vuln.nasl: GPLv2+
 2018/trendmicro/gb_trendmicro_antivirus_plus_mult_vuln_may18_win.nasl: GPLv2+
 2018/trendmicro/gb_trendmicro_imsva_auth_bypass.nasl: GPLv2+
@@ -43326,6 +43330,7 @@ gb_samsung_iPOLis_manager_detect.nasl: GPLv2+
 gb_samsung_syncthru_web_service_detect.nasl: GPLv2+
 gb_samsung_web_viewer_detect.nasl: GPLv2+
 gb_sangoma_nsc_detect.nasl: GPLv2+
+gb_sanyo_network_camera_detect.nasl: GPLv2+
 gb_sap_diag_service_detect.nasl: GPLv2+
 gb_sap_management_console_detect.nasl: GPLv2+
 gb_sap_maxdb_detect.nasl: GPLv2+
@@ -59254,6 +59259,7 @@ gsf/2018/f5/gb_f5_big_ip_K65355492.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K70321874.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K71877858.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K72403108.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K74374841.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K75429050.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K75432956.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K75543432.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nameko_webmail_xss_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_nameko_webmail_xss_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # Nameko Webmail Cross-Site Scripting Vulnerability
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803826");
-  script_version("$Revision: 6093 $");
+  script_version("$Revision: 11056 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-07-08 14:53:58 +0530 (Mon, 08 Jul 2013)");
   script_name("Nameko Webmail Cross-Site Scripting Vulnerability");
 
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/122221/Nameko_Webmail_XSS.txt");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/nameko-webmail-cross-site-scripting");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/122221/Nameko_Webmail_XSS.txt");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/nameko-webmail-cross-site-scripting");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -43,15 +43,15 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML and
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Nameko Webmail version 0.10.146 and prior");
-  script_tag(name : "insight" , value : "Input passed via the 'fontsize' parameter to 'nameko.php' php script is not
+  script_tag(name:"affected", value:"Nameko Webmail version 0.10.146 and prior");
+  script_tag(name:"insight", value:"Input passed via the 'fontsize' parameter to 'nameko.php' php script is not
   properly sanitised before being returned to the user.");
-  script_tag(name : "solution" , value : "Upgrade to version 1.9.999.10 or later
+  script_tag(name:"solution", value:"Upgrade to version 1.9.999.10 or later
   For updates refer to http://sourceforge.net/projects/nameko");
-  script_tag(name : "summary" , value : "This host is running Nameko Webmail and is prone to cross-site
+  script_tag(name:"summary", value:"This host is running Nameko Webmail and is prone to cross-site
   scripting vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -63,16 +63,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-port = "";
-req = "";
-res = "";
-url = "";
-
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
@@ -86,15 +78,12 @@ foreach dir (make_list_unique("/", "/NamekoWebmail", "/webmail", cgi_dirs(port:p
   req = http_get(item:string(dir,"/nameko.php"),  port:port);
   res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
 
-  ## Confirm the application
   if('>Nameko' >< res && 'Shelf<' >< res)
   {
-    ## Construct Attack Request
     url = dir + '/nameko.php?fontsize=22pt%3B%2B%7D%2B%3C%2Fstyle%3E%3C'+
                  'script%3Ealert%28document.cookie%29%3C%2Fscript%3E%3C'+
                                    'style%3Ebody%2B%7B%2Bfont-size%3A22';
 
-    ## Check the response to confirm vulnerability
     if(http_vuln_check(port: port, url: url, check_header: TRUE,
        pattern: "<script>alert\(document.cookie\)</script>",
        extra_check: "font-size:22pt"))

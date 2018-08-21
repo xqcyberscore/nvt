@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerox_printers_default_credentials.nasl 7272 2017-09-26 10:49:03Z cfischer $
+# $Id: gb_xerox_printers_default_credentials.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # Xerox Printer Default Account Authentication Bypass Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103649");
-  script_version("$Revision: 7272 $");
+  script_version("$Revision: 11056 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 12:49:03 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-01-30 15:51:27 +0100 (Wed, 30 Jan 2013)");
   script_name("Xerox Printer Default Account Authentication Bypass Vulnerability");
   script_category(ACT_ATTACK);
@@ -59,7 +59,8 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc"); # For http_keepalive_send_recv in check_xerox_default_login
+# For http_keepalive_send_recv in check_xerox_default_login
+include("http_keepalive.inc");
 include("misc_func.inc"); # For base64() in check_xerox_default_login
 include("xerox_printers.inc");
 

