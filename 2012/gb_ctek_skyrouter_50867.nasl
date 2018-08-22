@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ctek_skyrouter_50867.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_ctek_skyrouter_50867.nasl 11072 2018-08-21 14:38:15Z asteins $
 #
 # Ctek SkyRouter 4200 and 4300 Series Routers Remote Arbitrary Command Execution Vulnerability
 #
@@ -25,44 +25,47 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Ctek SkyRouter 4200 and 4300 series routers are prone to a remote
-arbitrary command-execution vulnerability because it fails to
-adequately sanitize user-supplied input.
-
-Remote attackers can exploit this issue to execute arbitrary shell
-commands with superuser privileges, which may facilitate a complete
-compromise of the affected device.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103479");
- script_bugtraq_id(50867);
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 9352 $");
- script_cve_id("CVE-2011-5010");
+  script_oid("1.3.6.1.4.1.25623.1.0.103479");
+  script_bugtraq_id(50867);
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11072 $");
+  script_cve_id("CVE-2011-5010");
 
- script_name("Ctek SkyRouter 4200 and 4300 Series Routers Remote Arbitrary Command Execution Vulnerability");
+  script_name("Ctek SkyRouter 4200 and 4300 Series Routers Remote Arbitrary Command Execution Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/50867");
- script_xref(name : "URL" , value : "http://www.ctekproducts.com/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50867");
+  script_xref(name:"URL", value:"http://www.ctekproducts.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-04-25 15:07:13 +0200 (Wed, 25 Apr 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-04-25 15:07:13 +0200 (Wed, 25 Apr 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"summary", value:"Ctek SkyRouter 4200 and 4300 series routers are prone to a remote
+arbitrary command-execution vulnerability because it fails to
+adequately sanitize user-supplied input.");
+
+  script_tag(name:"impact", value:"Remote attackers can exploit this issue to execute arbitrary shell
+commands with superuser privileges, which may facilitate a complete
+compromise of the affected device.");
+
+script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+
+  exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
-   
+
+
 port = get_http_port(default:80);
 
 req = http_get(item:"/apps/a3/cfg_ethping.cgi", port:port);
@@ -84,7 +87,7 @@ res = http_send_recv(port:port, data:req);
 if(egrep(pattern:"uid=[0-9]+.*gid=[0-9]+.*", string:res)) {
   security_message(port:port);
   exit(0);
-}  
+}
 
 
 exit(0);

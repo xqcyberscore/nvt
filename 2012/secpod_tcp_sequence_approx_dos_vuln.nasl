@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tcp_sequence_approx_dos_vuln.nasl 10411 2018-07-05 10:15:10Z cfischer $
+# $Id: secpod_tcp_sequence_approx_dos_vuln.nasl 11066 2018-08-21 10:57:20Z asteins $
 #
 # TCP Sequence Number Approximation Reset Denial of Service Vulnerability
 #
@@ -28,11 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902815");
   script_bugtraq_id(10183);
-  script_version("$Revision: 10411 $");
+  script_version("$Revision: 11066 $");
   script_cve_id("CVE-2004-0230");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-03-01 15:15:15 +0530 (Thu, 01 Mar 2012)");
   script_name("TCP Sequence Number Approximation Reset Denial of Service Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -40,7 +40,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("secpod_open_tcp_ports.nasl", "global_settings.nasl");
   script_mandatory_keys("TCP/PORTS");
-  script_exclude_keys("keys/islocalhost","keys/TARGET_IS_IPV6");
+  script_exclude_keys("keys/islocalhost", "keys/TARGET_IS_IPV6");
 
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/15886");
   script_xref(name:"URL", value:"http://www.us-cert.gov/cas/techalerts/TA04-111A.html");
@@ -75,7 +75,7 @@ if(description)
   exit(0);
 }
 
-include("global_settings.inc");
+
 include("misc_func.inc");
 
 if(TARGET_IS_IPV6()){

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_crowd_53595.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_atlassian_crowd_53595.nasl 11072 2018-08-21 14:38:15Z asteins $
 #
-# Atlassian Crowd XML Parsing Denial of Service Vulnerability 
+# Atlassian Crowd XML Parsing Denial of Service Vulnerability
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -25,41 +25,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Crowd before 2.0.9, 2.1 before 2.1.2, 2.2 before 2.2.9, 2.3 before 2.3.7, and 2.4
-before 2.4.1 do not properly restrict the capabilities of third-party XML parsers,
-which allows remote attackers to read arbitrary files or cause a denial of
-service (resource consumption) via unspecified vectors.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103512");
- script_bugtraq_id(53595);
- script_cve_id("CVE-2012-2926");
- script_tag(name:"cvss_base", value:"6.4");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
- script_version ("$Revision: 9352 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103512");
+  script_bugtraq_id(53595);
+  script_cve_id("CVE-2012-2926");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
+  script_version("$Revision: 11072 $");
 
- script_name("Atlassian Crowd XML Parsing Denial of Service Vulnerability");
+  script_name("Atlassian Crowd XML Parsing Denial of Service Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53595");
- script_xref(name : "URL" , value : "https://jira.atlassian.com/browse/JRA-27719");
- script_xref(name : "URL" , value : "http://www.atlassian.com/software/jira/");
- script_xref(name : "URL" , value : "http://confluence.atlassian.com/display/JIRA/JIRA+Security+Advisory+2012-05-17");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53595");
+  script_xref(name:"URL", value:"https://jira.atlassian.com/browse/JRA-27719");
+  script_xref(name:"URL", value:"http://www.atlassian.com/software/jira/");
+  script_xref(name:"URL", value:"http://confluence.atlassian.com/display/JIRA/JIRA+Security+Advisory+2012-05-17");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-07-11 15:40:23 +0200 (Wed, 11 Jul 2012)");
- script_category(ACT_ATTACK);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-07-11 15:40:23 +0200 (Wed, 11 Jul 2012)");
+  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 8095);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_family("Web application abuses");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 8095);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"Crowd before 2.0.9, 2.1 before 2.1.2, 2.2 before 2.2.9, 2.3 before 2.3.7, and 2.4
+before 2.4.1 do not properly restrict the capabilities of third-party XML parsers,
+which allows remote attackers to read arbitrary files or cause a denial of
+service (resource consumption) via unspecified vectors.");
  exit(0);
 }
 
@@ -76,7 +73,7 @@ buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
 if("Invalid SOAP request" >!< buf)exit(0);
 
-files = traversal_files(); 
+files = traversal_files();
 host = http_host_name(port:port);
 
 entity =  rand_str(length:8,charset:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
@@ -124,7 +121,7 @@ foreach file (keys(files)) {
 </soap:SOAPAttribute>
 </soap:attributes>';
 
-  len = strlen(soap);  
+  len = strlen(soap);
 
   req = string("POST ",url," HTTP/1.1\r\n",
                "Host: ", host,"\r\n",
@@ -134,14 +131,14 @@ foreach file (keys(files)) {
                "Content-Length: ", len,"\r\n",
                "\r\n",
                soap);
- 
+
   result = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-  
-  if(egrep(pattern:file, string:result)) { 
+
+  if(egrep(pattern:file, string:result)) {
     security_message(port:port);
     exit(0);
-  }  
+  }
 
-}  
+}
 
 exit(0);

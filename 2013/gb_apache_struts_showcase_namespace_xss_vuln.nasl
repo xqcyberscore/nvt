@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_showcase_namespace_xss_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_apache_struts_showcase_namespace_xss_vuln.nasl 11067 2018-08-21 11:27:43Z mmartin $
 #
 # Apache Struts2 showcase namespace XSS Vulnerability
 #
@@ -29,40 +29,37 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803958");
-  script_version("$Revision: 6115 $");
+  script_version("$Revision: 11067 $");
   script_cve_id("CVE-2013-6348");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-10-29 15:36:50 +0530 (Tue, 29 Oct 2013)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts2 showcase namespace XSS Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with Apache Struts2
+  script_tag(name:"summary", value:"This host is installed with Apache Struts2
   showcase and is prone to cross-site scripting Vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted exploit string via HTTP
+  script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP
   GET request and check whether it is able to read the string or not.");
 
-  script_tag(name: "insight" , value:"An error exists in the application which fails
+  script_tag(name:"insight", value:"An error exists in the application which fails
   to properly sanitize user-supplied input to 'namespace' parameter before using it.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers
   to steal the victim's cookie-based authentication credentials.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Apache Struts2 2.3.15.3");
+  script_tag(name:"affected", value:"Apache Struts2 2.3.15.3");
 
-  script_tag(name: "solution" , value:"No solution or patch was made available for at
-  least one year since disclosure of this vulnerability. Likely none will be provided
-  anymore. General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/struts-23153-cross-site-scripting");
-  script_xref(name : "URL" , value : "http://www.securityhome.eu/exploits/exploit.php?eid=156451617526e27dd866c97.43571723");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/struts-23153-cross-site-scripting");
+  script_xref(name:"URL", value:"http://www.securityhome.eu/exploits/exploit.php?eid=156451617526e27dd866c97.43571723");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_dependencies("gb_apache_struts2_detection.nasl");
@@ -76,12 +73,6 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-asport = "";
-asreq = "";
-asres = "";
-
-## Get HTTP Port
 if(!asport = get_app_port(cpe:CPE)){
  exit(0);
 }
@@ -94,11 +85,9 @@ if(!dir = get_app_location(cpe:CPE, port:asport)){
 asreq = http_get(item:string(dir,"/showcase.action"), port:asport);
 asres = http_keepalive_send_recv(port:asport, data:asreq);
 
-## Confirm the application
 if(asres && "The Apache Software Foundation" >< asres && "Showcase<" >< asres &&
    "struts" >< asres)
 {
-  ## Construct the attack request
   url = dir + "/config-browser/actionNames.action?namespace=<script>alert(document.cookie);</script>";
   match = "<script>alert\(document.cookie\);</script>";
 

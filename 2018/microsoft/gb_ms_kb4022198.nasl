@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4022198.nasl 10988 2018-08-15 14:37:17Z santu $
+# $Id: gb_ms_kb4022198.nasl 11070 2018-08-21 13:36:26Z santu $
 #
 # Microsoft Office 2010 Service Pack 2 Information Disclosure Vulnerability (KB4022198)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813275");
-  script_version("$Revision: 10988 $");
+  script_version("$Revision: 11070 $");
   script_cve_id("CVE-2018-8378");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 16:37:17 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 15:36:26 +0200 (Tue, 21 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 10:14:45 +0530 (Wed, 15 Aug 2018)");
   script_name("Microsoft Office 2010 Service Pack 2 Information Disclosure Vulnerability (KB4022198)");
 
@@ -105,7 +105,7 @@ foreach key(key_list)
     continue;
   }
 
-  if(version_in_range(version:offexeVer, test_version:"14.0", test_version2:"14.0.7212.5000"))
+  if(version_in_range(version:offexeVer, test_version:"14.0", test_version2:"14.0.7212.4999"))
   {
     report = report_fixed_ver(file_checked:offPath + "\Mso.dll",
                               file_version:offexeVer, vulnerable_range:"14.0 - 14.0.7212.4999");

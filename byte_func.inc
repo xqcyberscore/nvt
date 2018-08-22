@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: byte_func.inc 4659 2016-12-02 11:02:03Z cfi $
+# $Id: byte_func.inc 11068 2018-08-21 11:51:41Z emoss $
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -23,7 +23,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 # USA.
 #
-# $Revision: 4659 $
+# $Revision: 11068 $
 #
 ###############################################################################
 
@@ -172,5 +172,28 @@ function dec2bin( dec ) {
   while( strlen( res ) < 8 ) {
     res = string( 0 ) + res;
   }
+  return res;
+}
+
+function bin2dec( bin ) {
+
+  local_var res, bin, d, c;
+
+  if( isnull( bin ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#bin#-#bin2dec" );
+
+  bin = string(bin);
+
+  if( bin == '0' )
+    return 0;
+
+  d = 0;
+  for( c = strlen(bin)-1; c >= 0; c-- ){
+    if(bin[c] != '0' && bin[c] != '1'){
+      return -1;
+    }
+    res += int( bin[c] ) * (2 ** d);
+    d++;
+  }
+
   return res;
 }

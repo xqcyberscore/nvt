@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendnet_cameras_51922.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_trendnet_cameras_51922.nasl 11067 2018-08-21 11:27:43Z mmartin $
 #
 # Multiple Trendnet Camera Products Remote Security Bypass Vulnerability
 #
@@ -25,15 +25,42 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103791";
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103791");
+  script_bugtraq_id(51922);
+  script_version("$Revision: 11067 $");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
-tag_insight = "On vulnerable devices it is possible to access the livestream 
-without any authentication by requesting http://<ip-of camera>/anony/mjpg.cgi.";
+  script_name("Multiple Trendnet Camera Products Remote Security Bypass Vulnerability");
 
-tag_impact = "Successfully exploiting this issue will allow remote attackers to gain
-access to a live stream from the camera.";
 
-tag_affected = "Trendnet TV-VS1P V1.0R 0
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51922");
+  script_xref(name:"URL", value:"http://www.trendnet.com/press/view.asp?id=1959");
+  script_xref(name:"URL", value:"http://www.trendnet.com/products/proddetail.asp?prod=145_TV-IP110W");
+  script_xref(name:"URL", value:"http://console-cowboys.blogspot.com.au/2012/01/trendnet-cameras-i-always-feel-like.html");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-09-19 18:42:42 +0200 (Thu, 19 Sep 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("netcam/banner");
+
+  script_tag(name:"impact", value:"Successfully exploiting this issue will allow remote attackers to gain
+access to a live stream from the camera.");
+  script_tag(name:"vuldetect", value:"Test if it is possible to access /anony/mjpg.cgi without authentication");
+  script_tag(name:"insight", value:"On vulnerable devices it is possible to access the livestream
+without any authentication by requesting http://<ip-of camera>/anony/mjpg.cgi.");
+  script_tag(name:"solution", value:"Vendor updates are available.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Multiple Trendnet Camera products are prone to a remote security-
+bypass vulnerability.");
+  script_tag(name:"affected", value:"Trendnet TV-VS1P V1.0R 0
 Trendnet TV-VS1 1.0R 0
 Trendnet TV-IP422WN V1.0R 0
 Trendnet TV-IP422W A1.0R 0
@@ -54,55 +81,16 @@ Trendnet TV-IP121W A1.0R 0
 Trendnet TV-IP110WN 2.0R 0
 Trendnet TV-IP110WN 1.0R
 Trendnet TV-IP110W A1.0R 0
-Trendnet TV-IP110 A1.0R 0";
-
-tag_summary = "Multiple Trendnet Camera products are prone to a remote security-
-bypass vulnerability.";
-
-tag_solution = "Vendor updates are available.";
-tag_vuldetect = "Test if it is possible to access /anony/mjpg.cgi without authentication";
-
-if (description)
-{
- script_oid(SCRIPT_OID);
- script_bugtraq_id(51922);
- script_version ("$Revision: 6698 $");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-
- script_name("Multiple Trendnet Camera Products Remote Security Bypass Vulnerability");
-
-
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51922");
- script_xref(name:"URL", value:"http://www.trendnet.com/press/view.asp?id=1959");
- script_xref(name:"URL", value:"http://www.trendnet.com/products/proddetail.asp?prod=145_TV-IP110W");
- script_xref(name:"URL", value:"http://console-cowboys.blogspot.com.au/2012/01/trendnet-cameras-i-always-feel-like.html");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
- script_tag(name:"creation_date", value:"2013-09-19 18:42:42 +0200 (Thu, 19 Sep 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("netcam/banner");
-
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+Trendnet TV-IP110 A1.0R 0");
 
  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
+
+
 port = get_http_port(default:80);
 
 banner = get_http_banner(port:port);
@@ -116,7 +104,7 @@ if(buf =~ "HTTP/1.. 200 OK" && "x-mixed-replace" >< buf && "image/jpeg" >< buf) 
   security_message(port:port);
   exit(0);
 
-}  
+}
 
 exit(99);
 

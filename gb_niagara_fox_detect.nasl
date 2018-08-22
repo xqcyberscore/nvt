@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_niagara_fox_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_niagara_fox_detect.nasl 11075 2018-08-22 05:20:40Z ckuersteiner $
 #
 # Niagara Fox Protocol Detection
 #
@@ -8,7 +8,7 @@
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
 #
 # Copyright:
-# Copyright (c) 2016 Greenbone Networks GmbH
+# Copyright (c) 2017 Greenbone Networks GmbH
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140278");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11075 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 07:20:40 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2017-08-07 10:20:07 +0700 (Mon, 07 Aug 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -45,7 +45,7 @@ automation systems.");
 
   script_category(ACT_GATHER_INFO);
 
-  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("Service detection");
   script_dependencies("find_service.nasl");
   script_require_ports(1911);
@@ -76,6 +76,7 @@ if (res !~ "^fox a 0")
   exit(0);
 
 set_kb_item(name: "niagara_fox/detected", value: TRUE);
+set_kb_item(name: "tridium_niagara/detected", value: TRUE);
 
 # split the response into lines (separator is 0x0a)
 pos = 0;

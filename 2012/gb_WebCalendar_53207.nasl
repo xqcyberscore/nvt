@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_WebCalendar_53207.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_WebCalendar_53207.nasl 11072 2018-08-21 14:38:15Z asteins $
 #
 # WebCalendar Local File Include and PHP code Injection Vulnerabilities
 #
@@ -25,50 +25,47 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "WebCalendar is prone to multiple input-validation vulnerabilities
-because it fails to properly sanitize user-supplied input.
-
-An attacker can exploit these issues to inject arbitrary PHP code and
-include and execute arbitrary files from the vulnerable system in the
-context of the affected application. Other attacks are also possible.
-
-WebCalendar 1.2.4 is vulnerable; other versions may also be affected.";
-
-tag_solution = "Reports indicate vendor updates are available. Please contact the
-vendor for more information.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103476");
- script_bugtraq_id(53207);
- script_cve_id("CVE-2012-1495","CVE-2012-1496");
- script_version ("$Revision: 9352 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_name("WebCalendar Local File Include and PHP code Injection Vulnerabilities");
+  script_oid("1.3.6.1.4.1.25623.1.0.103476");
+  script_bugtraq_id(53207);
+  script_cve_id("CVE-2012-1495", "CVE-2012-1496");
+  script_version("$Revision: 11072 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("WebCalendar Local File Include and PHP code Injection Vulnerabilities");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53207");
- script_xref(name : "URL" , value : "http://sourceforge.net/projects/webcalendar/?source=directory");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/522460");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53207");
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/webcalendar/?source=directory");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/522460");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-04-25 09:40:31 +0200 (Wed, 25 Apr 2012)");
- script_category(ACT_ATTACK);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-04-25 09:40:31 +0200 (Wed, 25 Apr 2012)");
+  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("webcalendar_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("webcalendar/installed");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_family("Web application abuses");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("webcalendar_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("webcalendar/installed");
+  script_tag(name:"solution", value:"Reports indicate vendor updates are available. Please contact the
+vendor for more information.");
+  script_tag(name:"summary", value:"WebCalendar is prone to multiple input-validation vulnerabilities
+because it fails to properly sanitize user-supplied input.");
+
+  script_tag(name:"impact", value:"An attacker can exploit these issues to inject arbitrary PHP code and
+include and execute arbitrary files from the vulnerable system in the
+context of the affected application. Other attacks are also possible.");
+
+  script_tag(name:"affected", value:"WebCalendar 1.2.4 is vulnerable, other versions may also be affected.");
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
-   
+
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
@@ -106,6 +103,6 @@ if(http_vuln_check(port:port,url:url,pattern:"uid=[0-9]+.*gid=[0-9]+.*")) {
 
 } else {
   exit(99);
-}  
+}
 
 exit(0);

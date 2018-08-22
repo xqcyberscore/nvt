@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_windows_iexpress_untrusted_search_path_vuln.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_windows_iexpress_untrusted_search_path_vuln.nasl 11074 2018-08-22 04:01:22Z ckuersteiner $
 #
 # Windows IExpress Untrusted Search Path Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813808");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 11074 $");
   script_cve_id("CVE-2018-0598");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 06:01:22 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-02 11:18:18 +0530 (Thu, 02 Aug 2018)");
   script_name("Windows IExpress Untrusted Search Path Vulnerability");
 

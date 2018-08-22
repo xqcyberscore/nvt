@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_nsec_encryption_types_kerberos.nasl 10740 2018-08-02 14:13:50Z emoss $
+# $Id: win_nsec_encryption_types_kerberos.nasl 11068 2018-08-21 11:51:41Z emoss $
 #
 # Check value for Network security: Configure encryption types allowed for Kerberos
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109232");
-  script_version("$Revision: 10740 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 16:13:50 +0200 (Thu, 02 Aug 2018) $");
+  script_version("$Revision: 11068 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:51:41 +0200 (Tue, 21 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-12 10:28:28 +0200 (Tue, 12 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,9 +38,14 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
-  script_add_preference(name:"Value", type:"radio", value:"0;1");
+  script_add_preference(name:"DES-CBC-CRC", type:"radio", value:"Disabled;Enabled");
+  script_add_preference(name:"DES-CBC-MD5", type:"radio", value:"Disabled;Enabled");
+  script_add_preference(name:"RC4-HMAC", type:"radio", value:"Disabled;Enabled");
+  script_add_preference(name:"AES128-CTS-HMAC-SHA1-96", type:"radio", value:"Enabled;Disabled");
+  script_add_preference(name:"AES256-CTS-HMAC-SHA1-96", type:"radio", value:"Enabled;Disabled");
+  script_add_preference(name:"Future encryption types", type:"radio", value:"Enabled;Disabled");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Network security: Configure encryption types allowed for Kerberos' on Windows
 hosts (at least Windows 7).
 
@@ -53,6 +58,7 @@ applications.");
 
 include("smb_nt.inc");
 include("policy_functions.inc");
+include("byte_func.inc");
 
 if(!get_kb_item("SMB/WindowsVersion")){
   policy_logging(text:'Host is no Microsoft Windows System or it is not possible
@@ -67,19 +73,63 @@ Operating System.');
   exit(0);
 }
 
+FutureEncryptionTypes = script_get_preference('Future encryption types');
+AES256 = script_get_preference('AES256-CTS-HMAC-SHA1-96');
+AES128 = script_get_preference('AES128-CTS-HMAC-SHA1-96');
+RC4HMAC = script_get_preference('RC4-HMAC');
+MD5 = script_get_preference('DES-CBC-MD5');
+CRC = script_get_preference('DES-CBC-CRC');
+
+if(FutureEncryptionTypes == 'Enabled'){
+  default += 'Future encryption types';
+  bin = '11111111111111111111111111';
+}else{
+  bin = '0';
+}
+if(AES256 == 'Enabled'){
+  default += ';AES256-CTS-HMAC-SHA1-96';
+  bin += '1';
+}else{
+  bin += '0';
+}
+if(AES128 == 'Enabled'){
+  default += ';AES128-CTS-HMAC-SHA1-96';
+  bin += '1';
+}else{
+  bin += '0';
+}
+if(RC4HMAC == 'Enabled'){
+  default += ';RC4-HMAC';
+  bin += '1';
+}else{
+  bin += '0';
+}
+if(MD5 == 'Enabled'){
+  default += ';ADES-CBC-MD5';
+  bin += '1';
+}else{
+  bin += '0';
+}
+if(CRC == 'Enabled'){
+  default += ';DES-CBC-CRC';
+  bin += '1';
+}else{
+  bin += '0';
+}
+
 title = 'Network security: Configure encryption types allowed for Kerberos';
 fixtext = 'Set following UI path accordingly:
 Computer Configuration/Windows Settings/Security Settings/Local Policies/Security Options/' + title;
 type = 'HKLM';
-key = 'Sofware\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Kerberos\\Parameters';
+key = 'Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Kerberos\\Parameters';
 item = 'SupportedEncryptionTypes';
-default = script_get_preference('Value');
+def = bin2dec(bin:bin);
 value = registry_get_dword(key:key, item:item, type:type);
 if(!value){
-  val = '0';
+  value = '0';
 }
 
-if(int(value) == int(default)){
+if(int(value) == int(def)){
   compliant = 'yes';
 }else{
   compliant = 'no';
@@ -92,6 +142,5 @@ policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
 policy_set_kb(val:value);
 policy_set_compliance(compliant:compliant);
-policy_control_name(title:title);
 
 exit(0);

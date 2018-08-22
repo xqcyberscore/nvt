@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2013-0004_remote.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_VMSA-2013-0004_remote.nasl 11069 2018-08-21 12:29:19Z mmartin $
 #
 # VMSA-2013-0004 VMware ESXi security update for third party library (remote check)
 #
@@ -25,44 +25,36 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote ESXi is missing one or more security related Updates
-from VMSA-2013-0004.";
-
-tag_affected = "ESXi 5.1 without patch ESXi510-201304101
-ESXi 5.0 without patch ESXi500-201303101
-ESXi 4.0 without patch ESXi400-201305001 
-ESXi 4.1 without patch ESXi410-201304401";
-
-tag_insight ="The ESXi userworld libxml2 library has been updated to resolve a security issue.";
-tag_solution = "Apply the missing patch(es).";
-tag_vuldetect = "Check the build number.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103848");
- script_cve_id("CVE-2012-5134");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 9353 $");
- script_name("VMSA-2013-0004 VMware ESXi security update for third party library (remote check)");
+  script_oid("1.3.6.1.4.1.25623.1.0.103848");
+  script_cve_id("CVE-2012-5134");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11069 $");
+  script_name("VMSA-2013-0004 VMware ESXi security update for third party library (remote check)");
 
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2013-12-03 14:03:01 +0100 (Tue, 03 Dec 2013)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esx_web_detect.nasl");
- script_mandatory_keys("VMware/ESX/build","VMware/ESX/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 14:29:19 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-12-03 14:03:01 +0100 (Tue, 03 Dec 2013)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_esx_web_detect.nasl");
+  script_mandatory_keys("VMware/ESX/build", "VMware/ESX/version");
 
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "affected" , value : tag_affected);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2013-0004.html");
+  script_tag(name:"summary", value:"The remote ESXi is missing one or more security related Updates
+from VMSA-2013-0004.");
+  script_tag(name:"vuldetect", value:"Check the build number.");
+  script_tag(name:"insight", value:"The ESXi userworld libxml2 library has been updated to resolve a security issue.");
+  script_tag(name:"solution", value:"Apply the missing patch(es).");
+  script_tag(name:"affected", value:"ESXi 5.1 without patch ESXi510-201304101
+ESXi 5.0 without patch ESXi500-201303101
+ESXi 4.0 without patch ESXi400-201305001
+ESXi 4.1 without patch ESXi410-201304401");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0004.html");
  exit(0);
 }
 

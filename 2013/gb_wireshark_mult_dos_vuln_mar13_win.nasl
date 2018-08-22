@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_mar13_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_wireshark_mult_dos_vuln_mar13_win.nasl 11067 2018-08-21 11:27:43Z mmartin $
 #
 # Wireshark Multiple Dissector Multiple DoS Vulnerabilities - March 13 (Windows)
 #
@@ -24,44 +24,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to cause denial of
-  service or to consume excessive CPU resources.
-  Impact Level: Application";
-
-tag_affected = "Wireshark 1.6.x before 1.6.14, 1.8.x before 1.8.6 on Windows";
-tag_insight = "Multiple flaws are due to errors in MS-MMS, RTPS, RTPS2, Mount, AMPQ, ACN,
-  CIMD, FCSP and DTLS dissectors.";
-tag_solution = "Upgrade to the Wireshark version 1.6.14 or 1.8.6 or later,
-  For updates refer to http://www.wireshark.org/download";
-tag_summary = "This host is installed with Wireshark and is prone to multiple
-  denial of service vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803330");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11067 $");
   script_cve_id("CVE-2013-2478", "CVE-2013-2480", "CVE-2013-2481", "CVE-2013-2482",
                 "CVE-2013-2483", "CVE-2013-2484", "CVE-2013-2485", "CVE-2013-2488");
   script_bugtraq_id(58357, 58351, 58340, 58353, 58355, 58356, 58362, 58365);
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-11 18:57:44 +0530 (Mon, 11 Mar 2013)");
   script_name("Wireshark Multiple Dissector Multiple DoS Vulnerabilities - March 13 (Windows)");
-  script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/52471");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1028254");
-  script_xref(name : "URL" , value : "http://www.wireshark.org/docs/relnotes/wireshark-1.8.6.html");
+  script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/52471");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1028254");
+  script_xref(name:"URL", value:"http://www.wireshark.org/docs/relnotes/wireshark-1.8.6.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_wireshark_detect_win.nasl");
   script_mandatory_keys("Wireshark/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause denial of
+  service or to consume excessive CPU resources.
+  Impact Level: Application");
+  script_tag(name:"affected", value:"Wireshark 1.6.x before 1.6.14, 1.8.x before 1.8.6 on Windows");
+  script_tag(name:"insight", value:"Multiple flaws are due to errors in MS-MMS, RTPS, RTPS2, Mount, AMPQ, ACN,
+  CIMD, FCSP and DTLS dissectors.");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.14 or 1.8.6 or later,
+  For updates refer to http://www.wireshark.org/download");
+  script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to multiple
+  denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -70,18 +63,13 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-sharkVer = "";
-
-## Get version from KB
 sharkVer = get_kb_item("Wireshark/Win/Ver");
 
 if(sharkVer && sharkVer=~ "^(1.6|1.8)")
 {
-  ## Check for vulnerable Wireshark versions
   if(version_in_range(version:sharkVer, test_version:"1.6.0", test_version2:"1.6.13") ||
      version_in_range(version:sharkVer, test_version:"1.8.0", test_version2:"1.8.5")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_store_locator_plus_mult_vuln.nasl 10028 2018-05-30 13:13:04Z cfischer $
+# $Id: gb_wordpress_store_locator_plus_mult_vuln.nasl 11072 2018-08-21 14:38:15Z asteins $
 #
 # WordPress Google Maps Via Store Locator Plus Plugin Multiple Vulnerabilities
 #
@@ -29,16 +29,16 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802644");
-  script_version("$Revision: 10028 $");
+  script_version("$Revision: 11072 $");
   script_bugtraq_id(53795);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 15:13:04 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 12:12:12 +0530 (Thu, 21 Jun 2012)");
   script_name("WordPress Google Maps Via Store Locator Plus Plugin Multiple Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/49391");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/76094");
-  script_xref(name : "URL" , value : "http://wordpress.org/extend/plugins/store-locator-le/changelog/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/49391");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/76094");
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/store-locator-le/changelog/");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -48,13 +48,13 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to obtain sensitive
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain sensitive
   information, compromise the application, access or modify data, exploit
   latent vulnerabilities in the underlying database.
 
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "WordPress Google Maps Via Store Locator Plus Plugin version 3.0.1");
-  script_tag(name : "insight" , value : "- An error exists due to the application displaying the installation path in
+  script_tag(name:"affected", value:"WordPress Google Maps Via Store Locator Plus Plugin version 3.0.1");
+  script_tag(name:"insight", value:"- An error exists due to the application displaying the installation path in
     debug output when accessing wp-content/plugins/store-locator-le/core/load_
     wp_config.php.
 
@@ -62,10 +62,10 @@ if(description)
     locator-le/downloadcsv.php is not properly sanitised before being used
     in a SQL query. This can be exploited to manipulate SQL queries by
     injecting arbitrary SQL code.");
-  script_tag(name : "solution" , value : "Upgrade to Google Maps Via Store Locator Plus Plugin version 3.0.5 or later,
+  script_tag(name:"solution", value:"Upgrade to Google Maps Via Store Locator Plus Plugin version 3.0.5 or later,
 
   For updates refer to http://wordpress.org/extend/plugins/store-locator-le");
-  script_tag(name : "summary" , value : "This host is running WordPress Google Maps Via Store Locator Plus
+  script_tag(name:"summary", value:"This host is running WordPress Google Maps Via Store Locator Plus
   Plugin and is prone to multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elastix_rce_01_2013.nasl 10285 2018-06-21 12:22:45Z cfischer $
+# $Id: gb_elastix_rce_01_2013.nasl 11069 2018-08-21 12:29:19Z mmartin $
 #
 # Elastix < 2.4 PHP Code Injection  Vulnerability
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103638");
-  script_version("$Revision: 10285 $");
+  script_version("$Revision: 11069 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
   script_name("Elastix < 2.4 PHP Code Injection Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 14:22:45 +0200 (Thu, 21 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 14:29:19 +0200 (Tue, 21 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-01-09 16:47:16 +0100 (Wed, 09 Jan 2013)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -51,15 +51,15 @@ if(description)
   the context of the affected webserver process.");
 
   script_tag(name:"affected", value:"Elastix < 2.4 is vulnerable. Other versions may also be affected.");
-
+  script_tag(name:"solution", value:"Updates are available");
   script_tag(name:"qod_type", value:"remote_vul");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 
 port = get_http_port(default:80);
 host = http_host_name(port:port);

@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 21 Aug 2018 09:11:40 +0200
+# Automatically created on:  Wed, 22 Aug 2018 09:54:37 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38801,6 +38801,7 @@
 2018/cloudbees/gb_jenkins_xss_n_info_disc_vuln_apr18_lin.nasl: GPLv2+
 2018/cloudbees/gb_jenkins_xss_n_info_disc_vuln_apr18_win.nasl: GPLv2+
 2018/cmsmadesimple/gb_cms_made_simple_mult_xss_vuln.nasl: GPLv2+
+2018/cobbler/gb_cobbler_mult_vuln.nasl: GPLv2+
 2018/coinhive/gb_coinhive_js_miner_detect.nasl: GPLv2+
 2018/concrete5/gb_concrete5_auth_bypass_vuln.nasl: GPLv2+
 2018/contec/gb_contec_smart_home_auth_bypass_vuln.nasl: GPLv2+
@@ -39011,6 +39012,8 @@
 2018/debian/deb_4275.nasl: GPLv2+
 2018/debian/deb_4276.nasl: GPLv2+
 2018/debian/deb_4277.nasl: GPLv2+
+2018/debian/deb_4278.nasl: GPLv2+
+2018/debian/deb_4279.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -41138,6 +41141,7 @@
 2018/openemr/gb_openemr_mult_vuln_0818.nasl: GPLv2+
 2018/openemr/gb_openemr_mult_vuln.nasl: GPLv2+
 2018/openemr/gb_openemr_newlistname_sql_injec_vuln.nasl: GPLv2+
+2018/openemr/gb_openemr_xss_vuln_0718.nasl: GPLv2+
 2018/openoffice/gb_openoffice_writer_odt_info_disclosure_vuln_may18_win.nasl: GPLv2+
 2018/openssl/gb_openssl_cache_timing_info_disc_vuln_lin.nasl: GPLv2+
 2018/openssl/gb_openssl_cache_timing_info_disc_vuln_win.nasl: GPLv2+
@@ -41566,6 +41570,7 @@
 2018/smf/gb_simple_machines_forum_security_bypass_vuln_may18.nasl: GPLv2+
 2018/sollaesystems/gb_sollaesystems_devices_default_telnet_credentials.nasl: GPLv2+
 2018/sonos/gb_sonos_info_discl_vuln.nasl: GPLv2+
+2018/sony/gb_sony_network_camera_default_credentials.nasl: GPLv2+
 2018/sophos/gb_sophos_safeguard_priv_esc_vuln.nasl: GPLv2+
 2018/squid/gb_squid_2018_1_lin.nasl: GPLv2+
 2018/squid/gb_squid_2018_1_win.nasl: GPLv2+
@@ -43424,6 +43429,7 @@ gb_sonic_spot_audioactive_player_detect.nasl: GPLv2+
 gb_sonicwall_universal_management_detect.nasl: GPLv2+
 gb_sonos_detect.nasl: GPLv2+
 gb_sony_ip_cam_detect.nasl: GPLv2+
+gb_sony_network_camera_detect.nasl: GPLv2+
 gb_sophos_safeguard_detect_win.nasl: GPLv2+
 gb_sophos_utm_remote_detect.nasl: GPLv2+
 gb_sophos_web_appliance_detect.nasl: GPLv2+
@@ -59834,6 +59840,7 @@ gsf/2018/splunk/gb_splunk_info_discl_vuln.nasl: GPLv2+
 gsf/2018/symantec/gb_sep_multiple_vuln_SYMSA1454.nasl: GPLv2+
 gsf/2018/syncbreeze/gb_sync_breeze_enterprise_write_access_vuln.nasl: GPLv2+
 gsf/2018/trendmicro/gb_trendmicro_smart_protection_server_mult_vuln.nasl: GPLv2+
+gsf/2018/tridium/gb_tridium_niagara_mult_vuln.nasl: GPLv2+
 gsf/2018/unitrends/gb_unitrends_mult_vuln.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_esxi_info_disc_VMSA-2018-0002.nasl: GPLv2+
 gsf/2018/vmware/gb_vmware_esxi_mult_info_disc_VMSA-2018-0002.nasl: GPLv2+
@@ -61221,6 +61228,30 @@ Policy/Microsoft/WindowsGeneral/Account/win_passwd_min_age.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Account/win_passwd_min_length.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Account/win_reset_account_lockout_counter.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Account/win_store_passwd_reversible_encryption.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_account_lockout.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_application_group_management.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_audit_policy_change.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_authentication_policy_change.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_authorization_policy_change.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_computer_account_management.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_credential_validation.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_group_membership.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_ipsec_driver.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_logoff.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_logon.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_other_account_events.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_other_logon_logoff.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_other_system_events.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_pnp_activity.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_process_creation.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_removable_storage.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_security_group_management.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_security_state_change.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_security_system_extension.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_sensitive_privilege_use.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_special_logon.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_system_integrity.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/AdvancedAudit/win_user_account_management.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Audit/win_audit_shutdown_unable_log.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/Audit/win_audit_subcategory_overwrite.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/AutoPlay/win_default_behaviour_autorun.nasl: GPLv2+
@@ -61237,16 +61268,32 @@ Policy/Microsoft/WindowsGeneral/DomainMember/win_domain_require_sign_seal.nasl: 
 Policy/Microsoft/WindowsGeneral/DomainMember/win_domain_require_strong_session_key.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/DomainMember/win_domain_seal_secure_channel.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/DomainMember/win_domain_sign_secure_channel.nasl: GPLv2+
-Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_profile_inboundcon.nasl: GPLv2+
-Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_profile_logdroppedpackets.nasl: GPLv2+
-Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_profile_logfilepath.nasl: GPLv2+
-Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_profile_logfilesize.nasl: GPLv2+
-Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_profile_logsuccesspackets.nasl: GPLv2+
-Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_profile_notification.nasl: GPLv2+
-Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_profile_outboundcon.nasl: GPLv2+
-Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_profile_status.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_publicfw_localconsecrules.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/FirewallGPO/win_advsec_publicfw_localfwrules.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_domain_dropped_packets.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_domain_inbound_connections.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_domain_logging_name.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_domain_logging_size.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_domain_notification.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_domain_outbound_connections.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_domain_state.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_domain_successful_connections.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_private_dropped_packets.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_private_inbound_connections.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_private_logging_name.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_private_logging_size.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_private_notification.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_private_outbound_connections.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_private_state.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_private_successful_connections.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_public_dropped_packets.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_public_inbound_connections.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_public_logging_name.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_public_logging_size.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_public_notification.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_public_outbound_connections.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_public_state.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/FirewallGPO/win_fw_public_successful_connections.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/InteractiveLogon/win_il_disable_cad.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/InteractiveLogon/win_il_display_last_user.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/InteractiveLogon/win_il_machine_acc_lockout_threshold.nasl: GPLv2+

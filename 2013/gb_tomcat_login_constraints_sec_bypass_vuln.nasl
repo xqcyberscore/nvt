@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tomcat_login_constraints_sec_bypass_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_tomcat_login_constraints_sec_bypass_vuln.nasl 11065 2018-08-21 09:49:00Z mmartin $
 #
 # Apache Tomcat Login Constraints Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803779");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 11065 $");
   script_cve_id("CVE-2011-1183");
   script_bugtraq_id(47196);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 11:49:00 +0200 (Tue, 21 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-27 13:06:15 +0530 (Wed, 27 Nov 2013)");
   script_name("Apache Tomcat Login Constraints Security Bypass Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -49,31 +49,19 @@ if(description)
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2011/Apr/96");
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/fulldisclosure/2011-04/0090.html");
 
-  tag_summary = "This host is running Apache Tomcat and is prone to security bypass
-  vulnerability.";
-
-  tag_vuldetect = "Get the installed version of Apache Tomcat with the help of detect NVT
-  and check the version is vulnerable or not.";
-
-  tag_insight = "The flaw is due to constraints were ignored when no login configuration
-  was present in the web.xml and the web application was marked as meta-data complete.";
-
-  tag_impact = "Successful exploitation will allow remote attackers to bypass certain
+  script_tag(name:"summary", value:"This host is running Apache Tomcat and is prone to security bypass
+  vulnerability.");
+  script_tag(name:"vuldetect", value:"Get the installed version of Apache Tomcat with the help of detect NVT
+  and check the version is vulnerable or not.");
+  script_tag(name:"solution", value:"Upgrade Apache Tomcat version to 7.0.12 or later,
+  For updates refer to http://tomcat.apache.org");
+  script_tag(name:"insight", value:"The flaw is due to constraints were ignored when no login configuration
+  was present in the web.xml and the web application was marked as meta-data complete.");
+  script_tag(name:"affected", value:"Apache Tomcat version 7.0.11");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to bypass certain
   authentication and obtain sensitive information.
 
-  Impact Level: Application";
-
-  tag_affected = "Apache Tomcat version 7.0.11";
-
-  tag_solution = "Upgrade Apache Tomcat version to 7.0.12 or later,
-  For updates refer to http://tomcat.apache.org";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"impact", value:tag_impact);
+  Impact Level: Application");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

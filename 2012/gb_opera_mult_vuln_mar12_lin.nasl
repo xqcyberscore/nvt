@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_mar12_lin.nasl 8649 2018-02-03 12:16:43Z teissa $
+# $Id: gb_opera_mult_vuln_mar12_lin.nasl 11066 2018-08-21 10:57:20Z asteins $
 #
 # Opera Multiple Vulnerabilities - March12 (Linux)
 #
@@ -24,13 +24,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow attackers to execute arbitrary code
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.802828");
+  script_version("$Revision: 11066 $");
+  script_cve_id("CVE-2012-1924", "CVE-2012-1925", "CVE-2012-1926", "CVE-2012-1927",
+                "CVE-2012-1928", "CVE-2012-1930", "CVE-2012-1931");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-03-29 19:43:23 +0530 (Thu, 29 Mar 2012)");
+  script_name("Opera Multiple Vulnerabilities - March12 (Linux)");
+  script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1010/");
+  script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1011/");
+  script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1012/");
+  script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1013/");
+  script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1014/");
+  script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1015/");
+  script_xref(name:"URL", value:"http://www.opera.com/docs/changelogs/unix/1162/");
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
+  script_family("General");
+  script_dependencies("secpod_opera_detection_linux_900037.nasl");
+  script_require_keys("Opera/Linux/Version");
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code
   in the context of the browser, inject scripts, bypass certain security
   restrictions, conduct spoofing attacks or cause a denial of service
   condition.
-  Impact Level: System/Application";
-tag_affected = "Opera version prior to 11.62 on Linux";
-tag_insight = "Multiple flaws are due to
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Opera version prior to 11.62 on Linux");
+  script_tag(name:"insight", value:"Multiple flaws are due to
   - An error in web page dialogs handling which displays the wrong address in
     the address field.
   - An error in 'history.state' which leaks the state data from cross domain
@@ -40,41 +64,11 @@ tag_insight = "Multiple flaws are due to
   - A small window for the download dialog.
   - A timed page reloads and redirects to different domains.
   - printing issues which allows data leaks to other system users or
-    allows them to corrupt data.";
-tag_solution = "Upgrade to the Opera version 11.62 or later,
-  For updates refer to http://www.opera.com/download/";
-tag_summary = "The host is installed with Opera and is prone to multiple
-  vulnerabilities.";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.802828");
-  script_version("$Revision: 8649 $");
-  script_cve_id("CVE-2012-1924", "CVE-2012-1925", "CVE-2012-1926", "CVE-2012-1927",
-                "CVE-2012-1928", "CVE-2012-1930", "CVE-2012-1931");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
-  script_tag(name:"creation_date", value:"2012-03-29 19:43:23 +0530 (Thu, 29 Mar 2012)");
-  script_name("Opera Multiple Vulnerabilities - March12 (Linux)");
-  script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1010/");
-  script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1011/");
-  script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1012/");
-  script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1013/");
-  script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1014/");
-  script_xref(name : "URL" , value : "http://www.opera.com/support/kb/view/1015/");
-  script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/unix/1162/");
-
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
-  script_family("General");
-  script_dependencies("secpod_opera_detection_linux_900037.nasl");
-  script_require_keys("Opera/Linux/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+    allows them to corrupt data.");
+  script_tag(name:"solution", value:"Upgrade to the Opera version 11.62 or later,
+  For updates refer to http://www.opera.com/download/");
+  script_tag(name:"summary", value:"The host is installed with Opera and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -83,16 +77,11 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-operaVer = NULL;
-
-## Get the version
 operaVer = get_kb_item("Opera/Linux/Version");
 if(!operaVer){
   exit(0);
 }
 
-# Check for opera version < 11.62
 if(version_is_less(version:operaVer, test_version:"11.62")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

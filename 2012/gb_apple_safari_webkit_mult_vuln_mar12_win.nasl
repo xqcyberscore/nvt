@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_mar12_win.nasl 8649 2018-02-03 12:16:43Z teissa $
+# $Id: gb_apple_safari_webkit_mult_vuln_mar12_win.nasl 11066 2018-08-21 10:57:20Z asteins $
 #
 # Apple Safari Webkit Multiple Vulnerabilities - March12 (Windows)
 #
@@ -24,21 +24,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to disclose potentially
-  sensitive information, conduct cross-site scripting and spoofing attacks,
-  and compromise a user's system.
-  Impact Level: Application";
-tag_affected = "Apple Safari versions prior to 5.1.4 on Windows";
-tag_insight = "For more information on the vulnerabilities refer the reference section.";
-tag_solution = "Upgrade to Apple Safari version 5.1.4 or later,
-  For updates refer to http://www.apple.com/support/downloads/";
-tag_summary = "The host is installed with Apple Safari web browser and is prone
-  to multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802814");
-  script_version("$Revision: 8649 $");
+  script_version("$Revision: 11066 $");
   script_cve_id("CVE-2012-0584", "CVE-2012-0585", "CVE-2011-3881", "CVE-2012-0586",
                 "CVE-2012-0587", "CVE-2012-0588", "CVE-2012-0589", "CVE-2011-3887",
                 "CVE-2012-0590", "CVE-2011-2825", "CVE-2011-2833", "CVE-2011-2846",
@@ -73,23 +62,28 @@ if(description)
                     52363, 52423, 52421);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-03-13 18:17:52 +0530 (Tue, 13 Mar 2012)");
   script_name("Apple Safari Webkit Multiple Vulnerabilities - March12 (Windows)");
-  script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5190");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/48377");
-  script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2012/Mar/msg00003.html");
+  script_xref(name:"URL", value:"http://support.apple.com/kb/HT5190");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/48377");
+  script_xref(name:"URL", value:"http://lists.apple.com/archives/security-announce/2012/Mar/msg00003.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_apple_safari_detect_win_900003.nasl");
   script_require_keys("AppleSafari/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to disclose potentially
+  sensitive information, conduct cross-site scripting and spoofing attacks,
+  and compromise a user's system.
+  Impact Level: Application");
+  script_tag(name:"affected", value:"Apple Safari versions prior to 5.1.4 on Windows");
+  script_tag(name:"insight", value:"For more information on the vulnerabilities refer the reference section.");
+  script_tag(name:"solution", value:"Upgrade to Apple Safari version 5.1.4 or later,
+  For updates refer to http://www.apple.com/support/downloads/");
+  script_tag(name:"summary", value:"The host is installed with Apple Safari web browser and is prone
+  to multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -98,15 +92,11 @@ if(description)
 
 include("version_func.inc");
 
-# Variable Initialization
-safVer = NULL;
-
 safVer = get_kb_item("AppleSafari/Version");
 if(!safVer){
   exit(0);
 }
 
-## Grep for Apple Safari Versions prior to 5.1.4 -> 5.34.54.16
 if(version_is_less(version:safVer, test_version:"5.34.54.16")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

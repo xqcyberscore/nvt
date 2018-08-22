@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_safari_mult_vuln_win_oct11.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: secpod_apple_safari_mult_vuln_win_oct11.nasl 11066 2018-08-21 10:57:20Z asteins $
 #
 # Apple Safari Multiple Vulnerabilities - Oct 2011 (Windows)
 #
@@ -24,31 +24,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow attackers to opening a maliciously
-  crafted files, which leads to an unexpected application termination or
-  arbitrary code execution.
-  Impact Level: System/Application";
-tag_affected = "Apple Safari versions prior to 5.1.1 on Windows";
-tag_insight = "The flaws are due to
-  - A directory traversal issue existed in the handling of 'safari-extension://'
-    URLs.
-  - A policy issue existed in the handling of 'file://' URLs.
-  - An uninitialized memory access issue existed in the handling of SSL
-    certificates.
-  - Multiple memory corruption issues existed in WebKit.
-  - A cross origin issue existed in the handling of the beforeload event,
-    'window.open' method, 'document.documentURI' property and inactive DOM
-    windows in webkit.
-  - A logic issue existed in the handling of cookies in Private Browsing mode.";
-tag_solution = "Upgrade to Apple Safari version 5.1.1 or later,
-  For updates refer to http://www.apple.com/safari/download/";
-tag_summary = "The host is installed with Apple Safari web browser and is prone
-  to multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903029");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11066 $");
   script_cve_id("CVE-2011-3229", "CVE-2011-1440", "CVE-2011-2338", "CVE-2011-2339",
                 "CVE-2011-2341", "CVE-2011-2351", "CVE-2011-2352", "CVE-2011-2354",
                 "CVE-2011-2356", "CVE-2011-2359", "CVE-2011-2788", "CVE-2011-2790",
@@ -63,11 +42,11 @@ if(description)
                     50088);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-05-24 18:22:12 +0530 (Thu, 24 May 2012)");
   script_name("Apple Safari Multiple Vulnerabilities - Oct 2011 (Windows)");
-  script_xref(name : "URL" , value : "http://support.apple.com/kb/HT5000");
-  script_xref(name : "URL" , value : "http://lists.apple.com/archives/Security-announce//2011/Oct/msg00004.html");
+  script_xref(name:"URL", value:"http://support.apple.com/kb/HT5000");
+  script_xref(name:"URL", value:"http://lists.apple.com/archives/Security-announce//2011/Oct/msg00004.html");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
@@ -75,26 +54,47 @@ if(description)
   script_family("General");
   script_dependencies("secpod_apple_safari_detect_win_900003.nasl");
   script_require_keys("AppleSafari/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to opening a maliciously
+  crafted files, which leads to an unexpected application termination or
+  arbitrary code execution.
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Apple Safari versions prior to 5.1.1 on Windows");
+  script_tag(name:"insight", value:"The flaws are due to
+
+  - A directory traversal issue existed in the handling of 'safari-extension://'
+    URLs.
+
+  - A policy issue existed in the handling of 'file://' URLs.
+
+  - An uninitialized memory access issue existed in the handling of SSL
+    certificates.
+
+  - Multiple memory corruption issues existed in WebKit.
+
+  - A cross origin issue existed in the handling of the beforeload event,
+    'window.open' method, 'document.documentURI' property and inactive DOM
+    windows in webkit.
+
+  - A logic issue existed in the handling of cookies in Private Browsing mode.");
+  script_tag(name:"solution", value:"Upgrade to Apple Safari version 5.1.1 or later,
+  For updates refer to http://www.apple.com/safari/download/");
+  script_tag(name:"summary", value:"The host is installed with Apple Safari web browser and is prone
+  to multiple vulnerabilities.");
+  script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
 
 include("version_func.inc");
 
-## Variable Initialization
-safVer = "";
-
 safVer = get_kb_item("AppleSafari/Version");
 if(!safVer){
   exit(0);
 }
 
-## Grep for Apple Safari Versions prior to 5.1.1 (5.34.51.22)
 if(version_is_less(version:safVer, test_version:"5.34.51.22")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

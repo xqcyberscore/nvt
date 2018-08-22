@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_showcase_multiple_xss_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_apache_struts_showcase_multiple_xss_vuln.nasl 11072 2018-08-21 14:38:15Z asteins $
 #
 # Apache Struts Showcase Multiple Persistence Cross-Site Scripting Vulnerabilities
 #
@@ -29,23 +29,23 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802422");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11072 $");
   script_bugtraq_id(51902);
   script_cve_id("CVE-2012-1006");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-02-08 12:14:38 +0530 (Wed, 08 Feb 2012)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts Showcase Multiple Persistence Cross-Site Scripting Vulnerabilities");
 
-  script_tag(name: "summary" , value:"This host is running Apache Struts Showcase
+  script_tag(name:"summary", value:"This host is running Apache Struts Showcase
   and is prone to multiple persistence cross-site scripting vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted HTTP POST request
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP POST request
   and check whether it is able to read cookie or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws due to an,
+  script_tag(name:"insight", value:"Multiple flaws due to an,
   - Input passed via the 'name' and 'lastName' parameter in
   '/struts2-showcase/person/editPerson.action' is not properly verified
   before it is returned to the user.
@@ -53,22 +53,22 @@ if(description)
   '/struts2-rest-showcase/orders' action is not properly verified before
   it is returned to the user.");
 
-  script_tag(name: "impact" , value:"Successful exploitation could allow an attacker
+  script_tag(name:"impact", value:"Successful exploitation could allow an attacker
   to execute arbitrary HTML code in a user's browser session in the context of a vulnerable
   application.
 
   Impact Level: Application.");
-  
-  script_tag(name:"affected", value:"Apache struts 1.3.10, 2.0.14 and 2.2.3 and 2.3.1.2"); 
+
+  script_tag(name:"affected", value:"Apache struts 1.3.10, 2.0.14 and 2.2.3 and 2.3.1.2");
 
 
-  script_tag(name: "solution" , value:"Upgrade to Apache Struts to version 2.3.3 or later,
+  script_tag(name:"solution", value:"Upgrade to Apache Struts to version 2.3.3 or later,
   For updates refer to http://struts.apache.org/download.cgi");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secpod.org/blog/?p=450");
-  script_xref(name : "URL" , value : "http://secpod.org/advisories/SecPod_Apache_Struts_Multiple_Parsistant_XSS_Vulns.txt");
+  script_xref(name:"URL", value:"http://secpod.org/blog/?p=450");
+  script_xref(name:"URL", value:"http://secpod.org/advisories/SecPod_Apache_Struts_Multiple_Parsistant_XSS_Vulns.txt");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_dependencies("gb_apache_struts2_detection.nasl");
@@ -110,15 +110,12 @@ if(!isnull(asreq))
 
   if(!isnull(asres))
   {
-    ## Confirm the application
     if(">Showcase</" >< asres && ">Struts Showcase<" >< asres)
     {
-      ## Construct the POST data
       postdata = "person.name=%3Cscript%3Ealert%28document.cookie%29%3C%2" +
                    "Fscript%3E&person.lastName=%3Cscript%3Ealert%28document" +
                   ".cookie%29%3C%2Fscript%3E";
 
-        ## Construct the POST request
         asReq = string("POST ", dir, "/person/newPerson.action HTTP/1.1\r\n",
                        "Host: ", host, "\r\n",
                        "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",

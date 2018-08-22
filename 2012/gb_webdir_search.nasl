@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webdir_search.nasl 10818 2018-08-07 14:03:55Z cfischer $
+# $Id: gb_webdir_search.nasl 11072 2018-08-21 14:38:15Z asteins $
 #
 # Search for specified webdirs
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103437");
-  script_version("$Revision: 10818 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:03:55 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 11072 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-02-27 16:32:37 +0100 (Mon, 27 Feb 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -61,7 +61,7 @@ if(get_kb_item("Settings/disable_cgi_scanning")) {
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 
 function check_response(resp, codes) {
 

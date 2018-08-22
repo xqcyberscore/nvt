@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_andromeda_streaming_mp3_server_xss_vuln.nasl 5977 2017-04-19 09:02:22Z teissa $
+# $Id: gb_andromeda_streaming_mp3_server_xss_vuln.nasl 11066 2018-08-21 10:57:20Z asteins $
 #
 # Andromeda Streaming MP3 Server Cross Site Scripting Vulnerability
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802777");
-  script_version("$Revision: 5977 $");
+  script_version("$Revision: 11066 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-05-14 13:55:03 +0530 (Mon, 14 May 2012)");
   script_name("Andromeda Streaming MP3 Server Cross Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/18359");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/75497");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/112549/ZSL-2012-5087.txt");
-  script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2012-5087.php");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/18359");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/75497");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/112549/ZSL-2012-5087.txt");
+  script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2012-5087.php");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
@@ -45,22 +45,22 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to insert
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
   arbitrary HTML and script code, which will be executed in a user's browser
   session in the context of an affected site.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Andromeda Streaming MP3 Server version 1.9.3.6 PHP (2012) and
+  script_tag(name:"affected", value:"Andromeda Streaming MP3 Server version 1.9.3.6 PHP (2012) and
   prior");
-  script_tag(name : "insight" , value : "The flaw is due to an improper validation of user supplied
+  script_tag(name:"insight", value:"The flaw is due to an improper validation of user supplied
   input passed via 's' parameter to the 'andromeda.php' script, which allows
   attackers to execute arbitrary HTML and script code in the context of an
   affected application or site.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
   features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running Andromeda Streaming MP3 Server is prone to
+  script_tag(name:"summary", value:"This host is running Andromeda Streaming MP3 Server is prone to
   cross site scripting vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -72,34 +72,23 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-port = 0;
-url = "";
-dir = "";
-
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check host supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## List possible dirs
 foreach dir (make_list_unique("/", "/music", "/andromeda", "/mp3", cgi_dirs(port:port)))
 {
   if(dir == "/") dir = "";
   url = dir + "/andromeda.php";
 
-  ## Confirm the application
   if(http_vuln_check(port:port, url:url, check_header:TRUE,
                     pattern:"<title>andromeda|powered by Andromeda",
                     extra_check:"Andromeda:"))
   {
-    ## Construct attack
     url = url + '?q=s&s="><script>alert(document.cookie);</script>';
 
-    ## Check the response to confirm vulnerability
     if(http_vuln_check(port:port, url:url, check_header:TRUE,
                        pattern:"><script>alert\(document.cookie\);</script>",
                        extra_check:"powered by Andromeda"))

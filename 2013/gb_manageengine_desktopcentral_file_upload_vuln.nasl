@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_desktopcentral_file_upload_vuln.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_manageengine_desktopcentral_file_upload_vuln.nasl 11065 2018-08-21 09:49:00Z mmartin $
 #
 # ManageEngine Desktop Central Arbitrary File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:zohocorp:manageengine_desktop_central";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803777");
-  script_version("$Revision: 6074 $");
+  script_version("$Revision: 11065 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 11:49:00 +0200 (Tue, 21 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-20 12:28:14 +0530 (Wed, 20 Nov 2013)");
   script_name("ManageEngine Desktop Central Arbitrary File Upload Vulnerability");
   script_category(ACT_ATTACK);
@@ -84,7 +84,6 @@ file = 'openvas_' + rand() + '.jsp';
 url = dir + "/agentLogUploader?computerName=DesktopCentral&domainName=webapps&custom" +
             "erId=1&filename=" + file;
 
-## Construct the POST request
 sndReq = string( "POST ", url, " HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
                  "Content-Type: text/html;\r\n",
@@ -93,7 +92,6 @@ sndReq = string( "POST ", url, " HTTP/1.1\r\n",
 ## Send post request and Receive the response
 rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
-## confirm the exploit
 if( rcvRes && rcvRes =~ "HTTP/1\.[0-9]+ 200" && "X-dc-header: yes" >< rcvRes ) {
   report  = 'It was possible to upload the file "' + dir + '/' + file + '". Please delete this file.';
   report += '\n' + report_vuln_url( url:url, port:port );

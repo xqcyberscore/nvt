@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_aug12_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_mult_vuln_aug12_win.nasl 11072 2018-08-21 14:38:15Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities - August 12 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802928");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11072 $");
   script_cve_id("CVE-2012-2847", "CVE-2012-2860", "CVE-2012-2858", "CVE-2012-2857",
                 "CVE-2012-2856", "CVE-2012-2855", "CVE-2012-2854", "CVE-2012-2853",
                 "CVE-2012-2852", "CVE-2012-2851", "CVE-2012-2850", "CVE-2012-2849",
@@ -35,23 +35,23 @@ if(description)
   script_bugtraq_id(54749);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-08-08 15:15:33 +0530 (Wed, 08 Aug 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - August 12 (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/50105/");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2012/07/stable-channel-release.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/50105/");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2012/07/stable-channel-release.html");
 
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to bypass certain security
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to bypass certain security
   restrictions, execute arbitrary code in the context of the browser or
   cause a denial of service.
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Google Chrome version prior to 21.0.1180.60 on Windows");
-  script_tag(name : "insight" , value : "The flaws are due to
+  script_tag(name:"affected", value:"Google Chrome version prior to 21.0.1180.60 on Windows");
+  script_tag(name:"insight", value:"The flaws are due to
   - The application does not properly re-prompt the user when downloading
     multiple files and can be exploited to trick the user into downloading a
     malicious file.
@@ -65,9 +65,9 @@ if(description)
   - An error within the WebP decoder can be exploited to cause a buffer
     overflow.
   - An out-of-bounds access error exists when clicking in date picker.");
-  script_tag(name : "solution" , value : "Upgrade to the Google Chrome 21.0.1180.60 or later,
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 21.0.1180.60 or later,
   For updates refer to http://www.google.com/chrome");
-  script_tag(name : "summary" , value : "This host is installed with Google Chrome and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

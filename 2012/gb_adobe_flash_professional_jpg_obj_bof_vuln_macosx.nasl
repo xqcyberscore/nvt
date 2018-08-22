@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_professional_jpg_obj_bof_vuln_macosx.nasl 10021 2018-05-30 09:03:08Z cfischer $
+# $Id: gb_adobe_flash_professional_jpg_obj_bof_vuln_macosx.nasl 11066 2018-08-21 10:57:20Z asteins $
 #
 # Adobe Flash Professional JPG Object Processing BOF Vulnerability (Mac OS X)
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802785");
-  script_version("$Revision: 10021 $");
+  script_version("$Revision: 11066 $");
   script_cve_id("CVE-2012-0778");
   script_bugtraq_id(53419);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 11:03:08 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-05-16 12:09:06 +0530 (Wed, 16 May 2012)");
   script_name("Adobe Flash Professional JPG Object Processing BOF Vulnerability (Mac OS X)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/47116/");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1027045");
-  script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-12.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/47116/");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1027045");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb12-12.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
@@ -45,15 +45,15 @@ if(description)
   script_dependencies("gb_adobe_flash_professional_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Flash/Prof/MacOSX/Version");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute arbitrary code.
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code.
 
   Impact Level: Application/System");
-  script_tag(name : "affected" , value : "Adobe Flash Professional version CS5.5.1(11.5.1.349) and prior on Mac OS X");
-  script_tag(name : "insight" , value : "The flaw is due to an error in 'Flash.exe' when allocating memory to
+  script_tag(name:"affected", value:"Adobe Flash Professional version CS5.5.1(11.5.1.349) and prior on Mac OS X");
+  script_tag(name:"insight", value:"The flaw is due to an error in 'Flash.exe' when allocating memory to
   process a JPG object using its image dimensions.");
-  script_tag(name : "solution" , value : "Upgrade to Adobe Flash Professional version CS6 or later,
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Professional version CS6 or later,
   For updates refer to http://www.adobe.com/downloads/");
-  script_tag(name : "summary" , value : "This host is installed with Adobe Flash Professional and is prone
+  script_tag(name:"summary", value:"This host is installed with Adobe Flash Professional and is prone
   to buffer overflow vulnerability.");
 
   script_tag(name:"qod_type", value:"package");

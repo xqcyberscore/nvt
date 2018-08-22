@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_minicms_51612.nasl 8528 2018-01-25 07:57:36Z teissa $
+# $Id: gb_minicms_51612.nasl 11072 2018-08-21 14:38:15Z asteins $
 #
 # miniCMS Multiple Remote PHP Code Injection Vulnerabilities
 #
@@ -25,49 +25,52 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "miniCMS is prone to multiple vulnerabilities that attackers can
-leverage to execute arbitrary PHP code because the application fails
-to adequately sanitize user-supplied input.
-
-Successful attacks can compromise the affected application and
-possibly the underlying computer.
-
-miniCMS 1.0 and 2.0 are vulnerable; other versions may also be
-affected.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103399");
- script_bugtraq_id(51612);
- script_version ("$Revision: 8528 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("miniCMS Multiple Remote PHP Code Injection Vulnerabilities");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51612");
- script_xref(name : "URL" , value : "http://sourceforge.net/projects/mini-cms/files/mini-cms/");
- script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
- script_tag(name:"creation_date", value:"2012-01-24 11:44:44 +0100 (Tue, 24 Jan 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_oid("1.3.6.1.4.1.25623.1.0.103399");
+  script_bugtraq_id(51612);
+  script_version("$Revision: 11072 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("miniCMS Multiple Remote PHP Code Injection Vulnerabilities");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51612");
+  script_xref(name:"URL", value:"http://sourceforge.net/projects/mini-cms/files/mini-cms/");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-01-24 11:44:44 +0100 (Tue, 24 Jan 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"miniCMS is prone to multiple vulnerabilities that attackers can
+leverage to execute arbitrary PHP code because the application fails
+to adequately sanitize user-supplied input.");
 
- exit(0);
+  script_tag(name:"impact", value:"Successful attacks can compromise the affected application and
+possibly the underlying computer.");
+
+  script_tag(name:"affected", value:"miniCMS 1.0 and 2.0 are vulnerable, other versions may also be
+affected.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/minicms", "/cms", cgi_dirs( port:port ) ) ) {
-   
+
   if( dir == "/" ) dir = "";
   url = dir + "/index.php";
   buf = http_get_cache( item:url, port:port );
@@ -76,7 +79,7 @@ foreach dir( make_list_unique( "/minicms", "/cms", cgi_dirs( port:port ) ) ) {
 
     page = "openvas-" + rand() + ".php";
     ex = "title=1&metadata=1&area=content&content=<?php phpinfo();?>&page=" + page + "%00";
-    
+
     len = strlen( ex );
     host = http_host_name( port:port );
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_may13_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_wireshark_mult_vuln_may13_macosx.nasl 11065 2018-08-21 09:49:00Z mmartin $
 #
 # Wireshark Multiple Dissector Multiple Vulnerabilities - May 13 (Mac OS X)
 #
@@ -24,43 +24,36 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to crash the
-  application, resulting in denial of service condition.
-  Impact Level: Application";
-
-tag_affected = "Wireshark versions 1.8.x before 1.8.7 on Mac OS X";
-tag_insight = "Multiple flaws are due to errors in Websocket, MySQL, ETCH, MPEG DSM-CC,
-  DCP ETSI, PPP CCP and GTPv2 dissectors.";
-tag_solution = "Upgrade to the Wireshark version 1.8.7 or later,
-  For updates refer to http://www.wireshark.org/download";
-tag_summary = "This host is installed with Wireshark and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803621");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11065 $");
   script_cve_id("CVE-2013-3562", "CVE-2013-3561", "CVE-2013-3560", "CVE-2013-3559",
                 "CVE-2013-3558", "CVE-2013-3555");
   script_bugtraq_id(59998, 60002, 59996, 60001, 59999, 60000, 59995, 60003, 59994,
                     59992);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 11:49:00 +0200 (Tue, 21 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-05-28 15:42:11 +0530 (Tue, 28 May 2013)");
   script_name("Wireshark Multiple Dissector Multiple Vulnerabilities - May 13 (Mac OS X)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/53425");
-  script_xref(name : "URL" , value : "http://www.wireshark.org/docs/relnotes/wireshark-1.8.7.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/53425");
+  script_xref(name:"URL", value:"http://www.wireshark.org/docs/relnotes/wireshark-1.8.7.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_mandatory_keys("Wireshark/MacOSX/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to crash the
+  application, resulting in denial of service condition.
+  Impact Level: Application");
+  script_tag(name:"affected", value:"Wireshark versions 1.8.x before 1.8.7 on Mac OS X");
+  script_tag(name:"insight", value:"Multiple flaws are due to errors in Websocket, MySQL, ETCH, MPEG DSM-CC,
+  DCP ETSI, PPP CCP and GTPv2 dissectors.");
+  script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.8.7 or later,
+  For updates refer to http://www.wireshark.org/download");
+  script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -69,16 +62,11 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-sharkVer = "";
-
-## Get version from KB
 sharkVer = get_kb_item("Wireshark/MacOSX/Version");
-if(sharkVer && sharkVer=~ "^1.8")
+if(sharkVer && sharkVer=~ "^1\.8")
 {
-  ## Check for vulnerable Wireshark versions
   if(version_in_range(version:sharkVer, test_version:"1.8.0", test_version2:"1.8.6")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

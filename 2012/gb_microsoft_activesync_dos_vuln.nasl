@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_activesync_dos_vuln.nasl 4690 2016-12-06 14:44:58Z cfi $
+# $Id: gb_microsoft_activesync_dos_vuln.nasl 11072 2018-08-21 14:38:15Z asteins $
 #
 # Microsoft ActiveSync Null Pointer Dereference Denial Of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802462");
-  script_version("$Revision: 4690 $");
+  script_version("$Revision: 11072 $");
   script_bugtraq_id(7150);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 15:44:58 +0100 (Tue, 06 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-09-27 14:28:19 +0530 (Thu, 27 Sep 2012)");
   script_name("Microsoft ActiveSync Null Pointer Dereference Denial Of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -45,31 +45,21 @@ if(description)
   script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/8383");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/315901");
 
-  tag_impact = "Successful exploitation will allow attackers to cause denial
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial
   of service condition.
 
-  Impact Level: Application";
-
-  tag_affected = "Microsoft ActiveSync version 3.5";
-
-  tag_insight = "The flaw is due to NULL pointer is dereferenced in a call to the
+  Impact Level: Application");
+  script_tag(name:"affected", value:"Microsoft ActiveSync version 3.5");
+  script_tag(name:"insight", value:"The flaw is due to NULL pointer is dereferenced in a call to the
   function 'WideCharToMultiByte()' while it is trying to process an entry
   within the sync request packet. This causes an application error,
-  killing the 'wcescomm' process.";
-
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
+  killing the 'wcescomm' process.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_summary = "This host is running Microsoft ActiveSync and is prone to denial
-  of service vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Microsoft ActiveSync and is prone to denial
+  of service vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -78,22 +68,13 @@ if(description)
 }
 
 
-## Variable Initialization
-port = 5679;
-soc = "";
-sock = "";
-req = "";
-
-## Check for the default port
 if(!get_port_state(port)){
   exit(0);
 }
 
-## Construct the attack request
 req = raw_string(0x06, 0x00, 0x00, 0x00,
       0x24, 0x00, 0x00, 0x00) + crap(124);
 
-## open the socket
 soc = open_sock_tcp(port);
 if(!soc){
   exit(0);

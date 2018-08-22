@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2011-0009.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_VMSA-2011-0009.nasl 11066 2018-08-21 10:57:20Z asteins $
 #
 # VMSA-2011-0009.3 VMware hosted product updates, ESX patches and VI Client update resolve multiple security issues
 #
@@ -25,7 +25,25 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote ESXi is missing one or more security related Updates from VMSA-2011-0009.3.
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103452");
+  script_cve_id("CVE-2009-4536", "CVE-2010-1188", "CVE-2009-3080", "CVE-2010-2240", "CVE-2011-2146", "CVE-2011-1787", "CVE-2011-2145", "CVE-2011-2217");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11066 $");
+  script_name("VMSA-2011-0009.3 VMware hosted product updates, ESX patches and VI Client update resolve multiple security issues");
+
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-03-16 10:41:24 +0100 (Fri, 16 Mar 2012)");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_esxi_init.nasl");
+  script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
+  script_tag(name:"solution", value:"Apply the missing patch(es).");
+  script_tag(name:"summary", value:"The remote ESXi is missing one or more security related Updates from VMSA-2011-0009.3.
 
 Summary
 
@@ -58,17 +76,17 @@ b. ESX third party update for Service Console kernel
    This update for the console OS kernel package resolves four security issues.
 
    IPv4 Remote Denial of Service An remote attacker can achieve a denial of service via an issue in the kernel
-   IPv4 code. 
-  
+   IPv4 code.
+
    SCSI Driver Denial of Service / Possible Privilege Escalation A local attacker can achieve a denial of service
    and possibly a privilege escalation via a vulnerability in the Linux SCSI drivers.
-    
+
    Kernel Memory Management Arbitrary Code Execution A context-dependent attacker can execute arbitrary code via a
-   vulnerability in a kernel memory handling function. 
+   vulnerability in a kernel memory handling function.
 
    e1000 Driver Packet Filter Bypass There is an issue in the Service Console e1000 Linux driver for Intel PRO/1000
    adapters that allows a remote attacker to bypass packet filters.
-                    
+
 c. Multiple vulnerabilities in mount.vmhgfs
 
    This patch provides a fix for the following three security issues in the VMware Host Guest File System (HGFS).
@@ -84,38 +102,16 @@ c. Multiple vulnerabilities in mount.vmhgfs
 
    Mount.vmhgfs Privilege Escalation Privilege escalation via a procedural error that allows an attacker with access to the
    guest operating system to gain write access to an arbitrary file in the Guest filesystem. This issue only affects Solaris
-   and FreeBSD Guest Operating Systems. 
+   and FreeBSD Guest Operating Systems.
 
 d. VI Client ActiveX vulnerabilities
 
    VI Client COM objects can be instantiated in Internet Explorer which may cause memory corruption. An attacker who succeeded
    in making the VI Client user visit a malicious Web site could execute code on the user's system within the security context
-   of that user.";
-
-tag_solution = "Apply the missing patch(es).";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103452");
- script_cve_id("CVE-2009-4536", "CVE-2010-1188", "CVE-2009-3080", "CVE-2010-2240", "CVE-2011-2146", "CVE-2011-1787", "CVE-2011-2145", "CVE-2011-2217");
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 9352 $");
- script_name("VMSA-2011-0009.3 VMware hosted product updates, ESX patches and VI Client update resolve multiple security issues");
-
-
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-03-16 10:41:24 +0100 (Fri, 16 Mar 2012)");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esxi_init.nasl");
- script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2011-0009.html");
+   of that user.");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2011-0009.html");
  exit(0);
 }
 
