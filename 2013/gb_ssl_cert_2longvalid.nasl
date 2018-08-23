@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_cert_2longvalid.nasl 7248 2017-09-25 08:18:05Z cfischer $
+# $Id: gb_ssl_cert_2longvalid.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # SSL/TLS: Certificate Too Long Valid
 #
@@ -32,8 +32,8 @@ max_valid_years = 15;
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103958");
-  script_version("$Revision: 7248 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-25 10:18:05 +0200 (Mon, 25 Sep 2017) $");
+  script_version("$Revision: 11082 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-28 11:39:30 +0700 (Thu, 28 Nov 2013)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -58,7 +58,7 @@ if(description)
   exit(0);
 }
 
-include("global_settings.inc");
+
 include("misc_func.inc");
 include("ssl_funcs.inc");
 include("byte_func.inc");

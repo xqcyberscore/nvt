@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mult_dos_vuln01_jun13_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_imagemagick_mult_dos_vuln01_jun13_win.nasl 11077 2018-08-22 09:40:33Z mmartin $
 #
 # ImageMagick Multiple Denial of Service Vulnerabilities - 01 June13 (Windows)
 #
@@ -26,47 +26,40 @@
 
 CPE = "cpe:/a:imagemagick:imagemagick";
 
-tag_impact = "Successful exploitation will allow a context-dependent attacker to cause
-  denial of service result in loss of availability for the application.
-  Impact Level: Application";
-
-tag_affected = "ImageMagick version before 6.7.6-3 on Windows.";
-tag_insight = "Multiple flaw are due to an,
-  - Improper handling of JPEG restart markers of the 'JPEGWarningHandler()'
-    function in coders/jpeg.c
-  - Improper handling a JPEG EXIF tag of the 'GetEXIFProperty()' function
-    in magick/property.c
-  - Error occurs when parsing TIFF EXIF IFD of the 'TIFFGetEXIFProperties()'
-    function in coders/tiff.c";
-tag_solution = "Upgrade to ImageMagick version 6.7.6-3 or later.
-  http://www.imagemagick.org/script/download.php";
-tag_summary = "The host is installed with ImageMagick and is prone to multiple
-  denial of service Vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803815");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11077 $");
   script_cve_id("CVE-2012-0260", "CVE-2012-0259", "CVE-2012-1798");
   script_bugtraq_id(52898);
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 12:32:12 +0530 (Mon, 24 Jun 2013)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("ImageMagick Multiple Denial of Service Vulnerabilities - 01 June13 (Windows)");
-  script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2012/q2/19");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/74659");
-  script_xref(name : "URL" , value : "http://www.cert.fi/en/reports/2012/vulnerability635606.html");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2012/q2/19");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/74659");
+  script_xref(name:"URL", value:"http://www.cert.fi/en/reports/2012/vulnerability635606.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_imagemagick_detect_win.nasl");
   script_mandatory_keys("ImageMagick/Win/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow a context-dependent attacker to cause
+  denial of service result in loss of availability for the application.
+  Impact Level: Application");
+  script_tag(name:"affected", value:"ImageMagick version before 6.7.6-3 on Windows.");
+  script_tag(name:"insight", value:"Multiple flaw are due to an,
+  - Improper handling of JPEG restart markers of the 'JPEGWarningHandler()'
+    function in coders/jpeg.c
+  - Improper handling a JPEG EXIF tag of the 'GetEXIFProperty()' function
+    in magick/property.c
+  - Error occurs when parsing TIFF EXIF IFD of the 'TIFFGetEXIFProperties()'
+    function in coders/tiff.c");
+  script_tag(name:"solution", value:"Upgrade to ImageMagick version 6.7.6-3 or later.
+  http://www.imagemagick.org/script/download.php");
+  script_tag(name:"summary", value:"The host is installed with ImageMagick and is prone to multiple
+  denial of service Vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);

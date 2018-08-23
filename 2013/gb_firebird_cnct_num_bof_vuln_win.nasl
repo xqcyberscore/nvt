@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firebird_cnct_num_bof_vuln_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_firebird_cnct_num_bof_vuln_win.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # Firebird Relational Database CNCT Group Number Buffer Overflow Vulnerability (Windows)
 #
@@ -24,34 +24,21 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to cause denial of
-  service condition.
-  Impact Level: Application";
-
-tag_affected = "Firebird Server version 2.1.3 to 2.1.5 before 18514 and
-  2.5.1 to 2.5.3 before 26623 on Windows";
-tag_insight = "The flaw exists with a group number extracted from the CNCT information,
-  which is sent by the client and whose size is not properly checked.";
-tag_solution = "Upgrade Firebird to 2.1.5 Update 1, 2.5.2 Update 1, 2.5.3, 2.1.6 or later,
-  For updates refer to http://www.firebirdsql.org";
-tag_summary = "This host is running Firebird server and is prone to buffer overflow
-  vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803185");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11082 $");
   script_cve_id("CVE-2013-2492");
   script_bugtraq_id(58393);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-25 15:25:55 +0530 (Mon, 25 Mar 2013)");
   script_name("Firebird Relational Database CNCT Group Number Buffer Overflow Vulnerability (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/52506");
-  script_xref(name : "URL" , value : "http://tracker.firebirdsql.org/browse/CORE-4058");
-  script_xref(name : "URL" , value : "https://gist.github.com/zeroSteiner/85daef257831d904479c");
-  script_xref(name : "URL" , value : "https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/windows/misc/fb_cnct_group.rb");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/52506");
+  script_xref(name:"URL", value:"http://tracker.firebirdsql.org/browse/CORE-4058");
+  script_xref(name:"URL", value:"https://gist.github.com/zeroSteiner/85daef257831d904479c");
+  script_xref(name:"URL", value:"https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/windows/misc/fb_cnct_group.rb");
 
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
@@ -60,11 +47,17 @@ if(description)
   script_require_ports("Services/gds_db", 3050);
   script_mandatory_keys("Host/runs_windows");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause denial of
+  service condition.
+  Impact Level: Application");
+  script_tag(name:"affected", value:"Firebird Server version 2.1.3 to 2.1.5 before 18514 and
+  2.5.1 to 2.5.3 before 26623 on Windows");
+  script_tag(name:"insight", value:"The flaw exists with a group number extracted from the CNCT information,
+  which is sent by the client and whose size is not properly checked.");
+  script_tag(name:"solution", value:"Upgrade Firebird to 2.1.5 Update 1, 2.5.2 Update 1, 2.5.3, 2.1.6 or later,
+  For updates refer to http://www.firebirdsql.org");
+  script_tag(name:"summary", value:"This host is running Firebird server and is prone to buffer overflow
+  vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -73,31 +66,20 @@ if(description)
 
 include("host_details.inc");
 
-## Variable Initialization
-port = "";
-soc = "";
-resp = "";
-data_req = "";
-fb_aut_pkt = "";
-
-## Get the default port
 port = get_kb_item("Services/gds_db");
 if(!port){
   port = 3050;
 }
 
-## Check the port status
 if(!get_port_state(port)){
   exit(0);
 }
 
-## Open the socket
 soc = open_sock_tcp(port);
 if(!soc){
   exit(0);
 }
 
-## Construct the firebird Authentication request
 fb_aut_pkt = raw_string(0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x13,
                         0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x24,
                         0x00, 0x00, 0x00, 0x1c, 0x2f, 0x6f, 0x70, 0x74,
@@ -118,11 +100,9 @@ send(socket:soc, data:fb_aut_pkt);
 resp = recv(socket:soc, length:1024);
 close(soc);
 
-## Confirm the application
 if(resp && strlen(resp) == 16 && "030000000a0000000100000003" >< hexstr(resp))
 {
 
-  ## Construct the malformed request
   data_req =  raw_string(0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x13,
                          0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x24,
                          0x00, 0x00, 0x00, 0x10, 0x43, 0x3a, 0x5c, 0x74,

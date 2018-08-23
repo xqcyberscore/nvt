@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagiosxi_multiple_vuln.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_nagiosxi_multiple_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # Nagios XI Multiple Vulnerabilities
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:nagios:nagiosxi";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803168");
-  script_version("$Revision: 9984 $");
+  script_version("$Revision: 11082 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-02-07 18:25:24 +0530 (Thu, 07 Feb 2013)");
   script_name("Nagios XI Multiple Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/52011");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120038");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2013/Feb/10");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/52011");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/120038");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/Feb/10");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -46,12 +46,12 @@ if(description)
   script_dependencies("gb_nagios_XI_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("nagiosxi/installed");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to conduct
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct
 spoofing, cross-site scripting and cross-site request forgery attacks.
 
 Impact Level: Application");
-  script_tag(name : "affected" , value : "Nagios XI versions 2012R1.5b and 2012R1.5");
-  script_tag(name : "insight" , value : "- Input passed via the 'xiwindow' GET parameter to admin/index.php
+  script_tag(name:"affected", value:"Nagios XI versions 2012R1.5b and 2012R1.5");
+  script_tag(name:"insight", value:"- Input passed via the 'xiwindow' GET parameter to admin/index.php
 is not properly verified before being used to be displayed as iframe.
 
 - Input passed via multiple GET parameters to various scripts is not properly
@@ -65,11 +65,11 @@ is not properly verified before being used to be displayed as iframe.
   'update' is set to '1', and 'job' is set to '-1') is not properly verified
   before being used. This can be exploited to inject and execute arbitrary
   shell commands.");
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running Nagios XI and is prone to multiple
+  script_tag(name:"summary", value:"This host is running Nagios XI and is prone to multiple
 vulnerabilities.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);

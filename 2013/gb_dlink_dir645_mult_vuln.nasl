@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir645_mult_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_dlink_dir645_mult_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # D-Link DIR-645 Router Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803730");
-  script_version("$Revision: 6698 $");
+  script_version("$Revision: 11082 $");
   script_cve_id("CVE-2013-7389");
   script_bugtraq_id(61579);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-05 15:17:38 +0530 (Mon, 05 Aug 2013)");
   script_name("D-Link DIR-645 Router Multiple Vulnerabilities");
 
@@ -42,6 +42,7 @@ if(description)
   the cookie or not.");
   script_tag(name:"solution", value:"Upgrade to version 1.04B11, or higher,
   For updates refer to http://www.dlink.com/ca/en/home-solutions/connect/routers/dir-645-wireless-n-home-router-1000");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"Multiple flaws are due to,
    - Buffer overflow in post_login.xml, hedwig.cgi and authentication.cgi
    When handling specially crafted requests.
@@ -82,10 +83,8 @@ req = "";
 res = "";
 banner = "";
 
-## Get HTTP Port
 port = get_http_port(default:8080);
 
-## Confirm the device from banner
 banner = get_http_banner(port: port);
 if(banner && "DIR-645" >!< banner){
   exit(0);
@@ -95,13 +94,11 @@ if(banner && "DIR-645" >!< banner){
 req = http_get(item: "/", port:port);
 res = http_send_recv(port:port,data:req);
 
-## Confirm the device from response
 if(">D-LINK SYSTEMS" >< res && ">DIR-645<" >< res)
 {
   url = '/parentalcontrols/bind.php?deviceid="><script>alert' +
         '(document.cookie)</script><';
 
-  ## Check the response to confirm vulnerability
   if(http_vuln_check(port:port, url:url, check_header:TRUE,
                      pattern:"><script>alert\(document.cookie\)</script><",
                      extra_check:make_list("OpenDNS", "overriteDeviceID")))

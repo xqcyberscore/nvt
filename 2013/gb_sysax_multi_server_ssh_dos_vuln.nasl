@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysax_multi_server_ssh_dos_vuln.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_sysax_multi_server_ssh_dos_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # Sysax Multi Server SSH Component NULL Pointer Dereference DOS Vulnerability
 #
@@ -24,32 +24,19 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to cause the application
-  to crash, creating a denial-of-service condition.
-  Impact Level: Application";
-
-tag_affected = "Sysax Multi Server version 6.10";
-tag_insight = "The flaw is due to a NULL pointer dereference error within the SSH component
-  when negotiating cipher keys and can be exploited to cause a crash via a
-  specially crafted cipher.";
-tag_solution = "Upgrade to Sysax Multi Server 6.11 or later,
-  For updates refer to http://www.sysax.com/server";
-tag_summary = "The host is running Sysax Multi Server and is prone to denial of
-  service vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803191");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11082 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-04-16 11:21:21 +0530 (Tue, 16 Apr 2013)");
   script_name("Sysax Multi Server SSH Component NULL Pointer Dereference DOS Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/52934");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/24940");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/121207");
-  script_xref(name : "URL" , value : "http://www.mattandreko.com/2013/04/sysax-multi-server-610-ssh-dos.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/52934");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/24940");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/121207");
+  script_xref(name:"URL", value:"http://www.mattandreko.com/2013/04/sysax-multi-server-610-ssh-dos.html");
 
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -57,11 +44,18 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("ssh_detect.nasl");
   script_require_ports("Services/ssh", 22);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause the application
+  to crash, creating a denial-of-service condition.
+  Impact Level: Application");
+  script_tag(name:"affected", value:"Sysax Multi Server version 6.10");
+  script_tag(name:"insight", value:"The flaw is due to a NULL pointer dereference error within the SSH component
+  when negotiating cipher keys and can be exploited to cause a crash via a
+  specially crafted cipher.");
+  script_tag(name:"solution", value:"Upgrade to Sysax Multi Server 6.11 or later,
+  For updates refer to http://www.sysax.com/server");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The host is running Sysax Multi Server and is prone to denial of
+  service vulnerability.");
   exit(0);
 }
 
@@ -73,13 +67,11 @@ req = "";
 banner = "";
 ini_req = "";
 
-## Get SSH Port
 port = get_kb_item("Services/ssh");
 if(!port){
   port = 22;
 }
 
-## Check Port State
 if(!get_port_state(port)){
   exit(0);
 }
@@ -101,7 +93,6 @@ ini_req = raw_string(0x53, 0x53, 0x48, 0x2d, 0x32, 0x2e, 0x30, 0x2d,
                      0x62, 0x69, 0x61, 0x6e, 0x2d, 0x35, 0x75, 0x62,
                      0x75, 0x6e, 0x74, 0x75, 0x31, 0x0d, 0x0a);
 
-## Build Exploit
 req = raw_string(0x00, 0x00, 0x03, 0x14, 0x08, 0x14, 0xff, 0x9f,
                  0xde, 0x5d, 0x5f, 0xb3, 0x07, 0x8f, 0x49, 0xa7,
                  0x79, 0x6a, 0x03, 0x3d, 0xaf, 0x55, 0x00, 0x00,
@@ -213,12 +204,10 @@ recv(socket:soc, length:1024);
 send(socket:soc, data:req);
 recv(socket:soc, length:1024);
 
-## Close socket
 close(soc);
 
 sleep(5);
 
-## Confirm Sysax Multi Server SSH is alive and responding
 soc2 = open_sock_tcp(port);
 if(!soc2)
 {

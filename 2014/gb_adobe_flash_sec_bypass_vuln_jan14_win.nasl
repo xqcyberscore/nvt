@@ -30,12 +30,12 @@ SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804063";
 if(description)
 {
   script_oid(SCRIPT_OID);
-  script_version("$Revision: 8178 $");
+  script_version("$Revision: 11087 $");
   script_cve_id("CVE-2014-0491", "CVE-2014-0492");
   script_bugtraq_id(64807, 64810);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 08:54:50 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 10:42:12 +0530 (Tue, 21 Jan 2014)");
   script_name("Adobe Flash Player Security Bypass Vulnerability Jan14 (Windows)");
 
@@ -91,7 +91,7 @@ include("version_func.inc");
 playerVer = "";
 
 ## Get version
-if(!playerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!playerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, nofork: TRUE)){
   exit(0);
 }
 

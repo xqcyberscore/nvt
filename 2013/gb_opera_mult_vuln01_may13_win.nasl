@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln01_may13_win.nasl 10137 2018-06-08 12:38:04Z asteins $
+# $Id: gb_opera_mult_vuln01_may13_win.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # Opera Multiple Vulnerabilities-01 May13 (Windows)
 #
@@ -27,30 +27,30 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803388");
-  script_version("$Revision: 10137 $");
+  script_version("$Revision: 11082 $");
   script_cve_id("CVE-2013-3211", "CVE-2013-3210");
   script_bugtraq_id(58864, 59317);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-05-02 11:15:55 +0530 (Thu, 02 May 2013)");
   script_name("Opera Multiple Vulnerabilities-01 May13 (Windows)");
-  script_xref(name : "URL" , value : "http://www.opera.com/security/advisory/1047");
-  script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/unified/1215");
+  script_xref(name:"URL", value:"http://www.opera.com/security/advisory/1047");
+  script_xref(name:"URL", value:"http://www.opera.com/docs/changelogs/unified/1215");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_opera_detect_portable_win.nasl");
   script_mandatory_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : "Successful exploitation could led to user's accounts being compromised or
+  script_tag(name:"impact", value:"Successful exploitation could led to user's accounts being compromised or
   disclose sensitive information that may aid in launching further attacks.
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Opera version before 12.15 on Windows");
-  script_tag(name : "insight" , value : "- Unspecified error related to 'moderately severe issue'.
+  script_tag(name:"affected", value:"Opera version before 12.15 on Windows");
+  script_tag(name:"insight", value:"- Unspecified error related to 'moderately severe issue'.
   - Does not properly block top-level domains in Set-Cookie headers.");
-  script_tag(name : "solution" , value : "Upgrade to Opera version 12.15 or later,
+  script_tag(name:"solution", value:"Upgrade to Opera version 12.15 or later,
   For updates refer to http://www.opera.com");
-  script_tag(name : "summary" , value : "The host is installed with Opera and is prone to multiple
+  script_tag(name:"summary", value:"The host is installed with Opera and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

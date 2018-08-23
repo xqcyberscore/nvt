@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendnet_print_server_authe_bypass_vuln.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_trendnet_print_server_authe_bypass_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # TRENDnet Print Server Authentication Bypass Vulnerability
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803720");
-  script_version("$Revision: 9984 $");
+  script_version("$Revision: 11082 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-25 12:51:19 +0530 (Tue, 25 Jun 2013)");
   script_name("TRENDnet Print Server Authentication Bypass Vulnerability");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/26401");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/trendnet-te100-p1u-authentication-bypass");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/26401");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/trendnet-te100-p1u-authentication-bypass");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks");
@@ -43,21 +43,21 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "insight" , value : "The flaw is due to a failure of the application to validate
+  script_tag(name:"insight", value:"The flaw is due to a failure of the application to validate
 authentication credentials when processing print server configuration
 change requests.");
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running TRENDnet Print Server and is prone to
+  script_tag(name:"summary", value:"This host is running TRENDnet Print Server and is prone to
 authentication bypass vulnerability.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to reset
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to reset
 print server to factory settings or changing its IP address without password
 security check and obtain the sensitive information.
 
 Impact Level: Application");
-  script_tag(name : "affected" , value : "TRENDnet TE100-P1U Print Server Firmware 4.11");
+  script_tag(name:"affected", value:"TRENDnet TE100-P1U Print Server Firmware 4.11");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }

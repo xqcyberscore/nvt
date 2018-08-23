@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_fusion_mult_vuln.nasl 5668 2017-03-21 14:16:34Z cfi $
+# $Id: gb_php_fusion_mult_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # PHP-Fusion Multiple Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:php-fusion:php-fusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803431");
-  script_version("$Revision: 5668 $");
+  script_version("$Revision: 11082 $");
   script_cve_id("CVE-2013-1803", "CVE-2013-1804", "CVE-2013-1805", "CVE-2013-1806",
                 "CVE-2013-1807", "CVE-2013-7375");
   script_bugtraq_id(58226, 58265, 58270);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-21 15:16:34 +0100 (Tue, 21 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-07 13:36:54 +0530 (Thu, 07 Mar 2013)");
   script_name("PHP-Fusion Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -89,7 +89,6 @@ if( dir == "/" ) dir = "";
 
 url = dir + "/downloads.php?cat_id=1&orderby='SQL-Injection-Test";
 
-## Try attack and check the response to confirm vulnerability
 if( http_vuln_check( port:port, url:url, check_header:TRUE, pattern:"You have an error in your SQL syntax.*SQL-Injection-Test" ) ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );

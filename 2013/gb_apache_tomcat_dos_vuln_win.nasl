@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_dos_vuln_win.nasl 7548 2017-10-24 12:06:02Z cfischer $
+# $Id: gb_apache_tomcat_dos_vuln_win.nasl 11077 2018-08-22 09:40:33Z mmartin $
 #
 # Apache Tomcat Denial Of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803637");
-  script_version("$Revision: 7548 $");
+  script_version("$Revision: 11077 $");
   script_cve_id("CVE-2012-3544");
   script_bugtraq_id(59797);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-06 13:10:27 +0530 (Thu, 06 Jun 2013)");
   script_name("Apache Tomcat Denial Of Service Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -51,31 +51,21 @@ if(description)
   script_xref(name:"URL", value:"http://svn.apache.org/viewvc?view=revision&revision=1378921");
   script_xref(name:"URL", value:"http://svn.apache.org/viewvc?view=revision&revision=1378702");
 
-  tag_solution = "Apply patch or upgrade Apache Tomcat to 7.0.30 or 6.0.38 or later,
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial
+  of service via a specially crafted request.
+
+  Impact Level: Application");
+  script_tag(name:"affected", value:"Apache Tomcat version 6.x before 6.0.37 and 7.x before 7.0.30");
+  script_tag(name:"insight", value:"Flaw due to improper validation of an error in the way CRLF sequences at the
+  end of data chunks are processed by chunked transfer encoding.");
+  script_tag(name:"summary", value:"The host is running Apache Tomcat Server and is prone to denial of
+  service vulnerability.");
+  script_tag(name:"solution", value:"Apply patch or upgrade Apache Tomcat to 7.0.30 or 6.0.38 or later,
   For updates refer to http://tomcat.apache.org
 
   *****
   NOTE: Ignore this warning, if above mentioned patch is manually applied.
-  *****";
-
-  tag_impact = "Successful exploitation could allow remote attackers to cause a denial
-  of service via a specially crafted request.
-
-  Impact Level: Application";
-
-  tag_affected = "Apache Tomcat version 6.x before 6.0.37 and 7.x before 7.0.30";
-
-  tag_insight = "Flaw due to improper validation of an error in the way CRLF sequences at the
-  end of data chunks are processed by chunked transfer encoding.";
-
-  tag_summary = "The host is running Apache Tomcat Server and is prone to denial of
-  service vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  *****");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -89,7 +79,6 @@ include("version_func.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## check the version for 6.0 < 6.0.37 and 7.0 < 7.0.30
 if( version_in_range( version:vers, test_version:"6.0.0", test_version2:"6.0.36" ) ||
     version_in_range( version:vers, test_version:"7.0.0", test_version2:"7.0.29" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"6.0.37/7.0.30" );

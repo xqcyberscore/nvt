@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 22 Aug 2018 09:54:37 +0200
+# Automatically created on:  Thu, 23 Aug 2018 09:12:12 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -40618,6 +40618,7 @@
 2018/h2o/gb_h2o_heap_overflow_vuln.nasl: GPLv2+
 2018/h2o/gb_h2o_mult_vuln1.nasl: GPLv2+
 2018/h2o/gb_h2o_mult_vuln2.nasl: GPLv2+
+2018/home_assistant/gb_home_assistant_no_password.nasl: GPLv2+
 2018/hp/gb_hp_diagnostics_xss_n_click_jack_vuln.nasl: GPLv2+
 2018/hp/gb_hpe_loadrunner_mms_prot_bof_vuln.nasl: GPLv2+
 2018/hp/gb_hpe_loadrunner_vts_comp_xss_vuln.nasl: GPLv2+
@@ -42692,6 +42693,7 @@ gb_hirschmann_telnet_detect.nasl: GPLv2+
 gb_hirschmann_webui_detect.nasl: GPLv2+
 gb_hnap_detect.nasl: GPLv2+
 gb_hnap_os_detection.nasl: GPLv2+
+gb_home_assistant_detect.nasl: GPLv2+
 gb_homematic_ccu2_detect.nasl: GPLv2+
 gb_honeywell_ip_camera_detect.nasl: GPLv2+
 gb_honeywell_xlweb_bacnet_detect.nasl: GPLv2+
@@ -43325,6 +43327,7 @@ gb_ros_detect.nasl: GPLv2+
 gb_rpi_cam_control_detect.nasl: GPLv2+
 gb_rsa_archer_detect.nasl: GPLv2+
 gb_rsa_auth_agent_detect_win.nasl: GPLv2+
+gb_rsa_netwitness_platform_detect.nasl: GPLv2+
 gb_rsa_web_threat_detection_detect.nasl: GPLv2+
 gb_rtsp_os_detection.nasl: GPLv2+
 gb_ruby_rails_detect.nasl: GPLv2+
@@ -59155,7 +59158,9 @@ gsf/2018/emc/gb_emc_data_protection_advisor_pw_vuln.nasl: GPLv2+
 gsf/2018/emc/gb_emc_data_protection_advisor_xxe_vuln.nasl: GPLv2+
 gsf/2018/emc/gb_emc_isilon_onefs_mult_vuln.nasl: GPLv2+
 gsf/2018/emc/gb_rsa_archer_DSA-2018-130.nasl: GPLv2+
+gsf/2018/emc/gb_rsa_archer_DSA-2018-144.nasl: GPLv2+
 gsf/2018/emc/gb_rsa_archer_mult_vuln.nasl: GPLv2+
+gsf/2018/emc/gb_rsa_netwitness_DSA-2018-132.nasl: GPLv2+
 gsf/2018/emc/gb_rsa_web_threat_detection_sql_inj_vuln.nasl: GPLv2+
 gsf/2018/emerson/gb_emerson_micro_buf_overflow_vuln.nasl: GPLv2+
 gsf/2018/epignosis/gb_efront_cms_eol.nasl: GPLv2+

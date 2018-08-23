@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_4685.nasl 7140 2017-09-15 09:41:22Z cfischer $
+# $Id: gb_junos_cve_2013_4685.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
-# Junos Buffer Overflow when Processing HTTP Messages 
+# Junos Buffer Overflow when Processing HTTP Messages
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103961");
-  script_version ("$Revision: 7140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 11082 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-09 22:07:11 +0700 (Mon, 09 Dec 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -48,23 +48,23 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version");
 
-  script_tag(name : "summary" , value : "Buffer Overflow in flowd when processing HTTP protocol messages");
+  script_tag(name:"summary", value:"Buffer Overflow in flowd when processing HTTP protocol messages");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "A buffer overflow vulnerability affects the flowd process while
+  script_tag(name:"insight", value:"A buffer overflow vulnerability affects the flowd process while
 processing HTTP protocol messages. This issue can be triggered when the SRX Series device is acting as a
 Unified Access Control (UAC) enforcer in a UAC network with Captive Portal enabled.");
 
-  script_tag(name : "impact" , value : "A remote attacker may execute arbitrary code using crafted HTTP
+  script_tag(name:"impact", value:"A remote attacker may execute arbitrary code using crafted HTTP
 requests.");
 
-  script_tag(name : "affected" , value : "Junos OS on SRX Series running 10.4, 11.4 12.1, or 12.1X44.");
+  script_tag(name:"affected", value:"Junos OS on SRX Series running 10.4, 11.4 12.1, or 12.1X44.");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10574");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61125");
@@ -94,7 +94,7 @@ if (revcomp(a:build2check, b:"20130620") >= 0) {
 if (revcomp(a:version, b:"10.4R15") < 0) {
   security_message(port:0, data:desc);
   exit(0);
-} 
+}
 
 if (version =~ "10.4S") {
   if (revcomp(a:version, b:"10.4S14") < 0) {
@@ -119,6 +119,6 @@ if (version =~ "^12") {
     security_message(port:0, data:desc);
     exit(0);
   }
-} 
+}
 
 exit(99);

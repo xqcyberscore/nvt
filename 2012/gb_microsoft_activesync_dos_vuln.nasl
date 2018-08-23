@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_activesync_dos_vuln.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_microsoft_activesync_dos_vuln.nasl 11084 2018-08-22 17:10:42Z cfischer $
 #
 # Microsoft ActiveSync Null Pointer Dereference Denial Of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802462");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11084 $");
   script_bugtraq_id(7150);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 19:10:42 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-09-27 14:28:19 +0530 (Thu, 27 Sep 2012)");
   script_name("Microsoft ActiveSync Null Pointer Dereference Denial Of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -67,6 +67,7 @@ if(description)
   exit(0);
 }
 
+port = 5679;
 
 if(!get_port_state(port)){
   exit(0);

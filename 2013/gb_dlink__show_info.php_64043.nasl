@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink__show_info.php_64043.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_dlink__show_info.php_64043.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # Multiple D-Link DIR Series Routers 'model/__show_info.php' Local File Disclosure Vulnerability
 #
@@ -25,65 +25,52 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103858";
-
-tag_insight = "The remote D-Link device fails to adequately validate user supplied input
-to 'REQUIRE_FILE' in '__show_info.php'";
-
-tag_impact = "Exploiting this vulnerability would allow an attacker to obtain
-potentially sensitive information from local files on devices running
-the vulnerable application. This may aid in further attacks.";
-
-tag_affected = "D-Link DIR-615
-D-Link DIR-300
-DIR-600";
-
-tag_summary = "Multiple D-Link DIR series routers are prone to a local file-
-disclosure vulnerability.  fails to adequately validate user-
-supplied input.";
-
-tag_solution = "Ask the Vendor for an update.";
-
-tag_vuldetect = "Send a crafted HTTP GET request which tries to read '/var/etc/httpasswd'";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_bugtraq_id(64043);
- script_version ("$Revision: 6125 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.103858");
+  script_bugtraq_id(64043);
+  script_version("$Revision: 11082 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
- script_name("Multiple D-Link DIR Series Routers 'model/__show_info.php' Local File Disclosure Vulnerability");
+  script_name("Multiple D-Link DIR Series Routers 'model/__show_info.php' Local File Disclosure Vulnerability");
 
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64043");
- script_xref(name:"URL", value:"http://www.dlink.com/");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
- script_tag(name:"creation_date", value:"2013-12-16 14:34:55 +0100 (Mon, 16 Dec 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_dlink_dir_detect.nasl");
- script_require_ports("Services/www", 80, 8080);
- script_mandatory_keys("host_is_dlink_dir");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64043");
+  script_xref(name:"URL", value:"http://www.dlink.com/");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-12-16 14:34:55 +0100 (Mon, 16 Dec 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_dlink_dir_detect.nasl");
+  script_require_ports("Services/www", 80, 8080);
+  script_mandatory_keys("host_is_dlink_dir");
+
+  script_tag(name:"impact", value:"Exploiting this vulnerability would allow an attacker to obtain
+potentially sensitive information from local files on devices running
+the vulnerable application. This may aid in further attacks.");
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request which tries to read '/var/etc/httpasswd'");
+  script_tag(name:"insight", value:"The remote D-Link device fails to adequately validate user supplied input
+to 'REQUIRE_FILE' in '__show_info.php'");
+  script_tag(name:"solution", value:"Ask the Vendor for an update.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Multiple D-Link DIR series routers are prone to a local file-
+disclosure vulnerability.  fails to adequately validate user-
+supplied input.");
+  script_tag(name:"affected", value:"D-Link DIR-615
+D-Link DIR-300
+DIR-600");
 
  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
-   
+
+
 port = get_kb_item("dlink_dir_port");
 if(!port)exit(0);
 
@@ -101,7 +88,7 @@ lines = split(buf);
 x = 0;
 
 foreach line (lines) {
- 
+
   x++;
   if("<center>" >< line) {
 
@@ -112,12 +99,12 @@ foreach line (lines) {
       if(!isnull(user_pass[1])) {
         ul[p++] = chomp(user_pass[1]);
         continue;
-      }   
+      }
 
-    }  
+    }
 
-  }  
-}  
+  }
+}
 
 if(max_index(ul) < 1)exit(99);
 
@@ -155,10 +142,10 @@ foreach p (ul) {
 
     security_message(port:port);
     exit(0);
-  }  
+  }
 
 
-}  
+}
 
 exit(99);
 

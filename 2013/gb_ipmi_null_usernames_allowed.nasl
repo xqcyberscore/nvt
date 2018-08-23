@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_null_usernames_allowed.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_ipmi_null_usernames_allowed.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # IPMI Null Usernames Allowed
 #
@@ -25,30 +25,26 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote IPMI service allows 'null usernames'.";
-tag_solution = "Don't allow accounts with a null username or password.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103838";  
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 6104 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
- script_tag(name:"creation_date", value:"2013-11-26 12:23:03 +0100 (Tue, 26 Nov 2013)");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:P/A:N");
- script_name("IPMI Null Usernames Allowed");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("General");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_ipmi_detect.nasl");
- script_require_udp_ports("Services/udp/ipmi", 623);
- script_mandatory_keys("ipmi/null_username");
+  script_oid("1.3.6.1.4.1.25623.1.0.103838");
+  script_version("$Revision: 11082 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-11-26 12:23:03 +0100 (Tue, 26 Nov 2013)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:P/A:N");
+  script_name("IPMI Null Usernames Allowed");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_ipmi_detect.nasl");
+  script_require_udp_ports("Services/udp/ipmi", 623);
+  script_mandatory_keys("ipmi/null_username");
 
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"solution", value:"Don't allow accounts with a null username or password.");
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"summary", value:"The remote IPMI service allows 'null usernames'.");
 
  exit(0);
 }
@@ -61,7 +57,7 @@ if(!get_udp_port_state(port))exit(0);
 if(get_kb_item("ipmi/null_username")) {
   security_message(port:port, proto:"udp");
   exit(0);
-}   
+}
 
 exit(99);
 

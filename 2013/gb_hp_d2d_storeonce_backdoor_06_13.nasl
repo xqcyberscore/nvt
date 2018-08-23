@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_d2d_storeonce_backdoor_06_13.nasl 7168 2017-09-18 09:41:21Z cfischer $
+# $Id: gb_hp_d2d_storeonce_backdoor_06_13.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # HP D2D/StorOnce Storage Unit Backdoor
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103746");
-  script_version("$Revision: 7168 $");
+  script_version("$Revision: 11082 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 11:41:21 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-25 14:06:35 +0200 (Tue, 25 Jun 2013)");
   script_name("HP D2D/StorOnce Storage Unit Backdoor");
   script_category(ACT_ATTACK);
@@ -42,15 +42,14 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.lolware.net/hpstorage.html");
 
-  tag_summary = "HP D2D/StorOnce Storage Units are prone to a security-bypass vulnerability.";
-
-  tag_insight = "The HP D2D/StorOnce Storage Units contains a backdoor. SSH access is all that's
+  script_tag(name:"summary", value:"HP D2D/StorOnce Storage Units are prone to a security-bypass vulnerability.");
+  script_tag(name:"insight", value:"The HP D2D/StorOnce Storage Units contains a backdoor. SSH access is all that's
   required to remotely compromise HP StoreOnce backup systems. Entering the user
   name 'HPSupport' and the password 'badg3r5' causes the system to open an
-  undocumented administrator account.";
+  undocumented administrator account.");
 
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"insight", value:tag_insight);
+  script_tag(name:"solution", value:"Disable SSH access or disallow remote SSH access from outside your network.");
+  script_tag(name:"solution_type", value:"Mitigation");
 
   script_tag(name:"qod_type", value:"remote_vul");
 

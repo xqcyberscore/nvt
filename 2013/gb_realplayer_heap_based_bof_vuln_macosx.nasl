@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_heap_based_bof_vuln_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_realplayer_heap_based_bof_vuln_macosx.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # RealNetworks RealPlayer Heap Based BoF Vulnerability (Mac OS X)
 #
@@ -24,43 +24,36 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation allows remote attackers to to cause heap
-  based buffer overflow leading to arbitrary code execution or denial of
-  service condition.
-  Impact Level: System/Application";
-
-tag_affected = "RealPlayer version 12.0.0.1701 and prior on Mac OS X";
-tag_insight = "Flaw due to improper sanitization of user-supplied input when parsing MP4
-  files.";
-tag_solution = "Upgrade to RealPlayer version 12.0.1.1738 or later,
-  For updates refer to http://www.real.com/player";
-tag_summary = "This host is installed with RealPlayer which is prone to heap
-  based buffer overflow vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803602");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11082 $");
   script_cve_id("CVE-2013-1750");
   script_bugtraq_id(58539);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-05-14 18:45:01 +0530 (Tue, 14 May 2013)");
   script_name("RealNetworks RealPlayer Heap Based BoF Vulnerability (Mac OS X)");
-  script_xref(name : "URL" , value : "http://www.scip.ch/en/?vuldb.8026");
-  script_xref(name : "URL" , value : "http://cxsecurity.com/cveshow/CVE-2013-1750");
-  script_xref(name : "URL" , value : "http://service.real.com/realplayer/security/03152013_player/en");
+  script_xref(name:"URL", value:"http://www.scip.ch/en/?vuldb.8026");
+  script_xref(name:"URL", value:"http://cxsecurity.com/cveshow/CVE-2013-1750");
+  script_xref(name:"URL", value:"http://service.real.com/realplayer/security/03152013_player/en");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_realplayer_detect_macosx.nasl");
   script_mandatory_keys("RealPlayer/MacOSX/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to to cause heap
+  based buffer overflow leading to arbitrary code execution or denial of
+  service condition.
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"RealPlayer version 12.0.0.1701 and prior on Mac OS X");
+  script_tag(name:"insight", value:"Flaw due to improper sanitization of user-supplied input when parsing MP4
+  files.");
+  script_tag(name:"solution", value:"Upgrade to RealPlayer version 12.0.1.1738 or later,
+  For updates refer to http://www.real.com/player");
+  script_tag(name:"summary", value:"This host is installed with RealPlayer which is prone to heap
+  based buffer overflow vulnerability.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -69,18 +62,13 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-rpVer = "";
-
-## Get RealPlayer version from KB
 rpVer = get_kb_item("RealPlayer/MacOSX/Version");
 if(!rpVer){
   exit(0);
 }
 
-## Check for Realplayer version <= 12.0.0.1701
 if(version_is_less_equal(version:rpVer, test_version:"12.0.0.1701"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sony_network_camera_default_credentials.nasl 11073 2018-08-21 14:56:25Z tpassfeld $
+# $Id: gb_sony_network_camera_default_credentials.nasl 11081 2018-08-22 13:05:04Z tpassfeld $
 #
 # Sony Network Camera Default Credentials
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114023");
-  script_version("$Revision: 11073 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:56:25 +0200 (Tue, 21 Aug 2018) $");
+  script_version("$Revision: 11081 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 15:05:04 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-21 16:35:01 +0200 (Tue, 21 Aug 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -58,10 +58,10 @@ if(description)
   exit(0);
 }
 
-include( "host_details.inc" );
-include( "http_func.inc" );
-include( "http_keepalive.inc" );
-include( "misc_func.inc" );
+include("host_details.inc");
+include("http_func.inc");
+include("http_keepalive.inc");
+include("misc_func.inc");
 
 CPE = "cpe:/h:sony:network_camera";
 
@@ -70,7 +70,7 @@ if(!port = get_app_port(cpe: CPE)) exit(0);
 username = "admin";
 password = "admin";
 
-auth_header = make_array("Authorization", "Basic " + base64(str: username + ":" + password) + "=");
+auth_header = make_array("Authorization", "Basic " + base64(str: username + ":" + password));
 req = http_get_req(port: port, url: "/command/inquiry.cgi?inqjs=network", add_headers: auth_header);
 res = http_keepalive_send_recv(port: port, data: req);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_info_disc_vuln_win.nasl 10142 2018-06-08 13:18:36Z tpassfeld $
+# $Id: gb_putty_info_disc_vuln_win.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # PuTTY Information Disclosure vulnerability (Windows)
 #
@@ -28,29 +28,29 @@ CPE = "cpe:/a:putty:putty";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803880");
-  script_version("$Revision: 10142 $");
+  script_version("$Revision: 11082 $");
   script_cve_id("CVE-2011-4607");
   script_bugtraq_id(51021);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:18:36 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-26 15:35:39 +0530 (Mon, 26 Aug 2013)");
   script_name("PuTTY Information Disclosure vulnerability (Windows)");
-  script_tag(name : "summary" , value : "The host is installed with PuTTY and is prone to information disclosure
+  script_tag(name:"summary", value:"The host is installed with PuTTY and is prone to information disclosure
 vulnerability.");
-  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
-  script_tag(name : "solution" , value : "Upgrade to version 0.62 or later,
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Upgrade to version 0.62 or later,
 For updates refer to http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html");
-  script_tag(name : "insight" , value : "Flaw is due to improper handling of session passwords that were stored in the
+  script_tag(name:"insight", value:"Flaw is due to improper handling of session passwords that were stored in the
 memory during the keyboard-interactive authentication");
-  script_tag(name : "affected" , value : "PuTTY version 0.59 before 0.62 on Windows");
-  script_tag(name : "impact" , value : "Successful exploitation will allow local attacker to read the passwords within the memory in clear text until the program stops running.");
+  script_tag(name:"affected", value:"PuTTY version 0.59 before 0.62 on Windows");
+  script_tag(name:"impact", value:"Successful exploitation will allow local attacker to read the passwords within the memory in clear text until the program stops running.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2011/q4/500");
-  script_xref(name : "URL" , value : "http://cxsecurity.com/cveshow/CVE-2011-4607");
-  script_xref(name : "URL" , value : "http://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/password-not-wiped.html");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2011/q4/500");
+  script_xref(name:"URL", value:"http://cxsecurity.com/cveshow/CVE-2011-4607");
+  script_xref(name:"URL", value:"http://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/password-not-wiped.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

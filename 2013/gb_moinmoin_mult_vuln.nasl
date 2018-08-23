@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moinmoin_mult_vuln.nasl 8755 2018-02-12 06:56:14Z cfischer $
+# $Id: gb_moinmoin_mult_vuln.nasl 11077 2018-08-22 09:40:33Z mmartin $
 #
 # MoinMoin Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:moinmo:moinmoin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803445");
-  script_version("$Revision: 8755 $");
+  script_version("$Revision: 11077 $");
   script_cve_id("CVE-2012-6080", "CVE-2012-6081", "CVE-2012-6082", "CVE-2012-6495");
   script_bugtraq_id(57076, 57082, 57089, 57147);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-12 07:56:14 +0100 (Mon, 12 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-21 15:03:34 +0530 (Thu, 21 Mar 2013)");
   script_name("MoinMoin Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -49,16 +49,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2012/12/29/6");
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2012/12/30/6");
 
-  tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   HTML or web script in a user's browser session in the context of an affected
   site, uplaod malicious script and overwrite arbitrary files via directory
   traversal sequences.
 
-  Impact Level: Application";
-
-  tag_affected = "MoinMoin version 1.9.x prior to 1.9.6";
-
-  tag_insight = "Multiple flaws due to,
+  Impact Level: Application");
+  script_tag(name:"affected", value:"MoinMoin version 1.9.x prior to 1.9.6");
+  script_tag(name:"insight", value:"Multiple flaws due to,
 
   - Certain input when handling the AttachFile action is not properly verified
     before being used to write files.
@@ -68,20 +66,12 @@ if(description)
     actions.
 
   - Input passed via page name in rss link is not properly sanitised before
-    being displayed to the user.";
+    being displayed to the user.");
+  script_tag(name:"solution", value:"Update to MoinMoin 1.9.6 or later,
 
-  tag_solution = "Update to MoinMoin 1.9.6 or later,
-
-  For updates refer to http://moinmo.in/MoinMoinDownload";
-
-  tag_summary = "This host is installed with MoinMoin and is prone to multiple
-  vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  For updates refer to http://moinmo.in/MoinMoinDownload");
+  script_tag(name:"summary", value:"This host is installed with MoinMoin and is prone to multiple
+  vulnerabilities.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_printers_fax_rce_vuln.nasl 11035 2018-08-17 10:40:39Z ckuersteiner $
+# $Id: gb_hp_printers_fax_rce_vuln.nasl 11084 2018-08-22 17:10:42Z cfischer $
 #
 # HP Ink Printers RCE Vulnerabilities (Faxploit)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141380");
-  script_version("$Revision: 11035 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 12:40:39 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11084 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 19:10:42 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-17 10:33:30 +0700 (Fri, 17 Aug 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -644,10 +644,19 @@ if (model =~ "^Officejet Pro 8210") {
 }
 
 if (model =~ "^Officejet Pro 8600") {
-  if (version_is_less(version: fw_ver, test_version: "CLP1CN1829AR")) {
-    report = report_fixed_ver(installed_version: fw_ver, fixed_version: "CLP1CN1829AR");
-    security_message(port: 0, data: report);
-    exit(0);
+  # e.g. CKP1CN1545AR
+  if (fw_ver =~"^CKP1CN" ) {
+    if (version_is_less(version: fw_ver, test_version: "CKP1CN1829AR")) {
+      report = report_fixed_ver(installed_version: fw_ver, fixed_version: "CKP1CN1829AR");
+      security_message(port: 0, data: report);
+      exit(0);
+    }
+  } else {
+    if (version_is_less(version: fw_ver, test_version: "CLP1CN1829AR")) {
+      report = report_fixed_ver(installed_version: fw_ver, fixed_version: "CLP1CN1829AR");
+      security_message(port: 0, data: report);
+      exit(0);
+    }
   }
 }
 

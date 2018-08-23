@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sony_network_camera_detect.nasl 11073 2018-08-21 14:56:25Z tpassfeld $
+# $Id: gb_sony_network_camera_detect.nasl 11081 2018-08-22 13:05:04Z tpassfeld $
 #
 # Sony Network Camera Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114022");
-  script_version("$Revision: 11073 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:56:25 +0200 (Tue, 21 Aug 2018) $");
+  script_version("$Revision: 11081 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 15:05:04 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-21 15:13:40 +0200 (Tue, 21 Aug 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -62,21 +62,19 @@ include("http_keepalive.inc");
 
 port = get_http_port(default: 80);
 
-res1 = http_get_cache(port: port, item: "/en/index.html");
-if("404 Not Found" >< res1) res1 = http_get_cache(port: port, item: "/index.html");
-res2 = http_get_cache(port: port, item: "/command/inquiry.cgi?inqjs=sysinfo");
+res = http_get_cache(port: port, item: "/command/inquiry.cgi?inqjs=sysinfo");
 
-if("Sony Corporation. All rights reserved." >< res1 || '<IMG SRC="../image/blue/top_sony.gif"' >< res1 || "Sony Corporation</FONT>" >< res1) {
+if("ModelName=" >< res || "SoftVersion=" >< res || "TitleBar=" >< res || "Time=" >< res || "TimeZone=" >< res || "DateFormat=" >< res) {
    version = "unknown";
    model = "unknown";
    install = "/";
 
    #SoftVersion="1.30"
-   ver = eregmatch(pattern: '[Ss]oft[Vv]ersion="([0-9.]+)"', string: res2);
+   ver = eregmatch(pattern: '[Ss]oft[Vv]ersion="([0-9.]+)"', string: res);
    if(ver[1]) version = ver[1];
 
    #ModelName="SNC-RZ25N"
-   mod = eregmatch(pattern: '([Mm]odel[Nn]ame="SNC-([0-9a-zA-Z]+)")|Basic realm="Sony Network Camera SNC-([0-9a-zA-z]+)"', string: res2);
+   mod = eregmatch(pattern: '([Mm]odel[Nn]ame="SNC-([0-9a-zA-Z]+)")|Basic realm="Sony Network Camera SNC-([0-9a-zA-z]+)"', string: res);
    if(mod[2]) model = mod[2];
    else if(mod[3]) model = mod[3];
 

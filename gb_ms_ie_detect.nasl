@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_detect.nasl 10922 2018-08-10 19:21:48Z cfischer $
+# $Id: gb_ms_ie_detect.nasl 11086 2018-08-23 06:43:53Z santu $
 #
 # Microsoft Internet Explorer Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800209");
-  script_version("$Revision: 10922 $");
+  script_version("$Revision: 11086 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 08:43:53 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-12-19 13:40:09 +0100 (Fri, 19 Dec 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Internet Explorer Version Detection (Windows)");
@@ -77,7 +77,7 @@ if(ver != NULL)
   register_and_report_cpe( app:"Microsoft Internet Explorer", ver:ver, base:"cpe:/a:microsoft:ie:", expr:"^([0-9.]+)", insloc:exePath );
 }
 
-if(exePath != NULL)
+if(exePath != NULL && ver ==NULL)
 {
   ieVer = fetch_file_version(sysPath:exePath, file_name:"iexplore.exe");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_videoiq_camera_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
+# $Id: gb_videoiq_camera_detect.nasl 11083 2018-08-22 15:29:34Z tpassfeld $
 #
 # VideoIQ Camera Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807357");
-  script_version("$Revision: 10898 $");
+  script_version("$Revision: 11083 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:29:34 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-08-23 15:56:59 +0530 (Tue, 23 Aug 2016)");
   script_name("VideoIQ Camera Remote Detection");
 
@@ -45,22 +45,22 @@ if(description)
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("find_service.nasl");
-  script_require_ports("Services/www", 8080);
+  script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
   exit(0);
 }
 
-
+include("cpe.inc");
 include("http_func.inc");
 include("host_details.inc");
+include("http_keepalive.inc");
 
-
-if(!iqPort = get_http_port(default:8080)){
+if(!iqPort = get_http_port(default:80)){
   exit(0);
 }
-
+url = "/?wicket:bookmarkablePage=:com.videoiq.fusion.camerawebapi.ui.pages.LoginPage";
 ## Send and receive response
-sndReq = http_get(item:"/?wicket:bookmarkablePage=:com.videoiq.fusion.camerawebapi.ui.pages.LoginPage", port:iqPort);
+sndReq = http_get(item:url, port:iqPort);
 rcvRes = http_send_recv(port:iqPort, data:sndReq);
 
 if('<title>VideoIQ Camera Login</title>' >< rcvRes && '>User name' >< rcvRes &&
@@ -71,15 +71,16 @@ if('<title>VideoIQ Camera Login</title>' >< rcvRes && '>User name' >< rcvRes &&
   set_kb_item(name:"VideoIQ/Camera/Installed", value:TRUE);
 
   ## creating new cpe for this product
-  cpe = "cpe:/a:videoiq:videoiq_camera";
+  cpe = "cpe:/a:videoiq:videoiq_camera:";
 
-  register_product(cpe:cpe, location:"/", port:iqPort);
+  conclUrl = report_vuln_url(port:port, url:url, url_only: TRUE);
 
-  log_message(data:build_detection_report(app:"VideoIQ Camera",
-                                          version:version,
-                                          install:"/",
-                                          cpe:cpe,
-                                          concluded:version),
-                                          port:iqPort);
+  register_and_report_cpe(app:"VideoIQ Camera", 
+                          ver:version,
+                          base:cpe, 
+                          expr:"^([0-9.]+)", 
+                          insloc:"/", 
+                          regPort:iqPort, 
+                          conclUrl:conclUrl);
 }
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_verax_nms_multiple_vuln.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_verax_nms_multiple_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # Verax Network Management System Multiple Vulnerabilities
 #
@@ -27,35 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803181");
-  script_version("$Revision: 9984 $");
+  script_version("$Revision: 11082 $");
   script_cve_id("CVE-2013-1350", "CVE-2013-1351", "CVE-2013-1352", "CVE-2013-1631");
   script_bugtraq_id(58334);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-15 13:15:33 +0530 (Fri, 15 Mar 2013)");
   script_name("Verax Network Management System Multiple Vulnerabilities");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/52473");
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Mar/38");
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Mar/37");
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Mar/36");
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Mar/35");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/525916");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/525917");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/525918");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/52473");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Mar/38");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Mar/37");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Mar/36");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Mar/35");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/525916");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/525917");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/525918");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_require_ports("Services/www", 9400);
   script_dependencies("find_service.nasl", "http_version.nasl");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to bypass certain security
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to bypass certain security
   restrictions, perform unauthorized actions and obtain sensitive information.
   This may aid in launching further attacks.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Verax NMS version prior to 2.1.0");
-  script_tag(name : "insight" , value : "- An improper restricting access to certain actions via Action Message Format
+  script_tag(name:"affected", value:"Verax NMS version prior to 2.1.0");
+  script_tag(name:"insight", value:"- An improper restricting access to certain actions via Action Message Format
     (AMF), which can be exploited to retrieve user information by requesting
     certain objects via AMF
 
@@ -69,9 +69,9 @@ if(description)
   - The Verax NMS Console, users can navigate to monitored devices and perform
     predefined actions (NMSAction), such as repairing tables on a MySQL database
     or restarting services.");
-  script_tag(name : "solution" , value : "Upgrade to Verax NMS 2.1.0 or later,
+  script_tag(name:"solution", value:"Upgrade to Verax NMS 2.1.0 or later,
   For updates refer to http://www.veraxsystems.com/en/products/nms");
-  script_tag(name : "summary" , value : "The host is running Verax Network Management System and is prone to
+  script_tag(name:"summary", value:"The host is running Verax Network Management System and is prone to
   multiple vulnerabilities.");
 
   script_tag(name:"qod_type", value:"remote_app");

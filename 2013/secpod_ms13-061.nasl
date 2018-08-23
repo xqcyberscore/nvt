@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-061.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: secpod_ms13-061.nasl 11077 2018-08-22 09:40:33Z mmartin $
 #
 # MS Exchange Server Remote Code Execution Vulnerabilities (2876063)
 #
@@ -27,60 +27,42 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902992");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11077 $");
   script_cve_id("CVE-2013-2393", "CVE-2013-3776", "CVE-2013-3781");
   script_bugtraq_id(59129, 61234, 61232);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-14 13:28:33 +0530 (Wed, 14 Aug 2013)");
   script_name("MS Exchange Server Remote Code Execution Vulnerabilities (2876063)");
 
-   tag_summary =
-"This host is missing a critical security update according to
-Microsoft Bulletin MS13-061.";
 
-  tag_vuldetect =
-"Get the vulnerable file version and check appropriate patch is applied
-or not.";
-
-  tag_insight =
-"The flaws exist in the WebReady Document Viewing and Data Loss Prevention
-features of Microsoft Exchange Server.";
-
-  tag_impact =
-"Successful exploitation could allow an attacker to cause a denial of service
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+Microsoft Bulletin MS13-061.");
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
+or not.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
+mentioned hotfixes in the advisory from the below link,
+https://technet.microsoft.com/en-us/security/bulletin/ms13-061");
+  script_tag(name:"insight", value:"The flaws exist in the WebReady Document Viewing and Data Loss Prevention
+features of Microsoft Exchange Server.");
+  script_tag(name:"affected", value:"Microsoft Exchange Server 2007 Service Pack 3
+Microsoft Exchange Server 2010 Service Pack 2
+Microsoft Exchange Server 2010 Service Pack 3");
+  script_tag(name:"impact", value:"Successful exploitation could allow an attacker to cause a denial of service
 condition or run arbitrary code as LocalService on the affected Exchange
 server.
 
-Impact Level: System";
-
-  tag_affected =
-"Microsoft Exchange Server 2007 Service Pack 3
-Microsoft Exchange Server 2010 Service Pack 2
-Microsoft Exchange Server 2010 Service Pack 3";
-
-  tag_solution =
-"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms13-061";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+Impact Level: System");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/54392");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2873746");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2874216");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2866475");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2874216");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-061");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/54392");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2873746");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2874216");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2866475");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2874216");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms13-061");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");
@@ -97,14 +79,7 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-key = "";
-version = "";
-exeVer = "";
-exchangePath = "";
 
-
-## Confirm the application
 if(!registry_key_exists(key:"SOFTWARE\Microsoft\Exchange") &&
    !registry_key_exists(key:"SOFTWARE\Microsoft\ExchangeServer")){
   exit(0);
@@ -118,7 +93,6 @@ foreach version (make_list("Microsoft Exchange v14", "Microsoft Exchange", "Micr
 
   if(exchangePath)
   {
-    ## Get Version from ExSetup.exe file version
     exeVer = fetch_file_version(sysPath:exchangePath,
              file_name:"Bin\ExSetup.exe");
 
@@ -135,7 +109,7 @@ foreach version (make_list("Microsoft Exchange v14", "Microsoft Exchange", "Micr
          version_in_range(version:exeVer, test_version:"15.0.600", test_version2:"15.0.620.33") ||
          version_in_range(version:exeVer, test_version:"15.0.700", test_version2:"15.0.712.27"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }

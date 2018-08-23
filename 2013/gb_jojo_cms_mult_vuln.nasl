@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jojo_cms_mult_vuln.nasl 5827 2017-04-03 06:27:11Z cfi $
+# $Id: gb_jojo_cms_mult_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # Jojo CMS Multiple Vulnerabilities
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803703");
-  script_version("$Revision: 5827 $");
+  script_version("$Revision: 11082 $");
   script_cve_id("CVE-2013-3081", "CVE-2013-3082");
   script_bugtraq_id(59934, 59933);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 08:27:11 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-05-23 15:54:25 +0530 (Thu, 23 May 2013)");
   script_name("Jojo CMS Multiple Vulnerabilities");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/53418");
-  script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23153");
-  script_xref(name : "URL" , value : "https://xforce.iss.net/xforce/xfdb/84285");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/53418");
+  script_xref(name:"URL", value:"https://www.htbridge.com/advisory/HTB23153");
+  script_xref(name:"URL", value:"https://xforce.iss.net/xforce/xfdb/84285");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
@@ -47,19 +47,19 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary SQL
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary SQL
   commands and execute arbitrary HTML and script code in a user's browser
   session in the context of an affected website.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Jojo CMS version 1.2 and prior");
-  script_tag(name : "insight" , value : "Multiple flaws due to,
+  script_tag(name:"affected", value:"Jojo CMS version 1.2 and prior");
+  script_tag(name:"insight", value:"Multiple flaws due to,
   - An insufficient filtration of user-supplied input passed to the
     'X-Forwarded-For' HTTP header in '/articles/test/' URI.
   - An insufficient filtration of user-supplied data passed to 'search' HTTP
     POST parameter in '/forgot-password/' URI.");
-  script_tag(name : "solution" , value : "Update to Jojo CMS 1.2.2 or later,
+  script_tag(name:"solution", value:"Update to Jojo CMS 1.2.2 or later,
   For updates refer to  http://www.jojocms.org");
-  script_tag(name : "summary" , value : "This host is installed with Jojo CMS and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Jojo CMS and is prone to multiple
   vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -71,14 +71,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-url = "";
-req = "";
-res = "";
-port = "";
-sndReq = "";
-rcvRes = "";
-
 port = get_http_port(default:80);
 
 if(!can_host_php(port:port)){
@@ -87,7 +79,6 @@ if(!can_host_php(port:port)){
 
 host = http_host_name(port:port);
 
-## Iterate over the possible directories
 foreach dir (make_list_unique("/", "/jojo", "/cms", cgi_dirs(port:port)))
 {
 
@@ -95,11 +86,9 @@ foreach dir (make_list_unique("/", "/jojo", "/cms", cgi_dirs(port:port)))
 
   rcvRes = http_get_cache(item:string(dir, "/"), port:port);
 
-  ## confirm the Application
   if(rcvRes && '"Jojo CMS' >< rcvRes &&
      "http://www.jojocms.org" >< rcvRes)
   {
-    ## Construct the POST data
     postdata = "type=reset&search=%3E%3Cscript%3Ealert%28document.cookie" +
                "%29%3B%3C%2Fscript%3E&btn_reset=Send";
 

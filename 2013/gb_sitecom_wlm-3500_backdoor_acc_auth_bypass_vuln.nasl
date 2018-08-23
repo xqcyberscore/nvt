@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitecom_wlm-3500_backdoor_acc_auth_bypass_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_sitecom_wlm-3500_backdoor_acc_auth_bypass_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # Sitecom WLM-3500 Backdoor Accounts Authentication Bypass vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803193");
-  script_version("$Revision: 6698 $");
+  script_version("$Revision: 11082 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-04-18 15:27:50 +0530 (Thu, 18 Apr 2013)");
   script_name("Sitecom WLM-3500 Backdoor Accounts Authentication Bypass vulnerability");
 
@@ -52,6 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Sitecom WLM-3500, firmware versions < 1.07");
   script_tag(name:"solution", value:"Upgrade to Sitecom WLM-3500, firmware versions 1.07 or later,
   For updates refer to http://www.sitecom.com/");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is running Sitecom WLM-3500 Router and is prone to authentication
   bypass vulnerability.");
   script_tag(name:"insight", value:"Sitecom WLM-3500 routers contain an undocumented access backdoor that can be
@@ -79,10 +80,8 @@ cookie= NULL;
 userpass64 = "";
 
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Confirm the application before trying exploit
 banner = get_http_banner(port: port);
 if('WWW-Authenticate: Basic realm="ADSL Modem"' >!< banner){
   exit(0);
@@ -95,7 +94,6 @@ buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
 host = http_host_name(port:port);
 
-## Check before authentication bypass
 if("401 Unauthorized" >< buf)
 {
   ## GET the Cookie
@@ -113,13 +111,11 @@ if("401 Unauthorized" >< buf)
   pwd = "1234567890123456789012345678901234567890123456789012345678901234567" +
         "8901234567890123456789012345678901234567890123456789012345678";
 
-  ## check for each user
   foreach user (users)
   {
     userpass = user + ":" + pwd;
     userpass64 = base64(str: userpass);
 
-    ## construct the request with username and password
     req = string("GET ",url," HTTP/1.0\r\n",
                  "Host: ", port,"\r\n",
                  "Cookie: ", cookie[1],"\r\n",
@@ -127,7 +123,6 @@ if("401 Unauthorized" >< buf)
 
     buf = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
 
-    ## Confirm the vulnerability and check the content of romfile.cfg
     if("<ROMFILE>" >< buf  && '"Sitecom' >< buf &&
        "USERNAME=" >< buf &&  "PASSWORD=" && buf)
     {

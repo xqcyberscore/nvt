@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_file_disc_n_sql_vuln.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_webid_file_disc_n_sql_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # WeBid Local File Disclosure and SQL Injection Vulnerabilities
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:webidsupport:webid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803399");
-  script_version("$Revision: 9984 $");
+  script_version("$Revision: 11082 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-05-09 17:11:32 +0530 (Thu, 09 May 2013)");
   script_name("WeBid Local File Disclosure and SQL Injection Vulnerabilities");
-  script_xref(name : "URL" , value : "http://1337day.com/exploit/20730");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/25249");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/webid-106-file-disclosure-sql-injection");
+  script_xref(name:"URL", value:"http://1337day.com/exploit/20730");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/25249");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/webid-106-file-disclosure-sql-injection");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
@@ -45,24 +45,24 @@ if(description)
   script_dependencies("gb_webid_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("webid/installed");
-  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to perform file
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform file
 disclosure attacks and read arbitrary files on the affected application or
 perform SQL injection and compromise the application.
 
 Impact Level: Application");
-  script_tag(name : "affected" , value : "WeBid version 1.0.6 and prior");
-  script_tag(name : "insight" , value : "The flaws are due to improper input validation:
+  script_tag(name:"affected", value:"WeBid version 1.0.6 and prior");
+  script_tag(name:"insight", value:"The flaws are due to improper input validation:
 
 - Input passed via the 'js' parameter to loader.php, allows attackers to
 read arbitrary files.
 
 - $_POST['startnow'] is directly used in mysql query without sanitization
 in yourauctions_p.php.");
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running WeBid and is prone to file disclosure and
+  script_tag(name:"summary", value:"This host is running WeBid and is prone to file disclosure and
 SQL Injection vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);

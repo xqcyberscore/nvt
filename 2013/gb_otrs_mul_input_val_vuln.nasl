@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_mul_input_val_vuln.nasl 6755 2017-07-18 12:55:56Z cfischer $
+# $Id: gb_otrs_mul_input_val_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # OTRS Multiple Input Validation Vulnerabilities
 #
@@ -23,63 +23,44 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803935";
 CPE = "cpe:/a:otrs:otrs";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6755 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803935");
+  script_version("$Revision: 11082 $");
   script_cve_id("CVE-2005-3893", "CVE-2005-3894", "CVE-2005-3895");
   script_bugtraq_id(15537);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-09-25 15:32:50 +0530 (Wed, 25 Sep 2013)");
   script_name("OTRS Multiple Input Validation Vulnerabilities");
 
-tag_summary =
-"This host is installed with OTRS (Open Ticket Request System) and is prone to
-multiple input validation vulnerabilities.";
 
-tag_vuldetect =
-"Get the installed version of OTRS with the help of detect NVT and check the
-version is vulnerable or not.";
-
-tag_insight =
-"Multiple error exists in the application which fails to validate below user-supplied
-input's properly
-For XSS attack (1) QueueID parameter and (2) Action parameters (3) AttachmentDownloadType.
-For SQL attack (1) user parameter (2) TicketID and (3) ArticleID parameters";
-
-tag_impact =
-"Successful exploitation will allow remote attackers to steal the victim's
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to steal the victim's
 cookie-based authentication credentials or execute arbitrary SQL commands and
 bypass authentication.
 
-Impact Level: Application";
+Impact Level: Application");
+  script_tag(name:"vuldetect", value:"Get the installed version of OTRS with the help of detect NVT and check the
+version is vulnerable or not.");
+  script_tag(name:"insight", value:"Multiple error exists in the application which fails to validate below user-supplied
+input's properly
+For XSS attack (1) QueueID parameter and (2) Action parameters (3) AttachmentDownloadType.
+For SQL attack (1) user parameter (2) TicketID and (3) ArticleID parameters");
+  script_tag(name:"solution", value:"Upgrade to OTRS (Open Ticket Request System) version 1.3.3 or 2.0.4 or later,
+For updates refer to http://www.otrs.com/en/");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"This host is installed with OTRS (Open Ticket Request System) and is prone to
+multiple input validation vulnerabilities.");
+  script_tag(name:"affected", value:"OTRS (Open Ticket Request System) version 1.0.0 through 1.3.2 and 2.0.0
+through 2.0.3");
 
-tag_affected =
-"OTRS (Open Ticket Request System) version 1.0.0 through 1.3.2 and 2.0.0
-through 2.0.3";
-
-tag_solution =
-"Upgrade to OTRS (Open Ticket Request System) version 1.3.3 or 2.0.4 or later,
-For updates refer to http://www.otrs.com/en/";
-
-
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
-
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/17685");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/15537");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/34164");
-  script_xref(name : "URL" , value : "http://www.otrs.com/en/open-source/community-news/security-advisories/security-advisory-2005-01/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/17685");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/15537");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/34164");
+  script_xref(name:"URL", value:"http://www.otrs.com/en/open-source/community-news/security-advisories/security-advisory-2005-01/");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
@@ -127,21 +108,14 @@ function get_otrs_login_cookie(location, otrsport, otrshost)
   return cookie[1];
 }
 
-## Variable initialisation
-port = "";
-host = "";
-loca = "";
-cookie = "";
-
-## Get Application HTTP Port
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
 host = http_host_name(port:port);
 
 ## Exploit code
-loca = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port);
+loca = get_app_location(cpe:CPE, port:port);
 if(!loca){
   exit(0);
 }

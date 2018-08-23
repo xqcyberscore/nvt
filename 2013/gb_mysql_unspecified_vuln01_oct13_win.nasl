@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln01_oct13_win.nasl 7548 2017-10-24 12:06:02Z cfischer $
+# $Id: gb_mysql_unspecified_vuln01_oct13_win.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # Oracle MySQL Multiple Unspecified vulnerabilities-01 Oct-2013 (Windows)
 #
@@ -23,57 +23,38 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804032";
 CPE = "cpe:/a:oracle:mysql";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 7548 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804032");
+  script_version("$Revision: 11082 $");
   script_cve_id("CVE-2013-5767", "CVE-2013-5786", "CVE-2013-5793");
   script_bugtraq_id(63113, 63107, 63116);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-10-28 15:46:59 +0530 (Mon, 28 Oct 2013)");
   script_name("Oracle MySQL Multiple Unspecified vulnerabilities-01 Oct-2013 (Windows)");
 
-  tag_summary =
-"This host is running Oracle MySQL and is prone to multiple unspecified
-vulnerabilities.";
 
-  tag_insight =
-"Unspecified errors in the MySQL Server component via unknown vectors related
-to Optimizer and InnoDB.";
-
-  tag_vuldetect =
-"Get the installed version of MySQL with the help of detect NVT and
-check it is vulnerable or not.";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to disclose sensitive
+  script_tag(name:"summary", value:"This host is running Oracle MySQL and is prone to multiple unspecified
+vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Get the installed version of MySQL with the help of detect NVT and
+check it is vulnerable or not.");
+  script_tag(name:"solution", value:"Apply the patch from below link,
+http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html");
+  script_tag(name:"insight", value:"Unspecified errors in the MySQL Server component via unknown vectors related
+to Optimizer and InnoDB.");
+  script_tag(name:"affected", value:"Oracle MySQL version 5.6.12 and earlier on Windows.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to disclose sensitive
 information, manipulate certain data, cause a DoS (Denial of Service) and
 bypass certain security restrictions.
 
-Impact Level: Application";
+Impact Level: Application");
 
-  tag_affected =
-"Oracle MySQL version 5.6.12 and earlier on Windows.";
-
-  tag_solution = "Apply the patch from below link,
-http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
-
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/55327");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/55327");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Databases");
@@ -81,7 +62,7 @@ http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html";
   script_tag(name:"solution_type", value:"VendorFix");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
-  script_mandatory_keys("MySQL/installed","Host/runs_windows");
+  script_mandatory_keys("MySQL/installed", "Host/runs_windows");
   exit(0);
 }
 
@@ -89,17 +70,11 @@ http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html";
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-mysqlVer = "";
-sqlPort = "";
-
-## Get Port
-if(!sqlPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!sqlPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get version
-if(!mysqlVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:sqlPort)){
+if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort)){
   exit(0);
 }
 

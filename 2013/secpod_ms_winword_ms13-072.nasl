@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_winword_ms13-072.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: secpod_ms_winword_ms13-072.nasl 11077 2018-08-22 09:40:33Z mmartin $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities (2845537)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903402");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11077 $");
   script_cve_id("CVE-2013-3160", "CVE-2013-3847", "CVE-2013-3848", "CVE-2013-3849",
                 "CVE-2013-3850", "CVE-2013-3851", "CVE-2013-3852", "CVE-2013-3853",
                 "CVE-2013-3854", "CVE-2013-3855", "CVE-2013-3856", "CVE-2013-3857",
@@ -36,53 +36,35 @@ if(description)
                     62222, 62223, 62224, 62226);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-09-11 16:55:20 +0530 (Wed, 11 Sep 2013)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerabilities (2845537)");
 
-  tag_summary =
-"This host is missing an important security update according to
-Microsoft Bulletin MS13-072.";
 
-  tag_vuldetect =
-"Get the vulnerable file version and check appropriate patch is applied
-or not.";
-
-  tag_insight =
-"Multiple flaws are due to error exists when processing XML data and some
-unspecified errors.";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to execute the arbitrary
+  script_tag(name:"summary", value:"This host is missing an important security update according to
+Microsoft Bulletin MS13-072.");
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
+or not.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
+mentioned hotfixes in the advisory from the below link,
+https://technet.microsoft.com/en-us/security/bulletin/ms13-072");
+  script_tag(name:"insight", value:"Multiple flaws are due to error exists when processing XML data and some
+unspecified errors.");
+  script_tag(name:"affected", value:"Microsoft Word 2003 Service Pack 3 and prior
+Microsoft Word 2007 Service Pack 3  and prior
+Microsoft Word 2010 Service Pack 2 and prior.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
 code, cause memory corruption and compromise the system.
 
-Impact Level: System/Application ";
-
-  tag_affected =
-"Microsoft Word 2003 Service Pack 3 and prior
-Microsoft Word 2007 Service Pack 3  and prior
-Microsoft Word 2010 Service Pack 2 and prior.";
-
-  tag_solution =
-"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms13-072";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+Impact Level: System/Application ");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/54737");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2817682");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2767773");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2760769");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms13-072");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/54737");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2817682");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2767773");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2760769");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-072");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");
@@ -95,21 +77,17 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-072";
 include("secpod_reg.inc");
 include("version_func.inc");
 
-## variable Initialization
-winwordVer = "";
-
 winwordVer = get_kb_item("SMB/Office/Word/Version");
 
 ## Microsoft Office Word 2003/2007/2010
 if(winwordVer && winwordVer =~ "^(11|12|14).*")
 {
-  ## Grep for version Winword.exe 11 < 11.0.8406 < 12.0.6683.5001, 14 < 14.0.7106.5001
   ## Wwlibcxm.dll file not found on office 2010, as of now its not considered
   if(version_in_range(version:winwordVer, test_version:"11.0", test_version2:"11.0.8405") ||
      version_in_range(version:winwordVer, test_version:"12.0", test_version2:"12.0.6683.5000") ||
      version_in_range(version:winwordVer, test_version:"14.0", test_version2:"14.0.7106.5000"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

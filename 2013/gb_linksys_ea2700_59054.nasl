@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linksys_ea2700_59054.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_linksys_ea2700_59054.nasl 11082 2018-08-22 15:05:47Z mmartin $
 #
 # Cisco Linksys EA2700 Router Multiple Security Vulnerabilities
 #
@@ -25,7 +25,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Cisco Linksys EA2700 routers is prone to the following security
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103698");
+  script_bugtraq_id(59054);
+  script_version("$Revision: 11082 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+
+  script_name("Cisco Linksys EA2700 Router Multiple Security Vulnerabilities");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59054");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-04-16 14:16:54 +0200 (Tue, 16 Apr 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("EA2700/banner");
+  script_tag(name:"solution", value:"Firmware updates are available");
+  script_tag(name:"solution_type", value:"VendorFix");
+
+  script_tag(name:"summary", value:"Cisco Linksys EA2700 routers is prone to the following security
 vulnerabilities:
 
 1. A security-bypass vulnerability
@@ -37,37 +61,13 @@ steal cookie-based authentication credentials, gain access to system and
 other configuration files, or perform unauthorized actions in the context of a
 user session.
 
-Cisco Linksys EA2700 running firmware 1.0.12.128947 is vulnerable.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103698");
- script_bugtraq_id(59054);
- script_version ("$Revision: 6698 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-
- script_name("Cisco Linksys EA2700 Router Multiple Security Vulnerabilities");
-
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59054");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
- script_tag(name:"creation_date", value:"2013-04-16 14:16:54 +0200 (Tue, 16 Apr 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("EA2700/banner");
-
- script_tag(name : "summary" , value : tag_summary);
+Cisco Linksys EA2700 running firmware 1.0.12.128947 is vulnerable.");
  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port(default:80);
 
 banner = get_http_banner(port:port);
@@ -94,6 +94,6 @@ if(result =~ "root:x:0:[01]:.*") {
   security_message(port:port);
   exit(0);
 
-}  
+}
 
 exit(99);

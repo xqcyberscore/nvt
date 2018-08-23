@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_rational_deve_for_system_z_info_disc_vuln_win.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_ibm_rational_deve_for_system_z_info_disc_vuln_win.nasl 11084 2018-08-22 17:10:42Z cfischer $
 #
 # IBM Rational Developer for System z Information Disclosure Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802687");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11084 $");
   script_cve_id("CVE-2012-4862");
   script_bugtraq_id(56725);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 19:10:42 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-12-21 19:17:26 +0530 (Fri, 21 Dec 2012)");
   script_name("IBM Rational Developer for System z Information Disclosure Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51401/");
@@ -60,10 +60,18 @@ if(description)
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
+
+swFile = "IBM_Rational_Developer_for_zEnterprise";
+ibmKey = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall" +
+         "\\RDzEnt-IBM Software Delivery Platform";
+## list of software package versions
+swPkgVers = make_list("7.1", "7.5", "7.5.1", "7.5.1.3", "7.5.1.4", "7.6",
+                      "7.6.1", "7.6.2", "7.6.2.2", "7.6.2.3", "7.6.2.4",
+                      "8.0.1", "8.0.2", "8.0.3", "8.0.3.1", "8.0.3.2",
+                      "8.0.3.3", "8.5", "8.5.0", "8.5.0.1", "8.5.1");
 
 if(!registry_key_exists(key:ibmKey)) exit(0);
 

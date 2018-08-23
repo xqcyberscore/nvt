@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tp_link_file_discl_vuln.nasl 11050 2018-08-20 09:15:34Z ckuersteiner $
+# $Id: gb_tp_link_file_discl_vuln.nasl 11085 2018-08-22 19:33:42Z cfischer $
 #
 # TP-Link File Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141383");
-  script_version("$Revision: 11050 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 11:15:34 +0200 (Mon, 20 Aug 2018) $");
+  script_version("$Revision: 11085 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-22 21:33:42 +0200 (Wed, 22 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-20 15:05:36 +0700 (Mon, 20 Aug 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -45,7 +45,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_get_http_banner.nasl");
-  script_mandatory_keys("tplink-httpd/banner");
+  script_mandatory_keys("tplink_httpd/banner");
 
   script_tag(name:"summary", value:"Multiple TP-Link devices are prone to a file disclosure vulnerability where
 an unauthenticated attacker may optain the configuration backup file which may contain sensitive data (e.g.
