@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_pgp_n_enc_desktop_iof_vuln.nasl 6515 2017-07-04 11:54:15Z cfischer $
+# $Id: gb_symantec_pgp_n_enc_desktop_iof_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Symantec PGP Desktop and Encryption Desktop Integer Overflow Vulnerability
 #
@@ -25,55 +25,36 @@
 ###############################################################################
 
 CPE = "cpe:/a:symantec:pgp_desktop";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803889";
 
 if (description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6515 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803889");
+  script_version("$Revision: 11096 $");
   script_cve_id("CVE-2012-4351");
   script_bugtraq_id(57170);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 13:54:15 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-09-06 17:12:34 +0530 (Fri, 06 Sep 2013)");
   script_name("Symantec PGP Desktop and Encryption Desktop Integer Overflow Vulnerability");
 
-  tag_summary =
-"The host is installed with Symantec PGP/Encryption Desktop and is prone to
-integer overflow vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"Flaw is due to an unspecified error in pgpwded.sys.";
-
-  tag_impact =
-"Successful exploitation will allow remote unauthenticated attacker to execute
+  script_tag(name:"summary", value:"The host is installed with Symantec PGP/Encryption Desktop and is prone to
+integer overflow vulnerability.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Upgrade to version 10.3.0 MP1 or later,
+For updates refer to http://www.symantec.com");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"insight", value:"Flaw is due to an unspecified error in pgpwded.sys.");
+  script_tag(name:"affected", value:"Symantec PGP Desktop 10.0.x, 10.1.x, and 10.2.x
+Symantec Encryption Desktop 10.3.0 prior to 10.3.0 MP1");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote unauthenticated attacker to execute
 arbitrary code and or gain escalated privileges.
 
-Impact Level: Application";
+Impact Level: Application");
 
-  tag_affected =
-"Symantec PGP Desktop 10.0.x, 10.1.x, and 10.2.x
-Symantec Encryption Desktop 10.3.0 prior to 10.3.0 MP1";
-
-  tag_solution =
-"Upgrade to version 10.3.0 MP1 or later,
-For updates refer to http://www.symantec.com";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
-
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/51762");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/52219");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/51762");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/52219");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
@@ -87,22 +68,16 @@ For updates refer to http://www.symantec.com";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-rpVer = "";
-
-## Get Symantec PGP Desktop version
-if(!rpVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
+if(!rpVer = get_app_version(cpe:CPE))
 {
-  ## Get Symantec Encryption Desktop version
   CPE = "cpe:/a:symantec:encryption_desktop";
-  if(!rpVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+  if(!rpVer = get_app_version(cpe:CPE)){
     exit(0);
   }
 }
 
-## Check for Symantec PGP/Encryption Desktop version
 if(version_in_range(version:rpVer, test_version:"10.0", test_version2:"10.3.0.9059"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

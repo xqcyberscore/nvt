@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_na_sharing_security_model_local.nasl 10762 2018-08-03 14:03:15Z emoss $
+# $Id: win_na_sharing_security_model_local.nasl 11098 2018-08-23 14:32:47Z emoss $
 #
 # Check value for Network access: Sharing and security model for local accounts
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109228");
-  script_version("$Revision: 10762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 16:03:15 +0200 (Fri, 03 Aug 2018) $");
+  script_version("$Revision: 11098 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 16:32:47 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-11 15:15:37 +0200 (Mon, 11 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_add_preference(name:"Value", type:"radio", value:"0;1");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Network access: Sharing and security model for local accounts' on Windows hosts (at
 least Windows 7).
 
@@ -76,7 +76,7 @@ item = 'ForceGuest';
 default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
 if(!value){
-  val = '0';
+  value = '0';
 }
 
 if(int(value) == int(default)){

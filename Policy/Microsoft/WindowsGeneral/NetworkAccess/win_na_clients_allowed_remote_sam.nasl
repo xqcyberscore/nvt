@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_na_clients_allowed_remote_sam.nasl 10762 2018-08-03 14:03:15Z emoss $
+# $Id: win_na_clients_allowed_remote_sam.nasl 11098 2018-08-23 14:32:47Z emoss $
 #
 # Check value for Network access: Restrict clients allowed to make
 # remote calls to SAM
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109226");
-  script_version("$Revision: 10762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 16:03:15 +0200 (Fri, 03 Aug 2018) $");
+  script_version("$Revision: 11098 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 16:32:47 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-11 14:40:40 +0200 (Mon, 11 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -41,7 +41,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_add_preference(name:"Value", type:"entry", value:"O:BAG:BAD:(A;;RC;;;BA)");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Network access: Restrict clients allowed to make remote calls to SAM' on Windows
 hosts (at least Windows 7).
 
@@ -74,9 +74,10 @@ key = 'System\\CurrentControlSet\\Control\\Lsa';
 item = 'RestrictRemoteSam';
 default = script_get_preference('Value');
 value = registry_get_sz(key:key, item:item, type:type);
-value = chomp(value);
 if(!value){
   val = 'None';
+}else{
+  value = chomp(value);
 }
 
 if(value == default){

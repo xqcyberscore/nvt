@@ -1,7 +1,7 @@
   script_add_preference(name:"Value", type:"radio", value:"4;0;1;2;3");
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_xbox_live_game_save.nasl 10714 2018-08-01 14:49:06Z emoss $
+# $Id: win_xbox_live_game_save.nasl 11098 2018-08-23 14:32:47Z emoss $
 #
 # Check value for Xbox Live Game Save (XblGameSave)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109293");
-  script_version("$Revision: 10714 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 16:49:06 +0200 (Wed, 01 Aug 2018) $");
+  script_version("$Revision: 11098 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 16:32:47 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-13 15:48:27 +0200 (Wed, 13 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -41,7 +41,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl", "os_detection.nasl");
   script_add_preference(name:"Value", type:"radio", value:"4;0;1;2;3");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Xbox Live Game Save (XblGameSave)' on Windows hosts (Windows 10).
 
 The service syncs save data for Xbox Live save enabled games.");
@@ -70,6 +70,7 @@ Computer Configuration/Policies/Windows Settings/Security Settings/System Servic
 type = 'HKLM';
 key = 'SYSTEM\\CurrentControlSet\\Services\\XblGameSave';
 item = 'Start';
+default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
 if(!value){
   val = '3';

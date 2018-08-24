@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_session_fixation_vuln_win.nasl 7548 2017-10-24 12:06:02Z cfischer $
+# $Id: gb_apache_tomcat_session_fixation_vuln_win.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Apache Tomcat Session Fixation Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803636");
-  script_version("$Revision: 7548 $");
+  script_version("$Revision: 11096 $");
   script_cve_id("CVE-2013-2067");
   script_bugtraq_id(59799);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-06 12:57:30 +0530 (Thu, 06 Jun 2013)");
   script_name("Apache Tomcat Session Fixation Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -50,30 +50,20 @@ if(description)
   script_xref(name:"URL", value:"http://svn.apache.org/viewvc?view=revision&revision=1417891");
   script_xref(name:"URL", value:"http://svn.apache.org/viewvc?view=revision&revision=1408044");
 
-  tag_solution = "Apply patch or upgrade Apache Tomcat to 7.0.33 or 6.0.37 or later,
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct session fixation
+  attacks to hijack the target user's session.
+  Impact Level: Application");
+  script_tag(name:"affected", value:"Apache Tomcat version 6.0.21 to 6.0.36 and 7.x before 7.0.33");
+  script_tag(name:"insight", value:"Flaw due to improper validation of session cookies in the FormAuthenticator
+  module in 'java/org/apache/catalina/authenticator/FormAuthenticator.java'.");
+  script_tag(name:"summary", value:"The host is running Apache Tomcat Server and is prone to session
+  fixation vulnerability.");
+  script_tag(name:"solution", value:"Apply patch or upgrade Apache Tomcat to 7.0.33 or 6.0.37 or later,
   For updates refer to http://tomcat.apache.org
 
   *****
   NOTE: Ignore this warning, if above mentioned patch is manually applied.
-  *****";
-
-  tag_impact = "Successful exploitation will allow attackers to conduct session fixation
-  attacks to hijack the target user's session.
-  Impact Level: Application";
-
-  tag_affected = "Apache Tomcat version 6.0.21 to 6.0.36 and 7.x before 7.0.33";
-
-  tag_insight = "Flaw due to improper validation of session cookies in the FormAuthenticator
-  module in 'java/org/apache/catalina/authenticator/FormAuthenticator.java'.";
-
-  tag_summary = "The host is running Apache Tomcat Server and is prone to session
-  fixation vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
+  *****");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test support library
-# $Id: policy_functions.inc 10740 2018-08-02 14:13:50Z emoss $
+# $Id: policy_functions.inc 11098 2018-08-23 14:32:47Z emoss $
 #
 # Supporting methods for Policy NVTs.
 #
@@ -71,7 +71,7 @@ function policy_fixtext(fixtext){
 function policy_control_name(title){
   local_var title, name;
   name = get_script_oid() + '/NAME';
-  # title = str_replace(string:title,find:'\n', replace:' ');
+  title = str_replace(string:title,find:'\n', replace:' ');
   set_kb_item(name:name, value:title);
 }
 

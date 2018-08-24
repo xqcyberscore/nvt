@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_grandstream_gxp_default_credentials.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_grandstream_gxp_default_credentials.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Grandstream GXP VOIP Phones Default Credentials
 #
@@ -29,38 +29,38 @@ CPE = 'cpe:/h:grandstream:gxp';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103861");
- script_version ("$Revision: 9984 $");
- script_tag(name:"cvss_base", value:"9.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
- script_tag(name:"creation_date", value:"2013-12-19 11:42:04 +0200 (Thu, 19 Dec 2013)");
- script_name("Grandstream GXP VOIP Phones Default Credentials");
+  script_oid("1.3.6.1.4.1.25623.1.0.103861");
+  script_version("$Revision: 11096 $");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-12-19 11:42:04 +0200 (Thu, 19 Dec 2013)");
+  script_name("Grandstream GXP VOIP Phones Default Credentials");
 
- script_xref(name:"URL", value:"http://dariusfreamon.wordpress.com/2013/10/30/grandstream-gxp-voip-phones-default-credentials/");
+  script_xref(name:"URL", value:"http://dariusfreamon.wordpress.com/2013/10/30/grandstream-gxp-voip-phones-default-credentials/");
 
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_grandstream_gxp_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("Grandstream/typ");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_grandstream_gxp_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("Grandstream/typ");
 
- script_tag(name : "solution" , value : "Change the password.");
- script_tag(name : "summary" , value : "The remote Grandstream GXP VOIP Phone is prone to
+  script_tag(name:"solution", value:"Change the password.");
+  script_tag(name:"summary", value:"The remote Grandstream GXP VOIP Phone is prone to
 a default account authentication bypass vulnerability.
 This issue may be exploited by a remote attacker to gain access
 to sensitive information or modify system configuration.");
 
- script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"solution_type", value:"Workaround");
 
  exit(0);
 
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("host_details.inc");
 
 if(!port = get_app_port(cpe:CPE))exit(0);

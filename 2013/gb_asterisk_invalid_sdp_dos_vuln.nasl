@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_invalid_sdp_dos_vuln.nasl 4887 2016-12-30 12:54:28Z cfi $
+# $Id: gb_asterisk_invalid_sdp_dos_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Asterisk Products Invalid SDP SIP Channel Driver DoS Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:digium:asterisk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802063");
-  script_version("$Revision: 4887 $");
+  script_version("$Revision: 11096 $");
   script_cve_id("CVE-2013-5642");
   script_bugtraq_id(62022);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 13:54:28 +0100 (Fri, 30 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-10-28 15:06:58 +0530 (Mon, 28 Oct 2013)");
   script_name("Asterisk Products Invalid SDP SIP Channel Driver DoS Vulnerability");
   script_category(ACT_DENIAL);
@@ -100,7 +100,6 @@ con_data = string("v=0", "\r\n",
                   "m=video 6002 RTP/AVP 31", "\r\n",
                   "c=IN IP4", this_host);
 
-## Construct "INVITE" request with invalid user
 craf_req = string( "INVITE sip:test@", host_name, ":", port, " SIP/2.0", "\r\n",
                    "Via: SIP/2.0/", toupper( proto ), " ", this_host, ":", port,";branch=z9hG4bK-25912-1-0","\r\n",
                    "From: test1 <sip:guest0@", this_host, ":", port, ";tag=1", "\r\n",

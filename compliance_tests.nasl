@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: compliance_tests.nasl 10915 2018-08-10 15:50:57Z cfischer $
+# $Id: compliance_tests.nasl 11098 2018-08-23 14:32:47Z emoss $
 #
 # Compliance Tests
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.95888");
-  script_version("$Revision: 10915 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11098 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 16:32:47 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -52,6 +52,7 @@ if(description)
   script_add_preference(name:"Launch Cyber Essentials", type:"checkbox", value:"no");
   script_add_preference(name:"Launch EU GDPR", type:"checkbox", value:"no");
   script_add_preference(name:"Verbose Policy Controls", type:"checkbox", value:"no");
+  script_add_preference(name:"Launch Compliance Test", type:"checkbox", value:"no");
   script_add_preference(name:"PCI-DSS Berichtsprache/Report Language", type:"radio", value:"Deutsch;English");
   script_add_preference(name:"Testuser Common Name", type:"entry", value:"CN");
   script_add_preference(name:"Testuser Organization Unit", type:"entry", value:"OU");
@@ -134,6 +135,12 @@ if(launch_ce == "yes"){
 launch_gdpr = script_get_preference("Launch EU GDPR");
 if(launch_gdpr == "yes"){
   set_kb_item(name: "Compliance/Launch/GDPR", value:TRUE);
+  set_kb_item(name: "Compliance/Launch", value:TRUE);
+}
+
+launch_compliance_result = script_get_preference("Launch Compliance Test");
+if(launch_compliance_result == "yes"){
+  set_kb_item(name: "Compliance/Launch/PolicyControlsSummary", value:TRUE);
   set_kb_item(name: "Compliance/Launch", value:TRUE);
 }
 

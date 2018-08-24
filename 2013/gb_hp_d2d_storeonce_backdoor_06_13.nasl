@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_d2d_storeonce_backdoor_06_13.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_hp_d2d_storeonce_backdoor_06_13.nasl 11099 2018-08-24 03:13:46Z ckuersteiner $
 #
 # HP D2D/StorOnce Storage Unit Backdoor
 #
@@ -28,10 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103746");
-  script_version("$Revision: 11082 $");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_version("$Revision: 11099 $");
+  script_tag(name:"cvss_base", value:"7.7");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:S/C:C/I:C/A:C");
+  script_cve_id("CVE-2013-2342");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 05:13:46 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-25 14:06:35 +0200 (Tue, 25 Jun 2013)");
   script_name("HP D2D/StorOnce Storage Unit Backdoor");
   script_category(ACT_ATTACK);

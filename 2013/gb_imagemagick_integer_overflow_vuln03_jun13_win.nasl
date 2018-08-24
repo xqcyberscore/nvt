@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_integer_overflow_vuln03_jun13_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_imagemagick_integer_overflow_vuln03_jun13_win.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # ImageMagick Integer Overflow Vulnerability - 03 June (Windows)
 #
@@ -26,30 +26,23 @@
 
 CPE = "cpe:/a:imagemagick:imagemagick";
 
-tag_impact = "Successful exploitation will allow an attacker to cause denial of service
-  condition result in loss of availability for the application.
-  Impact Level: Application";
-
-tag_summary = "The host is installed with ImageMagick and is prone to integer
-  overflow Vulnerability.";
-tag_solution = "Upgrade to ImageMagick version 6.7.5-9 or later.
-  http://www.imagemagick.org/script/download.php";
-tag_insight = "Integer overflow error is due to an improper verification of executable file
-  by profile.c";
-tag_affected = "ImageMagick version 6.7.5-8 and earlier on Windows.";
-
 if(description)
 {
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow an attacker to cause denial of service
+  condition result in loss of availability for the application.
+  Impact Level: Application");
+  script_tag(name:"affected", value:"ImageMagick version 6.7.5-8 and earlier on Windows.");
+  script_tag(name:"insight", value:"Integer overflow error is due to an improper verification of executable file
+  by profile.c");
+  script_tag(name:"solution", value:"Upgrade to ImageMagick version 6.7.5-9 or later.
+  http://www.imagemagick.org/script/download.php");
+  script_tag(name:"summary", value:"The host is installed with ImageMagick and is prone to integer
+  overflow Vulnerability.");
   script_oid("1.3.6.1.4.1.25623.1.0.803818");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11096 $");
   script_cve_id("CVE-2012-1186");
   script_bugtraq_id(51957);
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 14:42:53 +0530 (Mon, 24 Jun 2013)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -57,8 +50,8 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("ImageMagick Integer Overflow Vulnerability - 03 June (Windows)");
 
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/76139");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2012/03/19/5");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/76139");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2012/03/19/5");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Buffer overflow");

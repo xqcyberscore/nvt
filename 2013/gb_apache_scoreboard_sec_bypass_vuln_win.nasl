@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_scoreboard_sec_bypass_vuln_win.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_apache_scoreboard_sec_bypass_vuln_win.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Apache HTTP Server Scoreboard Security Bypass Vulnerability (Windows)
 #
@@ -29,39 +29,39 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803744");
-  script_version("$Revision: 9984 $");
+  script_version("$Revision: 11096 $");
   script_cve_id("CVE-2012-0031");
   script_bugtraq_id(51407);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 19:53:07 +0530 (Wed, 21 Aug 2013)");
   script_name("Apache HTTP Server Scoreboard Security Bypass Vulnerability (Windows)");
 
-  script_tag(name : "summary" , value : "The host is running Apache HTTP Server and is prone to security bypass
+  script_tag(name:"summary", value:"The host is running Apache HTTP Server and is prone to security bypass
 vulnerability.");
-  script_tag(name : "vuldetect" , value : "Get the installed version Apache HTTP Server with the help of detect NVT
+  script_tag(name:"vuldetect", value:"Get the installed version Apache HTTP Server with the help of detect NVT
 and check it is vulnerable or not.");
-  script_tag(name : "solution" , value : "Upgrade to Apache HTTP Server 2.2.22 or later,
+  script_tag(name:"solution", value:"Upgrade to Apache HTTP Server 2.2.22 or later,
 For updates refer to http://svn.apache.org");
-  script_tag(name : "insight" , value : "The flaw is due to an error in 'inscoreboard.c', certain type field within
+  script_tag(name:"insight", value:"The flaw is due to an error in 'inscoreboard.c', certain type field within
 a scoreboard shared memory segment leading to an invalid call to the free
 function.");
-  script_tag(name : "affected" , value : "Apache HTTP Server version before 2.2.22 on windows.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attacker to bypass certain security
+  script_tag(name:"affected", value:"Apache HTTP Server version before 2.2.22 on windows.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to bypass certain security
 restrictions. Other attacks are also possible.
 
   Impact Level: Application");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://svn.apache.org/viewvc?view=revision&revision=1230065");
-  script_xref(name : "URL" , value : "http://www.halfdog.net/Security/2011/ApacheScoreboardInvalidFreeOnShutdown");
+  script_xref(name:"URL", value:"http://svn.apache.org/viewvc?view=revision&revision=1230065");
+  script_xref(name:"URL", value:"http://www.halfdog.net/Security/2011/ApacheScoreboardInvalidFreeOnShutdown");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web Servers");
   script_dependencies("secpod_apache_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("apache/installed","Host/runs_windows");
+  script_mandatory_keys("apache/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
   exit(0);
 }

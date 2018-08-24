@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_uac_behaviour_elevation_prompt_admin.nasl 10740 2018-08-02 14:13:50Z emoss $
+# $Id: win_uac_behaviour_elevation_prompt_admin.nasl 11098 2018-08-23 14:32:47Z emoss $
 #
 # Check value for User Account Control: Behavior of the elevation prompt for
 # administrators in Admin Approval Mode
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109243");
-  script_version("$Revision: 10740 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 16:13:50 +0200 (Thu, 02 Aug 2018) $");
+  script_version("$Revision: 11098 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 16:32:47 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-12 14:34:04 +0200 (Tue, 12 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -39,9 +39,9 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
-  script_add_preference(name:"Minimum", type:"radio", value:"2;0;1;3;4");
+  script_add_preference(name:"Minimum", type:"radio", value:"2;0;1;3;4;5");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'User Account Control: Behavior of the elevation prompt for administrators in
 Admin Approval Mode' on Windows hosts (at least Windows 7).
 
@@ -78,7 +78,7 @@ if(!value){
   val = '0';
 }
 
-if(int(value) >= int(default)){
+if(int(value) == int(default)){
   compliant = 'yes';
 }else{
   compliant = 'no';

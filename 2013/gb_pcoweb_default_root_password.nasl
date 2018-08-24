@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pcoweb_default_root_password.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_pcoweb_default_root_password.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # CAREL pCOWeb Default root Password
 #
@@ -25,33 +25,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote pCOWeb has the default password 'froot' for the root account.
-This issue may be exploited by a remote attacker to gain access to sensitive
-information or modify system configuration.";
-
-
-tag_solution = "Login with telnet and change the password";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103717";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 6115 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_name("CAREL pCOWeb Default root Password");
+  script_oid("1.3.6.1.4.1.25623.1.0.103717");
+  script_version("$Revision: 11096 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("CAREL pCOWeb Default root Password");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
- script_tag(name:"creation_date", value:"2013-05-23 11:24:55 +0200 (Thu, 23 May 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("telnetserver_detect_type_nd_version.nasl");
- script_require_ports("Services/telnet", 23);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-05-23 11:24:55 +0200 (Thu, 23 May 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl");
+  script_require_ports("Services/telnet", 23);
+  script_tag(name:"solution", value:"Login with telnet and change the password");
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"summary", value:"The remote pCOWeb has the default password 'froot' for the root account.
+This issue may be exploited by a remote attacker to gain access to sensitive
+information or modify system configuration.");
  exit(0);
 }
 
@@ -69,7 +63,7 @@ buf = telnet_negotiate(socket:soc);
 if("pCOWeb login" >!< buf) {
   close(soc);
   exit(0);
-}  
+}
 
 send(socket:soc, data:'root\r\n');
 recv = recv(socket:soc, length:4096);
@@ -77,15 +71,15 @@ recv = recv(socket:soc, length:4096);
 if("Password:" >!< recv) {
   close(soc);
   exit(0);
-}  
+}
 
 send(socket:soc, data:'froot\r\n');
 recv = recv(socket:soc, length:4096);
 
 if(recv !~ "\[root@pCOWeb.*root\]#") {
   close(soc);
-  exit(0); 
-}  
+  exit(0);
+}
 
 send(socket:soc, data:'id\r\n');
 recv = recv(socket:soc, length:8192);

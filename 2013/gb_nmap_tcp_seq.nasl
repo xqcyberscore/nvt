@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_tcp_seq.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_nmap_tcp_seq.nasl 11089 2018-08-23 08:25:21Z jschulte $
 #
 # TCP/IP Predictable TCP Initial Sequence Number Vulnerability
 #
@@ -25,35 +25,34 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote host has predictable TCP sequence numbers. 
-A cracker may use this flaw to spoof TCP connections";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103701";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_bugtraq_id(670,107);
- script_cve_id("CVE-1999-0077", "CVE-2000-0916", "CVE-2001-0288");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6079 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103701");
+  script_bugtraq_id(670, 107);
+  script_cve_id("CVE-1999-0077", "CVE-2000-0916", "CVE-2001-0288");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11089 $");
 
- script_name("TCP/IP Predictable TCP Initial Sequence Number Vulnerability");
+  script_name("TCP/IP Predictable TCP Initial Sequence Number Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/670");
- script_xref(name:"URL", value:"http://teso.scene.at/");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20010301-ios-tcp-isn-random");
- script_xref(name:"URL", value:"ftp://ftp.freebsd.org/pub/FreeBSD/CERT/advisories/FreeBSD-SA-00:52.tcp-iss.asc");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
- script_tag(name:"creation_date", value:"2013-04-22 11:14:29 +0200 (Mon, 22 Apr 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("General");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_mandatory_keys("Host/tcp_seq");
- script_tag(name : "summary" , value : tag_summary);
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/670");
+  script_xref(name:"URL", value:"http://teso.scene.at/");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20010301-ios-tcp-isn-random");
+  script_xref(name:"URL", value:"ftp://ftp.freebsd.org/pub/FreeBSD/CERT/advisories/FreeBSD-SA-00:52.tcp-iss.asc");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 10:25:21 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-04-22 11:14:29 +0200 (Mon, 22 Apr 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_dependencies("nmap.nasl");
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_mandatory_keys("Host/tcp_seq");
+  script_tag(name:"summary", value:"The remote host has predictable TCP sequence numbers.
+A cracker may use this flaw to spoof TCP connections");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution", value:"Update your OS to a more recent version.");
  exit(0);
 }
 
@@ -63,10 +62,10 @@ if(!tcp_seq)exit(0);
 if(tcp_seq == "constant") {
 
   security_message(port: 0, data: "The TCP sequence numbers of the remote host are constant ! A cracker may use this flaw
-                                to spoof TCP connections easily. 
+                                to spoof TCP connections easily.
                                 Solution : contact your vendor for a patch");
 
-}  
+}
 
 else if(tcp_seq == "800") {
 

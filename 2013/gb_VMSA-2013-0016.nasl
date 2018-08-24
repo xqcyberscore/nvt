@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2013-0016.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_VMSA-2013-0016.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # VMSA-2013-0016 VMware ESXi and ESX unauthorized file access through vCenter Server and ESX
 #
@@ -25,73 +25,64 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "VMware ESXi and ESX unauthorized file access through vCenter Server and ESX";
-tag_solution = "Apply the missing patch(es).";
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103863");
+  script_cve_id("CVE-2013-5973");
+  script_tag(name:"cvss_base", value:"4.4");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11096 $");
+  script_name("VMSA-2013-0016 VMware ESXi and ESX unauthorized file access through vCenter Server and ESX");
 
-tag_affected = "VMware ESXi 5.5 without patch ESXi550-201312001
+
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0016.html");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-12-27 10:04:01 +0100 (Fri, 27 Dec 2013)");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_esxi_init.nasl");
+  script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
+
+  script_tag(name:"vuldetect", value:"Checks for missing patches.");
+  script_tag(name:"insight", value:"a. VMware ESXi and ESX unauthorized file access through vCenter Server and ESX
+
+VMware ESXi and ESX contain a vulnerability in the handling of certain Virtual
+Machine file descriptors. This issue may allow an unprivileged vCenter Server
+user with the privilege 'Add Existing Disk' to obtain read and write access to
+arbitrary files on ESXi or ESX. On ESX, an unprivileged local user may obtain
+read and write access to arbitrary files. Modifying certain files may allow
+for code execution after a host reboot.
+
+Unpriviledged vCenter Server users or groups that are assigned the predefined
+role 'Virtual Machine Power User' or 'Resource Pool Administrator' have the
+privilege 'Add Existing Disk'.
+
+The issue cannot be exploited through VMware vCloud Director.
+
+Workaround
+
+A workaround is provided in VMware Knowledge Base article 2066856.
+
+Mitigation
+
+In a default vCenter Server installation no unprivileged users or groups
+are assigned the predefined role 'Virtual Machine Power User' or 'Resource
+Pool Administrator'.  Restrict the number of vCenter Server users that have
+the privilege 'Add Existing Disk'.");
+  script_tag(name:"solution", value:"Apply the missing patch(es).");
+  script_tag(name:"summary", value:"VMware ESXi and ESX unauthorized file access through vCenter Server and ESX");
+  script_tag(name:"affected", value:"VMware ESXi 5.5 without patch ESXi550-201312001
 VMware ESXi 5.1 without patch ESXi510-201310001
 VMware ESXi 5.0 without patch update-from-esxi5.0-5.0_update03
 VMware ESXi 4.1 without patch ESXi410-201312001
 VMware ESXi 4.0 without patch ESXi400-201310001
 
 VMware ESX 4.1 without patch ESX410-201312001
-VMware ESX 4.0 without patch ESX400-201310001";
-
-tag_vuldetect = "Checks for missing patches.";
-
-tag_insight = 'a. VMware ESXi and ESX unauthorized file access through vCenter Server and ESX
-
-VMware ESXi and ESX contain a vulnerability in the handling of certain Virtual
-Machine file descriptors. This issue may allow an unprivileged vCenter Server
-user with the privilege "Add Existing Disk" to obtain read and write access to
-arbitrary files on ESXi or ESX. On ESX, an unprivileged local user may obtain
-read and write access to arbitrary files. Modifying certain files may allow
-for code execution after a host reboot.
-
-Unpriviledged vCenter Server users or groups that are assigned the predefined
-role "Virtual Machine Power User" or "Resource Pool Administrator" have the
-privilege "Add Existing Disk".
-
-The issue cannot be exploited through VMware vCloud Director.
-
-Workaround
-
-A workaround is provided in VMware Knowledge Base article 2066856. 
-
-Mitigation
-
-In a default vCenter Server installation no unprivileged users or groups
-are assigned the predefined role "Virtual Machine Power User" or "Resource
-Pool Administrator".  Restrict the number of vCenter Server users that have
-the privilege "Add Existing Disk".';
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103863");
- script_cve_id("CVE-2013-5973");
- script_tag(name:"cvss_base", value:"4.4");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 9353 $");
- script_name("VMSA-2013-0016 VMware ESXi and ESX unauthorized file access through vCenter Server and ESX");
-
-
- script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0016.html");
-
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2013-12-27 10:04:01 +0100 (Fri, 27 Dec 2013)");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esxi_init.nasl");
- script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
-
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+VMware ESX 4.0 without patch ESX400-201310001");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 

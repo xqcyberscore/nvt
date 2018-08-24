@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_tomcat_62854.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_jboss_tomcat_62854.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Apache Tomcat/JBoss EJBInvokerServlet / JMXInvokerServlet (RMI over HTTP) Marshalled Object Remote Code Execution
 #
@@ -27,49 +27,49 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103811");
- script_bugtraq_id(62854);
- script_version ("$Revision: 6079 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_cve_id("CVE-2013-4810");
+  script_oid("1.3.6.1.4.1.25623.1.0.103811");
+  script_bugtraq_id(62854);
+  script_version("$Revision: 11096 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2013-4810");
 
- script_name("Apache Tomcat/JBoss EJBInvokerServlet / JMXInvokerServlet (RMI over HTTP) Marshalled Object Remote Code Execution");
+  script_name("Apache Tomcat/JBoss EJBInvokerServlet / JMXInvokerServlet (RMI over HTTP) Marshalled Object Remote Code Execution");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62854");
- script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/28713/");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
- script_tag(name:"creation_date", value:"2013-10-15 10:27:36 +0200 (Tue, 15 Oct 2013)");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62854");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/28713/");
 
- script_tag(name : "impact" , value : "Successfully exploiting these issues may allow an attacker to execute
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-10-15 10:27:36 +0200 (Tue, 15 Oct 2013)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_tag(name:"impact", value:"Successfully exploiting these issues may allow an attacker to execute
  arbitrary code within the context of the affected application. Failed
  exploit attempts may result in a denial-of-service condition.");
- script_tag(name : "vuldetect" , value : "Determine if EJBInvokerServlet/JMXInvokerServlet accessible without authentication.");
- script_tag(name : "insight" , value : "The specific flaw exists within the exposed EJBInvokerServlet and
+  script_tag(name:"vuldetect", value:"Determine if EJBInvokerServlet/JMXInvokerServlet accessible without authentication.");
+  script_tag(name:"insight", value:"The specific flaw exists within the exposed EJBInvokerServlet and
  JMXInvokerServlet. An unauthenticated attacker can post a marshalled object allowing
  them to install an arbitrary application on the target server.");
- script_tag(name : "solution" , value : "Ask the Vendor for an update.");
- script_tag(name : "summary" , value : "Apache Tomcat/JBoss Application Server is prone to multiple remote code-
+  script_tag(name:"solution", value:"Ask the Vendor for an update.");
+  script_tag(name:"summary", value:"Apache Tomcat/JBoss Application Server is prone to multiple remote code-
  execution vulnerabilities.");
- script_tag(name : "affected" , value : "Apache Tomcat/JBoss Application Server");
+  script_tag(name:"affected", value:"Apache Tomcat/JBoss Application Server");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
  exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
-   
+
+
 port = get_http_port(default:9200);
 
 files = make_list("/EJBInvokerServlet", "/JMXInvokerServlet");
@@ -80,7 +80,7 @@ foreach file (files) {
   req = http_get(item:url, port:port);
   buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
 
-  if(buf =~ "HTTP/1.. 200" && 
+  if(buf =~ "HTTP/1.. 200" &&
      "404" >!< buf &&
      "org.jboss.invocation.MarshalledValue" >< buf &&
      "x-java-serialized-object" >< buf &&
@@ -89,8 +89,8 @@ foreach file (files) {
     security_message(port:port);
     exit(0);
 
-  }  
+  }
 
-}  
+}
 
 exit(99);

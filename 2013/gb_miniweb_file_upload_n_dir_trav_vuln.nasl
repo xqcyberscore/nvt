@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_miniweb_file_upload_n_dir_trav_vuln.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_miniweb_file_upload_n_dir_trav_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # MiniWeb Arbitrary File Upload and Directory Traversal Vulnerabilities
 #
@@ -27,38 +27,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803477");
-  script_version("$Revision: 9984 $");
+  script_version("$Revision: 11096 $");
   script_bugtraq_id(58946);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-04-17 18:42:05 +0530 (Wed, 17 Apr 2013)");
   script_name("MiniWeb Arbitrary File Upload and Directory Traversal Vulnerabilities");
 
-  script_tag(name : "summary" , value : "This host is installed with MiniWeb and is prone to file upload
+  script_tag(name:"summary", value:"This host is installed with MiniWeb and is prone to file upload
   and directory traversal vulnerabilities.");
 
-  script_tag(name : "vuldetect" , value : "Send a crafted HTTP POST request and check whether it is able to upload
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP POST request and check whether it is able to upload
   arbirary file or not.");
 
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year since the disclosure
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
   of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another one.");
 
-  script_tag(name : "insight" , value : "Flaw is due to improper sanitation of user supplied input via the 'filename'
+  script_tag(name:"insight", value:"Flaw is due to improper sanitation of user supplied input via the 'filename'
   parameter and uploading a file to a non existing directory.");
 
-  script_tag(name : "affected" , value : "MiniWeb (build 300, built on Feb 28 2013)");
+  script_tag(name:"affected", value:"MiniWeb (build 300, built on Feb 28 2013)");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to overwrite legitimate
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to overwrite legitimate
   content and upload files to arbitrary locations outside of the web path.
 
   Impact Level: Application");
 
   script_tag(name:"solution_type", value:"WillNotFix");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/52923");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/121168");
-  script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/52923");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/52923");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/121168");
+  script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/52923");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");

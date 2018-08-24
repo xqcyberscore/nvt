@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_nsec_pku2u_authentication.nasl 10740 2018-08-02 14:13:50Z emoss $
+# $Id: win_nsec_pku2u_authentication.nasl 11098 2018-08-23 14:32:47Z emoss $
 #
 # Check value for Network security: Allow PKU2U authentication requests to this computer to use online identities
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109231");
-  script_version("$Revision: 10740 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 16:13:50 +0200 (Thu, 02 Aug 2018) $");
+  script_version("$Revision: 11098 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 16:32:47 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-12 10:28:28 +0200 (Tue, 12 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_add_preference(name:"Value", type:"radio", value:"0;1");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Network security: Allow PKU2U authentication requests to this computer to use
 online identities' on Windows hosts (at least Windows 7).
 
@@ -75,7 +75,7 @@ item = 'AllowOnlineID';
 default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
 if(!value){
-  val = '0';
+  value = '0';
 }
 
 if(int(value) == int(default)){

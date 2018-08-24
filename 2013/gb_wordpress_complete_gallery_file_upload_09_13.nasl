@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_complete_gallery_file_upload_09_13.nasl 10312 2018-06-25 11:10:27Z cfischer $
+# $Id: gb_wordpress_complete_gallery_file_upload_09_13.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Wordpress Plugin Complete Gallery Manager 3.3.3 - Arbitrary File Upload Vulnerability
 #
@@ -30,10 +30,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103790");
-  script_version("$Revision: 10312 $");
+  script_version("$Revision: 11096 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 13:10:27 +0200 (Mon, 25 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-09-19 11:10:11 +0200 (Thu, 19 Sep 2013)");
   script_name("Wordpress Plugin Complete Gallery Manager 3.3.3 - Arbitrary File Upload Vulnerability");
   script_category(ACT_ATTACK);
@@ -58,8 +58,8 @@ if(description)
   remote attacker can access the file with one extension and exchange it with the
   other one to execute for example php codes.");
 
-  script_tag(name:"solution", value:"Ask the vendor for an update");
-
+  script_tag(name:"solution", value:"Vendor updates are available.");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"Wordpress Complete Gallery Manager plugin is prone to a vulnerability
   that lets attackers upload arbitrary files. The issue occurs because the application
   fails to adequately sanitize user-supplied input.");
@@ -67,14 +67,13 @@ if(description)
   script_tag(name:"affected", value:"Wordpress Complete Gallery Manager v3.3.3");
 
   script_tag(name:"qod_type", value:"remote_vul");
-  script_tag(name:"solution_type", value:"NoneAvailable");
 
   exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
+
 
 if(!port = get_app_port(cpe:CPE))exit(0);
 if(!dir = get_app_location(cpe:CPE, port:port))exit(0);

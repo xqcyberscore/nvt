@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_nas-201808-13.nasl 10946 2018-08-14 07:30:36Z asteins $
+# $Id: gb_qnap_qts_nas-201808-13.nasl 11095 2018-08-23 11:04:12Z jschulte $
 #
 # QNAP QTS <= 4.2.6, <= 4.3.3, 4.3.4 Command Injection Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112355");
-  script_version("$Revision: 10946 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 09:30:36 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 11095 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 13:04:12 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-26 15:13:57 +0200 (Tue, 26 Jun 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -52,7 +52,7 @@ if( description )
   script_tag(name:"summary", value:"QNAP QTS is prone to a Command Injection vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaw exists within the Helpdesk of QNAP QTS.");
-  script_tag(name:"impact", value:"Successful exploitation would allow an attacker to run arbitrary commands in the compromised application..");
+  script_tag(name:"impact", value:"Successful exploitation would allow an attacker to run arbitrary commands in the compromised application.");
   script_tag(name:"affected", value:"QNAP QTS through version 4.2.6 build 20180531, 4.3.x through version 4.3.3 build 20180528
   and 4.3.4 through build 20180528.");
   script_tag(name:"solution", value:"Update to version 4.2.6 build 20180711, 4.3.3 build 20180716

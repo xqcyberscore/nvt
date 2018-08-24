@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_58016.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_piwigo_58016.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Piwigo Arbitrary File Disclosure and Arbitrary File Deletion Vulnerabilities
 #
@@ -31,11 +31,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103670");
   script_bugtraq_id(58016);
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 11096 $");
   script_name("Piwigo Arbitrary File Disclosure and Arbitrary File Deletion Vulnerabilities");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-02-26 14:16:03 +0100 (Tue, 26 Feb 2013)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -47,23 +47,15 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/58016");
   script_xref(name:"URL", value:"http://piwigo.org");
 
-  tag_summary = "Piwigo is prone to an arbitrary file-disclosure vulnerability and an
+  script_tag(name:"summary", value:"Piwigo is prone to an arbitrary file-disclosure vulnerability and an
   arbitrary file-deletion vulnerability because the application fails to
-  sanitize user-supplied input.";
-
-  tag_impact = "An attacker can exploit these vulnerabilities to view arbitrary files
+  sanitize user-supplied input.");
+  script_tag(name:"impact", value:"An attacker can exploit these vulnerabilities to view arbitrary files
   on the affected computer and to delete arbitrary files within the
-  context of the affected application. Other attacks are also possible.";
-
-  tag_affected = "Piwigo 2.4.6 is vulnerable; other versions may also be affected.";
-
-  tag_solution = "Updates are available. Please see the references or vendor advisory
-  for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  context of the affected application. Other attacks are also possible.");
+  script_tag(name:"affected", value:"Piwigo 2.4.6 is vulnerable; other versions may also be affected.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory
+  for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -85,7 +77,7 @@ files = traversal_files();
 
 foreach file( keys( files ) ) {
 
-  url = dir + '/install.php?dl=/../../../../../../../../../../../../../../' + files[file]; 
+  url = dir + '/install.php?dl=/../../../../../../../../../../../../../../' + files[file];
 
   if( http_vuln_check( port:port, url:url, pattern:file ) ) {
     report = report_vuln_url( port:port, url:url );

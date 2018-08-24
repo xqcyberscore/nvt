@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siemens_scalance_default_web_credential.nasl 10910 2018-08-10 15:10:09Z mmartin $
+# $Id: gb_siemens_scalance_default_web_credential.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Siemens Scalance Default Credentials
 #
@@ -29,24 +29,24 @@ CPE = 'cpe:/h:siemens:scalance';
 if (description)
 {
 
- script_oid("1.3.6.1.4.1.25623.1.0.103723");
- script_version("$Revision: 10910 $");
- script_tag(name:"cvss_base", value:"9.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:10:09 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2013-05-30 16:44:04 +0200 (Thu, 30 May 2013)");
- script_name("Siemens Scalance Default Credentials");
+  script_oid("1.3.6.1.4.1.25623.1.0.103723");
+  script_version("$Revision: 11096 $");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-05-30 16:44:04 +0200 (Thu, 30 May 2013)");
+  script_name("Siemens Scalance Default Credentials");
 
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_siemens_scalance_web_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("siemens_scalance/installed");
- script_tag(name:"solution", value:"Change the password.");
- script_tag(name:"solution_type", value:"Mitigation");
- script_tag(name:"summary", value:"The remote Siemens Scalance is prone to a default account authentication bypass
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_siemens_scalance_web_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("siemens_scalance/installed");
+  script_tag(name:"solution", value:"Change the password.");
+  script_tag(name:"solution_type", value:"Mitigation");
+  script_tag(name:"summary", value:"The remote Siemens Scalance is prone to a default account authentication bypass
 vulnerability. This issue may be exploited by a remote attacker to
 gain access to sensitive information or modify system configuration.
 

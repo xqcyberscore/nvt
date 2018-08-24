@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_multiple_devices_backdoor_10_2013.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_dlink_multiple_devices_backdoor_10_2013.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # D-Link Multiple Devices Backdoor
 #
@@ -25,59 +25,47 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103810";
-
-tag_insight = "By setting the User-Agent header to 'xmlset_roodkcableoj28840ybtide', it is
-possible to access the web interface without any authentication.";
-
-tag_impact = "This vulnerability allows remote attackers to gain complete
-administrative access to affected devices.";
-
-tag_affected = "Various D-Link routers are affected.";
-
-tag_summary = "Various D-Link DSL routers are susceptible to a remote authentication
-bypass vulnerability.";
-
-tag_solution = "Ask the Vendor for an update.";
-tag_vuldetect = "Try to bypass authentication by using 'xmlset_roodkcableoj28840ybtide' as HTTP User-Agent.";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 6698 $");
- script_cve_id("CVE-2013-6026");
- script_bugtraq_id(62990);
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_oid("1.3.6.1.4.1.25623.1.0.103810");
+  script_version("$Revision: 11096 $");
+  script_cve_id("CVE-2013-6026");
+  script_bugtraq_id(62990);
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
- script_name("D-Link Multiple Devices Backdoor");
+  script_name("D-Link Multiple Devices Backdoor");
 
 
- script_xref(name:"URL", value:"http://www.devttys0.com/2013/10/reverse-engineering-a-d-link-backdoor/");
- script_xref(name:"URL", value:"http://www.d-link.com/");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
- script_tag(name:"creation_date", value:"2013-10-14 19:24:10 +0200 (Mon, 14 Oct 2013)");
- script_category(ACT_ATTACK);
+  script_xref(name:"URL", value:"http://www.devttys0.com/2013/10/reverse-engineering-a-d-link-backdoor/");
+  script_xref(name:"URL", value:"http://www.d-link.com/");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-10-14 19:24:10 +0200 (Mon, 14 Oct 2013)");
+  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("thttpd-alphanetworks/banner");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("thttpd-alphanetworks/banner");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"impact", value:"This vulnerability allows remote attackers to gain complete
+administrative access to affected devices.");
+  script_tag(name:"vuldetect", value:"Try to bypass authentication by using 'xmlset_roodkcableoj28840ybtide' as HTTP User-Agent.");
+  script_tag(name:"insight", value:"By setting the User-Agent header to 'xmlset_roodkcableoj28840ybtide', it is
+possible to access the web interface without any authentication.");
+  script_tag(name:"solution", value:"Ask the Vendor for an update.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Various D-Link DSL routers are susceptible to a remote authentication
+bypass vulnerability.");
+  script_tag(name:"affected", value:"Various D-Link routers are affected.");
 
  exit(0);
 }
 
 include("http_func.inc");
-   
+
 port = get_http_port(default:80);
 
 banner = get_http_banner(port:port);
@@ -99,6 +87,6 @@ result = http_send_recv(port:port, data:req + '\r\n', bodyonly:FALSE);
 if(result =~ "HTTP/1.. 200" || (result !~ "HTTP/1" && "self.location.href" >< result)) {
   security_message(port:port);
   exit(0);
-}  
+}
 
 exit(99);

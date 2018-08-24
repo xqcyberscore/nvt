@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_52027.nasl 9587 2018-04-24 12:50:26Z cfischer $
+# $Id: gb_cisco_nx_os_52027.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Multiple Cisco Nexus Devices IP Stack Remote Denial of Service Vulnerability
 #
@@ -24,63 +24,50 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103801";
 CPE = "cpe:/o:cisco:nx-os";
 
-tag_insight = "Cisco NX-OS 4.2.x before 4.2(1)SV1(5.1) on Nexus 1000v series
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103801");
+  script_bugtraq_id(52027);
+  script_cve_id("CVE-2012-0352");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11096 $");
+
+  script_name("Multiple Cisco Nexus Devices IP Stack Remote Denial of Service Vulnerability");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52027");
+  script_xref(name:"URL", value:"http://www.cisco.com/en/US/products/ps9902/tsd_products_support_series_home.html");
+  script_xref(name:"URL", value:"http://www.cisco.com/en/US/products/ps9670/");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20120215-nxos");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-10-10 11:38:56 +0200 (Thu, 10 Oct 2013)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_nx_os_version.nasl");
+  script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
+
+  script_tag(name:"impact", value:"An attacker can exploit this issue to cause the device to crash,
+denying service to legitimate users.");
+  script_tag(name:"vuldetect", value:"Check the version from SNMP sysdesc");
+  script_tag(name:"insight", value:"Cisco NX-OS 4.2.x before 4.2(1)SV1(5.1) on Nexus 1000v series
 switches; 4.x and 5.0.x before 5.0(2)N1(1) on Nexus 5000 series switches; and
 4.2.x before 4.2.8, 5.0.x before 5.0.5, and 5.1.x before 5.1.1 on Nexus 7000
 series switches allows remote attackers to cause a denial of service
 (netstack process crash and device reload) via a malformed IP packet, aka Bug
-IDs CSCti23447, CSCti49507, and CSCtj01991.";
-
-tag_impact = "An attacker can exploit this issue to cause the device to crash,
-denying service to legitimate users.";
-
-tag_affected = "The following devices are affected:
+IDs CSCti23447, CSCti49507, and CSCtj01991.");
+  script_tag(name:"solution", value:"The vendor has released updates. Please see the referenced advisory
+for details.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Multiple Cisco Nexus devices are prone to a denial-of-service
+vulnerability.");
+  script_tag(name:"affected", value:"The following devices are affected:
 Cisco Nexus 1000V
 Cisco Nexus 5000
-Cisco Nexus 7000";
-
-tag_summary = "Multiple Cisco Nexus devices are prone to a denial-of-service
-vulnerability.";
-
-tag_solution = "The vendor has released updates. Please see the referenced advisory
-for details.";
-
-tag_vuldetect = "Check the version from SNMP sysdesc";
-
-if (description)
-{
- script_oid(SCRIPT_OID);
- script_bugtraq_id(52027);
- script_cve_id("CVE-2012-0352");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 9587 $");
-
- script_name("Multiple Cisco Nexus Devices IP Stack Remote Denial of Service Vulnerability");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52027");
- script_xref(name:"URL", value:"http://www.cisco.com/en/US/products/ps9902/tsd_products_support_series_home.html");
- script_xref(name:"URL", value:"http://www.cisco.com/en/US/products/ps9670/");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20120215-nxos");
- 
- script_tag(name:"last_modification", value:"$Date: 2018-04-24 14:50:26 +0200 (Tue, 24 Apr 2018) $");
- script_tag(name:"creation_date", value:"2013-10-10 11:38:56 +0200 (Thu, 10 Oct 2013)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_nx_os_version.nasl");
- script_mandatory_keys("cisco_nx_os/version","cisco_nx_os/model","cisco_nx_os/device");
-
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+Cisco Nexus 7000");
 
  exit(0);
 }
@@ -139,7 +126,7 @@ else if (nx_model =~ '^5') {
                        "5.0(3)n1(1a)",
                        "5.0(3)n1(1)");
 
-}  
+}
 
 else if ( nx_model =~ "^7" ) {
 
@@ -165,13 +152,13 @@ else if ( nx_model =~ "^7" ) {
                        "5.1(4)",
                        "5.1(5)");
 
-}  
+}
 
 if(affected) {
 
   foreach affected_nx_ver (affected) {
     if(nx_ver == affected_nx_ver) {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }

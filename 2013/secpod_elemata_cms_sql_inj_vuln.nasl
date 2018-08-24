@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_elemata_cms_sql_inj_vuln.nasl 5798 2017-03-30 15:23:49Z cfi $
+# $Id: secpod_elemata_cms_sql_inj_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Elemata CMS SQL Injection Vulnerability
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903311");
-  script_version("$Revision: 5798 $");
+  script_version("$Revision: 11096 $");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 17:23:49 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-27 10:38:15 +0530 (Thu, 27 Jun 2013)");
   script_name("Elemata CMS SQL Injection Vulnerability");
-  script_xref(name : "URL" , value : "http://1337day.com/exploit/20927");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/26416");
-  script_xref(name : "URL" , value : "http://toexploit.com/exploit/na/elemata-cms-rc30-sql-injection");
+  script_xref(name:"URL", value:"http://1337day.com/exploit/20927");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/26416");
+  script_xref(name:"URL", value:"http://toexploit.com/exploit/na/elemata-cms-rc30-sql-injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Web application abuses");
@@ -43,19 +43,16 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
   arbitrary SQL statements on the vulnerable system, which may leads to access
   or modify data in the underlying database.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Elemata CMS version RC3.0");
-  script_tag(name : "insight" , value : "The flaw is due to improper validation of input passed via
+  script_tag(name:"affected", value:"Elemata CMS version RC3.0");
+  script_tag(name:"insight", value:"The flaw is due to improper validation of input passed via
   the 'id' parameter in index.php script.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running Elemata CMS and is prone to SQL injection
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Elemata CMS and is prone to SQL injection
   vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -66,11 +63,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-port = 0;
-dir = "";
-url = "";
 
 port = get_http_port(default:80);
 
@@ -87,10 +79,8 @@ foreach dir (make_list_unique("/", "/elemata", "/cms", cgi_dirs(port:port))) {
 
   if( res =~ "HTTP/1.. 200" && "Elemata CMS<" >< res && "Management System<" >< res ) {
 
-    ## Construct attack request
     url = dir + "/index.php?id='SQL-Injection-Test";
 
-    ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:port, url:url, check_header:TRUE,
        pattern:"You have an error in your SQL syntax.*SQL-Injection-Test"))
     {

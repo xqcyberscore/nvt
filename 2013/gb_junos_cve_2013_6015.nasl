@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_6015.nasl 7140 2017-09-15 09:41:22Z cfischer $
+# $Id: gb_junos_cve_2013_6015.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Junos TCP Packet Handling Denial of Service Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103953");
-  script_version ("$Revision: 7140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 11096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-21 11:20:27 +0700 (Thu, 21 Nov 2013)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
@@ -48,30 +48,30 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version");
 
-  script_tag(name : "summary" , value : "A vulnerability in the Flow Daemon can cause a crash when
+  script_tag(name:"summary", value:"A vulnerability in the Flow Daemon can cause a crash when
 handling certain TCP packets.");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "On SRX Series services gateways, when plugins that use TCP proxy
+  script_tag(name:"insight", value:"On SRX Series services gateways, when plugins that use TCP proxy
 are configured (e.g. ALGs, UTM), a certain sequence of valid TCP packets may cause the flow daemon (flowd)
 to crash.");
 
-  script_tag(name : "impact" , value : "A remote attacker can cause a denial of service.");
+  script_tag(name:"impact", value:"A remote attacker can cause a denial of service.");
 
-  script_tag(name : "affected" , value : "Plattforms running Junos OS versions 10.4, 11.4, 12.1, 12.1X44,
+  script_tag(name:"affected", value:"Plattforms running Junos OS versions 10.4, 11.4, 12.1, 12.1X44,
 or 12.1X45.");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper. As
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. As
 a workaround disable ALGs and UTM features if they are not required.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10596");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62963");
   script_xref(name:"URL", value:"http://secunia.com/advisories/55218");
- 
+
   exit(0);
 }
 

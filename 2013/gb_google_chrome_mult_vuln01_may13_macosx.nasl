@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_may13_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_google_chrome_mult_vuln01_may13_macosx.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-01 May13 (MAC OS X)
 #
@@ -24,22 +24,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to execute arbitrary code or
-  disclose sensitive information, conduct cross-site scripting attacks and
-  compromise a users system.
-  Impact Level: System/Application";
-
-tag_affected = "Google Chrome version prior to 27.0.1453.93 on MAC OS X";
-tag_insight = "For more information about the vulnerabilities refer the reference links.";
-tag_solution = "Upgrade to the Google Chrome 27.0.1453.93 or later,
-  For updates refer to http://www.google.com/chrome";
-tag_summary = "The host is installed with Google Chrome and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803706");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11096 $");
   script_cve_id("CVE-2013-2836", "CVE-2013-2837", "CVE-2013-2838", "CVE-2013-2839",
                 "CVE-2013-2840", "CVE-2013-2841", "CVE-2013-2842", "CVE-2013-2843",
                 "CVE-2013-2844", "CVE-2013-2845", "CVE-2013-2846", "CVE-2013-2847",
@@ -48,22 +36,27 @@ if(description)
                     60076, 60070, 60071, 60073, 60063);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-05-24 11:44:26 +0530 (Fri, 24 May 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 May13 (MAC OS X)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/53430");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1028588");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2013/05/stable-channel-release.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/53430");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1028588");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2013/05/stable-channel-release.html");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("GoogleChrome/MacOSX/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code or
+  disclose sensitive information, conduct cross-site scripting attacks and
+  compromise a users system.
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Google Chrome version prior to 27.0.1453.93 on MAC OS X");
+  script_tag(name:"insight", value:"For more information about the vulnerabilities refer the reference links.");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 27.0.1453.93 or later,
+  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"summary", value:"The host is installed with Google Chrome and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -72,18 +65,13 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-chromeVer = "";
-
-## Get the version from KB
 chromeVer = get_kb_item("GoogleChrome/MacOSX/Version");
 if(!chromeVer){
   exit(0);
 }
 
-## Check for Google Chrome Version less than 27.0.1453.93
 if(version_is_less(version:chromeVer, test_version:"27.0.1453.93"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

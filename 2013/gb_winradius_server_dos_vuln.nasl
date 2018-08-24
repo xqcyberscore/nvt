@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winradius_server_dos_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_winradius_server_dos_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # WinRadius Server Denial of Service Vulnerability
 #
@@ -27,36 +27,33 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803716");
-  script_version("$Revision: 6115 $");
+  script_version("$Revision: 11096 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-12 12:06:46 +0530 (Wed, 12 Jun 2013)");
   script_name("WinRadius Server Denial of Service Vulnerability");
 
-  script_xref(name : "URL" , value : "http://1337day.com/exploit/20879");
-  script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013060100");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/121982");
-  script_xref(name : "URL" , value : "http://www.iodigitalsec.com/blog/fuzz-to-denial-of-service-winradius-2-11");
+  script_xref(name:"URL", value:"http://1337day.com/exploit/20879");
+  script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2013060100");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/121982");
+  script_xref(name:"URL", value:"http://www.iodigitalsec.com/blog/fuzz-to-denial-of-service-winradius-2-11");
 
   script_category(ACT_DENIAL);
-  script_copyright("Copyright (C) 2012 SecPod");
+  script_copyright("Copyright (C) 2013 SecPod");
   script_family("Denial of Service");
   script_dependencies("radius_detect.nasl");
   script_require_udp_ports("Services/udp/radius", 1812);
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to cause a
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a
   denial of service.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "WinRadius Server version 2.11");
-  script_tag(name : "insight" , value : "The flaw is due to an error when parsing Access-Request packets
+  script_tag(name:"affected", value:"WinRadius Server version 2.11");
+  script_tag(name:"insight", value:"The flaw is due to an error when parsing Access-Request packets
   and can be exploited to crash the server.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "The host is running WinRadius Server and is prone to denial of
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running WinRadius Server and is prone to denial of
   service vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -66,10 +63,6 @@ if(description)
   exit(0);
 }
 
-
-##
-## The script code starts here
-##
 
 include("network_func.inc");
 
@@ -81,7 +74,6 @@ if(!port){
   port = 1812;
 }
 
-## Check UDP port status as get_udp_port_state() not working properly
 if(!check_udp_port_status(dport:port)){
   exit(0);
 }

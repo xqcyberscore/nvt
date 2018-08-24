@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_unspecified_xss_vuln.nasl 7575 2017-10-26 09:47:04Z cfischer $
+# $Id: gb_ibm_domino_unspecified_xss_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # IBM Lotus Domino Unspecified Cross Site Scripting Vulnerability
 #
@@ -26,58 +26,38 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803976";
 CPE = "cpe:/a:ibm:lotus_domino";
 
 if (description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 7575 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803976");
+  script_version("$Revision: 11096 $");
   script_cve_id("CVE-2013-0595", "CVE-2013-0591", "CVE-2013-0590");
-  script_bugtraq_id(61996,61993,61991);
+  script_bugtraq_id(61996, 61993, 61991);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-09 18:18:48 +0530 (Mon, 09 Dec 2013)");
   script_name("IBM Lotus Domino Unspecified Cross Site Scripting Vulnerability");
 
-  tag_summary =
-"The host is installed with IBM Lotus Domino and is prone to cross site
-scripting vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
- tag_insight =
-"The flaw is in the iNotes. No much information is publicly available about
-this issue";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to inject arbitrary
+  script_tag(name:"summary", value:"The host is installed with IBM Lotus Domino and is prone to cross site
+scripting vulnerability.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Upgrade to IBM Lotus Domino version 8.5.3 FP5 or later
+For more information refer to,
+http://www-01.ibm.com/support/docview.wss?uid=swg21647740");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"insight", value:"The flaw is in the iNotes. No much information is publicly available about
+this issue");
+  script_tag(name:"affected", value:"IBM Lotus Domino 8.5.3 before FP5.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to inject arbitrary
 web script.
 
-Impact Level: Application";
-
-  tag_affected =
-"IBM Lotus Domino 8.5.3 before FP5.";
-
-  tag_solution =
-"Upgrade to IBM Lotus Domino version 8.5.3 FP5 or later
-For more information refer to,
-http://www-01.ibm.com/support/docview.wss?uid=swg21647740";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/83814");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/83381");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21647740");
+Impact Level: Application");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/83814");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/83381");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21647740");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
@@ -90,9 +70,6 @@ http://www-01.ibm.com/support/docview.wss?uid=swg21647740";
 include("version_func.inc");
 include("revisions-lib.inc"); # Used in get_highest_app_version
 include("host_details.inc");
-
-## Variable Initialization
-domVer = "";
 
 if(!domVer = get_highest_app_version(cpe:CPE)){
   exit(0);

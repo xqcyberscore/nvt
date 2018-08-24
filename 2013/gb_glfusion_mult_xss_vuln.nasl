@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_glfusion_mult_xss_vuln.nasl 5791 2017-03-30 13:06:07Z cfi $
+# $Id: gb_glfusion_mult_xss_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # glFusion Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803316");
-  script_version("$Revision: 5791 $");
+  script_version("$Revision: 11096 $");
   script_cve_id("CVE-2013-1466");
   script_bugtraq_id(58058);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-01 11:22:26 +0530 (Fri, 01 Mar 2013)");
   script_name("glFusion Multiple Cross-Site Scripting Vulnerabilities");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/24536");
-  script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23142");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120423/glFusion-1.2.2-Cross-Site-Scripting.html");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/24536");
+  script_xref(name:"URL", value:"https://www.htbridge.com/advisory/HTB23142");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/120423/glFusion-1.2.2-Cross-Site-Scripting.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
@@ -47,21 +47,21 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation allow remote attackers to execute arbitrary code
+  script_tag(name:"impact", value:"Successful exploitation allow remote attackers to execute arbitrary code
   in the browser to steal cookie-based authentication credentials and launch
   other attacks.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "glFusion version 1.2.2 and prior");
-  script_tag(name : "insight" , value : "The flaws are due
+  script_tag(name:"affected", value:"glFusion version 1.2.2 and prior");
+  script_tag(name:"insight", value:"The flaws are due
   - Insufficient filtration of user data in URL after
     '/admin/plugins/mediagallery/xppubwiz.php'
   - Insufficient filtration of user data passed to '/profiles.php',
     '/calendar/index.php' and '/links/index.php' via following parameters,
-    'subject', 'title', 'url','address1', 'address2', 'calendar_type','city',
+    'subject', 'title', 'url', 'address1', 'address2', 'calendar_type', 'city',
     'state', 'title', 'url', 'zipcode'.");
-  script_tag(name : "solution" , value : "Upgrade to the latest version of glFusion 1.2.2.pl4 or later,
+  script_tag(name:"solution", value:"Upgrade to the latest version of glFusion 1.2.2.pl4 or later,
   For updates refer to http://www.glfusion.org/filemgmt/index.php");
-  script_tag(name : "summary" , value : "This host is running glFusion and is prone to multiple cross-site
+  script_tag(name:"summary", value:"This host is running glFusion and is prone to multiple cross-site
   scripting vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -71,12 +71,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-port = "";
-req = "";
-res = "";
-url = "";
 
 port = get_http_port(default:80);
 
@@ -91,14 +85,11 @@ foreach dir (make_list_unique("/", "/glfusion", "/fusion", "/cms", cgi_dirs(port
 
   res = http_get_cache(item:string(dir,"/index.php"),  port:port);
 
-  ## Confirm the application
   if('>glFusion' >< res)
   {
-    ## Construct Attack Request
     url = dir + '/admin/plugins/mediagallery/xppubwiz.php/'+
                 '><script>alert(document.cookie)</script>';
 
-    ## Check the response to confirm vulnerability
     if(http_vuln_check(port: port, url: url, check_header: TRUE,
        pattern: "<script>alert\(document\.cookie\)</script>",
        extra_check: make_list("User Name","Password")))

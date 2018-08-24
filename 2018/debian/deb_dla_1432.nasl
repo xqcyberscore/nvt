@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1432.nasl 10549 2018-07-20 08:37:27Z cfischer $
+# $Id: deb_dla_1432.nasl 11099 2018-08-24 03:13:46Z ckuersteiner $
 #
 # Auto-generated from advisory DLA 1432-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891432");
-  script_version("$Revision: 10549 $");
+  script_version("$Revision: 11099 $");
   script_cve_id("CVE-2018-13005", "CVE-2018-13006");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1432-1] gpac security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 10:37:27 +0200 (Fri, 20 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 05:13:46 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 00:00:00 +0200 (Fri, 20 Jul 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

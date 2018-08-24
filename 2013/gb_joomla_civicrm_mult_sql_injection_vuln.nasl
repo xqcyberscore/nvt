@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_civicrm_mult_sql_injection_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: gb_joomla_civicrm_mult_sql_injection_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Joomla Plugin CiviCRM '_value' Parameter SQL Injection Vulnerability
 #
@@ -24,55 +24,36 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804159";
-
 CPE = "cpe:/a:joomla:joomla";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6079 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804159");
+  script_version("$Revision: 11096 $");
   script_cve_id("CVE-2013-5957");
   script_bugtraq_id(64007);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-05 10:52:35 +0530 (Thu, 05 Dec 2013)");
   script_name("Joomla Plugin CiviCRM '_value' Parameter SQL Injection Vulnerability");
 
-  tag_summary =
-"This host is running CiviCRM and is prone to SQL injection vulnerability.";
 
-  tag_vuldetect =
-"Send a crafted exploit string via HTTP GET request and check whether it
-is possible to execute sql query.";
-
-  tag_insight =
-"The flaw is due to insufficient validation of '_value' HTTP GET parameter
-passed to '/Location.php' script.";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to execute arbitrary SQL
+  script_tag(name:"summary", value:"This host is running CiviCRM and is prone to SQL injection vulnerability.");
+  script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP GET request and check whether it
+is possible to execute sql query.");
+  script_tag(name:"solution", value:"Upgrade to CiviCRM version 4.2.12 or 4.3.7 or 4.4.beta4 or later.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"insight", value:"The flaw is due to insufficient validation of '_value' HTTP GET parameter
+passed to '/Location.php' script.");
+  script_tag(name:"affected", value:"CiviCRM versions 4.2.x before 4.2.12, 4.3.x before 4.3.7, and 4.4.x before
+4.4.beta4.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary SQL
 commands in applications database and gain complete control over the vulnerable
 web application.
 
-Impact Level: Application";
-
-  tag_affected =
-"CiviCRM versions 4.2.x before 4.2.12, 4.3.x before 4.3.7, and 4.4.x before
-4.4.beta4.";
-
-  tag_solution =
-"Upgrade to CiviCRM version 4.2.12 or 4.3.7 or 4.4.beta4 or later.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
-  script_xref(name : "URL" , value : "http://civicrm.org/advisory/civi-sa-2013-009-sql-injection-vulnerability");
+Impact Level: Application");
+  script_xref(name:"URL", value:"http://civicrm.org/advisory/civi-sa-2013-009-sql-injection-vulnerability");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_family("Web application abuses");
@@ -88,27 +69,17 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-jmPort = "";
-req = "";
-res = "";
-url = "";
-
-## Get Drupal Port
-if(!jmPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!jmPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Drupal Location
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:jmPort)){
+if(!dir = get_app_location(cpe:CPE, port:jmPort)){
   exit(0);
 }
 
-## Construct the Attack Request to get all users
 url = dir + "/index.php/component/civicrm/?task=civicrm/ajax/jqState&_value="+
     "-1%20UNION%20SELECT%201,concat(0x673716C2D696E6A656374696F6E2D74657374)";
 
-## Try attack and check the response to confirm vulnerability.
 if(http_vuln_check(port:jmPort, url:url, pattern:'sql-injection-test',
    extra_check:"name"))
 {

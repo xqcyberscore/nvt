@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_il_message_users_attempt_logon.nasl 10661 2018-07-27 13:27:42Z emoss $
+# $Id: win_il_message_users_attempt_logon.nasl 11098 2018-08-23 14:32:47Z emoss $
 #
 # Check value for Interactive logon: Message text for users attempting to log on
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109204");
-  script_version("$Revision: 10661 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 15:27:42 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 11098 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 16:32:47 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-08 14:26:00 +0200 (Fri, 08 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_add_preference(name:"Text", type:"entry", value:"Text");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Message text for users attempting to log on' on Windows hosts (at
 least Windows 7).
 
@@ -74,7 +74,11 @@ key = 'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System';
 item = 'LegalNoticeText';
 default = script_get_preference('Text');
 value = registry_get_sz(key:key, item:item, type:type);
-value = chomp(value);
+if(!value){
+  value = "None";
+}else{
+  value = chomp(value);
+}
 
 if(value == default){
   compliant = 'yes';

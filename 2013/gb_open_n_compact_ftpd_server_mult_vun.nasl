@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_n_compact_ftpd_server_mult_vun.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_open_n_compact_ftpd_server_mult_vun.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Open and Compact FTPD Auth Bypass and Directory Traversal Vulnerabilities
 #
@@ -27,39 +27,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803733");
-  script_version("$Revision: 9984 $");
+  script_version("$Revision: 11096 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-12 11:33:28 +0530 (Mon, 12 Aug 2013)");
   script_name("Open and Compact FTPD Auth Bypass and Directory Traversal Vulnerabilities");
 
-  script_tag(name : "summary" , value : "The host is running Open and Compact FTPD server and is prone to
+  script_tag(name:"summary", value:"The host is running Open and Compact FTPD server and is prone to
 authentication bypass and directory traversal vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Send the crafted directory traversal attack request and check whether it
+  script_tag(name:"vuldetect", value:"Send the crafted directory traversal attack request and check whether it
 is able to read the system file or not.");
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.");
-  script_tag(name : "insight" , value : "Multiple flaws due to,
+  script_tag(name:"insight", value:"Multiple flaws due to,
 
 - Access not being restricted to various FTP commands before a user is
   properly authenticated.
 
 - An Error in handling certain requests.");
-  script_tag(name : "affected" , value : "Open and Compact FTP Server version 1.2 and prior.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute FTP commands
+  script_tag(name:"affected", value:"Open and Compact FTP Server version 1.2 and prior.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute FTP commands
 without any authentication and read arbitrary files on the affected
 application.
 
 Impact Level: Application");
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://1337day.com/exploit/21078");
-  script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013080072");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/122747");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/open-and-compact-ftp-server-12-bypass-directory-traversal");
+  script_xref(name:"URL", value:"http://1337day.com/exploit/21078");
+  script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2013080072");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/122747");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/open-and-compact-ftp-server-12-bypass-directory-traversal");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_ntpq_n_ntpdc_local_bof_vuln.nasl 10965 2018-08-15 03:42:43Z ckuersteiner $
+# $Id: gb_ntp_ntpq_n_ntpdc_local_bof_vuln.nasl 11092 2018-08-23 09:40:58Z santu $
 #
-# NTP 'ntpq' and 'ntpdc' Local Buffer Overflow Vulnerability
+# NTP Local Buffer Overflow And Sybil Vulnerabilities
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com
@@ -29,39 +29,50 @@ CPE = "cpe:/a:ntp:ntp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813448");
-  script_version("$Revision: 10965 $");
-  script_cve_id("CVE-2018-12327");
-  script_bugtraq_id(104517);
+  script_version("$Revision: 11092 $");
+  script_cve_id("CVE-2018-12327", "CVE-2016-1549");
+  script_bugtraq_id(104517, 88200);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 05:42:43 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 11:40:58 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-25 17:21:15 +0530 (Mon, 25 Jun 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); ##backport issue
-  script_name("NTP 'ntpq' and 'ntpdc' Local Buffer Overflow Vulnerability");
+  script_name("NTP Local Buffer Overflow And Sybil Vulnerabilities");
 
   script_tag(name:"summary", value:"The host is running NTP and is prone to
-  a local buffer overflow vulnerability.");
+  a local buffer overflow and sybil vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
+  on the target host.");
 
-  script_tag(name:"insight", value:"The flaw exists due to an insufficient
-  validation of input argument for an IPv4 or IPv6 command-line parameter.");
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 
-  script_tag(name:"impact", value:"Successful exploitation will allow a local
-  attacker to execute code or escalate to higher privileges.
+  - An insufficient validation of input argument for an IPv4 or IPv6
+    command-line parameter.
+
+  - If a system is set up to use a trustedkey and if one is not using the feature
+    allowing an optional 4th field in the ntp.keys file to specify which IPs
+    can serve time.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
+  to execute code or escalate to higher privileges and bypass certain security
+  restrictions and perform some unauthorized actions to the application.
+  This may aid in further attacks
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"NTP version 4.2.8p11 and prior.");
+  script_tag(name:"affected", value:"All ntp-4 releases up to, but not including
+  4.2.8p12, and 4.3.0 up to, but not including 4.3.94.");
 
-  script_tag(name:"solution", value:"No known solution is available as of
-  28th June, 2018. Information regarding this issue will be updated once
-  solution details are available.For updates refer to Reference links.");
+  script_tag(name:"solution", value:"Upgrade to 4.2.8p12 or 4.3.94 or later.
+  For updates refer to Reference links.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_xref(name:"URL", value:"https://gist.github.com/fakhrizulkifli/9b58ed8e0354e8deee50b0eebd1c011f");
   script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/44909");
+  script_xref(name:"URL", value:"http://support.ntp.org/bin/view/Main/NtpBug3505");
+  script_xref(name:"URL", value:"http://support.ntp.org/bin/view/Main/NtpBug3012P12");
   script_xref(name:"URL", value:"http://www.ntp.org/downloads.html");
 
   script_category(ACT_GATHER_INFO);
@@ -85,10 +96,21 @@ infos = get_app_version_and_location(cpe:CPE, port:ntpPort, exit_no_version:TRUE
 ntpVer = infos['version'];
 path = infos['location'];
 
-if(revcomp(a:ntpVer, b: "4.2.8p11") <= 0)
+if(ntpVer =~ "^(4\.)")
 {
-  report = report_fixed_ver(installed_version:ntpVer, fixed_version:"NoneAvailable", install_path:path);
-  security_message(data:report, port:ntpPort, proto:"udp");
-  exit(0);
+  if(revcomp(a:ntpVer, b: "4.2.8p11") <= 0){
+    fix = "4.2.8p12";
+  }
+  else if(ntpVer =~ "^(4\.3)" && (revcomp(a: ntpVer, b: "4.3.94") < 0)){
+    fix = "4.3.94";
+  }
+
+  if(fix)
+  {
+    report = report_fixed_ver(installed_version:ntpVer, fixed_version:fix, install_path:path);
+    security_message(data:report, port:ntpPort, proto:"udp");
+    exit(0);
+  }
 }
+
 exit(0);

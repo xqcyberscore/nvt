@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oxid_eshop_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
+# $Id: secpod_oxid_eshop_detect.nasl 11088 2018-08-23 07:30:11Z ckuersteiner $
 #
 # OXID eShop Community Edition Version Detection
 #
@@ -28,11 +28,13 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900932");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10888 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11088 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 09:30:11 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2009-09-11 18:01:06 +0200 (Fri, 11 Sep 2009)");
   script_tag(name:"cvss_base", value:"0.0");
+
   script_name("OXID eShop Community Edition Version Detection");
+
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 SecPod");
   script_family("Product detection");
@@ -48,7 +50,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("cpe.inc");
@@ -58,22 +59,26 @@ port = get_http_port( default:80 );
 
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-foreach dir( make_list_unique( "/oxid", "/eshop", "/oxid-eshop", cgi_dirs( port:port ) ) ) {
-
+foreach dir( make_list_unique( "/", "/oxid", "/eshop", "/oxid-eshop", cgi_dirs( port:port ) ) ) {
   install = dir;
   if( dir == "/" ) dir = "";
 
-  rcvRes = http_get_cache( item: dir + "/index.php", port:port );
+  rcvRes = http_get_cache( item: dir + "/admin/", port:port );
 
-  if( rcvRes =~ "HTTP/1.. 200" && "OXID eShop Community Edition" >< rcvRes ) {
-
+  if( "OXID eShop Login" >< rcvRes && rcvRes =~ "OXID eShop (Enterprise|Professional|Community)" ) {
     version = "unknown";
 
+    # Just major version e.g. OXID eShop Enterprise Edition, Version 6
     ver = eregmatch(pattern:"Version ([0-9.]+)", string:rcvRes);
-    if( ver[1] != NULL ) version = ver[1];
+    if( !isnull(ver[1]) ) version = ver[1];
 
-    tmp_version = version + " under " + install;
-    set_kb_item( name:"www/" + port + "/OXID-eShop", value:tmp_version );
+    ed = eregmatch(pattern: "OXID eShop (Enterprise|Professional|Community)", string: rcvRes);
+    if (!isnull(ed[1])) {
+      edition = ed[1];
+      set_kb_item(name: "oxid_eshop/edition", value: edition);
+    }
+
+    set_kb_item(name: "oxid_eshop/installed", value: TRUE);
 
     cpe = build_cpe( value: version, exp:"^([0-9.]+)", base:"cpe:/a:oxid:eshop:" );
     if( isnull( cpe ) )
@@ -81,12 +86,10 @@ foreach dir( make_list_unique( "/oxid", "/eshop", "/oxid-eshop", cgi_dirs( port:
 
     register_product( cpe:cpe, location:install, port:port );
 
-    log_message( data:build_detection_report( app:"OXID eShop Community Edition",
-                                               version:version,
-                                               install:install,
-                                               cpe:cpe,
-                                               concluded:ver[0] ),
-                                               port:port );
+    log_message( data:build_detection_report( app:"OXID eShop " + edition + " Edition", version:version,
+                                              install:install, cpe:cpe, concluded:ver[0] ),
+                 port:port );
+    exit( 0 );
   }
 }
 

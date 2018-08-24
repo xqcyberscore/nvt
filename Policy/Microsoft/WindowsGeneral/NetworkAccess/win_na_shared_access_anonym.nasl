@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_na_shared_access_anonym.nasl 10762 2018-08-03 14:03:15Z emoss $
+# $Id: win_na_shared_access_anonym.nasl 11098 2018-08-23 14:32:47Z emoss $
 #
 # Check value for Network access: Shares that can be accessed anonymously
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109227");
-  script_version("$Revision: 10762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 16:03:15 +0200 (Fri, 03 Aug 2018) $");
+  script_version("$Revision: 11098 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 16:32:47 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-11 14:53:35 +0200 (Mon, 11 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_add_preference(name:"Value", type:"entry", value:"None");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Network access: Shares that can be accessed anonymously' on Windows hosts (at
 least Windows 7).
 
@@ -87,18 +87,18 @@ if(!value || value == ''){
   }
 }
 
-if(value == default){
+if(val == default){
   compliant = 'yes';
 }else{
   compliant = 'no';
 }
 
-policy_logging(text:'"' + title + '" is set to: ' + value);
+policy_logging(text:'"' + title + '" is set to: ' + val);
 policy_add_oid();
 policy_set_dval(dval:default);
 policy_fixtext(fixtext:fixtext);
 policy_control_name(title:title);
-policy_set_kb(val:value);
+policy_set_kb(val:val);
 policy_set_compliance(compliant:compliant);
 
 exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_6014.nasl 7140 2017-09-15 09:41:22Z cfischer $
+# $Id: gb_junos_cve_2013_6014.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Junos Security issue with Proxy ARP enabled on unnumbered interface
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103952");
-  script_version ("$Revision: 7140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 11096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-18 12:34:58 +0700 (Mon, 18 Nov 2013)");
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:C/A:N");
@@ -48,24 +48,24 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version");
 
-  script_tag(name : "summary" , value : "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"summary", value:"New builds of Junos OS software are available from Juniper.");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "When Proxy ARP is enabled on an unnumbered interface, it allows
+  script_tag(name:"insight", value:"When Proxy ARP is enabled on an unnumbered interface, it allows
 remote attackers to perform ARP poisoning attacks and possibly obtain sensitive information via a crafted
 ARP message.");
 
-  script_tag(name : "impact" , value : "An attacker can either create a denial of service attack or
+  script_tag(name:"impact", value:"An attacker can either create a denial of service attack or
 might obtain some sensitive information.");
 
-  script_tag(name : "affected" , value : "Plattforms running Junos OS 10.4, 11.4, 11.4X27, 12.1, 12.1X44,
+  script_tag(name:"affected", value:"Plattforms running Junos OS 10.4, 11.4, 11.4X27, 12.1, 12.1X44,
 12.1X45, 12.2, 12.3, or 13.1");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10595");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/63391");

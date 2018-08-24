@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts2_java_method_exec_vuln.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_apache_struts2_java_method_exec_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Apache Struts2 'URL' & 'Anchor' tags Arbitrary Java Method Execution Vulnerabilities
 #
@@ -29,43 +29,43 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803837");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11096 $");
   script_cve_id("CVE-2013-1966", "CVE-2013-2115");
   script_bugtraq_id(60166, 60167);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-07-23 17:54:59 +0530 (Tue, 23 Jul 2013)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Apache Struts2 'URL' & 'Anchor' tags Arbitrary Java Method Execution Vulnerabilities");
 
-  script_tag(name: "summary" , value:"This host is running Apache Struts2 and
+  script_tag(name:"summary", value:"This host is running Apache Struts2 and
   is prone to arbitrary java method execution vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted data like system functions
+  script_tag(name:"vuldetect", value:"Send a crafted data like system functions
   via HTTP POST request and check whether it is executing the java function or not.");
 
-  script_tag(name: "insight" , value:"Flaw is due to improper handling of the
+  script_tag(name:"insight", value:"Flaw is due to improper handling of the
   includeParams attribute in the URL and Anchor tags");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers
   to execute arbitrary commands via specially crafted OGNL (Object-Graph Navigation Language)
   expressions.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Apache Struts 2 before 2.3.14.2");
+  script_tag(name:"affected", value:"Apache Struts 2 before 2.3.14.2");
 
-  script_tag(name: "solution" , value:"Upgrade to Apache Struts 2 version 2.3.14.2 or later,
+  script_tag(name:"solution", value:"Upgrade to Apache Struts 2 version 2.3.14.2 or later,
   For updates refer to http://struts.apache.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/53553");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/25980");
-  script_xref(name : "URL" , value : "https://cwiki.apache.org/confluence/display/WW/S2-013");
-  script_xref(name : "URL" , value : "http://struts.apache.org/development/2.x/docs/s2-014.html");
-  script_xref(name : "URL" , value : "http://metasploit.org/modules/exploit/multi/http/struts_include_params");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/53553");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/25980");
+  script_xref(name:"URL", value:"https://cwiki.apache.org/confluence/display/WW/S2-013");
+  script_xref(name:"URL", value:"http://struts.apache.org/development/2.x/docs/s2-014.html");
+  script_xref(name:"URL", value:"http://metasploit.org/modules/exploit/multi/http/struts_include_params");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
@@ -79,15 +79,6 @@ if(description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-asport = 0;
-asreq = "";
-asres = "";
-asRes = "";
-asReq = "";
-dir = "";
-url = "";
 
 if(!asport = get_app_port(cpe:CPE)){
   exit(0);
@@ -103,19 +94,16 @@ host = http_host_name(port:asport);
 asreq = http_get(item:string(dir,"/example/HelloWorld.action"), port:asport);
 asres = http_keepalive_send_recv(port:asport, data:asreq);
 
-## Confirm the application
 if(asres && ">Struts" >< asres && ">English<" >< asres)
 {
   sleep = make_list(3, 5);
 
   foreach i (sleep)
   {
-    ## Construct the POST data
     postdata = "fgoa=%24%7b%23%5fmemberAccess%5b%22allow"+
                "StaticMethodAccess%22%5d%3dtrue%2c%40jav"+
                  "a.lang.Thread%40sleep%28"+ i +"000%29%7d";
 
-    ## Construct the POST request
       asReq = string("POST /struts2-blank/example/HelloWorld.action HTTP/1.1\r\n",
                      "Host: ", host, "\r\n",
                      "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",

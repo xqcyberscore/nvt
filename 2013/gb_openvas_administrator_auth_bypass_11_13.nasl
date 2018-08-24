@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvas_administrator_auth_bypass_11_13.nasl 7888 2017-11-23 14:20:55Z asteins $
+# $Id: gb_openvas_administrator_auth_bypass_11_13.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # OpenVAS Administrator Authentication Bypass
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:openvas:openvas_administrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103828");
-  script_version("$Revision: 7888 $");
+  script_version("$Revision: 11096 $");
   script_cve_id("CVE-2013-6766");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-23 15:20:55 +0100 (Thu, 23 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-08 13:03:55 +0200 (Fri, 08 Nov 2013)");
   script_name("OpenVAS Administrator Authentication Bypass");
   script_category(ACT_GATHER_INFO);
@@ -47,24 +47,14 @@ if(description)
 
   script_xref(name:"URL", value:"http://openvas.org/OVSA20131108.html");
 
-  tag_impact = "Attackers can exploit these issues to gain unauthorized access to the
-  affected application and perform certain actions.";
-
-  tag_insight = "A software bug in the server module 'OpenVAS Administrator' allowed to bypass the OAP
+  script_tag(name:"impact", value:"Attackers can exploit these issues to gain unauthorized access to the
+  affected application and perform certain actions.");
+  script_tag(name:"vuldetect", value:"Try to bypass OAP authentication by sending a special crafted request.");
+  script_tag(name:"insight", value:"A software bug in the server module 'OpenVAS Administrator' allowed to bypass the OAP
   authentication procedure. The attack vector is remotely available in case public OAP is enabled.
-  In case of successful attack, the attacker gains partial rights to execute OAP commands.";
-
-  tag_summary = "The remote OpenVAS Administrator is prone to an authentication bypass.";
-
-  tag_solution = "Update to version 1.2.2 or 1.3.2.";
-
-  tag_vuldetect = "Try to bypass OAP authentication by sending a special crafted request.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  In case of successful attack, the attacker gains partial rights to execute OAP commands.");
+  script_tag(name:"solution", value:"Update to version 1.2.2 or 1.3.2.");
+  script_tag(name:"summary", value:"The remote OpenVAS Administrator is prone to an authentication bypass.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");

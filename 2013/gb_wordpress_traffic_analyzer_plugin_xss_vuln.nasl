@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_traffic_analyzer_plugin_xss_vuln.nasl 10000 2018-05-29 12:20:12Z cfischer $
+# $Id: gb_wordpress_traffic_analyzer_plugin_xss_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # WordPress Traffic Analyzer Plugin XSS Vulnerability
 #
@@ -29,17 +29,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803372");
-  script_version("$Revision: 10000 $");
+  script_version("$Revision: 11096 $");
   script_cve_id("CVE-2013-3526");
   script_bugtraq_id(58948);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 14:20:12 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-04-12 17:30:46 +0530 (Fri, 12 Apr 2013)");
   script_name("WordPress Traffic Analyzer Plugin XSS Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/52929");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/121167");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wordpress-traffic-analyzer-cross-site-scripting");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/52929");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/121167");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/wordpress-traffic-analyzer-cross-site-scripting");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
@@ -48,18 +48,18 @@ if(description)
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to insert
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
 arbitrary HTML and script code, which will be executed in a user's browser
 session in the context of an affected site.
 
 Impact Level: Application");
-  script_tag(name : "affected" , value : "WordPress Traffic Analyzer Plugin version 3.3.2 and prior");
-  script_tag(name : "insight" , value : "The input passed via 'aoid' parameters to
+  script_tag(name:"affected", value:"WordPress Traffic Analyzer Plugin version 3.3.2 and prior");
+  script_tag(name:"insight", value:"The input passed via 'aoid' parameters to
 '/wp-content/plugins/trafficanalyzer/js/ta_loaded.js.php' script is not
 properly validated.");
-  script_tag(name : "solution" , value : "Upgrade to WordPress Traffic Analyzer Plugin version 3.4.0 or
+  script_tag(name:"solution", value:"Upgrade to WordPress Traffic Analyzer Plugin version 3.4.0 or
 later. For updates refer to http://wordpress.org/extend/plugins/trafficanalyzer");
-  script_tag(name : "summary" , value : "This host is running WordPress with Traffic Analyzer plugin and
+  script_tag(name:"summary", value:"This host is running WordPress with Traffic Analyzer plugin and
 is prone to cross site scripting vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");

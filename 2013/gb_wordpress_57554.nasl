@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_57554.nasl 6755 2017-07-18 12:55:56Z cfischer $
+# $Id: gb_wordpress_57554.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # WordPress Pingback Vulnerability
 #
@@ -24,8 +24,34 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+CPE = "cpe:/a:wordpress:wordpress";
 
-tag_summary = "WordPress is prone to an information-disclosure vulnerability and
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103660");
+  script_bugtraq_id(57554);
+  script_cve_id("CVE-2013-0235");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_version("$Revision: 11096 $");
+
+  script_name("WordPress Pingback Vulnerability");
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57554");
+  script_xref(name:"URL", value:"http://www.acunetix.com/blog/web-security-zone/wordpress-pingback-vulnerability/");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-02-07 10:52:18 +0100 (Thu, 07 Feb 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("secpod_wordpress_detect_900182.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("wordpress/installed");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more details.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"WordPress is prone to an information-disclosure vulnerability and
 multiple HTML-injection vulnerabilities.
 
 Successful exploits will allow attacker-supplied HTML and script code
@@ -34,48 +60,16 @@ the attacker to steal cookie-based authentication credentials, control
 how the site is rendered to the user, and disclose or modify sensitive
 information. Other attacks are also possible.
 
-WordPress versions prior to 3.5.1 are vulnerable.";
-
-
-tag_solution = "Updates are available. Please see the references for more details.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103660";
-CPE = "cpe:/a:wordpress:wordpress";
-
-if (description)
-{
- script_oid(SCRIPT_OID);
- script_bugtraq_id(57554);
- script_cve_id("CVE-2013-0235");
- script_tag(name:"cvss_base", value:"6.4");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 6755 $");
-
- script_name("WordPress Pingback Vulnerability");
-
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/57554");
- script_xref(name : "URL" , value : "http://www.acunetix.com/blog/web-security-zone/wordpress-pingback-vulnerability/");
-
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
- script_tag(name:"creation_date", value:"2013-02-07 10:52:18 +0100 (Thu, 07 Feb 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("secpod_wordpress_detect_900182.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("wordpress/installed");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+WordPress versions prior to 3.5.1 are vulnerable.");
  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-   
-if(!port = get_app_port(cpe:CPE, nvt:SCRIPT_OID))exit(0);
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:port))exit(0);
+
+if(!port = get_app_port(cpe:CPE))exit(0);
+if(!dir = get_app_location(cpe:CPE, port:port))exit(0);
 
 host = http_host_name(port:port);
 

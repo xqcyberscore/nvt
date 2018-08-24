@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_onboard_admin_52862.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_hp_onboard_admin_52862.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # HP Onboard Administrator Multiple Security Vulnerabilities
 #
@@ -29,43 +29,43 @@ CPE = "cpe:/a:hp:onboard_administrator";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103795");
- script_bugtraq_id(52862);
- script_cve_id("CVE-2012-0128","CVE-2012-0129","CVE-2012-0130");
- script_tag(name:"cvss_base", value:"7.6");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 9984 $");
- script_name("HP Onboard Administrator Multiple Security Vulnerabilities");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52862");
- script_xref(name:"URL", value:"http://h18004.www1.hp.com/products/blades/components/onboard/index.html?jumpid=reg_R1002_USEN");
- script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c03263573");
+  script_oid("1.3.6.1.4.1.25623.1.0.103795");
+  script_bugtraq_id(52862);
+  script_cve_id("CVE-2012-0128", "CVE-2012-0129", "CVE-2012-0130");
+  script_tag(name:"cvss_base", value:"7.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11096 $");
+  script_name("HP Onboard Administrator Multiple Security Vulnerabilities");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52862");
+  script_xref(name:"URL", value:"http://h18004.www1.hp.com/products/blades/components/onboard/index.html?jumpid=reg_R1002_USEN");
+  script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c03263573");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
- script_tag(name:"creation_date", value:"2013-10-01 11:28:03 +0200 (Tue, 01 Oct 2013)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_hp_onboard_administrator_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-10-01 11:28:03 +0200 (Tue, 01 Oct 2013)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_hp_onboard_administrator_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "impact" , value : "An attacker may exploit these issues to obtain sensitive information,
+  script_tag(name:"impact", value:"An attacker may exploit these issues to obtain sensitive information,
 bypass certain security restrictions, and redirect a user to a
 potentially malicious site. This may aid in phishing attacks.");
- script_tag(name : "vuldetect" , value : "Check if HP Onboard Administrator version is < 3.50");
- script_tag(name : "insight" , value : "HP Onboard Administrator is prone to:
+  script_tag(name:"vuldetect", value:"Check if HP Onboard Administrator version is < 3.50");
+  script_tag(name:"insight", value:"HP Onboard Administrator is prone to:
 
 1. A URI-redirection vulnerability
 
 2. An information-disclosure vulnerability
 
 3. A security-bypass vulnerability");
- script_tag(name : "solution" , value : "Updates are available. Please see the references for more information.");
- script_tag(name : "summary" , value : "HP Onboard Administrator is prone to multiple security vulnerabilities.");
- script_tag(name : "affected" , value : "HP Onboard Administrator (OA) before 3.50");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"HP Onboard Administrator is prone to multiple security vulnerabilities.");
+  script_tag(name:"affected", value:"HP Onboard Administrator (OA) before 3.50");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 }

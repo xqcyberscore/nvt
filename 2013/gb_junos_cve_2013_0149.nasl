@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_0149.nasl 7140 2017-09-15 09:41:22Z cfischer $
+# $Id: gb_junos_cve_2013_0149.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
-# Junos OSPF Protocol Vulnerabiltiy 
+# Junos OSPF Protocol Vulnerabiltiy
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103959");
-  script_version ("$Revision: 7140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 11096 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-29 12:26:17 +0700 (Fri, 29 Nov 2013)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
@@ -48,30 +48,30 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version");
 
-  script_tag(name : "summary" , value : "A vulnerability in the OSPF protocol allows a remote attacker to
+  script_tag(name:"summary", value:"A vulnerability in the OSPF protocol allows a remote attacker to
 insert, update or delete routes in the OSPF database.");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "A vulnerability has been discovered in the OSPF (Open Shortest
+  script_tag(name:"insight", value:"A vulnerability has been discovered in the OSPF (Open Shortest
 Path First) protocol that allows a remote attacker to insert, update or delete routes in the OSPF database.");
 
-  script_tag(name : "impact" , value : "A remote attacker might re-route traffic, compromise the
+  script_tag(name:"impact", value:"A remote attacker might re-route traffic, compromise the
 confidentially of data or cunduct a DoS attack by dropping all traffic.");
 
-  script_tag(name : "affected" , value : "Plattforms running Junos OS before versions 13.1R3,
+  script_tag(name:"affected", value:"Plattforms running Junos OS before versions 13.1R3,
 13.2X50-D10, 12.3R3, 12.2R5, 12.1R7, 12.1X45-D10, 12.1X44-D15, 11.4R8 and 10.4R15");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper. Use
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. Use
 MD5 authentication when configuring OSPF. MD5 authentication completely mitigates this issue.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10582");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/229804");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61566");
- 
+
   exit(0);
 }
 

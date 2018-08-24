@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_esr_mult_vuln_nov12_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_thunderbird_esr_mult_vuln_nov12_win.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Mozilla Thunderbird ESR Multiple Vulnerabilities - November12 (Windows)
 #
@@ -27,35 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803629");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11096 $");
   script_cve_id("CVE-2012-4194", "CVE-2012-4195", "CVE-2012-4196");
   script_bugtraq_id(56301, 56302, 56306);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 16:08:12 +0530 (Fri, 02 Nov 2012)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities - November12 (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/51144");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1027703");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-90.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/51144");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1027703");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-90.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird-ESR/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to inject scripts and bypass
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to inject scripts and bypass
   certain security restrictions.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Thunderbird ESR version 10.x before 10.0.10 on Windows");
-  script_tag(name : "insight" , value : "Multiple errors
+  script_tag(name:"affected", value:"Thunderbird ESR version 10.x before 10.0.10 on Windows");
+  script_tag(name:"insight", value:"Multiple errors
   - When handling the 'window.location' object.
   - Within CheckURL() function of the 'window.location' object, which can be
     forced to return the wrong calling document and principal.
   - Within handling of 'Location' object can be exploited to bypass security
     wrapper protection.");
-  script_tag(name : "solution" , value : "Upgrade to Thunderbird ESR 10.0.10 or later,
+  script_tag(name:"solution", value:"Upgrade to Thunderbird ESR 10.0.10 or later,
   http://www.mozilla.org/en-US/thunderbird");
-  script_tag(name : "summary" , value : "This host is installed with Mozilla Thunderbird ESR and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Mozilla Thunderbird ESR and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2013-0002.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_VMSA-2013-0002.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # VMSA-2013-0002 VMware ESX, Workstation, Fusion, and View VMCI privilege escalation vulnerability
 #
@@ -25,8 +25,27 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote ESXi is missing one or more security related Updates from VMSA-2013-0002.";
-tag_insight = "VMware ESX, Workstation, Fusion, and View address a vulnerability in the VMCI.SYS driver which
+
+
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103662");
+  script_cve_id("CVE-2013-1406");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11096 $");
+  script_name("VMSA-2013-0002  VMware ESX, Workstation, Fusion, and View VMCI privilege escalation vulnerability");
+
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-02-14 10:04:01 +0100 (Thu, 14 Feb 2013)");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_esxi_init.nasl");
+  script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
+  script_tag(name:"summary", value:"The remote ESXi is missing one or more security related Updates from VMSA-2013-0002.");
+  script_tag(name:"insight", value:"VMware ESX, Workstation, Fusion, and View address a vulnerability in the VMCI.SYS driver which
 could result in a privilege escalation on Windows-based hosts and on Windows-based Guest
 Operating Systems.
 
@@ -42,7 +61,7 @@ VMware ESXi 5.0 without ESXi500-201212102-SG
 VMware ESXi 4.1.without ESXi410-201211402-BG
 VMware ESXi 4.0 without ESXi400-201302402-SG
 VMware ESX 4.1.without ESX410-201211401-SG
-VMware ESX 4.0 without ESX400-201302401-SG 
+VMware ESX 4.0 without ESX400-201302401-SG
 
 Problem Description
 
@@ -61,32 +80,10 @@ not be manipulated from the Guest Operating System (and vice versa).
 Systems that have VMCI disabled are also affected by this issue.
 
 Solution
-Apply the missing patch(es).";
-
-
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103662");
- script_cve_id("CVE-2013-1406");
- script_tag(name:"cvss_base", value:"7.2");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 9353 $");
- script_name("VMSA-2013-0002  VMware ESX, Workstation, Fusion, and View VMCI privilege escalation vulnerability");
-
-
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2013-02-14 10:04:01 +0100 (Thu, 14 Feb 2013)");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esxi_init.nasl");
- script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2013-0002.html");
+Apply the missing patch(es).");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0002.html");
  exit(0);
 }
 

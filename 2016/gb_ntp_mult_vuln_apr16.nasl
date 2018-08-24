@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_mult_vuln_apr16.nasl 6959 2017-08-18 07:24:59Z asteins $
+# $Id: gb_ntp_mult_vuln_apr16.nasl 11092 2018-08-23 09:40:58Z santu $
 #
 # NTP.org 'ntpd' Multiple Vulnerabilities
 #
@@ -27,27 +27,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807567");
-  script_version("$Revision: 6959 $");
+  script_version("$Revision: 11092 $");
   script_cve_id("CVE-2015-7973", "CVE-2015-7974", "CVE-2015-7975", "CVE-2015-7976",
                 "CVE-2015-7977", "CVE-2015-7978", "CVE-2015-7979", "CVE-2015-8138",
                 "CVE-2015-8139", "CVE-2015-8140", "CVE-2015-8158", "CVE-2016-1547",
-                "CVE-2016-1548", "CVE-2016-1549", "CVE-2016-1550", "CVE-2016-1551",
+                "CVE-2016-1548", "CVE-2015-7705", "CVE-2016-1550", "CVE-2016-1551",
                 "CVE-2016-2516", "CVE-2016-2517", "CVE-2016-2518", "CVE-2016-2519",
-                "CVE-2015-7704", "CVE-2015-7705");
+                "CVE-2015-7704");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-18 09:24:59 +0200 (Fri, 18 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 11:40:58 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2016-04-28 15:41:24 +0530 (Thu, 28 Apr 2016)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("NTP.org 'ntpd' Multiple Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is running NTP.org's reference 
+  script_tag(name:"summary", value:"The host is running NTP.org's reference
   implementation of NTP server, ntpd and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
   - The ntpd does not filter IPv4 bogon packets received from the network.
   - The duplicate IPs on unconfig directives will cause an assertion botch.
   - Crafted addpeer with hmode > 7 causes array wraparound with MATCH_ASSOC.
@@ -57,18 +56,18 @@ if(description)
   - The ntpq saveconfig command allows dangerous characters in filenames.
   - Restriction list NULL pointer dereference.
   - Uncontrolled Resource Consumption in recursive traversal of restriction list.
-  - An off-path attacker can send broadcast packets with bad authentication to 
+  - An off-path attacker can send broadcast packets with bad authentication to
     broadcast clients.
   - An improper sanity check for the origin timestamp.
   - Origin Leak: ntpq and ntpdc Disclose Origin Timestamp to Unauthenticated Clients.
-  - The sequence number being included under the signature fails to prevent 
+  - The sequence number being included under the signature fails to prevent
     replay attacks in ntpq protocol.
   - An uncontrolled Resource Consumption in ntpq.
-  - An off-path attacker can deny service to ntpd clients by demobilizing 
+  - An off-path attacker can deny service to ntpd clients by demobilizing
     preemptable associations using spoofed crypto-NAK packets.
   - Multiple input validation errors.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow 
+  script_tag(name:"impact", value:"Successful exploitation will allow
   unauthenticated remote attackers to spoof packets to cause denial of service,
   authentication bypass, or certain configuration changes.
 
@@ -81,7 +80,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://www.kb.cert.org/vuls/id/718152");
+  script_xref(name:"URL", value:"https://www.kb.cert.org/vuls/id/718152");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
@@ -93,31 +92,20 @@ if(description)
 }
 
 
-##
-#Code Starts Here
-##
-
 include("version_func.inc");
 include("revisions-lib.inc");
-
-## Variable initialization
-ntpVer = 0;
-report = "";
-ntpPort = 0;
 
 ##Port
 ntpPort = 123;
 
-if("ntpd" >!< get_kb_item("NTP/Linux/FullVer")){ 
+if("ntpd" >!< get_kb_item("NTP/Linux/FullVer")){
   exit(0);
 }
 
-##Get version
 if(!ntpVer = get_kb_item("NTP/Linux/Ver")){
   exit(0);
 }
 
-##Grep for vulnerable version
 if (revcomp(a: ntpVer, b: "4.2.8p7") < 0)
 {
   report = report_fixed_ver(installed_version:ntpVer, fixed_version:"4.2.8p7");

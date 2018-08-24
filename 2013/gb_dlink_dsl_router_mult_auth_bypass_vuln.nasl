@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dsl_router_mult_auth_bypass_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_dlink_dsl_router_mult_auth_bypass_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # D-Link Dsl Router Multiple Authentication Bypass Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803700");
-  script_version("$Revision: 6698 $");
+  script_version("$Revision: 11096 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-05-21 12:05:19 +0530 (Tue, 21 May 2013)");
   script_name("D-Link Dsl Router Multiple Authentication Bypass Vulnerabilities");
 
@@ -56,10 +56,7 @@ if(description)
   accessible with no authentication. These pages can be abused to access
   sensitive information concerning the device configuration, including the
   clear-text password for the administrative user.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is running D-Link Dsl Router and is prone to multiple
   authentication bypass vulnerabilities.");
 
@@ -75,16 +72,13 @@ include("http_keepalive.inc");
 port = "";
 banner = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Confirm the device from banner
 banner = get_http_banner(port: port);
 if(banner && 'WWW-Authenticate: Basic realm="DSL Router"' >!< banner){
   exit(0);
 }
 
-## Confirm the exploit by reading  content of password.cgi
 if(http_vuln_check(port:port, url:"/password.cgi", pattern:"pwdAdmin = '.*",
    extra_check:make_list("pwdUser = '", ">Access Control -- Passwords<",
                          "Access to your DSL router")))

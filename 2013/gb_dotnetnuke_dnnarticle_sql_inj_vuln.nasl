@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnetnuke_dnnarticle_sql_inj_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_dotnetnuke_dnnarticle_sql_inj_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # DotNetNuke DNNArticle Module SQL Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:dotnetnuke:dotnetnuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803868");
-  script_version("$Revision: 6104 $");
+  script_version("$Revision: 11096 $");
   script_cve_id("CVE-2013-5117");
   script_bugtraq_id(61788);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-19 11:59:21 +0530 (Mon, 19 Aug 2013)");
   script_name("DotNetNuke DNNArticle Module SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
@@ -79,11 +79,9 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-## Construct attack request
 url = dir + "/DesktopModules/DNNArticle/DNNArticleRSS.aspx?"+
             "moduleid=0&categoryid=1+or+1=@@version";
 
-## Confirm exploit worked by checking the response
 if( http_vuln_check( port:port, url:url, check_header:TRUE,
     pattern:"converting the nvarchar.*Microsoft SQL Server.*([0-9.]+)" ) ) {
   report = report_vuln_url( port:port, url:url );

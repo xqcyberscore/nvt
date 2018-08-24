@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icewarp_xxe_08_13.nasl 10312 2018-06-25 11:10:27Z cfischer $
+# $Id: gb_icewarp_xxe_08_13.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # IceWarp Web Mail Information Disclosure Vulnerability
 #
@@ -28,9 +28,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103750");
-  script_version("$Revision: 10312 $");
+  script_version("$Revision: 11096 $");
   script_name("IceWarp Web Mail Information Disclosure Vulnerability.");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-25 13:10:27 +0200 (Mon, 25 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-07 16:35:04 +0200 (Wed, 07 Aug 2013)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:P");
@@ -69,7 +69,7 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("host_details.inc");
 include("misc_func.inc");
 

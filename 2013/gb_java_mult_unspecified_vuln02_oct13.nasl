@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln02_oct13.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: gb_java_mult_unspecified_vuln02_oct13.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Oct 2013 (Windows)
 #
@@ -29,39 +29,39 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804118");
-  script_version("$Revision: 10144 $");
+  script_version("$Revision: 11096 $");
   script_cve_id("CVE-2013-5831", "CVE-2013-5832", "CVE-2013-5812", "CVE-2013-5824",
                 "CVE-2013-5818", "CVE-2013-5819", "CVE-2013-5823", "CVE-2013-5789",
                 "CVE-2013-5820", "CVE-2013-5852", "CVE-2013-5848", "CVE-2013-5776",
-                "CVE-2013-5772", "CVE-2013-5784", "CVE-2013-5787" );
+                "CVE-2013-5772", "CVE-2013-5784", "CVE-2013-5787");
   script_bugtraq_id(63129, 63158, 63126, 63157, 63141, 63110, 63139, 63133, 63130,
                     63124, 63156, 63152, 63089, 63098, 63155);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-10-25 19:03:24 +0530 (Fri, 25 Oct 2013)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Oct 2013 (Windows)");
 
 
-  script_tag(name : "summary" , value : "This host is installed with Oracle Java SE JRE and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Oracle Java SE JRE and is prone to multiple
 vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Get the installed version of Oracle Java SE JRE with the help of detect NVT
+  script_tag(name:"vuldetect", value:"Get the installed version of Oracle Java SE JRE with the help of detect NVT
 and check it is vulnerable or not.");
-  script_tag(name : "solution" , value : "Apply the patch from below link,
+  script_tag(name:"solution", value:"Apply the patch from below link,
 http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html");
-  script_tag(name : "insight" , value : "Multiple unspecified vulnerabilities exists, For more details about the
+  script_tag(name:"insight", value:"Multiple unspecified vulnerabilities exists, For more details about the
 vulnerabilities refer the reference section.");
-  script_tag(name : "affected" , value : "Oracle Java SE 7 update 40 and earlier, 6 update 60 and earlier on Windows");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to affect confidentiality,
+  script_tag(name:"affected", value:"Oracle Java SE 7 update 40 and earlier, 6 update 60 and earlier on Windows");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to affect confidentiality,
 integrity, and availability via unknown vectors.
 
 Impact Level: System/Application.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/55315");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/63158");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/55315");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/63158");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2013-1899837.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");

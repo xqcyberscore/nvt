@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_php_local_file_inclusion_vuln.nasl 10352 2018-06-28 07:09:51Z santu $
+# $Id: gb_joomla_php_local_file_inclusion_vuln.nasl 11099 2018-08-24 03:13:46Z ckuersteiner $
 #
 # Joomla! Core 'PHP' Local File Inclusion Vulnerability (20180601)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813458");
-  script_version("$Revision: 10352 $");
+  script_version("$Revision: 11099 $");
   script_cve_id("CVE-2018-12712");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-28 09:09:51 +0200 (Thu, 28 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 05:13:46 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-27 16:36:27 +0530 (Wed, 27 Jun 2018)");
   script_name("Joomla! Core 'PHP' Local File Inclusion Vulnerability (20180601)");
 
   script_tag(name:"summary", value:"This host is running Joomla and is prone
   local file inclusion vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in PHP 5.3,
   where 'class_exists' function validates invalid names as valid.");
@@ -58,8 +57,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name : "URL" , value:"https://developer.joomla.org/security-centre/741-20180601-core-local-file-inclusion-with-php-5-3");
-  script_xref(name : "URL" , value:"https://www.joomla.org");
+  script_xref(name:"URL", value:"https://developer.joomla.org/security-centre/741-20180601-core-local-file-inclusion-with-php-5-3");
+  script_xref(name:"URL", value:"https://www.joomla.org");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");

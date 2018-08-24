@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_57841.nasl 9587 2018-04-24 12:50:26Z cfischer $
+# $Id: gb_cisco_nx_os_57841.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Cisco Nexus 7000 Series Switches  Remote Denial of Service Vulnerability
 #
@@ -24,52 +24,40 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103802";
 CPE = "cpe:/o:cisco:nx-os";
-
-tag_insight = "This issue is being tracked by Cisco Bug ID CSCud15673.";
-
-tag_impact = "Successfully exploiting this issue allows remote attackers to cause
-denial-of-service conditions.";
-
-tag_affected = "Cisco Nexus 7000 Series running on NX-OS.";
-
-tag_summary = "Cisco Nexus 7000 Series switches running on NX-OS are prone to a
-remote denial-of-service vulnerability.";
-
-tag_solution = "Ask the Vendor for an update.";
-tag_vuldetect = "Check the version from SNMP sysdesc";
 
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_bugtraq_id(57841);
- script_cve_id("CVE-2013-1122");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 9587 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103802");
+  script_bugtraq_id(57841);
+  script_cve_id("CVE-2013-1122");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11096 $");
 
- script_name("Cisco Nexus 7000 Series Switches  Remote Denial of Service Vulnerability");
+  script_name("Cisco Nexus 7000 Series Switches  Remote Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57841");
- script_xref(name:"URL", value:"http://www.cisco.com/");
- 
- script_tag(name:"last_modification", value:"$Date: 2018-04-24 14:50:26 +0200 (Tue, 24 Apr 2018) $");
- script_tag(name:"creation_date", value:"2013-10-10 12:14:44 +0200 (Thu, 10 Oct 2013)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_nx_os_version.nasl");
- script_mandatory_keys("cisco_nx_os/version","cisco_nx_os/model","cisco_nx_os/device");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57841");
+  script_xref(name:"URL", value:"http://www.cisco.com/");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-10-10 12:14:44 +0200 (Thu, 10 Oct 2013)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_nx_os_version.nasl");
+  script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
+
+  script_tag(name:"impact", value:"Successfully exploiting this issue allows remote attackers to cause
+denial-of-service conditions.");
+  script_tag(name:"vuldetect", value:"Check the version from SNMP sysdesc");
+  script_tag(name:"insight", value:"This issue is being tracked by Cisco Bug ID CSCud15673.");
+  script_tag(name:"solution", value:"Ask the Vendor for an update.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Cisco Nexus 7000 Series switches running on NX-OS are prone to a
+remote denial-of-service vulnerability.");
+  script_tag(name:"affected", value:"Cisco Nexus 7000 Series running on NX-OS.");
 
  exit(0);
 }
@@ -156,7 +144,7 @@ affected = make_list(
 
 foreach affected_nx_ver (affected) {
   if(nx_ver == affected_nx_ver) {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

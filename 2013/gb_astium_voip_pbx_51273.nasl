@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_astium_voip_pbx_51273.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_astium_voip_pbx_51273.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Astium VoIP PBX SQL Injection Vulnerability
 #
@@ -27,25 +27,26 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103631");
- script_version ("$Revision: 9984 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_oid("1.3.6.1.4.1.25623.1.0.103631");
+  script_version("$Revision: 11096 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
- script_name("Astium VoIP PBX SQL Injection Vulnerability");
+  script_name("Astium VoIP PBX SQL Injection Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/23831/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/23831/");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
- script_tag(name:"creation_date", value:"2013-01-02 15:53:02 +0100 (Wed, 02 Jan 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : "Astium VoIP PBX is prone to an SQL-injection vulnerability because the
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-01-02 15:53:02 +0100 (Wed, 02 Jan 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"Astium VoIP PBX is prone to an SQL-injection vulnerability because the
 application fails to properly sanitize user-supplied input before
 using it in an SQL query.
 
@@ -55,7 +56,7 @@ underlying database.
 
 Astium VoIP PBX <= v2.1 build 25399 is vulnerable; other versions may also be affected.");
 
- script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
  exit(0);
 }

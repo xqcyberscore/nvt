@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_laserjet_pro_61565.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_hp_laserjet_pro_61565.nasl 11096 2018-08-23 12:49:10Z mmartin $
 #
 # Multiple HP LaserJet Pro Printers  Unspecified Information Disclosure Vulnerability
 #
@@ -27,38 +27,38 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103757");
- script_bugtraq_id(61565);
- script_cve_id("CVE-2013-4807");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:N");
- script_version ("$Revision: 9984 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103757");
+  script_bugtraq_id(61565);
+  script_cve_id("CVE-2013-4807");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:N");
+  script_version("$Revision: 11096 $");
 
- script_name("Multiple HP LaserJet Pro Printers  Unspecified Information Disclosure Vulnerability");
+  script_name("Multiple HP LaserJet Pro Printers  Unspecified Information Disclosure Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61565");
- script_xref(name:"URL", value:"http://www.hp.com/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61565");
+  script_xref(name:"URL", value:"http://www.hp.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
- script_tag(name:"creation_date", value:"2013-08-12 16:59:44 +0200 (Mon, 12 Aug 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-08-12 16:59:44 +0200 (Mon, 12 Aug 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "impact" , value : "The vulnerability could be exploited remotely to gain unauthorized access to data.
+  script_tag(name:"impact", value:"The vulnerability could be exploited remotely to gain unauthorized access to data.
 Impact Level: Application");
- script_tag(name : "vuldetect" , value : "Request /dev/save_restore.xml and read the response.");
- script_tag(name : "insight" , value : "The hidden URL '/dev/save_restore.xml' contains a hex representation
+  script_tag(name:"vuldetect", value:"Request /dev/save_restore.xml and read the response.");
+  script_tag(name:"insight", value:"The hidden URL '/dev/save_restore.xml' contains a hex representation
 of the admin password in plaintext and no authentication is needed to access this
 site.");
- script_tag(name : "solution" , value : "Updates are available.");
- script_tag(name : "summary" , value : "Multiple HP LaserJet Pro Printers are prone to an information-disclosure
+  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"summary", value:"Multiple HP LaserJet Pro Printers are prone to an information-disclosure
 vulnerability.");
- script_tag(name : "affected" , value : "HP LaserJet Pro P1102w
+  script_tag(name:"affected", value:"HP LaserJet Pro P1102w
 
 HP LaserJet Pro P1606dn
 
@@ -76,7 +76,7 @@ HP LaserJet Pro M1218nfs MFP
 
 HP LaserJet Pro CP1025nw");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 }
