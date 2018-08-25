@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_ajp_req_dos_vuln.nasl 4347 2016-10-25 13:52:16Z cfi $
+# $Id: gb_apache_tomcat_ajp_req_dos_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Apache Tomcat AJP Request Remote Denial Of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805020");
-  script_version("$Revision: 4347 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-0095");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-25 15:52:16 +0200 (Tue, 25 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-11-28 20:01:16 +0530 (Fri, 28 Nov 2014)");
   script_name("Apache Tomcat AJP Request Remote Denial Of Service Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -50,8 +50,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running Apache Tomcat and is
   prone to remote denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an error in
   java/org/apache/coyote/ajp/AbstractAjpProcessor.java");

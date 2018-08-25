@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_59452.nasl 9587 2018-04-24 12:50:26Z cfischer $
+# $Id: gb_cisco_nx_os_59452.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Multiple Cisco Products Multiple Remote Buffer Overflow Vulnerabilities
 #
@@ -24,62 +24,49 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103800";
 CPE = "cpe:/o:cisco:nx-os";
-
-tag_insight = "There are multiple buffer overflows in:
-the Cisco Discovery Protocol (CDP) implementation and 
-the SNMP and License Manager implementations";
-
-tag_impact = "An attacker can exploit these issues to execute arbitrary code with
-the elevated privileges. Failed exploit attempts will result in a denial-of-
-service condition.";
-
-tag_affected = "These issues being tracked by Cisco Bug IDs CSCtu10630, CSCtu10551,
-CSCtu10550, CSCtw56581, CSCtu10548, CSCtu10544, and CSCuf61275.";
-
-tag_summary = "Multiple Cisco NX-OS-Based products are prone to multiple remote buffer-
-overflow vulnerabilities because they fail to perform adequate boundary-
-checks on user-supplied data.";
-
-tag_solution = "Updates are available. Please see the references or vendor advisory
-for more information.";
-
-tag_vuldetect = "Check the version from SNMP sysdesc";
 
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_bugtraq_id(59452,59454,59456);
- script_cve_id("CVE-2013-1178","CVE-2013-1179","CVE-2013-1180");
- script_tag(name:"cvss_base", value:"9.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 9587 $");
- script_name("Multiple Cisco Products  Multiple Remote Buffer Overflow Vulnerabilities");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59452");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59454");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59456");
- script_xref(name:"URL", value:"http://cxsecurity.com/cveshow/CVE-2013-1178");
- script_xref(name:"URL", value:"http://cxsecurity.com/cveshow/CVE-2013-1179");
- script_xref(name:"URL", value:"http://cxsecurity.com/cveshow/CVE-2013-1180");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20130424-nxosmulti");
- 
- script_tag(name:"last_modification", value:"$Date: 2018-04-24 14:50:26 +0200 (Tue, 24 Apr 2018) $");
- script_tag(name:"creation_date", value:"2013-10-09 17:02:49 +0200 (Wed, 09 Oct 2013)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_nx_os_version.nasl");
- script_mandatory_keys("cisco_nx_os/version","cisco_nx_os/model","cisco_nx_os/device");
+  script_oid("1.3.6.1.4.1.25623.1.0.103800");
+  script_bugtraq_id(59452, 59454, 59456);
+  script_cve_id("CVE-2013-1178", "CVE-2013-1179", "CVE-2013-1180");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11103 $");
+  script_name("Multiple Cisco Products  Multiple Remote Buffer Overflow Vulnerabilities");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59452");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59454");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59456");
+  script_xref(name:"URL", value:"http://cxsecurity.com/cveshow/CVE-2013-1178");
+  script_xref(name:"URL", value:"http://cxsecurity.com/cveshow/CVE-2013-1179");
+  script_xref(name:"URL", value:"http://cxsecurity.com/cveshow/CVE-2013-1180");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20130424-nxosmulti");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-10-09 17:02:49 +0200 (Wed, 09 Oct 2013)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_nx_os_version.nasl");
+  script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
+
+  script_tag(name:"impact", value:"An attacker can exploit these issues to execute arbitrary code with
+the elevated privileges. Failed exploit attempts will result in a denial-of-
+service condition.");
+  script_tag(name:"vuldetect", value:"Check the version from SNMP sysdesc");
+  script_tag(name:"insight", value:"There are multiple buffer overflows in:
+the Cisco Discovery Protocol (CDP) implementation and
+the SNMP and License Manager implementations");
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory
+for more information.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Multiple Cisco NX-OS-Based products are prone to multiple remote buffer-
+overflow vulnerabilities because they fail to perform adequate boundary-
+checks on user-supplied data.");
+  script_tag(name:"affected", value:"These issues being tracked by Cisco Bug IDs CSCtu10630, CSCtu10551,
+CSCtu10550, CSCtw56581, CSCtu10548, CSCtu10544, and CSCuf61275.");
 
  exit(0);
 }
@@ -169,10 +156,10 @@ if(!nx_ver = get_kb_item("cisco_nx_os/version"))exit(0);
 foreach affected_nx_ver (affected) {
 
   if(nx_ver == affected_nx_ver) {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
-  }  
+  }
 
-}  
+}
 
 exit(99);

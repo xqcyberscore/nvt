@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ecava_integraxor_info_disc_vuln.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_ecava_integraxor_info_disc_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Ecava IntegraXor Account Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ecava:integraxor";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804299");
-  script_version("$Revision: 6750 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-0786");
   script_bugtraq_id(66554);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-05-19 17:47:38 +0530 (Mon, 19 May 2014)");
   script_name("Ecava IntegraXor Account Information Disclosure Vulnerability");
 
@@ -47,8 +47,7 @@ if (description)
 
   script_tag(name:"summary", value:"This host is running Ecava IntegraXor and is prone to information
   disclosure vulnerability.");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of detect NVT and check the version
-  is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaw is due to an error allowing users to perform 'SELECT' queries on the
   database.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain knowledge of potentially
@@ -73,17 +72,14 @@ if (description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Get Application HTTP Port
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 
-## Get application version
 if( ! ver = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check ecava IntegraXor version
 if( version_is_less( version:ver, test_version:"4.1.4393" ) ) {
   report = report_fixed_ver( installed_version:ver, fixed_version:"4.1.4393" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_4684.nasl 7140 2017-09-15 09:41:22Z cfischer $
+# $Id: gb_junos_cve_2013_4684.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Junos PIM Handling DoS Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103960");
-  script_version ("$Revision: 7140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 11103 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-06 11:10:40 +0700 (Fri, 06 Dec 2013)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -48,30 +48,30 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version");
 
-  script_tag(name : "summary" , value : "Certain PIM packets subject to NAT may cause the Flow Daemon to
+  script_tag(name:"summary", value:"Certain PIM packets subject to NAT may cause the Flow Daemon to
 crash which can cause a DoS contition.");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "On SRX Series devices where Protocol-Independent Multicast (PIM)
+  script_tag(name:"insight", value:"On SRX Series devices where Protocol-Independent Multicast (PIM)
 is enabled, certain PIM packets subject to Network Address Translation (NAT) may cause the Flow Daemon
 (flowd) to crash. This issue only occurs in a NAT environment and cannot be triggered by PIM packets
 sent directly to the SRX.");
 
-  script_tag(name : "impact" , value : "A remote attacker can crash the Flow Daemon and by doing this
+  script_tag(name:"impact", value:"A remote attacker can crash the Flow Daemon and by doing this
 repeatedly causing a denial of service condition.");
 
-  script_tag(name : "affected" , value : "Junos OS 10.4, 11.4, 12.1 and 12.1X44.");
+  script_tag(name:"affected", value:"Junos OS 10.4, 11.4, 12.1 and 12.1X44.");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10573");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61127");
   script_xref(name:"URL", value:"http://secunia.com/advisories/54157");
- 
+
   exit(0);
 }
 
@@ -97,7 +97,7 @@ if (revcomp(a:build2check, b:"20130620") >= 0) {
 if (revcomp(a:version, b:"10.4R15") < 0) {
   security_message(port:0, data:desc);
   exit(0);
-} 
+}
 
 if (version =~ "10.4S") {
   if (revcomp(a:version, b:"10.4S14") < 0) {
@@ -122,6 +122,6 @@ if (version =~ "^12") {
     security_message(port:0, data:desc);
     exit(0);
   }
-} 
+}
 
 exit(99);

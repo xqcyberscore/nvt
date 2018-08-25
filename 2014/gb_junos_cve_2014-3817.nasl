@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-3817.nasl 6759 2017-07-19 09:56:33Z teissa $
+# $Id: gb_junos_cve_2014-3817.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Junos NAT Protocol Translation Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105916");
-  script_version ("$Revision: 6759 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-07-17 14:24:53 +0200 (Thu, 17 Jul 2014)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -50,22 +50,22 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version", "Junos/model");
 
-  script_tag(name : "summary" , value : "DoS in NAT Protocol Translation");
+  script_tag(name:"summary", value:"DoS in NAT Protocol Translation");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "On SRX Series devices, when NAT protocol translation from IPv4 to
+  script_tag(name:"insight", value:"On SRX Series devices, when NAT protocol translation from IPv4 to
 IPv6 is enabled, a certain crafted packet may cause the flowd process to hang or crash.");
 
-  script_tag(name : "impact" , value : "A hang or repeated crash of the flowd process constitutes an extended
+  script_tag(name:"impact", value:"A hang or repeated crash of the flowd process constitutes an extended
 denial of service condition for SRX Series devices.");
 
-  script_tag(name : "affected" , value : "Junos OS 11.4, 12.1X44, 12.1X45 or 12.1X46.");
+  script_tag(name:"affected", value:"Junos OS 11.4, 12.1X44, 12.1X45 or 12.1X46.");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper. As a
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. As a
 workaround disable NAT protocol translation if it is not required.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10635");

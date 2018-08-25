@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_WNDAP350_48085.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_netgear_WNDAP350_48085.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # NetGear WNDAP350 Wireless Access Point Multiple Information Disclosure Vulnerabilities
 #
@@ -27,29 +27,29 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103702");
- script_bugtraq_id(48085);
- script_version ("$Revision: 9984 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.103702");
+  script_bugtraq_id(48085);
+  script_version("$Revision: 11103 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
- script_name("NetGear WNDAP350 Wireless Access Point Multiple Information Disclosure Vulnerabilities");
+  script_name("NetGear WNDAP350 Wireless Access Point Multiple Information Disclosure Vulnerabilities");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/48085");
- script_xref(name:"URL", value:"http://www.netgear.com/");
- script_xref(name:"URL", value:"https://revspace.nl/RevelationSpace/NewsItem11x05x30x0");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/48085");
+  script_xref(name:"URL", value:"http://www.netgear.com/");
+  script_xref(name:"URL", value:"https://revspace.nl/RevelationSpace/NewsItem11x05x30x0");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
- script_tag(name:"creation_date", value:"2013-04-22 13:20:27 +0200 (Mon, 22 Apr 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-04-22 13:20:27 +0200 (Mon, 22 Apr 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "summary" , value : "NetGear WNDAP350 wireless access point is prone to multiple remote information-
+  script_tag(name:"summary", value:"NetGear WNDAP350 wireless access point is prone to multiple remote information-
 disclosure issues because it fails to restrict access to sensitive
 information.
 
@@ -58,8 +58,8 @@ information that can aid in launching further attacks.
 
 WNDAP350 with firmware 2.0.1 and 2.0.9 are vulnerable. Other firmware
 versions may also be affected.");
-
- script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution", value:"Ask the Vendor for an update.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 }

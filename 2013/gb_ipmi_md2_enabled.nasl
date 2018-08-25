@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_md2_enabled.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_ipmi_md2_enabled.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # IPMI MD2 Auth Type Support Enabled
 #
@@ -25,30 +25,26 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "IPMI MD2 auth type support is enabled on the remote host.";
-tag_solution = "Disable MD2 auth type support.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103839";  
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 6074 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
- script_tag(name:"creation_date", value:"2013-11-26 12:33:03 +0100 (Tue, 26 Nov 2013)");
- script_tag(name:"cvss_base", value:"5.1");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
- script_name("IPMI MD2 Auth Type Support Enabled");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("General");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_ipmi_detect.nasl");
- script_require_udp_ports("Services/udp/ipmi", 623);
- script_mandatory_keys("ipmi/md2_supported");
+  script_oid("1.3.6.1.4.1.25623.1.0.103839");
+  script_version("$Revision: 11103 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-11-26 12:33:03 +0100 (Tue, 26 Nov 2013)");
+  script_tag(name:"cvss_base", value:"5.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
+  script_name("IPMI MD2 Auth Type Support Enabled");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_ipmi_detect.nasl");
+  script_require_udp_ports("Services/udp/ipmi", 623);
+  script_mandatory_keys("ipmi/md2_supported");
 
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"solution", value:"Disable MD2 auth type support.");
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"summary", value:"IPMI MD2 auth type support is enabled on the remote host.");
 
  exit(0);
 }
@@ -61,7 +57,7 @@ if(!get_udp_port_state(port))exit(0);
 if(get_kb_item("ipmi/md2_supported")) {
   security_message(port:port, proto:"udp");
   exit(0);
-}   
+}
 
 exit(99);
 

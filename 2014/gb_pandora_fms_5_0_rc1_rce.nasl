@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pandora_fms_5_0_rc1_rce.nasl 10904 2018-08-10 14:24:40Z mmartin $
+# $Id: gb_pandora_fms_5_0_rc1_rce.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Pandora FMS Remote Command Execution Vulnerability
 #
@@ -29,38 +29,38 @@ CPE = "cpe:/a:artica:pandora_fms";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103897");
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 10904 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103897");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11108 $");
 
- script_name("Pandora FMS Remote Command Execution Vulnerability");
+  script_name("Pandora FMS Remote Command Execution Vulnerability");
 
- script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124983/Pandora-FMS-5.0RC1-Code-Execution.html");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124983/Pandora-FMS-5.0RC1-Code-Execution.html");
 
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2014-01-30 13:13:42 +0100 (Thu, 30 Jan 2014)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_pandora_fms_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("pandora_fms/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-01-30 13:13:42 +0100 (Thu, 30 Jan 2014)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_pandora_fms_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("pandora_fms/installed");
 
- script_tag(name:"impact", value:"Successful exploits will allow remote attackers to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploits will allow remote attackers to execute arbitrary
  commands within the context of the i'pandora' user.");
- script_tag(name:"vuldetect", value:"Try to execute a command on the remote Host by sending some special crafted HTTP requests.");
- script_tag(name:"insight", value : 'The Pandora 4.0.3 / 4.1 / 5.0 RC1 appliances are prone to security
+  script_tag(name:"vuldetect", value:"Try to execute a command on the remote Host by sending some special crafted HTTP requests.");
+  script_tag(name:"insight", value : 'The Pandora 4.0.3 / 4.1 / 5.0 RC1 appliances are prone to security
  vulnerabilities. The Anytermd daemon used for the SSH/Telnet gateway on TCP port
  8022/8023 is vulnerable to command injection in the "p" POST parameter, which allows
  any unauthenticated attacker to execute arbitrary commands with the rights of the
  "pandora" user.');
- script_tag(name:"solution", value:"Update to Pandora FMS 5.0 final");
- script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"summary", value:"Pandora FMS versions 5.0RC1 and below suffer from a code execution vulnerability.");
- script_tag(name:"affected", value:"Pandora FMS versions 5.0RC1 and below.");
+  script_tag(name:"solution", value:"Update to Pandora FMS 5.0 final");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Pandora FMS versions 5.0RC1 and below suffer from a code execution vulnerability.");
+  script_tag(name:"affected", value:"Pandora FMS versions 5.0RC1 and below.");
 
- script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"qod_type", value:"remote_app");
 
  exit(0);
 }

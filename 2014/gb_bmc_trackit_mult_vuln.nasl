@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bmc_trackit_mult_vuln.nasl 9369 2018-04-06 08:36:49Z cfischer $
+# $Id: gb_bmc_trackit_mult_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # BMC Track-It! Multiple Vulnerabilities
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-4872", "CVE-2014-4873", "CVE-2014-4874");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version ("$Revision: 9369 $");
+  script_version("$Revision: 11108 $");
 
   script_name("BMC Track-It! Multiple Vulnerabilities");
 
@@ -43,27 +43,27 @@ if (description)
 
   script_tag(name:"summary", value:"BMC Track-It! is prone to Multiple Vulnerabilities");
 
-  script_tag(name: "impact", value: "Successful exploitation will allow remote attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers
 to perform SQL injections, arbitrary file upload/download and code execution.");
 
-  script_tag(name: "insight", value: "BMC Track-It! exposes several dangerous remote .NET services
+  script_tag(name:"insight", value:"BMC Track-It! exposes several dangerous remote .NET services
 on port 9010 without authentication. .NET remoting allows a user to invoke methods remotely and
 retrieve their result (CVE-2014-4872).
 An authenticated user can engage in blind SQL Injection by entering comparison operators in the
 POST string for the /TrackItWeb/Grid/GetData page (CVE-2014-4873).
 A remote authenticated user can download arbitrary files on the /TrackItWeb/Attachment page (CVE-2014-4874).");
 
-  script_tag(name: "vuldetect", value: "Check the version of BMC Track-It!.");
+  script_tag(name:"vuldetect", value:"Check the version of BMC Track-It!.");
 
-  script_tag(name: "solution", value: "Hotfixes are available for CVE-2014-4873 and CVE-2014-4874. For
+  script_tag(name:"solution", value:"Hotfixes are available for CVE-2014-4873 and CVE-2014-4874. For
 CVE-2014-4872 there is currently no hotfix available. As a workaround block all traffic from untrusted
 networks to TCP/UDP ports 9010 to 9020.");
 
-  script_tag(name: "affected", value:"BMC Track-It! version 11.3.0.355 and below.");
+  script_tag(name:"affected", value:"BMC Track-It! version 11.3.0.355 and below.");
 
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:36:49 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-11-20 11:15:27 +0700 (Thu, 20 Nov 2014)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");

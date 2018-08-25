@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_ssjs_remote_code_execution.nasl 10904 2018-08-10 14:24:40Z mmartin $
+# $Id: gb_mongodb_ssjs_remote_code_execution.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # MongoDB REST Interface Remote Code Execution Vulnerability
 #
@@ -28,37 +28,37 @@ CPE = "cpe:/a:mongodb:mongodb";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103870");
- script_version("$Revision: 10904 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_oid("1.3.6.1.4.1.25623.1.0.103870");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
- script_name("MongoDB REST Interface Remote Code Execution Vulnerability");
+  script_name("MongoDB REST Interface Remote Code Execution Vulnerability");
 
 
- script_xref(name:"URL", value:"http://en.securitylab.ru/lab/PT-2012-40");
- script_xref(name:"URL", value:"http://blog.ptsecurity.com/2012/11/attacking-mongodb.html");
+  script_xref(name:"URL", value:"http://en.securitylab.ru/lab/PT-2012-40");
+  script_xref(name:"URL", value:"http://blog.ptsecurity.com/2012/11/attacking-mongodb.html");
 
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2014-01-08 13:56:18 +0100 (Wed, 08 Jan 2014)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_mongodb_webadmin_detect.nasl");
- script_require_ports("Services/www", 28017);
- script_mandatory_keys("mongodb/webadmin/port");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-01-08 13:56:18 +0100 (Wed, 08 Jan 2014)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_mongodb_webadmin_detect.nasl");
+  script_require_ports("Services/www", 28017);
+  script_mandatory_keys("mongodb/webadmin/port");
 
- script_tag(name:"impact", value:"An attacker can exploit this vulnerability to execute arbitrary code
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to execute arbitrary code
 within the context of the affected application.");
- script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response.");
- script_tag(name:"insight", value:"If an attacker manages to call the REST interface that is running on port 28017
+  script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response.");
+  script_tag(name:"insight", value:"If an attacker manages to call the REST interface that is running on port 28017
 by default, the attacker could execute SSJS code.");
- script_tag(name:"solution", value:"Update your software up to the latest version or disable the REST interface.");
- script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"summary", value:"MongoDB is prone to a remote code execution vulnerability because it
+  script_tag(name:"solution", value:"Update your software up to the latest version or disable the REST interface.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"MongoDB is prone to a remote code execution vulnerability because it
 fails to properly sanitize user-supplied input.");
- script_tag(name:"affected", value:"MongoDB 2.x is vulnerable.");
+  script_tag(name:"affected", value:"MongoDB 2.x is vulnerable.");
 
  exit(0);
 }
@@ -66,7 +66,7 @@ fails to properly sanitize user-supplied input.");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 
 port = get_kb_item("mongodb/webadmin/port");
 if ( ! port ) port = 28017;

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-081_macosx.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_ms14-081_macosx.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities-3017301 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805029");
-  script_version("$Revision: 6750 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-6356", "CVE-2014-6357");
   script_bugtraq_id(71469, 71470);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-12-10 13:24:58 +0530 (Wed, 10 Dec 2014)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerabilities-3017301 (Mac OS X)");
 
@@ -61,9 +61,9 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/61149");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3018888");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-081");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/61149");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/3018888");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS14-081");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
@@ -75,20 +75,14 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-offVer = "";
-
-## Get the version from KB
 offVer = get_kb_item("MS/Office/MacOSX/Ver");
 
-## check the version from KB
-if(!offVer || !(offVer =~ "^(14)")){
+if(!offVer || !(offVer =~ "^14")){
   exit(0);
 }
 
-## Check for Office Version < 2011 (14.4.7 )
 if(version_in_range(version:offVer, test_version:"14.0", test_version2:"14.4.6"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

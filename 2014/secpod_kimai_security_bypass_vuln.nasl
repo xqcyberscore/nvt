@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_kimai_security_bypass_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
+# $Id: secpod_kimai_security_bypass_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Kimai 'db_restore.php'Security Bypass Vulnerability
 #
@@ -27,29 +27,29 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903512");
-  script_version("$Revision: 5790 $");
+  script_version("$Revision: 11108 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-02-25 11:03:19 +0530 (Tue, 25 Feb 2014)");
   script_name("Kimai 'db_restore.php'Security Bypass Vulnerability");
 
-  script_tag(name : "summary" , value : "The host is installed with kimai and is prone to security bypass
+  script_tag(name:"summary", value:"The host is installed with kimai and is prone to security bypass
   vulnerability");
-  script_tag(name : "vuldetect" , value : "Send a crafted exploit string via HTTP POST request and check whether it
+  script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP POST request and check whether it
   is possible to bypass security restrictions.");
-  script_tag(name : "insight" , value : "The flaw is due to an improper restricting access to 'db_restore.php' script");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to conduct certain backup
+  script_tag(name:"insight", value:"The flaw is due to an improper restricting access to 'db_restore.php' script");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct certain backup
   and restore operations.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Kimai version 0.9.2.1306 and prior.");
-  script_tag(name : "solution" , value : "Upgrade to Kimai version 0.9.3 or latest. For updates refer to
+  script_tag(name:"affected", value:"Kimai version 0.9.2.1306 and prior.");
+  script_tag(name:"solution", value:"Upgrade to Kimai version 0.9.3 or latest. For updates refer to
   http://www.kimai.org/");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/53390");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/84389");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/30010");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/53390");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/84389");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/30010");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 SecPod");
@@ -64,12 +64,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-kimPort = "";
-sndReq = "";
-rcvRes = "";
-url = "";
 
 kimPort = get_http_port(default:80);
 
@@ -86,7 +80,6 @@ foreach dir (make_list_unique("/", "/kimai", cgi_dirs(port:kimPort)))
 
   rcvRes = http_get_cache(item:string(dir, "/index.php"), port:kimPort);
 
-  ## confirm the Kimai installation
   if('Kimai Login<' >< rcvRes && 'kimaiusername' >< rcvRes)
   {
     ## Backup Creation request
@@ -106,7 +99,6 @@ foreach dir (make_list_unique("/", "/kimai", cgi_dirs(port:kimPort)))
       ## Create a Backup deletion request
       postdata = "dates%5B%5D=" + backId[1] + "&submit=delete";
 
-      ## Try request and check the response to confirm vulnerability
       sndReq = string("POST ", dir, "/db_restore.php HTTP/1.1\r\n",
                       "Host: ", host, "\r\n",
                       "Content-Type: application/x-www-form-urlencoded\r\n",
@@ -115,7 +107,6 @@ foreach dir (make_list_unique("/", "/kimai", cgi_dirs(port:kimPort)))
 
       rcvRes = http_keepalive_send_recv(port:kimPort, data:sndReq);
 
-      ## confirm the exploit
       if(backId[1] >!< rcvRes && "create backup" >< rcvRes &&
         "!-- delete -->" >< rcvRes)
       {

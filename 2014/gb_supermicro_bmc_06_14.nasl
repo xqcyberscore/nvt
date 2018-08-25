@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_supermicro_bmc_06_14.nasl 9982 2018-05-28 12:00:03Z cfischer $
+# $Id: gb_supermicro_bmc_06_14.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Supermicro IPMI/BMC Plaintext Password Disclosure
 #
@@ -27,42 +27,42 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105049");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 9982 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105049");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11108 $");
 
- script_name("Supermicro IPMI/BMC Plaintext Password Disclosure");
+  script_name("Supermicro IPMI/BMC Plaintext Password Disclosure");
 
- script_xref(name:"URL", value:"http://blog.cari.net/carisirt-yet-another-bmc-vulnerability-and-some-added-extras/");
+  script_xref(name:"URL", value:"http://blog.cari.net/carisirt-yet-another-bmc-vulnerability-and-some-added-extras/");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
- script_tag(name:"creation_date", value:"2014-06-20 18:08:51 +0200 (Fri, 20 Jun 2014)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 49152);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-06-20 18:08:51 +0200 (Fri, 20 Jun 2014)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 49152);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "impact" , value : "Successful exploitation will allow attackers to obtain sensitive information
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to obtain sensitive information
 that may aid in further attacks");
- script_tag(name : "vuldetect" , value : "Send a HTTP GET request and check the response.");
- script_tag(name : "insight" , value : "BMCs in Supermicro motherboards contain a binary file that stores
+  script_tag(name:"vuldetect", value:"Send a HTTP GET request and check the response.");
+  script_tag(name:"insight", value:"BMCs in Supermicro motherboards contain a binary file that stores
 remote login passwords in clear text. This file could be retrieved by requesting
 /PSBlock on port 49152");
- script_tag(name : "solution" , value : "Ask the vendor for an update.");
- script_tag(name : "summary" , value : "Supermicro IPMI/BMC Plaintext Password Disclosure");
- script_tag(name : "affected" , value : "Motherboards manufactured by Supermicro");
+  script_tag(name:"solution", value:"Ask the vendor for an update.");
+  script_tag(name:"summary", value:"Supermicro IPMI/BMC Plaintext Password Disclosure");
+  script_tag(name:"affected", value:"Motherboards manufactured by Supermicro");
 
- script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("dump.inc");
 
 function get_pass( data )

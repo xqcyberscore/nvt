@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tplink_tdw8951nd_xss_n_csrf_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_tplink_tdw8951nd_xss_n_csrf_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # TP-Link TD-W8951ND XSS and CSRF Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803752");
-  script_version("$Revision: 6698 $");
+  script_version("$Revision: 11103 $");
   script_bugtraq_id(62103);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-09-03 13:14:17 +0530 (Tue, 03 Sep 2013)");
   script_name("TP-Link TD-W8951ND XSS and CSRF Vulnerabilities");
 
@@ -39,10 +39,8 @@ if(description)
   and cross site request forgery vulnerabilities.");
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP request and check whether it is able to read
   the cookie or not.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"Firmware update is available.");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"Multiple flaws are due to,
    - Input passed to the 'Referer' header in HTTP request is not properly
    sanitised before being returned to the user.
@@ -57,8 +55,6 @@ if(description)
   code in the browser of an unsuspecting user in the context of the affected site.
 
   Impact Level: Application");
-
-  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/123016");
   script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/tp-link-td-w8951nd-cross-site-request-forgery-cross-site-scripting");
@@ -83,10 +79,8 @@ req = "";
 res = "";
 banner = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Confirm the device from banner
 banner = get_http_banner(port: http_port);
 if(banner && 'WWW-Authenticate: Basic realm="TD-W8951ND"' >!< banner){
   exit(0);
@@ -94,7 +88,6 @@ if(banner && 'WWW-Authenticate: Basic realm="TD-W8951ND"' >!< banner){
 
 host = http_host_name(port:http_port);
 
-## construct the attack request
 req = string("GET /doesnotexists HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
              'Referer: http://pwned"><script>alert(document.cookie)</script>', '\r\n',
@@ -102,7 +95,6 @@ req = string("GET /doesnotexists HTTP/1.1\r\n",
 
 res = http_keepalive_send_recv(port:http_port,data:req);
 
-## Confirm the exploit
 if(res =~ "HTTP/1\.. 200" && "RomPager server" >< res &&
    "><script>alert(document.cookie)</script>" >< res)
 {

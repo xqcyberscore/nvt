@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln01_nov14_macosx.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: gb_wireshark_mult_dos_vuln01_nov14_macosx.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Wireshark Multiple Denial-of-Service Vulnerability-01 Nov14 (Mac OS X)
 #
@@ -29,44 +29,43 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804896");
-  script_version("$Revision: 6692 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-8714", "CVE-2014-8713", "CVE-2014-8712", "CVE-2014-8711");
   script_bugtraq_id(71072, 71073, 71071, 71070);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-11-28 12:00:30 +0530 (Fri, 28 Nov 2014)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerability-01 Nov14 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Wireshark
+  script_tag(name:"summary", value:"This host is installed with Wireshark
   and is prone to multiple denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
   - An error within the AMQP dissector.
   - Two errors within the NCP dissector.
   - An error within the TN5250 dissector.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to conduct denial of service attack.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value: "Wireshark version 1.10.x
+  script_tag(name:"affected", value:"Wireshark version 1.10.x
   before 1.10.11 and 1.12.x before 1.12.2 on Mac OS X");
 
-  script_tag(name: "solution" , value: "Upgrade to version 1.12.2, 1.10.11 or later,
+  script_tag(name:"solution", value:"Upgrade to version 1.12.2, 1.10.11 or later,
   For updates refer to https://www.wireshark.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/62367");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2014-21.html");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2014-22.html");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2014-23.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/62367");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2014-21.html");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2014-22.html");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2014-23.html");
 
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
@@ -80,18 +79,13 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-version = "";
-
-## Get the version
 if(!version = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check the vulnerable version is 1.10.x before 1.10.11 and 1.12.x before 1.12.2
 if(version_in_range(version:version, test_version:"1.10.0", test_version2:"1.10.10") ||
    version_in_range(version:version, test_version:"1.12.0", test_version2:"1.12.1"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

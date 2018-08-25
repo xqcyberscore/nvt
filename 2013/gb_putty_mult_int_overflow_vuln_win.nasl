@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_mult_int_overflow_vuln_win.nasl 10142 2018-06-08 13:18:36Z tpassfeld $
+# $Id: gb_putty_mult_int_overflow_vuln_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # PuTTY Multiple Integer Overflow Vulnerabilities (Windows)
 #
@@ -30,21 +30,21 @@ CPE = "cpe:/a:putty:putty";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803871");
-  script_version("$Revision: 10142 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2013-4206", "CVE-2013-4207", "CVE-2013-4208", "CVE-2013-4852");
   script_bugtraq_id(61645, 61649, 61644, 61599);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:18:36 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 11:16:36 +0530 (Wed, 21 Aug 2013)");
   script_name("PuTTY Multiple Integer Overflow Vulnerabilities (Windows)");
 
-  script_tag(name : "summary" , value : "The host is installed with PuTTY and is prone to multiple integer overflow
+  script_tag(name:"summary", value:"The host is installed with PuTTY and is prone to multiple integer overflow
 vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
-  script_tag(name : "solution" , value : "Upgrade to version 0.63 or later,
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"solution", value:"Upgrade to version 0.63 or later,
 For updates refer to http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html");
-  script_tag(name : "insight" , value : "Multiple Integer overflow errors due to,
+  script_tag(name:"insight", value:"Multiple Integer overflow errors due to,
 - Improper processing of public-key signatures.
 - Improper validation of DSA signatures in the 'modmul()' function
   (putty/sshbn.c)
@@ -52,16 +52,16 @@ For updates refer to http://www.chiark.greenend.org.uk/~sgtatham/putty/download.
   needed.
 - Input is not properly validated when handling negative SSH handshake
   message lengths in the getstring() function in sshrsa.c and sshdss.c.");
-  script_tag(name : "affected" , value : "PuTTY version before 0.63 on Windows");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to cause heap-based buffer overflows,
+  script_tag(name:"affected", value:"PuTTY version before 0.63 on Windows");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause heap-based buffer overflows,
 		  resulting in a denial of service or potentially allowing the execution of arbitrary code.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/54354");
-  script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2013/q3/289");
-  script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2013/q3/291");
-  script_xref(name : "URL" , value : "http://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/vuln-modmul.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/54354");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2013/q3/289");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2013/q3/291");
+  script_xref(name:"URL", value:"http://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/vuln-modmul.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

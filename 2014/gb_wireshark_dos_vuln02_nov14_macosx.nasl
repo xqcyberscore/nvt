@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln02_nov14_macosx.nasl 6759 2017-07-19 09:56:33Z teissa $
+# $Id: gb_wireshark_dos_vuln02_nov14_macosx.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Wireshark Denial-of-Service Vulnerability-02 Nov14 (Mac OS X)
 #
@@ -29,40 +29,39 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804898");
-  script_version("$Revision: 6759 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-8710");
   script_bugtraq_id(71069);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-11-28 12:12:22 +0530 (Fri, 28 Nov 2014)");
   script_name("Wireshark Denial-of-Service Vulnerability-02 Nov14 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Wireshark
+  script_tag(name:"summary", value:"This host is installed with Wireshark
   and is prone to denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "Flaw exists due to a buffer overflow error
+  script_tag(name:"insight", value:"Flaw exists due to a buffer overflow error
   within the SigComp dissector.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to conduct denial of service attack.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value: "Wireshark version 1.10.x before 1.10.11
+  script_tag(name:"affected", value:"Wireshark version 1.10.x before 1.10.11
   on Mac OS X");
 
-  script_tag(name: "solution" , value: "Upgrade to version 1.10.11 or later,
+  script_tag(name:"solution", value:"Upgrade to version 1.10.11 or later,
   For updates refer to https://www.wireshark.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/62367");
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2014-20.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/62367");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2014-20.html");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -75,17 +74,12 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-version = "";
-
-## Get the version
 if(!version = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check the vulnerable version is 1.10.x before 1.10.11
 if(version_in_range(version:version, test_version:"1.10.0", test_version2:"1.10.10"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

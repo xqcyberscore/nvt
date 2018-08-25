@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-0614.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: gb_junos_cve_2014-0614.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Junos Kernel Panic Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105909");
-  script_version ("$Revision: 6724 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-05-05 10:49:18 +0700 (Mon, 05 May 2014)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -50,22 +50,22 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version");
 
-  script_tag(name : "summary" , value : "Denial of Service Vulnerability through crafted IGMP packets.");
+  script_tag(name:"summary", value:"Denial of Service Vulnerability through crafted IGMP packets.");
 
-  script_tag(name : "insight" , value : "Reception of a very high rate of crafted IGMP packets may cause
+  script_tag(name:"insight", value:"Reception of a very high rate of crafted IGMP packets may cause
 the Junos kernel to crash. The contents of the valid IGMP packets must be specifically crafted to trigger
 the crash, while maintaining a transmit rate exceeding approximately 1000 packets per second. PIM must
 also be enabled to trigger this crash.");
 
-  script_tag(name : "impact" , value : "Remote attackers can cause the kernel to crash resulting in a
+  script_tag(name:"impact", value:"Remote attackers can cause the kernel to crash resulting in a
 Denial of Service condition.");
 
-  script_tag(name : "affected" , value : "Junos OS 13.2 and 13.3.");
+  script_tag(name:"affected", value:"Junos OS 13.2 and 13.3.");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper. As
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. As
 a workaround disable PIM if not required or if fxp0 is unused, disable the external management interface.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10618");

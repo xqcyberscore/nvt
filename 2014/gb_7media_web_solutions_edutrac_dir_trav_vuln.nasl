@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_7media_web_solutions_edutrac_dir_trav_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
+# $Id: gb_7media_web_solutions_edutrac_dir_trav_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # 7Media Web Solutions EduTrac Directory Traversal Vulnerability
 #
@@ -27,31 +27,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804198");
-  script_version("$Revision: 5790 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2013-7097");
   script_bugtraq_id(64255);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-01-22 16:29:04 +0530 (Wed, 22 Jan 2014)");
   script_name("7Media Web Solutions EduTrac Directory Traversal Vulnerability");
 
-  script_tag(name : "summary" , value : "This host is installed with 7Media Web Solutions EduTrac is prone to
+  script_tag(name:"summary", value:"This host is installed with 7Media Web Solutions EduTrac is prone to
   directory traversal vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send a crafted exploit string via HTTP GET request and check whether it
+  script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP GET request and check whether it
   is able to read the system file or not.");
-  script_tag(name : "insight" , value : "A flaw exist due to insufficient filtration of 'showmask' HTTP GET parameter
+  script_tag(name:"insight", value:"A flaw exist due to insufficient filtration of 'showmask' HTTP GET parameter
   passed to 'overview.php' script.");
-  script_tag(name : "impact" , value : "Successful exploitation may allow an attacker to obtain sensitive information,
+  script_tag(name:"impact", value:"Successful exploitation may allow an attacker to obtain sensitive information,
   which can lead to launching further attacks.
 
   Impact Level: Application.");
-  script_tag(name : "affected" , value : "7Media Web Solutions eduTrac before version 1.1.2");
-  script_tag(name : "solution" , value : "Upgrade to 7Media Web Solutions eduTrac version 1.1.2 or later.
+  script_tag(name:"affected", value:"7Media Web Solutions eduTrac before version 1.1.2");
+  script_tag(name:"solution", value:"Upgrade to 7Media Web Solutions eduTrac version 1.1.2 or later.
   For updates refer http://www.7mediaws.org/products/edutrac/");
 
-  script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23190");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124653/eduTrac-1.1.1-Stable-Path-Traversal.html");
+  script_xref(name:"URL", value:"https://www.htbridge.com/advisory/HTB23190");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124653/eduTrac-1.1.1-Stable-Path-Traversal.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -68,12 +68,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-url = "";
-edu_port = "";
-sndReq = "";
-rcvRes = "";
-
 edu_port = get_http_port(default:80);
 
 if(!can_host_php(port:edu_port)){
@@ -87,14 +81,11 @@ foreach dir (make_list_unique("/", "/eduTrac", "/trac", cgi_dirs(port:edu_port))
 
   rcvRes = http_get_cache(item:string(dir, "/index.php"), port:edu_port);
 
-  ## confirm the Application
    if(rcvRes && rcvRes =~ "Powered by.*eduTrac")
    {
-     ## Construct directory traversal attack
      url = dir + "/installer/overview.php?step=writeconfig&showmask=" +
                  "../../eduTrac/Config/constants.php";
 
-     ## Confirm exploit worked properly or not
      if(http_vuln_check(port:edu_port, url:url, pattern:"DB_PASS', '",
        extra_check:make_list("DB_USER', '","DB_NAME', '")))
      {

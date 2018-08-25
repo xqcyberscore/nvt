@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_livezilla_php_obj_inj_vuln.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_livezilla_php_obj_inj_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # LiveZilla PHP Object Injection Vulnerability
 #
@@ -29,31 +29,31 @@ CPE = "cpe:/a:livezilla:livezilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802075");
-  script_version("$Revision: 6750 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2013-7034");
   script_bugtraq_id(64383);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-05-21 11:01:15 +0530 (Wed, 21 May 2014)");
   script_name("LiveZilla PHP Object Injection Vulnerability");
 
-  script_tag(name : "summary" , value : "This host is installed with LiveZilla and is prone to PHP object injection
+  script_tag(name:"summary", value:"This host is installed with LiveZilla and is prone to PHP object injection
   vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send a crafted HTTP POST request and try to execute serialized PHP object.");
-  script_tag(name : "insight" , value : "Flaw in the setCookieValue() function in the '_lib/functions.global.inc.php'
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP POST request and try to execute serialized PHP object.");
+  script_tag(name:"insight", value:"Flaw in the setCookieValue() function in the '_lib/functions.global.inc.php'
   script allow attacker to inject PHP objects.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to inject PHP objects
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to inject PHP objects
   via a user-controller cookie.
 
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "LiveZilla version before 5.1.2.1");
-  script_tag(name : "solution" , value : "Upgrade to version 5.1.2.1 or higher,
+  script_tag(name:"affected", value:"LiveZilla version before 5.1.2.1");
+  script_tag(name:"solution", value:"Upgrade to version 5.1.2.1 or higher,
   For updates refer to http://www.livezilla.net/downloads/en");
 
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/89796");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124445");
-  script_xref(name : "URL" , value : "http://forums.livezilla.net/index.php?/topic/163-livezilla-changelog/");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/89796");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124445");
+  script_xref(name:"URL", value:"http://forums.livezilla.net/index.php?/topic/163-livezilla-changelog/");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -73,34 +73,20 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-dir = "";
-host = "";
-lz_port = 0;
-lz_path = "";
-lz_req = "";
-lz_res = "";
-
-## Get Livezilla Port
 if(!lz_port = get_app_port(cpe:CPE)) exit(0);
 
-## Get Livezilla Location
 if(!dir = get_app_location(cpe:CPE, port:lz_port)) exit(0);
 
-## Get Host
 host = http_host_name(port:lz_port);
 
 if( dir == "/" ) dir = "";
 
-## Construct post data
 post_data = string("p_request=extern&p_action=mail");
 post_data_len = strlen(post_data);
 lz_path = dir + "/server.php";
 
-## Construct Referer
 referer = string("http://", host, dir, "/chat.php");
 
-## Construct and send malicious POST request
 lz_req = 'POST ' + lz_path + ' HTTP/1.1\r\n' +
          'Host: ' + host + '\r\n' +
          'Content-Type: application/x-www-form-urlencoded\r\n' +
@@ -110,7 +96,6 @@ lz_req = 'POST ' + lz_path + ' HTTP/1.1\r\n' +
          '\r\n' + post_data;
 lz_res = http_keepalive_send_recv(port:lz_port, data:lz_req, bodyonly:FALSE);
 
-## Confirm we got error message while trying to execute serialized PHP object
 if("Cannot use object of type __PHP_Incomplete_Class as array" >< lz_res &&
    "_lib/functions.global.inc.php" >< lz_res)
 {

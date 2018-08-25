@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_services_ms13-084.nasl 9323 2018-04-05 08:44:52Z cfischer $
+# $Id: secpod_ms_office_services_ms13-084.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Microsoft Office Services Remote Code Execution vulnerability (2885089)
 #
@@ -29,53 +29,42 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903328");
-  script_version("$Revision: 9323 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2013-3889", "CVE-2013-3895");
   script_bugtraq_id(62829, 62800);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:44:52 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-10-09 17:36:47 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft Office Services Remote Code Execution vulnerability (2885089)");
 
-  tag_summary = "This host is missing an important security update according to Microsoft
-  Bulletin MS13-084.";
-
-  tag_vuldetect = "Get the vulnerable file version and check appropriate patch is applied
-  or not.";
-
-  tag_insight = "Flaw is due to improper sanitation of user supplied input via a specially
-  crafted Excel file.";
-
-  tag_impact = "Successful exploitation will allow attackers to execute arbitrary code,
-  cause a DoS (Denial of Service), and compromise a vulnerable system.
-
-  Impact Level: System/Application";
-
-  tag_affected = "Excel Services on Microsoft SharePoint Server 2007/2010/2013,
-
-  Word Automation Services on Microsoft SharePoint Server 2010/2013.";
-
-  tag_solution = "Run Windows Update and update the listed hotfixes or download and
+  script_tag(name:"summary", value:"This host is missing an important security update according to Microsoft
+  Bulletin MS13-084.");
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
+  or not.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
 
-  http://technet.microsoft.com/en-us/security/bulletin/ms13-084";
+  http://technet.microsoft.com/en-us/security/bulletin/ms13-084");
+  script_tag(name:"insight", value:"Flaw is due to improper sanitation of user supplied input via a specially
+  crafted Excel file.");
+  script_tag(name:"affected", value:"Excel Services on Microsoft SharePoint Server 2007/2010/2013,
 
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+  Word Automation Services on Microsoft SharePoint Server 2010/2013.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
+  cause a DoS (Denial of Service), and compromise a vulnerable system.
+
+  Impact Level: System/Application");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/55131");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-084");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/55131");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms13-084");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_sharepoint_sever_n_foundation_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/SharePoint/Server/Ver");
   exit(0);
 }
@@ -100,7 +89,7 @@ if(shareVer =~ "^12\..*")
   {
     if(version_in_range(version:dllVer, test_version:"12.0", test_version2:"12.0.6683.5001"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -114,7 +103,7 @@ if(shareVer =~ "^14\..*")
   {
     if(version_in_range(version:dllVer, test_version:"14.0", test_version2:"14.0.7108.4999"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -125,7 +114,7 @@ if(shareVer =~ "^14\..*")
   {
     if(version_in_range(version:dllVer2, test_version:"14.0", test_version2:"14.0.6112.4999"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -139,7 +128,7 @@ if(shareVer =~ "^15\..*")
   {
     if(version_in_range(version:dllVer, test_version:"15.0", test_version2:"15.0.4535.1506"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -150,7 +139,7 @@ if(shareVer =~ "^15\..*")
   {
     if(version_in_range(version:dllVer2, test_version:"15.0", test_version2:"15.0.4514.999"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }

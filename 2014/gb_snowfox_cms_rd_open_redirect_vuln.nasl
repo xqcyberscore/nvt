@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snowfox_cms_rd_open_redirect_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
+# $Id: gb_snowfox_cms_rd_open_redirect_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Snowfox CMS 'rd' Parameter Open Redirect Vulnerability
 #
@@ -27,42 +27,42 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805208");
-  script_version("$Revision: 5790 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-9343");
   script_bugtraq_id(71174);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-12-11 18:21:19 +0530 (Thu, 11 Dec 2014)");
   script_name("Snowfox CMS 'rd' Parameter Open Redirect Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with Snowfox CMS
+  script_tag(name:"summary", value:"This host is installed with Snowfox CMS
   and is prone to open redirect vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted HTTP GET request and check
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check
   whether it redirects to the malicious websites.");
 
-  script_tag(name: "insight" , value:"The error exists as the application does
+  script_tag(name:"insight", value:"The error exists as the application does
   not validate the 'rd' parameter upon submission to the selectlanguage.class.php
   script.");
 
- script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to create a specially crafted URL, that if clicked, would redirect
   a victim from the intended legitimate web site to an arbitrary web site of the
   attacker's choosing.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Snowfox CMS version 1.0");
+  script_tag(name:"affected", value:"Snowfox CMS version 1.0");
 
-  script_tag(name: "solution" , value:"Upgrade to Snowfox CMS version 1.0.10 or
+  script_tag(name:"solution", value:"Upgrade to Snowfox CMS version 1.0.10 or
   later. For updates refer https://www.snowfoxcms.org/");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
-  script_xref(name : "URL" , value : "http://www.zeroscience.mk/codes/snowfox_url.txt");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/129162");
+  script_xref(name:"URL", value:"http://www.zeroscience.mk/codes/snowfox_url.txt");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/129162");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -77,11 +77,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-cmsPort = "";
-sndReq = "";
-rcvRes = "";
-
 cmsPort = get_http_port(default:80);
 
 if(!can_host_php(port:cmsPort)){
@@ -95,7 +90,6 @@ foreach dir (make_list_unique("/", "/snowfox", "/snowfoxcms", "/cms", cgi_dirs(p
 
   rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:cmsPort);
 
-  ##Confirm Application
   if(rcvRes && rcvRes =~ "powered by.*>Snowfox CMS<")
   {
     ##Vulnerable url
@@ -105,7 +99,6 @@ foreach dir (make_list_unique("/", "/snowfox", "/snowfoxcms", "/cms", cgi_dirs(p
     sndReq = http_get(item:url,  port:cmsPort);
     rcvRes = http_keepalive_send_recv(port:cmsPort, data:sndReq);
 
-    ## Confirm exploit worked by checking the response
     if(rcvRes && rcvRes =~ "HTTP/1.. 302" &&
        rcvRes =~ "(L|l)ocation: http://www.example.com")
     {

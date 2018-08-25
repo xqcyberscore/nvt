@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_websphere_application_server_68210.nasl 10904 2018-08-10 14:24:40Z mmartin $
+# $Id: gb_ibm_websphere_application_server_68210.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # IBM WebSphere Application Server Unspecified Information Disclosure Vulnerability
 #
@@ -29,40 +29,40 @@ CPE = 'cpe:/a:ibm:websphere_application_server';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105071");
- script_bugtraq_id(68210, 68211);
- script_cve_id("CVE-2014-0965", "CVE-2014-3022");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version("$Revision: 10904 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105071");
+  script_bugtraq_id(68210, 68211);
+  script_cve_id("CVE-2014-0965", "CVE-2014-3022");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11108 $");
 
- script_name("IBM WebSphere Application Server Unspecified Information Disclosure Vulnerability");
+  script_name("IBM WebSphere Application Server Unspecified Information Disclosure Vulnerability");
 
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/68210");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/68211");
- script_xref(name:"URL", value:"http://www.ibm.com");
- script_xref(name:"URL", value:"http://www-4.ibm.com/software/webservers/appserv/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/68210");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/68211");
+  script_xref(name:"URL", value:"http://www.ibm.com");
+  script_xref(name:"URL", value:"http://www-4.ibm.com/software/webservers/appserv/");
 
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2014-08-21 11:58:12 +0200 (Thu, 21 Aug 2014)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_ibm_websphere_detect.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-08-21 11:58:12 +0200 (Thu, 21 Aug 2014)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_ibm_websphere_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name:"impact", value:"Attackers can exploit this issue to obtain sensitive information that
+  script_tag(name:"impact", value:"Attackers can exploit this issue to obtain sensitive information that
 may lead to further attacks.");
- script_tag(name:"vuldetect", value:"Check the version");
- script_tag(name:"solution", value:"Updates are available.");
- script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"summary", value:"The IBM WebSphere Application Server is prone to an unspecified remote
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The IBM WebSphere Application Server is prone to an unspecified remote
 information-disclosure vulnerability because of improper handling of
 SOAP responses.");
- script_tag(name:"affected", value:"The following versions are vulnerable:
+  script_tag(name:"affected", value:"The following versions are vulnerable:
 IBM WebSphere Application Server 8.5.0.0 through 8.5.5.1
 IBM WebSphere Application Server 8.0.0.0 through 8.0.0.8
 IBM WebSphere Application Server 7.0.0.0 through 7.0.0.31");

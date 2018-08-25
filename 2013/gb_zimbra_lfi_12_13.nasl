@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zimbra_lfi_12_13.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_zimbra_lfi_12_13.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Zimbra Collaboration Suite Local File Include Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:zimbra:zimbra_collaboration_suite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103853");
-  script_version("$Revision: 6074 $");
-  script_cve_id("CVE-2013-7091"); 
+  script_version("$Revision: 11103 $");
+  script_cve_id("CVE-2013-7091");
   script_bugtraq_id(64149);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Zimbra Collaboration Suite Local File Include Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-11 13:52:09 +0100 (Wed, 11 Dec 2013)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -54,7 +54,7 @@ if(description)
   the application and the computer; other attacks are also possible");
   script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request which tries to read localconfig.xml");
   script_tag(name:"insight", value:"This script exploits a Local File Inclusion in
-  /res/I18nMsg,AjxMsg,ZMsg,ZmMsg,AjxKeys,ZmKeys,ZdMsg,Ajx%20TemplateMsg.js.zgz which allows to read any local file.");
+  /res/I18nMsg, AjxMsg, ZMsg, ZmMsg, AjxKeys, ZmKeys, ZdMsg, Ajx%20TemplateMsg.js.zgz which allows to read any local file.");
   script_tag(name:"solution", value:"Update to Zimbra Collaboration Suite 7.0.0 or above.");
   script_tag(name:"summary", value:"Zimbra Collaboration Suite is prone to a local file include vulnerability.");
   script_tag(name:"affected", value:"Versions 2009, 2010, 2011, 2012 and early 2013 versions are afected.");
@@ -68,7 +68,7 @@ if(description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 
 if( ! port = get_app_port( cpe:CPE, service:"www" ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );

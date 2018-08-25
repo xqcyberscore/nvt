@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_dropbear_ssh_22761.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: sw_dropbear_ssh_22761.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Dropbear SSH 'dbclient' man-in-the-middle Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:matt_johnston:dropbear_ssh_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105119");
-  script_version("$Revision: 6692 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-11-14 12:00:00 +0100 (Fri, 14 Nov 2014)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,15 +49,15 @@ if(description)
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("dropbear/installed");
 
-  script_tag(name : "summary" , value : "This host is installed with Dropbear SSH client and
+  script_tag(name:"summary", value:"This host is installed with Dropbear SSH client and
   is prone to a man-in-the-middle vulnerability.");
-  script_tag(name : "vuldetect" , value : "Check the version.");
-  script_tag(name : "insight" , value : "dbclient in Dropbear SSH client before 0.49 does
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"insight", value:"dbclient in Dropbear SSH client before 0.49 does
   not sufficiently warn the user when it detects a hostkey mismatch.");
-  script_tag(name : "impact" , value : "This flaw might allow remote attackers to conduct
+  script_tag(name:"impact", value:"This flaw might allow remote attackers to conduct
   man-in-the-middle attacks.");
-  script_tag(name : "affected" , value : "Versions prior to Dropbear SSH 0.49 are vulnerable.");
-  script_tag(name : "solution" , value : "Updates are available."); 
+  script_tag(name:"affected", value:"Versions prior to Dropbear SSH 0.49 are vulnerable.");
+  script_tag(name:"solution", value:"Updates are available.");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/22761");
   script_xref(name:"URL", value:"https://matt.ucc.asn.au/dropbear/dropbear.html");
@@ -87,6 +87,6 @@ if( version_is_less( version:ver[2], test_version:"49" ) ) {
            'Fixed version:     ' + "0.49" + '\n';
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

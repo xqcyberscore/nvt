@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_65674.nasl 7904 2017-11-24 12:29:45Z cfischer $
+# $Id: gb_openssh_65674.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # OpenSSH 'ssh-keysign.c' Local Information Disclosure Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2011-4327");
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 7904 $");
+  script_version("$Revision: 11108 $");
   script_name("OpenSSH 'ssh-keysign.c' Local Information Disclosure Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 13:29:45 +0100 (Fri, 24 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 12:29:38 +0200 (Wed, 09 Apr 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -49,28 +49,16 @@ if(description)
   script_xref(name:"URL", value:"http://www.openssh.com");
   script_xref(name:"URL", value:"http://www.openssh.com/txt/portable-keysign-rand-helper.adv");
 
-  tag_insight = "ssh-keysign.c in ssh-keysign in OpenSSH before 5.8p2 on
+  script_tag(name:"impact", value:"Local attackers can exploit this issue to obtain sensitive
+  information. Information obtained may lead to further attacks.");
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"insight", value:"ssh-keysign.c in ssh-keysign in OpenSSH before 5.8p2 on
   certain platforms executes ssh-rand-helper with unintended open file
   descriptors, which allows local users to obtain sensitive key information
-  via the ptrace system call.";
-
-  tag_impact = "Local attackers can exploit this issue to obtain sensitive
-  information. Information obtained may lead to further attacks.";
-
-  tag_affected = "Versions prior to OpenSSH 5.8p2 are vulnerable.";
-
-  tag_summary = "OpenSSH is prone to a local information-disclosure vulnerability.";
-
-  tag_solution = "Updates are available.";
-
-  tag_vuldetect = "Check the version.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
+  via the ptrace system call.");
+  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"summary", value:"OpenSSH is prone to a local information-disclosure vulnerability.");
+  script_tag(name:"affected", value:"Versions prior to OpenSSH 5.8p2 are vulnerable.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

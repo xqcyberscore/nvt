@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_desktopcentral_69494.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: gb_manageengine_desktopcentral_69494.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Multiple ManageEngine Products Arbitrary File Upload Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2014-5005", "CVE-2014-5006");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version ("$Revision: 6724 $");
+  script_version("$Revision: 11108 $");
   script_name("Multiple ManageEngine Products  Arbitrary File Upload Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-09 13:20:38 +0200 (Tue, 09 Sep 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -51,6 +51,7 @@ if(description)
   affected computer; this can result in arbitrary code execution within the context of the vulnerable application.");
   script_tag(name:"vuldetect", value:"Check if it is possible to upload a file.");
   script_tag(name:"solution", value:"Ask the vendor for an update");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"Multiple ManageEngine Products are prone to an arbitrary-file-upload
   vulnerability.");
   script_tag(name:"affected", value:"ManageEngine Desktop Central versions 7 through 9 build 90054

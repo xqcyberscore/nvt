@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_rce_11_14.nasl 10121 2018-06-07 12:44:05Z cfischer $
+# $Id: gb_mybb_rce_11_14.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # MyBB <= 1.8.2 Remote Code Execution
 #
@@ -32,9 +32,9 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105122");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 10121 $");
+  script_version("$Revision: 11108 $");
   script_name("MyBB <= 1.8.2 Remote Code Execution ");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 14:44:05 +0200 (Thu, 07 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-11-24 11:50:21 +0100 (Mon, 24 Nov 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -57,7 +57,7 @@ if(description)
 
   script_tag(name:"affected", value:"MyBB <= 1.8.2");
 
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
   exit(0);

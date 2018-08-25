@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_66355.nasl 7904 2017-11-24 12:29:45Z cfischer $
+# $Id: gb_openssh_66355.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # OpenSSH 'child_set_env()' Function Security Bypass Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2014-2532");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_version("$Revision: 7904 $");
+  script_version("$Revision: 11108 $");
   script_name("OpenSSH 'child_set_env()' Function Security Bypass Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 13:29:45 +0100 (Fri, 24 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 12:39:48 +0200 (Wed, 09 Apr 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -48,26 +48,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/66355");
   script_xref(name:"URL", value:"http://www.openssh.com");
 
-  tag_insight = "sshd in OpenSSH before 6.6 does not properly support wildcards on AcceptEnv
-  lines in sshd_config.";
-
-  tag_impact = "The security bypass allows remote attackers to bypass intended environment
-  restrictions by using a substring located before a wildcard character.";
-
-  tag_affected = "Versions prior to OpenSSH 6.6 are vulnerable. ";
-
-  tag_summary = "OpenSSH is prone to a security-bypass vulnerability. ";
-
-  tag_solution = "Updates are available.";
-
-  tag_vuldetect = "Check the version.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"impact", value:"The security bypass allows remote attackers to bypass intended environment
+  restrictions by using a substring located before a wildcard character.");
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"insight", value:"sshd in OpenSSH before 6.6 does not properly support wildcards on AcceptEnv
+  lines in sshd_config.");
+  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"summary", value:"OpenSSH is prone to a security-bypass vulnerability. ");
+  script_tag(name:"affected", value:"Versions prior to OpenSSH 6.6 are vulnerable. ");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln01_jan13_win.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_adobe_acrobat_mult_vuln01_jan13_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Adobe Acrobat Multiple Vulnerabilities -01 Jan 13 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803434");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2012-1530", "CVE-2013-0601", "CVE-2013-0602", "CVE-2013-0603",
                 "CVE-2013-0604", "CVE-2013-0605", "CVE-2013-0606", "CVE-2013-0607",
                 "CVE-2013-0608", "CVE-2013-0609", "CVE-2013-0610", "CVE-2013-0611",
@@ -42,41 +42,28 @@ if(description)
                     57294, 57275, 57276, 57270, 57295, 57277, 57296, 57285, 57297, 65275);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-12 19:05:12 +0530 (Tue, 12 Mar 2013)");
   script_name("Adobe Acrobat Multiple Vulnerabilities -01 Jan 13 (Windows)");
 
-  tag_summary = "This host is installed with Adobe Acrobat and is prone to multiple
-vulnerabilities.";
-
-  tag_vuldetect = "Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight = "For more details about the vulnerabilities refer the reference section.";
-
-  tag_impact = "Successful exploitation will allow attackers to bypass certain security
+  script_tag(name:"summary", value:"This host is installed with Adobe Acrobat and is prone to multiple
+vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"For more details about the vulnerabilities refer the reference section.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
 restrictions, execute arbitrary code in the context of the affected
 application or cause a denial of service.
 
-Impact Level: System/Application";
-
-  tag_affected = "Adobe Acrobat versions 9.x to 9.5.2, 10.x to 10.1.4 and 11.0.0 on Windows";
-
-  tag_solution = "Upgrade to Adobe Acrobat version 9.5.3 or 10.1.5 or 11.0.1 or later,
-For updates refer to http://www.adobe.com";
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+Impact Level: System/Application");
+  script_tag(name:"affected", value:"Adobe Acrobat versions 9.x to 9.5.2, 10.x to 10.1.4 and 11.0.0 on Windows");
+  script_tag(name:"solution", value:"Upgrade to Adobe Acrobat version 9.5.3 or 10.1.5 or 11.0.1 or later,
+For updates refer to http://www.adobe.com");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/51791");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1027952");
-  script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb13-02.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/51791");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1027952");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb13-02.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");

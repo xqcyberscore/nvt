@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tomcat_securityconstraints_sec_bypass_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: gb_tomcat_securityconstraints_sec_bypass_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Apache Tomcat SecurityConstraints Security Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803783");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2011-1582");
   script_bugtraq_id(47886);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-27 16:40:19 +0530 (Wed, 27 Nov 2013)");
   script_name("Apache Tomcat SecurityConstraints Security Bypass Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -48,32 +48,20 @@ if(description)
   script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2011050142");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/518032/100/0/threaded");
 
-  tag_summary = "This host is running Apache Tomcat and is prone to security bypass
-  vulnerability.";
-
-  tag_vuldetect = "Get the installed version of Apache Tomcat with the help of detect NVT
-  and check the version is vulnerable or not.";
-
-  tag_insight = "The flaw is due an error when enforcing security constraints. An
+  script_tag(name:"summary", value:"This host is running Apache Tomcat and is prone to security bypass
+  vulnerability.");
+  script_tag(name:"vuldetect", value:"Get the installed version of Apache Tomcat with the help of detect NVT
+  and check the version is vulnerable or not.");
+  script_tag(name:"solution", value:"Upgrade Apache Tomcat version to 7.0.14 or later,
+  For updates refer to http://tomcat.apache.org");
+  script_tag(name:"insight", value:"The flaw is due an error when enforcing security constraints. An
   attacker could exploit this vulnerability using @ServletSecurity
-  annotations to bypass constraints and gain unauthorized access to the servlet.";
-
-  tag_impact = "Successful exploitation will allow remote attackers to bypass certain
+  annotations to bypass constraints and gain unauthorized access to the servlet.");
+  script_tag(name:"affected", value:"Apache Tomcat version 7.0.13 and 7.0.12 ");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to bypass certain
   authentication and obtain sensitive information.
 
-  Impact Level: Application";
-
-  tag_affected = "Apache Tomcat version 7.0.13 and 7.0.12 ";
-
-  tag_solution = "Upgrade Apache Tomcat version to 7.0.14 or later,
-  For updates refer to http://tomcat.apache.org";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"impact", value:tag_impact);
+  Impact Level: Application");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

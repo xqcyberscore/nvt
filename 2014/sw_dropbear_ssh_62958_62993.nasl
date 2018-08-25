@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_dropbear_ssh_62958_62993.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: sw_dropbear_ssh_62958_62993.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Dropbear SSH Server Multiple Security Vulnerabilities
 #
@@ -29,14 +29,14 @@ CPE = 'cpe:/a:matt_johnston:dropbear_ssh_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105114");
-  script_version("$Revision: 6724 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-11-07 12:40:00 +0100 (Fri, 07 Nov 2014)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
-  script_cve_id("CVE-2013-4421","CVE-2013-4434");
-  script_bugtraq_id(62958,62993);
+  script_cve_id("CVE-2013-4421", "CVE-2013-4434");
+  script_bugtraq_id(62958, 62993);
 
   script_name("Dropbear SSH Server Multiple Security Vulnerabilities");
 
@@ -49,20 +49,20 @@ if(description)
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("dropbear/installed");
 
-  script_tag(name : "summary" , value : "This host is installed with Dropbear SSH Server and
+  script_tag(name:"summary", value:"This host is installed with Dropbear SSH Server and
   is prone to multiple vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Check the version.");
-  script_tag(name : "insight" , value : "Multiple flaws are due to,
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"insight", value:"Multiple flaws are due to,
   - The buf_decompress function in packet.c in Dropbear SSH Server before 2013.59
   allows remote attackers to cause a denial of service (memory consumption)
   via a compressed packet that has a large size when it is decompressed.
   - Dropbear SSH Server before 2013.59 generates error messages for a failed
   logon attempt with different time delays depending on whether the user account
   exists.");
-  script_tag(name : "impact" , value : "The flaws allows remote attackers to cause a denial of service
+  script_tag(name:"impact", value:"The flaws allows remote attackers to cause a denial of service
   or to discover valid usernames.");
-  script_tag(name : "affected" , value : "Versions prior to Dropbear SSH Server 2013.59 are vulnerable.");
-  script_tag(name : "solution" , value : "Updates are available."); 
+  script_tag(name:"affected", value:"Versions prior to Dropbear SSH Server 2013.59 are vulnerable.");
+  script_tag(name:"solution", value:"Updates are available.");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62958");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62993");
@@ -93,6 +93,6 @@ if(version_is_less(version:ver[2], test_version:"59")) {
            'Fixed version:     ' + "2013.59" + '\n';
   security_message( port:port, data:report );
   exit(0);
-}  
+}
 
 exit(99);

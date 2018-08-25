@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln02_feb14_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: secpod_google_chrome_mult_vuln02_feb14_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-02 Feb2014 (Windows)
 #
@@ -29,22 +29,22 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903514");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2013-6652", "CVE-2013-6653", "CVE-2013-6654", "CVE-2013-6655",
                 "CVE-2013-6656", "CVE-2013-6657", "CVE-2013-6658", "CVE-2013-6659",
                 "CVE-2013-6660", "CVE-2013-6661");
   script_bugtraq_id(65699);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-02-26 11:21:50 +0530 (Wed, 26 Feb 2014)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Feb2014 (Windows)");
 
 
-  script_tag(name : "summary" , value : "The host is installed with Google Chrome and is prone to multiple
+  script_tag(name:"summary", value:"The host is installed with Google Chrome and is prone to multiple
 vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
-  script_tag(name : "insight" , value : "Multiple flaws are due to,
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 - An unspecified error in 'sandbox/win/src/named_pipe_dispatcher.cc' related to
   relative paths in Windows sandbox named pipe policy.
 - A use-after-free error related to web contents can be exploited to cause
@@ -63,19 +63,19 @@ vulnerabilities.");
 - An error in drag and drop can be exploited to disclose unspecified
   information.
 - Some unspecified errors exist. No further information is currently available.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to conduct denial of
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct denial of
 service, execution of arbitrary code and unspecified other impacts.
 
 Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Google Chrome version prior to 33.0.1750.117 on Windows");
-  script_tag(name : "solution" , value : "Upgrade to version 33.0.1750.117 or later,
+  script_tag(name:"affected", value:"Google Chrome version prior to 33.0.1750.117 on Windows");
+  script_tag(name:"solution", value:"Upgrade to version 33.0.1750.117 or later,
 For updates refer to http://www.google.com/chrome");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/57028");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1029813");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2014/02/stable-channel-update_20.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/57028");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1029813");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2014/02/stable-channel-update_20.html");
   script_copyright("Copyright (C) 2014 SecPod");
   script_category(ACT_GATHER_INFO);
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pragmamx_mult_xss_vuln.nasl 5791 2017-03-30 13:06:07Z cfi $
+# $Id: gb_pragmamx_mult_xss_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # PragmaMX Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803345");
-  script_version("$Revision: 5791 $");
+  script_version("$Revision: 11103 $");
   script_bugtraq_id(53669);
   script_cve_id("CVE-2012-2452");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-25 16:37:00 +0530 (Mon, 25 Mar 2013)");
   script_name("PragmaMX Multiple Cross-Site Scripting Vulnerabilities");
 
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2012/May/126");
-  script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23090");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/113035");
-  script_xref(name : "URL" , value : "http://www.pragmamx.org/Content-pragmaMx-changelog-item-75.html");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2012/May/126");
+  script_xref(name:"URL", value:"https://www.htbridge.com/advisory/HTB23090");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/113035");
+  script_xref(name:"URL", value:"http://www.pragmamx.org/Content-pragmaMx-changelog-item-75.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
@@ -48,16 +48,16 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary HTML
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
   or web script in a user's browser session in context of an affected site.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "PragmaMX version 1.12.1 and prior");
-  script_tag(name : "insight" , value : "Multiple flaws due to input passed via 'name' parameter to modules.php and
+  script_tag(name:"affected", value:"PragmaMX version 1.12.1 and prior");
+  script_tag(name:"insight", value:"Multiple flaws due to input passed via 'name' parameter to modules.php and
   'img_url' parameter to img_popup.php is not properly sanitised before being
   returned to the user.");
-  script_tag(name : "solution" , value : "Upgrade to PragmaMx 1.12.2 or later,
+  script_tag(name:"solution", value:"Upgrade to PragmaMx 1.12.2 or later,
   For updates refer to http://www.pragmamx.org");
-  script_tag(name : "summary" , value : "The host is installed with PragmaMX and is prone to multiple cross
+  script_tag(name:"summary", value:"The host is installed with PragmaMX and is prone to multiple cross
   site scripting vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -67,12 +67,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-port = "";
-req = "";
-res = "";
-url = "";
 
 port = get_http_port(default:80);
 
@@ -87,14 +81,11 @@ foreach dir (make_list_unique("/", "/pragmamx", "/cms", cgi_dirs(port:port)))
 
   res = http_get_cache(item:string(dir,"/index.php"),  port:port);
 
-  ## Confirm the application
   if('>pragmaMx' >< res)
   {
-    ## Construct Attack Request
     url = dir +'/includes/wysiwyg/spaw/editor/plugins/imgpopup/img_popup.php?'+
                'img_url="><script>alert(document.cookie)</script>';
 
-    ## Check the response to confirm vulnerability
     if(http_vuln_check(port: port, url: url, check_header: TRUE,
        pattern: "<script>alert\(document\.cookie\)</script>"))
     {

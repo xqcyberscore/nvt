@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_remote_cmd_exec_vuln.nasl 10736 2018-08-02 11:55:29Z cfischer $
+# $Id: gb_bash_shellshock_remote_cmd_exec_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804489");
-  script_version("$Revision: 10736 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-6271", "CVE-2014-6278");
   script_bugtraq_id(70103);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 13:55:29 +0200 (Thu, 02 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-25 18:47:16 +0530 (Thu, 25 Sep 2014)");
   script_name("GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -81,7 +81,7 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 
 cgis = make_list();
 cgis[i++] = '/';

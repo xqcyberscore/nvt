@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_extbase_hmac_unserialization_weakness.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_typo3_extbase_hmac_unserialization_weakness.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # TYPO3 Extbase HMAC Unserialization Weakness
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803997");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2012-1605");
   script_bugtraq_id(52771);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-01-02 12:00:45 +0530 (Thu, 02 Jan 2014)");
   script_name("TYPO3 Extbase HMAC Unserialization Weakness");
 

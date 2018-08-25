@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_raritan_poweriq_sql_inj_vuln.nasl 6184 2017-05-22 10:25:33Z ckuerste $
+# $Id: gb_raritan_poweriq_sql_inj_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Raritan Power IQ SQL Injection Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:raritan:power_iq";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105922");
-  script_version("$Revision: 6184 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-22 12:25:33 +0200 (Mon, 22 May 2017) $");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-08-15 16:50:19 +0700 (Fri, 15 Aug 2014)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -53,29 +53,29 @@ if (description)
   script_mandatory_keys("raritan_poweriq/detected");
   script_require_ports("Services/www", 443);
 
-  script_tag(name: "summary", value: "Raritan Power IQ SQL Injection Vulnerability");
+  script_tag(name:"summary", value:"Raritan Power IQ SQL Injection Vulnerability");
 
-  script_tag(name: "vuldetect", value: "Tries to execute a time-based blind
+  script_tag(name:"vuldetect", value:"Tries to execute a time-based blind
 SQL injection and checks the response time.");
-  
-  script_tag(name: "insight", value: "Raritan PowerIQ is vulnerable to SQL injection.
+
+  script_tag(name:"insight", value:"Raritan PowerIQ is vulnerable to SQL injection.
 A remote attacker could send specially-crafted SQL statements to the /license/records
 script using the sort or dir parameter, which could allow the attacker to view, add,
 modify or delete information in the back-end database.");
 
-  script_tag(name: "impact", value: "Successful exploitation will allow attacker to
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to
 inject or manipulate SQL queries in the back-end database, allowing for the manipulation
 or disclosure of arbitrary data.");
 
-  script_tag(name: "affected", value: "Raritan Power IQ 4.2.2, 4.1.3 and below.");
+  script_tag(name:"affected", value:"Raritan Power IQ 4.2.2, 4.1.3 and below.");
 
-  script_tag(name: "solution", value: "Install the patch from Raritan at
+  script_tag(name:"solution", value:"Install the patch from Raritan at
 https://www.raritan.com/support/product/poweriq/security-patches");
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Jul/79");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/94717");
-  
- 
+
+
   exit(0);
 }
 
@@ -90,7 +90,6 @@ host = http_host_name(port:port);
 
 url = "/license/records";
 
-# Check installation
 data = "sort=id&dir=ASC";
 req = string('POST ', url, ' HTTP/1.1\r\n',
              'Host: ', host, '\r\n',
@@ -108,7 +107,6 @@ if (res !~ "HTTP/1.. 200 OK" || '"rows":' >!< res) {
   exit(0);
 }
 
-# Try to confirm app another way
 data = "sort=id'&dir=ASC";
 req = string('POST ', url, ' HTTP/1.1\r\n',
              'Host: ', host, '\r\n',

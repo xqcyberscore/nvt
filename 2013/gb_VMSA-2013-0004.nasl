@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2013-0004.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_VMSA-2013-0004.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # VMSA-2013-0004 VMware ESXi security update for third party library
 #
@@ -25,44 +25,42 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote ESXi is missing one or more security related Updates
+
+
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103687");
+  script_cve_id("CVE-2012-5134");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11103 $");
+  script_name("VMSA-2013-0004 VMware ESXi security update for third party library");
+
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-04-02 14:04:01 +0100 (Tue, 02 Apr 2013)");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_esxi_init.nasl");
+  script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
+  script_tag(name:"summary", value:"The remote ESXi is missing one or more security related Updates
 from VMSA-2013-0004.
 
 Relevant Releases
 ESXi 5.1 without patch ESXi510-201304101
 ESXi 5.0 without patch ESXi500-201303101
-ESXi 4.0 without patch ESXi400-201305001 
-ESXi 4.1 without patch ESXi410-201304401 
+ESXi 4.0 without patch ESXi400-201305001
+ESXi 4.1 without patch ESXi410-201304401
 
 Problem Description
-The ESXi userworld libxml2 library has been updated to resolve a security issue. 
+The ESXi userworld libxml2 library has been updated to resolve a security issue.
 
 Solution
-Apply the missing patch(es).";
-
-
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103687");
- script_cve_id("CVE-2012-5134");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 9353 $");
- script_name("VMSA-2013-0004 VMware ESXi security update for third party library");
-
-
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2013-04-02 14:04:01 +0100 (Tue, 02 Apr 2013)");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esxi_init.nasl");
- script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2013-0004.html");
+Apply the missing patch(es).");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0004.html");
  exit(0);
 }
 

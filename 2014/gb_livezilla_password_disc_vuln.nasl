@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_livezilla_password_disc_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
+# $Id: gb_livezilla_password_disc_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # LiveZilla Password Disclosure Vulnerability
 #
@@ -29,33 +29,33 @@ CPE = "cpe:/a:livezilla:livezilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804403");
-  script_version("$Revision: 6759 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2013-7033");
   script_bugtraq_id(64378);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-02-19 15:34:01 +0530 (Wed, 19 Feb 2014)");
   script_name("LiveZilla Password Disclosure Vulnerability");
 
-  script_tag(name : "summary" , value : "The host is installed with LiveZilla and is prone to password disclosure
+  script_tag(name:"summary", value:"The host is installed with LiveZilla and is prone to password disclosure
   vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP GET request and check whether it is able
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able
   read the password or not.");
-  script_tag(name : "insight" , value : "LiveZilla contains a flaw that is due to the application storing credential
+  script_tag(name:"insight", value:"LiveZilla contains a flaw that is due to the application storing credential
   information in plaintext. This will allow an attacker to gain access to
   username and password information.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to obtain sensitive
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain sensitive
   information from the application, such as logged-in user credentials,
   which may aid in further attacks.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "LiveZilla version 5.1.2.0");
-  script_tag(name : "solution" , value : "Upgrade to LiveZilla 5.1.2.1 or later,
+  script_tag(name:"affected", value:"LiveZilla version 5.1.2.0");
+  script_tag(name:"solution", value:"Upgrade to LiveZilla 5.1.2.1 or later,
   For updates refer to http://livezilla.net");
 
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Dec/74");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124444");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Dec/74");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124444");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -75,27 +75,18 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-lzPort = "";
-url = "";
-dir="";
-
-## Get OpenCart Port
 if(!lzPort = get_app_port(cpe:CPE)){
 #  exit(0);
 }
 
-## Get OpenCart Location
 if(!dir = get_app_location(cpe:CPE, port:lzPort)){
   exit(0);
 }
 
 if( dir == "/" ) dir = "";
 
-## Construct the Attack
 url = dir + "/mobile/chat.php?acid=d412e";
 
-## Check the response to confirm vulnerability
 if(http_vuln_check(port:lzPort, url: url, check_header: TRUE,
    pattern: "loginPassword = '",
    extra_check: make_list("loginName = '", "Livezilla Mobile")))

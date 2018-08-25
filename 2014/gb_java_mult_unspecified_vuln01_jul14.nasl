@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln01_jul14.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: gb_java_mult_unspecified_vuln01_jul14.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-01 Jul 2014 (Windows)
 #
@@ -29,22 +29,22 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804687");
-  script_version("$Revision: 10144 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-4244", "CVE-2014-4262", "CVE-2014-4263", "CVE-2014-4252",
                 "CVE-2014-4268", "CVE-2014-4218", "CVE-2014-4216", "CVE-2014-4209");
   script_bugtraq_id(68624, 68599, 68636, 68642, 68615, 68583, 68562, 68639);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-07-24 10:09:17 +0530 (Thu, 24 Jul 2014)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-01 Jul 2014 (Windows)");
 
 
-  script_tag(name : "summary" , value : "This host is installed with Oracle Java SE JRE and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Oracle Java SE JRE and is prone to multiple
 unspecified vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Get the installed version of Oracle Java SE JRE with the help of detect NVT
+  script_tag(name:"vuldetect", value:"Get the installed version of Oracle Java SE JRE with the help of detect NVT
 and check it is vulnerable or not.");
-  script_tag(name : "insight" , value : "Multiple unspecified flaws exists,
+  script_tag(name:"insight", value:"Multiple unspecified flaws exists,
 - An error in the JMX subcomponent related to
 share/classes/com/sun/jmx/remote/security/SubjectDelegator.java
 - An error related to the Hotspot subcomponent in
@@ -64,21 +64,21 @@ share/classes/sun/security/util/KeyUtil.java
 function in /java/util/concurrent/atomic/AtomicReferenceFieldUpdater.java
 - An error in the Security subcomponent related to
 share/classes/sun/security/rsa/RSACore.java and RSA 'blinding'.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to update,
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to update,
 insert, or delete certain data, execute arbitrary code, conduct a denial of
 service and disclosure of potentially sensitive information.
 
 Impact Level: System/Application.");
-  script_tag(name : "affected" , value : "Oracle Java SE 5 update 65 and prior, 6 update 75 and prior, 7 update 60 and
+  script_tag(name:"affected", value:"Oracle Java SE 5 update 65 and prior, 6 update 75 and prior, 7 update 60 and
 prior, and 8 update 5 and prior on Windows");
-  script_tag(name : "solution" , value : "Apply the patch from below link,
+  script_tag(name:"solution", value:"Apply the patch from below link,
 http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/59501");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1030577");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/59501");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1030577");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

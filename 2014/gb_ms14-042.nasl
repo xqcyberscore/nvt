@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-042.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_ms14-042.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Microsoft Windows Service Bus Denial of Service Vulnerability (2972621)
 #
@@ -27,58 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804474");
-  script_version("$Revision: 6735 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-2814");
   script_bugtraq_id(68393);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-07-09 15:14:23 +0530 (Wed, 09 Jul 2014)");
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Windows Service Bus Denial of Service Vulnerability (2972621)");
 
-  tag_summary =
-"This host is missing an moderate security update according to
-Microsoft Bulletin MS14-042";
 
-  tag_vuldetect =
-"Get the vulnerable file version and check appropriate patch is applied
-or not.";
-
-  tag_insight =
-"The flaw is due to an unspecified error when handling Advanced Message
+  script_tag(name:"summary", value:"This host is missing an moderate security update according to
+Microsoft Bulletin MS14-042");
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
+or not.");
+  script_tag(name:"insight", value:"The flaw is due to an unspecified error when handling Advanced Message
 Queuing Protocol (AMQP) messages and can be exploited to cause Microsoft
 Service Bus to stop responding to incoming messages by sending specially
-crafted AMQP messages.";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to cause a Denial
+crafted AMQP messages.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a Denial
 of Service.
 
-Impact Level: Application";
-
-  tag_affected =
-"Microsoft Service Bus 1.1 on
+Impact Level: Application");
+  script_tag(name:"affected", value:"Microsoft Service Bus 1.1 on
 Microsoft Windows Server 2012/R2
-Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior";
-
-  tag_solution =
-"Run Windows Update and update the listed hotfixes or download and update
+Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
 mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms14-042";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+https://technet.microsoft.com/en-us/security/bulletin/ms14-042");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/59780");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2972621");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms14-042");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/59780");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/2972621");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms14-042");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -94,17 +76,10 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-win32SysVer="";
-buskey = "SOFTWARE\Microsoft\Service Bus\1.1";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp( win2008r2:2, win2012:1, win2012R2:1) <= 0){
   exit(0);
 }
 
-## confirm the application
 if(!registry_key_exists(key:buskey)){
   exit(0);
 }
@@ -114,15 +89,13 @@ if("Service Bus" >!< sysPath){
   exit(0);
 }
 
-## Get Version from Journal.dll file
 Win32sysVer = fetch_file_version(sysPath, file_name:"Microsoft.ServiceBus.dll");
 if(!Win32sysVer){
   exit(0);
 }
 
-## Check for Journal.dll version
 if(version_is_less(version:Win32sysVer, test_version:"2.1.40512.2"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_unspecified_vuln_may13_win.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_mysql_unspecified_vuln_may13_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # MySQL Unspecified vulnerability - May 13 (Windows)
 #
@@ -29,17 +29,17 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803459");
-  script_version("$Revision: 9984 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2013-1544");
   script_bugtraq_id(59229);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-05-02 10:59:46 +0530 (Thu, 02 May 2013)");
   script_name("MySQL Unspecified vulnerability - May 13 (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/53022");
-  script_xref(name : "URL" , value : "http://www.ubuntu.com/usn/usn-1807-1");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuapr2013-1899555.html#AppendixMSQL");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/53022");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/usn-1807-1");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuapr2013-1899555.html#AppendixMSQL");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Denial of Service");
@@ -47,16 +47,16 @@ if(description)
   script_dependencies("mysql_version.nasl");
   script_require_ports("Services/mysql", 3306);
   script_mandatory_keys("MySQL/installed");
-  script_tag(name : "impact" , value : "Successful exploitation could allow remote authenticated attackers to
+  script_tag(name:"impact", value:"Successful exploitation could allow remote authenticated attackers to
   cause a denial of service.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "MySQL version 5.1.x before 5.1.69, 5.5.x before 5.5.31 and
+  script_tag(name:"affected", value:"MySQL version 5.1.x before 5.1.69, 5.5.x before 5.5.31 and
   5.6.x before 5.6.11");
-  script_tag(name : "insight" , value : "Unspecified flaw related to the Data Manipulation Language subcomponent.");
-  script_tag(name : "solution" , value : "Upgrade to MySQL version 5.1.69 or 5.5.31 or 5.6.11 or later,
+  script_tag(name:"insight", value:"Unspecified flaw related to the Data Manipulation Language subcomponent.");
+  script_tag(name:"solution", value:"Upgrade to MySQL version 5.1.69 or 5.5.31 or 5.6.11 or later,
   For updates refer to http://dev.mysql.com/downloads");
-  script_tag(name : "summary" , value : "The host is running MySQL and is prone unspecified vulnerability.");
+  script_tag(name:"summary", value:"The host is running MySQL and is prone unspecified vulnerability.");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }

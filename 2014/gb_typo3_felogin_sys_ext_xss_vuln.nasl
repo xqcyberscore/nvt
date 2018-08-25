@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_felogin_sys_ext_xss_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_typo3_felogin_sys_ext_xss_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # TYPO3 Felogin System Extension Cross Site Scripting Vulnerability
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803987");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2008-5656");
   script_bugtraq_id(32284);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-26 15:31:34 +0530 (Thu, 26 Dec 2013)");
   script_name("TYPO3 Felogin System Extension Cross Site Scripting Vulnerability");
 

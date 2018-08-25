@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtls_virtua_mult_sql_inj_vuln.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_vtls_virtua_mult_sql_inj_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # vtls-Virtua 'InfoStation.cgi' Multiple SQL Injection Vulnerabilities
 #
@@ -27,32 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804759");
-  script_version("$Revision: 6637 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-2081");
   script_bugtraq_id(69413);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-08-27 13:21:53 +0530 (Wed, 27 Aug 2014)");
   script_name("vtls-Virtua 'InfoStation.cgi' Multiple SQL Injection Vulnerabilities");
 
-  script_tag(name : "summary" , value : "This host is installed with vtls-Virtua and is prone to multiple sql injection
+  script_tag(name:"summary", value:"This host is installed with vtls-Virtua and is prone to multiple sql injection
   vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP GET request and check whether it is able to
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to
   execute sql query or not.");
-  script_tag(name : "insight" , value : "Flaw is due to the /web_reports/cgi-bin/InfoStation.cgi script not properly
+  script_tag(name:"insight", value:"Flaw is due to the /web_reports/cgi-bin/InfoStation.cgi script not properly
   sanitizing user-supplied input to the 'username' and 'password' parameters.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary HTML
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
   and script code and SQL statements on the vulnerable system, which may leads to
   access or modify data in the underlying database.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "vtls-Virtua version 2014.X and 2013.2.X");
-  script_tag(name : "solution" , value : "Upgrade to version 2014.1.1 or 2013.2.4 or higher,
+  script_tag(name:"affected", value:"vtls-Virtua version 2014.X and 2013.2.X");
+  script_tag(name:"solution", value:"Upgrade to version 2014.1.1 or 2013.2.4 or higher,
   for updates refer to http://www.vtls.com/products/vtls-virtua");
 
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127997");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Aug/64");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127997");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Aug/64");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -69,18 +69,14 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-## Get Host name
 host = http_host_name(port:http_port);
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/virtua", "/vlts", "/mgmt", "/libmgmt", cgi_dirs(port:http_port)))
 {
 
@@ -91,24 +87,19 @@ foreach dir (make_list_unique("/", "/virtua", "/vlts", "/mgmt", "/libmgmt", cgi_
   sndReq = http_get(item:url,  port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ## confirm the Application
   if("Virtua<" >< rcvRes && ">InfoStation - Log In<" >< rcvRes)
   {
-    ## Construct post data
     postData = "mod=login&func=process&database=1&lang_code=en&report_group" +
                "=Adm&filter=test&username=%27SQL-Injection-Test&password=%27";
 
-    ## Construct the POST request
     sndReq = string("POST ", url, " HTTP/1.1\r\n",
                     "Host: ", host, "\r\n",
                     "Content-Type: application/x-www-form-urlencoded\r\n",
                     "Content-Length: ", strlen(postData), "\r\n",
                     "\r\n", postData);
 
-    ## Send request and receive the response
     rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq, bodyonly:TRUE);
 
-    ## Confirm exploit worked by checking the response
     if(rcvRes && rcvRes =~ "SQL error.*SQL command not properly ended.*SQL-Injection-Test")
     {
       security_message(port:http_port);

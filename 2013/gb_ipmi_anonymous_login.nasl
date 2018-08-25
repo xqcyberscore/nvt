@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_anonymous_login.nasl 6086 2017-05-09 09:03:30Z teissa $
+# $Id: gb_ipmi_anonymous_login.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # IPMI Anonymous Login Enabled
 #
@@ -25,30 +25,26 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote IPMI service accepts anonymous logins.";
-tag_solution = "Disable anonymous logins.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103836";  
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 6086 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-09 11:03:30 +0200 (Tue, 09 May 2017) $");
- script_tag(name:"creation_date", value:"2013-11-26 12:03:03 +0100 (Tue, 26 Nov 2013)");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_name("IPMI Anonymous Login Enabled");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_ipmi_detect.nasl");
- script_require_udp_ports("Services/udp/ipmi", 623);
- script_mandatory_keys("ipmi/anonymous_login");
+  script_oid("1.3.6.1.4.1.25623.1.0.103836");
+  script_version("$Revision: 11103 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-11-26 12:03:03 +0100 (Tue, 26 Nov 2013)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("IPMI Anonymous Login Enabled");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_ipmi_detect.nasl");
+  script_require_udp_ports("Services/udp/ipmi", 623);
+  script_mandatory_keys("ipmi/anonymous_login");
 
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"solution", value:"Disable anonymous logins.");
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"summary", value:"The remote IPMI service accepts anonymous logins.");
 
  exit(0);
 }
@@ -61,7 +57,7 @@ if(!get_udp_port_state(port))exit(0);
 if(get_kb_item("ipmi/anonymous_login")) {
   security_message(port:port, proto:"udp");
   exit(0);
-}   
+}
 
 exit(99);
 

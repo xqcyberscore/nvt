@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_sep14_macosx.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_sep14_macosx.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-01 September14 (Mac OS X)
 #
@@ -29,35 +29,34 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804835");
-  script_version("$Revision: 6750 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-1562", "CVE-2014-1567");
   script_bugtraq_id(69519, 69520);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-05 20:15:31 +0530 (Fri, 05 Sep 2014)");
 
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 September14 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
   - A use-after-free error when setting text directionality.
   - An unspecified error.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to disclose potentially sensitive information and compromise a user's system.
 
   Impact Level: Application/System");
 
-  script_tag(name: "affected" , value:"Mozilla Thunderbird 24.x before 24.8 and
+  script_tag(name:"affected", value:"Mozilla Thunderbird 24.x before 24.8 and
   31.x before 31.1 on Mac OS X");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version 24.8
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 24.8
   or 31.1 or later, For updates refer http://www.mozilla.com/en-US/thunderbird");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -76,21 +75,16 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-tbVer = "";
-
-## Get version
 if(!tbVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(tbVer =~ "^(24|31)\.")
 {
   if((version_in_range(version:tbVer, test_version:"24.0", test_version2:"24.7")) ||
     (version_is_equal(version:tbVer, test_version:"31.0")))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

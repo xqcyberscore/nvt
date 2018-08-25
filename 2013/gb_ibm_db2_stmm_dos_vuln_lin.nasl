@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_stmm_dos_vuln_lin.nasl 7548 2017-10-24 12:06:02Z cfischer $
+# $Id: gb_ibm_db2_stmm_dos_vuln_lin.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # IBM DB2 STMM Denial Of Service Vulnerability (Linux)
 #
@@ -23,63 +23,43 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803766";
 CPE = "cpe:/a:ibm:db2";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 7548 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803766");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2011-1373");
   script_bugtraq_id(50686);
   script_tag(name:"cvss_base", value:"1.5");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:06:02 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-09-30 17:51:03 +0530 (Mon, 30 Sep 2013)");
   script_name("IBM DB2 STMM Denial Of Service Vulnerability (Linux)");
 
-   tag_summary =
-"This host is running IBM DB2 and is prone to denial of service vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version of IBM DB2 with the help of detect NVT and check
-the version is vulnerable or not.";
-
-  tag_insight =
-"The flaw is due an error when the Self Tuning Memory Manager (STMM) feature
-and the AUTOMATIC DATABASE_MEMORY setting are configured.";
-
-  tag_impact =
-"Successful exploitation will allow attacker to allows local users to cause a
+  script_tag(name:"summary", value:"This host is running IBM DB2 and is prone to denial of service vulnerability.");
+  script_tag(name:"vuldetect", value:"Get the installed version of IBM DB2 with the help of detect NVT and check
+the version is vulnerable or not.");
+  script_tag(name:"solution", value:"Upgrade to IBM DB2 9.7 FP5 or later,
+For updates refer to http://www-01.ibm.com ");
+  script_tag(name:"insight", value:"The flaw is due an error when the Self Tuning Memory Manager (STMM) feature
+and the AUTOMATIC DATABASE_MEMORY setting are configured.");
+  script_tag(name:"affected", value:"IBM DB2 version 9.7 before FP5 on Linux.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to allows local users to cause a
 denial of service (daemon crash) via unknown vectors.
 
-Impact Level: Application";
-
-  tag_affected =
-"IBM DB2 version 9.7 before FP5 on Linux.";
-
-  tag_solution =
-"Upgrade to IBM DB2 9.7 FP5 or later,
-For updates refer to http://www-01.ibm.com ";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+Impact Level: Application");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/71043");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg1IC70473");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/71043");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg1IC70473");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Databases");
   script_dependencies("gb_ibm_db2_remote_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("IBM-DB2/installed","Host/runs_unixoide");
+  script_mandatory_keys("IBM-DB2/installed", "Host/runs_unixoide");
   exit(0);
 }
 
@@ -88,15 +68,11 @@ include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ibmVer  = "";
-ibmPort = "";
-
-if(!ibmPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!ibmPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-if(!ibmVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:ibmPort)){
+if(!ibmVer = get_app_version(cpe:CPE, port:ibmPort)){
   exit(0);
 }
 

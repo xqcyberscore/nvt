@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_dec14_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mult_vuln01_dec14_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 Dec14 (Windows)
 #
@@ -29,23 +29,23 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805215");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-1594", "CVE-2014-1593", "CVE-2014-1592", "CVE-2014-1590",
                 "CVE-2014-1589", "CVE-2014-1588", "CVE-2014-1587", "CVE-2014-8632",
                 "CVE-2014-8631");
   script_bugtraq_id(71396, 71395, 71398, 71397, 71393, 71392, 71391, 71556, 71560);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-12-16 08:53:05 +0530 (Tue, 16 Dec 2014)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 Dec14 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
   - A bad cast issue from the BasicThebesLayer to BasicContainerLayer.
   - An error when parsing media content within the 'mozilla::FileBlockCache::Read'
   function.
@@ -60,15 +60,15 @@ if(description)
   - An error when passing Chrome Object Wrappers (COW) protected chrome objects as
   native interfaces.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to disclose potentially sensitive information, compromise a user's system, bypass
   certain security restrictions and other unknown impacts.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox before version 34.0 on Windows");
+  script_tag(name:"affected", value:"Mozilla Firefox before version 34.0 on Windows");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 34.0
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 34.0
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -95,6 +95,6 @@ if(!ffVer = get_app_version(cpe:CPE)){
 
 if(version_is_less(version:ffVer, test_version:"34.0"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

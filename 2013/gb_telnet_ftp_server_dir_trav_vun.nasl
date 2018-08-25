@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telnet_ftp_server_dir_trav_vun.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_telnet_ftp_server_dir_trav_vun.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Telnet-Ftp Server Directory Traversal Vulnerability
 #
@@ -27,33 +27,33 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803736");
-  script_version("$Revision: 9984 $");
+  script_version("$Revision: 11103 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-19 10:32:03 +0530 (Mon, 19 Aug 2013)");
   script_name("Telnet-Ftp Server Directory Traversal Vulnerability");
 
-  script_tag(name : "summary" , value : "The host is running Telnet-Ftp server and is prone to directory traversal
+  script_tag(name:"summary", value:"The host is running Telnet-Ftp server and is prone to directory traversal
 vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Send the crafted directory traversal attack request and check whether it
+  script_tag(name:"vuldetect", value:"Send the crafted directory traversal attack request and check whether it
 is able to read the system file or not.");
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.");
-  script_tag(name : "insight" , value : "The flaw exists due to error in handling of file names. It does not properly
+  script_tag(name:"insight", value:"The flaw exists due to error in handling of file names. It does not properly
 sanitise filenames containing directory traversal sequences that are received
 from an FTP server.");
-  script_tag(name : "affected" , value : "Telnet-Ftp Server version 1.0 (Build 1.218)");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to read arbitrary files on the
+  script_tag(name:"affected", value:"Telnet-Ftp Server version 1.0 (Build 1.218)");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to read arbitrary files on the
 affected application.
 
 Impact Level: Application");
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://1337day.com/exploit/20939");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/telnet-ftp-service-server-10-directory-traversal");
+  script_xref(name:"URL", value:"http://1337day.com/exploit/20939");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/telnet-ftp-service-server-10-directory-traversal");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");

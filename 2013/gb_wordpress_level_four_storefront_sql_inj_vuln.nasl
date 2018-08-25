@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_level_four_storefront_sql_inj_vuln.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_wordpress_level_four_storefront_sql_inj_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Wordpress Level Four Storefront Plugin SQL Injection Vulnerability
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803449");
-  script_version("$Revision: 9984 $");
+  script_version("$Revision: 11103 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-26 15:01:02 +0530 (Tue, 26 Mar 2013)");
   script_name("Wordpress Level Four Storefront Plugin SQL Injection Vulnerability");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120950/wplevelfourstorefront-sql.txt");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wordpress-level-four-storefront-sql-injection");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/120950/wplevelfourstorefront-sql.txt");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/wordpress-level-four-storefront-sql-injection");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -43,19 +43,19 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to inject or
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to inject or
 manipulate SQL queries in the back-end database, allowing for the manipulation
 or disclosure of arbitrary data.
 
 Impact Level: Application");
-  script_tag(name : "affected" , value : "Wordpress Level Four Storefront Plugin");
-  script_tag(name : "insight" , value : "The flaw is due to improper validation of user-supplied input to
+  script_tag(name:"affected", value:"Wordpress Level Four Storefront Plugin");
+  script_tag(name:"insight", value:"The flaw is due to improper validation of user-supplied input to
 the getsortmanufacturers.php script via id parameter.");
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is installed with Wordpress Level Four Storefront
+  script_tag(name:"summary", value:"This host is installed with Wordpress Level Four Storefront
 Plugin and is prone to sql injection vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cs121_ups_default_admin_credentials.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_cs121_ups_default_admin_credentials.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # CS121 UPS Default Admin Credentials
 #
@@ -27,30 +27,30 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105023"); 
- script_version("$Revision: 6637 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("CS121 UPS Default Admin Credentials");
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
- script_tag(name:"creation_date", value:"2014-05-12 11:02:06 +0200 (Mon, 12 May 2014)");
- script_category(ACT_ATTACK);
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("HyNetOS/banner");
- script_require_ports("Services/www", 80);
+  script_oid("1.3.6.1.4.1.25623.1.0.105023");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("CS121 UPS Default Admin Credentials");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-05-12 11:02:06 +0200 (Mon, 12 May 2014)");
+  script_category(ACT_ATTACK);
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_mandatory_keys("HyNetOS/banner");
+  script_require_ports("Services/www", 80);
 
- script_tag(name : "summary" , value : 'The remote CS121 UPS web interface is prone to a default
+  script_tag(name:"summary", value : 'The remote CS121 UPS web interface is prone to a default
  account authentication bypass vulnerability.');
- script_tag(name : "impact" , value : 'This issue may be exploited by a remote attacker to gain
+  script_tag(name:"impact", value : 'This issue may be exploited by a remote attacker to gain
  access to sensitive information or modify system configuration.');
- script_tag(name : "vuldetect" , value : 'Try to login with default credentials.');
- script_tag(name : "insight" , value : 'It was possible to login with default credentials.');
- script_tag(name : "solution" , value : 'Change the password.');
+  script_tag(name:"vuldetect", value : 'Try to login with default credentials.');
+  script_tag(name:"insight", value : 'It was possible to login with default credentials.');
+  script_tag(name:"solution", value : 'Change the password.');
 
- script_tag(name:"solution_type", value:"Mitigation");
- script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"solution_type", value:"Mitigation");
+  script_tag(name:"qod_type", value:"remote_app");
 
  exit(0);
 }
@@ -85,9 +85,9 @@ buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 if( "Security Settings" >< buf && "Gateway Address" >< buf )
 {
   report = 'It was possible to login using "admin" as username and "cs121-snmp" as password.\n';
-  
+
   security_message(port:port, data:report);
   exit(0);
-}  
+}
 
 exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jan13_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_google_chrome_mult_vuln01_jan13_macosx.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-01 Jan2013 (MAC OS X)
 #
@@ -24,22 +24,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to bypass certain security
-  restrictions, execute arbitrary code in the context of the browser or
-  cause a denial of service.
-  Impact Level: System/Application";
-
-tag_affected = "Google Chrome version prior to 24.0.1312.52 on MAC OS X";
-tag_insight = "For more details about the vulnerabilities refer the reference section.";
-tag_solution = "Upgrade to the Google Chrome 24.0.1312.52 or later,
-  For updates refer to http://www.google.com/chrome";
-tag_summary = "This host is installed with Google Chrome and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803159");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2012-5145", "CVE-2012-5146", "CVE-2012-5147", "CVE-2012-5148",
                 "CVE-2012-5149", "CVE-2012-5150", "CVE-2012-5151", "CVE-2012-5152",
                 "CVE-2012-5153", "CVE-2012-5156", "CVE-2012-5157", "CVE-2013-0828",
@@ -49,23 +37,28 @@ if(description)
   script_bugtraq_id(57251);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-01-17 14:52:37 +0530 (Thu, 17 Jan 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Jan2013 (MAC OS X)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/51825/");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1027977");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2013/01/stable-channel-update.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/51825/");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1027977");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2013/01/stable-channel-update.html");
 
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("GoogleChrome/MacOSX/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
+  restrictions, execute arbitrary code in the context of the browser or
+  cause a denial of service.
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Google Chrome version prior to 24.0.1312.52 on MAC OS X");
+  script_tag(name:"insight", value:"For more details about the vulnerabilities refer the reference section.");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 24.0.1312.52 or later,
+  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -76,13 +69,11 @@ include("version_func.inc");
 
 chromeVer = NULL;
 
-## Get the version from KB
 chromeVer = get_kb_item("GoogleChrome/MacOSX/Version");
 if(isnull(chromeVer)){
   exit(0);
 }
 
-## Check for Google Chrome Versions prior to 24.0.1312.52
 if(version_is_less(version:chromeVer, test_version:"24.0.1312.52")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

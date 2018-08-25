@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_video_conference_lfi_02_14.nasl 10954 2018-08-14 12:43:10Z mmartin $
+# $Id: gb_php_video_conference_lfi_02_14.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # PHP Webcam Video Conference Local File Inclusion / XSS
 #
@@ -27,29 +27,29 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103902");
- script_version("$Revision: 10954 $");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_name("PHP Webcam Video Conference Local File Inclusion / XSS");
- script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/31458/");
- script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:43:10 +0200 (Tue, 14 Aug 2018) $");
- script_tag(name:"creation_date", value:"2014-02-07 11:53:08 +0100 (Fri, 07 Feb 2014)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_oid("1.3.6.1.4.1.25623.1.0.103902");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_name("PHP Webcam Video Conference Local File Inclusion / XSS");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/31458/");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-02-07 11:53:08 +0100 (Fri, 07 Feb 2014)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name:"impact", value:"A remote attacker can exploit this issue to obtain sensitive
+  script_tag(name:"impact", value:"A remote attacker can exploit this issue to obtain sensitive
 information that could aid in further attacks.");
- script_tag(name:"vuldetect", value:"Send a HTTP GET request which tries to read a local file.");
- script_tag(name:"insight", value:"Input of the 's' value in rtmp_login.php is not properly sanitized.");
- script_tag(name:"solution", value:"Upgrade to the new version ifrom the videowhisper vendor homepage.");
- script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"summary", value:"PHP Webcam Video Conferenceis prone to a directory-traversal
+  script_tag(name:"vuldetect", value:"Send a HTTP GET request which tries to read a local file.");
+  script_tag(name:"insight", value:"Input of the 's' value in rtmp_login.php is not properly sanitized.");
+  script_tag(name:"solution", value:"Upgrade to the new version ifrom the videowhisper vendor homepage.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"PHP Webcam Video Conferenceis prone to a directory-traversal
 vulnerability because it fails to sufficiently sanitize user-supplied input.");
 
  exit(0);

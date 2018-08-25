@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quixplorer_mult_vuln_nov.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_quixplorer_mult_vuln_nov.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Quixplorer Multiple Vulnerabilities - Nov14
 #
@@ -27,42 +27,42 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804876");
-  script_version("$Revision: 6769 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2013-1641", "CVE-2013-1642");
   script_bugtraq_id(63964, 63962);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-11-04 17:05:21 +0530 (Tue, 04 Nov 2014)");
   script_name("Quixplorer Multiple Vulnerabilities - Nov14");
 
-  script_tag(name: "summary" , value:"This host is installed with Quixplorer
+  script_tag(name:"summary", value:"This host is installed with Quixplorer
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted data via HTTP GET request
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request
   and check whether it is able to read cookie or not.");
 
-  script_tag(name: "insight" , value:"Multiple errors exist as the input passed
+  script_tag(name:"insight", value:"Multiple errors exist as the input passed
   via the 'dir', 'item', 'order', 'searchitem', 'selitems[]', and 'srt'
   parameters is not validated upon submission to the
   /quixplorer/src/index.php script.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to gain access to arbitrary files and execute arbitrary script code
   in a user's browser within the trust relationship between user's browser and
   the server.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Quixplorer version 2.5.4 and prior.");
+  script_tag(name:"affected", value:"Quixplorer version 2.5.4 and prior.");
 
-  script_tag(name: "solution" , value:"Upgrade to Quixplorer version 2.5.5 or
+  script_tag(name:"solution", value:"Upgrade to Quixplorer version 2.5.5 or
   later. For updates refer to https://github.com/realtimeprojects/quixplorer");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/55725");
-  script_xref(name : "URL" , value : "https://www3.trustwave.com/spiderlabs/advisories/TWSL2013-030.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/55725");
+  script_xref(name:"URL", value:"https://www3.trustwave.com/spiderlabs/advisories/TWSL2013-030.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -78,30 +78,20 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/quixplorer", "/filemanager", "/filemgr", cgi_dirs(port:http_port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Construct GET Request
   sndReq = http_get(item:string(dir, "/src/index.php"),  port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ##Confirm Application
   if(rcvRes && ">Login to use QuiXplorer<" >< rcvRes
             && rcvRes =~ "title.*QuiXplorer Version")
   {

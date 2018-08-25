@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_vuln01_jul14.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_typo3_mult_vuln01_jul14.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # TYPO3 Multiple Vulnerabilities-01 July-2104
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804464");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-3941", "CVE-2014-3943");
   script_bugtraq_id(67626, 67625);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-07-03 13:45:50 +0530 (Thu, 03 Jul 2014)");
   script_name("TYPO3 Multiple Vulnerabilities-01 July-2104");
 

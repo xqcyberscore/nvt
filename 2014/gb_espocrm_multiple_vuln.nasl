@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_espocrm_multiple_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
+# $Id: gb_espocrm_multiple_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # EspoCRM '/install/index.php' Multiple Vulnerabilities
 #
@@ -27,31 +27,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804874");
-  script_version("$Revision: 5790 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-7985", "CVE-2014-7986", "CVE-2014-7987");
   script_bugtraq_id(70809, 70811, 70806);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-10-30 12:02:52 +0530 (Thu, 30 Oct 2014)");
 
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
   script_name("EspoCRM '/install/index.php' Multiple Vulnerabilities");
 
-  script_tag(name: "summary" , value:"This host is installed with EspoCRM and
+  script_tag(name:"summary", value:"This host is installed with EspoCRM and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted data via HTTP GET request
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request
   and check whether it is able to read cookie or not.");
 
-  script_tag(name: "insight" , value:"Multiple errors are due to,
+  script_tag(name:"insight", value:"Multiple errors are due to,
   - Improper sanitization of input passed via 'action' and 'desc' HTTP GET
   parameters to /install/index.php script.
   - Insufficient access control restriction to the installation script
   /install/index.php.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary HTML and script code in a users browser session
   in the context of an affected site, include and execute arbitrary local PHP
   files on the system with privileges of the web server, and reinstall the
@@ -59,14 +59,14 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"EspoCRM version 2.5.2 and probably
+  script_tag(name:"affected", value:"EspoCRM version 2.5.2 and probably
   earlier.");
 
-  script_tag(name: "solution" , value:"Upgrade to EspoCRM version 2.6.0 or later,
+  script_tag(name:"solution", value:"Upgrade to EspoCRM version 2.6.0 or later,
   For details refer http://www.espocrm.com/");
 
-  script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23238");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/533844");
+  script_xref(name:"URL", value:"https://www.htbridge.com/advisory/HTB23238");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/533844");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -81,10 +81,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-rcvRes = "";
-
 http_port = get_http_port(default:80);
 
 if(!can_host_php(port:http_port)){
@@ -98,14 +94,12 @@ foreach dir (make_list_unique("/", "/EspoCRM", "/crm", "/CRM", cgi_dirs(port:htt
 
   rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:http_port);
 
-  ##Confirm Application
   if(rcvRes && ">EspoCRM<" >< rcvRes && rcvRes =~ ">&copy.*>EspoCRM<")
   {
     ## Vulnerable Url
     url = dir + "/install/index.php?installProcess=1&action=errors&d"
               + "esc=<script>alert(document.cookie);</script>";
 
-    ## Check the response to confirm vulnerability
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
                        pattern:"<script>alert\(document\.cookie\);</script>",
                        extra_check:make_list(">EspoCRM<", "License Agreement")))

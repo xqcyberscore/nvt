@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-068.nasl 6400 2017-06-22 05:47:08Z santu $
+# $Id: gb_ms14-068.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # MS Windows Kerberos Checksum Remote Privilege Escalation Vulnerability (3011780)
 #
@@ -27,31 +27,30 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804799");
-  script_version("$Revision: 6400 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-6324");
   script_bugtraq_id(70958);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-22 07:47:08 +0200 (Thu, 22 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-11-19 12:57:43 +0530 (Wed, 19 Nov 2014)");
   script_name("MS Windows Kerberos Checksum Remote Privilege Escalation Vulnerability (3011780)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS14-068.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and check
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check
   appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"Vulnerability exists when Microsoft Kerberos
+  script_tag(name:"insight", value:"Vulnerability exists when Microsoft Kerberos
   KDC implementations fail to properly validate signatures.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to escalate the privileges.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"
-  Microsoft Windows 8 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
 
   Microsoft Windows Server 2012/R2
 
@@ -67,7 +66,7 @@ if(description)
 
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
 
-  script_tag(name: "solution" , value:"Run Windows Update and update the listed
+  script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
   link, https://technet.microsoft.com/en-us/security/bulletin/ms14-068");
 
@@ -82,7 +81,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
   exit(0);
@@ -94,44 +93,33 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2003:3, win2003x64:3, winVista:3, winVistax64:3, win7:2,
                    win7x64:2, win2008:3, win2008x64:3, win2008r2:2, win8:1,
                    win8x64:1, win2012:1, win2012R2:1, win8_1:1, win8_1x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_system32root();
 if(!sysPath ){
   exit(0);
 }
 
-##Get the Kerberos.dll version
 dllVer = fetch_file_version(sysPath, file_name:"Kerberos.dll");
 if(!dllVer){
   exit(0);
 }
 
-## Windows 2003
 if(hotfix_check_sp(win2003:3, win2003x64:3) > 0)
 {
-  ## Check for Kerberos.dll version
   if(version_is_less(version:dllVer, test_version:"5.2.3790.5467"))
   {
     VULN = TRUE;
-    Vulnerable_range = "Less than 5.2.3790.5467";  
+    Vulnerable_range = "Less than 5.2.3790.5467";
   }
 }
 
-## Windows Vista and Server 2008
 else if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0)
 {
-  ## Check for Kerberos.dll version
   if(version_in_range(version:dllVer, test_version:"6.0.6002.18000", test_version2:"6.0.6002.19219"))
   {
     VULN = TRUE;
@@ -144,10 +132,8 @@ else if(hotfix_check_sp(winVista:3, winVistax64:3, win2008:3, win2008x64:3) > 0)
   }
 }
 
-## Windows 7 and Server 2008r2
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Kerberos.dll version
   if(version_in_range(version:dllVer, test_version:"6.1.7601.18000", test_version2:"6.1.7601.18657"))
   {
     VULN = TRUE;
@@ -161,10 +147,8 @@ else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
   }
 }
 
-## Windows 8 and Server 2012
 else if(hotfix_check_sp(win8:1, win2012:1) > 0)
 {
-  ## Check for Kerberos.dll version
   if(version_in_range(version:dllVer, test_version:"6.2.9200.16000", test_version2:"6.2.9200.17171"))
   {
     VULN = TRUE;
@@ -177,10 +161,8 @@ else if(hotfix_check_sp(win8:1, win2012:1) > 0)
   }
 }
 
-## Windows 8.1 and Server 2012 R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Kerberos.dll version
   if(version_is_less(version:dllVer, test_version:"6.3.9600.17423"))
   {
     VULN = TRUE;

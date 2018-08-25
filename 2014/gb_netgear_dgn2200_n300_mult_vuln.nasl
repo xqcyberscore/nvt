@@ -24,28 +24,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804099";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6699 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804099");
+  script_version("$Revision: 11108 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:07:37 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-02-18 11:02:48 +0530 (Tue, 18 Feb 2014)");
   script_name("NetGear DGN2200 N300 Wireless Router Multiple Vulnerabilities");
 
-  tag_summary =
-"This host has NetGear DGN2200 N300 Wireless Router and is prone to multiple
-vulnerabilities.";
 
-  tag_vuldetect =
-"Send a HTTP GET request to restricted page and check whether it is able to
-access or not.";
-
-  tag_insight =
-"Multiple flaws are due to,
+  script_tag(name:"summary", value:"This host has NetGear DGN2200 N300 Wireless Router and is prone to multiple
+vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Send a HTTP GET request to restricted page and check whether it is able to
+access or not.");
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 - FTP Server not properly sanitizing user input, specifically absolute paths.
 - Program not allowing users to completely disable the Wi-Fi Protected Setup
   (WPS) functionality.
@@ -58,33 +52,17 @@ access or not.";
   submission to the /ping.cgi script.
 - Input passed via the 'hostname' parameter is not properly sanitized upon
   submission to the /dnslookup.cgi script.
-- Program storing password information in plaintext in /etc/passwd.";
-
-  tag_impact =
-"Successful exploitation will allow attacker to execute arbitrary commands,
+- Program storing password information in plaintext in /etc/passwd.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary commands,
 gain access to arbitrary files, and manipulate the device's settings.
 
-Impact Level: System/Application";
-
-  tag_affected =
-"NetGear DGN2200 N300 Wireless Router Firmware Version 1.0.0.36-7.0.37";
-
-  tag_solution =
-"The vendor has discontinued this product, and therefore has no patch or
-upgrade that mitigates this problem. It is recommended that an alternate
-software package be used in its place.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/31617");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125184");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Feb/104");
+Impact Level: System/Application");
+  script_tag(name:"affected", value:"NetGear DGN2200 N300 Wireless Router Firmware Version 1.0.0.36-7.0.37");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/31617");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125184");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Feb/104");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -100,14 +78,8 @@ software package be used in its place.";
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable initialization
-http_port = 0;
-banner = "";
-
-## Get http port
 http_port = get_http_port(default:8080);
 
-## Get Banner
 banner = get_http_banner(port:http_port);
 
 if(!banner || 'Basic realm="NETGEAR DGN' >!< banner)exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winamp_flv_memory_corrup_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_winamp_flv_memory_corrup_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Winamp '.flv' File Processing Memory Corruption Vulnerability
 #
@@ -29,52 +29,31 @@ CPE = "cpe:/a:nullsoft:winamp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804826");
-  script_version("$Revision: 6769 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-3442");
   script_bugtraq_id(67429);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-03 15:23:48 +0530 (Wed, 03 Sep 2014)");
   script_name("Winamp '.flv' File Processing Memory Corruption Vulnerability");
 
-  tag_summary =
-"This host is installed with Winamp and is prone to memory corruption
-vulnerability.";
-
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"The flaw is due to a memory corruption error when handling malicious '.flv'
-files.";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to cause a denial of
+  script_tag(name:"summary", value:"This host is installed with Winamp and is prone to memory corruption
+vulnerability.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The flaw is due to a memory corruption error when handling malicious '.flv'
+files.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
 service(memory corruption and crash).
 
-Impact Level: Application";
+Impact Level: Application");
+  script_tag(name:"affected", value:"Winamp version 5.666 build 3516 and earlier.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  tag_affected =
-"Winamp version 5.666 build 3516 and earlier.";
-
-  tag_solution =
-"No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/93173");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126636");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/93173");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/126636");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
@@ -88,17 +67,12 @@ features, remove the product or replace the product by another one.";
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-version = "";
-
-## Get the version
 if(!version = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check the vulnerable version, 5.666 build 3516= 5.6.6.3516
 if(version_is_less_equal(version:version, test_version:"5.6.6.3516"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

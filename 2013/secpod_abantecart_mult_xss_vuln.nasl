@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_abantecart_mult_xss_vuln.nasl 5798 2017-03-30 15:23:49Z cfi $
+# $Id: secpod_abantecart_mult_xss_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # AbanteCart Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902952");
-  script_version("$Revision: 5798 $");
+  script_version("$Revision: 11103 $");
   script_bugtraq_id(57948);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 17:23:49 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-02-26 11:48:51 +0530 (Tue, 26 Feb 2013)");
   script_name("AbanteCart Multiple Cross-Site Scripting Vulnerabilities");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/52165");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/82073");
-  script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013020095");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120273");
-  script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/52165");
-  script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2013-5125.php");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/52165");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/82073");
+  script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2013020095");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/120273");
+  script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/52165");
+  script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2013-5125.php");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 SecPod");
@@ -49,17 +49,17 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
   HTML and script code in a user's browser session in context of an affected site.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "AbanteCart version 1.1.3 and prior");
-  script_tag(name : "insight" , value : "Input passed via the 'limit', 'page', 'rt', 'sort', 'currency',
+  script_tag(name:"affected", value:"AbanteCart version 1.1.3 and prior");
+  script_tag(name:"insight", value:"Input passed via the 'limit', 'page', 'rt', 'sort', 'currency',
   'product_id', 'language', 's', 'manufacturer_id', and 'token' GET parameters
   to index.php is not properly sanitized before being returned to the user.");
-  script_tag(name : "solution" , value : "Upgrade to version 1.1.4 or later,
+  script_tag(name:"solution", value:"Upgrade to version 1.1.4 or later,
   For updates refer to http://www.abantecart.com");
-  script_tag(name : "summary" , value : "This host is installed with AbanteCart and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with AbanteCart and is prone to multiple
   cross site scripting vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -91,10 +91,8 @@ foreach dir (make_list_unique("/", "/abantecart", "/cart", cgi_dirs(port:port)))
   if( res =~ "HTTP/1.. 200" && ">AbanteCart<" >< res &&
       '>Powered by Abantecart' >< res && '>Cart<' >< res ) {
 
-    ## Construct attack request
     url = dir + '/index.php?limit="><script>alert(document.cookie);</script>';
 
-    ## Check the response to confirm vulnerability
     if(http_vuln_check(port:port, url:url, check_header:TRUE,
        pattern:"><script>alert\(document\.cookie\);</script>",
        extra_check:">AbanteCart<"))

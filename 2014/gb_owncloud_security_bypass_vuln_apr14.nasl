@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_security_bypass_vuln_apr14.nasl 9982 2018-05-28 12:00:03Z cfischer $
+# $Id: gb_owncloud_security_bypass_vuln_apr14.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # ownCloud Local Filesystem Mounting Security Bypass Vulnerability Apr14
 #
@@ -29,30 +29,30 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804363");
-  script_version("$Revision: 9982 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-2585");
   script_bugtraq_id(66451);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-04-04 18:54:56 +0530 (Fri, 04 Apr 2014)");
   script_name("ownCloud Local Filesystem Mounting Security Bypass Vulnerability Apr14");
 
-  script_tag(name : "summary" , value : "This host is installed with ownCloud and is prone to security bypass
+  script_tag(name:"summary", value:"This host is installed with ownCloud and is prone to security bypass
 vulnerability.");
-  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
-  script_tag(name : "insight" , value : "The flaw is due to the server failing to properly sanitize mount
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The flaw is due to the server failing to properly sanitize mount
 configurations.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attacker to mount the local
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to mount the local
 filesystem and gain access to the information contained within it.
 
 Impact Level: Application");
-  script_tag(name : "affected" , value : "ownCloud Server version 5.x before 5.0.15 and 6.x before 6.0.2");
-  script_tag(name : "solution" , value : "Upgrade to ownCloud version 5.0.15 or 6.0.2 or later,
+  script_tag(name:"affected", value:"ownCloud Server version 5.x before 5.0.15 and 6.x before 6.0.2");
+  script_tag(name:"solution", value:"Upgrade to ownCloud version 5.0.15 or 6.0.2 or later,
 For updates refer to http://owncloud.org");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/57283");
-  script_xref(name : "URL" , value : "http://owncloud.org/about/security/advisories/oC-SA-2014-008");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/57283");
+  script_xref(name:"URL", value:"http://owncloud.org/about/security/advisories/oC-SA-2014-008");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

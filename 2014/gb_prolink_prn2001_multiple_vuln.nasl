@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prolink_prn2001_multiple_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_prolink_prn2001_multiple_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Prolink PRN2001 Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805021");
-  script_version("$Revision: 6769 $");
+  script_version("$Revision: 11108 $");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-12-04 12:11:44 +0530 (Thu, 04 Dec 2014)");
   script_name("Prolink PRN2001 Multiple Vulnerabilities");
 
@@ -59,12 +59,7 @@ if(description)
 
   script_tag(name:"affected", value:"Prolink PRN2001");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
-
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
@@ -85,19 +80,10 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 
-## Variable initialization
-http_port = 0;
-banner = "";
-pReq = "";
-pRes = "";
-
-## Get http port
 http_port = get_http_port(default:8080);
 
-## Get Banner
 banner = get_http_banner(port:http_port);
 
-## confirm the server
 if(!banner || 'WWW-Authenticate: Basic realm="PRN2001"' >!< banner) exit(0);
 
 host = http_host_name(port:http_port);
@@ -111,7 +97,6 @@ pReq = 'GET / HTTP/1.1\r\n' +
 
 pRes = http_keepalive_send_recv(port:http_port, data:pReq);
 
-## confirm the login
 if(pRes =~ "HTTP/1\.. 200 Ok"  && ">PROLiNK Wireless Router<" >< pRes)
 {
   credential = str_replace( string:credential, find:":", replace:"/" );

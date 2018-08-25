@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zoom_telephonics_61044.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_zoom_telephonics_61044.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Multiple Zoom Telephonics Devices Multiple Security Vulnerabilities
 #
@@ -25,78 +25,63 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Exploiting these issues could allow an attacker to gain unauthorized
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103756");
+  script_bugtraq_id(61044);
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
+  script_version("$Revision: 11103 $");
+
+  script_name("Multiple Zoom Telephonics Devices Multiple Security Vulnerabilities");
+
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61044");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-08-12 15:24:34 +0200 (Mon, 12 Aug 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("Nucleus/banner");
+
+  script_tag(name:"impact", value:"Exploiting these issues could allow an attacker to gain unauthorized
 access and perform arbitrary actions, obtain sensitive information,
 compromise the application, access or modify data, or exploit latent
 vulnerabilities in the underlying database.
-Impact Level: Application";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103756";
-
-tag_insight = "When UPnP services and WAN http administrative access are enabled,
+Impact Level: Application");
+  script_tag(name:"vuldetect", value:"Request /hag/pages/toolbox.htm and check if it is accessible without authentication.");
+  script_tag(name:"insight", value:"When UPnP services and WAN http administrative access are enabled,
 authorization and credential challenges can be bypassed by directly
 accessing root privileged abilities via a web browser URL.
-             
+
 All aspects of the modem/router can be changed, altered and controlled
 by an attacker, including gaining access to and changing the PPPoe/PPP
-ISP credentials.";
-
-
-tag_affected = "
-X4 ADSL Modem and Router
-X5 ADSL Modem and 4-port Router ";
-
-tag_summary = "Multiple Zoom Telephonics devices are prone to an information-
+ISP credentials.");
+  script_tag(name:"solution", value:"Ask the Vendor for an update.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Multiple Zoom Telephonics devices are prone to an information-
 disclosure vulnerability, an authentication bypass vulnerability and
-an SQL-injection vulnerability.";
-
-tag_solution = "Ask the Vendor for an update.";
-
-tag_vuldetect = "Request /hag/pages/toolbox.htm and check if it is accessible without authentication.";
-
-if (description)
-{
- script_oid(SCRIPT_OID);
- script_bugtraq_id(61044);
- script_tag(name:"cvss_base", value:"9.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
- script_version ("$Revision: 6698 $");
-
- script_name("Multiple Zoom Telephonics Devices Multiple Security Vulnerabilities");
-
-
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/61044");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
- script_tag(name:"creation_date", value:"2013-08-12 15:24:34 +0200 (Mon, 12 Aug 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("Nucleus/banner");
-
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+an SQL-injection vulnerability.");
+  script_tag(name:"affected", value:"X4 ADSL Modem and Router
+X5 ADSL Modem and 4-port Router ");
 
  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port(default:80);
 
 banner = get_http_banner(port:port);
 if("401 Unauthorized" >!< banner || "Server: Nucleus/" >!< banner)exit(0);
 
 if(http_vuln_check(port:port, url:'/hag/pages/toolbox.htm',pattern:"<title>Advanced Setup", extra_check:make_list("WAN Configuration","ADSL Status"))) {
-     
+
   security_message(port:port);
   exit(0);
 

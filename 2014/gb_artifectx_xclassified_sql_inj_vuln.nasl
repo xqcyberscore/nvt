@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_artifectx_xclassified_sql_inj_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
+# $Id: gb_artifectx_xclassified_sql_inj_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Artifectx xClassified 'catid' SQL Injection Vulnerability
 #
@@ -27,34 +27,30 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804684");
-  script_version("$Revision: 5790 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-4741");
   script_bugtraq_id(68438);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-07-21 11:57:35 +0530 (Mon, 21 Jul 2014)");
   script_name("Artifectx xClassified 'catid' SQL Injection Vulnerability");
 
-  script_tag(name : "summary" , value : "This host is installed with Artifectx xClassified and is prone to sql injection
+  script_tag(name:"summary", value:"This host is installed with Artifectx xClassified and is prone to sql injection
   vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send a crafted HTTP GET request and check whether it is able to execute
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check whether it is able to execute
   sql query or not.");
-  script_tag(name : "insight" , value : "Flaw is due to the 'ads.php' script not properly sanitizing user-supplied input
+  script_tag(name:"insight", value:"Flaw is due to the 'ads.php' script not properly sanitizing user-supplied input
   to the 'catid' parameter.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to manipulate SQL queries in the
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to manipulate SQL queries in the
   backend database allowing for the manipulation or disclosure of arbitrary data.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Artifectx XClassified version 1.2");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-
+  script_tag(name:"affected", value:"Artifectx XClassified version 1.2");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127370");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127370");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -67,10 +63,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-http_port = "";
-rcvRes = "";
 
 http_port = get_http_port(default:80);
 
@@ -85,7 +77,6 @@ foreach dir (make_list_unique("/", "/ads", "/classifieds", "/artifectx", cgi_dir
 
   rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:http_port);
 
-  ##Confirm Application
   if (">xClassified Web" >< rcvRes && "artifectx" >< rcvRes)
   {
     ## Vulnerable Url

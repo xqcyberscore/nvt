@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_vuln_mar13_win.nasl 10459 2018-07-09 07:41:24Z cfischer $
+# $Id: gb_php_mult_vuln_mar13_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # PHP Multiple Vulnerabilities - Mar13 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803337");
-  script_version("$Revision: 10459 $");
-  script_cve_id("CVE-2013-1635","CVE-2013-1643");
+  script_version("$Revision: 11103 $");
+  script_cve_id("CVE-2013-1635", "CVE-2013-1643");
   script_bugtraq_id(58224);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 09:41:24 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-14 18:10:04 +0530 (Thu, 14 Mar 2013)");
   script_name("PHP Multiple Vulnerabilities - Mar13 (Windows)");
   script_category(ACT_GATHER_INFO);

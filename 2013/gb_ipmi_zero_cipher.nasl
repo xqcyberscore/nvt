@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_zero_cipher.nasl 7287 2017-09-27 06:56:51Z cfischer $
+# $Id: gb_ipmi_zero_cipher.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # IPMI Cipher Zero Authentication Bypass Vulnerability
 #
@@ -25,45 +25,35 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103840";
-
-tag_insight = "The remote IPMI service accepted a session open request for cipher zero.";
-
-tag_impact = "Attackers can exploit this issue to gain administrative access to the
-device and disclose sensitive information.";
-
-tag_summary = "Intelligent Platform Management Interface is prone to an authentication-
-bypass vulnerability.";
-
-tag_solution = "Ask the Vendor for an update.";
-tag_vuldetect = "Send a request with a zero cipher and check if this request was accepted.";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 7287 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_name("IPMI Cipher Zero Authentication Bypass Vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.103840");
+  script_version("$Revision: 11103 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("IPMI Cipher Zero Authentication Bypass Vulnerability");
 
 
- script_xref(name:"URL", value:"http://fish2.com/ipmi/cipherzero.html");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
- script_tag(name:"creation_date", value:"2013-11-27 15:03:17 +0100 (Wed, 27 Nov 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("General");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_ipmi_detect.nasl");
- script_require_udp_ports("Services/udp/ipmi", 623);
- script_mandatory_keys("ipmi/version/2.0");
+  script_xref(name:"URL", value:"http://fish2.com/ipmi/cipherzero.html");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-11-27 15:03:17 +0100 (Wed, 27 Nov 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_ipmi_detect.nasl");
+  script_require_udp_ports("Services/udp/ipmi", 623);
+  script_mandatory_keys("ipmi/version/2.0");
+
+  script_tag(name:"impact", value:"Attackers can exploit this issue to gain administrative access to the
+device and disclose sensitive information.");
+  script_tag(name:"vuldetect", value:"Send a request with a zero cipher and check if this request was accepted.");
+  script_tag(name:"insight", value:"The remote IPMI service accepted a session open request for cipher zero.");
+  script_tag(name:"solution", value:"Ask the Vendor for an update.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Intelligent Platform Management Interface is prone to an authentication-
+bypass vulnerability.");
 
  exit(0);
 }
@@ -91,7 +81,7 @@ if(len > strlen(recv))exit(0);
 
 data = substr(recv, strlen(recv)-len);
 
-if(data[1]) {  
+if(data[1]) {
   if(ord(data[1]) == 0) {
     security_message(port:port);
     exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bacula_web_jobid_sql_inj_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_bacula_web_jobid_sql_inj_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Bacula-web 'jobid' Parameter SQL Injection Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804771");
-  script_version("$Revision: 6769 $");
+  script_version("$Revision: 11108 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-10-07 11:01:51 +0530 (Tue, 07 Oct 2014)");
 
   script_name("Bacula-web 'jobid' Parameter SQL Injection Vulnerability");
@@ -59,8 +59,8 @@ if(description)
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/34851");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/128480");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/34851");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/128480");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -76,21 +76,13 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-sndReq = "";
-rcvRes = "";
-http_port = "";
 
-
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/bacula-web", "/baculaweb", "/bacula", cgi_dirs(port:http_port)))
 {
 
@@ -99,13 +91,10 @@ foreach dir (make_list_unique("/", "/bacula-web", "/baculaweb", "/bacula", cgi_d
   sndReq = http_get(item: string(dir, "/test.php"),  port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ## confirm the Application
   if(">bacula-web<" >< rcvRes && ">Dashboard<" >< rcvRes)
   {
-    ## Construct the attack request
     url = dir + "/joblogs.php?jobid='SQL-Injection-Test";
 
-    ## Check the response to confirm vulnerability, extra check not possible
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
        pattern:"You have an error in your SQL syntax.*SQL-Injection-Test"))
     {

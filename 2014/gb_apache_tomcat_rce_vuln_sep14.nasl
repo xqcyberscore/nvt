@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_rce_vuln_sep14.nasl 4347 2016-10-25 13:52:16Z cfi $
+# $Id: gb_apache_tomcat_rce_vuln_sep14.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Apache Tomcat Remote Code Execution Vulnerability - Sep14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804855");
-  script_version("$Revision: 4347 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2013-4444");
   script_bugtraq_id(69728);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-25 15:52:16 +0200 (Tue, 25 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-23 14:26:15 +0530 (Tue, 23 Sep 2014)");
   script_name("Apache Tomcat Remote Code Execution Vulnerability - Sep14");
   script_category(ACT_GATHER_INFO);
@@ -51,8 +51,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running Apache Tomcat and is
   prone to remote code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The error exists as the program does not
   properly verify or sanitize user-uploaded files.");

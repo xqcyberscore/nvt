@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_65771.nasl 9982 2018-05-28 12:00:03Z cfischer $
+# $Id: gb_mcafee_epolicy_orchestrator_65771.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # McAfee ePolicy Orchestrator XML External Entity Information Disclosure Vulnerability
 #
@@ -29,40 +29,40 @@ CPE = "cpe:/a:mcafee:epolicy_orchestrator";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103925");
- script_bugtraq_id(65771);
- script_cve_id("CVE-2014-2205");
- script_tag(name:"cvss_base", value:"6.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:N/A:N");
- script_version ("$Revision: 9982 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103925");
+  script_bugtraq_id(65771);
+  script_cve_id("CVE-2014-2205");
+  script_tag(name:"cvss_base", value:"6.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:N/A:N");
+  script_version("$Revision: 11108 $");
 
- script_name("McAfee ePolicy Orchestrator XML External Entity Information Disclosure Vulnerability");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65771");
- script_xref(name:"URL", value:"http://www.mcafee.com/us/enterprise/products/system_security_management/epolicy_orchestrator.html");
+  script_name("McAfee ePolicy Orchestrator XML External Entity Information Disclosure Vulnerability");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65771");
+  script_xref(name:"URL", value:"http://www.mcafee.com/us/enterprise/products/system_security_management/epolicy_orchestrator.html");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
- script_tag(name:"creation_date", value:"2014-03-20 11:41:18 +0100 (Thu, 20 Mar 2014)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_mcafee_epolicy_orchestrator_detect.nasl");
- script_mandatory_keys("mcafee_ePO/installed");
- script_require_ports("Services/www", 8443);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-03-20 11:41:18 +0100 (Thu, 20 Mar 2014)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_mcafee_epolicy_orchestrator_detect.nasl");
+  script_mandatory_keys("mcafee_ePO/installed");
+  script_require_ports("Services/www", 8443);
 
- script_tag(name : "impact" , value : "An attacker can exploit this issue to gain access to sensitive
+  script_tag(name:"impact", value:"An attacker can exploit this issue to gain access to sensitive
 information from the application. This may lead to further attacks.");
- script_tag(name : "vuldetect" , value : "Check the version");
- script_tag(name : "insight" , value : "The Import and Export Framework in McAfee ePolicy Orchestrator
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"insight", value:"The Import and Export Framework in McAfee ePolicy Orchestrator
 (ePO) before 4.6.7 Hotfix 940148 allows remote authenticated users with permissions
 to add dashboards to read arbitrary files by importing a crafted XML file, related
 to an XML External Entity (XXE) issue.");
- script_tag(name : "solution" , value : "Updates are available.");
- script_tag(name : "summary" , value : "McAfee ePolicy Orchestrator is prone to an XML External Entity
+  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"summary", value:"McAfee ePolicy Orchestrator is prone to an XML External Entity
 vulnerability");
- script_tag(name : "affected" , value : "McAfee ePolicy Orchestrator 4.6.7 and prior are vulnerable.");
+  script_tag(name:"affected", value:"McAfee ePolicy Orchestrator 4.6.7 and prior are vulnerable.");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 }

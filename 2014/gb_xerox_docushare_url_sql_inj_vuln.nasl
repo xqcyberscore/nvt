@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xerox_docushare_url_sql_inj_vuln.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_xerox_docushare_url_sql_inj_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Xerox DocuShare URL SQL Injection Vulnerability
 #
@@ -27,35 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804556");
-  script_version("$Revision: 6735 $");
+  script_version("$Revision: 11108 $");
   script_bugtraq_id(66922);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-04-24 15:12:51 +0530 (Thu, 24 Apr 2014)");
   script_name("Xerox DocuShare URL SQL Injection Vulnerability");
 
-  script_tag(name : "summary" , value : "This host is installed with Xerox DocuShare and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Xerox DocuShare and is prone to multiple
   sql injection vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Send a crafted HTTP GET request and check whether it is able to execute
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check whether it is able to execute
   sql query or not.");
-  script_tag(name : "insight" , value : "Input appended to the URL after /docushare/dsweb/ResultBackgroundJobMultiple/1
+  script_tag(name:"insight", value:"Input appended to the URL after /docushare/dsweb/ResultBackgroundJobMultiple/1
   is not properly sanitised before being used in SQL queries.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML or
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML or
   script code and manipulate SQL queries in the backend database allowing
   for the manipulation or disclosure of arbitrary data.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Xerox DocuShare version 6.5.3 Patch 6, 6.6.1 Update 1, and 6.6.1 Update 2,
+  script_tag(name:"affected", value:"Xerox DocuShare version 6.5.3 Patch 6, 6.6.1 Update 1, and 6.6.1 Update 2,
   Prior versions may also be affected.");
-  script_tag(name : "solution" , value : "Apply the hotfix from the below link,
+  script_tag(name:"solution", value:"Apply the hotfix from the below link,
   http://www.xerox.com/download/security/security-bulletin/a72cd-4f7a54ce14460/cert_XRX14-003_V1.0.pdf");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/57996");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/32886");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126171");
-  script_xref(name : "URL" , value : "https://gist.github.com/brandonprry/10745681");
-  script_xref(name : "URL" , value : "http://www.xerox.com/download/security/security-bulletin/a72cd-4f7a54ce14460/cert_XRX14-003_V1.0.pdf");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/57996");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/32886");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/126171");
+  script_xref(name:"URL", value:"https://gist.github.com/brandonprry/10745681");
+  script_xref(name:"URL", value:"http://www.xerox.com/download/security/security-bulletin/a72cd-4f7a54ce14460/cert_XRX14-003_V1.0.pdf");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -72,21 +72,13 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/docushare", "/share", cgi_dirs(port:http_port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Construct GET Request
   sndReq = http_get(item:string(dir, "/dsweb/HomePage"),  port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 

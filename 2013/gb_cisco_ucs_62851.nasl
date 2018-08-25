@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ucs_62851.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: gb_cisco_ucs_62851.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Cisco Unified Computing System Multiple Vulnerabilities
 #
@@ -24,18 +24,39 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103805";
 CPE = "cpe:/a:cisco:unified_computing_system_software";
 
-tag_insight = "This issue is being tracked by Cisco bug IDs:
-CSCtc91207
-CSCtd32371
-CSCtg48206
-CSCtq86543
-CSCts53746";
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103805");
+  script_bugtraq_id(59451, 59453, 59457, 59459, 59455);
+  script_cve_id("CVE-2013-1182", "CVE-2013-1183", "CVE-2013-1184", "CVE-2013-1185", "CVE-2013-1186");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11103 $");
 
-tag_impact = "CSCtc91207:
+  script_name("Cisco Unified Computing System Multiple Vulnerabilities");
+
+
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59451");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59453");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59457");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59459");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59455");
+
+  script_xref(name:"URL", value:"http://www.cisco.com/");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-10-10 19:10:32 +0200 (Thu, 10 Oct 2013)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ucs_manager_detect.nasl");
+  script_require_ports("Services/www", 443);
+  script_mandatory_keys("cisco_ucs_manager/installed");
+
+  script_tag(name:"impact", value:"CSCtc91207:
 An attacker can exploit this issue to bypass the authentication mechanism
 and impersonate other users of the system. This may lead to further
 attacks.
@@ -43,11 +64,11 @@ attacks.
 CSCtd32371:
 Attackers can exploit this issue to execute arbitrary code within the
 context of the affected application. Failed exploit attempts will result in
-denial-of-service conditions. 
+denial-of-service conditions.
 
 CSCtg48206:
 Attackers can exploit this issue to cause the service to stop responding
-resulting in denial-of-service conditions. 
+resulting in denial-of-service conditions.
 
 CSCtq86543:
 Successful exploits will allow attackers to obtain sensitive information.
@@ -56,57 +77,24 @@ This may result in the complete compromise of the system.
 CSCts53746:
 An attacker can exploit this issue to bypass the authentication mechanism
 and gain access to the IP KVM console of the physical or virtual device.
-This may lead to further attacks.";
-
-tag_affected = "Cisco Unified Computing System 1.0(x)
+This may lead to further attacks.");
+  script_tag(name:"vuldetect", value:"Check the Cisco Unified Computing System Version");
+  script_tag(name:"insight", value:"This issue is being tracked by Cisco bug IDs:
+CSCtc91207
+CSCtd32371
+CSCtg48206
+CSCtq86543
+CSCts53746");
+  script_tag(name:"solution", value:"Update to 2.1.1e");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Cisco Unified Computing System is prone to multiple
+vulnerabilities");
+  script_tag(name:"affected", value:"Cisco Unified Computing System 1.0(x)
 1.1(x)
 1.2(x)
 1.3(x)
 1.4(x)
-2.0(1x) and Prior";
-
-tag_summary = "Cisco Unified Computing System is prone to multiple
-vulnerabilities";
-
-tag_solution = "Update to 2.1.1e";
-tag_vuldetect = "Check the Cisco Unified Computing System Version";
-
-if (description)
-{
- script_oid(SCRIPT_OID);
- script_bugtraq_id(59451,59453,59457,59459,59455);
- script_cve_id("CVE-2013-1182","CVE-2013-1183","CVE-2013-1184","CVE-2013-1185","CVE-2013-1186");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 7585 $");
-
- script_name("Cisco Unified Computing System Multiple Vulnerabilities");
-
-
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59451");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59453");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59457");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59459");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59455");
-
- script_xref(name:"URL", value:"http://www.cisco.com/");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
- script_tag(name:"creation_date", value:"2013-10-10 19:10:32 +0200 (Thu, 10 Oct 2013)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ucs_manager_detect.nasl");
- script_require_ports("Services/www", 443);
- script_mandatory_keys("cisco_ucs_manager/installed");
-
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+2.0(1x) and Prior");
 
  exit(0);
 }
@@ -136,6 +124,6 @@ if(vuln) {
   report = report_fixed_ver( installed_version:version, fixed_version:'2.1.1e' );
   security_message(port:0, data:report);
   exit(0);
-}  
+}
 
 exit(99);

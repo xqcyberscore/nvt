@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cms_made_simple_mult_xss_vuln_mar14.nasl 9086 2018-03-12 11:54:08Z cfischer $
+# $Id: gb_cms_made_simple_mult_xss_vuln_mar14.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # CMS Made Simple Multiple XSS Vulnerabilities Mar14
 #
@@ -29,37 +29,37 @@ CPE = "cpe:/a:cmsmadesimple:cms_made_simple";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804327");
-  script_version("$Revision: 9086 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-0334", "CVE-2014-2092");
   script_bugtraq_id(65746, 65898);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-12 12:54:08 +0100 (Mon, 12 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-03-18 13:06:25 +0530 (Tue, 18 Mar 2014)");
   script_name("CMS Made Simple Multiple XSS Vulnerabilities Mar14");
 
-  script_tag(name: "summary", value: "The host is installed with CMS Made Simple and is prone to multiple xss
+  script_tag(name:"summary", value:"The host is installed with CMS Made Simple and is prone to multiple xss
 vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Send a crafted data via HTTP GET request and check whether it is
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is
 vulnerable or not.");
 
-  script_tag(name: "insight", value: "Multiple flaws exist due to improper validation of user supplied input to
+  script_tag(name:"insight", value:"Multiple flaws exist due to improper validation of user supplied input to
 'editevent.php', 'pagedefaults.php', 'adminlog.php', 'myaccount.php', 'siteprefs.php', 'addbookmark.php',
 'index.php', 'editorFrame.php', 'addhtmlblob.php', 'addtemplate.php', 'addcss.php' scripts. For more information
 about the vulnerabilities refer the reference links.");
 
-  script_tag(name: "impact", value: "Successful exploitation will allow remote attackers to execute arbitrary HTML
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
 or script code, steal cookie-based authentication credentials and launch other attacks.");
 
-  script_tag(name: "affected", value: "CMS Made Simple version 1.11.10, Other versions may also be affected.");
+  script_tag(name:"affected", value:"CMS Made Simple version 1.11.10, Other versions may also be affected.");
 
-  script_tag(name: "solution", value: "Update to the latest version.");
+  script_tag(name:"solution", value:"Update to the latest version.");
 
-  script_tag(name: "solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "URL", value: "http://www.kb.cert.org/vuls/id/526062");
-  script_xref(name: "URL", value: "http://packetstormsecurity.com/files/125353/CMSMadeSimple-1.11.10-Cross-Site-Scripting.html");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/526062");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125353/CMSMadeSimple-1.11.10-Cross-Site-Scripting.html");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

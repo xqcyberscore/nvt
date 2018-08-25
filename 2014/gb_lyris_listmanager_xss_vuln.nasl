@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lyris_listmanager_xss_vuln.nasl 9086 2018-03-12 11:54:08Z cfischer $
+# $Id: gb_lyris_listmanager_xss_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Lyris ListManager 'EmailAddr' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,46 +27,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804818");
-  script_version("$Revision: 9086 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-5188");
   script_bugtraq_id(68973);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-12 12:54:08 +0100 (Mon, 12 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-08-22 11:02:24 +0530 (Fri, 22 Aug 2014)");
   script_name("Lyris ListManager 'EmailAddr' Parameter Cross Site Scripting Vulnerability");
 
-  tag_summary = "This host is installed with Lyris ListManager and is prone to cross site
-scripting vulnerability.";
-
-  tag_vuldetect = "Send a crafted data via HTTP GET request and check whether it is able to read
-cookie or not.";
-
-  tag_insight = "Input passed via the 'EmailAddr' parameter to doemailpassword.tml script is not
-properly sanitised before returning to the user.";
-
-  tag_impact = "Successful exploitation will allow attacker to execute arbitrary HTML and
+  script_tag(name:"summary", value:"This host is installed with Lyris ListManager and is prone to cross site
+scripting vulnerability.");
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to read
+cookie or not.");
+  script_tag(name:"insight", value:"Input passed via the 'EmailAddr' parameter to doemailpassword.tml script is not
+properly sanitised before returning to the user.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
 script code in a user's browser session in the context of an affected site.
 
-Impact Level: Application";
-
-  tag_affected = "Lyris ListManager (LM) version 8.95a.";
-
-  tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+Impact Level: Application");
+  script_tag(name:"affected", value:"Lyris ListManager (LM) version 8.95a.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/95024");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127672");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/95024");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127672");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

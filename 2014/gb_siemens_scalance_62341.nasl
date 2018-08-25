@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siemens_scalance_62341.nasl 10904 2018-08-10 14:24:40Z mmartin $
+# $Id: gb_siemens_scalance_62341.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Siemens Scalance X-200 Series Switches Insufficient Entropy Vulnerability
 #
@@ -28,39 +28,39 @@ CPE = "cpe:/h:siemens:scalance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103907");
- script_bugtraq_id(62341);
- script_cve_id("CVE-2013-5709");
- script_version("$Revision: 10904 $");
- script_tag(name:"cvss_base", value:"8.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:C");
+  script_oid("1.3.6.1.4.1.25623.1.0.103907");
+  script_bugtraq_id(62341);
+  script_cve_id("CVE-2013-5709");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"cvss_base", value:"8.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:C");
 
- script_name("Siemens Scalance X-200 Series Switches Insufficient Entropy Vulnerability");
+  script_name("Siemens Scalance X-200 Series Switches Insufficient Entropy Vulnerability");
 
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62341");
- script_xref(name:"URL", value:"http://subscriber.communications.siemens.com/");
- script_xref(name:"URL", value:"http://blog.ioactive.com/2014/02/the-password-is-irrelevant-too.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62341");
+  script_xref(name:"URL", value:"http://subscriber.communications.siemens.com/");
+  script_xref(name:"URL", value:"http://blog.ioactive.com/2014/02/the-password-is-irrelevant-too.html");
 
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2014-02-17 17:18:56 +0100 (Mon, 17 Feb 2014)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_siemens_scalance_web_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("siemens_scalance/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-02-17 17:18:56 +0100 (Mon, 17 Feb 2014)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_siemens_scalance_web_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("siemens_scalance/installed");
 
- script_tag(name:"impact", value:"Remote attackers can exploit this issue to hijack web sessions over
+  script_tag(name:"impact", value:"Remote attackers can exploit this issue to hijack web sessions over
 the network without authentication. Other attacks are also possible.");
- script_tag(name:"vuldetect", value:"Check if it is possible to read the configuration with a HTTP GET request.");
- script_tag(name:"insight", value:"By requesting /fs/cfgFile.cfg it is possible to read the config of the remote device.");
- script_tag(name:"solution", value:"Updates are available.");
- script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"summary", value:"Siemens Scalance X-200 Series switches are prone to a vulnerability in
+  script_tag(name:"vuldetect", value:"Check if it is possible to read the configuration with a HTTP GET request.");
+  script_tag(name:"insight", value:"By requesting /fs/cfgFile.cfg it is possible to read the config of the remote device.");
+  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Siemens Scalance X-200 Series switches are prone to a vulnerability in
 the entropy of random number generator.");
- script_tag(name:"affected", value:"Siemens Scalance X-200 Series switches running firmware versions prior
+  script_tag(name:"affected", value:"Siemens Scalance X-200 Series switches running firmware versions prior
 to 5.0.0 are vulnerable.");
 
  exit(0);

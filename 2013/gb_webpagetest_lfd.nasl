@@ -27,34 +27,33 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804047");
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 11102 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 11:51:23 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-30 12:10:12 +0530 (Mon, 30 Dec 2013)");
   script_name("WebPagetest 'file' parameter Local File Disclosure Vulnerability");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to obtain potentially
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain potentially
   sensitive information from local files which may lead to further attacks.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "WebPagetest version 2.7 and prior.");
-  script_tag(name : "insight" , value : "Flaw is due to an improper validation of user supplied input to the
+  script_tag(name:"affected", value:"WebPagetest version 2.7 and prior.");
+  script_tag(name:"insight", value:"Flaw is due to an improper validation of user supplied input to the
   'file' parameter in 'gettext.php', 'gettcpdump.php', and 'getgzip.php'
   scripts.");
-  script_tag(name : "solution" , value : "No Solution or patch is available as of 30th December, 2013. Information
-  regarding this issue will be updated once the solution details are available.
-  For updates refer to http://www.webpagetest.org");
-  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP GET request and check whether it is able to read
+  script_tag(name:"solution", value:"Updates are available.
+  For updates refer to http://code.google.com/p/webpagetest/downloads/");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to read
   local file or not.");
-  script_tag(name : "summary" , value : "This host is installed with WebPagetest and is prone to local file disclosure
+  script_tag(name:"summary", value:"This host is installed with WebPagetest and is prone to local file disclosure
   vulnerability.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_app");
-  script_xref(name : "URL" , value : "http://1337day.com/exploit/18980");
-  script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013120168");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/webpagetest-27-local-file-disclosure");
+  script_xref(name:"URL", value:"http://1337day.com/exploit/18980");
+  script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2013120168");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/webpagetest-27-local-file-disclosure");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -69,12 +68,6 @@ include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-req = "";
-buf = "";
-banner = "";
-WPTPort = "";
 
 WPTPort = get_http_port(default:80);
 
@@ -91,16 +84,13 @@ foreach dir (make_list_unique("/", "/webpagetest", "/wptest", cgi_dirs(port:WPTP
 
   res = http_get_cache(item: string(dir, "/index.php"), port:WPTPort);
 
-  ## Confirm the application before trying exploit
   if('<title>WebPagetest' >< res)
   {
     ## list the possible files
     foreach file (keys(files))
     {
-      ## Construct the attack request
       url = dir + '/gettext.php?file=' + crap(data:"../", length:9*6) + files[file];
 
-      ## Check The response and confirm the exploit
       if(http_vuln_check(port:WPTPort, url:url, pattern:file))
       {
         security_message(port:WPTPort);

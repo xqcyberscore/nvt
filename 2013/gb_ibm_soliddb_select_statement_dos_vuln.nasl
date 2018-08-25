@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_soliddb_select_statement_dos_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_ibm_soliddb_select_statement_dos_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # IBM solidDB 'SELECT' Statement Denial Of Service Vulnerability
 #
@@ -23,58 +23,39 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.803763";
 CPE = "cpe:/a:ibm:soliddb";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6115 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.803763");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2011-4890");
   script_bugtraq_id(51629);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-09-23 15:49:43 +0530 (Mon, 23 Sep 2013)");
   script_name("IBM solidDB 'SELECT' Statement Denial Of Service Vulnerability");
 
-   tag_summary =
-"This host is running IBM solidDB and is prone to denial of service
-vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version of IBM solidDB with the help of detect NVT and check
-the version is vulnerable or not.";
+  script_tag(name:"summary", value:"This host is running IBM solidDB and is prone to denial of service
+vulnerability.");
+  script_tag(name:"vuldetect", value:"Get the installed version of IBM solidDB with the help of detect NVT and check
+the version is vulnerable or not.");
+  script_tag(name:"solution", value:"Upgrade IBM solidDB to 6.5 FP9, 7.0 FP1 or later,
+http://www-03.ibm.com/software/products/us/en/ibmsoli");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"insight", value:"The flaw is due to an unspecified error when handling a SELECT statement
+containing a rownum condition with a subquery.");
+  script_tag(name:"affected", value:"IBM solidDB 6.5 before FP9 and 7.0 before FP1");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause a denial of service.
 
-  tag_insight =
-"The flaw is due to an unspecified error when handling a SELECT statement
-containing a rownum condition with a subquery.";
-
-  tag_impact =
-"Successful exploitation will allow attacker to cause a denial of service.
-
-Impact Level: Application";
-
-  tag_affected =
-"IBM solidDB 6.5 before FP9 and 7.0 before FP1";
-
-  tag_solution =
-"Upgrade IBM solidDB to 6.5 FP9, 7.0 FP1 or later,
-http://www-03.ibm.com/software/products/us/en/ibmsoli";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/47654");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/72651");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id?1026555");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg1IC79861");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg1IC80675");
+Impact Level: Application");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/47654");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/72651");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id?1026555");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg1IC79861");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg1IC80675");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
@@ -88,19 +69,14 @@ http://www-03.ibm.com/software/products/us/en/ibmsoli";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ibmVer  = "";
-ibmPort = "";
-
-if(!ibmPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!ibmPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-if(!ibmVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:ibmPort)){
+if(!ibmVer = get_app_version(cpe:CPE, port:ibmPort)){
   exit(0);
 }
 
-## Check the version 6.5.x before 6.5.0.9
 if(ibmVer =~ "^6\.5\.*")
 {
   if(version_is_less(version:ibmVer, test_version:"6.5.0.9"))
@@ -110,7 +86,6 @@ if(ibmVer =~ "^6\.5\.*")
   }
 }
 
-## Check the version 7.0.x before 7.0.0.1
 if(version_is_equal(version:ibmVer, test_version:"7.0.0.0")){
   security_message(port:ibmPort);
 }

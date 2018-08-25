@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_watson_management_console_lfi.nasl 9984 2018-05-28 14:36:22Z cfischer $
+# $Id: gb_watson_management_console_lfi.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Watson Management Console Directory Traversal Vulnerability
 #
@@ -27,27 +27,30 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103641");
- script_bugtraq_id(57237);
- script_version ("$Revision: 9984 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.103641");
+  script_bugtraq_id(57237);
+  script_version("$Revision: 11103 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
- script_name("Watson Management Console Directory Traversal Vulnerability");
+  script_name("Watson Management Console Directory Traversal Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/57237");
- script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/23995/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/57237");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/23995/");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:36:22 +0200 (Mon, 28 May 2018) $");
- script_tag(name:"creation_date", value:"2013-01-10 13:28:43 +0100 (Thu, 10 Jan 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : "It has been found that Watson Management Console is prone to a
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-01-10 13:28:43 +0100 (Thu, 10 Jan 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+
+  script_tag(name:"summary", value:"It has been found that Watson Management Console is prone to a
 directory traversal vulnerability. The issue is due to the server's
 failure to properly validate user supplied http requests.
 
@@ -56,7 +59,6 @@ directory and view any web server readable files. Information acquired
 by exploiting this issue may be used to aid further attacks against a
 vulnerable system.");
 
- script_tag(name:"solution_type", value:"NoneAvailable");
 
  exit(0);
 }

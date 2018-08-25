@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_seowonintech_devices_lfi_06_13.nasl 6698 2017-07-12 12:00:17Z cfischer $
+# $Id: gb_multiple_seowonintech_devices_lfi_06_13.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Seowonintech Routers Local File Include Vulnerability
 #
@@ -25,7 +25,29 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote Seowonintech Router is prone to a local file-include vulnerability because it
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103744");
+  script_version("$Revision: 11103 $");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
+
+  script_name("Seowonintech Routers Local File Include Vulnerability");
+
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/seowonintech-routers-remote-root-file-dumper");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-06-24 12:38:49 +0200 (Mon, 24 Jun 2013)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("thttpd/banner");
+  script_tag(name:"solution", value:"Ask the vendor for an Update.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The remote Seowonintech Router is prone to a local file-include vulnerability because it
 fails to properly sanitize user-supplied input.
 
 An attacker can exploit this vulnerability to obtain potentially
@@ -34,35 +56,7 @@ the context of the webserver process. This may allow the attacker
 to compromise the application and the computer; other attacks are
 also possible.
 
-Seowonintech Router Firmware <= 2.3.9 is vulnerable; other versions may also be affected.";
-
-
-tag_solution = "Ask the vendor for an Update.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103744";
-
-if (description)
-{
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 6698 $");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-
- script_name("Seowonintech Routers Local File Include Vulnerability");
-
- script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/seowonintech-routers-remote-root-file-dumper");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:00:17 +0200 (Wed, 12 Jul 2017) $");
- script_tag(name:"creation_date", value:"2013-06-24 12:38:49 +0200 (Mon, 24 Jun 2013)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("thttpd/banner");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+Seowonintech Router Firmware <= 2.3.9 is vulnerable; other versions may also be affected.");
  exit(0);
 }
 
@@ -83,6 +77,6 @@ if(http_vuln_check(port:port, url:url,pattern:"root:.*:0:[01]:")) {
   security_message(port:port);
   exit(0);
 
-}  
+}
 
 exit(0);

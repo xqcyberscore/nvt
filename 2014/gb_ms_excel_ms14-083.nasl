@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_excel_ms14-083.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_ms_excel_ms14-083.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Microsoft Office Excel Remote Code Execution Vulnerabilities (3017347)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805023");
-  script_version("$Revision: 6637 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-6360", "CVE-2014-6361");
   script_bugtraq_id(71500, 71501);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-12-10 10:25:07 +0530 (Wed, 10 Dec 2014)");
   script_name("Microsoft Office Excel Remote Code Execution Vulnerabilities (3017347)");
 
@@ -52,8 +52,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Excel 2013
+  script_tag(name:"affected", value:"Microsoft Excel 2013
   Microsoft Excel 2007 Service Pack 3 and prior
   Microsoft Excel 2010 Service Pack 2 and prior");
 
@@ -64,9 +63,9 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/61151");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3017347");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms14-083");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/61151");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/3017347");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms14-083");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -79,19 +78,14 @@ if(description)
 include("smb_nt.inc");
 include("version_func.inc");
 
-# Variable Initialization
-excelVer = "";
-
-## Check for Office Excel 2007/2010/2013
 excelVer = get_kb_item("SMB/Office/Excel/Version");
 if(excelVer =~ "^(12|14|15)\..*")
 {
-  ## Check version Excel.exe
   if(version_in_range(version:excelVer, test_version:"12.0", test_version2:"12.0.6712.4999") ||
      version_in_range(version:excelVer, test_version:"14.0", test_version2:"14.0.7140.4999") ||
      version_in_range(version:excelVer, test_version:"15.0", test_version2:"15.0.4675.999"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

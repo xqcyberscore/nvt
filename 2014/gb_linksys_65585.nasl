@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linksys_65585.nasl 7589 2017-10-27 07:03:33Z cfischer $
+# $Id: gb_linksys_65585.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Multiple Linksys Devices Multiple Remote Code Execution Vulnerabilities
 #
@@ -29,10 +29,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103909");
   script_bugtraq_id(65585);
-  script_version("$Revision: 7589 $");
+  script_version("$Revision: 11108 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-27 09:03:33 +0200 (Fri, 27 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-02-18 12:42:30 +0100 (Tue, 18 Feb 2014)");
   script_name("Multiple Linksys Devices Multiple Remote Code Execution Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -45,11 +45,14 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65585");
   script_xref(name:"URL", value:"http://www.linksys.com");
 
-  tag_impact = "An attacker can exploit these issues to execute arbitrary code in the
+  script_tag(name:"impact", value:"An attacker can exploit these issues to execute arbitrary code in the
   context of the affected device. Successful exploitation can completely
-  compromise the vulnerable device.";
-
-  tag_affected = "E4200
+  compromise the vulnerable device.");
+  script_tag(name:"vuldetect", value:"Try to execute a command on the remote host");
+  script_tag(name:"solution", value:"Ask the Vendor for an update.");
+  script_tag(name:"summary", value:"Multiple Linksys devices are prone to multiple remote code-execution
+  vulnerabilities.");
+  script_tag(name:"affected", value:"E4200
   E3200
   E3000
   E2500
@@ -73,22 +76,10 @@ if(description)
   WRT160N
   WRT150N
 
-  This list may not be accurate and/or complete!";
-
-  tag_summary = "Multiple Linksys devices are prone to multiple remote code-execution
-  vulnerabilities.";
-
-  tag_solution = "Ask the Vendor for an update.";
-  tag_vuldetect = "Try to execute a command on the remote host";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
+  This list may not be accurate and/or complete!");
 
   script_tag(name:"qod_type", value:"remote_analysis");
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
@@ -115,8 +106,8 @@ foreach i( sleep ) {
         'Host: ' + host + '\r\n' +
         'Authorization: Basic ' + userpass64 + '\r\n' +
         'Content-Type: application/x-www-form-urlencoded\r\n' +
-        'Content-Length: ' + len + '\r\n' + 
-        '\r\n' + 
+        'Content-Length: ' + len + '\r\n' +
+        '\r\n' +
         ex;
 
   start = unixtime();

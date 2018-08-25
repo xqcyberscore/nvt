@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_activemq_cron_jobs_xss_vuln.nasl 7687 2017-11-07 13:36:38Z cfischer $
+# $Id: gb_apache_activemq_cron_jobs_xss_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Apache ActiveMQ < 5.9.0 Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:activemq";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803866");
-  script_version("$Revision: 7687 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2013-1879", "CVE-2013-1880");
   script_bugtraq_id(61142, 65615);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-07 14:36:38 +0100 (Tue, 07 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-13 14:52:49 +0530 (Tue, 13 Aug 2013)");
   script_name("Apache ActiveMQ < 5.9.0 Multiple Cross Site Scripting Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -48,36 +48,24 @@ if(description)
   script_xref(name:"URL", value:"https://issues.apache.org/jira/browse/AMQ-4397");
   script_xref(name:"URL", value:"https://issues.apache.org/jira/browse/AMQ-4398");
 
-  tag_summary = "This host is installed with Apache ActiveMQ and is prone to multiple
-  cross site scripting vulnerabilities.";
+  script_tag(name:"summary", value:"This host is installed with Apache ActiveMQ and is prone to multiple
+  cross site scripting vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Send a Crafted HTTP POST request and check whether it is able to read the
+  cookie or not.");
+  script_tag(name:"solution", value:"Upgrade to version 5.9.0 or later,
 
-  tag_vuldetect = "Send a Crafted HTTP POST request and check whether it is able to read the
-  cookie or not.";
-
-  tag_insight = "Multiple flaws exist due to:
+  For Updates refer to http://activemq.apache.org");
+  script_tag(name:"insight", value:"Multiple flaws exist due to:
 
   - an improper validation of the command in a user crontab file upon processing by the scheduled.jsp script
 
   - the Portfolio publisher servlet in the demo web application allows remote attackers to inject arbitrary web
-  script or HTML via the refresh parameter to demo/portfolioPublish";
-
-  tag_impact = "Successful exploitation will allow attacker to execute arbitrary HTML and
+  script or HTML via the refresh parameter to demo/portfolioPublish");
+  script_tag(name:"affected", value:"Apache ActiveMQ 5.8.0 and prior");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site.
 
-  Impact Level: Application";
-
-  tag_affected = "Apache ActiveMQ 5.8.0 and prior";
-
-  tag_solution = "Upgrade to version 5.9.0 or later,
-
-  For Updates refer to http://activemq.apache.org";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"impact", value:tag_impact);
+  Impact Level: Application");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_server_mult_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_open_xchange_server_mult_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Open-Xchange Server Multiple Vulnerabilities
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803182");
-  script_version("$Revision: 6093 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2013-1646", "CVE-2013-1647", "CVE-2013-1648", "CVE-2013-1650",
                 "CVE-2013-1651");
   script_bugtraq_id(58465, 58473, 58475, 58469, 58470);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-18 10:14:58 +0530 (Mon, 18 Mar 2013)");
   script_name("Open-Xchange Server Multiple Vulnerabilities");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/52603");
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Mar/74");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/24791");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120785");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/52603");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Mar/74");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/24791");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/120785");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
@@ -49,13 +49,13 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
   script_dependencies("find_service.nasl", "http_version.nasl");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML or
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML or
   web script in a user's browser session in context of an affected site,
   compromise the application and access or modify data in the database.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Open-Xchange Server versions prior to 6.20.7-rev14, 6.22.0-rev13
+  script_tag(name:"affected", value:"Open-Xchange Server versions prior to 6.20.7-rev14, 6.22.0-rev13
   and 6.22.1-rev14.");
-  script_tag(name : "insight" , value : "- Input passed via arbitrary GET parameters to /servlet/TestServlet is not
+  script_tag(name:"insight", value:"- Input passed via arbitrary GET parameters to /servlet/TestServlet is not
     properly sanitized before being returned to the user.
   - Input related to the 'Source' field when creating subscriptions is not
     properly sanitized before being used. This can be exploited to perform
@@ -70,9 +70,9 @@ if(description)
     properly sanitized before being used to construct HTTP response headers.
   - Certain input related to RSS feed contents is not properly sanitized before
     being used. This can be exploited to insert arbitrary HTML and script code.");
-  script_tag(name : "solution" , value : "Update to versions 6.20.7-rev14, 6.22.0-rev13, or 6.22.1-rev14,
+  script_tag(name:"solution", value:"Update to versions 6.20.7-rev14, 6.22.0-rev13, or 6.22.1-rev14,
   For updates refer to http://www.open-xchange.com/home.html");
-  script_tag(name : "summary" , value : "This host is running Open-Xchange Server and is prone to multiple
+  script_tag(name:"summary", value:"This host is running Open-Xchange Server and is prone to multiple
   vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -85,16 +85,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-url = "";
-port = "";
-sndReq = "";
-rcvRes = "";
-
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Iterate over the possible directories
 foreach dir (make_list_unique("/", "/ox6", "/Open-Xchange", cgi_dirs(port:port)))
 {
 
@@ -104,13 +96,10 @@ foreach dir (make_list_unique("/", "/ox6", "/Open-Xchange", cgi_dirs(port:port))
   sndReq = http_get(item:dir + "/ox.html", port:port);
   rcvRes = http_keepalive_send_recv(port:port, data:sndReq);
 
-  ## confirm the Application
   if(">Open-Xchange Server<" >< rcvRes)
   {
-    ## Construct Attack Request
     url = dir + "/servlet/TestServlet?foo=<script>alert(document.cookie)</script>";
 
-    ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:port, url:url, check_header:TRUE,
              pattern:"<script>alert\(document.cookie\)</script>"))
     {

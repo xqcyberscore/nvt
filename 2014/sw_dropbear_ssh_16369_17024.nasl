@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_dropbear_ssh_16369_17024.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: sw_dropbear_ssh_16369_17024.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Dropbear SSH < 0.48 Multiple Vulnerabilities
 #
@@ -29,14 +29,14 @@ CPE = 'cpe:/a:matt_johnston:dropbear_ssh_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105118");
-  script_version("$Revision: 6715 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-11-14 12:00:00 +0100 (Fri, 14 Nov 2014)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
-  script_cve_id("CVE-2006-0225","CVE-2006-1206");
-  script_bugtraq_id(16369,17024);
+  script_cve_id("CVE-2006-0225", "CVE-2006-1206");
+  script_bugtraq_id(16369, 17024);
 
   script_name("Dropbear SSH < 0.48 Multiple Vulnerabilities");
 
@@ -49,17 +49,17 @@ if(description)
   script_require_ports("Services/ssh", 22);
   script_mandatory_keys("dropbear/installed");
 
-  script_tag(name : "summary" , value : "This host is installed with Dropbear SSH and
+  script_tag(name:"summary", value:"This host is installed with Dropbear SSH and
   is prone to multiple vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Check the version.");
-  script_tag(name : "insight" , value : "Multiple flaws are due to,
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"insight", value:"Multiple flaws are due to,
   - A large number of connection attempts that exceeds the MAX_UNAUTH_CLIENTS defined
   value of 30 is possible.
   - The shipped scp command of OpenSSH 4.2p1 expands filenames that contain shell metacharacters or spaces twice.");
-  script_tag(name : "impact" , value : "The flaws allows remote attackers to cause a denial of service
+  script_tag(name:"impact", value:"The flaws allows remote attackers to cause a denial of service
   (connection slot exhaustion) and local attackers to execute arbitrary commands.");
-  script_tag(name : "affected" , value : "Versions prior to Dropbear SSH 0.48 are vulnerable.");
-  script_tag(name : "solution" , value : "Updates are available."); 
+  script_tag(name:"affected", value:"Versions prior to Dropbear SSH 0.48 are vulnerable.");
+  script_tag(name:"solution", value:"Updates are available.");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/17024");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/16369");
@@ -91,6 +91,6 @@ if( version_is_less( version:ver[2], test_version:"48" ) ) {
            'Fixed version:     ' + "0.48" + '\n';
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

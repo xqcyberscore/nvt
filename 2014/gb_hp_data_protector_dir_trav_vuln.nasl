@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_dir_trav_vuln.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_hp_data_protector_dir_trav_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # HP (OpenView Storage) Data Protector Backup Client Service Directory Traversal
 #
@@ -33,9 +33,9 @@ if(description)
   script_cve_id("CVE-2013-6194");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 6750 $");
+  script_version("$Revision: 11108 $");
   script_name("HP (OpenView Storage) Data Protector Backup Client Service Directory Traversal");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-02-11 11:34:29 +0700 (Tue, 11 Feb 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -47,28 +47,16 @@ if(description)
   script_xref(name:"URL", value:"https://h20566.www2.hp.com/portal/site/hpsc/public/kb/docDisplay/?docId=emr_na-c03822422");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/31181/");
 
-  tag_insight = "There is a directory traversal vulnerability in HP (OpenView Storage) Data Protector.
+  script_tag(name:"impact", value:"A remote attacker can upload and execute abitrary code.");
+  script_tag(name:"affected", value:"HP (OpenView Storage) Data Protector 6.21 and prior.");
+  script_tag(name:"insight", value:"There is a directory traversal vulnerability in HP (OpenView Storage) Data Protector.
   The vulnerability is in the backup client service when parsing packets with
-  opcode 42.";
-
-  tag_impact = "A remote attacker can upload and execute abitrary code.";
-
-  tag_affected = "HP (OpenView Storage) Data Protector 6.21 and prior.";
-
-  tag_summary = "This host is running HP (OpenView Storage) Data Protector and is prone to a
-  directory traversal vulnerability which might lead to execution of arbitrary code.";
-
-  tag_solution = "Apply the patch from the link below or update to a newer version.
-  https://ovrd.external.hp.com/hpp/hpp2rd";
-
-  tag_vuldetect = "Checks the installed version.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
+  opcode 42.");
+  script_tag(name:"summary", value:"This host is running HP (OpenView Storage) Data Protector and is prone to a
+  directory traversal vulnerability which might lead to execution of arbitrary code.");
+  script_tag(name:"solution", value:"Apply the patch from the link below or update to a newer version.
+  https://ovrd.external.hp.com/hpp/hpp2rd");
+  script_tag(name:"vuldetect", value:"Checks the installed version.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

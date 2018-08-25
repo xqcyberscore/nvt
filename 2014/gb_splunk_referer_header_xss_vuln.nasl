@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_referer_header_xss_vuln.nasl 10149 2018-06-11 08:16:28Z ckuersteiner $
+# $Id: gb_splunk_referer_header_xss_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Splunk Referer Header Cross-Site Scripting Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/a:splunk:splunk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804479");
-  script_version("$Revision: 10149 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-5198");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 10:16:28 +0200 (Mon, 11 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-08 13:34:59 +0530 (Mon, 08 Sep 2014)");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Splunk Referer Header Cross-Site Scripting Vulnerability");
 
-  script_tag(name: "summary" , value: "This host is installed with Splunk and
+  script_tag(name:"summary", value:"This host is installed with Splunk and
   is prone to cross-site scripting vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Send a crafted data via HTTP GET
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET
   request and check whether it is able to read cookie or not.");
 
-  script_tag(name: "insight" , value: "Input passed via the Referer header
+  script_tag(name:"insight", value:"Input passed via the Referer header
   in HTTP GET is not properly sanitized before being returned to the user");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   attacker to execute arbitrary HTML and script code in a user's browser
   session in the context of an affected site.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value: "Splunk Version 6.1.x before 6.1.3");
+  script_tag(name:"affected", value:"Splunk Version 6.1.x before 6.1.3");
 
-  script_tag(name: "solution" , value: "Upgrade to version 6.1.3 or later,
+  script_tag(name:"solution", value:"Upgrade to version 6.1.3 or later,
   For updates refer to http://www.splunk.com/download");
 
-  script_xref(name: "URL", value: "http://secunia.com/advisories/59940");
-  script_xref(name: "URL", value: "http://www.splunk.com/view/SP-CAAAM9H");
-  script_xref(name: "URL", value: "http://www.securitytracker.com/id/1030690");
-  script_xref(name: "URL", value: "http://packetstormsecurity.com/files/126813");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/59940");
+  script_xref(name:"URL", value:"http://www.splunk.com/view/SP-CAAAM9H");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1030690");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/126813");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

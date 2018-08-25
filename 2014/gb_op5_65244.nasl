@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_op5_65244.nasl 10904 2018-08-10 14:24:40Z mmartin $
+# $Id: gb_op5_65244.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # op5 Monitor  Unspecified Information Disclosure Vulnerability
 #
@@ -28,40 +28,40 @@ CPE = "cpe:/a:op5:monitor";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103905");
- script_bugtraq_id(65244);
- script_cve_id("CVE-2013-6141");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version("$Revision: 10904 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103905");
+  script_bugtraq_id(65244);
+  script_cve_id("CVE-2013-6141");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11108 $");
 
- script_name("op5 Monitor  Unspecified Information Disclosure Vulnerability");
+  script_name("op5 Monitor  Unspecified Information Disclosure Vulnerability");
 
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65244");
- script_xref(name:"URL", value:"https://bugs.op5.com/view.php?id=7677");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65244");
+  script_xref(name:"URL", value:"https://bugs.op5.com/view.php?id=7677");
 
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2014-02-11 12:56:33 +0100 (Tue, 11 Feb 2014)");
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-02-11 12:56:33 +0100 (Tue, 11 Feb 2014)");
+  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_op5_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("OP5/installed");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_op5_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("OP5/installed");
 
- script_tag(name:"impact", value:"Successfully exploiting this issue may allow an attacker to obtain
+  script_tag(name:"impact", value:"Successfully exploiting this issue may allow an attacker to obtain
 sensitive information that may aid in further attacks.");
- script_tag(name:"vuldetect", value:"Check the version.");
- script_tag(name:"insight", value:"Unspecified vulnerability in op5 Monitor before 6.1.3 allows
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"insight", value:"Unspecified vulnerability in op5 Monitor before 6.1.3 allows
 attackers to read arbitrary files via unknown vectors related to lack of
 authorization.");
- script_tag(name:"solution", value:"Updates are available.");
- script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"summary", value:"op5 Monitor is prone to an unspecified information-disclosure
+  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"op5 Monitor is prone to an unspecified information-disclosure
 vulnerability.");
- script_tag(name:"affected", value:"op5 Monitor 6.1.3 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"op5 Monitor 6.1.3 is vulnerable; other versions may also be affected.");
 
  exit(0);
 }

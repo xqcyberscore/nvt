@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_eventlog_analyzer_69482.nasl 10394 2018-07-04 08:14:50Z ckuersteiner $
+# $Id: gb_manageengine_eventlog_analyzer_69482.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # ManageEngine EventLog Analyzer Multiple Security Vulnerabilities
 #
@@ -29,27 +29,27 @@ CPE = 'cpe:/a:zohocorp:manageengine_eventlog_analyzer';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105083");
- script_bugtraq_id(69482);
- script_cve_id("CVE-2014-6037");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version("$Revision: 10394 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105083");
+  script_bugtraq_id(69482);
+  script_cve_id("CVE-2014-6037");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11108 $");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_name("ManageEngine EventLog Analyzer Multiple Security Vulnerabilities");
+  script_name("ManageEngine EventLog Analyzer Multiple Security Vulnerabilities");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/69482");
- script_xref(name:"URL", value:"http://www.manageengine.com/products/eventlog/");
- script_xref(name:"URL", value:"https://www.mogwaisecurity.de/advisories/MSA-2014-01.txt");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/69482");
+  script_xref(name:"URL", value:"http://www.manageengine.com/products/eventlog/");
+  script_xref(name:"URL", value:"https://www.mogwaisecurity.de/advisories/MSA-2014-01.txt");
 
- script_tag(name:"impact", value:"Attackers can exploit these issues to execute arbitrary code and gain
+  script_tag(name:"impact", value:"Attackers can exploit these issues to execute arbitrary code and gain
 unauthorized access to the critical sections of the application.");
 
- script_tag(name:"vuldetect", value:"Upload a special crafted zip file and check if /openvas.jsp exist afterwards and contains an expected string.");
+  script_tag(name:"vuldetect", value:"Upload a special crafted zip file and check if /openvas.jsp exist afterwards and contains an expected string.");
 
- script_tag(name:"insight", value:"1)Unauthenticated remote code execution
+  script_tag(name:"insight", value:"1)Unauthenticated remote code execution
 ME EventLog Analyzer contains a 'agentUpload' servlet which is used by Agents
 to send log data as zip files to the central server. Files can be uploaded
 without authentication and are stored/decompressed in the 'data' subdirectory.
@@ -65,7 +65,7 @@ privileged user (for example guest) can therefore access critical sections of th
 interface, by directly calling the corresponding URLs. This can be used to access the
 database browser of the application which gives the attacker full access to the database.");
 
- script_tag(name:"solution", value:"Ask the Vendor for an update. Workaround:
+  script_tag(name:"solution", value:"Ask the Vendor for an update. Workaround:
 
 1) Unauthenticated remote code execution
 
@@ -86,21 +86,21 @@ following lines in the web.xml file (webapps/event/WEB-INF/web.xml) and restart 
 
 No workaround, reduce the attack surface by disabling unused low privileged accounts like 'guest'.");
 
- script_tag(name:"summary", value:"ManageEngine EventLog Analyzer is prone to an arbitrary file-upload
+  script_tag(name:"summary", value:"ManageEngine EventLog Analyzer is prone to an arbitrary file-upload
 vulnerability and an unauthorized-access vulnerability.");
 
- script_tag(name:"affected", value:"EventLog Analyzer 9.9 Build 9002 and prior are vulnerable.");
+  script_tag(name:"affected", value:"EventLog Analyzer 9.9 Build 9002 and prior are vulnerable.");
 
- script_tag(name:"last_modification", value:"$Date: 2018-07-04 10:14:50 +0200 (Wed, 04 Jul 2018) $");
- script_tag(name:"creation_date", value:"2014-09-09 12:16:43 +0200 (Tue, 09 Sep 2014)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_manageengine_eventlog_analyzer_detect.nasl");
- script_mandatory_keys("me_eventlog_analyzer/installed");
- script_require_ports("Services/www", 8400);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-09-09 12:16:43 +0200 (Tue, 09 Sep 2014)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_manageengine_eventlog_analyzer_detect.nasl");
+  script_mandatory_keys("me_eventlog_analyzer/installed");
+  script_require_ports("Services/www", 8400);
 
- script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"qod_type", value:"remote_app");
 
  exit(0);
 }

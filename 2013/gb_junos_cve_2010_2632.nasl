@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2010_2632.nasl 7140 2017-09-15 09:41:22Z cfischer $
+# $Id: gb_junos_cve_2010_2632.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
-# Junos GNU libc GLOB_LIMIT DoS Vulnerability 
+# Junos GNU libc GLOB_LIMIT DoS Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103950");
-  script_version ("$Revision: 7140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 11103 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-14 13:05:18 +0700 (Thu, 14 Nov 2013)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -48,24 +48,24 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version");
 
-  script_tag(name : "summary" , value : "Remote authenticated users can cause a partial denial of
+  script_tag(name:"summary", value:"Remote authenticated users can cause a partial denial of
 service via crafted glob expressions.");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "The glob implementation in libc allows authenticated remote
+  script_tag(name:"insight", value:"The glob implementation in libc allows authenticated remote
 users to cause a denial of service via crafted glob expressions that do not match any pathnames.");
 
-  script_tag(name : "impact" , value : "Attacks against Junos OS with FTP services enabled can cause a
+  script_tag(name:"impact", value:"Attacks against Junos OS with FTP services enabled can cause a
 partial DoS.");
 
-  script_tag(name : "affected" , value : "Plattforms running Junos OS 10.4, 11.4, 12.1, 12.2, 12.3,
+  script_tag(name:"affected", value:"Plattforms running Junos OS 10.4, 11.4, 12.1, 12.2, 12.3,
 13.1.");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper. As
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. As
 a workaround ACLs or firewall filters to limit FTP access to the router only
 from trusted hosts.");
 

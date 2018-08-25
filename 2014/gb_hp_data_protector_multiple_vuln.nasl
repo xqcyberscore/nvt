@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_multiple_vuln.nasl 7203 2017-09-20 13:01:39Z cfischer $
+# $Id: gb_hp_data_protector_multiple_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # HP (OpenView Storage) Data Protector Multiple Vulnerabilities
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804402");
-  script_version("$Revision: 7203 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2013-2344", "CVE-2013-2345", "CVE-2013-2346", "CVE-2013-2347",
                 "CVE-2013-2348", "CVE-2013-2349", "CVE-2013-2350", "CVE-2013-6195",
                 "CVE-2011-0923", "CVE-2014-2623");
   script_bugtraq_id(64647, 64647, 64647, 64647, 64647, 64647, 64647, 64647, 46234);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 15:01:39 +0200 (Wed, 20 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-02-18 16:03:46 +0530 (Tue, 18 Feb 2014)");
   script_name("HP (OpenView Storage) Data Protector Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -59,13 +59,12 @@ if(description)
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-14-009");
   script_xref(name:"URL", value:"http://h20565.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c03822422");
 
-  tag_summary = "The host is running HP (OpenView Storage) Data Protector and is prone to multiple
-  vulnerabilities.";
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to bypass certain security
+  restrictions, manipulate certain data, and compromise a vulnerable system.
 
-  tag_vuldetect = "Construct the crafted TCP request with command and check it is possible
-  to execute the command";
-
-  tag_insight = "Multiple flaws are due to,
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"HP (OpenView Storage) Data Protector v6.2X, v7.X, v8.X and v9.X");
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - An error within OmniInet.exe when handling certain messages can be exploited
   to access otherwise restricted files by sending a specially crafted request
@@ -80,24 +79,13 @@ if(description)
   to TCP port 5555.
 
   - A boundary error within crs.exe when parsing opcodes 214, 215, 216, 219, 257,
-  and 263 can be exploited to a cause stack-based buffer overflow.";
-
-  tag_impact = "Successful exploitation will allow remote attackers to bypass certain security
-  restrictions, manipulate certain data, and compromise a vulnerable system.
-
-  Impact Level: System/Application";
-
-  tag_affected = "HP (OpenView Storage) Data Protector v6.2X, v7.X, v8.X and v9.X";
-
-  tag_solution = "Apply the patch from below link,
-  https://h20564.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c04373818";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
+  and 263 can be exploited to a cause stack-based buffer overflow.");
+  script_tag(name:"summary", value:"The host is running HP (OpenView Storage) Data Protector and is prone to multiple
+  vulnerabilities.");
+  script_tag(name:"solution", value:"Apply the patch from below link,
+  https://h20564.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c04373818");
+  script_tag(name:"vuldetect", value:"Construct the crafted TCP request with command and check it is possible
+  to execute the command");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -168,13 +156,10 @@ sleep( 7 );
 ## Receive the data
 hdpRes = recv( socket:soc, length:4096 );
 
-## Get the response length
 len = strlen( hdpRes );
 if( ! len ) exit( 0 );
 
-## Iterate response by each characters
 for( i = 0; i < len; i = i + 1 ) {
-  ## Get only Characters from response
   if( ( ord( hdpRes[i] ) >= 61 ) ) {
     hdpData = hdpData + hdpRes[i];
   }
@@ -182,7 +167,6 @@ for( i = 0; i < len; i = i + 1 ) {
 
 close( soc );
 
-## Confirm the exploit
 if( "NETUSER" >< hdpData && "viewThenameoftheuseraccountcanhave" >< hdpData ) {
   security_message( port:port );
   exit( 0 );

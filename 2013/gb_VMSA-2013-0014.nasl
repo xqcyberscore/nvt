@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2013-0014.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_VMSA-2013-0014.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # VMSA-2013-0014 VMware Workstation, Fusion, ESXi and ESX patches address a guest privilege escalation
 #
@@ -25,28 +25,28 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "VMware Workstation, Fusion, ESXi and ESX patches
-address a vulnerability in the LGTOSYNC.SYS driver which could result
-in a privilege escalation on older Windows-based Guest Operating
-Systems. ";
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103851");
+  script_cve_id("CVE-2013-3519");
+  script_tag(name:"cvss_base", value:"7.9");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11103 $");
+  script_name("VMSA-2013-0014 VMware Workstation, Fusion, ESXi and ESX patches address a guest privilege escalation");
 
-tag_solution = "Apply the missing patch(es).";
 
-tag_affected = "VMware Workstation 9.x prior to version 9.0.3
-VMware Player 5.x prior to version 5.0.3
-VMware Fusion 5.x prior to version 5.0.4
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0014.html");
 
-VMware ESXi 5.1 without patch ESXi510-201304102
-VMware ESXi 5.0 without patch ESXi500-201303102
-VMware ESXi 4.1 without patch ESXi410-201301402
-VMware ESXi 4.0 without patch ESXi400-201305401
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-12-05 11:04:01 +0100 (Thu, 05 Dec 2013)");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_esxi_init.nasl");
+  script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
 
-VMware ESX 4.1 without patch ESX410-201301401
-VMware ESX 4.0 without patch ESX400-201305401";
-
-tag_vuldetect = "Checks for missing patches.";
-
-tag_insight = "a. VMware LGTOSYNC privilege escalation.
+  script_tag(name:"vuldetect", value:"Checks for missing patches.");
+  script_tag(name:"insight", value:"a. VMware LGTOSYNC privilege escalation.
 
 VMware ESX, Workstation and Fusion contain a vulnerability in the
 handling of control code in lgtosync.sys. A local malicious user may
@@ -57,35 +57,25 @@ on ESXi and ESX; or Windows XP on Workstation and Fusion.
 
 The vulnerability does not allow for privilege escalation from the
 Guest Operating System to the host. This means that host memory can
-not be manipulated from the Guest Operating System. ";
+not be manipulated from the Guest Operating System. ");
+  script_tag(name:"solution", value:"Apply the missing patch(es).");
+  script_tag(name:"summary", value:"VMware Workstation, Fusion, ESXi and ESX patches
+address a vulnerability in the LGTOSYNC.SYS driver which could result
+in a privilege escalation on older Windows-based Guest Operating
+Systems. ");
+  script_tag(name:"affected", value:"VMware Workstation 9.x prior to version 9.0.3
+VMware Player 5.x prior to version 5.0.3
+VMware Fusion 5.x prior to version 5.0.4
 
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103851");
- script_cve_id("CVE-2013-3519");
- script_tag(name:"cvss_base", value:"7.9");
- script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 9353 $");
- script_name("VMSA-2013-0014 VMware Workstation, Fusion, ESXi and ESX patches address a guest privilege escalation");
+VMware ESXi 5.1 without patch ESXi510-201304102
+VMware ESXi 5.0 without patch ESXi500-201303102
+VMware ESXi 4.1 without patch ESXi410-201301402
+VMware ESXi 4.0 without patch ESXi400-201305401
 
-
- script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0014.html");
-
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2013-12-05 11:04:01 +0100 (Thu, 05 Dec 2013)");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esxi_init.nasl");
- script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
-
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+VMware ESX 4.1 without patch ESX410-201301401
+VMware ESX 4.0 without patch ESX400-201305401");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 

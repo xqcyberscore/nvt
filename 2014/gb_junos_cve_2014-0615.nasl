@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-0615.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_junos_cve_2014-0615.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Junos Multiple Privilege Escalation Vulnerabilities in Junos CLI
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103970");
-  script_version ("$Revision: 6715 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 09:45:15 +0700 (Tue, 21 Jan 2014)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,27 +50,27 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version");
 
-  script_tag(name : "summary" , value : "Privilege escalation vulnerability through certain CLI commands.");
+  script_tag(name:"summary", value:"Privilege escalation vulnerability through certain CLI commands.");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "Certain combinations of Junos OS CLI commands and arguments have
+  script_tag(name:"insight", value:"Certain combinations of Junos OS CLI commands and arguments have
 been found to be exploitable in a way that can allow root access to the operating system.");
 
-  script_tag(name : "impact" , value : "Local attackers with permissions to certain CLI commands can
+  script_tag(name:"impact", value:"Local attackers with permissions to certain CLI commands can
 achieve elevated privileges and gain complete control of the device.");
 
-  script_tag(name : "affected" , value : "Junos OS 10.4, 11.4, 12.1, 12.2, 12.3, 13.1, 13.2");
+  script_tag(name:"affected", value:"Junos OS 10.4, 11.4, 12.1, 12.2, 12.3, 13.1, 13.2");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10608");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64762");
 
- 
+
   exit(0);
 }
 
@@ -96,7 +96,7 @@ if (revcomp(a:build2check, b:"20131217") >= 0) {
 if (revcomp(a:version, b:"10.4R16") < 0) {
   security_message(port:0, data:desc);
   exit(0);
-} 
+}
 
 if (version =~ "^11") {
   if (revcomp(a:version, b:"11.4R10") < 0) {

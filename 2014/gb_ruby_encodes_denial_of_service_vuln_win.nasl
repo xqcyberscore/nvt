@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_encodes_denial_of_service_vuln_win.nasl 8196 2017-12-20 12:13:37Z cfischer $
+# $Id: gb_ruby_encodes_denial_of_service_vuln_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Ruby 'encodes' function Denial-of-Service Vulnerability (Windows)
 #
@@ -29,33 +29,32 @@ CPE = "cpe:/a:ruby-lang:ruby";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804887");
-  script_version("$Revision: 8196 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-4975");
   script_bugtraq_id(68474);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:13:37 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-11-20 17:12:57 +0530 (Thu, 20 Nov 2014)");
   script_name("Ruby 'encodes' function Denial-of-Service Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Ruby and is
+  script_tag(name:"summary", value:"This host is installed with Ruby and is
   prone to denial-of-service vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Flaw exists due to improper bounds checking
+  script_tag(name:"insight", value:"Flaw exists due to improper bounds checking
   by the 'encodes' function in pack.c script.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to cause a denial of service (crash) or possibly execute arbitrary code.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Ruby versions 1.9.3 and earlier and 2.x
+  script_tag(name:"affected", value:"Ruby versions 1.9.3 and earlier and 2.x
   through 2.1.2 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Ruby 2.1.3 or later. For updates
+  script_tag(name:"solution", value:"Upgrade to Ruby 2.1.3 or later. For updates
   refer http://www.ruby-lang.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -77,21 +76,16 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-rubyVer = "";
-
-## Get version from KB
 if(!rubyVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
 if(rubyVer)
 {
-  ## Check for version
   if(version_is_less_equal(version:rubyVer, test_version:"1.9.3")||
      version_in_range(version:rubyVer, test_version:"2.0.0",test_version2:"2.1.2"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

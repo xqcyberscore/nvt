@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_ignite_gall_com_sql_inj_vuln.nasl 10000 2018-05-29 12:20:12Z cfischer $
+# $Id: secpod_joomla_ignite_gall_com_sql_inj_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Joomla! Ignite Gallery Component SQL Injection Vulnerabilities
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:joomla:joomla";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903103");
-  script_version("$Revision: 10000 $");
+  script_version("$Revision: 11103 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 14:20:12 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-01-29 14:06:14 +0530 (Tue, 29 Jan 2013)");
   script_name("Joomla! Ignite Gallery Component SQL Injection Vulnerabilities");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/81055");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/joomla-ignite-gallery-0831-sql-injection");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/119278/Joomla-Ignite-Gallery-0.8.3.1-SQL-Injection.html");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/81055");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/joomla-ignite-gallery-0831-sql-injection");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/119278/Joomla-Ignite-Gallery-0.8.3.1-SQL-Injection.html");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2013 SecPod");
@@ -45,19 +45,19 @@ if (description)
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
   script_require_keys("joomla/installed");
-  script_tag(name : "impact" , value : "Successful exploitation will allow the attackers to manipulate SQL
+  script_tag(name:"impact", value:"Successful exploitation will allow the attackers to manipulate SQL
 queries by injecting arbitrary SQL code.
 
 Impact Level: Application");
-  script_tag(name : "affected" , value : "Joomla! Ignite Gallery Component version 0.8.3.1");
-  script_tag(name : "insight" , value : "The flaw is due to an input passed via the 'gallery' parameter
+  script_tag(name:"affected", value:"Joomla! Ignite Gallery Component version 0.8.3.1");
+  script_tag(name:"insight", value:"The flaw is due to an input passed via the 'gallery' parameter
 to 'index.php' (when 'option' is set to 'com_ignitegallery') is not properly
 sanitised before being used in an SQL query.");
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is installed with Joomla! with Ignite Gallery component
+  script_tag(name:"summary", value:"This host is installed with Joomla! with Ignite Gallery component
 and is prone to multiple sql injection vulnerabilities.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);

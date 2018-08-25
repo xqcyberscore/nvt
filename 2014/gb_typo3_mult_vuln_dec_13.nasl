@@ -28,14 +28,14 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804206");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2013-7073", "CVE-2013-7074", "CVE-2013-7075",
                 "CVE-2013-7078", "CVE-2013-7079", "CVE-2013-7081");
   script_bugtraq_id(64240, 64245, 64256, 64239, 64252, 64238);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-01-06 15:22:20 +0530 (Mon, 06 Jan 2014)");
   script_name("TYPO3 Multiple Vulnerabilities Dec13");
 

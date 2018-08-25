@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-0613.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_junos_cve_2014-0613.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Junos DoS Vulnerability in XNM Command Processor
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103971");
-  script_version ("$Revision: 6735 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 09:42:45 +0700 (Tue, 21 Jan 2014)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -50,27 +50,27 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version");
 
-  script_tag(name : "summary" , value : "Denial of Service vulnerability in XNM command processor.");
+  script_tag(name:"summary", value:"Denial of Service vulnerability in XNM command processor.");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "When xnm-ssl or xnm-clear-text is enabled within the hierarchy
+  script_tag(name:"insight", value:"When xnm-ssl or xnm-clear-text is enabled within the hierarchy
 level of the Junos configuration, an unauthenticated, remote user could exploit the XNM command processor
 to consume excessive amounts of memory.");
 
-  script_tag(name : "impact" , value : "Remote attackers can cause a denial of service condition on the
+  script_tag(name:"impact", value:"Remote attackers can cause a denial of service condition on the
 device.");
 
-  script_tag(name : "affected" , value : "Junos OS 10.4, 11.4, 12.1, 12.2, 12.3, 13.1, 13.2");
+  script_tag(name:"affected", value:"Junos OS 10.4, 11.4, 12.1, 12.2, 12.3, 13.1, 13.2");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10607");
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1029586");
- 
+
   exit(0);
 }
 
@@ -96,7 +96,7 @@ if (revcomp(a:build2check, b:"20131217") >= 0) {
 if (revcomp(a:version, b:"10.4R16") < 0) {
   security_message(port:0, data:desc);
   exit(0);
-} 
+}
 
 if (version =~ "^11") {
   if (revcomp(a:version, b:"11.4R10") < 0) {

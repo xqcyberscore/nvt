@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_geeklog_calendar_plugin_xss_vuln.nasl 9086 2018-03-12 11:54:08Z cfischer $
+# $Id: gb_geeklog_calendar_plugin_xss_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Geeklog Calendar Plugin Cross Site Scripting Vulnerability
 #
@@ -27,38 +27,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804237");
-  script_version("$Revision: 9086 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2013-1470");
   script_bugtraq_id(58209);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-12 12:54:08 +0100 (Mon, 12 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-02-13 18:21:52 +0530 (Thu, 13 Feb 2014)");
   script_name("Geeklog Calendar Plugin Cross Site Scripting Vulnerability");
 
-  script_tag(name : "summary" , value : "This host is running Geeklog and is prone to cross site scripting
+  script_tag(name:"summary", value:"This host is running Geeklog and is prone to cross site scripting
   vulnerability.");
 
-  script_tag(name : "vuldetect" , value : "Send a crafted exploit string via HTTP POST request and check whether it is
+  script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP POST request and check whether it is
   able to read the string or not.");
 
-  script_tag(name : "insight" , value : "The flaw is due to input passed via the 'calendar_type' parameter to
+  script_tag(name:"insight", value:"The flaw is due to input passed via the 'calendar_type' parameter to
   'submit.php', which is not properly sanitised before using it.");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to steal the victim's
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to steal the victim's
   cookie-based authentication credentials.
 
   Impact Level: Application");
 
-  script_tag(name : "affected" , value : "Geeklog 1.8.2 and 2.0.0, Other versions may also be affected.");
+  script_tag(name:"affected", value:"Geeklog 1.8.2 and 2.0.0, Other versions may also be affected.");
 
-  script_tag(name : "solution" , value : "Upgrade to version 1.8.2sr1, 2.0.0rc2 or later,
+  script_tag(name:"solution", value:"Upgrade to version 1.8.2sr1, 2.0.0rc2 or later,
 
   For updates refer to https://www.geeklog.net");
 
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/82326");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120593");
-  script_xref(name : "URL" , value : "http://www.geeklog.net/article.php/geeklog-1.8.2sr1");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/82326");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/120593");
+  script_xref(name:"URL", value:"http://www.geeklog.net/article.php/geeklog-1.8.2sr1");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

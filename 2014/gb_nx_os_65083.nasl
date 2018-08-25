@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nx_os_65083.nasl 7140 2017-09-15 09:41:22Z cfischer $
+# $Id: gb_nx_os_65083.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Cisco NX-OS Software TACACS+ Server Local Privilege Escalation Vulnerability
 #
@@ -25,49 +25,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103889";
-
-tag_insight = "This issue is being tracked by Cisco Bug ID CSCum47367.";
-
-tag_impact = "A local attacker can exploit this issue to execute arbitrary
-commands with elevated privileges.";
-
-tag_affected = "Cisco Nexus 7000 Series Switches running NX-OS 6.1(4)";
-tag_summary = "Cisco NX-OS is prone to a local privilege-escalation vulnerability.";
-tag_solution = "Ask the Vendor for an update.";
-
-tag_vuldetect = "Check the NX OS version.";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_bugtraq_id(65083);
- script_cve_id("CVE-2014-0676");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 7140 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103889");
+  script_bugtraq_id(65083);
+  script_cve_id("CVE-2014-0676");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11108 $");
 
- script_name("Cisco NX-OS Software TACACS+ Server Local Privilege Escalation Vulnerability");
+  script_name("Cisco NX-OS Software TACACS+ Server Local Privilege Escalation Vulnerability");
 
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65083");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityNotice/CVE-2014-0676");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
- script_tag(name:"creation_date", value:"2014-01-23 12:43:53 +0100 (Thu, 23 Jan 2014)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_nx_os_version.nasl");
- script_mandatory_keys("cisco_nx_os/version","cisco_nx_os/model","cisco_nx_os/device");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65083");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityNotice/CVE-2014-0676");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-01-23 12:43:53 +0100 (Thu, 23 Jan 2014)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_nx_os_version.nasl");
+  script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
+
+  script_tag(name:"impact", value:"A local attacker can exploit this issue to execute arbitrary
+commands with elevated privileges.");
+  script_tag(name:"vuldetect", value:"Check the NX OS version.");
+  script_tag(name:"insight", value:"This issue is being tracked by Cisco Bug ID CSCum47367.");
+  script_tag(name:"solution", value:"Ask the Vendor for an update.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Cisco NX-OS is prone to a local privilege-escalation vulnerability.");
+  script_tag(name:"affected", value:"Cisco Nexus 7000 Series Switches running NX-OS 6.1(4)");
 
  exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mem_corrup_vuln_jun14_win.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: gb_realplayer_mem_corrup_vuln_jun14_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # RealNetworks RealPlayer '.3gp' Memory Corruption Vulnerability Jun14 (Windows)
 #
@@ -29,53 +29,31 @@ CPE = "cpe:/a:realnetworks:realplayer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804619");
-  script_version("$Revision: 6692 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-3444");
   script_bugtraq_id(67434);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-06-06 18:25:49 +0530 (Fri, 06 Jun 2014)");
   script_name("RealNetworks RealPlayer '.3gp' Memory Corruption Vulnerability Jun14 (Windows)");
 
-  tag_summary =
-"The host is installed with RealPlayer and is prone to memory corruption
-vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"Flaw is due to input not being properly sanitized when handling a specially
-crafted 3GP file.";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to corrupt memory, causing
+  script_tag(name:"summary", value:"The host is installed with RealPlayer and is prone to memory corruption
+vulnerability.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Flaw is due to input not being properly sanitized when handling a specially
+crafted 3GP file.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to corrupt memory, causing
 a denial of service or potentially allowing the execution of arbitrary code.
 
-Impact Level: System/Application";
-
- tag_affected =
-"RealNetworks RealPlayer version 16.0.3.51 and before on Windows.";
-
-  tag_solution =
-"No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+Impact Level: System/Application");
+  script_tag(name:"affected", value:"RealNetworks RealPlayer version 16.0.3.51 and before on Windows.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126637");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/126637");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
@@ -88,17 +66,12 @@ features, remove the product or replace the product by another one.";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-realVer = "";
-
-## Get version
 if(!realVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_in_range(version:realVer, test_version:"16.0", test_version2:"16.0.3.51"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

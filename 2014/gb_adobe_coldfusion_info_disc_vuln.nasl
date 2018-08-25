@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_info_disc_vuln.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_adobe_coldfusion_info_disc_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Adobe ColdFusion Unspecified Information Disclosure Vulnerability
 #
@@ -23,56 +23,36 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804446";
 CPE = "cpe:/a:adobe:coldfusion";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6715 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804446");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2013-0631");
   script_bugtraq_id(57166);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 16:58:52 +0530 (Tue, 06 May 2014)");
   script_name("Adobe ColdFusion Unspecified Information Disclosure Vulnerability");
 
-  tag_summary =
-"This host is running Adobe ColdFusion and is prone to information disclosure
-vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version of Adobe ColdFusion with the help of detect NVT and
-check the version is vulnerable or not.";
-
-  tag_insight =
-"The flaw is due to an unspecified error, which will allow a remote attacker
-to gain access to potentially sensitive information.";
-
-  tag_impact =
-"Successful exploitation will allow attackers to disclose sensitive
+  script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is prone to information disclosure
+vulnerability.");
+  script_tag(name:"vuldetect", value:"Get the installed version of Adobe ColdFusion with the help of detect NVT and
+check the version is vulnerable or not.");
+  script_tag(name:"insight", value:"The flaw is due to an unspecified error, which will allow a remote attacker
+to gain access to potentially sensitive information.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to disclose sensitive
 information.
 
-Impact Level: Application";
-
-  tag_affected =
-"Adobe ColdFusion 9.0, 9.0.1 and 9.0.2";
-
-  tag_solution =
-"Apply the patch from below link,
-http://www.adobe.com/support/security/bulletins/apsb13-03.html";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-
-  script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb13-03.html");
+Impact Level: Application");
+  script_tag(name:"affected", value:"Adobe ColdFusion 9.0, 9.0.1 and 9.0.2");
+  script_tag(name:"solution", value:"Apply the patch from below link,
+http://www.adobe.com/support/security/bulletins/apsb13-03.html");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb13-03.html");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");
@@ -87,17 +67,11 @@ http://www.adobe.com/support/security/bulletins/apsb13-03.html";
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable initialization
-smgPort = "";
-smgVer = "";
-
-## Get Application HTTP Port
-if(!smgPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!smgPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get application version
-smgVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:smgPort);
+smgVer = get_app_version(cpe:CPE, port:smgPort);
 if(!smgVer || "unknown" >< smgVer){
   exit(0);
 }

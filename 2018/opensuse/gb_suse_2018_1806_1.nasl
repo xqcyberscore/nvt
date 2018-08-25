@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_1806_1.nasl 10359 2018-06-28 11:32:28Z santu $
+# $Id: gb_suse_2018_1806_1.nasl 11109 2018-08-24 14:47:20Z mmartin $
 #
 # SuSE Update for phpMyAdmin openSUSE-SU-2018:1806-1 (phpMyAdmin)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851799");
-  script_version("$Revision: 10359 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-28 13:32:28 +0200 (Thu, 28 Jun 2018) $");
+  script_version("$Revision: 11109 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:47:20 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-24 05:45:58 +0200 (Sun, 24 Jun 2018)");
   script_cve_id("CVE-2018-12581", "CVE-2018-12613");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for phpMyAdmin openSUSE-SU-2018:1806-1 (phpMyAdmin)");
   script_tag(name:"summary", value:"Check the version of phpMyAdmin");

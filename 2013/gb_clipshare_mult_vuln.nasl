@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clipshare_mult_vuln.nasl 6104 2017-05-11 09:03:48Z teissa $
+# $Id: gb_clipshare_mult_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # ClipShare Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803440");
-  script_version("$Revision: 6104 $");
+  script_version("$Revision: 11103 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-11 11:03:48 +0200 (Thu, 11 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-18 14:25:41 +0530 (Mon, 18 Mar 2013)");
   script_name("ClipShare Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -55,10 +55,7 @@ if(description)
   - storing sensitive information in the /siteadmin/login.php file as plaintext
   - Input passed via the 'urlkey' parameter to ugroup_videos.php script is not
   properly sanitised before being returned to the user.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is installed with ClipShare and is prone to Multiple
   vulnerabilities.");
 
@@ -72,23 +69,18 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port( default:80 );
 
-## Check Host Supports PHP
 if( ! can_host_php( port:port ) ) exit(0);
 
-## Iterate over possible paths
 foreach dir( make_list_unique( "/", "/clipshare", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
 
   rcvRes = http_get_cache( item: dir + "/index.php", port:port );
 
-  ## Confirm the application
   if( rcvRes =~ "HTTP/1.. 200" && ">ClipShare<" >< rcvRes ) {
 
-    ## Construct the attack request
     url = dir + "/ugroup_videos.php?urlkey=1' or (select if(5=5,0,3))-- 3='3";
 
     if( http_vuln_check( port:port, url:url, check_header:TRUE,

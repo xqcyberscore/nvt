@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_compat_pack_ms14-017.nasl 9354 2018-04-06 07:15:32Z cfischer $
+# $Id: gb_ms_compat_pack_ms14-017.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (2949660)
 #
@@ -27,62 +27,45 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804425");
-  script_version("$Revision: 9354 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-1757", "CVE-2014-1758", "CVE-2014-1761");
   script_bugtraq_id(66385, 66614, 66629);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 09:37:29 +0530 (Wed, 09 Apr 2014)");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (2949660)");
 
-  tag_summary =
-"This host is missing a critical security update according to
-Microsoft Bulletin MS14-017.";
 
-  tag_vuldetect =
-"Get the vulnerable file version and check appropriate patch is applied
-or not.";
-
-  tag_insight =
-"Multiple flaws are due to an error within,
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+Microsoft Bulletin MS14-017.");
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
+or not.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
+mentioned hotfixes in the advisory from the below link,
+https://technet.microsoft.com/en-us/security/bulletin/ms14-017");
+  script_tag(name:"insight", value:"Multiple flaws are due to an error within,
  - Microsoft Word when handling certain RTF-formatted data can be exploited to
    corrupt memory.
  - Microsoft Office File Format Converter when handling certain files can be
    exploited to corrupt memory.
  - Microsoft Word when handling certain files can be exploited to cause a
-   stack-based buffer overflow.";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to execute the arbitrary
+   stack-based buffer overflow.");
+  script_tag(name:"affected", value:"Microsoft Office Compatibility Pack Service Pack 3 and prior");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
 code, cause memory corruption and compromise the system.
 
-Impact Level: System/Application ";
-
-  tag_affected =
-"Microsoft Office Compatibility Pack Service Pack 3 and prior";
-
-  tag_solution =
-"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms14-017";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+Impact Level: System/Application ");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2878236");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms14-017");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/2878236");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms14-017");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/Office/WordCnv/Version");
   exit(0);
 }
@@ -93,12 +76,6 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-wordcnvVer = "";
-path = "";
-sysVer = "";
-
-# Check for Office Word Version 2007 with compatibility pack
 wordcnvVer = get_kb_item("SMB/Office/WordCnv/Version");
 if(wordcnvVer && wordcnvVer =~ "^12.*")
 {
@@ -111,10 +88,9 @@ if(wordcnvVer && wordcnvVer =~ "^12.*")
 
     if(sysVer)
     {
-      # Check for Word Converter 2007 version 12.0 < 12.0.6695.5000
       if(version_in_range(version:sysVer, test_version:"12.0", test_version2:"12.0.6695.4999"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }

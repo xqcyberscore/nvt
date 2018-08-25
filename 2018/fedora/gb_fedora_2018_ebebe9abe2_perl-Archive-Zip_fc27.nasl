@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_ebebe9abe2_perl-Archive-Zip_fc27.nasl 10558 2018-07-20 14:08:23Z santu $
+# $Id: gb_fedora_2018_ebebe9abe2_perl-Archive-Zip_fc27.nasl 11109 2018-08-24 14:47:20Z mmartin $
 #
 # Fedora Update for perl-Archive-Zip FEDORA-2018-ebebe9abe2
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874833");
-  script_version("$Revision: 10558 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 16:08:23 +0200 (Fri, 20 Jul 2018) $");
+  script_version("$Revision: 11109 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:47:20 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 06:07:00 +0200 (Fri, 20 Jul 2018)");
   script_cve_id("CVE-2018-10860");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for perl-Archive-Zip FEDORA-2018-ebebe9abe2");
   script_tag(name:"summary", value:"Check the version of perl-Archive-Zip");

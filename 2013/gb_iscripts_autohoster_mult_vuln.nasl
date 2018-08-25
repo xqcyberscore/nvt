@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iscripts_autohoster_mult_vuln.nasl 5816 2017-03-31 10:16:41Z cfi $
+# $Id: gb_iscripts_autohoster_mult_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # iScripts AutoHoster Multiple Vulnerabilities
 #
@@ -27,35 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804165");
-  script_version("$Revision: 5816 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2013-7189", "CVE-2013-7190");
   script_bugtraq_id(64377, 64377);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:16:41 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-31 11:25:53 +0530 (Tue, 31 Dec 2013)");
   script_name("iScripts AutoHoster Multiple Vulnerabilities");
 
-  script_tag(name : "summary" , value : "The host is running iScripts AutoHoster and is prone to multiple
+  script_tag(name:"summary", value:"The host is running iScripts AutoHoster and is prone to multiple
   vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP GET request and check whether it is vulnerable
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is vulnerable
   or not.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "insight" , value : "Multiple errors are due to,
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"insight", value:"Multiple errors are due to,
   - Improper validation of user-supplied input to the 'checktransferstatus.php',
   'additionalsettings.php', 'payinvoiceothers.php', and 'checktransferstatusb
   ck.php' scripts through unspecified parameters.
   - Input passed via the 'tmpid' parameter to 'showtemplateimage.php' script,
-  'fname' parameter to 'downloadfile.php' script,and the 'id' parameter to
+  'fname' parameter to 'downloadfile.php' script, and the 'id' parameter to
   'csvdownload.php' script is not sanitised for requests using directory
   traversal attack (e.g., ../).
   - Improper validation of user-supplied input to the 'tldHoldList.php' script
   via 'fa' parameter.");
-  script_tag(name : "affected" , value : "iScripts AutoHoster version 2.4 and probably prior.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to read arbitrary files on the
+  script_tag(name:"affected", value:"iScripts AutoHoster version 2.4 and probably prior.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to read arbitrary files on the
   target system, obtain some sensitive information or execute arbitrary script
   code on the vulnerable server, perform SQL injection and compromise the
   application.
@@ -64,11 +61,11 @@ if(description)
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/89818");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/89816");
-  script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2013120103");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2013/Dec/att-121/iscripts.txt");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/iscripts-autohoster-php-code-injection");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/89818");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/89816");
+  script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2013120103");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/Dec/att-121/iscripts.txt");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/iscripts-autohoster-php-code-injection");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -82,12 +79,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-isPort = "";
-isReq = "";
-isRes = "";
-url = "";
-
 isPort = get_http_port(default:80);
 
 if(!can_host_php(port:isPort)){
@@ -100,14 +91,11 @@ foreach dir (make_list_unique("/", "/iscripts", "/autohoster", "/iscriptsautohos
   if(dir == "/") dir = "";
   isRes = http_get_cache(item:string(dir, '/index.php'),  port: isPort);
 
-  ## Confirm the application
   if(isRes && egrep(pattern:"Powered By.*iScripts.*Autohoster", string:isRes,
                    icase:TRUE))
   {
-    ## Construct attack request
       url = dir + '/admin/downloadfile.php?fname=../includes/config.php';
 
-       ## Confirm exploit worked properly or not
       if(http_vuln_check(port:isPort, url:url, pattern:'<?php',
          extra_check:make_list('HOST.*".*"', 'DATABASE.*".*"', 'USER.*".*"',
          'PASSWORD.*".*"')))

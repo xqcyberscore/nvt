@@ -29,41 +29,40 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804090");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-1477", "CVE-2014-1479", "CVE-2014-1481", "CVE-2014-1482",
                 "CVE-2014-1486", "CVE-2014-1487", "CVE-2014-1490", "CVE-2014-1491");
   script_bugtraq_id(65317, 65320, 65326, 65328, 65334, 65330, 65335, 65332);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-02-11 19:12:08 +0530 (Tue, 11 Feb 2014)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 Feb14 (Windows)");
 
 
-  script_tag(name : "summary" , value : "This host is installed with Mozilla Firefox and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox and is prone to multiple
 vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
-  script_tag(name : "insight" , value : "Multiple flaws are due to,
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 - An error when handling XML Binding Language (XBL) content scopes.
 - An error when handling discarded images within the 'RasterImage' class.
 - A use-after-free error related to certain content types when used with the
   'imgRequestProxy()' function.
 - An error when handling web workers error messages.
 - A race condition error when handling session tickets within libssl.
-- An error when handling JavaScript native getters on window objects.
-");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to bypass certain security
+- An error when handling JavaScript native getters on window objects.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
 restrictions and compromise a user's system.
 
 Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Mozilla Firefox ESR version 24.x before 24.3 on Windows");
-  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox ESR version 24.3 or later,
+  script_tag(name:"affected", value:"Mozilla Firefox ESR version 24.x before 24.3 on Windows");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version 24.3 or later,
 For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/56767");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2014/mfsa2014-01.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/56767");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2014/mfsa2014-01.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
@@ -84,6 +83,6 @@ if(ffVer =~ "^24\." && version_in_range(version:ffVer,
                                         test_version:"24.0",
                                         test_version2:"24.2"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

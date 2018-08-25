@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-2711.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_junos_cve_2014-2711.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Junos J-Web Persistent Cross Site Scripting Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105908");
-  script_version ("$Revision: 6769 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-05-02 16:15:10 +0700 (Fri, 02 May 2014)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -49,31 +49,31 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version");
 
-  script_tag(name : "summary" , value : "Persistent XSS Vulnerability in J-Web");
+  script_tag(name:"summary", value:"Persistent XSS Vulnerability in J-Web");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "A persistent cross site scripting vulnerability in J-Web may
+  script_tag(name:"insight", value:"A persistent cross site scripting vulnerability in J-Web may
 allow a remote unauthenticated user to inject web script or HTML and steal sensitive data and credentials
 from a J-Web session and to perform administrative actions on the Junos device. An attacker can inject
 web script or HTML even when J-Web is disabled, but the vulnerability can only be exploited when J-Web is
 used to monitor the system.");
 
-  script_tag(name : "impact" , value : "A remote unauthenticated user can inject web script or HTML and
+  script_tag(name:"impact", value:"A remote unauthenticated user can inject web script or HTML and
 steal sensitive data and credentials from a J-Web session and perform administrative
 actions on the Junos device.");
 
-  script_tag(name : "affected" , value : "Junos OS 11.4, 12.1, 12.2, 12.3, 13.1, 13.2, 13.3.");
+  script_tag(name:"affected", value:"Junos OS 11.4, 12.1, 12.2, 12.3, 13.1, 13.2, 13.3.");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10619");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/66770");
 
- 
+
   exit(0);
 }
 

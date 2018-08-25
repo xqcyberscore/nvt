@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_telaen_mult_vuln.nasl 9086 2018-03-12 11:54:08Z cfischer $
+# $Id: gb_telaen_mult_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Telaen Multiple Vulnerabilities
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803646");
-  script_version("$Revision: 9086 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2013-2621", "CVE-2013-2623", "CVE-2013-2624");
-  script_bugtraq_id(60290,60288,60340);
+  script_bugtraq_id(60290, 60288, 60340);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-12 12:54:08 +0100 (Mon, 12 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-10 16:45:05 +0530 (Mon, 10 Jun 2013)");
   script_name("Telaen Multiple Vulnerabilities");
 
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2013/Jun/12");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/telaen-130-xss-open-redirection-disclosure");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2013/Jun/12");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/telaen-130-xss-open-redirection-disclosure");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -45,15 +45,15 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to perform open redirection,
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform open redirection,
   obtain sensitive information and execute arbitrary code in a user's browser
   session in context of an affected site.
 
   Impact Level: Application");
 
-  script_tag(name : "affected" , value : "Telaen version 1.3.0 and prior");
+  script_tag(name:"affected", value:"Telaen version 1.3.0 and prior");
 
-  script_tag(name : "insight" , value : "The flaws are due to,
+  script_tag(name:"insight", value:"The flaws are due to,
 
   - Improper validation of input passed to 'f_email' parameter upon submission
     to the '/telaen/index.php' script.
@@ -63,11 +63,11 @@ if(description)
 
   - Issue when requested for the '/telaen/inc/init.php' script.");
 
-  script_tag(name : "solution" , value : "Upgrade to Telaen version 1.3.1 or later
+  script_tag(name:"solution", value:"Upgrade to Telaen version 1.3.1 or later
 
   For updates refer to http://www.telaen.com");
 
-  script_tag(name : "summary" , value : "This host is running Telaen and is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"This host is running Telaen and is prone to multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_commentluv_ajax_nonce_xss_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_wordpress_commentluv_ajax_nonce_xss_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # WordPress CommentLuv Plugin '_ajax_nonce' Cross-Site Scripting Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804512");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2013-1409");
   script_bugtraq_id(57771);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-03-11 13:43:20 +0530 (Tue, 11 Mar 2014)");
   script_name("WordPress CommentLuv Plugin '_ajax_nonce' Cross-Site Scripting Vulnerability");
 
@@ -90,7 +90,6 @@ sndReq = string("POST ", url, " HTTP/1.1\r\n",
                 "Content-Length: ", strlen(postData), "\r\n",
                 "\r\n", postData, "\r\n");
 
-## Send request and receive the response
 rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq, bodyonly:FALSE);
 
 if(rcvRes =~ "HTTP/1\.. 200" && '<script>alert(document.cookie);</script>' >< rcvRes

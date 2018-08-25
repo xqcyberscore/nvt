@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_qts_64719.nasl 10904 2018-08-10 14:24:40Z mmartin $
+# $Id: gb_qnap_qts_64719.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # QNAP QTS 'f' Parameter Directory Traversal Vulnerability
 #
@@ -27,43 +27,43 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103877");
- script_bugtraq_id(64719);
- script_cve_id("CVE-2013-7174");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
- script_version("$Revision: 10904 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103877");
+  script_bugtraq_id(64719);
+  script_cve_id("CVE-2013-7174");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_version("$Revision: 11108 $");
 
- script_name("QNAP QTS 'f' Parameter Directory Traversal Vulnerability");
+  script_name("QNAP QTS 'f' Parameter Directory Traversal Vulnerability");
 
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64719");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64719");
 
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2014-01-09 18:58:01 +0100 (Thu, 09 Jan 2014)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_qnap_nas_detect.nasl");
- script_require_ports("Services/www", 80, 8080);
- script_mandatory_keys("qnap/qts");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-01-09 18:58:01 +0100 (Thu, 09 Jan 2014)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_qnap_nas_detect.nasl");
+  script_require_ports("Services/www", 80, 8080);
+  script_mandatory_keys("qnap/qts");
 
- script_tag(name:"impact", value:"A remote attacker could exploit the vulnerability using directory-
+  script_tag(name:"impact", value:"A remote attacker could exploit the vulnerability using directory-
 traversal characters ('../') to access arbitrary files that contain
 sensitive information. Information harvested may aid in launching
 further attacks.");
- script_tag(name:"vuldetect", value:"Check the firmware version.");
- script_tag(name:"insight", value:"QNAP QTS is a Network-Attached Storage (NAS) system
+  script_tag(name:"vuldetect", value:"Check the firmware version.");
+  script_tag(name:"insight", value:"QNAP QTS is a Network-Attached Storage (NAS) system
 accessible via a web interface. QNAP QTS 4.0.3 and possibly earlier
 versions contain a path traversal vulnerability via the cgi-bin/jc.cgi
 CGI script. The script accepts an 'f' parameter which takes an
 unrestricted file path as input.");
- script_tag(name:"solution", value:"Update to 4.1.0");
- script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"summary", value:"QNAP QTS is prone to a directory-traversal vulnerability because it
+  script_tag(name:"solution", value:"Update to 4.1.0");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"QNAP QTS is prone to a directory-traversal vulnerability because it
 fails to properly sanitize user-supplied input.");
- script_tag(name:"affected", value:"QNAP QTS 4.0.3 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"QNAP QTS 4.0.3 is vulnerable; other versions may also be affected.");
 
  exit(0);
 }

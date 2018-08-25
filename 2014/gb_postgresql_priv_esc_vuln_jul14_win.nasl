@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_postgresql_priv_esc_vuln_jul14_win.nasl 9987 2018-05-28 14:56:22Z cfischer $
+# $Id: gb_postgresql_priv_esc_vuln_jul14_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # PostgreSQL 'make check' Local Privilege Escalation Vulnerability July14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:postgresql:postgresql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804711");
-  script_version("$Revision: 9987 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-0067");
   script_bugtraq_id(65721);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 16:56:22 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-07-07 15:34:21 +0530 (Mon, 07 Jul 2014)");
   script_name("PostgreSQL 'make check' Local Privilege Escalation Vulnerability July14 (Windows)");
 
@@ -64,9 +64,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Databases");
-  script_dependencies("postgresql_detect.nasl","os_detection.nasl");
+  script_dependencies("postgresql_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/postgresql", 5432);
-  script_mandatory_keys("PostgreSQL/installed","Host/runs_windows");
+  script_mandatory_keys("PostgreSQL/installed", "Host/runs_windows");
   exit(0);
 }
 

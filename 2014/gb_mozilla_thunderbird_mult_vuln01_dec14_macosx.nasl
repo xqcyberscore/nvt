@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_dec14_macosx.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_dec14_macosx.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-01 Dec14 (Mac OS X)
 #
@@ -29,23 +29,22 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805222");
-  script_version("$Revision: 6663 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-1594", "CVE-2014-1593", "CVE-2014-1592", "CVE-2014-1590",
                 "CVE-2014-1587", "CVE-2014-1595");
   script_bugtraq_id(71396, 71395, 71398, 71397, 71391, 71394);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-12-16 11:16:58 +0530 (Tue, 16 Dec 2014)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 Dec14 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
   - A bad cast issue from the BasicThebesLayer to BasicContainerLayer.
   - An error when parsing media content within the 'mozilla::FileBlockCache::Read'
   function.
@@ -57,16 +56,16 @@ if(description)
   -- The CoreGraphics framework logging potentially sensitive input data
   to the /tmp directory.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   disclose potentially sensitive information, compromise a user's system and
   have other unknown impacts.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Thunderbird before version 31.3
+  script_tag(name:"affected", value:"Mozilla Thunderbird before version 31.3
   on Mac OS X");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version
   31.3 or later, For updates refer https://www.mozilla.org/en-US/thunderbird");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -87,17 +86,12 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-tbVer = "";
-
-## Get version
 if(!tbVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:tbVer, test_version:"31.3"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

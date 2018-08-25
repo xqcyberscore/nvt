@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_daloradius_mult_vuln.nasl 5816 2017-03-31 10:16:41Z cfi $
+# $Id: gb_daloradius_mult_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # DaloRADIUS Web Management Multiple Vulnerabilities
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803183");
-  script_version("$Revision: 5816 $");
+  script_version("$Revision: 11103 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:16:41 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-18 12:29:46 +0530 (Mon, 18 Mar 2013)");
   script_name("DaloRADIUS Web Management Multiple Vulnerabilities");
 
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120828/");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/daloradius-csrf-xss-sql-injection");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/120828/");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/daloradius-csrf-xss-sql-injection");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
@@ -44,24 +44,21 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
   HTML or web script in a user's browser session in context of an affected site,
   compromise the application and access or modify data in the database.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "DaloRADIUS version 0.9.9 and prior");
-  script_tag(name : "insight" , value : "- The acct-ipaddress.php script not properly sanitizing user-supplied
+  script_tag(name:"affected", value:"DaloRADIUS version 0.9.9 and prior");
+  script_tag(name:"insight", value:"- The acct-ipaddress.php script not properly sanitizing user-supplied
   input to the 'orderBy' and 'ipaddress' parameters.
   - The application does not require multiple steps or explicit confirmation
   for sensitive transactions.
   - The application does not validate the 'username' parameter upon submission
   to the mng-search.php script and does 'daloradiusFilter' parameter upon
   submission to the rep-logs-daloradius.php script.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is installed with DaloRADIUS Web Management and is
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is installed with DaloRADIUS Web Management and is
   prone to multiple vulnerabilities.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -71,13 +68,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-url = "";
-port = "";
-req = "";
-sndReq = "";
-rcvRes = "";
 
 port = get_http_port(default:80);
 if(!can_host_php(port:port)){
@@ -93,7 +83,6 @@ foreach dir (make_list_unique("/", "/radius", "/daloradius", cgi_dirs(port:port)
 
   rcvRes = http_get_cache(item:string(dir, "/login.php"), port:port);
 
-  ## confirm the Application
   if(">daloRADIUS<" >< rcvRes && "> daloRADIUS Copyright" >< rcvRes)
   {
 
@@ -102,7 +91,6 @@ foreach dir (make_list_unique("/", "/radius", "/daloradius", cgi_dirs(port:port)
 
     url = dir  + "/dologin.php";
 
-    ## Construct the POST data
     req = string("POST ", url , " HTTP/1.1\r\n",
                  "Host: ", host,"\r\n",
                  "Content-Type: application/x-www-form-urlencoded\r\n",
@@ -111,7 +99,6 @@ foreach dir (make_list_unique("/", "/radius", "/daloradius", cgi_dirs(port:port)
 
     rcvRes = http_keepalive_send_recv(port:port, data:req);
 
-    ## Construct Attack Request
     if(rcvRes =~ "HTTP/1\.. 200" && "<script>alert(document.cookie)</script>" >< rcvRes &&
        "radius.operators" >< rcvRes)
     {

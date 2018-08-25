@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_tmp_file_symlink_vuln_lin.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: gb_adobe_reader_tmp_file_symlink_vuln_lin.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Adobe Reader Temporary Files Arbitrary File Overwrite Vulnerability (Linux)
 #
@@ -29,52 +29,33 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804629");
-  script_version("$Revision: 6692 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2002-1764");
   script_bugtraq_id(5068);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-06-05 12:20:17 +0530 (Thu, 05 Jun 2014)");
   script_name("Adobe Reader Temporary Files Arbitrary File Overwrite Vulnerability (Linux)");
 
-  tag_summary =
-"This host is installed with Adobe Reader and is prone to symlink attack
-vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"The flaw is due to the creation of insecure temporary files when opening or
-printing PDF files";
-
- tag_impact =
-"Successful exploitation will allow attacker to create a symbolic link from a
+  script_tag(name:"summary", value:"This host is installed with Adobe Reader and is prone to symlink attack
+vulnerability.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The flaw is due to the creation of insecure temporary files when opening or
+printing PDF files");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to create a symbolic link from a
 file in the /tmp directory to an arbitrary file on the system so that the
 arbitrary file is overwritten once the PDF file is opened.
 
-Impact Level: System/Application";
-
-  tag_affected =
-"Adobe Reader version 4.0.5 on Linux.";
-
-  tag_solution =
-"Update to Adobe Reader version 5.0.5 or later. For Updates refer
-http://www.adobe.com";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+Impact Level: System/Application");
+  script_tag(name:"affected", value:"Adobe Reader version 4.0.5 on Linux.");
+  script_tag(name:"solution", value:"Update to Adobe Reader version 5.0.5 or later. For Updates refer
+http://www.adobe.com");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/9407");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/9407");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
@@ -86,16 +67,15 @@ http://www.adobe.com";
 include("host_details.inc");
 include("version_func.inc");
 
-## Get Reader Version
 if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-if(readerVer  =~ "^(4)\.")
+if(readerVer  =~ "^4\.")
 {
   if(version_is_equal(version:readerVer, test_version:"4.0.5"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

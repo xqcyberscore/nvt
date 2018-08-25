@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mobilechief_xss_vuln.nasl 6093 2017-05-10 09:03:18Z teissa $
+# $Id: gb_wordpress_mobilechief_xss_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # WordPress MobileChief Mobile Site Builder Plugin Cross Site Scripting Vulnerability
 #
@@ -23,57 +23,34 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804036";
 CPE = "cpe:/a:wordpress:wordpress";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6093 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804036");
+  script_version("$Revision: 11103 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-10 11:03:18 +0200 (Wed, 10 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-10-29 11:55:35 +0530 (Tue, 29 Oct 2013)");
   script_name("WordPress MobileChief Mobile Site Builder Plugin Cross Site Scripting Vulnerability");
 
-  tag_summary =
-"This host is installed with WordPress MobileChief Mobile Site Builder plugin
-and is prone to cross site scripting vulnerability.";
 
-  tag_vuldetect =
-"Send a crafted HTTP GET request and check whether it is able to read the
-cookie or not.";
-
-  tag_insight =
-"Flaw is due to improper sanitation of url when accessing certain pages.";
-
-  tag_impact =
-"Successful exploitation will allow attacker to execute arbitrary HTML and
+  script_tag(name:"summary", value:"This host is installed with WordPress MobileChief Mobile Site Builder plugin
+and is prone to cross site scripting vulnerability.");
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check whether it is able to read the
+cookie or not.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"insight", value:"Flaw is due to improper sanitation of url when accessing certain pages.");
+  script_tag(name:"affected", value:"WordPress MobileChief Mobile Site Builder Plugin version 1.5.7, Other
+versions may also be affected.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
 script code in a user's browser session in the context of an affected site.
 
-Impact Level: Application";
-
-  tag_affected =
-"WordPress MobileChief Mobile Site Builder Plugin version 1.5.7, Other
-versions may also be affected.";
-
-  tag_solution =
-"No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+Impact Level: Application");
   script_tag(name:"solution_type", value:"WillNotFix");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/123809");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/wordpress-mobilechief-cross-site-scripting");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/123809");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/wordpress-mobilechief-cross-site-scripting");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
@@ -89,27 +66,18 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
-if(!http_port = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get WordPress Location
-if(!dir = get_app_location(cpe:CPE, nvt:SCRIPT_OID, port:http_port)){
+if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Construct the attack request
 url = dir + '/wp-content/plugins/mobilechief-mobile-site-creator/lib/'+
             'jquery-validate/demo/captcha/index.php/"/><script>alert('+
                                           'document.cookie);</script>';
 
-## Check Exploit is working
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
                    pattern:"<script>alert\(document.cookie\);</script>",
                    extra_check:">AJAX CAPTCHA<"))

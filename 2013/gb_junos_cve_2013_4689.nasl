@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013_4689.nasl 7140 2017-09-15 09:41:22Z cfischer $
+# $Id: gb_junos_cve_2013_4689.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Junos CSRF Protection bypass vulnerability in J-Web
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103951");
-  script_version ("$Revision: 7140 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
+  script_version("$Revision: 11103 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-15 14:20:14 +0700 (Fri, 15 Nov 2013)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -48,29 +48,29 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version");
 
-  script_tag(name : "summary" , value : "A CSRF Protection bypass in J-Web allows an attacker to gain
+  script_tag(name:"summary", value:"A CSRF Protection bypass in J-Web allows an attacker to gain
 unauthorized access to the affected device.");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "A vulnerability in J-Web may allow remote attackers to bypass
+  script_tag(name:"insight", value:"A vulnerability in J-Web may allow remote attackers to bypass
 CSRF (Cross-Site Request Forgery) Protection in J-Web.");
 
-  script_tag(name : "impact" , value : "An attacker can perform adimistrative actions such as creating
+  script_tag(name:"impact", value:"An attacker can perform adimistrative actions such as creating
 new administrative accounts to gain complete control over the device.");
 
-  script_tag(name : "affected" , value : "Plattforms running Junos OS 10.4, 11.4, 12.1, 12.1X44, 12.2,
+  script_tag(name:"affected", value:"Plattforms running Junos OS 10.4, 11.4, 12.1, 12.1X44, 12.2,
 12.3, or 13.1.");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper. As
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. As
 a workaround disable J-Web or limit access to only trusted hosts.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10597");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/62940");
- 
+
   exit(0);
 }
 

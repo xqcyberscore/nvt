@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cm3_acoracms_mult_vuln.nasl 5993 2017-04-20 15:45:39Z cfi $
+# $Id: gb_cm3_acoracms_mult_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # CM3 AcoraCMS Multiple XSS, CSRF and Open Redirect Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804268");
-  script_version("$Revision: 5993 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2013-4722", "CVE-2013-4723", "CVE-2013-4724", "CVE-2013-4725",
                 "CVE-2013-4726", "CVE-2013-4727", "CVE-2013-4728");
   script_bugtraq_id(62008, 62007, 62009, 62011, 62010, 62012, 67701);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 17:45:39 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-04-29 11:10:25 +0530 (Tue, 29 Apr 2014)");
   script_name("CM3 AcoraCMS Multiple XSS, CSRF and Open Redirect Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -58,7 +58,7 @@ if(description)
   - Insufficient validation of the 'l' parameter upon submission to track.aspx
   script.
   - insufficient measures for confirmation of sensitive transactions.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to redirect victim from the
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to redirect victim from the
   intended legitimate web site to an arbitrary web site, trick the users into
   performing an unspecified action in the context of their session with the
   application and execute arbitrary script code in a user's browser session
@@ -69,10 +69,7 @@ if(description)
   script_tag(name:"affected", value:"CM3 Acora CMS 6.0.6/1a, 6.0.2/1a, 5.5.7/12b, 5.5.0/1b-p1, and possibly other
   versions");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");

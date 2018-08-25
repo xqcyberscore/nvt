@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013-5211.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_junos_cve_2013-5211.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Junos NTP Server Amplification Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105920");
-  script_version ("$Revision: 6663 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-07-31 13:20:03 +0200 (Thu, 31 Jul 2014)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -49,24 +49,24 @@ if (description)
   script_category(ACT_GATHER_INFO);
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version");
 
-  script_tag(name : "summary" , value : "DoS in NTP server");
+  script_tag(name:"summary", value:"DoS in NTP server");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "When an NTP client or server is enabled within the [edit system
+  script_tag(name:"insight", value:"When an NTP client or server is enabled within the [edit system
 ntp] hierarchy level of the Junos configuration, REQ_MON_GETLIST and REQ_MON_GETLIST_1 control messages
 supported by the monlist feature within NTP may allow remote attackers to cause a denial of service. NTP
 is not enabled in Junos by default.");
 
-  script_tag(name : "impact" , value : "If NTP is enabled an attacker can exploit the control messages to use
+  script_tag(name:"impact", value:"If NTP is enabled an attacker can exploit the control messages to use
 it as part of a DoS attack against a remote victim or as the target of an attack against the device itself.");
 
-  script_tag(name : "affected" , value : "Junos OS 11.4, 12.1, 12.2, 12.3, 13.1, 13.2, 13.3");
+  script_tag(name:"affected", value:"Junos OS 11.4, 12.1, 12.2, 12.3, 13.1, 13.2, 13.3");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10613");
 

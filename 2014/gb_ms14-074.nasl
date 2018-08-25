@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-074.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_ms14-074.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # MS Windows Remote Desktop Protocol Security Feature Bypass Vulnerability (3003743)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805017");
-  script_version("$Revision: 6735 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-6318");
   script_bugtraq_id(70981);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 13:56:45 +0530 (Wed, 12 Nov 2014)");
   script_name("MS Windows Remote Desktop Protocol Security Feature Bypass Vulnerability (3003743)");
 
@@ -50,8 +50,7 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows Server 2012/R2
+  script_tag(name:"affected", value:"Microsoft Windows Server 2012/R2
   Microsoft Windows 8 x32/x64 Edition
   Microsoft Windows 8.1 x32/x64 Edition
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
@@ -67,13 +66,14 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/60089");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3003743");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-074");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/60089");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/3003743");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS14-074");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -84,18 +84,12 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer="";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2,
                    win8:1, win8x64:1, win2012:1, win2012R2:1, win8_1:1,
                    win8_1x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
@@ -106,36 +100,30 @@ if(!dllVer){
   exit(0);
 }
 
-## Windows Vista and Windows Server 2008
 ## Currently not supporting for Vista and Windows Server 2008 64 bit
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Lsasrv.dll version
   if(version_is_less(version:dllVer, test_version:"6.0.6002.19214") ||
      version_in_range(version:dllVer, test_version:"6.0.6002.23000", test_version2:"6.0.6002.23520")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows 7 and Windows Server 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Lsasrv.dll version
   if(version_is_less(version:dllVer, test_version:"6.1.7601.18637") ||
      version_in_range(version:dllVer, test_version:"6.1.7601.22000", test_version2:"6.1.7601.22842")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows 8 and Windows Server 2012
 if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 {
-  ## Check for Lsasrv.dll version
   if(version_is_less(version:dllVer, test_version:"6.2.9200.17150") ||
      version_in_range(version:dllVer, test_version:"6.2.9200.21000", test_version2:"6.2.9200.21268")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
@@ -143,9 +131,8 @@ if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 ## Win 8.1 and win2012R2
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Lsasrv.dll version
   if(version_is_less(version:dllVer, test_version:"6.3.9600.17396")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }

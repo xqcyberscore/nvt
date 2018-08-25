@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_xss_11_14.nasl 9135 2018-03-19 12:37:31Z asteins $
+# $Id: gb_magento_xss_11_14.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Magento Cross Site Scripting Vulnerability
 #
@@ -29,40 +29,40 @@ CPE = 'cpe:/a:magentocommerce:magento';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105110");
- script_version ("$Revision: 9135 $");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_cve_id("CVE-2011-2461"); # nb: Flex CVE for the vulnerable swfs used in Magento
- 
- script_name("Magento Cross Site Scripting Vulnerability");
-                                
- script_xref(name:"URL", value:"http://appcheck-ng.com/unpatched-vulnerabilites-in-magento-e-commerce-platform/");
- script_xref(name:"URL", value:"https://peterocallaghan.co.uk/2016/07/magento-csrf-vulnerability-via-adobe-flex/");
+  script_oid("1.3.6.1.4.1.25623.1.0.105110");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_cve_id("CVE-2011-2461"); # nb: Flex CVE for the vulnerable swfs used in Magento
 
- script_tag(name: "impact" , value:"An attacker may leverage these issues to execute arbitrary script code
+  script_name("Magento Cross Site Scripting Vulnerability");
+
+  script_xref(name:"URL", value:"http://appcheck-ng.com/unpatched-vulnerabilites-in-magento-e-commerce-platform/");
+  script_xref(name:"URL", value:"https://peterocallaghan.co.uk/2016/07/magento-csrf-vulnerability-via-adobe-flex/");
+
+  script_tag(name:"impact", value:"An attacker may leverage these issues to execute arbitrary script code
 in the browser of an unsuspecting user in the context of the affected site. This can allow the attacker to
 steal cookie-based authentication credentials and launch other attacks.");
 
- script_tag(name: "vuldetect" , value:"Check the md5sum of the affected .swf files");
- script_tag(name: "solution" , value:"Update the EE to version 1.14 or the CE to 1.9.1.0. Make sure that
+  script_tag(name:"vuldetect", value:"Check the md5sum of the affected .swf files");
+  script_tag(name:"solution", value:"Update the EE to version 1.14 or the CE to 1.9.1.0. Make sure that
  the mentioned files are removed from the installation during the update process.");
- script_tag(name: "summary" , value:"Magento is prone to multiple cross-site scripting vulnerabilities because it
+  script_tag(name:"summary", value:"Magento is prone to multiple cross-site scripting vulnerabilities because it
 fails to sanitize user supplied input.");
 
- script_tag(name: "affected" , value:"Magento 1.9.0.1; Previous versions may also affected.");
+  script_tag(name:"affected", value:"Magento 1.9.0.1; Previous versions may also affected.");
 
- script_tag(name:"last_modification", value:"$Date: 2018-03-19 13:37:31 +0100 (Mon, 19 Mar 2018) $");
- script_tag(name:"creation_date", value:"2014-11-05 19:20:13 +0100 (Wed, 05 Nov 2014)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("sw_magento_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("magento/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-11-05 19:20:13 +0100 (Wed, 05 Nov 2014)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("sw_magento_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("magento/installed");
 
- script_tag(name:"qod_type", value:"remote_active");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 }

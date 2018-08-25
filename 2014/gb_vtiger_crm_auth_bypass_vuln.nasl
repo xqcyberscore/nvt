@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_auth_bypass_vuln.nasl 9320 2018-04-05 08:06:43Z cfischer $
+# $Id: gb_vtiger_crm_auth_bypass_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # vTiger CRM Authentication Bypass Vulnerability
 #
@@ -33,14 +33,14 @@ if(description)
   script_cve_id("CVE-2013-3215");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_version("$Revision: 9320 $");
+  script_version("$Revision: 11108 $");
 
   script_name("vTiger CRM Authentication Bypass Vulnerability");
 
   script_xref(name:"URL", value:"https://www.vtiger.com/blogs/?p=1467");
   script_xref(name:"URL", value:"http://karmainsecurity.com/KIS-2013-08");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 10:06:43 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-01-28 15:47:55 +0700 (Tue, 28 Jan 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -60,7 +60,7 @@ if(description)
   script_tag(name:"affected", value:"vTiger CRM version 5.1.0 to 5.4.0.");
   script_tag(name:"impact", value:"A remote attacker can bypass the authentication mechanism.");
 
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
 
   exit(0);
@@ -72,7 +72,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-## Check for non-vulnerable version
 vtVer = "";
 
 if( ! port = get_app_port(cpe:CPE ) ) exit( 0 );
@@ -142,7 +141,6 @@ if (!response || !ereg(string:response, pattern:'<return xsi:nil="true" xsi:type
   exit(0);
 }
 
-# Check for the vulnerability no session id
 request2 = checkemail_soap_req(user:"admin", sessionid:"");
 response2 = send_soap_req(data:request2);
 

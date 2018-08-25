@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_oct14_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_oct14_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-01 Oct14 (Windows)
 #
@@ -29,23 +29,23 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804943");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-1586", "CVE-2014-1585", "CVE-2014-1581", "CVE-2014-1578",
                 "CVE-2014-1577", "CVE-2014-1576", "CVE-2014-1574");
   script_bugtraq_id(70427, 70425, 70426, 70428, 70440, 70430, 70436);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-10-20 12:39:45 +0530 (Mon, 20 Oct 2014)");
 
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 Oct14 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
   - An error when handling video sharing within a WebRTC session running within an
   iframe.
   - An error when handling camera recording within an iframe related to site
@@ -59,16 +59,16 @@ if(description)
   style changes during CSS parsing.
   - Other unspecified errors.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   disclose potentially sensitive information, bypass certain security restrictions,
   conduct denial-of-service attack and compromise a user's system.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Thunderbird 31.x before version 31.2
+  script_tag(name:"affected", value:"Mozilla Thunderbird 31.x before version 31.2
   on Windows");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version
   31.2 or later, For updates refer https://www.mozilla.org/en-US/thunderbird");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

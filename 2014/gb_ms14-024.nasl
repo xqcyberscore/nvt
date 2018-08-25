@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-024.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_ms14-024.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Microsoft Office Security Feature Bypass Vulnerability (2961033)
 #
@@ -27,39 +27,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804451");
-  script_version("$Revision: 6715 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-1809");
   script_bugtraq_id(67273);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-05-14 13:48:02 +0530 (Wed, 14 May 2014)");
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Office Security Feature Bypass Vulnerability (2961033)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS14-024.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"A security feature bypass flaw exists
+  script_tag(name:"insight", value:"A security feature bypass flaw exists
   because the MSCOMCTL common controls library used by Microsoft Office
   software does not properly implement Address Space Layout Randomization
   (ASLR).");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass the ASLR security feature, which helps protect users from a
   broad class of vulnerabilities.
 
   Impact Level: Application");
- 
-  script_tag(name: "affected" , value:"
-  Microsoft Office 2007 Service Pack 3
+
+  script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3
   Microsoft Office 2010 Service Pack 2 and prior
   Microsoft Office 2013 Service Pack 1 and prior");
 
-  script_tag(name: "solution" , value:"Run Windows Update and update the listed
+  script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
   below link,
   https://technet.microsoft.com/en-us/security/bulletin/ms14-024");
@@ -67,10 +66,10 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2961033");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2880508");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2589288");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms14-024");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2961033");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/2880508");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/2589288");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms14-024");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -85,29 +84,21 @@ include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-# Variable Initialization
-offVer = "";
-path  = "";
-fileVer = "";
-
 ## MS Office 2013
 offVer = get_kb_item("MS/Office/Ver");
 if(!offVer){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath){
   exit(0);
 }
 
-## Get Version from Mscomctl.Ocx file
 sysVer = fetch_file_version(sysPath, file_name:"system32\Mscomctl.Ocx");
 sysVer1 = fetch_file_version(sysPath, file_name:"system32\Msstdfmt.dll");
 if(sysVer || sysVer1)
 {
-  ## Check for Microsoft Office 2007 and 2010, 2013
   if(offVer =~ "^[12|14|15].*")
   {
     if(version_is_less(version:sysVer, test_version:"6.1.98.39"))
@@ -120,7 +111,6 @@ if(sysVer || sysVer1)
     }
   }
 
-  ## Check for Microsoft Office 2007
   if(offVer =~ "^12.*")
   {
     if(version_is_less(version:sysVer1, test_version:"6.1.98.39"))
@@ -136,7 +126,6 @@ if(sysVer || sysVer1)
 
 if(offVer =~ "^[12|14].*")
 {
-  ## Get Office File Path
   path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                            item:"CommonFilesDir");
   if(path)
@@ -146,7 +135,6 @@ if(offVer =~ "^[12|14].*")
 
     if(fileVer)
     {
-      ## Grep for Msaddndr.dll version < 6.01.98.39
       if(version_is_less(version:fileVer, test_version:"6.1.98.39"))
       {
         report = "File checked: " + filePath + "\Msaddndr.dll\n" +

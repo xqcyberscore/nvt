@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2013-0009.nasl 9354 2018-04-06 07:15:32Z cfischer $
+# $Id: gb_vcenter_VMSA-2013-0009.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # VMware Security Updates for vCenter Server (VMSA-2013-0009)
 #
@@ -25,42 +25,35 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "VMware has updated the userworld OpenSSL library in vCenter Server
-to address multiple security vulnerabilities.";
-
-tag_solution = "Apply the missing patch(es).";
-tag_affected = "VMware vCenter Server before 5.0 update 3";
-tag_vuldetect = "Check the build number.";
-
-tag_insight = "The userworld OpenSSL library is updated to version
-openssl-0.9.8y to resolve multiple security issues.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103872");
- script_cve_id("CVE-2013-0169","CVE-2013-0166");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 9354 $");
- script_name("VMware Security Updates for vCenter Server (VMSA-2013-0009)");
+  script_oid("1.3.6.1.4.1.25623.1.0.103872");
+  script_cve_id("CVE-2013-0169", "CVE-2013-0166");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11108 $");
+  script_name("VMware Security Updates for vCenter Server (VMSA-2013-0009)");
 
 
- script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0009.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2013-0009.html");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2014-01-09 12:04:01 +0100 (Thu, 09 Jan 2014)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("General");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_vcenter_detect.nasl");
- script_mandatory_keys("VMware_vCenter/version","VMware_vCenter/build");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-01-09 12:04:01 +0100 (Thu, 09 Jan 2014)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_vcenter_detect.nasl");
+  script_mandatory_keys("VMware_vCenter/version", "VMware_vCenter/build");
 
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"vuldetect", value:"Check the build number.");
+  script_tag(name:"insight", value:"The userworld OpenSSL library is updated to version
+openssl-0.9.8y to resolve multiple security issues.");
+  script_tag(name:"solution", value:"Apply the missing patch(es).");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"VMware has updated the userworld OpenSSL library in vCenter Server
+to address multiple security vulnerabilities.");
+  script_tag(name:"affected", value:"VMware vCenter Server before 5.0 update 3");
 
  exit(0);
 
@@ -79,7 +72,7 @@ if ( int( vcenter_build ) < int( fixed_builds[ vcenter_version ] ) )
 {
   security_message( port:0, data: esxi_remote_report( ver:vcenter_version, build: vcenter_build, fixed_build: fixed_builds[vcenter_version], typ:'vCenter' ) );
   exit(0);
-}  
+}
 
 exit(99);
 

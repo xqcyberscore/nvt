@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cart_engine_mult_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
+# $Id: gb_cart_engine_mult_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Cart Engine Multiple Vulnerabilities
 #
@@ -27,21 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804857");
-  script_version("$Revision: 5790 $");
+  script_version("$Revision: 11108 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-26 12:24:19 +0530 (Fri, 26 Sep 2014)");
 
   script_name("Cart Engine Multiple Vulnerabilities");
 
-  script_tag(name: "summary" , value:"This host is running Cart Engine and is
+  script_tag(name:"summary", value:"This host is running Cart Engine and is
   prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted data via HTTP GET
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET
   request and check whether it is able to read cookie or not.");
 
-  script_tag(name: "insight" , value:"Multiple errors exists due to,
+  script_tag(name:"insight", value:"Multiple errors exists due to,
   - Insufficient validation of the input parameters 'item_id[0]' and 'item_id[]'
     passed to cart.php page.
   - Insufficient sanitization of multiple pages output which includes the user
@@ -49,25 +49,25 @@ if(description)
   - Insufficient validation of the user-supplied input in index.php, cart.php,
     msg.php and page.php scripts.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database,
   conduct open-redirect attacks and execute arbitrary HTML and script code in a
   user's browser session in the context of an affected site.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Cart Engine version 3.0. Other versions
+  script_tag(name:"affected", value:"Cart Engine version 3.0. Other versions
   may also be affected.");
 
-  script_tag(name: "solution" , value:"Upgrade to Cart Engine 4.0 or later.
+  script_tag(name:"solution", value:"Upgrade to Cart Engine 4.0 or later.
   For updates refer to http://www.c97.net/");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://1337day.com/exploit/22690");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/34764/");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/128276");
+  script_xref(name:"URL", value:"http://1337day.com/exploit/22690");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/34764/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/128276");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -80,10 +80,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-http_port = "";
-rcvRes = "";
 
 http_port = get_http_port(default:80);
 
@@ -98,7 +94,6 @@ foreach dir (make_list_unique("/", "/cartengine", "/cart",  cgi_dirs(port:http_p
 
   rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:http_port);
 
-  ##Confirm Application
   if(rcvRes && rcvRes =~ "powered by qEngine.*CartEngine")
   {
     ## Vulnerable Url

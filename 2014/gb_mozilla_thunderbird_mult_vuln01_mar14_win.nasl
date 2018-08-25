@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804526");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-1493", "CVE-2014-1496", "CVE-2014-1497", "CVE-2014-1505",
                 "CVE-2014-1508", "CVE-2014-1509", "CVE-2014-1510", "CVE-2014-1511",
                 "CVE-2014-1512", "CVE-2014-1513", "CVE-2014-1514");
@@ -37,15 +37,15 @@ if(description)
                     66206, 66207, 66209, 66203, 66240);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-03-27 12:47:53 +0530 (Thu, 27 Mar 2014)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 Mar14 (Windows)");
 
 
-  script_tag(name : "summary" , value : "This host is installed with Mozilla Thunderbird and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Mozilla Thunderbird and is prone to multiple
 vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
-  script_tag(name : "insight" , value : "Multiple flaws are due to,
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 - Local users can gain privileges by modifying the extracted Mar contents
   during an update.
 - A boundary error when decoding WAV audio files.
@@ -59,19 +59,19 @@ vulnerabilities.");
 - An error within the TypedArrayObject implementation when handling neutered
   ArrayBuffer objects.
 - And some unspecified errors exist.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to conduct spoofing attacks,
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct spoofing attacks,
 disclose potentially sensitive information, bypass certain security
 restrictions, and compromise a user's system.
 
 Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Mozilla Thunderbird version before 24.4 on Windows");
-  script_tag(name : "solution" , value : "Upgrade to Mozilla Thunderbird version 24.4 or later,
+  script_tag(name:"affected", value:"Mozilla Thunderbird version before 24.4 on Windows");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 24.4 or later,
 For updates refer to http://www.mozilla.com/en-US/thunderbird");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/57500");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2014/mfsa2014-15.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/57500");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2014/mfsa2014-15.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_googlemaps_mult_vuln.nasl 7199 2017-09-20 08:29:25Z jschulte $
+# $Id: gb_joomla_googlemaps_mult_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Joomla Googlemaps Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:joomla:joomla';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803836");
-  script_version("$Revision: 7199 $");
+  script_version("$Revision: 11103 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_cve_id("CVE-2013-7428","CVE-2013-7429", "CVE-2013-7430", "CVE-2013-7431", "CVE-2013-7432", "CVE-2013-7433", "CVE-2013-7434");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-20 10:29:25 +0200 (Wed, 20 Sep 2017) $");
+  script_cve_id("CVE-2013-7428", "CVE-2013-7429", "CVE-2013-7430", "CVE-2013-7431", "CVE-2013-7432", "CVE-2013-7433", "CVE-2013-7434");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-07-22 15:14:31 +0530 (Mon, 22 Jul 2013)");
   script_name("Joomla Googlemaps Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -73,19 +73,15 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 if( ! port = get_app_port(cpe:CPE ) ) exit( 0 );
 
-## Get Installed Location
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-## Construct attack request
 url = dir + "/plugins/content/plugin_googlemap2_proxy.php" +
             "?url=%3Cbody%20onload=alert(document.cookie)%3E";
 
-## Check the response to confirm vulnerability
 if( http_vuln_check( port:port, url:url, check_header:TRUE,
                      pattern:"onload=alert\(document.cookie\)",
                      extra_check:"Couldn't resolve host" ) ) {

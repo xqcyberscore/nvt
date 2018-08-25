@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_excel_viewer_ms13-085.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: secpod_ms_excel_viewer_ms13-085.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Microsoft Office Excel Viewer Remote Code Execution Vulnerabilities (2885080)
 #
@@ -27,54 +27,36 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903409");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2013-3889", "CVE-2013-3890");
   script_bugtraq_id(62829, 62824);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-10-09 11:06:54 +0530 (Wed, 09 Oct 2013)");
   script_name("Microsoft Office Excel Viewer Remote Code Execution Vulnerabilities (2885080)");
 
-  tag_summary =
-"This host is missing an important security update according to
-Microsoft Bulletin MS13-085.";
 
-  tag_vuldetect =
-"Get the vulnerable file version and check appropriate patch is applied
-or not.";
-
-  tag_insight =
-"Multiple flaws are due to error when processing Microsoft Word binary
-documents can be exploited to cause a memory corruption";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to execute the arbitrary
+  script_tag(name:"summary", value:"This host is missing an important security update according to
+Microsoft Bulletin MS13-085.");
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
+or not.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
+mentioned hotfixes in the advisory from the below link,
+https://technet.microsoft.com/en-us/security/bulletin/ms13-085");
+  script_tag(name:"insight", value:"Multiple flaws are due to error when processing Microsoft Word binary
+documents can be exploited to cause a memory corruption");
+  script_tag(name:"affected", value:"Microsoft Office Excel Viewer 2007");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
 code, cause memory corruption and compromise the system.
 
-Impact Level: System/Application ";
-
-  tag_affected =
-"Microsoft Office Excel Viewer 2007";
-
-  tag_solution =
-"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms13-085";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+Impact Level: System/Application ");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/55141/");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2827328");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms13-085");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/55141/");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2827328");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms13-085");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");
@@ -87,17 +69,13 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-085";
 include("smb_nt.inc");
 include("version_func.inc");
 
-# Variable Initialization
-excelviewVer = "";
-
 ## Microsoft Office Excel Viewer 2007
 excelviewVer = get_kb_item("SMB/Office/XLView/Version");
 if(excelviewVer =~ "^12\..*")
 {
-  ## check for Xlview.exe  version
   if(version_in_range(version:excelviewVer, test_version:"12.0", test_version2:"12.0.6683.5004"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

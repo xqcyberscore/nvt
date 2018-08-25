@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-091.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: secpod_ms13-091.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2885093)
 #
@@ -27,58 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903414");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2013-0082", "CVE-2013-1324", "CVE-2013-1325");
   script_bugtraq_id(63559, 63569, 63570);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-13 15:08:45 +0530 (Wed, 13 Nov 2013)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (2885093)");
 
-  tag_summary =
-"This host is missing an important security update according to
-Microsoft Bulletin MS13-091.";
 
-  tag_vuldetect =
-"Get the vulnerable file version and check appropriate patch is applied
-or not.";
-
-  tag_insight =
-"Flaws are due to an error when parsing WordPerfect documents files (.wpd).";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to corrupt memory, cause
-a buffer overflow and execution the arbitrary code.
-
-Impact Level: System/Application ";
-
-  tag_affected =
-"Microsoft Office 2013
+  script_tag(name:"summary", value:"This host is missing an important security update according to
+Microsoft Bulletin MS13-091.");
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
+or not.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
+mentioned hotfixes in the advisory from the below link,
+https://technet.microsoft.com/en-us/security/bulletin/ms13-091");
+  script_tag(name:"insight", value:"Flaws are due to an error when parsing WordPerfect documents files (.wpd).");
+  script_tag(name:"affected", value:"Microsoft Office 2013
 Microsoft Office 2003 Service Pack 3 and prior
 Microsoft Office 2007 Service Pack 3 and prior
-Microsoft Office 2010 Service Pack 1  and prior";
+Microsoft Office 2010 Service Pack 1  and prior");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to corrupt memory, cause
+a buffer overflow and execution the arbitrary code.
 
-  tag_solution =
-"Run Windows Update and update the listed hotfixes or download and update
-mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms13-091";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
+Impact Level: System/Application ");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/55539");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2760494");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2760781");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2768005");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms13-091");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/55539");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2760494");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2760781");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2768005");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms13-091");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2013 SecPod");
   script_family("Windows : Microsoft Bulletins");
@@ -93,18 +75,12 @@ include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-# Variable Initialization
-offVer = "";
-path  = "";
-fileVer = "";
-
 ## MS Office 2003
 offVer = get_kb_item("MS/Office/Ver");
 if(!offVer){
   exit(0);
 }
 
-## Get Office File Path
 path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                             item:"CommonFilesDir");
 if(!path){
@@ -118,10 +94,9 @@ if(offVer =~ "^11.*")
   fileVer = fetch_file_version(sysPath:filePath, file_name:"msconv97.dll");
   if(fileVer)
   {
-    ## Grep for Msconv97.dll version < 2003.1100.8327
     if(version_in_range(version:fileVer, test_version:"2003", test_version2:"2003.1100.8326"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
@@ -142,7 +117,7 @@ if(offVer =~ "^(12|14|15)\..*")
        version_in_range(version:fileVer, test_version:"2010", test_version2:"2010.1400.7011.0999") ||
        version_in_range(version:fileVer, test_version:"2006", test_version2:"2006.1200.6676.4999"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }

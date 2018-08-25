@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_ciphers_report.nasl 5987 2017-04-20 09:01:59Z cfi $
+# $Id: gb_ssl_ciphers_report.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # SSL/TLS: Report Supported Cipher Suites
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802067");
-  script_version("$Revision: 5987 $");
+  script_version("$Revision: 11108 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 11:01:59 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-03-06 17:20:28 +0530 (Thu, 06 Mar 2014)");
   script_name("SSL/TLS: Report Supported Cipher Suites");
   script_category(ACT_GATHER_INFO);
@@ -71,7 +71,7 @@ if( reportTimeout == 'yes' ) {
                     "Consider raising the script_timeout value of the NVT " +
                     "'SSL/TLS: Check Supported Cipher Suites' " +
                     "(OID: 1.3.6.1.4.1.25623.1.0.900234).";
-    log_message( port:port, data:timeoutReport );
+    log_message( port:port, data:timeoutReport);
   }
 }
 

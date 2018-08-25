@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-051.nasl 9039 2018-03-07 10:56:54Z santu $
+# $Id: gb_ms14-051.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2976627)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804739");
-  script_version("$Revision: 9039 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-2774", "CVE-2014-2784", "CVE-2014-2796", "CVE-2014-2808",
                 "CVE-2014-2810", "CVE-2014-2811", "CVE-2014-2817", "CVE-2014-2818",
                 "CVE-2014-2819", "CVE-2014-2820", "CVE-2014-2821", "CVE-2014-2822",
@@ -44,52 +44,35 @@ if(description)
                     69132, 69134, 70937, 72593, 70578, 70937);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-07 11:56:54 +0100 (Wed, 07 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-08-13 07:44:02 +0530 (Wed, 13 Aug 2014)");
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2976627)");
 
-  tag_summary =
-"This host is missing a critical security update according to Microsoft
-Bulletin MS14-051.";
 
-  tag_vuldetect =
-"Get the vulnerable file version and check appropriate patch is applied
-or not.";
-
-  tag_insight =
-"Flaws are due to multiple unspecified errors.";
-
-  tag_impact =
-"Successful exploitation will allow attackers to execution of arbitrary code
+  script_tag(name:"summary", value:"This host is missing a critical security update according to Microsoft
+Bulletin MS14-051.");
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
+or not.");
+  script_tag(name:"insight", value:"Flaws are due to multiple unspecified errors.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execution of arbitrary code
 and compromise a user's system.
 
-Impact Level: System/Application";
-
-  tag_affected =
-"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x/10.x/11.x";
-
-  tag_solution =
-"Run Windows Update and update the listed hotfixes or download and
+Impact Level: System/Application");
+  script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x/10.x/11.x");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
 update mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/en-us/security/bulletin/ms14-051";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+https://technet.microsoft.com/en-us/security/bulletin/ms14-051");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/60670");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2976627");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-051");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/60670");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/2976627");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS14-051");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_ie_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
   exit(0);
 }
@@ -101,67 +84,52 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-ieVer   = "";
-dllVer  = NULL;
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2003:3, win2003x64:3, winVista:3, win7:2, win7x64:2,
                    win2008:3, win2008r2:2, win8:1, win8x64:1, win2012:1,
                    win2012R2:1, win8_1:1, win8_1x64:1) <= 0){
   exit(0);
 }
 
-## Get IE Version
 ieVer = get_app_version(cpe:CPE);
 if(!ieVer || !(ieVer =~ "^(6|7|8|9|10|11)")){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-## Get Version from Mshtml.dll
 dllVer = fetch_file_version(sysPath, file_name:"system32\Mshtml.dll");
 if(!dllVer){
   exit(0);
 }
 
-## Windows 2003
 if(hotfix_check_sp(win2003:3, win2003x64:3) > 0)
 {
-  ## Check for Mshtml.dll version
   if(version_is_less(version:dllVer, test_version:"6.0.3790.5392") ||
      version_in_range(version:dllVer, test_version:"7.0.6000.00000", test_version2:"7.0.6000.21396")||
      version_in_range(version:dllVer, test_version:"8.0.6001.18000", test_version2:"8.0.6001.23610")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows Vista and Server 2008
 else if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Mshtml.dll version
   if(version_in_range(version:dllVer, test_version:"7.0.6002.18000", test_version2:"7.0.6002.19142")||
      version_in_range(version:dllVer, test_version:"7.0.6002.23000", test_version2:"7.0.6002.23445")||
      version_in_range(version:dllVer, test_version:"8.0.6001.18000", test_version2:"8.0.6001.19552")||
      version_in_range(version:dllVer, test_version:"8.0.6001.20000", test_version2:"8.0.6001.23610")||
      version_in_range(version:dllVer, test_version:"9.0.8112.16000", test_version2:"9.0.8112.16562")||
      version_in_range(version:dllVer, test_version:"9.0.8112.20000", test_version2:"9.0.8112.20673")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows 7 and Server 2008r2
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Mshtml.dll version
   if(version_in_range(version:dllVer, test_version:"8.0.7601.18000", test_version2:"8.0.7601.18533")||
      version_in_range(version:dllVer, test_version:"8.0.7601.22000", test_version2:"8.0.7601.22744")||
      version_in_range(version:dllVer, test_version:"9.0.8112.16000", test_version2:"9.0.8112.16562")||
@@ -169,28 +137,24 @@ else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
      version_in_range(version:dllVer, test_version:"10.0.9200.16000", test_version2:"10.0.9200.17053")||
      version_in_range(version:dllVer, test_version:"10.0.9200.21000", test_version2:"10.0.9200.21172")||
      version_in_range(version:dllVer, test_version:"11.0.9600.00000", test_version2:"11.0.9600.17238")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows 8 and Server 2012
 else if(hotfix_check_sp(win8:1, win2012:1) > 0)
 {
-  ## Check for Mshtml.dll version
   if(version_in_range(version:dllVer, test_version:"10.0.9200.16000", test_version2:"10.0.9200.17053")||
      version_in_range(version:dllVer, test_version:"10.0.9200.20000", test_version2:"10.0.9200.21172")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows 8.1 and Server 2012 R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Mshtml.dll version
   if(version_is_less(version:dllVer, test_version:"11.0.9600.17239")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }

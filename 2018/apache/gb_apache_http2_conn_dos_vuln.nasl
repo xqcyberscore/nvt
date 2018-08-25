@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http2_conn_dos_vuln.nasl 10758 2018-08-03 12:49:20Z santu $
+# $Id: gb_apache_http2_conn_dos_vuln.nasl 11109 2018-08-24 14:47:20Z mmartin $
 #
 # Apache HTTP Server 'HTTP/2 connection' DoS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813812");
-  script_version("$Revision: 10758 $");
+  script_version("$Revision: 11109 $");
   script_cve_id("CVE-2018-1333");
-  script_tag(name:"cvss_base", value:"7.1");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 14:49:20 +0200 (Fri, 03 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:47:20 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-02 16:10:09 +0530 (Thu, 02 Aug 2018)");
   ## Affects servers that have configured and enabled HTTP/2 support
   ## which is not the default
@@ -43,8 +43,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running Apache HTTP Server
   and is prone to denial-of-service vulnerability");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an error in the handling
   of specially crafted HTTP/2 requests.");
@@ -61,9 +60,9 @@ if(description)
   later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://httpd.apache.org");
-  script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2018/q3/39");
-  script_xref(name : "URL" , value : "https://httpd.apache.org/security/vulnerabilities_24.html");
+  script_xref(name:"URL", value:"https://httpd.apache.org");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2018/q3/39");
+  script_xref(name:"URL", value:"https://httpd.apache.org/security/vulnerabilities_24.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

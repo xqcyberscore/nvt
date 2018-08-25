@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_php_code_inj_vuln.nasl 5933 2017-04-11 10:42:30Z cfi $
+# $Id: gb_vtiger_crm_php_code_inj_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # vTiger CRM PHP Code Injection Vulnerability
 #
@@ -33,8 +33,8 @@ if(description)
   script_cve_id("CVE-2013-3214");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
-  script_version("$Revision: 5933 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-01-30 12:15:25 +0700 (Thu, 30 Jan 2014)");
 
   script_name("vTiger CRM PHP Code Injection Vulnerability");
@@ -50,7 +50,7 @@ if(description)
   script_require_ports("Services/www", 80);
 
   script_tag(name:"summary", value:"vTiger CRM PHP Code Injection Vulnerability");
-  script_tag(name:"vuldetect", value : "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
   script_tag(name:"solution", value:"Apply the patch from the link below or upgrade to version
   6.0 or later.");
   script_tag(name:"insight", value:"The installed vTiger CRM is prone to a PHP code injection
@@ -61,7 +61,7 @@ if(description)
   script_tag(name:"impact", value:"A remote attacker can write (or overwrite) files with any content,
   resulting in execution of arbitrary PHP code.");
 
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simplehrm_username_sql_inj_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
+# $Id: gb_simplehrm_username_sql_inj_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # SimpleHRM 'username' Parameter SQL Injection Vulnerability
 #
@@ -27,33 +27,29 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804531");
-  script_version("$Revision: 5790 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2013-2498");
   script_bugtraq_id(59254);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-04-03 10:35:41 +0530 (Thu, 03 Apr 2014)");
   script_name("SimpleHRM 'username' Parameter SQL Injection Vulnerability");
 
-  script_tag(name : "summary" , value : "This host is installed with SimpleHRM and is prone to sql injection
+  script_tag(name:"summary", value:"This host is installed with SimpleHRM and is prone to sql injection
   vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send a crafted HTTP GET request and check whether it is able to execute
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check whether it is able to execute
   sql query or not.");
-  script_tag(name : "insight" , value : "Flaw is due to the /index.php/user/setLogin script not properly sanitizing
+  script_tag(name:"insight", value:"Flaw is due to the /index.php/user/setLogin script not properly sanitizing
   user-supplied input to the 'username' parameter.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to manipulate SQL queries in the
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to manipulate SQL queries in the
   backend database allowing for the manipulation or disclosure of arbitrary data.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "SimpleHRM version 2.3 and 2.2, Other versions may also be affected.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/24954");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2013/04/17/1");
+  script_tag(name:"affected", value:"SimpleHRM version 2.3 and 2.2, Other versions may also be affected.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/24954");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2013/04/17/1");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -69,11 +65,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-
 http_port = get_http_port(default:80);
 
 if(!can_host_php(port:http_port)){
@@ -82,7 +73,6 @@ if(!can_host_php(port:http_port)){
 
 host = http_host_name(port:http_port);
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/simplehrm", "/hrm", cgi_dirs(port:http_port)))
 {
 
@@ -90,7 +80,6 @@ foreach dir (make_list_unique("/", "/simplehrm", "/hrm", cgi_dirs(port:http_port
 
   rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:http_port);
 
-  ## confirm the Application
   if("SimpleHRM<" >< rcvRes)
   {
     ## Vulnerable Url
@@ -104,10 +93,8 @@ foreach dir (make_list_unique("/", "/simplehrm", "/hrm", cgi_dirs(port:http_port
                     "Content-Length: ", strlen(postData), "\r\n",
                     "\r\n", postData, "\r\n");
 
-    ## Send request and receive the response
     rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq, bodyonly:TRUE);
 
-    ## Check the response to confirm vulnerability
     if(rcvRes && rcvRes =~ "Execute Error: You have an error in your SQL syntax.*SQL-Injection-Test"
               && ">SimpleHRM" >< rcvRes)
     {

@@ -1,6 +1,6 @@
 #############################################################################/##
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_rsa_spoof_vuln_sep14_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_rsa_spoof_vuln_sep14_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Mozilla Firefox RSA Spoof Vulnerability September14 (Windows)
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804918");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-1568");
   script_bugtraq_id(70116);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-09-29 16:24:03 +0530 (Mon, 29 Sep 2014)");
 
   script_name("Mozilla Firefox RSA Spoof Vulnerability September14 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox
   and is prone to spoofing vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Flaw exists due to improper handling of
+  script_tag(name:"insight", value:"Flaw exists due to improper handling of
   ASN.1 values while parsing RSA signature");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to conduct spoofing attacks.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox before 32.0.3 on Windows");
+  script_tag(name:"affected", value:"Mozilla Firefox before 32.0.3 on Windows");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 32.0.3
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 32.0.3
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -81,6 +81,6 @@ if(!ffVer = get_app_version(cpe:CPE)){
 
 if(version_is_less(version:ffVer, test_version:"32.0.3"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

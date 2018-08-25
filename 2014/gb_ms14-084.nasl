@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-084.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_ms14-084.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # MS Windows VBScript Remote Code Execution Vulnerability (3016711)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805206");
-  script_version("$Revision: 6663 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-6363");
   script_bugtraq_id(71504);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-12-10 08:42:37 +0530 (Wed, 10 Dec 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("MS Windows VBScript Remote Code Execution Vulnerability (3016711)");
@@ -53,8 +53,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 2003 x32/x64 Service Pack 2 and prior
+  script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Service Pack 2 and prior
   Microsoft Windows Vista x32/x64 Service Pack 2 and prior
   Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior
   Microsoft Windows 7 x32/x64 Service Pack 1 and prior
@@ -66,15 +65,16 @@ if(description)
   https://technet.microsoft.com/library/security/MS14-084");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3016711");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3012168");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3012172");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3012176");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms14-084");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/3016711");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/3012168");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/3012172");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/3012176");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms14-084");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl", "gb_ms_ie_detect.nasl");
+  script_dependencies("smb_reg_service_pack.nasl", "gb_ms_ie_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/IE/Version");
   exit(0);
 }
@@ -86,70 +86,55 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2003:3, win2003x64:3, winVista:3, winVistax64:3,
                    win7:2, win7x64:2, win2008:3, win2008x64:3, win2008r2:2) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-## Get IE Version
 ieVer = get_app_version(cpe:CPE);
 if(!ieVer || !(ieVer =~ "^(6|7|8)")){
   exit(0);
 }
 
-## Get Version from Vbscript.dll file
 dllVer = fetch_file_version(sysPath, file_name:"system32\Vbscript.dll");
 if(!dllVer){
   exit(0);
 }
 
-##Windows 2003
 if(hotfix_check_sp(win2003:3, win2003x64:3) > 0)
 {
-  ## Check for Vbscript.dll version
   if((ieVer =~ "^6" && version_in_range(version:dllVer, test_version:"5.6", test_version2:"5.6.0.8852")) ||
      (ieVer =~ "^(6|7)" && version_in_range(version:dllVer, test_version:"5.7", test_version2:"5.7.6002.23527")) ||
      (ieVer =~ "^8" && version_in_range(version:dllVer, test_version:"5.8", test_version2:"5.8.6001.23641"))){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows Vista and Windows Server 2008
 ## Currently not supporting for Vista and Windows Server 2008 64 bit
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Vbscript.dll version
   if((ieVer =~ "^(6|7)" && version_in_range(version:dllVer, test_version:"5.7", test_version2:"5.7.6002.19220")) ||
      (ieVer =~ "^(6|7)" && version_in_range(version:dllVer, test_version:"5.7.6002.23000", test_version2:"5.7.6002.23527")) ||
      (ieVer =~ "^8" && version_in_range(version:dllVer, test_version:"5.8.6001.19000", test_version2:"5.8.6001.19586")) ||
      (ieVer =~ "^8" && version_in_range(version:dllVer, test_version:"5.8.6001.23000", test_version2:"5.8.6001.23641"))){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows 7 and Windows 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for IE Version
   if(ieVer && ieVer =~ "^8")
   {
-    ## Check for Vbscript.dll version
     if(version_in_range(version:dllVer, test_version:"5.8", test_version2:"5.8.7601.18647") ||
        version_in_range(version:dllVer, test_version:"5.8.7601.22000", test_version2:"5.8.7601.22855")){
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }

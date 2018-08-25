@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_may13_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mult_vuln01_may13_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities -01 May13 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803605");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2013-1681", "CVE-2013-1680", "CVE-2013-1679", "CVE-2013-1678",
                 "CVE-2013-1677", "CVE-2013-1676", "CVE-2013-1675", "CVE-2013-1674",
                 "CVE-2013-1673", "CVE-2013-1672", "CVE-2013-1671", "CVE-2013-1670",
@@ -36,23 +36,23 @@ if(description)
                     59872, 59869, 59865, 59870, 59855);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-05-27 12:15:55 +0530 (Mon, 27 May 2013)");
   script_name("Mozilla Firefox Multiple Vulnerabilities -01 May13 (Windows)");
-  script_xref(name : "URL" , value : " http://secunia.com/advisories/53400");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1028555");
-  script_xref(name : "URL" , value : "http://www.dhses.ny.gov/ocs/advisories/2013/2013-051.cfm");
+  script_xref(name:"URL", value:" http://secunia.com/advisories/53400");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1028555");
+  script_xref(name:"URL", value:"http://www.dhses.ny.gov/ocs/advisories/2013/2013-051.cfm");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute arbitrary code,
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
   memory corruption, bypass certain security restrictions and compromise
   a user's system.
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Mozilla Firefox version before 21.0 on Windows");
-  script_tag(name : "insight" , value : "- Unspecified vulnerabilities in the browser engine.
+  script_tag(name:"affected", value:"Mozilla Firefox version before 21.0 on Windows");
+  script_tag(name:"insight", value:"- Unspecified vulnerabilities in the browser engine.
   - The Chrome Object Wrapper (COW) implementation does not prevent
     acquisition of chrome privileges.
   - Does not properly implement the INPUT element.
@@ -65,9 +65,9 @@ if(description)
   - Use-after-free vulnerabilities in following functions,
     'nsContentUtils::RemoveScriptBlocker', 'nsFrameList::FirstChild', and
     'mozilla::plugins::child::_geturlnotify'.");
-  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 21.0 or later,
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 21.0 or later,
   For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
-  script_tag(name : "summary" , value : "This host is installed with Mozilla Firefox and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -83,7 +83,7 @@ if(ffVer)
 {
   if(version_is_less(version:ffVer, test_version:"21.0"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

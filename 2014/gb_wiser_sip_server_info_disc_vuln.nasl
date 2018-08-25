@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wiser_sip_server_info_disc_vuln.nasl 9982 2018-05-28 12:00:03Z cfischer $
+# $Id: gb_wiser_sip_server_info_disc_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Wiser SIP Server Information Disclosure Vulnerability
 #
@@ -27,33 +27,33 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804454");
-  script_version("$Revision: 9982 $");
+  script_version("$Revision: 11108 $");
   script_bugtraq_id(67481);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-05-20 16:32:39 +0530 (Tue, 20 May 2014)");
   script_name("Wiser SIP Server Information Disclosure Vulnerability");
 
-  script_tag(name : "summary" , value : "This host is installed with Wiser SIP Server and is prone to information
+  script_tag(name:"summary", value:"This host is installed with Wiser SIP Server and is prone to information
 disclosure vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send the crafted HTTP GET request and check is it possible to read
+  script_tag(name:"vuldetect", value:"Send the crafted HTTP GET request and check is it possible to read
 the backup information.");
-  script_tag(name : "insight" , value : "Wiser contains a flaw that allow a remote attacker to gain access to
+  script_tag(name:"insight", value:"Wiser contains a flaw that allow a remote attacker to gain access to
 backup information by sending a direct request for the
 /voip/sipserver/class/baixarBackup.php script.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to gain sensitive
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain sensitive
 information without prior authentication.
 
 Impact Level: Application");
-  script_tag(name : "affected" , value : "Wiser SIP Server version 2.10");
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+  script_tag(name:"affected", value:"Wiser SIP Server version 2.10");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126700/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/126700/");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

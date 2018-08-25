@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_esr_mult_vuln01_may13_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_thunderbird_esr_mult_vuln01_may13_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Mozilla Thunderbird ESR Multiple Vulnerabilities -01 May13 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803611");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2013-1681", "CVE-2013-1680", "CVE-2013-1679", "CVE-2013-1678",
                 "CVE-2013-1677", "CVE-2013-1676", "CVE-2013-1675", "CVE-2013-1674",
                 "CVE-2013-1672", "CVE-2013-1670", "CVE-2013-0801");
@@ -35,22 +35,22 @@ if(description)
                     59865, 59855);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-05-27 13:20:15 +0530 (Mon, 27 May 2013)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities -01 May13 (Windows)");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1028555");
-  script_xref(name : "URL" , value : "http://www.dhses.ny.gov/ocs/advisories/2013/2013-051.cfm");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1028555");
+  script_xref(name:"URL", value:"http://www.dhses.ny.gov/ocs/advisories/2013/2013-051.cfm");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Thunderbird-ESR/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute arbitrary code,
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
   memory corruption, bypass certain security restrictions and compromise
   a user's system.
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Mozilla Thunderbird ESR version 17.x before 17.0.6 on Windows");
-  script_tag(name : "insight" , value : "- Unspecified vulnerabilities in the browser engine.
+  script_tag(name:"affected", value:"Mozilla Thunderbird ESR version 17.x before 17.0.6 on Windows");
+  script_tag(name:"insight", value:"- Unspecified vulnerabilities in the browser engine.
   - The Chrome Object Wrapper (COW) implementation does not prevent
     acquisition of chrome privileges.
   - 'nsDOMSVGZoomEvent::mPreviousScale' and 'nsDOMSVGZoomEvent::mNewScale'
@@ -61,9 +61,9 @@ if(description)
   - Use-after-free vulnerabilities in following functions,
     'nsContentUtils::RemoveScriptBlocker', 'nsFrameList::FirstChild', and
     'mozilla::plugins::child::_geturlnotify'.");
-  script_tag(name : "solution" , value : "Upgrade to Mozilla Thunderbird ESR version 17.0.6 or later,
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird ESR version 17.0.6 or later,
   For updates refer to http://www.mozilla.com/en-US/thunderbird");
-  script_tag(name : "summary" , value : "This host is installed with Mozilla Thunderbird ESR and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Mozilla Thunderbird ESR and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_keywords_xss_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: gb_mybb_keywords_xss_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # MyBB keywords Cross Site Scripting Vulnerability
 #
@@ -29,30 +29,30 @@ CPE = 'cpe:/a:mybb:mybb';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804234");
-  script_version("$Revision: 6692 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-1840");
   script_bugtraq_id(65344);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-02-05 15:23:57 +0530 (Wed, 05 Feb 2014)");
   script_name("MyBB keywords Cross Site Scripting Vulnerability");
 
-  script_tag(name : "summary" , value : "This host is running MyBB and is prone to cross site scripting vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send a crafted exploit string via HTTP POST request and check whether it is
+  script_tag(name:"summary", value:"This host is running MyBB and is prone to cross site scripting vulnerability.");
+  script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP POST request and check whether it is
   able to read the string or not.");
-  script_tag(name : "insight" , value : "The flaw is due to an input passed via the 'keywords' parameter to
+  script_tag(name:"insight", value:"The flaw is due to an input passed via the 'keywords' parameter to
   'search.php', which is not properly sanitised before using it.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to steal the victim's
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to steal the victim's
   cookie-based authentication credentials.
 
   Impact Level: Application.");
-  script_tag(name : "affected" , value : "MyBB version 1.6.12, Other versions may also be affected.");
-  script_tag(name : "solution" , value : "Upgrade to version 1.6.13 or later,
+  script_tag(name:"affected", value:"MyBB version 1.6.12, Other versions may also be affected.");
+  script_tag(name:"solution", value:"Upgrade to version 1.6.13 or later,
   For updates refer to http://www.mybb.com");
 
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/mybb-1612-post-cross-site-scripting");
-  script_xref(name : "URL" , value : "http://osandamalith.wordpress.com/2014/02/02/mybb-1-6-12-post-xss-0day/");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/mybb-1612-post-cross-site-scripting");
+  script_xref(name:"URL", value:"http://osandamalith.wordpress.com/2014/02/02/mybb-1-6-12-post-xss-0day/");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -68,9 +68,9 @@ if(description)
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("host_details.inc");
-include("global_settings.inc");
+
 
 if( ! mybbPort = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:mybbPort ) ) exit( 0 );
@@ -92,7 +92,6 @@ mybbReq = string("POST ",url," HTTP/1.0\r\n",
 
 mybbRes = http_send_recv(port:mybbPort, data:mybbReq);
 
-## Confirm exploit worked by checking the response
 if(mybbRes =~ "HTTP/1\.. 200" && "<script>alert(/1234567890/)</script>" >< mybbRes)
 {
   security_message(port:mybbPort);

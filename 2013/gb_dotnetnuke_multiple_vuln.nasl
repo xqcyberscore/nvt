@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnetnuke_multiple_vuln.nasl 6115 2017-05-12 09:03:25Z teissa $
+# $Id: gb_dotnetnuke_multiple_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # DotNetNuke Redirection Weakness and Cross Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:dotnetnuke:dotnetnuke";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803874");
-  script_version("$Revision: 6115 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2013-3943", "CVE-2013-4649", "CVE-2013-7335");
   script_bugtraq_id(61809, 61770);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-12 11:03:25 +0200 (Fri, 12 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 15:43:57 +0530 (Wed, 21 Aug 2013)");
   script_name("DotNetNuke Redirection Weakness and Cross Site Scripting Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -46,7 +46,7 @@ if(description)
 
   script_tag(name:"summary", value:"This host is installed with DotNetNuke and is prone to redirection weakness
   and cross site scripting vulnerabilities.");
-  script_tag(name: "vuldetect" , value:"Send a Crafted HTTP GET request and check whether it is able to read the
+  script_tag(name:"vuldetect", value:"Send a Crafted HTTP GET request and check whether it is able to read the
   cookie or not.");
   script_tag(name:"solution", value:"Upgrade to version 6.2.9 or 7.1.1 or later,
   For updates refer to http://dnnsoftware.com");
@@ -84,10 +84,8 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-## Construct attack request
 url = dir + "/?__dnnVariable={%27__dnn_pageload%27:%27alert%28document.cookie%29%27}";
 
-## Confirm exploit worked by checking the response
 ## Extra check is not possible in this case.
 if( http_vuln_check( port:port, url:url, check_header:TRUE,
                      pattern:"alert\(document.cookie\)" ) ) {

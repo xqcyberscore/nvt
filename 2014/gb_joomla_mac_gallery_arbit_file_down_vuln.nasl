@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_mac_gallery_arbit_file_down_vuln.nasl 10212 2018-06-15 09:51:23Z ckuersteiner $
+# $Id: gb_joomla_mac_gallery_arbit_file_down_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Joomla! Mac Gallery Component Arbitrary File Download Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804772");
-  script_version("$Revision: 10212 $");
+  script_version("$Revision: 11108 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 11:51:23 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-10-07 11:56:04 +0530 (Tue, 07 Oct 2014)");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -63,8 +63,8 @@ a newer release, disable respective features, remove the product or replace the 
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/34755");
-  script_xref(name: "URL", value: "http://packetstormsecurity.com/files/128341");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/34755");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/128341");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

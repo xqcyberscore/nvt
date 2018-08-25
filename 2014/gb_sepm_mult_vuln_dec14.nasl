@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sepm_mult_vuln_dec14.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: gb_sepm_mult_vuln_dec14.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Symantec Endpoint Protection Manager Multiple Vulnerabilities - Dec14
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805203");
-  script_version("$Revision: 6724 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-3439", "CVE-2014-3438", "CVE-2014-3437");
   script_bugtraq_id(70843, 70844, 70845);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-12-04 09:43:28 +0530 (Thu, 04 Dec 2014)");
   script_name("Symantec Endpoint Protection Manager Multiple Vulnerabilities - Dec14");
 
@@ -67,7 +67,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1031176");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1031176");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -81,22 +81,15 @@ include("http_keepalive.inc");
 include("host_details.inc");
 
 
-## Variable Initialization
-http_port = 0;
-url = "";
-
-## Get http port
 http_port = get_http_port(default:8443);
 
 ##Send https request and Receive Response
 res = http_get_cache(item:"/", port:http_port);
 
-##Confirm Application
 if(res && ">Symantec Endpoint Protection Manager<" >< res
        && res =~ "&copy.*Symantec Coorporation<")
 {
 
-  ## Construct Malformed URL
   url = "/console/Highlander_docs/SSO-Error.jsp?ErrorMsg=<script>alert(document"
         + ".cookie)</script>";
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-3822.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_junos_cve_2014-3822.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Junos IPv6 to IPv4 Translating Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105917");
-  script_version ("$Revision: 6715 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-07-17 14:40:26 +0200 (Thu, 17 Jul 2014)");
   script_tag(name:"cvss_base", value:"5.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:C");
@@ -50,29 +50,29 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version", "Junos/model");
 
-  script_tag(name : "summary" , value : "DoS when translating from IPv6 to IPv4.");
+  script_tag(name:"summary", value:"DoS when translating from IPv6 to IPv4.");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "A denial of service (DoS) issue has been discovered in Juniper SRX
+  script_tag(name:"insight", value:"A denial of service (DoS) issue has been discovered in Juniper SRX
 Series products that can be exploited by remote unauthenticated attackers. This issue takes place when a
 certain malformed packet is translated from IPv6 to IPv4. When this malformed packet is sent to a vulnerable
 SRX Series device, the flowd process may crash.");
 
-  script_tag(name : "impact" , value : "Unauthenticated attackers can cause a DoS condition by repeatedly
+  script_tag(name:"impact", value:"Unauthenticated attackers can cause a DoS condition by repeatedly
 exploiting this vulnerability.");
 
-  script_tag(name : "affected" , value : "Junos OS 11.4, 12.1, 12.1X44, 12.1X45 and 12.1X46.");
+  script_tag(name:"affected", value:"Junos OS 11.4, 12.1, 12.1X44, 12.1X45 and 12.1X46.");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper. As a
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. As a
 workaround disable NAT translation from IPv6 to IPv4 if not required.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10641");
 
- 
+
   exit(0);
 }
 

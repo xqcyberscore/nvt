@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_dlink_59564.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: gb_multiple_dlink_59564.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Multiple D-Link Products Command Injection Vulnerability
 #
@@ -27,42 +27,43 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105104");
- script_bugtraq_id(59564);
- script_cve_id("CVE-2013-1599");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6724 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105104");
+  script_bugtraq_id(59564);
+  script_cve_id("CVE-2013-1599");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11108 $");
 
- script_name("Multiple D-Link Products Command Injection Vulnerability");
+  script_name("Multiple D-Link Products Command Injection Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59564");
- script_xref(name:"URL", value:"http://www.dlink.com/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/59564");
+  script_xref(name:"URL", value:"http://www.dlink.com/");
 
- script_tag(name: "impact" , value:"Exploiting this issue could allow an attacker to execute arbitrary
+  script_tag(name:"impact", value:"Exploiting this issue could allow an attacker to execute arbitrary
 commands in the context of the affected device.");
 
- script_tag(name: "vuldetect" , value:"Send a HTTP GET request and check the response.");
- script_tag(name: "solution" , value:"Ask the Vendor for an update.");
- script_tag(name: "summary" , value:"Multiple D-Link products are prone to a command-injection
+  script_tag(name:"vuldetect", value:"Send a HTTP GET request and check the response.");
+  script_tag(name:"solution", value:"Ask the Vendor for an update.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Multiple D-Link products are prone to a command-injection
 vulnerability.");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
- script_tag(name:"creation_date", value:"2014-11-04 13:38:34 +0100 (Tue, 04 Nov 2014)");
- script_category(ACT_ATTACK);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2014-11-04 13:38:34 +0100 (Tue, 04 Nov 2014)");
+  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("dcs-lig-httpd/banner");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("dcs-lig-httpd/banner");
 
  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port( default:8080 );
 
 banner = get_http_banner( port:port );

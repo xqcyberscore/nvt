@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_oct14_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_mult_vuln01_oct14_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities - 01 Oct14 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804936");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-3200", "CVE-2014-3199", "CVE-2014-3198", "CVE-2014-3197",
                 "CVE-2014-3196", "CVE-2014-3195", "CVE-2014-3194", "CVE-2014-3193",
                 "CVE-2014-3192", "CVE-2014-3191", "CVE-2014-3190", "CVE-2014-3189",
@@ -37,43 +37,43 @@ if(description)
   script_bugtraq_id(70273, 70262, 70587);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-10-16 15:21:08 +0530 (Thu, 16 Oct 2014)");
 
   script_name("Google Chrome Multiple Vulnerabilities - 01 Oct14 (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
   - Some errors related to V8 and IPC.
   - An out-of-bound read access error in PDFium.
-  - Multiple use-after-free errors in Events, Rendering, DOM,and Web Workers.
+  - Multiple use-after-free errors in Events, Rendering, DOM, and Web Workers.
   - A type confusion error in Session Management.
   - An information leak error in the V8 JavaScript engine and the XSS Auditor.
   - An error in the Windows Sandbox.
   - An error within V8 bindings.
   - Other multiple unspecified errors.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to disclose potentially sensitive information, bypass certain security
   restrictions, conduct denial-of-service attacks, compromise a vulnerable system
   or possibly have unspecified other impact.
 
   Impact Level: Application/System");
 
-  script_tag(name: "affected" , value:"Google Chrome prior to version 38.0.2125.101
+  script_tag(name:"affected", value:"Google Chrome prior to version 38.0.2125.101
   on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Google Chrome 38.0.2125.101 or later,
+  script_tag(name:"solution", value:"Upgrade to Google Chrome 38.0.2125.101 or later,
   For updates refer to http://www.google.com/chrome");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/61755");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2014/10/stable-channel-update.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/61755");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2014/10/stable-channel-update.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

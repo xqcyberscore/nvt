@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmi_no_auth_enabled.nasl 6074 2017-05-05 09:03:14Z teissa $
+# $Id: gb_ipmi_no_auth_enabled.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # IPMI No Auth Access Mode Enabled
 #
@@ -25,30 +25,26 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote IPMI service has the 'No Auth' access mode enabled.";
-tag_solution = "Disable the 'No Auth' access mode.";
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103837";  
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 6074 $");
- script_tag(name:"last_modification", value:"$Date: 2017-05-05 11:03:14 +0200 (Fri, 05 May 2017) $");
- script_tag(name:"creation_date", value:"2013-11-26 12:13:03 +0100 (Tue, 26 Nov 2013)");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_name("IPMI No Auth Access Mode Enabled");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("General");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("gb_ipmi_detect.nasl");
- script_require_udp_ports("Services/udp/ipmi", 623);
- script_mandatory_keys("ipmi/no_auth_supported");
+  script_oid("1.3.6.1.4.1.25623.1.0.103837");
+  script_version("$Revision: 11103 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-11-26 12:13:03 +0100 (Tue, 26 Nov 2013)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("IPMI No Auth Access Mode Enabled");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("gb_ipmi_detect.nasl");
+  script_require_udp_ports("Services/udp/ipmi", 623);
+  script_mandatory_keys("ipmi/no_auth_supported");
 
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"solution", value:"Disable the 'No Auth' access mode.");
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"summary", value:"The remote IPMI service has the 'No Auth' access mode enabled.");
 
  exit(0);
 }
@@ -61,7 +57,7 @@ if(!get_udp_port_state(port))exit(0);
 if(get_kb_item("ipmi/no_auth_supported")) {
   security_message(port:port, proto:"udp");
   exit(0);
-}   
+}
 
 exit(99);
 

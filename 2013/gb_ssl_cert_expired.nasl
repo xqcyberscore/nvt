@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ssl_cert_expired.nasl 7248 2017-09-25 08:18:05Z cfischer $
+# $Id: gb_ssl_cert_expired.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # SSL/TLS: Certificate Expired
 #
@@ -29,8 +29,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103955");
-  script_version("$Revision: 7248 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-25 10:18:05 +0200 (Mon, 25 Sep 2017) $");
+  script_version("$Revision: 11103 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-25 12:37:04 +0700 (Mon, 25 Nov 2013)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
@@ -54,7 +54,7 @@ if(description)
   exit(0);
 }
 
-include("global_settings.inc");
+
 include("misc_func.inc");
 include("ssl_funcs.inc");
 include("byte_func.inc");

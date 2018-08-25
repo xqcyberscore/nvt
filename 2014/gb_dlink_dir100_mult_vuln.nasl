@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir100_mult_vuln.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_dlink_dir100_mult_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # D-Link DIR-100 Router Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803797");
-  script_version("$Revision: 6750 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2013-7051", "CVE-2013-7052", "CVE-2013-7053", "CVE-2013-7054",
                 "CVE-2013-7055");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-02-05 12:25:02 +0530 (Wed, 05 Feb 2014)");
   script_name("D-Link DIR-100 Router Multiple Vulnerabilities");
 
@@ -57,7 +57,7 @@ if(description)
   script_tag(name:"solution", value:"Apply the patch or upgrade to version 4.03B13 or later,
   For updates refer to http://more.dlink.de/sicherheit/index.html
   For Patch refer to http://exploitsdownload.com/exploit/na/d-link-dir-100-csrf-xss-disclosure-authentication");
-
+  script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/31425");
   script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2014020019");
   script_xref(name:"URL", value:"http://pigstarter.krebsco.de/report/2013-12-18_dir100.txt");
@@ -77,16 +77,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-DlinkBanner = "";
-DlinkPort = "";
-DlinkReq = "";
-DlinkRes = "";
-
-## Get HTTP Port
 DlinkPort = get_http_port(default:80);
 
-## Confirm the device from banner
 DlinkBanner = get_http_banner(port: DlinkPort);
 if("Server: HTTP Server" >!< DlinkBanner) exit(0);
 
@@ -94,12 +86,10 @@ if("Server: HTTP Server" >!< DlinkBanner) exit(0);
 DlinkReq = http_get(item: "/bsc_internet.htm", port:DlinkPort);
 DlinkRes = http_keepalive_send_recv(port:DlinkPort,data:DlinkReq);
 
-## Confirm the device from response
 if("sys_passHash" >< DlinkRes && "router.css" >< DlinkRes)
 {
   url = '/cliget.cgi?cmd=$sys_user1';
 
-  ## Check the response to confirm vulnerability
   if(http_vuln_check(port:DlinkPort, url:url, check_header:TRUE, pattern:"user=.*&pass="))
   {
     security_message(port:DlinkPort);

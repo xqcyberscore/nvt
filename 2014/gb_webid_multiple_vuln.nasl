@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_multiple_vuln.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_webid_multiple_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # WeBid Multiple Cross Site Scripting And LDAP Injection Vulnerabilities
 #
@@ -29,24 +29,20 @@ CPE = "cpe:/a:webidsupport:webid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804476");
-  script_version("$Revision: 6715 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-5101", "CVE-2014-5114");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-07-29 12:53:33 +0530 (Tue, 29 Jul 2014)");
   script_name("WeBid Multiple Cross Site Scripting And LDAP Injection Vulnerabilities");
 
-  tag_summary =
-"This host is installed with WeBid and is prone to multiple cross site scripting
-and LDAP injection vVulnerabilities.";
 
-  tag_vuldetect =
-"Send a crafted data via HTTP POST request and check whether it is able to read
-cookie or not.";
-
-  tag_insight =
-"Mulltiple flaws are due to,
+  script_tag(name:"summary", value:"This host is installed with WeBid and is prone to multiple cross site scripting
+and LDAP injection vVulnerabilities.");
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP POST request and check whether it is able to read
+cookie or not.");
+  script_tag(name:"insight", value:"Mulltiple flaws are due to,
  - The /WeBid/user_login.php script does not validate input to the 'username'
    POST parameter before returning it to users.
  - The register.php script does not validate input to the 'TPL_name', 'TPL_nick',
@@ -55,33 +51,16 @@ cookie or not.";
    'TPL_wordpay_id', 'TPL_toocheckout_id', and 'TPL_moneybookers_email' POST
    parameters before returning it to users.
  - An input passed via the 'js' parameter is not properly sanitized upon
-   submission to the loader.php script. ";
-
-  tag_impact =
-"Successful exploitation will allow attacker to execute arbitrary HTML and
+   submission to the loader.php script. ");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
 script code in a user's browser session in the context of an affected site.
 
-Impact Level: Application";
-
-  tag_affected =
-"WeBid Version 1.1.1";
-
-  tag_solution =
-"No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+Impact Level: Application");
+  script_tag(name:"affected", value:"WeBid Version 1.1.1");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127431");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127431");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -97,20 +76,11 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = "";
-dir = "";
-url = "";
-sndReq = "";
-rcvRes = "";
 
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
@@ -126,10 +96,8 @@ sndReq = string("POST ", url, " HTTP/1.1\r\n",
                 "Content-Length: ", strlen(postData), "\r\n",
                 "\r\n", postData);
 
-## Send request and receive the response
 rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-## Confirm the Exploit
 if(rcvRes =~ "HTTP/1\.. 200" && rcvRes =~ '"><script>alert\\(document.cookie\\);</.*script>"'
   && ">WeBid<" >< rcvRes)
 {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_contenido_cms_mult_xss_vuln.nasl 4554 2016-11-17 13:35:52Z cfi $
+# $Id: gb_contenido_cms_mult_xss_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Contenido CMS Multiple Parameter Cross-Site Scripting Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805231");
-  script_version("$Revision: 4554 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-9433");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-17 14:35:52 +0100 (Thu, 17 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-12-26 15:09:14 +0530 (Fri, 26 Dec 2014)");
   script_name("Contenido CMS Multiple Parameter Cross-Site Scripting Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -79,7 +79,6 @@ include("http_keepalive.inc");
 cmsPort = get_http_port( default:80 );
 if( ! can_host_php( port:cmsPort ) ) exit( 0 );
 
-#iterate over possible paths
 foreach dir( make_list_unique( "/", "/contenido", "/cms", cgi_dirs( port:cmsPort ) ) ) {
 
   if( dir == "/" ) dir = "";
@@ -88,10 +87,8 @@ foreach dir( make_list_unique( "/", "/contenido", "/cms", cgi_dirs( port:cmsPort
   req = http_get( item:dir + "/front_content.php", port:cmsPort );
   res = http_keepalive_send_recv( port:cmsPort, data:req );
 
-  ## confirm the application
   if( res && ( res =~ "content=.CMS CONTENIDO" || "front_content.php?idcat=" >< res ) ) {
 
-    ## Construct the attack request
     url = dir + "/front_content.php?idcat=&lang=<script>alert(document.c"
               + "ookie)</script>";
 

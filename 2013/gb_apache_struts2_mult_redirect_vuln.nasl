@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts2_mult_redirect_vuln.nasl 9353 2018-04-06 07:14:20Z cfischer $
+# $Id: gb_apache_struts2_mult_redirect_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Apache Struts2 Redirection and Security Bypass Vulnerabilities
 #
@@ -29,44 +29,44 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803838");
-  script_version("$Revision: 9353 $");
+  script_version("$Revision: 11103 $");
   script_cve_id("CVE-2013-2248", "CVE-2013-2251");
   script_bugtraq_id(61196, 61189);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-07-24 11:58:54 +0530 (Wed, 24 Jul 2013)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts2 Redirection and Security Bypass Vulnerabilities");
 
-  script_tag(name: "summary" , value:"This host is running Apache Struts2 and is prone
+  script_tag(name:"summary", value:"This host is running Apache Struts2 and is prone
   to redirection and security bypass vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Send an expression along with the redirect command
+  script_tag(name:"vuldetect", value:"Send an expression along with the redirect command
   via HTTP GET request and check whether it is redirecting and solve the expression or not.");
 
-  script_tag(name: "insight" , value:"Flaws are due to improper sanitation of 'action:',
+  script_tag(name:"insight", value:"Flaws are due to improper sanitation of 'action:',
   'redirect:', and 'redirectAction:' prefixing parameters before being used in
   DefaultActionMapper.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote attacker
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attacker
   to execute arbitrary arbitrary Java code via OGNL (Object-Graph Navigation Language)
   or redirect user to a malicious url.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Apache Struts 2.0.0 to 2.3.15");
+  script_tag(name:"affected", value:"Apache Struts 2.0.0 to 2.3.15");
 
-  script_tag(name: "solution" , value:"Upgrade to Apache Struts 2 version 2.3.15.1 or later,
+  script_tag(name:"solution", value:"Upgrade to Apache Struts 2 version 2.3.15.1 or later,
   For updates refer to http://struts.apache.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/54118");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2013/Jul/157");
-  script_xref(name : "URL" , value : "http://struts.apache.org/development/2.x/docs/s2-016.html");
-  script_xref(name : "URL" , value : "http://struts.apache.org/development/2.x/docs/s2-017.html");
-  script_xref(name : "URL" , value : "http://struts.apache.org/release/2.3.x/docs/version-notes-23151.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/54118");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/Jul/157");
+  script_xref(name:"URL", value:"http://struts.apache.org/development/2.x/docs/s2-016.html");
+  script_xref(name:"URL", value:"http://struts.apache.org/development/2.x/docs/s2-017.html");
+  script_xref(name:"URL", value:"http://struts.apache.org/release/2.3.x/docs/version-notes-23151.html");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_dependencies("gb_apache_struts2_detection.nasl");
@@ -81,17 +81,6 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-asport = 0;
-asreq = "";
-asres = "";
-res = "";
-req = "";
-result = "";
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!asport = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -104,14 +93,12 @@ if(!dir = get_app_location(cpe:CPE, port:asport)){
 asreq = http_get(item:string(dir,"/showcase.action"), port:asport);
 asres = http_keepalive_send_recv(port:asport, data:asreq);
 
-## Confirm the application
 if(asres && ">Struts2 Showcase<" >< asres && ">Welcome!<" >< asres)
 {
   calc = make_list(2, 3);
 
   foreach i (calc)
   {
-    ## Construct attack request
     url = dir + "/showcase.action?redirect%3A%25%7B"+ i +"*5%7D";
 
     req = http_get(item:url, port:asport);

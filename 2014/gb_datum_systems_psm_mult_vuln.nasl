@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_datum_systems_psm_mult_vuln.nasl 6759 2017-07-19 09:56:33Z teissa $
+# $Id: gb_datum_systems_psm_mult_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
 # Datum Systems Satellite Modem Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804477");
-  script_version("$Revision: 6759 $");
+  script_version("$Revision: 11108 $");
   script_cve_id("CVE-2014-2951", "CVE-2014-2950");
   script_bugtraq_id(68515, 68514);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-07-30 14:56:40 +0530 (Wed, 30 Jul 2014)");
   script_name("Datum Systems Satellite Modem Multiple Vulnerabilities");
 
@@ -51,11 +51,7 @@ if(description)
 
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Datum Systems PSM-4500 and PSM-500 series satellite modem");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/917348");
@@ -76,17 +72,8 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
 
-## Variable Initialization
-sipReq = "";
-sipRes = "";
-kPort = 0;
-kBanner = "";
-defaults =  "";
-
-## Get HTTP Port
 kPort = get_http_port(default:80);
 
-## Confirm the application before trying exploit
 kBanner = get_http_banner(port: kPort);
 if('WWW-Authenticate: Basic realm="SnIP' >!< kBanner) exit(0);
 

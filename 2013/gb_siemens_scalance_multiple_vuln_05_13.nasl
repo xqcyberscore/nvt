@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_siemens_scalance_multiple_vuln_05_13.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: gb_siemens_scalance_multiple_vuln_05_13.nasl 11103 2018-08-24 10:37:26Z mmartin $
 #
 # Siemens Scalance X200 Series Switches Multiple Vulnerabilities.
 #
@@ -25,7 +25,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Siemens Scalance X200 series switches are prone to
+if (description)
+{
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory
+for more information.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Siemens Scalance X200 series switches are prone to
 
 1. a remote security bypass vulnerability.
 
@@ -35,40 +40,29 @@ restrictions and execute SNMP commands without proper credentials.
 2. a remote privilege-escalation vulnerability.
 
 An attacker can exploit this issue to gain elevated privileges
-within the application and execute commands with escalated privileges.";
+within the application and execute commands with escalated privileges.");
+  script_oid("1.3.6.1.4.1.25623.1.0.103724");
+  script_bugtraq_id(60168, 60165);
+  script_cve_id("CVE-2013-3634", "CVE-2013-3633");
+  script_tag(name:"cvss_base", value:"8.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
+  script_version("$Revision: 11103 $");
 
+  script_name("Siemens Scalance X200 Series Switches Multiple Vulnerabilities");
 
-tag_solution = "Updates are available. Please see the references or vendor advisory
-for more information.";
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60165");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60168");
+  script_xref(name:"URL", value:"http://subscriber.communications.siemens.com/");
+  script_xref(name:"URL", value:"http://www.siemens.com/corporate-technology/pool/de/forschungsfelder/siemens_security_advisory_ssa-170686.pdf");
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103724";
-
-if (description)
-{
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_oid(SCRIPT_OID);
- script_bugtraq_id(60168,60165);
- script_cve_id("CVE-2013-3634","CVE-2013-3633");
- script_tag(name:"cvss_base", value:"8.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
- script_version ("$Revision: 7585 $");
-
- script_name("Siemens Scalance X200 Series Switches Multiple Vulnerabilities");
-
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60165");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/60168");
- script_xref(name:"URL", value:"http://subscriber.communications.siemens.com/");
- script_xref(name:"URL", value:"http://www.siemens.com/corporate-technology/pool/de/forschungsfelder/siemens_security_advisory_ssa-170686.pdf");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
- script_tag(name:"creation_date", value:"2013-05-30 17:50:28 +0200 (Thu, 30 May 2013)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("General");
- script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
- script_dependencies("telnetserver_detect_type_nd_version.nasl");
- script_require_ports(23);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2013-05-30 17:50:28 +0200 (Thu, 30 May 2013)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_dependencies("telnetserver_detect_type_nd_version.nasl");
+  script_require_ports(23);
  exit(0);
 }
 
@@ -94,9 +88,9 @@ foreach vd (vuln_devices) {
   if(vd == device) {
     affected_device = TRUE;
     break;
-  }  
+  }
 
-}  
+}
 
 if(!affected_device)exit(0);
 
@@ -110,7 +104,7 @@ if(version_is_less(version:firmware, test_version:"5.1.0")) {
   security_message(port:port);
   exit(0);
 
-}  
+}
 
 exit(99);
 

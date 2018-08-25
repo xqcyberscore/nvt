@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-2713.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_junos_cve_2014-2713.nasl 11108 2018-08-24 14:27:07Z mmartin $
 #
-# Junos PFE Denial of Service Vulnerability 
+# Junos PFE Denial of Service Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105904");
-  script_version ("$Revision: 6769 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_version("$Revision: 11108 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-04-29 14:26:16 +0700 (Tue, 29 Apr 2014)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -50,22 +50,22 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version", "Junos/model");
 
-  script_tag(name : "summary" , value : "Denial of Service Vulnerability through crafted IP packet.");
+  script_tag(name:"summary", value:"Denial of Service Vulnerability through crafted IP packet.");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "A crafted IP packet destined to an MX Series or T4000 router
+  script_tag(name:"insight", value:"A crafted IP packet destined to an MX Series or T4000 router
 utilizing Trio or Cassis-based PFE (Packet Forwarding Engine) modules can cause the PFE to reboot.");
 
-  script_tag(name : "impact" , value : "Remote attackers can cause the PFE to reboot resulting in a denial
+  script_tag(name:"impact", value:"Remote attackers can cause the PFE to reboot resulting in a denial
 of service condition.");
 
-  script_tag(name : "affected" , value : "Junos OS 11.4, 12.1, 12.2, 12.3, 13.1, 13.2, 13.3.");
+  script_tag(name:"affected", value:"Junos OS 11.4, 12.1, 12.2, 12.3, 13.1, 13.2, 13.3.");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10621");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/66764");
@@ -99,7 +99,7 @@ if (revcomp(a:build2check, b:"20140320") >= 0) {
 if (revcomp(a:version, b:"11.4R11") < 0) {
   security_message(port:0, data:desc);
   exit(0);
-} 
+}
 
 if (version =~ "^12") {
   if (revcomp(a:version, b:"12.1R9") < 0) {
