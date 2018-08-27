@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_a3e631b454_pass_fc27.nasl 10324 2018-06-26 07:40:01Z santu $
+# $Id: gb_fedora_2018_a3e631b454_pass_fc27.nasl 11128 2018-08-27 04:23:53Z ckuersteiner $
 #
 # Fedora Update for pass FEDORA-2018-a3e631b454
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874730");
-  script_version("$Revision: 10324 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 09:40:01 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 11128 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-27 06:23:53 +0200 (Mon, 27 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-24 06:00:40 +0200 (Sun, 24 Jun 2018)");
   script_cve_id("CVE-2018-12356");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for pass FEDORA-2018-a3e631b454");
   script_tag(name:"summary", value:"Check the version of pass");

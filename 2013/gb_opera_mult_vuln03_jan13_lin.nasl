@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln03_jan13_lin.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_opera_mult_vuln03_jan13_lin.nasl 11114 2018-08-26 12:36:02Z cfischer $
 #
 # Opera Multiple Vulnerabilities-03 Jan13 (Linux)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803145");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11114 $");
   script_cve_id("CVE-2012-6461", "CVE-2012-6462", "CVE-2012-6463", "CVE-2012-6464",
                 "CVE-2012-6465", "CVE-2012-6466", "CVE-2012-6467");
   script_bugtraq_id(57121, 56407, 57120, 57132);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-26 14:36:02 +0200 (Sun, 26 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-01-07 16:09:01 +0530 (Mon, 07 Jan 2013)");
   script_name("Opera Multiple Vulnerabilities-03 Jan13 (Linux)");
   script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1034/");
@@ -48,32 +48,44 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_opera_detection_linux_900037.nasl",
-                      "ssh_authorization_init.nasl");
-  script_require_keys("Opera/Linux/Version");
+  script_dependencies("secpod_opera_detection_linux_900037.nasl");
+  script_mandatory_keys("Opera/Linux/Version");
+
   script_tag(name:"impact", value:"Successful exploitation will let the attacker crash the browser leading to
   denial of service, execute the arbitrary code or disclose the information.
+
   Impact Level: System/Application");
+
   script_tag(name:"affected", value:"Opera version before 12.10 on Linux");
+
   script_tag(name:"insight", value:"- Internet shortcuts used for phishing in '<img>' elements.
+
   - Specially crafted WebP images can be used to disclose random chunks
     of memory.
+
   - Specially crafted SVG images can allow execution of arbitrary code.
+
   - Cross domain access to object constructors can be used to facilitate
     cross-site scripting.
+
   - Data URIs can be used to facilitate Cross-Site Scripting.
+
   - CORS requests can incorrectly retrieve contents of cross origin pages.
+
   - Certificate revocation service failure may cause Opera to show an
     unverified site as secur.");
+
   script_tag(name:"solution", value:"Upgrade to Opera version 12.10 or later,
   For updates refer to http://www.opera.com/");
+
   script_tag(name:"summary", value:"The host is installed with Opera and is prone to multiple
   vulnerabilities.");
+
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wdmn_wireless_router_info_disc_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_wdmn_wireless_router_info_disc_vuln.nasl 11114 2018-08-26 12:36:02Z cfischer $
 #
 # Western Digital My Net Devices Information Disclosure Vulnerability
 #
@@ -27,30 +27,40 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803731");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11114 $");
   script_cve_id("CVE-2013-5006");
   script_bugtraq_id(61361);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-26 14:36:02 +0200 (Sun, 26 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-08-05 16:18:11 +0530 (Mon, 05 Aug 2013)");
   script_name("Western Digital My Net Devices Information Disclosure Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Western Digital My Net Router and is prone to information
   disclosure vulnerability.");
+
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP request and check whether it is able to read the
   password or not.");
+
   script_tag(name:"solution", value:"Upgrade to version 1.07.16, for the My Net N900 and My Net N900.
-  For My Net N600 and My Net N750 solution is to revert to the earlier
-  firmware of 1.01.04 or 1.01.20, or disable remote administrative access.
+  For My Net N600 and My Net N750 solution is to revert to the earlier firmware of 1.01.04 or 1.01.20,
+  or disable remote administrative access.
+
   For updates refer to http://www.wdc.com/en");
+
   script_tag(name:"solution_type", value:"VendorFix");
+
   script_tag(name:"insight", value:"The issue is due to the device storing the admin password in clear text in the
   main_internet.php source code page as the value for 'var pass'.");
+
   script_tag(name:"affected", value:"Western Digital My Net N600 1.03, 1.04,
+
   Western Digital My Net N750 1.03, 1.04,
+
   Western Digital My Net N900 1.05, 1.06 and
+
   Western Digital My Net N900C 1.05, 1.06");
+
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to gain access to credential
   information.
 
@@ -72,21 +82,14 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
-
-port = "";
-req = "";
-res = "";
-banner = "";
 
 port = get_http_port(default:8080);
 
 banner = get_http_banner(port: port);
 if(banner && banner =~ "MyNetN[6|7|9]")
 {
-  ## Send and Receive the response
   req = http_get(item: "/main_internet.php", port:port);
   res = http_keepalive_send_recv(port:port,data:req);
 

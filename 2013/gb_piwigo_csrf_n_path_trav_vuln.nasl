@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_piwigo_csrf_n_path_trav_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_piwigo_csrf_n_path_trav_vuln.nasl 11113 2018-08-26 12:32:34Z cfischer $
 #
 # Piwigo Cross Site Request Forgery and Path Traversal Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:piwigo:piwigo';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803340");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11113 $");
   script_bugtraq_id(58016, 58080);
   script_cve_id("CVE-2013-1468", "CVE-2013-1469");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-26 14:32:34 +0200 (Sun, 26 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-21 13:40:26 +0530 (Thu, 21 Mar 2013)");
   script_name("Piwigo Cross Site Request Forgery and Path Traversal Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -84,9 +84,10 @@ if( dir == "/" ) dir = "";
 
 url = dir + '/install.php?dl=/../../local/config/ovtestlmn678.php';
 
-## Actual file, '/database.inc.php' gets deleted and information cannot be
-## response. The patched version of application will generate a different
-## response.
+# Actual file, '/database.inc.php' gets deleted and information cannot be fetched.
+# Hence we are using dummy file 'openvastest.php' to check the
+# response. The patched version of application will generate a different
+# response.
 
 if( http_vuln_check( port:port, url:url, check_header:TRUE,
                      pattern:"Piwigo is already installed" ) ) {

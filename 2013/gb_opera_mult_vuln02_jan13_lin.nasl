@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln02_jan13_lin.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_opera_mult_vuln02_jan13_lin.nasl 11114 2018-08-26 12:36:02Z cfischer $
 #
 # Opera Multiple Vulnerabilities-02 Jan13 (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803142");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11114 $");
   script_cve_id("CVE-2012-6468", "CVE-2012-6469");
   script_bugtraq_id(56594);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-26 14:36:02 +0200 (Sun, 26 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-01-07 15:27:43 +0530 (Mon, 07 Jan 2013)");
   script_name("Opera Multiple Vulnerabilities-02 Jan13 (Linux)");
   script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1037/");
@@ -42,28 +42,34 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_opera_detection_linux_900037.nasl",
-                      "ssh_authorization_init.nasl");
-  script_require_keys("Opera/Linux/Version");
+  script_dependencies("secpod_opera_detection_linux_900037.nasl");
+  script_mandatory_keys("Opera/Linux/Version");
+
   script_tag(name:"impact", value:"Successful exploitation will let the attacker crash the browser leading to
   denial of service, execute the arbitrary code or disclose the information.
+
   Impact Level: System/Application");
+
   script_tag(name:"affected", value:"Opera version before 12.11 on Linux");
+
   script_tag(name:"insight", value:"- An error in handling of error pages, can be used to guess local file paths.
+
   - An error when requesting pages using HTTP, causes a buffer overflow, which
     in turn can lead to a memory corruption and crash.");
+
   script_tag(name:"solution", value:"Upgrade to Opera version 12.11 or later,
   For updates refer to http://www.opera.com/");
+
   script_tag(name:"summary", value:"The host is installed with Opera and is prone to multiple
   vulnerabilities.");
+
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
 include("version_func.inc");
-
-operaVer = "";
 
 operaVer = get_kb_item("Opera/Linux/Version");
 if(!operaVer){

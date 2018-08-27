@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kernel_sctp_prot_violation_dos_vuln.nasl 7277 2017-09-26 12:45:58Z cfischer $
+# $Id: gb_kernel_sctp_prot_violation_dos_vuln.nasl 11111 2018-08-26 12:16:08Z cfischer $
 #
 # Linux Kernel Stream Control Transmission Protocol Violation Vulnerability
 #
@@ -24,55 +24,55 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Upgrade to Linux kernel 2.6.27, or
-  Apply the available patch from below link,
-  http://git.kernel.org/?p=linux/kernel/git/stable/linux-2.6.27.y.git;a=commit;h=ba0166708ef4da7eeb61dd92bbba4d5a749d6561
-
-  *****
-  NOTE : Ignore this warning if patch is already applied.
-  *****";
-
-tag_impact = "Successful attacks will result in denial of service via kernel related
-  vectors.
-  Impact Level: System";
-tag_affected = "Linux kernel version before 2.6.27 on all Linux Platforms.";
-tag_insight = "The issue is with the parameter 'sctp_paramhdr' in sctp_sf_violation_paramlen,
-  sctp_sf_abort_violation, and sctp_make_abort_violation functions of sm.h,
-  sm_make_chunk.c, and sm_statefunc.c files, which has invalid length and
-  incorrect data types in function calls.";
-tag_summary = "This host has Linux Kernel Stream Control Transmission Protocol
-  (SCTP) implementation and is prone to Protocol Violation Vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800036");
-  script_version("$Revision: 7277 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
+  script_version("$Revision: 11111 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-26 14:16:08 +0200 (Sun, 26 Aug 2018) $");
   script_tag(name:"creation_date", value:"2008-10-22 15:17:54 +0200 (Wed, 22 Oct 2008)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_cve_id("CVE-2008-4618");
   script_bugtraq_id(31848);
   script_name("Linux Kernel Stream Control Transmission Protocol Violation Vulnerability");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2008/10/06/1");
-  script_xref(name : "URL" , value : "http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.27");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2008/10/06/1");
+  script_xref(name:"URL", value:"http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.27");
+  script_xref(name:"URL", value:"http://git.kernel.org/?p=linux/kernel/git/stable/linux-2.6.27.y.git;a=commit;h=ba0166708ef4da7eeb61dd92bbba4d5a749d6561");
 
   script_tag(name:"qod_type", value:"executable_version_unreliable");
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Denial of Service");
+  script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("login/SSH/success");
-  script_dependencies("ssh_authorization.nasl");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_exclude_keys("ssh/no_linux_shell");
+
+  script_tag(name:"impact", value:"Successful attacks will result in denial of service via kernel related
+  vectors.
+
+  Impact Level: System");
+
+  script_tag(name:"affected", value:"Linux kernel version before 2.6.27 on all Linux Platforms.");
+
+  script_tag(name:"insight", value:"The issue is with the parameter 'sctp_paramhdr' in sctp_sf_violation_paramlen,
+  sctp_sf_abort_violation, and sctp_make_abort_violation functions of sm.h,
+  sm_make_chunk.c, and sm_statefunc.c files, which has invalid length and
+  incorrect data types in function calls.");
+
+  script_tag(name:"summary", value:"This host has Linux Kernel Stream Control Transmission Protocol
+  (SCTP) implementation and is prone to Protocol Violation Vulnerability.");
+
+  script_tag(name:"solution", value:"Upgrade to Linux kernel 2.6.27, or
+  Apply the available patch from the referenced link.
+
+  *****
+  NOTE : Ignore this warning if patch is already applied.
+  *****");
+
   exit(0);
 }
-
 
 include("ssh_func.inc");
 include("version_func.inc");

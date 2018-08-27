@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mutiny_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_mutiny_detect.nasl 11132 2018-08-27 10:12:32Z ckuersteiner $
 #
 # Mutiny Detection
 #
@@ -31,20 +31,23 @@ if(description)
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11132 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-27 12:12:32 +0200 (Mon, 27 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-10-23 10:15:44 +0200 (Tue, 23 Oct 2012)");
+
   script_name("Mutiny Detection");
+
   script_category(ACT_GATHER_INFO);
   script_family("Product detection");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
   script_tag(name:"summary", value:"Detection of Mutiny.
 
-The script sends a connection request to the server and attempts to
-extract the version number from the reply.");
+The script sends a connection request to the server and attempts to extract the version number from the reply.");
+
  exit(0);
 }
 
@@ -59,32 +62,28 @@ foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
  install = dir;
  if( dir == "/" ) dir = "";
+
  url = dir + '/interface/logon.do';
- req = http_get(item:url, port:port);
- buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
- if( buf == NULL )continue;
+ buf = http_get_cache(item:url, port:port);
 
- if(egrep(pattern: "<title>.*Mutiny.*Login.*</title>", string: buf, icase: TRUE))
- {
-    vers = string("unknown");
+ if(egrep(pattern: "<title>.*Mutiny.*Login.*</title>", string: buf, icase: TRUE)) {
+    vers = "unknown";
+
     version = eregmatch(string: buf, pattern: 'var currentMutinyVersion = "Version ([0-9.-]+)',icase:TRUE);
+    if (!isnull(version[1]))
+       vers = version[1];
 
-    if ( !isnull(version[1]) ) {
-       vers = chomp(version[1]);
-    }
-
-    set_kb_item(name: string("www/", port, "/Mutiny"), value: string(vers," under ",install));
     set_kb_item(name: "Mutiny/installed", value: TRUE);
 
     cpe = build_cpe(value:vers, exp:"^([0-9.-]+)", base:"cpe:/a:mutiny:standard:");
-    if(isnull(cpe))
+    if(!cpe)
       cpe = 'cpe:/a:mutiny:standard';
 
     register_product(cpe:cpe, location:install, port:port);
 
-    log_message(data: build_detection_report(app:"Mutiny", version:vers, install:install, cpe:cpe, concluded: version[0]),
+    log_message(data: build_detection_report(app:"Mutiny", version:vers, install:install, cpe:cpe,
+                                             concluded: version[0]),
                 port:port);
-
     exit(0);
   }
 }

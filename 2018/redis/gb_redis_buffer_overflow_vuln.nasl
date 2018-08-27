@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_buffer_overflow_vuln.nasl 10294 2018-06-22 06:20:56Z santu $
+# $Id: gb_redis_buffer_overflow_vuln.nasl 11128 2018-08-27 04:23:53Z ckuersteiner $
 #
 # Redis Buffer Overflow Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:redis:redis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813439");
-  script_version("$Revision: 10294 $");
+  script_version("$Revision: 11128 $");
   script_cve_id("CVE-2018-12326");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-22 08:20:56 +0200 (Fri, 22 Jun 2018) $");
+  script_tag(name:"cvss_base", value:"4.6");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-27 06:23:53 +0200 (Mon, 27 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-18 16:33:41 +0530 (Mon, 18 Jun 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Redis Buffer Overflow Vulnerability");

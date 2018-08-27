@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-042.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ms14-042.nasl 11113 2018-08-26 12:32:34Z cfischer $
 #
 # Microsoft Windows Service Bus Denial of Service Vulnerability (2972621)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804474");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11113 $");
   script_cve_id("CVE-2014-2814");
   script_bugtraq_id(68393);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-26 14:32:34 +0200 (Sun, 26 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-07-09 15:14:23 +0530 (Wed, 09 Jul 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Windows Service Bus Denial of Service Vulnerability (2972621)");
@@ -79,6 +79,8 @@ include("secpod_smb_func.inc");
 if(hotfix_check_sp( win2008r2:2, win2012:1, win2012R2:1) <= 0){
   exit(0);
 }
+
+buskey = "SOFTWARE\Microsoft\Service Bus\1.1";
 
 if(!registry_key_exists(key:buskey)){
   exit(0);

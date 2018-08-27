@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_truncation_dialog_code_exec_vuln_lin.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_opera_truncation_dialog_code_exec_vuln_lin.nasl 11114 2018-08-26 12:36:02Z cfischer $
 #
 # Opera Truncated Dialogs Code Execution Vulnerability (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803148");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11114 $");
   script_cve_id("CVE-2012-6460");
   script_bugtraq_id(55301);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-26 14:36:02 +0200 (Sun, 26 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-01-07 16:22:46 +0530 (Mon, 07 Jan 2013)");
   script_name("Opera Truncated Dialogs Code Execution Vulnerability (Linux)");
   script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1028/");
@@ -41,25 +41,31 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_opera_detection_linux_900037.nasl",
-                      "ssh_authorization_init.nasl");
-  script_require_keys("Opera/Linux/Version");
+  script_dependencies("secpod_opera_detection_linux_900037.nasl");
+  script_mandatory_keys("Opera/Linux/Version");
+
   script_tag(name:"impact", value:"Successful exploitation will let the attacker execute the code and perform
   other unwanted actions.
+
   Impact Level: System/Application");
+
   script_tag(name:"affected", value:"Opera version before 11.67 and 12.x before 12.02 on Linux");
+
   script_tag(name:"insight", value:"An error in handling of truncated dialogs, can be used to cause the user
   to download and run executables unexpectedly or perform other unwanted
   actions.");
+
   script_tag(name:"solution", value:"Upgrade to Opera version 11.67 or 12.02
   For updates refer to http://www.opera.com/");
+
   script_tag(name:"summary", value:"The host is installed with Opera and is prone to code execution
   vulnerability.");
+
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 

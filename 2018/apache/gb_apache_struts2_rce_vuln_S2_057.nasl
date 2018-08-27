@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts2_rce_vuln_S2_057.nasl 11097 2018-08-23 13:21:19Z santu $
+# $Id: gb_apache_struts2_rce_vuln_S2_057.nasl 11129 2018-08-27 06:49:18Z ckuersteiner $
 #
 # Apache Struts2 Remote Code Execution Vulnerability (S2-057)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813786");
-  script_version("$Revision: 11097 $");
+  script_version("$Revision: 11129 $");
   script_cve_id("CVE-2018-11776");
   script_bugtraq_id(105125);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 15:21:19 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-27 08:49:18 +0200 (Mon, 27 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-23 12:45:43 +0530 (Thu, 23 Aug 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -43,7 +43,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running Apache Struts and is
   prone to a remote code execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
   on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to errors in conditions
@@ -65,10 +65,10 @@ if(description)
   2.5.17 or later. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://cwiki.apache.org/confluence/display/WW/S2-057");
-  script_xref(name : "URL" , value : "https://semmle.com/news/apache-struts-CVE-2018-11776");
-  script_xref(name : "URL" , value : "https://lgtm.com/blog/apache_struts_CVE-2018-11776");
-  script_xref(name : "URL" , value : "http://struts.apache.org");
+  script_xref(name:"URL", value:"https://cwiki.apache.org/confluence/display/WW/S2-057");
+  script_xref(name:"URL", value:"https://semmle.com/news/apache-struts-CVE-2018-11776");
+  script_xref(name:"URL", value:"https://lgtm.com/blog/apache_struts_CVE-2018-11776");
+  script_xref(name:"URL", value:"http://struts.apache.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -79,7 +79,6 @@ if(description)
   script_require_ports("Services/www", 8080);
   exit(0);
 }
-
 
 include("version_func.inc");
 include("host_details.inc");
@@ -105,3 +104,5 @@ if(fix)
   security_message(data:report, port:appPort);
   exit(0);
 }
+
+exit(0);

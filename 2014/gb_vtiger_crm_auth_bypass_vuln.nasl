@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_auth_bypass_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_vtiger_crm_auth_bypass_vuln.nasl 11114 2018-08-26 12:36:02Z cfischer $
 #
 # vTiger CRM Authentication Bypass Vulnerability
 #
@@ -33,14 +33,14 @@ if(description)
   script_cve_id("CVE-2013-3215");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11114 $");
 
   script_name("vTiger CRM Authentication Bypass Vulnerability");
 
   script_xref(name:"URL", value:"https://www.vtiger.com/blogs/?p=1467");
   script_xref(name:"URL", value:"http://karmainsecurity.com/KIS-2013-08");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-26 14:36:02 +0200 (Sun, 26 Aug 2018) $");
   script_tag(name:"creation_date", value:"2014-01-28 15:47:55 +0700 (Tue, 28 Jan 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -71,8 +71,6 @@ include("version_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("misc_func.inc");
-
-vtVer = "";
 
 if( ! port = get_app_port(cpe:CPE ) ) exit( 0 );
 if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:FALSE ) ) exit( 0 );

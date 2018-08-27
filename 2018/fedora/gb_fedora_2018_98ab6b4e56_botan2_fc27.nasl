@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_98ab6b4e56_botan2_fc27.nasl 10502 2018-07-13 13:19:46Z santu $
+# $Id: gb_fedora_2018_98ab6b4e56_botan2_fc27.nasl 11128 2018-08-27 04:23:53Z ckuersteiner $
 #
 # Fedora Update for botan2 FEDORA-2018-98ab6b4e56
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874787");
-  script_version("$Revision: 10502 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-13 15:19:46 +0200 (Fri, 13 Jul 2018) $");
+  script_version("$Revision: 11128 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-27 06:23:53 +0200 (Mon, 27 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-12 06:10:21 +0200 (Thu, 12 Jul 2018)");
   script_cve_id("CVE-2018-12435", "CVE-2018-0495");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"1.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for botan2 FEDORA-2018-98ab6b4e56");
   script_tag(name:"summary", value:"Check the version of botan2");

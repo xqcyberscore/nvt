@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quick_tftp_server_dos_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_quick_tftp_server_dos_vuln.nasl 11114 2018-08-26 12:36:02Z cfischer $
 #
 # Quick TFTP Server Long Filename Denial Of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803714");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11114 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-26 14:36:02 +0200 (Sun, 26 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-10 18:00:09 +0530 (Mon, 10 Jun 2013)");
   script_name("Quick TFTP Server Long Filename Denial Of Service Vulnerability");
 
@@ -45,26 +45,27 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial
   of service attacks.");
+
   script_tag(name:"affected", value:"Quick TFTP Server version 2.2");
+
   script_tag(name:"insight", value:"The flaw is due to an error when handling a long file name
   read request, which can be exploited by remote unauthenticated attackers to
   crash an affected application.");
-  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
+  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to
+  upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"summary", value:"This host is running Quick TFTP Server and is prone to
   denial of service vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
-
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }
 
-
 include("tftp.inc");
-
-port = "";
-soc = "";
 
 port = get_kb_item("Services/udp/tftp");
 if(!port){
