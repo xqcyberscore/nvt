@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_fe2cbf0c2b_obs-build_fc28.nasl 11133 2018-08-27 10:21:00Z santu $
+# $Id: gb_fedora_2018_fe2cbf0c2b_obs-build_fc28.nasl 11138 2018-08-28 05:15:49Z ckuersteiner $
 #
 # Fedora Update for obs-build FEDORA-2018-fe2cbf0c2b
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875006");
-  script_version("$Revision: 11133 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 12:21:00 +0200 (Mon, 27 Aug 2018) $");
+  script_version("$Revision: 11138 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 07:15:49 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-27 07:43:30 +0200 (Mon, 27 Aug 2018)");
   script_cve_id("CVE-2017-14804");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for obs-build FEDORA-2018-fe2cbf0c2b");
   script_tag(name:"summary", value:"Check the version of obs-build");

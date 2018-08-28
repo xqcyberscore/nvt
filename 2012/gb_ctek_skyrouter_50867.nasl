@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ctek_skyrouter_50867.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_ctek_skyrouter_50867.nasl 11135 2018-08-27 13:39:29Z asteins $
 #
 # Ctek SkyRouter 4200 and 4300 Series Routers Remote Arbitrary Command Execution Vulnerability
 #
@@ -31,7 +31,7 @@ if (description)
   script_bugtraq_id(50867);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11135 $");
   script_cve_id("CVE-2011-5010");
 
   script_name("Ctek SkyRouter 4200 and 4300 Series Routers Remote Arbitrary Command Execution Vulnerability");
@@ -39,7 +39,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/50867");
   script_xref(name:"URL", value:"http://www.ctekproducts.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-27 15:39:29 +0200 (Mon, 27 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-04-25 15:07:13 +0200 (Wed, 25 Apr 2012)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -57,7 +57,7 @@ adequately sanitize user-supplied input.");
 commands with superuser privileges, which may facilitate a complete
 compromise of the affected device.");
 
-script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
 Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   exit(0);

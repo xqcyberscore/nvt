@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: mysql_auth_bypas_cve_2012_2122.nasl 6788 2017-07-21 19:16:52Z cfischer $
+# $Id: mysql_auth_bypas_cve_2012_2122.nasl 11135 2018-08-27 13:39:29Z asteins $
 #
 # MySQL / MariaDB Authentication Bypass
 #
@@ -30,9 +30,9 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.103492");
   script_bugtraq_id(53911);
   script_cve_id("CVE-2012-2122");
-  script_version("$Revision: 6788 $");
+  script_version("$Revision: 11135 $");
   script_name("MySQL / MariaDB Authentication Bypass");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-27 15:39:29 +0200 (Mon, 27 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-06-11 18:38:54 +0200 (Mon, 11 Jun 2012)");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
@@ -48,23 +48,15 @@ if(description)
   script_xref(name:"URL", value:"http://www.h-online.com/open/news/item/Simple-authentication-bypass-for-MySQL-root-revealed-1614990.html");
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2012/q2/493");
 
-  tag_summary = "MySQL and MariaDB is prone to an Authentication Bypass.";
-
-  tag_impact = "Successful exploitation will yield unauthorized access to the database.";
-
-  tag_affected = "All MariaDB and MySQL versions up to 5.1.61, 5.2.11, 5.3.5, 5.5.23 are
-  vulnerable.";
-
-  tag_solution = "Update to:
+  script_tag(name:"summary", value:"MySQL and MariaDB is prone to an Authentication Bypass.");
+  script_tag(name:"impact", value:"Successful exploitation will yield unauthorized access to the database.");
+  script_tag(name:"affected", value:"All MariaDB and MySQL versions up to 5.1.61, 5.2.11, 5.3.5, 5.5.23 are
+  vulnerable.");
+  script_tag(name:"solution", value:"Update to:
 
   - MariaDB version 5.1.62, 5.2.12, 5.3.6, 5.5.23 or up
 
-  - MySQL version 5.1.63, 5.5.24, 5.6.6 or up.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  - MySQL version 5.1.63, 5.5.24, 5.6.6 or up.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_active");
@@ -172,4 +164,4 @@ for(i=0; i<1000; i++) {
 
 }
 
-exit(0);  
+exit(0);

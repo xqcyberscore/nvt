@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_prdts_cab_files_mem_corr_vuln.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_symantec_prdts_cab_files_mem_corr_vuln.nasl 11135 2018-08-27 13:39:29Z asteins $
 #
 # Symantec Products CAB Files Memory Corruption Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803054");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11135 $");
   script_cve_id("CVE-2012-4953");
   script_bugtraq_id(56399);
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-27 15:39:29 +0200 (Mon, 27 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-11-22 12:16:15 +0530 (Thu, 22 Nov 2012)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -74,7 +74,6 @@ if(description)
 
 include("version_func.inc");
 
-## Check for SAVCE version 10.x
 savceVer = get_kb_item("Symantec/SAVCE/Ver");
 if(savceVer && savceVer =~ "^10")
 {
@@ -95,7 +94,6 @@ if(isnull(sepType) && sepVer =~ "^11")
    exit(0);
 }
 
-## Check if product type is SEPSB
 if("sepsb" >< sepType  && sepVer =~ "^12\.0")
 {
    security_message( port: 0, data: "The target host was found to be vulnerable" );

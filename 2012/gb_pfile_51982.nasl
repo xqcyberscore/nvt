@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfile_51982.nasl 4126 2016-09-21 13:04:39Z mime $
+# $Id: gb_pfile_51982.nasl 11135 2018-08-27 13:39:29Z asteins $
 #
 # pfile Multiple Cross Site Scripting and SQL Injection Vulnerabilities
 #
@@ -31,10 +31,10 @@ if(description)
   script_bugtraq_id(51982);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_cve_id("CVE-2012-1210","CVE-2012-1211");
-  script_version("$Revision: 4126 $");
+  script_cve_id("CVE-2012-1210", "CVE-2012-1211");
+  script_version("$Revision: 11135 $");
   script_name("pfile Multiple Cross Site Scripting and SQL Injection Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2016-09-21 15:04:39 +0200 (Wed, 21 Sep 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-27 15:39:29 +0200 (Mon, 27 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-02-23 12:58:18 +0100 (Thu, 23 Feb 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -51,8 +51,11 @@ if(description)
   script_tag(name:"impact", value:"Exploiting these issues could allow an attacker to steal cookie-
   based authentication credentials, compromise the application, access or modify data, or exploit
   latent vulnerabilities in the underlying database.");
-  script_tag(name:"affected", value:"pfile 1.02 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"pfile 1.02 is vulnerable, other versions may also be affected.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_probe");
 
   exit(0);
@@ -60,7 +63,7 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2524_1.nasl 11133 2018-08-27 10:21:00Z santu $
+# $Id: gb_suse_2018_2524_1.nasl 11138 2018-08-28 05:15:49Z ckuersteiner $
 #
 # SuSE Update for kbuild, openSUSE-SU-2018:2524-1 (kbuild,)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851869");
-  script_version("$Revision: 11133 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 12:21:00 +0200 (Mon, 27 Aug 2018) $");
+  script_version("$Revision: 11138 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 07:15:49 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-27 07:20:54 +0200 (Mon, 27 Aug 2018)");
   script_cve_id("CVE-2017-5715", "CVE-2018-0739", "CVE-2018-2676", "CVE-2018-2685", "CVE-2018-2686", "CVE-2018-2687", "CVE-2018-2688", "CVE-2018-2689", "CVE-2018-2690", "CVE-2018-2693", "CVE-2018-2694", "CVE-2018-2698", "CVE-2018-2830", "CVE-2018-2831", "CVE-2018-2835", "CVE-2018-2836", "CVE-2018-2837", "CVE-2018-2842", "CVE-2018-2843", "CVE-2018-2844", "CVE-2018-2845", "CVE-2018-2860", "CVE-2018-3005", "CVE-2018-3055", "CVE-2018-3085", "CVE-2018-3086", "CVE-2018-3087", "CVE-2018-3088", "CVE-2018-3089", "CVE-2018-3090", "CVE-2018-3091");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.7");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for kbuild, openSUSE-SU-2018:2524-1 (kbuild,)");
   script_tag(name:"summary", value:"Check the version of kbuild,");

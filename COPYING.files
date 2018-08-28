@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 27 Aug 2018 14:56:28 +0200
+# Automatically created on:  Tue, 28 Aug 2018 08:59:23 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -41944,6 +41944,7 @@
 2018/vbulletin/gb_vbulletin_url_param_open_redirect_vuln.nasl: GPLv2+
 2018/vertiv/gb_emerson_liebert_intellislot_default_credentials.nasl: GPLv2+
 2018/viconindustries/gb_vicon_industries_network_camera_default_credentials.nasl: GPLv2+
+2018/videoiq/gb_videoiq_camera_default_credentials.nasl: GPLv2+
 2018/vlc/gb_vlc_media_player_dos_vuln_may18_macosx.nasl: GPLv2+
 2018/vlc/gb_vlc_media_player_dos_vuln_may18_win.nasl: GPLv2+
 2018/vlc/gb_vlc_mkv_files_arbitrary_code_exec_macosx.nasl: GPLv2+
@@ -59283,6 +59284,7 @@ gsf/2018/f5/gb_f5_big_ip_cookie_info_discl_vuln.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K00363258.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K00373024.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K02043709.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K02360853.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K02652550.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K03165684.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K04912972.nasl: GPLv2+
@@ -59411,6 +59413,7 @@ gsf/2018/fortinet/gb_fortianalyzer_FG-IR-18-022.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortimanager_FG-IR-17-305.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortimanager_FG-IR-18-006.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortimanager_FG-IR-18-014.nasl: GPLv2+
+gsf/2018/fortinet/gb_fortimanager_FG-IR-18-016.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortimanager_FG-IR-18-022.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-17-019.nasl: GPLv2+
 gsf/2018/fortinet/gb_fortinet_fortios_FG-IR-17-160.nasl: GPLv2+

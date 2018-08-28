@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_secpod_ssl_ciphers_weak_report.nasl 5525 2017-03-09 08:40:36Z cfi $
+# $Id: gb_secpod_ssl_ciphers_weak_report.nasl 11135 2018-08-27 13:39:29Z asteins $
 #
 # SSL/TLS: Report Weak Cipher Suites
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103440");
-  script_version("$Revision: 5525 $");
+  script_version("$Revision: 11135 $");
   script_cve_id("CVE-2013-2566", "CVE-2015-2808", "CVE-2015-4000");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 09:40:36 +0100 (Thu, 09 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-27 15:39:29 +0200 (Mon, 27 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-03-01 17:16:10 +0100 (Thu, 01 Mar 2012)");
   script_name("SSL/TLS: Report Weak Cipher Suites");
   script_category(ACT_GATHER_INFO);
@@ -68,7 +68,7 @@ if(description)
 
   - Any cipher considered to be secure for only the next 10 years is considered as medium
 
-  - Any other cipher is considered as strong" );
+  - Any other cipher is considered as strong");
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_app");
@@ -157,7 +157,6 @@ if( "TLSv1.2" >< sup_ssl ) {
 
 if( report ) {
 
-  # Check for Opportunistic TLS on 25/tcp/smtp and report only a log_message for it
   if( port == "25" ) {
     if( ports = get_kb_list( "Services/smtp" ) ) {
       if( in_array( search:"25", array:ports ) ) {
