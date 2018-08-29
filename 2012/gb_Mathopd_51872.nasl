@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_Mathopd_51872.nasl 10005 2018-05-29 13:54:41Z cfischer $
+# $Id: gb_Mathopd_51872.nasl 11141 2018-08-28 10:01:13Z asteins $
 #
 # Mathopd Directory Traversal Vulnerability
 #
@@ -27,45 +27,45 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103427");
- script_bugtraq_id(51872);
- script_cve_id("CVE-2012-1050");
- script_version("$Revision: 10005 $");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.103427");
+  script_bugtraq_id(51872);
+  script_cve_id("CVE-2012-1050");
+  script_version("$Revision: 11141 $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
- script_name("Mathopd Directory Traversal Vulnerability");
+  script_name("Mathopd Directory Traversal Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51872");
- script_xref(name : "URL" , value : "http://www.mathopd.org/");
- script_xref(name : "URL" , value : "http://www.mail-archive.com/mathopd%40mathopd.org/msg00392.html");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521507");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51872");
+  script_xref(name:"URL", value:"http://www.mathopd.org/");
+  script_xref(name:"URL", value:"http://www.mail-archive.com/mathopd%40mathopd.org/msg00392.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/521507");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-29 15:54:41 +0200 (Tue, 29 May 2018) $");
- script_tag(name:"creation_date", value:"2012-02-16 15:14:41 +0100 (Thu, 16 Feb 2012)");
- script_tag(name:"qod_type", value:"remote_banner");
- script_category(ACT_GATHER_INFO);
- script_family("Web Servers");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_mandatory_keys("Mathopd/banner");
- script_require_ports("Services/www", 80);
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 12:01:13 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-16 15:14:41 +0100 (Thu, 16 Feb 2012)");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web Servers");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_mandatory_keys("Mathopd/banner");
+  script_require_ports("Services/www", 80);
 
- script_tag(name : "summary" , value : "Mathopd is prone to a directory-traversal vulnerability because it
+  script_tag(name:"summary", value:"Mathopd is prone to a directory-traversal vulnerability because it
 fails to sufficiently sanitize user-supplied input data.");
- script_tag(name : "impact" , value : "Exploiting the issue may allow an attacker to obtain sensitive
+  script_tag(name:"impact", value:"Exploiting the issue may allow an attacker to obtain sensitive
 information that could aid in further attacks.");
- script_tag(name : "affected" , value : "Versions prior to Mathopd 1.5p7 are vulnerable.");
- script_tag(name : "solution" , value : "Updates are available. Please see the references for more information.");
+  script_tag(name:"affected", value:"Versions prior to Mathopd 1.5p7 are vulnerable.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
+
 include("version_func.inc");
 
 port = get_http_port(default:80);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_win01_feb12.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_prdts_mult_vuln_win01_feb12.nasl 11141 2018-08-28 10:01:13Z asteins $
 #
 # Mozilla Products Multiple Unspecified Vulnerabilities - Feb12 (Windows 01)
 #
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802581");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11141 $");
   script_cve_id("CVE-2012-0443", "CVE-2012-0445", "CVE-2012-0446", "CVE-2012-0447");
   script_bugtraq_id(51756, 51765, 51752, 51757);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 12:01:13 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-02-03 19:44:43 +0530 (Fri, 03 Feb 2012)");
   script_name("Mozilla Products Multiple Unspecified Vulnerabilities - Feb12 (Windows 01)");
 
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-01.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-03.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-05.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-06.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-01.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-03.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-05.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-06.html");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
@@ -49,22 +49,22 @@ if(description)
                       "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : "Successful exploitation will let attackers to cause a denial of service or
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to cause a denial of service or
   possibly execute arbitrary code.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "SeaMonkey version before 2.7
+  script_tag(name:"affected", value:"SeaMonkey version before 2.7
   Thunderbird version 5.0 through 9.0
   Mozilla Firefox version 4.x through 9.0");
-  script_tag(name : "insight" , value : "The flaws are due to n
+  script_tag(name:"insight", value:"The flaws are due to n
   - Multiple unspecified vulnerabilities in browser engine.
   - An error in frame scripts bypass XPConnect security checks when calling
     untrusted objects.
   - Not properly initializing data for image/vnd.microsoft.icon images, which
     allows remote attackers to obtain potentially sensitive information by
     reading a PNG image that was created through conversion from an ICO image.");
-  script_tag(name : "summary" , value : "The host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
+  script_tag(name:"summary", value:"The host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
   to multiple vulnerabilities.");
-  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 10.0 or later
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 10.0 or later
   For updates refer to http://www.mozilla.com/en-US/firefox/all.html
 
   Upgrade to SeaMonkey version to 2.7 or later

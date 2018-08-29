@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simple_invoices_mult_xss_vuln.nasl 5814 2017-03-31 09:13:55Z cfi $
+# $Id: gb_simple_invoices_mult_xss_vuln.nasl 11144 2018-08-28 11:37:19Z asteins $
 #
 # Simple Invoices Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803073");
-  script_version("$Revision: 5814 $");
+  script_version("$Revision: 11144 $");
   script_cve_id("CVE-2012-4932");
   script_bugtraq_id(56882);
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 13:37:19 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-12-11 13:59:06 +0530 (Tue, 11 Dec 2012)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -46,7 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2012/Dec/73");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/118737/simpleinvoices-xss.txt");
 
-  script_tag(name:"impact" , value : "Successful exploitation will allow attacker to insert arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to insert arbitrary
   HTML and script code, which will be executed in a user's browser session in the
   context of an affected site when the malicious data is being viewed.
 
@@ -73,12 +73,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-siPort = 0;
-url = "";
-dir = "";
-pageid = "";
-
 siPort = get_http_port(default:8877);
 
 if(!can_host_php(port:siPort)){
@@ -96,11 +90,9 @@ foreach dir (make_list_unique("/simpleinvoices", "/invoice", "/", cgi_dirs(port:
   if( res =~ "HTTP/1.. 200" && ">Simple Invoices" >< res && '>Dashboard' >< res &&
       '>Settings' >< res ) {
 
-    ## Construct the Attack Request
     url = url + '?module=invoices&view=manage&having=' +
                 '<script>alert(document.cookie)</script>';
 
-    ## Confirm exploit worked properly or not
     if(http_vuln_check(port:siPort, url:url, check_header:TRUE,
                        pattern:"<script>alert\(document\.cookie\)</script>",
                        extra_check:make_list('>Simple Invoices', '>Dashboard')))

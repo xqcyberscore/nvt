@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sollaesystems_devices_default_telnet_credentials.nasl 10429 2018-07-05 15:02:59Z asteins $
+# $Id: gb_sollaesystems_devices_default_telnet_credentials.nasl 11151 2018-08-29 03:47:27Z ckuersteiner $
 #
 # Sollae Systems Devices Default Telnet Credentials / Unrestricted Access
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112323");
-  script_version("$Revision: 10429 $");
+  script_version("$Revision: 11151 $");
   script_cve_id("CVE-2018-12924");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("Sollae Systems Devices Default Telnet Credentials / Unrestricted Access");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 17:02:59 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 05:47:27 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-04 11:32:00 +0200 (Wed, 04 Jul 2018)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");

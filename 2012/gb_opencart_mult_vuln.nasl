@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencart_mult_vuln.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_opencart_mult_vuln.nasl 11141 2018-08-28 10:01:13Z asteins $
 #
 # OpenCart Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802751");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11141 $");
   script_bugtraq_id(52957);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 12:01:13 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-04-18 18:47:56 +0530 (Wed, 18 Apr 2012)");
   script_name("OpenCart Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48762");
@@ -83,7 +83,6 @@ if(!dir = get_dir_from_kb(port:port, app:"opencart")){
   exit(0);
 }
 
-## traversal_files() function Returns Dictionary (i.e key value pair)
 files = traversal_files();
 
 foreach file (keys(files))

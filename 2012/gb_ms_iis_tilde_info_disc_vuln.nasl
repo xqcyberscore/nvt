@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_iis_tilde_info_disc_vuln.nasl 10005 2018-05-29 13:54:41Z cfischer $
+# $Id: gb_ms_iis_tilde_info_disc_vuln.nasl 11141 2018-08-28 10:01:13Z asteins $
 #
 # Microsoft IIS Tilde Character Information Disclosure Vulnerability
 #
@@ -29,17 +29,17 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802887");
-  script_version("$Revision: 10005 $");
+  script_version("$Revision: 11141 $");
   script_bugtraq_id(54251);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 15:54:41 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 12:01:13 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-07-18 10:29:25 +0530 (Wed, 18 Jul 2012)");
   script_name("Microsoft IIS Tilde Character Information Disclosure Vulnerability");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/19525");
-  script_xref(name : "URL" , value : "http://code.google.com/p/iis-shortname-scanner-poc");
-  script_xref(name : "URL" , value : "http://soroush.secproject.com/downloadable/iis_tilde_shortname_disclosure.txt");
-  script_xref(name : "URL" , value : "http://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/19525");
+  script_xref(name:"URL", value:"http://code.google.com/p/iis-shortname-scanner-poc");
+  script_xref(name:"URL", value:"http://soroush.secproject.com/downloadable/iis_tilde_shortname_disclosure.txt");
+  script_xref(name:"URL", value:"http://soroush.secproject.com/downloadable/microsoft_iis_tilde_character_vulnerability_feature.pdf");
 
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
@@ -48,19 +48,19 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("IIS/installed");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to obtain
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain
   sensitive information that could aid in further attacks.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Microsoft Internet Information Services versions 7.5 and prior");
-  script_tag(name : "insight" , value : "Microsoft IIS fails to validate a specially crafted GET request
+  script_tag(name:"affected", value:"Microsoft Internet Information Services versions 7.5 and prior");
+  script_tag(name:"insight", value:"Microsoft IIS fails to validate a specially crafted GET request
   containing a '~' tilde character, which allows to disclose all short-names of
   folders and files having 4 letters extensions.");
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.
   General solution options are to upgrade to a newer release, disable respective
   features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running Microsoft IIS Webserver and is prone to
+  script_tag(name:"summary", value:"This host is running Microsoft IIS Webserver and is prone to
   information disclosure vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -121,7 +121,6 @@ foreach file (files)
     {
       foreach letter (possilbe_letters)
       {
-        ## Construct a valid request will all possible letters to find a valid name
         url3 = "/%2F" + valid_letter + letter + "*~1*%2F" +file+ "?aspxerrorpath=/";
 
         iisreq3 = http_get(item:url3, port:port);

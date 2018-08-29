@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emerson_liebert_intellislot_default_credentials.nasl 10655 2018-07-27 09:48:36Z asteins $
+# $Id: gb_emerson_liebert_intellislot_default_credentials.nasl 11151 2018-08-29 03:47:27Z ckuersteiner $
 #
 # Emerson Liebert IntelliSlot Devices Default Credentials
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113235");
-  script_version("$Revision: 10655 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-27 11:48:36 +0200 (Fri, 27 Jul 2018) $");
+  script_version("$Revision: 11151 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 05:47:27 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-24 13:03:33 +0200 (Tue, 24 Jul 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_vul");
 

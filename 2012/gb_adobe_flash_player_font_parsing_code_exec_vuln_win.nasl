@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_font_parsing_code_exec_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_adobe_flash_player_font_parsing_code_exec_vuln_win.nasl 11148 2018-08-28 14:25:49Z asteins $
 #
 # Adobe Flash Player Font Parsing Code Execution Vulnerability - (Windows)
 #
@@ -26,41 +26,35 @@
 
 CPE = "cpe:/a:adobe:flash_player";
 
-tag_impact = "Successful exploitation will let attackers to execute arbitrary code or
-  cause the application to crash and take control of the affected system.
-  Impact Level: System/Application";
-tag_affected = "Adobe Flash Player version prior to 11.3.300.271 on Windows";
-tag_insight = "An unspecified error occurs when handling SWF content in a word document.
-  This may allow a context-dependent attacker to execute arbitrary code.";
-tag_solution = "Upgrade to Adobe Flash Player version 11.3.300.271 or later,
-  For details refer, http://www.adobe.com/downloads/";
-tag_summary = "This host is installed with Adobe Flash Player and is prone to
-  unspecified code execution vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802940");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11148 $");
   script_cve_id("CVE-2012-1535");
   script_bugtraq_id(55009);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-08-20 13:00:42 +0530 (Mon, 20 Aug 2012)");
   script_name("Adobe Flash Player Font Parsing Code Execution Vulnerability - (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/50285/");
-  script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-18.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/50285/");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb12-18.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to execute arbitrary code or
+  cause the application to crash and take control of the affected system.
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Adobe Flash Player version prior to 11.3.300.271 on Windows");
+  script_tag(name:"insight", value:"An unspecified error occurs when handling SWF content in a word document.
+  This may allow a context-dependent attacker to execute arbitrary code.");
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 11.3.300.271 or later,
+  For details refer, http://www.adobe.com/downloads/");
+  script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
+  unspecified code execution vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -73,7 +67,6 @@ infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
 vers = infos['version'];
 path = infos['location'];
 
-## Check for Adobe Flash Player versions prior to 11.3.300.271
 if( version_is_less( version:vers, test_version:"11.3.300.271" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"11.3.300.271", install_path:path );
   security_message( port:0, data:report );

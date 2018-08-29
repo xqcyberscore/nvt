@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_dos_vuln_june12_win.nasl 10137 2018-06-08 12:38:04Z asteins $
+# $Id: gb_opera_mult_dos_vuln_june12_win.nasl 11148 2018-08-28 14:25:49Z asteins $
 #
 # Opera Multiple Denial of Service Vulnerabilities - June12 (Windows)
 #
@@ -27,26 +27,26 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802649");
-  script_version("$Revision: 10137 $");
+  script_version("$Revision: 11148 $");
   script_cve_id("CVE-2012-3562", "CVE-2012-3563", "CVE-2012-3564", "CVE-2012-3565",
                 "CVE-2012-3566", "CVE-2012-3567", "CVE-2012-3568");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 16:16:16 +0530 (Thu, 21 Jun 2012)");
   script_name("Opera Multiple Denial of Service Vulnerabilities - June12 (Windows)");
-  script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/windows/1200b/");
+  script_xref(name:"URL", value:"http://www.opera.com/docs/changelogs/windows/1200b/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : "Successful exploitation will let the attacker crash the browser leading to
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker crash the browser leading to
   denial of service.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Opera version prior to 12.00 Beta on Windows");
-  script_tag(name : "insight" , value : "- A denial of service via crafted characters in domain names.
+  script_tag(name:"affected", value:"Opera version prior to 12.00 Beta on Windows");
+  script_tag(name:"insight", value:"- A denial of service via crafted characters in domain names.
   - A denial of service (application crash) via crafted WebGL content.
   - A denial of service (memory consumption or application hang) via an
     IFRAME element that uses the src='#' syntax to embed a parent document.
@@ -59,9 +59,9 @@ if(description)
     invalid character encodings.
   - A denial of service (application crash) via a crafted web page that is
     not properly handled during a reload.");
-  script_tag(name : "solution" , value : "Upgrade to Opera version 12.00 Beta or later,
+  script_tag(name:"solution", value:"Upgrade to Opera version 12.00 Beta or later,
   For updates refer to http://www.opera.com/");
-  script_tag(name : "summary" , value : "The host is installed with Opera and is prone to multiple
+  script_tag(name:"summary", value:"The host is installed with Opera and is prone to multiple
   denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

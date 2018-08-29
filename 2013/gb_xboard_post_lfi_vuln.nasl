@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xboard_post_lfi_vuln.nasl 11077 2018-08-22 09:40:33Z mmartin $
+# $Id: gb_xboard_post_lfi_vuln.nasl 11140 2018-08-28 08:27:23Z jschulte $
 #
 # xBoard Local File Inclusion Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803790");
-  script_version("$Revision: 11077 $");
+  script_version("$Revision: 11140 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 10:27:23 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-12-27 11:30:04 +0530 (Fri, 27 Dec 2013)");
   script_name("xBoard Local File Inclusion Vulnerability");
 
@@ -82,7 +82,6 @@ foreach dir (make_list_unique("/", "/xboard", "/xBoard", cgi_dirs(port:xbPort)))
   if(http_vuln_check(port:xbPort, url:url, pattern:">xBoard<",
                  check_header:TRUE))
   {
-    ## traversal_files() function Returns Dictionary (i.e key value pair)
     files = traversal_files();
 
     foreach file (keys(files))

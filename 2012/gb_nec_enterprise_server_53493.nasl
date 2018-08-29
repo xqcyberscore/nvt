@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nec_enterprise_server_53493.nasl 5426 2017-02-26 17:47:00Z cfi $
+# $Id: gb_nec_enterprise_server_53493.nasl 11141 2018-08-28 10:01:13Z asteins $
 #
 # NEC Enterprise Server Backdoor Unauthorized Access Vulnerability
 #
@@ -29,14 +29,15 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103498");
   script_bugtraq_id(53493);
-  script_version("$Revision: 5426 $");
+  script_version("$Revision: 11141 $");
   script_name("NEC Enterprise Server Backdoor Unauthorized Access Vulnerability");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-26 18:47:00 +0100 (Sun, 26 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 12:01:13 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 10:41:21 +0200 (Thu, 21 Jun 2012)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl");
   script_require_ports(5001);
@@ -44,14 +45,12 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53493");
   script_xref(name:"URL", value:"http://www.nec.com.sg/index.php?q=products/enterprise-servers");
 
-  tag_summary = "NEC Enterprise Server is prone to an unauthorized-access vulnerability
-  due to a backdoor in all versions of the application.";
-
-  tag_impact = "Attackers can exploit this issue to gain unauthorized access to the
-  affected application. This may aid in further attacks.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"summary", value:"NEC Enterprise Server is prone to an unauthorized-access vulnerability
+  due to a backdoor in all versions of the application.");
+  script_tag(name:"impact", value:"Attackers can exploit this issue to gain unauthorized access to the
+  affected application. This may aid in further attacks.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"remote_vul");
 

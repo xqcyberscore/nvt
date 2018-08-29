@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2214_1.nasl 10849 2018-08-09 07:20:42Z santu $
+# $Id: gb_suse_2018_2214_1.nasl 11151 2018-08-29 03:47:27Z ckuersteiner $
 #
 # SuSE Update for libsndfile openSUSE-SU-2018:2214-1 (libsndfile)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851833");
-  script_version("$Revision: 10849 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-09 09:20:42 +0200 (Thu, 09 Aug 2018) $");
+  script_version("$Revision: 11151 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 05:47:27 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-07 05:49:22 +0200 (Tue, 07 Aug 2018)");
   script_cve_id("CVE-2017-17456", "CVE-2017-17457", "CVE-2018-13139", "CVE-2017-14246");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for libsndfile openSUSE-SU-2018:2214-1 (libsndfile)");
   script_tag(name:"summary", value:"Check the version of libsndfile");

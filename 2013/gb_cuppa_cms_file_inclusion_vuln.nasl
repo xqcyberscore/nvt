@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cuppa_cms_file_inclusion_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_cuppa_cms_file_inclusion_vuln.nasl 11140 2018-08-28 08:27:23Z jschulte $
 #
 # Cuppa CMS Remote/Local File Inclusion Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803805");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11140 $");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 10:27:23 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-06-06 10:36:14 +0530 (Thu, 06 Jun 2013)");
   script_name("Cuppa CMS Remote/Local File Inclusion Vulnerability");
   script_xref(name:"URL", value:"http://1337day.com/exploit/20855");
@@ -74,7 +74,6 @@ if(!can_host_php(port:port)){
   exit(0);
 }
 
-## traversal_files() function Returns Dictionary (i.e key value pair)
 files = traversal_files();
 
 foreach dir (make_list_unique("/", "/cuppa", "/cms", cgi_dirs(port:port)))

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ad_manager_pro_mult_vuln.nasl 5841 2017-04-03 12:46:41Z cfi $
+# $Id: gb_ad_manager_pro_mult_vuln.nasl 11148 2018-08-28 14:25:49Z asteins $
 #
 # Ad Manager Pro Multiple SQL Injection And XSS Vulnerabilities
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803019");
-  script_version("$Revision: 5841 $");
+  script_version("$Revision: 11148 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 14:46:41 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 17:10:10 +0530 (Thu, 30 Aug 2012)");
   script_name("Ad Manager Pro Multiple SQL Injection And XSS Vulnerabilities");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/50427");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/20785");
-  script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/50427");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/115877/admanagerpro-sqlxss.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/50427");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/20785");
+  script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/50427");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/115877/admanagerpro-sqlxss.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
@@ -46,20 +46,20 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "insight" , value : "- Input passed via the 'X-Forwarded-For' HTTP header field is not
+  script_tag(name:"insight", value:"- Input passed via the 'X-Forwarded-For' HTTP header field is not
     properly sanitised before being used in SQL queries.
   - Inputs passed via 'username', 'password' 'image_control' and 'email'
     parameters to 'advertiser.php' and 'publisher.php' is not properly
     sanitised before being returned to the user.");
-  script_tag(name : "solution" , value : "Upgrade to the latest version
+  script_tag(name:"solution", value:"Upgrade to the latest version
   For updates refer to http://www.phpwebscripts.com/ad-manager-pro/");
-  script_tag(name : "summary" , value : "This host is running Ad Manager Pro and is prone to multiple sql
+  script_tag(name:"summary", value:"This host is running Ad Manager Pro and is prone to multiple sql
   injection and cross site scripting vulnerabilities.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to to manipulate SQL
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to to manipulate SQL
   queries by injecting arbitrary SQL code or execute arbitrary HTML and
   script code in a user's browser session in context of affected website.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Ad Manager Pro");
+  script_tag(name:"affected", value:"Ad Manager Pro");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -69,16 +69,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-port = 0;
-sndReq = "";
-rcvRes = "";
-url = "";
-host = "";
-dir = "";
-adReq = "";
-adRes = "";
-
 port = get_http_port(default:80);
 
 if(!can_host_php(port:port)){
@@ -87,7 +77,6 @@ if(!can_host_php(port:port)){
 
 host = http_host_name(port:port);
 
-## Iterate over the possible paths
 foreach dir (make_list_unique("/admanagerpro", "/AdManagerPro", "/ad", "/", cgi_dirs(port:port)))
 {
 
@@ -95,18 +84,15 @@ foreach dir (make_list_unique("/admanagerpro", "/AdManagerPro", "/ad", "/", cgi_
 
   rcvRes = http_get_cache(item:string(dir, "/index.php"), port:port);
 
-  ## Confirm the application
   if(rcvRes && rcvRes =~ "HTTP/1\.[0-9]+ 200" &&
      rcvRes =~ "Powered by .*www.phpwebscripts.com")
   {
     ## Path of Vulnerable Page
     url = dir + '/advertiser.php';
 
-    ## Construct the POST data
     postdata = "action=password_reminded&email=1234@5555.com%22/>"+
                "<script>alert(document.cookie)</script>&B1=Remind+me";
 
-    ## Construct the POST request
     adReq = string("POST ", url, " HTTP/1.1\r\n",
                    "Host: ", host, "\r\n",
                    "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
@@ -117,7 +103,6 @@ foreach dir (make_list_unique("/admanagerpro", "/AdManagerPro", "/ad", "/", cgi_
     ## Send post request and Receive the response
     adRes = http_keepalive_send_recv(port:port, data:adReq);
 
-    ## Confirm exploit worked by checking the response
     if(adRes && adRes =~ "HTTP/1\.[0-9]+ 200" &&
        "<script>alert(document.cookie)</script>" >< adRes &&
        adRes =~ "Powered by .*www.phpwebscripts.com")

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_null_httpd_server_content_length_bof_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
+# $Id: gb_null_httpd_server_content_length_bof_vuln.nasl 11148 2018-08-28 14:25:49Z asteins $
 #
 # Null HTTPd Server Content-Length HTTP Header Buffer overflow Vulnerability
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802923");
-  script_version("$Revision: 6697 $");
+  script_version("$Revision: 11148 $");
   script_cve_id("CVE-2002-1496");
   script_bugtraq_id(5774);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-07-27 11:36:16 +0530 (Fri, 27 Jul 2012)");
   script_name("Null HTTPd Server Content-Length HTTP Header Buffer overflow Vulnerability");
 
-  script_xref(name:"URL", value: "http://xforce.iss.net/xforce/xfdb/10160");
-  script_xref(name:"URL", value: "http://archives.neohapsis.com/archives/bugtraq/2002-09/0284.html");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/10160");
+  script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2002-09/0284.html");
 
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
@@ -69,19 +69,10 @@ if(description)
 
 
 include("http_func.inc");
-include("http_keepalive.inc");
 
-## Variable Initialization
-port = 0;
-Postdata = "";
-sndReq = "";
-rcvRes = "";
-banner = "";
 
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Get the banner and confirm application
 banner = get_http_banner(port:port);
 if(!banner || "Server: Null httpd" >!< banner){
   exit(0);
@@ -89,14 +80,12 @@ if(!banner || "Server: Null httpd" >!< banner){
 
 host = http_host_name(port:port);
 
-## Construct POST req
 Postdata = crap(500);
 sndReq = string("POST / HTTP/1.1\r\n",
                 "Host: ", host,"\r\n",
                 "Content-Length: -1000\r\n\r\n", Postdata);
 rcvRes = http_send_recv(port:port, data:sndReq);
 
-## Check port is alive or dead
 if(http_is_dead(port:port)){
   security_message(port:port);
   exit(0);

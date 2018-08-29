@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_rce_10_2012.nasl 7650 2017-11-03 13:34:50Z cfischer $
+# $Id: gb_zabbix_rce_10_2012.nasl 11148 2018-08-28 14:25:49Z asteins $
 #
 # ZABBIX 'locales.php' 'extlang' Parameter Remote Code Execution
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:zabbix:zabbix";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103581");
-  script_version("$Revision: 7650 $");
+  script_version("$Revision: 11148 $");
   script_tag(name:"cvss_base", value:"9.7");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:C");
   script_name("ZABBIX 'locales.php' 'extlang' Parameter Remote Code Execution");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-03 14:34:50 +0100 (Fri, 03 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-10-02 10:27:14 +0200 (Tue, 02 Oct 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -46,20 +46,12 @@ if(description)
   script_xref(name:"URL", value:"http://www.zabbix.com/");
   script_xref(name:"URL", value:"http://www.ush.it/team/ush/hack-zabbix_162/adv.txt");
 
-  tag_summary = "ZABBIX is prone to a Remote Code Execution.";
-
-  tag_impact = "Input passed to the 'extlang' parameter in 'locales.php' is not properly
+  script_tag(name:"summary", value:"ZABBIX is prone to a Remote Code Execution.");
+  script_tag(name:"impact", value:"Input passed to the 'extlang' parameter in 'locales.php' is not properly
   sanitised before being used to process data. This can be exploited to execute
-  arbitrary commands via specially crafted requests.";
-
-  tag_affected = "ZABBIX 1.6.2 and possibly earlier versions are vulnerable.";
-
-  tag_solution = "Updates are available. Please see the references for more information.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  arbitrary commands via specially crafted requests.");
+  script_tag(name:"affected", value:"ZABBIX 1.6.2 and possibly earlier versions are vulnerable.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -85,6 +77,6 @@ foreach cmd( keys( commands ) ) {
     security_message( port:port, data:report );
     exit( 0 );
   }
-}  
+}
 
 exit( 99 );

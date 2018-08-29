@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mnogosearch_mult_vuln.nasl 11053 2018-08-20 11:27:29Z asteins $
+# $Id: gb_mnogosearch_mult_vuln.nasl 11140 2018-08-28 08:27:23Z jschulte $
 #
 # mnoGoSearch Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803438");
-  script_version("$Revision: 11053 $");
+  script_version("$Revision: 11140 $");
   script_cve_id("CVE-2011-5235");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 13:27:29 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 10:27:23 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-03-15 11:19:57 +0530 (Fri, 15 Mar 2013)");
   script_name("mnoGoSearch Multiple Vulnerabilities");
 
@@ -87,7 +87,6 @@ foreach dir (make_list_unique("/", "/cgi-bin", "/mnogosearch", cgi_dirs(port:por
 
   if(rcvRes && ">mnoGoSearch:" >< rcvRes)
   {
-    ## traversal_files() function Returns Dictionary (i.e key value pair)
     files = traversal_files();
 
     foreach file (keys(files))

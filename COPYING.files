@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Tue, 28 Aug 2018 08:59:23 +0200
+# Automatically created on:  Wed, 29 Aug 2018 09:36:19 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38635,7 +38635,9 @@
 2018/apple/gb_apple_xcode_code_exec_n_info_disc_vuln_macosx.nasl: GPLv2+
 2018/appnitro/gb_machform_mult_vuln.nasl: GPLv2+
 2018/asustor/gb_asustor_adm_rce_vuln.nasl: GPLv2+
+2018/asustor/gb_asustor_mult_vuln.nasl: GPLv2+
 2018/autonomic_controls/gb_autonomic_controls_no_remote_auth.nasl: GPLv2+
+2018/avigilon/gb_avigilon_camera_default_credentials.nasl: GPLv2+
 2018/avtech/gb_avtech_avc787_dvr_default_cred_vuln.nasl: GPLv2+
 2018/awstats/gb_awstats_dir_trav_vuln.nasl: GPLv2+
 2018/axis/gb_axis_network_camera_dos_vuln.nasl: GPLv2+
@@ -41174,6 +41176,7 @@
 2018/nagiosxi/gb_nagiosxi_mult_vuln_apr18.nasl: GPLv2+
 2018/nagiosxi/gb_nagios_xi_mult_vuln.nasl: GPLv2+
 2018/netgear/gb_netgear_routers_information_disclosure.nasl: GPLv2+
+2018/netwave/gb_netwave_inf_disc_vuln.nasl: GPLv2+
 2018/nextcloud/gb_nextcloud_server_auth_bypass_vuln_may18_lin.nasl: GPLv2+
 2018/nextcloud/gb_nextcloud_server_auth_bypass_vuln_may18_win.nasl: GPLv2+
 2018/nextcloud/gb_nextcloud_server_autocomplete_field_stored_xss_vuln.nasl: GPLv2+
@@ -41615,6 +41618,7 @@
 2018/python/gb_python_mult_dos_vuln_june18_macosx.nasl: GPLv2+
 2018/python/gb_python_mult_dos_vuln_june18_win.nasl: GPLv2+
 2018/qnap/gb_qnap_nas_photo_station_xss_vuln_nas-201804-23.nasl: GPLv2+
+2018/qnap/gb_qnap_nas_photo_station_xss_vuln_nas-201808-23.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_20171222.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_app_center_xss_vuln.nasl: GPLv2+
 2018/qnap/gb_qnap_qts_info_disc_vuln_apr18.nasl: GPLv2+
@@ -42323,6 +42327,7 @@ gb_avaya_aura_conferencing_detect.nasl: GPLv2+
 gb_avaya_ip_office_detect.nasl: GPLv2+
 gb_avg_av_detect_lin.nasl: GPLv2+
 gb_avg_av_detect_macosx.nasl: GPLv2+
+gb_avigilon_camera_detect.nasl: GPLv2+
 gb_avm_fritz_box_detect_ftp.nasl: GPLv2+
 gb_avm_fritz_box_detect_http.nasl: GPLv2+
 gb_avm_fritz_box_detect.nasl: GPLv2+
@@ -43203,6 +43208,7 @@ gb_netscape_fasttrack_server_detect.nasl: GPLv2+
 gb_netsparker_detect_win.nasl: GPLv2+
 gb_netsweeper_remote_detect.nasl: GPLv2+
 gb_netware_core_protocol_detect.nasl: GPLv2+
+gb_netwave_ip_cam_detect.nasl: GPLv2+
 gb_nextcloud_detect.nasl: GPLv2+
 gb_nghttp2_detect.nasl: GPLv2+
 gb_niagara_fox_detect.nasl: GPLv2+
@@ -43479,6 +43485,7 @@ gb_seamonkey_detect_lin.nasl: GPLv2+
 gb_seamonkey_detect_win.nasl: GPLv2+
 gb_sendio_detect.nasl: GPLv2+
 gb_sendmail_detect.nasl: GPLv2+
+gb_sentrifugo_detect.nasl: GPLv2+
 gb_serenity_player_detect.nasl: GPLv2+
 gb_serimux_ssh_console_switch_detect.nasl: GPLv2+
 gb_setseed_detect.nasl: GPLv2+
@@ -58980,6 +58987,7 @@ gsf/2017/vmware/gb_vmware_workstation_mult_vuln_nov17_lin.nasl: GPLv2+
 gsf/2017/vmware/gb_vmware_workstation_mult_vuln_nov17_win.nasl: GPLv2+
 gsf/2017/vmware/gb_vmware_workstation_vnc_session_mult_code_exec_vuln_lin.nasl: GPLv2+
 gsf/2017/vmware/gb_vmware_workstation_vnc_session_mult_code_exec_vuln_win.nasl: GPLv2+
+gsf/2018/3cx/gb_3cx_phone_system_mult_vuln.nasl: GPLv2+
 gsf/2018/abb/gb_abb_ipgateway_mult_vuln.nasl: GPLv2+
 gsf/2018/abb/gb_microscada_privilege_escalation_vuln.nasl: GPLv2+
 gsf/2018/acrolinx/gb_acrolinx_dir_trav_vuln.nasl: GPLv2+
@@ -59081,6 +59089,7 @@ gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180801-ucm-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucmim_cisco-sa-20180620-ucmim-ps-csrf.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucmim_cisco-sa-20180718-ucmim-ps-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucmim_cisco-sa-20180815-ucmimps-dos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_dcnm_cisco-sa-20180828-dcnm-traversal.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_esa_cisco-sa-20180117-esasma.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_esa_cisco-sa-20180207-esacsm.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_esa_cisco-sa-20180815-esa-file-bypass.nasl: GPLv2+
@@ -59217,6 +59226,7 @@ gsf/2018/cisco/gb_cisco_sb500_cisco-sa-20180117-300-500-smb2.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_sb_cisco-sa-20180815-csb-wap-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_sb_cisco-sa-20180815-sb-wap-encrypt.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_secure_acs_mult_xee_inj_vuln.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_sx300_cisco-sa-20180801-sb-pxss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_telepresence_server_cisco-sa-20180516-telepres-xfs.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ucs_central_cisco-sa-20180117-ucs.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ucs_central_cisco-sa-20180207-ucsc.nasl: GPLv2+
@@ -59944,6 +59954,7 @@ gsf/2018/schneider/gb_schneider_indusoft_rce_vuln.nasl: GPLv2+
 gsf/2018/schneider/gb_schneider_intoch_rce_vuln.nasl: GPLv2+
 gsf/2018/schneider/gb_schneider_modicon_info_disc_vuln.nasl: GPLv2+
 gsf/2018/schneider/gb_schneider_struxureon_file_upload_vuln.nasl: GPLv2+
+gsf/2018/sentrifugo/gb_sentrifugo_sql_inj_vuln.nasl: GPLv2+
 gsf/2018/severalnines/gb_severalnines_clustercontrol_xss_vuln.nasl: GPLv2+
 gsf/2018/siemens/gb_siemens_desigo_auth_vuln.nasl: GPLv2+
 gsf/2018/siemens/gb_siemens_ruggedcom_rce_vuln.nasl: GPLv2+
@@ -60000,6 +60011,7 @@ gsf/2018/wso2/gb_wso2_identity_server_xss_vuln.nasl: GPLv2+
 gsf/2018/zabbix/gb_zabbix_xxe_vuln.nasl: GPLv2+
 gsf/2018/zend/gb_zendserver_xss_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_adaudit_plus_sql_inj_vuln.nasl: GPLv2+
+gsf/2018/zohocorp/gb_manageengine_admanager_plus_mult_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_appli_manager_13740.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_appli_manager_mult_vuln_13820.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_appli_manager_mult_vuln.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cpassman_47379.nasl 10005 2018-05-29 13:54:41Z cfischer $
+# $Id: gb_cpassman_47379.nasl 11144 2018-08-28 11:37:19Z asteins $
 #
 # Collaborative Passwords Manager (cPassMan) Remote Command Execution
 #
@@ -26,35 +26,36 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103436");
- script_version("$Revision: 10005 $");
- script_tag(name:"last_modification", value:"$Date: 2018-05-29 15:54:41 +0200 (Tue, 29 May 2018) $");
- script_tag(name:"creation_date", value:"2012-02-27 10:11:37 +0200 (Mon, 27 Feb 2012)");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.103436");
+  script_version("$Revision: 11144 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 13:37:19 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-27 10:11:37 +0200 (Mon, 27 Feb 2012)");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
- script_name("Collaborative Passwords Manager (cPassMan) Remote Command Execution");
+  script_name("Collaborative Passwords Manager (cPassMan) Remote Command Execution");
 
- script_xref(name : "URL" , value : "http://code.google.com/p/cpassman/");
- script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18522/");
- script_xref(name : "URL" , value : "http://cpassman.org/");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_passman_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("cpassman/installed");
+  script_xref(name:"URL", value:"http://code.google.com/p/cpassman/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18522/");
+  script_xref(name:"URL", value:"http://cpassman.org/");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("gb_passman_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("cpassman/installed");
 
- script_tag(name : "summary" , value : "cPassMan is prone to a remote command execution vulnerability because it fails to
+  script_tag(name:"summary", value:"cPassMan is prone to a remote command execution vulnerability because it fails to
 properly sanitize user supplied input.");
- script_tag(name : "impact" , value : "Successful exploitation allows execution of arbitrary
+  script_tag(name:"impact", value:"Successful exploitation allows execution of arbitrary
 commands, and possibly compromise the affected application.");
- script_tag(name : "affected" , value : "cPassMan 1.82 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"affected", value:"cPassMan 1.82 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
- script_tag(name:"solution_type", value:"NoneAvailable");
-
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");

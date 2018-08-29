@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_limny_theme_param_dir_trav_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_limny_theme_param_dir_trav_vuln.nasl 11141 2018-08-28 10:01:13Z asteins $
 #
 # Limny admin/preview.php theme Parameter Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:limny:limny";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802984");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11141 $");
   script_cve_id("CVE-2011-5210");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 12:01:13 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-10-12 15:41:59 +0530 (Fri, 12 Oct 2012)");
   script_name("Limny admin/preview.php theme Parameter Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
@@ -74,7 +74,6 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-## traversal_files() function Returns Dictionary (i.e key value pair)
 files = traversal_files();
 
 foreach file( keys( files ) ) {

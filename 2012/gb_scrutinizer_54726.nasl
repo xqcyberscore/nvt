@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrutinizer_54726.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: gb_scrutinizer_54726.nasl 11148 2018-08-28 14:25:49Z asteins $
 #
 # Scrutinizer Arbitrary File Upload Vulnerability
 #
@@ -29,42 +29,42 @@ CPE = 'cpe:/a:dell:sonicwall_scrutinizer';
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103528");
- script_bugtraq_id(54726,54727);
- script_cve_id("CVE-2012-2627","CVE-2012-2626");
- script_tag(name:"cvss_base", value:"9.4");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:C");
- script_version ("$Revision: 7585 $");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
- script_tag(name:"creation_date", value:"2012-08-02 10:24:13 +0200 (Thu, 02 Aug 2012)");
- script_name("Scrutinizer Arbitrary File Upload Vulnerability");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_scrutinizer_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("scrutinizer/installed");
+  script_oid("1.3.6.1.4.1.25623.1.0.103528");
+  script_bugtraq_id(54726, 54727);
+  script_cve_id("CVE-2012-2627", "CVE-2012-2626");
+  script_tag(name:"cvss_base", value:"9.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:C/A:C");
+  script_version("$Revision: 11148 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-08-02 10:24:13 +0200 (Thu, 02 Aug 2012)");
+  script_name("Scrutinizer Arbitrary File Upload Vulnerability");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("gb_scrutinizer_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("scrutinizer/installed");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54726");
- script_xref(name:"URL", value:"http://www.plixer.com");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54726");
+  script_xref(name:"URL", value:"http://www.plixer.com");
 
- script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
- script_tag(name:"summary", value:"Scrutinizer is prone to multiple vulnerabilities.
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"Scrutinizer is prone to multiple vulnerabilities.
 
  1. A vulnerability that lets attackers upload arbitrary files. The issue occurs
  because the application fails to adequately sanitize user-supplied input.
 
  An attacker may leverage this issue to upload arbitrary files to the
- affected computer; this can result in arbitrary code execution within
+ affected computer, this can result in arbitrary code execution within
  the context of the vulnerable application.
 
  2. A security-bypass vulnerability.
  Successful attacks can allow an attacker to gain access to the affected application using
  the default authentication credentials.");
- script_tag(name:"affected", value:"Scrutinizer 9.5.0 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"Scrutinizer 9.5.0 is vulnerable, other versions may also be affected.");
 
- script_tag(name:"qod_type", value:"remote_app");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 }
@@ -72,13 +72,12 @@ if(description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 host = http_host_name( port:port );
-file = "openvas_" + rand() + ".txt"; 
+file = "openvas_" + rand() + ".txt";
 len = 195 + strlen( file );
 
 if( dir == "/" ) dir = "";
@@ -105,6 +104,6 @@ if( '"success":1' >< result && file >< result ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );
   exit( 0 );
-}  
-  
+}
+
 exit( 99 );

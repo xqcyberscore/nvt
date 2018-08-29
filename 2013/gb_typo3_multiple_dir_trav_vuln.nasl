@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_multiple_dir_trav_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_typo3_multiple_dir_trav_vuln.nasl 11140 2018-08-28 08:27:23Z jschulte $
 #
 # Typo3 Multiple Directory Traversal Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803776");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11140 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 10:27:23 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2013-11-20 11:33:55 +0530 (Wed, 20 Nov 2013)");
   script_name("Typo3 Multiple Directory Traversal Vulnerabilities");
 
@@ -73,7 +73,6 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
-## traversal_files() function Returns Dictionary (i.e key value pair)
 files = traversal_files();
 
 foreach file (keys(files))

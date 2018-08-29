@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openfiler_mult_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_openfiler_mult_vuln.nasl 11148 2018-08-28 14:25:49Z asteins $
 #
 # Openfiler Multiple Vulnerabilities
 #
@@ -27,32 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802967");
-  script_version("$Revision: 5963 $");
+  script_version("$Revision: 11148 $");
   script_bugtraq_id(55500);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-09-25 17:31:13 +0530 (Tue, 25 Sep 2012)");
   script_name("Openfiler Multiple Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/42507");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/21191/");
-  script_xref(name : "URL" , value : "http://forums.cnet.com/7726-6132_102-5357559.html");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/116405/openfiler_networkcard_exec.rb.txt");
-  script_xref(name : "URL" , value : "http://itsecuritysolutions.org/2012-09-06-Openfiler-v2.x-multiple-vulnerabilities/");
-  script_xref(name : "URL" , value : "https://dev.openfiler.com/attachments/152/Openfiler_v2.99.1_multiple_vulnerabilities.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/42507");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/21191/");
+  script_xref(name:"URL", value:"http://forums.cnet.com/7726-6132_102-5357559.html");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/116405/openfiler_networkcard_exec.rb.txt");
+  script_xref(name:"URL", value:"http://itsecuritysolutions.org/2012-09-06-Openfiler-v2.x-multiple-vulnerabilities/");
+  script_xref(name:"URL", value:"https://dev.openfiler.com/attachments/152/Openfiler_v2.99.1_multiple_vulnerabilities.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 446);
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
   HTML and script code, arbitrary commands in a user's browser session in context
   of an affected site and gain sensitive information.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Openfiler versions 2.3, 2.99.1, 2.99.2");
-  script_tag(name : "insight" , value : "- 'usercookie' and 'passcookie' cookies contain the username and
+  script_tag(name:"affected", value:"Openfiler versions 2.3, 2.99.1, 2.99.2");
+  script_tag(name:"insight", value:"- 'usercookie' and 'passcookie' cookies contain the username and
   password, respectively, in plain text and these cookies are not protected with
   the 'HttpOnly' flag.
   - Input passed to the 'device' parameter in system.html and 'targetName'
@@ -64,11 +64,10 @@ if(description)
     /opt/openfiler/var/www/htdocs/admin/system.html is not properly
     satinitised, which allows 'openfiler' user to execute arbitrary commands
     by injecting commands into the 'device' parameter.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running Openfiler and is prone to multiple
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Openfiler and is prone to multiple
   vulnerabilities.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -81,25 +80,15 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-port = "";
-req = "";
-res = "";
-req2 = "";
-res2 = "";
-
 ## HTTP Port
 port = get_http_port(default:446);
 
-## Confirm the application before trying exploit
 res = http_get_cache(item: "/", port:port);
 if(res && ">Openfiler Storage Control Center<" >< res && ">Openfiler<" >< res)
 {
-  ## Construct attack request
   req2 = http_get(item:"/phpinfo.html", port:port);
   res2 = http_keepalive_send_recv(port:port, data:req2);
 
-  ## Check the response to confirm vulnerability
   if(res2 && ">phpinfo()<" >< res2 && ">System" >< res2 && ">PHP API" >< res2){
     security_message(port:port);
     exit(0);

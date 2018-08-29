@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_636f73964f_nodejs-deep-extend_fc28.nasl 9983 2018-05-28 13:46:11Z santu $
+# $Id: gb_fedora_2018_636f73964f_nodejs-deep-extend_fc28.nasl 11151 2018-08-29 03:47:27Z ckuersteiner $
 #
 # Fedora Update for nodejs-deep-extend FEDORA-2018-636f73964f
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874612");
-  script_version("$Revision: 9983 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 15:46:11 +0200 (Mon, 28 May 2018) $");
+  script_version("$Revision: 11151 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 05:47:27 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-27 05:53:13 +0200 (Sun, 27 May 2018)");
   script_cve_id("CVE-2018-3750");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for nodejs-deep-extend FEDORA-2018-636f73964f");
   script_tag(name:"summary", value:"Check the version of nodejs-deep-extend");

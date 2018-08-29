@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpldapadmin_51794.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_phpldapadmin_51794.nasl 11144 2018-08-28 11:37:19Z asteins $
 #
 # phpLDAPadmin 'server_id' Parameter Cross Site Scripting Vulnerabilities
 #
@@ -25,51 +25,54 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "phpLDAPadmin is prone to cross-site scripting vulnerabilities because
-it fails to properly sanitize user-supplied input.
-
-An attacker may leverage these issues to execute arbitrary script code
-in the browser of an unsuspecting user in the context of the affected
-site. This may allow the attacker to steal cookie-based authentication
-credentials and launch other attacks.
-
-phpLDAPadmin 1.2.0.5-2 is affected; other versions may also be
-vulnerable.";
-
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103406");
- script_bugtraq_id(51794);
- script_version ("$Revision: 9352 $");
- script_tag(name:"cvss_base", value:"2.6");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.103406");
+  script_bugtraq_id(51794);
+  script_version("$Revision: 11144 $");
+  script_tag(name:"cvss_base", value:"2.6");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
 
- script_name("phpLDAPadmin 'server_id' Parameter Cross Site Scripting Vulnerabilities");
+  script_name("phpLDAPadmin 'server_id' Parameter Cross Site Scripting Vulnerabilities");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51794");
- script_xref(name : "URL" , value : "http://packages.debian.org/lenny/phpldapadmin");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521450");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51794");
+  script_xref(name:"URL", value:"http://packages.debian.org/lenny/phpldapadmin");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/521450");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-02-02 11:00:37 +0100 (Thu, 02 Feb 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("phpldapadmin_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("phpldapadmin/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 13:37:19 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-02 11:00:37 +0100 (Thu, 02 Feb 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("phpldapadmin_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("phpldapadmin/installed");
 
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"summary", value:"phpLDAPadmin is prone to cross-site scripting vulnerabilities because
+it fails to properly sanitize user-supplied input.");
+
+  script_tag(name:"impact", value:"An attacker may leverage these issues to execute arbitrary script code
+in the browser of an unsuspecting user in the context of the affected
+site. This may allow the attacker to steal cookie-based authentication
+credentials and launch other attacks.");
+
+  script_tag(name:"affected", value:"phpLDAPadmin 1.2.0.5-2 is affected, other versions may also be
+vulnerable.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 include("version_func.inc");
-   
+
 port = get_http_port(default:80);
 if(!can_host_php(port:port))exit(0);
 
@@ -80,6 +83,6 @@ if(http_vuln_check(port:port, url:url,pattern:"<script>alert\('openvas-xss-test'
 
   security_message(port:port);
   exit(0);
-}  
+}
 
 exit(0);

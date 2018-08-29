@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_smh_mult_unspecified_vuln.nasl 4542 2016-11-16 15:31:02Z cfi $
+# $Id: secpod_hp_smh_mult_unspecified_vuln.nasl 11144 2018-08-28 11:37:19Z asteins $
 #
 # HP System Management Homepage Multiple Unspecified Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903020");
-  script_version("$Revision: 4542 $");
+  script_version("$Revision: 11144 $");
   script_cve_id("CVE-2012-1993", "CVE-2012-0135");
   script_bugtraq_id(53121);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-16 16:31:02 +0100 (Wed, 16 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 13:37:19 +0200 (Tue, 28 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-04-25 13:28:29 +0530 (Wed, 25 Apr 2012)");
   script_name("HP System Management Homepage Multiple Unspecified Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -49,28 +49,18 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/522374");
   script_xref(name:"URL", value:"http://h18000.www1.hp.com/products/servers/management/agents/index.html");
 
-  tag_impact = "Successful exploitation will allow attackers to to gain sensitive information
+  script_tag(name:"insight", value:"The flaws are due to multiple unspecified errors, which allows
+  attackers to gain sensitive information or cause denial of service via
+  unknown vectors.");
+  script_tag(name:"solution", value:"Upgrade to HP System Management Homepage (SMH) version 7.0 or later,
+  For updates refer to http://h18000.www1.hp.com/products/servers/management/agents/index.html");
+  script_tag(name:"summary", value:"This host is running HP System Management Homepage (SMH) and is
+  prone to multiple unspecified vulnerabilities.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to to gain sensitive information
   or cause denial of service condition.
 
-  Impact Level: Application";
-
-  tag_affected = "HP System Management Homepage (SMH) version prior to 7.0";
-
-  tag_insight = "The flaws are due to multiple unspecified errors, which allows
-  attackers to gain sensitive information or cause denial of service via
-  unknown vectors.";
-
-  tag_solution = "Upgrade to HP System Management Homepage (SMH) version 7.0 or later,
-  For updates refer to http://h18000.www1.hp.com/products/servers/management/agents/index.html";
-
-  tag_summary = "This host is running HP System Management Homepage (SMH) and is
-  prone to multiple unspecified vulnerabilities.";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  Impact Level: Application");
+  script_tag(name:"affected", value:"HP System Management Homepage (SMH) version prior to 7.0");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -84,7 +74,6 @@ include("version_func.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check HP SMH version is less than 7.0
 if( version_is_less( version:version, test_version:"7.0" ) ){
   report = report_fixed_ver( installed_version:version, fixed_version:"7.0");
   security_message( port:port, data:report );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_campaign_enterprise_56117.nasl 5716 2017-03-24 12:31:10Z cfi $
+# $Id: gb_campaign_enterprise_56117.nasl 11144 2018-08-28 11:37:19Z asteins $
 #
 # Campaign Enterprise Multiple Security Vulnerabilities
 #
@@ -25,57 +25,56 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Campaign Enterprise is prone to multiple security vulnerabilities
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103586");
+  script_bugtraq_id(56117);
+  script_cve_id("CVE-2012-3820", "CVE-2012-3821", "CVE-2012-3822", "CVE-2012-3823", "CVE-2012-3824");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11144 $");
+  script_name("Campaign Enterprise Multiple Security Vulnerabilities");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56117");
+  script_xref(name:"URL", value:"http://www.arialsoftware.com/enterprise.htm");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-28 13:37:19 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-10-22 13:15:10 +0200 (Mon, 22 Oct 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more information.");
+  script_tag(name:"summary", value:"Campaign Enterprise is prone to multiple security vulnerabilities
 including:
 
 1. Multiple security-bypass vulnerabilities
-2. Multiple information-disclosure vulnerabilities
-3. Multiple SQL injection vulnerabilities
 
-Attackers can exploit these issues to bypass certain security
+2. Multiple information-disclosure vulnerabilities
+
+3. Multiple SQL injection vulnerabilities");
+
+  script_tag(name:"impact", value:"Attackers can exploit these issues to bypass certain security
 restrictions, obtain sensitive information, and carry out
 unauthorized actions on the underlying database. Other attacks may
-also be possible.
+also be possible.");
 
-Campaign Enterprise 11.0.538 is vulnerable.";
-
-tag_solution = "Updates are available. Please see the references for more information.";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103586");
- script_bugtraq_id(56117);
- script_cve_id("CVE-2012-3820","CVE-2012-3821","CVE-2012-3822","CVE-2012-3823","CVE-2012-3824");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 5716 $");
- script_name("Campaign Enterprise Multiple Security Vulnerabilities");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/56117");
- script_xref(name : "URL" , value : "http://www.arialsoftware.com/enterprise.htm");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 13:31:10 +0100 (Fri, 24 Mar 2017) $");
- script_tag(name:"creation_date", value:"2012-10-22 13:15:10 +0200 (Mon, 22 Oct 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"affected", value:"Campaign Enterprise 11.0.538 is vulnerable.");
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port( default:80 );
 if( ! can_host_asp( port:port ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-  url = dir + '/User-Edit.asp?UID=1%20OR%201=1'; 
+  url = dir + '/User-Edit.asp?UID=1%20OR%201=1';
 
   if( http_vuln_check( port:port, url:url, pattern:"<title>Campaign Enterprise", extra_check:make_list( ">Logout</a>", "Edit User", "Admin Rights" ) ) ) {
     report = report_vuln_url( port:port, url:url );
