@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_iis_default_welcome_page_info_disc_vuln.nasl 6720 2017-07-13 14:25:27Z cfischer $
+# $Id: secpod_ms_iis_default_welcome_page_info_disc_vuln.nasl 11159 2018-08-29 10:26:39Z asteins $
 #
 # Microsoft IIS Default Welcome Page Information Disclosure Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = 'cpe:/a:microsoft:iis';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802806");
-  script_version("$Revision: 6720 $");
+  script_version("$Revision: 11159 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-02-23 16:21:11 +0530 (Thu, 23 Feb 2012)");
   script_name("Microsoft IIS Default Welcome Page Information Disclosure Vulnerability");
 
@@ -67,11 +67,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-iisPort = 0;
-response = "";
-
-##Get IIS Port
 if( ! iisPort = get_app_port( cpe:CPE ) ) exit( 0 );
 
 ##Send Request for default page

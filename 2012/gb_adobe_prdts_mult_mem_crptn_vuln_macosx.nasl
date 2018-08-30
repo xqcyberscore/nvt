@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_mem_crptn_vuln_macosx.nasl 6477 2017-06-29 07:53:14Z cfischer $
+# $Id: gb_adobe_prdts_mult_mem_crptn_vuln_macosx.nasl 11159 2018-08-29 10:26:39Z asteins $
 #
 # Adobe Reader/Acrobat Multiple Memory Corruption Vulnerabilities - MAC OS X
 #
@@ -24,63 +24,42 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID = "1.3.6.1.4.1.25623.1.0.802559";
-
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6477 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.802559");
+  script_version("$Revision: 11159 $");
   script_cve_id("CVE-2011-4370", "CVE-2011-4371", "CVE-2011-4372", "CVE-2011-4373");
   script_bugtraq_id(51348, 51351, 51349, 51350);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 09:53:14 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-01-16 11:41:01 +0530 (Mon, 16 Jan 2012)");
   script_name("Adobe Reader/Acrobat Multiple Memory Corruption Vulnerabilities - MAC OS X");
 
-  tag_summary =
-"This host is installed with Adobe products and are prone to multiple memory
-corruption vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"The flaws are due to
+  script_tag(name:"summary", value:"This host is installed with Adobe products and are prone to multiple memory
+corruption vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The flaws are due to
 - An unspecified error can be exploited to corrupt memory.
 - A signedness error in rt3d.dll when parsing certain BMP image content can be
 exploited to cause a heap-based buffer overflow via a specially crafted BMP
-image embedded in a PDF document.";
-
-  tag_impact =
-"Successful exploitation will allow attackers to execute arbitrary code in the
+image embedded in a PDF document.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code in the
 context of the affected application or cause a denial of service.
 
-Impact Level: Application";
-
-  tag_affected =
-"Adobe Reader versions 9.x through 9.4.7 and 10.x through 10.1.1 on MAC OS X
-Adobe Acrobat versions 9.x through 9.4.7 and 10.x through 10.1.1 on MAC OS X.";
-
-  tag_solution =
-"Upgrade to Adobe Reader version 9.5 or 10.1.2 or later.
+Impact Level: Application");
+  script_tag(name:"affected", value:"Adobe Reader versions 9.x through 9.4.7 and 10.x through 10.1.1 on MAC OS X
+Adobe Acrobat versions 9.x through 9.4.7 and 10.x through 10.1.1 on MAC OS X.");
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 9.5 or 10.1.2 or later.
 Upgrade to Adobe Acrobat version 9.5 or 10.1.2 or later.
-For updates refer to http://www.adobe.com/";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+For updates refer to http://www.adobe.com/");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/45852/");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1026496");
-  script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-01.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/45852/");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1026496");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb12-01.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
@@ -93,17 +72,13 @@ For updates refer to http://www.adobe.com/";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-acrobatVer = "";
-
 ## Function to check the versions of abode reader and acrobat
 function version_check(ver)
 {
   if(version_in_range(version:ver, test_version:"9.0", test_version2:"9.4.7") ||
      version_in_range(version:ver, test_version:"10.0", test_version2:"10.1.1"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -111,15 +86,13 @@ function version_check(ver)
 ##CPE for adobe reader
 CPE = "cpe:/a:adobe:acrobat_reader";
 
-## Get Reader Version
-if(!readerVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID))
+if(!readerVer = get_app_version(cpe:CPE))
 {
   if(readerVer =~ "^(9|10)"){
     version_check(ver:readerVer);
   }
 }
 
-## Get Acrobat version
 acrobatVer = get_kb_item("Adobe/Acrobat/MacOSX/Version");
 if(acrobatVer){
   version_check(ver:acrobatVer);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_easy-custom-auto-excerpt_xss_vuln.nasl 8578 2018-01-30 09:43:28Z asteins $
+# $Id: gb_wordpress_easy-custom-auto-excerpt_xss_vuln.nasl 11156 2018-08-29 09:25:17Z asteins $
 #
 # WordPress Easy Custom Auto Excerpt Plugin XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112189");
-  script_version("$Revision: 8578 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-30 10:43:28 +0100 (Tue, 30 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2018-01-12 12:10:00 +0100 (Fri, 12 Jan 2018)");
+  script_version("$Revision: 11156 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 11:25:17 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-01-12 12:10:00 +0100 (Fri, 12 Jan 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-5311");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "WillNotFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("WordPress Easy Custom Auto Excerpt Plugin XSS Vulnerability");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "Easy Custom Auto Excerpt plugin for WordPress is prone to a cross-site scripting (XSS) vulnerability.");
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"summary", value:"Easy Custom Auto Excerpt plugin for WordPress is prone to a cross-site scripting (XSS) vulnerability.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "affected", value: "WordPress Easy Custom Auto Excerpt plugin up to and including version 2.4.6.");
+  script_tag(name:"affected", value:"WordPress Easy Custom Auto Excerpt plugin up to and including version 2.4.6.");
 
-  script_tag(name: "solution", value: "No solution or patch available. Likely none will be provided anymore since the plugin is no longer available via the WordPress plugin site.
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-Either find another way to patch this plugin or uninstall it if you want to mitigate the issue.");
-
-  script_xref(name: "URL", value: "https://github.com/d4wner/Vulnerabilities-Report/blob/master/easy-custom-auto-excerpt.md");
+  script_xref(name:"URL", value:"https://github.com/d4wner/Vulnerabilities-Report/blob/master/easy-custom-auto-excerpt.md");
 
   exit(0);
 }

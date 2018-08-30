@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp_statistics_xss_vuln_jun18.nasl 10352 2018-06-28 07:09:51Z santu $
+# $Id: gb_wordpress_wp_statistics_xss_vuln_jun18.nasl 11156 2018-08-29 09:25:17Z asteins $
 #
 # WordPress WP Statistics Cross Site Scripting (XSS) Vulnerability-June18
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813453");
-  script_version("$Revision: 10352 $");
+  script_version("$Revision: 11156 $");
   script_cve_id("CVE-2018-1000556");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-28 09:09:51 +0200 (Thu, 28 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 11:25:17 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-06-27 12:29:51 +0530 (Wed, 27 Jun 2018)");
   script_name("WordPress WP Statistics Cross Site Scripting (XSS) Vulnerability-June18");
 
@@ -60,8 +60,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name : "URL" , value : "https://wordpress.org/plugins/wp-statistics");
-  script_xref(name : "URL" , value : "https://www.pluginvulnerabilities.com/2017/04/28/reflected-cross-site-scripting-xss-vulnerability-in-wp-statistics/");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/wp-statistics");
+  script_xref(name:"URL", value:"https://www.pluginvulnerabilities.com/2017/04/28/reflected-cross-site-scripting-xss-vulnerability-in-wp-statistics/");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -90,13 +90,11 @@ if( dir == "/" ) dir = "";
 
 rcvRes = http_get_cache(port: wpPort, item: dir + "/wp-content/plugins/wp-statistics/readme.txt");
 
-## Confirm the WP Statistics plugin installation
 if(rcvRes =~ "HTTP/1.. 200" && 'WP Statistics' >< rcvRes && "Changelog" >< rcvRes)
 {
   ver = eregmatch(pattern:'Stable tag: ([0-9.]+)', string:rcvRes);
   if(ver[1])
   {
-    ## Check for vulnerable version
     if(version_is_less(version:ver[1], test_version:"12.0.6"))
     {
       report = report_fixed_ver(installed_version:ver[1], fixed_version:"12.0.6");

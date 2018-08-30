@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_dec12_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_mult_vuln02_dec12_win.nasl 11159 2018-08-29 10:26:39Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities-02 Dec2012 (Windows)
 #
@@ -27,32 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803121");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11159 $");
   script_cve_id("CVE-2012-5138", "CVE-2012-5137");
   script_bugtraq_id(56741);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-12-04 12:37:33 +0530 (Tue, 04 Dec 2012)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Dec2012 (Windows)");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/56741");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2012/11/stable-channel-update_29.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56741");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2012/11/stable-channel-update_29.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to bypass certain security
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
   restrictions, execute arbitrary code in the context of the browser or
   cause a denial of service.
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Google Chrome version prior to 23.0.1271.95 on Windows");
-  script_tag(name : "insight" , value : "- A use-after-free error exists in media source handling.
+  script_tag(name:"affected", value:"Google Chrome version prior to 23.0.1271.95 on Windows");
+  script_tag(name:"insight", value:"- A use-after-free error exists in media source handling.
   - An incorrect file path handling, Does not properly handle file paths.");
-  script_tag(name : "solution" , value : "Upgrade to the Google Chrome 23.0.1271.95 or later,
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 23.0.1271.95 or later,
   For updates refer to http://www.google.com/chrome");
-  script_tag(name : "summary" , value : "This host is installed with Google Chrome and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

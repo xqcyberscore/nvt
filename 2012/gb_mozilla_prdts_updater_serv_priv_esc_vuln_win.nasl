@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_updater_serv_priv_esc_vuln_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_prdts_updater_serv_priv_esc_vuln_win.nasl 11159 2018-08-29 10:26:39Z asteins $
 #
 # Mozilla Products Updater Service Privilege Escalation Vulnerabilities (Windows)
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802867");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11159 $");
   script_cve_id("CVE-2012-1942", "CVE-2012-1943");
   script_bugtraq_id(53803, 53807);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-06-19 12:31:59 +0530 (Tue, 19 Jun 2012)");
   script_name("Mozilla Products Updater Service Privilege Escalation Vulnerabilities (Windows)");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/49368");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/49366");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-35.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/49368");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/49366");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-35.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
@@ -46,19 +46,19 @@ if(description)
   script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : "Successful attempt could allow local attackers to bypass security restrictions
+  script_tag(name:"impact", value:"Successful attempt could allow local attackers to bypass security restrictions
   and gain the privileges.
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "SeaMonkey version 2.9,
+  script_tag(name:"affected", value:"SeaMonkey version 2.9,
   Thunderbird version 12.0 and
   Mozilla Firefox version 12.0 on Windows");
-  script_tag(name : "insight" , value : "- Mozilla updater allows to load a local DLL file in a privileged context.
+  script_tag(name:"insight", value:"- Mozilla updater allows to load a local DLL file in a privileged context.
   - The 'Updater.exe' in the Windows Updater Service allows to load an
     arbitrary local wsock32.dll file, which can then be run with the same
     system privileges used by the service.");
-  script_tag(name : "summary" , value : "This host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
+  script_tag(name:"summary", value:"This host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
   to multiple vulnerabilities.");
-  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 13.0 or later,
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 13.0 or later,
   For updates refer to http://www.mozilla.com/en-US/firefox/all.html
 
   Upgrade to SeaMonkey version to 2.10 or later,

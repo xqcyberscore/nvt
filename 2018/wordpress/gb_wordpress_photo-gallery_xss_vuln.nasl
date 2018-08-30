@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_photo-gallery_xss_vuln.nasl 9719 2018-05-04 05:56:03Z cfischer $
+# $Id: gb_wordpress_photo-gallery_xss_vuln.nasl 11156 2018-08-29 09:25:17Z asteins $
 #
 # WordPress Photo Gallery Plugin XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112236");
-  script_version("$Revision: 9719 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-04 07:56:03 +0200 (Fri, 04 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-20 11:30:00 +0100 (Tue, 20 Feb 2018)");
+  script_version("$Revision: 11156 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 11:25:17 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-20 11:30:00 +0100 (Tue, 20 Feb 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2015-2324");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WordPress Photo Gallery Plugin XSS Vulnerability");
 
@@ -51,17 +51,17 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "Cross-site scripting (XSS) vulnerability in the filemanager in the Photo Gallery plugin for WordPress
+  script_tag(name:"summary", value:"Cross-site scripting (XSS) vulnerability in the filemanager in the Photo Gallery plugin for WordPress
 allows remote authenticated users with edit permission to inject arbitrary web script or HTML via unspecified vectors.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "affected", value: "WordPress Web-Dorado 'Photo Gallery by WD - Responsive Photo Gallery' plugin before 1.2.13.");
+  script_tag(name:"affected", value:"WordPress Web-Dorado 'Photo Gallery by WD - Responsive Photo Gallery' plugin before 1.2.13.");
 
-  script_tag(name: "solution", value: "Update to version 1.2.13 or later.");
+  script_tag(name:"solution", value:"Update to version 1.2.13 or later.");
 
-  script_xref(name: "URL", value: "https://fortiguard.com/zeroday/FG-VD-15-009");
-  script_xref(name: "URL", value: "https://wordpress.org/plugins/photo-gallery/#developers");
+  script_xref(name:"URL", value:"https://fortiguard.com/zeroday/FG-VD-15-009");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/photo-gallery/#developers");
 
   exit(0);
 }

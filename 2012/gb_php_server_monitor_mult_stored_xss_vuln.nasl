@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_server_monitor_mult_stored_xss_vuln.nasl 6032 2017-04-26 09:02:50Z teissa $
+# $Id: gb_php_server_monitor_mult_stored_xss_vuln.nasl 11160 2018-08-29 12:43:22Z asteins $
 #
 # PHP Server Monitor Multiple Stored Cross-Site Scripting Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:phpserver:monitor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803109");
-  script_version("$Revision: 6032 $");
+  script_version("$Revision: 11160 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-26 11:02:50 +0200 (Wed, 26 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-11-22 12:51:18 +0530 (Thu, 22 Nov 2012)");
   script_bugtraq_id(56622);
   script_name("PHP Server Monitor Multiple Stored Cross-Site Scripting Vulnerabilities");
@@ -43,16 +43,16 @@ if(description)
   script_mandatory_keys("PHP/Server/Monitor/Installed");
   script_require_ports("Services/www", 80);
 
-  script_tag(name:"impact" , value:"Successful exploitation will allow the attacker to execute
+  script_tag(name:"impact", value:"Successful exploitation will allow the attacker to execute
   arbitrary code in the context of an application.
 
   Impact Level: Application");
-  script_tag(name:"affected" , value:"PHP Server Monitor version 2.1.0 and prior");
-  script_tag(name:"insight" , value:"The flaws are due improper validation of user-supplied input
+  script_tag(name:"affected", value:"PHP Server Monitor version 2.1.0 and prior");
+  script_tag(name:"insight", value:"The flaws are due improper validation of user-supplied input
   passed via the 'label' and 'name' parameter to 'index.php', that allows
   attackers to execute arbitrary HTML and script code on the web server.");
-  script_tag(name:"solution" , value:"Upgrade to version 3.0.0 or higher.");
-  script_tag(name:"summary" , value:"This host is installed with PHP Server Monitor and is prone to
+  script_tag(name:"solution", value:"Upgrade to version 3.0.0 or higher.");
+  script_tag(name:"summary", value:"This host is installed with PHP Server Monitor and is prone to
   multiple stored cross-site scripting vulnerabilities.");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/22881/");
@@ -77,12 +77,11 @@ if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:
 ver = infos['version'];
 dir = infos['location'];
 
-## Stored XSS (Not a safe check) 
+## Stored XSS (Not a safe check)
 if( dir != NULL && !safe_checks() ) {
 
   if( dir == "/" ) dir = "";
 
-  ## Construct attack request
 
   url = dir + "/index.php?type=servers";
 
@@ -91,7 +90,6 @@ if( dir != NULL && !safe_checks() ) {
              "&sms=yes&server_id=0&submit=Save" );
   res = http_keepalive_send_recv( port:port, data:req );
 
-  ## Confirm exploit worked by checking the response
   if( res =~ "HTTP/1\.. 200" && '<script>alert(document.cookie);</script>' >< res && '>Add new?<' >< res ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );

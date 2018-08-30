@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_woo-commerce_crafted-order_xss_vuln_win.nasl 8998 2018-03-01 12:47:58Z cfischer $
+# $Id: gb_wordpress_woo-commerce_crafted-order_xss_vuln_win.nasl 11156 2018-08-29 09:25:17Z asteins $
 #
 # WordPress WooCommerce Plugin Crafted Order XSS Vulnerability (Windows)
 #
@@ -30,25 +30,25 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812809");
-  script_version("$Revision: 8998 $");
+  script_version("$Revision: 11156 $");
   script_cve_id("CVE-2015-2329");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-01 13:47:58 +0100 (Thu, 01 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 11:25:17 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-02-20 16:53:22 +0530 (Tue, 20 Feb 2018)");
   script_name("WordPress WooCommerce Plugin Crafted Order XSS Vulnerability (Windows)");
-  
+
   script_tag(name:"summary", value:"The host is installed with WooCommerce
   Plugin for Wordpress and is prone to Cross-site Scripting Vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the wordpress installation 
+  script_tag(name:"vuldetect", value:"Get the wordpress installation
   confirmation with the help of the detect NVT and check if the WooCommerce
   is installed and is vulnerable or not.");
 
   script_tag(name:"insight", value:"The flaw exists due to input validation
   error in the order parameter of the order page.");
 
-  script_tag(name:"impact", value:"Successfully exploitation will allow an 
+  script_tag(name:"impact", value:"Successfully exploitation will allow an
   attackers to inject arbitrary web script or HTML via a crafted order.
 
   Impact Level: Application");
@@ -57,7 +57,7 @@ if (description)
 
   script_tag(name:"solution", value:"Upgrade to version 2.3.6 or later,
   For updates refer to https://woocommerce.com");
-  
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
   script_xref(name:"URL", value:"https://fortiguard.com/zeroday/FG-VD-15-020");
@@ -80,7 +80,7 @@ if(!wooport = get_app_port(cpe: CPE)){
 }
 
 if(!dir = get_app_location(cpe: CPE, port:wooport)){
-  exit(0);  
+  exit(0);
 }
 
 if(dir == "/"){

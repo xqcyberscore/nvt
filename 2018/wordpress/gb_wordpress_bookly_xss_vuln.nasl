@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_bookly_xss_vuln.nasl 9023 2018-03-05 07:08:45Z cfischer $
+# $Id: gb_wordpress_bookly_xss_vuln.nasl 11156 2018-08-29 09:25:17Z asteins $
 #
 # WordPress Bookly Plugin XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112220");
-  script_version("$Revision: 9023 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-05 08:08:45 +0100 (Mon, 05 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2018-02-13 08:46:00 +0100 (Tue, 13 Feb 2018)");
+  script_version("$Revision: 11156 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 11:25:17 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-02-13 08:46:00 +0100 (Tue, 13 Feb 2018)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-6891");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WordPress Bookly Plugin XSS Vulnerability");
 
@@ -51,15 +51,15 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "Bookly plugin for WordPress is prone to a cross-site scripting (XSS) vulnerability.");
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"summary", value:"Bookly plugin for WordPress is prone to a cross-site scripting (XSS) vulnerability.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "affected", value: "WordPress Bookly plugin before version 14.5.");
+  script_tag(name:"affected", value:"WordPress Bookly plugin before version 14.5.");
 
-  script_tag(name: "solution", value: "Upgrade to version 14.5 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 14.5 or later.");
 
-  script_xref(name: "URL", value: "https://wordpress.org/plugins/bookly-responsive-appointment-booking-tool/#developers");
-  script_xref(name: "URL", value: "https://www.gubello.me/blog/bookly-blind-stored-xss/");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/bookly-responsive-appointment-booking-tool/#developers");
+  script_xref(name:"URL", value:"https://www.gubello.me/blog/bookly-blind-stored-xss/");
 
   exit(0);
 }

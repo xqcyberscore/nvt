@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_add-link-to-facebook_xss_vuln.nasl 9338 2018-04-06 02:57:01Z ckuersteiner $
+# $Id: gb_wordpress_add-link-to-facebook_xss_vuln.nasl 11156 2018-08-29 09:25:17Z asteins $
 #
 # WordPress Add Link to Facebook Plugin Stored XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112178");
-  script_version("$Revision: 9338 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-04-06 04:57:01 +0200 (Fri, 06 Apr 2018) $");
-  script_tag(name: "creation_date", value: "2018-01-05 14:16:51 +0100 (Fri, 05 Jan 2018)");
+  script_version("$Revision: 11156 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 11:25:17 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-01-05 14:16:51 +0100 (Fri, 05 Jan 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-5214");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "WillNotFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("WordPress Add Link to Facebook Plugin Stored XSS Vulnerability");
 
@@ -51,15 +51,16 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "The Add Link to Facebook plugin for WordPress has stored-XSS via the al2fb_facebook_id parameter to wp-admin/profile.php.");
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"summary", value:"The Add Link to Facebook plugin for WordPress has stored-XSS via the al2fb_facebook_id parameter to wp-admin/profile.php.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "affected", value: "WordPress Add Link to Facebook plugin up to and including version 2.3.");
+  script_tag(name:"affected", value:"WordPress Add Link to Facebook plugin up to and including version 2.3.");
 
-  script_tag(name: "solution", value: "The plugin has been closed for security reasons and is no longer available
-for download. Please uninstall the plugin.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_xref(name: "URL", value: "https://github.com/d4wner/Vulnerabilities-Report/blob/master/Add-Link-to-Facebook.md");
+  script_xref(name:"URL", value:"https://github.com/d4wner/Vulnerabilities-Report/blob/master/Add-Link-to-Facebook.md");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_smart-google-code-inserter_mult_vuln.nasl 8493 2018-01-23 06:43:13Z ckuersteiner $
+# $Id: gb_wordpress_smart-google-code-inserter_mult_vuln.nasl 11156 2018-08-29 09:25:17Z asteins $
 #
 # WordPress Smart Google Code Inserter Plugin Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112171");
-  script_version("$Revision: 8493 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-01-23 07:43:13 +0100 (Tue, 23 Jan 2018) $");
-  script_tag(name: "creation_date", value: "2018-01-02 15:18:51 +0100 (Tue, 02 Jan 2018)");
+  script_version("$Revision: 11156 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 11:25:17 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-01-02 15:18:51 +0100 (Tue, 02 Jan 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2018-3810", "CVE-2018-3811");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WordPress Smart Google Code Inserter Plugin Multiple Vulnerabilities");
 
@@ -51,16 +51,16 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "The Smart Google Code Inserter plugin by Oturia for WordPress is prone to multiple vulnerabilities:
+  script_tag(name:"summary", value:"The Smart Google Code Inserter plugin by Oturia for WordPress is prone to multiple vulnerabilities:
 Authentication bypass and SQL injection.");
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "affected", value: "WordPress Smart Google Code Inserter plugin before version 3.5");
+  script_tag(name:"affected", value:"WordPress Smart Google Code Inserter plugin before version 3.5");
 
-  script_tag(name: "solution", value: "Update to version 3.5 or later.");
+  script_tag(name:"solution", value:"Update to version 3.5 or later.");
 
-  script_xref(name: "URL", value: "https://limbenjamin.com/articles/smart-google-code-inserter-auth-bypass.html");
-  script_xref(name: "URL", value: "https://wordpress.org/plugins/smart-google-code-inserter/#developers");
+  script_xref(name:"URL", value:"https://limbenjamin.com/articles/smart-google-code-inserter-auth-bypass.html");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/smart-google-code-inserter/#developers");
 
   exit(0);
 }

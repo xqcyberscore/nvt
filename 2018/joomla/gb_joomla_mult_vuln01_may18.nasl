@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_mult_vuln01_may18.nasl 10349 2018-06-27 15:50:28Z cfischer $
+# $Id: gb_joomla_mult_vuln01_may18.nasl 11158 2018-08-29 10:04:27Z ckuersteiner $
 #
 # Joomla! Core Multiple Vulnerabilities-01 May18 (20180502/20180501)
 #
@@ -29,32 +29,28 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813408");
-  script_version("$Revision: 10349 $");
+  script_version("$Revision: 11158 $");
   script_cve_id("CVE-2018-11323", "CVE-2018-11322");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-27 17:50:28 +0200 (Wed, 27 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:04:27 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-05-23 12:35:14 +0530 (Wed, 23 May 2018)");
+
   script_name("Joomla! Core Multiple Vulnerabilities-01 May18 (20180502/20180501)");
 
-  script_tag(name:"summary", value:"This host is running Joomla and is prone
-  to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"This host is running Joomla and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to:
 
-  - An error where depending on the server configuration, PHAR files might be
-    handled as executable PHP scripts by the webserver.
+  - An error where depending on the server configuration, PHAR files might be handled as executable PHP scripts by
+the webserver.
 
   - Inadequate checks for access level permissions.");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to modify the access levels of user groups with higher permissions
-  and use PHAR files as executable PHP scripts.
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to modify the access levels
+of user groups with higher permissions and use PHAR files as executable PHP scripts.");
 
   script_tag(name:"affected", value:"Joomla core version 2.5.0 through 3.8.7");
 
@@ -64,9 +60,9 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value:"https://developer.joomla.org/security-centre/730-20180502-core-add-phar-files-to-the-upload-blacklist.html");
-  script_xref(name : "URL" , value:"https://developer.joomla.org/security-centre/729-20180501-core-acl-violation-in-access-levels.html");
-  script_xref(name : "URL" , value:"https://www.joomla.org");
+  script_xref(name:"URL", value:"https://developer.joomla.org/security-centre/730-20180502-core-add-phar-files-to-the-upload-blacklist.html");
+  script_xref(name:"URL", value:"https://developer.joomla.org/security-centre/729-20180501-core-acl-violation-in-access-levels.html");
+  script_xref(name:"URL", value:"https://www.joomla.org");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -74,24 +70,24 @@ if(description)
   script_dependencies("joomla_detect.nasl");
   script_mandatory_keys("joomla/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-if(!jPort = get_app_port(cpe:CPE)){
+if(!jPort = get_app_port(cpe:CPE))
   exit(0);
-}
 
 infos = get_app_version_and_location(cpe:CPE, port:jPort, exit_no_version:TRUE );
 jVer = infos['version'];
 path = infos['location'];
 
-if(version_in_range(version:jVer, test_version:"2.5.0", test_version2:"3.8.7"))
-{
+if(version_in_range(version:jVer, test_version:"2.5.0", test_version2:"3.8.7")) {
   report = report_fixed_ver(installed_version:jVer, fixed_version:"3.8.8", install_path:path);
   security_message(port:jPort, data:report);
   exit(0);
 }
+
 exit(0);

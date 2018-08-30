@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_cms_54100.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_asp_cms_54100.nasl 11159 2018-08-29 10:26:39Z asteins $
 #
 # ASP Content Management Database Information Disclosure Vulnerability
 #
@@ -25,38 +25,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "ASP Content Management is prone to an information-disclosure
-vulnerability.
-
-An attacker can exploit this issue to gain access to the database file
-stored on the web server. Information harvested may aid in launching
-further attacks.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103497");
- script_bugtraq_id(54100);
- script_version ("$Revision: 9352 $");
- script_name("ASP Content Management Database Information Disclosure Vulnerability");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54100");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-06-21 08:49:16 +0200 (Thu, 21 Jun 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_oid("1.3.6.1.4.1.25623.1.0.103497");
+  script_bugtraq_id(54100);
+  script_version("$Revision: 11159 $");
+  script_name("ASP Content Management Database Information Disclosure Vulnerability");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54100");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-06-21 08:49:16 +0200 (Thu, 21 Jun 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"summary", value:"ASP Content Management is prone to an information-disclosure
+vulnerability.");
+
+  script_tag(name:"impact", value:"An attacker can exploit this issue to gain access to the database file
+stored on the web server. Information harvested may aid in launching
+further attacks.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port( default:80 );
 if( ! can_host_asp( port:port ) ) exit( 0 );
 

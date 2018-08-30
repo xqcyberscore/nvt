@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_macosx_july11.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_opera_mult_vuln_macosx_july11.nasl 11159 2018-08-29 10:26:39Z asteins $
 #
 # Opera Browser Multiple Vulnerabilities July-11 (Mac OS X)
 #
@@ -24,20 +24,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary code
-  and cause a denial of service.
-  Impact Level: System/Application";
-tag_affected = "Opera Web Browser version prior 11.50 on Mac OS X";
-tag_insight = "For information about vulnerability refer the references.";
-tag_solution = "Upgrade to Opera Web Browser version 11.50 or later,
-  For updates refer to http://www.opera.com/download/";
-tag_summary = "The host is installed with Opera browser and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802753");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11159 $");
   script_cve_id("CVE-2011-1337", "CVE-2011-2609", "CVE-2011-2610", "CVE-2011-2611",
                 "CVE-2011-2612", "CVE-2011-2613", "CVE-2011-2614", "CVE-2011-2615",
                 "CVE-2011-2616", "CVE-2011-2617", "CVE-2011-2618", "CVE-2011-2619",
@@ -46,23 +36,27 @@ if(description)
   script_bugtraq_id(48501, 48500, 48556);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-04-19 10:01:43 +0530 (Thu, 19 Apr 2012)");
   script_name("Opera Browser Multiple Vulnerabilities July-11 (Mac OS X)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/45060");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/68323");
-  script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/mac/1150/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/45060");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/68323");
+  script_xref(name:"URL", value:"http://www.opera.com/docs/changelogs/mac/1150/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_opera_detect_macosx.nasl");
   script_require_keys("Opera/MacOSX/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
+  and cause a denial of service.
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Opera Web Browser version prior 11.50 on Mac OS X");
+  script_tag(name:"insight", value:"For information about vulnerability refer the references.");
+  script_tag(name:"solution", value:"Upgrade to Opera Web Browser version 11.50 or later,
+  For updates refer to http://www.opera.com/download/");
+  script_tag(name:"summary", value:"The host is installed with Opera browser and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -71,16 +65,11 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-operaVer = "";
-
-## Get Opera Version from KB
 operaVer = get_kb_item("Opera/MacOSX/Version");
 if(!operaVer){
   exit(0);
 }
 
-## Grep for Opera Versions prior to 11.50
 if(version_is_less(version:operaVer, test_version:"11.50")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

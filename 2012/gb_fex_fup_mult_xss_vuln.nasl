@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fex_fup_mult_xss_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
+# $Id: gb_fex_fup_mult_xss_vuln.nasl 11160 2018-08-29 12:43:22Z asteins $
 #
 # F*EX (Frams's Fast File EXchange) Multiple XSS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803034");
-  script_version("$Revision: 6697 $");
+  script_version("$Revision: 11160 $");
   script_cve_id("CVE-2012-0869", "CVE-2012-1293");
   script_bugtraq_id(52085);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-09-27 16:41:55 +0530 (Thu, 27 Sep 2012)");
   script_name("F*EX (Frams's Fast File EXchange) Multiple XSS Vulnerabilities");
 
@@ -55,7 +55,7 @@ if(description)
 
   Impact Level: Application");
   script_tag(name:"affected", value:"Frams' Fast File EXchange versions before 20111129-2");
-  script_tag(name:"insight", value:"The inputs passed via 'to','from' and 'id' parameter to 'fup' is not
+  script_tag(name:"insight", value:"The inputs passed via 'to', 'from' and 'id' parameter to 'fup' is not
   properly validated, which allows attackers to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site.");
   script_tag(name:"solution", value:"Upgrade to Frams' Fast File EXchange version 20111129-2 or later
@@ -73,25 +73,16 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-port =0;
-url = "";
-banner = "";
-
-## Get HTTP Port
 port = get_http_port(default:8888);
 
-## Get the banner and confirm application
 banner = get_http_banner(port:port);
 if(!banner || "Server: fexsrv" >!< banner){
   exit(0);
 }
 
-## Construct the Attack Request
 url = '/fup?id=38c66"><script>alert(document.cookie);</script>'+
       'b08f61c45c6&to=%0d&from=%0d';
 
-## Try attack and check the response to confirm vulnerability.
 if(http_vuln_check(port:port, url:url, check_header:TRUE,
                    pattern:"<script>alert\(document.cookie\);</script>",
                    extra_check: make_list('F*EX upload<', 'F*EX server'))) {

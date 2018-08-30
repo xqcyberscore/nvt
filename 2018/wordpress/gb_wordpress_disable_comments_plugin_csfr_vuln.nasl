@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_disable_comments_plugin_csfr_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_wordpress_disable_comments_plugin_csfr_vuln.nasl 11156 2018-08-29 09:25:17Z asteins $
 #
 # WordPress Disable Comments Plugin CSRF Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107302");
-  script_version("$Revision: 9758 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_version("$Revision: 11156 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 11:25:17 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-03-20 14:15:46 +0100 (Tue, 20 Mar 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2014-2550");
 
-  script_tag(name:"qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WordPress Disable Comments Plugin CSRF Vulnerability");
 
@@ -57,7 +57,7 @@ if(description)
   script_tag(name:"impact", value:"This flaw allows remote attackers to hijack the authentication of administrators
   for requests that enable comments via a request to the disable_comments_settings page to wp-admin/options-general.php.");
 
-  script_tag(name:"vuldetect", value:"Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"affected", value:"WordPress Disable Comments plugin before 1.0.4.");
 

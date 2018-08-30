@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_tabs-responsive_xss_vuln.nasl 10055 2018-06-04 04:44:00Z ckuersteiner $
+# $Id: gb_wordpress_tabs-responsive_xss_vuln.nasl 11156 2018-08-29 09:25:17Z asteins $
 #
 # WordPress Tabs Plugin XSS Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112187");
-  script_version("$Revision: 10055 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-06-04 06:44:00 +0200 (Mon, 04 Jun 2018) $");
-  script_tag(name: "creation_date", value: "2018-01-12 12:00:00 +0100 (Fri, 12 Jan 2018)");
+  script_version("$Revision: 11156 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 11:25:17 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-01-12 12:00:00 +0100 (Fri, 12 Jan 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-5312");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("WordPress Tabs Plugin XSS Vulnerability");
 
@@ -51,15 +51,15 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "Tabs plugin for WordPress is prone to a cross-site scripting (XSS) vulnerability.");
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"summary", value:"Tabs plugin for WordPress is prone to a cross-site scripting (XSS) vulnerability.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "affected", value: "WordPress Tabs plugin up to and including version 1.8.0.");
+  script_tag(name:"affected", value:"WordPress Tabs plugin up to and including version 1.8.0.");
 
-  script_tag(name: "solution", value: "No known solution is available as of 04th June, 2018. Information regarding
+  script_tag(name:"solution", value:"No known solution is available as of 04th June, 2018. Information regarding
 this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "https://github.com/d4wner/Vulnerabilities-Report/blob/master/tabs-responsive.md");
+  script_xref(name:"URL", value:"https://github.com/d4wner/Vulnerabilities-Report/blob/master/tabs-responsive.md");
 
   exit(0);
 }

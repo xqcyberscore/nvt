@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ibm_lotus_symphony_iof_vuln_win.nasl 5977 2017-04-19 09:02:22Z teissa $
+# $Id: secpod_ibm_lotus_symphony_iof_vuln_win.nasl 11160 2018-08-29 12:43:22Z asteins $
 #
 # IBM Lotus Symphony Image Object Integer Overflow Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902808");
-  script_version("$Revision: 5977 $");
+  script_version("$Revision: 11160 $");
   script_cve_id("CVE-2012-0192");
   script_bugtraq_id(51591);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-01-25 12:12:12 +0530 (Wed, 25 Jan 2012)");
   script_name("IBM Lotus Symphony Image Object Integer Overflow Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -68,10 +68,8 @@ if(description)
 
 include("version_func.inc");
 
-## Get version from KB
 version = get_kb_item("IBM/Lotus/Symphony/Win/Ver");
 
-## Check for IBM Lotus Symphony Versions 3.0.0 FP3 and prior
 if(version_is_less(version:version, test_version:"3.0.1")){
   report = report_fixed_ver(installed_version:version, fixed_version:"3.0.1");
   security_message(data:report);

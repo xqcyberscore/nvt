@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_saniq_virtual_san_app_sec_param_rce_vuln.nasl 4690 2016-12-06 14:44:58Z cfi $
+# $Id: gb_hp_saniq_virtual_san_app_sec_param_rce_vuln.nasl 11160 2018-08-29 12:43:22Z asteins $
 #
 # HP SAN/iQ Virtual SAN Appliance Second Parameter Command Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802454");
-  script_version("$Revision: 4690 $");
+  script_version("$Revision: 11160 $");
   script_cve_id("CVE-2012-4361");
   script_bugtraq_id(55132);
   script_tag(name:"cvss_base", value:"7.7");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 15:44:58 +0100 (Tue, 06 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-09-05 14:44:25 +0530 (Wed, 05 Sep 2012)");
   script_name("HP SAN/iQ Virtual SAN Appliance Second Parameter Command Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -45,27 +45,17 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18893/");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18901/");
 
-  tag_impact = "Successful exploitation will allow attacker to execute arbitrary commands
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary commands
   the context of an application.
 
-  Impact Level: System/Application";
-
-  tag_affected = "HP SAN/iQ version prior to 9.5 on HP Virtual SAN Appliance";
-
-  tag_insight = "The flaw is due to an error in 'lhn/public/network/ping' which does not
-  properly handle shell meta characters in the second parameter.";
-
-  tag_solution = "Upgrade to HP SAN/iQ 9.5 or later,
-  For updates refer to http://www.hp.com/";
-
-  tag_summary = "This host is running HP SAN/iQ Virtual SAN Appliance and is prone
-  to remote command execution vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"HP SAN/iQ version prior to 9.5 on HP Virtual SAN Appliance");
+  script_tag(name:"insight", value:"The flaw is due to an error in 'lhn/public/network/ping' which does not
+  properly handle shell meta characters in the second parameter.");
+  script_tag(name:"solution", value:"Upgrade to HP SAN/iQ 9.5 or later,
+  For updates refer to http://www.hp.com/");
+  script_tag(name:"summary", value:"This host is running HP SAN/iQ Virtual SAN Appliance and is prone
+  to remote command execution vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -115,7 +105,6 @@ if( ! soc ) exit( 0 );
 login = create_packet('login:/global$agent/L0CAlu53R/Version "9.5.0"');
 res = hydra_send_recv(soc, login);
 
-## Confirm login is success
 if(res && 'OK: Login' >< res)
 {
   cmd = 'id';
@@ -134,7 +123,6 @@ if(res && 'OK: Login' >< res)
 
 close(soc);
 
-## confirm the id command result
 if(res && egrep(string:res, pattern:'uid=[0-9]+.*gid=[0-9]+.*')){
   security_message( port:port );
   exit( 0 );

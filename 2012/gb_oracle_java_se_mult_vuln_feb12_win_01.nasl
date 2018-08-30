@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln_feb12_win_01.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: gb_oracle_java_se_mult_vuln_feb12_win_01.nasl 11159 2018-08-29 10:26:39Z asteins $
 #
 # Oracle Java SE JRE Multiple Vulnerabilities - February 2012 (Windows - 01)
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802610");
-  script_version("$Revision: 10144 $");
+  script_version("$Revision: 11159 $");
   script_cve_id("CVE-2011-3563", "CVE-2012-0499", "CVE-2012-0502",
                 "CVE-2012-0503", "CVE-2012-0505", "CVE-2012-0506");
   script_bugtraq_id(52011, 52012, 52014, 52016, 52017, 52018);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 16:16:16 +0530 (Tue, 21 Feb 2012)");
   script_name("Oracle Java SE JRE Multiple Vulnerabilities - February 2012 (Windows - 01)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/48009");
-  script_xref(name : "URL" , value : "http://www.pre-cert.de/advisories/PRE-SA-2012-01.txt");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/javacpufeb2012-366318.html");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/java/javase/documentation/overview-142120.html");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/java/javase/documentation/overview-137139.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/48009");
+  script_xref(name:"URL", value:"http://www.pre-cert.de/advisories/PRE-SA-2012-01.txt");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/javacpufeb2012-366318.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/java/javase/documentation/overview-142120.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/java/javase/documentation/overview-137139.html");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
@@ -48,12 +48,12 @@ if(description)
   script_family("General");
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JRE/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation allows remote attackers to affect confidentiality,
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to affect confidentiality,
   integrity, and availability via unknown vectors.
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Oracle Java SE JRE 7 Update 2 and earlier, 6 Update 30 and earlier, 5.0 Update 33
+  script_tag(name:"affected", value:"Oracle Java SE JRE 7 Update 2 and earlier, 6 Update 30 and earlier, 5.0 Update 33
   and earlier, and 1.4.2_35 and earlier");
-  script_tag(name : "insight" , value : "Multiple flaws are caused by unspecified errors in the following
+  script_tag(name:"insight", value:"Multiple flaws are caused by unspecified errors in the following
   components:
 
   - 2D
@@ -67,11 +67,11 @@ if(description)
   - CORBA
 
   - Serialization");
-  script_tag(name : "solution" , value : "Upgrade to Oracle Java SE JRE versions 7 Update 3, 6 Update 31, 5.0 Update
+  script_tag(name:"solution", value:"Upgrade to Oracle Java SE JRE versions 7 Update 3, 6 Update 31, 5.0 Update
   34, 1.4.2_36 or later. For updates refer to
   http://www.oracle.com/technetwork/topics/security/javacpufeb2012-366318.html");
-  script_tag(name : "solution_type" , value : "VendorFix");
-  script_tag(name : "summary" , value : "This host is installed with Oracle Java SE JRE and is prone to
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"This host is installed with Oracle Java SE JRE and is prone to
   multiple vulnerabilities.");
   exit(0);
 }

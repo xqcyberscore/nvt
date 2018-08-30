@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ultimate-member_mult_vuln.nasl 9849 2018-05-15 14:43:30Z asteins $
+# $Id: gb_wordpress_ultimate-member_mult_vuln.nasl 11156 2018-08-29 09:25:17Z asteins $
 #
 # WordPress Ultimate Member Plugin < 2.0.4 Multiple Vulnerabilities
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112283");
-  script_version("$Revision: 9849 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-15 16:43:30 +0200 (Tue, 15 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-05-15 12:10:00 +0200 (Tue, 15 May 2018)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:P/A:P");
+  script_version("$Revision: 11156 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 11:25:17 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-05-15 12:10:00 +0200 (Tue, 15 May 2018)");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
 
   script_cve_id("CVE-2018-0585", "CVE-2018-0586", "CVE-2018-0587", "CVE-2018-0588", "CVE-2018-0589", "CVE-2018-0590");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WordPress Ultimate Member Plugin < 2.0.4 Multiple Vulnerabilities");
 
@@ -51,11 +51,11 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "Ultimate Member plugin for WordPress is prone to multiple vulnerabilities.");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"summary", value:"Ultimate Member plugin for WordPress is prone to multiple vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "affected", value: "WordPress Ultimate Member plugin before version 2.0.4.");
-  script_tag(name: "impact", value: "- An arbitrary script may be executed on the user's web browser - CVE-2018-0585
+  script_tag(name:"affected", value:"WordPress Ultimate Member plugin before version 2.0.4.");
+  script_tag(name:"impact", value:"- An arbitrary script may be executed on the user's web browser - CVE-2018-0585
 
   - Arbitrary local files on the server may be accessed by a logged-in user - CVE-2018-0586
 
@@ -67,10 +67,10 @@ if (description)
 
   - Profiles for other users may be modified by a logged-in user - CVE-2018-0590.");
 
-  script_tag(name: "solution", value: "Upgrade to version 2.0.4 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 2.0.4 or later.");
 
-  script_xref(name: "URL", value: "http://jvn.jp/en/jp/JVN28804532/index.html");
-  script_xref(name: "URL", value: "https://wordpress.org/plugins/ultimate-member/#developers");
+  script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN28804532/index.html");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/ultimate-member/#developers");
 
   exit(0);
 }

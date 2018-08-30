@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_nextgen-gallery_local_file_incl_vuln.nasl 10508 2018-07-16 09:27:24Z asteins $
+# $Id: gb_wordpress_nextgen-gallery_local_file_incl_vuln.nasl 11156 2018-08-29 09:25:17Z asteins $
 #
 # WordPress NextGEN Gallery Plugin < 2.1.57 Local File Inclusion Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112326");
-  script_version("$Revision: 10508 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-07-16 11:27:24 +0200 (Mon, 16 Jul 2018) $");
-  script_tag(name: "creation_date", value: "2018-07-16 11:20:14 +0200 (Mon, 16 Jul 2018)");
+  script_version("$Revision: 11156 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 11:25:17 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2018-07-16 11:20:14 +0200 (Mon, 16 Jul 2018)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-6565");
   script_bugtraq_id(94356);
 
-  script_tag(name: "qod_type", value: "remote_banner");
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("WordPress NextGEN Gallery Plugin < 2.1.57 Local File Inclusion Vulnerability");
 
@@ -51,18 +51,18 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name: "summary", value: "The Imagely NextGen Gallery plugin for Wordpress may execute code from an uploaded malicious file.");
-  script_tag(name: "insight", value: "The Imagely NextGen Gallery plugin for Wordpress does not properly validate user input in the cssfile
+  script_tag(name:"summary", value:"The Imagely NextGen Gallery plugin for Wordpress may execute code from an uploaded malicious file.");
+  script_tag(name:"insight", value:"The Imagely NextGen Gallery plugin for Wordpress does not properly validate user input in the cssfile
   parameter of a HTTP POST request, which may allow an authenticated user to read arbitrary files from the server,
   or execute arbitrary code on the server in some circumstances (dependent on server configuration).");
-  script_tag(name: "impact", value: "An authenticated user may be able to read arbitrary files on the server
+  script_tag(name:"impact", value:"An authenticated user may be able to read arbitrary files on the server
   or execute code on the server by including a malicious local file in a formatted server request.");
-  script_tag(name: "vuldetect", value: "Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "affected", value: "WordPress NextGEN Gallery plugin before 2.1.57.");
-  script_tag(name: "solution", value: "Update to version 2.1.57 or later.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"affected", value:"WordPress NextGEN Gallery plugin before 2.1.57.");
+  script_tag(name:"solution", value:"Update to version 2.1.57 or later.");
 
-  script_xref(name: "URL", value: "https://wordpress.org/plugins/nextgen-gallery/#developers");
-  script_xref(name: "URL", value: "https://www.kb.cert.org/vuls/id/346175");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/nextgen-gallery/#developers");
+  script_xref(name:"URL", value:"https://www.kb.cert.org/vuls/id/346175");
 
   exit(0);
 }

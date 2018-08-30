@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2012-0001.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_VMSA-2012-0001.nasl 11159 2018-08-29 10:26:39Z asteins $
 #
 # VMSA-2012-0001 VMware ESXi and ESX updates to third party library and ESX Service Console
 #
@@ -25,7 +25,25 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote ESXi is missing one or more security related Updates from VMSA-2012-0001.
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103448");
+  script_cve_id("CVE-2009-3560", "CVE-2009-3720", "CVE-2010-0547", "CVE-2010-0787", "CVE-2010-1634", "CVE-2010-2059", "CVE-2010-2089", "CVE-2010-3493", "CVE-2010-4649", "CVE-2011-0695", "CVE-2011-0711", "CVE-2011-0726", "CVE-2011-1015", "CVE-2011-1044", "CVE-2011-1078", "CVE-2011-1079", "CVE-2011-1080", "CVE-2011-1093", "CVE-2011-1163", "CVE-2011-1166", "CVE-2011-1170", "CVE-2011-1171", "CVE-2011-1172", "CVE-2011-1182", "CVE-2011-1494", "CVE-2011-1495", "CVE-2011-1521", "CVE-2011-1573", "CVE-2011-1576", "CVE-2011-1577", "CVE-2011-1593", "CVE-2011-1678", "CVE-2011-1745", "CVE-2011-1746", "CVE-2011-1763", "CVE-2011-1776", "CVE-2011-1780", "CVE-2011-1936", "CVE-2011-2022", "CVE-2011-2192", "CVE-2011-2213", "CVE-2011-2482", "CVE-2011-2491", "CVE-2011-2492", "CVE-2011-2495", "CVE-2011-2517", "CVE-2011-2519", "CVE-2011-2522", "CVE-2011-2525", "CVE-2011-2689", "CVE-2011-2694", "CVE-2011-2901", "CVE-2011-3378");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11159 $");
+  script_name("VMSA-2012-0001 VMware ESXi and ESX updates to third party library and ESX Service Console");
+
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-03-15 14:13:01 +0100 (Thu, 15 Mar 2012)");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_esxi_init.nasl");
+  script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
+  script_tag(name:"solution", value:"Apply the missing patch(es).");
+  script_tag(name:"summary", value:"The remote ESXi is missing one or more security related Updates from VMSA-2012-0001.
 
 Summary
 
@@ -41,14 +59,14 @@ ESXi 4.0 without patch ESXi400-201203401-SG
 ESX 4.1 without patches ESX410-201201401-SG, ESX410-201201402-SG,
 ESX410-201201404-SG, ESX410-201201405-SG, ESX410-201201406-SG,
 ESX410-201201407-SG.
-  
+
 Problem Description
 
 a. ESX third party update for Service Console kernel
 
    The ESX Service Console Operating System (COS) kernel is updated to kernel-2.6.18-274.3.1.el5
    to fix multiple security issues in the COS kernel.
-   
+
 b. ESX third party update for Service Console cURL RPM
 
    The ESX Service Console (COS) curl RPM is updated to cURL-7.15.5.9 resolving a security issue.
@@ -84,32 +102,10 @@ f. ESX third party update for Service Console python package
 g. ESXi update to third party component python
 
    The python third party library is updated to python 2.5.6 which fixes multiple
-   security issues.";
-
-tag_solution = "Apply the missing patch(es).";
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103448");
- script_cve_id("CVE-2009-3560", "CVE-2009-3720", "CVE-2010-0547", "CVE-2010-0787", "CVE-2010-1634", "CVE-2010-2059", "CVE-2010-2089", "CVE-2010-3493", "CVE-2010-4649", "CVE-2011-0695", "CVE-2011-0711", "CVE-2011-0726", "CVE-2011-1015", "CVE-2011-1044", "CVE-2011-1078", "CVE-2011-1079", "CVE-2011-1080", "CVE-2011-1093", "CVE-2011-1163", "CVE-2011-1166", "CVE-2011-1170", "CVE-2011-1171", "CVE-2011-1172", "CVE-2011-1182", "CVE-2011-1494", "CVE-2011-1495", "CVE-2011-1521", "CVE-2011-1573", "CVE-2011-1576", "CVE-2011-1577", "CVE-2011-1593", "CVE-2011-1678", "CVE-2011-1745", "CVE-2011-1746", "CVE-2011-1763", "CVE-2011-1776", "CVE-2011-1780", "CVE-2011-1936", "CVE-2011-2022", "CVE-2011-2192", "CVE-2011-2213", "CVE-2011-2482", "CVE-2011-2491", "CVE-2011-2492", "CVE-2011-2495", "CVE-2011-2517", "CVE-2011-2519", "CVE-2011-2522", "CVE-2011-2525", "CVE-2011-2689", "CVE-2011-2694", "CVE-2011-2901", "CVE-2011-3378");
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 9352 $");
- script_name("VMSA-2012-0001 VMware ESXi and ESX updates to third party library and ESX Service Console");
-
-
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-03-15 14:13:01 +0100 (Thu, 15 Mar 2012)");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esxi_init.nasl");
- script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2012-0001.html");
+   security issues.");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2012-0001.html");
  exit(0);
 }
 
