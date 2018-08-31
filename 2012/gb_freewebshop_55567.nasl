@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freewebshop_55567.nasl 9791 2018-05-10 09:39:02Z ckuersteiner $
+# $Id: gb_freewebshop_55567.nasl 11169 2018-08-30 14:20:05Z asteins $
 #
 # FreeWebshop Multiple SQL Injection and Cross Site Scripting Vulnerabilities
 #
@@ -29,30 +29,30 @@ CPE = "cpe:/a:freewebshop:freewebshop";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103570");
- script_bugtraq_id(55567);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 9791 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103570");
+  script_bugtraq_id(55567);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11169 $");
 
- script_tag(name: "solution_type", value: "WillNotFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
- script_name("FreeWebshop Multiple SQL Injection and Cross Site Scripting Vulnerabilities");
+  script_name("FreeWebshop Multiple SQL Injection and Cross Site Scripting Vulnerabilities");
 
- script_xref(name: "URL", value: "http://www.securityfocus.com/bid/55567");
- script_xref(name: "URL", value: "http://www.freewebshop.org");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/55567");
+  script_xref(name:"URL", value:"http://www.freewebshop.org");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-10 11:39:02 +0200 (Thu, 10 May 2018) $");
- script_tag(name:"creation_date", value:"2012-09-18 13:18:37 +0200 (Tue, 18 Sep 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_analysis");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("FreeWebShop_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("FreeWebshop/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-09-18 13:18:37 +0200 (Tue, 18 Sep 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_analysis");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("FreeWebShop_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("FreeWebshop/installed");
 
- script_tag(name: "summary", value: "FreeWebshop is prone to multiple SQL-injection and cross-site scripting
+  script_tag(name:"summary", value:"FreeWebshop is prone to multiple SQL-injection and cross-site scripting
 vulnerabilities because it fails to sufficiently sanitize user-supplied input.
 
 Exploiting these vulnerabilities could allow an attacker to steal cookie-based authentication credentials,
@@ -60,7 +60,7 @@ compromise the application, access or modify data, or exploit latent vulnerabili
 
 FreeWebshop 2.2.9 is vulnerable, other versions may also be affected.");
 
- script_tag(name: "solution", value: "No known solution was made available for at least one year since the
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
 disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
 a newer release, disable respective features, remove the product or replace the product by another one.");
 
@@ -70,7 +70,7 @@ a newer release, disable respective features, remove the product or replace the 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-   
+
 if(!port = get_app_port(cpe:CPE))
   exit(0);
 

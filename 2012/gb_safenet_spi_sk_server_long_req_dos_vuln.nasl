@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_safenet_spi_sk_server_long_req_dos_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
+# $Id: gb_safenet_spi_sk_server_long_req_dos_vuln.nasl 11169 2018-08-30 14:20:05Z asteins $
 #
 # SafeNet Sentinel Protection Installer Long Request DoS Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802460");
-  script_version("$Revision: 6697 $");
+  script_version("$Revision: 11169 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-09-25 09:53:12 +0530 (Tue, 25 Sep 2012)");
   script_name("SafeNet Sentinel Protection Installer Long Request DoS Vulnerability");
 
@@ -55,10 +55,9 @@ if(description)
   script_tag(name:"insight", value:"The flaw is due to a boundary error in Sentinel Keys Server within
   the 'sntlkeyssrvr.exe' when handling long requests, can be exploited to cause a
   stack-based buffer overflow via an overly-long request.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The host is running Sentinel Protection Installer and is prone
   to denial of service vulnerability.");
 
@@ -72,18 +71,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-port = 0;
-banner = "";
-req = "";
-res = "";
-soc = "";
-data = "";
-
-## Get HTTP Port
 port = get_http_port(default:7002);
 
-## Confirm the application before trying exploit
 banner = get_http_banner(port: port);
 if(!banner || "Server: SentinelKeysServer" >!< banner){
   exit(0);
@@ -100,7 +89,6 @@ data = string("#1",crap(4093));
 send(socket:soc, data: data);
 close(soc);
 
-## Check server is crashed or not
 soc = open_sock_tcp(port);
 if(soc)
 {

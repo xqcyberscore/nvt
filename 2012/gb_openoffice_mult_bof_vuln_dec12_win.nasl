@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openoffice_mult_bof_vuln_dec12_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_openoffice_mult_bof_vuln_dec12_win.nasl 11169 2018-08-30 14:20:05Z asteins $
 #
 # OpenOffice Multiple Buffer Overflow Vulnerabilities - Dec12 (Windows)
 #
@@ -24,49 +24,42 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to cause a denial of
-  service condition or execute arbitrary code.
-  Impact Level: System/Application";
-tag_affected = "OpenOffice version before 3.4.1 on windows";
-
-tag_insight = "- An integer overflow error in the vclmi.dll module when allocating memory
-    for an embedded image object.
-  - Multiple heap-based buffer overflows in the XML manifest encryption tag
-    parsing functionality allows attacker to crash the application via crafted
-    Open Document Tex (.odt) file.";
-tag_solution = "Upgrade to OpenOffice version 3.4.1 or later,
-  For updates refer to http://www.openoffice.org/download/";
-tag_summary = "This host is installed with OpenOffice and is prone to
-  multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803083");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11169 $");
   script_cve_id("CVE-2012-1149", "CVE-2012-2665");
   script_bugtraq_id(53570, 54769);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-12-24 15:26:59 +0530 (Mon, 24 Dec 2012)");
   script_name("OpenOffice Multiple Buffer Overflow Vulnerabilities - Dec12 (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/46992/");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/50438/");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1027068");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id?1027332");
-  script_xref(name : "URL" , value : "http://www.openoffice.org/security/cves/CVE-2012-2665.html");
-  script_xref(name : "URL" , value : "http://www.openoffice.org/security/cves/CVE-2012-1149.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/46992/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/50438/");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1027068");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id?1027332");
+  script_xref(name:"URL", value:"http://www.openoffice.org/security/cves/CVE-2012-2665.html");
+  script_xref(name:"URL", value:"http://www.openoffice.org/security/cves/CVE-2012-1149.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_openoffice_detect_win.nasl");
   script_require_keys("OpenOffice/Win/Ver");
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"insight", value:"- An integer overflow error in the vclmi.dll module when allocating memory
+    for an embedded image object.
+  - Multiple heap-based buffer overflows in the XML manifest encryption tag
+    parsing functionality allows attacker to crash the application via crafted
+    Open Document Tex (.odt) file.");
+  script_tag(name:"solution", value:"Upgrade to OpenOffice version 3.4.1 or later,
+  For updates refer to http://www.openoffice.org/download/");
+  script_tag(name:"summary", value:"This host is installed with OpenOffice and is prone to
+  multiple vulnerabilities.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
+  service condition or execute arbitrary code.
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"OpenOffice version before 3.4.1 on windows");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -77,14 +70,12 @@ include("version_func.inc");
 
 officeVer = "";
 
-## Get the version from KB
 officeVer = get_kb_item("OpenOffice/Win/Ver");
 if(!officeVer){
   exit(0);
 }
 
-## Check for OpenOffice version less than 3.4.1
 ## (Display Version comes as 3.41.9593)
 if(version_is_less(version: officeVer, test_version:"3.41.9593")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

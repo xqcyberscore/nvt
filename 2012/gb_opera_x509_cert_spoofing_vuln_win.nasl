@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_x509_cert_spoofing_vuln_win.nasl 10137 2018-06-08 12:38:04Z asteins $
+# $Id: gb_opera_x509_cert_spoofing_vuln_win.nasl 11169 2018-08-30 14:20:05Z asteins $
 #
 # Opera 'X.509' Certificates Spoofing Vulnerability (Windows)
 #
@@ -27,31 +27,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802435");
-  script_version("$Revision: 10137 $");
+  script_version("$Revision: 11169 $");
   script_cve_id("CVE-2012-1251");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:38:04 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-06-12 16:10:48 +0530 (Tue, 12 Jun 2012)");
   script_name("Opera 'X.509' Certificates Spoofing Vulnerability (Windows)");
-  script_xref(name : "URL" , value : "http://jvn.jp/en/jp/JVN39707339/index.html");
-  script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/windows/963/");
-  script_xref(name : "URL" , value : "http://jvndb.jvn.jp/en/contents/2012/JVNDB-2012-000049.html");
+  script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN39707339/index.html");
+  script_xref(name:"URL", value:"http://www.opera.com/docs/changelogs/windows/963/");
+  script_xref(name:"URL", value:"http://jvndb.jvn.jp/en/contents/2012/JVNDB-2012-000049.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to spoof servers and
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to spoof servers and
   obtain sensitive information.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Opera version prior to 9.63 on Windows");
-  script_tag(name : "insight" , value : "The flaw is due to an error in handling of certificates, It does not properly
+  script_tag(name:"affected", value:"Opera version prior to 9.63 on Windows");
+  script_tag(name:"insight", value:"The flaw is due to an error in handling of certificates, It does not properly
   verify 'X.509' certificates from SSL servers.");
-  script_tag(name : "solution" , value : "Upgrade to Opera 9.63 or later,
+  script_tag(name:"solution", value:"Upgrade to Opera 9.63 or later,
   For updates refer to http://www.opera.com/");
-  script_tag(name : "summary" , value : "The host is installed with Opera and is prone to spoofing
+  script_tag(name:"summary", value:"The host is installed with Opera and is prone to spoofing
   vulnerability");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

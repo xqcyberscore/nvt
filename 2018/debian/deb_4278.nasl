@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4278.nasl 11151 2018-08-29 03:47:27Z ckuersteiner $
+# $Id: deb_4278.nasl 11162 2018-08-30 08:37:14Z asteins $
 #
 # Auto-generated from advisory DSA 4278-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704278");
-  script_version("$Revision: 11151 $");
+  script_version("$Revision: 11162 $");
   script_cve_id("CVE-2017-7656", "CVE-2017-7657", "CVE-2017-7658");
   script_name("Debian Security Advisory DSA 4278-1 (jetty9 - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 05:47:27 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 10:37:14 +0200 (Thu, 30 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-08-19 00:00:00 +0200 (Sun, 19 Aug 2018)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -71,6 +71,12 @@ include("pkg-lib-deb.inc");
 res = "";
 report = "";
 if ((res = isdpkgvuln(pkg:"jetty9", ver:"9.2.21-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+      report += res;
+}
+if ((res = isdpkgvuln(pkg:"libjetty9-extra-java", ver:"9.2.21-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+      report += res;
+}
+if ((res = isdpkgvuln(pkg:"libjetty9-java", ver:"9.2.21-1+deb9u1", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
       report += res;
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_powerdns_51355.nasl 4588 2016-11-22 08:31:30Z cfi $
+# $Id: gb_powerdns_51355.nasl 11167 2018-08-30 12:04:11Z asteins $
 #
 # PowerDNS Authoritative Server Remote Denial of Service Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2012-0206");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 4588 $");
+  script_version("$Revision: 11167 $");
   script_name("PowerDNS Authoritative Server Remote Denial of Service Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-22 09:31:30 +0100 (Tue, 22 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-01-11 10:33:14 +0100 (Wed, 11 Jan 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
@@ -49,18 +49,12 @@ if(description)
   script_xref(name:"URL", value:"http://www.powerdns.com/");
   script_xref(name:"URL", value:"http://mailman.powerdns.com/pipermail/pdns-users/2012-January/008457.html");
 
-  tag_summary = "PowerDNS Authoritative Server is prone to a remote denial-of-service vulnerability.";
-
-  tag_impact = "Successfully exploiting this issue will allow attackers to cause the
+  script_tag(name:"impact", value:"Successfully exploiting this issue will allow attackers to cause the
   application to fall into an endless packet loop with other DNS
-  servers, denying service to legitimate users.";
-
-  tag_solution = "The vendor has released a patch. Please see the references for
-  details.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  servers, denying service to legitimate users.");
+  script_tag(name:"solution", value:"The vendor has released a patch. Please see the references for
+  details.");
+  script_tag(name:"summary", value:"PowerDNS Authoritative Server is prone to a remote denial-of-service vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

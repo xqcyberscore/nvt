@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_scrutinizer_54731.nasl 9994 2018-05-29 06:22:58Z cfischer $
+# $Id: gb_scrutinizer_54731.nasl 11167 2018-08-30 12:04:11Z asteins $
 #
 # Scrutinizer Default Password Security Bypass Vulnerability
 #
@@ -29,42 +29,42 @@ CPE = "cpe:/a:dell:sonicwall_scrutinizer";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103533");
- script_bugtraq_id(54731);
- script_cve_id("CVE-2012-3951");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 9994 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103533");
+  script_bugtraq_id(54731);
+  script_cve_id("CVE-2012-3951");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11167 $");
 
- script_name("Scrutinizer Default Password Security Bypass Vulnerability");
+  script_name("Scrutinizer Default Password Security Bypass Vulnerability");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/54731");
- script_xref(name : "URL" , value : "http://www.plixer.com");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54731");
+  script_xref(name:"URL", value:"http://www.plixer.com");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-29 08:22:58 +0200 (Tue, 29 May 2018) $");
- script_tag(name:"creation_date", value:"2012-08-08 12:18:06 +0200 (Wed, 08 Aug 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Databases");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("mysql_version.nasl", "gb_scrutinizer_detect.nasl");
- script_require_ports("Services/www", 80, "Services/mysql", 3306);
- script_mandatory_keys("scrutinizer/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-08-08 12:18:06 +0200 (Wed, 08 Aug 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Databases");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("mysql_version.nasl", "gb_scrutinizer_detect.nasl");
+  script_require_ports("Services/www", 80, "Services/mysql", 3306);
+  script_mandatory_keys("scrutinizer/installed");
 
- script_tag(name : "summary" , value : "The MySQL component in Plixer Scrutinize is prone to a security-bypass vulnerability.");
- script_tag(name : "impact" , value : "Successful attacks can allow an attacker to gain access to
+  script_tag(name:"summary", value:"The MySQL component in Plixer Scrutinize is prone to a security-bypass vulnerability.");
+  script_tag(name:"impact", value:"Successful attacks can allow an attacker to gain access to
 the affected application using the default authentication credentials scrutremote:admin.");
- script_tag(name : "affected" , value : "Scrutinizer 9.5.0 is vulnerable. Other versions may also be affected.");
- script_tag(name : "solution" , value : "Vendor updates are available. Please see the references for more
+  script_tag(name:"affected", value:"Scrutinizer 9.5.0 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"solution", value:"Vendor updates are available. Please see the references for more
 information.");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("host_details.inc");
 include("byte_func.inc");
 

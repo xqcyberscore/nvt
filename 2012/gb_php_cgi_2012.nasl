@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_cgi_2012.nasl 10711 2018-08-01 13:58:38Z cfischer $
+# $Id: gb_php_cgi_2012.nasl 11169 2018-08-30 14:20:05Z asteins $
 #
 # PHP-CGI-based setups vulnerability when parsing query string parameters from php files.
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103482");
-  script_version("$Revision: 10711 $");
+  script_version("$Revision: 11169 $");
   script_bugtraq_id(53388);
   script_cve_id("CVE-2012-1823", "CVE-2012-2311", "CVE-2012-2336", "CVE-2012-2335");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 15:58:38 +0200 (Wed, 01 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-05-04 10:40:34 +0100 (Fri, 04 May 2012)");
   script_name("PHP-CGI-based setups vulnerability when parsing query string parameters from php files.");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "http_version.nasl","phpinfo.nasl");
+  script_dependencies("find_service.nasl", "http_version.nasl", "phpinfo.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 

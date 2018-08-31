@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_nmedia_member_conv_file_upload_vuln.nasl 10028 2018-05-30 13:13:04Z cfischer $
+# $Id: gb_wordpress_nmedia_member_conv_file_upload_vuln.nasl 11167 2018-08-30 12:04:11Z asteins $
 #
 # WordPress Nmedia Member Conversation Plugin Arbitrary File Upload Vulnerability
 #
@@ -29,19 +29,19 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802642");
-  script_version("$Revision: 10028 $");
+  script_version("$Revision: 11167 $");
   script_bugtraq_id(53790);
   script_cve_id("CVE-2012-3577");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 15:13:04 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-06-20 12:12:12 +0530 (Wed, 20 Jun 2012)");
   script_name("WordPress Nmedia Member Conversation Plugin Arbitrary File Upload Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/49375");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/76076");
-  script_xref(name : "URL" , value : "http://wordpress.org/extend/plugins/wordpress-member-private-conversation/changelog/");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/113287/WordPress-Nmedia-WP-Member-Conversation-1.35.0-Shell-Upload.html");
-  script_xref(name : "URL" , value : "http://www.opensyscom.fr/Actualites/wordpress-plugins-nmedia-wordpress-member-conversation-shell-upload-vulnerability.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/49375");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/76076");
+  script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/wordpress-member-private-conversation/changelog/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/113287/WordPress-Nmedia-WP-Member-Conversation-1.35.0-Shell-Upload.html");
+  script_xref(name:"URL", value:"http://www.opensyscom.fr/Actualites/wordpress-plugins-nmedia-wordpress-member-conversation-shell-upload-vulnerability.html");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
@@ -50,19 +50,19 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to upload arbitrary PHP code
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to upload arbitrary PHP code
   and run it in the context of the Web server process.
 
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "WordPress Nmedia Member Conversation Plugin version 1.35.0");
-  script_tag(name : "insight" , value : "The flaw is due to the /wp-content/plugins/wordpress-member-private-
+  script_tag(name:"affected", value:"WordPress Nmedia Member Conversation Plugin version 1.35.0");
+  script_tag(name:"insight", value:"The flaw is due to the /wp-content/plugins/wordpress-member-private-
   conversation/doupload.php script allowing the upload of files with arbitrary
   extensions to a folder inside the webroot. This can be exploited to execute
   arbitrary PHP code by uploading a malicious PHP script.");
-  script_tag(name : "solution" , value : "Upgrade to WordPress Nmedia Member Conversation Plugin version 1.4 or later,
+  script_tag(name:"solution", value:"Upgrade to WordPress Nmedia Member Conversation Plugin version 1.4 or later,
 
   For updates refer to http://wordpress.org/extend/plugins/wordpress-member-private-conversation/");
-  script_tag(name : "summary" , value : "This host is running WordPress Nmedia Member Conversation Plugin
+  script_tag(name:"summary", value:"This host is running WordPress Nmedia Member Conversation Plugin
   and is prone to file upload vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");

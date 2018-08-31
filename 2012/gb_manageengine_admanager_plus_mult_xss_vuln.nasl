@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_admanager_plus_mult_xss_vuln.nasl 10005 2018-05-29 13:54:41Z cfischer $
+# $Id: gb_manageengine_admanager_plus_mult_xss_vuln.nasl 11169 2018-08-30 14:20:05Z asteins $
 #
 # Zoho ManageEngine ADManager Plus Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802587");
-  script_version("$Revision: 10005 $");
+  script_version("$Revision: 11169 $");
   script_cve_id("CVE-2012-1049");
   script_bugtraq_id(51893);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 15:54:41 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-02-08 12:14:53 +0530 (Wed, 08 Feb 2012)");
   script_name("Zoho ManageEngine ADManager Plus Multiple Cross Site Scripting Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/47887/");
-  script_xref(name : "URL" , value : "http://www.zeroscience.mk/codes/admanager_xss.txt");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/109528/ZSL-2012-5070.txt");
-  script_xref(name : "URL" , value : "http://www.zeroscience.mk/en/vulnerabilities/ZSL-2012-5070.php");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/47887/");
+  script_xref(name:"URL", value:"http://www.zeroscience.mk/codes/admanager_xss.txt");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/109528/ZSL-2012-5070.txt");
+  script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2012-5070.php");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -48,20 +48,20 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
 HTML and script code in a user's browser session in context of an affected site.
 
 Impact Level: Application");
-  script_tag(name : "affected" , value : "ManageEngine ADManager Plus version 5.2 Build 5210");
-  script_tag(name : "insight" , value : "The flaw is due to an input passed to the 'domainName' parameter
+  script_tag(name:"affected", value:"ManageEngine ADManager Plus version 5.2 Build 5210");
+  script_tag(name:"insight", value:"The flaw is due to an input passed to the 'domainName' parameter
 in jsp/AddDC.jsp and 'operation' POST parameter in DomainConfig.do (when
 'methodToCall' is set to 'save') is not properly sanitised before being returned
 to the user.");
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running Zoho ManageEngine ADManager Plus and is
+  script_tag(name:"summary", value:"This host is running Zoho ManageEngine ADManager Plus and is
 prone to multiple cross site scripting vulnerabilities.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sphinx_mws_comment_mult_xss_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
+# $Id: gb_sphinx_mws_comment_mult_xss_vuln.nasl 11169 2018-08-30 14:20:05Z asteins $
 #
 # Sphinx Mobile Web Server 'comment' Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802390");
-  script_version("$Revision: 6697 $");
+  script_version("$Revision: 11169 $");
   script_cve_id("CVE-2012-1005");
   script_bugtraq_id(51820);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-02-02 14:49:35 +0530 (Thu, 02 Feb 2012)");
   script_name("Sphinx Mobile Web Server 'comment' Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -60,10 +60,9 @@ if(description)
   '/Blog/AboutSomething.txt', which allows attacker to execute arbitrary HTML
   and script code on the user's browser session in the security context of an
   affected site.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The host is running Sphinx Mobile Web Server and is prone to
   persistent cross site scripting vulnerability.");
 
@@ -77,15 +76,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-sndReq = "";
-banner = "";
-mwsPort = 0;
-
-## Get HTTP port
 mwsPort = get_http_port(default:8080);
 
-## Get Banner And Confirm Application
 banner = get_http_banner(port: mwsPort);
 if("Server: MobileWebServer/" >!< banner){
   exit(0);
@@ -101,7 +93,6 @@ pages = make_list("/MyFirstBlog.txt", "/AboutSomething.txt");
 
 foreach page (pages)
 {
-  ##Construct an Exploit
   url1 = "/Blog" + page + "?comment=<script>alert(document.cookie)" +
                           "</script>&submit=Add+Comment";
 
@@ -109,7 +100,6 @@ foreach page (pages)
   sndReq = http_get(item: url1, port:mwsPort);
   http_keepalive_send_recv(port:mwsPort, data:sndReq);
 
-  ##Confirm the Attack by reopening the vulnerable page
   url2 = "/Blog" + page ;
 
   if(http_vuln_check(port:mwsPort, url:url2, pattern:"<script>alert" +

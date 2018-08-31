@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ioserver_mult_dir_trav_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_ioserver_mult_dir_trav_vuln.nasl 11169 2018-08-30 14:20:05Z asteins $
 #
 # IOServer Trailing Backslash Multiple Directory Traversal Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802445");
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 11169 $");
   script_cve_id("CVE-2012-4680");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-08-20 16:21:46 +0530 (Mon, 20 Aug 2012)");
   script_name("IOServer Trailing Backslash Multiple Directory Traversal Vulnerabilities");
 
@@ -73,10 +73,8 @@ banner = "";
 exp = "";
 url = "";
 
-## Get HTTP Port
 port = get_http_port(default:81);
 
-## Confirm the application before trying exploit
 banner = get_http_banner(port: port);
 if("Server: IOServer" >!< banner) {
   exit(0);

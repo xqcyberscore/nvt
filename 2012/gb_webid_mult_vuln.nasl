@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_mult_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_webid_mult_vuln.nasl 11169 2018-08-30 14:20:05Z asteins $
 #
 # WeBid Multiple Vulnerabilities
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803053");
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 11169 $");
   script_bugtraq_id(56588);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-11-20 12:03:19 +0530 (Tue, 20 Nov 2012)");
   script_name("WeBid Multiple Vulnerabilities");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/80140");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/22828");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/22829");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118197/webid-traversal.txt");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/115640/WeBid-1.0.4-RFI-File-Disclosure-SQL-Injection.html");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/80140");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/22828");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/22829");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/118197/webid-traversal.txt");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/115640/WeBid-1.0.4-RFI-File-Disclosure-SQL-Injection.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
@@ -47,22 +47,21 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to perform
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform
   directory traversal attacks and read arbitrary files on the affected
   application and execute arbitrary script code
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "WeBid version 1.0.5 and prior");
-  script_tag(name : "insight" , value : "The flaws are due to improper input validation
+  script_tag(name:"affected", value:"WeBid version 1.0.5 and prior");
+  script_tag(name:"insight", value:"The flaws are due to improper input validation
   - Input passed via the 'js' parameter to loader.php, which allows attackers
   to read arbitrary files via a ../(dot dot) sequences.
   - Input passed via the 'Copyright' parameter to admin/settings.php, is not
   properly sanitised before it is returned to the user.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running WeBid and is prone to directory traversal
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running WeBid and is prone to directory traversal
   and multiple cross site scripting vulnerabilities.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -81,7 +80,6 @@ if(!can_host_php(port:webPort)){
   exit(0);
 }
 
-## traversal_files() function Returns Dictionary (i.e key value pair)
 ## Get Content to be checked and file to be check
 files = traversal_files();
 
@@ -98,11 +96,9 @@ foreach dir (make_list_unique("/WeBid", "/webid", "/", cgi_dirs(port:webPort)))
 
     foreach file (keys(files))
     {
-      ## Construct directory traversal attack
       url = dir + "/loader.php?js=" +
             crap(data:"../",length:3*15) + files[file] + "%00.js;";
 
-      ## Confirm exploit worked properly or not
       if(http_vuln_check(port:webPort, url:url, check_header:TRUE, pattern:file))
       {
         security_message(port:webPort);

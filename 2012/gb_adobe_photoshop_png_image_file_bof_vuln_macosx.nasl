@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_png_image_file_bof_vuln_macosx.nasl 10020 2018-05-30 08:48:56Z cfischer $
+# $Id: gb_adobe_photoshop_png_image_file_bof_vuln_macosx.nasl 11167 2018-08-30 12:04:11Z asteins $
 #
 # Adobe Photoshop PNG Image Processing Buffer Overflow Vulnerabilities (Mac OS X)
 #
@@ -29,16 +29,16 @@ CPE = "cpe:/a:adobe:photoshop_cs6";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803026");
-  script_version("$Revision: 10020 $");
+  script_version("$Revision: 11167 $");
   script_cve_id("CVE-2012-4170", "CVE-2012-0275");
   script_bugtraq_id(55333, 55372);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 10:48:56 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-09-03 18:23:45 +0530 (Mon, 03 Sep 2012)");
   script_name("Adobe Photoshop PNG Image Processing Buffer Overflow Vulnerabilities (Mac OS X)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/49141");
-  script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-20.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/49141");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb12-20.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
@@ -46,19 +46,19 @@ if(description)
   script_dependencies("gb_adobe_photoshop_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Photoshop/MacOSX/Version");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute arbitrary code.
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code.
 
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Adobe Photoshop version prior to CS6 (13.0) on Mac OS X");
-  script_tag(name : "insight" , value : "- A boundary error in the 'Standard MultiPlugin.8BF' module fails to
+  script_tag(name:"affected", value:"Adobe Photoshop version prior to CS6 (13.0) on Mac OS X");
+  script_tag(name:"insight", value:"- A boundary error in the 'Standard MultiPlugin.8BF' module fails to
     process a Portable Network Graphics (PNG) image, which allows attacker to
     cause a buffer overflow via a specially crafted 'tRNS' chunk size.
 
   - Improper validation in Photoshop.exe when decompressing
     SGI24LogLum-compressed TIFF images.");
-  script_tag(name : "solution" , value : "Upgrade to Adobe Photoshop version CS6 (13.0.1) or later,
+  script_tag(name:"solution", value:"Upgrade to Adobe Photoshop version CS6 (13.0.1) or later,
   For updates refer to http://www.adobe.com/downloads/");
-  script_tag(name : "summary" , value : "This host is installed with Adobe Photoshop and is prone to buffer
+  script_tag(name:"summary", value:"This host is installed with Adobe Photoshop and is prone to buffer
   overflow vulnerabilities.");
 
   script_tag(name:"qod_type", value:"package");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2012-0009.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_VMSA-2012-0009.nasl 11169 2018-08-30 14:20:05Z asteins $
 #
 # VMSA-2012-0009 VMware Workstation, Player, ESXi and ESX patches address critical security issues
 #
@@ -25,7 +25,25 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote ESXi is missing one or more security related Updates from VMSA-2012-0009.
+
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103481");
+  script_cve_id("CVE-2012-1516", "CVE-2012-1517", "CVE-2012-2448", "CVE-2012-2449", "CVE-2012-2450");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11169 $");
+  script_name("VMSA-2012-0009 VMware Workstation, Player, ESXi and ESX patches address critical security issues");
+
+
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-05-03 18:53:01 +0100 (Thu, 03 May 2012)");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_esxi_init.nasl");
+  script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
+  script_tag(name:"summary", value:"The remote ESXi is missing one or more security related Updates from VMSA-2012-0009.
 
 Summary
 VMware Workstation, Player, ESXi and ESX patches address critical security issues
@@ -42,7 +60,7 @@ ESXi 3.5 without patch ESXe350-201205401-I-SG
 ESX 4.1 without patches ESX410-201205401-SG, ESX410-201110201-SG, ESX410-201201401-SG
 ESX 4.0 without patches ESX400-201105201-UG, ESX400-201205401-SG
 ESX 3.5 without patch ESX350-201205401-SG
-      
+
 Problem Description
 a. VMware host memory overwrite vulnerability (data pointers)
 
@@ -127,30 +145,10 @@ Do not allow untrusted root users access to your virtual machines. Root or
 Administrator level permissions are required to exploit this issue.
 
 Solution
-Apply the missing patch(es).";
-
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103481");
- script_cve_id("CVE-2012-1516", "CVE-2012-1517", "CVE-2012-2448", "CVE-2012-2449","CVE-2012-2450");
- script_tag(name:"cvss_base", value:"9.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 9352 $");
- script_name("VMSA-2012-0009 VMware Workstation, Player, ESXi and ESX patches address critical security issues");
-
-
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-05-03 18:53:01 +0100 (Thu, 03 May 2012)");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esxi_init.nasl");
- script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2012-0009.html");
+Apply the missing patch(es).");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2012-0009.html");
  exit(0);
 }
 

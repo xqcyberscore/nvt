@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_may12_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_prdts_mult_vuln_may12_win.nasl 11167 2018-08-30 12:04:11Z asteins $
 #
 # Mozilla Products Multiple Vulnerabilities - May12 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802840");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11167 $");
   script_cve_id("CVE-2012-0467", "CVE-2012-0469", "CVE-2012-0468", "CVE-2012-0470",
                 "CVE-2012-0471", "CVE-2012-0472", "CVE-2012-0474", "CVE-2012-0477",
                 "CVE-2012-0478", "CVE-2012-0479");
@@ -35,22 +35,22 @@ if(description)
                     53229, 53227, 53224);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-05-02 10:29:17 +0530 (Wed, 02 May 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - May12 (Windows)");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/48972/");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/48932/");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1026971");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-20.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-22.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-23.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-24.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-25.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-27.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-29.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-30.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-33.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/48972/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/48932/");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1026971");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-20.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-22.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-23.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-24.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-25.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-27.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-29.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-30.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-33.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
@@ -58,16 +58,16 @@ if(description)
   script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to inject scripts, bypass
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject scripts, bypass
   certain security restrictions, execute arbitrary code in the context of the
   browser or cause a denial of service.
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "SeaMonkey version before 2.9
+  script_tag(name:"affected", value:"SeaMonkey version before 2.9
   Thunderbird version 5.0 through 11.0
   Mozilla Firefox version 4.x through 11.0
   Thunderbird ESR version 10.x before 10.0.4
   Mozilla Firefox ESR version 10.x before 10.0.4");
-  script_tag(name : "insight" , value : "The flaws are due to
+  script_tag(name:"insight", value:"The flaws are due to
   - Multiple unspecified vulnerabilities in the browser engine.
   - A use after free error exists within the XPConnect hashtable, when
     handling IDBKeyRange indexedDB.
@@ -80,9 +80,9 @@ if(description)
   - An error exists within the 'texImage2D()' function within WebGL, when
     using JSVAL_TO_OBJECT.
   - An error when handling RSS and Atom XML content loaded over HTTPS.");
-  script_tag(name : "summary" , value : "This host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
+  script_tag(name:"summary", value:"This host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
   to multiple vulnerabilities.");
-  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 12.0 or ESR version 10.0.4 or later,
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 12.0 or ESR version 10.0.4 or later,
   For updates refer to http://www.mozilla.com/en-US/firefox/all.html
 
   Upgrade to SeaMonkey version to 2.9 or later,

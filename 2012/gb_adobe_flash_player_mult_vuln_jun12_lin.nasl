@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_jun12_lin.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_adobe_flash_player_mult_vuln_jun12_lin.nasl 11169 2018-08-30 14:20:05Z asteins $
 #
 # Adobe Flash Player Multiple Vulnerabilities June-2012 (Linux)
 #
@@ -24,49 +24,43 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow attackers to bypass certain security
-  restrictions, execute arbitrary code in the context of the browser or cause
-  a denial of service (memory corruption) via unspecified vectors.
-  Impact Level: System/Application";
-tag_affected = "Adobe Flash Player version before 10.3.183.20,
-  Adobe Flash Player version 11.x through 11.2.202.235 on Linux.";
-tag_insight = "Multiple errors are caused,
-  - When parsing ActionScript.
-  - Within NPSWF32.dll when parsing certain tags.
-  - In the 'SoundMixer.computeSpectrum()' method, which can be exploited to
-    bypass the same-origin policy.
-  - In the installer allows planting a binary file.";
-tag_solution = "Update to Adobe Flash Player version 10.3.183.20 or 11.2.202.236 or later,
-  For the updates refer, http://get.adobe.com/flashplayer/";
-tag_summary = "This host is installed with Adobe Flash Player and is prone to
-  multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802873");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11169 $");
   script_cve_id("CVE-2012-2034", "CVE-2012-2035", "CVE-2012-2036", "CVE-2012-2037",
                 "CVE-2012-2039", "CVE-2012-2038", "CVE-2012-2040");
   script_bugtraq_id(53887);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-06-20 10:16:16 +0530 (Wed, 20 Jun 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities June-2012 (Linux)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/49388");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1027139");
-  script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-14.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/49388");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1027139");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb12-14.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
   script_require_keys("AdobeFlashPlayer/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to bypass certain security
+  restrictions, execute arbitrary code in the context of the browser or cause
+  a denial of service (memory corruption) via unspecified vectors.
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Adobe Flash Player version before 10.3.183.20,
+  Adobe Flash Player version 11.x through 11.2.202.235 on Linux.");
+  script_tag(name:"insight", value:"Multiple errors are caused,
+  - When parsing ActionScript.
+  - Within NPSWF32.dll when parsing certain tags.
+  - In the 'SoundMixer.computeSpectrum()' method, which can be exploited to
+    bypass the same-origin policy.
+  - In the installer allows planting a binary file.");
+  script_tag(name:"solution", value:"Update to Adobe Flash Player version 10.3.183.20 or 11.2.202.236 or later,
+  For the updates refer, http://get.adobe.com/flashplayer/");
+  script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
+  multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -75,10 +69,6 @@ if(description)
 
 include("version_func.inc");
 
-# Variable Initialization
-flashVer = "";
-
-# Check for Adobe Flash Player
 flashVer = get_kb_item("AdobeFlashPlayer/Linux/Ver");
 
 if(flashVer && flashVer =~ ",")
@@ -88,9 +78,8 @@ if(flashVer && flashVer =~ ",")
 
 if(flashVer)
 {
-  # Grep for version < 10.3.183.20 or <= 11.2.202.235
   if(version_is_less(version: flashVer, test_version:"10.3.183.20")||
      version_in_range(version: flashVer, test_version:"11.0", test_version2:"11.2.202.235")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

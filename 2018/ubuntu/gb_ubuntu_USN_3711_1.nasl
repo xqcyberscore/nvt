@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3711_1.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_3711_1.nasl 11171 2018-08-31 02:55:34Z ckuersteiner $
 #
 # Ubuntu Update for imagemagick USN-3711-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843588");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11171 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-31 04:55:34 +0200 (Fri, 31 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-12 05:57:23 +0200 (Thu, 12 Jul 2018)");
   script_cve_id("CVE-2018-12599", "CVE-2018-12600", "CVE-2018-13153");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for imagemagick USN-3711-1");
   script_tag(name:"summary", value:"Check the version of imagemagick");

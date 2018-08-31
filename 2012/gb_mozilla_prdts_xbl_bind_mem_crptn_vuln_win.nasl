@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_xbl_bind_mem_crptn_vuln_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_prdts_xbl_bind_mem_crptn_vuln_win.nasl 11169 2018-08-30 14:20:05Z asteins $
 #
 # Mozilla Products XBL Binding Memory Corruption Vulnerability - (Windows)
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802592");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11169 $");
   script_cve_id("CVE-2012-0452");
   script_bugtraq_id(51975);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-02-14 15:40:12 +0530 (Tue, 14 Feb 2012)");
   script_name("Mozilla Products XBL Binding Memory Corruption Vulnerability - (Windows)");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/48008/");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1026665");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-10.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/48008/");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1026665");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-10.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
@@ -46,19 +46,19 @@ if(description)
   script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : "Successful exploitation will let attackers to execute arbitrary code in the
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to execute arbitrary code in the
   context of the user running the affected application. Failed exploit attempts
   will likely result in denial-of-service conditions.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "SeaMonkey version prior to 2.7.1,
+  script_tag(name:"affected", value:"SeaMonkey version prior to 2.7.1,
   Thunderbird version 10.x prior to 10.0.1 and
   Mozilla Firefox version 10.x prior to 10.0.1 on Windows");
-  script_tag(name : "insight" , value : "The flaw is due to an error in the 'ReadPrototypeBindings()' method
+  script_tag(name:"insight", value:"The flaw is due to an error in the 'ReadPrototypeBindings()' method
   when handling XBL bindings in a hash table and can be exploited to cause a
   cycle collector to call an invalid virtual function.");
-  script_tag(name : "summary" , value : "The host is installed with Mozilla firefox/seamonkey/thunderbird
+  script_tag(name:"summary", value:"The host is installed with Mozilla firefox/seamonkey/thunderbird
   and is prone to memory corruption vulnerability.");
-  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 10.0.1 or later,
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 10.0.1 or later,
   For updates refer to http://www.mozilla.com/en-US/firefox/all.html
 
   Upgrade to SeaMonkey version to 2.7.1 or later

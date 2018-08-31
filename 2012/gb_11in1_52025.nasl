@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_11in1_52025.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_11in1_52025.nasl 11167 2018-08-30 12:04:11Z asteins $
 #
 # 11in1 Cross Site Request Forgery and Local File Include Vulnerabilities
 #
@@ -25,48 +25,50 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "11in1 is prone to a cross-site request-forgery and a local file
-include vulnerability.
-
-An attacker may leverage these issues to execute arbitrary script code
-in the browser of an unsuspecting user in the context of the affected
-site, steal cookie-based authentication credentials, and open or run
-arbitrary files in the context of the affected application.
-
-11in1 1.2.1 is vulnerable; other versions may also be affected.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103424");
- script_bugtraq_id(52025);
- script_cve_id("CVE-2012-0996","CVE-2012-0997");
- script_version ("$Revision: 9352 $");
- script_name("11in1 Cross Site Request Forgery and Local File Include Vulnerabilities");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52025");
- script_xref(name : "URL" , value : "http://www.11in1.org/");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/521660");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-02-16 11:39:18 +0100 (Thu, 16 Feb 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_oid("1.3.6.1.4.1.25623.1.0.103424");
+  script_bugtraq_id(52025);
+  script_cve_id("CVE-2012-0996", "CVE-2012-0997");
+  script_version("$Revision: 11167 $");
+  script_name("11in1 Cross Site Request Forgery and Local File Include Vulnerabilities");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52025");
+  script_xref(name:"URL", value:"http://www.11in1.org/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/521660");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-16 11:39:18 +0100 (Thu, 16 Feb 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"11in1 is prone to a cross-site request-forgery and a local file
+include vulnerability.");
 
- exit(0);
+  script_tag(name:"impact", value:"An attacker may leverage these issues to execute arbitrary script code
+in the browser of an unsuspecting user in the context of the affected
+site, steal cookie-based authentication credentials, and open or run
+arbitrary files in the context of the affected application.");
+
+  script_tag(name:"affected", value:"11in1 1.2.1 is vulnerable, other versions may also be affected.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+
+  exit(0);
 }
 
 include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-   
+
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 
@@ -86,7 +88,7 @@ foreach dir( make_list_unique( "/11in1", "/cms", cgi_dirs( port:port ) ) ) {
         security_message( port:port, data:report );
         exit( 0 );
       }
-    }  
+    }
   }
 }
 

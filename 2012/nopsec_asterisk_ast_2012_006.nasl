@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: nopsec_asterisk_ast_2012_006.nasl 4887 2016-12-30 12:54:28Z cfi $
+# $Id: nopsec_asterisk_ast_2012_006.nasl 11167 2018-08-30 12:04:11Z asteins $
 #
 # SIP channel driver in Asterisk suffers remote crash vulnerability
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:digium:asterisk';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.110018");
-  script_version("$Revision: 4887 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-30 13:54:28 +0100 (Fri, 30 Dec 2016) $");
+  script_version("$Revision: 11167 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-06-19 11:43:12 +0100 (Tue, 19 Jun 2012)");
   script_cve_id("CVE-2012-2416");
   script_bugtraq_id(53205);
@@ -42,7 +42,7 @@ if(description)
   script_copyright("Copyright NopSec Inc. 2012");
   script_dependencies("secpod_asterisk_detect.nasl");
   script_mandatory_keys("Asterisk-PBX/Ver", "Asterisk-PBX/Installed");
- 
+
   script_tag(name:"summary", value:"chan_sip.c in the SIP channel driver in Asterisk Open Source 1.8.x
   before 1.8.11.1 and 10.x before 10.3.1 and Asterisk Business Edition C.3.x before C.3.7.4, when the
   trustrpid option is enabled, alLows remote authenticated users to cause a denial of service (daemon crash)

