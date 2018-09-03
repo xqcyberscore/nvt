@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_62394ac295_xapian-bindings_fc27.nasl 10558 2018-07-20 14:08:23Z santu $
+# $Id: gb_fedora_2018_62394ac295_xapian-bindings_fc27.nasl 11180 2018-08-31 14:10:20Z mmartin $
 #
 # Fedora Update for xapian-bindings FEDORA-2018-62394ac295
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874799");
-  script_version("$Revision: 10558 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 16:08:23 +0200 (Fri, 20 Jul 2018) $");
+  script_version("$Revision: 11180 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-31 16:10:20 +0200 (Fri, 31 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-15 06:01:07 +0200 (Sun, 15 Jul 2018)");
   script_cve_id("CVE-2018-0499");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for xapian-bindings FEDORA-2018-62394ac295");
   script_tag(name:"summary", value:"Check the version of xapian-bindings");

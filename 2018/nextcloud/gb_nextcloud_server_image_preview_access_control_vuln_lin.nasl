@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nextcloud_server_image_preview_access_control_vuln_lin.nasl 10540 2018-07-19 07:26:13Z santu $
+# $Id: gb_nextcloud_server_image_preview_access_control_vuln_lin.nasl 11180 2018-08-31 14:10:20Z mmartin $
 #
 # Nextcloud Server Image Previews File Access Control Bypass Vulnerability (Linux)
 #
@@ -29,15 +29,15 @@ CPE = "cpe:/a:nextcloud:nextcloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813557");
-  script_version("$Revision: 10540 $");
+  script_version("$Revision: 11180 $");
   script_cve_id("CVE-2018-3762");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-19 09:26:13 +0200 (Thu, 19 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-31 16:10:20 +0200 (Fri, 31 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-07-09 18:12:48 +0530 (Mon, 09 Jul 2018)");
   script_name("Nextcloud Server Image Previews File Access Control Bypass Vulnerability (Linux)");
 
-  script_tag(name:"summary", value:"The host is installed with Nextcloud Server 
+  script_tag(name:"summary", value:"The host is installed with Nextcloud Server
   and is prone to information disclosure vulnerability.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help
@@ -54,7 +54,7 @@ if (description)
   script_tag(name:"affected", value:"Nextcloud Server before 12.0.8 and 13.0.3");
 
   script_tag(name:"solution", value:"Upgrade to version 12.0.8 or 13.0.3 or later.");
-  
+
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");

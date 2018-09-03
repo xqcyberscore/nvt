@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_xss_vuln.nasl 9813 2018-05-14 05:19:41Z ckuersteiner $
+# $Id: gb_mybb_xss_vuln.nasl 11178 2018-08-31 11:06:23Z jschulte $
 #
 # MyBB 1.8.14 XSS Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113109");
-  script_version("$Revision: 9813 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-14 07:19:41 +0200 (Mon, 14 May 2018) $");
+  script_version("$Revision: 11178 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-08-31 13:06:23 +0200 (Fri, 31 Aug 2018) $");
   script_tag(name:"creation_date", value:"2018-02-13 10:50:30 +0100 (Tue, 13 Feb 2018)");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
@@ -68,7 +68,7 @@ include( "host_details.inc" );
 include( "version_func.inc" );
 
 if( ! port = get_app_port( cpe: CPE ) ) exit( 0 );
-if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
+if( ! version = get_app_version( cpe: CPE, port: port, nofork: TRUE ) ) exit( 0 );
 
 if( version_is_less_equal( version: version, test_version: "1.8.14" ) ) {
   report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable" );
