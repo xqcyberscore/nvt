@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_epm_xxe_n_sql_inj_vuln.nasl 9982 2018-05-28 12:00:03Z cfischer $
+# $Id: gb_symantec_epm_xxe_n_sql_inj_vuln.nasl 11191 2018-09-03 11:57:37Z mmartin $
 #
 # Symantec Endpoint Protection Manager XXE and SQL Injection Vulnerabilities
 #
@@ -27,37 +27,37 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804513");
-  script_version("$Revision: 9982 $");
+  script_version("$Revision: 11191 $");
   script_cve_id("CVE-2013-5014", "CVE-2013-5015");
   script_bugtraq_id(65466, 65467);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-20 11:33:41 +0530 (Thu, 20 Mar 2014)");
   script_name("Symantec Endpoint Protection Manager XXE and SQL Injection Vulnerabilities");
 
-  script_tag(name : "summary" , value : "The host is installed with Symantec Endpoint Protection Manager and is prone
+  script_tag(name:"summary", value:"The host is installed with Symantec Endpoint Protection Manager and is prone
   to XXE and SQL injection vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Send a specially crafted XML data including external entity references to
+  script_tag(name:"vuldetect", value:"Send a specially crafted XML data including external entity references to
   TCP port 9090 and check whether it is able to execute commands remotely or not.");
-  script_tag(name : "insight" , value : "Flaw is due to an error when handling XML data within the servlet/ConsoleServlet.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to disclose potentially sensitive
+  script_tag(name:"insight", value:"Flaw is due to an error when handling XML data within the servlet/ConsoleServlet.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to disclose potentially sensitive
   information, manipulate certain data, and cause a DoS (Denial of Service).
 
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Symantec Endpoint Protection Manager (SEPM) 11.0 before 11.0.7405.1424 and
+  script_tag(name:"affected", value:"Symantec Endpoint Protection Manager (SEPM) 11.0 before 11.0.7405.1424 and
   12.1 before 12.1.4023.4080, and Symantec Protection Center Small Business
   Edition 12.x before 12.1.4023.4080");
-  script_tag(name : "solution" , value : "Upgrade Symantec Endpoint Protection Manager to version 11.0.7405.1424 or
+  script_tag(name:"solution", value:"Upgrade Symantec Endpoint Protection Manager to version 11.0.7405.1424 or
   12.1.4023.4080 or later, and Symantec Protection Center Small Business Edition
   to version 12.1.4023.4080 or later, For updates refer to http://www.symantec.com");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/56798");
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2014/Feb/82");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/31853");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/31917");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125282");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125366");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/56798");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2014/Feb/82");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/31853");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/31917");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125282");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125366");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -107,7 +107,6 @@ if(http_vuln_check(port:http_port, url:"/", check_header:TRUE, usecache:TRUE,
                  'Content-Length: ', strlen(postdata), '\r\n',
                  'Content-Type: multipart/form-data; boundary="----=_Part_156_33010715.1234"\r\n\r\n',
                   postdata);
-    ## Send request and receive the response
     start = unixtime();
     res = http_keepalive_send_recv(port:http_port, data:req);
     stop = unixtime();

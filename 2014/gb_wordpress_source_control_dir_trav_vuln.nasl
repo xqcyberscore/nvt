@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_source_control_dir_trav_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_wordpress_source_control_dir_trav_vuln.nasl 11186 2018-09-03 09:12:42Z mmartin $
 #
 # WordPress Content Source Control Plugin Directory Traversal Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804904");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11186 $");
   script_cve_id("CVE-2014-5368");
   script_bugtraq_id(69278);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-19 10:28:34 +0530 (Fri, 19 Sep 2014)");
   script_name("WordPress Content Source Control Plugin Directory Traversal Vulnerability");
 
@@ -85,7 +85,6 @@ if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## traversal_files() function Returns Dictionary (i.e key value pair)
 files = traversal_files();
 
 foreach file (keys(files))

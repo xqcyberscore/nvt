@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_inneradmission_sql_inj_vuln.nasl 10212 2018-06-15 09:51:23Z ckuersteiner $
+# $Id: gb_joomla_inneradmission_sql_inj_vuln.nasl 11194 2018-09-03 12:44:14Z mmartin $
 #
 # Joomla Component Inneradmission SQL Injection Vulnerability
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804272");
-  script_version("$Revision: 10212 $");
+  script_version("$Revision: 11194 $");
   script_bugtraq_id(66708);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 11:51:23 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-29 19:08:26 +0530 (Tue, 29 Apr 2014)");
 
   script_name("Joomla Component Inneradmission SQL Injection Vulnerability");
 
-  script_tag(name: "summary", value: "This host is installed with Joomla! component Inneradmission and is prone to
+  script_tag(name:"summary", value:"This host is installed with Joomla! component Inneradmission and is prone to
 a sql injection vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Send a crafted data via HTTP GET request and check whether it is possible
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is possible
 to execute a sql query.");
 
-  script_tag(name: "insight", value: "The flaw is due to insufficient validation of 'id' HTTP GET parameter
+  script_tag(name:"insight", value:"The flaw is due to insufficient validation of 'id' HTTP GET parameter
 passed to 'index.php' script.");
 
-  script_tag(name: "impact", value: "Successful exploitation will allow remote attackers to execute arbitrary SQL
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary SQL
 commands in applications database and gain complete control over the vulnerable web application.");
 
-  script_tag(name: "affected", value: "Inneradmission Extension for Joomla");
+  script_tag(name:"affected", value:"Inneradmission Extension for Joomla");
 
-  script_tag(name: "solution", value: "No known solution was made available for at least one year since the
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
 disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
 a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name: "URL", value: "http://packetstormsecurity.com/files/126062");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/126062");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

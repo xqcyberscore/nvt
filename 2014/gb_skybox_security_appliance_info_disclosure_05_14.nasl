@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_skybox_security_appliance_info_disclosure_05_14.nasl 9982 2018-05-28 12:00:03Z cfischer $
+# $Id: gb_skybox_security_appliance_info_disclosure_05_14.nasl 11198 2018-09-03 13:39:31Z mmartin $
 #
 # Skybox Security Appliance Multiple Information Disclosure Vulnerabilities
 #
@@ -27,39 +27,39 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105027");
- script_cve_id("CVE-2014-2084");
- script_tag(name:"cvss_base", value:"8.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
- script_version ("$Revision: 9982 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105027");
+  script_cve_id("CVE-2014-2084");
+  script_tag(name:"cvss_base", value:"8.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
+  script_version("$Revision: 11198 $");
 
- script_name("Skybox Security Appliance Multiple Information Disclosure Vulnerabilities");
+  script_name("Skybox Security Appliance Multiple Information Disclosure Vulnerabilities");
 
- script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/33327/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/33327/");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
- script_tag(name:"creation_date", value:"2014-05-13 16:33:50 +0200 (Tue, 13 May 2014)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 444);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-05-13 16:33:50 +0200 (Tue, 13 May 2014)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 444);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "impact" , value : "This would allow the malicious party to read system-related information
+  script_tag(name:"impact", value:"This would allow the malicious party to read system-related information
 such as interface names, IP addresses and the appliance status.");
- script_tag(name : "vuldetect" , value : "Send a HTTP GET request and check the response.");
- script_tag(name : "insight" , value : "A vulnerability has been found in some Skybox View Appliances' Admin
+  script_tag(name:"vuldetect", value:"Send a HTTP GET request and check the response.");
+  script_tag(name:"insight", value:"A vulnerability has been found in some Skybox View Appliances' Admin
 interfaces which would allow a potential malicious party to bypass
 the authentication mechanism and obtain read-only access to the
 appliance's administrative menus.");
- script_tag(name : "solution" , value : "Please refer to the vendor security advisor: Security Advisory 2014-3-25-1");
- script_tag(name : "summary" , value : "Skybox Security Appliance is prone to multiple information-disclosure vulnerabilities.");
- script_tag(name : "affected" , value : "Skybox View Appliances with ISO versions: 6.3.33-2.14, 6.3.31-2.14,
+  script_tag(name:"solution", value:"Please refer to the vendor security advisor: Security Advisory 2014-3-25-1");
+  script_tag(name:"summary", value:"Skybox Security Appliance is prone to multiple information-disclosure vulnerabilities.");
+  script_tag(name:"affected", value:"Skybox View Appliances with ISO versions: 6.3.33-2.14, 6.3.31-2.14,
 6.4.42-2.54, 6.4.45-2.56, 6.4.46-2.57");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 }
@@ -67,7 +67,7 @@ appliance's administrative menus.");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
- 
+
 port = get_http_port( default:444 );
 
 if( buf = http_vuln_check( port:port, url:'/', pattern:"<title>SkyBox Web Administration", usecache:TRUE ) )
@@ -76,7 +76,7 @@ if( buf = http_vuln_check( port:port, url:'/', pattern:"<title>SkyBox Web Admini
   if( ! isnull( cookie[1] ) ) co = cookie[1];
 
   urls = make_array( "/scripts/commands/getSystemInformation?_=111111111","APPLIANCE_VERSION",
-                     "/scripts/commands/getNetworkConfigurationInfo","HardwareAddress");  
+                     "/scripts/commands/getNetworkConfigurationInfo","HardwareAddress");
 
   foreach url ( keys( urls ) )
   {

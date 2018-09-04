@@ -29,22 +29,22 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804702");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11200 $");
   script_cve_id("CVE-2014-1533", "CVE-2014-1534", "CVE-2014-1536", "CVE-2014-1537",
                 "CVE-2014-1538", "CVE-2014-1540", "CVE-2014-1541", "CVE-2014-1542",
                 "CVE-2014-1543");
   script_bugtraq_id(67965, 67964, 67966, 67971, 67976, 67978, 67979, 67968, 67969);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-01 13:15:10 +0530 (Tue, 01 Jul 2014)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 July14 (Windows)");
 
 
-  script_tag(name : "summary" , value : "This host is installed with Mozilla Firefox and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox and is prone to multiple
 vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
-  script_tag(name : "insight" , value : "Multiple flaws are due to,
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 - An error in the 'PropertyProvider::FindJustificationRange()' function.
 - An error in the 'navigator.getGamepads()' method within the Gamepad API.
 - A use-after-free error in the 'mozilla::dom::workers::WorkerPrivateParent' class.
@@ -53,18 +53,18 @@ vulnerabilities.");
 - A boundary error related to AudioBuffer channel counts and sample rate range
   within the Web Audio Speex resampler.
 - And some unspecified errors exist.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to conduct clickjacking attacks
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct clickjacking attacks
 and compromise a user's system.
 
 Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Mozilla Firefox version before 30.0 on Windows");
-  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 30.0 or later,
+  script_tag(name:"affected", value:"Mozilla Firefox version before 30.0 on Windows");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 30.0 or later,
 For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/59171");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2014/mfsa2014-48.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/59171");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2014/mfsa2014-48.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
@@ -83,6 +83,6 @@ if(!ffVer = get_app_version(cpe:CPE)){
 
 if(version_is_less(version:ffVer, test_version:"30.0"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_frame_metadissector_dos_vuln_win.nasl 6663 2017-07-11 09:58:05Z teissa $
+# $Id: gb_wireshark_frame_metadissector_dos_vuln_win.nasl 11198 2018-09-03 13:39:31Z mmartin $
 #
 # Wireshark 'Frame Metadissector' Denial of Service Vulnerability (Windows)
 #
@@ -29,52 +29,33 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804665");
-  script_version("$Revision: 6663 $");
+  script_version("$Revision: 11198 $");
   script_cve_id("CVE-2014-4020");
   script_bugtraq_id(68044);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 11:58:05 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-07 10:00:15 +0530 (Mon, 07 Jul 2014)");
   script_name("Wireshark 'Frame Metadissector' Denial of Service Vulnerability (Windows)");
 
-  tag_summary =
-"This host is installed with Wireshark and is prone to denial of service
-vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"Flaw is due to an error in 'dissect_frame' function in
-epan/dissectors/packet-frame.c within the frame metadissector.";
-
-  tag_impact =
-"Successful exploitation will allow attackers to conduct a DoS
+  script_tag(name:"summary", value:"This host is installed with Wireshark and is prone to denial of service
+vulnerability.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Flaw is due to an error in 'dissect_frame' function in
+epan/dissectors/packet-frame.c within the frame metadissector.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct a DoS
 (Denial of Service) attack.
 
-Impact Level: Application";
-
-  tag_affected =
-"Wireshark version 1.10.0 through 1.10.7 on Windows";
-
-  tag_solution =
-"Upgrade to Wireshark version 1.10.8 or later,
-For updates refer to http://www.wireshark.org/download";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+Impact Level: Application");
+  script_tag(name:"affected", value:"Wireshark version 1.10.0 through 1.10.7 on Windows");
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.10.8 or later,
+For updates refer to http://www.wireshark.org/download");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/58832");
-  script_xref(name : "URL" , value : "http://www.wireshark.org/security/wnpa-sec-2014-07.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/58832");
+  script_xref(name:"URL", value:"http://www.wireshark.org/security/wnpa-sec-2014-07.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
@@ -87,20 +68,15 @@ For updates refer to http://www.wireshark.org/download";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-sharkVer = "";
-
-## Get version
 if(!sharkVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(sharkVer  =~ "^(1\.10)")
 {
   if(version_in_range(version:sharkVer, test_version:"1.10.0", test_version2:"1.10.7"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

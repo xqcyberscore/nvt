@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln01_feb13_win.nasl 11011 2018-08-16 14:14:31Z mmartin $
+# $Id: gb_oracle_java_se_mult_vuln01_feb13_win.nasl 11201 2018-09-03 14:35:07Z cfischer $
 #
 # Oracle Java SE Multiple Vulnerabilities -01 Feb 13 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803307");
-  script_version("$Revision: 11011 $");
+  script_version("$Revision: 11201 $");
   script_cve_id("CVE-2013-0431", "CVE-2013-1489", "CVE-2013-0351", "CVE-2013-0409",
                 "CVE-2013-0419", "CVE-2013-0423", "CVE-2013-0424", "CVE-2012-3342",
                 "CVE-2012-3213", "CVE-2012-1541", "CVE-2013-1475", "CVE-2013-0425",
@@ -45,7 +45,7 @@ if(description)
                     57716, 57720, 57722, 57727, 57731, 57729, 57730);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-06 18:29:04 +0530 (Wed, 06 Feb 2013)");
   script_name("Oracle Java SE Multiple Vulnerabilities -01 Feb 13 (Windows)");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1028071");
@@ -55,7 +55,7 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
-  script_require_keys("Sun/Java/JRE/Win/Ver");
+  script_mandatory_keys("Sun/Java/JRE/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to affect confidentiality,
   integrity, and availability via unknown vectors. Attackers can even execute
   arbitrary code on the target system.
@@ -63,19 +63,33 @@ if(description)
   script_tag(name:"affected", value:"Oracle Java SE Version 7 Update 11 and earlier, 6 Update 38 and earlier,
   5 Update 38 and earlier and 1.4.2_40 and earlier.");
   script_tag(name:"insight", value:"Multiple flaws due to unspecified errors in the following components:
+
   - Deployment
+
   - Scripting
+
   - COBRA
+
   - Sound
+
   - Beans
+
   - 2D
+
   - Networking
+
   - Libraries
+
   - Installation process of client
+
   - Abstract Window Toolkit (AWT)
+
   - Remote Method Invocation (RMI)
+
   - Java Management Extensions (JMX)
+
   - Java API for XML Web Services(JAX_WS)
+
   - Java Secure Socket Extension (JSSE)");
   script_tag(name:"solution", value:"Apply patch from below link,
   http://www.oracle.com/technetwork/topics/security/javacpufeb2013-1841061.html");
@@ -83,9 +97,9 @@ if(description)
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 

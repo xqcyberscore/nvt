@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-063.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_ms14-063.nasl 11191 2018-09-03 11:57:37Z mmartin $
 #
 # Microsoft Windows FAT32 Disk Partition Driver Privilege Escalation Vulnerability (2998579)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804493");
-  script_version("$Revision: 6735 $");
+  script_version("$Revision: 11191 $");
   script_cve_id("CVE-2014-4115");
   script_bugtraq_id(70343);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-15 09:05:23 +0530 (Wed, 15 Oct 2014)");
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Microsoft Windows FAT32 Disk Partition Driver Privilege Escalation Vulnerability (2998579)");
 
@@ -53,8 +53,7 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows Vista x32/x64 Service Pack 2 and prior
+  script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Service Pack 2 and prior
   Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
   Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior");
 
@@ -64,13 +63,14 @@ if(description)
   https://technet.microsoft.com/library/security/MS14-063");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/60975");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2998579");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-063");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/60975");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/2998579");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS14-063");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -81,16 +81,10 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-win32SysVer="";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2003:3, win2003x64:3, winVista:3, win2008:3) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath){
   exit(0);
@@ -101,23 +95,20 @@ if(!win32SysVer){
   exit(0);
 }
 
-## Windows 2003
 if(hotfix_check_sp(win2003:3, win2003x64:3) > 0)
 {
   if(version_is_less(version:win32SysVer, test_version:"5.2.3790.5425")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows Vista and Windows Server 2008
 ## Currently not supporting for Vista 64 bit
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Fastfat.sys version
   if(version_is_less(version:win32SysVer, test_version:"6.0.6002.19176") ||
      version_in_range(version:win32SysVer, test_version:"6.0.6002.23000", test_version2:"6.0.6002.23479")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }

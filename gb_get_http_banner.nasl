@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_get_http_banner.nasl 11050 2018-08-20 09:15:34Z ckuersteiner $
+# $Id: gb_get_http_banner.nasl 11208 2018-09-04 08:04:34Z cfischer $
 #
 # HTTP Banner
 #
@@ -25,50 +25,45 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140170");
+  script_version("$Revision: 11208 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 10:04:34 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11050 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 11:15:34 +0200 (Mon, 20 Aug 2018) $");
-  script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
   script_name("HTTP Banner");
+  script_category(ACT_GATHER_INFO);
+  script_family("Service detection");
+  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "httpver.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"summary", value:"This script get the HTTP banner and store some values in the KB related to this banner.");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_category(ACT_GATHER_INFO);
-  script_family("General");
-  script_copyright("This script is Copyright (C) 2017 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
- exit(0);
+  exit(0);
 }
-
 
 include("http_func.inc");
 
+function set_mandatory_key( key, regex, banner ) {
 
-function set_mandatory_key( key, regex, banner )
-{
   local_var key, regex, banner;
 
   if( ! key )   return;
   if( ! regex ) return;
   if( ! banner ) return;
 
-  if( m = egrep( pattern:regex, string:banner, icase:TRUE ) )
-    set_kb_item( name:key + '/banner', value:TRUE );
-
+  if( egrep( pattern:regex, string:banner, icase:TRUE ) )
+    set_kb_item( name:key + "/banner", value:TRUE );
   return;
-
 }
 
 port = get_http_port( default:80 );
-
 banner = get_http_banner( port:port );
 if( ! banner ) exit( 0 );
 
@@ -377,5 +372,6 @@ set_mandatory_key( key:"ABwww", regex: "Server: A-B WWW", banner:banner );
 set_mandatory_key( key:"yawcam", regex: "Server: yawcam", banner:banner );
 set_mandatory_key( key:"JetBrainsIDEs", regex: "server: (PyCharm|WebStorm|CLion|DataGrip|IntelliJ|JetBrains|JetBrains|jetBrains|RubyMine)", banner:banner );
 set_mandatory_key( key:"tplink_httpd", regex: "Server: TP-LINK HTTPD/", banner:banner );
+set_mandatory_key( key:"Boa_or_micro_httpd", regex:"Server: (Boa/|micro_httpd)", banner:banner ); # For gb_dlink_dsl_detect.nasl
 
 exit( 0 );

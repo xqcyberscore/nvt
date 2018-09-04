@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ghostscript_detect_lin.nasl 10906 2018-08-10 14:50:26Z cfischer $
+# $Id: secpod_ghostscript_detect_lin.nasl 11190 2018-09-03 11:25:15Z cfischer $
 #
 # Ghostscript Version Detection (Linux)
 #
@@ -30,12 +30,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900541");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10906 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11190 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:25:15 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-04-28 07:58:48 +0200 (Tue, 28 Apr 2009)");
   script_tag(name:"cvss_base", value:"0.0");
-  script_tag(name:"qod_type", value:"executable_version");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Ghostscript Version Detection (Linux)");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2009 secPod");
@@ -46,8 +45,11 @@ if(description)
 
   script_tag(name:"summary", value:"Detects the installed version of Ghostscript.
 
-The script logs in via ssh, searches for executable 'gs' and
-queries the found executables via command line option '--help'.");
+  The script logs in via ssh, searches for executable 'gs' and
+  queries the found executables via command line option '--help'.");
+
+  script_tag(name:"qod_type", value:"executable_version");
+
   exit(0);
 }
 
@@ -57,21 +59,16 @@ include("cpe.inc");
 include("host_details.inc");
 
 sock = ssh_login_or_reuse_connection();
-if(!sock){
-  if (defined_func("error_message"))
-    error_message(port:0, data:"Failed to open ssh port.");
-  exit(-1);
-}
+if(!sock) exit(0);
 
-gsName = find_file(file_name:"gs", file_path:"/", useregex:TRUE,
-                   regexpar:"$", sock:sock);
+gsName = find_file(file_name:"gs", file_path:"/", useregex:TRUE, regexpar:"$", sock:sock);
 foreach executableFile(gsName)
 {
   executableFile = chomp(executableFile);
-  gsVer = get_bin_version(full_prog_name:executableFile, version_argv:"--help",
-                          ver_pattern:"Ghostscript ([0-9]\.[0-9.]+)", sock:sock);
+  if(!executableFile) continue;
+  gsVer = get_bin_version(full_prog_name:executableFile, version_argv:"--help", ver_pattern:"Ghostscript ([0-9]\.[0-9.]+)", sock:sock);
 
-  if(gsVer[1] != NULL)
+  if(!isnull(gsVer[1]))
   {
     resp = gsVer[max_index(gsVer)-1];
     if("Ghostscript" >< resp && "Artifex Software," >< resp)

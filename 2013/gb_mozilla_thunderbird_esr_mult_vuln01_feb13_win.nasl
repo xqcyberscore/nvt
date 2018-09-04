@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_esr_mult_vuln01_feb13_win.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_mozilla_thunderbird_esr_mult_vuln01_feb13_win.nasl 11201 2018-09-03 14:35:07Z cfischer $
 #
 # Mozilla Thunderbird ESR Multiple Vulnerabilities -01 Feb13 (Windows)
 #
@@ -32,24 +32,35 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Mozilla Thunderbird ESR version 17.x prior to 17.0.3 on Windows");
   script_tag(name:"insight", value:"- Error when handling a WebIDL object
+
   - Error in displaying the content of a 407 response of a proxy
+
   - Unspecified errors in 'nsSaveAsCharset::DoCharsetConversion()' function,
     Chrome Object Wrappers (COW) and in System Only Wrappers (SOW).
+
   - Use-after-free error in the below functions
+
     'nsDisplayBoxShadowOuter::Paint()'
+
     'nsPrintEngine::CommonPrint()'
+
     'nsOverflowContinuationTracker::Finish()'
+
     'nsImageLoadingContent::OnStopContainer()'
+
   - Out-of-bound read error in below functions
+
     'ClusterIterator::NextCluster()'
+
     'nsCodingStateMachine::NextState()'
+
     'mozilla::image::RasterImage::DrawFrameTo()', when rendering GIF images.");
   script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird ESR version 17.0.3 or later,
   For updates refer to http://www.mozilla.com/en-US/thunderbird");
   script_tag(name:"summary", value:"This host is installed with Mozilla Thunderbird ESR and is prone to multiple
   vulnerabilities.");
   script_oid("1.3.6.1.4.1.25623.1.0.803426");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11201 $");
   script_cve_id("CVE-2013-0784", "CVE-2013-0783", "CVE-2013-0782", "CVE-2013-0781",
                 "CVE-2013-0780", "CVE-2013-0779", "CVE-2013-0778", "CVE-2013-0777",
                 "CVE-2013-0765", "CVE-2013-0772", "CVE-2013-0773", "CVE-2013-0774",
@@ -58,7 +69,7 @@ if(description)
                     58034, 58041, 58038, 58042, 58044);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-21 15:34:10 +0530 (Thu, 21 Feb 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -74,10 +85,10 @@ if(description)
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_thunderbird_detect_portable_win.nasl");
-  script_require_keys("Thunderbird-ESR/Win/Ver");
+  script_mandatory_keys("Thunderbird-ESR/Win/Ver");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 

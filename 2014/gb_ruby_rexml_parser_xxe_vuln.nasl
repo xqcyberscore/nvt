@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ruby_rexml_parser_xxe_vuln.nasl 8196 2017-12-20 12:13:37Z cfischer $
+# $Id: gb_ruby_rexml_parser_xxe_vuln.nasl 11191 2018-09-03 11:57:37Z mmartin $
 #
 # Ruby 'REXML' Parser XML Entity Expansion (XEE) Vulnerability (Windows)
 #
@@ -29,33 +29,32 @@ CPE = "cpe:/a:ruby-lang:ruby";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805202");
-  script_version("$Revision: 8196 $");
+  script_version("$Revision: 11191 $");
   script_cve_id("CVE-2014-8090");
   script_bugtraq_id(71230);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 13:13:37 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-01 18:02:14 +0530 (Mon, 01 Dec 2014)");
   script_name("Ruby 'REXML' Parser XML Entity Expansion (XEE) Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Ruby and is
+  script_tag(name:"summary", value:"This host is installed with Ruby and is
   prone to XML entity expansion vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Flaw exists due to an error within the
+  script_tag(name:"insight", value:"Flaw exists due to an error within the
   REXML module when parsing XML entities.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to cause a denial of service (crash) condition.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Ruby versions Ruby 1.9.x before 1.9.3-p551,
+  script_tag(name:"affected", value:"Ruby versions Ruby 1.9.x before 1.9.3-p551,
   2.0.x before 2.0.0-p598, and 2.1.x before 2.1.5 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Ruby 1.9.3-p551 or 2.0.0-p598 or
+  script_tag(name:"solution", value:"Upgrade to Ruby 1.9.3-p551 or 2.0.0-p598 or
   2.1.5 later. For updates refer http://www.ruby-lang.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -75,30 +74,24 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-rubyVer = "";
-
-## Get version from KB
 if(!rubyVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
 if(rubyVer)
 {
-  ## Check for version 1.9.x before 1.9.3-p551, 2.0.x before 2.0.0-p598
   if(version_in_range(version:rubyVer, test_version:"1.9.0.0", test_version2:"1.9.3.p550")||
      version_in_range(version:rubyVer, test_version:"2.0.0.0", test_version2:"2.0.0.p597"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }
 
-##Check for 2.1.x before 2.1.5.0
 if(rubyVer =~ "^(2\.1\.)")
 {
   if(version_is_less(version:rubyVer, test_version:"2.1.5.0"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

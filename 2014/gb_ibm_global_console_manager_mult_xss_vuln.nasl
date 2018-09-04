@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_global_console_manager_mult_xss_vuln.nasl 5816 2017-03-31 10:16:41Z cfi $
+# $Id: gb_ibm_global_console_manager_mult_xss_vuln.nasl 11191 2018-09-03 11:57:37Z mmartin $
 #
 # IBM Global Console Manager switches Multiple XSS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804775");
-  script_version("$Revision: 5816 $");
+  script_version("$Revision: 11191 $");
   script_cve_id("CVE-2014-3080", "CVE-2014-3081", "CVE-2014-3085");
   script_bugtraq_id(68777, 68779, 68939);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:16:41 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-13 16:48:44 +0530 (Mon, 13 Oct 2014)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -62,9 +62,9 @@ if(description)
   script_tag(name:"solution", value:"Update to firmware version 1.20.20.23447 or newer,
   For updates refer http://www.ibm.com");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/34132");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Jul/113");
-  script_xref(name : "URL" , value : "http://www.ibm.com/support/entry/portal/docdisplay?lndocid=migr-5095983");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/34132");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Jul/113");
+  script_xref(name:"URL", value:"http://www.ibm.com/support/entry/portal/docdisplay?lndocid=migr-5095983");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -79,24 +79,17 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-sndReq = "";
-rcvRes = "";
-http_port = "";
-
 http_port = get_http_port(default:443);
 
 rcvRes = http_get_cache(item:"/login.php", port:http_port);
 
 if(">GCM" >< rcvRes)
 {
-  ##Construct Attack request
   url = "/avctalert.php?key=<script>alert(document.cookie)</script>";
 
   sndReq = http_get(item:url, port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ## Confirm the exploit, Extra check not possible
   if(rcvRes =~ "HTTP/1\.. 200" && "<script>alert(document.cookie)</script>" >< rcvRes)
   {
     security_message(port:http_port);

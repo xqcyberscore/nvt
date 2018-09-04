@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_linksys_11_14_info_disclosure.nasl 6759 2017-07-19 09:56:33Z teissa $
+# $Id: gb_multiple_linksys_11_14_info_disclosure.nasl 11187 2018-09-03 09:59:13Z mmartin $
 #
 # Multiple Linksys Products Information Disclosure
 #
@@ -27,31 +27,32 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105105");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6759 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105105");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11187 $");
 
- script_name("Multiple Linksys Products Information Disclosure");
+  script_name("Multiple Linksys Products Information Disclosure");
 
- script_xref(name:"URL", value:"https://media.blackhat.com/us-13/US-13-Heffner-Exploiting-Network-Surveillance-Cameras-Like-A-Hollywood-Hacker-Slides.pdf");
+  script_xref(name:"URL", value:"https://media.blackhat.com/us-13/US-13-Heffner-Exploiting-Network-Surveillance-Cameras-Like-A-Hollywood-Hacker-Slides.pdf");
 
- script_tag(name: "impact" , value:"Exploiting this issue could allow an attacker read the config of the device including
+  script_tag(name:"impact", value:"Exploiting this issue could allow an attacker read the config of the device including
 usernames and passwords.");
 
- script_tag(name: "vuldetect" , value:"Send a HTTP GET request and check the response.");
- script_tag(name: "solution" , value:"Ask the Vendor for an update.");
- script_tag(name: "summary" , value:"Multiple Linksys products are prone to an information disclosure vulnerability.");
+  script_tag(name:"vuldetect", value:"Send a HTTP GET request and check the response.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"summary", value:"Multiple Linksys products are prone to an information disclosure vulnerability.");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
- script_tag(name:"creation_date", value:"2014-11-04 13:38:34 +0100 (Tue, 04 Nov 2014)");
- script_category(ACT_ATTACK);
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-11-04 13:38:34 +0100 (Tue, 04 Nov 2014)");
+  script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_get_http_banner.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("thttpd/banner");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_get_http_banner.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("thttpd/banner");
 
  exit(0);
 }

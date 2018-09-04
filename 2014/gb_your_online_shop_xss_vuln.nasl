@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_your_online_shop_xss_vuln.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_your_online_shop_xss_vuln.nasl 11186 2018-09-03 09:12:42Z mmartin $
 #
 # Your Online Shop 'products_id' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,45 +27,43 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805000");
-  script_version("$Revision: 6637 $");
+  script_version("$Revision: 11186 $");
   script_cve_id("CVE-2014-6618");
   script_bugtraq_id(70073);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-16 16:50:50 +0530 (Thu, 16 Oct 2014)");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("Your Online Shop 'products_id' Parameter Cross Site Scripting Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with Your Online Shop
+  script_tag(name:"summary", value:"This host is installed with Your Online Shop
   and is prone to cross site scripting vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted request via HTTP GET and
+  script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to read cookie or not.");
 
-  script_tag(name: "insight" , value:"This flaw exists due to an insufficient sanitization
+  script_tag(name:"insight", value:"This flaw exists due to an insufficient sanitization
   of input to the 'products_id' parameter before returning it to users.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attacker
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to execute arbitrary HTML and script code in a user's browser session in the
   context of an affected site.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Your Online Shop version 1.1.8.6.1, Other
+  script_tag(name:"affected", value:"Your Online Shop version 1.1.8.6.1, Other
   versions may also be affected.");
 
-  script_tag(name: "solution" , value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by
-  another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/96163");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/128336");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/96163");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/128336");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -81,20 +79,12 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-url = "";
-req = "";
-res = "";
-serPort = "";
-
-## Get HTTP Port
 serPort = get_http_port(default:80);
 
 if(!can_host_php(port:serPort)){
   exit(0);
 }
 
-#Iterate over possible paths
 foreach dir (make_list_unique("/", "/youronlineshop", "/cart", "/shop", cgi_dirs(port:serPort)))
 {
 
@@ -103,10 +93,8 @@ foreach dir (make_list_unique("/", "/youronlineshop", "/cart", "/shop", cgi_dirs
   ## Send and Receive the response
   res = http_get_cache(item:string(dir, "/index.php"), port:serPort);
 
-  ## confirm the application
   if("www.tecnibur.com/youronlineshop/" >< res && ">Your online shop<" >< res)
   {
-    ## Construct the attack request
     url = dir + '/?seccion=ver_prod&products_id=test"/><script>alert(document.cookie)</script><';
 
     if(http_vuln_check(port:serPort, url:url, check_header:TRUE,

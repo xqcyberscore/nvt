@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_mult_vuln_aug14.nasl 6759 2017-07-19 09:56:33Z teissa $
+# $Id: gb_mybb_mult_vuln_aug14.nasl 11194 2018-09-03 12:44:14Z mmartin $
 #
 # MyBB Multiple Vulnerabilities - Aug14
 #
@@ -29,33 +29,32 @@ CPE = 'cpe:/a:mybb:mybb';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804747");
-  script_version("$Revision: 6759 $");
+  script_version("$Revision: 11194 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-21 18:16:52 +0530 (Thu, 21 Aug 2014)");
   script_name("MyBB Multiple Vulnerabilities - Aug14");
 
-  script_tag(name : "summary" , value : "This host is installed with MyBB and is prone to multiple vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP GET request and check whether it is able to
+  script_tag(name:"summary", value:"This host is installed with MyBB and is prone to multiple vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to
   execute sql query or not.");
-  script_tag(name : "insight" , value : "Flaw is due to the install/index.php, private.php, showthread.php, search.php,
+  script_tag(name:"insight", value:"Flaw is due to the install/index.php, private.php, showthread.php, search.php,
   misc.php, forumdisplay.php scripts which do not properly sanitize user-supplied
   input via the 'keywords' parameter.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary HTML
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
   and script code in a user's browser session or execute arbitrary SQL statements
   on the vulnerable system, which may leads to access or modify data in the
   underlying database.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "MyBB version 1.8 Beta 3");
-  script_tag(name : "solution" , value : "No solution or patch was made available for
-at least one year since disclosure of this vulnerability. Likely none will be provided
-anymore. General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.");
+  script_tag(name:"affected", value:"MyBB version 1.8 Beta 3");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/34381");
-  script_xref(name : "URL" , value : "https://rstforums.com/forum/88566-mybb-1-8-beta-3-cross-site-scripting-sql-injection.rst");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/34381");
+  script_xref(name:"URL", value:"https://rstforums.com/forum/88566-mybb-1-8-beta-3-cross-site-scripting-sql-injection.rst");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -71,9 +70,9 @@ features, remove the product or replace the product by another one.");
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
+
 include("host_details.inc");
-include("global_settings.inc");
+
 
 if( ! mybbPort = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:mybbPort ) ) exit( 0 );
@@ -99,7 +98,6 @@ mybbReq = string("POST ",url," HTTP/1.0\r\n",
 
 mybbRes = http_send_recv(port:mybbPort, data:mybbReq);
 
-## Confirm exploit worked by checking the response
 if(mybbRes && mybbRes =~ "You have an error in your SQL syntax.*constructor onload")
 {
   security_message(port:mybbPort);

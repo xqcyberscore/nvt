@@ -25,56 +25,36 @@
 ###############################################################################
 
 CPE = "cpe:/a:adobe:adobe_air";
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804066";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 8176 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804066");
+  script_version("$Revision: 11200 $");
   script_cve_id("CVE-2014-0491", "CVE-2014-0492");
   script_bugtraq_id(64807, 64810);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:50:00 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 11:17:57 +0530 (Tue, 21 Jan 2014)");
   script_name("Adobe AIR Security Bypass Vulnerability Jan14 (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe AIR and is prone to security bypass
-vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"Flaw is due to an unspecified error and other additional weakness.";
-
-  tag_impact =
-"Successful exploitation will allow attackers to, bypass certain security
+  script_tag(name:"summary", value:"This host is installed with Adobe AIR and is prone to security bypass
+vulnerability.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Flaw is due to an unspecified error and other additional weakness.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to, bypass certain security
 restrictions and disclose certain memory informations.
 
-Impact Level: System/Application";
-
-  tag_affected =
-"Adobe AIR version before 4.0.0.1390 on Windows.";
-
-  tag_solution =
-"Update to Adobe AIR version 4.0.0.1390 or later,
-For updates refer to  http://get.adobe.com/air";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+Impact Level: System/Application");
+  script_tag(name:"affected", value:"Adobe AIR version before 4.0.0.1390 on Windows.");
+  script_tag(name:"solution", value:"Update to Adobe AIR version 4.0.0.1390 or later,
+For updates refer to  http://get.adobe.com/air");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/56267");
-  script_xref(name : "URL" , value : "http://helpx.adobe.com/security/products/flash-player/apsb14-02.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/56267");
+  script_xref(name:"URL", value:"http://helpx.adobe.com/security/products/flash-player/apsb14-02.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
@@ -86,17 +66,12 @@ For updates refer to  http://get.adobe.com/air";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-airVer = "";
-
-## Get version
-if(!airVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID)){
+if(!airVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:airVer, test_version:"4.0.0.1390"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

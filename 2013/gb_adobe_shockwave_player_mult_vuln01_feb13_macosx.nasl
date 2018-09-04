@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln01_feb13_macosx.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_adobe_shockwave_player_mult_vuln01_feb13_macosx.nasl 11201 2018-09-03 14:35:07Z cfischer $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities -01 Feb13 (Mac OS X)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803414");
-  script_version("$Revision: 11103 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 11201 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-15 19:12:08 +0530 (Fri, 15 Feb 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -43,7 +43,7 @@ if(description)
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_shockwave_detect_macosx.nasl");
-  script_require_keys("Adobe/Shockwave/MacOSX/Version");
+  script_mandatory_keys("Adobe/Shockwave/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause buffer overflow,
   remote code execution, and corrupt system memory.
   Impact Level: System/Application");
@@ -55,9 +55,9 @@ if(description)
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 

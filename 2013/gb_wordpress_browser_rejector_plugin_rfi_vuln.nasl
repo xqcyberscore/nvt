@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_browser_rejector_plugin_rfi_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_wordpress_browser_rejector_plugin_rfi_vuln.nasl 11201 2018-09-03 14:35:07Z cfischer $
 #
 # WordPress Browser Rejector Plugin Remote File Inclusion Vulnerability
 #
@@ -40,11 +40,11 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with WordPress Browser Rejector Plugin and is prone
   to remote file inclusion vulnerability.");
   script_oid("1.3.6.1.4.1.25623.1.0.803209");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11201 $");
   script_bugtraq_id(57220);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-17 14:17:27 +0530 (Thu, 17 Jan 2013)");
   script_name("WordPress Browser Rejector Plugin Remote File Inclusion Vulnerability");
 
@@ -57,7 +57,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("secpod_wordpress_detect_900182.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("wordpress/installed");
+  script_mandatory_keys("wordpress/installed");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -81,7 +81,8 @@ foreach file (keys(files))
 
   if(http_vuln_check(port:wpPort, url:url,pattern:file))
   {
-    security_message(port:wpPort);
+    report = report_vuln_url(port:wpPort, url:url);
+    security_message(port:wpPort, data:report);
     exit(0);
   }
 }

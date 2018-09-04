@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_feb13_win.nasl 11007 2018-08-16 13:20:25Z mmartin $
+# $Id: gb_google_chrome_mult_vuln02_feb13_win.nasl 11201 2018-09-03 14:35:07Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-02 Feb2013 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803400");
-  script_version("$Revision: 11007 $");
+  script_version("$Revision: 11201 $");
   script_cve_id("CVE-2013-0839", "CVE-2013-0840", "CVE-2013-0841", "CVE-2013-0842");
   script_bugtraq_id(57502);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:20:25 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-04 11:39:40 +0530 (Mon, 04 Feb 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Feb2013 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51935");
@@ -43,16 +43,20 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
-  script_require_keys("GoogleChrome/Win/Ver");
+  script_mandatory_keys("GoogleChrome/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
   restrictions, execute arbitrary code in the context of the browser or
   cause a denial of service or possibly have unspecified other impact.
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Google Chrome versions prior to 24.0.1312.56 on Windows");
   script_tag(name:"insight", value:"Multiple flaws due to
+
   - Referring freed memory in canvas font handling.
+
   - Missing URL validation when opening new windows.
+
   - Unchecked array index in content blocking functionality.
+
   - Not properly handling %00 characters in path-names.");
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 24.0.1312.56 or later,
   For updates refer to http://www.google.com/chrome");
@@ -60,6 +64,7 @@ if(description)
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clipbucket_mult_vuln.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_clipbucket_mult_vuln.nasl 11198 2018-09-03 13:39:31Z mmartin $
 #
 # ClipBucket Multiple Vulnerabilities
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/a:clipbucket_project:clipbucket";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804543");
-  script_version("$Revision: 6735 $");
+  script_version("$Revision: 11198 $");
   script_cve_id("CVE-2012-6642", "CVE-2012-6643", "CVE-2012-6644");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-18 12:23:11 +0530 (Fri, 18 Apr 2014)");
   script_name("ClipBucket Multiple Vulnerabilities");
 
-  script_tag(name : "summary" , value : "This host is installed with ClipBucket and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with ClipBucket and is prone to multiple
   vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Send a crafted HTTP GET request and check whether it is able to execute
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check whether it is able to execute
   sql query or not.");
-  script_tag(name : "insight" , value : "Input passed via multiple parameters to multiple scripts is not properly
+  script_tag(name:"insight", value:"Input passed via multiple parameters to multiple scripts is not properly
   sanitised before being returned to the user. For more information please
   check the Reference section");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML or
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML or
   script code and manipulate SQL queries in the backend database allowing
   for the manipulation or disclosure of arbitrary data.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "ClipBucket version 2.6, Other versions may also be affected.");
-  script_tag(name : "solution" , value : "Apply the patch from the below link,
+  script_tag(name:"affected", value:"ClipBucket version 2.6, Other versions may also be affected.");
+  script_tag(name:"solution", value:"Apply the patch from the below link,
   For patch refer to http://sourceforge.net/projects/clipbucket/files/ClipBucket%20v2");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/47474");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108489");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/47474");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/108489");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -71,25 +71,16 @@ include("host_details.inc");
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-dir = "";
-url = "";
-report = "";
-http_port = "";
-
-# get the port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Clipbucket Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
 if( dir == "/" ) dir = "";
 
-## Construct Vulnerable Url
 url = dir + "/videos.php?cat=all&seo_cat_name=&sort=most_recent&time=1%27SQL-Injection-Test";
 
 ## Extra check is not possible

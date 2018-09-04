@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_ie_domain_policy_bypass_vuln.nasl 11065 2018-08-21 09:49:00Z mmartin $
+# $Id: gb_ms_ie_domain_policy_bypass_vuln.nasl 11201 2018-09-03 14:35:07Z cfischer $
 #
 # Microsoft Internet Explorer Domain Policy Bypass Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803302");
-  script_version("$Revision: 11065 $");
+  script_version("$Revision: 11201 $");
   script_cve_id("CVE-2012-6502");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 11:49:00 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-01 11:11:56 +0530 (Fri, 01 Feb 2013)");
   script_name("Microsoft Internet Explorer Domain Policy Bypass Vulnerability");
   script_xref(name:"URL", value:"http://www.nsfocus.com/en/2012/advisories_1228/119.html");
@@ -42,7 +42,7 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("Windows");
   script_dependencies("gb_ms_ie_detect.nasl");
-  script_require_keys("MS/IE/Version");
+  script_mandatory_keys("MS/IE/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to disclosure the information
   when a user views a specially crafted webpage.
   Impact Level: Application");
@@ -55,9 +55,9 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"This host is installed with Microsoft Internet Explorer and is
   prone to domain policy bypass vulnerability.");
+
   exit(0);
 }
-
 
 include("secpod_reg.inc");
 

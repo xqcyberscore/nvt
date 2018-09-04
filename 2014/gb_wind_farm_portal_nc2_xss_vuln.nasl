@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wind_farm_portal_nc2_xss_vuln.nasl 9086 2018-03-12 11:54:08Z cfischer $
+# $Id: gb_wind_farm_portal_nc2_xss_vuln.nasl 11186 2018-09-03 09:12:42Z mmartin $
 #
 # Nordex NC2 'username' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804789");
-  script_version("$Revision: 9086 $");
+  script_version("$Revision: 11186 $");
   script_cve_id("CVE-2014-5408");
   script_bugtraq_id(70851);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-12 12:54:08 +0100 (Mon, 12 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-11 17:47:43 +0530 (Tue, 11 Nov 2014)");
   script_name("Nordex NC2 'username' Parameter Cross Site Scripting Vulnerability");
 
@@ -54,17 +54,15 @@ if(description)
   script_tag(name:"affected", value:"Nordex Control 2 (NC2) SCADA V15
   and prior versions");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none
-  will be provided anymore. General solution options are to upgrade to a
-  newer release, disable respective features, remove the product or replace
-  the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"WillNotFix");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/98443");
-  script_xref(name : "URL" , value : "http://www.auscert.org.au/render.html?it=21058");
-  script_xref(name : "URL" , value : "https://ics-cert.us-cert.gov/advisories/ICSA-14-303-01");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/98443");
+  script_xref(name:"URL", value:"http://www.auscert.org.au/render.html?it=21058");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-14-303-01");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

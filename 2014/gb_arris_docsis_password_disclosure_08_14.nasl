@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arris_docsis_password_disclosure_08_14.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_arris_docsis_password_disclosure_08_14.nasl 11191 2018-09-03 11:57:37Z mmartin $
 #
 # Arris DOCSIS Password Disclosure
 #
@@ -27,28 +27,28 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105072");
- script_cve_id("CVE-2014-4863");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 7236 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105072");
+  script_cve_id("CVE-2014-4863");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11191 $");
 
- script_name("Arris DOCSIS Password Disclosure");
+  script_name("Arris DOCSIS Password Disclosure");
 
- script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
- script_tag(name:"creation_date", value:"2014-08-25 12:47:33 +0100 (Mon, 25 Aug 2014)");
- script_category(ACT_ATTACK);
- script_family("General");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_snmp_sysdesc.nasl");
- script_require_udp_ports("Services/udp/snmp", 161);
- script_mandatory_keys("SNMP/sysdesc/available");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-08-25 12:47:33 +0100 (Mon, 25 Aug 2014)");
+  script_category(ACT_ATTACK);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_snmp_sysdesc.nasl");
+  script_require_udp_ports("Services/udp/snmp", 161);
+  script_mandatory_keys("SNMP/sysdesc/available");
 
- script_tag(name : "impact" , value : "Attackers can exploit this issue to bypass the authentication
+  script_tag(name:"impact", value:"Attackers can exploit this issue to bypass the authentication
  mechanism and gain access to the vulnerable device.");
- script_tag(name : "vuldetect" , value : "Try to retrieve the password via snmp.");
- script_tag(name : "insight" , value : "By default this device is exposing critical information
- by requesting '1.3.6.1.4.1.4491.2.4.1.1.6.1.2.0' via SNMP using 'public' as community string. 
+  script_tag(name:"vuldetect", value:"Try to retrieve the password via snmp.");
+  script_tag(name:"insight", value:"By default this device is exposing critical information
+ by requesting '1.3.6.1.4.1.4491.2.4.1.1.6.1.2.0' via SNMP using 'public' as community string.
 
  This could be tested by running:
  snmpget -v1 -c public <target> 1.3.6.1.4.1.4491.2.4.1.1.6.1.2.0
@@ -59,12 +59,13 @@ if (description)
  WPA PSK:     1.3.6.1.4.1.4115.1.20.1.1.3.26.1.2.12
  Wep 64-bit:  1.3.6.1.4.1.4115.1.20.1.1.3.24.1.2.12.1-4
  WEP 128-bit: 1.3.6.1.4.1.4115.1.20.1.1.3.25.1.2.12.1-4");
- script_tag(name : "solution" , value : "Ask the Vendor for an update.");
- script_tag(name : "summary" , value : "The remote ARRIS DOCSIS is prone to a security-bypass
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"summary", value:"The remote ARRIS DOCSIS is prone to a security-bypass
  vulnerability.");
- script_tag(name : "affected" , value : "ARRIS DOCSIS 3.0 /  Touchstone Wideband Gateway.");
+  script_tag(name:"affected", value:"ARRIS DOCSIS 3.0 /  Touchstone Wideband Gateway.");
 
- script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
  exit(0);
 }
@@ -111,8 +112,8 @@ if( ! soc ) exit( 0 );
 
 for( i=0; i<3; i++ )
 {
-  sendata = raw_string( 0x30,0x30,0x02,0x01,0x00,0x04,0x06 ) + 
-                       'public' + 
+  sendata = raw_string( 0x30,0x30,0x02,0x01,0x00,0x04,0x06 ) +
+                       'public' +
             raw_string( 0xa0,0x23,0x02,0x04,0x10,0x41,0xfe,0xd8,
                         0x02,0x01,0x00,0x02,0x01,0x00,0x30,0x15,
                         0x30,0x13,0x06,0x0f,0x2b,0x06,0x01,0x04,
@@ -129,7 +130,7 @@ for( i=0; i<3; i++ )
     close( soc );
     security_message( port:port, proto:'udp', data:'By requesting "1.3.6.1.4.1.4491.2.4.1.1.6.1.2.0" is was possible to retrieve the password "' + res + '".\n' );
     exit( 0 );
-  }  
+  }
 }
 
 if( soc ) close( soc );

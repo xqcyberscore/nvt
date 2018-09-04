@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clipperz_password_manager_rce_vuln.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_clipperz_password_manager_rce_vuln.nasl 11187 2018-09-03 09:59:13Z mmartin $
 #
 # Clipperz Password Manager 'objectname' Remote Code Execution Vulnerability
 #
@@ -27,33 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804607");
-  script_version("$Revision: 6769 $");
+  script_version("$Revision: 11187 $");
   script_bugtraq_id(67498);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-26 14:49:09 +0530 (Mon, 26 May 2014)");
   script_name("Clipperz Password Manager 'objectname' Remote Code Execution Vulnerability");
 
-  script_tag(name : "summary" , value : "This host is running Clipperz Password Manager and is prone to remote code
+  script_tag(name:"summary", value:"This host is running Clipperz Password Manager and is prone to remote code
   execution vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send the crafted HTTP GET request and check is it possible to execute an
+  script_tag(name:"vuldetect", value:"Send the crafted HTTP GET request and check is it possible to execute an
   arbitrary php code.");
-  script_tag(name : "insight" , value : "The error exists as input passed via the 'objectname' parameter is not properly
+  script_tag(name:"insight", value:"The error exists as input passed via the 'objectname' parameter is not properly
   sanitized upon submission to the /backend/php/src/setup/rpc.php script");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary php code.
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary php code.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Clipperz Password Manager.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"affected", value:"Clipperz Password Manager.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126713");
-  script_xref(name : "URL" , value : "http://exploitsdownload.com/exploit/na/clipperz-password-manager-code-execution");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/126713");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/clipperz-password-manager-code-execution");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -68,20 +67,12 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-pwmPort = "";
-pwmReq = "";
-pwmRes = "";
-
-## Get HTTP Port
 pwmPort = get_http_port(default:80);
 
-## Check the support for php
 if(!can_host_php(port:pwmPort)){
   exit(0);
 }
 
-## Iterate over the possible paths
 foreach dir (make_list_unique("/", "/clipperz", "/password-manager-master", "/pass-mgr", cgi_dirs(port:pwmPort)))
 {
 
@@ -92,10 +83,8 @@ foreach dir (make_list_unique("/", "/clipperz", "/password-manager-master", "/pa
 
   if(pwmRes && ">Clipperz" >< pwmRes)
   {
-    ## Construct the attack request
     url = dir + "/backend/php/src/setup/rpc.php?objectname=Xmenu();print_r(phpinfo());die";
 
-    ## Confirm the Exploit
     if(http_vuln_check(port:pwmPort, url:url, check_header:TRUE,
        pattern:">PHP Version", extra_check: make_list(">Loaded Modules",
        ">HTTP Headers Information<")))

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_sep_mult_vuln_jan14.nasl 10954 2018-08-14 12:43:10Z mmartin $
+# $Id: gb_symantec_sep_mult_vuln_jan14.nasl 11200 2018-09-03 14:11:38Z mmartin $
 #
 # Symantec Endpoint Protection Multiple Vulnerabilities Jan-14
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804199");
-  script_version("$Revision: 10954 $");
+  script_version("$Revision: 11200 $");
   script_cve_id("CVE-2013-5009", "CVE-2013-5010", "CVE-2013-5011");
   script_bugtraq_id(64128, 64129, 64130);
   script_tag(name:"cvss_base", value:"7.4");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:S/C:C/I:C/A:C");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:43:10 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-27 16:29:04 +0530 (Mon, 27 Jan 2014)");
   script_name("Symantec Endpoint Protection Multiple Vulnerabilities Jan-14");
 
@@ -82,7 +82,6 @@ if(!sepVer = get_app_version(cpe:CPE)){
     exit(0);
 }
 
-## Get SEP Product type from KB
 sepType = get_kb_item("Symantec/SEP/SmallBusiness");
 
 ##  Check for vulnerable version 11.0.7.4 = 11.0.7400.1398
@@ -94,7 +93,6 @@ if(isnull(sepType) &&
    exit(0);
 }
 
-## Check if product type is SEPSB
 if("sepsb" >< sepType  && sepVer =~ "^12" &&
    version_is_less(version:sepVer, test_version:"12.1.2015.2015"))
 {

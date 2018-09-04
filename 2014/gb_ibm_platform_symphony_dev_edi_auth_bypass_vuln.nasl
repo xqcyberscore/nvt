@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_platform_symphony_dev_edi_auth_bypass_vuln.nasl 9982 2018-05-28 12:00:03Z cfischer $
+# $Id: gb_ibm_platform_symphony_dev_edi_auth_bypass_vuln.nasl 11200 2018-09-03 14:11:38Z mmartin $
 #
 # IBM Platform Symphony Developer Edition Authentication Bypass Vulnerability
 #
@@ -27,31 +27,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804240");
-  script_version("$Revision: 9982 $");
+  script_version("$Revision: 11200 $");
   script_cve_id("CVE-2013-5400");
   script_bugtraq_id(65616);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-19 11:25:08 +0530 (Wed, 19 Feb 2014)");
   script_name("IBM Platform Symphony Developer Edition Authentication Bypass Vulnerability");
 
-  script_tag(name : "summary" , value : "This host is running IBM Platform Symphony Developer Edition and is prone to
+  script_tag(name:"summary", value:"This host is running IBM Platform Symphony Developer Edition and is prone to
 authentication bypass vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send a crafted exploit string via HTTP GET request and check whether it is
+  script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP GET request and check whether it is
 able to read the string or not.");
-  script_tag(name : "insight" , value : "The flaw is in a servlet in the application, which authenticates a user with
+  script_tag(name:"insight", value:"The flaw is in a servlet in the application, which authenticates a user with
 built-in credentials.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to gain access to the
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain access to the
 local environment.
 
 Impact Level: Application.");
-  script_tag(name : "affected" , value : "IBM Platform Symphony Developer Edition 5.2 and 6.1.x through 6.1.1");
-  script_tag(name : "solution" , value : "Apply the workaround from below link,
+  script_tag(name:"affected", value:"IBM Platform Symphony Developer Edition 5.2 and 6.1.x through 6.1.1");
+  script_tag(name:"solution", value:"Apply the workaround from below link,
 http://www-01.ibm.com/support/docview.wss?uid=isg3T1020564");
 
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/87296");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=isg3T1020564");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/87296");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=isg3T1020564");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

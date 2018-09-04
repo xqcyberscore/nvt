@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netis_netcore_backdoor_09_2014.nasl 8236 2017-12-22 10:28:23Z cfischer $
+# $Id: gb_netis_netcore_backdoor_09_2014.nasl 11207 2018-09-04 07:22:57Z mmartin $
 #
 # Backdoor Access To Netcore/Netis Devices
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105075");
-  script_version("$Revision: 8236 $");
+  script_version("$Revision: 11207 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 11:28:23 +0100 (Fri, 22 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 09:22:57 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-01 12:03:46 +0200 (Mon, 01 Sep 2014)");
   script_name("Backdoor Access To Netcore/Netis Devices");
   script_category(ACT_ATTACK);
@@ -48,8 +48,8 @@ if(description)
 
   script_tag(name:"insight", value:"Affected devices include a backdoor service listening on UDP port 53413");
 
-  script_tag(name:"solution", value:"Ask the Vendor for an update");
-
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"summary", value:"Backdoor access to Netcore/Netis devices");
 
   script_tag(name:"qod_type", value:"remote_vul");

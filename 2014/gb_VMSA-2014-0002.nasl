@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2014-0002.nasl 9354 2018-04-06 07:15:32Z cfischer $
+# $Id: gb_VMSA-2014-0002.nasl 11198 2018-09-03 13:39:31Z mmartin $
 #
 # VMSA-2014-0002: VMware vSphere updates to third party libraries
 #
@@ -25,22 +25,34 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = " VMware has updated vSphere third party libraries.";
-tag_solution = "Apply the missing patch(es).";
 
-tag_affected = "vCenter Server Appliance 5.5 prior to 5.5 Update 1
-VMware vCenter Server 5.5 prior 5.5 Update 1
-VMware Update Manager 5.5 prior 5.5 Update 1
-VMware ESXi 5.5 without patch ESXi550-201403101-SG";
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103915");
+  script_cve_id("CVE-2013-5211", "CVE-2013-4332");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11198 $");
+  script_name("VMSA-2014-0002 VMware vSphere updates to third party libraries");
 
-tag_vuldetect = "Checks for missing patches.";
 
-tag_insight = 'a. DDoS vulnerability in NTP third party libraries
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0002.html");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-03-12 14:04:01 +0100 (Wed, 12 Mar 2014)");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_esxi_init.nasl");
+  script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
+
+  script_tag(name:"vuldetect", value:"Checks for missing patches.");
+  script_tag(name:"insight", value:"a. DDoS vulnerability in NTP third party libraries
 
 The NTP daemon has a DDoS vulnerability in the handling of the
-"monlist" command. An attacker may send a forged request to a
+'monlist' command. An attacker may send a forged request to a
 vulnerable NTP server resulting in an amplified response to the
-intended target of the DDoS attack. 
+intended target of the DDoS attack.
 
 b. Update to ESXi glibc package
 
@@ -51,36 +63,15 @@ c. vCenter and Update Manager, Oracle JRE 1.7 Update 45
 
 Oracle JRE is updated to version JRE 1.7 Update 45, which addresses
 multiple security issues that existed in earlier releases of Oracle
-JRE.';
-
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103915");
- script_cve_id("CVE-2013-5211","CVE-2013-4332");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 9354 $");
- script_name("VMSA-2014-0002 VMware vSphere updates to third party libraries");
-
-
- script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0002.html");
-
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:15:32 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2014-03-12 14:04:01 +0100 (Wed, 12 Mar 2014)");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esxi_init.nasl");
- script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
-
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+JRE.");
+  script_tag(name:"solution", value:"Apply the missing patch(es).");
+  script_tag(name:"summary", value:"VMware has updated vSphere third party libraries.");
+  script_tag(name:"affected", value:"vCenter Server Appliance 5.5 prior to 5.5 Update 1
+VMware vCenter Server 5.5 prior 5.5 Update 1
+VMware Update Manager 5.5 prior 5.5 Update 1
+VMware ESXi 5.5 without patch ESXi550-201403101-SG");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 

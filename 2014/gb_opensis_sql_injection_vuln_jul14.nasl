@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opensis_sql_injection_vuln_jul14.nasl 5790 2017-03-30 12:18:42Z cfi $
+# $Id: gb_opensis_sql_injection_vuln_jul14.nasl 11200 2018-09-03 14:11:38Z mmartin $
 #
 # openSIS 'index.php' SQL Injection Vulnerability
 #
@@ -27,35 +27,34 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804653");
-  script_version("$Revision: 5790 $");
+  script_version("$Revision: 11200 $");
   script_cve_id("CVE-2014-8366");
   script_bugtraq_id(68285);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-04 10:45:35 +0530 (Fri, 04 Jul 2014)");
   script_name("openSIS 'index.php' SQL Injection Vulnerability");
 
-  script_tag(name : "summary" , value : "This host is installed with openSIS and is prone to SQL injection
+  script_tag(name:"summary", value:"This host is installed with openSIS and is prone to SQL injection
   vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP POST request and check whether it is able to
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP POST request and check whether it is able to
   execute sql query or not.");
-  script_tag(name : "insight" , value : "Flaw is due to 'index.php' script which does not validate input via the
+  script_tag(name:"insight", value:"Flaw is due to 'index.php' script which does not validate input via the
   'USERNAME' & 'PASSWORD' parameters before using in sql query.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary SQL
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary SQL
   statements on the vulnerable system, which may leads to access or modify data
   in the underlying database.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "openSIS versions 4.5 and 5.3");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"affected", value:"openSIS versions 4.5 and 5.3");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Jun/151");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Jun/151");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -68,12 +67,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-url = "";
-req = "";
-res = "";
-sisPort = "";
 
 sisPort = get_http_port(default:80);
 
@@ -90,13 +83,11 @@ foreach dir (make_list_unique("/", "/opensis", "/openSIS", cgi_dirs(port:sisPort
 
   res = http_get_cache(item:string(dir, "/index.php"), port:sisPort);
 
-  ##Confirm Application
   if(res && ">openSIS Student Information System<" >< res && ">User Name" >< res)
   {
     url = dir + "/index.php";
     postData = "USERNAME=%29+or+1%3D%28%271&PASSWORD=%27";
 
-    ## Construct the POST data with the crafted request
     req = string("POST ",url," HTTP/1.1\r\n",
                  "Host: ", host,"\r\n",
                  "Content-Type: application/x-www-form-urlencoded\r\n",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1443.nasl 10598 2018-07-25 06:28:50Z cfischer $
+# $Id: deb_dla_1443.nasl 11185 2018-09-03 09:10:03Z cfischer $
 #
 # Auto-generated from advisory DLA 1443-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891443");
-  script_version("$Revision: 10598 $");
+  script_version("$Revision: 11185 $");
   script_cve_id("CVE-2016-10727");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1443-1] evolution-data-server security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 08:28:50 +0200 (Wed, 25 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:10:03 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-25 00:00:00 +0200 (Wed, 25 Jul 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -56,7 +56,10 @@ mail, calendar, addressbook, tasks and memo information.");
 version 3.12.9~git20141128.5242b0-2+deb8u4.
 
 We recommend that you upgrade your evolution-data-server packages.");
-  script_tag(name:"summary",  value:"<summary>");
+  script_tag(name:"summary",  value:"It was discovered that there was a protocol implementation error in
+evolution-data-server where 'STARTTLS not supported' errors from IMAP
+servers were ignored leading to the use of insecure connections without
+the user's knowledge or consent.");
   script_tag(name:"vuldetect", value:"This check tests the installed software version using the apt package manager.");
 
   exit(0);

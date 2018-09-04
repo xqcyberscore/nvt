@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simplehrm_username_sql_inj_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_simplehrm_username_sql_inj_vuln.nasl 11196 2018-09-03 13:09:40Z mmartin $
 #
 # SimpleHRM 'username' Parameter SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804531");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11196 $");
   script_cve_id("CVE-2013-2498");
   script_bugtraq_id(59254);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-03 10:35:41 +0530 (Thu, 03 Apr 2014)");
   script_name("SimpleHRM 'username' Parameter SQL Injection Vulnerability");
 
@@ -82,7 +82,6 @@ foreach dir (make_list_unique("/", "/simplehrm", "/hrm", cgi_dirs(port:http_port
 
   if("SimpleHRM<" >< rcvRes)
   {
-    ## Vulnerable Url
     url = dir + "/index.php/user/setLogin";
 
     postData = 'username=%27SQL-Injection-Test&password=abcdef';

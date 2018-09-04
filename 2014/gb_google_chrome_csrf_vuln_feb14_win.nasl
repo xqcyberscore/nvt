@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_csrf_vuln_feb14_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_csrf_vuln_feb14_win.nasl 11186 2018-09-03 09:12:42Z mmartin $
 #
 # Google Chrome Cross-Site Request Forgery (CSRF) Vulnerability (Windows)
 #
@@ -29,33 +29,33 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804316");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11186 $");
   script_cve_id("CVE-2013-6166");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-17 17:40:48 +0530 (Mon, 17 Feb 2014)");
   script_name("Google Chrome Cross-Site Request Forgery (CSRF) Vulnerability (Windows)");
 
 
-  script_tag(name : "summary" , value : "The host is installed with Google Chrome and is prone to cross-site request
+  script_tag(name:"summary", value:"The host is installed with Google Chrome and is prone to cross-site request
 forgery attack.");
-  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
-  script_tag(name : "insight" , value : "The flaw is due to improper validation of 'HTTP Cookie headers' for
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The flaw is due to improper validation of 'HTTP Cookie headers' for
 restricted character-set.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to conduct the
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct the
 equivalent of a persistent Logout cross-site request forgery (CSRF) attack.
 
 Impact Level: Application");
-  script_tag(name : "affected" , value : "Google Chrome version prior to 29 on Windows.");
-  script_tag(name : "solution" , value : "Upgrade to Google Chrome version 29 or later,
+  script_tag(name:"affected", value:"Google Chrome version prior to 29 on Windows.");
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version 29 or later,
 For updates refer to http://www.google.com/chrome");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2013/q4/117");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2013/04/03/10");
-  script_xref(name : "URL" , value : "https://code.google.com/p/chromium/issues/detail?id=238041");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2013/q4/117");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2013/04/03/10");
+  script_xref(name:"URL", value:"https://code.google.com/p/chromium/issues/detail?id=238041");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");

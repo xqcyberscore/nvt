@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_exchange_server_ms14-075.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: gb_exchange_server_ms14-075.nasl 11200 2018-09-03 14:11:38Z mmartin $
 #
 # Microsoft Exchange Server Multiple Vulnerabilities (3009712)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:exchange_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805115");
-  script_version("$Revision: 6692 $");
+  script_version("$Revision: 11200 $");
   script_cve_id("CVE-2014-6319", "CVE-2014-6325", "CVE-2014-6326", "CVE-2014-6336");
   script_bugtraq_id(71437, 71440, 71441, 71443);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-10 15:28:46 +0530 (Wed, 10 Dec 2014)");
   script_name("Microsoft Exchange Server Multiple Vulnerabilities (3009712)");
 
@@ -56,8 +56,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Exchange Server 2007 Service Pack 3 and prior
+  script_tag(name:"affected", value:"Microsoft Exchange Server 2007 Service Pack 3 and prior
   Microsoft Exchange Server 2010 Service Pack 3 and prior
   Microsoft Exchange Server 2013 Service Pack 1 and prior
   Microsoft Exchange Server 2013 Cumulative Update 6.");
@@ -68,17 +67,18 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/61155");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2996150");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2986475");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3011140");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-075");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/61155");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/2996150");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/2986475");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/3011140");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS14-075");
 
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_exchange_server_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/Exchange/Server/Ver");
   exit(0);
 }
@@ -89,18 +89,11 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-ExVer = "";
-dllVer = "";
-path = "";
-
-## Get the installed path
 exchangePath = get_app_location(cpe:CPE);
 if(!exchangePath || "Could not find the install location" >< exchangePath){
   exit(0);
 }
 
-## Get Version from ExSetup.exe file version
 exeVer = fetch_file_version(sysPath:exchangePath, file_name:"Bin\ExSetup.exe");
 if(exeVer)
 {
@@ -109,7 +102,7 @@ if(exeVer)
      version_in_range(version:exeVer, test_version:"15.0", test_version2:"15.0.847.34"))
 
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 
@@ -117,7 +110,7 @@ if(exeVer)
   {
     if(version_in_range(version:exeVer, test_version:"15.0", test_version2:"15.0.995.33"))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }

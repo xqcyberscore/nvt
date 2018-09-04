@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_sep14_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mult_vuln01_sep14_win.nasl 11202 2018-09-03 14:43:03Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 September14 (Windows)
 #
@@ -29,37 +29,37 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804827");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11202 $");
   script_cve_id("CVE-2014-1553", "CVE-2014-1554", "CVE-2014-1562", "CVE-2014-1563",
                 "CVE-2014-1564", "CVE-2014-1565", "CVE-2014-1567");
   script_bugtraq_id(69524, 69526, 69519, 69523, 69525, 69521, 69520);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-05 16:47:31 +0530 (Fri, 05 Sep 2014)");
 
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 September14 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
   - A use-after-free error when setting text directionality.
   - An out-of-bounds read error when creating an audio timeline in Web Audio.
   - An error when decoding GIF images.
   - A use-after-free error during cycle collection when animating SVG content.
   - Some other unspecified errors.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to disclose potentially sensitive information and compromise a user's system.
 
   Impact Level: Application/System");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox before 32.0 on Windows");
+  script_tag(name:"affected", value:"Mozilla Firefox before 32.0 on Windows");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 32.0
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 32.0
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -88,6 +88,6 @@ if(!ffVer = get_app_version(cpe:CPE)){
 
 if(version_is_less(version:ffVer, test_version:"32.0"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dsl6850U_mult_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_dlink_dsl6850U_mult_vuln.nasl 11208 2018-09-04 08:04:34Z cfischer $
 #
 # D-Link DSL-6850U Multiple Vulnerabilities
 #
@@ -23,29 +23,39 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-CPE = "cpe:/h:dlink:dsl-";
+
+CPE = "cpe:/h:dlink";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812376");
-  script_version("$Revision: 9758 $");
+  script_version("$Revision: 11208 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 10:04:34 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-01-03 15:39:16 +0530 (Wed, 03 Jan 2018)");
-  script_tag(name:"qod_type", value:"remote_vul");
   script_name("D-Link DSL-6850U Multiple Vulnerabilities");
+  script_category(ACT_ATTACK);
+  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
+  script_family("Web application abuses");
+  script_dependencies("gb_dlink_dsl_detect.nasl");
+  script_mandatory_keys("host_is_dlink_dsl");
+  script_require_ports("Services/www", 80);
 
-  script_tag(name:"summary", value:"The host is running D-Link DSL-6850U router
+  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3588");
+
+  script_tag(name:"summary", value:"The host is a D-Link DSL-6850U router
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Send the crafted http GET request
-  and check whether it is able to access the administration or not.");
+  script_tag(name:"vuldetect", value:"Send the crafted HTTP GET request
+  and check whether it is possible to access the administration GUI or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
-  - Default account username:support and password:support and it cannot be disabled.
+
+  - Default account 'support' with password 'support' and it cannot be disabled.
+
   - Availability of the shell interface although only a set of commands, but
-    commands can be combined using logical AND , logical OR.");
+    commands can be combined using logical AND, logical OR.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
   attacker to access administration of the device and execute arbitrary code
@@ -58,16 +68,9 @@ if(description)
   script_tag(name:"solution", value:"Apply the latest security patches from the
   vendor. For details refer to http://www.dlink.com/");
 
+  script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://blogs.securiteam.com/index.php/archives/3588");
-
-  script_category(ACT_ATTACK);
-  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
-  script_family("Web application abuses");
-  script_dependencies("gb_dlink_dsl_detect.nasl");
-  script_mandatory_keys("host_is_dlink_dsl");
-  script_require_ports("Services/www", 80);
   exit(0);
 }
 
@@ -75,35 +78,25 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-dlinkPort = "";
-model = "";
-req = "";
-res = "";
+if( ! port = get_app_port_from_cpe_prefix( cpe:CPE ) ) exit( 0 );
+if( ! model = get_kb_item( "D-Link/DSL/model" ) ) exit( 0 );
+if( model != "6850U" ) exit( 99 );
 
-if(!dlinkPort = get_app_port(cpe:CPE)){
-  exit(0);
+url = "/lainterface.html";
+host = http_host_name( port:port );
+
+# Base64(support:support) == c3VwcG9ydDpzdXBwb3J0
+req = string( "GET ", url, " HTTP/1.1\r\n",
+              "Host: ", host, "\r\n",
+              "Authorization: Basic c3VwcG9ydDpzdXBwb3J0\r\n",
+              "\r\n");
+res = http_keepalive_send_recv( port:port, data:req );
+
+if( res && "WAN SETTINGS" >< res && "value='3G Interface" >< res && "menu.html" >< res &&
+    "TabHeader=th_setup" >< res && 'src="util.js"' >< res && 'src="language_en.js"' >< res ) {
+  report = "It was possible to login with the default account 'support:support' at the following URL: " + report_vuln_url( port:port, url:url, url_only:TRUE );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-if(!model = get_kb_item("Dlink/DSL/model")){
-  exit(0);
-}
-
-if(model == "6850U")
-{
-  host = http_host_name( port:dlinkPort );
-  ##Base64(support:support) == c3VwcG9ydDpzdXBwb3J0
-  req = string( "GET /lainterface.html HTTP/1.1\r\n",
-                "Host: ", host, "\r\n",
-                "Authorization: Basic c3VwcG9ydDpzdXBwb3J0\r\n", 
-                "\r\n");
-  res = http_keepalive_send_recv(port:dlinkPort, data:req);
-
-  if(res && "WAN SETTINGS" >< res && "value='3G Interface" >< res && "menu.html" >< res
-         && "TabHeader=th_setup" >< res && 'src="util.js"' >< res && 'src="language_en.js"' >< res)
-  {
-    report = report_vuln_url(port:dlinkPort, url:"/lainterface.html");
-    security_message(port:dlinkPort, data:report);
-    exit(0);
-  }
-}
-exit(0);
+exit( 99 );

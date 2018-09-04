@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-0617.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_junos_cve_2014-0617.nasl 11196 2018-09-03 13:09:40Z mmartin $
 #
 # Junos Denial of Service Vulnerability in Flow Daemon
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103968");
-  script_version ("$Revision: 6715 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_version("$Revision: 11196 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-16 23:08:55 +0700 (Thu, 16 Jan 2014)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -50,28 +50,28 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version", "Junos/model");
 
-  script_tag(name : "summary" , value : "Denial of Service vulnerability in flowd while processing
+  script_tag(name:"summary", value:"Denial of Service vulnerability in flowd while processing
 certain crafted IP packets.");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "On SRX Series services gateways, certain crafted IP packets may
+  script_tag(name:"insight", value:"On SRX Series services gateways, certain crafted IP packets may
 cause the flow daemon process to crash.");
 
-  script_tag(name : "impact" , value : "Remote attackers can cause a denial of service condition on SRX
+  script_tag(name:"impact", value:"Remote attackers can cause a denial of service condition on SRX
 Series device.");
 
-  script_tag(name : "affected" , value : "Junos OS 10.4, 11.4 and 12.1.");
+  script_tag(name:"affected", value:"Junos OS 10.4, 11.4 and 12.1.");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10610");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64764");
 
- 
+
   exit(0);
 }
 

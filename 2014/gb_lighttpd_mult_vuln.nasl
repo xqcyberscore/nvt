@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lighttpd_mult_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_lighttpd_mult_vuln.nasl 11200 2018-09-03 14:11:38Z mmartin $
 #
 # Lighttpd Multiple vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:lighttpd:lighttpd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802072");
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 11200 $");
   script_cve_id("CVE-2014-2323", "CVE-2014-2324");
   script_bugtraq_id(66153, 66157);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-13 12:18:43 +0530 (Tue, 13 May 2014)");
   script_name("Lighttpd Multiple vulnerabilities");
 
@@ -74,7 +74,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Get HTTP port
 if( ! http_port = get_app_port( cpe:CPE ) ) exit( 0 );
 
 ## Send normal request

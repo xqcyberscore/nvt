@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_chash_parsing_dos_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_typo3_chash_parsing_dos_vuln.nasl 11194 2018-09-03 12:44:14Z mmartin $
 #
 # TYPO3 CHash Parsing Denial of Service Vulnerability
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803995");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11194 $");
   script_cve_id("CVE-2011-3584");
   script_bugtraq_id(49622);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-31 16:24:40 +0530 (Tue, 31 Dec 2013)");
   script_name("TYPO3 CHash Parsing Denial of Service Vulnerability");
 

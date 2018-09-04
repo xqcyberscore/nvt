@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2013-6618.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_junos_cve_2013-6618.nasl 11196 2018-09-03 13:09:40Z mmartin $
 #
 # Junos J-Web Sajax Remote Code Execution Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105911");
-  script_version ("$Revision: 6715 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_version("$Revision: 11196 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-16 11:33:56 +0700 (Mon, 16 Jun 2014)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -50,24 +50,24 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version");
 
-  script_tag(name : "summary" , value : "Remote Code Execution on J-Web");
+  script_tag(name:"summary", value:"Remote Code Execution on J-Web");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "Juniper Junos could allow a remote authenticated attacker to execute
+  script_tag(name:"insight", value:"Juniper Junos could allow a remote authenticated attacker to execute
 arbitrary commands on the system, caused by the failure to restrict access to /jsdm/ajax/port.php. If J-Web
 is enabled, an attacker could send specially-crafted data to execute arbitrary OS commands on the system
 with root privileges.");
 
-  script_tag(name : "impact" , value : "A user with low privilege (such as read only access) may get complete
+  script_tag(name:"impact", value:"A user with low privilege (such as read only access) may get complete
 administrative access. The vulnerability is limited to only users with valid, authenticated login credentials.");
 
-  script_tag(name : "affected" , value : "Junos OS 10.4, 11.4, 12.1, 12.2 and 12.3.");
+  script_tag(name:"affected", value:"Junos OS 10.4, 11.4, 12.1, 12.2 and 12.3.");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper. As a
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. As a
 workaround disable J-Web.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10560");

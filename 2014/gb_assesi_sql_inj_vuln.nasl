@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_assesi_sql_inj_vuln.nasl 9579 2018-04-24 08:28:33Z cfischer $
+# $Id: gb_assesi_sql_inj_vuln.nasl 11187 2018-09-03 09:59:13Z mmartin $
 #
 # Assesi 'bg' Parameter SQL Injection vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804700");
-  script_version("$Revision: 9579 $");
+  script_version("$Revision: 11187 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:28:33 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-18 12:25:39 +0530 (Wed, 18 Jun 2014)");
   script_name("Assesi 'bg' Parameter SQL Injection vulnerability");
 
@@ -51,10 +51,9 @@ if(description)
 
   script_tag(name:"affected", value:"Assesi CMS");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore. General solution options
-  are to upgrade to a newer release, disable respective features, remove the product or replace the
-  product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");

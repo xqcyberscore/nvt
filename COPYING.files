@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Mon, 03 Sep 2018 09:26:45 +0200
+# Automatically created on:  Tue, 04 Sep 2018 10:48:02 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39037,6 +39037,8 @@
 2018/debian/deb_4279.nasl: GPLv2+
 2018/debian/deb_4280.nasl: GPLv2+
 2018/debian/deb_4281.nasl: GPLv2+
+2018/debian/deb_4282.nasl: GPLv2+
+2018/debian/deb_4283.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39415,6 +39417,7 @@
 2018/debian/deb_dla_1463.nasl: GPLv2+
 2018/debian/deb_dla_1464.nasl: GPLv2+
 2018/debian/deb_dla_1465.nasl: GPLv2+
+2018/debian/deb_dla_1466.nasl: GPLv2+
 2018/debian/deb_dla_1467.nasl: GPLv2+
 2018/debian/deb_dla_1468.nasl: GPLv2+
 2018/debian/deb_dla_1469.nasl: GPLv2+
@@ -39423,8 +39426,23 @@
 2018/debian/deb_dla_1473.nasl: GPLv2+
 2018/debian/deb_dla_1474.nasl: GPLv2+
 2018/debian/deb_dla_1475.nasl: GPLv2+
+2018/debian/deb_dla_1476.nasl: GPLv2+
 2018/debian/deb_dla_1477.nasl: GPLv2+
 2018/debian/deb_dla_1478.nasl: GPLv2+
+2018/debian/deb_dla_1479.nasl: GPLv2+
+2018/debian/deb_dla_1480.nasl: GPLv2+
+2018/debian/deb_dla_1481.nasl: GPLv2+
+2018/debian/deb_dla_1482.nasl: GPLv2+
+2018/debian/deb_dla_1483.nasl: GPLv2+
+2018/debian/deb_dla_1484.nasl: GPLv2+
+2018/debian/deb_dla_1485.nasl: GPLv2+
+2018/debian/deb_dla_1486.nasl: GPLv2+
+2018/debian/deb_dla_1487.nasl: GPLv2+
+2018/debian/deb_dla_1488.nasl: GPLv2+
+2018/debian/deb_dla_1489.nasl: GPLv2+
+2018/debian/deb_dla_1490.nasl: GPLv2+
+2018/debian/deb_dla_1491.nasl: GPLv2+
+2018/debian/deb_dla_1492.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -39624,6 +39642,7 @@
 2018/dlink/gb_dlink_dir_multiple_devices_command_injection_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink_dir_shareport_auth_bypass_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink_dsl6850U_mult_vuln.nasl: GPLv2+
+2018/dlink/gb_dlink_dsl_login_rce_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink_dsl_xss_n_path_trav_vuln.nasl: GPLv2+
 2018/dokuwiki/gb_dokuwiki_file_download_vuln.nasl: GPLv2+
 2018/dolibarr/gb_dolibarr_5_0_3_mult_vuln.nasl: GPLv2+
@@ -59129,9 +59148,11 @@ gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180516-cucm-cup-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180606-cucm-xfs.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180606-ucm-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180801-ucm-xss.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_cucm_cisco-sa-20180823-apache-struts.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucmim_cisco-sa-20180620-ucmim-ps-csrf.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucmim_cisco-sa-20180718-ucmim-ps-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucmim_cisco-sa-20180815-ucmimps-dos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_cucmim_cisco-sa-20180823-apache-struts.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_dcnm_cisco-sa-20180828-dcnm-traversal.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_esa_cisco-sa-20180117-esasma.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_esa_cisco-sa-20180207-esacsm.nasl: GPLv2+
@@ -59213,6 +59234,7 @@ gsf/2018/cisco/gb_cisco_ise_cisco-sa-20180516-iseeap.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ise_cisco-sa-20180516-ise-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ise_cisco-sa-20180606-ise-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ise_cisco-sa-20180801-ise-csrf.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ise_cisco-sa-20180823-apache-struts.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_jabber_mult_xss_vuln_cisco-sa-20180221-jcf_jcf1_win.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180502-cms-cx.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180516-msms.nasl: GPLv2+
@@ -59545,6 +59567,8 @@ gsf/2018/ibm/gb_ibm_urbancode_deploy_info_disc_vuln_swg2C1000376.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_urbancode_deploy_mult_vuln_swg2C1000264.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_urbancode_deploy_mult_xss_vuln_swg21970811.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_urbancode_deploy_privilege_escal_vuln.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_urbancode_deploy_swg2C1000374.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_urbancode_deploy_swg2C1000377.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_urbancode_deploy_xxe_vuln_swg2C1000289.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_was_liberty_info_disc_vuln_swg22016218.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_was_liberty_non_sec_auth_info_disc_vuln.nasl: GPLv2+
@@ -59810,6 +59834,8 @@ gsf/2018/netiq/gb_netiq_access_manager_mult_vuln.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_access_manager_mult_xss_vuln.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_access_manager_xss_vuln.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_edirectory_eol.nasl: GPLv2+
+gsf/2018/netiq/gb_netiq_edirectory_mult_vuln_sept_17.nasl: GPLv2+
+gsf/2018/netiq/gb_netiq_edirectory_ssl_vuln.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_imanager_CVE-2017-5186.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_imanager_CVE-2017-7425.nasl: GPLv2+
 gsf/2018/netiq/gb_netiq_imanager_eol.nasl: GPLv2+

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_indexed_search_sql_inj_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_typo3_indexed_search_sql_inj_vuln.nasl 11200 2018-09-03 14:11:38Z mmartin $
 #
 # TYPO3 indexed_search SQL Injection Vulnerability
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803984");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11200 $");
   script_cve_id("CVE-2007-6381");
   script_bugtraq_id(26871);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-24 11:14:51 +0530 (Tue, 24 Dec 2013)");
   script_name("TYPO3 indexed_search SQL Injection Vulnerability");
 

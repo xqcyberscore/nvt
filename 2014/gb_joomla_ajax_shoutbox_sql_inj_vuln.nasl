@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_ajax_shoutbox_sql_inj_vuln.nasl 10212 2018-06-15 09:51:23Z ckuersteiner $
+# $Id: gb_joomla_ajax_shoutbox_sql_inj_vuln.nasl 11187 2018-09-03 09:59:13Z mmartin $
 #
 # Joomla Component AJAX Shoutbox SQL Injection Vulnerability
 #
@@ -29,39 +29,39 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804338");
-  script_version("$Revision: 10212 $");
+  script_version("$Revision: 11187 $");
   script_bugtraq_id(66261);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 11:51:23 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-18 10:00:07 +0530 (Tue, 18 Mar 2014)");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Joomla Component AJAX Shoutbox SQL Injection Vulnerability");
 
-  script_tag(name: "summary", value: "This host is installed with Joomla! component ajax shoutbox and is prone to
+  script_tag(name:"summary", value:"This host is installed with Joomla! component ajax shoutbox and is prone to
 sql injection vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Send a crafted exploit string via HTTP GET request and check whether it is
+  script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP GET request and check whether it is
 possible to execute sql query or not.");
 
-  script_tag(name: "insight", value: "The flaw is due to insufficient validation of 'jal_lastID' HTTP GET
+  script_tag(name:"insight", value:"The flaw is due to insufficient validation of 'jal_lastID' HTTP GET
 parameter passed to 'index.php' script.");
 
-  script_tag(name: "impact", value: "Successful exploitation will allow attacker to inject or manipulate SQL
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to inject or manipulate SQL
 queries in the back-end database, allowing for the manipulation or disclosure of arbitrary data.");
 
-  script_tag(name: "affected", value: "Joomla AJAX Shoutbox version 1.6 and probably earlier.");
+  script_tag(name:"affected", value:"Joomla AJAX Shoutbox version 1.6 and probably earlier.");
 
-  script_tag(name: "solution", value: "Upgrade to Joomla AJAX Shoutbox version 1.7 or later, For updates refer to
+  script_tag(name:"solution", value:"Upgrade to Joomla AJAX Shoutbox version 1.7 or later, For updates refer to
 http://batjo.nl/shoutbox");
 
-  script_xref(name: "URL", value: "http://secunia.com/advisories/57450");
-  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/32331");
-  script_xref(name: "URL", value: "http://extensions.joomla.org/extensions/communication/shoutbox/43");
-  script_xref(name: "URL", value: "http://exploitsdownload.com/exploit/na/joomla-ajax-shoutbox-sql-injection");
-  script_xref(name: "URL", value: "http://packetstormsecurity.com/files/125721/Joomla-AJAX-Shoutbox-SQL-Injection.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/57450");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/32331");
+  script_xref(name:"URL", value:"http://extensions.joomla.org/extensions/communication/shoutbox/43");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/joomla-ajax-shoutbox-sql-injection");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125721/Joomla-AJAX-Shoutbox-SQL-Injection.html");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

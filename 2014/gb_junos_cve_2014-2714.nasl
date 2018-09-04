@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-2714.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_junos_cve_2014-2714.nasl 11200 2018-09-03 14:11:38Z mmartin $
 #
-# Junos Web Filtering Denial of Service Vulnerability 
+# Junos Web Filtering Denial of Service Vulnerability
 #
 # Authors:
 # Christian Kuersteiner <christian.kuersteiner@greenbone.net>
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105907");
-  script_version ("$Revision: 6750 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_version("$Revision: 11200 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-02 14:00:33 +0700 (Fri, 02 May 2014)");
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
@@ -50,22 +50,22 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version", "Junos/model");
 
-  script_tag(name : "summary" , value : "Denial of Service Vulnerability when Enhanced Web Filtering is enabled.");
+  script_tag(name:"summary", value:"Denial of Service Vulnerability when Enhanced Web Filtering is enabled.");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "A certain type of URL can cause the flow daemon process to crash
+  script_tag(name:"insight", value:"A certain type of URL can cause the flow daemon process to crash
 and restart when Enhanced Web Filtering is enabled.");
 
-  script_tag(name : "impact" , value : "Repeated crashes of the flowd process can represent a sustained denial
+  script_tag(name:"impact", value:"Repeated crashes of the flowd process can represent a sustained denial
 of service condition for SRX Series devices.");
 
-  script_tag(name : "affected" , value : "Junos OS 10.4, 11.4 and 12.1");
+  script_tag(name:"affected", value:"Junos OS 10.4, 11.4 and 12.1");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper. As a
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. As a
 workaround disable Enhanced Web Filtering.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10622");
@@ -100,7 +100,7 @@ if (revcomp(a:build2check, b:"20131217") >= 0) {
 if (revcomp(a:version, b:"10.4R15") < 0) {
   security_message(port:0, data:desc);
   exit(0);
-} 
+}
 
 if (version =~ "^11") {
   if (revcomp(a:version, b:"11.4R9") < 0) {

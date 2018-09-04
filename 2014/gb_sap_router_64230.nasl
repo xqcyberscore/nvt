@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sap_router_64230.nasl 6787 2017-07-21 16:58:52Z cfischer $
+# $Id: gb_sap_router_64230.nasl 11194 2018-09-03 12:44:14Z mmartin $
 #
 # SAProuter Remote Authentication Bypass Vulnerability
 #
@@ -27,22 +27,6 @@
 
 CPE = "cpe:/a:sap:network_interface_router";
 
-tag_insight = "An attacker can reconfigure SAProuter remotely without authentication
-because authorization check is missing. It can lead to various threats, from
-information disclosure to full system compromise.";
-
-tag_impact = "Remote attackers can exploit this issue to bypass the authentication
-mechanism and gain unauthorized access.";
-
-tag_affected = "SAP Network Interface Router (SAProuter) 39.3 SP4";
-
-tag_summary = "SAProuter is prone to an authentication-bypass vulnerability.";
-
-tag_solution = "Updates are available. Please see the references or vendor advisory
-for more information.";
-
-tag_vuldetect = "Send an information request and check the response.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105035");
@@ -50,9 +34,9 @@ if(description)
   script_cve_id("CVE-2013-7093");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 6787 $");
+  script_version("$Revision: 11194 $");
   script_name("SAProuter Remote Authentication Bypass Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-21 18:58:52 +0200 (Fri, 21 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-27 15:35:11 +0200 (Tue, 27 May 2014)");
   script_category(ACT_ATTACK);
   script_family("General");
@@ -65,12 +49,16 @@ if(description)
   script_xref(name:"URL", value:"http://erpscan.com/advisories/erpscan-13-023-saprouter-authentication-bypass/");
   script_xref(name:"URL", value:"https://service.sap.com/sap/support/notes/1853140");
 
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"impact", value:"Remote attackers can exploit this issue to bypass the authentication
+mechanism and gain unauthorized access.");
+  script_tag(name:"vuldetect", value:"Send an information request and check the response.");
+  script_tag(name:"insight", value:"An attacker can reconfigure SAProuter remotely without authentication
+because authorization check is missing. It can lead to various threats, from
+information disclosure to full system compromise.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory
+for more information.");
+  script_tag(name:"summary", value:"SAProuter is prone to an authentication-bypass vulnerability.");
+  script_tag(name:"affected", value:"SAP Network Interface Router (SAProuter) 39.3 SP4");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");

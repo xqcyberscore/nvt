@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-3816.nasl 6724 2017-07-14 09:57:17Z teissa $
+# $Id: gb_junos_cve_2014-3816.nasl 11202 2018-09-03 14:43:03Z mmartin $
 #
 # Junos Multiple Privilege Escalation Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105915");
-  script_version ("$Revision: 6724 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-14 11:57:17 +0200 (Fri, 14 Jul 2017) $");
+  script_version("$Revision: 11202 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-17 14:38:16 +0200 (Thu, 17 Jul 2014)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
@@ -50,26 +50,26 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version");
 
-  script_tag(name : "summary" , value : "Privilege Escalation Vulnerability over CLI");
+  script_tag(name:"summary", value:"Privilege Escalation Vulnerability over CLI");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "Certain combinations of Junos OS CLI commands and arguments have
+  script_tag(name:"insight", value:"Certain combinations of Junos OS CLI commands and arguments have
 been found to be exploitable in a way that can allow root access to the operating system.");
 
-  script_tag(name : "impact" , value : "Users with permissions to run certain CLI commands may achieve
+  script_tag(name:"impact", value:"Users with permissions to run certain CLI commands may achieve
 elevated privileges and gain complete control on the device.");
 
-  script_tag(name : "affected" , value : "Junos OS 11.4, 12.1, 12.2, 12.3, 13.1, 13.2 and 13.3");
+  script_tag(name:"affected", value:"Junos OS 11.4, 12.1, 12.2, 12.3, 13.1, 13.2 and 13.3");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10634");
 
- 
+
   exit(0);
 }
 

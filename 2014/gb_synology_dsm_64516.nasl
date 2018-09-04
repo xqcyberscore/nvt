@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_dsm_64516.nasl 10904 2018-08-10 14:24:40Z mmartin $
+# $Id: gb_synology_dsm_64516.nasl 11191 2018-09-03 11:57:37Z mmartin $
 #
 # Synology DiskStation Manager 'imageSelector.cgi' Remote Command Execution Vulnerability
 #
@@ -29,48 +29,48 @@ CPE = "cpe:/o:synology:dsm";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103869");
- script_bugtraq_id(64516);
- script_cve_id("CVE-2013-6955");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 10904 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103869");
+  script_bugtraq_id(64516);
+  script_cve_id("CVE-2013-6955");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11191 $");
 
- script_name("Synology DiskStation Manager 'imageSelector.cgi' Remote Command Execution Vulnerability");
+  script_name("Synology DiskStation Manager 'imageSelector.cgi' Remote Command Execution Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64516");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64516");
 
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2014-01-07 14:57:33 +0100 (Tue, 07 Jan 2014)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_synology_dsm_detect.nasl");
- script_require_ports("Services/www", 80, 5000, 5001);
- script_mandatory_keys("synology_dsm/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-01-07 14:57:33 +0100 (Tue, 07 Jan 2014)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_synology_dsm_detect.nasl");
+  script_require_ports("Services/www", 80, 5000, 5001);
+  script_mandatory_keys("synology_dsm/installed");
 
- script_tag(name:"impact", value:"An attacker can exploit this issue to execute arbitrary commands with
+  script_tag(name:"impact", value:"An attacker can exploit this issue to execute arbitrary commands with
  root privileges.");
- script_tag(name:"vuldetect", value:"This script tries to execute the 'id' command on the remote host using specially crafted requests.");
- script_tag(name:"insight", value:"Synology DiskStation Manager (DSM) contains a flaw in the
+  script_tag(name:"vuldetect", value:"This script tries to execute the 'id' command on the remote host using specially crafted requests.");
+  script_tag(name:"insight", value:"Synology DiskStation Manager (DSM) contains a flaw in the
  SliceUpload functionality provided by /webman/imageSelector.cgi. With a
  specially crafted request, a remote attacker can append data to files, allowing
  for the execution of arbitrary commands.");
- script_tag(name:"solution", value:"Updates are available.");
- script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"summary", value:"Synology DiskStation Manager is prone to a remote command-execution
+  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Synology DiskStation Manager is prone to a remote command-execution
  vulnerability.");
- script_tag(name:"affected", value:"Synology DiskStation Manager 4.x are vulnerable; other versions may
+  script_tag(name:"affected", value:"Synology DiskStation Manager 4.x are vulnerable; other versions may
  also be affected.");
 
- script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"qod_type", value:"remote_app");
 
  exit(0);
 }
 
 include("host_details.inc");
 include("http_func.inc");
-include("global_settings.inc");
+
 
 if ( ! port = get_app_port( cpe:CPE ) )exit( 0 );
 

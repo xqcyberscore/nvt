@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vcenter_VMSA-2014-0006.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_vcenter_VMSA-2014-0006.nasl 11194 2018-09-03 12:44:14Z mmartin $
 #
 # VMware Security Updates for vCenter Server (VMSA-2014-0006)
 #
@@ -25,45 +25,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "VMware product updates address OpenSSL security vulnerabilities.";
-
-tag_solution = "Apply the missing patch(es).";
-tag_affected = "vCenter prior to 5.5u1b
-vCenter prior to 5.1U2a
-vCenter prior to 5.0U3a";
-
-tag_vuldetect = "Check the build number";
-tag_insight = 'a. OpenSSL update for multiple products.
-
-OpenSSL libraries have been updated in multiple products to versions 0.9.8za and 1.0.1h
-in order to resolve multiple security issues.';
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105057");
- script_cve_id("CVE-2014-0224","CVE-2014-0198","CVE-2010-5298","CVE-2014-3470");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6769 $");
- script_name("VMware Security Updates for vCenter Server (VMSA-2014-0006)");
+  script_oid("1.3.6.1.4.1.25623.1.0.105057");
+  script_cve_id("CVE-2014-0224", "CVE-2014-0198", "CVE-2010-5298", "CVE-2014-3470");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11194 $");
+  script_name("VMware Security Updates for vCenter Server (VMSA-2014-0006)");
 
 
- script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0006.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2014-0006.html");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
- script_tag(name:"creation_date", value:"2014-07-04 11:04:01 +0100 (Fri, 04 Jul 2014)");
- script_category(ACT_GATHER_INFO);
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-07-04 11:04:01 +0100 (Fri, 04 Jul 2014)");
+  script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
- script_family("General");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_vcenter_detect.nasl");
- script_mandatory_keys("VMware_vCenter/version","VMware_vCenter/build");
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_vcenter_detect.nasl");
+  script_mandatory_keys("VMware_vCenter/version", "VMware_vCenter/build");
 
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"vuldetect", value:"Check the build number");
+  script_tag(name:"insight", value:"a. OpenSSL update for multiple products.
+
+OpenSSL libraries have been updated in multiple products to versions 0.9.8za and 1.0.1h
+in order to resolve multiple security issues.");
+  script_tag(name:"solution", value:"Apply the missing patch(es).");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"VMware product updates address OpenSSL security vulnerabilities.");
+  script_tag(name:"affected", value:"vCenter prior to 5.5u1b
+vCenter prior to 5.1U2a
+vCenter prior to 5.0U3a");
 
  exit(0);
 

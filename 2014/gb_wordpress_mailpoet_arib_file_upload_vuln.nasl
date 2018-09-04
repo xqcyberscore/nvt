@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mailpoet_arib_file_upload_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_wordpress_mailpoet_arib_file_upload_vuln.nasl 11202 2018-09-03 14:43:03Z mmartin $
 #
 # WordPress MailPoet Newsletters Plugin Remote File Upload Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804724");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11202 $");
   script_cve_id("CVE-2014-4725");
   script_bugtraq_id(68310);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-28 12:35:07 +0530 (Mon, 28 Jul 2014)");
   script_name("WordPress MailPoet Newsletters Plugin Remote File Upload Vulnerability");
 
@@ -147,7 +147,6 @@ sndReq = string("POST ", url, " HTTP/1.1\r\n",
                 "Content-Length: ", strlen(postData), "\r\n\r\n",
                 "\r\n", postData, "\r\n");
 
-## Send request and receive the response
 rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
 ## Uploaded file URL

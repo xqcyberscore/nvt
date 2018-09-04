@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_mult_vuln_may14_lin.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_adobe_flash_mult_vuln_may14_lin.nasl 11189 2018-09-03 11:12:38Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities - May14 (Linux)
 #
@@ -29,16 +29,15 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804591");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11189 $");
   script_cve_id("CVE-2014-0516", "CVE-2014-0517", "CVE-2014-0518", "CVE-2014-0519",
                 "CVE-2014-0520");
   script_bugtraq_id(67361, 67364, 67371, 67373, 67372);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:12:38 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-22 13:06:32 +0530 (Thu, 22 May 2014)");
   script_name("Adobe Flash Player Multiple Vulnerabilities - May14 (Linux)");
-
 
   script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to multiple
 vulnerabilities.");
@@ -51,7 +50,7 @@ restrictions and compromise a user's system.
 Impact Level: System/Application");
   script_tag(name:"affected", value:"Adobe Flash Player version before 11.2.202.359 on Linux");
   script_tag(name:"solution", value:"Update to Adobe Flash Player version 11.2.202.359 or later,
-For updates refer to  http://get.adobe.com/flashplayer");
+For updates refer to http://get.adobe.com/flashplayer");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -62,21 +61,18 @@ For updates refer to  http://get.adobe.com/flashplayer");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-
 if(!playerVer = get_app_version(cpe:CPE)){
-  error_message(data:"Unable to fetch adobe flash version.");
-  exit(-1);
+  exit(0);
 }
 
-if(version_is_less(version:playerVer, test_version:"11.2.202.359"))
-{
+if(version_is_less(version:playerVer, test_version:"11.2.202.359")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

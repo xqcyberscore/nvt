@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cis_manager_email_sql_inj_vuln.nasl 5818 2017-03-31 10:29:04Z cfi $
+# $Id: gb_cis_manager_email_sql_inj_vuln.nasl 11196 2018-09-03 13:09:40Z mmartin $
 #
 # CIS Manager 'email' Parameter SQL Injection Vulnerability
 #
@@ -27,36 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804455");
-  script_version("$Revision: 5818 $");
+  script_version("$Revision: 11196 $");
   script_cve_id("CVE-2014-3749");
   script_bugtraq_id(67442);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:29:04 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-26 16:44:36 +0530 (Mon, 26 May 2014)");
   script_name("CIS Manager 'email' Parameter SQL Injection Vulnerability");
 
-  script_tag(name : "summary" , value : "This host is installed with CIS Manager and is prone to SQL injection
+  script_tag(name:"summary", value:"This host is installed with CIS Manager and is prone to SQL injection
   vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP GET request and check whether it is able to read
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to read
   SQL injection error.");
-  script_tag(name : "insight" , value : "The flaw is due to the /autenticar/lembrarlogin.asp script not properly
+  script_tag(name:"insight", value:"The flaw is due to the /autenticar/lembrarlogin.asp script not properly
   sanitizing user-supplied input to the 'email' parameter.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to inject or manipulate SQL
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to inject or manipulate SQL
   queries in the back-end database, allowing for the manipulation or disclosure
   of arbitrary data.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "CIS Manager CMS");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"affected", value:"CIS Manager CMS");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/93252");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/May/73");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/93252");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/May/73");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -71,12 +70,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-sndReq = "";
-rcvRes = "";
-dir = "";
-
 http_port = get_http_port(default:80);
 if( ! can_host_asp( port:http_port ) ) exit( 0 );
 
@@ -87,11 +80,9 @@ foreach dir (make_list_unique("/", "/autenticar", "/cismanager", "/site", "/cons
 
   rcvRes = http_get_cache(item:string(dir, "/login.asp"), port:http_port);
 
-  ## confirm the application
   if(rcvRes && rcvRes  =~ ">Construtiva .*Internet Software" ||
      "http://www.construtiva.com.br/" >< rcvRes)
   {
-    ## Confirm the exploit
     if(http_vuln_check(port:http_port, url: dir + "/lembrarlogin.asp?email='",
        pattern:"SQL Server.*>error.*'80040e14'"))
     {

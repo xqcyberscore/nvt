@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avaya_winpmd_mult_bof_vuln.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_avaya_winpmd_mult_bof_vuln.nasl 11195 2018-09-03 12:47:26Z cfischer $
 #
 # Avaya WinPDM Multiple Buffer Overflow Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802469");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11195 $");
   script_bugtraq_id(47947);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:47:26 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-12 12:33:59 +0530 (Fri, 12 Oct 2012)");
   script_name("Avaya WinPDM Multiple Buffer Overflow Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/44062/");
@@ -77,6 +77,8 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
+
+port = 3217;
 
 if(!get_udp_port_state(port)){
   exit(0);

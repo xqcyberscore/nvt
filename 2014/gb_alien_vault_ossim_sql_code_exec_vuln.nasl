@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alien_vault_ossim_sql_code_exec_vuln.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_alien_vault_ossim_sql_code_exec_vuln.nasl 11187 2018-09-03 09:59:13Z mmartin $
 #
 # AlienVault OSSIM SQL Injection and Remote Code Execution Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:alienvault:open_source_security_information_management";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804293");
-  script_version("$Revision: 6735 $");
+  script_version("$Revision: 11187 $");
   script_bugtraq_id(67180);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-12 11:31:19 +0530 (Mon, 12 May 2014)");
   script_name("AlienVault OSSIM SQL Injection and Remote Code Execution Vulnerabilities");
 
@@ -73,20 +73,17 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port) ) exit(0);
 
 if( dir == "/" ) dir = "";
 
-## Construct Malformed URL
 url = dir + "/geoloc/graph_geoloc.php?date_from=%27%20and%28select%201%20from%28s" +
             "elect%20count%28*%29,concat%28%28select%20%28select%200x4f70656e5641" +
             "532d53514c2d496e6a656374696f6e2d54657374%29%20%29%2cfloor%28rand%280" +
             "%29*2%29%29x%20from%20information_schema.tables%20group%20by%20x%29a" +
             "%29%20and%20%2703636%27=%2703636";
 
-## Check the response to confirm vulnerability, extra check not possible
 if( http_vuln_check(port:port, url:url, check_header:TRUE,
     pattern:"OpenVAS-SQL-Injection-Test", extra_check:"Duplicate entry" ) ) {
   report = report_vuln_url( port:port, url:url );

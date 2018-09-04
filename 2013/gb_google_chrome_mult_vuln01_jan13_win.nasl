@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jan13_win.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_jan13_win.nasl 11201 2018-09-03 14:35:07Z cfischer $
 #
 # Google Chrome Multiple Vulnerabilities-01 Jan2013 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803157");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11201 $");
   script_cve_id("CVE-2012-5145", "CVE-2012-5146", "CVE-2012-5147", "CVE-2012-5148",
                 "CVE-2012-5149", "CVE-2012-5150", "CVE-2012-5151", "CVE-2012-5152",
                 "CVE-2012-5153", "CVE-2012-5154", "CVE-2012-5156", "CVE-2012-5157",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(57251);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-17 14:39:55 +0530 (Thu, 17 Jan 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Jan2013 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51825/");
@@ -48,7 +48,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
-  script_require_keys("GoogleChrome/Win/Ver");
+  script_mandatory_keys("GoogleChrome/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
   restrictions, execute arbitrary code in the context of the browser or
   cause a denial of service.
@@ -61,9 +61,9 @@ if(description)
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 

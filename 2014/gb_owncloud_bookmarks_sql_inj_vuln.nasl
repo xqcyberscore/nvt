@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_bookmarks_sql_inj_vuln.nasl 9982 2018-05-28 12:00:03Z cfischer $
+# $Id: gb_owncloud_bookmarks_sql_inj_vuln.nasl 11191 2018-09-03 11:57:37Z mmartin $
 #
 # ownCloud 'lib/bookmarks.php' SQL Injection Vulnerability
 #
@@ -29,30 +29,30 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804410");
-  script_version("$Revision: 9982 $");
+  script_version("$Revision: 11191 $");
   script_cve_id("CVE-2013-2046");
   script_bugtraq_id(59969);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-14 13:14:58 +0530 (Fri, 14 Mar 2014)");
   script_name("ownCloud 'lib/bookmarks.php' SQL Injection Vulnerability");
 
-  script_tag(name : "summary" , value : "This host is installed with ownCloud and is prone to SQL injection vulnerability.");
-  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
-  script_tag(name : "insight" , value : "The flaw is due to the 'lib/bookmarks.php' script not properly sanitizing
+  script_tag(name:"summary", value:"This host is installed with ownCloud and is prone to SQL injection vulnerability.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The flaw is due to the 'lib/bookmarks.php' script not properly sanitizing
 user-supplied input before using it in SQL queries.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attacker to inject or manipulate
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to inject or manipulate
 SQL queries in the back-end database, allowing for the manipulation or
 disclosure of arbitrary data.
 
 Impact Level: Application");
-  script_tag(name : "affected" , value : "ownCloud Server 4.5.x before 4.5.11 and 5.x before 5.0.6");
-  script_tag(name : "solution" , value : "Upgrade to ownCloud 4.5.11, 5.0.6 or later,
+  script_tag(name:"affected", value:"ownCloud Server 4.5.x before 4.5.11 and 5.x before 5.0.6");
+  script_tag(name:"solution", value:"Upgrade to ownCloud 4.5.11, 5.0.6 or later,
 For updates refer to http://owncloud.org");
 
-  script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2013/q2/324");
-  script_xref(name : "URL" , value : "http://owncloud.org/about/security/advisories/oC-SA-2013-019");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2013/q2/324");
+  script_xref(name:"URL", value:"http://owncloud.org/about/security/advisories/oC-SA-2013-019");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");

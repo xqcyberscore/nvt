@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fitnesse_wiki_rce.nasl 5827 2017-04-03 06:27:11Z cfi $
+# $Id: gb_fitnesse_wiki_rce.nasl 11202 2018-09-03 14:43:03Z mmartin $
 #
 # Fitnesse Wiki Remote Command Execution Vulnerability
 #
@@ -25,44 +25,52 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802069");
   script_bugtraq_id(65921);
   script_cve_id("CVE-2014-1216");
-  script_version("$Revision: 5827 $");
+  script_version("$Revision: 11202 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 08:27:11 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-17 10:20:42 +0530 (Mon, 17 Mar 2014)");
   script_name("Fitnesse Wiki Remote Command Execution Vulnerability");
 
-  script_tag(name : "summary" , value : "The host is running Fitnesse Wiki and is prone to remote command execution
+  script_tag(name:"summary", value:"The host is running Fitnesse Wiki and is prone to remote command execution
   vulnerability.");
-  script_tag(name : "vuldetect" , value : "Try to execute a command on the remote host");
-  script_tag(name : "insight" , value : "The flaw is due to not properly validating the syntax of edited pages to
+
+  script_tag(name:"vuldetect", value:"Try to execute a command on the remote host");
+
+  script_tag(name:"insight", value:"The flaw is due to not properly validating the syntax of edited pages to
   check whether the pages are introducing any extra parameters that could be
   executed in the context of the application.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary
+
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   commands in the context of the affected application.
 
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Fitnesse Wiki version 20140201 and earlier.");
-  script_tag(name : "solution" , value : "No Solution is available as of 17th March, 2014. Information regarding this
-  issue will be updated once the solution details are available. For more
-  information refer to, http://www.fitnesse.org");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
-  script_tag(name:"qod_type", value:"remote_analysis");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/57121");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Mar/1");
-  script_xref(name : "URL" , value : "https://www.portcullis-security.com/security-research-and-downloads/security-advisories/cve-2014-1216");
+  script_tag(name:"affected", value:"Fitnesse Wiki version 20140201 and earlier.");
+
+  script_tag(name:"solution", value:"No known solution was made available
+  for at least one year since the disclosure of this vulnerability. Likely none will
+  be provided anymore. General solution options are to upgrade to a newer release,
+  disable respective features, remove the product or replace the product by another
+  one.");
+
+  script_xref(name:"URL", value:"http://secunia.com/advisories/57121");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Mar/1");
+  script_xref(name:"URL", value:"https://www.portcullis-security.com/security-research-and-downloads/security-advisories/cve-2014-1216");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80, 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"remote_analysis");
 
   exit(0);
 }
@@ -71,22 +79,6 @@ include("http_func.inc");
 include("misc_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-cmd = "";
-host = "";
-referer = "";
-http_port = "";
-post_data = "";
-fwiki_req1 = "";
-fwiki_res1 = "";
-fwiki_req2 = "";
-fwiki_res2 = "";
-fwiki_req3 = "";
-fwiki_res3 = "";
-time_taken = 0;
-wait_extra_sec = 5;
-post_data_len = 0;
 
 function cleanup(host, http_port, fpath)
 {
@@ -107,10 +99,8 @@ function cleanup(host, http_port, fpath)
 }
 
 http_port = get_http_port(default:80);
-
 host = http_host_name(port:http_port);
 
-# Iterate over the possible directories
 foreach dir (make_list_unique("/", "/wiki", "/fitnesse", cgi_dirs(port:http_port)))
 {
 
@@ -142,7 +132,6 @@ foreach dir (make_list_unique("/", "/wiki", "/fitnesse", cgi_dirs(port:http_port
   ## Use sleep time to check we are able to execute command
   foreach sec (sleep)
   {
-    ## Construct Windows sleep using ping command
     ## i.e cmd.exe  /c "ping -n 11 127.0.0.1>nul" will wait for 10 seconds
     ## and for Linux sleep command i.e sleep 10
     if(host_runs("Windows") == "yes"){
@@ -160,14 +149,12 @@ foreach dir (make_list_unique("/", "/wiki", "/fitnesse", cgi_dirs(port:http_port
       wait_extra_sec = 7;
     }
 
-    ## Construct malicious post data
     post_data = string("editTime=", edit_time[1], "&ticketId=", ticket_id[1],
                 "&responder=saveData&helpText=&suites=&__EDITOR__1=textarea&",
                 "pageContent=", cmd, "&save=Save");
     post_data_len = strlen(post_data);
     referer = string("http://", host, fpath, "?edit");
 
-    ## Construct malicious request
     fwiki_req1 = 'POST ' + fpath + ' HTTP/1.1\r\n' +
                  'Host: ' + host + '\r\n' +
                  'Content-Type: application/x-www-form-urlencoded\r\n' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_aug14_macosx.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_adobe_air_mult_vuln01_aug14_macosx.nasl 11196 2018-09-03 13:09:40Z mmartin $
 #
 # Adobe AIR Multiple Vulnerabilities-01 Aug14 (Mac OS X)
 #
@@ -29,52 +29,33 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804746");
-  script_version("$Revision: 6715 $");
+  script_version("$Revision: 11196 $");
   script_cve_id("CVE-2014-0538", "CVE-2014-0540", "CVE-2014-0541", "CVE-2014-0542",
                 "CVE-2014-0543", "CVE-2014-0544", "CVE-2014-0545", "CVE-2014-5333");
   script_bugtraq_id(69192, 69190, 69191, 69194, 69195, 69196, 69197, 69320);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-19 15:11:46 +0530 (Tue, 19 Aug 2014)");
   script_name("Adobe AIR Multiple Vulnerabilities-01 Aug14 (Mac OS X)");
 
-  tag_summary =
-"This host is installed with Adobe Air and is prone to multiple
-vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"Multiple Flaws are due to an unspecified error and an use-after-free error.";
-
-  tag_impact =
-"Successful exploitation will allow attackers to bypass certain security
+  script_tag(name:"summary", value:"This host is installed with Adobe Air and is prone to multiple
+vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Multiple Flaws are due to an unspecified error and an use-after-free error.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
 restrictions and compromise a user's system.
 
-Impact Level: System/Application";
-
-  tag_affected =
-"Adobe AIR before version 14.0.0.178 on Mac OS X.";
-
-  tag_solution =
-"Update to Adobe AIR version 14.0.0.178 or later,
-For updates refer to  http://get.adobe.com/air";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+Impact Level: System/Application");
+  script_tag(name:"affected", value:"Adobe AIR before version 14.0.0.178 on Mac OS X.");
+  script_tag(name:"solution", value:"Update to Adobe AIR version 14.0.0.178 or later,
+For updates refer to  http://get.adobe.com/air");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/58593");
-  script_xref(name : "URL" , value : "http://helpx.adobe.com/security/products/flash-player/apsb14-18.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/58593");
+  script_xref(name:"URL", value:"http://helpx.adobe.com/security/products/flash-player/apsb14-18.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
@@ -87,17 +68,12 @@ For updates refer to  http://get.adobe.com/air";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-airVer = "";
-
-## Get version
 if(!airVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:airVer, test_version:"14.0.0.178"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

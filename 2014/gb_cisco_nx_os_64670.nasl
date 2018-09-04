@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_64670.nasl 10904 2018-08-10 14:24:40Z mmartin $
+# $Id: gb_cisco_nx_os_64670.nasl 11198 2018-09-03 13:39:31Z mmartin $
 #
 # Cisco NX-OS BGP Message Denial of Service Vulnerability
 #
@@ -27,37 +27,37 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103879");
- script_bugtraq_id(64670);
- script_cve_id("CVE-2013-6982");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 10904 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103879");
+  script_bugtraq_id(64670);
+  script_cve_id("CVE-2013-6982");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11198 $");
 
- script_name("Cisco NX-OS BGP Message Denial of Service Vulnerability");
+  script_name("Cisco NX-OS BGP Message Denial of Service Vulnerability");
 
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64670");
- script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCuj03174");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64670");
+  script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCuj03174");
 
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2014-01-13 10:35:00 +0100 (Mon, 13 Jan 2014)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_nx_os_version.nasl");
- script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-01-13 10:35:00 +0100 (Mon, 13 Jan 2014)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_nx_os_version.nasl");
+  script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
 
- script_tag(name:"impact", value:"An attacker can exploit this issue to cause all BGP sessions on the
+  script_tag(name:"impact", value:"An attacker can exploit this issue to cause all BGP sessions on the
 device to reset, denying service to legitimate users.");
- script_tag(name:"vuldetect", value:"Check the NX OS version.");
- script_tag(name:"insight", value:"This issue is being tracked by Cisco Bug ID CSCuj03174.");
- script_tag(name:"solution", value:"Updates are available.");
- script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"summary", value:"Cisco NX-OS is prone to denial-of-service vulnerability because it
+  script_tag(name:"vuldetect", value:"Check the NX OS version.");
+  script_tag(name:"insight", value:"This issue is being tracked by Cisco Bug ID CSCuj03174.");
+  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Cisco NX-OS is prone to denial-of-service vulnerability because it
 fails to properly handle the BGP updates.");
- script_tag(name:"affected", value:"Cisco Nexus 7000 running NX-OS 6.2(2)S27");
+  script_tag(name:"affected", value:"Cisco Nexus 7000 running NX-OS 6.2(2)S27");
 
  exit(0);
 }

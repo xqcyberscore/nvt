@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_lotus_notes_web_app_xss_vuln_win.nasl 11007 2018-08-16 13:20:25Z mmartin $
+# $Id: gb_ibm_lotus_notes_web_app_xss_vuln_win.nasl 11201 2018-09-03 14:35:07Z cfischer $
 #
 # IBM Lotus Notes Web Application XSS Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803215");
-  script_version("$Revision: 11007 $");
+  script_version("$Revision: 11201 $");
   script_cve_id("CVE-2012-4846");
   script_bugtraq_id(56944);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:20:25 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-23 13:22:09 +0530 (Wed, 23 Jan 2013)");
   script_name("IBM Lotus Notes Web Application XSS Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51593");
@@ -44,7 +44,7 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_ibm_lotus_notes_detect_win.nasl");
-  script_require_keys("IBM/LotusNotes/Win/Ver");
+  script_mandatory_keys("IBM/LotusNotes/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in context of an affected site.
   Impact Level: System/Application");
@@ -57,13 +57,11 @@ if(description)
   site scripting vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 
-
 include("version_func.inc");
-
-lotusVer = "";
 
 lotusVer = get_kb_item("IBM/LotusNotes/Win/Ver");
 if(!lotusVer){

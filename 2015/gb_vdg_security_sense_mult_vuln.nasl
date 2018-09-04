@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vdg_security_sense_mult_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_vdg_security_sense_mult_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
 #
 # VDG Security Sense Multiple Security Vulnerabilities
 #
@@ -24,66 +24,69 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805033");
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 11188 $");
   script_cve_id("CVE-2014-9451", "CVE-2014-9452");
   script_bugtraq_id(71736);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-06 15:11:26 +0530 (Tue, 06 Jan 2015)");
   script_name("VDG Security Sense Multiple Security Vulnerabilities");
-
-  script_tag(name: "summary" , value:"This host is running VDG Security Sense
-  and is prone to multiple vulnerabilities.");
-
-  script_tag(name: "vuldetect" , value: "Send a crafted data via HTTP GET
-  request and check whether it is possible to read a local file");
-
-  script_tag(name: "insight" , value: "Multiple flaws are due to,
-  - An input is not properly sanitized when handling HTTP authorization
-    headers.
-  - The program transmitting configuration information in cleartext.
-  - The 'root' account has a password of 'ArpaRomaWi', the 'postgres'
-    account has a password of '!DVService', and the 'NTP' account has
-    a password of '!DVService', these accounts are publicly known and
-    documented.
-  - The program returning the contents of the users.ini file in authentication
-    responses.
-  - The user-supplied input is not properly validated when passed via the
-    username or password in AuthenticateUser requests.
-  - The program not properly sanitizing user input, specifically path traversal
-    style attacks (e.g. '../') in a URI.");
-
-  script_tag(name: "impact" , value: "Successful exploitation will allow
-  attacker to read arbitrary files, bypass authentication mechanisms and cause
-  a stack-based buffer overflow, resulting in a denial of service or potentially
-  allowing the execution of arbitrary code.
-
-  Impact Level: System/Application");
-
-  script_tag(name: "affected" , value: "VDG Security SENSE (formerly DIVA) 2.3.13");
-
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
-
-  script_tag(name:"solution_type", value:"WillNotFix");
-  script_tag(name:"qod_type", value:"remote_vul");
-
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Dec/76");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/129656");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_dependencies("gb_get_http_banner.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 8080);
   script_mandatory_keys("Diva_HTTP/banner");
+
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Dec/76");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/129656");
+
+  script_tag(name:"summary", value:"This host is running VDG Security Sense
+  and is prone to multiple vulnerabilities.");
+
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET
+  request and check whether it is possible to read a local file");
+
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
+  - An input is not properly sanitized when handling HTTP authorization
+    headers.
+
+  - The program transmitting configuration information in cleartext.
+
+  - The 'root' account has a password of 'ArpaRomaWi', the 'postgres'
+    account has a password of '!DVService', and the 'NTP' account has
+    a password of '!DVService', these accounts are publicly known and
+    documented.
+
+  - The program returning the contents of the users.ini file in authentication
+    responses.
+
+  - The user-supplied input is not properly validated when passed via the
+    username or password in AuthenticateUser requests.
+
+  - The program not properly sanitizing user input, specifically path traversal
+    style attacks (e.g. '../') in a URI.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  attacker to read arbitrary files, bypass authentication mechanisms and cause
+  a stack-based buffer overflow, resulting in a denial of service or potentially
+  allowing the execution of arbitrary code.
+
+  Impact Level: System/Application");
+
+  script_tag(name:"affected", value:"VDG Security SENSE (formerly DIVA) 2.3.13");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);
 }
@@ -93,36 +96,25 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-banner = "";
-url = "";
-
-## Get http port
 http_port = get_http_port(default:8080);
 
-## Get Banner
 banner = get_http_banner(port:http_port);
 
-## confirm the server
 if(!banner || 'Server: Diva HTTP Plugin' >!< banner){
   exit(0);
 }
 
-## traversal_files() function Returns Dictionary (i.e key value pair)
-## Get Content to be checked and file to be check
 files = traversal_files();
 
-foreach file (keys(files))
-{
-  ## Construct directory traversal attack
+foreach file (keys(files)){
+
   url = "/images/" +  crap(data:"../",length:3*15) + files[file];
 
-  ## Confirm exploit worked properly or not
-  if(http_vuln_check(port:http_port, url:url, pattern:file))
-  {
-    report = report_vuln_url( port:http_port, url:url );
+  if(http_vuln_check(port:http_port, url:url, pattern:file)){
+    report = report_vuln_url(port:http_port, url:url);
     security_message(port:http_port, data:report);
     exit(0);
   }
 }
+
+exit(99);

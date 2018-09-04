@@ -45,15 +45,15 @@ if(description)
 {
   script_xref(name : "URL" , value : "http://www.mandriva.com/en/support/security/advisories/?name=MDVSA-2013:005");
   script_oid("1.3.6.1.4.1.25623.1.0.831763");
-  script_version("$Revision: 9353 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:14:20 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11207 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 09:22:57 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-31 09:26:07 +0530 (Thu, 31 Jan 2013)");
   script_cve_id("CVE-2012-5195");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_xref(name: "MDVSA", value: "2013:005");
   script_name("Mandriva Update for perl MDVSA-2013:005 (perl)");
-
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name: "summary" , value: "Check for the Version of perl");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"package");

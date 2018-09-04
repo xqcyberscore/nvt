@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_vuln02_apr14.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: gb_java_mult_vuln02_apr14.nasl 11191 2018-09-03 11:57:37Z mmartin $
 #
 # Oracle Java SE Multiple Vulnerabilities-02 Apr 2014 (Windows)
 #
@@ -29,18 +29,18 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804545");
-  script_version("$Revision: 10144 $");
+  script_version("$Revision: 11191 $");
   script_cve_id("CVE-2014-0432", "CVE-2014-0448", "CVE-2014-0454", "CVE-2014-0455",
                 "CVE-2014-0459", "CVE-2014-2397", "CVE-2014-2402", "CVE-2014-2413",
                 "CVE-2014-2422");
   script_bugtraq_id(66897, 66904, 66905, 66899, 66910, 66893, 66898, 66917, 66912);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-18 16:17:30 +0530 (Fri, 18 Apr 2014)");
   script_name("Oracle Java SE Multiple Vulnerabilities-02 Apr 2014 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Oracle Java SE
+  script_tag(name:"summary", value:"This host is installed with Oracle Java SE
   and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
@@ -48,13 +48,13 @@ if(description)
   script_tag(name:"insight", value:"Multiple vulnerabilities exists, For more
   details about the vulnerabilities refer the reference section.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to manipulate certain data, cause a DoS (Denial of Service) and compromise a
   vulnerable system.
 
   Impact Level: System/Application.");
 
-  script_tag(name: "affected" , value:"Oracle Java SE version 7u51 and 8
+  script_tag(name:"affected", value:"Oracle Java SE version 7u51 and 8
   on Windows");
 
   script_tag(name:"solution", value:"Upgrade to Java version 8u5 or 7u55 or higher,
@@ -63,9 +63,9 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/57932");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/57997");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuapr2014-1972952.html#AppendixJAVA");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/57932");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/57997");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuapr2014-1972952.html#AppendixJAVA");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

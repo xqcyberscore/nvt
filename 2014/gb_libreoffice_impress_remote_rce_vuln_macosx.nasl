@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_impress_remote_rce_vuln_macosx.nasl 6995 2017-08-23 11:52:03Z teissa $
+# $Id: gb_libreoffice_impress_remote_rce_vuln_macosx.nasl 11202 2018-09-03 14:43:03Z mmartin $
 #
 # LibreOffice Impress Remote Socket Manager RCE Vulnerability Nov14 (Mac OS X)
 #
@@ -29,32 +29,31 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804886");
-  script_version("$Revision: 6995 $");
+  script_version("$Revision: 11202 $");
   script_cve_id("CVE-2014-3693");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-23 13:52:03 +0200 (Wed, 23 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-19 15:18:35 +0530 (Wed, 19 Nov 2014)");
   script_name("LibreOffice Impress Remote Socket Manager RCE Vulnerability Nov14 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with LibreOffice
+  script_tag(name:"summary", value:"This host is installed with LibreOffice
   and is prone to remote code execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Flaw exists due to use-after-free error
+  script_tag(name:"insight", value:"Flaw exists due to use-after-free error
   in the Impress Remote socket manager.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to cause a denial of service (crash) or possibly execute arbitrary code.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"LibreOffice version 4.x prior
+  script_tag(name:"affected", value:"LibreOffice version 4.x prior
   to 4.2.7 and 4.3.x prior to 4.3.3 on Mac OS X");
 
-  script_tag(name: "solution" , value:"Upgrade to LibreOffice 4.2.7 or 4.3.3
+  script_tag(name:"solution", value:"Upgrade to LibreOffice 4.2.7 or 4.3.3
   or later, For updates refer to http://www.libreoffice.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -75,31 +74,23 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-libreVer = "";
-
-## Get version
 if(!libreVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-##Check for version 4.x lass than 4.2.7
 if(libreVer =~ "^(4\.)")
 {
-  ## Check for vulnerable version
   if(version_is_less(version:libreVer, test_version:"4.2.7"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }
 
-## Check for version 4.3.x less than 4.3.3
 if(libreVer =~ "^(4\.3)")
 {
-  ## Check for vulnerable version
   if(version_is_less(version:libreVer, test_version:"4.3.3"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

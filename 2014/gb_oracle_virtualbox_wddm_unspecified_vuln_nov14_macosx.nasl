@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_wddm_unspecified_vuln_nov14_macosx.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_oracle_virtualbox_wddm_unspecified_vuln_nov14_macosx.nasl 11191 2018-09-03 11:57:37Z mmartin $
 #
 # Oracle Virtualbox WDDM Unspecified Vulnerability Nov14 (Mac OS X)
 #
@@ -29,33 +29,32 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804949");
-  script_version("$Revision: 6750 $");
+  script_version("$Revision: 11191 $");
   script_cve_id("CVE-2014-6540");
   script_bugtraq_id(70493);
   script_tag(name:"cvss_base", value:"1.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-03 11:52:04 +0530 (Mon, 03 Nov 2014)");
   script_name("Oracle Virtualbox WDDM Unspecified Vulnerability Nov14 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Oracle VM
+  script_tag(name:"summary", value:"This host is installed with Oracle VM
   VirtualBox and is prone to unspecified vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is  due to an error related to
+  script_tag(name:"insight", value:"The flaw is  due to an error related to
   Graphics driver (WDDM) for Windows Guests subcomponent.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers to
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to
   cause denial of service attack.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"VirtualBox version 4.1.x before 4.1.34, 4.2.x
+  script_tag(name:"affected", value:"VirtualBox version 4.1.x before 4.1.34, 4.2.x
   before 4.2.26, and 4.3.x before 4.3.14 on Mac OS X");
 
-  script_tag(name: "solution" , value:"Upgrade to Oracle VM VirtualBox version
+  script_tag(name:"solution", value:"Upgrade to Oracle VM VirtualBox version
   4.1.34 or 4.2.26 or 4.3.14 or later, For updates refer to
   https://www.virtualbox.org");
   script_tag(name:"qod_type", value:"package");
@@ -77,22 +76,17 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-virtualVer = "";
-
-## Get version
 if(!virtualVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
 if(virtualVer =~ "^(4\.(1|2|3))")
 {
-  ## Check for vulnerable version
   if(version_in_range(version:virtualVer, test_version:"4.2.0", test_version2:"4.2.25")||
      version_in_range(version:virtualVer, test_version:"4.3.0", test_version2:"4.3.13") ||
      version_in_range(version:virtualVer, test_version:"4.1.0", test_version2:"4.1.33"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

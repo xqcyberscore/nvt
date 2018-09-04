@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_asset_manager_mult_vuln.nasl 6750 2017-07-18 09:56:47Z teissa $
+# $Id: gb_mcafee_asset_manager_mult_vuln.nasl 11200 2018-09-03 14:11:38Z mmartin $
 #
 # McAfee Asset Manager Multiple Vulnerabilities
 #
@@ -23,65 +23,45 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804428";
 CPE = "cpe:/a:mcafee:asset_manager";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6750 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804428");
+  script_version("$Revision: 11200 $");
   script_cve_id("CVE-2014-2587", "CVE-2014-2588");
   script_bugtraq_id(66302);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 11:56:47 +0200 (Tue, 18 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-17 11:25:02 +0530 (Thu, 17 Apr 2014)");
   script_name("McAfee Asset Manager Multiple Vulnerabilities");
 
-  tag_summary =
-"This host is running McAfee Asset Manager and is prone to directory traversal
-and SQL injection vulnerabilities.";
 
-  tag_vuldetect =
-"Get the installed version of McAfee Asset Manager with the help of detect NVT
-and check the version is vulnerable or not.";
-
-  tag_insight =
-"The flaws are due to,
+  script_tag(name:"summary", value:"This host is running McAfee Asset Manager and is prone to directory traversal
+and SQL injection vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Get the installed version of McAfee Asset Manager with the help of detect NVT
+and check the version is vulnerable or not.");
+  script_tag(name:"insight", value:"The flaws are due to,
 - The '/servlet/downloadReport' script not properly sanitizing user input,
   specifically path traversal style attacks supplied via the 'reportFileName'
   GET parameter.
 - The /jsp/reports/ReportsAudit.jsp script not properly sanitizing
-  user-supplied input to the 'user' POST parameter.";
-
-  tag_impact =
-"Successful exploitation will allow attackers to disclose potentially sensitive
+  user-supplied input to the 'user' POST parameter.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to disclose potentially sensitive
 information and inject or manipulate SQL queries in the back-end database,
 allowing for the manipulation or disclosure of arbitrary data
 
-Impact Level: Application";
-
-  tag_affected =
-"McAfee Asset Manager version 6.6";
-
-  tag_solution =
-"No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+Impact Level: Application");
+  script_tag(name:"affected", value:"McAfee Asset Manager version 6.6");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/32368");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125775");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Mar/325");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/32368");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125775");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Mar/325");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
   script_family("Web application abuses");
@@ -96,17 +76,11 @@ features, remove the product or replace the product by another one.";
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable initialization
-mwgPort = "";
-mwgVer = "";
-
-## Get Application HTTP Port
-if(!mwgPort = get_app_port(cpe:CPE, nvt:SCRIPT_OID)){
+if(!mwgPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get application version
-mwgVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID, port:mwgPort);
+mwgVer = get_app_version(cpe:CPE, port:mwgPort);
 if(!mwgVer){
   exit(0);
 }

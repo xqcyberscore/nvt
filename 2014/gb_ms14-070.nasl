@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-070.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: gb_ms14-070.nasl 11194 2018-09-03 12:44:14Z mmartin $
 #
 # Microsoft Windows TCP/IP Privilege Elevation Vulnerability (2989935)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805010");
-  script_version("$Revision: 6692 $");
+  script_version("$Revision: 11194 $");
   script_cve_id("CVE-2014-4076");
   script_bugtraq_id(70976);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-12 08:19:24 +0530 (Wed, 12 Nov 2014)");
   script_name("Microsoft Windows TCP/IP Privilege Elevation Vulnerability (2989935)");
 
@@ -60,14 +60,15 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/59881");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2989935");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-070");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/59881");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/2989935");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS14-070");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -78,16 +79,10 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-win32SysVer="";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2003:3, win2003x64:3) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
@@ -98,12 +93,10 @@ if(!win32SysVer){
   exit(0);
 }
 
-##Windows Server 2003
 if(hotfix_check_sp(win2003x64:3,win2003:3) > 0)
 {
-  ## Check for Win32k.sys version
   if(version_is_less(version:win32SysVer, test_version:"5.2.3790.5440")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }

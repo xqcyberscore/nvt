@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_httpcombiner_remote_file_disc_vuln.nasl 9982 2018-05-28 12:00:03Z cfischer $
+# $Id: gb_httpcombiner_remote_file_disc_vuln.nasl 11200 2018-09-03 14:11:38Z mmartin $
 #
 # HttpCombiner ASP.NET Remote File Disclosure Vulnerability
 #
@@ -27,38 +27,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805007");
-  script_version("$Revision: 9982 $");
+  script_version("$Revision: 11200 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-28 15:22:01 +0530 (Tue, 28 Oct 2014)");
 
   script_name("HttpCombiner ASP.NET Remote File Disclosure Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is running HttpCombiner ASP.NET
+  script_tag(name:"summary", value:"This host is running HttpCombiner ASP.NET
   and is prone to remote file disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted data via HTTP GET
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET
   request and check whether it is possible to read the sensitive information.");
 
-  script_tag(name: "insight" , value:"The flaw is due to insufficient permissions
+  script_tag(name:"insight", value:"The flaw is due to insufficient permissions
   to some of the config files, which reveals the sensitive information.");
 
-  script_tag(name: "impact" , value:"Successful exploitation could allow
+  script_tag(name:"impact", value:"Successful exploitation could allow
   attackers to gain sensitive information.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"HttpCombiner version 1.0");
+  script_tag(name:"affected", value:"HttpCombiner version 1.0");
 
-  script_tag(name: "solution" , value:"No known solution was made available
+  script_tag(name:"solution", value:"No known solution was made available
   for at least one year since the disclosure of this vulnerability. Likely none will
   be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another
   one.");
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/34920");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/34920");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");

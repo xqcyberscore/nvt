@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avigilon_camera_default_credentials.nasl 11147 2018-08-28 14:24:53Z tpassfeld $
+# $Id: gb_avigilon_camera_default_credentials.nasl 11195 2018-09-03 12:47:26Z cfischer $
 #
 # Avigilon Camera Default Credentials
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114026");
-  script_version("$Revision: 11147 $");
+  script_version("$Revision: 11195 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:24:53 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:47:26 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-28 15:52:48 +0200 (Tue, 28 Aug 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
@@ -80,7 +80,8 @@ password = "supervisor";
 #Url for sessionID extraction, which is needed for login
 url1 = "/";
 
-res1 = http_get_cache(port: port, item: url1);
+req1 = http_get(port: port, item: url1);
+res1 = http_keepalive_send_recv(port: port, data: req1);
 
 sessionID = eregmatch(pattern: "JSESSIONID=([0-9a-zA-Z]+)", string: res1);
 

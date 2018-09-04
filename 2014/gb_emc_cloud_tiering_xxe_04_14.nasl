@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_cloud_tiering_xxe_04_14.nasl 8654 2018-02-05 08:19:22Z cfischer $
+# $Id: gb_emc_cloud_tiering_xxe_04_14.nasl 11207 2018-09-04 07:22:57Z mmartin $
 #
 # EMC Cloud Tiering Appliance v10.0 Unauthenticated XXE Arbitrary File Read
 #
@@ -25,51 +25,39 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103931";
-
-tag_insight = " EMC CTA v10.0 is susceptible to an unauthenticated XXE attack
-that allows an attacker to read arbitrary files from the file system
-with the permissions of the root user.";
-
-tag_impact = "An attacker can read arbitrary files from the file system
-with the permissions of the root user";
-
-tag_affected = "EMC CTA v10.0";
-
-tag_summary = "EMC Cloud Tiering Appliance v10.0 is susceptible to an unauthenticated
-XXE attack";
-
-tag_solution = "Ask the vendor for an update";
-tag_vuldetect = "Send a special crafted HTTP POST request and check the response.";
-
 if (description)
 {
- script_oid(SCRIPT_OID);
- script_version ("$Revision: 8654 $");
- script_tag(name:"cvss_base", value:"8.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
+  script_oid("1.3.6.1.4.1.25623.1.0.103931");
+  script_version("$Revision: 11207 $");
+  script_tag(name:"cvss_base", value:"8.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
 
- script_name("EMC Cloud Tiering Appliance v10.0 Unauthenticated XXE Arbitrary File Read");
+  script_name("EMC Cloud Tiering Appliance v10.0 Unauthenticated XXE Arbitrary File Read");
 
 
- script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/32623/");
- 
- script_tag(name:"last_modification", value:"$Date: 2018-02-05 09:19:22 +0100 (Mon, 05 Feb 2018) $");
- script_tag(name:"creation_date", value:"2014-04-01 11:51:50 +0200 (Tue, 01 Apr 2014)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80, 443);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/32623/");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 09:22:57 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-04-01 11:51:50 +0200 (Tue, 01 Apr 2014)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80, 443);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+
+  script_tag(name:"impact", value:"An attacker can read arbitrary files from the file system
+with the permissions of the root user");
+  script_tag(name:"vuldetect", value:"Send a special crafted HTTP POST request and check the response.");
+  script_tag(name:"insight", value:"EMC CTA v10.0 is susceptible to an unauthenticated XXE attack
+that allows an attacker to read arbitrary files from the file system
+with the permissions of the root user.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"summary", value:"EMC Cloud Tiering Appliance v10.0 is susceptible to an unauthenticated
+XXE attack");
+  script_tag(name:"affected", value:"EMC CTA v10.0");
 
  exit(0);
 }
@@ -98,7 +86,7 @@ xxe = '<?xml version="1.0" encoding="ISO-8859-1"?>
 len = strlen( xxe );
 
 req = 'POST /api/login HTTP/1.1\r\n' +
-      'Host: ' + host + '\r\n' + 
+      'Host: ' + host + '\r\n' +
       'User-Agent: ' + OPENVAS_HTTP_USER_AGENT +'\r\n' +
       'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
       'Accept-Language: en-US,en;q=0.5\r\n' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_artifectx_xclassified_sql_inj_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_artifectx_xclassified_sql_inj_vuln.nasl 11196 2018-09-03 13:09:40Z mmartin $
 #
 # Artifectx xClassified 'catid' SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804684");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11196 $");
   script_cve_id("CVE-2014-4741");
   script_bugtraq_id(68438);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-21 11:57:35 +0530 (Mon, 21 Jul 2014)");
   script_name("Artifectx xClassified 'catid' SQL Injection Vulnerability");
 
@@ -79,7 +79,6 @@ foreach dir (make_list_unique("/", "/ads", "/classifieds", "/artifectx", cgi_dir
 
   if (">xClassified Web" >< rcvRes && "artifectx" >< rcvRes)
   {
-    ## Vulnerable Url
     url = dir + "/ads.php?catid=1'SQL-Injection-Test" ;
 
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,

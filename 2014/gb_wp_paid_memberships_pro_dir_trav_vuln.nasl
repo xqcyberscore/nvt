@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_paid_memberships_pro_dir_trav_vuln.nasl 10000 2018-05-29 12:20:12Z cfischer $
+# $Id: gb_wp_paid_memberships_pro_dir_trav_vuln.nasl 11200 2018-09-03 14:11:38Z mmartin $
 #
 # Wordpress Paid Memberships Pro Directory Traversal Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805106");
-  script_version("$Revision: 10000 $");
+  script_version("$Revision: 11200 $");
   script_cve_id("CVE-2014-8801");
   script_bugtraq_id(71293);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 14:20:12 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-27 15:32:20 +0530 (Thu, 27 Nov 2014)");
   script_name("Wordpress Paid Memberships Pro Directory Traversal Vulnerabilities");
 
@@ -60,8 +60,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/35303");
-  script_xref(name : "URL" , value : "https://wordpress.org/plugins/paid-memberships-pro/changelog");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/35303");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/paid-memberships-pro/changelog");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_app");

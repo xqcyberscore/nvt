@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_innoEDIT_rce_03_14.nasl 7576 2017-10-26 10:01:33Z cfischer $
+# $Id: gb_innoEDIT_rce_03_14.nasl 11194 2018-09-03 12:44:14Z mmartin $
 #
 # innoEDIT 6.2 Remote Command Execution
 #
@@ -25,38 +25,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploits will allow remote attackers to execute arbitrary
-commands within the context of the application.";
-
-tag_affected = "innoEDIT 6.2";
-tag_summary = "innoEDIT 6.2 suffer from a code execution vulnerability.";
-
-tag_solution = "Ask the vendor for an update.";
-tag_vuldetect = "Try to execute a command on the remote Host by sending some special crafted HTTP requests.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103927");
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 7576 $");
- script_name("innoEDIT 6.2 Remote Command Execution");
- script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125823/innoEDIT-6.2-Remote-Command-Execution.html");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:01:33 +0200 (Thu, 26 Oct 2017) $");
- script_tag(name:"creation_date", value:"2014-03-24 11:13:42 +0100 (Mon, 24 Mar 2014)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_oid("1.3.6.1.4.1.25623.1.0.103927");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11194 $");
+  script_name("innoEDIT 6.2 Remote Command Execution");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125823/innoEDIT-6.2-Remote-Command-Execution.html");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-03-24 11:13:42 +0100 (Mon, 24 Mar 2014)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"impact", value:"Successful exploits will allow remote attackers to execute arbitrary
+commands within the context of the application.");
+  script_tag(name:"vuldetect", value:"Try to execute a command on the remote Host by sending some special crafted HTTP requests.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"summary", value:"innoEDIT 6.2 suffer from a code execution vulnerability.");
+  script_tag(name:"affected", value:"innoEDIT 6.2");
 
  exit(0);
 }
@@ -80,7 +73,7 @@ foreach dir( make_list_unique( "/innoedit", cgi_dirs( port:port ) ) ) {
       report = report_vuln_url( port:port, url:url );
       security_message( port:port, data:report );
       exit( 0 );
-    }  
+    }
   }
 }
 

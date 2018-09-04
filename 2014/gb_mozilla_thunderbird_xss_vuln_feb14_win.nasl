@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_xss_vuln_feb14_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_thunderbird_xss_vuln_feb14_win.nasl 11196 2018-09-03 13:09:40Z mmartin $
 #
 # Mozilla Thunderbird Multiple XSS Vulnerabilities Feb14 (Windows)
 #
@@ -29,35 +29,35 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804503");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11196 $");
   script_cve_id("CVE-2013-6674", "CVE-2014-2018");
   script_bugtraq_id(65158, 65620);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-19 15:59:44 +0530 (Wed, 19 Feb 2014)");
   script_name("Mozilla Thunderbird Multiple XSS Vulnerabilities Feb14 (Windows)");
 
 
-  script_tag(name : "summary" , value : "This host is installed with Mozilla Thunderbird and is prone to multiple cross
+  script_tag(name:"summary", value:"This host is installed with Mozilla Thunderbird and is prone to multiple cross
 site scripting vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
-  script_tag(name : "insight" , value : "Flaw is due to the program does not validate input related to data URLs in
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"Flaw is due to the program does not validate input related to data URLs in
 IFRAME elements or EMBED or OBJECT element before returning it to users.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute arbitrary script code
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary script code
 in a user's browser session within the trust relationship between their
 browser and the server.
 
 Impact Level: Application");
-  script_tag(name : "affected" , value : "Mozilla Thunderbird version 17.x through 17.0.8 on Windows");
-  script_tag(name : "solution" , value : "Upgrade to Mozilla Thunderbird version 23.0 or later,
+  script_tag(name:"affected", value:"Mozilla Thunderbird version 17.x through 17.0.8 on Windows");
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 23.0 or later,
 For updates refer to http://www.mozilla.com/en-US/thunderbird");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/863369");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/31223");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2014/mfsa2014-14.html");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/863369");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/31223");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2014/mfsa2014-14.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

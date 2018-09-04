@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln02_jul14.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: gb_java_mult_unspecified_vuln02_jul14.nasl 11186 2018-09-03 09:12:42Z mmartin $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Jul 2014 (Windows)
 #
@@ -29,22 +29,22 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804688");
-  script_version("$Revision: 10144 $");
+  script_version("$Revision: 11186 $");
   script_cve_id("CVE-2014-4264", "CVE-2014-4266", "CVE-2014-4221", "CVE-2014-4220",
                 "CVE-2014-4208", "CVE-2014-2490");
   script_bugtraq_id(68612, 68596, 68571, 68576, 68580, 68645);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-25 09:35:38 +0530 (Fri, 25 Jul 2014)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Jul 2014 (Windows)");
 
 
-  script_tag(name : "summary" , value : "This host is installed with Oracle Java SE JRE and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Oracle Java SE JRE and is prone to multiple
 unspecified vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Get the installed version of Oracle Java SE JRE with the help of detect NVT
+  script_tag(name:"vuldetect", value:"Get the installed version of Oracle Java SE JRE with the help of detect NVT
 and check it is vulnerable or not.");
-  script_tag(name : "insight" , value : "Multiple unspecified flaws exists,
+  script_tag(name:"insight", value:"Multiple unspecified flaws exists,
 - An error in the Security subcomponent related to the Elliptic Curve (EC)
 cryptography implementation.
 - An error in the Serviceability subcomponent related to
@@ -55,20 +55,20 @@ share/classes/java/lang/invoke/MethodHandles.java
 - Two errors related to the Deployment subcomponent.
 - A format string error in the Hotspot subcomponent within the EventMark
 constructor and destructor in share/vm/utilities/events.cpp");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to update, insert, or
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to update, insert, or
 delete certain data, execute arbitrary code, conduct denial-of-service and
 disclose sensitive information.
 
 Impact Level: System/Application.");
-  script_tag(name : "affected" , value : "Oracle Java SE 7 update 60 and prior, and 8 update 5 and prior on Windows");
-  script_tag(name : "solution" , value : "Apply the patch from below link,
+  script_tag(name:"affected", value:"Oracle Java SE 7 update 60 and prior, and 8 update 5 and prior on Windows");
+  script_tag(name:"solution", value:"Apply the patch from below link,
 http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/59501");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1030577");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/59501");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1030577");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

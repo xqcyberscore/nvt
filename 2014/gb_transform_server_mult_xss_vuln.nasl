@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_transform_server_mult_xss_vuln.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_transform_server_mult_xss_vuln.nasl 11198 2018-09-03 13:39:31Z mmartin $
 #
 # Transform Foundation Server Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,38 +27,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804637");
-  script_version("$Revision: 6715 $");
+  script_version("$Revision: 11198 $");
   script_cve_id("CVE-2014-2577");
   script_bugtraq_id(67810);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-12 12:37:47 +0530 (Thu, 12 Jun 2014)");
   script_name("Transform Foundation Server Multiple Cross Site Scripting Vulnerabilities");
 
-  script_tag(name : "summary" , value : "This host is installed Transform Foundation Server and is prone to multiple cross
+  script_tag(name:"summary", value:"This host is installed Transform Foundation Server and is prone to multiple cross
   site scripting vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP GET request and check whether it is able to read
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to read
   cookie or not.");
-  script_tag(name : "insight" , value : "Multiple flaws exists due to an,
+  script_tag(name:"insight", value:"Multiple flaws exists due to an,
   - Improper validation of input passed via 'db' and 'referer' POST
   parameters passed to /index.fsp/index.fsp script.
   - Improper validation of the input passed via 'pn' GET parameter passed to
   /index.fsp script.
   - Improper validation of input passed via the URL before returning it to
   users.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   script code in a user's browser session within the trust relationship
   between their browser and the server.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Transform Foundation Server version 4.3.1 and 5.2");
-  script_tag(name : "solution" , value : "Apply updates from the below link,
+  script_tag(name:"affected", value:"Transform Foundation Server version 4.3.1 and 5.2");
+  script_tag(name:"solution", value:"Apply updates from the below link,
   http://bot24.blogspot.in/2014/06/cve-2014-2577-xss-on-transform.html");
 
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2014/Jun/34");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/126907");
-  script_xref(name : "URL" , value : "http://bot24.blogspot.in/2014/06/cve-2014-2577-xss-on-transform.html");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2014/Jun/34");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/126907");
+  script_xref(name:"URL", value:"http://bot24.blogspot.in/2014/06/cve-2014-2577-xss-on-transform.html");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -76,16 +76,8 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-url = "";
-req = "";
-res = "";
-serPort = "";
-
-## Get HTTP Port
 serPort = get_http_port(default:80);
 
-#Iterate over possible paths
 foreach dir (make_list_unique("/", "/FoundationServer", "/TFS", cgi_dirs(port:serPort)))
 {
 
@@ -97,7 +89,6 @@ foreach dir (make_list_unique("/", "/FoundationServer", "/TFS", cgi_dirs(port:se
 
   if("Bottomline Technologies" >< res && "Transform Content" >< res)
   {
-    ## Construct the attack request
     url = dir + "/TransformContentCenter/index.fsp/document.pdf?pn=<script>" +
           "alert(document.cookie);</script>";
 

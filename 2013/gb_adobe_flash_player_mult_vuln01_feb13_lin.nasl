@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_feb13_lin.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_adobe_flash_player_mult_vuln01_feb13_lin.nasl 11201 2018-09-03 14:35:07Z cfischer $
 #
 # Adobe Flash Player Multiple Vulnerabilities -01 Feb13 (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803406");
-  script_version("$Revision: 11056 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_version("$Revision: 11201 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-12 13:17:51 +0530 (Tue, 12 Feb 2013)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -43,7 +43,7 @@ if(description)
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
-  script_require_keys("AdobeFlashPlayer/Linux/Ver");
+  script_mandatory_keys("AdobeFlashPlayer/Linux/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause buffer overflow,
   remote code execution, and corrupt system memory.
   Impact Level: System/Application");
@@ -57,9 +57,9 @@ if(description)
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("version_func.inc");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_code_execution_vuln_win.nasl 11011 2018-08-16 14:14:31Z mmartin $
+# $Id: gb_oracle_java_se_mult_code_execution_vuln_win.nasl 11201 2018-09-03 14:35:07Z cfischer $
 #
 # Oracle Java SE Multiple Remote Code Execution Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803156");
-  script_version("$Revision: 11011 $");
+  script_version("$Revision: 11201 $");
   script_cve_id("CVE-2012-3174", "CVE-2013-0422");
   script_bugtraq_id(57246, 57312);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-17 12:41:59 +0530 (Thu, 17 Jan 2013)");
   script_name("Oracle Java SE Multiple Remote Code Execution Vulnerabilities (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51820/");
@@ -45,7 +45,7 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
-  script_require_keys("Sun/Java/JRE/Win/Ver");
+  script_mandatory_keys("Sun/Java/JRE/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary code
   via unspecified vectors,
   Impact Level: System/Application");
@@ -57,6 +57,7 @@ if(description)
   code execution vulnerabilities.");
   script_tag(name:"insight", value:"- An error in Java Management Extensions (JMX) MBean components which allows
     remote attackers to execute arbitrary code via unspecified vectors.
+
   - An unspecified error exists within the Libraries subcomponent.
 
   NOTE: The vendor reports that only version 7.x is affected. However,
@@ -64,6 +65,7 @@ if(description)
         be affected");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 

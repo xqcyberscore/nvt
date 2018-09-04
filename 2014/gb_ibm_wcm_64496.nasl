@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_wcm_64496.nasl 9982 2018-05-28 12:00:03Z cfischer $
+# $Id: gb_ibm_wcm_64496.nasl 11187 2018-09-03 09:59:13Z mmartin $
 #
 # IBM Web Content Manager 'LIBRARY' Parameter XPath Injection Vulnerability
 #
@@ -27,43 +27,43 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103882");
- script_bugtraq_id(64496);
- script_cve_id("CVE-2013-6735");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 9982 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103882");
+  script_bugtraq_id(64496);
+  script_cve_id("CVE-2013-6735");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11187 $");
 
- script_name("IBM Web Content Manager 'LIBRARY' Parameter XPath Injection Vulnerability");
+  script_name("IBM Web Content Manager 'LIBRARY' Parameter XPath Injection Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64496");
- script_xref(name:"URL", value:"http://www.ibm.com/");
- script_xref(name:"URL", value:"http://www-306.ibm.com/software/websphere/portal/");
- script_xref(name:"URL", value:"https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20131227-0_IBM_WCM_XPath_Injection_v10.txt");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64496");
+  script_xref(name:"URL", value:"http://www.ibm.com/");
+  script_xref(name:"URL", value:"http://www-306.ibm.com/software/websphere/portal/");
+  script_xref(name:"URL", value:"https://www.sec-consult.com/fxdata/seccons/prod/temedia/advisories_txt/20131227-0_IBM_WCM_XPath_Injection_v10.txt");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
- script_tag(name:"creation_date", value:"2014-01-15 16:11:31 +0100 (Wed, 15 Jan 2014)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_analysis");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-01-15 16:11:31 +0100 (Wed, 15 Jan 2014)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_analysis");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "impact" , value : "An attacker can exploit this issue by manipulating the XPath query
+  script_tag(name:"impact", value:"An attacker can exploit this issue by manipulating the XPath query
 logic to carry out unauthorized actions on the application.");
- script_tag(name : "vuldetect" , value : "Send some special crafted HTTP GET requests and check the response.");
- script_tag(name : "insight" , value : "Due to insufficient validation, the 'LIBRARY' element suffers from an
+  script_tag(name:"vuldetect", value:"Send some special crafted HTTP GET requests and check the response.");
+  script_tag(name:"insight", value:"Due to insufficient validation, the 'LIBRARY' element suffers from an
 XPath-injection vulnerability.
 
 An unauthenticated user is able to perform blind XPath Injection attacks e.g.
 get current application configuration, enumerate nodes and extract other
 valuable information from vulnerable installations of Web Content Manager.");
- script_tag(name : "solution" , value : "Updates are available. Please see the references or vendor advisory
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory
 for more information.");
- script_tag(name : "summary" , value : "IBM Web Content Manager is prone to an XPath-injection vulnerability.");
- script_tag(name : "affected" , value : "IBM WebSphere Portal 6.0.0.x through 6.0.0.1,
+  script_tag(name:"summary", value:"IBM Web Content Manager is prone to an XPath-injection vulnerability.");
+  script_tag(name:"affected", value:"IBM WebSphere Portal 6.0.0.x through 6.0.0.1,
 
 6.0.1.x through 6.0.1.7,
 
@@ -75,14 +75,14 @@ for more information.");
 
 8.0.0.x through 8.0.0.1 CF08");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 }
 
 include("http_func.inc");
-include("http_keepalive.inc");
-  
+
+
 port = get_http_port( default:80 );
 
 url = "/wps/wcm/connect/%27%20or%20%27a%27%3d%27b";

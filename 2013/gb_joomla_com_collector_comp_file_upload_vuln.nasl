@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_com_collector_comp_file_upload_vuln.nasl 11158 2018-08-29 10:04:27Z ckuersteiner $
+# $Id: gb_joomla_com_collector_comp_file_upload_vuln.nasl 11203 2018-09-03 14:49:51Z cfischer $
 #
 # Joomla! com_collector Component Arbitrary File Upload Vulnerability
 #
@@ -26,57 +26,50 @@
 
 CPE = "cpe:/a:joomla:joomla";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803213");
-  script_version("$Revision: 11158 $");
+  script_version("$Revision: 11203 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:04:27 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:49:51 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-22 15:07:32 +0530 (Tue, 22 Jan 2013)");
-
   script_name("Joomla! com_collector Component Arbitrary File Upload Vulnerability");
-
-  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/24228");
-
-  script_category(ACT_ATTACK);
-  script_tag(name:"qod_type", value:"remote_vul");
+  script_category(ACT_DESTRUCTIVE_ATTACK);
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
+
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/24228");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to upload arbitrary
-PHP code and run it in the context of the Web server process.");
+  PHP code and run it in the context of the Web server process.");
 
   script_tag(name:"affected", value:"Joomla! Collector Component");
 
   script_tag(name:"insight", value:"The flaw is due to the 'com_collector' component which allows
-to upload files with arbitrary extensions to a folder inside the webroot. This can be exploited to execute
-arbitrary PHP code by uploading a malicious PHP script.");
+  to upload files with arbitrary extensions to a folder inside the webroot. This can be exploited to execute
+  arbitrary PHP code by uploading a malicious PHP script.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year
-since the disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.");
+  since the disclosure of this vulnerability. Likely none will be provided anymore.
+  General solution options are to upgrade to a newer release, disable respective
+  features, remove the product or replace the product by another one.");
 
   script_tag(name:"summary", value:"This host is running Joomla! with com_collector component and is prone to file
-upload vulnerability.");
+  upload vulnerability.");
 
+  script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }
 
 include("http_func.inc");
-include("version_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-
-if(safe_checks()){
-  exit(0);
-}
 
 function upload_file(url, file, ex, len)
 {

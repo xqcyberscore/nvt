@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_vm_virtualbox_unspecified_vuln_feb13_win.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_oracle_vm_virtualbox_unspecified_vuln_feb13_win.nasl 11201 2018-09-03 14:35:07Z cfischer $
 #
 # Oracle VM VirtualBox Unspecified Vulnerability - Feb13 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803300");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11201 $");
   script_cve_id("CVE-2013-0420");
   script_bugtraq_id(57383);
   script_tag(name:"cvss_base", value:"2.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-01 11:01:15 +0530 (Fri, 01 Feb 2013)");
   script_name("Oracle VM VirtualBox Unspecified Vulnerability - Feb13 (Windows)");
 
@@ -44,7 +44,7 @@ if(description)
   script_copyright("Copyright (c) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_sun_virtualbox_detect_win.nasl");
-  script_require_keys("Oracle/VirtualBox/Win/Ver");
+  script_mandatory_keys("Oracle/VirtualBox/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation allows malicious local users to perform certain
   actions with escalated privileges.
   Impact Level: Application");
@@ -61,9 +61,9 @@ if(description)
   *****");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 vmVer = get_kb_item("Oracle/VirtualBox/Win/Ver");
 

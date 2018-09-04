@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_exception_handler_xss_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_typo3_exception_handler_xss_vuln.nasl 11186 2018-09-03 09:12:42Z mmartin $
 #
 # TYPO3 Exception Handler Cross Site Scripting Vulnerability
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803999");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11186 $");
   script_cve_id("CVE-2012-2112");
   script_bugtraq_id(53047);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-02 18:09:10 +0530 (Thu, 02 Jan 2014)");
   script_name("TYPO3 Exception Handler Cross Site Scripting Vulnerability");
 

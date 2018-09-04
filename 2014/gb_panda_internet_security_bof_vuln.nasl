@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panda_internet_security_bof_vuln.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_panda_internet_security_bof_vuln.nasl 11196 2018-09-03 13:09:40Z mmartin $
 #
 # Panda Internet Security Heap Based Buffer Overflow Sept14
 #
@@ -29,39 +29,39 @@ CPE = "cpe:/a:pandasecurity:panda_internet_security_2014";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804907");
-  script_version("$Revision: 6637 $");
+  script_version("$Revision: 11196 $");
   script_cve_id("CVE-2014-5307");
   script_bugtraq_id(69293);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-23 09:57:00 +0530 (Tue, 23 Sep 2014)");
   script_name("Panda Internet Security Heap Based Buffer Overflow Sept14");
 
-  script_tag(name: "summary" , value:"This host is installed with Panda Internet Security
+  script_tag(name:"summary", value:"This host is installed with Panda Internet Security
   and is prone to heap based buffer overflow vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Flaw exist due to improper bounds checking
+  script_tag(name:"insight", value:"Flaw exist due to improper bounds checking
   by the PavTPK.sys kernel mode driver.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to cause a heap-based buffer overflow by sending a specially crafted IOCTL request
   and execute arbitrary code on the system with kernel-level privileges.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Panda Internet Security 2014 19.01.01");
+  script_tag(name:"affected", value:"Panda Internet Security 2014 19.01.01");
 
-  script_tag(name: "solution" , value:"Apply the hotfix 'hft131306s24_r1'.
+  script_tag(name:"solution", value:"Apply the hotfix 'hft131306s24_r1'.
   For more details refer link, http://www.pandasecurity.com
 
   NOTE: Please ignore the warning if the update is already applied.");
 
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/95382");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127948/Panda-Security-2014-Privilege-Escalation.html");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/95382");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127948/Panda-Security-2014-Privilege-Escalation.html");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
@@ -75,17 +75,12 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-version = "";
-
-## Get the version
 if(!version = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check the vulnerable version =19.01.01
 if(version_is_equal(version:version, test_version:"19.01.01"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

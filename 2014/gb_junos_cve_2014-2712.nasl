@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-2712.nasl 9121 2018-03-17 13:28:53Z cfischer $
+# $Id: gb_junos_cve_2014-2712.nasl 11202 2018-09-03 14:43:03Z mmartin $
 #
 # Junos J-Web XSS Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105905");
-  script_version ("$Revision: 9121 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 14:28:53 +0100 (Sat, 17 Mar 2018) $");
+  script_version("$Revision: 11202 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-29 16:10:41 +0700 (Tue, 29 Apr 2014)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -49,21 +49,21 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version");
 
-  script_tag(name : "summary" , value : "Cross-Site Scripting Vulnerability in J-Web.");
+  script_tag(name:"summary", value:"Cross-Site Scripting Vulnerability in J-Web.");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "J-Web is vulnerable to a cross-site scripting injection. Parameters
+  script_tag(name:"insight", value:"J-Web is vulnerable to a cross-site scripting injection. Parameters
 passed as arguments to index.php can result in the execution of scripting tags within the user's browser.");
 
-  script_tag(name : "impact" , value : "Remote attackers can inject arbitrary web script or HTML to index.php.");
+  script_tag(name:"impact", value:"Remote attackers can inject arbitrary web script or HTML to index.php.");
 
-  script_tag(name : "affected" , value : "Junos OS 10.0, 10.4, 11.4, 12.1 and 12.2.");
+  script_tag(name:"affected", value:"Junos OS 10.0, 10.4, 11.4, 12.1 and 12.2.");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper. As a
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. As a
 workaround disable J-Web.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10521");

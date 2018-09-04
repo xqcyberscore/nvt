@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smbcl_flash_player_CB-A08-0059.nasl 8178 2017-12-19 13:42:38Z cfischer $
+# $Id: smbcl_flash_player_CB-A08-0059.nasl 11190 2018-09-03 11:25:15Z cfischer $
 # Description: Adobe Flash Player 9.0.115.0 and earlier vulnerability (Windows)
 #
 # Authors:
@@ -30,13 +30,13 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.90019");
-  script_version("$Revision: 8178 $");
+  script_version("$Revision: 11190 $");
   script_cve_id("CVE-2007-5275", "CVE-2007-6019", "CVE-2007-6243",
                 "CVE-2007-6637", "CVE-2008-1654", "CVE-2008-1655");
   script_bugtraq_id(26930, 28694, 26966, 27034, 28696, 28697);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:25:15 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-09-03 22:30:27 +0200 (Wed, 03 Sep 2008)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Flash Player 9.0.115.0 and earlier vulnerability (Windows)");
@@ -45,8 +45,7 @@ if(description)
   the vulnerabilities described in CVE-2007-5275, CVE-2007-6019, CVE-2007-6243,
   CVE-2007-6637, CVE-2008-1654, CVE-2008-1655.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"- CVE 2007-5275
     The Adobe Macromedia Flash 9 plug-in allows remote attackers to cause a
@@ -56,11 +55,13 @@ if(description)
     document, and the availability of a Flash Socket class that does not use
     the browser's DNS pins, aka DNS rebinding attacks, a different issue than
     CVE-2002-1467 and CVE-2007-4324.
+
   - CVE 2007-6019
     Adobe Flash Player 9.0.115.0 and earlier, and 8.0.39.0 and earlier, allows
     remote attackers to execute arbitrary code via an SWF file with a modified
     DeclareFunction2 Actionscript tag, which prevents an object from being
     instantiated properly.
+
   - CVE 2007-6243
     Adobe Flash Player 9.x up to 9.0.48.0, 8.x up to 8.0.35.0, and 7.x up to
     7.0.70.0 does not sufficiently restrict the interpretation and usage of
@@ -72,12 +73,14 @@ if(description)
     SWF file, related to 'pre-generated SWF files' and Adobe Dreamweaver CS3 or
     Adobe Acrobat Connect. NOTE: the asfunction: vector is already covered by
     CVE-2007-6244.1.
+
   - CVE 2008-1654
     Interaction error between Adobe Flash and multiple Universal Plug and Play
     (UPnP) services allow remote attackers to perform Cross-Site Request Forgery
     (CSRF) style attacks by using the Flash navigateToURL function to send a SOAP
     message to a UPnP control point, as demonstrated by changing the primary DNS
     server.
+
   - CVE 2008-1655
     Unspecified vulnerability in Adobe Flash Player 9.0.115.0 and earlier, and
     8.0.39.0 and earlier, makes it easier for remote attackers to conduct DNS
@@ -96,25 +99,18 @@ if(description)
   script_family("Windows");
   script_dependencies("gb_adobe_flash_player_detect_win.nasl");
   script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-playerVer = "";
-
-## Get version
 if(!playerVer = get_app_version(cpe:CPE)){
-  error_message(data:"Failed to fetch adobe flash player version.");
-  exit(-1);
+  exit(0);
 }
 
-## Grep for vulnerable version
-if(version_is_less_equal(version:playerVer, test_version:"9.0.115.0"))
-{
+if(version_is_less_equal(version:playerVer, test_version:"9.0.115.0")){
   report = 'Installed version: ' + playerVer;
   security_message(data:report);
   exit(0);

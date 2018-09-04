@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cetil_login_xss_vuln.nasl 5993 2017-04-20 15:45:39Z cfi $
+# $Id: gb_cetil_login_xss_vuln.nasl 11187 2018-09-03 09:59:13Z mmartin $
 #
 # Cetil 'logon_senha.asp' Cross Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804463");
-  script_version("$Revision: 5993 $");
+  script_version("$Revision: 11187 $");
   script_bugtraq_id(67778);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 17:45:39 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-18 12:20:43 +0530 (Wed, 18 Jun 2014)");
   script_name("Cetil 'logon_senha.asp' Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -58,10 +58,9 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
@@ -85,10 +84,8 @@ foreach dir (make_list_unique("/", "/cetil", "/payment", "/gpweb", cgi_dirs(port
   sndReq = http_get(item:string(dir, "/logon_senha.asp"), port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ## confirm the application
   if(rcvRes && '>CETIL -' >< rcvRes)
   {
-    ## Construct the attack requuest
     postdata = "UID=<script>alert(document.cookie)</script>&senha=&Submit=ok";
 
     sndReq = string("POST ", dir, "/logon_senha.asp HTTP/1.1\r\n",
@@ -97,10 +94,8 @@ foreach dir (make_list_unique("/", "/cetil", "/payment", "/gpweb", cgi_dirs(port
                     "Content-Length: ", strlen(postdata), "\r\n\r\n",
                     postdata);
 
-    ## Send request and receive the response
     rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-    ## Confirm the exploit
     if(rcvRes =~ "HTTP/1\.. 200" && "<script>alert(document.cookie)</script>" >< rcvRes &&
       ">CETIL" >< rcvRes)
     {

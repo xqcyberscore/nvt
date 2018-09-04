@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_googlemaps_mult_vuln.nasl 11158 2018-08-29 10:04:27Z ckuersteiner $
+# $Id: gb_joomla_googlemaps_mult_vuln.nasl 11201 2018-09-03 14:35:07Z cfischer $
 #
 # Joomla Googlemaps Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:joomla:joomla';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803836");
-  script_version("$Revision: 11158 $");
+  script_version("$Revision: 11201 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_cve_id("CVE-2013-7428", "CVE-2013-7429", "CVE-2013-7430", "CVE-2013-7431", "CVE-2013-7432", "CVE-2013-7433", "CVE-2013-7434");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:04:27 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-22 15:14:31 +0530 (Mon, 22 Jul 2013)");
 
   script_name("Joomla Googlemaps Multiple Vulnerabilities");
@@ -43,7 +43,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("joomla/installed");
+  script_mandatory_keys("joomla/installed");
 
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/Jul/158");
   script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/joomla-googlemaps-xss-xml-injection-path-disclosure-dos");
@@ -78,9 +78,7 @@ include("host_details.inc");
 include("http_keepalive.inc");
 
 if( ! port = get_app_port(cpe:CPE ) ) exit( 0 );
-
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
-
 if( dir == "/" ) dir = "";
 
 url = dir + "/plugins/content/plugin_googlemap2_proxy.php" +

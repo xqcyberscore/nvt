@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_54114.nasl 7904 2017-11-24 12:29:45Z cfischer $
+# $Id: gb_openssh_54114.nasl 11187 2018-09-03 09:59:13Z mmartin $
 #
 # OpenSSH 'ssh_gssapi_parse_ename()' Function Denial of Service Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2011-5000");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_version("$Revision: 7904 $");
+  script_version("$Revision: 11187 $");
   script_name("OpenSSH 'ssh_gssapi_parse_ename()' Function Denial of Service Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 13:29:45 +0100 (Fri, 24 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 12:03:56 +0200 (Wed, 09 Apr 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -48,22 +48,12 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54114");
   script_xref(name:"URL", value:"http://www.openssh.com");
 
-  tag_impact = "Exploiting this issue allows remote attackers to trigger
-  denial-of-service conditions due to excessive memory consumption. ";
-
-  tag_affected = "OpenSSH 5.8 and prior are vulnerable. ";
-
-  tag_summary = "OpenSSH is prone to a remote denial-of-service vulnerability.";
-
-  tag_solution = "Updates are available. Please see the references for details.";
-
-  tag_vuldetect = "Check the version.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"impact", value:"Exploiting this issue allows remote attackers to trigger
+  denial-of-service conditions due to excessive memory consumption. ");
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for details.");
+  script_tag(name:"summary", value:"OpenSSH is prone to a remote denial-of-service vulnerability.");
+  script_tag(name:"affected", value:"OpenSSH 5.8 and prior are vulnerable. ");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

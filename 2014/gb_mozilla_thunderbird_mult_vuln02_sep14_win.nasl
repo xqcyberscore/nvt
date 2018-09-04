@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln02_sep14_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_thunderbird_mult_vuln02_sep14_win.nasl 11198 2018-09-03 13:39:31Z mmartin $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-02 September14 (Windows)
 #
@@ -29,35 +29,35 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804834");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11198 $");
   script_cve_id("CVE-2014-1565", "CVE-2014-1564", "CVE-2014-1563", "CVE-2014-1553");
   script_bugtraq_id(69521, 69525, 69523, 69524);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-05 19:00:31 +0530 (Fri, 05 Sep 2014)");
 
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-02 September14 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
   - An out-of-bounds read error when creating an audio timeline in Web Audio.
   - An error when decoding GIF images.
   - A use-after-free error during cycle collection when animating SVG content.
   - Some other unspecified errors.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to disclose potentially sensitive information and compromise a user's system.
 
   Impact Level: Application/System");
 
-  script_tag(name: "affected" , value:"Mozilla Thunderbird 31.x before 31.1 on Windows");
+  script_tag(name:"affected", value:"Mozilla Thunderbird 31.x before 31.1 on Windows");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version
   31.1 or later, For updates refer http://www.mozilla.com/en-US/thunderbird");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

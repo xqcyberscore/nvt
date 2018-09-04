@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_nov14_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_mult_vuln_nov14_win.nasl 11200 2018-09-03 14:11:38Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities - 01 November14 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804892");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11200 $");
   script_cve_id("CVE-2014-7900", "CVE-2014-7901", "CVE-2014-7902", "CVE-2014-7903",
                 "CVE-2014-7904", "CVE-2014-7906", "CVE-2014-7907", "CVE-2014-7908",
                 "CVE-2014-7909", "CVE-2014-7910", "CVE-2014-7899");
@@ -37,16 +37,16 @@ if(description)
                     71167, 71161, 71160);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-25 18:03:03 +0530 (Tue, 25 Nov 2014)");
   script_name("Google Chrome Multiple Vulnerabilities - 01 November14 (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple Flaws are due to,
+  script_tag(name:"insight", value:"Multiple Flaws are due to,
   - A use-after-free error in pdfium.
   - An integer overflow error in pdfium.
   - Another use-after-free error in pdfium.
@@ -59,23 +59,23 @@ if(description)
   - Other Multiple unspecified errors.
   - An unspecified error that can be exploited to spoof the address bar.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to disclose potentially sensitive information, conduct spoofing attacks,
   bypass certain security restrictions, and compromise a user's system.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Google Chrome version prior to 39.0.2171.65
+  script_tag(name:"affected", value:"Google Chrome version prior to 39.0.2171.65
   on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Google Chrome version 39.0.2171.65
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version 39.0.2171.65
   or later, For updates refer to http://www.google.com/chrome");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/62546");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2014/11/stable-channel-update_18.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/62546");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2014/11/stable-channel-update_18.html");
 
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

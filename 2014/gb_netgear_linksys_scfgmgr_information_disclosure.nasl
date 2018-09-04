@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netgear_linksys_scfgmgr_information_disclosure.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_netgear_linksys_scfgmgr_information_disclosure.nasl 11207 2018-09-04 07:22:57Z mmartin $
 #
 # Netgear/Linksys Routers Backdoor
 #
@@ -24,17 +24,38 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103866");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11207 $");
 
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.103866";
+  script_name("Netgear/Linksys Routers Backdoor");
 
-tag_insight = "By sending a special crafted request to port 32764 of the router, it
+
+  script_xref(name:"URL", value:"https://github.com/elvanderb/TCP-32764");
+  script_xref(name:"URL", value:"http://www.netgear.com/");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 09:22:57 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-01-02 14:46:14 +0100 (Thu, 02 Jan 2014)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports(32764);
+
+  script_tag(name:"impact", value:"An attacker can exploit this issue to disclose sensitive
+information; this may aid in further attacks.");
+  script_tag(name:"vuldetect", value:"Send a special crafted request and check the response.");
+  script_tag(name:"insight", value:"By sending a special crafted request to port 32764 of the router, it
 is possible to gather e.g. the http username and http password or to change some
-configuration options which could lead in a shutdown of the internet connection.";
-
-tag_impact = "An attacker can exploit this issue to disclose sensitive
-information; this may aid in further attacks.";
-
-tag_affected = "Backdoor confirmed in:
+configuration options which could lead in a shutdown of the internet connection.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"summary", value:"The remote Linksys/Netgear Router has a backdoor on port 32764");
+  script_tag(name:"affected", value:"Backdoor confirmed in:
 Linksys WAG200G
 Netgear DM111Pv2
 Linksys WAG320N
@@ -51,40 +72,7 @@ Linksys WAG120N,
 Linksys WAG160N,
 Linksys WRVS4400N
 
-The backdoor may be also present in other hardware.";
-
-tag_summary = "The remote Linksys/Netgear Router has a backdoor on port 32764";
-tag_solution = "Ask the Vendor for an update.";
-tag_vuldetect = "Send a special crafted request and check the response.";
-
-if (description)
-{
- script_oid(SCRIPT_OID);
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6715 $");
-
- script_name("Netgear/Linksys Routers Backdoor");
-
-
- script_xref(name:"URL", value:"https://github.com/elvanderb/TCP-32764");
- script_xref(name:"URL", value:"http://www.netgear.com/");
- 
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
- script_tag(name:"creation_date", value:"2014-01-02 14:46:14 +0100 (Thu, 02 Jan 2014)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("General");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports(32764);
-
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "insight" , value : tag_insight);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+The backdoor may be also present in other hardware.");
 
  exit(0);
 }
@@ -115,7 +103,7 @@ foreach req ( reqs )
     report = 'It was possible to retrieve the following details from the configuration:\n\n' + data + '\n' ;
     security_message( port:port, data:report );
     exit( 0 );
-  }  
+  }
 }
 
-exit( 0 );  
+exit( 0 );

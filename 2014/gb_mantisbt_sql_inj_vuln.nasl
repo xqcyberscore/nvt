@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_sql_inj_vuln.nasl 9982 2018-05-28 12:00:03Z cfischer $
+# $Id: gb_mantisbt_sql_inj_vuln.nasl 11198 2018-09-03 13:39:31Z mmartin $
 #
 # MantisBT 'filter_config_id' SQL Injection Vulnerability
 #
@@ -29,31 +29,31 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804345");
-  script_version("$Revision: 9982 $");
+  script_version("$Revision: 11198 $");
   script_cve_id("CVE-2014-2238");
   script_bugtraq_id(65903);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-13 10:36:53 +0530 (Tue, 13 May 2014)");
   script_name("MantisBT 'filter_config_id' SQL Injection Vulnerability");
 
-  script_tag(name : "summary" , value : "This host is installed with MantisBT and is prone to SQL injection
+  script_tag(name:"summary", value:"This host is installed with MantisBT and is prone to SQL injection
   vulnerability.");
-  script_tag(name : "vuldetect" , value : "Checks if a vulnerable version is present on the target host.");
-  script_tag(name : "insight" , value : "The flaw is due to the 'admin_config_report.php' script not properly
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The flaw is due to the 'admin_config_report.php' script not properly
   sanitizing user-supplied input to the 'filter_config_id' POST parameter.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote authenticated attacker to inject or
+  script_tag(name:"impact", value:"Successful exploitation will allow remote authenticated attacker to inject or
   manipulate SQL queries in the back-end database, allowing for the manipulation
   or disclosure of arbitrary data.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "MantisBT version 1.2.13 through 1.2.16");
-  script_tag(name : "solution" , value : "Upgrade to MantisBT version 1.2.17 or later.
+  script_tag(name:"affected", value:"MantisBT version 1.2.13 through 1.2.16");
+  script_tag(name:"solution", value:"Upgrade to MantisBT version 1.2.17 or later.
   For updates refer to http://www.mantisbt.org/download.php");
 
-  script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2014/q1/490");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125490/MantisBT-1.2.16-SQL-Injection.html");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2014/q1/490");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125490/MantisBT-1.2.16-SQL-Injection.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -61,7 +61,7 @@ if(description)
   script_mandatory_keys("mantisbt/installed");
   script_require_ports("Services/www", 80);
 
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
   exit(0);
 }

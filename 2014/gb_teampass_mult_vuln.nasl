@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_teampass_mult_vuln.nasl 4757 2016-12-13 14:47:59Z cfi $
+# $Id: gb_teampass_mult_vuln.nasl 11196 2018-09-03 13:09:40Z mmartin $
 #
 # TeamPass Multiple Security Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:teampass:teampass';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805001");
-  script_version("$Revision: 4757 $");
+  script_version("$Revision: 11196 $");
   script_cve_id("CVE-2014-3771", "CVE-2014-3772", "CVE-2014-3773", "CVE-2014-3774");
   script_bugtraq_id(67473);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-13 15:47:59 +0100 (Tue, 13 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-16 16:50:50 +0530 (Thu, 16 Oct 2014)");
   script_name("TeamPass Multiple Security Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -96,7 +96,6 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-# Get a cookie from the server
 req = http_get( item:dir + "/index.php", port:port );
 res = http_keepalive_send_recv( port:port, data:req );
 
@@ -108,7 +107,6 @@ if( ! isnull( keycookie[1] ) ) cookie = cookie + " " + keycookie[1];
 
 if( isnull( cookie ) ) exit( 0 );
 
-## Construct the attack request
 url = dir + '/sources/upload/upload.files.php?PHPSESSID=';
 
 if( http_vuln_check( port:port, url:url,

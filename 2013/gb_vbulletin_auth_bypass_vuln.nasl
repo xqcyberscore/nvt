@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_auth_bypass_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_vbulletin_auth_bypass_vuln.nasl 11201 2018-09-03 14:35:07Z cfischer $
 #
 # Vbulletin Authentication Bypass Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:vbulletin:vbulletin';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804144");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11201 $");
   script_cve_id("CVE-2013-6129");
   script_bugtraq_id(62909);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-15 12:55:00 +0530 (Fri, 15 Nov 2013)");
   script_name("Vbulletin Authentication Bypass Vulnerability");
   script_category(ACT_ATTACK);
@@ -42,7 +42,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("vbulletin_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_require_keys("vBulletin/installed");
+  script_mandatory_keys("vBulletin/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to bypass security
   restrictions.
@@ -68,14 +68,12 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
-
 if( dir == "/" ) dir = "";
 
 foreach dir2( make_list("", "/core" ) ) {
@@ -85,7 +83,6 @@ foreach dir2( make_list("", "/core" ) ) {
   req = http_get( item:url, port:port );
   res = http_keepalive_send_recv( port:port, data:req );
 
-  ##  Confirm the exploit
   if( res && res =~ "HTTP/1.. 200 OK" &&
       "vBulletin" >< res && "Customer Number<" >< res ) {
     report = report_vuln_url( port:port, url:url );

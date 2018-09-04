@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_neobill_mult_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_neobill_mult_vuln.nasl 11186 2018-09-03 09:12:42Z mmartin $
 #
 # NeoBill Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804226");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11186 $");
   script_bugtraq_id(64112);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-23 13:48:00 +0530 (Thu, 23 Jan 2014)");
   script_name("NeoBill Multiple Vulnerabilities");
 
@@ -84,7 +84,6 @@ foreach dir (make_list_unique("/", "/nb", "/neobill", "/bill", cgi_dirs(port:htt
 
   if(res &&  "NeoBill :: Open Source Customer Management and Billing Software for Web Hosts" >< res)
   {
-    ## traversal_files() function Returns Dictionary (i.e key value pair)
     files = traversal_files();
 
     foreach file (keys(files))

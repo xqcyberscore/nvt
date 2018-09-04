@@ -29,37 +29,26 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804223");
-  script_version("$Revision: 7287 $");
+  script_version("$Revision: 11196 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-10 13:11:49 +0530 (Fri, 10 Jan 2014)");
   script_name("TYPO3 Default Admin Credentials");
 
-tag_summary = "This host is installed with TYPO3 and it has default admin credentials.";
 
-tag_vuldetect = "Login to backend login with default credentials.";
-
-tag_insight = 'TYPO3 installs with default admin credentials (admin/password) .';
-
-tag_impact = "Successful exploitation will allow remote attackers to access the program
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to access the program
 or system and gain privileged access.
 
-Impact Level: Application";
-
-tag_affected = "All TYPO3 version's which gets installed with default credentials ";
-
-tag_solution = "After installation change all default installed accounts to use a unique
+Impact Level: Application");
+  script_tag(name:"vuldetect", value:"Login to backend login with default credentials.");
+  script_tag(name:"insight", value:"TYPO3 installs with default admin credentials (admin/password) .");
+  script_tag(name:"solution", value:"After installation change all default installed accounts to use a unique
 and secure password. For more information refer below link.
-http://wiki.typo3.org/TYPO3_Installation_Basics";
-
-
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "affected" , value : tag_affected);
+http://wiki.typo3.org/TYPO3_Installation_Basics");
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"summary", value:"This host is installed with TYPO3 and it has default admin credentials.");
+  script_tag(name:"affected", value:"All TYPO3 version's which gets installed with default credentials ");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -129,10 +118,6 @@ function get_typo3_login(cinstall, tport, chost)
     }
   }
 }
-
-## Variable initialisation
-typoPort = "";
-typoLoca = "";
 
 if(!typoPort = get_app_port(cpe:CPE)){
   exit(0);

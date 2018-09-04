@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_ie_remote_code_exec_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: secpod_ms_ie_remote_code_exec_vuln.nasl 11201 2018-09-03 14:35:07Z cfischer $
 #
 # Microsoft Internet Explorer Remote Code Execution Vulnerability (2794220)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902699");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11201 $");
   script_cve_id("CVE-2012-4792");
   script_bugtraq_id(57070);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-02 10:52:56 +0530 (Wed, 02 Jan 2013)");
   script_name("Microsoft Internet Explorer Remote Code Execution Vulnerability (2794220)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51695");
@@ -48,7 +48,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_ie_detect.nasl");
   script_require_ports(139, 445);
-  script_require_keys("MS/IE/Version");
+  script_mandatory_keys("MS/IE/Version");
   script_tag(name:"impact", value:"Successful exploitation could will remote attackers to gain sensitive
   information or execute arbitrary code in the context of the current user.
   Impact Level: System/Application");
@@ -63,9 +63,9 @@ if(description)
   Microsoft Bulletin MS13-008.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

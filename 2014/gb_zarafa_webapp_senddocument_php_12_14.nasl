@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zarafa_webapp_senddocument_php_12_14.nasl 6756 2017-07-18 13:31:14Z cfischer $
+# $Id: gb_zarafa_webapp_senddocument_php_12_14.nasl 11187 2018-09-03 09:59:13Z mmartin $
 #
 # Zarafa WebApp Denial of Service Vulnerability
 #
@@ -29,40 +29,40 @@ CPE = "cpe:/a:zarafa:webapp";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105139");
- script_version ("$Revision: 6756 $");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.105139");
+  script_version("$Revision: 11187 $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
 
- script_name("Zarafa WebApp Denial of Service Vulnerability");
+  script_name("Zarafa WebApp Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=1139442");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=1139442");
 
- script_tag(name: "impact" , value:"Remote attackers can exploit this issue to cause denial-of-service
+  script_tag(name:"impact", value:"Remote attackers can exploit this issue to cause denial-of-service
 conditions.");
 
- script_tag(name: "vuldetect" , value:"Check for the existence of /senddocument.php");
+  script_tag(name:"vuldetect", value:"Check for the existence of /senddocument.php");
 
- script_tag(name: "insight" , value:"A flaw in Zarafa WebApp could allow a remote unauthenticated attacker
+  script_tag(name:"insight", value:"A flaw in Zarafa WebApp could allow a remote unauthenticated attacker
 to exhaust the disk space of /tmp. Depending on the setup /tmp might be on / (e.g. RHEL).");
 
- script_tag(name: "solution" , value:"Delete the file '/senddocument.php' (It's neither referenced nor used anywhere)
+  script_tag(name:"solution", value:"Delete the file '/senddocument.php' (It's neither referenced nor used anywhere)
 or update to 2.0 beta 3 (SVN 46848).");
 
- script_tag(name: "summary" , value:"Zarafa WebApp is prone to a denial-of-service vulnerability.");
- script_tag(name: "affected" , value:"Zarafa WebApp < 2.0 beta 3 (SVN 46848)");
+  script_tag(name:"summary", value:"Zarafa WebApp is prone to a denial-of-service vulnerability.");
+  script_tag(name:"affected", value:"Zarafa WebApp < 2.0 beta 3 (SVN 46848)");
 
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
- script_tag(name:"creation_date", value:"2014-12-08 13:27:31 +0100 (Mon, 08 Dec 2014)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_zarafa_webapp_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("zarafa_webapp/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-12-08 13:27:31 +0100 (Mon, 08 Dec 2014)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_zarafa_webapp_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("zarafa_webapp/installed");
 
  exit(0);
 }
@@ -70,7 +70,7 @@ or update to 2.0 beta 3 (SVN 46848).");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );

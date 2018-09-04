@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ioncube_66531.nasl 10904 2018-08-10 14:24:40Z mmartin $
+# $Id: gb_ioncube_66531.nasl 11191 2018-09-03 11:57:37Z mmartin $
 #
 # ionCube Loader Wizard 'loader-wizard.php' Multiple Security Vulnerabilities
 #
@@ -27,37 +27,37 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103932");
- script_bugtraq_id(66531);
- script_version("$Revision: 10904 $");
- script_tag(name:"cvss_base", value:"6.4");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
- script_name("ionCube Loader Wizard 'loader-wizard.php' Multiple Security Vulnerabilities");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/66531");
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2014-04-01 13:11:55 +0200 (Tue, 01 Apr 2014)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_oid("1.3.6.1.4.1.25623.1.0.103932");
+  script_bugtraq_id(66531);
+  script_version("$Revision: 11191 $");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
+  script_name("ionCube Loader Wizard 'loader-wizard.php' Multiple Security Vulnerabilities");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/66531");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-04-01 13:11:55 +0200 (Tue, 01 Apr 2014)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name:"impact", value:"ionCube Loader is prone to the following security vulnerabilities:
+  script_tag(name:"impact", value:"ionCube Loader is prone to the following security vulnerabilities:
 1. A cross-site scripting vulnerability
 2. An information-disclosure vulnerabilities
 3. An Arbitrary File Disclosure Vulnerability");
- script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check the response.");
- script_tag(name:"insight", value:"An attacker can exploit these issues to obtain potentially sensitive
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check the response.");
+  script_tag(name:"insight", value:"An attacker can exploit these issues to obtain potentially sensitive
 information, to view arbitrary files from the local filesystem and to
 execute arbitrary script code in the browser of an unsuspecting user
 in the context of the affected site. This may allow the attacker to
 steal cookie-based authentication credentials to launch other attacks.");
- script_tag(name:"solution", value:"Updates are available.");
- script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"summary", value:"ionCube Loader is prone to multiple security vulnerabilities:");
- script_tag(name:"affected", value:"Versions prior to ionCube Loader 2.46 are vulnerable. ");
+  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"ionCube Loader is prone to multiple security vulnerabilities:");
+  script_tag(name:"affected", value:"Versions prior to ionCube Loader 2.46 are vulnerable. ");
 
  exit(0);
 }

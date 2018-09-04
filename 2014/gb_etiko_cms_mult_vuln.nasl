@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_etiko_cms_mult_vuln.nasl 5790 2017-03-30 12:18:42Z cfi $
+# $Id: gb_etiko_cms_mult_vuln.nasl 11196 2018-09-03 13:09:40Z mmartin $
 #
 # Etiko CMS Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804882");
-  script_version("$Revision: 5790 $");
+  script_version("$Revision: 11196 $");
   script_cve_id("CVE-2014-8506", "CVE-2014-8505");
   script_bugtraq_id(70797, 70796);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 14:18:42 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-13 12:51:58 +0530 (Thu, 13 Nov 2014)");
   script_name("Etiko CMS Multiple Vulnerabilities");
 
@@ -55,13 +55,11 @@ if(description)
 
   script_tag(name:"affected", value:"Etiko CMS version 2.14 and earlier.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none
-  will be provided anymore. General solution options are to upgrade to a
-  newer release, disable respective features, remove the product or replace
-  the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/128644");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/128644");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -78,10 +76,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-rcvRes = "";
-
 http_port = get_http_port(default:80);
 
 if(!can_host_php(port:http_port)){
@@ -95,13 +89,10 @@ foreach dir (make_list_unique("/", "/etiko", "/cms",  cgi_dirs(port:http_port)))
 
   rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:http_port);
 
-  ##Confirm Application
   if(rcvRes && ">Etiko<" >< rcvRes && "etikweb.com" >< rcvRes)
   {
-    ## Vulnerable Url
     url = dir + '/index.php?page_id=19"><script>alert(document.cookie)</script>';
 
-    ## Check the response to confirm vulnerability
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
        pattern:"><script>alert\(document\.cookie\)</script>",
        extra_check:">Etiko<"))

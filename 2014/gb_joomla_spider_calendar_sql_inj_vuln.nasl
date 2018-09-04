@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_spider_calendar_sql_inj_vuln.nasl 10212 2018-06-15 09:51:23Z ckuersteiner $
+# $Id: gb_joomla_spider_calendar_sql_inj_vuln.nasl 11186 2018-09-03 09:12:42Z mmartin $
 #
 # Joomla! Spider Calendar Component SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804767");
-  script_version("$Revision: 10212 $");
+  script_version("$Revision: 11186 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 11:51:23 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-12 16:51:57 +0530 (Fri, 12 Sep 2014)");
 
   script_name("Joomla! Spider Calendar Component SQL Injection Vulnerability");
@@ -58,8 +58,8 @@ a newer release, disable respective features, remove the product or replace the 
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/34571");
-  script_xref(name: "URL", value: "http://packetstormsecurity.com/files/128189");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/34571");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/128189");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

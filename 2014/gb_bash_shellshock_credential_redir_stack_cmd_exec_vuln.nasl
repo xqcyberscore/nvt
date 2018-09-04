@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_credential_redir_stack_cmd_exec_vuln.nasl 7530 2017-10-20 13:14:01Z cfischer $
+# $Id: gb_bash_shellshock_credential_redir_stack_cmd_exec_vuln.nasl 11202 2018-09-03 14:43:03Z mmartin $
 #
 # GNU Bash Stacked Redirects aka 'redir_stack' Memory Corruption Vulnerability (LSC)
 #
@@ -27,41 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802083");
-  script_version("$Revision: 7530 $");
+  script_version("$Revision: 11202 $");
   script_cve_id("CVE-2014-7186");
   script_bugtraq_id(70152);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-20 15:14:01 +0200 (Fri, 20 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-01 13:23:37 +0530 (Wed, 01 Oct 2014)");
 
   script_name("GNU Bash Stacked Redirects aka 'redir_stack' Memory Corruption Vulnerability (LSC)");
 
-  script_tag(name: "summary" , value:"This host is installed with GNU Bash Shell
+  script_tag(name:"summary", value:"This host is installed with GNU Bash Shell
   and is prone to command execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Login to the target machine with ssh
+  script_tag(name:"vuldetect", value:"Login to the target machine with ssh
   credentials and check its possible to execute the commands via GNU bash
   shell.");
 
-  script_tag(name: "insight" , value:"GNU bash contains a flaw that is triggered
+  script_tag(name:"insight", value:"GNU bash contains a flaw that is triggered
   when evaluating untrusted input during stacked redirects handling.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to corrupt memory to cause a crash or potentially execute arbitrary
   coommands.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"GNU Bash through 4.3 bash43-026");
+  script_tag(name:"affected", value:"GNU Bash through 4.3 bash43-026");
 
-  script_tag(name: "solution" , value:"Apply the appropriate patch. For
+  script_tag(name:"solution", value:"Apply the appropriate patch. For
   updates refer to refer to http://www.gnu.org/software/bash/");
 
-  script_xref(name : "URL" , value : "https://shellshocker.net/");
-  script_xref(name : "URL" , value : "http://openwall.com/lists/oss-security/2014/09/26/2");
-  script_xref(name : "URL" , value : "http://openwall.com/lists/oss-security/2014/09/25/32");
-  script_xref(name : "URL" , value : "http://lcamtuf.blogspot.in/2014/09/bash-bug-apply-unofficial-patch-now.html");
+  script_xref(name:"URL", value:"https://shellshocker.net/");
+  script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2014/09/26/2");
+  script_xref(name:"URL", value:"http://openwall.com/lists/oss-security/2014/09/25/32");
+  script_xref(name:"URL", value:"http://lcamtuf.blogspot.in/2014/09/bash-bug-apply-unofficial-patch-now.html");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"exploit");

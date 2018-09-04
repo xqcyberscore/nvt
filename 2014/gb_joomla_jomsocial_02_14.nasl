@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_jomsocial_02_14.nasl 10212 2018-06-15 09:51:23Z ckuersteiner $
+# $Id: gb_joomla_jomsocial_02_14.nasl 11194 2018-09-03 12:44:14Z mmartin $
 #
 # Joomla JomSocial 2.6 Code Execution
 #
@@ -29,38 +29,38 @@ CPE = "cpe:/a:joomla:joomla";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103906");
- script_version ("$Revision: 10212 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.103906");
+  script_version("$Revision: 11194 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_name("Joomla JomSocial 2.6 Code Execution");
+  script_name("Joomla JomSocial 2.6 Code Execution");
 
- script_xref(name:"URL", value:"http://www.jomsocial.com/blog/hot-fix-3-1-0-4");
+  script_xref(name:"URL", value:"http://www.jomsocial.com/blog/hot-fix-3-1-0-4");
 
- script_tag(name:"last_modification", value:"$Date: 2018-06-15 11:51:23 +0200 (Fri, 15 Jun 2018) $");
- script_tag(name:"creation_date", value:"2014-02-11 17:03:11 +0100 (Tue, 11 Feb 2014)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("joomla_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("joomla/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-02-11 17:03:11 +0100 (Tue, 11 Feb 2014)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("joomla_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("joomla/installed");
 
- script_tag(name: "impact", value: "Successful exploits will allow remote attackers to execute arbitrary commands
+  script_tag(name:"impact", value:"Successful exploits will allow remote attackers to execute arbitrary commands
 within the context of the webserver.");
 
- script_tag(name: "vuldetect", value: "Try to execute the phpinfo() command by using a special crafted HTTP POST
+  script_tag(name:"vuldetect", value:"Try to execute the phpinfo() command by using a special crafted HTTP POST
 request");
 
- script_tag(name: "solution", value: "Updates are available.");
+  script_tag(name:"solution", value:"Updates are available.");
 
- script_tag(name: "summary", value: "JomSocial is prone to a remote PHP code execution Vulnerability");
+  script_tag(name:"summary", value:"JomSocial is prone to a remote PHP code execution Vulnerability");
 
- script_tag(name: "affected", value: "Joomla JomSocial component version 2.6.");
+  script_tag(name:"affected", value:"Joomla JomSocial component version 2.6.");
 
  exit(0);
 }

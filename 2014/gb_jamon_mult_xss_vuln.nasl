@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jamon_mult_xss_vuln.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_jamon_mult_xss_vuln.nasl 11202 2018-09-03 14:43:03Z mmartin $
 #
 # JAMon Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,38 +27,37 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803799");
-  script_version("$Revision: 6715 $");
+  script_version("$Revision: 11202 $");
   script_cve_id("CVE-2013-6235");
   script_bugtraq_id(65122);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-10 15:38:15 +0530 (Mon, 10 Feb 2014)");
   script_name("JAMon Multiple Cross-Site Scripting Vulnerabilities");
 
-  script_tag(name : "summary" , value : "This host is installed with JAMon and is prone to multiple cross site scripting
+  script_tag(name:"summary", value:"This host is installed with JAMon and is prone to multiple cross site scripting
   vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP POST request and check whether it is able to read
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP POST request and check whether it is able to read
   cookie or not.");
-  script_tag(name : "insight" , value : "Input passed via the 'ArraySQL', 'listenertype', and 'currentlistener' POST
+  script_tag(name:"insight", value:"Input passed via the 'ArraySQL', 'listenertype', and 'currentlistener' POST
   parameters to mondetail.jsp and the 'ArraySQL' POST parameter to jamonadmin.jsp,
   sql.jsp, and exceptions.jsp is not properly sanitised before being returned to
   the user.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML and
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "JAMon (Java Application Monitor) version 2.7 and prior");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"affected", value:"JAMon (Java Application Monitor) version 2.7 and prior");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/56570");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124933");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Jan/164");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/56570");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124933");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Jan/164");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -70,19 +69,9 @@ if(description)
 }
 
 
-##
-## The script code starts here
-##
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-jamonPort = 0;
-jamonReq = "";
-jamonRes = "";
-
-## Get HTTP Port
 jamonPort = get_http_port(default:80);
 
 host = http_host_name(port:jamonPort);
@@ -99,7 +88,6 @@ foreach dir (make_list_unique("/", "/jamon", "/monitor", cgi_dirs(port:jamonPort
   ##  Confirm the application
   if(jamonRes && ('>JAMon' >< jamonRes && ">Manage Monitor page <" >< jamonRes ))
   {
-    ## Construct the POST data
     postdata = "listenertype=value&currentlistener=JAMonBufferListener&" +
                "outputTypeValue=html&formatterValue=%23%2C%23%23%23&buf" +
                "ferSize=No+Action&TextSize=&highlight=&ArraySQL=1--%3E1" +

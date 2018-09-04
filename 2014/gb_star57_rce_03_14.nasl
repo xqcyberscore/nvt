@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_star57_rce_03_14.nasl 7576 2017-10-26 10:01:33Z cfischer $
+# $Id: gb_star57_rce_03_14.nasl 11202 2018-09-03 14:43:03Z mmartin $
 #
 # STAR57 6.20.090330 Remote Command Execution
 #
@@ -25,38 +25,31 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploits will allow remote attackers to execute arbitrary
-commands within the context of the application.";
-
-tag_affected = "STAR57 6.20.090330";
-tag_summary = "STAR57 6.20.090330 suffer from a code execution vulnerability.";
-
-tag_solution = "Ask the vendor for an update.";
-tag_vuldetect = "Try to execute a command on the remote Host by sending some special crafted HTTP requests.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103928");
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 7576 $");
- script_name("STAR57 6.20.090330 Remote Command Execution");
- script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125824/STAR57-6.20.090330-Remote-Command-Execution.html");
- script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:01:33 +0200 (Thu, 26 Oct 2017) $");
- script_tag(name:"creation_date", value:"2014-03-24 11:15:12 +0100 (Mon, 24 Mar 2014)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_oid("1.3.6.1.4.1.25623.1.0.103928");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11202 $");
+  script_name("STAR57 6.20.090330 Remote Command Execution");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125824/STAR57-6.20.090330-Remote-Command-Execution.html");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-03-24 11:15:12 +0100 (Mon, 24 Mar 2014)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "impact" , value : tag_impact);
- script_tag(name : "vuldetect" , value : tag_vuldetect);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"impact", value:"Successful exploits will allow remote attackers to execute arbitrary
+commands within the context of the application.");
+  script_tag(name:"vuldetect", value:"Try to execute a command on the remote Host by sending some special crafted HTTP requests.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"summary", value:"STAR57 6.20.090330 suffer from a code execution vulnerability.");
+  script_tag(name:"affected", value:"STAR57 6.20.090330");
 
  exit(0);
 }
@@ -80,7 +73,7 @@ foreach dir( make_list_unique( "/star57cm", cgi_dirs( port:port ) ) ) {
       report = report_vuln_url( port:port, url:url );
       security_message( port:port, data:report );
       exit( 0 );
-    }  
+    }
   }
 }
 

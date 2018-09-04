@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln03_jul14.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: gb_java_mult_unspecified_vuln03_jul14.nasl 11186 2018-09-03 09:12:42Z mmartin $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-03 Jul 2014 (Windows)
 #
@@ -29,38 +29,38 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804689");
-  script_version("$Revision: 10144 $");
+  script_version("$Revision: 11186 $");
   script_cve_id("CVE-2014-4265", "CVE-2014-4219", "CVE-2014-4227");
   script_bugtraq_id(68632, 68620, 68603);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-25 10:19:38 +0530 (Fri, 25 Jul 2014)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-03 Jul 2014 (Windows)");
 
 
-  script_tag(name : "summary" , value : "This host is installed with Oracle Java SE JRE and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Oracle Java SE JRE and is prone to multiple
 unspecified vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Get the installed version of Oracle Java SE JRE with the help of detect NVT
+  script_tag(name:"vuldetect", value:"Get the installed version of Oracle Java SE JRE with the help of detect NVT
 and check it is vulnerable or not.");
-  script_tag(name : "insight" , value : "Multiple flaws exists,
+  script_tag(name:"insight", value:"Multiple flaws exists,
 - Two unspecified errors related to the Deployment subcomponent.
 - An unspecified error in the Hotspot subcomponent related to bytecode
 verification.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary code
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
 or possibly other impacts.
 
 Impact Level: System/Application.");
-  script_tag(name : "affected" , value : "Oracle  Java SE 6 update 75 and prior, 7 update 60 and prior, and 8 update 5.0
+  script_tag(name:"affected", value:"Oracle  Java SE 6 update 75 and prior, 7 update 60 and prior, and 8 update 5.0
 and prior on Windows");
-  script_tag(name : "solution" , value : "Apply the patch from below link,
+  script_tag(name:"solution", value:"Apply the patch from below link,
 http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/59501");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1030577");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/59501");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1030577");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");

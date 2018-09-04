@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quixplorer_mult_vuln_nov.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_quixplorer_mult_vuln_nov.nasl 11196 2018-09-03 13:09:40Z mmartin $
 #
 # Quixplorer Multiple Vulnerabilities - Nov14
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804876");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11196 $");
   script_cve_id("CVE-2013-1641", "CVE-2013-1642");
   script_bugtraq_id(63964, 63962);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-04 17:05:21 +0530 (Tue, 04 Nov 2014)");
   script_name("Quixplorer Multiple Vulnerabilities - Nov14");
 
@@ -95,7 +95,6 @@ foreach dir (make_list_unique("/", "/quixplorer", "/filemanager", "/filemgr", cg
   if(rcvRes && ">Login to use QuiXplorer<" >< rcvRes
             && rcvRes =~ "title.*QuiXplorer Version")
   {
-    ## Vulnerable Url
     url = dir + '/src/index.php?action=list&dir=_config&order=n' +
                 'ame&srt="><script>alert(document.cookie);</script>';
 

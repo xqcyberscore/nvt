@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_66569.nasl 6756 2017-07-18 13:31:14Z cfischer $
+# $Id: gb_otrs_66569.nasl 11186 2018-09-03 09:12:42Z mmartin $
 #
 # OTRS Help Desk Cross Site Scripting/Clickjacking Vulnerability
 #
@@ -30,13 +30,13 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103933");
-  script_version("$Revision: 6756 $");
+  script_version("$Revision: 11186 $");
   script_bugtraq_id(66569);
-  script_cve_id("CVE-2014-2553","CVE-2014-2554");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-18 15:31:14 +0200 (Tue, 18 Jul 2017) $");
+  script_cve_id("CVE-2014-2553", "CVE-2014-2554");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-03 12:44:23 +0200 (Thu, 03 Apr 2014)");
   script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N"); 
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_name("OTRS Help Desk Cross Site Scripting/Clickjacking Vulnerability");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -49,7 +49,12 @@ if(description)
   script_xref(name:"URL", value:"https://www.otrs.com/security-advisory-2014-04-xss-issue");
   script_xref(name:"URL", value:"https://www.otrs.com/security-advisory-2014-05-clickjacking-issue/");
 
-  tag_insight = "Two vulnerabilities have been reported in OTRS Help
+  script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script code
+  in the browser of an unsuspecting user in the context of the affected
+  site. This may allow the attacker to steal cookie-based authentication
+  credentials and launch other attacks.");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"insight", value:"Two vulnerabilities have been reported in OTRS Help
   Desk, which can be exploited by malicious people to conduct cross-site
   scripting and clickjacking attacks.
 
@@ -62,31 +67,14 @@ if(description)
   requests via iframes without performing any validity checks to verify
   the requests. This can be exploited to perform certain unspecified
   actions by tricking a user into e.g. clicking a specially crafted link
-  via clickjacking.";
-
-  tag_impact = "An attacker may leverage this issue to execute arbitrary script code
-  in the browser of an unsuspecting user in the context of the affected
-  site. This may allow the attacker to steal cookie-based authentication
-  credentials and launch other attacks.";
-
-  tag_affected = "Versions OTRS Help Desk prior to 3.1.21, 3.2.16 and 3.3.6 are
-  vulnerable.";
-
-  tag_summary = "OTRS Help Desk is prone to a cross site scripting and to a clickjacking
+  via clickjacking.");
+  script_tag(name:"solution", value:"Upgrade to Open Ticket Request System (OTRS) 3.1.21, 3.2.16 or 3.3.6
+  For updates refer to http://otrs.org/download/");
+  script_tag(name:"summary", value:"OTRS Help Desk is prone to a cross site scripting and to a clickjacking
   vulnerability because it fails to properly sanitize user-supplied input before using
-  it in dynamically generated content.";
-
-  tag_solution = "Upgrade to Open Ticket Request System (OTRS) 3.1.21, 3.2.16 or 3.3.6
-  For updates refer to http://otrs.org/download/";
-
-  tag_vuldetect = "Check the version";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
+  it in dynamically generated content.");
+  script_tag(name:"affected", value:"Versions OTRS Help Desk prior to 3.1.21, 3.2.16 and 3.3.6 are
+  vulnerable.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");

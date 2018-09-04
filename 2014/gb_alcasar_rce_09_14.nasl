@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_alcasar_rce_09_14.nasl 5698 2017-03-23 14:04:51Z cfi $
+# $Id: gb_alcasar_rce_09_14.nasl 11207 2018-09-04 07:22:57Z mmartin $
 #
 # ALCASAR Remote Code Execution Vulnerability
 #
@@ -27,30 +27,31 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105082");
- script_version ("$Revision: 5698 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_name("ALCASAR Remote Code Execution Vulnerability");
+  script_oid("1.3.6.1.4.1.25623.1.0.105082");
+  script_version("$Revision: 11207 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("ALCASAR Remote Code Execution Vulnerability");
 
- script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Sep/26");
- script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Sep/46");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Sep/26");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Sep/46");
 
- script_tag(name: "impact" , value:"Successful exploitation will allow remote attackers to execute arbitrary commands");
- script_tag(name: "vuldetect" , value: "Send a specially crafted value in the 'host' HTTP header and check the response.");
- script_tag(name: "solution" , value: "Ask the Vendor for an update.");
- script_tag(name: "summary" , value: "ALCASARis prone to a remote code execution vulnerability.");
- script_tag(name: "affected" , value: "ALCASAR <= 2.8");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary commands");
+  script_tag(name:"vuldetect", value:"Send a specially crafted value in the 'host' HTTP header and check the response.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"summary", value:"ALCASARis prone to a remote code execution vulnerability.");
+  script_tag(name:"affected", value:"ALCASAR <= 2.8");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-23 15:04:51 +0100 (Thu, 23 Mar 2017) $");
- script_tag(name:"creation_date", value:"2014-09-08 11:48:21 +0200 (Mon, 08 Sep 2014)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 09:22:57 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-09-08 11:48:21 +0200 (Mon, 08 Sep 2014)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
  exit(0);
 }

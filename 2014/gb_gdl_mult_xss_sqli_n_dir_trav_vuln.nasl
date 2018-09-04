@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gdl_mult_xss_sqli_n_dir_trav_vuln.nasl 5827 2017-04-03 06:27:11Z cfi $
+# $Id: gb_gdl_mult_xss_sqli_n_dir_trav_vuln.nasl 11198 2018-09-03 13:39:31Z mmartin $
 #
 # Ganesha Digital Library Multiple Vulnerabilities
 #
@@ -27,36 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804509");
-  script_version("$Revision: 5827 $");
+  script_version("$Revision: 11198 $");
   script_bugtraq_id(65874);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-03 08:27:11 +0200 (Mon, 03 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-05 14:58:48 +0530 (Wed, 05 Mar 2014)");
   script_name("Ganesha Digital Library Multiple Vulnerabilities");
 
-  script_tag(name : "summary" , value : "This host is installed with Ganesha Digital Library and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Ganesha Digital Library and is prone to multiple
   vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP GET request and check whether it is able to read
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to read
   cookie or not.");
-  script_tag(name : "insight" , value : "Multiple flaws are due to improper sanitation of user supplied input via
+  script_tag(name:"insight", value:"Multiple flaws are due to improper sanitation of user supplied input via
   'newlang' and 'newtheme' parameters to index.php and gdl.php, 'id' parameter
   to download.php and 'keyword' parameter to gdl.php scripts.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML and
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code, manipulate SQL commands in backend database and read arbitrary
   files.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Ganesha Digital Library version 4.2, Other versions may also be affected.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"affected", value:"Ganesha Digital Library version 4.2, Other versions may also be affected.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/31961");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125464");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/31961");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125464");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -70,18 +69,12 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-gdlReq = "";
-gdlRes = "";
-
 http_port = get_http_port(default:80);
 
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/gdl", "/diglib", cgi_dirs(port:http_port)))
 {
 
@@ -89,7 +82,6 @@ foreach dir (make_list_unique("/", "/gdl", "/diglib", cgi_dirs(port:http_port)))
 
   gdlRes = http_get_cache(item:string(dir, "/"),  port:http_port);
 
-  ## confirm the Application
   if("ITB. All rights reserved" >< gdlRes || "Powered By GDL" >< gdlRes)
   {
     ## Crafted Url

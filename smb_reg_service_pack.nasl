@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_reg_service_pack.nasl 10891 2018-08-10 12:51:28Z cfischer $
+# $Id: smb_reg_service_pack.nasl 11182 2018-09-03 08:10:36Z cfischer $
 #
 # SMB Registry : Windows Build Number and Service Pack Version
 #
@@ -53,10 +53,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10401");
-  script_version("$Revision: 10891 $");
+  script_version("$Revision: 11182 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 10:10:36 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-08-27 12:14:14 +0200 (Wed, 27 Aug 2008)");
   script_name("SMB Registry : Windows Build Number and Service Pack Version");
   script_category(ACT_GATHER_INFO);
@@ -118,6 +118,14 @@ if( "64" >< arch ) {
   set_kb_item( name:"SMB/Windows/Arch", value:"x64" );
 } else if( "x86" >< arch ) {
   set_kb_item( name:"SMB/Windows/Arch", value:"x86" );
+} else {
+  # nb: Sometimes there seems to be not enough permissions for that registry key to gather the
+  # processor architecture so have a fallback for this case.
+  if( ! arch ) {
+    set_kb_item( name:"SMB/Windows/Arch", value:"unknown/failed to read PROCESSOR_ARCHITECTURE from key " + key );
+  } else {
+    set_kb_item( name:"SMB/Windows/Arch", value:arch );
+  }
 }
 
 if( csdVer && "NO_Service_Pack" >!< csdVer ) {
@@ -130,87 +138,87 @@ if( csdVer && "NO_Service_Pack" >!< csdVer ) {
     set_kb_item( name:"SMB/WinNT4/ServicePack", value:csdVer );
   }
 
-  if( ( winVal == "5.0" ) && ( "Microsoft Windows 2000" >< winName ) ) {
+  if( winVal == "5.0" && "Microsoft Windows 2000" >< winName ) {
     set_kb_item( name:"SMB/Win2K/ServicePack", value:csdVer );
   }
 
-  if( ( winVal == "5.1" ) && ( "Microsoft Windows XP" >< winName ) ) {
+  if( winVal == "5.1" && "Microsoft Windows XP" >< winName ) {
     set_kb_item( name:"SMB/WinXP/ServicePack", value:csdVer );
   }
 
-  if( ( winVal == "5.2" ) && ( "Microsoft Windows Server 2003" >< winName ) && ( "x86" >< arch ) ) {
+  if( winVal == "5.2" && "Microsoft Windows Server 2003" >< winName && "x86" >< arch ) {
     set_kb_item( name:"SMB/Win2003/ServicePack", value:csdVer );
   }
 
-  if( ( winVal == "5.2" ) && ( "Microsoft Windows Server 2003" >< winName ) && ( "64" >< arch ) ) {
+  if( winVal == "5.2" && "Microsoft Windows Server 2003" >< winName && "64" >< arch ) {
     set_kb_item( name:"SMB/Win2003x64/ServicePack", value:csdVer );
   }
 
-  if( ( winVal == "6.0" ) && ( "Windows Vista" >< winName ) && ( "x86" >< arch ) ) {
-    set_kb_item( name:"SMB/WinVista/ServicePack", value:csdVer );
-  }
-
-  if( ( winVal == "6.0" ) && ( "Windows Vista" >< winName ) && ( "64" >< arch ) ) {
-    set_kb_item( name:"SMB/WinVistax64/ServicePack", value:csdVer );
-  }
-
-  if( ( winVal == "6.1" ) && ( "Windows 7" >< winName ) && ( "x86" >< arch ) ) {
-    set_kb_item( name:"SMB/Win7/ServicePack", value:csdVer );
-  }
-
-  if( ( winVal == "6.1" ) && ( "Windows 7" >< winName ) && ( "64" >< arch ) ) {
-    set_kb_item( name:"SMB/Win7x64/ServicePack", value:csdVer );
-  }
-
-  if( ( winVal == "6.0" ) && ( "Windows Server (R) 2008" >< winName ) && ( "x86" >< arch ) ) {
-    set_kb_item( name:"SMB/Win2008/ServicePack", value:csdVer );
-  }
-
-  if( ( winVal == "6.0" ) && ( "Windows Server (R) 2008" >< winName ) && ( "64" >< arch ) ) {
-    set_kb_item( name:"SMB/Win2008x64/ServicePack", value:csdVer );
-  }
-
-  if( ( winVal == "5.2" ) && ( "Microsoft Windows XP" >< winName ) && ( "64" >< arch ) ) {
+  if( winVal == "5.2" && "Microsoft Windows XP" >< winName && "64" >< arch ) {
     set_kb_item( name:"SMB/WinXPx64/ServicePack", value:csdVer );
   }
 
-  if( ( winVal == "6.1" ) && ( "Windows Server 2008 R2" >< winName ) && ( "64" >< arch ) ) {
+  if( winVal == "6.0" && "Windows Vista" >< winName && "x86" >< arch ) {
+    set_kb_item( name:"SMB/WinVista/ServicePack", value:csdVer );
+  }
+
+  if( winVal == "6.0" && "Windows Vista" >< winName && "64" >< arch ) {
+    set_kb_item( name:"SMB/WinVistax64/ServicePack", value:csdVer );
+  }
+
+  if( winVal == "6.0" && "Windows Server (R) 2008" >< winName && "x86" >< arch ) {
+    set_kb_item( name:"SMB/Win2008/ServicePack", value:csdVer );
+  }
+
+  if( winVal == "6.0" && "Windows Server (R) 2008" >< winName && "64" >< arch ) {
+    set_kb_item( name:"SMB/Win2008x64/ServicePack", value:csdVer );
+  }
+
+  if( winVal == "6.1" && "Windows 7" >< winName && "x86" >< arch ) {
+    set_kb_item( name:"SMB/Win7/ServicePack", value:csdVer );
+  }
+
+  if( winVal == "6.1" && "Windows 7" >< winName && "64" >< arch ) {
+    set_kb_item( name:"SMB/Win7x64/ServicePack", value:csdVer );
+  }
+
+  if( winVal == "6.1" && "Windows Server 2008 R2" >< winName && "64" >< arch ) {
     set_kb_item( name:"SMB/Win2008R2/ServicePack", value:csdVer );
   }
 
-  if( ( winVal == "6.2" ) && ( "Windows Server 2012" >< winName ) && ( "64" >< arch ) ) {
+  if( winVal == "6.2" && "Windows Server 2012" >< winName && "64" >< arch ) {
     set_kb_item( name:"SMB/Win2012/ServicePack", value:csdVer );
   }
 
-  if( ( winVal == "6.3" ) && ( "Windows Server 2012 R2" >< winName ) && ( "64" >< arch ) ) {
-    set_kb_item( name:"SMB/Win2012R2/ServicePack", value:csdVer );
-  }
-
-  if( ( winVal == "6.2" ) && ( "Windows 8" >< winName ) && ( "32" >< arch ) ) {
+  if( winVal == "6.2" && "Windows 8" >< winName && "x86" >< arch ) {
     set_kb_item( name:"SMB/Win8/ServicePack", value:csdVer );
   }
 
-  if( ( winVal == "6.2" ) && ( "Windows 8" >< winName ) && ( "64" >< arch ) ) {
+  if( winVal == "6.2" && "Windows 8" >< winName && "64" >< arch ) {
     set_kb_item( name:"SMB/Win8x64/ServicePack", value:csdVer );
   }
 
-  if( ( winVal == "6.3" ) && ( "Windows 8.1" >< winName ) && ( "x86" >< arch ) ) {
+  if( winVal == "6.3" && "Windows 8.1" >< winName && "x86" >< arch ) {
     set_kb_item( name:"SMB/Win8.1/ServicePack", value:csdVer );
   }
 
-  if( ( winVal == "6.3" ) && ( "Windows 8.1" >< winName ) && ( "64" >< arch ) ) {
+  if( winVal == "6.3" && "Windows 8.1" >< winName && "64" >< arch ) {
     set_kb_item( name:"SMB/Win8.1x64/ServicePack", value:csdVer );
   }
 
-  if( ( winVal == "6.3" ) && ( "Windows 10" >< winName ) && ( "x86" >< arch ) ) {
+  if( winVal == "6.3" && "Windows 10" >< winName && "x86" >< arch ) {
     set_kb_item( name:"SMB/Win10/ServicePack", value:csdVer );
   }
 
-  if( ( winVal == "6.3" ) && ( "Windows 10" >< winName ) && ( "64" >< arch ) ) {
+  if( winVal == "6.3" && "Windows 10" >< winName && "64" >< arch ) {
     set_kb_item( name:"SMB/Win10x64/ServicePack", value:csdVer );
   }
 
-  if( ( winVal == "6.3" ) && ( "Windows Server 2016" >< winName ) && ( "64" >< arch ) ) {
+  if( winVal == "6.3" && "Windows Server 2012 R2" >< winName && "64" >< arch ) {
+    set_kb_item( name:"SMB/Win2012R2/ServicePack", value:csdVer );
+  }
+
+  if( winVal == "6.3" && "Windows Server 2016" >< winName && "64" >< arch ) {
     set_kb_item( name:"SMB/Win2016/ServicePack", value:csdVer );
   }
 

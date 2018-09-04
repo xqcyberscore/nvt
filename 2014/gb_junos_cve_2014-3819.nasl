@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_cve_2014-3819.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_junos_cve_2014-3819.nasl 11194 2018-09-03 12:44:14Z mmartin $
 #
 # Junos RPD Denial of Service Vulnerability
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105918");
-  script_version ("$Revision: 6735 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_version("$Revision: 11194 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-31 13:15:00 +0200 (Thu, 31 Jul 2014)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -50,27 +50,27 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Version");
 
-  script_tag(name : "summary" , value : "DoS of RPD routing process");
+  script_tag(name:"summary", value:"DoS of RPD routing process");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "Receipt of a malformed PIM packet may cause the RPD routing process
+  script_tag(name:"insight", value:"Receipt of a malformed PIM packet may cause the RPD routing process
 to crash and restart. All PIM routers that are configured to use Auto-RP for automatic distribution of
 group-to-RP mappings are impacted. If Auto-RP is not used in the network, there is no impact.");
 
-  script_tag(name : "impact" , value : "The RPD routing process may be caused to crash and restart ending
+  script_tag(name:"impact", value:"The RPD routing process may be caused to crash and restart ending
 in a denial of service condition.");
 
-  script_tag(name : "affected" , value : "Junos OS 11.4, 12.1, 12.2, 12.3, 13.1, 13.2, 13.3");
+  script_tag(name:"affected", value:"Junos OS 11.4, 12.1, 12.2, 12.3, 13.1, 13.2, 13.3");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper.");
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10637");
 
- 
+
   exit(0);
 }
 

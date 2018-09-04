@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903203");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11201 $");
   script_cve_id("CVE-2013-1484", "CVE-2013-1485", "CVE-2013-1486", "CVE-2013-1487");
   script_bugtraq_id(58027, 58028, 58029, 58031);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-22 13:41:39 +0530 (Fri, 22 Feb 2013)");
   script_name("Oracle Java SE Multiple Vulnerabilities -02 Feb 13 (Windows)");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1028155");
@@ -42,16 +42,20 @@ if(description)
   script_copyright("Copyright (c) 2013 SecPod");
   script_family("General");
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
-  script_require_keys("Sun/Java/JRE/Win/Ver");
+  script_mandatory_keys("Sun/Java/JRE/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to affect confidentiality,
   integrity and availability via unknown vectors. Attackers can even execute
   arbitrary code on the target system.
+
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Oracle Java SE Version 7 Update 13 and earlier, 6 Update 39 and earlier,
   5 Update 39 and earlier.");
   script_tag(name:"insight", value:"Multiple flaws due to unspecified errors in the following components:
+
   - Deployment
+
   - Libraries
+
   - Java Management Extensions (JMX)");
   script_tag(name:"solution", value:"Apply patch from below link,
   http://www.oracle.com/technetwork/topics/security/javacpufeb2013update-1905892.html");
@@ -59,6 +63,7 @@ if(description)
   multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
 

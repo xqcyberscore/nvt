@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smtp_starttls_pl_inj.nasl 8937 2018-02-23 11:25:34Z cfischer $
+# $Id: gb_smtp_starttls_pl_inj.nasl 11196 2018-09-03 13:09:40Z mmartin $
 #
 # Multiple Vendors STARTTLS Implementation Plaintext Arbitrary Command Injection Vulnerability
 #
@@ -28,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103935");
-  script_version("$Revision: 8937 $");
+  script_version("$Revision: 11196 $");
   script_bugtraq_id(46767);
   script_cve_id("CVE-2011-0411", "CVE-2011-1430", "CVE-2011-1431", "CVE-2011-1432",
                 "CVE-2011-1506", "CVE-2011-1575", "CVE-2011-1926", "CVE-2011-2165");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 12:25:34 +0100 (Fri, 23 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-08 13:52:07 +0200 (Tue, 08 Apr 2014)");
   script_name("Multiple Vendors STARTTLS Implementation Plaintext Arbitrary Command Injection Vulnerability");
   script_category(ACT_ATTACK);
@@ -62,11 +62,14 @@ if(description)
   script_xref(name:"URL", value:"http://inoa.net/qmail-tls/vu555316.patch");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/555316");
 
-  tag_impact = "An attacker can exploit this issue to execute arbitrary commands in
+  script_tag(name:"impact", value:"An attacker can exploit this issue to execute arbitrary commands in
   the context of the user running the application. Successful exploits
-  can allow attackers to obtain email usernames and passwords.";
-
-  tag_affected = "The following vendors are affected:
+  can allow attackers to obtain email usernames and passwords.");
+  script_tag(name:"vuldetect", value:"Send a special crafted STARTTLS request and check the response.");
+  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"summary", value:"Multiple vendors' implementations of STARTTLS are prone to a
+  vulnerability that lets attackers inject arbitrary commands.");
+  script_tag(name:"affected", value:"The following vendors are affected:
 
   Ipswitch
 
@@ -82,20 +85,7 @@ if(description)
 
   spamdyke
 
-  ISC";
-
-  tag_summary = "Multiple vendors' implementations of STARTTLS are prone to a
-  vulnerability that lets attackers inject arbitrary commands.";
-
-  tag_solution = "Updates are available.";
-
-  tag_vuldetect = "Send a special crafted STARTTLS request and check the response.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
+  ISC");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -114,7 +104,7 @@ if( ! soc = smtp_open( port:port, helo:this_host() ) ) exit( 0 );
 
 send( socket:soc, data:'STARTTLS\r\nNOOP\r\n' );
 if( !r = smtp_recv_line( socket:soc ) )
-{ 
+{
   smtp_close(socket:soc);
   exit( 0 );
 }
@@ -125,7 +115,7 @@ if( "220" >< r )
   if( ! soc ) exit( 0 );
   s = smtp_recv_line( socket:soc );
 
-  if( "250" >< s ) 
+  if( "250" >< s )
   {
     smtp_close( socket:soc );
     security_message( port:port );

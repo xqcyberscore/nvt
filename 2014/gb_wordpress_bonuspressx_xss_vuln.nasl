@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_bonuspressx_xss_vuln.nasl 9579 2018-04-24 08:28:33Z cfischer $
+# $Id: gb_wordpress_bonuspressx_xss_vuln.nasl 11186 2018-09-03 09:12:42Z mmartin $
 #
 # WordPress Bonuspressx 'ar_submit.php' Cross Site Scripting Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804588");
-  script_version("$Revision: 9579 $");
+  script_version("$Revision: 11186 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:28:33 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-16 11:57:17 +0530 (Fri, 16 May 2014)");
   script_name("WordPress Bonuspressx 'ar_submit.php' Cross Site Scripting Vulnerability");
 
@@ -52,10 +52,9 @@ if(description)
 
   script_tag(name:"affected", value:"WordPress Bonuspressx Plugin.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore. General solution options
-  are to upgrade to a newer release, disable respective features, remove the product or replace the
-  product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 

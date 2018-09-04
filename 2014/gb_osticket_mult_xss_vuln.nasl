@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_osticket_mult_xss_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_osticket_mult_xss_vuln.nasl 11196 2018-09-03 13:09:40Z mmartin $
 #
 # osTicket Ticketing System Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804823");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11196 $");
   script_cve_id("CVE-2014-4744");
   script_bugtraq_id(68500);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-26 13:09:40 +05340 (Tue, 26 Aug 2014)");
   script_name("osTicket Ticketing System Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -168,7 +168,6 @@ foreach dir (make_list_unique("/", "/support", "/ticket", "/osticket", cgi_dirs(
                       '\r\n4\r\n',
                       '-----------------------------10379450071263312649808858377--\r\n');
 
-    ## Vulnerable Url
     url = dir + "/upload/open.php";
 
     #Send Attack Request

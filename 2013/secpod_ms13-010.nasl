@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-010.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: secpod_ms13-010.nasl 11201 2018-09-03 14:35:07Z cfischer $
 #
 # Microsoft Internet Explorer VML Remote Code Execution Vulnerability (2797052)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903301");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11201 $");
   script_cve_id("CVE-2013-0030");
   script_bugtraq_id(57852);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-13 13:16:30 +0530 (Wed, 13 Feb 2013)");
   script_name("Microsoft Internet Explorer VML Remote Code Execution Vulnerability (2797052)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52129/");
@@ -44,7 +44,7 @@ if(description)
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_ie_detect.nasl");
   script_require_ports(139, 445);
-  script_require_keys("MS/IE/Version");
+  script_mandatory_keys("MS/IE/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code and
   failed attacks will cause denial of service.
   Impact Level: System/Application");
@@ -58,9 +58,9 @@ if(description)
   Microsoft Bulletin MS13-010.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("secpod_reg.inc");

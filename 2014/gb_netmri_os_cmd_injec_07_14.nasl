@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netmri_os_cmd_injec_07_14.nasl 10904 2018-08-10 14:24:40Z mmartin $
+# $Id: gb_netmri_os_cmd_injec_07_14.nasl 11198 2018-09-03 13:39:31Z mmartin $
 #
 # Infoblox NetMRI OS Command Injection Vulnerability
 #
@@ -29,34 +29,34 @@ CPE = "cpe:/a:infoblox:netmri";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105061");
- script_cve_id("CVE-2014-3418", "CVE-2014-3419");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 10904 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105061");
+  script_cve_id("CVE-2014-3418", "CVE-2014-3419");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11198 $");
 
- script_name("Infoblox NetMRI OS Command Injection Vulnerability");
+  script_name("Infoblox NetMRI OS Command Injection Vulnerability");
 
 
- script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127409/Infoblox-6.8.4.x-OS-Command-Injection.html");
- script_xref(name:"URL", value:"http://www.infoblox.com/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127409/Infoblox-6.8.4.x-OS-Command-Injection.html");
+  script_xref(name:"URL", value:"http://www.infoblox.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2014-07-15 14:33:34 +0200 (Tue, 15 Jul 2014)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_netmri_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("netMRI/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-07-15 14:33:34 +0200 (Tue, 15 Jul 2014)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_netmri_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("netMRI/installed");
 
- script_tag(name:"impact", value:"An attacker may leverage these issues to execute arbitrary code as root");
- script_tag(name:"vuldetect", value:"Send a special crafted HTTP POST request and check the response");
- script_tag(name:"solution", value:"Update to Infoblox NetMRI >= 6.8.5");
- script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"summary", value:"Infoblox NetMRI is prone to a OS Command Injection Vulnerability");
- script_tag(name:"affected", value:"Infoblox NetMRI versions 6.4.X.X-6.8.4.X are vulnerable;a
+  script_tag(name:"impact", value:"An attacker may leverage these issues to execute arbitrary code as root");
+  script_tag(name:"vuldetect", value:"Send a special crafted HTTP POST request and check the response");
+  script_tag(name:"solution", value:"Update to Infoblox NetMRI >= 6.8.5");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Infoblox NetMRI is prone to a OS Command Injection Vulnerability");
+  script_tag(name:"affected", value:"Infoblox NetMRI versions 6.4.X.X-6.8.4.X are vulnerable;a
 other versions may also be affected.");
 
  exit(0);

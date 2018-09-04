@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_plugin_sig_bypass_vuln_win.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_adobe_reader_plugin_sig_bypass_vuln_win.nasl 11200 2018-09-03 14:11:38Z mmartin $
 #
 # Adobe Reader Plugin Signature Bypass Vulnerability (Windows)
 #
@@ -29,53 +29,34 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804624");
-  script_version("$Revision: 6769 $");
+  script_version("$Revision: 11200 $");
   script_cve_id("CVE-2002-0030");
   script_bugtraq_id(7174);
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-04 16:54:30 +0530 (Wed, 04 Jun 2014)");
   script_name("Adobe Reader Plugin Signature Bypass Vulnerability (Windows)");
 
-  tag_summary =
-"This host is installed with Adobe Reader and is prone to plugin signature
-bypass vulnerability.";
 
-  tag_vuldetect =
-"Get the installed version with the help of detect NVT and check the version
-is vulnerable or not.";
-
-  tag_insight =
-"The flaw is due to fact the program only verifies the PE header of executable
-code for a plug-in signature check.";
-
- tag_impact =
-"Successful exploitation will allow attacker to submit a modified plug-in to
+  script_tag(name:"summary", value:"This host is installed with Adobe Reader and is prone to plugin signature
+bypass vulnerability.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"insight", value:"The flaw is due to fact the program only verifies the PE header of executable
+code for a plug-in signature check.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to submit a modified plug-in to
 bypass signature checks and execute malicious code on the system.
 
-Impact Level: System/Application";
-
-  tag_affected =
-"Adobe Reader 4.x and 5.x version on Windows.";
-
-  tag_solution =
-"Update to Adobe Reader version 6.0 or later. For updates refer,
-For updates refer to http://www.adobe.com";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+Impact Level: System/Application");
+  script_tag(name:"affected", value:"Adobe Reader 4.x and 5.x version on Windows.");
+  script_tag(name:"solution", value:"Update to Adobe Reader version 6.0 or later. For updates refer,
+For updates refer to http://www.adobe.com");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/11610");
-  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/JSHA-5EZQGZ");
-  script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/vulnwatch/2003-q1/0148.html");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/11610");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/JSHA-5EZQGZ");
+  script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/vulnwatch/2003-q1/0148.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
@@ -87,16 +68,12 @@ For updates refer to http://www.adobe.com";
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-
-## Get Reader Version
 if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
 if(readerVer =~ "^[4|5]\.")
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_nextgen_gallery_dir_trav_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_wordpress_nextgen_gallery_dir_trav_vuln.nasl 11194 2018-09-03 12:44:14Z mmartin $
 #
 # WordPress NextGEN Gallery 'jqueryFileTree.php' Directory Traversal Vulnerability
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804510");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11194 $");
   script_bugtraq_id(65637);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-07 17:46:21 +0530 (Fri, 07 Mar 2014)");
   script_name("WordPress NextGEN Gallery 'jqueryFileTree.php' Directory Traversal Vulnerability");
 
@@ -96,7 +96,6 @@ foreach postdata (make_list("dir=%2Fetc%2F", "dir=C%3A%5CWindows%5C"))
                "Content-Length: ", strlen(postdata), "\r\n\r\n",
                 postdata);
 
-  ## Send request and receive the response
   res = http_keepalive_send_recv(port:http_port, data:req);
 
   if("/etc/init" >< res || "C:\Windows\system32" >< res)

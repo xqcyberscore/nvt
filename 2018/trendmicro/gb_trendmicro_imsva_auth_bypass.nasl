@@ -1,8 +1,8 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_imsva_auth_bypass.nasl 9135 2018-03-19 12:37:31Z asteins $
+# $Id: gb_trendmicro_imsva_auth_bypass.nasl 11207 2018-09-04 07:22:57Z mmartin $
 #
-# Trend Micro InterScan Messaging Security (Virtual Appliance) [IMSVA] Management Portal Authentication Bypass Vulnerability 
+# Trend Micro InterScan Messaging Security (Virtual Appliance) [IMSVA] Management Portal Authentication Bypass Vulnerability
 #
 # Authors:
 # Tameem Eissa <tameem.eissa@greenbone.net>
@@ -29,24 +29,23 @@ CPE = 'cpe:/a:trendmicro:interscan_messaging_security_virtual_appliance';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107298");
-  script_version("$Revision: 9135 $");
+  script_version("$Revision: 11207 $");
   script_cve_id("CVE-2018-3609");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-03-19 13:37:31 +0100 (Mon, 19 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 09:22:57 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-02-14 11:00:01 +0100 (Wed, 14 Feb 2018)");
   script_name("Trend Micro InterScan Messaging Security (Virtual Appliance) [IMSVA] Management Portal Authentication Bypass Vulnerability");
 
-   script_tag(name:"summary", value:"IMSVA management portal is vulnerable to authentication bypass vulnerability");
+  script_tag(name:"summary", value:"IMSVA management portal is vulnerable to authentication bypass vulnerability");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"impact", value:"This vulnerability could allow an unauthenticated user to access sensitive information in a particular log file that could be used for authentication bypass.");
 
   script_tag(name:"solution", value:"Update to Version 9.1 Patch 1 CP1682 or Version 9.0 CP1653 ");
-
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"affected", value:"Versions 9.0 and 9.1");
 
   script_tag(name:"qod_type", value:"package");
@@ -73,7 +72,7 @@ if(!tmVer){
 if(!build = get_kb_item("IMSVA/build")){
   exit(0);
 }
-  
+
 if((tmVer == "9.1") && (version_is_less(version:build, test_version:"1682")))
 {
   report = report_fixed_ver(installed_version:"9.1 build " + build, fixed_version:"9.1 build 1682");

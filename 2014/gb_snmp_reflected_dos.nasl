@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snmp_reflected_dos.nasl 7235 2017-09-22 13:15:52Z cfischer $
+# $Id: gb_snmp_reflected_dos.nasl 11207 2018-09-04 07:22:57Z mmartin $
 #
 # SNMP GETBULK Reflected DRDoS
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105062");
-  script_version("$Revision: 7235 $");
+  script_version("$Revision: 11207 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_name("SNMP GETBULK Reflected DRDoS");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 15:15:52 +0200 (Fri, 22 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 09:22:57 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-16 12:23:32 +0200 (Wed, 16 Jul 2014)");
   script_category(ACT_ATTACK);
   script_family("Denial of Service");
@@ -50,7 +50,7 @@ if(description)
 
   script_tag(name:"solution", value:"Disable the SNMP service on the remote host if you do not use it or
   restrict access to this service");
-
+  script_tag(name:"solution_type", value:"Workaround");
   script_tag(name:"summary", value:"The remote SNMP daemon allows distributed reflection and
   amplification (DRDoS) attacks");
 

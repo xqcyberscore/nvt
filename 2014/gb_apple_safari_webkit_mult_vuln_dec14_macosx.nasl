@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_dec14_macosx.nasl 6735 2017-07-17 09:56:49Z teissa $
+# $Id: gb_apple_safari_webkit_mult_vuln_dec14_macosx.nasl 11198 2018-09-03 13:39:31Z mmartin $
 #
 # Apple Safari 'Webkit' Multiple Vulnerabilities-01 Dec14 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805305");
-  script_version("$Revision: 6735 $");
+  script_version("$Revision: 11198 $");
   script_cve_id("CVE-2014-4475", "CVE-2014-4474", "CVE-2014-4473", "CVE-2014-4472",
                 "CVE-2014-4471", "CVE-2014-4470", "CVE-2014-4469", "CVE-2014-4468",
                 "CVE-2014-4466", "CVE-2014-4465");
@@ -37,38 +37,37 @@ if(description)
                     71445, 71439);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-16 14:55:53 +0530 (Tue, 16 Dec 2014)");
   script_name("Apple Safari 'Webkit' Multiple Vulnerabilities-01 Dec14 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Apple Safari
+  script_tag(name:"summary", value:"This host is installed with Apple Safari
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
   - Multiple unspecified memory corruption errors.
   - An SVG loaded in an img element could load a CSS file cross-origin.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to conduct denial of service attack, arbitrary code execution and bypass the
   Same Origin Policy.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Apple Safari before version 6.2.1,
+  script_tag(name:"affected", value:"Apple Safari before version 6.2.1,
   7.x before 7.1.1, and 8.x before 8.0.1 on Mac OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Safari version 6.2.1 or
+  script_tag(name:"solution", value:"Upgrade to Apple Safari version 6.2.1 or
   7.1.1 or 8.0.1 or later, For updates refer to http://www.apple.com/support");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_xref(name : "URL" , value : "http://support.apple.com/kb/HT6145");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/57093");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/125428");
+  script_xref(name:"URL", value:"http://support.apple.com/kb/HT6145");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/57093");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125428");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -81,19 +80,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-# Variable Initialization
-safVer = "";
-
-## Get Apple Safari version
 if(!safVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check for Apple Safari Versions less than 6.2.1, 7.x before 7.1.1, and 8.x before 8.0.1
 if(version_is_less(version:safVer, test_version:"6.2.1") ||
    version_in_range(version:safVer, test_version:"7.0", test_version2:"7.1.0")||
    version_is_equal(version:safVer, test_version:"8.0"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

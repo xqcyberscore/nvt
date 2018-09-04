@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zyxel_router_multiple_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_zyxel_router_multiple_vuln.nasl 11202 2018-09-03 14:43:03Z mmartin $
 #
 # ZyXEL ADSL Router Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804471");
-  script_version("$Revision: 9381 $");
+  script_version("$Revision: 11202 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-25 12:28:41 +0530 (Wed, 25 Jun 2014)");
   script_name("ZyXEL ADSL Router Multiple Vulnerabilities");
 
@@ -47,10 +47,9 @@ if(description)
 
   Impact Level: System/Application");
   script_tag(name:"affected", value:"ZyXEL P660RT2 EE");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -71,22 +70,13 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-zReq = "";
-zRes = "";
-zPort = 0;
-zBanner = "";
-
-## Get HTTP Port
 zPort = get_http_port(default:80);
 
-## Confirm the application before trying exploit
 zBanner = get_http_banner(port:zPort);
 if('Server: RomPager' >!< zBanner) exit(0);
 
 url ="/Forms/rpAuth_1?=%3Cbody%20onload=alert%28document.cookie%29%3E";
 
-## Check the response to confirm vulnerability
 if(http_vuln_check(port:zPort, url:url, check_header:TRUE,
    pattern: "<body onload=alert\(document.cookie\)><",
    extra_check:"> Message <"))

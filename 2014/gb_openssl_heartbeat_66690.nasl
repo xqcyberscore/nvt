@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_heartbeat_66690.nasl 5525 2017-03-09 08:40:36Z cfi $
+# $Id: gb_openssl_heartbeat_66690.nasl 11198 2018-09-03 13:39:31Z mmartin $
 #
 # SSL/TLS: OpenSSL TLS 'heartbeat' Extension Information Disclosure Vulnerability
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103936");
-  script_version("$Revision: 5525 $");
+  script_version("$Revision: 11198 $");
   script_bugtraq_id(66690);
   script_cve_id("CVE-2014-0160");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-09 09:40:36 +0100 (Thu, 09 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 09:54:09 +0200 (Wed, 09 Apr 2014)");
   script_name("SSL/TLS: OpenSSL TLS 'heartbeat' Extension Information Disclosure Vulnerability");
   script_category(ACT_ATTACK);
@@ -45,27 +45,15 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/66690");
   script_xref(name:"URL", value:"http://openssl.org/");
 
-  tag_insight = "The TLS and DTLS implementations do not properly handle
-  Heartbeat Extension packets.";
-
-  tag_impact = "An attacker can exploit this issue to gain access to sensitive
-  information that may aid in further attacks.";
-
-  tag_affected = "OpenSSL 1.0.1f, 1.0.1e, 1.0.1d, 1.0.1c, 1.0.1b, 1.0.1a, and
-  1.0.1 are vulnerable.";
-
-  tag_summary = "OpenSSL is prone to an information disclosure vulnerability.";
-
-  tag_solution = "Updates are available.";
-
-  tag_vuldetect = "Send a special crafted TLS request and check the response.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"affected", value:tag_affected);
+  script_tag(name:"impact", value:"An attacker can exploit this issue to gain access to sensitive
+  information that may aid in further attacks.");
+  script_tag(name:"vuldetect", value:"Send a special crafted TLS request and check the response.");
+  script_tag(name:"insight", value:"The TLS and DTLS implementations do not properly handle
+  Heartbeat Extension packets.");
+  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"summary", value:"OpenSSL is prone to an information disclosure vulnerability.");
+  script_tag(name:"affected", value:"OpenSSL 1.0.1f, 1.0.1e, 1.0.1d, 1.0.1c, 1.0.1b, 1.0.1a, and
+  1.0.1 are vulnerable.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");

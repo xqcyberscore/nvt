@@ -28,12 +28,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804058");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11187 $");
   script_cve_id("CVE-2013-7240");
   script_bugtraq_id(64587);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-07 16:29:23 +0530 (Tue, 07 Jan 2014)");
   script_name("WordPress Advanced Dewplayer 'dew_file' Directory Traversal Vulnerability");
 
@@ -79,7 +79,6 @@ if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## traversal_files() function Returns Dictionary (i.e key value pair)
 files = traversal_files();
 
 foreach file (keys(files))
