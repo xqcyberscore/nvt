@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jamon_mult_xss_vuln.nasl 11202 2018-09-03 14:43:03Z mmartin $
+# $Id: gb_jamon_mult_xss_vuln.nasl 11214 2018-09-04 10:09:46Z mmartin $
 #
 # JAMon Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803799");
-  script_version("$Revision: 11202 $");
+  script_version("$Revision: 11214 $");
   script_cve_id("CVE-2013-6235");
   script_bugtraq_id(65122);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-10 15:38:15 +0530 (Mon, 10 Feb 2014)");
   script_name("JAMon Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -81,7 +81,6 @@ foreach dir (make_list_unique("/", "/jamon", "/monitor", cgi_dirs(port:jamonPort
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   jamonReq = http_get(item:string(dir, "/menu.jsp"), port:jamonPort);
   jamonRes = http_keepalive_send_recv(port:jamonPort, data:jamonReq);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_searchblox_mult_vuln_sept13.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_searchblox_mult_vuln_sept13.nasl 11223 2018-09-04 12:48:48Z cfischer $
 #
 # SearchBlox Multiple Vulnerabilities Sept-13
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802060");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11223 $");
   script_bugtraq_id(61973, 61974, 61975);
   script_cve_id("CVE-2013-3598", "CVE-2013-3597", "CVE-2013-3590");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:48:48 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-03 10:46:51 +0530 (Tue, 03 Sep 2013)");
   script_name("SearchBlox Multiple Vulnerabilities Sept-13");
 
@@ -83,7 +83,6 @@ foreach dir (make_list_unique("/", "/search", "/searchblox", cgi_dirs(port:http_
 
   if( dir == "/" ) dir = "";
 
-  ## Send and Receive the response
   req = http_get(item:dir + "/searchblox/search.html",  port:http_port);
   res = http_keepalive_send_recv(port:http_port, data:req, bodyonly:TRUE);
 

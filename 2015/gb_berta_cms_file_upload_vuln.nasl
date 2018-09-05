@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_berta_cms_file_upload_vuln.nasl 5816 2017-03-31 10:16:41Z cfi $
+# $Id: gb_berta_cms_file_upload_vuln.nasl 11218 2018-09-04 11:43:35Z mmartin $
 #
 # Berta CMS Arbitrary File Upload Vulnerability
 #
@@ -27,41 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805356");
-  script_version("$Revision: 5816 $");
+  script_version("$Revision: 11218 $");
   script_cve_id("CVE-2015-2780");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:16:41 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-07 12:32:43 +0530 (Tue, 07 Apr 2015)");
   script_name("Berta CMS Arbitrary File Upload Vulnerability");
 
-  script_tag(name: "summary" , value: "This host is installed with Berta CMS
+  script_tag(name:"summary", value:"This host is installed with Berta CMS
   is prone to file upload vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Send a crafted data via HTTP GET request
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request
   and check whether it is is able to upload file or not.");
 
-  script_tag(name: "insight" , value: "The flaw is due to an input passed via
+  script_tag(name:"insight", value:"The flaw is due to an input passed via
   the 'uploads.php' script is not properly sanitised before being used.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to utilize various admin functionality, execute any
   arbitrary script, and expose potentially sensitive information.
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Berta CMS version before 0.8.10b.");
+  script_tag(name:"affected", value:"Berta CMS version before 0.8.10b.");
 
-  script_tag(name: "solution" , value:"Upgrade to Berta CMS version 0.8.10b
+  script_tag(name:"solution", value:"Upgrade to Berta CMS version 0.8.10b
   or later, For updates refer to http://www.berta.me");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"exploit");
 
-  script_xref(name: "URL" , value : "http://seclists.org/fulldisclosure/2015/Mar/155");
-  script_xref(name: "URL" , value : "http://www.openwall.com/lists/oss-security/2015/03/30/7");
-  script_xref(name: "URL" , value : "http://packetstormsecurity.com/files/131041/Berta-CMS-File-Upload-Bypass.html");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Mar/155");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2015/03/30/7");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/131041/Berta-CMS-File-Upload-Bypass.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -75,13 +75,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-url = "";
-dir = "";
-sndReq = "";
-rcvRes = "";
-http_port = "";
-
 http_port = get_http_port(default:80);
 if(!can_host_php(port:http_port)){
   exit(0);
@@ -94,13 +87,11 @@ foreach dir (make_list_unique("/", "/engine", "/berta/engine", "/berta", cgi_dir
   url = dir + '/login.php';
   rcvRes = http_get_cache(item: url, port:http_port);
 
-  ##Confirm Application from Response
   if(rcvRes && "berta v" >< rcvRes && "Log in" >< rcvRes)
   {
     ## Upload file
     url = dir + '/upload.php';
 
-    ## Confirm Upload
     ## extra check is not possible.
     if(http_vuln_check(port:http_port, url:url, pattern:"O*error"))
     {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln02_jul14_lin.nasl 9070 2018-03-09 12:37:39Z cfischer $
+# $Id: gb_java_mult_unspecified_vuln02_jul14_lin.nasl 11214 2018-09-04 10:09:46Z mmartin $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Jul 2014 (Linux)
 #
@@ -29,23 +29,21 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108413");
-  script_version("$Revision: 9070 $");
+  script_version("$Revision: 11214 $");
   script_cve_id("CVE-2014-4264", "CVE-2014-4266", "CVE-2014-4221", "CVE-2014-4220",
                 "CVE-2014-4208", "CVE-2014-2490");
   script_bugtraq_id(68612, 68596, 68571, 68576, 68580, 68645);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-09 13:37:39 +0100 (Fri, 09 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-25 09:35:38 +0530 (Fri, 25 Jul 2014)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Jul 2014 (Linux)");
 
-  tag_summary = "This host is installed with Oracle Java SE JRE and is prone to multiple
-unspecified vulnerabilities.";
-
-  tag_vuldetect = "Get the installed version of Oracle Java SE JRE with the help of detect NVT
-and check it is vulnerable or not.";
-
-  tag_insight = "Multiple unspecified flaws exists,
+  script_tag(name:"summary", value:"This host is installed with Oracle Java SE JRE and is prone to multiple
+unspecified vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Get the installed version of Oracle Java SE JRE with the help of detect NVT
+and check it is vulnerable or not.");
+  script_tag(name:"insight", value:"Multiple unspecified flaws exists,
 
 - An error in the Security subcomponent related to the Elliptic Curve (EC)
 cryptography implementation.
@@ -61,32 +59,22 @@ share/classes/java/lang/invoke/MethodHandles.java
 - Two errors related to the Deployment subcomponent.
 
 - A format string error in the Hotspot subcomponent within the EventMark
-constructor and destructor in share/vm/utilities/events.cpp";
-
-  tag_impact = "Successful exploitation will allow remote attackers to update, insert, or
+constructor and destructor in share/vm/utilities/events.cpp");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to update, insert, or
 delete certain data, execute arbitrary code, conduct denial-of-service and
 disclose sensitive information.
 
-Impact Level: System/Application.";
+Impact Level: System/Application.");
+  script_tag(name:"affected", value:"Oracle Java SE 7 update 60 and prior, and 8 update 5 and prior on Linux");
+  script_tag(name:"solution", value:"Apply the patch from below link,
 
-  tag_affected = "Oracle Java SE 7 update 60 and prior, and 8 update 5 and prior on Linux";
-
-  tag_solution = "Apply the patch from below link,
-
-http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html";
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/59501");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1030577");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/59501");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1030577");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
@@ -111,7 +99,7 @@ if(jreVer =~ "^(1\.(7|8))")
   if(version_in_range(version:jreVer, test_version:"1.7.0", test_version2:"1.7.0.60")||
      version_in_range(version:jreVer, test_version:"1.8.0", test_version2:"1.8.0.5"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

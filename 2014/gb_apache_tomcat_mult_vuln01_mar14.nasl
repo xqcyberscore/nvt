@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804519");
-  script_version("$Revision: 4347 $");
+  script_version("$Revision: 11210 $");
   script_cve_id("CVE-2013-4286");
   script_bugtraq_id(65773);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-25 15:52:16 +0200 (Tue, 25 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-25 12:48:53 +0530 (Tue, 25 Mar 2014)");
   script_name("Apache Tomcat Multiple Vulnerabilities - 01 - Mar14");
   script_category(ACT_GATHER_INFO);
@@ -47,31 +47,19 @@ if(description)
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2014/Feb/134");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/125394");
 
-  tag_summary = "This host is running Apache Tomcat and is prone to multiple vulnerabilities.";
-
-  tag_vuldetect = "Get the installed version of Apache Tomcat with the help of detect NVT
-  and check the version is vulnerable or not.";
-
-  tag_insight = "Flaws are due to the HTTP connector or AJP connector which do not properly
-  handle certain inconsistent HTTP request headers.";
-
-  tag_impact = "Successful exploitation will allow remote attackers to conduct session
+  script_tag(name:"summary", value:"This host is running Apache Tomcat and is prone to multiple vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Get the installed version of Apache Tomcat with the help of detect NVT
+  and check the version is vulnerable or not.");
+  script_tag(name:"insight", value:"Flaws are due to the HTTP connector or AJP connector which do not properly
+  handle certain inconsistent HTTP request headers.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct session
   fixation attacks and manipulate certain data.
 
-  Impact Level: Application";
-
-  tag_affected = "Apache Tomcat version before 6.0.39, 7.x before 7.0.47, and 8.x before
-  8.0.0-RC3";
-
-  tag_solution = "Upgrade to version 6.0.39 or 7.0.47 or 8.0.0-RC3 or later,
-  For Updates refer to http://tomcat.apache.org";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  Impact Level: Application");
+  script_tag(name:"affected", value:"Apache Tomcat version before 6.0.39, 7.x before 7.0.47, and 8.x before
+  8.0.0-RC3");
+  script_tag(name:"solution", value:"Upgrade to version 6.0.39 or 7.0.47 or 8.0.0-RC3 or later,
+  For Updates refer to http://tomcat.apache.org");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

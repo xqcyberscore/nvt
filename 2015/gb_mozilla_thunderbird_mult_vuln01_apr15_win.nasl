@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_apr15_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_apr15_win.nasl 11218 2018-09-04 11:43:35Z mmartin $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-01 Apr15 (Windows)
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805526");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11218 $");
   script_cve_id("CVE-2015-0816", "CVE-2015-0815", "CVE-2015-0807", "CVE-2015-0801");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-06 15:50:14 +0530 (Mon, 06 Apr 2015)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 Apr15 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
   - Improper restriction of resource: URLs.
   - Multiple unspecified errors.
   - An error in 'navigator.sendBeacon' implementation.
   - An error allowing to bypass the Same Origin Policy.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary JavaScript code, conduct cross-site request
   forgery (CSRF) attacks, conduct denial of service (memory corruption and
   application crash) attack and possibly execute arbitrary code.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Thunderbird before version 31.6
+  script_tag(name:"affected", value:"Mozilla Thunderbird before version 31.6
   on Windows");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version
   31.6 or later, For updates refer https://www.mozilla.org/en-US/thunderbird");
 
   script_tag(name:"solution_type", value:"VendorFix");

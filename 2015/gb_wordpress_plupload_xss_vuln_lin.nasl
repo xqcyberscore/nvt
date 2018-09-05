@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_plupload_xss_vuln_lin.nasl 7546 2017-10-24 11:58:30Z cfischer $
+# $Id: gb_wordpress_plupload_xss_vuln_lin.nasl 11227 2018-09-04 13:25:37Z mmartin $
 #
 # WordPress plupload Cross-Site Scripting Vulnerability (Linux)
 #
@@ -28,20 +28,19 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805986");
-  script_version("$Revision: 7546 $");
+  script_version("$Revision: 11227 $");
   script_cve_id("CVE-2015-3439");
   script_bugtraq_id(74269);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-12 13:38:21 +0530 (Mon, 12 Oct 2015)");
   script_name("WordPress plupload Cross-Site Scripting Vulnerability (Linux)");
 
   script_tag(name:"summary", value:"This host is running WordPress and is prone
   to cross-site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to error in the Ephox
   plupload.flash.swf in Plupload which does not sanitize user input via 'target'
@@ -63,14 +62,14 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "https://wordpress.org/news/2015/04/wordpress-4-1-2");
-  script_xref(name : "URL" , value : "http://zoczus.blogspot.in/2015/04/plupload-same-origin-method-execution.html");
+  script_xref(name:"URL", value:"https://wordpress.org/news/2015/04/wordpress-4-1-2");
+  script_xref(name:"URL", value:"http://zoczus.blogspot.in/2015/04/plupload-same-origin-method-execution.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("os_detection.nasl", "secpod_wordpress_detect_900182.nasl");
-  script_mandatory_keys("wordpress/installed","Host/runs_unixoide");
+  script_mandatory_keys("wordpress/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
   exit(0);
 }
@@ -78,22 +77,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-wpPort = "";
-wpName = "";
-wpVer = "";
-
-## get the port
 if(!wpPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!wpVer = get_app_version(cpe:CPE, port:wpPort)){
   exit(0);
 }
 
-## Check for version
 if(wpVer =~ "^(3\.9\.)" ||
    wpVer =~ "^(4\.0\.)" ||
    version_in_range(version:wpVer, test_version:"4.1.0", test_version2:"4.1.1"))

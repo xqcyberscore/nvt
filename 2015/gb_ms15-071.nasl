@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-071.nasl 6505 2017-07-03 09:58:27Z teissa $
+# $Id: gb_ms15-071.nasl 11221 2018-09-04 12:29:42Z mmartin $
 #
 # Microsoft Windows NETLOGON Privilege Elevation Vulnerability (3068457)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805075");
-  script_version("$Revision: 6505 $");
+  script_version("$Revision: 11221 $");
   script_cve_id("CVE-2015-2374");
   script_bugtraq_id(75633);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-15 09:12:11 +0530 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows NETLOGON Privilege Elevation Vulnerability (3068457)");
@@ -53,8 +53,7 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows Server 2012/R2
+  script_tag(name:"affected", value:"Microsoft Windows Server 2012/R2
   Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior.");
@@ -64,13 +63,14 @@ if(description)
   from the given link, https://technet.microsoft.com/library/security/MS15-071");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3068457");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS15-071");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3068457");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS15-071");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -81,17 +81,11 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2003:3, win2003x64:3, win2008:3,
                    win2008r2:2, win2012:1, win2012R2:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
@@ -102,46 +96,38 @@ if(!dllVer){
   exit(0);
 }
 
-## Windows Server 2003
 if(hotfix_check_sp(win2003x64:3,win2003:3) > 0)
 {
-  ## Check for Netlogon.dll version
   if(version_is_less(version:dllVer, test_version:"5.2.3790.5648")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows Server 2008
 ## Currently not supporting for Windows Server 2008 64 bit
 if(hotfix_check_sp(win2008:3) > 0)
 {
-  ## Check for Netlogon.dll version
   if(version_is_less(version:dllVer, test_version:"6.0.6002.19409") ||
      version_in_range(version:dllVer, test_version:"6.0.6002.23000", test_version2:"6.0.6002.23715")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows Server 2008 R2
 if(hotfix_check_sp(win2008r2:2) > 0)
 {
-  ## Check for Netlogon.dll version
   if(version_is_less(version:dllVer, test_version:"6.1.7601.18880") ||
      version_in_range(version:dllVer, test_version:"6.1.7601.23000", test_version2:"6.1.7601.23082")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows Server 2012
 if(hotfix_check_sp(win2012:1) > 0)
 {
-  ## Check for Netlogon.dll version
   if(version_is_less(version:dllVer, test_version:"6.2.9200.17395") ||
      version_in_range(version:dllVer, test_version:"6.2.9200.20000", test_version2:"6.2.9200.21505")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
@@ -149,9 +135,8 @@ if(hotfix_check_sp(win2012:1) > 0)
 ## win2012R2
 if(hotfix_check_sp(win2012R2:1) > 0)
 {
-  ## Check for Netlogon.dll version
   if(version_is_less(version:dllVer, test_version:"6.3.9600.17901")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }

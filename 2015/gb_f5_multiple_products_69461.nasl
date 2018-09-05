@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_multiple_products_69461.nasl 4207 2016-10-04 11:57:02Z cfi $
+# $Id: gb_f5_multiple_products_69461.nasl 11225 2018-09-04 13:06:36Z mmartin $
 #
 # Multiple F5 Networks Products Remote Code Execution Vulnerability
 #
@@ -32,9 +32,9 @@ if(description)
   script_cve_id("CVE-2014-2927");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 4207 $");
+  script_version("$Revision: 11225 $");
   script_name("Multiple F5 Networks Products Remote Code Execution Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2016-10-04 13:57:02 +0200 (Tue, 04 Oct 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-19 11:51:31 +0100 (Mon, 19 Jan 2015)");
   script_category(ACT_ATTACK);
   script_family("General");
@@ -69,7 +69,7 @@ if(description)
   and 11.2.1 before HF11
   Enterprise Manager 3.x before 3.1.1 HF2.");
 
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"exploit");
 
   exit(0);

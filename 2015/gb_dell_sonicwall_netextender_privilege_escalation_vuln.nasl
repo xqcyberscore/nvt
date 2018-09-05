@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_sonicwall_netextender_privilege_escalation_vuln.nasl 6243 2017-05-30 09:04:14Z teissa $
+# $Id: gb_dell_sonicwall_netextender_privilege_escalation_vuln.nasl 11221 2018-09-04 12:29:42Z mmartin $
 #
 # Dell SonicWall NetExtender Privilege Escalation Vulnerability (Windows)
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/o:dell:sonicwall_netextender";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806043");
-  script_version("$Revision: 6243 $");
+  script_version("$Revision: 11221 $");
   script_cve_id("CVE-2015-4173");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:38:49 +0530 (Tue, 08 Sep 2015)");
   script_name("Dell SonicWall NetExtender Privilege Escalation Vulnerability (Windows)");
 
   script_tag(name:"summary", value:"This host is installed with Dell SonicWall
   NetExtender and is prone to privilege escalation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to Unquoted Windows
   search path vulnerability in the autorun value upon installation of the
@@ -62,7 +61,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133302");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/133302");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -76,11 +75,7 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-netextVer = "";
 
-
-## Get version
 if(!netextVer = get_app_version(cpe:CPE)){
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_http_authentication.nasl 10579 2018-07-23 13:27:53Z cfischer $
+# $Id: gb_nmap_http_authentication.nasl 11216 2018-09-04 11:12:23Z cfischer $
 #
 # Wrapper for Nmap HTTP Authentication NSE script
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801608");
-  script_version("$Revision: 10579 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-23 15:27:53 +0200 (Mon, 23 Jul 2018) $");
+  script_version("$Revision: 11216 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:12:23 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-10-25 14:34:05 +0200 (Mon, 25 Oct 2010)");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Nmap NSE: HTTP Auth");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -109,7 +109,7 @@ if(res)
   if("http-auth" >< result) {
     msg = string('Result found by Nmap Security Scanner (http-auth.nse) ',
                 'http://nmap.org:\n\n', result);
-    security_message(data : msg, port:port);
+    log_message(data : msg, port:port);
   }
 }
 else

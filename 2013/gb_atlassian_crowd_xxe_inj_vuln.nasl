@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_atlassian_crowd_xxe_inj_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_atlassian_crowd_xxe_inj_vuln.nasl 11219 2018-09-04 11:52:00Z cfischer $
 #
 # Atlassian Crowd Xml eXternal Entity (XXE) Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803830");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11219 $");
   script_cve_id("CVE-2013-3925");
   script_bugtraq_id(60899);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-09 15:27:15 +0530 (Tue, 09 Jul 2013)");
   script_name("Atlassian Crowd Xml eXternal Entity (XXE) Injection Vulnerability");
   script_tag(name:"summary", value:"This host is running Atlassian Crowd and is prone to xml external
@@ -70,9 +70,9 @@ port = get_http_port(default:8095);
 
 files = traversal_files();
 
+useragent = get_http_user_agent();
 host = http_host_name( port:port );
 
-## Send and Receive the response
 req = http_get(item:"/crowd/console/login.action",  port:port);
 res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
 
@@ -111,7 +111,7 @@ if("Atlassian<" >< res && "Crowd Console<" >< res)
 
       req = string("POST ",url," HTTP/1.1\r\n",
                "Host: ", host,"\r\n",
-               "User-Agent: ", OPENVAS_HTTP_USER_AGENT,"\r\n",
+               "User-Agent: ", useragent, "\r\n",
                "SOAPAction: ",'""',"\r\n",
                "Content-Type: text/xml; charset=UTF-8\r\n",
                "Content-Length: ", len,"\r\n",

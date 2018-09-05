@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seagate_nas_default_admin.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: gb_seagate_nas_default_admin.nasl 11219 2018-09-04 11:52:00Z cfischer $
 #
 # Seagate NAS Default Login
 #
@@ -27,15 +27,15 @@
 
 CPE = "cpe:/h:seagate:blackarmor_nas";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103754");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11219 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Seagate NAS Default Login");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-08 14:02:06 +0200 (Thu, 08 Aug 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -55,7 +55,8 @@ Impact Level: Application");
   script_tag(name:"insight", value:"It was possible to login with username 'admin' and password 'admin'.");
   script_tag(name:"solution", value:"Change the password.");
   script_tag(name:"solution_type", value:"Workaround");
- exit(0);
+
+  exit(0);
 }
 
 include("http_func.inc");
@@ -74,6 +75,7 @@ if(isnull(co[1]))exit(0);
 
 cookie = co[1];
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 data = 'p_user=admin&p_pass=admin&lang=en&xx=1&loginnow=Login';
@@ -81,7 +83,7 @@ len = strlen(data);
 
 req = 'POST / HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Referer: http://' + host + '/?lang=en\r\n' +
       'DNT: 1\r\n' +
       'Cookie: ' + cookie + '\r\n' +
@@ -93,7 +95,7 @@ result = http_send_recv(port:port, data:req, bodyonly:FALSE);
 
 req = 'GET /admin/system_status.php?lang=en&gi=sy002 HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Referer: http://' + host + '/?lang=en\r\n' +
       'DNT: 1\r\n' +
       'Cookie: ' + cookie + '\r\n' + '\r\n';
@@ -101,11 +103,8 @@ req = 'GET /admin/system_status.php?lang=en&gi=sy002 HTTP/1.1\r\n' +
 buf = http_send_recv(port:port, data:req, bodyonly:TRUE);
 
 if(">Logout<" >< buf && ">System Status<" >< buf && "Admin Password" >< buf) {
-
   security_message(port:port);
   exit(0);
-
 }
 
 exit(0);
-

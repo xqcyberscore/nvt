@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCus47259.nasl 6345 2017-06-15 10:00:59Z teissa $
+# $Id: gb_cisco_asa_CSCus47259.nasl 11220 2018-09-04 11:57:09Z mmartin $
 #
 # Cisco ASA XAUTH Bypass Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106012");
-  script_version("$Revision: 6345 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
-  script_tag(name : "creation_date", value : "2015-06-23 09:56:22 +0700 (Tue, 23 Jun 2015)");
-  script_tag(name : "cvss_base", value : "4.0");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_version("$Revision: 11220 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-06-23 09:56:22 +0700 (Tue, 23 Jun 2015)");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -52,24 +52,24 @@ if (description)
   script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
   script_mandatory_keys("cisco_asa/version");
 
-  script_tag(name : "summary", value : "Cisco ASA is prone to a XAUTH bypass vulnerability.");
+  script_tag(name:"summary", value:"Cisco ASA is prone to a XAUTH bypass vulnerability.");
 
-  script_tag(name : "vuldetect", value : "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name : "insight", value : "A vulnerability in IKE version 1 code of Cisco ASA Software
+  script_tag(name:"insight", value:"A vulnerability in IKE version 1 code of Cisco ASA Software
 could allow an authenticated, remote attacker to bypass Extended Authentication (XAUTH) and successfully
 log in via IPsec remote VPN. The vulnerability is due to improper implementation of the logic of the
 XAUTH code.");
 
-  script_tag(name : "impact", value : "An authenticated, remote attacker could exploit this vulnerability
+  script_tag(name:"impact", value:"An authenticated, remote attacker could exploit this vulnerability
 to bypass authentication and gain network access to an environment an affected device is protecting. A
 successful exploit could be used to conduct further attacks.");
 
-  script_tag(name : "affected", value : "Version 7.x, 8.0, 8.1 and 8.2");
+  script_tag(name:"affected", value:"Version 7.x, 8.0, 8.1 and 8.2");
 
-  script_tag(name : "solution", value : "Apply the appropriate updates from Cisco.");
+  script_tag(name:"solution", value:"Apply the appropriate updates from Cisco.");
 
-  script_xref(name : "URL", value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=39157");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=39157");
 
   exit(0);
 }
@@ -95,7 +95,7 @@ if ((revcomp(a:compver, b:"8.0.5.17") < 0) &&
   security_message(port: 0, data:report);
   exit(0);
 }
- 
+
 if ((revcomp(a:compver, b:"8.1.2.45") < 0) &&
     (revcomp(a:compver, b:"8.1") >= 0)) {
   report = 'Installed Version: ' + version + '\n' +

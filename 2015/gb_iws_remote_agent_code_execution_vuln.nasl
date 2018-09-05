@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iws_remote_agent_code_execution_vuln.nasl 6254 2017-05-31 09:04:18Z teissa $
+# $Id: gb_iws_remote_agent_code_execution_vuln.nasl 11220 2018-09-04 11:57:09Z mmartin $
 #
 # InduSoft Web Studio 'Remote Agent' Code Execution Vulnerability (Windows)
 #
@@ -29,33 +29,32 @@ CPE = "cpe:/a:schneider_electric:indusoft_web_studio";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806643");
-  script_version("$Revision: 6254 $");
+  script_version("$Revision: 11220 $");
   script_cve_id("CVE-2015-7374");
   script_bugtraq_id(76864);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-07 14:48:04 +0530 (Mon, 07 Dec 2015)");
   script_name("InduSoft Web Studio 'Remote Agent' Code Execution Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value: "This host is installed with InduSoft Web
+  script_tag(name:"summary", value:"This host is installed with InduSoft Web
   Studio and is prone to code execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The flaw exists due to some unspecified
+  script_tag(name:"insight", value:"The flaw exists due to some unspecified
   error in remote agent component within the application.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   an attacker to execute arbitrary code on the affected system.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"InduSoft Web Studio 7.1.3.6 and
+  script_tag(name:"affected", value:"InduSoft Web Studio 7.1.3.6 and
   all previous versions on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to InduSoft Web Studio version
+  script_tag(name:"solution", value:"Upgrade to InduSoft Web Studio version
   8.0 or later. For updates refer to
   http://www.indusoft.com/");
 
@@ -63,7 +62,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "http://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2015-251-01");
+  script_xref(name:"URL", value:"http://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2015-251-01");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -77,15 +76,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-studioVer = "";
-
-## Get version
 if(!studioVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 ## 7.1.3.6 == 71.3.6
 if(version_is_less_equal(version:studioVer, test_version:"71.3.6"))
 {

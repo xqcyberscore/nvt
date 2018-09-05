@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_remote_code_exec_vuln.nasl 10017 2018-05-30 07:17:29Z cfischer $
+# $Id: gb_jboss_remote_code_exec_vuln.nasl 11227 2018-09-04 13:25:37Z mmartin $
 #
 # JBoss Application Server Remote Code Execution Vulnerability
 #
@@ -27,32 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805373");
-  script_version("$Revision: 10017 $");
+  script_version("$Revision: 11227 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-30 14:34:53 +0530 (Thu, 30 Apr 2015)");
   script_name("JBoss Application Server Remote Code Execution Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with JBoss Application
+  script_tag(name:"summary", value:"This host is installed with JBoss Application
   Server and is prone to remote code execution vulnerability.
 
   This script is temporary deprecated until check for this vulnerability was implemented.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted exploit string via HTTP
+  script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP
   GET request and check whether it is able to execute the code remotely.");
 
-  script_tag(name: "insight" , value:"Flaw is due to the jbossass/jbossass.jsp
+  script_tag(name:"insight", value:"Flaw is due to the jbossass/jbossass.jsp
   script not properly sanitizing user-supplied input.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attacker
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to execute arbitrary code in the affected system.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"JBoss AS versions 3, 4, 5, 6.");
+  script_tag(name:"affected", value:"JBoss AS versions 3, 4, 5, 6.");
 
-  script_tag(name: "solution" , value:"No known solution was made available
+  script_tag(name:"solution", value:"No known solution was made available
   for at least one year since the disclosure of this vulnerability. Likely none will
   be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another
@@ -61,7 +61,7 @@ if(description)
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"exploit");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36575/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/36575/");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -78,10 +78,6 @@ if(description)
 exit(66);
 
 #The script currently only checks for a webshell uploaded by the referenced exploit
-#TODOs:
-#- Fix NVT to actually check for the vulnerability itself (Ref: https://github.com/joaomatosf/jexboss)
-#- Use JBoss detection NVT
-#- Update the solution type (this can be mitigated by correctly secure the endpoints
 
 include("http_func.inc");
 include("http_keepalive.inc");

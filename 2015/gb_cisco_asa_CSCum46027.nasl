@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCum46027.nasl 6254 2017-05-31 09:04:18Z teissa $
+# $Id: gb_cisco_asa_CSCum46027.nasl 11227 2018-09-04 13:25:37Z mmartin $
 #
 # Cisco ASA SQL*NET Inspection Engine DoS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105976");
-  script_version("$Revision: 6254 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
-  script_tag(name : "creation_date", value : "2015-03-13 10:52:16 +0700 (Fri, 13 Mar 2015)");
-  script_tag(name : "cvss_base", value : "7.8");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11227 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-03-13 10:52:16 +0700 (Fri, 13 Mar 2015)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -52,25 +52,25 @@ if (description)
   script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
   script_mandatory_keys("cisco_asa/version");
 
-  script_tag(name : "summary", value : "The SQL*NET Inspection Engine of Cisco ASA is prone to a Denial of
+  script_tag(name:"summary", value:"The SQL*NET Inspection Engine of Cisco ASA is prone to a Denial of
 Service vulnerability.");
 
-  script_tag(name : "vuldetect", value : "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name : "insight", value : "A vulnerability in SQL*Net inspection engine code could allow an
+  script_tag(name:"insight", value:"A vulnerability in SQL*Net inspection engine code could allow an
 unauthenticated, remote attacker to cause a reload of the affected system.
 The vulnerability is due to improper handling of crafted SQL REDIRECT packets by a system running an affected
 version of Cisco ASA Software with  SQL*Net inspection enabled.");
 
-  script_tag(name : "impact", value : "An unauthenticated, remote attacker could exploit this vulnerability
+  script_tag(name:"impact", value:"An unauthenticated, remote attacker could exploit this vulnerability
 by sending a crafted sequence of REDIRECT packets through the targeted system. A successful exploit could cause
 the system to reload, resulting in a DoS condition.");
 
-  script_tag(name : "affected", value : "Version 7.2, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 9.0 and 9.1");
+  script_tag(name:"affected", value:"Version 7.2, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 9.0 and 9.1");
 
-  script_tag(name : "solution", value : "Apply the appropriate updates from Cisco.");
+  script_tag(name:"solution", value:"Apply the appropriate updates from Cisco.");
 
-  script_xref(name : "URL", value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=35905");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35905");
 
   exit(0);
 }
@@ -96,7 +96,7 @@ if ((revcomp(a:compver, b:"8.2.5.50") < 0) &&
   security_message(port: 0, data:report);
   exit(0);
 }
- 
+
 if ((revcomp(a:compver, b:"8.3.2.42") < 0) &&
     (revcomp(a:compver, b:"8.3") >= 0)) {
   report = 'Installed Version: ' + version + '\n' +

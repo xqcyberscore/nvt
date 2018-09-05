@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_unprotected_belkin_2307.nasl 11041 2018-08-17 14:03:47Z mmartin $
+# $Id: gb_unprotected_belkin_2307.nasl 11219 2018-09-04 11:52:00Z cfischer $
 #
 # Belkin 2307 Unprotected Web Console
 #
@@ -25,10 +25,10 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103704");
-  script_version("$Revision: 11041 $");
+  script_version("$Revision: 11219 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -36,7 +36,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.belkin.com");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-23 12:01:48 +0100 (Tue, 23 Apr 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -62,13 +62,14 @@ res = http_get(item:url, port:port);
 
 if( 'content="Belkin 2307"' >< res ) {
 
+  useragent = get_http_user_agent();
   host = http_host_name(port:port);
   login = "page=&logout=&action=submit&pws=&itsbutton1=Absenden&h_language=de&is_parent_window=1";
   len = strlen(login);
 
   req = string("POST /login.cgi HTTP/1.1\r\n",
                "Host: ", host,"\r\n",
-               "User-Agent: ", OPENVAS_HTTP_USER_AGENT,"\r\n",
+               "User-Agent: ", useragent, "\r\n",
                "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
                "Accept-Language: de-de,de;q=0.8,en-us;q=0.5,en;q=0.3\r\n",
                "Accept-Encoding: identity\r\n",

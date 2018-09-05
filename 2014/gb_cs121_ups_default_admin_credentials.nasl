@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cs121_ups_default_admin_credentials.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_cs121_ups_default_admin_credentials.nasl 11222 2018-09-04 12:41:44Z cfischer $
 #
 # CS121 UPS Default Admin Credentials
 #
@@ -25,14 +25,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105023");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11222 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("CS121 UPS Default Admin Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-12 11:02:06 +0200 (Mon, 12 May 2014)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -75,9 +75,10 @@ buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 if( "401 Unauthorized" >!< buf ) exit( 0 );
 
 userpass = base64 (str:'admin:cs121-snmp');
+useragent = get_http_user_agent();
 
 req = 'GET /admin/net.shtml HTTP/1.0\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT +'\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Authorization: Basic ' + userpass + '\r\n\r\n';
 
 buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);

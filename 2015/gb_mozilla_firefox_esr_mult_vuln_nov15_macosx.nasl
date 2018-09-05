@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln_nov15_macosx.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_mozilla_firefox_esr_mult_vuln_nov15_macosx.nasl 11220 2018-09-04 11:57:09Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities - Nov15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806553");
-  script_version("$Revision: 6415 $");
+  script_version("$Revision: 11220 $");
   script_cve_id("CVE-2015-7200", "CVE-2015-7199", "CVE-2015-7198", "CVE-2015-7197",
                 "CVE-2015-7196", "CVE-2015-7194", "CVE-2015-7193", "CVE-2015-7189",
                 "CVE-2015-7188", "CVE-2015-4513", "CVE-2015-7183", "CVE-2015-7182",
@@ -37,17 +37,16 @@ if(description)
   script_bugtraq_id(77415, 77416);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-09 16:15:18 +0530 (Mon, 09 Nov 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities - Nov15 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox ESR and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are exists due to,
+  script_tag(name:"insight", value:"Multiple flaws are exists due to,
   - Lack of status checking in CryptoKey interface implementation.
   - Lack of status checking in 'AddWeightedPathSegLists' and
    'SVGPathSegListSMILType::Interpolate' functions.
@@ -66,17 +65,17 @@ if(description)
   - Multiple unspecified vulnerabilities in the browser engine in Mozilla Firefox.
   - Multiple memory corruption issues in NSS and NSPR.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to cause a denial of service or possibly execute arbitrary code ,
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to cause a denial of service or possibly execute arbitrary code,
   bypass security restrictions, to obtain sensitive information and some
   unspecified impacts.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox ESR version 38.x
+  script_tag(name:"affected", value:"Mozilla Firefox ESR version 38.x
   before 38.4 on Mac OS X");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox ESR version
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version
   38.4 or later,
   For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
@@ -99,15 +98,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(ffVer =~ "^38\.")
 {
   if(version_is_less(version:ffVer, test_version:"38.4"))

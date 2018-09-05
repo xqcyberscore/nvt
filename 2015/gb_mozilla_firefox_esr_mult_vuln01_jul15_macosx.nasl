@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_jul15_macosx.nasl 6369 2017-06-19 10:00:04Z teissa $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_jul15_macosx.nasl 11218 2018-09-04 11:43:35Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities-01 July15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805908");
-  script_version("$Revision: 6369 $");
+  script_version("$Revision: 11218 $");
   script_cve_id("CVE-2015-2721", "CVE-2015-2722", "CVE-2015-2724", "CVE-2015-2728",
                 "CVE-2015-2730", "CVE-2015-2733", "CVE-2015-2734", "CVE-2015-2735",
                 "CVE-2015-2736", "CVE-2015-2737", "CVE-2015-2738", "CVE-2015-2739",
@@ -37,17 +37,16 @@ if(description)
   script_bugtraq_id(75541, 74733);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-08 17:23:35 +0530 (Wed, 08 Jul 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 July15 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox ESR and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
   - An error within Network Security Services (NSS) where the client allows for
   a 'ECDHE_ECDSA' exchange where the server does not send its 'ServerKeyExchange'
   message.
@@ -70,17 +69,17 @@ if(description)
   - Buffer overflow error in the 'nsXMLHttpRequest::AppendToResponseText' function.
   - An error in PDF.js PDF file viewer.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code, obtain sensitive information, conduct
   man-in-the-middle attack, conduct denial-of-service attack, spoof ECDSA
   signatures and other unspecified impacts.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox ESR 31.x before 31.8 and
+  script_tag(name:"affected", value:"Mozilla Firefox ESR 31.x before 31.8 and
   38.x before 38.1");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox ESR version
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version
   31.8 or 38.1 or later, For updates refer to
   https://www.mozilla.org/en-US/firefox/organizations");
 
@@ -106,16 +105,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check for vulnerable version
-if(ffVer =~ "^(31)\.")
+if(ffVer =~ "^31\.")
 {
   if(version_is_less(version:ffVer, test_version:"31.8"))
   {
@@ -124,7 +118,7 @@ if(ffVer =~ "^(31)\.")
   }
 }
 
-if(ffVer =~ "^(38)\.")
+if(ffVer =~ "^38\.")
 {
   if(version_is_less(version:ffVer, test_version:"38.1"))
   {

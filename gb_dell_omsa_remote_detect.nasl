@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_omsa_remote_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_dell_omsa_remote_detect.nasl 11224 2018-09-04 12:57:17Z cfischer $
 #
 # Dell OpenManage Server Administrator Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807563");
-  script_version("$Revision: 11015 $");
+  script_version("$Revision: 11224 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:57:17 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-27 10:47:16 +0530 (Wed, 27 Apr 2016)");
   script_name("Dell OpenManage Server Administrator Remote Detection");
 
@@ -62,14 +62,12 @@ foreach dir (make_list("/", "/servlet"))
   install = dir;
   if( dir == "/" ) dir = "";
 
-  ## Send and Receive the response
   omsaReq = http_get(item: string(dir, "/Login?omacmd=getlogin&page=Login&managedws=true"), port:omsaPort);
   omsaRes = http_keepalive_send_recv(port:omsaPort, data:omsaReq);
 
   if('application">Server Administrator' >< omsaRes && '>Login' >< omsaRes &&
      'dell' >< omsaRes)
   {
-    ## Send and Receive the response
     url =  dir + "/UDataArea?plugin=com.dell.oma.webplugins.AboutWebPlugin";
     omsaReq = http_get(item: url, port:omsaPort);
     omsaRes = http_keepalive_send_recv(port:omsaPort, data:omsaReq);

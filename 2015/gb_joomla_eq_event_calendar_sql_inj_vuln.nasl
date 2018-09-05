@@ -29,11 +29,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805801");
-  script_version("$Revision: 6369 $");
+  script_version("$Revision: 11227 $");
   script_cve_id("CVE-2015-4654");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-23 16:59:30 +0530 (Tue, 23 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Joomla! EQ Event Calendar component SQL Injection Vulnerability");
@@ -55,17 +55,15 @@ if(description)
 
   script_tag(name:"affected", value:"Joomla! component EQ Event Calendar");
 
-  script_tag(name: "solution" , value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by
-  another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://www.scip.ch/en/?vuldb.76002");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132220");
-  script_xref(name : "URL" , value : "http://vulndb.blogspot.in/2015/06/eq-event-calendar-on-joomla-id-sql.html");
+  script_xref(name:"URL", value:"http://www.scip.ch/en/?vuldb.76002");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/132220");
+  script_xref(name:"URL", value:"http://vulndb.blogspot.in/2015/06/eq-event-calendar-on-joomla-id-sql.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -81,25 +79,16 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-# Variable Initialization
-http_port = 0;
-req = "";
-res = "";
-dir = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Joomla Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
 foreach path (make_list("/component", "/en/component"))
 {
-  ## Construct Attack Request
   url = dir + "/index.php" + path + "/eqfullevent?view=lists&"
             + "id=1%27SQL-INJECTION-TEST";
 

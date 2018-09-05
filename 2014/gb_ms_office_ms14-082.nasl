@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms14-082.nasl 6715 2017-07-13 09:57:40Z teissa $
+# $Id: gb_ms_office_ms14-082.nasl 11214 2018-09-04 10:09:46Z mmartin $
 #
 # Microsoft Office Remote Code Execution Vulnerability (3017349)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805022");
-  script_version("$Revision: 6715 $");
+  script_version("$Revision: 11214 $");
   script_cve_id("CVE-2014-6364");
   script_bugtraq_id(71474);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-13 11:57:40 +0200 (Thu, 13 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-10 09:17:13 +0530 (Wed, 10 Dec 2014)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (3017349)");
 
@@ -50,8 +50,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Office 2007 Service Pack 3 and prior
+  script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3 and prior
   Microsoft Office 2010 Service Pack 2 and prior
   Microsoft Office 2013 Service Pack 1 and prior.");
 
@@ -62,13 +61,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/61150");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3017349");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms14-082");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/61150");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/3017349");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms14-082");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_office_products_version_900032.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/Ver");
   exit(0);
 }
@@ -87,7 +87,6 @@ if(!get_kb_item("MS/Office/Ver") =~ "^[12|14|15].*"){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
@@ -102,6 +101,6 @@ if(version_in_range(version:dllVer, test_version:"14.0", test_version2:"14.0.714
    version_in_range(version:dllVer, test_version:"12.0", test_version2:"12.0.6713.4999") ||
    version_in_range(version:dllVer, test_version:"15.0", test_version2:"15.0.4675.1000"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

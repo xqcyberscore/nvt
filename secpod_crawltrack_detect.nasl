@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_crawltrack_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
+# $Id: secpod_crawltrack_detect.nasl 11224 2018-09-04 12:57:17Z cfischer $
 #
 # CrawlTrack Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901178");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10911 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11224 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:57:17 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-02-05 04:12:38 +0100 (Sat, 05 Feb 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("CrawlTrack Version Detection");
@@ -61,7 +61,6 @@ foreach dir( make_list_unique( "/crawltrack", "/crawler", "/", cgi_dirs( port:po
   install = dir;
   if( dir == "/" ) dir = "";
 
-  ## Send and Receive the response
   sndReq = http_get( item: dir + "/html/infoen.htm", port:port);
   rcvRes = http_keepalive_send_recv( port:port, data:sndReq, bodyonly:TRUE );
 

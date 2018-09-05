@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-045.nasl 6391 2017-06-21 09:59:48Z teissa $
+# $Id: gb_ms15-045.nasl 11227 2018-09-04 13:25:37Z mmartin $
 #
 # Microsoft Windows Journal Remote Code Execution Vulnerability (3046002)
 #
@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802091");
-  script_version("$Revision: 6391 $");
+  script_version("$Revision: 11227 $");
   script_cve_id("CVE-2015-1675", "CVE-2015-1695", "CVE-2015-1696",
                 "CVE-2015-1697", "CVE-2015-1698", "CVE-2015-1699");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-13 13:29:45 +0530 (Wed, 13 May 2015)");
   script_name("Microsoft Windows Journal Remote Code Execution Vulnerability (3046002)");
 
@@ -49,8 +49,7 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8/8.1 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8/8.1 x32/x64
   Microsoft Windows Server 2012/R2
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
@@ -65,13 +64,14 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-045");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/dd759248.aspx");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-045");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/dd759248.aspx");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -81,17 +81,11 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-win32SysVer="";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2, win8:1,
                    win2012:1, win2012R2:1, win8_1:1, win8_1x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                            item:"CommonFilesDir");
 if(!sysPath){
@@ -100,42 +94,35 @@ if(!sysPath){
 
 sysPath = sysPath + "\Microsoft Shared\ink";
 
-## Get Version from Journal.dll file
 Win32sysVer = fetch_file_version(sysPath, file_name:"Journal.dll");
 if(!Win32sysVer){
   exit(0);
 }
 
-## Windows Vista and Windows Server 2008
 ## Currently not supporting for Vista and Windows Server 2008 64 bit
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Journal.dll version
   if(version_is_less(version:Win32sysVer, test_version:"6.0.6002.19356") ||
      version_in_range(version:Win32sysVer, test_version:"6.0.6002.22000", test_version2:"6.0.6002.23663")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows 7 and Windows Server 2008 R2
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Journal.dll version
   if(version_is_less(version:Win32sysVer, test_version:"6.1.7601.18815") ||
      version_in_range(version:Win32sysVer, test_version:"6.1.7601.22000", test_version2:"6.1.7601.23019")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows 8 and Windows Server 2012
 else if(hotfix_check_sp(win8:1, win2012:1) > 0)
 {
- ## Check for Journal.dll version
   if(version_is_less(version:Win32sysVer, test_version:"6.2.9200.17330") ||
      version_in_range(version:Win32sysVer, test_version:"6.2.9200.20000", test_version2:"6.2.9200.21443")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
@@ -143,9 +130,8 @@ else if(hotfix_check_sp(win8:1, win2012:1) > 0)
 ## Win 8.1 Windows Server 2012 R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Journal.dll version
   if(version_is_less(version:Win32sysVer, test_version:"6.3.9600.17793")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }

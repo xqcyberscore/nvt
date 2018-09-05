@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-116_macosx.nasl 4567 2016-11-18 09:53:48Z antu123 $
+# $Id: gb_ms15-116_macosx.nasl 11220 2018-09-04 11:57:09Z mmartin $
 #
 # Microsoft Office Multiple Vulnerabilities-3104540 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806705");
-  script_version("$Revision: 4567 $");
+  script_version("$Revision: 11220 $");
   script_cve_id("CVE-2015-6038", "CVE-2015-6094", "CVE-2015-6123");
   script_bugtraq_id(77489, 77490);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-18 10:53:48 +0100 (Fri, 18 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-24 10:32:31 +0530 (Tue, 24 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Multiple Vulnerabilities-3104540 (Mac OS X)");
@@ -48,7 +48,7 @@ if(description)
   - Insufficient sanitization of user supplied input by Outlook for Mac.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to execute arbitrary code, conduct spoofing attacks , perform unauthorized
+  to execute arbitrary code, conduct spoofing attacks, perform unauthorized
   actions and some other attacks.
 
   Impact Level: System/Application");
@@ -59,8 +59,8 @@ if(description)
   https://technet.microsoft.com/library/security/MS15-116");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3102924");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-116");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3102924");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-116");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Mac OS X Local Security Checks");
@@ -72,18 +72,12 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-offVer = "";
-
-## Get the version from KB
 offVer = get_kb_item("MS/Office/MacOSX/Ver");
 
-## check the version from KB
-if(!offVer || !(offVer =~ "^(14)")){
+if(!offVer || !(offVer =~ "^14")){
   exit(0);
 }
 
-## Check for Office Version < 2011 (14.5.8)
 if(version_in_range(version:offVer, test_version:"14.0", test_version2:"14.5.7"))
 {
   report = 'File version:     ' + offVer   + '\n' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_axway_securetransport_49355.nasl 6551 2017-07-06 09:58:21Z teissa $
+# $Id: sw_axway_securetransport_49355.nasl 11227 2018-09-04 13:25:37Z mmartin $
 #
 # Axway SecureTransport Directory Traversal Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:axway:securetransport';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111021");
-  script_version("$Revision: 6551 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
+  script_version("$Revision: 11227 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-22 08:00:00 +0200 (Wed, 22 Apr 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,13 +48,13 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("axway_securetransport/installed");
 
-  script_tag(name : "summary" , value : "Axway SecureTransport is prone to a directory-traversal vulnerability
+  script_tag(name:"summary", value:"Axway SecureTransport is prone to a directory-traversal vulnerability
   because it fails to sufficiently sanitize user-supplied input data.");
-  script_tag(name : "vuldetect" , value : "Check the version.");
-  script_tag(name : "impact" , value : "Exploiting the issue may allow an attacker to obtain sensitive information
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"impact", value:"Exploiting the issue may allow an attacker to obtain sensitive information
   that could aid in further attacks.");
-  script_tag(name : "affected" , value : "SecureTransport 4.8.x prior to 4.8.2 Patch 12 are vulnerable.");
-  script_tag(name : "solution" , value : "The vendor has released updates.");
+  script_tag(name:"affected", value:"SecureTransport 4.8.x prior to 4.8.2 Patch 12 are vulnerable.");
+  script_tag(name:"solution", value:"The vendor has released updates.");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49355");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/519464");
@@ -78,6 +78,6 @@ if( version_is_less( version:vers, test_version:"4.8.2" ) ) {
            'Fixed version:     ' + "4.8.2 Patch 12" + '\n';
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

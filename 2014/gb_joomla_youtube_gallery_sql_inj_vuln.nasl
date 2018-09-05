@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_youtube_gallery_sql_inj_vuln.nasl 10212 2018-06-15 09:51:23Z ckuersteiner $
+# $Id: gb_joomla_youtube_gallery_sql_inj_vuln.nasl 11213 2018-09-04 09:30:51Z mmartin $
 #
 # Joomla! YouTube Gallery Component 'gallery.php' SQL Injection Vulnerability
 #
@@ -29,35 +29,35 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804720");
-  script_version("$Revision: 10212 $");
+  script_version("$Revision: 11213 $");
   script_cve_id("CVE-2014-4960");
   script_bugtraq_id(68676);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 11:51:23 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-24 16:09:39 +0530 (Thu, 24 Jul 2014)");
   script_name("Joomla! YouTube Gallery Component 'gallery.php' SQL Injection Vulnerability");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name: "summary", value: "This host is installed with Joomla! YouTube Gallery Component and is prone
+  script_tag(name:"summary", value:"This host is installed with Joomla! YouTube Gallery Component and is prone
 to sql injection vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP GET request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP GET request and checks the response.");
 
-  script_tag(name: "insight", value: "Flaw is due to the /com_youtubegallery/models/gallery.php script not
+  script_tag(name:"insight", value:"Flaw is due to the /com_youtubegallery/models/gallery.php script not
 properly sanitizing user-supplied input to the 'listid' and 'themeid' parameters.");
 
-  script_tag(name: "impact", value: "Successful exploitation will allow remote attackers to execute arbitrary SQL
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary SQL
 statements on the vulnerable system, which may leads to access or modify data in the underlying database.");
 
-  script_tag(name: "affected", value: "Joomla! YouTube Gallery Component version 4.1.7, Prior versions may also be
+  script_tag(name:"affected", value:"Joomla! YouTube Gallery Component version 4.1.7, Prior versions may also be
 affected.");
 
-  script_tag(name: "solution", value: "Upgrade to version 4.1.9 or higher.");
+  script_tag(name:"solution", value:"Upgrade to version 4.1.9 or higher.");
 
-  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/34087");
-  script_xref(name: "URL", value: "http://packetstormsecurity.com/files/127497");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/34087");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127497");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

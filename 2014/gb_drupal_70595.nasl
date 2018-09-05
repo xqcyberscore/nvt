@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_70595.nasl 11202 2018-09-03 14:43:03Z mmartin $
+# $Id: gb_drupal_70595.nasl 11222 2018-09-04 12:41:44Z cfischer $
 #
 # Drupal Core SQL Injection Vulnerability
 #
@@ -27,14 +27,14 @@
 
 CPE = "cpe:/a:drupal:drupal";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105101");
   script_bugtraq_id(70595);
   script_cve_id("CVE-2014-3704");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11202 $");
+  script_version("$Revision: 11222 $");
 
   script_name("Drupal Core SQL Injection Vulnerability");
 
@@ -55,7 +55,7 @@ it in an SQL query.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-30 17:18:15 +0100 (Thu, 30 Oct 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -64,17 +64,17 @@ it in an SQL query.");
   script_mandatory_keys("drupal/installed");
   script_require_ports("Services/www", 80);
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 data = 'name[0;%20SELECT+OpenVAS;#]=0&name[0]==OpenVAS&pass=OpenVAS&test2=test&form_build_id=&form_id=user_login_block&op=Log+in';
@@ -85,14 +85,13 @@ if (dir == "/") dir = "";
 req = 'POST ' + dir  + '/?q=node&destination=node HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
       'Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Cookie: ZDEDebuggerPresent=php,phtml,php3\r\n' +
       'Connection: Close\r\n' +
       'Content-Type: application/x-www-form-urlencoded\r\n' +
       'Content-Length: ' + len + '\r\n' +
       '\r\n' +
       data;
-
 result = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
 if( tolower( result ) =~ "warning.*mb_strlen\(\) expects parameter 1" && "The website encountered an unexpected error" >!< result ) {

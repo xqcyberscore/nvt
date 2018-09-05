@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_JSA10538.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_junos_JSA10538.nasl 11213 2018-09-04 09:30:51Z mmartin $
 #
 # Junos RDP Crash
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/o:juniper:junos';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105912");
-  script_version ("$Revision: 6637 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_version("$Revision: 11213 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-16 11:34:19 +0700 (Mon, 16 Jun 2014)");
   script_tag(name:"cvss_base", value:"6.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:C");
@@ -47,29 +47,29 @@ if (description)
 
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("JunOS Local Security Checks");
-  script_dependencies("gb_ssh_junos_get_version.nasl","gb_junos_snmp_version.nasl");
+  script_dependencies("gb_ssh_junos_get_version.nasl", "gb_junos_snmp_version.nasl");
   script_mandatory_keys("Junos/Build", "Junos/Version");
 
-  script_tag(name : "summary" , value : "RDP crash when receiving BGP UPDATE with malformed inetflow prefix.");
+  script_tag(name:"summary", value:"RDP crash when receiving BGP UPDATE with malformed inetflow prefix.");
 
-  script_tag(name : "vuldetect" , value : "Check the OS build.");
+  script_tag(name:"vuldetect", value:"Check the OS build.");
 
-  script_tag(name : "insight" , value : "Receipt of a BGP UPDATE message containing a crafted flow specification
+  script_tag(name:"insight", value:"Receipt of a BGP UPDATE message containing a crafted flow specification
 NLRI may cause RPD to crash. The update creates an invalid inetflow prefix which causes the RPD process
 to allocate memory until it reaches its assigned memory limit.");
 
-  script_tag(name : "impact" , value : "After trying to exceed the process memory limit, RPD will crash and
+  script_tag(name:"impact", value:"After trying to exceed the process memory limit, RPD will crash and
 restart. The system recovers after the crash, however a constant stream of malformed updates could cause
 an extended outage.");
 
-  script_tag(name : "affected" , value : "Junos OS 10.0, 10.4, 11.4, 12.1 and 12.2.");
+  script_tag(name:"affected", value:"Junos OS 10.0, 10.4, 11.4, 12.1 and 12.2.");
 
-  script_tag(name : "solution" , value : "New builds of Junos OS software are available from Juniper. As a
+  script_tag(name:"solution", value:"New builds of Junos OS software are available from Juniper. As a
 workaround disable the propagation of flow-specification NLRI messages via BGP by removing the flow
 configuration option from protocols bgp ... family inet.");
 
   script_xref(name:"URL", value:"http://kb.juniper.net/JSA10538");
- 
+
   exit(0);
 }
 

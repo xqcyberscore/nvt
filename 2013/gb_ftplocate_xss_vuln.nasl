@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ftplocate_xss_vuln.nasl 11007 2018-08-16 13:20:25Z mmartin $
+# $Id: gb_ftplocate_xss_vuln.nasl 11223 2018-09-04 12:48:48Z cfischer $
 #
 # FtpLocate fsite Parameter Cross Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803847");
-  script_version("$Revision: 11007 $");
+  script_version("$Revision: 11223 $");
   script_bugtraq_id(60760);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:20:25 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:48:48 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-01 10:40:30 +0530 (Thu, 01 Aug 2013)");
   script_name("FtpLocate fsite Parameter Cross Site Scripting Vulnerability");
 
@@ -75,7 +75,6 @@ foreach dir (make_list_unique("/", "/ftplocate", "/ftp", cgi_dirs(port:port)))
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   req = http_get(item:string(dir,"/flsummary.pl"),  port:port);
   res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
 

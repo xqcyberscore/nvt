@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_mult_vuln05.nasl 9384 2018-04-06 12:20:19Z cfischer $
+# $Id: gb_open_xchange_appsuite_mult_vuln05.nasl 11220 2018-09-04 11:57:09Z mmartin $
 #
 # Open-Xchange (OX) AppSuite Multiple Vulnerabilities -05 Nov15
 #
@@ -29,23 +29,22 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806524");
-  script_version("$Revision: 9384 $");
+  script_version("$Revision: 11220 $");
   script_cve_id("CVE-2013-6074", "CVE-2013-6241");
   script_bugtraq_id(63565);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-02 10:34:36 +0530 (Mon, 02 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite Multiple Vulnerabilities -05 Nov15");
 
-  script_tag(name: "summary" , value:"This host is installed with
+  script_tag(name:"summary", value:"This host is installed with
   Open-Xchange (OX) AppSuite and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to:
+  script_tag(name:"insight", value:"Multiple flaws are due to:
 
   - Input sanitization error in SVG file.
 
@@ -67,7 +66,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2013-11/0025.html");
+  script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2013-11/0025.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -97,7 +96,6 @@ if(oxRev)
   ## Updating version with revision number
   oxVer = oxVer + "." + oxRev;
 
-  ##Check for vulnerable version
   if(version_in_range(version:oxVer, test_version:"7.2", test_version2:"7.2.2.24"))
   {
     fix = "7.2.2-rev25";

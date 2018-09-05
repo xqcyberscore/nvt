@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openmediavault_default_login.nasl 11200 2018-09-03 14:11:38Z mmartin $
+# $Id: gb_openmediavault_default_login.nasl 11222 2018-09-04 12:41:44Z cfischer $
 #
 # OpenMediaVault Default Admin Credentials
 #
@@ -25,14 +25,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105089");
-  script_version("$Revision: 11200 $");
+  script_version("$Revision: 11222 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("OpenMediaVault Default Admin Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-15 12:02:06 +0200 (Mon, 15 Sep 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -54,7 +54,7 @@ access to sensitive information or modify system configuration.');
 
   script_tag(name:"solution_type", value:"Workaround");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
@@ -67,16 +67,17 @@ if( "<title>OpenMediaVault web administration interface" >!< buf ) exit( 0 );
 
 valid_services = make_list( 'Authentication','Session' );
 
+useragent = get_http_user_agent();
+host = http_host_name( port:port );
+
 foreach vs ( valid_services )
 {
   data = '{"service":"' + vs  + '","method":"login","params":{"username":"admin","password":"openmediavault"}}';
   len = strlen( data );
 
-  host = http_host_name( port:port );
-
   req = 'POST /rpc.php HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Accept-Language: de,en-US;q=0.7,en;q=0.3\r\n' +
         'Accept-Encoding: Identity\r\n' +

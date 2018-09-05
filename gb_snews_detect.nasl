@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snews_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
+# $Id: gb_snews_detect.nasl 11224 2018-09-04 12:57:17Z cfischer $
 #
 # sNews Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801242");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10906 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11224 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:57:17 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-08-04 08:26:41 +0200 (Wed, 04 Aug 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("sNews Version Detection");
@@ -63,7 +63,6 @@ foreach dir (make_list_unique("/sNews", "/snews", "/", cgi_dirs(port:port)))
   install = dir;
   if( dir == "/" ) dir = "";
 
-  ## Send and Receive the responses
   rcvRes = http_get_cache(item: dir + "/index.php", port:port);
   rcvRes2 = http_get_cache(item: dir + "/readme.txt", port:port);
   rcvRes3 = http_get_cache(item: dir + "/readme.html", port:port);

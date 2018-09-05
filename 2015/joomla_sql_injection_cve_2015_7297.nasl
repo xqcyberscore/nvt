@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: joomla_sql_injection_cve_2015_7297.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: joomla_sql_injection_cve_2015_7297.nasl 11221 2018-09-04 12:29:42Z mmartin $
 #
 # Joomla Core SQL Injection Vulnerability
 #
@@ -28,16 +28,16 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105419");
-  script_version("$Revision: 7585 $");
-  script_tag(name:"last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
-  script_tag(name:"creation_date", value: "2015-10-22 19:38:14 +0200 (Thu, 22 Oct 2015)");
+  script_version("$Revision: 11221 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-10-22 19:38:14 +0200 (Thu, 22 Oct 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_active");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_cve_id("CVE-2015-7297","CVE-2015-7857","CVE-2015-7858", "CVE-2015-7859",
+  script_cve_id("CVE-2015-7297", "CVE-2015-7857", "CVE-2015-7858", "CVE-2015-7859",
                 "CVE-2015-7899");
 
   script_name("Joomla Core SQL Injection Vulnerability");

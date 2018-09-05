@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hybris_dir_traversal_vuln.nasl 9978 2018-05-28 08:52:24Z cfischer $
+# $Id: gb_hybris_dir_traversal_vuln.nasl 11218 2018-09-04 11:43:35Z mmartin $
 #
 # hybris Commerce Directory Traversal Vulnerability
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105955");
-  script_version("$Revision: 9978 $");
-  script_tag(name : "last_modification", value : "$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
-  script_tag(name : "creation_date", value : "2015-02-25 14:49:12 +0700 (Wed, 25 Feb 2015)");
-  script_tag(name : "cvss_base", value : "5.0");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11218 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-02-25 14:49:12 +0700 (Wed, 25 Feb 2015)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
@@ -51,27 +51,27 @@ if (description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "summary", value : "hybris Commerce Software Suite is vulnerable to a
+  script_tag(name:"summary", value:"hybris Commerce Software Suite is vulnerable to a
 directory traversal attack.");
 
-  script_tag(name : "vuldetect", value : "Send a crafted exploit string via HTTP
+  script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP
 GET request and check whether it is possible to access local files.");
 
-  script_tag(name : "insight", value : "Webshops based on hybris may use an file retrieval
+  script_tag(name:"insight", value:"Webshops based on hybris may use an file retrieval
 system where files are identified by a URL parameter named 'context' rather than a file
 name. The context is base64 encoded and consists among other parameters the file name.
 This file name is vulnerable to directory traversal.");
 
-  script_tag(name : "impact", value : "An unauthenticated attacker can retrieve arbitrary files
+  script_tag(name:"impact", value:"An unauthenticated attacker can retrieve arbitrary files
 which might consist sensitive data which can be used for further attacks.");
 
-  script_tag(name : "affected", value : "hybris Commerce Software Suite Releases 5.0.0, 5.0.3,
+  script_tag(name:"affected", value:"hybris Commerce Software Suite Releases 5.0.0, 5.0.3,
 5.0.4, 5.1, 5.1.1, 5.2 and 5.3");
 
-  script_tag(name : "solution", value : "Upgrade to Release 5.0.0.4, 5.0.3.4, 5.0.4.5, 5.1.0.2,
+  script_tag(name:"solution", value:"Upgrade to Release 5.0.0.4, 5.0.3.4, 5.0.4.5, 5.1.0.2,
 5.1.1.3, 5.2.0.4, 5.3.0.2 or higher.");
 
-  script_xref(name : "URL", value : "https://www.redteam-pentesting.de/advisories/rt-sa-2014-016");
+  script_xref(name:"URL", value:"https://www.redteam-pentesting.de/advisories/rt-sa-2014-016");
 
   exit(0);
 }

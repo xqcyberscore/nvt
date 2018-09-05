@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_sec_bypass_vuln_apr15_macosx.nasl 6211 2017-05-25 09:04:14Z teissa $
+# $Id: gb_mozilla_firefox_sec_bypass_vuln_apr15_macosx.nasl 11225 2018-09-04 13:06:36Z mmartin $
 #
 # Mozilla Firefox SSL Certificate Verification Bypass Vulnerability- Apr15 (Mac OS X)
 #
@@ -29,32 +29,31 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805529");
-  script_version("$Revision: 6211 $");
+  script_version("$Revision: 11225 $");
   script_cve_id("CVE-2015-0799");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-25 11:04:14 +0200 (Thu, 25 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-06 16:32:37 +0530 (Mon, 06 Apr 2015)");
   script_name("Mozilla Firefox SSL Certificate Verification Bypass Vulnerability- Apr15 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox and is prone to security bypass vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The error exists as the certificates are
+  script_tag(name:"insight", value:"The error exists as the certificates are
   not properly validated when handling an Alt-Svc header in an HTTP/2 response.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to conduct man-in-the-middle attack.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox before version 37.0.1
+  script_tag(name:"affected", value:"Mozilla Firefox before version 37.0.1
   on Mac OS X");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 37.0.1
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 37.0.1
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -74,15 +73,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"37.0.1"))
 {
   report = 'Installed version: ' + ffVer + '\n' +

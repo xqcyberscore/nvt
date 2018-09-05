@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_cybozu_products_detect.nasl 10888 2018-08-10 12:08:02Z cfischer $
+# $Id: secpod_cybozu_products_detect.nasl 11224 2018-09-04 12:57:17Z cfischer $
 #
 # Cybozu Products Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902533");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10888 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:08:02 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11224 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:57:17 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-07-05 13:15:06 +0200 (Tue, 05 Jul 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Cybozu Products Version Detection");
@@ -64,7 +64,6 @@ foreach dir( make_list_unique( "/scripts", cgi_dirs( port:port ) ) ) {
 
     install = dir + path;
 
-    ## Send and Receive the response
     req = http_get( item: install + "/grn.exe", port:port );
     res = http_keepalive_send_recv( port:port, data:req );
 
@@ -100,7 +99,6 @@ foreach dir( make_list_unique( "/scripts", cgi_dirs( port:port ) ) ) {
     {
       install = dir + path;
 
-      ## Send and Receive the response
       req = http_get( item: install + file, port:port );
       res = http_keepalive_send_recv( port:port, data:req );
 
@@ -135,7 +133,6 @@ foreach dir( make_list_unique( "/scripts", cgi_dirs( port:port ) ) ) {
 
     install = dir + path;
 
-    ## Send and Receive the response
     req = http_get( item: install + "/db.exe", port:port );
     res = http_keepalive_send_recv( port:port, data:req );
 
@@ -170,7 +167,6 @@ foreach dir( make_list_unique( "/scripts", cgi_dirs( port:port ) ) ) {
 
     install = dir + path;
 
-    ## Send and Receive the response
     req = http_get(item: install + "/mw.exe", port:port );
     res = http_keepalive_send_recv( port:port, data:req );
 

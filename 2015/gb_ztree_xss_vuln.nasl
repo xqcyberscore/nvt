@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ztree_xss_vuln.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_ztree_xss_vuln.nasl 11227 2018-09-04 13:25:37Z mmartin $
 #
 # zTree Cross Site Scripting Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:ztree_project:ztree";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806901");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11227 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-16 11:04:52 +0530 (Wed, 16 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("zTree Cross Site Scripting Vulnerability");
@@ -54,11 +54,11 @@ if(description)
 
   script_tag(name:"affected", value:"zTree version 3.5.19.1 and possibly below");
 
-  script_tag(name: "solution" , value:"Upgrade to zTree 3.5.22 or later.
+  script_tag(name:"solution", value:"Upgrade to zTree 3.5.22 or later.
   For updates refer to https://github.com/zTree/zTree_v3");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://www.netsparker.com/cve-2015-7348-multiple-xss-vulnerabilities-identified-in-ztree");
+  script_xref(name:"URL", value:"https://www.netsparker.com/cve-2015-7348-multiple-xss-vulnerabilities-identified-in-ztree");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -74,26 +74,17 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-# Variable Initialization
-dir = "";
-url = "";
-http_port = "";
-
-#Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Application Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-##Construct Attack Request
 url = dir + '/en/asyncData/getNodesForBigData.php?id=""<scRipt>alert(docu' +
             'ment.cookie)</scRipt>';
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
            pattern:"<scRipt>alert\(document.cookie\)</scRipt",
            extra_check:"name:'tree"))

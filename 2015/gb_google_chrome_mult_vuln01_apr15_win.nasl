@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_apr15_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_mult_vuln01_apr15_win.nasl 11227 2018-09-04 13:25:37Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-01 Apr15 (Windows)
 #
@@ -29,34 +29,34 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805358");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11227 $");
   script_cve_id("CVE-2015-1234", "CVE-2015-1233");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-06 14:45:55 +0530 (Mon, 06 Apr 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Apr15 (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
   - A race condition in gpu/command_buffer/service/gles2_cmd_decoder.cc that
   is triggered when calculating certain sizes.
   - Unspecified flaws in V8, Gamepad, and IPC.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass sandbox protection mechanisms and execute arbitrary code
   and or cause a denial-of-service condition.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Google Chrome version prior to
+  script_tag(name:"affected", value:"Google Chrome version prior to
   41.0.2272.118 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   41.0.2272.118 or later,
   For updates refer to http://www.google.com/chrome");
 
@@ -64,8 +64,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://msisac.cisecurity.org/advisories/2015/2015-037.cfm");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2015/04/stable-channel-update.html");
+  script_xref(name:"URL", value:"http://msisac.cisecurity.org/advisories/2015/2015-037.cfm");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2015/04/stable-channel-update.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

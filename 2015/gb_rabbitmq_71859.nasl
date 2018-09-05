@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rabbitmq_71859.nasl 10415 2018-07-05 10:51:54Z cfischer $
+# $Id: gb_rabbitmq_71859.nasl 11220 2018-09-04 11:57:09Z mmartin $
 #
 # RabbitMQ 'rabbit_mgmt_util.erl' Security Bypass Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2014-9494");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 10415 $");
+  script_version("$Revision: 11220 $");
   script_name("RabbitMQ 'rabbit_mgmt_util.erl' Security Bypass Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:51:54 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-22 16:55:31 +0100 (Thu, 22 Jan 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -71,7 +71,7 @@ if(description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 
 if( islocalhost() ) exit( 0 );
 

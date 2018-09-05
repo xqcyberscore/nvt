@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_firepass_sqli.nasl 6357 2017-06-16 10:00:29Z teissa $
+# $Id: sw_firepass_sqli.nasl 11221 2018-09-04 12:29:42Z mmartin $
 #
 # F5 Firepass SQL injection vulnerability in my.activation.php3
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/h:f5:firepass';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111017");
-  script_version("$Revision: 6357 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
+  script_version("$Revision: 11221 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-17 08:00:00 +0100 (Fri, 17 Apr 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -46,11 +46,11 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("firepass/installed");
 
-  script_tag(name : "summary" , value : "SQL injection vulnerability in my.activation.php3 allows remote
+  script_tag(name:"summary", value:"SQL injection vulnerability in my.activation.php3 allows remote
   attackers to execute arbitrary SQL commands via the state parameter. ");
-  script_tag(name : "vuldetect" , value : "Check the version.");
-  script_tag(name : "affected" , value : "F5 Firepass from 6.0.0 to 6.1.0 and 7.0.0");
-  script_tag(name : "solution" , value : "The vendor has released a Hotfix HF-377712-1 listened in the referred advisory.");
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"affected", value:"F5 Firepass from 6.0.0 to 6.1.0 and 7.0.0");
+  script_tag(name:"solution", value:"The vendor has released a Hotfix HF-377712-1 listened in the referred advisory.");
 
   script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/13000/400/sol13463.html");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/111276/F5-FirePass-SSL-VPN-6.x-7.x-SQL-Injection.html");
@@ -69,13 +69,13 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-if( version_in_range( version:vers, test_version:"6.0.0", test_version2:"6.1.0" ) 
+if( version_in_range( version:vers, test_version:"6.0.0", test_version2:"6.1.0" )
     || version_is_equal( version:vers, test_version:"7.0.0" ) ) {
 
   report = 'Installed version: ' + vers + '\n' +
            'Fixed version:     ' + "6.1.0 HF-377712-1/7.0.0 HF-377712-1" + '\n';
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_mult_vuln_jun18.nasl 10341 2018-06-27 08:37:11Z jschulte $
+# $Id: gb_centreon_mult_vuln_jun18.nasl 11228 2018-09-05 02:44:21Z ckuersteiner $
 #
 # Centreon Web <= 2.8.23 Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113217");
-  script_version("$Revision: 10341 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-27 10:37:11 +0200 (Wed, 27 Jun 2018) $");
+  script_version("$Revision: 11228 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 04:44:21 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-27 10:30:30 +0200 (Wed, 27 Jun 2018)");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner");
 

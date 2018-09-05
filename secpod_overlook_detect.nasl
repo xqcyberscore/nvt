@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_overlook_detect.nasl 11028 2018-08-17 09:26:08Z cfischer $
+# $Id: secpod_overlook_detect.nasl 11224 2018-09-04 12:57:17Z cfischer $
 #
 # OPEN IT OverLook Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902513");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11028 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11224 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:57:17 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-05-09 15:38:03 +0200 (Mon, 09 May 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("OPEN IT OverLook Version Detection");
@@ -61,7 +61,6 @@ if(!port){
 
 foreach dir (make_list("/overlook"))
 {
-  ## Send and Receive the response
   sndReq = http_get(item:string(dir, "/src/login.php"), port:port);
   rcvRes = http_keepalive_send_recv(port:port, data:sndReq);
 

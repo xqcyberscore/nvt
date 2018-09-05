@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wonderdesk_mult_xss_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_wonderdesk_mult_xss_vuln.nasl 11219 2018-09-04 11:52:00Z cfischer $
 #
 # Wonderdesk SQL Multiple Cross-Site Scripting (XSS) Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803625");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11219 $");
   script_cve_id("CVE-2012-1788");
   script_bugtraq_id(52193);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-03 15:30:38 +0530 (Mon, 03 Jun 2013)");
   script_name("Wonderdesk SQL Multiple Cross-Site Scripting (XSS) Vulnerabilities");
 
@@ -55,38 +55,39 @@ if(description)
   Impact Level: Application");
   script_tag(name:"affected", value:"Wonderdesk version 4.14, other versions may also be affected");
   script_tag(name:"insight", value:"Multiple flaws due to,
+
   - Improper sanitization of 'cus_email' parameter to wonderdesk.cgi when 'do'
   is set to 'cust_lostpw'.
+
   - Improper sanitization of 'help_name', 'help_email', 'help_website', and
   'help_example_url' parameters to wonderdesk.cgi when 'do' is set to
   'hd_modify_record'.");
+
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The host is installed with Wonderdesk SQL and is prone to
   multiple cross-site scripting vulnerabilities.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:80);
-
 if(!can_host_php(port:port)){
   exit(0);
 }
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
-foreach dir (make_list_unique("/", "/wonderdesk", "/helpdesk", cgi_dirs(port:port)))
-{
+foreach dir (make_list_unique("/", "/wonderdesk", "/helpdesk", cgi_dirs(port:port))){
 
   if( dir == "/" ) dir = "";
 
-  ## Send and Receive the response
   sndReq = http_get(item:string(dir, "/wonderdesk.cgi"), port:port);
   rcvRes = http_keepalive_send_recv(port:port, data:sndReq, bodyonly:TRUE);
 
@@ -97,7 +98,7 @@ foreach dir (make_list_unique("/", "/wonderdesk", "/helpdesk", cgi_dirs(port:por
 
     req = string("POST ", dir, "/wonderdesk.cgi HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
-                 "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                 "User-Agent: ", useragent, "\r\n",
                  "Content-Type: application/x-www-form-urlencoded\r\n",
                  "Content-Length: ", strlen(postdata), "\r\n",
                  "\r\n", postdata);

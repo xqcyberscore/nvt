@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_download_shortcode_dir_trav_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_wordpress_download_shortcode_dir_trav_vuln.nasl 11213 2018-09-04 09:30:51Z mmartin $
 #
 # WordPress ShortCode Plugin Directory Traversal Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804837");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11213 $");
   script_cve_id("CVE-2014-5465");
   script_bugtraq_id(69440);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-08 13:34:59 +0530 (Mon, 08 Sep 2014)");
 
   script_name("WordPress ShortCode Plugin Directory Traversal Vulnerability");
@@ -86,7 +86,6 @@ if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## traversal_files() function Returns Dictionary (i.e key value pair)
 files = traversal_files();
 
 foreach file (keys(files))

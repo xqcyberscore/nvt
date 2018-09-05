@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vsm_default_root_credentials.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_cisco_vsm_default_root_credentials.nasl 11222 2018-09-04 12:41:44Z cfischer $
 #
 # Cisco Video Surveillance Manager Default Root Credentials
 #
@@ -24,19 +24,17 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = 'cpe:/a:cisco:video_surveillance_manager';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103896");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11222 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Cisco Video Surveillance Manager Default Root Credentials");
-
-
-
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-28 15:02:06 +0200 (Tue, 28 Jan 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -62,12 +60,14 @@ include("http_func.inc");
 include("misc_func.inc");
 include("host_details.inc");
 
-
 if( ! port = get_app_port (cpe:CPE) ) exit (0);
 
+useragent = get_http_user_agent();
+host = http_host_name( port:port );
+
 req = 'GET /config/password.php HTTP/1.1\r\n' +
-      'Host: ' +  get_host_name() + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT +'\r\n';
+      'Host: ' +  host + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n';
 
 buf = http_send_recv (port:port, data:req + '\r\n', bodyonly:FALSE);
 if( buf !~ "HTTP/1\.. 401" ) exit (0);

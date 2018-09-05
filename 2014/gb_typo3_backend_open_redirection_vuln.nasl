@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_backend_open_redirection_vuln.nasl 11186 2018-09-03 09:12:42Z mmartin $
+# $Id: gb_typo3_backend_open_redirection_vuln.nasl 11222 2018-09-04 12:41:44Z cfischer $
 #
 # TYPO3 Backend Open Redirection Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804214");
-  script_version("$Revision: 11186 $");
+  script_version("$Revision: 11222 $");
   script_bugtraq_id(42029);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-07 19:55:38 +0530 (Tue, 07 Jan 2014)");
   script_name("TYPO3 Backend Open Redirection Vulnerability");
 
@@ -62,6 +62,7 @@ vulnerability.");
   script_dependencies("gb_typo3_detect.nasl");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
@@ -78,6 +79,7 @@ if(!typoPort = get_app_port(cpe:CPE)){
 if(typoLoca = get_app_location(cpe:CPE, port:typoPort))
 {
 
+  useragent = get_http_user_agent();
   host = http_host_name(port:typoPort);
   cookie = get_typo3_login_cookie(cinstall:typoLoca, tport:typoPort, chost:host);
 
@@ -87,7 +89,7 @@ if(typoLoca = get_app_location(cpe:CPE, port:typoPort))
 
     req = string("GET ",url," HTTP/1.0\r\n",
                  "Host: " + host + "\r\n",
-                 "User-Agent: " + OPENVAS_HTTP_USER_AGENT + "\r\n",
+                 "User-Agent: " + useragent + "\r\n",
                  "Referer: http://" + host + url + "\r\n",
                  "Connection: keep-alive\r\n",
                  "Cookie: ",cookie,"\r\n",

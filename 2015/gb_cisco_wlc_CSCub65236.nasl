@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wlc_CSCub65236.nasl 6497 2017-06-30 09:58:54Z teissa $
+# $Id: gb_cisco_wlc_CSCub65236.nasl 11225 2018-09-04 13:06:36Z mmartin $
 #
 # Cisco Wireless LAN Controller 802.11i Management Frame DoS
 #
@@ -27,32 +27,32 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105401");
- script_cve_id("CVE-2015-6311");
- script_tag(name:"cvss_base", value:"6.1");
- script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 6497 $");
- script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-10-14 14:24:59 +0200 (Wed, 14 Oct 2015)");
- script_name("Cisco Wireless LAN Controller 802.11i Management Frame DoS");
+  script_oid("1.3.6.1.4.1.25623.1.0.105401");
+  script_cve_id("CVE-2015-6311");
+  script_tag(name:"cvss_base", value:"6.1");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11225 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-10-14 14:24:59 +0200 (Wed, 14 Oct 2015)");
+  script_name("Cisco Wireless LAN Controller 802.11i Management Frame DoS");
 
- script_xref(name: "URL", value: "http://tools.cisco.com/security/center/viewAlert.x?alertId=41249");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=41249");
 
- script_tag(name: "summary" , value: "Cisco Wireless LAN Controller contains a vulnerability that could allow an unauthenticated, adjacent attacker to cause a denial of service condition. ");
- script_tag(name: "impact" , value:"An unauthenticated, adjacent attacker could exploit this vulnerability to cause a DoS condition on a targeted device.");
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "insight" , value:"The vulnerability is due to a failure to properly discard certain malformed values in an 802.11i management frame received from a wireless client. An attacker could trigger the vulnerability by submitting a crafted frame to an access point managed by the affected Cisco WLC.");
- script_tag(name: "solution" , value:"Updates are available");
- script_tag(name: "affected" , value:"Cisco WLC Software releases 7.4(1.19), 7.3(101.0), and 7.0(240.0) are vulnerable");
+  script_tag(name:"summary", value:"Cisco Wireless LAN Controller contains a vulnerability that could allow an unauthenticated, adjacent attacker to cause a denial of service condition. ");
+  script_tag(name:"impact", value:"An unauthenticated, adjacent attacker could exploit this vulnerability to cause a DoS condition on a targeted device.");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"insight", value:"The vulnerability is due to a failure to properly discard certain malformed values in an 802.11i management frame received from a wireless client. An attacker could trigger the vulnerability by submitting a crafted frame to an access point managed by the affected Cisco WLC.");
+  script_tag(name:"solution", value:"Updates are available");
+  script_tag(name:"affected", value:"Cisco WLC Software releases 7.4(1.19), 7.3(101.0), and 7.0(240.0) are vulnerable");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_wlc_version.nasl");
- script_mandatory_keys("cisco_wlc/version");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_wlc_version.nasl");
+  script_mandatory_keys("cisco_wlc/version");
  exit(0);
 }
 

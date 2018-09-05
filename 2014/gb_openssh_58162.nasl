@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_58162.nasl 7906 2017-11-24 12:59:24Z cfischer $
+# $Id: gb_openssh_58162.nasl 11213 2018-09-04 09:30:51Z mmartin $
 #
 # OpenSSH Denial of Service Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2010-5107");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 7906 $");
+  script_version("$Revision: 11213 $");
   script_name("OpenSSH Denial of Service Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 13:59:24 +0100 (Fri, 24 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 12:16:30 +0200 (Wed, 09 Apr 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -60,7 +60,7 @@ if(description)
 
   script_tag(name:"solution", value:"Updates are available.");
 
-  script_tag(name:"summary" , value:"OpenSSH is prone to a remote denial-of-service vulnerability.");
+  script_tag(name:"summary", value:"OpenSSH is prone to a remote denial-of-service vulnerability.");
 
   script_tag(name:"affected", value:"OpenSSH 6.1 and prior");
 

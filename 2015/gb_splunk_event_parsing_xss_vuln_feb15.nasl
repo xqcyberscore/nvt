@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_splunk_event_parsing_xss_vuln_feb15.nasl 10149 2018-06-11 08:16:28Z ckuersteiner $
+# $Id: gb_splunk_event_parsing_xss_vuln_feb15.nasl 11227 2018-09-04 13:25:37Z mmartin $
 #
 # Splunk Event Parsing Cross-Site Scripting Vulnerability - Feb15
 #
@@ -29,39 +29,39 @@ CPE = "cpe:/a:splunk:splunk";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805335");
-  script_version("$Revision: 10149 $");
+  script_version("$Revision: 11227 $");
   script_cve_id("CVE-2014-8303");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-11 10:16:28 +0200 (Mon, 11 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-09 11:43:09 +0530 (Mon, 09 Feb 2015)");
   script_name("Splunk Event Parsing Cross-Site Scripting Vulnerability - Feb15");
 
-  script_tag(name: "summary" , value:"The host is installed with Splunk
+  script_tag(name:"summary", value:"The host is installed with Splunk
   and is prone to cross-site scripting vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Flaw is due improper validation of
+  script_tag(name:"insight", value:"Flaw is due improper validation of
   user-supplied input passed via the vector related to event parsing.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to execute arbitrary HTML and script code in a user's
   browser session in the context of an affected site.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Splunk version 6.0.x before 6.0.6
+  script_tag(name:"affected", value:"Splunk version 6.0.x before 6.0.6
   and 6.1.x before 6.1.4");
 
-  script_tag(name: "solution" , value:"Upgrade to Splunk version 6.0.6
+  script_tag(name:"solution", value:"Upgrade to Splunk version 6.0.6
   or 6.1.4 or later. For updates refer to http://www.splunk.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name: "URL", value: "http://www.securitytracker.com/id/1030994");
-  script_xref(name: "URL", value: "http://www.splunk.com/view/SP-CAAANHS#announce3");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1030994");
+  script_xref(name:"URL", value:"http://www.splunk.com/view/SP-CAAANHS#announce3");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

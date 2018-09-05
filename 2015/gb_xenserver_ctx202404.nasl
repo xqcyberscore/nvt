@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx202404.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_xenserver_ctx202404.nasl 11218 2018-09-04 11:43:35Z mmartin $
 #
 # Citrix XenServer Multiple Security Updates (CTX202404)
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/a:citrix:xenserver";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105466");
- script_cve_id("CVE-2015-7835","CVE-2015-7969","CVE-2015-7970","CVE-2015-7971","CVE-2015-7972");
- script_tag(name:"cvss_base", value:"7.2");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6415 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105466");
+  script_cve_id("CVE-2015-7835", "CVE-2015-7969", "CVE-2015-7970", "CVE-2015-7971", "CVE-2015-7972");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11218 $");
 
- script_name("Citrix XenServer Multiple Security Updates (CTX202404)");
+  script_name("Citrix XenServer Multiple Security Updates (CTX202404)");
 
- script_xref(name:"URL", value:"http://support.citrix.com/article/CTX202404");
+  script_xref(name:"URL", value:"http://support.citrix.com/article/CTX202404");
 
- script_tag(name: "vuldetect" , value:"Check the installed hotfixes");
- script_tag(name: "solution" , value:"Apply the hotfix referenced in the advisory");
+  script_tag(name:"vuldetect", value:"Check the installed hotfixes");
+  script_tag(name:"solution", value:"Apply the hotfix referenced in the advisory");
 
- script_tag(name: "summary" , value:"A number of security vulnerabilities have been identified in Citrix XenServer that may allow a malicious administrator of a guest VM to compromise the host and guest users to crash the host. These vulnerabilities affect all currently supported versions of Citrix XenServer up to and including Citrix XenServer 6.5 Service Pack 1.
+  script_tag(name:"summary", value:"A number of security vulnerabilities have been identified in Citrix XenServer that may allow a malicious administrator of a guest VM to compromise the host and guest users to crash the host. These vulnerabilities affect all currently supported versions of Citrix XenServer up to and including Citrix XenServer 6.5 Service Pack 1.
 The following vulnerabilities have been addressed:
 
 CVE-2015-7835 (High): Uncontrolled creation of large page mappings by PV guests
@@ -50,18 +50,18 @@ CVE-2015-7969 (Low): Leak of main per-domain vcpu pointer array/Leak of per-doma
 CVE-2015-7970 (Medium): Host crash when migrating a PoD VM
 CVE-2015-7971 (Low): Some pmu and profiling hypercalls log without rate limiting
 CVE-2015-7972 (Low): Populate-on-demand balloon size inaccuracy can crash guests");
- script_tag(name: "affected" , value:"Citrix XenServer up to and including Citrix XenServer 6.5 Service Pack 1");
+  script_tag(name:"affected", value:"Citrix XenServer up to and including Citrix XenServer 6.5 Service Pack 1");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-11-26 12:29:16 +0100 (Thu, 26 Nov 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("Citrix Xenserver Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_xenserver_version.nasl");
- script_mandatory_keys("xenserver/product_version","xenserver/patches");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-11-26 12:29:16 +0100 (Thu, 26 Nov 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Citrix Xenserver Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_xenserver_version.nasl");
+  script_mandatory_keys("xenserver/product_version", "xenserver/patches");
 
  exit(0);
 }

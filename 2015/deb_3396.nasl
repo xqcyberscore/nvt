@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: deb_3396.nasl 9355 2018-04-06 07:16:07Z cfischer $
+# $Id: deb_3396.nasl 11228 2018-09-05 02:44:21Z ckuersteiner $
 # Auto-generated from advisory DSA 3396-1 using nvtgen 1.0
 # Script version: 1.0
 #
@@ -30,14 +30,14 @@
 if(description)
 {
     script_oid("1.3.6.1.4.1.25623.1.0.703396");
-    script_version("$Revision: 9355 $");
+    script_version("$Revision: 11228 $");
     script_cve_id("CVE-2015-5307", "CVE-2015-6937", "CVE-2015-7833", "CVE-2015-7872",
                   "CVE-2015-7990");
     script_name("Debian Security Advisory DSA 3396-1 (linux - security update)");
-    script_tag(name: "last_modification", value: "$Date: 2018-04-06 09:16:07 +0200 (Fri, 06 Apr 2018) $");
+    script_tag(name: "last_modification", value: "$Date: 2018-09-05 04:44:21 +0200 (Wed, 05 Sep 2018) $");
     script_tag(name: "creation_date", value: "2015-11-10 00:00:00 +0100 (Tue, 10 Nov 2015)");
-    script_tag(name:"cvss_base", value:"7.8");
-    script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+    script_tag(name:"cvss_base", value:"5.9");
+    script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:C");
     script_tag(name: "solution_type", value: "VendorFix");
     script_tag(name: "qod_type", value: "package");
 

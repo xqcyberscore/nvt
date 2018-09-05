@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol17238.nasl 6132 2017-05-16 09:03:39Z teissa $
+# $Id: gb_f5_big_ip_sol17238.nasl 11218 2018-09-04 11:43:35Z mmartin $
 #
 # F5 BIG-IP - SOL17238 - Node.js vulnerability CVE-2015-5380
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105358");
- script_cve_id("CVE-2015-5380");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6132 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105358");
+  script_cve_id("CVE-2015-5380");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11218 $");
 
- script_name("F5 BIG-IP - SOL17238 - Node.js vulnerability CVE-2015-5380");
+  script_name("F5 BIG-IP - SOL17238 - Node.js vulnerability CVE-2015-5380");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/17000/200/sol17238.html?sr=48315199");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/17000/200/sol17238.html?sr=48315199");
 
- script_tag(name: "impact" , value:"For the f5-rest-node package on both the BIG-IP and BIG-IQ systems: A locally authenticated attacker with access to the command line may be able to cause a partial denial-of-service (DoS) to the system through exploitation of this issue.For the BIG-IQ UI node package: A remote attacker may be able to cause a denial of service (DoS) to the system through exploitation of this issue.");
+  script_tag(name:"impact", value:"For the f5-rest-node package on both the BIG-IP and BIG-IQ systems: A locally authenticated attacker with access to the command line may be able to cause a partial denial-of-service (DoS) to the system through exploitation of this issue.For the BIG-IQ UI node package: A remote attacker may be able to cause a denial of service (DoS) to the system through exploitation of this issue.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"The Utf8DecoderBase::WriteUtf16Slow function in unicode-decoder.cc in Google V8, as used in Node.js before 0.12.6, io.js before 1.8.3 and 2.x before 2.3.3, and other products, does not verify that there is memory available for a UTF-16 surrogate pair, which allows remote attackers to cause a denial of service (memory corruption) or possibly have unspecified other impact via a crafted byte sequence. (CVE-2015-5380)");
+  script_tag(name:"insight", value:"The Utf8DecoderBase::WriteUtf16Slow function in unicode-decoder.cc in Google V8, as used in Node.js before 0.12.6, io.js before 1.8.3 and 2.x before 2.3.3, and other products, does not verify that there is memory available for a UTF-16 surrogate pair, which allows remote attackers to cause a denial of service (memory corruption) or possibly have unspecified other impact via a crafted byte sequence. (CVE-2015-5380)");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The remote host is missing a security patch.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The remote host is missing a security patch.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
- script_tag(name:"creation_date", value:"2015-09-18 14:31:27 +0200 (Fri, 18 Sep 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-09-18 14:31:27 +0200 (Fri, 18 Sep 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

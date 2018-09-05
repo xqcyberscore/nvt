@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_html_injection_vuln.nasl 9384 2018-04-06 12:20:19Z cfischer $
+# $Id: gb_open_xchange_appsuite_html_injection_vuln.nasl 11221 2018-09-04 12:29:42Z mmartin $
 #
 # Open-Xchange (OX) AppSuite HTML Injection Vulnerability Oct15
 #
@@ -29,23 +29,23 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806072");
-  script_version("$Revision: 9384 $");
+  script_version("$Revision: 11221 $");
   script_cve_id("CVE-2013-7143");
   script_bugtraq_id(65013);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-06 12:24:33 +0530 (Tue, 06 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Open-Xchange (OX) AppSuite HTML Injection Vulnerability Oct15");
 
-  script_tag(name: "summary" , value:"The host is installed with
+  script_tag(name:"summary", value:"The host is installed with
   Open-Xchange (OX) AppSuite and is prone to html injection vulnerability.");
 
   script_tag(name:"vuldetect", value:"Detect the installed version of
   Open-Xchange (OX) AppSuite with the help of detect nvt.");
 
-  script_tag(name: "insight" , value:"The flaw is due to it fails to properly
+  script_tag(name:"insight", value:"The flaw is due to it fails to properly
   sanitize user-supplied input.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
@@ -65,8 +65,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1029650");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/128257");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1029650");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/128257");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -95,7 +95,6 @@ if(oxRev){
   ## Updating version with revision number
   oxVer = oxVer + "." + oxRev;
 
-  ##Check for vulnerable version
   if(version_in_range(version:oxVer, test_version:"7.4.1", test_version2:"7.4.1.6"))
   {
     report = 'Installed Version: ' + oxVer + '\nFixed Version:     7.4.1.7\n';

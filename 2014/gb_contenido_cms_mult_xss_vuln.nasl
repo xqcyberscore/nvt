@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_contenido_cms_mult_xss_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_contenido_cms_mult_xss_vuln.nasl 11214 2018-09-04 10:09:46Z mmartin $
 #
 # Contenido CMS Multiple Parameter Cross-Site Scripting Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805231");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11214 $");
   script_cve_id("CVE-2014-9433");
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-26 15:09:14 +0530 (Fri, 26 Dec 2014)");
   script_name("Contenido CMS Multiple Parameter Cross-Site Scripting Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -83,7 +83,6 @@ foreach dir( make_list_unique( "/", "/contenido", "/cms", cgi_dirs( port:cmsPort
 
   if( dir == "/" ) dir = "";
 
-  ## Send and Receive the response
   req = http_get( item:dir + "/front_content.php", port:cmsPort );
   res = http_keepalive_send_recv( port:cmsPort, data:req );
 

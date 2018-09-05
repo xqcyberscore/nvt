@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_electro_indu_gaugetech_nexus_prdct_info_disc_vuln.nasl 10449 2018-07-06 16:58:25Z cfischer $
+# $Id: gb_electro_indu_gaugetech_nexus_prdct_info_disc_vuln.nasl 11228 2018-09-05 02:44:21Z ckuersteiner $
 #
 # Electro Industries GaugeTech Nexus series Products Information Disclosure Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/h:electroindustries_gaugetech:total_websolutions";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813629");
-  script_version("$Revision: 10449 $");
+  script_version("$Revision: 11228 $");
   script_cve_id("CVE-2018-12921");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-06 18:58:25 +0200 (Fri, 06 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 04:44:21 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-04 11:28:37 +0530 (Wed, 04 Jul 2018)");
   script_name("Electro Industries GaugeTech Nexus series Products Information Disclosure Vulnerability");
 

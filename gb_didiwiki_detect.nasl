@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_didiwiki_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
+# $Id: gb_didiwiki_detect.nasl 11224 2018-09-04 12:57:17Z cfischer $
 #
 # DidiWiki Remote Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807527");
-  script_version("$Revision: 10898 $");
+  script_version("$Revision: 11224 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:57:17 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-12 10:34:57 +0530 (Tue, 12 Apr 2016)");
   script_name("DidiWiki Remote Version Detection");
 
@@ -66,7 +66,6 @@ foreach dir (make_list_unique("/", "/didiwiki", "/wiki", cgi_dirs(port:wikiPort)
 
   url = dir + '/WikiHome';
 
-  ## Send and receive response
   sndReq = http_get(item:url, port:wikiPort);
   rcvRes = http_send_recv(port:wikiPort, data:sndReq);
 

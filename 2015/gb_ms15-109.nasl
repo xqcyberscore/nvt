@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-109.nasl 6159 2017-05-18 09:03:44Z teissa $
+# $Id: gb_ms15-109.nasl 11221 2018-09-04 12:29:42Z mmartin $
 #
 # MS Windows Shell and Tablet Input Band Remote Code Execution Vulnerabilities (3096443)
 #
@@ -27,33 +27,32 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806090");
-  script_version("$Revision: 6159 $");
+  script_version("$Revision: 11221 $");
   script_cve_id("CVE-2015-2515", "CVE-2015-2548");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 08:11:18 +0530 (Wed, 14 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Shell and Tablet Input Band Remote Code Execution Vulnerabilities (3096443)");
 
-  script_tag(name: "summary" , value:"This host is missing a critical security
+  script_tag(name:"summary", value:"This host is missing a critical security
   update according to Microsoft Bulletin MS15-109.");
 
-  script_tag(name: "vuldetect" , value: "Get the vulnerable file version and
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value: "Multiple flaws are due to:
+  script_tag(name:"insight", value:"Multiple flaws are due to:
   - Windows Shell fails to properly handle objects in memory.
   - Tablet Input Band fails to properly handle objects in memory.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow an
+  script_tag(name:"impact", value:"Successful exploitation will allow an
   attacker to conduct denial-of-service conditions and execute arbitrary code
   in the context of the currently logged-in user.
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"
-  Microsoft Windows Server 2012
+  script_tag(name:"affected", value:"Microsoft Windows Server 2012
   Microsoft Windows 10 x32/x64
   Microsoft Windows Server 2012R2
   Microsoft Windows 8/8.1 x32/x64
@@ -62,20 +61,21 @@ if(description)
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior.");
 
-  script_tag(name: "solution" , value: "Run Windows Update and update the
+  script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
   https://technet.microsoft.com/library/security/MS15-109");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3096443");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-109");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3096443");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-109");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -86,47 +86,33 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-path = "";
-sysPath = "";
-dllVer1 = "";
-dllVer2 = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win7:2, win7x64:2, win2008:3, win2008r2:2, win8:1, win8x64:1,
                    win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, winVista:3, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath){
   exit(0);
 }
 
-## Get Version from 'Shell32.dll' file
 dllVer1 = fetch_file_version(sysPath, file_name:"system32\Shell32.dll");
 
-##Get Common Files directory
 path = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion", item:"CommonFilesDir");
 if(path)
 {
   path = path + "\microsoft shared\ink";
 
-  ##Fetch file version from 'TipBand.dll'
   dllVer2 = fetch_file_version(path, file_name:"TipBand.dll");
 }
 
-##Check if both file versions are available
 if(!dllVer1 && !dllVer2){
   exit(0);
 }
 
-## Windows Server 2008
 ## Currently not supporting for Windows Server 2008 64 bit
 if(hotfix_check_sp(win2008:3, winVista:3) > 0 && dllVer1)
 {
-  ## Check for Shell32.dll version
   if(version_is_less(version:dllVer1, test_version:"6.0.6002.19459"))
   {
     Vulnerable_range = "Version Less than - 6.0.6002.19459";
@@ -144,10 +130,8 @@ if(hotfix_check_sp(win2008:3, winVista:3) > 0 && dllVer1)
   }
 }
 
-## Windows Vista for TipBand.dll
 if(hotfix_check_sp(winVista:3) > 0 && dllVer2)
 {
-  ## Check for TipBand.dll version
   if(version_is_less(version:dllVer2, test_version:"6.0.6002.19483"))
   {
     Vulnerable_range = "Version Less than - 6.0.6002.19483";
@@ -155,7 +139,7 @@ if(hotfix_check_sp(winVista:3) > 0 && dllVer2)
     location = path + "\TipBand.dll";
     VULN = TRUE ;
   }
- 
+
   if(version_in_range(version:dllVer2, test_version:"6.0.6002.23000", test_version2:"6.0.6002.23792"))
   {
     Vulnerable_range = "6.0.6002.23000 - 6.0.6002.23792";
@@ -165,10 +149,8 @@ if(hotfix_check_sp(winVista:3) > 0 && dllVer2)
   }
 }
 
-## Windows Server 2008 R2
 if(hotfix_check_sp(win2008r2:2, win7:2, win7x64:2) > 0 && dllVer1)
 {
-  ## Check for Shell32.dll version
   if(version_is_less(version:dllVer1, test_version:"6.1.7601.18952"))
   {
     Vulnerable_range = "Version Less than - 6.1.7601.18952";
@@ -186,10 +168,8 @@ if(hotfix_check_sp(win2008r2:2, win7:2, win7x64:2) > 0 && dllVer1)
   }
 }
 
-## Windows 7 for TipBand.dll
 if(hotfix_check_sp(win7:2, win7x64:2) > 0 && dllVer2)
 {
-  ## Check for TipBand.dll version
   if(version_is_less(version:dllVer2, test_version:"6.1.7601.18984"))
   {
     Vulnerable_range = "Version Less than - 6.1.7601.18984";
@@ -206,10 +186,8 @@ if(hotfix_check_sp(win7:2, win7x64:2) > 0 && dllVer2)
   }
 }
 
-## Windows 8 and Windows Server 2012
 if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0 && dllVer1)
 {
-  ## Check for Shell32.dll version
   if(version_is_less(version:dllVer1, test_version:"6.2.9200.17464"))
   {
     Vulnerable_range = "Version Less than - 6.2.9200.17464";
@@ -229,7 +207,6 @@ if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0 && dllVer1)
 ## Win 8.1 Windows Server 2012 R2
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0 && dllVer1)
 {
-  ## Check for Shell32.dll version
   if(version_is_less(version:dllVer1, test_version:"6.3.9600.18038")){
     Vulnerable_range = "Version Less than - 6.3.9600.18038";
     location = sysPath + "\system32\Shell32.dll";
@@ -238,11 +215,8 @@ if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0 && dllVer1)
   }
 }
 
-## Windows 10
 if(hotfix_check_sp(win10:1, win10x64:1) > 0 && dllVer1)
 {
-  ## Windows 10 Core
-  ## Check for Shell32.dll version
   if(version_is_less(version:dllVer1, test_version:"10.0.10240.16542"))
   {
     Vulnerable_range = "Less than 10.0.10240.16542";

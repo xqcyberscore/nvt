@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_thomson_cablehome_gateway_info_disc_vuln.nasl 7236 2017-09-22 14:59:19Z cfischer $
+# $Id: gb_thomson_cablehome_gateway_info_disc_vuln.nasl 11220 2018-09-04 11:57:09Z mmartin $
 #
 # Thomson CableHome Gateway(DWG849) Information Exposure
 #
@@ -27,37 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805739");
-  script_version("$Revision: 7236 $");
+  script_version("$Revision: 11220 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-22 16:59:19 +0200 (Fri, 22 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-22 15:38:14 +0530 (Tue, 22 Sep 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Thomson CableHome Gateway(DWG849) Information Exposure");
 
-  script_tag(name: "summary" , value:"This host has Thomson CableHome Gateway(DWG849)
+  script_tag(name:"summary", value:"This host has Thomson CableHome Gateway(DWG849)
   and is prone to information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted SNMP request and
+  script_tag(name:"vuldetect", value:"Send a crafted SNMP request and
   check whether it is able read the user name or not");
 
-  script_tag(name: "insight" , value:"The flaw is due to application offer
+  script_tag(name:"insight", value:"The flaw is due to application offer
   security authentication through SNMPv1 and SNMPv2.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attacker
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to gain access to potentially sensitive information.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Thomson CableHome Gateway - DWG849");
+  script_tag(name:"affected", value:"Thomson CableHome Gateway - DWG849");
 
-  script_tag(name: "solution" , value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/38242");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/38242");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_category(ACT_ATTACK);
@@ -110,7 +108,6 @@ if( sysdesc =~ "Thomson CableHome Gateway" )
     exit(0);
   }
 
-  #confirm the application and Exploit
   if ("Thomson CableHome Gateway" >< buf && "admin" >< buf && "Uq-4GIt3M" >< buf)
   {
     security_message(port:snmp_port);

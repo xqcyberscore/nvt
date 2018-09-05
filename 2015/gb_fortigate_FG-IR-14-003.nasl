@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortigate_FG-IR-14-003.nasl 9415 2018-04-10 06:55:50Z cfischer $
+# $Id: gb_fortigate_FG-IR-14-003.nasl 11221 2018-09-04 12:29:42Z mmartin $
 #
 # FortiOS: FortiGate Cross-Site Scripting Vulnerability
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/h:fortinet:fortigate";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105207");
- script_cve_id("CVE-2013-7182");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 9415 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105207");
+  script_cve_id("CVE-2013-7182");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11221 $");
 
- script_name("FortiOS: FortiGate Cross-Site Scripting Vulnerability");
+  script_name("FortiOS: FortiGate Cross-Site Scripting Vulnerability");
 
- script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-14-003");
+  script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-14-003");
 
- script_tag(name: "impact" , value:"A remote unauthenticated attacker may be able to execute arbitrary script in the context of the end-user's browser session.");
+  script_tag(name:"impact", value:"A remote unauthenticated attacker may be able to execute arbitrary script in the context of the end-user's browser session.");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Upgrade to FortiOS 5.0.6 or higher.");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Upgrade to FortiOS 5.0.6 or higher.");
 
- script_tag(name: "summary" , value:"FortiOS 5.0.5 and earlier versions contain a cross-site scripting vulnerability. The mkey parameter in the URL
+  script_tag(name:"summary", value:"FortiOS 5.0.5 and earlier versions contain a cross-site scripting vulnerability. The mkey parameter in the URL
 /firewall/schedule/recurrdlg is vulnerable to reflected cross-site scripting attack.");
 
- script_tag(name: "affected" , value:"FortiOS 5.0.5 and lower.");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"affected", value:"FortiOS 5.0.5 and lower.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
- script_tag(name:"creation_date", value:"2015-02-11 12:17:13 +0100 (Wed, 11 Feb 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("FortiOS Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_fortigate_version.nasl");
- script_mandatory_keys("fortigate/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-02-11 12:17:13 +0100 (Wed, 11 Feb 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("FortiOS Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_fortigate_version.nasl");
+  script_mandatory_keys("fortigate/version");
 
  exit(0);
 }

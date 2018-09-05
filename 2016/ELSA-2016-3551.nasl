@@ -1,6 +1,6 @@
 # OpenVAS Vulnerability Test 
 # Description: Oracle Linux Local Check 
-# $Id: ELSA-2016-3551.nasl 6552 2017-07-06 11:49:41Z cfischer $
+# $Id: ELSA-2016-3551.nasl 11228 2018-09-05 02:44:21Z ckuersteiner $
  
 # Authors: 
 # Eero Volotinen <eero.volotinen@solinor.fi> 
@@ -27,9 +27,9 @@
 if(description)
  {
 script_oid("1.3.6.1.4.1.25623.1.0.122928");
-script_version("$Revision: 6552 $");
+script_version("$Revision: 11228 $");
 script_tag(name:"creation_date", value:"2016-05-09 14:24:45 +0300 (Mon, 09 May 2016)");
-script_tag(name:"last_modification", value:"$Date: 2017-07-06 13:49:41 +0200 (Thu, 06 Jul 2017) $");
+script_tag(name:"last_modification", value:"$Date: 2018-09-05 04:44:21 +0200 (Wed, 05 Sep 2018) $");
 script_name("Oracle Linux Local Check: ELSA-2016-3551");
 script_tag(name: "insight", value: "ELSA-2016-3551 - Unbreakable Enterprise kernel security update - kernel-uek[3.8.13-118.6.1]- skbuff: skb_segment: orphan frags before copying (Dongli Zhang) [Orabug: 23018911] - RDS/IB: VRPC DELAY / OSS RECONNECT CAUSES 5 MINUTE STALL ON PORT FAILURE (Venkat Venkatsubra) [Orabug: 22888920] - mlx4_core: Introduce restrictions for PD update (Ajaykumar Hotchandani) - filename should be destroyed via final_putname() instead of __putname() (John Sobecki) [Orabug: 22346320] - RDS: Fix the atomicity for congestion map update (Wengang Wang) [Orabug: 23141554] - sctp: Prevent soft lockup when sctp_accept() is called during a timeout event (Karl Heiss) [Orabug: 23222753] {CVE-2015-8767}[3.8.13-118.5.1]- x86_64: expand kernel stack to 16K (Minchan Kim) [Orabug: 21140371] - iommu/vt-d: add quirk for broken interrupt remapping on 55XX chipsets (Neil Horman) [Orabug: 22534160] - xen: remove unneeded variables and one constant (Daniel Kiper) [Orabug: 22288700] - Revert 'x86/xen: delay construction of mfn_list_list' (Daniel Kiper) [Orabug: 22288700] - ocfs2/dlm: fix misuse of list_move_tail() in dlm_run_purge_list() (Tariq Saeed) [Orabug: 22898384] - ocfs2/dlm: do not purge lockres that is queued for assert master (Xue jiufei) [Orabug: 22898384]"); 
 script_tag(name : "solution", value : "update software");
@@ -37,8 +37,8 @@ script_tag(name : "solution_type", value : "VendorFix");
 script_tag(name : "summary", value : "Oracle Linux Local Security Checks ELSA-2016-3551");
 script_xref(name : "URL" , value : "http://linux.oracle.com/errata/ELSA-2016-3551.html");
 script_cve_id("CVE-2015-8767");
-script_tag(name:"cvss_base", value:"5.0");
-script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+script_tag(name:"cvss_base", value:"4.9");
+script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
 script_tag(name:"qod_type", value:"package");
 script_dependencies("gather-package-list.nasl");
 script_mandatory_keys("ssh/login/oracle_linux", "ssh/login/release");

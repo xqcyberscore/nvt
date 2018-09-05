@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zxv10_w300_hardcoded_credentials_2014.nasl 9982 2018-05-28 12:00:03Z cfischer $
+# $Id: gb_zxv10_w300_hardcoded_credentials_2014.nasl 11213 2018-09-04 09:30:51Z mmartin $
 #
 # ZTE ZXV10 W300 Wireless Router Hardcoded Credentials Security Bypass Vulnerability
 #
@@ -27,40 +27,40 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103903");
- script_bugtraq_id(65310);
- script_cve_id("CVE-2014-0329");
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 9982 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103903");
+  script_bugtraq_id(65310);
+  script_cve_id("CVE-2014-0329");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11213 $");
 
- script_name("ZTE ZXV10 W300 Wireless Router Hardcoded Credentials Security Bypass Vulnerability");
+  script_name("ZTE ZXV10 W300 Wireless Router Hardcoded Credentials Security Bypass Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65310");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/65310");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
- script_tag(name:"creation_date", value:"2014-02-10 13:47:33 +0100 (Mon, 10 Feb 2014)");
- script_tag(name:"qod_type", value:"exploit");
- script_tag(name:"solution_type", value:"NoneAvailable");
- script_category(ACT_ATTACK);
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_snmp_sysdesc.nasl", "telnetserver_detect_type_nd_version.nasl");
- script_require_ports("Services/telnet", 23);
- script_require_udp_ports("Services/udp/snmp", 161);
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-02-10 13:47:33 +0100 (Mon, 10 Feb 2014)");
+  script_tag(name:"qod_type", value:"exploit");
+  script_category(ACT_ATTACK);
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_snmp_sysdesc.nasl", "telnetserver_detect_type_nd_version.nasl");
+  script_require_ports("Services/telnet", 23);
+  script_require_udp_ports("Services/udp/snmp", 161);
 
- script_tag(name : "impact" , value : "Attackers can exploit this issue to bypass the authentication
+  script_tag(name:"impact", value:"Attackers can exploit this issue to bypass the authentication
 mechanism and gain access to the vulnerable device.");
- script_tag(name : "vuldetect" , value : "Try to login into the telnet service.");
- script_tag(name : "insight" , value : "The TELNET service on the ZTE ZXV10 W300 router 2.1.0
+  script_tag(name:"vuldetect", value:"Try to login into the telnet service.");
+  script_tag(name:"insight", value:"The TELNET service on the ZTE ZXV10 W300 router 2.1.0
 has a hardcoded password ending with airocon for the admin account,
 which allows remote attackers to obtain administrative access by
 leveraging knowledge of the MAC address characters present at the
 beginning of the password.");
- script_tag(name : "solution" , value : "Ask the Vendor for an update.");
- script_tag(name : "summary" , value : "ZTE ZXV10 W300 wireless router is prone to a security-bypass
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"summary", value:"ZTE ZXV10 W300 wireless router is prone to a security-bypass
 vulnerability.");
- script_tag(name : "affected" , value : "ZTE ZXV10 W300 running firmware version 2.1.0 is vulnerable. Other
+  script_tag(name:"affected", value:"ZTE ZXV10 W300 running firmware version 2.1.0 is vulnerable. Other
 versions may also be affected.
 
 Update 2015-08-28: At least the following models are also affected:

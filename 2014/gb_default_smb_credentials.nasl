@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_default_smb_credentials.nasl 9567 2018-04-23 13:22:46Z cfischer $
+# $Id: gb_default_smb_credentials.nasl 11213 2018-09-04 09:30:51Z mmartin $
 #
 # SMB Brute Force Logins With Default Credentials
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804449");
-  script_version("$Revision: 9567 $");
+  script_version("$Revision: 11213 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-23 15:22:46 +0200 (Mon, 23 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-04 17:14:10 +0530 (Fri, 04 Jul 2014)");
   script_name("SMB Brute Force Logins With Default Credentials");
   script_category(ACT_ATTACK);
@@ -111,7 +111,6 @@ if( ! smbName ) smbName = "*SMBSERVER";
 
 for( i = 1; i < 4; i++ ) {
 
-  # check for always successful login (unknown users mapped to guest)
   u = rand_str( length:( 7 + i ), charset:'abcdefghijklmnopqrstuvwxyz' );
   p = rand_str( length:( 7 + i ), charset:'abcdefghijklmnopqrstuvwxyz0123456789' );
 

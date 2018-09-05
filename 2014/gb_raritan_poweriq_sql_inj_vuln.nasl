@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_raritan_poweriq_sql_inj_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_raritan_poweriq_sql_inj_vuln.nasl 11222 2018-09-04 12:41:44Z cfischer $
 #
 # Raritan Power IQ SQL Injection Vulnerability
 #
@@ -27,11 +27,11 @@
 
 CPE = "cpe:/a:raritan:power_iq";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105922");
-  script_version("$Revision: 11108 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 11222 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-15 16:50:19 +0700 (Fri, 15 Aug 2014)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -75,7 +75,6 @@ https://www.raritan.com/support/product/poweriq/security-patches");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Jul/79");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/94717");
 
-
   exit(0);
 }
 
@@ -86,14 +85,15 @@ include("http_keepalive.inc");
 if (!port = get_app_port(cpe: CPE))
   exit(0);
 
+url = "/license/records";
+data = "sort=id&dir=ASC";
+useragent = get_http_user_agent();
+
 host = http_host_name(port:port);
 
-url = "/license/records";
-
-data = "sort=id&dir=ASC";
 req = string('POST ', url, ' HTTP/1.1\r\n',
              'Host: ', host, '\r\n',
-             'User-Agent: ', OPENVAS_HTTP_USER_AGENT, '\r\n',
+             'User-Agent: ', useragent, '\r\n',
              'Content-Type: application/x-www-form-urlencoded\r\n',
              'Content-Length: ', strlen(data), '\r\n',
              'X-Requested-With: XMLHttpRequest\r\n',
@@ -110,7 +110,7 @@ if (res !~ "HTTP/1.. 200 OK" || '"rows":' >!< res) {
 data = "sort=id'&dir=ASC";
 req = string('POST ', url, ' HTTP/1.1\r\n',
              'Host: ', host, '\r\n',
-             'User-Agent: ', OPENVAS_HTTP_USER_AGENT, '\r\n',
+             'User-Agent: ', useragent, '\r\n',
              'Content-Type: application/x-www-form-urlencoded\r\n',
              'Content-Length: ', strlen(data), '\r\n',
              'X-Requested-With: XMLHttpRequest\r\n',
@@ -130,7 +130,7 @@ foreach i (make_list(1, 3)) {
   data = "sort=(SELECT 5480 FROM PG_SLEEP(" + i + "))&dir=ASC";
   req =  string('POST ', url, ' HTTP/1.1\r\n',
                 'Host: ', host, '\r\n',
-                'User-Agent: ', OPENVAS_HTTP_USER_AGENT, '\r\n',
+                'User-Agent: ', useragent, '\r\n',
                 'Content-Type: application/x-www-form-urlencoded\r\n',
                 'Content-Length: ', strlen(data), '\r\n',
                 'X-Requested-With: XMLHttpRequest\r\n',

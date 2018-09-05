@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_unspecified_vuln04_jul14_lin.nasl 9070 2018-03-09 12:37:39Z cfischer $
+# $Id: gb_java_unspecified_vuln04_jul14_lin.nasl 11214 2018-09-04 10:09:46Z mmartin $
 #
 # Oracle Java SE JRE Unspecified Vulnerability-04 Jul 2014 (Linux)
 #
@@ -29,45 +29,33 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108425");
-  script_version("$Revision: 9070 $");
+  script_version("$Revision: 11214 $");
   script_cve_id("CVE-2014-4247");
   script_bugtraq_id(68626);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-09 13:37:39 +0100 (Fri, 09 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-25 10:43:38 +0530 (Fri, 25 Jul 2014)");
   script_name("Oracle Java SE JRE Unspecified Vulnerability-04 Jul 2014 (Linux)");
 
-  tag_summary = "This host is installed with Oracle Java SE JRE and is prone to some unspecified
-vulnerability.";
+  script_tag(name:"summary", value:"This host is installed with Oracle Java SE JRE and is prone to some unspecified
+vulnerability.");
+  script_tag(name:"vuldetect", value:"Get the installed version of Oracle Java SE JRE with the help of detect NVT
+and check it is vulnerable or not.");
+  script_tag(name:"insight", value:"The flaw exists due to an error related to the JavaFX subcomponent");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code.
 
-  tag_vuldetect = "Get the installed version of Oracle Java SE JRE with the help of detect NVT
-and check it is vulnerable or not.";
+Impact Level: System/Application.");
+  script_tag(name:"affected", value:"Oracle Java SE 8 update 5.0 and prior on Linux");
+  script_tag(name:"solution", value:"Apply the patch from below link,
 
-  tag_insight = "The flaw exists due to an error related to the JavaFX subcomponent";
-
-  tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary code.
-
-Impact Level: System/Application.";
-
-  tag_affected = "Oracle Java SE 8 update 5.0 and prior on Linux";
-
-  tag_solution = "Apply the patch from below link,
-
-http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html";
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/59501");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1030577");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/59501");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1030577");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujul2014-1972956.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
@@ -91,7 +79,7 @@ if(jreVer =~ "^(1\.8)")
 {
   if(version_in_range(version:jreVer, test_version:"1.8.0", test_version2:"1.8.0.5"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

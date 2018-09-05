@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_winword_ms15-022.nasl 6551 2017-07-06 09:58:21Z teissa $
+# $Id: gb_ms_winword_ms15-022.nasl 11220 2018-09-04 11:57:09Z mmartin $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities (3038999)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805057");
-  script_version("$Revision: 6551 $");
+  script_version("$Revision: 11220 $");
   script_cve_id("CVE-2015-0085", "CVE-2015-0086", "CVE-2015-0097");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-11 13:31:39 +0530 (Wed, 11 Mar 2015)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerabilities (3038999)");
 
@@ -49,12 +49,11 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to run arbitrary code in the context of the current user and
-  to perform actions in the security context of the current user. 
+  to perform actions in the security context of the current user.
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Word 2010,
+  script_tag(name:"affected", value:"Microsoft Word 2010,
   Microsoft Word 2013 and
   Microsoft Word 2007 Service Pack 3 and prior");
 
@@ -64,10 +63,10 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2956163");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2956139");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2956109");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms15-022");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2956163");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2956139");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2956109");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms15-022");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -79,21 +78,17 @@ if(description)
 
 include("version_func.inc");
 
-## variable Initialization
-winwordVer = "";
-
 winwordVer = get_kb_item("SMB/Office/Word/Version");
 
 ## Microsoft Office Word 2007/2010/2013
 if(winwordVer && winwordVer =~ "^(12|14|15).*")
 {
-  ## Grep for version Winword.exe 12 < 12.0.6715.5000, 14 < 14.0.7145.5001
   ##  15 < 15.0.4701.1001
   if(version_in_range(version:winwordVer, test_version:"12.0", test_version2:"12.0.6718.4999") ||
      version_in_range(version:winwordVer, test_version:"14.0", test_version2:"14.0.7145.5000") ||
      version_in_range(version:winwordVer, test_version:"15.0", test_version2:"15.0.4701.1000"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

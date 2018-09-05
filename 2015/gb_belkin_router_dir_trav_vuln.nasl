@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_belkin_router_dir_trav_vuln.nasl 6254 2017-05-31 09:04:18Z teissa $
+# $Id: gb_belkin_router_dir_trav_vuln.nasl 11221 2018-09-04 12:29:42Z mmartin $
 #
 # Belkin Router Directory Traversal Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806147");
-  script_version("$Revision: 6254 $");
+  script_version("$Revision: 11221 $");
   script_cve_id("CVE-2014-2962");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-29 12:12:25 +0530 (Thu, 29 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Belkin Router Directory Traversal Vulnerability");
@@ -50,20 +50,19 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"
-  Belkin N300/150 WiFi N Router, other firmware may also be affected.");
+  script_tag(name:"affected", value:"Belkin N300/150 WiFi N Router, other firmware may also be affected.");
 
-  script_tag(name: "solution" , value:"As a workaround ensure that appropriate
+  script_tag(name:"solution", value:"As a workaround ensure that appropriate
   firewall rules are in place to restrict access to port 80/tcp from external
   untrusted sources.
   For more information refer to http://www.belkin.com");
 
-  script_tag(name:"solution_type",value:"Workaround");
+  script_tag(name:"solution_type", value:"Workaround");
 
-  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/774788");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/38488");
-  script_xref(name : "URL" , value : "http://www.belkin.com/us/support-article?articleNum=109400");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133913/belkin-disclose.txt");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/774788");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/38488");
+  script_xref(name:"URL", value:"http://www.belkin.com/us/support-article?articleNum=109400");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/133913/belkin-disclose.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -78,23 +77,16 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-asport = "";
-banner = "";
-
-## Get HTTP Port
 asport = get_http_port(default:80);
 if(!asport){
   exit(0);
 }
 
-##Get banner
 banner = get_http_banner(port: asport);
 if(!banner){
   exit(0);
 }
 
-## Confirm the device from banner
 if(banner =~ 'Server: mini_httpd')
 {
   ## Exploit URL
@@ -102,7 +94,6 @@ if(banner =~ 'Server: mini_httpd')
       "var:getpage=html/index.html&var:language=en_us&var:oldpage=(null)&" +
       "var:page=login";
 
-  ## Confirm the exploit
   if(http_vuln_check(port:asport, url:url, pattern:"root:.*:0:[01]:"))
   {
     report = report_vuln_url( port:asport, url:url );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortigate_xss_vuln.nasl 9415 2018-04-10 06:55:50Z cfischer $
+# $Id: gb_fortigate_xss_vuln.nasl 11227 2018-09-04 13:25:37Z mmartin $
 #
 # FortiGate Reflected Cross Site Scripting Vulnerability - May 2015
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/h:fortinet:fortigate";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805639");
-  script_version("$Revision: 9415 $");
+  script_version("$Revision: 11227 $");
   script_cve_id("CVE-2015-1880", "CVE-2014-8616");
   script_bugtraq_id(74652);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-16 12:01:44 +0530 (Tue, 16 Jun 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("FortiGate Reflected Cross Site Scripting Vulnerability - May 2015");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Fortinet
   Fortigate and is prone to reflected cross-site scripting vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to the sslvpn login page
   does not validate input before returning it to users.");
@@ -63,7 +62,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://fortiguard.com/psirt/FG-IR-15-005");
+  script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-15-005");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -77,10 +76,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-fgVer = "";
-
-## Get version
 if(!fgVer = get_app_version(cpe:CPE)){
   exit(0);
 }

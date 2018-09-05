@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nameko_webmail_xss_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_nameko_webmail_xss_vuln.nasl 11223 2018-09-04 12:48:48Z cfischer $
 #
 # Nameko Webmail Cross-Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803826");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11223 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:48:48 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-08 14:53:58 +0530 (Mon, 08 Jul 2013)");
   script_name("Nameko Webmail Cross-Site Scripting Vulnerability");
 
@@ -74,7 +74,6 @@ foreach dir (make_list_unique("/", "/NamekoWebmail", "/webmail", cgi_dirs(port:p
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   req = http_get(item:string(dir,"/nameko.php"),  port:port);
   res = http_keepalive_send_recv(port:port, data:req, bodyonly:TRUE);
 

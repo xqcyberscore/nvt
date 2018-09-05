@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_jul15_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mult_vuln01_jul15_win.nasl 11225 2018-09-04 13:06:36Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 Jul15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805905");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11225 $");
   script_cve_id("CVE-2015-2721", "CVE-2015-2722", "CVE-2015-2724", "CVE-2015-2725",
                 "CVE-2015-2726", "CVE-2015-2728", "CVE-2015-2729", "CVE-2015-2730",
                 "CVE-2015-2731", "CVE-2015-2733", "CVE-2015-2734", "CVE-2015-2735",
@@ -38,16 +38,16 @@ if(description)
   script_bugtraq_id(75541, 74733);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-08 15:59:57 +0530 (Wed, 08 Jul 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 Jul15 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to:
+  script_tag(name:"insight", value:"Multiple flaws are due to:
   - An error within Network Security Services (NSS) where the client allows for
   a 'ECDHE_ECDSA' exchange where the server does not send its 'ServerKeyExchange'
   message.
@@ -73,17 +73,17 @@ if(description)
   - An overridable error allowing for skipping pinning checks.
   - An error in PDF.js PDF file viewer.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code, obtain sensitive information, conduct
-  man-in-the-middle attack, conduct denial-of-service attack,  spoof ECDSA
+  man-in-the-middle attack, conduct denial-of-service attack, spoof ECDSA
   signatures and other unspecified impacts.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox before version 39.0 on
+  script_tag(name:"affected", value:"Mozilla Firefox before version 39.0 on
   Windows");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 39.0
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 39.0
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");

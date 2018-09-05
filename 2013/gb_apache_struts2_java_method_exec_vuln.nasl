@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts2_java_method_exec_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_apache_struts2_java_method_exec_vuln.nasl 11219 2018-09-04 11:52:00Z cfischer $
 #
 # Apache Struts2 'URL' & 'Anchor' tags Arbitrary Java Method Execution Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803837");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11219 $");
   script_cve_id("CVE-2013-1966", "CVE-2013-2115");
   script_bugtraq_id(60166, 60167);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-23 17:54:59 +0530 (Tue, 23 Jul 2013)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Apache Struts2 'URL' & 'Anchor' tags Arbitrary Java Method Execution Vulnerabilities");
@@ -88,9 +88,9 @@ if(!dir = get_app_location(cpe:CPE, port:asport)){
   exit(0);
 }
 
+useragent = get_http_user_agent();
 host = http_host_name(port:asport);
 
-## Send and Receive the response
 asreq = http_get(item:string(dir,"/example/HelloWorld.action"), port:asport);
 asres = http_keepalive_send_recv(port:asport, data:asreq);
 
@@ -106,7 +106,7 @@ if(asres && ">Struts" >< asres && ">English<" >< asres)
 
       asReq = string("POST /struts2-blank/example/HelloWorld.action HTTP/1.1\r\n",
                      "Host: ", host, "\r\n",
-                     "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                     "User-Agent: ", useragent, "\r\n",
                      "Content-Type: application/x-www-form-urlencoded\r\n",
                      "Content-Length: ", strlen(postdata), "\r\n",
                      "\r\n", postdata);

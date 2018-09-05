@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_inductive_automation_ignition_mult_vuln.nasl 9978 2018-05-28 08:52:24Z cfischer $
+# $Id: gb_inductive_automation_ignition_mult_vuln.nasl 11218 2018-09-04 11:43:35Z mmartin $
 #
 # Inductive Automation Ignition Multiple Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805472");
-  script_version("$Revision: 9978 $");
+  script_version("$Revision: 11218 $");
   script_cve_id("CVE-2015-0995", "CVE-2015-0994", "CVE-2015-0993", "CVE-2015-0992",
                 "CVE-2015-0991", "CVE-2015-0976");
   script_bugtraq_id(73475, 73474, 73473, 73471, 73469, 73468);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-11 14:20:21 +0530 (Sat, 11 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Inductive Automation Ignition Multiple Vulnerabilities");
@@ -74,12 +74,12 @@ if(description)
 
   script_tag(name:"affected", value:"Inductive Automation Ignition version 7.7.2");
 
-  script_tag(name: "solution" , value:"Upgrade to Inductive Automation Ignition
+  script_tag(name:"solution", value:"Upgrade to Inductive Automation Ignition
   version 7.7.4 or later.
   For updates refer to https://www.inductiveautomation.com/downloads/ignition");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://ics-cert.us-cert.gov/advisories/ICSA-15-090-01");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-15-090-01");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

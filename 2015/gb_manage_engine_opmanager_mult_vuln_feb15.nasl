@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_opmanager_mult_vuln_feb15.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: gb_manage_engine_opmanager_mult_vuln_feb15.nasl 11225 2018-09-04 13:06:36Z mmartin $
 #
 # ZOHO ManageEngine OpManager Multiple Vulnerabilities - Feb15
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:zohocorp:manageengine_opmanager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805473");
-  script_version("$Revision: 7577 $");
+  script_version("$Revision: 11225 $");
   script_cve_id("CVE-2014-7864");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-20 11:53:55 +0530 (Fri, 20 Mar 2015)");
   script_name("ZOHO ManageEngine OpManager Multiple Vulnerabilities - Feb15");
 
@@ -124,7 +124,7 @@ foreach file ( keys( files ) )
 
   if( egrep( pattern:file, string:res ) )
   {
-    report = 'By sending the request\n\n' + req + 'it was possible to read the file ' + files[file] + ' on the remote Host.\n\nResponse:\n\n' + res + '\n'; 
+    report = 'By sending the request\n\n' + req + 'it was possible to read the file ' + files[file] + ' on the remote Host.\n\nResponse:\n\n' + res + '\n';
     security_message( port:port, data:report );
     exit( 0 );
   }

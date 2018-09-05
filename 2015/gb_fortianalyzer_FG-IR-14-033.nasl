@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortianalyzer_FG-IR-14-033.nasl 9415 2018-04-10 06:55:50Z cfischer $
+# $Id: gb_fortianalyzer_FG-IR-14-033.nasl 11218 2018-09-04 11:43:35Z mmartin $
 #
 # FortiOS: FortiAnalyzer Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,39 +29,39 @@ CPE = "cpe:/h:fortinet:fortianalyzer";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105200");
- script_bugtraq_id(70887);
- script_cve_id("CVE-2014-2334","CVE-2014-2335","CVE-2014-2336");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 9415 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105200");
+  script_bugtraq_id(70887);
+  script_cve_id("CVE-2014-2334", "CVE-2014-2335", "CVE-2014-2336");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11218 $");
 
- script_name("FortiOS: FortiAnalyzer Multiple Cross Site Scripting Vulnerabilities");
+  script_name("FortiOS: FortiAnalyzer Multiple Cross Site Scripting Vulnerabilities");
 
- script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-14-033");
+  script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-14-033");
 
- script_tag(name: "impact" , value:"An attacker may leverage these issues to execute arbitrary script code
+  script_tag(name:"impact", value:"An attacker may leverage these issues to execute arbitrary script code
 in the browser of an unsuspecting user in the context of the affected site. This can allow the attacker to
 steal cookie-based authentication credentials and launch other attacks.");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Upgrade to 5.0.7 or above.");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Upgrade to 5.0.7 or above.");
 
- script_tag(name: "summary" , value:"FortiAnalyzer is prone to multiple cross-site-scripting vulnerabilities
+  script_tag(name:"summary", value:"FortiAnalyzer is prone to multiple cross-site-scripting vulnerabilities
 because it fails to properly sanitize user-supplied input.");
 
- script_tag(name: "affected" , value:"Versions prior to 5.0.7 are vulnerable.");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"affected", value:"Versions prior to 5.0.7 are vulnerable.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
- script_tag(name:"creation_date", value:"2015-02-11 11:16:13 +0100 (Wed, 11 Feb 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("FortiOS Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_fortianalyzer_version.nasl");
- script_mandatory_keys("fortianalyzer/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-02-11 11:16:13 +0100 (Wed, 11 Feb 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("FortiOS Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_fortianalyzer_version.nasl");
+  script_mandatory_keys("fortianalyzer/version");
 
  exit(0);
 }

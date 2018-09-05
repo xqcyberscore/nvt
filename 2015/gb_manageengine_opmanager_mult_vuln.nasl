@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_opmanager_mult_vuln.nasl 8820 2018-02-15 05:56:30Z ckuersteiner $
+# $Id: gb_manageengine_opmanager_mult_vuln.nasl 11227 2018-09-04 13:25:37Z mmartin $
 #
 # ManageEngine OpManager Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:zohocorp:manageengine_opmanager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806053");
-  script_version("$Revision: 8820 $");
+  script_version("$Revision: 11227 $");
   script_cve_id("CVE-2015-7765", "CVE-2015-7766");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-15 06:56:30 +0100 (Thu, 15 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-16 11:10:46 +0530 (Wed, 16 Sep 2015)");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -56,14 +56,14 @@ the backend PostgreSQL instance with administrator rights and access shell with 
 
   script_tag(name:"affected", value:"ManageEngine OpManager versions 11.6 and earlier.");
 
-  script_tag(name: "solution" , value:"Install the patch from below link,
+  script_tag(name:"solution", value:"Install the patch from below link,
   https://support.zoho.com/portal/manageengine/helpcenter/articles/pgsql-submitquery-do-vulnerability");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/38174");
-  script_xref(name: "URL", value: "https://packetstormsecurity.com/files/133596");
-  script_xref(name: "URL", value: "http://seclists.org/fulldisclosure/2015/Sep/66");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/38174");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/133596");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Sep/66");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -82,7 +82,6 @@ include("http_keepalive.inc");
 if(!opmngrPort = get_app_port(cpe:CPE))
   exit(0);
 
-## Get host name or IP
 host = http_host_name(port:opmngrPort);
 if(!host){
   exit(0);
@@ -96,7 +95,6 @@ postData = 'clienttype=html&isCookieADAuth=&domainName=NULL&authType=localUser'+
 
 len = strlen( postData );
 
-## Try to login with default credentials
 req = 'POST ' + url + ' HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
       'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
@@ -119,7 +117,6 @@ if( res =~ "HTTP/1.1 302" && "index.jsp" >< res )
 
   res = http_send_recv(port:opmngrPort, data:req, bodyonly:FALSE);
 
-  ## Confirm whether login is successful
   if(productName = "OpManager" >< res && 'HomeDashboard' >< res && 'Logout.do' >< res)
   {
     security_message(port:opmngrPort);

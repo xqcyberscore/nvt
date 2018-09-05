@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_oct14_macosx.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_oct14_macosx.nasl 11213 2018-09-04 09:30:51Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities-01 Oct14 (Mac OS X)
 #
@@ -29,24 +29,23 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804946");
-  script_version("$Revision: 6637 $");
-  script_cve_id("CVE-2014-1586","CVE-2014-1585", "CVE-2014-1583", "CVE-2014-1581",
+  script_version("$Revision: 11213 $");
+  script_cve_id("CVE-2014-1586", "CVE-2014-1585", "CVE-2014-1583", "CVE-2014-1581",
                 "CVE-2014-1578", "CVE-2014-1577", "CVE-2014-1576", "CVE-2014-1574");
   script_bugtraq_id(70427, 70425, 70424, 70426, 70428, 70440, 70430, 70436);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-20 13:06:00 +0530 (Mon, 20 Oct 2014)");
 
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 Oct14 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox ESR
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox ESR
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
   - An error in Alarm API which does not properly restrict toJSON calls.
   - An error when handling video sharing within a WebRTC session running within an
     iframe.
@@ -61,15 +60,15 @@ if(description)
     style changes during CSS parsing.
   - Other unspecified errors.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   disclose potentially sensitive information, bypass certain security restrictions,
   conduct denial-of-service attack and compromise a user's system.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox ESR 31.x before 31.2 on Mac OS X");
+  script_tag(name:"affected", value:"Mozilla Firefox ESR 31.x before 31.2 on Mac OS X");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox ESR version 31.2
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version 31.2
   or later, For updates refer to https://www.mozilla.org/en-US/firefox/organizations");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -92,20 +91,15 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
-if(ffVer =~ "^(31)\.")
+if(ffVer =~ "^31\.")
 {
   if((version_in_range(version:ffVer, test_version:"31.0", test_version2:"31.1")))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

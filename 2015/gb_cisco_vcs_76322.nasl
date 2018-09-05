@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_76322.nasl 6513 2017-07-04 09:59:28Z teissa $
+# $Id: gb_cisco_vcs_76322.nasl 11218 2018-09-04 11:43:35Z mmartin $
 #
 # Cisco TelePresence Video Communication Server (VCS) Multiple Vulnerabilities
 #
@@ -29,25 +29,25 @@ CPE = "cpe:/a:cisco:telepresence_video_communication_server_software";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105335");
- script_bugtraq_id(76326,76347,76366,76353,76351,76350);
- script_cve_id("CVE-2015-4303","CVE-2015-4316","CVE-2015-4317","CVE-2015-4318","CVE-2015-4319","CVE-2015-4320");
- script_tag(name:"cvss_base", value:"6.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
- script_version ("$Revision: 6513 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105335");
+  script_bugtraq_id(76326, 76347, 76366, 76353, 76351, 76350);
+  script_cve_id("CVE-2015-4303", "CVE-2015-4316", "CVE-2015-4317", "CVE-2015-4318", "CVE-2015-4319", "CVE-2015-4320");
+  script_tag(name:"cvss_base", value:"6.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
+  script_version("$Revision: 11218 $");
 
- script_name("Cisco TelePresence Video Communication Server (VCS) Multiple Vulnerabilities");
+  script_name("Cisco TelePresence Video Communication Server (VCS) Multiple Vulnerabilities");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCuv40528");
- script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCuv12333");
- script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCuv40396");
- script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCuv40469");
- script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCuv12338");
- script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCuv12340");
+  script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCuv40528");
+  script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCuv12333");
+  script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCuv40396");
+  script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCuv40469");
+  script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCuv12338");
+  script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCuv12340");
 
- script_tag(name: "vuldetect" , value:"Check the version");
+  script_tag(name:"vuldetect", value:"Check the version");
 
- script_tag(name: "insight" , value:"The remote Cisco TelePresence Video Communication Server is prone to the following vulnerabilities:
+  script_tag(name:"insight", value:"The remote Cisco TelePresence Video Communication Server is prone to the following vulnerabilities:
 
 1. Cisco TelePresence Video Communication Server (VCS) Command Injection
 
@@ -88,20 +88,20 @@ CSCuv40469
 CSCuv12338
 CSCuv12340");
 
- script_tag(name: "solution" , value:"Ask the Vendor for an update.");
- script_tag(name: "summary" , value:"Cisco TelePresence Video Communication Server Expressway is prone to multiple vulnerabilities");
- script_tag(name: "affected" , value:"Cisco TelePresence Video Communication Server Expressway X8.5.2");
- script_tag(name:"solution_type", value: "NoneAvailable");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"summary", value:"Cisco TelePresence Video Communication Server Expressway is prone to multiple vulnerabilities");
+  script_tag(name:"affected", value:"Cisco TelePresence Video Communication Server Expressway X8.5.2");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
- script_tag(name:"creation_date", value:"2015-08-27 15:44:02 +0200 (Thu, 27 Aug 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_vcs_detect.nasl","gb_cisco_vcs_ssh_detect.nasl");
- script_mandatory_keys("cisco_vcs/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-08-27 15:44:02 +0200 (Thu, 27 Aug 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_vcs_detect.nasl", "gb_cisco_vcs_ssh_detect.nasl");
+  script_mandatory_keys("cisco_vcs/installed");
 
  exit(0);
 }

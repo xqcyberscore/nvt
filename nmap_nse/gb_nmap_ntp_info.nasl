@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nmap_ntp_info.nasl 10595 2018-07-24 13:51:36Z cfischer $
+# $Id: gb_nmap_ntp_info.nasl 11216 2018-09-04 11:12:23Z cfischer $
 #
 # Wrapper for Nmap NTP Info NSE script.
 #
@@ -29,11 +29,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801814");
-  script_version("$Revision: 10595 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-24 15:51:36 +0200 (Tue, 24 Jul 2018) $");
+  script_version("$Revision: 11216 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:12:23 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-01-21 13:17:02 +0100 (Fri, 21 Jan 2011)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"0.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("Nmap NSE: NTP Info");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -80,7 +80,7 @@ if(res)
   if("ntp-info" >< result) {
     msg = string('Result found by Nmap Security Scanner (ntp-info.nse) ',
                 'http://nmap.org:\n\n', result);
-    security_message(data : msg, port:port);
+    log_message(data : msg, port:port);
   }
 }
 else

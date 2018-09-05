@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln03_oct14_lin.nasl 9070 2018-03-09 12:37:39Z cfischer $
+# $Id: gb_java_mult_unspecified_vuln03_oct14_lin.nasl 11214 2018-09-04 10:09:46Z mmartin $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-03 Oct 2014 (Linux)
 #
@@ -29,46 +29,46 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108417");
-  script_version("$Revision: 9070 $");
+  script_version("$Revision: 11214 $");
   script_cve_id("CVE-2014-6527", "CVE-2014-6519", "CVE-2014-6476", "CVE-2014-6456");
   script_bugtraq_id(70560, 70570, 70531, 70522);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-09 13:37:39 +0100 (Fri, 09 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-20 13:23:18 +0530 (Mon, 20 Oct 2014)");
 
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-03 Oct 2014 (Linux)");
 
-  script_tag(name: "summary" , value:"The host is installed with Oracle Java SE JRE
+  script_tag(name:"summary", value:"The host is installed with Oracle Java SE JRE
   and is prone to multiple unspecified vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version of Oracle Java
+  script_tag(name:"vuldetect", value:"Get the installed version of Oracle Java
   SE JRE with the help of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - Multiple errors within the Deployment subcomponent.
 
   - An error in the 'ClassFileParser::parse_classfile_bootstrap_methods_attribute'
     function in share/vm/classfile/classFileParser.cpp script.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to manipulate certain data and execute arbitrary code.
 
   Impact Level: System/Application.");
 
-  script_tag(name: "affected" , value:"Oracle Java SE 7 update 67 and prior, and 8
+  script_tag(name:"affected", value:"Oracle Java SE 7 update 67 and prior, and 8
   update 20 and prior on Linux");
 
-  script_tag(name: "solution" , value:"Apply the patch from below link,
+  script_tag(name:"solution", value:"Apply the patch from below link,
 
   http://www.oracle.com/technetwork/topics/security/cpuoct2014-1972960.html");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/61609/");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpuoct2014-1972960.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/61609/");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2014-1972960.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("General");
@@ -93,7 +93,7 @@ if(jreVer =~ "^(1\.(7|8))")
   if(version_in_range(version:jreVer, test_version:"1.7.0", test_version2:"1.7.0.67")||
      version_in_range(version:jreVer, test_version:"1.8.0", test_version2:"1.8.0.20"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

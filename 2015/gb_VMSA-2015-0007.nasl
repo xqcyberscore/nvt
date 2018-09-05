@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2015-0007.nasl 6183 2017-05-22 09:03:43Z teissa $
+# $Id: gb_VMSA-2015-0007.nasl 11221 2018-09-04 12:29:42Z mmartin $
 #
 # VMSA-2015-0007: VMware ESXi OpenSLP Remote Code Execution
 #
@@ -27,18 +27,18 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105393");
- script_cve_id("CVE-2015-5177","CVE-2015-2342","CVE-2015-1047");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6183 $");
- script_name("VMSA-2015-0007: VMware ESXi OpenSLP Remote Code Execution");
+  script_oid("1.3.6.1.4.1.25623.1.0.105393");
+  script_cve_id("CVE-2015-5177", "CVE-2015-2342", "CVE-2015-1047");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11221 $");
+  script_name("VMSA-2015-0007: VMware ESXi OpenSLP Remote Code Execution");
 
- script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2015-0007.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2015-0007.html");
 
- script_tag(name: "vuldetect" , value:"Checks for missing patches.");
+  script_tag(name:"vuldetect", value:"Checks for missing patches.");
 
- script_tag(name: "insight" , value:"VMware ESXi OpenSLP Remote Code Execution
+  script_tag(name:"insight", value:"VMware ESXi OpenSLP Remote Code Execution
 VMware ESXi contains a double free flaw in OpenSLP's SLPDProcessMessage() function. Exploitation of this issue may allow an unauthenticated attacker to execute code remotely on the ESXi host.
 
 VMware vCenter Server JMX RMI Remote Code Execution
@@ -47,11 +47,11 @@ VMware vCenter Server contains a remotely accessible JMX RMI service that is not
 VMware vCenter Server vpxd denial-of-service vulnerability
 VMware vCenter Server does not properly sanitize long heartbeat messages. Exploitation of this issue may allow an unauthenticated attacker to create a denial-of-service condition in the vpxd service.");
 
- script_tag(name: "solution" , value:"Apply the missing patch(es).");
+  script_tag(name:"solution", value:"Apply the missing patch(es).");
 
- script_tag(name: "summary" , value:"VMware vCenter and ESXi updates address critical security issues.");
+  script_tag(name:"summary", value:"VMware vCenter and ESXi updates address critical security issues.");
 
- script_tag(name: "affected" , value:"VMware ESXi 5.5 without patch ESXi550-201509101
+  script_tag(name:"affected", value:"VMware ESXi 5.5 without patch ESXi550-201509101
 VMware ESXi 5.1 without patch ESXi510-201510101
 VMware ESXi 5.0 without patch ESXi500-201510101
 
@@ -60,15 +60,15 @@ VMware vCenter Server 5.5 prior to version 5.5 update 3
 VMware vCenter Server 5.1 prior to version 5.1 update u3b
 VMware vCenter Server 5.0 prior to version 5.u update u3e");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
- script_tag(name:"creation_date", value:"2015-10-05 10:37:34 +0200 (Mon, 05 Oct 2015)");
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esxi_init.nasl");
- script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-10-05 10:37:34 +0200 (Mon, 05 Oct 2015)");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_esxi_init.nasl");
+  script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
 
  exit(0);
 

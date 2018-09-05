@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: opencart_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
+# $Id: opencart_detect.nasl 11224 2018-09-04 12:57:17Z cfischer $
 #
 # OpenCart Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100178");
-  script_version("$Revision: 10915 $");
+  script_version("$Revision: 11224 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:57:17 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-05-02 19:46:33 +0200 (Sat, 02 May 2009)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenCart Detection");
@@ -71,7 +71,6 @@ foreach dir( make_list_unique( "/shop", "/store", "/opencart", "/upload", cgi_di
   {
     vers = string("unknown");
 
-    ## Send and Receive the response
     sndReq = http_get(item:string(dir, "/admin/index.php"), port:ocPort);
     rcvRes = http_keepalive_send_recv(port:ocPort, data:sndReq);
 

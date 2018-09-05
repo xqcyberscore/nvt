@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tapatalk_sql_inj_vuln.nasl 9369 2018-04-06 08:36:49Z cfischer $
+# $Id: gb_tapatalk_sql_inj_vuln.nasl 11214 2018-09-04 10:09:46Z mmartin $
 #
 # Tapatalk Blind SQL Injection Vulnerability
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-2023");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version ("$Revision: 9369 $");
+  script_version("$Revision: 11214 $");
 
   script_name("Tapatalk Blind SQL Injection Vulnerability");
 
@@ -42,22 +42,22 @@ if (description)
 
   script_tag(name:"summary", value:"Tapatalk is prone to a SQL Injection Vulnerability");
 
-  script_tag(name: "impact", value: "A successful exploit may allow an unauthenticated attacker to
+  script_tag(name:"impact", value:"A successful exploit may allow an unauthenticated attacker to
   compromise the application, access or modify data, or exploit latent vulnerabilities in the underlying
   database.");
 
-  script_tag(name: "insight", value: "Tapatalk for vBulletin 4.x does not properly sanitize some xmlrpc
+  script_tag(name:"insight", value:"Tapatalk for vBulletin 4.x does not properly sanitize some xmlrpc
   calls for unsubscribe_topic, unsubscribe_forum allowing unauthenticated users to inject arbitrary SQL commands.");
 
-  script_tag(name: "vuldetect", value: "Check the version of Tapatalk vBulletin 4.x plugin.");
+  script_tag(name:"vuldetect", value:"Check the version of Tapatalk vBulletin 4.x plugin.");
 
-  script_tag(name: "solution", value: "Upgrade to Tapatalk vBulletin 4.x plugin series 5.2.2 or higher.");
+  script_tag(name:"solution", value:"Upgrade to Tapatalk vBulletin 4.x plugin series 5.2.2 or higher.");
 
-  script_tag(name: "affected", value:"Tapatalk for vBulletin 4.x plugin series 5.2.1 and below.");
+  script_tag(name:"affected", value:"Tapatalk for vBulletin 4.x plugin series 5.2.1 and below.");
 
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 10:36:49 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-27 14:20:39 +0700 (Thu, 27 Nov 2014)");
 
   script_category(ACT_GATHER_INFO);

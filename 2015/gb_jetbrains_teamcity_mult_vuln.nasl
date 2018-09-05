@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jetbrains_teamcity_mult_vuln.nasl 9978 2018-05-28 08:52:24Z cfischer $
+# $Id: gb_jetbrains_teamcity_mult_vuln.nasl 11220 2018-09-04 11:57:09Z mmartin $
 #
 # Jetbrains Teamcity Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805444");
-  script_version("$Revision: 9978 $");
+  script_version("$Revision: 11220 $");
   script_cve_id("CVE-2014-10036", "CVE-2014-10002");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-07 10:25:40 +0530 (Tue, 07 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Jetbrains Teamcity Multiple Vulnerabilities");
@@ -58,12 +58,12 @@ if(description)
 
   script_tag(name:"affected", value:"JetBrains TeamCity version before 8.1");
 
-  script_tag(name: "solution" , value:"Upgrade to JetBrains TeamCity 8.1 or
+  script_tag(name:"solution", value:"Upgrade to JetBrains TeamCity 8.1 or
   later. For updates refer to  http://www.jetbrains.com/teamcity/");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://www.netsparker.com/critical-xss-vulnerabilities-in-teamcity/");
+  script_xref(name:"URL", value:"https://www.netsparker.com/critical-xss-vulnerabilities-in-teamcity/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_openadmin_tool_detect.nasl 10908 2018-08-10 15:00:08Z cfischer $
+# $Id: gb_ibm_openadmin_tool_detect.nasl 11224 2018-09-04 12:57:17Z cfischer $
 #
 # IBM Open Admin Tool Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802158");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10908 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:00:08 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11224 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:57:17 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-09-14 16:05:49 +0200 (Wed, 14 Sep 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("IBM Open Admin Tool Version Detection");
@@ -58,7 +58,6 @@ port = get_http_port( default:8080 );
 
 if( ! can_host_php( port:port ) ) exit( 0 );
 
-## Send and receive response
 sndReq = http_get( item:"/openadmin/index.php?act=help&do=aboutOAT", port:port );
 rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 

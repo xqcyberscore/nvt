@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monkey_httpd_host_header_bof_vuln.nasl 11007 2018-08-16 13:20:25Z mmartin $
+# $Id: gb_monkey_httpd_host_header_bof_vuln.nasl 11223 2018-09-04 12:48:48Z cfischer $
 #
 # Monkey HTTPD Host Header Buffer Overflow Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803711");
-  script_version("$Revision: 11007 $");
+  script_version("$Revision: 11223 $");
   script_cve_id("CVE-2013-3843");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:20:25 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:48:48 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-05 11:55:02 +0530 (Wed, 05 Jun 2013)");
   script_name("Monkey HTTPD Host Header Buffer Overflow Vulnerability");
 
@@ -87,7 +87,6 @@ req = string("GET / HTTP/1.1\r\n",
 
 res = http_send_recv(port:port, data:req);
 
-## Send and Receive the response
 req = http_get(item:"/",  port:port);
 res = http_keepalive_send_recv(port:port, data:req);
 

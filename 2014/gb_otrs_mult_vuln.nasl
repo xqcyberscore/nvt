@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_mult_vuln.nasl 10954 2018-08-14 12:43:10Z mmartin $
+# $Id: gb_otrs_mult_vuln.nasl 11210 2018-09-04 09:13:50Z mmartin $
 #
 # OTRS Multiple Vulnerabilities
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804236");
-  script_version("$Revision: 10954 $");
+  script_version("$Revision: 11210 $");
   script_cve_id("CVE-2014-1471", "CVE-2014-1694");
   script_bugtraq_id(65217, 65241);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:43:10 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-07 18:02:09 +0530 (Fri, 07 Feb 2014)");
   script_name("OTRS Multiple Vulnerabilities");
 

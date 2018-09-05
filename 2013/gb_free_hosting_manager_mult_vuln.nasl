@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_free_hosting_manager_mult_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_free_hosting_manager_mult_vuln.nasl 11223 2018-09-04 12:48:48Z cfischer $
 #
 # Free Hosting Manager Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803446");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11223 $");
   script_bugtraq_id(56991, 56754);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:48:48 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-25 14:43:46 +0530 (Mon, 25 Mar 2013)");
   script_name("Free Hosting Manager Multiple Vulnerabilities");
 
@@ -84,7 +84,6 @@ foreach dir (make_list_unique("/", "/freehostingmanager", "/fhm", cgi_dirs(port:
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   req = http_get(item:string(dir,"/admin/login.php"), port:port);
   res = http_keepalive_send_recv(port:port, data:req);
 

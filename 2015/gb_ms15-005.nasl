@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-005.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_ms15-005.nasl 11221 2018-09-04 12:29:42Z mmartin $
 #
 # MS Windows Network Location Awareness Service Security Bypass Vulnerability (3022777)
 #
@@ -27,35 +27,34 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805036");
-  script_version("$Revision: 6415 $");
+  script_version("$Revision: 11221 $");
   script_cve_id("CVE-2015-0006");
   script_bugtraq_id(71930);
   script_tag(name:"cvss_base", value:"6.1");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-14 08:53:24 +0530 (Wed, 14 Jan 2015)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("MS Windows Network Location Awareness Service Security Bypass Vulnerability (3022777)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-005.");
 
-  script_tag(name: "vuldetect" , value: "Get the vulnerable file version and
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value: "The flaw is due to an error within the
+  script_tag(name:"insight", value:"The flaw is due to an error within the
   Network Location Awareness (NLA) service when validating if a domain-connected
   computer is connected to the domain.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to relax the firewall policy and/or configuration of certain
   services by spoofing responses of DNS or LDAP traffic via a
   Man-in-the-Middle attack.
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"
-  Microsoft Windows 8 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows Server 2012/R2
   Microsoft Windows 8.1 x32/x64 Edition
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
@@ -64,7 +63,7 @@ if(description)
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
 
-  script_tag(name: "solution" , value: "Run Windows Update and update the
+  script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
   https://technet.microsoft.com/library/security/MS15-005
@@ -72,14 +71,15 @@ if(description)
   NOTE: For Microsoft Windows 2003 solution is not available.");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/62098");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3022777");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-005");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/62098");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/3022777");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-005");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -90,21 +90,14 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2003:3, win2003x64:3, winVista:3, win7:2, win7x64:2,
    win2008:3, win2008r2:2, win8:1, win8x64:1, win2012:1, win2012R2:1,
    win8_1:1, win8_1x64:1) <= 0){
   exit(0);
 }
 
-##Windows Server 2003
 if(hotfix_check_sp(win2003x64:3,win2003:3) > 0)
 {
- ## Windows Server 2003 is listed as an affected product;
  ## why is Microsoft not issuing an update for it?
  ## The architecture to properly support the fix provided in the update does
  ## not exist on Windows Server 2003 systems, making it infeasible to build
@@ -114,12 +107,11 @@ if(hotfix_check_sp(win2003x64:3,win2003:3) > 0)
  ## effort would be sufficiently incompatible with Windows Server 2003 that
  ## there would be no assurance that applications designed to run on Windows
  ## Server 2003 would continue to operate on the updated system.
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }
 
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
@@ -130,36 +122,30 @@ if(!dllVer){
   exit(0);
 }
 
-## Windows Vista and Windows Server 2008
 ## Currently not supporting for Vista and Windows Server 2008 64 bit
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Ncsi.dll version
   if(version_is_less(version:dllVer, test_version:"6.0.6002.19250") ||
      version_in_range(version:dllVer, test_version:"6.0.6002.23000", test_version2:"6.0.6002.23556")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows 7 and Windows Server 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Ncsi.dll version
   if(version_is_less(version:dllVer, test_version:"6.1.7601.17964") ||
      version_in_range(version:dllVer, test_version:"6.1.7601.22000", test_version2:"6.1.7601.22892")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows 8 and Windows Server 2012
 if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 {
-  ## Check for Ncsi.dll version
   if(version_is_less(version:dllVer, test_version:"6.2.9200.17199") ||
      version_in_range(version:dllVer, test_version:"6.2.9200.20000", test_version2:"6.2.9200.20622")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
@@ -167,9 +153,8 @@ if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 ## Win 8.1 and win2012R2
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Ncsi.dll version
   if(version_is_less(version:dllVer, test_version:"6.3.9600.17550")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-package-list.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gather-package-list.nasl 11212 2018-09-04 09:28:10Z ckuersteiner $
 #
 # Determine OS and list of installed packages via SSH login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.50282");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11212 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:28:10 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-01-17 22:05:49 +0100 (Thu, 17 Jan 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -395,7 +395,12 @@ OS_CPE = make_array(
 
     # Arch Linux
     # nb: Arch Linux is a rolling release so there is no "real" version
-    "ArchLinux", "cpe:/o:archlinux:archlinux"
+    "ArchLinux", "cpe:/o:archlinux:archlinux",
+
+    # EulerOS
+    "EULEROS2.0SP3", "cpe:/o:huawei:euleros:2.0:SP3",
+    "EULEROS2.0SP2", "cpe:/o:huawei:euleros:2.0:SP2",
+    "EULEROS2.0SP1", "cpe:/o:huawei:euleros:2.0:SP1"
 );
 
 # GNU/Linux platforms:
@@ -3097,6 +3102,37 @@ if( "Gentoo" >< rls ) {
   set_kb_item( name:"ssh/login/gentoo_maintained", value:buf );
   log_message( port:port, data:"We are able to login and detect that you are running Gentoo" );
   register_detected_os( os:"Gentoo", oskey:"GENTOO" );
+  exit( 0 );
+}
+
+# EulerOS
+rls = ssh_cmd( socket: sock, cmd:"cat /etc/euleros-release" );
+
+if( "No such file or directory" >!< rls && strlen( rls ) )
+  _unknown_os_info += '/etc/euleros-release: ' + rls + '\n\n';
+
+if( "EulerOS release 2.0 (SP3)" >< rls ) {
+  set_kb_item( name:"ssh/login/euleros", value:TRUE );
+  buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
+  register_rpms( buf:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running EulerOS release 2.0 (SP3)" );
+  register_detected_os( os:"EulerOS 2.0 (SP3)", oskey:"EULEROS2.0SP3" );
+  exit( 0 );
+}
+if( "EulerOS release 2.0 (SP2)" >< rls ) {
+  set_kb_item( name:"ssh/login/euleros", value:TRUE );
+  buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
+  register_rpms( buf:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running EulerOS release 2.0 (SP3)" );
+  register_detected_os( os:"EulerOS 2.0 (SP2)", oskey:"EULEROS2.0SP2" );
+  exit( 0 );
+}
+if( "EulerOS release 2.0 (SP1)" >< rls ) {
+  set_kb_item( name:"ssh/login/euleros", value:TRUE );
+  buf = ssh_cmd( socket:sock, cmd:"/bin/rpm -qa --qf '%{NAME}~%{VERSION}~%{RELEASE};'" );
+  register_rpms( buf:buf );
+  log_message( port:port, data:"We are able to login and detect that you are running EulerOS release 2.0 (SP3)" );
+  register_detected_os( os:"EulerOS 2.0 (SP1)", oskey:"EULEROS2.0SP1" );
   exit( 0 );
 }
 

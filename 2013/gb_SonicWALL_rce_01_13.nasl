@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_SonicWALL_rce_01_13.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_SonicWALL_rce_01_13.nasl 11219 2018-09-04 11:52:00Z cfischer $
 #
 # Multiple SonicWALL Products Authentication Bypass Vulnerability
 #
@@ -25,14 +25,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103642");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_bugtraq_id(57445);
   script_cve_id("CVE-2013-1359", "CVE-2013-1360");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11219 $");
 
   script_name("Multiple SonicWALL Products Authentication Bypass Vulnerability");
 
@@ -40,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.sonicwall.com/");
   script_xref(name:"URL", value:"http://sotiriu.de/adv/NSOADV-2013-001.txt");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-18 13:01:11 +0100 (Fri, 18 Jan 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -64,7 +64,8 @@ The following versions are affected:
 
 GMS/Analyzer/UMA 7.0.x GMS/ViewPoint/UMA 6.0.x GMS/ViewPoint/UMA 5.1.x
 GMS/ViewPoint 5.0.x GMS/ViewPoint 4.1.x");
- exit(0);
+
+  exit(0);
 }
 
 include("http_func.inc");
@@ -77,6 +78,7 @@ buf = http_get_cache(item:url, port:port);
 
 if("<title>sonicwall" >!< tolower(buf))exit(0);
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 req = string(
@@ -84,7 +86,7 @@ req = string(
 "TE: deflate,gzip;q=0.3\r\n",
 "Connection: TE, close\r\n",
 "Host: ",host,"\r\n",
-"User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
+"User-Agent: ", useragent, "\r\n",
 "Content-Length: 90\r\n",
 "Content-Type: application/x-www-form-urlencoded; charset=UTF-8\r\n",
 "\r\n",
@@ -128,7 +130,7 @@ req = string(
 "TE: deflate,gzip;q=0.3\r\n",
 "Connection: TE, close\r\n",
 "Host: ",host,"\r\n",
-"User-Agent: ",OPENVAS_HTTP_USER_AGENT,"\r\n",
+"User-Agent: ", useragent, "\r\n",
 "Content-Length: ",len,"\r\n",
 "Content-Type: multipart/form-data; boundary=xYzZY\r\n",
 "\r\n",
@@ -162,10 +164,8 @@ req = http_get(item:url, port:port);
 buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
 if(jsp_print >< buf) {
-
   security_message(port:port);
   exit(0);
-
 }
 
 exit(99);

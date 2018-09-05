@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_multiple_devices_58938.nasl 11065 2018-08-21 09:49:00Z mmartin $
+# $Id: gb_dlink_multiple_devices_58938.nasl 11219 2018-09-04 11:52:00Z cfischer $
 #
 # Multiple D-Link Products Command Injection and Multiple Information Disclosue Vulnerabilities
 #
@@ -25,11 +25,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103691");
   script_bugtraq_id(58938);
-  script_version("$Revision: 11065 $");
+  script_version("$Revision: 11219 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -39,7 +39,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.dlink.com/");
   script_xref(name:"URL", value:"http://www.s3cur1ty.de/m1adv2013-017");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 11:49:00 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-09 12:07:13 +0200 (Tue, 09 Apr 2013)");
 
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -63,11 +63,11 @@ the context of the affected device.");
 
 include("http_func.inc");
 
-
 port = get_kb_item("dlink_dir_port");
 if(!port)exit(0);
 if(!get_port_state(port))exit(0);
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 sleep = make_list(3, 5, 10);
@@ -79,7 +79,7 @@ foreach i (sleep) {
 
   req = string("POST /diagnostic.php HTTP/1.1\r\n",
                "Host: ", host,"\r\n",
-               "User-Agent: ", OPENVAS_HTTP_USER_AGENT,"\r\n",
+               "User-Agent: ", useragent, "\r\n",
                "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
                "Accept-Language: de-de,de;q=0.8,en-us;q=0.5,en;q=0.3\r\n",
                "Accept-Encoding: identity\r\n",
@@ -94,11 +94,8 @@ foreach i (sleep) {
   start = unixtime();
   result = http_send_recv(port:port, data:req, bodyonly:FALSE);
   stop = unixtime();
-
-  if(stop - start < i || stop - start > (i+5)) exit(0); # not vulnerable
-
+  if(stop - start < i || stop - start > (i+5)) exit(99); # not vulnerable
 }
 
 security_message(port:port);
 exit(0);
-

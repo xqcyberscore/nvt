@@ -29,13 +29,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804223");
-  script_version("$Revision: 11196 $");
+  script_version("$Revision: 11222 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-10 13:11:49 +0530 (Fri, 10 Jan 2014)");
   script_name("TYPO3 Default Admin Credentials");
-
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to access the program
 or system and gain privileged access.
@@ -57,6 +56,7 @@ http://wiki.typo3.org/TYPO3_Installation_Basics");
   script_dependencies("gb_typo3_detect.nasl");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
@@ -93,9 +93,10 @@ function get_typo3_login(cinstall, tport, chost)
     {
       cCookie = tcookie[1] + ' showRefMsg=false; ' + PHPSESSID[1] + " typo3-login-cookiecheck=true";
 
+      useragent = get_http_user_agent();
       req = string("POST ", url, " HTTP/1.1\r\n",
                    "Host: ", chost, "\r\n",
-                   "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                   "User-Agent: ", useragent, "\r\n",
                    "Referer: http://" + chost + "/typo3/alt_menu.php \r\n",
                    "Connection: keep-alive\r\n",
                    "Cookie: ",cCookie,"\r\n",

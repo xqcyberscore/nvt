@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_edirectory_mult_vuln_feb15.nasl 6333 2017-06-14 10:00:49Z teissa $
+# $Id: gb_novell_edirectory_mult_vuln_feb15.nasl 11227 2018-09-04 13:25:37Z mmartin $
 #
 # Novell eDirectory iMonitor Multiple Vulnerabilities - Feb15
 #
@@ -27,19 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805269");
-  script_version("$Revision: 6333 $");
+  script_version("$Revision: 11227 $");
   script_cve_id("CVE-2014-5212", "CVE-2014-5213");
   script_bugtraq_id(71741, 71748);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-06 12:01:38 +0530 (Fri, 06 Feb 2015)");
   script_name("Novell eDirectory iMonitor Multiple Vulnerabilities - Feb15");
   script_tag(name:"summary", value:"This host is installed with Novell eDirectory
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with
-  the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple errors exists due to,
   - Improper sanitization by the /nds/search/data script when input is passed

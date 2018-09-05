@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2015-0001.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_VMSA-2015-0001.nasl 11227 2018-09-04 13:25:37Z mmartin $
 #
 # VMSA-2015-0001: VMware vCenter Server, ESXi, Workstation, Player, and Fusion updates address security issues
 #
@@ -27,18 +27,18 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105190");
- script_cve_id("CVE-2014-8370","CVE-2015-1043","CVE-2015-1044","CVE-2014-3513","CVE-2014-3567","CVE-2014-3566","CVE-2014-3568","CVE-2014-3660");
- script_tag(name:"cvss_base", value:"7.1");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 9381 $");
- script_name("VMSA-2015-0001: VMware vCenter Server, ESXi, Workstation, Player, and Fusion updates address security issues");
+  script_oid("1.3.6.1.4.1.25623.1.0.105190");
+  script_cve_id("CVE-2014-8370", "CVE-2015-1043", "CVE-2015-1044", "CVE-2014-3513", "CVE-2014-3567", "CVE-2014-3566", "CVE-2014-3568", "CVE-2014-3660");
+  script_tag(name:"cvss_base", value:"7.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11227 $");
+  script_name("VMSA-2015-0001: VMware vCenter Server, ESXi, Workstation, Player, and Fusion updates address security issues");
 
- script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2015-0001.html");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2015-0001.html");
 
- script_tag(name: "vuldetect" , value:"Checks for missing patches.");
+  script_tag(name:"vuldetect", value:"Checks for missing patches.");
 
- script_tag(name: "insight" , value:"a. VMware ESXi, Workstation, Player, and Fusion host privilege escalation vulnerability
+  script_tag(name:"insight", value:"a. VMware ESXi, Workstation, Player, and Fusion host privilege escalation vulnerability
 
 VMware ESXi, Workstation, Player and Fusion contain an arbitrary file write issue. Exploitation this issue may allow for privilege
 escalation on the host.
@@ -57,11 +57,11 @@ e. Update to ESXi libxml2 package
 
 The libxml2 library is updated to version libxml2-2.7.6-17 to resolve a security issue.");
 
- script_tag(name: "solution" , value:"Apply the missing patch(es).");
+  script_tag(name:"solution", value:"Apply the missing patch(es).");
 
- script_tag(name: "summary" , value:"VMware vCenter Server, ESXi, Workstation, Player and Fusion address several security issues.");
+  script_tag(name:"summary", value:"VMware vCenter Server, ESXi, Workstation, Player and Fusion address several security issues.");
 
- script_tag(name: "affected" , value:"Mware Workstation 10.x prior to version 10.0.5
+  script_tag(name:"affected", value:"Mware Workstation 10.x prior to version 10.0.5
 VMware Player 6.x prior to version 6.0.5
 VMware Fusion 7.x prior to version 7.0.1
 VMware Fusion 6.x prior to version 6.0.5
@@ -70,15 +70,15 @@ ESXi 5.5 without patch ESXi550-201403102-SG, ESXi550-201501101-SG
 ESXi 5.1 without patch ESXi510-201404101-SG
 ESXi 5.0 without patch ESXi500-201405101-SG");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2015-01-30 12:05:44 +0100 (Fri, 30 Jan 2015)");
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esxi_init.nasl");
- script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-01-30 12:05:44 +0100 (Fri, 30 Jan 2015)");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_esxi_init.nasl");
+  script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
 
  exit(0);
 

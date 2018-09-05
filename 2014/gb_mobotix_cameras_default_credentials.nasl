@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mobotix_cameras_default_credentials.nasl 9982 2018-05-28 12:00:03Z cfischer $
+# $Id: gb_mobotix_cameras_default_credentials.nasl 11210 2018-09-04 09:13:50Z mmartin $
 #
 # Mobotix Cameras Default Admin Credentials
 #
@@ -27,34 +27,35 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105060");
- script_version("$Revision: 9982 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("Mobotix Cameras Default Admin Credentials");
- script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
- script_tag(name:"creation_date", value:"2014-07-15 10:02:06 +0200 (Tue, 15 Jul 2014)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_oid("1.3.6.1.4.1.25623.1.0.105060");
+  script_version("$Revision: 11210 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("Mobotix Cameras Default Admin Credentials");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-07-15 10:02:06 +0200 (Tue, 15 Jul 2014)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "summary" , value : "The remote Mobotix camera web interface is prone to a default
+  script_tag(name:"summary", value:"DEPRECATED since this check is already covered in
+  'Mobotix Webcam Default Credentials' (OID: 1.3.6.1.4.1.25623.1.0.113233) The remote Mobotix camera web interface is prone to a default
 account authentication bypass vulnerability.");
- script_tag(name : "impact" , value : "This issue may be exploited by a remote attacker to gain
+  script_tag(name:"impact", value:"This issue may be exploited by a remote attacker to gain
 access to sensitive information or modify system configuration.");
- script_tag(name : "vuldetect" , value : "Try to login with default credentials.");
- script_tag(name : "insight" , value : "It was possible to login with default credentials admin/meinsm.");
- script_tag(name : "solution" , value : "Change the password.");
+  script_tag(name:"vuldetect", value:"Try to login with default credentials.");
+  script_tag(name:"insight", value:"It was possible to login with default credentials admin/meinsm.");
+  script_tag(name:"solution", value:"Change the password.");
 
- script_tag(name:"solution_type", value:"Workaround");
-
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"deprecated", value:TRUE);
  exit(0);
 }
-
+exit(66);
 include("http_func.inc");
 include("misc_func.inc");
 

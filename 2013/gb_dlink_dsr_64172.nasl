@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dsr_64172.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_dlink_dsr_64172.nasl 11219 2018-09-04 11:52:00Z cfischer $
 #
 # D-Link DSR Router Series SQL Injection Vulnerability
 #
@@ -25,12 +25,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103862");
   script_bugtraq_id(64172);
   script_cve_id("CVE-2013-5945", "CVE-2013-5946", "CVE-2013-7004", "CVE-2013-7005");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11219 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.dlink.com/");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/30062/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-23 15:10:36 +0100 (Mon, 23 Dec 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -72,15 +72,13 @@ D-Link DSR-1000 and DSR-1000N (Firmware < v1.08B77)");
 
 include("http_func.inc");
 
-
 port = get_http_port(default:80);
 
 banner = get_http_banner(port:port);
 if("Server: Embedded HTTP Server" >!< banner && "Unified Services Router" >!< banner) exit(0);
+useragent = get_http_user_agent();
 
-dirs = make_list("/scgi-bin/","/");
-
-foreach dir (dirs) {
+foreach dir (make_list("/scgi-bin/", "/")) {
 
   url = dir + 'platform.cgi';
   req = http_get(item:url, port:port);
@@ -94,7 +92,7 @@ foreach dir (dirs) {
 
   req = 'POST ' + url + ' HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n' +
         'Referer: http://' + host + url + '?page=index.htm\r\n' +
         'Content-Type: application/x-www-form-urlencoded\r\n' +
@@ -104,12 +102,9 @@ foreach dir (dirs) {
   buf = http_send_recv(port:port, data:req, bodyonly:FALSE);
 
   if(("adminSettings.htm" >< buf && ">Logout<" >< buf) || (">User already logged in<" >< buf)) {
-
     security_message(port:port);
     exit(0);
   }
-
 }
 
 exit(99);
-

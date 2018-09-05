@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804251");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 11210 $");
   script_cve_id("CVE-2014-0050");
   script_bugtraq_id(65400);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-24 15:09:34 +0530 (Mon, 24 Mar 2014)");
   script_name("Apache Tomcat Content-Type Header Denial Of Service Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -49,31 +49,19 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/31615");
   script_xref(name:"URL", value:"http://blog.spiderlabs.com/2014/02/cve-2014-0050-exploit-with-boundaries-loops-without-boundaries.html");
 
-  tag_summary = "This host is running Apache Tomcat and is prone to denial of service
-  vulnerability.";
-
-  tag_vuldetect = "Get the installed version of Apache Tomcat with the help of detect NVT
-  and check the version is vulnerable or not.";
-
-  tag_insight = "The flaw is due to an improper handling of Content-Type HTTP header for
-  multipart requests";
-
-  tag_impact = "Successful exploitation will allow remote attackers to cause denial of
+  script_tag(name:"summary", value:"This host is running Apache Tomcat and is prone to denial of service
+  vulnerability.");
+  script_tag(name:"vuldetect", value:"Get the installed version of Apache Tomcat with the help of detect NVT
+  and check the version is vulnerable or not.");
+  script_tag(name:"insight", value:"The flaw is due to an improper handling of Content-Type HTTP header for
+  multipart requests");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause denial of
   service condition.
 
-  Impact Level: Application";
-
-  tag_affected = "Apache Tomcat version 7.0.x before 7.0.51 and 8.0.0 before 8.0.2";
-
-  tag_solution = "Upgrade to 7.0.51, 8.0.2 or later,
-  http://tomcat.apache.org";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"vuldetect", value:tag_vuldetect);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  Impact Level: Application");
+  script_tag(name:"affected", value:"Apache Tomcat version 7.0.x before 7.0.51 and 8.0.0 before 8.0.2");
+  script_tag(name:"solution", value:"Upgrade to 7.0.51, 8.0.2 or later,
+  http://tomcat.apache.org");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");

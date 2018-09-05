@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_backend_username_disclosure_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_typo3_backend_username_disclosure_vuln.nasl 11222 2018-09-04 12:41:44Z cfischer $
 #
 # TYPO3 Backend Username Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804210");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11222 $");
   script_bugtraq_id(49072);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-07 15:31:34 +0530 (Tue, 07 Jan 2014)");
   script_name("TYPO3 Backend Username Disclosure Vulnerability");
 
@@ -61,6 +61,7 @@ vulnerability.");
   script_dependencies("gb_typo3_detect.nasl");
   script_mandatory_keys("TYPO3/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
@@ -86,6 +87,7 @@ if(typoLoca = get_app_location(cpe:CPE, port:typoPort))
   if(!username)
     username = "admin";
 
+  useragent = get_http_user_agent();
   host = http_host_name(port:typoPort);
 
   challenge = eregmatch(pattern:'name="challenge" value="([a-z0-9]+)"' , string:tres);
@@ -110,7 +112,7 @@ if(typoLoca = get_app_location(cpe:CPE, port:typoPort))
 
       req = string("POST ",url," HTTP/1.0\r\n",
                    "Host: " + host + "\r\n",
-                   "User-Agent: " + OPENVAS_HTTP_USER_AGENT + "\r\n",
+                   "User-Agent: " + useragent + "\r\n",
                    "Referer: http://" + host + "/typo3/alt_menu.php \r\n",
                    "Connection: keep-alive\r\n",
                    "Cookie: ",cCookie,"\r\n",

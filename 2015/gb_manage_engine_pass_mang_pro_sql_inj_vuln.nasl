@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_pass_mang_pro_sql_inj_vuln.nasl 6254 2017-05-31 09:04:18Z teissa $
+# $Id: gb_manage_engine_pass_mang_pro_sql_inj_vuln.nasl 11227 2018-09-04 13:25:37Z mmartin $
 #
 # ManageEngine Password Manager Pro SQL Injection Vulnerability
 #
@@ -30,20 +30,19 @@ CPE = "cpe:/a:manageengine:password_manager_pro";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805715");
-  script_version("$Revision: 6254 $");
+  script_version("$Revision: 11227 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-07 15:16:06 +0530 (Tue, 07 Jul 2015)");
   script_name("ManageEngine Password Manager Pro SQL injection Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with ManageEngine
+  script_tag(name:"summary", value:"This host is installed with ManageEngine
   Password Manager Pro and is prone to a SQL injection vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Flaw is due to error while escaping the
+  script_tag(name:"insight", value:"Flaw is due to error while escaping the
   operator when more then one condition is specified in the advanced search.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
@@ -52,10 +51,10 @@ if (description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"ManageEngine Password Manager
+  script_tag(name:"affected", value:"ManageEngine Password Manager
   Pro 8.1 Build 8100 and below.");
 
-  script_tag(name: "solution" , value:"Upgrade to 8.1 Build 8101 or later.
+  script_tag(name:"solution", value:"Upgrade to 8.1 Build 8101 or later.
   For updates refer to https://www.manageengine.com/products/passwordmanagerpro/");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -77,21 +76,14 @@ if (description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-meVer = "";
-mePort = "";
-
-## get the port
 if(!mePort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!meVer = get_app_version(cpe:CPE, port:mePort)){
   exit(0);
 }
 
-##Check version is less than 8.1 build 8101
 if(version_is_less(version:meVer, test_version:"8101"))
 {
   report = 'Installed Version: ' + meVer + '\n' +

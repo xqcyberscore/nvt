@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_lock_url_dos_vuln.nasl 10873 2018-08-10 07:37:56Z cfischer $
+# $Id: gb_apache_subversion_lock_url_dos_vuln.nasl 11219 2018-09-04 11:52:00Z cfischer $
 #
 # Apache Subversion 'mod_dav_svn' Module Multiple DoS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802055");
-  script_version("$Revision: 10873 $");
+  script_version("$Revision: 11219 $");
   script_bugtraq_id(58897, 58323);
   script_cve_id("CVE-2013-1847", "CVE-2013-1849");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 09:37:56 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-11 12:32:36 +0530 (Tue, 11 Jun 2013)");
   script_name("Apache Subversion 'mod_dav_svn' Module Multiple DoS Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52966/");
@@ -85,6 +85,7 @@ if(!banner || banner !~ "Server: Apache.* SVN"){
   exit(0);
 }
 
+useragent = get_http_user_agent();
 host = http_host_name(port:h_port);
 
 if(http_is_dead(port:h_port)) exit(0);
@@ -113,7 +114,7 @@ foreach path (make_list_unique("/", "/repo/", "/repository/", "/trunk/", "/svn/"
   ## Send normal request and check for normal response to confirm
   ## Subversion is working as expected
   proper_path = string("LOCK ", path, " HTTP/1.1","\r\n");
-  common_req = string("User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+  common_req = string("User-Agent: ", useragent, "\r\n",
                       "Host: ", host, "\r\n",
                       "Accept: */*\r\n", "Content-Length: ",
                       strlen(lock_body), "\r\n\r\n", lock_body);

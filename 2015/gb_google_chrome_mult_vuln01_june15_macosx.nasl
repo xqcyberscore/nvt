@@ -29,21 +29,20 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805668");
-  script_version("$Revision: 6207 $");
+  script_version("$Revision: 11225 $");
   script_cve_id("CVE-2015-1269", "CVE-2015-1268", "CVE-2015-1267", "CVE-2015-1268");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-29 17:09:27 +0530 (Mon, 29 Jun 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 June15 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
   - 'DecodeHSTSPreloadRaw' function in 'net/http/transport_security_state.cc'
   script does not properly canonicalize DNS hostnames before making comparisons
   to HSTS or HPKP preload entries.
@@ -55,24 +54,24 @@ if(description)
   properly consider the scheme in determining whether a URL is associated with a
   WebUI SiteInstance.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass the Same Origin Policy and intended access restrictions
   via different dimensions.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Google Chrome version prior to
+  script_tag(name:"affected", value:"Google Chrome version prior to
   43.0.2357.130 on Mac OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   43.0.2357.130 or later, For updates refer to http://www.google.com/chrome");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://codereview.chromium.org/1149753002");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2015/06/chrome-stable-update.html");
+  script_xref(name:"URL", value:"https://codereview.chromium.org/1149753002");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2015/06/chrome-stable-update.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -86,13 +85,8 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-chromeVer = "";
-
-## Get version
 if(!chromeVer = get_app_version(cpe:CPE)) exit(0);
 
-## Grep for vulnerable version
 if(version_is_less(version:chromeVer, test_version:"43.0.2357.130"))
 {
   report = 'Installed version: ' + chromeVer + '\n' +

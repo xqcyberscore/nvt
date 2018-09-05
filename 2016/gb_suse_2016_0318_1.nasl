@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2016_0318_1.nasl 8047 2017-12-08 08:56:07Z santu $
+# $Id: gb_suse_2016_0318_1.nasl 11228 2018-09-05 02:44:21Z ckuersteiner $
 #
 # SuSE Update for the openSUSE-SU-2016:0318-1 (kernel)
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851197");
-  script_version("$Revision: 8047 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-08 09:56:07 +0100 (Fri, 08 Dec 2017) $");
+  script_version("$Revision: 11228 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 04:44:21 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-04 06:23:13 +0100 (Thu, 04 Feb 2016)");
   script_cve_id("CVE-2014-8989", "CVE-2014-9529", "CVE-2015-5157", "CVE-2015-5307", 
                 "CVE-2015-6937", "CVE-2015-7550", "CVE-2015-7799", "CVE-2015-7885", 
                 "CVE-2015-7990", "CVE-2015-8104", "CVE-2015-8215", "CVE-2015-8543", 
                 "CVE-2015-8550", "CVE-2015-8551", "CVE-2015-8552", "CVE-2015-8569", 
                 "CVE-2015-8575", "CVE-2015-8767", "CVE-2016-0728", "CVE-2015-0272");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the openSUSE-SU-2016:0318-1 (kernel)");
   script_tag(name: "summary", value: "Check the version of the kernel");

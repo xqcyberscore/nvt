@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_transform_server_mult_xss_vuln.nasl 11198 2018-09-03 13:39:31Z mmartin $
+# $Id: gb_transform_server_mult_xss_vuln.nasl 11214 2018-09-04 10:09:46Z mmartin $
 #
 # Transform Foundation Server Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804637");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11214 $");
   script_cve_id("CVE-2014-2577");
   script_bugtraq_id(67810);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-12 12:37:47 +0530 (Thu, 12 Jun 2014)");
   script_name("Transform Foundation Server Multiple Cross Site Scripting Vulnerabilities");
 
@@ -83,7 +83,6 @@ foreach dir (make_list_unique("/", "/FoundationServer", "/TFS", cgi_dirs(port:se
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   req = http_get(item:string(dir, "/Presenter/index.fsp?signout=true"), port:serPort);
   res = http_keepalive_send_recv(port:serPort, data:req);
 

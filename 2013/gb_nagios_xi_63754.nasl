@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_xi_63754.nasl 11024 2018-08-17 08:18:16Z mmartin $
+# $Id: gb_nagios_xi_63754.nasl 11219 2018-09-04 11:52:00Z cfischer $
 #
 # Nagios XI 'tfPassword' Parameter SQL Injection Vulnerability
 #
@@ -27,21 +27,21 @@
 
 CPE = "cpe:/a:nagios:nagiosxi";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103842");
   script_bugtraq_id(63754);
   script_cve_id("CVE-2013-6875");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11024 $");
+  script_version("$Revision: 11219 $");
 
   script_name("Nagios XI 'tfPassword' Parameter SQL Injection Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/63754");
   script_xref(name:"URL", value:"http://www.nagios.com/products/nagiosxi");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:18:16 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-02 10:28:47 +0100 (Mon, 02 Dec 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -66,13 +66,12 @@ fails to sufficiently sanitize user-supplied data before using it in
 an SQL query.");
   script_tag(name:"affected", value:"Versions prior to Nagios XI 2012R2.4 are vulnerable.");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-
 
 if(!port = get_app_port(cpe:CPE))exit(0);
 
@@ -87,6 +86,7 @@ if("tfPassword" >!< buf)exit(0);
 cookie = eregmatch(pattern:'Set-Cookie: ([^\r\n]+)', string: buf);
 if(isnull(cookie[1]))exit(0);
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 co = cookie[1];
@@ -98,7 +98,7 @@ req = 'POST ' + dir + '/index.php HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
       'Content-Length: ' + len + '\r\n' +
       'Origin: http://' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Content-Type: application/x-www-form-urlencoded\r\n' +
       'Referer: http://' + host + dir + '\r\n' +
       'Cookie: ' + co + '\r\n' +
@@ -110,7 +110,7 @@ if(result !~ "HTTP/1.. 302")exit(0);
 
 req = 'GET ' + dir + '/admin.php HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Referer: http://' + host + dir + '\r\n' +
       'Cookie: ' + co + '\r\n' +
       '\r\n';
@@ -123,4 +123,3 @@ if(buf =~ "HTTP/1.. 200" && "Core Config Manager" >< buf && "nagiosadmin" >< buf
 }
 
 exit(99);
-

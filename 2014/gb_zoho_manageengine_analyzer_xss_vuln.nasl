@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zoho_manageengine_analyzer_xss_vuln.nasl 9982 2018-05-28 12:00:03Z cfischer $
+# $Id: gb_zoho_manageengine_analyzer_xss_vuln.nasl 11213 2018-09-04 09:30:51Z mmartin $
 #
 # ZOHO ManageEngine EventLog Analyzer 'j_username' Parameter XSS Vulnerability
 #
@@ -27,36 +27,36 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804815");
-  script_version("$Revision: 9982 $");
+  script_version("$Revision: 11213 $");
   script_cve_id("CVE-2014-5103");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-19 14:57:37 +0530 (Tue, 19 Aug 2014)");
   script_name("ZOHO ManageEngine EventLog Analyzer 'j_username' Parameter XSS Vulnerability");
 
-  script_tag(name : "summary" , value : "This host is installed with ZOHO ManageEngine EventLog Analyzer and is prone
+  script_tag(name:"summary", value:"This host is installed with ZOHO ManageEngine EventLog Analyzer and is prone
 to cross site scripting vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP GET request and check whether it is able to read
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to read
 cookie or not.");
-  script_tag(name : "insight" , value : "Input passed via the 'j_username' POST parameter to event/j_security_check
+  script_tag(name:"insight", value:"Input passed via the 'j_username' POST parameter to event/j_security_check
 script is not properly sanitised before returning to the user.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML and
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
 script code in a user's browser session in the context of an affected site.
 
 Impact Level: Application");
-  script_tag(name : "affected" , value : "ZOHO ManageEngine EventLog Analyzer version 9.0 build 9000 and probably
+  script_tag(name:"affected", value:"ZOHO ManageEngine EventLog Analyzer version 9.0 build 9000 and probably
 other versions.");
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/94815");
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2014/Jul/100");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127568");
-  script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2014-07/0100.html");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/94815");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2014/Jul/100");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127568");
+  script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2014-07/0100.html");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -94,7 +94,6 @@ if(res && ">ZOHO Corp.<" >< res && ">ManageEngine EventLog Analyzer" >< res)
              "Content-Length: ", strlen(postData), "\r\n",
              "\r\n", postData);
 
-  ## Send request and receive the response
   res = http_keepalive_send_recv(port:zohoPort, data:req);
 
   if(res =~ "HTTP/1\.. 200" && "<script>alert(document.cookie);</script>" >< res)

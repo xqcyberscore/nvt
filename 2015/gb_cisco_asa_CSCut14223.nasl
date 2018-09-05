@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCut14223.nasl 5000 2017-01-13 07:00:40Z ckuerste $
+# $Id: gb_cisco_asa_CSCut14223.nasl 11225 2018-09-04 13:06:36Z mmartin $
 #
 # Cisco ASA Management Interface XML Parser DoS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106055");
-  script_version("$Revision: 5000 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-01-13 08:00:40 +0100 (Fri, 13 Jan 2017) $");
-  script_tag(name : "creation_date", value : "2015-12-03 11:34:37 +0700 (Thu, 03 Dec 2015)");
-  script_tag(name : "cvss_base", value : "6.8");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:S/C:N/I:N/A:C");
+  script_version("$Revision: 11225 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-12-03 11:34:37 +0700 (Thu, 03 Dec 2015)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
   script_mandatory_keys("cisco_asa/version");
 
-  script_tag(name : "summary", value : "A vulnerability in the XML parser of the management interface
+  script_tag(name:"summary", value:"A vulnerability in the XML parser of the management interface
 of Cisco ASA may lead to a denial of service.");
 
-  script_tag(name : "vuldetect", value : "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name : "insight", value : "The vulnerability is due to insufficient hardening of the XML
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient hardening of the XML
 parser code. Cisco ASA may process a crafted XML file if the file is passed through the management interface
 or when performing activities with the auto update server AUS. In all cases a valid authentication on the
 device or a valid AUS server would need to be used in order to provide an XML file.");
 
-  script_tag(name : "impact", value : "An authenticated, remote attacker could cause system instability
+  script_tag(name:"impact", value:"An authenticated, remote attacker could cause system instability
 and possibly crash an affected system.");
 
-  script_tag(name : "solution", value : "Apply the appropriate updates from Cisco.");
+  script_tag(name:"solution", value:"Apply the appropriate updates from Cisco.");
 
-  script_xref(name : "URL", value : "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151123-asa");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151123-asa");
 
   exit(0);
 }
@@ -77,7 +77,7 @@ include("version_func.inc");
 if( ! version = get_app_version( cpe:CPE, nofork: TRUE ) ) exit( 0 );
 check_vers = ereg_replace(string:version, pattern:"\(([0-9.]+)\)", replace:".\1");
 
-affected = make_list( 
+affected = make_list(
 		'7.2.1',
 		'7.2.1.9',
 		'7.2.1.13',

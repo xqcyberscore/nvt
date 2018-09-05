@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir100_mult_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_dlink_dir100_mult_vuln.nasl 11214 2018-09-04 10:09:46Z mmartin $
 #
 # D-Link DIR-100 Router Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803797");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11214 $");
   script_cve_id("CVE-2013-7051", "CVE-2013-7052", "CVE-2013-7053", "CVE-2013-7054",
                 "CVE-2013-7055");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-05 12:25:02 +0530 (Wed, 05 Feb 2014)");
   script_name("D-Link DIR-100 Router Multiple Vulnerabilities");
 
@@ -82,7 +82,6 @@ DlinkPort = get_http_port(default:80);
 DlinkBanner = get_http_banner(port: DlinkPort);
 if("Server: HTTP Server" >!< DlinkBanner) exit(0);
 
-## Send and Receive the response
 DlinkReq = http_get(item: "/bsc_internet.htm", port:DlinkPort);
 DlinkRes = http_keepalive_send_recv(port:DlinkPort,data:DlinkReq);
 

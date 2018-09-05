@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_x3cms_mult_xss_vuln.nasl 11011 2018-08-16 14:14:31Z mmartin $
+# $Id: gb_x3cms_mult_xss_vuln.nasl 11223 2018-09-04 12:48:48Z cfischer $
 #
 # X3 CMS Multiple cross-site scripting (XSS) vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803403");
-  script_version("$Revision: 11011 $");
+  script_version("$Revision: 11223 $");
   script_cve_id("CVE-2011-5255");
   script_bugtraq_id(51346);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:48:48 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-05 13:26:26 +0530 (Tue, 05 Feb 2013)");
   script_name("X3 CMS Multiple cross-site scripting (XSS) vulnerabilities");
 
@@ -83,7 +83,6 @@ foreach dir (make_list_unique("/", "/x3cms", "/cms", cgi_dirs(port:port)))
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   sndReq = http_get(item:string(dir, "/admin/login.php"), port:port);
   rcvRes = http_keepalive_send_recv(port:port, data:sndReq, bodyonly:TRUE);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_4283.nasl 11184 2018-09-03 09:04:45Z cfischer $
+# $Id: deb_4283.nasl 11228 2018-09-05 02:44:21Z ckuersteiner $
 #
 # Auto-generated from advisory DSA 4283-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.704283");
-  script_version("$Revision: 11184 $");
+  script_version("$Revision: 11228 $");
   script_cve_id("CVE-2018-1000539");
   script_name("Debian Security Advisory DSA 4283-1 (ruby-json-jwt - security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:04:45 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 04:44:21 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-31 00:00:00 +0200 (Fri, 31 Aug 2018)");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adminsystems_cms_mult_vuln.nasl 7160 2017-09-18 07:39:22Z cfischer $
+# $Id: gb_adminsystems_cms_mult_vuln.nasl 11227 2018-09-04 13:25:37Z mmartin $
 #
 # Adminsystems CMS Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805292");
-  script_version("$Revision: 7160 $");
+  script_version("$Revision: 11227 $");
   script_cve_id("CVE-2015-1603", "CVE-2015-1604");
   script_bugtraq_id(72605);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:39:22 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-27 11:02:30 +0530 (Fri, 27 Feb 2015)");
   script_name("Adminsystems CMS Multiple Vulnerabilities");
 
@@ -64,10 +64,10 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"exploit");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130394");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Feb/50");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/130394");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Feb/50");
 # 2016-06-21: 404
-#  script_xref(name : "URL" , value : "http://sroesemann.blogspot.de/2015/02/report-for-advisory-sroeadv-2015-14.html");
+#  script_xref(name:"URL", value:"http://sroesemann.blogspot.de/2015/02/report-for-advisory-sroeadv-2015-14.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -80,12 +80,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-rcvRes = "";
 
 http_port = get_http_port(default:80);
 
@@ -100,10 +94,8 @@ foreach dir (make_list_unique("/", "/adminsystems", "/cms", "/adminsystemscms", 
 
   rcvRes = http_get_cache(item:string(dir, "/index.php"), port:http_port);
 
-  ## confirm the application
   if(rcvRes && rcvRes =~ ">Powered by.*>Adminsystems<")
   {
-    ## Construct the attack requuest
     url = dir + '/index.php?page="><script>alert(document.cookie)</script>&lang';
 
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,

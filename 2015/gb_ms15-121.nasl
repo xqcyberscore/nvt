@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-121.nasl 6600 2017-07-07 09:58:31Z teissa $
+# $Id: gb_ms15-121.nasl 11220 2018-09-04 11:57:09Z mmartin $
 #
 # Microsoft Schannel Security Bypass Vulnerability (3081320)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806555");
-  script_version("$Revision: 6600 $");
+  script_version("$Revision: 11220 $");
   script_cve_id("CVE-2015-6112");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 08:59:53 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft Schannel Security Bypass Vulnerability (3081320)");
 
@@ -50,8 +50,7 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows 8.1 x32/x64 Edition
   Microsoft Windows Server 2012/2012R2
   Microsoft Windows Vista x32/x64 Edition Service Pack 2
@@ -68,13 +67,14 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3081320");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-121");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3081320");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-121");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -85,23 +85,16 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3, win2008r2:2, win8:1,
                    win8x64:1, win2012:1, win2012R2:1, win8_1:1, win8_1x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Fetch the version of schannel.dll
 dllVer = fetch_file_version(sysPath, file_name:"System32\schannel.dll");
 if(!dllVer){
   exit(0);
@@ -129,40 +122,32 @@ else if (dllVer =~ "^(6\.3\.9600\.1)"){
   Vulnerable_range = "Less than 6.3.9600.18088";
 }
 
-## Windows Vista and Server 2008
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for schannel.dll version
   if(version_is_less(version:dllVer, test_version:"6.0.6002.19503")||
      version_in_range(version:dllVer, test_version:"6.0.6002.23000", test_version2:"6.0.6002.23813")){
     VULN = TRUE ;
   }
 }
 
-## Windows 7 and Windows Server 2008 R2
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for schannel.dll version
   if(version_is_less(version:dllVer, test_version:"6.1.7601.19044") ||
      version_in_range(version:dllVer, test_version:"6.1.7601.23000", test_version2:"6.1.7601.6.1.7601.23248")){
     VULN = TRUE ;
   }
 }
 
-## Windows 8 and Server 2012
 else if(hotfix_check_sp(win8:1, win2012:1) > 0)
 {
-  ## Check for schannel.dll version
   if(version_is_less(version:dllVer, test_version:"6.2.9200.17559") ||
      version_in_range(version:dllVer, test_version:"6.2.9200.21000", test_version2:"6.2.9200.21675")){
      VULN = TRUE ;
   }
 }
 
-## Windows 8.1 and Server 2012 R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for schannel.dll version
   if(version_is_less(version:dllVer, test_version:"6.3.9600.18088")){
     VULN = TRUE ;
   }

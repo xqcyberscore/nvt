@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_mult_dos_vuln01_feb15_lin.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_oracle_virtualbox_mult_dos_vuln01_feb15_lin.nasl 11220 2018-09-04 11:57:09Z mmartin $
 #
 # Oracle Virtualbox Multiple DoS Vulnerabilities Feb15 (Linux)
 #
@@ -29,40 +29,39 @@ CPE = "cpe:/a:oracle:vm_virtualbox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805429");
-  script_version("$Revision: 9381 $");
+  script_version("$Revision: 11220 $");
   script_cve_id("CVE-2015-0418", "CVE-2015-0377");
   script_bugtraq_id(72194, 72219);
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-02 10:04:10 +0530 (Mon, 02 Feb 2015)");
   script_name("Oracle Virtualbox Multiple DoS Vulnerabilities Feb15 (Linux)");
 
-  script_tag(name: "summary" , value:"The host is installed with Oracle VM
+  script_tag(name:"summary", value:"The host is installed with Oracle VM
   virtualBox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to multiple
+  script_tag(name:"insight", value:"Multiple flaws exist due to multiple
   unspecified errors.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a local
+  script_tag(name:"impact", value:"Successful exploitation will allow a local
   attacker to conduct a denial of service attack.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"VirtualBox versions 3.2.x before 3.2.26,
+  script_tag(name:"affected", value:"VirtualBox versions 3.2.x before 3.2.26,
   4.0.x before 4.0.28, 4.1.x before 4.1.36, 4.2.x before 4.2.28 on Linux.");
 
-  script_tag(name: "solution" , value:"Upgrade to Oracle VirtualBox version
+  script_tag(name:"solution", value:"Upgrade to Oracle VirtualBox version
   3.2.26 or 4.0.28 or 4.1.36 or 4.2.28 or later, For updates refer to
   https://www.virtualbox.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2015-1972971.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujan2015-1972971.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -76,17 +75,12 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-virtualVer = "";
-
-## Get version
 if(!virtualVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
 if(virtualVer =~ "^((3|4)\.(0|1|2))")
 {
-  ## Grep for vulnerable version
   if(version_in_range(version:virtualVer, test_version:"3.2.0", test_version2:"3.2.25"))
   {
      fix = "3.2.26";

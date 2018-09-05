@@ -1,6 +1,6 @@
 #############################################################################/##
 # OpenVAS Vulnerability Test
-# $Id: gb_tor_info_disc_vuln_oct14_win.nasl 6769 2017-07-20 09:56:33Z teissa $
+# $Id: gb_tor_info_disc_vuln_oct14_win.nasl 11210 2018-09-04 09:13:50Z mmartin $
 #
 # Tor 'Relay Early' Traffic Confirmation Attack Vunerability Oct14 (Windows)
 #
@@ -29,34 +29,33 @@ CPE = "cpe:/a:tor:tor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804933");
-  script_version("$Revision: 6769 $");
+  script_version("$Revision: 11210 $");
   script_cve_id("CVE-2014-5117");
   script_bugtraq_id(68968);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-20 11:56:33 +0200 (Thu, 20 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-14 09:26:32 +0530 (Tue, 14 Oct 2014)");
 
   script_name("Tor 'Relay Early' Traffic Confirmation Attack Vunerability oct14 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Tor browser
+  script_tag(name:"summary", value:"This host is installed with Tor browser
   and is prone to information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Flaw exists due to an error
+  script_tag(name:"insight", value:"Flaw exists due to an error
   in the handling of sequences of Relay and Relay Early commands.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to manipulate protocol headers and perform traffic confirmation attack.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Tor browser before 0.2.4.23 and 0.2.5
+  script_tag(name:"affected", value:"Tor browser before 0.2.4.23 and 0.2.5
   before 0.2.5.6-alpha on Windows");
 
-  script_tag(name: "solution" , value:"Upgrade to version 0.2.4.23 or
+  script_tag(name:"solution", value:"Upgrade to version 0.2.4.23 or
   0.2.5.6-alpha or later, For updates refer to https://www.torproject.org");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -75,18 +74,13 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-torVer = "";
-
-## Get version
 if(!torVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if((version_is_less(version:torVer, test_version:"0.2.4.23"))||
    (version_in_range(version:torVer, test_version:"0.2.5", test_version2:"0.2.5.5")))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

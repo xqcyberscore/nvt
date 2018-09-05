@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_frontend_open_redirection_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_typo3_frontend_open_redirection_vuln.nasl 11214 2018-09-04 10:09:46Z mmartin $
 #
 # TYPO3 Frontend Open Redirection Vulnerability
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804213");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11214 $");
   script_bugtraq_id(42029);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-07 18:00:17 +0530 (Tue, 07 Jan 2014)");
   script_name("TYPO3 Frontend Open Redirection Vulnerability");
 
@@ -78,7 +78,6 @@ if(typoLoca = get_app_location(cpe:CPE, port:typoPort))
 
   url = "/typo3/?L=OUT&redirect_url=http://www.example.com";
 
-  ## Send and Receive the response
   sndReq = http_get(item:string(typoLoca, url), port:typoPort);
   rcvRes = http_send_recv(port:typoPort, data:sndReq);
 

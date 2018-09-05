@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_google_document_embedder_sql_inj_vuln.nasl 10000 2018-05-29 12:20:12Z cfischer $
+# $Id: gb_wp_google_document_embedder_sql_inj_vuln.nasl 11210 2018-09-04 09:13:50Z mmartin $
 #
 # Wordpress Google Document Embedder SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805107");
-  script_version("$Revision: 10000 $");
+  script_version("$Revision: 11210 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 14:20:12 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-28 11:35:28 +0530 (Fri, 28 Nov 2014)");
   script_name("Wordpress Google Document Embedder SQL Injection Vulnerability");
   script_cve_id("CVE-2014-9173");
@@ -61,10 +61,10 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://1337day.com/exploit/22921");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/98944");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/35371");
-  script_xref(name : "URL" , value : "https://wpvulndb.com/vulnerabilities/7690");
+  script_xref(name:"URL", value:"http://1337day.com/exploit/22921");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/98944");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/35371");
+  script_xref(name:"URL", value:"https://wpvulndb.com/vulnerabilities/7690");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

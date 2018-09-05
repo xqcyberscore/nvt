@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_couchdb_dir_trav_vuln.nasl 9982 2018-05-28 12:00:03Z cfischer $
+# $Id: gb_couchdb_dir_trav_vuln.nasl 11210 2018-09-04 09:13:50Z mmartin $
 #
 # CouchDB Directory Traversal Vulnerability
 #
@@ -31,7 +31,7 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.105903");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 9982 $");
+  script_version("$Revision: 11210 $");
 
   script_name("CouchDB Directory Traversal Vulnerability");
 
@@ -41,7 +41,7 @@ if(description)
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/81240");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/Jan/81");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 14:00:03 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-28 11:20:26 +0700 (Mon, 28 Apr 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
@@ -50,20 +50,20 @@ if(description)
   script_require_ports("Services/www", 5984);
   script_mandatory_keys("couchdb/installed", "Host/runs_windows");
 
-  script_tag(name : "summary" , value : "Directory traversal vulnerability on MobchiWeb/CouchDB resulting
+  script_tag(name:"summary", value:"Directory traversal vulnerability on MobchiWeb/CouchDB resulting
   in information disclosure.");
-  script_tag(name : "vuldetect" , value : "Check the version");
-  script_tag(name : "solution" , value : "Upgrade to version 1.0.4, 1.1.2, 1.2.1 or later.");
-  script_tag(name : "insight" , value : "On Windows systems there is a directory traversal vulnerability in the
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Upgrade to version 1.0.4, 1.1.2, 1.2.1 or later.");
+  script_tag(name:"insight", value:"On Windows systems there is a directory traversal vulnerability in the
   partition2 function in mochiweb_util.erl in MochiWeb before 2.4.0, as used in Apache
   CouchDB allows remote attackers to read arbitrary files via a ..\ (dot dot backslash)
   in the default URI.");
-  script_tag(name : "affected" , value : "CouchDB Version 1.0.3, 1.1.1, 1.2.0 on Windows");
-  script_tag(name : "impact" , value : "A remote attacker could retrieve in binary form any CouchDB database,
+  script_tag(name:"affected", value:"CouchDB Version 1.0.3, 1.1.1, 1.2.0 on Windows");
+  script_tag(name:"impact", value:"A remote attacker could retrieve in binary form any CouchDB database,
   including the _users or _replication databases, or any other file that the user account
   used to run CouchDB might have read access to on the local filesystem.");
 
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
   exit(0);
 }

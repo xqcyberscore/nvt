@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_monlist_enabled.nasl 10904 2018-08-10 14:24:40Z mmartin $
+# $Id: gb_ntp_monlist_enabled.nasl 11210 2018-09-04 09:13:50Z mmartin $
 #
 # NTP Monlist Feature Enabled
 #
@@ -27,40 +27,40 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103868");
- script_cve_id("CVE-2013-5211");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version("$Revision: 10904 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.103868");
+  script_cve_id("CVE-2013-5211");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11210 $");
 
- script_name("NTP Monlist Feature Enabled");
+  script_name("NTP Monlist Feature Enabled");
 
 
- script_xref(name:"URL", value:"http://bugs.ntp.org/show_bug.cgi?id=1532");
- script_xref(name:"URL", value:"http://lists.ntp.org/pipermail/pool/2011-December/005616.html");
+  script_xref(name:"URL", value:"http://bugs.ntp.org/show_bug.cgi?id=1532");
+  script_xref(name:"URL", value:"http://lists.ntp.org/pipermail/pool/2011-December/005616.html");
 
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2014-01-06 14:14:08 +0100 (Mon, 06 Jan 2014)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Denial of Service");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("ntp_open.nasl");
- script_mandatory_keys("NTP/Running");
- script_require_udp_ports(123);
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-01-06 14:14:08 +0100 (Mon, 06 Jan 2014)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Denial of Service");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("ntp_open.nasl");
+  script_mandatory_keys("NTP/Running");
+  script_require_udp_ports(123);
 
- script_tag(name:"impact", value:"Successfully exploiting this issue may allow an attacker to cause a denial
+  script_tag(name:"impact", value:"Successfully exploiting this issue may allow an attacker to cause a denial
 of service.");
- script_tag(name:"vuldetect", value:"Send a NTP monlist request and check the response.");
- script_tag(name:"insight", value:"The monlist feature in ntp_request.c in ntpd in NTP before
+  script_tag(name:"vuldetect", value:"Send a NTP monlist request and check the response.");
+  script_tag(name:"insight", value:"The monlist feature in ntp_request.c in ntpd in NTP before
 4.2.7p26 allows remote attackers to cause a denial of service (traffic
 amplification) via forged (1) REQ_MON_GETLIST or (2) REQ_MON_GETLIST_1
 requests, as exploited in the wild in December 2013.");
- script_tag(name:"solution", value:"Update to NTP 4.2.7p26 or newer or set 'disable monitor' in ntp.conf.");
- script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"summary", value:"NTP is prone to a remote denial-of-service vulnerability because it
+  script_tag(name:"solution", value:"Update to NTP 4.2.7p26 or newer or set 'disable monitor' in ntp.conf.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"NTP is prone to a remote denial-of-service vulnerability because it
 fails to properly handle certain incoming network packets.");
- script_tag(name:"affected", value:"NTP before 4.2.7p26");
+  script_tag(name:"affected", value:"NTP before 4.2.7p26");
 
  exit(0);
 }

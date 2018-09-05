@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_nx_os_63732.nasl 10904 2018-08-10 14:24:40Z mmartin $
+# $Id: gb_cisco_nx_os_63732.nasl 11213 2018-09-04 09:30:51Z mmartin $
 #
 # Cisco Nexus 1000V Local Arbitrary Command Execution Vulnerability
 #
@@ -27,39 +27,39 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105109");
- script_bugtraq_id(63732);
- script_cve_id("CVE-2013-5556");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
- script_version("$Revision: 10904 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105109");
+  script_bugtraq_id(63732);
+  script_cve_id("CVE-2013-5556");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11213 $");
 
- script_name("Cisco Nexus 1000V  Local Arbitrary Command Execution Vulnerability");
+  script_name("Cisco Nexus 1000V  Local Arbitrary Command Execution Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/63732");
- script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCui21340");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/63732");
+  script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCui21340");
 
- script_tag(name:"impact", value:"Local authenticated attackers can exploit this issue to execute
+  script_tag(name:"impact", value:"Local authenticated attackers can exploit this issue to execute
 arbitrary commands on the underlying operating system.");
 
- script_tag(name:"vuldetect", value:"Check the NX OS version.");
- script_tag(name:"insight", value:"This issue is being tracked by Cisco bug ID CSCui21340.");
+  script_tag(name:"vuldetect", value:"Check the NX OS version.");
+  script_tag(name:"insight", value:"This issue is being tracked by Cisco bug ID CSCui21340.");
 
- script_tag(name:"solution", value:"Updates are available.");
- script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"summary", value:"Cisco Nexus 1000V is prone to a local arbitrary command-execution
+  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"Cisco Nexus 1000V is prone to a local arbitrary command-execution
 vulnerability.");
- script_tag(name:"affected", value:"Cisco Nexus 1000V");
+  script_tag(name:"affected", value:"Cisco Nexus 1000V");
 
 
- script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:24:40 +0200 (Fri, 10 Aug 2018) $");
- script_tag(name:"creation_date", value:"2014-11-05 16:22:05 +0100 (Wed, 05 Nov 2014)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_nx_os_version.nasl");
- script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-11-05 16:22:05 +0100 (Wed, 05 Nov 2014)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_nx_os_version.nasl");
+  script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
 
  exit(0);
 }

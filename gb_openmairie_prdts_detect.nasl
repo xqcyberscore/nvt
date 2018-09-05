@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openmairie_prdts_detect.nasl 11028 2018-08-17 09:26:08Z cfischer $
+# $Id: gb_openmairie_prdts_detect.nasl 11224 2018-09-04 12:57:17Z cfischer $
 #
 # OpenMairie Products Version Detection
 #
@@ -34,8 +34,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800779");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11028 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 11:26:08 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11224 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:57:17 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-05-25 13:56:16 +0200 (Tue, 25 May 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("OpenMairie Products Version Detection");
@@ -224,7 +224,6 @@ foreach dir (make_list_unique("/openmairie_catalogue", "/Openmairie_Catalogue", 
   install = dir;
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   sndReq = http_get(item:string(dir , "/doc/catalogue.html"), port:openPort);
   rcvRes = http_keepalive_send_recv(port:openPort, data:sndReq);
 

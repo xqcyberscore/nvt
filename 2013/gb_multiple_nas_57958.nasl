@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_nas_57958.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_multiple_nas_57958.nasl 11219 2018-09-04 11:52:00Z cfischer $
 #
 # RaidSonic IB-NAS5220 and IB-NAS4220-B Multiple Security Vulnerabilities
 #
@@ -29,11 +29,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103793");
   script_bugtraq_id(57958);
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11219 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_name("RaidSonic IB-NAS5220 and IB-NAS4220-B Multiple Security Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-24 12:37:41 +0200 (Tue, 24 Sep 2013)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -52,8 +52,11 @@ if(description)
   and execute arbitrary commands.");
   script_tag(name:"vuldetect", value:"Try to execute the 'sleep' command on the device with a special crafted POST request.");
   script_tag(name:"insight", value:"The remote NAS is prone to:
+
   1. An authentication-bypass vulnerability
+
   2. An HTML-injection vulnerability
+
   3. A command-injection vulnerability");
   script_tag(name:"solution", value:"Ask the Vendor for an update.");
   script_tag(name:"summary", value:"RaidSonic IB-NAS5220 and IB-NAS422-B are prone to multiple security
@@ -81,6 +84,7 @@ buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
 if( "/loginHandler.cgi" >!< buf && "focusLogin()" >!< buf ) exit( 0 );
 
+useragent = get_http_user_agent();
 host = http_host_name( port:port );
 
 sleep = make_list( 3, 5, 8 );
@@ -94,7 +98,7 @@ foreach i( sleep ) {
 
   req = 'POST ' + url + ' HTTP/1.1\r\n' +
         'Host: ' + host + '\r\n' +
-        'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+        'User-Agent: ' + useragent + '\r\n' +
         'Accept-Encoding: identity\r\n' +
         'Proxy-Connection: keep-alive\r\n' +
         'Referer: http://' + host + '/cgi/time/time.cgi\r\n' +
@@ -103,13 +107,11 @@ foreach i( sleep ) {
         '\r\n' +
         ex;
 
-
   start = unixtime();
   buf = http_send_recv( port:port, data:req, bodyonly:FALSE );
   stop = unixtime();
 
   if( "200 OK" >!< buf ) exit( 0 );
-
   if( stop - start < i || stop - start > ( i + 5 ) ) exit( 99 );
 }
 

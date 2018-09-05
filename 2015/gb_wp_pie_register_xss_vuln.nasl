@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_pie_register_xss_vuln.nasl 6513 2017-07-04 09:59:28Z teissa $
+# $Id: gb_wp_pie_register_xss_vuln.nasl 11225 2018-09-04 13:06:36Z mmartin $
 #
 # Wordpress Pie Register Cross-Site Scripting Vulnerability
 #
@@ -29,41 +29,41 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805763");
-  script_version("$Revision: 6513 $");
+  script_version("$Revision: 11225 $");
   script_cve_id("CVE-2015-7377");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-20 12:43:41 +0530 (Tue, 20 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Pie Register Cross-Site Scripting Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with wordpress
+  script_tag(name:"summary", value:"The host is installed with wordpress
   pie register plugin and is prone to cross-site scripting vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted request via HTTP GET and
+  script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to read cookie or not.");
 
-  script_tag(name: "insight" , value:"Flaw exists as input passed via the
+  script_tag(name:"insight", value:"Flaw exists as input passed via the
   'invitaion_code' parameter is not properly sanitized before being returned
    to the user.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary HTML and script code in a user's browser session
   in context of an affected site.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Wordpress Pie Register version before
+  script_tag(name:"affected", value:"Wordpress Pie Register version before
   2.0.19");
 
-  script_tag(name: "solution" , value:"Upgrade to Pie Register version 2.0.19 or
+  script_tag(name:"solution", value:"Upgrade to Pie Register version 2.0.19 or
   later. For updates refer to https://github.com/GTSolutions/Pie-Register");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://wpvulndb.com/vulnerabilities/8212");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133928");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/536668");
+  script_xref(name:"URL", value:"https://wpvulndb.com/vulnerabilities/8212");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/133928");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/536668");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -79,28 +79,17 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-# Variable Initialization
-dir = "";
-url = "";
-sndReq = "";
-rcvRes = "";
-http_port = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-##Construct Attack URL
 url = "?page=pie-register&show_dash_widget=1&invitaion_code=PHNjcmlwdD" +
       "5hbGVydCgnZG9jdW1lbnQuY29va2llJyk8L3NjcmlwdD4=";
 
-##Check if exploit works
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
    pattern:"<script>alert\('document.cookie'\)</script>",
    extra_check:">Activation Code :"))

@@ -27,35 +27,34 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804078");
-  script_version("$Revision: 6735 $");
+  script_version("$Revision: 11210 $");
   script_bugtraq_id(64974);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-17 11:56:49 +0200 (Mon, 17 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-22 17:43:28 +0530 (Wed, 22 Jan 2014)");
   script_name("XAMPP Control Panel 'interpret' Parameter Cross Site Scripting Vulnerability");
 
-  script_tag(name : "summary" , value : "This host is installed with XAMPP and is prone to cross site scripting
+  script_tag(name:"summary", value:"This host is installed with XAMPP and is prone to cross site scripting
   vulnerability.");
-  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP GET request and check whether it is able to read
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to read
   cookie or not.");
-  script_tag(name : "insight" , value : "Flaws is due to the cds.php script does not validate input to the 'interpret'
+  script_tag(name:"insight", value:"Flaws is due to the cds.php script does not validate input to the 'interpret'
   parameter before returning it to users.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML and
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "XAMPP Control Panel version 3.2.1, Other versions may also be affected.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"affected", value:"XAMPP Control Panel version 3.2.1, Other versions may also be affected.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_xref(name : "URL" , value : "http://1337day.com/exploit/21761");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/90520");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/124788");
+  script_xref(name:"URL", value:"http://1337day.com/exploit/21761");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/90520");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/124788");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
@@ -71,23 +70,12 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-delId = "";
-info = "";
-req = "";
-res = "";
-url = "";
-
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/xampp", "/", cgi_dirs(port:http_port)))
 {
 
@@ -96,10 +84,8 @@ foreach dir (make_list_unique("/xampp", "/", cgi_dirs(port:http_port)))
   req = http_get(item:string(dir, "/splash.php"),  port:http_port);
   res = http_keepalive_send_recv(port:http_port, data:req);
 
-  ## confirm the Application
   if(res &&  ">XAMPP" >< res)
   {
-    ## Construct Attack Request
     url = dir + "/cds.php?interpret=%22><script>alert(document.cookie)</script>&titel=title&jahr=1" ;
 
     req = http_get(item:url,  port:http_port);
@@ -107,7 +93,6 @@ foreach dir (make_list_unique("/xampp", "/", cgi_dirs(port:http_port)))
 
     if(res && res =~ "HTTP/1.. 200 OK" && ">CD Collection" >< res)
     {
-      ## Check the response to confirm vulnerability
       if(http_vuln_check(port:http_port, url:string(dir, "/cds-fpdf.php"), check_header:TRUE,
                          pattern:"<script>alert\(document.cookie\)</script>"))
       {
@@ -120,7 +105,6 @@ foreach dir (make_list_unique("/xampp", "/", cgi_dirs(port:http_port)))
         req = http_get(item:string(dir, "/cds.php?action=del&id=", delId[1]),  port:http_port);
         res = http_keepalive_send_recv(port:http_port, data:req);
 
-        ## Confirming the Deletion in inserted data
         if(res && res =~ "HTTP/1.. 200 OK" && "alert(document.cookie)" >!< res)
         {
           security_message(port:http_port);

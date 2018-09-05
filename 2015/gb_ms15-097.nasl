@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-097.nasl 6141 2017-05-17 09:03:37Z teissa $
+# $Id: gb_ms15-097.nasl 11225 2018-09-04 13:06:36Z mmartin $
 #
 # Microsoft Windows Graphics Component Remote Code Execution Vulnerability (3089656)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805979");
-  script_version("$Revision: 6141 $");
+  script_version("$Revision: 11225 $");
   script_cve_id("CVE-2015-2506", "CVE-2015-2507", "CVE-2015-2508", "CVE-2015-2510",
                 "CVE-2015-2511", "CVE-2015-2512", "CVE-2015-2517", "CVE-2015-2518",
                 "CVE-2015-2527", "CVE-2015-2529", "CVE-2015-2546");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-17 11:03:37 +0200 (Wed, 17 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 15:01:49 +0530 (Wed, 09 Sep 2015)");
   script_name("Microsoft Windows Graphics Component Remote Code Execution Vulnerability (3089656)");
 
@@ -62,8 +62,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8/8.1 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8/8.1 x32/x64
   Microsoft Windows 10 x32/x64
   Microsoft Windows Server 2012/R2
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
@@ -79,15 +78,16 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3086255");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3087039");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3087135");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms15-097");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3086255");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3087039");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3087135");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms15-097");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -97,24 +97,17 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2,
                    win2008:3, win2008r2:2, win8:1, win8x64:1, win2012:1,
                    win2012R2:1, win8_1:1, win8_1x64:1, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-##Get file versions
 dllVer1 = fetch_file_version(sysPath, file_name:"system32\Drivers\Secdrv.sys");
 dllVer2 = fetch_file_version(sysPath, file_name:"system32\Win32k.sys");
 dllVer3 = fetch_file_version(sysPath, file_name:"system32\Gdiplus.dll");
@@ -126,7 +119,6 @@ if(!dllVer1 && !dllVer2 && !dllVer3){
 if(hotfix_check_sp(winVista:3, win2008:3, win7:2, win7x64:2, win2008r2:2,
       win8:1, win8x64:1, win2012:1, win8_1:1, win8_1x64:1, win2012R2:1) > 0 && dllVer1)
 {
-  ## Check for Secdrv.sys file version
   if(version_is_less(version:dllVer1, test_version:"4.3.86.0"))
   {
     VULN1 = TRUE ;
@@ -140,14 +132,12 @@ if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
   if(dllVer2)
   {
-    ## Check for Win32k.sys version
     if(version_is_less(version:dllVer2, test_version:"6.0.6002.19484"))
     {
       VULN2 = TRUE ;
       Vulnerable_range = "Less than 6.0.6002.19484";
     }
 
-    ## Check for Win32k.sys version
     if(version_in_range(version:dllVer2, test_version:"6.0.6002.23000", test_version2:"6.0.6002.23794"))
     {
       VULN2 = TRUE ;
@@ -157,14 +147,12 @@ if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 
   if(dllVer3)
   {
-    ## Check for Gdiplus.dll
     if(version_is_less(version:dllVer3, test_version:"5.2.6002.19466"))
     {
       VULN3 = TRUE ;
       Vulnerable_range = "Less than 5.2.6002.19466";
     }
 
-    ## Check for Gdiplus.dll
     if(version_in_range(version:dllVer3, test_version:"6.0.6002.23000", test_version2:"5.2.6002.23774"))
     {
       VULN3 = TRUE ;
@@ -173,17 +161,14 @@ if(hotfix_check_sp(winVista:3, win2008:3) > 0)
   }
 }
 
-## Windows 7 and Windows Server 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && dllVer2)
 {
-  ## Check for Win32k.sys version
   if(version_is_less(version:dllVer2, test_version:"6.1.7601.18985"))
   {
     VULN2 = TRUE ;
     Vulnerable_range = "Less than 6.1.7601.18985";
   }
 
-  ## Check for Win32k.sys version
   if(version_in_range(version:dllVer2, test_version:"6.1.7601.22000", test_version2:"6.1.7601.23187"))
   {
     VULN2 = TRUE ;
@@ -191,17 +176,14 @@ if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0 && dllVer2)
   }
 }
 
-## Windows 8 and Windows Server 2012
 if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0 && dllVer2)
 {
-  ## Check for Win32k.sys version
   if(version_is_less(version:dllVer2, test_version:"6.2.9200.17499"))
   {
     VULN2 = TRUE ;
     Vulnerable_range = "Less than 6.2.9200.17499";
   }
 
-  ## Check for Win32k.sys version
   if(version_in_range(version:dllVer2, test_version:"6.2.9200.20000", test_version2:"6.2.9200.21611"))
   {
     VULN2 = TRUE ;
@@ -212,7 +194,6 @@ if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0 && dllVer2)
 ## Win 8.1 and win2012R2
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0 && dllVer2)
 {
-  ## Check for Win32k.sys version
   if(version_is_less(version:dllVer2, test_version:"6.3.9600.18045"))
   {
     VULN2 = TRUE ;
@@ -220,11 +201,8 @@ if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0 && dllVer2)
   }
 }
 
-## Windows 10
 if(hotfix_check_sp(win10:1, win10x64:1) > 0 && dllVer2)
 {
-  ## Check for Win32k.sys version
-  ## Windows 10 Core
   if(version_is_less(version:dllVer2, test_version:"10.0.10240.16384"))
   {
     Vulnerable_range = "Less than 10.0.10240.16384";

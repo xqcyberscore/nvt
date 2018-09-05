@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foswiki_maketext_rce_vuln.nasl 11065 2018-08-21 09:49:00Z mmartin $
+# $Id: gb_foswiki_maketext_rce_vuln.nasl 11219 2018-09-04 11:52:00Z cfischer $
 #
 # Foswiki 'MAKETEXT' variable Remote Command Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:foswiki:foswiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802049");
-  script_version("$Revision: 11065 $");
+  script_version("$Revision: 11219 $");
   script_bugtraq_id(56950);
   script_cve_id("CVE-2012-6329", "CVE-2012-6330");
   script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 11:49:00 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-02 15:49:29 +0530 (Wed, 02 Jan 2013)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Foswiki 'MAKETEXT' variable Remote Command Execution Vulnerability");
@@ -114,6 +114,7 @@ function get_cookie_validation_keys(res)
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
+useragent = get_http_user_agent();
 host = http_host_name( port:port );
 
 sandbox_page = "/Sandbox/OVTestPage123";
@@ -121,7 +122,7 @@ sandbox_page = "/Sandbox/OVTestPage123";
 url1 = dir + "/bin/edit" + sandbox_page + "?nowysiwyg=1";
 req1 = string("GET ", url1 , " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+             "User-Agent: ", useragent, "\r\n",
              "Cookie: FOSWIKISID=\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: 0\r\n\r\n");
@@ -138,7 +139,7 @@ validation_key = cookie_validation_key_info[1];
 url2 = dir + "/bin/save" + sandbox_page;
 req2 = string("POST ", url2 , " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+             "User-Agent: ", useragent, "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n");
 
 post_data1 = string("validation%5fkey=", validation_key , "&text=OpenVASTest%20%25",
@@ -153,7 +154,7 @@ res3 = http_keepalive_send_recv(port:port, data:req3);
 url4 = dir + sandbox_page;
 req4 = string("GET ", url4 , " HTTP/1.1\r\n",
              "Host: ", host, "\r\n",
-             "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+             "User-Agent: ", useragent, "\r\n",
              "Cookie: FOSWIKISID=", "\r\n",
              "Content-Type: application/x-www-form-urlencoded\r\n",
              "Content-Length: 0\r\n\r\n");

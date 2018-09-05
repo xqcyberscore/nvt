@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webshop_huh_mult_vuln.nasl 9579 2018-04-24 08:28:33Z cfischer $
+# $Id: gb_webshop_huh_mult_vuln.nasl 11221 2018-09-04 12:29:42Z mmartin $
 #
 # Webshop hun Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805353");
-  script_version("$Revision: 9579 $");
+  script_version("$Revision: 11221 $");
   script_cve_id("CVE-2015-2244", "CVE-2015-2243", "CVE-2015-2242");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 10:28:33 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-16 15:21:14 +0530 (Mon, 16 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Webshop hun Multiple Vulnerabilities");
@@ -44,7 +44,7 @@ if(description)
 
   script_tag(name:"insight", value:"Flaws are due to,
 
-  - the 'param', 'center', 'lap','termid' and 'nyelv_id' parameter in index.php
+  - the 'param', 'center', 'lap', 'termid' and 'nyelv_id' parameter in index.php
     script not validated before returning it to users.
 
   - 'index.php' script is not properly sanitizing user input specifically path
@@ -60,10 +60,9 @@ if(description)
 
   script_tag(name:"affected", value:"Webshop hun version 1.062S");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore. General solution options
-  are to upgrade to a newer release, disable respective features, remove the product or replace the
-  product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_category(ACT_ATTACK);

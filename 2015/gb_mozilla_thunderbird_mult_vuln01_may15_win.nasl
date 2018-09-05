@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_may15_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_may15_win.nasl 11221 2018-09-04 12:29:42Z mmartin $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-01 May15 (Windows)
 #
@@ -29,22 +29,22 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805629");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11221 $");
   script_cve_id("CVE-2015-0797", "CVE-2015-2708", "CVE-2015-2710", "CVE-2015-2713",
                 "CVE-2015-2716", "CVE-2011-3079");
   script_bugtraq_id(74611, 74615, 53309);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-21 18:33:07 +0530 (Thu, 21 May 2015)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 May15 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Thunderbird and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
   - Buffer overflow in the XML parser in Mozilla Firefox.
   - Use-after-free vulnerability in the SetBreaks function in Mozilla Firefox.
   - Heap-based buffer overflow in the SVGTextFrame class in Mozilla Firefox.
@@ -52,17 +52,17 @@ if(description)
   - Flaw in GStreamer in Mozilla Firefox.
   - Flaw in Inter-process Communication (IPC) implementation.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a
+  script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to execute arbitrary code, gain unauthorized access
   to sensitive information, cause the server to crash and gain elevated
   privileges.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Thunderbird before version 31.7
+  script_tag(name:"affected", value:"Mozilla Thunderbird before version 31.7
   on Windows");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Thunderbird version
+  script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version
   31.7 or later, For updates refer https://www.mozilla.org/en-US/thunderbird");
 
   script_tag(name:"solution_type", value:"VendorFix");

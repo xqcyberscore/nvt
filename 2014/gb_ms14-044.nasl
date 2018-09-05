@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-044.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_ms14-044.nasl 11214 2018-09-04 10:09:46Z mmartin $
 #
 # Microsoft SQL Server Elevation of Privilege Vulnerability (2984340)
 #
@@ -27,56 +27,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802080");
-  script_version("$Revision: 6637 $");
+  script_version("$Revision: 11214 $");
   script_cve_id("CVE-2014-1820", "CVE-2014-4061");
   script_bugtraq_id(69071, 69088);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-13 17:35:15 +0530 (Wed, 13 Aug 2014)");
-  script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft SQL Server Elevation of Privilege Vulnerability (2984340)");
 
-  tag_summary =
-"This host is missing an important security update according to
-Microsoft Bulletin MS14-044";
 
-  tag_vuldetect =
-"Get the vulnerable file version and check appropriate patch is applied
-or not.";
-
-  tag_insight =
-"Flaws are due to when,
+  script_tag(name:"summary", value:"This host is missing an important security update according to
+Microsoft Bulletin MS14-044");
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
+or not.");
+  script_tag(name:"insight", value:"Flaws are due to when,
 - SQL Master Data Services (MDS) does not properly encode output.
-- SQL Server processes an incorrectly formatted T-SQL query.";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to cause a Denial
+- SQL Server processes an incorrectly formatted T-SQL query.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a Denial
 of Service or elevation of privilege.
 
-Impact Level: Application";
-
-  tag_affected =
-"Microsoft SQL Server 2014 x64 Edition
+Impact Level: Application");
+  script_tag(name:"affected", value:"Microsoft SQL Server 2014 x64 Edition
 Microsoft SQL Server 2012 x86/x64 Edition Service Pack 1 and prior
 Microsoft SQL Server 2008 R2 x86/x64 Edition Service Pack 2 and prior
-Microsoft SQL Server 2008 x86/x64 Edition Service Pack 3 and prior";
-
-  tag_solution =
-"Run Windows Update and update the listed hotfixes or download and update
+Microsoft SQL Server 2008 x86/x64 Edition Service Pack 3 and prior");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and update
 mentioned hotfixes in the advisory from the below link,
-https://technet.microsoft.com/library/security/MS14-044";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+https://technet.microsoft.com/library/security/MS14-044");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS14-044");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS14-044");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -95,13 +77,11 @@ include("secpod_smb_func.inc");
 ms_sql_key = "";
 
 
-## Get OS Architecture
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
   exit(0);
 }
 
-## Set proper Arch
 if("x64" >< os_arch){
   arch = "x64";
 }
@@ -112,7 +92,6 @@ else{
   exit(0);
 }
 
-## Check if MS SQL Server is Installed
 ms_sql_key = "SOFTWARE\Microsoft\Microsoft SQL Server\";
 if(!registry_key_exists(key:ms_sql_key)){
   exit(0);
@@ -121,7 +100,6 @@ if(!registry_key_exists(key:ms_sql_key)){
 ## C:\Program Files\Microsoft SQL Server\120\Setup Bootstrap\SQLServer2014\x64
 foreach item (registry_enum_keys(key:ms_sql_key))
 {
-  ## Get the exe file path from registry
   sql_path = registry_get_sz(key:ms_sql_key + item + "\Tools\Setup", item:"SQLPath");
   sql_ver = registry_get_sz(key:ms_sql_key + item + "\Tools\Setup", item:"Version");
 
@@ -134,7 +112,6 @@ foreach item (registry_enum_keys(key:ms_sql_key))
     ## Reset the string
     sql_ver_path = "";
 
-    ## Set proper string based on version to construct path
     if(sql_ver =~ "12\.0"){
       sql_ver_path = "SQLServer2014";
     }
@@ -151,13 +128,11 @@ foreach item (registry_enum_keys(key:ms_sql_key))
       continue;
     }
 
-    ## Set proper path to get version
-    ## TODO: We have taken arch path for "x86" on assumtion and some google
+    ## We have taken arch path for "x86" on assumtion and some google
     ## but not sure about the file path in case in "x86", we need to update the
     ## path if it's different.
     sql_path = sql_path - "Tools\" + "Setup Bootstrap\" + sql_ver_path + "\" + arch;
 
-    ## Get the version from registry
     sysVer = fetch_file_version(sysPath:sql_path,
              file_name:"Microsoft.sqlserver.chainer.infrastructure.dll");
 
@@ -169,7 +144,7 @@ foreach item (registry_enum_keys(key:ms_sql_key))
         if(version_in_range(version:sysVer, test_version:"12.0.2000", test_version2:"12.0.2253") ||
            version_in_range(version:sysVer, test_version:"12.0.2300", test_version2:"12.0.2380"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }
@@ -180,7 +155,7 @@ foreach item (registry_enum_keys(key:ms_sql_key))
         if(version_in_range(version:sysVer, test_version:"11.0.3000", test_version2:"11.0.3152") ||
            version_in_range(version:sysVer, test_version:"11.0.3300", test_version2:"11.0.3459"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }
@@ -191,7 +166,7 @@ foreach item (registry_enum_keys(key:ms_sql_key))
         if(version_in_range(version:sysVer, test_version:"10.50.4000", test_version2:"10.50.4032") ||
            version_in_range(version:sysVer, test_version:"10.50.4251", test_version2:"10.50.4320"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }
@@ -202,7 +177,7 @@ foreach item (registry_enum_keys(key:ms_sql_key))
         if(version_in_range(version:sysVer, test_version:"10.0.5500", test_version2:"10.0.5519") ||
            version_in_range(version:sysVer, test_version:"10.0.5750", test_version2:"10.0.5868"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }

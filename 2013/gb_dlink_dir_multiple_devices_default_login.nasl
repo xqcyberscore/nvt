@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_multiple_devices_default_login.nasl 10323 2018-06-26 07:32:48Z cfischer $
+# $Id: gb_dlink_dir_multiple_devices_default_login.nasl 11219 2018-09-04 11:52:00Z cfischer $
 #
 # Dlink DIR Multiple Devices Default Login
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103690");
-  script_version("$Revision: 10323 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 09:32:48 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 11219 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-09 11:03:03 +0100 (Tue, 09 Apr 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -61,6 +61,7 @@ port = get_kb_item("dlink_dir_port");
 if(!port)exit(0);
 if(!get_port_state(port))exit(0);
 
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 username = "admin";
@@ -74,7 +75,7 @@ foreach pass (passwords) {
 
   req = string("POST /session.cgi HTTP/1.1\r\n",
                "Host: ", host,"\r\n",
-               "User-Agent: ", OPENVAS_HTTP_USER_AGENT,"\r\n",
+               "User-Agent: ", useragent, "\r\n",
                "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
                "Accept-Language: de-de,de;q=0.8,en-us;q=0.5,en;q=0.3\r\n",
                "Accept-Encoding: identity\r\n",

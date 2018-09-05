@@ -29,33 +29,32 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805803");
-  script_version("$Revision: 6132 $");
+  script_version("$Revision: 11218 $");
   script_cve_id("CVE-2015-3113");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-24 12:14:19 +0530 (Wed, 24 Jun 2015)");
   script_name("Adobe Flash Player Improper FLV Parsing Vulnerability June15 (Mac OS X)");
 
-  script_tag(name: "summary" , value: "This host is installed with Adobe Flash
+  script_tag(name:"summary", value:"This host is installed with Adobe Flash
   Player and is prone to unspecified vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "Flaw is due to improper parsing of
+  script_tag(name:"insight", value:"Flaw is due to improper parsing of
   Flash Video (FLV) files by Adobe Flash Player.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to downloaded a malicious flash file and create a back door results
   in taking complete control over the victim's system.
 
   Impact Level: System/Application.");
 
-  script_tag(name: "affected" , value:"Adobe Flash Player versions before
+  script_tag(name:"affected", value:"Adobe Flash Player versions before
   13.0.0.296 and 14.x through 18.x before 18.0.0.194 on Mac OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Adobe Flash Player version
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
   13.0.0.296 or 18.0.0.194 or later. For updates refer to
   http://get.adobe.com/flashplayer");
 
@@ -63,11 +62,11 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name: "URL" , value : "https://krebsonsecurity.com/tag/cve-2015-3113");
-  script_xref(name: "URL" , value : "https://helpx.adobe.com/security/products/flash-player/apsb15-14.html");
-  script_xref(name: "URL" , value : "http://securityaffairs.co/wordpress/38044/cyber-crime/adobe-fixed-cve-2015-3113.html");
-  script_xref(name: "URL" , value : "https://www.fireeye.com/blog/threat-research/2015/06/operation-clandestine-wolf-adobe-flash-zero-day.html");
-  script_xref(name: "URL" , value : "http://blog.trendmicro.com/trendlabs-security-intelligence/adobe-issues-emergency-patch-for-flash-zero-day");
+  script_xref(name:"URL", value:"https://krebsonsecurity.com/tag/cve-2015-3113");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb15-14.html");
+  script_xref(name:"URL", value:"http://securityaffairs.co/wordpress/38044/cyber-crime/adobe-fixed-cve-2015-3113.html");
+  script_xref(name:"URL", value:"https://www.fireeye.com/blog/threat-research/2015/06/operation-clandestine-wolf-adobe-flash-zero-day.html");
+  script_xref(name:"URL", value:"http://blog.trendmicro.com/trendlabs-security-intelligence/adobe-issues-emergency-patch-for-flash-zero-day");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -81,22 +80,16 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-playerVer = "";
-
-## Get version
 if(!playerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:playerVer, test_version:"13.0.0.296"))
 {
   fix = "13.0.0.296";
   VULN = TRUE;
 }
 
-## Grep for vulnerable version
 if(version_in_range(version:playerVer, test_version:"14.0", test_version2:"18.0.0.193"))
 {
   fix = "18.0.0.194";

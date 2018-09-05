@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_uniform_server_detect.nasl 10891 2018-08-10 12:51:28Z cfischer $
+# $Id: gb_uniform_server_detect.nasl 11224 2018-09-04 12:57:17Z cfischer $
 #
 # Uniform Server Version Detection
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800786");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10891 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11224 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:57:17 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-06-04 09:43:24 +0200 (Fri, 04 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Uniform Server Version Detection");
@@ -56,7 +56,6 @@ include("host_details.inc");
 
 uniPort = get_http_port(default:80);
 
-## Send and receive response
 rcvRes = http_get_cache(item:"/", port:uniPort);
 
 if( ">Uniform Server" >< rcvRes ) {

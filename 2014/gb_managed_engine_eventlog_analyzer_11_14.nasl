@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_managed_engine_eventlog_analyzer_11_14.nasl 10394 2018-07-04 08:14:50Z ckuersteiner $
+# $Id: gb_managed_engine_eventlog_analyzer_11_14.nasl 11213 2018-09-04 09:30:51Z mmartin $
 #
 # ManageEngine EventLog Analyzer Multiple Vulnerabilities
 #
@@ -29,34 +29,34 @@ CPE = 'cpe:/a:zohocorp:manageengine_eventlog_analyzer';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105111");
- script_cve_id("CVE-2014-6038","CVE-2014-6039");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version("$Revision: 10394 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105111");
+  script_cve_id("CVE-2014-6038", "CVE-2014-6039");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11213 $");
 
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_name("ManageEngine EventLog Analyzer Multiple Vulnerabilities");
+  script_name("ManageEngine EventLog Analyzer Multiple Vulnerabilities");
 
- script_xref(name:"URL", value:"https://raw.githubusercontent.com/pedrib/PoC/master/ManageEngine/me_eventlog_info_disc.txt");
+  script_xref(name:"URL", value:"https://raw.githubusercontent.com/pedrib/PoC/master/ManageEngine/me_eventlog_info_disc.txt");
 
- script_tag(name:"impact", value:"Exploiting this issue could allow an attacker read usernames and passwords.");
+  script_tag(name:"impact", value:"Exploiting this issue could allow an attacker read usernames and passwords.");
 
- script_tag(name:"vuldetect", value:"Send a HTTP GET request and check the response.");
- script_tag(name:"solution", value:"Ask the Vendor for an update.");
- script_tag(name:"affected", value:"all versions from v7 to v9.9 build 9002.");
- script_tag(name:"summary", value:"ManageEngine EventLog Analyzer is prone to an information disclosure vulnerability.");
+  script_tag(name:"vuldetect", value:"Send a HTTP GET request and check the response.");
+  script_tag(name:"solution", value:"Ask the Vendor for an update.");
+  script_tag(name:"affected", value:"all versions from v7 to v9.9 build 9002.");
+  script_tag(name:"summary", value:"ManageEngine EventLog Analyzer is prone to an information disclosure vulnerability.");
 
- script_tag(name:"last_modification", value:"$Date: 2018-07-04 10:14:50 +0200 (Wed, 04 Jul 2018) $");
- script_tag(name:"creation_date", value:"2014-11-06 16:38:34 +0100 (Thu, 06 Nov 2014)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
- script_dependencies("gb_manageengine_eventlog_analyzer_detect.nasl");
- script_mandatory_keys("me_eventlog_analyzer/installed");
- script_require_ports("Services/www", 8400);
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2014-11-06 16:38:34 +0100 (Thu, 06 Nov 2014)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
+  script_dependencies("gb_manageengine_eventlog_analyzer_detect.nasl");
+  script_mandatory_keys("me_eventlog_analyzer/installed");
+  script_require_ports("Services/www", 8400);
 
  exit(0);
 }

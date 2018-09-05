@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bws_systems_ha_bridge_info_disc_vuln.nasl 10428 2018-07-05 14:59:10Z cfischer $
+# $Id: gb_bws_systems_ha_bridge_info_disc_vuln.nasl 11228 2018-09-05 02:44:21Z ckuersteiner $
 #
 # BWS Systems HA-Bridge '#!/system' URI Information Disclosure Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/h:bws_systems:ha_bridge";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813627");
-  script_version("$Revision: 10428 $");
+  script_version("$Revision: 11228 $");
   script_cve_id("CVE-2018-12923");
-  script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 16:59:10 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 04:44:21 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-03 12:50:41 +0530 (Tue, 03 Jul 2018)");
   script_name("BWS Systems HA-Bridge '#!/system' URI Information Disclosure Vulnerability");
 

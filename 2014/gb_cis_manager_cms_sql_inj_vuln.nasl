@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cis_manager_cms_sql_inj_vuln.nasl 5993 2017-04-20 15:45:39Z cfi $
+# $Id: gb_cis_manager_cms_sql_inj_vuln.nasl 11214 2018-09-04 10:09:46Z mmartin $
 #
 # CIS Manager 'TroncoID' Parameter SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804558");
-  script_version("$Revision: 5993 $");
+  script_version("$Revision: 11214 $");
   script_cve_id("CVE-2014-2847");
   script_bugtraq_id(66590);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 17:45:39 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-28 19:58:39 +0530 (Mon, 28 Apr 2014)");
   script_name("CIS Manager 'TroncoID' Parameter SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
@@ -60,10 +60,9 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");

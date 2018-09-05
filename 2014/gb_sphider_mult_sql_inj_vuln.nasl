@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sphider_mult_sql_inj_vuln.nasl 6692 2017-07-12 09:57:43Z teissa $
+# $Id: gb_sphider_mult_sql_inj_vuln.nasl 11210 2018-09-04 09:13:50Z mmartin $
 #
 # Sphider Multiple Vulnerabilities - Aug14
 #
@@ -27,36 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804737");
-  script_version("$Revision: 6692 $");
+  script_version("$Revision: 11210 $");
   script_cve_id("CVE-2014-5082", "CVE-2014-5192", "CVE-2014-5193");
   script_bugtraq_id(69019, 68985);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:57:43 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-25 13:06:02 +0530 (Mon, 25 Aug 2014)");
   script_name("Sphider Multiple Vulnerabilities - Aug14");
 
-  script_tag(name : "summary" , value : "This host is installed with Sphider and is prone to multiple vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Send a crafted data via HTTP GET request and check whether it is able to
+  script_tag(name:"summary", value:"This host is installed with Sphider and is prone to multiple vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to
   execute sql query or not.");
-  script_tag(name : "insight" , value : "Flaw is due to the /sphider/admin/admin.php script not properly sanitizing
+  script_tag(name:"insight", value:"Flaw is due to the /sphider/admin/admin.php script not properly sanitizing
   user-supplied input to the 'site_id', 'url', 'filter', and 'category'
   parameters.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to execute arbitrary HTML
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML
   and script code and SQL statements on the vulnerable system, which may lead to
   access or modify data in the underlying database.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Sphider version 1.3.6 and earlier");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"affected", value:"Sphider version 1.3.6 and earlier");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/34238");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/127720");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/34238");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127720");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -71,17 +70,14 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:http_port)){
   exit(0);
 }
 
 host = http_host_name(port:http_port);
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/", "/sphider", "/search", "/webspider", cgi_dirs(port:http_port)))
 {
 
@@ -90,26 +86,20 @@ foreach dir (make_list_unique("/", "/sphider", "/search", "/webspider", cgi_dirs
   sndReq = http_get(item:string(dir, "/admin/admin.php"),  port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ## confirm the Application
   if(">Sphider" >< rcvRes)
   {
-    ## Construct attack request
     url = dir + '/admin/admin.php';
 
-    ## Construct post data
     postData = "user=foo&pass=bar&f=20&site_id=1'SQL-Injection-Test";
 
-    ## Construct the POST request
     sndReq = string("POST ", url, " HTTP/1.1\r\n",
                     "Host: ", host, "\r\n",
                     "Content-Type: application/x-www-form-urlencoded\r\n",
                     "Content-Length: ", strlen(postData), "\r\n",
                     "\r\n", postData);
 
-    ## Send request and receive the response
     rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq, bodyonly:TRUE);
 
-    ## Confirm exploit worked by checking the response
     if(rcvRes && rcvRes =~ "You have an error in your SQL syntax.*SQL-Injection-Test")
     {
       security_message(port:http_port);

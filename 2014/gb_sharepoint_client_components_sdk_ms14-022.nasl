@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sharepoint_client_components_sdk_ms14-022.nasl 6759 2017-07-19 09:56:33Z teissa $
+# $Id: gb_sharepoint_client_components_sdk_ms14-022.nasl 11213 2018-09-04 09:30:51Z mmartin $
 #
 # Microsoft SharePoint Client Components SDK Multiple Vulnerabilities (2952166)
 #
@@ -23,63 +23,44 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
-
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.804584";
 CPE = "cpe:/a:microsoft:sharepoint_server";
 
 if(description)
 {
-  script_oid(SCRIPT_OID);
-  script_version("$Revision: 6759 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.804584");
+  script_version("$Revision: 11213 $");
   script_cve_id("CVE-2014-0251", "CVE-2014-1754");
   script_bugtraq_id(67283, 67288);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 11:56:33 +0200 (Wed, 19 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-14 15:58:55 +0530 (Wed, 14 May 2014)");
   script_name("Microsoft SharePoint Client Components SDK Multiple Vulnerabilities (2952166)");
 
-  tag_summary =
-"This host is missing an critical security update according to Microsoft
-Bulletin MS14-022.";
 
-  tag_vuldetect =
-"Get the vulnerable file version and check appropriate patch is applied
-or not.";
-
-  tag_insight =
-"Flaws is due to multiple unspecified components when handling page content.";
-
-  tag_impact =
-"Successful exploitation will allow remote attackers to execute the arbitrary
+  script_tag(name:"summary", value:"This host is missing an critical security update according to Microsoft
+Bulletin MS14-022.");
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
+or not.");
+  script_tag(name:"insight", value:"Flaws is due to multiple unspecified components when handling page content.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary
 code and compromise a vulnerable system.
 
-Impact Level: System/Application ";
-
-  tag_affected =
-"Microsoft SharePoint Server 2013 Client Components SDK 32/64 bit.";
-
-  tag_solution =
-"Run Windows Update and update the listed hotfixes or download and
+Impact Level: System/Application ");
+  script_tag(name:"affected", value:"Microsoft SharePoint Server 2013 Client Components SDK 32/64 bit.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
 update mentioned hotfixes in the advisory from the below link,
-http://technet.microsoft.com/en-us/security/bulletin/ms14-022";
-
-
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "vuldetect" , value : tag_vuldetect);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
+http://technet.microsoft.com/en-us/security/bulletin/ms14-022");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/57834");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms14-022");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/57834");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms14-022");
   script_category(ACT_GATHER_INFO);
   script_family("Windows : Microsoft Bulletins");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("gb_ms_sharepoint_sever_n_foundation_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/SharePoint/Server/Ver");
   exit(0);
 }
@@ -90,14 +71,7 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-shareVer = "";
-dllVer = "";
-exeVer = "";
-path = "";
-
-## Get SharePoint Version
-shareVer = get_app_version(cpe:CPE, nvt:SCRIPT_OID);
+shareVer = get_app_version(cpe:CPE);
 if(!shareVer){
   exit(0);
 }
@@ -116,7 +90,7 @@ if(shareVer =~ "^15\..*")
     {
       if(version_in_range(version:dllVer, test_version:"15.0", test_version2:"15.0.4609.999"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }

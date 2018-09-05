@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCuq29136.nasl 6486 2017-06-29 09:59:06Z teissa $
+# $Id: gb_cisco_asa_CSCuq29136.nasl 11220 2018-09-04 11:57:09Z mmartin $
 #
 # Cisco ASA Clientless VPN Information Disclosure and DoS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105985");
-  script_version("$Revision: 6486 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
-  script_tag(name : "creation_date", value : "2015-03-13 13:21:11 +0700 (Fri, 13 Mar 2015)");
-  script_tag(name : "cvss_base", value : "8.3");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:M/Au:N/C:P/I:P/A:C");
+  script_version("$Revision: 11220 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-03-13 13:21:11 +0700 (Fri, 13 Mar 2015)");
+  script_tag(name:"cvss_base", value:"8.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:C");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -52,28 +52,28 @@ if (description)
   script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
   script_mandatory_keys("cisco_asa/version");
 
-  script_tag(name : "summary", value : "Cisco ASA Clientless VPN Portal is prone to a Information
+  script_tag(name:"summary", value:"Cisco ASA Clientless VPN Portal is prone to a Information
 Disclosure and Denial of Service vulnerability.");
 
-  script_tag(name : "vuldetect", value : "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name : "insight", value : "A vulnerability in the Clientless SSL VPN portal feature could
+  script_tag(name:"insight", value:"A vulnerability in the Clientless SSL VPN portal feature could
 allow an unauthenticated, remote attacker to access random memory locations. Due to this vulnerability,
 the attacker may be able to access the information stored in memory and in some cases may be able to corrupt
 this portion of memory, which could lead to a reload of the affected system.
 The vulnerability is due to insufficient sanitization of user-supplied input.");
 
-  script_tag(name : "impact", value : "An authenticated, remote attacker could exploit this vulnerability by
+  script_tag(name:"impact", value:"An authenticated, remote attacker could exploit this vulnerability by
 setting random values on parameters passed during access to the Clientless SSL VPN portal. A successful exploit
 could allow the attacker to access sensitive information in memory. In some cases, the attacker could corrupt
 a portion of memory that could cause the targeted device to reload abnormally. Repeated exploitation could lead
 to a sustained DoS condition for legitimate users.");
 
-  script_tag(name : "affected", value : "Version 8.2, 8.3, 8.4, 8.6, 9.0, 9.1, 9.2 and 9.3");
+  script_tag(name:"affected", value:"Version 8.2, 8.3, 8.4, 8.6, 9.0, 9.1, 9.2 and 9.3");
 
-  script_tag(name : "solution", value : "Apply the appropriate updates from Cisco.");
+  script_tag(name:"solution", value:"Apply the appropriate updates from Cisco.");
 
-  script_xref(name : "URL", value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=35916");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35916");
 
   exit(0);
 }
@@ -99,7 +99,7 @@ if ((revcomp(a:compver, b:"8.3.2.42") < 0) &&
   security_message(port: 0, data:report);
   exit(0);
 }
- 
+
 if ((revcomp(a:compver, b:"8.4.7.23") < 0) &&
     (revcomp(a:compver, b:"8.4") >= 0)) {
   report = 'Installed Version: ' + version + '\n' +

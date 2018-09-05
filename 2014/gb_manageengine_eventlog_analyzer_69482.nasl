@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_eventlog_analyzer_69482.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_manageengine_eventlog_analyzer_69482.nasl 11222 2018-09-04 12:41:44Z cfischer $
 #
 # ManageEngine EventLog Analyzer Multiple Security Vulnerabilities
 #
@@ -27,14 +27,14 @@
 
 CPE = 'cpe:/a:zohocorp:manageengine_eventlog_analyzer';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105083");
   script_bugtraq_id(69482);
   script_cve_id("CVE-2014-6037");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11222 $");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -91,7 +91,7 @@ vulnerability and an unauthorized-access vulnerability.");
 
   script_tag(name:"affected", value:"EventLog Analyzer 9.9 Build 9002 and prior are vulnerable.");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-09 12:16:43 +0200 (Tue, 09 Sep 2014)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -102,7 +102,7 @@ vulnerability and an unauthorized-access vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_app");
 
- exit(0);
+  exit(0);
 }
 
 include("host_details.inc");
@@ -116,9 +116,8 @@ if (!port = get_app_port(cpe: CPE))
 if (!get_app_location(cpe: CPE, port: port, nofork: TRUE))
   exit(0);
 
-host = get_host_name();
-if( port != 80 && port != 443 )
-  host += ':' + port;
+useragent = get_http_user_agent();
+host = http_host_name(port: port);
 
 function _send( data )
 {
@@ -138,7 +137,7 @@ function _send( data )
 len = strlen( ex );
 
 req = 'POST /agentUpload HTTP/1.1\r\n' +
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'User-Agent: ' + useragent + '\r\n' +
       'Host: ' + host + '\r\n' +
       'Accept: */*\r\n' +
       'Content-Length: ' + len + '\r\n' +

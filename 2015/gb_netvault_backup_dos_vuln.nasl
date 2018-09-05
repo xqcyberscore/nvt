@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netvault_backup_dos_vuln.nasl 9122 2018-03-17 14:01:04Z cfischer $
+# $Id: gb_netvault_backup_dos_vuln.nasl 11218 2018-09-04 11:43:35Z mmartin $
 #
 # Dell Netvault Denial Of Service Vulnerability
 #
@@ -29,22 +29,21 @@ CPE = "cpe:/a:dell:netvault_backup";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806003");
-  script_version("$Revision: 9122 $");
+  script_version("$Revision: 11218 $");
   script_cve_id("CVE-2015-5696");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-03-17 15:01:04 +0100 (Sat, 17 Mar 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-04 16:15:42 +0530 (Tue, 04 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Dell Netvault Denial Of Service Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with Dell Netvault
+  script_tag(name:"summary", value:"The host is installed with Dell Netvault
   Backup and is prone to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to insufficient
+  script_tag(name:"insight", value:"The flaw exists due to insufficient
   validation of user-supplied input which cause the 'nvpmgr.exe' process on an
   affected system to crash.");
 
@@ -61,9 +60,9 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.scip.ch/en/?vuldb.76847");
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2015/Jul/142");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132928/");
+  script_xref(name:"URL", value:"http://www.scip.ch/en/?vuldb.76847");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2015/Jul/142");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/132928/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -77,21 +76,14 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-netPort = "";
-netVer = "";
-
-## Get HTTP Port
 if(!netPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!netVer = get_app_version(cpe:CPE, port:netPort)){
   exit(0);
 }
 
-##Check for vulnerable version
 if(version_is_less_equal(version:netVer, test_version:"10.0.1.24"))
 {
   report = 'Installed Version: ' +netVer+ '\n' +

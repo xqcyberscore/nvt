@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_jumpurl_file_disclosure_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_typo3_jumpurl_file_disclosure_vuln.nasl 11214 2018-09-04 10:09:46Z mmartin $
 #
 # TYPO3 jumpUrl File Disclosure Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803989");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11214 $");
   script_cve_id("CVE-2009-0815", "CVE-2009-0816");
   script_bugtraq_id(33714);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-26 17:48:31 +0530 (Thu, 26 Dec 2013)");
   script_name("TYPO3 jumpUrl File Disclosure Vulnerability");
 
@@ -82,7 +82,6 @@ if(typoLoca = get_app_location(cpe:CPE, port:typoPort))
   url = "/?jumpurl=" + urlencode(str:"typo3conf/localconf.php")+
         "&type=0&juSecure=1&locationData="+ urlencode(str:"2:");
 
-  ## Send and Receive the response
   sndReq = http_get(item:string(typoLoca, url), port:typoPort);
   rcvRes = http_send_recv(port:typoPort, data:sndReq);
 

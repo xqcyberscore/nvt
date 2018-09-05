@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_passman_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_passman_detect.nasl 11215 2018-09-04 10:11:35Z cfischer $
 #
-# Passman Detection
+# Collaborative Passwords Manager (cPassMan) Detection
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -27,59 +27,69 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100827");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11215 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:11:35 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-09-28 17:11:37 +0200 (Tue, 28 Sep 2010)");
   script_tag(name:"cvss_base", value:"0.0");
-  script_name("Passman Detection");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
+  script_name("Collaborative Passwords Manager (cPassMan) Detection");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
-  script_family("Service detection");
+  script_family("Product detection");
   script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
-  script_tag(name:"summary", value:"This host is running Collaborative Passwords Manager, a Passwords Manager dedicated for
-managing passwords in a collaborative way.");
+
   script_xref(name:"URL", value:"http://cpassman.org/");
- exit(0);
+
+  script_tag(name:"summary", value:"This host is running Collaborative Passwords Manager (cPassMan),
+  a Passwords Manager dedicated for managing passwords in a collaborative way.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
+include("cpe.inc");
 
-port = get_http_port(default:80);
-if(!can_host_php(port:port))exit(0);
+port = get_http_port( default:80 );
+if( ! can_host_php( port:port ) ) exit( 0 );
 
 foreach dir( make_list_unique( "/cpassman", "/cPassMan", "/passman", cgi_dirs( port:port ) ) ) {
 
- install = dir;
- if( dir == "/" ) dir = "";
- url = dir + "/index.php";
- buf = http_get_cache( item:url, port:port );
- if( buf == NULL ) continue;
+  install = dir;
+  if( dir == "/" ) dir = "";
+  url = dir + "/index.php";
+  buf = http_get_cache( item:url, port:port );
+  if( isnull( buf ) ) continue;
 
- if("<title>Collaborative Passwords Manager" >< buf && "cPassMan" >< buf)
- {
-    vers = string("unknown");
-    version = eregmatch(string: buf, pattern: "cPassMan(</a>)? ([0-9.]+).*copyright",icase:TRUE);
+  if( "<title>Collaborative Passwords Manager" >< buf && "cPassMan" >< buf ) {
 
-    if ( !isnull(version[2]) ) {
-       vers=chomp(version[2]);
-    }
+    vers = "unknown";
 
-    set_kb_item(name: string("www/", port, "/passman"), value: string(vers," under ",install));
-    set_kb_item(name:string("cpassman/installed"),value:TRUE);
+    version = eregmatch( string:buf, pattern:"cPassMan(</a>)? ([0-9.]+).*copyright", icase:TRUE );
+    if( version[2] ) vers = chomp( version[2] );
 
-    info = string("Collaborative Passwords Manager Version '");
-    info += string(vers);
-    info += string("' was detected on the remote host in the following directory(s):\n\n");
-    info += string(install, "\n");
+    set_kb_item( name:"www/" + port + "/passman", value:vers + " under " + install );
+    set_kb_item( name:"cpassman/detected", value:TRUE );
 
-    log_message(port:port,data:info);
-    exit(0);
+    cpe = build_cpe( value:vers, exp:"^([0-9.]+)", base:"cpe:/a:cpassman:cpassman:" );
+    if( isnull( cpe ) )
+      cpe = "cpe:/a:cpassman:cpassman";
+
+    register_product( cpe:cpe, location:install, port:port, service:"www" );
+
+    log_message( data:build_detection_report( app:"Collaborative Passwords Manager (cPassMan)",
+                                              version:vers,
+                                              install:install,
+                                              cpe:cpe,
+                                              concluded:version[0] ),
+                                              port:port );
+    exit( 0 );
   }
 }
 
-exit(0);
+exit( 0 );

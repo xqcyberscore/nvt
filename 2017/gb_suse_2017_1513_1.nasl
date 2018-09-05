@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2017_1513_1.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_suse_2017_1513_1.nasl 11228 2018-09-05 02:44:21Z ckuersteiner $
 #
 # SuSE Update for the openSUSE-SU-2017:1513-1 (the)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851566");
-  script_version("$Revision: 9381 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11228 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 04:44:21 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-06-09 06:51:33 +0200 (Fri, 09 Jun 2017)");
   script_cve_id("CVE-2017-7487", "CVE-2017-7645", "CVE-2017-8890", "CVE-2017-9074", 
                 "CVE-2017-9075", "CVE-2017-9076", "CVE-2017-9077", "CVE-2017-9150"); 
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for the openSUSE-SU-2017:1513-1 (the)");
   script_tag(name: "summary", value: "Check the version of the");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_firepass_21957.nasl 6183 2017-05-22 09:03:43Z teissa $
+# $Id: sw_firepass_21957.nasl 11218 2018-09-04 11:43:35Z mmartin $
 #
 # F5 Firepass Multiple Input Validation Vulnerabilities
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/h:f5:firepass';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111016");
-  script_version("$Revision: 6183 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
+  script_version("$Revision: 11218 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-17 08:00:00 +0100 (Fri, 17 Apr 2015)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -49,15 +49,15 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("firepass/installed");
 
-  script_tag(name : "summary" , value : "F5 Firepass is prone to multiple input-validation vulnerabilities.");
-  script_tag(name : "vuldetect" , value : "Check the version.");
-  script_tag(name : "insight" , value : "The device fails to sufficiently sanitize user-supplied input.
+  script_tag(name:"summary", value:"F5 Firepass is prone to multiple input-validation vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"insight", value:"The device fails to sufficiently sanitize user-supplied input.
   These issues include information-disclosure, security bypass, and cross-site scripting vulnerabilities.");
-  script_tag(name : "impact" , value : "An attacker can exploit these issues to bypass security restrictions,
+  script_tag(name:"impact", value:"An attacker can exploit these issues to bypass security restrictions,
   to view sensitive information, and to steal cookie-based authentication credentials. This may allow the
   attacker to compromise the application and the underlying system; other attacks are also possible.");
-  script_tag(name : "affected" , value : "F5 Firepass from 5.4.0 to 5.5.1 and 6.0.0.");
-  script_tag(name : "solution" , value : "The vendor has released updates listened in the referred advisory.");
+  script_tag(name:"affected", value:"F5 Firepass from 5.4.0 to 5.5.1 and 6.0.0.");
+  script_tag(name:"solution", value:"The vendor has released updates listened in the referred advisory.");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/21957");
   script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/6000/900/sol6923.html");
@@ -75,13 +75,13 @@ include("host_details.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-if( version_in_range( version:vers, test_version:"5.4.0", test_version2:"5.5.1" ) 
+if( version_in_range( version:vers, test_version:"5.4.0", test_version2:"5.5.1" )
     || version_is_equal( version:vers, test_version:"6.0.0" ) ) {
 
   report = 'Installed version: ' + vers + '\n' +
            'Fixed version:     ' + "5.5.2/6.0.1" + '\n';
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

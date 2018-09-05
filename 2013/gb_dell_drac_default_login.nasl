@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dell_drac_default_login.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_dell_drac_default_login.nasl 11219 2018-09-04 11:52:00Z cfischer $
 #
 # Dell Remote Access Controller Default Login
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/h:dell:remote_access_card';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103681");
-  script_version("$Revision: 11103 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 11219 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-18 17:03:03 +0100 (Mon, 18 Mar 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -58,7 +58,6 @@ if(description)
 }
 
 include("http_func.inc");
-
 include("host_details.inc");
 
 # TODO: check for iDRAC8
@@ -98,6 +97,7 @@ function check_iDRAC_default_login(version) {
     return FALSE;
   }
 
+  useragent = get_http_user_agent();
   host = http_host_name(port:port);
 
   foreach url (urls) {
@@ -112,7 +112,7 @@ function check_iDRAC_default_login(version) {
 
       req = string("POST ",url," HTTP/1.1\r\n",
                    "Host: ", host, "\r\n",
-                   "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+                   "User-Agent: ", useragent, "\r\n",
                    "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
                    "Accept-Language: en-us;q=0.5,en;q=0.3\r\n",
                    "Accept-Encoding: identity\r\n",

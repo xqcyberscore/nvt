@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir645_auth_bypass_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_dlink_dir645_auth_bypass_vuln.nasl 11223 2018-09-04 12:48:48Z cfischer $
 #
 # D-Link DIR-645 Router Authentication Bypass Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803174");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11223 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:48:48 +0200 (Tue, 04 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-01 12:01:42 +0530 (Fri, 01 Mar 2013)");
   script_name("D-Link DIR-645 Router Authentication Bypass Vulnerability");
 
@@ -81,7 +81,6 @@ if(banner && "DIR-645" >!< banner){
   exit(0);
 }
 
-## Send and Receive the response
 res = http_get_cache(item: "/", port:port);
 
 if(">D-LINK SYSTEMS" >< res &&   ">DIR-645<" >< res)
