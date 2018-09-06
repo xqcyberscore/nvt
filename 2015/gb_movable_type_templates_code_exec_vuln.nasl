@@ -29,20 +29,19 @@ CPE = "cpe:/a:sixapart:movable_type";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805369");
-  script_version("$Revision: 6513 $");
+  script_version("$Revision: 11259 $");
   script_cve_id("CVE-2015-0845");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-22 16:50:00 +0530 (Wed, 22 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Movable Type Templates Arbitrary Code Execution Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with movable type
+  script_tag(name:"summary", value:"The host is installed with movable type
   and is prone to arbitrary code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with
-  the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaw is due to the  format string
   specifiers are not properly sanitized in user-supplied input. This may
@@ -54,14 +53,14 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Movable Type before 5.2.13");
+  script_tag(name:"affected", value:"Movable Type before 5.2.13");
 
   script_tag(name:"solution", value:"Upgrade to Movable Type 5.2.13,
   For updates refer https://movabletype.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://movabletype.org/news/2015/04/movable_type_608_and_5213_released_to_close_security_vulnera.html");
+  script_xref(name:"URL", value:"https://movabletype.org/news/2015/04/movable_type_608_and_5213_released_to_close_security_vulnera.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -75,17 +74,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-movVer = "";
-report = "";
-http_port = "";
-
-# Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# Get MovableType Version
 if(!movVer = get_app_version(cpe:CPE, port:http_port)){
   exit(0);
 }

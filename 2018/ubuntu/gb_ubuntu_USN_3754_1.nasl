@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3754_1.nasl 11133 2018-08-27 10:21:00Z santu $
+# $Id: gb_ubuntu_USN_3754_1.nasl 11236 2018-09-05 09:02:10Z cfischer $
 #
 # Ubuntu Update for linux USN-3754-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843628");
-  script_version("$Revision: 11133 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 12:21:00 +0200 (Mon, 27 Aug 2018) $");
+  script_version("$Revision: 11236 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:02:10 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-25 06:48:47 +0200 (Sat, 25 Aug 2018)");
   script_cve_id("CVE-2016-10208", "CVE-2017-11472", "CVE-2017-11473", "CVE-2017-14991",
                 "CVE-2017-15649", "CVE-2017-16526", "CVE-2017-16527", "CVE-2017-16529",
@@ -109,20 +109,20 @@ not properly validate USB HID ...
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3754-1");
-  script_xref(name:"URL" , value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2018-August/004558.html");
+  script_xref(name:"URL", value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2018-August/004558.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

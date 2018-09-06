@@ -27,22 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805351");
-  script_version("$Revision: 9576 $");
+  script_version("$Revision: 11259 $");
   script_cve_id("CVE-2015-0077", "CVE-2015-0078", "CVE-2015-0094", "CVE-2015-0095");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-24 09:24:33 +0200 (Tue, 24 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-11 10:41:32 +0530 (Wed, 11 Mar 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Kernel-Mode Driver Privilege Elevation Vulnerabilities (3034344)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-023.");
 
-  script_tag(name: "vuldetect" , value: "Get the vulnerable file version and
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value: "Multiple flaws exists,
+  script_tag(name:"insight", value:"Multiple flaws exists,
 
   - In the Windows kernel-mode driver that could allow the disclosure of kernel
     memory contents to an attacker.
@@ -57,12 +57,12 @@ if(description)
     memory contents to an attacker. This vulnerability is caused when the
     Windows kernel-mode driver dereferences a NULL pointer.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass security and gain restricted privileges
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"Microsoft Windows 8 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
 
   Microsoft Windows Server 2012/R2
 
@@ -78,18 +78,19 @@ if(description)
 
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
 
-  script_tag(name: "solution" , value: "Run Windows Update and update the
+  script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
   https://technet.microsoft.com/library/security/MS15-023");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3034344");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-023");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/3034344");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-023");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -115,46 +116,38 @@ if(!dllVer){
   exit(0);
 }
 
-##Windows Server 2003
 if(hotfix_check_sp(win2003x64:3,win2003:3) > 0)
 {
-  ## Check for Win32k.sys version
   if(version_is_less(version:dllVer, test_version:"5.2.3790.5561")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows Vista and Windows Server 2008
 ## Currently not supporting for Vista and Windows Server 2008 64 bit
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Win32k.sys version
   if(version_is_less(version:dllVer, test_version:"6.0.6002.19326") ||
      version_in_range(version:dllVer, test_version:"6.0.6002.23000", test_version2:"6.0.6002.23635")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows 7 and Windows Server 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Win32k.sys version
   if(version_is_less(version:dllVer, test_version:"6.1.7601.18773") ||
      version_in_range(version:dllVer, test_version:"6.1.7601.22000", test_version2:"6.1.7601.22977")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows 8 and Windows Server 2012
 if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 {
-  ## Check for Win32k.sys version
   if(version_is_less(version:dllVer, test_version:"6.2.9200.17287") ||
      version_in_range(version:dllVer, test_version:"6.2.9200.20000", test_version2:"6.2.9200.21402")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
@@ -162,9 +155,8 @@ if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 ## Win 8.1 and win2012R2
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Win32k.sys version
   if(version_is_less(version:dllVer, test_version:"6.3.9600.17694")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }

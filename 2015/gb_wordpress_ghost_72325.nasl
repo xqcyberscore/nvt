@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_ghost_72325.nasl 7806 2017-11-17 09:22:46Z cfischer $
+# $Id: gb_wordpress_ghost_72325.nasl 11240 2018-09-05 10:15:12Z mmartin $
 #
 # GNU glibc Remote Heap Buffer Overflow Vulnerability (Wordpress)
 #
@@ -29,38 +29,38 @@ CPE = 'cpe:/a:wordpress:wordpress';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105192");
- script_bugtraq_id(72325);
- script_cve_id("CVE-2015-0235");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 7806 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105192");
+  script_bugtraq_id(72325);
+  script_cve_id("CVE-2015-0235");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11240 $");
 
- script_name("GNU glibc Remote Heap Buffer Overflow Vulnerability (Wordpress)");
+  script_name("GNU glibc Remote Heap Buffer Overflow Vulnerability (Wordpress)");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/72325");
- script_xref(name:"URL", value:"http://www.gnu.org/software/libc/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/72325");
+  script_xref(name:"URL", value:"http://www.gnu.org/software/libc/");
 
- script_tag(name: "impact" , value:"An attacker can exploit this issue to execute arbitrary code in the
+  script_tag(name:"impact", value:"An attacker can exploit this issue to execute arbitrary code in the
 context of the affected application. Failed exploit attempts may crash the application, denying service
 to legitimate users.");
 
- script_tag(name: "vuldetect" , value:"Send a special crafted XML POST request and check the response");
- script_tag(name: "solution" , value:"Update your glibc and reboot.");
- script_tag(name: "summary" , value:"The remote host is using a version of glibc which is prone to a heap-based buffer-overflow
+  script_tag(name:"vuldetect", value:"Send a special crafted XML POST request and check the response");
+  script_tag(name:"solution", value:"Update your glibc and reboot.");
+  script_tag(name:"summary", value:"The remote host is using a version of glibc which is prone to a heap-based buffer-overflow
 vulnerability.");
 
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-11-17 10:22:46 +0100 (Fri, 17 Nov 2017) $");
- script_tag(name:"creation_date", value:"2015-01-31 15:37:56 +0100 (Sat, 31 Jan 2015)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_analysis");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("secpod_wordpress_detect_900182.nasl");
- script_mandatory_keys("wordpress/installed");
- script_require_ports("Services/www", 80);
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-01-31 15:37:56 +0100 (Sat, 31 Jan 2015)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_analysis");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("secpod_wordpress_detect_900182.nasl");
+  script_mandatory_keys("wordpress/installed");
+  script_require_ports("Services/www", 80);
  exit(0);
 }
 

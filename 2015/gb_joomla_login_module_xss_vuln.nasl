@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_login_module_xss_vuln.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: gb_joomla_login_module_xss_vuln.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # Joomla CMS 'login' Module Cross-Site Scripting Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806600");
-  script_version("$Revision: 6229 $");
+  script_version("$Revision: 11259 $");
   script_cve_id("CVE-2015-6939");
   script_bugtraq_id(76750);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-19 15:49:11 +0530 (Mon, 19 Oct 2015)");
   script_name("Joomla CMS 'login' Module Cross-Site Scripting Vulnerability");
 
@@ -62,8 +62,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1033541");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133907");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1033541");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/133907");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -77,26 +77,17 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-# Variable Initialization
-url = "";
-dir = "";
-http_port = 0;
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Joomla Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-##Construct Attack Request
 url = dir + "/index.php/?Itemid=1&option=com_search&searchword=%f6%22%20on" +
             "mouseover%3dprompt%28document.cookie%29%20//&task=search";
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
    pattern:"onmouseover=prompt\(document.cookie\)",
    extra_check:'content="Joomla!'))

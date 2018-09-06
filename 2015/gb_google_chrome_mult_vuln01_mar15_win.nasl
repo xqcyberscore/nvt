@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_mar15_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_mult_vuln01_mar15_win.nasl 11257 2018-09-06 07:51:44Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-01 Mar15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805503");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11257 $");
   script_cve_id("CVE-2015-1213", "CVE-2015-1214", "CVE-2015-1215", "CVE-2015-1216",
                 "CVE-2015-1217", "CVE-2015-1218", "CVE-2015-1219", "CVE-2015-1220",
                 "CVE-2015-1221", "CVE-2015-1222", "CVE-2015-1223", "CVE-2015-1224",
@@ -40,19 +40,19 @@ if(description)
   script_bugtraq_id(72901, 72916);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-13 14:45:49 +0530 (Fri, 13 Mar 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Mar15 (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists. For details refer
+  script_tag(name:"insight", value:"Multiple flaws exists. For details refer
   reference section.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to dereference already freed memory, potentially execute arbitrary code,
   potentially disclose memory contents, gain unauthorized access to information,
   cause a denial of service, conduct cookie-injection attacks and other unspecified
@@ -60,19 +60,19 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Google Chrome version prior to
+  script_tag(name:"affected", value:"Google Chrome version prior to
   41.0.2272.76 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   41.0.2272.76 or later, For updates refer to http://www.google.com/chrome");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://code.google.com/p/chromium/issues/detail?id=444957");
-  script_xref(name : "URL" , value : "https://code.google.com/p/chromium/issues/detail?id=463349");
-  script_xref(name : "URL" , value : "googlechromereleases.blogspot.com/2015/03/stable-channel-update.html");
+  script_xref(name:"URL", value:"https://code.google.com/p/chromium/issues/detail?id=444957");
+  script_xref(name:"URL", value:"https://code.google.com/p/chromium/issues/detail?id=463349");
+  script_xref(name:"URL", value:"googlechromereleases.blogspot.com/2015/03/stable-channel-update.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

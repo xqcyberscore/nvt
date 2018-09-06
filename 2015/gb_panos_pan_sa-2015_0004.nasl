@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_panos_pan_sa-2015_0004.nasl 8721 2018-02-08 13:40:24Z cfischer $
+# $Id: gb_panos_pan_sa-2015_0004.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # Palo Alto PAN-OS PAN-SA-2015-0004
 #
@@ -29,36 +29,36 @@ CPE = 'cpe:/o:paloaltonetworks:pan-os';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105324");
- script_tag(name:"cvss_base", value:"4.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
- script_version ("$Revision: 8721 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105324");
+  script_tag(name:"cvss_base", value:"4.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_version("$Revision: 11259 $");
 
- script_name("Palo Alto PAN-OS PAN-SA-2015-0004");
+  script_name("Palo Alto PAN-OS PAN-SA-2015-0004");
 
- script_xref(name:"URL", value:"https://securityadvisories.paloaltonetworks.com/Home/Detail/31");
+  script_xref(name:"URL", value:"https://securityadvisories.paloaltonetworks.com/Home/Detail/31");
 
- script_tag(name: "impact" , value:"This issue affects the management interface of the device, where an authenticated administrator injects malicious XML data into the web UI interface.");
+  script_tag(name:"impact", value:"This issue affects the management interface of the device, where an authenticated administrator injects malicious XML data into the web UI interface.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
- script_tag(name: "solution" , value:"Update to PAN-OS 6.1.4, PAN-OS 6.0.8, or PAN-OS 5.0.16");
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"solution", value:"Update to PAN-OS 6.1.4, PAN-OS 6.0.8, or PAN-OS 5.0.16");
 
- script_tag(name: "summary" , value:"An XML parsing vulnerability exists in PAN-OS allowing a malicious user within PAN-OS to inject malicious
+  script_tag(name:"summary", value:"An XML parsing vulnerability exists in PAN-OS allowing a malicious user within PAN-OS to inject malicious
 XML data into the web-based device management front-end allowing the user to retrieve arbitrary content from the device. The user must be an
 authenticated user issuing the request. (Ref #71273)");
 
- script_tag(name:"affected" , value:"PAN-OS 6.1.3 and earlier; PAN-OS 6.0.7 and earlier; PAN-OS 5.0.15 and earlier");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"affected", value:"PAN-OS 6.1.3 and earlier; PAN-OS 6.0.7 and earlier; PAN-OS 5.0.15 and earlier");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-02-08 14:40:24 +0100 (Thu, 08 Feb 2018) $");
- script_tag(name:"creation_date", value:"2015-08-20 11:43:06 +0200 (Thu, 20 Aug 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("Palo Alto PAN-OS Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_palo_alto_panOS_version.nasl");
- script_mandatory_keys("palo_alto_pan_os/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-08-20 11:43:06 +0200 (Thu, 20 Aug 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Palo Alto PAN-OS Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_palo_alto_panOS_version.nasl");
+  script_mandatory_keys("palo_alto_pan_os/version");
 
  exit(0);
 }

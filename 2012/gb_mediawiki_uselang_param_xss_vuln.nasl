@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_uselang_param_xss_vuln.nasl 10005 2018-05-29 13:54:41Z cfischer $
+# $Id: gb_mediawiki_uselang_param_xss_vuln.nasl 11266 2018-09-06 10:59:26Z cfischer $
 #
 # MediaWiki 'uselang' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,19 +29,19 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802910");
-  script_version("$Revision: 10005 $");
+  script_version("$Revision: 11266 $");
   script_cve_id("CVE-2012-2698");
   script_bugtraq_id(53998);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 15:54:41 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-09 13:41:49 +0530 (Mon, 09 Jul 2012)");
   script_name("MediaWiki 'uselang' Parameter Cross Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/49484");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1027179");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/76311");
-  script_xref(name : "URL" , value : "https://bugzilla.wikimedia.org/show_bug.cgi?id=36938");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2012/06/14/2");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/49484");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1027179");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/76311");
+  script_xref(name:"URL", value:"https://bugzilla.wikimedia.org/show_bug.cgi?id=36938");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2012/06/14/2");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -51,18 +51,18 @@ if(description)
   script_require_keys("mediawiki/installed");
   script_require_ports("Services/www", 80);
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary HTML and
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
   script code in a user's browser session in the context of an affected site.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "MediaWiki versions prior to 1.17.5, 1.8.x before 1.18.4 and 1.19.x before 1.19.1");
-  script_tag(name : "insight" , value : "Input passed via the 'uselang' parameter to 'index.php/Main_page' is not
+  script_tag(name:"affected", value:"MediaWiki versions prior to 1.17.5, 1.8.x before 1.18.4 and 1.19.x before 1.19.1");
+  script_tag(name:"insight", value:"Input passed via the 'uselang' parameter to 'index.php/Main_page' is not
   properly sanitised in the 'outputPage()' function, before being returned
   to the user.");
-  script_tag(name : "solution" , value : "Upgrade to MediaWiki version 1.17.5, 1.18.4, or 1.19.1 or later.
+  script_tag(name:"solution", value:"Upgrade to MediaWiki version 1.17.5, 1.18.4, or 1.19.1 or later.
 
   For updates refer to http://www.mediawiki.org/wiki/MediaWiki");
-  script_tag(name : "summary" , value : "This host is running MediaWiki and is prone to cross site scripting
+  script_tag(name:"summary", value:"This host is running MediaWiki and is prone to cross site scripting
   vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -72,7 +72,7 @@ if(description)
 
 include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
+
 
 if(!port = get_app_port(cpe:CPE)){
   exit(0);

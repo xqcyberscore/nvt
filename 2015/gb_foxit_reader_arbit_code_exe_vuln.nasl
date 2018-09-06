@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_arbit_code_exe_vuln.nasl 10140 2018-06-08 12:58:24Z asteins $
+# $Id: gb_foxit_reader_arbit_code_exe_vuln.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # Foxit Reader Arbitrary Code Execution Vulnerability
 #
@@ -29,39 +29,39 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806903");
-  script_version("$Revision: 10140 $");
+  script_version("$Revision: 11259 $");
   script_cve_id("CVE-2015-8580");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-31 18:46:31 +0530 (Thu, 31 Dec 2015)");
   script_name("Foxit Reader Arbitrary Code Execution Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with Foxit Reader
+  script_tag(name:"summary", value:"The host is installed with Foxit Reader
   and is prone to Arbitrary Code Execution Vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists within the handling of the
+  script_tag(name:"insight", value:"The flaw exists within the handling of the
   Print method and App object. A specially crafted PDF document can force a
   dangling pointer to be reused after it has been freed");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code via a crafted PDF document.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Foxit Reader version prior to
+  script_tag(name:"affected", value:"Foxit Reader version prior to
   7.2.2.");
 
-  script_tag(name: "solution" , value:"Upgrade to Foxit Reader version
+  script_tag(name:"solution", value:"Upgrade to Foxit Reader version
   7.2.2 or later, For updates refer to http://www.foxitsoftware.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value: "https://www.foxitsoftware.com/support/security-bulletins.php#FRD-34");
+  script_xref(name:"URL", value:"https://www.foxitsoftware.com/support/security-bulletins.php#FRD-34");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

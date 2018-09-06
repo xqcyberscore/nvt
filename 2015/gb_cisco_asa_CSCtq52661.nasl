@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCtq52661.nasl 6431 2017-06-26 09:59:24Z teissa $
+# $Id: gb_cisco_asa_CSCtq52661.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # Cisco ASA Local Path Inclusion Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105984");
-  script_version("$Revision: 6431 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
-  script_tag(name : "creation_date", value : "2015-03-13 12:50:32 +0700 (Fri, 13 Mar 2015)");
-  script_tag(name : "cvss_base", value : "6.8");
-  script_tag(name : "cvss_base_vector", value : "AV:L/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-03-13 12:50:32 +0700 (Fri, 13 Mar 2015)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -52,11 +52,11 @@ if (description)
   script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
   script_mandatory_keys("cisco_asa/version");
 
-  script_tag(name : "summary", value : "Cisco ASA is prone to a local path inclusion vulnerability.");
+  script_tag(name:"summary", value:"Cisco ASA is prone to a local path inclusion vulnerability.");
 
-  script_tag(name : "vuldetect", value : "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name : "insight", value : "A vulnerability in the function that exports environment variables
+  script_tag(name:"insight", value:"A vulnerability in the function that exports environment variables
 of Cisco ASA Software could allow an authenticated, local attacker to inject a malicious library and take
 complete control of the system.
 The vulnerability is due to improper setting of the LD_LIBRARY_PATH environment. An attacker could exploit
@@ -64,15 +64,15 @@ this vulnerability by copying a malicious library onto the affected system's ext
 a reload of the system. An exploit could allow the attacker to force the affected system to load a malicious
 library and access the underlying Linux OS, which could lead to a full compromise of the system.");
 
-  script_tag(name : "impact", value : "A successful exploit could allow an authenticated, local attacker to
+  script_tag(name:"impact", value:"A successful exploit could allow an authenticated, local attacker to
 load a malicious library on the system and access the underlying Linux operating system, which could allow the
 attacker to completely compromise the system.");
 
-  script_tag(name : "affected", value : "Version 8.2, 8.3, 8.4 and 8.7");
+  script_tag(name:"affected", value:"Version 8.2, 8.3, 8.4 and 8.7");
 
-  script_tag(name : "solution", value : "Apply the appropriate updates from Cisco.");
+  script_tag(name:"solution", value:"Apply the appropriate updates from Cisco.");
 
-  script_xref(name : "URL", value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=35914");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35914");
 
   exit(0);
 }
@@ -98,7 +98,7 @@ if ((revcomp(a:compver, b:"8.4.3") < 0) &&
   security_message(port: 0, data:report);
   exit(0);
 }
- 
+
 if ((revcomp(a:compver, b:"8.7.1.13") < 0) &&
     (revcomp(a:compver, b:"8.7") >= 0)) {
   report = 'Installed Version: ' + version + '\n' +

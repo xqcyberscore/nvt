@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_asset_manager_file_upload_vuln.nasl 10028 2018-05-30 13:13:04Z cfischer $
+# $Id: gb_wordpress_asset_manager_file_upload_vuln.nasl 11266 2018-09-06 10:59:26Z cfischer $
 #
 # WordPress Asset Manager Plugin 'upload.php' Arbitrary File Upload Vulnerability
 #
@@ -29,17 +29,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802637");
-  script_version("$Revision: 10028 $");
+  script_version("$Revision: 11266 $");
   script_bugtraq_id(53809);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 15:13:04 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-08 16:16:16 +0530 (Fri, 08 Jun 2012)");
   script_name("WordPress Asset Manager Plugin 'upload.php' Arbitrary File Upload Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/49378");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53809");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18993");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/113285/WordPress-Asset-Manager-0.2-Shell-Upload.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/49378");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53809");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18993");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/113285/WordPress-Asset-Manager-0.2-Shell-Upload.html");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -49,20 +49,20 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to upload arbitrary PHP
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to upload arbitrary PHP
 code and run it in the context of the Web server process.
 
 Impact Level: System/Application");
-  script_tag(name : "affected" , value : "WordPress Asset Manager Plugin version 0.2");
-  script_tag(name : "insight" , value : "The flaw is due to the wp-content/plugins/asset-manager/upload.php
+  script_tag(name:"affected", value:"WordPress Asset Manager Plugin version 0.2");
+  script_tag(name:"insight", value:"The flaw is due to the wp-content/plugins/asset-manager/upload.php
 script allowing to upload files with arbitrary extensions to a folder inside
 the webroot. This can be exploited to execute arbitrary PHP code by uploading
 a malicious PHP script.");
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running WordPress Asset Manager Plugin and is prone to
+  script_tag(name:"summary", value:"This host is running WordPress Asset Manager Plugin and is prone to
 file upload vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");

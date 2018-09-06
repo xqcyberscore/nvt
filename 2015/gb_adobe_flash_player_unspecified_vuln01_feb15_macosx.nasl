@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_unspecified_vuln01_feb15_macosx.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: gb_adobe_flash_player_unspecified_vuln01_feb15_macosx.nasl 11240 2018-09-05 10:15:12Z mmartin $
 #
 # Adobe Flash Player Unspecified Vulnerability - 01 Feb15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805443");
-  script_version("$Revision: 6229 $");
+  script_version("$Revision: 11240 $");
   script_cve_id("CVE-2015-0313", "CVE-2015-0314", "CVE-2015-0315", "CVE-2015-0316",
                 "CVE-2015-0317", "CVE-2015-0318", "CVE-2015-0319", "CVE-2015-0320",
                 "CVE-2015-0321", "CVE-2015-0322", "CVE-2015-0323", "CVE-2015-0324",
@@ -38,33 +38,32 @@ if(description)
   script_bugtraq_id(72429, 72514);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-10 11:38:12 +0530 (Tue, 10 Feb 2015)");
   script_name("Adobe Flash Player Unspecified Vulnerability - 01 Feb15 (Mac OS X)");
 
-  script_tag(name: "summary" , value: "This host is installed with Adobe Flash
+  script_tag(name:"summary", value:"This host is installed with Adobe Flash
   Player and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
   - Multiple unspecified use-after-free errors.
   - Multiple unspecified errors due to improper validation of user-supplied input.
   - Multiple unspecified type confusion errors.
   - Multiple errors leading to overflow condition.
   - Multiple unspecified NULL pointer dereference errors.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to corrupt memory, dereference already freed memory, execute arbitrary
   code or have other unspecified impacts.
 
   Impact Level: System/Application.");
 
-  script_tag(name: "affected" , value:"Adobe Flash Player before version
+  script_tag(name:"affected", value:"Adobe Flash Player before version
   13.0.0.269 and 14.x through 16.x before 16.0.0.305 on Mac OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Adobe Flash Player version
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
   13.0.0.269 or 16.0.0.305 or later. For updates refer
   http://get.adobe.com/flashplayer");
 
@@ -72,7 +71,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name: "URL" , value : "https://helpx.adobe.com/security/products/flash-player/apsb15-04.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb15-04.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -86,15 +85,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-playerVer = "";
-
-## Get version
 if(!playerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:playerVer, test_version:"13.0.0.269"))
 {
   fix = "13.0.0.269";

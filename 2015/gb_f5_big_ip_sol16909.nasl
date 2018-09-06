@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16909.nasl 6345 2017-06-15 10:00:59Z teissa $
+# $Id: gb_f5_big_ip_sol16909.nasl 11239 2018-09-05 09:46:45Z mmartin $
 #
 # F5 BIG-IP - SOL16909 - BIND vulnerability CVE-2015-5477
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105366");
- script_cve_id("CVE-2015-5477");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 6345 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105366");
+  script_cve_id("CVE-2015-5477");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11239 $");
 
- script_name("F5 BIG-IP - SOL16909 - BIND vulnerability CVE-2015-5477");
+  script_name("F5 BIG-IP - SOL16909 - BIND vulnerability CVE-2015-5477");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/16000/900/sol16909.html?sr=48315759");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/16000/900/sol16909.html?sr=48315759");
 
- script_tag(name: "impact" , value:"A remote attacker may be able to cause a denial-of-service (DoS) attack on the BIG-IP system's local instance of BIND by using a specially crafted DNS request in configurations that expose BIND to requests from untrusted users.Note: If the BIND daemon stops responding, services that do not rely on the use of local instances of BIND will continue to function.");
+  script_tag(name:"impact", value:"A remote attacker may be able to cause a denial-of-service (DoS) attack on the BIG-IP system's local instance of BIND by using a specially crafted DNS request in configurations that expose BIND to requests from untrusted users.Note: If the BIND daemon stops responding, services that do not rely on the use of local instances of BIND will continue to function.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"An error in the handling of TKEY queries can be exploited by an attacker for use as a denial-of-service vector, as a constructed packet can use the defect to trigger a REQUIRE assertion failure, causing BIND to exit. (CVE-2015-5477)");
+  script_tag(name:"insight", value:"An error in the handling of TKEY queries can be exploited by an attacker for use as a denial-of-service vector, as a constructed packet can use the defect to trigger a REQUIRE assertion failure, causing BIND to exit. (CVE-2015-5477)");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The remote host is missing a security patch.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The remote host is missing a security patch.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-09-18 15:17:44 +0200 (Fri, 18 Sep 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-09-18 15:17:44 +0200 (Fri, 18 Sep 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

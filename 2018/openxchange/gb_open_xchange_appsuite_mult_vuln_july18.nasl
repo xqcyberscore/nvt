@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_appsuite_mult_vuln_july18.nasl 10383 2018-07-03 13:42:14Z ckuersteiner $
+# $Id: gb_open_xchange_appsuite_mult_vuln_july18.nasl 11243 2018-09-05 12:22:39Z mmartin $
 #
 # Open-Xchange (OX) AppSuite Multiple Vulnerabilities (July18)
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:open-xchange:open-xchange_appsuite";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141264");
-  script_version("$Revision: 10383 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-07-03 15:42:14 +0200 (Tue, 03 Jul 2018) $");
+  script_version("$Revision: 11243 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-09-05 14:22:39 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name: "creation_date", value: "2018-07-03 14:31:36 +0200 (Tue, 03 Jul 2018)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2018-9997", "CVE-2018-9998");
 

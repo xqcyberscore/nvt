@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_junos_space_default_ssh_admin_access.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_junos_space_default_ssh_admin_access.nasl 11239 2018-09-05 09:46:45Z mmartin $
 #
 # Junos Space SSH Default Credentials
 #
@@ -27,29 +27,29 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105409");
- script_version("$Revision: 6415 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_name("Junos Space SSH Default Credentials");
- script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-10-16 20:57:31 +0200 (Fri, 16 Oct 2015)");
- script_category(ACT_ATTACK);
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_require_ports("Services/ssh", 22);
+  script_oid("1.3.6.1.4.1.25623.1.0.105409");
+  script_version("$Revision: 11239 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("Junos Space SSH Default Credentials");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-10-16 20:57:31 +0200 (Fri, 16 Oct 2015)");
+  script_category(ACT_ATTACK);
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_require_ports("Services/ssh", 22);
 
- script_tag(name: "summary" , value: 'The remote Junos Space is prone to a default account authentication bypass vulnerability.');
+  script_tag(name:"summary", value: 'The remote Junos Space is prone to a default account authentication bypass vulnerability.');
 
- script_tag(name: "impact" , value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
+  script_tag(name:"impact", value:'This issue may be exploited by a remote attacker to gain access to sensitive information or modify system configuration.');
 
- script_tag(name: "vuldetect" , value: 'Try to login with default credentials.');
- script_tag(name: "insight" , value: 'It was possible to login with default credentials: admin/abc123');
- script_tag(name: "solution" , value: 'Change the password.');
- script_dependencies("find_service.nasl");
+  script_tag(name:"vuldetect", value: 'Try to login with default credentials.');
+  script_tag(name:"insight", value: 'It was possible to login with default credentials: admin/abc123');
+  script_tag(name:"solution", value: 'Change the password.');
+  script_dependencies("find_service.nasl");
 
- script_tag(name:"qod_type", value:"exploit");
- script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"qod_type", value:"exploit");
+  script_tag(name:"solution_type", value:"Workaround");
 
  exit(0);
 }

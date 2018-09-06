@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpmyadmin_recaptcha_bypass_vuln_nov15_lin.nasl 7546 2017-10-24 11:58:30Z cfischer $
+# $Id: gb_phpmyadmin_recaptcha_bypass_vuln_nov15_lin.nasl 11240 2018-09-05 10:15:12Z mmartin $
 #
 # phpMyAdmin Security Bypass Vulnerability Nov15 (Linux)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806735");
-  script_version("$Revision: 7546 $");
+  script_version("$Revision: 11240 $");
   script_cve_id("CVE-2015-6830");
   script_bugtraq_id(76674);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-24 10:32:31 +0530 (Tue, 24 Nov 2015)");
   script_name("phpMyAdmin Security Bypass Vulnerability Nov15 (Linux)");
 
   script_tag(name:"summary", value:"This host is installed with phpMyAdmin and
   is prone to reCaptcha bypass vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to an error in
   'libraries/plugins/auth/AuthenticationCookie.class.php' script while
@@ -68,7 +67,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("secpod_phpmyadmin_detect_900129.nasl", "os_detection.nasl");
-  script_mandatory_keys("phpMyAdmin/installed","Host/runs_unixoide");
+  script_mandatory_keys("phpMyAdmin/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
   exit(0);
 }
@@ -76,17 +75,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-# Variable Initialization
-phpPort = "";
-phpVer = "";
-
-## get the port
 if(!phpPort = get_app_port(cpe:CPE)) exit(0);
 
-## Get the version
 if(!phpVer = get_app_version(cpe:CPE, port:phpPort)) exit(0);
 
-##Check for version 4.3.x before 4.3.13.2
 if(phpVer =~ "^(4\.3)")
 {
   if(version_is_less(version:phpVer, test_version:"4.3.13.2"))
@@ -96,7 +88,6 @@ if(phpVer =~ "^(4\.3)")
   }
 }
 
-##Check for version 4.4.x before 4.4.14.1
 else if(phpVer =~ "^(4\.4)")
 {
   if(version_is_less(version:phpVer, test_version:"4.4.14.1"))

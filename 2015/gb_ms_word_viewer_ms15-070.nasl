@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_viewer_ms15-070.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_ms_word_viewer_ms15-070.nasl 11239 2018-09-05 09:46:45Z mmartin $
 #
 # Microsoft Office Word Viewer Memory Corruption Vulnerability (3072620)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805814");
-  script_version("$Revision: 6415 $");
+  script_version("$Revision: 11239 $");
   script_cve_id("CVE-2015-2379");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-15 12:17:26 +0530 (Wed, 15 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Viewer Memory Corruption Vulnerability (3072620)");
@@ -58,8 +58,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3054958");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS15-070");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3054958");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS15-070");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -72,16 +72,12 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initailization
-wordviewVer = "";
-
 wordviewVer = get_kb_item("SMB/Office/WordView/Version");
 if(wordviewVer)
 {
-  # Check for Wordview.exe 11.0 < 11.0.8419
   if(version_in_range(version:wordviewVer, test_version:"11.0", test_version2:"11.0.8418"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

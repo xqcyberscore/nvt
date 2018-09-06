@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_clansphere_where_param_xss_vuln.nasl 5789 2017-03-30 11:42:46Z cfi $
+# $Id: gb_clansphere_where_param_xss_vuln.nasl 11240 2018-09-05 10:15:12Z mmartin $
 #
 # ClanSphere 'where' Parameter Cross-Site Scripting Vulnerability
 #
@@ -27,22 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805130");
-  script_version("$Revision: 5789 $");
+  script_version("$Revision: 11240 $");
   script_cve_id("CVE-2014-100010");
   script_bugtraq_id(66058);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 13:42:46 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-23 17:16:23 +0530 (Fri, 23 Jan 2015)");
   script_name("ClanSphere 'where' Parameter Cross-Site Scripting Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with ClanSphere
+  script_tag(name:"summary", value:"The host is installed with ClanSphere
   and is prone to xss vulnerability.");
 
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request
   and check whether it is able to read cookie or not.");
 
-  script_tag(name: "insight" , value:"Input passed via the 'where' parameter to
+  script_tag(name:"insight", value:"Input passed via the 'where' parameter to
   '/index.php' is not properly sanitised before being returned to the user.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
@@ -51,22 +51,20 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"ClanSphere version 2011.4, Prior versions
+  script_tag(name:"affected", value:"ClanSphere version 2011.4, Prior versions
   may also be affected.");
 
-  script_tag(name: "solution" , value: "No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/57306");
-  script_xref(name : "URL" , value : "https://www.httpcs.com/advisory/httpcs127");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2014/Mar/73");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/531373/100/0/threaded");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/57306");
+  script_xref(name:"URL", value:"https://www.httpcs.com/advisory/httpcs127");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2014/Mar/73");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/531373/100/0/threaded");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -79,10 +77,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-http_port = "";
-rcvRes = "";
 
 http_port = get_http_port(default:80);
 
@@ -97,14 +91,11 @@ foreach dir (make_list_unique("/", "/clansphere", "/cms", cgi_dirs(port:http_por
 
   rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:http_port);
 
-  ## confirm the Application
   if(">csphere" >< rcvRes && "Seitentitel. All rights reserved" >< rcvRes)
   {
-    ## Construct the attack request
     url = dir + '/index.php?sort=6&action=list&where="><script>'
               + 'alert(document.cookie)</script>&mod=users';
 
-    ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
       pattern:"<script>alert\(document\.cookie\)</script>",
       extra_check:">csphere"))

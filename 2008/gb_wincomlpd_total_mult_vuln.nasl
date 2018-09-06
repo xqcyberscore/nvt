@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wincomlpd_total_mult_vuln.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: gb_wincomlpd_total_mult_vuln.nasl 11262 2018-09-06 09:06:46Z cfischer $
 #
 # WinComLPD Total Multiple Vulnerabilities
 #
@@ -24,78 +24,66 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow execution of arbitrary code
-or crashing the remote wincomlpd service by simply using negative values like
-0x80/0xff for the 8 bit numbers and 0x8000/0xffff for the data blocks.
-
-Impact Level: System";
-
-tag_affected = "WinCom LPD Total 3.0.2.623 and prior on Windows.";
-
-tag_insight = "The issues are due to,
-- an error in Line Printer Daemon Service (LPDService.exe), when processing
-print jobs with an overly long control file on default TCP port 515/13500.
-- an error in authentication checks in the Line Printer Daemon (LPD).";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is installed with WinComLPD Total and is prone to buffer
-overflow and authentication bypass vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800063");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11262 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 11:06:46 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-11-26 16:25:46 +0100 (Wed, 26 Nov 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2008-5158", "CVE-2008-5159", "CVE-2008-5176");
   script_bugtraq_id(27614);
   script_name("WinComLPD Total Multiple Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/28763");
-  script_xref(name : "URL" , value : "http://aluigi.org/adv/wincomalpd-adv.txt");
-  script_xref(name : "URL" , value : "http://www.frsirt.com/english/advisories/2008/0410");
-
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Denial of Service");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
-  script_require_ports(139, 445, 515, 13500);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+
+  script_xref(name:"URL", value:"http://secunia.com/advisories/28763");
+  script_xref(name:"URL", value:"http://aluigi.org/adv/wincomalpd-adv.txt");
+  script_xref(name:"URL", value:"http://www.frsirt.com/english/advisories/2008/0410");
+
+  script_tag(name:"impact", value:"Successful exploitation could allow execution of arbitrary code
+  or crashing the remote wincomlpd service by simply using negative values like
+  0x80/0xff for the 8 bit numbers and 0x8000/0xffff for the data blocks.
+
+  Impact Level: System");
+
+  script_tag(name:"affected", value:"WinCom LPD Total 3.0.2.623 and prior on Windows.");
+
+  script_tag(name:"insight", value:"The issues are due to,
+
+  - an error in Line Printer Daemon Service (LPDService.exe), when processing
+  print jobs with an overly long control file on default TCP port 515/13500.
+
+  - an error in authentication checks in the Line Printer Daemon (LPD).");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
+
+  script_tag(name:"summary", value:"This host is installed with WinComLPD Total and is prone to buffer
+  overflow and authentication bypass vulnerabilities.");
+
+  script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-if(!get_kb_item("SMB/WindowsVersion")){
+key = "SYSTEM\CurrentControlSet\Services\LPDService";
+if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-lpdport = 515;
-if(!get_port_state(lpdport))
-{
-  lpdport = 13500;
-  if(!get_port_state(lpdport)){
-    exit(0);
-  }
-}
-
-lpdVer = registry_get_sz(key:"SYSTEM\CurrentControlSet\Services\LPDService",
-                         item:"ImagePath");
+lpdVer = registry_get_sz(key:key, item:"ImagePath");
 if(!lpdVer){
   exit(0);
 }
@@ -109,5 +97,9 @@ if(!lpdVer){
 }
 
 if(version_is_less_equal(version:lpdVer, test_version:"3.0.2.623")){
-  security_message(lpdport);
+  report = report_fixed_ver(installed_version:lpdVer, fixed_version:"WillNotFix");
+  security_message(port:0, data:report);
+  exit(0);
 }
+
+exit(99);

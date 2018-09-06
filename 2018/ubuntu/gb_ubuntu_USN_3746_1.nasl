@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3746_1.nasl 11092 2018-08-23 09:40:58Z santu $
+# $Id: gb_ubuntu_USN_3746_1.nasl 11236 2018-09-05 09:02:10Z cfischer $
 #
 # Ubuntu Update for apt USN-3746-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843621");
-  script_version("$Revision: 11092 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 11:40:58 +0200 (Thu, 23 Aug 2018) $");
+  script_version("$Revision: 11236 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:02:10 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-21 06:44:51 +0200 (Tue, 21 Aug 2018)");
   script_cve_id("CVE-2018-0501");
   script_tag(name:"cvss_base", value:"5.0");
@@ -53,14 +53,14 @@ to install altered packages in environments configured to use
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU18\.04 LTS");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

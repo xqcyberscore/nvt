@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arcserve_udp_74838.nasl 9442 2018-04-11 12:22:50Z cfischer $
+# $Id: gb_arcserve_udp_74838.nasl 11239 2018-09-05 09:46:45Z mmartin $
 #
 # Arcserve Unified Data Protection Multiple Vulnerabilities
 #
@@ -29,38 +29,38 @@ CPE = "cpe:/a:arcserve:arcserve_unified_data_protection";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105295");
- script_bugtraq_id(74838);
- script_cve_id("CVE-2015-4069","CVE-2015-4068");
- script_tag(name:"cvss_base", value:"9.4");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:C");
- script_version ("$Revision: 9442 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105295");
+  script_bugtraq_id(74838);
+  script_cve_id("CVE-2015-4069", "CVE-2015-4068");
+  script_tag(name:"cvss_base", value:"9.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:C");
+  script_version("$Revision: 11239 $");
 
- script_name("Arcserve Unified Data Protection Multiple Vulnerabilities");
+  script_name("Arcserve Unified Data Protection Multiple Vulnerabilities");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/74838");
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/74845");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/74838");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/74845");
 
- script_tag(name: "impact" , value:"Attackers can exploit these issues to obtain sensitive information
+  script_tag(name:"impact", value:"Attackers can exploit these issues to obtain sensitive information
 that may lead to further attacks.");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Updates are available");
- script_tag(name: "summary" , value:"Arcserve Unified Data Protection is prone to multiple information-
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Updates are available");
+  script_tag(name:"summary", value:"Arcserve Unified Data Protection is prone to multiple information-
 disclosure vulnerabilities and multiple directory traversal vulnerabilities.");
- script_tag(name: "affected" , value:"Arcserve UDP before 5.0 Update 4");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"affected", value:"Arcserve UDP before 5.0 Update 4");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
- script_tag(name:"creation_date", value:"2015-06-11 17:46:01 +0200 (Thu, 11 Jun 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_arcserve_udp_detect.nasl");
- script_require_ports("Services/www", 8014);
- script_mandatory_keys("arcserve_udp/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-06-11 17:46:01 +0200 (Thu, 11 Jun 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_arcserve_udp_detect.nasl");
+  script_require_ports("Services/www", 8014);
+  script_mandatory_keys("arcserve_udp/installed");
 
  exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracuda_web_filter_74384.nasl 9442 2018-04-11 12:22:50Z cfischer $
+# $Id: gb_barracuda_web_filter_74384.nasl 11240 2018-09-05 10:15:12Z mmartin $
 #
 # Barracuda Web Filter SSL Certificate Multiple Security Bypass Vulnerabilities
 #
@@ -29,48 +29,48 @@ CPE = "cpe:/a:barracuda:web_filter";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105287");
- script_bugtraq_id(74384);
- script_cve_id("CVE-2015-0961", "CVE-2015-0962");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_version("$Revision: 9442 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105287");
+  script_bugtraq_id(74384);
+  script_cve_id("CVE-2015-0961", "CVE-2015-0962");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11240 $");
 
- script_name("Barracuda Web Filter SSL Certificate Multiple Security Bypass Vulnerabilities");
+  script_name("Barracuda Web Filter SSL Certificate Multiple Security Bypass Vulnerabilities");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/74384");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/74384");
 
- script_tag(name: "impact" , value:"Successfully exploiting these issues allow attackers to perform man-in-the-
+  script_tag(name:"impact", value:"Successfully exploiting these issues allow attackers to perform man-in-the-
 middle attacks or impersonate trusted servers, which will aid in further attacks.");
 
- script_tag(name: "vuldetect" , value:"Check the version");
+  script_tag(name:"vuldetect", value:"Check the version");
 
- script_tag(name: "insight" , value:"Barracuda Web Filter when SSL Inspection is enabled, uses the same root Certification Authority certificate
-across different customers' installations, which makes it easier for remote attackers to conduct man-in-the-middle attacks against SSL sessions 
+  script_tag(name:"insight", value:"Barracuda Web Filter when SSL Inspection is enabled, uses the same root Certification Authority certificate
+across different customers' installations, which makes it easier for remote attackers to conduct man-in-the-middle attacks against SSL sessions
 by leveraging the certificate's trust relationship");
 
- script_tag(name: "solution" , value:"Updates are available.");
- script_tag(name: "summary" , value:"Barracuda Web Filter is prone to multiple security-bypass vulnerabilities.");
- script_tag(name: "affected" , value:"Barracuda Web Filter 7.x and 8.x before 8.1.0.005");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"summary", value:"Barracuda Web Filter is prone to multiple security-bypass vulnerabilities.");
+  script_tag(name:"affected", value:"Barracuda Web Filter 7.x and 8.x before 8.1.0.005");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
- script_tag(name:"creation_date", value:"2015-06-03 16:03:11 +0200 (Wed, 03 Jun 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_barracuda_web_filter_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("barracuda_web_filter/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-06-03 16:03:11 +0200 (Wed, 03 Jun 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_barracuda_web_filter_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("barracuda_web_filter/installed");
 
  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
+
 include("version_func.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );

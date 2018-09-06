@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lxcenter_kloxo_detect.nasl 10906 2018-08-10 14:50:26Z cfischer $
+# $Id: gb_lxcenter_kloxo_detect.nasl 11244 2018-09-05 12:23:51Z cfischer $
 #
 # LxCenter Kloxo Detection
 #
@@ -27,47 +27,61 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103977");
+  script_version("$Revision: 11244 $");
+  script_name("LxCenter Kloxo Detection");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 10906 $");
-  script_name("LxCenter Kloxo Detection");
-  script_xref(name:"URL", value:"http://lxcenter.org/software/kloxo");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:50:26 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 14:23:51 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-22 22:54:04 +0700 (Sat, 22 Feb 2014)");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
   script_family("Product detection");
   script_copyright("Copyright (C) 2014 Greenbone Networks GmbH");
-  script_dependencies("find_service.nasl");
+  script_dependencies("httpver.nasl");
   script_require_ports("Services/www", 7778);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
+  script_xref(name:"URL", value:"https://github.com/lxcenter/kloxo");
+
   script_tag(name:"summary", value:"This host is running LxCenter Kloxo. Kloxo is a fully scriptable
-hosting platform.");
+  hosting platform.");
+
+  script_tag(name:"qod_type", value:"remote_banner");
 
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
+include("cpe.inc");
 
-port = get_http_port(default:7778);
+port = get_http_port( default:7778 );
+buf = http_get_cache( item:"/login/", port:port );
+if( ! buf ) exit( 0 );
 
-url = string("/login/");
-buf = http_get_cache(item:url, port:port);
-if (buf == NULL) {
-  exit(0);
+if( buf =~ "^HTTP/1\.[01] 200" && egrep( pattern:'Kloxo', string:buf, icase:TRUE ) ) {
+
+  install = "/";
+  version = "unknown";
+
+  vers = eregmatch( string:buf, pattern:">Kloxo.* ([0-9.]+[a-z]-[0-9]+)<", icase:TRUE );
+  if( ! isnull( vers[1] ) ) version = chomp( vers[1] );
+
+  set_kb_item( name:"Kloxo/installed", value:TRUE );
+  set_kb_item( name:"www/" + port + "/kloxo", value:version );
+
+  cpe = build_cpe( value:version, exp:"^([0-9.]+[a-z]-[0-9]+)", base:"cpe:/a:lxcenter:kloxo:");
+  if( isnull( cpe ) )
+    cpe = "cpe:/a:lxcenter:kloxo";
+
+  register_product( cpe:cpe, location:install, port:port, service:"www" );
+
+  log_message( data:build_detection_report( app:"LxCenter Kloxo",
+                                            version:version,
+                                            install:install,
+                                            cpe:cpe,
+                                            concluded:vers[0] ),
+                                            port:port );
 }
 
-if (egrep(pattern:'Kloxo', string:buf, icase:TRUE)) {
-  vers = string("unknown");
-  version = eregmatch(string:buf, pattern:">Kloxo.* ([0-9.]+[a-z]-[0-9]+)<", icase:TRUE);
-
-  if (!isnull(version[1])) {
-    vers =  chomp(version[1]);
-  }
-
-  set_kb_item(name:"Kloxo/installed", value:TRUE);
-  set_kb_item(name:string("www/", port, "/kloxo"), value:string(vers));
-  log_message(data:'Kloxo was detected on the remote host.\nVersion: ' + vers, port:port);
-}
+exit( 0 );

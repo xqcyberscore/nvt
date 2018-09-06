@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-031.nasl 6497 2017-06-30 09:58:54Z teissa $
+# $Id: gb_ms15-031.nasl 11240 2018-09-05 10:15:12Z mmartin $
 #
 # Microsoft Schannel Security Feature Bypass Vulnerability (3046049)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805490");
-  script_version("$Revision: 6497 $");
+  script_version("$Revision: 11240 $");
   script_cve_id("CVE-2015-1637");
   script_bugtraq_id(72965);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-11 11:44:31 +0530 (Wed, 11 Mar 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Schannel Security Feature Bypass Vulnerability (3046049)");
@@ -52,8 +52,7 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 2003 x32/x64 Edition Service Pack 2
+  script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Edition Service Pack 2
   Microsoft Windows Vista x32/x64 Edition Service Pack 2
   Microsoft Windows Server 2008 x32 Edition Service Pack 2
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1
@@ -69,12 +68,13 @@ if(description)
   https://technet.microsoft.com/library/security/MS15-031");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3046049");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms15-031");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/3046049");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms15-031");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -85,18 +85,12 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2003:3, win2003x64:3, winVista:3, win7:2, win7x64:2, win2008:3,
                    win2008r2:2, win8:1, win8x64:1, win2012:1, win2012R2:1, win8_1:1,
                    win8_1x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
@@ -107,46 +101,38 @@ if(!dllVer){
   exit(0);
 }
 
-## Windows 2003
 if(hotfix_check_sp(win2003x64:3,win2003:3) > 0)
 {
-  ## Check for schannel.dll version
   if(version_is_less(version:dllVer, test_version:"5.2.3790.5564")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows Vista and Windows Server 2008
 ## Currently not supporting for Vista and Windows Server 2008 64 bit
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for schannel.dll version
   if(version_is_less(version:dllVer, test_version:"6.0.6002.19332") ||
      version_in_range(version:dllVer, test_version:"6.0.6002.23000", test_version2:"7.0.6002.23639")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows 7 and Windows 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for schannel.dll version
   if(version_is_less(version:dllVer, test_version:"6.1.7601.18779") ||
      version_in_range(version:dllVer, test_version:"6.1.7601.22000", test_version2:"6.1.7601.22982")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows 8 and Windows Server 2012
 if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 {
-  ## Check for schannel.dll version
   if(version_is_less(version:dllVer, test_version:"6.2.9200.17293") ||
      version_in_range(version:dllVer, test_version:"6.2.9200.20000", test_version2:"6.2.9200.21409")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
@@ -154,9 +140,8 @@ if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 ## Win 8.1 and win2012R2
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for schannel.dll version
   if(version_is_less(version:dllVer, test_version:"6.3.9600.17702")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }

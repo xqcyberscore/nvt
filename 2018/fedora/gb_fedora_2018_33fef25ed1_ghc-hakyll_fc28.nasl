@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_33fef25ed1_ghc-hakyll_fc28.nasl 11231 2018-09-05 06:30:46Z santu $
+# $Id: gb_fedora_2018_33fef25ed1_ghc-hakyll_fc28.nasl 11250 2018-09-06 03:05:29Z ckuersteiner $
 #
 # Fedora Update for ghc-hakyll FEDORA-2018-33fef25ed1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875021");
-  script_version("$Revision: 11231 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 08:30:46 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 11250 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 05:05:29 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-01 07:37:32 +0200 (Sat, 01 Sep 2018)");
   script_cve_id("CVE-2018-10773", "CVE-2018-10774", "CVE-2018-10775");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for ghc-hakyll FEDORA-2018-33fef25ed1");
   script_tag(name:"summary", value:"Check the version of ghc-hakyll");

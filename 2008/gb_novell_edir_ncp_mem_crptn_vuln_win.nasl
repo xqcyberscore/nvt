@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_edir_ncp_mem_crptn_vuln_win.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: gb_novell_edir_ncp_mem_crptn_vuln_win.nasl 11262 2018-09-06 09:06:46Z cfischer $
 #
 # Novell eDirectory NCP Memory Corruption Vulnerability - (Windows)
 #
@@ -24,88 +24,82 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Upgrade to 8.7.3 SP10 FTF1 or 8.8 SP3, or
-  Apply the available patch from below link,
-  http://download.novell.com/Download?buildid=DwSGwHlu4pc~
-  http://download.novell.com/Download?buildid=wxO984kvjmc~
-
-  *****
-  NOTE: Ignore this warning if above mentioned patch is already applied.
-  *****";
-
-tag_impact = "Successful exploitation allows attackers to corrupt process memory,
-  which will allow remote code execution on the target machines or can cause
-  denial of service condition.
-  Impact Level: Application";
-tag_affected = "Novell eDirectory before 8.7.3 SP10 and 8.8 SP2 on Windows.";
-tag_insight = "The flaw is due to a use-after-free error in the NetWare Core
-  Protocol(NCP) engine when handling 'Get NCP Extension Information by
-  Name' Requests.";
-tag_summary = "This host is running Novell eDirectory and is prone to Memory
-  Corruption Vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800137");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11262 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 11:06:46 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-11-21 14:18:03 +0100 (Fri, 21 Nov 2008)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
   script_cve_id("CVE-2008-5038");
   script_bugtraq_id(31956);
   script_name("Novell eDirectory NCP Memory Corruption Vulnerability - (Windows)");
-
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/32395");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/46138");
-  script_xref(name : "URL" , value : "http://support.novell.com/docs/Readmes/InfoDocument/patchbuilder/readme_5037180.html");
-  script_xref(name : "URL" , value : "http://support.novell.com/docs/Readmes/InfoDocument/patchbuilder/readme_5037181.html");
-
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("General");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
-  script_require_ports(139, 445, 8028, 8030);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+
+  script_xref(name:"URL", value:"http://secunia.com/advisories/32395");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/46138");
+  script_xref(name:"URL", value:"http://support.novell.com/docs/Readmes/InfoDocument/patchbuilder/readme_5037180.html");
+  script_xref(name:"URL", value:"http://support.novell.com/docs/Readmes/InfoDocument/patchbuilder/readme_5037181.html");
+
+  script_tag(name:"impact", value:"Successful exploitation allows attackers to corrupt process memory,
+  which will allow remote code execution on the target machines or can cause denial of service condition.
+
+  Impact Level: Application");
+
+  script_tag(name:"affected", value:"Novell eDirectory before 8.7.3 SP10 and 8.8 SP2 on Windows.");
+
+  script_tag(name:"insight", value:"The flaw is due to a use-after-free error in the NetWare Core
+  Protocol(NCP) engine when handling 'Get NCP Extension Information by
+  Name' Requests.");
+
+  script_tag(name:"summary", value:"This host is running Novell eDirectory and is prone to Memory
+  Corruption Vulnerability.");
+
+  script_tag(name:"solution", value:"Upgrade to 8.7.3 SP10 FTF1 or 8.8 SP3, or
+  Apply the available patch from below links,
+
+  http://download.novell.com/Download?buildid=DwSGwHlu4pc~
+
+  http://download.novell.com/Download?buildid=wxO984kvjmc~
+
+  *****
+  NOTE: Ignore this warning if above mentioned patch is already applied.
+  *****");
+
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("version_func.inc");
 
-if(!get_kb_item("SMB/WindowsVersion")){
+key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\NDSonNT";
+if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-port = 8028;
-if(!get_port_state(port))
+eDirVer = registry_get_sz(key:key, item:"DisplayName");
+eDirVer = eregmatch(pattern:"Novell eDirectory ([0-9.]+ (SP[0-9]+)?)", string:eDirVer);
+if(!isnull(eDirVer))
 {
-  port = 8030;
-  if(!get_port_state(port)){
+  eDirVer = ereg_replace(pattern:" ", string: eDirVer[1], replace:".");
+  if(version_in_range(version:eDirVer, test_version:"8.8", test_version2:"8.8.SP2")){
+    report = report_fixed_ver(installed_version:eDirVer, fixed_version:"8.8.SP3");
+    security_message(port:0, data:report);
+    exit(0);
+  } else if(version_is_less(version:eDirVer, test_version:"8.7.3.SP10")){
+    report = report_fixed_ver(installed_version:eDirVer, fixed_version:"8.7.3.SP10");
+    security_message(port:0, data:report);
     exit(0);
   }
 }
 
-eDirVer = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
-                              "\Uninstall\NDSonNT", item:"DisplayName");
-eDirVer = eregmatch(pattern:"Novell eDirectory ([0-9.]+ (SP[0-9]+)?)",
-                    string:eDirVer);
-if(eDirVer != NULL)
-{
-  eDirVer = ereg_replace(pattern:" ", string: eDirVer[1], replace:".");
-  if(version_in_range(version:eDirVer, test_version:"8.8",
-                      test_version2:"8.8.SP2")){
-    security_message(port);
-  }
-  else if(version_is_less(version:eDirVer, test_version:"8.7.3.SP10")){
-    security_message(port);
-  }
-}
+exit(99);

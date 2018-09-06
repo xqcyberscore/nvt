@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_voxtronic_voxlog_52081.nasl 10028 2018-05-30 13:13:04Z cfischer $
+# $Id: gb_voxtronic_voxlog_52081.nasl 11266 2018-09-06 10:59:26Z cfischer $
 #
 # VOXTRONIC Voxlog Professional Multiple Security Vulnerabilities
 #
@@ -25,46 +25,48 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103430");
- script_bugtraq_id(52081);
- script_version ("$Revision: 10028 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.103430");
+  script_bugtraq_id(52081);
+  script_version("$Revision: 11266 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
- script_name("VOXTRONIC Voxlog Professional Multiple Security Vulnerabilities");
+  script_name("VOXTRONIC Voxlog Professional Multiple Security Vulnerabilities");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52081");
- script_xref(name : "URL" , value : "http://www.voxtronic.com/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52081");
+  script_xref(name:"URL", value:"http://www.voxtronic.com/");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-30 15:13:04 +0200 (Wed, 30 May 2018) $");
- script_tag(name:"creation_date", value:"2012-02-20 14:56:07 +0100 (Mon, 20 Feb 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-20 14:56:07 +0100 (Mon, 20 Feb 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "summary" , value : "VOXTRONIC Voxlog Professional is prone to a file-disclosure
-vulnerability and multiple SQL-injection vulnerabilities because it
-fails to properly sanitize user-supplied input.");
+  script_tag(name:"summary", value:"VOXTRONIC Voxlog Professional is prone to a file-disclosure
+  vulnerability and multiple SQL-injection vulnerabilities because it
+  fails to properly sanitize user-supplied input.");
 
- script_tag(name : "impact" , value : "An remote attacker can exploit these issues to obtain potentially
-sensitive information from local files on computers running the
-vulnerable application, or modify the logic of SQL queries. A
-successful exploit may allow the attacker to compromise the
-software, retrieve information, or modify data. This may aid in
-further attacks.");
+  script_tag(name:"impact", value:"An remote attacker can exploit these issues to obtain potentially
+  sensitive information from local files on computers running the vulnerable application, or modify
+  the logic of SQL queries. A successful exploit may allow the attacker to compromise the software,
+  retrieve information, or modify data. This may aid in further attacks.");
 
- script_tag(name : "affected" , value : "VOXTRONIC Voxlog Professional 3.7.2.729 and 3.7.0.633 are vulnerable.
-Other versions may also be affected.");
+  script_tag(name:"affected", value:"VOXTRONIC Voxlog Professional 3.7.2.729 and 3.7.0.633 are vulnerable.
+  Other versions may also be affected.");
 
- script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
 
- exit(0);
+  script_tag(name:"solution_type", value:"WillNotFix");
+
+  exit(0);
 }
 
 include("http_func.inc");

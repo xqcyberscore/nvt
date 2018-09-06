@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_indusoft_web_studio_info_disc_vuln_win.nasl 6404 2017-06-22 10:00:06Z teissa $
+# $Id: gb_indusoft_web_studio_info_disc_vuln_win.nasl 11257 2018-09-06 07:51:44Z mmartin $
 #
 # InduSoft Web Studio Information Disclosure Vulnerability August15 (Windows)
 #
@@ -29,32 +29,31 @@ CPE = "cpe:/a:schneider_electric:indusoft_web_studio";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806002");
-  script_version("$Revision: 6404 $");
+  script_version("$Revision: 11257 $");
   script_cve_id("CVE-2015-1009");
   script_tag(name:"cvss_base", value:"1.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-19 15:48:22 +0530 (Wed, 19 Aug 2015)");
   script_name("InduSoft Web Studio Information Disclosure Vulnerability August15 (Windows)");
 
-  script_tag(name: "summary" , value: "This host is installed with InduSoft Web
+  script_tag(name:"summary", value:"This host is installed with InduSoft Web
   Studio and is prone to information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The flaw is due to usage of cleartext for
+  script_tag(name:"insight", value:"The flaw is due to usage of cleartext for
   project-window password storage.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   local users to obtain sensitive information by reading a file.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Schneider Electric InduSoft Web Studio
+  script_tag(name:"affected", value:"Schneider Electric InduSoft Web Studio
   before 7.1.3.5 Patch 5 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Schneider Electric InduSoft
+  script_tag(name:"solution", value:"Upgrade to Schneider Electric InduSoft
   Web Studio 7.1.3.5 Patch 5 or later. For updates refer to
   http://www.indusoft.com/");
 
@@ -62,8 +61,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "http://www.scip.ch/en/?vuldb.76853");
-  script_xref(name: "URL" , value : "http://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2015-100-01");
+  script_xref(name:"URL", value:"http://www.scip.ch/en/?vuldb.76853");
+  script_xref(name:"URL", value:"http://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2015-100-01");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -77,15 +76,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-studioVer = "";
-
-## Get version
 if(!studioVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 ## Version 7.1.3.5 == v 7.1 SP3 Patch 5 == 71.3.5
 if(version_is_less(version:studioVer, test_version:"71.3.51"))
 {

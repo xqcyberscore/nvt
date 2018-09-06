@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCur21069.nasl 6505 2017-07-03 09:58:27Z teissa $
+# $Id: gb_cisco_asa_CSCur21069.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # Cisco ASA Software Failover Command Injection Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105998");
-  script_version("$Revision: 6505 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
-  script_tag(name : "creation_date", value : "2015-05-29 14:07:28 +0700 (Fri, 29 May 2015)");
-  script_tag(name : "cvss_base", value : "8.3");
-  script_tag(name : "cvss_base_vector", value : "AV:A/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-05-29 14:07:28 +0700 (Fri, 29 May 2015)");
+  script_tag(name:"cvss_base", value:"8.3");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -52,25 +52,25 @@ if (description)
   script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
   script_mandatory_keys("cisco_asa/version");
 
-  script_tag(name : "summary", value : "Cisco ASA is prone to a failover command injection vulnerability.");
+  script_tag(name:"summary", value:"Cisco ASA is prone to a failover command injection vulnerability.");
 
-  script_tag(name : "vuldetect", value : "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name : "insight", value : "The vulnerability is due to improper handling of secured failover
+  script_tag(name:"insight", value:"The vulnerability is due to improper handling of secured failover
 communication messages when the failover ipsec feature is configured. An attacker could exploit this
 vulnerability by sending crafted UDP packets directed to the failover interface IP address. An attacker
 needs IP connectivity to the failover interface IP addresses to exploit this vulnerability.");
 
-  script_tag(name : "impact", value : "An unauthenticated, adjacent attacker could exploit this vulnerability
+  script_tag(name:"impact", value:"An unauthenticated, adjacent attacker could exploit this vulnerability
 by sending crafted UDP packets directed to the failover interface IP address of a targeted device. If
 successful, the attacker could inject arbitrary failover commands to the standby failover device, which
 may result in a complete system compromise of both the active and standby devices.");
 
-  script_tag(name : "affected", value : "Version 9.1, 9.2 and 9.3");
+  script_tag(name:"affected", value:"Version 9.1, 9.2 and 9.3");
 
-  script_tag(name : "solution", value : "Apply the appropriate updates from Cisco.");
+  script_tag(name:"solution", value:"Apply the appropriate updates from Cisco.");
 
-  script_xref(name : "URL", value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=38183");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=38183");
 
   exit(0);
 }
@@ -96,7 +96,7 @@ if ((revcomp(a:compver, b:"9.2.3.3") < 0) &&
   security_message(port: 0, data:report);
   exit(0);
 }
- 
+
 if ((revcomp(a:compver, b:"9.3.3") < 0) &&
     (revcomp(a:compver, b:"9.3") >= 0)) {
   report = 'Installed Version: ' + version + '\n' +

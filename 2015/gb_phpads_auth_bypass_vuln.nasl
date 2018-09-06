@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phpads_auth_bypass_vuln.nasl 5818 2017-03-31 10:29:04Z cfi $
+# $Id: gb_phpads_auth_bypass_vuln.nasl 11239 2018-09-05 09:46:45Z mmartin $
 #
 # PHPads Authentication Bypass Vulnerabilities - Jan15
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805321");
-  script_version("$Revision: 5818 $");
+  script_version("$Revision: 11239 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:29:04 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-13 13:48:08 +0530 (Tue, 13 Jan 2015)");
   script_name("PHPads Authentication Bypass Vulnerabilities - Jan15");
 
@@ -51,17 +51,15 @@ if(description)
 
   script_tag(name:"affected", value:"PHPads version 2.0 ");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_app");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/35535");
-  script_xref(name : "URL" , value : "http://secunia.com/community/advisories/33580");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/35535");
+  script_xref(name:"URL", value:"http://secunia.com/community/advisories/33580");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -75,13 +73,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-req = "";
-res = "";
-reqads = "";
-resads = "";
-phpPort = "";
-
 phpPort = get_http_port(default:80);
 if(!can_host_php(port:phpPort)){
   exit(0);
@@ -94,10 +85,8 @@ foreach dir (make_list_unique("/", "/phpads", "/ads", cgi_dirs(port:phpPort)))
 
   res = http_get_cache(item:string(dir, "/admin.php"), port:phpPort);
 
-  ## confirm the application
   if("<title>PHPads" >< res && ">PHPads<" >< res)
   {
-    ## Construct the attack request
     reqads = http_get(item:string(dir, "/ads.dat"), port:phpPort);
     resads = http_keepalive_send_recv(port:phpPort, data:reqads);
 

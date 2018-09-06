@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_mult_bof_vuln_nov15.nasl 7575 2017-10-26 09:47:04Z cfischer $
+# $Id: gb_ibm_domino_mult_bof_vuln_nov15.nasl 11257 2018-09-06 07:51:44Z mmartin $
 #
 # IBM Domino Multiple Buffer Overflow Vulnerabilities - Nov15
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806610");
-  script_version("$Revision: 7575 $");
+  script_version("$Revision: 11257 $");
   script_cve_id("CVE-2015-4994", "CVE-2015-5040");
   script_bugtraq_id(77322, 77324);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-04 11:23:23 +0530 (Wed, 04 Nov 2015)");
   script_name("IBM Domino Multiple Buffer Overflow Vulnerabilities - Nov15");
 
   script_tag(name:"summary", value:"This host is installed with IBM Domino and
   is prone to multiple buffer overflow vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to error in
   processing GIF files.");
@@ -63,7 +62,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21969050");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21969050");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -76,9 +75,6 @@ if(description)
 include("version_func.inc");
 include("revisions-lib.inc"); # Used in get_highest_app_version
 include("host_details.inc");
-
-## Variable Initialization
-domVer = "";
 
 if(!domVer = get_highest_app_version(cpe:CPE)){
   exit(0);

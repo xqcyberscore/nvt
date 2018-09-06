@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wpml_mult_vuln.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_wordpress_wpml_mult_vuln.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # Wordpress WPML Multiple vulnerabilities
 #
@@ -29,22 +29,22 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805153");
-  script_version("$Revision: 6415 $");
+  script_version("$Revision: 11259 $");
   script_cve_id("CVE-2015-2314", "CVE-2015-2315");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-17 12:10:32 +0530 (Tue, 17 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress WPML Multiple vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with Wordpress
+  script_tag(name:"summary", value:"The host is installed with Wordpress
   WPML multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to read cookie or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
   - An improper validation of parsed language code when a HTTP POST request
     containing the parameter 'action=wp-link-ajax'.
   - Lack of access control over menu a 'menu sync' function.
@@ -52,24 +52,24 @@ if(description)
      check for login status or nonce.
   - The problem is the mixed use of mixed $_REQUEST and $_GET.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database,
   allowing for the manipulation or disclosure of arbitrary data and delete
   practically all content of the website - posts, pages, and menus.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"WordPress WPML plugin versions
+  script_tag(name:"affected", value:"WordPress WPML plugin versions
   prior to 3.1.9.1");
 
-  script_tag(name: "solution" , value:"Update to version 3.1.9.1 or later,
+  script_tag(name:"solution", value:"Update to version 3.1.9.1 or later,
   For updates refer to http://wpml.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://klikki.fi/adv/wpml.html");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130810");
-  script_xref(name : "URL" , value : "http://wpml.org/2015/03/wpml-security-update-bug-and-fix");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/534862/30/0/threaded");
+  script_xref(name:"URL", value:"http://klikki.fi/adv/wpml.html");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/130810");
+  script_xref(name:"URL", value:"http://wpml.org/2015/03/wpml-security-update-bug-and-fix");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/534862/30/0/threaded");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -84,27 +84,18 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Construct the attack request
 url = dir + '/wp-admin/admin.php?page=sitepress-multilingual-cms/menu'
           + '/languages.php&icl_action=reminder_popup&target=javascri'
           + 'pt:alert(document.cookie);//';
 
-## Try attack and check the response to confirm vulnerability
 ## Extra check and Plugin Confirmation is not possible
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
   pattern:"javascript:alert\(document.cookie\)"))

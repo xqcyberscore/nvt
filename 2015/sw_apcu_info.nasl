@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apcu_info.nasl 5798 2017-03-30 15:23:49Z cfi $
+# $Id: sw_apcu_info.nasl 11257 2018-09-06 07:51:44Z mmartin $
 #
 # APC / APCu INFO page accessible
 #
@@ -26,29 +26,29 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.111025");
- script_version("$Revision: 5798 $");
- script_tag(name:"last_modification", value:"$Date: 2017-03-30 17:23:49 +0200 (Thu, 30 Mar 2017) $");
- script_tag(name:"creation_date", value:"2015-07-27 16:00:00 +0200 (Mon, 27 Jul 2015)");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_name("APC / APCu INFO page accessible");
- script_category(ACT_GATHER_INFO);
- script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
- script_family("Web application abuses");
- script_dependencies("find_service.nasl", "http_version.nasl", "phpinfo.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_oid("1.3.6.1.4.1.25623.1.0.111025");
+  script_version("$Revision: 11257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-07-27 16:00:00 +0200 (Mon, 27 Jul 2015)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_name("APC / APCu INFO page accessible");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
+  script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl", "phpinfo.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "solution" , value : "Delete them or restrict access to the listened files.");
- script_tag(name : "summary" , value : "The APC / APCu INFO page is providing internal information
+  script_tag(name:"solution", value:"Delete them or restrict access to the listened files.");
+  script_tag(name:"summary", value:"The APC / APCu INFO page is providing internal information
  about the system.");
- script_tag(name : "impact" , value : "Some of the information that could be gathered from this file 
+  script_tag(name:"impact", value:"Some of the information that could be gathered from this file
  includes: The running APC/APCu version, the PHP version, the webserver version.");
 
- script_tag(name : "solution_type", value : "Workaround");
+  script_tag(name:"solution_type", value:"Workaround");
 
- script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
  exit(0);
 }

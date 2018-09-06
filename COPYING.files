@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Wed, 05 Sep 2018 09:07:49 +0200
+# Automatically created on:  Thu, 06 Sep 2018 13:19:53 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -38645,6 +38645,7 @@
 2018/avigilon/gb_avigilon_camera_default_credentials.nasl: GPLv2+
 2018/avtech/gb_avtech_avc787_dvr_default_cred_vuln.nasl: GPLv2+
 2018/awstats/gb_awstats_dir_trav_vuln.nasl: GPLv2+
+2018/axis/gb_axis_camera_station_default_credentials.nasl: GPLv2+
 2018/axis/gb_axis_network_camera_dos_vuln.nasl: GPLv2+
 2018/axis/gb_axis_network_camera_mult_vuln_june18.nasl: GPLv2+
 2018/b2evolution/gb_b2evolution_rce_vuln.nasl: GPLv2+
@@ -39039,6 +39040,9 @@
 2018/debian/deb_4281.nasl: GPLv2+
 2018/debian/deb_4282.nasl: GPLv2+
 2018/debian/deb_4283.nasl: GPLv2+
+2018/debian/deb_4284.nasl: GPLv2+
+2018/debian/deb_4285.nasl: GPLv2+
+2018/debian/deb_4286.nasl: GPLv2+
 2018/debian/deb_dla_1000.nasl: GPLv2+
 2018/debian/deb_dla_1001.nasl: GPLv2+
 2018/debian/deb_dla_1002.nasl: GPLv2+
@@ -39443,6 +39447,9 @@
 2018/debian/deb_dla_1490.nasl: GPLv2+
 2018/debian/deb_dla_1491.nasl: GPLv2+
 2018/debian/deb_dla_1492.nasl: GPLv2+
+2018/debian/deb_dla_1494.nasl: GPLv2+
+2018/debian/deb_dla_1495.nasl: GPLv2+
+2018/debian/deb_dla_1496.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -40718,6 +40725,9 @@
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-07_lin.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-07_macosx.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-07_win.nasl: GPLv2+
+2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-09_lin.nasl: GPLv2+
+2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-09_macosx.nasl: GPLv2+
+2018/google/gb_google_chrome_stable-channel-update-for-desktop-2018-09_win.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop_24-2018-01_lin.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop_24-2018-01_macosx.nasl: GPLv2+
 2018/google/gb_google_chrome_stable-channel-update-for-desktop_24-2018-01_win.nasl: GPLv2+
@@ -40827,6 +40837,7 @@
 2018/lightbend/gb_akka_http_dos_vuln_aug18.nasl: GPLv2+
 2018/limesurvey/gb_limesurvey_csrf_vuln.nasl: GPLv2+
 2018/limesurvey/gb_limesurvey_file_discl_vuln.nasl: GPLv2+
+2018/limesurvey/gb_limesurvey_file_discl_vuln_sep18.nasl: GPLv2+
 2018/livezilla/gb_livezilla_searchfor_param_xss_vuln.nasl: GPLv2+
 2018/lutron/gb_lutron_homeworks_processor_default_password.nasl: GPLv2+
 2018/lutron/gb_lutron_quantum_integ_device_infor_disc_vuln.nasl: GPLv2+
@@ -42403,6 +42414,7 @@ gb_avm_fritz_box_detect_sip.nasl: GPLv2+
 gb_avm_fritz_box_detect_upnp.nasl: GPLv2+
 gb_avtech_avc7xx_dvr_device_detect.nasl: GPLv2+
 gb_avtech_device_detect.nasl: GPLv2+
+gb_axis_camera_station_detect.nasl: GPLv2+
 gb_axis_detect.nasl: GPLv2+
 gb_axis_network_cameras_ftp_detect.nasl: GPLv2+
 gb_axon_virtual_pbx_web_detect.nasl: GPLv2+
@@ -42532,10 +42544,12 @@ gb_cisco_mse_cmx_web_iface_detect.nasl: GPLv2+
 gb_cisco_nam_version.nasl: GPLv2+
 gb_cisco_nam_web_detect.nasl: GPLv2+
 gb_cisco_ncs_version.nasl: GPLv2+
+gb_cisco_nfvis_detect.nasl: GPLv2+
 gb_cisco_ngips_version.nasl: GPLv2+
 gb_cisco_nx_os_detect.nasl: GPLv2+
 gb_cisco_nx_os_detect_ssh.nasl: GPLv2+
 gb_cisco_nx_os_version.nasl: GPLv2+
+gb_cisco_par_detect.nasl: GPLv2+
 gb_cisco_pca_version.nasl: GPLv2+
 gb_cisco_pcp_version.nasl: GPLv2+
 gb_cisco_pcp_web_detect.nasl: GPLv2+
@@ -43085,6 +43099,7 @@ gb_lantronix_mgm_udp_detect.nasl: GPLv2+
 gb_ldap_account_manager_detect.nasl: GPLv2+
 gb_lexmark_markvision_enterprise_detect.nasl: GPLv2+
 gb_lexmark_printers_detect.nasl: GPLv2+
+gb_libelium_meshlium_detect.nasl: GPLv2+
 gb_libesmtp_detect.nasl: GPLv2+
 gb_libreoffice_detect_macosx.nasl: GPLv2+
 gb_libreoffice_detect_portable_win.nasl: GPLv2+
@@ -43351,6 +43366,7 @@ gb_opera_detect_macosx.nasl: GPLv2+
 gb_opera_detect_portable_win.nasl: GPLv2+
 gb_opmantek_nmis_detect.nasl: GPLv2+
 gb_oprofile_detect.nasl: GPLv2+
+gb_opsview_monitor_detect.nasl: GPLv2+
 gb_option_cloudgate_remote_detect.nasl: GPLv2+
 gb_oraclebi_discoverer_detect.nasl: GPLv2+
 gb_oracle_bi_publisher_detect.nasl: GPLv2+
@@ -59133,6 +59149,7 @@ gsf/2018/ca/gb_ca_priviliged_access_manager_xss_vuln.nasl: GPLv2+
 gsf/2018/ca/gb_uim_mult_vuln.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_acs_cisco-sa-20180307-acs2.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_acs_cisco-sa-20180502-acs1.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_acs_cisco-sa-20180905-acsxxe.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_aironet_cisco-sa-20180502-aironet-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_aironet_cisco-sa-20180502-aironet-ssh.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_aironet_cisco-sa-20180502-ap-acl.nasl: GPLv2+
@@ -59169,10 +59186,13 @@ gsf/2018/cisco/gb_cisco_cucmim_cisco-sa-20180718-ucmim-ps-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucmim_cisco-sa-20180815-ucmimps-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_cucmim_cisco-sa-20180823-apache-struts.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_dcnm_cisco-sa-20180828-dcnm-traversal.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_dcnm_cisco-sa-20180905-cdcnm-escalation.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_dcnm_cisco-sa-20180905-dcnm-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_esa_cisco-sa-20180117-esasma.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_esa_cisco-sa-20180207-esacsm.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_esa_cisco-sa-20180815-esa-file-bypass.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_esa_cisco-sa-20180824-linux-tcp.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_esa_cisco-sa-20180905-esa-url-bypass.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_finesse_cisco-sa-20180718-finesse.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_firepower_management_center_cisco-sa-20180207-fss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_firepower_management_center_cisco-sa-20180502-fpwr-codp.nasl: GPLv2+
@@ -59185,6 +59205,7 @@ gsf/2018/cisco/gb_cisco_firepower_management_center_cisco-sa-20180711-firepwr-ss
 gsf/2018/cisco/gb_cisco_firesight_cisco-sa-20180606-FireSIGHT-vpn-bypass.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_firesight_cisco-sa-20180711-firesight-file-bypass.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_firesight_cisco-sa-20180711-firesight-url-bypass.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_imc_cisco-sa-20180905-cimc-injection.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180117-iess.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180207-ios.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180328-bfd.nasl: GPLv2+
@@ -59256,6 +59277,10 @@ gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180516-msms.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180606-cms-id.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180620-cms-sf.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180620-meeting-server-dos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180905-meeting-csrf.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nfvis_cisco-sa-20180905-nfvis-dos1.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nfvis_cisco-sa-20180905-nfvis-dos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_nfvis_cisco-sa-20180905-nfvis-infodis.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-20180718-nexus-9000-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180117-nxos1.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180117-nx-os.nasl: GPLv2+
@@ -59281,6 +59306,8 @@ gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nxos-nxapi.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nxos-rbaccess.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nxosrbac.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_nx_os_cisco-sa-20180620-nxossnmp.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_par_cisco-sa-20180905-cpar-dos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_pca_cisco-sa-20180905-pca-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180307-cpcp.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180606-cpcp-id.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_pcp_cisco-sa-20180606-diskdos.nasl: GPLv2+
@@ -59299,6 +59326,10 @@ gsf/2018/cisco/gb_cisco_prime_data_center_network_manager_cisco-sa-20180307-dcnm
 gsf/2018/cisco/gb_cisco_prime_data_center_network_manager_cisco-sa-20180307-pdcnm.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_prime_data_center_network_manager_cisco-sa-20180502-prime-upload.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_rv13x_mult_vuln.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_rv_routers_cisco-sa-20180905-rv-routers-disclosure.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_rv_routers_cisco-sa-20180905-rv-routers-injection.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_rv_routers_cisco-sa-20180905-rv-routers-overflow.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_rv_routers_cisco-sa-20180905-rv-routers-traversal.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_sb300_cisco-sa-20180117-300-500-smb1.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_sb300_cisco-sa-20180117-300-500-smb2.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_sb500_cisco-sa-20180117-300-500-smb1.nasl: GPLv2+
@@ -59663,6 +59694,7 @@ gsf/2018/juniper/gb_junos_space_jsa10838.nasl: GPLv2+
 gsf/2018/juniper/gb_junos_space_mult_vuln_apr18.nasl: GPLv2+
 gsf/2018/juniper/gb_pulse_connect_secure_dos_vuln.nasl: GPLv2+
 gsf/2018/kaspersky/gb_kaspersky_smg_mult_vuln.nasl: GPLv2+
+gsf/2018/libelium/gb_libelium_meshlium_rce_vuln.nasl: GPLv2+
 gsf/2018/lica/gb_lica_minicmts_info_discl_vuln.nasl: GPLv2+
 gsf/2018/logicaldoc/gb_logicaldoc_mult_vuln.nasl: GPLv2+
 gsf/2018/mcafee/gb_mcafee_asset_manager_eol.nasl: GPLv2+
@@ -59869,6 +59901,7 @@ gsf/2018/octopus/gb_octopus_deploy_mult_vuln.nasl: GPLv2+
 gsf/2018/octopus/gb_octopus_deploy_priv_esc_vuln.nasl: GPLv2+
 gsf/2018/opmantek/gb_open_audit_mult_vuln.nasl: GPLv2+
 gsf/2018/opmantek/gb_open_audit_xss_vuln.nasl: GPLv2+
+gsf/2018/opsview/gb_opsview_monitor_mult_vuln.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_ebusiness_suite_redirect_param_open_redirect_vuln.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_micros_pos_dir_trav_vuln.nasl: GPLv2+
 gsf/2018/oracle/gb_oracle_weblogic_CVE-2018-2628_active.nasl: GPLv2+

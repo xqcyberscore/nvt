@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nx_os_CSCuw13560.nasl 7140 2017-09-15 09:41:22Z cfischer $
+# $Id: gb_nx_os_CSCuw13560.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # Cisco NX-OS Nexus 9000 (N9K) Series Switch Reserved VLAN Tag Vulnerability
 #
@@ -27,34 +27,34 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105377");
- script_bugtraq_id(76762);
- script_cve_id("CVE-2015-6295");
- script_tag(name:"cvss_base", value:"4.8");
- script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:N/A:P");
- script_version ("$Revision: 7140 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105377");
+  script_bugtraq_id(76762);
+  script_cve_id("CVE-2015-6295");
+  script_tag(name:"cvss_base", value:"4.8");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:N/A:P");
+  script_version("$Revision: 11259 $");
 
- script_name("Cisco NX-OS Software TACACS+ Server Local Privilege Escalation Vulnerability");
+  script_name("Cisco NX-OS Software TACACS+ Server Local Privilege Escalation Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=40990");
- script_tag(name:"last_modification", value:"$Date: 2017-09-15 11:41:22 +0200 (Fri, 15 Sep 2017) $");
- script_tag(name:"creation_date", value:"2015-09-21 11:41:15 +0200 (Mon, 21 Sep 2015)");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=40990");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-09-21 11:41:15 +0200 (Mon, 21 Sep 2015)");
 
- script_tag(name: "qod_type", value: "remote_banner");
- script_tag(name: "solution_type", value: "Workaround");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"Workaround");
 
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_nx_os_version.nasl");
- script_mandatory_keys("cisco_nx_os/version","cisco_nx_os/model","cisco_nx_os/device");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_nx_os_version.nasl");
+  script_mandatory_keys("cisco_nx_os/version", "cisco_nx_os/model", "cisco_nx_os/device");
 
- script_tag(name: "impact", value: "An unauthenticated, adjacent attacker could exploit this vulnerability to cause a DoS condition. A successful exploit may also impact confidentiality due to errors in handling network packets.");
- script_tag(name: "vuldetect", value:"Check the NX OS version.");
- script_tag(name: "insight", value: "This issue is being tracked by Cisco Bug ID CSCuw13560");
- script_tag(name: "solution", value: "See the vendor advisory for a solution");
- script_tag(name: "summary", value: "Cisco Nexus 9000 Series Switches contain a vulnerability that could allow an unauthenticated, adjacent attacker to cause a denial of service condition.");
- script_tag(name: "affected", value: "Nexus 9000 Series 7.0(3)I1(1) and 6.1(2)I3(4)");
+  script_tag(name:"impact", value:"An unauthenticated, adjacent attacker could exploit this vulnerability to cause a DoS condition. A successful exploit may also impact confidentiality due to errors in handling network packets.");
+  script_tag(name:"vuldetect", value:"Check the NX OS version.");
+  script_tag(name:"insight", value:"This issue is being tracked by Cisco Bug ID CSCuw13560");
+  script_tag(name:"solution", value:"See the vendor advisory for a solution");
+  script_tag(name:"summary", value:"Cisco Nexus 9000 Series Switches contain a vulnerability that could allow an unauthenticated, adjacent attacker to cause a denial of service condition.");
+  script_tag(name:"affected", value:"Nexus 9000 Series 7.0(3)I1(1) and 6.1(2)I3(4)");
  exit(0);
 }
 

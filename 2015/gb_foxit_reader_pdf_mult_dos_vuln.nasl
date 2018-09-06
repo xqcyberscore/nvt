@@ -29,39 +29,39 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805379");
-  script_version("$Revision: 10140 $");
+  script_version("$Revision: 11240 $");
   script_cve_id("CVE-2015-3633", "CVE-2015-3632");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-05 10:41:19 +0530 (Tue, 05 May 2015)");
   script_name("Foxit Reader Multiple Denial of Service Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with Foxit Reader
+  script_tag(name:"summary", value:"The host is installed with Foxit Reader
   and is prone to Multiple Denial of Service Vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to
+  script_tag(name:"insight", value:"Multiple flaws are due to
   user-supplied input is not properly validated
   - when handling invalid streams and
   - when performing digital signature verification.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause multiple denial-of-service attacks.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Foxit Reader version 7.1.0.306 and 7.1.3.320.");
+  script_tag(name:"affected", value:"Foxit Reader version 7.1.0.306 and 7.1.3.320.");
 
-  script_tag(name: "solution" , value:"Upgrade to Foxit Reader version
+  script_tag(name:"solution", value:"Upgrade to Foxit Reader version
   7.1.5 or later, For updates refer to http://www.foxitsoftware.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://www.foxitsoftware.com/support/security_bulletins.php#FRD-27");
+  script_xref(name:"URL", value:"http://www.foxitsoftware.com/support/security_bulletins.php#FRD-27");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

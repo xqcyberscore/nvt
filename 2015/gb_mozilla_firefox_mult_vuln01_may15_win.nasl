@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_may15_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mult_vuln01_may15_win.nasl 11257 2018-09-06 07:51:44Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 May15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805625");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11257 $");
   script_cve_id("CVE-2015-2708", "CVE-2015-2709", "CVE-2015-2710", "CVE-2015-2711",
                 "CVE-2015-2712", "CVE-2015-2713", "CVE-2015-2715", "CVE-2015-2716",
                 "CVE-2015-2717", "CVE-2015-2718", "CVE-2015-2720", "CVE-2015-0797",
@@ -37,16 +37,16 @@ if(description)
   script_bugtraq_id(74615, 74611, 53309, 76333);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-21 18:29:20 +0530 (Thu, 21 May 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 May15 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to:
+  script_tag(name:"insight", value:"Multiple flaws are due to:
   - The update implementation does not ensure that the pathname for updater.exe
     corresponds to the application directory.
   - Flaw in WebChannel.jsm module in Mozilla Firefox.
@@ -64,7 +64,7 @@ if(description)
   - Flaw in Inter-process Communication (IPC) implementation.
   - Multiple integer overflows in libstagefright in Mozilla Firefox.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a
+  script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to corrupt memory and potentially execute arbitrary
   code, bypass security restrictions, bypass origin restrictions, gain
   knowledge of sensitive information, run custom code, cause the server to
@@ -72,10 +72,10 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox before version 38.0 on
+  script_tag(name:"affected", value:"Mozilla Firefox before version 38.0 on
   Windows");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 38.0
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 38.0
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");

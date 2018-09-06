@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_sitescope_mult_unspecified_vuln.nasl 9384 2018-04-06 12:20:19Z cfischer $
+# $Id: gb_hp_sitescope_mult_unspecified_vuln.nasl 11257 2018-09-06 07:51:44Z mmartin $
 #
 # HP SiteScope Multiple Unspecified Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:sitescope";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805285");
-  script_version("$Revision: 9384 $");
+  script_version("$Revision: 11257 $");
   script_cve_id("CVE-2014-2614", "CVE-2014-7882");
   script_bugtraq_id(72459, 68361);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-23 11:23:51 +0530 (Mon, 23 Feb 2015)");
   script_name("HP SiteScope Multiple Unspecified Vulnerabilities");
 
@@ -68,8 +68,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "http://h20564.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c04539443");
-  script_xref(name : "URL" , value : "https://h20564.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c04355129");
+  script_xref(name:"URL", value:"http://h20564.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c04539443");
+  script_xref(name:"URL", value:"https://h20564.www2.hp.com/hpsc/doc/public/display?docId=emr_na-c04355129");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,8 @@
+###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cyrus_imap_prelogin_overflow.nasl 9348 2018-04-06 07:01:19Z cfischer $
-# Description: Cyrus IMAP pre-login buffer overrun
+# $Id: cyrus_imap_prelogin_overflow.nasl 11255 2018-09-06 06:57:12Z cfischer $
+#
+# Cyrus IMAP pre-login buffer overflow
 #
 # Authors:
 # Paul Johnston of Westpoint Ltd <paul@westpoint.ltd.uk>
@@ -20,94 +22,58 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
-#
+###############################################################################
 
-tag_summary = "According to its banner, the remote Cyrus IMAP 
-server is vulnerable to a pre-login buffer overrun. 
- 
-An attacker without a valid login could exploit this, and would be 
-able to execute arbitrary commands as the owner of the Cyrus 
-process. This would allow full access to all users' mailboxes.
-
-More information : http://online.securityfocus.com/archive/1/301864";
-
-tag_solution = "If possible, upgrade to an unaffected version. However, at
-the time of writing no official fix was available. There is a source 
-patch against 2.1.10 in the Bugtraq report.";
+CPE = "cpe:/a:cmu:cyrus_imap_server";
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.11196");
- script_version("$Revision: 9348 $");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:01:19 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  
- name = "Cyrus IMAP pre-login buffer overrun";
- script_name(name);
- 
- desc = "
- Summary:
- " + tag_summary + "
- Solution:
- " + tag_solution;
+  script_oid("1.3.6.1.4.1.25623.1.0.11196");
+  script_version("$Revision: 11255 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 08:57:12 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_cve_id("CVE-2002-1580");
+  script_bugtraq_id(6298);
+  script_name("Cyrus IMAP pre-login buffer overflow");
+  script_category(ACT_GATHER_INFO);
+  script_copyright("This script is Copyright (C) 2002 Paul Johnston, Westpoint Ltd");
+  script_family("Gain a shell remotely");
+  script_dependencies("secpod_cyrus_imap_server_detect.nasl");
+  script_require_ports("Services/imap", 143, "Services/pop3", 110);
+  script_mandatory_keys("Cyrus/installed");
 
- 
- script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"remote_banner");
- script_copyright("This script is Copyright (C) 2002 Paul Johnston, Westpoint Ltd");
- script_family("Gain a shell remotely");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/301864");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/6298");
 
- script_dependencies("find_service.nasl");	       		     
- script_require_ports("Services/imap", 143);
+  script_tag(name:"solution", value:"If possible, upgrade to an unaffected version. However, at
+  the time of writing no official fix was available. There is a source
+  patch against 2.1.10 in the referenced Bugtraq report.");
 
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_tag(name:"summary", value:"According to its banner, the remote Cyrus IMAP
+  server is vulnerable to a pre-login buffer overrun.");
+
+  script_tag(name:"impact", value:"An attacker without a valid login could exploit this, and would be
+  able to execute arbitrary commands as the owner of the Cyrus
+  process. This would allow full access to all users' mailboxes.");
+
+  script_tag(name:"solution_type", value:"Mitigation");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
+
+  exit(0);
 }
 
-#
-# The script code starts here
-#
-include("cpe.inc");
+include("version_func.inc");
 include("host_details.inc");
 
-## Constant values
-SCRIPT_OID  = "1.3.6.1.4.1.25623.1.0.11196";
-SCRIPT_DESC = "Cyrus IMAP pre-login buffer overrun";
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! vers = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-port = get_kb_item("Services/imap");
-if(!port) port = 143;
-
-key = string("imap/banner/", port);
-banner = get_kb_item(key);
-if(!banner)
-{
-  if(get_port_state(port))
-  {
-    soc = open_sock_tcp(port);
-    if(soc)
-    { 
-      banner = recv_line(socket:soc, length:255);
-      close(soc);
-    }
-  }
+if( egrep( pattern:"^(1\.*|2\.0\.*|2\.1\.[1-9][^0-9]|2\.1\.10)[0-9]*$", string:vers ) ) {
+  report = report_fixed_ver( installed_version:vers, fixed_version:"See references" );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
-if(!banner) exit(0);
 
-if (("Cyrus IMAP4" >< banner) && egrep (pattern:"^\* OK.*Cyrus IMAP4 v([0-9]+\.[0-9]+\.[0-9]+.*) server ready", string:banner))
-{
-  version = ereg_replace(pattern:".* v(.*) server.*", string:banner, replace:"\1");
-  set_kb_item (name:"imap/" + port + "/Cyrus", value:version);
-
-  ## build cpe and store it as host_detail
-  cpe = build_cpe(value: version, exp:"^([0-9.]+)",base:"cpe:/a:cmu:cyrus_imap_server:");
-  if(!isnull(cpe))
-     register_host_detail(name:"App", value:cpe, nvt:SCRIPT_OID, desc:SCRIPT_DESC);
-
-  if(egrep(pattern:"^(1\.*|2\.0\.*|2\.1\.[1-9][^0-9]|2\.1\.10)[0-9]*$", string:version))
-  {
-    security_message(port);
-  }    
-} 
+exit( 99 );

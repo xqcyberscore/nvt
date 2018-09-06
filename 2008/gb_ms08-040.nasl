@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms08-040.nasl 9349 2018-04-06 07:02:25Z cfischer $
+# $Id: gb_ms08-040.nasl 11262 2018-09-06 09:06:46Z cfischer $
 #
 # MS SQL Server Elevation of Privilege Vulnerabilities (941203)
 #
@@ -23,69 +23,74 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation allows remote attackers to execute arbitrary code,
-  with a crafted SQL expression or Exposure of sensitive information or
-  Privilege escalation.
-  Impact Level: System";
-tag_affected = "Microsoft SQL Server 2000 Service Pack 4
-  Microsoft SQL Server 2005 Service Pack 2
-  Microsoft SQL Server 2005 Edition Service Pack 2
-  Microsoft SQL Server 2005 Express Edition Service Pack 2
-  Microsoft SQL Server 2005 Express Edition with Advanced Services Service Pack 2";
-tag_insight = "The flaws are due to
-  - error when initializing memory pages, while reallocating memory.
-  - buffer overflow error in the convert function, while handling malformed
-    input strings.
-  - memory corruption error, while handling malformed data structures in
-    on-disk files.
-  - buffer overflow error, while processing malformed insert statements.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link.
-  http://www.microsoft.com/technet/security/bulletin/ms08-040.mspx";
-tag_summary = "This host has Microsoft SQL Server, which is prone to Privilege
-  Escalation Vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800105");
-  script_version("$Revision: 9349 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:02:25 +0200 (Fri, 06 Apr 2018) $");
+  script_version("$Revision: 11262 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 11:06:46 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-10-14 16:26:50 +0200 (Tue, 14 Oct 2008)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_cve_id("CVE-2008-0085", "CVE-2008-0086", "CVE-2008-0106",
-                "CVE-2008-0107");
+  script_cve_id("CVE-2008-0085", "CVE-2008-0086", "CVE-2008-0106", "CVE-2008-0107");
   script_bugtraq_id(30119);
   script_xref(name:"CB-A", value:"08-0110");
   script_name("MS SQL Server Elevation of Privilege Vulnerabilities (941203)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/30970");
-  script_xref(name : "URL" , value : "http://www.frsirt.com/english/advisories/2008/2022");
-  script_xref(name : "URL" , value : "http://www.microsoft.com/technet/security/bulletin/ms08-040.mspx");
-
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2008 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl", "mssqlserver_detect.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_xref(name:"URL", value:"http://secunia.com/advisories/30970");
+  script_xref(name:"URL", value:"http://www.frsirt.com/english/advisories/2008/2022");
+  script_xref(name:"URL", value:"https://docs.microsoft.com/en-us/security-updates/securitybulletins/2008/ms08-040");
+
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary code,
+  with a crafted SQL expression or Exposure of sensitive information or
+  Privilege escalation.
+
+  Impact Level: System");
+
+  script_tag(name:"affected", value:"Microsoft SQL Server 2000 Service Pack 4
+
+  Microsoft SQL Server 2005 Service Pack 2
+
+  Microsoft SQL Server 2005 Edition Service Pack 2
+
+  Microsoft SQL Server 2005 Express Edition Service Pack 2
+
+  Microsoft SQL Server 2005 Express Edition with Advanced Services Service Pack 2");
+
+  script_tag(name:"insight", value:"The flaws are due to
+
+  - error when initializing memory pages, while reallocating memory.
+
+  - buffer overflow error in the convert function, while handling malformed
+    input strings.
+
+  - memory corruption error, while handling malformed data structures in
+    on-disk files.
+
+  - buffer overflow error, while processing malformed insert statements.");
+
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link.
+
+  https://docs.microsoft.com/en-us/security-updates/securitybulletins/2008/ms08-040");
+
+  script_tag(name:"summary", value:"This host has Microsoft SQL Server, which is prone to Privilege
+  Escalation Vulnerabilities.");
+
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"registry");
+
   exit(0);
 }
-
 
 include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-if(!get_kb_item("SMB/WindowsVersion")){
-  exit(0);
-}
 
 function Get_FileVersion(ver, path)
 {
@@ -114,23 +119,12 @@ function Get_FileVersion(ver, path)
   return v;
 }
 
-mssql_port = get_kb_item("Services/mssql");
-if(!mssql_port){
-  mssql_port = 1433;
-}
-
-if(!get_port_state(mssql_port)){
-  exit(0);
-}
-
 # Retrieving Microsoft SQL Server 2005 Registry entry
-if(registry_key_exists(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
-                           "\Uninstall\Microsoft SQL Server 2005")){
+if(registry_key_exists(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft SQL Server 2005")){
   msSqlSer = "MS SQL Server 2005";
 }
 # Retrieving Microsoft SQL Server 2000 Registry entry
-else if (registry_key_exists(key:"SOFTWARE\Microsoft\Windows\CurrentVersion" +
-                                  "\Uninstall\Microsoft SQL Server 2000")){
+else if (registry_key_exists(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft SQL Server 2000")){
   msSqlSer = "MS SQL Server 2000";
 }
 
@@ -140,13 +134,11 @@ if(!msSqlSer){
 
 if(msSqlSer == "MS SQL Server 2005"){
   reqSqlVer = "9.00.3068.00";
-  insSqlVer = Get_FileVersion(ver:msSqlSer, path:"SOFTWARE\Microsoft" +
-                                "\Microsoft SQL Server\MSSQL.1\Setup");
+  insSqlVer = Get_FileVersion(ver:msSqlSer, path:"SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL.1\Setup");
 }
 else if(msSqlSer == "MS SQL Server 2000"){
   reqSqlVer = "8.00.2050";
-  insSqlVer = Get_FileVersion(ver:msSqlSer, path:"SOFTWARE\Microsoft\Windows" +
-                        "\CurrentVersion\Uninstall\Microsoft SQL Server 2000");
+  insSqlVer = Get_FileVersion(ver:msSqlSer, path:"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft SQL Server 2000");
 }
 
 if(!insSqlVer){
@@ -154,5 +146,9 @@ if(!insSqlVer){
 }
 
 if(version_is_greater(version:reqSqlVer, test_version:insSqlVer)){
-  security_message(0);
+  report = report_fixed_ver(installed_version:insSqlVer, fixed_version:reqSqlVer);
+  security_message(port:0, data:report);
+  exit(0);
 }
+
+exit(99);

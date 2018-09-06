@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_showcase_multiple_xss_vuln.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_apache_struts_showcase_multiple_xss_vuln.nasl 11266 2018-09-06 10:59:26Z cfischer $
 #
 # Apache Struts Showcase Multiple Persistence Cross-Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802422");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11266 $");
   script_bugtraq_id(51902);
   script_cve_id("CVE-2012-1006");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-08 12:14:38 +0530 (Wed, 08 Feb 2012)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts Showcase Multiple Persistence Cross-Site Scripting Vulnerabilities");
@@ -102,7 +102,6 @@ if(!dir = get_app_location(cpe:CPE, port:asport)){
 
 host = http_host_name(port:asport);
 
-## Send and Receive the response
 asreq = http_get(item:string(dir,"/showcase.action"), port:asport);
 if(!isnull(asreq))
 {

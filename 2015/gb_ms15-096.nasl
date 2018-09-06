@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-096.nasl 6194 2017-05-23 09:04:00Z teissa $
+# $Id: gb_ms15-096.nasl 11239 2018-09-05 09:46:45Z mmartin $
 #
 # MS Windows Active Directory Service Denial of Service Vulnerability (3072595)
 #
@@ -27,50 +27,50 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806044");
-  script_version("$Revision: 6194 $");
+  script_version("$Revision: 11239 $");
   script_cve_id("CVE-2015-2535");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 08:24:16 +0530 (Wed, 09 Sep 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Windows Active Directory Service Denial of Service Vulnerability (3072595)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-096.");
 
-  script_tag(name: "vuldetect" , value: "Get the vulnerable file version and
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value: "The flaw is due to improper resource
+  script_tag(name:"insight", value:"The flaw is due to improper resource
   management by the affected software while creating multiple machine accounts.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow an
+  script_tag(name:"impact", value:"Successful exploitation will allow an
   the attacker to cause the service to become non-responsive, resulting in
   denial-of-service conditions.
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"
-  Microsoft Windows Server 2012
+  script_tag(name:"affected", value:"Microsoft Windows Server 2012
   Microsoft Windows Server 2012R2
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior.");
 
-  script_tag(name: "solution" , value: "Run Windows Update and update the
+  script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
   https://technet.microsoft.com/library/security/MS15-096");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3072595");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-096");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3072595");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-096");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -81,23 +81,15 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-exeVer = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2008:3, win2008r2:2, win2012:1, win2012R2:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath){
   exit(0);
 }
 
-## Get Version from 'Samsrv.dll' file
 dllVer = fetch_file_version(sysPath, file_name:"system32\Samsrv.dll");
 
 if(!dllVer) exit(0);
@@ -125,41 +117,33 @@ else if (dllVer =~ "^(6\.3\.9200\.1)"){
 }
 
 
-## Windows Server 2008
 ## Currently not supporting for Windows Server 2008 64 bit
 if(hotfix_check_sp(win2008:3) > 0)
 {
-  ## Check for Samsrv.dll version
   if(version_is_less(version:dllVer, test_version:"6.0.6002.19467") ||
      version_in_range(version:dllVer, test_version:"6.0.6002.23000", test_version2:"6.0.6002.23776")){
     VULN = TRUE ;
   }
 }
 
-## Windows 2008 R2
 if(hotfix_check_sp(win2008r2:2) > 0)
 {
-  ## Check for Samsrv.dll version
   if(version_is_less(version:dllVer, test_version:"6.1.7601.18956") ||
      version_in_range(version:dllVer, test_version:"6.1.7601.22000", test_version2:"6.1.7601.23158")){
     VULN = TRUE ;
   }
 }
 
-## Windows Server 2012
 if(hotfix_check_sp(win2012:1) > 0)
 {
-  ## Check for Samsrv.dll version
   if(version_is_less(version:dllVer, test_version:"6.2.9200.17469") ||
      version_in_range(version:dllVer, test_version:"6.2.9200.20000", test_version2:"6.2.9200.21584")){
     VULN = TRUE ;
   }
 }
 
-## Windows Server 2012R2
 if(hotfix_check_sp(win2012R2:1) > 0)
 {
-  ## Check for Samsrv.dll version
   if(version_is_less(version:dllVer, test_version:"6.3.9600.18009")){
     VULN = TRUE;
   }

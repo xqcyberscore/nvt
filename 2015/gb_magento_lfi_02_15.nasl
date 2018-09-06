@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_lfi_02_15.nasl 9442 2018-04-11 12:22:50Z cfischer $
+# $Id: gb_magento_lfi_02_15.nasl 11240 2018-09-05 10:15:12Z mmartin $
 #
 # Magento Server MAGMI Cross Site Scripting / Local File Inclusion
 #
@@ -29,34 +29,34 @@ CPE = 'cpe:/a:magmi:magmi';
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105196");
- script_cve_id("CVE-2015-2067");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 9442 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105196");
+  script_cve_id("CVE-2015-2067");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11240 $");
 
- script_name("Magento Server MAGMI Cross Site Scripting / Local File Inclusion");
+  script_name("Magento Server MAGMI Cross Site Scripting / Local File Inclusion");
 
- script_xref(name:"URL", value:"http://packetstormsecurity.com/files/130250/Magento-Server-MAGMI-Cross-Site-Scripting-Local-File-Inclusion.html");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/130250/Magento-Server-MAGMI-Cross-Site-Scripting-Local-File-Inclusion.html");
 
- script_tag(name: "impact" , value:"Remote attackers can use specially crafted requests with directory-
+  script_tag(name:"impact", value:"Remote attackers can use specially crafted requests with directory-
 traversal sequences ('../') to read arbitrary files in the context of the application. This may aid in further attacks.");
 
- script_tag(name: "vuldetect" , value:"Send a special crafted HTTP GET request and check the response");
- script_tag(name: "solution" , value:"Update to MAGMI 0.7.22 or later.");
- script_tag(name: "summary" , value:"Magento Server MAGMI is prone to cross site scripting and local file inclusion vulnerabilities.");
+  script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response");
+  script_tag(name:"solution", value:"Update to MAGMI 0.7.22 or later.");
+  script_tag(name:"summary", value:"Magento Server MAGMI is prone to cross site scripting and local file inclusion vulnerabilities.");
 
- script_tag(name:"qod_type", value:"remote_active");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
- script_tag(name:"creation_date", value:"2015-02-06 17:04:13 +0100 (Fri, 06 Feb 2015)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("sw_magento_magmi_detect.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("magmi/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-02-06 17:04:13 +0100 (Fri, 06 Feb 2015)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("sw_magento_magmi_detect.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("magmi/installed");
 
  exit(0);
 }

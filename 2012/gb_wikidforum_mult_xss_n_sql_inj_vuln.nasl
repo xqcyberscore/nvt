@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wikidforum_mult_xss_n_sql_inj_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_wikidforum_mult_xss_n_sql_inj_vuln.nasl 11266 2018-09-06 10:59:26Z cfischer $
 #
 # Wikidforum Multiple XSS and SQL Injection Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802710");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11266 $");
   script_cve_id("CVE-2012-6520", "CVE-2012-2099");
   script_bugtraq_id(52425);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-16 13:30:44 +0530 (Fri, 16 Mar 2012)");
   script_name("Wikidforum Multiple XSS and SQL Injection Vulnerabilities");
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2012/q2/75");
@@ -88,7 +88,6 @@ foreach dir (make_list_unique("/", "/wiki", "/wikidforum", cgi_dirs(port:port)))
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   sndReq = http_get(item:string(dir, "/admin/login.php"), port:port);
   rcvRes = http_keepalive_send_recv(port:port, data:sndReq);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_filemanager_backdoor.nasl 6600 2017-07-07 09:58:31Z teissa $
+# $Id: gb_php_filemanager_backdoor.nasl 11257 2018-09-06 07:51:44Z mmartin $
 #
 # PHP File Manager Backdoor Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:revived_wire_media:php_file_manager';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106034");
-  script_version("$Revision: 6600 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
-  script_tag(name: "creation_date", value: "2015-07-29 10:33:31 +0700 (Wed, 29 Jul 2015)");
-  script_tag(name: "cvss_base", value: "6.4");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_version("$Revision: 11257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-07-29 10:33:31 +0700 (Wed, 29 Jul 2015)");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "Workaround");
+  script_tag(name:"solution_type", value:"Workaround");
 
   script_name("PHP File Manager Backdoor Vulnerability");
 
@@ -49,22 +49,22 @@ if (description)
   script_dependencies("gb_php_filemanager_detect.nasl");
   script_mandatory_keys("phpfilemanager/installed");
 
-  script_tag(name: "summary", value: "PHP File Manager consists of a default backdoor user.");
+  script_tag(name:"summary", value:"PHP File Manager consists of a default backdoor user.");
 
-  script_tag(name: "vuldetect", value: "Send a crafted POST request and check if log in is possible.");
+  script_tag(name:"vuldetect", value:"Send a crafted POST request and check if log in is possible.");
 
-  script_tag(name: "insight", value: "A default hidden user with admin permissions exists in the db/valid.users
+  script_tag(name:"insight", value:"A default hidden user with admin permissions exists in the db/valid.users
 file. This user is not viewable or removable through the web interface.");
 
-  script_tag(name: "impact", value: "An attacker can log in as this hidden user and view and modify files
+  script_tag(name:"impact", value:"An attacker can log in as this hidden user and view and modify files
 and settings.");
 
-  script_tag(name: "affected", value: "All versions of PHP File Manager");
+  script_tag(name:"affected", value:"All versions of PHP File Manager");
 
-  script_tag(name: "solution", value: "No update is currently available. As a workaround remove the user
+  script_tag(name:"solution", value:"No update is currently available. As a workaround remove the user
 '****__DO_NOT_REMOVE_THIS_ENTRY__****' from db/valid.users and moreover restrict access to the application.");
 
-  script_xref(name : "URL" , value : "http://sijmen.ruwhof.net/weblog/411-multiple-critical-security-vulnerabilities-including-a-backdoor-in-php-file-manager");
+  script_xref(name:"URL", value:"http://sijmen.ruwhof.net/weblog/411-multiple-critical-security-vulnerabilities-including-a-backdoor-in-php-file-manager");
 
   exit(0);
 }
@@ -82,7 +82,6 @@ if (!dir = get_app_location(cpe: CPE, port: port))
 if (dir == "/")
   dir = "";
 
-# Get the cookie
 url = dir + "/index.php";
 req = http_get(item: url, port: port);
 res = http_keepalive_send_recv(port: port, data: req, bodyonly: FALSE);
@@ -94,7 +93,6 @@ if (!cookie)
 cookie = cookie[1];
 host = http_host_name(port: port);
 
-# Try to log in
 req = 'POST ' + url + ' HTTP/1.1\r\n' +
       'Host: ' + host + '\r\n' +
       'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +

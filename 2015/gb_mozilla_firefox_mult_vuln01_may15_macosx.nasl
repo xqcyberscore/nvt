@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_may15_macosx.nasl 6159 2017-05-18 09:03:44Z teissa $
+# $Id: gb_mozilla_firefox_mult_vuln01_may15_macosx.nasl 11239 2018-09-05 09:46:45Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 May15 (Mac OS X)
 #
@@ -29,24 +29,23 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805626");
-  script_version("$Revision: 6159 $");
+  script_version("$Revision: 11239 $");
   script_cve_id("CVE-2015-2708", "CVE-2015-2709", "CVE-2015-2710", "CVE-2015-2711",
                 "CVE-2015-2712", "CVE-2015-2713", "CVE-2015-2715", "CVE-2015-2716",
                 "CVE-2015-2717", "CVE-2015-2718", "CVE-2015-0797", "CVE-2015-4496");
   script_bugtraq_id(74615, 74611, 76333);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-21 18:29:20 +0530 (Thu, 21 May 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 May15 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to:
+  script_tag(name:"insight", value:"Multiple flaws are due to:
   - Flaw in WebChannel.jsm module in Mozilla Firefox.
   - Integer overflow in libstagefright in Mozilla Firefox.
   - Buffer overflow in the XML parser in Mozilla Firefox.
@@ -61,7 +60,7 @@ if(description)
   - Flaw in GStreamer in Mozilla Firefox.
   - Multiple integer overflows in libstagefright in Mozilla Firefox.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow a
+  script_tag(name:"impact", value:"Successful exploitation will allow a
   context-dependent attacker to corrupt memory and potentially execute arbitrary
   code, bypass security restrictions, bypass origin restrictions, gain
   knowledge of sensitive information, run custom code, cause the server to
@@ -69,10 +68,10 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox before version 38.0 on
+  script_tag(name:"affected", value:"Mozilla Firefox before version 38.0 on
   Mac OS X");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 38.0
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 38.0
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -93,15 +92,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"38.0"))
 {
   report = 'Installed version: ' + ffVer + '\n' +

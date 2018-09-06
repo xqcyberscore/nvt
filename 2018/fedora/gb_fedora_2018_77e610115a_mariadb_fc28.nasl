@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_77e610115a_mariadb_fc28.nasl 11231 2018-09-05 06:30:46Z santu $
+# $Id: gb_fedora_2018_77e610115a_mariadb_fc28.nasl 11250 2018-09-06 03:05:29Z ckuersteiner $
 #
 # Fedora Update for mariadb FEDORA-2018-77e610115a
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.875017");
-  script_version("$Revision: 11231 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 08:30:46 +0200 (Wed, 05 Sep 2018) $");
+  script_version("$Revision: 11250 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 05:05:29 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-01 07:34:32 +0200 (Sat, 01 Sep 2018)");
   script_cve_id("CVE-2018-3060", "CVE-2018-3064", "CVE-2018-3063", "CVE-2018-3058",
                 "CVE-2018-3066", "CVE-2018-3081", "CVE-2018-2767", "CVE-2018-2755",
@@ -36,8 +36,8 @@ if(description)
                 "CVE-2018-2782", "CVE-2018-2784", "CVE-2018-2787", "CVE-2018-2813",
                 "CVE-2018-2817", "CVE-2018-2819", "CVE-2018-2786", "CVE-2018-2759",
                 "CVE-2018-2777", "CVE-2018-2810");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for mariadb FEDORA-2018-77e610115a");
   script_tag(name:"summary", value:"Check the version of mariadb");

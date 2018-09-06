@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_48b73ed393_jetty_fc28.nasl 10558 2018-07-20 14:08:23Z santu $
+# $Id: gb_fedora_2018_48b73ed393_jetty_fc28.nasl 11243 2018-09-05 12:22:39Z mmartin $
 #
 # Fedora Update for jetty FEDORA-2018-48b73ed393
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874809");
-  script_version("$Revision: 10558 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 16:08:23 +0200 (Fri, 20 Jul 2018) $");
+  script_version("$Revision: 11243 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 14:22:39 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-15 06:04:25 +0200 (Sun, 15 Jul 2018)");
   script_cve_id("CVE-2017-7656", "CVE-2017-7657", "CVE-2017-7658", "CVE-2018-12536");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for jetty FEDORA-2018-48b73ed393");
   script_tag(name:"summary", value:"Check the version of jetty");

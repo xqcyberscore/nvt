@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3756_1.nasl 11180 2018-08-31 14:10:20Z mmartin $
+# $Id: gb_ubuntu_USN_3756_1.nasl 11236 2018-09-05 09:02:10Z cfischer $
 #
 # Ubuntu Update for intel-microcode USN-3756-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843629");
-  script_version("$Revision: 11180 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-31 16:10:20 +0200 (Fri, 31 Aug 2018) $");
+  script_version("$Revision: 11236 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:02:10 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-28 07:19:45 +0200 (Tue, 28 Aug 2018)");
   script_cve_id("CVE-2018-3646", "CVE-2018-3639", "CVE-2018-3640");
   script_tag(name:"cvss_base", value:"4.9");
@@ -67,14 +67,14 @@ sensitive information. (CVE-2018-3640)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|18\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lussumo_vanilla_mult_remote_file_incl_vuln.nasl 8510 2018-01-24 07:57:42Z teissa $
+# $Id: gb_lussumo_vanilla_mult_remote_file_incl_vuln.nasl 11249 2018-09-05 13:55:42Z cfischer $
 #
 # Lussumo Vanilla 'definitions.php' Remote File Include Vulnerabilities
 #
@@ -24,73 +24,65 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let attackers to execute arbitrary
-code in a user's browser session in the context of an affected site.
-
-Impact Level: Application";
-
-tag_affected = "Lussumo Vanilla version 1.1.10 and prior.";
-
-tag_insight = "The flaw is due to an error in the 'include' and
-'Configuration[LANGUAGE]' parameters, which allows remote attackers to send
-a specially-crafted URL request to the 'definitions.php' script.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is running Lussumo Vanilla and is prone remote file include
-  vulnerabilities";
+CPE = "cpe:/a:lussumo:vanilla";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800757");
-  script_version("$Revision: 8510 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-24 08:57:42 +0100 (Wed, 24 Jan 2018) $");
+  script_version("$Revision: 11249 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 15:55:42 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-04-16 16:17:26 +0200 (Fri, 16 Apr 2010)");
   script_cve_id("CVE-2010-1337");
   script_bugtraq_id(38889);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Lussumo Vanilla 'definitions.php' Remote File Include Vulnerabilities");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/57147");
-  script_xref(name : "URL" , value : "http://www.packetstormsecurity.com/1003-exploits/vanilla-rfi.txt");
-
-  script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
-  script_family("General");
+  script_family("Web application abuses");
   script_dependencies("gb_lussumo_vanilla_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_mandatory_keys("Lussumo/Vanilla/detected");
+
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/57147");
+  script_xref(name:"URL", value:"http://www.packetstormsecurity.com/1003-exploits/vanilla-rfi.txt");
+
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to execute arbitrary
+  code in a user's browser session in the context of an affected site.
+
+  Impact Level: Application");
+
+  script_tag(name:"affected", value:"Lussumo Vanilla version 1.1.10 and prior.");
+
+  script_tag(name:"insight", value:"The flaw is due to an error in the 'include' and
+  'Configuration[LANGUAGE]' parameters, which allows remote attackers to send
+  a specially-crafted URL request to the 'definitions.php' script.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
+
+  script_tag(name:"summary", value:"This host is running Lussumo Vanilla and is prone remote file include
+  vulnerabilities");
+
+  script_tag(name:"qod_type", value:"remote_banner");
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
-
-include("http_func.inc");
 include("version_func.inc");
+include("host_details.inc");
 
-vanillaPort = get_http_port(default:80);
-if(!vanillaPort){
-  exit(0);
+if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
+if( ! infos = get_app_version_and_location( cpe:CPE, port:port, exit_no_version:TRUE ) ) exit( 0 );
+ver = infos['version'];
+dir = infos['location'];
+
+if( version_is_less_equal( version:ver, test_version:"1.1.10" ) ) {
+  report = report_fixed_ver( installed_version:ver, fixed_version:"WillNotFix", install_path:dir );
+  security_message( port:port, data:report );
+  exit( 0 );
 }
 
-vanillaVer = get_kb_item("www/" + vanillaPort + "/Lussumo/Vanilla");
-if(!vanillaVer){
-  exit(0);
-}
-
-vanillaVer = eregmatch(pattern:"^(.+) under (/.*)$", string:vanillaVer);
-if(vanillaVer[1] != NULL)
-{
-  if(version_is_less_equal(version:vanillaVer[1], test_version:"1.1.10")){
-    security_message(vanillaPort);
-  }
-}
-
+exit( 99 );

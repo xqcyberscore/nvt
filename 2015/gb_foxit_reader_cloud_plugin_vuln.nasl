@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_cloud_plugin_vuln.nasl 10140 2018-06-08 12:58:24Z asteins $
+# $Id: gb_foxit_reader_cloud_plugin_vuln.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # Foxit Reader Cloud Plugin Windows Search Path Vulnerability
 #
@@ -29,39 +29,39 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805364");
-  script_version("$Revision: 10140 $");
+  script_version("$Revision: 11259 $");
   script_cve_id("CVE-2015-2789");
   script_tag(name:"cvss_base", value:"4.4");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-07 18:04:50 +0530 (Tue, 07 Apr 2015)");
   script_name("Foxit Reader Cloud Plugin Windows Search Path Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with Foxit Reader
+  script_tag(name:"summary", value:"The host is installed with Foxit Reader
   Cloud Plugin and is prone to windows search path Vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to SYSTEMDRIVE folder,
+  script_tag(name:"insight", value:"The flaw is due to SYSTEMDRIVE folder,
   local users can gain privileges via a Trojan horse.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow local
+  script_tag(name:"impact", value:"Successful exploitation will allow local
   attackers to gain privileges and execute malicious files.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Foxit Reader version 6.1 before version
+  script_tag(name:"affected", value:"Foxit Reader version 6.1 before version
   7.0.6.1126");
 
-  script_tag(name: "solution" , value:"Upgrade to Foxit Reader version
+  script_tag(name:"solution", value:"Upgrade to Foxit Reader version
   7.1 or later, For updates refer to http://www.foxitsoftware.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1031879");
-  script_xref(name : "URL" , value : "http://www.foxitsoftware.com/support/security_bulletins.php#FRD-25");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1031879");
+  script_xref(name:"URL", value:"http://www.foxitsoftware.com/support/security_bulletins.php#FRD-25");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

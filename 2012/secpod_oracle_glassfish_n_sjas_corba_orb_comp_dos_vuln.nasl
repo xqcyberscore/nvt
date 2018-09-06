@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_glassfish_n_sjas_corba_orb_comp_dos_vuln.nasl 9927 2018-05-23 04:13:59Z ckuersteiner $
+# $Id: secpod_oracle_glassfish_n_sjas_corba_orb_comp_dos_vuln.nasl 11266 2018-09-06 10:59:26Z cfischer $
 #
 # Oracle GlassFish/Java System Application Server CORBA ORB Subcomponent DoS Vulnerability
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903044");
-  script_version("$Revision: 9927 $");
+  script_version("$Revision: 11266 $");
   script_cve_id("CVE-2012-3155");
   script_bugtraq_id(56073);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 06:13:59 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-25 16:57:46 +0530 (Thu, 25 Oct 2012)");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Oracle GlassFish/Java System Application Server CORBA ORB Subcomponent DoS Vulnerability");
 
-  script_xref(name: "URL", value: "http://secunia.com/advisories/51017/");
-  script_xref(name: "URL", value: "http://www.oracle.com/technetwork/topics/security/cpuoct2012-1515893.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/51017/");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpuoct2012-1515893.html");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -49,19 +49,19 @@ if(description)
   script_dependencies("GlassFish_detect.nasl", "secpod_sun_java_app_serv_detect.nasl");
   script_require_ports("Services/www", 8080);
 
-  script_tag(name: "impact", value: "Successful exploitation could allow malicious attackers to cause a denial of
+  script_tag(name:"impact", value:"Successful exploitation could allow malicious attackers to cause a denial of
 service.");
 
-  script_tag(name: "affected", value: "Oracle GlassFish version 2.1.1, 3.0.1 and 3.1.2, Oracle Java System
+  script_tag(name:"affected", value:"Oracle GlassFish version 2.1.1, 3.0.1 and 3.1.2, Oracle Java System
 Application Server version 8.1 and 8.2");
 
-  script_tag(name: "insight", value: "The flaw is caused due to an unspecified error within the CORBA ORB
+  script_tag(name:"insight", value:"The flaw is caused due to an unspecified error within the CORBA ORB
 subcomponent, which allows remote users to cause a denial of service condition.");
 
-  script_tag(name: "summary", value: "This host is running Oracle GlassFish/Java System Application Server and is
+  script_tag(name:"summary", value:"This host is running Oracle GlassFish/Java System Application Server and is
 prone to denial of service vulnerability.");
 
-  script_tag(name: "solution", value: "Apply the security updates.
+  script_tag(name:"solution", value:"Apply the security updates.
 http://www.oracle.com/technetwork/topics/security/cpuoct2012-1515893.html");
 
   exit(0);

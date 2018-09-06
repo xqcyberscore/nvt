@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_STHS_51991.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_STHS_51991.nasl 11266 2018-09-06 10:59:26Z cfischer $
 #
 # STHS v2 Web Portal 'team' parameter Multiple SQL Injection Vulnerabilities
 #
@@ -25,49 +25,52 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "STHS v2 Web Portal is prone to multiple SQL-injection vulnerabilities
-because the application fails to sufficiently sanitize user-supplied
-data before using it in an SQL query.
-
-Exploiting these issues could allow an attacker to compromise the
-application, access or modify data, or exploit latent vulnerabilities
-in the underlying database.
-
-STHS v2 Web Portal 2.2 is vulnerable; other versions may also
-be affected.";
-
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103421");
- script_bugtraq_id(51991);
- script_cve_id("CVE-2012-1217");
- script_version("$Revision: 9352 $");
- script_name("STHS v2 Web Portal 'team' parameter Multiple SQL Injection Vulnerabilities");
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51991");
- script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/73154");
- script_xref(name : "URL" , value : "http://www.simhl.net/");
- script_xref(name : "URL" , value : "http://0nto.wordpress.com/2012/02/13/sths-v2-web-portal-2-2-sql-injection-vulnerabilty/");
+  script_oid("1.3.6.1.4.1.25623.1.0.103421");
+  script_bugtraq_id(51991);
+  script_cve_id("CVE-2012-1217");
+  script_version("$Revision: 11266 $");
+  script_name("STHS v2 Web Portal 'team' parameter Multiple SQL Injection Vulnerabilities");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51991");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/73154");
+  script_xref(name:"URL", value:"http://www.simhl.net/");
+  script_xref(name:"URL", value:"http://0nto.wordpress.com/2012/02/13/sths-v2-web-portal-2-2-sql-injection-vulnerabilty/");
 
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-02-15 11:22:27 +0100 (Wed, 15 Feb 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2012-02-15 11:22:27 +0100 (Wed, 15 Feb 2012)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"STHS v2 Web Portal is prone to multiple SQL-injection vulnerabilities
+  because the application fails to sufficiently sanitize user-supplied
+  data before using it in an SQL query.");
 
- exit(0);
+  script_tag(name:"impact", value:"Exploiting these issues could allow an attacker to compromise the
+  application, access or modify data, or exploit latent vulnerabilities in the underlying database.");
+
+  script_tag(name:"affected", value:"STHS v2 Web Portal 2.2 is vulnerable. Other versions may also
+  be affected.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"remote_vul");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port( default:80 );
 if( ! can_host_php( port:port ) ) exit( 0 );
 

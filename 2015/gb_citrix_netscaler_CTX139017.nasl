@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX139017.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
+# $Id: gb_citrix_netscaler_CTX139017.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # Citrix NetScaler Denial of Service Vulnerability (CTX139017)
 #
@@ -29,37 +29,37 @@ CPE = "cpe:/a:citrix:netscaler";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105274");
- script_bugtraq_id(62788);
- script_cve_id("CVE-2013-6011");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 8384 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105274");
+  script_bugtraq_id(62788);
+  script_cve_id("CVE-2013-6011");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11259 $");
 
- script_name("Citrix NetScaler Denial of Service Vulnerability (CTX139017)");
+  script_name("Citrix NetScaler Denial of Service Vulnerability (CTX139017)");
 
- script_xref(name:"URL", value:"http://support.citrix.com/article/ctx139017");
+  script_xref(name:"URL", value:"http://support.citrix.com/article/ctx139017");
 
- script_tag(name: "impact" , value:"A denial of service vulnerability has been identified in Citrix NetScaler Application Delivery Controller (ADC).
+  script_tag(name:"impact", value:"A denial of service vulnerability has been identified in Citrix NetScaler Application Delivery Controller (ADC).
 This vulnerability, when exploited, could cause the Citrix NetScaler appliance to become temporarily unavailable for normal use.");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Update to 10.0-76.7 or newer.");
- script_tag(name: "summary" , value:"The remote Citrix Netscaler is prone to a denial of service
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Update to 10.0-76.7 or newer.");
+  script_tag(name:"summary", value:"The remote Citrix Netscaler is prone to a denial of service
 vulnerability.");
 
- script_tag(name: "affected" , value:"Citrix NetScaler 10.0 prior to version 10.0-76.7");
+  script_tag(name:"affected", value:"Citrix NetScaler 10.0 prior to version 10.0-76.7");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
- script_tag(name:"creation_date", value:"2015-05-12 13:12:00 +0200 (Tue, 12 May 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_citrix_netscaler_version.nasl");
- script_mandatory_keys("citrix_netscaler/detected");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-05-12 13:12:00 +0200 (Tue, 12 May 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_citrix_netscaler_version.nasl");
+  script_mandatory_keys("citrix_netscaler/detected");
 
  exit(0);
 }

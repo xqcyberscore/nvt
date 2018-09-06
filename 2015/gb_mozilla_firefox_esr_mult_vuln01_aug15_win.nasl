@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_aug15_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_aug15_win.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities - Aug15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806022");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11259 $");
   script_cve_id("CVE-2015-4473", "CVE-2015-4475", "CVE-2015-4478", "CVE-2015-4479",
                 "CVE-2015-4480", "CVE-2015-4481", "CVE-2015-4482", "CVE-2015-4484",
                 "CVE-2015-4485", "CVE-2015-4486", "CVE-2015-4487", "CVE-2015-4488",
@@ -37,16 +37,16 @@ if(description)
   script_bugtraq_id(76294, 76297);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-19 10:17:42 +0530 (Wed, 19 Aug 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities - Aug15 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox ESR and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
   - The 'mozilla::AudioSink' function in Mozilla Firefox mishandles inconsistent
     sample formats within MP3 audio data.
   - Not imposing certain ECMAScript 6 requirements on JavaScript object
@@ -67,16 +67,16 @@ if(description)
     function in libstagefright.
   - Multiple unspecified vulnerabilities.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow local
+  script_tag(name:"impact", value:"Successful exploitation will allow local
   and remote attackers to cause a denial of service or possibly execute arbitrary
   code, gain privileges and some unspecified impacts.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox ESR version 38.x before
+  script_tag(name:"affected", value:"Mozilla Firefox ESR version 38.x before
   38.2 on Windows");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox ESR version
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version
   38.2 or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -102,7 +102,7 @@ if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-if(ffVer =~ "^(38)\.")
+if(ffVer =~ "^38\.")
 {
   if(version_is_less(version:ffVer, test_version:"38.2"))
   {

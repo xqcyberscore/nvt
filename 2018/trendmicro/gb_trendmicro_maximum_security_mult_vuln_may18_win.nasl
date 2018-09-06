@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_maximum_security_mult_vuln_may18_win.nasl 11231 2018-09-05 06:30:46Z santu $
+# $Id: gb_trendmicro_maximum_security_mult_vuln_may18_win.nasl 11250 2018-09-06 03:05:29Z ckuersteiner $
 #
 # Trend Micro Maximum Security Multiple Vulnerabilities May18 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:trendmicro:maximum_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813333");
-  script_version("$Revision: 11231 $");
+  script_version("$Revision: 11250 $");
   script_cve_id("CVE-2018-6232", "CVE-2018-6233", "CVE-2018-6234", "CVE-2018-6235",
                 "CVE-2018-6236", "CVE-2018-3608");
-  script_tag(name:"cvss_base", value:"7.2");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 08:30:46 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 05:05:29 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-05-08 13:30:09 +0530 (Tue, 08 May 2018)");
   ## Patched version is not available from registry or anywhere, so it can result in FP for 12.0 patched versions
   script_tag(name:"qod", value:"30");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3752_2.nasl 11133 2018-08-27 10:21:00Z santu $
+# $Id: gb_ubuntu_USN_3752_2.nasl 11236 2018-09-05 09:02:10Z cfischer $
 #
 # Ubuntu Update for linux-hwe USN-3752-2
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843624");
-  script_version("$Revision: 11133 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 12:21:00 +0200 (Mon, 27 Aug 2018) $");
+  script_version("$Revision: 11236 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:02:10 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-25 06:43:00 +0200 (Sat, 25 Aug 2018)");
   script_cve_id("CVE-2018-1000200", "CVE-2018-10323", "CVE-2018-10840", "CVE-2018-10881", "CVE-2018-1093", "CVE-2018-1108", "CVE-2018-1120", "CVE-2018-11412", "CVE-2018-11506", "CVE-2018-12232", "CVE-2018-12233", "CVE-2018-12904", "CVE-2018-13094", "CVE-2018-13405", "CVE-2018-13406", "CVE-2018-5814", "CVE-2018-9415", "CVE-2018-1000204");
   script_tag(name:"cvss_base", value:"5.0");
@@ -93,20 +93,20 @@ overflow in the CDROM driver implementation of the Linux kernel.
   script_tag(name:"solution", value:"Please install the updated packages.");
 
   script_xref(name:"USN", value:"3752-2");
-  script_xref(name:"URL" , value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2018-August/004555.html");
+  script_xref(name:"URL", value:"https://lists.ubuntu.com/archives/ubuntu-security-announce/2018-August/004555.html");
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU16\.04 LTS");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortinet_FortiAuthenticator_72378.nasl 9415 2018-04-10 06:55:50Z cfischer $
+# $Id: gb_fortinet_FortiAuthenticator_72378.nasl 11240 2018-09-05 10:15:12Z mmartin $
 #
 # Fortinet FortiAuthenticator Appliance Multiple Security Vulnerabilities
 #
@@ -29,51 +29,51 @@ CPE = "cpe:/a:fortinet:fortiauthenticator";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105228");
- script_bugtraq_id(72378);
- script_cve_id("CVE-2015-1456","CVE-2015-1455","CVE-2015-1457","CVE-2015-1459","CVE-2015-1458");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 9415 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105228");
+  script_bugtraq_id(72378);
+  script_cve_id("CVE-2015-1456", "CVE-2015-1455", "CVE-2015-1457", "CVE-2015-1459", "CVE-2015-1458");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11240 $");
 
- script_name("Fortinet FortiAuthenticator Appliance Multiple Security Vulnerabilities");
+  script_name("Fortinet FortiAuthenticator Appliance Multiple Security Vulnerabilities");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/72378");
- script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-15-003");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/72378");
+  script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-15-003");
 
- script_tag(name: "affected" , value:"FortiAuthenticator lower than 3.2.1");
+  script_tag(name:"affected", value:"FortiAuthenticator lower than 3.2.1");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Upgrade to FortiAuthenticator 3.2.1 or higher.");
- script_tag(name: "summary" , value:"Fortinet FortiAuthenticator Appliance is prone to the following
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Upgrade to FortiAuthenticator 3.2.1 or higher.");
+  script_tag(name:"summary", value:"Fortinet FortiAuthenticator Appliance is prone to the following
 multiple security vulnerabilities:
 
 1. A cross-site scripting vulnerability
 2. A command-execution vulnerability
 3. Multiple information-disclosure vulnerabilities");
 
- script_tag(name: "impact" , value:"An attacker can exploit these issues to execute arbitrary script code
+  script_tag(name:"impact", value:"An attacker can exploit these issues to execute arbitrary script code
 in the context of the vulnerable site, potentially allowing the attacker to steal cookie-based authentication
 credentials, execute arbitrary commands and gain access to potentially sensitive information.");
 
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
- script_tag(name:"creation_date", value:"2015-03-02 10:40:16 +0100 (Mon, 02 Mar 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("FortiOS Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_forti_authenticator_version.nasl");
- script_mandatory_keys("fortiauthenticator/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-03-02 10:40:16 +0100 (Mon, 02 Mar 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("FortiOS Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_forti_authenticator_version.nasl");
+  script_mandatory_keys("fortiauthenticator/version");
 
  exit(0);
 }
 
 include("http_func.inc");
 include("host_details.inc");
-include("http_keepalive.inc");
+
 include("version_func.inc");
 
 vers = get_app_version( cpe:CPE );

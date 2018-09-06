@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_honeywell_xlweb_scada_dir_trav_vuln.nasl 9552 2018-04-20 12:17:18Z cfischer $
+# $Id: gb_honeywell_xlweb_scada_dir_trav_vuln.nasl 11240 2018-09-05 10:15:12Z mmartin $
 #
 # Honeywell Falcon XL Web Controller Directory Traversal Vulnerability
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805540");
-  script_version("$Revision: 9552 $");
+  script_version("$Revision: 11240 $");
   script_cve_id("CVE-2015-0984");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 14:17:18 +0200 (Fri, 20 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-27 10:42:16 +0530 (Mon, 27 Apr 2015)");
   script_name("Honeywell Falcon XL Web Controller Directory Traversal Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with Honeywell Falcon
+  script_tag(name:"summary", value:"The host is installed with Honeywell Falcon
   XL Web Controller and is prone to directory traversal vulnerability.");
 
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP POST request
@@ -49,8 +49,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  XL1000C50-EXCEL WEB 52 I/O before 2.04.01
+  script_tag(name:"affected", value:"XL1000C50-EXCEL WEB 52 I/O before 2.04.01
   XL1000C100-EXCEL WEB 104 I/O before 2.04.01
   XL1000C500-EXCEL WEB 300 I/O before 2.04.01
   XL1000C1000-EXCEL WEB 600 I/O before 2.04.01
@@ -66,8 +65,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Apr/79");
-  script_xref(name : "URL" , value : "https://ics-cert.us-cert.gov/advisories/ICSA-15-076-02");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Apr/79");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-15-076-02");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("FTP");

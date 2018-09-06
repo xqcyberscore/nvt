@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jul15_win.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_mult_vuln01_jul15_win.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-01 July15 (Windows)
 #
@@ -32,7 +32,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805934");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11259 $");
   script_cve_id("CVE-2015-1271", "CVE-2015-1273", "CVE-2015-1274", "CVE-2015-1276",
                 "CVE-2015-1279", "CVE-2015-1280", "CVE-2015-1281", "CVE-2015-1282",
                 "CVE-2015-1283", "CVE-2015-1284", "CVE-2015-1286", "CVE-2015-1287",
@@ -42,16 +42,16 @@ if(description)
   script_bugtraq_id(75973, 76007);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-23 13:02:12 +0530 (Thu, 23 Jul 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 July15 (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to:
+  script_tag(name:"insight", value:"Multiple flaws are due to:
   - Multiple heap based buffer-overflow in pdfium.
   - An error which allows executable files to run immediately after download.
   - A use-after-free error in IndexedDB.
@@ -72,24 +72,24 @@ if(description)
   - The regular-expression implementation in Google V8 mishandles interrupts.
   - Various other unspecified errors.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass security restrictions, cause a denial of service condition
   or potentially execute arbitrary code, conduct spoofing attack, gain sensitive
   information and other unspecified impacts.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Google Chrome version prior to
+  script_tag(name:"affected", value:"Google Chrome version prior to
   44.0.2403.89 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   44.0.2403.89 or later, For updates refer to http://www.google.com/chrome");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2015/07/stable-channel-update_21.html");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2015/07/stable-channel-update_21.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

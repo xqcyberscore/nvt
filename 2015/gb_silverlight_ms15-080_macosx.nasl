@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_ms15-080_macosx.nasl 6207 2017-05-24 09:04:07Z teissa $
+# $Id: gb_silverlight_ms15-080_macosx.nasl 11239 2018-09-05 09:46:45Z mmartin $
 #
 # Microsoft Silverlight Remote Code Execution Vulnerability (3078662) (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806014");
-  script_version("$Revision: 6207 $");
+  script_version("$Revision: 11239 $");
   script_cve_id("CVE-2015-2435", "CVE-2015-2455", "CVE-2015-2456", "CVE-2015-2463",
                 "CVE-2015-2464");
   script_bugtraq_id(76238, 76216, 76241, 76239, 76240);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-13 11:13:34 +0530 (Thu, 13 Aug 2015)");
   script_name("Microsoft Silverlight Remote Code Execution Vulnerability (3078662) (Mac OS X)");
 
@@ -66,8 +66,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3080333");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-080");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3080333");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-080");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -83,17 +83,15 @@ include("version_func.inc");
 
 msl_ver = "";
 
-## Get the version
 if(!msl_ver = get_app_version(cpe:CPE)){
   exit(0);
 }
 
 if(msl_ver=~ "^5\.")
 {
-  ## Check for Silverlight version
   if(version_in_range(version:msl_ver, test_version:"5.0", test_version2:"5.1.40727"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

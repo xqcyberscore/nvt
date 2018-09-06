@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: ssh_login_failed.nasl 10507 2018-07-16 08:56:47Z cfischer $
+# $Id: ssh_login_failed.nasl 11242 2018-09-05 10:33:23Z cfischer $
 #
 # SSH Login Failed For Authenticated Checks
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105936");
-  script_version("$Revision: 10507 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-16 10:56:47 +0200 (Mon, 16 Jul 2018) $");
+  script_version("$Revision: 11242 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:33:23 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-16 10:58:24 +0700 (Tue, 16 Dec 2014)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -68,6 +68,7 @@ check_types = make_list(
 # The list of features libssh is currently supporting.
 # See https://www.libssh.org/features/
 libssh_supported['kex_algorithms'] = make_list(
+"curve25519-sha256", # New alias for the one below, available in libssh >= 0.8.0 but requires libssh build against libnacl
 "curve25519-sha256@libssh.org", # Available in libssh >= 0.6.0 but requires libssh build against libnacl
 "ecdh-sha2-nistp256",
 "diffie-hellman-group1-sha1",
@@ -78,10 +79,16 @@ libssh_supported['server_host_key_algorithms'] = make_list(
 "ecdsa-sha2-nistp256",
 "ecdsa-sha2-nistp384",
 "ecdsa-sha2-nistp521",
-"ssh-dss",
-"ssh-rsa" );
+"ssh-rsa",
+# nb: Both seems to be only available as a patch: https://www.libssh.org/archive/libssh/2018-06/0000047.html
+# but not available yet in libssh up to 0.8.2 even if those are listed at the features page.
+# "rsa-sha2-512",
+# "rsa-sha2-256",
+"ssh-dss"
+);
 
 libssh_supported['encryption_algorithms_server_to_client'] = make_list(
+"chachae20-poly1305", # Available in libssh >= 0.8.0
 "aes256-ctr",
 "aes192-ctr",
 "aes128-ctr",
@@ -142,10 +149,12 @@ foreach check_type( check_types ) {
   }
 
   # Those depends on the libssh version and partly if the libssh is built against libnacl or not.
-  if( check_type == "kex_algorithms" && host_supported_items > 0 && in_array( search:"curve25519-sha256@libssh.org", array:libssh_supported[check_type] ) ) {
+  if( check_type == "kex_algorithms" && host_supported_items > 0 &&
+      ( in_array( search:"curve25519-sha256@libssh.org", array:libssh_supported[check_type] ) ||
+        in_array( search:"curve25519-sha256", array:libssh_supported[check_type] ) ) ) {
     version_dep_report += 'Current supported ' + check_type + ' of the scanner:\n\n';
     version_dep_report += join( list:sort( libssh_supported[check_type] ), sep:'\n' ) + '\n\n';
-    version_dep_report = str_replace( string:version_dep_report, find:"curve25519-sha256@libssh.org", replace:"curve25519-sha256@libssh.org (requires libssh >= 0.6.0 on the scanner and libssh built against libnacl)" );
+    version_dep_report = ereg_replace( string:version_dep_report, pattern:"curve25519-sha256(@libssh\.org)?", replace:"\0 (requires libssh >= 0.6.0 on the scanner and libssh built against libnacl)" );
     version_dep_report += 'Current supported ' + check_type + ' of the remote host:\n\n';
     version_dep_report += join( list:sort( host_supported[check_type] ), sep:'\n' ) + '\n\n';
   }
@@ -154,6 +163,14 @@ foreach check_type( check_types ) {
     version_dep_report += 'Current supported ' + check_type + ' of the scanner:\n\n';
     version_dep_report += join( list:sort( libssh_supported[check_type] ), sep:'\n' ) + '\n\n';
     version_dep_report = str_replace( string:version_dep_report, find:"ssh-ed25519", replace:"ssh-ed25519 (requires libssh >= 0.7.0 on the scanner)" );
+    version_dep_report += 'Current supported ' + check_type + ' of the remote host:\n\n';
+    version_dep_report += join( list:sort( host_supported[check_type] ), sep:'\n' ) + '\n\n';
+  }
+
+  if( check_type == "encryption_algorithms_server_to_client" && host_supported_items > 0 && in_array( search:"chachae20-poly1305", array:libssh_supported[check_type] ) ) {
+    version_dep_report += 'Current supported ' + check_type + ' of the scanner:\n\n';
+    version_dep_report += join( list:sort( libssh_supported[check_type] ), sep:'\n' ) + '\n\n';
+    version_dep_report = str_replace( string:version_dep_report, find:"chachae20-poly1305", replace:"chachae20-poly1305 (requires libssh >= 0.8.0 on the scanner)" );
     version_dep_report += 'Current supported ' + check_type + ' of the remote host:\n\n';
     version_dep_report += join( list:sort( host_supported[check_type] ), sep:'\n' ) + '\n\n';
   }

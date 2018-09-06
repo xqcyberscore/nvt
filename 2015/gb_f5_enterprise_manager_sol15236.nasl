@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_enterprise_manager_sol15236.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: gb_f5_enterprise_manager_sol15236.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # F5 Enterprise Manager ConfigSync IP Rsync full file system access Vulnerability (SOL15236)
 #
@@ -29,34 +29,34 @@ CPE = "cpe:/a:f5:enterprise_manager";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105306");
- script_bugtraq_id(69461);
- script_cve_id("CVE-2014-2927");
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6229 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105306");
+  script_bugtraq_id(69461);
+  script_cve_id("CVE-2014-2927");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11259 $");
 
- script_name("F5 Enterprise Manager ConfigSync IP Rsync full file system access Vulnerability (SOL15236)");
+  script_name("F5 Enterprise Manager ConfigSync IP Rsync full file system access Vulnerability (SOL15236)");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/15000/200/sol15236.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/15000/200/sol15236.html");
 
- script_tag(name: "impact" , value:"An attacker can exploit this issue to execute arbitrary code within the context of the application.");
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "insight" , value:"An open Rsync configuration for the ConfigSync IP address allows for remote read/write file system access in Enterprise Manager 3.x versions before 3.1.1 HF2");
- script_tag(name: "solution" , value:"Update to Enterprise Manager 3.1.1 HF2 or higher.");
- script_tag(name: "summary" , value:"F5 Networks Enterprise Manager is prone to a remote code-execution vulnerability.");
- script_tag(name: "affected" , value:"Enterprise Manager 3.x versions before 3.1.1 HF2");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"impact", value:"An attacker can exploit this issue to execute arbitrary code within the context of the application.");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"insight", value:"An open Rsync configuration for the ConfigSync IP address allows for remote read/write file system access in Enterprise Manager 3.x versions before 3.1.1 HF2");
+  script_tag(name:"solution", value:"Update to Enterprise Manager 3.1.1 HF2 or higher.");
+  script_tag(name:"summary", value:"F5 Networks Enterprise Manager is prone to a remote code-execution vulnerability.");
+  script_tag(name:"affected", value:"Enterprise Manager 3.x versions before 3.1.1 HF2");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
- script_tag(name:"creation_date", value:"2015-06-24 14:31:00 +0200 (Wed, 24 Jun 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_f5_enterprise_manager_version.nasl");
- script_mandatory_keys("f5/f5_enterprise_manager/version", "f5/f5_enterprise_manager/hotfix");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-06-24 14:31:00 +0200 (Wed, 24 Jun 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_enterprise_manager_version.nasl");
+  script_mandatory_keys("f5/f5_enterprise_manager/version", "f5/f5_enterprise_manager/hotfix");
 
  exit(0);
 }

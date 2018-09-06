@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3741_3.nasl 11092 2018-08-23 09:40:58Z santu $
+# $Id: gb_ubuntu_USN_3741_3.nasl 11236 2018-09-05 09:02:10Z cfischer $
 #
 # Ubuntu Update for linux USN-3741-3
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843620");
-  script_version("$Revision: 11092 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 11:40:58 +0200 (Thu, 23 Aug 2018) $");
+  script_version("$Revision: 11236 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:02:10 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-19 06:29:00 +0200 (Sun, 19 Aug 2018)");
   script_cve_id("CVE-2018-3620", "CVE-2018-3646", "CVE-2018-5390", "CVE-2018-5391");
   script_tag(name:"cvss_base", value:"5.0");
@@ -79,14 +79,14 @@ cause a denial of service. (CVE-2018-5391)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU14\.04 LTS");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

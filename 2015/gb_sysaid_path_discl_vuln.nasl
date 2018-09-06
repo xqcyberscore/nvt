@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysaid_path_discl_vuln.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_sysaid_path_discl_vuln.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # SysAid Path Disclosure Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:sysaid:sysaid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106008");
-  script_version("$Revision: 6415 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2015-06-11 10:02:43 +0700 (Thu, 11 Jun 2015)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11259 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-06-11 10:02:43 +0700 (Thu, 11 Jun 2015)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_active");
+  script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_cve_id("CVE-2015-2997");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_sysaid_detect.nasl");
   script_mandatory_keys("sysaid/installed");
 
-  script_tag(name: "summary", value: "SysAid Help Desktop Software is prone to a path disclosure
+  script_tag(name:"summary", value:"SysAid Help Desktop Software is prone to a path disclosure
 vulnerability");
 
-  script_tag(name: "vuldetect", value: "Send a crafted POST request and check the response.");
+  script_tag(name:"vuldetect", value:"Send a crafted POST request and check the response.");
 
-  script_tag(name: "insight", value: "");
+  script_tag(name:"insight", value:"");
 
-  script_tag(name: "impact", value: "An attacker can find the install path the application is installed
+  script_tag(name:"impact", value:"An attacker can find the install path the application is installed
 under which may help in further attacks.");
 
-  script_tag(name: "affected", value: "SysAid Help Desktop version 15.1.x and before.");
+  script_tag(name:"affected", value:"SysAid Help Desktop version 15.1.x and before.");
 
-  script_tag(name: "solution", value: "Upgrade to version 15.2 or later");
+  script_tag(name:"solution", value:"Upgrade to version 15.2 or later");
 
-  script_xref(name: "URL", value: "https://www.security-database.com/detail.php?alert=CVE-2015-2997");
+  script_xref(name:"URL", value:"https://www.security-database.com/detail.php?alert=CVE-2015-2997");
 
   exit(0);
 }

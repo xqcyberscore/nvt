@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_silverlight_ms15-129.nasl 8190 2017-12-20 09:44:30Z cfischer $
+# $Id: gb_silverlight_ms15-129.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # Microsoft Silverlight Remote Code Execution Vulnerability (3106614)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:silverlight";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806171");
-  script_version("$Revision: 8190 $");
+  script_version("$Revision: 11259 $");
   script_cve_id("CVE-2015-6114", "CVE-2015-6165", "CVE-2015-6166");
   script_bugtraq_id(78502, 78504, 78505);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-20 10:44:30 +0100 (Wed, 20 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 09:21:22 +0530 (Wed, 09 Dec 2015)");
   script_name("Microsoft Silverlight Remote Code Execution Vulnerability (3106614)");
 
@@ -65,8 +65,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-129");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3106614#bookmark-fileinfo");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-129");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3106614#bookmark-fileinfo");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -81,14 +81,12 @@ include("version_func.inc");
 
 msl_ver = "";
 
-## Get the version
 if(!msl_ver = get_app_version(cpe:CPE)){
   exit(0);
 }
 
 if(msl_ver=~ "^5\.")
 {
-  ## Check for Silverlight version
   if(version_in_range(version:msl_ver, test_version:"5.0", test_version2:"5.1.41104.0"))
   {
     report = 'Silverlight version:  ' + msl_ver  + '\n' +

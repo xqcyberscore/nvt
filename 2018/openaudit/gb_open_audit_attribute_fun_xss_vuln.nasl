@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_audit_attribute_fun_xss_vuln.nasl 10538 2018-07-18 10:58:40Z santu $
+# $Id: gb_open_audit_attribute_fun_xss_vuln.nasl 11243 2018-09-05 12:22:39Z mmartin $
 #
 # Open-AudIT Community 'Attributes' Functionality Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:opmantek:open-audit";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813675");
-  script_version("$Revision: 10538 $");
+  script_version("$Revision: 11243 $");
   script_cve_id("CVE-2018-11124");
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-18 12:58:40 +0200 (Wed, 18 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 14:22:39 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-16 12:35:38 +0530 (Mon, 16 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Open-AudIT Community 'Attributes' Functionality Cross Site Scripting Vulnerability");

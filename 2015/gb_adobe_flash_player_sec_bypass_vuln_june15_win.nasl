@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_sec_bypass_vuln_june15_win.nasl 8178 2017-12-19 13:42:38Z cfischer $
+# $Id: gb_adobe_flash_player_sec_bypass_vuln_june15_win.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # Adobe Flash Player Security Bypass Vulnerability - June15 (Windows)
 #
@@ -29,34 +29,33 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805589");
-  script_version("$Revision: 8178 $");
+  script_version("$Revision: 11259 $");
   script_cve_id("CVE-2015-3097");
   script_bugtraq_id(75090);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 14:42:38 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-15 13:00:22 +0530 (Mon, 15 Jun 2015)");
   script_name("Adobe Flash Player Security Bypass Vulnerability - June15 (Windows)");
 
-  script_tag(name: "summary" , value: "This host is installed with Adobe Flash
+  script_tag(name:"summary", value:"This host is installed with Adobe Flash
   Player and is prone to security bypass vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The error exists due to improperly selecting
+  script_tag(name:"insight", value:"The error exists due to improperly selecting
   a random memory address for the Flash heap.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass certain security restrictions and execute arbitrary code on
   affected system.
 
   Impact Level: System/Application.");
 
-  script_tag(name: "affected" , value:"Adobe Flash Player before version
+  script_tag(name:"affected", value:"Adobe Flash Player before version
   13.0.0.302 and 14.x through 18.x before 18.0.0.203 on Windows-7 64-bit platform.");
 
-  script_tag(name: "solution" , value:"Upgrade to Adobe Flash Player version
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version
   13.0.0.302 or 18.0.0.203 or later. For updates refer to
   http://get.adobe.com/flashplayer");
 
@@ -64,7 +63,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "https://helpx.adobe.com/security/products/flash-player/apsb15-16.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb15-16.html");
 
 
   script_category(ACT_GATHER_INFO);
@@ -79,27 +78,20 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_reg.inc");
 
-## Variable Initialization
-playerVer = "";
-
-## Check for Win-7 64-bit OS, only Win-7 64-bit OS is affected
 if(hotfix_check_sp(win7x64:2) <= 0){
   exit(0);
 }
 
-## Get version
 if(!playerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:playerVer, test_version:"13.0.0.302"))
 {
   fix = "13.0.0.302";
   VULN = TRUE;
 }
 
-## Grep for vulnerable version
 if(version_in_range(version:playerVer, test_version:"14.0", test_version2:"18.0.0.202"))
 {
   fix = "18.0.0.203";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_cve_2015_6309.nasl 6551 2017-07-06 09:58:21Z teissa $
+# $Id: gb_cisco_esa_cve_2015_6309.nasl 11240 2018-09-05 10:15:12Z mmartin $
 #
 # Cisco Email Security Appliance Max Files Denial of Service Vulnerability
 #
@@ -29,36 +29,35 @@ CPE = "cpe:/h:cisco:email_security_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105402");
- script_cve_id("CVE-2015-6309");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
- script_version ("$Revision: 6551 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105402");
+  script_cve_id("CVE-2015-6309");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
+  script_version("$Revision: 11240 $");
 
- script_name("Cisco Email Security Appliance Format String Vulnerability");
+  script_name("Cisco Email Security Appliance Format String Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=41241");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=41241");
 
- script_tag(name: "impact" , value:"An authenticated, remote attacker could exploit this vulnerability to cause an affected device to reload unexpectedly, resulting in a DoS condition.");
+  script_tag(name:"impact", value:"An authenticated, remote attacker could exploit this vulnerability to cause an affected device to reload unexpectedly, resulting in a DoS condition.");
 
- script_tag(name: "vuldetect" , value:"Check the version");
+  script_tag(name:"vuldetect", value:"Check the version");
 
- script_tag(name: "insight" , value:"The vulnerability is due to failure to release file descriptors when the requested file action is completed. An attacker could exploit this vulnerability by sending a crafted HTTP request to the affected device. A successful exploit could allow the attacker to cause a DoS condition due to the affected device failing to release file descriptors. When all file descriptors are in use, the device can reload unexpectedly.");
+  script_tag(name:"insight", value:"The vulnerability is due to failure to release file descriptors when the requested file action is completed. An attacker could exploit this vulnerability by sending a crafted HTTP request to the affected device. A successful exploit could allow the attacker to cause a DoS condition due to the affected device failing to release file descriptors. When all file descriptors are in use, the device can reload unexpectedly.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"summary", value:"Cisco Email Security Appliance contains a vulnerability that could allow an authenticated, remote attacker to cause a denial of service condition.");
+  script_tag(name:"affected", value:"Cisco Email Security Appliance 8.5.6-106/9.6.0-042");
 
- script_tag(name: "solution" , value:"See the vendor advisory for more information.");
- script_tag(name: "summary" , value:"Cisco Email Security Appliance contains a vulnerability that could allow an authenticated, remote attacker to cause a denial of service condition.");
- script_tag(name: "affected" , value:"Cisco Email Security Appliance 8.5.6-106/9.6.0-042");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"solution_type", value: "NoneAvailable");
- script_tag(name:"qod_type", value:"remote_banner");
-
- script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
- script_tag(name:"creation_date", value:"2015-10-14 14:43:01 +0200 (Wed, 14 Oct 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_esa_version.nasl");
- script_mandatory_keys("cisco_esa/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-10-14 14:43:01 +0200 (Wed, 14 Oct 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_esa_version.nasl");
+  script_mandatory_keys("cisco_esa/installed");
  exit(0);
 }
 

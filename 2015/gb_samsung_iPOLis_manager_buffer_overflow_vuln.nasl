@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samsung_iPOLis_manager_buffer_overflow_vuln.nasl 6214 2017-05-26 09:04:01Z teissa $
+# $Id: gb_samsung_iPOLis_manager_buffer_overflow_vuln.nasl 11240 2018-09-05 10:15:12Z mmartin $
 #
 # Samsung iPOLiS Device Manager Buffer Overflow Vulnerability
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:samsung:ipolis_device_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805482");
-  script_version("$Revision: 6214 $");
+  script_version("$Revision: 11240 $");
   script_cve_id("CVE-2015-0555");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-20 15:38:22 +0530 (Fri, 20 Mar 2015)");
   script_name("Samsung iPOLiS Device Manager Buffer Overflow Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with Samsung iPOLiS
   Device Manager and is prone to buffer overflow vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to Buffer overflow in
   the XnsSdkDeviceIpInstaller.ocx ActiveX control in Samsung iPOLiS Device Manager.");
@@ -53,15 +52,13 @@ if(description)
 
   script_tag(name:"affected", value:"Samsung iPOLiS Device Manager version 1.12.2");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Feb/81");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Feb/81");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -74,16 +71,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-Ver = "";
-ipolisVer = "";
-
-## Get version
 if(!Ver = (get_app_version(cpe:CPE))){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_equal(version:Ver, test_version:"1.12.2"))
 {
   VULN = TRUE;

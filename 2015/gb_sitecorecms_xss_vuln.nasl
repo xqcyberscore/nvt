@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sitecorecms_xss_vuln.nasl 7484 2017-10-18 13:29:18Z cfischer $
+# $Id: gb_sitecorecms_xss_vuln.nasl 11240 2018-09-05 10:15:12Z mmartin $
 #
 # Sitecore CMS XSS Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:sitecore:cms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805497");
-  script_version("$Revision: 7484 $");
+  script_version("$Revision: 11240 $");
   script_cve_id("CVE-2014-100004");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-18 15:29:18 +0200 (Wed, 18 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-20 10:14:06 +0530 (Fri, 20 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_app");
   script_name("Sitecore CMS XSS Vulnerabilities");
@@ -56,12 +56,12 @@ if(description)
 
   script_tag(name:"affected", value:"Sitecore CMS before 7.0 Update-4 (rev. 140120).");
 
-  script_tag(name: "solution" , value:"Upgrade to Sitecore CMS before 7.0
+  script_tag(name:"solution", value:"Upgrade to Sitecore CMS before 7.0
   Update-4 (rev. 140120).
   For updates refer to http://www.sitecore.net/");
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://www.idappcom.com/db/?9066");
-  script_xref(name : "URL" , value : "http://sitecorekh.blogspot.dk/2014/01/sitecore-releases-70-update-4-rev-140120.html");
+  script_xref(name:"URL", value:"http://www.idappcom.com/db/?9066");
+  script_xref(name:"URL", value:"http://sitecorekh.blogspot.dk/2014/01/sitecore-releases-70-update-4-rev-140120.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

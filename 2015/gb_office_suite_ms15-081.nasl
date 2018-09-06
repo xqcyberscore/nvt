@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_office_suite_ms15-081.nasl 7582 2017-10-26 11:56:51Z cfischer $
+# $Id: gb_office_suite_ms15-081.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # Microsoft Office Suite Remote Code Execution Vulnerabilities (3080790)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805087");
-  script_version("$Revision: 7582 $");
-  script_cve_id("CVE-2015-1642", "CVE-2015-2423", "CVE-2015-2466", "CVE-2015-2467", 
+  script_version("$Revision: 11259 $");
+  script_cve_id("CVE-2015-1642", "CVE-2015-2423", "CVE-2015-2466", "CVE-2015-2467",
                 "CVE-2015-2468", "CVE-2015-2469", "CVE-2015-2470", "CVE-2015-2477");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 13:56:51 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 14:20:42 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Suite Remote Code Execution Vulnerabilities (3080790)");
@@ -52,8 +52,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Office 2007 Service Pack 3 and prior
+  script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3 and prior
   Microsoft Office 2010 Service Pack 2 and prior
   Microsoft Office 2013 Service Pack 1 and prior.");
 
@@ -63,17 +62,18 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/2596650");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/2687409");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/2837610");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3054888");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/2598244");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-081");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/2596650");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/2687409");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/2837610");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3054888");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/2598244");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-081");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("secpod_ms_office_detection_900025.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/Ver");
   exit(0);
 }
@@ -83,13 +83,6 @@ include("smb_nt.inc");
 include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
-
-## Variable initialization
-exeVer = "";
-ortVer = "";
-InsPath = "";
-comPath = "";
-ortconVer = "";
 
 ## MS Office 2007
 if(get_kb_item("MS/Office/Ver") =~ "^12.*")
@@ -104,19 +97,17 @@ if(get_kb_item("MS/Office/Ver") =~ "^12.*")
     {
       if(version_in_range(version:sysVer, test_version:"12.0", test_version2:"12.0.6034.0"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }
   }
 
-  ## Get CommonFilesDir path
   dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                 item:"CommonFilesDir");
   if(dllPath)
   {
- 
-    ## Grep VBE6.DLL file version.
+
     dllVer6 = fetch_file_version(sysPath:dllPath,
                 file_name:"Microsoft Shared\VBA\VBA6\VBE6.DLL");
     dllVer  = fetch_file_version(sysPath:dllPath,
@@ -126,12 +117,11 @@ if(get_kb_item("MS/Office/Ver") =~ "^12.*")
 
     if(dllVer6 ||  dllVer ||  msoVer)
     {
-      ## Check for VBE6.DLL version
       if(version_is_less(version:dllVer6, test_version:"6.5.10.55") ||
          version_in_range(version:dllVer, test_version:"12.0", test_version2:"12.0.6727.4999") ||
          version_in_range(version:msoVer, test_version:"12.0", test_version2:"12.0.6728.4999"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }
@@ -154,13 +144,12 @@ if(get_kb_item("MS/Office/Ver") =~ "^14.*")
     {
       if(version_in_range(version:sysVer, test_version:"14.0", test_version2:"14.0.6100.0"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }
   }
 
-  ## Get CommonFilesDir path
   dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                 item:"CommonFilesDir");
 
@@ -171,9 +160,9 @@ if(get_kb_item("MS/Office/Ver") =~ "^14.*")
     if(dllVer || vbVer)
     {
       if(version_in_range(version:dllVer, test_version:"14.0", test_version2:"14.0.7155.4999")  ||
-         version_in_range(version:vbVer, test_version:"7.0", test_version2:"7.0.16.36")) 
+         version_in_range(version:vbVer, test_version:"7.0", test_version2:"7.0.16.36"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }
@@ -183,7 +172,6 @@ if(get_kb_item("MS/Office/Ver") =~ "^14.*")
 ## MS Office 2013
 if(get_kb_item("MS/Office/Ver") =~ "^15.*")
 {
-  ## Get CommonFilesDir path
   dllPath = registry_get_sz(key:"SOFTWARE\Microsoft\Windows\CurrentVersion",
                 item:"CommonFilesDir");
 
@@ -194,9 +182,9 @@ if(get_kb_item("MS/Office/Ver") =~ "^15.*")
     if(dllVer || vbVer)
     {
       if(version_in_range(version:dllVer, test_version:"15.0", test_version2:"15.0.4745.999")  ||
-         version_in_range(version:vbVer, test_version:"7.1", test_version2:"7.1.15.4662"))      
+         version_in_range(version:vbVer, test_version:"7.1", test_version2:"7.1.15.4662"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }

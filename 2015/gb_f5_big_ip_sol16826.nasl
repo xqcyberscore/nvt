@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16826.nasl 6329 2017-06-13 15:39:42Z teissa $
+# $Id: gb_f5_big_ip_sol16826.nasl 11257 2018-09-06 07:51:44Z mmartin $
 #
 # F5 BIG-IP - SOL16826 - PHP vulnerability CVE-2015-4024
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105367");
- script_cve_id("CVE-2015-4024");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 6329 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105367");
+  script_cve_id("CVE-2015-4024");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11257 $");
 
- script_name("F5 BIG-IP - SOL16826 - PHP vulnerability CVE-2015-4024");
+  script_name("F5 BIG-IP - SOL16826 - PHP vulnerability CVE-2015-4024");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/16000/800/sol16826.html?sr=48315819");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/16000/800/sol16826.html?sr=48315819");
 
- script_tag(name: "impact" , value:"This vulnerability may allow attackers to cause a denial-of-service (DoS) using crafted form data that triggers an improper order-of-growth outcome.Note: This vulnerability is exploitable only through the BIG-IP control plane (non-Traffic Management Microkernel (TMM) related tasks).");
+  script_tag(name:"impact", value:"This vulnerability may allow attackers to cause a denial-of-service (DoS) using crafted form data that triggers an improper order-of-growth outcome.Note: This vulnerability is exploitable only through the BIG-IP control plane (non-Traffic Management Microkernel (TMM) related tasks).");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"Algorithmic complexity vulnerability in the multipart_buffer_headers function in main/rfc1867.c in PHP before 5.4.41, 5.5.x before 5.5.25, and 5.6.x before 5.6.9 allows remote attackers to cause a denial of service (CPU consumption) via crafted form data that triggers an improper order-of-growth outcome. (CVE-2015-4024)");
+  script_tag(name:"insight", value:"Algorithmic complexity vulnerability in the multipart_buffer_headers function in main/rfc1867.c in PHP before 5.4.41, 5.5.x before 5.5.25, and 5.6.x before 5.6.9 allows remote attackers to cause a denial of service (CPU consumption) via crafted form data that triggers an improper order-of-growth outcome. (CVE-2015-4024)");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The remote host is missing a security patch.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The remote host is missing a security patch.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-09-18 15:38:41 +0200 (Fri, 18 Sep 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-09-18 15:38:41 +0200 (Fri, 18 Sep 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

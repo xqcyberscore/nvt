@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iis_53906.nasl 10709 2018-08-01 12:30:27Z cfischer $
+# $Id: gb_iis_53906.nasl 11266 2018-09-06 10:59:26Z cfischer $
 #
 # Microsoft IIS Authentication Bypass and Source Code Disclosure Vulnerabilities
 #
@@ -31,16 +31,16 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103507");
   script_bugtraq_id(53906);
-  script_version("$Revision: 10709 $");
+  script_version("$Revision: 11266 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("Microsoft IIS Authentication Bypass and Source Code Disclosure Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-01 14:30:27 +0200 (Wed, 01 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-03 10:23:40 +0200 (Tue, 03 Jul 2012)");
   script_category(ACT_ATTACK);
   script_family("Web Servers");
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
-  script_dependencies("secpod_ms_iis_detect.nasl","webmirror.nasl");
+  script_dependencies("secpod_ms_iis_detect.nasl", "webmirror.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("IIS/installed");
 

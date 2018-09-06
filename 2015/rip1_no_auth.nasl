@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: rip1_no_auth.nasl 9993 2018-05-29 06:02:50Z cfischer $
+# $Id: rip1_no_auth.nasl 11257 2018-09-06 07:51:44Z mmartin $
 #
 # RIP-1 Poisoning Routing Table
 #
@@ -27,36 +27,36 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105236");
- script_tag(name:"cvss_base", value:"5.8");
- script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 9993 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105236");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11257 $");
 
- script_name("RIP-1 Poisoning Routing Table");
+  script_name("RIP-1 Poisoning Routing Table");
 
- script_tag(name: "impact" , value:"Attackers can exploit this issue to obtain sensitive information that
+  script_tag(name:"impact", value:"Attackers can exploit this issue to obtain sensitive information that
  may lead to further attacks.");
 
- script_tag(name: "vuldetect" , value:"Send a RIP request and check the response");
- script_tag(name: "insight", value: "RIP-1 does not implement authentication.
+  script_tag(name:"vuldetect", value:"Send a RIP request and check the response");
+  script_tag(name:"insight", value:"RIP-1 does not implement authentication.
 An attacker may feed your machine with bogus routes and hijack network connection");
 
- script_tag(name: "solution" , value:"Disable the RIP agent if you don't use it, or use
+  script_tag(name:"solution", value:"Disable the RIP agent if you don't use it, or use
 RIP-2 and implement authentication'");
 
- script_tag(name: "summary" , value:"This host is running a RIP-1 agent.");
- script_tag(name:"solution_type", value: "Workaround");
+  script_tag(name:"summary", value:"This host is running a RIP-1 agent.");
+  script_tag(name:"solution_type", value:"Workaround");
 
- script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-29 08:02:50 +0200 (Tue, 29 May 2018) $");
- script_tag(name:"creation_date", value:"2015-03-13 09:16:37 +0100 (Fri, 13 Mar 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("rip_detect.nasl");
- script_require_udp_ports("Services/udp/rip", 520);
- script_mandatory_keys("RIP-1/enabled");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-03-13 09:16:37 +0100 (Fri, 13 Mar 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("rip_detect.nasl");
+  script_require_udp_ports("Services/udp/rip", 520);
+  script_mandatory_keys("RIP-1/enabled");
 
  exit(0);
 }

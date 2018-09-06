@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3074162.nasl 6183 2017-05-22 09:03:43Z teissa $
+# $Id: gb_microsoft_security_advisory_3074162.nasl 11240 2018-09-05 10:15:12Z mmartin $
 #
 # MS Malicious Software Removal Tool Privilege Escalation Security Advisory (3057154)
 #
@@ -27,47 +27,48 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805937");
-  script_version("$Revision: 6183 $");
+  script_version("$Revision: 11240 $");
   script_cve_id("CVE-2015-2418");
   script_bugtraq_id(75962);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-23 17:52:04 +0530 (Thu, 23 Jul 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Malicious Software Removal Tool Privilege Escalation Security Advisory (3057154)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft advisory 3057154.");
 
-  script_tag(name: "vuldetect" , value: "Get the vulnerable file version and
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value: "The error exists as Microsoft Malicious
+  script_tag(name:"insight", value:"The error exists as Microsoft Malicious
   Software Removal Tool (MSRT) fails to properly handle a race condition involving
   a DLL-planting scenario.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to gain elevated privileges on the affected machine.
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"Microsoft Malicious Software Removal Tool
+  script_tag(name:"affected", value:"Microsoft Malicious Software Removal Tool
   versions prior to 5.26.11603.0");
 
-  script_tag(name: "solution" , value: "Run Windows Update and update the
+  script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
   https://technet.microsoft.com/library/security/3074162");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/3074162");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/3074162");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -77,25 +78,18 @@ include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-exeVer = "";
-
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath){
   exit(0);
 }
 
-## Get Version from 'Mrt.exe' file
 exeVer = fetch_file_version(sysPath, file_name:"system32\Mrt.exe");
 if(!exeVer){
   exit(0);
 }
 
-## Check if version < 5.26.11603.0
 if(version_is_less(version:exeVer, test_version:"5.26.11603.0"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }

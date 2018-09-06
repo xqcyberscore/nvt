@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_sexy_squeeze_pages_xss_vuln.nasl 9998 2018-05-29 08:15:38Z cfischer $
+# $Id: gb_wp_sexy_squeeze_pages_xss_vuln.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # Wordpress Sexy Squeeze Pages 'id' Parameter XSS Vulnerability
 #
@@ -8,7 +8,7 @@
 # Thanga Prakash S <tprakash@secpod.com>
 #
 # Copyright:
-# Copyright (C) 2014 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (C) 2015 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805121");
-  script_version("$Revision: 9998 $");
+  script_version("$Revision: 11259 $");
   script_cve_id("CVE-2014-9176");
   script_bugtraq_id(71511);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 10:15:38 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-09 13:32:41 +0530 (Fri, 09 Jan 2015)");
   script_name("Wordpress Sexy Squeeze Pages 'id' Parameter XSS Vulnerability");
 
@@ -64,8 +64,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/129285");
-  script_xref(name : "URL" , value : "http://h4x0resec.blogspot.in/2014/11/wordpress-sexy-squeeze-pages-plugin.html");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/129285");
+  script_xref(name:"URL", value:"http://h4x0resec.blogspot.in/2014/11/wordpress-sexy-squeeze-pages-plugin.html");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_category(ACT_ATTACK);

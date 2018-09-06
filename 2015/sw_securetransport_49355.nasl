@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_securetransport_49355.nasl 6132 2017-05-16 09:03:39Z teissa $
+# $Id: sw_securetransport_49355.nasl 11257 2018-09-06 07:51:44Z mmartin $
 #
 # Tumbleweed SecureTransport Directory Traversal Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:tumbleweed:securetransport_server_app';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111020");
-  script_version("$Revision: 6132 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+  script_version("$Revision: 11257 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-22 08:00:00 +0200 (Wed, 22 Apr 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,13 +48,13 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("tumbleweed_securetransport/installed");
 
-  script_tag(name : "summary" , value : "Tumbleweed SecureTransport is prone to a directory-traversal vulnerability
+  script_tag(name:"summary", value:"Tumbleweed SecureTransport is prone to a directory-traversal vulnerability
   because it fails to sufficiently sanitize user-supplied input data.");
-  script_tag(name : "vuldetect" , value : "Check the version.");
-  script_tag(name : "impact" , value : "Exploiting the issue may allow an attacker to obtain sensitive information
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"impact", value:"Exploiting the issue may allow an attacker to obtain sensitive information
   that could aid in further attacks.");
-  script_tag(name : "affected" , value : "SecureTransport 4.8.x prior to 4.8.2 Patch 12 are vulnerable.");
-  script_tag(name : "solution" , value : "The vendor has released updates.");
+  script_tag(name:"affected", value:"SecureTransport 4.8.x prior to 4.8.2 Patch 12 are vulnerable.");
+  script_tag(name:"solution", value:"The vendor has released updates.");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/49355");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/519464");
@@ -78,6 +78,6 @@ if( version_is_less( version:vers, test_version:"4.8.2" ) ) {
            'Fixed version:     ' + "4.8.2 Patch 12" + '\n';
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

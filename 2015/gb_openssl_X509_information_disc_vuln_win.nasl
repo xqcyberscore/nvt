@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_X509_information_disc_vuln_win.nasl 7546 2017-10-24 11:58:30Z cfischer $
+# $Id: gb_openssl_X509_information_disc_vuln_win.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # OpenSSL 'X509_ATTRIBUTE' Information Disclosure Vulnerability (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806655");
-  script_version("$Revision: 7546 $");
+  script_version("$Revision: 11259 $");
   script_cve_id("CVE-2015-3195");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-23 11:08:20 +0530 (Wed, 23 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL 'X509_ATTRIBUTE' Information Disclosure Vulnerability (Windows)");
@@ -41,8 +41,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running OpenSSL and is prone
   to information disclosure vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in
   'ASN1_TFLG_COMBINE' implementation within crypto/asn1/tasn_dec.c script.");
@@ -59,13 +58,13 @@ if(description)
   1.0.1q or 1.0.2e or later. For updates refer https://www.openssl.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://openssl.org/news/secadv/20151203.txt");
+  script_xref(name:"URL", value:"http://openssl.org/news/secadv/20151203.txt");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed","Host/runs_windows");
+  script_mandatory_keys("OpenSSL/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
   exit(0);
 }
@@ -73,16 +72,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-sslPort = 0;
-sslVer = "";
-
-## Get Version
 if(!sslVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Checking for Vulnerable version
 if(sslVer =~ "^(0\.9\.8)")
 {
   if(version_is_less(version:sslVer, test_version:"0.9.8zh"))

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netcharts_server_multiple_vuln.nasl 5933 2017-04-11 10:42:30Z cfi $
+# $Id: gb_netcharts_server_multiple_vuln.nasl 11259 2018-09-06 08:28:49Z mmartin $
 #
 # NetCharts Server Multiple Vulnerabilities
 #
@@ -29,23 +29,23 @@ CPE = "cpe:/a:visual_mining:netcharts_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805643");
-  script_version("$Revision: 5933 $");
+  script_version("$Revision: 11259 $");
   script_cve_id("CVE-2015-4031", "CVE-2015-4032");
   script_bugtraq_id(74788);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-03 12:12:21 +0530 (Wed, 03 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("NetCharts Server Multiple Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with NetCharts
+  script_tag(name:"summary", value:"The host is installed with NetCharts
   Server and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is installed with vulnerable version or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
   - The projectContents.jsp script in developer tools does not properly verify
     or sanitize user-uploaded files.
   - The saveFile.jsp script in developer installation not properly sanitizing
@@ -67,8 +67,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"Workaround");
 
-  script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-15-238/");
-  script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-15-237/");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-15-238/");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-15-237/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -79,31 +79,18 @@ if(description)
   exit(0);
 }
 
-##
-### Code Starts Here
-##
-
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-ncPort = "";
-sndReq = "";
-rcvRes = "";
-ncVer = "";
 
-
-## Get HTTP Port
 if(!ncPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!ncVer = get_app_version(cpe:CPE, port:ncPort)){
   exit(0);
 }
 
-##Check for version 7.0.1
 if (version_is_equal(version:ncVer, test_version:"7.0.1"))
 {
   report = 'Installed Version: ' +ncVer+ '\n' +

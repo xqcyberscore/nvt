@@ -29,38 +29,37 @@ CPE = "cpe:/a:cisco:asa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805760");
-  script_version("$Revision: 6551 $");
+  script_version("$Revision: 11239 $");
   script_cve_id("CVE-2015-4458");
   script_bugtraq_id(75918);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-07 18:52:56 +0530 (Wed, 07 Oct 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("Cisco ASA Unauthorized Modification Vulnerability");
 
-  script_tag(name: "summary" , value:"This host has Cisco ASA
+  script_tag(name:"summary", value:"This host has Cisco ASA
   and is prone to unauthorized modification vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to insufficient checking
+  script_tag(name:"insight", value:"The flaw is due to insufficient checking
   of the MAC on TLS packets by the Cavium Networks cryptographic module used by
   an affected device.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to modify the contents of an encrypted TLS packet in transit from an
   affected device.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Cisco ASA 9.1(5.21)");
+  script_tag(name:"affected", value:"Cisco ASA 9.1(5.21)");
 
-  script_tag(name: "solution" , value:"Apply the appropriate updates from Cisco.
+  script_tag(name:"solution", value:"Apply the appropriate updates from Cisco.
   For updates refer to http://www.cisco.com");
 
-  script_xref(name : "URL" , value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=39919");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=39919");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);

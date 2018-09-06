@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_control_manager_cmdprocessor_bof_vuln.nasl 7277 2017-09-26 12:45:58Z cfischer $
+# $Id: gb_trendmicro_control_manager_cmdprocessor_bof_vuln.nasl 11266 2018-09-06 10:59:26Z cfischer $
 #
 # Trend Micro Control Manager 'CmdProcessor.exe' Buffer Overflow Vulnerability
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802876");
-  script_version("$Revision: 7277 $");
+  script_version("$Revision: 11266 $");
   script_cve_id("CVE-2011-5001");
   script_bugtraq_id(50965);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-26 14:45:58 +0200 (Tue, 26 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-02 17:04:06 +0530 (Mon, 02 Jul 2012)");
   script_name("Trend Micro Control Manager 'CmdProcessor.exe' Buffer Overflow Vulnerability");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/47114");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/71681");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id?1026390");
-  script_xref(name : "URL" , value : "http://www.zerodayinitiative.com/advisories/ZDI-11-345");
-  script_xref(name : "URL" , value : "http://www.trendmicro.com/ftp/documentation/readme/readme_critical_patch_TMCM55_1613.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/47114");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/71681");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id?1026390");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-11-345");
+  script_xref(name:"URL", value:"http://www.trendmicro.com/ftp/documentation/readme/readme_critical_patch_TMCM55_1613.txt");
 
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
@@ -48,17 +48,17 @@ if(description)
   script_require_ports("Services/www", 443, 20101);
   script_dependencies("find_service.nasl", "http_version.nasl");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to cause buffer overflow
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause buffer overflow
   condition or execute arbitrary code.
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Trend Micro Control Manager version 5.5 Build 1250 Hotfix 1550 and prior");
-  script_tag(name : "insight" , value : "The 'CGenericScheduler::AddTask' function in cmdHandlerRedAlertController.dll
+  script_tag(name:"affected", value:"Trend Micro Control Manager version 5.5 Build 1250 Hotfix 1550 and prior");
+  script_tag(name:"insight", value:"The 'CGenericScheduler::AddTask' function in cmdHandlerRedAlertController.dll
   in 'CmdProcessor.exe' fails to process a specially crafted IPC packet sent on
   TCP port 20101, which could be exploited by remote attackers to cause a
   buffer overflow.");
-  script_tag(name : "solution" , value : "Apply Critical Patch Build 1613 for Trend Micro Control Manager 5.5,
+  script_tag(name:"solution", value:"Apply Critical Patch Build 1613 for Trend Micro Control Manager 5.5,
   For updates refer to http://downloadcenter.trendmicro.com/index.php?prodid=7");
-  script_tag(name : "summary" , value : "This host is running Trend Micro Control Manager and is prone to
+  script_tag(name:"summary", value:"This host is running Trend Micro Control Manager and is prone to
   buffer overflow vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -71,20 +71,9 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-req  = "";
-res  = "";
-header  = "";
-exploit = "";
-soc  = 0;
-soc2 = 0;
-tmp = "";
-
-## Check the port status
 ## Vulnerable CmdProcessor Port
 cmdPort = 20101;
 
-## Check port status
 if(!get_port_state(cmdPort)){
   exit(0);
 }
@@ -101,13 +90,11 @@ close(soc);
 tmcmport = get_http_port(default:443);
 
 ## Application Confirmation
-## Construct basic GET request
 req = http_get(item:"/WebApp/Login.aspx", port:tmcmport);
 res = http_keepalive_send_recv(port: tmcmport, data: req);
 
 if(res && ">Control Manager" >< res && "Trend Micro Incorporated" >< res)
 {
-  ## Construct a malformed request
   header = raw_string(0x00, 0x00, 0x13, 0x88,                        ## Buffer Size
                       crap(data:raw_string(0x41), length: 9),        ## Junk data
                       0x15, 0x09, 0x13, 0x00, 0x00, 0x00,            ## Opcode

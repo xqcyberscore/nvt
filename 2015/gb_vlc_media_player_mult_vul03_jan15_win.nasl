@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_vul03_jan15_win.nasl 8174 2017-12-19 12:23:25Z cfischer $
+# $Id: gb_vlc_media_player_mult_vul03_jan15_win.nasl 11257 2018-09-06 07:51:44Z mmartin $
 #
 # VLC Media Player Multiple Vulnerabilities-03 Jan15 (Windows)
 #
@@ -29,22 +29,21 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805316");
-  script_version("$Revision: 8174 $");
+  script_version("$Revision: 11257 $");
   script_cve_id("CVE-2010-1445", "CVE-2010-1444", "CVE-2010-1443", "CVE-2010-1442",
                 "CVE-2010-1441");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-19 13:23:25 +0100 (Tue, 19 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-02 12:58:41 +0530 (Fri, 02 Jan 2015)");
   script_name("VLC Media Player Multiple Vulnerabilities-03 Jan15 (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with VLC media player
+  script_tag(name:"summary", value:"The host is installed with VLC media player
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
   - Multiple errors in the A/52 audio decoder, DTS audio decoder, MPEG audio
   decoder, AVI demuxer, ASF demuxer and Matroska demuxer.
   - An error when processing XSPF playlists.
@@ -52,22 +51,22 @@ if(description)
   of a malformed zip archive.
   - An error in the RTMP implementation.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to conduct a denial of service or potentially compromise a
   user's system.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"VideoLAN VLC media player before version
+  script_tag(name:"affected", value:"VideoLAN VLC media player before version
   1.0.6 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to VideoLAN VLC media player
+  script_tag(name:"solution", value:"Upgrade to VideoLAN VLC media player
   version 1.0.6 or later. For updates refer http://www.videolan.org/");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/39558");
-  script_xref(name : "URL" , value : "http://www.videolan.org/security/sa1003.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/39558");
+  script_xref(name:"URL", value:"http://www.videolan.org/security/sa1003.html");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -81,17 +80,12 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-vlcVer = "";
-
-## Get version
 if(!vlcVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check VLC media player vulnerable version
 if(version_is_less(version:vlcVer, test_version:"1.0.6"))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }
