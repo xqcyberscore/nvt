@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_zhm_detect.nasl 10734 2018-08-02 10:35:39Z asteins $
+# $Id: gb_novell_zhm_detect.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Novell ZENworks Handheld Management Version Detection
 #
@@ -30,14 +30,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801644");
-  script_version("$Revision: 10734 $");
+  script_version("$Revision: 11279 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 12:35:39 +0200 (Thu, 02 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-11-30 12:42:12 +0100 (Tue, 30 Nov 2010)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Novell ZENworks Handheld Management Version Detection");
-
 
   script_tag(name:"summary", value:"Detects the installed version of Novell ZENworks Handheld Management
 on Windows.
@@ -67,7 +66,7 @@ if(!registry_key_exists(key:"SOFTWARE\Novell\ZENworks\Handheld Management\Server
 
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
-  exit(-1);
+  exit(0);
 }
 
 if("x86" >< os_arch){

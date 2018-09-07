@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_burp_suite_ce_detect_macosx.nasl 10371 2018-06-29 13:27:39Z santu $
+# $Id: gb_burp_suite_ce_detect_macosx.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Burp Suite Community Edition Version Detection (Mac OS X)
 #
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813610");
-  script_version("$Revision: 10371 $");
+  script_version("$Revision: 11279 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-29 15:27:39 +0200 (Fri, 29 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-19 16:38:09 +0530 (Tue, 19 Jun 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Burp Suite Community Edition Version Detection (Mac OS X)");
 
-  script_tag(name : "summary" , value : "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Burp Suite Community Edition on MAC OS X.
 
-  The script logs in via ssh, searches for folder 
-  'Burp Suite Community Edition Installer.app' and queries the related 'info.plist' 
+  The script logs in via ssh, searches for folder
+  'Burp Suite Community Edition Installer.app' and queries the related 'info.plist'
    file for string 'CFBundleShortVersionString' via command line option 'defaults read'.");
 
   script_category(ACT_GATHER_INFO);
@@ -50,7 +50,6 @@ if(description)
   exit(0);
 }
 
-
 include("cpe.inc");
 include("ssh_func.inc");
 include("version_func.inc");
@@ -58,7 +57,7 @@ include("host_details.inc");
 
 sock = ssh_login_or_reuse_connection();
 if(!sock){
-  exit(-1);
+  exit(0);
 }
 
 burpVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_edition_detect_macosx.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: gb_adobe_digital_edition_detect_macosx.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Adobe Digital Edition Version Detection (Mac OS X)
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804302");
-  script_version("$Revision: 5888 $");
+  script_version("$Revision: 11279 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-03 13:00:16 +0530 (Mon, 03 Feb 2014)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Digital Edition Version Detection (Mac OS X)");
 
-  script_tag(name : "summary" , value : "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Adobe Digital Edition on MAC.
 
   The script logs in via ssh, gets the version by using a command and set
@@ -49,29 +49,20 @@ if(description)
   exit(0);
 }
 
-
 include("cpe.inc");
 include("ssh_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-ediVer = "";
-sock = "";
-cpe  = "";
-
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock){
-  exit(-1);
+  exit(0);
 }
 
-## Get the version of Opera
 ediVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
             "Adobe\ Digital\ Editions.app/Contents/Info " +
             "CFBundleShortVersionString"));
 
-## Close Socket
 close(sock);
 
 ## Exit if version not found
@@ -79,10 +70,8 @@ if(isnull(ediVer) || "does not exist" >< ediVer){
   exit(0);
 }
 
-## Set the version in KB
 set_kb_item(name: "AdobeDigitalEdition/MacOSX/Version", value:ediVer);
 
-## build cpe and store it as host_detail
 cpe = build_cpe(value:ediVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:digital_editions:");
 if(isnull(cpe))
   cpe='cpe:/a:adobe:digital_editions';

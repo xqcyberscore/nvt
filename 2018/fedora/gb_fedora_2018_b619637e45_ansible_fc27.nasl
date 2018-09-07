@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_b619637e45_ansible_fc27.nasl 10324 2018-06-26 07:40:01Z santu $
+# $Id: gb_fedora_2018_b619637e45_ansible_fc27.nasl 11281 2018-09-07 09:10:30Z cfischer $
 #
 # Fedora Update for ansible FEDORA-2018-b619637e45
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874737");
-  script_version("$Revision: 10324 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 09:40:01 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 11281 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:10:30 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-25 06:06:28 +0200 (Mon, 25 Jun 2018)");
   script_cve_id("CVE-2018-10855");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for ansible FEDORA-2018-b619637e45");
   script_tag(name:"summary", value:"Check the version of ansible");

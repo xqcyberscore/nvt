@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_true_key_detect_win.nasl 10902 2018-08-10 14:20:55Z cfischer $
+# $Id: gb_mcafee_true_key_detect_win.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # McAfee True Key Version Detection (Windows)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813322");
-  script_version("$Revision: 10902 $");
+  script_version("$Revision: 11279 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:20:55 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-05-02 15:50:09 +0530 (Wed, 02 May 2018)");
   script_tag(name:"qod_type", value:"registry");
   script_name("McAfee True Key Version Detection (Windows)");
@@ -55,7 +55,7 @@ include("host_details.inc");
 
 osArch = get_kb_item("SMB/Windows/Arch");
 if(!osArch){
-  exit(-1);
+  exit(0);
 }
 
 if(!registry_key_exists(key:"SOFTWARE\Intel Security\True Key") &&

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_expression_web_detect.nasl 10911 2018-08-10 15:16:34Z cfischer $
+# $Id: gb_ms_expression_web_detect.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Microsoft Expression Web Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802885");
-  script_version("$Revision: 10911 $");
+  script_version("$Revision: 11279 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:16:34 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-11 18:35:57 +0530 (Wed, 11 Jul 2012)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Expression Web Detection");
@@ -53,7 +53,6 @@ in the registry and gets the version from 'Version' string in registry.");
   exit(0);
 }
 
-
 include("cpe.inc");
 include("smb_nt.inc");
 include("host_details.inc");
@@ -61,7 +60,7 @@ include("secpod_smb_func.inc");
 
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
-  exit(-1);
+  exit(0);
 }
 
 if("x86" >< os_arch){

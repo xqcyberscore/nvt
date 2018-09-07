@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: showmount.nasl 9745 2018-05-07 11:45:41Z cfischer $
+# $Id: showmount.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # NFS export
 #
@@ -29,10 +29,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102014");
-  script_version("$Revision: 9745 $");
+  script_version("$Revision: 11279 $");
   script_cve_id("CVE-1999-0554", "CVE-1999-0548");
   script_name("NFS export");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 13:45:41 +0200 (Mon, 07 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-10-06 18:45:43 +0200 (Tue, 06 Oct 2009)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -155,7 +155,7 @@ RPC_NFSD_port = get_rpc_port(program: RPC_NFSD, protocol: IPPROTO_UDP);
 
 export_list = rpc_mountd_export(port: RPC_MOUNTD_port, protocol: IPPROTO_UDP); #using UDP because get_rpc_port is written only for udp ports
 if(isnull(export_list)){
-  exit(-1);
+  exit(0);
 }else{
   VALUE_FOLLOWS = raw_string(0x00, 0x00, 0x00, 0x01);
   LEFT = 0;

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_indesign_server_detect_win.nasl 10922 2018-08-10 19:21:48Z cfischer $
+# $Id: gb_adobe_indesign_server_detect_win.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Adobe InDesign Server Version Detection (Windows)
 #
@@ -24,13 +24,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810239");
-  script_version("$Revision: 10922 $");
+  script_version("$Revision: 11279 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 21:21:48 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-15 12:59:49 +0530 (Thu, 15 Dec 2016)");
   script_name("Adobe InDesign Server Version Detection (Windows)");
   script_tag(name:"summary", value:"Detects the installed version of
@@ -55,9 +55,8 @@ include("cpe.inc");
 include("host_details.inc");
 
 osArch = get_kb_item("SMB/Windows/Arch");
-if(!osArch)
-{
-  exit(-1);
+if(!osArch){
+  exit(0);
 }
 
 if(!registry_key_exists(key:"SOFTWARE\Adobe") &&

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_magento_detect.nasl 10915 2018-08-10 15:50:57Z cfischer $
+# $Id: sw_magento_detect.nasl 11276 2018-09-07 08:18:40Z cfischer $
 #
 # Magento Shop Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105227");
-  script_version("$Revision: 10915 $");
+  script_version("$Revision: 11276 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:50:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 10:18:40 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-09 12:00:00 +0100 (Mon, 09 Feb 2015)");
   script_name("Magento Shop Detection");
   script_category(ACT_GATHER_INFO);
@@ -82,12 +82,10 @@ foreach dir( make_list_unique( "/", "/magento", "/shop", cgi_dirs( port:port ) )
   res2 = http_get_cache( item:url2, port:port );
 
   url3 = dir + "/RELEASE_NOTES.txt";
-  req  = http_get( item:url3, port:port );
-  res3 = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+  res3 = http_get_cache( item:url3, port:port );
 
   url4 = dir + "/downloader/";
-  req  = http_get( item:url4, port:port );
-  res4 = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
+  res4 = http_get_cache( item:url4, port:port );
 
   if( res1 && "Magento Inc." >< res1 || res2 && "/skin/frontend/" >< res2 ||
       res3 && "=== Improvements ===" >< res3 || res4 && "Magento Connect Manager ver." >< res4 ) {
@@ -97,7 +95,7 @@ foreach dir( make_list_unique( "/", "/magento", "/shop", cgi_dirs( port:port ) )
 
     ver = eregmatch( pattern:"==== ([0-9\.]+) ====", string:res3 );
 
-    #The RELEASE_NOTES.txt is not updated anymore in versions later then 1.7.0.2
+    #nb: The RELEASE_NOTES.txt is not updated anymore in versions later then 1.7.0.2
     if( ver[1] && version_is_less_equal( version:ver[1], test_version:"1.7.0.2" ) &&
         "NOTE: Current Release Notes are maintained at:" >!< res3 ) {
       conclUrl = report_vuln_url( port:port, url:url3, url_only:TRUE );
@@ -115,7 +113,7 @@ foreach dir( make_list_unique( "/", "/magento", "/shop", cgi_dirs( port:port ) )
       }
     }
 
-    ##First try to read from Release Notes
+    #nb: First try to read from Release Notes
     if( res3 && "magento" >< res3 && "=== Improvements ===" >< res3 ) {
       if( res3 =~ "(c|C)ommunity_(e|E)dition" ) {
         CE    = TRUE;
@@ -127,9 +125,9 @@ foreach dir( make_list_unique( "/", "/magento", "/shop", cgi_dirs( port:port ) )
       }
     }
 
-    ##License opens up on accessing URL: /css/styles.css
+    #nb: License opens up on accessing URL: /css/styles.css
     if( ! EE || ! CE )  {
-      ##URL for Enterprise Edition
+      #nb: URL for Enterprise Edition
       url5 = dir + "/errors/enterprise/css/styles.css";
       req  = http_get( item:url5, port:port );
       res5 = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
@@ -138,7 +136,7 @@ foreach dir( make_list_unique( "/", "/magento", "/shop", cgi_dirs( port:port ) )
         EE    = TRUE;
         extra = '\nEdition gathered from:\n' + report_vuln_url( port:port, url:url5, url_only:TRUE );
       } else {
-        ##URL for Community Edition
+        #nb: URL for Community Edition
         url6 = dir + "/errors/default/css/styles.css";
         req  = http_get( item:url6, port:port );
         res6 = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );

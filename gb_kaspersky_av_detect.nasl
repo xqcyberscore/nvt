@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kaspersky_av_detect.nasl 10876 2018-08-10 08:38:41Z cfischer $
+# $Id: gb_kaspersky_av_detect.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Kaspersky AntiVirus Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800241");
-  script_version("$Revision: 10876 $");
+  script_version("$Revision: 11279 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 10:38:41 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-02-16 16:42:20 +0100 (Mon, 16 Feb 2009)");
   script_name("Kaspersky AntiVirus Version Detection");
   script_category(ACT_GATHER_INFO);
@@ -80,7 +80,7 @@ TOTSEC_MAX = max_index(TOTSEC_LIST);
 
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
-  exit(-1);
+  exit(0);
 }
 
 if("x86" >< os_arch){

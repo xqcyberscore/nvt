@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ruby_detect_lin.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: secpod_ruby_detect_lin.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Ruby Version Detection (Linux)
 #
@@ -28,8 +28,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900569");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11279 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-06-23 10:30:45 +0200 (Tue, 23 Jun 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Ruby Version Detection (Linux)");
@@ -48,7 +48,6 @@ queries the found executables via command line option '--version'.");
   exit(0);
 }
 
-
 include("ssh_func.inc");
 include("version_func.inc");
 include("cpe.inc");
@@ -58,7 +57,7 @@ SCRIPT_DESC = "Ruby Version Detection (Linux)";
 
 sock = ssh_login_or_reuse_connection();
 if(!sock){
-  exit(-1);
+  exit(0);
 }
 
 rubyName = find_bin(prog_name:"ruby", sock:sock);

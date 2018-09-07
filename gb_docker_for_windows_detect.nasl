@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_docker_for_windows_detect.nasl 11268 2018-09-06 13:07:33Z mmartin $
+# $Id: gb_docker_for_windows_detect.nasl 11278 2018-09-07 09:01:00Z mmartin $
 #
 # Docker for Windows Version Detection (Windows)
 #
@@ -29,8 +29,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107337");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11268 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 15:07:33 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 11278 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:01:00 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-06 14:43:30 +0200 (Thu, 06 Sep 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Docker for Windows Version Detection (Windows)");
@@ -50,17 +50,15 @@ include("smb_nt.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-if(!get_kb_item("SMB/WindowsVersion")){
-  exit(0);
-}
+key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Docker for Windows\";
+if(!registry_key_exists(key:key)) exit(0);
 
-key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\";
+appName = registry_get_sz(key:key, item:"DisplayName");
+Loc = registry_get_sz(key:key, item:"InstallLocation");
+Chan = registry_get_sz(key:key, item:"ChannelName");
+Ver = registry_get_sz(key:key, item:"DisplayVersion");
 
-Loc = registry_get_sz(key:key + "Docker for Windows", item:"InstallLocation");
-Chan = registry_get_sz(key:key + "Docker for Windows", item:"ChannelName");
-Ver = registry_get_sz(key:key + "Docker for Windows", item:"DisplayVersion");
-
-if(Ver != NULL)
+if(appName =~ "Docker for Windows")
 {
   set_kb_item(name:"Docker/Docker_for_Windows/Win/Chan", value: Chan);
   set_kb_item(name:"Docker/Docker_for_Windows/Win/detected", value:TRUE);
@@ -69,3 +67,5 @@ if(Ver != NULL)
   register_and_report_cpe(app:"Docker for Windows " +Chan, ver:Ver,
     base:"cpe:/a:docker:docker_for_windows:", expr:"^([0-9.a-z-]+)", insloc:Loc);
 }
+
+exit(0);

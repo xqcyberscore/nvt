@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_python_detect_macosx.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: gb_python_detect_macosx.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Python Version Detection (Mac OS X)
 #
@@ -27,16 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804633");
-  script_version("$Revision: 9608 $");
+  script_version("$Revision: 11279 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-09 16:03:10 +0530 (Mon, 09 Jun 2014)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Python Version Detection (Mac OS X)");
 
-
-  script_tag(name : "summary" , value : "Detection of installed version of python on Mac OS X.
+  script_tag(name:"summary", value:"Detects the installed version of python on Mac OS X.
 
 The script logs in via ssh, searches for folder 'Python' and
 queries the related 'info.plist' file for string 'CFBundleShortVersionString'
@@ -57,7 +56,7 @@ include("host_details.inc");
 
 sock = ssh_login_or_reuse_connection();
 if(!sock){
-  exit(-1);
+  exit(0);
 }
 
 pythonSeries = make_list("2.5", "2.6", "2.7", "3.1", "3.2", "3.3", "3.4");
@@ -87,5 +86,4 @@ foreach series(pythonSeries)
                                            concluded: pythonVer));
 }
 
-## Close Socket
 close(sock);

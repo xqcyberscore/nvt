@@ -1,6 +1,6 @@
 ####################################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_reader_dc_classic_detect_macosx.nasl 8845 2018-02-16 10:57:50Z santu $
+# $Id: gb_adobe_acrobat_reader_dc_classic_detect_macosx.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Adobe Acrobat Reader DC (Classic Track) Detect (Mac OS X)
 #
@@ -27,15 +27,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812929");
-  script_version("$Revision: 8845 $");
+  script_version("$Revision: 11279 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 11:57:50 +0100 (Fri, 16 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-02-15 15:30:46 +0530 (Thu, 15 Feb 2018)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Acrobat Reader DC (Classic Track) Detect (Mac OS X)");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Adobe Acrobat Reader DC (Classic Track).
 
   The script logs in via ssh, searches for folder 'Adobe Acrobat 2015'
@@ -50,19 +50,14 @@ if(description)
   exit(0);
 }
 
-
 include("cpe.inc");
 include("ssh_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-psVer = "";
-sock = "";
-cpe  = "";
-
 sock = ssh_login_or_reuse_connection();
 if(!sock){
-  exit(-1);
+  exit(0);
 }
 
 psVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +

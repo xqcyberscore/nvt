@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_captivate_detect.nasl 10898 2018-08-10 13:38:13Z cfischer $
+# $Id: gb_adobe_captivate_detect.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Adobe Captivate Version Detection
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801266");
-  script_version("$Revision: 10898 $");
+  script_version("$Revision: 11279 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:38:13 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-09-03 15:47:26 +0200 (Fri, 03 Sep 2010)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Captivate Version Detection");
@@ -53,7 +53,6 @@ registry and gets the version from registry.");
   exit(0);
 }
 
-
 include("smb_nt.inc");
 include("secpod_smb_func.inc");
 include("cpe.inc");
@@ -62,7 +61,7 @@ include("version_func.inc");
 
 os_arch = get_kb_item("SMB/Windows/Arch");
 if(!os_arch){
-  exit(-1);
+  exit(0);
 }
 
 if("x86" >< os_arch){

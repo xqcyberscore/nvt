@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_docker_for_windows_privilege_escalation_vuln.nasl 11268 2018-09-06 13:07:33Z mmartin $
+# $Id: gb_docker_for_windows_privilege_escalation_vuln.nasl 11278 2018-09-07 09:01:00Z mmartin $
 #
 # Docker for Windows Privilege Escalation Vulnerability (Windows)
 #
@@ -28,9 +28,9 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107338");
-  script_version("$Revision: 11268 $");
+  script_version("$Revision: 11278 $");
   script_cve_id("CVE-2018-15514");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 15:07:33 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:01:00 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-06 14:43:30 +0200 (Thu, 06 Sep 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -56,27 +56,27 @@ CPE = "cpe:/a:docker:docker_for_windows";
 include ("host_details.inc");
 include ("version_func.inc");
 
-if (!infos = get_app_version_and_location (cpe:CPE, exit_no_version:TRUE)) {
+if(!infos = get_app_version_and_location (cpe:CPE, exit_no_version:TRUE)) {
   exit (0);
 }
 vers = infos ['version'];
 path = infos ['location'];
 
 chan = get_kb_item("Docker/Docker_for_Windows/Win/Chan");
-  if( chan =~ "stable"){
-    if (version_is_less (version:vers, test_version:"18.06.0-ce-win72")){
-    report = report_fixed_ver (installed_version:vers, fixed_version:"18.06.0-ce-win72",
+if(chan =~ "stable"){
+  if (version_is_less (version:vers, test_version:"18.06.0-ce-win72")){
+  report = report_fixed_ver (installed_version:vers, fixed_version:"18.06.0-ce-win72",
     install_path:path);
-    security_message (port:0, data:report);
-    exit (0);
-    }
+  security_message (port:0, data:report);
+  exit (0);
   }
-  if(chan =~ "edge"){
-    if (version_is_less (version:vers, test_version:"18.06.0-ce-rc3-win68")){
-    report = report_fixed_ver (installed_version:vers, fixed_version:"18.06.0-ce-rc3-win68",
+}
+if(chan =~ "edge"){
+  if (version_is_less (version:vers, test_version:"18.06.0-ce-rc3-win68")){
+  report = report_fixed_ver (installed_version:vers, fixed_version:"18.06.0-ce-rc3-win68",
     install_path:path);
-    security_message (port:0, data:report);
-    exit (0);
-    }
+  security_message (port:0, data:report);
+  exit (0);
   }
+}
 exit (99);

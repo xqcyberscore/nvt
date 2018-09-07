@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synergy_detect_win.nasl 10905 2018-08-10 14:32:11Z cfischer $
+# $Id: gb_synergy_detect_win.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Synergy Version Detection (Windows)
 #
@@ -27,14 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801871");
-  script_version("$Revision: 10905 $");
+  script_version("$Revision: 11279 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-04-22 16:38:12 +0200 (Fri, 22 Apr 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Synergy Version Detection (Windows)");
-
 
   script_tag(name:"summary", value:"Detects the installed version of Synergy.
 
@@ -55,16 +54,9 @@ include("secpod_smb_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-osArch = "";
-key_list = "";
-appName = "";
-appLoc = "";
-synVer = "";
-
 osArch = get_kb_item("SMB/Windows/Arch");
-if(!osArch)
-{
-  exit(-1);
+if(!osArch){
+  exit(0);
 }
 
 ## if os is 32 bit iterate over comman path

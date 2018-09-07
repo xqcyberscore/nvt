@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_9695e9b0ed_docker_fc28.nasl 10558 2018-07-20 14:08:23Z santu $
+# $Id: gb_fedora_2018_9695e9b0ed_docker_fc28.nasl 11281 2018-09-07 09:10:30Z cfischer $
 #
 # Fedora Update for docker FEDORA-2018-9695e9b0ed
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874812");
-  script_version("$Revision: 10558 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 16:08:23 +0200 (Fri, 20 Jul 2018) $");
+  script_version("$Revision: 11281 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:10:30 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-15 06:04:35 +0200 (Sun, 15 Jul 2018)");
   script_cve_id("CVE-2018-10892");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for docker FEDORA-2018-9695e9b0ed");
   script_tag(name:"summary", value:"Check the version of docker");

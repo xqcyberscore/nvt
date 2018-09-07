@@ -11,7 +11,7 @@
 # According to new style script_tags.
 #
 # Copyright:
-# Copyright (c) 2012 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright(c) 2012 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -30,15 +30,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802724");
-  script_version("$Revision: 5877 $");
+  script_version("$Revision: 11279 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-06 11:01:48 +0200 (Thu, 06 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-22 15:56:23 +0530 (Thu, 22 Mar 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("VLC Media Player Version Detection (MacOSX)");
 
-  script_tag(name: "summary" , value:"Detection of installed version of VLC
+  script_tag(name:"summary", value:"Detects the installed version of VLC
   Media Player.
 
   This script logs in via ssh, searches for folder 'VLC.app' and queries the
@@ -53,28 +53,19 @@ if(description)
   exit(0);
 }
 
-
 include("ssh_func.inc");
 include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-cpe = "";
-sock = "";
-vlcVer = "";
-
-## Checking OS
 sock = ssh_login_or_reuse_connection();
-if(!sock) {
-  exit(-1);
+if(!sock){
+  exit(0);
 }
 
-## Get the version of VLC Media Player
 vlcVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
                           "VLC.app/Contents/Info CFBundleShortVersionString"));
 
-## Close Socket
 close(sock);
 
 ## Exit if version not found
@@ -82,14 +73,12 @@ if(!vlcVer || "does not exist" >< vlcVer){
   exit(0);
 }
 
-## build cpe
 cpe = build_cpe(value:vlcVer, exp:"^([0-9.]+)", base:"cpe:/a:videolan:vlc_media_player:");
 if(isnull(cpe))
   cpe = "cpe:/a:videolan:vlc_media_player";
 
 register_product(cpe:cpe, location:'/Applications/VLC.app');
 
-## Set the version in KB
 set_kb_item(name: "VLC/Media/Player/MacOSX/Version", value:vlcVer);
 
 log_message(data: build_detection_report(app: "VLC Media Player",

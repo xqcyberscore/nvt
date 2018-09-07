@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_detect_macosx.nasl 9906 2018-05-18 10:34:56Z santu $
+# $Id: gb_adobe_photoshop_detect_macosx.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Adobe Photoshop Version Detection (Mac OS X)
 #
@@ -30,23 +30,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802783");
-  script_version("$Revision: 9906 $");
+  script_version("$Revision: 11279 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 12:34:56 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-16 10:35:58 +0530 (Wed, 16 May 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Photoshop Version Detection (Mac OS X)");
 
-  tag_summary =
-"Detection of installed version of Adobe Photoshop.
+
+  script_tag(name:"summary", value:"Detects the installed version of Adobe Photoshop.
 
 The script logs in via ssh, searches for folder 'Adobe Photoshop.app' and
 queries the related 'info.plist' file for string 'CFBundleShortVersionString'
-via command line option 'defaults read'.";
-
-
-  script_tag(name : "summary" , value : tag_summary);
+via command line option 'defaults read'.");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_dependencies("gather-package-list.nasl");
@@ -55,14 +52,13 @@ via command line option 'defaults read'.";
   exit(0);
 }
 
-
 include("ssh_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 sock = ssh_login_or_reuse_connection();
-if(!sock) {
-  exit(-1);
+if(!sock){
+  exit(0);
 }
 
 foreach ver (make_list("1", "2", "3", "4", "5", "6"))
@@ -94,12 +90,12 @@ foreach ver (make_list("1", "2", "3", "4", "5", "6"))
                                            cpe:cpe,
                                            concluded: photoVer));
   }
-  
+
 if(isnull(photoVer) || "does not exist" >< photoVer)
 {
   foreach ver (make_list("2014", "2014.2.2", "2015", "2015.1", "2015.5", "2015.5.1", "2017", "2017.0.1", "2017.1.0", "2017.1.1", "2018"))
   {
-      
+
     photoVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
                     "Adobe\ Photoshop\ CC\ " + ver + "/Adobe\ Photoshop\ CC\ " +
                     ver + ".app/Contents/Info CFBundleShortVersionString"));
@@ -107,9 +103,9 @@ if(isnull(photoVer) || "does not exist" >< photoVer)
     if(isnull(photoVer) || "does not exist" >< photoVer){
       continue;
     }
-      
+
     set_kb_item(name: "Adobe/Photoshop/MacOSX/Version", value:photoVer);
- 
+
     cpe = build_cpe(value:photoVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:photoshop_cc" +
                         ver + ":");
     if(isnull(cpe))

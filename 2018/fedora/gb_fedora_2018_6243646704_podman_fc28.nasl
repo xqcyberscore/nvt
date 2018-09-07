@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_6243646704_podman_fc28.nasl 10585 2018-07-24 06:26:46Z santu $
+# $Id: gb_fedora_2018_6243646704_podman_fc28.nasl 11281 2018-09-07 09:10:30Z cfischer $
 #
 # Fedora Update for podman FEDORA-2018-6243646704
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874840");
-  script_version("$Revision: 10585 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-24 08:26:46 +0200 (Tue, 24 Jul 2018) $");
+  script_version("$Revision: 11281 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:10:30 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-21 06:05:47 +0200 (Sat, 21 Jul 2018)");
   script_cve_id("CVE-2018-10892");
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for podman FEDORA-2018-6243646704");
   script_tag(name:"summary", value:"Check the version of podman");

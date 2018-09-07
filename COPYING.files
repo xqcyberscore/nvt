@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Fri, 07 Sep 2018 08:54:42 +0200
+# Automatically created on:  Fri, 07 Sep 2018 11:29:53 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39447,9 +39447,11 @@
 2018/debian/deb_dla_1490.nasl: GPLv2+
 2018/debian/deb_dla_1491.nasl: GPLv2+
 2018/debian/deb_dla_1492.nasl: GPLv2+
+2018/debian/deb_dla_1493.nasl: GPLv2+
 2018/debian/deb_dla_1494.nasl: GPLv2+
 2018/debian/deb_dla_1495.nasl: GPLv2+
 2018/debian/deb_dla_1496.nasl: GPLv2+
+2018/debian/deb_dla_1497.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -40841,6 +40843,7 @@
 2018/limesurvey/gb_limesurvey_csrf_vuln.nasl: GPLv2+
 2018/limesurvey/gb_limesurvey_file_discl_vuln.nasl: GPLv2+
 2018/limesurvey/gb_limesurvey_file_discl_vuln_sep18.nasl: GPLv2+
+2018/limesurvey/gb_limesurvey_mult_vuln_sep18.nasl: GPLv2+
 2018/livezilla/gb_livezilla_searchfor_param_xss_vuln.nasl: GPLv2+
 2018/lutron/gb_lutron_homeworks_processor_default_password.nasl: GPLv2+
 2018/lutron/gb_lutron_quantum_integ_device_infor_disc_vuln.nasl: GPLv2+
@@ -59165,6 +59168,7 @@ gsf/2018/ca/gb_ca_priviliged_access_manager_xss_vuln.nasl: GPLv2+
 gsf/2018/ca/gb_uim_mult_vuln.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_acs_cisco-sa-20180307-acs2.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_acs_cisco-sa-20180502-acs1.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_acs_cisco-sa-20180824-linux-ip-fragment.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_acs_cisco-sa-20180905-acsxxe.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_aironet_cisco-sa-20180502-aironet-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_aironet_cisco-sa-20180502-aironet-ssh.nasl: GPLv2+
@@ -59218,9 +59222,11 @@ gsf/2018/cisco/gb_cisco_firepower_management_center_cisco-sa-20180516-firepwr-pb
 gsf/2018/cisco/gb_cisco_firepower_management_center_cisco-sa-20180620-firepower-csrf.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_firepower_management_center_cisco-sa-20180711-firepower-dos.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_firepower_management_center_cisco-sa-20180711-firepwr-ssl-dos.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_firepower_management_center_cisco-sa-20180824-linux-ip-fragment.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_firesight_cisco-sa-20180606-FireSIGHT-vpn-bypass.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_firesight_cisco-sa-20180711-firesight-file-bypass.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_firesight_cisco-sa-20180711-firesight-url-bypass.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_firesight_cisco-sa-20180824-linux-ip-fragment.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_imc_cisco-sa-20180905-cimc-injection.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180117-iess.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ios_cisco-sa-20180207-ios.nasl: GPLv2+
@@ -59287,6 +59293,7 @@ gsf/2018/cisco/gb_cisco_ise_cisco-sa-20180516-ise-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ise_cisco-sa-20180606-ise-xss.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ise_cisco-sa-20180801-ise-csrf.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_ise_cisco-sa-20180823-apache-struts.nasl: GPLv2+
+gsf/2018/cisco/gb_cisco_ise_cisco-sa-20180824-linux-ip-fragment.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_jabber_mult_xss_vuln_cisco-sa-20180221-jcf_jcf1_win.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180502-cms-cx.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_meeting_server_cisco-sa-20180516-msms.nasl: GPLv2+

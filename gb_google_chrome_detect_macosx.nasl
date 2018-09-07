@@ -1,6 +1,6 @@
 #############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_detect_macosx.nasl 9608 2018-04-25 13:33:05Z jschulte $
+# $Id: gb_google_chrome_detect_macosx.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Google Chrome Version Detection (MacOSX)
 #
@@ -14,7 +14,7 @@
 # According to cr57 and new style script_tags.
 #
 # Copyright:
-# Copyright (c) 2011 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright(c) 2011 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -33,15 +33,15 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802318");
-  script_version("$Revision: 9608 $");
+  script_version("$Revision: 11279 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 15:33:05 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-08-10 13:49:51 +0200 (Wed, 10 Aug 2011)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Google Chrome Version Detection (MacOSX)");
 
-  script_tag(name : "summary" , value : "Detection of installed version of Google Chrome on Mac OS X.
+  script_tag(name:"summary", value:"Detects the installed version of Google Chrome on Mac OS X.
 
   The script logs in via ssh, searches for folder 'Google Chrome.app' and
   queries the related 'info.plist' file for string 'CFBundleShortVersionString'
@@ -55,21 +55,19 @@ if(description)
   exit(0);
 }
 
-
 include("ssh_func.inc");
 include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
 sock = ssh_login_or_reuse_connection();
-if(!sock) {
-  exit(-1);
+if(!sock){
+  exit(0);
 }
 
 chromeVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
              "Google\ Chrome.app/Contents/Info CFBundleShortVersionString"));
 
-## Close Socket
 close(sock);
 
 ## Exit if version not found

@@ -1,17 +1,14 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_sketchup_detect_win.nasl 10899 2018-08-10 13:49:35Z cfischer $
+# $Id: gb_google_sketchup_detect_win.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Google SketchUp Version Detection (Windows)
 #
 # Authors:
 # Antu Sanadi <santu@secpod.com>
 #
-# Updated By : Rachana Shetty <srachana@secpod.com> on 2012-10-09
-# Updated to detect for version higher version
-#
 # Copyright:
-# Copyright (c) 2010 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (c) 2011 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -30,21 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800434");
-  script_version("$Revision: 10899 $");
+  script_version("$Revision: 11279 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:49:35 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-04-11 14:40:00 +0200 (Mon, 11 Apr 2011)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Google SketchUp Version Detection (Windows)");
-
 
   script_tag(name:"summary", value:"Detects the installed version of Google SketchUp.
 
 The script logs in via smb, searches for Google SketchUp in the registry
 and gets the version from registry");
   script_category(ACT_GATHER_INFO);
-  script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
+  script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "SMB/Windows/Arch");
@@ -59,9 +55,8 @@ include("host_details.inc");
 include("secpod_smb_func.inc");
 
 osArch = get_kb_item("SMB/Windows/Arch");
-if(!osArch)
-{
-  exit(-1);
+if(!osArch){
+  exit(0);
 }
 
 if(!registry_key_exists(key:"SOFTWARE\Google") &&

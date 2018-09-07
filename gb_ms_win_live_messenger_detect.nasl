@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_live_messenger_detect.nasl 10883 2018-08-10 10:52:12Z cfischer $
+# $Id: gb_ms_win_live_messenger_detect.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Microsoft Windows Live Messenger Client Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800331");
-  script_version("$Revision: 10883 $");
+  script_version("$Revision: 11279 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 12:52:12 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-01-08 07:43:30 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Microsoft Windows Live Messenger Client Version Detection");
@@ -55,21 +55,12 @@ include("cpe.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-osArch = "";
-key_list = "";
-appName = "";
-appLoc = "";
-livemgrVer = "";
-msgPlusVer  = "";
-
-if(!get_kb_item("SMB/WindowsVersion"))
-{
-  exit(-1);
+if(!get_kb_item("SMB/WindowsVersion")){
+  exit(0);
 }
 
 osArch = get_kb_item("SMB/Windows/Arch");
-if(!osArch)
-{
+if(!osArch){
   exit(0);
 }
 

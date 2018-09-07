@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samba_detect.nasl 10399 2018-07-04 13:23:27Z cfischer $
+# $Id: gb_samba_detect.nasl 11279 2018-09-07 09:08:31Z cfischer $
 #
 # Samba Version Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800403");
-  script_version("$Revision: 10399 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-04 15:23:27 +0200 (Wed, 04 Jul 2018) $");
+  script_version("$Revision: 11279 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-01-09 13:48:55 +0100 (Fri, 09 Jan 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -56,7 +56,7 @@ include("cpe.inc");
 include("host_details.inc");
 
 sock = ssh_login_or_reuse_connection();
-if( ! sock ) exit(-1);
+if( ! sock ) exit(0);
 
 smbName = find_file( file_name:"smbd", file_path:"/", useregex:TRUE, regexpar:"$", sock:sock );
 

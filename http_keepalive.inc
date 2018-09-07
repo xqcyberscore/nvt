@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: http_keepalive.inc 11005 2018-08-16 11:48:55Z cfischer $
+# $Id: http_keepalive.inc 11276 2018-09-07 08:18:40Z cfischer $
 #
 # Methods to support http keep alive handling
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 11005 $
+# $Revision: 11276 $
 #
 ###############################################################################
 
@@ -382,16 +382,18 @@ function check_win_dir_trav_ka( port, url ) {
 #
 # @param port the HTTP port of the target
 # @param item the item to request
+# @param host the hostname (e.g. from http_host_name with the dont_add_port:TRUE
+#             parameter or get_host_name) of the remote server. If no host parameter
+#             is passed http_host_name will be called automatically and a debug
+#             message is logged into the KB (currently commented out).
 #
 # @return TRUE if the requested item exists on the remote web server, FALSE otherwise
 #         and NULL in the cases where wrong data is passed to the function or where the
 #         server is respondig with a 200 status code to not existing files.
 #
-# @todo Add a host parameter which needs to be passed by NVTs.
-#
-function is_cgi_installed_ka( item, port ) {
+function is_cgi_installed_ka( port, item, host ) {
 
-  local_var item, port, req, res, no404, dir, slash, dirs;
+  local_var port, item, host, req, res, no404, dir, slash, dirs;
   # nb: http_cgi_disabled and optimize_test_enabled are global vars from http_func.inc
 
   if( ! item ) {
@@ -419,7 +421,10 @@ function is_cgi_installed_ka( item, port ) {
     slash = "";
   }
 
-  if( ! host ) host = http_host_name( dont_add_port:TRUE );
+  if( ! host ) {
+    host = http_host_name( dont_add_port:TRUE );
+    #set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#is_cgi_installed_ka" );
+  }
 
   no404 = get_http_no404_string( port:port, host:host );
   if( strlen( no404 ) >= 1 ) return NULL;
@@ -525,12 +530,16 @@ function get_http_page( port, url, max_redirects ) {
 #
 # @param port the HTTP port of the target
 # @param item the URL/item to request
+# @param host the hostname (e.g. from http_host_name with the dont_add_port:TRUE
+#             parameter or get_host_name) of the remote server. If no host parameter
+#             is passed http_host_name will be called automatically and a debug
+#             message is logged into the KB (currently commented out).
 #
 # @return the response to the HTTP GET request or NULL if no response was received
 #
-function http_get_cache( port, item ) {
+function http_get_cache( port, item, host ) {
 
-  local_var port, item, req, res;
+  local_var port, item, host, req, res;
 
   if( ! port ) {
     set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#http_get_cache" );
@@ -549,7 +558,12 @@ function http_get_cache( port, item ) {
     exit( 0 );
   }
 
-  res = get_kb_item( "Cache/" + port + "/URL_" + item );
+  if( ! host ) {
+    host = http_host_name( dont_add_port:TRUE );
+    #set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#host#-#http_get_cache" );
+  }
+
+  res = get_kb_item( "Cache/" + host + "/" + port + "/URL_" + item );
   if( res ) return res;
 
   req = http_get( port:port, item:item );
@@ -569,7 +583,7 @@ function http_get_cache( port, item ) {
       res !~ "^HTTP/1\.[01] 408" &&
       res !~ "^HTTP/1\.[01] 429" &&
       res =~ "^HTTP/1\.[01]" ) {
-    replace_kb_item( name:"Cache/" + port + "/URL_" + item, value:res );
+    replace_kb_item( name:"Cache/" + host + "/" + port + "/URL_" + item, value:res );
   }
   return res;
 }
