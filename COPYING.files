@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 06 Sep 2018 13:19:53 +0200
+# Automatically created on:  Fri, 07 Sep 2018 08:54:42 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39651,6 +39651,7 @@
 2018/dlink/gb_dlink_dsl6850U_mult_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink_dsl_login_rce_vuln.nasl: GPLv2+
 2018/dlink/gb_dlink_dsl_xss_n_path_trav_vuln.nasl: GPLv2+
+2018/docker/gb_docker_for_windows_privilege_escalation_vuln.nasl: GPLv2+
 2018/dokuwiki/gb_dokuwiki_file_download_vuln.nasl: GPLv2+
 2018/dolibarr/gb_dolibarr_5_0_3_mult_vuln.nasl: GPLv2+
 2018/dolibarr/gb_dolibarr_7_0_0_mult_vuln.nasl: GPLv2+
@@ -40680,6 +40681,7 @@
 2018/foxit/gb_foxit_reader_mult_vuln_win.nasl: GPLv2+
 2018/freetype/gb_freetype_dos_vuln_lin.nasl: GPLv2+
 2018/freetype/gb_freetype_dos_vuln_win.nasl: GPLv2+
+2018/gb_compromised_webapp_detect.nasl: GPLv2+
 2018/gb_gpon_router_mult_vuln.nasl: GPLv2+
 2018/gb_http_cleartext_creds_submit.nasl: GPLv2+
 2018/gb_kubernetes_dashboard_exposure_vuln.nasl: GPLv2+
@@ -40817,6 +40819,7 @@
 2018/joomla/gb_joomla_unpublished_tags_info_disc_vuln.nasl: GPLv2+
 2018/joomla/gb_joomla_uri_class_xss_vuln.nasl: GPLv2+
 2018/joomla/gb_joomla_user_notes_list_view_sqli_vuln.nasl: GPLv2+
+2018/k7computing/gb_k7_antivirus_premium_mult_vuln_sep18.nasl: GPLv2+
 2018/kamailio/gb_kamailio_dos_vuln.nasl: GPLv2+
 2018/kamailio/gb_kamailio_heap_overflow_vuln.nasl: GPLv2+
 2018/kaseya/gb_kaseya_vsa_privilege_escalation_vuln.nasl: GPLv2+
@@ -41204,6 +41207,8 @@
 2018/mozilla/gb_mozilla_firefox_esr_mfsa_2018-15_2018-17_01_win.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_esr_mfsa_2018-15_2018-17_macosx.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_esr_mfsa_2018-15_2018-17_win.nasl: GPLv2+
+2018/mozilla/gb_mozilla_firefox_esr_mfsa_2018-18_2018-21_macosx.nasl: GPLv2+
+2018/mozilla/gb_mozilla_firefox_esr_mfsa_2018-18_2018-21_win.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_mfsa_2018-01_2018-01_macosx.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_mfsa_2018-01_2018-01_win.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_mfsa_2018-02_2018-03_macosx.nasl: GPLv2+
@@ -41223,6 +41228,10 @@
 2018/mozilla/gb_mozilla_firefox_mfsa_2018-14_2018-14_win.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_mfsa_2018-15_2018-17_macosx.nasl: GPLv2+
 2018/mozilla/gb_mozilla_firefox_mfsa_2018-15_2018-17_win.nasl: GPLv2+
+2018/mozilla/gb_mozilla_firefox_mfsa_2018-18_2018-21_macosx.nasl: GPLv2+
+2018/mozilla/gb_mozilla_firefox_mfsa_2018-18_2018-21_win.nasl: GPLv2+
+2018/mozilla/gb_mozilla_firefox_password_info_disc_vuln_macosx.nasl: GPLv2+
+2018/mozilla/gb_mozilla_firefox_password_info_disc_vuln_win.nasl: GPLv2+
 2018/mozilla/gb_mozilla_thunderbird_mfsa_2018-04_2018-04_macosx.nasl: GPLv2+
 2018/mozilla/gb_mozilla_thunderbird_mfsa_2018-04_2018-04_win.nasl: GPLv2+
 2018/mozilla/gb_mozilla_thunderbird_mfsa_2018-05_2018-13_macosx.nasl: GPLv2+
@@ -41295,6 +41304,8 @@
 2018/openemr/gb_openemr_newlistname_sql_injec_vuln.nasl: GPLv2+
 2018/openemr/gb_openemr_xss_vuln_0718.nasl: GPLv2+
 2018/openoffice/gb_openoffice_writer_odt_info_disclosure_vuln_may18_win.nasl: GPLv2+
+2018/openssh/gb_openssh_gss2_user_enumeration_vuln_lin.nasl: GPLv2+
+2018/openssh/gb_openssh_gss2_user_enumeration_vuln_win.nasl: GPLv2+
 2018/openssh/gb_openssh_user_enumeration_vuln_aug18_lin.nasl: GPLv2+
 2018/openssh/gb_openssh_user_enumeration_vuln_aug18_win.nasl: GPLv2+
 2018/openssl/gb_openssl_cache_timing_info_disc_vuln_lin.nasl: GPLv2+
@@ -41668,6 +41679,7 @@
 2018/pi-hole/gb_pihole_mult_vuln_feb18.nasl: GPLv2+
 2018/piwigo/gb_piwigo_mult_xss_vuln.nasl: GPLv2+
 2018/pkp/gb_pkp_open_journal_systems_xss_vuln.nasl: GPLv2+
+2018/planex/gb_planex_csw50hd_hardcode_cred_vuln.nasl: GPLv2+
 2018/postgresql/gb_postgresql_info_disc_missing_auth_vuln_aug18_lin.nasl: GPLv2+
 2018/postgresql/gb_postgresql_info_disc_missing_auth_vuln_aug18_win.nasl: GPLv2+
 2018/postgresql/gb_postgresql_info_disc_vuln01_feb18_lin.nasl: GPLv2+
@@ -42676,6 +42688,7 @@ gb_dm_filemanager_detect.nasl: GPLv2+
 gb_dnaLIMS_detect.nasl: GPLv2+
 gb_dnp3_detect.nasl: GPLv2+
 gb_dns_os_detection.nasl: GPLv2+
+gb_docker_for_windows_detect.nasl: GPLv2+
 gb_docker_remote_detect.nasl: GPLv2+
 gb_docker_service_detection_lsc.nasl: GPLv2+
 gb_document_manager_detect.nasl: GPLv2+
@@ -43062,6 +43075,7 @@ gb_junos_space_webui_detect.nasl: GPLv2+
 gb_justsystems_ichitaro_prdts_detect.nasl: GPLv2+
 gb_jv2_folder_gallery_detect.nasl: GPLv2+
 gb_k7_anti_virus_plus_detect_win.nasl: GPLv2+
+gb_k7_anti_virus_premium_detect_win.nasl: GPLv2+
 gb_k7_total_security_detect_win.nasl: GPLv2+
 gb_k7_ultimate_security_detect_win.nasl: GPLv2+
 gb_kallithea_detect.nasl: GPLv2+
@@ -43347,6 +43361,7 @@ gb_openmairie_prdts_detect.nasl: GPLv2+
 gb_openoffice_detect_macosx.nasl: GPLv2+
 gb_openpro_detect.nasl: GPLv2+
 gb_opensc_detect.nasl: GPLv2+
+gb_openshift_detect.nasl: GPLv2+
 gb_open_site_detect.nasl: GPLv2+
 gb_openssl_detect_lin.nasl: GPLv2+
 gb_openssl_detect.nasl: GPLv2+
@@ -43459,6 +43474,7 @@ gb_pihole_detect.nasl: GPLv2+
 gb_pivotx_detect.nasl: GPLv2+
 gb_piwigo_detect.nasl: GPLv2+
 gb_pkp_open_journal_systems_detect.nasl: GPLv2+
+gb_planex_csw50hd_camera_remote_detect.nasl: GPLv2+
 gb_plesk_detect.nasl: GPLv2+
 gb_plex_media_server_remote_detect.nasl: GPLv2+
 gb_plone_detect.nasl: GPLv2+
@@ -59439,6 +59455,7 @@ gsf/2018/f5/gb_f5_big_ip_K19361245.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K19634255.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20134942.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20145801.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K20225390.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20486351.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K20682450.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K21462542.nasl: GPLv2+
@@ -59511,6 +59528,7 @@ gsf/2018/f5/gb_f5_big_ip_K65355492.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K70321874.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K71877858.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K72403108.nasl: GPLv2+
+gsf/2018/f5/gb_f5_big_ip_K73008537.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K74374841.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K75429050.nasl: GPLv2+
 gsf/2018/f5/gb_f5_big_ip_K75432956.nasl: GPLv2+
@@ -59610,6 +59628,7 @@ gsf/2018/ibm/gb_ibm_sametime_info_disc_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_security_identity_manager_mult_vuln_june18.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_storwize_mult_vuln.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_tivoli_remote_control_info_disc_vuln.nasl: GPLv2+
+gsf/2018/ibm/gb_ibm_urbancode_deploy_info_disc_vuln_swg2C1000219.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_urbancode_deploy_info_disc_vuln_swg2C1000376.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_urbancode_deploy_mult_vuln_swg2C1000264.nasl: GPLv2+
 gsf/2018/ibm/gb_ibm_urbancode_deploy_mult_xss_vuln_swg21970811.nasl: GPLv2+
@@ -59944,6 +59963,7 @@ gsf/2018/puppet/gb_puppet_enterprise_rce_vuln.nasl: GPLv2+
 gsf/2018/qnap/gb_qnap_qcenter_nas-201807-10.nasl: GPLv2+
 gsf/2018/quest/gb_netvault_backup_mult_vuln.nasl: GPLv2+
 gsf/2018/quest/gb_quest_kace_sma_mult_vuln.nasl: GPLv2+
+gsf/2018/redhat/gb_rh_openshift_dos_vuln.nasl: GPLv2+
 gsf/2018/redlion/gb_redlion_hmi_no_auth_vuln.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_0151-01_kernel.nasl: GPLv2+
 gsf/2018/rhel/gb_RHSA-2018_0158-01_dhcp.nasl: GPLv2+

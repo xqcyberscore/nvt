@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: webmirror.nasl 11021 2018-08-17 07:48:11Z cfischer $
+# $Id: webmirror.nasl 11275 2018-09-07 06:39:46Z emoss $
 #
 # WEBMIRROR 2.0
 #
@@ -35,8 +35,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10662");
-  script_version("$Revision: 11021 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:48:11 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11275 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 08:39:46 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-10-02 19:48:14 +0200 (Fri, 02 Oct 2009)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -107,7 +107,6 @@ debug = 0;
 
 URLs_hash        = make_list();
 CGIs             = make_list();
-Misc             = make_list();
 Dirs             = make_list();
 PW_inputs        = make_list();
 URLs_30x_hash    = make_list();
@@ -871,24 +870,27 @@ function parse_form( elements, current, port, host ) {
 function pre_parse( src_page, data, port, host ) {
 
   local_var src_page, data, port, host;
-  local_var js_data, data2, php_path, fp_save;
+  local_var js_data, js_src, data2, php_path, fp_save;
 
+  # TODO: Maybe merge with the js_src below and make a generic regex which is matching any of the following variants (* is no regex but just a placeholder for a arbitrary code within those tags)
+  # <script type=*>*</script>
+  # <script type=* src=*></script>
+  # <script src=* type=*></script>
+  # <script src=*></script>
+  # <script>*</script>
   if( js_data = eregmatch( string:data, pattern:'<script( type=(\'text/javascript\'|"text/javascript"|\'application/javascript\'|"application/javascript"))?>(.*)</script>', icase:TRUE ) ) {
 
     # https://coinhive.com/documentation/miner
     if( "CoinHive.Anonymous" >< js_data[3] || "CoinHive.User" >< js_data[3] || "CoinHive.Token" >< js_data[3] ) {
       set_kb_item( name:"www/coinhive/detected", value:TRUE );
-      if( ! Misc[src_page] ) {
-        # nb: The javascript might be embedded into web page by the owner on purpose.
-        if( ".didOptOut" >< js_data[3] ) {
-          set_kb_item( name:"www/" + host + "/" + port + "/content/coinhive_optout", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
-        # The "AuthedMine" (https://coinhive.com/documentation/authedmine) won't run the JS without asking the user.
-        } else if( "https://authedmine.com/lib/authedmine.min.js" >< js_data[3] ) {
-          set_kb_item( name:"www/" + host + "/" + port + "/content/coinhive_optin", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
-        } else {
-          set_kb_item( name:"www/" + host + "/" + port + "/content/coinhive_nooptout", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
-        }
-        Misc[src_page] = 1;
+      # nb: The javascript might be embedded into web page by the owner on purpose.
+      if( ".didOptOut" >< js_data[3] ) {
+        set_kb_item( name:"www/" + host + "/" + port + "/content/coinhive_optout", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
+      # The "AuthedMine" (https://coinhive.com/documentation/authedmine) won't run the JS without asking the user.
+      } else if( "https://authedmine.com/lib/authedmine.min.js" >< js_data[3] ) {
+        set_kb_item( name:"www/" + host + "/" + port + "/content/coinhive_optin", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
+      } else {
+        set_kb_item( name:"www/" + host + "/" + port + "/content/coinhive_nooptout", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
       }
     }
 
@@ -898,27 +900,31 @@ function pre_parse( src_page, data, port, host ) {
     if( '();","\\x7C","\\x73\\x70\\x6C\\x69\\x74","' >< js_data[3] &&
         "\x43\x72\x79\x70\x74\x6F\x6E\x69\x67\x68\x74\x57\x41\x53\x4D\x57\x72\x61\x70\x70\x65\x72" >< js_data[3] ) {
       set_kb_item( name:"www/coinhive/detected", value:TRUE );
-      if( ! Misc[src_page] ) {
-        set_kb_item( name:"www/" + host + "/" + port + "/content/coinhive_obfuscated", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
-        Misc[src_page] = 1;
-      }
+      set_kb_item( name:"www/" + host + "/" + port + "/content/coinhive_obfuscated", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
+    }
+  }
+
+  if( js_src = eregmatch( string:data, pattern:'<script [^>]+src=["\']([^"\']+)["\']', icase:TRUE ) ) {
+
+    # https://gwillem.gitlab.io/2018/08/30/magentocore.net_skimmer_most_aggressive_to_date/
+    # Examples seen in the wild:
+    # <script type="text/javascript" src="https://magentocore.net/mage/mage.js"></script>
+    # <script type='text/javascript' src='https://magentocore.net/mage/mage.js'></script>
+    # <script type="text/javascript" src="https://magentocore.net/mage/poter/poter1.30.js"></script>
+    if( "magentocore.net" >< js_src[1] && ( "mage.js" >< js_src[1] || js_src[1] =~ "poter[0-9.]+\.js" ) ) {
+      set_kb_item( name:"www/compromised_webapp/detected", value:TRUE );
+      set_kb_item( name:"www/" + host + "/" + port + "/content/compromised_webapp", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) + "#----#" + js_src[0] + "#----#Magentocore.net Skimmer, https://gwillem.gitlab.io/2018/08/30/magentocore.net_skimmer_most_aggressive_to_date/" );
     }
   }
 
   if( "Index of /" >< data ) {
-    if( ! Misc[src_page] ) {
-      if( "?D=A" >!< src_page && "?PageServices" >!< src_page ) {
-        set_kb_item( name:"www/" + host + "/" + port + "/content/dir_index", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
-        Misc[src_page] = 1;
-      }
+    if( "?D=A" >!< src_page && "?PageServices" >!< src_page ) {
+      set_kb_item( name:"www/" + host + "/" + port + "/content/dir_index", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
     }
   }
 
   if( "<title>phpinfo()</title>" >< data ) {
-    if( ! Misc[src_page] ) {
-      set_kb_item( name:"www/" + host + "/" + port + "/content/phpinfo_script", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
-      Misc[src_page] = 1;
-    }
+    set_kb_item( name:"www/" + host + "/" + port + "/content/phpinfo_script", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
   }
 
   if( "Fatal" >< data || "Warning" >< data ) {
@@ -930,36 +936,24 @@ function pre_parse( src_page, data, port, host ) {
 
     php_path = ereg_replace( pattern:"in <b>([^<]*)</b>.*", string:data2, replace:"\1" );
     if( php_path != data2 ) {
-      if( ! Misc[src_page] ) {
-        set_kb_item( name:"www/" + host + "/" + port + "/content/php_physical_path", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) + " (" + php_path + ")" );
-        Misc[src_page] = 1;
-      }
+      set_kb_item( name:"www/" + host + "/" + port + "/content/php_physical_path", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) + " (" + php_path + ")" );
     }
   }
 
   data2 = strstr( data, "unescape" );
 
   if( data2 && ereg( pattern:"unescape..(%([0-9]|[A-Z])*){200,}.*", string:data2 ) ) {
-    if( ! Misc[src_page] ) {
-      set_kb_item( name:"www/" + host + "/" + port + "/content/guardian", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
-      Misc[src_page] = 1;
-    }
+    set_kb_item( name:"www/" + host + "/" + port + "/content/guardian", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
   }
 
   if( "CREATED WITH THE APPLET PASSWORD WIZARD WWW.COFFEECUP.COM" >< data ) {
-    if( ! Misc[src_page] ) {
-      set_kb_item( name:"www/" + host + "/" + port + "/content/coffeecup", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
-      Misc[src_page] = 1;
-    }
+    set_kb_item( name:"www/" + host + "/" + port + "/content/coffeecup", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) );
   }
 
   if( "SaveResults" >< data ) {
     fp_save = ereg_replace( pattern:'(.*SaveResults.*U-File=)"(.*)".*', string:data, replace:"\2" );
     if( fp_save != data ) {
-      if( ! Misc[src_page] ) {
-        set_kb_item( name:"www/" + host + "/" + port + "/content/frontpage_results", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) + " (" + fp_save + ")" );
-        Misc[src_page] = 1;
-      }
+      set_kb_item( name:"www/" + host + "/" + port + "/content/frontpage_results", value:report_vuln_url( port:port, url:src_page, url_only:TRUE ) + " (" + fp_save + ")" );
     }
   }
 }

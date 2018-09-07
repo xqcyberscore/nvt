@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bonita_bpm_path_traversal_vuln.nasl 9226 2018-03-28 03:48:50Z ckuersteiner $
+# $Id: gb_bonita_bpm_path_traversal_vuln.nasl 11271 2018-09-06 14:58:32Z mmartin $
 #
 # Bonita BPM < 6.5.3 Multiple Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:bonitasoft:bonita_bpm';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106010");
-  script_version("$Revision: 9226 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-03-28 05:48:50 +0200 (Wed, 28 Mar 2018) $");
-  script_tag(name: "creation_date", value: "2015-06-16 09:22:17 +0700 (Tue, 16 Jun 2015)");
+  script_version("$Revision: 11271 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-06-16 09:22:17 +0700 (Tue, 16 Jun 2015)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
 
-  script_tag(name: "qod_type", value: "remote_active");
+  script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_cve_id("CVE-2015-3897", "CVE-2015-3898");
 
@@ -51,28 +51,28 @@ if (description)
   script_dependencies("gb_bonita_bpm_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("bonita_bpm/installed");
 
-  script_tag(name: "summary", value: "Bonita BPM is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Bonita BPM is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Send a special crafted HTTP GET request and check the response.");
+  script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response.");
 
-  script_tag(name: "insight", value: "User-supplied input passed via the 'theme' and 'location' HTTP
+  script_tag(name:"insight", value:"User-supplied input passed via the 'theme' and 'location' HTTP
 GET parameters to 'bonita/portal/themeResource' URL is not properly verified before being used as part
 of file name. (CVE-2015-3897)
 
   Attacks vectors exists involving the redirectUrl parameter to (1) bonita/login.jsp or
   (2) bonita/loginservice. (CVE-2015-3898).");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker can:
+  script_tag(name:"impact", value:"An unauthenticated attacker can:
 
   - download any system file accessible to the web server user. (CVE-2015-3897)
 
   - redirect users to arbitrary web sites and conduct phishing attacks. (CVE-2015-3898)");
 
-  script_tag(name: "affected", value: "Bonita BPM 6.5.2 an prior.");
+  script_tag(name:"affected", value:"Bonita BPM 6.5.2 an prior.");
 
-  script_tag(name: "solution", value: "Upgrade to version 6.5.3 or later");
+  script_tag(name:"solution", value:"Upgrade to version 6.5.3 or later");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/37260/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/37260/");
 
   exit(0);
 }

@@ -29,38 +29,37 @@ CPE = "cpe:/a:zohocorp:manageengine_assetexplorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805707");
-  script_version("$Revision: 6486 $");
+  script_version("$Revision: 11271 $");
   script_cve_id("CVE-2015-5061", "CVE-2015-2169");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-24 14:40:38 +0530 (Wed, 24 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Manage Engine Asset Explorer Multiple Cross Site Scripting Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is running Manage Engine Asset
+  script_tag(name:"summary", value:"The host is running Manage Engine Asset
   Explorer and is prone to multiple cross site scripting vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The multiple Flaws are due to
+  script_tag(name:"insight", value:"The multiple Flaws are due to
   - The 'VendorDef.do' script does not validate input to vendor name field
     before returning it to users.
   - Publisher registry entry script does not validate input before returning
     it to users.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attacker to create a specially crafted request that would execute arbitrary
   script code in a user's browser session within the trust relationship between
   their browser and the server.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"ManageEngine AssetExplorer version
+  script_tag(name:"affected", value:"ManageEngine AssetExplorer version
   6.1.0 Build 6112 and prior.");
 
-  script_tag(name: "solution" , value:"Upgrade to ManageEngine AssetExplorer
+  script_tag(name:"solution", value:"Upgrade to ManageEngine AssetExplorer
   version 6.1.0 build 6113 or later.
   For updates refer to  https://www.manageengine.com/products/asset-explorer");
 
@@ -81,16 +80,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-assetVer = "";
-assetPort = "";
-
-## get the port
 if(!assetPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!assetVer = get_app_version(cpe:CPE, port:assetPort)){
   exit(0);
 }

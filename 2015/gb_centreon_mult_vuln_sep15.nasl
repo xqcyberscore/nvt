@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_mult_vuln_sep15.nasl 8680 2018-02-06 09:46:38Z ckuersteiner $
+# $Id: gb_centreon_mult_vuln_sep15.nasl 11271 2018-09-06 14:58:32Z mmartin $
 #
 # Centreon Multiple Vulnerabilities - Sep15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:centreon:centreon";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805974");
-  script_version("$Revision: 8680 $");
+  script_version("$Revision: 11271 $");
   script_cve_id("CVE-2015-1560", "CVE-2015-1561");
   script_bugtraq_id(75602, 75605);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-06 10:46:38 +0100 (Tue, 06 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:07:40 +0530 (Tue, 08 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Centreon Multiple Vulnerabilities - Sep15");
@@ -45,28 +45,28 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to execute sql query or not.");
 
-  script_tag(name: "insight" , value:"Multiple errors exists as,
+  script_tag(name:"insight", value:"Multiple errors exists as,
   - Input passed via GET parameter 'sid' is not validated before passing to
   common-Func.php script.
   - Input passed via parameters 'ns_id' and 'end' is not validated before passing
   to getStats.php script.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database,
   allowing for the manipulation or disclosure of arbitrary data.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Centreon version 2.5.4 and earlier.");
+  script_tag(name:"affected", value:"Centreon version 2.5.4 and earlier.");
 
   script_tag(name:"solution", value:"Upgrade to latest version. For
   updates refer to https://www.centreon.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name: "URL", value: "https://www.exploit-db.com/exploits/37528");
-  script_xref(name: "URL", value: "https://packetstormsecurity.com/files/132607");
-  script_xref(name: "URL", value: "http://www.securityfocus.com/archive/1/archive/1/535961/100/0/threaded");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/37528");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/132607");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/535961/100/0/threaded");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -94,7 +94,6 @@ if (!dir = get_app_location(cpe:CPE, port:http_port))
 sleep = make_list(1, 2, 3);
 
 foreach sec (sleep) {
-  ## Construct the attack request
   url = dir + "/include/common/XmlTree/GetXmlTree.php?sid=%27%2Bif(1%3C2,sleep(" +
               sec + "),%27%27)%2B%27";
 

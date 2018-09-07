@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_gif_rem_code_exec_vuln.nasl 7575 2017-10-26 09:47:04Z cfischer $
+# $Id: gb_ibm_domino_gif_rem_code_exec_vuln.nasl 11271 2018-09-06 14:58:32Z mmartin $
 #
 # IBM Domino GIF Integer Truncation Remote Code Execution Vulnerability
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805543");
-  script_version("$Revision: 7575 $");
+  script_version("$Revision: 11271 $");
   script_cve_id("CVE-2015-0135");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:47:04 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-04 17:48:30 +0530 (Mon, 04 May 2015)");
   script_name("IBM Domino GIF Integer Truncation Remote Code Execution Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with IBM Domino and
   is prone to remote code execution vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an integer truncation
   flaw in nrouter.exe that is triggered when handling dimensions of specially
@@ -63,7 +62,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21701647");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21701647");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -76,9 +75,6 @@ if(description)
 include("version_func.inc");
 include("revisions-lib.inc"); # Used in get_highest_app_version
 include("host_details.inc");
-
-## Variable Initialization
-domVer = "";
 
 if(!domVer = get_highest_app_version(cpe:CPE)){
   exit(0);

@@ -29,42 +29,39 @@ CPE = "cpe:/a:cisco:jabber";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805712");
-  script_version("$Revision: 6132 $");
+  script_version("$Revision: 11271 $");
   script_cve_id("CVE-2015-4218");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-03 11:19:11 +0530 (Fri, 03 Jul 2015)");
   script_name("Cisco Jabber Information Disclosure Vulnerability June15 (Windows)");
 
-  script_tag(name: "summary" , value: "This host is installed with Cisco
+  script_tag(name:"summary", value:"This host is installed with Cisco
   Jabber and is prone to information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The flaw is due to an improper
+  script_tag(name:"insight", value:"The flaw is due to an improper
   validation of GET parameter.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   attacker to gain access to potentially sensitive information.
 
   Impact Level: System/Application.");
 
-  script_tag(name: "affected" , value:"Cisco Jabber versions through
+  script_tag(name:"affected", value:"Cisco Jabber versions through
   9.6(3) and 9.7 through 9.7(5) Windows.");
 
-  script_tag(name: "solution" , value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=39494");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=39494");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -78,10 +75,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-jbVer = "";
-
-## Get version
 if(!jbVer = get_app_version(cpe:CPE)){
   exit(0);
 }
@@ -92,7 +85,6 @@ if(!jbVer){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_in_range(version:jbVer, test_version:"9.6.0", test_version2:"9.6.3")||
    version_in_range(version:jbVer, test_version:"9.7.0", test_version2:"9.7.5"))
 {

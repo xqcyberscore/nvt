@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_dos_vuln.nasl 6443 2017-06-27 10:00:22Z teissa $
+# $Id: gb_openssh_dos_vuln.nasl 11271 2018-09-06 14:58:32Z mmartin $
 #
 # OpenSSH Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806048");
-  script_version("$Revision: 6443 $");
+  script_version("$Revision: 11271 $");
   script_cve_id("CVE-2015-6565");
   script_bugtraq_id(75990);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-10 14:36:41 +0530 (Thu, 10 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSH Denial of Service Vulnerability");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running OpenSSH and is prone
   to denial of service vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to sshd uses world-writable
   permissions for TTY devices.");
@@ -60,8 +59,8 @@ if(description)
   For updates refer to http://www.openssh.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://www.openssh.com/txt/release-7.0");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2015/08/22/1");
+  script_xref(name:"URL", value:"http://www.openssh.com/txt/release-7.0");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2015/08/22/1");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Denial of Service");
@@ -75,21 +74,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-sshPort = 0;
-sshVer = "";
-
-## Get HTTP Port
 if(!sshPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!sshVer = get_app_version(cpe:CPE, port:sshPort)){
   exit(0);
 }
 
-## Checking for Vulnerable version
 if(version_is_equal(version:sshVer, test_version:"6.8") ||
    version_is_equal(version:sshVer, test_version:"6.9"))
 {

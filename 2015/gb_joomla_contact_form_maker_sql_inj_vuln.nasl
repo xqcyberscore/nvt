@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_contact_form_maker_sql_inj_vuln.nasl 6443 2017-06-27 10:00:22Z teissa $
+# $Id: gb_joomla_contact_form_maker_sql_inj_vuln.nasl 11271 2018-09-06 14:58:32Z mmartin $
 #
 # Joomla Contact Form Maker SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805519");
-  script_version("$Revision: 6443 $");
+  script_version("$Revision: 11271 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-01 18:13:27 +0530 (Wed, 01 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Joomla Contact Form Maker SQL Injection Vulnerability");
@@ -54,14 +54,14 @@ if(description)
 
   script_tag(name:"affected", value:"Joomla Contact Form Maker version 1.0.1");
 
-  script_tag(name: "solution" , value:"Upgrade to 1.0.3 or later.
+  script_tag(name:"solution", value:"Upgrade to 1.0.3 or later.
   For updates refer to
   http://extensions.joomla.org/extensions/extension/contacts-and-feedback/contact-forms/contact-form-maker");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36561");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/131163");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/36561");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/131163");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -77,23 +77,14 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-# Variable Initialization
-http_port = 0;
-req = "";
-res = "";
-dir = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Joomla Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-##Construct Attack Request
 url = dir + "/index.php?option=com_contactformmaker&view=contactformmaker&"
           + "id=1%27SQL-INJECTION-TEST";
 

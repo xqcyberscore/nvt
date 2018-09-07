@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openemr_sql_inj_vuln.nasl 6254 2017-05-31 09:04:18Z teissa $
+# $Id: gb_openemr_sql_inj_vuln.nasl 11271 2018-09-06 14:58:32Z mmartin $
 #
 # OpenEMR 'validateUser.php' SQL Injection Vulnerability
 #
@@ -29,42 +29,42 @@ CPE = "cpe:/a:open-emr:openemr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805345");
-  script_version("$Revision: 6254 $");
+  script_version("$Revision: 11271 $");
   script_cve_id("CVE-2012-2115");
   script_bugtraq_id(51247);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-02 15:41:52 +0530 (Mon, 02 Mar 2015)");
   script_name("OpenEMR 'validateUser.php' SQL Injection Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with OpenEMR
+  script_tag(name:"summary", value:"The host is installed with OpenEMR
   and is prone to sql injection vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted request via HTTP GET and
+  script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to execute sql query or not.");
 
-  script_tag(name: "insight" , value:"Flaw is due to the validateUser.php script
+  script_tag(name:"insight", value:"Flaw is due to the validateUser.php script
   not properly sanitizing user-supplied input to the 'u' parameter.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database,
   allowing for the manipulation or disclosure of arbitrary data.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"OpenEMR version 4.1.0 and possibly
+  script_tag(name:"affected", value:"OpenEMR version 4.1.0 and possibly
   earlier.");
 
-  script_tag(name: "solution" , value:"Upgrade to version 4.1.1 or later,
+  script_tag(name:"solution", value:"Upgrade to version 4.1.1 or later,
   For updates refer to http://www.open-emr.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_analysis");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Jan/27");
-  script_xref(name : "URL" , value : "http://www.mavitunasecurity.com/sql-injection-vulnerability-in-openemr");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2012/Jan/27");
+  script_xref(name:"URL", value:"http://www.mavitunasecurity.com/sql-injection-vulnerability-in-openemr");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -80,19 +80,12 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-time_taken = 0;
 wait_extra_sec = 5;
 
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get OpenEMR Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
@@ -103,7 +96,6 @@ sleep = make_list(5, 7, 9);
 # Use sleep time to check we are able to execute command
 foreach sec (sleep)
 {
-  # Construct attack request
   url = dir + "/interface/login/validateUser.php?u='%2b(SELECT%201%20FROM%20"
             + "(SELECT%20SLEEP("+ sec +"))A)%2b'";
 

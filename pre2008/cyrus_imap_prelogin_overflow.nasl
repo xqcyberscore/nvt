@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: cyrus_imap_prelogin_overflow.nasl 11255 2018-09-06 06:57:12Z cfischer $
+# $Id: cyrus_imap_prelogin_overflow.nasl 11272 2018-09-07 02:40:14Z ckuersteiner $
 #
 # Cyrus IMAP pre-login buffer overflow
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:cmu:cyrus_imap_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.11196");
-  script_version("$Revision: 11255 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 08:57:12 +0200 (Thu, 06 Sep 2018) $");
+  script_version("$Revision: 11272 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 04:40:14 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_cve_id("CVE-2002-1580");
   script_bugtraq_id(6298);
   script_name("Cyrus IMAP pre-login buffer overflow");

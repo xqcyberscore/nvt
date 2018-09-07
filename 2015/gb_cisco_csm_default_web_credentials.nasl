@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_csm_default_web_credentials.nasl 9442 2018-04-11 12:22:50Z cfischer $
+# $Id: gb_cisco_csm_default_web_credentials.nasl 11271 2018-09-06 14:58:32Z mmartin $
 #
 # Cisco Content Security Management Appliance Web Interface Default Credentials
 #
@@ -28,11 +28,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105435");
-  script_version("$Revision: 9442 $");
+  script_version("$Revision: 11271 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("Cisco Content Security Management Appliance Web Interface Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-06 14:06:55 +0100 (Fri, 06 Nov 2015)");
   script_category(ACT_ATTACK);
   script_family("CISCO");
@@ -70,20 +70,20 @@ url = "/login";
 
 host = http_host_name( port:port );
 
-req = 'POST ' + url + ' HTTP/1.1\r\n' + 
-      'Connection: Close\r\n' + 
-      'Host: ' + host + '\r\n' + 
-      'Pragma: no-cache\r\n' + 
-      'Cache-Control: no-cache\r\n' + 
-      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' + 
-      'Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*\r\n' + 
-      'Accept-Language: en\r\n' + 
+req = 'POST ' + url + ' HTTP/1.1\r\n' +
+      'Connection: Close\r\n' +
+      'Host: ' + host + '\r\n' +
+      'Pragma: no-cache\r\n' +
+      'Cache-Control: no-cache\r\n' +
+      'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+      'Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, image/png, */*\r\n' +
+      'Accept-Language: en\r\n' +
       'Accept-Encoding: identify\r\n' +
-      'DNT: 1\r\n' + 
-      'Cookie: ' + cookie + '\r\n' + 
-      'Accept-Charset: iso-8859-1,*,utf-8\r\n' + 
-      'X-Requested-With: XMLHttpRequest\r\n' + 
-      'Content-Type: application/x-www-form-urlencoded; charset=UTF-8\r\n' + 
+      'DNT: 1\r\n' +
+      'Cookie: ' + cookie + '\r\n' +
+      'Accept-Charset: iso-8859-1,*,utf-8\r\n' +
+      'X-Requested-With: XMLHttpRequest\r\n' +
+      'Content-Type: application/x-www-form-urlencoded; charset=UTF-8\r\n' +
       'Content-Length: ' + len + '\r\n' +
       '\r\n' +
       postdata;

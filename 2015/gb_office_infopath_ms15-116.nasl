@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_office_infopath_ms15-116.nasl 5307 2017-02-16 09:47:24Z cfi $
+# $Id: gb_office_infopath_ms15-116.nasl 11271 2018-09-06 14:58:32Z mmartin $
 #
 # Microsoft InfoPath Privilege Elevation Vulnerability (3104540)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806160");
-  script_version("$Revision: 5307 $");
+  script_version("$Revision: 11271 $");
   script_cve_id("CVE-2015-2503");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-16 10:47:24 +0100 (Thu, 16 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 13:08:19 +0530 (Wed, 11 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft InfoPath Privilege Elevation Vulnerability (3104540)");
@@ -52,8 +52,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft InfoPath 2007 Service Pack 3  
+  script_tag(name:"affected", value:"Microsoft InfoPath 2007 Service Pack 3
   Microsoft InfoPath 2010 Service Pack 2
   Microsoft InfoPath 2013 Service Pack 1");
 
@@ -63,10 +62,10 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/2687406");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/2878230");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3054793");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS15-116");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/2687406");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/2878230");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3054793");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS15-116");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -83,15 +82,9 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Confirm Windows
 if(!get_kb_item("SMB/WindowsVersion")){
   exit(0);
 }
-
-## Variables Initialization
-new_key = "";
-exeVer = "";
-infoPath = "";
 
 ## InfoPath 2010
 if(registry_key_exists(key:"SOFTWARE\Microsoft\Office\14.0\InfoPath\InstallRoot")){
@@ -118,17 +111,16 @@ if(infoPath)
   exeVer = fetch_file_version(sysPath:infoPath, file_name:"Infopath.Exe");
   if(exeVer =~ "^(12|14|15)\..*")
   {
-    if(exeVer =~ "^(12)"){
+    if(exeVer =~ "^12"){
       Vulnerable_range  =  "12 - 12.0.6735.4999";
     }
-    else if(exeVer =~ "^(14)"){
+    else if(exeVer =~ "^14"){
       Vulnerable_range  =  "14 - 14.0.7162.4999";
     }
-    else if(exeVer =~ "^(15)"){
+    else if(exeVer =~ "^15"){
       Vulnerable_range  =  "15 - 15.0.4763.0999";
     }
 
-    ## Check version Excel.exe
     if(version_in_range(version:exeVer, test_version:"12.0", test_version2:"12.0.6735.4999") ||
        version_in_range(version:exeVer, test_version:"14.0", test_version2:"14.0.7162.4999") ||
        version_in_range(version:exeVer, test_version:"15.0", test_version2:"15.0.4763.0999"))

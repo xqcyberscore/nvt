@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_asset_explorer_mult_vuln.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_manage_engine_asset_explorer_mult_vuln.nasl 11271 2018-09-06 14:58:32Z mmartin $
 #
 # Manage Engine Asset Explorer Multiple Vulnerabilities
 #
@@ -29,35 +29,34 @@ CPE = "cpe:/a:zohocorp:manageengine_assetexplorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805190");
-  script_version("$Revision: 7573 $");
+  script_version("$Revision: 11271 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-27 15:15:40 +0530 (Wed, 27 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Manage Engine Asset Explorer Multiple Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is running Manage Engine Asset
+  script_tag(name:"summary", value:"The host is running Manage Engine Asset
   Explorer Icecast and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Flaw is due to the HTTP requests to
+  script_tag(name:"insight", value:"Flaw is due to the HTTP requests to
   AssetListView.do do not require multiple steps, explicit confirmation,
   or a unique token when performing certain sensitive actions.");
 
-  script_tag(name: "impact" , value:"Successful exploitation is by tricking a
+  script_tag(name:"impact", value:"Successful exploitation is by tricking a
   user into following a specially crafted link, a context-dependent attacker
   can perform a Cross-Site Request Forgery (CSRF / XSRF) attack causing the
   victim to create or update asset details or conduct stored XSS attacks.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"ManageEngine AssetExplorer version
+  script_tag(name:"affected", value:"ManageEngine AssetExplorer version
   before 6.1.0 Build: 6112.");
 
-  script_tag(name: "solution" , value:"Update to version 6.1.0 Build 6112 or
+  script_tag(name:"solution", value:"Update to version 6.1.0 Build 6112 or
   later, For updates refer https://www.manageengine.com/products/asset-explorer");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -79,16 +78,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-assetVer = "";
-assetPort = "";
-
-## get the port
 if(!assetPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!assetVer = get_app_version(cpe:CPE, port:assetPort)){
   exit(0);
 }

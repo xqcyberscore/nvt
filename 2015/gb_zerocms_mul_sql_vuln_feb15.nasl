@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zerocms_mul_sql_vuln_feb15.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_zerocms_mul_sql_vuln_feb15.nasl 11271 2018-09-06 14:58:32Z mmartin $
 #
 # ZeroCMS Multiple SQL Injection Vulnerabilities - Feb 2015
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805331");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11271 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-03 10:44:23 +0530 (Tue, 03 Feb 2015)");
   script_name("ZeroCMS Multiple SQL Injection Vulnerabilities - Feb 2015");
 
@@ -54,14 +54,12 @@ if(description)
 
   script_tag(name:"affected", value:"ZeroCMS version 1.3.3 and prior.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Feb/4");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/130192/");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Feb/4");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/130192/");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -80,10 +78,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-zeroPort = "";
-rcvRes = "";
-
 zeroPort = get_http_port(default:80);
 
 if(!can_host_php(port:zeroPort)){
@@ -97,10 +91,8 @@ foreach dir (make_list_unique("/", "/cms", "/zerocms", "/ZeroCMS", cgi_dirs(port
 
   rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:zeroPort);
 
-  ##Confirm Application
   if (">zeroCMS<" >< rcvRes && "Login" >< rcvRes)
   {
-    ## Vulnerable Url
     url = dir + "/views/zero_view_article.php?article_id=-1+union%20select%20"
               + "concat(0x4f70656e5641532d53514c2d496e6a656374696f6e2d54657374)"
               + "%2C2%2C3%2C4%2C5%2C6%20--%20";

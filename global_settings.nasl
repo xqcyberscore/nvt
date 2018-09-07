@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: global_settings.nasl 11000 2018-08-16 09:46:21Z cfischer $
+# $Id: global_settings.nasl 11270 2018-09-06 14:44:58Z cfischer $
 #
 # Global variable settings
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.12288");
-  script_version("$Revision: 11000 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 11:46:21 +0200 (Thu, 16 Aug 2018) $");
+  script_version("$Revision: 11270 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:44:58 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -39,7 +39,7 @@ if(description)
 
   script_add_preference(name:"Enable CGI scanning", type:"checkbox", value:"yes");
   script_add_preference(name:"Add historic /scripts and /cgi-bin to directories for CGI scanning", type:"checkbox", value:"no");
-  script_add_preference(name:"Regex pattern to exclude directories from CGI scanning : ", type:"entry", value:"/(index\.php|image|img|css|js$|js/|javascript|style|theme|icon|jquery|graphic|grafik|picture|bilder)");
+  script_add_preference(name:"Regex pattern to exclude directories from CGI scanning : ", type:"entry", value:"/(index\.php|image|img|css|js$|js/|javascript|style|theme|icon|jquery|graphic|grafik|picture|bilder|thumbnail|media/|skins?/)");
   script_add_preference(name:"Use regex pattern to exclude directories from CGI scanning : ", type:"checkbox", value:"yes");
   script_add_preference(name:"Exclude directories containing detected known server manuals from CGI scanning", type:"checkbox", value:"yes");
   script_add_preference(name:"Enable generic web application scanning", type:"checkbox", value:"no");
@@ -85,7 +85,7 @@ if( opt == "no" ) set_kb_item( name:"global_settings/disable_generic_webapp_scan
 
 opt = script_get_preference( "Regex pattern to exclude directories from CGI scanning : " );
 if( ! opt ) {
-  set_kb_item( name:"global_settings/cgi_dirs_exclude_pattern", value:"/(index\.php|image|img|css|js$|javascript|style|theme|icon|jquery|graphic|grafik|picture|bilder)" );
+  set_kb_item( name:"global_settings/cgi_dirs_exclude_pattern", value:"/(index\.php|image|img|css|js$|js/|javascript|style|theme|icon|jquery|graphic|grafik|picture|bilder|thumbnail|media/|skins?/)" );
 } else {
   set_kb_item( name:"global_settings/cgi_dirs_exclude_pattern", value:opt );
 }

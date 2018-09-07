@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805366");
-  script_version("$Revision: 6431 $");
+  script_version("$Revision: 11271 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-10 12:21:47 +0530 (Fri, 10 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("WordPress Business Intelligence Lite SQL Injection Vulnerability");
@@ -56,12 +56,12 @@ if(description)
   version 1.6.1, Prior versions may also be affected.");
 
   script_tag(name:"solution", value:"Upgrade to Wordpress Business Intelligence
-  Lite Plugin 1.6.2 or later, 
+  Lite Plugin 1.6.2 or later,
   For updates refer to https://wordpress.org/plugins/wp-business-intelligence-lite");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36600");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/36600");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -77,19 +77,12 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-# Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-time_taken = 0;
 wait_extra_sec = 5;
 
-# Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
  exit(0);
 }
 
-# Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
  exit(0);
 }
@@ -100,7 +93,6 @@ sleep = make_list(3, 5);
 # Use sleep time to check we are able to execute command
 foreach sec (sleep)
 {
-  # Construct attack request
   url = dir + "/wp-content/plugins/wp-business-intelligence-lite/view.php?t=1%20AND%20SLEEP("+sec+")" ;
 
   sndReq = http_get(item:url, port:http_port);

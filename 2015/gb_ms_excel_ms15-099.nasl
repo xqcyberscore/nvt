@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_excel_ms15-099.nasl 6497 2017-06-30 09:58:54Z teissa $
+# $Id: gb_ms_excel_ms15-099.nasl 11271 2018-09-06 14:58:32Z mmartin $
 #
 # Microsoft Office Excel Multiple Remote Code Execution Vulnerabilities (3089664)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806110");
-  script_version("$Revision: 6497 $");
+  script_version("$Revision: 11271 $");
   script_cve_id("CVE-2015-2520", "CVE-2015-2521", "CVE-2015-2523");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 10:36:45 +0530 (Wed, 09 Sep 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Excel Multiple Remote Code Execution Vulnerabilities (3089664)");
@@ -54,8 +54,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Excel 2007 Service Pack 3 and prior,
+  script_tag(name:"affected", value:"Microsoft Excel 2007 Service Pack 3 and prior,
   Microsoft Excel 2010 Service Pack 2 and prior,
   Microsoft Excel 2013 Service Pack 1 and prior.");
 
@@ -65,8 +64,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3089664");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS15-099");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3089664");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS15-099");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -80,24 +79,19 @@ if(description)
 include("smb_nt.inc");
 include("version_func.inc");
 
-# Variable Initialization
-excelVer = "";
-
-## Check for Office Excel 2007/2010/2013
 excelVer = get_kb_item("SMB/Office/Excel/Version");
 if(excelVer =~ "^(12|14|15)\..*")
 {
-  if(excelVer =~ "^(12)"){
+  if(excelVer =~ "^12"){
     Vulnerable_range  =  "12 - 12.0.6729.4999";
   }
-  else if(excelVer =~ "^(14)"){
+  else if(excelVer =~ "^14"){
     Vulnerable_range  =  "14 - 14.0.7157.4999";
   }
-  else if(excelVer =~ "^(15)"){
+  else if(excelVer =~ "^15"){
    Vulnerable_range  =  "15 - 15.0.4753.0999";
   }
 
-  ## Check version Excel.exe
   if(version_in_range(version:excelVer, test_version:"12.0", test_version2:"12.0.6729.4999") ||
      version_in_range(version:excelVer, test_version:"14.0", test_version2:"14.0.7157.4999") ||
      version_in_range(version:excelVer, test_version:"15.0", test_version2:"15.0.4753.0999"))

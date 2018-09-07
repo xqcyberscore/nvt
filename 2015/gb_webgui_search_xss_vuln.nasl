@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webgui_search_xss_vuln.nasl 5819 2017-03-31 10:57:23Z cfi $
+# $Id: gb_webgui_search_xss_vuln.nasl 11271 2018-09-06 14:58:32Z mmartin $
 #
 # Plain Black WebGUI 'search' Cross-Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802090");
-  script_version("$Revision: 5819 $");
+  script_version("$Revision: 11271 $");
   script_bugtraq_id(72253);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-23 11:27:32 +0530 (Fri, 23 Jan 2015)");
   script_name("Plain Black WebGUI 'search' Cross-Site Scripting Vulnerability");
 
@@ -44,24 +44,22 @@ if(description)
   script_tag(name:"insight", value:"The error exists as the style_underground/search
   script does not validate input before returning it to users.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attacker to
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to
   execute arbitrary HTML and script code in a user's browser session in the context
   of an affected site.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Plain Black WebGUI version 7.10.29.
+  script_tag(name:"affected", value:"Plain Black WebGUI version 7.10.29.
   Previous version maybe vulnerable also.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130005");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Jan/79");
-  script_xref(name : "URL" , value : "http://secupent.com/exploit/WebGUI-7.10.29-XSS.txt");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/130005");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Jan/79");
+  script_xref(name:"URL", value:"http://secupent.com/exploit/WebGUI-7.10.29-XSS.txt");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -80,19 +78,11 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-sndReq = "";
-rcvRes = "";
-
 
 http_port = get_http_port(default:80);
 
 host = http_host_name( port:http_port );
 
-##iterate over possible paths
 foreach dir (make_list_unique("/", "/WebGUI", "/webgui", cgi_dirs(port:http_port)))
 {
 
@@ -100,11 +90,9 @@ foreach dir (make_list_unique("/", "/WebGUI", "/webgui", cgi_dirs(port:http_port
 
   url = dir + "/style-underground/search";
 
-  ## Send and Receive the response
   sndReq = http_get(item: url, port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ## confirm the application
   if(rcvRes && ">WebGUI Links<" >< rcvRes)
   {
     cookie = eregmatch(pattern:"Cookie: (wgSession=.*; path=)", string:rcvRes);
@@ -133,7 +121,6 @@ foreach dir (make_list_unique("/", "/WebGUI", "/webgui", cgi_dirs(port:http_port
 
     rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-    ##Confirm Exploit
     if(rcvRes && "onmouseover=prompt(document.cookie)" >< rcvRes
               && ">WebGUI Links<" >< rcvRes)
     {

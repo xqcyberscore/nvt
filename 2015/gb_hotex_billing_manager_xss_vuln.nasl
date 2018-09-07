@@ -27,21 +27,21 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805371");
-  script_version("$Revision: 5819 $");
+  script_version("$Revision: 11271 $");
   script_cve_id("CVE-2015-3319", "CVE-2015-2781");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-27 10:13:24 +0530 (Mon, 27 Apr 2015)");
   script_name("hotEx Billing Manager Multiple Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with Hotspot Express
+  script_tag(name:"summary", value:"The host is installed with Hotspot Express
   hotEx Billing Manager and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request
   and check whether it is able to read cookie or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
   - Input passed via the 'reply' parameter to 'hotspotlogin.cgi' is
     not properly sanitised before being returned to the user.
   - HTTPOnly flag is not included in Set-Cookie header, which makes
@@ -54,20 +54,18 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"hotEx Billing Manager version 73");
+  script_tag(name:"affected", value:"hotEx Billing Manager version 73");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"exploit");
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Apr/18");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/535186/100/0/threaded");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/131297/HotExBilling-Manager-73-Cross-Site-Scripting.html");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Apr/18");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/535186/100/0/threaded");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/131297/HotExBilling-Manager-73-Cross-Site-Scripting.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -82,11 +80,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-
 http_port = get_http_port(default:80);
 
 foreach dir (make_list_unique("/", cgi_dirs(port:http_port)))
@@ -99,15 +92,12 @@ foreach dir (make_list_unique("/", cgi_dirs(port:http_port)))
   sndReq = http_get(item:url,  port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ## confirm the Application
   if("> Login<" >< rcvRes && "hotspot_popup" >< rcvRes)
   {
-    ## Construct the attack request
     url = '/cgi-bin/hotspotlogin.cgi?res=failed&reply='+
           '<script>alert%28document.cookie%29<%2fscript>'+
           '%2c%20Invalid%20username%20or%20Password';
 
-    ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
        pattern:"_script_alert\(document\.cookie\)_/script_",
        extra_check:"> Login<"))
