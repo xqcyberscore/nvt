@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_ebb1e572c0_moodle_fc27.nasl 10887 2018-08-10 12:05:12Z santu $
+# $Id: gb_fedora_2018_ebb1e572c0_moodle_fc27.nasl 11292 2018-09-10 03:14:17Z ckuersteiner $
 #
 # Fedora Update for moodle FEDORA-2018-ebb1e572c0
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874912");
-  script_version("$Revision: 10887 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:05:12 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11292 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 05:14:17 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-09 06:06:40 +0200 (Thu, 09 Aug 2018)");
   script_cve_id("CVE-2018-10891", "CVE-2018-10890", "CVE-2018-10889");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for moodle FEDORA-2018-ebb1e572c0");
   script_tag(name:"summary", value:"Check the version of moodle");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_magento_37611.nasl 10017 2018-05-30 07:17:29Z cfischer $
+# $Id: sw_magento_37611.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Magento Multiple HTML Injection Vulnerabilities
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105225");
-  script_version("$Revision: 10017 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-23 12:00:00 +0100 (Mon, 23 Feb 2015)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -45,14 +45,14 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("magento/installed");
 
-  script_tag(name : "summary" , value : "This host is running with Magento which is prone to multiple HTML injection
+  script_tag(name:"summary", value:"This host is running with Magento which is prone to multiple HTML injection
   vulnerabilities because it fails to properly sanitize user-supplied input.");
-  script_tag(name : "vuldetect" , value : "Check the version.");
-  script_tag(name : "impact" , value : "Attacker-supplied HTML or JavaScript code could run in the context of the
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"impact", value:"Attacker-supplied HTML or JavaScript code could run in the context of the
   affected site, potentially allowing the attacker to steal cookie-based authentication
   credentials and to control how the site is rendered to the user. Other attacks are also possible.");
-  script_tag(name : "affected" , value : "Magento 1.3.2.4 is vulnerable. Other versions may also be affected.");
-  script_tag(name : "solution" , value : "Check for updated versions of Magento");
+  script_tag(name:"affected", value:"Magento 1.3.2.4 is vulnerable. Other versions may also be affected.");
+  script_tag(name:"solution", value:"Check for updated versions of Magento");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/37611");
 

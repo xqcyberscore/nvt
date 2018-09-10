@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_mar15_macosx.nasl 6600 2017-07-07 09:58:31Z teissa $
+# $Id: gb_apple_safari_webkit_mult_vuln_mar15_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Apple Safari 'Webkit' Multiple Vulnerabilities -01 Mar15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805498");
-  script_version("$Revision: 6600 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-1084", "CVE-2015-1083", "CVE-2015-1082", "CVE-2015-1081",
                 "CVE-2015-1080", "CVE-2015-1079", "CVE-2015-1078", "CVE-2015-1077",
                 "CVE-2015-1076", "CVE-2015-1075", "CVE-2015-1074", "CVE-2015-1073",
@@ -37,37 +37,36 @@ if(description)
                 "CVE-2015-1068");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-27 19:04:44 +0530 (Fri, 27 Mar 2015)");
   script_name("Apple Safari 'Webkit' Multiple Vulnerabilities -01 Mar15 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is running Apple Safari and is
+  script_tag(name:"summary", value:"This host is running Apple Safari and is
   prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple errors exist due to a flaw in
+  script_tag(name:"insight", value:"Multiple errors exist due to a flaw in
   webkit that is triggered as user-supplied input is not properly validated.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to conduct denial of service attack and potentially execute
   arbitrary code.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Apple Safari versions before 6.2.4, 7.x
+  script_tag(name:"affected", value:"Apple Safari versions before 6.2.4, 7.x
   before 7.1.4 and 8.x before 8.0.4");
 
-  script_tag(name: "solution" , value:"Upgrade to Apple Safari version 6.2.4 or
+  script_tag(name:"solution", value:"Upgrade to Apple Safari version 6.2.4 or
   7.1.4 or 8.0.4. For updates refer link, http://www.apple.com/support.");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://support.apple.com/en-us/HT204560");
-  script_xref(name : "URL" , value : "http://lists.apple.com/archives/security-announce/2015/Mar/msg00004.html");
+  script_xref(name:"URL", value:"http://support.apple.com/en-us/HT204560");
+  script_xref(name:"URL", value:"http://lists.apple.com/archives/security-announce/2015/Mar/msg00004.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");
@@ -81,30 +80,22 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-# Variable Initialization
-safVer = "";
-fix  = "";
-
-## Get Apple Safari version
 if(!safVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check for Apple Safari Versions less than 6.2.3
 if(version_is_less(version:safVer, test_version:"6.2.4"))
 {
   fix = "6.2.4";
   VULN = TRUE;
 }
 
-## Check for Apple Safari Versions 7.x before 7.1.3
 if(version_in_range(version:safVer, test_version:"7.0", test_version2:"7.1.3"))
 {
   fix = "7.1.4";
   VULN = TRUE;
 }
 
-## Check for Apple Safari Versions 8.x before 8.0.3
 if(version_in_range(version:safVer, test_version:"8.0", test_version2:"8.0.3"))
 {
   fix = "8.0.4";

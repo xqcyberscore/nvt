@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_stageshow_plugin_open_redirect_vuln.nasl 6431 2017-06-26 09:59:24Z teissa $
+# $Id: gb_wp_stageshow_plugin_open_redirect_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Wordpress StageShow Plugin Open Redirect Vulnerability
 #
@@ -29,42 +29,42 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805901");
-  script_version("$Revision: 6431 $");
+  script_version("$Revision: 11291 $");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-07 13:33:29 +0530 (Tue, 07 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress StageShow Plugin Open Redirect Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with wordpress
+  script_tag(name:"summary", value:"The host is installed with wordpress
   stageshow plugin and is prone to open-redirect vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted HTTP GET request and check
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check
   whether it redirects to the malicious websites.");
 
-  script_tag(name: "insight" , value:"The error exists as the application does
+  script_tag(name:"insight", value:"The error exists as the application does
   not validate the 'url' parameter upon submission to the stageshow_redirect.php
   script.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to create a specially crafted URL, that if clicked, would redirect
   a victim from the intended legitimate web site to an arbitrary web site of the
   attacker's choosing.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Wordpress StageShow Plugin version 5.0.8
+  script_tag(name:"affected", value:"Wordpress StageShow Plugin version 5.0.8
   and probably prior.");
 
-  script_tag(name: "solution" , value:"Upgrade to Wordpress StageShow Plugin
+  script_tag(name:"solution", value:"Upgrade to Wordpress StageShow Plugin
   version 5.0.9 or later. For updates refer
   https://wordpress.org/plugins/stageshow");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Jul/27");
-  script_xref(name : "URL" , value : "https://wordpress.org/plugins/stageshow/changelog");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2015/07/06/2");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Jul/27");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/stageshow/changelog");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2015/07/06/2");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -80,17 +80,10 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-dir = "";
-url = "";
-http_port = 0;
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
@@ -98,7 +91,6 @@ if(!dir = get_app_location(cpe:CPE, port:http_port)){
 ## Attack url
 url = dir + "/wp-content/plugins/stageshow/stageshow_redirect.php?url=http://www.example.com";
 
-## Confirm the exploit
 if(http_vuln_check(port:http_port, url:url, pattern:"HTTP/1.. 301",
                    extra_check:"Location: http://www.example.com"))
 {

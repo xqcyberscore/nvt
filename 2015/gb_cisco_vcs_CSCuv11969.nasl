@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_CSCuv11969.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: gb_cisco_vcs_CSCuv11969.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Cisco TelePresence Video Communication Server Expressway File Modification Vulnerability
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/a:cisco:telepresence_video_communication_server_software";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105403");
- script_cve_id("CVE-2015-6318");
- script_tag(name:"cvss_base", value:"6.9");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6229 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105403");
+  script_cve_id("CVE-2015-6318");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11291 $");
 
- script_name("Cisco TelePresence Video Communication Server Expressway File Modification Vulnerability");
+  script_name("Cisco TelePresence Video Communication Server Expressway File Modification Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151007-vcs");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151007-vcs");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "insight" , value:"The vulnerability is due to insufficient protection of files. An attacker could exploit this vulnerability by creating a malicious symbolic link to a location not otherwise accessible to the attacker. An exploit could allow the attacker to insert unauthorized content in the linked-to file.");
- script_tag(name: "solution" , value:"Updates are available");
- script_tag(name: "summary" , value:"A vulnerability in the symbolic link operation of the Cisco TelePresence Video Communication Server (VCS) Expressway could allow an authenticated, local attacker to perform a symbolic link attack on the affected system.");
- script_tag(name: "affected" , value:"Cisco TelePresence Video Communication Server version X8.5.2 is vulnerable.");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient protection of files. An attacker could exploit this vulnerability by creating a malicious symbolic link to a location not otherwise accessible to the attacker. An exploit could allow the attacker to insert unauthorized content in the linked-to file.");
+  script_tag(name:"solution", value:"Updates are available");
+  script_tag(name:"summary", value:"A vulnerability in the symbolic link operation of the Cisco TelePresence Video Communication Server (VCS) Expressway could allow an authenticated, local attacker to perform a symbolic link attack on the affected system.");
+  script_tag(name:"affected", value:"Cisco TelePresence Video Communication Server version X8.5.2 is vulnerable.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
- script_tag(name:"creation_date", value:"2015-10-14 15:11:26 +0200 (Wed, 14 Oct 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_vcs_detect.nasl","gb_cisco_vcs_ssh_detect.nasl");
- script_mandatory_keys("cisco_vcs/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-10-14 15:11:26 +0200 (Wed, 14 Oct 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_vcs_detect.nasl", "gb_cisco_vcs_ssh_detect.nasl");
+  script_mandatory_keys("cisco_vcs/installed");
 
  exit(0);
 }

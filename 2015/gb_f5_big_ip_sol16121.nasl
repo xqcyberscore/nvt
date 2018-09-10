@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16121.nasl 6345 2017-06-15 10:00:59Z teissa $
+# $Id: gb_f5_big_ip_sol16121.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # F5 BIG-IP - BIG-IP directory traversal vulnerability
 #
@@ -29,39 +29,39 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105220");
- script_cve_id("CVE-2014-8727");
- script_tag(name:"cvss_base", value:"6.2");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:N/I:C/A:C");
- script_version ("$Revision: 6345 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105220");
+  script_cve_id("CVE-2014-8727");
+  script_tag(name:"cvss_base", value:"6.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:N/I:C/A:C");
+  script_version("$Revision: 11291 $");
 
- script_name("F5 BIG-IP - BIG-IP directory traversal vulnerability");
+  script_name("F5 BIG-IP - BIG-IP directory traversal vulnerability");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/16000/100/sol16121.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/16000/100/sol16121.html");
 
- script_tag(name: "impact" , value:"An attacker with Resource Administrator or Administrator role access to the BIG-IP
+  script_tag(name:"impact", value:"An attacker with Resource Administrator or Administrator role access to the BIG-IP
 Configuration utility may be able to delete arbitrary files.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-script_tag(name: "insight" , value:"Multiple directory traversal vulnerabilities in F5 BIG-IP before 10.2.2 allow local users with
+  script_tag(name: "insight" , value:"Multiple directory traversal vulnerabilities in F5 BIG-IP before 10.2.2 allow local users with
 the 'Resource Administrator' or 'Administrator' role to enumerate and delete arbitrary files via a .. (dot dot) in the name parameter
 to (1) tmui/Control/jspmap/tmui/system/archive/properties.jsp or (2) tmui/Control/form.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"F5 BIG-IP is prone to a directory traversal vulnerability.");
+  script_tag(name:"affected", value:"F5 BIG-IP before 10.2.2");
 
- script_tag(name: "summary" , value:"F5 BIG-IP is prone to a directory traversal vulnerability.");
- script_tag(name: "affected" , value:"F5 BIG-IP before 10.2.2");
-
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-02-17 08:08:36 +0100 (Tue, 17 Feb 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-02-17 08:08:36 +0100 (Tue, 17 Feb 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

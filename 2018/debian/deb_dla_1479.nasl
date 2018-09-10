@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1479.nasl 11184 2018-09-03 09:04:45Z cfischer $
+# $Id: deb_dla_1479.nasl 11292 2018-09-10 03:14:17Z ckuersteiner $
 #
 # Auto-generated from advisory DLA 1479-1 using nvtgen 1.0
 # Script version: 1.0
@@ -31,13 +31,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891479");
-  script_version("$Revision: 11184 $");
+  script_version("$Revision: 11292 $");
   script_cve_id("CVE-2018-14040");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1479-1] twitter-bootstrap3 security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:04:45 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 05:14:17 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-03 00:00:00 +0200 (Mon, 03 Sep 2018)");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 

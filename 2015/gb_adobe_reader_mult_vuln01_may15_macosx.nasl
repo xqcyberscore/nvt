@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805385");
-  script_version("$Revision: 6132 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-3076", "CVE-2015-3075", "CVE-2015-3074", "CVE-2015-3073",
                 "CVE-2015-3072", "CVE-2015-3071", "CVE-2015-3070", "CVE-2015-3069",
                 "CVE-2015-3068", "CVE-2015-3067", "CVE-2015-3066", "CVE-2015-3065",
@@ -44,38 +44,37 @@ if(description)
                     74600, 74603, 74600, 74601, 74599);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-15 13:24:05 +0530 (Fri, 15 May 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Reader Multiple Vulnerabilities - 01 May15 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Adobe Reader
+  script_tag(name:"summary", value:"This host is installed with Adobe Reader
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight", value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
   - Error 'ScriptBridgeUtils', 'AFParseDate', 'ADBCAnnotEnumerator'
     'WDAnnotEnumerator', 'AFNSimple_Calculate', and 'app.Monitors'.
   - Multiple user-supplied inputs are not properly validated, and an
     use-after-free error.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to conduct a denial of service, bypass certain security restrictions,
   execute arbitrary code and compromise a user's system.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Adobe Reader 10.x before 10.1.14 and 11.x
+  script_tag(name:"affected", value:"Adobe Reader 10.x before 10.1.14 and 11.x
   before 11.0.11 on Mac OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Adobe Reader version 10.1.14 or
+  script_tag(name:"solution", value:"Upgrade to Adobe Reader version 10.1.14 or
   11.0.11 or later. For updates refer http://get.adobe.com/reader");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://helpx.adobe.com/security/products/reader/apsb15-10.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/reader/apsb15-10.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -89,22 +88,16 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-readerVer = "";
-
-## Get version
 if(!readerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check Adobe Reader vulnerable versions
 if(version_in_range(version:readerVer, test_version:"10.0", test_version2:"10.1.13"))
 {
   fix = "10.1.14";
   VULN = TRUE ;
 }
 
-## Check Adobe Reader vulnerable versions
 if(version_in_range(version:readerVer, test_version:"11.0", test_version2:"11.0.10"))
 {
   fix = "11.0.11";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_movable_type_code_exec_vuln.nasl 5933 2017-04-11 10:42:30Z cfi $
+# $Id: gb_movable_type_code_exec_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Movable Type Arbitrary Code Execution Vulnerability
 #
@@ -29,16 +29,16 @@ CPE = "cpe:/a:sixapart:movable_type";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805368");
-  script_version("$Revision: 5933 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2013-2184");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-13 18:43:00 +0530 (Mon, 13 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Movable Type Arbitrary Code Execution Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with movable type
+  script_tag(name:"summary", value:"The host is installed with movable type
   and is prone to arbitrary file upload vulnerability.");
 
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP POST request
@@ -54,15 +54,15 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Movable Type before 5.2.6.");
+  script_tag(name:"affected", value:"Movable Type before 5.2.6.");
 
   script_tag(name:"solution", value:"Upgrade to Movable Type 5.2.6,
   For updates refer https://movabletype.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2013/q2/560");
-  script_xref(name : "URL" , value : "https://movabletype.org/documentation/appendices/release-notes/movable-type-526-release-notes.html");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2013/q2/560");
+  script_xref(name:"URL", value:"https://movabletype.org/documentation/appendices/release-notes/movable-type-526-release-notes.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -76,17 +76,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-movVer = "";
-report = "";
-http_port = "";
-
-# Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# Get MovableType Version
 if(!movVer = get_app_version(cpe:CPE, port:http_port)){
   exit(0);
 }

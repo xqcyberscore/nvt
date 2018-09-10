@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_sql_inj_vuln.nasl 8674 2018-02-06 02:56:44Z ckuersteiner $
+# $Id: gb_cacti_sql_inj_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Cacti SQL Injection Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cacti:cacti";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806025");
-  script_version("$Revision: 8674 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-4634");
   script_bugtraq_id(75984);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-06 03:56:44 +0100 (Tue, 06 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-20 16:27:33 +0530 (Thu, 20 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Cacti SQL Injection Vulnerability");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Cacti and is
   prone to SQL injection vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to improper sanitization of
   user-supplied input in graphs.php script via 'local_graph_id' parameter");
@@ -61,8 +60,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://bugs.cacti.net/view.php?id=2577");
-  script_xref(name : "URL" , value : "http://www.cacti.net/release_notes_0_8_8e.php");
+  script_xref(name:"URL", value:"http://bugs.cacti.net/view.php?id=2577");
+  script_xref(name:"URL", value:"http://www.cacti.net/release_notes_0_8_8e.php");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

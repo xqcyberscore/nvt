@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3050995.nasl 6357 2017-06-16 10:00:29Z teissa $
+# $Id: gb_microsoft_security_advisory_3050995.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Microsoft Digital Certificates Security Advisory (3050995)
 #
@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805507");
-  script_version("$Revision: 6357 $");
+  script_version("$Revision: 11291 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 18:58:02 +0530 (Wed, 25 Mar 2015)");
   script_name("Microsoft Digital Certificates Security Advisory (3050995)");
 
@@ -48,8 +48,7 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 2003 x32/x64 Service Pack 2 and prior.");
+  script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Service Pack 2 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the link,
@@ -59,13 +58,14 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://support.microsoft.com/en-us/kb/3050995");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/3050995");
+  script_xref(name:"URL", value:"http://support.microsoft.com/en-us/kb/3050995");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/3050995");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -75,13 +75,7 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-sysPath = "";
-exeVer = "";
-
-## Check for OS and Service Pack
 ##Windows 8, Windows Server 2012, Windows RT, Windows 8.1, Windows RT 8.1, and
-##Windows Server 2012 R2 automatic updater of revoked certificates is included,
 ##For Windows Vista, Windows 7, Windows Server 2008, or Windows Server 2008 R2
 ##systems will be automatically updated by updater of revoked certificates .
 
@@ -90,7 +84,6 @@ if(hotfix_check_sp(win2003:3, win2003x64:3) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
@@ -101,12 +94,10 @@ if(!dllVer){
   exit(0);
 }
 
-##Windows 2003
 if(hotfix_check_sp(win2003:3, win2003x64:3) > 0)
 {
-  ## Check for advpack.dll version
-  if((version_is_less(version:dllVer, test_version:"7.0.5489.0"))){ 
-    security_message(0);
+  if((version_is_less(version:dllVer, test_version:"7.0.5489.0"))){
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_servicedesk_plus_mult_vuln_oct15.nasl 6486 2017-06-29 09:59:06Z teissa $
+# $Id: gb_manage_engine_servicedesk_plus_mult_vuln_oct15.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # ManageEngine ServiceDesk Plus Multiple Vulnerabilities - Oct15
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:manageengine:servicedesk_plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806509");
-  script_version("$Revision: 6486 $");
+  script_version("$Revision: 11291 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-21 12:04:52 +0530 (Wed, 21 Oct 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("ManageEngine ServiceDesk Plus Multiple Vulnerabilities - Oct15");
@@ -82,24 +82,16 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-dir = "";
-appPort = "";
-
-## Get the port
 if(!appPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Application Location
 if(!dir = get_app_location(cpe:CPE, port:appPort)){
   exit(0);
 }
 
-##Construct Attack Request
 url = dir + 'domainServlet/AJaxDomainServlet?action=searchLocalAuthDomain&search=guest';
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:appPort, url:url, check_header:TRUE,
    pattern:"USER_PRESENT",
    extra_check:make_list("IN_SITE", "ADD_REQUESTER")))

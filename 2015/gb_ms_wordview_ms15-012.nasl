@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_wordview_ms15-012.nasl 6159 2017-05-18 09:03:44Z teissa $
+# $Id: gb_ms_wordview_ms15-012.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Microsoft Office Word Viewer Remote Code Execution Vulnerability (3032328)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805045");
-  script_version("$Revision: 6159 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-0064");
   script_bugtraq_id(72463);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-11 10:57:38 +0530 (Wed, 11 Feb 2015)");
   script_name("Microsoft Office Word Viewer Remote Code Execution Vulnerability (3032328)");
 
@@ -51,8 +51,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Office Word Viewer 2007 SP3 and prior.");
+  script_tag(name:"affected", value:"Microsoft Office Word Viewer 2007 SP3 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
@@ -63,9 +62,9 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3032328");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/2956092");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/security/bulletin/ms15-012");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/3032328");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/2956092");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/security/bulletin/ms15-012");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
@@ -77,16 +76,12 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initailization
-wordviewVer = "";
-
 wordviewVer = get_kb_item("SMB/Office/WordView/Version");
 if(wordviewVer)
 {
-  # Check for Wordview.exe 11.0 < 11.0.8415
   if(version_in_range(version:wordviewVer, test_version:"11.0", test_version2:"11.0.8414"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

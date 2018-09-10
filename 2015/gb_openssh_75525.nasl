@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_75525.nasl 7904 2017-11-24 12:29:45Z cfischer $
+# $Id: gb_openssh_75525.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # OpenSSH 'x11_open_helper()' Function Security Bypass Vulnerability
 #
@@ -34,9 +34,9 @@ if(description)
   script_cve_id("CVE-2015-5352");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_version("$Revision: 7904 $");
+  script_version("$Revision: 11291 $");
   script_name("OpenSSH 'x11_open_helper()' Function Security Bypass Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 13:29:45 +0100 (Fri, 24 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-09 10:06:32 +0200 (Thu, 09 Jul 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");
@@ -64,7 +64,7 @@ if(description)
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"deprecated", value:TRUE); 
+  script_tag(name:"deprecated", value:TRUE);
 
   exit(0);
 }

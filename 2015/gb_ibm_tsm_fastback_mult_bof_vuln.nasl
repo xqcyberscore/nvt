@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tsm_fastback_mult_bof_vuln.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_ibm_tsm_fastback_mult_bof_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # IBM Tivoli Storage Manager FastBack Multiple Buffer Overflow Vulnerabilities
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:ibm:tivoli_storage_manager_fastback";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805599");
-  script_version("$Revision: 6415 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-1896", "CVE-2015-0120");
   script_bugtraq_id(74024, 74021);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-03 09:35:08 +0530 (Fri, 03 Jul 2015)");
   script_name("IBM Tivoli Storage Manager FastBack Multiple Buffer Overflow Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is installed with IBM Tivoli Storage
   Manager FastBack and is prone to multiple buffer overflow vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
   - An overflow condition in the mount service.
@@ -66,8 +65,8 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21700549");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21700536");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21700549");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21700536");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -81,15 +80,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-tivVer = "";
-
-## Get version
 if(!tivVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_in_range(version:tivVer, test_version:"6.1.0", test_version2:"6.1.11.0"))
 {
   report = 'Installed version: ' + tivVer + '\n' +

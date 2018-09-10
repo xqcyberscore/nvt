@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_isc_bind_delegation_chaining_dos_vuln.nasl 4445 2016-11-08 13:49:07Z cfi $
+# $Id: gb_isc_bind_delegation_chaining_dos_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # ISC BIND Delegation Handling Denial of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:isc:bind";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806080");
-  script_version("$Revision: 4445 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2014-8500");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-08 14:49:07 +0100 (Tue, 08 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-07 15:17:54 +0530 (Wed, 07 Oct 2015)");
   script_name("ISC BIND Delegation Handling Denial of Service Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -46,8 +46,7 @@ if(description)
 
   script_tag(name:"summary", value:"The host is installed with ISC BIND and is
   prone to denial of service vulnerability.");
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaw is due to ISC BIND does not handle
   delegation chaining properly.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
@@ -75,7 +74,6 @@ if( ! infos = get_app_version_and_proto( cpe:CPE, port:bindPort ) ) exit( 0 );
 bindVer = infos["version"];
 proto = infos["proto"];
 
-##Check for vulnerable version
 if(version_in_range(version:bindVer, test_version:"9.0", test_version2:"9.8.6"))
 {
   fix = "Upgrade to 9.9.6-P1";

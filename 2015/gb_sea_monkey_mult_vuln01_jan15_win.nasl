@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sea_monkey_mult_vuln01_jan15_win.nasl 6345 2017-06-15 10:00:59Z teissa $
+# $Id: gb_sea_monkey_mult_vuln01_jan15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # SeaMonkey Multiple Vulnerabilities-01 Jan15 (Windows)
 #
@@ -29,24 +29,23 @@ CPE = "cpe:/a:mozilla:seamonkey";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805254");
-  script_version("$Revision: 6345 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2014-8642", "CVE-2014-8641", "CVE-2014-8640", "CVE-2014-8639",
                 "CVE-2014-8638", "CVE-2014-8637", "CVE-2014-8636", "CVE-2014-8635",
                 "CVE-2014-8634");
   script_bugtraq_id(72042, 72044, 72045, 72046, 72047, 72048, 72041, 72050, 72049);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-15 12:00:59 +0200 (Thu, 15 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-20 14:51:45 +0530 (Tue, 20 Jan 2015)");
   script_name("SeaMonkey Multiple Vulnerabilities-01 Jan15 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with SeaMonkey and
+  script_tag(name:"summary", value:"This host is installed with SeaMonkey and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
   - Some unspecified errors.
   - An error when rendering a bitmap image by the bitmap decoder within a
   canvas element.
@@ -64,15 +63,15 @@ if(description)
   'mozilla::dom::AudioParamTimeline::AudioNodeInputValue' function in the Web
   Audio API.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to disclose potentially sensitive information, bypass certain security
   restrictions, and compromise a user's system.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"SeaMonkey version before 2.32 on Windows.");
+  script_tag(name:"affected", value:"SeaMonkey version before 2.32 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to SeaMonkey version 2.32 or later,
+  script_tag(name:"solution", value:"Upgrade to SeaMonkey version 2.32 or later,
   For updates refer to http://www.mozilla.com/en-US/seamonkey");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -99,15 +98,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-smVer = "";
-
-## Get version
 if(!smVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:smVer, test_version:"2.32"))
 {
   fix = "2.32";

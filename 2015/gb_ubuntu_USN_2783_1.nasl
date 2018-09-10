@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.842504");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-28 07:18:08 +0100 (Wed, 28 Oct 2015)");
   script_cve_id("CVE-2015-5146", "CVE-2015-5194", "CVE-2015-5195", "CVE-2015-5196",
                 "CVE-2015-7703", "CVE-2015-5219", "CVE-2015-5300", "CVE-2015-7691",
@@ -40,7 +40,7 @@ if(description)
   script_name("Ubuntu Update for ntp USN-2783-1");
   script_tag(name:"summary", value:"Check the version of ntp");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
-  script_tag(name: "insight", value: "Aleksis Kauppinen discovered that NTP
+  script_tag(name:"insight", value:"Aleksis Kauppinen discovered that NTP
 incorrectly handled certain remote config packets. In a non-default configuration,
 a remote authenticated attacker could possibly use this issue to cause NTP to crash,
 resulting in a denial of service. (CVE-2015-5146)

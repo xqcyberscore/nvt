@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ncm_multi_sql_inj_vuln.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: gb_ncm_multi_sql_inj_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # SolarWinds Network Configuration Manager Multiple SQL Injection Vulnerabilities
 #
@@ -30,9 +30,9 @@ CPE = 'cpe:/a:solarwinds:network_configuration_manager';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105968");
-  script_version("$Revision: 6229 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
-  script_tag(name : "creation_date", value : "2015-03-06 13:46:22 +0700 (Fri, 06 Mar 2015)");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-03-06 13:46:22 +0700 (Fri, 06 Mar 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -51,24 +51,24 @@ if (description)
   script_dependencies("gb_orion_ncm_detect.nasl");
   script_mandatory_keys("orion_ncm/installed");
 
-  script_tag(name : "summary", value : "SolarWinds Network Configuration Manager is prone to multiple
+  script_tag(name:"summary", value:"SolarWinds Network Configuration Manager is prone to multiple
 SQL Injection vulnerabilities.");
 
-  script_tag(name : "vuldetect", value : "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name : "insight", value : "On both the GetAccounts and GetAccountGroups endpoints, the
+  script_tag(name:"insight", value:"On both the GetAccounts and GetAccountGroups endpoints, the
 'sort' and 'dir' parameters are susceptible to boolean-/time-based, and stacked injections. The attacker
 has to be authenticated but it can be even exploited under a guest account.");
 
-  script_tag(name : "impact", value : "An authenticated attacker might execute arbitrary SQL commands
+  script_tag(name:"impact", value:"An authenticated attacker might execute arbitrary SQL commands
 to compromise the application, access or modify data, or exploit latent vulnerabilities in the
 underlying database.");
 
-  script_tag(name : "affected", value : "SolarWinds NCM 7.3.1 and previous.");
+  script_tag(name:"affected", value:"SolarWinds NCM 7.3.1 and previous.");
 
-  script_tag(name : "solution", value : "Upgrade to SolarWinds NCM 7.3.1 or later.");
+  script_tag(name:"solution", value:"Upgrade to SolarWinds NCM 7.3.1 or later.");
 
-  script_xref(name : "URL", value : "http://seclists.org/fulldisclosure/2015/Mar/18");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Mar/18");
 
   exit(0);
 }

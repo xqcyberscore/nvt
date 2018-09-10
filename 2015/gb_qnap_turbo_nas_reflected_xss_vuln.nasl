@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnap_turbo_nas_reflected_xss_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_qnap_turbo_nas_reflected_xss_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # QNAP TS_x09 Turbo NAS Devices Reflected Cross-Site Scripting Vulnerability
 #
@@ -27,45 +27,42 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805694");
-  script_version("$Revision: 9381 $");
+  script_version("$Revision: 11291 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-28 11:38:53 +0530 (Tue, 28 Jul 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("QNAP TS_x09 Turbo NAS Devices Reflected Cross-Site Scripting Vulnerability");
 
-  script_tag(name: "summary" , value:"This host has QNAP TS-x09 Turbo NAS device
+  script_tag(name:"summary", value:"This host has QNAP TS-x09 Turbo NAS device
   and is prone to reflected cross site scripting vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted HTTP GET request and
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and
   check whether it is able read the cookie or not");
 
-  script_tag(name: "insight" , value:"The flaw is due to an input passed via
+  script_tag(name:"insight", value:"The flaw is due to an input passed via
   the 'sid' variable in 'cgi-bin/user_index.cgi' and 'cgi-bin/index.cgi' is not
   properly sanitized.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   unauthenticated attacker to inject arbitrary JavaScript which is executed
   server-side by escaping from the quotation marks.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"
-  QNAP devices,
+  script_tag(name:"affected", value:"QNAP devices,
   TS-109 PRO and TS-109 II Version 3.3.0 Build 0924T
   TS-209 and TS-209 PRO II Version 3.3.3 Build 1003T
   TS-409 and TS-409U Version 3.3.2 Build 0918T.");
 
-  script_tag(name: "solution" , value:"No solution or patch was made available for
-  at least one year since disclosure of this vulnerability. Likely none will be
-  provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
-  script_xref(name : "URL" , value : "http://www.mogozobo.com/?p=2574");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132840");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Jul/115");
+  script_xref(name:"URL", value:"http://www.mogozobo.com/?p=2574");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/132840");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Jul/115");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_category(ACT_ATTACK);
@@ -79,11 +76,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-nasPort = "";
-sndReq = "";
-rcvRes = "";
 
 nasPort = get_http_port(default:8080);
 

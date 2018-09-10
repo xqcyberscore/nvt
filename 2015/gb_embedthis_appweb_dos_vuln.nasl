@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_embedthis_appweb_dos_vuln.nasl 6486 2017-06-29 09:59:06Z teissa $
+# $Id: gb_embedthis_appweb_dos_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Embedthis Appweb Web Server Remote Denial of Service Vulnerability
 #
@@ -27,41 +27,41 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805157");
-  script_version("$Revision: 6486 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2014-9708");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-01 17:00:37 +0530 (Wed, 01 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Embedthis Appweb Web Server Remote Denial of Service Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is running Embedthis Appweb Web
+  script_tag(name:"summary", value:"The host is running Embedthis Appweb Web
   Server and is prone to denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted request via HTTP GET
+  script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET
   and check whether it is able to crash or not.");
 
-  script_tag(name: "insight" , value:"A NULL pointer dereference flaw in the
+  script_tag(name:"insight", value:"A NULL pointer dereference flaw in the
   parseRange() function in rx.c that is triggered when handling ranger headers
   in an HTTP request.");
 
-  script_tag(name: "impact" , value:"Successful exploitation may allow remote
+  script_tag(name:"impact", value:"Successful exploitation may allow remote
   attackers to cause the application to crash, creating a denial-of-service
   condition.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Embedthis Appweb version before 4.6.6
+  script_tag(name:"affected", value:"Embedthis Appweb version before 4.6.6
   and 5.x before 5.2.1");
 
-  script_tag(name: "solution" , value:"Update to version 4.6.6 or 5.2.1 or
+  script_tag(name:"solution", value:"Update to version 4.6.6 or 5.2.1 or
   later, For updates refer http://appwebserver.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Mar/158");
-  script_xref(name : "URL" , value : "https://github.com/embedthis/appweb/issues/413");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Mar/158");
+  script_xref(name:"URL", value:"https://github.com/embedthis/appweb/issues/413");
 
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -75,17 +75,10 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-
-## Get HTTP Port
 http_port = get_http_port(default:80);
 
 rcvRes = http_get_cache(item: "/",  port:http_port);
 
-## confirm the Application
 if(">Embedthis" >< rcvRes && ">Appweb" >< rcvRes)
 {
   sndReq = 'GET / HTTP/1.1\r\n' +
@@ -99,14 +92,13 @@ if(">Embedthis" >< rcvRes && ">Appweb" >< rcvRes)
   ## This confirms it is not vulnerable
   if("416 Requested Range Not Satisfiable" >< rcvRes) exit(0);
 
-  ## Check whether able to open port to confirm vulnerability
   soc = open_sock_tcp(http_port);
   if(!soc)
   {
     security_message(http_port);
     exit(0);
   }
-  close(soc); 
+  close(soc);
 }
 
 exit(99);

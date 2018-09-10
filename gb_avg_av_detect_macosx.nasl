@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avg_av_detect_macosx.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: gb_avg_av_detect_macosx.nasl 11283 2018-09-07 09:28:09Z cfischer $
 #
 # AVG AntiVirus Version Detection (Mac OS X)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811311");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 11283 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:28:09 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-07-17 14:59:13 +0530 (Mon, 17 Jul 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("AVG AntiVirus Version Detection (Mac OS X)");
@@ -72,7 +72,6 @@ if("AVGAntiVirus" >< name)
 
   close(sock);
 
-  ## Exit if version not found
   if(isnull(installVer) || "does not exist" >< installVer){
     exit(0);
   }

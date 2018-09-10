@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webtrees_googlemap_street_view_xss_vuln.nasl 5789 2017-03-30 11:42:46Z cfi $
+# $Id: gb_webtrees_googlemap_street_view_xss_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Webtrees wt_v3_street_view.php Cross-site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805140");
-  script_version("$Revision: 5789 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2014-100006");
   script_bugtraq_id(65517);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 13:42:46 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-18 15:28:52 +0530 (Wed, 18 Feb 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Webtrees wt_v3_street_view.php Cross-site Scripting Vulnerability");
@@ -59,8 +59,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/91133");
-  script_xref(name : "URL" , value : "http://www.rusty-ice.de/advisory/advisory_2014001.txt");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/91133");
+  script_xref(name:"URL", value:"http://www.rusty-ice.de/advisory/advisory_2014001.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -73,11 +73,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
 
 http_port = get_http_port(default:80);
 
@@ -95,7 +90,6 @@ foreach dir (make_list_unique("/", "/webtrees", cgi_dirs(port:http_port)))
   sndReq = http_get(item:string(dir, "/index.php"),  port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ## Get the session id
   if("WT_SESSION" >< rcvRes)
   {
     cookie = eregmatch(pattern:"Set-Cookie: WT_SESSION=([0-9a-z]*);", string:rcvRes);
@@ -112,14 +106,11 @@ foreach dir (make_list_unique("/", "/webtrees", cgi_dirs(port:http_port)))
                   'Cookie: WT_SESSION=', cookie[1], '\r\n\r\n');
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ##Confirm Application
   if("webtrees" >< rcvRes && ">Login<" >< rcvRes)
   {
-    ##Construct Attack Request
     url = dir + '/modules_v3/googlemap/wt_v3_street_view.php?map='
               + '"><script>alert(document.cookie)</script> ; b="';
 
-    ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
        pattern:"<script>alert\(document\.cookie\)</script>",
        extra_check:"toggleStreetView"))

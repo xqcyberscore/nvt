@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_jan15_macosx.nasl 6551 2017-07-06 09:58:21Z teissa $
+# $Id: gb_google_chrome_mult_vuln02_jan15_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities -02 Jan15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805422");
-  script_version("$Revision: 6551 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-1346", "CVE-2015-1205", "CVE-2014-7948", "CVE-2014-7947",
                 "CVE-2014-7946", "CVE-2014-7945", "CVE-2014-7944", "CVE-2014-7943",
                 "CVE-2014-7942", "CVE-2014-7941", "CVE-2014-7940", "CVE-2014-7939",
@@ -42,39 +42,38 @@ if(description)
   script_bugtraq_id(72288);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-27 17:11:51 +0530 (Tue, 27 Jan 2015)");
   script_name("Google Chrome Multiple Vulnerabilities -02 Jan15 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists. For more details
+  script_tag(name:"insight", value:"Multiple flaws exists. For more details
   about the vulnerabilities, refer the reference section.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial of service attack, man-in-the-middle attack, bypass
   certain security restrictions and compromise a user's system, bypass the
   SafeBrowsing or possibly have unspecified other impacts.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Google Chrome version prior to
+  script_tag(name:"affected", value:"Google Chrome version prior to
   40.0.2214.91 on Mac OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   40.0.2214.91 or later, For updates refer to http://www.google.com/chrome");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/62383");
-  script_xref(name : "URL" , value : "https://code.google.com/p/chromium/issues/detail?id=380663");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2015/01/stable-update.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/62383");
+  script_xref(name:"URL", value:"https://code.google.com/p/chromium/issues/detail?id=380663");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2015/01/stable-update.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -88,15 +87,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-chromeVer = "";
-
-## Get version
 if(!chromeVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:chromeVer, test_version:"40.0.2214.91"))
 {
   report = 'Installed version: ' + chromeVer + '\n' +

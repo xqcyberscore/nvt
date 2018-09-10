@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mango_automation_mult_vuln.nasl 6513 2017-07-04 09:59:28Z teissa $
+# $Id: gb_mango_automation_mult_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Mango Automation Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:infinite_automation_systems:mango_automation";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806065");
-  script_version("$Revision: 6513 $");
+  script_version("$Revision: 11291 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-01 12:11:26 +0530 (Thu, 01 Oct 2015)");
   script_name("Mango Automation Multiple Vulnerabilities");
 
@@ -64,21 +64,19 @@ if(description)
   script_tag(name:"affected", value:"Mango Automation versions 2.5.2 and
   2.6.0 beta (build 327).");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/38338");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133732");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133734");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133726");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133733");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/38338");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/133732");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/133734");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/133726");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/133733");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -93,17 +91,10 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-# Variable Initialization
-mangoPort = "";
-req = "";
-res = "";
-
-# Get HTTP Port
 if(!mangoPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Application Location
 if(!dir = get_app_location(cpe:CPE, port:mangoPort)){
   exit(0);
 }
@@ -112,7 +103,6 @@ url = string(dir, "/login.htm");
 req = http_get (item: url, port:mangoPort);
 res = http_keepalive_send_recv(port:mangoPort,data:req);
 
-## Confirm the application before trying exploit
 if('content="Mango Automation' >< res && 'id="loginForm' >< res)
 {
   postData = "username=%22%3E%3Cscript%3Ealert%28document.cookie%29%3B%3C%2Fscript%3E&password=sd";
@@ -126,7 +116,6 @@ if('content="Mango Automation' >< res && 'id="loginForm' >< res)
                "Content-Length: ", strlen(postData), "\r\n\r\n",
                 postData);
 
-  ## Send request and receive the response
   res = http_keepalive_send_recv(port:mangoPort, data:req);
   if(res =~ "HTTP/1\.. 200" && '"><script>alert(document.cookie);</script>"' >< res && "welcomeToMango" >< res)
   {

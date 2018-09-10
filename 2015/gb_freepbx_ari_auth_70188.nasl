@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_freepbx_ari_auth_70188.nasl 9442 2018-04-11 12:22:50Z cfischer $
+# $Id: gb_freepbx_ari_auth_70188.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # FreePBX 'index.php' Remote Command Execution Vulnerability
 #
@@ -29,44 +29,44 @@ CPE = "cpe:/a:freepbx:freepbx";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105195");
- script_bugtraq_id(70188);
- script_cve_id("CVE-2014-7235");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 9442 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105195");
+  script_bugtraq_id(70188);
+  script_cve_id("CVE-2014-7235");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11291 $");
 
- script_name("FreePBX 'index.php' Remote Command Execution Vulnerability");
+  script_name("FreePBX 'index.php' Remote Command Execution Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/70188");
- script_xref(name:"URL", value:"http://www.freepbx.org/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/70188");
+  script_xref(name:"URL", value:"http://www.freepbx.org/");
 
- script_tag(name: "impact" , value:"An attacker may leverage this issue to execute arbitrary commands in
+  script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary commands in
 the context of the affected application.");
 
- script_tag(name: "vuldetect" , value:"Send a HTTP GET request with a special crafted cookie and check the response.");
+  script_tag(name:"vuldetect", value:"Send a HTTP GET request with a special crafted cookie and check the response.");
 
- script_tag(name: "insight" , value:"htdocs_ari/includes/login.php in the ARI Framework module/Asterisk Recording Interface (ARI) allows remote
+  script_tag(name:"insight", value:"htdocs_ari/includes/login.php in the ARI Framework module/Asterisk Recording Interface (ARI) allows remote
 attackers to execute arbitrary code via the ari_auth coockie, related to the PHP unserialize function, as exploited in the wild in September 2014.");
 
- script_tag(name: "solution" , value:"Updates are available.");
+  script_tag(name:"solution", value:"Updates are available.");
 
- script_tag(name: "summary" , value:"FreePBX is prone to a remote command-execution vulnerability because
+  script_tag(name:"summary", value:"FreePBX is prone to a remote command-execution vulnerability because
 the application fails to sufficiently sanitize input data.");
 
- script_tag(name: "affected" , value:"FreePBX before 2.9.0.9, 2.10.x, and 2.11 before 2.11.1.5");
+  script_tag(name:"affected", value:"FreePBX before 2.9.0.9, 2.10.x, and 2.11 before 2.11.1.5");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
- script_tag(name:"creation_date", value:"2015-02-06 16:04:47 +0100 (Fri, 06 Feb 2015)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_freepbx_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("freepbx/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-02-06 16:04:47 +0100 (Fri, 06 Feb 2015)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_freepbx_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("freepbx/installed");
 
  exit(0);
 }
@@ -96,7 +96,7 @@ cookie = 'ari_auth=a%3A2%3A%7Bi%3A0%3Bs%3A88%3A%22rT9bcNlEJv%2F1G9j9ZcqPUej1ntSH
 host = http_host_name(port:port);
 
 req = 'GET ' + dir + '/recordings/index.php HTTP/1.1\r\n' +
-      'Host: ' + host + '\r\n' + 
+      'Host: ' + host + '\r\n' +
       'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
       'Connection: Close\r\n' +
       'Accept-Charset: iso-8859-1,utf-8;q=0.9,*;q=0.1\r\n' +

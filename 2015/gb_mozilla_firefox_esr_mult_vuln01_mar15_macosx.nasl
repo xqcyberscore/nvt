@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_mar15_macosx.nasl 6207 2017-05-24 09:04:07Z teissa $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_mar15_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities-01 Mar15 (Mac OS X)
 #
@@ -29,22 +29,21 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805478");
-  script_version("$Revision: 6207 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-0836", "CVE-2015-0831", "CVE-2015-0827", "CVE-2015-0822");
   script_bugtraq_id(72742, 72746, 72755, 72756);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-03 15:37:42 +0530 (Tue, 03 Mar 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 Mar15 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox ESR
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox ESR
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
   - Some unspecified vulnerabilities in the browser engine.
   - Multiple untrusted search path vulnerabilities in updater.exe.
   - Use-after-free error in the 'IDBDatabase::CreateObjectStore' function in
@@ -53,17 +52,17 @@ if(description)
   'nsTransformedTextRun::SetCapitalization' functions.
   - Flaw in the autocomplete feature for forms.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to disclose potentially sensitive information, bypass certain security
   restrictions, cause a denial of service, execute arbitrary code and local
   privilege escalation.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox ESR 31.x before 31.5 on
+  script_tag(name:"affected", value:"Mozilla Firefox ESR 31.x before 31.5 on
   Mac OS X");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox ESR version 31.5
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version 31.5
   or later, For updates refer to https://www.mozilla.org/en-US/firefox/organizations");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -85,16 +84,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
-if(ffVer =~ "^(31)\.")
+if(ffVer =~ "^31\.")
 {
   if((version_in_range(version:ffVer, test_version:"31.0", test_version2:"31.4")))
   {

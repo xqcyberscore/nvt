@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol15879.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_f5_big_ip_sol15879.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # F5 BIG-IP - SOL15879 - SOAP parser vulnerability CVE-2013-1824
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105373");
- script_cve_id("CVE-2013-1824");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 6637 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105373");
+  script_cve_id("CVE-2013-1824");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11291 $");
 
- script_name("F5 BIG-IP - SOL15879 - SOAP parser vulnerability CVE-2013-1824");
+  script_name("F5 BIG-IP - SOL15879 - SOAP parser vulnerability CVE-2013-1824");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/15000/800/sol15879.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/15000/800/sol15879.html");
 
- script_tag(name: "impact" , value:"If a PHP application accepts untrusted SOAP object input remotely from clients, an attacker could use this flaw for the unauthorized reading of system files, accessible with the privileges of the PHP application.");
+  script_tag(name:"impact", value:"If a PHP application accepts untrusted SOAP object input remotely from clients, an attacker could use this flaw for the unauthorized reading of system files, accessible with the privileges of the PHP application.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"The SOAP parser in PHP before 5.3.22 and 5.4.x before 5.4.12 allows remote attackers to read arbitrary files via a SOAP WSDL file containing an XML external entity declaration in conjunction with an entity reference, related to an XML External Entity (XXE) issue in the soap_xmlParseFile and soap_xmlParseMemory functions. (CVE-2013-1824)");
+  script_tag(name:"insight", value:"The SOAP parser in PHP before 5.3.22 and 5.4.x before 5.4.12 allows remote attackers to read arbitrary files via a SOAP WSDL file containing an XML external entity declaration in conjunction with an entity reference, related to an XML External Entity (XXE) issue in the soap_xmlParseFile and soap_xmlParseMemory functions. (CVE-2013-1824)");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The remote host is missing a security patch.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The remote host is missing a security patch.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
- script_tag(name:"creation_date", value:"2015-09-19 10:39:58 +0200 (Sat, 19 Sep 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-09-19 10:39:58 +0200 (Sat, 19 Sep 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

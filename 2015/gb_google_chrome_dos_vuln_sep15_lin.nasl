@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_dos_vuln_sep15_lin.nasl 9303 2018-04-04 13:18:17Z asteins $
+# $Id: gb_google_chrome_dos_vuln_sep15_lin.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Google Chrome Denial of Service Vulnerability September15 (Linux)
 #
@@ -29,38 +29,37 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806055");
-  script_version("$Revision: 9303 $");
+  script_version("$Revision: 11291 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 15:18:17 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-21 12:57:12 +0530 (Mon, 21 Sep 2015)");
   script_name("Google Chrome Denial of Service Vulnerability September15 (Linux)");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to browser address field
+  script_tag(name:"insight", value:"The flaw is due to browser address field
   does not properly sanitize user supplied input.");
 
-  script_tag(name: "impact" , value:"Successful exploitation could allow
+  script_tag(name:"impact", value:"Successful exploitation could allow
   attackers to crash the application.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Google Chrome version 45.0.2454.93 and
+  script_tag(name:"affected", value:"Google Chrome version 45.0.2454.93 and
   prior on Linux.");
 
-  script_tag(name: "solution" , value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   46.0.2490.71 or later, For updates refer to http://www.google.com/chrome");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://www.dnaindia.com/scitech/report-a-vulnerability-in-google-chrome-causes-it-to-crash-by-entering-a-simple-text-string-2127143");
+  script_xref(name:"URL", value:"http://www.dnaindia.com/scitech/report-a-vulnerability-in-google-chrome-causes-it-to-crash-by-entering-a-simple-text-string-2127143");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -74,15 +73,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-chromeVer = "";
-
-## Get version
 if(!chromeVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less_equal(version:chromeVer, test_version:"45.0.2454.93"))
 {
   report = 'Installed version: ' + chromeVer + '\n' +

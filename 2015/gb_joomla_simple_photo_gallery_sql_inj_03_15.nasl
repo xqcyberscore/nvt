@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_simple_photo_gallery_sql_inj_03_15.nasl 9442 2018-04-11 12:22:50Z cfischer $
+# $Id: gb_joomla_simple_photo_gallery_sql_inj_03_15.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Joomla! 'Simple Photo Gallery' Component 'albumid' Parameter SQL Injection Vulnerability
 #
@@ -29,37 +29,37 @@ CPE = "cpe:/a:joomla:joomla";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105243");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 9442 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105243");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11291 $");
 
- script_name("Joomla! 'Simple Photo Gallery' Component 'albumid' Parameter SQL Injection Vulnerability");
+  script_name("Joomla! 'Simple Photo Gallery' Component 'albumid' Parameter SQL Injection Vulnerability");
 
- script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/36385/");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/36385/");
 
- script_tag(name: "impact" , value:"Exploiting this issue could allow an attacker to compromise the
+  script_tag(name:"impact", value:"Exploiting this issue could allow an attacker to compromise the
 application, access or modify data, or exploit latent vulnerabilities in the underlying database.");
 
- script_tag(name: "vuldetect" , value:"Send a special crafted HTTP GET request and check the response");
- script_tag(name: "insight" , value:"Input of the 'albumid' parameter is not properly sanitized.");
- script_tag(name: "solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability.
- Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
- product or replace the product by another one.");
- script_tag(name: "summary" , value:"Joomla! Simple Photo Gallery is prone to an SQL-injection vulnerability because it fails
+  script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response");
+  script_tag(name:"insight", value:"Input of the 'albumid' parameter is not properly sanitized.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"Joomla! Simple Photo Gallery is prone to an SQL-injection vulnerability because it fails
 to sufficiently sanitize user-supplied data before using it in an SQL query.");
- script_tag(name:"solution_type", value: "WillNotFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
- script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
- script_tag(name:"creation_date", value:"2015-03-24 13:13:33 +0100 (Tue, 24 Mar 2015)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("joomla_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("joomla/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-03-24 13:13:33 +0100 (Tue, 24 Mar 2015)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("joomla_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("joomla/installed");
 
  exit(0);
 }
@@ -67,7 +67,7 @@ to sufficiently sanitize user-supplied data before using it in an SQL query.");
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
+
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir  = get_app_location( cpe:CPE, port:port ) ) exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-108.nasl 6333 2017-06-14 10:00:49Z teissa $
+# $Id: gb_ms15-108.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Microsoft Windows JScript and VBScript Remote Code Execution Vulnerability(3089659)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805990");
-  script_version("$Revision: 6333 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-2482", "CVE-2015-6052", "CVE-2015-6055", "CVE-2015-6059");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 08:29:13 +0530 (Wed, 14 Oct 2015)");
   script_name("Microsoft Windows JScript and VBScript Remote Code Execution Vulnerability(3089659)");
 
@@ -55,8 +55,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows Vista x32/x64 Service Pack 2 and prior
+  script_tag(name:"affected", value:"Microsoft Windows Vista x32/x64 Service Pack 2 and prior
   Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -67,13 +66,14 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3089659");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/ms15-108.aspx");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3089659");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/ms15-108.aspx");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -84,32 +84,23 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win2008:3) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-## Get Version from Vbscript.dll file
 dllVer = fetch_file_version(sysPath, file_name:"system32\Vbscript.dll");
 if(!dllVer){
   exit(0);
 }
 
-## Windows Vista and Windows Server 2008
 ## Currently not supporting for Vista and Windows Server 2008 64 bit
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Vbscript.dll version
   if(version_in_range(version:dllVer, test_version:"5.7", test_version2:"5.7.6002.19487"))
   {
     Vulnerable_range = "5.7 - 5.7.6002.19487";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ucs_4_errata_142.nasl 6664 2017-07-11 10:20:11Z cfischer $
+# $Id: gb_ucs_4_errata_142.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Univention Corporate Server 4.0 erratum 142
 #
@@ -30,12 +30,12 @@ CPE = 'cpe:/o:univention:univention_corporate_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105249");
-  script_cve_id("CVE-2015-0209","CVE-2015-0286","CVE-2015-0287","CVE-2015-0288","CVE-2015-0289","CVE-2015-0292");
+  script_cve_id("CVE-2015-0209", "CVE-2015-0286", "CVE-2015-0287", "CVE-2015-0288", "CVE-2015-0289", "CVE-2015-0292");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 6664 $");
+  script_version("$Revision: 11291 $");
   script_name("Univention Corporate Server 4.0 erratum 142");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-11 12:20:11 +0200 (Tue, 11 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-09 10:45:33 +0200 (Thu, 09 Apr 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

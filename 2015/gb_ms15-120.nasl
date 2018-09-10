@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-120.nasl 6376 2017-06-20 10:00:24Z teissa $
+# $Id: gb_ms15-120.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # MS Windows IPSec Denial of Service Vulnerability (3102939)
 #
@@ -27,35 +27,34 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805775");
-  script_version("$Revision: 6376 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-6111");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 08:52:04 +0530 (Wed, 11 Nov 2015)");
   script_name("MS Windows IPSec Denial of Service Vulnerability (3102939)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft Bulletin MS15-120.");
 
-  script_tag(name: "vuldetect" , value:"Get the vulnerable file version and
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value:"Flaw is due to the Internet Protocol
+  script_tag(name:"insight", value:"Flaw is due to the Internet Protocol
   Security (IPSec) service improperly handles encryption negotiation.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to conduct denial-of-service attacks.
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"
-  Microsoft Windows 8 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows 8.1 x32/x64
   Microsoft Windows Server 2012
   Microsoft Windows Server 2012 R2");
 
-  script_tag(name: "solution" , value:"Run Windows Update and update the listed
+  script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
   below link, https://technet.microsoft.com/library/security/ms15-120");
 
@@ -63,12 +62,13 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3102939");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/ms15-120");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/3102939");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/ms15-120");
   script_category(ACT_GATHER_INFO);
   script_family("Windows : Microsoft Bulletins");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -79,23 +79,16 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-##Variable Initialization
-sysPath = "";
-bfeVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win8:1, win8x64:1, win2012:1, win8_1:1, win8_1x64:1,
                    win2012R2:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath){
   exit(0);
 }
 
-## Get Version
 bfeVer = fetch_file_version(sysPath, file_name:"system32\Bfe.dll");
 if(!bfeVer){
   exit(0);
@@ -104,7 +97,6 @@ if(!bfeVer){
 ## Win 8 and 2012
 if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 {
- ## Check for Bfe.dll version
   if(version_is_less(version:bfeVer, test_version:"6.2.9200.17539"))
   {
     Vulnerable_range = "Less than 6.2.9200.17539";
@@ -120,7 +112,6 @@ if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 ## Win 8.1 and win2012R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Bfe.dll version
   if(version_is_less(version:bfeVer, test_version:"6.3.9600.18009"))
   {
     Vulnerable_range = "Less than 6.3.9600.18009";

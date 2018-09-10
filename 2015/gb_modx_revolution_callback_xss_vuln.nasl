@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_revolution_callback_xss_vuln.nasl 5889 2017-04-07 09:14:58Z cfi $
+# $Id: gb_modx_revolution_callback_xss_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # MODX Revolution 'callback' Parameter Cross-Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805235");
-  script_version("$Revision: 5889 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2014-8992");
   script_bugtraq_id(71821);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:14:58 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-07 14:55:47 +0530 (Wed, 07 Jan 2015)");
   script_name("MODX Revolution 'callback' Parameter Cross-Site Scripting Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -63,11 +63,9 @@ if(description)
 
   script_tag(name:"affected", value:"MODX Revolution version 2.3.2-pl.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"remote_app");
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -102,7 +100,6 @@ if( isnull( res ) ) exit( 0 );
 ##Calculate MD5 of response
 resmd5 = hexstr( MD5( res ) );
 
-#Check if md5 hashes match and Confirm exploit
 if( resmd5 == md5File ) {
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );

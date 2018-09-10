@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_ipcamera_xss_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_dlink_ipcamera_xss_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # D-link IP Camera DCS-2103 Cross-site Scripting Vulnerability
 #
@@ -27,37 +27,37 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805034");
-  script_version("$Revision: 9381 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2014-9517");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-08 11:21:29 +0530 (Thu, 08 Jan 2015)");
   script_name("D-link IP Camera DCS-2103 Cross-site Scripting Vulnerability");
 
-  script_tag(name: "summary" , value:"This host has D-link IP Camera and is
+  script_tag(name:"summary", value:"This host has D-link IP Camera and is
   prone to cross-site scripting vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted HTTP GET request and check
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check
   whether it is able read the cookie");
 
-  script_tag(name: "insight" , value:"The flaw is due to an input passed via
+  script_tag(name:"insight", value:"The flaw is due to an input passed via
   the vb.htm script to the 'QUERY_STRING ' parameter is not properly sanitized.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attacker to
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to
   execute arbitrary HTML and script code in a user's browser session in the context
   of an affected site.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"D-link IP camera DCS-2103 with firmware before 1.20");
+  script_tag(name:"affected", value:"D-link IP camera DCS-2103 with firmware before 1.20");
 
-  script_tag(name: "solution" , value:"Upgrade to D-link IP camera DCS-2103 with
+  script_tag(name:"solution", value:"Upgrade to D-link IP camera DCS-2103 with
   firmware 1.20 or later. For updates refer to http://www.dlink.com");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/129609");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/129609");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -74,17 +74,8 @@ include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-DlinkBanner = "";
-DlinkPort = "";
-DlinkReq = "";
-DlinkRes = "";
-files = "";
-
-## Get HTTP Port
 DlinkPort = get_http_port(default:80);
 
-## Confirm the device from banner
 DlinkBanner = get_http_banner(port: DlinkPort);
 if('WWW-Authenticate: Basic realm="DCS-2103"' >!< DlinkBanner){
   exit(0);
@@ -92,7 +83,6 @@ if('WWW-Authenticate: Basic realm="DCS-2103"' >!< DlinkBanner){
 
 url ="/vb.htm?<script>alert(document.cookie)</script>";
 
-## Confirm the Exploit
 ## Extra Check is not possible
 if(http_vuln_check(port:DlinkPort, url:url, check_header:TRUE,
    pattern:"<script>alert\(document.cookie\)</script>"))

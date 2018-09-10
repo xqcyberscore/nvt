@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_wsa_cve_2015_6287.nasl 6333 2017-06-14 10:00:49Z teissa $
+# $Id: gb_cisco_wsa_cve_2015_6287.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Cisco Web Security Appliance DNS Resolution Vulnerability
 #
@@ -29,40 +29,40 @@ CPE = "cpe:/h:cisco:web_security_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105350");
- script_cve_id("CVE-2015-6287");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 6333 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105350");
+  script_cve_id("CVE-2015-6287");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11291 $");
 
- script_name("Cisco Web Security Appliance DNS Resolution Vulnerability");
+  script_name("Cisco Web Security Appliance DNS Resolution Vulnerability");
 
- script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCur07907");
- script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCur32005");
+  script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCur07907");
+  script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCur32005");
 
- script_tag(name: "impact" , value:"An unauthenticated, remote attacker could exploit this vulnerability to cause a DoS condition due to DNS
+  script_tag(name:"impact", value:"An unauthenticated, remote attacker could exploit this vulnerability to cause a DoS condition due to DNS
 name resolution failure through the affected device. This could result in the client receiving an HTTP 'Service Unavailable' error.");
 
- script_tag(name: "vuldetect" , value:"Check the version");
+  script_tag(name:"vuldetect", value:"Check the version");
 
- script_tag(name: "insight" , value:"The vulnerability is due to the handling of DNS requests awaiting a DNS response when new, incoming DNS requests
+  script_tag(name:"insight", value:"The vulnerability is due to the handling of DNS requests awaiting a DNS response when new, incoming DNS requests
 are received. An attacker could exploit this vulnerability by sending TCP proxy traffic to the WSA at a high rate. An exploit could allow the attacker
 to cause a partial DoS condition because DNS name resolution fails, which results in the client receiving a HTTP 503 'Service Unavailable' error.");
 
- script_tag(name: "solution" , value:"Updates are available. Please see the vendor advisory for more information.");
- script_tag(name: "summary" , value:"Cisco Web Security Appliance contains a vulnerability that could allow an unauthenticated, remote attacker to cause a denial of service condition.");
- script_tag(name: "affected" , value:"Cisco WSA versions 8.0.6-078 and 8.0.6-115 are vulnerable.");
+  script_tag(name:"solution", value:"Updates are available. Please see the vendor advisory for more information.");
+  script_tag(name:"summary", value:"Cisco Web Security Appliance contains a vulnerability that could allow an unauthenticated, remote attacker to cause a denial of service condition.");
+  script_tag(name:"affected", value:"Cisco WSA versions 8.0.6-078 and 8.0.6-115 are vulnerable.");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-09-09 17:12:18 +0200 (Wed, 09 Sep 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_wsa_version.nasl");
- script_mandatory_keys("cisco_wsa/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-09-09 17:12:18 +0200 (Wed, 09 Sep 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_wsa_version.nasl");
+  script_mandatory_keys("cisco_wsa/installed");
  exit(0);
 }
 

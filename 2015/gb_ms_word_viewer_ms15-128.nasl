@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_viewer_ms15-128.nasl 6443 2017-06-27 10:00:22Z teissa $
+# $Id: gb_ms_word_viewer_ms15-128.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Microsoft Office Word Viewer Multiple Remote Code Execution Vulnerabilities (3104503)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806180");
-  script_version("$Revision: 6443 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-6106", "CVE-2015-6107", "CVE-2015-6108");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 16:15:04 +0530 (Wed, 09 Dec 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Word Viewer Multiple Remote Code Execution Vulnerabilities (3104503)");
@@ -59,9 +59,9 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3104503");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3114478");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS15-128");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3104503");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3114478");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS15-128");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -74,13 +74,9 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initailization
-wordviewVer = "";
-
 wordviewVer = get_kb_item("SMB/Office/WordView/Version");
 if(wordviewVer)
 {
-  ## Check for Wordview.exe 11.0 < 11.0.8422 
   ## Wordview.exe will update for https://support.microsoft.com/en-us/kb/3114478
   if(version_in_range(version:wordviewVer, test_version:"11.0", test_version2:"11.0.8421"))
   {

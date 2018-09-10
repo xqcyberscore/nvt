@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_accellion_fta_rce_vuln.nasl 7046 2017-09-04 05:19:39Z asteins $
+# $Id: gb_accellion_fta_rce_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Accellion FTA Remote Command Execution Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/h:accellion:secure_file_transfer_appliance';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106032");
-  script_version("$Revision: 7046 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-04 07:19:39 +0200 (Mon, 04 Sep 2017) $");
-  script_tag(name: "creation_date", value: "2015-08-05 10:57:09 +0700 (Wed, 05 Aug 2015)");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-08-05 10:57:09 +0700 (Wed, 05 Aug 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_cve_id("CVE-2015-2857");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_accellion_fta_detect.nasl");
   script_mandatory_keys("accellion_fta/installed");
 
-  script_tag(name: "summary", value: "Accellion FTA is prone to a remote command execution vulnerability");
+  script_tag(name:"summary", value:"Accellion FTA is prone to a remote command execution vulnerability");
 
-  script_tag(name: "vuldetect", value: "Send a crafted POST request and check the response.");
+  script_tag(name:"vuldetect", value:"Send a crafted POST request and check the response.");
 
-  script_tag(name: "insight", value: "The vulnerability is due to insufficient sanitization of the
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient sanitization of the
 'oauth_token' parameter. The parameter is passed into the system() command line through multiple mod_perl
 handlers.");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker can gain complete access to the
+  script_tag(name:"impact", value:"An unauthenticated attacker can gain complete access to the
 appliance.");
 
-  script_tag(name: "affected", value: "Accellion FTA Version 9.11.200 and prior.");
+  script_tag(name:"affected", value:"Accellion FTA Version 9.11.200 and prior.");
 
-  script_tag(name: "solution", value: "Upgrade to version 9.11.210 or later");
+  script_tag(name:"solution", value:"Upgrade to version 9.11.210 or later");
 
-  script_xref(name: "URL", value: "https://packetstormsecurity.com/files/132665/Accellion-FTA-getStatus-verify_oauth_token-Command-Execution.html");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/132665/Accellion-FTA-getStatus-verify_oauth_token-Command-Execution.html");
 
   exit(0);
 }

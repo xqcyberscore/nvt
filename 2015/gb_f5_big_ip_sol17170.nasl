@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol17170.nasl 6183 2017-05-22 09:03:43Z teissa $
+# $Id: gb_f5_big_ip_sol17170.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # F5 BIG-IP - SOL17170 - Java vulnerability CVE-2015-4736
 #
@@ -29,38 +29,38 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105361");
- script_cve_id("CVE-2015-4736");
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6183 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105361");
+  script_cve_id("CVE-2015-4736");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11291 $");
 
- script_name("F5 BIG-IP - SOL17170 - Java vulnerability CVE-2015-4736");
+  script_name("F5 BIG-IP - SOL17170 - Java vulnerability CVE-2015-4736");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/17000/100/sol17170.html?sr=48315211");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/17000/100/sol17170.html?sr=48315211");
 
- script_tag(name: "impact" , value:"Confidentiality, integrity, and availability may be affected when exploited by attackers. However, affected F5 products that contain the vulnerable software component do not use them in a way that exposes this vulnerability.");
+  script_tag(name:"impact", value:"Confidentiality, integrity, and availability may be affected when exploited by attackers. However, affected F5 products that contain the vulnerable software component do not use them in a way that exposes this vulnerability.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"Unspecified vulnerability in Oracle Java SE 7u80 and 8u45 allows remote attackers to affect confidentiality, integrity, and availability via unknown vectors related to Deployment. (CVE-2015-4736)");
+  script_tag(name:"insight", value:"Unspecified vulnerability in Oracle Java SE 7u80 and 8u45 allows remote attackers to affect confidentiality, integrity, and availability via unknown vectors related to Deployment. (CVE-2015-4736)");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The remote host is missing a security patch.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The remote host is missing a security patch.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
- script_tag(name:"creation_date", value:"2015-09-18 14:39:37 +0200 (Fri, 18 Sep 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-09-18 14:39:37 +0200 (Fri, 18 Sep 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
 
- script_tag(name:"deprecated", value:TRUE); # advisory was changed. no f5 product is affected
+  script_tag(name:"deprecated", value:TRUE); # advisory was changed. no f5 product is affected
 
  exit(0);
 }
@@ -82,7 +82,7 @@ if( hf = get_kb_item( "f5/big_ip/hotfix" ) ) hotfix = hf;
 
 if( "LTM" >< active_modules )
 {
-  if( version_in_range( version:version, test_version:"11.5.0", test_version2:"11.6.0" ) )  
+  if( version_in_range( version:version, test_version:"11.5.0", test_version2:"11.6.0" ) )
   {
     LTM_VULN = TRUE;
   }
@@ -97,7 +97,7 @@ if( "LTM" >< active_modules )
 
 if( "AAM" >< active_modules )
 {
-  if( version_in_range( version:version, test_version:"11.5.0", test_version2:"11.6.0" ) )  
+  if( version_in_range( version:version, test_version:"11.5.0", test_version2:"11.6.0" ) )
   {
     AAM_VULN = TRUE;
   }
@@ -112,7 +112,7 @@ if( "AAM" >< active_modules )
 
 if( "AFM" >< active_modules )
 {
-  if( version_in_range( version:version, test_version:"11.5.0", test_version2:"11.6.0" ) )  
+  if( version_in_range( version:version, test_version:"11.5.0", test_version2:"11.6.0" ) )
   {
     AFM_VULN = TRUE;
   }
@@ -127,7 +127,7 @@ if( "AFM" >< active_modules )
 
 if( "AVR" >< active_modules )
 {
-  if( version_in_range( version:version, test_version:"11.5.0", test_version2:"11.6.0" ) )  
+  if( version_in_range( version:version, test_version:"11.5.0", test_version2:"11.6.0" ) )
   {
     AVR_VULN = TRUE;
   }
@@ -142,7 +142,7 @@ if( "AVR" >< active_modules )
 
 if( "APM" >< active_modules )
 {
-  if( version_in_range( version:version, test_version:"11.5.0", test_version2:"11.6.0" ) )  
+  if( version_in_range( version:version, test_version:"11.5.0", test_version2:"11.6.0" ) )
   {
     APM_VULN = TRUE;
   }
@@ -157,7 +157,7 @@ if( "APM" >< active_modules )
 
 if( "ASM" >< active_modules )
 {
-  if( version_in_range( version:version, test_version:"11.5.0", test_version2:"11.6.0" ) )  
+  if( version_in_range( version:version, test_version:"11.5.0", test_version2:"11.6.0" ) )
   {
     ASM_VULN = TRUE;
   }
@@ -172,7 +172,7 @@ if( "ASM" >< active_modules )
 
 if( "GTM" >< active_modules )
 {
-  if( version_in_range( version:version, test_version:"11.5.0", test_version2:"11.6.0" ) )  
+  if( version_in_range( version:version, test_version:"11.5.0", test_version2:"11.6.0" ) )
   {
     GTM_VULN = TRUE;
   }
@@ -187,7 +187,7 @@ if( "GTM" >< active_modules )
 
 if( "LC" >< active_modules )
 {
-  if( version_in_range( version:version, test_version:"11.5.0", test_version2:"11.6.0" ) )  
+  if( version_in_range( version:version, test_version:"11.5.0", test_version2:"11.6.0" ) )
   {
     LC_VULN = TRUE;
   }
@@ -202,7 +202,7 @@ if( "LC" >< active_modules )
 
 if( "PEM" >< active_modules )
 {
-  if( version_in_range( version:version, test_version:"11.5.0", test_version2:"11.6.0" ) )  
+  if( version_in_range( version:version, test_version:"11.5.0", test_version2:"11.6.0" ) )
   {
     PEM_VULN = TRUE;
   }

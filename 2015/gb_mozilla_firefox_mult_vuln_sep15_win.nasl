@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_sep15_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mult_vuln_sep15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities - Sep15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805754");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-7327", "CVE-2015-7180", "CVE-2015-7179", "CVE-2015-7178",
                 "CVE-2015-7177", "CVE-2015-7176", "CVE-2015-7175", "CVE-2015-7174",
                 "CVE-2015-4522", "CVE-2015-4521", "CVE-2015-4520", "CVE-2015-4519",
@@ -39,31 +39,31 @@ if(description)
                 "CVE-2015-4501", "CVE-2015-4500");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-29 18:11:28 +0530 (Tue, 29 Sep 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - Sep15 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox and is prone to vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are exists due to,
+  script_tag(name:"insight", value:"Multiple flaws are exists due to,
   - Failed to  restrict the availability of High Resolution Time API times,
   - Multiple memory corruption flaws,
   - 'js/src/proxy/Proxy.cpp' mishandles certain receiver arguments,
   - Multiple unspecified errors.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow local
+  script_tag(name:"impact", value:"Successful exploitation will allow local
   and remote attackers to cause a denial of service or possibly execute arbitrary
   code, gain privileges and some unspecified impacts.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 41.0 on
+  script_tag(name:"affected", value:"Mozilla Firefox version before 41.0 on
   Windows");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 41.0
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 41.0
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");

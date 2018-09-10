@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysaid_dir_traversal_vuln.nasl 6333 2017-06-14 10:00:49Z teissa $
+# $Id: gb_sysaid_dir_traversal_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # SysAid Directory Traversal Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:sysaid:sysaid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106007");
-  script_version("$Revision: 6333 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2015-06-11 10:02:43 +0700 (Thu, 11 Jun 2015)");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-06-11 10:02:43 +0700 (Thu, 11 Jun 2015)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:C");
 
-  script_tag(name: "qod_type", value: "remote_active");
+  script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_cve_id("CVE-2015-2996");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_sysaid_detect.nasl");
   script_mandatory_keys("sysaid/installed");
 
-  script_tag(name: "summary", value: "SysAid Help Desktop Software is prone to a path traversal
+  script_tag(name:"summary", value:"SysAid Help Desktop Software is prone to a path traversal
 vulnerability");
 
-  script_tag(name: "vuldetect", value: "Send a special crafted HTTP GET request and check the response.");
+  script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response.");
 
-  script_tag(name: "insight", value: "The vulnerability allows unauthenticated attackers to download
+  script_tag(name:"insight", value:"The vulnerability allows unauthenticated attackers to download
 arbitrary files through path traversal.");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker can obtain potentially sensitive
+  script_tag(name:"impact", value:"An unauthenticated attacker can obtain potentially sensitive
 information.");
 
-  script_tag(name: "affected", value: "SysAid Help Desktop version 15.1.x and before.");
+  script_tag(name:"affected", value:"SysAid Help Desktop version 15.1.x and before.");
 
-  script_tag(name: "solution", value: "Upgrade to version 15.2 or later");
+  script_tag(name:"solution", value:"Upgrade to version 15.2 or later");
 
-  script_xref(name: "URL", value: "https://www.security-database.com/detail.php?alert=CVE-2015-2996");
+  script_xref(name:"URL", value:"https://www.security-database.com/detail.php?alert=CVE-2015-2996");
 
   exit(0);
 }

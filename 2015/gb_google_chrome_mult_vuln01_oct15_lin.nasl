@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_oct15_lin.nasl 6505 2017-07-03 09:58:27Z teissa $
+# $Id: gb_google_chrome_mult_vuln01_oct15_lin.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-01 Oct15 (Linux)
 #
@@ -29,23 +29,22 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805996");
-  script_version("$Revision: 6505 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-7834", "CVE-2015-6763", "CVE-2015-6762", "CVE-2015-6761",
                 "CVE-2015-6760", "CVE-2015-6759", "CVE-2015-6758", "CVE-2015-6757",
                 "CVE-2015-6756", "CVE-2015-6755");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-19 13:13:05 +0530 (Mon, 19 Oct 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Oct15 (Linux)");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
   - An error in 'ContainerNode::parserInsertBefore' function in
     core/dom/ContainerNode.cpp withn Blink.
   - A use-after-free error in the CPDFSDK_PageView implementation in
@@ -63,23 +62,23 @@ if(description)
     core/css/CSSFontFaceSrcValue.cpp in the Cascading Style Sheets (CSS) implementation.
   - Other multiple unspecified errors.");
 
-  script_tag(name: "impact" , value:"Successful exploitation would allow a attacker
+  script_tag(name:"impact", value:"Successful exploitation would allow a attacker
   to cause a denial of service or possibly have other impact, bypass the security
   restrictions and gain access to potentially sensitive information.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Google Chrome versions prior to 46.0.2490.71
+  script_tag(name:"affected", value:"Google Chrome versions prior to 46.0.2490.71
   on Linux.");
 
-  script_tag(name: "solution" , value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   46.0.2490.71 or later, For updates refer to http://www.google.com/chrome");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2015/10/stable-channel-update.html");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2015/10/stable-channel-update.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -92,15 +91,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-chromeVer = "";
-
-## Get version
 if(!chromeVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:chromeVer, test_version:"46.0.2490.71"))
 {
   report = 'Installed version: ' + chromeVer + '\n' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_esm_SB10137.nasl 6431 2017-06-26 09:59:24Z teissa $
+# $Id: gb_mcafee_esm_SB10137.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # McAfee Enterprise Security Manager Authentication Bypass Vulnerability
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/a:mcafee:enterprise_security_manager";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105479");
- script_cve_id("CVE-2015-8024");
- script_version ("$Revision: 6431 $");
- script_tag(name:"cvss_base", value:"9.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_oid("1.3.6.1.4.1.25623.1.0.105479");
+  script_cve_id("CVE-2015-8024");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 
- script_name("McAfee Enterprise Security Manager Authentication Bypass Vulnerability");
+  script_name("McAfee Enterprise Security Manager Authentication Bypass Vulnerability");
 
- script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10137");
+  script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10137");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "insight" , value:"McAfee Enterprise Security Manager (ESM), Enterprise Security Manager/Log Manager (ESMLM), and Enterprise Security Manager/Receiver (ESMREC) 9.3.x before 9.3.2MR19, 9.4.x before 9.4.2MR9, and 9.5.x before 9.5.0MR8, when configured to use Active Directory or LDAP authentication sources, allow remote attackers to bypass authentication.");
- script_tag(name: "solution" , value:"Update to SIEM ESM 9.5.0MR8 or 9.4.2MR9");
- script_tag(name: "summary" , value:"A specially crafted username can bypass SIEM ESM authentication (password is not validated) if the ESM is configured to use Active Directory or LDAP authentication sources. This can result in the attacker gaining NGCP (master user) access to the ESM.");
- script_tag(name: "affected" , value:"SIEM ESM 9.5.0MR7, 9.4.2MR8, 9.3.2MR18 and earlier releases. SIEM versions prior to 9.3.0 are unaffected.");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"insight", value:"McAfee Enterprise Security Manager (ESM), Enterprise Security Manager/Log Manager (ESMLM), and Enterprise Security Manager/Receiver (ESMREC) 9.3.x before 9.3.2MR19, 9.4.x before 9.4.2MR9, and 9.5.x before 9.5.0MR8, when configured to use Active Directory or LDAP authentication sources, allow remote attackers to bypass authentication.");
+  script_tag(name:"solution", value:"Update to SIEM ESM 9.5.0MR8 or 9.4.2MR9");
+  script_tag(name:"summary", value:"A specially crafted username can bypass SIEM ESM authentication (password is not validated) if the ESM is configured to use Active Directory or LDAP authentication sources. This can result in the attacker gaining NGCP (master user) access to the ESM.");
+  script_tag(name:"affected", value:"SIEM ESM 9.5.0MR7, 9.4.2MR8, 9.3.2MR18 and earlier releases. SIEM versions prior to 9.3.0 are unaffected.");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-12-04 14:28:09 +0100 (Fri, 04 Dec 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_mcafee_esm_version.nasl");
- script_mandatory_keys("mcafee/esm/version","mcafee/esm/mr");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-12-04 14:28:09 +0100 (Fri, 04 Dec 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_mcafee_esm_version.nasl");
+  script_mandatory_keys("mcafee/esm/version", "mcafee/esm/mr");
 
  exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gather-windows-hardware-info.nasl 10890 2018-08-10 12:30:06Z cfischer $
+# $Id: gather-windows-hardware-info.nasl 11287 2018-09-07 10:00:38Z cfischer $
 #
 # Gather Windows Hardware Information
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107304");
-  script_version("$Revision: 10890 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:30:06 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11287 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 12:00:38 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-11 16:48:58 +0200 (Wed, 11 Apr 2018)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -37,8 +37,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Windows");
-  script_dependencies("gb_wmi_access.nasl");
-
+  script_dependencies("gb_wmi_access.nasl", "smb_reg_service_pack.nasl");
   script_mandatory_keys("WMI/access_successful");
 
   script_tag(name:"summary", value:"This script attempts to gather information about the hardware configuration
@@ -70,12 +69,23 @@ handle = wmi_connect( host:host, username:usrname, password:passwd );
 if( ! handle ) exit( 0 );
 
 # -- Get the CPU information -- #
-# nb: Make sure to update the foreach loop below if adding new fields here
+# nb: Make sure to update the header variable below if adding new fields here.
 # nb: Without DeviceID it is still returned in the query response so explicitly adding it here
-query1          = "SELECT DeviceID, Name, NumberOfCores FROM Win32_Processor";
+# nb: Some WMI implementations (e.g. on Win XP) doesn't provide "NumberOfCores" so checking first if its included in the response.
+query1          = "SELECT * FROM Win32_Processor";
 processor_infos = wmi_query( wmi_handle:handle, query:query1 );
-cpunumber       = 0;
-cpus            = make_array();
+if( processor_infos && "NumberOfCores" >< processor_infos[0] ) {
+  query1 = "SELECT DeviceID, Name, NumberOfCores FROM Win32_Processor";
+  header = "DeviceID|Name|NumberOfCores";
+  processor_infos = wmi_query( wmi_handle:handle, query:query1 );
+} else if( processor_infos ) {
+  query1 = "SELECT DeviceID, Name FROM Win32_Processor";
+  header = "DeviceID|Name";
+  processor_infos = wmi_query( wmi_handle:handle, query:query1 );
+}
+
+cpunumber = 0;
+cpus      = make_array();
 
 if( processor_infos ) {
 
@@ -83,8 +93,8 @@ if( processor_infos ) {
 
   foreach info( info_list ) {
 
-    # nb: Just ignoring the header, make sure to update this if you add additional fields to the WMI query above
-    if( info == "DeviceID|Name|NumberOfCores" ) continue;
+    # nb: Just ignoring the header
+    if( info == header ) continue;
 
     cpunumber++;
 
@@ -92,6 +102,7 @@ if( processor_infos ) {
 
     proc_name = info_split[1];
     num_cores = int( info_split[2] );
+    if( ! num_cores ) num_cores = 1;
 
     if( isnull( cpus[proc_name] ) ) {
       cpus[proc_name] = num_cores;
@@ -103,9 +114,27 @@ if( processor_infos ) {
 
 # -- Get the systems architecture -- #
 # nb: Make sure to update the foreach loop below if adding new fields here
-query2     = "SELECT OSArchitecture FROM Win32_OperatingSystem";
+# nb: Some WMI implementations doesn't provide the "OSArchitecture" info within
+# Win32_OperatingSystem so checking first if its included in the response and
+# use a fallback to a possible Arch gathered via SMB.
+query2     = "SELECT * FROM Win32_OperatingSystem";
 arch_infos = wmi_query( wmi_handle:handle, query:query2 );
 arch       = "";
+if( arch_infos && "OSArchitecture" >< arch_infos[0] ) {
+  query2     = "SELECT OSArchitecture FROM Win32_OperatingSystem";
+  arch_infos = wmi_query( wmi_handle:handle, query:query2 );
+} else {
+  _arch = get_kb_item( "SMB/Windows/Arch" );
+  if( _arch && _arch == "x64" ) {
+    arch = "64-bit";
+  } else if( _arch && _arch == "x86" ) {
+    arch = "32-bit";
+  } else {
+    arch = "unknown";
+  }
+  arch_infos = "";
+  set_kb_item( name:"wmi/login/arch", value:arch );
+}
 
 if( arch_infos ) {
 
@@ -133,9 +162,9 @@ if( pci_devices ) {
 
   foreach pcidevice( pci_list ) {
 
-    # nb: Just ignoring the header, make sure to update this if you add additional fields to the WMI query above
-    if( pcidevice == "DeviceID|Manufacturer|Name" ) continue;
-
+    # nb: Just ignoring the header, make sure to update this if you add additional fields to the WMI query above.
+    # Sometimes we get something like 2: '' back from the WMI query so also continue in such cases.
+    if( pcidevice == "DeviceID|Manufacturer|Name" || pcidevice == "" ) continue;
     deviceid++;
     pcidevice_split = split( pcidevice, sep:"|", keep:FALSE );
     manufacturer    = pcidevice_split[1];

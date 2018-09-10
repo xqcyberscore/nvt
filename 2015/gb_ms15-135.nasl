@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-135.nasl 11271 2018-09-06 14:58:32Z mmartin $
+# $Id: gb_ms15-135.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Microsoft Windows Kernel-Mode Drivers Code Execution Vulnerability (3119075)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806776");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-6171", "CVE-2015-6173", "CVE-2015-6174", "CVE-2015-6175",
                 "CVE-2015-6106", "CVE-2015-6107", "CVE-2015-6108");
   script_bugtraq_id(78509, 78510, 78513, 78514, 78497, 78498, 78499);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 08:11:32 +0530 (Wed, 09 Dec 2015)");
   script_name("Microsoft Windows Kernel-Mode Drivers Code Execution Vulnerability (3119075)");
 
@@ -164,7 +164,6 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Windows 10 Core
   if(version_is_less(version:dllVer, test_version:"10.0.10240.16384"))
   {
     Vulnerable_range = "Less than 10.0.10240.16384";

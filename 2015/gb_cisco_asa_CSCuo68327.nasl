@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCuo68327.nasl 6497 2017-06-30 09:58:54Z teissa $
+# $Id: gb_cisco_asa_CSCuo68327.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Cisco ASA DNS Inspection Engine DoS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105975");
-  script_version("$Revision: 6497 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
-  script_tag(name : "creation_date", value : "2015-03-13 10:50:01 +0700 (Fri, 13 Mar 2015)");
-  script_tag(name : "cvss_base", value : "7.8");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-03-13 10:50:01 +0700 (Fri, 13 Mar 2015)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -52,24 +52,24 @@ if (description)
   script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
   script_mandatory_keys("cisco_asa/version");
 
-  script_tag(name : "summary", value : "The DNS Inspection Engine of Cisco ASA is prone to a Denial of
+  script_tag(name:"summary", value:"The DNS Inspection Engine of Cisco ASA is prone to a Denial of
 Service vulnerability.");
 
-  script_tag(name : "vuldetect", value : "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name : "insight", value : "A vulnerability in the DNS inspection engine of Cisco ASA Software
+  script_tag(name:"insight", value:"A vulnerability in the DNS inspection engine of Cisco ASA Software
 could allow an unauthenticated, remote attacker to cause the reload of an affected system.
 The vulnerability is due to insufficient validation of crafted DNS packets. An attacker could exploit this
 vulnerability by sending crafted DNS packets through the affected system.");
 
-  script_tag(name : "impact", value : "An unauthenticated, remote attacker could exploit this vulnerability
+  script_tag(name:"impact", value:"An unauthenticated, remote attacker could exploit this vulnerability
 to cause an affected device to reload, resulting in a denial of service (DoS) condition.");
 
-  script_tag(name : "affected", value : "Version 9.0, 9.1 and 9.2");
+  script_tag(name:"affected", value:"Version 9.0, 9.1 and 9.2");
 
-  script_tag(name : "solution", value : "Apply the appropriate updates from Cisco.");
+  script_tag(name:"solution", value:"Apply the appropriate updates from Cisco.");
 
-  script_xref(name : "URL", value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=35911");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35911");
 
   exit(0);
 }
@@ -95,7 +95,7 @@ if ((revcomp(a:compver, b:"9.1.5.7") < 0) &&
   security_message(port: 0, data:report);
   exit(0);
 }
- 
+
 if ((revcomp(a:compver, b:"9.2.2") < 0) &&
     (revcomp(a:compver, b:"9.2") >= 0)) {
   report = 'Installed Version: ' + version + '\n' +

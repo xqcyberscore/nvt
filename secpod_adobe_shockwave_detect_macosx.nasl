@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_shockwave_detect_macosx.nasl 7000 2017-08-24 11:51:46Z teissa $
+# $Id: secpod_adobe_shockwave_detect_macosx.nasl 11283 2018-09-07 09:28:09Z cfischer $
 #
 # Adobe Shockwave Player Version Detection (MacOSX)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902619");
-  script_version("$Revision: 7000 $");
+  script_version("$Revision: 11283 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-24 13:51:46 +0200 (Thu, 24 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:28:09 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-08-29 16:22:41 +0200 (Mon, 29 Aug 2011)");
   script_name("Adobe Shockwave Player Version Detection (MacOSX)");
 
-  script_tag(name: "summary" , value: "Detection of installed version of Adobe
+  script_tag(name:"summary", value:"Detects the installed version of Adobe
   Shockwave Player on Mac OS X.
 
   The script logs in via ssh, and searches for adobe products '.app' folder
@@ -56,23 +56,17 @@ include("version_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-shockVer = "";
-
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);
 }
 
-## Checking for Mac OS X
 if (!get_kb_item("ssh/login/osx_name"))
 {
   close(sock);
   exit(0);
 }
 
-## Get the version of Adobe Shockwave
 shockVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Library/" +
           "Application\ Support/Adobe/Shockwave/DirectorShockwave.bundle/"+
           "Contents/Info CFBundleShortVersionString"));
@@ -106,20 +100,16 @@ if(isnull(shockVer) || "does not exist" >< shockVer)
   }
 }
 
-## Close Socket
 close(sock);
 
-## Exit if version not found
 if(isnull(shockVer) || "does not exist" >< shockVer){
   exit(0);
 }
 
 shockVer = ereg_replace(pattern:"r", string:shockVer, replace: ".");
 
-## Set the version in KB
 set_kb_item(name: "Adobe/Shockwave/MacOSX/Version", value:shockVer);
 
-## Build CPE
 cpe = build_cpe(value: shockVer, exp:"^([0-9.]+)", base:"cpe:/a:adobe:shockwave_player:");
 if(isnull(cpe))
   cpe = "cpe:/a:adobe:shockwave_player";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3045755.nasl 6132 2017-05-16 09:03:39Z teissa $
+# $Id: gb_microsoft_security_advisory_3045755.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Microsoft Update To Improve PKU2U Authentication Security Advisory (3045755)
 #
@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805451");
-  script_version("$Revision: 6132 $");
+  script_version("$Revision: 11291 $");
   script_tag(name:"cvss_base", value:"6.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-17 16:49:36 +0530 (Fri, 17 Apr 2015)");
   script_name("Microsoft Update To Improve PKU2U Authentication Security Advisory (3045755)");
 
@@ -48,8 +48,7 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows Server 2012 R2
+  script_tag(name:"affected", value:"Microsoft Windows Server 2012 R2
   Microsoft Windows 8.1 x32/x64 Edition");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
@@ -60,13 +59,14 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://support.microsoft.com/en-us/kb/3045755");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/3045755");
+  script_xref(name:"URL", value:"http://support.microsoft.com/en-us/kb/3045755");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/3045755");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -76,11 +76,6 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-sysPath = "";
-dllVer = "";
-
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
@@ -94,10 +89,9 @@ if(!dllVer){
 ##For Win 8.1 and win2012R2
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Pku2u.dll version
   if(version_is_less(version:dllVer, test_version:"6.3.9600.17728"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_genixcms_mult_sql_vuln_jun15.nasl 5789 2017-03-30 11:42:46Z cfi $
+# $Id: gb_genixcms_mult_sql_vuln_jun15.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Genixcms Multiple SQL Injection Vulnerabilities - June15
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805665");
-  script_version("$Revision: 5789 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-3933", "CVE-2015-5066");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 13:42:46 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-25 15:38:34 +0530 (Thu, 25 Jun 2015)");
   script_name("Genixcms Multiple SQL Injection Vulnerabilities - June15");
 
@@ -41,14 +41,14 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP POST request
   and check whether it is able execute sql query or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
   - Insufficient validation of input passed via 'email' and 'userid' POST
   parameter to 'register.php' script.
   - Insufficient validation of input passed via 'content' and 'title' fields in
   an add action in the posts page to index.php or the 'q' parameter in the posts
   page to index.php");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database,
   allowing for the manipulation or disclosure of arbitrary data and to inject
   arbitrary web script or HTML.
@@ -57,18 +57,16 @@ if(description)
 
   script_tag(name:"affected", value:"Genixcms version 0.0.3");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"exploit");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37363/");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37360/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/37363/");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/37360/");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -81,11 +79,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
 
 http_port = get_http_port(default:80);
 
@@ -102,10 +95,8 @@ foreach dir (make_list_unique("/", "/genixcms", "/cms", cgi_dirs(port:http_port)
 
   rcvRes = http_get_cache(item:string(dir, "/index.php"),  port:http_port);
 
-  ## Confirm Application
   if('content="GeniXCMS"' >< rcvRes && 'Free and Opensource CMS">GeniXCMS' >< rcvRes)
   {
-    ## Construct Attack Request
     url = dir + "/register.php";
     postData = 'userid=%27and%28select%25201%2520from%2520%28select%2520count%28*'+
                '%29%2Cconcat%28version%28%29%2COpenVAS-SQL-Injection-Test%3Cfloor'+
@@ -122,7 +113,6 @@ foreach dir (make_list_unique("/", "/genixcms", "/cms", cgi_dirs(port:http_port)
                      postData);
     rcvRes = http_keepalive_send_recv(port:http_port, data:sndReq);
 
-    ##Confirm Exploit
     if("OpenVAS-SQL-Injection-Test<" >< rcvRes &&
        "You have an error in your SQL syntax" >< rcvRes)
     {

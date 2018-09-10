@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_syncrify_server_mult_vuln.nasl 9303 2018-04-04 13:18:17Z asteins $
+# $Id: gb_syncrify_server_mult_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Syncrify Server Multiple Vulnerabilities
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:syncrify:server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805551");
-  script_version("$Revision: 9303 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-3140");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 15:18:17 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-12 10:45:47 +0530 (Tue, 12 May 2015)");
   script_name("Syncrify Server Multiple Vulnerabilities");
 
   script_tag(name:"summary", value:"This host is installed with Syncrify Server
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists as the input passed via the
   'adminEmail', 'smtpUser' and 'fullName' parameters is not validated before
@@ -62,7 +61,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/36950");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/36950");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -76,17 +75,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-serVer = "";
-builVer = "";
-serPort = "";
-
-## get the port
 if(!serPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-# get the version
 if(!serVer = get_app_version(cpe:CPE, port:serPort)){
   exit(0);
 }

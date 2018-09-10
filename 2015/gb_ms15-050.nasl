@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-050.nasl 6132 2017-05-16 09:03:39Z teissa $
+# $Id: gb_ms15-050.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Microsoft Windows SCM Privilege_Escalation Vulnerability (3055642)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805615");
-  script_version("$Revision: 6132 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-1702");
   script_bugtraq_id(74492);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-16 11:03:39 +0200 (Tue, 16 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-13 11:46:24 +0530 (Wed, 13 May 2015)");
   script_name("Microsoft Windows SCM Privilege_Escalation Vulnerability (3055642)");
 
@@ -51,8 +51,7 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+  script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
   Microsoft Windows Vista x32/x64 Edition Service Pack 2
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1
@@ -68,13 +67,14 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3055642");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-050");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/3055642");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-050");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -85,17 +85,11 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-exeVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, win8:1, win8x64:1,
                    win2012:1, win2012R2:1, win8_1:1, win8_1x64:1, win2008:3, winVista:3) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
@@ -106,47 +100,39 @@ if(!exeVer){
   exit(0);
 }
 
-## Windows 7 and Windows 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Services.exe version
   if(version_is_less(version:exeVer, test_version:"6.1.7601.18829") ||
      version_in_range(version:exeVer, test_version:"6.1.7601.22000", test_version2:"6.1.7601.23032")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows 8 x86
 if(hotfix_check_sp(win8:1) > 0)
 {
-  ## Check for Services.exe version
   if(version_is_less(version:exeVer, test_version:"6.2.9200.17343") ||
      version_in_range(version:exeVer, test_version:"6.2.9200.20000", test_version2:"6.2.9200.21455")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows Server 2012 and Windows 8 x64
 if(hotfix_check_sp(win2012:1, win8x64:1) > 0)
 {
-  ## Check for Services.exe version
   if(version_is_less(version:exeVer, test_version:"6.2.9200.17343") ||
      version_in_range(version:exeVer, test_version:"6.2.9200.20000", test_version2:"6.2.9200.21441")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows Vista and Windows Server 2008
 ## Currently not supporting for Vista and Windows Server 2008 64 bit
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Services.exe version
   if(version_is_less(version:exeVer, test_version:"6.0.6002.19369")||
      version_in_range(version:exeVer, test_version:"6.0.6002.23000", test_version2:"6.0.6002.23676")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
@@ -154,9 +140,8 @@ if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 ## Win 8.1 and win2012R2
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Services.exe version
   if(version_is_less(version:exeVer, test_version:"6.3.9600.17793")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }

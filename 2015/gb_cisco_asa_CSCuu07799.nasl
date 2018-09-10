@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCuu07799.nasl 6404 2017-06-22 10:00:06Z teissa $
+# $Id: gb_cisco_asa_CSCuu07799.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Cisco ASA DNS DoS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106052");
-  script_version("$Revision: 6404 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
-  script_tag(name : "creation_date", value : "2015-11-25 11:40:51 +0700 (Wed, 25 Nov 2015)");
-  script_tag(name : "cvss_base", value : "7.8");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-11-25 11:40:51 +0700 (Wed, 25 Nov 2015)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -52,27 +52,27 @@ if (description)
   script_dependencies("gb_cisco_asa_version.nasl");
   script_mandatory_keys("cisco_asa/version", "cisco_asa/model");
 
-  script_tag(name : "summary", value : "A vulnerability in the DNS code of Cisco ASA may lead to a denial
+  script_tag(name:"summary", value:"A vulnerability in the DNS code of Cisco ASA may lead to a denial
 of service.");
 
-  script_tag(name : "vuldetect", value : "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name : "insight", value : "A vulnerability in the DNS code could allow an unauthenticated,
+  script_tag(name:"insight", value:"A vulnerability in the DNS code could allow an unauthenticated,
 remote attacker to cause an affected system to reload. The vulnerability is due to improper processing of
 DNS packets. An attacker could exploit this vulnerability by sending a crafted request to an affected Cisco
 ASA device to cause it to generate a DNS request packet. The attacker would need to spoof the reply packet
 with a crafted DNS response.");
 
-  script_tag(name : "impact", value : "An unauthenticated, remote attacker could cause the system to reload.");
+  script_tag(name:"impact", value:"An unauthenticated, remote attacker could cause the system to reload.");
 
-  script_tag(name : "affected", value : "Version 7.2, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 9.0, 9.1, 9.2, 9.3 and 9.4
+  script_tag(name:"affected", value:"Version 7.2, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 9.0, 9.1, 9.2, 9.3 and 9.4
 on Cisco ASA 1000V Cloud Firewall, Cisco ASA 5500 Series Adaptive Security Appliances, Cisco ASA 5500-X Series
 Next-Generation Firewalls, Cisco ASA Services Module for Cisco Catalyst 6500 Series Switches and Cisco 7600
 Series Routers, Cisco Adaptive Security Virtual Appliance (ASAv), Cisco FirePOWER 9300 ASA Security Module");
 
-  script_tag(name : "solution", value : "Apply the appropriate updates from Cisco.");
+  script_tag(name:"solution", value:"Apply the appropriate updates from Cisco.");
 
-  script_xref(name : "URL", value : "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151021-asa-dns2");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151021-asa-dns2");
 
   exit(0);
 }
@@ -94,7 +94,7 @@ if ((revcomp(a:compver, b:"8.2.5.58") < 0) &&
   security_message(port: 0, data:report);
   exit(0);
 }
- 
+
 if ((revcomp(a:compver, b:"8.4.7.29") < 0) &&
     (revcomp(a:compver, b:"8.3") >= 0)) {
   report = 'Installed Version: ' + version + '\n' +
@@ -103,14 +103,14 @@ if ((revcomp(a:compver, b:"8.4.7.29") < 0) &&
   exit(0);
 }
 
-if (version =~ "^8.5") {
+if (version =~ "^8\.5") {
   report = 'Installed Version: ' + version + '\n' +
            'Fixed Version:     9.0(4.37)\n';
   security_message(port: 0, data:report);
   exit(0);
 }
 
-if (version =~ "^8.6") {
+if (version =~ "^8\.6") {
   report = 'Installed Version: ' + version + '\n' +
            'Fixed Version:     9.0(4.37)\n';
   security_message(port: 0, data:report);

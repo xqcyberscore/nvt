@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssh_71p2.nasl 7908 2017-11-24 15:00:22Z cfischer $
+# $Id: gb_openssh_71p2.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # OpenSSH Client Information Leak
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:openbsd:openssh";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105512");
-  script_cve_id("CVE-2016-0777","CVE-2016-0778");
+  script_cve_id("CVE-2016-0777", "CVE-2016-0778");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:S/C:P/I:P/A:P");
-  script_version("$Revision: 7908 $");
+  script_version("$Revision: 11291 $");
   script_name("OpenSSH Client Information Leak");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-24 16:00:22 +0100 (Fri, 24 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-01-14 17:31:53 +0100 (Thu, 14 Jan 2016)");
   script_category(ACT_GATHER_INFO);
   script_family("General");

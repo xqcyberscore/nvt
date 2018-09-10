@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_redis_rce_05_06.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_redis_rce_05_06.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Redis EVAL Lua Sandbox Escape
 #
@@ -29,34 +29,34 @@ CPE = "cpe:/a:redis:redis";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105290");
- script_cve_id("CVE-2015-4335");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 9381 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105290");
+  script_cve_id("CVE-2015-4335");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11291 $");
 
- script_name("Redis EVAL Lua Sandbox Escape");
+  script_name("Redis EVAL Lua Sandbox Escape");
 
- script_xref(name:"URL", value:"http://benmmurphy.github.io/blog/2015/06/04/redis-eval-lua-sandbox-escape/");
+  script_xref(name:"URL", value:"http://benmmurphy.github.io/blog/2015/06/04/redis-eval-lua-sandbox-escape/");
 
- script_tag(name: "impact" , value:"Successfully attack may allow the attacker to execute code in the context of the application");
+  script_tag(name:"impact", value:"Successfully attack may allow the attacker to execute code in the context of the application");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Updates are available.");
- script_tag(name: "summary" , value:"It is possible to break out of the Lua sandbox in Redis and execute arbitrary code.");
- script_tag(name: "affected" , value:"Redis < 2.8.21/3.0.2");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"summary", value:"It is possible to break out of the Lua sandbox in Redis and execute arbitrary code.");
+  script_tag(name:"affected", value:"Redis < 2.8.21/3.0.2");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2015-06-05 16:01:37 +0200 (Fri, 05 Jun 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("Databases");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_redis_detect.nasl");
- script_require_ports("Services/redis", 6379);
- script_mandatory_keys("redis/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-06-05 16:01:37 +0200 (Fri, 05 Jun 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("Databases");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_redis_detect.nasl");
+  script_require_ports("Services/redis", 6379);
+  script_mandatory_keys("redis/installed");
 
  exit(0);
 }

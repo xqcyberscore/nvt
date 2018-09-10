@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16954.nasl 6159 2017-05-18 09:03:44Z teissa $
+# $Id: gb_f5_big_ip_sol16954.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # F5 BIG-IP - SOL16954 - Multiple PHP CDF vulnerabilities CVE-2014-0237 and CVE-2014-0238
 #
@@ -29,38 +29,37 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105370");
- script_cve_id("CVE-2014-0237","CVE-2014-0238");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 6159 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105370");
+  script_cve_id("CVE-2014-0237", "CVE-2014-0238");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11291 $");
 
- script_name("F5 BIG-IP - SOL16954 - Multiple PHP CDF vulnerabilities CVE-2014-0237 and CVE-2014-0238");
+  script_name("F5 BIG-IP - SOL16954 - Multiple PHP CDF vulnerabilities CVE-2014-0237 and CVE-2014-0238");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/16000/900/sol16954.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/16000/900/sol16954.html");
 
- script_tag(name: "impact" , value:"A remote attacker could crash a PHP application using the File Information (fileinfo) extension using a specially crafted Composite Document Format (CDF) file.");
+  script_tag(name:"impact", value:"A remote attacker could crash a PHP application using the File Information (fileinfo) extension using a specially crafted Composite Document Format (CDF) file.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"The cdf_unpack_summary_info function in cdf.c in the Fileinfo component in PHP before 5.4.29 and 5.5.x before 5.5.13 allows remote attackers to cause a denial of service (performance degradation) by triggering many file_printf calls.
-The cdf_read_property_info function in cdf.c in the Fileinfo component in PHP before 5.4.29 and 5.5.x before 5.5.13 allows remote attackers to cause a denial of service (infinite loop or out-of-bounds memory access) via a vector that (1) has zero length or (2) is too long.
-");
+  script_tag(name:"insight", value:"The cdf_unpack_summary_info function in cdf.c in the Fileinfo component in PHP before 5.4.29 and 5.5.x before 5.5.13 allows remote attackers to cause a denial of service (performance degradation) by triggering many file_printf calls.
+The cdf_read_property_info function in cdf.c in the Fileinfo component in PHP before 5.4.29 and 5.5.x before 5.5.13 allows remote attackers to cause a denial of service (infinite loop or out-of-bounds memory access) via a vector that (1) has zero length or (2) is too long.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The remote host is missing a security patch.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The remote host is missing a security patch.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
- script_tag(name:"creation_date", value:"2015-09-19 10:32:18 +0200 (Sat, 19 Sep 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-09-19 10:32:18 +0200 (Sat, 19 Sep 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

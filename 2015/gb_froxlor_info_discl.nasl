@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_froxlor_info_discl.nasl 7074 2017-09-07 09:48:02Z ckuersteiner $
+# $Id: gb_froxlor_info_discl.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Froxlor Information Disclosure Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:froxlor:froxlor';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106036");
-  script_version("$Revision: 7074 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-07 11:48:02 +0200 (Thu, 07 Sep 2017) $");
-  script_tag(name: "creation_date", value: "2015-08-03 13:44:55 +0700 (Mon, 03 Aug 2015)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-08-03 13:44:55 +0700 (Mon, 03 Aug 2015)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2015-5959");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Froxlor Information Disclosure Vulnerability");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_froxlor_detect.nasl");
   script_mandatory_keys("froxlor/installed");
 
-  script_tag(name: "summary", value: "Froxlor is prone to a information disclosure vulnerability.");
+  script_tag(name:"summary", value:"Froxlor is prone to a information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Send a crafted GET request and check the response.");
+  script_tag(name:"vuldetect", value:"Send a crafted GET request and check the response.");
 
-  script_tag(name: "insight", value: "An unauthenticated remote attacker is able to get the database
+  script_tag(name:"insight", value:"An unauthenticated remote attacker is able to get the database
 password via webaccess due to wrong file permissions of the /logs/ folder. The plain SQL password and
 username may be stored in the /logs/sql-error.log file.");
 
-  script_tag(name: "impact", value: "An unauthenticated remote attacker may be able to get the plain
+  script_tag(name:"impact", value:"An unauthenticated remote attacker may be able to get the plain
 SQL password and username or other sensitive information.");
 
-  script_tag(name: "affected", value: "Froxlor version 0.9.33.1 and before.");
+  script_tag(name:"affected", value:"Froxlor version 0.9.33.1 and before.");
 
-  script_tag(name: "solution", value: "Update to version 0.9.33.2 or later");
+  script_tag(name:"solution", value:"Update to version 0.9.33.2 or later");
 
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2015/07/29/8");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2015/07/29/8");
 
   exit(0);
 }

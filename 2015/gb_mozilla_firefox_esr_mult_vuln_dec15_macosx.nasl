@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln_dec15_macosx.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: gb_mozilla_firefox_esr_mult_vuln_dec15_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities - Dec15 (Mac OS X)
 #
@@ -29,23 +29,22 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807007");
-  script_version("$Revision: 6125 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-7201", "CVE-2015-7205", "CVE-2015-7210", "CVE-2015-7212",
                 "CVE-2015-7213", "CVE-2015-7214", "CVE-2015-7222");
   script_bugtraq_id(79279, 79283);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-18 11:44:05 +0530 (Fri, 18 Dec 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities - Dec15 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox ESR and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are exists due to,
+  script_tag(name:"insight", value:"Multiple flaws are exists due to,
   - Multiple unspecified vulnerabilities in the browser engine.
   - Integer underflow in the 'RTPReceiverVideo::ParseRtpPacket' function.
   - Use-after-free error in WebRTC that occurs due to timing issues in WebRTC
@@ -58,17 +57,17 @@ if(description)
   - Integer underflow in the 'Metadata::setData' function in 'MetaData.cpp' in
     libstagefright.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial of service, bypass security restrictions,
-  obtain sensitive information,  execute arbitrary code and some unspecified
+  obtain sensitive information, execute arbitrary code and some unspecified
   impacts.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox ESR version 38.x
+  script_tag(name:"affected", value:"Mozilla Firefox ESR version 38.x
   before 38.5 on Mac OS X");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox ESR version
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version
   38.5 or later,
   For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
@@ -91,15 +90,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(ffVer =~ "^38\.")
 {
   if(version_is_less(version:ffVer, test_version:"38.5"))

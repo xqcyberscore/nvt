@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms15-097.nasl 6357 2017-06-16 10:00:29Z teissa $
+# $Id: gb_ms_office_ms15-097.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Microsoft Graphics Component Buffer Overflow Vulnerability (3089656)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806116");
-  script_version("$Revision: 6357 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-2510");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 14:09:01 +0530 (Wed, 09 Sep 2015)");
   script_name("Microsoft Graphics Component Buffer Overflow Vulnerability (3089656)");
 
@@ -49,8 +49,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Office 2007 Service Pack 3
+  script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3
   Microsoft Office 2010 Service Pack 2");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -62,9 +61,9 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3085546");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3085529");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-097");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3085546");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3085529");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-097");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -81,11 +80,6 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-path = "";
-dllVer = "";
-offPath = "";
-
 ## MS Office 2007/2010
 if(!get_kb_item("MS/Office/Ver") =~ "^[12|14].*"){
   exit(0);
@@ -97,16 +91,15 @@ if(path)
 {
   foreach ver (make_list("OFFICE12", "OFFICE14"))
   {
-    ## Get Version from Ogl.dll
     offPath = path + "\Microsoft Shared\" + ver;
     dllVer = fetch_file_version(sysPath:offPath, file_name:"Ogl.dll");
 
     if(dllVer)
     {
-      if(dllVer =~ "^(12)"){
+      if(dllVer =~ "^12"){
         Vulnerable_range  =  "12.0 - 12.0.6728.4999";
       }
-      else if(dllVer =~ "^(14)"){
+      else if(dllVer =~ "^14"){
         Vulnerable_range  =  "14 - 14.0.7157.4999";
       }
 

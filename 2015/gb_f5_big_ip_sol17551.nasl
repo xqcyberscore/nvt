@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol17551.nasl 6600 2017-07-07 09:58:31Z teissa $
+# $Id: gb_f5_big_ip_sol17551.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # F5 BIG-IP - SOL17551 - Linux kernel vulnerability CVE-2014-9419
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105439");
- script_cve_id("CVE-2014-9419");
- script_tag(name:"cvss_base", value:"2.1");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 6600 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105439");
+  script_cve_id("CVE-2014-9419");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11291 $");
 
- script_name("F5 BIG-IP - SOL17551 - Linux kernel vulnerability CVE-2014-9419");
+  script_name("F5 BIG-IP - SOL17551 - Linux kernel vulnerability CVE-2014-9419");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/17000/500/sol17551.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/17000/500/sol17551.html");
 
- script_tag(name: "impact" , value:"A local authenticated attacker may obtain sensitive information from kernel memory by using a specially crafted application.");
+  script_tag(name:"impact", value:"A local authenticated attacker may obtain sensitive information from kernel memory by using a specially crafted application.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"The __switch_to function in arch/x86/kernel/process_64.c in the Linux kernel through 3.18.1 does not ensure that Thread Local Storage (TLS) descriptors are loaded before proceeding with other steps, which makes it easier for local users to bypass the ASLR protection mechanism via a crafted application that reads a TLS base address. (CVE-2014-9419)");
+  script_tag(name:"insight", value:"The __switch_to function in arch/x86/kernel/process_64.c in the Linux kernel through 3.18.1 does not ensure that Thread Local Storage (TLS) descriptors are loaded before proceeding with other steps, which makes it easier for local users to bypass the ASLR protection mechanism via a crafted application that reads a TLS base address. (CVE-2014-9419)");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The remote host is missing a security patch.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The remote host is missing a security patch.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
- script_tag(name:"creation_date", value:"2015-11-09 10:38:23 +0100 (Mon, 09 Nov 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-11-09 10:38:23 +0100 (Mon, 09 Nov 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

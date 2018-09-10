@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-066.nasl 6159 2017-05-18 09:03:44Z teissa $
+# $Id: gb_ms15-066.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Microsoft Windows VBScript Remote Code Execution Vulnerability (3072604)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805076");
-  script_version("$Revision: 6159 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-2372");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-15 10:14:46 +0530 (Wed, 15 Jul 2015)");
   script_name("Microsoft Windows VBScript Remote Code Execution Vulnerability (3072604)");
 
@@ -49,8 +49,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 2003 x32/x64 Service Pack 2 and prior
+  script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Service Pack 2 and prior
   Microsoft Windows Vista x32/x64 Service Pack 2 and prior
   Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior.");
@@ -62,13 +61,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"executable_version");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3072604");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS15-066");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3072604");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS15-066");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -80,57 +80,45 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2003:3, win2003x64:3, winVista:3, win2008:3,
                    win2008r2:2) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-## Get Version from Vbscript.dll file
 dllVer = fetch_file_version(sysPath, file_name:"system32\Vbscript.dll");
 if(!dllVer){
   exit(0);
 }
 
-##Windows 2003
 if(hotfix_check_sp(win2003:3, win2003x64:3) > 0)
 {
-  ## Check for Vbscript.dll version
   if((version_in_range(version:dllVer, test_version:"5.6", test_version2:"5.6.0.8855")) ||
      (version_in_range(version:dllVer, test_version:"5.7", test_version2:"5.7.6002.23711"))){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows Vista and Windows Server 2008
 ## Currently not supporting for Vista and Windows Server 2008 64 bit
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Vbscript.dll version
   if((version_in_range(version:dllVer, test_version:"5.7", test_version2:"5.7.6002.19404")) ||
      (version_in_range(version:dllVer, test_version:"5.7.6002.23000", test_version2:"5.7.6002.23711"))){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
 if(hotfix_check_sp(win2008r2:2) > 0)
 {
-  ## Check for Vbscript.dll version
   if((version_in_range(version:dllVer, test_version:"5.8.7601.10000", test_version2:"5.8.7601.18877")) ||
      (version_in_range(version:dllVer, test_version:"5.8.7601.23000", test_version2:"5.8.7601.23080"))){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }

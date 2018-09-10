@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp-easycart_info_disc_vuln.nasl 9998 2018-05-29 08:15:38Z cfischer $
+# $Id: gb_wordpress_wp-easycart_info_disc_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Wordpress EasyCart Information Disclosure Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805124");
-  script_version("$Revision: 9998 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2014-4942");
   script_bugtraq_id(68692);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 10:15:38 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-13 12:25:08 +0530 (Tue, 13 Jan 2015)");
   script_name("Wordpress EasyCart Information Disclosure Vulnerability");
 
@@ -60,7 +60,7 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://codevigilant.com/disclosure/wp-plugin-wp-easycart-information-disclosure");
+  script_xref(name:"URL", value:"https://codevigilant.com/disclosure/wp-plugin-wp-easycart-information-disclosure");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");

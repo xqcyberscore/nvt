@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_vaadin_xss_vuln3.nasl 6125 2017-05-15 09:03:42Z teissa $
+# $Id: sw_vaadin_xss_vuln3.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Vaadin Framework < 7.1.11 Multiple Vulnerabilities
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:vaadin:vaadin';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105184");
-  script_version("$Revision: 6125 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-15 11:03:42 +0200 (Mon, 15 May 2017) $");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-22 12:00:00 +0100 (Thu, 22 Jan 2015)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -46,18 +46,18 @@ if(description)
   script_require_ports("Services/www", 8888);
   script_mandatory_keys("vaadin/installed");
 
-  script_tag(name : "summary" , value : "This web application is running with the Vaadin Framework which
+  script_tag(name:"summary", value:"This web application is running with the Vaadin Framework which
   is prone to multiple cross-site scripting issues because the application fails to properly sanitize
   user-supplied input.");
-  script_tag(name : "vuldetect" , value : "Check the version.");
-  script_tag(name : "insight" , value : "Multiple flaws exists due to,
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
   - Proper escaping of the src-attribute on the client side was not ensured when using icons for
   OptionGroup items.
   - The client side Util.getAbsoluteUrl() did not ensure proper escaping of the given URL.");
-  script_tag(name : "impact" , value : "This could potentially, in certain situations, allow a malicious user
+  script_tag(name:"impact", value:"This could potentially, in certain situations, allow a malicious user
   to inject content, such as javascript, in order to perform a cross-site scripting (XSS) attack.");
-  script_tag(name : "affected" , value : "Vaadin Framework versions from 7.0.0 up to 7.1.10");
-  script_tag(name : "solution" , value : "Upgrade to Vaadin Framework version 7.1.11 or later
+  script_tag(name:"affected", value:"Vaadin Framework versions from 7.0.0 up to 7.1.10");
+  script_tag(name:"solution", value:"Upgrade to Vaadin Framework version 7.1.11 or later
   For updates refer to http://www.vaadin.com/releases");
 
   script_xref(name:"URL", value:"http://www.vaadin.com/download/release/7.1/7.1.11/release-notes.html");
@@ -81,6 +81,6 @@ if( version_in_range( version:vers, test_version:"7.0.0", test_version2:"7.1.10"
            'Fixed version:     ' + "7.1.11" + '\n';
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

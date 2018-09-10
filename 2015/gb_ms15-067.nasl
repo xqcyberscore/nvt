@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-067.nasl 6243 2017-05-30 09:04:14Z teissa $
+# $Id: gb_ms15-067.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Microsoft Windows Remote Desktop Remote Code Execution Vulnerability (3073094)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805077");
-  script_version("$Revision: 6243 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-2373");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-15 11:26:05 +0530 (Wed, 15 Jul 2015)");
   script_name("Microsoft Windows Remote Desktop Remote Code Execution Vulnerability (3073094)");
 
@@ -51,8 +51,7 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 8 x32/x64
+  script_tag(name:"affected", value:"Microsoft Windows 8 x32/x64
   Microsoft Windows Server 2012
   Microsoft Windows 7 x32/x64 Service Pack 1 and prior
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
@@ -66,15 +65,15 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3073094");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3069762");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3067904");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-067");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3073094");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3069762");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3067904");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-067");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
   exit(0);
@@ -86,48 +85,36 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-RdpVer = "";
-edition = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win7:2, win7x64:2, win8:1, win8x64:1, win2008r2:2, win2012:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath){
   exit(0);
 }
 
-## Get Version from Rdpcorets.dll file
 RdpVer = fetch_file_version(sysPath, file_name:"\system32\Rdpcorets.dll");
 if(!RdpVer){
   exit(0);
 }
 
-## Windows 7 and 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Rdpcorets.dll version
   if(version_is_less(version:RdpVer, test_version:"6.1.7601.18892") ||
      version_in_range(version:RdpVer, test_version:"6.1.7601.23000", test_version2:"6.1.7601.23094") ||
      version_in_range(version:RdpVer, test_version:"6.2.9200.16000", test_version2:"6.2.9200.17394") ||
      version_in_range(version:RdpVer, test_version:"6.2.9200.21000", test_version2:"6.2.9200.21505")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows 8 and 2012
 if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 {
-  ## Check for Rdpcorets.dll version
   if(version_is_less(version:RdpVer, test_version:"6.2.9200.17395") ||
      version_in_range(version:RdpVer, test_version:"6.2.9200.20000", test_version2:"6.2.9200.21505")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol90230486.nasl 6357 2017-06-16 10:00:29Z teissa $
+# $Id: gb_f5_big_ip_sol90230486.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # F5 BIG-IP - SOL90230486 - Linux kernel vulnerability CVE-2015-7613
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105481");
- script_cve_id("CVE-2015-7613");
- script_tag(name:"cvss_base", value:"6.9");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6357 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105481");
+  script_cve_id("CVE-2015-7613");
+  script_tag(name:"cvss_base", value:"6.9");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11291 $");
 
- script_name("F5 BIG-IP - SOL90230486 - Linux kernel vulnerability CVE-2015-7613");
+  script_name("F5 BIG-IP - SOL90230486 - Linux kernel vulnerability CVE-2015-7613");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/90/sol90230486.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/k/90/sol90230486.html");
 
- script_tag(name: "impact" , value:"SOL9970: Subscribing to email notifications regarding F5 productsSOL9957: Creating a custom RSS feed to view new and updated documentsSOL4918: Overview of the F5 critical issue hotfix policySOL167: Downloading software and firmware from F5");
+  script_tag(name:"impact", value:"SOL9970: Subscribing to email notifications regarding F5 productsSOL9957: Creating a custom RSS feed to view new and updated documentsSOL4918: Overview of the F5 critical issue hotfix policySOL167: Downloading software and firmware from F5");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"Race condition in the IPC object implementation in the Linux kernel through 4.2.3 allows local users to gain privileges by triggering an ipc_addid call that leads to uid and gid comparisons against uninitialized data, related to msg.c, shm.c, and util.c.");
+  script_tag(name:"insight", value:"Race condition in the IPC object implementation in the Linux kernel through 4.2.3 allows local users to gain privileges by triggering an ipc_addid call that leads to uid and gid comparisons against uninitialized data, related to msg.c, shm.c, and util.c.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The remote host is missing a security patch.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The remote host is missing a security patch.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-12-09 17:28:24 +0100 (Wed, 09 Dec 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-12-09 17:28:24 +0100 (Wed, 09 Dec 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

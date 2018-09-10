@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotnet_framework_ms15-080.nasl 6505 2017-07-03 09:58:27Z teissa $
+# $Id: gb_dotnet_framework_ms15-080.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerabilities (3078662)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805082");
-  script_version("$Revision: 6505 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-2460", "CVE-2015-2462", "CVE-2015-2455", "CVE-2015-2456",
                 "CVE-2015-2463", "CVE-2015-2464");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 11:47:28 +0530 (Wed, 12 Aug 2015)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerabilities (3078662)");
 
@@ -51,12 +51,11 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft .NET Framework 3.0 Service Pack 2
+  script_tag(name:"affected", value:"Microsoft .NET Framework 3.0 Service Pack 2
   Microsoft .NET Framework 3.5
   Microsoft .NET Framework 3.5.1
   Microsoft .NET Framework 4
-  Microsoft .NET Framework 4.5, 4.5.1, and 4.5.2, 
+  Microsoft .NET Framework 4.5, 4.5.1, and 4.5.2,
   Microsoft .NET Framework 4.6 and 4.6 RC");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -68,13 +67,13 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3078662");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-080");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3078662");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-080");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
   exit(0);
@@ -86,20 +85,11 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-key = "";
-item = "";
-path = "";
-dllVer = "";
-sysVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(winVista:3, win7:2, win7x64:2, win2008:3,
    win2008r2:2, win8:1, win8x64:1, win8_1:1, win8_1x64:1, win2012:1, win2012R2:1, win10:1, win10x64:1) <= 0){
   exit(0);
 }
 
-## Confirm .NET
 key = "SOFTWARE\Microsoft\ASP.NET\";
 if(!registry_key_exists(key:key)){
   exit(0);
@@ -113,10 +103,8 @@ if(registry_key_exists(key:key))
   if(path){
     dllVer = fetch_file_version(sysPath:path, file_name:"System.printing.dll");
   }
-  ## Get version from System.printing.dll file
   if(dllVer)
   {
-   ## Get .NET Framework 3.5
    ## MS15-080: Description of the security update for the .NET Framework 3.5
    ## on Windows 8 and Windows Server 2012: August 11, 2015
     if(hotfix_check_sp(win8:1, win2012:1) > 0)
@@ -125,7 +113,7 @@ if(registry_key_exists(key:key))
          version_in_range(version:dllVer, test_version:"3.0.6920.8600", test_version2:"3.0.6920.8683"))
       {
 
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }
@@ -135,23 +123,22 @@ if(registry_key_exists(key:key))
     if((hotfix_check_sp(win10:1, win10x64:1) > 0) &&
        (version_in_range(version:dllVer, test_version:"3.0.6920.8600", test_version2:"3.0.6920.8683")))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
 
     ##  MS15-080: Description of the security update for the .NET Framework 3.5.1 on
-    ##  Windows 7 Service Pack 1 and Windows Server 2008 R2 Service Pack 1: August 11, 2015  
+    ##  Windows 7 Service Pack 1 and Windows Server 2008 R2 Service Pack 1: August 11, 2015
      if((hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0) &&
        (version_in_range(version:dllVer, test_version:"3.0.6920.5400", test_version2:"3.0.6920.5468")||
         version_in_range(version:dllVer, test_version:"3.0.6920.8600", test_version2:"3.0.6920.8683")))
     {
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
       exit(0);
     }
   }
 }
 
-## Get System Path
 ##MS15-080: Description of the security update for the .NET Framework 3.0
 ##Service Pack 2 on Windows Vista Service Pack 2 and Windows Server 2008
 ## Service Pack 2: August 11, 2015
@@ -162,7 +149,6 @@ if(sysPath)
   key = "SOFTWARE\Microsoft\.NETFramework\AssemblyFolders\v3.0";
   if(registry_key_exists(key:key))
   {
-    ## Get Version from XPSViewer.exe
     sysVer = fetch_file_version(sysPath, file_name:"system32\XPSViewer\XPSViewer.exe");
     if(sysVer)
     {
@@ -171,7 +157,7 @@ if(sysPath)
          (version_in_range(version:sysVer, test_version:"3.0.6920.4200", test_version2:"3.0.6920.4228")||
           version_in_range(version:sysVer, test_version:"3.0.6920.7000", test_version2:"3.0.6920.8683")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }
@@ -179,7 +165,6 @@ if(sysPath)
 }
 
 
-## Get .NET Framework 4.0 Version
 ## MS15-080: Description of the security update for the .NET Framework 4
 ## on Windows Vista and Windows Server 2008: August 11, 2015
 key = "SOFTWARE\Microsoft\ASP.NET\4.0.30319.0";
@@ -197,7 +182,7 @@ if(registry_key_exists(key:key))
         if(version_in_range(version:dllv4, test_version:"4.0.30319.1000", test_version2:"4.0.30319.1037") ||
            version_in_range(version:dllv4, test_version:"4.0.30319.2000", test_version2:"4.0.30319.2064"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }
@@ -217,14 +202,13 @@ if(registry_key_exists(key:key))
     predll = fetch_file_version(sysPath:path, file_name:"presentationcore.dll");
     if(predll)
     {
-      ## Get .NET Framework 3.5 on Windows 8.1 and Windows Server 2012 R2
       if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
       {
-  
+
       if(version_in_range(version:dllVer, test_version:"3.0.6920.8600", test_version2:"3.0.6920.8683")||
          version_in_range(version:dllVer, test_version:"3.0.6920.7000", test_version2:"3.0.6920.8007"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }
@@ -234,8 +218,6 @@ if(registry_key_exists(key:key))
 
 ## Need to cover for 3072311 MS15-080: Description of the security update for
 ## the .NET Framework 4.6 and 4.6 RC on Windows Vista Service Pack 2 and
-## Windows Server 2008 Service Pack 2: August 11, 2015
 ## 3072310 MS15-080: Description of the security update for the .NET
 ## Framework 4.5/4.5.1/4.5.2 on Windows Vista Service Pack 2, and
-## Windows Server 2008 Service Pack 2: August 11, 2015
 

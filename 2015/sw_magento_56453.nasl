@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_magento_56453.nasl 10017 2018-05-30 07:17:29Z cfischer $
+# $Id: sw_magento_56453.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Magento SSL Certificate Validation Security Bypass Vulnerability
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:magentocommerce:magento';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105226");
-  script_version("$Revision: 10017 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 09:17:29 +0200 (Wed, 30 May 2018) $");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-23 12:00:00 +0100 (Mon, 23 Feb 2015)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
@@ -46,15 +46,15 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("magento/installed");
 
-  script_tag(name : "summary" , value : "This web application is running with the Vaadin Framework which
+  script_tag(name:"summary", value:"This web application is running with the Vaadin Framework which
   is prone to a security-bypass vulnerability.");
-  script_tag(name : "vuldetect" , value : "Check the version.");
-  script_tag(name : "insight" , value : "Magento is prone to a security-bypass vulnerability because the
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"insight", value:"Magento is prone to a security-bypass vulnerability because the
   application fails to properly validate SSL certificates from a server.");
-  script_tag(name : "impact" , value : "Successfully exploiting this issue allows attackers to perform
+  script_tag(name:"impact", value:"Successfully exploiting this issue allows attackers to perform
   man-in-the-middle attacks or impersonate trusted servers, which will aid further attacks.");
-  script_tag(name : "affected" , value : "Magento 1.5 and 1.6.2 are vulnerable.");
-  script_tag(name : "solution" , value : "Check for updated versions of Magento");
+  script_tag(name:"affected", value:"Magento 1.5 and 1.6.2 are vulnerable.");
+  script_tag(name:"solution", value:"Check for updated versions of Magento");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56453");
 

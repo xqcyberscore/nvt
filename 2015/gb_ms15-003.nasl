@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-003.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: gb_ms15-003.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Microsoft Windows User Profile Service Privilege Escalation (3021674)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805126");
-  script_version("$Revision: 6229 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-0004");
   script_bugtraq_id(71967);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-14 09:49:42 +0530 (Wed, 14 Jan 2015)");
   script_name("Microsoft Windows User Profile Service Privilege Escalation (3021674)");
 
@@ -51,8 +51,7 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
+  script_tag(name:"affected", value:"Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
@@ -68,13 +67,14 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/kb/3021674");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-003");
+  script_xref(name:"URL", value:"https://support.microsoft.com/kb/3021674");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-003");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -85,25 +85,17 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-userVer = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win2003:3, win2003x64:3, winVista:3, win7:2, win7x64:2,
                    win2008:3, win2008r2:2, win8:1, win8x64:1, win2012:1,
                    win2012R2:1, win8_1:1, win8_1x64:1) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath ){
   exit(0);
 }
 
-## Windows 2003
 if(hotfix_check_sp(win2003:3, win2003x64:3) > 0)
 {
   userVer = fetch_file_version(sysPath, file_name:"system32\Userenv.dll");
@@ -111,9 +103,8 @@ if(hotfix_check_sp(win2003:3, win2003x64:3) > 0)
     exit(0);
   }
 
-  ## Check for Userenv.dll version
   if(version_is_less(version:userVer, test_version:"5.2.3790.5491")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
@@ -123,35 +114,29 @@ if(!dllVer){
   exit(0);
 }
 
-## Windows Vista and Windows Server 2008
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Profsvc.dll version
   if(version_is_less(version:dllVer, test_version:"6.0.6002.19250") ||
      version_in_range(version:dllVer, test_version:"6.0.6002.23000", test_version2:"6.0.6002.23556")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows 7 and Windows 2008 R2
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Profsvc.dll version
   if(version_is_less(version:dllVer, test_version:"6.1.7601.18706") ||
      version_in_range(version:dllVer, test_version:"6.1.7601.22000", test_version2:"6.1.7601.22912")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
 
-## Windows 8 x64 and Windows Server 2012
 if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 {
-  ## Check for Profsvc.dll version
   if(version_is_less(version:dllVer, test_version:"6.2.9200.17219") ||
      version_in_range(version:dllVer, test_version:"6.2.9200.20000", test_version2:"6.2.9200.21316")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }
@@ -159,9 +144,8 @@ if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 ## Win 8.1 and win2012R2
 if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Profsvc.dll version
   if(version_is_less(version:dllVer, test_version:"6.3.9600.17552")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
   exit(0);
 }

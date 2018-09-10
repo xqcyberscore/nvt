@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_mult_vuln_dec15.nasl 6333 2017-06-14 10:00:49Z teissa $
+# $Id: gb_cisco_vcs_mult_vuln_dec15.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Cisco TelePresence VCS and VCS Expressway Multiple Vulnerabilities Dec15
 #
@@ -30,36 +30,34 @@ CPE = "cpe:/a:cisco:telepresence_video_communication_server_software";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806650");
-  script_version("$Revision: 6333 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-6414", "CVE-2015-6413");
   script_bugtraq_id(79088, 79065);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-17 20:00:22 +0530 (Thu, 17 Dec 2015)");
   script_name("Cisco TelePresence VCS and VCS Expressway Multiple Vulnerabilities Dec15");
 
-  script_tag(name: "summary" , value:"This host is running Cisco TelePresence
+  script_tag(name:"summary", value:"This host is running Cisco TelePresence
   Video Communication Server and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
   - The use of the same encryption key across different customer.
   - The missing authorization checks on certain administrative pages.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attacker
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to read and disclose certain sensitive data, and upload TLP files changing
   contents of VCS.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"
-  Cisco TelePresence Video Communication Server (VCS) version X8.6
+  script_tag(name:"affected", value:"Cisco TelePresence Video Communication Server (VCS) version X8.6
   Cisco TelePresence Video Communication Server (VCS) Expressway version X8.6");
 
-  script_tag(name: "solution" , value:"Apply updates from Vendor.
+  script_tag(name:"solution", value:"Apply updates from Vendor.
   For details refer below links,
   http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151209-tvc
   http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151210-tvcs");
@@ -68,23 +66,19 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151209-tvc");
-  script_xref(name : "URL" , value : "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151210-tvcs");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151209-tvc");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151210-tvcs");
 
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
-  script_dependencies("gb_cisco_vcs_detect.nasl","gb_cisco_vcs_ssh_detect.nasl");
+  script_dependencies("gb_cisco_vcs_detect.nasl", "gb_cisco_vcs_ssh_detect.nasl");
   script_mandatory_keys("cisco_vcs/installed");
   exit(0);
 }
 
 include("host_details.inc");
 
-## Variable Initialization
-version = "";
-
-## Get version
 if(!version = get_app_version(cpe:CPE, nofork:TRUE)){
   exit(0);
 }

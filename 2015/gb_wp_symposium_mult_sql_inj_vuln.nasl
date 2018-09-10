@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_symposium_mult_sql_inj_vuln.nasl 9998 2018-05-29 08:15:38Z cfischer $
+# $Id: gb_wp_symposium_mult_sql_inj_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # WordPress WP Symposium Multiple SQL Injection Vulnerabilities
 #
@@ -29,40 +29,40 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806026");
-  script_version("$Revision: 9998 $");
+  script_version("$Revision: 11291 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-29 10:15:38 +0200 (Tue, 29 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-24 15:13:35 +0530 (Mon, 24 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("WordPress WP Symposium Multiple SQL Injection Vulnerabilities");
   script_cve_id("CVE-2015-6522");
 
-  script_tag(name: "summary" , value:"The host is installed with Wordpress
+  script_tag(name:"summary", value:"The host is installed with Wordpress
   WP Symposium plugin and is prone to multiple sql injection vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted request via HTTP GET and
+  script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
   check whether it is able to execute sql query or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to input validation
+  script_tag(name:"insight", value:"Multiple flaws are due to input validation
   errors in 'forum_functions.php' and 'get_album_item.php' in WP Symposium
   plugin.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database,
   allowing for the manipulation or disclosure of arbitrary data.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Wordpress WP Symposium Plugin version
+  script_tag(name:"affected", value:"Wordpress WP Symposium Plugin version
   15.5.1 and probably all existing previous versions may also be affected.");
 
-  script_tag(name: "solution" , value:"Update to WP Symposium version 15.8 or
+  script_tag(name:"solution", value:"Update to WP Symposium version 15.8 or
   later, For updates refer to http://www.wpsymposium.com/");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37824");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37822");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/37824");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/37822");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");

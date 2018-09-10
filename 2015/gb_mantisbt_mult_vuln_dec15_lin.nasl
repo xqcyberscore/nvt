@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_mult_vuln_dec15_lin.nasl 7546 2017-10-24 11:58:30Z cfischer $
+# $Id: gb_mantisbt_mult_vuln_dec15_lin.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # MantisBT Multiple Vulnerabilities December15 (Linux)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806641");
-  script_version("$Revision: 7546 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2014-9270", "CVE-2014-9279", "CVE-2014-9269");
   script_bugtraq_id(71372, 71359, 71368);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-03 16:05:34 +0530 (Thu, 03 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("MantisBT Multiple Vulnerabilities December15 (Linux) (Linux)");
@@ -41,8 +41,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running MantisBT and is prone
   to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist as,
   - the function 'projax_array_serialize_for_autocomplete' within
@@ -67,15 +66,15 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2014/q4/902");
-  script_xref(name : "URL" , value : "http://seclists.org/oss-sec/2014/q4/863");
-  script_xref(name : "URL" , value : "https://www.mantisbt.org/bugs/view.php?id=17583");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2014/q4/902");
+  script_xref(name:"URL", value:"http://seclists.org/oss-sec/2014/q4/863");
+  script_xref(name:"URL", value:"https://www.mantisbt.org/bugs/view.php?id=17583");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("mantis_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("mantisbt/installed","Host/runs_unixoide");
+  script_mandatory_keys("mantisbt/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
   exit(0);
 }
@@ -84,16 +83,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-mantisPort = 0;
-mantisVer = "";
-
-## Get HTTP Port
 if(!mantisPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!mantisVer = get_app_version(cpe:CPE, port:mantisPort)){
   exit(0);
 }
@@ -103,7 +96,6 @@ if(mantisVer == "1.1.0a2" || mantisVer == "1.1.0a1"){
   exit(0);
 }
 
-##Check for 1.1.0a3 to 1.2.17
 if(version_in_range(version:mantisVer, test_version:"1.1.0", test_version2:"1.2.17"))
 {
   report = 'Installed version: ' + mantisVer + '\n' +

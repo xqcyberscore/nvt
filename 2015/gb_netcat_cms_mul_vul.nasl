@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netcat_cms_mul_vul.nasl 5819 2017-03-31 10:57:23Z cfi $
+# $Id: gb_netcat_cms_mul_vul.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # NetCat CMS Multiple Vulnerabilities
 #
@@ -27,44 +27,44 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805346");
-  script_version("$Revision: 5819 $");
+  script_version("$Revision: 11291 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-03 17:44:58 +0530 (Tue, 03 Mar 2015)");
   script_name("NetCat CMS Multiple Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with NetCat CMS
+  script_tag(name:"summary", value:"The host is installed with NetCat CMS
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted request via HTTP
+  script_tag(name:"vuldetect", value:"Send a crafted request via HTTP
   GET and check whether it redirects to the malicious website.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to input
+  script_tag(name:"insight", value:"Multiple flaws are due to input
   passed via,
   - 'redirect_url' parameter to 'netshop/post.php' is not properly validated.
   - 'site' parameter to 'modules/redir/?' is not properly validated.
   - 'url' parameter to 'redirect.php?' is not properly validated.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to arbitrary URL redirection, disclosure or modification of sensitive
   data.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"NetCat CMS version 5.01, 3.12, 3.0, 2.4,
+  script_tag(name:"affected", value:"NetCat CMS version 5.01, 3.12, 3.0, 2.4,
   2.3, 2.2, 2.1, 2.0 and 1.1");
 
-  script_tag(name: "solution" , value:"Update to NetCat CMS 5.5 or later,
+  script_tag(name:"solution", value:"Update to NetCat CMS 5.5 or later,
   For updates refer to http://netcat.ru");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"exploit");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Mar/8");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Mar/9");
-  script_xref(name : "URL" , value : "http://securityrelated.blogspot.in/2015/02/netcat-cms-multiple-url-redirection.html");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Mar/8");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Mar/9");
+  script_xref(name:"URL", value:"http://securityrelated.blogspot.in/2015/02/netcat-cms-multiple-url-redirection.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -78,11 +78,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-# Variable Initialization
-cmsPort = "";
-sndReq = "";
-rcvRes = "";
-
 cmsPort = get_http_port(default:80);
 
 foreach dir (make_list_unique("/", "/netcat", "/netcatcms", "/cms", cgi_dirs(port:cmsPort)))
@@ -91,13 +86,10 @@ foreach dir (make_list_unique("/", "/netcat", "/netcatcms", "/cms", cgi_dirs(por
   if( dir == "/" ) dir = "";
   rcvRes = http_get_cache(item:string(dir,"/"), port:cmsPort);
 
-  #Confirm application
   if(">NetCat" >< rcvRes)
   {
-    # Construct the Attack request
     url = dir + '/modules/redir/?&site=http://www.example.com';
 
-    # Check the response to confirm vulnerability
     sndReq = http_get(item:url, port:cmsPort);
     rcvRes = http_keepalive_send_recv(port:cmsPort, data:sndReq);
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_sharepoint_sever_n_foundation_ms15-047.nasl 6442 2017-06-27 09:37:57Z santu $
+# $Id: gb_ms_sharepoint_sever_n_foundation_ms15-047.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # MS SharePoint Server and Foundation Remote Code Execution Vulnerability (3058083)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805179");
-  script_version("$Revision: 6442 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-1700");
   script_bugtraq_id(74480);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 11:37:57 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-13 12:54:36 +0530 (Wed, 13 May 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS SharePoint Server and Foundation Remote Code Execution Vulnerability (3058083)");
@@ -53,8 +53,7 @@ if(description)
 
   Impact Level: System");
 
-  script_tag(name:"affected", value:"
-  Microsoft SharePoint Server 2007 Service Pack 3 32/64 bit,
+  script_tag(name:"affected", value:"Microsoft SharePoint Server 2007 Service Pack 3 32/64 bit,
   Microsoft SharePoint Foundation 2010 Service Pack 2,
   Microsoft SharePoint Foundation 2013 Service Pack 1");
 
@@ -64,13 +63,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3058083");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-047");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3058083");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-047");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_sharepoint_sever_n_foundation_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/SharePoint/Server_or_Foundation_or_Services/Installed");
   exit(0);
 }
@@ -81,11 +81,6 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-shareVer = "";
-dllVer = "";
-
-## Get SharePoint Version
 shareVer = get_app_version(cpe:CPE);
 if(!shareVer)
 {
@@ -110,7 +105,7 @@ if(shareVer =~ "^12\..*")
     {
       if(version_in_range(version:dllVer, test_version:"12.0", test_version2:"12.0.6721.4999"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }
@@ -131,7 +126,7 @@ if(shareVer =~ "^14\..*")
     {
       if(version_in_range(version:dllVer, test_version:"14.0", test_version2:"14.0.7149.4999"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }
@@ -152,7 +147,7 @@ if(shareVer =~ "^15\..*")
     {
       if(version_in_range(version:dllVer, test_version:"15.0", test_version2:"15.0.4719.999"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }

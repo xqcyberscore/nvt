@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_wireless_display_adapter_cmd_inj_vuln.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_microsoft_wireless_display_adapter_cmd_inj_vuln.nasl 11292 2018-09-10 03:14:17Z ckuersteiner $
 #
 # Microsoft Wireless Display Adapter Command Injection Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813702");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 11292 $");
   script_cve_id("CVE-2018-8306");
-  script_tag(name:"cvss_base", value:"4.3");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"5.2");
+  script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:S/C:P/I:P/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 05:14:17 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-17 15:16:38 +0530 (Tue, 17 Jul 2018)");
   script_name("Microsoft Wireless Display Adapter Command Injection Vulnerability");
 

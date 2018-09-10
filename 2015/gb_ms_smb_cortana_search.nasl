@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_smb_cortana_search.nasl 5517 2017-03-08 13:59:49Z cfi $
+# $Id: gb_ms_smb_cortana_search.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Check for Windows 10 Cortana Search
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96195");
-  script_version("$Revision: 5517 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-08 14:59:49 +0100 (Wed, 08 Mar 2017) $");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:13:43 +0200 (Tue, 08 Sep 2015)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -36,7 +36,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2015 Greenbone Networks GmbH");
   script_family("Windows");
-  script_dependencies("secpod_reg_enum.nasl", "smb_reg_service_pack.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
 
@@ -66,7 +66,7 @@ key2 = "SOFTWARE\Policies\Microsoft\Windows\Windows Search";
 key3 = "SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\Windows Search";
 
 # None of the keys exist -> Cortana Search enabled
-if( ! registry_key_exists( key:key1, type:"HKLM" ) && 
+if( ! registry_key_exists( key:key1, type:"HKLM" ) &&
     ! registry_key_exists( key:key2, type:"HKLM" ) &&
     ! registry_key_exists( key:key3, type:"HKLM" ) ) {
   cortanaEnabled = TRUE;

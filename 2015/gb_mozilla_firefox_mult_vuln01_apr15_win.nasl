@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_apr15_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mult_vuln01_apr15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 Apr15 (Windows)
 #
@@ -29,23 +29,23 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805522");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-0816", "CVE-2015-0815", "CVE-2015-0814", "CVE-2015-0812",
                 "CVE-2015-0811", "CVE-2015-0808", "CVE-2015-0807", "CVE-2015-0806",
                 "CVE-2015-0805", "CVE-2015-0804", "CVE-2015-0803", "CVE-2015-0802",
                 "CVE-2015-0801");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-06 13:40:14 +0530 (Mon, 06 Apr 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 Apr15 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
   - Improper restriction of resource: URLs.
   - Multiple unspecified errors.
   - No HTTPS session for lightweight theme add-on installations .
@@ -58,18 +58,18 @@ if(description)
   - Use of docshell type information instead of page principal information for
   'Window.webidl' access control.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to execute arbitrary JavaScript code,  conduct denial of service
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to execute arbitrary JavaScript code, conduct denial of service
   (memory corruption and application crash) attack, possibly execute arbitrary
   code, conduct DNS spoofing attack and conduct cross-site request forgery
   (CSRF) attacks.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox before version 37.0 on
+  script_tag(name:"affected", value:"Mozilla Firefox before version 37.0 on
   Windows");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 37.0
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 37.0
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");

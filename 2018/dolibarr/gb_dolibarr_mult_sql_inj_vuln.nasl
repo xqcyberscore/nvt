@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dolibarr_mult_sql_inj_vuln.nasl 10537 2018-07-18 07:58:47Z cfischer $
+# $Id: gb_dolibarr_mult_sql_inj_vuln.nasl 11292 2018-09-10 03:14:17Z ckuersteiner $
 #
 # Dolibarr <= 7.0.3 Multiple SQL Injection Vulnerabilities
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112324");
-  script_version("$Revision: 10537 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-18 09:58:47 +0200 (Wed, 18 Jul 2018) $");
+  script_version("$Revision: 11292 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 05:14:17 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-10 13:20:11 +0200 (Tue, 10 Jul 2018)");
-  script_tag(name:"cvss_base", value:"6.4");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

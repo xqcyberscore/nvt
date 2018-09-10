@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_project_server_ms15-036.nasl 6369 2017-06-19 10:00:04Z teissa $
+# $Id: gb_project_server_ms15-036.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Microsoft Project Server Elevation of Privilege Vulnerability (3052044)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:project_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805169");
-  script_version("$Revision: 6369 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-1640");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 17:17:21 +0530 (Wed, 15 Apr 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Project Server Elevation of Privilege Vulnerability (3052044)");
@@ -52,8 +52,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Project Server 2010 Service Pack 2 and
+  script_tag(name:"affected", value:"Microsoft Project Server 2010 Service Pack 2 and
   Microsoft Project Server 2013 Service Pack 1");
 
   script_tag(name:"solution", value:"Run Windows Update and update the
@@ -62,13 +61,14 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/2965219");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-036");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/2965219");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-036");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_project_server_detect.nasl");
+  script_require_ports(139, 445);
   script_require_keys("MS/ProjectServer/Server/Ver");
   exit(0);
 }
@@ -79,12 +79,6 @@ include("host_details.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variable Initialization
-psVer = "";
-dllVer = "";
-path = "";
-
-## Get SharePoint Version
 psVer = get_app_version(cpe:CPE);
 if(!psVer){
   exit(0);
@@ -106,7 +100,7 @@ if(psVer =~ "^14\..*")
     {
       if(version_in_range(version:dllVer, test_version:"14.0", test_version2:"14.0.7141.4999"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }
@@ -129,7 +123,7 @@ if(psVer =~ "^15\..*")
     {
       if(version_in_range(version:dllVer, test_version:"15.0", test_version2:"15.0.4709.999"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }

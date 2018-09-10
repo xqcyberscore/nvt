@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_3gp_file_dos_vul_lin.nasl 6357 2017-06-16 10:00:29Z teissa $
+# $Id: gb_vlc_media_player_3gp_file_dos_vul_lin.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # VLC Media Player 3GP File Denial of Service Vulnerability Oct15 (Linux)
 #
@@ -29,41 +29,39 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806087");
-  script_version("$Revision: 6357 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-5949");
   script_bugtraq_id(76448);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-16 12:00:29 +0200 (Fri, 16 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 16:14:33 +0530 (Tue, 13 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("VLC Media Player 3GP File Denial of Service Vulnerability Oct15 (Linux)");
 
-  script_tag(name: "summary" , value:"The host is installed with VLC media player
+  script_tag(name:"summary", value:"The host is installed with VLC media player
   and is prone to denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to insufficient
+  script_tag(name:"insight", value:"The flaw is due to insufficient
   restrictions on a writable buffer which affects the 3GP file format parser.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial of service (crash) and possibly execute arbitrary
   code via a crafted 3GP file.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"VideoLAN VLC media player 2.2.1 and
+  script_tag(name:"affected", value:"VideoLAN VLC media player 2.2.1 and
   earlier on Linux.");
 
-  script_tag(name: "solution" , value:"No updates are available at the moment,
+  script_tag(name:"solution", value:"Updates are available,
   For updates refer to http://www.videolan.org");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
-
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133266");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/536287/100/0/threaded");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/133266");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/536287/100/0/threaded");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -77,16 +75,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-vlcVer = "";
-report = "";
-
-## Get version
 if(!vlcVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check VLC media player vulnerable version
 if(version_is_less_equal(version:vlcVer, test_version:"2.2.1"))
 {
   report = 'Installed version: ' + vlcVer + '\n' +

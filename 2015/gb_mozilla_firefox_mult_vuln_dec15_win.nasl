@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_dec15_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mult_vuln_dec15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities - Dec15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807004");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-7201", "CVE-2015-7202", "CVE-2015-7203", "CVE-2015-7204",
                 "CVE-2015-7205", "CVE-2015-7207", "CVE-2015-7208", "CVE-2015-7210",
                 "CVE-2015-7211", "CVE-2015-7212", "CVE-2015-7213", "CVE-2015-7214",
@@ -38,16 +38,16 @@ if(description)
   script_bugtraq_id(79283, 79279, 79280);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-18 10:31:01 +0530 (Fri, 18 Dec 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - Dec15 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
   - Multiple unspecified vulnerabilities in the browser engine.
   - Buffer overflow in the 'DirectWriteFontInfo::LoadFontFamilyData' function in
     'gfx/thebes/gfxDWriteFontList.cpp' script.
@@ -74,17 +74,17 @@ if(description)
     libstagefright
   - Error in WebExtension APIs.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial of service, bypass security restrictions,
-  obtain sensitive information,  execute arbitrary script code, spoof web sites
+  obtain sensitive information, execute arbitrary script code, spoof web sites
   and some unspecified impacts.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 43.0 on
+  script_tag(name:"affected", value:"Mozilla Firefox version before 43.0 on
   Windows");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 43.0
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 43.0
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");

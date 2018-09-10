@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fedora_2018_b48e0b8761_libpng15_fc28.nasl 10979 2018-08-15 12:00:56Z santu $
+# $Id: gb_fedora_2018_b48e0b8761_libpng15_fc28.nasl 11292 2018-09-10 03:14:17Z ckuersteiner $
 #
 # Fedora Update for libpng15 FEDORA-2018-b48e0b8761
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.874924");
-  script_version("$Revision: 10979 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 14:00:56 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 11292 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 05:14:17 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-13 06:08:32 +0200 (Mon, 13 Aug 2018)");
   script_cve_id("CVE-2018-13785");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("Fedora Update for libpng15 FEDORA-2018-b48e0b8761");
   script_tag(name:"summary", value:"Check the version of libpng15");

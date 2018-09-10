@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_compat_pack_ms15-099.nasl 7573 2017-10-26 09:18:50Z cfischer $
+# $Id: gb_ms_office_compat_pack_ms15-099.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3089664)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806114");
-  script_version("$Revision: 7573 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-2520", "CVE-2015-2521", "CVE-2015-2523");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 11:18:50 +0200 (Thu, 26 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 12:32:18 +0530 (Wed, 09 Sep 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3089664)");
@@ -53,8 +53,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Office Compatibility Pack Service Pack 3 and prior.");
+  script_tag(name:"affected", value:"Microsoft Office Compatibility Pack Service Pack 3 and prior.");
 
   script_tag(name:"solution", value:"Run Windows Update and update the listed
   hotfixes or download and update mentioned hotfixes in the advisory from the
@@ -62,8 +61,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3054993");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS15-099");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3054993");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS15-099");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -77,16 +76,11 @@ if(description)
 include("smb_nt.inc");
 include("version_func.inc");
 
-## Variable Initialization
-xlcnvVer = "";
-
-## Check for Office Compatibility Pack 2007
 if(get_kb_item("SMB/Office/ComptPack/Version") =~ "^12\..*")
 {
   xlcnvVer = get_kb_item("SMB/Office/XLCnv/Version");
   if(xlcnvVer)
   {
-    ## Check for Office Version 2007 with compatibility pack version 12.0 < 12.0.6729.5000
     ## took the file excelconv.exe which is updated after patch
     if(version_in_range(version:xlcnvVer, test_version:"12.0", test_version2:"12.0.6729.4999"))
     {

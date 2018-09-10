@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3097966.nasl 6637 2017-07-10 09:58:13Z teissa $
+# $Id: gb_microsoft_security_advisory_3097966.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Microsoft Inadvertently Disclosed Digital Certificates Advisory (3097966)
 #
@@ -27,31 +27,30 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806092");
-  script_version("$Revision: 6637 $");
+  script_version("$Revision: 11291 $");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:M/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-10 11:58:13 +0200 (Mon, 10 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-15 10:51:26 +0530 (Thu, 15 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Inadvertently Disclosed Digital Certificates Advisory (3097966)");
 
-  script_tag(name: "summary" , value:"This host is missing an important security
+  script_tag(name:"summary", value:"This host is missing an important security
   update according to Microsoft advisory (3097966).");
 
-  script_tag(name: "vuldetect" , value: "Get the vulnerable file version and
+  script_tag(name:"vuldetect", value:"Get the vulnerable file version and
   check appropriate patch is applied or not.");
 
-  script_tag(name: "insight" , value: "An update is available that modifies the
+  script_tag(name:"insight", value:"An update is available that modifies the
   Code Integrity component in Windows to extend trust removal for the
   certificates to also preclude kernel-mode code signing.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   attackers to conduct spoofing attack.
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"
-  Windows Server 2012 R2
+  script_tag(name:"affected", value:"Windows Server 2012 R2
   Microsoft Windows 8 x32/x64
   Microsoft Windows Server 2012
   Microsoft Windows 8.1 x32/x64
@@ -60,20 +59,21 @@ if(description)
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior.");
 
-  script_tag(name: "solution" , value: "Run Windows Update and update the
+  script_tag(name:"solution", value:"Run Windows Update and update the
   listed hotfixes or download and update mentioned hotfixes in the advisory
   from the below link,
   https://technet.microsoft.com/library/security/3097966");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3097966");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/3097966");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3097966");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/3097966");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   exit(0);
 }
@@ -84,34 +84,25 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-sysPath = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2, win8:1, winVista:3,
                    win8x64:1, win2012:1, win2012R2:1, win8_1:1, win8_1x64:1,
                    win2008:3) <= 0){
   exit(0);
 }
 
-## Get System Path
 sysPath = smb_get_systemroot();
 if(!sysPath){
   exit(0);
 }
 
-## Get Version from 'Ci.dll' file
 dllVer = fetch_file_version(sysPath, file_name:"system32\ci.dll");
 if(!dllVer){
   exit(0);
 }
 
-## Windows Vista and Server 2008
 ## Currently not supporting for Vista and Windows Server 2008 64 bit
 if(hotfix_check_sp(winVista:3, win2008:3) > 0)
 {
-  ## Check for Ci.dll version
   if(version_is_less(version:dllVer, test_version:"6.0.6002.18005"))
   {
     Vulnerable_range = "Version Less than - 6.0.6002.18005";
@@ -119,10 +110,8 @@ if(hotfix_check_sp(winVista:3, win2008:3) > 0)
   }
 }
 
-## Windows 7 and Windows 2008 R2
 else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 {
-  ## Check for Ci.dll version
   if(version_is_less(version:dllVer, test_version:"6.1.7601.18519"))
   {
     Vulnerable_range = "Version Less than - 6.1.7601.18519";
@@ -139,7 +128,6 @@ else if(hotfix_check_sp(win7:2, win7x64:2, win2008r2:2) > 0)
 ## Win 8 and 2012
 else if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 {
-  ## Check for Ci.dll version
   if(version_is_less(version:dllVer, test_version:"6.2.9200.16569"))
   {
     Vulnerable_range = "Version Less than - 6.2.9200.16569";
@@ -156,7 +144,6 @@ else if(hotfix_check_sp(win8:1, win8x64:1, win2012:1) > 0)
 ## Win 8.1 and 2012R2
 else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 {
-  ## Check for Ci.dll version
   if(version_is_less(version:dllVer, test_version:"6.3.9600.17550"))
   {
     Vulnerable_range = "Version Less than - 6.3.9600.17550";

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_catalyst_4500_CSCuq04574.nasl 6243 2017-05-30 09:04:14Z teissa $
+# $Id: gb_cisco_catalyst_4500_CSCuq04574.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Cisco Catalyst 4500 SNMP Polling Denial of Service Vulnerability
 #
@@ -29,35 +29,35 @@ CPE = "cpe:/h:cisco:catalyst_4500";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105380");
- script_cve_id("CVE-2015-0687");
- script_tag(name:"cvss_base", value:"6.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:C");
- script_version ("$Revision: 6243 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105380");
+  script_cve_id("CVE-2015-0687");
+  script_tag(name:"cvss_base", value:"6.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:C");
+  script_version("$Revision: 11291 $");
 
- script_name("Cisco Catalyst 4500 SNMP Polling Denial of Service Vulnerability");
+  script_name("Cisco Catalyst 4500 SNMP Polling Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=38194");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=38194");
 
- script_tag(name: "impact" , value:"An authenticated, remote attacker could exploit this vulnerability to cause an affected device to crash, resulting in a DoS condition.");
- script_tag(name: "vuldetect" , value:"Check the version");
+  script_tag(name:"impact", value:"An authenticated, remote attacker could exploit this vulnerability to cause an affected device to crash, resulting in a DoS condition.");
+  script_tag(name:"vuldetect", value:"Check the version");
 
- script_tag(name: "insight" , value:"The vulnerability is due to an unspecified condition that exists during SNMP polling of an affected device that is configured for Virtual Switching System (VSS) with only one switch in the VSS cluster. An authenticated, remote attacker could exploit this vulnerability to cause an affected device to crash, resulting in a DoS condition.");
+  script_tag(name:"insight", value:"The vulnerability is due to an unspecified condition that exists during SNMP polling of an affected device that is configured for Virtual Switching System (VSS) with only one switch in the VSS cluster. An authenticated, remote attacker could exploit this vulnerability to cause an affected device to crash, resulting in a DoS condition.");
 
- script_tag(name: "solution" , value:"Please see the vendor advisory for more information.");
- script_tag(name: "summary" , value:"Cisco Catalyst 4500 devices contain a vulnerability that could allow an authenticated, remote attacker to cause a denial of service condition.");
- script_tag(name: "affected" , value:"Cisco IOS Software for Cisco Catalyst 4500 devices running version 15.1(2)SG4 or 15.2(1.1)");
+  script_tag(name:"solution", value:"Please see the vendor advisory for more information.");
+  script_tag(name:"summary", value:"Cisco Catalyst 4500 devices contain a vulnerability that could allow an authenticated, remote attacker to cause a denial of service condition.");
+  script_tag(name:"affected", value:"Cisco IOS Software for Cisco Catalyst 4500 devices running version 15.1(2)SG4 or 15.2(1.1)");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-30 11:04:14 +0200 (Tue, 30 May 2017) $");
- script_tag(name:"creation_date", value:"2015-09-21 14:18:25 +0200 (Mon, 21 Sep 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_catalyst_4500_detect.nasl");
- script_mandatory_keys("cisco_catalyst_4500/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-09-21 14:18:25 +0200 (Mon, 21 Sep 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_catalyst_4500_detect.nasl");
+  script_mandatory_keys("cisco_catalyst_4500/installed");
 
  exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_web_apps_ms15-099.nasl 9317 2018-04-05 07:37:07Z cfischer $
+# $Id: gb_ms_office_web_apps_ms15-099.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Microsoft Office Web Apps RCE Vulnerability (3089664)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:microsoft:office_web_apps";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806112");
-  script_version("$Revision: 9317 $");
+  script_version("$Revision: 11291 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 09:37:07 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 11:18:07 +0530 (Wed, 09 Sep 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Web Apps RCE Vulnerability (3089664)");
@@ -60,14 +60,15 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3089664");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3085487");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/library/security/MS15-099");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3089664");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3085487");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/library/security/MS15-099");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
   script_dependencies("gb_ms_office_web_apps_detect.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/Web/Apps/Ver");
   exit(0);
 }

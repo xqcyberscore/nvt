@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_moodle_inf_disc_vuln_jul18_win.nasl 10674 2018-07-30 08:24:18Z asteins $
+# $Id: gb_moodle_inf_disc_vuln_jul18_win.nasl 11292 2018-09-10 03:14:17Z ckuersteiner $
 #
 # Moodle <= 3.3.6, 3.4.* <= 3.4.3, 3.5.0 Information Disclosure Vulnerability (Windows)
 #
@@ -28,11 +28,11 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113227");
-  script_version("$Revision: 10674 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-30 10:24:18 +0200 (Mon, 30 Jul 2018) $");
+  script_version("$Revision: 11292 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 05:14:17 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-11 13:24:16 +0200 (Wed, 11 Jul 2018)");
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 

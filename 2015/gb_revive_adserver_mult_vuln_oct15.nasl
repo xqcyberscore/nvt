@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_revive_adserver_mult_vuln_oct15.nasl 6333 2017-06-14 10:00:49Z teissa $
+# $Id: gb_revive_adserver_mult_vuln_oct15.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Revive Adserver Multiple Vulnerabilities Oct15
 #
@@ -29,25 +29,24 @@ CPE = "cpe:/a:revive:adserver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806508");
-  script_version("$Revision: 6333 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-7364", "CVE-2015-7365", "CVE-2015-7366", "CVE-2015-7367",
                 "CVE-2015-7368", "CVE-2015-7369", "CVE-2015-7370", "CVE-2015-7371",
                 "CVE-2015-7372", "CVE-2015-7373");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-20 15:41:06 +0530 (Tue, 20 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Revive Adserver Multiple Vulnerabilities Oct15");
 
-  script_tag(name: "summary" , value:"The host is installed with Revive Adserver
+  script_tag(name:"summary", value:"The host is installed with Revive Adserver
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to:
-  - Some plugin actions (e.g. enabling,disabling) could be performed via GET
+  script_tag(name:"insight", value:"Multiple flaws exist due to:
+  - Some plugin actions (e.g. enabling, disabling) could be performed via GET
     without any CSRF protection mechanism.
   - 'account-user-*.php' scripts not checking the CSRF token sent via POST
     request.
@@ -81,10 +80,10 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/133893");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Oct/32");
-  script_xref(name : "URL" , value : "http://www.revive-adserver.com/security/revive-sa-2015-001");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/536633/100/0/threaded");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/133893");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Oct/32");
+  script_xref(name:"URL", value:"http://www.revive-adserver.com/security/revive-sa-2015-001");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/536633/100/0/threaded");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -95,28 +94,17 @@ if(description)
   exit(0);
 }
 
-##
-### Code Starts Here
-##
-
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-revPort = "";
-revVer = "";
-
-## Get HTTP Port
 if(!revPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!revVer = get_app_version(cpe:CPE, port:revPort)){
   exit(0);
 }
 
-##Check for vulnerable version
 if(version_is_less( version:revVer, test_version:"3.2.2" ))
 {
   report = 'Installed Version: ' + revVer + '\nFixed Version: 3.2.2\n';

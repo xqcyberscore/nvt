@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_CTX200254.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
+# $Id: gb_citrix_netscaler_CTX200254.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Citrix NetScaler Unauthorised Access Vulnerability (CTX200254)
 #
@@ -29,45 +29,45 @@ CPE = "cpe:/a:citrix:netscaler";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105275");
- script_bugtraq_id(71350);
- script_cve_id("CVE-2014-8580");
- script_tag(name:"cvss_base", value:"4.9");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
- script_version ("$Revision: 8384 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105275");
+  script_bugtraq_id(71350);
+  script_cve_id("CVE-2014-8580");
+  script_tag(name:"cvss_base", value:"4.9");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:N");
+  script_version("$Revision: 11291 $");
 
- script_name("Citrix NetScaler Unauthorised Access Vulnerability (CTX200254)");
+  script_name("Citrix NetScaler Unauthorised Access Vulnerability (CTX200254)");
 
- script_xref(name:"URL", value:"https://support.citrix.com/article/CTX200254");
+  script_xref(name:"URL", value:"https://support.citrix.com/article/CTX200254");
 
- script_tag(name: "impact" , value:"An authentication flaw has been identified in certain configurations of Citrix NetScaler ADC and
+  script_tag(name:"impact", value:"An authentication flaw has been identified in certain configurations of Citrix NetScaler ADC and
 NetScaler Gateway that could allow an authenticated user to obtain unauthorised access to network resources for another authenticated
 user.");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Update to
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Update to
 Citrix NetScaler ADC and NetScaler Gateway 10.5-52.11 or later.
 Citrix NetScaler ADC and NetScaler Gateway 10.1-129.11 or later.
 Citrix NetScaler 10.1-129.1105.e or later.");
 
- script_tag(name: "summary" , value:"The remote Citrix Netscaler is prone to an unauthorised access
+  script_tag(name:"summary", value:"The remote Citrix Netscaler is prone to an unauthorised access
 vulnerability.");
 
- script_tag(name: "affected" , value:"Citrix NetScaler
+  script_tag(name:"affected", value:"Citrix NetScaler
 Version 10.5.x between 10.5.50.10 and 10.5.51.10
 Version 10.1.x between 10.1.122.17 and 10.1.128.8
 Version 10.1.x 'Enhanced' between 10.1-120.1316.e and 10.1-128.8003.e");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
- script_tag(name:"creation_date", value:"2015-05-12 13:12:00 +0200 (Tue, 12 May 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_citrix_netscaler_version.nasl");
- script_mandatory_keys("citrix_netscaler/detected");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-05-12 13:12:00 +0200 (Tue, 12 May 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_citrix_netscaler_version.nasl");
+  script_mandatory_keys("citrix_netscaler/detected");
 
  exit(0);
 }

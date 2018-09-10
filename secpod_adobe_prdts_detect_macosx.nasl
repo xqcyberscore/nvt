@@ -1,23 +1,11 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_detect_macosx.nasl 8845 2018-02-16 10:57:50Z santu $
+# $Id: secpod_adobe_prdts_detect_macosx.nasl 11285 2018-09-07 09:40:40Z cfischer $
 #
 # Adobe Products Version Detection (Mac OS X)
 #
 # Authors:
 # Madhuri D <dmadhuri@secpod.com>
-#
-# Updated By : Madhuri D <dmadhuri@secpod.com> on 20-09-2011
-# -Updated to detect Adobe reader and acrobat versions
-#
-# Updated By : Madhuri D <dmadhuri@secpod.com> on 10-11-2011
-# -Updated to detect Adobe Shockwave Player versions
-#
-# Updated By : Madhuri D <dmadhuri@secpod.com> on 09-12-2011
-#  -Updated detect path for adobe/acrobat/Air and according CR57.
-#
-# Updated By: Thanga Prakash S <tprakash@secpod.com> on 2013-09-04
-# According to new style script_tags.
 #
 # Copyright:
 # Copyright (c) 2011 SecPod, http://www.secpod.com
@@ -39,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902711");
-  script_version("$Revision: 8845 $");
+  script_version("$Revision: 11285 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-02-16 11:57:50 +0100 (Fri, 16 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:40:40 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-08-10 13:49:51 +0200 (Wed, 10 Aug 2011)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Products Version Detection (Mac OS X)");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   Adobe Products.
 
   The script logs in via ssh, and searches for adobe products '.app' folder
@@ -63,28 +51,16 @@ if(description)
   exit(0);
 }
 
-
 include("cpe.inc");
 include("ssh_func.inc");
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-sock = 0;
-flashVer = NULL;
-airVer = "";
-buffer = "";
-version = "";
-readerVer = "";
-acrobatVer = "";
-
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);
 }
 
-## Checking for Mac OS X
 if (!get_kb_item("ssh/login/osx_name"))
 {
   close(sock);
@@ -101,7 +77,6 @@ buffer = get_kb_item("ssh/login/osx_pkgs");
 if(buffer != NULL)
 {
   if("com.adobe.pkg.FlashPlayer" >< buffer){
-    ## Grep for the version
     flashVer = eregmatch(pattern:"FlashPlayer[^\n]([0-9.]+)", string:buffer);
   } else
   {
@@ -131,7 +106,6 @@ if(buffer != NULL)
 ####################################
 if("com.adobe.shockwave" >< buffer)
 {
-  ## Grep for the version
   version = eregmatch(pattern:"shockwave[^\n]([0-9.]+)", string:buffer);
   if(version[1] != NULL)
   {
@@ -212,7 +186,6 @@ foreach ver (make_list("2017", "XI", "X", "10", "9", "8"))
   }
 }
 
-## Exit if version not found
 if(!isnull(acrobatVer) && "does not exist" >!< acrobatVer)
 {
   set_kb_item(name: "Adobe/Acrobat/MacOSX/Version", value:acrobatVer);

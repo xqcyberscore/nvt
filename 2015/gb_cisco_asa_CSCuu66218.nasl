@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCuu66218.nasl 6333 2017-06-14 10:00:49Z teissa $
+# $Id: gb_cisco_asa_CSCuu66218.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Cisco ASA AES-GCM Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106011");
-  script_version("$Revision: 6333 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
-  script_tag(name : "creation_date", value : "2015-06-23 09:56:22 +0700 (Tue, 23 Jun 2015)");
-  script_tag(name : "cvss_base", value : "4.3");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-06-23 09:56:22 +0700 (Tue, 23 Jun 2015)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -51,25 +51,25 @@ if (description)
   script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
   script_mandatory_keys("cisco_asa/version");
 
-  script_tag(name : "summary", value : "Cisco ASA is prone to an encrypted IPSec or IKEv2 modification
+  script_tag(name:"summary", value:"Cisco ASA is prone to an encrypted IPSec or IKEv2 modification
 vulnerability.");
 
-  script_tag(name : "vuldetect", value : "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name : "insight", value : "The vulnerability is due to an error on the firmware of the
+  script_tag(name:"insight", value:"The vulnerability is due to an error on the firmware of the
 Cavium Networks cryptographic module. Due to this vulnerability, the integrity check value (ICV) is not
 verified. An attacker could exploit this vulnerability by intercepting encrypted packets in transit and
 modifying their contents. Such packets would be decrypted by the ASA and then forwarded to their destination,
 without the modification being detected.");
 
-  script_tag(name : "impact", value : "An unauthenticated, remote attacker could modify the contents of an
+  script_tag(name:"impact", value:"An unauthenticated, remote attacker could modify the contents of an
 encrypted IPSec or IKEv2 packet. A successful exploit could be leveraged to conduct further attacks.");
 
-  script_tag(name : "affected", value : "Version 9.3 and 9.4");
+  script_tag(name:"affected", value:"Version 9.3 and 9.4");
 
-  script_tag(name : "solution", value : "Apply the appropriate updates from Cisco.");
+  script_tag(name:"solution", value:"Apply the appropriate updates from Cisco.");
 
-  script_xref(name : "URL", value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=39366");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=39366");
 
   exit(0);
 }

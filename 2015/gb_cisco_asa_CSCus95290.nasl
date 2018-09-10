@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCus95290.nasl 6534 2017-07-05 09:58:29Z teissa $
+# $Id: gb_cisco_asa_CSCus95290.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Cisco ASA VPN XML Parser DoS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106000");
-  script_version("$Revision: 6534 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
-  script_tag(name : "creation_date", value : "2015-05-29 15:12:10 +0700 (Fri, 29 May 2015)");
-  script_tag(name : "cvss_base", value : "7.8");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-05-29 15:12:10 +0700 (Fri, 29 May 2015)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -52,24 +52,24 @@ if (description)
   script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
   script_mandatory_keys("cisco_asa/version");
 
-  script_tag(name : "summary", value : "Cisco ASA is prone to a DoS vulnerability in the VPN XML Parser.");
+  script_tag(name:"summary", value:"Cisco ASA is prone to a DoS vulnerability in the VPN XML Parser.");
 
-  script_tag(name : "vuldetect", value : "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name : "insight", value : "The vulnerability is due to insufficient hardening of the XML
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient hardening of the XML
 parser configuration. An attacker could exploit this vulnerability by sending a crafted XML message to
 the affected system. This vulnerability affects Cisco ASA appliances configured for Clientless or AnyConnect
 SSL VPN and AnyConnect IKEv2 VPN. All other VPN configurations are unaffected by this vulnerability.");
 
-  script_tag(name : "impact", value : "An unauthenticated, remote attacker could exploit this vulnerability
+  script_tag(name:"impact", value:"An unauthenticated, remote attacker could exploit this vulnerability
 by sending a crafted XML message to a targeted system. A successful exploit could cause the WebVPN component
 on the system to crash, resulting in a DoS condition.");
 
-  script_tag(name : "affected", value : "Version 8.4, 8.6, 9.0, 9.1, 9.2 and 9.3");
+  script_tag(name:"affected", value:"Version 8.4, 8.6, 9.0, 9.1, 9.2 and 9.3");
 
-  script_tag(name : "solution", value : "Apply the appropriate updates from Cisco.");
+  script_tag(name:"solution", value:"Apply the appropriate updates from Cisco.");
 
-  script_xref(name : "URL", value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=38185");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=38185");
 
   exit(0);
 }
@@ -95,7 +95,7 @@ if ((revcomp(a:compver, b:"8.6.1.17") < 0) &&
   security_message(port: 0, data:report);
   exit(0);
 }
- 
+
 if ((revcomp(a:compver, b:"9.0.4.33") < 0) &&
     (revcomp(a:compver, b:"9.0") >= 0)) {
   report = 'Installed Version: ' + version + '\n' +

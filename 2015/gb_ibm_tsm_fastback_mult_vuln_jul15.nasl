@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tsm_fastback_mult_vuln_jul15.nasl 6513 2017-07-04 09:59:28Z teissa $
+# $Id: gb_ibm_tsm_fastback_mult_vuln_jul15.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # IBM Tivoli Storage Manager FastBack Multiple Vulnerabilities - Jul15
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:ibm:tivoli_storage_manager_fastback";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805900");
-  script_version("$Revision: 6513 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-1986", "CVE-2015-1965", "CVE-2015-1964", "CVE-2015-1963",
                 "CVE-2015-1962", "CVE-2015-1954", "CVE-2015-1953", "CVE-2015-1949",
                 "CVE-2015-1948", "CVE-2015-1942", "CVE-2015-1941", "CVE-2015-1938",
@@ -37,19 +37,18 @@ if(description)
                 "CVE-2015-1923");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-03 14:41:58 +0530 (Fri, 03 Jul 2015)");
   script_name("IBM Tivoli Storage Manager FastBack Multiple Vulnerabilities - Jul15");
 
   script_tag(name:"summary", value:"This host is installed with IBM Tivoli Storage
   Manager FastBack and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaws exists due to,
   - Multiple buffer overflow errors as user-supplied input is not properly
-    validated. 
+    validated.
   - Multiple unspecified errors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a remote
@@ -62,14 +61,14 @@ if(description)
   6.1.x through 6.1.11.1");
 
   script_tag(name:"solution", value:"Upgrade to IBM Tivoli Storage Manager FastBack
-  version 6.1.12 or later. 
+  version 6.1.12 or later.
   For updates refer to https://www.ibm.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21959398");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21959398");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -83,15 +82,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-tivVer = "";
-
-## Get version
 if(!tivVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_in_range(version:tivVer, test_version:"6.1.0", test_version2:"6.1.11.1"))
 {
   report = 'Installed version: ' + tivVer + '\n' +

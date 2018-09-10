@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_mult_xss_vuln_jan15.nasl 6443 2017-06-27 10:00:22Z teissa $
+# $Id: gb_twiki_mult_xss_vuln_jan15.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # TWiki Multiple Cross-Site Scripting Vulnerabilities - Jan15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:twiki:twiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805234");
-  script_version("$Revision: 6443 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2014-9325");
   script_bugtraq_id(71735);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-06 12:20:18 +0530 (Tue, 06 Jan 2015)");
   script_name("TWiki Multiple Cross-Site Scripting Vulnerabilities - Jan15");
   script_category(ACT_ATTACK);
@@ -85,11 +85,9 @@ if( ! dir = get_app_location( cpe:CPE, port:http_port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-## Construct the attack request
 url = dir + "/view/Main/TWikiPreferences?'" +
       '"--></style></script><script>alert(document.cookie)</script>';
 
-## Try attack and check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
    pattern:"script><script>alert\(document.cookie\)</script>",
    extra_check:"[P|p]owered by TWiki"))

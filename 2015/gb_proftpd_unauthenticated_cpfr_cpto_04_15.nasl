@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_proftpd_unauthenticated_cpfr_cpto_04_15.nasl 4774 2016-12-15 12:52:36Z cfi $
+# $Id: gb_proftpd_unauthenticated_cpfr_cpto_04_15.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # ProFTPD `mod_copy` Unauthenticated Copying Of Files Via SITE CPFR/CPTO
 #
@@ -30,8 +30,8 @@ CPE = "cpe:/a:proftpd:proftpd";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105254");
-  script_version("$Revision: 4774 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-15 13:52:36 +0100 (Thu, 15 Dec 2016) $");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-13 18:15:12 +0200 (Mon, 13 Apr 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"solution", value:"Ask the vendor for an update");
 
   script_tag(name:"summary", value:"ProFTPD is prone to an unauthenticated copying of files vulnerability.");
- 
+
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
 

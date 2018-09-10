@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_code_exec_vuln_mar15_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_esr_code_exec_vuln_mar15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Mozilla Firefox ESR Just-in-time (JIT) Code Execution Vulnerability Mar15 (Windows)
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805510");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-0817");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-27 11:46:34 +0530 (Fri, 27 Mar 2015)");
   script_name("Mozilla Firefox ESR Just-in-time (JIT) Code Execution Vulnerability Mar15 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox ESR
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox ESR
   and is prone to code execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an out-of-bounds access
+  script_tag(name:"insight", value:"The flaw exists due to an out-of-bounds access
   error in asmjs/AsmJSValidate.cpp within the JavaScript Just-in-time Compilation
   (JIT)");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to conduct arbitrary code execution.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox ESR 31.x before 31.5.2 on
+  script_tag(name:"affected", value:"Mozilla Firefox ESR 31.x before 31.5.2 on
   Windows");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox ESR version
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version
   31.5.2 or later, For updates refer to
   https://www.mozilla.org/en-US/firefox/organizations");
 
@@ -81,7 +81,7 @@ if(!ffVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-if(ffVer =~ "^(31)\.")
+if(ffVer =~ "^31\.")
 {
   if((version_in_range(version:ffVer, test_version:"31.0", test_version2:"31.5.1")))
   {

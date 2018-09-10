@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_multiple_vuln_jul15.nasl 9384 2018-04-06 12:20:19Z cfischer $
+# $Id: gb_ibm_db2_multiple_vuln_jul15.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # IBM DB2 Multiple Vulnerabilities - July15
 #
@@ -28,23 +28,23 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805940");
-  script_version("$Revision: 9384 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-1935", "CVE-2015-1922", "CVE-2015-1883", "CVE-2015-0157",
                 "CVE-2014-8910");
   script_bugtraq_id(75908, 75911, 75946, 75947, 75949);
   script_tag(name:"cvss_base", value:"8.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-29 14:18:25 +0530 (Wed, 29 Jul 2015)");
   script_name("IBM DB2 Multiple Vulnerabilities - July15");
 
-  script_tag(name: "summary" , value:"This host is running IBM DB2 and is
+  script_tag(name:"summary", value:"This host is running IBM DB2 and is
   prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version of IBM DB2
+  script_tag(name:"vuldetect", value:"Get the installed version of IBM DB2
   with the help of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
 
   - An error in the scalar-function implementation.
 
@@ -58,14 +58,14 @@ if(description)
   - An error allowing crafted XML/XSLT function in a SELECT statement to read
     arbitrary text files.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attacker
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to bypass security restrictions, gain access to sensitive data and cause the
   server to terminate abnormally causing a denial of service or potentially
   execute arbitrary code.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"IBM DB2 versions 9.7 through FP10
+  script_tag(name:"affected", value:"IBM DB2 versions 9.7 through FP10
 
   IBM DB2 versions 9.8 through FP5
 
@@ -73,7 +73,7 @@ if(description)
 
   IBM DB2 versions 10.5 through FP5");
 
-  script_tag(name: "solution" , value:"Apply the appropriate fix from below links,
+  script_tag(name:"solution", value:"Apply the appropriate fix from below links,
 
   http://www-01.ibm.com/support/docview.wss?uid=swg21697988
 
@@ -89,11 +89,11 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21697988");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21697987");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21698308");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21959650");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21902661");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21697988");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21697987");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21698308");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21959650");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21902661");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

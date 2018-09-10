@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fortiweb_FG-IR-14-001.nasl 9415 2018-04-10 06:55:50Z cfischer $
+# $Id: gb_fortiweb_FG-IR-14-001.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # FortiOS: FortiWeb Stored Cross-Site Scripting Vulnerability
 #
@@ -29,34 +29,34 @@ CPE = "cpe:/a:fortinet:fortiweb";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105208");
- script_cve_id("CVE-2014-1458");
- script_tag(name:"cvss_base", value:"3.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
- script_version ("$Revision: 9415 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105208");
+  script_cve_id("CVE-2014-1458");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_version("$Revision: 11291 $");
 
- script_name("FortiOS: FortiWeb Stored Cross-Site Scripting Vulnerability");
+  script_name("FortiOS: FortiWeb Stored Cross-Site Scripting Vulnerability");
 
- script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-14-001");
+  script_xref(name:"URL", value:"https://fortiguard.com/psirt/FG-IR-14-001");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "solution" , value:"Upgrade to FortiWeb 5.0.4 or higher.");
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"solution", value:"Upgrade to FortiWeb 5.0.4 or higher.");
 
- script_tag(name: "summary" , value:"Authenticated administrative users can store injected Javascript content into a specific field on the web
+  script_tag(name:"summary", value:"Authenticated administrative users can store injected Javascript content into a specific field on the web
 management interface. This Javascript may be evaluated in the context of another administrative user browsing to the affected web page.");
 
- script_tag(name: "affected" , value:"FortiWeb 5.0.3 and lower.");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"affected", value:"FortiWeb 5.0.3 and lower.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-10 08:55:50 +0200 (Tue, 10 Apr 2018) $");
- script_tag(name:"creation_date", value:"2015-02-11 12:17:13 +0100 (Wed, 11 Feb 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("FortiOS Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_fortiweb_version.nasl");
- script_mandatory_keys("fortiweb/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-02-11 12:17:13 +0100 (Wed, 11 Feb 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("FortiOS Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_fortiweb_version.nasl");
+  script_mandatory_keys("fortiweb/version");
 
  exit(0);
 }

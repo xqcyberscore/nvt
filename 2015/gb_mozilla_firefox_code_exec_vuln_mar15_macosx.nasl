@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_code_exec_vuln_mar15_macosx.nasl 6551 2017-07-06 09:58:21Z teissa $
+# $Id: gb_mozilla_firefox_code_exec_vuln_mar15_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Mozilla Firefox Just-in-time (JIT) Code Execution Vulnerability Mar15 (Mac OS X)
 #
@@ -29,33 +29,32 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805509");
-  script_version("$Revision: 6551 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-0817");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-27 12:46:19 +0530 (Fri, 27 Mar 2015)");
   script_name("Mozilla Firefox Just-in-time (JIT) Code Execution Vulnerability Mar15 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox
   and is prone to code execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to an out-of-bounds access
+  script_tag(name:"insight", value:"The flaw exists due to an out-of-bounds access
   error in asmjs/AsmJSValidate.cpp within the JavaScript Just-in-time Compilation
   (JIT)");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to conduct arbitrary code execution.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox before version 36.0.3 on
+  script_tag(name:"affected", value:"Mozilla Firefox before version 36.0.3 on
   Mac OS X");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 36.0.3
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 36.0.3
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -77,15 +76,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"36.0.3"))
 {
   report = 'Installed version: ' + ffVer + '\n' +

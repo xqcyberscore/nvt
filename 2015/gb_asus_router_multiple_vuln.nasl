@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asus_router_multiple_vuln.nasl 9978 2018-05-28 08:52:24Z cfischer $
+# $Id: gb_asus_router_multiple_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # ASUS Router Multiple Vulnerabilities Aug-2015
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805945");
-  script_version("$Revision: 9978 $");
+  script_version("$Revision: 11291 $");
   script_bugtraq_id(73294);
   script_cve_id("CVE-2015-2676");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-05 13:27:24 +0530 (Wed, 05 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ASUS Router Multiple Vulnerabilities Aug-2015");
@@ -58,15 +58,15 @@ if(description)
   script_tag(name:"affected", value:"ASUS RT-G32 with firmware 2.0.2.6 and
   2.0.3.2, other firmware may also be affected.");
 
-  script_tag(name: "solution" , value:"No known solution was made available
+  script_tag(name:"solution", value:"No known solution was made available
   for at least one year since the disclosure of this vulnerability. Likely none will
   be provided anymore. General solution options are to upgrade to a newer release,
   disable respective features, remove the product or replace the product by another
   one.");
 
-  script_tag(name:"solution_type",value:"WillNotFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Mar/42");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Mar/42");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

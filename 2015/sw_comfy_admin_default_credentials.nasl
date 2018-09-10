@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_comfy_admin_default_credentials.nasl 6183 2017-05-22 09:03:43Z teissa $
+# $Id: sw_comfy_admin_default_credentials.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # ComfortableMexicanSofa CMS Engine Admin Default Credentials
 #
@@ -29,32 +29,32 @@ CPE = "cpe:/a:comfy:comfy";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.111072");
- script_version("$Revision: 6183 $");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_name("ComfortableMexicanSofa CMS Engine Admin Default Credentials");
- script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
- script_tag(name:"creation_date", value:"2015-12-15 19:00:00 +0100 (Tue, 15 Dec 2015)");
- script_category(ACT_ATTACK);
- script_family("Default Accounts");
- script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
- script_dependencies("find_service.nasl");
- script_require_ports("Services/www", 3000);
- script_require_keys("comfy/installed");
+  script_oid("1.3.6.1.4.1.25623.1.0.111072");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_name("ComfortableMexicanSofa CMS Engine Admin Default Credentials");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-12-15 19:00:00 +0100 (Tue, 15 Dec 2015)");
+  script_category(ACT_ATTACK);
+  script_family("Default Accounts");
+  script_copyright("This script is Copyright (C) 2015 SCHUTZWERK GmbH");
+  script_dependencies("find_service.nasl");
+  script_require_ports("Services/www", 3000);
+  script_require_keys("comfy/installed");
 
- script_tag(name: "summary" , value: 'The remote ComfortableMexicanSofa CMS Engine
+  script_tag(name:"summary", value: 'The remote ComfortableMexicanSofa CMS Engine
  is prone to a default account authentication bypass vulnerability.');
 
- script_tag(name: "impact" , value: 'This issue may be exploited by a remote attacker to gain
+  script_tag(name:"impact", value: 'This issue may be exploited by a remote attacker to gain
  access to sensitive information.');
 
- script_tag(name: "vuldetect" , value: 'Try to login with default credentials.');
- script_tag(name : "insight" , value : 'It was possible to login with default credentials "username/password"');
- script_tag(name: "solution" , value: 'Change the password.');
+  script_tag(name:"vuldetect", value: 'Try to login with default credentials.');
+  script_tag(name:"insight", value : 'It was possible to login with default credentials "username/password"');
+  script_tag(name:"solution", value: 'Change the password.');
 
- script_tag(name : "solution_type", value : "Workaround");
- script_tag(name: "qod_type", value: "remote_app");
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"qod_type", value:"remote_app");
  exit(0);
 }
 
@@ -63,10 +63,8 @@ include("http_keepalive.inc");
 include("host_details.inc");
 include("misc_func.inc");
 
-## Get HTTP Port
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 
-## Get Location
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";

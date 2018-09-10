@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipfire_2_17_core_91.nasl 6497 2017-06-30 09:58:54Z teissa $
+# $Id: gb_ipfire_2_17_core_91.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # IPFire 2.17 - Core Update 91
 #
@@ -27,18 +27,18 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105308");
- script_cve_id("CVE-2015-1788","CVE-2015-1789","CVE-2015-1790","CVE-2015-1792","CVE-2015-1791","CVE-2014-8176","CVE-2015-3991","CVE-2015-4171");
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6497 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105308");
+  script_cve_id("CVE-2015-1788", "CVE-2015-1789", "CVE-2015-1790", "CVE-2015-1792", "CVE-2015-1791", "CVE-2014-8176", "CVE-2015-3991", "CVE-2015-4171");
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11291 $");
 
- script_name("IPFire 2.17 - Core Update 91");
+  script_name("IPFire 2.17 - Core Update 91");
 
- script_xref(name:"URL", value:"http://www.ipfire.org/news/ipfire-2-17-core-update-91-released");
+  script_xref(name:"URL", value:"http://www.ipfire.org/news/ipfire-2-17-core-update-91-released");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "insight" , value:"The followinig vulnerabilities are fixed with IPFire 2.17 - Core Update 91:
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"insight", value:"The followinig vulnerabilities are fixed with IPFire 2.17 - Core Update 91:
 OpenSSL security vulnerabilities:
 
 There are six security vulnerabilities that are fixed in version 1.0.2b of openssl. This version contained an ABI
@@ -54,19 +54,19 @@ potential code execution was possible with specially crafted IKE messages.
 
 IPFire ships now version 5.3.2 which fixes an second vulnerability (CVE-2015-4171).");
 
- script_tag(name: "solution" , value:"Update to IPFire 2.17 - Core Update 91");
- script_tag(name: "summary" , value:"IPFire 2.17 - Core Update 91 fixes multiple security vulnerabilities.");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution", value:"Update to IPFire 2.17 - Core Update 91");
+  script_tag(name:"summary", value:"IPFire 2.17 - Core Update 91 fixes multiple security vulnerabilities.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-06-30 12:19:16 +0200 (Tue, 30 Jun 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ipfire/system-release");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-06-30 12:19:16 +0200 (Tue, 30 Jun 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ipfire/system-release");
 
  exit(0);
 }

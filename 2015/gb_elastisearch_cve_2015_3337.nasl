@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elastisearch_cve_2015_3337.nasl 9978 2018-05-28 08:52:24Z cfischer $
+# $Id: gb_elastisearch_cve_2015_3337.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Elasticsearch Directory Traversal Vulnerability
 #
@@ -29,34 +29,34 @@ CPE = "cpe:/a:elasticsearch:elasticsearch";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105265");
- script_cve_id("CVE-2015-3337");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 9978 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105265");
+  script_cve_id("CVE-2015-3337");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11291 $");
 
- script_name("Elasticsearch Directory Traversal Vulnerability");
+  script_name("Elasticsearch Directory Traversal Vulnerability");
 
- script_tag(name: "vuldetect" , value:"Send a special crafted HTTP GET request and check the response");
+  script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response");
 
- script_tag(name: "insight" , value:"Directory traversal vulnerability in Elasticsearch before 1.4.5 and 1.5.x before 1.5.2,
+  script_tag(name:"insight", value:"Directory traversal vulnerability in Elasticsearch before 1.4.5 and 1.5.x before 1.5.2,
 when a site plugin is enabled, allows remote attackers to read arbitrary files.");
 
- script_tag(name: "solution" , value:"Updates are available.");
- script_tag(name: "summary" , value:"Elasticsearch is prone to a directory traversal vulnerability.");
- script_tag(name: "affected" , value:"Elasticsearch before 1.4.5 and 1.5.x before 1.5.2");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution", value:"Updates are available.");
+  script_tag(name:"summary", value:"Elasticsearch is prone to a directory traversal vulnerability.");
+  script_tag(name:"affected", value:"Elasticsearch before 1.4.5 and 1.5.x before 1.5.2");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"exploit");
+  script_tag(name:"qod_type", value:"exploit");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
- script_tag(name:"creation_date", value:"2015-05-05 15:11:20 +0200 (Tue, 05 May 2015)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_elastsearch_detect.nasl", "os_detection.nasl");
- script_require_ports("Services/www", 9200);
- script_mandatory_keys("elasticsearch/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-05-05 15:11:20 +0200 (Tue, 05 May 2015)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_elastsearch_detect.nasl", "os_detection.nasl");
+  script_require_ports("Services/www", 9200);
+  script_mandatory_keys("elasticsearch/installed");
 
  exit(0);
 }

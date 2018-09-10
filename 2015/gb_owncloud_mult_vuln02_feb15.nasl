@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln02_feb15.nasl 9384 2018-04-06 12:20:19Z cfischer $
+# $Id: gb_owncloud_mult_vuln02_feb15.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # ownCloud Multiple Vulnerabilities -02 Feb15
 #
@@ -29,22 +29,21 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805280");
-  script_version("$Revision: 9384 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2014-9046", "CVE-2014-9043", "CVE-2014-9042", "CVE-2014-9041");
   script_bugtraq_id(71383, 71389, 71373, 71369);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-19 15:54:16 +0530 (Thu, 19 Feb 2015)");
   script_name("ownCloud Multiple Vulnerabilities -02 Feb15");
 
-  script_tag(name: "summary" , value:"The host is installed with ownCloud and
+  script_tag(name:"summary", value:"The host is installed with ownCloud and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - An error in the 'OC_Util::getUrlContent' function that is due to it allows
   redirects from other protocols (such as file://)
@@ -59,7 +58,7 @@ if(description)
   multiple steps, explicit confirmation, or a unique token when performing
   certain sensitive actions.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   remote attackers to perform a cross-site request forgery attack, execute
   arbitrary script code in a user's browser session within the trust
   relationship between their browser and the server, bypass authentication
@@ -67,20 +66,20 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"ownCloud Server 5.x before 5.0.18, 6.x
+  script_tag(name:"affected", value:"ownCloud Server 5.x before 5.0.18, 6.x
   before 6.0.6, and 7.x before 7.0.3");
 
-  script_tag(name: "solution" , value:"Upgrade to ownCloud Server 5.0.18 or 6.0.6
+  script_tag(name:"solution", value:"Upgrade to ownCloud Server 5.0.18 or 6.0.6
   or 7.0.3 or later. For updates refer to http://owncloud.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "https://owncloud.org/security/advisory/?id=oc-sa-2014-027");
-  script_xref(name : "URL" , value : "https://owncloud.org/security/advisory/?id=oc-sa-2014-028");
-  script_xref(name : "URL" , value : "https://owncloud.org/security/advisory/?id=oc-sa-2014-020");
-  script_xref(name : "URL" , value : "https://owncloud.org/security/advisory/?id=oc-sa-2014-023");
+  script_xref(name:"URL", value:"https://owncloud.org/security/advisory/?id=oc-sa-2014-027");
+  script_xref(name:"URL", value:"https://owncloud.org/security/advisory/?id=oc-sa-2014-028");
+  script_xref(name:"URL", value:"https://owncloud.org/security/advisory/?id=oc-sa-2014-020");
+  script_xref(name:"URL", value:"https://owncloud.org/security/advisory/?id=oc-sa-2014-023");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

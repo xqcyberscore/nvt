@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_mult_vuln_feb15.nasl 9384 2018-04-06 12:20:19Z cfischer $
+# $Id: gb_mantisbt_mult_vuln_feb15.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # MantisBT Multiple Vulnerabilities - Feb15
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805267");
-  script_version("$Revision: 9384 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2014-9573", "CVE-2014-9572", "CVE-2014-9571", "CVE-2014-9624");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-03 17:35:43 +0530 (Tue, 03 Feb 2015)");
   script_name("MantisBT Multiple Vulnerabilities - Feb15");
 
   script_tag(name:"summary", value:"This host is installed with MantisBT
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with
-  the help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 

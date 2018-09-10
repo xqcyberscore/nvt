@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netsweeper_mult_vuln_aug15.nasl 8601 2018-01-31 12:07:42Z cfischer $
+# $Id: gb_netsweeper_mult_vuln_aug15.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Netsweeper Multiple Vulnerabilities - Aug15
 #
@@ -28,16 +28,16 @@ CPE = "cpe:/a:netsweeper:netsweeper";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805962");
-  script_version("$Revision: 8601 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2014-9612", "CVE-2014-9605", "CVE-2014-9610", "CVE-2014-9619");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-31 13:07:42 +0100 (Wed, 31 Jan 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-25 14:52:59 +0530 (Tue, 25 Aug 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Netsweeper Multiple Vulnerabilities - Aug15");
 
-  script_tag(name: "summary" , value:"The host is running Netsweeper and is prone
+  script_tag(name:"summary", value:"The host is running Netsweeper and is prone
   to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send a crafted request via HTTP GET and
@@ -59,15 +59,15 @@ if(description)
   script_tag(name:"affected", value:"Netsweeper before versions 3.1.10, 4.0.9 and
   4.1.2.");
 
-  script_tag(name: "solution" , value:"Upgrade to Netsweeper version 3.1.10,
+  script_tag(name:"solution", value:"Upgrade to Netsweeper version 3.1.10,
   4.0.9 or 4.1.2 or later. For updates refer to http://www.netsweeper.com/");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37927");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37928");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37929");
-  script_xref(name : "URL" , value : "https://www.exploit-db.com/exploits/37932");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/37927");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/37928");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/37929");
+  script_xref(name:"URL", value:"https://www.exploit-db.com/exploits/37932");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

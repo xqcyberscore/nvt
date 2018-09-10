@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_pcapng_dos_vuln_nov15_macosx.nasl 6486 2017-06-29 09:59:06Z teissa $
+# $Id: gb_wireshark_pcapng_dos_vuln_nov15_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Wireshark Pcapng File Parser Denial-of-Service Vulnerability Nov15 (Mac OS X)
 #
@@ -29,42 +29,41 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806704");
-  script_version("$Revision: 6486 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-7830");
   script_bugtraq_id(77101);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-19 12:02:31 +0530 (Thu, 19 Nov 2015)");
   script_name("Wireshark Pcapng File Parser Denial-of-Service Vulnerability Nov15 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Wireshark
+  script_tag(name:"summary", value:"This host is installed with Wireshark
   and is prone to denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The flaw is due to an error in
+  script_tag(name:"insight", value:"The flaw is due to an error in
   'pcapng_read_if_descr_block' function in 'wiretap/pcapng.c' script within the
   pcapng parser which uses too many levels of pointer indirection.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial of service via a crafted packet.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value: "Wireshark version 1.12.x before 1.12.8
+  script_tag(name:"affected", value:"Wireshark version 1.12.x before 1.12.8
   on Mac OS X");
 
-  script_tag(name: "solution" , value: "Upgrade to Wireshark version 1.12.8 or
+  script_tag(name:"solution", value:"Upgrade to Wireshark version 1.12.8 or
   later, For updates refer to https://www.wireshark.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "https://www.wireshark.org/security/wnpa-sec-2015-30.html");
-  script_xref(name : "URL" , value : "https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=11455");
+  script_xref(name:"URL", value:"https://www.wireshark.org/security/wnpa-sec-2015-30.html");
+  script_xref(name:"URL", value:"https://bugs.wireshark.org/bugzilla/show_bug.cgi?id=11455");
 
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
@@ -78,15 +77,10 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-wirversion = "";
-
-## Get the version
 if(!wirversion = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check the vulnerable version is 1.12.x before 1.12.8
 if(version_in_range(version:wirversion, test_version:"1.12.0", test_version2:"1.12.7"))
 {
   report = 'Installed Version: ' + wirversion + '\n' +

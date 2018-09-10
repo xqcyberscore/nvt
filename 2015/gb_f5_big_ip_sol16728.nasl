@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol16728.nasl 6207 2017-05-24 09:04:07Z teissa $
+# $Id: gb_f5_big_ip_sol16728.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # F5 BIG-IP - iCall privilege escalation vulnerability
 #
@@ -29,34 +29,35 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105347");
- script_cve_id("CVE-2015-3628");
- script_tag(name:"cvss_base", value:"9.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 6207 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105347");
+  script_cve_id("CVE-2015-3628");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11291 $");
 
- script_name("F5 BIG-IP - iCall privilege escalation vulnerability");
+  script_name("F5 BIG-IP - iCall privilege escalation vulnerability");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/16000/700/sol16728.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/16000/700/sol16728.html");
 
- script_tag(name: "impact" , value:"An authenticated user with limited access (Resource Administration) may be able to escalate privileges and gain administrative access.");
+  script_tag(name:"impact", value:"An authenticated user with limited access (Resource Administration) may be able to escalate privileges and gain administrative access.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"An authenticated user, with Resource Administrator role permissions, is able to use iCall scripts and associated handlers to create and modify user account properties.");
+  script_tag(name:"insight", value:"An authenticated user, with Resource Administrator role permissions, is able to use iCall scripts and associated handlers to create and modify user account properties.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"F5 BIG-IP is prone to a privilege escalation vulnerability");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"F5 BIG-IP is prone to a privilege escalation vulnerability");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
- script_tag(name:"creation_date", value:"2015-09-07 16:56:39 +0200 (Mon, 07 Sep 2015)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-09-07 16:56:39 +0200 (Mon, 07 Sep 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

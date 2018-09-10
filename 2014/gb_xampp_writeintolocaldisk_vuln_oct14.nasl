@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xampp_writeintolocaldisk_vuln_oct14.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_xampp_writeintolocaldisk_vuln_oct14.nasl 11286 2018-09-07 09:44:00Z cfischer $
 #
 # XAMPP Local Write Access Vulnerability - Oct14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apachefriends:xampp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804774");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11286 $");
   script_cve_id("CVE-2013-2586");
   script_bugtraq_id(62665);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:44:00 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-10 11:43:07 +0530 (Fri, 10 Oct 2014)");
 
   script_name("XAMPP Local Write Access Vulnerability - Oct14");
@@ -75,7 +75,6 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
@@ -84,9 +83,8 @@ if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-if(!dir = get_app_location(cpe:CPE, port:http_port))
-{
-  exit(-1);
+if(!dir = get_app_location(cpe:CPE, port:http_port)){
+  exit(0);
 }
 
 ## Before Updating lang.tmp get the content in it
@@ -107,12 +105,14 @@ if(http_vuln_check(port:http_port, url:url,
     if(http_vuln_check(port:http_port, url:string(dir, "/lang.php?", langtmp),
                  check_header:FALSE, pattern:"HTTP.*302 Found"))
     {
-      if(http_vuln_check(port:http_port, url:string(dir, "/lang.tmp"),
+      url = string(dir, "/lang.tmp");
+      if(http_vuln_check(port:http_port, url:url,
                    check_header:TRUE, pattern:langtmp,
                    check_nomatch:"WriteIntoLocalDisk"))
 
       {
-        security_message(http_port);
+        report = report_vuln_url(port:http_port, url:url);
+        security_message(port:http_port, data:report);
         exit(0);
       }
     }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_indusoft_web_studio_ntwebserver_dir_trav_vuln.nasl 6443 2017-06-27 10:00:22Z teissa $
+# $Id: gb_indusoft_web_studio_ntwebserver_dir_trav_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # InduSoft Web Studio 'NTWebServer' Directory Traversal Vulnerability (Windows)
 #
@@ -29,34 +29,33 @@ CPE = "cpe:/a:schneider_electric:indusoft_web_studio";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806642");
-  script_version("$Revision: 6443 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2014-0780");
   script_bugtraq_id(67056);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-27 12:00:22 +0200 (Tue, 27 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-07 13:44:29 +0530 (Mon, 07 Dec 2015)");
   script_name("InduSoft Web Studio 'NTWebServer' Directory Traversal Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value: "This host is installed with InduSoft Web
+  script_tag(name:"summary", value:"This host is installed with InduSoft Web
   Studio and is prone to directory traversal vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the
-  help  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The flaw exists due to an error in the
+  script_tag(name:"insight", value:"The flaw exists due to an error in the
   'NTWebServer' (test web server installed with InduSoft Web Studio).");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow
+  script_tag(name:"impact", value:"Successful exploitation will allow
   an attacker to read files outside the web root and possibly perform arbitrary
   code execution.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"InduSoft Web Studio version 7.1
+  script_tag(name:"affected", value:"InduSoft Web Studio version 7.1
   before SP2 Patch 4 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to InduSoft Web Studio version
+  script_tag(name:"solution", value:"Upgrade to InduSoft Web Studio version
   7.1 SP2 Patch 4 or later. For updates refer to
   http://www.indusoft.com/");
 
@@ -64,7 +63,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "https://ics-cert.us-cert.gov/advisories/ICSA-14-107-02");
+  script_xref(name:"URL", value:"https://ics-cert.us-cert.gov/advisories/ICSA-14-107-02");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -78,15 +77,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-studioVer = "";
-
-## Get version
 if(!studioVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 ## Version 7.1 SP2 Patch 4 == 71.2.4
 
 if (studioVer =~ "^(71\.)")

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_router_synful_knock_vuln.nasl 6183 2017-05-22 09:03:43Z teissa $
+# $Id: gb_cisco_router_synful_knock_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Cisco Router SYNful Knock Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805740");
-  script_version("$Revision: 6183 $");
+  script_version("$Revision: 11291 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-23 12:30:00 +0530 (Wed, 23 Sep 2015)");
   script_name("Cisco Router SYNful Knock Vulnerability");
   script_category(ACT_ATTACK);
@@ -58,16 +58,13 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name:"affected", value:"
-  Cisco 1841
+  script_tag(name:"affected", value:"Cisco 1841
   Cisco 2811
   Cisco 3825");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"exploit");
@@ -84,7 +81,6 @@ saddr = this_host();
 daddr = get_host_ip();
 sport = rand() % (65536 - 1024) + 1024;
 
-# Constructing IP Packet
 ip = forge_ip_packet(
      ip_hl    : 5,
      ip_v     : 4,
@@ -97,7 +93,6 @@ ip = forge_ip_packet(
      ip_src   : saddr,
      ip_dst   : daddr);
 
-## construct the tcp request
 tcppacket = forge_tcp_packet(
             ip : ip,
             th_sport : sport,
@@ -109,7 +104,6 @@ tcppacket = forge_tcp_packet(
             th_win   : 1480,
             th_urp   : 0);
 
-## confirm the vulnerability
 if(tcppacket && hexstr(tcppacket) =~ "020405b40101040201030305")
 {
   security_message(port:dport);

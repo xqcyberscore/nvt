@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: smb_enum_services.nasl 11018 2018-08-17 07:13:05Z cfischer $
+# $Id: smb_enum_services.nasl 11285 2018-09-07 09:40:40Z cfischer $
 #
 # SMB Enumerate Services
 #
@@ -8,7 +8,7 @@
 #
 # Developed by LSS Security Team <http://security.lss.hr>
 #
-# Copyright(C) 2010 LSS <http://www.lss.hr>
+# Copyright (C) 2010 LSS <http://www.lss.hr>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102016");
-  script_version("$Revision: 11018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:13:05 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11285 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:40:40 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-02-10 12:17:39 +0100 (Wed, 10 Feb 2010)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");

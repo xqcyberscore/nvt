@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pcman_ftp_server_mkd_command_bof_vuln.nasl 9552 2018-04-20 12:17:18Z cfischer $
+# $Id: gb_pcman_ftp_server_mkd_command_bof_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # PCMAN FTP Server MKD Command Buffer Overflow vulnerability
 #
@@ -27,10 +27,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805050");
-  script_version("$Revision: 9552 $");
+  script_version("$Revision: 11291 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-20 14:17:18 +0200 (Fri, 20 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-25 12:32:52 +0530 (Wed, 25 Feb 2015)");
   script_name("PCMAN FTP Server MKD Command Buffer Overflow vulnerability");
 
@@ -52,17 +52,15 @@ if (description)
   script_tag(name:"affected", value:"PCMAN FTP version 2.0.7, Other versions may
   also be affected.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36078");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/36078");
 
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_multiple_cisco_default_ssh_host_key_75418.nasl 6505 2017-07-03 09:58:27Z teissa $
+# $Id: gb_multiple_cisco_default_ssh_host_key_75418.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Multiple Cisco Products Default SSH Host Keys Security Bypass Vulnerability
 #
@@ -27,43 +27,42 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105319");
- script_bugtraq_id(75418);
- script_cve_id("CVE-2015-4217");
- script_tag(name:"cvss_base", value:"4.3");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 6505 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105319");
+  script_bugtraq_id(75418);
+  script_cve_id("CVE-2015-4217");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11291 $");
 
- script_name("Multiple Cisco Products Default SSH Host Keys Security Bypass Vulnerability");
+  script_name("Multiple Cisco Products Default SSH Host Keys Security Bypass Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/75418");
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150625-ironport");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/75418");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150625-ironport");
 
- script_tag(name: "impact" , value:"An attacker can exploit this issue to bypass security restrictions and
+  script_tag(name:"impact", value:"An attacker can exploit this issue to bypass security restrictions and
 perform unauthorized actions. This may aid in further attacks.");
 
- script_tag(name: "vuldetect" , value:"Check the remote ssh host keys.");
+  script_tag(name:"vuldetect", value:"Check the remote ssh host keys.");
 
- script_tag(name: "insight" , value:"The vulnerability is due to the presence of default SSH host keys that are shared across all the installations of WSAv,
+  script_tag(name:"insight", value:"The vulnerability is due to the presence of default SSH host keys that are shared across all the installations of WSAv,
 ESAv, and SMAv. An attacker could exploit this vulnerability by obtaining one of the SSH private keys and using it to impersonate or decrypt communication
 between any WSAv, ESAv, or SMAv. An exploit could allow the attacker to decrypt and impersonate secure communication between any virtual content security appliances.");
 
- script_tag(name: "solution" , value:"Updates are available. Please see the vendor advisory for more information.
-");
- script_tag(name: "summary" , value:"Multiple Cisco products are prone to a security-bypass vulnerability.");
+  script_tag(name:"solution", value:"Updates are available. Please see the vendor advisory for more information.");
+  script_tag(name:"summary", value:"Multiple Cisco products are prone to a security-bypass vulnerability.");
 
- script_tag(name: "affected" , value:"Cisco Web Security Virtual Appliance (WSAv), Cisco Email Security Virtual Appliance (ESAv), and Cisco Security Management Virtual Appliance (SMAv) are affected.");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"affected", value:"Cisco Web Security Virtual Appliance (WSAv), Cisco Email Security Virtual Appliance (ESAv), and Cisco Security Management Virtual Appliance (SMAv) are affected.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-03 11:58:27 +0200 (Mon, 03 Jul 2017) $");
- script_tag(name:"creation_date", value:"2015-08-14 13:28:44 +0200 (Fri, 14 Aug 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("ssh_proto_version.nasl");
- script_require_ports("Services/ssh", 22);
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-08-14 13:28:44 +0200 (Fri, 14 Aug 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("ssh_proto_version.nasl");
+  script_require_ports("Services/ssh", 22);
  exit(0);
 }
 

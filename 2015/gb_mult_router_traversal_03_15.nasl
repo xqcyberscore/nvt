@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mult_router_traversal_03_15.nasl 6600 2017-07-07 09:58:31Z teissa $
+# $Id: gb_mult_router_traversal_03_15.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Multiple ADSL Routers Directory Traversal Vulnerability
 #
@@ -27,25 +27,25 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105242");
- script_version ("$Revision: 6600 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_cve_id("CVE-2015-7252", "CVE-2015-7251", "CVE-2015-7250", "CVE-2015-7249",
+  script_oid("1.3.6.1.4.1.25623.1.0.105242");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_cve_id("CVE-2015-7252", "CVE-2015-7251", "CVE-2015-7250", "CVE-2015-7249",
                "CVE-2015-7248");
- script_name("Multiple ADSL Routers Directory Traversal Vulnerability");
- script_xref(name:"URL", value:"http://blog.norsecorp.com/2015/03/20/over-700000-adsl-routers-shipped-with-directory-traversal-vulnerability/");
+  script_name("Multiple ADSL Routers Directory Traversal Vulnerability");
+  script_xref(name:"URL", value:"http://blog.norsecorp.com/2015/03/20/over-700000-adsl-routers-shipped-with-directory-traversal-vulnerability/");
 
- script_tag(name: "impact" , value:"A remote attacker could exploit the vulnerability to access arbitrary files that contain
+  script_tag(name:"impact", value:"A remote attacker could exploit the vulnerability to access arbitrary files that contain
 sensitive information. Information harvested may aid in launching further attacks.");
 
- script_tag(name: "vuldetect" , value:"Send a special crafted HTTP GET request and check the response.");
- script_tag(name: "solution" , value:"Ask the vendor for an update");
-
- script_tag(name: "summary" , value:"Multiple ADSL routers are prone to a directory-traversal vulnerability
+  script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"summary", value:"Multiple ADSL routers are prone to a directory-traversal vulnerability
 because they fail to properly sanitize user-supplied input.");
 
- script_tag(name: "affected" , value:"At least the following routeri models are vulnerable:
+  script_tag(name:"affected", value:"At least the following routeri models are vulnerable:
 ZTE H108N
 ZTE H108NV2.1
 D-Link 2750E
@@ -59,17 +59,16 @@ Planet ADN-4101
 Digisol DG-BG4011N
 Observa Telecom BHS_RTA_R1A");
 
- script_tag(name:"solution_type", value:"NoneAvailable");
- script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
- script_tag(name:"creation_date", value:"2015-03-23 10:41:22 +0100 (Mon, 23 Mar 2015)");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 8080);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-03-23 10:41:22 +0100 (Mon, 23 Mar 2015)");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 8080);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
  exit(0);
 }

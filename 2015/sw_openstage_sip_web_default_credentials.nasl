@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_openstage_sip_web_default_credentials.nasl 6404 2017-06-22 10:00:06Z teissa $
+# $Id: sw_openstage_sip_web_default_credentials.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # OpenStage SIP Webinterface Default Password
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111058");
-  script_version("$Revision: 6404 $");
+  script_version("$Revision: 11291 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("OpenStage SIP Webinterface Default Password");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-24 14:00:00 +0100 (Tue, 24 Nov 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -41,21 +41,21 @@ if (description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name: "summary" , value: 'The remote OpenStage SIP Webinterface is prone to a
+  script_tag(name:"summary", value: 'The remote OpenStage SIP Webinterface is prone to a
   default account authentication bypass vulnerability.');
 
-  script_tag(name: "impact" , value: 'This issue may be exploited by a remote attacker to gain
+  script_tag(name:"impact", value: 'This issue may be exploited by a remote attacker to gain
   access to sensitive information.');
 
-  script_tag(name: "vuldetect" , value: 'Try to login with a default password.');
-  script_tag(name : "insight" , value : 'It was possible to login with the Admin user and the default
+  script_tag(name:"vuldetect", value: 'Try to login with a default password.');
+  script_tag(name:"insight", value : 'It was possible to login with the Admin user and the default
   password "123456".');
-  script_tag(name: "solution" , value: 'Change the password.');
+  script_tag(name:"solution", value: 'Change the password.');
 
   script_xref(name:"URL", value:"http://wiki.unify.com/wiki/OpenStage_SIP_FAQ#What_are_the_default_passwords.3F");
 
-  script_tag(name : "solution_type", value : "Workaround");
-  script_tag(name: "qod_type", value: "remote_app");
+  script_tag(name:"solution_type", value:"Workaround");
+  script_tag(name:"qod_type", value:"remote_app");
   exit(0);
 }
 

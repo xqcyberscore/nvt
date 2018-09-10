@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_esa_sa_20151104_esa2.nasl 6551 2017-07-06 09:58:21Z teissa $
+# $Id: gb_cisco_esa_sa_20151104_esa2.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
-# Cisco Email Security Appliance Email Scanner Denial of Service Vulnerability 
+# Cisco Email Security Appliance Email Scanner Denial of Service Vulnerability
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -29,36 +29,36 @@ CPE = "cpe:/h:cisco:email_security_appliance";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105445");
- script_cve_id("CVE-2015-6291");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 6551 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105445");
+  script_cve_id("CVE-2015-6291");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11291 $");
 
- script_name("Cisco Email Security Appliance Email Scanner Denial of Service Vulnerability");
+  script_name("Cisco Email Security Appliance Email Scanner Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151104-esa2");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151104-esa2");
 
- script_tag(name: "vuldetect" , value:"Check the version");
+  script_tag(name:"vuldetect", value:"Check the version");
 
- script_tag(name: "insight" , value:"The vulnerability is due to improper input validation when an email attachment contains corrupted fields and is filtered by the ESA. An attacker could exploit this vulnerability by sending a crafted email with an attachment to the ESA. A successful exploit could allow the attacker to cause a DoS condition. While the attachment is being filtered, memory is consumed at at high rate until the filtering process restarts. When the process restarts, it will resume processing the same malformed attachment and the DoS condition will continue.
+  script_tag(name:"insight", value:"The vulnerability is due to improper input validation when an email attachment contains corrupted fields and is filtered by the ESA. An attacker could exploit this vulnerability by sending a crafted email with an attachment to the ESA. A successful exploit could allow the attacker to cause a DoS condition. While the attachment is being filtered, memory is consumed at at high rate until the filtering process restarts. When the process restarts, it will resume processing the same malformed attachment and the DoS condition will continue.
 Cisco has released software updates that address this vulnerability. There are no workarounds that mitigate this vulnerability.");
 
- script_tag(name: "solution" , value:"See Vendor advisory.");
- script_tag(name: "summary" , value:"A vulnerability in the email message filtering feature of Cisco AsyncOS for Cisco Email Security Appliance (ESA) could allow an unauthenticated, remote attacker to cause an ESA device to become unavailable due to a denial of service (DoS) condition.");
+  script_tag(name:"solution", value:"See Vendor advisory.");
+  script_tag(name:"summary", value:"A vulnerability in the email message filtering feature of Cisco AsyncOS for Cisco Email Security Appliance (ESA) could allow an unauthenticated, remote attacker to cause an ESA device to become unavailable due to a denial of service (DoS) condition.");
 
- script_tag(name: "affected" , value:"See Vendor advisory.");
+  script_tag(name:"affected", value:"See Vendor advisory.");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-06 11:58:21 +0200 (Thu, 06 Jul 2017) $");
- script_tag(name:"creation_date", value:"2015-11-10 11:02:51 +0100 (Tue, 10 Nov 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_esa_version.nasl");
- script_mandatory_keys("cisco_esa/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-11-10 11:02:51 +0100 (Tue, 10 Nov 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_esa_version.nasl");
+  script_mandatory_keys("cisco_esa/installed");
 
  exit(0);
 }

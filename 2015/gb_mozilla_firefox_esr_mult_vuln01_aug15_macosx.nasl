@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_aug15_macosx.nasl 6415 2017-06-23 09:59:48Z teissa $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_aug15_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities - Aug15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806023");
-  script_version("$Revision: 6415 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-4473", "CVE-2015-4475", "CVE-2015-4478", "CVE-2015-4479",
                 "CVE-2015-4480", "CVE-2015-4482", "CVE-2015-4484", "CVE-2015-4485",
                 "CVE-2015-4486", "CVE-2015-4487", "CVE-2015-4488", "CVE-2015-4489",
@@ -37,17 +37,16 @@ if(description)
   script_bugtraq_id(76294, 76297);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-23 11:59:48 +0200 (Fri, 23 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-19 11:54:33 +0530 (Wed, 19 Aug 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities - Aug15 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox ESR and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
   - The 'mozilla::AudioSink' function in Mozilla Firefox mishandles inconsistent
     sample formats within MP3 audio data.
   - Not imposing certain ECMAScript 6 requirements on JavaScript object
@@ -67,16 +66,16 @@ if(description)
     function in libstagefright.
   - Multiple unspecified vulnerabilities.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow local
+  script_tag(name:"impact", value:"Successful exploitation will allow local
   and remote attackers to cause a denial of service or possibly execute arbitrary
   code, gain privileges and some unspecified impacts.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox ESR version 38.x before
+  script_tag(name:"affected", value:"Mozilla Firefox ESR version 38.x before
   38.2 on Mac OS X");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox ESR version
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox ESR version
   38.2 or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -98,16 +97,11 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
 
-# Check for vulnerable version
-if(ffVer =~ "^(38)\.")
+if(ffVer =~ "^38\.")
 {
   if(version_is_less(version:ffVer, test_version:"38.2"))
   {

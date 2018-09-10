@@ -29,41 +29,40 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805378");
-  script_version("$Revision: 6229 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-3633", "CVE-2015-3632");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-05 10:41:19 +0530 (Tue, 05 May 2015)");
   script_name("Foxit PhantomPDF Multiple Denial of Service Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with Foxit PhantomPDF
+  script_tag(name:"summary", value:"The host is installed with Foxit PhantomPDF
   and is prone to Multiple Denial of Service Vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to
+  script_tag(name:"insight", value:"Multiple flaws are due to
   user-supplied input is not properly validated
   - when handling invalid streams and
   - when performing digital signature verification.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause multiple denial-of-service attacks.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Foxit PhantomPDF version 7.1.0.306,
+  script_tag(name:"affected", value:"Foxit PhantomPDF version 7.1.0.306,
   7.1.2.311 and 7.1.3.320.");
 
-  script_tag(name: "solution" , value:"Upgrade to Foxit PhantomPDF version
+  script_tag(name:"solution", value:"Upgrade to Foxit PhantomPDF version
   7.1.5 or later, For updates refer to http://www.foxitsoftware.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "http://www.foxitsoftware.com/support/security_bulletins.php#FRD-27");
+  script_xref(name:"URL", value:"http://www.foxitsoftware.com/support/security_bulletins.php#FRD-27");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -77,15 +76,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-foxitVer = "";
-
-## Get version
 if(!foxitVer = get_app_version(cpe:CPE)){
   exit(-1);
 }
 
-## Grep for vulnerable version
 if(version_is_equal(version:foxitVer, test_version:"7.1.0.306") ||
    version_is_equal(version:foxitVer, test_version:"7.1.2.311") ||
    version_is_equal(version:foxitVer, test_version:"7.1.3.320"))

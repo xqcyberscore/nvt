@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_antivirus_plus_mult_vuln_may18_win.nasl 11250 2018-09-06 03:05:29Z ckuersteiner $
+# $Id: gb_trendmicro_antivirus_plus_mult_vuln_may18_win.nasl 11289 2018-09-07 12:25:14Z santu $
 #
 # Trend Micro Antivirus Plus Multiple Vulnerabilities May18 (Windows)
 #
@@ -29,12 +29,13 @@ CPE = "cpe:/a:trendmicro:antivirus\+:";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813334");
-  script_version("$Revision: 11250 $");
+  script_version("$Revision: 11289 $");
   script_cve_id("CVE-2018-6232", "CVE-2018-6233", "CVE-2018-6234", "CVE-2018-6235",
-                "CVE-2018-6236", "CVE-2018-3608");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 05:05:29 +0200 (Thu, 06 Sep 2018) $");
+                "CVE-2018-6236", "CVE-2018-3608", "CVE-2018-10513", "CVE-2018-10514",
+                "CVE-2018-15363");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 14:25:14 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-05-08 13:30:09 +0530 (Tue, 08 May 2018)");
   ## Patched version is not available from registry or anywhere, so it can result in FP for 12.0 patched versions
   script_tag(name:"qod", value:"30");
@@ -43,7 +44,8 @@ if(description)
   script_tag(name:"summary", value:"This host is running Trend Micro Antivirus Plus
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present
+  on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
@@ -55,7 +57,10 @@ if(description)
 
   - An unknown error exist with Time-Of-Check/Time-Of-Use.
 
-  - User-Mode Hooking (UMH) driver allowing to create a specially crafted packet.");
+  - User-Mode Hooking (UMH) driver allowing to create a specially crafted packet.
+
+  - Processing of request ID 0x2002 for IDAMSPMASTER in the service process
+    coreServiceShell.exe");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to escalate privileges, disclose sensitive information and inject malicious
@@ -73,6 +78,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_xref(name:"URL", value:"https://esupport.trendmicro.com/en-us/home/pages/technical-support/1119591.aspx");
   script_xref(name:"URL", value:"https://esupport.trendmicro.com/en-US/home/pages/technical-support/1120237.aspx");
+  script_xref(name:"URL", value:"https://esupport.trendmicro.com/en-US/home/pages/technical-support/1120742.aspx");
   script_xref(name:"URL", value:"https://esupport.trendmicro.com");
 
   script_category(ACT_GATHER_INFO);

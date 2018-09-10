@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_anima_gallery_multiple_vuln.nasl 5789 2017-03-30 11:42:46Z cfi $
+# $Id: gb_anima_gallery_multiple_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Anima Gallery Multiple Vulnerabilities
 #
@@ -27,22 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805581");
-  script_version("$Revision: 5789 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-4415");
   script_bugtraq_id(75061);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 13:42:46 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-08 13:52:36 +0530 (Mon, 08 Jun 2015)");
   script_name("Anima Gallery Multiple Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with Anima Gallery
+  script_tag(name:"summary", value:"The host is installed with Anima Gallery
   and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request
   and check whether it is able to read cookie or not.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist as
+  script_tag(name:"insight", value:"Multiple flaws exist as
   - Input passed via 'id' GET parameter is not properly sanitised before being
   returned to the user.
   - Application does not restrict access to sensitive files.
@@ -60,18 +60,16 @@ if(description)
 
   script_tag(name:"affected", value:"Anima Gallery version 2.6");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for
-  at least one year since disclosure of this vulnerability. Likely none will be
-  provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by
-  another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"qod_type", value:"exploit");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/132150");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/archive/1/archive/1/535705/100/0/threaded");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/132150");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/archive/1/535705/100/0/threaded");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -84,10 +82,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-aniPort = "";
-rcvRes = "";
 
 aniPort = get_http_port(default:80);
 
@@ -102,14 +96,11 @@ foreach dir (make_list_unique("/", "/AnimaGallery", "/anima", cgi_dirs(port:aniP
 
   rcvRes = http_get_cache(item:string(dir,"/index.php"), port:aniPort);
 
-  #Confirm application
   if(rcvRes =~ "Powered By.*>Anima Gallery<")
   {
-    ##Construct Attack URL
     url = dir + "/?id=</title><script>prompt(document.cookie)</script>&lo" +
                 "ad=dir&refresh=1";
 
-    ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:aniPort, url:url, check_header:TRUE,
                        pattern:"title><script>prompt\(document\.cookie\)</script>",
                        extra_check:">Anima Gallery<"))

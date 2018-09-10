@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_mult_unspecified_vuln02_jul15.nasl 7546 2017-10-24 11:58:30Z cfischer $
+# $Id: gb_mysql_mult_unspecified_vuln02_jul15.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Oracle MySQL Multiple Unspecified Vulnerabilities-02 Jul15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805929");
-  script_version("$Revision: 7546 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-2648", "CVE-2015-4752", "CVE-2015-2643", "CVE-2015-2582");
   script_bugtraq_id(75822, 75849, 75830, 75751);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-21 10:38:02 +0530 (Tue, 21 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Oracle MySQL Multiple Unspecified Vulnerabilities-02 Jul15");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running Oracle MySQL and is
   prone to multiple unspecified vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help of
-  detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Unspecified errors exists in the MySQL Server
   component via unknown vectors related to DML, Server : I_S, Server : Optimizer,
@@ -62,25 +61,20 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujul2015-2367936.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Databases");
   script_dependencies("mysql_version.nasl", "os_detection.nasl");
   script_require_ports("Services/mysql", 3306);
-  script_mandatory_keys("MySQL/installed","Host/runs_windows");
+  script_mandatory_keys("MySQL/installed", "Host/runs_windows");
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-mysqlVer = "";
-sqlPort = "";
-
-## Get Port
 if(!sqlPort = get_app_port(cpe:CPE))
 {
   CPE = "cpe:/a:mysql:mysql";
@@ -89,7 +83,6 @@ if(!sqlPort = get_app_port(cpe:CPE))
   }
 }
 
-## Get version
 if(!mysqlVer = get_app_version(cpe:CPE, port:sqlPort)){
   exit(0);
 }

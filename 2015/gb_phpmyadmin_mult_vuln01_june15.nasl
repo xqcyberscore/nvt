@@ -29,20 +29,19 @@ CPE = "cpe:/a:phpmyadmin:phpmyadmin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805398");
-  script_version("$Revision: 6329 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-3902", "CVE-2015-3903");
   script_bugtraq_id(74660, 74657);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-04 17:24:38 +0530 (Thu, 04 Jun 2015)");
   script_name("phpMyAdmin Multiple Vulnerabilities -01 June15");
 
   script_tag(name:"summary", value:"This host is installed with phpMyAdmin and
   is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
   - 'libraries/Config.class.php' disables X.509 certificate verification
@@ -80,35 +79,25 @@ if(description)
 include("version_func.inc");
 include("host_details.inc");
 
-# Variable Initialization
-phpPort = "";
-phpVer = "";
-
-## get the port
 if(!phpPort = get_app_port(cpe:CPE)) exit(0);
 
-## Get the version
 if(!phpVer = get_app_version(cpe:CPE, port:phpPort)) exit(0);
 
-##Check for version 4.0.x before 4.0.10.10
 if (version_in_range(version:phpVer, test_version:"4.0.0", test_version2:"4.0.10.9"))
 {
   fix = "4.0.10.10";
   VULN = TRUE;
 }
-##Check for version 4.2.x before 4.2.13.3
 if (version_in_range(version:phpVer, test_version:"4.2.0", test_version2:"4.2.13.2"))
 {
   fix = "4.2.13.3";
   VULN = TRUE;
 }
-##Check for version 4.3.x before 4.3.13.1
 if (version_in_range(version:phpVer, test_version:"4.3.0", test_version2:"4.3.13.0"))
 {
   fix = "4.3.13.1";
   VULN = TRUE;
 }
-##Check for version 4.4.x before 4.4.6.1
 if (version_in_range(version:phpVer, test_version:"4.4.0", test_version2:"4.4.6.0"))
 {
   fix = "4.4.6.1";

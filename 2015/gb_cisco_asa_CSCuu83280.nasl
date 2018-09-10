@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCuu83280.nasl 6229 2017-05-29 09:04:10Z teissa $
+# $Id: gb_cisco_asa_CSCuu83280.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Cisco ASA Multiple OpenSSL Vulnerabilities
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106049");
-  script_version("$Revision: 6229 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-05-29 11:04:10 +0200 (Mon, 29 May 2017) $");
-  script_tag(name : "creation_date", value : "2015-11-25 11:40:51 +0700 (Wed, 25 Nov 2015)");
-  script_tag(name : "cvss_base", value : "6.8");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-11-25 11:40:51 +0700 (Wed, 25 Nov 2015)");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -51,22 +51,22 @@ if (description)
   script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
   script_mandatory_keys("cisco_asa/version");
 
-  script_tag(name : "summary", value : "Cisco ASA is prone to multiple vulnerabilities in the OpenSSL
+  script_tag(name:"summary", value:"Cisco ASA is prone to multiple vulnerabilities in the OpenSSL
 library.");
 
-  script_tag(name : "vuldetect", value : "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name : "insight", value : "On June 11, 2015, the OpenSSL Project released a security advisory
+  script_tag(name:"insight", value:"On June 11, 2015, the OpenSSL Project released a security advisory
 detailing six distinct vulnerabilities, and another fix that provides hardening protections against exploits
 as described in the Logjam research. Two of the vulnerabilities apply to Cisco ASA products.");
 
-  script_tag(name : "impact", value : "The vulnerability may lead to a denial of service condition.");
+  script_tag(name:"impact", value:"The vulnerability may lead to a denial of service condition.");
 
-  script_tag(name : "affected", value : "Version 7.2, 8.2, 8.4, 8.5, 8.6, 8.7, 9.0, 9.1, 9.2, 9.3 and 9.4");
+  script_tag(name:"affected", value:"Version 7.2, 8.2, 8.4, 8.5, 8.6, 8.7, 9.0, 9.1, 9.2, 9.3 and 9.4");
 
-  script_tag(name : "solution", value : "Apply the appropriate updates from Cisco.");
+  script_tag(name:"solution", value:"Apply the appropriate updates from Cisco.");
 
-  script_xref(name : "URL", value : "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150612-openssl");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150612-openssl");
 
   exit(0);
 }
@@ -91,7 +91,7 @@ if ((revcomp(a:compver, b:"8.4.7.29") < 0) &&
   security_message(port: 0, data:report);
   exit(0);
 }
- 
+
 if ((revcomp(a:compver, b:"8.7.1.17") < 0) &&
     (revcomp(a:compver, b:"8.5") >= 0)) {
   report = 'Installed Version: ' + version + '\n' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iwork_detect_macosx.nasl 8528 2018-01-25 07:57:36Z teissa $
+# $Id: gb_iwork_detect_macosx.nasl 11283 2018-09-07 09:28:09Z cfischer $
 #
 # iWork Version Detection (Mac OS X)
 #
@@ -24,15 +24,12 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "This script finds the installed product version of iWork and sets
-  the result in KB";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802145");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
- script_version("$Revision: 8528 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-01-25 08:57:36 +0100 (Thu, 25 Jan 2018) $");
+  script_version("$Revision: 11283 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:28:09 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-09-07 08:36:57 +0200 (Wed, 07 Sep 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("iWork Version Detection (Mac OS X)");
@@ -42,28 +39,24 @@ if(description)
   script_dependencies("gather-package-list.nasl");
   script_family("Product detection");
   script_mandatory_keys("ssh/login/osx_name");
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"summary", value:"This script finds the installed product version of iWork and sets
+  the result in KB");
   exit(0);
 }
-
 
 include("ssh_func.inc");
 include("version_func.inc");
 
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);
 }
 
-## Checking for Mac OS X
-if(!get_kb_item("ssh/login/osx_name"))
-{
+if(!get_kb_item("ssh/login/osx_name")){
   close(sock);
   exit(0);
 }
 
-## Get the iWork version
 ## For iWork, version is taken from any of its 3 components Keynote, Pages
 ## and Numbers. Taking version from Keynote Component
 ## Refer below wiki link for version mapping
@@ -80,15 +73,12 @@ foreach ver (make_list("09","08", "07","06"))
   }
 }
 
-## Close Socket
 close(sock);
 
-## Exit if version not found
 if(isnull(iworkVer) || "does not exist" >< iworkVer){
   exit(0);
 }
 
-## Set the version in KB
 set_kb_item(name: "Apple/iWork/Keynote/MacOSX/Version", value:iworkVer);
 log_message(data:"Apple iWork keynote version " + iworkVer +
                   " was detected on this host");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_movable_type_local_file_inclusion_vuln.nasl 5933 2017-04-11 10:42:30Z cfi $
+# $Id: gb_movable_type_local_file_inclusion_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Movable Type Local File Inclusion Vulnerability
 #
@@ -29,16 +29,16 @@ CPE = "cpe:/a:sixapart:movable_type";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805357");
-  script_version("$Revision: 5933 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-1592");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-11 12:42:30 +0200 (Tue, 11 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-10 15:04:37 +0530 (Fri, 10 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Movable Type Local File Inclusion Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with movable type
+  script_tag(name:"summary", value:"The host is installed with movable type
   and is prone to arbitrary file upload vulnerability.");
 
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP POST request
@@ -54,15 +54,15 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Movable Type before 5.2.12.");
+  script_tag(name:"affected", value:"Movable Type before 5.2.12.");
 
   script_tag(name:"solution", value:"Upgrade to Movable Type 5.2.12,
   For updates refer https://movabletype.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://exchange.xforce.ibmcloud.com/#/vulnerabilities/100912");
-  script_xref(name : "URL" , value : "https://movabletype.org/news/2015/02/movable_type_607_and_5212_released_to_close_security_vulnera.html");
+  script_xref(name:"URL", value:"https://exchange.xforce.ibmcloud.com/#/vulnerabilities/100912");
+  script_xref(name:"URL", value:"https://movabletype.org/news/2015/02/movable_type_607_and_5212_released_to_close_security_vulnera.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -76,12 +76,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-movVer = "";
-report = "";
-http_port = 0;
-
-# Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }

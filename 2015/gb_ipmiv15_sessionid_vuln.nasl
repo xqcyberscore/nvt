@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipmiv15_sessionid_vuln.nasl 9335 2018-04-05 13:50:33Z cfischer $
+# $Id: gb_ipmiv15_sessionid_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Dell iDRAC Weak SessionID Vulnerability
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105939");
-  script_version("$Revision: 9335 $");
-  script_tag(name : "last_modification", value : "$Date: 2018-04-05 15:50:33 +0200 (Thu, 05 Apr 2018) $");
-  script_tag(name : "creation_date", value : "2015-01-21 09:55:57 +0700 (Wed, 21 Jan 2015)");
-  script_tag(name : "cvss_base", value : "5.0");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-01-21 09:55:57 +0700 (Wed, 21 Jan 2015)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2014-8272");
   script_bugtraq_id(71750);
@@ -50,24 +50,24 @@ if (description)
   script_require_udp_ports("Services/udp/ipmi", 623);
   script_mandatory_keys("ipmi/credentials");
 
-  script_tag(name : "summary", value : "IPMI v1.5 SessionID's are not randomized sufficiently across
+  script_tag(name:"summary", value:"IPMI v1.5 SessionID's are not randomized sufficiently across
 different channels.");
 
-  script_tag(name : "vuldetect", value : "Checks randomness of the session ID's by activating sessions.");
+  script_tag(name:"vuldetect", value:"Checks randomness of the session ID's by activating sessions.");
 
-  script_tag(name : "insight", value : "Dell iDRAC6 and iDRAC7 does not properly randomize session ID values,
+  script_tag(name:"insight", value:"Dell iDRAC6 and iDRAC7 does not properly randomize session ID values,
 which makes it easier for remote attackers to execute arbitrary commands via a brute-force attack.");
 
-  script_tag(name : "impact", value : "A remote attacker might be able to execute arbitrary commands via a
+  script_tag(name:"impact", value:"A remote attacker might be able to execute arbitrary commands via a
 brute-force attack.");
 
-  script_tag(name : "affected", value : "Dell iDRAC6 modular before 3.65, iDRAC6 monolithic before 1.98 and
+  script_tag(name:"affected", value:"Dell iDRAC6 modular before 3.65, iDRAC6 monolithic before 1.98 and
 iDRAC7 before 1.57.57.");
 
-  script_tag(name : "solution", value : "Updates from Dell are available which will disable IPMI v1.5. As
+  script_tag(name:"solution", value:"Updates from Dell are available which will disable IPMI v1.5. As
 a workaround disable IPMI v1.5.");
 
-  script_xref(name : "URL", value : "https://labs.mwrinfosecurity.com/blog/2015/01/08/cve-2014-8272/");
+  script_xref(name:"URL", value:"https://labs.mwrinfosecurity.com/blog/2015/01/08/cve-2014-8272/");
 
   exit(0);
 }
@@ -111,7 +111,6 @@ if(!soc) {
   exit(0);
 }
 
-# Get Channel Capabilities 
 getChannelAuthCap = raw_string(0x06, 0x00, 0xff, 0x07,        # RMCP
                                0x00,                          # Auth Type = NONE
                                0x00, 0x00, 0x00, 0x00,        # Session Seq Number
@@ -147,14 +146,12 @@ else {
   exit(0);	# No suitable authentication algorithm so just exit
 }
 
-# Get 10 samples of session id values
 for (j=0; j<10; j++) {
-  # Get Session Challenge
   paddedUsername = username;
   while (strlen(paddedUsername) < 16) {
     paddedUsername = paddedUsername + raw_string(0x00);
   }
-  
+
   getSessChallenge = raw_string(0x06, 0x00, 0xff, 0x07,     # RMCP
                                 0x00,                       # Auth Type = NONE
                                 0x00, 0x00, 0x00, 0x00,     # Session Seq Number
@@ -182,7 +179,7 @@ for (j=0; j<10; j++) {
 
   tmp_sessionID = substr(recv, 21, 24);
   challenge = substr(recv, 25, 40);
-  sequenceNum = raw_string(0x00, 0x00, 0x00, 0x00); 
+  sequenceNum = raw_string(0x00, 0x00, 0x00, 0x00);
   # Activate Session
   paddedPassword = password;
   while (strlen(paddedPassword) < 16) {
@@ -222,7 +219,6 @@ for (j=0; j<10; j++) {
   if (!recv) {
     continue;
   }
-  # Get the session ID
   if (strlen(recv) > 41 && hexstr(recv[36]) == "00") {
     sessionid = substr(recv, 38, 41);
     sessionids[j] = raw_string(hexstr(sessionid[3]), hexstr(sessionid[2]), hexstr(sessionid[1]),
@@ -261,7 +257,6 @@ for (j=0; j<10; j++) {
 
 close(soc);
 
-# Check the randomness of the session ID values 
 const_diff = 0;
 for (i=1; i<10; i++) {
   id1 = hex2dec(xvalue:sessionids[i-1]);
@@ -269,7 +264,7 @@ for (i=1; i<10; i++) {
   if (id1 < id2) {
     const_diff = id2 - id1;
     break;
-  } 
+  }
 }
 
 if (const_diff > 0) {

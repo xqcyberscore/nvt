@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jenkins_cli_mult_vuln.nasl 6194 2017-05-23 09:04:00Z teissa $
+# $Id: gb_jenkins_cli_mult_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
-# Jenkins CLI Multiple Vulnerabilities 
+# Jenkins CLI Multiple Vulnerabilities
 #
 # Authors:
 # Shakeel <bshakeel@secpod.com>
@@ -28,24 +28,23 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806621");
-  script_version("$Revision: 6194 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-5318", "CVE-2015-5319", "CVE-2015-5320", "CVE-2015-5324",
                 "CVE-2015-5321", "CVE-2015-5322", "CVE-2015-5323", "CVE-2015-5325",
                 "CVE-2015-5326");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-23 11:04:00 +0200 (Tue, 23 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-17 12:48:36 +0530 (Tue, 17 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Jenkins CLI Multiple Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with Jenkins and is
+  script_tag(name:"summary", value:"The host is installed with Jenkins and is
   prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist as,
+  script_tag(name:"insight", value:"Multiple flaws exist as,
   - Jenkins UI allows users to see the names of jobs and builds otherwise
     inaccessible to them on the 'Fingerprints' pages.
   - The salt used to generate the CSRF protection tokens is a publicly accessible
@@ -73,19 +72,17 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  All Jenkins main line releases up to and including 1.637
+  script_tag(name:"affected", value:"All Jenkins main line releases up to and including 1.637
   All Jenkins LTS releases up to and including 1.625.1");
 
-  script_tag(name:"solution", value:"
-  Jenkins main line users should update to 1.638
+  script_tag(name:"solution", value:"Jenkins main line users should update to 1.638
   Jenkins LTS users should update to 1.625.2");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2015-11-11");
-  script_xref(name : "URL" , value : "https://jenkins-ci.org/content/mitigating-unauthenticated-remote-code-execution-0-day-jenkins-cli");
-  script_xref(name : "URL" , value : "http://foxglovesecurity.com/2015/11/06/what-do-weblogic-websphere-jboss-jenkins-opennms-and-your-application-have-in-common-this-vulnerability");
+  script_xref(name:"URL", value:"https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2015-11-11");
+  script_xref(name:"URL", value:"https://jenkins-ci.org/content/mitigating-unauthenticated-remote-code-execution-0-day-jenkins-cli");
+  script_xref(name:"URL", value:"http://foxglovesecurity.com/2015/11/06/what-do-weblogic-websphere-jboss-jenkins-opennms-and-your-application-have-in-common-this-vulnerability");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -97,29 +94,18 @@ if(description)
 }
 
 
-##
-## Code Starts Here
-##
-
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-jenPort = "";
-jenVer = "";
-
-## Get HTTP Port
 if(!jenPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 jenVer = get_app_version(cpe:CPE, port:jenPort);
 if(!jenVer || "unknown" >< jenVer){
   exit(0);
 }
 
-##Check for Jenkins main line users less than 1.638
 ##And Jenkins LTS users should update to 1.625.2
 ##For main line releases: http://mirrors.jenkins-ci.org/war
 ##For LTS releases: http://mirrors.jenkins-ci.org/war-stable
@@ -142,7 +128,7 @@ if(jenVer)
       VULN = TRUE;
     }
   }
-  
+
   if(VULN)
   {
     report = 'Installed Version: ' + jenVer + '\nFixed Version:     ' + fix + '\n';

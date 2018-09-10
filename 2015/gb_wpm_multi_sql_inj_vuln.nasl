@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wpm_multi_sql_inj_vuln.nasl 6453 2017-06-28 09:59:05Z teissa $
+# $Id: gb_wpm_multi_sql_inj_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # SolarWinds Web Performance Monitor Multiple SQL Injection Vulnerabilities
 #
@@ -30,9 +30,9 @@ CPE = 'cpe:/a:solarwinds:web_performance_monitor';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105973");
-  script_version("$Revision: 6453 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
-  script_tag(name : "creation_date", value : "2015-03-06 14:12:05 +0700 (Fri, 06 Mar 2015)");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-03-06 14:12:05 +0700 (Fri, 06 Mar 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -51,24 +51,24 @@ if (description)
   script_dependencies("gb_orion_ncm_detect.nasl");
   script_mandatory_keys("orion_ncm/installed");
 
-  script_tag(name : "summary", value : "SolarWinds Web Performace Monitor is prone to multiple
+  script_tag(name:"summary", value:"SolarWinds Web Performace Monitor is prone to multiple
 SQL Injection vulnerabilities.");
 
-  script_tag(name : "vuldetect", value : "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name : "insight", value : "On both the GetAccounts and GetAccountGroups endpoints, the
+  script_tag(name:"insight", value:"On both the GetAccounts and GetAccountGroups endpoints, the
 'sort' and 'dir' parameters are susceptible to boolean-/time-based, and stacked injections. The attacker
 has to be authenticated but it can be even exploited under a guest account.");
 
-  script_tag(name : "impact", value : "An authenticated attacker might execute arbitrary SQL commands
+  script_tag(name:"impact", value:"An authenticated attacker might execute arbitrary SQL commands
 to compromise the application, access or modify data, or exploit latent vulnerabilities in the
 underlying database.");
 
-  script_tag(name : "affected", value : "SolarWinds WPM 2.1 and previous.");
+  script_tag(name:"affected", value:"SolarWinds WPM 2.1 and previous.");
 
-  script_tag(name : "solution", value : "Upgrade to SolarWinds WPM 2.2 or later.");
+  script_tag(name:"solution", value:"Upgrade to SolarWinds WPM 2.2 or later.");
 
-  script_xref(name : "URL", value : "http://seclists.org/fulldisclosure/2015/Mar/18");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Mar/18");
 
   exit(0);
 }

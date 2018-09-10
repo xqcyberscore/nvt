@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_httpd_mult_vuln.nasl 7834 2017-11-20 14:48:51Z cfischer $
+# $Id: gb_apache_httpd_mult_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Apache HTTP Server Multiple Vulnerabilities May15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805638");
-  script_version("$Revision: 7834 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2014-3523", "CVE-2014-0118", "CVE-2014-0226", "CVE-2014-0231");
   script_bugtraq_id(73040);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-20 15:48:51 +0100 (Mon, 20 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-27 12:15:46 +0530 (Wed, 27 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); # Only vulnerable if mod_lua/mod_deflate/mod_status/mod_cgid is enabled
   script_name("Apache HTTP Server Multiple Vulnerabilities May15");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Apache HTTP Server
   and is prone to denial of service  vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
   - Vulnerability in the WinNT MPM component within the 'winnt_accept' function
@@ -69,8 +68,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://httpd.apache.org/security/vulnerabilities_24.html");
-  script_xref(name : "URL" , value : "http://www.rapid7.com/db/vulnerabilities/apache-httpd-cve-2014-8109");
+  script_xref(name:"URL", value:"http://httpd.apache.org/security/vulnerabilities_24.html");
+  script_xref(name:"URL", value:"http://www.rapid7.com/db/vulnerabilities/apache-httpd-cve-2014-8109");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -85,21 +84,14 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-httpd_port = 0;
-httpd_ver = "";
-
-## Get HTTP Port
 if(!httpd_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Version
 if(!httpd_ver = get_app_version(cpe:CPE, port:httpd_port)){
   exit(0);
 }
 
-## Checking for Vulnerable version
 if(version_in_range(version:httpd_ver, test_version:"2.4.1", test_version2:"2.4.9"))
 {
   report = 'Installed version: ' + httpd_ver + '\n' +

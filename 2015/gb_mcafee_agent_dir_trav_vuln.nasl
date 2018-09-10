@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mcafee_agent_dir_trav_vuln.nasl 6376 2017-06-20 10:00:24Z teissa $
+# $Id: gb_mcafee_agent_dir_trav_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # McAfee Agent (MA) Log Viewing Functionality Directory Traversal Vulnerability
 #
@@ -29,19 +29,18 @@ CPE = "cpe:/a:mcafee:mcafee_agent";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806638");
-  script_version("$Revision: 6376 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-7237");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-20 12:00:24 +0200 (Tue, 20 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-02 11:14:16 +0530 (Wed, 02 Dec 2015)");
   script_name("McAfee Agent (MA) Log Viewing Functionality Directory Traversal Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with McAfee Agent
   and is prone to directory traversal vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists in the remote log viewing
   functionality where the inputs passed to the URL are not completely validated.");
@@ -61,7 +60,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value : "https://kc.mcafee.com/corporate/index?page=content&id=SB10130");
+  script_xref(name:"URL", value:"https://kc.mcafee.com/corporate/index?page=content&id=SB10130");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -75,18 +74,12 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-agentVer = "";
-
-## Get version
 if(!agentVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version,
 if(agentVer =~ "^5\.")
 {
-  ## Check for version less than 5.0.2
   ## https://kc.mcafee.com/resources/sites/MCAFEE/content/live/PRODUCT_DOCUMENTATION/26000/PD26042/en_US/ma_502_rn_en-us.pdf
   if(version_is_less(version:agentVer, test_version:"5.0.2.132"))
   {

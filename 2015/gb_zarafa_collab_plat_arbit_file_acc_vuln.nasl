@@ -30,23 +30,22 @@ CPE = "cpe:/a:zarafa:zarafa_collaboration_platform";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805708");
-  script_version("$Revision: 9442 $");
+  script_version("$Revision: 11291 $");
   script_tag(name:"cvss_base", value:"6.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-11 14:22:50 +0200 (Wed, 11 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-03 15:19:25 +0530 (Fri, 03 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_cve_id("CVE-2015-3436");
   script_name("Zarafa Collaboration Platform Arbitrary File Access Vulnerability");
 
-  script_tag(name: "summary" , value:"This host is installed with Zarafa
+  script_tag(name:"summary", value:"This host is installed with Zarafa
   Collaboration Platform and is prone to a arbitrary file access
   vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to
+  script_tag(name:"insight", value:"The flaw is due to
   'provider/server/ECServer.cpp' allows local users to write to arbitrary
   files via a symlink attack on '/tmp/zarafa-upgrade-lock'");
 
@@ -56,10 +55,10 @@ if (description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Zarafa Collaboration Platform (ZCP)
+  script_tag(name:"affected", value:"Zarafa Collaboration Platform (ZCP)
   before 7.1.13 and 7.2.x before 7.2.1");
 
-  script_tag(name: "solution" , value:"Upgrade to 7.1.13 or 7.2.1 or later,
+  script_tag(name:"solution", value:"Upgrade to 7.1.13 or 7.2.1 or later,
   For updates refer to https://www.zarafa.com");
 
   script_tag(name:"solution_type", value:"VendorFix");

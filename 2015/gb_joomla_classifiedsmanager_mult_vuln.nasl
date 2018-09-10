@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_classifiedsmanager_mult_vuln.nasl 6207 2017-05-24 09:04:07Z teissa $
+# $Id: gb_joomla_classifiedsmanager_mult_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Joomla Component CMSJunkie J-ClassifiedsManager Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805271");
-  script_version("$Revision: 6207 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-1478", "CVE-2015-1477");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-10 15:15:51 +0530 (Tue, 10 Feb 2015)");
   script_name("Joomla Component CMSJunkie J-ClassifiedsManager Multiple Vulnerabilities");
 
@@ -59,11 +59,9 @@ if(description)
 
   script_tag(name:"affected", value:"Joomla CMSJunkie J-ClassifiedsManager");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -86,26 +84,17 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Joomla Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Construct the attack request
 url = dir + '/jclassifiedsmanager/classifieds/offerring-ads?controller=displa'
           + 'yads&view=displayads&task=viewad&id="SQL-INJECTION-TEST';
 
-## Check the response to confirm vulnerability
 if(http_vuln_check(port:http_port, url:url, check_header:FALSE,
                pattern:"You have an error in your SQL syntax",
                extra_check: make_list("SQL-INJECTION-TEST", "classifiedsmanager")))

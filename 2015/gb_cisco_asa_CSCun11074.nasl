@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCun11074.nasl 6329 2017-06-13 15:39:42Z teissa $
+# $Id: gb_cisco_asa_CSCun11074.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Cisco ASA SunRPC Inspection Engine DoS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105981");
-  script_version("$Revision: 6329 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
-  script_tag(name : "creation_date", value : "2015-03-13 12:14:11 +0700 (Fri, 13 Mar 2015)");
-  script_tag(name : "cvss_base", value : "7.8");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-03-13 12:14:11 +0700 (Fri, 13 Mar 2015)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -52,25 +52,25 @@ if (description)
   script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
   script_mandatory_keys("cisco_asa/version");
 
-  script_tag(name : "summary", value : "The SunRPC Inspection Engine of Cisco ASA is prone to a Denial of
+  script_tag(name:"summary", value:"The SunRPC Inspection Engine of Cisco ASA is prone to a Denial of
 Service vulnerability.");
 
-  script_tag(name : "vuldetect", value : "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name : "insight", value : "A vulnerability in the SunRPC inspection engine of Cisco ASA
+  script_tag(name:"insight", value:"A vulnerability in the SunRPC inspection engine of Cisco ASA
 Software could allow an unauthenticated, remote attacker to cause the reload of an affected system.
 The vulnerability is due to insufficient validation of crafted SunRPC packets. An attacker could exploit
 this vulnerability by sending crafted SunRPC packets through the affected system.");
 
-  script_tag(name : "impact", value : "An unauthenticated, remote attacker could exploit this vulnerability
+  script_tag(name:"impact", value:"An unauthenticated, remote attacker could exploit this vulnerability
 by sending crafted SunRPC packets through a targeted device. An exploit could allow the attacker to cause
 the device to reload, resulting in a DoS condition.");
 
-  script_tag(name : "affected", value : "Version 7.2, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 9.0 and 9.1");
+  script_tag(name:"affected", value:"Version 7.2, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 9.0 and 9.1");
 
-  script_tag(name : "solution", value : "Apply the appropriate updates from Cisco.");
+  script_tag(name:"solution", value:"Apply the appropriate updates from Cisco.");
 
-  script_xref(name : "URL", value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=35910");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35910");
 
   exit(0);
 }
@@ -100,7 +100,7 @@ if ((revcomp(a:compver, b:"8.2.5.51") < 0) &&
   security_message(port: 0, data:report);
   exit(0);
 }
- 
+
 if ((revcomp(a:compver, b:"8.3.2.42") < 0) &&
     (revcomp(a:compver, b:"8.3") >= 0)) {
   report = 'Installed Version: ' + version + '\n' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_nov15_macosx.nasl 6391 2017-06-21 09:59:48Z teissa $
+# $Id: gb_mozilla_firefox_mult_vuln_nov15_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities - Nov15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806551");
-  script_version("$Revision: 6391 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-7200", "CVE-2015-7199", "CVE-2015-7198", "CVE-2015-7197",
                 "CVE-2015-7196", "CVE-2015-7195", "CVE-2015-7194", "CVE-2015-7193",
                 "CVE-2015-7189", "CVE-2015-7188", "CVE-2015-7187", "CVE-2015-4518",
@@ -38,17 +38,16 @@ if(description)
   script_bugtraq_id(77412, 77415, 77416);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-21 11:59:48 +0200 (Wed, 21 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-09 15:45:29 +0530 (Mon, 09 Nov 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - Nov15 (Mac OS X)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla
+  script_tag(name:"summary", value:"This host is installed with Mozilla
   Firefox and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are exists due to,
+  script_tag(name:"insight", value:"Multiple flaws are exists due to,
   - Lack of status checking in CryptoKey interface implementation.
   - Lack of status checking in 'AddWeightedPathSegLists' and
    'SVGPathSegListSMILType::Interpolate' functions.
@@ -72,17 +71,17 @@ if(description)
   - NSS and NSPR Multiple memory corruption issues in NSS and NSPR.
   - An error in how HTML tables are exposed to accessibility tools.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial of service, bypass security restrictions, to
-  obtain sensitive information,  execute arbitrary script code in a user's
+  obtain sensitive information, execute arbitrary script code in a user's
   browser session and some unspecified impacts.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox version before 42.0 on
+  script_tag(name:"affected", value:"Mozilla Firefox version before 42.0 on
   Mac OS X");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 42.0
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 42.0
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -104,14 +103,9 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-ffVer = "";
-
-## Get version
 if(!ffVer = get_app_version(cpe:CPE)){
    exit(0);
 }
-# Check for vulnerable version
 if(version_is_less(version:ffVer, test_version:"42.0"))
 {
   report = 'Installed version: ' + ffVer + '\n' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xcart_install_xss_vuln.nasl 6329 2017-06-13 15:39:42Z teissa $
+# $Id: gb_xcart_install_xss_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # X_CART Installation Script Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:qualiteam:x-cart";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806059");
-  script_version("$Revision: 6329 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-5455");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-13 17:39:42 +0200 (Tue, 13 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-05 11:33:14 +0530 (Mon, 05 Oct 2015)");
   script_name("X_CART Installation Script Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -82,11 +82,9 @@ if( dir == "/" ) dir = "";
 
 url = dir + "/install.php";
 
-## Send and receive response
 sndReq = http_get( item:url, port:port );
 rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
-##Confirm Application
 if( rcvRes && rcvRes =~ "HTTP/1.. 200" ) {
 
   host = http_host_name( port:port );
@@ -108,7 +106,6 @@ if( rcvRes && rcvRes =~ "HTTP/1.. 200" ) {
                   "\r\n", postData, "\r\n");
   rcvRes = http_keepalive_send_recv( port:port, data:sndReq );
 
-  ## check the response to confirm vulnerability
   if( rcvRes =~ "HTTP/1\.. 200" && "alert(document.cookie)" >< rcvRes && "X-Cart" >< rcvRes ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );

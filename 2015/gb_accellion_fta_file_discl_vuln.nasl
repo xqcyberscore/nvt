@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_accellion_fta_file_discl_vuln.nasl 6416 2017-06-23 10:02:44Z cfischer $
+# $Id: gb_accellion_fta_file_discl_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Accellion FTA File Disclosure Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/h:accellion:secure_file_transfer_appliance';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106031");
-  script_version("$Revision: 6416 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-23 12:02:44 +0200 (Fri, 23 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2015-07-28 09:48:42 +0700 (Tue, 28 Jul 2015)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-07-28 09:48:42 +0700 (Tue, 28 Jul 2015)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_cve_id("CVE-2015-2856");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("gb_accellion_fta_detect.nasl");
   script_mandatory_keys("accellion_fta/installed");
 
-  script_tag(name: "summary", value: "Accellion FTA is prone to a file disclosure vulnerability");
+  script_tag(name:"summary", value:"Accellion FTA is prone to a file disclosure vulnerability");
 
-  script_tag(name: "vuldetect", value: "Send a crafted GET request and check if we can read system files.");
+  script_tag(name:"vuldetect", value:"Send a crafted GET request and check if we can read system files.");
 
-  script_tag(name: "insight", value: "The vulnerability is triggered when a user-provided 'statecode'
+  script_tag(name:"insight", value:"The vulnerability is triggered when a user-provided 'statecode'
 cookie parameter is appended to a file path that is processed as a HTML template. By prepending this
 cookie with directory traversal sequence and appending a NULL byte, any file readable by the web user
 can be exposed.");
 
-  script_tag(name: "impact", value: "An attacker can read sensitive files, including the system
+  script_tag(name:"impact", value:"An attacker can read sensitive files, including the system
 configuration and files uploaded to the appliance by users.");
 
-  script_tag(name: "affected", value: "Accellion FTA Version 9.11.200 and prior.");
+  script_tag(name:"affected", value:"Accellion FTA Version 9.11.200 and prior.");
 
-  script_tag(name: "solution", value: "Upgrade to version 9.11.210 or later");
+  script_tag(name:"solution", value:"Upgrade to version 9.11.210 or later");
 
   exit(0);
 }

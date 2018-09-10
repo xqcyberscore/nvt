@@ -1,17 +1,14 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_detect_macosx.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: gb_wireshark_detect_macosx.nasl 11285 2018-09-07 09:40:40Z cfischer $
 #
 # Wireshark Version Detection (MacOSX)
 #
 # Authors:
 # Madhuri D <dmadhuri@secpod.com>
 #
-# Update By:  Thanga Prakash S <tprakash@secpod.com> on 2013-09-27
-# According to cr57 and new style script_tags.
-#
 # Copyright:
-# Copyright(c) 2012 Greenbone Networks GmbH, http://www.greenbone.net
+# Copyright (c) 2012 Greenbone Networks GmbH, http://www.greenbone.net
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -30,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802762");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 11285 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:40:40 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-24 14:25:07 +0530 (Tue, 24 Apr 2012)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Wireshark Version Detection (MacOSX)");
@@ -62,8 +59,7 @@ if(!sock){
   exit(0);
 }
 
-if (!get_kb_item("ssh/login/osx_name"))
-{
+if (!get_kb_item("ssh/login/osx_name")){
   close(sock);
   exit(0);
 }
@@ -73,7 +69,6 @@ sharkVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
 
 close(sock);
 
-## Exit if version not found
 if(isnull(sharkVer) || "does not exist" >< sharkVer){
   exit(0);
 }

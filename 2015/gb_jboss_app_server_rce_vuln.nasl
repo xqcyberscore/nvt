@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jboss_app_server_rce_vuln.nasl 9978 2018-05-28 08:52:24Z cfischer $
+# $Id: gb_jboss_app_server_rce_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # JBoss WildFly Application Server Remote Code Execution Vulnerability
 #
@@ -29,19 +29,19 @@ CPE = "cpe:/a:redhat:jboss_wildfly_application_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806623");
-  script_version("$Revision: 9978 $");
+  script_version("$Revision: 11291 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-28 10:52:24 +0200 (Mon, 28 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-17 16:28:17 +0530 (Tue, 17 Nov 2015)");
   script_name("JBoss WildFly Application Server Remote Code Execution Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is running JBoss WildFly
+  script_tag(name:"summary", value:"The host is running JBoss WildFly
   Application Server and is prone to remote code execution vulnerability.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to presence
+  script_tag(name:"insight", value:"The flaw exists due to presence
   of a deserialization error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
@@ -62,7 +62,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "http://foxglovesecurity.com/2015/11/06/what-do-weblogic-websphere-jboss-jenkins-opennms-and-your-application-have-in-common-this-vulnerability/#jboss");
+  script_xref(name:"URL", value:"http://foxglovesecurity.com/2015/11/06/what-do-weblogic-websphere-jboss-jenkins-opennms-and-your-application-have-in-common-this-vulnerability/#jboss");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");

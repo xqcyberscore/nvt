@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_CSCuq28582.nasl 6486 2017-06-29 09:59:06Z teissa $
+# $Id: gb_cisco_asa_CSCuq28582.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Cisco ASA VPN Failover Command Injection Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:cisco:asa";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105982");
-  script_version("$Revision: 6486 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-06-29 11:59:06 +0200 (Thu, 29 Jun 2017) $");
-  script_tag(name : "creation_date", value : "2015-03-13 12:24:59 +0700 (Fri, 13 Mar 2015)");
-  script_tag(name : "cvss_base", value : "9.0");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11291 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-03-13 12:24:59 +0700 (Fri, 13 Mar 2015)");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
 
   script_tag(name:"qod_type", value:"package");
 
@@ -52,27 +52,27 @@ if (description)
   script_dependencies("gb_cisco_asa_version.nasl", "gb_cisco_asa_version_snmp.nasl");
   script_mandatory_keys("cisco_asa/version");
 
-  script_tag(name : "summary", value : "The VPN of Cisco ASA is prone to a command injection vulnerability.");
+  script_tag(name:"summary", value:"The VPN of Cisco ASA is prone to a command injection vulnerability.");
 
-  script_tag(name : "vuldetect", value : "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name : "insight", value : "A vulnerability in the VPN code of Cisco ASA Software could allow an
+  script_tag(name:"insight", value:"A vulnerability in the VPN code of Cisco ASA Software could allow an
 authenticated, remote attacker to submit configuration commands to the standby unit via the failover interface.
 As result, an attacker could be able to take full control of both the active and standby failover units.
 The vulnerability is due to improper implementation of the internal filter for packets coming from an established
 VPN tunnel. An attacker could exploit this vulnerability by sending crafted packets directed to the failover
 interface IP address.");
 
-  script_tag(name : "impact", value : "An authenticated, remote attacker could exploit this vulnerability by
+  script_tag(name:"impact", value:"An authenticated, remote attacker could exploit this vulnerability by
 connecting to a targeted device and sending malicious configuration requests through the failover interface to
 the standby unit. The attacker could modify the configuration to take control over both the standby and active
 units, resulting in complete device compromise.");
 
-  script_tag(name : "affected", value : "Version 7.2, 8.2, 8.3, 8.4, 8.6, 9.0, 9.1, 9.2 and 9.3");
+  script_tag(name:"affected", value:"Version 7.2, 8.2, 8.3, 8.4, 8.6, 9.0, 9.1, 9.2 and 9.3");
 
-  script_tag(name : "solution", value : "Apply the appropriate updates from Cisco.");
+  script_tag(name:"solution", value:"Apply the appropriate updates from Cisco.");
 
-  script_xref(name : "URL", value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=35912");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=35912");
 
   exit(0);
 }
@@ -98,7 +98,7 @@ if ((revcomp(a:compver, b:"8.2.5.51") < 0) &&
   security_message(port: 0, data:report);
   exit(0);
 }
- 
+
 if ((revcomp(a:compver, b:"8.3.2.42") < 0) &&
     (revcomp(a:compver, b:"8.3") >= 0)) {
   report = 'Installed Version: ' + version + '\n' +

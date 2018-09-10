@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flash_player_within_google_chrome_detect_macosx.nasl 10873 2018-08-10 07:37:56Z cfischer $
+# $Id: gb_flash_player_within_google_chrome_detect_macosx.nasl 11283 2018-09-07 09:28:09Z cfischer $
 #
 # Adobe Flash Player Within Google Chrome Detection (Mac OS X)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810614");
-  script_version("$Revision: 10873 $");
+  script_version("$Revision: 11283 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 09:37:56 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:28:09 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-03-14 15:08:22 +0530 (Tue, 14 Mar 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Flash Player Within Google Chrome Detection (Mac OS X)");
@@ -87,7 +87,6 @@ flashVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read ~/Library/" +
                maxVer + "/PepperFlashPlayer.plugin/Contents/Info.plist " +
                "CFBundleVersion"));
 
-## Exit if version not found
 if(isnull(flashVer) || "does not exist" >< flashVer){
   exit(0);
 }

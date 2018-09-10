@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_tsm_client_detect_macosx.nasl 6484 2017-06-29 09:15:46Z cfischer $
+# $Id: gb_ibm_tsm_client_detect_macosx.nasl 11284 2018-09-07 09:30:56Z cfischer $
 #
 # IBM Tivoli Storage Manager Client Version Detection (Mac OS X)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811062");
-  script_version("$Revision: 6484 $");
+  script_version("$Revision: 11284 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-29 11:15:46 +0200 (Thu, 29 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:30:56 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-06-02 15:14:25 +0530 (Fri, 02 Jun 2017)");
   script_name("IBM Tivoli Storage Manager Client Version Detection (Mac OS X)");
 
-  script_tag(name: "summary" , value: "Detection of installed version of
+  script_tag(name:"summary", value:"Detects the installed version of
   IBM Tivoli Storage Manager Client.
 
   The script logs in via ssh, searches for folder 'Tivoli Storage Manager.app'
@@ -55,35 +55,22 @@ include("ssh_func.inc");
 include("cpe.inc");
 include("host_details.inc");
 
-## Variable Initialization
-ibmVer = NULL;
-sock = 0;
-cpe = "";
-ver = "";
-ibmPath = NULL;
-
-## Checking OS
 sock = ssh_login_or_reuse_connection();
 if(!sock){
   exit(0);
 }
 
-## Get the version
 ibmVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
              "Tivoli\ Storage\ Manager/Tivoli\ Storage\ Manager.app/Contents/" +
              "Info CFBundleShortVersionString"));
-## Close Socket
 close(sock);
 
-##Exit if not able to get version
 if(isnull(ibmVer) || "does not exist" >< ibmVer){
   exit(0);
 }
 
-## Set the KB
 set_kb_item(name: "IBM/TSM/Client/MacOSX", value:ibmVer);
 
-## build cpe and store it as host_detail
 cpe = build_cpe(value:ibmVer, exp:"^([0-9.]+)", base:"cpe:/a:ibm:tivoli_storage_manager:");
 if(isnull(cpe))
   cpe = "cpe:/a:ibm:tivoli_storage_manager";

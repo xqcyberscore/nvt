@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_digital_edition_detect_macosx.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: gb_adobe_digital_edition_detect_macosx.nasl 11283 2018-09-07 09:28:09Z cfischer $
 #
 # Adobe Digital Edition Version Detection (Mac OS X)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804302");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 11283 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:28:09 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-03 13:00:16 +0530 (Mon, 03 Feb 2014)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Digital Edition Version Detection (Mac OS X)");
@@ -65,7 +65,6 @@ ediVer = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
 
 close(sock);
 
-## Exit if version not found
 if(isnull(ediVer) || "does not exist" >< ediVer){
   exit(0);
 }

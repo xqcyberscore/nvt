@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: macosx_safari_detect.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: macosx_safari_detect.nasl 11285 2018-09-07 09:40:40Z cfischer $
 #
 # Apple Safari Detect Script (Mac OS X)
 #
@@ -8,10 +8,7 @@
 #
 # Developed by LSS Security Team <http://security.lss.hr>
 #
-# Update By:  Shakeel <bshakeel@secpod.com> on 2013-11-05
-# According to CR57 and new style script_tags.
-#
-# Copyright(C) 2010 LSS <http://www.lss.hr>
+# Copyright (C) 2010 LSS <http://www.lss.hr>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
@@ -30,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.102021");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 11285 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:40:40 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-04-06 10:41:02 +0200 (Tue, 06 Apr 2010)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Apple Safari Detect Script (Mac OS X)");
@@ -65,7 +62,6 @@ if(!sock){
 ver = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
                  "Safari.app/Contents/Info CFBundleShortVersionString"));
 
-## Exit if version not found
 if(isnull(ver) || "does not exist" >< ver){
   log_message(data:"exiting" +ver);
   exit(0);

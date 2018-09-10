@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ipfire_2_17_core_93.nasl 6404 2017-06-22 10:00:06Z teissa $
+# $Id: gb_ipfire_2_17_core_93.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # IPFire 2.17 - Core Update 93
 #
@@ -27,33 +27,33 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105322");
- script_cve_id("CVE-2015-5073");
- script_tag(name:"cvss_base", value:"6.4");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
- script_version ("$Revision: 6404 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105322");
+  script_cve_id("CVE-2015-5073");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:P");
+  script_version("$Revision: 11291 $");
 
- script_name("IPFire 2.17 - Core Update 93");
+  script_name("IPFire 2.17 - Core Update 93");
 
- script_xref(name:"URL", value:"http://www.ipfire.org/news/ipfire-2-17-core-update-93-released");
+  script_xref(name:"URL", value:"http://www.ipfire.org/news/ipfire-2-17-core-update-93-released");
 
- script_tag(name: "vuldetect" , value:"Check the version");
- script_tag(name: "insight" , value:"IPFire 2.17 - Core 93  comes with various security fixes in the Squid web proxy, the dnsmasq DNS proxy
+  script_tag(name:"vuldetect", value:"Check the version");
+  script_tag(name:"insight", value:"IPFire 2.17 - Core 93  comes with various security fixes in the Squid web proxy, the dnsmasq DNS proxy
 server and the Perl-compatible regular expressions library.");
 
- script_tag(name: "solution" , value:"Update to IPFire 2.17 - Core Update 93");
- script_tag(name: "summary" , value:"IPFire 2.17 - Core Update 93 fixes multiple security vulnerabilities.");
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution", value:"Update to IPFire 2.17 - Core Update 93");
+  script_tag(name:"summary", value:"IPFire 2.17 - Core Update 93 fixes multiple security vulnerabilities.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-08-18 13:36:54 +0200 (Tue, 18 Aug 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gather-package-list.nasl");
- script_mandatory_keys("ipfire/system-release");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-08-18 13:36:54 +0200 (Tue, 18 Aug 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gather-package-list.nasl");
+  script_mandatory_keys("ipfire/system-release");
 
  exit(0);
 }

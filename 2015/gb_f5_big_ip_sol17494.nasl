@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol17494.nasl 6404 2017-06-22 10:00:06Z teissa $
+# $Id: gb_f5_big_ip_sol17494.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # F5 BIG-IP - SOL17494 - PAM vulnerability CVE-2015-3238
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105425");
- script_cve_id("CVE-2015-3238");
- script_tag(name:"cvss_base", value:"5.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
- script_version ("$Revision: 6404 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105425");
+  script_cve_id("CVE-2015-3238");
+  script_tag(name:"cvss_base", value:"5.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
+  script_version("$Revision: 11291 $");
 
- script_name("F5 BIG-IP - SOL17494 - PAM vulnerability CVE-2015-3238");
+  script_name("F5 BIG-IP - SOL17494 - PAM vulnerability CVE-2015-3238");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/17000/400/sol17494.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/17000/400/sol17494.html");
 
- script_tag(name: "impact" , value:"This vulnerability allows the unauthorized disclosure of information and disruption of service.");
+  script_tag(name:"impact", value:"This vulnerability allows the unauthorized disclosure of information and disruption of service.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"The _unix_run_helper_binary function in the pam_unix module in Linux-PAM (aka pam) before 1.2.1, when unable to directly access passwords, allows local users to enumerate usernames or cause a denial of service (hang) via a large password. (CVE-2015-3238)");
+  script_tag(name:"insight", value:"The _unix_run_helper_binary function in the pam_unix module in Linux-PAM (aka pam) before 1.2.1, when unable to directly access passwords, allows local users to enumerate usernames or cause a denial of service (hang) via a large password. (CVE-2015-3238)");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The remote host is missing a security patch.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The remote host is missing a security patch.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-22 12:00:06 +0200 (Thu, 22 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-10-28 11:01:54 +0100 (Wed, 28 Oct 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-10-28 11:01:54 +0100 (Wed, 28 Oct 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

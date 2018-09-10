@@ -1,6 +1,6 @@
 ###############################################################################
 #OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_dos_vuln01_nov15_win.nasl 7546 2017-10-24 11:58:30Z cfischer $
+# $Id: gb_openssl_mult_dos_vuln01_nov15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # OpenSSL Multiple Denial of Service Vulnerabilities -01 Nov15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806730");
-  script_version("$Revision: 7546 $");
+  script_version("$Revision: 11291 $");
   script_cve_id("CVE-2015-0292", "CVE-2014-8176");
-  script_bugtraq_id(73228,75159);
+  script_bugtraq_id(73228, 75159);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-24 13:58:30 +0200 (Tue, 24 Oct 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-24 18:49:30 +0530 (Tue, 24 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL Multiple Denial of Service Vulnerabilities -01 Nov15 (Windows)");
@@ -42,10 +42,9 @@ if(description)
   script_tag(name:"summary", value:"This host is running OpenSSL and is prone
   to multiple denial of service vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"Multiple flaws are due to: 
+  script_tag(name:"insight", value:"Multiple flaws are due to:
   - Integer underflow in the 'EVP_DecodeUpdate' function in 'crypto/evp/encode.c' script in the
     base64-decoding implementation.
   - Memory corruption vulnerability while handling data structures.");
@@ -63,15 +62,15 @@ if(description)
   For updates refer to https://www.openssl.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://www.ubuntu.com/usn/USN-2537-1");
-  script_xref(name : "URL" , value : "https://www.openssl.org/news/secadv/20150319.txt");
-  script_xref(name : "URL" , value : "https://www.openssl.org/news/secadv/20150319.txt");
+  script_xref(name:"URL", value:"http://www.ubuntu.com/usn/USN-2537-1");
+  script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20150319.txt");
+  script_xref(name:"URL", value:"https://www.openssl.org/news/secadv/20150319.txt");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_openssl_detect.nasl", "os_detection.nasl");
-  script_mandatory_keys("OpenSSL/installed","Host/runs_windows");
+  script_mandatory_keys("OpenSSL/installed", "Host/runs_windows");
   script_require_ports("Services/www", 80);
   exit(0);
 }
@@ -80,15 +79,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-sslVer = "";
-
-## Get Version
 if(!sslVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Checking for Vulnerable version
 if(sslVer =~ "^(0\.9\.8)")
 {
   if(version_is_less(version:sslVer, test_version:"0.9.8za"))

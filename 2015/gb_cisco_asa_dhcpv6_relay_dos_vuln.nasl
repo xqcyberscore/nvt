@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_asa_dhcpv6_relay_dos_vuln.nasl 6207 2017-05-24 09:04:07Z teissa $
+# $Id: gb_cisco_asa_dhcpv6_relay_dos_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
 #
 # Cisco ASA Software DHCPv6 Relay Denial of Service Vulnerability
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:cisco:asa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806529");
-  script_version("$Revision: 6207 $");
+  script_version("$Revision: 11291 $");
   script_tag(name:"deprecated", value:TRUE);
   script_cve_id("CVE-2015-0578");
   script_bugtraq_id(72718);
   script_tag(name:"cvss_base", value:"5.7");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-24 11:04:07 +0200 (Wed, 24 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-20 12:27:12 +0530 (Fri, 20 Nov 2015)");
   script_tag(name:"qod_type", value:"package");
   script_name("Cisco ASA Software DHCPv6 Relay Denial of Service Vulnerability");
@@ -45,8 +45,7 @@ if(description)
   This NVT has been replaced by NVT gb_cisco_asa_CSCur45455.nasl
    (OID:1.3.6.1.4.1.25623.1.0.106053).");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw is due to insufficient validation
   of crafted DHCP packets. Cisco ASA Software is affected by this vulnerability
@@ -69,9 +68,9 @@ if(description)
   For updates refer to http://www.cisco.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1031542");
-  script_xref(name : "URL" , value : "http://tools.cisco.com/security/center/viewAlert.x?alertId=37022");
-  script_xref(name : "URL" , value : "http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150115-asa-dhcp");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1031542");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/viewAlert.x?alertId=37022");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20150115-asa-dhcp");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -87,17 +86,12 @@ exit(66); ## This NVT is deprecated as addressed in
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-cisVer = "";
-
-## Get the version
 if(!cisVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
 cisVer = ereg_replace(string:cisVer, pattern:"\(([0-9.]+)\)", replace:".\1");
 
-## Checking for Vulnerable version
 if(cisVer =~ "^(7|8|9)\.")
 {
   if(version_in_range(version:cisVer, test_version:"7.2", test_version2:"8.2.5.57"))
