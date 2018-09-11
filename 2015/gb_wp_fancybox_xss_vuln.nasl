@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_fancybox_xss_vuln.nasl 6534 2017-07-05 09:58:29Z teissa $
+# $Id: gb_wp_fancybox_xss_vuln.nasl 11299 2018-09-10 10:23:24Z mmartin $
 #
 # FancyBox for Wordpress XSS Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105958");
-  script_version("$Revision: 6534 $");
-  script_tag(name : "last_modification", value : "$Date: 2017-07-05 11:58:29 +0200 (Wed, 05 Jul 2017) $");
-  script_tag(name : "creation_date", value : "2015-03-02 09:33:03 +0700 (Mon, 02 Mar 2015)");
-  script_tag(name : "cvss_base", value : "4.3");
-  script_tag(name : "cvss_base_vector", value : "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11299 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-03-02 09:33:03 +0700 (Mon, 02 Mar 2015)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
@@ -52,24 +52,24 @@ if (description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name : "summary", value : "FancyBox for Wordpress is prone to a XSS vulnerability.");
+  script_tag(name:"summary", value:"FancyBox for Wordpress is prone to a XSS vulnerability.");
 
-  script_tag(name : "vuldetect", value : "Tries to detect the version of FancyBox plugin.");
+  script_tag(name:"vuldetect", value:"Tries to detect the version of FancyBox plugin.");
 
-  script_tag(name : "insight", value : "The FancyBox for WordPress plugin before 3.0.3 does not
+  script_tag(name:"insight", value:"The FancyBox for WordPress plugin before 3.0.3 does not
   properly restrict access, which allows remote attackers to conduct XSS attacks via the mfbfw parameter
-  in an update action to wp-admin/admin-post.php,");
+  in an update action to wp-admin/admin-post.php, ");
 
-  script_tag(name : "impact", value : "Remote attackers may be able to inject arbitrary web script
+  script_tag(name:"impact", value:"Remote attackers may be able to inject arbitrary web script
   or HTML.");
 
-  script_tag(name : "affected", value : "FancyBox for Wordpress 3.0.2 and below");
+  script_tag(name:"affected", value:"FancyBox for Wordpress 3.0.2 and below");
 
-  script_tag(name : "solution", value : "Upgrade to FancyBox for Wordpress 3.0.3 or later.");
+  script_tag(name:"solution", value:"Upgrade to FancyBox for Wordpress 3.0.3 or later.");
 
-  script_xref(name : "URL", value : "http://blog.sucuri.net/2015/02/zero-day-in-the-fancybox-for-wordpress-plugin.html");
-  script_xref(name : "URL", value : "http://www.exploit-db.com/exploits/36087/");
-  script_xref(name : "URL", value : "https://wordpress.org/plugins/fancybox-for-wordpress/changelog/");
+  script_xref(name:"URL", value:"http://blog.sucuri.net/2015/02/zero-day-in-the-fancybox-for-wordpress-plugin.html");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/36087/");
+  script_xref(name:"URL", value:"https://wordpress.org/plugins/fancybox-for-wordpress/changelog/");
 
   exit(0);
 }
@@ -85,7 +85,6 @@ if (!port = get_app_port(cpe:CPE))
 if (!dir = get_app_location(cpe:CPE, port:port))
   exit(0);
 
-# Try to get the version
 url = dir + 'wp-content/plugins/fancybox-for-wordpress/readme.txt';
 
 req = http_get(port:port, item:url);

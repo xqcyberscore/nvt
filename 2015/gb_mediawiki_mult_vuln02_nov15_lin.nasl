@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_mult_vuln02_nov15_lin.nasl 9384 2018-04-06 12:20:19Z cfischer $
+# $Id: gb_mediawiki_mult_vuln02_nov15_lin.nasl 11296 2018-09-10 09:08:51Z mmartin $
 #
 # MediaWiki Multiple Vulnerabilities -02 Nov15 (Linux)
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806633");
-  script_version("$Revision: 9384 $");
+  script_version("$Revision: 11296 $");
   script_cve_id("CVE-2013-6452", "CVE-2013-6453", "CVE-2013-6454", "CVE-2013-6472");
   script_bugtraq_id(65003);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-26 16:46:38 +0530 (Thu, 26 Nov 2015)");
   script_name("MediaWiki Multiple Vulnerabilities -02 Nov15 (Linux)");
 
   script_tag(name:"summary", value:"This host is installed with MediaWiki
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
 
@@ -73,13 +72,13 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://lists.wikimedia.org/pipermail/mediawiki-announce/2014-January/000138.html");
+  script_xref(name:"URL", value:"https://lists.wikimedia.org/pipermail/mediawiki-announce/2014-January/000138.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("find_service.nasl", "os_detection.nasl", "secpod_mediawiki_detect.nasl");
-  script_mandatory_keys("mediawiki/installed","Host/runs_unixoide");
+  script_mandatory_keys("mediawiki/installed", "Host/runs_unixoide");
   script_require_ports("Services/www", 80);
   exit(0);
 }

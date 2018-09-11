@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_security_advisory_3050995.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_microsoft_security_advisory_3050995.nasl 11296 2018-09-10 09:08:51Z mmartin $
 #
 # Microsoft Digital Certificates Security Advisory (3050995)
 #
@@ -26,10 +26,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805507");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11296 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-25 18:58:02 +0530 (Wed, 25 Mar 2015)");
   script_name("Microsoft Digital Certificates Security Advisory (3050995)");
 
@@ -75,7 +75,6 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-##Windows 8, Windows Server 2012, Windows RT, Windows 8.1, Windows RT 8.1, and
 ##For Windows Vista, Windows 7, Windows Server 2008, or Windows Server 2008 R2
 ##systems will be automatically updated by updater of revoked certificates .
 

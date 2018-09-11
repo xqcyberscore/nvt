@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_znc_60199.nasl 8882 2018-02-20 10:35:37Z cfischer $
+# $Id: sw_znc_60199.nasl 11296 2018-09-10 09:08:51Z mmartin $
 #
 # ZNC WebAdmin Multiple NULL Pointer Dereference Denial of Service Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:znc:znc';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111032");
-  script_version("$Revision: 8882 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-20 11:35:37 +0100 (Tue, 20 Feb 2018) $");
+  script_version("$Revision: 11296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-29 12:00:00 +0200 (Sat, 29 Aug 2015)");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
@@ -73,6 +73,6 @@ if( version_is_equal( version:vers, test_version:"1.0" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"1.2" );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_files_external_info_disc_vuln.nasl 9384 2018-04-06 12:20:19Z cfischer $
+# $Id: gb_owncloud_files_external_info_disc_vuln.nasl 11299 2018-09-10 10:23:24Z mmartin $
 #
 # ownCloud 'files_external' RSA Key Validation Information Disclosure Vulnerability
 #
@@ -29,41 +29,40 @@ CPE = "cpe:/a:owncloud:owncloud";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805283");
-  script_version("$Revision: 9384 $");
+  script_version("$Revision: 11299 $");
   script_cve_id("CVE-2014-5341");
   script_bugtraq_id(70039);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 14:20:19 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-19 17:25:47 +0530 (Thu, 19 Feb 2015)");
   script_name("ownCloud 'files_external' RSA Key Validation Information Disclosure Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with ownCloud and
+  script_tag(name:"summary", value:"The host is installed with ownCloud and
   is prone to information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the
-  help of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The error exists due to error in the SFTP
+  script_tag(name:"insight", value:"The error exists due to error in the SFTP
   external storage driver that is triggered as RSA Host Keys are verified after
   logging in.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to conduct man-in-the-middle attack and spoof a valid host key
   bypassing authentication.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"ownCloud Server 6.x before 6.0.5");
+  script_tag(name:"affected", value:"ownCloud Server 6.x before 6.0.5");
 
-  script_tag(name: "solution" , value:"Upgrade to ownCloud Server 6.0.5 or later.
+  script_tag(name:"solution", value:"Upgrade to ownCloud Server 6.0.5 or later.
   For updates refer to http://owncloud.org");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"remote_banner");
 
-  script_xref(name : "URL" , value : "https://owncloud.org/security/advisory/?id=oc-sa-2014-019");
+  script_xref(name:"URL", value:"https://owncloud.org/security/advisory/?id=oc-sa-2014-019");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -87,7 +86,6 @@ if(!ownVer = get_app_version(cpe:CPE, port:ownPort)){
 
 if(ownVer =~ "^6")
 {
-  ## Grep for vulnerable version
   if(version_in_range(version:ownVer, test_version:"6.0.0", test_version2:"6.0.4"))
   {
     report = 'Installed version: ' + ownVer + '\n' +

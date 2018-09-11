@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_management_center_cisco-sa-20151211-fmc.nasl 6333 2017-06-14 10:00:49Z teissa $
+# $Id: gb_cisco_firesight_management_center_cisco-sa-20151211-fmc.nasl 11299 2018-09-10 10:23:24Z mmartin $
 #
-# Cisco FireSIGHT Management Center GET Request Information Disclosure Vulnerability 
+# Cisco FireSIGHT Management Center GET Request Information Disclosure Vulnerability
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -29,37 +29,37 @@ CPE = "cpe:/a:cisco:firesight_management_center";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105484");
- script_cve_id("CVE-2015-6419");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
- script_version ("$Revision: 6333 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105484");
+  script_cve_id("CVE-2015-6419");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:N/A:N");
+  script_version("$Revision: 11299 $");
 
- script_name("Cisco FireSIGHT Management Center GET Request Information Disclosure Vulnerability ");
+  script_name("Cisco FireSIGHT Management Center GET Request Information Disclosure Vulnerability ");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151211-fmc");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151211-fmc");
 
- script_tag(name: "impact" , value:"Disclosure of sensitive information from the underlying operating system.");
+  script_tag(name:"impact", value:"Disclosure of sensitive information from the underlying operating system.");
 
- script_tag(name: "vuldetect" , value:"Check the version");
+  script_tag(name:"vuldetect", value:"Check the version");
 
- script_tag(name: "insight" , value:"The vulnerability is due to improper sanitation of user-supplied input. An attacker could exploit this vulnerability by sending special GET requests to a vulnerable device.");
+  script_tag(name:"insight", value:"The vulnerability is due to improper sanitation of user-supplied input. An attacker could exploit this vulnerability by sending special GET requests to a vulnerable device.");
 
- script_tag(name: "solution" , value:"Updates are available. Please see the references or vendor advisory for more information.");
- script_tag(name: "summary" , value:"A vulnerability in the Cisco FireSIGHT Management Center could allow an authenticated, remote attacker to view sensitive information from the underlying operating system.");
- script_tag(name: "affected" , value:"Cisco FireSIGHT Management Center running FireSIGHT System Software releases 4.10.3, 5.2.0, 5.3.0, 5.3.1, and 5.4.0 are vulnerable.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references or vendor advisory for more information.");
+  script_tag(name:"summary", value:"A vulnerability in the Cisco FireSIGHT Management Center could allow an authenticated, remote attacker to view sensitive information from the underlying operating system.");
+  script_tag(name:"affected", value:"Cisco FireSIGHT Management Center running FireSIGHT System Software releases 4.10.3, 5.2.0, 5.3.0, 5.3.1, and 5.4.0 are vulnerable.");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-12-15 10:41:43 +0100 (Tue, 15 Dec 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_firesight_management_center_version.nasl",
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-12-15 10:41:43 +0100 (Tue, 15 Dec 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_firesight_management_center_version.nasl",
                      "gb_cisco_firesight_management_center_http_detect.nasl");
- script_mandatory_keys("cisco_firesight_management_center/version");
+  script_mandatory_keys("cisco_firesight_management_center/version");
  exit(0);
 }
 
@@ -81,7 +81,7 @@ foreach v ( vulnerable )
 
 if( VULN )
 {
-  report = 'Installed version: ' + version + '\n' + 
+  report = 'Installed version: ' + version + '\n' +
            'Fixed version:     See vendor advisory';
 
   security_message( port:0, data:report );

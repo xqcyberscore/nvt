@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prowiki_id_param_xss_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
+# $Id: gb_prowiki_id_param_xss_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
 #
 # ProWiki 'id' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802609");
-  script_version("$Revision: 5912 $");
+  script_version("$Revision: 11301 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-13 16:16:16 +0530 (Mon, 13 Feb 2012)");
   script_name("ProWiki 'id' Parameter Cross Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/109626/prowiki-xss.txt");
-  script_xref(name : "URL" , value : "http://st2tea.blogspot.in/2012/02/prowiki-cross-site-scripting.html");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/109626/prowiki-xss.txt");
+  script_xref(name:"URL", value:"http://st2tea.blogspot.in/2012/02/prowiki-cross-site-scripting.html");
 
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
@@ -43,21 +43,20 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to insert
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
   arbitrary HTML and script code, which will be executed in a user's browser
   session in the context of an affected site.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "ProWiki versions 2.0.045 and prior.");
-  script_tag(name : "insight" , value : "The flaw is due to improper validation of user-supplied input
+  script_tag(name:"affected", value:"ProWiki versions 2.0.045 and prior.");
+  script_tag(name:"insight", value:"The flaw is due to improper validation of user-supplied input
   to the 'id' parameter in 'wiki.cgi' (when 'action' is set to 'browse'), which
   allows attackers to execute arbitrary HTML and script code in a user's
   browser session in the context of an affected site.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running ProWiki and is prone to cross site scripting
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running ProWiki and is prone to cross site scripting
   vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -69,34 +68,21 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-dir = "";
-url = "";
-req = "";
-res = "";
-port = 0;
-
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/prowiki", "/wiki", cgi_dirs(port:port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   req = http_get(item:string(dir,"/wiki.cgi"),  port:port);
   res = http_keepalive_send_recv(port:port, data:req);
 
-  ## Confirm the application before trying exploit
   if(!isnull(res) && '>ProWiki' >< res)
   {
-    ## Construct Attack Request
     url = dir + "/wiki.cgi?action=browse&id=><script>alert(document.cookie)" +
                 "</script>'";
 
-    ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:port, url:url, check_header: TRUE,
        pattern:"<script>alert\(document.cookie\)</script>"))
     {

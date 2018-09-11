@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netmri_50646.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_netmri_50646.nasl 11306 2018-09-10 14:58:09Z mmartin $
 #
 # Infoblox NetMRI Admin Login Page Multiple Cross Site Scripting Vulnerabilities
 #
@@ -32,7 +32,7 @@ if (description)
   script_bugtraq_id(50646);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11306 $");
 
   script_name("Infoblox NetMRI Admin Login Page Multiple Cross Site Scripting Vulnerabilities");
 
@@ -40,7 +40,7 @@ if (description)
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2011/Nov/158");
   script_xref(name:"URL", value:"http://www.infoblox.com/en/products/netmri.html");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 16:58:09 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-25 12:37:48 +0200 (Tue, 25 Sep 2012)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -49,7 +49,7 @@ if (description)
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("gb_netmri_detect.nasl");
   script_require_ports("Services/www", 443);
-  script_mandatory_keys("netMRI/installed");
+  script_mandatory_keys("netMRI/detected");
   script_tag(name:"solution", value:"Reportedly the vendor has released an update to fix the issue.");
   script_tag(name:"summary", value:"Infoblox NetMRI is prone to multiple cross-site scripting
 vulnerabilities because it fails to properly sanitize user-supplied

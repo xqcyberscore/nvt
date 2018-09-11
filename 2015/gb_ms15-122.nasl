@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-122.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms15-122.nasl 11296 2018-09-10 09:08:51Z mmartin $
 #
 # Microsoft Windows Kerberos Local Security Bypass Vulnerability (3105256)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806556");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11296 $");
   script_cve_id("CVE-2015-6095");
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 08:59:53 +0530 (Wed, 11 Nov 2015)");
   script_name("Microsoft Windows Kerberos Local Security Bypass Vulnerability (3105256)");
 
@@ -157,13 +157,11 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Check for Kerberos.dll version
   if(version_is_less(version:dllVer, test_version:"10.0.10240.16590"))
   {
     Vulnerable_range = "Less than 10.0.10240.16590";
     VULN = TRUE ;
   }
-  ## Check for Kerberos.dll version
   if(version_in_range(version:dllVer, test_version:"10.0.10586.0", test_version2:"10.0.10586.2"))
   {
     Vulnerable_range = "10.0.10586.0 - 10.0.10586.2";

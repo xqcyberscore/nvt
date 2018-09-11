@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mysql_weak_passwords.nasl 8888 2018-02-20 14:11:44Z cfischer $
+# $Id: gb_mysql_weak_passwords.nasl 11301 2018-09-10 11:24:56Z asteins $
 #
-# MySQL / MariaDB weak password 
+# MySQL / MariaDB weak password
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103551");
-  script_version("$Revision: 8888 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-20 15:11:44 +0100 (Tue, 20 Feb 2018) $");
+  script_version("$Revision: 11301 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-23 10:38:09 +0200 (Thu, 23 Aug 2012)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -84,7 +84,7 @@ foreach password (passwords) {
   if(!res) {
     close(sock);
     exit(0);
-  }  
+  }
 
   plen = ord(res[0]) + (ord(res[1])/8) + (ord(res[2])/16);
   res =  recv(socket:sock, length:plen);
@@ -104,7 +104,7 @@ foreach password (passwords) {
   if(p < 5) {
     close(sock);
     exit(0);
-  }  
+  }
 
   caps = substr(res, 14+p, 15+p);
   if(!caps)continue;
@@ -114,13 +114,13 @@ foreach password (passwords) {
   if(!proto_is_41) {
     close(sock);
     exit(0);
-  }  
+  }
 
   salt = substr(res, 5+p, 12+p);
-  
+
   if(strlen(res) > (44+p)) {
     salt += substr(res, 32+p, 43+p);
-  }  
+  }
 
   sha_pass1 = SHA1(password);
   sha_pass2 = SHA1(sha_pass1);
@@ -130,19 +130,19 @@ foreach password (passwords) {
 
   for (i=0; i<l; i++) {
     pass += raw_string(ord(sha_pass1[i]) ^ ord(sha_pass3[i]));
-  }  
+  }
 
   req = raw_string(0x05,0xa6,0x0f,0x00,0x00,0x00,0x00,0x01,0x21,0x00,0x00,0x00,0x00,0x00,
                    0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
                    0x00,0x00,0x00,0x00);
 
   req += raw_string(username,0x00);
-  
+
   if(strlen(password) >0) {
     req += raw_string(0x14,pass);
   } else {
     req += raw_string(0x00);
-  }  
+  }
 
   if(native) req += raw_string(0x6d,0x79,0x73,0x71,0x6c,0x5f,0x6e,0x61,0x74,0x69,0x76,0x65,0x5f,0x70,0x61,0x73,0x73,0x77,0x6f,0x72,0x64,0x00);
 
@@ -210,9 +210,9 @@ foreach password (passwords) {
 
       security_message(port:port,data:data);
       exit(0);
-    }  
+    }
   }
-  close(sock);  
+  close(sock);
 }
 
 close(sock);

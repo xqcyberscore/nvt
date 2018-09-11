@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_visio_ms15-116.nasl 8615 2018-02-01 08:19:49Z cfischer $
+# $Id: gb_ms_visio_ms15-116.nasl 11296 2018-09-10 09:08:51Z mmartin $
 #
 # Microsoft Visio Privilege Elevation Vulnerability (3104540)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806167");
-  script_version("$Revision: 8615 $");
+  script_version("$Revision: 11296 $");
   script_cve_id("CVE-2015-2503");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-01 09:19:49 +0100 (Thu, 01 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 16:50:44 +0530 (Wed, 11 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Visio Privilege Elevation Vulnerability (3104540)");
@@ -52,8 +52,7 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name:"affected", value:"
-  Microsoft Visio 2007
+  script_tag(name:"affected", value:"Microsoft Visio 2007
   Microsoft Visio 2010
   Microsoft Visio 2013
   Microsoft Visio 2016");
@@ -64,15 +63,15 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3101553");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3101526");
-  script_xref(name : "URL" , value : "https://support.microsoft.com/en-us/kb/3101365");
-  script_xref(name : "URL" , value : "https://technet.microsoft.com/en-us/library/security/MS15-116");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3101553");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3101526");
+  script_xref(name:"URL", value:"https://support.microsoft.com/en-us/kb/3101365");
+  script_xref(name:"URL", value:"https://technet.microsoft.com/en-us/library/security/MS15-116");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
@@ -92,20 +91,19 @@ if(!sysPath){
 excelVer = fetch_file_version(sysPath, file_name:"visio.exe");
 if(excelVer =~ "^(12|14|15|16)\..*")
 {
-  if(excelVer =~ "^(12)"){
+  if(excelVer =~ "^12"){
     Vulnerable_range  =  "12 - 12.0.6735.4999";
   }
-  else if(excelVer =~ "^(14)"){
+  else if(excelVer =~ "^14"){
     Vulnerable_range  =  "14 - 14.0.7162.4999";
   }
-  else if(excelVer =~ "^(15)"){
+  else if(excelVer =~ "^15"){
     Vulnerable_range  =  "15 - 15.0.4771.0999";
   }
-  else if(excelVer =~ "^(16)"){
+  else if(excelVer =~ "^16"){
     Vulnerable_range  =  "16 - 16.0.4300.0999";
   }
 
-  # Check for visio.exe version for 2007, 2010, 2013
   if(version_in_range(version:excelVer, test_version:"12.0", test_version2:"12.0.6735.4999") ||
      version_in_range(version:excelVer, test_version:"14.0", test_version2:"14.0.7162.4999") ||
      version_in_range(version:excelVer, test_version:"15.0", test_version2:"15.0.4771.0999") ||

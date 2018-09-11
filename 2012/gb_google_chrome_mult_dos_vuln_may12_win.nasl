@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_dos_vuln_may12_win.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_google_chrome_mult_dos_vuln_may12_win.nasl 11301 2018-09-10 11:24:56Z asteins $
 #
 # Google Chrome Multiple Denial of Service Vulnerabilities - May 12 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802848");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11301 $");
   script_cve_id("CVE-2011-3078", "CVE-2011-3079", "CVE-2011-3080", "CVE-2011-3081",
                 "CVE-2012-1521");
   script_bugtraq_id(53309);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-07 15:15:45 +0530 (Mon, 07 May 2012)");
   script_name("Google Chrome Multiple Denial of Service Vulnerabilities - May 12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48992/");
@@ -50,9 +50,13 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Google Chrome version prior to 18.0.1025.168 on Windows");
   script_tag(name:"insight", value:"The flaws are due to
+
   - Multiple use after free errors exists, when handling floats.
+
   - A use after free error exists within the xml parser.
+
   - An error exists within the IPC validation.
+
   - A race condition exists within the sandbox IPC.");
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 18.0.1025.168 or later.
   For updates refer to http://www.google.com/chrome");
@@ -73,4 +77,7 @@ if(!chromeVer){
 
 if(version_is_less(version:chromeVer, test_version:"18.0.1025.168")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

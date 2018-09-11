@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_osclass_mult_xss_n_sql_inj_vuln.nasl 5940 2017-04-12 09:02:05Z teissa $
+# $Id: gb_osclass_mult_xss_n_sql_inj_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
 #
 # OSClass Multiple XSS and SQL Injection Vulnerabilities
 #
@@ -28,20 +28,20 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802970");
-  script_version("$Revision: 5940 $");
+  script_version("$Revision: 11301 $");
   script_bugtraq_id(51662);
   script_cve_id("CVE-2012-0973", "CVE-2012-0974", "CVE-2012-5162", "CVE-2012-5163");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-12 11:02:05 +0200 (Wed, 12 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-27 10:53:49 +0530 (Thu, 27 Sep 2012)");
   script_name("OSClass Multiple XSS and SQL Injection Vulnerabilities");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/47697");
-  script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23068");
-  script_xref(name : "URL" , value : "http://osclass.org/blog/2012/01/16/osclass-2-3-5/");
-  script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2012-01/0157.html");
-  script_xref(name : "URL" , value : "http://www.codseq.it/advisories/multiple_vulnerabilities_in_osclass");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/47697");
+  script_xref(name:"URL", value:"https://www.htbridge.com/advisory/HTB23068");
+  script_xref(name:"URL", value:"http://osclass.org/blog/2012/01/16/osclass-2-3-5/");
+  script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2012-01/0157.html");
+  script_xref(name:"URL", value:"http://www.codseq.it/advisories/multiple_vulnerabilities_in_osclass");
 
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
@@ -50,12 +50,12 @@ if (description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute arbitrary web
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary web
   script or HTML in a user's browser session in the context of an affected
   site and manipulate SQL queries by injecting arbitrary SQL code.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "OSClass version prior to 2.3.5");
-  script_tag(name : "insight" , value : "- Input passed via the 'sCategory' GET parameter to /index.php is not
+  script_tag(name:"affected", value:"OSClass version prior to 2.3.5");
+  script_tag(name:"insight", value:"- Input passed via the 'sCategory' GET parameter to /index.php is not
     properly sanitised before being used in SQL query.
   - Input passed via the 'sCity', 'sPattern', 'sPriceMax', 'sPriceMin' GET
     parameters to /index.php is not properly sanitised before being returned
@@ -65,9 +65,9 @@ if (description)
     SQL query.
   - Input passed via the 'id' GET parameter in enable_category action to
     index.php is not properly sanitised before being returned to the user.");
-  script_tag(name : "solution" , value : "Upgrade to OSClass version 2.3.5 or later
+  script_tag(name:"solution", value:"Upgrade to OSClass version 2.3.5 or later
   For updates refer to http://sourceforge.net/projects/osclass/files/");
-  script_tag(name : "summary" , value : "This host is running OSClass and is prone to multiple cross site scripting
+  script_tag(name:"summary", value:"This host is running OSClass and is prone to multiple cross site scripting
   and SQL injection vulnerabilities.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -78,26 +78,17 @@ if (description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-port = "";
-dir = "";
-url = "";
-
-## Get HTTP Host
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Iterate over possible dirs
 foreach dir (make_list_unique("/", "/osclass", cgi_dirs(port:port)))
 {
   if(dir == "/") dir = "";
   url = string(dir, "/oc-admin/index.php");
 
-  ## Confirm the application
   if(http_vuln_check(port:port, url:url, check_header:TRUE,
      pattern:'>OSClass admin panel login<', extra_check:'"OSClass">'))
   {
@@ -105,7 +96,6 @@ foreach dir (make_list_unique("/", "/osclass", cgi_dirs(port:port)))
     url = string(dir, '/index.php?page=search&sCity="' +
                       '><script>alert(document.cookie);</script>');
 
-    ## Check the response to confirm vulnerability
     if(http_vuln_check(port:port, url:url, check_header:TRUE,
                        pattern:"><script>alert\(document.cookie\);</script>",
                        extra_check:'>OSClass<'))

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zabbix_popup_bitem_php_sql_injection.nasl 7650 2017-11-03 13:34:50Z cfischer $
+# $Id: gb_zabbix_popup_bitem_php_sql_injection.nasl 11301 2018-09-10 11:24:56Z asteins $
 #
 # ZABBIX popup_bitem.php 'itemid' Parameter SQL Injection Vulnerability
 #
@@ -30,37 +30,29 @@ CPE = "cpe:/a:zabbix:zabbix";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103525");
-  script_version("$Revision: 7650 $");
+  script_version("$Revision: 11301 $");
   script_name("ZABBIX popup_bitem.php 'itemid' Parameter SQL Injection Vulnerabilit");
-  script_tag(name:"last_modification", value:"$Date: 2017-11-03 14:34:50 +0100 (Fri, 03 Nov 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-25 11:34:16 +0100 (Wed, 25 Jul 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
-  script_copyright("This script is Copyright (C) 2011 Greenbone Networks GmbH");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
   script_dependencies("zabbix_web_detect.nasl");
   script_require_ports("Services/www", 80);
   script_mandatory_keys("Zabbix/Web/installed");
 
   script_xref(name:"URL", value:"https://support.zabbix.com/browse/ZBX-5348");
 
-  tag_summary = "ZABBIX is prone to an SQL-injection vulnerability because it fails
+  script_tag(name:"summary", value:"ZABBIX is prone to an SQL-injection vulnerability because it fails
   to sufficiently sanitize user-supplied data before using it in an
-  SQL query.";
-
-  tag_impact = "Exploiting this issue could allow an attacker to compromise the
+  SQL query.");
+  script_tag(name:"impact", value:"Exploiting this issue could allow an attacker to compromise the
   application, access or modify data, or exploit latent vulnerabilities
-  in the underlying database.";
-
-  tag_affected = "ZABBIX versions 2.0.1 and earlier are affected.";
-
-  tag_solution = "Updates are available. Please see the references for more details.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"solution", value:tag_solution);
+  in the underlying database.");
+  script_tag(name:"affected", value:"ZABBIX versions 2.0.1 and earlier are affected.");
+  script_tag(name:"solution", value:"Updates are available. Please see the references for more details.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -80,6 +72,6 @@ if( http_vuln_check( port:port, url:url, pattern:"OpenVAS-SQL-Injection-Test" ) 
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

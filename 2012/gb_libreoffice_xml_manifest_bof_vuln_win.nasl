@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_xml_manifest_bof_vuln_win.nasl 10138 2018-06-08 12:45:06Z asteins $
+# $Id: gb_libreoffice_xml_manifest_bof_vuln_win.nasl 11301 2018-09-10 11:24:56Z asteins $
 #
 # LibreOffice XML Manifest Handling Buffer Overflow Vulnerabilities (Windows)
 #
@@ -27,33 +27,33 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803086");
-  script_version("$Revision: 10138 $");
+  script_version("$Revision: 11301 $");
   script_cve_id("CVE-2012-2665");
   script_bugtraq_id(54769);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:45:06 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-24 17:30:05 +0530 (Mon, 24 Dec 2012)");
   script_name("LibreOffice XML Manifest Handling Buffer Overflow Vulnerabilities (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/50142/");
-  script_xref(name : "URL" , value : "http://www.libreoffice.org/advisories/CVE-2012-2665/");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/50142/");
+  script_xref(name:"URL", value:"http://www.libreoffice.org/advisories/CVE-2012-2665/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_libreoffice_detect_portable_win.nasl");
   script_require_keys("LibreOffice/Win/Ver");
-  script_tag(name : "insight" , value : "Multiple heap-based buffer overflows in the XML manifest encryption tag
+  script_tag(name:"insight", value:"Multiple heap-based buffer overflows in the XML manifest encryption tag
   parsing functionality allows attacker to crash the application via crafted
   Open Document Tex (.odt) file.");
-  script_tag(name : "solution" , value : "Upgrade to LibreOffice version 3.5.5 or later,
+  script_tag(name:"solution", value:"Upgrade to LibreOffice version 3.5.5 or later,
   For updates refer to http://www.libreoffice.org/download/");
-  script_tag(name : "summary" , value : "This host is installed with LibreOffice and is prone to buffer
+  script_tag(name:"summary", value:"This host is installed with LibreOffice and is prone to buffer
   overflow vulnerabilities.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to cause a denial of
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
   service condition or execute arbitrary code.
   Impact Level: System/Application");
-  script_tag(name : "affected" , value : "LibreOffice version before 3.5.5 on Windows");
+  script_tag(name:"affected", value:"LibreOffice version before 3.5.5 on Windows");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);

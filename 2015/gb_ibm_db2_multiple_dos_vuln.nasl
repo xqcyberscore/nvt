@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_multiple_dos_vuln.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_ibm_db2_multiple_dos_vuln.nasl 11299 2018-09-10 10:23:24Z mmartin $
 #
 # IBM DB2 Multiple Denial of Service Vulnerabilities
 #
@@ -29,46 +29,45 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805035");
-  script_version("$Revision: 9381 $");
+  script_version("$Revision: 11299 $");
   script_cve_id("CVE-2014-6209", "CVE-2014-8901");
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-08 13:04:41 +0530 (Thu, 08 Jan 2015)");
   script_name("IBM DB2 Multiple Denial of Service Vulnerabilities");
 
-  script_tag(name: "summary" , value:"This host is running IBM DB2 and is
+  script_tag(name:"summary", value:"This host is running IBM DB2 and is
   prone to multiple denial of service vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version of IBM DB2
+  script_tag(name:"vuldetect", value:"Get the installed version of IBM DB2
   with the help of detect NVT and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaws are due to
+  script_tag(name:"insight", value:"The flaws are due to
   - An error during the handling of a specially crafted ALTER TABLE statement
     on an identity column.
   - An error when handling a specially crafted XML query, which can result in
     a consumption of CPU resources.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attacker
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to cause the server to terminate abnormally and cause a denial of service.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"
-  IBM DB2 versions 9.5 through FP10
+  script_tag(name:"affected", value:"IBM DB2 versions 9.5 through FP10
   IBM DB2 versions 9.7 through FP10
   IBM DB2 versions 9.8 through FP5
   IBM DB2 versions 10.1 through FP4
   IBM DB2 versions 10.5 through FP4");
 
-  script_tag(name: "solution" , value:"Apply the appropriate fix from below links,
+  script_tag(name:"solution", value:"Apply the appropriate fix from below links,
   http://www-01.ibm.com/support/docview.wss?uid=swg21690787
   http://www-01.ibm.com/support/docview.wss?uid=swg21692358");
 
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/99110");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/98684");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21690787");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21692358");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/99110");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/98684");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21690787");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21692358");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_category(ACT_GATHER_INFO);
@@ -84,10 +83,6 @@ if(description)
 include("http_func.inc");
 include("host_details.inc");
 include("version_func.inc");
-
-## Variable Initialization
-ibmVer  = "";
-ibmPort = "";
 
 if(!ibmPort = get_app_port(cpe:CPE)){
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_get_http_banner.nasl 11208 2018-09-04 08:04:34Z cfischer $
+# $Id: gb_get_http_banner.nasl 11310 2018-09-11 04:42:07Z ckuersteiner $
 #
 # HTTP Banner
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140170");
-  script_version("$Revision: 11208 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 10:04:34 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 11310 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 06:42:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-02-21 11:53:19 +0100 (Tue, 21 Feb 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -373,5 +373,6 @@ set_mandatory_key( key:"yawcam", regex: "Server: yawcam", banner:banner );
 set_mandatory_key( key:"JetBrainsIDEs", regex: "server: (PyCharm|WebStorm|CLion|DataGrip|IntelliJ|JetBrains|JetBrains|jetBrains|RubyMine)", banner:banner );
 set_mandatory_key( key:"tplink_httpd", regex: "Server: TP-LINK HTTPD/", banner:banner );
 set_mandatory_key( key:"Boa_or_micro_httpd", regex:"Server: (Boa/|micro_httpd)", banner:banner ); # For gb_dlink_dsl_detect.nasl
+set_mandatory_key( key:"monit", regex: "Server: monit", banner:banner );
 
 exit( 0 );

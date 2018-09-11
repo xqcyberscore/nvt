@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arubaos_cve_2015_1388.nasl 6333 2017-06-14 10:00:49Z teissa $
+# $Id: gb_arubaos_cve_2015_1388.nasl 11296 2018-09-10 09:08:51Z mmartin $
 #
 # ArubaOS Remote Access Point (RAP) Command Injection
 #
@@ -29,45 +29,45 @@ CPE = "cpe:/o:arubanetworks:arubaos";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105245");
- script_cve_id("CVE-2015-1388");
- script_tag(name:"cvss_base", value:"7.2");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 6333 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105245");
+  script_cve_id("CVE-2015-1388");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11296 $");
 
- script_name("ArubaOS Remote Access Point (RAP) Command Injection");
+  script_name("ArubaOS Remote Access Point (RAP) Command Injection");
 
- script_xref(name:"URL", value:"http://www.arubanetworks.com/assets/alert/ARUBA-PSA-2015-004.txt");
+  script_xref(name:"URL", value:"http://www.arubanetworks.com/assets/alert/ARUBA-PSA-2015-004.txt");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"The 'RAP console' feature in ArubaOS on Aruba access points in Remote Access Point (AP) mode allows remote
+  script_tag(name:"insight", value:"The 'RAP console' feature in ArubaOS on Aruba access points in Remote Access Point (AP) mode allows remote
 attackers to execute arbitrary commands via unspecified vectors.");
 
- script_tag(name: "solution" , value:"Upgrade to one of the following software versions:
+  script_tag(name:"solution", value:"Upgrade to one of the following software versions:
 - ArubaOS 6.3.1.15 or later
 - ArubaOS 6.4.2.4 or later");
 
- script_tag(name: "summary" , value:"Aruba has identified a problem with the 'RAP Console' feature used in
+  script_tag(name:"summary", value:"Aruba has identified a problem with the 'RAP Console' feature used in
 Aruba access points operating in Remote AP mode.");
 
- script_tag(name: "affected" , value:"- ArubaOS 5.x
+  script_tag(name:"affected", value:"- ArubaOS 5.x
 - ArubaOS 6.1.x
 - ArubaOS 6.2.x
 - ArubaOS 6.3 prior to 6.3.1.15
 - ArubaOS 6.4 prior to 6.4.2.4");
 
- script_tag(name:"solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-14 12:00:49 +0200 (Wed, 14 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-04-07 14:06:08 +0200 (Tue, 07 Apr 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_arubaos_detect.nasl");
- script_mandatory_keys("ArubaOS/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-04-07 14:06:08 +0200 (Tue, 07 Apr 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_arubaos_detect.nasl");
+  script_mandatory_keys("ArubaOS/version");
 
  exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webdepo_cms_sql_vuln.nasl 5819 2017-03-31 10:57:23Z cfi $
+# $Id: gb_webdepo_cms_sql_vuln.nasl 11299 2018-09-10 10:23:24Z mmartin $
 #
 # WebDepo CMS 'wood' Parameter SQL Injection Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805374");
-  script_version("$Revision: 5819 $");
+  script_version("$Revision: 11299 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:57:23 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-23 17:22:49 +0530 (Thu, 23 Apr 2015)");
   script_name("WebDepo CMS 'wood' Parameter SQL Injection Vulnerability");
 
@@ -58,8 +58,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"Workaround");
 
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2015/Mar/156");
-  script_xref(name : "URL" , value : "http://blog.inurl.com.br/2015/03/0day-webdepo-sql-injection.html");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2015/Mar/156");
+  script_xref(name:"URL", value:"http://blog.inurl.com.br/2015/03/0day-webdepo-sql-injection.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -74,11 +74,6 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-cmsPort = "";
-sndReq = "";
-rcvRes = "";
-
 cmsPort = get_http_port(default:80);
 
 foreach dir (make_list_unique("/", "/webdepot", "/webdepo",  cgi_dirs(port:cmsPort)))
@@ -88,18 +83,16 @@ foreach dir (make_list_unique("/", "/webdepot", "/webdepo",  cgi_dirs(port:cmsPo
 
   rcvRes = http_get_cache(item:dir + "/",  port:cmsPort);
 
-  ##Confirm Application
   if (rcvRes && "webdepot<" >< rcvRes)
   {
-    ## Vulnerable Url
     url = dir + "/text.asp?wood=12'";
- 
+
     sndReq = http_get(item:url,  port:cmsPort);
     rcvRes = http_keepalive_send_recv(port:cmsPort, data:sndReq);
 
     if(rcvRes && ("You have an error in your SQL syntax" >< rcvRes ||
                   "Microsoft JET Database Engine" >< rcvRes ||
-                  "Microsoft VBScript runtime" >< rcvRes))   
+                  "Microsoft VBScript runtime" >< rcvRes))
     {
      security_message(port:cmsPort);
      exit(0);

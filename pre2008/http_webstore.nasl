@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: http_webstore.nasl 7577 2017-10-26 10:41:56Z cfischer $
+# $Id: http_webstore.nasl 11300 2018-09-10 10:52:15Z mmartin $
 #
 # eXtropia Web Store remote file retrieval
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10532");
-  script_version("$Revision: 7577 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Thu, 26 Oct 2017) $");
+  script_version("$Revision: 11300 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:52:15 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(1774);
   script_tag(name:"cvss_base", value:"5.0");
@@ -42,7 +42,8 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name:"solution", value:"None available at this time");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"summary", value:"eXtropia's Web Store shopping cart program allows the remote
   file retrieval of any file that ends in a .html extension. Further, by supplying a URL with an
   imbedded null byte, the script can be made to retrieve any file at all.");

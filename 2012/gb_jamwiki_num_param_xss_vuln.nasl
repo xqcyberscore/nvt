@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jamwiki_num_param_xss_vuln.nasl 11057 2018-08-20 13:59:30Z asteins $
+# $Id: gb_jamwiki_num_param_xss_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
 #
 # JamWiki 'num' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802621");
-  script_version("$Revision: 11057 $");
+  script_version("$Revision: 11301 $");
   script_bugtraq_id(52829);
   script_cve_id("CVE-2012-1983");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:59:30 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-02 11:11:11 +0530 (Mon, 02 Apr 2012)");
   script_name("JamWiki 'num' Parameter Cross Site Scripting Vulnerability");
 
@@ -80,7 +80,6 @@ foreach dir (make_list_unique("/", "/jamwiki", "/JAMWiki", "/wiki", cgi_dirs(por
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   req = http_get(item: dir + "/en/StartingPoints", port:port);
   res = http_keepalive_send_recv(port:port, data:req);
 

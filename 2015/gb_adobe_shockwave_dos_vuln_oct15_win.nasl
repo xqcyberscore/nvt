@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_dos_vuln_oct15_win.nasl 6600 2017-07-07 09:58:31Z teissa $
+# $Id: gb_adobe_shockwave_dos_vuln_oct15_win.nasl 11299 2018-09-10 10:23:24Z mmartin $
 #
 # Adobe Shockwave Player Denial of Service Vulnerability Oct15 (Windows)
 #
@@ -29,39 +29,38 @@ CPE = "cpe:/a:adobe:shockwave_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806520");
-  script_version("$Revision: 6600 $");
+  script_version("$Revision: 11299 $");
   script_cve_id("CVE-2015-7649");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-07 11:58:31 +0200 (Fri, 07 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-29 18:35:04 +0530 (Thu, 29 Oct 2015)");
   script_name("Adobe Shockwave Player Denial of Service Vulnerability Oct15 (Windows)");
 
-  script_tag(name: "summary" , value: "This host is installed with Adobe Shockwave
+  script_tag(name:"summary", value:"This host is installed with Adobe Shockwave
   Player and is prone to denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "The flaw is due to a memory corruption
+  script_tag(name:"insight", value:"The flaw is due to a memory corruption
   vulnerability.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary code or cause a denial of service.
 
   Impact Level: System/Application.");
 
-  script_tag(name: "affected" , value:"Adobe Shockwave Player version before
+  script_tag(name:"affected", value:"Adobe Shockwave Player version before
   12.2.1.171 on Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to Adobe Shockwave Player version
+  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player version
   12.2.0.171 or later. For updates refer to http://get.adobe.com/shockwave");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL" , value : "https://helpx.adobe.com/security/products/shockwave/apsb15-26.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/shockwave/apsb15-26.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -75,15 +74,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-playerVer = "";
-
-## Get version
 if(!playerVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:playerVer, test_version:"12.2.1.171"))
 {
   report = 'Installed version: ' + playerVer + '\n' +

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-111.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms15-111.nasl 11296 2018-09-10 09:08:51Z mmartin $
 #
 # Microsoft Windows Privilege Elevation Vulnerabilities (3096447)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805762");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11296 $");
   script_cve_id("CVE-2015-2549", "CVE-2015-2550", "CVE-2015-2552", "CVE-2015-2553",
                 "CVE-2015-2554");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 10:44:11 +0530 (Wed, 14 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Privilege Elevation Vulnerabilities (3096447)");
@@ -149,7 +149,6 @@ if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 
 if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Check for Ntoskrnl.exe version
   if(version_is_less(version:exeVer, test_version:"10.0.10240.16545"))
   {
     Vulnerable_range = "Less than 10.0.10240.16545";

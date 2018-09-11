@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln_dec15_macosx.nasl 6254 2017-05-31 09:04:18Z teissa $
+# $Id: gb_adobe_air_mult_vuln_dec15_macosx.nasl 11299 2018-09-10 10:23:24Z mmartin $
 #
 # Adobe Air Multiple Vulnerabilities Dec15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806782");
-  script_version("$Revision: 6254 $");
+  script_version("$Revision: 11299 $");
   script_cve_id("CVE-2015-8045", "CVE-2015-8047", "CVE-2015-8048", "CVE-2015-8049",
                 "CVE-2015-8050", "CVE-2015-8418", "CVE-2015-8454", "CVE-2015-8455",
                 "CVE-2015-8055", "CVE-2015-8056", "CVE-2015-8057", "CVE-2015-8058",
@@ -56,17 +56,16 @@ if(description)
   script_bugtraq_id(78717, 78718, 78715, 78714, 78716, 78712, 78710, 78715, 78713);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 11:04:18 +0200 (Wed, 31 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 15:25:53 +0530 (Thu, 10 Dec 2015)");
   script_name("Adobe Air Multiple Vulnerabilities Dec15 (Mac OS X)");
 
-  script_tag(name: "summary" , value: "This host is installed with Adobe Air
+  script_tag(name:"summary", value:"This host is installed with Adobe Air
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value: "Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value: "Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
   - Multiple heap buffer overflow vulnerabilities.
   - Multiple memory corruption vulnerabilities.
   - Multiple security bypass vulnerabilities.
@@ -76,16 +75,16 @@ if(description)
   - A buffer overflow vulnerability.
   - Multiple use-after-free vulnerabilities.");
 
-  script_tag(name: "impact" , value: "Successful exploitation will allow attackers
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers
   to bypass security restrictions and execute arbitrary code on the affected
   system.
 
   Impact Level: System/Application.");
 
-  script_tag(name: "affected" , value:"Adobe Air version before 20.0.0.204
+  script_tag(name:"affected", value:"Adobe Air version before 20.0.0.204
   on Mac OS X.");
 
-  script_tag(name: "solution" , value:"Upgrade to Adobe Air version
+  script_tag(name:"solution", value:"Upgrade to Adobe Air version
   20.0.0.204 or later.
   For updates refer to http://get.adobe.com/air");
 
@@ -93,7 +92,7 @@ if(description)
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name: "URL" , value :"https://helpx.adobe.com/security/products/flash-player/apsb15-32.html");
+  script_xref(name:"URL", value:"https://helpx.adobe.com/security/products/flash-player/apsb15-32.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -107,15 +106,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-airVer = "";
-
-## Get version
 if(!airVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:airVer, test_version:"20.0.0.204"))
 {
   report = 'Installed version: ' + airVer + '\n' +

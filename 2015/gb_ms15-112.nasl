@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-112.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms15-112.nasl 11296 2018-09-10 09:08:51Z mmartin $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (3104517)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805773");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11296 $");
   script_cve_id("CVE-2015-2427", "CVE-2015-6064", "CVE-2015-6065", "CVE-2015-6066",
                 "CVE-2015-6068", "CVE-2015-6069", "CVE-2015-6070", "CVE-2015-6071",
                 "CVE-2015-6072", "CVE-2015-6073", "CVE-2015-6074", "CVE-2015-6075",
@@ -39,7 +39,7 @@ if(description)
                 "CVE-2015-6089");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-11 08:52:04 +0530 (Wed, 11 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (3104517)");
@@ -194,14 +194,12 @@ else if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 
 else if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Windows 10 Core
   if(version_is_less(version:dllVer, test_version:"11.0.10240.16590"))
   {
     Vulnerable_range = "Less than 11.0.10240.16590";
     VULN = TRUE ;
   }
 
-  ## Windows 10 version 1511
   else if(version_in_range(version:dllVer, test_version:"11.0.10586.0", test_version2:"11.0.10586.2"))
   {
     Vulnerable_range = "11.0.10586.0 - 11.0.10586.2";

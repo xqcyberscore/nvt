@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cocsoft_stream_down_bof_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_cocsoft_stream_down_bof_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
 #
 # CoCSoft Stream Down Buffer overflow Vulnerability
 #
@@ -24,48 +24,38 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to execute
-arbitrary code in the context of the application.
-
-Impact Level: System/Application";
-
-tag_affected = "CoCSoft Stream Down version 6.8.0";
-
-tag_insight = "The flaw is due to an unspecified error in the application, which
-can be exploited to cause a heap-based buffer overflow.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is installed with CoCSoft Stream Down and is prone to
-  buffer overflow vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802551");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11301 $");
   script_cve_id("CVE-2011-5052");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-02 16:06:04 +0530 (Mon, 02 Jan 2012)");
   script_name("CoCSoft Stream Down Buffer overflow Vulnerability");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18283/");
-  script_xref(name : "URL" , value : "http://dev.metasploit.com/redmine/issues/6168");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18283/");
+  script_xref(name:"URL", value:"http://dev.metasploit.com/redmine/issues/6168");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"insight", value:"The flaw is due to an unspecified error in the application, which
+can be exploited to cause a heap-based buffer overflow.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is installed with CoCSoft Stream Down and is prone to
+  buffer overflow vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
+arbitrary code in the context of the application.
+
+Impact Level: System/Application");
+  script_tag(name:"affected", value:"CoCSoft Stream Down version 6.8.0");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
@@ -89,17 +79,14 @@ foreach item(registry_enum_keys(key:key))
 {
   cocName = registry_get_sz(key:key + item, item:"DisplayName");
 
-  ## Check DisplayName for CoCSoft StreamDown
   if("StreamDown" >< cocName)
   {
-    ## Get CoCSoft StreamDown version
     cocVer = eregmatch(pattern:"[0-9.]+", string:cocName);
     if(cocVer[0]!= NULL)
     {
-      ## Check for CoCSoft StreamDown version
       if(version_is_equal(version:cocVer[0], test_version:"6.8.0"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nidersoft_mp3_conv_seh.nasl 9600 2018-04-25 08:48:41Z asteins $
+# $Id: gb_nidersoft_mp3_conv_seh.nasl 11300 2018-09-10 10:52:15Z mmartin $
 #
 # Nidesoft MP3 Converter SEH Local Buffer Overflow Vulnerability (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:Nidesoft:mp3_converter";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107108");
-  script_version("$Revision: 9600 $");
+  script_version("$Revision: 11300 $");
   script_tag(name:"cvss_base", value:"4.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-25 10:48:41 +0200 (Wed, 25 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:52:15 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-12-19 11:19:11 +0530 (Mon, 19 Dec 2016)");
 
   script_name("Nidesoft MP3 Converter SEH Local Buffer Overflow Vulnerability (Windows)");
@@ -43,9 +43,7 @@ if(description)
   script_tag(name:"impact", value:"A successful exploit could allow the attacker to execute arbitrary
   code on the system .");
   script_tag(name:"affected", value:"Nidesoft MP3 Converter 2.6.18 on Windows.");
-  script_tag(name:"solution" , value:"No solution or patch was made available for at least one year since disclosure of this vulnerability.
-  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
-
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"registry");

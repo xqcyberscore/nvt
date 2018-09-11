@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rabbit_wiki_title_param_xss_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
+# $Id: gb_rabbit_wiki_title_param_xss_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
 #
 # RabbitWiki 'title' Parameter Cross Site Scripting Vulnerability
 #
@@ -28,15 +28,15 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802608");
   script_bugtraq_id(51971);
-  script_version("$Revision: 5912 $");
+  script_version("$Revision: 11301 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-13 15:15:15 +0530 (Mon, 13 Feb 2012)");
   script_name("RabbitWiki 'title' Parameter Cross Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51971");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/109628/rabbitwiki-xss.txt");
-  script_xref(name : "URL" , value : "http://st2tea.blogspot.in/2012/02/rabbitwiki-cross-site-scripting.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51971");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/109628/rabbitwiki-xss.txt");
+  script_xref(name:"URL", value:"http://st2tea.blogspot.in/2012/02/rabbitwiki-cross-site-scripting.html");
 
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
@@ -45,21 +45,20 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to insert
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
   arbitrary HTML and script code, which will be executed in a user's browser
   session in the context of an affected site.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "RabbitWiki");
-  script_tag(name : "insight" , value : "The flaw is due to an improper validation of user-supplied
+  script_tag(name:"affected", value:"RabbitWiki");
+  script_tag(name:"insight", value:"The flaw is due to an improper validation of user-supplied
   input to the 'title' parameter in 'index.php', which allows attackers to
   execute arbitrary HTML and script code in a user's browser session in the
   context of an affected site.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running RabbitWiki and is prone to cross site
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running RabbitWiki and is prone to cross site
   scripting vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -71,38 +70,23 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-
-dir = "";
-url = "";
-req = "";
-res = "";
-port = 0;
-
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/RabbitWiki", "/wiki", cgi_dirs(port:port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   res = http_get_cache(item: dir + "/index.php", port: port);
 
-  ## Confirm the application before trying exploit
   if(!isnull(res) && '>RabbitWiki<' >< res)
   {
-    ## Construct Attack Request
     url = dir + "/index.php?title=<script>alert(/openvas-xss-test/)</script>";
 
-    ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:port, url:url, check_header: TRUE,
        pattern:"<script>alert\(/openvas-xss-test/\)</script>"))
     {

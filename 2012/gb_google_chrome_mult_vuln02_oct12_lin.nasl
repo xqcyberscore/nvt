@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_oct12_lin.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_google_chrome_mult_vuln02_oct12_lin.nasl 11301 2018-09-10 11:24:56Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities-02 Oct12 (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802474");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11301 $");
   script_cve_id("CVE-2012-5112", "CVE-2012-5376");
   script_bugtraq_id(55867);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 12:50:25 +0530 (Mon, 15 Oct 2012)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Oct12 (Linux)");
   script_xref(name:"URL", value:"http://blog.chromium.org/2012/10/pwnium-2-results-and-wrap-up_10.html");
@@ -48,8 +48,10 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Google Chrome version prior to 22.0.1229.94 on Linux");
   script_tag(name:"insight", value:"Multiple flaws are due to
+
   - Use-after-free erorr in the SVG implementation in WebKit, allows remote
     attackers to execute arbitrary code via unspecified vectors.
+
   - An erorr in Inter-process Communication (IPC) implementation, allows
     remote attackers to bypass intended sandbox restrictions and write to
     arbitrary files by leveraging access to a renderer process.");
@@ -72,4 +74,7 @@ if(!chromeVer){
 
 if(version_is_less(version:chromeVer, test_version:"22.0.1229.94")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

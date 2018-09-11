@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefly_mediaserver_mult_dos_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_firefly_mediaserver_mult_dos_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
 #
 # Firefly MediaServer HTTP Header Multiple DoS Vulnerabilities
 #
@@ -24,41 +24,21 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to cause the server
-to crash, denying service to legitimate users.
-
-Impact Level: Application";
-
-tag_affected = "Firefly MediaServer version 1.0.0.1359 and prior";
-
-tag_insight = "The flaw is due to multiple NULL pointer dereference errors
-within the 'firefly.exe' when processing requests with malformed 'CONNECTION',
-'ACCEPT-LANGUGE', 'USER-AGENT', and 'HOST' HTTP header value or malformed HTTP
-protocol version.";
-
-tag_solution = "No solution or patch was made available for at least one year
-since disclosure of this vulnerability. Likely none will be provided anymore.
-General solution options are to upgrade to a newer release, disable respective
-features, remove the product or replace the product by another one.";
-
-tag_summary = "This host is running Firefly MediaServer and is prone to multiple
-denial of service vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803080");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11301 $");
   script_cve_id("CVE-2012-5875");
   script_bugtraq_id(56999);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-20 15:49:00 +0530 (Thu, 20 Dec 2012)");
   script_name("Firefly MediaServer HTTP Header Multiple DoS Vulnerabilities");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/80743");
-  script_xref(name : "URL" , value : "http://seclists.org/bugtraq/2012/Dec/114");
-  script_xref(name : "URL" , value : "https://www.htbridge.com/advisory/HTB23129");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118963/");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/80743");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2012/Dec/114");
+  script_xref(name:"URL", value:"https://www.htbridge.com/advisory/HTB23129");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/118963/");
 
   script_category(ACT_DENIAL);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -68,37 +48,39 @@ if(description)
   script_require_ports(9999);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause the server
+to crash, denying service to legitimate users.
+
+Impact Level: Application");
+  script_tag(name:"affected", value:"Firefly MediaServer version 1.0.0.1359 and prior");
+  script_tag(name:"insight", value:"The flaw is due to multiple NULL pointer dereference errors
+within the 'firefly.exe' when processing requests with malformed 'CONNECTION',
+'ACCEPT-LANGUGE', 'USER-AGENT', and 'HOST' HTTP header value or malformed HTTP
+protocol version.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Firefly MediaServer and is prone to multiple
+denial of service vulnerabilities.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
 
 include("http_func.inc");
 
-## Variable Initialization
-fmPort = 0;
-fmRes = "";
 fmReq = "";
-
-## Get Firefly MediaServer default TCP Port
 fmPort = 9999;
 if(!get_port_state(fmPort)){
   exit(0);
 }
 
 banner = get_http_banner(port:fmPort);
-## Confirm the application before trying exploit
 if("Server: mt-daapd" >!< banner){
   exit(0);
 }
 
 host = http_host_name(port:fmPort);
 
-## Construct and Send attack Request
 fmExp = string("GET / HTTP/1.1\r\n",
                "Host: ", host, "\r\n",
                "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",

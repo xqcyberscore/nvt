@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_solarwinds_fsm_rce_vuln.nasl 6431 2017-06-26 09:59:24Z teissa $
+# $Id: gb_solarwinds_fsm_rce_vuln.nasl 11296 2018-09-10 09:08:51Z mmartin $
 #
 # Solarwinds FSM Remote Code Execution Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:solarwinds:firewall_security_manager';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106014");
-  script_version("$Revision: 6431 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-06-26 11:59:24 +0200 (Mon, 26 Jun 2017) $");
-  script_tag(name: "creation_date", value: "2015-06-30 10:54:34 +0700 (Tue, 30 Jun 2015)");
+  script_version("$Revision: 11296 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-06-30 10:54:34 +0700 (Tue, 30 Jun 2015)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_cve_id("CVE-2015-2284");
 
@@ -51,26 +51,26 @@ if (description)
   script_dependencies("gb_solarwinds_fsm_detect.nasl");
   script_mandatory_keys("solarwinds_fsm/installed");
 
-  script_tag(name: "summary", value: "Solarwinds Firewall Security Manager is prone to a remote code
+  script_tag(name:"summary", value:"Solarwinds Firewall Security Manager is prone to a remote code
 execution vulnerability");
 
-  script_tag(name: "vuldetect", value: "Send a special crafted HTTP GET request and check the response.");
+  script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response.");
 
-  script_tag(name: "insight", value: "There are two vulnerabilities in Solarwinds FSM. The first one
+  script_tag(name:"insight", value:"There are two vulnerabilities in Solarwinds FSM. The first one
 is an authentication bypass via the Change Advisor interface due to a user-controlled session.putValue
 API in userlogin.jsp, allowing the attacker to set the 'username' attribute before authentication. The
 second problem is that the settings-new.jsp file will only check the 'username' attribute before
 authorizing the 'uploadFile' action, which can be exploited and allows the attacker to upload a fake
 xls host list file to the server, and results in arbitrary code execution under the context of SYSTEM.");
 
-  script_tag(name: "impact", value: "An unauthenticated attacker can obtain upload a fake xls host file
+  script_tag(name:"impact", value:"An unauthenticated attacker can obtain upload a fake xls host file
 to the server resulting in a arbitrary code execution under the context of SYSTEM.");
 
-  script_tag(name: "affected", value: "Solarwinds FSM 6.6.5 and previous versions.");
+  script_tag(name:"affected", value:"Solarwinds FSM 6.6.5 and previous versions.");
 
-  script_tag(name: "solution", value: "Apply the HotFix or upgrade to a later version.");
+  script_tag(name:"solution", value:"Apply the HotFix or upgrade to a later version.");
 
-  script_xref(name: "URL", value: "http://www.zerodayinitiative.com/advisories/ZDI-15-107/");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-15-107/");
 
   exit(0);
 }
@@ -96,7 +96,6 @@ if (res =~ "HTTP/1\.. 200" && res =~ "Set-Cookie: JSESSIONID=" && res =~ "Authen
   if (!sessionid[1])
     exit(0);
 
-  # Check if we are admin now
   url = dir + '/requesthome.jsp';
   req = 'GET ' + url + ' HTTP/1.1\r\n' +
         'Host: ' + http_host_name(port: port) + '\r\n' +

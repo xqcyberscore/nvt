@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netmri_detect.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_netmri_detect.nasl 11306 2018-09-10 14:58:09Z mmartin $
 #
 # NetMRI Detection
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103575");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11306 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 16:58:09 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-25 12:05:19 +0200 (Tue, 25 Sep 2012)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -81,7 +81,7 @@ if ("<title>NetMRI Login" >< res || "<title>Network Automation Login" >< res) {
     }
 
     set_kb_item(name: string("www/", port, "/netmri"), value: string(vers," under /"));
-    set_kb_item(name:"netMRI/installed", value:TRUE);
+    set_kb_item(name:"netMRI/detected", value:TRUE);
 
     cpe = build_cpe(value: vers, exp: "^([0-9.]+)", base: "cpe:/a:infoblox:netmri:");
     if (!cpe)

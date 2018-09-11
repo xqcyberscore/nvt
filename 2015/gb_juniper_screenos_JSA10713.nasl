@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_juniper_screenos_JSA10713.nasl 8841 2018-02-16 09:26:13Z cfischer $
+# $Id: gb_juniper_screenos_JSA10713.nasl 11296 2018-09-10 09:08:51Z mmartin $
 #
 # Multiple Security issues with ScreenOS (JSA10713)
 #
@@ -29,20 +29,20 @@ CPE = "cpe:/o:juniper:screenos";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105494");
- script_cve_id("CVE-2015-7755", "CVE-2015-7754", "CVE-2015-7756");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 8841 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105494");
+  script_cve_id("CVE-2015-7755", "CVE-2015-7754", "CVE-2015-7756");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11296 $");
 
- script_name("Multiple Security issues with ScreenOS (JSA10713)");
+  script_name("Multiple Security issues with ScreenOS (JSA10713)");
 
- script_xref(name:"URL", value:"http://kb.juniper.net/index?page=content&id=JSA10713&actp=RSS");
- script_xref(name:"URL", value:"http://kb.juniper.net/index?page=content&id=JSA10712&actp=RSS");
+  script_xref(name:"URL", value:"http://kb.juniper.net/index?page=content&id=JSA10713&actp=RSS");
+  script_xref(name:"URL", value:"http://kb.juniper.net/index?page=content&id=JSA10712&actp=RSS");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"The first issue allows unauthorized remote administrative access to the device over SSH or telnet. Exploitation of this vulnerability can lead to complete compromise
+  script_tag(name:"insight", value:"The first issue allows unauthorized remote administrative access to the device over SSH or telnet. Exploitation of this vulnerability can lead to complete compromise
 of the affected system. The second issue may allow a knowledgeable attacker who can monitor VPN traffic to decrypt that traffic. It is independent of the first issue.
 
 The third issue may result in a system crash during a crafted SSH negotiation when ssh-pka is configured and enabled on the firewall. In the worst case scenario, the unhandled SSH exception resulting
@@ -51,21 +51,21 @@ in a system crash could lead to remote code execution. This issue can affect any
  In February 2018 it was discovered that this vulnerability is being exploited by the 'DoubleDoor' Internet of Things
  (IoT) Botnet.");
 
- script_tag(name:  "solution" , value:"This issue was fixed in ScreenOS 6.2.0r19, 6.3.0r21, and all subsequent releases.");
+  script_tag(name:"solution", value:"This issue was fixed in ScreenOS 6.2.0r19, 6.3.0r21, and all subsequent releases.");
 
- script_tag(name: "summary" , value:"ScreenOS is vulnerable to an unauthorized remote administrative access to the device over SSH or telnet and to unauthorized decrypting of VPN traffic");
- script_tag(name: "affected" , value:"These issues can affect any product or platform running ScreenOS 6.2.0r15 through 6.2.0r18 and 6.3.0r12 through 6.3.0r20.");
+  script_tag(name:"summary", value:"ScreenOS is vulnerable to an unauthorized remote administrative access to the device over SSH or telnet and to unauthorized decrypting of VPN traffic");
+  script_tag(name:"affected", value:"These issues can affect any product or platform running ScreenOS 6.2.0r15 through 6.2.0r18 and 6.3.0r12 through 6.3.0r20.");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-02-16 10:26:13 +0100 (Fri, 16 Feb 2018) $");
- script_tag(name:"creation_date", value:"2015-12-18 09:58:55 +0100 (Fri, 18 Dec 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_screenos_version.nasl");
- script_mandatory_keys("ScreenOS/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-12-18 09:58:55 +0100 (Fri, 18 Dec 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_screenos_version.nasl");
+  script_mandatory_keys("ScreenOS/version");
 
  exit(0);
 }

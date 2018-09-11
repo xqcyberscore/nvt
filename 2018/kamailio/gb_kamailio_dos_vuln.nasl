@@ -1,8 +1,8 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kamailio_dos_vuln.nasl 10871 2018-08-10 07:00:33Z cfischer $
+# $Id: gb_kamailio_dos_vuln.nasl 11294 2018-09-10 08:13:29Z asteins $
 #
-# Kamailio < 5.0.7 & 5.1.x < 5.1.4 Denial of Service Vulnerability
+# Kamailio < 5.0.7 & 5.1.x < 5.1.4 Denial of Service Vulnerabilities
 #
 # Authors:
 # Adrian Steins <adrian.steins@greenbone.net>
@@ -30,19 +30,19 @@ CPE = "cpe:/a:kamailio:kamailio";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112340");
-  script_version("$Revision: 10871 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 09:00:33 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11294 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 10:13:29 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-03 15:52:17 +0700 (Tue, 03 Apr 2018)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
-  script_cve_id("CVE-2018-14767");
+  script_cve_id("CVE-2018-14767", "CVE-2018-16657");
 
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_name("Kamailio < 5.0.7 & 5.1.x < 5.1.4 Denial of Service Vulnerability");
+  script_name("Kamailio < 5.0.7 & 5.1.x < 5.1.4 Denial of Service Vulnerabilities");
 
   script_category(ACT_GATHER_INFO);
 
@@ -51,14 +51,21 @@ if (description)
   script_dependencies("gb_kamailio_detect.nasl");
   script_mandatory_keys("kamailio/installed");
 
-  script_tag(name:"summary", value:"Kamailio is prone to a denial of service vulnerability which may result in a
+  script_tag(name:"summary", value:"Kamailio is prone to multiple denial of service vulnerabilities which may result in a
   crash of the system.");
 
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name:"insight", value:"There exists a security vulnerability in the Kamailio SIP server related to To header processing.
+  script_tag(name:"insight", value:"The following vulnerabilities exist:
+
+  - A security vulnerability in the Kamailio SIP server related to To header processing.
   A specially crafted SIP message with double To header and an empty To tag causes a segmentation fault and crashes Kamailio.
-  The reason is missing input validation in the build_res_buf_from_sip_req core function.");
+  The reason is missing input validation in the build_res_buf_from_sip_req core function (CVE-2018-14767).
+
+  - A security vulnerability in the Kamailio core related to Via header processing. A specially crafted SIP message with an
+  invalid Via header causes a segmentation fault and crashes Kamailio. The reason is missing input validation in the crcitt_string_array
+  core function for calculating a CRC hash for To tags. An additional error is present in the check_via_address core function,
+  this function also misses input validation (CVE-2018-16657).");
 
   script_tag(name:"impact", value:"Abuse of this vulnerability leads to denial of service in Kamailio.
   Further research may show that exploitation leads to remote code execution.
@@ -71,6 +78,7 @@ if (description)
 
   script_xref(name:"URL", value:"https://www.kamailio.org/w/2018/07/kamailio-security-announcement-for-kamailio-core/");
   script_xref(name:"URL", value:"https://skalatan.de/blog/advisory-hw-2018-05");
+  script_xref(name:"URL", value:"https://skalatan.de/blog/advisory-hw-2018-06");
   script_xref(name:"URL", value:"https://github.com/kamailio/kamailio/commit/281a6c6b6eaaf30058b603325e8ded20b99e1456");
 
   exit(0);

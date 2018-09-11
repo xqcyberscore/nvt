@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-085.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms15-085.nasl 11296 2018-09-10 09:08:51Z mmartin $
 #
 # Microsoft Windows Mount Manager Privilege Elevation Vulnerability (3082487)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806011");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11296 $");
   script_cve_id("CVE-2015-1769");
   script_bugtraq_id(76222);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 08:30:53 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows Mount Manager Privilege Elevation Vulnerability (3082487)");
@@ -143,7 +143,6 @@ if(hotfix_check_sp(win8_1:1, win8_1x64:1, win2012R2:1) > 0)
 
 if(hotfix_check_sp(win10:1, win10x64:1) > 0)
 {
-  ## Windows 10 Core
   if(version_is_less(version:exeVer, test_version:"10.0.10240.16430")){
     security_message( port: 0, data: "The target host was found to be vulnerable" );
   }

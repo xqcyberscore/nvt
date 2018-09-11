@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mini_httpd_info_disc_vuln.nasl 7160 2017-09-18 07:39:22Z cfischer $
+# $Id: gb_mini_httpd_info_disc_vuln.nasl 11299 2018-09-10 10:23:24Z mmartin $
 #
 # mini_httpd server Long Protocol String Information Disclosure Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805289");
-  script_version("$Revision: 7160 $");
+  script_version("$Revision: 11299 $");
   script_cve_id("CVE-2015-1548");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 09:39:22 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-24 16:28:18 +0530 (Tue, 24 Feb 2015)");
   script_name("mini_httpd server Long Protocol String Information Disclosure Vulnerability");
 
@@ -51,16 +51,14 @@ if(description)
 
   script_tag(name:"affected", value:"mini_httpd server version 1.21 and prior.");
 
-  script_tag(name:"solution", value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_xref(name : "URL" , value : "http://itinsight.hu/en/posts/articles/2015-01-23-mini-httpd");
+  script_xref(name:"URL", value:"http://itinsight.hu/en/posts/articles/2015-01-23-mini-httpd");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -75,28 +73,18 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-minReq = "";
-minRes = "";
-minPort = 0;
-Banner = "";
-
-## Get HTTP Port
 minPort = get_http_port(default:80);
 
-## Confirm the application before trying exploit
 Banner = get_http_banner(port: minPort);
 if(!Banner || "Server: mini_httpd" >!< Banner){
   exit(0);
 }
 
-## Construct attack request
 minReq = http_get(item:string("/ ", crap(length:25000, data:"X")),
                        port:minPort);
 
 minRes =  http_keepalive_send_recv(port:minPort, data:minReq);
 
-## Check if response contains hexa string,
 ## 0x2e 0x00 0x69 0x6e 0x64 0x65 0x78 0x2e 0x68 0x74 0x6d 0x6c
 if(hexstr(minRes) =~ "2e00696e6465782e68746d6c")
 {

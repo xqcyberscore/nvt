@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_simple_ads_manager_plugin_mult_vuln.nasl 6453 2017-06-28 09:59:05Z teissa $
+# $Id: gb_wordpress_simple_ads_manager_plugin_mult_vuln.nasl 11299 2018-09-10 10:23:24Z mmartin $
 #
 # Wordpress Simple Ads Manager Plugin Multiple Vulnerabilities
 #
@@ -29,16 +29,16 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805520");
-  script_version("$Revision: 6453 $");
+  script_version("$Revision: 11299 $");
   script_cve_id("CVE-2015-2824", "CVE-2015-2826");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-28 11:59:05 +0200 (Wed, 28 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-14 11:59:52 +0530 (Tue, 14 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Simple Ads Manager Plugin Multiple Vulnerabilities");
 
-  script_tag(name: "summary" , value:"The host is installed with Wordpress
+  script_tag(name:"summary", value:"The host is installed with Wordpress
   Simple Ads Manager Plugin and is prone to multiple vulnerabilities.");
 
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP POST
@@ -60,7 +60,7 @@ if(description)
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Wordpress Simple Ads Manager versions 2.5.94
+  script_tag(name:"affected", value:"Wordpress Simple Ads Manager versions 2.5.94
   and 2.6.96");
 
   script_tag(name:"solution", value:"Upgrade to 2.7.97 or later.
@@ -68,8 +68,8 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36613");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36615");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/36613");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/36615");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -85,19 +85,10 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-wpReq = "";
-wpRes = "";
-dir = "";
-url = "";
-
-## Get HTTP Port
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get WordPress Location
 if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
@@ -105,10 +96,8 @@ if(!dir = get_app_location(cpe:CPE, port:http_port)){
 ## Attack url
 url = dir + "/wp-content/plugins/simple-ads-manager/sam-ajax-admin.php";
 
-##Construct POSTDATA
 postData = "action=load_users";
 
-##Construct Request
 wpReq = string("POST ", url, " HTTP/1.1\r\n",
                "Host: ", get_host_name(), "\r\n",
                "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
@@ -116,10 +105,8 @@ wpReq = string("POST ", url, " HTTP/1.1\r\n",
                "Content-Length: ", strlen(postData), "\r\n",
                "\r\n", postData, "\r\n\r\n");
 
-##Send and Receive Response
 wpRes = http_keepalive_send_recv(port:http_port, data:wpReq);
 
-##Confirm the exploit
 if(wpRes && "id" >< wpRes && "title" >< wpRes && "slug" >< wpRes &&
             "role" >< wpRes && "recid" >< wpRes)
 {

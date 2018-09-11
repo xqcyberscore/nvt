@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apc_default_telnet_credentials.nasl 7287 2017-09-27 06:56:51Z cfischer $
+# $Id: sw_apc_default_telnet_credentials.nasl 11296 2018-09-10 09:08:51Z mmartin $
 #
 # APC Network Management Card Telnet Default Credentials
 #
@@ -27,12 +27,12 @@
 
 if (description)
 {
-  script_oid("1.3.6.1.4.1.25623.1.0.111051"); 
-  script_version("$Revision: 7287 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.111051");
+  script_version("$Revision: 11296 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("APC Network Management Card Telnet Default Credentials");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-27 08:56:51 +0200 (Wed, 27 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-12 15:00:00 +0100 (Thu, 12 Nov 2015)");
   script_category(ACT_ATTACK);
   script_family("Default Accounts");
@@ -40,12 +40,12 @@ if (description)
   script_dependencies("telnetserver_detect_type_nd_version.nasl");
   script_require_ports("Services/telnet", 23);
 
-  script_tag(name : "summary" , value : 'The remote APC Network Management Card has default credentials set.');
-  script_tag(name : "impact" , value : 'This issue may be exploited by a remote attacker to gain
+  script_tag(name:"summary", value : 'The remote APC Network Management Card has default credentials set.');
+  script_tag(name:"impact", value : 'This issue may be exploited by a remote attacker to gain
   access to sensitive information or modify system configuration.');
-  script_tag(name : "vuldetect" , value : 'Connect to the telnet service and try to login with default credentials.');
-  script_tag(name : "insight" , value : 'It was possible to login with default credentials of apc:apc or device:apc');
-  script_tag(name : "solution" , value : 'Change/Set the password.');
+  script_tag(name:"vuldetect", value : 'Connect to the telnet service and try to login with default credentials.');
+  script_tag(name:"insight", value : 'It was possible to login with default credentials of apc:apc or device:apc');
+  script_tag(name:"solution", value : 'Change/Set the password.');
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"Mitigation");
@@ -94,6 +94,6 @@ if( vuln ) {
 
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit( 99 );

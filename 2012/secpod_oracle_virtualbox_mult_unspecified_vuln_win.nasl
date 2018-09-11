@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_virtualbox_mult_unspecified_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: secpod_oracle_virtualbox_mult_unspecified_vuln_win.nasl 11301 2018-09-10 11:24:56Z asteins $
 #
 # Oracle VM VirtualBox Multiple Unspecified Vulnerabilities (Windows)
 #
@@ -24,48 +24,41 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Apply the patch from below link,
-  http://www.oracle.com/technetwork/topics/security/cpujan2012-366304.html
-
-  *****
-  NOTE: Ignore this warning, if above mentioned workaround is manually applied.
-  *****";
-
-tag_impact = "Successful exploitation allows local users to affect confidentiality,
-  integrity and availability via unknown vectors.
-  Impact Level: Application";
-tag_affected = "Oracle VM VirtualBox version 4.1";
-tag_insight = "The flaws are due to an unspecified errors related to
-  'Guest Additions for Windows' and 'Shared Folders' sub components.";
-tag_summary = "This host is installed with Oracle VM VirtualBox and is prone to
-  multiple unspecified vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902786");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11301 $");
   script_cve_id("CVE-2012-0111", "CVE-2012-0105");
   script_bugtraq_id(51465, 51461);
   script_tag(name:"cvss_base", value:"3.7");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-24 11:43:28 +0530 (Tue, 24 Jan 2012)");
   script_name("Oracle VM VirtualBox Multiple Unspecified Vulnerabilities (Windows)");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/47626/");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1026531");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/cpujan2012-366304.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/47626/");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1026531");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/cpujan2012-366304.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("General");
   script_dependencies("secpod_sun_virtualbox_detect_win.nasl");
   script_require_keys("Oracle/VirtualBox/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "solution" , value : tag_solution);
+  script_tag(name:"impact", value:"Successful exploitation allows local users to affect confidentiality,
+  integrity and availability via unknown vectors.
+  Impact Level: Application");
+  script_tag(name:"affected", value:"Oracle VM VirtualBox version 4.1");
+  script_tag(name:"insight", value:"The flaws are due to an unspecified errors related to
+  'Guest Additions for Windows' and 'Shared Folders' sub components.");
+  script_tag(name:"summary", value:"This host is installed with Oracle VM VirtualBox and is prone to
+  multiple unspecified vulnerabilities.");
+  script_tag(name:"solution", value:"Apply the patch from below link,
+  http://www.oracle.com/technetwork/topics/security/cpujan2012-366304.html
+
+  *****
+  NOTE: Ignore this warning, if above mentioned workaround is manually applied.
+  *****");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -74,12 +67,10 @@ if(description)
 
 include("version_func.inc");
 
-## Get version from KB
 version = get_kb_item("Oracle/VirtualBox/Win/Ver");
 if(version)
 {
-  ## Check for Oracle VM VirtualBox version 4.1
   if(version_is_equal(version:version, test_version:"4.1")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mongodb_no_auth.nasl 6513 2017-07-04 09:59:28Z teissa $
+# $Id: gb_mongodb_no_auth.nasl 11299 2018-09-10 10:23:24Z mmartin $
 #
 # Unprotected MongoDB Service
 #
@@ -27,35 +27,35 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105235");
- script_tag(name:"cvss_base", value:"6.4");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
- script_version ("$Revision: 6513 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105235");
+  script_tag(name:"cvss_base", value:"6.4");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
+  script_version("$Revision: 11299 $");
 
- script_name("Unprotected MongoDB Service");
+  script_name("Unprotected MongoDB Service");
 
- script_xref(name:"URL", value:"http://mongodb.org");
+  script_xref(name:"URL", value:"http://mongodb.org");
 
- script_tag(name: "impact" , value:"Attackers can exploit this issue to obtain sensitive information that
+  script_tag(name:"impact", value:"Attackers can exploit this issue to obtain sensitive information that
  may lead to further attacks.");
 
- script_tag(name: "vuldetect" , value:"Send a local.startup_log query and check the response");
+  script_tag(name:"vuldetect", value:"Send a local.startup_log query and check the response");
 
- script_tag(name: "solution" , value:"Enable authentication or restrict access to the MongoDB service");
+  script_tag(name:"solution", value:"Enable authentication or restrict access to the MongoDB service");
 
- script_tag(name: "summary" , value:"The remote MongoDB service is unprotected");
- script_tag(name:"solution_type", value: "Workaround");
+  script_tag(name:"summary", value:"The remote MongoDB service is unprotected");
+  script_tag(name:"solution_type", value:"Workaround");
 
- script_tag(name:"qod_type", value:"remote_active");
+  script_tag(name:"qod_type", value:"remote_active");
 
- script_tag(name:"last_modification", value:"$Date: 2017-07-04 11:59:28 +0200 (Tue, 04 Jul 2017) $");
- script_tag(name:"creation_date", value:"2015-03-13 09:16:37 +0100 (Fri, 13 Mar 2015)");
- script_category(ACT_ATTACK);
- script_family("Databases");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_mongodb_detect.nasl");
- script_require_ports("Services/mongodb", 27017);
- script_mandatory_keys("mongodb/installed");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-03-13 09:16:37 +0100 (Fri, 13 Mar 2015)");
+  script_category(ACT_ATTACK);
+  script_family("Databases");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_mongodb_detect.nasl");
+  script_require_ports("Services/mongodb", 27017);
+  script_mandatory_keys("mongodb/installed");
 
  exit(0);
 }

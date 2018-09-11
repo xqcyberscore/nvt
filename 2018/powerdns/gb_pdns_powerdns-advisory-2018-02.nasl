@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pdns_powerdns-advisory-2018-02.nasl 9804 2018-05-11 13:07:55Z cgraumann $
+# $Id: gb_pdns_powerdns-advisory-2018-02.nasl 11310 2018-09-11 04:42:07Z ckuersteiner $
 #
 # PowerDNS Authoritative Server Buffer Overflow Vulnerability
 #
@@ -30,17 +30,17 @@ CPE = 'cpe:/a:powerdns:authoritative_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141071");
-  script_version("$Revision: 9804 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-11 15:07:55 +0200 (Fri, 11 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-05-09 16:07:28 +0700 (Wed, 09 May 2018)");
-  script_tag(name: "cvss_base", value: "9.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11310 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 06:42:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2018-05-09 16:07:28 +0700 (Wed, 09 May 2018)");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2018-1046");
 
-  script_tag(name: "qod_type", value: "remote_banner_unreliable");
+  script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("PowerDNS Authoritative Server Buffer Overflow Vulnerability");
 
@@ -51,18 +51,18 @@ if(description)
   script_dependencies("pdns_version.nasl");
   script_mandatory_keys("powerdns/authoritative_server/installed");
 
-  script_tag(name: "summary", value: "An issue has been found in the dnsreplay tool provided with PowerDNS
+  script_tag(name:"summary", value:"An issue has been found in the dnsreplay tool provided with PowerDNS
 Authoritative, where replaying a specially crafted PCAP file can trigger a stack-based buffer overflow, leading to
 a crash and potentially arbitrary code execution. This buffer overflow only occurs when the ecs-stamp option of
 dnsreplay is used.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "PowerDNS Recursor 4.0.0 until 4.1.1.");
+  script_tag(name:"affected", value:"PowerDNS Authoritative Server versions 4.0.0 until 4.1.1.");
 
-  script_tag(name: "solution", value: "Upgrade to version 4.1.2 or later.");
+  script_tag(name:"solution", value:"Upgrade to version 4.1.2 or later.");
 
-  script_xref(name: "URL", value: "https://doc.powerdns.com/authoritative/security-advisories/powerdns-advisory-2018-02.html");
+  script_xref(name:"URL", value:"https://doc.powerdns.com/authoritative/security-advisories/powerdns-advisory-2018-02.html");
 
   exit(0);
 }

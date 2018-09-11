@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powerpoint_ms15-022.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms_powerpoint_ms15-022.nasl 11296 2018-09-10 09:08:51Z mmartin $
 #
 # Microsoft Office PowerPoint Remote Code Execution Vulnerabilities (3038999)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805059");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11296 $");
   script_cve_id("CVE-2015-0085", "CVE-2015-0086", "CVE-2015-0097");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-11 14:31:32 +0530 (Wed, 11 Mar 2015)");
   script_name("Microsoft Office PowerPoint Remote Code Execution Vulnerabilities (3038999)");
 
@@ -103,7 +103,6 @@ foreach ver (make_list("\OFFICE12", "\OFFICE14"))
 
   if(dllVer)
   {
-    ## Check for Ppcore.dll < 12.0.6718.5000 for PowerPoint 2007
     if(version_in_range(version:dllVer, test_version:"12.0", test_version2:"12.0.6718.4999") ||
        version_in_range(version:dllVer, test_version:"14.0", test_version2:"14.0.7145.5000"))
     {

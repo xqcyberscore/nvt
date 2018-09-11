@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_airlive_rce_07_15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_airlive_rce_07_15.nasl 11296 2018-09-10 09:08:51Z mmartin $
 #
 # AirLive Multiple Products OS Command Injection
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105315");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11296 $");
   script_cve_id("CVE-2015-2279", "CVE-2014-8389");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -39,7 +39,7 @@ if (description)
 
   script_tag(name:"vuldetect", value:"Try to execute the 'id/ifconfig' command via a HTTP GET request and check the response.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
-script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"summary", value:"There is an OS Command Injection in the cgi_test.cgi binary file in the AirLive MD-3025, BU-3026 and BU-2015 cameras when handling
 certain parameters. That specific CGI file can be requested without authentication, unless the user specified in the configuration of the camera that every communication
 should be performed over HTTPS (not enabled by default).");
@@ -53,7 +53,7 @@ Other devices may be affected too.");
 
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-07 14:11:14 +0200 (Tue, 07 Jul 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");

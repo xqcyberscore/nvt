@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jul15_lin.nasl 8932 2018-02-23 08:01:57Z santu $
+# $Id: gb_google_chrome_mult_vuln01_jul15_lin.nasl 11299 2018-09-10 10:23:24Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-01 July15 (Linux)
 #
@@ -32,7 +32,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805936");
-  script_version("$Revision: 8932 $");
+  script_version("$Revision: 11299 $");
   script_cve_id("CVE-2015-1271", "CVE-2015-1273", "CVE-2015-1274", "CVE-2015-1276",
                 "CVE-2015-1279", "CVE-2015-1280", "CVE-2015-1281", "CVE-2015-1282",
                 "CVE-2015-1283", "CVE-2015-1284", "CVE-2015-1286", "CVE-2015-1287",
@@ -42,17 +42,16 @@ if(description)
   script_bugtraq_id(75973, 76007);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-23 09:01:57 +0100 (Fri, 23 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-23 14:50:34 +0530 (Thu, 23 Jul 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 July15 (Linux)");
 
-  script_tag(name: "summary" , value:"The host is installed with Google Chrome
+  script_tag(name:"summary", value:"The host is installed with Google Chrome
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to:
+  script_tag(name:"insight", value:"Multiple flaws are due to:
   - Multiple heap based buffer-overflow in pdfium.
   - An error which allows executable files to run immediately after download.
   - A use-after-free error in IndexedDB.
@@ -73,24 +72,24 @@ if(description)
   - The regular-expression implementation in Google V8 mishandles interrupts.
   - Various other unspecified errors.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to bypass security restrictions, cause a denial of service condition
   or potentially execute arbitrary code, conduct spoofing attack, gain sensitive
   information and other unspecified impacts.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Google Chrome version prior to
+  script_tag(name:"affected", value:"Google Chrome version prior to
   44.0.2403.89 on Linux.");
 
-  script_tag(name: "solution" , value:"Upgrade to Google Chrome version
+  script_tag(name:"solution", value:"Upgrade to Google Chrome version
   44.0.2403.89 or later, For updates refer to http://www.google.com/chrome");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"executable_version");
 
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2015/07/stable-channel-update_21.html");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2015/07/stable-channel-update_21.html");
 
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -104,15 +103,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-vers = "";
-
-## Get version
 infos = get_app_version_and_location(cpe:CPE, exit_no_version:TRUE );
 vers = infos['version'];
 path = infos['location'];
 
-## Grep for vulnerable version
 if(version_is_less(version:vers, test_version:"44.0.2403.89"))
 {
   report = report_fixed_ver(installed_version:vers, fixed_version:"44.0.2403.89", install_path:path);

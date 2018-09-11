@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_mar15_win.nasl 9910 2018-05-18 13:37:53Z cfischer $
+# $Id: gb_mozilla_firefox_mult_vuln01_mar15_win.nasl 11296 2018-09-10 09:08:51Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 Mar15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805475");
-  script_version("$Revision: 9910 $");
+  script_version("$Revision: 11296 $");
   script_cve_id("CVE-2015-0836", "CVE-2015-0835", "CVE-2015-0834", "CVE-2015-0833",
                 "CVE-2015-0832", "CVE-2015-0831", "CVE-2015-0830", "CVE-2015-0829",
                 "CVE-2015-0828", "CVE-2015-0827", "CVE-2015-0826", "CVE-2015-0825",
@@ -40,16 +40,16 @@ if(description)
                     72757, 72759);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:37:53 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 11:08:51 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-03 14:30:16 +0530 (Tue, 03 Mar 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 Mar15 (Windows)");
 
-  script_tag(name: "summary" , value:"This host is installed with Mozilla Firefox
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exist due to,
+  script_tag(name:"insight", value:"Multiple flaws exist due to,
   - Some unspecified vulnerabilities in the browser engine in Mozilla Firefox.
   - WebRTC implementation accepting turns: and stuns: URIs despite the program
   itself not supporting TLS connections to TURN and STUN servers.
@@ -75,7 +75,7 @@ if(description)
   - Multiple use-after-free vulnerabilities in OpenType Sanitiser.
   - Heap use-after-free flaw in the 'ots::ots_gasp_parse' function.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to disclose potentially sensitive information, bypass certain security
   restrictions, cause a denial of service, man-in the-middle attack, execute
   arbitrary code, conduct spoofing and clickjacking attacks and local privilege
@@ -83,9 +83,9 @@ if(description)
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Mozilla Firefox before version 36.0 on Windows");
+  script_tag(name:"affected", value:"Mozilla Firefox before version 36.0 on Windows");
 
-  script_tag(name: "solution" , value:"Upgrade to Mozilla Firefox version 36.0
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 36.0
   or later, For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
 
   script_tag(name:"solution_type", value:"VendorFix");

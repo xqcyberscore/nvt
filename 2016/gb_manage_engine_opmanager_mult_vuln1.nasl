@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_opmanager_mult_vuln1.nasl 7860 2017-11-22 09:16:07Z cfischer $
+# $Id: gb_manage_engine_opmanager_mult_vuln1.nasl 11300 2018-09-10 10:52:15Z mmartin $
 #
 # ManageEngine OpManager Multiple Vulnerabilities
 #
@@ -30,15 +30,15 @@ CPE = 'cpe:/a:zohocorp:manageengine_opmanager';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106402");
-  script_version("$Revision: 7860 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-22 10:16:07 +0100 (Wed, 22 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2016-11-22 11:33:23 +0700 (Tue, 22 Nov 2016)");
-  script_tag(name: "cvss_base", value: "7.8");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:N/I:N/A:C");
+  script_version("$Revision: 11300 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:52:15 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-11-22 11:33:23 +0700 (Tue, 22 Nov 2016)");
+  script_tag(name:"cvss_base", value:"7.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "WillNotFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   script_name("ManageEngine OpManager Multiple Vulnerabilities");
 
@@ -49,11 +49,11 @@ if (description)
   script_dependencies("gb_manage_engine_opmanager_detect.nasl");
   script_mandatory_keys("OpManager/installed");
 
-  script_tag(name: "summary", value: "ManageEngine OpManager is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"ManageEngine OpManager is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Multiple vulnerabilities were found in ManageEngine OpManager:
+  script_tag(name:"insight", value:"Multiple vulnerabilities were found in ManageEngine OpManager:
 
 - Denial of Service: When certain characters are in the EncryptPassword value the server process will go into an
 infinite loop.
@@ -62,16 +62,13 @@ infinite loop.
 to sanitize user input. The ping and traceroute buttons on the MonitoringDevice page fail to sanitize the name of
 the host being monitored.");
 
-  script_tag(name: "impact", value: "A unauthenticated attacker may conduct a denial of service condition.
+  script_tag(name:"impact", value:"A unauthenticated attacker may conduct a denial of service condition.
 Unauthenticated attackers may inject web script or HTML and steal sensitive data and credentials");
 
-  script_tag(name: "affected", value: "Version v12.2 and prior.");
+  script_tag(name:"affected", value:"Version v12.2 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch was made available for at least one year since disclosure
-  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
-  release, disable respective features, remove the product or replace the product by another one.");
-
-  script_xref(name: "URL", value: "http://seclists.org/bugtraq/2016/Nov/70");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_xref(name:"URL", value:"http://seclists.org/bugtraq/2016/Nov/70");
 
   exit(0);
 }

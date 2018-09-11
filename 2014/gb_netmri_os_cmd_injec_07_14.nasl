@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netmri_os_cmd_injec_07_14.nasl 11222 2018-09-04 12:41:44Z cfischer $
+# $Id: gb_netmri_os_cmd_injec_07_14.nasl 11306 2018-09-10 14:58:09Z mmartin $
 #
 # Infoblox NetMRI OS Command Injection Vulnerability
 #
@@ -33,7 +33,7 @@ if(description)
   script_cve_id("CVE-2014-3418", "CVE-2014-3419");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11222 $");
+  script_version("$Revision: 11306 $");
 
   script_name("Infoblox NetMRI OS Command Injection Vulnerability");
 
@@ -41,7 +41,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/127409/Infoblox-6.8.4.x-OS-Command-Injection.html");
   script_xref(name:"URL", value:"http://www.infoblox.com/");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:41:44 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-10 16:58:09 +0200 (Mon, 10 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-15 14:33:34 +0200 (Tue, 15 Jul 2014)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -49,7 +49,7 @@ if(description)
   script_copyright("This script is Copyright (C) 2014 Greenbone Networks GmbH");
   script_dependencies("gb_netmri_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("netMRI/installed");
+  script_mandatory_keys("netMRI/detected");
 
   script_tag(name:"impact", value:"An attacker may leverage these issues to execute arbitrary code as root");
   script_tag(name:"vuldetect", value:"Send a special crafted HTTP POST request and check the response");
