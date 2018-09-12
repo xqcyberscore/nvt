@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_apr13_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_mozilla_firefox_mult_vuln01_apr13_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities -01 Apr13 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803463");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-0788", "CVE-2013-0789", "CVE-2013-0791", "CVE-2013-0792",
                 "CVE-2013-0793", "CVE-2013-0794", "CVE-2013-0795", "CVE-2013-0797",
                                                   "CVE-2013-0799", "CVE-2013-0800");
@@ -35,7 +35,7 @@ if(description)
                                   58836, 58827, 58824, 58825);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-08 11:48:39 +0530 (Mon, 08 Apr 2013)");
   script_name("Mozilla Firefox Multiple Vulnerabilities -01 Apr13 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52770");
@@ -52,16 +52,24 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Mozilla Firefox version before 20.0 on Windows");
   script_tag(name:"insight", value:"- Unspecified vulnerabilities in the browser engine
+
   - Buffer overflow in the Mozilla Maintenance Service
+
   - Not preventing origin spoofing of tab-modal dialogs
+
   - Untrusted search path vulnerability while handling dll files
+
   - Improper validation of address bar during history navigation
+
   - Integer signedness error in the 'pixman_fill_sse2' function in
     'pixman-sse2.c' in Pixman
+
   - Error in 'CERT_DecodeCertPackage' function in Mozilla Network Security
     Services (NSS)
+
   - Improper handling of color profiles during PNG rendering in
     'gfx.color_management.enablev4'
+
   - The System Only Wrapper (SOW) implementation does not prevent use of the
     cloneNode method for cloning a protected node");
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 20.0 or later,

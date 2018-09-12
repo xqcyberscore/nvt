@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sea_monkey_mult_vuln01_jan15_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_sea_monkey_mult_vuln01_jan15_macosx.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # SeaMonkey Multiple Vulnerabilities-01 Jan15 (Mac OS X)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:mozilla:seamonkey";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805255");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2014-8642", "CVE-2014-8641", "CVE-2014-8640", "CVE-2014-8639",
                 "CVE-2014-8638", "CVE-2014-8637", "CVE-2014-8636", "CVE-2014-8635",
                 "CVE-2014-8634");
   script_bugtraq_id(72042, 72044, 72045, 72046, 72047, 72048, 72041, 72050, 72049);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-20 14:41:18 +0530 (Tue, 20 Jan 2015)");
   script_name("SeaMonkey Multiple Vulnerabilities-01 Jan15 (Mac OS X)");
 
@@ -46,19 +46,27 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - Some unspecified errors.
+
   - An error when rendering a bitmap image by the bitmap decoder within a
   canvas element.
+
   - An error when handling a request from 'navigator.sendBeacon' API interface
   function.
+
   - An error when handling a '407 Proxy Authentication' response with a
   'Set-Cookie' header from a web proxy.
+
   - A use-after-free error when handling tracks within WebRTC.
+
   - An error when handling the 'id-pkix-ocsp-nocheck' extension during
   verification of a delegated OCSP (Online Certificate Status Protocol) response
   signing certificate.
+
   - An error when handling DOM (Document Object Model) objects with certain
   properties.
+
   - Improper restriction of timeline operations by the
   'mozilla::dom::AudioParamTimeline::AudioNodeInputValue' function in the Web
   Audio API.");

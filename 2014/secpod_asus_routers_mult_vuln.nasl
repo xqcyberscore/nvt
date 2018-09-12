@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_asus_routers_mult_vuln.nasl 11194 2018-09-03 12:44:14Z mmartin $
+# $Id: secpod_asus_routers_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # ASUS Router Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903432");
-  script_version("$Revision: 11194 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2015-1437");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-26 16:37:32 +0530 (Wed, 26 Feb 2014)");
   script_name("ASUS Router Multiple Vulnerabilities");
 
@@ -43,7 +43,7 @@ is possible to read cookie or not.");
   attacker to bypass same-origin policy restrictions enforced by
   XMLHttpRequest.
 
-- The router error page 'error_page.htm' includes the current administrative
+  - The router error page 'error_page.htm' includes the current administrative
   password in clear text.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTML
 and script code, which will be executed in a user's browser session in the

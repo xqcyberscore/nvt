@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yootheme_pagekit_cms_mult_vuln.nasl 11202 2018-09-03 14:43:03Z mmartin $
+# $Id: gb_yootheme_pagekit_cms_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # YOOtheme Pagekit CMS Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804861");
-  script_version("$Revision: 11202 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-8070", "CVE-2014-8069");
   script_bugtraq_id(70416);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-16 15:02:08 +0530 (Thu, 16 Oct 2014)");
 
   script_name("YOOtheme Pagekit CMS Multiple Vulnerabilities");
@@ -44,8 +44,10 @@ if(description)
   request and check whether it redirects to the arbitrary website.");
 
   script_tag(name:"insight", value:"Multiple errors exists due to,
+
   - The application does not validate the 'logout' parameter upon submission
     to the index.php script.
+
   - The 'index.php' script does not validate input passed via the URL or
     the referer header before returning it to users.");
 

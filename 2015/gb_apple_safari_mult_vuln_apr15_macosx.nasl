@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_apr15_macosx.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: gb_apple_safari_mult_vuln_apr15_macosx.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Apple Safari Multiple Vulnerabilities -01 Apr15 (Mac OS X)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805467");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-1112", "CVE-2015-1119", "CVE-2015-1120", "CVE-2015-1121",
                 "CVE-2015-1122", "CVE-2015-1124", "CVE-2015-1126", "CVE-2015-1127",
                 "CVE-2015-1128", "CVE-2015-1129");
   script_bugtraq_id(73972, 73973, 73974, 73975, 73976, 73977);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-23 17:30:41 +0530 (Thu, 23 Apr 2015)");
   script_name("Apple Safari Multiple Vulnerabilities -01 Apr15 (Mac OS X)");
 
@@ -46,14 +46,20 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - a flaw in client certificate matching during SSL authentication.
+
   - a flaw in private browsing mode that is triggered when responding to push
   notification requests.
+
   - a flaw in  loader/icon/IconController.cpp script in WebKit as URLs visited
   during private browsing are stored in WebpageIcons.db.
+
   - An unspecified state management issue in apple safari.
+
   - A flaw in WebKit that is triggered as user-supplied input is not properly
   validated.
+
   - A flaw in WebKit that is triggered when handling credentials for FTP URLs.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow

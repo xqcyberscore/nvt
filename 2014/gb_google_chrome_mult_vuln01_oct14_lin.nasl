@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_oct14_lin.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_oct14_lin.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities - 01 Oct14 (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804938");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-3200", "CVE-2014-3199", "CVE-2014-3198", "CVE-2014-3197",
                 "CVE-2014-3195", "CVE-2014-3194", "CVE-2014-3193", "CVE-2014-3192",
                 "CVE-2014-3191", "CVE-2014-3190", "CVE-2014-3189", "CVE-2014-3188",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(70273, 70262, 70587);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-16 16:48:48 +0530 (Thu, 16 Oct 2014)");
 
   script_name("Google Chrome Multiple Vulnerabilities - 01 Oct14 (Linux)");
@@ -48,12 +48,19 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - Some errors related to V8 and IPC.
+
   - An out-of-bound read access error in PDFium.
+
   - Multiple use-after-free errors in Events, Rendering, DOM, and Web Workers.
+
   - A type confusion error in Session Management.
+
   - An information leak error in the V8 JavaScript engine and the XSS Auditor.
+
   - An error within V8 bindings.
+
   - Other multiple unspecified errors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers

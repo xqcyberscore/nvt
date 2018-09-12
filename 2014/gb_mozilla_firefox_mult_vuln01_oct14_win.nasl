@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_oct14_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_mozilla_firefox_mult_vuln01_oct14_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 Oct14 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804941");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1586", "CVE-2014-1585", "CVE-2014-1584", "CVE-2014-1583",
                 "CVE-2014-1582", "CVE-2014-1581", "CVE-2014-1580", "CVE-2014-1578",
                 "CVE-2014-1577", "CVE-2014-1576", "CVE-2014-1575", "CVE-2014-1574");
@@ -37,7 +37,7 @@ if(description)
                     70430, 70439, 70436);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-17 17:41:23 +0530 (Fri, 17 Oct 2014)");
 
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 Oct14 (Windows)");
@@ -48,20 +48,30 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - An error in Alarm API which does not properly restrict toJSON calls.
+
   - An error when handling video sharing within a WebRTC session running within an
     iframe.
+
   - Multiple errors in the Public Key Pinning (PKP) implementation.
+
   - An use-after-free error when handling text layout related to DirectionalityUtils.
+
   - An error when repeatedly rendering a GIF image within a canvas element.
+
   - An out-of-bounds error within the 'get_tile' function when buffering WebM
     format video containing frames.
+
   - An out-of-bounds error within 'mozilla::dom::OscillatorNodeEngine::ComputeCustom'
     method when interacting with custom waveforms.
+
   - An error within the 'nsTransformedTextRun' class when handling capitalization
     style changes during CSS parsing.
+
   - An error when handling camera recording within an iframe related to site
     navigation.
+
   - Other unspecified errors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers

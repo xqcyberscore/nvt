@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_dec15_win.nasl 11239 2018-09-05 09:46:45Z mmartin $
+# $Id: gb_google_chrome_mult_vuln02_dec15_win.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-02 Dec15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806802");
-  script_version("$Revision: 11239 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-6788", "CVE-2015-6789", "CVE-2015-6790", "CVE-2015-6791",
                 "CVE-2015-8548");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-16 15:48:12 +0530 (Wed, 16 Dec 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Dec15 (Windows)");
 
@@ -44,11 +44,14 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The no proper use of HTML entities in function
     'WebPageSerializerImp::openTagToString' in
     'WebKit/Source/web/WebPageSerializerImpl.cpp' file in the page serializer.
+
   - The difference in execution of multiple threads leading to race conditon in
     the mutation implementation
+
   - An improper implementation of handler functions in class
     'ObjectBackedNativeHandler' class which is in file
     'extensions/renderer/object_backed_native_handler.cc' in the extensions

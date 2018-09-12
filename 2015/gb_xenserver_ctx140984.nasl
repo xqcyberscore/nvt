@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx140984.nasl 11271 2018-09-06 14:58:32Z mmartin $
+# $Id: gb_xenserver_ctx140984.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Citrix XenServer Multiple Security Updates (CTX200892)
 #
@@ -33,7 +33,7 @@ if (description)
   script_cve_id("CVE-2014-8106", "CVE-2014-7815", "CVE-2014-3615");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11334 $");
 
   script_name("Citrix XenServer Multiple Security Updates (CTX200892)");
 
@@ -51,9 +51,11 @@ XenServer up to and including Citrix XenServer 6.5.
 
 The following vulnerabilities have been addressed:
 
-- CVE-2014-8106 (High): Heap-based buffer overflow in the Cirrus VGA emulator
-- CVE-2014-7815 (Low): The set_pixel_format function in QEMU allows a denial of service (crash)
-- CVE-2014-3615 (Low): The VGA emulator in QEMU allows users to read memory");
+  - CVE-2014-8106 (High): Heap-based buffer overflow in the Cirrus VGA emulator
+
+  - CVE-2014-7815 (Low): The set_pixel_format function in QEMU allows a denial of service (crash)
+
+  - CVE-2014-3615 (Low): The VGA emulator in QEMU allows users to read memory");
 
   script_tag(name:"affected", value:"XenServer 6.5
 XenServer 6.2.0
@@ -64,7 +66,7 @@ XenServer 6.0");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-17 14:24:28 +0200 (Fri, 17 Apr 2015)");
   script_category(ACT_GATHER_INFO);
   script_family("Citrix Xenserver Local Security Checks");

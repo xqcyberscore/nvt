@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_nmedia_website_contact_form_file_upload_vuln.nasl 11239 2018-09-05 09:46:45Z mmartin $
+# $Id: gb_wordpress_nmedia_website_contact_form_file_upload_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
 #
 # Wordpress N-Media Website Contact Form Plugin File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805539");
-  script_version("$Revision: 11239 $");
+  script_version("$Revision: 11321 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-22 12:54:37 +0530 (Wed, 22 Apr 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Wordpress N-Media Website Contact Form Plugin File Upload Vulnerability");
@@ -72,13 +72,13 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
-
 
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
@@ -88,11 +88,10 @@ if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-
-##Attack url
 url = dir + "/wp-admin/admin-ajax.php";
 
-##Generate random filename
+host = http_host_name(port:http_port);
+
 fileName = 'openvas_test' + rand();
 
 postData = string('------------------------------9aebb16b1ca1\r\n',
@@ -108,12 +107,10 @@ postData = string('------------------------------9aebb16b1ca1\r\n',
                   '------------------------------9aebb16b1ca1--');
 
 req = string("POST ", url, " HTTP/1.1\r\n",
-             "Host: ", get_host_name(), "\r\n",
+             "Host: ", host, "\r\n",
              "Content-Length: ", strlen(postData), "\r\n",
              "Content-Type: multipart/form-data; boundary=----------------------------9aebb16b1ca1\r\n",
              "\r\n", postData);
-
-
 res = http_keepalive_send_recv(port:http_port, data:req);
 
 if('status":"uploaded' >< res && res =~ "HTTP/1.. 200 OK")

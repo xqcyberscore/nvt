@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_docker_for_windows_privilege_escalation_vuln.nasl 11293 2018-09-10 07:14:06Z mmartin $
+# $Id: gb_docker_for_windows_privilege_escalation_vuln.nasl 11332 2018-09-11 13:28:43Z mmartin $
 #
 # Docker for Windows Privilege Escalation Vulnerability (Windows)
 #
@@ -28,9 +28,9 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107338");
-  script_version("$Revision: 11293 $");
+  script_version("$Revision: 11332 $");
   script_cve_id("CVE-2018-15514");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 09:14:06 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:28:43 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-06 14:43:30 +0200 (Thu, 06 Sep 2018)");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
@@ -63,7 +63,10 @@ vers = infos ['version'];
 path = infos ['location'];
 
 chan = get_kb_item("Docker/Docker_for_Windows/Win/Chan");
+
+# "Stable" Version Example: 18.06.0-ce-win72
 if(chan =~ "stable"){
+
   if (version_is_less (version:vers, test_version:"18.06.0-ce-win72")){
   report = report_fixed_ver (installed_version:vers, fixed_version:"18.06.0-ce-win72",
     install_path:path);
@@ -71,6 +74,8 @@ if(chan =~ "stable"){
   exit (0);
   }
 }
+
+# "Edge" Version Example: 18.06.0-ce-rc3-win68
 if(chan =~ "edge"){
   if (version_is_less (version:vers, test_version:"18.06.0-ce-rc3-win68")){
   report = report_fixed_ver (installed_version:vers, fixed_version:"18.06.0-ce-rc3-win68",

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_info_disc_n_code_exec_vuln_lin.nasl 11214 2018-09-04 10:09:46Z mmartin $
+# $Id: gb_adobe_reader_info_disc_n_code_exec_vuln_lin.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Adobe Reader Information Disclosure & Code Execution Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804399");
-  script_version("$Revision: 11214 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2005-1841", "CVE-2005-1625");
   script_bugtraq_id(14153, 14165);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-15 13:50:57 +0530 (Tue, 15 Apr 2014)");
   script_name("Adobe Reader Information Disclosure & Code Execution Vulnerabilities (Linux)");
 
@@ -43,9 +43,11 @@ if(description)
 and remote code execution vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaws exist due to,
-- A boundary error in 'UnixAppOpenFilePerform' function while opening a document
+
+  - A boundary error in 'UnixAppOpenFilePerform' function while opening a document
 containing a '/Filespec' tag.
-- Temporary files being created with permissions based on the user's umask in
+
+  - Temporary files being created with permissions based on the user's umask in
 the '/tmp' folder.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct arbitrary code
 execution and gain knowledge of sensitive information.

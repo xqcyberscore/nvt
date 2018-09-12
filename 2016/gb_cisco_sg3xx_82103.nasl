@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_sg3xx_82103.nasl 5568 2017-03-14 10:00:33Z teissa $
+# $Id: gb_cisco_sg3xx_82103.nasl 11345 2018-09-12 07:02:17Z cfischer $
 #
 # Cisco Small Business SG300 Managed Switch Denial of Service Vulnerability
 #
@@ -29,35 +29,36 @@ CPE = "cpe:/o:cisco:300_series_managed_switch_firmware";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105588");
- script_bugtraq_id(82103);
- script_cve_id("CVE-2016-1299");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
- script_version ("$Revision: 5568 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105588");
+  script_bugtraq_id(82103);
+  script_cve_id("CVE-2016-1299");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
+  script_version("$Revision: 11345 $");
 
- script_name("Cisco Small Business SG300 Managed Switch Denial of Service Vulnerability");
+  script_name("Cisco Small Business SG300 Managed Switch Denial of Service Vulnerability");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/82103");
- script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160127-sbms");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/82103");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160127-sbms");
+  script_xref(name:"URL", value:" https://bst.cloudapps.cisco.com/bugsearch/bug/CSCuw87174");
 
- script_tag(name: "impact" , value:"An attacker can exploit this issue to cause denial-of-service conditions.");
- script_tag(name: "vuldetect" , value:"Check the version.");
- script_tag(name: "insight" , value:"The vulnerability is due to improper handling, processing, and termination of HTTPS connections. An attacker could exploit this vulnerability by sending crafted HTTPS requests to management-enabled interfaces of an affected system.");
- script_tag(name: "solution" , value:"Ask the Vendor for an update.");
- script_tag(name: "summary" , value:"Cisco Small Business SG300 Managed Switch is prone to a remote denial-of-service vulnerability.");
- script_tag(name: "affected" , value:"Cisco Small Business SG300 Managed Switch Release 1.4.1.x is vulnerable.");
- script_tag(name:"solution_type", value: "NoneAvailable");
+  script_tag(name:"impact", value:"An attacker can exploit this issue to cause denial-of-service conditions.");
+  script_tag(name:"vuldetect", value:"Check the version.");
+  script_tag(name:"insight", value:"The vulnerability is due to improper handling, processing, and termination of HTTPS connections. An attacker could exploit this vulnerability by sending crafted HTTPS requests to management-enabled interfaces of an affected system.");
+  script_tag(name:"solution", value:"Update to version 1.4.5.2 or later. Please see the references for more information.");
+  script_tag(name:"summary", value:"Cisco Small Business SG300 Managed Switch is prone to a remote denial-of-service vulnerability.");
+  script_tag(name:"affected", value:"Cisco Small Business SG300 Managed Switch Release 1.4.1.x is vulnerable.");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-14 11:00:33 +0100 (Tue, 14 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-03-24 15:41:40 +0100 (Thu, 24 Mar 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_sg3xx_snmp_detect.nasl");
- script_mandatory_keys("cisco/300_series_managed_switch/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:02:17 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-03-24 15:41:40 +0100 (Thu, 24 Mar 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_sg3xx_snmp_detect.nasl");
+  script_mandatory_keys("cisco/300_series_managed_switch/version");
 
  exit(0);
 }

@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804704");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1533", "CVE-2014-1538", "CVE-2014-1541");
   script_bugtraq_id(67965, 67976, 67979);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-01 15:24:18 +0530 (Tue, 01 Jul 2014)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 July14 (Windows)");
 
@@ -43,10 +43,13 @@ if(description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- A use-after-free error in the 'nsTextEditRules::CreateMozBR()' function.
-- A use-after-free error in the 'RefreshDriverTimer::TickDriver()' function
+
+  - A use-after-free error in the 'nsTextEditRules::CreateMozBR()' function.
+
+  - A use-after-free error in the 'RefreshDriverTimer::TickDriver()' function
   within the MIL Animation Controller.
-- And some unspecified errors exist.");
+
+  - And some unspecified errors exist.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to compromise a user's system.
 
 Impact Level: System/Application");

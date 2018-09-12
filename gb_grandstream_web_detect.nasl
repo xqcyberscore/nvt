@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_grandstream_web_detect.nasl 10978 2018-08-15 11:28:35Z tpassfeld $
+# $Id: gb_grandstream_web_detect.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
 #
 # Grandstream Web UI Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114018");
-  script_version("$Revision: 10978 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 13:28:35 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 11328 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-08 12:42:30 +0200 (Wed, 08 Aug 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -71,8 +71,8 @@ if("<b>Grandstream Device Configuration</b>" >< res || '<font size="1">All Right
 
    conclUrl = report_vuln_url(port: port, url: "/", url_only: TRUE);
 
-   set_kb_item(name: "Grandstream/WebUI/installed", value: TRUE);
-   set_kb_item(name: "Grandstream/WebUI/" + port + "/installed", value: TRUE);
+   set_kb_item(name: "grandstream/webui/detected", value: TRUE);
+   set_kb_item(name: "grandstream/webui/" + port + "/detected", value: TRUE);
 
    register_and_report_cpe(app: "Grandstream Web UI", ver: version, base: "cpe:/a:grandstream:web_ui:", expr: "^([0-9.]+)", insloc: install, regPort: port, conclUrl: conclUrl, extra: "Login required for version detection.");
 }

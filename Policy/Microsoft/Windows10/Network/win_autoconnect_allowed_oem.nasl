@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_autoconnect_allowed_oem.nasl 10809 2018-08-07 11:19:51Z emoss $
+# $Id: win_autoconnect_allowed_oem.nasl 11337 2018-09-11 14:23:53Z emoss $
 #
 # Check value for Allow Windows to automatically connect to suggested open
 # hotspots, to networks shared by contacts, and to hotspots offering paid services
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109339");
-  script_version("$Revision: 10809 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 13:19:51 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 11337 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:23:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-22 14:49:11 +0200 (Fri, 22 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -41,14 +41,14 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl", "os_detection.nasl");
   script_add_preference(name:"Value", type:"radio", value:"0;1");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Allow Windows to automatically connect to suggested open hotspots, to networks
 shared by contacts, and to hotspots offering paid services' on Windows hosts (at
 least Windows 10).
 
 The policy setting determines whether users can enable the following WLAN
-settings: 'Connect to suggested open hotspots,' 'Connect to networks shared by
-my contacts,' and 'Enable paid services'.");
+settings: 'Connect to suggested open hotspots, ' 'Connect to networks shared by
+my contacts, ' and 'Enable paid services'.");
   exit(0);
 }
 
@@ -77,7 +77,7 @@ item = 'AutoConnectAllowedOEM';
 default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
 
-if(!value){
+if(value == ''){
   value = '1';
 }
 

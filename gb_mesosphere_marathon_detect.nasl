@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mesosphere_marathon_detect.nasl 10683 2018-07-30 14:01:27Z cfischer $
+# $Id: gb_mesosphere_marathon_detect.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
 #
 # Mesosphere Marathon UI Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114011");
-  script_version("$Revision: 10683 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-30 16:01:27 +0200 (Mon, 30 Jul 2018) $");
+  script_version("$Revision: 11328 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 11:00:14 +0200 (Fri, 20 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -75,9 +75,9 @@ if("marathon-ui - The web UI for Mesosphere's Marathon." >< res ||
 
    if(vers[1]) version = vers[1];
 
-   set_kb_item(name: "Mesosphere/Marathon/installed", value: TRUE);
-   set_kb_item(name: "Mesosphere/Marathon/version", value: version);
-   set_kb_item(name: "Mesosphere/Marathon/" + port + "/installed", value: TRUE);
+   set_kb_item(name: "mesosphere/marathon/detected", value: TRUE);
+   set_kb_item(name: "mesosphere/marathon/version", value: version);
+   set_kb_item(name: "mesosphere/marathon/" + port + "/detected", value: TRUE);
 
    cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:mesosphere:marathon:"); # CPE is not registered yet
 

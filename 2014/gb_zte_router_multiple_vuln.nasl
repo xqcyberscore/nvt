@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zte_router_multiple_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_zte_router_multiple_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # ZTE WXV10 W300 Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804470");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-4018", "CVE-2014-4019", "CVE-2014-4154", "CVE-2014-4155");
   script_bugtraq_id(68082);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-25 12:28:41 +0530 (Wed, 25 Jun 2014)");
   script_name("ZTE WXV10 W300 Multiple Vulnerabilities");
 
@@ -43,13 +43,16 @@ if(description)
   script_tag(name:"insight", value:"- The 'admin' account has a password of 'admin', which is publicly known and
    documented. This allows remote attackers to trivially gain privileged access
    to the device.
-   - Flaw in in /basic/home_wan.htm that is triggered as the device exposes the
+
+  - Flaw in in /basic/home_wan.htm that is triggered as the device exposes the
    device password in the source of the page when a user authenticates to the
    device.
-   - The HTTP requests to /Forms/tools_admin_1 do not require multiple steps,
+
+  - The HTTP requests to /Forms/tools_admin_1 do not require multiple steps,
    explicit confirmation, or a unique token when performing certain sensitive
    actions.
-   - The rom-0 backup file contains sensitive information such as the router
+
+  - The rom-0 backup file contains sensitive information such as the router
    password. There is a disclosure in which anyone can download that file
    without any authentication by a simple GET request.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to trivially gain privileged

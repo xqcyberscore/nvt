@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vtiger_crm_mult_sql_inj_vuln_apr14.nasl 11200 2018-09-03 14:11:38Z mmartin $
+# $Id: gb_vtiger_crm_mult_sql_inj_vuln_apr14.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Vtiger CRM Multiple SQL Injection Vulnerabilities April-14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vtiger:vtiger_crm";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804542");
-  script_version("$Revision: 11200 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-3213");
   script_bugtraq_id(61563);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-17 18:28:20 +0530 (Thu, 17 Apr 2014)");
   script_name("Vtiger CRM Multiple SQL Injection Vulnerabilities April-14");
 
@@ -44,9 +44,11 @@ sql injection vulnerabilities");
   script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check whether it responds with error
 message.");
   script_tag(name:"insight", value:"Multiple flaws are due to an,
-- Input passed via multiple parameters to various SOAP methods is not properly
+
+  - Input passed via multiple parameters to various SOAP methods is not properly
   sanitised before being used in a SQL query.
-- Error within the 'validateSession()' function and multiple unspecified
+
+  - Error within the 'validateSession()' function and multiple unspecified
   errors.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
 script code, bypass certain security restrictions, manipulate certain data,

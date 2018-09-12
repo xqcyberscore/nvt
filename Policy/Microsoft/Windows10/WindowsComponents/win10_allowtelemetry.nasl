@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win10_allowtelemetry.nasl 10961 2018-08-14 14:21:06Z emoss $
+# $Id: win10_allowtelemetry.nasl 11337 2018-09-11 14:23:53Z emoss $
 #
 # Check value for Allow Telemetry
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109094");
-  script_version("$Revision: 10961 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 16:21:06 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 11337 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:23:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-23 12:03:04 +0200 (Mon, 23 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl", "os_detection.nasl");
-	script_add_preference(name:"Value", type:"radio", value:"0;1;2;3");
+  script_add_preference(name:"Value", type:"radio", value:"0;1;2;3");
   script_mandatory_keys("Compliance/Launch");
   script_tag(name:"summary", value:"This policy setting determines the amount of
 Windows diagnostic data sent to Microsoft. A value of 0 (Security) will send minimal
@@ -76,7 +76,7 @@ item = 'AllowTelemetry';
 value = registry_get_dword(key:key, item:item, type:type);
 default = script_get_preference('Value');
 
-if(!value){
+if(value == ''){
   value = '3';
 }
 

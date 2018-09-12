@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_ml_tcp_max_data_retransmission_ipv6.nasl 10797 2018-08-06 14:54:44Z emoss $
+# $Id: win_ml_tcp_max_data_retransmission_ipv6.nasl 11337 2018-09-11 14:23:53Z emoss $
 #
 # Check value for MSS: (TcpMaxDataRetransmissions IPv6) How many times
 # unacknowledged data is retransmitted (3 recommended, 5 is default)
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109320");
-  script_version("$Revision: 10797 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 16:54:44 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 11337 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:23:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-15 14:43:46 +0200 (Fri, 15 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -41,7 +41,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_add_preference(name:"Max", type:"entry", value:"3");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'MSS: (TcpMaxDataRetransmissions IPv6) How many times unacknowledged data is
 retransmitted (3 recommended, 5 is default)' on Windows hosts (at least Windows 7).");
   exit(0);
@@ -72,7 +72,7 @@ item = 'TcpMaxDataRetransmissions';
 default = script_get_preference('Max');
 value = registry_get_dword(key:key, item:item, type:type);
 
-if(!value){
+if(value == ''){
   value = '5';
 }
 

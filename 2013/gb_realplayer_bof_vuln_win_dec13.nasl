@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_bof_vuln_win_dec13.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_realplayer_bof_vuln_win_dec13.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # RealNetworks RealPlayer Buffer Overflow Vulnerability Dec13 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:realnetworks:realplayer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804178");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-6877", "CVE-2013-7260");
   script_bugtraq_id(64398, 64695);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-26 11:34:28 +0530 (Thu, 26 Dec 2013)");
   script_name("RealNetworks RealPlayer Buffer Overflow Vulnerability Dec13 (Windows)");
 
@@ -46,8 +46,10 @@ vulnerability.");
 For updates refer to http://www.real.com/player");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"Flaw is due to,
-- An error in handling the 'version' and 'encoding' attributes in RMP files.
-- Improper validation of user input when handling the 'trackid' attribute in
+
+  - An error in handling the 'version' and 'encoding' attributes in RMP files.
+
+  - Improper validation of user input when handling the 'trackid' attribute in
   RMP files.");
   script_tag(name:"affected", value:"RealPlayer version before 17.0.4.61 on Windows.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote unauthenticated attacker to execute

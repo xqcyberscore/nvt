@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln_jun12_macosx.nasl 11011 2018-08-16 14:14:31Z mmartin $
+# $Id: gb_adobe_air_mult_vuln_jun12_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Adobe Air Multiple Vulnerabilities June-2012 (Mac OS X)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803812");
-  script_version("$Revision: 11011 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2012-2034", "CVE-2012-2035", "CVE-2012-2036", "CVE-2012-2037",
                 "CVE-2012-2039", "CVE-2012-2038", "CVE-2012-2040");
   script_bugtraq_id(53887);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-11 15:01:50 +0530 (Thu, 11 Jul 2013)");
   script_name("Adobe Air Multiple Vulnerabilities June-2012 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49388");
@@ -50,10 +50,14 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Adobe AIR version 3.2.0.2070 and prior on Mac OS X");
   script_tag(name:"insight", value:"Multiple errors are caused,
+
   - When parsing ActionScript.
+
   - Within NPSWF32.dll when parsing certain tags.
+
   - In the 'SoundMixer.computeSpectrum()' method, which can be exploited to
     bypass the same-origin policy.
+
   - In the installer allows planting a binary file.");
   script_tag(name:"solution", value:"Update to Adobe Air version 3.3.0.3610 or later,
   For the updates refer, http://get.adobe.com/air");

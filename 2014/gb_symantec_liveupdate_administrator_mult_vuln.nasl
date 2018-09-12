@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_liveupdate_administrator_mult_vuln.nasl 11198 2018-09-03 13:39:31Z mmartin $
+# $Id: gb_symantec_liveupdate_administrator_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Symantec LiveUpdate Administrator Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:liveupdate_administrator";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804359");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1644", "CVE-2014-1645");
   script_bugtraq_id(66399, 66400);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-03 15:36:12 +0530 (Thu, 03 Apr 2014)");
   script_name("Symantec LiveUpdate Administrator Multiple Vulnerabilities");
 
@@ -43,9 +43,9 @@ multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
-- Improper restrictions on access to the 'lua/forcepasswd.do' script.
+  - Improper restrictions on access to the 'lua/forcepasswd.do' script.
 
-- Improper sanitization of input passed to 'lua/forcepasswd.do' and
+  - Improper sanitization of input passed to 'lua/forcepasswd.do' and
 'loginforgotpwd' scripts.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to bypass certain security
 restrictions and inject or manipulate SQL queries in the back-end database,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-042.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: secpod_ms13-042.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Microsoft Office Publisher Remote Code Execution Vulnerability (2830397)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902970");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-1316", "CVE-2013-1317", "CVE-2013-1318", "CVE-2013-1319",
                 "CVE-2013-1320", "CVE-2013-1321", "CVE-2013-1322", "CVE-2013-1323",
                 "CVE-2013-1327", "CVE-2013-1328", "CVE-2013-1329");
@@ -35,7 +35,7 @@ if(description)
                     59771, 59772);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-15 10:32:57 +0530 (Wed, 15 May 2013)");
   script_name("Microsoft Office Publisher Remote Code Execution Vulnerability (2830397)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53370/");
@@ -57,9 +57,12 @@ if(description)
   Microsoft Publisher 2007 Service Pack 3 and prior
   Microsoft Publisher 2010 Service Pack 1 and prior");
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An unspecified errors when handling array size, return values,
     table range data, NULL values.
+
   - An integer overflow vulnerability exists.
+
   - A signedness error exists when parsing certain data, which can be
     exploited to corrupt memory.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_jul15_macosx.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_jul15_macosx.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities-01 July15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805908");
-  script_version("$Revision: 11218 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-2721", "CVE-2015-2722", "CVE-2015-2724", "CVE-2015-2728",
                 "CVE-2015-2730", "CVE-2015-2733", "CVE-2015-2734", "CVE-2015-2735",
                 "CVE-2015-2736", "CVE-2015-2737", "CVE-2015-2738", "CVE-2015-2739",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(75541, 74733);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-08 17:23:35 +0530 (Wed, 08 Jul 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 July15 (Mac OS X)");
 
@@ -47,26 +47,39 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - An error within Network Security Services (NSS) where the client allows for
   a 'ECDHE_ECDSA' exchange where the server does not send its 'ServerKeyExchange'
   message.
+
   - Multiple use-after-free vulnerabilities.
+
   - Multiple unspecified memory related errors.
+
   - An error within the 'IndexedDatabaseManager' class in the IndexedDB
   implementation.
+
   - An error in the implementation of Elliptical Curve Cryptography (ECC)
   multiplication for Elliptic Curve Digital Signature Algorithm (ECDSA) signature
   validation in Network Security Services (NSS).
+
   - An error in the 'CairoTextureClientD3D9::BorrowDrawTarget' function in the
   Direct3D 9 implementation.
+
   - An error in 'nsZipArchive::BuildFileList' function.
+
   - Unspecified error in nsZipArchive.cpp script.
+
   - An error in the 'rx::d3d11::SetBufferData' function in the Direct3D 11
   implementation.
+
   - An error in the 'YCbCrImageDataDeserializer::ToDataSourceSurface' function
   in the YCbCr implementation.
+
   - An error in 'ArrayBufferBuilder::append' function.
+
   - Buffer overflow error in the 'nsXMLHttpRequest::AppendToResponseText' function.
+
   - An error in PDF.js PDF file viewer.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zyxel_router_multiple_vuln.nasl 11202 2018-09-03 14:43:03Z mmartin $
+# $Id: gb_zyxel_router_multiple_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # ZyXEL ADSL Router Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804471");
-  script_version("$Revision: 11202 $");
+  script_version("$Revision: 11339 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-25 12:28:41 +0530 (Wed, 25 Jun 2014)");
   script_name("ZyXEL ADSL Router Multiple Vulnerabilities");
 
@@ -40,6 +40,7 @@ if(description)
   is able to read cookie or not.");
   script_tag(name:"insight", value:"- The 'Forms/rpAuth_1' does not validate input to an arbitrary parameter
     before returning it to users.
+
   - ZyXEL contains a flaw that is due to a lack of protection mechanisms in
     the login form.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to trivially gain privileged

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-052.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ms14-052.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2977629)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802081");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-7331", "CVE-2014-2799", "CVE-2014-4059", "CVE-2014-4065",
                 "CVE-2014-4079", "CVE-2014-4080", "CVE-2014-4081", "CVE-2014-4082",
                 "CVE-2014-4083", "CVE-2014-4084", "CVE-2014-4085", "CVE-2014-4086",
@@ -47,7 +47,7 @@ if(description)
                     69615);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-10 09:49:48 +0530 (Wed, 10 Sep 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
 
@@ -61,7 +61,9 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An error within the XMLDOM ActiveX control.
+
   - Multiple unspecified vulnerabilities.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers

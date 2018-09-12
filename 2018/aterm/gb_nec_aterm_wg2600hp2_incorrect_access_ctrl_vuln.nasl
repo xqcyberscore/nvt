@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nec_aterm_wg2600hp2_incorrect_access_ctrl_vuln.nasl 11302 2018-09-10 11:41:36Z santu $
+# $Id: gb_nec_aterm_wg2600hp2_incorrect_access_ctrl_vuln.nasl 11335 2018-09-11 14:12:03Z cfischer $
 #
 # NEC Aterm WG2600HP2 Incorrect Access Control Vulnerability
 #
@@ -24,16 +24,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813880");
-  script_version("$Revision: 11302 $");
+  script_version("$Revision: 11335 $");
   script_cve_id("CVE-2017-12575");
   script_tag(name:"cvss_base", value:"9.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:41:36 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:12:03 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-07 18:21:50 +0530 (Fri, 07 Sep 2018)");
   script_name("NEC Aterm WG2600HP2 Incorrect Access Control Vulnerability");
+  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Aug/26");
+  script_xref(name:"URL", value:"http://www.aterm.jp/product/atermstation/product/warpstar/wg2600hp2");
 
   script_tag(name:"summary", value:"The host is installed with NEC Aterm WG2600HP2
   wireless LAN router and is prone to an incorrect access control vulnerability.");
@@ -56,26 +64,18 @@ if (description)
   details are available. For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
-
   script_tag(name:"qod_type", value:"exploit");
 
-  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2018/Aug/26");
-  script_xref(name:"URL", value:"http://www.aterm.jp/product/atermstation/product/warpstar/wg2600hp2");
-
-  script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
-  script_category(ACT_ATTACK);
-  script_family("Web application abuses");
-  script_dependencies("find_service.nasl", "http_version.nasl");
-  script_require_ports("Services/www", 80);
   exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
+include("misc_func.inc");
 
 necport = get_http_port(default:80);
 
-buf = http_get_cache( item:"/aterm_httpif.cgi", port:necport );
+buf = http_get_cache(item:"/aterm_httpif.cgi", port:necport);
 
 ## Application confirmation
 ## WG2600HP2 is not able to confirm
@@ -85,14 +85,17 @@ if(buf =~ "Copyright.*NEC Platforms" && buf =~ "<title>.*Aterm</title>" &&
   data = "REQ_ID=SUPPORT_IF_GET";
   url = "/aterm_httpif.cgi/negotiate";
 
-  req = http_post_req(port: necport, url: url, data: data, add_headers: make_array("Content-Type", "application/x-www-form-urlencoded"));
-  buf = http_keepalive_send_recv(port: necport, data: req);
+  req = http_post_req(port:necport, url:url, data:data, add_headers:make_array("Content-Type", "application/x-www-form-urlencoded"));
+  buf = http_keepalive_send_recv(port:necport, data:req);
 
-  if(buf =~ "HTTP/1.. 200 OK" && "DEVICE_TYPE=" >< buf && "SUPPORT_REQ=" >< buf &&
+  if(buf =~ "^HTTP/1\.[01] 200" && "DEVICE_TYPE=" >< buf && "SUPPORT_REQ=" >< buf &&
    "Server: Aterm(HT)" >< buf && "GET_INTERFACE=" >< buf && "SET_INTERFACE=" >< buf)
   {
-    report = report_vuln_url(port: necport, url: url);
-    security_message(port: necport, data: report);
+    report = report_vuln_url(port:necport, url:url);
+    security_message(port:necport, data:report);
     exit(0);
   }
+  exit(99);
 }
+
+exit(0);

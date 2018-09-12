@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-021.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: secpod_ms13-021.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Microsoft Internet Explorer Multiple Use After Free Vulnerabilities (2809289)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903303");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-0087", "CVE-2013-0088", "CVE-2013-0089", "CVE-2013-0090",
                 "CVE-2013-0091", "CVE-2013-0092", "CVE-2013-0093", "CVE-2013-0094",
                 "CVE-2013-1288");
   script_bugtraq_id(58341, 58342, 58343, 58345, 58346, 58344, 58347, 58348, 58437);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-13 08:14:20 +0530 (Wed, 13 Mar 2013)");
   script_name("Microsoft Internet Explorer Multiple Use After Free Vulnerabilities (2809289)");
   script_xref(name:"URL", value:"http://www.symantec.com/docs/TECH203758");
@@ -52,14 +52,23 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x/10.x");
   script_tag(name:"insight", value:"Multiple use-after-free error exist in the following functions,
+
   - OnResize
+
   - saveHistory
+
   - CMarkupBehaviorContext
+
   - CCaret
+
   - CElement
+
   - GetMarkupPtr
+
   - onBeforeCopy
+
   - removeChild
+
   - CTreeNode");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,

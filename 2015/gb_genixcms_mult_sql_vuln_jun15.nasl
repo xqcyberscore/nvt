@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_genixcms_mult_sql_vuln_jun15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_genixcms_mult_sql_vuln_jun15.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Genixcms Multiple SQL Injection Vulnerabilities - June15
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805665");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-3933", "CVE-2015-5066");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-25 15:38:34 +0530 (Thu, 25 Jun 2015)");
   script_name("Genixcms Multiple SQL Injection Vulnerabilities - June15");
 
@@ -42,8 +42,10 @@ if(description)
   and check whether it is able execute sql query or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - Insufficient validation of input passed via 'email' and 'userid' POST
   parameter to 'register.php' script.
+
   - Insufficient validation of input passed via 'content' and 'title' fields in
   an add action in the posts page to index.php or the 'q' parameter in the posts
   page to index.php");

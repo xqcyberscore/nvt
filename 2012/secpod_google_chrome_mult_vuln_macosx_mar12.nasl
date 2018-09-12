@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_macosx_mar12.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: secpod_google_chrome_mult_vuln_macosx_mar12.nasl 11325 2018-09-11 10:59:54Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities (MAC OS X) - Mar 12
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903006");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11325 $");
   script_cve_id("CVE-2011-3049", "CVE-2011-3052", "CVE-2011-3053", "CVE-2011-3054",
                 "CVE-2011-3055", "CVE-2011-3056", "CVE-2011-3057", "CVE-2011-3051",
                 "CVE-2011-3050", "CVE-2011-3045");
   script_bugtraq_id(52674);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-26 16:40:40 +0530 (Mon, 26 Mar 2012)");
   script_name("Google Chrome Multiple Vulnerabilities (MAC OS X) - Mar 12");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48512/");
@@ -51,16 +51,26 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Google Chrome version prior to 17.0.963.83 on MAC OS X");
   script_tag(name:"insight", value:"The flaws are due to
+
   - Not properly restrict the extension web request API.
+
   - Memory corruption in WebGL canvas handling.
+
   - Use-after-free in block splitting.
+
   - An error in WebUI privilege implementation which fails to properly perform
     isolation.
+
   - Prompt in the browser native UI for unpacked extension installation.
+
   - Cross-origin violation with magic iframe.
+
   - An invalid read error exists within v8.
+
   - A use-after-free error exists when handling CSS cross-fade.
+
   - A use-after-free error exists when handling the first letter.
+
   - An error exists in the bundled version of libpng.");
   script_tag(name:"solution", value:"Upgrade to Google Chrome version 17.0.963.83 or later,
   For updates refer to http://www.google.com/chrome");

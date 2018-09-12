@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_revive_adserver_mult_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_revive_adserver_mult_vuln.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Revive Adserver Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:revive:adserver";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805415");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2014-8875", "CVE-2014-8793");
   script_bugtraq_id(71721, 71718);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-13 17:38:00 +0530 (Tue, 13 Jan 2015)");
   script_name("Revive Adserver Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -51,8 +51,10 @@ if(description)
   script_tag(name:"vuldetect", value:"Check for the vulnerable version of
   Revive Adserver");
   script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - insufficient sanitization of input passed via the 'refresh_page' GET
   parameter to 'report-generate.php' script.
+
   - insufficient sanitization of input by The XML_RPC_cd function in
   lib/pear/XML/RPC.php in Revive Adserver.");
   script_tag(name:"impact", value:"Successful exploitation will allow

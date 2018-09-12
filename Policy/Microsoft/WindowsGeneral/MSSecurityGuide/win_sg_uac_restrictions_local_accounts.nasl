@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_sg_uac_restrictions_local_accounts.nasl 10797 2018-08-06 14:54:44Z emoss $
+# $Id: win_sg_uac_restrictions_local_accounts.nasl 11337 2018-09-11 14:23:53Z emoss $
 #
 # Check value for Apply UAC restrictions to local accounts on network logons
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109304");
-  script_version("$Revision: 10797 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 16:54:44 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 11337 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:23:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-15 11:15:02 +0200 (Fri, 15 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_add_preference(name:"Value", type:"radio", value:"0;1");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Apply UAC restrictions to local accounts on network logons' on Windows hosts (at least Windows 7).
 
 The setting controls whether local accounts can be used for remote administration
@@ -72,7 +72,7 @@ key = 'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System';
 item = 'LocalAccountTokenFilterPolicy';
 default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
-if(!value){
+if(value == ''){
   value = '0';
 }
 

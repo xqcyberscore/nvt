@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_babygekko_cms_mult_vuln.nasl 11200 2018-09-03 14:11:38Z mmartin $
+# $Id: gb_babygekko_cms_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Baby Gekko CMS Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804856");
-  script_version("$Revision: 11200 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2012-5698", "CVE-2012-5699", "CVE-2012-5700");
   script_bugtraq_id(56523, 56523, 56523);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-24 14:10:24 +0530 (Wed, 24 Sep 2014)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -46,10 +46,13 @@ if(description)
   request and check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Multiple errors exists due to,
+
   - Insufficient validation of input passed via the 'keyword', 'query' and 'id'
     parameters to /admin/index.php script.
+
   - Insufficient validation of input passed via the 'app' parameter to index.php
     script.
+
   - Insufficient validation of input passed via the 'username' and 'password'
     HTTP POST parameters to the index.php script.");
 

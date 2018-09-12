@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_aug14_lin.nasl 11198 2018-09-03 13:39:31Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_aug14_lin.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities - 01 Aug14 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804812");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-3165", "CVE-2014-3166", "CVE-2014-3167");
   script_bugtraq_id(69201, 69202, 69203);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-19 11:20:53 +0530 (Tue, 19 Aug 2014)");
   script_name("Google Chrome Multiple Vulnerabilities - 01 Aug14 (Linux)");
 
@@ -43,9 +43,11 @@ if(description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due to
-- Use-after-free vulnerability in websockets/WorkerThreadableWebSocketChannel.cpp
+
+  - Use-after-free vulnerability in websockets/WorkerThreadableWebSocketChannel.cpp
 script within the Web Sockets implementation in Blink.
-- An error within SPDY and other multiple unspecified errors.");
+
+  - An error within SPDY and other multiple unspecified errors.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to disclose potentially
 sensitive information, conduct a denial of service attack and potentially
 execute arbitrary code or possibly have other impact via unknown vectors.

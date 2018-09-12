@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_multiple_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_webid_multiple_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # WeBid Multiple Cross Site Scripting And LDAP Injection Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:webidsupport:webid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804476");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-5101", "CVE-2014-5114");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-29 12:53:33 +0530 (Tue, 29 Jul 2014)");
   script_name("WeBid Multiple Cross Site Scripting And LDAP Injection Vulnerabilities");
 
@@ -43,14 +43,17 @@ and LDAP injection vVulnerabilities.");
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP POST request and check whether it is able to read
 cookie or not.");
   script_tag(name:"insight", value:"Mulltiple flaws are due to,
- - The /WeBid/user_login.php script does not validate input to the 'username'
+
+  - The /WeBid/user_login.php script does not validate input to the 'username'
    POST parameter before returning it to users.
- - The register.php script does not validate input to the 'TPL_name', 'TPL_nick',
+
+  - The register.php script does not validate input to the 'TPL_name', 'TPL_nick',
    ' TPL_email', 'TPL_year', 'TPL_address', 'TPL_city', 'TPL_prov', 'TPL_zip',
    'TPL_phone', 'TPL_pp_email', 'TPL_authnet_id', 'TPL_authnet_pass',
    'TPL_wordpay_id', 'TPL_toocheckout_id', and 'TPL_moneybookers_email' POST
    parameters before returning it to users.
- - An input passed via the 'js' parameter is not properly sanitized upon
+
+  - An input passed via the 'js' parameter is not properly sanitized upon
    submission to the loader.php script. ");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
 script code in a user's browser session in the context of an affected site.

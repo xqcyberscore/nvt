@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-097.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: secpod_ms13-097.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2898785)
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903330");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-5045", "CVE-2013-5046", "CVE-2013-5047", "CVE-2013-5048",
                 "CVE-2013-5049", "CVE-2013-5051", "CVE-2013-5052");
   script_bugtraq_id(64115, 64120, 64117, 64119, 64123, 64124, 64126);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-11 08:03:37 +0530 (Wed, 11 Dec 2013)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2898785)");
 
@@ -47,9 +47,12 @@ or not.");
 update mentioned hotfixes in the advisory from the below link,
 http://technet.microsoft.com/en-us/security/bulletin/ms13-097");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- An unspecified error exists during validation of local file installation.
-- An unspecified error exists during secure creation of registry keys.
-- Multiple unspecified errors.");
+
+  - An unspecified error exists during validation of local file installation.
+
+  - An unspecified error exists during secure creation of registry keys.
+
+  - Multiple unspecified errors.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x/10.x/11.x");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to corrupt memory by the
 execution of arbitrary code, bypass certain security restrictions and

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_znc_mult_vuln_jul18.nasl 10588 2018-07-24 10:22:15Z cfischer $
+# $Id: gb_znc_mult_vuln_jul18.nasl 11317 2018-09-11 08:57:27Z asteins $
 #
 # ZNC < 1.7.1-rc1 Multiple Vulnerabilities
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:znc:znc";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.108452");
-  script_version("$Revision: 10588 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-24 12:22:15 +0200 (Tue, 24 Jul 2018) $");
+  script_version("$Revision: 11317 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:57:27 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-24 09:57:02 +0200 (Tue, 24 Jul 2018)");
   script_cve_id("CVE-2018-14055", "CVE-2018-14056");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
   script_name("ZNC < 1.7.1-rc1 Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");

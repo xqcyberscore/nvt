@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_bof_n_dos_vuln_macosx.nasl 11144 2018-08-28 11:37:19Z asteins $
+# $Id: gb_wireshark_bof_n_dos_vuln_macosx.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Wireshark Heap Based BOF and Denial of Service Vulnerabilities (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802767");
-  script_version("$Revision: 11144 $");
+  script_version("$Revision: 11322 $");
   script_cve_id("CVE-2011-4102", "CVE-2011-4101");
   script_bugtraq_id(50486, 50481);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 13:37:19 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-02 17:03:46 +0530 (Wed, 02 May 2012)");
   script_name("Wireshark Heap Based BOF and Denial of Service Vulnerabilities (Mac OS X)");
 
@@ -47,8 +47,10 @@ if(description)
   Impact Level: Application");
   script_tag(name:"affected", value:"Wireshark version 1.4.0 through 1.4.9 and 1.6.x before 1.6.3 on Mac OS X");
   script_tag(name:"insight", value:"The flaws are due to
+
   - An error while parsing ERF file format. This could cause wireshark to
     crash by reading a malformed packet trace file.
+
   - An error in dissect_infiniband_common function in
     'epan/dissectors/packet-infiniband.c' in the Infiniband dissector,
     could dereference a NULL pointer.");

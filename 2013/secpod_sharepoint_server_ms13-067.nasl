@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sharepoint_server_ms13-067.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: secpod_sharepoint_server_ms13-067.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Microsoft SharePoint Server Remote Code Execution vulnerability (2834052)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903322");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-1330", "CVE-2013-3179", "CVE-2013-3180", "CVE-2013-0081");
   script_bugtraq_id(62221, 62227, 62254, 62205);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-13 16:29:08 +0530 (Fri, 13 Sep 2013)");
   script_name("Microsoft SharePoint Server Remote Code Execution vulnerability (2834052)");
 
@@ -46,16 +46,21 @@ or not.");
 update mentioned hotfixes in the advisory from the below link,
 http://technet.microsoft.com/en-us/security/bulletin/ms13-067");
   script_tag(name:"insight", value:"Multiple Flaws are due to,
-- An error when handling an unassigned workflow can be exploited to cause the
+
+  - An error when handling an unassigned workflow can be exploited to cause the
   W3WP process to stop responding via a specially crafted URL.
-- An error related to MAC exists when handling unassigned workflows.
-- Input passed via the 'ms-descriptionText > ctl00_PlaceHolderDialogBodySection
+
+  - An error related to MAC exists when handling unassigned workflows.
+
+  - Input passed via the 'ms-descriptionText > ctl00_PlaceHolderDialogBodySection
   _PlaceHolderDialogBodyMainSection_ValSummary' parameter related to metadata
   storage assignment of the BDC permission management within the 'Sharepoint
   Online Cloud 2013 Service' section is not properly sanitised before being used.
-- Certain unspecified input is not properly sanitised before being returned to
+
+  - Certain unspecified input is not properly sanitised before being returned to
    the user.
-- Multiple unspecified errors.");
+
+  - Multiple unspecified errors.");
   script_tag(name:"affected", value:"Microsoft SharePoint Server 2013
 Microsoft SharePoint Server 2007 Service Pack 3
 Microsoft SharePoint Server 2010 Service Pack 2 and prior");

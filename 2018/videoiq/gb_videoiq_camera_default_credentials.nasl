@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_videoiq_camera_default_credentials.nasl 11136 2018-08-27 13:49:53Z tpassfeld $
+# $Id: gb_videoiq_camera_default_credentials.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
 #
 # VideoIQ Camera Default Credentials
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114024");
-  script_version("$Revision: 11136 $");
+  script_version("$Revision: 11328 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 15:49:53 +0200 (Mon, 27 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-27 14:58:45 +0200 (Mon, 27 Aug 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
@@ -39,7 +39,7 @@ if(description)
   script_name("VideoIQ Camera Default Credentials");
   script_dependencies("gb_videoiq_camera_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("VideoIQ/Camera/Installed");
+  script_mandatory_keys("videoiq/camera/detected");
 
   script_xref(name:"URL", value:"https://customvideosecurity.com/blog/tag/default-password-axis/");
 

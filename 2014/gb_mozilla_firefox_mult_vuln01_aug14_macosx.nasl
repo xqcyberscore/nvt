@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804731");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1549", "CVE-2014-1548", "CVE-2014-1560", "CVE-2014-1559",
                 "CVE-2014-1547", "CVE-2014-1558", "CVE-2014-1552", "CVE-2014-1561",
                 "CVE-2014-1555", "CVE-2014-1557", "CVE-2014-1544", "CVE-2014-1556",
@@ -38,7 +38,7 @@ if(description)
                     68826, 68814, 68824, 68816, 68822, 68810);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-07 09:52:10 +0530 (Thu, 07 Aug 2014)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 August14 (Mac OS X)");
 
@@ -47,12 +47,17 @@ if(description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- An error when buffering Web Audio for playback.
-- A use-after-free error related to ordering of control messages for Web Audio.
-- A use-after-free error when handling the FireOnStateChange event.
-- An unspecified error when using the Cesium JavaScript library to generate
+
+  - An error when buffering Web Audio for playback.
+
+  - A use-after-free error related to ordering of control messages for Web Audio.
+
+  - A use-after-free error when handling the FireOnStateChange event.
+
+  - An unspecified error when using the Cesium JavaScript library to generate
   WebGL content.
-- The application bundles a vulnerable version of the Network Security
+
+  - The application bundles a vulnerable version of the Network Security
   Services (NSS) library.
 and Some unspecified errors.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security

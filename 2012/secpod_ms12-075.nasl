@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-075.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: secpod_ms12-075.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Microsoft Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2761226)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902693");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11322 $");
   script_cve_id("CVE-2012-2530", "CVE-2012-2553", "CVE-2012-2897");
   script_bugtraq_id(56447, 56457, 56448);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-14 09:44:08 +0530 (Wed, 14 Nov 2012)");
   script_name("Microsoft Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2761226)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51239/");
@@ -56,7 +56,9 @@ if(description)
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
   script_tag(name:"insight", value:"Multiple flaws are due to
+
   - Use-after-free error within win32k.sys when handling objects in memory.
+
   - An error when parsing a specially crafted 'TrueType' font file.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,

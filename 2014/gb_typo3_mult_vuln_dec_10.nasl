@@ -28,14 +28,14 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804220");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2010-5097", "CVE-2010-5098", "CVE-2010-5099", "CVE-2010-5100",
                 "CVE-2010-5101", "CVE-2010-5102", "CVE-2010-5103", "CVE-2010-5104");
   script_bugtraq_id(45470);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-09 15:55:26 +0530 (Thu, 09 Jan 2014)");
   script_name("TYPO3 Multiple Vulnerabilities Dec10");
 
@@ -46,12 +46,15 @@ information or execute SQL commands.
 Impact Level: Application");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple error exists in the application,
-- An error exist in fileDenyPattern functionality, which does not properly
+
+  - An error exist in fileDenyPattern functionality, which does not properly
 filter file types.
-- An error exist enlarge functionality, FORM content object, list module and
+
+  - An error exist enlarge functionality, FORM content object, list module and
 class.em_unzip.php script, which fails to validate certain user provided
 input properly.
-- An error exist in escapeStrForLike method, which does not properly escape
+
+  - An error exist in escapeStrForLike method, which does not properly escape
 input when the MySQL database is set to sql_mode NO_BACKSLASH_ESCAPES.");
   script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.2.16, 4.3.9, 4.4.5 or later,
 For updates refer to, http://typo3.org/");

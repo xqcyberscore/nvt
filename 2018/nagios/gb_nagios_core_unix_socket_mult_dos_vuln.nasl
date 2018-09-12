@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_core_unix_socket_mult_dos_vuln.nasl 10537 2018-07-18 07:58:47Z cfischer $
+# $Id: gb_nagios_core_unix_socket_mult_dos_vuln.nasl 11317 2018-09-11 08:57:27Z asteins $
 #
 # Nagios Core 'unix socket' Multiple Denial of Service Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:nagios:nagios";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813262");
-  script_version("$Revision: 10537 $");
+  script_version("$Revision: 11317 $");
   script_cve_id("CVE-2018-13457", "CVE-2018-13458", "CVE-2018-13441");
-  script_tag(name:"cvss_base", value:"7.8");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-18 09:58:47 +0200 (Wed, 18 Jul 2018) $");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:57:27 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-13 14:55:37 +0530 (Fri, 13 Jul 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Nagios Core 'unix socket' Multiple Denial of Service Vulnerabilities");

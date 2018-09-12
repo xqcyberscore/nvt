@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_itunes_mult_vuln_nov15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_apple_itunes_mult_vuln_nov15.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Apple iTunes Multiple Vulnerabilities Nov15 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:apple:itunes";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806609");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-5928", "CVE-2015-5929", "CVE-2015-5930", "CVE-2015-5931",
                 "CVE-2015-7002", "CVE-2015-7011", "CVE-2015-7012", "CVE-2015-7013",
                 "CVE-2015-7014", "CVE-2015-6975", "CVE-2015-6992", "CVE-2015-7017");
   script_bugtraq_id(77264, 77267, 77270);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-03 14:51:27 +0530 (Tue, 03 Nov 2015)");
   script_name("Apple iTunes Multiple Vulnerabilities Nov15 (Windows)");
 
@@ -46,7 +46,9 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Multiple memory corruption issues in WebKit.
+
   - Multiple memory corruption issues in the processing of text files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_sametime_meet_server_mult_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ibm_sametime_meet_server_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # IBM Sametime Classic Meeting Server Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804825");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-4747", "CVE-2014-4748");
   script_bugtraq_id(68823, 68841);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-27 17:35:20 +0530 (Wed, 27 Aug 2014)");
   script_name("IBM Sametime Classic Meeting Server Multiple Vulnerabilities");
 
@@ -42,9 +42,9 @@ to multiple vulnerabilities.");
 or not.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
-- improper validation of user supplied input.
+  - improper validation of user supplied input.
 
-- presence of password hash in HTML source.");
+  - presence of password hash in HTML source.");
   script_tag(name:"impact", value:"Successful exploitation will allow local attacker to gain access to the meeting
 password hash from the HTML source and allow remote attackers to execute
 arbitrary script code in a user's browser session within the trust

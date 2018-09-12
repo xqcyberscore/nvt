@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sony_network_camera_default_credentials.nasl 11081 2018-08-22 13:05:04Z tpassfeld $
+# $Id: gb_sony_network_camera_default_credentials.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
 #
 # Sony Network Camera Default Credentials
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114023");
-  script_version("$Revision: 11081 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 15:05:04 +0200 (Wed, 22 Aug 2018) $");
+  script_version("$Revision: 11328 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-21 16:35:01 +0200 (Tue, 21 Aug 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,7 +46,7 @@ if(description)
   script_family("Default Accounts");
   script_dependencies("gb_sony_network_camera_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("Sony/NetworkCamera/installed");
+  script_mandatory_keys("sony/networkcamera/detected");
 
   script_tag(name:"summary", value:"Sony network cameras use the default credentials admin:admin.");
   script_tag(name:"vuldetect", value:"Tries to login using default credentials.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_web_tester_mult_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_web_tester_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # WebTester Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804027");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11336 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-16 12:57:49 +0530 (Wed, 16 Oct 2013)");
   script_name("WebTester Multiple Vulnerabilities");
 
@@ -39,10 +39,13 @@ if (description)
   information or not.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Input passed via 'TestID' parameter to 'startTest.php' script is not properly
   sanitized before being used in the code.
+
   - The application is not verifying permissions when accessing certain files
   like phpinfo.php and '/tiny_mce/plugins/filemanager/InsertFile/insert_file.php'
+
   - Application is not removing installed files after installation.");
   script_tag(name:"affected", value:"WebTester version 5.x, Other versions may also be affected.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to manipulate SQL queries

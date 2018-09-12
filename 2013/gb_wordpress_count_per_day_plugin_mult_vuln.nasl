@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_count_per_day_plugin_mult_vuln.nasl 11069 2018-08-21 12:29:19Z mmartin $
+# $Id: gb_wordpress_count_per_day_plugin_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Wordpress Count per Day Plugin Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803430");
-  script_version("$Revision: 11069 $");
+  script_version("$Revision: 11336 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 14:29:19 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-06 11:34:32 +0530 (Wed, 06 Mar 2013)");
   script_name("Wordpress Count per Day Plugin Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2013/Mar/43");
@@ -55,11 +55,11 @@ Impact Level: Application");
 /wp-admin/index.php script is not properly sanitised before being returned to
 the user.
 
-- Malicious input passed via POST parameters to wordpress/wp-content/plugins
+  - Malicious input passed via POST parameters to wordpress/wp-content/plugins
 /count-per-day/notes.php script is not properly sanitised before being
 returned to the user.
 
-- Malformed GET request to ajax.php, counter-core.php, counter-options.php,
+  - Malformed GET request to ajax.php, counter-core.php, counter-options.php,
 counter.php, massbots.php, and userperspan.php scripts.");
   script_tag(name:"solution", value:"Update to version 3.2.6 or later,
 For updates refer to http://wordpress.org/extend/plugins/count-per-day");

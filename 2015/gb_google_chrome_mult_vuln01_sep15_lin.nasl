@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_sep15_lin.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_sep15_lin.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-01 September15 (Linux)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806041");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-6583", "CVE-2015-6582", "CVE-2015-6581", "CVE-2015-6580",
                 "CVE-2015-1301", "CVE-2015-1300", "CVE-2015-1299", "CVE-2015-1298",
                 "CVE-2015-1297", "CVE-2015-1296", "CVE-2015-1295", "CVE-2015-1294",
                 "CVE-2015-1293", "CVE-2015-1292", "CVE-2015-1291");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-07 13:00:04 +0530 (Mon, 07 Sep 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 September15 (Linux)");
 
@@ -46,15 +46,24 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Use-after-free vulnerability in the shared-timer implementation in Blink.
+
   - Double free vulnerability in OpenJPEG before r3002, as used in PDFium.
+
   - Multiple vulnerabilities in Blink.
+
   - Improper validation of user supplied input for setUninstallURL preference.
+
   - Improper handling of requests by WebRequest API implementation.
+
   - Error in UnescapeURLWithAdjustmentsImpl implementation.
+
   - Multiple use-after-free vulnerabilities in the PrintWebViewHelper class.
+
   - Use-after-free vulnerability in the 'SkMatrix::invertNonIdentity' function
     in core/SkMatrix.cpp script in Skia.
+
   - Multiple unspecified vulnerabilities.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

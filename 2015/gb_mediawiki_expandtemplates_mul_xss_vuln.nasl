@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_expandtemplates_mul_xss_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_mediawiki_expandtemplates_mul_xss_vuln.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # MediaWiki ExpandTemplates extension Multiple Vulnerabilities - Jan15
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805327");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2014-9276", "CVE-2014-9478");
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-23 12:37:41 +0530 (Fri, 23 Jan 2015)");
   script_name("MediaWiki ExpandTemplates extension Multiple Vulnerabilities - Jan15");
 
@@ -44,6 +44,7 @@ if(description)
   and check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exist when'$wgRawHtml' is set to true.
+
   - Input passed via 'wpInput' parameter in the script is not validated
      before returning it to users.");
 

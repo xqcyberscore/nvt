@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_may14_lin.nasl 11189 2018-09-03 11:12:38Z cfischer $
+# $Id: gb_google_chrome_mult_vuln01_may14_lin.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities - 01 May14 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804602");
-  script_version("$Revision: 11189 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1740", "CVE-2014-1741", "CVE-2014-1742");
   script_bugtraq_id(67374, 67376, 67375);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:12:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-21 15:25:49 +0530 (Wed, 21 May 2014)");
   script_name("Google Chrome Multiple Vulnerabilities - 01 May14 (Linux)");
 
@@ -43,12 +43,12 @@ vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaws are due to,
 
-- A use-after-free error in WebSockets.
+  - A use-after-free error in WebSockets.
 
-- An integer overflow error in the 'CharacterData::deleteData' and
+  - An integer overflow error in the 'CharacterData::deleteData' and
 'CharacterData::replaceData' functions in dom/CharacterData.cpp.
 
-- A use-after-free error in the 'FrameSelection::updateAppearance' function in
+  - A use-after-free error in the 'FrameSelection::updateAppearance' function in
 editing/FrameSelection.cpp related to editing.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct a denial of
 service and potentially execute arbitrary code.

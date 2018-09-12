@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805365");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-09 13:05:47 +0530 (Thu, 09 Apr 2015)");
   script_name("Balero CMS Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -50,11 +50,17 @@ if(description)
   GET and check whether it is able to read cookie or not.");
   script_tag(name:"insight", value:"Multiple flaws are due to input
   passed via,
+
   - 'content' parameter to 'mod-blog' is not properly validated.
+
   - 'counter' parameter to 'admin' is not properly validated.
+
   - 'pages' and 'themes' parameter to 'admin' is not properly validated.
+
   - 'a' and 'virtual_title' parameter to 'mod-virtual_page' is not properly validated.
+
   - 'id' and 'title' parameter to 'mod-blog' is not properly validated.
+
   - 'code' parameter to 'mod-languages' is not properly validated.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database and execute

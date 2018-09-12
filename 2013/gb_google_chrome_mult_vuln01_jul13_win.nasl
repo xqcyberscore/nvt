@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jul13_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_jul13_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-01 July13 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803902");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-2880", "CVE-2013-2879", "CVE-2013-2878", "CVE-2013-2877",
                 "CVE-2013-2876", "CVE-2013-2875", "CVE-2013-2874", "CVE-2013-2873",
                 "CVE-2013-2872", "CVE-2013-2871", "CVE-2013-2870", "CVE-2013-2869",
@@ -36,7 +36,7 @@ if(description)
                     61060, 61053, 61054, 61058, 61050, 61049);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-16 18:40:12 +0530 (Tue, 16 Jul 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 July13 (Windows)");
 
@@ -48,29 +48,29 @@ denial of service condition.
   script_tag(name:"affected", value:"Google Chrome version prior to 28.0.1500.71 on Windows.");
   script_tag(name:"insight", value:"Multiple flaws due to,
 
- - Error exists when setting up sign-in and sync operations.
+  - Error exists when setting up sign-in and sync operations.
 
- - An out-of-bounds read error exists within text handling.
+  - An out-of-bounds read error exists within text handling.
 
- - 'parser.c in libxml2' has out-of-bounds read error, related to the lack of
+  - 'parser.c in libxml2' has out-of-bounds read error, related to the lack of
    checks for the XML_PARSER_EOF state.
 
- - 'browser/extensions/api/tabs/tabs_api.cc' does not enforce restrictions on
+  - 'browser/extensions/api/tabs/tabs_api.cc' does not enforce restrictions on
    the capture of screenshots by extensions.
 
- - An out-of-bounds read error exists in SVG handling.
+  - An out-of-bounds read error exists in SVG handling.
 
- - Unspecified error related to GL textures, only when an Nvidia GPU is used.
+  - Unspecified error related to GL textures, only when an Nvidia GPU is used.
 
- - Unspecified use-after-free vulnerabilities.
+  - Unspecified use-after-free vulnerabilities.
 
- - An out-of-bounds read error exists within JPEG2000 handling.
+  - An out-of-bounds read error exists within JPEG2000 handling.
 
- - Unspecified error exists within sync of NPAPI extension component.
+  - Unspecified error exists within sync of NPAPI extension component.
 
- - Does not properly prevent pop.
+  - Does not properly prevent pop.
 
- - HTTPS implementation does not ensure how headers are terminated.");
+  - HTTPS implementation does not ensure how headers are terminated.");
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 28.0.1500.71 or later,
 For updates refer to http://www.google.com/chrome ");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");

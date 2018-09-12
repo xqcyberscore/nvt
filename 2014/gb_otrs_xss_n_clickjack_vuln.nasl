@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_xss_n_clickjack_vuln.nasl 11187 2018-09-03 09:59:13Z mmartin $
+# $Id: gb_otrs_xss_n_clickjack_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # OTRS Help Desk Cross-Site Scripting and Clickjacking Vulnerabilities
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804418");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-2553", "CVE-2014-2554");
   script_bugtraq_id(66569, 66567);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-07 15:00:42 +0530 (Mon, 07 Apr 2014)");
   script_name("OTRS Help Desk Cross-Site Scripting and Clickjacking Vulnerabilities");
 
@@ -45,7 +45,8 @@ cross-site scripting and clickjacking vulnerabilities.");
 version is vulnerable or not.");
   script_tag(name:"insight", value:"- Certain input related to dynamic fields is not properly sanitised before
    being returned to the user.
- - The application allows users to perform certain actions via HTTP requests
+
+  - The application allows users to perform certain actions via HTTP requests
    via iframes without performing any validity checks to verify the requests.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct cross-site scripting
 and clickjacking attacks.

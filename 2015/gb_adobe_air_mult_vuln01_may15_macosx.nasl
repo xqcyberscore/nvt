@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_may15_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_adobe_air_mult_vuln01_may15_macosx.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Adobe Air Multiple Vulnerabilities - 01 May15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805621");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-3077", "CVE-2015-3078", "CVE-2015-3079", "CVE-2015-3080",
                 "CVE-2015-3081", "CVE-2015-3082", "CVE-2015-3083", "CVE-2015-3084",
                 "CVE-2015-3085", "CVE-2015-3086", "CVE-2015-3087", "CVE-2015-3088",
@@ -38,7 +38,7 @@ if(description)
   script_bugtraq_id(74614, 74605, 74612, 74608, 74613, 74610, 74616, 74609, 74617);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-15 14:07:44 +0530 (Fri, 15 May 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Adobe Air Multiple Vulnerabilities - 01 May15 (Mac OS X)");
@@ -49,17 +49,26 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - Improper validation of user supplied input.
+
   - A flaw in the Broker that is due to the BrokerCreateFile method not properly
     sanitizing user input.
+
   - An integer overflow condition that is triggered as user-supplied input is
     not properly validated.
+
   - An overflow condition that is triggered as user-supplied input is not
     properly validated.
+
   - Multiple unspecified memory disclosure flaws in Adobe Flash Player.
+
   - Multiple unspecified type confusion flaws in Adobe Flash Player.
+
   - Multiple unspecified flaws in Adobe Flash Player.
+
   - A a use-after-free error Adobe Flash Player.
+
   - An unspecified TOCTOU flaw in Adobe Flash Player.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a

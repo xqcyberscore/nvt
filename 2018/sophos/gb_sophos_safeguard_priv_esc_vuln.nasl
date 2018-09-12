@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sophos_safeguard_priv_esc_vuln.nasl 10410 2018-07-05 09:22:09Z asteins $
+# $Id: gb_sophos_safeguard_priv_esc_vuln.nasl 11317 2018-09-11 08:57:27Z asteins $
 #
 # Sophos SafeGuard Privilege Escalation Vulnerability (Windows)
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107327");
-  script_version("$Revision: 10410 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 11:22:09 +0200 (Thu, 05 Jul 2018) $");
+  script_version("$Revision: 11317 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:57:27 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-04 11:36:43 +0200 (Wed, 04 Jul 2018)");
-  script_tag(name:"cvss_base", value:"6.8");
-  script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"7.2");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   script_cve_id("CVE-2018-6851", "CVE-2018-6852", "CVE-2018-6853", "CVE-2018-6854", "CVE-2018-6855", "CVE-2018-6856", "CVE-2018-6857");

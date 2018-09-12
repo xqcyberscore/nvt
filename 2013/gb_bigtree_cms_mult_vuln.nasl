@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bigtree_cms_mult_vuln.nasl 11011 2018-08-16 14:14:31Z mmartin $
+# $Id: gb_bigtree_cms_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # BigTree CMS Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:bigtree:bigtree';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803869");
-  script_version("$Revision: 11011 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-4879", "CVE-2013-4880", "CVE-2013-5313", "CVE-2013-4881");
   script_bugtraq_id(61699, 61701, 61839, 61702);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-19 12:51:13 +0530 (Mon, 19 Aug 2013)");
   script_name("BigTree CMS Multiple Vulnerabilities");
 
@@ -45,9 +45,11 @@ if (description)
   script_tag(name:"solution", value:"Upgrade to version 4.0 or later,
   For updates refer to http://www.bigtreecms.org");
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Improper sanitation of user-supplied input passed via the
   URL to the site/index.php script and 'module' parameter upon submission
   to '/admin/developer/modules/views/add/index.php' script
+
   - Cross-site request forgery (CSRF) vulnerability in
   core/admin/modules/users/create.php and core/admin/modules/users/update.php");
   script_tag(name:"affected", value:"BigTree CMS version 4.0 RC2 and prior");

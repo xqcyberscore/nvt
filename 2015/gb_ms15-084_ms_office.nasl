@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-084_ms_office.nasl 11259 2018-09-06 08:28:49Z mmartin $
+# $Id: gb_ms15-084_ms_office.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # MS Office XML Core Services Information Disclosure Vulnerability (3080129)
 #
@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805951");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-2434", "CVE-2015-2471", "CVE-2015-2440");
   script_bugtraq_id(76232, 76257, 76229);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 10:29:39 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("MS Office XML Core Services Information Disclosure Vulnerability (3080129)");
@@ -43,8 +43,10 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Flaw exists due to,
+
   - An error in  Microsoft XML Core Services which allows forceful use of Secure
   Sockets Layer (SSL) 2.0.
+
   - An error in Microsoft XML Core Services which exposes memory addresses not
   intended for public disclosure.");
 

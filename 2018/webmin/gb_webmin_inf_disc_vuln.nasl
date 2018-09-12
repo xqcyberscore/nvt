@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webmin_inf_disc_vuln.nasl 9478 2018-04-13 13:28:27Z cfischer $
+# $Id: gb_webmin_inf_disc_vuln.nasl 11348 2018-09-12 07:38:26Z cfischer $
 #
 # Webmin 1.880 Information Disclosure Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113135");
-  script_version("$Revision: 9478 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-13 15:28:27 +0200 (Fri, 13 Apr 2018) $");
+  script_version("$Revision: 11348 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:38:26 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-03-15 13:16:22 +0100 (Thu, 15 Mar 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -76,7 +76,7 @@ if( ! version = get_app_version( cpe: CPE, port: port ) ) exit( 0 );
 # The 7elements PoC only includes 1.840 and 1.880, because these were the versions that were tested
 # But as the feature was available from the beginning, one can safely assume that all versions are affected
 if( version_is_less_equal( version: version, test_version: "1.880" ) ) {
-  report = report_fixed_ver( installed_version: version, fixed_version: "NoneAvailable" );
+  report = report_fixed_ver( installed_version: version, fixed_version: "Please see the solution tag for an available Mitigation" );
   security_message( data: report, port: port );
   exit( 0 );
 }

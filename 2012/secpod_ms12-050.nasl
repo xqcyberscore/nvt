@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-050.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: secpod_ms12-050.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Microsoft SharePoint Multiple Privilege Elevation Vulnerabilities (2695502)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902847");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11322 $");
   script_bugtraq_id(53842, 54312, 54313, 54314, 54315, 54316);
   script_cve_id("CVE-2012-1858", "CVE-2012-1859", "CVE-2012-1860", "CVE-2012-1861",
                 "CVE-2012-1862", "CVE-2012-1863");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-11 11:11:11 +0530 (Wed, 11 Jul 2012)");
   script_name("Microsoft SharePoint Multiple Privilege Elevation Vulnerabilities (2695502)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49875");
@@ -68,19 +68,24 @@ if(description)
   Microsoft Windows SharePoint Services 3.0 Service Pack 2");
   script_tag(name:"insight", value:"- Certain input is not properly sanitised in the 'SafeHTML' API before being
     returned to the user.
+
   - Certain unspecified input is not properly sanitised in scriptresx.ashx
     before being returned to the user. This can be exploited to execute
     arbitrary HTML and script code in a user's browser session in context of
     an affected site.
+
   - An error when validating search scope permissions can be exploited to view
     or modify another user's search scope.
+
   - Certain unspecified input associated with a username is not properly
     sanitised before being returned to the user. This can be exploited to
     execute arbitrary HTML and script code in a user's browser session in
     context of an affected site.
+
   - Certain unspecified input associated with a URL is not properly verified
     before being used to redirect users. This can be exploited to redirect a
     user to an arbitrary website.
+
   - Certain unspecified input associated with a reflected list parameter is
     not properly sanitised before being returned to the user. This can be
     exploited to execute arbitrary HTML and script code in a user's browser

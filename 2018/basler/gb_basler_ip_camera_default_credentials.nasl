@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_basler_ip_camera_default_credentials.nasl 11303 2018-09-10 11:44:00Z tpassfeld $
+# $Id: gb_basler_ip_camera_default_credentials.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
 #
 # Basler IP Camera Default Credentials
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114030");
-  script_version("$Revision: 11303 $");
+  script_version("$Revision: 11328 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:44:00 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-10 12:59:11 +0200 (Mon, 10 Sep 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
@@ -39,7 +39,7 @@ if(description)
   script_name("Basler IP Camera Default Credentials");
   script_dependencies("gb_basler_ip_camera_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("Basler/IP_Camera/detected");
+  script_mandatory_keys("basler/ip_camera/detected");
 
   script_xref(name:"URL", value:"https://ipvm.com/reports/ip-cameras-default-passwords-directory");
 

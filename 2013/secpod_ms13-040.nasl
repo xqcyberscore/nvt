@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-040.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: secpod_ms13-040.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Microsoft .NET Framework Authentication Bypass and Spoofing Vulnerabilities (2836440)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903308");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-1336", "CVE-2013-1337");
   script_bugtraq_id(59789, 59790);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-15 12:23:29 +0530 (Wed, 15 May 2013)");
   script_name("Microsoft .NET Framework Authentication Bypass and Spoofing Vulnerabilities (2836440)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53350");
@@ -53,7 +53,9 @@ if(description)
   Microsoft .NET Framework 3.5.1
   Microsoft .NET Framework 2.0 Service Pack 2");
   script_tag(name:"insight", value:"The flaws are due to
+
   - Improper validation of XML signatures by the CLR
+
   - Error within the WCF endpoint authentication mechanism when handling
     queries");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: phpadsnew_xss.nasl 10111 2018-06-07 09:30:55Z cfischer $
+# $Id: phpadsnew_xss.nasl 11343 2018-09-12 06:36:46Z cfischer $
 #
 # phpAdsNew Multiple Vulnerabilities
 #
@@ -31,8 +31,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17335");
-  script_version("$Revision: 10111 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 11:30:55 +0200 (Thu, 07 Jun 2018) $");
+  script_version("$Revision: 11343 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2005-0791");
   script_bugtraq_id(12803);
@@ -60,7 +60,11 @@ if(description)
 
    * Cross Site Scripting");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
+
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
 
   exit(0);

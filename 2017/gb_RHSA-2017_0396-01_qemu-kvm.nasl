@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.871769");
-  script_version("$Revision: 6691 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 11:51:43 +0200 (Wed, 12 Jul 2017) $");
+  script_version("$Revision: 11317 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:57:27 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-03-03 05:49:43 +0100 (Fri, 03 Mar 2017)");
   script_cve_id("CVE-2017-2615", "CVE-2017-2620");
-  script_tag(name:"cvss_base", value:"10.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"package");
   script_name("RedHat Update for qemu-kvm RHSA-2017:0396-01");
   script_tag(name: "summary", value: "Check the version of qemu-kvm");

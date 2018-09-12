@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-097.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_ms15-097.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Microsoft Windows Graphics Component Remote Code Execution Vulnerability (3089656)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805979");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-2506", "CVE-2015-2507", "CVE-2015-2508", "CVE-2015-2510",
                 "CVE-2015-2511", "CVE-2015-2512", "CVE-2015-2517", "CVE-2015-2518",
                 "CVE-2015-2527", "CVE-2015-2529", "CVE-2015-2546");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 15:01:49 +0530 (Wed, 09 Sep 2015)");
   script_name("Microsoft Windows Graphics Component Remote Code Execution Vulnerability (3089656)");
 
@@ -44,15 +44,20 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - An unspecified error in the Windows Adobe Type Manager Library which
     improperly handles specially crafted OpenType fonts.
+
   - An unspecified error in Windows Adobe Type Manager Library which fails
     to properly handle objects in memory.
+
   - Multiple errors in Windows kernel-mode driver which fails to properly
     handle objects in memory.
+
   - An unspecified error in the Windows kernel mode driver (Win32k.sys) which
     fails to properly validate and enforce integrity levels during certain
     process initialization scenarios.
+
   - An error in Windows kernel which fails to properly initialize a memory
     address.");
 

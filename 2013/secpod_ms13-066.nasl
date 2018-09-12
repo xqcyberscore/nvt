@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-066.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: secpod_ms13-066.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Microsoft Active Directory Federation Services Information Disclosure Vulnerability (2873872)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802058");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-3185");
   script_bugtraq_id(61672);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-14 15:33:05 +0530 (Wed, 14 Aug 2013)");
   script_name("Microsoft Active Directory Federation Services Information Disclosure Vulnerability (2873872)");
   script_tag(name:"summary", value:"This host is missing an important security update according to Microsoft
@@ -45,15 +45,20 @@ http://technet.microsoft.com/en-us/security/bulletin/ms13-066");
   script_tag(name:"insight", value:"Flaw is due to an error within the Active Directory Federation
 Services (ADFS)");
   script_tag(name:"affected", value:"Active Directory Federation Services 2.1
- - Microsoft Windows Server 2012
+
+  - Microsoft Windows Server 2012
 
 Active Directory Federation Services 2.0
- - Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior
- - Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
+
+  - Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior
+
+  - Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
 
 Active Directory Federation Services 1.0
- - Microsoft Windows 2003 x32/x64 Service Pack 2 and prior
- - Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior");
+
+  - Microsoft Windows 2003 x32/x64 Service Pack 2 and prior
+
+  - Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain potentially sensitive information. Impact Level: System");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

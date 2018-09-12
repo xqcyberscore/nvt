@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_thunderbird_esr_mult_vuln_jun13_macosx.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: secpod_mozilla_thunderbird_esr_mult_vuln_jun13_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Mozilla Thunderbird ESR Multiple Vulnerabilities - June 13 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903221");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-1684", "CVE-2013-1685", "CVE-2013-1686", "CVE-2013-1687",
                  "CVE-2013-1690", "CVE-2013-1692", "CVE-2013-1693", "CVE-2013-1694",
                  "CVE-2013-1697", "CVE-2013-1692");
@@ -35,7 +35,7 @@ if(description)
                     60765);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-26 18:40:17 +0530 (Wed, 26 Jun 2013)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities - June 13 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53970");
@@ -53,16 +53,24 @@ if(description)
   Impact Level: Application");
   script_tag(name:"affected", value:"Thunderbird ESR version 17.x before 17.0.7 on Mac OS X");
   script_tag(name:"insight", value:"Multiple flaws due to,
+
   - PreserveWrapper does not handle lack of wrapper.
+
   - Error in processing of SVG format images with filters to read pixel values.
+
   - Does not prevent inclusion of body data in XMLHttpRequest HEAD request.
+
   - Multiple unspecified vulnerabilities in the browser engine.
+
   - Does not properly handle onreadystatechange events in conjunction with
     page reloading.
+
   - System Only Wrapper (SOW) and Chrome Object Wrapper (COW), does not
     restrict XBL user-defined functions.
+
   - Use-after-free vulnerability in 'nsIDocument::GetRootElement' and
     'mozilla::dom::HTMLMediaElement::LookupMediaElementURITable' functions.
+
   - XrayWrapper does not properly restrict use of DefaultValue for method calls.");
   script_tag(name:"solution", value:"Upgrade to Thunderbird ESR 17.0.7 or later,
   http://www.mozilla.org/en-US/thunderbird");

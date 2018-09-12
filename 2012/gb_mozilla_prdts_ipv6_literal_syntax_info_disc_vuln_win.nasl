@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_ipv6_literal_syntax_info_disc_vuln_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_prdts_ipv6_literal_syntax_info_disc_vuln_win.nasl 11325 2018-09-11 10:59:54Z asteins $
 #
 # Mozilla Products IPv6 Literal Syntax Cross Domain Information Disclosure Vulnerability (Windows)
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802579");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11325 $");
   script_cve_id("CVE-2011-3670");
   script_bugtraq_id(51786);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-03 17:51:59 +0530 (Fri, 03 Feb 2012)");
   script_name("Mozilla Products IPv6 Literal Syntax Cross Domain Information Disclosure Vulnerability (Windows)");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/47839/");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1026613");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-02.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/47839/");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1026613");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-02.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
@@ -47,18 +47,18 @@ if(description)
                       "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : "Successful exploitation will let attackers to get sensitive information.
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to get sensitive information.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "SeaMonkey version before 2.4
+  script_tag(name:"affected", value:"SeaMonkey version before 2.4
   Thunderbird version before 3.1.18 and 5.0 through 6.0
   Mozilla Firefox version before 3.6.26 and 4.x through 6.0");
-  script_tag(name : "insight" , value : "The flaw is due to requests made using IPv6 syntax using XMLHttpRequest
+  script_tag(name:"insight", value:"The flaw is due to requests made using IPv6 syntax using XMLHttpRequest
   objects through a proxy may generate errors depending on proxy configuration
   for IPv6. The resulting error messages from the proxy may disclose sensitive
   data.");
-  script_tag(name : "summary" , value : "The host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
+  script_tag(name:"summary", value:"The host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
   to information disclosure vulnerability.");
-  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 3.6.27 or 7.0 or later
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 3.6.27 or 7.0 or later
   For updates refer to http://www.mozilla.com/en-US/firefox/all.html
 
   Upgrade to SeaMonkey version to 2.4 or later

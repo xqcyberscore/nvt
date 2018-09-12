@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_may15_macosx.nasl 11239 2018-09-05 09:46:45Z mmartin $
+# $Id: gb_mozilla_firefox_mult_vuln01_may15_macosx.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 May15 (Mac OS X)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805626");
-  script_version("$Revision: 11239 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-2708", "CVE-2015-2709", "CVE-2015-2710", "CVE-2015-2711",
                 "CVE-2015-2712", "CVE-2015-2713", "CVE-2015-2715", "CVE-2015-2716",
                 "CVE-2015-2717", "CVE-2015-2718", "CVE-2015-0797", "CVE-2015-4496");
   script_bugtraq_id(74615, 74611, 76333);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-21 18:29:20 +0530 (Thu, 21 May 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 May15 (Mac OS X)");
 
@@ -46,18 +46,29 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Flaw in WebChannel.jsm module in Mozilla Firefox.
+
   - Integer overflow in libstagefright in Mozilla Firefox.
+
   - Buffer overflow in the XML parser in Mozilla Firefox.
+
   - Race condition in the 'nsThreadManager::RegisterCurrentThread' function in
     Mozilla Firefox.
+
   - Use-after-free vulnerability in the SetBreaks function in Mozilla Firefox.
+
   - Flaw in Mozilla Firefox so that does not recognize a referrer policy
     delivered by a referrer META element.
+
   - Heap-based buffer overflow in the SVGTextFrame class in Mozilla Firefox.
+
   - Multiple unspecified vulnerabilities in the browser engine in Mozilla Firefox.
+
   - Flaw in asm.js implementation in Mozilla Firefox.
+
   - Flaw in GStreamer in Mozilla Firefox.
+
   - Multiple integer overflows in libstagefright in Mozilla Firefox.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow a

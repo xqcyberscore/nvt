@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_info_disc_vuln_feb16.nasl 5782 2017-03-30 09:01:05Z teissa $
+# $Id: gb_cisco_vcs_info_disc_vuln_feb16.nasl 11345 2018-09-12 07:02:17Z cfischer $
 #
 # Cisco Video Communications Server Information Disclosure Vulnerability - Feb16
 #
@@ -30,49 +30,46 @@ CPE = "cpe:/a:cisco:telepresence_video_communication_server_software";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806683");
-  script_version("$Revision: 5782 $");
+  script_version("$Revision: 11345 $");
   script_cve_id("CVE-2016-1316");
   script_bugtraq_id(82948);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-30 11:01:05 +0200 (Thu, 30 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:02:17 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-02-12 11:59:34 +0530 (Fri, 12 Feb 2016)");
   script_name("Cisco Video Communications Server Information Disclosure Vulnerability - Feb16");
 
-  script_tag(name: "summary" , value:"This host is running Cisco TelePresence
+  script_tag(name:"summary", value:"This host is running Cisco TelePresence
   Video Communication Server and is prone to information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists due to a failure to properly
+  script_tag(name:"insight", value:"The flaw exists due to a failure to properly
   protect an informational URL that contains aggregated call statistics.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow attacker
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker
   to read and disclose certain sensitive data.
 
   Impact Level: Application");
 
-  script_tag(name: "affected" , value:"Cisco TelePresence Video Communication
+  script_tag(name:"affected", value:"Cisco TelePresence Video Communication
   Server (VCS) version X8.1 through X8.7 when used in conjunction with Jabber
   Guest.");
 
-  script_tag(name: "solution" , value:"No Solution is available as of 12th Feb,
-  2016. Information regarding this issue will be updated once solution details
-  are available. For details refer below links,
+  script_tag(name:"solution", value:"Update to version X8.8 or later. For details refer below links,
+
   https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160208-vcs");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
-
+  script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name : "URL" , value : "https://tools.cisco.com/bugsearch/bug/CSCux73362");
-  script_xref(name : "URL" , value : "https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160208-vcs");
+  script_xref(name:"URL", value:"https://tools.cisco.com/bugsearch/bug/CSCux73362");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160208-vcs");
 
   script_category(ACT_GATHER_INFO);
   script_family("CISCO");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
-  script_dependencies("gb_cisco_vcs_detect.nasl","gb_cisco_vcs_ssh_detect.nasl");
+  script_dependencies("gb_cisco_vcs_detect.nasl", "gb_cisco_vcs_ssh_detect.nasl");
   script_mandatory_keys("cisco_vcs/installed");
   exit(0);
 }
@@ -80,10 +77,6 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-version = "";
-
-## Get version
 if(!version = get_app_version(cpe:CPE, nofork:TRUE)){
   exit(0);
 }

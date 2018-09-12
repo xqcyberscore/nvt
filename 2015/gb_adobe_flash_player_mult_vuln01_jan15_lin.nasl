@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_jan15_lin.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_adobe_flash_player_mult_vuln01_jan15_lin.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Adobe Flash Player Multiple Vulnerabilities-01 Jan15 (Linux)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805244");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-0301", "CVE-2015-0302", "CVE-2015-0303", "CVE-2015-0304",
                 "CVE-2015-0305", "CVE-2015-0306", "CVE-2015-0307", "CVE-2015-0308",
                 "CVE-2015-0309");
   script_bugtraq_id(72034, 72035, 72031, 72032, 72033, 72036, 72037, 72039, 72038);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-16 12:40:35 +0530 (Fri, 16 Jan 2015)");
   script_name("Adobe Flash Player Multiple Vulnerabilities-01 Jan15 (Linux)");
 
@@ -46,13 +46,20 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - An unspecified error related to improper file validation.
+
   - Another unspecified error which can be exploited to capture keystrokes.
+
   - Two unspecified errors which can be exploited to corrupt memory.
+
   - Two unspecified errors which can be exploited to cause a heap-based
   buffer overflow.
+
   - A type confusion error which can be exploited to corrupt memory.
+
   - An out-of-bounds read error.
+
   - An unspecified use-after-free error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow

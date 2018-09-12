@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_SSH_umask.nasl 10612 2018-07-25 12:26:01Z cfischer $
+# $Id: GSHB_SSH_umask.nasl 11349 2018-09-12 07:56:57Z cfischer $
 #
 # List an Verify umask entries in /etc/profile and ~/.profile
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96068");
-  script_version("$Revision: 10612 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 11349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:56:57 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-04-27 10:02:59 +0200 (Tue, 27 Apr 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -99,7 +99,7 @@ if(UsProfLst) {
 
 if (etcbit == "fail" && usrbit == "noconf") umaskfail = "1";
 if (etcbit == "pass" && failuser) umaskfail = "1";
-if (umaskfail = "1"){
+if (umaskfail == "1"){
   if (etcbit == "pass" && failuser) result = failuser;
   else if (etcbit == "fail" && usrbit == "noconf" && failuser) result = "/etc/profile = " + etcprofileumask + failuser;
   else result = "/etc/profile=" + etcprofileumask;

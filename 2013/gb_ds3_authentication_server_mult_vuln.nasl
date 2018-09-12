@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ds3_authentication_server_mult_vuln.nasl 11099 2018-08-24 03:13:46Z ckuersteiner $
+# $Id: gb_ds3_authentication_server_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # DS3 Authentication Server Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803710");
-  script_version("$Revision: 11099 $");
+  script_version("$Revision: 11336 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 05:13:46 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-04 13:59:02 +0530 (Tue, 04 Jun 2013)");
   script_name("DS3 Authentication Server Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/526784/30/0/threaded");
@@ -44,14 +44,18 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
 
   script_tag(name:"insight", value:"The flaws are due to,
+
   - The TestTelnetConnection.jsp does not validate the user input, allowing
   an attacker to execute arbitrary commands in the server side with the
   privileges of asadmin user.
+
   - TestDRConnection.jsp, shows the file path in the error messages, this is
   considered a minor information leak.
+
   - Without being authenticated, any user is able to manipulate the message
   of the default error page, helping him to develop social engineering
   attacks.
+
   - ServerAdmin/ErrorViewer.jsp in DS3 Authentication Server allow remote attackers to inject arbitrary error-page text via the message parameter.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is running DS3 Authentication Server and is prone to

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_login_module_xss_vuln.nasl 11259 2018-09-06 08:28:49Z mmartin $
+# $Id: gb_joomla_login_module_xss_vuln.nasl 11323 2018-09-11 10:20:18Z ckuersteiner $
 #
 # Joomla CMS 'login' Module Cross-Site Scripting Vulnerability
 #
@@ -23,18 +23,20 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:joomla:joomla";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806600");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11323 $");
   script_cve_id("CVE-2015-6939");
   script_bugtraq_id(76750);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:20:18 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-19 15:49:11 +0530 (Mon, 19 Oct 2015)");
+
   script_name("Joomla CMS 'login' Module Cross-Site Scripting Vulnerability");
 
   script_tag(name:"summary", value:"This host is running Joomla and is prone
@@ -49,9 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary script code in a user's browser session within
-  the trust relationship between their browser and the server.
-
-  Impact Level: Application");
+  the trust relationship between their browser and the server.");
 
   script_tag(name:"affected", value:"Joomla versions 3.4.x before 3.4.4.");
 
@@ -60,16 +60,18 @@ if(description)
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name:"qod_type", value:"remote_vul");
+  script_tag(name:"qod_type", value:"remote_analysis");
 
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1033541");
   script_xref(name:"URL", value:"https://packetstormsecurity.com/files/133907");
+
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
   script_family("Web application abuses");
   script_dependencies("joomla_detect.nasl");
   script_mandatory_keys("joomla/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
@@ -77,13 +79,14 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-if(!http_port = get_app_port(cpe:CPE)){
+if(!http_port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-if(!dir = get_app_location(cpe:CPE, port:http_port)){
+if(!dir = get_app_location(cpe:CPE, port:http_port))
   exit(0);
-}
+
+if (dir == "/")
+  dir = "";
 
 url = dir + "/index.php/?Itemid=1&option=com_search&searchword=%f6%22%20on" +
             "mouseover%3dprompt%28document.cookie%29%20//&task=search";
@@ -96,3 +99,5 @@ if(http_vuln_check(port:http_port, url:url, check_header:TRUE,
   security_message(port:http_port, data:report);
   exit(0);
 }
+
+exit(99);

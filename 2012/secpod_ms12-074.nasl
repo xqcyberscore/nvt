@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-074.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: secpod_ms12-074.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (2745030)
 #
@@ -24,69 +24,67 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow an attacker to execute arbitrary code
-  with the privileges of the currently logged-in user. Failed attacks will
-  cause denial-of-service conditions.
-  Impact Level: System/Application";
-tag_affected = "Microsoft .NET Framework 1.0 SP3, 1.1 SP1, 2.0 SP2, 3.0, 3.5, 3.5.1,
-  and 4";
-tag_insight = "- An error within permissions checking of objects that perform reflection can
-    be exploited via a specially crafted XAML Browser Application (XBAP) or an
-    untrusted .NET application.
-  - An sanitisation error when processing partially trusted code can be exploited
-    to disclose certain data via a specially crafted XAML Browser Application
-    (XBAP) or an untrusted .NET application.
-  - The Entity Framework component loads certain libraries in an insecure manner,
-    which can be exploited to load arbitrary libraries by tricking a user into
-    opening certain files located on a remote WebDAV or SMB share.
-  - A validation error when acquiring proxy settings via the
-    Web Proxy Auto-Discovery (WPAD) can be exploited to execute JavaScript code
-    with reduced restrictions.
-  - An error within permissions checking of Windows Presentation Foundation (WPF)
-    objects that perform reflection can be exploited via a specially crafted XAML
-    Browser Application (XBAP) or an untrusted .NET application.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/ms12-074";
-tag_summary = "This host is missing a critical security update according to
-  Microsoft Bulletin MS12-074.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902934");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11322 $");
   script_cve_id("CVE-2012-1895", "CVE-2012-1896", "CVE-2012-2519", "CVE-2012-4776",
                 "CVE-2012-4777");
   script_bugtraq_id(56455, 56456, 56462, 56464);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-14 11:47:24 +0530 (Wed, 14 Nov 2012)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (2745030)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/51236/");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2745030");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2729456");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2729460");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2729449");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2729452");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2729451");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2729450");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2729453");
-  script_xref(name : "URL" , value : "http://support.microsoft.com/kb/2698023");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms12-074");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/51236/");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2745030");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2729456");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2729460");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2729449");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2729452");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2729451");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2729450");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2729453");
+  script_xref(name:"URL", value:"http://support.microsoft.com/kb/2698023");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms12-074");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 SecPod");
   script_family("Windows : Microsoft Bulletins");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow an attacker to execute arbitrary code
+  with the privileges of the currently logged-in user. Failed attacks will
+  cause denial-of-service conditions.
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Microsoft .NET Framework 1.0 SP3, 1.1 SP1, 2.0 SP2, 3.0, 3.5, 3.5.1,
+  and 4");
+  script_tag(name:"insight", value:"- An error within permissions checking of objects that perform reflection can
+    be exploited via a specially crafted XAML Browser Application (XBAP) or an
+    untrusted .NET application.
+
+  - An sanitisation error when processing partially trusted code can be exploited
+    to disclose certain data via a specially crafted XAML Browser Application
+    (XBAP) or an untrusted .NET application.
+
+  - The Entity Framework component loads certain libraries in an insecure manner,
+    which can be exploited to load arbitrary libraries by tricking a user into
+    opening certain files located on a remote WebDAV or SMB share.
+
+  - A validation error when acquiring proxy settings via the
+    Web Proxy Auto-Discovery (WPAD) can be exploited to execute JavaScript code
+    with reduced restrictions.
+
+  - An error within permissions checking of Windows Presentation Foundation (WPF)
+    objects that perform reflection can be exploited via a specially crafted XAML
+    Browser Application (XBAP) or an untrusted .NET application.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://technet.microsoft.com/en-us/security/bulletin/ms12-074");
+  script_tag(name:"summary", value:"This host is missing a critical security update according to
+  Microsoft Bulletin MS12-074.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -98,31 +96,21 @@ include("secpod_reg.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-## Variables Initialization
-key = "";
-item = "";
-path = "";
-dllVer = "";
-
-## Check for OS and Service Pack
 if(hotfix_check_sp(xp:4, xpx64:3, win2003:3, win2003x64:3, winVista:3,
                    win7:2, win7x64:2, win2008:3, win2008r2:2) <= 0){
   exit(0);
 }
 
-## Confirm .NET
 key = "SOFTWARE\Microsoft\ASP.NET\";
 if(!registry_key_exists(key:key)){
   exit(0);
 }
 
-## Try to Get Version
 foreach item (registry_enum_keys(key:key))
 {
   path = registry_get_sz(key:key + item, item:"Path");
   if(path && "\Microsoft.NET\Framework" >< path)
   {
-    ## Get version from System.dll file
     dllVer = fetch_file_version(sysPath:path, file_name:"System.dll");
     if(dllVer)
     {
@@ -131,7 +119,7 @@ foreach item (registry_enum_keys(key:key))
       if(version_in_range(version:dllVer, test_version:"4.0.30319.000", test_version2:"4.0.30319.295")||
          version_in_range(version:dllVer, test_version:"4.0.30319.500", test_version2:"4.0.30319.585"))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -141,7 +129,7 @@ foreach item (registry_enum_keys(key:key))
          (version_in_range(version:dllVer, test_version:"4.0.30319.18000", test_version2:"4.0.30319.18013")||
           version_in_range(version:dllVer, test_version:"4.0.30319.19000", test_version2:"4.0.30319.19018")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -151,7 +139,7 @@ foreach item (registry_enum_keys(key:key))
           version_in_range(version:dllVer, test_version:"2.0.50727.5600", test_version2:"2.0.50727.5736")||
           version_in_range(version:dllVer, test_version:"2.0.50727.4000", test_version2:"2.0.50727.4983")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -160,7 +148,7 @@ foreach item (registry_enum_keys(key:key))
          (version_in_range(version:dllVer, test_version:"2.0.50727.4000", test_version2:"2.0.50727.4233")||
           version_in_range(version:dllVer, test_version:"2.0.50727.5700", test_version2:"2.0.50727.5736")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -169,7 +157,7 @@ foreach item (registry_enum_keys(key:key))
          (version_in_range(version:dllVer, test_version:"2.0.50727.3000", test_version2:"2.0.50727.3642")||
           version_in_range(version:dllVer, test_version:"2.0.50727.5700", test_version2:"2.0.50727.5736")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
 
@@ -177,7 +165,7 @@ foreach item (registry_enum_keys(key:key))
       if((hotfix_check_sp(xp:4, win2003:3, win2003x64:3, winVista:3, win2008:3) > 0) &&
          (version_in_range(version:dllVer, test_version:"1.1.4322.2000", test_version2:"1.1.4322.2499")))
       {
-        security_message(0);
+        security_message( port: 0, data: "The target host was found to be vulnerable" );
         exit(0);
       }
     }
@@ -185,23 +173,20 @@ foreach item (registry_enum_keys(key:key))
 }
 
 ## Microsoft .NET Framework 1.1 Service Pack 1 when used with
-## Windows Server 2003 Service Pack 2
 foreach item (registry_enum_keys(key:key))
 {
   path = registry_get_sz(key:key + item, item:"Path");
   if("\Microsoft.NET\Framework" >< path)
   {
-    ## Get version from mscorlib.dll file
     dllVer = fetch_file_version(sysPath:path, file_name:"mscorlib.dll");
     if(dllVer)
     {
-      ## Windows XP and Windows 2003
       if(hotfix_check_sp(win2003:3) > 0)
       {
         ## Microsoft .NET Framework 1.1 Service Pack 1
         if(version_in_range(version:dllVer, test_version:"1.1.4322.2000", test_version2:"1.1.4322.2499"))
         {
-          security_message(0);
+          security_message( port: 0, data: "The target host was found to be vulnerable" );
           exit(0);
         }
       }
@@ -209,7 +194,6 @@ foreach item (registry_enum_keys(key:key))
   }
 }
 
-## Get .NET Framework 4.0 Version
 key = "SOFTWARE\Microsoft\ASP.NET\4.0.30319.0";
 if(registry_key_exists(key:key))
 {
@@ -224,7 +208,7 @@ if(dllv4 &&
   (version_in_range(version:dllv4, test_version:"4.0.30319.000", test_version2:"4.0.30319.297") ||
    version_in_range(version:dllv4, test_version:"4.0.30319.500", test_version2:"4.0.30319.587")))
 {
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
   exit(0);
 }
 
@@ -236,7 +220,7 @@ if(dllv4)
     (version_in_range(version:dllv4, test_version:"4.0.30319.18000", test_version2:"4.0.30319.18014")||
      version_in_range(version:dllv4, test_version:"4.0.30319.19000", test_version2:"4.0.30319.19019")))
    {
-     security_message(0);
+     security_message( port: 0, data: "The target host was found to be vulnerable" );
      exit(0);
    }
 }

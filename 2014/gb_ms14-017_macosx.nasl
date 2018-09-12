@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms14-017_macosx.nasl 11214 2018-09-04 10:09:46Z mmartin $
+# $Id: gb_ms14-017_macosx.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities-2949660 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804427");
-  script_version("$Revision: 11214 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1757", "CVE-2014-1758", "CVE-2014-1761");
   script_bugtraq_id(66385, 66614, 66629);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-09 10:25:33 +0530 (Wed, 09 Apr 2014)");
   script_tag(name:"solution_type", value:"VendorFix");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities-2949660 (Mac OS X)");
@@ -45,11 +45,14 @@ or not.");
   script_tag(name:"solution", value:"Apply the patch from below link,
 https://technet.microsoft.com/en-us/security/bulletin/ms14-017");
   script_tag(name:"insight", value:"Multiple flaws are due to an error within,
- - Microsoft Word when handling certain RTF-formatted data can be exploited to
+
+  - Microsoft Word when handling certain RTF-formatted data can be exploited to
    corrupt memory.
- - Microsoft Office File Format Converter when handling certain files can be
+
+  - Microsoft Office File Format Converter when handling certain files can be
    exploited to corrupt memory.
- - Microsoft Word when handling certain files can be exploited to cause a
+
+  - Microsoft Word when handling certain files can be exploited to cause a
    stack-based buffer overflow.");
   script_tag(name:"affected", value:"Microsoft Office 2011 on Mac OS X");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the arbitrary

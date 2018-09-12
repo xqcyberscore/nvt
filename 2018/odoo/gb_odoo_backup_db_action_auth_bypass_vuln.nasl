@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_odoo_backup_db_action_auth_bypass_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_odoo_backup_db_action_auth_bypass_vuln.nasl 11343 2018-09-12 06:36:46Z cfischer $
 #
 # Odoo 'Backup Database Action' Authentication Bypass Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:odoo:odoo";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812757");
-  script_version("$Revision: 9758 $");
+  script_version("$Revision: 11343 $");
   script_cve_id("CVE-2018-6620");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 13:00:22 +0530 (Thu, 08 Feb 2018)");
   script_name("Odoo 'Backup Database Action' Authentication Bypass Vulnerability");
 
@@ -54,14 +54,14 @@ if(description)
 
   script_tag(name:"affected", value:"Odoo Management Software.");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 07th May, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 12th September, 2018. Information
+  regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_vul");
 
-  script_xref(name: "URL", value: "http://asdedc.bid/odoo.html");
-  script_xref(name: "URL", value: "https://www.odoo.com");
+  script_xref(name:"URL", value:"http://asdedc.bid/odoo.html");
+  script_xref(name:"URL", value:"https://www.odoo.com");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
@@ -69,6 +69,7 @@ regarding this issue will be updated once solution details are available.");
   script_dependencies("gb_odoo_remote_detect.nasl");
   script_mandatory_keys("Odoo/Detected");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
@@ -86,8 +87,8 @@ if( dir == "/" ) dir = "";
 
 url = dir + '/web/database/manager#action=database_manager';
 
-if (http_vuln_check(port:odPort, url:url , pattern: '<title>Odoo</title>', 
-                    extra_check:make_list('Create Database', 'Set Master Password', '>Backup Database<', '>Restore Database<'), 
+if (http_vuln_check(port:odPort, url:url , pattern: '<title>Odoo</title>',
+                    extra_check:make_list('Create Database', 'Set Master Password', '>Backup Database<', '>Restore Database<'),
                     check_header: TRUE)) {
   report = report_vuln_url(port:odPort, url:url);
   security_message(port:odPort, data:report);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln01_august15_macosx.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_wireshark_mult_dos_vuln01_august15_macosx.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Wireshark Multiple Denial-of-Service Vulnerabilities-01 August15 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806030");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-6241", "CVE-2015-6242", "CVE-2015-6243", "CVE-2015-6244",
                 "CVE-2015-6245", "CVE-2015-6246", "CVE-2015-6247", "CVE-2015-6248",
                 "CVE-2015-6249");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-28 12:21:03 +0530 (Fri, 28 Aug 2015)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities-01 August15 (Mac OS X)");
 
@@ -45,23 +45,32 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - An error in 'proto_tree_add_bytes_item' function in 'epan/proto.c' script in
     the protocol-tree implementation.
+
   - An error in 'wmem_block_split_free_chunk' function in
     'epan/wmem/wmem_allocator_block.c' script in the wmem block allocator in the
     memory manager.
+
   - An error in 'dissector-table' implementation in 'epan/packet.c' script
     which mishandles table searches for empty strings.
+
   - An error in 'dissect_zbee_secure' function in
     'epan/dissectors/packet-zbee-security.c' script in the ZigBee dissector.
+
   - Mishandling of datatype by 'epan/dissectors/packet-gsm_rlcmac.c' script in
     the GSM RLC/MAC dissector.
+
   - An error in 'dissect_wa_payload' function in
     'epan/dissectors/packet-waveagent.c' script in the WaveAgent dissector.
+
   - Improper input validation of offset value by 'dissect_openflow_tablemod_v5'
     function in 'epan/dissectors/packet-openflow_v5.c' script.
+
   - Invalid data length checking by 'ptvcursor_add' function in the ptvcursor
     implementation in 'epan/proto.c' script.
+
   - An error in 'dissect_wccp2r1_address_table_info' function in
    'epan/dissectors/packet-wccp.c' script.");
 

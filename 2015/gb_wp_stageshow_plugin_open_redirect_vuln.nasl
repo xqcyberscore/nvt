@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_stageshow_plugin_open_redirect_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_wp_stageshow_plugin_open_redirect_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
 #
 # Wordpress StageShow Plugin Open Redirect Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805901");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11321 $");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-07 13:33:29 +0530 (Tue, 07 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress StageShow Plugin Open Redirect Vulnerability");
@@ -72,9 +72,9 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("host_details.inc");
@@ -88,7 +88,6 @@ if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Attack url
 url = dir + "/wp-content/plugins/stageshow/stageshow_redirect.php?url=http://www.example.com";
 
 if(http_vuln_check(port:http_port, url:url, pattern:"HTTP/1.. 301",

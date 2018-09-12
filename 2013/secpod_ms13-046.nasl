@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-046.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: secpod_ms13-046.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2840221)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903208");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-1332", "CVE-2013-1333", "CVE-2013-1334");
   script_bugtraq_id(59782, 59749, 59750);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-15 10:20:25 +0530 (Wed, 15 May 2013)");
   script_name("Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2840221)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2829361");
@@ -59,7 +59,9 @@ if(description)
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - A race condition error within the DirectX graphics kernel subsystem.
+
   - An unspecified error within the Windows kernel-mode driver (win32k.sys)");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,

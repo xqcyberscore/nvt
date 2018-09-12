@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_may13_macosx.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: gb_mozilla_firefox_mult_vuln01_may13_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities -01 May13 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803606");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-1681", "CVE-2013-1680", "CVE-2013-1679", "CVE-2013-1678",
                 "CVE-2013-1677", "CVE-2013-1676", "CVE-2013-1675", "CVE-2013-1674",
                 "CVE-2013-1673", "CVE-2013-1672", "CVE-2013-1671", "CVE-2013-1670",
@@ -36,7 +36,7 @@ if(description)
                     59872, 59869, 59865, 59870, 59855);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-27 12:23:01 +0530 (Mon, 27 May 2013)");
   script_name("Mozilla Firefox Multiple Vulnerabilities -01 May13 (Mac OS X)");
   script_xref(name:"URL", value:" http://secunia.com/advisories/53400");
@@ -53,15 +53,21 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Mozilla Firefox version before 21.0 on Mac OS X");
   script_tag(name:"insight", value:"- Unspecified vulnerabilities in the browser engine.
+
   - The Chrome Object Wrapper (COW) implementation does not prevent
     acquisition of chrome privileges.
+
   - Does not properly implement the INPUT element.
+
   - Does not properly maintain Mozilla Maintenance Service registry entries.
+
   - 'nsDOMSVGZoomEvent::mPreviousScale' and 'nsDOMSVGZoomEvent::mNewScale'
     functions do not initialize data structures.
+
   - Errors in 'SelectionIterator::GetNextSegment',
    'gfxSkipCharsIterator::SetOffsets' and '_cairo_xlib_surface_add_glyph'
    functions.
+
   - Use-after-free vulnerabilities in following functions,
     'nsContentUtils::RemoveScriptBlocker', 'nsFrameList::FirstChild', and
     'mozilla::plugins::child::_geturlnotify'.");

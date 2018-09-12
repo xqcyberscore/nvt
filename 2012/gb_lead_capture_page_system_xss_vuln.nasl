@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lead_capture_page_system_xss_vuln.nasl 5816 2017-03-31 10:16:41Z cfi $
+# $Id: gb_lead_capture_page_system_xss_vuln.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Lead Capture Page System 'message' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,17 +27,17 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802577");
-  script_version("$Revision: 5816 $");
+  script_version("$Revision: 11322 $");
   script_cve_id("CVE-2012-0932");
   script_bugtraq_id(51785);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 12:16:41 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-02 13:13:46 +0530 (Thu, 02 Feb 2012)");
   script_name("Lead Capture Page System 'message' Parameter Cross Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/47702");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/72623");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/108887/leadcapturepagesystem-xss.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/47702");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/72623");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/108887/leadcapturepagesystem-xss.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
@@ -46,18 +46,17 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
   HTML and script code in a user's browser session in context of an affected site.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Lead Capture Page System");
-  script_tag(name : "insight" , value : "The flaw is due to an input passed to the 'message' parameter
+  script_tag(name:"affected", value:"Lead Capture Page System");
+  script_tag(name:"insight", value:"The flaw is due to an input passed to the 'message' parameter
   in 'admin/login.php' is not properly sanitised before being returned to the user.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running Lead Capture Page System and is prone to
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Lead Capture Page System and is prone to
   cross site scripting vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -81,17 +80,14 @@ foreach dir (make_list_unique("/", "/leadcapturepagesystem", cgi_dirs(port:port)
   if(dir == "/") dir = "";
   rcvRes = http_get_cache(item: dir + "/login.php", port:port);
 
-  ## Confirm the application
   if(egrep(pattern:'Powered By <a href="http://leadcapturepagesystem.com/',
            string:rcvRes))
   {
-    ## Construct attack
     sndReq = string("GET ", dir, "/admin/login.php?message=<script>alert(",
                     "document.cookie)</script> HTTP/1.1", "\r\n",
                     "Host: ", host, "\r\n\r\n");
     rcvRes = http_keepalive_send_recv(port:port, data:sndReq);
 
-    ## Confirm the exploit
     if(rcvRes =~ "HTTP/1\.. 200" && "<script>alert(document.cookie)</script>" >< rcvRes)
     {
       security_message(port:port);

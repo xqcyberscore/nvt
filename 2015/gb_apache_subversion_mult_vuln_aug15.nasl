@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_subversion_mult_vuln_aug15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_apache_subversion_mult_vuln_aug15.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Apache Subversion Multiple Vulnerabilities - Aug15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:subversion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805095");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-3184", "CVE-2015-3187");
   script_bugtraq_id(76274, 76273);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-18 13:39:48 +0530 (Tue, 18 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache Subversion Multiple Vulnerabilities - Aug15");
@@ -45,8 +45,10 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaws are due to,
+
   - The  mod_authz_svn does not properly restrict anonymous access in some
     mixed anonymous/authenticated environments when using Apache httpd 2.4.
+
   - The svnserve will reveal some paths  that should be hidden by path-based
     authz.  When a node is copied rom an unreadable location to a readable
     location the unreadable path may be revealed.");

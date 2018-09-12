@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_logsign_rce_vuln.nasl 7585 2017-10-26 15:03:01Z cfischer $
+# $Id: gb_logsign_rce_vuln.nasl 11324 2018-09-11 10:42:18Z asteins $
 #
 # Logsign Remote Command Execution Vulnerability
 #
@@ -30,15 +30,15 @@ CPE = "cpe:/a:logsign:logsign";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106651");
-  script_version("$Revision: 7585 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-10-26 17:03:01 +0200 (Thu, 26 Oct 2017) $");
-  script_tag(name: "creation_date", value: "2017-03-14 12:58:36 +0700 (Tue, 14 Mar 2017)");
-  script_tag(name: "cvss_base", value: "10.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11324 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:42:18 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-03-14 12:58:36 +0700 (Tue, 14 Mar 2017)");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name: "qod_type", value: "remote_vul");
+  script_tag(name:"qod_type", value:"remote_vul");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Logsign Remote Command Execution Vulnerability");
 
@@ -49,16 +49,16 @@ if (description)
   script_dependencies("gb_logsign_detect.nasl");
   script_mandatory_keys("logsign/installed");
 
-  script_tag(name: "summary", value: "Logsign is prone to a remote code execution vulnerability.");
+  script_tag(name:"summary", value:"Logsign is prone to a remote code execution vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Sends a crafted HTTP request and checks the response.");
+  script_tag(name:"vuldetect", value:"Sends a crafted HTTP request and checks the response.");
 
-  script_tag(name: "insight", value: "Logsign has a publicly accessible endpoint. That endpoint takes a user input
+  script_tag(name:"insight", value:"Logsign has a publicly accessible endpoint. That endpoint takes a user input
 and then use it during operating system command execution without proper validation.");
 
-  script_tag(name: "solution", value: "Logsign provides a patch to solve this vulnerability.");
+  script_tag(name:"solution", value:"Logsign provides a patch to solve this vulnerability.");
 
-  script_xref(name: "URL", value: "https://pentest.blog/unexpected-journey-3-visiting-another-siem-and-uncovering-pre-auth-privileged-remote-code-execution/");
+  script_xref(name:"URL", value:"https://pentest.blog/unexpected-journey-3-visiting-another-siem-and-uncovering-pre-auth-privileged-remote-code-execution/");
 
   exit(0);
 }
@@ -74,7 +74,7 @@ if (!port = get_app_port(cpe: CPE))
 if (!dir = get_app_location(cpe: CPE, port: port))
   exit(0);
 
-if (dir = "/")
+if (dir == "/")
   dir = "";
 
 url = dir + "/api/log_browser/validate";

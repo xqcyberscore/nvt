@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mock_smtp_server_dos_vuln.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_mock_smtp_server_dos_vuln.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Mock SMTP Server Remote Denial of Service Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805963");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11333 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-26 12:20:48 +0530 (Wed, 26 Aug 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Mock SMTP Server Remote Denial of Service Vulnerability");
@@ -99,7 +99,6 @@ foreach crafteddata(list)
   send(socket:mockSock, data:junk);
   close(mockSock);
 
-  ## Wait for sometime
   sleep(5);
 
   mockSock1 = open_sock_tcp(mockPort);

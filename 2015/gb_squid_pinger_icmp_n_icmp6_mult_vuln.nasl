@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_pinger_icmp_n_icmp6_mult_vuln.nasl 11220 2018-09-04 11:57:09Z mmartin $
+# $Id: gb_squid_pinger_icmp_n_icmp6_mult_vuln.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Squid Pinger ICMP Processing Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806105");
-  script_version("$Revision: 11220 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2014-7141", "CVE-2014-7142", "CVE-2014-6270");
   script_bugtraq_id(69688, 70022, 69686);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 15:37:01 +0530 (Tue, 08 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Squid Pinger ICMP Processing Multiple Vulnerabilities");
@@ -47,9 +47,11 @@ if(description)
   script_tag(name:"insight", value:"- Due to incorrect bounds checking Squid pinger binary is
     vulnerable to denial of service or information leak attack when
     processing larger than normal ICMP or ICMPv6 packets.
+
   - Due to incorrect input validation Squid pinger binary is
     vulnerable to denial of service or information leak attacks when
     processing ICMP or ICMPv6 packets.
+
   - Due to incorrect buffer management Squid can be caused by an attacker
     to write outside its allocated SNMP buffer.");
 

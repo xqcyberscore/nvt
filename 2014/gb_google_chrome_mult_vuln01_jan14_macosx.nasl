@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jan14_macosx.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_jan14_macosx.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-01 Jan2014 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804188");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-6641", "CVE-2013-6643", "CVE-2013-6644", "CVE-2013-6645",
                 "CVE-2013-6646");
   script_bugtraq_id(64805, 64981);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-21 11:29:43 +0530 (Tue, 21 Jan 2014)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Jan2014 (Mac OSX)");
 
@@ -44,12 +44,17 @@ if(description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
- - A use-after-free error exists within web workers.
- - Use-after-free vulnerability in 'FormAssociatedElement::formRemovedFromTree'
+
+  - A use-after-free error exists within web workers.
+
+  - Use-after-free vulnerability in 'FormAssociatedElement::formRemovedFromTree'
  function in Blink.
- - Multiple unspecified errors.
- - Use-after-free vulnerability in 'OnWindowRemovingFromRootWindow' function.
- - An error in 'OneClickSigninBubbleView::WindowClosing' function.");
+
+  - Multiple unspecified errors.
+
+  - Use-after-free vulnerability in 'OnWindowRemovingFromRootWindow' function.
+
+  - An error in 'OneClickSigninBubbleView::WindowClosing' function.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct  denial of
 service, execute an arbitrary code, trigger a sync with an arbitrary Google
 account and other impacts.

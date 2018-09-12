@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jun14_lin.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_jun14_lin.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities - 01 June14 (Linux)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804618");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1743", "CVE-2014-1744", "CVE-2014-1745", "CVE-2014-1746",
                 "CVE-2014-1747", "CVE-2014-1748", "CVE-2014-1749", "CVE-2014-3152",
                 "CVE-2014-3803");
   script_bugtraq_id(67790, 67517, 67582);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-04 10:20:11 +0530 (Wed, 04 Jun 2014)");
   script_name("Google Chrome Multiple Vulnerabilities - 01 June14 (Linux)");
 
@@ -45,19 +45,28 @@ if(description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaws are due to,
-- A use-after-free error exists in 'StyleElement::removedFromDocument' function
+
+  - A use-after-free error exists in 'StyleElement::removedFromDocument' function
 within core/dom/StyleElement.cpp.
-- An integer overflow error exists in 'AudioInputRendererHost::OnCreateStream'
+
+  - An integer overflow error exists in 'AudioInputRendererHost::OnCreateStream'
 function in media/audio_input_renderer_host.cc.
-- A use-after-free error exists within SVG.
-- An error within media filters  in 'InMemoryUrlProtocol::Read'.
-- An error in 'DocumentLoader::maybeCreateArchive' function related to a local
+
+  - A use-after-free error exists within SVG.
+
+  - An error within media filters  in 'InMemoryUrlProtocol::Read'.
+
+  - An error in 'DocumentLoader::maybeCreateArchive' function related to a local
 MHTML file.
-- An error in 'ScrollView::paint' function related to scroll bars.
-- Multiple unspecified errors exist.
-- An integer overflow error in 'LCodeGen::PrepareKeyedOperand' function in
+
+  - An error in 'ScrollView::paint' function related to scroll bars.
+
+  - Multiple unspecified errors exist.
+
+  - An integer overflow error in 'LCodeGen::PrepareKeyedOperand' function in
 arm/lithium-codegen-arm.cc within v8.
-- Some error in speech API within Blink.");
+
+  - Some error in speech API within Blink.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct a denial of
 service, inject arbitrary web script or HTML, spoof the UI, enable microphone
 access and obtain speech-recognition text and possibly have other unspecified

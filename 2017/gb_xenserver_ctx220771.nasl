@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx220771.nasl 5595 2017-03-16 17:32:19Z mime $
+# $Id: gb_xenserver_ctx220771.nasl 11317 2018-09-11 08:57:27Z asteins $
 #
 # Citrix XenServer Multiple Security Updates (CTX220771)
 #
@@ -31,9 +31,9 @@ if (description)
 {
  script_oid("1.3.6.1.4.1.25623.1.0.140173");
  script_cve_id("CVE-2017-2615","CVE-2017-2620");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
- script_version ("$Revision: 5595 $");
+ script_tag(name:"cvss_base", value:"9.0");
+ script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+ script_version ("$Revision: 11317 $");
 
  script_name("Citrix XenServer Multiple Security Updates (CTX220771)");
 
@@ -60,7 +60,7 @@ XenServer 6.0.2");
  script_tag(name:"solution_type", value: "VendorFix");
  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-16 18:32:19 +0100 (Thu, 16 Mar 2017) $");
+ script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:57:27 +0200 (Tue, 11 Sep 2018) $");
  script_tag(name:"creation_date", value:"2017-02-22 14:10:53 +0100 (Wed, 22 Feb 2017)");
  script_category(ACT_GATHER_INFO);
  script_family("Citrix Xenserver Local Security Checks");

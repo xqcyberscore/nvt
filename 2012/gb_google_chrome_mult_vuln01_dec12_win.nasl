@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_dec12_win.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_google_chrome_mult_vuln01_dec12_win.nasl 11325 2018-09-11 10:59:54Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities-01 Dec2012 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803118");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11325 $");
   script_cve_id("CVE-2012-5130", "CVE-2012-5132", "CVE-2012-5133", "CVE-2012-5134",
                 "CVE-2012-5135", "CVE-2012-5136");
   script_bugtraq_id(56684);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-04 11:26:39 +0530 (Tue, 04 Dec 2012)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Dec2012 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51437/");
@@ -50,11 +50,15 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Google Chrome version prior to 23.0.1271.91 on Windows");
   script_tag(name:"insight", value:"- An out-of-bounds read error exists in Skia.
+
   - A use-after-free error exists in SVG filters and in within printing.
+
   - Heap-based buffer underflow in the xmlParseAttValueComplex function in
     parser.c in libxmlier, allows remote attackers to cause a denial of service
     or possibly execute arbitrary code via crafted entities in an XML document.
+
   - A bad cast error exists within input element handling.
+
   - Browser crash with chunked encoding.");
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 23.0.1271.91 or later,
   For updates refer to http://www.google.com/chrome");

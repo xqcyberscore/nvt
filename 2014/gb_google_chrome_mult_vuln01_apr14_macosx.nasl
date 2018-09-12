@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_apr14_macosx.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_apr14_macosx.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities - 01 Apr14 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804549");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1716", "CVE-2014-1717", "CVE-2014-1718", "CVE-2014-1719",
                 "CVE-2014-1720", "CVE-2014-1721", "CVE-2014-1722", "CVE-2014-1723",
                 "CVE-2014-1724", "CVE-2014-1725", "CVE-2014-1726", "CVE-2014-1727",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(66704);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-22 13:36:13 +0530 (Tue, 22 Apr 2014)");
   script_name("Google Chrome Multiple Vulnerabilities - 01 Apr14 (Mac OS X)");
 
@@ -46,11 +46,16 @@ if(description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- A use-after-free error exists within 'web workers', 'DOM', 'forms' and 'speech'.
-- An unspecified error exists when handling URLs containing 'RTL' characters.
-- An integer overflow error exists within 'compositor'.
-- An error when handling certain 'window property'.
-- An unspecified error within 'V8'.");
+
+  - A use-after-free error exists within 'web workers', 'DOM', 'forms' and 'speech'.
+
+  - An unspecified error exists when handling URLs containing 'RTL' characters.
+
+  - An integer overflow error exists within 'compositor'.
+
+  - An error when handling certain 'window property'.
+
+  - An unspecified error within 'V8'.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct cross-site
 scripting attacks, bypass certain security restrictions, and compromise
 a user's system.

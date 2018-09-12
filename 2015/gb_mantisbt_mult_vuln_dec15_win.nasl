@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mantisbt_mult_vuln_dec15_win.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: gb_mantisbt_mult_vuln_dec15_win.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # MantisBT Multiple Vulnerabilities December15 (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:mantisbt:mantisbt";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806640");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2014-9270", "CVE-2014-9279", "CVE-2014-9269");
   script_bugtraq_id(71372, 71359, 71368);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-03 15:38:29 +0530 (Thu, 03 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("MantisBT Multiple Vulnerabilities December15 (Windows)");
@@ -44,11 +44,14 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist as,
+
   - the function 'projax_array_serialize_for_autocomplete' within
   core/projax_api.php script doesn't validate input passed by the user.
+
   - the unattended upgrade script retrieved DB connection settings from POST
   parameters allows an attacker to get the script to connect to their host with
   the current DB config credentials.
+
   - the input passed via project cookie to helper_api.php script is not validated
   before returning it to user.");
 

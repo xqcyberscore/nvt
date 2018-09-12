@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_jul15_lin.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_adobe_flash_player_mult_vuln01_jul15_lin.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Adobe Flash Player Multiple Vulnerabilities -01 July15 (Linux)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805919");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-5122", "CVE-2015-5123");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-13 10:56:43 +0530 (Mon, 13 Jul 2015)");
   script_name("Adobe Flash Player Multiple Vulnerabilities -01 July15 (Linux)");
 
@@ -43,9 +43,11 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - An use-after-free error triggered by freeing a TextLine object within the
   'valueOf' function of a custom class when setting the TextLine's
   opaqueBackground.
+
   - An unspecified error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

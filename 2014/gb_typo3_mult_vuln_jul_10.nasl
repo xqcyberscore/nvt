@@ -28,12 +28,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804215");
-  script_version("$Revision: 11186 $");
+  script_version("$Revision: 11339 $");
   script_bugtraq_id(42029);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:12:42 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-08 15:47:44 +0530 (Wed, 08 Jan 2014)");
   script_name("TYPO3 Multiple Vulnerabilities Jul13");
 
@@ -44,9 +44,11 @@ information or execute arbitrary scripts.
 Impact Level: Application");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple error exists in the application,
-- An error exist in frontend login, which has very low randomness while
+
+  - An error exist in frontend login, which has very low randomness while
 generating the hash.
-- An error exist in the FLUID Templating Engine, which fails to escape the
+
+  - An error exist in the FLUID Templating Engine, which fails to escape the
 output.");
   script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.3.4, 4.4.1 or later,
 For updates refer to, http://typo3.org/");

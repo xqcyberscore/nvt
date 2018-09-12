@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: Omnihttpd_pro_source_disclosure.nasl 10122 2018-06-07 13:09:58Z cfischer $
+# $Id: Omnihttpd_pro_source_disclosure.nasl 11343 2018-09-12 06:36:46Z cfischer $
 #
 # OmniPro HTTPd 2.08 scripts source full disclosure
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.10716");
-  script_version("$Revision: 10122 $");
+  script_version("$Revision: 11343 $");
   script_cve_id("CVE-2001-0778");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 15:09:58 +0200 (Thu, 07 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_bugtraq_id(2788);
   script_tag(name:"cvss_base", value:"5.0");
@@ -57,12 +57,11 @@ Exploit: GET /test.php%20 HTTP/1.0");
 
   script_tag(name:"affected", value:"Up to release 2.08");
 
-  script_tag(name:"solution", value:"The vendor is aware of the problem but so far, no
-patch has been made available. Contact your web server vendor
-for a possible solution. Until a complete fix is available, you
-should remove all scripting files from non-executable directories.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
 
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_analysis");
 
   exit(0);

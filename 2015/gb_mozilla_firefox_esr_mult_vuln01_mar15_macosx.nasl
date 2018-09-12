@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_mar15_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_mar15_macosx.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities-01 Mar15 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805478");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-0836", "CVE-2015-0831", "CVE-2015-0827", "CVE-2015-0822");
   script_bugtraq_id(72742, 72746, 72755, 72756);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-03 15:37:42 +0530 (Tue, 03 Mar 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 Mar15 (Mac OS X)");
 
@@ -44,12 +44,17 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - Some unspecified vulnerabilities in the browser engine.
+
   - Multiple untrusted search path vulnerabilities in updater.exe.
+
   - Use-after-free error in the 'IDBDatabase::CreateObjectStore' function in
   dom/indexedDB/IDBDatabase.cpp script.
+
   - Heap-based buffer overflow in the 'mozilla::gfx::CopyRect' and
   'nsTransformedTextRun::SetCapitalization' functions.
+
   - Flaw in the autocomplete feature for forms.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_nov13_lin.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_nov13_lin.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities Nov2013 (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803964");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-6621", "CVE-2013-6622", "CVE-2013-6623", "CVE-2013-6624",
                 "CVE-2013-6625", "CVE-2013-6626", "CVE-2013-6627", "CVE-2013-6628",
                 "CVE-2013-6629", "CVE-2013-6630", "CVE-2013-6631", "CVE-2013-2931");
@@ -37,7 +37,7 @@ if(description)
                     63676, 63679, 63673, 63677);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-19 16:23:37 +0530 (Tue, 19 Nov 2013)");
   script_name("Google Chrome Multiple Vulnerabilities Nov2013 (Linux)");
 
@@ -47,15 +47,24 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to Google Chrome version 31.0.1650.48 or later.
 For updates refer to http://www.google.com/chrome");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- Use after free related to speech input elements
-- Use after free related to media elements
-- Out of bounds read in SVG
-- Use after free related to 'id' attribute strings
-- Use after free in DOM ranges
-- Address bar spoofing related to interstitial warnings
-- Out of bounds read in HTTP parsing
-- Issue with certificates not being checked during TLS renegotiation
-- Read of uninitialized memory in libjpeg and libjpeg-turbo");
+
+  - Use after free related to speech input elements
+
+  - Use after free related to media elements
+
+  - Out of bounds read in SVG
+
+  - Use after free related to 'id' attribute strings
+
+  - Use after free in DOM ranges
+
+  - Address bar spoofing related to interstitial warnings
+
+  - Out of bounds read in HTTP parsing
+
+  - Issue with certificates not being checked during TLS renegotiation
+
+  - Read of uninitialized memory in libjpeg and libjpeg-turbo");
   script_tag(name:"affected", value:"Google Chrome version prior to 31.0.1650.48 on Linux");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
 service condition, information disclosure or possibly have other impact via

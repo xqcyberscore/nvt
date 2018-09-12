@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_helpdesk_mult_xss_vuln.nasl 5956 2017-04-14 09:02:12Z teissa $
+# $Id: secpod_helpdesk_mult_xss_vuln.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # HelpDesk Multiple Persistent Cross Site Scripting Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903025");
-  script_version("$Revision: 5956 $");
+  script_version("$Revision: 11322 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fri, 14 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-30 12:42:29 +0530 (Mon, 30 Apr 2012)");
   script_name("HelpDesk Multiple Persistent Cross Site Scripting Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -52,10 +52,9 @@ if(description)
   passed via the 'searchvalue' parameter to 'knowledgebase.php' and 'client_name' parameter to
   'register.php', which allows attackers to execute arbitrary HTML and script code in the context
   of an affected application or site.");
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is running HelpDesk and is prone to multiple persistent
   cross site scripting vulnerabilities.");
 
@@ -69,10 +68,8 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Get HTTP Port
 port = get_http_port( default:80 );
 
-## Check Host Supports PHP
 if( ! can_host_php( port:port ) ) exit( 0 );
 
 ## List possible dirs
@@ -82,14 +79,11 @@ foreach dir( make_list_unique( "/", "/helpdesk", cgi_dirs( port:port ) ) ) {
 
   buf = http_get_cache( item: dir + "/index.php", port:port );
 
-  ## Confirm the application
   if( ">HelpDesk" >< buf && "Powered by <" >< buf ) {
 
-    ## Construct attack
     url = dir + '/knowledgebase.php?act=search&searchvalue="><script>alert' +
                 '(document.cookie)</script>';
 
-    ## Check the response to confirm vulnerability
     if( http_vuln_check( port:port, url:url, check_header:TRUE, extra_check:"HelpDesk",
                          pattern:"><script>alert\(document.cookie\)</script>" ) ) {
       report = report_vuln_url( url:url, port:port );

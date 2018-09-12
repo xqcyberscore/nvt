@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_apache_axis2_56408_55508.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: sw_apache_axis2_56408_55508.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Apache Axis2 1.6.2 Multiple Vulnerabilities
 #
@@ -31,8 +31,8 @@ CPE = 'cpe:/a:apache:axis2';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111004");
-  script_version("$Revision: 11227 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 11333 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-17 08:00:00 +0100 (Tue, 17 Mar 2015)");
 
   script_tag(name:"cvss_base", value:"6.4");
@@ -54,11 +54,15 @@ if (description)
 Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"Apache Axis2 is prone to:
- - a security-bypass vulnerability  because the application fails to properly validate SSL certificates from the server.
- - a security vulnerability involving XML signature wrapping.");
+
+  - a security-bypass vulnerability  because the application fails to properly validate SSL certificates from the server.
+
+  - a security vulnerability involving XML signature wrapping.");
   script_tag(name:"impact", value:"Successfully exploiting this issues allows attackers to:
- - perform man-in-the-middle attacks or impersonate trusted servers, which will aid in further attacks.
- - may allow unauthenticated attackers to construct specially crafted messages that can be successfully verified
+
+  - perform man-in-the-middle attacks or impersonate trusted servers, which will aid in further attacks.
+
+  - may allow unauthenticated attackers to construct specially crafted messages that can be successfully verified
  and contain arbitrary content. This may aid in further attacks.");
   script_tag(name:"affected", value:"The issue affects versions up to 1.6.2.");
 

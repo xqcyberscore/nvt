@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_vul03_jan15_lin.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: gb_vlc_media_player_mult_vul03_jan15_lin.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # VLC Media Player Multiple Vulnerabilities-03 Jan15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805314");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2010-1445", "CVE-2010-1444", "CVE-2010-1443", "CVE-2010-1442",
                 "CVE-2010-1441");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-05 12:37:43 +0530 (Mon, 05 Jan 2015)");
   script_name("VLC Media Player Multiple Vulnerabilities-03 Jan15 (Linux)");
 
@@ -44,11 +44,15 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Multiple errors in the A/52 audio decoder, DTS audio decoder, MPEG audio
   decoder, AVI demuxer, ASF demuxer and Matroska demuxer.
+
   - An error when processing XSPF playlists.
+
   - A use-after-free error when attempting to create a playlist of the contents
   of a malformed zip archive.
+
   - An error in the RTMP implementation.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow

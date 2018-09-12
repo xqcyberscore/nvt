@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_axis_camera_station_default_credentials.nasl 11248 2018-09-05 13:20:24Z cfischer $
+# $Id: gb_axis_camera_station_default_credentials.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
 #
 # Axis Camera Station Default Credentials
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114028");
-  script_version("$Revision: 11248 $");
+  script_version("$Revision: 11328 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 15:20:24 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-29 12:41:33 +0200 (Wed, 29 Aug 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
@@ -39,7 +39,7 @@ if(description)
   script_name("Axis Camera Station Default Credentials");
   script_dependencies("gb_axis_camera_station_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("Axis/CameraStation/installed");
+  script_mandatory_keys("axis/camerastation/detected");
 
   script_xref(name:"URL", value:"https://customvideosecurity.com/blog/tag/default-password-axis/");
 
@@ -116,7 +116,7 @@ foreach cred(keys(creds)) {
     #<firmwareVersion>8.20.1</firmwareVersion>
     firmVer = eregmatch(pattern: "<firmwareVersion>([0-9.]+)</firmwareVersion>", string: res2);
 
-    if(firmVer[1]) set_kb_item(name: "Axis/CameraStation/firmware/version", value: firmVer[1]);
+    if(firmVer[1]) set_kb_item(name: "axis/camerastation/firmware/version", value: firmVer[1]);
   }
 
 

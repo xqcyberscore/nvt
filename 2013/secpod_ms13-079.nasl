@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-079.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: secpod_ms13-079.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Microsoft Windows Active Directory Denial of Service Vulnerability (2853587)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901222");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_bugtraq_id(62184);
   script_cve_id("CVE-2013-3868");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-11 12:41:50 +0530 (Wed, 11 Sep 2013)");
   script_name("Microsoft Windows Active Directory Denial of Service Vulnerability (2853587)");
 
@@ -47,12 +47,18 @@ https://technet.microsoft.com/en-us/security/bulletin/ms13-079");
   script_tag(name:"insight", value:"Flaw is caused when the LDAP directory service fails to properly handle
 a specially crafted LDAP query.");
   script_tag(name:"affected", value:"Active Directory Lightweight Directory Service (AD LDS) on,
- - Microsoft Windows 8
- - Microsoft Windows Server 2012
- - Microsoft Windows 7 x32/x64 Service Pack 1 and prior
- - Microsoft Windows Vista x32/x64 Service Pack 2 and prior
- - Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior
- - Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
+
+  - Microsoft Windows 8
+
+  - Microsoft Windows Server 2012
+
+  - Microsoft Windows 7 x32/x64 Service Pack 1 and prior
+
+  - Microsoft Windows Vista x32/x64 Service Pack 2 and prior
+
+  - Microsoft Windows Server 2008 x32/x64 Service Pack 2 and prior
+
+  - Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to crash the service.
 
 Impact Level: Application");

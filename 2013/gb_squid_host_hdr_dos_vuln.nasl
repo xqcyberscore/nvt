@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_squid_host_hdr_dos_vuln.nasl 11219 2018-09-04 11:52:00Z cfischer $
+# $Id: gb_squid_host_hdr_dos_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Squid Proxy Host Header Denial Of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:squid-cache:squid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802057");
-  script_version("$Revision: 11219 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-4123");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:52:00 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-12 12:42:47 +0530 (Mon, 12 Aug 2013)");
   script_name("Squid Proxy Host Header Denial Of Service Vulnerability");
 
@@ -86,7 +86,6 @@ crafted_req = string( "HEAD http://testhostdoesnotexists.com HTTP/1.1\r\n",
 
 crafted_res = http_send_recv(port:squid_port, data:crafted_req);
 
-## sleep for 3 seconds
 sleep(3);
 
 soc = http_open_socket(squid_port);

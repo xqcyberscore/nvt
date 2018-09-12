@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_ms14-036.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_ms_office_ms14-036.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2967487)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804460");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1817", "CVE-2014-1818");
   script_bugtraq_id(67897, 67904);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-11 12:17:32 +0530 (Wed, 11 Jun 2014)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (2967487)");
 
@@ -42,9 +42,11 @@ Microsoft Bulletin MS14-036.");
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
 or not.");
   script_tag(name:"insight", value:"The flaws are due to,
-- An error within Unicode Scripts Processor can be exploited to execute
+
+  - An error within Unicode Scripts Processor can be exploited to execute
   arbitrary code via a specially crafted font file.
-- An error within GDI+ when validating images can be exploited to execute
+
+  - An error within GDI+ when validating images can be exploited to execute
   arbitrary code via a specially crafted image file.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
 code in the context of the currently logged-in user, which may lead to a

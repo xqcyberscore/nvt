@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_frams_fast_file_exchange_mult_vuln.nasl 10910 2018-08-10 15:10:09Z mmartin $
+# $Id: gb_frams_fast_file_exchange_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Frams&qt Fast File EXchange Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804664");
-  script_version("$Revision: 10910 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-3876", "CVE-2014-3877", "CVE-2014-3875");
   script_bugtraq_id(67785, 67788, 67783);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 17:10:09 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-04 10:06:54 +0530 (Fri, 04 Jul 2014)");
   script_name("Frams&qt Fast File EXchange Multiple Vulnerabilities");
 
@@ -41,12 +41,16 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is possible to
   read a given string.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An input passed via the 'akey' parameter to /rup is not properly sanitised before
   being returned to the user.
+
   - An input passed via the 'addto' parameter to /fup is not properly sanitised
   before being returned to the user.
+
   - An input passed via the 'disclaimer' and 'gm' parameters to /fuc is not properly
   sanitised before being returned to the user.
+
   - Application allows users to perform certain actions via HTTP requests without
   performing proper validity checks to verify the requests.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to conduct HTTP response splitting,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_samsung_dvr_auth_bypass_08_13.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_samsung_dvr_auth_bypass_08_13.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Samsung DVR Authentication Bypass
 #
@@ -28,7 +28,7 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103770");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-3585", "CVE-2013-3586");
   script_bugtraq_id(61942, 61938);
   script_tag(name:"cvss_base", value:"7.6");
@@ -41,7 +41,7 @@ if (description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/27753");
   script_xref(name:"URL", value:"http://www.andreafabrizi.it/?exploits:samsung:dvr");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 14:27:11 +0200 (Wed, 21 Aug 2013)");
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -52,11 +52,16 @@ if (description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"This vulnerability allows remote unauthenticated users to:
-- Get/set/delete username/password of local users (/cgi-bin/setup_user)
-- Get/set DVR/Camera general configuration
-- Get info about the device/storage
-- Get/set the NTP server
-- Get/set many other settings
+
+  - Get/set/delete username/password of local users (/cgi-bin/setup_user)
+
+  - Get/set DVR/Camera general configuration
+
+  - Get info about the device/storage
+
+  - Get/set the NTP server
+
+  - Get/set many other settings
 Impact Level: Application");
   script_tag(name:"vuldetect", value:"Check if /cgi-bin/setup_user is accessible without authentication");
   script_tag(name:"insight", value:"In most of the CGIs on the Samsung DVR, the session check is made

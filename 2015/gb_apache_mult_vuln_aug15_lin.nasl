@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mult_vuln_aug15_lin.nasl 11271 2018-09-06 14:58:32Z mmartin $
+# $Id: gb_apache_mult_vuln_aug15_lin.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Apache HTTP Server Multiple Vulnerabilities August15 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806018");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-3185", "CVE-2015-3183");
   script_bugtraq_id(75965, 75963);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-14 12:49:14 +0530 (Fri, 14 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("Apache HTTP Server Multiple Vulnerabilities August15 (Linux)");
@@ -45,9 +45,11 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - an error in 'ap_some_auth_required' function in 'server/request.c'
   script which does not consider that a Require directive may be associated with
   an authorization setting rather than an authentication setting.
+
   - an error in chunked transfer coding implementation.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

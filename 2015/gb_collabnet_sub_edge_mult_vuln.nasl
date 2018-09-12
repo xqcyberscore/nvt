@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_collabnet_sub_edge_mult_vuln.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_collabnet_sub_edge_mult_vuln.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # CollabNet Subversion Edge Management Frontend Multiple Vulnerabilities
 #
@@ -28,10 +28,10 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805710");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11333 $");
   script_tag(name:"cvss_base", value:"6.6");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-02 13:11:22 +0530 (Thu, 02 Jul 2015)");
   script_name("CollabNet Subversion Edge Management Frontend Multiple Vulnerabilities");
 
@@ -42,12 +42,17 @@ if (description)
   the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An improper input sanitization by 'listViewItem' parameter in 'index'
     script.
+
   - The password are stored in unsalted MD5, which can easily cracked by
     attacker.
+
   - Does not protect against brute forcing accounts.
+
   - Does not implement a strong password policy.
+
   - Does not require the old password for changing the password to a new one.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker

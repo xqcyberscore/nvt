@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adminsystems_cms_mult_vuln.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_adminsystems_cms_mult_vuln.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Adminsystems CMS Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805292");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-1603", "CVE-2015-1604");
   script_bugtraq_id(72605);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-27 11:02:30 +0530 (Fri, 27 Feb 2015)");
   script_name("Adminsystems CMS Multiple Vulnerabilities");
 
@@ -43,10 +43,13 @@ if(description)
   and check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Multiple errors exists as,
+
   - The upload action in the files.php script does not properly verify or
     sanitize user-uploaded files via the 'path' parameter.
+
   - The index.php script does not validate input to the 'page' parameter
     before returning it to users.
+
   - The /asys/site/system.php script does not validate input to the 'id'
     parameter before returning it to users.");
 

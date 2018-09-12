@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805393");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-3814", "CVE-2015-3812", "CVE-2015-3811");
   script_bugtraq_id(74637, 74635, 74631);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-01 17:26:23 +0530 (Mon, 01 Jun 2015)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities-02 June15 (Windows)");
 
@@ -44,10 +44,13 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The X11 dissector that is triggered when handling a specially crafted
   packet, which can result in a memory leak.
+
   - 'epan/dissectors/packet-wcp.c' in the WCP dissector improperly refers to
   previously processed bytes.
+
   - The IEEE 802.11 dissector that is triggered when handling a malformed
   packet, which can result in an infinite loop.");
 

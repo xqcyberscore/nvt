@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_word_viewer_ms15-033.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms_word_viewer_ms15-033.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Microsoft Office Word Viewer Remote Code Execution Vulnerabilities (3048019)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805061");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-1650", "CVE-2015-1649", "CVE-2015-1651");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 11:05:27 +0530 (Wed, 15 Apr 2015)");
   script_name("Microsoft Office Word Viewer Remote Code Execution Vulnerabilities (3048019)");
 
@@ -42,8 +42,10 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists as,
+
   - The Office software improperly handles objects in memory while parsing
     specially crafted Office files.
+
   - The Office software fails to properly handle rich text format files in
     memory.");
 

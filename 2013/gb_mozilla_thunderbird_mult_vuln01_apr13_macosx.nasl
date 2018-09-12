@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_apr13_macosx.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_apr13_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities -01 Apr13 (Mac OS X)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803468");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-0788", "CVE-2013-0791", "CVE-2013-0793", "CVE-2013-0795",
                                  "CVE-2013-0797", "CVE-2013-0799", "CVE-2013-0800");
   script_bugtraq_id(58818, 58819, 58826, 58837, 58836, 58827, 58824, 58825);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-08 15:01:22 +0530 (Mon, 08 Apr 2013)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities -01 Apr13 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52770");
@@ -50,13 +50,19 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Mozilla Thunderbird version before 17.0.5 on Mac OS X");
   script_tag(name:"insight", value:"- Unspecified vulnerabilities in the browser engine
+
   - Buffer overflow in the Mozilla Maintenance Service
+
   - Untrusted search path vulnerability while handling dll files
+
   - Improper validation of address bar during history navigation
+
   - Integer signedness error in the 'pixman_fill_sse2' function in
     'pixman-sse2.c' in Pixman
+
   - Error in 'CERT_DecodeCertPackage' function in Mozilla Network Security
     Services (NSS)
+
   - The System Only Wrapper (SOW) implementation does not prevent use of the
     cloneNode method for cloning a protected node");
   script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 17.0.5 or later,

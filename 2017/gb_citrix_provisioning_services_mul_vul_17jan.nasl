@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_provisioning_services_mul_vul_17jan.nasl 9523 2018-04-18 21:57:48Z asteins $
+# $Id: gb_citrix_provisioning_services_mul_vul_17jan.nasl 11324 2018-09-11 10:42:18Z asteins $
 #
 # Citrix Provisioning Services Remote Code Execution and Information Disclosure Vulnerabilities
 #
@@ -38,8 +38,8 @@ CPE = "cpe:/a:citrix:citrix_provisioning_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107132");
-  script_version("$Revision: 9523 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-18 23:57:48 +0200 (Wed, 18 Apr 2018) $");
+  script_version("$Revision: 11324 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:42:18 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-01-20 16:11:25 +0700 (Fri, 20 Jan 2017)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -56,13 +56,13 @@ if(description)
   script_dependencies("gb_citrix_provisioning_services_detect.nasl");
   script_require_keys("Citrix/Provisioning/Services/Ver");
 
-  script_tag(name: "solution_type", value:"VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
-  script_tag(name: "impact", value: "Successfully exploiting these issues may allow remote attackers to execute arbitrary code in the context of the
+  script_tag(name:"impact", value:"Successfully exploiting these issues may allow remote attackers to execute arbitrary code in the context of the
   application or obtain potentially sensitive information. Failed exploits may result in denial-of-service conditions.");
-  script_tag(name: "affected", value: "Citrix Provisioning Services versions 7.6, 7.11, 7.7, 7.8, 7.9, 7.1 and 7.0.");
-  script_tag(name: "solution", value: "Update to Citrix Provisioning Services 7.12.");
-  script_tag(name: "summary", value: "Citrix Provisioning Services is prone to multiple remote code-execution and information-disclosure vulnerabilities.");
+  script_tag(name:"affected", value:"Citrix Provisioning Services versions 7.6, 7.11, 7.7, 7.8, 7.9, 7.1 and 7.0.");
+  script_tag(name:"solution", value:"Update to Citrix Provisioning Services 7.12.");
+  script_tag(name:"summary", value:"Citrix Provisioning Services is prone to multiple remote code-execution and information-disclosure vulnerabilities.");
 
   exit(0);
 }
@@ -76,7 +76,7 @@ if (!version = get_app_version(cpe:CPE))
 model = get_kb_item("Citrix/Provisioning/Services/model");
 
 if (version =~ "^7\.") {
-  if (model = "LTSR" && version =~ "^7\.6\." && version_is_less(version:version, test_version:"7.6.4")) {
+  if (model == "LTSR" && version =~ "^7\.6\." && version_is_less(version:version, test_version:"7.6.4")) {
     vuln = TRUE;
     fixed = "7.6.4" + " LTSR";
     version = version + " LTSR";

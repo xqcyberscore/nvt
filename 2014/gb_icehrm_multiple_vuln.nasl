@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_icehrm_multiple_vuln.nasl 11214 2018-09-04 10:09:46Z mmartin $
+# $Id: gb_icehrm_multiple_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # IceHrm Multiple Security Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805032");
-  script_version("$Revision: 11214 $");
+  script_version("$Revision: 11339 $");
   script_bugtraq_id(71552);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-17 11:48:55 +0530 (Wed, 17 Dec 2014)");
   script_name("IceHrm Multiple Security Vulnerabilities");
 
@@ -42,20 +42,27 @@ if(description)
   check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Flaws are due to,
+
   - The service.php script not properly sanitizing user input, specifically
     path traversal style attacks (e.g. '../../') supplied to the 'file'
     parameter.
+
   - The index.php script not properly sanitizing user input, specifically path
     traversal style attacks (e.g. '../../') supplied to the 'n' and 'g'
     parameters.
+
   - The fileupload.php script does not properly verify or sanitize user-uploaded
     files via the 'file_name' POST parameter.
+
   - The login.php script does not validate input to the 'key' parameter before
     returning it to users.
+
   - The fileupload_page.php script does not validate input to the 'id',
     'file_group', 'user' and 'msg' parameter before returning it to users.
+
   - The /data/ folder that is due to the program failing to restrict users
     from making direct requests to profile images for users or employees.
+
   - The HTTP requests to service.php do not require multiple steps, explicit
     confirmation, or a unique token when performing certain sensitive actions.");
 

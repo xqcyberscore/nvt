@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openmrs_multiple_vuln.nasl 11213 2018-09-04 09:30:51Z mmartin $
+# $Id: gb_openmrs_multiple_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # OpenMRS Multiple Security Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805009");
-  script_version("$Revision: 11213 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-8071", "CVE-2014-8072", "CVE-2014-8073");
   script_bugtraq_id(70664);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-29 16:11:01 +0530 (Wed, 29 Oct 2014)");
 
   script_name("OpenMRS Multiple Security Vulnerabilities");
@@ -44,25 +44,34 @@ if(description)
   and check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The /coreapps/mergeVisits.page script does not validate input to the
     'returnUrl' parameter before returning it to users.
+
   - The HTTP requests to /admin/users/user.form do not require multiple steps,
     explicit confirmation, or a unique token when performing certain sensitive
     actions.
+
   - The /registrationapp/registerPatient.page script does not validate input to
     the 'givenName', 'familyName', 'address1', and 'address2' POST parameters
     before returning it to users.
+
   - The /allergyui/allergy.page script does not validate input to the 'comment'
     POST parameter before returning it to users.
+
   - The /htmlformentryui/htmlform/enterHtmlForm/submit.action script does not
     validate input to the 'w10' POST parameter before returning it to users.
+
   - The login.htm script does not validate input to the HTTP referer header
     before returning it to users.
+
   - The /htmlformentryui/htmlform/enterHtmlFormWithStandardUi.page script does
     not validate input to the 'returnUrl' parameter before returning it to
     users.
+
   - The /htmlformentryui/htmlform/enterHtmlFormWithSimpleUi.page script does
     not validate input to the 'visitId' parameter before returning it to users.
+
   - A lack of access restrictions for the /admin page.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

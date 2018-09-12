@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln02_apr13_win.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_adobe_air_mult_vuln02_apr13_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Adobe AIR Multiple Vulnerabilities -02 April 13 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803385");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-1380", "CVE-2013-1379", "CVE-2013-1378", "CVE-2013-2555");
   script_bugtraq_id(58949, 58951, 58947, 58396);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-19 11:15:26 +0530 (Fri, 19 Apr 2013)");
   script_name("Adobe AIR Multiple Vulnerabilities -02 April 13 (Windows)");
   script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/52931");
@@ -50,7 +50,9 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Adobe AIR Version 3.6.0.6090 and prior on Windows");
   script_tag(name:"insight", value:"Multiple flaws due to,
+
   - Error when initializing certain pointer arrays.
+
   - Integer overflow error.");
   script_tag(name:"solution", value:"Upgrade to version 3.7.0.1530 or later,
   For updates refer to http://get.adobe.com/air");

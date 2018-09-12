@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_otrs_email_multiple_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_otrs_email_multiple_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # OTRS Email Multiple Vulnerability
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:otrs:otrs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803915");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2008-7280", "CVE-2008-7281");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-17 16:43:34 +0530 (Tue, 17 Sep 2013)");
   script_name("OTRS Email Multiple Vulnerability");
 
@@ -46,7 +46,8 @@ For updates refer to http://www.otrs.com/en/");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"-An error exists in Kernel/System/EmailParser.pm in PostmasterPOP3.pl which
 does not properly handle e-mail messages containing malformed UTF-8 characters
-- An error exists in otrs-email.pm, which sends e-mail containing a Bcc header
+
+  - An error exists in otrs-email.pm, which sends e-mail containing a Bcc header
 field that lists the Blind Carbon Copy recipients");
   script_tag(name:"affected", value:"OTRS (Open Ticket Request System) version before 2.2.7");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain potentially

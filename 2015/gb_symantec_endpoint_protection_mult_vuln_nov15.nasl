@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_endpoint_protection_mult_vuln_nov15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_symantec_endpoint_protection_mult_vuln_nov15.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Symantec Endpoint Protection Multiple Vulnerabilities Nov15
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:symantec:endpoint_protection";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806571");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-8113", "CVE-2015-6555", "CVE-2015-6554");
   script_bugtraq_id(77494, 77495, 77585);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-16 12:41:11 +0530 (Mon, 16 Nov 2015)");
   script_name("Symantec Endpoint Protection Multiple Vulnerabilities Nov15");
 
@@ -43,7 +43,9 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - An untrusted search path flaw.
+
   - Multiple unspecified flaws in the management console.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow local

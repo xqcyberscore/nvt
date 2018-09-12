@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2011-0013.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_VMSA-2011-0013.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # VMSA-2011-0013.2 VMware third party component updates for VMware vCenter Server, vSphere Update Manager, ESXi and ESX
 #
@@ -25,12 +25,24 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_solution = "Apply the missing patch(es).
 
-See Also: 
-http://www.vmware.com/security/advisories/VMSA-2011-0013.html";
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103451");
+  script_cve_id("CVE-2008-7270", "CVE-2010-4180", "CVE-2010-1321", "CVE-2010-3541", "CVE-2010-3548", "CVE-2010-3549", "CVE-2010-3550", "CVE-2010-3551", "CVE-2010-3552", "CVE-2010-3553", "CVE-2010-3554", "CVE-2010-3555", "CVE-2010-3556", "CVE-2010-3557", "CVE-2010-3558", "CVE-2010-3559", "CVE-2010-3560", "CVE-2010-3561", "CVE-2010-3562", "CVE-2010-3563", "CVE-2010-3565", "CVE-2010-3566", "CVE-2010-3567", "CVE-2010-3568", "CVE-2010-3569", "CVE-2010-3570", "CVE-2010-3571", "CVE-2010-3572", "CVE-2010-3573", "CVE-2010-3574", "CVE-2010-4422", "CVE-2010-4447", "CVE-2010-4448", "CVE-2010-4450", "CVE-2010-4451", "CVE-2010-4452", "CVE-2010-4454", "CVE-2010-4462", "CVE-2010-4463", "CVE-2010-4465", "CVE-2010-4466", "CVE-2010-4467", "CVE-2010-4468", "CVE-2010-4469", "CVE-2010-4470", "CVE-2010-4471", "CVE-2010-4472", "CVE-2010-4473", "CVE-2010-4474", "CVE-2010-4475", "CVE-2010-4476", "CVE-2010-4447", "CVE-2010-4448", "CVE-2010-4450", "CVE-2010-4454", "CVE-2010-4462", "CVE-2010-4465", "CVE-2010-4466", "CVE-2010-4468", "CVE-2010-4469", "CVE-2010-4473", "CVE-2010-4475", "CVE-2010-4476", "CVE-2011-0862", "CVE-2011-0873", "CVE-2011-0815", "CVE-2011-0864", "CVE-2011-0802", "CVE-2011-0814", "CVE-2011-0871", "CVE-2011-0867", "CVE-2011-0865", "CVE-2010-2054");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11322 $");
+  script_name("VMSA-2011-0013.2 VMware third party component updates for VMware vCenter Server, vSphere Update Manager, ESXi and ESX");
 
-tag_summary = "The remote ESXi is missing one or more security related Updates from VMSA-2011-0013.2.
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2012-03-15 18:41:24 +0100 (Thu, 15 Mar 2012)");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_esxi_init.nasl");
+  script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
+  script_tag(name:"summary", value:"The remote ESXi is missing one or more security related Updates from VMSA-2011-0013.2.
 
 Summary
 
@@ -48,7 +60,7 @@ vSphere Update Manager 4.0 without Update 4
 ESXi 4.1 without patch ESX410-201110201-SG.
 
 ESX 4.1 without patches ESX410-201110201-SG,
-ESX410-201110204-SG, ESX410-201110206-SG,ESX410-201110214-SG.
+ESX410-201110204-SG, ESX410-201110206-SG, ESX410-201110214-SG.
 
 ESX 4.0 without patch ESX400-201111201-SG.
 
@@ -86,29 +98,13 @@ f. Integer overflow in VMware third party component sfcb
   library SFCB when the httpMaxContentLength has been changed from its default
   value to 0 in in /etc/sfcb/sfcb.cfg. The integer overflow could allow remote
   attackers to cause a denial of service (heap memory corruption) or possibly
-  execute arbitrary code via a large integer in the Content-Length HTTP header.";
+  execute arbitrary code via a large integer in the Content-Length HTTP header.");
+  script_tag(name:"solution", value:"Apply the missing patch(es).
 
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103451");
- script_cve_id("CVE-2008-7270","CVE-2010-4180","CVE-2010-1321","CVE-2010-3541","CVE-2010-3548","CVE-2010-3549","CVE-2010-3550","CVE-2010-3551","CVE-2010-3552","CVE-2010-3553","CVE-2010-3554","CVE-2010-3555","CVE-2010-3556","CVE-2010-3557","CVE-2010-3558","CVE-2010-3559","CVE-2010-3560","CVE-2010-3561","CVE-2010-3562","CVE-2010-3563","CVE-2010-3565","CVE-2010-3566","CVE-2010-3567","CVE-2010-3568","CVE-2010-3569","CVE-2010-3570","CVE-2010-3571","CVE-2010-3572","CVE-2010-3573","CVE-2010-3574","CVE-2010-4422","CVE-2010-4447","CVE-2010-4448","CVE-2010-4450","CVE-2010-4451","CVE-2010-4452","CVE-2010-4454","CVE-2010-4462","CVE-2010-4463","CVE-2010-4465","CVE-2010-4466","CVE-2010-4467","CVE-2010-4468","CVE-2010-4469","CVE-2010-4470","CVE-2010-4471","CVE-2010-4472","CVE-2010-4473","CVE-2010-4474","CVE-2010-4475","CVE-2010-4476","CVE-2010-4447","CVE-2010-4448","CVE-2010-4450","CVE-2010-4454","CVE-2010-4462","CVE-2010-4465","CVE-2010-4466","CVE-2010-4468","CVE-2010-4469","CVE-2010-4473","CVE-2010-4475","CVE-2010-4476","CVE-2011-0862","CVE-2011-0873","CVE-2011-0815","CVE-2011-0864","CVE-2011-0802","CVE-2011-0814","CVE-2011-0871","CVE-2011-0867","CVE-2011-0865","CVE-2010-2054");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 9352 $");
- script_name("VMSA-2011-0013.2 VMware third party component updates for VMware vCenter Server, vSphere Update Manager, ESXi and ESX");
-
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-03-15 18:41:24 +0100 (Thu, 15 Mar 2012)");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esxi_init.nasl");
- script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name : "solution" , value : tag_solution);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
+See Also:
+http://www.vmware.com/security/advisories/VMSA-2011-0013.html");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
  exit(0);
 }
 

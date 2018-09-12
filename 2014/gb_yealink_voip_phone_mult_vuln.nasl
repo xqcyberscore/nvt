@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_yealink_voip_phone_mult_vuln.nasl 11200 2018-09-03 14:11:38Z mmartin $
+# $Id: gb_yealink_voip_phone_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Yealink VoIP Phone SIP-T38G Multiple Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804468");
-  script_version("$Revision: 11200 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-5755", "CVE-2013-5756", "CVE-2013-5757", "CVE-2013-5758",
                 "CVE-2013-5759");
   script_bugtraq_id(68054, 68052, 68053, 68053, 68051);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-20 12:14:02 +0530 (Fri, 20 Jun 2014)");
   script_name("Yealink VoIP Phone SIP-T38G Multiple Vulnerabilities");
 
@@ -44,12 +44,15 @@ if(description)
   script_tag(name:"insight", value:"- The 'user' account has a password of 'user' (hash = s7C9Cx.rLsWFA), the
    'admin' account has a password of 'admin' (hash = uoCbM.VEiKQto), and
    the 'var' account has a password of 'var' (hash = jhl3iZAe./qXM).
-   - The '/cgi-bin/cgiServer.exx' script not properly sanitizing user input,
+
+  - The '/cgi-bin/cgiServer.exx' script not properly sanitizing user input,
    specifically encoded path traversal style attacks (e.g. '%2F') supplied
    via the 'page' parameter.
-   - Contains a flaw in the /cgi-bin/cgiServer.exx script that is triggered
+
+  - Contains a flaw in the /cgi-bin/cgiServer.exx script that is triggered
    when handling system calls.
-   - The /cgi-bin/cgiServer.exx script not properly sanitizing user input,
+
+  - The /cgi-bin/cgiServer.exx script not properly sanitizing user input,
    specifically absolute paths supplied via the 'command' parameter.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to trivially gain privileged
   access to the device, execute arbitrary commands and gain access to arbitrary files.

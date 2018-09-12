@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netcharts_server_multiple_vuln.nasl 11259 2018-09-06 08:28:49Z mmartin $
+# $Id: gb_netcharts_server_multiple_vuln.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # NetCharts Server Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:visual_mining:netcharts_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805643");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-4031", "CVE-2015-4032");
   script_bugtraq_id(74788);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-03 12:12:21 +0530 (Wed, 03 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("NetCharts Server Multiple Vulnerabilities");
@@ -46,8 +46,10 @@ if(description)
   check whether it is installed with vulnerable version or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - The projectContents.jsp script in developer tools does not properly verify
     or sanitize user-uploaded files.
+
   - The saveFile.jsp script in developer installation not properly sanitizing
     user input, specifically path traversal style attacks");
 

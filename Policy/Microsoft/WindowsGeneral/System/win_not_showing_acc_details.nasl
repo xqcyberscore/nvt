@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_not_showing_acc_details.nasl 10819 2018-08-07 14:11:07Z emoss $
+# $Id: win_not_showing_acc_details.nasl 11337 2018-09-11 14:23:53Z emoss $
 #
 # Check value for Block user from showing account details on sign-in
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109534");
-  script_version("$Revision: 10819 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:11:07 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 11337 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:23:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-07 14:04:55 +0200 (Tue, 07 Aug 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_add_preference(name:"Value", type:"radio", value:"1;0");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Block user from showing account details on sign-in' on Windows hosts (at least Windows 8.1).
 
 The setting prevents the user from showing account details (email address or user name) on the
@@ -72,7 +72,7 @@ item = 'BlockUserFromShowingAccountDetailsOnSignin';
 default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
 
-if(!value){
+if(value == ''){
   value = '0';
 }
 

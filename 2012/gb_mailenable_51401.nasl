@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mailenable_51401.nasl 5992 2017-04-20 14:42:07Z cfi $
+# $Id: gb_mailenable_51401.nasl 11325 2018-09-11 10:59:54Z asteins $
 #
 # MailEnable 'ForgottonPassword.aspx' Cross Site Scripting Vulnerability
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103388");
-  script_version("$Revision: 5992 $");
+  script_version("$Revision: 11325 $");
   script_bugtraq_id(51401);
   script_cve_id("CVE-2012-0389");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-20 16:42:07 +0200 (Thu, 20 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-13 10:03:24 +0100 (Fri, 13 Jan 2012)");
   script_name("MailEnable 'ForgottonPassword.aspx' Cross Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -47,25 +47,22 @@ if(description)
   script_xref(name:"URL", value:"http://www.mailenable.com/");
   script_xref(name:"URL", value:"http://www.mailenable.com/kb/Content/Article.asp?ID=me020567");
 
-  tag_summary = "MailEnable is prone to a cross-site scripting vulnerability because it
-  fails to properly sanitize user-supplied input.";
-
-  tag_impact = "An attacker may leverage this issue to execute arbitrary script code
-  in the browser of an unsuspecting user in the context of the affected
-  site. This may allow the attacker to steal cookie-based authentication
-  credentials and launch other attacks.";
-
   tag_affected = "The following MailEnable versions are vulnerable: Professional,
   Enterprise, and Premium 4.26 and prior versions Professional,
   Enterprise, and Premium 5.52 and prior versions Professional,
   Enterprise, and Premium 6.02 and prior versions";
 
-  tag_solution = "Vendor updates are available. Please see the references for details.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_impact);
-  script_tag(name:"solution", value:tag_solution);
+  script_tag(name:"summary", value:"MailEnable is prone to a cross-site scripting vulnerability because it
+  fails to properly sanitize user-supplied input.");
+  script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script code
+  in the browser of an unsuspecting user in the context of the affected
+  site. This may allow the attacker to steal cookie-based authentication
+  credentials and launch other attacks.");
+  script_tag(name:"affected", value:"An attacker may leverage this issue to execute arbitrary script code
+  in the browser of an unsuspecting user in the context of the affected
+  site. This may allow the attacker to steal cookie-based authentication
+  credentials and launch other attacks.");
+  script_tag(name:"solution", value:"Vendor updates are available. Please see the references for details.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"VendorFix");
@@ -75,7 +72,7 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port( default:80 );
 if( ! can_host_asp( port:port ) ) exit( 0 );
 

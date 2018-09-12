@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_49688.nasl 10235 2018-06-18 13:14:33Z cfischer $
+# $Id: gb_wordpress_49688.nasl 11343 2018-09-12 06:36:46Z cfischer $
 #
 # WordPress TheCartPress Plugin 'tcp_class_path' Parameter Remote File Include Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103261");
-  script_version("$Revision: 10235 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 15:14:33 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 11343 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-09-20 13:31:33 +0200 (Tue, 20 Sep 2011)");
   script_bugtraq_id(49688);
   script_tag(name:"cvss_base", value:"5.0");
@@ -55,8 +55,12 @@ if(description)
 
   script_tag(name:"affected", value:"TheCartPress 1.1.1 is vulnerable. Other versions may also be affected.");
 
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"qod_type", value:"remote_vul");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_oct13_macosx.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_google_chrome_mult_vuln02_oct13_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-02 Oct2013 (Mac OS X)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804115");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-2928", "CVE-2013-2925", "CVE-2013-2926", "CVE-2013-2927");
   script_bugtraq_id(63024, 63026, 63028, 63025);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-23 15:30:38 +0530 (Wed, 23 Oct 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Oct2013 (Mac OS X)");
 
@@ -45,12 +45,16 @@ is vulnerable or not.");
   script_tag(name:"solution", value:"Upgrade to version 30.0.1599.101 or later
 For updates refer to http://www.google.com/chrome");
   script_tag(name:"insight", value:"Multiple flaws are due to,
--Use-after-free vulnerability in the HTMLFormElement 'prepareForSubmission'
+
+  - Use-after-free vulnerability in the HTMLFormElement 'prepareForSubmission'
 function in core/html/HTMLFormElement.cpp.
--Use-after-free vulnerability in the IndentOutdentCommand
+
+  - Use-after-free vulnerability in the IndentOutdentCommand
 'tryIndentingAsListItem' function in core/editing/IndentOutdentCommand.cpp.
--Use-after-free vulnerability in core/xml/XMLHttpRequest.cpp.
--Another unspecified error.");
+
+  - Use-after-free vulnerability in core/xml/XMLHttpRequest.cpp.
+
+  - Another unspecified error.");
   script_tag(name:"affected", value:"Google Chrome before 30.0.1599.101");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
 service or possibly have other impact via vectors related to submission

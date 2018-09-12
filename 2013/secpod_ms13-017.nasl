@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-017.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: secpod_ms13-017.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Microsoft Windows Kernel Privilege Elevation Vulnerabilities (2799494)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902944");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-1278", "CVE-2013-1279", "CVE-2013-1280");
   script_bugtraq_id(57855, 57856, 57854);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-13 07:04:12 +0530 (Wed, 13 Feb 2013)");
   script_name("Microsoft Windows Kernel Privilege Elevation Vulnerabilities (2799494)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52157/");
@@ -59,6 +59,7 @@ if(description)
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
   script_tag(name:"insight", value:"- Race condition errors when handling certain objects in memory can be
     exploited to execute arbitrary code with kernel privileges.
+
   - An error when handling the reference counter for certain objects in memory
     can be exploited to execute arbitrary code with kernel privileges.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and

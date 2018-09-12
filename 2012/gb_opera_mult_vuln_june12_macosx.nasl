@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_june12_macosx.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_opera_mult_vuln_june12_macosx.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Opera Multiple Vulnerabilities - June12 (Mac OS X)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802647");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11322 $");
   script_bugtraq_id(54011);
   script_cve_id("CVE-2012-3555", "CVE-2012-3556", "CVE-2012-3557", "CVE-2012-3558",
                 "CVE-2012-3560");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 15:15:15 +0530 (Thu, 21 Jun 2012)");
   script_name("Opera Multiple Vulnerabilities - June12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49533/");
@@ -58,12 +58,16 @@ if(description)
   script_tag(name:"insight", value:"- An error when displaying preferences within a small window can be exploited
     to execute arbitrary code by tricking a user into entering a specific
     keyboard sequence.
+
   - An error when displaying pop-up windows can be exploited to execute script
     code by tricking a user into following a specific sequence of events.
+
   - An error when handling JSON resources can be exploited to bypass the cross
     domain policy restriction and disclose certain information to other sites.
+
   - An unspecified error can be exploited to display arbitrary content while
     showing the URL of a trusted web site in the address bar.
+
   - An error when handling page loads can be exploited to display arbitrary
     content while showing the URL of a trusted web site in the address.");
   script_tag(name:"solution", value:"Upgrade to Opera version 11.65 or 12 or later,

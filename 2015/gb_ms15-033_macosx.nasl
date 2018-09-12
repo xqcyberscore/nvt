@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-033_macosx.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_ms15-033_macosx.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities-3048019 (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805064");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-1641", "CVE-2015-1639");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-15 11:36:46 +0530 (Wed, 15 Apr 2015)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerabilities-3048019 (Mac OS X)");
 
@@ -42,8 +42,10 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are exists when,
+
   - The Office software improperly handles objects in memory while parsing
     specially crafted Office files.
+
   - The Office software fails to properly handle rich text format files in
     memory.");
 

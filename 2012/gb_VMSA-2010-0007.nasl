@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2010-0007.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_VMSA-2010-0007.nasl 11325 2018-09-11 10:59:54Z asteins $
 #
 # VMSA-2010-0007 VMware hosted products, vCenter Server and ESX patches resolve multiple security issues
 #
@@ -32,11 +32,11 @@ if (description)
   script_cve_id("CVE-2010-1142", "CVE-2010-1140", "CVE-2009-2042", "CVE-2009-1564", "CVE-2009-1565", "CVE-2009-3732", "CVE-2009-3707", "CVE-2010-1138", "CVE-2010-1139", "CVE-2010-1141");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11325 $");
   script_name("VMSA-2010-0007: VMware hosted products, vCenter Server and ESX patches resolve multiple security issues");
 
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-16 10:53:01 +0100 (Mon, 16 Apr 2012)");
   script_category(ACT_GATHER_INFO);
   script_family("VMware Local Security Checks");
@@ -158,9 +158,10 @@ f. VMware Remote Console format string vulnerability
     Under the following two conditions your version of VMrc is likely
     to be affected:
 
-    - the VMrc plug-in was obtained from vCenter 4.0 or from ESX 4.0
+  - the VMrc plug-in was obtained from vCenter 4.0 or from ESX 4.0
       without patch ESX400-200911223-UG and
-    - VMrc is installed on a Windows-based system
+
+  - VMrc is installed on a Windows-based system
 
 g. Windows-based VMware authd remote denial of service
 

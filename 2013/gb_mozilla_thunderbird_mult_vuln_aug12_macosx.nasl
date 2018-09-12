@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln_aug12_macosx.nasl 11065 2018-08-21 09:49:00Z mmartin $
+# $Id: gb_mozilla_thunderbird_mult_vuln_aug12_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities - August12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803908");
-  script_version("$Revision: 11065 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2012-3980");
   script_bugtraq_id(55249);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 11:49:00 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-17 12:58:15 +0530 (Wed, 17 Jul 2013)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities - August12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50088");
@@ -52,6 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Mozilla Thunderbird version before 15.0 on Mac OS X");
   script_tag(name:"insight", value:"- An error in the installer will launch incorrect executable following new
     installation via a crafted executable file in a root directory.
+
   - An error in the web console can be exploited to inject arbitrary code that
     will be executed with chrome privileges.");
   script_tag(name:"solution", value:"Upgrade to Mozilla Thunderbird version 15.0 or later

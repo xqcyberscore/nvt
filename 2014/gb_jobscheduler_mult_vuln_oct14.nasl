@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jobscheduler_mult_vuln_oct14.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_jobscheduler_mult_vuln_oct14.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # JobScheduler Multiple Vulnerabilities - Oct14
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804773");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-5391", "CVE-2014-5392", "CVE-2014-5393");
   script_bugtraq_id(69660, 69664, 69661);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-09 10:33:16 +0530 (Thu, 09 Oct 2014)");
 
   script_name("JobScheduler Multiple Vulnerabilities - Oct14");
@@ -44,8 +44,10 @@ if(description)
   check whether it is able to read arbitrary file or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An incorrectly configured XML parser accepting XML external entities from
     an untrusted source.
+
   - Improper validation of input before returning it to users, specifically
     path traversal style attacks (e.g. '../').");
 

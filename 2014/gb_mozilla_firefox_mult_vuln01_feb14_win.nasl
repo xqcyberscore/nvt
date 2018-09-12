@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804088");
-  script_version("$Revision: 11202 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1477", "CVE-2014-1478", "CVE-2014-1479", "CVE-2014-1480",
                 "CVE-2014-1481", "CVE-2014-1482", "CVE-2014-1483", "CVE-2014-1485",
                 "CVE-2014-1486", "CVE-2014-1487", "CVE-2014-1488", "CVE-2014-1489",
@@ -38,7 +38,7 @@ if(description)
                     65334, 65330, 65321, 65329, 65335, 65332);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-11 18:21:55 +0530 (Tue, 11 Feb 2014)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 Feb14 (Windows)");
 
@@ -47,19 +47,29 @@ if(description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- An error when handling XML Binding Language (XBL) content scopes.
-- An error when handling discarded images within the 'RasterImage' class.
-- An error related to the 'document.caretPositionFromPoint()' and
+
+  - An error when handling XML Binding Language (XBL) content scopes.
+
+  - An error when handling discarded images within the 'RasterImage' class.
+
+  - An error related to the 'document.caretPositionFromPoint()' and
   'document.elementFromPoint()' functions.
-- An error when handling XSLT stylesheets.
-- A use-after-free error related to certain content types when used with the
+
+  - An error when handling XSLT stylesheets.
+
+  - A use-after-free error related to certain content types when used with the
   'imgRequestProxy()' function.
-- An error when handling web workers error messages.
-- An error when terminating a web worker running asm.js code after passing an
+
+  - An error when handling web workers error messages.
+
+  - An error when terminating a web worker running asm.js code after passing an
   object between threads.
-- A race condition error when handling session tickets within libssl.
-- An error when handling JavaScript native getters on window objects.
-- Additionally, a weakness exists when handling the dialog for saving downloaded
+
+  - A race condition error when handling session tickets within libssl.
+
+  - An error when handling JavaScript native getters on window objects.
+
+  - Additionally, a weakness exists when handling the dialog for saving downloaded
   files.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
 restrictions and compromise a user's system.

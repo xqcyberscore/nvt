@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_nc_allownetbridge_nla.nasl 10797 2018-08-06 14:54:44Z emoss $
+# $Id: win_nc_allownetbridge_nla.nasl 11337 2018-09-11 14:23:53Z emoss $
 #
 # Check value for Prohibit installation and configuration of Network Bridge on
 # your DNS domain network
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109332");
-  script_version("$Revision: 10797 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 16:54:44 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 11337 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:23:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-15 16:29:25 +0200 (Fri, 15 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -41,7 +41,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_add_preference(name:"Value", type:"radio", value:"0;1");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Prohibit installation and configuration of Network Bridge on your DNS domain
 network' on Windows hosts (at least Windows 7).
 
@@ -74,7 +74,7 @@ item = 'NC_AllowNetBridge_NLA';
 default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
 
-if(!value){
+if(value == ''){
   value = '1';
 }
 

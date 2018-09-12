@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_collaboration_server_38202.nasl 10005 2018-05-29 13:54:41Z cfischer $
+# $Id: gb_cisco_collaboration_server_38202.nasl 11325 2018-09-11 10:59:54Z asteins $
 #
 # Cisco Collaboration Server Source Code Disclosure Vulnerabilities
 #
@@ -27,40 +27,40 @@
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103403");
- script_cve_id("CVE-2010-0642");
- script_bugtraq_id(38202);
- script_version ("$Revision: 10005 $");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_name("Cisco Collaboration Server Source Code Disclosure Vulnerabilities");
+  script_oid("1.3.6.1.4.1.25623.1.0.103403");
+  script_cve_id("CVE-2010-0642");
+  script_bugtraq_id(38202);
+  script_version("$Revision: 11325 $");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_name("Cisco Collaboration Server Source Code Disclosure Vulnerabilities");
 
- script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/38202");
- script_xref(name : "URL" , value : "http://www.cisco.com/en/US/products/sw/custcosw/ps747/prod_eol_notice09186a008032d4d0.html");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/38202");
+  script_xref(name:"URL", value:"http://www.cisco.com/en/US/products/sw/custcosw/ps747/prod_eol_notice09186a008032d4d0.html");
 
- script_tag(name:"last_modification", value:"$Date: 2018-05-29 15:54:41 +0200 (Tue, 29 May 2018) $");
- script_tag(name:"creation_date", value:"2012-01-27 13:35:51 +0100 (Fri, 27 Jan 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2012-01-27 13:35:51 +0100 (Fri, 27 Jan 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
 
- script_tag(name : "summary" , value : "Cisco Collaboration Server is prone to multiple vulnerabilities that
+  script_tag(name:"summary", value:"Cisco Collaboration Server is prone to multiple vulnerabilities that
 may allow remote attackers to obtain sourcecode, which may aid them in
 further attacks.");
- script_tag(name : "affected" , value : "Cisco Collaboration Server 5 is vulnerable. Other versions may be
+  script_tag(name:"affected", value:"Cisco Collaboration Server 5 is vulnerable. Other versions may be
 affected as well.
 
 NOTE: The vendor has discontinued this product.");
 
- script_tag(name : "solution" , value : "No known solution was made available for at least one year since the
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the
  disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade
  to a newer release, disable respective features, remove the product or replace the product by another one.");
 
- script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
  exit(0);
 }

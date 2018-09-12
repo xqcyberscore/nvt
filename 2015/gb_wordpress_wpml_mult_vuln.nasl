@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wpml_mult_vuln.nasl 11259 2018-09-06 08:28:49Z mmartin $
+# $Id: gb_wordpress_wpml_mult_vuln.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Wordpress WPML Multiple vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805153");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-2314", "CVE-2015-2315");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-17 12:10:32 +0530 (Tue, 17 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress WPML Multiple vulnerabilities");
@@ -45,11 +45,15 @@ if(description)
   check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An improper validation of parsed language code when a HTTP POST request
     containing the parameter 'action=wp-link-ajax'.
+
   - Lack of access control over menu a 'menu sync' function.
+
   - The 'reminder popup' code intended for administrators in WPML did not
      check for login status or nonce.
+
   - The problem is the mixed use of mixed $_REQUEST and $_GET.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

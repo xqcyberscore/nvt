@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln01_mar11_macosx.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_wireshark_mult_vuln01_mar11_macosx.nasl 11325 2018-09-11 10:59:54Z asteins $
 #
 # Wireshark Multiple Vulnerabilities-01 March 11 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802903");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11325 $");
   script_cve_id("CVE-2011-1140", "CVE-2011-1141");
   script_bugtraq_id(46626);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-27 15:40:58 +0530 (Wed, 27 Jun 2012)");
   script_name("Wireshark Multiple Vulnerabilities-01 March 11 (Mac OS X)");
   script_xref(name:"URL", value:"http://www.wireshark.org/security/wnpa-sec-2011-03.html");
@@ -52,8 +52,10 @@ if(description)
   Wireshark version 1.2.0 through 1.2.14
   Wireshark version 1.4.0 through 1.4.3");
   script_tag(name:"insight", value:"The flaws are due to
+
   - Multiple stack consumption vulnerabilities in the
     'dissect_ms_compressed_string' and 'dissect_mscldap_string functions'
+
   - Error in 'epan/dissectors/packet-ldap.c' which allows attackers to cause
     a denial of service via a long LDAP filter string or an LDAP filter string
     containing many elements.");

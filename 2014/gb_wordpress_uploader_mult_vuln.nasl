@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_uploader_mult_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_wordpress_uploader_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # WordPress Uploader Plugin Multiple Vulnerabilities
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804540");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-2287");
   script_bugtraq_id(58285);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-14 18:31:45 +0530 (Mon, 14 Apr 2014)");
   script_name("WordPress Uploader Plugin Multiple Vulnerabilities");
 
@@ -43,9 +43,11 @@ multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to read
 cookie or not.");
   script_tag(name:"insight", value:"Flaws are due to,
-- Input passed via the 'blog' GET parameter to notify.php is not properly
+
+  - Input passed via the 'blog' GET parameter to notify.php is not properly
   sanitised before being returned to the user.
-- The uploadify.php script allows the upload of files with arbitrary
+
+  - The uploadify.php script allows the upload of files with arbitrary
   extensions to a folder inside the webroot.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
 script code in a user's browser session in the context of an affected site and

@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903500");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-3128", "CVE-2013-3200", "CVE-2013-3879", "CVE-2013-3880",
                 "CVE-2013-3881", "CVE-2013-3888", "CVE-2013-3894");
   script_bugtraq_id(62819, 62823, 62828, 62833, 62830, 62831, 62821);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-09 09:16:37 +0530 (Wed, 09 Oct 2013)");
   script_name("MS Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2870008)");
 
@@ -44,18 +44,25 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaw exists due to,
+
   - An error when parsing OpenType fonts (OTF) can be exploited to corrupt
     memory.
+
   - An error when handling the USB descriptor of inserted USB devices can be
     exploited to corrupt memory.
+
   - A use-after-free error within the kernel-mode driver (win32k.sys) can be
     exploited to gain escalated privileges.
+
   - An error when handling objects in memory related to App Containers can
     be exploited to disclose information from a different App Container.
+
   - An error related to NULL page handling within the kernel-mode driver
     (win32k.sys) can be exploited to gain escalated privileges.
+
   - A double fetch error within the DirectX graphics kernel subsystem
     (dxgkrnl.sys) can be exploited to gain escalated privileges.
+
   - An error when parsing the CMAP table while rendering TrueType
     fonts (TTF) can be exploited to corrupt memory.");
 

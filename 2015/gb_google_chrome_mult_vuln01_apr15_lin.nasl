@@ -29,11 +29,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805360");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-1234", "CVE-2015-1233");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-06 14:45:55 +0530 (Mon, 06 Apr 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Apr15 (Linux)");
 
@@ -43,8 +43,10 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - A race condition in gpu/command_buffer/service/gles2_cmd_decoder.cc that
   is triggered when calculating certain sizes.
+
   - Unspecified flaws in V8, Gamepad, and IPC.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

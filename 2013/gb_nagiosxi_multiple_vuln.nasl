@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagiosxi_multiple_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_nagiosxi_multiple_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Nagios XI Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:nagios:nagiosxi";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803168");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11336 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-07 18:25:24 +0530 (Thu, 07 Feb 2013)");
   script_name("Nagios XI Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52011");
@@ -54,13 +54,13 @@ Impact Level: Application");
   script_tag(name:"insight", value:"- Input passed via the 'xiwindow' GET parameter to admin/index.php
 is not properly verified before being used to be displayed as iframe.
 
-- Input passed via multiple GET parameters to various scripts is not properly
+  - Input passed via multiple GET parameters to various scripts is not properly
   sanitized before being returned to the user.
 
-- The application allows users to perform certain actions via HTTP requests
+  - The application allows users to perform certain actions via HTTP requests
   without properly verifying the requests.
 
-- Input passed via the 'address' POST parameter to
+  - Input passed via the 'address' POST parameter to
   includes/components/autodiscovery/index.php (when 'mode' is set to 'newjob',
   'update' is set to '1', and 'job' is set to '-1') is not properly verified
   before being used. This can be exploited to inject and execute arbitrary

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_nov14_lin.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_google_chrome_mult_vuln_nov14_lin.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities - 01 November14 (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804894");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-7900", "CVE-2014-7901", "CVE-2014-7902", "CVE-2014-7903",
                 "CVE-2014-7904", "CVE-2014-7906", "CVE-2014-7907", "CVE-2014-7908",
                 "CVE-2014-7909", "CVE-2014-7910", "CVE-2014-7899");
@@ -37,7 +37,7 @@ if(description)
                     71167, 71161, 71160);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-25 18:55:43 +0530 (Tue, 25 Nov 2014)");
   script_name("Google Chrome Multiple Vulnerabilities - 01 November14 (Linux)");
 
@@ -47,16 +47,27 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple Flaws are due to,
+
   - A use-after-free error in pdfium.
+
   - An integer overflow error in pdfium.
+
   - Another use-after-free error in pdfium.
+
   - An unspecified error in pdfium.
+
   - An unspecified error in Skia.
+
   - A use-after-free error in pepper plugins.
+
   - Multiple use-after-free errors in blink.
+
   - An integer overflow error in media.
+
   - An unspecified error in Skia.
+
   - Other Multiple unspecified errors.
+
   - An unspecified error that can be exploited to spoof the address bar.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers

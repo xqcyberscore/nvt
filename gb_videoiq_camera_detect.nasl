@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_videoiq_camera_detect.nasl 11149 2018-08-28 14:40:33Z tpassfeld $
+# $Id: gb_videoiq_camera_detect.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
 #
 # VideoIQ Camera Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807357");
-  script_version("$Revision: 11149 $");
+  script_version("$Revision: 11328 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:40:33 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-08-23 15:56:59 +0530 (Tue, 23 Aug 2016)");
   script_name("VideoIQ Camera Remote Detection");
   script_category(ACT_GATHER_INFO);
@@ -66,7 +66,8 @@ if('<title>VideoIQ Camera Login</title>' >< res && '>User name' >< res &&
 
   version = "unknown";
 
-  set_kb_item(name:"VideoIQ/Camera/Installed", value:TRUE);
+  set_kb_item(name:"videoiq/camera/detected", value:TRUE);
+  set_kb_item(name:"videoiq/camera/" + port + "/detected", value:TRUE);
 
   cpe = "cpe:/a:videoiq:videoiq_camera:";
 

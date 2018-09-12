@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jasig_cas_mult_xss_vuln.nasl 11271 2018-09-06 14:58:32Z mmartin $
+# $Id: gb_jasig_cas_mult_xss_vuln.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Jasig Cas Server Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:apereo:central_authentication_service";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806502");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11334 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-19 13:02:46 +0530 (Mon, 19 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Jasig Cas Server Multiple Cross Site Scripting Vulnerabilities");
@@ -44,8 +44,10 @@ if(description)
   check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - OpenID client does not validate input to the 'username' parameter while login
     before returning it to users.
+
   - OAuth server does not validate input to the 'redirect_uri' parameter before
     returning it to users.");
 

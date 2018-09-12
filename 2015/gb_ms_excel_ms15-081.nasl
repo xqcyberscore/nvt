@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_excel_ms15-081.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms_excel_ms15-081.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Microsoft Office Excel Multiple Remote Code Execution Vulnerabilities (3080790)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805088");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-2423");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 15:49:36 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Excel Multiple Remote Code Execution Vulnerabilities (3080790)");
@@ -43,9 +43,12 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists when,
+
   - Microsoft Excel improperly handles the loading of dynamic link library
     (DLL) files.
+
   - Error when memory is released in an unintended manner.
+
   - Improper handling of files in the memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

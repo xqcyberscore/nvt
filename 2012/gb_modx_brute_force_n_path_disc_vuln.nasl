@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_modx_brute_force_n_path_disc_vuln.nasl 11148 2018-08-28 14:25:49Z asteins $
+# $Id: gb_modx_brute_force_n_path_disc_vuln.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # MODX Brute Force and Path Disclosure Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802495");
-  script_version("$Revision: 11148 $");
+  script_version("$Revision: 11322 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-21 10:48:20 +0530 (Wed, 21 Nov 2012)");
   script_name("MODX Brute Force and Path Disclosure Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -53,6 +53,7 @@ if(description)
 
   script_tag(name:"insight", value:"- In login form (manager/index.php) there is no reliable
   protection from brute force attacks.
+
   - Insufficient error checking, allows remote attackers to obtain sensitive
   information via a direct request to a .php file, which reveals the
   installation path in an error message.");

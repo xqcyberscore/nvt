@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_dec15_win.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_dec15_win.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-01 Dec15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806761");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-6764", "CVE-2015-6765", "CVE-2015-6766", "CVE-2015-6767",
                 "CVE-2015-6768", "CVE-2015-6770", "CVE-2015-6771", "CVE-2015-6772",
                 "CVE-2015-6773", "CVE-2015-6774", "CVE-2015-6775", "CVE-2015-6776",
@@ -40,7 +40,7 @@ if(description)
   script_bugtraq_id(78209, 78416);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-07 15:31:40 +0530 (Mon, 07 Dec 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Dec15 (Windows)");
 
@@ -50,18 +50,29 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - 'VideoFramePool::PoolImpl::CreateFrame' function in
     'media/base/video_frame_pool.cc' script does not initialize memory for a
     video-frame data structure.
+
   - Multiple unspecified vulnerabilities.
+
   - Multiple cross-origin bypass vulnerabilities.
+
   - Multiple out of bounds access vulnerabilities.
+
   - Multiple use-after-free vulnerabilities.
+
   - Integer overflow in Sfntly.
+
   - Content spoofing vulnerability in Omnibox.
+
   - Escaping issue in saved pages.
+
   - Wildcard matching issue in CSP.
+
   - Multiple scheme bypass vulnerabilities.
+
   - Type confusion vulnerability in PDFium.");
 
   script_tag(name:"impact", value:"Successful exploitation would allow an attacker

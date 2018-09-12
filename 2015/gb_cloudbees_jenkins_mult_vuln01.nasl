@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_mult_vuln01.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_cloudbees_jenkins_mult_vuln01.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # CloudBees Jenkins Multiple Vulnerabilities -01 December15
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807012");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2014-2068", "CVE-2014-2066", "CVE-2014-2065", "CVE-2014-2064",
                 "CVE-2014-2063", "CVE-2014-2062", "CVE-2014-2061", "CVE-2014-2060",
                 "CVE-2014-2058");
   script_bugtraq_id(65694, 65720);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-21 15:34:06 +0530 (Mon, 21 Dec 2015)");
   script_name("CloudBees Jenkins Multiple Vulnerabilities -01 December15");
 
@@ -46,17 +46,26 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Improper access restiction by 'BuildTrigger'.
+
   - Improper session handling by 'Winstone servlet container'.
+
   - Error in input control in PasswordParameterDefinition.
+
   - Error in handling of API tokens.
+
   - Error in 'loadUserByUsername' function in the
   hudson/security/HudsonPrivateSecurityRealm.java script.
+
   - Insufficient validation of user supplied input via iconSize cookie.
+
   - Session fixation vulnerability via vectors involving the 'override' of
     Jenkins cookies.
+
   - 'doIndex' function in hudson/util/RemotingDiagnostics.java script does not
     restrict accessing sensitive information via vectors related to heapDump.
+
   - An unspecified vulnerability.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

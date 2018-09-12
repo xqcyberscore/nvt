@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_jun14_lin.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_google_chrome_mult_vuln02_jun14_lin.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities - 02 June14 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804644");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-3154", "CVE-2014-3155", "CVE-2014-3156", "CVE-2014-3157");
   script_bugtraq_id(67977, 67980, 67981, 67972);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-19 11:03:39 +0530 (Thu, 19 Jun 2014)");
   script_name("Google Chrome Multiple Vulnerabilities - 02 June14 (Linux)");
 
@@ -43,11 +43,15 @@ if(description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaws are due to,
-- A use-after-free error in the 'ChildThread::Shutdown' function in
+
+  - A use-after-free error in the 'ChildThread::Shutdown' function in
 content/child/child_thread.cc script related to the filesystem API.
-- An out-of-bounds read flaw in SPDY related to reentrancy.
-- An overflow condition related to bitmap handling in the clipboard code.
-- An overflow condition in the 'FFmpegVideoDecoder::GetVideoBuffer' function
+
+  - An out-of-bounds read flaw in SPDY related to reentrancy.
+
+  - An overflow condition related to bitmap handling in the clipboard code.
+
+  - An overflow condition in the 'FFmpegVideoDecoder::GetVideoBuffer' function
 in media/filters/ffmpeg_video_decoder.cc script.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct a denial of
 service and possibly have other unspecified impact.

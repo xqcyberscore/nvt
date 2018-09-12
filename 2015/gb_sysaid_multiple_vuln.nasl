@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sysaid_multiple_vuln.nasl 11220 2018-09-04 11:57:09Z mmartin $
+# $Id: gb_sysaid_multiple_vuln.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # SysAid Multiple Vulnerabilities
 #
@@ -30,8 +30,8 @@ CPE = 'cpe:/a:sysaid:sysaid';
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106005");
-  script_version("$Revision: 11220 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 11333 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-11 10:02:43 +0700 (Thu, 11 Jun 2015)");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
@@ -61,31 +61,31 @@ vulnerabilities");
 to certain functionality. An attacker can create administrators accounts via crafted requests to
 /createnewaccount or write arbitrary files via the fileName parameter to /userentry. (CVE-2015-2993)
 
-- A vulnerability exists in the ChangePhoto.jsp in the administrator portal, which does not handle
+  - A vulnerability exists in the ChangePhoto.jsp in the administrator portal, which does not handle
 correctly directory traversal sequences and does not enforce file extension restrictions. (CVE-2015-2994)
 
-- SysAid Help Desktop Software uses a hard-coded encryption key. (CVE-2015-2998)
+  - SysAid Help Desktop Software uses a hard-coded encryption key. (CVE-2015-2998)
 
-- A SQL injection vulnerability exists in genericreport, HelpDesk.jsp and RFCGantt.jsp. (CVE-2015-2999)
+  - A SQL injection vulnerability exists in genericreport, HelpDesk.jsp and RFCGantt.jsp. (CVE-2015-2999)
 
-- An XML entity expansion vulnerability exists. CVE-2015-3000)
+  - An XML entity expansion vulnerability exists. CVE-2015-3000)
 
-- When installing SysAid on Windows with built in SQL-Server Express, the installer sets the sa user
+  - When installing SysAid on Windows with built in SQL-Server Express, the installer sets the sa user
 password to a pre-defined hard-coded password. (CVE-2015-3001)");
 
   script_tag(name:"impact", value:"- An unauthenticated attacker can get full administrative access to
 the application or overwrite arbitrary files.
 
-- An authenticated attacker may upload arbitrary files which could lead to remote code execution.
+  - An authenticated attacker may upload arbitrary files which could lead to remote code execution.
 
-- A malicious user can decrypt e.g. the database password stored in serverConf.xml.
+  - A malicious user can decrypt e.g. the database password stored in serverConf.xml.
 
-- A user with administrative rights can perform a SQL injection attack to read and modify the database.
+  - A user with administrative rights can perform a SQL injection attack to read and modify the database.
 
-- A unauthenticated attacker can create a Denial of Service condition for 10+ seconds. Repeating this
+  - A unauthenticated attacker can create a Denial of Service condition for 10+ seconds. Repeating this
 will slow down the server extensively.
 
-- An attacker can gain administrative access to the built-in SQL Server Express.");
+  - An attacker can gain administrative access to the built-in SQL Server Express.");
 
   script_tag(name:"affected", value:"SysAid Help Desktop version 15.1.x and before.");
 

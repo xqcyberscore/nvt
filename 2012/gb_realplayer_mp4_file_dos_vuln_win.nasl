@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mp4_file_dos_vuln_win.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_realplayer_mp4_file_dos_vuln_win.nasl 11325 2018-09-11 10:59:54Z asteins $
 #
 # RealNetworks RealPlayer MP4 File Handling Denial of Service Vulnerability (Windows)
 #
@@ -31,12 +31,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802826");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11325 $");
   script_bugtraq_id(53555);
   script_cve_id("CVE-2012-1904", "CVE-2012-2406", "CVE-2012-2411");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-02 16:18:38 +0530 (Mon, 02 Apr 2012)");
   script_name("RealNetworks RealPlayer MP4 File Handling Denial of Service Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49193");
@@ -59,9 +59,12 @@ if(description)
   script_tag(name:"affected", value:"RealPlayer versions before 15.0.4.53
   RealPlayer SP versions 1.0 through 1.1.5 on Windows");
   script_tag(name:"insight", value:"The flaws are due to
+
   - An error the in 'mp4fformat.dll' in the QuickTime File Format plugin. This
     can be exploited to cause a crash by sending a crafted MP4 file.
+
   - An error within the parsing of RealMedia ASMRuleBook.
+
   - An error within the RealJukebox Media parser, which allows to cause a
     buffer overflow.");
   script_tag(name:"solution", value:"Upgrade to RealPlayer version 15.0.4.53 or later,

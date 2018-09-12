@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Include File
-# $Id: secpod_smb_func.inc 10986 2018-08-15 13:38:20Z cfischer $
+# $Id: secpod_smb_func.inc 11313 2018-09-11 08:15:02Z cfischer $
 #
 # SMB Functions
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10986 $
+# $Revision: 11313 $
 #
 ###############################################################################
 
@@ -619,8 +619,8 @@ function GetVer( file, share, prodvers ) {
     return NULL;
   }
 
-  sections_cnt = bin_word( data: read_file(share:share, file:file, offset:pe_offset+6, count:2 ) );
-  section_offset = pe_offset + bin_word( data:read_file(share:share, file:file, offset:pe_offset+20, count:2 ) ) + 24;
+  sections_cnt = bin_word( data:read_file( share:share, file:file, offset:pe_offset + 6, count:2 ) );
+  section_offset = pe_offset + bin_word( data:read_file( share:share, file:file, offset:pe_offset + 20, count:2 ) ) + 24;
   rsrc_start = NULL;
   max_recurs = 20;
 
@@ -640,7 +640,7 @@ function GetVer( file, share, prodvers ) {
   }
 
   dir_data = read_file( share:share, file:file, offset:rsrc_start, count:16 );
-  dir_entries = bin_word( data:substr( dir_data,12 ) ) + bin_word( data:substr( dir_data, 14 ) );
+  dir_entries = bin_word( data:substr( dir_data, 12 ) ) + bin_word( data:substr( dir_data, 14 ) );
   dir_offset = NULL;
   sub_dir = 0;
   max_recurs = 100;
@@ -710,42 +710,42 @@ function GetVer( file, share, prodvers ) {
 
 function bin_word( data ) {
 
-  local_var data, datatype;
+  local_var data;
 
-  if( isnull( data ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#share#-#open_file" );
-
-  ##Make sure type is not int
-  datatype = typeof( data );
-  if( datatype == "int" ) {
-    return NULL;
+  if( isnull( data ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#bin_word" );
+    return 0;
   }
 
-  if( ! data ) {
+  #nb: Make sure type is not int
+  if( typeof( data ) == "int" ) {
     return 0;
-  } else if( ! isnull( data[0] ) && ! isnull( data[1] ) ) {
+  }
+
+  if( strlen( data ) > 1 ) {
     return( ord( data[0] ) + ( ord( data[1] ) << 8 ) );
   }
+  return 0;
 }
 
 function bin_dword( data ) {
 
-  local_var data, datatype;
+  local_var data;
 
-  if( isnull( data ) ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#share#-#open_file" );
-
-  ##Make sure type is not int
-  datatype = typeof( data );
-  if( datatype == "int" ) {
-    return NULL;
-  }
-
-  if( ! data ){
+  if( isnull( data ) ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#data#-#bin_dword" );
     return 0;
-  } else {
-    if( ! isnull( data[0] ) && ! isnull( data[1] ) ) {
-      return( ord( data[0] ) + ( ord( data[1] ) << 8 ) + ( ord( data[2] ) << 16 ) + ( ord( data[3] ) << 24 ) );
-    }
   }
+
+  #nb: Make sure type is not int
+  if( typeof( data ) == "int" ) {
+    return 0;
+  }
+
+  if( strlen( data ) > 3 ) {
+    return( ord( data[0] ) + ( ord( data[1] ) << 8 ) + ( ord( data[2] ) << 16 ) + ( ord( data[3] ) << 24 ) );
+  }
+  return 0;
 }
 
 function GetVersionFromFile( file, verstr ) {

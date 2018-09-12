@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_xss_dir_trav_vuln.nasl 10953 2018-08-14 12:06:42Z mmartin $
+# $Id: gb_owncloud_mult_xss_dir_trav_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # ownCloud Multiple Cross-Site Scripting & Directory Traversal Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804287");
-  script_version("$Revision: 10953 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-2040", "CVE-2013-2039", "CVE-2013-2042");
   script_bugtraq_id(59950, 59947, 59952);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:06:42 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 18:50:55 +0530 (Tue, 06 May 2014)");
   script_name("ownCloud Multiple Cross-Site Scripting & Directory Traversal Vulnerabilities");
 
@@ -43,10 +43,12 @@ if (description)
 vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due,
-- Insufficient validation of user-supplied input passed via the 'url' parameter
+
+  - Insufficient validation of user-supplied input passed via the 'url' parameter
 to the apps/bookmarks/ajax/addBookmark.php & apps/bookmarks/ajax/editBookmark.php
 scripts.
-- Improper sanitization of user-supplied input passed via unspecified vectors
+
+  - Improper sanitization of user-supplied input passed via unspecified vectors
 to lib/files/view.php, media/js/playlist.js, media/js/player.js or
 media/js/collection.js script.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain access to

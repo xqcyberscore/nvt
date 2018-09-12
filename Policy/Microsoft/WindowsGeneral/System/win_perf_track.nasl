@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_perf_track.nasl 10822 2018-08-07 15:31:31Z cfischer $
+# $Id: win_perf_track.nasl 11344 2018-09-12 06:57:52Z emoss $
 #
 # Check value for Enable/Disable PerfTrack
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109547");
-  script_version("$Revision: 10822 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 17:31:31 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 11344 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:57:52 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-07 14:04:55 +0200 (Tue, 07 Aug 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -71,7 +71,7 @@ item = 'ScenarioExecutionEnabled';
 default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
 
-if(!value){
+if(value == ''){
   value = '1';
 }
 

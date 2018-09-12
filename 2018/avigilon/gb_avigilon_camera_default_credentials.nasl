@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avigilon_camera_default_credentials.nasl 11195 2018-09-03 12:47:26Z cfischer $
+# $Id: gb_avigilon_camera_default_credentials.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
 #
 # Avigilon Camera Default Credentials
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114026");
-  script_version("$Revision: 11195 $");
+  script_version("$Revision: 11328 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:47:26 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-28 15:52:48 +0200 (Tue, 28 Aug 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
@@ -39,7 +39,7 @@ if(description)
   script_name("Avigilon Camera Default Credentials");
   script_dependencies("gb_avigilon_camera_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("Avigilon/Camera/installed");
+  script_mandatory_keys("avigilon/camera/detected");
 
   script_xref(name:"URL", value:"https://customvideosecurity.com/blog/tag/default-password-axis/");
 

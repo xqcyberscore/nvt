@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-036.nasl 11007 2018-08-16 13:20:25Z mmartin $
+# $Id: secpod_ms13-036.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2829996)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903202");
-  script_version("$Revision: 11007 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-1283", "CVE-2013-1291", "CVE-2013-1292", "CVE-2013-1293");
   script_bugtraq_id(58853, 58858, 58859, 58860);
   script_tag(name:"cvss_base", value:"7.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:20:25 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-10 09:30:54 +0530 (Wed, 10 Apr 2013)");
   script_name("Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2829996)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2808735");
@@ -58,7 +58,9 @@ if(description)
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Improper handling of certain objects in kernel memory.
+
   - Improper parsing of crafted OpenType font files.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,

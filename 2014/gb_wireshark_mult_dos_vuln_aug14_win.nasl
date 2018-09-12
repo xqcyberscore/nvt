@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_aug14_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_wireshark_mult_dos_vuln_aug14_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities-01 Aug14 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804800");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-5161", "CVE-2014-5162", "CVE-2014-5163", "CVE-2014-5164",
                 "CVE-2014-5165");
   script_bugtraq_id(69001, 69003, 69005, 69002, 69000);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-07 10:00:42 +0530 (Thu, 07 Aug 2014)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities-01 Aug14 (Windows)");
 
@@ -44,15 +44,20 @@ if(description)
 service vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws exists due to,
-- An error in 'dissect_log' function in plugins/irda/packet-irda.c within the
+
+  - An error in 'dissect_log' function in plugins/irda/packet-irda.c within the
 ASN.1 BER dissector.
-- An error in 'read_new_line' function in wiretap/catapult_dct2000.c within the
+
+  - An error in 'read_new_line' function in wiretap/catapult_dct2000.c within the
 Catapult DCT2000 dissector.
-- An error in 'APN decode' functionality in epan/dissectors/packet-gtp.c and
+
+  - An error in 'APN decode' functionality in epan/dissectors/packet-gtp.c and
 epan/dissectors/packet-gsm_a_gm.c within the GTP and GSM Management dissectors.
-- An error in 'rlc_decode_li' function in epan/dissectors/packet-rlc.c within
+
+  - An error in 'rlc_decode_li' function in epan/dissectors/packet-rlc.c within
 the RLC dissector.
-- An error in 'dissect_ber_constrained_bitstring' function in
+
+  - An error in 'dissect_ber_constrained_bitstring' function in
 epan/dissectors/packet-ber.c within the ASN.1 BER dissector.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct a DoS (Denial of
 Service).

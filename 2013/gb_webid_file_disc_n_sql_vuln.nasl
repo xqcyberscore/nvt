@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_file_disc_n_sql_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_webid_file_disc_n_sql_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # WeBid Local File Disclosure and SQL Injection Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:webidsupport:webid";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803399");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11336 $");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-09 17:11:32 +0530 (Thu, 09 May 2013)");
   script_name("WeBid Local File Disclosure and SQL Injection Vulnerabilities");
   script_xref(name:"URL", value:"http://1337day.com/exploit/20730");
@@ -53,10 +53,10 @@ Impact Level: Application");
   script_tag(name:"affected", value:"WeBid version 1.0.6 and prior");
   script_tag(name:"insight", value:"The flaws are due to improper input validation:
 
-- Input passed via the 'js' parameter to loader.php, allows attackers to
+  - Input passed via the 'js' parameter to loader.php, allows attackers to
 read arbitrary files.
 
-- $_POST['startnow'] is directly used in mysql query without sanitization
+  - $_POST['startnow'] is directly used in mysql query without sanitization
 in yourauctions_p.php.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.

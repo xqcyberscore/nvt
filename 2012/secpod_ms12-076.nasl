@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-076.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: secpod_ms12-076.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2720184)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902930");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11322 $");
   script_cve_id("CVE-2012-1885", "CVE-2012-1886", "CVE-2012-1887", "CVE-2012-2543");
   script_bugtraq_id(56425, 56426, 56430, 56431);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-14 08:46:19 +0530 (Wed, 14 Nov 2012)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (2720184)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51242/");
@@ -60,10 +60,13 @@ if(description)
   Microsoft Office Compatibility Pack Service Pack 2 and Service Pack 3");
   script_tag(name:"insight", value:"- An error when processing the 'SerAuxErrBar' record can be exploited to
     cause a heap-based buffer overflow via a specially crafted file.
+
   - An input validation error can be exploited to corrupt memory via a
     specially crafted file.
+
   - A use-after-free error when processing the 'SST' record can be
     exploited via a specially crafted file.
+
   - An error when processing certain data structures can be exploited to
     cause a stack-based buffer overflow via a specially crafted file.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln01_sep14_win.nasl 11213 2018-09-04 09:30:51Z mmartin $
+# $Id: gb_mozilla_thunderbird_mult_vuln01_sep14_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities-01 September14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804833");
-  script_version("$Revision: 11213 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1562", "CVE-2014-1567");
   script_bugtraq_id(69519, 69520);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-05 19:57:31 +0530 (Fri, 05 Sep 2014)");
 
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 September14 (Windows)");
@@ -45,7 +45,9 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - A use-after-free error when setting text directionality.
+
   - An unspecified error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers

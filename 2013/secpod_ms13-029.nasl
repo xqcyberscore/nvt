@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-029.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: secpod_ms13-029.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Microsoft RDP ActiveX Control Remote Code Execution Vulnerability (2828223)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901217");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-1296");
   script_bugtraq_id(58874);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-10 12:20:24 +0530 (Wed, 10 Apr 2013)");
   script_name("Microsoft RDP ActiveX Control Remote Code Execution Vulnerability (2828223)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52911");
@@ -57,16 +57,25 @@ if(description)
   script_tag(name:"summary", value:"This host is missing a critical security update according to
   Microsoft Bulletin MS13-029.");
   script_tag(name:"affected", value:"Remote Desktop Connection 6.1 Client
+
   - Windows XP x32 Edition Service Pack 3 and prior
+
   - Microsoft Windows XP x64 Edition Service Pack 2 and prior
+
   - Microsoft Windows 2003 x32/x64 Edition Service Pack 2 and prior
+
   - Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
+
   - Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior
 
   Remote Desktop Connection 7.0 Client
+
   - Windows XP x32 Edition Service Pack 3 and prior
+
   - Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
+
   - Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior
+
   - Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

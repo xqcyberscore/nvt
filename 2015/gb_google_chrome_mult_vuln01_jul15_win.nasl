@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jul15_win.nasl 11259 2018-09-06 08:28:49Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_jul15_win.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-01 July15 (Windows)
 #
@@ -32,7 +32,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805934");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-1271", "CVE-2015-1273", "CVE-2015-1274", "CVE-2015-1276",
                 "CVE-2015-1279", "CVE-2015-1280", "CVE-2015-1281", "CVE-2015-1282",
                 "CVE-2015-1283", "CVE-2015-1284", "CVE-2015-1286", "CVE-2015-1287",
@@ -42,7 +42,7 @@ if(description)
   script_bugtraq_id(75973, 76007);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-23 13:02:12 +0530 (Thu, 23 Jul 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 July15 (Windows)");
 
@@ -52,24 +52,42 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Multiple heap based buffer-overflow in pdfium.
+
   - An error which allows executable files to run immediately after download.
+
   - A use-after-free error in IndexedDB.
+
   - A memory corruption error in skia.
+
   - An error allowing content security policy (CSP) bypass.
+
   - A use-after-free error in pdfium.
+
   - A heap based buffer-overflow in expat.
+
   - A use-after-free error in blink.
+
   - Universal cross-site scripting (UXSS) error in blink.
+
   - An error in cascading style sheets (CSS) allowing to bypass same origin
   policy.
+
   - Uninitialized memory read error in ICU.
+
   - A use-after-free error related to unexpected GPU process termination.
+
   - A use-after-free error in accessibility.
+
   - An error leading to URL spoofing using pdf files.
+
   - An error leading to information leak in XSS auditor.
+
   - An error allowing spell checking dictionaries to be fetched over HTTP.
+
   - The regular-expression implementation in Google V8 mishandles interrupts.
+
   - Various other unspecified errors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

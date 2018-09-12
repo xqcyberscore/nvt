@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_debugscript_info_disclosure_vuln.nasl 11285 2018-09-07 09:40:40Z cfischer $
+# $Id: gb_typo3_debugscript_info_disclosure_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # TYPO3 Debug Script Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803980");
-  script_version("$Revision: 11285 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2005-4875");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:40:40 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-17 13:20:01 +0530 (Tue, 17 Dec 2013)");
   script_name("TYPO3 Debug Script Information Disclosure Vulnerability");
 
@@ -45,20 +45,20 @@ Impact Level: Application");
 information.");
   script_tag(name:"insight", value:"Multiple error exists in the application,
 
-- An error exists in debug script which executes phpinfo() function, which
+  - An error exists in debug script which executes phpinfo() function, which
 makes environment variables world readable.
 
-- An error exists in TYPO3 Page Cache.
+  - An error exists in TYPO3 Page Cache.
 
-- An error exists in config.baseURL, which could be used to spoof a malicious
+  - An error exists in config.baseURL, which could be used to spoof a malicious
 baseURL into your TYPO3 cache.
 
-- An error exists in TYPO3 Install Tool, which does not generate a secure
+  - An error exists in TYPO3 Install Tool, which does not generate a secure
 encryptionKey
 
-- An error exists in showpic.php, which fails to sanatize user inputs properly.
+  - An error exists in showpic.php, which fails to sanatize user inputs properly.
 
-- An error exists in application, which does not forbidden access to
+  - An error exists in application, which does not forbidden access to
 'fileadmin/_temp_/' directory");
 
   script_tag(name:"solution_type", value:"VendorFix");

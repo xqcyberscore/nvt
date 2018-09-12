@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_aug12_macosx.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_mozilla_prdts_mult_vuln_aug12_macosx.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Mozilla Products Multiple Vulnerabilities - August12 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803012");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11322 $");
   script_cve_id("CVE-2012-3959", "CVE-2012-3958", "CVE-2012-3957", "CVE-2012-3972",
                 "CVE-2012-3956", "CVE-2012-3971", "CVE-2012-1976", "CVE-2012-3970",
                 "CVE-2012-1975", "CVE-2012-3969", "CVE-2012-1974", "CVE-2012-3968",
@@ -36,7 +36,7 @@ if(description)
   script_bugtraq_id(55249);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 12:20:04 +0530 (Thu, 30 Aug 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - August12 (Mac OS X)");
 
@@ -69,11 +69,14 @@ if(description)
    'MediaStreamGraphThreadRunnable::Run', 'nsTArray_base::Length',
    'nsHTMLSelectElement::SubmitNamesValues', 'PresShell::CompleteMove',
    'gfxTextRun::GetUserData' and 'gfxTextRun::CanBreakLineBefore'.
+
   - Multiple unspecified errors within funcions 'nsBlockFrame::MarkLineDirty'
     and the browser engine can be exploited to
     corrupt memory.
+
   - Errors in 'Silf::readClassMap' and 'Pass::readPass' functions within
     Graphite 2 library.
+
   - Use-after-free error exists within the WebGL implementation.");
   script_tag(name:"summary", value:"This host is installed with Mozilla firefox/thunderbird/seamonkey and is
   prone to multiple vulnerabilities.");

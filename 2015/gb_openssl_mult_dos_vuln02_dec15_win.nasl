@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_dos_vuln02_dec15_win.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_openssl_mult_dos_vuln02_dec15_win.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # OpenSSL Multiple Denial of Service Vulnerabilities -02 Dec15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806744");
-  script_version("$Revision: 11218 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-1789", "CVE-2015-1790", "CVE-2015-1791", "CVE-2015-1792");
   script_bugtraq_id(75156, 75157, 75161, 75154);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-01 09:41:47 +0530 (Tue, 01 Dec 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL Multiple Denial of Service Vulnerabilities -02 Dec15 (Windows)");
@@ -45,12 +45,16 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - An out-of-bounds read vulnerability in 'X509_cmp_time' function in
     'crypto/x509/x509_vfy.c' script.
+
   - NULL pointer dereference vulnerability in 'PKCS7_dataDecodefunction' in
     'crypto/pkcs7/pk7_doit.c' script.
+
   - 'ssl3_get_new_session_ticket' function in 'ssl/s3_clnt.c' script causes
     race condition while handling NewSessionTicket.
+
   - 'do_free_upto' function in 'crypto/cms/cms_smime.c' script verify infinite
     loop with unknown hash function.");
 

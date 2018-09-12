@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sea_monkey_mult_vuln01_dec14_win.nasl 11202 2018-09-03 14:43:03Z mmartin $
+# $Id: gb_sea_monkey_mult_vuln01_dec14_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # SeaMonkey Multiple Vulnerabilities-01 Dec14 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:seamonkey";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805223");
-  script_version("$Revision: 11202 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1594", "CVE-2014-1593", "CVE-2014-1592", "CVE-2014-1590",
                 "CVE-2014-1589", "CVE-2014-1588", "CVE-2014-1587", "CVE-2014-8632",
                 "CVE-2014-8631", "CVE-2014-1591");
@@ -37,7 +37,7 @@ if(description)
                     71399);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-16 11:56:05 +0530 (Tue, 16 Dec 2014)");
   script_name("SeaMonkey Multiple Vulnerabilities-01 Dec14 (Windows)");
 
@@ -47,19 +47,28 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - A bad cast issue from the BasicThebesLayer to BasicContainerLayer.
+
   - An error when parsing media content within the 'mozilla::FileBlockCache::Read'
   function.
+
   - A use-after-free error when parsing certain HTML within the
   'nsHtml5TreeOperation' class.
+
   - An error that is triggered when handling JavaScript objects that are passed
   to XMLHttpRequest that mimics an input stream.
+
   - An error that is triggered when handling a CSS stylesheet that has its namespace
   improperly declared.
+
   - Multiple unspecified errors.
+
   - An error when filtering object properties via XrayWrappers.
+
   - An error when passing Chrome Object Wrappers (COW) protected chrome objects as
   native interfaces.
+
   - An error when handling Content Security Policy (CSP) violation reports
   triggered by a redirect.");
 

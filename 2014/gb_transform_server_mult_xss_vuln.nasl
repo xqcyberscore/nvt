@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_transform_server_mult_xss_vuln.nasl 11214 2018-09-04 10:09:46Z mmartin $
+# $Id: gb_transform_server_mult_xss_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Transform Foundation Server Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804637");
-  script_version("$Revision: 11214 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-2577");
   script_bugtraq_id(67810);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-12 12:37:47 +0530 (Thu, 12 Jun 2014)");
   script_name("Transform Foundation Server Multiple Cross Site Scripting Vulnerabilities");
 
@@ -41,10 +41,13 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to read
   cookie or not.");
   script_tag(name:"insight", value:"Multiple flaws exists due to an,
+
   - Improper validation of input passed via 'db' and 'referer' POST
   parameters passed to /index.fsp/index.fsp script.
+
   - Improper validation of the input passed via 'pn' GET parameter passed to
   /index.fsp script.
+
   - Improper validation of input passed via the URL before returning it to
   users.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary

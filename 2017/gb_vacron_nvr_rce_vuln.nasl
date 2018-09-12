@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vacron_nvr_rce_vuln.nasl 9327 2018-04-05 10:30:41Z asteins $
+# $Id: gb_vacron_nvr_rce_vuln.nasl 11343 2018-09-12 06:36:46Z cfischer $
 #
 # Vacron NVR Remote Code Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:vacron:nvr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107187");
-  script_version("$Revision: 9327 $");
+  script_version("$Revision: 11343 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 12:30:41 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-10-11 10:31:53 +0200 (Wed, 11 Oct 2017)");
   script_name("Vacron NVR Remote Code Execution Vulnerability");
 
@@ -49,13 +49,13 @@ if(description)
 
   script_tag(name:"affected", value:"All versions of Vacron NVR");
 
-  script_tag(name:"solution", value:"No Solution or patch is available as of 05th April, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 12th September, 2018. Information
+  regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3445");
-  script_xref(name: "URL", value: "http://blog.netlab.360.com/iot_reaper-a-rappid-spreading-new-iot-botnet-en/");
+  script_xref(name:"URL", value:"http://blog.netlab.360.com/iot_reaper-a-rappid-spreading-new-iot-botnet-en/");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
@@ -64,6 +64,7 @@ regarding this issue will be updated once solution details are available.");
   script_dependencies("gb_vacron_nvr_detect.nasl");
   script_mandatory_keys("vacron_nvr/installed");
   script_require_ports("Services/www", 8080);
+
   exit(0);
 }
 

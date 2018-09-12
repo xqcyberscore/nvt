@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_koha_staff_client_mult_xss.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_koha_staff_client_mult_xss.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Koha Multiple XSS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805355");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2014-9446");
   script_bugtraq_id(71803);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-27 19:14:22 +0530 (Fri, 27 Mar 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Koha Multiple XSS Vulnerabilities");
@@ -44,7 +44,9 @@ if(description)
   check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Multiple errors exist as input passed via
+
   - The sort_by parameter to the opac parameter in 'opac-search.pl'
+
   - The sort_by parameter to the intranet parameter in 'catalogue/search.pl'
     not validated before returning it to users.");
 

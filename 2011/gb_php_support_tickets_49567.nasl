@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_support_tickets_49567.nasl 10321 2018-06-26 06:01:09Z cfischer $
+# $Id: gb_php_support_tickets_49567.nasl 11343 2018-09-12 06:36:46Z cfischer $
 #
 # PHP Support Tickets 'page' Parameter Remote PHP Code Execution Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:triangle_solutions:php_support_tickets";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103256");
-  script_version("$Revision: 10321 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 08:01:09 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 11343 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-09-14 13:31:57 +0200 (Wed, 14 Sep 2011)");
   script_bugtraq_id(49567);
   script_tag(name:"cvss_base", value:"7.5");
@@ -55,8 +55,12 @@ if(description)
   script_tag(name:"affected", value:"PHP Support Tickets 2.2 is vulnerable. Other versions may also
   be affected.");
 
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"qod_type", value:"remote_vul");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }

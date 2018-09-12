@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln01_aug12_win.nasl 11144 2018-08-28 11:37:19Z asteins $
+# $Id: gb_wireshark_mult_vuln01_aug12_win.nasl 11325 2018-09-11 10:59:54Z asteins $
 #
 # Wireshark Multiple Vulnerabilities(01) - August 2012 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802945");
-  script_version("$Revision: 11144 $");
+  script_version("$Revision: 11325 $");
   script_cve_id("CVE-2012-4298", "CVE-2012-4295", "CVE-2012-4294", "CVE-2012-4287",
                 "CVE-2012-4286");
   script_bugtraq_id(55035);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 13:37:19 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-21 14:03:40 +0530 (Tue, 21 Aug 2012)");
   script_name("Wireshark Multiple Vulnerabilities(01) - August 2012 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50276/");
@@ -54,8 +54,10 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Wireshark 1.8.x before 1.8.2 on Windows");
   script_tag(name:"insight", value:"The flaws are due to
+
   - An error within the pcap-ng file parser, Ixia IxVeriWave file parser and
     ERF dissector can be exploited to cause a buffer overflow.
+
   - An error within the MongoDB dissector can be exploited to trigger an
     infinite loop and consume excessive CPU resources.");
   script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.8.2 or later,

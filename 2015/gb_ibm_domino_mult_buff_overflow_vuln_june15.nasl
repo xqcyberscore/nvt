@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_mult_buff_overflow_vuln_june15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ibm_domino_mult_buff_overflow_vuln_june15.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # IBM Domino Multiple Stack-based Buffer Overflow Vulnerabilities - June15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805644");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-1903", "CVE-2015-1902");
   script_bugtraq_id(74598, 74597);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-04 12:22:20 +0530 (Thu, 04 Jun 2015)");
   script_name("IBM Domino Multiple Stack-based Buffer Overflow Vulnerabilities - June15");
 
@@ -44,8 +44,10 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An overflow condition in nrouter.exe which is triggered as user-supplied
     input is not properly validated when handling the BMP color palette.
+
   - An integer overflow condition in the nrouter.exe component that is triggered
     as BMP image dimensions in emails are not properly validated.");
 

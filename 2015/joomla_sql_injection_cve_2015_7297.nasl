@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: joomla_sql_injection_cve_2015_7297.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: joomla_sql_injection_cve_2015_7297.nasl 11323 2018-09-11 10:20:18Z ckuersteiner $
 #
 # Joomla Core SQL Injection Vulnerability
 #
@@ -28,8 +28,8 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105419");
-  script_version("$Revision: 11221 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_version("$Revision: 11323 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:20:18 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-22 19:38:14 +0200 (Thu, 22 Oct 2015)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -54,9 +54,12 @@ if (description)
 
   script_tag(name:"vuldetect", value:"Try to inject SQL code");
 
-  script_tag(name:"insight", value:"An SQL Injection vulnerability exists in the file '/administrator/components/com_contenthistory/models/history.php' a core module installed as part of a default Joomla installation.");
+  script_tag(name:"insight", value:"An SQL Injection vulnerability exists in the file
+'/administrator/components/com_contenthistory/models/history.php' a core module installed as part of a default
+Joomla installation.");
 
-  script_tag(name:"impact", value:"CVE-2015-7857 enables an unauthorized remote user to gain administrator privileges by hijacking the administrator session. Following exploitation of the vulnerability, the attacker
+  script_tag(name:"impact", value:"CVE-2015-7857 enables an unauthorized remote user to gain administrator
+privileges by hijacking the administrator session. Following exploitation of the vulnerability, the attacker
 may gain full control of the web site and execute additional attacks.");
 
   script_tag(name:"affected", value:"Joomla CMS versions 3.2.0 through 3.4.4");

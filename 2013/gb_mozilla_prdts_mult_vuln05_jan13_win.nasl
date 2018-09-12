@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln05_jan13_win.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_mozilla_prdts_mult_vuln05_jan13_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities-05 January13 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803206");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-0760", "CVE-2013-0770");
   script_bugtraq_id(57199, 57207);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-16 17:04:59 +0530 (Wed, 16 Jan 2013)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-05 January13 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51752");
@@ -51,6 +51,7 @@ if(description)
   script_tag(name:"affected", value:"Mozilla Firefox version before 18.0 on Windows");
   script_tag(name:"insight", value:"- An error within the 'CharDistributionAnalysis::HandleOneChar()' can be
     exploited to cause a buffer overflow.
+
   - Unspecified error in the browser engine can be exploited to corrupt memory.");
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 18.0 or later,
   For updates refer to http://www.mozilla.com/en-US/firefox/all.html");

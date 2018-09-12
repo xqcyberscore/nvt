@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_shoreware_director_63019.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_shoreware_director_63019.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # ShoreTel ShoreWare Director Remote Security Bypass Vulnerability
 #
@@ -30,7 +30,7 @@ if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103814");
   script_bugtraq_id(63019);
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11336 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
 
@@ -39,7 +39,7 @@ if (description)
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/63019");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-16 12:02:38 +0200 (Wed, 16 Oct 2013)");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"remote_banner");
@@ -56,13 +56,13 @@ perform unauthorized actions or cause a denial-of-service condition.");
 anonymous FTP, unrestricted, and with read-write access.  It is
 vulnerable to:
 
-- A Denial of Service (DoS) filling up the disk with arbitrary files.
+  - A Denial of Service (DoS) filling up the disk with arbitrary files.
 If the directory resides on the C: drive, it could make the entire
 server unavailable.  Otherwise, it could prevent administrators from
 changing menu prompts or other system functions utilizing the same
 disk.
 
-- Unauthenticated changes and deletion of menu prompts actively being
+  - Unauthenticated changes and deletion of menu prompts actively being
 used by the system.  Deleting an actively used file will cause the
 system to use the default greeting.  An attacker could overwrite an
 active prompt (can take hours to refresh from the FTP server though)

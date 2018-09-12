@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln02_jul15_macosx.nasl 11220 2018-09-04 11:57:09Z mmartin $
+# $Id: gb_mozilla_firefox_esr_mult_vuln02_jul15_macosx.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities-02 July15 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805910");
-  script_version("$Revision: 11220 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-2725", "CVE-2015-2727", "CVE-2015-2729", "CVE-2015-2731",
                 "CVE-2015-2741");
   script_bugtraq_id(75541);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-08 17:49:58 +0530 (Wed, 08 Jul 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-02 July15 (Mac OS X)");
 
@@ -45,10 +45,14 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - Multiple unspecified memory related errors.
+
   - An error within the 'AudioParamTimeline::AudioNodeInputValue' function in the
   Web Audio implementation .
+
   - An use-after-free error.
+
   - An overridable error allowing for skipping pinning checks.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_obj_code_exec_vuln_lin.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_adobe_flash_player_obj_code_exec_vuln_lin.nasl 11327 2018-09-11 11:35:07Z asteins $
 #
 # Adobe Flash Player Object Confusion Remote Code Execution Vulnerability (Linux)
 #
@@ -24,46 +24,39 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_insight = "The flaw is due to an error related to object confusion.
-
-  NOTE: Further information is not available.";
-
-tag_impact = "Successful exploitation will let attackers to create crafted Flash content
-  that, when loaded by the target user, will trigger an object confusion flaw
-  and execute arbitrary code on the target system.
-  Impact Level: System/Application";
-tag_affected = "Adobe Flash Player version prior to 10.3.183.19 on Linux
-  Adobe Flash Player version 11.x prior to 11.2.202.235 on Linux";
-tag_solution = "Upgrade to Adobe Flash Player version 10.3.183.19 or 11.2.202.235 or later,
-  For details refer, http://www.adobe.com/downloads/";
-tag_summary = "This host is installed with Adobe Flash Player and is prone to
-  object confusion remote code execution vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802771");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11327 $");
   script_cve_id("CVE-2012-0779");
   script_bugtraq_id(53395);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-08 13:35:54 +0530 (Tue, 08 May 2012)");
   script_name("Adobe Flash Player Object Confusion Remote Code Execution Vulnerability (Linux)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/49096/");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1027023");
-  script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-09.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/49096/");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1027023");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb12-09.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_flash_player_detect_lin.nasl");
   script_require_keys("AdobeFlashPlayer/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "insight" , value : tag_insight);
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to create crafted Flash content
+  that, when loaded by the target user, will trigger an object confusion flaw
+  and execute arbitrary code on the target system.
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Adobe Flash Player version prior to 10.3.183.19 on Linux
+  Adobe Flash Player version 11.x prior to 11.2.202.235 on Linux");
+  script_tag(name:"solution", value:"Upgrade to Adobe Flash Player version 10.3.183.19 or 11.2.202.235 or later,
+  For details refer, http://www.adobe.com/downloads/");
+  script_tag(name:"summary", value:"This host is installed with Adobe Flash Player and is prone to
+  object confusion remote code execution vulnerability.");
+  script_tag(name:"insight", value:"The flaw is due to an error related to object confusion.
+
+  NOTE: Further information is not available.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -72,10 +65,6 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-flashVer = "";
-
-## Get the version
 flashVer = get_kb_item("AdobeFlashPlayer/Linux/Ver");
 if(!flashVer){
   exit(0);
@@ -83,8 +72,7 @@ if(!flashVer){
 
 flashVer = ereg_replace(pattern:",", string:flashVer, replace: ".");
 
-## Check for Adobe Flash Player versions prior to 10.3.183.19 and 11.2.202.235
 if(version_is_less(version:flashVer, test_version:"10.3.183.19") ||
    version_in_range(version:flashVer, test_version:"11.0",  test_version2:"11.2.202.233")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

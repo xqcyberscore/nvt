@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_xss_n_sql_inj_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_owncloud_mult_xss_n_sql_inj_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # ownCloud Multiple XSS and SQL Injection Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804412");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-1893", "CVE-2013-1890");
   script_bugtraq_id(58855, 58852);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-14 13:43:56 +0530 (Fri, 14 Mar 2014)");
   script_name("ownCloud Multiple XSS and SQL Injection Vulnerabilities");
 
@@ -45,10 +45,10 @@ injection vulnerabilities.");
    /apps/bookmarks/ajax/renameTag.php is not properly sanitised before
    being used.
 
- - Certain unspecified input passed to some files in apps/contacts/ajax/ is not
+  - Certain unspecified input passed to some files in apps/contacts/ajax/ is not
    properly sanitised before being used.
 
- - Certain unspecified input passed to addressbookprovider.php is not properly
+  - Certain unspecified input passed to addressbookprovider.php is not properly
    sanitised before being used in a SQL query.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to inject or manipulate
 SQL queries in the back-end database or conduct script insertion.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms14-010.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: secpod_ms14-010.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2909921)
 #
@@ -28,7 +28,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903336");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-0267", "CVE-2014-0268", "CVE-2014-0269", "CVE-2014-0270",
                 "CVE-2014-0271", "CVE-2014-0272", "CVE-2014-0273", "CVE-2014-0274",
                 "CVE-2014-0275", "CVE-2014-0276", "CVE-2014-0277", "CVE-2014-0278",
@@ -40,7 +40,7 @@ if(description)
                     65383, 65384, 65385, 65386, 65388, 65389, 65390, 65394);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-12 08:09:41 +0530 (Wed, 12 Feb 2014)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2909921)");
 
@@ -50,10 +50,13 @@ Bulletin MS14-010.");
   script_tag(name:"vuldetect", value:"Get the vulnerable file version and check appropriate patch is applied
 or not.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- An unspecified error exists during validation of local file installation
+
+  - An unspecified error exists during validation of local file installation
   and secure creation of registry keys.
-- An error within the VBScript engine.
-- Multiple unspecified errors.");
+
+  - An error within the VBScript engine.
+
+  - Multiple unspecified errors.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to corrupt memory by the
 execution of arbitrary code, bypass certain security restrictions and
 compromise a user's system.

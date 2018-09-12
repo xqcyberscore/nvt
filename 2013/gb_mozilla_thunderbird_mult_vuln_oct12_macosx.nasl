@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_mult_vuln_oct12_macosx.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_mozilla_thunderbird_mult_vuln_oct12_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Mozilla Thunderbird Multiple Vulnerabilities - Oct 12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803658");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2012-5354", "CVE-2012-3989", "CVE-2012-3985", "CVE-2012-3984");
   script_bugtraq_id(55856);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-12 11:45:08 +0530 (Fri, 12 Jul 2013)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities - Oct 12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50856");
@@ -51,11 +51,14 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Thunderbird versions before 16.0 on Mac OS X");
   script_tag(name:"insight", value:"The flaws are due to
+
   - An error while handling navigation away from a web page that has multiple
     menus of SELECT elements active, which allows remote attackers to conduct
     clickjacking attacks.
+
   - An invalid cast when using the instance of operator on certain types of
     JavaScript objects.
+
   - An error when implementing the HTML5 Same Origin Policy, which allows
     remote attackers to conduct cross-site scripting (XSS) attacks by
     leveraging initial-origin access after document.domain has been set.");

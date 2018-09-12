@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_seamonkey_mult_vuln01_oct12_win.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_mozilla_seamonkey_mult_vuln01_oct12_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Mozilla Seamonkey Multiple Vulnerabilities-01 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803641");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2012-4188", "CVE-2012-4187", "CVE-2012-4186", "CVE-2012-4185",
                 "CVE-2012-4184", "CVE-2012-3982", "CVE-2012-3990", "CVE-2012-3988",
                 "CVE-2012-3986", "CVE-2012-3991", "CVE-2012-3992", "CVE-2012-4183",
@@ -36,7 +36,7 @@ if(description)
   script_bugtraq_id(55856);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 17:43:07 +0530 (Mon, 15 Oct 2012)");
   script_name("Mozilla Seamonkey Multiple Vulnerabilities-01 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50856");
@@ -64,24 +64,34 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"SeaMonkey versions before 2.13 on Windows");
   script_tag(name:"insight", value:"The flaws are due to
+
   - memory corruption issues
+
   - An error within Chrome Object Wrapper (COW) when handling the
     'InstallTrigger' object can be exploited to access certain privileged
     functions and properties.
+
   - Use-after-free in the IME State Manager code.
+
   - combination of invoking full screen mode and navigating backwards in
     history could, in some circumstances, cause a hang or crash due to a
     timing dependent use-after-free pointer reference.
+
   - Several methods of a feature used for testing (DOMWindowUtils) are not
     protected by existing security checks, allowing these methods to be called
     through script by web pages.
+
   - An error when GetProperty function is invoked through JSAPI, security
     checking can be bypassed when getting cross-origin properties.
+
   - An issue with spoofing of the location property.
+
   - Use-after-free, buffer overflow, and out of bounds read issues.
+
   - The location property can be accessed by binary plugins through
     top.location and top can be shadowed by Object.define Property as well.
     This can allow for possible XSS attacks through plugins.
+
   - several memory safety bugs in the browser engine used in mozilla products.");
   script_tag(name:"solution", value:"Upgrade to SeaMonkey version to 2.13 or later,
   http://www.mozilla.org/projects/seamonkey");

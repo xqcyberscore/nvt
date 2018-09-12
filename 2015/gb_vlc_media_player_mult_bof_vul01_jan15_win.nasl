@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_bof_vul01_jan15_win.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_vlc_media_player_mult_bof_vul01_jan15_win.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # VLC Media Player Multiple Buffer Overflow Vulnerabilities-01 Jan15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805308");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2011-3623");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-05 12:58:41 +0530 (Mon, 05 Jan 2015)");
   script_name("VLC Media Player Multiple Buffer Overflow Vulnerabilities-01 Jan15 (Windows)");
 
@@ -44,9 +44,13 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws are due to overflow conditions
   in the,
+
   - ASF_ObjectDumpDebug function within modules/demux/asf/libasf.c script,
+
   - AVI_ChunkDumpDebug_level function within modules/demux/avi/libavi.c script,
+
   - AVI_ChunkDumpDebug_level function within modules/demux/avi/libavi.c script
+
   - MP4_BoxDumpStructure function within modules/demux/mp4/libmp4.c script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow

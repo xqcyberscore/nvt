@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_seagate_central_passwordless_root_05_06.nasl 9552 2018-04-20 12:17:18Z cfischer $
+# $Id: gb_seagate_central_passwordless_root_05_06.nasl 11343 2018-09-12 06:36:46Z cfischer $
 #
 # Seagate Central Remote Root Security Bypass Vulnerability
 #
@@ -25,32 +25,35 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-if (description)
+if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105288");
- script_version("$Revision: 9552 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_oid("1.3.6.1.4.1.25623.1.0.105288");
+  script_version("$Revision: 11343 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
- script_name("Seagate Central Remote Root Security Bypass Vulnerability");
+  script_name("Seagate Central Remote Root Security Bypass Vulnerability");
 
- script_xref(name:"URL", value:"https://packetstormsecurity.com/files/132163");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/132163");
 
- script_tag(name: "vuldetect" , value:"Login into the remote FTP as root without password");
- script_tag(name: "solution" , value:"Ask the Vendor for an update.");
- script_tag(name: "summary" , value:"Seagate Central by default has a passwordless root account (and no option to change it).");
- script_tag(name:"solution_type", value: "NoneAvailable");
+  script_tag(name:"vuldetect", value:"Login into the remote FTP as root without password");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
 
- script_tag(name:"qod_type", value:"exploit");
+  script_tag(name:"summary", value:"Seagate Central by default has a passwordless root account (and no option to change it).");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-20 14:17:18 +0200 (Fri, 20 Apr 2018) $");
- script_tag(name:"creation_date", value:"2015-06-05 14:40:09 +0200 (Fri, 05 Jun 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("FTP");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("ftpserver_detect_type_nd_version.nasl");
- script_require_ports("Services/ftp", 21);
- script_mandatory_keys("ftp_banner/available");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"exploit");
+
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-06-05 14:40:09 +0200 (Fri, 05 Jun 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("FTP");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("ftpserver_detect_type_nd_version.nasl");
+  script_require_ports("Services/ftp", 21);
+  script_mandatory_keys("ftp_banner/available");
 
  exit(0);
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_edirectory_mult_vuln_feb15.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_novell_edirectory_mult_vuln_feb15.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Novell eDirectory iMonitor Multiple Vulnerabilities - Feb15
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805269");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2014-5212", "CVE-2014-5213");
   script_bugtraq_id(71741, 71748);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-06 12:01:38 +0530 (Fri, 06 Feb 2015)");
   script_name("Novell eDirectory iMonitor Multiple Vulnerabilities - Feb15");
   script_tag(name:"summary", value:"This host is installed with Novell eDirectory
@@ -41,8 +41,10 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple errors exists due to,
+
   - Improper sanitization by the /nds/search/data script when input is passed
     via the 'rdn' parameter.
+
   - An error in the /nds/files/opt/novell/eDirectory/lib64/ndsimon/public/images.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers

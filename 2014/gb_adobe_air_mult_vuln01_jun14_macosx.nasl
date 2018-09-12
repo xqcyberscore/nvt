@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_jun14_macosx.nasl 11202 2018-09-03 14:43:03Z mmartin $
+# $Id: gb_adobe_air_mult_vuln01_jun14_macosx.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Adobe AIR Multiple Vulnerabilities-01 Jun14 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804649");
-  script_version("$Revision: 11202 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-0531", "CVE-2014-0532", "CVE-2014-0533", "CVE-2014-0534",
                 "CVE-2014-0535", "CVE-2014-0536");
   script_bugtraq_id(67962, 67973, 67974, 67963, 67970, 67961);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-19 14:42:27 +0530 (Thu, 19 Jun 2014)");
   script_name("Adobe AIR Multiple Vulnerabilities-01 Jun14 (Mac OS X)");
 
@@ -44,11 +44,15 @@ if(description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple Flaws exists due to,
-- Certain unspecified input is not properly sanitised before being returned to
+
+  - Certain unspecified input is not properly sanitised before being returned to
 the user.
-- An unspecified error can be exploited to bypass certain security restrictions.
-- Another unspecified error can be exploited to corrupt memory.
-- Another unspecified error can be exploited to bypass certain security
+
+  - An unspecified error can be exploited to bypass certain security restrictions.
+
+  - Another unspecified error can be exploited to corrupt memory.
+
+  - Another unspecified error can be exploited to bypass certain security
 restrictions.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct cross-site scripting
 attacks, bypass certain security restrictions, and compromise a user's system.

@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902978");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-1300", "CVE-2013-1340", "CVE-2013-1345", "CVE-2013-3129",
                 "CVE-2013-3167", "CVE-2013-3172", "CVE-2013-3173", "CVE-2013-3660");
   script_bugtraq_id(60946, 60947, 60948, 60978, 60949, 60951, 60950, 60051);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-10 08:46:58 +0530 (Wed, 10 Jul 2013)");
   script_name("MS Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2850851)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53435/");
@@ -60,9 +60,11 @@ if(description)
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Unspecified errors within the Windows kernel-mode driver (win32k.sys) when
     processing certain objects and can be exploited to cause a crash or execute
     arbitrary code with the kernel privilege.
+
   - An error exists within the GDI+ subsystem.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,

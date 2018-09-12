@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_mult_components_sql_inj_vuln.nasl 11057 2018-08-20 13:59:30Z asteins $
+# $Id: secpod_joomla_mult_components_sql_inj_vuln.nasl 11327 2018-09-11 11:35:07Z asteins $
 #
 # Joomla Jomdirectory and Advert Components SQL Injection Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902790");
-  script_version("$Revision: 11057 $");
+  script_version("$Revision: 11327 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:59:30 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-25 12:40:42 +0530 (Wed, 25 Jan 2012)");
 
   script_name("Joomla Jomdirectory and Advert Components SQL Injection Vulnerabilities");
@@ -55,10 +55,10 @@ injecting arbitrary SQL code.");
 
   script_tag(name:"insight", value:"The flaws are due to an,
 
-- Input passed via the 'type' parameter to 'index.php' (when option is set to com_jomdirectory) is not properly
+  - Input passed via the 'type' parameter to 'index.php' (when option is set to com_jomdirectory) is not properly
 sanitised before being used in a SQL query.
 
-- Input passed via the 'id', 'n_id' and 'Itemid' parameters to 'index.php' (when option is set to com_advert) is
+  - Input passed via the 'id', 'n_id' and 'Itemid' parameters to 'index.php' (when option is set to com_advert) is
 properly sanitised before being used in a SQL query.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_glassfish_hash_collision_dos_vuln.nasl 9927 2018-05-23 04:13:59Z ckuersteiner $
+# $Id: gb_glassfish_hash_collision_dos_vuln.nasl 11327 2018-09-11 11:35:07Z asteins $
 #
 # Oracle GlassFish Server Hash Collision Denial of Service Vulnerability
 #
@@ -29,20 +29,20 @@ CPE = 'cpe:/a:oracle:glassfish_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802409");
-  script_version("$Revision: 9927 $");
+  script_version("$Revision: 11327 $");
   script_cve_id("CVE-2011-5035");
   script_bugtraq_id(51194);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-23 06:13:59 +0200 (Wed, 23 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-05 16:15:38 +0530 (Thu, 05 Jan 2012)");
 
-  script_tag(name: "solution_type", value: "VendorFix");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("Oracle GlassFish Server Hash Collision Denial of Service Vulnerability");
 
-  script_xref(name: "URL", value: "http://www.kb.cert.org/vuls/id/903934");
-  script_xref(name: "URL", value: "http://www.ocert.org/advisories/ocert-2011-003.html");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/903934");
+  script_xref(name:"URL", value:"http://www.ocert.org/advisories/ocert-2011-003.html");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -52,19 +52,19 @@ if(description)
   script_mandatory_keys("GlassFish/installed");
   script_require_ports("Services/www", 8080);
 
-  script_tag(name: "impact", value: "Successful exploitation could allow remote attackers to cause a denial of
+  script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial of
 service via a specially crafted form sent in a HTTP POST request.");
 
-  script_tag(name: "affected", value: "Oracle GlassFish version 3.1.1 and prior.");
+  script_tag(name:"affected", value:"Oracle GlassFish version 3.1.1 and prior.");
 
-  script_tag(name: "insight", value: "The flaw is due to an error within a hash generation function when hashing
+  script_tag(name:"insight", value:"The flaw is due to an error within a hash generation function when hashing
 form posts and updating a hash table. This can be exploited to cause a hash collision resulting in high CPU
 consumption via a specially crafted form sent in a HTTP POST request.");
 
-  script_tag(name: "solution", value: "Apply the updates from below link,
+  script_tag(name:"solution", value:"Apply the updates from below link,
 http://www.oracle.com/technetwork/topics/security/cpujan2012-366304.html");
 
-  script_tag(name: "summary", value: "The host is running GlassFish Server and is prone to denial of service
+  script_tag(name:"summary", value:"The host is running GlassFish Server and is prone to denial of service
 vulnerability.");
 
   exit(0);

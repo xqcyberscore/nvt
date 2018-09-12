@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_jun12_lin.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_adobe_flash_player_mult_vuln_jun12_lin.nasl 11327 2018-09-11 11:35:07Z asteins $
 #
 # Adobe Flash Player Multiple Vulnerabilities June-2012 (Linux)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802873");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11327 $");
   script_cve_id("CVE-2012-2034", "CVE-2012-2035", "CVE-2012-2036", "CVE-2012-2037",
                 "CVE-2012-2039", "CVE-2012-2038", "CVE-2012-2040");
   script_bugtraq_id(53887);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-20 10:16:16 +0530 (Wed, 20 Jun 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities June-2012 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49388");
@@ -52,10 +52,14 @@ if(description)
   script_tag(name:"affected", value:"Adobe Flash Player version before 10.3.183.20,
   Adobe Flash Player version 11.x through 11.2.202.235 on Linux.");
   script_tag(name:"insight", value:"Multiple errors are caused,
+
   - When parsing ActionScript.
+
   - Within NPSWF32.dll when parsing certain tags.
+
   - In the 'SoundMixer.computeSpectrum()' method, which can be exploited to
     bypass the same-origin policy.
+
   - In the installer allows planting a binary file.");
   script_tag(name:"solution", value:"Update to Adobe Flash Player version 10.3.183.20 or 11.2.202.236 or later,
   For the updates refer, http://get.adobe.com/flashplayer/");

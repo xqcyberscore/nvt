@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bitdefender_ts_dll_loading_local_code_injection_vuln.nasl 9738 2018-05-07 04:50:48Z ckuersteiner $
+# $Id: gb_bitdefender_ts_dll_loading_local_code_injection_vuln.nasl 11348 2018-09-12 07:38:26Z cfischer $
 #
 # Bitdefender Total Security DLL Loading Local Code Injection Vulnerability
 #
@@ -29,20 +29,19 @@ CPE = "cpe:/a:bitdefender:total_security";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810939");
-  script_version("$Revision: 9738 $");
+  script_version("$Revision: 11348 $");
   script_cve_id("CVE-2017-6186");
   script_bugtraq_id(97024);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 06:50:48 +0200 (Mon, 07 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:38:26 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-05-04 10:17:21 +0530 (Thu, 04 May 2017)");
   script_name("Bitdefender Total Security DLL Loading Local Code Injection Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with Bitdefender
   Total Security and is prone to local code injection vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to the product do not
   use the Protected Processes feature, and therefore an attacker can enter an
@@ -61,21 +60,22 @@ if(description)
   script_tag(name:"affected", value:"Bitdefender Total Security 12.0
   (and earlier).");
 
-  script_tag(name:"solution", value:"No solution or patch was made available for at least one year since
-disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to
-a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name: "URL", value: "https://cybellum.com/doubleagent-taking-full-control-antivirus");
-  script_xref(name: "URL", value: "http://cybellum.com/doubleagentzero-day-code-injection-and-persistence-technique");
+  script_xref(name:"URL", value:"https://cybellum.com/doubleagent-taking-full-control-antivirus");
+  script_xref(name:"URL", value:"http://cybellum.com/doubleagentzero-day-code-injection-and-persistence-technique");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("secpod_bitdefender_prdts_detect.nasl");
   script_mandatory_keys("BitDefender/TotalSec/Ver");
+
   exit(0);
 }
 
@@ -87,7 +87,7 @@ if (!bitVer = get_app_version(cpe:CPE))
 
 if(version_is_less_equal(version:bitVer, test_version:"12.0"))
 {
-  report = report_fixed_ver(installed_version:bitVer, fixed_version:"NoneAvailable");
+  report = report_fixed_ver(installed_version:bitVer, fixed_version:"WillNotFix");
   security_message(data:report);
   exit(0);
 }

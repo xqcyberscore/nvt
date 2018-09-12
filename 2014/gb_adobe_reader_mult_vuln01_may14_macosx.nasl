@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln01_may14_macosx.nasl 11189 2018-09-03 11:12:38Z cfischer $
+# $Id: gb_adobe_reader_mult_vuln01_may14_macosx.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Adobe Reader Multiple Vulnerabilities - 01 May14 (Mac OS X)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804604");
-  script_version("$Revision: 11189 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-0521", "CVE-2014-0522", "CVE-2014-0523", "CVE-2014-0524",
                 "CVE-2014-0525", "CVE-2014-0526", "CVE-2014-0527", "CVE-2014-0528",
                 "CVE-2014-0529");
   script_bugtraq_id(67363, 67360, 67368, 67369, 67365, 67370, 67367, 67366, 67362);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:12:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-22 11:35:36 +0530 (Thu, 22 May 2014)");
   script_name("Adobe Reader Multiple Vulnerabilities - 01 May14 (Mac OS X)");
 
@@ -45,20 +45,20 @@ vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws exists,
 
-- An error within the implementation of Javascript APIs.
+  - An error within the implementation of Javascript APIs.
 
-- An error when validating user supplied paths.
+  - An error when validating user supplied paths.
 
-- An integer overflow error when handling PDF417 barcodes.
+  - An integer overflow error when handling PDF417 barcodes.
 
-- An error exists within the handling of certain API calls to unmapped memory.
+  - An error exists within the handling of certain API calls to unmapped memory.
 
-- A use-after-free error when handling the messageHandler property of the
+  - A use-after-free error when handling the messageHandler property of the
 AcroPDF ActiveX control.
 
-- A double-free error.
+  - A double-free error.
 
-- Many other unspecified errors.");
+  - Many other unspecified errors.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct a denial of service,
 disclose potentially sensitive information, bypass certain security
 restrictions, execute arbitrary code and compromise a user's system.

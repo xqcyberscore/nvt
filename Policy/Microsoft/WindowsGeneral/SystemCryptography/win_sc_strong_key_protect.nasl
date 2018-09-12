@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_sc_strong_key_protect.nasl 11098 2018-08-23 14:32:47Z emoss $
+# $Id: win_sc_strong_key_protect.nasl 11344 2018-09-12 06:57:52Z emoss $
 #
 # Check value for System cryptography: Force strong key protection for user keys stored on the computer
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109238");
-  script_version("$Revision: 11098 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 16:32:47 +0200 (Thu, 23 Aug 2018) $");
+  script_version("$Revision: 11344 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:57:52 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-12 13:26:08 +0200 (Tue, 12 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -73,7 +73,7 @@ key = 'SOFTWARE\\Policies\\Microsoft\\Cryptography';
 item = 'ForceKeyProtection';
 default = script_get_preference('Minimum');
 value = registry_get_dword(key:key, item:item, type:type);
-if(!value){
+if(value == ''){
   value = '0';
 }
 

@@ -29,11 +29,11 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805378");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-3633", "CVE-2015-3632");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-05 10:41:19 +0530 (Tue, 05 May 2015)");
   script_name("Foxit PhantomPDF Multiple Denial of Service Vulnerabilities");
 
@@ -44,7 +44,9 @@ if(description)
 
   script_tag(name:"insight", value:"Multiple flaws are due to
   user-supplied input is not properly validated
+
   - when handling invalid streams and
+
   - when performing digital signature verification.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

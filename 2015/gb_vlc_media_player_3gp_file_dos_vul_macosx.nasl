@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_3gp_file_dos_vul_macosx.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_vlc_media_player_3gp_file_dos_vul_macosx.nasl 11348 2018-09-12 07:38:26Z cfischer $
 #
 # VLC Media Player 3GP File Denial of Service Vulnerability Oct15 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806088");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11348 $");
   script_cve_id("CVE-2015-5949");
   script_bugtraq_id(76448);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:38:26 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-13 16:16:33 +0530 (Tue, 13 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version_unreliable");
   script_name("VLC Media Player 3GP File Denial of Service Vulnerability Oct15 (Mac OS X)");
@@ -68,9 +68,9 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_vlc_media_player_detect_macosx.nasl");
   script_mandatory_keys("VLC/Media/Player/MacOSX/Version");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
@@ -81,9 +81,7 @@ if(!vlcVer = get_app_version(cpe:CPE)){
 
 if(version_is_less_equal(version:vlcVer, test_version:"2.2.1"))
 {
-  report = 'Installed version: ' + vlcVer + '\n' +
-           'Fixed version:     NoneAvailable';
-
+  report = report_fixed_ver(installed_version:vlcVer, fixed_version:"2.2.2");
   security_message(data:report);
   exit(0);
 }

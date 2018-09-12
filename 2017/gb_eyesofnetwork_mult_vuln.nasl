@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eyesofnetwork_mult_vuln.nasl 7712 2017-11-09 11:01:25Z jschulte $
+# $Id: gb_eyesofnetwork_mult_vuln.nasl 11343 2018-09-12 06:36:46Z cfischer $
 #
 # Eyes Of Network (EON) Multiple Vulnerabilities
 #
@@ -27,21 +27,21 @@
 
 CPE = "cpe:/a:eyes_of_network:eyes_of_network";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140346");
-  script_version("$Revision: 7712 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-11-09 12:01:25 +0100 (Thu, 09 Nov 2017) $");
-  script_tag(name: "creation_date", value: "2017-09-04 13:33:34 +0700 (Mon, 04 Sep 2017)");
+  script_version("$Revision: 11343 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-09-04 13:33:34 +0700 (Mon, 04 Sep 2017)");
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-13780", "CVE-2017-14118", "CVE-2017-14119", "CVE-2017-14753",
                 "CVE-2017-14983", "CVE-2017-14984", "CVE-2017-14985", "CVE-2017-15188", "CVE-2017-15880");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("Eyes Of Network (EON) Multiple Vulnerabilities");
 
@@ -52,36 +52,36 @@ if (description)
   script_dependencies("gb_eyesofnetwork_detect.nasl");
   script_mandatory_keys("eyesofnetwork/detected");
 
-  script_tag(name: "summary", value: "Eyes Of Network (EON) is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"Eyes Of Network (EON) is prone to multiple vulnerabilities.");
 
-  script_tag(name: "insight", value: "Eyes Of Network (EON) is prone to the following vulnerabilities:
+  script_tag(name:"insight", value:"Eyes Of Network (EON) is prone to the following vulnerabilities:
 
-- The EyesOfNetwork web interface (aka eonweb) allows directory traversal attacks for reading arbitrary files
+  - The EyesOfNetwork web interface (aka eonweb) allows directory traversal attacks for reading arbitrary files
 via the module/admin_conf/download.php file parameter. (CVE-2017-13780)
 
-- In the EyesOfNetwork web interface (aka eonweb), module\tool_all\tools\interface.php does not properly restrict
+  - In the EyesOfNetwork web interface (aka eonweb), module\tool_all\tools\interface.php does not properly restrict
 exec calls, which allows remote attackers to execute arbitrary commands via shell metacharacters in the host_list
 parameter to module/tool_all/select_tool.php. (CVE-2017-14118)
 
-- In the EyesOfNetwork web interface (aka eonweb), module\tool_all\tools\snmpwalk.php does not properly restrict
+  - In the EyesOfNetwork web interface (aka eonweb), module\tool_all\tools\snmpwalk.php does not properly restrict
 popen calls, which allows remote attackers to execute arbitrary commands via shell metacharacters in a
 parameter. (CVE-2017-14119)
 
-- SQL injection vulnerability vulnerability in the EyesOfNetwork web interface (aka eonweb) allows remote authenticated
+  - SQL injection vulnerability vulnerability in the EyesOfNetwork web interface (aka eonweb) allows remote authenticated
 administrators to execute arbitrary SQL commands via the group_name parameter to
 module/admin_group/add_modify_group.php (for insert_group and update_group). (CVE-2017-15880)
 
-- Multiple cross-site scripting (XSS) vulnerabilities. (CVE-2017-14753, CVE-2017-14983, CVE-2017-14984, CVE-2017-14985, CVE-2017-15188)");
+  - Multiple cross-site scripting (XSS) vulnerabilities. (CVE-2017-14753, CVE-2017-14983, CVE-2017-14984, CVE-2017-14985, CVE-2017-15188)");
 
-  script_tag(name: "vuldetect", value: "Check the version.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
-  script_tag(name: "affected", value: "Eyes Of Network (EON) versions 5.1 and below are vulnerable.");
+  script_tag(name:"affected", value:"Eyes Of Network (EON) versions 5.1 and below are vulnerable.");
 
-  script_tag(name: "solution", value: "No Solution or patch is available as of 12th October, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 12th September, 2018. Information
+  regarding this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "http://kk.whitecell-club.org/index.php/archives/220/");
-  script_xref(name: "URL", value: "https://github.com/jsj730sos/cve/blob/master/Eonweb_module_admin_group_add_modify_group.php%20SQLi");
+  script_xref(name:"URL", value:"http://kk.whitecell-club.org/index.php/archives/220/");
+  script_xref(name:"URL", value:"https://github.com/jsj730sos/cve/blob/master/Eonweb_module_admin_group_add_modify_group.php%20SQLi");
 
   exit(0);
 }

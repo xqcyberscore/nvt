@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_sharepoint_business_prod_ms13-100.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: secpod_sharepoint_business_prod_ms13-100.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Microsoft SharePoint Business Productivity Server RCE Vulnerability (2904244)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:sharepoint_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903332");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-5059");
   script_bugtraq_id(64081);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-09 12:53:16 +0530 (Thu, 09 Jan 2014)");
   script_name("Microsoft SharePoint Business Productivity Server RCE Vulnerability (2904244)");
 
@@ -48,11 +48,11 @@ http://technet.microsoft.com/en-us/security/bulletin/ms13-100");
   script_tag(name:"insight", value:"Flaws is due to some input sanitisation errors related to SharePoint content");
   script_tag(name:"affected", value:"Microsoft Business Productivity Servers on,
 
-- Microsoft SharePoint Server 2010 Service Pack 1
+  - Microsoft SharePoint Server 2010 Service Pack 1
 
-- Microsoft SharePoint Server 2010 Service Pack 2
+  - Microsoft SharePoint Server 2010 Service Pack 2
 
-- Microsoft SharePoint 2013");
+  - Microsoft SharePoint 2013");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code with
 the privileges of the W3WP service account.
 

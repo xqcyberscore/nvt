@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kajona_cms_mult_xss_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_kajona_cms_mult_xss_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Kajona CMS Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804824");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-4742", "CVE-2014-4743");
   script_bugtraq_id(68496, 68498);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-08-27 12:09:04 +0530 (Wed, 27 Aug 2014)");
   script_name("Kajona CMS Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -41,8 +41,10 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check whether it is able to read cookie
   or not.");
   script_tag(name:"insight", value:"Multiple flaws exist as,
+
   - the search_ajax.tpl and search_ajax_small.tpl scripts in the Search module
   does not validate input passed via the 'search' parameter.
+
   - the system/class_link.php script does not validate input passed via the
   'systemid' parameter.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to execute arbitrary script

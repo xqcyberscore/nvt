@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir645_mult_vuln.nasl 11223 2018-09-04 12:48:48Z cfischer $
+# $Id: gb_dlink_dir645_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # D-Link DIR-645 Router Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803730");
-  script_version("$Revision: 11223 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-7389");
   script_bugtraq_id(61579);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:48:48 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-05 15:17:38 +0530 (Mon, 05 Aug 2013)");
   script_name("D-Link DIR-645 Router Multiple Vulnerabilities");
 
@@ -44,9 +44,11 @@ if(description)
   For updates refer to http://www.dlink.com/ca/en/home-solutions/connect/routers/dir-645-wireless-n-home-router-1000");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-   - Buffer overflow in post_login.xml, hedwig.cgi and authentication.cgi
+
+  - Buffer overflow in post_login.xml, hedwig.cgi and authentication.cgi
    When handling specially crafted requests.
-   - Input passed to the 'deviceid' parameter in bind.php, 'RESULT' parameter
+
+  - Input passed to the 'deviceid' parameter in bind.php, 'RESULT' parameter
    in info.php and 'receiver' parameter in bsc_sms_send.php is not properly
    sanitised before being returned to the user.");
   script_tag(name:"affected", value:"D-Link DIR-645 firmware version 1.04 and prior");

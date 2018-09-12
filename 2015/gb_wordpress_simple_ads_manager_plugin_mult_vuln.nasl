@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_simple_ads_manager_plugin_mult_vuln.nasl 11299 2018-09-10 10:23:24Z mmartin $
+# $Id: gb_wordpress_simple_ads_manager_plugin_mult_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
 #
 # Wordpress Simple Ads Manager Plugin Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805520");
-  script_version("$Revision: 11299 $");
+  script_version("$Revision: 11321 $");
   script_cve_id("CVE-2015-2824", "CVE-2015-2826");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 12:23:24 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-14 11:59:52 +0530 (Tue, 14 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Wordpress Simple Ads Manager Plugin Multiple Vulnerabilities");
@@ -45,9 +45,11 @@ if(description)
   request and check whether it is is able to read sensitive information or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The sam-ajax-admin.php script not properly sanitizing user-supplied input to
     the 'cstr', 'searchTer', 'subscriber', 'contributor', 'author', 'editor',
     'admin', and 'sadmin' POST parameters.
+
   - The error in handling a specially crafted POST request sent for the
     /sam-ajax-admin.php script with the 'action' parameter set to values such
     as 'load_users', 'load_authors', 'load_cats', 'load_tags', 'load_posts',
@@ -77,9 +79,9 @@ if(description)
   script_dependencies("secpod_wordpress_detect_900182.nasl");
   script_mandatory_keys("wordpress/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -93,18 +95,19 @@ if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Attack url
 url = dir + "/wp-content/plugins/simple-ads-manager/sam-ajax-admin.php";
 
 postData = "action=load_users";
 
+useragent = get_http_user_agent();
+host = http_host_name(port:http_port);
+
 wpReq = string("POST ", url, " HTTP/1.1\r\n",
-               "Host: ", get_host_name(), "\r\n",
-               "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+               "Host: ", host, "\r\n",
+               "User-Agent: ", useragent, "\r\n",
                "Content-Type: application/x-www-form-urlencoded\r\n",
                "Content-Length: ", strlen(postData), "\r\n",
                "\r\n", postData, "\r\n\r\n");
-
 wpRes = http_keepalive_send_recv(port:http_port, data:wpReq);
 
 if(wpRes && "id" >< wpRes && "title" >< wpRes && "slug" >< wpRes &&

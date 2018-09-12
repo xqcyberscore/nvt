@@ -29,12 +29,13 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805160");
-  script_version("$Revision: 6497 $");
+  script_version("$Revision: 11323 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-06-30 11:58:54 +0200 (Fri, 30 Jun 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:20:18 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-08 09:12:17 +0530 (Wed, 08 Apr 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
+
   script_name("Joomla! Spider Random Article Component SQL Injection Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with Joomla! Spider
@@ -48,22 +49,18 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database,
-  allowing for the manipulation or disclosure of arbitrary data.
-
-  Impact Level: Application");
+  allowing for the manipulation or disclosure of arbitrary data.");
 
   script_tag(name:"affected", value:"Joomla! Spider Random Article Component");
 
-  script_tag(name: "solution" , value:"No solution or patch was made available
-  for at least one year since disclosure of this vulnerability. Likely none will
-  be provided anymore. General solution options are to upgrade to a newer release,
-  disable respective features, remove the product or replace the product by another
-  one.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/36601");
-  script_xref(name : "URL" , value : "http://web-dorado.com/products/joomla-random.html");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/36601");
+  script_xref(name:"URL", value:"http://web-dorado.com/products/joomla-random.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2015 Greenbone Networks GmbH");
@@ -74,33 +71,24 @@ if(description)
   exit(0);
 }
 
-
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-# Variable Initialization
-http_port = 0;
-dir = "";
-
-## Get HTTP Port
-if(!http_port = get_app_port(cpe:CPE)){
+if(!http_port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-## Get Joomla Location
-if(!dir = get_app_location(cpe:CPE, port:http_port)){
+if(!dir = get_app_location(cpe:CPE, port:http_port))
   exit(0);
-}
 
-##Construct Attack Request
 url = dir + "/index.php?option=com_rand&catID=1'SQL-INJECTION-TEST&limit=1"
           + "&style=1&view=articles&format=raw&Itemid=1";
 
-##Send Request and Confirm Exploit
 if(http_vuln_check(port:http_port, url:url, pattern:"SQL-INJECTION-TEST",
-                   extra_check:"You have an error in your SQL syntax"))
-{
-  security_message(http_port);
+                   extra_check:"You have an error in your SQL syntax")) {
+  report= report_vuln_url(port: http_port, url: url);
+  security_message(port: http_port, data: report);
   exit(0);
 }
+
+exit(99);

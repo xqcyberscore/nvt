@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: vmware_36842_remote.nasl 10323 2018-06-26 07:32:48Z cfischer $
+# $Id: vmware_36842_remote.nasl 11321 2018-09-11 10:05:53Z cfischer $
 #
 # VMware Products Directory Traversal Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100502");
-  script_version("$Revision: 10323 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 09:32:48 +0200 (Tue, 26 Jun 2018) $");
+  script_version("$Revision: 11321 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-02-23 17:05:07 +0100 (Tue, 23 Feb 2010)");
   script_bugtraq_id(36842);
   script_cve_id("CVE-2009-3733");
@@ -79,7 +79,7 @@ include("http_keepalive.inc");
 port = get_http_port(default:8222);
 res = http_get_cache(item:"/", port:port);
 
-# attack URL based on whether the target is esx/esxi or server
+# URL based on whether the target is esx/esxi or server
 if("VMware ESX" >< res) {
   path = "/sdk/%2E%2E/%2E%2E/%2E%2E/%2E%2E/%2E%2E/%2E%2E/etc/passwd";
 }
@@ -92,7 +92,7 @@ else {
 
 req = http_get(item:"/ui/", port:port);
 buf = http_keepalive_send_recv(port:port, data:req, bodyonly:FALSE);
-if(isnull(buf)) exit(0);
+if(!buf) exit(0);
 
 if("Location: https://" >< buf) { # port is redirected...
   port_match = eregmatch(pattern:"Location: https://.*:([0-9.]+)/ui/", string:buf);

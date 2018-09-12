@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_code_exec_n_file_disc_vuln_may14.nasl 10953 2018-08-14 12:06:42Z mmartin $
+# $Id: gb_owncloud_code_exec_n_file_disc_vuln_may14.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # ownCloud Multiple Code Execution & Local File Disclosure Vulnerabilities May14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804280");
-  script_version("$Revision: 10953 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-1850", "CVE-2013-1851");
   script_bugtraq_id(58481, 58483);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:06:42 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-05 14:00:11 +0530 (Mon, 05 May 2014)");
   script_name("ownCloud Multiple Code Execution & Local File Disclosure Vulnerabilities May14");
 
@@ -43,9 +43,11 @@ if (description)
 execution and local file disclosure vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- Improper verification of user-uploaded files by apps/contacts/import.php and
+
+  - Improper verification of user-uploaded files by apps/contacts/import.php and
 apps/contacts/ajax/uploadimport.php scripts.
-- Insufficient sanitization of user-supplied input to lib/migrate.php script.");
+
+  - Insufficient sanitization of user-supplied input to lib/migrate.php script.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary PHP
 code by uploading a '.htaccess' file and gain access to arbitrary files.
 

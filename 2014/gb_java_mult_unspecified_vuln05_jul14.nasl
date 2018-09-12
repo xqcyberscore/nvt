@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln05_jul14.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_java_mult_unspecified_vuln05_jul14.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-05 Jul 2014 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804691");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-4223", "CVE-2014-2483");
   script_bugtraq_id(68608, 68590);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-25 11:19:38 +0530 (Fri, 25 Jul 2014)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-05 Jul 2014 (Windows)");
 
@@ -44,9 +44,11 @@ unspecified vulnerabilities.");
   script_tag(name:"vuldetect", value:"Get the installed version of Oracle Java SE JRE with the help of detect NVT
 and check it is vulnerable or not.");
   script_tag(name:"insight", value:"Multiple flaws exists,
-- An unspecified error in the Libraries subcomponent within the
+
+  - An unspecified error in the Libraries subcomponent within the
 'Invokers::invokeForm' function in share/classes/java/lang/invoke/Invokers.java
-- Another unspecified error related to the Libraries subcomponent in
+
+  - Another unspecified error related to the Libraries subcomponent in
 share/vm/classfile/classFileParser.hpp");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
 code.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_opmanager_mult_vuln.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_manageengine_opmanager_mult_vuln.nasl 11324 2018-09-11 10:42:18Z asteins $
 #
 # ManageEngine OpManager Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:zohocorp:manageengine_opmanager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806053");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11324 $");
   script_cve_id("CVE-2015-7765", "CVE-2015-7766");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:42:18 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-16 11:10:46 +0530 (Wed, 16 Sep 2015)");
 
   script_tag(name:"qod_type", value:"remote_vul");
@@ -117,7 +117,7 @@ if( res =~ "HTTP/1.1 302" && "index.jsp" >< res )
 
   res = http_send_recv(port:opmngrPort, data:req, bodyonly:FALSE);
 
-  if(productName = "OpManager" >< res && 'HomeDashboard' >< res && 'Logout.do' >< res)
+  if("OpManager" >< res && 'HomeDashboard' >< res && 'Logout.do' >< res)
   {
     security_message(port:opmngrPort);
     exit(0);

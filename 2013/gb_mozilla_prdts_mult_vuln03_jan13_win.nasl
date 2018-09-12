@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln03_jan13_win.nasl 11077 2018-08-22 09:40:33Z mmartin $
+# $Id: gb_mozilla_prdts_mult_vuln03_jan13_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Mozilla Products Multiple Vulnerabilities-03 January13 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803202");
-  script_version("$Revision: 11077 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-0761", "CVE-2013-0763", "CVE-2013-0771", "CVE-2013-0749");
   script_bugtraq_id(57196, 57197, 57198, 57205);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-16 16:20:06 +0530 (Wed, 16 Jan 2013)");
   script_name("Mozilla Products Multiple Vulnerabilities-03 January13 (Windows)");
 
@@ -59,7 +59,9 @@ if(description)
   script_tag(name:"insight", value:"- Use-after-free errors exists within the
     'mozilla::TrackUnionStream::EndTrack' implementation and Mesa when resizing
     a WebGL canvas.
+
   - Unspecified error in the browser engine can be exploited to corrupt memory.
+
   - An error within the 'gfxTextRun::ShrinkToLigatureBoundaries()' function.");
   script_tag(name:"summary", value:"This host is installed with Mozilla Firefox/Thunderbird/Seamonkey and is
   prone to multiple vulnerabilities.");

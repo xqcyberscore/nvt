@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-082.nasl 11220 2018-09-04 11:57:09Z mmartin $
+# $Id: gb_ms15-082.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Microsoft Windows RDP Remote Code Execution Vulnerabilities (3080348)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805080");
-  script_version("$Revision: 11220 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-2472", "CVE-2015-2473");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-12 10:37:53 +0530 (Wed, 12 Aug 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Windows RDP Remote Code Execution Vulnerabilities (3080348)");
@@ -43,8 +43,10 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - A spoofing vulnerability exists when the Remote Desktop Session Host (RDSH)
     improperly validates certificates during authentication.
+
   - A remote code execution vulnerability exists when Microsoft Windows Remote
     Desktop Protocol client improperly handles the loading of certain specially
     crafted DLL files.");

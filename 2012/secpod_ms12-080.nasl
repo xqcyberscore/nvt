@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-080.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: secpod_ms12-080.nasl 11325 2018-09-11 10:59:54Z asteins $
 #
 # MS Exchange Server Remote Code Execution Vulnerabilities (2784126)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902697");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11325 $");
   script_cve_id("CVE-2012-3214", "CVE-2012-3217", "CVE-2012-4791");
   script_bugtraq_id(55977, 55993, 56836);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-12 12:01:07 +0530 (Wed, 12 Dec 2012)");
   script_name("MS Exchange Server Remote Code Execution Vulnerabilities (2784126)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51474");
@@ -55,8 +55,10 @@ if(description)
   Microsoft Exchange Server 2010 Service Pack 1
   Microsoft Exchange Server 2010 Service Pack 2");
   script_tag(name:"insight", value:"The flaws are due to
+
   - Error in the WebReady Document Viewing when used to preview a
     specially crafted file through Outlook Web Access.
+
   - Improper handling of RSS feeds rendering the Information Store service
     unresponsive until the process is forcibly terminated and corrupt the
     databases.");

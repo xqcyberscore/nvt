@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_comodo_mult_vuln_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_comodo_mult_vuln_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Comodo Internet Security Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803693");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2011-5121", "CVE-2011-5122", "CVE-2011-5123");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-05 16:49:06 +0530 (Fri, 05 Jul 2013)");
   script_name("Comodo Internet Security Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://personalfirewall.comodo.com/release_notes.html");
@@ -45,7 +45,9 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Comodo Internet Security versions before 5.3.175888.1227");
   script_tag(name:"insight", value:"Multiple flaws due to error in antivirus component,
+
   - Triggered when a user opens a malformed compressed file.
+
   - Does not validate if X.509 certificate in the signed binaries have been
     revoked.");
   script_tag(name:"solution", value:"Upgrade to Comodo Internet Security version 5.3.175888.1227 or later,

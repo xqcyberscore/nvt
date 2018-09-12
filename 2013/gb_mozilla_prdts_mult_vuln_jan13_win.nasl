@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_jan13_win.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_mozilla_prdts_mult_vuln_jan13_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Mozilla Products Multiple Vulnerabilities January13 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803098");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-0744", "CVE-2013-0746", "CVE-2013-0748", "CVE-2013-0750",
                 "CVE-2013-0753", "CVE-2013-0754", "CVE-2013-0758", "CVE-2013-0759");
   script_bugtraq_id(57218, 57238, 57234, 57235, 57209, 57217, 57232, 57228);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-16 15:08:04 +0530 (Wed, 16 Jan 2013)");
   script_name("Mozilla Products Multiple Vulnerabilities January13 (Windows)");
 
@@ -66,12 +66,16 @@ if(description)
   Mozilla Firefox ESR version 10.x before 10.0.12 and 17.x before 17.0.2 on Windows");
   script_tag(name:"insight", value:"- URL spoofing in address bar during page loads in conjunction with a
     204 (aka No Content) HTTP status code.
+
   - Improper interaction between plugin objects and SVG elements.
+
   - Use-after-free error exists within the implementation serializeToStream
     in the XMLSerializer component and ListenerManager, and in the function
    'TableBackgroundPainter::TableBackgroundData::Destroy'.
     'serializeToStream' implementation in the XMLSerializer component
+
   - Compartment mismatch with quickstubs returned values.
+
   - An error within the 'XBL.__proto__.toString()' can be exploited to
     disclose the address space layout.");
   script_tag(name:"summary", value:"This host is installed with Mozilla Firefox/Thunderbird/Seamonkey and is

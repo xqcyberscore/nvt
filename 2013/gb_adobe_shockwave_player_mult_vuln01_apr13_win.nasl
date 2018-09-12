@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln01_apr13_win.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: gb_adobe_shockwave_player_mult_vuln01_apr13_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities -01 April 13 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803380");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-1383", "CVE-2013-1384", "CVE-2013-1385", "CVE-2013-1386");
   script_bugtraq_id(58980, 58982, 58983, 58984);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-04-19 10:20:42 +0530 (Fri, 19 Apr 2013)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities -01 April 13 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52981");
@@ -48,8 +48,11 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Adobe Shockwave Player Version 12.0.0.112 and prior on Windows");
   script_tag(name:"insight", value:"Multiple flaws due to,
+
   - Unknown errors in unspecified vectors.
+
   - Buffer overflow via unspecified vectors.
+
   - Does not prevent access to address information, which makes it easy to
     bypass the ASLR protection mechanism.");
   script_tag(name:"solution", value:"Upgrade to version 12.0.2.122 or later,

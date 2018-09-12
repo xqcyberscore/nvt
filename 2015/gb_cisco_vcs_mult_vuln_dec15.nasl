@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_vcs_mult_vuln_dec15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_cisco_vcs_mult_vuln_dec15.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Cisco TelePresence VCS and VCS Expressway Multiple Vulnerabilities Dec15
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:cisco:telepresence_video_communication_server_software";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806650");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-6414", "CVE-2015-6413");
   script_bugtraq_id(79088, 79065);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-17 20:00:22 +0530 (Thu, 17 Dec 2015)");
   script_name("Cisco TelePresence VCS and VCS Expressway Multiple Vulnerabilities Dec15");
 
@@ -45,7 +45,9 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - The use of the same encryption key across different customer.
+
   - The missing authorization checks on certain administrative pages.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln04_feb15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_java_mult_unspecified_vuln04_feb15.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-04 Feb 2015 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805266");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-0410", "CVE-2015-0408", "CVE-2015-0407", "CVE-2015-0395",
                 "CVE-2015-0383", "CVE-2014-6593", "CVE-2014-6591", "CVE-2014-6585");
   script_bugtraq_id(72165, 72140, 72162, 72142, 72155, 72169, 72175, 72173);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-02 14:08:03 +0530 (Mon, 02 Feb 2015)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-04 Feb 2015 (Windows)");
 
@@ -45,17 +45,24 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple unspecified flaws exist due to,
+
   - An infinite loop in the DER decoder that is triggered when handling negative
   length values.
+
   - An error in the RMI component's transport implementation related to incorrect
   context class loader use.
+
   - An error in the Swing component's file chooser implementation.
+
   - An error in vm/memory/referenceProcessor.cpp related to handling of phantom
   object references in the Hotspot JVM garbage collector.
+
   - An error in the Hotspot JVM related to insecure handling of temporary
   performance data files.
+
   - An error in the JSSE component related to improper ChangeCipherSpec tracking
   during SSL/TLS handshakes.
+
   - Two out-of-bounds read errors in the layout component that is triggered when
   parsing fonts.");
 

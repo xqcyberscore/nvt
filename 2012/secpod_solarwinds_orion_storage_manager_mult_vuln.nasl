@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_solarwinds_orion_storage_manager_mult_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: secpod_solarwinds_orion_storage_manager_mult_vuln.nasl 11327 2018-09-11 11:35:07Z asteins $
 #
 # SolarWinds Orion Data Storage Manager SQL Injection and XSS Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902902");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11327 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-24 11:53:50 +0530 (Tue, 24 Jan 2012)");
   script_name("SolarWinds Orion Data Storage Manager SQL Injection and XSS Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/521328");
@@ -44,12 +44,12 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_tag(name:"insight", value:"Multiple flaws are due to an,
 
-- Input passed via the 'loginName' and 'password' parameters to
+  - Input passed via the 'loginName' and 'password' parameters to
   'LoginServlet' page is not properly sanitised before being used in a SQL
   query. This can be exploited to manipulate SQL queries by injecting
   arbitrary SQL code.
 
-- Input passed to the 'loginName' parameter in 'LoginServlet' page is not
+  - Input passed to the 'loginName' parameter in 'LoginServlet' page is not
   properly verified before it is returned to the user. This can be exploited
   to execute arbitrary HTML and script code in a user's browser session in
   the context of a vulnerable site.");

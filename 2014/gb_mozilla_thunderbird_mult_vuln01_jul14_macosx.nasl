@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804707");
-  script_version("$Revision: 11213 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1533", "CVE-2014-1538", "CVE-2014-1541");
   script_bugtraq_id(67965, 67976, 67979);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-04 10:30:28 +0530 (Fri, 04 Jul 2014)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 July14 (Mac OS X)");
 
@@ -43,11 +43,15 @@ if(description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- An error in the 'RefreshDriverTimer::TickDriver' function in the SMIL
+
+  - An error in the 'RefreshDriverTimer::TickDriver' function in the SMIL
   Animation Controller.
-- An error in the 'nsTextEditRules::CreateMozBR' function.
-- An Unspecified error in the browser engine.
-- And some unspecified errors exist.");
+
+  - An error in the 'nsTextEditRules::CreateMozBR' function.
+
+  - An Unspecified error in the browser engine.
+
+  - And some unspecified errors exist.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct clickjacking attacks
 and compromise a user's system.
 

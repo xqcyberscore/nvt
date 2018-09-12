@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln03_oct14.nasl 11200 2018-09-03 14:11:38Z mmartin $
+# $Id: gb_java_mult_unspecified_vuln03_oct14.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-03 Oct 2014 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804864");
-  script_version("$Revision: 11200 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-6527", "CVE-2014-6519", "CVE-2014-6476", "CVE-2014-6456");
   script_bugtraq_id(70560, 70570, 70531, 70522);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-20 13:23:18 +0530 (Mon, 20 Oct 2014)");
 
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-03 Oct 2014 (Windows)");
@@ -46,7 +46,9 @@ if(description)
   SE JRE with the help of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - Multiple errors within the Deployment subcomponent.
+
   - An error in the 'ClassFileParser::parse_classfile_bootstrap_methods_attribute'
     function in share/vm/classfile/classFileParser.cpp script.");
 

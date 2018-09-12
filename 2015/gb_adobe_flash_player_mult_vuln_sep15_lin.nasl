@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_sep15_lin.nasl 11239 2018-09-05 09:46:45Z mmartin $
+# $Id: gb_adobe_flash_player_mult_vuln_sep15_lin.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Adobe Flash Player Multiple Vulnerabilities Sep15 (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805742");
-  script_version("$Revision: 11239 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-5567", "CVE-2015-5568", "CVE-2015-5570", "CVE-2015-5571",
                 "CVE-2015-5572", "CVE-2015-5573", "CVE-2015-5574", "CVE-2015-5575",
                 "CVE-2015-5576", "CVE-2015-5577", "CVE-2015-5578", "CVE-2015-5579",
@@ -38,7 +38,7 @@ if(description)
                 "CVE-2015-6678", "CVE-2015-6679", "CVE-2015-6682");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-24 13:05:29 +0530 (Thu, 24 Sep 2015)");
   script_name("Adobe Flash Player Multiple Vulnerabilities Sep15 (Linux)");
 
@@ -48,8 +48,11 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - Multiple memory corruption errors.
+
   - Multiple unspecified errors.
+
   - Multiple use-after-free vulnerabilities.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

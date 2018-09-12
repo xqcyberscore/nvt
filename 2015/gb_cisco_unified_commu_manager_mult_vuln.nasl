@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_unified_commu_manager_mult_vuln.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_cisco_unified_commu_manager_mult_vuln.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Cisco Unified Communications Manager Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:cisco:unified_communications_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805097");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11333 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-24 17:37:08 +0530 (Mon, 24 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Cisco Unified Communications Manager Multiple Vulnerabilities");
@@ -44,17 +44,21 @@ if(description)
   and check whether it is able to execute the code");
 
   script_tag(name:"insight", value:"The flaws are due to,
+
   - Authenticated users of CUCM can access limited functionality via the web
     interface and Cisco console (SSH on port 22). Because the SSH server is
     configured to process several environment variables from the client and a
     vulnerable version of bash is used, it is possible to exploit command
     injection via specially crafted environment variables.
+
   - The application allows users to view the contents of any locally accessible
     files on the web server through a vulnerability known as LFI (Local File
     Inclusion).
+
   - The pingExecute servlet allows unauthenticated users to execute pings to
     arbitrary IP addresses. This could be used by an attacker to enumerate the
     internal network.
+
   - Authentication for some methods in the EPAS SOAP interface can be bypassed
     by using a hardcoded session ID. The methods 'GetUserLoginInfoHandler' and
     'GetLoggedinXMPPUserHandler' are affected.");

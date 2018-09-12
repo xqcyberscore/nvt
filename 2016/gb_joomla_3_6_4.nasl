@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_3_6_4.nasl 5105 2017-01-25 13:47:47Z cfi $
+# $Id: gb_joomla_3_6_4.nasl 11323 2018-09-11 10:20:18Z ckuersteiner $
 #
 # Joomla Core < 3.6.4 Multiple Vulnerabilities
 #
@@ -29,21 +29,23 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140018");
-  script_version("$Revision: 5105 $");
-  script_cve_id("CVE-2016-8870","CVE-2016-8869", "CVE-2016-9081");
+  script_version("$Revision: 11323 $");
+  script_cve_id("CVE-2016-8870", "CVE-2016-8869", "CVE-2016-9081");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-01-25 14:47:47 +0100 (Wed, 25 Jan 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:20:18 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-10-25 17:01:05 +0200 (Tue, 25 Oct 2016)");
+
   script_name("Joomla Core < 3.6.4 Multiple Vulnerabilities");
 
-  script_tag(name:"summary", value:"The remote Joomla installation is prone to three critical security vulnerabilities.
+  script_tag(name:"summary", value:"The remote Joomla installation is prone to three critical security
+vulnerabilities.
 
   1. Inadequate checks allows for users to register on a site when registration has been disabled.
 
   2. Incorrect use of unfiltered data allows for users to register on a site with elevated privileges.
 
-  3. Incorrect use of unfiltered data allows for existing user accounts to be modified; to include
+  3. Incorrect use of unfiltered data allows for existing user accounts to be modified to include
   resetting their username, password, and user group assignments.");
 
   script_tag(name:"vuldetect", value:"Check the version");
@@ -57,7 +59,7 @@ if(description)
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
 
-  script_xref(name:"URL" , value:"https://www.joomla.org/announcements/release-news/5678-joomla-3-6-4-released.html");
+  script_xref(name:"URL", value:"https://www.joomla.org/announcements/release-news/5678-joomla-3-6-4-released.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);

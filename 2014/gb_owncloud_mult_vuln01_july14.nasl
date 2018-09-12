@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln01_july14.nasl 10953 2018-08-14 12:06:42Z mmartin $
+# $Id: gb_owncloud_mult_vuln01_july14.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # ownCloud Multiple Vulnerabilities-01 July14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804658");
-  script_version("$Revision: 10953 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2012-5056", "CVE-2012-5057", "CVE-2012-5336");
   script_bugtraq_id(68295, 68305);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:06:42 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-03 12:50:12 +0530 (Thu, 03 Jul 2014)");
   script_name("ownCloud Multiple Vulnerabilities-01 July14");
 
@@ -43,16 +43,21 @@ if (description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due to an,
-- Input passed to 'apps/files_odfviewer/src/webodf/webodf/flashput/PUT.swf'
+
+  - Input passed to 'apps/files_odfviewer/src/webodf/webodf/flashput/PUT.swf'
   script via 'readyCallback' parameter is not sanitized before returning it to
   users.
-- Input passed to 'lib/db.php' script via malformed query is not sanitized
+
+  - Input passed to 'lib/db.php' script via malformed query is not sanitized
   before returning it to users.
-- Input passed to 'apps/gallery/templates/index.php' script via 'root'
+
+  - Input passed to 'apps/gallery/templates/index.php' script via 'root'
   parameter is not sanitized before returning it to users.
-- Application does not validate the URL path upon submission to the 'index.php'
+
+  - Application does not validate the URL path upon submission to the 'index.php'
   script.
-- Improper validation of input passed to 'lib/base.php' script via
+
+  - Improper validation of input passed to 'lib/base.php' script via
   'user_id session' variable.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain access to
 arbitrary user files, insert arbitrary HTTP headers and execute arbitrary

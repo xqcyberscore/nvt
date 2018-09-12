@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_file_upload_xss_vuln.nasl 10952 2018-08-14 10:31:41Z mmartin $
+# $Id: gb_typo3_file_upload_xss_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # TYPO3 File Upload Cross Site Scripting Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803985");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2008-2717", "CVE-2008-2718");
   script_bugtraq_id(29657);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-24 16:42:36 +0530 (Tue, 24 Dec 2013)");
   script_name("TYPO3 File Upload Cross Site Scripting Vulnerabilities");
 
@@ -45,10 +45,12 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple error exists in the application,
-   - Insufficiently restrictive default fileDenyPattern for Apache which allows
+
+  - Insufficiently restrictive default fileDenyPattern for Apache which allows
    bypass security restrictions and upload configuration files such as
   .htaccess, or conduct file upload attacks using multiple extensions.
-   - An error in fe_adminlib.inc which is not properly sanitised before being
+
+  - An error in fe_adminlib.inc which is not properly sanitised before being
    returned to the user");
   script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.0.9 or 4.1.7 or 4.2.1 or later, or apply the patch
   mentioned in the below link

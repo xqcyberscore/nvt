@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_openoffice_mult_vuln_nov15_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_apache_openoffice_mult_vuln_nov15_macosx.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Apache OpenOffice Multiple Vulnerabilities Nov15 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:openoffice:openoffice.org";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806702");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-5214", "CVE-2015-5213", "CVE-2015-5212", "CVE-2015-4551");
   script_bugtraq_id(77486);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-16 18:28:06 +0530 (Mon, 16 Nov 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Apache OpenOffice Multiple Vulnerabilities Nov15 (Mac OS X)");
@@ -45,11 +45,15 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Usage of stored LinkUpdateMode configuration information in OpenDocument
     Format files and templates when handling links.
+
   - Integer underflow when the configuration setting 'Load printer settings with
     the document' is enabled.
+
   - Integer overflow via a long DOC file.
+
   - Incorrect handling of bookmarks in DOC files.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-108.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms15-108.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Microsoft Windows JScript and VBScript Remote Code Execution Vulnerability(3089659)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805990");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-2482", "CVE-2015-6052", "CVE-2015-6055", "CVE-2015-6059");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-14 08:29:13 +0530 (Wed, 14 Oct 2015)");
   script_name("Microsoft Windows JScript and VBScript Remote Code Execution Vulnerability(3089659)");
 
@@ -42,10 +42,13 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - An error in the way that the VBScript and JScript engines handle objects in
     memory.
+
   - An error in which the VBScript and JScript engines fail to use the Address
     Space Layout Randomization (ASLR) security feature.
+
   - An error when JScript or VBScript improperly discloses the contents of its
     memory.");
 

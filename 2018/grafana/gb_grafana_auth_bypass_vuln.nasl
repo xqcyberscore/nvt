@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_grafana_auth_bypass_vuln.nasl 11177 2018-08-31 10:40:16Z jschulte $
+# $Id: gb_grafana_auth_bypass_vuln.nasl 11319 2018-09-11 09:17:33Z asteins $
 #
 # Grafana Authentication Bypass Vulnerability
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113260");
-  script_version("$Revision: 11177 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-31 12:40:16 +0200 (Fri, 31 Aug 2018) $");
+  script_version("$Revision: 11319 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 11:17:33 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-31 12:33:34 +0200 (Fri, 31 Aug 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,7 +49,7 @@ if( description )
   script_dependencies("gb_grafana_http_detect.nasl");
   script_mandatory_keys("grafana/detected");
 
-  script_tag(name:"summary", value:"Grafana is prone to an Authenticain Bypass vulnerability.");
+  script_tag(name:"summary", value:"Grafana is prone to an Authentication Bypass vulnerability.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"An attacker can generate a valid remember me cookie knowing only a username of an LDAP or OAuth user.");
   script_tag(name:"impact", value:"Knowing only the username, an attacker can get access with the privilege level of any user.");

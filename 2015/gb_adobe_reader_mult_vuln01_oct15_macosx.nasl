@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln01_oct15_macosx.nasl 11239 2018-09-05 09:46:45Z mmartin $
+# $Id: gb_adobe_reader_mult_vuln01_oct15_macosx.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Adobe Reader Multiple Vulnerabilities - 01 October15 (Mac OS X)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806504");
-  script_version("$Revision: 11239 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-5583", "CVE-2015-5586", "CVE-2015-6683", "CVE-2015-6684",
                 "CVE-2015-6685", "CVE-2015-6686", "CVE-2015-6687", "CVE-2015-6688",
                 "CVE-2015-6689", "CVE-2015-6690", "CVE-2015-6691", "CVE-2015-6692",
@@ -47,7 +47,7 @@ if(description)
                 "CVE-2015-7829", "CVE-2015-8458");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-20 10:50:57 +0530 (Tue, 20 Oct 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Adobe Reader Multiple Vulnerabilities - 01 October15 (Mac OS X)");
@@ -58,13 +58,21 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Improper EScript exception handling.
+
   - Some use-after-free vulnerabilities.
+
   - Some buffer overflow vulnerabilities.
+
   - Some memory leak vulnerabilities.
+
   - Some security bypass vulnerabilities.
+
   - Multiple memory corruption vulnerabilities.
+
   - Some Javascript API execution restriction bypass vulnerabilities.
+
   - Mishandling of junctions in the Synchronizer directory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow

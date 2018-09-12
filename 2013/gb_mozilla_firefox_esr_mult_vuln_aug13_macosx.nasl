@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln_aug13_macosx.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_mozilla_firefox_esr_mult_vuln_aug13_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities - August 13 (Mac OS X)
 #
@@ -27,14 +27,14 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803855");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-1701", "CVE-2013-1706", "CVE-2013-1707", "CVE-2013-1709",
                 "CVE-2013-1710", "CVE-2013-1712", "CVE-2013-1713", "CVE-2013-1714",
                 "CVE-2013-1717");
   script_bugtraq_id(61641);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-08 15:30:01 +0530 (Thu, 08 Aug 2013)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities - August 13 (Mac OS X)");
   script_tag(name:"summary", value:"The host is installed with Mozilla Firefox ESR and is prone to multiple
@@ -43,15 +43,23 @@ vulnerabilities.");
   script_tag(name:"solution", value:"Upgrade to version 17.0.8 or later,
 For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
   script_tag(name:"insight", value:"Multiple flaws due to,
-- Error in crypto.generateCRMFRequest function.
-- Does not properly restrict local-filesystem access by Java applets.
-- Multiple Unspecified vulnerabilities in the browser engine.
-- Multiple untrusted search path vulnerabilities updater.exe.
-- Web Workers implementation is not properly restrict XMLHttpRequest calls.
-- Usage of incorrect URI within unspecified comparisons during enforcement
+
+  - Error in crypto.generateCRMFRequest function.
+
+  - Does not properly restrict local-filesystem access by Java applets.
+
+  - Multiple Unspecified vulnerabilities in the browser engine.
+
+  - Multiple untrusted search path vulnerabilities updater.exe.
+
+  - Web Workers implementation is not properly restrict XMLHttpRequest calls.
+
+  - Usage of incorrect URI within unspecified comparisons during enforcement
   of the Same Origin Policy.
-- Improper handling of interaction between FRAME elements and history.
-- Stack-based buffer overflow in Mozilla Updater and maintenanceservice.exe.");
+
+  - Improper handling of interaction between FRAME elements and history.
+
+  - Stack-based buffer overflow in Mozilla Updater and maintenanceservice.exe.");
   script_tag(name:"affected", value:"Mozilla Firefox ESR 17.x before 17.0.8 on Mac OS X");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
 obtain potentially sensitive information, gain escalated privileges, bypass

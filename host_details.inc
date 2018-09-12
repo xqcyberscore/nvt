@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: host_details.inc 10982 2018-08-15 12:47:39Z cfischer $
+# $Id: host_details.inc 11326 2018-09-11 11:17:53Z cfischer $
 #
 # Centralized and organized host information base
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10982 $
+# $Revision: 11326 $
 #
 ###############################################################################
 
@@ -534,7 +534,10 @@ function get_app( cpe, loc ) {
 
   local_var host_details, host_detail, res, port, cpe, loc, l, host_values;
 
-  if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe[0]#-#get_app" );
+  if( ! cpe ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app" );
+    return;
+  }
 
   host_details = get_kb_list("HostDetails/NVT/*");
 
@@ -639,7 +642,10 @@ function get_app_version( cpe, port, service, nofork, version_regex ) {
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#get_app_version() used together with get_app_location() in one single NVT. Please use get_app_version_and_location instead." );
   }
 
-  if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_version" );
+  if( ! cpe ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_version" );
+    return;
+  }
 
   if( typeof( cpe ) == "array" ) return get_single_app_version_from_list( cpe_list:cpe, port:port );
 
@@ -651,7 +657,10 @@ function get_highest_app_version( cpe ) {
 
   local_var cpe, ad, version, ret_version;
 
-  if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_highest_app_version" );
+  if( ! cpe ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_highest_app_version" );
+    return;
+  }
 
   ad = get_app_details( cpe:cpe, typ:"all_versions" );
   if( ! ad ) return;
@@ -684,7 +693,11 @@ function get_app_location( cpe, port, nofork, skip_port ) {
     set_kb_item( name:"nvt_debug_misc/" + get_script_oid(), value:get_script_oid() + "#-#get_app_version() used together with get_app_location() in one single NVT. Please use get_app_version_and_location instead." );
   }
 
-  if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_location" );
+  if( ! cpe ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_location" );
+    return;
+  }
+
   if( ! port && ! nofork && ! skip_port ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#port#-#get_app_location" );
 
   return get_app_details( cpe:cpe, typ:"location", port:port, nofork:nofork );
@@ -694,7 +707,10 @@ function get_single_app_port_from_list( cpe_list, service ) {
 
   local_var cpe_list, service, cpe, base_cpe, port, services;
 
-  if( ! cpe_list ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe_list#-#get_single_app_port_from_list" );
+  if( ! cpe_list ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe_list#-#get_single_app_port_from_list" );
+    return;
+  }
 
   foreach cpe( cpe_list ) {
     if( ! base_cpe = get_base_cpe( cpe:cpe ) )
@@ -717,7 +733,10 @@ function get_all_app_port_from_list( cpe_list, service ) {
 
   local_var cpe_list, service, cpe, base_cpe, _port, _ports, services, _service, infos, _infos, ret_arr;
 
-  if( ! cpe_list ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe_list#-#get_all_app_port_from_list" );
+  if( ! cpe_list ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe_list#-#get_all_app_port_from_list" );
+    return;
+  }
 
   foreach cpe( cpe_list ) {
 
@@ -754,10 +773,12 @@ function get_single_app_version_from_list( cpe_list, port ) {
 
   local_var cpe_list, port, cpe, ap;
 
-  if( ! cpe_list ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe_list#-#get_single_app_version_from_list" );
+  if( ! cpe_list ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe_list#-#get_single_app_version_from_list" );
+    return;
+  }
 
-  foreach cpe( cpe_list )
-  {
+  foreach cpe( cpe_list ) {
     ap = get_app_details( cpe:cpe, typ:"version", port:port );
     if( ap )
       return ap;
@@ -769,7 +790,10 @@ function get_app_port( cpe, service, all ) {
 
   local_var cpe, service, all, base_cpe, port, services;
 
-  if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_port" );
+  if( ! cpe ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_port" );
+    return;
+  }
 
   if( typeof( cpe ) == "array" ) {
     if( all )
@@ -797,41 +821,67 @@ function get_app_port( cpe, service, all ) {
 
 function get_app_version_and_location( cpe, port, exit_no_version, version_regex) {
 
-  local_var cpe, port, exit_no_version, version_regex;
+  local_var cpe, port, exit_no_version, version_regex, app_details;
 
-  if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_version_and_location" );
-  return get_app_details( cpe:cpe, typ:"version_location", port:port, exit_no_version:exit_no_version , version_regex:version_regex);
+  if( ! cpe ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_version_and_location" );
+    return;
+  }
+
+  app_details = get_app_details( cpe:cpe, typ:"version_location", port:port, exit_no_version:exit_no_version , version_regex:version_regex);
+  # nb: This is used here as get_app_details() might return earlier with NULL without even
+  # reaching the exit_no_version check in the "version_location" part.
+  if( isnull( app_details ) && exit_no_version ) exit( 0 );
+
+  return app_details;
 }
 
 function get_app_location_and_proto( cpe, port ) {
 
   local_var cpe, port;
 
-  if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_location_and_proto" );
+  if( ! cpe ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_location_and_proto" );
+    return;
+  }
+
   return get_app_details( cpe:cpe, typ:"location_proto", port:port );
 }
 
 function get_app_version_and_proto( cpe, port, exit_no_version ) {
 
-  local_var cpe, port, exit_no_version;
+  local_var cpe, port, exit_no_version, app_details;
 
-  if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_version_and_proto" );
-  return get_app_details( cpe:cpe, typ:"version_proto", port:port, exit_no_version:exit_no_version );
+  if( ! cpe ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_version_and_proto" );
+    return;
+  }
+
+  app_details = get_app_details( cpe:cpe, typ:"version_proto", port:port, exit_no_version:exit_no_version );
+  # nb: This is used here as get_app_details() might return earlier with NULL without even
+  # reaching the exit_no_version check in the "version_proto" part.
+  if( isnull( app_details ) && exit_no_version ) exit( 0 );
+
+  return app_details;
 }
 
 function get_app_full( cpe, port ) {
 
   local_var cpe, port;
 
-  if( ! cpe ) set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_full" );
+  if( ! cpe ) {
+    set_kb_item( name:"nvt_debug_empty/" + get_script_oid(), value:get_script_oid() + "#-#cpe#-#get_app_full" );
+    return;
+  }
+
   return get_app_details( cpe:cpe, typ:"full", port:port );
 }
 
 # get the port from just the prefix.
 # For example "cpe:/h:qnap:ts-x53" is the full cpe but we are looking
 # for "cpe:/h:qnap" only.
-function get_app_port_from_cpe_prefix( cpe )
-{
+function get_app_port_from_cpe_prefix( cpe ) {
+
   local_var cpe, port, data, entry, _cpe;
 
   if( ! cpe ) {

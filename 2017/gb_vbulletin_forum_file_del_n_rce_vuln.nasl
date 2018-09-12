@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vbulletin_forum_file_del_n_rce_vuln.nasl 9738 2018-05-07 04:50:48Z ckuersteiner $
+# $Id: gb_vbulletin_forum_file_del_n_rce_vuln.nasl 11343 2018-09-12 06:36:46Z cfischer $
 #
 # vBulletin Forum Arbitrary File Deletion And Remote Code Execution Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:vbulletin:vbulletin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812354");
-  script_version("$Revision: 9738 $");
+  script_version("$Revision: 11343 $");
   script_cve_id("CVE-2017-17672");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-07 06:50:48 +0200 (Mon, 07 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-12-18 18:33:37 +0530 (Mon, 18 Dec 2017)");
   script_name("vBulletin Forum Arbitrary File Deletion And Remote Code Execution Vulnerabilities");
 
@@ -41,15 +41,14 @@ if(description)
   and is prone to arbitrary file deletion and remote code execution
   vulnerabilities.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
 
-- Unsafe usage of PHP's unserialize function in vB_Library_Template's cacheTemplates function, which is a publicly
-exposed API.
+  - Unsafe usage of PHP's unserialize function in vB_Library_Template's cacheTemplates function, which is a publicly
+  exposed API.
 
-- A deserialization vulnerability.");
+  - A deserialization vulnerability.");
 
   script_tag(name:"impact", value:"Successfully exploiting this issue allow
   remote attackers to execute arbitrary code execution and arbitrary file
@@ -59,13 +58,13 @@ exposed API.
 
   script_tag(name:"affected", value:"VBulletin versions through 5.3.4");
 
-  script_tag(name:"solution", value:"No solution or patch is available as of 07th May, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 12th September, 2018. Information
+  regarding this issue will be updated once solution details are available.");
 
   script_tag(name:"solution_type", value:"NoneAvailable");
   script_tag(name:"qod_type", value:"remote_banner");
-  script_xref(name : "URL" , value : "https://blogs.securiteam.com/index.php/archives/3569");
-  script_xref(name : "URL" , value : "https://blogs.securiteam.com/index.php/archives/3573");
+  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3569");
+  script_xref(name:"URL", value:"https://blogs.securiteam.com/index.php/archives/3573");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -73,6 +72,7 @@ regarding this issue will be updated once solution details are available.");
   script_dependencies("vbulletin_detect.nasl");
   script_mandatory_keys("vBulletin/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 

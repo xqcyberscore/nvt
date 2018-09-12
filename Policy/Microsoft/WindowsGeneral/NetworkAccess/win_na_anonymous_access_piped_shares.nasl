@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_na_anonymous_access_piped_shares.nasl 10762 2018-08-03 14:03:15Z emoss $
+# $Id: win_na_anonymous_access_piped_shares.nasl 11337 2018-09-11 14:23:53Z emoss $
 #
 # Check value for Network access: Restrict anonymous access to Named Pipes and Shares
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109225");
-  script_version("$Revision: 10762 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 16:03:15 +0200 (Fri, 03 Aug 2018) $");
+  script_version("$Revision: 11337 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:23:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-11 14:40:40 +0200 (Mon, 11 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_add_preference(name:"Value", type:"radio", value:"1;0");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Network access: Restrict anonymous access to Named Pipes and Shares' on Windows
 hosts (at least Windows 7).
 
@@ -75,7 +75,7 @@ key = 'System\\CurrentControlSet\\Services\\LanManServer\\Parameters';
 item = 'RestrictNullSessAccess';
 default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
-if(!value){
+if(value == ''){
   val = 0;
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_aug12_win.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_opera_mult_vuln_aug12_win.nasl 11327 2018-09-11 11:35:07Z asteins $
 #
 # Opera Multiple Vulnerabilities - August12 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803001");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11327 $");
   script_bugtraq_id(54782, 54788, 54780);
   script_cve_id("CVE-2012-4142", "CVE-2012-4143", "CVE-2012-4144",
                 "CVE-2012-4145", "CVE-2012-4146");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-08 10:50:33 +0530 (Wed, 08 Aug 2012)");
   script_name("Opera Multiple Vulnerabilities - August12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50044");
@@ -52,13 +52,17 @@ if(description)
   Impact Level: Application");
   script_tag(name:"affected", value:"Opera version prior to 12.01 on Windows");
   script_tag(name:"insight", value:"- Multiple unspecified errors.
+
   - An error when certain characters in HTML documents are ignored under some
     circumstances, which allows to conduct XSS attacks.
+
   - The improper implementation of download dialog feature, which allows
     attackers to trick users into downloading and executing arbitrary files
     via a small window for the download dialog.
+
   - Fails to escape characters in DOM elements, which allows to conduct
     XSS attacks.
+
   - An error caused via a crafted web site on Lenovos 'Shop now' page.");
   script_tag(name:"solution", value:"Upgrade to Opera version 12.01 or later,
   For updates refer to http://www.opera.com/");

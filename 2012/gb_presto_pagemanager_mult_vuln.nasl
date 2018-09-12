@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_presto_pagemanager_mult_vuln.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_presto_pagemanager_mult_vuln.nasl 11327 2018-09-11 11:35:07Z asteins $
 #
 # Presto! PageManager Multiple Vulnerabilities
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802620");
   script_bugtraq_id(52503);
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11327 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-15 15:15:15 +0530 (Thu, 15 Mar 2012)");
   script_name("Presto! PageManager Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -54,10 +54,12 @@ if(description)
   script_tag(name:"affected", value:"Presto! PageManager version 9.01 and prior");
   script_tag(name:"insight", value:"- A boundary error in the Network Group Service when processing certain
    network requests can be exploited to cause a heap-based buffer overflow.
- - An input validation error in the Network Group Service when processing
+
+  - An input validation error in the Network Group Service when processing
    certain network requests can be exploited to download arbitrary files via
    a specially crafted packet sent to TCP port 2502.
- - An error in the Network Group Service when processing certain network
+
+  - An error in the Network Group Service when processing certain network
    requests can be exploited to cause an unhandled exception and terminate
    the service.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.

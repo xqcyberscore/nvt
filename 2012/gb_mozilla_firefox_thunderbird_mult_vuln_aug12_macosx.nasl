@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_thunderbird_mult_vuln_aug12_macosx.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: gb_mozilla_firefox_thunderbird_mult_vuln_aug12_macosx.nasl 11325 2018-09-11 10:59:54Z asteins $
 #
 # Mozilla Firefox Multiple Vulnerabilities - August12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803016");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11325 $");
   script_cve_id("CVE-2012-3980");
   script_bugtraq_id(55249);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 14:20:04 +0530 (Thu, 30 Aug 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - August12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50088");
@@ -52,6 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Mozilla Firefox version before 15.0 on Mac OS X");
   script_tag(name:"insight", value:"- An error in the installer will launch incorrect executable following new
     installation via a crafted executable file in a root directory.
+
   - An error in the web console can be exploited to inject arbitrary code that
     will be executed with chrome privileges.");
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 15.0 or later

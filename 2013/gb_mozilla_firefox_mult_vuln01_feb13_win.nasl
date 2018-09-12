@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_feb13_win.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_mozilla_firefox_mult_vuln01_feb13_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities -01 Feb13 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803420");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-0784", "CVE-2013-0783", "CVE-2013-0782", "CVE-2013-0781",
                 "CVE-2013-0780", "CVE-2013-0779", "CVE-2013-0778", "CVE-2013-0777",
                 "CVE-2013-0765", "CVE-2013-0772", "CVE-2013-0773", "CVE-2013-0774",
@@ -36,7 +36,7 @@ if(description)
                     58034, 58041, 58038, 58042, 58044);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-21 10:57:13 +0530 (Thu, 21 Feb 2013)");
   script_name("Mozilla Firefox Multiple Vulnerabilities -01 Feb13 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/52249");
@@ -56,14 +56,18 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Mozilla Firefox version before 19.0 on Windows");
   script_tag(name:"insight", value:"- Error when handling a WebIDL object
+
   - Error in displaying the content of a 407 response of a proxy
+
   - Unspecified errors in 'nsSaveAsCharset::DoCharsetConversion()' function,
     Chrome Object Wrappers (COW) and in System Only Wrappers (SOW).
+
   - Use-after-free error in the below functions
     'nsDisplayBoxShadowOuter::Paint()'
     'nsPrintEngine::CommonPrint()'
     'nsOverflowContinuationTracker::Finish()'
     'nsImageLoadingContent::OnStopContainer()'
+
   - Out-of-bound read error in below functions
     'ClusterIterator::NextCluster()'
     'nsCodingStateMachine::NextState()'

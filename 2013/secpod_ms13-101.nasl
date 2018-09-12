@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903417");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-3899", "CVE-2013-3902", "CVE-2013-3903", "CVE-2013-3907",
                 "CVE-2013-5058");
   script_bugtraq_id(64080, 64084, 64090, 64087, 64091);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-11 08:49:46 +0530 (Wed, 11 Dec 2013)");
   script_name("Microsoft Windows Kernel Local Privilege Escalation Vulnerabilities (2880430)");
 
@@ -46,12 +46,17 @@ or not.");
 mentioned hotfixes in the advisory from the below link,
 https://technet.microsoft.com/en-us/security/bulletin/ms13-101");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- An error within the win32k.sys driver can be exploited to corrupt memory.
-- A use-after-free error exists within the win32k.sys driver.
-- An error when processing TrueType font files can be exploited to cause
+
+  - An error within the win32k.sys driver can be exploited to corrupt memory.
+
+  - A use-after-free error exists within the win32k.sys driver.
+
+  - An error when processing TrueType font files can be exploited to cause
   a crash.
-- A double fetch error exists within the portcls.sys driver.
-- An integer overflow error exists within the win32k.sys driver.");
+
+  - A double fetch error exists within the portcls.sys driver.
+
+  - An integer overflow error exists within the win32k.sys driver.");
   script_tag(name:"affected", value:"Microsoft Windows 8
 Windows 8.1 x32/x64 Edition
 Microsoft Windows Server 2012

@@ -1,8 +1,8 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_firesight_management_center_sa-20151217-fsm.nasl 9381 2018-04-06 11:21:01Z cfischer $
+# $Id: gb_cisco_firesight_management_center_sa-20151217-fsm.nasl 11345 2018-09-12 07:02:17Z cfischer $
 #
-# Cisco FireSIGHT Management Center SSL HTTP Attack Detection Vulnerability 
+# Cisco FireSIGHT Management Center SSL HTTP Attack Detection Vulnerability
 #
 # Authors:
 # Michael Meyer <michael.meyer@greenbone.net>
@@ -29,36 +29,39 @@ CPE = "cpe:/a:cisco:firesight_management_center";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105499");
- script_cve_id("CVE-2015-6427");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
- script_version ("$Revision: 9381 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105499");
+  script_cve_id("CVE-2015-6427");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_version("$Revision: 11345 $");
 
- script_name("Cisco FireSIGHT Management Center SSL HTTP Attack Detection Vulnerability");
+  script_name("Cisco FireSIGHT Management Center SSL HTTP Attack Detection Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151217-fsm");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20151217-fsm");
 
- script_tag(name: "impact" , value:"An attacker could exploit this vulnerability by embedding crafted HTTP packets in an encrypted SSL connection that could be flagged as an HTTP attack. An exploit could allow the attacker to bypass HTTP attack rules for SSL connections.");
+  script_tag(name:"impact", value:"An attacker could exploit this vulnerability by embedding crafted HTTP packets in an encrypted SSL connection that could be flagged as an HTTP attack. An exploit could allow the attacker to bypass HTTP attack rules for SSL connections.");
 
- script_tag(name: "vuldetect" , value:"Check the version");
+  script_tag(name:"vuldetect", value:"Check the version");
 
- script_tag(name: "insight" , value:"The vulnerability is due to improper HTTP attack detection of decrypted SSL connections.");
+  script_tag(name:"insight", value:"The vulnerability is due to improper HTTP attack detection of decrypted SSL connections.");
 
- script_tag(name: "solution" , value:"See vendor advisory");
- script_tag(name: "summary" , value:"A vulnerability in HTTP attack detection within decrypted SSL traffic of Cisco FireSIGHT Management Center could allow an unauthenticated, remote attacker to bypass HTTP attack detection. The traffic is SSL and the application is configured to decrypt the SSL connection and detect HTTP-based attacks that are associated with Snort intrusion detection rules.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"A vulnerability in HTTP attack detection within decrypted SSL traffic of Cisco FireSIGHT Management Center could allow an unauthenticated, remote attacker to bypass HTTP attack detection. The traffic is SSL and the application is configured to decrypt the SSL connection and detect HTTP-based attacks that are associated with Snort intrusion detection rules.");
 
- script_tag(name:"solution_type", value: "NoneAvailable");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"WillNotFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 13:21:01 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2016-01-06 13:43:05 +0100 (Wed, 06 Jan 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_firesight_management_center_version.nasl",
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:02:17 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-01-06 13:43:05 +0100 (Wed, 06 Jan 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_firesight_management_center_version.nasl",
                      "gb_cisco_firesight_management_center_http_detect.nasl");
- script_mandatory_keys("cisco_firesight_management_center/version");
+  script_mandatory_keys("cisco_firesight_management_center/version");
+
  exit(0);
 }
 
@@ -91,7 +94,9 @@ affected = make_list(
 foreach af (affected) {
   if (version == af) {
     report = 'Installed version: ' + version + '\n' +
-             'Fixed version:     See vendor advisory';
+             'Fixed version:     No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.';
 
     security_message( port:0, data:report );
     exit( 0 );

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_livezilla_language_param_xss_vuln.nasl 11096 2018-08-23 12:49:10Z mmartin $
+# $Id: gb_livezilla_language_param_xss_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # LiveZilla 'g_language' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:livezilla:livezilla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803785");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-7002", "CVE-2013-6224");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-17 13:21:53 +0530 (Tue, 17 Dec 2013)");
   script_name("LiveZilla 'g_language' Parameter Cross Site Scripting Vulnerability");
 
@@ -46,7 +46,8 @@ if(description)
   script_tag(name:"insight", value:"- The flaw is due to input passed via the 'g_language' GET parameter to
    '/mobile/php/translation/index.php' is not properly sanitised before
    being returned to the user.
-   - Input passed via the username and message body to chat.php when starting
+
+  - Input passed via the username and message body to chat.php when starting
    a new chat session is not properly sanitised before being used.");
   script_tag(name:"affected", value:"LiveZilla version 5.1.0.0");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML

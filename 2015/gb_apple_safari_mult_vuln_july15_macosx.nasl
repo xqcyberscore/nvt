@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_july15_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_apple_safari_mult_vuln_july15_macosx.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Apple Safari Multiple Vulnerabilities-01 July15 (Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805675");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-3727", "CVE-2015-3660", "CVE-2015-3659", "CVE-2015-3658");
   script_bugtraq_id(75492, 75494);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-08 15:01:56 +0530 (Wed, 08 Jul 2015)");
   script_name("Apple Safari Multiple Vulnerabilities-01 July15 (Mac OS X)");
 
@@ -44,11 +44,15 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An error in WebKit that does not properly restrict rename operations
     on WebSQL tables.
+
   - An error in the PDF functionality in WebKit.
+
   - An error in SQLite authorizer in the Storage functionality in WebKit
     that does not properly restrict access to SQL functions.
+
   - An error in Page Loading functionality in WebKit that does not properly
     consider redirects during decisions about sending an Origin header.");
 

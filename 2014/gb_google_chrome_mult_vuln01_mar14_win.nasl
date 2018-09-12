@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_mar14_win.nasl 11187 2018-09-03 09:59:13Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_mar14_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-01 Mar2014 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804328");
-  script_version("$Revision: 11187 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-6663", "CVE-2013-6664", "CVE-2013-6665", "CVE-2013-6666",
                 "CVE-2013-6667", "CVE-2013-6668");
   script_bugtraq_id(65930);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 11:59:13 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-13 10:53:05 +0530 (Thu, 13 Mar 2014)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Mar2014 (Windows)");
 
@@ -44,12 +44,16 @@ if(description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- An use-after-free error within 'SVGImage::setContainerSize' function and
+
+  - An use-after-free error within 'SVGImage::setContainerSize' function and
   'FormAssociatedElement::formRemovedFromTree' function in Blink.
-- Heap buffer overflow within 'ResourceProvider::InitializeSoftware' function.
-- Improper restriction of flash header request within
+
+  - Heap buffer overflow within 'ResourceProvider::InitializeSoftware' function.
+
+  - Improper restriction of flash header request within
   'PepperFlashRendererHost::OnNavigate' function.
-- Some unspecified errors related to V8 and other few unspecified errors.");
+
+  - Some unspecified errors related to V8 and other few unspecified errors.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct denial of
 service, bypass certain security restrictions, execute arbitrary code and
 other unspecified impacts.

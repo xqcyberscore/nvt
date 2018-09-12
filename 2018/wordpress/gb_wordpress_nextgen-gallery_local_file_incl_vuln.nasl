@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_nextgen-gallery_local_file_incl_vuln.nasl 11156 2018-08-29 09:25:17Z asteins $
+# $Id: gb_wordpress_nextgen-gallery_local_file_incl_vuln.nasl 11317 2018-09-11 08:57:27Z asteins $
 #
 # WordPress NextGEN Gallery Plugin < 2.1.57 Local File Inclusion Vulnerability
 #
@@ -30,11 +30,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112326");
-  script_version("$Revision: 11156 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 11:25:17 +0200 (Wed, 29 Aug 2018) $");
+  script_version("$Revision: 11317 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:57:27 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-16 11:20:14 +0200 (Mon, 16 Jul 2018)");
-  script_tag(name:"cvss_base", value:"9.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"6.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
 
   script_cve_id("CVE-2016-6565");
   script_bugtraq_id(94356);

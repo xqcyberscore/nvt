@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fitnesse_wiki_rce.nasl 11202 2018-09-03 14:43:03Z mmartin $
+# $Id: gb_fitnesse_wiki_rce.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Fitnesse Wiki Remote Command Execution Vulnerability
 #
@@ -30,10 +30,10 @@ if(description)
   script_oid("1.3.6.1.4.1.25623.1.0.802069");
   script_bugtraq_id(65921);
   script_cve_id("CVE-2014-1216");
-  script_version("$Revision: 11202 $");
+  script_version("$Revision: 11339 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-17 10:20:42 +0530 (Mon, 17 Mar 2014)");
   script_name("Fitnesse Wiki Remote Command Execution Vulnerability");
 
@@ -141,7 +141,6 @@ foreach dir (make_list_unique("/", "/wiki", "/fitnesse", cgi_dirs(port:http_port
       cmd += '%7D%0D%0A';
       wait_extra_sec = 5;
     } else {
-      ## sleep is not working hence using ping
       cmd = '%21define+COMMAND_PATTERN+%7B%25m+%7D%0D%0A';
       cmd += '%21define+TEST_RUNNER+%7B';
       cmd += 'ping+-i+0.1+-c+' + sec + '+127.0.0.1';

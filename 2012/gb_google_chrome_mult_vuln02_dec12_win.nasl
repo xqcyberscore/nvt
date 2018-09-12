@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_dec12_win.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_google_chrome_mult_vuln02_dec12_win.nasl 11327 2018-09-11 11:35:07Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities-02 Dec2012 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803121");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11327 $");
   script_cve_id("CVE-2012-5138", "CVE-2012-5137");
   script_bugtraq_id(56741);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-04 12:37:33 +0530 (Tue, 04 Dec 2012)");
   script_name("Google Chrome Multiple Vulnerabilities-02 Dec2012 (Windows)");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56741");
@@ -49,6 +49,7 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Google Chrome version prior to 23.0.1271.95 on Windows");
   script_tag(name:"insight", value:"- A use-after-free error exists in media source handling.
+
   - An incorrect file path handling, Does not properly handle file paths.");
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 23.0.1271.95 or later,
   For updates refer to http://www.google.com/chrome");

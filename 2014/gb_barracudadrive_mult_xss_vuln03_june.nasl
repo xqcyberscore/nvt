@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_barracudadrive_mult_xss_vuln03_june.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_barracudadrive_mult_xss_vuln03_june.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # BarracudaDrive Multiple XSS Vulnerabilities -03 June14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:barracudadrive:barracudadrive";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804612");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-3807", "CVE-2014-4335");
   script_bugtraq_id(67428, 68079);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-02 13:48:59 +0530 (Mon, 02 Jun 2014)");
   script_name("BarracudaDrive Multiple XSS Vulnerabilities -03 June14");
 
@@ -43,7 +43,8 @@ if (description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws exist as,
-- Input passed via the 'blog' parameter to 'private/manage/', 'bloggeruser'
+
+  - Input passed via the 'blog' parameter to 'private/manage/', 'bloggeruser'
 parameter to 'private/manage/', Input passed via the 'bloggerpasswd'
 parameter to 'private/manage/', Input passed via the 'host' and 'password'
 parameters is not  properly verified before it is given to server for

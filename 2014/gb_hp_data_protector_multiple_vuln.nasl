@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_data_protector_multiple_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_hp_data_protector_multiple_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # HP (OpenView Storage) Data Protector Multiple Vulnerabilities
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:hp:data_protector";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804402");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-2344", "CVE-2013-2345", "CVE-2013-2346", "CVE-2013-2347",
                 "CVE-2013-2348", "CVE-2013-2349", "CVE-2013-2350", "CVE-2013-6195",
                 "CVE-2011-0923", "CVE-2014-2623");
   script_bugtraq_id(64647, 64647, 64647, 64647, 64647, 64647, 64647, 64647, 46234);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-18 16:03:46 +0530 (Tue, 18 Feb 2014)");
   script_name("HP (OpenView Storage) Data Protector Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -150,7 +150,6 @@ hdpReq = raw_string(
 ## send the data
 send( socket:soc, data:hdpReq );
 
-## wait for 7 sec
 sleep( 7 );
 
 ## Receive the data

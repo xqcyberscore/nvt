@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dokuwiki_xss_vuln.nasl 7093 2017-09-11 07:58:34Z asteins $
+# $Id: gb_dokuwiki_xss_vuln.nasl 11343 2018-09-12 06:36:46Z cfischer $
 #
 # DokuWiki XSS Vulnerability
 #
@@ -27,20 +27,19 @@
 
 CPE = 'cpe:/a:dokuwiki:dokuwiki';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140284");
-  script_version("$Revision: 7093 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-11 09:58:34 +0200 (Mon, 11 Sep 2017) $");
-  script_tag(name: "creation_date", value: "2017-08-08 14:37:42 +0700 (Tue, 08 Aug 2017)");
+  script_version("$Revision: 11343 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-08-08 14:37:42 +0700 (Tue, 08 Aug 2017)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
   script_cve_id("CVE-2017-12583");
 
-  script_tag(name: "qod_type", value: "remote_banner");
-
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"qod_type", value:"remote_banner");
+  script_tag(name:"solution_type", value:"VendorFix");
 
   script_name("DokuWiki XSS Vulnerability");
 
@@ -51,17 +50,17 @@ if (description)
   script_dependencies("gb_dokuwiki_detect.nasl");
   script_mandatory_keys("dokuwiki/installed");
 
-  script_tag(name: "summary", value: "DokuWiki has an cross-site scripting vulnerability in the at parameter
+  script_tag(name:"summary", value:"DokuWiki has an cross-site scripting vulnerability in the at parameter
 (aka the DATE_AT variable) in doku.php.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "affected", value: "DokuWiki version 2017-02-19b and prior.");
+  script_tag(name:"affected", value:"DokuWiki version 2017-02-19b and prior.");
 
-  script_tag(name: "solution", value: "Update to version 2017-02-19e or later.");
+  script_tag(name:"solution", value:"Update to version 2017-02-19e or later.");
 
-  script_xref(name: "URL", value: "https://github.com/splitbrain/dokuwiki/issues/2061");
-  script_xref(name: "URL", value: "https://www.dokuwiki.org/changes");
+  script_xref(name:"URL", value:"https://github.com/splitbrain/dokuwiki/issues/2061");
+  script_xref(name:"URL", value:"https://www.dokuwiki.org/changes");
 
   exit(0);
 }

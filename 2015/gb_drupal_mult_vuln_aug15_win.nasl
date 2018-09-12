@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_drupal_mult_vuln_aug15_win.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_drupal_mult_vuln_aug15_win.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Drupal Multiple Vulnerabilities - August15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:drupal:drupal';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806103");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-6661", "CVE-2015-6660", "CVE-2015-6658");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-28 11:55:16 +0530 (Fri, 28 Aug 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Drupal Multiple Vulnerabilities - August15 (Windows)");
@@ -44,8 +44,11 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exixts as,
+
   - The Form API in the application does not properly validate the form token.
+
   - There is no restriction to get node titles by reading the menu.
+
   - Insufficient sanitization of user-supplied input.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

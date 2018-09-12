@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zkteco_zktimeweb_mult_vuln.nasl 9708 2018-05-03 10:01:19Z ckuersteiner $
+# $Id: gb_zkteco_zktimeweb_mult_vuln.nasl 11343 2018-09-12 06:36:46Z cfischer $
 #
 # ZKTeco ZKTime Web Multiple Vulnerabilities
 #
@@ -27,21 +27,21 @@
 
 CPE = 'cpe:/a:zkteco:zktime_web';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140579");
-  script_version("$Revision: 9708 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-03 12:01:19 +0200 (Thu, 03 May 2018) $");
-  script_tag(name: "creation_date", value: "2017-12-05 12:03:16 +0700 (Tue, 05 Dec 2017)");
+  script_version("$Revision: 11343 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-12-05 12:03:16 +0700 (Tue, 05 Dec 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
 
   script_cve_id("CVE-2017-17056", "CVE-2017-17057");
   script_bugtraq_id(102006, 102007);
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("ZKTeco ZKTime Web Multiple Vulnerabilities");
 
@@ -52,23 +52,23 @@ if (description)
   script_dependencies("gb_zkteco_zktimeweb_detect.nasl");
   script_mandatory_keys("zkteco_zktime/installed");
 
-  script_tag(name: "summary", value: "ZKTeco ZKTime Web is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"ZKTeco ZKTime Web is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "ZKTeco ZKTime Web is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"ZKTeco ZKTime Web is prone to multiple vulnerabilities:
 
-- Cross-site request forgery vulnerability (CVE-2017-17056)
+  - Cross-site request forgery vulnerability (CVE-2017-17056)
 
-- Cross-site scripting vulnerability (CVE-2017-17057)");
+  - Cross-site scripting vulnerability (CVE-2017-17057)");
 
-  script_tag(name: "affected", value: "ZKTeco ZKTime Web version 2.0.1.12280 and probably prior.");
+  script_tag(name:"affected", value:"ZKTeco ZKTime Web version 2.0.1.12280 and probably prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 03rd May, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 12th September, 2018. Information
+  regarding this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "http://packetstormsecurity.com/files/145159/ZKTeco-ZKTime-Web-2.0.1.12280-Cross-Site-Scripting.html");
-  script_xref(name: "URL", value: "http://packetstormsecurity.com/files/145160/ZKTeco-ZKTime-Web-2.0.1.12280-Cross-Site-Request-Forgery.html");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/145159/ZKTeco-ZKTime-Web-2.0.1.12280-Cross-Site-Scripting.html");
+  script_xref(name:"URL", value:"http://packetstormsecurity.com/files/145160/ZKTeco-ZKTime-Web-2.0.1.12280-Cross-Site-Request-Forgery.html");
 
   exit(0);
 }

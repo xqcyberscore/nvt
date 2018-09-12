@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_vuln_oct_09.nasl 11198 2018-09-03 13:39:31Z mmartin $
+# $Id: gb_typo3_mult_vuln_oct_09.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # TYPO3 Multiple Vulnerabilities Oct09
 #
@@ -28,14 +28,14 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803990");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2009-3628", "CVE-2009-3629", "CVE-2009-3630", "CVE-2009-3631",
                 "CVE-2009-3632", "CVE-2009-3633", "CVE-2009-3635", "CVE-2009-3636");
   script_bugtraq_id(36801);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-27 12:45:17 +0530 (Fri, 27 Dec 2013)");
   script_name("TYPO3 Multiple Vulnerabilities Oct09");
 
@@ -46,13 +46,17 @@ victim's cookie-based authentication credentials or execute arbitrary code.
 Impact Level: System/Application");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple error exists in the application,
-- Multiple errors in Backend subcomponent, which fails to validate user
+
+  - Multiple errors in Backend subcomponent, which fails to validate user
 supplied input properly.
-- An error exist in Frontend Editing, which fails to sanitize URL parameters
+
+  - An error exist in Frontend Editing, which fails to sanitize URL parameters
 properly.
-- An error exist in API function t3lib_div::quoteJSvalue, which fails to
+
+  - An error exist in API function t3lib_div::quoteJSvalue, which fails to
 validate user supplied input properly.
-- Multiple error exist in Install Tool, which allows login with know md5 hash of
+
+  - Multiple error exist in Install Tool, which allows login with know md5 hash of
 Install Tool password.");
   script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.1.13, 4.2.10, 4.3beta2 or later,
 For updates refer to, http://typo3.org/");

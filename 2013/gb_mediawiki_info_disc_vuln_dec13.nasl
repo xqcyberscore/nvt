@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_info_disc_vuln_dec13.nasl 11027 2018-08-17 08:57:39Z cfischer $
+# $Id: gb_mediawiki_info_disc_vuln_dec13.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # MediaWiki Information Disclosure Vulnerabilities-Dec13
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804166");
-  script_version("$Revision: 11027 $");
+  script_version("$Revision: 11336 $");
   script_bugtraq_id(62215, 62434);
   script_cve_id("CVE-2013-4302", "CVE-2013-4301");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 10:57:39 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-17 09:57:37 +0530 (Tue, 17 Dec 2013)");
   script_name("MediaWiki Information Disclosure Vulnerabilities-Dec13");
 
@@ -48,10 +48,10 @@ if(description)
 
   script_tag(name:"insight", value:"The flaws are due to,
 
-   - An error within the 'tokens', 'unblock', 'login', 'createaccount', and
+  - An error within the 'tokens', 'unblock', 'login', 'createaccount', and
   'block' API calls can be exploited to disclose the CSRF token value.
 
-   - The application discloses the full installation path in an error message
+  - The application discloses the full installation path in an error message
    when an invalid language is specified in ResourceLoader to 'load.php'
    script.");
 

@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804130");
-  script_version("$Revision: 11096 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-5603", "CVE-2013-5604", "CVE-2013-5602", "CVE-2013-5601",
                 "CVE-2013-5600", "CVE-2013-5599", "CVE-2013-5598", "CVE-2013-5597",
                 "CVE-2013-5591", "CVE-2013-5590", "CVE-2013-5592", "CVE-2013-5593",
@@ -38,7 +38,7 @@ if(description)
                     63417, 63415, 63418, 63429, 63421, 63420);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 14:49:10 +0200 (Thu, 23 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-11-07 11:28:51 +0530 (Thu, 07 Nov 2013)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 Nov13 (Windows)");
 
@@ -49,23 +49,35 @@ vulnerabilities.");
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 25.0 or later,
 For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
   script_tag(name:"insight", value:"Multiple flaws due to,
-- Use-after-free vulnerability in the
+
+  - Use-after-free vulnerability in the
 'nsContentUtils::ContentIsHostIncludingDescendantOf' function.
-- Improper data initialization in the 'txXPathNodeUtils::getBaseURI' function.
-- An error in 'Worker::SetEventListener' function in the Web workers
+
+  - Improper data initialization in the 'txXPathNodeUtils::getBaseURI' function.
+
+  - An error in 'Worker::SetEventListener' function in the Web workers
 implementation.
-- Use-after-free vulnerability in the
+
+  - Use-after-free vulnerability in the
 'nsEventListenerManager::SetEventHandler' function.
-- Use-after-free vulnerability in 'nsIOService::NewChannelFromURIWithProxyFlags'
+
+  - Use-after-free vulnerability in 'nsIOService::NewChannelFromURIWithProxyFlags'
 function.
-- Use-after-free vulnerability in the 'nsIPresShell::GetPresContext' function.
-- Improper handling of the appending of an IFRAME element in 'PDF.js'.
-- Use-after-free vulnerability in 'nsDocLoader::doStopDocumentLoad' function.
-- Multiple unspecified vulnerabilities in the browser engine.
-- Improper restriction of the nature or placement of HTML within a dropdown
+
+  - Use-after-free vulnerability in the 'nsIPresShell::GetPresContext' function.
+
+  - Improper handling of the appending of an IFRAME element in 'PDF.js'.
+
+  - Use-after-free vulnerability in 'nsDocLoader::doStopDocumentLoad' function.
+
+  - Multiple unspecified vulnerabilities in the browser engine.
+
+  - Improper restriction of the nature or placement of HTML within a dropdown
 menu.
-- Improper memory allocation for unspecified functions by JavaScript engine.
-- Improper determination of the thread for release of an image object.");
+
+  - Improper memory allocation for unspecified functions by JavaScript engine.
+
+  - Improper determination of the thread for release of an image object.");
   script_tag(name:"affected", value:"Mozilla Firefox before version 25.0 on Windows");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code,
 cause a denial of service, spoof the address bar, conduct clickjacking attacks

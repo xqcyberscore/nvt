@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xenserver_ctx140984.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_xenserver_ctx140984.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Citrix XenServer Multiple Security Updates (CTX140984)
 #
@@ -34,7 +34,7 @@ if (description)
   script_cve_id("CVE-2014-4021", "CVE-2014-4947", "CVE-2014-4948");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
 
   script_name("Citrix XenServer Multiple Security Updates (CTX140984)");
 
@@ -49,9 +49,11 @@ XenServer 6.2 Service Pack 1.
 
 The following vulnerabilities have been addressed:
 
-- CVE-2014-4021: Citrix XenServer potential guest information leak through hypervisor page reuse
-- CVE-2014-4947: Buffer overflow in Citrix XenServer HVM graphics console support
-- CVE-2014-4948: Citrix XenServer guest denial of service and information leak through guest VHD modification");
+  - CVE-2014-4021: Citrix XenServer potential guest information leak through hypervisor page reuse
+
+  - CVE-2014-4947: Buffer overflow in Citrix XenServer HVM graphics console support
+
+  - CVE-2014-4948: Citrix XenServer guest denial of service and information leak through guest VHD modification");
 
   script_tag(name:"affected", value:"Citrix XenServer 6.2 Service Pack 1,
 Citrix XenServer 6.1,
@@ -62,7 +64,7 @@ Citrix XenServer 6.0.0");
 
   script_tag(name:"qod_type", value:"package");
 
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-18 17:37:46 +0100 (Thu, 18 Dec 2014)");
   script_category(ACT_GATHER_INFO);
   script_family("Citrix Xenserver Local Security Checks");

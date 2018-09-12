@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln02_oct14.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_java_mult_unspecified_vuln02_oct14.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Oct 2014 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804863");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-6532", "CVE-2014-6517", "CVE-2014-6515", "CVE-2014-6513",
                 "CVE-2014-6503", "CVE-2014-6493", "CVE-2014-6492", "CVE-2014-6466",
                 "CVE-2014-6458", "CVE-2014-4288");
@@ -37,7 +37,7 @@ if(description)
                     70460, 70470);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-20 12:40:38 +0530 (Mon, 20 Oct 2014)");
 
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Oct 2014 (Windows)");
@@ -49,9 +49,12 @@ if(description)
   SE JRE with the help of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - Multiple errors related to the Deployment subcomponent.
+
   - An XXE (Xml eXternal Entity) injection error in
     com/sun/org/apache/xerces/internal/impl/XMLEntityManager.java script.
+
   - An error in windows/native/sun/awt/splashscreen/splashscreen_sys.c script
     related to handling of splash images.");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_process_creation_cmd_line.nasl 10809 2018-08-07 11:19:51Z emoss $
+# $Id: win_process_creation_cmd_line.nasl 11344 2018-09-12 06:57:52Z emoss $
 #
 # Check value for Include command line in process creation events
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109340");
-  script_version("$Revision: 10809 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 13:19:51 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 11344 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:57:52 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-22 15:16:58 +0200 (Fri, 22 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_add_preference(name:"Value", type:"radio", value:"0;1");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Include command line in process creation events' on Windows hosts (at least
 Windows 8.1).
 
@@ -74,7 +74,7 @@ item = 'ProcessCreationIncludeCmdLine_Enabled';
 default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
 
-if(!value){
+if(value == ''){
   value = '0';
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln_jun12_macosx.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_adobe_prdts_mult_vuln_jun12_macosx.nasl 11327 2018-09-11 11:35:07Z asteins $
 #
 # Adobe Flash Player Multiple Vulnerabilities June-2012 (Mac OS X)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802872");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11327 $");
   script_cve_id("CVE-2012-2034", "CVE-2012-2035", "CVE-2012-2036", "CVE-2012-2037",
                 "CVE-2012-2039", "CVE-2012-2038", "CVE-2012-2040");
   script_bugtraq_id(53887);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-20 11:02:16 +0530 (Wed, 20 Jun 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities June-2012 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49388");
@@ -51,10 +51,14 @@ if(description)
   script_tag(name:"affected", value:"Adobe Flash Player version before 10.3.183.20 and 11.x through 11.2.202.235
   on Mac OS X.");
   script_tag(name:"insight", value:"Multiple errors are caused,
+
   - When parsing ActionScript.
+
   - Within NPSWF32.dll when parsing certain tags.
+
   - In the 'SoundMixer.computeSpectrum()' method, which can be exploited to
     bypass the same-origin policy.
+
   - In the installer allows planting a binary file.");
   script_tag(name:"solution", value:"Update to Adobe Flash Player version 10.3.183.20 or 11.3.300.257 or later,
   For the updates refer, http://get.adobe.com/flashplayer");

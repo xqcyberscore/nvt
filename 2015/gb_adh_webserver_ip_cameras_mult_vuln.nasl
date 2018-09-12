@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adh_webserver_ip_cameras_mult_vuln.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_adh_webserver_ip_cameras_mult_vuln.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # ADH-Web Server IP-Cameras Multiple Improper Access Restrictions Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806058");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11334 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-22 15:57:38 +0530 (Tue, 22 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("ADH-Web Server IP-Cameras Multiple Improper Access Restrictions Vulnerabilities");
@@ -42,8 +42,10 @@ if(description)
   check whether it is able to obtain valuable information or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to an,
+
   - Insufficient validation of user supplied input via 'variable' in
     variable.cgi script.
+
   - Unauthenticated access of all files on the cameras.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

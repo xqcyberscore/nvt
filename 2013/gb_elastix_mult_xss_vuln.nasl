@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elastix_mult_xss_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_elastix_mult_xss_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Elastix Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803708");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2012-6608");
   script_bugtraq_id(56746);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-03 15:04:46 +0530 (Mon, 03 Jun 2013)");
   script_name("Elastix Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -41,11 +41,14 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and check whether it is able to read the
   cookie or not.");
   script_tag(name:"insight", value:"Multiple flaws due to
+
   - Input passed via the URL to '/libs/jpgraph/Examples/bar_csimex3.php/' is
   not properly sanitised before being returned to the user.
+
   - Input passed via the 'url' parameter to
   '/libs/magpierss/scripts/magpie_simple.php' is not properly sanitised
   before being returned to the user.
+
   - Input passed via the 'Page' parameter to 'xmlservices/E_book.php' is not
   properly sanitised before being returned to the user.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary HTML

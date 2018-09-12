@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_portainer_no_auth_vuln.nasl 10803 2018-08-07 09:41:14Z tpassfeld $
+# $Id: gb_portainer_no_auth_vuln.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
 #
 # Portainer UI No Authentication Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114017");
-  script_version("$Revision: 10803 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 11:41:14 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 11328 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-06 13:40:12 +0200 (Mon, 06 Aug 2018)");
   script_tag(name:"cvss_base", value:"9.7");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:P");
@@ -38,7 +38,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("global_settings.nasl", "gb_portainer_detect.nasl");
   script_exclude_keys("keys/islocalhost", "keys/islocalnet", "keys/is_private_addr");
-  script_mandatory_keys("Portainer/installed");
+  script_mandatory_keys("portainer/detected");
 
   script_xref(name:"URL", value:"https://info.lacework.com/hubfs/Containers%20At-Risk_%20A%20Review%20of%2021%2C000%20Cloud%20Environments.pdf");
 

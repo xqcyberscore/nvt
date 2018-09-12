@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_mult_vuln_oct14.nasl 10953 2018-08-14 12:06:42Z mmartin $
+# $Id: gb_hp_smh_mult_vuln_oct14.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # HP System Management Homepage Multiple Vulnerabilities - Oct14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804858");
-  script_version("$Revision: 10953 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-2640", "CVE-2014-2641", "CVE-2014-2642");
   script_bugtraq_id(70208);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:06:42 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-14 11:52:11 +0530 (Tue, 14 Oct 2014)");
 
   script_name("HP System Management Homepage Multiple Vulnerabilities - Oct14");
@@ -46,9 +46,12 @@ if(description)
   the help of detect NVT and check it is vulnerable or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are exists due to,
+
   - An error as HTTP requests to certain scripts do not require multiple steps,
     explicit confirmation, or a unique token when performing sensitive actions.
+
   - An error as application does not validate user-supplied input.
+
   - An unspecified error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

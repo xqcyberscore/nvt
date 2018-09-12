@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_netscaler_73342.nasl 8384 2018-01-12 02:32:15Z ckuersteiner $
+# $Id: gb_citrix_netscaler_73342.nasl 11315 2018-09-11 08:43:51Z jschulte $
 #
 # Citrix NetScaler VPX 'large_search.html' Cross-Site Scripting Vulnerability
 #
@@ -29,22 +29,22 @@ CPE = "cpe:/a:citrix:netscaler";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.105272");
- script_bugtraq_id(73342);
- script_cve_id("CVE-2015-2840","CVE-2015-2838","CVE-2015-2839");
- script_tag(name:"cvss_base", value:"6.8");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 8384 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.105272");
+  script_bugtraq_id(73342);
+  script_cve_id("CVE-2015-2840", "CVE-2015-2838", "CVE-2015-2839");
+  script_tag(name:"cvss_base", value:"6.8");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11315 $");
 
- script_name("Citrix NetScaler VPX 'large_search.html' Cross-Site Scripting Vulnerability");
+  script_name("Citrix NetScaler VPX 'large_search.html' Cross-Site Scripting Vulnerability");
 
- script_tag(name: "impact" , value:"An attacker may leverage this issue to execute arbitrary script code
+  script_tag(name:"impact", value:"An attacker may leverage this issue to execute arbitrary script code
 in the browser of an unsuspecting user in the context of the affected site. This may help the attacker
 steal cookie-based authenticationcredentials and launch other attacks.");
 
- script_tag(name: "vuldetect" , value:"Check the version");
+  script_tag(name:"vuldetect", value:"Check the version");
 
- script_tag(name: "insight" , value:"CVE-2015-2840: Cross-site scripting
+  script_tag(name:"insight", value:"CVE-2015-2840: Cross-site scripting
 (XSS) vulnerability in help/rt/large_search.html in Citrix
 NetScaler before 10.5 build 52.3nc allows remote attackers
 to inject arbitrary web script or HTML via the searchQuery
@@ -62,26 +62,26 @@ to hijack the authentication of administrators for requests that execute
 arbitrary commands as nsroot via shell metacharacters in the file_name
 JSON member in params/xen_hotfix/0 to nitro/v1/config/xen_hotfix.");
 
- script_tag(name: "solution" , value:"Update to 10.5 build 52.3nc or
+  script_tag(name:"solution", value:"Update to 10.5 build 52.3nc or
 newer.");
 
- script_tag(name: "summary" , value:"Citrix NetScaler VPX is prone to multiple cross-site scripting
+  script_tag(name:"summary", value:"Citrix NetScaler VPX is prone to multiple cross-site scripting
 vulnerabilities and a Cross-site request forgery (CSRF) vulnerability because the application fails
 to properly sanitize user-supplied input.");
 
- script_tag(name: "affected" , value:"Citrix NetScaler before 10.5 build
+  script_tag(name:"affected", value:"Citrix NetScaler before 10.5 build
 52.3nc");
 
- script_tag(name:"solution_type", value: "VendorFix");
- script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"package");
 
- script_tag(name:"last_modification", value:"$Date: 2018-01-12 03:32:15 +0100 (Fri, 12 Jan 2018) $");
- script_tag(name:"creation_date", value:"2015-05-12 13:10:00 +0200 (Tue, 12 May 2015)");
- script_category(ACT_GATHER_INFO);
- script_family("General");
- script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
- script_dependencies("gb_citrix_netscaler_version.nasl");
- script_mandatory_keys("citrix_netscaler/detected");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:43:51 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2015-05-12 13:10:00 +0200 (Tue, 12 May 2015)");
+  script_category(ACT_GATHER_INFO);
+  script_family("General");
+  script_copyright("This script is Copyright (C) 2015 Greenbone Networks GmbH");
+  script_dependencies("gb_citrix_netscaler_version.nasl");
+  script_mandatory_keys("citrix_netscaler/detected");
 
  exit(0);
 }

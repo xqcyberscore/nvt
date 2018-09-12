@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_mozilla_firefox_mult_vuln_jun13_macosx.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: secpod_mozilla_firefox_mult_vuln_jun13_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities - June 13 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903218");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-1683", "CVE-2013-1684", "CVE-2013-1685", "CVE-2013-1686",
                 "CVE-2013-1687", "CVE-2013-1688", "CVE-2013-1690", "CVE-2013-1692",
                 "CVE-2013-1693", "CVE-2013-1694", "CVE-2013-1695", "CVE-2013-1696",
@@ -36,7 +36,7 @@ if(description)
                     60776, 60789, 60788, 60784, 60790, 60785, 60765);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-26 17:20:31 +0530 (Wed, 26 Jun 2013)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - June 13 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53970");
@@ -54,25 +54,39 @@ if(description)
   Impact Level: Application");
   script_tag(name:"affected", value:"Mozilla Firefox version before 22.0 on Mac OS X");
   script_tag(name:"insight", value:"Multiple flaws due to,
+
   - PreserveWrapper does not handle lack of wrapper.
+
   - Error in processing of SVG format images with filters to read pixel values.
+
   - Does not prevent inclusion of body data in XMLHttpRequest HEAD request.
+
   - Multiple unspecified vulnerabilities in the browser engine.
+
   - Does not properly handle onreadystatechange events in conjunction with
     page reloading.
+
   - Profiler parses untrusted data during UI rendering.
+
   - System Only Wrapper (SOW) and Chrome Object Wrapper (COW), does not
     restrict XBL user-defined functions.
+
   - Use-after-free vulnerability in 'nsIDocument::GetRootElement' and
     'mozilla::dom::HTMLMediaElement::LookupMediaElementURITable' functions.
+
   - Multiple unspecified vulnerabilities in the browser engine.
+
   - Internationalized Domain Name (IDN) does not properly handle the .com,
     .name, and .net top-level domains.
+
   - Does not properly implement DocShell inheritance behavior for sandbox
     attribute of an IFRAME element.
+
   - 'getUserMedia' permission references the URL of top-level document instead
     of a specific page.
+
   - XrayWrapper does not properly restrict use of DefaultValue for method calls.
+
   - Does not properly enforce the X-Frame-Options protection mechanism.");
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 22.0 or later,
   For updates refer to http://www.mozilla.com/en-US/firefox/all.html");

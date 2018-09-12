@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln01_dec14_macosx.nasl 11191 2018-09-03 11:57:37Z mmartin $
+# $Id: gb_mozilla_firefox_esr_mult_vuln01_dec14_macosx.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities-01 Dec14 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805220");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1594", "CVE-2014-1593", "CVE-2014-1592", "CVE-2014-1590",
                 "CVE-2014-1587", "CVE-2014-1595");
   script_bugtraq_id(71396, 71395, 71398, 71397, 71391, 71394);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-16 10:57:44 +0530 (Tue, 16 Dec 2014)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-01 Dec14 (Mac OS X)");
 
@@ -45,14 +45,20 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - A bad cast issue from the BasicThebesLayer to BasicContainerLayer.
+
   - An error when parsing media content within the 'mozilla::FileBlockCache::Read'
   function.
+
   - A use-after-free error when parsing certain HTML within the
   'nsHtml5TreeOperation' class.
+
   - An error that is triggered when handling JavaScript objects that are passed
   to XMLHttpRequest that mimics an input stream.
+
   - Multiple unspecified errors.
+
   - The CoreGraphics framework logging potentially sensitive input data
   to the /tmp directory.");
 

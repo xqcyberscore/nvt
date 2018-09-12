@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-068.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_ms15-068.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # MS Windows Hyper-V Remote Code Execution Vulnerability (3072000)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805922");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-2361", "CVE-2015-2362");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-15 13:50:29 +0530 (Wed, 15 Jul 2015)");
   script_name("MS Windows Hyper-V Remote Code Execution Vulnerability (3072000)");
 
@@ -42,8 +42,10 @@ if(description)
   check appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exists due to,
+
   - An error in how Hyper-V handles packet size memory initialization in guest
     virtual machines.
+
   - An error in how Hyper-V initializes system data structures in guest virtual
     machines.");
 

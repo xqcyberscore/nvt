@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln01_oct14.nasl 11202 2018-09-03 14:43:03Z mmartin $
+# $Id: gb_java_mult_unspecified_vuln01_oct14.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-01 Oct 2014 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804862");
-  script_version("$Revision: 11202 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-6558", "CVE-2014-6531", "CVE-2014-6502", "CVE-2014-6512",
                 "CVE-2014-6511", "CVE-2014-6506", "CVE-2014-6457");
   script_bugtraq_id(70544, 70572, 70533, 70567, 70548, 70556, 70538);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:43:03 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-20 12:20:38 +0530 (Mon, 20 Oct 2014)");
 
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-01 Oct 2014 (Windows)");
@@ -47,18 +47,25 @@ if(description)
   SE JRE with the help of detect NVT and check the version is vulnerable or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - An unspecified error in share/classes/javax/crypto/CipherInputStream.java script
     related to streaming of input cipher streams.
+
   - An error in share/classes/java/util/ResourceBundle.java script related to
     property processing and handling of names.
+
   - An error in the 'LogRecord::readObject' function in
     classes/java/util/logging/LogRecord.java related to handling of resource bundles.
+
   - An error related to the wrapping of datagram sockets in the DatagramSocket
     implementation.
+
   - An error in share/classes/java/util/logging/Logger.java related to missing
     permission checks of logger resources.
+
   - An error related to handling of server certificate changes during SSL/TLS
     renegotiation.
+
   - An error within the 2D subcomponent of the client deployment.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers

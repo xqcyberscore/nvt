@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_http_server_mod_cluster_dos_vuln_win.nasl 9895 2018-05-18 04:24:05Z ckuersteiner $
+# $Id: gb_apache_http_server_mod_cluster_dos_vuln_win.nasl 11348 2018-09-12 07:38:26Z cfischer $
 #
 # Apache HTTP Server 'mod_cluster' Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812579");
-  script_version("$Revision: 9895 $");
+  script_version("$Revision: 11348 $");
   script_cve_id("CVE-2016-8612");
   script_bugtraq_id(94939);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 06:24:05 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:38:26 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-03-21 11:34:53 +0530 (Wed, 21 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Apache HTTP Server 'mod_cluster' Denial of Service Vulnerability (Windows)");
@@ -42,8 +42,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running Apache HTTP Server
   and is prone to denial of service vulnerability");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists due to an error in protocol
   parsing logic of mod_cluster load balancer Apache HTTP Server modules that
@@ -59,8 +58,8 @@ if(description)
   script_tag(name:"solution", value:"See the vendor advisory for a solution.");
 
   script_tag(name:"solution_type", value:"VendorFix");
-  script_xref(name : "URL" , value : "https://bugzilla.redhat.com/show_bug.cgi?id=1387605");
-  script_xref(name : "URL" , value : "https://tools.cisco.com/security/center/viewAlert.x?alertId=57169");
+  script_xref(name:"URL", value:"https://bugzilla.redhat.com/show_bug.cgi?id=1387605");
+  script_xref(name:"URL", value:"https://tools.cisco.com/security/center/viewAlert.x?alertId=57169");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Web Servers");
@@ -90,7 +89,7 @@ path = infos['location'];
 
 if(httpd_ver == "2.4.23")
 {
-  report = report_fixed_ver(installed_version:httpd_ver, fixed_version:"NoneAvailable", install_path:path);
+  report = report_fixed_ver(installed_version:httpd_ver, fixed_version:"See references", install_path:path);
   security_message(data:report, port:httpd_port);
   exit(0);
 }

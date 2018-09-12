@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_mult_vuln_nov14_win.nasl 11200 2018-09-03 14:11:38Z mmartin $
+# $Id: gb_pidgin_mult_vuln_nov14_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Pidgin Multiple Vulnerabilities Nov 2014 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:pidgin:pidgin";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804890");
-  script_version("$Revision: 11200 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-3694", "CVE-2014-3695", "CVE-2014-3696", "CVE-2014-3697",
                 "CVE-2014-3698");
   script_bugtraq_id(70701, 70702, 70705, 70704, 70703);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:11:38 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-21 18:58:24 +0530 (Fri, 21 Nov 2014)");
   script_name("Pidgin Multiple Vulnerabilities Nov 2014 (Windows)");
 
@@ -45,10 +45,15 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple errors exists due to,
+
   - An error when parsing XMPP messages.
+
   - An error when unpacking smiley themes.
+
   - Improper verification of the Basic Constraints of an SSL certificate.
+
   - An error when handling Groupwise message.
+
   - An error when handling of an MXit emoticon.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers

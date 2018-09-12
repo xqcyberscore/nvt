@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_espocrm_multiple_vuln.nasl 11196 2018-09-03 13:09:40Z mmartin $
+# $Id: gb_espocrm_multiple_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # EspoCRM '/install/index.php' Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804874");
-  script_version("$Revision: 11196 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-7985", "CVE-2014-7986", "CVE-2014-7987");
   script_bugtraq_id(70809, 70811, 70806);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-30 12:02:52 +0530 (Thu, 30 Oct 2014)");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -46,8 +46,10 @@ if(description)
   and check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Multiple errors are due to,
+
   - Improper sanitization of input passed via 'action' and 'desc' HTTP GET
   parameters to /install/index.php script.
+
   - Insufficient access control restriction to the installation script
   /install/index.php.");
 

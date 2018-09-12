@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dotclear_mult_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_dotclear_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Dotclear Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:dotclear:dotclear";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802076");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-3781", "CVE-2014-3782", "CVE-2014-3783");
   script_bugtraq_id(67560, 67559, 67557);
   script_tag(name:"cvss_base", value:"6.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-09 14:54:32 +0530 (Mon, 09 Jun 2014)");
   script_name("Dotclear Multiple Vulnerabilities");
 
@@ -42,8 +42,10 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted HTTP POST request and try to bypass authentication.");
   script_tag(name:"insight", value:"- Flaw in due to 'dcXmlRpc::setUser()' method in 'class.dc.xmlrpc.php' fails
   to verify passwords before using it.
+
   - Flaw is due to is due to the '/admin/categories.php' script not properly
   sanitizing user-supplied input to the 'categories_order' POST parameter.
+
   - Flaw is due to is due to 'filemanager::isFileExclude()' method does not
   properly verify or sanitize user-uploaded files.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to bypass authentication

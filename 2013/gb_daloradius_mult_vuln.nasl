@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_daloradius_mult_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_daloradius_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # DaloRADIUS Web Management Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803183");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-18 12:29:46 +0530 (Mon, 18 Mar 2013)");
   script_name("DaloRADIUS Web Management Multiple Vulnerabilities");
 
@@ -52,8 +52,10 @@ if(description)
   script_tag(name:"affected", value:"DaloRADIUS version 0.9.9 and prior");
   script_tag(name:"insight", value:"- The acct-ipaddress.php script not properly sanitizing user-supplied
   input to the 'orderBy' and 'ipaddress' parameters.
+
   - The application does not require multiple steps or explicit confirmation
   for sensitive transactions.
+
   - The application does not validate the 'username' parameter upon submission
   to the mng-search.php script and does 'daloradiusFilter' parameter upon
   submission to the rep-logs-daloradius.php script.");

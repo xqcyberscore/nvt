@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_k7_anti_virus_plus_privilege_escalation_vuln_feb15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_k7_anti_virus_plus_privilege_escalation_vuln_feb15_win.nasl 11320 2018-09-11 09:32:57Z cfischer $
 #
 # K7 Anti-Virus Plus Privilege Escalation Vulnerability Feb15 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:k7computing:anti-virus_plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805455");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11320 $");
   script_cve_id("CVE-2014-9643");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 11:32:57 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-27 17:11:51 +0530 (Tue, 27 Jan 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("K7 Anti-Virus Plus Privilege Escalation Vulnerability Feb15 (Windows)");
@@ -70,13 +70,10 @@ if(description)
   exit(0);
 }
 
-
 include("host_details.inc");
 include("version_func.inc");
 
-k7antivirVer = "";
-
-if(!k7usecVer = get_app_version(cpe:CPE)){
+if(!k7antivirVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
@@ -87,3 +84,5 @@ if(version_is_less(version:k7antivirVer, test_version:"14.2.0.253"))
   security_message(data:report );
   exit(0);
 }
+
+exit(99);

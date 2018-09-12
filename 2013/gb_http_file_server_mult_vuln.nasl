@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_http_file_server_mult_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_http_file_server_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # HTTP File Server Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:httpfilesever:hfs";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803171");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-19 15:17:57 +0530 (Tue, 19 Feb 2013)");
   script_name("HTTP File Server Multiple Vulnerabilities");
 
@@ -53,6 +53,7 @@ if(description)
   script_tag(name:"affected", value:"HttpFileServer version 2.2f and prior");
   script_tag(name:"insight", value:"- An input passed to 'search' parameter is not properly sanitized
   before being returned to the user.
+
   - An error due to the '~upload ' script allowing the upload of files with
   arbitrary extensions to a folder inside the webroot can be exploited to
   execute arbitrary PHP code by uploading a malicious PHP script.");

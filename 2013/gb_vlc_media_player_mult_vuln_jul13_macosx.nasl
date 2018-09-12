@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_vuln_jul13_macosx.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_vlc_media_player_mult_vuln_jul13_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # VLC Media Player Multiple Vulnerabilities - July 13 (MAC OS X)
 #
@@ -27,20 +27,22 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803901");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-1868", "CVE-2012-5855");
   script_bugtraq_id(57079, 56405);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-16 14:45:11 +0530 (Tue, 16 Jul 2013)");
   script_name("VLC Media Player Multiple Vulnerabilities - July 13 (MAC OS X)");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to overflow buffer, cause denial
 of service or potentially execution of arbitrary code. Impact Level: System/Application");
   script_tag(name:"affected", value:"VLC media player version 2.0.4 and prior on MAC OS X");
   script_tag(name:"insight", value:"Multiple flaws due to,
- - Error in 'SHAddToRecentDocs()' function.
- - Error due to improper validation of user supplied inputs when handling
+
+  - Error in 'SHAddToRecentDocs()' function.
+
+  - Error due to improper validation of user supplied inputs when handling
    HTML subtitle files.");
   script_tag(name:"solution", value:"Upgrade to VLC media player version 2.0.5 or later,
 For updates refer to http://www.videolan.org/vlc");

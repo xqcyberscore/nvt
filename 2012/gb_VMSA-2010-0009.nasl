@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_VMSA-2010-0009.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_VMSA-2010-0009.nasl 11327 2018-09-11 11:35:07Z asteins $
 #
 # VMSA-2010-0009 ESXi utilities and ESX Service Console third party updates
 #
@@ -25,19 +25,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "The remote ESXi is missing one or more security related Updates from VMSA-2010-0009.
+
+if (description)
+{
+  script_oid("1.3.6.1.4.1.25623.1.0.103468");
+  script_cve_id("CVE-2009-2695", "CVE-2009-2908", "CVE-2009-3228", "CVE-2009-3286", "CVE-2009-3547", "CVE-2009-3613", "CVE-2009-3612", "CVE-2009-3620", "CVE-2009-3621", "CVE-2009-3726", "CVE-2007-4567", "CVE-2009-4536", "CVE-2009-4537", "CVE-2009-4538", "CVE-2006-6304", "CVE-2009-2910", "CVE-2009-3080", "CVE-2009-3556", "CVE-2009-3889", "CVE-2009-3939", "CVE-2009-4020", "CVE-2009-4021", "CVE-2009-4138", "CVE-2009-4141", "CVE-2009-4272", "CVE-2009-3563", "CVE-2009-4355", "CVE-2009-2409", "CVE-2009-0590", "CVE-2009-1377", "CVE-2009-1378", "CVE-2009-1379", "CVE-2009-1386", "CVE-2009-1387", "CVE-2009-4212", "CVE-2009-1384", "CVE-2010-0097", "CVE-2010-0290", "CVE-2009-3736", "CVE-2010-0001", "CVE-2010-0426", "CVE-2010-0427", "CVE-2010-0382");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_version("$Revision: 11327 $");
+  script_name("VMSA-2010-0009: ESXi utilities and ESX Service Console third party updates");
+
+
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2012-04-16 10:53:01 +0100 (Mon, 16 Apr 2012)");
+  script_category(ACT_GATHER_INFO);
+  script_family("VMware Local Security Checks");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("gb_vmware_esxi_init.nasl");
+  script_mandatory_keys("VMware/ESXi/LSC", "VMware/ESX/version");
+  script_tag(name:"summary", value:"The remote ESXi is missing one or more security related Updates from VMSA-2010-0009.
 
 Summary
 
-ESXi update for ntp and ESX Console OS (COS) updates for COS 
+ESXi update for ntp and ESX Console OS (COS) updates for COS
 kernel, openssl, krb5, gcc, bind, gzip, sudo.
 
 Relevant releases
 
 VMware ESXi 4.0.0 without patch ESXi400-201005401-SG
-VMware ESX 4.0.0 without patches ESX400-201005401-SG,  ESX400-201005406-SG, ESX400-201005408-SG, ESX400-201005407-SG, 
+VMware ESX 4.0.0 without patches ESX400-201005401-SG, ESX400-201005406-SG, ESX400-201005408-SG, ESX400-201005407-SG,
                                  ESX400-201005405-SG, ESX400-201005409-SG
-VMware ESX 3.5 without patches ESX350-201006408-SG,  ESX350-201006405-SG, ESX350-201006406-SG 
+VMware ESX 3.5 without patches ESX350-201006408-SG, ESX350-201006405-SG, ESX350-201006406-SG
 
 Problem Description
 
@@ -49,34 +67,34 @@ a. Service Console update for COS kernel
 b. ESXi userworld update for ntp
 
     The Network Time Protocol (NTP) is used to synchronize the time of
-    a computer client or server to another server or reference time 
+    a computer client or server to another server or reference time
     source.
 
-    A vulnerability in ntpd could allow a remote attacker to cause a 
-    denial of service (CPU and bandwidth consumption) by using 
-    MODE_PRIVATE to send a spoofed (1) request or (2) response packet 
+    A vulnerability in ntpd could allow a remote attacker to cause a
+    denial of service (CPU and bandwidth consumption) by using
+    MODE_PRIVATE to send a spoofed (1) request or (2) response packet
     that triggers a continuous exchange of MODE_PRIVATE error responses
-    between two NTP daemons. 
+    between two NTP daemons.
 
 c. Service Console package openssl updated to 0.9.8e-12.el5_4.1
 
     OpenSSL is a toolkit implementing SSL v2/v3 and TLS protocols with
     full-strength cryptography world-wide.
 
-    A memory leak in the zlib could allow a remote attacker to cause a 
+    A memory leak in the zlib could allow a remote attacker to cause a
     denial of service (memory consumption) via vectors that trigger
     incorrect calls to the CRYPTO_cleanup_all_ex_data function.
 
 d. Service Console update for krb5 to 1.6.1-36.el5_4.1 and pam_krb5 to
     2.2.14-15.
 
-    Kerberos is a network authentication protocol. It is designed to 
-    provide strong authentication for client/server applications by 
-    using secret-key cryptography. 
+    Kerberos is a network authentication protocol. It is designed to
+    provide strong authentication for client/server applications by
+    using secret-key cryptography.
 
     Multiple integer underflows in the AES and RC4 functionality in the
     crypto library could allow remote attackers to cause a denial of
-    service (daemon crash) or possibly execute arbitrary code by 
+    service (daemon crash) or possibly execute arbitrary code by
     providing ciphertext with a length that is too short to be valid.
 
 e. Service Console package bind updated to 9.3.6-4.P1.el5_4.2
@@ -90,7 +108,7 @@ e. Service Console package bind updated to 9.3.6-4.P1.el5_4.2
 
 f. Service Console package gcc updated to 3.2.3-60
 
-    The GNU Compiler Collection includes front ends for C, C++, 
+    The GNU Compiler Collection includes front ends for C, C++,
     Objective-C, Fortran, Java, and Ada, as well as libraries for these
     languages
 
@@ -116,36 +134,16 @@ g. Service Console package gzip update to 1.3.3-15.rhel3
     (or all) commands as root or another user while providing an audit
     trail of the commands and their arguments.
 
-    When a pseudo-command is enabled, sudo permits a match between the 
+    When a pseudo-command is enabled, sudo permits a match between the
     name of the pseudo-command and the name of an executable file in an
-    arbitrary directory, which allows local users to gain privileges 
+    arbitrary directory, which allows local users to gain privileges
     via a crafted executable file.
 
 Solution
-Apply the missing patch(es).";
-
-
-if (description)
-{
- script_oid("1.3.6.1.4.1.25623.1.0.103468");
- script_cve_id("CVE-2009-2695", "CVE-2009-2908", "CVE-2009-3228", "CVE-2009-3286", "CVE-2009-3547", "CVE-2009-3613", "CVE-2009-3612", "CVE-2009-3620", "CVE-2009-3621", "CVE-2009-3726", "CVE-2007-4567", "CVE-2009-4536", "CVE-2009-4537", "CVE-2009-4538", "CVE-2006-6304", "CVE-2009-2910", "CVE-2009-3080", "CVE-2009-3556", "CVE-2009-3889", "CVE-2009-3939", "CVE-2009-4020", "CVE-2009-4021", "CVE-2009-4138", "CVE-2009-4141", "CVE-2009-4272", "CVE-2009-3563", "CVE-2009-4355", "CVE-2009-2409", "CVE-2009-0590", "CVE-2009-1377", "CVE-2009-1378", "CVE-2009-1379", "CVE-2009-1386", "CVE-2009-1387", "CVE-2009-4212", "CVE-2009-1384", "CVE-2010-0097", "CVE-2010-0290", "CVE-2009-3736", "CVE-2010-0001", "CVE-2010-0426", "CVE-2010-0427", "CVE-2010-0382");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_version ("$Revision: 9352 $");
- script_name("VMSA-2010-0009: ESXi utilities and ESX Service Console third party updates");
-
-
- script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
- script_tag(name:"creation_date", value:"2012-04-16 10:53:01 +0100 (Mon, 16 Apr 2012)");
- script_category(ACT_GATHER_INFO);
- script_family("VMware Local Security Checks");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_vmware_esxi_init.nasl");
- script_mandatory_keys("VMware/ESXi/LSC","VMware/ESX/version");
- script_tag(name : "summary" , value : tag_summary);
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"VendorFix");
- script_xref(name : "URL" , value : "http://www.vmware.com/security/advisories/VMSA-2010-0009.html");
+Apply the missing patch(es).");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_xref(name:"URL", value:"http://www.vmware.com/security/advisories/VMSA-2010-0009.html");
  exit(0);
 }
 

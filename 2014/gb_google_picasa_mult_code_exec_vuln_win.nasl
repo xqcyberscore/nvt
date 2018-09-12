@@ -29,12 +29,12 @@ CPE = "cpe:/a:google:picasa";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804185");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-5349", "CVE-2013-5357", "CVE-2013-5358", "CVE-2013-5359");
   script_bugtraq_id(64467, 64468, 64466, 64470);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-20 11:18:19 +0530 (Mon, 20 Jan 2014)");
   script_name("Google Picasa Multiple Code Execution Vulnerabilities");
 
@@ -44,12 +44,16 @@ code execution vulnerabilities.");
   script_tag(name:"vuldetect", value:"Get the installed version of Google Picasa with the help of detect NVT and
 check it is vulnerable or not.");
   script_tag(name:"insight", value:"The flaws are due to,
- - An integer underflow error within the 'Picasa3.exe' module when parsing
+
+  - An integer underflow error within the 'Picasa3.exe' module when parsing
  JPEG tags.
- - An integer overflow error within the 'Picasa3.exe' module when parsing
+
+  - An integer overflow error within the 'Picasa3.exe' module when parsing
  TIFF tags.
- - A boundary error within the 'Picasa3.exe' module when parsing TIFF tags.
- - An error within the 'Picasa3.exe' module when parsing RAW files.");
+
+  - A boundary error within the 'Picasa3.exe' module when parsing TIFF tags.
+
+  - An error within the 'Picasa3.exe' module when parsing RAW files.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to trigger memory
 corruption and cause execution of arbitrary code.
 

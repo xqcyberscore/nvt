@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_file_reporter_56579.nasl 10322 2018-06-26 06:37:28Z cfischer $
+# $Id: gb_novell_file_reporter_56579.nasl 11343 2018-09-12 06:36:46Z cfischer $
 #
 # Novell File Reporter 'NFRAgent.exe' Multiple Security Vulnerabilities
 #
@@ -32,9 +32,9 @@ if(description)
   script_cve_id("CVE-2012-4956", "CVE-2012-4957", "CVE-2012-4958", "CVE-2012-4959");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_version("$Revision: 10322 $");
+  script_version("$Revision: 11343 $");
   script_name("Novell File Reporter 'NFRAgent.exe' Multiple Security Vulnerabilities");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-26 08:37:28 +0200 (Tue, 26 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-12 17:33:48 +0100 (Wed, 12 Dec 2012)");
   script_category(ACT_ATTACK);
   script_family("Web application abuses");
@@ -61,8 +61,12 @@ if(description)
   script_tag(name:"affected", value:"Novell File Reporter 1.0.2 is vulnerable. Other versions may also
   be affected.");
 
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+
   script_tag(name:"qod_type", value:"remote_app");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }
@@ -73,6 +77,7 @@ include("host_details.inc");
 include("http_keepalive.inc");
 
 port = get_http_port(default:3037);
+useragent = get_http_user_agent();
 host = http_host_name(port:port);
 
 files = traversal_files();
@@ -96,7 +101,7 @@ foreach file (keys(files)) {
 
   req = string("POST /FSF/CMD HTTP/1.1\r\n",
                "Host: ", host, "\r\n",
-               "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
+               "User-Agent: ", useragent, "\r\n",
                "Content-Type: text/xml\r\n",
                "Content-Length: ", len, "\r\n",
                "\r\n",

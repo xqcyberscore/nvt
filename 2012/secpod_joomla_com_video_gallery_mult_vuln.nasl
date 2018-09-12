@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_joomla_com_video_gallery_mult_vuln.nasl 10754 2018-08-03 10:38:29Z ckuersteiner $
+# $Id: secpod_joomla_com_video_gallery_mult_vuln.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Joomla! 'Video Gallery' Component Multiple Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902673");
-  script_version("$Revision: 10754 $");
+  script_version("$Revision: 11322 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 12:38:29 +0200 (Fri, 03 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-25 18:38:13 +0530 (Wed, 25 Apr 2012)");
 
   script_name("Joomla! 'Video Gallery' Component Multiple Vulnerabilities");
@@ -56,10 +56,10 @@ information.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to
 
-- Input passed via the 'Itemid' parameter to index.php script is not properly sanitised before being used in SQL
+  - Input passed via the 'Itemid' parameter to index.php script is not properly sanitised before being used in SQL
 queries.
 
-- Improper validation of user-supplied input passed via the 'controller' parameter to 'index.php', which allows
+  - Improper validation of user-supplied input passed via the 'controller' parameter to 'index.php', which allows
 attackers to read arbitrary files via ../(dot dot) sequences.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the

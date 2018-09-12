@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_fw_public_inbound_connections.nasl 11068 2018-08-21 11:51:41Z emoss $
+# $Id: win_fw_public_inbound_connections.nasl 11344 2018-09-12 06:57:52Z emoss $
 #
 # Check value for Windows Firewall: Public: Inbound connections
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109569");
-  script_version("$Revision: 11068 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:51:41 +0200 (Tue, 21 Aug 2018) $");
+  script_version("$Revision: 11344 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:57:52 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-16 14:08:29 +0200 (Thu, 16 Aug 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -74,7 +74,7 @@ item = 'DefaultInboundAction';
 default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
 
-if(!value){
+if(value == ''){
   value = '0';
 }
 

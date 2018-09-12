@@ -28,14 +28,14 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804202");
-  script_version("$Revision: 11213 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2012-6144", "CVE-2012-6145", "CVE-2012-6146", "CVE-2012-6147",
                 "CVE-2012-6148");
   script_bugtraq_id(56472);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:30:51 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-03 13:01:59 +0530 (Fri, 03 Jan 2014)");
   script_name("TYPO3 Multiple Vulnerabilities Nov12");
 
@@ -47,9 +47,11 @@ execute SQL commands.
 Impact Level: Application");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple error exists in the application,
-- An error exist in history module, tree render API (TCA-Tree) and function
+
+  - An error exist in history module, tree render API (TCA-Tree) and function
 menu API, which fails to encode user input properly.
-- An error exist in the application, which fails to check access while viewing
+
+  - An error exist in the application, which fails to check access while viewing
 history.");
   script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.5.21, 4.6.14, 4.7.6 or later,
 For updates refer to, http://typo3.org/");

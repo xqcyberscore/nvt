@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_imagemagick_mult_dos_vuln01_jun13_win.nasl 11077 2018-08-22 09:40:33Z mmartin $
+# $Id: gb_imagemagick_mult_dos_vuln01_jun13_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # ImageMagick Multiple Denial of Service Vulnerabilities - 01 June13 (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:imagemagick:imagemagick";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803815");
-  script_version("$Revision: 11077 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2012-0260", "CVE-2012-0259", "CVE-2012-1798");
   script_bugtraq_id(52898);
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:40:33 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-24 12:32:12 +0530 (Mon, 24 Jun 2013)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -50,10 +50,13 @@ if(description)
   Impact Level: Application");
   script_tag(name:"affected", value:"ImageMagick version before 6.7.6-3 on Windows.");
   script_tag(name:"insight", value:"Multiple flaw are due to an,
+
   - Improper handling of JPEG restart markers of the 'JPEGWarningHandler()'
     function in coders/jpeg.c
+
   - Improper handling a JPEG EXIF tag of the 'GetEXIFProperty()' function
     in magick/property.c
+
   - Error occurs when parsing TIFF EXIF IFD of the 'TIFFGetEXIFProperties()'
     function in coders/tiff.c");
   script_tag(name:"solution", value:"Upgrade to ImageMagick version 6.7.6-3 or later.

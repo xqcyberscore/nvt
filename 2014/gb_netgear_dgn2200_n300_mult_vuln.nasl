@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804099");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-18 11:02:48 +0530 (Tue, 18 Feb 2014)");
   script_name("NetGear DGN2200 N300 Wireless Router Multiple Vulnerabilities");
 
@@ -40,19 +40,26 @@ vulnerabilities.");
   script_tag(name:"vuldetect", value:"Send a HTTP GET request to restricted page and check whether it is able to
 access or not.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- FTP Server not properly sanitizing user input, specifically absolute paths.
-- Program not allowing users to completely disable the Wi-Fi Protected Setup
+
+  - FTP Server not properly sanitizing user input, specifically absolute paths.
+
+  - Program not allowing users to completely disable the Wi-Fi Protected Setup
   (WPS) functionality.
-- Web interface attempting to find new firmware on an FTP server every time an
+
+  - Web interface attempting to find new firmware on an FTP server every time an
   administrator logs in.
-- UPnP Interface as HTTP requests to /Public_UPNP_C3 do not require multiple
+
+  - UPnP Interface as HTTP requests to /Public_UPNP_C3 do not require multiple
   steps, explicit confirmation, or a unique token when performing certain
   sensitive actions.
-- Input passed via the 'ping_IPAddr' parameter is not properly sanitized upon
+
+  - Input passed via the 'ping_IPAddr' parameter is not properly sanitized upon
   submission to the /ping.cgi script.
-- Input passed via the 'hostname' parameter is not properly sanitized upon
+
+  - Input passed via the 'hostname' parameter is not properly sanitized upon
   submission to the /dnslookup.cgi script.
-- Program storing password information in plaintext in /etc/passwd.");
+
+  - Program storing password information in plaintext in /etc/passwd.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary commands,
 gain access to arbitrary files, and manipulate the device's settings.
 

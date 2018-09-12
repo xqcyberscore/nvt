@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ios_xr_cisco-sa-20160916-ikev1.nasl 5745 2017-03-28 09:01:00Z teissa $
+# $Id: gb_cisco_ios_xr_cisco-sa-20160916-ikev1.nasl 11345 2018-09-12 07:02:17Z cfischer $
 #
 # Cisco IOS XR Software IKEv1 Information Disclosure Vulnerability
 #
@@ -29,41 +29,43 @@ CPE = "cpe:/o:cisco:ios_xr";
 
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.106261");
- script_cve_id("CVE-2016-6415");
- script_tag(name:"cvss_base", value:"5.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
- script_version ("$Revision: 5745 $");
+  script_oid("1.3.6.1.4.1.25623.1.0.106261");
+  script_cve_id("CVE-2016-6415");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11345 $");
 
- script_name("Cisco IOS XR Software IKEv1 Information Disclosure Vulnerability");
+  script_name("Cisco IOS XR Software IKEv1 Information Disclosure Vulnerability");
 
- script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160916-ikev1");
- 
- script_tag(name: "vuldetect" , value:"Check the version.");
+  script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20160916-ikev1");
+  script_xref(name:"URL", value:"https://bst.cloudapps.cisco.com/bugsearch/bug/CSCvb29204");
+  script_xref(name:"URL", value:"https://bst.cloudapps.cisco.com/bugsearch/bug/CSCvb36055");
 
- script_tag(name: "solution" , value:"See the referenced vendor advisory for a solution.");
+  script_tag(name:"vuldetect", value:"Check the version.");
 
- script_tag(name: "summary" , value:"A vulnerability in IKEv1 packet processing code in Cisco IOS Software
+  script_tag(name:"solution", value:"The vendor has released updates, please see the referenced vendor advisory for more information on the fixed versions.");
+
+  script_tag(name:"summary", value:"A vulnerability in IKEv1 packet processing code in Cisco IOS Software
 could allow an unauthenticated, remote attacker to retrieve memory contents, which could lead to the
 disclosure of confidential information.");
 
- script_tag(name: "insight", value: "The vulnerability is due to insufficient condition checks in the part of
+  script_tag(name:"insight", value:"The vulnerability is due to insufficient condition checks in the part of
 the code that handles IKEv1 security negotiation requests. An attacker could exploit this vulnerability by
 sending a crafted IKEv1 packet to an affected device configured to accept IKEv1 security negotiation requests.");
 
- script_tag(name: "impact", value: "A successful exploit could allow the attacker to retrieve memory contents,
+  script_tag(name:"impact", value:"A successful exploit could allow the attacker to retrieve memory contents,
 which could lead to the disclosure of confidential information.");
 
- script_tag(name:"qod_type", value:"package");
- script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"qod_type", value:"package");
+  script_tag(name:"solution_type", value:"VendorFix");
 
- script_tag(name:"last_modification", value:"$Date: 2017-03-28 11:01:00 +0200 (Tue, 28 Mar 2017) $");
- script_tag(name:"creation_date", value:"2016-09-19 09:23:33 +0700 (Mon, 19 Sep 2016)");
- script_category(ACT_GATHER_INFO);
- script_family("CISCO");
- script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
- script_dependencies("gb_cisco_ios_xr_version.nasl");
- script_mandatory_keys("cisco/ios_xr/version");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:02:17 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2016-09-19 09:23:33 +0700 (Mon, 19 Sep 2016)");
+  script_category(ACT_GATHER_INFO);
+  script_family("CISCO");
+  script_copyright("This script is Copyright (C) 2016 Greenbone Networks GmbH");
+  script_dependencies("gb_cisco_ios_xr_version.nasl");
+  script_mandatory_keys("cisco/ios_xr/version");
  exit(0);
 }
 
@@ -73,7 +75,7 @@ include("version_func.inc");
 if (!version = get_app_version(cpe: CPE))
   exit(0);
 
-affected = make_list( 
+affected = make_list(
 		'4.3.4',
 		'5.2.1',
 		'5.2.2',
@@ -86,7 +88,7 @@ foreach af ( affected )
 {
   if( version == af )
   {
-    report = report_fixed_ver(  installed_version:version, fixed_version: "See advisory" );
+    report = report_fixed_ver( installed_version:version, fixed_version: "See advisory" );
     security_message( port:0, data:report );
     exit( 0 );
   }

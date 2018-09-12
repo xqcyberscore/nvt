@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_searchblox_mult_vuln_sept13.nasl 11223 2018-09-04 12:48:48Z cfischer $
+# $Id: gb_searchblox_mult_vuln_sept13.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # SearchBlox Multiple Vulnerabilities Sept-13
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802060");
-  script_version("$Revision: 11223 $");
+  script_version("$Revision: 11336 $");
   script_bugtraq_id(61973, 61974, 61975);
   script_cve_id("CVE-2013-3598", "CVE-2013-3597", "CVE-2013-3590");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:48:48 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-03 10:46:51 +0530 (Tue, 03 Sep 2013)");
   script_name("SearchBlox Multiple Vulnerabilities Sept-13");
 
@@ -42,11 +42,14 @@ if(description)
   script_tag(name:"solution", value:"Upgrade to SearchBlox version 7.5 build 1 or later,
   For updates refer to http://www.searchblox.com");
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Input passed via 'name' parameter to 'servlet/CreateTemplateServlet' not
   properly sanitised before being used to create files.
+
   - Error when accessing 'servlet/CollectionListServlet' servlet when 'action'
   is set to 'getList' can be exploited to disclose usernames and passwords
   from the database.
+
   - 'admin/uploadImage.html' script allows to upload an executable file with the
   image/jpeg content type and it can be exploited to execute arbitrary JSP
   code by uploading a malicious JSP script.");

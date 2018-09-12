@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cloudbees_jenkins_mult_vuln.nasl 11240 2018-09-05 10:15:12Z mmartin $
+# $Id: gb_cloudbees_jenkins_mult_vuln.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # CloudBees Jenkins Multiple Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:cloudbees:jenkins";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807001");
-  script_version("$Revision: 11240 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-5317", "CVE-2015-5318", "CVE-2015-5319", "CVE-2015-5320",
                 "CVE-2015-5321", "CVE-2015-5322", "CVE-2015-5323", "CVE-2015-5324",
                 "CVE-2015-5325", "CVE-2015-5326", "CVE-2015-8103", "CVE-2015-7536",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(77572, 77570, 77574, 77636, 77619);
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 12:15:12 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-15 17:52:00 +0530 (Tue, 15 Dec 2015)");
   script_name("CloudBees Jenkins Multiple Vulnerabilities");
 
@@ -47,16 +47,25 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An error in 'Fingerprints' pages.
+
   - The usage of publicly accessible salt to generate CSRF protection tokens.
+
   - The XML external entity (XXE) vulnerability in the create-job CLI command.
+
   - An improper verification of the shared secret used in JNLP slave
     connections.
+
   - An error in sidepanel widgets in the CLI command overview and help
     pages.
+
   - The directory traversal vulnerability in while requesting jnlpJars.
+
   - An Improper restriction on access to API tokens.
+
   - The cross-site scripting vulnerability in the slave overview page.
+
   - The unsafe deserialization in Jenkins remoting.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

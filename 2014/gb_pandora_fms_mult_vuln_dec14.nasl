@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pandora_fms_mult_vuln_dec14.nasl 11198 2018-09-03 13:39:31Z mmartin $
+# $Id: gb_pandora_fms_mult_vuln_dec14.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Pandora FMS Multiple Vulnerabilities - Dec14
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:artica:pandora_fms";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805204");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11339 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-04 12:25:10 +0530 (Thu, 04 Dec 2014)");
   script_name("Pandora FMS Multiple Vulnerabilities - Dec14");
 
@@ -43,7 +43,9 @@ if(description)
   check whether it is able to execute sql query or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The application installs with default user credentials.
+
   - An input passed to index.php script via the 'user' parameter is not
   properly sanitized before returning to users.");
 

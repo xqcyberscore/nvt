@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_offiria_cross_site_scripting_vuln.nasl 11220 2018-09-04 11:57:09Z mmartin $
+# $Id: gb_offiria_cross_site_scripting_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
 #
 # Offiria Cross-Site Scripting Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:slashes&dots:offria";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805191");
-  script_version("$Revision: 11220 $");
+  script_version("$Revision: 11321 $");
   script_cve_id("CVE-2014-2689");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-27 16:23:32 +0530 (Wed, 27 May 2015)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Offiria Cross-Site Scripting Vulnerability");
@@ -73,9 +73,9 @@ if(description)
   script_dependencies("gb_offiria_remote_detect.nasl");
   script_mandatory_keys("offiria/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
@@ -89,7 +89,6 @@ if(!appDir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-## Attack URL
 url = appDir + '/installer/index.php/"onmouseover="alert(document.cookie) ;"=">';
 
 if(http_vuln_check(port:http_port, url:url, check_header:TRUE,

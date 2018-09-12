@@ -29,11 +29,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805377");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-1250", "CVE-2015-1243");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-04 14:23:48 +0530 (Mon, 04 May 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 May15 (Mac OS X)");
 
@@ -43,8 +43,10 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - A Use-after-free flaw in the MutationObserver::disconnect function
     in core/dom/MutationObserver.cpp script in the DOM implementation in Blink.
+
   - Multiple Unspecified flaws due to unknown vectors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

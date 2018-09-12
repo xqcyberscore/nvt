@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_dos_vuln_june15_win.nasl 11220 2018-09-04 11:57:09Z mmartin $
+# $Id: gb_putty_dos_vuln_june15_win.nasl 11348 2018-09-12 07:38:26Z cfischer $
 #
 # PuTTY Denial Of Service Vulnerability June15 (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:putty:putty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805705");
-  script_version("$Revision: 11220 $");
+  script_version("$Revision: 11348 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:38:26 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-19 15:32:15 +0530 (Fri, 19 Jun 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("PuTTY Denial Of Service Vulnerability June15 (Windows)");
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"affected", value:"PuTTY version 0.64 on Windows.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore.
-		  General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
 
@@ -64,9 +64,9 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_putty_portable_detect.nasl");
   script_mandatory_keys("PuTTY/Version");
+
   exit(0);
 }
-
 
 include("host_details.inc");
 include("version_func.inc");
@@ -77,8 +77,7 @@ if(!puttyVer = get_app_version(cpe:CPE)){
 
 if(version_is_equal(version:puttyVer, test_version:"0.64"))
 {
-  report = 'Installed version: ' + puttyVer + '\n' +
-           'Fixed version:     ' + "NoneAvailable" + '\n';
+  report = report_fixed_ver(installed_version:puttyVer, fixed_version:"WillNotFix");
   security_message(data:report);
   exit(0);
 }

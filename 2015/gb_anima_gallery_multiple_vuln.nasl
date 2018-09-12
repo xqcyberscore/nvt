@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_anima_gallery_multiple_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_anima_gallery_multiple_vuln.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Anima Gallery Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805581");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-4415");
   script_bugtraq_id(75061);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-08 13:52:36 +0530 (Mon, 08 Jun 2015)");
   script_name("Anima Gallery Multiple Vulnerabilities");
 
@@ -43,10 +43,14 @@ if(description)
   and check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Multiple flaws exist as
+
   - Input passed via 'id' GET parameter is not properly sanitised before being
   returned to the user.
+
   - Application does not restrict access to sensitive files.
+
   - Application does not validate data uploaded by the user.
+
   - Input passed via 'theme' and 'lang' cookie parameter is not properly
   sanitised before being returned to the user.");
 

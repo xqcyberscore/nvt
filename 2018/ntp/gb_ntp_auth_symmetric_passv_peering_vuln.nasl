@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ntp_auth_symmetric_passv_peering_vuln.nasl 9296 2018-04-04 09:19:02Z cfischer $
+# $Id: gb_ntp_auth_symmetric_passv_peering_vuln.nasl 11317 2018-09-11 08:57:27Z asteins $
 #
 # NTP Authenticated Symmetric Passive Peering Remote Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ntp:ntp";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.812793");
-  script_version("$Revision: 9296 $");
+  script_version("$Revision: 11317 $");
   script_cve_id("CVE-2018-7170");
   script_bugtraq_id(103194);
-  script_tag(name:"cvss_base", value:"4.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 11:19:02 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"cvss_base", value:"3.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 10:57:27 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-03-07 12:17:55 +0530 (Wed, 07 Mar 2018)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); ##qod is unreliable because of backort issue
   script_name("NTP Authenticated Symmetric Passive Peering Remote Vulnerability");

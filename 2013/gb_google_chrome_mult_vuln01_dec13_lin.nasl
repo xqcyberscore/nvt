@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_dec13_lin.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_dec13_lin.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-01 Dec2013 (Linux)
 #
@@ -28,13 +28,13 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804164");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-6635", "CVE-2013-6634", "CVE-2013-6640", "CVE-2013-6636",
                 "CVE-2013-6639", "CVE-2013-6638", "CVE-2013-6637");
   script_bugtraq_id(64078);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-10 11:30:29 +0530 (Tue, 10 Dec 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Dec2013 (Linux)");
 
@@ -45,16 +45,22 @@ vulnerabilities.");
   script_tag(name:"solution", value:"Upgrade to version 31.0.1650.63 or later,
 For updates refer to http://www.google.com/chrome");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- Use-after-free vulnerability in the editing implementation in Blink.
-- An error in 'OneClickSigninHelper::ShowInfoBarIfPossible' function when
+
+  - Use-after-free vulnerability in the editing implementation in Blink.
+
+  - An error in 'OneClickSigninHelper::ShowInfoBarIfPossible' function when
 handling the 302 HTTP status in sync.
-- An out-of-bounds read error in 'DehoistArrayIndex' function in
+
+  - An out-of-bounds read error in 'DehoistArrayIndex' function in
 'hydrogen-dehoist.cc' in V8.
-- An error in 'FrameLoader::notifyIfInitialDocumentAccessed' function in
+
+  - An error in 'FrameLoader::notifyIfInitialDocumentAccessed' function in
 'core/loader/FrameLoader.cpp' in Blink.
-- An out-of-bounds write error in 'DehoistArrayIndex' function in
+
+  - An out-of-bounds write error in 'DehoistArrayIndex' function in
 'hydrogen-dehoist.cc' in V8.
-- An unspecified error in runtime.cc in V8.");
+
+  - An unspecified error in runtime.cc in V8.");
   script_tag(name:"affected", value:"Google Chrome version prior to 31.0.1650.63 on Linux.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct denial of
 service, spoofing, session fixation attacks, compromise a user's system and

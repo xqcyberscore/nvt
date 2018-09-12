@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manage_engine_servicedesk_plus_mult_vuln_oct15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_manage_engine_servicedesk_plus_mult_vuln_oct15.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # ManageEngine ServiceDesk Plus Multiple Vulnerabilities - Oct15
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:manageengine:servicedesk_plus";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806509");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:C/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-21 12:04:52 +0530 (Wed, 21 Oct 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("ManageEngine ServiceDesk Plus Multiple Vulnerabilities - Oct15");
@@ -44,9 +44,12 @@ if(description)
   and check whether it is able to enumerate user and domain or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Insufficient validation of some requests to url.
+
   - Improper access control to do certain functionality like viewing the
     subjects of the tickets, stats and other information related to tickets.
+
   - Insufficient sanitization of user supplied input via 'site' variable in
     'CreateReportTable.jsp' page.");
 

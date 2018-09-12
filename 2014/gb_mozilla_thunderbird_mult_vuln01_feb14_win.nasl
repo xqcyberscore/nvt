@@ -29,13 +29,13 @@ CPE = "cpe:/a:mozilla:thunderbird";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804092");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1477", "CVE-2014-1479", "CVE-2014-1481", "CVE-2014-1482",
                 "CVE-2014-1486", "CVE-2014-1487", "CVE-2014-1490", "CVE-2014-1491");
   script_bugtraq_id(65317, 65320, 65326, 65328, 65334, 65330, 65335, 65332);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-11 19:31:02 +0530 (Tue, 11 Feb 2014)");
   script_name("Mozilla Thunderbird Multiple Vulnerabilities-01 Feb14 (Windows)");
 
@@ -44,13 +44,19 @@ if(description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- An error when handling XML Binding Language (XBL) content scopes.
-- An error when handling discarded images within the 'RasterImage' class.
-- A use-after-free error related to certain content types when used with the
+
+  - An error when handling XML Binding Language (XBL) content scopes.
+
+  - An error when handling discarded images within the 'RasterImage' class.
+
+  - A use-after-free error related to certain content types when used with the
   'imgRequestProxy()' function.
-- An error when handling web workers error messages.
-- A race condition error when handling session tickets within libssl.
-- An error when handling JavaScript native getters on window objects.");
+
+  - An error when handling web workers error messages.
+
+  - A race condition error when handling session tickets within libssl.
+
+  - An error when handling JavaScript native getters on window objects.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
 restrictions and compromise a user's system.
 

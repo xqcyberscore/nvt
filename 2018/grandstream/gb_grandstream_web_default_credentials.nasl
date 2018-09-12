@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_grandstream_web_default_credentials.nasl 11022 2018-08-17 07:57:39Z cfischer $
+# $Id: gb_grandstream_web_default_credentials.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
 #
 # Grandstream Web UI Default Credentials
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114019");
-  script_version("$Revision: 11022 $");
+  script_version("$Revision: 11328 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:57:39 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-08 13:17:57 +0200 (Wed, 08 Aug 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
@@ -39,7 +39,7 @@ if(description)
   script_name("Grandstream Web UI Default Credentials");
   script_dependencies("gb_grandstream_web_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("Grandstream/WebUI/installed");
+  script_mandatory_keys("grandstream/webui/detected");
 
   script_xref(name:"URL", value:"https://cirt.net/passwords");
 
@@ -107,7 +107,7 @@ foreach loginType (loginTypes) {
     vers = eregmatch(pattern: "Program\s*--\s*([0-9.]+)", string: res);
     if(vers[1]) {
       version = vers[1];
-      set_kb_item(name: "Grandstream/WebUI/version", value: version);
+      set_kb_item(name: "grandstream/webui/version", value: version);
     }
     if(!loginType) {
       report = 'It was possible to login via the default admin password "admin".';

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_mult_vuln01_may.nasl 10953 2018-08-14 12:06:42Z mmartin $
+# $Id: gb_adobe_coldfusion_mult_vuln01_may.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Adobe ColdFusion Multiple Vulnerabilities-01 May-2014
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804442");
-  script_version("$Revision: 10953 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-5326", "CVE-2013-5328");
   script_bugtraq_id(63681, 63682);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:06:42 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-06 13:50:21 +0530 (Tue, 06 May 2014)");
   script_name("Adobe ColdFusion Multiple Vulnerabilities-01 May-2014");
 
@@ -43,11 +43,13 @@ vulnerabilities");
   script_tag(name:"vuldetect", value:"Get the installed version of Adobe ColdFusion with the help of
 detect NVT and check the version is vulnerable or not.");
   script_tag(name:"insight", value:"Multiple flaws are  due to,
-- Certain unspecified input is not properly sanitised before being
+
+  - Certain unspecified input is not properly sanitised before being
   returned to the user. This can be exploited to execute arbitrary HTML
   and script code in a user's browser session in context of an affected
   site.
-- An unspecified error can be exploited to gain unauthorised read access.
+
+  - An unspecified error can be exploited to gain unauthorised read access.
   No further information is currently available.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct cross-site scripting
 attacks and bypass certain security restrictions.

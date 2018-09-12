@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-042.nasl 11266 2018-09-06 10:59:26Z cfischer $
+# $Id: secpod_ms12-042.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Microsoft Windows Kernel Privilege Elevation Vulnerabilities (2711167)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902916");
-  script_version("$Revision: 11266 $");
+  script_version("$Revision: 11322 $");
   script_cve_id("CVE-2012-0217", "CVE-2012-1515");
   script_bugtraq_id(53856, 52820);
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-13 09:21:39 +0530 (Wed, 13 Jun 2012)");
   script_name("Microsoft Windows Kernel Privilege Elevation Vulnerabilities (2711167)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49454/");
@@ -55,8 +55,10 @@ if(description)
   Microsoft Windows 2K3 x32 Edition Service Pack 2 and prior
   Microsoft Windows Server 2008 x64 Edition Service Pack 1 and prior");
   script_tag(name:"insight", value:"The flaws are due to an,
+
   - Error in the User Mode Scheduler (UMS) when handling a particular system
     request can be exploited to execute arbitrary code.
+
   - Error in incorrect protection of BIOS ROM can be exploited to execute
     arbitrary code.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and

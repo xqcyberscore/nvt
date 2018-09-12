@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_ironport_csma_xss_n_csrf_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_cisco_ironport_csma_xss_n_csrf_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Cisco Content Security Management Appliance XSS and CSRF Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/h:cisco:content_security_management_appliance";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803754");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11336 $");
   script_bugtraq_id(60919, 60829);
   script_cve_id("CVE-2013-3395", "CVE-2013-3396");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-04 11:53:49 +0530 (Wed, 04 Sep 2013)");
   script_name("Cisco Content Security Management Appliance XSS and CSRF Vulnerabilities");
 
@@ -47,13 +47,16 @@ the help of detect NVT and check the version is vulnerable or not.");
 For updates refer to http://www.cisco.com/en/US/products/ps12503/index.html ");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- The lack of output escaping in the default error 500 page. When a exception
+
+  - The lack of output escaping in the default error 500 page. When a exception
   occurs in the application, the error description contains user unvalidated
   input from the request.
-- The lack of input validation on job_name, job_type, appliances_options and
+
+  - The lack of input validation on job_name, job_type, appliances_options and
   config_master parameters which are then printed unscapped on job_name,
   old_job_name, job_type, appliance_lists and config_master fields.
-- The CSRFKey is not used in some areas of the application.");
+
+  - The CSRFKey is not used in some areas of the application.");
   script_tag(name:"affected", value:"Cisco Content Security Management Appliance (SMA) 8.1 and prior");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary script
 code in the browser of an unsuspecting user in the context of the affected

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opencart_mult_vuln_dec13.nasl 11041 2018-08-17 14:03:47Z mmartin $
+# $Id: gb_opencart_mult_vuln_dec13.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # OpenCart Multiple Vulnerabilities Dec-13
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:opencart:opencart";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804161");
-  script_version("$Revision: 11041 $");
+  script_version("$Revision: 11336 $");
   script_bugtraq_id(64162);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-09 19:52:35 +0530 (Mon, 09 Dec 2013)");
   script_name("OpenCart Multiple Vulnerabilities Dec-13");
 
@@ -42,11 +42,14 @@ if(description)
 or not.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"insight", value:"The flaws are due to,
-- Input passed via the 'zone_id' POST parameter to index.php is not properly
+
+  - Input passed via the 'zone_id' POST parameter to index.php is not properly
 sanitised before being returned to the user.
-- Insufficient authorization accessing 'system/logs/error.txt' which
+
+  - Insufficient authorization accessing 'system/logs/error.txt' which
 displays the full installation path within error messages.
-- Insufficient validity checks to verify the HTTP requests made by user.");
+
+  - Insufficient validity checks to verify the HTTP requests made by user.");
   script_tag(name:"affected", value:"OpenCart version 1.5.6 and probably previous versions may also be affected.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attacker to execute arbitrary
 HTML or script code, discloses the software's installation path resulting in a

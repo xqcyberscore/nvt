@@ -28,12 +28,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804530");
-  script_version("$Revision: 10952 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1906", "CVE-2014-1907", "CVE-2014-1905", "CVE-2014-1908");
   script_bugtraq_id(65876, 65877, 65866, 65880);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 12:31:41 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-01 12:28:38 +0530 (Tue, 01 Apr 2014)");
   script_name("WordPress VideoWhisper Live Streaming Integration Multiple Vulnerabilities");
 
@@ -43,11 +43,14 @@ Plugin and is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to read
 cookie or not.");
   script_tag(name:"insight", value:"Multiple flaws are due to an,
-- Improper verification of file extensions before uploading files to the server
+
+  - Improper verification of file extensions before uploading files to the server
   in '/videowhisper-live-streaming-integration/ls/vw_snapshots.php'
-- Input passed via HTTP POST parameters 'msg' to /ls/vc_chatlog.php, 'm' to
+
+  - Input passed via HTTP POST parameters 'msg' to /ls/vc_chatlog.php, 'm' to
   /ls/lb_status.php, 'ct' to /ls/lb_status.php and /ls/v_status.php.
-- Input passed via HTTP GET parameters 'n' to /ls/channel.php, htmlchat.php,
+
+  - Input passed via HTTP GET parameters 'n' to /ls/channel.php, htmlchat.php,
   ls/video.php, and /videotext.php, 'message' to /ls/lb_logout.php, and 's'
   to rtmp_login.php and rtmp_logout.php scripts.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jojo_cms_mult_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_jojo_cms_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Jojo CMS Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803703");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-3081", "CVE-2013-3082");
   script_bugtraq_id(59934, 59933);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-23 15:54:25 +0530 (Thu, 23 May 2013)");
   script_name("Jojo CMS Multiple Vulnerabilities");
 
@@ -53,8 +53,10 @@ if(description)
   Impact Level: Application");
   script_tag(name:"affected", value:"Jojo CMS version 1.2 and prior");
   script_tag(name:"insight", value:"Multiple flaws due to,
+
   - An insufficient filtration of user-supplied input passed to the
     'X-Forwarded-For' HTTP header in '/articles/test/' URI.
+
   - An insufficient filtration of user-supplied data passed to 'search' HTTP
     POST parameter in '/forgot-password/' URI.");
   script_tag(name:"solution", value:"Update to Jojo CMS 1.2.2 or later,

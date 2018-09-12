@@ -29,11 +29,11 @@ CPE = "cpe:/a:zohocorp:manageengine_assetexplorer";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805707");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-5061", "CVE-2015-2169");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-24 14:40:38 +0530 (Wed, 24 Jun 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Manage Engine Asset Explorer Multiple Cross Site Scripting Vulnerabilities");
@@ -44,8 +44,10 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The multiple Flaws are due to
+
   - The 'VendorDef.do' script does not validate input to vendor name field
     before returning it to users.
+
   - Publisher registry entry script does not validate input before returning
     it to users.");
 

@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803895");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-3351", "CVE-2013-3352", "CVE-2013-3353", "CVE-2013-3354",
                 "CVE-2013-3355", "CVE-2013-3356", "CVE-2013-3357", "CVE-2013-3358");
   script_bugtraq_id(62429, 62431, 62428, 62432, 62435, 62436, 62433, 62430);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-17 16:32:16 +0530 (Tue, 17 Sep 2013)");
   script_name("Adobe Acrobat Multiple Unspecified Vulnerabilities-01 Sep13 (Windows)");
 
@@ -46,8 +46,10 @@ vulnerabilities.");
   script_tag(name:"solution", value:"Update to Adobe Acrobat Version 11.0.04 or 10.1.8 or later,
 For updates refer to http://www.adobe.com/in/products/acrobat.html");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- An integer overflow error when handling U3D PCX external texture.
-- Other multiple unspecified and integer overflow errors.");
+
+  - An integer overflow error when handling U3D PCX external texture.
+
+  - Other multiple unspecified and integer overflow errors.");
   script_tag(name:"affected", value:"Adobe Acrobat Version 10.x prior to 10.1.8 on Windows
 Adobe Acrobat Version 11.x prior to 11.0.04 on Windows");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary code,

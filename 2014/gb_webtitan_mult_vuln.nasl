@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webtitan_mult_vuln.nasl 10954 2018-08-14 12:43:10Z mmartin $
+# $Id: gb_webtitan_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # WebTitan Multiple Security Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804469");
-  script_version("$Revision: 10954 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-4306", "CVE-2014-4307");
   script_bugtraq_id(67921);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:43:10 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-06-23 18:10:58 +0530 (Mon, 23 Jun 2014)");
   script_name("WebTitan Multiple Security Vulnerabilities");
 
@@ -41,17 +41,23 @@ if(description)
 is able to get information or not.");
   script_tag(name:"insight", value:"- The categories-x.php script not properly sanitizing user-supplied input to
    the 'sortkey' GET parameter.
- - Input passed via the 'fname' and 'logfile' parameters is not properly
+
+  - Input passed via the 'fname' and 'logfile' parameters is not properly
    sanitized upon submission to logs-x.php.
- - Input passed via the 'ldapserver' parameter is not properly sanitized
+
+  - Input passed via the 'ldapserver' parameter is not properly sanitized
    upon submission to the users-x.php script.
- - Input passed via the 'ntpserversList' POST parameter is not properly
+
+  - Input passed via the 'ntpserversList' POST parameter is not properly
    sanitized upon submission to the time-x.php script.
- - Input passed via the 'reportid' parameter is not properly sanitized upon
+
+  - Input passed via the 'reportid' parameter is not properly sanitized upon
    submission to the schedulereports-x.php script.
- - Input passed via the 'delegated_admin' POST parameter is not properly
+
+  - Input passed via the 'delegated_admin' POST parameter is not properly
    sanitized upon submission to the reporting-x.php script.
- - The autoconf-x.php, contentfiltering-x.php, license-x.php, msgs.php, and
+
+  - The autoconf-x.php, contentfiltering-x.php, license-x.php, msgs.php, and
    reports-drill.php scripts not requiring authentication.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to trivially gain privileged
 access to the device, execute arbitrary commands and gain access to arbitrary

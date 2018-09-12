@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-032.nasl 11052 2018-08-20 10:24:34Z asteins $
+# $Id: secpod_ms12-032.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Microsoft Windows TCP/IP Privilege Elevation Vulnerabilities (2688338)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902676");
-  script_version("$Revision: 11052 $");
+  script_version("$Revision: 11322 $");
   script_cve_id("CVE-2012-0174", "CVE-2012-0179");
   script_bugtraq_id(53352, 53349);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 12:24:34 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-09 09:08:42 +0530 (Wed, 09 May 2012)");
   script_name("Microsoft Windows TCP/IP Privilege Elevation Vulnerabilities (2688338)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49114");
@@ -54,7 +54,9 @@ if(description)
   Microsoft Windows Vista Service Pack 2 and prior
   Microsoft Windows Server 2008 Service Pack 2 and prior");
   script_tag(name:"insight", value:"The flaws are due to the way,
+
   - Windows Firewall handles outbound broadcast packets.
+
   - Windows TCP/IP stack handles the binding of an IPv6 address to a local
     interface.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mnogosearch_mult_vuln.nasl 11140 2018-08-28 08:27:23Z jschulte $
+# $Id: gb_mnogosearch_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # mnoGoSearch Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803438");
-  script_version("$Revision: 11140 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2011-5235");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 10:27:23 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-15 11:19:57 +0530 (Fri, 15 Mar 2013)");
   script_name("mnoGoSearch Multiple Vulnerabilities");
 
@@ -55,7 +55,9 @@ if(description)
   Impact Level: Application");
   script_tag(name:"affected", value:"mnoGoSearch Version 3.3.12 and prior");
   script_tag(name:"insight", value:"Multiple flaws due to,
+
   - Error when parsing certain QUERY_STRING parameters.
+
   - Input passed via 'STORED' parameter to search/index.html (when 'q' is set
     to 'x') is not properly sanitized before being returned to the user.");
   script_tag(name:"solution", value:"Update to mnoGoSearch 3.3.13 or later,

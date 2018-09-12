@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_advantech_webaccess_mult_vuln.nasl 10954 2018-08-14 12:43:10Z mmartin $
+# $Id: gb_advantech_webaccess_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Advantech WebAccess Multiple Vulnerabilities
 #
@@ -28,7 +28,7 @@ CPE = "cpe:/a:advantech:advantech_webaccess";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804430");
-  script_version("$Revision: 10954 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-0763", "CVE-2014-0764", "CVE-2014-0765", "CVE-2014-0766",
                 "CVE-2014-0767", "CVE-2014-0768", "CVE-2014-0770", "CVE-2014-0771",
                 "CVE-2014-0772", "CVE-2014-0773");
@@ -36,7 +36,7 @@ if(description)
                     66732, 66733, 66750, 66749, 66742);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:43:10 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-16 14:52:28 +0530 (Wed, 16 Apr 2014)");
   script_name("Advantech WebAccess Multiple Vulnerabilities");
 
@@ -47,15 +47,19 @@ vulnerabilities.");
 and check the version is vulnerable or not.");
   script_tag(name:"insight", value:"- Certain input related to some SOAP requests is not properly sanitised within
    the DBVisitor.dll component before being used in a SQL query.
- - Multiple boundary errors within the webvact.ocx ActiveX control when
+
+  - Multiple boundary errors within the webvact.ocx ActiveX control when
    handling GotoCmd, NodeName2, AccessCode, UserName, and NodeName strings
    can be exploited to cause stack-based buffer overflows.
- - A boundary error within the webvact.ocx ActiveX control when handling the
+
+  - A boundary error within the webvact.ocx ActiveX control when handling the
    AccessCode2 string can be exploited to cause a stack-based buffer overflow.
- - Two errors within the 'OpenUrlToBuffer()' and 'OpenUrlToBufferTimeout()'
+
+  - Two errors within the 'OpenUrlToBuffer()' and 'OpenUrlToBufferTimeout()'
    methods of the BWOCXRUN.BwocxrunCtrl.1 ActiveX control can be exploited
    to disclose contents of arbitrary local or network resources.
- - An error within the 'CreateProcess()' method of the BWOCXRUN.BwocxrunCtrl.1
+
+  - An error within the 'CreateProcess()' method of the BWOCXRUN.BwocxrunCtrl.1
    ActiveX control can be exploited to bypass the intended restrictions and
    subsequently execute arbitrary code. ");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct SQL injection attacks,

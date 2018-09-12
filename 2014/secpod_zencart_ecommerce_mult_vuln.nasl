@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_zencart_ecommerce_mult_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: secpod_zencart_ecommerce_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Zen-cart E-commerce Multiple Vulnerabilities Feb-2014
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903513");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-25 13:05:23 +0530 (Tue, 25 Feb 2014)");
   script_name("Zen-cart E-commerce Multiple Vulnerabilities Feb-2014");
 
@@ -38,7 +38,9 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted exploit string via HTTP GET request and check whether it
   is vulnerable or not.");
   script_tag(name:"insight", value:"The flaw are due to an,
+
   - Error which fails to sanitize 'redirect' parameter properly.
+
   - Insufficient validation of user-supplied input via the multiple POST
   parameters to multiple pages.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTML

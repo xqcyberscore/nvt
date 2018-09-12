@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openfire_server_multiple_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_openfire_server_multiple_vuln.nasl 11348 2018-09-12 07:38:26Z cfischer $
 #
 # OpenFire Server Multiple Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:igniterealtime:openfire";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806061");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11348 $");
   script_cve_id("CVE-2015-6972", "CVE-2015-6973", "CVE-2015-7707");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:38:26 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-10-19 15:36:42 +0530 (Mon, 19 Oct 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenFire Server Multiple Vulnerabilities");
@@ -84,6 +84,7 @@ General solution options are to upgrade to a newer release, disable respective f
   script_dependencies("gb_openfire_detect.nasl");
   script_mandatory_keys("OpenFire/Installed");
   script_require_ports("Services/www", 9090);
+
   exit(0);
 }
 
@@ -101,8 +102,7 @@ if(!fireVer || "Unknown" >< fireVer){
 
 if (version_is_equal(version:fireVer, test_version:"3.10.2"))
 {
-  report = 'Installed Version: ' +fireVer+ '\n' +
-           'Fixed Version:     '+"NoneAvailable"+ '\n';
+  report = report_fixed_ver(installed_version:fireVer, fixed_version:"WillNotFix");
   security_message(port:firePort, data:report);
   exit(0);
 }

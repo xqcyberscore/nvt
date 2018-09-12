@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_semantic_ent_wiki_target_param_xss_vuln.nasl 5963 2017-04-18 09:02:14Z teissa $
+# $Id: gb_semantic_ent_wiki_target_param_xss_vuln.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Semantic Enterprise Wiki Halo Extension 'target' XSS Vulnerability
 #
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802709");
-  script_version("$Revision: 5963 $");
+  script_version("$Revision: 11322 $");
   script_cve_id("CVE-2012-1212");
   script_bugtraq_id(51980);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Tue, 18 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-16 16:34:28 +0530 (Fri, 16 Mar 2012)");
   script_name("Semantic Enterprise Wiki Halo Extension 'target' XSS Vulnerability");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/47968");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51980");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/73167");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/109637/SMW-1.5.6-Cross-Site-Scripting.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/47968");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51980");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/73167");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/109637/SMW-1.5.6-Cross-Site-Scripting.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
@@ -48,20 +48,19 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
   web script or HTML in a user's browser session in the context of an affected
   site.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Semantic Enterprise Wiki (SMW+) 1.6.0_2 and earlier");
-  script_tag(name : "insight" , value : "The flaw is due to an input passed via the 'target' parameter
+  script_tag(name:"affected", value:"Semantic Enterprise Wiki (SMW+) 1.6.0_2 and earlier");
+  script_tag(name:"insight", value:"The flaw is due to an input passed via the 'target' parameter
   to 'index.php/Special:FormEdit' is not properly sanitised in the
   'smwfOnSfSetTargetName()' function before being returned to the user.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running Semantic Enterprise Wiki and is prone to cross-site
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running Semantic Enterprise Wiki and is prone to cross-site
   scripting vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -69,24 +68,11 @@ if(description)
   exit(0);
 }
 
-##
-## The script code starts here
-##
-
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-port = 0;
-dir = "";
-sndReq = "";
-rcvRes = "";
-url = "";
-
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
@@ -96,17 +82,14 @@ foreach dir (make_list_unique("/", "/mediawiki", "/smw", cgi_dirs(port:port)))
 
   if(dir == "/") dir = "";
 
-  ## Confirm the application
   sndReq = http_get(item: string(dir, "/index.php/Main_Page"), port:port);
   rcvRes = http_keepalive_send_recv(port:port, data:sndReq);
 
   if("SMW" >< rcvRes && "semantic enterprise wiki" >< rcvRes)
   {
-    ## Construct the Attack Request
     url = dir + "/index.php/Special:FormEdit?target='%3Balert(" +
                 "document.cookie)%2F%2F\&categories=Calendar+";
 
-    ## Try attack and check the response to confirm vulnerability.
     if(http_vuln_check(port:port, url:url, pattern:";alert(document.cookie" +
                        ")\/\/\\'", check_header:TRUE))
     {

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-052.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: secpod_ms13-052.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Microsoft .NET Framework Multiple Vulnerabilities (2861561)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902985");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-3129", "CVE-2013-3131", "CVE-2013-3132", "CVE-2013-3133",
                 "CVE-2013-3134", "CVE-2013-3171");
   script_bugtraq_id(60978, 60932, 60933, 60934, 60935, 60937);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-10 12:28:17 +0530 (Wed, 10 Jul 2013)");
   script_name("Microsoft .NET Framework Multiple Vulnerabilities (2861561)");
 
@@ -46,9 +46,11 @@ or not.");
 update mentioned hotfixes in the advisory from the below link,
 http://technet.microsoft.com/en-us/security/bulletin/ms13-052");
   script_tag(name:"insight", value:"Multiple flaws due to,
-- Improper handling of TrueType font and multidimensional arrays of small
+
+  - Improper handling of TrueType font and multidimensional arrays of small
   structures
-- Improper validation of permissions for certain objects performing reflection
+
+  - Improper validation of permissions for certain objects performing reflection
   and delegate objects during serialization");
   script_tag(name:"affected", value:"Microsoft .NET Framework 1.0, 1.1, 2.0, 3.0, 3.5, 3.5.1, 4.0 and 4.5");
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute arbitrary code,

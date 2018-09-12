@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_vuln04_july14.nasl 11196 2018-09-03 13:09:40Z mmartin $
+# $Id: gb_owncloud_mult_vuln04_july14.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # ownCloud Multiple Vulnerabilities-04 July14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804662");
-  script_version("$Revision: 11196 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-3833", "CVE-2014-3835", "CVE-2014-3838");
   script_bugtraq_id(67451, 68060, 68059);
   script_tag(name:"cvss_base", value:"5.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-03 16:47:48 +0530 (Thu, 03 Jul 2014)");
   script_name("ownCloud Multiple Vulnerabilities-04 July14");
 
@@ -43,13 +43,13 @@ vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
-- Input passed on to 'print_unescaped' function in the Gallery component is not
+  - Input passed on to 'print_unescaped' function in the Gallery component is not
   sufficiently validated before returning it to users.
 
-- The program fails to verify whether a user has been granted access to add
+  - The program fails to verify whether a user has been granted access to add
   external storages or not.
 
-- The server fails to properly perform authorization checks in core when
+  - The server fails to properly perform authorization checks in core when
   handling user accounts.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to mount an external
 storage without permission, access the file names of other users and execute

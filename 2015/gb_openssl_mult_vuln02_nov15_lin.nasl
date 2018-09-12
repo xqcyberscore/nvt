@@ -1,6 +1,6 @@
 ###############################################################################
 #OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln02_nov15_lin.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: gb_openssl_mult_vuln02_nov15_lin.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # OpenSSL Multiple Vulnerabilities -02 Nov15 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806731");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-0293", "CVE-2015-0289", "CVE-2015-0288", "CVE-2015-0287",
                 "CVE-2015-0286", "CVE-2015-0209");
   script_bugtraq_id(73232, 73231, 73237, 73227, 73225, 73239);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-26 11:33:57 +0530 (Thu, 26 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
   script_name("OpenSSL Multiple Vulnerabilities -02 Nov15 (Linux)");
@@ -46,14 +46,20 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Error in 'SSLv2' implementation.
+
   - Incorrect handling of missing outer ContentInfo when parsing PKCS#7
     structures in PKCS#7 implementation.
+
   - 'X509_to_X509_REQ' function in 'crypto/x509/x509_req.c' script incorrectly
     handle invalid certificate keys.
+
   - Incorrect handling of ASN.1 structure reuse.
+
   - 'ASN1_TYPE_cmp' function in 'crypto/asn1/a_type.c' script incorrectly handle
     boolean-type comparisons.
+
   - Use-after-free vulnerability in the 'd2i_ECPrivateKey' function in
     'crypto/ec/ec_asn1.c' script.");
 

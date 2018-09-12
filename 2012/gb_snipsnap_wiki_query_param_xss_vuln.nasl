@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snipsnap_wiki_query_param_xss_vuln.nasl 6018 2017-04-24 09:02:24Z teissa $
+# $Id: gb_snipsnap_wiki_query_param_xss_vuln.nasl 11327 2018-09-11 11:35:07Z asteins $
 #
 # SnipSnap Wiki 'query' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802606");
-  script_version("$Revision: 6018 $");
+  script_version("$Revision: 11327 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-24 11:02:24 +0200 (Mon, 24 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-09 12:12:12 +0530 (Thu, 09 Feb 2012)");
   script_name("SnipSnap Wiki 'query' Parameter Cross Site Scripting Vulnerability");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/109543/snipsnap-xss.txt");
-  script_xref(name : "URL" , value : "http://st2tea.blogspot.in/2012/02/snipsnap-cross-site-scripting.html");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/109543/snipsnap-xss.txt");
+  script_xref(name:"URL", value:"http://st2tea.blogspot.in/2012/02/snipsnap-cross-site-scripting.html");
 
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
@@ -43,21 +43,20 @@ if(description)
   script_require_ports("Services/www", 8080);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to insert
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
   arbitrary HTML and script code, which will be executed in a user's browser
   session in the context of an affected site.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "SnipSnap version 1.0b3 and prior.");
-  script_tag(name : "insight" , value : "The flaw is due to an improper validation of user-supplied input
+  script_tag(name:"affected", value:"SnipSnap version 1.0b3 and prior.");
+  script_tag(name:"insight", value:"The flaw is due to an improper validation of user-supplied input
   to the 'query' parameter in 'snipsnap-search', which allows attackers to execute
   arbitrary HTML and script code in a user's browser session in the context of
   an affected site.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running SnipSnap and is prone to cross site scripting
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running SnipSnap and is prone to cross site scripting
   vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -69,35 +68,24 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialization
-req = "";
-res = "";
-port = 0;
-
-## Get HTTP Port
 port = get_http_port(default:8080);
 
-## Iterate over possible paths
 foreach dir (make_list_unique("/space", "/snipsnap/space", cgi_dirs(port:port)))
 {
 
   if(dir == "/") dir = "";
 
-  ## Send and Receive the response
   req = http_get(item: dir + "/start", port: port);
   if(!isnull(req))
   {
     res = http_keepalive_send_recv(port:port, data:req);
     if(!isnull(res))
     {
-      ## Confirm the application before trying exploit
       if( 'content="SnipSnap' >< res || '>SnipSnap' >< res)
       {
-        ## Construct Attack Request
         url = dir + '/snipsnap-search?query="<script>alert(document.cookie)' +
              '</script>';
 
-        ## Try attack and check the response to confirm vulnerability
         if(http_vuln_check(port:port, url:url, check_header: TRUE,
            pattern:"<script>alert\(document.cookie\)</script>"))
         {

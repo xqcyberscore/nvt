@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln01_mar13_lin.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_adobe_flash_player_mult_vuln01_mar13_lin.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Adobe Flash Player Multiple Vulnerabilities -01 March13 (Linux)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803324");
-  script_version("$Revision: 11056 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_version("$Revision: 11336 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-04 18:54:31 +0530 (Mon, 04 Mar 2013)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -50,8 +50,11 @@ if(description)
   script_tag(name:"affected", value:"Adobe Flash Player 10.3.183.61 and earlier, and 11.x to 11.2.202.270
   on Linux");
   script_tag(name:"insight", value:"Multiple flaws due to,
+
   - A flaw in the ExternalInterface ActionScript feature.
+
   - Firefox sandbox does not restrict privileges.
+
   - Buffer overflow in the Flash Player broker service.");
   script_tag(name:"solution", value:"Update to version 10.3.183.67 or 11.2.202.273,
   For updates refer to http://www.adobe.com/products/flash.html");

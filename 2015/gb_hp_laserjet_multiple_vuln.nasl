@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_laserjet_multiple_vuln.nasl 11227 2018-09-04 13:25:37Z mmartin $
+# $Id: gb_hp_laserjet_multiple_vuln.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # HP LaserJet Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805040");
-  script_version("$Revision: 11227 $");
+  script_version("$Revision: 11333 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:25:37 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-29 13:07:29 +0530 (Thu, 29 Jan 2015)");
   script_name("HP LaserJet Multiple Vulnerabilities");
 
@@ -43,9 +43,11 @@ if(description)
   script_tag(name:"insight", value:"- There are Information Leakage and Insufficient Authorization vulnerabilities
     in HP LaserJet. Vulnerabilities are in control panel of HP network MFP and
     printers.
+
   - There is access without authorization to information about all settings
     of the printer (read only, but it's possible to find printers with
     possibility to change settings).
+
   - In section 'Print Information Pages' it is possible to print test documents
     without authorization. Thus without login and password it's possible to
     waste paper and cartridge of the printer.");

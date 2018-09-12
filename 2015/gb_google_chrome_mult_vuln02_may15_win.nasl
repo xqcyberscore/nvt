@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_may15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_google_chrome_mult_vuln02_may15_win.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities - 02 - May15 (Windows)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805631");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-1251", "CVE-2015-1252", "CVE-2015-1253", "CVE-2015-1254",
                 "CVE-2015-1255", "CVE-2015-1256", "CVE-2015-1257", "CVE-2015-1258",
                 "CVE-2015-1259", "CVE-2015-1260", "CVE-2015-1262", "CVE-2015-1263",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(74723);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-27 09:42:43 +0530 (Wed, 27 May 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Google Chrome Multiple Vulnerabilities - 02 - May15 (Windows)");
@@ -48,30 +48,44 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Multiple unspecified vulnerabilities in Google V8.
+
   - Use-after-free vulnerability in the SpeechRecognitionClient implementation
   in the Speech subsystem.
+
   - common/partial_circular_buffer.cc script in Google Chrome does not properly
   handle wraps.
+
   - Vulnerability in core/html/parser/HTMLConstructionSite.cpp in the DOM
   implementation in Blink, as used in Google Chrome.
+
   - Vulnerability in core/dom/Document.cpp in Blink, as used in Google Chrome
   which allows the inheritance of the designMode attribute.
+
   - Use-after-free vulnerability in
   content/renderer/media/webaudio_capturer_source.cc  script in the WebAudio
   implementation.
+
   - Use-after-free vulnerability in the SVG implementation in Blink.
+
   - platform/graphics/filters/FEColorMatrix.cpp script in the SVG implementation
   in Blink.
+
   - Google Chrome relies on libvpx code that was not built with an appropriate
   size-limit value.
+
   - PDFium, as used in Google Chrome, does not properly initialize memory.
+
   - Multiple use-after-free vulnerabilities in
   content/renderer/media/user_media_client_impl.cc script in the WebRTC
   implementation.
+
   - Cross-site scripting (XSS) vulnerability in Google Chrome.
+
   - The Spellcheck API implementation in Google Chrome before does not use an
   HTTPS session for downloading a Hunspell dictionary.
+
   - platform/fonts/shaping/HarfBuzzShaper.cpp script in Blink, does not
   initialize a certain width field.");
 

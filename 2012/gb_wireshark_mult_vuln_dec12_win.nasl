@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_dec12_win.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_wireshark_mult_vuln_dec12_win.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Wireshark Multiple Dissector Multiple Vulnerabilities - Dec12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803070");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11322 $");
   script_cve_id("CVE-2012-6052", "CVE-2012-6054", "CVE-2012-6055", "CVE-2012-6056",
                 "CVE-2012-6057");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-10 10:30:54 +0530 (Mon, 10 Dec 2012)");
   script_name("Wireshark Multiple Dissector Multiple Vulnerabilities - Dec12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51422");
@@ -52,9 +52,12 @@ if(description)
   Impact Level: Application");
   script_tag(name:"affected", value:"Wireshark versions 1.8.x before 1.8.4 on Windows");
   script_tag(name:"insight", value:"The flaws are due to
+
   - Hostname disclosure by reading pcap-ng files.
+
   - The dissect_sflow_245_address_type() in sFlow dissector fails to handle
     length calculations for an invalid IP address type.
+
   - Errors in 3GPP2 A11, SCTP and EIGRP dissectors, which can be exploited
     to cause a crash.");
   script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.8.4 or later,

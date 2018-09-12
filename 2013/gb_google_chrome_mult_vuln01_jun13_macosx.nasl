@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jun13_macosx.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_jun13_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities-01 June13 (MAC OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803649");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-2865", "CVE-2013-2864", "CVE-2013-2863", "CVE-2013-2862",
                 "CVE-2013-2861", "CVE-2013-2860", "CVE-2013-2859", "CVE-2013-2858",
                 "CVE-2013-2857", "CVE-2013-2856", "CVE-2013-2855", "CVE-2013-2854");
@@ -35,7 +35,7 @@ if(description)
                     60404, 60405, 60406);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-06-11 15:37:34 +0530 (Tue, 11 Jun 2013)");
   script_name("Google Chrome Multiple Vulnerabilities-01 June13 (MAC OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/53681");
@@ -52,8 +52,10 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Google Chrome version prior to 27.0.1453.110 on MAC OS X");
   script_tag(name:"insight", value:"Multiple flaws due to,
+
   - Use-after-free errors in input handling, image handling, HTML5 Audio, SVG,
     and when accessing database APIs.
+
   - Unspecified erros with dev tools API, Skia GPU handling, SSL socket
     handling, and PDF viewer.");
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 27.0.1453.110 or later,

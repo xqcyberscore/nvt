@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-059.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: secpod_ms13-059.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2862772)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903315");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-3184", "CVE-2013-3186", "CVE-2013-3187", "CVE-2013-3188",
                 "CVE-2013-3189", "CVE-2013-3190", "CVE-2013-3191", "CVE-2013-3192",
                  "CVE-2013-3193", "CVE-2013-3194", "CVE-2013-3199");
@@ -35,7 +35,7 @@ if(description)
                     61678, 61679, 61680);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-14 08:14:59 +0530 (Wed, 14 Aug 2013)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2862772)");
   script_tag(name:"summary", value:"This host is missing a critical security update according to Microsoft
@@ -46,9 +46,11 @@ or not.");
 update mentioned hotfixes in the advisory from the below link,
 http://technet.microsoft.com/en-us/security/bulletin/ms13-059");
   script_tag(name:"insight", value:"Multiple flaws due to,
-- Error when handling process integrity level assignments and EUC-JP character
+
+  - Error when handling process integrity level assignments and EUC-JP character
   encoding.
-- Multiple unspecified errors.");
+
+  - Multiple unspecified errors.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x/10.x/11.x");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to corrupt memory by the execution of arbitrary code in the context of the current user. Impact Level: System/Application");
   script_tag(name:"qod_type", value:"registry");

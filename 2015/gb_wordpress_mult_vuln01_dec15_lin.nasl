@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_mult_vuln01_dec15_lin.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_wordpress_mult_vuln01_dec15_lin.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # WordPress Multiple Vulnerabilities Dec15 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806801");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-5734", "CVE-2015-5733", "CVE-2015-5732", "CVE-2015-5731",
                 "CVE-2015-5730", "CVE-2015-2213");
   script_bugtraq_id(76331, 76160);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-15 13:15:38 +0530 (Tue, 15 Dec 2015)");
   script_name("WordPress Multiple Vulnerabilities Dec15 (Linux)");
 
@@ -45,19 +45,25 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An error in the legacy theme preview implementation within the  file
    'wp-includes/theme.php', which is not properly handling the user input.
+
   - An error in the function 'refreshAdvancedAccessibilityOfItem' within file
     'wp-admin/js/nav-menu.js', which is not properly handling the user input.
+
   - An error in the function 'WP_Nav_Menu_Widget' class within file
    'wp-includes/default-widgets.php', which is not properly handling the user
     input.
+
   - The function 'wp_untrash_post_comments' is not properly handling a comment
     after retrieving from trash within the file 'wp-includes/post.php'
+
   - The no usage of constant time comaprision for widgets in function
     'sanitize_widget_instance' leads to timing side-channel attack by measuring
     the delay before inequality is calculated which is
     within the file 'wp-includes/class-wp-customize-widgets.php'
+
   - The Cross-site request forgery (CSRF) vulnerability in 'wp-admin/post.php'");
 
   script_tag(name:"impact", value:"Successfully exploiting will allow

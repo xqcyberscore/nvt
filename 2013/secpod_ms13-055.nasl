@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-055.nasl 11041 2018-08-17 14:03:47Z mmartin $
+# $Id: secpod_ms13-055.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2846071)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903314");
-  script_version("$Revision: 11041 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-3115", "CVE-2013-3143", "CVE-2013-3144", "CVE-2013-3145",
                 "CVE-2013-3146", "CVE-2013-3147", "CVE-2013-3148", "CVE-2013-3149",
                 "CVE-2013-3150", "CVE-2013-3151", "CVE-2013-3152", "CVE-2013-3153",
@@ -37,7 +37,7 @@ if(description)
                     60970, 60971, 60972, 60973, 60974, 60975, 60976, 60941);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-07-10 08:34:28 +0530 (Wed, 10 Jul 2013)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2846071)");
 
@@ -50,8 +50,10 @@ or not.");
 update mentioned hotfixes in the advisory from the below link,
 http://technet.microsoft.com/en-us/security/bulletin/ms13-055");
   script_tag(name:"insight", value:"Multiple unspecified error due to an,
-- Improper handling of the encoding for Shift_JIS auto-selection.
-- Improper handling of objects in memory.");
+
+  - Improper handling of the encoding for Shift_JIS auto-selection.
+
+  - Improper handling of objects in memory.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x/10.x");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to corrupt memory by the
 execution of arbitrary code in the context of the current user.

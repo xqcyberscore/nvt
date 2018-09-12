@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_uac_behavior_elevation_prompt_users.nasl 10740 2018-08-02 14:13:50Z emoss $
+# $Id: win_uac_behavior_elevation_prompt_users.nasl 11344 2018-09-12 06:57:52Z emoss $
 #
 # Check value for User Account Control: Behavior of the elevation prompt for standard users
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109244");
-  script_version("$Revision: 10740 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-02 16:13:50 +0200 (Thu, 02 Aug 2018) $");
+  script_version("$Revision: 11344 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:57:52 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-12 14:44:04 +0200 (Tue, 12 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -40,7 +40,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_add_preference(name:"Value", type:"radio", value:"0;1");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'User Account Control: Behavior of the elevation prompt for standard users' on
 Windows hosts (at least Windows 7).
 
@@ -73,7 +73,7 @@ key = 'Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System';
 item = 'ConsentPromptBehaviorUser';
 default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
-if(!value){
+if(value == ''){
   val = '1';
 }
 

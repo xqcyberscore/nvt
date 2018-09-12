@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_seamonkey_mult_vuln02_nov12_win.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_mozilla_seamonkey_mult_vuln02_nov12_win.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Mozilla SeaMonkey Multiple Vulnerabilities-02 November12 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803353");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11322 $");
   script_cve_id("CVE-2012-4212", "CVE-2012-4213", "CVE-2012-4217", "CVE-2012-4217",
                 "CVE-2012-4204", "CVE-2012-4205", "CVE-2012-4208", "CVE-2012-5843",
                 "CVE-2012-5836", "CVE-2012-5838");
@@ -35,7 +35,7 @@ if(description)
                     56631, 56636, 56642, 56637, 56635);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 12:30:03 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla SeaMonkey Multiple Vulnerabilities-02 November12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51358");
@@ -59,9 +59,12 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"SeaMonkey version before 2.14 on Windows");
   script_tag(name:"insight", value:"Multiple error exists
+
   - When combining SVG text with the setting of CSS properties.
+
   - Within the 'copyTexImage2D' implementation in the WebGL subsystem and
     in the XrayWrapper implementation.
+
   - Within 'str_unescape' in the Javascript engin and in 'XMLHttpRequest'
     objects created within sandboxes.");
   script_tag(name:"solution", value:"Upgrade to SeaMonkey version to 2.14 or later,

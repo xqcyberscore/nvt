@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln02_apr14_lin.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_google_chrome_mult_vuln02_apr14_lin.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities - 02 Apr14 (Linux)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804271");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1730", "CVE-2014-1731", "CVE-2014-1732", "CVE-2014-1733",
                 "CVE-2014-1734", "CVE-2014-1735", "CVE-2014-1736");
   script_bugtraq_id(67082);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-29 14:07:08 +0530 (Tue, 29 Apr 2014)");
   script_name("Google Chrome Multiple Vulnerabilities - 02 Apr14 (Linux)");
 
@@ -44,13 +44,20 @@ if(description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaws are due to,
-- Multiple unspecified errors in V8.
-- A type confusion error exists in v8.
-- A type confusion error exists within DOM.
-- A use-after-free error exists in Speech Recognition.
-- An error exists related to compilation of Seccomp-BPF.
-- Some unspecified errors exist.
-- Integer overflow in api.cc in Google V8.");
+
+  - Multiple unspecified errors in V8.
+
+  - A type confusion error exists in v8.
+
+  - A type confusion error exists within DOM.
+
+  - A use-after-free error exists in Speech Recognition.
+
+  - An error exists related to compilation of Seccomp-BPF.
+
+  - Some unspecified errors exist.
+
+  - Integer overflow in api.cc in Google V8.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct a denial of
 service, bypass intended sandbox restrictions, compromise a user's system
 or an unknown impact.

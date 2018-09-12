@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_basler_ip_camera_detect.nasl 11303 2018-09-10 11:44:00Z tpassfeld $
+# $Id: gb_basler_ip_camera_detect.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
 #
 # Basler IP Camera Remote Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114029");
-  script_version("$Revision: 11303 $");
+  script_version("$Revision: 11328 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:44:00 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-10 12:17:48 +0200 (Mon, 10 Sep 2018)");
   script_name("Basler IP Camera Remote Detection");
   script_category(ACT_GATHER_INFO);
@@ -65,17 +65,17 @@ if(res =~ "(Surveillance|IP Camera) Web Client \(c\) [0-9]+ Basler AG" && res =~
 
   version = "unknown";
 
-  set_kb_item(name: "Basler/IP_Camera/detected", value: TRUE);
+  set_kb_item(name: "basler/ip_camera/detected", value: TRUE);
 
   #<td id="info-firmware">3.5.1</td>
   ver = eregmatch(pattern: '<td id="info-firmware">([0-9.a-zA-Z-]+)</td>', string: res);
   if(ver[1]) version = ver[1];
 
-  set_kb_item(name: "Basler/IP_Camera/version", value: version);
+  set_kb_item(name: "basler/ip_Camera/version", value: version);
 
   #<td id="info-model">BIP2-1920c-dn</td>
   model = eregmatch(pattern: '<td id="info-model">([a-zA-Z0-9-]+)</td>', string: res);
-  if(model[1]) set_kb_item(name: "Basler/IP_Camera/model", value: model[1]);
+  if(model[1]) set_kb_item(name: "basler/ip_camera/model", value: model[1]);
 
   cpe = "cpe:/a:basler:ip_camera:";
 

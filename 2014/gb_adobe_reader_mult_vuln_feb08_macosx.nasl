@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln_feb08_macosx.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_adobe_reader_mult_vuln_feb08_macosx.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Adobe Reader Multiple Vulnerabilities Feb08 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804373");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2008-0667", "CVE-2007-5666", "CVE-2007-5659", "CVE-2007-5663",
                 "CVE-2008-0726", "CVE-2008-0655", "CVE-2008-2042");
   script_bugtraq_id(27641);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-08 19:28:29 +0530 (Tue, 08 Apr 2014)");
   script_name("Adobe Reader Multiple Vulnerabilities Feb08 (Mac OS X)");
 
@@ -44,13 +44,20 @@ if(description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaws are due to,
-- Multiple boundary errors in several unspecified JavaScript methods.
-- An unspecified insecure JavaScript method in 'EScript.api'.
-- Untrusted search path error in 'Security Provider' libraries.
-- An error in insecure JavaScript method 'DOC.print'.
-- An integer overflow in the 'printSepsWithParams' JavaScript method.
-- An unspecified error in Javascript API.
-- Other unspecified errors.");
+
+  - Multiple boundary errors in several unspecified JavaScript methods.
+
+  - An unspecified insecure JavaScript method in 'EScript.api'.
+
+  - Untrusted search path error in 'Security Provider' libraries.
+
+  - An error in insecure JavaScript method 'DOC.print'.
+
+  - An integer overflow in the 'printSepsWithParams' JavaScript method.
+
+  - An unspecified error in Javascript API.
+
+  - Other unspecified errors.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct a denial of service
 and execution of arbitrary code or compromise a user's system.
 

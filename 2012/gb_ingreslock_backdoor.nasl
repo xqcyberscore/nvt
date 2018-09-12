@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ingreslock_backdoor.nasl 8233 2017-12-22 09:37:31Z cfischer $
+# $Id: gb_ingreslock_backdoor.nasl 11327 2018-09-11 11:35:07Z asteins $
 #
 # Possible Backdoor: Ingreslock
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.103549");
-  script_version("$Revision: 8233 $");
+  script_version("$Revision: 11327 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-12-22 10:37:31 +0100 (Fri, 22 Dec 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-22 16:21:38 +0200 (Wed, 22 Aug 2012)");
   script_name("Possible Backdoor: Ingreslock");
   script_category(ACT_ATTACK);
@@ -40,13 +40,9 @@ if(description)
   script_dependencies("find_service1.nasl", "find_service2.nasl", "secpod_open_tcp_ports.nasl");
   script_mandatory_keys("TCP/PORTS");
 
-  tag_summary = "A backdoor is installed on the remote host";
-
-  tag_impact = "Attackers can exploit this issue to execute arbitrary commands in the
-  context of the application. Successful attacks will compromise the affected isystem.";
-
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
+  script_tag(name:"summary", value:"A backdoor is installed on the remote host");
+  script_tag(name:"impact", value:"Attackers can exploit this issue to execute arbitrary commands in the
+  context of the application. Successful attacks will compromise the affected isystem.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"Workaround");

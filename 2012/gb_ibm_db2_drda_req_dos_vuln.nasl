@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_drda_req_dos_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_ibm_db2_drda_req_dos_vuln.nasl 11325 2018-09-11 10:59:54Z asteins $
 #
 # IBM DB2 Distributed Relational Database Architecture Request DoS Vulnerability
 #
@@ -24,37 +24,22 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation allows remote users to cause denial
-  of service.
-  Impact Level: Application.";
-tag_affected = "IBM DB2 version 9.1 before FP11,
-  IBM DB2 version 9.5 before FP9,
-  IBM DB2 version 9.7 before FP5 and
-  IBM DB2 version 9.8 before FP4";
-tag_insight = "The flaw is caused due an error within the server component can be exploited
-  to cause a crash by sending a specially crafted Distributed Relational
-  Database Architecture request.";
-tag_solution = "Upgrade to IBM DB2 version 9.1 FP11, 9.5 FP8, 9.7 FP5, 9.8 FP4 or later,
-  For updates refer to http://www-01.ibm.com/support/docview.wss?uid=swg27007053";
-tag_summary = "The host is running IBM DB2 and is prone to denial of service
-  vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802729");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11325 $");
   script_cve_id("CVE-2012-0710");
   script_bugtraq_id(52326);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-03 10:37:46 +0530 (Tue, 03 Apr 2012)");
   script_name("IBM DB2 Distributed Relational Database Architecture Request DoS Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/48279/");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/73494");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg21588090");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg1IC76899");
-  script_xref(name : "URL" , value : "http://www-01.ibm.com/support/docview.wss?uid=swg27007053");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/48279/");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/73494");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg21588090");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg1IC76899");
+  script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg27007053");
 
   script_tag(name:"qod_type", value:"remote_banner");
   script_category(ACT_GATHER_INFO);
@@ -62,19 +47,26 @@ if(description)
   script_family("Databases");
   script_dependencies("gb_ibm_db2_remote_detect.nasl");
   script_require_keys("IBM-DB2/Remote/ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation allows remote users to cause denial
+  of service.
+  Impact Level: Application.");
+  script_tag(name:"affected", value:"IBM DB2 version 9.1 before FP11,
+  IBM DB2 version 9.5 before FP9,
+  IBM DB2 version 9.7 before FP5 and
+  IBM DB2 version 9.8 before FP4");
+  script_tag(name:"insight", value:"The flaw is caused due an error within the server component can be exploited
+  to cause a crash by sending a specially crafted Distributed Relational
+  Database Architecture request.");
+  script_tag(name:"solution", value:"Upgrade to IBM DB2 version 9.1 FP11, 9.5 FP8, 9.7 FP5, 9.8 FP4 or later,
+  For updates refer to http://www-01.ibm.com/support/docview.wss?uid=swg27007053");
+  script_tag(name:"summary", value:"The host is running IBM DB2 and is prone to denial of service
+  vulnerability.");
+  script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
 
 include("version_func.inc");
-
-## Variable Initialization
-ibmVer = "";
 
 ibmVer = get_kb_item("IBM-DB2/Remote/ver");
 if(!ibmVer){
@@ -86,7 +78,7 @@ if(ibmVer =~ "^0907\.*")
   # IBM DB2 9.7 FP 5 => 09075
   if(version_is_less(version:ibmVer, test_version:"09075"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -96,7 +88,7 @@ if(ibmVer =~ "^0901\.*")
   # IBM DB2 9.1 FP 11 => 090111
   if(version_is_less(version:ibmVer, test_version:"090111"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -106,7 +98,7 @@ if(ibmVer =~ "^0905\.*")
   # IBM DB2 9.5 FP 9 => 09059
   if(version_is_less(version:ibmVer, test_version:"09059"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }
@@ -115,6 +107,8 @@ if(ibmVer =~ "^0908\.*")
 {
   # IBM DB2 9.8 FP 4 => 09084
   if(version_is_less(version:ibmVer, test_version:"09084")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }
+
+exit(0);

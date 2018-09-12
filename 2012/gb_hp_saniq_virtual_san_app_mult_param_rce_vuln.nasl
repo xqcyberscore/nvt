@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_saniq_virtual_san_app_mult_param_rce_vuln.nasl 4690 2016-12-06 14:44:58Z cfi $
+# $Id: gb_hp_saniq_virtual_san_app_mult_param_rce_vuln.nasl 11325 2018-09-11 10:59:54Z asteins $
 #
 # HP SAN/iQ Virtual SAN Appliance Multiple Parameters Command Execution Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802455");
-  script_version("$Revision: 4690 $");
+  script_version("$Revision: 11325 $");
   script_cve_id("CVE-2012-2986", "CVE-2012-4362");
   script_bugtraq_id(55133);
   script_tag(name:"cvss_base", value:"7.7");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 15:44:58 +0100 (Tue, 06 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-06 11:32:54 +0530 (Thu, 06 Sep 2012)");
   script_name("HP SAN/iQ Virtual SAN Appliance Multiple Parameters Command Execution Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -44,33 +44,24 @@ if(description)
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/441363");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18893/");
 
-  tag_impact = "Successful exploitation will allow attacker to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
   commands the context of an application.
 
-  Impact Level: System/Application";
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"HP SAN/iQ version 9.5 and prior on HP Virtual SAN Appliance");
+  script_tag(name:"insight", value:"The falws are due to,
 
-  tag_affected = "HP SAN/iQ version 9.5 and prior on HP Virtual SAN Appliance";
-
-  tag_insight = "The falws are due to,
   - An error in 'lhn/public/network/ping' fails to handle the shell meta
   characters in the first, third and fourth parameters.
+
   - It has a hard coded password of L0CAlu53R for the global$agent account,
   which allows remote attackers to obtain access to a management service
-  via a login request to TCP port 13838.";
-
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_summary = "This host is running HP SAN/iQ Virtual SAN Appliance and is prone
-  to multiple command execution vulnerabilities.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  via a login request to TCP port 13838.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running HP SAN/iQ Virtual SAN Appliance and is prone
+  to multiple command execution vulnerabilities.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -121,7 +112,6 @@ if( ! soc ) exit( 0 );
 login = create_packet('login:/global$agent/L0CAlu53R/Version "9.5.0"');
 res = hydra_send_recv(soc, login);
 
-## Confirm login is success
 if(res && 'OK: Login' >< res)
 {
   req = crap(data:raw_string(0x00), length:7) + raw_string(0x01,0x00,
@@ -143,7 +133,6 @@ if(res && 'OK: Login' >< res)
 
 close(soc);
 
-## confirm the id command result
 if(res && egrep(string:res, pattern:'uid=[0-9]+.*gid=[0-9]+.*')){
   security_message( port:port );
   exit( 0 );

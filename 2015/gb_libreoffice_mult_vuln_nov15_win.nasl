@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_mult_vuln_nov15_win.nasl 11239 2018-09-05 09:46:45Z mmartin $
+# $Id: gb_libreoffice_mult_vuln_nov15_win.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # LibreOffice Multiple Vulnerabilities Nov15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:libreoffice:libreoffice";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806572");
-  script_version("$Revision: 11239 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-5213", "CVE-2015-5212", "CVE-2015-4551");
   script_bugtraq_id(77486);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-16 15:31:04 +0530 (Mon, 16 Nov 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("LibreOffice Multiple Vulnerabilities Nov15 (Windows)");
@@ -45,10 +45,13 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Usage of stored LinkUpdateMode configuration information in OpenDocument
     Format files and templates when handling links.
+
   - Integer underflow when the configuration setting 'Load printer settings with
   the document' is enabled.
+
   - Integer overflow via a long DOC file.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms15-094.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_ms15-094.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (3089548)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:microsoft:ie";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805736");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-2483", "CVE-2015-2484", "CVE-2015-2485", "CVE-2015-2486",
                 "CVE-2015-2487", "CVE-2015-2489", "CVE-2015-2490", "CVE-2015-2491",
                 "CVE-2015-2492", "CVE-2015-2493", "CVE-2015-2494", "CVE-2015-2498",
@@ -37,7 +37,7 @@ if(description)
                 "CVE-2015-2542");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-09 10:16:10 +0530 (Wed, 09 Sep 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (3089548)");
@@ -49,7 +49,9 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Multiple improper handling memory objects,
+
   - Improper permissions validation, allowing a script to be run with elevated
     privileges.");
 

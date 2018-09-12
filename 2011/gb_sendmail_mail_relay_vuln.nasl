@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sendmail_mail_relay_vuln.nasl 7006 2017-08-25 11:51:20Z teissa $
+# $Id: gb_sendmail_mail_relay_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
 #
 # SendMail Mail Relay Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802194");
-  script_version("$Revision: 7006 $");
+  script_version("$Revision: 11321 $");
   script_cve_id("CVE-2002-1278", "CVE-2003-0285");
   script_bugtraq_id(6118, 7580);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-08-25 13:51:20 +0200 (Fri, 25 Aug 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-11-15 12:51:12 +0530 (Tue, 15 Nov 2011)");
   script_name("SendMail Mail Relay Vulnerability");
   script_category(ACT_ATTACK);
@@ -68,38 +68,31 @@ if(description)
   exit(0);
 }
 
-
 include("smtp_func.inc");
 include("misc_func.inc");
 include("network_func.inc");
 
-## Get the SMTP port
 port = get_smtp_port( default:25 );
 
-## Get SMTP banner to confirm sendmail
 banner = get_smtp_banner( port:port );
 if( ! banner || "Sendmail" >!< banner ) {
   exit( 0 );
 }
 
-## Get the domain
 domain = get_kb_item( "Settings/third_party_domain" );
 if( ! domain ) {
   domain = 'example.com';
 }
 
-## Open the Socket
 soc = smtp_open( port:port, helo:NULL );
 if( ! soc ) {
   exit( 0 );
 }
 
-## Source Name
 src_name = this_host_name();
 FROM = string( 'openvas@', src_name );
 TO = string( 'openvas@', domain );
 
-## Send normal request
 send( socket:soc, data:strcat( 'EHLO ', src_name, '\r\n' ) );
 ans = smtp_recv_line( socket:soc );
 if( "250" >!< ans ) {
@@ -111,16 +104,13 @@ mail_from = strcat( 'MAIL FROM: <', FROM , '>\r\n' );
 send( socket:soc, data:mail_from );
 recv = smtp_recv_line( socket:soc );
 
-## Check if Domain of sender exists
 if( ! recv || recv =~ '^5[0-9][0-9]' ) {
   exit( 0 );
 }
 
-## Check for the receiver
 mail_to = strcat( 'RCPT TO: <', TO , '>\r\n' );
 send( socket:soc, data:mail_to );
 
-## Receive response
 recv = smtp_recv_line( socket:soc );
 
 if( recv =~ '^2[0-9][0-9]' ) {
@@ -131,11 +121,9 @@ if( recv =~ '^2[0-9][0-9]' ) {
 
   if( egrep( pattern:"3[0-9][0-9]", string:data_rcv ) ) {
 
-    ## Constuct and send mail
     send( socket:soc, data:string( "OpenVAS-Relay-Test\r\n.\r\n" ) );
     mail_send = smtp_recv_line( socket:soc );
 
-    ## Checking mail is accepted
     if( "250" >< mail_send ) {
       security_message( port:port );
       smtp_close( socket:soc );

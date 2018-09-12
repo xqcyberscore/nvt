@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln03_september14_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_wireshark_dos_vuln03_september14_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Wireshark Denial of Service Vulnerability-03 Sep14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804915");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-6421", "CVE-2014-6422");
   script_bugtraq_id(69855, 69856);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-24 15:54:48 +0530 (Wed, 24 Sep 2014)");
 
   script_name("Wireshark Denial of Service Vulnerability-03 Sep14 (Windows)");
@@ -45,12 +45,16 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Flaws exists due to,
+
   - the SDP dissector creates duplicate hashtables for a media channel.
+
   - the Use-after-free vulnerability in the SDP dissector.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow
   attacker to cause denial of service attack
+
   - via a crafted packet to the RTP dissector.
+
   - via a crafted packet that leverages split memory ownership between
   the SDP and RTP dissectors.
 

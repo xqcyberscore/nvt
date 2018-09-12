@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_sep14_macosx.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_google_chrome_mult_vuln01_sep14_macosx.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Google Chrome Multiple Vulnerabilities - 01 Sep14 (Mac OS X)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804764");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-3177", "CVE-2014-3176", "CVE-2014-3175", "CVE-2014-3174",
                 "CVE-2014-3173", "CVE-2014-3172", "CVE-2014-3171", "CVE-2014-3170",
                 "CVE-2014-3169", "CVE-2014-3168");
   script_bugtraq_id(69404, 69402, 69407, 69403, 69401, 69406, 69400, 69405, 69398);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-11 11:34:35 +0530 (Thu, 11 Sep 2014)");
 
   script_name("Google Chrome Multiple Vulnerabilities - 01 Sep14 (Mac OS X)");
@@ -47,14 +47,23 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple Flaws are due to,
+
   - Some errors within V8, IPC, sync, and extensions.
+
   - A use-after-free error exists within SVG.
+
   - A use-after-free error exists within DOM.
+
   - An error within Extension permission dialog.
+
   - A use-after-free error exists within bindings.
+
   - An error exists within extension debugging.
+
   - An uninitialized memory read error exists in WebGL.
+
   - An uninitialized memory read error exists in Web Audio.
+
   - and some unspecified errors exist.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers

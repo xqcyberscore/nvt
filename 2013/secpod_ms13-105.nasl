@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-105.nasl 11007 2018-08-16 13:20:25Z mmartin $
+# $Id: secpod_ms13-105.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # MS Exchange Server Remote Code Execution Vulnerabilities (2915705)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903418");
-  script_version("$Revision: 11007 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-1330", "CVE-2013-5072", "CVE-2013-5763", "CVE-2013-5791");
   script_bugtraq_id(62221, 64085, 63741, 63076);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 15:20:25 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-11 10:09:38 +0530 (Wed, 11 Dec 2013)");
   script_name("MS Exchange Server Remote Code Execution Vulnerabilities (2915705)");
 
@@ -45,8 +45,10 @@ or not.");
 mentioned hotfixes in the advisory from the below link,
 https://technet.microsoft.com/en-us/security/bulletin/ms13-105");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- An unspecified error in the Outlook Web Access (OWA) service account.
-- Certain unspecified input is not properly sanitised before being returned
+
+  - An unspecified error in the Outlook Web Access (OWA) service account.
+
+  - Certain unspecified input is not properly sanitised before being returned
   to the user.");
   script_tag(name:"affected", value:"Microsoft Exchange Server 2013
 Microsoft Exchange Server 2007 Service Pack 3

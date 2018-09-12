@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_aug12_win.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_google_chrome_mult_vuln_aug12_win.nasl 11325 2018-09-11 10:59:54Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities - August 12 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802928");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11325 $");
   script_cve_id("CVE-2012-2847", "CVE-2012-2860", "CVE-2012-2858", "CVE-2012-2857",
                 "CVE-2012-2856", "CVE-2012-2855", "CVE-2012-2854", "CVE-2012-2853",
                 "CVE-2012-2852", "CVE-2012-2851", "CVE-2012-2850", "CVE-2012-2849",
@@ -35,7 +35,7 @@ if(description)
   script_bugtraq_id(54749);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-08 15:15:33 +0530 (Wed, 08 Aug 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - August 12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50105/");
@@ -52,18 +52,26 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Google Chrome version prior to 21.0.1180.60 on Windows");
   script_tag(name:"insight", value:"The flaws are due to
+
   - The application does not properly re-prompt the user when downloading
     multiple files and can be exploited to trick the user into downloading a
     malicious file.
+
   - An error when handling drag and drop events.
+
   - Integer overflow errors, use-after-free error, out-of-bounds write error
     exists within the PDF viewer.
+
   - A use-after-free error exists when handling object linkage in PDFs.
+
   - An error within the 'webRequest' module can be exploited to cause
     interference with the Chrome Web Store.
+
   - A use-after-free error exits when handling CSS DOM objects.
+
   - An error within the WebP decoder can be exploited to cause a buffer
     overflow.
+
   - An out-of-bounds access error exists when clicking in date picker.");
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 21.0.1180.60 or later,
   For updates refer to http://www.google.com/chrome");

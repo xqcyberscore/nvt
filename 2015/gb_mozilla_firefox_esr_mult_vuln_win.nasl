@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln_win.nasl 11221 2018-09-04 12:29:42Z mmartin $
+# $Id: gb_mozilla_firefox_esr_mult_vuln_win.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806101");
-  script_version("$Revision: 11221 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-4497", "CVE-2015-4498");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:29:42 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-08-31 16:24:54 +0530 (Mon, 31 Aug 2015)");
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities (Windows)");
 
@@ -43,10 +43,12 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - A use-after-free vulnerability with a '<canvas>' element on a page. This
   occurs when a resize event is triggered in concert with style changes but
   the canvas references have been recreated in the meantime, destroying the
   originally referenced context. This results in an exploitable crash.
+
   - A vulnerablity in the way Firefox handles installation of add-ons.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

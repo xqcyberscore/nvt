@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-063.nasl 11041 2018-08-17 14:03:47Z mmartin $
+# $Id: secpod_ms13-063.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Microsoft Windows Kernel Privilege Elevation Vulnerabilities (2859537)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902990");
-  script_version("$Revision: 11041 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-2556", "CVE-2013-3196", "CVE-2013-3197", "CVE-2013-3198");
   script_bugtraq_id(58566, 61682, 61683, 1684);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 16:03:47 +0200 (Fri, 17 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-14 08:43:13 +0530 (Wed, 14 Aug 2013)");
   script_name("Microsoft Windows Kernel Privilege Elevation Vulnerabilities (2859537)");
 
@@ -45,9 +45,11 @@ or not.");
 mentioned hotfixes in the advisory from the below link,
 https://technet.microsoft.com/en-us/security/bulletin/ms13-063");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- An error within Address Space Layout Randomization (ASLR) implementation
+
+  - An error within Address Space Layout Randomization (ASLR) implementation
   can be exploited to bypass the ASLR security feature.
-- Multiple error within the NT Virtual DOS Machine (NTVDM) subsystem.");
+
+  - Multiple error within the NT Virtual DOS Machine (NTVDM) subsystem.");
   script_tag(name:"affected", value:"Microsoft Windows 8
 Microsoft Windows XP x32 Edition Service Pack 3 and prior
 Microsoft Windows 2003 x32 Edition Service Pack 2 and prior

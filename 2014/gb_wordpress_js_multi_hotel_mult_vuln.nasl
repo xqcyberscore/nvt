@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_js_multi_hotel_mult_vuln.nasl 11194 2018-09-03 12:44:14Z mmartin $
+# $Id: gb_wordpress_js_multi_hotel_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # WordPress Js-Multi-Hotel Plugin Multiple Vulnerabilities
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804572");
-  script_version("$Revision: 11194 $");
+  script_version("$Revision: 11339 $");
   script_bugtraq_id(66529);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-08 11:09:59 +0530 (Thu, 08 May 2014)");
   script_name("WordPress Js-Multi-Hotel Plugin Multiple Vulnerabilities");
 
@@ -42,9 +42,11 @@ multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP GET request and check whether it is able to read
 cookie or not.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- Input passed via the 'file' parameter show_image.php and 'path' parameter
+
+  - Input passed via the 'file' parameter show_image.php and 'path' parameter
   to delete_img.php are not properly sanitized before being returned to the user.
-- The /functions.php, /myCalendar.php, /refreshDate.php, /show_image.php,
+
+  - The /functions.php, /myCalendar.php, /refreshDate.php, /show_image.php,
   /widget.php, /phpthumb/GdThumb.inc.php, /phpthumb/thumb_plugins/gd_reflection.inc.php,
   and /includes/timthumb.php scripts discloses the software's installation path.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and

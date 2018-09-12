@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_portainer_detect.nasl 10789 2018-08-06 11:10:01Z tpassfeld $
+# $Id: gb_portainer_detect.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
 #
 # Portainer UI Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114015");
-  script_version("$Revision: 10789 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-06 13:10:01 +0200 (Mon, 06 Aug 2018) $");
+  script_version("$Revision: 11328 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-31 12:54:42 +0200 (Tue, 31 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -84,9 +84,9 @@ if(id[1]) {
 
     if(vers[1]) version = vers[1];
 
-    set_kb_item(name: "Portainer/installed", value: TRUE);
-    set_kb_item(name: "Portainer/version", value: version);
-    set_kb_item(name: "Portainer/" + port + "/installed", value: TRUE);
+    set_kb_item(name: "portainer/detected", value: TRUE);
+    set_kb_item(name: "portainer/version", value: version);
+    set_kb_item(name: "portainer/" + port + "/detected", value: TRUE);
 
     cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:portainer:portainer:"); # CPE is not registered yet
 

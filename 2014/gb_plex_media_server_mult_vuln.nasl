@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_plex_media_server_mult_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_plex_media_server_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Plex Media Server Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:plex:plex_media_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805226");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-9181", "CVE-2014-9304");
   script_bugtraq_id(65881);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-22 17:44:41 +0530 (Mon, 22 Dec 2014)");
   script_name("Plex Media Server Multiple Vulnerabilities");
 
@@ -44,8 +44,10 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple errors are due to,
+
   - An error in '/system/proxy' which fails to validate pre-authentication
   user requests.
+
   - Input appended to the URL after 'manage', 'web' and 'resources' is not
   properly sanitised before being used to read files.");
 

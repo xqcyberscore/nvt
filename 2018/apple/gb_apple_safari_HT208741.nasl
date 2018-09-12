@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_HT208741.nasl 10557 2018-07-20 13:48:28Z asteins $
+# $Id: gb_apple_safari_HT208741.nasl 11349 2018-09-12 07:56:57Z cfischer $
 #
 # Apple Safari Security Updates(HT208741)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:apple:safari";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813319");
-  script_version("$Revision: 10557 $");
+  script_version("$Revision: 11349 $");
   script_cve_id("CVE-2018-4200", "CVE-2018-4204");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-20 15:48:28 +0200 (Fri, 20 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:56:57 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 11:47:33 +0530 (Wed, 25 Apr 2018)");
   script_name("Apple Safari Security Updates(HT208741)");
 
@@ -94,10 +94,9 @@ if(!osVer = get_kb_item("ssh/login/osx_version")){
   exit(0);
 }
 
-if(safVer = "11.1")
+if(safVer == "11.1")
 {
-  ver = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/" +
-                 "Safari.app/Contents/Info CFBundleVersion"));
+  ver = chomp(ssh_cmd(socket:sock, cmd:"defaults read /Applications/Safari.app/Contents/Info CFBundleVersion"));
 
   if(osVer =~ "^(10\.11)" && version_is_less(version:ver, test_version:"11605.1.33.1.4")){
     fix = "11.1 (11605.1.33.1.4)";

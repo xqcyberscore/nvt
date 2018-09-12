@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_office_compat_pack_ms15-131.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_ms_office_compat_pack_ms15-131.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3116111)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806177");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-6040", "CVE-2015-6122", "CVE-2015-6124", "CVE-2015-6172");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-09 14:32:12 +0530 (Wed, 09 Dec 2015)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Microsoft Office Compatibility Pack Remote Code Execution Vulnerabilities (3116111)");
@@ -43,8 +43,10 @@ if(description)
   appropriate patch is applied or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Microsoft Excel improperly handles the loading of dynamic link library
     (DLL) files.
+
   - Improper handling of files in the memory.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

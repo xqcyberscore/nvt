@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-076_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: secpod_ms12-076_macosx.nasl 11327 2018-09-11 11:35:07Z asteins $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities - 2720184 (Mac OS X)
 #
@@ -24,49 +24,46 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attackers to execute arbitrary code
-  with the privileges of the user running the affected application.
-  Impact Level: System/Application";
-tag_affected = "Microsoft Office 2008 for Mac
-  Microsoft Office 2011 for Mac";
-tag_insight = "- An error when processing the 'SerAuxErrBar' record can be exploited to
-    cause a heap-based buffer overflow via a specially crafted file.
-  - An input validation error can be exploited to corrupt memory via a
-    specially crafted file.
-  - A use-after-free error when processing the 'SST' record can be
-    exploited via a specially crafted file.
-  - An error when processing certain data structures can be exploited to
-    cause a stack-based buffer overflow via a specially crafted file.";
-tag_solution = "Run Windows Update and update the listed hotfixes or download and
-  update mentioned hotfixes in the advisory from the below link,
-  http://technet.microsoft.com/en-us/security/bulletin/MS12-076";
-tag_summary = "This host is missing an important security update according to
-  Microsoft Bulletin MS12-076.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902931");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11327 $");
   script_cve_id("CVE-2012-1885", "CVE-2012-1886", "CVE-2012-1887", "CVE-2012-2543");
   script_bugtraq_id(56425, 56426, 56430, 56431);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-14 08:55:19 +0530 (Wed, 14 Nov 2012)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities - 2720184 (Mac OS X)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/51242/");
-  script_xref(name : "URL" , value : "http://technet.microsoft.com/en-us/security/bulletin/ms12-076");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/51242/");
+  script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms12-076");
 
   script_copyright("Copyright (C) 2012 SecPod");
   script_category(ACT_GATHER_INFO);
   script_family("Mac OS X Local Security Checks");
   script_dependencies("gb_microsoft_office_detect_macosx.nasl");
   script_require_keys("MS/Office/MacOSX/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code
+  with the privileges of the user running the affected application.
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Microsoft Office 2008 for Mac
+  Microsoft Office 2011 for Mac");
+  script_tag(name:"insight", value:"- An error when processing the 'SerAuxErrBar' record can be exploited to
+    cause a heap-based buffer overflow via a specially crafted file.
+
+  - An input validation error can be exploited to corrupt memory via a
+    specially crafted file.
+
+  - A use-after-free error when processing the 'SST' record can be
+    exploited via a specially crafted file.
+
+  - An error when processing certain data structures can be exploited to
+    cause a stack-based buffer overflow via a specially crafted file.");
+  script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
+  update mentioned hotfixes in the advisory from the below link,
+  http://technet.microsoft.com/en-us/security/bulletin/MS12-076");
+  script_tag(name:"summary", value:"This host is missing an important security update according to
+  Microsoft Bulletin MS12-076.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -75,17 +72,12 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-offVer = "";
-
-## Get the version from KB
 offVer = get_kb_item("MS/Office/MacOSX/Ver");
 if(!offVer){
   exit(0);
 }
 
-## Check for Office Version 2008(12.3.5) and 2011 (14.2.5)
 if(version_in_range(version:offVer, test_version:"12.0", test_version2:"12.3.4")||
    version_in_range(version:offVer, test_version:"14.0", test_version2:"14.2.4")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

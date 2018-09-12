@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_free_hosting_manager_mult_vuln.nasl 11223 2018-09-04 12:48:48Z cfischer $
+# $Id: gb_free_hosting_manager_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Free Hosting Manager Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803446");
-  script_version("$Revision: 11223 $");
+  script_version("$Revision: 11336 $");
   script_bugtraq_id(56991, 56754);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 14:48:48 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-25 14:43:46 +0530 (Mon, 25 Mar 2013)");
   script_name("Free Hosting Manager Multiple Vulnerabilities");
 
@@ -43,10 +43,13 @@ if(description)
   Impact Level: Application");
   script_tag(name:"affected", value:"Free Hosting Manager version 2.0.2 and prior");
   script_tag(name:"insight", value:"Multiple flaws due to,
+
   - The packages.php, tickets.php, viewaccount.php, reset.php scripts are not
   properly sanitizing user-supplied input to the 'id' and 'code' parameters.
+
   - Input passed via POST parameter to home.php and register.php scripts is not
   properly sanitizing before being used in a SQL query.
+
   - Input passed via ticket field is not properly sanitizing before being returned
   to the user.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");

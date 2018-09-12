@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_domino_mult_vuln.nasl 11067 2018-08-21 11:27:43Z mmartin $
+# $Id: gb_ibm_domino_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # IBM Lotus Domino Multiple Vulnerabilities
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:ibm:lotus_domino";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803977");
-  script_version("$Revision: 11067 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-0488", "CVE-2013-0487", "CVE-2013-0486");
   script_bugtraq_id(58648, 58652, 58646);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 13:27:43 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-10 11:48:14 +0530 (Tue, 10 Dec 2013)");
   script_name("IBM Lotus Domino Multiple Vulnerabilities");
 
@@ -46,11 +46,14 @@ For more information refer to,
 http://www-01.ibm.com/support/docview.wss?uid=swg21627597");
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"insight", value:"Multiple flaws are in,
-- webadmin.nsf file in Web Administrator client component, which does not
+
+  - webadmin.nsf file in Web Administrator client component, which does not
 verify user inputs properly.
-- Java Console in IBM Domino can be compromised to disclose time-limited
+
+  - Java Console in IBM Domino can be compromised to disclose time-limited
 authentication credentials.
-- Memory leak in the HTTP server in IBM Domino.");
+
+  - Memory leak in the HTTP server in IBM Domino.");
   script_tag(name:"affected", value:"IBM Lotus Domino 8.5.3 before FP3.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to inject arbitrary
 web script, hijack temporary credentials by leveraging knowledge of

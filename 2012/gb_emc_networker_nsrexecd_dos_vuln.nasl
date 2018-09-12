@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_networker_nsrexecd_dos_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_emc_networker_nsrexecd_dos_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
 #
 # EMC NetWorker 'nsrexecd' RPC Packet Denial of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802831");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11321 $");
   script_bugtraq_id(52506);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-09 12:23:36 +0530 (Mon, 09 Apr 2012)");
   script_name("EMC NetWorker 'nsrexecd' RPC Packet Denial of Service Vulnerability");
   script_xref(name:"URL", value:"http://aluigi.org/poc/nsrexecd_1.dat");
@@ -62,12 +62,12 @@ General solution options are to upgrade to a newer release, disable respective f
   script_tag(name:"summary", value:"This host is running EMC NetWorker and is prone to denial of
 service vulnerability.");
   script_tag(name:"solution_type", value:"WillNotFix");
+
   exit(0);
 }
 
-
 netPort = get_kb_item("emc_networker/port");
-if(netPort == NULL){
+if(!netPort){
   exit(0);
 }
 
@@ -104,40 +104,31 @@ for (nsPort = 8000; nsPort < 9000; nsPort++)
     continue;
   }
 
-  ## Open tcp socket
   soc = open_sock_tcp(nsPort);
   if(!soc){
     continue;
   }
 
-  ## Sending Request
   send(socket:soc, data:req);
 
-  ## Receive Response and close socket
-  res  = recv(socket:soc, length:1024);
+  res = recv(socket:soc, length:1024);
   close(soc);
 
   if(res && hexstr(res) =~ "^800000304e5aa2a9")
   {
-    ## by sending the same req
-
     sleep(7);
     soc2 = open_sock_tcp(nsPort);
 
-    ## If couldn't open soc then nsrexecd is crashed
-    if(!soc2)
-    {
+    if(!soc2){
       security_message(nsPort);
       exit(0);
     }
 
-    ## Else try to send the malformed req
     send(socket:soc2, data:req);
     res  = recv(socket:soc2, length:1024);
     close(soc2);
 
-    if(!res)
-    {
+    if(!res){
       security_message(nsPort);
       exit(0);
     }

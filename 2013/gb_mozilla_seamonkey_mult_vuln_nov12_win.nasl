@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_seamonkey_mult_vuln_nov12_win.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_mozilla_seamonkey_mult_vuln_nov12_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Mozilla Seamonkey Multiple Vulnerabilities - November12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803630");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2012-4194", "CVE-2012-4195", "CVE-2012-4196");
   script_bugtraq_id(56301, 56302, 56306);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 16:08:12 +0530 (Fri, 02 Nov 2012)");
   script_name("Mozilla Seamonkey Multiple Vulnerabilities - November12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51144");
@@ -48,9 +48,12 @@ if(description)
   Impact Level: Application");
   script_tag(name:"affected", value:"Mozilla SeaMonkey version before 2.13.2 on Windows");
   script_tag(name:"insight", value:"Multiple errors
+
   - When handling the 'window.location' object.
+
   - Within CheckURL() function of the 'window.location' object, which can be
     forced to return the wrong calling document and principal.
+
   - Within handling of 'Location' object can be exploited to bypass security
     wrapper protection.");
   script_tag(name:"solution", value:"Upgrade to Mozilla SeaMonkey version to 2.13.2 or later,

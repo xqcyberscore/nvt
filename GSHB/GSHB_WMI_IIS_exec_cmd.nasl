@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_IIS_exec_cmd.nasl 10949 2018-08-14 09:36:21Z emoss $
+# $Id: GSHB_WMI_IIS_exec_cmd.nasl 11349 2018-09-12 07:56:57Z cfischer $
 #
 # Auslesen des Registry Wertes SSIEnableCmdDirective des IIS (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96010");
-  script_version("$Revision: 10949 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 11:36:21 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 11349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:56:57 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -101,7 +101,7 @@ if(!SSIENCMDKEY){
         wmi_close(wmi_handle:handle);
         exit(0);
       }
-      else if(ssiencmd = 1)
+      else if(ssiencmd == 1)
       {
         ssiencmd = "on";
       }
@@ -119,7 +119,7 @@ if(!SSIENCMDKEY){
       {
         ssiencmd = "off";
       }
-      else if(ssiencmd = 1)
+      else if(ssiencmd == 1)
       {
         ssiencmd = "on";
       }
@@ -134,10 +134,3 @@ if(!SSIENCMDKEY){
 wmi_close(wmi_handle:handle);
 
 exit(0);
-
-
-
-
-
-
-

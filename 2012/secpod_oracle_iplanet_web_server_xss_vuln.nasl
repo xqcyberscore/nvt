@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_oracle_iplanet_web_server_xss_vuln.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: secpod_oracle_iplanet_web_server_xss_vuln.nasl 11327 2018-09-11 11:35:07Z asteins $
 #
 # Oracle iPlanet Web Server Multiple Cross Site Scripting Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:sun:iplanet_web_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902844");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11327 $");
   script_bugtraq_id(53133);
   script_cve_id("CVE-2012-0516");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-29 16:16:16 +0530 (Fri, 29 Jun 2012)");
   script_name("Oracle iPlanet Web Server Multiple Cross Site Scripting Vulnerabilities");
 
@@ -60,6 +60,7 @@ if(description)
     'productNameSrc', 'productNameHeight', and 'productNameWidth' parameters
     to admingui/version/Masthead.jsp is not properly sanitised before being
     returned to the user.
+
   - Input passed via the 'appName' and 'pathPrefix' parameters to admingui/
     cchelp2/Navigator.jsp is not properly sanitised before being returned to
     the user.");

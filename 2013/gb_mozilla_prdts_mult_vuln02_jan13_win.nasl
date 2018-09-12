@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln02_jan13_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_mozilla_prdts_mult_vuln02_jan13_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Mozilla Products Multiple Vulnerabilities-02 January13 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803200");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-0762", "CVE-2013-0766", "CVE-2013-0767", "CVE-2013-0769");
   script_bugtraq_id(57193, 57194, 57203);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-16 15:43:00 +0530 (Wed, 16 Jan 2013)");
   script_name("Mozilla Products Multiple Vulnerabilities-02 January13 (Windows)");
 
@@ -59,6 +59,7 @@ if(description)
   script_tag(name:"insight", value:"- Use-after-free errors exists within the functions
     'nsSVGPathElement::GetPathLengthScale' and 'imgRequest::OnStopFrame' and
     in the '~nsHTMLEditRules' implementation.
+
   - Unspecified error in the browser engine can be exploited to corrupt memory.");
   script_tag(name:"summary", value:"This host is installed with Mozilla Firefox/Thunderbird/Seamonkey and is
   prone to multiple vulnerabilities.");

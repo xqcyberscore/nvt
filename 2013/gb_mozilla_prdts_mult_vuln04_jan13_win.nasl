@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln04_jan13_win.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_mozilla_prdts_mult_vuln04_jan13_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Mozilla Products Multiple Vulnerabilities-04 January13 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803204");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-0764", "CVE-2013-0768", "CVE-2013-0757", "CVE-2013-0745",
                 "CVE-2013-0747", "CVE-2013-0752", "CVE-2013-0755", "CVE-2013-0756");
   script_bugtraq_id(57211, 57204, 57236, 57240, 57241, 57213, 57215);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-16 16:41:34 +0530 (Wed, 16 Jan 2013)");
   script_name("Mozilla Products Multiple Vulnerabilities-04 January13 (Windows)");
 
@@ -66,10 +66,14 @@ if(description)
   Mozilla Firefox ESR version 17.x before 17.0.2 on Windows");
   script_tag(name:"insight", value:"- An error exists within the 'nsSOCKSSocketInfo::ConnectToProxy()' when
     handling SSL connection threads.
+
   - An error when parsing height and width values of a canvas element.
+
   - An error within the 'Object.prototype.__proto__()' can be exploited to
     bypass Chrome Object Wrappers (COW).
+
   - Unspecified error in the browser engine can be exploited to corrupt memory.
+
   - An error exists due to the AutoWrapperChanger class not keeping certain
     objects alive during garbage collection.");
   script_tag(name:"summary", value:"This host is installed with Mozilla Firefox/Thunderbird/Seamonkey and is

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln1_macosx_july11.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_opera_mult_vuln1_macosx_july11.nasl 11327 2018-09-11 11:35:07Z asteins $
 #
 # Opera Browser Multiple Vulnerabilities-01 July-11 (Mac OS X)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802755");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11327 $");
   script_cve_id("CVE-2011-2628", "CVE-2011-2629", "CVE-2011-2630", "CVE-2011-2631",
                 "CVE-2011-2632", "CVE-2011-2633");
   script_bugtraq_id(48570);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-19 11:17:38 +0530 (Thu, 19 Apr 2012)");
   script_name("Opera Browser Multiple Vulnerabilities-01 July-11 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/44611");
@@ -50,11 +50,15 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Opera Web Browser Version prior 11.11 on Mac OS X");
   script_tag(name:"insight", value:"The flaws are due to an error,
+
   - In certain frameset constructs, fails to correctly handle when the page
     is unloaded, causing a memory corruption.
+
   - When reloading page after opening a pop-up of easy-sticky-note extension.
+
   - In Cascading Style Sheets (CSS) implementation, when handling the
     column-count property.
+
   - When handling destruction of a silver light instance.");
   script_tag(name:"solution", value:"Upgrade to Opera Web Browser Version 11.11 or later,
   For updates refer to http://www.opera.com/download/");

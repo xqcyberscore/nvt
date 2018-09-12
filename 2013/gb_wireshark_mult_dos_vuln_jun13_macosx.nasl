@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_jun13_macosx.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_wireshark_mult_dos_vuln_jun13_macosx.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Wireshark Multiple DoS Vulnerabilities - June 13 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803653");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-4081", "CVE-2013-4074");
   script_bugtraq_id(60505, 60500);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-05-28 13:52:52 +0530 (Tue, 28 May 2013)");
   script_name("Wireshark Multiple DoS Vulnerabilities - June 13 (Mac OS X)");
   script_xref(name:"URL", value:"http://www.securitytracker.com/id/1028648");
@@ -49,6 +49,7 @@ if(description)
   script_tag(name:"affected", value:"Wireshark 1.6.x before 1.6.16, 1.8.x before 1.8.8 on Mac OS X");
   script_tag(name:"insight", value:"- 'http_payload_subdissector' function in epan/dissectors/packet-http.c in
      HTTP dissector does not determine when to use a recursive approach.
+
   - 'dissect_capwap_data' function in epan/dissectors/packet-capwap.c in CAPWAP
     dissector incorrectly uses a -1 data value to represent an error condition.");
   script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.6.16 or 1.8.8 or later,

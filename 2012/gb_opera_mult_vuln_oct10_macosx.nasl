@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_oct10_macosx.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_opera_mult_vuln_oct10_macosx.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Opera Browser Multiple Vulnerabilities October-10 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802752");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11322 $");
   script_cve_id("CVE-2010-4043", "CVE-2010-4044", "CVE-2010-4046", "CVE-2010-4045",
                 "CVE-2010-4047", "CVE-2010-4049", "CVE-2010-4048", "CVE-2010-4050");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-19 09:41:19 +0530 (Thu, 19 Apr 2012)");
   script_name("Opera Browser Multiple Vulnerabilities October-10 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/41740");
@@ -50,19 +50,26 @@ if(description)
   Impact Level: Application");
   script_tag(name:"affected", value:"Opera Web Browser version prior 10.63 on Mac OS X");
   script_tag(name:"insight", value:"Multiple flaws are cause due to,
+
   - Failure to prevent interpretation of a 'cross-origin' document as a 'CSS'
     stylesheet when the document lacks a CSS token sequence.
+
   - An error when altering the size of the browser window may cause the wrong
     part of the URL of a web page to be displayed.
+
   - An error in the handling of reloads and redirects combined with caching may
     result in scripts executing in the wrong security context.
+
   - Failure to properly verify the origin of video content, which allows remote
     attackers to obtain sensitive information by using a video stream as HTML5
     canvas content.
+
   - Failure to properly restrict web script in unspecified circumstances involving
     reloads and redirects.
+
   - Failure to properly select the security context of JavaScript code associated
     with an error page.
+
   - Error in 'SVG' document in an 'IMG' element.");
   script_tag(name:"solution", value:"Upgrade to Opera Web Browser version 10.63 or later,
   For updates refer to http://www.opera.com/download/");

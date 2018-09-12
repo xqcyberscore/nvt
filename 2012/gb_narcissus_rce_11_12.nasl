@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_narcissus_rce_11_12.nasl 5714 2017-03-24 10:52:48Z cfi $
+# $Id: gb_narcissus_rce_11_12.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Narcissus Remote Command Execution Vulnerability
 #
@@ -25,36 +25,40 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_summary = "Narcissus is prone to a vulnerability that lets attackers execute arbitrary
-code.
-
-Attackers can exploit this issue to execute arbitrary code within
-the context of the affected webserver process.";
-
 if (description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103607");
- script_version ("$Revision: 5714 $");
- script_tag(name:"cvss_base", value:"10.0");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
- script_name("Narcissus Remote Command Execution Vulnerability");
- script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/22709/");
- script_tag(name:"last_modification", value:"$Date: 2017-03-24 11:52:48 +0100 (Fri, 24 Mar 2017) $");
- script_tag(name:"creation_date", value:"2012-11-14 16:22:01 +0100 (Wed, 14 Nov 2012)");
- script_category(ACT_ATTACK);
- script_tag(name:"qod_type", value:"remote_vul");
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("find_service.nasl", "http_version.nasl");
- script_require_ports("Services/www", 80);
- script_exclude_keys("Settings/disable_cgi_scanning");
- script_tag(name : "summary" , value : tag_summary);
- exit(0);
+  script_oid("1.3.6.1.4.1.25623.1.0.103607");
+  script_version("$Revision: 11322 $");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_name("Narcissus Remote Command Execution Vulnerability");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/22709/");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2012-11-14 16:22:01 +0100 (Wed, 14 Nov 2012)");
+  script_category(ACT_ATTACK);
+  script_tag(name:"qod_type", value:"remote_vul");
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("find_service.nasl", "http_version.nasl");
+  script_require_ports("Services/www", 80);
+  script_exclude_keys("Settings/disable_cgi_scanning");
+  script_tag(name:"summary", value:"Narcissus is prone to a vulnerability that lets attackers execute arbitrary
+code.");
+
+  script_tag(name:"impact", value:"Attackers can exploit this issue to execute arbitrary code within
+the context of the affected webserver process.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since
+the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are
+to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"solution_type", value:"WillNotFix");
+
+  exit(0);
 }
 
 include("http_func.inc");
 include("http_keepalive.inc");
-   
+
 port = get_http_port(default:80);
 if( ! can_host_php( port:port ) ) exit( 0 );
 
@@ -75,7 +79,7 @@ foreach dir( make_list_unique( "/narcissus", "/narcissus-master", cgi_dirs( port
                "\r\n",
                ex);
   res = http_keepalive_send_recv( port:port, data:req, bodyonly:FALSE );
- 
+
   if( res =~ "uid=[0-9]+.*gid=[0-9]+" ) {
     report = report_vuln_url( port:port, url:url );
     security_message( port:port, data:report );

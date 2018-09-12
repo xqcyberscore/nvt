@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_mult_vuln02_jul14.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_typo3_mult_vuln02_jul14.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # TYPO3 Multiple Vulnerabilities-02 July-2104
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804465");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-3944", "CVE-2014-3946");
   script_bugtraq_id(67629, 67624);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-03 13:22:50 +0530 (Thu, 03 Jul 2014)");
   script_name("TYPO3 Multiple Vulnerabilities-02 July-2104");
 
@@ -43,9 +43,11 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with TYPO3 and is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaws are due to,
-- An error in the authentication subcomponent that is triggered as the program
+
+  - An error in the authentication subcomponent that is triggered as the program
   fails to invalidate user's sessions that have timed out.
-- The program fails to honor user groups of logged in users when caching
+
+  - The program fails to honor user groups of logged in users when caching
   queries.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to easily gain access
 to a users session and gain access to potentially sensitive information.

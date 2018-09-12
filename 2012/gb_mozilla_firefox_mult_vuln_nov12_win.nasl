@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_nov12_win.nasl 11058 2018-08-20 14:18:06Z asteins $
+# $Id: gb_mozilla_firefox_mult_vuln_nov12_win.nasl 11325 2018-09-11 10:59:54Z asteins $
 #
 # Mozilla Firefox Multiple Vulnerabilities - November12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803059");
-  script_version("$Revision: 11058 $");
+  script_version("$Revision: 11325 $");
   script_cve_id("CVE-2012-4203", "CVE-2012-5837");
   script_bugtraq_id(56623, 56645);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 16:18:06 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 13:47:00 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - November12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51358/");
@@ -52,6 +52,7 @@ if(description)
   script_tag(name:"affected", value:"Mozilla Firefox version before 17.0 on Windows");
   script_tag(name:"insight", value:"- An error within the 'Web Developer Toolbar' allows script to be executed
     in chrome privileged context.
+
   - The 'Javascript:' URLs when opened in a New Tab page inherits the
     privileges of the privileged 'new tab' page.");
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 17.0 or later,

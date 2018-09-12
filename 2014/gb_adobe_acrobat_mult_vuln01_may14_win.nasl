@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_acrobat_mult_vuln01_may14_win.nasl 11192 2018-09-03 12:08:26Z cfischer $
+# $Id: gb_adobe_acrobat_mult_vuln01_may14_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Adobe Acrobat Multiple Vulnerabilities - 01 May14 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:adobe:acrobat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804603");
-  script_version("$Revision: 11192 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-0521", "CVE-2014-0522", "CVE-2014-0523", "CVE-2014-0524",
                 "CVE-2014-0525", "CVE-2014-0526", "CVE-2014-0527", "CVE-2014-0528",
                 "CVE-2014-0529");
   script_bugtraq_id(67363, 67360, 67368, 67369, 67365, 67370, 67367, 67366, 67362);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:08:26 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-22 10:46:12 +0530 (Thu, 22 May 2014)");
   script_name("Adobe Acrobat Multiple Vulnerabilities - 01 May14 (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -68,6 +68,7 @@ if(description)
   AcroPDF ActiveX control.
 
   - A double-free error.
+
   - Many other unspecified errors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct a denial of service,

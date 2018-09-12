@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_jul12_macosx.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_mozilla_prdts_mult_vuln_jul12_macosx.nasl 11327 2018-09-11 11:35:07Z asteins $
 #
 # Mozilla Products Multiple Vulnerabilities - July12 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802890");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11327 $");
   script_cve_id("CVE-2012-1948", "CVE-2012-1951", "CVE-2012-1952", "CVE-2012-1953",
                 "CVE-2012-1954", "CVE-2012-1955", "CVE-2012-1957", "CVE-2012-1958",
                 "CVE-2012-1959", "CVE-2012-1961", "CVE-2012-1962", "CVE-2012-1963",
@@ -36,7 +36,7 @@ if(description)
                     54575, 54582, 54573);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-23 17:31:44 +0530 (Mon, 23 Jul 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - July12 (Mac OS X)");
 
@@ -70,11 +70,15 @@ if(description)
   script_tag(name:"insight", value:"- Use-after-free error exists within the functions
    'nsGlobalWindow::PageHidden()', 'nsSMILTimeValueSpec::IsEventBased',
    'nsDocument::AdoptNode' and 'JSDependentString::undepend'.
+
   - Multiple unspecified errors within the browser engine can be exploited to
     corrupt memory.
+
   - An error within the feed-view functionality.
+
   - An out-of-bounds read error within the
    'ElementAnimations::EnsureStyleRuleFor()'.
+
   - A bad cast error within the 'nsTableFrame::InsertFrames()', can be
     exploited to corrupt memory");
   script_tag(name:"summary", value:"This host is installed with Mozilla firefox/thunderbird/seamonkey and is

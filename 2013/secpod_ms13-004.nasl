@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms13-004.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: secpod_ms13-004.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Microsoft .NET Framework Privilege Elevation Vulnerability (2769324)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902939");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-0001", "CVE-2013-0002", "CVE-2013-0003", "CVE-2013-0004");
   script_bugtraq_id(57124, 57126, 57114, 57113);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-09 10:02:42 +0530 (Wed, 09 Jan 2013)");
   script_name("Microsoft .NET Framework Privilege Elevation Vulnerability (2769324)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51777/");
@@ -67,10 +67,13 @@ if(description)
   script_tag(name:"insight", value:"- An error within the System Drawing namespace of Windows Forms when handling
     pointers can be exploited to bypass CAS (Code Access Security) restrictions
     and disclose information.
+
   - An error within WinForms when handling certain objects can be exploited to
     cause a buffer overflow.
+
   - A boundary error within the System.DirectoryServices.Protocols namespace
     when handling objects can be exploited to cause a buffer overflow.
+
   - A double construction error within the framework does not validate object
     permissions and can be exploited via a specially crafted XAML Browser
     Application (XBAP) or an untrusted .NET application.");

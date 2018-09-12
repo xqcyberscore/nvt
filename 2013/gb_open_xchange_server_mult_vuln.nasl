@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_open_xchange_server_mult_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_open_xchange_server_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Open-Xchange Server Multiple Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803182");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-1646", "CVE-2013-1647", "CVE-2013-1648", "CVE-2013-1650",
                 "CVE-2013-1651");
   script_bugtraq_id(58465, 58473, 58475, 58469, 58470);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-18 10:14:58 +0530 (Mon, 18 Mar 2013)");
   script_name("Open-Xchange Server Multiple Vulnerabilities");
 
@@ -57,17 +57,22 @@ if(description)
   and 6.22.1-rev14.");
   script_tag(name:"insight", value:"- Input passed via arbitrary GET parameters to /servlet/TestServlet is not
     properly sanitized before being returned to the user.
+
   - Input related to the 'Source' field when creating subscriptions is not
     properly sanitized before being used. This can be exploited to perform
     arbitrary HTTP GET requests to remote and local servers.
+
   - The OXUpdater component does not properly validate the SSL certificate of
     an update server. This can be exploited to spoof update packages via a
     MitM (Man-in-the-Middle) attack.
+
   - The application creates the /opt/open-exchange/etc directory with insecure
     world-readable permissions. This can be exploited to disclose certain
     sensitive information.
+
   - Input passed via the 'location' GET parameter to /ajax/redirect is not
     properly sanitized before being used to construct HTTP response headers.
+
   - Certain input related to RSS feed contents is not properly sanitized before
     being used. This can be exploited to insert arbitrary HTML and script code.");
   script_tag(name:"solution", value:"Update to versions 6.20.7-rev14, 6.22.0-rev13, or 6.22.1-rev14,

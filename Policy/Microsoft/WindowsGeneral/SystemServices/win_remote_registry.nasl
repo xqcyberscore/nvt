@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_remote_registry.nasl 11098 2018-08-23 14:32:47Z emoss $
+# $Id: win_remote_registry.nasl 11344 2018-09-12 06:57:52Z emoss $
 #
 # Check value for Remote Registry (RemoteRegistry)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109274");
-  script_version("$Revision: 11098 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 16:32:47 +0200 (Thu, 23 Aug 2018) $");
+  script_version("$Revision: 11344 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:57:52 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-13 14:51:32 +0200 (Wed, 13 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -71,7 +71,7 @@ key = 'SYSTEM\\CurrentControlSet\\Services\\RemoteRegistry';
 item = 'Start';
 default = script_get_preference('Value');
 value = registry_get_dword(key:key, item:item, type:type);
-if(!value){
+if(value == ''){
   val = '3';
 }
 

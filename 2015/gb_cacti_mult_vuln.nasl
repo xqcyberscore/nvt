@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cacti_mult_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_cacti_mult_vuln.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Cacti Multiple Vulnerabilities-June15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:cacti:cacti";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805664");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-4454", "CVE-2015-4342", "CVE-2015-2665", "CVE-2015-2967");
   script_bugtraq_id(75270, 75108, 75669);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-20 10:16:48 +0530 (Mon, 20 Jul 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("Cacti Multiple Vulnerabilities-June15");
@@ -45,6 +45,7 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The 'get_hash_graph_template' function in lib/functions.php script in Cacti.
 
   - An insufficient sanitization of user-supplied data in HTTP request sent to graphs.

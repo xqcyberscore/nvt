@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_magento_xss_vuln.nasl 9738 2018-05-07 04:50:48Z ckuersteiner $
+# $Id: gb_magento_xss_vuln.nasl 11343 2018-09-12 06:36:46Z cfischer $
 #
 # Magento 1.9.0.1 Cross-Site Scripting Vulnerability
 #
@@ -27,19 +27,19 @@
 
 CPE = "cpe:/a:magentocommerce:magento";
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.112055");
-  script_version("$Revision: 9738 $");
+  script_version("$Revision: 11343 $");
   script_cve_id("CVE-2014-9758");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-07 06:50:48 +0200 (Mon, 07 May 2018) $");
-  script_tag(name: "creation_date", value: "2017-09-27 08:35:44 +0200 (Wed, 27 Sep 2017)");
-  script_tag(name: "cvss_base", value: "4.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-09-27 08:35:44 +0200 (Wed, 27 Sep 2017)");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("Magento 1.9.0.1 Cross-Site Scripting Vulnerability");
 
@@ -50,22 +50,22 @@ if (description)
   script_dependencies("sw_magento_detect.nasl");
   script_mandatory_keys("magento/installed");
 
-  script_tag(name: "summary", value: "Magento Web E-Commerce Platform is prone to a cross-site scripting (XSS) vulnerability.");
+  script_tag(name:"summary", value:"Magento Web E-Commerce Platform is prone to a cross-site scripting (XSS) vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Several Adobe Flash files that ship with Magento are vulnerable to DOM based Cross Site Scripting (XSS).");
+  script_tag(name:"insight", value:"Several Adobe Flash files that ship with Magento are vulnerable to DOM based Cross Site Scripting (XSS).");
 
-  script_tag(name: "impact", value: "Successful exploitation of the flaw could allow a malicious attacker to gain control
-      of a users session with the application or full control of the application if the targeted user has administrative privileges.");
+  script_tag(name:"impact", value:"Successful exploitation of the flaw could allow a malicious attacker to gain control
+  of a users session with the application or full control of the application if the targeted user has administrative privileges.");
 
-  script_tag(name: "affected", value: "Magento E-Commerce version 1.9.0.1.");
+  script_tag(name:"affected", value:"Magento E-Commerce version 1.9.0.1.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 07th May, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 12th September, 2018. Information
+  regarding this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "http://www.openwall.com/lists/oss-security/2015/12/05/4");
-  script_xref(name: "URL", value: "http://appcheck-ng.com/unpatched-vulnerabilities-in-magento-e-commerce-platform/");
+  script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2015/12/05/4");
+  script_xref(name:"URL", value:"http://appcheck-ng.com/unpatched-vulnerabilities-in-magento-e-commerce-platform/");
 
   exit(0);
 }

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_turn_off_autoplay.nasl 10819 2018-08-07 14:11:07Z emoss $
+# $Id: win_turn_off_autoplay.nasl 11337 2018-09-11 14:23:53Z emoss $
 #
 # Check value for Turn off Autoplay
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109169");
-  script_version("$Revision: 10819 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 16:11:07 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 11337 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:23:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-05-22 12:14:09 +0200 (Tue, 22 May 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,9 +38,9 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
-	script_add_preference(name:"Value", type:"radio", value:"255;181");
+  script_add_preference(name:"Value", type:"radio", value:"255;181");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Turn off Autoplay' on Windows hosts (at least Windows 7).
 
 Autoplay begins reading from a drive as soon as you insert media in the drive.
@@ -79,7 +79,7 @@ item = 'NoDriveTypeAutoRun';
 value = registry_get_dword(key:key, item:item, type:type);
 default = script_get_preference('Value');
 
-if(!value){
+if(value == ''){
   value = '0';
 }
 

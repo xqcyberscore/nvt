@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gdl_mult_sql_inj_n_xss_vuln.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_gdl_mult_sql_inj_n_xss_vuln.nasl 11325 2018-09-11 10:59:54Z asteins $
 #
 # Ganesha Digital Library Multiple SQL Injection and XSS Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802433");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11325 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-01 13:02:10 +0530 (Fri, 01 Jun 2012)");
   script_name("Ganesha Digital Library Multiple SQL Injection and XSS Vulnerabilities");
   script_xref(name:"URL", value:"http://1337day.com/exploits/18392");
@@ -51,9 +51,11 @@ if(description)
   Impact Level: Application");
   script_tag(name:"affected", value:"Ganesha Digital Library 4.0 and prior");
   script_tag(name:"insight", value:"Multiple flaws are due to
+
   - Input passed via the 'm' parameter to office.php, the 'id' parameter
   to publisher.php, and the 's' parameter to search.php is not properly
   sanitised before being returned to the user.
+
   - Input passed via the 'node' parameter to go.php is not properly
   sanitised before being used in SQL queries.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.

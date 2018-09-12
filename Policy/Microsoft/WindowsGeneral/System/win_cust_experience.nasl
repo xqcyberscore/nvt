@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_cust_experience.nasl 10809 2018-08-07 11:19:51Z emoss $
+# $Id: win_cust_experience.nasl 11337 2018-09-11 14:23:53Z emoss $
 #
 # Check value for Turn off Windows Customer Experience Improvement Program
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109365");
-  script_version("$Revision: 10809 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-07 13:19:51 +0200 (Tue, 07 Aug 2018) $");
+  script_version("$Revision: 11337 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:23:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-25 11:49:26 +0200 (Mon, 25 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,9 +38,9 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
-	script_add_preference(name:"Value", type:"radio", value:"0;1");
+  script_add_preference(name:"Value", type:"radio", value:"0;1");
   script_mandatory_keys("Compliance/Launch");
-  script_tag(name: "summary", value: "This test checks the setting for policy
+  script_tag(name:"summary", value:"This test checks the setting for policy
 'Turn off Windows Customer Experience Improvement Program' on Windows hosts (at
 least Windows 7).
 
@@ -77,7 +77,7 @@ item = 'CEIPEnable';
 value = registry_get_dword(key:key, item:item, type:type);
 default = script_get_preference('Value');
 
-if(!value){
+if(value == ''){
   value = '2';
 }
 

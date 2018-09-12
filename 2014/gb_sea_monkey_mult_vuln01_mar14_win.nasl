@@ -29,7 +29,7 @@ CPE = "cpe:/a:mozilla:seamonkey";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804528");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1493", "CVE-2014-1494", "CVE-2014-1496", "CVE-2014-1497",
                 "CVE-2014-1498", "CVE-2014-1499", "CVE-2014-1500", "CVE-2014-1502",
                 "CVE-2014-1504", "CVE-2014-1505", "CVE-2014-1508", "CVE-2014-1509",
@@ -39,7 +39,7 @@ if(description)
                     66418, 66426, 66425, 66206, 66207, 66209, 66203, 66240);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-27 13:03:47 +0530 (Thu, 27 Mar 2014)");
   script_name("SeaMonkey Multiple Vulnerabilities-01 Mar14 (Windows)");
 
@@ -48,22 +48,32 @@ if(description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- Local users can gain privileges by modifying the extracted Mar contents
+
+  - Local users can gain privileges by modifying the extracted Mar contents
   during an update.
-- A boundary error when decoding WAV audio files.
-- The crypto.generateCRMFRequest method does not properly validate a certain
+
+  - A boundary error when decoding WAV audio files.
+
+  - The crypto.generateCRMFRequest method does not properly validate a certain
   key type.
-- An error related to certain WebIDL-implemented APIs.
-- An error when performing polygon rendering in MathML.
-- The session-restore feature does not consider the Content Security Policy of
+
+  - An error related to certain WebIDL-implemented APIs.
+
+  - An error when performing polygon rendering in MathML.
+
+  - The session-restore feature does not consider the Content Security Policy of
   a data URL.
-- A timing error when processing SVG format images with filters and
+
+  - A timing error when processing SVG format images with filters and
   displacements.
-- A use-after-free error when handling garbage collection of TypeObjects under
+
+  - A use-after-free error when handling garbage collection of TypeObjects under
   memory pressure.
-- An error within the TypedArrayObject implementation when handling neutered
+
+  - An error within the TypedArrayObject implementation when handling neutered
   ArrayBuffer objects.
-- And some unspecified errors exist.");
+
+  - And some unspecified errors exist.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to conduct spoofing attacks,
 disclose potentially sensitive information, bypass certain security
 restrictions, and compromise a user's system.

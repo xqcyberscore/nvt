@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_esr_mult_vuln02_sep14_win.nasl 11196 2018-09-03 13:09:40Z mmartin $
+# $Id: gb_mozilla_firefox_esr_mult_vuln02_sep14_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Mozilla Firefox ESR Multiple Vulnerabilities-02 September14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mozilla:firefox_esr";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804831");
-  script_version("$Revision: 11196 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1565", "CVE-2014-1564", "CVE-2014-1563", "CVE-2014-1553");
   script_bugtraq_id(69521, 69525, 69523, 69524);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:09:40 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-05 19:14:31 +0530 (Fri, 05 Sep 2014)");
 
   script_name("Mozilla Firefox ESR Multiple Vulnerabilities-02 September14 (Windows)");
@@ -45,9 +45,13 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - An out-of-bounds read error when creating an audio timeline in Web Audio.
+
   - An error when decoding GIF images.
+
   - A use-after-free error during cycle collection when animating SVG content.
+
   - Some other unspecified errors.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers

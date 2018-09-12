@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mesosphere_marathon_exposure_vuln.nasl 10838 2018-08-08 12:05:36Z cfischer $
+# $Id: gb_mesosphere_marathon_exposure_vuln.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
 #
 # Mesosphere Marathon Web UI Public WAN (Internet) Accessible
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114012");
-  script_version("$Revision: 10838 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 14:05:36 +0200 (Wed, 08 Aug 2018) $");
+  script_version("$Revision: 11328 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 11:40:39 +0200 (Fri, 20 Jul 2018)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -38,7 +38,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("global_settings.nasl", "gb_mesosphere_marathon_detect.nasl");
   script_exclude_keys("keys/islocalhost", "keys/islocalnet", "keys/is_private_addr");
-  script_mandatory_keys("Mesosphere/Marathon/installed");
+  script_mandatory_keys("mesosphere/marathon/detected");
 
   script_xref(name:"URL", value:"https://info.lacework.com/hubfs/Containers%20At-Risk_%20A%20Review%20of%2021%2C000%20Cloud%20Environments.pdf");
 
@@ -83,7 +83,7 @@ CPE = "cpe:/a:mesosphere:marathon";
 
 if(!port = get_app_port(cpe: CPE)) exit(0);
 
-if(get_kb_item("Mesosphere/Marathon/" + port + "/installed")) {
+if(get_kb_item("mesosphere/marathon/" + port + "/detected")) {
   report = "Mesosphere Marathon UI is exposed to the public under the following URL: " + report_vuln_url(port: port, url: "/", url_only: TRUE);
   get_app_location(cpe: CPE, port: port, nofork: TRUE);
   security_message(port: port, data: report);

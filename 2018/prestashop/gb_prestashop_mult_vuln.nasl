@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prestashop_mult_vuln.nasl 9758 2018-05-08 12:29:26Z asteins $
+# $Id: gb_prestashop_mult_vuln.nasl 11343 2018-09-12 06:36:46Z cfischer $
 #
 # PrestaShop Multiple Vulnerabilities
 #
@@ -27,20 +27,20 @@
 
 CPE = 'cpe:/a:prestashop:prestashop';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140722");
-  script_version("$Revision: 9758 $");
-  script_tag(name: "last_modification", value: "$Date: 2018-05-08 14:29:26 +0200 (Tue, 08 May 2018) $");
-  script_tag(name: "creation_date", value: "2018-01-23 17:03:37 +0700 (Tue, 23 Jan 2018)");
-  script_tag(name: "cvss_base", value: "5.0");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_version("$Revision: 11343 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2018-01-23 17:03:37 +0700 (Tue, 23 Jan 2018)");
+  script_tag(name:"cvss_base", value:"5.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
 
   script_cve_id("CVE-2018-5681", "CVE-2018-5682");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("PrestaShop Multiple Vulnerabilities");
 
@@ -51,23 +51,23 @@ if (description)
   script_dependencies("gb_prestashop_detect.nasl");
   script_mandatory_keys("prestashop/installed");
 
-  script_tag(name: "summary", value: "PrestaShop is prone to multiple vulnerabilities.");
+  script_tag(name:"summary", value:"PrestaShop is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "PrestaShop is prone to multiple vulnerabilities:
+  script_tag(name:"insight", value:"PrestaShop is prone to multiple vulnerabilities:
 
-- XSS via source-code editing on the 'Pages > Edit page' screen. (CVE-2018-5681)
+  - XSS via source-code editing on the 'Pages > Edit page' screen. (CVE-2018-5681)
 
-- User enumeration via the Reset Password feature. (CVE-2018-5682)");
+  - User enumeration via the Reset Password feature. (CVE-2018-5682)");
 
-  script_tag(name: "affected", value: "PrestaShop version 1.7.2.4 and prior.");
+  script_tag(name:"affected", value:"PrestaShop version 1.7.2.4 and prior.");
 
-  script_tag(name: "solution", value: "No solution or patch is available as of 03rd May, 2018. Information
-regarding this issue will be updated once solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 12th September, 2018. Information
+  regarding this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "http://forge.prestashop.com/browse/BOOM-4612");
-  script_xref(name: "URL", value: "http://forge.prestashop.com/browse/BOOM-4613");
+  script_xref(name:"URL", value:"http://forge.prestashop.com/browse/BOOM-4612");
+  script_xref(name:"URL", value:"http://forge.prestashop.com/browse/BOOM-4613");
 
   exit(0);
 }

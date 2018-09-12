@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_activeperl_modules_mult_vuln_win.nasl 11079 2018-08-22 09:58:52Z mmartin $
+# $Id: gb_activeperl_modules_mult_vuln_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Active Perl Modules Multiple Vulnerabilities (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803343");
-  script_version("$Revision: 11079 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2011-5060", "CVE-2011-4114", "CVE-2011-3597", "CVE-2011-2939",
                 "CVE-2011-2728");
   script_bugtraq_id(49911);
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 11:58:52 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-27 11:15:50 +0530 (Wed, 27 Mar 2013)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -56,14 +56,18 @@ if(description)
   Active Perl Encode module before 2.44
   Active Perl PAR::Packer module before 1.012 on winows");
   script_tag(name:"insight", value:"The flaws are due to
+
   - an error in par_mktmpdir function in the 'PAR::Packer' and 'PAR' modules
     creates temporary files in a directory with a predictable name without
     verifying ownership and permissions of this directory.
+
   - the 'Digest->new()' function not properly sanitising input before using it
     in an 'eval()' call, which can be exploited to inject and execute arbitrary
     perl code.
+
   - off-by-one error in the decode_xs function in Unicode/Unicode.xs in the
     'Encode' module.
+
   - An error within the 'File::Glob::bsd_glob()' function when handling the
     GLOB_ALTDIRFUNC flag can be exploited to cause an access violation and
     potentially execute arbitrary code.");

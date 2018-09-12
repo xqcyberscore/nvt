@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_Driver-Autostart.nasl 10949 2018-08-14 09:36:21Z emoss $
+# $Id: GSHB_WMI_Driver-Autostart.nasl 11349 2018-09-12 07:56:57Z cfischer $
 #
 # Driver Autoinstall (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109000");
-  script_version("$Revision: 10949 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 11:36:21 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 11349 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:56:57 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-06-21 10:43:24 +0200 (Wed, 21 Jun 2017)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -93,7 +93,7 @@ if(driver_auto_install == "1"){
   set_kb_item(name:"WMI/Driver_Autoinstall", value:"off");
 }
 
-if(driver_auto_install = "0"){
+if(driver_auto_install == "0"){
   set_kb_item(name:"WMI/Driver_Autoinstall", value:"on");
 }
 

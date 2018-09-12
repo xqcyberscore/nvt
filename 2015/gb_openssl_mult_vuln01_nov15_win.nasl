@@ -1,6 +1,6 @@
 ###############################################################################
 #OpenVAS Vulnerability Test
-# $Id: gb_openssl_mult_vuln01_nov15_win.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_openssl_mult_vuln01_nov15_win.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # OpenSSL Multiple Vulnerabilities -01 Nov15 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:openssl:openssl";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.806732");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-1787", "CVE-2015-0290", "CVE-2015-0291", "CVE-2015-0285",
                 "CVE-2015-0208", "CVE-2015-0207");
   script_bugtraq_id(73238, 73226, 73235, 73234, 73229);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-11-24 18:49:30 +0530 (Tue, 24 Nov 2015)");
   script_tag(name:"qod_type", value:"remote_banner");
   script_name("OpenSSL Multiple Vulnerabilities -01 Nov15 (Windows)");
@@ -46,14 +46,20 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Error in 'sigalgs' implementation in 't1_lib.c' script.
+
   - multi-block feature in the 'ssl3_write_bytes' function in 's3_pkt.c' script
     does not properly handle certain non-blocking I/O cases.
+
   - Error in 'sl3_get_client_key_exchange' function in 's3_srvr.c' script.
+
   - 'ssl3_client_hello' function in 's3_clnt.c' script does not ensure that the
     PRNG is seeded before proceeding with a handshake.
+
   - Error in ASN.1 signature-verification implementation in the 'rsa_item_verify'
     function in 'crypto/rsa/rsa_ameth.c' script.
+
   - Imprper handling of state information by 'dtls1_listen' function in
     'd1_lib.c' script.");
 

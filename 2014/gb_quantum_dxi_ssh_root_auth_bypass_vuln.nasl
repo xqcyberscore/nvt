@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_quantum_dxi_ssh_root_auth_bypass_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_quantum_dxi_ssh_root_auth_bypass_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Quantum DXi Remote 'root' Authentication Bypass Vulnerability
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804414");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-19 11:54:59 +0530 (Wed, 19 Mar 2014)");
   script_name("Quantum DXi Remote 'root' Authentication Bypass Vulnerability");
 
@@ -42,7 +42,8 @@ authentication bypass vulnerability.");
 the target machine");
   script_tag(name:"insight", value:"- The root user has a hardcoded password that is unknown and not changeable.
   Normally access is only through the restricted shells.
-- The /root/.ssh/authorized_keys on the appliance contains the static private
+
+  - The /root/.ssh/authorized_keys on the appliance contains the static private
   ssh key. Using this key on a remote system to login through SSH will give
   a root shell.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to  gain unauthorized root

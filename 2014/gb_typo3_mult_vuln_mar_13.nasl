@@ -28,13 +28,13 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804203");
-  script_version("$Revision: 11191 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-1842", "CVE-2013-1843");
   script_bugtraq_id(58330, 60312);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:57:37 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-03 15:01:59 +0530 (Fri, 03 Jan 2014)");
   script_name("TYPO3 Multiple Vulnerabilities Mar13");
 
@@ -45,9 +45,11 @@ information or execute SQL commands.
 Impact Level: Application");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple error exists in the application,
-- An error exist in Extbase Framework, which fails to sanitize user input
+
+  - An error exist in Extbase Framework, which fails to sanitize user input
 properly.
-- An error exist in the access tracking mechanism, which fails o validate user
+
+  - An error exist in the access tracking mechanism, which fails o validate user
 provided input.");
   script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.5.24, 4.6.17, 4.7.9 or 6.0.3 or later, or apply the patch
 mentioned in the below link

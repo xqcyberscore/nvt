@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_dropbear_ssh_16369_17024.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: sw_dropbear_ssh_16369_17024.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Dropbear SSH < 0.48 Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = 'cpe:/a:matt_johnston:dropbear_ssh_server';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.105118");
-  script_version("$Revision: 11108 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_version("$Revision: 11339 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-11-14 12:00:00 +0100 (Fri, 14 Nov 2014)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -53,8 +53,10 @@ if(description)
   is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Check the version.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - A large number of connection attempts that exceeds the MAX_UNAUTH_CLIENTS defined
   value of 30 is possible.
+
   - The shipped scp command of OpenSSH 4.2p1 expands filenames that contain shell metacharacters or spaces twice.");
   script_tag(name:"impact", value:"The flaws allows remote attackers to cause a denial of service
   (connection slot exhaustion) and local attackers to execute arbitrary commands.");

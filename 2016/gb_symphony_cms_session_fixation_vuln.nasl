@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symphony_cms_session_fixation_vuln.nasl 6257 2017-05-31 14:33:17Z cfi $
+# $Id: gb_symphony_cms_session_fixation_vuln.nasl 11348 2018-09-12 07:38:26Z cfischer $
 #
 # Symphony CMS Session Fixation Vulnerability
 #
@@ -23,24 +23,24 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 CPE = "cpe:/a:symphony-cms:symphony_cms";
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807852");
-  script_version("$Revision: 6257 $");
+  script_version("$Revision: 11348 $");
   script_cve_id("CVE-2016-4309");
   script_tag(name:"cvss_base", value:"7.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-05-31 16:33:17 +0200 (Wed, 31 May 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 09:38:26 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-07-04 14:57:33 +0530 (Mon, 04 Jul 2016)");
   script_name("Symphony CMS Session Fixation Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with Symphony CMS
   and is prone to session fixation vulnerability.");
 
-  script_tag(name:"vuldetect", value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"The flaw exists if the application is deployed using an insecure setup
   with a php.ini 'session.use_only_cookies' not enabled and due to an error in application which does not
@@ -58,37 +58,31 @@ if(description)
 
   script_tag(name:"solution_type", value:"Mitigation");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_xref(name : "URL" , value : "https://packetstormsecurity.com/files/137551");
+  script_xref(name:"URL", value:"https://packetstormsecurity.com/files/137551");
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Web application abuses");
   script_dependencies("gb_symphony_cms_detect.nasl");
   script_mandatory_keys("symphony/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
 
 include("version_func.inc");
 include("host_details.inc");
 
-## Variable Initialization
-cmsPort = "";
-cmsVer = "";
-
-## get the port
 if(!cmsPort = get_app_port(cpe:CPE)){
   exit(0);
 }
 
-## Get the version
 if(!cmsVer = get_app_version(cpe:CPE, port:cmsPort)){
   exit(0);
 }
 
-## Check for vulnerable version
 if(version_is_equal(version:cmsVer, test_version:"2.6.7"))
 {
-  report = report_fixed_ver(installed_version:cmsVer, fixed_version:"NoneAvailable");
+  report = report_fixed_ver(installed_version:cmsVer, fixed_version:"See the solution tag for a possible Mitigation");
   security_message(data:report, port:cmsPort);
   exit(0);
 }

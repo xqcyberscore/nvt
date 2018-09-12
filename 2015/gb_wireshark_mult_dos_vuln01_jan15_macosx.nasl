@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln01_jan15_macosx.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_wireshark_mult_dos_vuln01_jan15_macosx.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Wireshark Multiple Denial-of-Service Vulnerabilities -01 Jan15 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805323");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-0564", "CVE-2015-0563", "CVE-2015-0562", "CVE-2015-0561",
                 "CVE-2015-0560", "CVE-2015-0559");
   script_bugtraq_id(71922, 71916, 71921, 71917, 71919, 71918);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-01-14 08:43:33 +0530 (Wed, 14 Jan 2015)");
   script_name("Wireshark Multiple Denial-of-Service Vulnerabilities -01 Jan15 (Mac OS X)");
 
@@ -45,10 +45,15 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An error within the SMTP dissector.
+
   - An error within the DEC DNA Routing Protocol dissector.
+
   - An error within the LPP dissector.
+
   - Two errors within the WCCP dissector.
+
   - An error when decypting TLS/SSL sessions.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow

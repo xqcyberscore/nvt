@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_maygion_ipcamera_mult_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_maygion_ipcamera_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # MayGion IP Cameras Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803774");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_bugtraq_id(60192, 60196);
   script_cve_id("CVE-2013-1604", "CVE-2013-1605");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-10-28 15:46:55 +0530 (Mon, 28 Oct 2013)");
   script_name("MayGion IP Cameras Multiple Vulnerabilities");
 
@@ -45,7 +45,8 @@ if(description)
   is able to read the sensitive information or not.");
   script_tag(name:"insight", value:"- The flaw is due to the program not properly sanitizing user input,
    specifically directory traversal style attacks (e.g., ../../).
-   - User-supplied input is not properly validated when handling a specially
+
+  - User-supplied input is not properly validated when handling a specially
    crafted GET request. This may allow a remote attacker to cause a buffer
    overflow, resulting in a denial of service or potentially allowing the
    execution of arbitrary code.");

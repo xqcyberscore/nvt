@@ -29,13 +29,13 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805650");
-  script_version("$Revision: 10456 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-4148", "CVE-2015-4147", "CVE-2015-2787", "CVE-2015-2348",
                 "CVE-2015-2331");
   script_bugtraq_id(73357, 73431, 73434);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:10:17 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-16 18:45:49 +0530 (Tue, 16 Jun 2015)");
   script_name("PHP Multiple Vulnerabilities - 01 - Jun15 (Windows)");
 
@@ -52,7 +52,7 @@ if(description)
   - 'SoapClient::__call' method in ext/soap/soap.c script in PHP does not verify
   that __default_headers is an array.
 
-  -  use-after-free error related to the 'unserialize' function when using
+  - use-after-free error related to the 'unserialize' function when using
   DateInterval input.
 
   - a flaw in the 'move_uploaded_file' function that is triggered when handling

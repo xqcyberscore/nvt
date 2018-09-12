@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_2048_2.nasl 11037 2018-08-17 11:51:16Z cfischer $
+# $Id: gb_ubuntu_USN_2048_2.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Ubuntu Update for curl USN-2048-2
 #
@@ -29,8 +29,8 @@ include("revisions-lib.inc");
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.841660");
-  script_version("$Revision: 11037 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 13:51:16 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11336 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-17 12:10:08 +0530 (Tue, 17 Dec 2013)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -42,7 +42,8 @@ if(description)
   Ubuntu 10.04 LTS");
   script_tag(name:"insight", value:"USN-2048-1 fixed a vulnerability in curl. The security fix
 uncovered a bug in the curl command line tool which resulted in the
---insecure (-k) option not working as intended. This update fixes the problem.
+
+  - -insecure (-k) option not working as intended. This update fixes the problem.
 
 We apologize for the inconvenience.
 

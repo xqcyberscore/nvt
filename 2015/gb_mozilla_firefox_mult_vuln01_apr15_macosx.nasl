@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_apr15_macosx.nasl 11225 2018-09-04 13:06:36Z mmartin $
+# $Id: gb_mozilla_firefox_mult_vuln01_apr15_macosx.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 Apr15 (Mac OS X)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805523");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-0816", "CVE-2015-0815", "CVE-2015-0814", "CVE-2015-0812",
                 "CVE-2015-0811", "CVE-2015-0810", "CVE-2015-0808", "CVE-2015-0807",
                 "CVE-2015-0806", "CVE-2015-0805", "CVE-2015-0804", "CVE-2015-0803",
                 "CVE-2015-0802", "CVE-2015-0801");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-06 15:05:42 +0530 (Mon, 06 Apr 2015)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 Apr15 (Mac OS X)");
 
@@ -46,17 +46,28 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - Improper restriction of resource: URLs.
+
   - Multiple unspecified errors.
+
   - No HTTPS session for lightweight theme add-on installations .
+
   - An out of bounds read error in the QCMS color management library.
+
   - An error that is triggered when handling specially crafted flash content,
   which can cause the cursor to become invisible.
+
   - An incorrect memory management for simple-type arrays in WebRTC.
+
   - An error in 'navigator.sendBeacon' implementation.
+
   - Two errors in 'Off Main Thread Compositing' implementation.
+
   - Two use-after-free errors in 'HTMLSourceElement::AfterSetAttr' function.
+
   - An error allowing to bypass the Same Origin Policy.
+
   - Use of docshell type information instead of page principal information for
   'Window.webidl' access control.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jul12_lin.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_google_chrome_mult_vuln01_jul12_lin.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities(01) - July 12 (Linux)
 #
@@ -24,45 +24,40 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation could allow attackers to bypass certain security
-  restrictions, execute arbitrary code in the context of the browser or
-  cause a denial of service.
-  Impact Level: System/Application";
-tag_affected = "Google Chrome version prior to 20.0.1132.57 on Linux";
-tag_insight = "- A use-after-free error exists within counter handling and within layout
-    height tracking.
-  - An unspecified error when handling JavaScript within PDFs can be
-    exploited to access certain objects.";
-tag_solution = "Upgrade to the Google Chrome 20.0.1132.57 or later,
-  For updates refer to http://www.google.com/chrome";
-tag_summary = "This host is installed with Google Chrome and is prone to multiple
-  vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802918");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11322 $");
   script_cve_id("CVE-2012-2842", "CVE-2012-2843", "CVE-2012-2844");
   script_bugtraq_id(54386);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-24 12:01:56 +0530 (Tue, 24 Jul 2012)");
   script_name("Google Chrome Multiple Vulnerabilities(01) - July 12 (Linux)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/49906");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1027249");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2012/07/stable-channel-update.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/49906");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1027249");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2012/07/stable-channel-update.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_require_keys("Google-Chrome/Linux/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to bypass certain security
+  restrictions, execute arbitrary code in the context of the browser or
+  cause a denial of service.
+  Impact Level: System/Application");
+  script_tag(name:"affected", value:"Google Chrome version prior to 20.0.1132.57 on Linux");
+  script_tag(name:"insight", value:"- A use-after-free error exists within counter handling and within layout
+    height tracking.
+
+  - An unspecified error when handling JavaScript within PDFs can be
+    exploited to access certain objects.");
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 20.0.1132.57 or later,
+  For updates refer to http://www.google.com/chrome");
+  script_tag(name:"summary", value:"This host is installed with Google Chrome and is prone to multiple
+  vulnerabilities.");
   script_tag(name:"qod_type", value:"executable_version");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -71,16 +66,11 @@ if(description)
 
 include("version_func.inc");
 
-## Variable Initialization
-chromeVer = "";
-
-## Get the version from KB
 chromeVer = get_kb_item("Google-Chrome/Linux/Ver");
 if(!chromeVer){
   exit(0);
 }
 
-## Check for Google Chrome Versions prior to 20.0.1132.57
 if(version_is_less(version:chromeVer, test_version:"20.0.1132.57")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

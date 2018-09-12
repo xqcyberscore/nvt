@@ -29,11 +29,11 @@ CPE = "cpe:/a:google:chrome";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805668");
-  script_version("$Revision: 11225 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-1269", "CVE-2015-1268", "CVE-2015-1267", "CVE-2015-1268");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 15:06:36 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-06-29 17:09:27 +0530 (Mon, 29 Jun 2015)");
   script_name("Google Chrome Multiple Vulnerabilities-01 June15 (Mac OS X)");
 
@@ -43,13 +43,17 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - 'DecodeHSTSPreloadRaw' function in 'net/http/transport_security_state.cc'
   script does not properly canonicalize DNS hostnames before making comparisons
   to HSTS or HPKP preload entries.
+
   - 'bindings/scripts/v8_types.py' in Blink does not properly select a creation
   context for a return value's DOM wrapper.
+
   - Blink does not properly restrict the creation context during creation of a
   DOM wrapper.
+
   - 'content/browser/webui/content_web_ui_controller_factory.cc' script does not
   properly consider the scheme in determining whether a URL is associated with a
   WebUI SiteInstance.");

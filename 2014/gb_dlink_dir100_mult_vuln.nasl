@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir100_mult_vuln.nasl 11214 2018-09-04 10:09:46Z mmartin $
+# $Id: gb_dlink_dir100_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # D-Link DIR-100 Router Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803797");
-  script_version("$Revision: 11214 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-7051", "CVE-2013-7052", "CVE-2013-7053", "CVE-2013-7054",
                 "CVE-2013-7055");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-05 12:25:02 +0530 (Wed, 05 Feb 2014)");
   script_name("D-Link DIR-100 Router Multiple Vulnerabilities");
 
@@ -41,12 +41,16 @@ if(description)
   script_tag(name:"vuldetect", value:"Send a crafted data via HTTP request and check whether it is able to read
   the user information.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Retrieve the Administrator password and sensitive configuration parameters
   like the pppoe username and password without authentication.
+
   - Execute privileged Commands without authentication through a race condition
   leading to weak authentication enforcement.
+
   - Sending formatted request to a victim which then will execute arbitrary
   commands on the device.
+
   - Store arbitrary javascript code which will be executed when a victim
   accesses the administrator interface.");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause denial of service or

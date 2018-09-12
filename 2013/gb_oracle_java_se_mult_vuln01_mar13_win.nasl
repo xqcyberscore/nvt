@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln01_mar13_win.nasl 11011 2018-08-16 14:14:31Z mmartin $
+# $Id: gb_oracle_java_se_mult_vuln01_mar13_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Oracle Java SE Multiple Vulnerabilities -01 March 13 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803327");
-  script_version("$Revision: 11011 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-1493", "CVE-2013-0809");
   script_bugtraq_id(58296, 58238);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-07 18:02:25 +0530 (Thu, 07 Mar 2013)");
   script_name("Oracle Java SE Multiple Vulnerabilities -01 March 13 (Windows)");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1028237");
@@ -51,7 +51,9 @@ if(description)
   script_tag(name:"affected", value:"Oracle Java SE Versions 7 Update 15 and earlier, 6 Update 41 and earlier,
   5 Update 40 and earlier on Windows");
   script_tag(name:"insight", value:"Multiple flaws due to,
+
   - Unspecified error in 2D component.
+
   - Error in color management(CMM) functionality in the 2D component via image
     with crafted raster parameter.");
   script_tag(name:"solution", value:"Apply patch from below link,

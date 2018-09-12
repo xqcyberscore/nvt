@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_dos_vuln_jan12_win.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_google_chrome_mult_dos_vuln_jan12_win.nasl 11322 2018-09-11 10:15:07Z asteins $
 #
 # Google Chrome Multiple Denial of Service Vulnerabilities - January12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802374");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11322 $");
   script_cve_id("CVE-2011-3919", "CVE-2011-3921", "CVE-2011-3922");
   script_bugtraq_id(51300);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-10 14:35:57 +0530 (Tue, 10 Jan 2012)");
   script_name("Google Chrome Multiple Denial of Service Vulnerabilities - January12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47449/");
@@ -48,9 +48,12 @@ if(description)
   Impact Level: Application");
   script_tag(name:"affected", value:"Google Chrome version prior to 16.0.912.75 on Windows");
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - A use-after-free error when the handling of animation frames.
+
   - A boundary error within the 'xmlStringLenDecodeEntities()' function of
     libxml2
+
   - A stack based buffer overflow error in glyph handling.");
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 16.0.912.75 or later,
   For updates refer to http://www.google.com/chrome");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_titan_ftp_server_mult_dir_trav_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_titan_ftp_server_mult_dir_trav_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Titan FTP Server Multiple Directory Traversal Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:southrivertech:titan_ftp_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804400");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1841", "CVE-2014-1842", "CVE-2014-1843");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-02-11 16:31:02 +0530 (Tue, 11 Feb 2014)");
   script_name("Titan FTP Server Multiple Directory Traversal Vulnerabilities");
 
@@ -49,9 +49,11 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"- It is possible to copy the complete home folder of another user by
    leveraging a vulnerability on the Titan FTP Server Web Interface.
-   - It is possible to obtain the complete list of existing users by
+
+  - It is possible to obtain the complete list of existing users by
    writing '/../' on the search bar.
-   - It is possible to observe the 'Properties' for an existing user home
+
+  - It is possible to observe the 'Properties' for an existing user home
    folder. This also allows for enumeration of existing users on the system.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to read arbitrary files
   and information on the target system.

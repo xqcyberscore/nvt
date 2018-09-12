@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_air_mult_vuln01_oct14_macosx.nasl 11210 2018-09-04 09:13:50Z mmartin $
+# $Id: gb_adobe_air_mult_vuln01_oct14_macosx.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Adobe AIR Multiple Vulnerabilities(APSB14-22)-(Mac OS X)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:adobe_air";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805006");
-  script_version("$Revision: 11210 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-0558", "CVE-2014-0564", "CVE-2014-0569", "CVE-2014-8439");
   script_bugtraq_id(70437, 70442, 70441, 71289);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 11:13:50 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-10-20 12:56:20 +0530 (Mon, 20 Oct 2014)");
 
   script_name("Adobe AIR Multiple Vulnerabilities(APSB14-22)-(Mac OS X)");
@@ -45,8 +45,10 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple Flaws are due to,
+
   - Two unspecified errors can be exploited to corrupt memory and subsequently
     execute arbitrary code.
+
   - An integer overflow error can be exploited to execute arbitrary code.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers

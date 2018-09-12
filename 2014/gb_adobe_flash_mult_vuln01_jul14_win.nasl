@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_mult_vuln01_jul14_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_adobe_flash_mult_vuln01_jul14_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Adobe Flash Player Multiple Vulnerabilities-01 July14 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804714");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-4671", "CVE-2014-0539", "CVE-2014-0537");
   script_bugtraq_id(68457, 68454, 68455);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-07-11 10:43:50 +0530 (Fri, 11 Jul 2014)");
   script_name("Adobe Flash Player Multiple Vulnerabilities-01 July14 (Windows)");
 
@@ -43,8 +43,10 @@ if(description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple Flaws are due to,
-- An error when handling JSONP callbacks.
-- Multiple Unspecified error.");
+
+  - An error when handling JSONP callbacks.
+
+  - Multiple Unspecified error.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
 restrictions.
 

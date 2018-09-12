@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_backupbuddy_mult_vuln.nasl 11056 2018-08-20 13:34:00Z mmartin $
+# $Id: gb_wordpress_backupbuddy_mult_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # WordPress Backupbuddy Multiple Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803884");
-  script_version("$Revision: 11056 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-2741", "CVE-2013-2742", "CVE-2013-2743", "CVE-2013-2744");
   script_bugtraq_id(58657, 58863, 58871, 58873);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:34:00 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-29 13:44:14 +0530 (Thu, 29 Aug 2013)");
   script_name("WordPress Backupbuddy Multiple Vulnerabilities");
 
@@ -48,10 +48,10 @@ General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
-- Fails to properly remove importbuddy.php during the final step of the backup
+  - Fails to properly remove importbuddy.php during the final step of the backup
   process.
 
-- Improper handling of input passed via 'step' parameter to importbuddy.php script.");
+  - Improper handling of input passed via 'step' parameter to importbuddy.php script.");
   script_tag(name:"affected", value:"BackupBuddy plugin versions 1.3.4, 2.1.4, 2.2.4, 2.2.25, and 2.2.28");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to bypass password authentication
 and obtain potentially sensitive information.

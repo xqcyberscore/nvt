@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_mult_unspecified_vuln02_apr15.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_java_mult_unspecified_vuln02_apr15.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Apr 2015 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:oracle:jre";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805536");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-0491", "CVE-2015-0488", "CVE-2015-0480", "CVE-2015-0478",
                 "CVE-2015-0477", "CVE-2015-0469", "CVE-2015-0460", "CVE-2015-0459");
   script_bugtraq_id(74094, 74111, 74104, 74147, 74119, 74072, 74097, 74083);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-21 16:34:06 +0530 (Tue, 21 Apr 2015)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-02 Apr 2015 (Windows)");
 
@@ -45,19 +45,26 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - An error in the Java Cryptography Extension (JCE) subcomponent's RSA signature
   implementation.
+
   - An error in the JSSE subcomponent that is triggered when checking X.509
   certificate options.
+
   - An error in the 'ReferenceProcessor::process_discovered_references' function
   in share/vm/memory/referenceProcessor.cpp script.
+
   - Two unspecified errors related to the 2D subcomponent.
+
   - An error in the Beans subcomponent related to permissions and resource
   loading.
+
   - An off-by-one overflow condition in the functions
   'LigatureSubstitutionProcessor::processStateEntry' and
   'LigatureSubstitutionProcessor2::processStateEntry' within LigatureSubstProc.cpp
   and LigatureSubstProc2.cpp scripts respectively.
+
   - An unspecified error.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers

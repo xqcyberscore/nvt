@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cm3_acoracms_mult_vuln.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_cm3_acoracms_mult_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # CM3 AcoraCMS Multiple XSS, CSRF and Open Redirect Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804268");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-4722", "CVE-2013-4723", "CVE-2013-4724", "CVE-2013-4725",
                 "CVE-2013-4726", "CVE-2013-4727", "CVE-2013-4728");
   script_bugtraq_id(62008, 62007, 62009, 62011, 62010, 62012, 67701);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-29 11:10:25 +0530 (Tue, 29 Apr 2014)");
   script_name("CM3 AcoraCMS Multiple XSS, CSRF and Open Redirect Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -53,10 +53,13 @@ if(description)
   read the cookie or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Insufficient validation of user-supplied input via 'username', 'url', 'qstr'
   passed to login/default.asp
+
   - Insufficient validation of the 'l' parameter upon submission to track.aspx
   script.
+
   - insufficient measures for confirmation of sensitive transactions.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to redirect victim from the
   intended legitimate web site to an arbitrary web site, trick the users into

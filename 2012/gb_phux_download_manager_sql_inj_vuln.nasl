@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phux_download_manager_sql_inj_vuln.nasl 5999 2017-04-21 09:02:32Z teissa $
+# $Id: gb_phux_download_manager_sql_inj_vuln.nasl 11325 2018-09-11 10:59:54Z asteins $
 #
 # phux Download Manager 'file' Parameter SQL Injection Vulnerability
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802586");
-  script_version("$Revision: 5999 $");
+  script_version("$Revision: 11325 $");
   script_cve_id("CVE-2012-0980");
   script_bugtraq_id(51725);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-21 11:02:32 +0200 (Fri, 21 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-07 12:53:59 +0530 (Tue, 07 Feb 2012)");
   script_name("phux Download Manager 'file' Parameter SQL Injection Vulnerability");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18432/");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/51725/info");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18432/");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51725/info");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
@@ -45,19 +45,18 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will let attackers to cause SQL injection
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to cause SQL injection
   attack and gain sensitive information.
 
   Impact Level: Application");
-  script_tag(name : "affected" , value : "phux Download Manager version 0.1 and prior.");
-  script_tag(name : "insight" , value : "The flaw is due to an improper validation of user-supplied
+  script_tag(name:"affected", value:"phux Download Manager version 0.1 and prior.");
+  script_tag(name:"insight", value:"The flaw is due to an improper validation of user-supplied
   input via the 'file' parameter to download.php, which allows attacker to
   manipulate SQL queries by injecting arbitrary SQL code.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running phux Download Manager and is prone to SQL
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+Likely none will be provided anymore.
+General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running phux Download Manager and is prone to SQL
   injection vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -69,21 +68,12 @@ if(description)
 include("http_func.inc");
 include("http_keepalive.inc");
 
-## Variable Initialisation
-dir = "";
-port = 0;
-sndReq = "";
-rcvRes = NULL;
-
-## Get HTTP Port
 port = get_http_port(default:80);
 
-## Check Host Supports PHP
 if(!can_host_php(port:port)){
   exit(0);
 }
 
-## Check for possible names
 foreach dir (make_list_unique("/", "/download_manager", "/phux", cgi_dirs(port:port)))
 {
 
@@ -91,14 +81,11 @@ foreach dir (make_list_unique("/", "/download_manager", "/phux", cgi_dirs(port:p
 
   rcvRes = http_get_cache(item: dir + "/index.php", port:port);
 
-  ## Confirm the application
   if(!isnull(rcvRes) && ">phux.org's<" >< rcvRes &&
                         "Public Download Center<" >< rcvRes)
   {
-    ## Construct the Attack Request
     url = dir + "/download.php?file='";
 
-    ## Try attack and check the response to confirm vulnerability
     if(http_vuln_check(port:port, url:url, pattern:"mysql_num_rows\(\): " +
                           "supplied argument is not a valid MySQL"))
     {

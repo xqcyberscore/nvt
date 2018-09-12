@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_xss_n_csrf_vuln02_may14.nasl 10953 2018-08-14 12:06:42Z mmartin $
+# $Id: gb_owncloud_mult_xss_n_csrf_vuln02_may14.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # ownCloud Multiple XSS & CSRF Vulnerabilities -02 May14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804277");
-  script_version("$Revision: 10953 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-0300", "CVE-2013-0298");
   script_bugtraq_id(58107, 58103);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:06:42 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-05 11:00:11 +0530 (Mon, 05 May 2014)");
   script_name("ownCloud Multiple XSS & CSRF Vulnerabilities -02 May14");
 
@@ -43,11 +43,13 @@ if (description)
 scripting and cross-site request forgery vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- Improper validation of user-supplied input passed via 'mountpoint' parameter
+
+  - Improper validation of user-supplied input passed via 'mountpoint' parameter
 upon submission to the /apps/files_external/addMountPoint.php script, 'dir' and
 'file' parameters upon submission to the /apps/files_pdfviewer/viewer.php script
 and 'iCalendar' file in the calendar application.
-- Insufficient validation of user-supplied input passed via the the 'v' POST
+
+  - Insufficient validation of user-supplied input passed via the the 'v' POST
 parameter to changeview.php within /apps/calendar/ajax, multiple unspecified
 parameters to addRootCertificate.php, dropbox.php and google.php scripts within
 /apps/files_external/ajax and multiple unspecified POST parameters to

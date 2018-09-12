@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_centreon_mult_vuln_sep15.nasl 11271 2018-09-06 14:58:32Z mmartin $
+# $Id: gb_centreon_mult_vuln_sep15.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Centreon Multiple Vulnerabilities - Sep15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:centreon:centreon";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805974");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-1560", "CVE-2015-1561");
   script_bugtraq_id(75602, 75605);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-09-08 13:07:40 +0530 (Tue, 08 Sep 2015)");
   script_tag(name:"qod_type", value:"remote_analysis");
   script_name("Centreon Multiple Vulnerabilities - Sep15");
@@ -46,8 +46,10 @@ if(description)
   check whether it is able to execute sql query or not.");
 
   script_tag(name:"insight", value:"Multiple errors exists as,
+
   - Input passed via GET parameter 'sid' is not validated before passing to
   common-Func.php script.
+
   - Input passed via parameters 'ns_id' and 'end' is not validated before passing
   to getStats.php script.");
 

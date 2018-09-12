@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kubernetes_dashboard_detect.nasl 10683 2018-07-30 14:01:27Z cfischer $
+# $Id: gb_kubernetes_dashboard_detect.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
 #
 # Kubernetes Dashboard UI Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114009");
-  script_version("$Revision: 10683 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-30 16:01:27 +0200 (Mon, 30 Jul 2018) $");
+  script_version("$Revision: 11328 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-16 15:22:55 +0200 (Mon, 16 Jul 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -83,9 +83,9 @@ if(egrep(pattern: "[Kk]ubernetesDashboard", string: res1) ||
       if(vers[1]) version = vers[1];
    }
 
-   set_kb_item(name: "KubernetesDashboard/installed", value: TRUE);
-   set_kb_item(name: "KubernetesDashboard/version", value: version);
-   set_kb_item(name: "KubernetesDashboard/" + port + "/installed", value: TRUE);
+   set_kb_item(name: "kubernetesdashboard/detected", value: TRUE);
+   set_kb_item(name: "kubernetesdashboard/version", value: version);
+   set_kb_item(name: "kubernetesdashboard/" + port + "/detected", value: TRUE);
 
    cpe = build_cpe(value: version, exp: "^([0-9.]+)", base: "cpe:/a:kubernetes:dashboard:"); # CPE is not registered yet
 

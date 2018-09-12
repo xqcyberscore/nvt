@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_typo3_jumpurl_file_disclosure_vuln.nasl 11214 2018-09-04 10:09:46Z mmartin $
+# $Id: gb_typo3_jumpurl_file_disclosure_vuln.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # TYPO3 jumpUrl File Disclosure Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803989");
-  script_version("$Revision: 11214 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2009-0815", "CVE-2009-0816");
   script_bugtraq_id(33714);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 12:09:46 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-26 17:48:31 +0530 (Thu, 26 Dec 2013)");
   script_name("TYPO3 jumpUrl File Disclosure Vulnerability");
 
@@ -45,8 +45,10 @@ Impact Level: Application");
   script_tag(name:"vuldetect", value:"Send a Crafted HTTP GET request and check whether it is able to fetch a
 remote file.");
   script_tag(name:"insight", value:"Multiple error exists in the application,
-- An error exist in jumpUrl mechanism, which will disclose a hash secret.
-- An error exist in backend user interface, which fails to validate user
+
+  - An error exist in jumpUrl mechanism, which will disclose a hash secret.
+
+  - An error exist in backend user interface, which fails to validate user
 supplied input properly.");
   script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.0.12, 4.1.10, 4.2.6 or later, or apply the patch
 mentioned in the below link

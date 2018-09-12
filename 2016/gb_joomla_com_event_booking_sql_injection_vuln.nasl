@@ -29,11 +29,12 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807368");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11323 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:20:18 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-09-27 10:23:31 +0530 (Tue, 27 Sep 2016)");
+
   script_name("Joomla! Component Event Booking SQL Injection Vulnerability");
 
   script_tag(name:"summary", value:"This host is installed with Joomla component
@@ -43,14 +44,12 @@ if(description)
   and check whether it is able to execute sql query or not.");
 
   script_tag(name:"insight", value:"The flaw exists due to an insufficient
-  validation of user supplied input via 'Date' parameter to 'index.php' 
+  validation of user supplied input via 'Date' parameter to 'index.php'
   script.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to inject or manipulate SQL queries in the back-end database,
-  allowing for the manipulation or disclosure of arbitrary data.
-
-  Impact Level: Application");
+  allowing for the manipulation or disclosure of arbitrary data.");
 
   script_tag(name:"affected", value:"Joomla Event Booking Component version 2.10.1");
 
@@ -69,44 +68,31 @@ if(description)
   script_dependencies("joomla_detect.nasl");
   script_mandatory_keys("joomla/installed");
   script_require_ports("Services/www", 80);
+
   exit(0);
 }
-
 
 include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-## Variable Initialization
-http_port = 0;
-url = "";
-dir = "";
-
-## Get HTTP Port
-if(!http_port = get_app_port(cpe:CPE)){
+if(!http_port = get_app_port(cpe:CPE))
   exit(0);
-}
 
-## Get Joomla Location
-if(!dir = get_app_location(cpe:CPE, port:http_port)){
+if(!dir = get_app_location(cpe:CPE, port:http_port))
   exit(0);
-}
-if(dir = "/"){
+
+if(dir == "/")
   dir = "";
-}
 
-## Construct the attack request
-url = dir + "/index.php?option=com_eventbooking&view=calendar&layout" + 
+url = dir + "/index.php?option=com_eventbooking&view=calendar&layout" +
             "=weekly&date=%27SQL-INJECTION-TEST&Itemid=354#";
 
-## Check the response to confirm vulnerability
-## check_header is not 200 OK
-if(http_vuln_check(port:http_port, url:url,
-                   pattern:"You have an error in your SQL syntax",
-                   extra_check:make_list('SQL-INJECTION-TEST',
-                   '>1064 - Error: 1064<', 'FROM #__eb_events AS')))
-{
+if(http_vuln_check(port:http_port, url:url, pattern:"You have an error in your SQL syntax",
+                   extra_check:make_list('SQL-INJECTION-TEST', '>1064 - Error: 1064<', 'FROM #__eb_events AS'))) {
   report = report_vuln_url(port:http_port, url:url);
   security_message(port:http_port, data:report);
   exit(0);
 }
+
+exit(99);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_xss_n_dos_vuln_lin.nasl 11194 2018-09-03 12:44:14Z mmartin $
+# $Id: gb_adobe_reader_xss_n_dos_vuln_lin.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Adobe Reader Cross-Site Scripting & Denial of Service Vulnerabilities (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804397");
-  script_version("$Revision: 11194 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2007-0045", "CVE-2007-0048");
   script_bugtraq_id(21858);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:44:14 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-04-15 11:50:57 +0530 (Tue, 15 Apr 2014)");
   script_name("Adobe Reader Cross-Site Scripting & Denial of Service Vulnerabilities (Linux)");
 
@@ -43,9 +43,11 @@ if(description)
 and denial of service vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Flaws exist due to,
-- the browser plug-in does not validate user supplied input to the hosted PDF
+
+  - the browser plug-in does not validate user supplied input to the hosted PDF
 file before returning the input to the user.
-- some unspecified error.");
+
+  - some unspecified error.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause memory corruption,
 conduct denial of service attack and the execution of arbitrary script code in
 a user's browser session in context of an affected site.

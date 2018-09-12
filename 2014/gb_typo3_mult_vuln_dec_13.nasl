@@ -28,14 +28,14 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804206");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-7073", "CVE-2013-7074", "CVE-2013-7075",
                 "CVE-2013-7078", "CVE-2013-7079", "CVE-2013-7081");
   script_bugtraq_id(64240, 64245, 64256, 64239, 64252, 64238);
   script_tag(name:"cvss_base", value:"6.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:P/I:P/A:P");
   script_tag(name:"qod_type", value:"remote_banner_unreliable");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-01-06 15:22:20 +0530 (Mon, 06 Jan 2014)");
   script_name("TYPO3 Multiple Vulnerabilities Dec13");
 
@@ -46,14 +46,18 @@ information or execute arbitrary script code.
 Impact Level: Application");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple error exists in the application,
-- Multiple error exist in Content Editing Wizard, which fails to check user
+
+  - Multiple error exist in Content Editing Wizard, which fails to check user
 permissions, properly encode user input and which misses signature for an
 input parameter.
-- An error exist in Extbase Framework, which returns error messages without
+
+  - An error exist in Extbase Framework, which returns error messages without
 properly encoding.
-- An error exist in openid extension, which allows redirection to arbitrary
+
+  - An error exist in openid extension, which allows redirection to arbitrary
 URL.
-- An error exist in form content element, which allows generation of arbitrary
+
+  - An error exist in form content element, which allows generation of arbitrary
 signatures that could be used in a different context.");
   script_tag(name:"solution", value:"Upgrade to TYPO3 version 4.5.32, 4.7.17, 6.0.12, 6.1.7 or later,
 For updates refer to, http://typo3.org/");

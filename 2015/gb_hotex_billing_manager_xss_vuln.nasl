@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805371");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2015-3319", "CVE-2015-2781");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-27 10:13:24 +0530 (Mon, 27 Apr 2015)");
   script_name("hotEx Billing Manager Multiple Vulnerabilities");
 
@@ -42,8 +42,10 @@ if(description)
   and check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Input passed via the 'reply' parameter to 'hotspotlogin.cgi' is
     not properly sanitised before being returned to the user.
+
   - HTTPOnly flag is not included in Set-Cookie header, which makes
     it easier for remote attackers to obtain potentially sensitive
     information via script access to this cookie");

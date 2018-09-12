@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_stoneware_webnetwork_mult_xss_vuln.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_stoneware_webnetwork_mult_xss_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Stoneware webNetwork Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803326");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2012-4352");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-03-06 11:46:39 +0530 (Wed, 06 Mar 2013)");
   script_name("Stoneware webNetwork Multiple Cross-Site Scripting Vulnerabilities");
   script_xref(name:"URL", value:"http://stoneware-docs.s3.amazonaws.com/Bulletins/Security%20Bulletin%206_1_0.pdf");
@@ -50,8 +50,11 @@ if(description)
   Impact Level: Application");
   script_tag(name:"affected", value:"Stoneware WebNetwork 6.1 before SP1");
   script_tag(name:"insight", value:"Multiple flaws exists because application does the validate,
+
   - 'blogName' parameter passed to blog.jsp and blogSearch.jsp
+
   - 'calendarType' and 'monthNumber' parameters passed to calendar.jsp
+
   - 'flag' parameter passed to swDashboard/ajax/setAppFlag.jsp");
   script_tag(name:"solution", value:"Upgrade to Stoneware webNetwork 6.1 SP1 or later,
   For updates refer to http://www.stone-ware.com/webnetwork");

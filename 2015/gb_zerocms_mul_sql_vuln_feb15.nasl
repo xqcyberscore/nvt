@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_zerocms_mul_sql_vuln_feb15.nasl 11271 2018-09-06 14:58:32Z mmartin $
+# $Id: gb_zerocms_mul_sql_vuln_feb15.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # ZeroCMS Multiple SQL Injection Vulnerabilities - Feb 2015
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805331");
-  script_version("$Revision: 11271 $");
+  script_version("$Revision: 11334 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 16:58:32 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-02-03 10:44:23 +0530 (Tue, 03 Feb 2015)");
   script_name("ZeroCMS Multiple SQL Injection Vulnerabilities - Feb 2015");
 
@@ -41,8 +41,10 @@ if(description)
   and check whether it is able execute sql query or not.");
 
   script_tag(name:"insight", value:"The flaw exists as input passed via
+
   - 'article_id' parameter used in 'zero_view_article.php' script is
      not properly sanitised before being used.
+
   - 'user_id' parameter used in 'zero_user_transact.php' script is
      not properly sanitised before being used. ");
 

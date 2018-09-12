@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln_apr12_win.nasl 11052 2018-08-20 10:24:34Z asteins $
+# $Id: gb_adobe_prdts_mult_vuln_apr12_win.nasl 11325 2018-09-11 10:59:54Z asteins $
 #
 # Adobe Reader Multiple Vulnerabilities April-2012 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802748");
-  script_version("$Revision: 11052 $");
+  script_version("$Revision: 11325 $");
   script_cve_id("CVE-2012-0776", "CVE-2012-0774", "CVE-2012-0775");
   script_bugtraq_id(52952, 52951, 52949);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 12:24:34 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-16 19:08:36 +0530 (Mon, 16 Apr 2012)");
   script_name("Adobe Reader Multiple Vulnerabilities April-2012 (Windows)");
 
@@ -43,13 +43,13 @@ vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaws are due to
 
-- An unspecified error when handling JavaScript/JavaScript API can be exploited
+  - An unspecified error when handling JavaScript/JavaScript API can be exploited
 to corrupt memory.
 
-- An integer overflow error when handling True Type Font (TTF) can be exploited
+  - An integer overflow error when handling True Type Font (TTF) can be exploited
 to corrupt memory.
 
-- The application loads executables (msiexec.exe) in an insecure manner.");
+  - The application loads executables (msiexec.exe) in an insecure manner.");
   script_tag(name:"impact", value:"Successful exploitation will let attackers to bypass certain security
 restrictions, execute arbitrary code via unspecified vectors or cause a denial
 of service.

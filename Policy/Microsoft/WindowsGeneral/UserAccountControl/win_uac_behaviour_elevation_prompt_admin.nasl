@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_uac_behaviour_elevation_prompt_admin.nasl 11098 2018-08-23 14:32:47Z emoss $
+# $Id: win_uac_behaviour_elevation_prompt_admin.nasl 11344 2018-09-12 06:57:52Z emoss $
 #
 # Check value for User Account Control: Behavior of the elevation prompt for
 # administrators in Admin Approval Mode
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109243");
-  script_version("$Revision: 11098 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-23 16:32:47 +0200 (Thu, 23 Aug 2018) $");
+  script_version("$Revision: 11344 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:57:52 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-12 14:34:04 +0200 (Tue, 12 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -74,7 +74,7 @@ key = 'Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System';
 item = 'ConsentPromptBehaviorAdmin';
 default = script_get_preference('Minimum');
 value = registry_get_dword(key:key, item:item, type:type);
-if(!value){
+if(value == ''){
   val = '0';
 }
 

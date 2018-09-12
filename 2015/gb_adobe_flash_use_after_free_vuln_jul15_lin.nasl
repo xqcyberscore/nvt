@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_use_after_free_vuln_jul15_lin.nasl 11220 2018-09-04 11:57:09Z mmartin $
+# $Id: gb_adobe_flash_use_after_free_vuln_jul15_lin.nasl 11333 2018-09-11 13:51:58Z mmartin $
 #
 # Adobe Flash Player Use-After-Free Vulnerability July15 (Linux)
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805904");
-  script_version("$Revision: 11220 $");
+  script_version("$Revision: 11333 $");
   script_cve_id("CVE-2015-5119", "CVE-2014-0578", "CVE-2015-3114", "CVE-2015-3115",
                 "CVE-2015-3116", "CVE-2015-3117", "CVE-2015-3118", "CVE-2015-3119",
                 "CVE-2015-3120", "CVE-2015-3121", "CVE-2015-3122", "CVE-2015-3123",
@@ -42,7 +42,7 @@ if(description)
   script_bugtraq_id(75568, 75594, 75593, 75591, 75590, 75595, 75596, 75592);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-04 13:57:09 +0200 (Tue, 04 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 15:51:58 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-07-08 14:25:09 +0530 (Wed, 08 Jul 2015)");
   script_name("Adobe Flash Player Use-After-Free Vulnerability July15 (Linux)");
 
@@ -52,12 +52,19 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - An use-after-free error in 'ByteArray' class.
+
   - Multiple heap based buffer overflow errors.
+
   - Multiple memory corruption errors.
+
   - Multiple null pointer dereference errors.
+
   - Multiple unspecified errors.
+
   - A type confusion error.
+
   - Multiple use-after-free vulnerabilities.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote

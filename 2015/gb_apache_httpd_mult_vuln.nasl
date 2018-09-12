@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_httpd_mult_vuln.nasl 11291 2018-09-07 14:48:41Z mmartin $
+# $Id: gb_apache_httpd_mult_vuln.nasl 11334 2018-09-11 14:00:44Z mmartin $
 #
 # Apache HTTP Server Multiple Vulnerabilities May15
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805638");
-  script_version("$Revision: 11291 $");
+  script_version("$Revision: 11334 $");
   script_cve_id("CVE-2014-3523", "CVE-2014-0118", "CVE-2014-0226", "CVE-2014-0231");
   script_bugtraq_id(73040);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 16:48:41 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:00:44 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-05-27 12:15:46 +0530 (Wed, 27 May 2015)");
   script_tag(name:"qod_type", value:"remote_banner_unreliable"); # Only vulnerable if mod_lua/mod_deflate/mod_status/mod_cgid is enabled
   script_name("Apache HTTP Server Multiple Vulnerabilities May15");
@@ -45,13 +45,17 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to:
+
   - Vulnerability in the WinNT MPM component within the 'winnt_accept' function
   in server/mpm/winnt/child.c script that is triggered when the default
   AcceptFilter is used.
+
   - Vulnerabilty in the mod_deflate module that is triggered when handling
   highly compressed bodies.
+
   - A race condition in the mod_status module that is triggered as user-supplied
   input is not properly validated when handling the scoreboard.
+
   - Vulnerability in the mod_cgid module that is triggered when used to host CGI
   scripts that do not consume standard input.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_owncloud_mult_xss_n_csrf_vuln01_may14.nasl 10953 2018-08-14 12:06:42Z mmartin $
+# $Id: gb_owncloud_mult_xss_n_csrf_vuln01_may14.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # ownCloud Multiple XSS & CSRF Vulnerabilities -01 May14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:owncloud:owncloud";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804276");
-  script_version("$Revision: 10953 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2013-0307", "CVE-2013-0299", "CVE-2013-0297");
   script_bugtraq_id(58107, 58484, 58485);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 14:06:42 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-05-05 10:31:11 +0530 (Mon, 05 May 2014)");
   script_name("ownCloud Multiple XSS & CSRF Vulnerabilities -01 May14");
 
@@ -43,10 +43,12 @@ if (description)
 scripting and cross-site request forgery vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- Improper validation of user-supplied input passed via 'site_name' and
+
+  - Improper validation of user-supplied input passed via 'site_name' and
 'site_url' parameters to /apps/external/ajax/setsites.php script, 'Group Input'
 parameter passed to the settings.php script.
-- Insufficient validation of user-supplied input passed via the 'lat' and
+
+  - Insufficient validation of user-supplied input passed via the 'lat' and
 'lng' parameters to apps/calendar/ajax/settings/guesstimezone.php, the
 'timezonedetection' parameter to calendar/ajax/settings/timezonedetection.php,
 admin_export parameter to apps/admin_migrate/settings.php, operation parameter to

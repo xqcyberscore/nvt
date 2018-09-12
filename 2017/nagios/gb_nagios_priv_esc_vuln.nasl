@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_nagios_priv_esc_vuln.nasl 7243 2017-09-25 05:48:36Z cfischer $
+# $Id: gb_nagios_priv_esc_vuln.nasl 11343 2018-09-12 06:36:46Z cfischer $
 #
 # Nagios Privilege Escalation Vulnerability
 #
@@ -27,20 +27,20 @@
 
 CPE = 'cpe:/a:nagios:nagios';
 
-if (description)
+if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.140375");
-  script_version("$Revision: 7243 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-09-25 07:48:36 +0200 (Mon, 25 Sep 2017) $");
-  script_tag(name: "creation_date", value: "2017-09-19 11:03:19 +0700 (Tue, 19 Sep 2017)");
+  script_version("$Revision: 11343 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2017-09-19 11:03:19 +0700 (Tue, 19 Sep 2017)");
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2017-14312");
 
-  script_tag(name: "qod_type", value: "remote_banner");
+  script_tag(name:"qod_type", value:"remote_banner");
 
-  script_tag(name: "solution_type", value: "NoneAvailable");
+  script_tag(name:"solution_type", value:"NoneAvailable");
 
   script_name("Nagios Privilege Escalation Vulnerability");
 
@@ -51,21 +51,21 @@ if (description)
   script_dependencies("nagios_detect.nasl");
   script_mandatory_keys("nagios/installed");
 
-  script_tag(name: "summary", value: "Nagios is prone to a privilege escalation vulnerability.");
+  script_tag(name:"summary", value:"Nagios is prone to a privilege escalation vulnerability.");
 
-  script_tag(name: "vuldetect", value: "Checks the version.");
+  script_tag(name:"vuldetect", value:"Checks the version.");
 
-  script_tag(name: "insight", value: "Nagios Core initially executes /usr/sbin/nagios as root but supports
-configuration options in which this file is owned by a non-root account (and similarly can have nagios.cfg owned
-by a non-root account), which allows local users to gain privileges by leveraging access to this non-root
-account.");
+  script_tag(name:"insight", value:"Nagios Core initially executes /usr/sbin/nagios as root but supports
+  configuration options in which this file is owned by a non-root account (and similarly can have nagios.cfg owned
+  by a non-root account), which allows local users to gain privileges by leveraging access to this non-root
+  account.");
 
-  script_tag(name: "affected", value: "Nagios 4.3.4 and prior.");
+  script_tag(name:"affected", value:"Nagios 4.3.4 and prior.");
 
-  script_tag(name: "solution", value: "No Solution or patch is available as of 19th September, 2017. Information
-regarding this issue will be updated once the solution details are available.");
+  script_tag(name:"solution", value:"No known solution is available as of 12th September, 2018. Information
+  regarding this issue will be updated once solution details are available.");
 
-  script_xref(name: "URL", value: "https://github.com/NagiosEnterprises/nagioscore/issues/424");
+  script_xref(name:"URL", value:"https://github.com/NagiosEnterprises/nagioscore/issues/424");
 
   exit(0);
 }

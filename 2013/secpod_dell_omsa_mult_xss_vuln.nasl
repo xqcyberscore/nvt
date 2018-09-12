@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dell_omsa_mult_xss_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: secpod_dell_omsa_mult_xss_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Dell OpenManage Server Administrator Multiple XSS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902941");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2012-6272");
   script_bugtraq_id(57212);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-30 15:21:55 +0530 (Wed, 30 Jan 2013)");
   script_name("Dell OpenManage Server Administrator Multiple XSS Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51764");
@@ -47,12 +47,19 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
 
   script_tag(name:"insight", value:"Input passed via the 'topic' parameter to
+
   - /help/sm/es/Output/wwhelp/wwhimpl/js/html/index_main.htm,
+
   - /help/sm/ja/Output/wwhelp/wwhimpl/js/html/index_main.htm,
+
   - /help/sm/de/Output/wwhelp/wwhimpl/js/html/index_main.htm,
+
   - /help/sm/fr/Output/wwhelp/wwhimpl/js/html/index_main.htm,
+
   - /help/sm/zh/Output/wwhelp/wwhimpl/js/html/index_main.htm,
+
   - /help/hip/en/msgguide/wwhelp/wwhimpl/js/html/index_main.htm and
+
   - /help/hip/en/msgguide/wwhelp/wwhimpl/common/html/index_main.htm is not
   properly sanitized before being returned to the user.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");

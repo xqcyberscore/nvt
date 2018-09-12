@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln_jan13_win.nasl 11201 2018-09-03 14:35:07Z cfischer $
+# $Id: gb_adobe_shockwave_player_mult_vuln_jan13_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities Jan-2013 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803092");
-  script_version("$Revision: 11201 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2012-6270", "CVE-2012-6271");
   script_bugtraq_id(56975, 56972);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-01-02 13:05:18 +0530 (Wed, 02 Jan 2013)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities Jan-2013 (Windows)");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/546769");
@@ -56,7 +56,7 @@ Windows");
   script_tag(name:"insight", value:"- An error in Xtras allows attackers to trigger installation of
   arbitrary signed Xtras via a Shockwave movie that contains an Xtra URL.
 
-- An error exists when handling a specially crafted HTML document that calls
+  - An error exists when handling a specially crafted HTML document that calls
   Shockwave content via a compatibility parameter forcing application to
   downgrade to the insecure version.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");

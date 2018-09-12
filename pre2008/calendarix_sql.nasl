@@ -1,6 +1,6 @@
 ###################################################################
 # OpenVAS Vulnerability Test
-# $Id: calendarix_sql.nasl 6040 2017-04-27 09:02:38Z teissa $
+# $Id: calendarix_sql.nasl 11343 2018-09-12 06:36:46Z cfischer $
 #
 # Calendarix SQL Injection Vulnerability
 #
@@ -32,8 +32,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.18410");
-  script_version("$Revision: 6040 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-27 11:02:38 +0200 (Thu, 27 Apr 2017) $");
+  script_version("$Revision: 11343 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:36:46 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -52,14 +52,18 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation could result in execution of arbitrary
   PHP code on the remote site, a compromise of the application, disclosure or modification of
   data, or may permit an attacker to exploit vulnerabilities in the underlying database implementation.");
-  script_tag(name:"solution", value:"None at this time.");
+
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.
+  Likely none will be provided anymore. General solution options are to upgrade to a newer release, disable respective features, remove the
+  product or replace the product by another one.");
+
   script_tag(name:"summary", value:"The remote host is running Calendarix, a PHP-based calendar system.
 
   The remote version of this software is prone to a remote file include vulnerability as well as
   multiple cross-site scripting, and SQL injection vulnerabilities.");
 
   script_tag(name:"qod_type", value:"remote_active");
-  script_tag(name:"solution_type", value:"NoneAvailable");
+  script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }

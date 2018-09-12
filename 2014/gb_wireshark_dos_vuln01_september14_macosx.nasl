@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln01_september14_macosx.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_wireshark_dos_vuln01_september14_macosx.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Wireshark DOS Vulnerability-01 Sep14 (Mac OS X)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804911");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-6430", "CVE-2014-6428", "CVE-2014-6427", "CVE-2014-6432",
                 "CVE-2014-6431", "CVE-2014-6429", "CVE-2014-6423", "CVE-2014-6424");
   script_bugtraq_id(69857, 69865, 69861, 69859, 69858, 69853, 69860, 69862);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-09-23 16:50:21 +0530 (Tue, 23 Sep 2014)");
 
   script_name("Wireshark DOS Vulnerability-01 Sep14 (Mac OS X)");
@@ -46,14 +46,19 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - SnifferDecompress function does not prevent data overwrites, validate
     bitmask data, and does not properly handle empty input data.
+
   - Improper initialization of certain ID value in the dissect_spdu function
     under SES dissector.
+
   - Off-by-one error in the is_rtsp_request_or_reply function under the RTSP
     dissector.
+
   - The dissect_v9_v10_pdu_data function under Netflow dissector refers incorrect
     offset and start variables.
+
   - An error in tvb_raw_text_add function in MEGACO dissector");
 
   script_tag(name:"impact", value:"Successful exploitation will allow

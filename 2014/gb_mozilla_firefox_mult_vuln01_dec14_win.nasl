@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln01_dec14_win.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_mozilla_firefox_mult_vuln01_dec14_win.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Mozilla Firefox Multiple Vulnerabilities-01 Dec14 (Windows)
 #
@@ -29,14 +29,14 @@ CPE = "cpe:/a:mozilla:firefox";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805215");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1594", "CVE-2014-1593", "CVE-2014-1592", "CVE-2014-1590",
                 "CVE-2014-1589", "CVE-2014-1588", "CVE-2014-1587", "CVE-2014-8632",
                 "CVE-2014-8631");
   script_bugtraq_id(71396, 71395, 71398, 71397, 71393, 71392, 71391, 71556, 71560);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-16 08:53:05 +0530 (Tue, 16 Dec 2014)");
   script_name("Mozilla Firefox Multiple Vulnerabilities-01 Dec14 (Windows)");
 
@@ -46,17 +46,25 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple flaws exist due to,
+
   - A bad cast issue from the BasicThebesLayer to BasicContainerLayer.
+
   - An error when parsing media content within the 'mozilla::FileBlockCache::Read'
   function.
+
   - A use-after-free error when parsing certain HTML within the
   'nsHtml5TreeOperation' class.
+
   - An error that is triggered when handling JavaScript objects that are passed
   to XMLHttpRequest that mimics an input stream.
+
   - An error that is triggered when handling a CSS stylesheet that has its namespace
   improperly declared.
+
   - Multiple unspecified errors.
+
   - An error when filtering object properties via XrayWrappers.
+
   - An error when passing Chrome Object Wrappers (COW) protected chrome objects as
   native interfaces.");
 

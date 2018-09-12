@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_mult_vuln02_dec14.nasl 11198 2018-09-03 13:39:31Z mmartin $
+# $Id: gb_symantec_web_gateway_mult_vuln02_dec14.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Symantec Web Gateway Multiple Vulnerabilities -02 Dec14
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805228");
-  script_version("$Revision: 11198 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1651", "CVE-2014-1652");
   script_bugtraq_id(67754, 67755);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 15:39:31 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-23 12:50:52 +0530 (Tue, 23 Dec 2014)");
   script_name("Symantec Web Gateway Multiple Vulnerabilities -02 Dec14");
 
@@ -44,8 +44,10 @@ if(description)
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
   script_tag(name:"insight", value:"Multiple errors are due to,
+
   - An error in the 'clientreport.php' script which do not properly sanitize
   user-supplied input before using it in SQL queries.
+
   - An error in program which do not validate input to multiple unspecified
   report parameters before returning it to users.");
 

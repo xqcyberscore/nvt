@@ -29,12 +29,12 @@ CPE = "cpe:/a:wireshark:wireshark";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804018");
-  script_version("$Revision: 11011 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-5717");
   script_bugtraq_id(62322);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 16:14:31 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-09-27 10:45:37 +0530 (Fri, 27 Sep 2013)");
   script_name("Wireshark Denial of Service Vulnerability Sep13 (Windows)");
 
@@ -45,7 +45,8 @@ vulnerability.");
   script_tag(name:"solution", value:"Upgrade to Wireshark version 1.10.2 or later,
 For updates refer to http://www.wireshark.org/download");
   script_tag(name:"insight", value:"Flaw is due to an error in the Bluetooth HCI ACL dissector (dissectors/packet
--bthci_acl.c)");
+
+  - bthci_acl.c)");
   script_tag(name:"affected", value:"Wireshark version 1.10.x before 1.10.2 on Windows");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause a DoS (Denial of Service)
 and potentially compromise a vulnerable system.

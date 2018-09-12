@@ -28,12 +28,12 @@ CPE = "cpe:/a:mcafee:vulnerability_manager";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804250");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-1472", "CVE-2014-1473", "CVE-2013-5094");
   script_bugtraq_id(64795, 58401);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-03-20 14:52:54 +0530 (Thu, 20 Mar 2014)");
   script_name("McAfee Vulnerability Manager Multiple Vulnerabilities");
 
@@ -42,8 +42,10 @@ if(description)
 multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"Multiple flaws are due to,
-- Improper validation of user supplied input passed to 'cert_cn' parameter.
-- Other multiple flaws are caused by improper validation of user-supplied
+
+  - Improper validation of user supplied input passed to 'cert_cn' parameter.
+
+  - Other multiple flaws are caused by improper validation of user-supplied
   input.");
   script_tag(name:"impact", value:"Successful exploitation will allow a local attacker to steal the victim's
 cookie-based authentication credentials.

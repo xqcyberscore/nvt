@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rockmongo_xss_n_dir_trav_vuln.nasl 11103 2018-08-24 10:37:26Z mmartin $
+# $Id: gb_rockmongo_xss_n_dir_trav_vuln.nasl 11336 2018-09-11 14:15:06Z mmartin $
 #
 # RockMongo Cross Site Scripting and Directory Traversal Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:rockmongo:rockmongo';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.804176");
-  script_version("$Revision: 11103 $");
+  script_version("$Revision: 11336 $");
   script_cve_id("CVE-2013-5108", "CVE-2013-5107");
   script_bugtraq_id(63969, 63975);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 12:37:26 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-12-24 09:13:23 +0530 (Tue, 24 Dec 2013)");
   script_name("RockMongo Cross Site Scripting and Directory Traversal Vulnerabilities");
 
@@ -45,9 +45,12 @@ if(description)
   Impact Level: System/Application");
   script_tag(name:"affected", value:"Rockmongo versions 1.1.5 and prior.");
   script_tag(name:"insight", value:"The flaws are due to
+
   - An improper validation of user-supplied input in 'xn' function via 'db'
   and 'username' parameters to 'index.php' script.
+
   - An improper validation of user-supplied input via other unspecified parameters.
+
   - An improper sanitizing user input via 'ROCK_LANG' cookie to 'index.php' script.");
   script_tag(name:"solution", value:"Vendor fixes are available.");
   script_tag(name:"solution_type", value:"VendorFix");

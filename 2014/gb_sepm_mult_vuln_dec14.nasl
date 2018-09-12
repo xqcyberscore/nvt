@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sepm_mult_vuln_dec14.nasl 11108 2018-08-24 14:27:07Z mmartin $
+# $Id: gb_sepm_mult_vuln_dec14.nasl 11339 2018-09-11 14:25:52Z mmartin $
 #
 # Symantec Endpoint Protection Manager Multiple Vulnerabilities - Dec14
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805203");
-  script_version("$Revision: 11108 $");
+  script_version("$Revision: 11339 $");
   script_cve_id("CVE-2014-3439", "CVE-2014-3438", "CVE-2014-3437");
   script_bugtraq_id(70843, 70844, 70845);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-24 16:27:07 +0200 (Fri, 24 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:25:52 +0200 (Tue, 11 Sep 2018) $");
   script_tag(name:"creation_date", value:"2014-12-04 09:43:28 +0530 (Thu, 04 Dec 2014)");
   script_name("Symantec Endpoint Protection Manager Multiple Vulnerabilities - Dec14");
 
@@ -43,12 +43,16 @@ if(description)
   check whether it is able to read cookie or not.");
 
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The /console/Highlander_docs/SSO-Error.jsp script does not validate
     input to the 'ErrorMsg' parameter before returning it to users.
+
   - ConsoleServlet does not properly sanitize user input supplied via the
     'ActionType' parameter.
+
   - Incorrectly configured XML parser accepting XML external entities from an
     untrusted source.
+
   - The /portal/Loading.jsp script does not validate input to the 'uri' parameter
     before returning it to users.");
 
