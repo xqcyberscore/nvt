@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_inode_mgmt_center_inodemngchecker_bof_vuln.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: gb_hp_inode_mgmt_center_inodemngchecker_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # HP iNode Management Center iNodeMngChecker.exe Multiple Vulnerabilities
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:hp:inode_management_center_pc";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802673");
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-3254");
   script_bugtraq_id(55160);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-20 13:36:31 +0530 (Thu, 20 Sep 2012)");
   script_name("HP iNode Management Center iNodeMngChecker.exe Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50350/");
@@ -50,8 +50,7 @@ if(description)
   script_mandatory_keys("HP/iMC/Version", "HP/iMC/Path");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
   under the context of the SYSTEM user which results in stack-based buffer
-  overflow.
-  Impact Level: System/Application");
+  overflow.");
   script_tag(name:"affected", value:"HP iNode Management Center iNode PC 5.1 E0303 and prior");
   script_tag(name:"insight", value:"The flaws are present due to error in the iNOdeMngChecker.exe component which
   fails to handle the user supplied crafted 0x0A0BF007 packet.");

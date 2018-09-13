@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_feb12_win01.nasl 10133 2018-06-08 11:13:34Z asteins $
+# $Id: gb_google_chrome_mult_vuln_feb12_win01.nasl 11355 2018-09-12 10:32:04Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities - February 12 (Windows 01)
 #
@@ -27,18 +27,18 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802597");
-  script_version("$Revision: 10133 $");
+  script_version("$Revision: 11355 $");
   script_cve_id("CVE-2011-3026", "CVE-2011-3015", "CVE-2011-3027", "CVE-2011-3025",
                 "CVE-2011-3024", "CVE-2011-3023", "CVE-2011-3021", "CVE-2011-3020",
                 "CVE-2011-3019", "CVE-2011-3016", "CVE-2011-3017", "CVE-2011-3018");
   script_bugtraq_id(52049, 52031);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:13:34 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 14:58:55 +0530 (Tue, 21 Feb 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - February 12 (Windows 01)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/48016/");
-  script_xref(name : "URL" , value : "http://googlechromereleases.blogspot.in/2012/02/chrome-stable-update.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/48016/");
+  script_xref(name:"URL", value:"http://googlechromereleases.blogspot.in/2012/02/chrome-stable-update.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
@@ -46,10 +46,9 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to cause a denial of service.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Google Chrome version prior to 17.0.963.56 on Windows");
-  script_tag(name : "insight" , value : "The flaws are due to:
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to cause a denial of service.");
+  script_tag(name:"affected", value:"Google Chrome version prior to 17.0.963.56 on Windows");
+  script_tag(name:"insight", value:"The flaws are due to:
 
   - An integer overflow in libpng, PDF codecs.
 
@@ -68,10 +67,10 @@ if(description)
   - Use-after-free error while handling database.
 
   - Heap overflow in path rendering.");
-  script_tag(name : "solution" , value : "Upgrade to the Google Chrome 17.0.963.56 or later,
+  script_tag(name:"solution", value:"Upgrade to the Google Chrome 17.0.963.56 or later,
   For updates refer to http://www.google.com/chrome");
-  script_tag(name : "solution_type" , value : "VendorFix");
-  script_tag(name : "summary" , value : "The host is installed with Google Chrome and is prone to multiple
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The host is installed with Google Chrome and is prone to multiple
   vulnerabilities.");
   exit(0);
 }

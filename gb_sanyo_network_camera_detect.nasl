@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sanyo_network_camera_detect.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
+# $Id: gb_sanyo_network_camera_detect.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Sanyo Network Camera Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114020");
-  script_version("$Revision: 11328 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 11356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 13:48:08 +0200 (Wed, 15 Aug 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -72,8 +72,8 @@ if(("<TITLE>SANYO NETWORK CAMERA</TITLE>" >< res && "AUTHENTICATION ERROR</TD>" 
 
    conclUrl = report_vuln_url(port: port, url: "/", url_only: TRUE);
 
-   set_kb_item(name: "sanyo/networkcamera/detected", value: TRUE);
-   set_kb_item(name: "sanyo/networkcamera/" + port + "/detected", value: TRUE);
+   set_kb_item(name: "sanyo/network_camera/detected", value: TRUE);
+   set_kb_item(name: "sanyo/network_camera/" + port + "/detected", value: TRUE);
 
    register_and_report_cpe(app: "Sanyo Network Camera", ver: version, base: "cpe:/h:sanyo:network_camera:", expr: "^([0-9.]+)", insloc: install, regPort: port, conclUrl: conclUrl, extra: "Login required for version detection.");
 }

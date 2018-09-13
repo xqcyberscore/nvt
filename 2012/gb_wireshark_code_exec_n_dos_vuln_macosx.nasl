@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_code_exec_n_dos_vuln_macosx.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: gb_wireshark_code_exec_n_dos_vuln_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Wireshark Code Execution and Denial of Service Vulnerabilities (Mac OS X)
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802626");
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(49528, 49377);
   script_cve_id("CVE-2011-3360", "CVE-2011-3266");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-02 12:12:12 +0530 (Wed, 02 May 2012)");
   script_name("Wireshark Code Execution and Denial of Service Vulnerabilities (Mac OS X)");
   script_xref(name:"URL", value:"http://www.wireshark.org/security/wnpa-sec-2011-15.html");
@@ -46,8 +46,7 @@ if(description)
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_require_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow the attacker to execute arbitrary script
-  in the context of the affected application and denial of service condition.
-  Impact Level: System/Application");
+  in the context of the affected application and denial of service condition.");
   script_tag(name:"affected", value:"Wireshark versions 1.4.x before 1.4.9 and 1.6.x before 1.6.2 on Mac OS X");
   script_tag(name:"insight", value:"The flaws are due to
 

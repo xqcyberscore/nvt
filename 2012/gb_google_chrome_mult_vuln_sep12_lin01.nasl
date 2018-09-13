@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_sep12_lin01.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_google_chrome_mult_vuln_sep12_lin01.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities - Sep12 (Linux-01)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802973");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-2888", "CVE-2012-2887", "CVE-2012-2886", "CVE-2012-2885",
                 "CVE-2012-2884", "CVE-2012-2883", "CVE-2012-2882", "CVE-2012-2881",
                 "CVE-2012-2880", "CVE-2012-2879", "CVE-2012-2878", "CVE-2012-2877",
@@ -37,7 +37,7 @@ if(description)
   script_bugtraq_id(55676);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-28 12:49:03 +0530 (Fri, 28 Sep 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - Sep12 (Linux-01)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50759/");
@@ -51,8 +51,7 @@ if(description)
   script_require_keys("Google-Chrome/Linux/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow the attackers to conduct cross-site
   scripting attacks, bypass certain security restrictions, cause
-  denial-of-service conditions and other attacks are also possible.
-  Impact Level: System/Application");
+  denial-of-service conditions and other attacks are also possible.");
   script_tag(name:"affected", value:"Google Chrome version prior to 22.0.1229.79 on Linux");
   script_tag(name:"insight", value:"For more information on the vulnerabilities refer to the links below.");
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 22.0.1229.79 or later,

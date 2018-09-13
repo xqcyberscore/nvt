@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_samsung_printer_snmp_auth_bypass_vuln.nasl 10116 2018-06-07 10:39:19Z cfischer $
+# $Id: secpod_samsung_printer_snmp_auth_bypass_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Samsung Printer SNMP Hardcoded Community String Authentication Bypass Vulnerability
 #
@@ -28,12 +28,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902935");
-  script_version("$Revision: 10116 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-4964");
   script_bugtraq_id(56692);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-07 12:39:19 +0200 (Thu, 07 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-28 13:37:22 +0530 (Wed, 28 Nov 2012)");
   script_name("Samsung Printer SNMP Hardcoded Community String Authentication Bypass Vulnerability");
   script_category(ACT_ATTACK);
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to access an affected device
   with administrative privileges, make changes to the device configuration and
-  access to sensitive information.
-
-  Impact Level: System/Application");
+  access to sensitive information.");
 
   script_tag(name:"insight", value:"Samsung printers (as well as some Dell printers manufactured by Samsung)
   contain a hardcoded SNMP full read-write community string that remains

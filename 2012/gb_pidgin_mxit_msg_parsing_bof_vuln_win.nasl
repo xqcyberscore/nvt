@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_mxit_msg_parsing_bof_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_pidgin_mxit_msg_parsing_bof_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Pidgin MXit Message Parsing Buffer Overflow Vulnerability (Windows)
 #
@@ -24,43 +24,36 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow attacker to cause a stack-based buffer
-  overflow via a specially crafted RX message which may lead to the execution
-  of arbitrary code in the context of the application or to denial-of-service.
-  Impact Level: System/Application";
-tag_affected = "Pidgin version prior to 2.10.5 on Windows";
-tag_insight = "A boundary error within the 'mxit_show_message()' function, when parsing
-  incoming instant messages containing inline images.";
-tag_solution = "Upgrade to Pidgin version 2.10.5 or later,
-  For updates refer to http://pidgin.im/download";
-tag_summary = "This host has installed with Pidgin and is prone to buffer
-  overflow vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803102");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-3374");
   script_bugtraq_id(54322);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-19 13:10:50 +0530 (Fri, 19 Oct 2012)");
   script_name("Pidgin MXit Message Parsing Buffer Overflow Vulnerability (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/49831/");
-  script_xref(name : "URL" , value : "http://hg.pidgin.im/pidgin/main/rev/ded93865ef42");
-  script_xref(name : "URL" , value : "http://www.pidgin.im/news/security/index.php?id=64");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/49831/");
+  script_xref(name:"URL", value:"http://hg.pidgin.im/pidgin/main/rev/ded93865ef42");
+  script_xref(name:"URL", value:"http://www.pidgin.im/news/security/index.php?id=64");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("secpod_pidgin_detect_win.nasl");
   script_require_keys("Pidgin/Win/Ver");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause a stack-based buffer
+  overflow via a specially crafted RX message which may lead to the execution
+  of arbitrary code in the context of the application or to denial-of-service.");
+  script_tag(name:"affected", value:"Pidgin version prior to 2.10.5 on Windows");
+  script_tag(name:"insight", value:"A boundary error within the 'mxit_show_message()' function, when parsing
+  incoming instant messages containing inline images.");
+  script_tag(name:"solution", value:"Upgrade to Pidgin version 2.10.5 or later,
+  For updates refer to http://pidgin.im/download");
+  script_tag(name:"summary", value:"This host has installed with Pidgin and is prone to buffer
+  overflow vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -69,13 +62,10 @@ if(description)
 
 include("version_func.inc");
 
-## Variable initialization
-pidginVer = "";
-
 pidginVer = get_kb_item("Pidgin/Win/Ver");
 if(pidginVer)
 {
   if(version_is_less(version:pidginVer, test_version:"2.10.5")){
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
   }
 }

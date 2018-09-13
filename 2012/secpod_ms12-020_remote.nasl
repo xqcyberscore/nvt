@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-020_remote.nasl 10344 2018-06-27 13:00:46Z cfischer $
+# $Id: secpod_ms12-020_remote.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Remote Desktop Protocol Remote Code Execution Vulnerabilities (2671387)
 #
@@ -30,12 +30,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902818");
-  script_version("$Revision: 10344 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0002", "CVE-2012-0152");
   script_bugtraq_id(52353, 52354);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-27 15:00:46 +0200 (Wed, 27 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-16 16:21:31 +0100 (Fri, 16 Mar 2012)");
   script_name("Microsoft Remote Desktop Protocol Remote Code Execution Vulnerabilities (2671387)");
   script_category(ACT_GATHER_INFO);
@@ -52,9 +52,7 @@ if(description)
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms12-020");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  code as the logged-on user or cause a denial of service condition.
-
-  Impact Level: System/Application");
+  code as the logged-on user or cause a denial of service condition.");
 
   script_tag(name:"affected", value:"Microsoft Windows 7 Service Pack 1 and prior
 

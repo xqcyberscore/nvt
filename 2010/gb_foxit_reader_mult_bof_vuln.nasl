@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_bof_vuln.nasl 10140 2018-06-08 12:58:24Z asteins $
+# $Id: gb_foxit_reader_mult_bof_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Foxit Reader Multiple Buffer Overflow Vulnerabilities
 #
@@ -27,34 +27,34 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801425");
-  script_version("$Revision: 10140 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-08-10 14:39:31 +0200 (Tue, 10 Aug 2010)");
   script_bugtraq_id(42241);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
   script_name("Foxit Reader Multiple Buffer Overflow Vulnerabilities");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/42241/");
-  script_xref(name : "URL" , value : "http://www.foxitsoftware.com/pdf/reader/security_bulletins.php#iphone");
-  script_xref(name : "URL" , value : "http://www.us-cert.gov/current/index.html#foxit_releases_foxit_reader_4");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/42241/");
+  script_xref(name:"URL", value:"http://www.foxitsoftware.com/pdf/reader/security_bulletins.php#iphone");
+  script_xref(name:"URL", value:"http://www.us-cert.gov/current/index.html#foxit_releases_foxit_reader_4");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Buffer overflow");
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
-  script_require_keys("Foxit/Reader/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation could allow the attackers to execute arbitrary code
+  script_require_keys("foxit/reader/ver");
+  script_tag(name:"impact", value:"Successful exploitation could allow the attackers to execute arbitrary code
   in the context of an application that uses the affected library. Failed
   exploit attempts will likely result in denial-of-service conditions.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Foxit Reader version prior to 4.1.1 (4.1.1.0805)");
-  script_tag(name : "insight" , value : "Multiple flaws are due to an error in the handling of 'PDF'
+  script_tag(name:"affected", value:"Foxit Reader version prior to 4.1.1 (4.1.1.0805)");
+  script_tag(name:"insight", value:"Multiple flaws are due to an error in the handling of 'PDF'
   documents. It is not properly rendering the PDF documents.");
-  script_tag(name : "solution" , value : "Upgrade to the Foxit Reader version 4.1.1 or later,
+  script_tag(name:"solution", value:"Upgrade to the Foxit Reader version 4.1.1 or later,
   For updates refer to http://www.foxitsoftware.com/downloads/index.php");
-  script_tag(name : "solution_type" , value : "VendorFix");
-  script_tag(name : "summary" , value : "The host is installed with Foxit Reader and is prone to multiple
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The host is installed with Foxit Reader and is prone to multiple
   buffer overflow vulnerabilities.");
   exit(0);
 }
@@ -62,7 +62,7 @@ if(description)
 
 include("version_func.inc");
 
-foxitVer = get_kb_item("Foxit/Reader/Ver");
+foxitVer = get_kb_item("foxit/reader/ver");
 if(!foxitVer){
   exit(0);
 }

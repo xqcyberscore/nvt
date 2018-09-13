@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_nov12_win.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_google_chrome_mult_vuln_nov12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities - Nov2012 (Windows)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802490");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-5117", "CVE-2012-5116", "CVE-2012-5128", "CVE-2012-5127",
                 "CVE-2012-5126", "CVE-2012-5125", "CVE-2012-5124", "CVE-2012-5123",
                 "CVE-2012-5122", "CVE-2012-5121", "CVE-2012-5119");
   script_bugtraq_id(56413);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-09 11:27:22 +0530 (Fri, 09 Nov 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - Nov2012 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51210/");
@@ -47,21 +47,29 @@ if(description)
   script_require_keys("GoogleChrome/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
   restrictions, execute arbitrary code in the context of the browser or
-  cause a denial of service.
-  Impact Level: System/Application");
+  cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 23.0.1271.64 on Windows");
   script_tag(name:"insight", value:"- An integer overflow error exists in WebP handling.
+
   - An error in v8 can be exploited to cause an out-of-bounds array access.
+
   - Multiple use-after-free error exists in SVG filter, video layout, extension
     tab and plug-in placeholder, handling.
+
   - An error exists related to integer boundary checks within GPU command
     buffers.
+
   - An error exists related to inappropriate loading of SVG sub resource in
     'img' context.
+
   - A race condition error exists in Pepper buffer handling.
+
   - A type casting error exists in certain input handling.
+
   - An error in Skia can be exploited to cause an out-of-bounds read.
+
   - An error in texture handling can be exploited to corrupt memory.
+
   - An error in v8 can be exploited to corrupt memory.");
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 23.0.1271.64 or later,
   For updates refer to http://www.google.com/chrome");

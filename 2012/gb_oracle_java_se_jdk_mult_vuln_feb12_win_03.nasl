@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_jdk_mult_vuln_feb12_win_03.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_oracle_java_se_jdk_mult_vuln_feb12_win_03.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Oracle Java SE JDK Multiple Vulnerabilities - February 2012 (Windows - 03)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803336");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0498", "CVE-2012-0501");
   script_bugtraq_id(52013, 52019);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 17:17:17 +0530 (Tue, 21 Feb 2012)");
   script_name("Oracle Java SE JDK Multiple Vulnerabilities - February 2012 (Windows - 03)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48009");
@@ -49,8 +49,7 @@ if(description)
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_mandatory_keys("Sun/Java/JDK/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to affect confidentiality,
-  integrity, and availability via unknown vectors.
-  Impact Level: System/Application");
+  integrity, and availability via unknown vectors.");
   script_tag(name:"affected", value:"Oracle Java SE JDK 7 Update 2 and earlier, 6 Update 30 and earlier,
   and 5.0 Update 33 and earlier");
   script_tag(name:"insight", value:"Multiple flaws are caused by unspecified errors in the following

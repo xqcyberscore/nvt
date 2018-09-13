@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_updater_serv_priv_esc_vuln_win.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_mozilla_prdts_updater_serv_priv_esc_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Mozilla Products Updater Service Privilege Escalation Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802867");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-1942", "CVE-2012-1943");
   script_bugtraq_id(53803, 53807);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-19 12:31:59 +0530 (Tue, 19 Jun 2012)");
   script_name("Mozilla Products Updater Service Privilege Escalation Vulnerabilities (Windows)");
 
@@ -47,12 +47,12 @@ if(description)
                       "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name:"impact", value:"Successful attempt could allow local attackers to bypass security restrictions
-  and gain the privileges.
-  Impact Level: System/Application");
+  and gain the privileges.");
   script_tag(name:"affected", value:"SeaMonkey version 2.9,
   Thunderbird version 12.0 and
   Mozilla Firefox version 12.0 on Windows");
   script_tag(name:"insight", value:"- Mozilla updater allows to load a local DLL file in a privileged context.
+
   - The 'Updater.exe' in the Windows Updater Service allows to load an
     arbitrary local wsock32.dll file, which can then be run with the same
     system privileges used by the service.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_convert_to_pdf_info_disc_vuln_win.nasl 7174 2017-09-18 11:48:08Z asteins $
+# $Id: gb_foxit_phantompdf_convert_to_pdf_info_disc_vuln_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Foxit PhantomPDF 'ConvertToPDF plugin' Information Disclosure Vulnerability (Windows)
 #
@@ -29,45 +29,44 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809874");
-  script_version("$Revision: 7174 $");
+  script_version("$Revision: 11356 $");
   script_cve_id("CVE-2017-5556");
   script_bugtraq_id(95353);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-18 13:48:08 +0200 (Mon, 18 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-01-24 12:33:27 +0530 (Tue, 24 Jan 2017)");
   script_name("Foxit PhantomPDF 'ConvertToPDF plugin' Information Disclosure Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Foxit PhantomPDF
+  script_tag(name:"summary", value:"The host is installed with Foxit PhantomPDF
   and is prone to information disclosure vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw exists as the ConvertToPDF plugin
-  does not properly handle a crafted JPEG image."); 
+  script_tag(name:"insight", value:"The flaw exists as the ConvertToPDF plugin
+  does not properly handle a crafted JPEG image.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to get sensitive information, also an attacker can leverage this in
   conjunction with other vulnerabilities to execute code in the context of the
   current process.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Foxit PhantomPDF version prior to 8.2");
+  script_tag(name:"affected", value:"Foxit PhantomPDF version prior to 8.2");
 
-  script_tag(name: "solution" , value:"Upgrade to Foxit PhantomPDF version
+  script_tag(name:"solution", value:"Upgrade to Foxit PhantomPDF version
   8.2 or later, For updates refer to http://www.foxitsoftware.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value:"http://www.zerodayinitiative.com/advisories/ZDI-17-039");
-  script_xref(name : "URL" , value:"https://www.foxitsoftware.com/support/security-bulletins.php");
+  script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-17-039");
+  script_xref(name:"URL", value:"https://www.foxitsoftware.com/support/security-bulletins.php");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_foxit_phantom_reader_detect.nasl");
-  script_mandatory_keys("Foxit/PhantomPDF/Ver");
+  script_mandatory_keys("foxit/phantompdf/ver");
   exit(0);
 }
 
@@ -75,15 +74,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-foxitVer = "";
-
-## Get version
 if(!foxitVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Check for vulnerable version, 8.2 == 8.2.0.2192
 if(version_is_less(version:foxitVer, test_version:"8.2"))
 {
   report = report_fixed_ver(installed_version:foxitVer, fixed_version:"8.2");

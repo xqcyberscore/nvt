@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_url_code_exec_vuln_win.nasl 11266 2018-09-06 10:59:26Z cfischer $
+# $Id: gb_opera_url_code_exec_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Opera URL Processing Arbitrary Code Execution Vulnerability (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802652");
-  script_version("$Revision: 11266 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-3561");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 17:17:17 +0530 (Thu, 21 Jun 2012)");
   script_name("Opera URL Processing Arbitrary Code Execution Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1027066");
@@ -44,8 +44,7 @@ if(description)
   script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-  code or cause a denial of service.
-  Impact Level: System/Application");
+  code or cause a denial of service.");
   script_tag(name:"affected", value:"Opera version prior to 11.64 on Windows");
   script_tag(name:"insight", value:"The flaw is due to improper allocation of memory for URL strings,
   which allows remote attackers to execute arbitrary code or cause a denial

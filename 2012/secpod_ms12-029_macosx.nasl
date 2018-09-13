@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-029_macosx.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: secpod_ms12-029_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Office Word Remote Code Execution Vulnerability-2680352 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902912");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0183");
   script_bugtraq_id(53344);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-09 13:43:53 +0530 (Wed, 09 May 2012)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerability-2680352 (Mac OS X)");
   script_xref(name:"URL", value:"http://krebsonsecurity.com/tag/cve-2012-0183/");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("gb_microsoft_office_detect_macosx.nasl");
   script_require_keys("MS/Office/MacOSX/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code by
-  tricking a user into opening a specially crafted word document.
-  Impact Level: System/Application");
+  tricking a user into opening a specially crafted word document.");
   script_tag(name:"affected", value:"Microsoft Office 2008 for Mac
   Microsoft Office 2011 for Mac");
   script_tag(name:"insight", value:"The flaw is due to an error when parsing Rich Text Format (RTF) data

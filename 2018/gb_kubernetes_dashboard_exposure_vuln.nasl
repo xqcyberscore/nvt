@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kubernetes_dashboard_exposure_vuln.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
+# $Id: gb_kubernetes_dashboard_exposure_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Kubernetes Dashboard Public WAN (Internet) Accessible
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114010");
-  script_version("$Revision: 11328 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 11356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 09:10:47 +0200 (Fri, 20 Jul 2018)");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:P");
@@ -38,7 +38,7 @@ if(description)
   script_family("Web application abuses");
   script_dependencies("global_settings.nasl", "gb_kubernetes_dashboard_detect.nasl");
   script_exclude_keys("keys/islocalhost", "keys/islocalnet", "keys/is_private_addr");
-  script_mandatory_keys("kubernetesdashboard/detected");
+  script_mandatory_keys("kubernetes/dashboard/detected");
 
   script_xref(name:"URL", value:"https://info.lacework.com/hubfs/Containers%20At-Risk_%20A%20Review%20of%2021%2C000%20Cloud%20Environments.pdf");
 
@@ -91,7 +91,7 @@ CPE = "cpe:/a:kubernetes:dashboard";
 
 if(!port = get_app_port(cpe: CPE)) exit(0);
 
-if(get_kb_item("kubernetesdashboard/" + port + "/detected") ) {
+if(get_kb_item("kubernetes/dashboard/" + port + "/detected") ) {
   report = "Kubernetes Dashboard UI is exposed to the public under the following URL: " + report_vuln_url(port: port, url: "/", url_only: TRUE);
   get_app_location(cpe: CPE, port: port, nofork: TRUE);
   security_message(port: port, data: report);

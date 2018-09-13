@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_thunderbird_mult_vuln_aug12_win.nasl 9911 2018-05-18 13:49:23Z cfischer $
+# $Id: gb_mozilla_firefox_thunderbird_mult_vuln_aug12_win.nasl 11355 2018-09-12 10:32:04Z asteins $
 #
 # Mozilla Firefox Multiple Vulnerabilities - August12 (Windows)
 #
@@ -27,54 +27,51 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803015");
-  script_version("$Revision: 9911 $");
+  script_version("$Revision: 11355 $");
   script_cve_id("CVE-2012-3974", "CVE-2012-3980");
   script_bugtraq_id(55249);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-18 15:49:23 +0200 (Fri, 18 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 14:20:04 +0530 (Thu, 30 Aug 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - August12 (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/50088");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1027450");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1027451");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-67.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-72.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/50088");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1027450");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1027451");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-67.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-72.html");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to inject scripts, bypass
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject scripts, bypass
   certain security restrictions, execute arbitrary code in the context of the
-  browser.
-  Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Mozilla Firefox version before 15.0 on Windows");
-  script_tag(name : "insight" , value : "- An error in the installer will launch incorrect executable following new
+  browser.");
+  script_tag(name:"affected", value:"Mozilla Firefox version before 15.0 on Windows");
+  script_tag(name:"insight", value:"- An error in the installer will launch incorrect executable following new
     installation via a crafted executable file in a root directory.
+
   - An error in the web console can be exploited to inject arbitrary code that
     will be executed with chrome privileges.");
-  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 15.0 or later
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 15.0 or later
   For updates refer to http://www.mozilla.com/en-US/firefox/all.html");
-  script_tag(name : "summary" , value : "This host is installed with Mozilla Firefox and is prone to multiple
+  script_tag(name:"summary", value:"This host is installed with Mozilla Firefox and is prone to multiple
   vulnerabilities.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
-
 include("version_func.inc");
 
-
-ffVer = "";
 ffVer = get_kb_item("Firefox/Win/Ver");
 
 if(ffVer)
 {
   if(version_is_less(version:ffVer, test_version:"15.0"))
   {
-    security_message(0);
+    security_message( port: 0, data: "The target host was found to be vulnerable" );
     exit(0);
   }
 }

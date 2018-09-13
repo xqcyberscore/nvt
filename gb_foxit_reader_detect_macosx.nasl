@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_detect_macosx.nasl 11283 2018-09-07 09:28:09Z cfischer $
+# $Id: gb_foxit_reader_detect_macosx.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Foxit Reader Version Detection (Mac OS X)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809347");
-  script_version("$Revision: 11283 $");
+  script_version("$Revision: 11356 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:28:09 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-08 18:35:53 +0530 (Tue, 08 Nov 2016)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Foxit Reader Version Detection (Mac OS X)");
@@ -75,7 +75,7 @@ if("Foxit Reader" >< name)
     exit(0);
   }
 
-  set_kb_item(name: "Foxit/Reader/MacOSX/Version", value:foxVer);
+  set_kb_item(name: "foxit/reader/mac_osx/version", value:foxVer);
 
   cpe = build_cpe(value:foxVer, exp:"^([0-9.]+)", base:"cpe:/a:foxitsoftware:reader:");
   if(isnull(cpe))

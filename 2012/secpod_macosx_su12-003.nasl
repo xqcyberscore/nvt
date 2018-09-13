@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_macosx_su12-003.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: secpod_macosx_su12-003.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Mac OS X 'Internet plug-ins' Unspecified Vulnerability (2012-003)
 #
@@ -29,7 +29,7 @@ tag_insight = "The flaw is cause due to the unspecified error in the Internet pl
   NOTE: For more information on the vulnerabilities refer to the links below.";
 
 tag_impact = "Unknown impact
-  Impact Level: System/Application";
+  ";
 tag_affected = "Internet plug-ins for Adobe Flash Player on Mac OS X";
 tag_solution = "Run Mac Updates and update the Security Update 2012-003
   For updates refer to http://support.apple.com/kb/DL1533";
@@ -39,10 +39,10 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903027");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11357 $");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-21 14:38:50 +0530 (Mon, 21 May 2012)");
   script_name("Mac OS X 'Internet plug-ins' Unspecified Vulnerability (2012-003)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/DL1533");

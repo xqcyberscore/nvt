@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_watch_folders_bof_vuln_win.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_realplayer_watch_folders_bof_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # RealPlayer Watch Folders Function Buffer Overflow Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803043");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-4987");
   script_bugtraq_id(56324);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-06 12:38:20 +0530 (Tue, 06 Nov 2012)");
   script_name("RealPlayer Watch Folders Function Buffer Overflow Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2012/Oct/189");
@@ -45,9 +45,7 @@ if(description)
   script_dependencies("gb_realplayer_detect_win.nasl");
   script_require_keys("RealPlayer/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
-arbitrary code on the system.
-
-Impact Level: System/Application");
+arbitrary code on the system.");
   script_tag(name:"affected", value:"RealPlayer version 15.0.5.109");
   script_tag(name:"insight", value:"The 'Watch Folders' function fails to process an overly long
 directory path, which can be exploited to cause stack-based buffer overflow via

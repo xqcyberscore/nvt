@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_code_exec_vuln.nasl 10140 2018-06-08 12:58:24Z asteins $
+# $Id: gb_foxit_reader_code_exec_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Foxit Reader Arbitrary Command Execution Vulnerability
 #
@@ -27,34 +27,34 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801313");
-  script_version("$Revision: 10140 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-04-13 16:55:19 +0200 (Tue, 13 Apr 2010)");
   script_cve_id("CVE-2010-1239");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("Foxit Reader Arbitrary Command Execution Vulnerability");
-  script_xref(name : "URL" , value : "http://www.kb.cert.org/vuls/id/570177");
-  script_xref(name : "URL" , value : "http://www.foxitsoftware.com/pdf/reader/security.htm#0401");
-  script_xref(name : "URL" , value : "http://blog.didierstevens.com/2010/03/29/escape-from-pdf/");
-  script_xref(name : "URL" , value : "http://blog.didierstevens.com/2010/03/31/escape-from-foxit-reader/");
+  script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/570177");
+  script_xref(name:"URL", value:"http://www.foxitsoftware.com/pdf/reader/security.htm#0401");
+  script_xref(name:"URL", value:"http://blog.didierstevens.com/2010/03/29/escape-from-pdf/");
+  script_xref(name:"URL", value:"http://blog.didierstevens.com/2010/03/31/escape-from-foxit-reader/");
 
   script_tag(name:"qod_type", value:"executable_version");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2010 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
-  script_require_keys("Foxit/Reader/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation will let attacker to execute arbitrary code or crash an
+  script_require_keys("foxit/reader/ver");
+  script_tag(name:"impact", value:"Successful exploitation will let attacker to execute arbitrary code or crash an
   affected application.
   Impact Level: Application");
-  script_tag(name : "affected" , value : "Foxit Reader version prior to 3.2.1.0401");
-  script_tag(name : "insight" , value : "The flaw exists due to error in handling 'PDF' files which runs executable
+  script_tag(name:"affected", value:"Foxit Reader version prior to 3.2.1.0401");
+  script_tag(name:"insight", value:"The flaw exists due to error in handling 'PDF' files which runs executable
   embedded program inside a PDF automatically without asking for user permission.");
-  script_tag(name : "solution" , value : "Upgrade to the version 3.2.1.0401 or later,
+  script_tag(name:"solution", value:"Upgrade to the version 3.2.1.0401 or later,
   For updates refer to http://www.foxitsoftware.com/downloads/");
-  script_tag(name : "solution_type" , value : "VendorFix");
-  script_tag(name : "summary" , value : "The host is installed with Foxit Reader and is prone to
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"The host is installed with Foxit Reader and is prone to
   arbitrary command execution vulnerability.");
   exit(0);
 }
@@ -62,7 +62,7 @@ if(description)
 
 include("version_func.inc");
 
-foxVer = get_kb_item("Foxit/Reader/Ver");
+foxVer = get_kb_item("foxit/reader/ver");
 if(foxVer)
 {
   if(version_is_less(version:foxVer,test_version:"3.2.1.0401")){

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_cmd_exec_vuln.nasl 10833 2018-08-08 10:35:26Z cfischer $
+# $Id: gb_symantec_web_gateway_cmd_exec_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Symantec Web Gateway Remote Shell Command Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802632");
-  script_version("$Revision: 10833 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(53444, 53443);
   script_cve_id("CVE-2012-0297", "CVE-2012-0299");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 12:35:26 +0200 (Wed, 08 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-01 12:12:12 +0530 (Fri, 01 Jun 2012)");
   script_name("Symantec Web Gateway Remote Shell Command Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -49,9 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.symantec.com/security_response/securityupdates/detail.jsp?fid=security_advisory&pvid=security_advisory&year=2012&suid=20120517_00");
 
   script_tag(name:"impact", value:"Successful exploits will result in the execution of arbitrary attack supplied
-  commands in the context of the affected application.
-
-  Impact Level: System/Application");
+  commands in the context of the affected application.");
 
   script_tag(name:"affected", value:"Symantec Web Gateway versions 5.0.x before 5.0.3");
 

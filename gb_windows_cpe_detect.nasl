@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_windows_cpe_detect.nasl 11018 2018-08-17 07:13:05Z cfischer $
+# $Id: gb_windows_cpe_detect.nasl 11364 2018-09-12 14:28:07Z cfischer $
 #
 # Windows Application CPE Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96207");
-  script_version("$Revision: 11018 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 09:13:05 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11364 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 16:28:07 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-04-26 12:54:47 +0200 (Tue, 26 Apr 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -799,7 +799,7 @@ else if(handle && handlereg){
   IISMinorVersion = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\INetStp", val_name:"MinorVersion");
   IISMajorVersion = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\INetStp", val_name:"MajorVersion");
 
-  ipnathlp = wmi_file_check_file_exists(wmi_handle:handle, filePath:OSSYSDIR + "\\ipnathlp.dll");
+  ipnathlp = wmi_file_check_file_exists(handle:handle, filePath:OSSYSDIR + "\\ipnathlp.dll");
 
   ExchProductMajor = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Exchange\Setup", val_name:"MsiProductMajor");
   ExchProductMinor = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Exchange\Setup", val_name:"MsiProductMinor");
@@ -813,11 +813,11 @@ else if(handle && handlereg){
   Exch2013ProductMajor = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"Software\Microsoft\ExchangeServer\v15\Setup", val_name:"MsiProductMajor");
   Exch2013DispName = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Exchange v15", key_name:"DisplayName");
 
-  msxml3 = wmi_file_check_file_exists(wmi_handle:handle, filePath:OSSYSDIR + "\\msxml3.dll");
-  msxml4 = wmi_file_check_file_exists(wmi_handle:handle, filePath:OSSYSDIR + "\\msxml4.dll");
-  if (x64)msxml5 = wmi_file_check_file_exists(wmi_handle:handle, filePath:ComFilesDirx86 + "\\Microsoft Shared\\OFFICE11\\msxml5.dll");
-  else msxml5 = wmi_file_check_file_exists(wmi_handle:handle, filePath:ComFilesDir + "\\Microsoft Shared\\OFFICE11\\msxml5.dll");
-  msxml6 = wmi_file_check_file_exists(wmi_handle:handle, filePath:OSSYSDIR + "\\msxml6.dll");
+  msxml3 = wmi_file_check_file_exists(handle:handle, filePath:OSSYSDIR + "\\msxml3.dll");
+  msxml4 = wmi_file_check_file_exists(handle:handle, filePath:OSSYSDIR + "\\msxml4.dll");
+  if (x64)msxml5 = wmi_file_check_file_exists(handle:handle, filePath:ComFilesDirx86 + "\\Microsoft Shared\\OFFICE11\\msxml5.dll");
+  else msxml5 = wmi_file_check_file_exists(handle:handle, filePath:ComFilesDir + "\\Microsoft Shared\\OFFICE11\\msxml5.dll");
+  msxml6 = wmi_file_check_file_exists(handle:handle, filePath:OSSYSDIR + "\\msxml6.dll");
 
   NDPv4Client = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Client", val_name:"Install");
   NDPv4ClientVer = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Client", key_name:"Version");
@@ -848,47 +848,47 @@ else if(handle && handlereg){
   VS2002path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\VisualStudio\7.0", key_name:"Installdir");
   if (VS2002path){
     VS2002path = ereg_replace(pattern:"\\", replace:"\\", string:VS2002path);
-    VS2002 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2002path + "devenv.exe");
+    VS2002 = wmi_file_check_file_exists(handle:handle, filePath:VS2002path + "devenv.exe");
   }
   VS2003path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\VisualStudio\7.1", key_name:"Installdir");
   if (VS2003path){
     VS2003path = ereg_replace(pattern:"\\", replace:"\\", string:VS2003path);
-    VS2003 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2003path + "devenv.exe");
+    VS2003 = wmi_file_check_file_exists(handle:handle, filePath:VS2003path + "devenv.exe");
   }
   VS2005path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\VisualStudio\8.0", key_name:"Installdir");
   if (VS2005path) {
     VS2005path = ereg_replace(pattern:"\\", replace:"\\", string:VS2005path);
-    VS2005 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2005path + "devenv.exe");
+    VS2005 = wmi_file_check_file_exists(handle:handle, filePath:VS2005path + "devenv.exe");
     VS2005SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\DevDiv\VS\Servicing\8.0", val_name:"SP");
   }
   VS2008path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\VisualStudio\9.0", key_name:"Installdir");
   if (VS2008path){
     VS2008path = ereg_replace(pattern:"\\", replace:"\\", string:VS2008path);
-    VS2008 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2008path + "devenv.exe");
+    VS2008 = wmi_file_check_file_exists(handle:handle, filePath:VS2008path + "devenv.exe");
     VS2008SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\DevDiv\VS\Servicing\9.0", val_name:"SP");
   }
   VS2010path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\VisualStudio\10.0", key_name:"Installdir");
   if (VS2010path){
     VS2010path = ereg_replace(pattern:"\\", replace:"\\", string:VS2010path);
-    VS2010 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2010path + "devenv.exe");
+    VS2010 = wmi_file_check_file_exists(handle:handle, filePath:VS2010path + "devenv.exe");
     VS2010SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\DevDiv\VS\Servicing\10.0", val_name:"SP");
   }
   VS2012path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\VisualStudio\11.0", key_name:"Installdir");
   if (VS2012path){
     VS2012path = ereg_replace(pattern:"\\", replace:"\\", string:VS2012path);
-    VS2012 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2012path + "devenv.exe");
+    VS2012 = wmi_file_check_file_exists(handle:handle, filePath:VS2012path + "devenv.exe");
     VS2012SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\DevDiv\VS\Servicing\11.0", val_name:"SP");
   }
   VS2013path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\VisualStudio\12.0", key_name:"Installdir");
   if (VS2013path){
     VS2013path = ereg_replace(pattern:"\\", replace:"\\", string:VS2013path);
-    VS2013 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2013path + "devenv.exe");
+    VS2013 = wmi_file_check_file_exists(handle:handle, filePath:VS2013path + "devenv.exe");
     VS2013SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\DevDiv\VS\Servicing\12.0", val_name:"SP");
   }
   VS2015path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\VisualStudio\14.0", key_name:"Installdir");
   if (VS2015path){
     VS2015path = ereg_replace(pattern:"\\", replace:"\\", string:VS2015path);
-    VS2015 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2015path + "devenv.exe");
+    VS2015 = wmi_file_check_file_exists(handle:handle, filePath:VS2015path + "devenv.exe");
     VS2015SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Wow6432Node\Microsoft\DevDiv\VS\Servicing\14.0", val_name:"SP");
   }
  }
@@ -896,47 +896,47 @@ else if(handle && handlereg){
   VS2002path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\VisualStudio\7.0", key_name:"Installdir");
   if (VS2002path){
     VS2002path = ereg_replace(pattern:"\\", replace:"\\", string:VS2002path);
-    VS2002 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2002path + "devenv.exe");
+    VS2002 = wmi_file_check_file_exists(handle:handle, filePath:VS2002path + "devenv.exe");
   }
   VS2003path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\VisualStudio\7.1", key_name:"Installdir");
   if (VS2003path){
     VS2003path = ereg_replace(pattern:"\\", replace:"\\", string:VS2003path);
-    VS2003 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2003path + "devenv.exe");
+    VS2003 = wmi_file_check_file_exists(handle:handle, filePath:VS2003path + "devenv.exe");
   }
   VS2005path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\VisualStudio\8.0", key_name:"Installdir");
   if (VS2005path) {
     VS2005path = ereg_replace(pattern:"\\", replace:"\\", string:VS2005path);
-    VS2005 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2005path + "devenv.exe");
+    VS2005 = wmi_file_check_file_exists(handle:handle, filePath:VS2005path + "devenv.exe");
     VS2005SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\DevDiv\VS\Servicing\8.0", val_name:"SP");
   }
   VS2008path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\VisualStudio\9.0", key_name:"Installdir");
   if (VS2008path){
     VS2008path = ereg_replace(pattern:"\\", replace:"\\", string:VS2008path);
-    VS2008 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2008path + "devenv.exe");
+    VS2008 = wmi_file_check_file_exists(handle:handle, filePath:VS2008path + "devenv.exe");
     VS2008SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\DevDiv\VS\Servicing\9.0", val_name:"SP");
   }
   VS2010path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\VisualStudio\10.0", key_name:"Installdir");
   if (VS2010path){
     VS2010path = ereg_replace(pattern:"\\", replace:"\\", string:VS2010path);
-    VS2010 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2010path + "devenv.exe");
+    VS2010 = wmi_file_check_file_exists(handle:handle, filePath:VS2010path + "devenv.exe");
     VS2010SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\DevDiv\VS\Servicing\10.0", val_name:"SP");
   }
   VS2012path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\VisualStudio\11.0", key_name:"Installdir");
   if (VS2012path){
     VS2012path = ereg_replace(pattern:"\\", replace:"\\", string:VS2012path);
-    VS2012 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2012path + "devenv.exe");
+    VS2012 = wmi_file_check_file_exists(handle:handle, filePath:VS2012path + "devenv.exe");
     VS2012SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\DevDiv\VS\Servicing\11.0", val_name:"SP");
   }
   VS2013path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\VisualStudio\12.0", key_name:"Installdir");
   if (VS2013path){
     VS2013path = ereg_replace(pattern:"\\", replace:"\\", string:VS2013path);
-    VS2013 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2013path + "devenv.exe");
+    VS2013 = wmi_file_check_file_exists(handle:handle, filePath:VS2013path + "devenv.exe");
     VS2013SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\DevDiv\VS\Servicing\12.0", val_name:"SP");
   }
   VS2015path = wmi_reg_get_sz(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\VisualStudio\14.0", key_name:"Installdir");
   if (VS2015path){
     VS2015path = ereg_replace(pattern:"\\", replace:"\\", string:VS2015path);
-    VS2015 = wmi_file_check_file_exists(wmi_handle:handle, filePath:VS2015path + "devenv.exe");
+    VS2015 = wmi_file_check_file_exists(handle:handle, filePath:VS2015path + "devenv.exe");
     VS2015SP = wmi_reg_get_dword_val(wmi_handle:handlereg, key:"SOFTWARE\Microsoft\DevDiv\VS\Servicing\14.0", val_name:"SP");
   }
  }

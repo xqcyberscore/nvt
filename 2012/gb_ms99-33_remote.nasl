@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms99-33_remote.nasl 9528 2018-04-19 07:31:17Z cfischer $
+# $Id: gb_ms99-33_remote.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft IIS FTP Server 'Malformed FTP List Request' DOS Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:ftp_service";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802440");
-  script_version("$Revision: 9528 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-1999-0349");
   script_bugtraq_id(192);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 09:31:17 +0200 (Thu, 19 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-04 16:21:03 +0530 (Wed, 04 Jul 2012)");
   script_name("Microsoft IIS FTP Server 'Malformed FTP List Request' DOS Vulnerability");
   script_category(ACT_DENIAL);
@@ -50,7 +50,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allows remote users to crash the application
   leading to denial of service condition or execute arbitrary code.
 
-  Impact Level: System/Application.");
+  .");
 
   script_tag(name:"affected", value:"Microsoft Internet Information Services version 3.0 and 4.0.");
 

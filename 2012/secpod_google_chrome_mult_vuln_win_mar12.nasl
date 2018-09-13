@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_mult_vuln_win_mar12.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: secpod_google_chrome_mult_vuln_win_mar12.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities (Windows) - Mar 12
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903004");
-  script_version("$Revision: 11003 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_version("$Revision: 11357 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-26 16:40:40 +0530 (Mon, 26 Mar 2012)");
   script_cve_id("CVE-2011-3049", "CVE-2011-3052", "CVE-2011-3053", "CVE-2011-3054",
                 "CVE-2011-3055", "CVE-2011-3056", "CVE-2011-3057", "CVE-2011-3051",
@@ -48,8 +48,7 @@ if(description)
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code,
-  cause a denial of service.
-  Impact Level: System/Application");
+  cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 17.0.963.83 on Windows");
   script_tag(name:"insight", value:"The flaws are due to:
 

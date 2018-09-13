@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_mult_vuln.nasl 8781 2018-02-13 10:01:09Z cfischer $
+# $Id: gb_foxit_phantompdf_mult_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Foxit PhantomPDF 7.3.4.311 Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113108");
-  script_version("$Revision: 8781 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-13 11:01:09 +0100 (Tue, 13 Feb 2018) $");
+  script_version("$Revision: 11356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-02-08 14:00:00 +0100 (Thu, 08 Feb 2018)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:S/C:C/I:C/A:C");
@@ -48,7 +48,7 @@ if( description )
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Buffer overflow");
   script_dependencies("gb_foxit_phantom_reader_detect.nasl");
-  script_mandatory_keys("Foxit/PhantomPDF/Ver");
+  script_mandatory_keys("foxit/phantompdf/ver");
 
   script_tag(name:"summary", value:"Foxit PhantomPDF is prone to multiple vulnerabilities.");
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");

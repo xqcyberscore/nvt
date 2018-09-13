@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_prevent_join_homegroup.nasl 10989 2018-08-15 14:57:51Z emoss $
+# $Id: win_prevent_join_homegroup.nasl 11363 2018-09-12 13:46:05Z emoss $
 #
 # Check value for Prevent the computer from joining a homegroup
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109450");
-  script_version("$Revision: 10989 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 16:57:51 +0200 (Wed, 15 Aug 2018) $");
+  script_version("$Revision: 11363 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 15:46:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-27 08:25:51 +0200 (Wed, 27 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -73,7 +73,7 @@ item = 'DisableHomeGroup';
 value = registry_get_dword(key:key, item:item, type:type);
 default = script_get_preference('Value');
 
-if(!value){
+if(value == ''){
   value = '0';
 }
 

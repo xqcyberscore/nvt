@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apple_safari_mult_vuln_win_oct11.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: secpod_apple_safari_mult_vuln_win_oct11.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Apple Safari Multiple Vulnerabilities - Oct 2011 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903029");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-3229", "CVE-2011-1440", "CVE-2011-2338", "CVE-2011-2339",
                 "CVE-2011-2341", "CVE-2011-2351", "CVE-2011-2352", "CVE-2011-2354",
                 "CVE-2011-2356", "CVE-2011-2359", "CVE-2011-2788", "CVE-2011-2790",
@@ -42,7 +42,7 @@ if(description)
                     50088);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-24 18:22:12 +0530 (Thu, 24 May 2012)");
   script_name("Apple Safari Multiple Vulnerabilities - Oct 2011 (Windows)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5000");
@@ -56,8 +56,7 @@ if(description)
   script_require_keys("AppleSafari/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to opening a maliciously
   crafted files, which leads to an unexpected application termination or
-  arbitrary code execution.
-  Impact Level: System/Application");
+  arbitrary code execution.");
   script_tag(name:"affected", value:"Apple Safari versions prior to 5.1.1 on Windows");
   script_tag(name:"insight", value:"The flaws are due to
 

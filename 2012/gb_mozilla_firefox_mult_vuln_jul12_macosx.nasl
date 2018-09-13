@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_jul12_macosx.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_mozilla_firefox_mult_vuln_jul12_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Mozilla Firefox Multiple Vulnerabilities - July12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802892");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-1950", "CVE-2012-1965", "CVE-2012-1966");
   script_bugtraq_id(54585, 54579, 54577);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-23 18:31:44 +0530 (Mon, 23 Jul 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - July12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49965");
@@ -49,14 +49,15 @@ if(description)
   script_require_keys("Mozilla/Firefox/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject scripts, bypass
   certain security restrictions, execute arbitrary code in the context of the
-  browser.
-  Impact Level: System/Application");
+  browser.");
   script_tag(name:"affected", value:"Mozilla Firefox version 4.x through 13.0
   Mozilla Firefox ESR version 10.x before 10.0.6 on Mac OS X");
   script_tag(name:"insight", value:"- The improper implementation of drag-and-drop feature, fails to display
     the URL properly in addressbar.
+
   - An error when handling 'feed:' URLs can be exploited to bypass the output
     filters and execute arbitrary JavaScript code.
+
   - The context-menu restrictions for data: URLs are not the same as for
     javascript: URLs, which allows to conduct XSS attacks.");
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 14.0 or ESR version 10.0.6 or later,

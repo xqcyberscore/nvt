@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_media_service_isapi_code_exec_vuln.nasl 11052 2018-08-20 10:24:34Z asteins $
+# $Id: gb_ms_win_media_service_isapi_code_exec_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Windows Media Services ISAPI Extension Code Execution Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802897");
-  script_version("$Revision: 11052 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2003-0227", "CVE-2003-0349");
   script_bugtraq_id(7727, 8035);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 12:24:34 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-25 16:04:16 +0530 (Wed, 25 Jul 2012)");
   script_name("Microsoft Windows Media Services ISAPI Extension Code Execution Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/9115");
@@ -52,9 +52,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_require_keys("IIS/installed");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to obtain sensitive
-  information, execute arbitrary code or cause denial of service conditions.
-
-  Impact Level: System/Application");
+  information, execute arbitrary code or cause denial of service conditions.");
   script_tag(name:"affected", value:"Windows Media Services 4.0 and 4.1
 
   Microsoft Windows NT 4.0

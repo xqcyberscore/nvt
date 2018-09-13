@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_veritas_backup_exec_agent_win_bof_vuln.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_veritas_backup_exec_agent_win_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # VERITAS Backup Exec Remote Agent Windows Servers BOF Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802985");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2005-0773");
   script_bugtraq_id(14022);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 10:32:37 +0530 (Mon, 15 Oct 2012)");
   script_name("VERITAS Backup Exec Remote Agent Windows Servers BOF Vulnerability");
   script_category(ACT_DENIAL);
@@ -49,9 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/vulnwatch/2005-q2/0073.html");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to overflow a buffer and
-  execute arbitrary code on the system.
-
-  Impact Level: System/Application");
+  execute arbitrary code on the system.");
   script_tag(name:"affected", value:"Veritas Backup Exec Remote Agent versions 9.0 through 10.0 for Windows Servers");
   script_tag(name:"insight", value:"The flaw is due to insufficient input validation on CONNECT_CLIENT_AUTH
   requests. CONNECT_CLIENT_AUTH requests sent with an authentication method type

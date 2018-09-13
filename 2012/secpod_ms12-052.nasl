@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-052.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: secpod_ms12-052.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2722913)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902923");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-1526", "CVE-2012-2521", "CVE-2012-2522", "CVE-2012-2523");
   script_bugtraq_id(54950, 54952, 54951, 54945);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-15 12:59:29 +0530 (Wed, 15 Aug 2012)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2722913)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50237/");
@@ -46,15 +46,17 @@ if(description)
   script_require_ports(139, 445);
   script_require_keys("MS/IE/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  code in the context of the of the current user.
-  Impact Level: System/Application");
+  code in the context of the of the current user.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x");
   script_tag(name:"insight", value:"- An error in the layout handling when accessing an improperly initialized
     or deleted object can be exploited to corrupt memory.
+
   - A use-after-free error when asynchronously accessing NULL objects can be
     exploited to dereference an already deleted object.
+
   - An error may cause a corrupted virtual function table that has already
     been deleted to be accessed.
+
   - An integer overflow error in the JavaScript parsing when calculating the
     size of an object in memory during a copy operation can be exploited
     to corrupt memory.");

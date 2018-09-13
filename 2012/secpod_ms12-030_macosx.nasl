@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-030_macosx.nasl 11055 2018-08-20 12:23:58Z asteins $
+# $Id: secpod_ms12-030_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities-2663830 (Mac OS X)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902913");
-  script_version("$Revision: 11055 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0141", "CVE-2012-0142", "CVE-2012-0143", "CVE-2012-0184",
                 "CVE-2012-1847");
   script_bugtraq_id(53342, 53373, 53374, 53375, 53379);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 14:23:58 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-09 14:17:49 +0530 (Wed, 09 May 2012)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities-2663830 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49112/");
@@ -46,8 +46,7 @@ if(description)
   script_dependencies("gb_microsoft_office_detect_macosx.nasl");
   script_require_keys("MS/Office/MacOSX/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code
-  with the privileges of the user running the affected application.
-  Impact Level: System/Application");
+  with the privileges of the user running the affected application.");
   script_tag(name:"affected", value:"Microsoft Office 2008 for Mac
   Microsoft Office 2011 for Mac");
   script_tag(name:"insight", value:"The flaws are due to errors while handling OBJECTLINK record, SXLI

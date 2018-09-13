@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_perl_modules_mult_vuln_win.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_perl_modules_mult_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Strawberry Perl Modules Multiple Vulnerabilities (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802562");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-5060", "CVE-2011-4114", "CVE-2011-3597", "CVE-2011-2939",
                 "CVE-2011-2728");
   script_bugtraq_id(49911);
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-17 17:28:53 +0530 (Tue, 17 Jan 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,8 +49,7 @@ if(description)
   script_dependencies("gb_perl_detect_win.nasl");
   script_mandatory_keys("Strawberry/Perl/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause an affected
-  application to crash or execute arbitrary perl code.
-  Impact Level: System/Application");
+  application to crash or execute arbitrary perl code.");
   script_tag(name:"affected", value:"Strawberry Perl PAR module before 1.003
   Strawberry Perl Digest module before 1.17
   Strawberry Perl Encode module before 2.44

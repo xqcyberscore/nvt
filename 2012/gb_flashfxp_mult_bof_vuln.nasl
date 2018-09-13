@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flashfxp_mult_bof_vuln.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: gb_flashfxp_mult_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # FlashFXP Multiple Buffer Overflow Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = 'cpe:/a:flashfxp:flashfxp';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802965");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-4992");
   script_bugtraq_id(52259);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-24 14:23:56 +0530 (Mon, 24 Sep 2012)");
   script_name("FlashFXP Multiple Buffer Overflow Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -49,9 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.flashfxp.com/forum/flashfxp/news/15473-flashfxp-4-2-released.html#post81101");
 
   script_tag(name:"impact", value:"Successful exploitation allows an attackers to overflow a buffer and execute
-  arbitrary code on the system or cause the application to crash.
-
-  Impact Level: System/Application");
+  arbitrary code on the system or cause the application to crash.");
   script_tag(name:"affected", value:"FlashFXP version 4.1.8.1701");
   script_tag(name:"insight", value:"The flaw is due to improper bounds checking by the TListbox or
   TComboBox.");

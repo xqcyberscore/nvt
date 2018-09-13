@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_prdts_cab_files_mem_corr_vuln.nasl 11135 2018-08-27 13:39:29Z asteins $
+# $Id: gb_symantec_prdts_cab_files_mem_corr_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Symantec Products CAB Files Memory Corruption Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803054");
-  script_version("$Revision: 11135 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-4953");
   script_bugtraq_id(56399);
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 15:39:29 +0200 (Mon, 27 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-22 12:16:15 +0530 (Thu, 22 Nov 2012)");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
@@ -44,8 +44,7 @@ if(description)
   script_dependencies("secpod_symantec_prdts_detect.nasl");
   script_mandatory_keys("Symantec_or_Norton/Products/Win/Installed");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  code or can cause a denial of service via a crafted CAB file.
-  Impact Level: System/Application");
+  code or can cause a denial of service via a crafted CAB file.");
   script_tag(name:"affected", value:"Symantec Endpoint Protection (SEP) version 11.x
   Symantec Endpoint Protection Small Business Edition version 12.0.x
   Symantec AntiVirus Corporate Edition (SAVCE) version 10.x");

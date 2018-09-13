@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_macosx_may12.nasl 11052 2018-08-20 10:24:34Z asteins $
+# $Id: gb_apple_safari_webkit_mult_vuln_macosx_may12.nasl 11355 2018-09-12 10:32:04Z asteins $
 #
 # Apple Safari Webkit Multiple Vulnerabilities - May 12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802797");
-  script_version("$Revision: 11052 $");
+  script_version("$Revision: 11355 $");
   script_cve_id("CVE-2011-3046", "CVE-2011-3056", "CVE-2012-0672", "CVE-2012-0676");
   script_bugtraq_id(52369, 53407, 53404, 53446);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 12:24:34 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-18 19:42:59 +0530 (Fri, 18 May 2012)");
   script_name("Apple Safari Webkit Multiple Vulnerabilities - May 12 (Mac OS X)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5282");
@@ -46,11 +46,12 @@ if(description)
   script_require_keys("AppleSafari/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to conduct cross site
   scripting attacks, bypass certain security restrictions, and compromise
-  a user's system.
-  Impact Level: Application");
+  a user's system.");
   script_tag(name:"affected", value:"Apple Safari versions prior to 5.1.7 on Mac OS X");
   script_tag(name:"insight", value:"The flaws are due to
+
   - Multiple cross site scripting and memory corruption issues in webkit.
+
   - A state tracking issue existed in WebKit's handling of forms.");
   script_tag(name:"solution", value:"Upgrade to Apple Safari version 5.1.7 or later,
   For updates refer to http://www.apple.com/support/downloads/");

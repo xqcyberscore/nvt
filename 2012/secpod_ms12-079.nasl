@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-079.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: secpod_ms12-079.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Office Word Remote Code Execution Vulnerability (2780642)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902937");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-2539");
   script_bugtraq_id(56834);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-12 10:23:39 +0530 (Wed, 12 Dec 2012)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerability (2780642)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51467/");
@@ -56,8 +56,7 @@ if(description)
   script_mandatory_keys("MS/Office/Prdts/Installed", "MS/SharePoint/Server_or_Foundation_or_Services/Installed");
   script_require_ports(139, 445);
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code by
-  tricking a user into opening a specially crafted word and RTF files.
-  Impact Level: System/Application");
+  tricking a user into opening a specially crafted word and RTF files.");
   script_tag(name:"affected", value:"Microsoft Word Viewer
   Microsoft Office 2003 Service Pack 3
   Microsoft Office 2007 Service Pack 2

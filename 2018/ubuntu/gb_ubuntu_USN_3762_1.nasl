@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3762_1.nasl 11350 2018-09-12 08:17:35Z santu $
+# $Id: gb_ubuntu_USN_3762_1.nasl 11361 2018-09-12 13:16:00Z cfischer $
 #
 # Ubuntu Update for linux USN-3762-1
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843632");
-  script_version("$Revision: 11350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 10:17:35 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 11361 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 15:16:00 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-11 07:08:12 +0200 (Tue, 11 Sep 2018)");
   script_cve_id("CVE-2018-1118", "CVE-2017-13695");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
   script_tag(name:"qod_type", value:"package");
   script_name("Ubuntu Update for linux USN-3762-1");
   script_tag(name:"summary", value:"Check the version of linux");
@@ -57,14 +57,14 @@ locations). (CVE-2017-13695)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU18\.04 LTS");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

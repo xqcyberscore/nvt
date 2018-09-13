@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_sidebar_gadgets_code_exec_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_ms_sidebar_gadgets_code_exec_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Sidebar and Gadgets Remote Code Execution Vulnerability (2719662)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802886");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11357 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-12 14:18:37 +0530 (Thu, 12 Jul 2012)");
   script_name("Microsoft Sidebar and Gadgets Remote Code Execution Vulnerability (2719662)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2719662");
@@ -46,8 +46,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  code as the logged-on user.
-  Impact Level: System/Application");
+  code as the logged-on user.");
   script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
   Microsoft Windows Vista x32/x64 Edition Service Pack 2 and prior");
   script_tag(name:"insight", value:"Windows Sidebar when running insecure Gadgets allows an attacker to

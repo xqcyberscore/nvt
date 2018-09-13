@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mem_corr_vuln_aug12_win.nasl 11058 2018-08-20 14:18:06Z asteins $
+# $Id: gb_mozilla_prdts_mem_corr_vuln_aug12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Mozilla Products Memory Corruption Vulnerabilities - August12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803013");
-  script_version("$Revision: 11058 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-1956", "CVE-2012-1971", "CVE-2012-3971", "CVE-2012-3975");
   script_bugtraq_id(55249);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 16:18:06 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 1:20:04 +0530 (Thu, 30 Aug 2012)");
   script_name("Mozilla Products Memory Corruption Vulnerabilities - August12 (Windows)");
 
@@ -51,17 +51,19 @@ if(description)
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject scripts, bypass
   certain security restrictions, execute arbitrary code in the context of the
-  browser or cause a denial of service.
-  Impact Level: System/Application");
+  browser or cause a denial of service.");
   script_tag(name:"affected", value:"SeaMonkey version before 2.12 on Windows
   Thunderbird version before 15.0 on Windows
   Mozilla Firefox version before 15.0 on Windows");
   script_tag(name:"insight", value:"- Multiple unspecified errors within the browser engine can be exploited to
     corrupt memory.
+
   - Errors in 'Silf::readClassMap' and 'Pass::readPass' functions within
     Graphite 2 library.
+
   - An error within the DOMParser component fails to load sub resources during
     parsing of text/html data within an extension.
+
   - An error allows shadowing the location object using Object.defineProperty,
     allowing for possible XSS attacks");
   script_tag(name:"summary", value:"This host is installed with Mozilla firefox/thunderbird/seamonkey and is

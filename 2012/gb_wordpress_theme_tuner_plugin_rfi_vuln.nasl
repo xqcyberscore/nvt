@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_theme_tuner_plugin_rfi_vuln.nasl 10257 2018-06-19 14:04:53Z cfischer $
+# $Id: gb_wordpress_theme_tuner_plugin_rfi_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # WordPress Theme Tuner Plugin 'tt-abspath' Parameter Remote File Inclusion Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802604");
-  script_version("$Revision: 10257 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(51636);
   script_cve_id("CVE-2012-0934");
   script_tag(name:"cvss_base", value:"7.5");
@@ -51,9 +51,7 @@ if(description)
   script_xref(name:"URL", value:"http://spareclockcycles.org/2011/09/18/exploitring-the-wordpress-extension-repos");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to compromise the application
-  and the underlying system. Other attacks are also possible.
-
-  Impact Level: System/Application");
+  and the underlying system. Other attacks are also possible.");
 
   script_tag(name:"affected", value:"WordPress Theme Tuner Plugin version 0.7 and prior.");
 

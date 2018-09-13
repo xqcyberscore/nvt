@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_veritas_backup_exec_agent_browser_bof_vuln.nasl 11148 2018-08-28 14:25:49Z asteins $
+# $Id: gb_veritas_backup_exec_agent_browser_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # VERITAS Backup Exec Agent Browser Remote Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802981");
-  script_version("$Revision: 11148 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2004-1172");
   script_bugtraq_id(11974);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-11 13:42:29 +0530 (Thu, 11 Oct 2012)");
   script_name("VERITAS Backup Exec Agent Browser Remote Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -49,9 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.hitachi.co.jp/Prod/comp/soft1/global/security/pdf/HS05-002.pdf");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to overflow a buffer and
-  execute arbitrary code on the system.
-
-  Impact Level: System/Application");
+  execute arbitrary code on the system.");
   script_tag(name:"affected", value:"Veritas Backup Exec Agent Browser version 8.x before 8.60.3878 Hotfix 68,
   and 9.x before 9.1.4691 Hotfix 40");
   script_tag(name:"insight", value:"The name server registration service (benetns.exe) fails to validate the

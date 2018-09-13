@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln02_mar11_macosx.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_wireshark_dos_vuln02_mar11_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Wireshark Denial of Service Vulnerability-02 March 11 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802902");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-1143");
   script_bugtraq_id(46796);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-27 16:05:24 +0530 (Wed, 27 Jun 2012)");
   script_name("Wireshark Denial of Service Vulnerability-02 March 11 (Mac OS X)");
 
@@ -43,8 +43,7 @@ if(description)
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_require_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial of
-  service.
-  Impact Level: System/Application");
+  service.");
   script_tag(name:"affected", value:"Wireshark version prior to 1.4.4 on Mac OS X");
   script_tag(name:"insight", value:"The flaw is due to an error in 'epan/dissectors/packet-ntlmssp.c' in
   the NTLMSSP dissector");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cisco_prdts_activex_mult_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_cisco_prdts_activex_mult_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Cisco Products ActiveX Control Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802459");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-2493", "CVE-2012-2494", "CVE-2012-2495");
   script_bugtraq_id(54107, 54108);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-12 13:30:28 +0530 (Wed, 12 Sep 2012)");
   script_name("Cisco Products ActiveX Control Multiple Vulnerabilities");
 
@@ -51,16 +51,16 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_tag(name:"impact", value:"Successful exploitation will let the remote attackers execute arbitrary code
-  and can compromise a vulnerable system.
-
-  Impact Level: System/Application");
+  and can compromise a vulnerable system.");
   script_tag(name:"affected", value:"Cisco Hostscan version 3.x before 3.0 MR8
   Cisco AnyConnect VPN before 3.0 MR8 (3.0.08057)
   Cisco AnyConnect Secure Mobility Client version
   2.x before 2.5 MR6 and 3.x before 3.0 MR8 on Windows");
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An insufficient validation of input by the Cisco AnyConnect Secure Mobility
     Client WebLaunch component.
+
   - An improper sanitization of user-supplied input by the affected software's
     download feature.");
   script_tag(name:"summary", value:"This host is installed with Cisco ASMC/Hostscan/Secure Desktop or

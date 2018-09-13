@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_glassfish_admin_console_auth_bypass_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_oracle_glassfish_admin_console_auth_bypass_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Oracle GlassFish Server Administration Console Authentication Bypass Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802411");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-1511");
   script_bugtraq_id(47818);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-06 14:03:19 +0530 (Fri, 06 Jan 2012)");
 
   script_name("Oracle GlassFish Server Administration Console Authentication Bypass Vulnerability");
@@ -49,9 +49,7 @@ if(description)
   script_mandatory_keys("GlassFish/installed", "GlassFishAdminConsole/port");
 
   script_tag(name:"impact", value:"Successful exploitation could allow local attackers to access sensitive data
-on the server without being authenticated, by making 'TRACE' requests against the Administration Console.
-
-Impact Level: System/Application");
+on the server without being authenticated, by making 'TRACE' requests against the Administration Console.");
 
   script_tag(name:"affected", value:"Oracle GlassFish version 3.0.1 and prior.");
 

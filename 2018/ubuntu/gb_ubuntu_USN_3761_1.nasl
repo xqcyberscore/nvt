@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ubuntu_USN_3761_1.nasl 11289 2018-09-07 12:25:14Z santu $
+# $Id: gb_ubuntu_USN_3761_1.nasl 11361 2018-09-12 13:16:00Z cfischer $
 #
 # Ubuntu Update for firefox USN-3761-1
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.843631");
-  script_version("$Revision: 11289 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 14:25:14 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 11361 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 15:16:00 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-07 07:15:54 +0200 (Fri, 07 Sep 2018)");
   script_cve_id("CVE-2018-12375", "CVE-2018-12376", "CVE-2018-12377",
                 "CVE-2018-12378", "CVE-2018-12383");
@@ -61,14 +61,14 @@ sensitive information. (CVE-2018-12383)");
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_family("Ubuntu Local Security Checks");
   script_dependencies("gather-package-list.nasl");
-  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages");
+  script_mandatory_keys("ssh/login/ubuntu_linux", "ssh/login/packages", re:"ssh/login/release=UBUNTU(14\.04 LTS|18\.04 LTS|16\.04 LTS)");
   exit(0);
 }
 
 include("revisions-lib.inc");
 include("pkg-lib-deb.inc");
 
-release = get_kb_item("ssh/login/release");
+release = dpkg_get_ssh_release();
 
 res = "";
 if(release == NULL){

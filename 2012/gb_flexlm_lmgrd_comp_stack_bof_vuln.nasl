@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_flexlm_lmgrd_comp_stack_bof_vuln.nasl 11322 2018-09-11 10:15:07Z asteins $
+# $Id: gb_flexlm_lmgrd_comp_stack_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # FlexNet License Server Manager 'lmgrd' Component Stack BOF Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802629");
-  script_version("$Revision: 11322 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(52718);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-17 16:16:16 +0530 (Thu, 17 May 2012)");
   script_name("FlexNet License Server Manager 'lmgrd' Component Stack BOF Vulnerability");
   script_category(ACT_DENIAL);
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
   within the context of the affected application. Failed exploit attempts will
-  result in a denial of service condition.
-
-  Impact Level: System/Application");
+  result in a denial of service condition.");
   script_tag(name:"affected", value:"Flexera Software FlexNet License Server Manager versions 11.9.1 and prior");
   script_tag(name:"insight", value:"The flaw is due to an error within the License Server Manager 'lmgrd'
   component when processing certain packets. This can be exploited to cause a

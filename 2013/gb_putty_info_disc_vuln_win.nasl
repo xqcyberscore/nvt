@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_info_disc_vuln_win.nasl 11082 2018-08-22 15:05:47Z mmartin $
+# $Id: gb_putty_info_disc_vuln_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # PuTTY Information Disclosure vulnerability (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:putty:putty";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803880");
-  script_version("$Revision: 11082 $");
+  script_version("$Revision: 11356 $");
   script_cve_id("CVE-2011-4607");
   script_bugtraq_id(51021);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 17:05:47 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-26 15:35:39 +0530 (Mon, 26 Aug 2013)");
   script_name("PuTTY Information Disclosure vulnerability (Windows)");
   script_tag(name:"summary", value:"The host is installed with PuTTY and is prone to information disclosure
@@ -55,7 +55,7 @@ memory during the keyboard-interactive authentication");
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_putty_portable_detect.nasl");
-  script_mandatory_keys("PuTTY/Version");
+  script_mandatory_keys("putty/version");
   exit(0);
 }
 

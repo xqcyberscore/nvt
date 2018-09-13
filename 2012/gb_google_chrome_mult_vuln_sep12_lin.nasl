@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_sep12_lin.nasl 11058 2018-08-20 14:18:06Z asteins $
+# $Id: gb_google_chrome_mult_vuln_sep12_lin.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities - Sep12 (Linux)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802448");
-  script_version("$Revision: 11058 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-2869", "CVE-2012-2868", "CVE-2012-2867", "CVE-2012-2866",
                 "CVE-2012-2865", "CVE-2012-2872", "CVE-2012-2871", "CVE-2012-2870");
   script_bugtraq_id(55331);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 16:18:06 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-03 15:01:42 +0530 (Mon, 03 Sep 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - Sep12 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50447");
@@ -46,17 +46,24 @@ if(description)
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_require_keys("Google-Chrome/Linux/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow the attackers to execute arbitrary code
-  or cause a denial of service.
-  Impact Level: System/Application");
+  or cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 21.0.1180.89 on Linux");
   script_tag(name:"insight", value:"Multiple flaws are due to
+
   - Out-of-bounds read in line breaking
+
   - Bad cast with run-ins.
+
   - Browser crash with SPDY.
+
   - Race condition with workers and XHR.
+
   - Avoid stale buffer in URL loading.
+
   - Lower severity memory management issues in XPath
+
   - Bad cast in XSL transforms.
+
   - XSS in SSL interstitial.");
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 21.0.1180.89 or later,
   For updates refer to http://www.google.com/chrome");

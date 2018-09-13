@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_gom_player_avi_unspecified_vuln_win.nasl 11057 2018-08-20 13:59:30Z asteins $
+# $Id: secpod_gom_player_avi_unspecified_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # GOM Media Player 'AVI' File Unspecified Vulnerability (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903002");
-  script_version("$Revision: 11057 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-1264");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:59:30 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-21 16:45:16 +0530 (Wed, 21 Mar 2012)");
   script_name("GOM Media Player 'AVI' File Unspecified Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://gom.gomtv.com/gomIntro.html?type=4");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("secpod_gom_player_detect_win.nasl");
   script_require_keys("GOM/Player/Ver/Win");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code in
-  the context of the application.
-  Impact Level: System/Application");
+  the context of the application.");
   script_tag(name:"affected", value:"GOM Media Player version prior to 2.1.37.5091 on Windows");
   script_tag(name:"insight", value:"The flaw is due to an unspecified error, which allows remote attackers
   to execute arbitrary code via a crafted AVI file.");

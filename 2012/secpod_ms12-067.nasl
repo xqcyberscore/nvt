@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-067.nasl 10639 2018-07-26 13:36:15Z cfischer $
+# $Id: secpod_ms12-067.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft FAST Search Server 2010 for SharePoint RCE Vulnerabilities (2742321)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903042");
-  script_version("$Revision: 10639 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-1766", "CVE-2012-1767", "CVE-2012-1768", "CVE-2012-1769",
                 "CVE-2012-1770", "CVE-2012-1771", "CVE-2012-1772", "CVE-2012-1773",
                 "CVE-2012-3106", "CVE-2012-3107", "CVE-2012-3108", "CVE-2012-3109",
@@ -36,7 +36,7 @@ if(description)
                     54546, 54504, 54550, 54554, 54506);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 15:36:15 +0200 (Thu, 26 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-10 11:39:34 +0530 (Wed, 10 Oct 2012)");
   script_name("Microsoft FAST Search Server 2010 for SharePoint RCE Vulnerabilities (2742321)");
   script_category(ACT_GATHER_INFO);
@@ -50,9 +50,7 @@ if(description)
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms12-067");
 
   script_tag(name:"impact", value:"Successful exploitation could run arbitrary code in the context of a user
-  account with a restricted token.
-
-  Impact Level: System/Application");
+  account with a restricted token.");
 
   script_tag(name:"affected", value:"Microsoft FAST Search Server 2010 for SharePoint Service Pack 1");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-023.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: secpod_ms12-023.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2675157)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902670");
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0168", "CVE-2012-0169", "CVE-2012-0170", "CVE-2012-0171",
                 "CVE-2012-0172");
   script_bugtraq_id(52889, 52902, 52904, 52905);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-11 10:04:47 +0530 (Wed, 11 Apr 2012)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2675157)");
   script_xref(name:"URL", value:"https://secunia.com/advisories/48724/");
@@ -49,8 +49,7 @@ if(description)
   script_mandatory_keys("MS/IE/Version");
   script_require_ports(139, 445);
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to gain sensitive
-  information or execute arbitrary code in the context of the application.
-  Impact Level: System/Application");
+  information or execute arbitrary code in the context of the application.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x");
   script_tag(name:"insight", value:"Multiple flaws are due to an,
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_mar12_win.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: gb_mozilla_prdts_mult_vuln_mar12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Mozilla Products Multiple Vulnerabilities - Mar12 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802820");
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0461", "CVE-2012-0463", "CVE-2012-0458", "CVE-2012-0457",
                 "CVE-2012-0455", "CVE-2012-0464", "CVE-2012-0456");
   script_bugtraq_id(52464, 52466, 52460, 52459, 52458, 52465, 52461);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-19 17:59:17 +0530 (Mon, 19 Mar 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - Mar12 (Windows)");
 
@@ -50,8 +50,7 @@ if(description)
                       "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name:"impact", value:"Successful exploitation will let attackers to cause a denial of service or
-  possibly execute arbitrary code via unknown vectors.
-  Impact Level: System/Application");
+  possibly execute arbitrary code via unknown vectors.");
   script_tag(name:"affected", value:"SeaMonkey version before 2.8
   Thunderbird ESR version 10.x before 10.0.3
   Mozilla Firefox ESR version 10.x before 10.0.3

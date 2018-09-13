@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_liferay_portal_mult_vuln.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_liferay_portal_mult_vuln.nasl 11355 2018-09-12 10:32:04Z asteins $
 #
 # Liferay Portal Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802630");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11355 $");
   script_bugtraq_id(53546);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-21 12:12:12 +0530 (Mon, 21 May 2012)");
   script_name("Liferay Portal Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49205");
@@ -56,21 +56,21 @@ Impact Level: Application");
   script_tag(name:"affected", value:"Liferay Portal version 6.1.10 and prior");
   script_tag(name:"insight", value:"Multiple flaws are due to
 
-- Input passed to the 'uploadProgressId' parameter in html/portal/upload_
+  - Input passed to the 'uploadProgressId' parameter in html/portal/upload_
 progress_poller.jsp is not properly sanitised before being returned to
 the user.
 
-- Input passed to the 'ckEditorConfigFileName' parameter when editing
+  - Input passed to the 'ckEditorConfigFileName' parameter when editing
 articles in a journal is not properly sanitised before being returned to
 the user.
 
-- Input passed to the '_16_chartId' parameter when viewing the currency
+  - Input passed to the '_16_chartId' parameter when viewing the currency
 converter is not properly sanitised before being returned to the user.
 
-- Input passed to the 'tag' parameter when viewing blog categories is not
+  - Input passed to the 'tag' parameter when viewing blog categories is not
 properly sanitised before being returned to the user.
 
-- The application allows users to perform certain actions via HTTP requests
+  - The application allows users to perform certain actions via HTTP requests
 without performing any validity checks to verify the requests. This can be
 exploited to disclose potentially sensitive information.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year

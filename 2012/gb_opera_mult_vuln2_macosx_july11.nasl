@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln2_macosx_july11.nasl 11055 2018-08-20 12:23:58Z asteins $
+# $Id: gb_opera_mult_vuln2_macosx_july11.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Opera Browser Multiple Vulnerabilities-02 July-11 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802756");
-  script_version("$Revision: 11055 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-2635", "CVE-2011-2634", "CVE-2011-2636", "CVE-2011-2637",
                 "CVE-2011-2638", "CVE-2011-2639", "CVE-2011-2640");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 14:23:58 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-19 11:33:54 +0530 (Thu, 19 Apr 2012)");
   script_name("Opera Browser Multiple Vulnerabilities-02 July-11 (Mac OS X)");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/68452");
@@ -44,18 +44,24 @@ if(description)
   script_dependencies("gb_opera_detect_macosx.nasl");
   script_require_keys("Opera/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
-  and cause a denial of service.
-  Impact Level: System/Application");
+  and cause a denial of service.");
   script_tag(name:"affected", value:"Opera Web Browser version prior 11.10 on Mac OS X");
   script_tag(name:"insight", value:"The flaws are due to
+
   - An error in cascading Style Sheets (CSS) implementation, allows attackers
     to cause denial of service via vectors involving use of the hover pseudo
     class.
+
   - A Hijacking searches and other customisations in Opera.
+
   - An error Tomato Firmware v1.28.1816 Status Device List page in Opera.
+
   - Crashes on futura-sciences.com, seoptimise.com, mitosyfraudes.org.
+
   - Crash occurring with games on zylom.com.
+
   - A Hidden animated '.gif' causing high CPU load, because of constant repaints.
+
   - A crash when passing empty parameter to a Java applet.");
   script_tag(name:"solution", value:"Upgrade to Opera Web Browser version 11.10 or later,
   For updates refer to http://www.opera.com/download/");

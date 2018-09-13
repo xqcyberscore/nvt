@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: win_hardware_based_encryption.nasl 10893 2018-08-10 13:07:24Z emoss $
+# $Id: win_hardware_based_encryption.nasl 11363 2018-09-12 13:46:05Z emoss $
 #
 # Check value for Configure use of hardware-based encryption for fixed data drives
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.109379");
-  script_version("$Revision: 10893 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:07:24 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11363 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 15:46:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-06-25 15:38:38 +0200 (Mon, 25 Jun 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:H/Au:S/C:N/I:N/A:N");
@@ -38,7 +38,7 @@ if(description)
   script_copyright("Copyright (c) 2018 Greenbone Networks GmbH");
   script_family("Policy");
   script_dependencies("smb_reg_service_pack.nasl");
-	script_add_preference(name:"Value", type:"radio", value:"1;0");
+  script_add_preference(name:"Value", type:"radio", value:"1;0");
   script_mandatory_keys("Compliance/Launch");
   script_tag(name:"summary", value:"This test checks the setting for policy
 'Configure use of hardware-based encryption for fixed data drives' on Windows
@@ -76,7 +76,7 @@ item = 'FDVHardwareEncryption';
 value = registry_get_dword(key:key, item:item, type:type);
 default = script_get_preference('Value');
 
-if(!value){
+if(value == ''){
   value = '0';
 }
 

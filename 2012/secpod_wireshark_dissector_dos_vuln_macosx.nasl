@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_dissector_dos_vuln_macosx.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: secpod_wireshark_dissector_dos_vuln_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Wireshark X.509if Dissector Denial of Service Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903022");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-1590");
   script_bugtraq_id(47392);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-26 10:21:42 +0530 (Thu, 26 Apr 2012)");
   script_name("Wireshark X.509if Dissector Denial of Service Vulnerability (Mac OS X)");
 
@@ -43,8 +43,7 @@ if(description)
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_require_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to cause a denial of service
-  via crafted '.pcap' file.
-  Impact Level: System/Application");
+  via crafted '.pcap' file.");
   script_tag(name:"affected", value:"Wireshark version 1.2.0 through 1.2.15
   Wireshark version 1.4.0 through 1.4.4");
   script_tag(name:"insight", value:"The flaw is caused by an error in the 'X.509if' dissector when processing

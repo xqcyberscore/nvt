@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xampp_webdav_php_upload_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_xampp_webdav_php_upload_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # XAMPP WebDAV PHP Upload Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802293");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11357 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-17 12:12:12 +0530 (Tue, 17 Jan 2012)");
   script_name("XAMPP WebDAV PHP Upload Vulnerability");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/72397");
@@ -46,9 +46,7 @@ if(description)
   script_mandatory_keys("xampp/installed");
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to gain
-unauthorized access to the system.
-
-Impact Level: System/Application");
+unauthorized access to the system.");
   script_tag(name:"affected", value:"XAMPP");
   script_tag(name:"insight", value:"The flaw exists because XAMPP contains a default username and
 password within the WebDAV folder, which allows attackers to gain unauthorized

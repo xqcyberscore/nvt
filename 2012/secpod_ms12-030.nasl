@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-030.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: secpod_ms12-030.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Office Remote Code Execution Vulnerabilities (2663830)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903026");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0141", "CVE-2012-0142", "CVE-2012-0143", "CVE-2012-0184",
                 "CVE-2012-0185", "CVE-2012-1847");
   script_bugtraq_id(53342, 53373, 53374, 53375, 53379);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-09 10:19:21 +0530 (Wed, 09 May 2012)");
   script_name("Microsoft Office Remote Code Execution Vulnerabilities (2663830)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2597086");
@@ -53,8 +53,7 @@ if(description)
   script_mandatory_keys("SMB/Office/Excel/Version", "MS/Office/Ver", "SMB/Office/XLView/Version");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code
-  with the privileges of the user running the affected application.
-  Impact Level: System/Application");
+  with the privileges of the user running the affected application.");
   script_tag(name:"affected", value:"Microsoft Excel Viewer
   Microsoft Excel 2003 Service Pack 3
   Microsoft Excel 2010 Service Pack 1 and prior

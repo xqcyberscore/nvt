@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_june12_macosx.nasl 11322 2018-09-11 10:15:07Z asteins $
+# $Id: gb_opera_mult_vuln_june12_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Opera Multiple Vulnerabilities - June12 (Mac OS X)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802647");
-  script_version("$Revision: 11322 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(54011);
   script_cve_id("CVE-2012-3555", "CVE-2012-3556", "CVE-2012-3557", "CVE-2012-3558",
                 "CVE-2012-3560");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 15:15:15 +0530 (Thu, 21 Jun 2012)");
   script_name("Opera Multiple Vulnerabilities - June12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49533/");
@@ -52,8 +52,7 @@ if(description)
   script_require_keys("Opera/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   script code, disclose sensitive information or spoof the originating URL
-  of a trusted web site and carry out phishing-style attacks.
-  Impact Level: System/Application");
+  of a trusted web site and carry out phishing-style attacks.");
   script_tag(name:"affected", value:"Opera version prior to 11.65 on Mac OS X");
   script_tag(name:"insight", value:"- An error when displaying preferences within a small window can be exploited
     to execute arbitrary code by tricking a user into entering a specific

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_iptools_remote_bof_vuln.nasl 10288 2018-06-21 13:26:05Z cfischer $
+# $Id: gb_iptools_remote_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # IpTools Tiny TCP/IP Servers Remote Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802290");
-  script_version("$Revision: 10288 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-5345", "CVE-2012-5344");
   script_bugtraq_id(51311, 51312);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 15:26:05 +0200 (Thu, 21 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-09 17:17:17 +0530 (Mon, 09 Jan 2012)");
   script_name("IpTools Tiny TCP/IP Servers Remote Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -46,9 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/108430/iptools-overflow.txt");
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to execute
-  arbitrary code within the context of the application or cause a denial of service condition.
-
-  Impact Level: System/Application");
+  arbitrary code within the context of the application or cause a denial of service condition.");
 
   script_tag(name:"affected", value:"IpTools Tiny TCP/IP servers 0.1.4");
 

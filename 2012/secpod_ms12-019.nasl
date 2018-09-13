@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-019.nasl 11322 2018-09-11 10:15:07Z asteins $
+# $Id: secpod_ms12-019.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Windows DirectWrite Denial of Service Vulnerability (2665364)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902908");
-  script_version("$Revision: 11322 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0156");
   script_bugtraq_id(52332);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-14 09:53:40 +0530 (Wed, 14 Mar 2012)");
   script_name("Microsoft Windows DirectWrite Denial of Service Vulnerability (2665364)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48361");
@@ -47,8 +47,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial
-  of service.
-  Impact Level: System/Application");
+  of service.");
   script_tag(name:"affected", value:"Microsoft Windows 7 Service Pack 1 and prior
   Microsoft Windows Vista Service Pack 2 and prior
   Microsoft Windows Server 2008 Service Pack 2 and prior");

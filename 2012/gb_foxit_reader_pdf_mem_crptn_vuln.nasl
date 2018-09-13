@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_pdf_mem_crptn_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_foxit_reader_pdf_mem_crptn_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Foxit Reader PDF File Handling Memory Corruption Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802957");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-4337");
   script_bugtraq_id(55150);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-07 11:03:23 +0530 (Fri, 07 Sep 2012)");
   script_name("Foxit Reader PDF File Handling Memory Corruption Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50359");
@@ -43,10 +43,9 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
-  script_require_keys("Foxit/Reader/Ver");
+  script_require_keys("foxit/reader/ver");
   script_tag(name:"impact", value:"Successful exploitation could allow the attackers to execute arbitrary code
-  on the target system.
-  Impact Level: System/Application");
+  on the target system.");
   script_tag(name:"affected", value:"Foxit Reader version prior to 5.3 on Windows XP and Windows 7");
   script_tag(name:"insight", value:"An unspecified error when parsing PDF files and can be exploited to corrupt
   memory.");
@@ -66,7 +65,7 @@ if(hotfix_check_sp(xp:4, xpx64:3, win7:2, win7x64:2) <= 0){
   exit(0);
 }
 
-foxitVer = get_kb_item("Foxit/Reader/Ver");
+foxitVer = get_kb_item("foxit/reader/ver");
 if(!foxitVer){
   exit(0);
 }

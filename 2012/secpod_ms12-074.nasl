@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-074.nasl 11322 2018-09-11 10:15:07Z asteins $
+# $Id: secpod_ms12-074.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (2745030)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902934");
-  script_version("$Revision: 11322 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-1895", "CVE-2012-1896", "CVE-2012-2519", "CVE-2012-4776",
                 "CVE-2012-4777");
   script_bugtraq_id(56455, 56456, 56462, 56464);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-14 11:47:24 +0530 (Wed, 14 Nov 2012)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (2745030)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51236/");
@@ -57,8 +57,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to execute arbitrary code
   with the privileges of the currently logged-in user. Failed attacks will
-  cause denial-of-service conditions.
-  Impact Level: System/Application");
+  cause denial-of-service conditions.");
   script_tag(name:"affected", value:"Microsoft .NET Framework 1.0 SP3, 1.1 SP1, 2.0 SP2, 3.0, 3.5, 3.5.1,
   and 4");
   script_tag(name:"insight", value:"- An error within permissions checking of objects that perform reflection can

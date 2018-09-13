@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_edirectory_long_http_host_header_bof_vuln.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_novell_edirectory_long_http_host_header_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Novell eDirectory Multiple Stack Based Buffer Overflow Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802674");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2006-5478");
   script_bugtraq_id(20655);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-08 19:32:57 +0530 (Mon, 08 Oct 2012)");
   script_name("Novell eDirectory Multiple Stack Based Buffer Overflow Vulnerabilities");
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.zerodayinitiative.com/advisories/ZDI-06-036/");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-  code and deny the server.
-
-  Impact Level: System/Application");
+  code and deny the server.");
   script_tag(name:"affected", value:"Novell eDirectory 8.8.x to 8.8.1, and 8.x to 8.7.3.8 (8.7.3 SP8)");
   script_tag(name:"insight", value:"The flaws are due to improper validation of user-supplied input via
   a long HTTP Host header, which triggers an overflow in the BuildRedirectURL

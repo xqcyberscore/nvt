@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test Library functions
-# $Id: wmi_file.inc 10110 2018-06-07 09:04:19Z cfischer $
+# $Id: wmi_file.inc 11352 2018-09-12 09:32:21Z cfischer $
 #
 # WMI Client Functions for Directories and Files
 #
@@ -23,7 +23,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# $Revision: 10110 $
+# $Revision: 11352 $
 #
 ###############################################################################
 
@@ -118,9 +118,9 @@ function wmi_file_is_subdir_writeable(handle, dirPath)
 #
 # - wmi_file_filelist          - Queries List of all files under directory.
 # - wmi_file_filesize          - Gets the size of file.
-# - wmi_file_extnfile          - Returns List of extension files under directory.
-# - wmi_file_check_file_exists - Returns 1 if file exsits else 0
-# - wmi_file_filesearch        - Returns Files based on product.
+# - wmi_file_get_extnfile      - Returns List of extension files under directory.
+# - wmi_file_check_file_exists - Returns 1 if file exists else 0
+# - wmi_file_file_search       - Returns Files based on product.
 # - wmi_file_fileinfo          - Extracts all properties and description of file.
 # - wmi_file_fileversion       - Gets version of the file.
 # - wmi_file_filecreationdate  - Returns creation date of the file.
@@ -297,7 +297,7 @@ function wmi_file_filecreationdate(handle, filePath)
 }
 
 # Ex: filePath = "c:\\windows\\system32\\cmd.exe"
-function wmi_filemodifieddate(handle, filePath)
+function wmi_file_filemodifieddate(handle, filePath)
 {
   if(filePath){
     query = 'Select LastModified from CIM_DataFile Where Name = ' +

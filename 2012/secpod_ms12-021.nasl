@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-021.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: secpod_ms12-021.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Visual Studio Privilege Elevation Vulnerability (2651019)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902817");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0008");
   script_bugtraq_id(52329);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-14 10:10:10 +0530 (Wed, 14 Mar 2012)");
   script_name("Microsoft Visual Studio Privilege Elevation Vulnerability (2651019)");
 
@@ -43,8 +43,7 @@ if(description)
   script_mandatory_keys("Microsoft/VisualStudio/Ver");
   script_require_ports(139, 445);
   script_tag(name:"impact", value:"Successful exploitation could allow attacker to execute arbitrary code with
-  elevated privileges.
-  Impact Level: System/Application");
+  elevated privileges.");
   script_tag(name:"affected", value:"Microsoft Visual Studio 2008 SP 1 and prior
   Microsoft Visual Studio 2010 SP 1 and prior");
   script_tag(name:"insight", value:"The flaw is due to the application loading add-ins from insecure paths.

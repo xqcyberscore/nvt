@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_advanced_pdf_editor_bof_vuln.nasl 11201 2018-09-03 14:35:07Z cfischer $
+# $Id: gb_foxit_advanced_pdf_editor_bof_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Foxit Advanced PDF Editor Buffer Overflow Vulnerability
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803304");
-  script_version("$Revision: 11201 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 16:35:07 +0200 (Mon, 03 Sep 2018) $");
+  script_version("$Revision: 11356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-01 19:35:22 +0530 (Fri, 01 Feb 2013)");
   script_bugtraq_id(57558);
   script_cve_id("CVE-2013-0107");
@@ -43,7 +43,7 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_family("Buffer overflow");
   script_dependencies("gb_foxit_advanced_pdf_editor_detect_win.nasl");
-  script_mandatory_keys("Foxit/AdvancedEditor/Win/Ver");
+  script_mandatory_keys("foxit/advanced_editor/win/ver");
   script_tag(name:"impact", value:"Successful exploitation allows an attacker to execute arbitrary code or
   cause a denial-of-service.
   Impact Level: System/Application");
@@ -62,7 +62,7 @@ if(description)
 
 include("version_func.inc");
 
-foxitVer = get_kb_item("Foxit/AdvancedEditor/Win/Ver");
+foxitVer = get_kb_item("foxit/advanced_editor/win/ver");
 
 # If we install 3.04, it takes 3.0.4.0
 if(foxitVer && foxitVer =~ "^3")

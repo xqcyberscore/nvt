@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kingview_heap_bof_vuln.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_kingview_heap_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # WellinTech KingView 'HistoryServer.exe' Heap Based Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802550");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-4536");
   script_bugtraq_id(51159);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-02 14:11:32 +0530 (Mon, 02 Jan 2012)");
   script_name("WellinTech KingView 'HistoryServer.exe' Heap Based Buffer Overflow Vulnerability");
 
@@ -62,8 +62,7 @@ if(description)
   *****");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   code in the context of the application. Failed attacks will cause
-  denial-of-service conditions.
-  Impact Level: System/Application");
+  denial-of-service conditions.");
   script_tag(name:"affected", value:"KingView version 6.53 and 65.30.2010.18018");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);

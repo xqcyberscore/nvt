@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-051_macosx.nasl 11055 2018-08-20 12:23:58Z asteins $
+# $Id: secpod_ms12-051_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Office Privilege Elevation Vulnerability - 2721015 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901210");
-  script_version("$Revision: 11055 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-1894");
   script_bugtraq_id(54361);
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 14:23:58 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-11 08:54:28 +0530 (Wed, 11 Jul 2012)");
   script_name("Microsoft Office Privilege Elevation Vulnerability - 2721015 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49876/");
@@ -44,8 +44,7 @@ if(description)
   script_dependencies("gb_microsoft_office_detect_macosx.nasl");
   script_require_keys("MS/Office/MacOSX/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code
-  in the security context of the current user.
-  Impact Level: System/Application");
+  in the security context of the current user.");
   script_tag(name:"affected", value:"Microsoft Office 2011 for Mac");
   script_tag(name:"insight", value:"The application being installed with insecure folder permissions and can
   be exploited to create arbitrary files in certain directories.");

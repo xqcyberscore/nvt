@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_fake_identd_client_query_bof_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_fake_identd_client_query_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Fake Identd Client Query Remote Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803022");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2002-1792");
   script_bugtraq_id(5351);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-05 11:02:48 +0530 (Wed, 05 Sep 2012)");
   script_name("Fake Identd Client Query Remote Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -45,9 +45,7 @@ if(description)
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2002-07/0370.html");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause buffer overflow
-  condition or execute arbitrary code on the system with root privileges.
-
-  Impact Level: System/Application");
+  condition or execute arbitrary code on the system with root privileges.");
   script_tag(name:"affected", value:"Tomi Ollila Fake Identd version 0.9 through 1.4");
   script_tag(name:"insight", value:"The identd server fails to handle a specially crafted long request that is
   split into multiple packets, which allows remote attackers to cause a

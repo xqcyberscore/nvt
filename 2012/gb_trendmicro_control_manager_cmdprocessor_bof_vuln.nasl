@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_trendmicro_control_manager_cmdprocessor_bof_vuln.nasl 11266 2018-09-06 10:59:26Z cfischer $
+# $Id: gb_trendmicro_control_manager_cmdprocessor_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Trend Micro Control Manager 'CmdProcessor.exe' Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802876");
-  script_version("$Revision: 11266 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-5001");
   script_bugtraq_id(50965);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-02 17:04:06 +0530 (Mon, 02 Jul 2012)");
   script_name("Trend Micro Control Manager 'CmdProcessor.exe' Buffer Overflow Vulnerability");
 
@@ -49,8 +49,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause buffer overflow
-  condition or execute arbitrary code.
-  Impact Level: System/Application");
+  condition or execute arbitrary code.");
   script_tag(name:"affected", value:"Trend Micro Control Manager version 5.5 Build 1250 Hotfix 1550 and prior");
   script_tag(name:"insight", value:"The 'CGenericScheduler::AddTask' function in cmdHandlerRedAlertController.dll
   in 'CmdProcessor.exe' fails to process a specially crafted IPC packet sent on

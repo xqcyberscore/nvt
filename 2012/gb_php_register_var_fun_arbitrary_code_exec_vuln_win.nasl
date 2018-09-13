@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_register_var_fun_arbitrary_code_exec_vuln_win.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_register_var_fun_arbitrary_code_exec_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # PHP 'php_register_variable_ex()' Remote Code Execution Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802590");
-  script_version("$Revision: 10458 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0830");
   script_bugtraq_id(51830);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-10 11:24:19 +0530 (Fri, 10 Feb 2012)");
   script_name("PHP 'php_register_variable_ex()' Remote Code Execution Vulnerability (Windows)");
 
@@ -51,9 +51,7 @@ if(description)
   script_mandatory_keys("php/installed", "Host/runs_windows");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary PHP
-  code on the system.
-
-  Impact Level: System/Application");
+  code on the system.");
 
   script_tag(name:"affected", value:"PHP Version 5.3.9 on windows.");
 

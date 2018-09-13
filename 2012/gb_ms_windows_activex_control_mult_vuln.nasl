@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_windows_activex_control_mult_vuln.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_ms_windows_activex_control_mult_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Windows ActiveX Control Multiple Vulnerabilities (2647518)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802426");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11357 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-14 13:25:40 +0530 (Wed, 14 Mar 2012)");
   script_name("Microsoft Windows ActiveX Control Multiple Vulnerabilities (2647518)");
 
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("secpod_reg_enum.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_tag(name:"impact", value:"Successful exploitation will let the remote attackers execute arbitrary code,
-  and can compromise a vulnerable system.
-  Impact Level: System/Application");
+  and can compromise a vulnerable system.");
   script_tag(name:"affected", value:"Microsoft Windows 7 Service Pack 1 and prior
   Microsoft Windows XP Service Pack 3 and prior
   Microsoft Windows 2003 Service Pack 2 and prior

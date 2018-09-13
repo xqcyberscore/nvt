@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_weblogic_server_mult_sec_bypass_vuln.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_oracle_weblogic_server_mult_sec_bypass_vuln.nasl 11355 2018-09-12 10:32:04Z asteins $
 #
 # Oracle WebLogic Server Multiple Security Bypass Vulnerabilities
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:bea:weblogic_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802446");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11355 $");
   script_bugtraq_id(54870, 54839);
   script_tag(name:"cvss_base", value:"5.7");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-28 1:34:53 +0530 (Tue, 28 Aug 2012)");
 
   script_name("Oracle WebLogic Server Multiple Security Bypass Vulnerabilities");
@@ -61,7 +61,7 @@ the context of the application.");
 delete arbitrary files with administrative privileges on the target server through a directory traversal
 vulnerability.
 
-- A web service called 'FlashTunnelService' which can be reached without prior authentication and processes
+  - A web service called 'FlashTunnelService' which can be reached without prior authentication and processes
 incoming SOAP requests.");
 
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.

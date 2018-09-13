@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asterisk_http_manager_bof_vuln.nasl 11322 2018-09-11 10:15:07Z asteins $
+# $Id: gb_asterisk_http_manager_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Asterisk HTTP Manager Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802838");
-  script_version("$Revision: 11322 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-1184");
   script_bugtraq_id(52815);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-23 16:56:33 +0530 (Mon, 23 Apr 2012)");
   script_name("Asterisk HTTP Manager Buffer Overflow Vulnerability");
 
@@ -58,9 +58,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running Asterisk and is prone to buffer overflow
   vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to execute arbitrary code
-  within the context of the application or cause a denial of service condition.
-
-  Impact Level: System/Application");
+  within the context of the application or cause a denial of service condition.");
   script_tag(name:"affected", value:"Asterisk version 1.8.x before 1.8.10.1, 10.x before 10.2.1 and 10.3.0");
 
   script_tag(name:"solution_type", value:"VendorFix");

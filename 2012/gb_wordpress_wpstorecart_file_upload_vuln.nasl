@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wpstorecart_file_upload_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_wordpress_wpstorecart_file_upload_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # WordPress wpStoreCart Plugin 'upload.php' Arbitrary File Upload Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802915");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-3576");
   script_bugtraq_id(53896);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-17 15:31:41 +0530 (Tue, 17 Jul 2012)");
   script_name("WordPress wpStoreCart Plugin 'upload.php' Arbitrary File Upload Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49459");
@@ -50,9 +50,7 @@ if(description)
   script_mandatory_keys("wordpress/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to upload arbitrary PHP code
-  and run it in the context of the Web server process.
-
-  Impact Level: System/Application");
+  and run it in the context of the Web server process.");
   script_tag(name:"affected", value:"WordPress wpStoreCart Plugin versions 2.5.27 to 2.5.29");
   script_tag(name:"insight", value:"The wp-content/plugins/wpstorecart/php/upload.php script allowing to upload
   files with arbitrary extensions to a folder inside the webroot. This can be

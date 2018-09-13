@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cocsoft_stream_down_bof_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_cocsoft_stream_down_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # CoCSoft Stream Down Buffer overflow Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802551");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-5052");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-02 16:06:04 +0530 (Mon, 02 Jan 2012)");
   script_name("CoCSoft Stream Down Buffer overflow Vulnerability");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18283/");
@@ -52,9 +52,7 @@ General solution options are to upgrade to a newer release, disable respective f
   script_tag(name:"summary", value:"This host is installed with CoCSoft Stream Down and is prone to
   buffer overflow vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
-arbitrary code in the context of the application.
-
-Impact Level: System/Application");
+arbitrary code in the context of the application.");
   script_tag(name:"affected", value:"CoCSoft Stream Down version 6.8.0");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);

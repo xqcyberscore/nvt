@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sony_network_camera_detect.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
+# $Id: gb_sony_network_camera_detect.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Sony Network Camera Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114022");
-  script_version("$Revision: 11328 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 11356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-21 15:13:40 +0200 (Tue, 21 Aug 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -80,10 +80,10 @@ if("ModelName=" >< res || "SoftVersion=" >< res || "TitleBar=" >< res || "Time="
 
    conclUrl = report_vuln_url(port: port, url: "/command/inquiry.cgi?inqjs=sysinfo", url_only: TRUE);
 
-   set_kb_item(name: "sony/networkcamera/detected", value: TRUE);
-   set_kb_item(name: "sony/networkcamera/" + port + "/detected", value: TRUE);
-   set_kb_item(name: "sony/networkcamera/version", value: version);
-   set_kb_item(name: "sony/networkcamera/model", value: model);
+   set_kb_item(name: "sony/network_camera/detected", value: TRUE);
+   set_kb_item(name: "sony/network_camera/" + port + "/detected", value: TRUE);
+   set_kb_item(name: "sony/network_camera/version", value: version);
+   set_kb_item(name: "sony/network_camera/model", value: model);
 
    register_and_report_cpe(app: "Sony Network Camera", ver: version, base: "cpe:/h:sony:network_camera:", expr: "^([0-9.]+)", insloc: install, regPort: port, conclUrl: conclUrl, extra: "Model: " + model);
 }

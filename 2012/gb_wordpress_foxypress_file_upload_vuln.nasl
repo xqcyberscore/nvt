@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_foxypress_file_upload_vuln.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_wordpress_foxypress_file_upload_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # WordPress Foxypress Plugin 'uploadify.php' Arbitrary File Upload Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802638");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(53805);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-11 12:12:12 +0530 (Mon, 11 Jun 2012)");
   script_name("WordPress Foxypress Plugin 'uploadify.php' Arbitrary File Upload Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49382");
@@ -51,9 +51,7 @@ if(description)
   script_require_keys("wordpress/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to upload arbitrary PHP code
-  and run it in the context of the Web server process.
-
-  Impact Level: System/Application");
+  and run it in the context of the Web server process.");
   script_tag(name:"affected", value:"WordPress Foxypress Plugin version 0.4.2.1");
   script_tag(name:"insight", value:"The flaw is due to the wp-content/plugins/foxypress/uploadify/
   uploadify.php script allowing to upload files with arbitrary extensions to

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mult_vuln_mar12_win.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_vlc_media_player_mult_vuln_mar12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # VLC Media Player Multiple Vulnerabilities - Mar 12 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802722");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-1775", "CVE-2012-1776");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-21 11:52:20 +0530 (Wed, 21 Mar 2012)");
   script_name("VLC Media Player Multiple Vulnerabilities - Mar 12 (Windows)");
   script_xref(name:"URL", value:"http://www.videolan.org/security/sa1201.html");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
   script_mandatory_keys("VLCPlayer/Win/Installed");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to cause a denial of service or
-  possibly execute arbitrary code via crafted streams.
-  Impact Level: System/Application");
+  possibly execute arbitrary code via crafted streams.");
   script_tag(name:"affected", value:"VLC media player version prior to 2.0.1 on Windows");
   script_tag(name:"insight", value:"The flaws are due to multiple buffer overflow errors in the
   application, which allows remote attackers to execute arbitrary code via

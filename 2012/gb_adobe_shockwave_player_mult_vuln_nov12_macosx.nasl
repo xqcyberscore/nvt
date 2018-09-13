@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln_nov12_macosx.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_adobe_shockwave_player_mult_vuln_nov12_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities Nov-2012 (MAC OS X)
 #
@@ -24,44 +24,37 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow an attacker to cause denial of service or
-  execute arbitrary code by tricking a user into visiting a specially crafted
-  web page.
-  Impact Level: System/Application";
-tag_affected = "Adobe Shockwave Player Versions prior to 11.6.8.638 on MAC OS X";
-tag_insight = "The flaws are due to memory corruption errors and array indexing error
-  when processing malformed file.";
-tag_solution = "Upgrade to Adobe Shockwave Player 11.6.8.638 or later,
-  For updates refer to http://get.adobe.com/shockwave/otherversions/";
-tag_summary = "This host is installed with Adobe Shockwave Player and is prone
-  to multiple vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802486");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-4172", "CVE-2012-4173", "CVE-2012-4174", "CVE-2012-4175",
                 "CVE-2012-4176", "CVE-2012-5273");
   script_bugtraq_id(56194, 56195, 56190, 56193, 56188, 56187);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 15:48:07 +0530 (Fri, 02 Nov 2012)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities Nov-2012 (MAC OS X)");
-  script_xref(name : "URL" , value : "http://seclists.org/cert/2012/108");
-  script_xref(name : "URL" , value : "http://www.securitytracker.com/id/1027692");
-  script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-23.html");
+  script_xref(name:"URL", value:"http://seclists.org/cert/2012/108");
+  script_xref(name:"URL", value:"http://www.securitytracker.com/id/1027692");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb12-23.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("secpod_adobe_shockwave_detect_macosx.nasl");
   script_require_keys("Adobe/Shockwave/MacOSX/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow an attacker to cause denial of service or
+  execute arbitrary code by tricking a user into visiting a specially crafted
+  web page.");
+  script_tag(name:"affected", value:"Adobe Shockwave Player Versions prior to 11.6.8.638 on MAC OS X");
+  script_tag(name:"insight", value:"The flaws are due to memory corruption errors and array indexing error
+  when processing malformed file.");
+  script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player 11.6.8.638 or later,
+  For updates refer to http://get.adobe.com/shockwave/otherversions/");
+  script_tag(name:"summary", value:"This host is installed with Adobe Shockwave Player and is prone
+  to multiple vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -70,15 +63,11 @@ if(description)
 
 include("version_func.inc");
 
-## Variables Initialization
-shockVer = NULL;
-
 shockVer = get_kb_item("Adobe/Shockwave/MacOSX/Version");
 if(!shockVer){
   exit(0);
 }
 
-## Check for Adobe Shockwave Player versions prior to 11.6.8.638
 if(version_is_less(version:shockVer, test_version:"11.6.8.638")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

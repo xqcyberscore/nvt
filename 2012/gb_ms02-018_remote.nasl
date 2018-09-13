@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms02-018_remote.nasl 9528 2018-04-19 07:31:17Z cfischer $
+# $Id: gb_ms02-018_remote.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft IIS FTP Connection Status Request Denial of Service Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:ftp_service";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802441");
-  script_version("$Revision: 9528 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2002-0073");
   script_bugtraq_id(4482);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-19 09:31:17 +0200 (Thu, 19 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-04 18:21:03 +0530 (Wed, 04 Jul 2012)");
   script_name("Microsoft IIS FTP Connection Status Request Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -51,9 +51,7 @@ if(description)
   script_xref(name:"URL", value:"http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20020415-ms02-018");
 
   script_tag(name:"impact", value:"Successful exploitation will allows remote users to crash the application
-  leading to denial of service condition or execute arbitrary code.
-
-  Impact Level: System/Application");
+  leading to denial of service condition or execute arbitrary code.");
 
   script_tag(name:"affected", value:"Microsoft Internet Information Services version 4.0, 5.0 and 5.1.");
 

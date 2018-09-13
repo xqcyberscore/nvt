@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_advanced_pdf_editor_detect_win.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: gb_foxit_advanced_pdf_editor_detect_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Foxit Advanced PDF Editor Version Detection (Windows)
 #
@@ -30,10 +30,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803303");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 11356 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-02-01 18:35:32 +0530 (Fri, 01 Feb 2013)");
   script_tag(name:"qod_type", value:"registry");
   script_name("Foxit Advanced PDF Editor Version Detection (Windows)");
@@ -97,7 +97,7 @@ foreach key (key_list)
 
       if(FoxitVer)
       {
-        set_kb_item(name:"Foxit/AdvancedEditor/Win/Ver", value:FoxitVer);
+        set_kb_item(name:"foxit/advanced_editor/win/ver", value:FoxitVer);
 
         cpe = build_cpe(value:FoxitVer, exp:"^([0-9.]+)",
                       base:"cpe:/a:foxitsoftware:foxit_advanced_pdf_editor:");

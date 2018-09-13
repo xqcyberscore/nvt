@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_oct12_lin.nasl 11052 2018-08-20 10:24:34Z asteins $
+# $Id: gb_google_chrome_mult_vuln01_oct12_lin.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities-01 Oct12 (Linux)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802471");
-  script_version("$Revision: 11052 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-2900", "CVE-2012-5108", "CVE-2012-5109", "CVE-2012-5110",
                 "CVE-2012-5111");
   script_bugtraq_id(55830);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 12:24:34 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 12:21:19 +0530 (Mon, 15 Oct 2012)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Oct12 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50872/");
@@ -46,11 +46,12 @@ if(description)
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_require_keys("Google-Chrome/Linux/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow the attackers to execute arbitrary code
-  with the privileges of a local user and cause a denial of service.
-  Impact Level: System/Application");
+  with the privileges of a local user and cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 22.0.1229.92 on Linux");
   script_tag(name:"insight", value:"Multiple flaws are due to
+
   - A race condition error exists related to audio device handling.
+
   - An error exists related to Skia text rendering, ICU regex, compositor
     handling and plug-in crash monitoring for Pepper plug-ins.");
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 22.0.1229.92 or later,

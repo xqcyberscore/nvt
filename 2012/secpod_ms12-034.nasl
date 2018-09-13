@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-034.nasl 11148 2018-08-28 14:25:49Z asteins $
+# $Id: secpod_ms12-034.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # MS Security Update For Microsoft Office, .NET Framework, and Silverlight (2681578)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902832");
-  script_version("$Revision: 11148 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(50462, 53324, 53326, 53327, 53335, 53347, 53351, 53358,
                     53360, 53363);
   script_cve_id("CVE-2011-3402", "CVE-2012-0159", "CVE-2012-0162", "CVE-2012-0164",
@@ -35,7 +35,7 @@ if(description)
                 "CVE-2012-0181", "CVE-2012-1848");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-09 09:09:09 +0530 (Wed, 09 May 2012)");
   script_name("MS Security Update For Microsoft Office, .NET Framework, and Silverlight (2681578)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49120");
@@ -53,9 +53,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to gain escalated privileges
-  and execute arbitrary code.
-
-  Impact Level: System/Application");
+  and execute arbitrary code.");
   script_tag(name:"affected", value:"Microsoft .NET Framework 4
 
   Microsoft Silverlight 4 and 5

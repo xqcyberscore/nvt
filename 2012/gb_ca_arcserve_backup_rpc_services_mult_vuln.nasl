@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ca_arcserve_backup_rpc_services_mult_vuln.nasl 10969 2018-08-15 06:28:22Z cfischer $
+# $Id: gb_ca_arcserve_backup_rpc_services_mult_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # CA ARCserve Backup RPC Services Multiple Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802677");
-  script_version("$Revision: 10969 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-2971", "CVE-2012-2972");
   script_bugtraq_id(56116);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-15 08:28:22 +0200 (Wed, 15 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-20 11:04:50 +0530 (Tue, 20 Nov 2012)");
   script_name("CA ARCserve Backup RPC Services Multiple Vulnerabilities (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51012/");
@@ -49,9 +49,7 @@ if(description)
   script_mandatory_keys("Host/runs_windows");
 
   script_tag(name:"impact", value:"Successful exploitation will remote attackers to execute arbitrary code or
-  cause a denial of service condition.
-
-  Impact Level: System/Application");
+  cause a denial of service condition.");
 
   script_tag(name:"affected", value:"CA ARCserve Backup for Windows r12.5, r15, r16");
 

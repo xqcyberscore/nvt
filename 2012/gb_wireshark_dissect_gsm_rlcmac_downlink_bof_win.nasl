@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dissect_gsm_rlcmac_downlink_bof_win.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_wireshark_dissect_gsm_rlcmac_downlink_bof_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Wireshark GSM RLC MAC dissector Buffer Overflow Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802943");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-4297");
   script_bugtraq_id(55035);
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-21 11:56:24 +0530 (Tue, 21 Aug 2012)");
   script_name("Wireshark GSM RLC MAC dissector Buffer Overflow Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50276/");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("gb_wireshark_detect_win.nasl");
   script_require_keys("Wireshark/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
-  via a malformed packet.
-  Impact Level: System/Application");
+  via a malformed packet.");
   script_tag(name:"affected", value:"Wireshark 1.6.x before 1.6.10 and 1.8.x before 1.8.2 on Windows");
   script_tag(name:"insight", value:"An error within the GSM RLC MAC dissector can be exploited to cause a buffer
   overflow.");

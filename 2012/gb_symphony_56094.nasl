@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symphony_56094.nasl 6720 2017-07-13 14:25:27Z cfischer $
+# $Id: gb_symphony_56094.nasl 11355 2018-09-12 10:32:04Z asteins $
 #
 # Symphony Multiple Remote Security Vulnerabilities
 #
@@ -29,41 +29,44 @@ CPE = "cpe:/a:symphony-cms:symphony_cms";
 
 if(description)
 {
- script_oid("1.3.6.1.4.1.25623.1.0.103604");
- script_bugtraq_id(56094);
- script_tag(name:"cvss_base", value:"7.5");
- script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
- script_version ("$Revision: 6720 $");
- script_tag(name:"last_modification", value:"$Date: 2017-07-13 16:25:27 +0200 (Thu, 13 Jul 2017) $");
- script_tag(name:"creation_date", value:"2012-11-06 13:03:17 +0100 (Tue, 06 Nov 2012)");
- script_name("Symphony Multiple Remote Security Vulnerabilities");
- script_category(ACT_ATTACK);
- script_family("Web application abuses");
- script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
- script_dependencies("gb_symphony_cms_detect.nasl");
- script_require_ports("Services/www", 80);
- script_mandatory_keys("symphony/installed");
+  script_oid("1.3.6.1.4.1.25623.1.0.103604");
+  script_bugtraq_id(56094);
+  script_tag(name:"cvss_base", value:"7.5");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
+  script_version("$Revision: 11355 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"creation_date", value:"2012-11-06 13:03:17 +0100 (Tue, 06 Nov 2012)");
+  script_name("Symphony Multiple Remote Security Vulnerabilities");
+  script_category(ACT_ATTACK);
+  script_family("Web application abuses");
+  script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
+  script_dependencies("gb_symphony_cms_detect.nasl");
+  script_require_ports("Services/www", 80);
+  script_mandatory_keys("symphony/installed");
 
- script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56094");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/56094");
 
- script_tag(name:"solution", value:"Reportedly, the issue is fixed. However, Symantec has not confirmed
+  script_tag(name:"solution", value:"Reportedly, the issue is fixed. However, Symantec has not confirmed
  this. Please contact the vendor for more information.");
- script_tag(name:"summary", value:"Symphony is prone to following multiple remote security
+  script_tag(name:"summary", value:"Symphony is prone to following multiple remote security
  vulnerabilities:
 
  1. An authentication-bypass vulnerability
+
  2. Multiple cross-site-scripting vulnerabilities
+
  3. An HTML-injection vulnerability
+
  4. Multiple SQL-injection vulnerabilities");
- script_tag(name:"impact", value:"An attacker may leverage these issues to run malicious HTML and script
+  script_tag(name:"impact", value:"An attacker may leverage these issues to run malicious HTML and script
  codes in the context of the affected browser, steal cookie-based
  authentication credentials, to gain unauthorized access to the
  affected application, access or modify data, or exploit latent
  vulnerabilities in the underlying database.");
- script_tag(name:"affected", value:"Symphony 2.3 is vulnerable; other versions may also be affected.");
+  script_tag(name:"affected", value:"Symphony 2.3 is vulnerable, other versions may also be affected.");
 
- script_tag(name:"qod_type", value:"remote_app");
- script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"qod_type", value:"remote_app");
+  script_tag(name:"solution_type", value:"VendorFix");
 
  exit(0);
 }
@@ -71,8 +74,8 @@ if(description)
 include("http_func.inc");
 include("host_details.inc");
 include("http_keepalive.inc");
-include("global_settings.inc");
-   
+
+
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
@@ -101,6 +104,6 @@ if( "<script>alert('openvas-xss-test')</script>" >< result && "Send Email" >< re
   report = report_vuln_url( port:port, url:url );
   security_message( port:port, data:report );
   exit( 0 );
-}  
+}
 
 exit(99);

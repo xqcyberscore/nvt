@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_allmediaserver_req_handling_bof_vuln.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: gb_allmediaserver_req_handling_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # ALLMediaServer Request Handling Buffer Overflow Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802659");
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(54475);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-17 12:12:12 +0530 (Tue, 17 Jul 2012)");
   script_name("ALLMediaServer Request Handling Buffer Overflow Vulnerability");
 
@@ -48,9 +48,7 @@ if(description)
   script_mandatory_keys("ALLPLAYER-DLNA/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
-  code in the context of the application. Failed attacks will cause denial of service conditions.
-
-  Impact Level: System/Application");
+  code in the context of the application. Failed attacks will cause denial of service conditions.");
   script_tag(name:"affected", value:"ALLMediaServer version 0.8");
   script_tag(name:"insight", value:"The flaw is due to a boundary error when processing certain
   network requests and can be exploited to cause a stack based buffer overflow

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp_property_file_upload_vuln.nasl 11144 2018-08-28 11:37:19Z asteins $
+# $Id: gb_wordpress_wp_property_file_upload_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # WordPress WP-Property Plugin 'uploadify.php' Arbitrary File Upload Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802640");
-  script_version("$Revision: 11144 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(53787);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 13:37:19 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-12 12:12:12 +0530 (Tue, 12 Jun 2012)");
   script_name("WordPress WP-Property Plugin 'uploadify.php' Arbitrary File Upload Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49394");
@@ -49,9 +49,7 @@ if(description)
   script_mandatory_keys("wordpress/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to upload arbitrary
-PHP code and run it in the context of the Web server process.
-
-Impact Level: System/Application");
+PHP code and run it in the context of the Web server process.");
   script_tag(name:"affected", value:"Wordpress WP-Property Plugin version 1.35.0");
   script_tag(name:"insight", value:"The flaw is due to the wp-content/plugins/wp-property/third-party/
 uploadify/uploadify.php script allowing to upload files with arbitrary

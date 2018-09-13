@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_mult_vuln_win_mar12.nasl 11135 2018-08-27 13:39:29Z asteins $
+# $Id: gb_adobe_flash_player_mult_vuln_win_mar12.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Adobe Flash Player Multiple Vulnerabilities (Windows) - Mar12
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802811");
-  script_version("$Revision: 11135 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0769", "CVE-2012-0768");
   script_bugtraq_id(52299, 52297);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 15:39:29 +0200 (Mon, 27 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-12 18:30:17 +0530 (Mon, 12 Mar 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities (Windows) - Mar12");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48281/");
@@ -49,8 +49,7 @@ if(description)
   script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain sensitive
   information or execute arbitrary code in the context of the affected
-  application or cause a denial of service condition.
-  Impact Level: System/Application");
+  application or cause a denial of service condition.");
   script_tag(name:"affected", value:"Adobe Flash Player version before 10.3.183.16 on Windows
   Adobe Flash Player version 11.x before 11.1.102.63 on Windows");
   script_tag(name:"insight", value:"The flaws are due to an Integer errors and Unspecified error in Matrix3D

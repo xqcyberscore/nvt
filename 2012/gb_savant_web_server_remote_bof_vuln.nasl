@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_savant_web_server_remote_bof_vuln.nasl 11148 2018-08-28 14:25:49Z asteins $
+# $Id: gb_savant_web_server_remote_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Savant Web Server Remote Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802296");
-  script_version("$Revision: 11148 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(12429);
   script_cve_id("CVE-2005-0338");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 14:14:14 +0530 (Mon, 23 Jan 2012)");
   script_name("Savant Web Server Remote Buffer Overflow Vulnerability");
 
@@ -44,9 +44,7 @@ if(description)
   script_mandatory_keys("Savant/banner");
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to execute
-  arbitrary code within the context of the application or cause a denial of service condition.
-
-  Impact Level: System/Application");
+  arbitrary code within the context of the application or cause a denial of service condition.");
   script_tag(name:"affected", value:"Savant Web Server version 3.1");
   script_tag(name:"insight", value:"The flaw is due to a boundary error when processing malformed
   HTTP request. This can be exploited to cause a stack-based overflow via a long HTTP request.");

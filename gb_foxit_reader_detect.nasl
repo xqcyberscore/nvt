@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_detect.nasl 10896 2018-08-10 13:24:05Z cfischer $
+# $Id: gb_foxit_reader_detect.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Foxit Reader Version Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800536");
-  script_version("$Revision: 10896 $");
+  script_version("$Revision: 11356 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:24:05 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-03-17 05:28:51 +0100 (Tue, 17 Mar 2009)");
   script_name("Foxit Reader Version Detection");
 
@@ -102,8 +102,8 @@ foreach key(key_list){
 
   if(foxitVer){
 
-    set_kb_item(name:"Foxit/Phantom_or_Reader/Installed", value:TRUE);
-    set_kb_item(name:"Foxit/Reader/Ver", value:foxitVer);
+    set_kb_item(name:"foxit/phantom_or_reader/detected", value:TRUE);
+    set_kb_item(name:"foxit/reader/ver", value:foxitVer);
 
     if(!foxitPath){
       foxitPath = 'Could not find the install path from registry';
@@ -114,7 +114,7 @@ foreach key(key_list){
     # the file path without the ending backslash from WMI.
     tmp_location = tolower(foxitPath);
     tmp_location = ereg_replace(pattern:"\\$", string:tmp_location, replace:'');
-    set_kb_item(name:"Foxit/Reader/Win/InstallLocations", value:tmp_location);
+    set_kb_item(name:"foxit/reader/win/install_locations", value:tmp_location);
 
     cpe = build_cpe(value:foxitVer, exp:"^([0-9.]+)", base:"cpe:/a:foxitsoftware:reader:");
     if(isnull(cpe))

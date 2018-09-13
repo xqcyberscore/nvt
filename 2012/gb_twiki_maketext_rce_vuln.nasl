@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_maketext_rce_vuln.nasl 11055 2018-08-20 12:23:58Z asteins $
+# $Id: gb_twiki_maketext_rce_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # TWiki 'MAKETEXT' variable Remote Command Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:twiki:twiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802048");
-  script_version("$Revision: 11055 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(56950);
   script_cve_id("CVE-2012-6329", "CVE-2012-6330");
   script_tag(name:"cvss_base", value:"7.5");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 14:23:58 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-27 12:46:41 +0530 (Thu, 27 Dec 2012)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_name("TWiki 'MAKETEXT' variable Remote Command Execution Vulnerability");
@@ -45,9 +45,7 @@ if(description)
   script_mandatory_keys("twiki/installed");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute shell commands by
-  Perl backtick (``) operators.
-
-  Impact Level: System/Application");
+  Perl backtick (``) operators.");
   script_tag(name:"affected", value:"TWiki version 5.1.0 to 5.1.2, 5.0.x, 4.3.x, 4.2.x, 4.1.x, 4.0.x");
   script_tag(name:"insight", value:"flaw is due to improper validation of '%MAKETEXT{}%' Twiki variable
   (UserInterfaceInternationalisation is enabled) which is used to localize

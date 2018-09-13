@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_igss_dll_code_execution_vuln.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_igss_dll_code_execution_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Interactive Graphical SCADA System DLL Loading Arbitrary Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802297");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-4053");
   script_bugtraq_id(51438);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 15:15:15 +0530 (Mon, 23 Jan 2012)");
   script_name("Interactive Graphical SCADA System DLL Loading Arbitrary Code Execution Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51438");
@@ -46,8 +46,7 @@ if(description)
   script_require_ports(139, 445);
   script_require_keys("IGSS/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  code and conduct DLL hijacking attacks.
-  Impact Level: System/Application");
+  code and conduct DLL hijacking attacks.");
   script_tag(name:"affected", value:"7T Interactive Graphical SCADA System (IGSS) versions prior to 9.0.0.11291");
   script_tag(name:"insight", value:"This flaw is due to the application insecurely loading certain
   libraries from the current working directory, which could allow attackers

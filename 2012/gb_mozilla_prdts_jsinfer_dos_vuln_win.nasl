@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_jsinfer_dos_vuln_win.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_mozilla_prdts_jsinfer_dos_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Mozilla Products 'jsinfer.cpp' Denial of Service Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802869");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-1939");
   script_bugtraq_id(53797);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-19 15:21:15 +0530 (Tue, 19 Jun 2012)");
   script_name("Mozilla Products 'jsinfer.cpp' Denial of Service Vulnerability (Windows)");
 
@@ -47,8 +47,7 @@ if(description)
   script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code in
-  the context of the browser or cause a denial of service.
-  Impact Level: System/Application");
+  the context of the browser or cause a denial of service.");
   script_tag(name:"affected", value:"Thunderbird ESR version 10.x before 10.0.5,
   Mozilla Firefox ESR version 10.x before 10.0.5 on Windows");
   script_tag(name:"insight", value:"The 'jsinfer.cpp' function in ESR versions fails to determine data types,

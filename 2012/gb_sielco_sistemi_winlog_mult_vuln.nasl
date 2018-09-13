@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sielco_sistemi_winlog_mult_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_sielco_sistemi_winlog_mult_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Sielco Sistemi Winlog Multiple Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802879");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-4353", "CVE-2012-4354", "CVE-2012-4355", "CVE-2012-4356",
                 "CVE-2012-4357", "CVE-2012-4358", "CVE-2012-4359");
   script_bugtraq_id(54212);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-28 12:12:09 +0530 (Thu, 28 Jun 2012)");
   script_name("Sielco Sistemi Winlog Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -51,12 +51,11 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain sensitive
   information cause buffer overflow condition or execute arbitrary code under
-  the context of the user.
-
-  Impact Level: System/Application");
+  the context of the user.");
   script_tag(name:"affected", value:"Sielco Sistemi Winlog version 2.07.16 and prior");
   script_tag(name:"insight", value:"- Multiple errors in RunTime.exe and TCPIPS_Story.dll when
   processing a specially crafted packet sent to TCP port 46824.
+
   - An input validation error when processing certain user supplied inputs
   allows attackers to write arbitrary files via directory traversal attacks.");
   script_tag(name:"solution", value:"Upgrade to version 2.07.17 or higher,

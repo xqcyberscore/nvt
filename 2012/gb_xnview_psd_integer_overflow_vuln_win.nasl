@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_psd_integer_overflow_vuln_win.nasl 11144 2018-08-28 11:37:19Z asteins $
+# $Id: gb_xnview_psd_integer_overflow_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # XnView PSD Record Type Parsing Integer Overflow Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802443");
-  script_version("$Revision: 11144 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0684", "CVE-2012-0685");
   script_bugtraq_id(51546);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 13:37:19 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-24 14:02:14 +0530 (Tue, 24 Jul 2012)");
   script_name("XnView PSD Record Type Parsing Integer Overflow Vulnerabilities (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47600/");
@@ -44,8 +44,7 @@ if(description)
   script_dependencies("secpod_xnview_detect_win.nasl");
   script_require_keys("XnView/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code on the
-  system or cause a denial of service condition.
-  Impact Level: System/Application");
+  system or cause a denial of service condition.");
   script_tag(name:"affected", value:"XnView versions 1.98.2 and prior on windows");
   script_tag(name:"solution", value:"Update to XnView version 1.98.5 or later,
   For updates refer to http://www.xnview.com/");

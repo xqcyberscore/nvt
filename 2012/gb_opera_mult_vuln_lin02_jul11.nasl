@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_lin02_jul11.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_opera_mult_vuln_lin02_jul11.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Opera Browser Multiple Vulnerabilities-02 July-11 (Linux)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802741");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-2635", "CVE-2011-2634", "CVE-2011-2636", "CVE-2011-2637",
                 "CVE-2011-2638", "CVE-2011-2639", "CVE-2011-2640");
   script_bugtraq_id(48569);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-10 12:16:51 +0530 (Tue, 10 Apr 2012)");
   script_name("Opera Browser Multiple Vulnerabilities-02 July-11 (Linux)");
   script_xref(name:"URL", value:"http://www.opera.com/docs/changelogs/unix/1110/");
@@ -46,8 +46,7 @@ if(description)
   script_dependencies("secpod_opera_detection_linux_900037.nasl");
   script_require_keys("Opera/Linux/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
-  and cause a denial of service.
-  Impact Level: System/Application");
+  and cause a denial of service.");
   script_tag(name:"affected", value:"Opera Web Browser version prior 11.10 on Linux");
   script_tag(name:"insight", value:"The flaws are due to
 

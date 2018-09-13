@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_code_exec_n_dos_vuln_macosx.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_adobe_shockwave_player_mult_code_exec_n_dos_vuln_macosx.nasl 11355 2018-09-12 10:32:04Z asteins $
 #
 # Adobe Shockwave Player Multiple Code Execution and DoS Vulnerabilities (Mac OS X)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802780");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11355 $");
   script_bugtraq_id(53420);
   script_cve_id("CVE-2012-2029", "CVE-2012-2030", "CVE-2012-2031", "CVE-2012-2032",
                 "CVE-2012-2033");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-15 12:12:47 +0530 (Tue, 15 May 2012)");
   script_name("Adobe Shockwave Player Multiple Code Execution and DoS Vulnerabilities (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49086/");
@@ -45,11 +45,12 @@ if(description)
   script_dependencies("secpod_adobe_prdts_detect_macosx.nasl");
   script_require_keys("Adobe/Shockwave/Player/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code or
-  to cause a denial of service.
-  Impact Level: Application/System");
+  to cause a denial of service.");
   script_tag(name:"affected", value:"Adobe Shockwave Player Versions prior to 11.6.5.635 on Mac OS X");
   script_tag(name:"insight", value:"Multiple flaws are due to
+
   - An error within the IMLLib, DPLib and IMLLib modules when parsing a '.dir'.
+
   - An unspecified errors.");
   script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player version 11.6.5.635 or later,
   For updates refer to http://get.adobe.com/shockwave/otherversions/");
@@ -70,4 +71,7 @@ if(!shockVer){
 
 if(version_is_less(version:shockVer, test_version:"11.6.3.635")){
   security_message( port: 0, data: "The target host was found to be vulnerable" );
+  exit(0);
 }
+
+exit(99);

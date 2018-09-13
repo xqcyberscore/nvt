@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_dos_vuln01_mar11_macosx.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_wireshark_dos_vuln01_mar11_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Wireshark Denial of Service Vulnerability-01 March 11 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802799");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-1142");
   script_bugtraq_id(46626);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-27 15:59:15 +0530 (Wed, 27 Jun 2012)");
   script_name("Wireshark Denial of Service Vulnerability-01 March 11 (Mac OS X)");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/65912");
@@ -44,9 +44,7 @@ if(description)
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_mandatory_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a
-denial of service via vectors involving self-referential ASN.1 CHOICE values.
-
-Impact Level: System/Application");
+denial of service via vectors involving self-referential ASN.1 CHOICE values.");
   script_tag(name:"affected", value:"Wireshark version 1.2.0 through 1.2.15
 Wireshark version 1.4.0 through 1.4.4");
   script_tag(name:"insight", value:"The flaw is due to stack consumption vulnerability in the

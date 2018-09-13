@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_sec_mangr_plus_mult_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_manageengine_sec_mangr_plus_mult_vuln.nasl 11355 2018-09-12 10:32:04Z asteins $
 #
 # Zoho ManageEngine Security Manager Plus Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802483");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11355 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-22 13:33:50 +0530 (Mon, 22 Oct 2012)");
   script_name("Zoho ManageEngine Security Manager Plus Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/22092/");
@@ -57,12 +57,12 @@ Impact Level: Application");
 and prior");
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
-- An input passed to the 'f' parameter via 'store' script is not properly
+  - An input passed to the 'f' parameter via 'store' script is not properly
   sanitised before being used. This allows to download the complete database
   and thus gather logins which lead to uploading web site files which could
   be used for malicious actions
 
-- The SQL injection is possible on the 'Advanced Search', the input is not
+  - The SQL injection is possible on the 'Advanced Search', the input is not
   validated correctly.");
   script_tag(name:"solution", value:"Apply the patch from the below link or update to latest version,
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_html5_av_mgr_file_upload_vuln.nasl 10028 2018-05-30 13:13:04Z cfischer $
+# $Id: gb_wordpress_html5_av_mgr_file_upload_vuln.nasl 11355 2018-09-12 10:32:04Z asteins $
 #
 # WordPress HTML5 AV Manager Plugin 'custom.php' Arbitrary File Upload Vulnerability
 #
@@ -29,17 +29,17 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802639");
-  script_version("$Revision: 10028 $");
+  script_version("$Revision: 11355 $");
   script_bugtraq_id(53804);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 15:13:04 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-11 15:15:15 +0530 (Mon, 11 Jun 2012)");
   script_name("WordPress HTML5 AV Manager Plugin 'custom.php' Arbitrary File Upload Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/49390");
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/53804");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18990");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/113277/WordPress-HTML5-AV-Manager-0.2.7-Shell-Upload.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/49390");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53804");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18990");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/113277/WordPress-HTML5-AV-Manager-0.2.7-Shell-Upload.html");
 
   script_category(ACT_ATTACK);
   script_tag(name:"qod_type", value:"remote_vul");
@@ -49,21 +49,19 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("wordpress/installed");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to upload arbitrary PHP
-code and run it in the context of the Web server process.
-
-Impact Level: System/Application");
-  script_tag(name : "affected" , value : "WordPress HTML5 AV Manager Plugin version 0.2.7");
-  script_tag(name : "insight" , value : "The flaw is due to the wp-content/plugins/html5avmanager/lib/
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to upload arbitrary PHP
+code and run it in the context of the Web server process.");
+  script_tag(name:"affected", value:"WordPress HTML5 AV Manager Plugin version 0.2.7");
+  script_tag(name:"insight", value:"The flaw is due to the wp-content/plugins/html5avmanager/lib/
 uploadify/custom.php script allowing to upload files to a folder inside the
 webroot. This can be exploited to execute arbitrary PHP code by uploading a
 malicious PHP script.");
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year
+  script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective
 features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is running WordPress HTML5 AV Manager Plugin and is prone
-to file upload vulnerability.");
+  script_tag(name:"summary", value:"This host is running WordPress HTML5 AV Manager Plugin and is prone
+to a file upload vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);

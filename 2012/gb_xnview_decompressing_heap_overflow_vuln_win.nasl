@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_decompressing_heap_overflow_vuln_win.nasl 11322 2018-09-11 10:15:07Z asteins $
+# $Id: gb_xnview_decompressing_heap_overflow_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # XnView Multiple Image Decompression Heap Overflow Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802444");
-  script_version("$Revision: 11322 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0276", "CVE-2012-0277", "CVE-2012-0282");
   script_bugtraq_id(54125);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-24 15:21:56 +0530 (Tue, 24 Jul 2012)");
   script_name("XnView Multiple Image Decompression Heap Overflow Vulnerabilities (Windows)");
 
@@ -43,8 +43,7 @@ if(description)
   script_dependencies("secpod_xnview_detect_win.nasl");
   script_require_keys("XnView/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code on the
-  system or cause a denial of service condition.
-  Impact Level: System/Application");
+  system or cause a denial of service condition.");
   script_tag(name:"affected", value:"XnView versions prior to 1.99 on windows");
   script_tag(name:"solution", value:"Update to XnView version 1.99 or later,
   For updates refer to http://www.xnview.com/");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tvmobili_media_server_mult_bof_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_tvmobili_media_server_mult_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # TVMOBiLi Media Server HTTP Request Multiple BOF Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803125");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-5451");
   script_bugtraq_id(56853);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-10 10:36:49 +0530 (Mon, 10 Dec 2012)");
   script_name("TVMOBiLi Media Server HTTP Request Multiple BOF Vulnerabilities");
 
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute the
   arbitrary code or cause a DoS (Denial of Service) and potentially
-  compromise a vulnerable system.
-
-  Impact Level: System/Application");
+  compromise a vulnerable system.");
   script_tag(name:"affected", value:"TVMOBiLi Media Server version 2.1.0.3557 and prior");
   script_tag(name:"insight", value:"Improper handling of URI length within the 'HttpUtils.dll' dynamic-link
   library. A remote attacker can send a specially crafted HTTP GET request

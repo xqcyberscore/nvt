@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_prdts_code_exec_n_dos_vuln_win.nasl 11058 2018-08-20 14:18:06Z asteins $
+# $Id: secpod_adobe_prdts_code_exec_n_dos_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Adobe Flash Player Code Execution and DoS Vulnerabilities (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903014");
-  script_version("$Revision: 11058 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0772", "CVE-2012-0773", "CVE-2012-0724", "CVE-2012-0725");
   script_bugtraq_id(52748, 52916, 52914);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 16:18:06 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-30 11:21:49 +0530 (Fri, 30 Mar 2012)");
   script_name("Adobe Flash Player Code Execution and DoS Vulnerabilities (Windows)");
 
@@ -46,15 +46,13 @@ code execution and denial of service vulnerabilities.");
 For updates refer to http://get.adobe.com/flashplayer");
   script_tag(name:"insight", value:"The flaws are due to
 
- - An error within an ActiveX Control when checking the URL security domain.
+  - An error within an ActiveX Control when checking the URL security domain.
 
- - An unspecified error within the NetStream class.");
+  - An unspecified error within the NetStream class.");
   script_tag(name:"affected", value:"Adobe Flash Player version prior to 10.3.183.18 and 11.x to 11.1.102.63
 on Windows");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-code or cause a denial of service (memory corruption) via unknown vectors.
-
-  Impact Level: System/Application");
+code or cause a denial of service (memory corruption) via unknown vectors.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
 

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_messaging_gateway_mult_vuln.nasl 11148 2018-08-28 14:25:49Z asteins $
+# $Id: gb_symantec_messaging_gateway_mult_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Symantec Messaging Gateway Multiple Vulnerabilities
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802453");
-  script_version("$Revision: 11148 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0307", "CVE-2012-0308", "CVE-2012-3579", "CVE-2012-3580",
                 "CVE-2012-3581");
   script_bugtraq_id(55138, 55137, 55143, 55141, 55142);
   script_tag(name:"cvss_base", value:"7.9");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-04 17:27:04 +0530 (Tue, 04 Sep 2012)");
   script_name("Symantec Messaging Gateway Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -50,19 +50,22 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
   restrictions, disclose certain sensitive information and conduct cross-site
-  scripting and request forgery attacks.
-
-  Impact Level: System/Application");
+  scripting and request forgery attacks.");
   script_tag(name:"affected", value:"Symantec Messaging Gateway version 9.5.x");
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - Certain input passed via web or email content is not properly sanitised
     before being returned to the user.
+
   - The application allows users to perform certain actions via HTTP requests
     without performing proper validity checks to verify the requests.
+
   - An error within the management interface can be exploited to perform
     otherwise restricted actions(modify the underlying web application).
+
   - An SSH default passworded account that could potentially be leveraged by
     an unprivileged user to attempt to gain additional privilege access.
+
   - Disclose of excessive component version information during successful
     reconnaissance.");
   script_tag(name:"solution", value:"Upgrade to Symantec Messaging Gateway version 10.0 or later,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: deb_dla_1471.nasl 11342 2018-09-12 06:02:53Z cfischer $
+# $Id: deb_dla_1471.nasl 11360 2018-09-12 13:10:34Z cfischer $
 #
 # Auto-generated from advisory DLA 1471-1 using nvtgen 1.0
 # Script version: 1.1
@@ -31,10 +31,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.891471");
-  script_version("$Revision: 11342 $");
+  script_version("$Revision: 11360 $");
   script_cve_id("CVE-2018-14767");
   script_name("Debian LTS Advisory ([SECURITY] [DLA 1471-1] kamailio security update)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 08:02:53 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 15:10:34 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-26 00:00:00 +0200 (Sun, 26 Aug 2018)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -66,106 +66,106 @@ include("pkg-lib-deb.inc");
 
 res = "";
 report = "";
-if ((res = isdpkgvuln(pkg:"kamailio", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-autheph-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-autheph-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-berkeley-bin", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-berkeley-bin", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-berkeley-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-berkeley-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-carrierroute-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-carrierroute-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-cpl-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-cpl-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-dbg", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-dbg", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-dnssec-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-dnssec-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-extra-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-extra-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-geoip-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-geoip-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-ims-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-ims-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-java-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-java-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-json-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-json-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-ldap-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-ldap-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-lua-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-lua-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-memcached-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-memcached-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-mono-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-mono-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-mysql-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-mysql-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-outbound-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-outbound-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-perl-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-perl-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-postgres-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-postgres-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-presence-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-presence-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-python-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-python-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-radius-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-radius-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-redis-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-redis-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-sctp-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-sctp-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-snmpstats-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-snmpstats-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-sqlite-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-sqlite-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-tls-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-tls-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-unixodbc-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-unixodbc-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-utils-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-utils-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-websocket-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-websocket-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-xml-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-xml-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
-if ((res = isdpkgvuln(pkg:"kamailio-xmpp-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB9\.[0-9]+", remove_arch:TRUE )) != NULL) {
+if ((res = isdpkgvuln(pkg:"kamailio-xmpp-modules", ver:"4.2.0-2+deb8u4", rls_regex:"DEB8\.[0-9]+", remove_arch:TRUE )) != NULL) {
     report += res;
 }
 

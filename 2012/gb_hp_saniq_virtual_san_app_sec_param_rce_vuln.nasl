@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_saniq_virtual_san_app_sec_param_rce_vuln.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: gb_hp_saniq_virtual_san_app_sec_param_rce_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # HP SAN/iQ Virtual SAN Appliance Second Parameter Command Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802454");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-4361");
   script_bugtraq_id(55132);
   script_tag(name:"cvss_base", value:"7.7");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-05 14:44:25 +0530 (Wed, 05 Sep 2012)");
   script_name("HP SAN/iQ Virtual SAN Appliance Second Parameter Command Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -46,9 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18901/");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary commands
-  the context of an application.
-
-  Impact Level: System/Application");
+  the context of an application.");
   script_tag(name:"affected", value:"HP SAN/iQ version prior to 9.5 on HP Virtual SAN Appliance");
   script_tag(name:"insight", value:"The flaw is due to an error in 'lhn/public/network/ping' which does not
   properly handle shell meta characters in the second parameter.");

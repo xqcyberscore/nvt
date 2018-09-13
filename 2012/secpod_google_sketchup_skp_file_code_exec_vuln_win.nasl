@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_sketchup_skp_file_code_exec_vuln_win.nasl 11266 2018-09-06 10:59:26Z cfischer $
+# $Id: secpod_google_sketchup_skp_file_code_exec_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Google SketchUp '.SKP' File Remote Code Execution Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902679");
-  script_version("$Revision: 11266 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-2478");
   script_bugtraq_id(48363);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-21 14:56:42 +0530 (Mon, 21 May 2012)");
   script_name("Google SketchUp '.SKP' File Remote Code Execution Vulnerability (Windows)");
 
@@ -44,8 +44,7 @@ if(description)
   script_require_keys("Google/SketchUp/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to cause SketchUp to exit
   unexpectedly and execute arbitrary code by tricking a user into opening a
-  specially crafted '.SKP' file.
-  Impact Level: System/Application");
+  specially crafted '.SKP' file.");
   script_tag(name:"affected", value:"Google SketchUp version 7.1 Maintenance Release 2 and prior on Windows");
   script_tag(name:"insight", value:"The flaw is due to an error when handling certain types of invalid
   edge geometry in a specially crafted SketchUp (.SKP) file.");

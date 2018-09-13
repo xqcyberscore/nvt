@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_eudora_worldmail_imap_server_bof_vuln.nasl 10288 2018-06-21 13:26:05Z cfischer $
+# $Id: gb_eudora_worldmail_imap_server_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Eudora WorldMail IMAP Server Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802294");
-  script_version("$Revision: 10288 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(15980);
   script_cve_id("CVE-2005-4267");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 15:26:05 +0200 (Thu, 21 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-18 14:14:14 +0530 (Wed, 18 Jan 2012)");
   script_name("Eudora WorldMail IMAP Server Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -47,9 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.idefense.com/intelligence/vulnerabilities/display.php?id=359");
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to execute
-  arbitrary code within the context of the application or cause a denial of service condition.
-
-  Impact Level: System/Application");
+  arbitrary code within the context of the application or cause a denial of service condition.");
 
   script_tag(name:"affected", value:"Eudora WorldMail Server 3.0");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln_aug12_win.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_adobe_shockwave_player_mult_vuln_aug12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities - August 2012 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802938");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-2043", "CVE-2012-2044", "CVE-2012-2045", "CVE-2012-2046",
                 "CVE-2012-2047");
   script_bugtraq_id(55025, 55028, 55029, 55030, 55031);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-20 12:36:45 +0530 (Mon, 20 Aug 2012)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities - August 2012 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50283/");
@@ -46,8 +46,7 @@ if(description)
   script_require_keys("Adobe/ShockwavePlayer/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of service or
   execute arbitrary code by tricking a user into visiting a specially crafted
-  web page.
-  Impact Level: System/Application");
+  web page.");
   script_tag(name:"affected", value:"Adobe Shockwave Player Versions 11.6.5.635 and prior on Windows");
   script_tag(name:"insight", value:"The flaws are due to multiple unspecified errors in the application.");
   script_tag(name:"solution", value:"Upgrade to Adobe Shockwave Player version 11.6.6.636 or later,

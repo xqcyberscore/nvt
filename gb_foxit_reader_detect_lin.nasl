@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_detect_lin.nasl 10901 2018-08-10 14:09:57Z cfischer $
+# $Id: gb_foxit_reader_detect_lin.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Foxit Reader Version Detection (Linux)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809332");
-  script_version("$Revision: 10901 $");
+  script_version("$Revision: 11356 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:09:57 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-08 17:20:13 +0530 (Tue, 08 Nov 2016)");
   script_name("Foxit Reader Version Detection (Linux)");
   script_tag(name:"summary", value:"Detects the installed version of
@@ -94,7 +94,7 @@ foreach binaryName(Foxit_Name)
   FoxitVer = eregmatch(pattern:"ReaderLite4Linux([0-9.]+)", string:FoxitVer);
   if(FoxitVer[1] != NULL)
   {
-    set_kb_item(name:"Foxit/Reader/Linux/Ver", value:FoxitVer[1]);
+    set_kb_item(name:"foxit/reader/linux/ver", value:FoxitVer[1]);
 
     cpe = build_cpe(value:FoxitVer[1], exp:"^([0-9.]+)", base:"cpe:/a:foxitsoftware:reader:");
     if(!cpe)

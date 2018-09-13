@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_dos_vuln_may12_macosx.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_google_chrome_mult_dos_vuln_may12_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Google Chrome Multiple Denial of Service Vulnerabilities - May 12 (Mac OS X)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802850");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-3078", "CVE-2011-3079", "CVE-2011-3080", "CVE-2011-3081",
                 "CVE-2012-1521");
   script_bugtraq_id(53309);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-07 16:02:45 +0530 (Mon, 07 May 2012)");
   script_name("Google Chrome Multiple Denial of Service Vulnerabilities - May 12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48992/");
@@ -46,8 +46,7 @@ if(description)
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
   script_require_keys("GoogleChrome/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code in
-  the context of the browser or cause a denial of service.
-  Impact Level: System/Application");
+  the context of the browser or cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 18.0.1025.168 on Mac OS X");
   script_tag(name:"insight", value:"The flaws are due to
 

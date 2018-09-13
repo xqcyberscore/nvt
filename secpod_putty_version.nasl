@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_putty_version.nasl 11279 2018-09-07 09:08:31Z cfischer $
+# $Id: secpod_putty_version.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # PuTTY Version Detection
 #
@@ -33,10 +33,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.900618");
-  script_version("$Revision: 11279 $");
+  script_version("$Revision: 11356 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:08:31 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-06-02 12:54:52 +0200 (Tue, 02 Jun 2009)");
   script_tag(name:"qod_type", value:"registry");
   script_name("PuTTY Version Detection");
@@ -98,7 +98,7 @@ foreach key (key_list)
       }
       if(appVer)
       {
-        set_kb_item(name:"PuTTY/Version", value:appVer);
+        set_kb_item(name:"putty/version", value:appVer);
 
         cpe = build_cpe(value:appVer, exp:"^([0-9.]+)", base:"cpe:/a:putty:putty:");
         if(isnull(cpe))
@@ -106,7 +106,7 @@ foreach key (key_list)
 
 	tmp_location = tolower(insloc);
 	tmp_location = ereg_replace(pattern:"\\$", string:tmp_location, replace:'');
-        set_kb_item(name:"PuTTY/Win/InstallLocations", value:tmp_location);
+        set_kb_item(name:"putty/win/install_locations", value:tmp_location);
 
 	register_product(cpe:cpe, location:insloc);
 

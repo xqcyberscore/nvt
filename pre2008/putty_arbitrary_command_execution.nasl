@@ -1,5 +1,5 @@
 # OpenVAS Vulnerability Test
-# $Id: putty_arbitrary_command_execution.nasl 10142 2018-06-08 13:18:36Z tpassfeld $
+# $Id: putty_arbitrary_command_execution.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 # Description: PuTTY window title escape character arbitrary command execution
 #
 # Authors:
@@ -26,8 +26,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.14262");
-  script_version("$Revision: 10142 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:18:36 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_cve_id("CVE-2003-0069");
   script_tag(name:"cvss_base", value:"7.5");
@@ -38,11 +38,11 @@ if(description)
   script_tag(name:"qod_type", value:"registry");
   script_copyright("This script is Copyright (C) 2005 David Maciejak");
   script_family("Windows");
-  script_dependencies("gb_putty_portable_detect.nasl","secpod_reg_enum.nasl");
-  script_require_keys("PuTTY/Version");
-  script_tag(name : "solution" , value : "Upgrade to version 0.54 or newer");
-  script_tag(name : "solution_type", value : "VendorFix");
-  script_tag(name : "summary" , value : "PuTTY is a free SSH client.
+  script_dependencies("gb_putty_portable_detect.nasl", "smb_reg_service_pack.nasl");
+  script_require_keys("putty/version");
+  script_tag(name:"solution", value:"Upgrade to version 0.54 or newer");
+  script_tag(name:"solution_type", value:"VendorFix");
+  script_tag(name:"summary", value:"PuTTY is a free SSH client.
   This version contains a flaw that may allow a malicious user to insert
   arbitrary commands and execute them.
   The issue is triggered when an attacker sends commands,
@@ -56,7 +56,7 @@ include("smb_nt.inc");
 include("version_func.inc");
 include("secpod_smb_func.inc");
 
-puttyVer=get_kb_item("PuTTY/Version");
+puttyVer=get_kb_item("putty/version");
 if(!puttyVer){
   exit(0);
 }

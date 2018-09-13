@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linux_rootkit_nginx_iframe_injection.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_linux_rootkit_nginx_iframe_injection.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # 64-bit Debian Linux Rootkit with nginx Doing iFrame Injection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802045");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11357 $");
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-03 13:43:19 +0530 (Mon, 03 Dec 2012)");
   script_name("64-bit Debian Linux Rootkit with nginx Doing iFrame Injection");
 
@@ -48,9 +48,7 @@ if(description)
   script_mandatory_keys("nginx/banner");
 
   script_tag(name:"impact", value:"Successful iframe injection leads redirecting to some malicious
-  sites.
-
-  Impact Level: System/Application");
+  sites.");
   script_tag(name:"affected", value:"64-bit Debian Squeeze (kernel version 2.6.32-5-amd64) with
   nginx.");
   script_tag(name:"insight", value:"64-bit Debian Squeeze Linux Rootkit in combination with nginx

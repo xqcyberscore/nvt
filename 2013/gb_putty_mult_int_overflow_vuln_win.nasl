@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_mult_int_overflow_vuln_win.nasl 11336 2018-09-11 14:15:06Z mmartin $
+# $Id: gb_putty_mult_int_overflow_vuln_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # PuTTY Multiple Integer Overflow Vulnerabilities (Windows)
 #
@@ -30,12 +30,12 @@ CPE = "cpe:/a:putty:putty";
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803871");
-  script_version("$Revision: 11336 $");
+  script_version("$Revision: 11356 $");
   script_cve_id("CVE-2013-4206", "CVE-2013-4207", "CVE-2013-4208", "CVE-2013-4852");
   script_bugtraq_id(61645, 61649, 61644, 61599);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 16:15:06 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2013-08-21 11:16:36 +0530 (Wed, 21 Aug 2013)");
   script_name("PuTTY Multiple Integer Overflow Vulnerabilities (Windows)");
 
@@ -70,7 +70,7 @@ For updates refer to http://www.chiark.greenend.org.uk/~sgtatham/putty/download.
   script_copyright("Copyright (C) 2013 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_putty_portable_detect.nasl");
-  script_mandatory_keys("PuTTY/Version");
+  script_mandatory_keys("putty/version");
   exit(0);
 }
 

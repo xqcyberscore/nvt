@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-038.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: secpod_ms12-038.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft .NET Framework Remote Code Execution Vulnerability (2706726)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902841");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(53861);
   script_cve_id("CVE-2012-1855");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-13 09:09:09 +0530 (Wed, 13 Jun 2012)");
   script_name("Microsoft .NET Framework Remote Code Execution Vulnerability (2706726)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49418");
@@ -47,8 +47,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
 
-  script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute arbitrary code.
-  Impact Level: System/Application");
+  script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute arbitrary code.");
   script_tag(name:"affected", value:"Microsoft .NET Framework 4
   Microsoft .NET Framework 3.5.1
   Microsoft .NET Framework 2.0 Service Pack 2");

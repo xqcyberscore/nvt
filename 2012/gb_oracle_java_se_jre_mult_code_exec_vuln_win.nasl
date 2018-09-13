@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_jre_mult_code_exec_vuln_win.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: gb_oracle_java_se_jre_mult_code_exec_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Oracle Java SE JRE Multiple Remote Code Execution Vulnerabilities - (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803020");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-4681", "CVE-2012-1682", "CVE-2012-3136");
   script_bugtraq_id(53135, 55336, 55337);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-03 11:54:23 +0530 (Mon, 03 Sep 2012)");
   script_name("Oracle Java SE JRE Multiple Remote Code Execution Vulnerabilities - (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50133");
@@ -45,13 +45,13 @@ if(description)
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_require_keys("Sun/Java/JRE/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to bypass SecurityManager
-  restrictions and execute arbitrary code.
-  Impact Level: System/Application");
+  restrictions and execute arbitrary code.");
   script_tag(name:"affected", value:"Oracle Java SE versions 7 Update 6 and earlier");
   script_tag(name:"insight", value:"- SecurityManager restrictions using
     'com.sun.beans.finder.ClassFinder.findClass' with the forName method to
     access restricted classes and 'reflection with a trusted immediate caller'
     to access and modify private fields.
+
   - Multiple unspecified vulnerabilities in the JRE component related to
     Beans sub-component.");
   script_tag(name:"solution", value:"Apply the patch from below link

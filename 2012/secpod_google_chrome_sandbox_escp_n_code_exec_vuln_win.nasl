@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_sandbox_escp_n_code_exec_vuln_win.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: secpod_google_chrome_sandbox_escp_n_code_exec_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Google Chrome Full Sandbox Escape and Code Execution Vulnerability (Windows)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903007");
-  script_version("$Revision: 11159 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_version("$Revision: 11357 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-26 17:24:46 +0530 (Mon, 26 Mar 2012)");
   script_cve_id("CVE-2012-1846", "CVE-2012-1845");
   script_tag(name:"cvss_base", value:"10.0");
@@ -43,9 +43,7 @@ if(description)
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary
-code.
-
-Impact Level: System/Application");
+code.");
   script_tag(name:"affected", value:"Google Chrome version 17.0.963.66 and prior on Windows");
   script_tag(name:"insight", value:"The flaws are due to an use after free vulnerability in the
 default installation of Chrome.");

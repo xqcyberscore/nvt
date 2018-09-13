@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-057.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: secpod_ms12-057.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Office Remote Code Execution Vulnerability (2731879)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902920");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-2524");
   script_bugtraq_id(54876);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-15 09:05:20 +0530 (Wed, 15 Aug 2012)");
   script_name("Microsoft Office Remote Code Execution Vulnerability (2731879)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50251/");
@@ -51,8 +51,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("MS/Office/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code as
-  the logged-on user.
-  Impact Level: System/Application");
+  the logged-on user.");
   script_tag(name:"affected", value:"Microsoft Office 2007 Service Pack 3 and prior
   Microsoft Office 2010 Service Pack 1 and prior");
   script_tag(name:"insight", value:"The flaw is due to an error when parsing CGM (Computer Graphics Metafile)

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sanyo_network_camera_default_credentials.nasl 11328 2018-09-11 12:32:47Z tpassfeld $
+# $Id: gb_sanyo_network_camera_default_credentials.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Sanyo Network Camera Default Credentials
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114021");
-  script_version("$Revision: 11328 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 14:32:47 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 11356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-15 14:08:31 +0200 (Wed, 15 Aug 2018)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -46,7 +46,7 @@ if( description )
   script_family("Default Accounts");
   script_dependencies("gb_sanyo_network_camera_detect.nasl");
   script_require_ports("Services/www", 80);
-  script_mandatory_keys("sanyo/networkcamera/detected");
+  script_mandatory_keys("sanyo/network_camera/detected");
 
   script_tag(name:"summary", value:"Sanyo network cameras use the default credentials admin:admin.");
   script_tag(name:"vuldetect", value:"Tries to login using default credentials.");
@@ -104,8 +104,8 @@ if(('<IMG src="../img/SANYO_lan.gif"></TD>' >< res && "<TITLE>SANYO  NETWORK CAM
   mainVer = eregmatch(pattern: "(CAM)?\s*MAIN\s*Ver.\s*([0-9.-]+)", string: res);
   subVer = eregmatch(pattern: "(CAM)?\s*SUB\s*Ver.\s*([0-9.-]+)", string: res);
 
-  if(mainVer[2]) set_kb_item(name: "sanyo/networkcamera/main/version", value: mainVer[2]);
-  if(subVer[2])  set_kb_item(name: "sanyo/networkcamera/sub/version", value: subVer[2]);
+  if(mainVer[2]) set_kb_item(name: "sanyo/network_camera/main/version", value: mainVer[2]);
+  if(subVer[2])  set_kb_item(name: "sanyo/network_camera/sub/version", value: subVer[2]);
 
   security_message(data: report, port: port);
   exit(0);

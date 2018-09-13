@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_utorrent_detect_portable_win.nasl 10208 2018-06-15 07:53:13Z cfischer $
+# $Id: gb_utorrent_detect_portable_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # uTorrent Portable Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114008");
-  script_version("$Revision: 10208 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-15 09:53:13 +0200 (Fri, 15 Jun 2018) $");
+  script_version("$Revision: 11356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-24 17:24:16 +0200 (Tue, 24 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -80,7 +80,7 @@ if( ! fileList ) {
 
 # From gb_utorrent_detect_win.nasl to avoid a doubled detection of
 # a registry-based installation.
-detectedList = get_kb_list( "uTorrent/Win/InstallLocations" );
+detectedList = get_kb_list( "utorrent/win/install_locations" );
 
 fileList = split( fileList, keep:FALSE );
 foreach filePath( fileList ) {
@@ -106,8 +106,8 @@ foreach filePath( fileList ) {
     # so we need to catch the first four parts of the version.
     if( vers && version = eregmatch( string:vers, pattern:"^([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)" ) ) {
 
-      set_kb_item( name:"uTorrent/Win/InstallLocations", value:tolower( location ) );
-      set_kb_item( name:"uTorrent/Win/Version", value:version[1] );
+      set_kb_item( name:"utorrent/win/install_locations", value:tolower( location ) );
+      set_kb_item( name:"utorrent/win/version", value:version[1] );
 
       cpe = "cpe:/a:bittorrent:utorrent:";
 

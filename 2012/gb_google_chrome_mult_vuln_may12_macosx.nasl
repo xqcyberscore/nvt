@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_may12_macosx.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_google_chrome_mult_vuln_may12_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities - May 12 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802793");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-3100", "CVE-2011-3084", "CVE-2011-3099", "CVE-2011-3083",
                 "CVE-2011-3097", "CVE-2011-3095", "CVE-2011-3094", "CVE-2011-3093",
                 "CVE-2011-3092", "CVE-2011-3091", "CVE-2011-3090", "CVE-2011-3089",
@@ -36,7 +36,7 @@ if(description)
   script_bugtraq_id(53540);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-17 12:28:09 +0530 (Thu, 17 May 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - May 12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49194/");
@@ -50,8 +50,7 @@ if(description)
   script_require_keys("GoogleChrome/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to bypass certain security
   restrictions, execute arbitrary code in the context of the browser or
-  cause a denial of service.
-  Impact Level: System/Application");
+  cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 19.0.1084.46 on Mac OS X");
   script_tag(name:"insight", value:"Refer to the reference links for more information on the vulnerabilities.");
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 19.0.1084.46 or later,

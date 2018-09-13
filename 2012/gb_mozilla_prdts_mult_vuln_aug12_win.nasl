@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_aug12_win.nasl 10135 2018-06-08 11:42:28Z asteins $
+# $Id: gb_mozilla_prdts_mult_vuln_aug12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Mozilla Products Multiple Vulnerabilities - August12 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803011");
-  script_version("$Revision: 10135 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-3959", "CVE-2012-3958", "CVE-2012-3957", "CVE-2012-3972",
                 "CVE-2012-3956", "CVE-2012-3971", "CVE-2012-1976", "CVE-2012-3970",
                 "CVE-2012-1975", "CVE-2012-3969", "CVE-2012-1974", "CVE-2012-3968",
@@ -36,19 +36,19 @@ if(description)
   script_bugtraq_id(55249);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 13:42:28 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 12:20:04 +0530 (Thu, 30 Aug 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - August12 (Windows)");
 
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/50088");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1027450");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id/1027451");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-57.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-58.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-62.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-63.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-64.html");
-  script_xref(name : "URL" , value : "http://www.mozilla.org/security/announce/2012/mfsa2012-70.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/50088");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1027450");
+  script_xref(name:"URL", value:"http://securitytracker.com/id/1027451");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-57.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-58.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-62.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-63.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-64.html");
+  script_xref(name:"URL", value:"http://www.mozilla.org/security/announce/2012/mfsa2012-70.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
@@ -56,11 +56,10 @@ if(description)
   script_dependencies("gb_firefox_detect_portable_win.nasl", "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name : "impact" , value : "Successful exploitation could allow attackers to inject scripts, bypass
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject scripts, bypass
   certain security restrictions, execute arbitrary code in the context of the
-  browser or cause a denial of service.
-  Impact Level: System/Application");
-  script_tag(name : "affected" , value : "SeaMonkey version before 2.12 on Windows
+  browser or cause a denial of service.");
+  script_tag(name:"affected", value:"SeaMonkey version before 2.12 on Windows
 
   Thunderbird version before 15.0 on Windows
 
@@ -69,7 +68,7 @@ if(description)
   Thunderbird ESR version 10.x before 10.0.7 on Windows
 
   Mozilla Firefox ESR version 10.x before 10.0.7 on Windows");
-  script_tag(name : "insight" , value : "- Use-after-free error exists within the functions
+  script_tag(name:"insight", value:"- Use-after-free error exists within the functions
    'nsRangeUpdater::SelAdjDeleteNode', 'nsHTMLEditRules::DeleteNonTableElements',
    'MediaStreamGraphThreadRunnable::Run', 'nsTArray_base::Length',
    'nsHTMLSelectElement::SubmitNamesValues', 'PresShell::CompleteMove',
@@ -83,9 +82,9 @@ if(description)
     Graphite 2 library.
 
   - Use-after-free error exists within the WebGL implementation.");
-  script_tag(name : "summary" , value : "This host is installed with Mozilla firefox/thunderbird/seamonkey and is
+  script_tag(name:"summary", value:"This host is installed with Mozilla firefox/thunderbird/seamonkey and is
   prone to multiple vulnerabilities.");
-  script_tag(name : "solution" , value : "Upgrade to Mozilla Firefox version 15.0 or ESR version 10.0.7 or later,
+  script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 15.0 or ESR version 10.0.7 or later,
   For updates refer to http://www.mozilla.com/en-US/firefox/all.html
 
   Upgrade to SeaMonkey version to 2.12 or later,

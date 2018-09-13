@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_pdf_toolkit_memory_corruption_vuln.nasl 7076 2017-09-07 11:53:47Z teissa $
+# $Id: gb_foxit_pdf_toolkit_memory_corruption_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Foxit PDF Toolkit PDF File Parsing Memory Corruption Vulnerability
 #
@@ -29,61 +29,55 @@ CPE = "cpe:/a:foxitsoftware:foxit_pdf_toolkit";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810521");
-  script_version("$Revision: 7076 $");
+  script_version("$Revision: 11356 $");
   script_cve_id("CVE-2017-5364");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-09-07 13:53:47 +0200 (Thu, 07 Sep 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-01-25 15:52:27 +0530 (Wed, 25 Jan 2017)");
   script_tag(name:"qod_type", value:"executable_version");
   script_name("Foxit PDF Toolkit PDF File Parsing Memory Corruption Vulnerability");
 
-  script_tag(name: "summary" , value:"The host is installed with 
+  script_tag(name:"summary", value:"The host is installed with
   Foxit PDF Toolkit and is prone to memory corruption vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the
+  script_tag(name:"vuldetect", value:"Get the installed version with the
   help of detect nvt and check the version is vulnerable or not.");
 
-  script_tag(name: "insight" , value:"The flaw is due to a memory corruption 
+  script_tag(name:"insight", value:"The flaw is due to a memory corruption
   vulnerability in Foxit PDF Toolkit while parsing PDF files.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow
-  allow an attacker to cause denial of Service and remote code execution 
+  script_tag(name:"impact", value:"Successful exploitation will allow
+  allow an attacker to cause denial of Service and remote code execution
   when the victim opens the specially crafted PDF file.
 
   Impact Level: System");
 
-  script_tag(name: "affected" , value:"Foxit PDF Toolkit version 1.3");
+  script_tag(name:"affected", value:"Foxit PDF Toolkit version 1.3");
 
-  script_tag(name: "solution" , value:"Upgrade to Foxit PDF Toolkit version 
+  script_tag(name:"solution", value:"Upgrade to Foxit PDF Toolkit version
   2.0 or later.
   For updates refer to https://www.foxitsoftware.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://www.foxitsoftware.com/support/security-bulletins.php");
+  script_xref(name:"URL", value:"https://www.foxitsoftware.com/support/security-bulletins.php");
 
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_foxit_pdf_toolkit_detect.nasl");
-  script_mandatory_keys("Foxit/PDFToolkit/Win/Ver");
+  script_mandatory_keys("foxit/pdf_toolkit/win/ver");
   exit(0);
 }
 
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-fpdftVer = "";
-report = "";
-
-## Get version
 if(!fpdftVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_equal(version:fpdftVer, test_version:"1.3"))
 {
   report = report_fixed_ver(installed_version:fpdftVer, fixed_version: "2.0");

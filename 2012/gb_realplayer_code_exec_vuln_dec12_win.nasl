@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_code_exec_vuln_dec12_win.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_realplayer_code_exec_vuln_dec12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # RealNetworks RealPlayer Code Execution Vulnerabilities - Dec12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803088");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-5690", "CVE-2012-5691");
   script_bugtraq_id(56956);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-25 10:46:45 +0530 (Tue, 25 Dec 2012)");
   script_name("RealNetworks RealPlayer Code Execution Vulnerabilities - Dec12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51589");
@@ -45,12 +45,13 @@ if(description)
   script_dependencies("gb_realplayer_detect_win.nasl");
   script_require_keys("RealPlayer/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
-  on the system or cause the application to crash.
-  Impact Level: System/Application");
+  on the system or cause the application to crash.");
   script_tag(name:"affected", value:"RealPlayer versions 15.0.6.14 and prior on Windows
   RealPlayer SP versions 1.0 through 1.1.5 (12.0.0.879) on Windows");
   script_tag(name:"insight", value:"Multiple errors are caused when handling
+
   - RealAudio files may result in dereferencing an invalid pointer.
+
   - RealMedia files can be exploited to cause a buffer overflow.");
   script_tag(name:"solution", value:"Upgrade to RealPlayer version 16.0.0.282 or later,
   For updates refer to http://www.real.com/player");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-036.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: secpod_ms12-036.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Remote Desktop Protocol Remote Code Execution Vulnerability (2685939)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902683");
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0173");
   script_bugtraq_id(53826);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-13 11:36:15 +0530 (Wed, 13 Jun 2012)");
   script_name("Microsoft Remote Desktop Protocol Remote Code Execution Vulnerability (2685939)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49384");
@@ -49,8 +49,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  code as the logged-on user or cause a denial of service condition.
-  Impact Level: System/Application");
+  code as the logged-on user or cause a denial of service condition.");
   script_tag(name:"affected", value:"Microsoft Windows XP x32 Edition Service Pack 3 and prior
   Microsoft Windows XP x64 Edition Service Pack 2 and prior
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior

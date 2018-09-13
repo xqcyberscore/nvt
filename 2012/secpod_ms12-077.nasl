@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-077.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: secpod_ms12-077.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2761465)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902696");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-4781", "CVE-2012-4782", "CVE-2012-4787");
   script_bugtraq_id(56828, 56829, 56830);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-12 10:17:14 +0530 (Wed, 12 Dec 2012)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2761465)");
 
@@ -44,8 +44,7 @@ if(description)
   script_require_ports(139, 445);
   script_require_keys("MS/IE/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  code in the context of the user.
-  Impact Level: System/Application");
+  code in the context of the user.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x");
   script_tag(name:"insight", value:"Multiple vulnerabilities are due to use-after-free errors within the
   'InjectHTMLStream()' function, 'CMarkup' class and 'Ref Counting'.");

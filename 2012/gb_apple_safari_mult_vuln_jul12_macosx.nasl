@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_mult_vuln_jul12_macosx.nasl 11141 2018-08-28 10:01:13Z asteins $
+# $Id: gb_apple_safari_mult_vuln_jul12_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Apple Safari Multiple Vulnerabilities - July 2012 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802924");
-  script_version("$Revision: 11141 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-3426", "CVE-2011-3016", "CVE-2011-3021", "CVE-2011-3027",
                 "CVE-2011-3032", "CVE-2011-3034", "CVE-2011-3035", "CVE-2011-3036",
                 "CVE-2011-3037", "CVE-2011-3038", "CVE-2011-3039", "CVE-2011-3040",
@@ -64,7 +64,7 @@ if(description)
                     54687, 54203, 54693, 54694, 54695, 54700, 54697, 54703);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 12:01:13 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 16:35:41 +0530 (Mon, 30 Jul 2012)");
   script_name("Apple Safari Multiple Vulnerabilities - July 2012 (Mac OS X)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5400");
@@ -79,8 +79,7 @@ if(description)
   script_require_keys("AppleSafari/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to disclose potentially
   sensitive information, conduct cross-site scripting and compromise a user's
-  system.
-  Impact Level: System/Application");
+  system.");
   script_tag(name:"affected", value:"Apple Safari versions prior to 6.0");
   script_tag(name:"insight", value:"For more details about the vulnerabilities refer the reference section.");
   script_tag(name:"solution", value:"Upgrade to Apple Safari version 6.0 or later,

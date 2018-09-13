@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-056.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: secpod_ms12-056.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft JScript and VBScript Engines Remote Code Execution Vulnerability (2706045)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903037");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-2523");
   script_bugtraq_id(54945);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-15 11:13:45 +0530 (Wed, 15 Aug 2012)");
   script_name("Microsoft JScript and VBScript Engines Remote Code Execution Vulnerability (2706045)");
   script_category(ACT_GATHER_INFO);
@@ -47,9 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms12-056");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  code in the context of the current user.
-
-  Impact Level: System/Application");
+  code in the context of the current user.");
 
   script_tag(name:"affected", value:"Microsoft Windows 7 x64 Edition Service Pack 1 and prior
 

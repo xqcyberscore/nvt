@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-022.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: secpod_ms12-022.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Expression Design Remote Code Execution Vulnerability (2651018)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903000");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0016");
   script_bugtraq_id(52375);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-14 10:53:40 +0530 (Wed, 14 Mar 2012)");
   script_name("Microsoft Expression Design Remote Code Execution Vulnerability (2651018)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48353/");
@@ -46,8 +46,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("MS/Expression/Design/Ver", "MS/Expression/Install/Path");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  code on the target system.
-  Impact Level: System/Application");
+  code on the target system.");
   script_tag(name:"affected", value:"Microsoft Expression Design
   Microsoft Expression Design 2
   Microsoft Expression Design 3

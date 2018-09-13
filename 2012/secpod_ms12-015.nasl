@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-015.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: secpod_ms12-015.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Office Visio Viewer Remote Code Execution Vulnerabilities (2663510)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902423");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0019", "CVE-2012-0020", "CVE-2012-0136", "CVE-2012-0137",
                 "CVE-2012-0138");
   script_bugtraq_id(51903, 51904, 51906, 51907, 51908);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 09:34:05 +0530 (Wed, 15 Feb 2012)");
   script_name("Microsoft Office Visio Viewer Remote Code Execution Vulnerabilities (2663510)");
   script_xref(name:"URL", value:"https://secunia.com/advisories/47946");
@@ -49,8 +49,7 @@ if(description)
   script_require_ports(139, 445);
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to gain same user rights as
-  the logged on user and execute arbitrary code.
-  Impact Level: System/Application");
+  the logged on user and execute arbitrary code.");
   script_tag(name:"affected", value:"Microsoft Visio Viewer 2010 Service Pack 1 and prior.");
   script_tag(name:"insight", value:"The flaws are due to an unspecified error when validating certain
   data in specially crafted Visio files, this can be exploited to corrupt

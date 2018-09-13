@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantom_dos_vuln.nasl 11239 2018-09-05 09:46:45Z mmartin $
+# $Id: gb_foxit_phantom_dos_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Foxit PhantomPDF Denial of Service Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805363");
-  script_version("$Revision: 11239 $");
+  script_version("$Revision: 11356 $");
   script_cve_id("CVE-2015-2790");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-05 11:46:45 +0200 (Wed, 05 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-04-14 18:11:48 +0530 (Tue, 14 Apr 2015)");
   script_name("Foxit PhantomPDF Denial of Service Vulnerability");
 
@@ -67,7 +67,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_foxit_phantom_reader_detect.nasl");
-  script_mandatory_keys("Foxit/PhantomPDF/Ver");
+  script_mandatory_keys("foxit/phantompdf/ver");
   exit(0);
 }
 

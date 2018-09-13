@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tikiwiki_jhot_remote_cmd_exec_vuln.nasl 11135 2018-08-27 13:39:29Z asteins $
+# $Id: gb_tikiwiki_jhot_remote_cmd_exec_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Tiki Wiki CMS Groupware jhot.php Remote Command Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:tiki:tikiwiki_cms/groupware";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802946");
-  script_version("$Revision: 11135 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2006-4602");
   script_bugtraq_id(19819);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 15:39:29 +0200 (Mon, 27 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-22 13:59:26 +0530 (Wed, 22 Aug 2012)");
   script_name("Tiki Wiki CMS Groupware jhot.php Remote Command Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/2288/");
 
   script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary system
-  commands with the privileges of the webserver process.
-
-  Impact Level: System/Application");
+  commands with the privileges of the webserver process.");
   script_tag(name:"affected", value:"Tiki Wiki CMS Groupware version 1.9.4 and prior");
   script_tag(name:"insight", value:"The flaw is due to 'jhot.php' script not correctly verifying
   uploaded files. This can be exploited to execute arbitrary PHP code by

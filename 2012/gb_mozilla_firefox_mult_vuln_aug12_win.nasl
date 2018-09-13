@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_aug12_win.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: gb_mozilla_firefox_mult_vuln_aug12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Mozilla Firefox Multiple Vulnerabilities - August12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803017");
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-3965", "CVE-2012-3973");
   script_bugtraq_id(55249);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 14:55:59 +0530 (Thu, 30 Aug 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - August12 (Windows)");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1027450");
@@ -47,8 +47,7 @@ if(description)
   script_mandatory_keys("Firefox/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject scripts, bypass
   certain security restrictions, execute arbitrary code in the context of the
-  browser.
-  Impact Level: System/Application");
+  browser.");
   script_tag(name:"affected", value:"Mozilla Firefox version before 15.0 on Windows");
   script_tag(name:"insight", value:"- An error due to improper restriction of navigation to the about:newtab
     page, which allows remote attackers to execute arbitrary JavaScript code

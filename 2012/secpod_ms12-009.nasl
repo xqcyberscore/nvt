@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-009.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: secpod_ms12-009.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # MS Windows Ancillary Function Driver Privilege Elevation Vulnerabilities (2645640)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902424");
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0148", "CVE-2012-0149");
   script_bugtraq_id(51930, 51936);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 13:25:41 +0530 (Wed, 15 Feb 2012)");
   script_name("MS Windows Ancillary Function Driver Privilege Elevation Vulnerabilities (2645640)");
   script_category(ACT_GATHER_INFO);
@@ -43,8 +43,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow elevation of privilege if an attacker
-  logs on to a user's system and runs a specially crafted application.
-  Impact Level: System/Application");
+  logs on to a user's system and runs a specially crafted application.");
   script_tag(name:"affected", value:"Microsoft Windows 2K3 Service Pack 2 and prior.");
   script_tag(name:"insight", value:"The flaws are caused due an error in Ancillary Function Driver (AFD) which
   does not properly validate input passed from user mode to the Windows kernel.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_mult_vuln_apr12_lin.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_adobe_reader_mult_vuln_apr12_lin.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Adobe Reader Multiple Vulnerabilities April-2012 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802747");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0777", "CVE-2012-0776", "CVE-2012-0774", "CVE-2012-0775");
   script_bugtraq_id(52950, 52952, 52951, 52949);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-16 19:08:36 +0530 (Mon, 16 Apr 2012)");
   script_name("Adobe Reader Multiple Vulnerabilities April-2012 (Linux)");
 
@@ -43,15 +43,16 @@ if(description)
 vulnerabilities.");
   script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
   script_tag(name:"insight", value:"The flaws are due to
-- An unspecified error when handling JavaScript/JavaScript API can be exploited
-to corrupt memory.
-- An integer overflow error when handling True Type Font (TTF) can be exploited
-to corrupt memory.
-- The application loads executables (msiexec.exe) in an insecure manner.");
-  script_tag(name:"impact", value:"Successful exploitation will let attackers to bypass certain security restrictions,
-execute arbitrary code via unspecified vectors or cause a denial of service.
 
-Impact Level: System/Application");
+  - An unspecified error when handling JavaScript/JavaScript API can be exploited
+to corrupt memory.
+
+  - An integer overflow error when handling True Type Font (TTF) can be exploited
+to corrupt memory.
+
+  - The application loads executables (msiexec.exe) in an insecure manner.");
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to bypass certain security restrictions,
+execute arbitrary code via unspecified vectors or cause a denial of service.");
   script_tag(name:"affected", value:"Adobe Reader version 9.x to 9.4.6 on Linux");
   script_tag(name:"solution", value:"Upgrade to Adobe Reader version 9.5.1 or later,
 For updates refer to http://www.adobe.com/");

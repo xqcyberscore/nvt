@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-004.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: secpod_ms12-004.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Windows Media Could Allow Remote Code Execution Vulnerabilities (2636391)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902807");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(51292, 51295);
   script_cve_id("CVE-2012-0003", "CVE-2012-0004");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-11 10:10:10 +0530 (Wed, 11 Jan 2012)");
   script_name("Microsoft Windows Media Could Allow Remote Code Execution Vulnerabilities (2636391)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47485");
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow the attacker to execute arbitrary code in
   the context of the user running the application which can compromise the
-  application and possibly the computer.
-
-  Impact Level: System/Application");
+  application and possibly the computer.");
   script_tag(name:"affected", value:"Microsoft Windows 7 Service Pack 1 and prior.
 
   Microsoft Windows XP Service Pack 3 and prior.

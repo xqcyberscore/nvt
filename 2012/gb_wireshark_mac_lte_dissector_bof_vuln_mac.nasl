@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mac_lte_dissector_bof_vuln_mac.nasl 11322 2018-09-11 10:15:07Z asteins $
+# $Id: gb_wireshark_mac_lte_dissector_bof_vuln_mac.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Wireshark MAC-LTE dissector Buffer Overflow Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802664");
-  script_version("$Revision: 11322 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(45775);
   script_cve_id("CVE-2011-0444");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 17:17:17 +0530 (Mon, 30 Jul 2012)");
   script_name("Wireshark MAC-LTE dissector Buffer Overflow Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/64624");
@@ -47,8 +47,7 @@ if(description)
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_require_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to create a denial of service
-  or execute arbitrary code.
-  Impact Level: System/Application");
+  or execute arbitrary code.");
   script_tag(name:"affected", value:"Wireshark versions 1.2.0 through 1.2.13 and 1.4.0 through 1.4.2 on Mac OS X");
   script_tag(name:"insight", value:"The flaw is caused by a buffer overflow error in the MAC-LTE dissector,
   which could be exploited to crash an affected application or compromise

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_javascript_rce_vuln_win.nasl 11175 2018-08-31 08:55:33Z jschulte $
+# $Id: gb_foxit_reader_javascript_rce_vuln_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Foxit Reader 'JavaScript' Remote Code Execution Vulnerabilities (Windows)
 #
@@ -30,7 +30,7 @@ CPE = "cpe:/a:foxitsoftware:reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813263");
-  script_version("$Revision: 11175 $");
+  script_version("$Revision: 11356 $");
   script_cve_id("CVE-2018-11617", "CVE-2018-11618", "CVE-2018-11619", "CVE-2018-11620",
                 "CVE-2018-11621", "CVE-2018-11622", "CVE-2018-11623", "CVE-2018-14241",
                 "CVE-2018-14242", "CVE-2018-14243", "CVE-2018-14244", "CVE-2018-14245",
@@ -54,7 +54,7 @@ if(description)
                 "CVE-2018-14316", "CVE-2018-14317", "CVE-2018-3924", "CVE-2018-3939");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-31 10:55:33 +0200 (Fri, 31 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 15:00:12 +0530 (Fri, 20 Jul 2018)");
   script_name("Foxit Reader 'JavaScript' Remote Code Execution Vulnerabilities (Windows)");
 
@@ -91,7 +91,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
-  script_mandatory_keys("Foxit/Reader/Ver");
+  script_mandatory_keys("foxit/reader/ver");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_pdf_toolkit_detect.nasl 10905 2018-08-10 14:32:11Z cfischer $
+# $Id: gb_foxit_pdf_toolkit_detect.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Foxit PDF Toolkit Detection
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.810522");
-  script_version("$Revision: 10905 $");
+  script_version("$Revision: 11356 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 16:32:11 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-01-25 15:52:27 +0530 (Wed, 25 Jan 2017)");
   script_name("Foxit PDF Toolkit Detection");
   script_category(ACT_GATHER_INFO);
@@ -82,7 +82,7 @@ if( "Foxit Software Inc" >< appConfirm ) {
       path = "Couldn find the install location from registry";
     }
 
-    set_kb_item( name:"Foxit/PDFToolkit/Win/Ver", value:version[1] );
+    set_kb_item( name:"foxit/pdf_toolkit/win/ver", value:version[1] );
 
     cpe = build_cpe( value:version[1], exp:"^([0-9.]+)", base:"cpe:/a:foxitsoftware:foxit_pdf_toolkit:" );
     if( isnull( cpe ) )

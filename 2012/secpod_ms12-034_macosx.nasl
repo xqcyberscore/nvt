@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-034_macosx.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: secpod_ms12-034_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Silverlight Code Execution Vulnerabilities - 2681578 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902678");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-3402", "CVE-2012-0159");
   script_bugtraq_id(50462, 53335);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-14 13:06:50 +0530 (Mon, 14 May 2012)");
   script_name("Microsoft Silverlight Code Execution Vulnerabilities - 2681578 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49121");
@@ -47,8 +47,7 @@ if(description)
   script_dependencies("gb_ms_silverlight_detect_macosx.nasl");
   script_require_keys("MS/Silverlight/MacOSX/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code by
-  tricking a user into opening a specially crafted file.
-  Impact Level: System/Application");
+  tricking a user into opening a specially crafted file.");
   script_tag(name:"affected", value:"Microsoft Silverlight versions 4 and 5");
   script_tag(name:"insight", value:"The flaws are due to an error exists when parsing TrueType fonts.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and

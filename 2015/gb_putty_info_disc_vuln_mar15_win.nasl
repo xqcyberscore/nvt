@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_info_disc_vuln_mar15_win.nasl 11257 2018-09-06 07:51:44Z mmartin $
+# $Id: gb_putty_info_disc_vuln_mar15_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # PuTTY Information Disclosure vulnerability Mar15 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:putty:putty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.805434");
-  script_version("$Revision: 11257 $");
+  script_version("$Revision: 11356 $");
   script_cve_id("CVE-2015-2157");
   script_bugtraq_id(72825);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 09:51:44 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-03-31 13:05:20 +0530 (Tue, 31 Mar 2015)");
   script_tag(name:"qod_type", value:"registry");
   script_name("PuTTY Information Disclosure vulnerability Mar15 (Windows)");
@@ -66,7 +66,7 @@ if(description)
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_putty_portable_detect.nasl");
-  script_mandatory_keys("PuTTY/Version");
+  script_mandatory_keys("putty/version");
   exit(0);
 }
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_suse_2018_2642_1.nasl 11350 2018-09-12 08:17:35Z santu $
+# $Id: gb_suse_2018_2642_1.nasl 11359 2018-09-12 12:40:08Z asteins $
 #
 # SuSE Update for dovecot22 openSUSE-SU-2018:2642-1 (dovecot22)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.851881");
-  script_version("$Revision: 11350 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 10:17:35 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 11359 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 14:40:08 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-07 07:16:47 +0200 (Fri, 07 Sep 2018)");
   script_cve_id("CVE-2017-15130");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
+  script_tag(name:"cvss_base", value:"4.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
   script_tag(name:"qod_type", value:"package");
   script_name("SuSE Update for dovecot22 openSUSE-SU-2018:2642-1 (dovecot22)");
   script_tag(name:"summary", value:"Check the version of dovecot22");

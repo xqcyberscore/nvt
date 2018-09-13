@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-060.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: secpod_ms12-060.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Windows Common Controls Remote Code Execution Vulnerability (2720573)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901211");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(54948);
   script_cve_id("CVE-2012-1856");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-15 09:05:46 +0530 (Wed, 15 Aug 2012)");
   script_name("Microsoft Windows Common Controls Remote Code Execution Vulnerability (2720573)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50247");
@@ -45,8 +45,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute arbitrary code
-  within the context of the application.
-  Impact Level: System/Application");
+  within the context of the application.");
   script_tag(name:"affected", value:"Microsoft Visual Basic 6.0
 
   Microsoft Commerce Server 2009

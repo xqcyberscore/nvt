@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_jun12_win.nasl 11148 2018-08-28 14:25:49Z asteins $
+# $Id: gb_mozilla_prdts_mult_vuln_jun12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Mozilla Products Multiple Vulnerabilities - June12 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802865");
-  script_version("$Revision: 11148 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-1937", "CVE-2012-1940", "CVE-2012-1944", "CVE-2012-1945",
                 "CVE-2012-1946", "CVE-2012-1947", "CVE-2012-3105", "CVE-2012-1941",
                 "CVE-2012-0441", "CVE-2012-1938");
@@ -35,7 +35,7 @@ if(description)
                     53229, 53227, 53224, 53798, 53796);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-19 11:00:59 +0530 (Tue, 19 Jun 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - June12 (Windows)");
 
@@ -56,8 +56,7 @@ if(description)
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject scripts, bypass
   certain security restrictions, execute arbitrary code in the context of the
-  browser or cause a denial of service.
-  Impact Level: System/Application");
+  browser or cause a denial of service.");
   script_tag(name:"affected", value:"SeaMonkey version before 2.10,
   Thunderbird version 5.0 through 12.0,
   Mozilla Firefox version 4.x through 12.0,
@@ -65,18 +64,24 @@ if(description)
   Mozilla Firefox ESR version 10.x before 10.0.5 on Windows");
   script_tag(name:"insight", value:"- Multiple unspecified errors in browser engine can be exploited to corrupt
     memory.
+
   - Multiple use-after-free errors exists in 'nsFrameList::FirstChild' when
     handling column layouts with absolute positioning within a container that
     changes the size.
+
   - The improper implementation of Content Security Policy inline-script
     blocking feature, fails to block inline event handlers such as onclick.
+
   - An error when loading HTML pages from Windows shares, which can be
     exploited to disclose files from local resources via an iframe tag.
+
   - An error exists within 'utf16_to_isolatin1' function when converting
     from unicode to native character sets.
+
   - An error in 'nsHTMLReflowState::CalculateHypotheticalBox' when a window is
     resized on a page with nested columns using absolute and relative
     positioning.
+
   - The glBufferData function in the WebGL implementation, fails to mitigate
     an unspecified flaw in an NVIDIA driver.");
   script_tag(name:"summary", value:"This host is installed with Mozilla firefox/thunderbird/seamonkey and is prone

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_final_draft_file_parsing_mult_bof_vuln.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_final_draft_file_parsing_mult_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Final Draft Script File Parsing Multiple Buffer Overflow Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802393");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-5059");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-07 18:05:02 +0530 (Tue, 07 Feb 2012)");
   script_name("Final Draft Script File Parsing Multiple Buffer Overflow Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47044");
@@ -47,8 +47,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
-  on the system or cause the application to crash.
-  Impact Level: System/Application");
+  on the system or cause the application to crash.");
   script_tag(name:"affected", value:"Final Draft version 8.0 before 8.02");
   script_tag(name:"insight", value:"The flaws are due to an errors when parsing certain tag elements like
   'Word', 'Transition', 'Location', 'Extension', 'SceneIntro', 'TimeOfDay',

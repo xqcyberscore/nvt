@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mem_corr_vuln_jul12_win.nasl 11266 2018-09-06 10:59:26Z cfischer $
+# $Id: gb_mozilla_prdts_mem_corr_vuln_jul12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Mozilla Products Memory Corruption Vulnerabilities - July12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802895");
-  script_version("$Revision: 11266 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-1949", "CVE-2012-1960");
   script_bugtraq_id(54580, 54572);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-24 11:13:01 +0530 (Tue, 24 Jul 2012)");
   script_name("Mozilla Products Memory Corruption Vulnerabilities - July12 (Windows)");
 
@@ -50,14 +50,14 @@ if(description)
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to obtain sensitive
   information, execute arbitrary code in the context of the browser or cause a
-  denial of service.
-  Impact Level: System/Application");
+  denial of service.");
   script_tag(name:"affected", value:"SeaMonkey version before 2.11
   Thunderbird version 5.0 through 13.0
   Mozilla Firefox version 4.x through 13.0 on Windows");
   script_tag(name:"insight", value:"- An out-of-bounds read error in the qcms_transform_data_rgb_out_lut_sse2
     function in the QCMS implementation, can be exploited to disclose certain
     process memory via a crafted color profile.
+
   - Multiple unspecified errors within the browser engine can be exploited to
     corrupt memory.");
   script_tag(name:"summary", value:"This host is installed with Mozilla firefox/thunderbird/seamonkey and is

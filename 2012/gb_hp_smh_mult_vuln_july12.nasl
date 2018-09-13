@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_mult_vuln_july12.nasl 4543 2016-11-16 15:41:04Z cfi $
+# $Id: gb_hp_smh_mult_vuln_july12.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # HP System Management Homepage Multiple Vulnerabilities - Jul12
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802657");
-  script_version("$Revision: 4543 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(54218);
   script_cve_id("CVE-2012-2012", "CVE-2012-2013", "CVE-2012-2014", "CVE-2012-2015",
                 "CVE-2012-2016");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-16 16:41:04 +0100 (Wed, 16 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-09 15:15:15 +0530 (Mon, 09 Jul 2012)");
   script_name("HP System Management Homepage Multiple Vulnerabilities - Jul12");
   script_category(ACT_GATHER_INFO);
@@ -50,31 +50,23 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/54218");
   script_xref(name:"URL", value:"http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c03360041");
 
-  tag_impact = "Successful exploitation will allow attackers to gain elevated privileges,
-  disclose sensitive information, perform unauthorized actions, or cause
-  denial of service conditions.
+  script_tag(name:"insight", value:"- An unspecified local security vulnerability
 
-  Impact Level: System/Application";
-
-  tag_affected = "HP System Management Homepage (SMH) versions before 7.1.1";
-
-  tag_insight = "- An unspecified local security vulnerability
   - A denial of service vulnerability
+
   - An input validation vulnerability
+
   - A privilege escalation vulnerability
-  - An information-disclosure vulnerability";
 
-  tag_solution = "Upgrade to HP System Management Homepage (SMH) version 7.1.1 or later,
-  For updates refer to http://h18013.www1.hp.com/products/servers/management/agents/documentation.html";
-
-  tag_summary = "This host is running HP System Management Homepage (SMH) and is
-  prone to multiple vulnerabilities.";
-
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
+  - An information-disclosure vulnerability");
+  script_tag(name:"solution", value:"Upgrade to HP System Management Homepage (SMH) version 7.1.1 or later,
+  For updates refer to http://h18013.www1.hp.com/products/servers/management/agents/documentation.html");
+  script_tag(name:"summary", value:"This host is running HP System Management Homepage (SMH) and is
+  prone to multiple vulnerabilities.");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain elevated privileges,
+  disclose sensitive information, perform unauthorized actions, or cause
+  denial of service conditions.");
+  script_tag(name:"affected", value:"HP System Management Homepage (SMH) versions before 7.1.1");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_banner");
@@ -88,7 +80,6 @@ include("version_func.inc");
 if( ! port = get_app_port( cpe:CPE ) ) exit( 0 );
 if( ! version = get_app_version( cpe:CPE, port:port ) ) exit( 0 );
 
-## Check for HP System Management Homepage versions before 7.1.1
 if( version_is_less( version:version, test_version:"7.1.1" ) ) {
   report = report_fixed_ver( installed_version:version, fixed_version:"7.1.1" );
   security_message( port:port, data:report );

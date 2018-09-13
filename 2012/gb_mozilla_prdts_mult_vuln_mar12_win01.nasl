@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_mar12_win01.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: gb_mozilla_prdts_mult_vuln_mar12_win01.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Mozilla Products Multiple Vulnerabilities - Mar12 (Win 01)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802822");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0451", "CVE-2012-0454", "CVE-2012-0459", "CVE-2012-0460",
                 "CVE-2012-0462");
   script_bugtraq_id(52463, 52455, 52457, 52456, 52467);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-19 19:20:23 +0530 (Mon, 19 Mar 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - Mar12 (Win 01)");
 
@@ -52,21 +52,25 @@ if(description)
                       "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name:"impact", value:"Successful exploitation will let attackers to cause a denial of service or
-  possibly execute arbitrary code or inject html code via unknown vectors.
-  Impact Level: System/Application");
+  possibly execute arbitrary code or inject html code via unknown vectors.");
   script_tag(name:"affected", value:"SeaMonkey version before 2.8
   Thunderbird version 5.0 through 10.0
   Mozilla Firefox version 4.x through 10.0
   Thunderbird ESR version 10.x before 10.0.3
   Mozilla Firefox ESR version 10.x before 10.0.3");
   script_tag(name:"insight", value:"The flaws are due to
+
   - An improper write access restriction to the window.fullScreen object.
+
   - Multiple unspecified vulnerabilities in the browser engine.
+
   - An improper implementation of the Cascading Style Sheets (CSS) allowing to
     crash the service when accessing keyframe cssText after dynamic
     modification.
+
   - A use-after-free error within the shlwapi.dll when closing a child window
     that uses the file open dialog.
+
   - An error when handling Content Security Policy headers.");
   script_tag(name:"summary", value:"The host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
   to multiple vulnerabilities.");

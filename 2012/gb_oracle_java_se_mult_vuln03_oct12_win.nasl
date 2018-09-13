@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_mult_vuln03_oct12_win.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_oracle_java_se_mult_vuln03_oct12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Oracle Java SE JRE Multiple Unspecified Vulnerabilities-03 oct12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802481");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-5087", "CVE-2012-5088", "CVE-2012-5074", "CVE-2012-5076");
   script_bugtraq_id(56043, 56057, 56056, 56054);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-19 12:54:25 +0530 (Fri, 19 Oct 2012)");
   script_name("Oracle Java SE JRE Multiple Unspecified Vulnerabilities-03 oct12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50949/");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_require_keys("Sun/Java/JRE/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary code on
-  the target system or cause complete denial of service conditions.
-  Impact Level: System/Application");
+  the target system or cause complete denial of service conditions.");
   script_tag(name:"affected", value:"Oracle Java SE 7 Update 7 and earlier");
   script_tag(name:"insight", value:"Multiple unspecified vulnerabilities exists in the application related
   to JAX-WS, Beans and Libraries.");

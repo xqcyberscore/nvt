@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_jpeg2000_bof_vuln_win.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_xnview_jpeg2000_bof_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # XnView JPEG2000 Plugin Buffer Overflow Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802816");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-1051");
   script_bugtraq_id(51896);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-15 16:28:54 +0530 (Thu, 15 Mar 2012)");
   script_name("XnView JPEG2000 Plugin Buffer Overflow Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47352");
@@ -45,9 +45,7 @@ if(description)
   script_require_keys("XnView/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allows attackers to execute arbitrary code in
 the context of the affected application or cause a denial of service
-condition.
-
-Impact Level: System/Application");
+condition.");
   script_tag(name:"affected", value:"XnView version 1.98.5 and prior.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.

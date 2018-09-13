@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_typeinfo_code_exec_vuln.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: secpod_php_typeinfo_code_exec_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # PHP 'com_print_typeinfo()' Remote Code Execution Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902836");
-  script_version("$Revision: 10458 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(53621);
   script_cve_id("CVE-2012-2376");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-23 15:15:15 +0530 (Wed, 23 May 2012)");
   script_name("PHP 'com_print_typeinfo()' Remote Code Execution Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -52,9 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute
   arbitrary code in the context of a webserver. Failed attempts will likely result
-  in denial of service conditions.
-
-  Impact Level: System/Application");
+  in denial of service conditions.");
 
   script_tag(name:"affected", value:"PHP Version 5.4.3 and prior on Windows");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: pdns_version.nasl 4464 2016-11-10 08:08:58Z cfi $
+# $Id: pdns_version.nasl 11365 2018-09-12 16:02:10Z asteins $
 #
 # PowerDNS (Authoritative Server and Recursor) Detection
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.100432");
-  script_version("$Revision: 4464 $");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-10 09:08:58 +0100 (Thu, 10 Nov 2016) $");
+  script_version("$Revision: 11365 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 18:02:10 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-01-07 12:29:25 +0100 (Thu, 07 Jan 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -61,6 +61,8 @@ function getVersion( data, port, proto ) {
   version = "unknown";
   ver = eregmatch( pattern:"PowerDNS [a-zA-Z ]*([0-9.]+)", string:data, icase:TRUE );
   if( ver[1] ) version = ver[1];
+
+  set_kb_item( name:"powerdns/recursor_or_authoritative_server/installed", value:TRUE );
 
   if( "Recursor" >< ver[0] ) {
     type = "Recursor";

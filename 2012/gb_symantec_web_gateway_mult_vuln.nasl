@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_web_gateway_mult_vuln.nasl 10833 2018-08-08 10:35:26Z cfischer $
+# $Id: gb_symantec_web_gateway_mult_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Symantec Web Gateway Multiple Vulnerabilities
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:symantec:web_gateway";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802661");
-  script_version("$Revision: 10833 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(54426, 54429, 54424, 54425, 54427, 54430);
   script_cve_id("CVE-2012-2953", "CVE-2012-2957", "CVE-2012-2574", "CVE-2012-2961",
                 "CVE-2012-2976", "CVE-2012-2977");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-08 12:35:26 +0200 (Wed, 08 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-24 15:15:15 +0530 (Tue, 24 Jul 2012)");
   script_name("Symantec Web Gateway Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -53,9 +53,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code in
   the context of the application, bypass certain security restrictions and
-  conduct SQL injection attacks.
-
-  Impact Level: System/Application");
+  conduct SQL injection attacks.");
 
   script_tag(name:"affected", value:"Symantec Web Gateway versions 5.0.x before 5.0.3.18");
 

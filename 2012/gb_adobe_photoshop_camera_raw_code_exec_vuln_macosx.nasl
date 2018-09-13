@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_camera_raw_code_exec_vuln_macosx.nasl 10021 2018-05-30 09:03:08Z cfischer $
+# $Id: gb_adobe_photoshop_camera_raw_code_exec_vuln_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Adobe Photoshop Camera Raw Plug-in Code Execution Vulnerabilities (Mac OS X)
 #
@@ -27,37 +27,35 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803082");
-  script_version("$Revision: 10021 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-5679", "CVE-2012-5680");
   script_bugtraq_id(56922, 56924);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-05-30 11:03:08 +0200 (Wed, 30 May 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-21 13:45:50 +0530 (Fri, 21 Dec 2012)");
   script_name("Adobe Photoshop Camera Raw Plug-in Code Execution Vulnerabilities (Mac OS X)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/49929");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1027872");
-  script_xref(name : "URL" , value : "http://www.adobe.com/support/security/bulletins/apsb12-28.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/49929");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1027872");
+  script_xref(name:"URL", value:"http://www.adobe.com/support/security/bulletins/apsb12-28.html");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_adobe_photoshop_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Photoshop/MacOSX/Version", "Adobe/Photoshop/MacOSX/Path");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to execute arbitrary code.
-
-  Impact Level: System/Application");
-  script_tag(name : "affected" , value : "Adobe Photoshop Camera Raw Plug-in version before 7.3 on Windows");
-  script_tag(name : "insight" , value : "Errors exists within the 'Camera Raw.8bi' plug-in when
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code.");
+  script_tag(name:"affected", value:"Adobe Photoshop Camera Raw Plug-in version before 7.3 on Windows");
+  script_tag(name:"insight", value:"Errors exists within the 'Camera Raw.8bi' plug-in when
 
   - Parsing a LZW compressed TIFF images can be exploited to cause a buffer
     underflow via a specially crafted LZW code within an image row strip.
 
   - Allocating memory during TIFF image processing can be exploited to cause
     buffer overflow via a specially crafted image dimensions.");
-  script_tag(name : "solution" , value : "Upgrade to Adobe Photoshop Camera Raw Plug-in version 7.3 or later,
+  script_tag(name:"solution", value:"Upgrade to Adobe Photoshop Camera Raw Plug-in version 7.3 or later,
   For updates refer to http://www.adobe.com/downloads/");
-  script_tag(name : "summary" , value : "This host is installed with Adobe Photoshop Camera Raw Plug-in and
+  script_tag(name:"summary", value:"This host is installed with Adobe Photoshop Camera Raw Plug-in and
   is prone to code execution vulnerabilities.");
 
   script_tag(name:"qod_type", value:"package");

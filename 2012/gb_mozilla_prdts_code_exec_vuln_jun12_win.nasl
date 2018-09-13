@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_code_exec_vuln_jun12_win.nasl 11057 2018-08-20 13:59:30Z asteins $
+# $Id: gb_mozilla_prdts_code_exec_vuln_jun12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Mozilla Products 'nsHTMLSelectElement' Remote Code Execution Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802874");
-  script_version("$Revision: 11057 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-3671");
   script_bugtraq_id(54080);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:59:30 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-20 13:13:30 +0530 (Wed, 20 Jun 2012)");
   script_name("Mozilla Products 'nsHTMLSelectElement' Remote Code Execution Vulnerability (Windows)");
 
@@ -47,8 +47,7 @@ if(description)
                       "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  code in the context of the browser.
-  Impact Level: System/Application");
+  code in the context of the browser.");
   script_tag(name:"affected", value:"SeaMonkey version before 2.6,
   Thunderbird version 5.0 through 8.0,
   Mozilla Firefox version 4.x through 8.0 on Windows.");

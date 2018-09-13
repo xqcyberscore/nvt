@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_iprint_client_mult_code_exec_vuln.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: secpod_novell_iprint_client_mult_code_exec_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Novell iPrint Client Multiple Remote Code Execution Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:novell:iprint";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902674");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-4185", "CVE-2011-4186", "CVE-2011-4187");
   script_bugtraq_id(51926);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-26 12:20:02 +0530 (Thu, 26 Apr 2012)");
   script_name("Novell iPrint Client Multiple Remote Code Execution Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47867/");
@@ -64,8 +64,7 @@ if(description)
   script_tag(name:"summary", value:"This host is installed with Novell iPrint Client and is prone to
   multiple remote code execution vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code,
-  cause buffer overflow or a denial of service condition.
-  Impact Level: System/Application");
+  cause buffer overflow or a denial of service condition.");
   script_tag(name:"affected", value:"Novell iPrint Client version prior to 5.78");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);

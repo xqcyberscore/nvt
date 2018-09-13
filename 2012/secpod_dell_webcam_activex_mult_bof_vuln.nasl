@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_dell_webcam_activex_mult_bof_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: secpod_dell_webcam_activex_mult_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Dell Webcam 'crazytalk4.ocx' ActiveX Multiple BOF Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903013");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(52571, 52560);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-29 14:38:14 +0530 (Thu, 29 Mar 2012)");
   script_name("Dell Webcam 'crazytalk4.ocx' ActiveX Multiple BOF Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52571/");
@@ -45,9 +45,7 @@ if(description)
   script_dependencies("smb_reg_service_pack.nasl");
   script_mandatory_keys("SMB/WindowsVersion");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
-arbitrary code in the context of the application using the ActiveX control.
-
-Impact Level: System/Application");
+arbitrary code in the context of the application using the ActiveX control.");
   script_tag(name:"affected", value:"Dell Webcam");
   script_tag(name:"insight", value:"The flaws are due to boundary error when processing user-supplied
 input.");

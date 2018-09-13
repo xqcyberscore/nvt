@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_snmp_agents_open_redirect_n_xss_vuln.nasl 11141 2018-08-28 10:01:13Z asteins $
+# $Id: gb_hp_snmp_agents_open_redirect_n_xss_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # HP SNMP Agents Open Redirect and Cross-site Scripting Vulnerabilities (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802775");
-  script_version("$Revision: 11141 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-2001", "CVE-2012-2002");
   script_bugtraq_id(53340);
   script_tag(name:"cvss_base", value:"8.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 12:01:13 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-10 17:50:17 +0530 (Thu, 10 May 2012)");
   script_name("HP SNMP Agents Open Redirect and Cross-site Scripting Vulnerabilities (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48978/");
@@ -47,8 +47,7 @@ if(description)
   script_dependencies("gb_hp_snmp_agents_detect_lin.nasl");
   script_require_keys("HP/SNMP/Agents");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute script code in a
-  user's browser session in context of an affected site.
-  Impact Level: System/Application");
+  user's browser session in context of an affected site.");
   script_tag(name:"affected", value:"HP SNMP Agents version prior to 9.0.0 on Linux");
   script_tag(name:"insight", value:"The flaws are due to input is not properly sanitised before being
   returned to the user and being used to redirect users.");

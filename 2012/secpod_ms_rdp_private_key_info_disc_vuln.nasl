@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_rdp_private_key_info_disc_vuln.nasl 10344 2018-06-27 13:00:46Z cfischer $
+# $Id: secpod_ms_rdp_private_key_info_disc_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft RDP Server Private Key Information Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902658");
-  script_version("$Revision: 10344 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2005-1794");
   script_bugtraq_id(13818);
-  script_tag(name:"last_modification", value:"$Date: 2018-06-27 15:00:46 +0200 (Wed, 27 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-01 13:38:23 +0530 (Thu, 01 Mar 2012)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://sourceforge.net/p/xrdp/mailman/message/32732056");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to gain
-  sensitive information.
-
-  Impact Level: System/Application");
+  sensitive information.");
 
   script_tag(name:"affected", value:"All Microsoft-compatible RDP (5.2 or earlier) software.");
 

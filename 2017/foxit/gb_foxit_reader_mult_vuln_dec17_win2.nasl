@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_mult_vuln_dec17_win2.nasl 10140 2018-06-08 12:58:24Z asteins $
+# $Id: gb_foxit_reader_mult_vuln_dec17_win2.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Multiple vulnerabilities in Foxit Reader 8.3.2 (Windows)
 #
@@ -28,8 +28,8 @@
 if( description )
 {
   script_oid("1.3.6.1.4.1.25623.1.0.113073");
-  script_version("$Revision: 10140 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 14:58:24 +0200 (Fri, 08 Jun 2018) $");
+  script_version("$Revision: 11356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-12-21 11:48:49 +0100 (Thu, 21 Dec 2017)");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
@@ -49,7 +49,7 @@ if( description )
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_foxit_reader_detect_portable_win.nasl");
-  script_mandatory_keys("Foxit/Reader/Ver");
+  script_mandatory_keys("foxit/reader/ver");
 
   script_tag(name:"summary", value:"Foxit Reader 8.3.2 is vulnerable to multiple code execution and information disclosure vulnerabilties.");
   script_tag(name:"vuldetect", value:"The script checks if a vulnerable version is present on the target host.");

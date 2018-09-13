@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-037.nasl 11058 2018-08-20 14:18:06Z asteins $
+# $Id: secpod_ms12-037.nasl 11355 2018-09-12 10:32:04Z asteins $
 #
 # Microsoft Internet Explorer Multiple Vulnerabilities (2699988)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902682");
-  script_version("$Revision: 11058 $");
+  script_version("$Revision: 11355 $");
   script_cve_id("CVE-2012-1523", "CVE-2012-1858", "CVE-2012-1872", "CVE-2012-1873",
                 "CVE-2012-1874", "CVE-2012-1875", "CVE-2012-1876", "CVE-2012-1877",
                 "CVE-2012-1878", "CVE-2012-1879", "CVE-2012-1880", "CVE-2012-1881",
@@ -36,7 +36,7 @@ if(description)
                     53867, 53868, 53869, 53870, 53871);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 16:18:06 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-13 09:16:32 +0530 (Wed, 13 Jun 2012)");
   script_name("Microsoft Internet Explorer Multiple Vulnerabilities (2699988)");
 
@@ -47,22 +47,29 @@ if(description)
   script_mandatory_keys("MS/IE/Version");
   script_require_ports(139, 445);
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to gain sensitive
-  information or execute arbitrary code in the context of the application.
-  Impact Level: System/Application");
+  information or execute arbitrary code in the context of the application.");
   script_tag(name:"affected", value:"Microsoft Internet Explorer version 6.x/7.x/8.x/9.x");
   script_tag(name:"insight", value:"Multiple vulnerabilities are due to the way that Internet Explorer,
+
   - Handles content using specific strings when sanitizing HTML.
+
   - Handles EUC-JP character encoding.
+
   - Processes NULL bytes, which allows to disclose content from the process
     memory.
+
   - Accesses an object that has been deleted, which allows to corrupt memory
     using Internet Explorer Developer Toolbar.
+
   - Accesses an object that does not exist, when handling the 'Col' element.
+
   - Accesses an object that has been deleted, when handling Same ID Property,
    'Title' element, 'OnBeforeDeactivate' event, 'insertRow' method and
    'OnRowsInserted' event allows to corrupt memory.
+
   - Accesses an undefined memory location, when handling the
    'insertAdjacentText' method allows to corrupt memory.
+
   - Handles 'Scrolling' event.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and
   update mentioned hotfixes in the advisory from the below link,

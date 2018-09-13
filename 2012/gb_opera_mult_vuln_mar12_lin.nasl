@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_mar12_lin.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_opera_mult_vuln_mar12_lin.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Opera Multiple Vulnerabilities - March12 (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802828");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-1924", "CVE-2012-1925", "CVE-2012-1926", "CVE-2012-1927",
                 "CVE-2012-1928", "CVE-2012-1930", "CVE-2012-1931");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-29 19:43:23 +0530 (Thu, 29 Mar 2012)");
   script_name("Opera Multiple Vulnerabilities - March12 (Linux)");
   script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1010/");
@@ -51,18 +51,23 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code
   in the context of the browser, inject scripts, bypass certain security
   restrictions, conduct spoofing attacks or cause a denial of service
-  condition.
-  Impact Level: System/Application");
+  condition.");
   script_tag(name:"affected", value:"Opera version prior to 11.62 on Linux");
   script_tag(name:"insight", value:"Multiple flaws are due to
+
   - An error in web page dialogs handling which displays the wrong address in
     the address field.
+
   - An error in 'history.state' which leaks the state data from cross domain
     pages via 'history.pushState' and 'history.replaceState' functions.
+
   - It fails to ensure that a dialog window is placed on top of content
     windows, allows attackers to trick users into executing downloads.
+
   - A small window for the download dialog.
+
   - A timed page reloads and redirects to different domains.
+
   - printing issues which allows data leaks to other system users or
     allows them to corrupt data.");
   script_tag(name:"solution", value:"Upgrade to the Opera version 11.62 or later,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln2_apr12_lin.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: gb_google_chrome_mult_vuln2_apr12_lin.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities-02 - April 12 (Linux)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802836");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-3066", "CVE-2011-3067", "CVE-2011-3068", "CVE-2011-3069",
                 "CVE-2011-3070", "CVE-2011-3071", "CVE-2011-3072", "CVE-2011-3073",
                 "CVE-2011-3074", "CVE-2011-3075", "CVE-2011-3076", "CVE-2011-3077",
@@ -35,7 +35,7 @@ if(description)
   script_bugtraq_id(52913, 52914, 52916);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-18 11:25:47 +0530 (Wed, 18 Apr 2012)");
   script_name("Google Chrome Multiple Vulnerabilities-02 - April 12 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48732/");
@@ -49,18 +49,22 @@ if(description)
   script_require_keys("Google-Chrome/Linux/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject scripts, bypass
   certain security restrictions, execute arbitrary code in the context of the
-  browser or cause a denial of service.
-  Impact Level: System/Application");
+  browser or cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 18.0.1025.151 on Linux");
   script_tag(name:"insight", value:"The flaws are due to
+
   - Unspecified errors in flash player, allows to corrupt memory in the
     chrome interface.
+
   - An out of bounds read error when handling skia clipping.
+
   - Errors in the cross origin policy when handling iframe replacement and
     parenting pop up windows.
+
   - Multiple use after free errors when handling line boxes, v8 bindings,
     HTMLMediaElement, SVG resources, media content, focus events and when
     applying style commands.
+
   - A read after free error in the script bindings.");
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 18.0.1025.151 or later,
   For updates refer to http://www.google.com/chrome");

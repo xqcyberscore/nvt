@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_utorrent_insecure_lib_load_vuln.nasl 10175 2018-06-13 11:53:08Z tpassfeld $
+# $Id: secpod_utorrent_insecure_lib_load_vuln.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # uTorrent File Opening Insecure Library Loading Vulnerability
 #
@@ -27,16 +27,16 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902240");
-  script_version("$Revision: 10175 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-13 13:53:08 +0200 (Wed, 13 Jun 2018) $");
+  script_version("$Revision: 11356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-09-01 09:34:36 +0200 (Wed, 01 Sep 2010)");
   script_cve_id("CVE-2010-3129");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_name("uTorrent File Opening Insecure Library Loading Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/41051");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/14726/");
-  script_xref(name : "URL" , value : "http://www.vupen.com/english/advisories/2010/2164");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/41051");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/14726/");
+  script_xref(name:"URL", value:"http://www.vupen.com/english/advisories/2010/2164");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
@@ -44,20 +44,20 @@ if(description)
   script_copyright("Copyright (C) 2010 SecPod");
   script_family("General");
   script_dependencies("gb_utorrent_detect_portable_win.nasl");
-  script_require_keys("uTorrent/Win/Version");
+  script_require_keys("utorrent/win/version");
 
-  script_tag(name : "insight" , value : "The flaw is due to the application insecurely loading certain libraries
+  script_tag(name:"insight", value:"The flaw is due to the application insecurely loading certain libraries
   from the current working directory, which could allow attackers to execute
   arbitrary code by tricking a user into opening a Torrent file.");
-  script_tag(name : "solution" , value : "Upgrade to uTorrent version 2.0.4 or later,
+  script_tag(name:"solution", value:"Upgrade to uTorrent version 2.0.4 or later,
   For updates refer to http://www.utorrent.com/downloads");
-  script_tag(name : "summary" , value : "uTorrent on this host is prone to insecure library
+  script_tag(name:"summary", value:"uTorrent on this host is prone to insecure library
   loading vulnerability.");
-  script_tag(name : "impact" , value : "Successful exploitation will allow the attackers to execute arbitrary code and
+  script_tag(name:"impact", value:"Successful exploitation will allow the attackers to execute arbitrary code and
   conduct DLL hijacking attacks.
 
   Impact Level: Application.");
-  script_tag(name : "affected" , value : "uTorrent version 2.0.3 and prior");
+  script_tag(name:"affected", value:"uTorrent version 2.0.3 and prior");
 
   exit(0);
 }
@@ -65,9 +65,7 @@ if(description)
 include("smb_nt.inc");
 include("version_func.inc");
 
-uTorrentVer = "";
-
-uTorrentVer = get_kb_item("uTorrent/Win/Version");
+uTorrentVer = get_kb_item("utorrent/win/version");
 
 if(!uTorrentVer) exit(0);
 

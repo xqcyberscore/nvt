@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_prdts_mult_vuln_nov12_win.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_adobe_prdts_mult_vuln_nov12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Adobe Flash Player Multiple Vulnerabilities - November12 (Windows)
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:adobe:flash_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803044");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-5274", "CVE-2012-5275", "CVE-2012-5276", "CVE-2012-5277",
                 "CVE-2012-5278", "CVE-2012-5279", "CVE-2012-5280");
   script_bugtraq_id(56412);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-08 18:02:59 +0530 (Thu, 08 Nov 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities - November12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51213");
@@ -48,8 +48,7 @@ if(description)
   script_mandatory_keys("AdobeFlashPlayer/Win/Installed");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain sensitive
   information or execute arbitrary code in the context of the affected
-  application.
-  Impact Level: System/Application");
+  application.");
   script_tag(name:"affected", value:"Adobe Flash Player version before 10.3.183.43, 11.x before 11.5.502.110 on Windows");
   script_tag(name:"insight", value:"Multiple unspecified errors exists due to memory corruption, buffer overflow
   that could lead to code execution.");

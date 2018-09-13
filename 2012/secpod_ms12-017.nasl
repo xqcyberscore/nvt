@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-017.nasl 11052 2018-08-20 10:24:34Z asteins $
+# $Id: secpod_ms12-017.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Windows DNS Server Denial of Service Vulnerability (2647170)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902906");
-  script_version("$Revision: 11052 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(52374);
   script_cve_id("CVE-2012-0006");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 12:24:34 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-14 08:31:02 +0530 (Wed, 14 Mar 2012)");
   script_name("Microsoft Windows DNS Server Denial of Service Vulnerability (2647170)");
   script_category(ACT_GATHER_INFO);
@@ -43,8 +43,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attacker to execute arbitrary
-  code or to cause the DNS server to stop responding or to restart.
-  Impact Level: System/Application");
+  code or to cause the DNS server to stop responding or to restart.");
   script_tag(name:"affected", value:"Microsoft Windows 2K3 Service Pack 2 and prior.
   Microsoft Windows Server 2008 Service Pack 2 and prior.");
   script_tag(name:"insight", value:"The flaws are exists when Windows DNS server processing certain lookup

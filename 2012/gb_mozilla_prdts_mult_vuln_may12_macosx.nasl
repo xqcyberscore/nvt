@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_may12_macosx.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_mozilla_prdts_mult_vuln_may12_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Mozilla Products Multiple Vulnerabilities - May12 (Mac OS X)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802841");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0467", "CVE-2012-0468", "CVE-2012-0469", "CVE-2012-0470",
                 "CVE-2012-0471", "CVE-2012-0474", "CVE-2012-0477", "CVE-2012-0478",
                 "CVE-2012-0479");
   script_bugtraq_id(53223, 53220, 53221, 53225, 53219, 53228, 53229, 53227, 53224);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-02 10:49:17 +0530 (Wed, 02 May 2012)");
   script_name("Mozilla Products Multiple Vulnerabilities - May12 (Mac OS X)");
 
@@ -57,25 +57,33 @@ if(description)
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject scripts, bypass
   certain security restrictions, execute arbitrary code in the context of the
-  browser or cause a denial of service.
-  Impact Level: System/Application");
+  browser or cause a denial of service.");
   script_tag(name:"affected", value:"SeaMonkey version before 2.9
   Thunderbird version 5.0 through 11.0
   Mozilla Firefox version 4.x through 11.0
   Thunderbird ESR version 10.x before 10.0.4
   Mozilla Firefox ESR version 10.x before 10.0.4");
   script_tag(name:"insight", value:"The flaws are due to
+
   - Multiple unspecified vulnerabilities in the browser engine.
+
   - A use after free error exists within the XPConnect hashtable, when
     handling IDBKeyRange indexedDB.
+
   - An error within the gfxImageSurface class, when handling certain graphic
     values.
+
   - An error when handling multi octet encoding.
+
   - An error within the 'cairo_dwrite_font_face()', when rendering fonts.
+
   - An error within the docshell implementation, when loading pages.
+
   - An error when decoding ISO-2022-KR and ISO-2022-CN.
+
   - An error exists within the 'texImage2D()' function within WebGL, when
     using JSVAL_TO_OBJECT.
+
   - An error when handling RSS and Atom XML content loaded over HTTPS.");
   script_tag(name:"summary", value:"This host is installed with Mozilla firefox/thunderbird/seamonkey and is prone
   to multiple vulnerabilities.");

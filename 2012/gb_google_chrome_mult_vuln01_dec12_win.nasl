@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_dec12_win.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: gb_google_chrome_mult_vuln01_dec12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities-01 Dec2012 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803118");
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-5130", "CVE-2012-5132", "CVE-2012-5133", "CVE-2012-5134",
                 "CVE-2012-5135", "CVE-2012-5136");
   script_bugtraq_id(56684);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-04 11:26:39 +0530 (Tue, 04 Dec 2012)");
   script_name("Google Chrome Multiple Vulnerabilities-01 Dec2012 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51437/");
@@ -46,8 +46,7 @@ if(description)
   script_require_keys("GoogleChrome/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
   restrictions, execute arbitrary code in the context of the browser or
-  cause a denial of service.
-  Impact Level: System/Application");
+  cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 23.0.1271.91 on Windows");
   script_tag(name:"insight", value:"- An out-of-bounds read error exists in Skia.
 

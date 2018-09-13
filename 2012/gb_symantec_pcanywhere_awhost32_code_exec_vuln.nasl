@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_pcanywhere_awhost32_code_exec_vuln.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: gb_symantec_pcanywhere_awhost32_code_exec_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Symantec pcAnywhere 'awhost32' Remote Code Execution Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:symantec:pcanywhere";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802884");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-3478", "CVE-2011-3479", "CVE-2012-0292", "CVE-2012-0291");
   script_bugtraq_id(51592);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-09 12:27:08 +0530 (Mon, 09 Jul 2012)");
   script_name("Symantec pcAnywhere 'awhost32' Remote Code Execution Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
   script_family("Buffer overflow");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause buffer overflow
-  condition or execute arbitrary code or cause a denial of service condition.
-
-  Impact Level: System/Application");
+  condition or execute arbitrary code or cause a denial of service condition.");
   script_tag(name:"affected", value:"Symantec pcAnywhere version 12.5.x through 12.5.3
 
   Symantec pcAnywhere Solution shipped with Altiris IT Management Suite 7.0 (12.5.x)

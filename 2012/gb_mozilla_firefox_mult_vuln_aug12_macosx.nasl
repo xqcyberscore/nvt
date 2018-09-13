@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_aug12_macosx.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_mozilla_firefox_mult_vuln_aug12_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Mozilla Firefox Multiple Vulnerabilities - August12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803018");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-3965", "CVE-2012-3973");
   script_bugtraq_id(55249);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 15:19:59 +0530 (Thu, 30 Aug 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - August12 (Mac OS X)");
   script_xref(name:"URL", value:"http://securitytracker.com/id/1027450");
@@ -47,13 +47,13 @@ if(description)
   script_require_keys("Mozilla/Firefox/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject scripts, bypass
   certain security restrictions, execute arbitrary code in the context of the
-  browser.
-  Impact Level: System/Application");
+  browser.");
   script_tag(name:"affected", value:"Mozilla Firefox version before 15.0 on Mac OS X");
   script_tag(name:"insight", value:"- An error due to improper restriction of navigation to the about:newtab
     page, which allows remote attackers to execute arbitrary JavaScript code
     with chrome privileges via a crafted web site that triggers creation of a
     new tab and then a new window.
+
   - An error in the debugger in the developer-tools subsystem fails to
     restrict access to the remote-debugging service when remote debugging
     is disabled and the experimental HTTPMonitor extension has been installed

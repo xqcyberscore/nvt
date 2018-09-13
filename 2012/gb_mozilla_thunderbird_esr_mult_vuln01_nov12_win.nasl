@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_thunderbird_esr_mult_vuln01_nov12_win.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: gb_mozilla_thunderbird_esr_mult_vuln01_nov12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Mozilla Thunderbird ESR Multiple Vulnerabilities-01 November12 (Windows)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803352");
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-4209", "CVE-2012-4214", "CVE-2012-4215", "CVE-2012-4216",
                 "CVE-2012-4201", "CVE-2012-4202", "CVE-2012-4207", "CVE-2012-5842",
                 "CVE-2012-5841", "CVE-2012-5829", "CVE-2012-5840", "CVE-2012-5833",
@@ -36,7 +36,7 @@ if(description)
                     56631, 56636, 56642, 56637, 56635);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 12:10:03 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla Thunderbird ESR Multiple Vulnerabilities-01 November12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51358");
@@ -57,8 +57,7 @@ if(description)
   script_mandatory_keys("Thunderbird-ESR/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject scripts, bypass
   certain security restrictions, execute arbitrary code in the context of the
-  browser.
-  Impact Level: System/Application");
+  browser.");
   script_tag(name:"affected", value:"Thunderbird ESR version 10.x before 10.0.11 on Windows");
   script_tag(name:"insight", value:"The flaws are due to:
 

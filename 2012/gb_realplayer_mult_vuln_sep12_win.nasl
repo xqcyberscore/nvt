@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_realplayer_mult_vuln_sep12_win.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_realplayer_mult_vuln_sep12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # RealNetworks RealPlayer Multiple Vulnerabilities - Sep12 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803030");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-2407", "CVE-2012-2408", "CVE-2012-2409", "CVE-2012-2410",
                 "CVE-2012-3234");
   script_bugtraq_id(55473);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-21 16:04:53 +0530 (Fri, 21 Sep 2012)");
   script_name("RealNetworks RealPlayer Multiple Vulnerabilities - Sep12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47896/");
@@ -46,13 +46,15 @@ if(description)
   script_dependencies("gb_realplayer_detect_win.nasl");
   script_require_keys("RealPlayer/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
-  on the system or cause the application to crash.
-  Impact Level: System/Application");
+  on the system or cause the application to crash.");
   script_tag(name:"affected", value:"RealPlayer versions 11.x, 14.x and 15.x through 15.0.2.72
   RealPlayer SP versions 1.0 through 1.1.5 (12.0.0.879) on Windows");
   script_tag(name:"insight", value:"Multiple errors caused, when
+
   - Unpacking AAC stream
+
   - Decoding AAC SDK
+
   - Handling RealMedia files, which can be exploited to cause a buffer
     overflow.");
   script_tag(name:"solution", value:"Upgrade to RealPlayer version 15.0.6.14 or later,

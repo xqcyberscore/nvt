@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_jul12_lin.nasl 11266 2018-09-06 10:59:26Z cfischer $
+# $Id: gb_google_chrome_mult_vuln_jul12_lin.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities - July 12 (Linux)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802881");
-  script_version("$Revision: 11266 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-2815", "CVE-2012-2817", "CVE-2012-2818", "CVE-2012-2819",
                 "CVE-2012-2820", "CVE-2012-2821", "CVE-2012-2822", "CVE-2012-2823",
                 "CVE-2012-2824", "CVE-2012-2825", "CVE-2012-2826", "CVE-2012-2828",
@@ -36,7 +36,7 @@ if(description)
   script_bugtraq_id(54203);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-04 14:54:30 +0530 (Wed, 04 Jul 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - July 12 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49724");
@@ -49,8 +49,7 @@ if(description)
   script_require_keys("Google-Chrome/Linux/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to bypass certain security
   restrictions, execute arbitrary code in the context of the browser or
-  cause a denial of service.
-  Impact Level: System/Application");
+  cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 20.0.1132.43 on Linux");
   script_tag(name:"insight", value:"Refer to the reference links for more information on the vulnerabilities.");
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 20.0.1132.43 or later,

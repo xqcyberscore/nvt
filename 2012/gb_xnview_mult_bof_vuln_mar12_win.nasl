@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xnview_mult_bof_vuln_mar12_win.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_xnview_mult_bof_vuln_mar12_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # XnView Multiple Buffer Overflow Vulnerabilities - Mar12 (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802815");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(52405);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-15 12:56:44 +0530 (Thu, 15 Mar 2012)");
   script_name("XnView Multiple Buffer Overflow Vulnerabilities - Mar12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47388/");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("secpod_xnview_detect_win.nasl");
   script_require_keys("XnView/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code on the
-  system via a specially crafted files or cause a denial of service condition.
-  Impact Level: System/Application");
+  system via a specially crafted files or cause a denial of service condition.");
   script_tag(name:"affected", value:"XnView versions 1.98.5 and prior on windows");
   script_tag(name:"solution", value:"Update to XnView version 1.98.8 or later,
   For updates refer to http://www.xnview.com/");
@@ -55,10 +54,13 @@ if(description)
 
   Vulnerabilities Insight:
   The flaws are due to
+
   - A signedness error in the FlashPix plugin (Xfpx.dll) when validating
     buffer sizes to process image's content.
+
   - An error when processing image data within Personal Computer eXchange
     (PCX) files.
+
   - A boundary error when parsing a directory, which allows attackers to cause a
     buffer overflow when browsing folder from an extracted archive file.");
   script_tag(name:"qod_type", value:"registry");

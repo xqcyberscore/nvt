@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dissector_mult_vuln_win.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: gb_wireshark_mult_dissector_mult_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Wireshark LDP PPP and HSRP dissector Multiple Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802978");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-5237", "CVE-2012-5238", "CVE-2012-5240");
   script_bugtraq_id(55754);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-08 14:20:21 +0530 (Mon, 08 Oct 2012)");
   script_name("Wireshark LDP PPP and HSRP dissector Multiple Vulnerabilities (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50843/");
@@ -49,8 +49,7 @@ if(description)
   script_require_keys("Wireshark/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   code in the context of the application, to crash the affected application,
-  or to consume excessive CPU resources.
-  Impact Level: System/Application");
+  or to consume excessive CPU resources.");
   script_tag(name:"affected", value:"Wireshark versions 1.8.x prior to 1.8.3 on windows");
   script_tag(name:"insight", value:"Errors in the HSRP, PPP and LDP dissectors when processing certain
   packets can be exploited to cause an infinite loop and consume CPU

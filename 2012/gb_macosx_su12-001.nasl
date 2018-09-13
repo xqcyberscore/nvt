@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_su12-001.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_macosx_su12-001.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Mac OS X Multiple Vulnerabilities (2012-001)
 #
@@ -27,7 +27,7 @@
 tag_impact = "Successful exploitation could allow attackers to execute arbitrary code in
   the context of the browser, inject scripts, bypass certain security
   restrictions or cause a denial-of-service condition.
-  Impact Level: System/Application";
+  ";
 tag_affected = "Address Book, Apache, CFNetwork, ColorSync, CoreAudio, CoreText, CoreUI
   curl, Data Security, dovecot, filecmds, ImageIO, Internet Sharing, Libinfo,
   libresolv, libsecurity, OpenGL, PHP, QuickTime, SquirrelMail, X11, Webmail,
@@ -42,7 +42,7 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802392");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-3444", "CVE-2011-3348", "CVE-2011-3389", "CVE-2011-3246",
                 "CVE-2011-3447", "CVE-2011-0200", "CVE-2011-3252", "CVE-2011-3448",
                 "CVE-2011-3449", "CVE-2011-3450", "CVE-2011-2192", "CVE-2011-2895",
@@ -61,7 +61,7 @@ if(description)
                     50155, 51809, 50400, 51811, 50401, 51814, 50404, 40291, 42399,
                     48648, 48091, 51818, 48456, 51816, 49229, 47820, 49303, 50092,
                     50112, 50091, 50099, 48007, 48566, 37118);
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-06 17:42:28 +0530 (Mon, 06 Feb 2012)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");

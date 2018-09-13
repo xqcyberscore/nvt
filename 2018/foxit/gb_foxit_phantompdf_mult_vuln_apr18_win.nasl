@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_mult_vuln_apr18_win.nasl 10761 2018-08-03 13:48:17Z cfischer $
+# $Id: gb_foxit_phantompdf_mult_vuln_apr18_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Foxit PhantomPDF Multiple Vulnerabilities-Apr18 (Windows)
 #
@@ -29,22 +29,21 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813157");
-  script_version("$Revision: 10761 $");
+  script_version("$Revision: 11356 $");
   script_cve_id("CVE-2018-3842", "CVE-2017-17557", "CVE-2017-14458", "CVE-2018-3853",
                 "CVE-2018-3850", "CVE-2018-3843", "CVE-2018-10302");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-03 15:48:17 +0200 (Fri, 03 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 14:50:06 +0530 (Wed, 25 Apr 2018)");
   script_name("Foxit PhantomPDF Multiple Vulnerabilities-Apr18 (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Foxit PhantomPDF
+  script_tag(name:"summary", value:"The host is installed with Foxit PhantomPDF
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws exists due to,
+  script_tag(name:"insight", value:"Multiple flaws exists due to,
 
   - An error where the application passes an insufficiently qualified path in
     loading an external library when a user launches the application.
@@ -68,28 +67,28 @@ if(description)
 
   - An error allowing users to embed executable files.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to cause a denial of service condition, execute arbitrary code and
   gain access to sensitive data from memory.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Foxit PhantomPDF versions 9.0.1.1049 and
+  script_tag(name:"affected", value:"Foxit PhantomPDF versions 9.0.1.1049 and
   prior on windows");
 
-  script_tag(name: "solution" , value:"Upgrade to Foxit Reader version 9.1 or later.
+  script_tag(name:"solution", value:"Upgrade to Foxit Reader version 9.1 or later.
   For updates refer to Reference links.");
 
   script_tag(name:"solution_type", value:"VendorFix");
   script_tag(name:"qod_type", value:"registry");
-  script_xref(name : "URL" , value:"http://www.foxitsoftware.com");
-  script_xref(name : "URL" , value:"https://www.foxitsoftware.com/support/security-bulletins.php#content-2018");
+  script_xref(name:"URL", value:"http://www.foxitsoftware.com");
+  script_xref(name:"URL", value:"https://www.foxitsoftware.com/support/security-bulletins.php#content-2018");
 
   script_copyright("Copyright (C) 2018 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_foxit_phantom_reader_detect.nasl");
-  script_mandatory_keys("Foxit/PhantomPDF/Ver");
+  script_mandatory_keys("foxit/phantompdf/ver");
   exit(0);
 }
 

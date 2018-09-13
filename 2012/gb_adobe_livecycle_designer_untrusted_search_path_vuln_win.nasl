@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_livecycle_designer_untrusted_search_path_vuln_win.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_adobe_livecycle_designer_untrusted_search_path_vuln_win.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Adobe LiveCycle Designer Untrusted Search Path Vulnerability (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802960");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2010-5212");
   script_tag(name:"cvss_base", value:"6.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-11 19:03:45 +0530 (Tue, 11 Sep 2012)");
   script_name("Adobe LiveCycle Designer Untrusted Search Path Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/41417");
@@ -41,9 +41,7 @@ if(description)
   script_dependencies("gb_adobe_livecycle_designer_detect_win.nasl");
   script_mandatory_keys("Adobe/LiveCycle/Designer");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
-arbitrary code on the target system.
-
-Impact Level: System/Application");
+arbitrary code on the target system.");
   script_tag(name:"affected", value:"Adobe LiveCycle Designer version ES2 9.0.0.20091029.1.612548
 on Windows");
   script_tag(name:"insight", value:"The flaw is due to the way it loads dynamic-link libraries.

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_arbitrary_write_rce_vuln_win.nasl 6757 2017-07-19 05:57:31Z cfischer $
+# $Id: gb_foxit_phantompdf_arbitrary_write_rce_vuln_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Foxit PhantomPDF Arbitrary Write RCE Vulnerability (Windows)
 #
@@ -29,47 +29,46 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.811500");
-  script_version("$Revision: 6757 $");
+  script_version("$Revision: 11356 $");
   script_cve_id("CVE-2017-10994");
   script_bugtraq_id(99499);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-19 07:57:31 +0200 (Wed, 19 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2017-07-11 11:24:37 +0530 (Tue, 11 Jul 2017)");
   script_name("Foxit PhantomPDF Arbitrary Write RCE Vulnerability (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with Foxit PhantomPDF
+  script_tag(name:"summary", value:"The host is installed with Foxit PhantomPDF
   and is prone to an arbitrary write vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an input validation 
-  error."); 
+  script_tag(name:"insight", value:"The flaw is due to an input validation
+  error.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
-  attackers to execute arbitrary code within the context of the affected 
-  application. Failed exploit attempts will likely cause a denial-of-service 
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
+  attackers to execute arbitrary code within the context of the affected
+  application. Failed exploit attempts will likely cause a denial-of-service
   condition.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Foxit PhantomPDF version prior to 8.3.1 on
+  script_tag(name:"affected", value:"Foxit PhantomPDF version prior to 8.3.1 on
   windows");
 
-  script_tag(name: "solution" , value:"Upgrade to Foxit PhantomPDF version 8.3.1 or
+  script_tag(name:"solution", value:"Upgrade to Foxit PhantomPDF version 8.3.1 or
   later. For updates refer to http://www.foxitsoftware.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value:"https://www.foxitsoftware.com/support/security-bulletins.php");
+  script_xref(name:"URL", value:"https://www.foxitsoftware.com/support/security-bulletins.php");
   script_copyright("Copyright (C) 2017 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_foxit_phantom_reader_detect.nasl");
-  script_mandatory_keys("Foxit/PhantomPDF/Ver");
+  script_mandatory_keys("foxit/phantompdf/ver");
   exit(0);
 }
 
@@ -77,15 +76,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-foxitVer = "";
-
-## Get version
 if(!foxitVer = get_app_version(cpe:CPE, nofork:TRUE)){
   exit(0);
 }
 
-## Check for vulnerable version
 ## 8.3.1 == 8.3.1.21155
 if(version_is_less(version:foxitVer, test_version:"8.3.1.21155"))
 {

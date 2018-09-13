@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winlog_lite_bof_vuln.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_winlog_lite_bof_vuln.nasl 11355 2018-09-12 10:32:04Z asteins $
 #
 # Sielco Sistemi Winlog PRO Buffer overflow Vulnerability
 #
@@ -24,45 +24,39 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will allow remote attackers to execute arbitrary
-  code in the context of the application.
-  Impact Level: System/Application";
-tag_affected = "Winlog Lite version before 2.07.09";
-
-tag_insight = "The flaw is due to an unspecified error when processing certain values
-  in project files and can be exploited to cause a buffer overflow by tricking
-  a user into loading a malicious project file.";
-tag_solution = "Upgrade to  Winlog Lite version 2.07.09 or later,
-  For updates refer to http://www.sielcosistemi.com/en/download/public/index.html";
-tag_summary = "This host is installed with Sielco Sistemi Winlog PRO and is prone
-  to buffer overflow vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802552");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11355 $");
   script_cve_id("CVE-2011-4037");
   script_bugtraq_id(50932);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-03 18:03:49 +0530 (Tue, 03 Jan 2012)");
   script_name("Sielco Sistemi Winlog PRO Buffer overflow Vulnerability");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/47078");
-  script_xref(name : "URL" , value : "http://securitytracker.com/id?1026388");
-  script_xref(name : "URL" , value : "http://www.us-cert.gov/control_systems/pdf/ICSA-11-298-01.pdf");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/47078");
+  script_xref(name:"URL", value:"http://securitytracker.com/id?1026388");
+  script_xref(name:"URL", value:"http://www.us-cert.gov/control_systems/pdf/ICSA-11-298-01.pdf");
 
   script_tag(name:"qod_type", value:"registry");
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Buffer overflow");
-  script_dependencies("secpod_reg_enum.nasl");
+  script_dependencies("smb_reg_service_pack.nasl");
+  script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
+  script_tag(name:"insight", value:"The flaw is due to an unspecified error when processing certain values
+  in project files and can be exploited to cause a buffer overflow by tricking
+  a user into loading a malicious project file.");
+  script_tag(name:"solution", value:"Upgrade to  Winlog Lite version 2.07.09 or later,
+  For updates refer to http://www.sielcosistemi.com/en/download/public/index.html");
+  script_tag(name:"summary", value:"This host is installed with Sielco Sistemi Winlog PRO and is prone
+  to buffer overflow vulnerability.");
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
+  code in the context of the application.");
+  script_tag(name:"affected", value:"Winlog Lite version before 2.07.09");
+  script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
 }
 
@@ -87,16 +81,16 @@ if(!registry_key_exists(key:key)){
 
 winName = registry_get_sz(key:key, item:"DisplayName");
 
-## Check DisplayName for Winlog Lite
 if("Winlog Lite" >< winName)
 {
-  ## Get version
   winVer = registry_get_sz(key:key, item:"DisplayVersion");
   if(winVer!= NULL)
   {
-    ## Check for Winlog Lite version
     if(version_is_less(version:winVer, test_version:"2.07.09")){
-      security_message(0);
+      security_message( port: 0, data: "The target host was found to be vulnerable" );
+      exit(0);
     }
   }
 }
+
+exit(99);

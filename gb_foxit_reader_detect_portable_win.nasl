@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_reader_detect_portable_win.nasl 10068 2018-06-04 13:54:53Z tpassfeld $
+# $Id: gb_foxit_reader_detect_portable_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Foxit Reader Portable Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114005");
-  script_version("$Revision: 10068 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-04 15:54:53 +0200 (Mon, 04 Jun 2018) $");
+  script_version("$Revision: 11356 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 17:24:52 +0200 (Wed, 25 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -81,7 +81,7 @@ if( ! fileList ) {
 
 # From gb_foxit_reader_detect.nasl to avoid a doubled detection of
 # a registry-based installation.
-detectedList = get_kb_list( "Foxit/Reader/Win/InstallLocations" );
+detectedList = get_kb_list( "foxit/reader/win/install_locations" );
 
 fileList = split( fileList, keep:FALSE );
 foreach filePath( fileList ) {
@@ -106,8 +106,8 @@ foreach filePath( fileList ) {
     # Version of the foxitreader.exe file is something like 9.1.0.5096
     # so we need to catch the first four parts of the version.
     if( vers && version = eregmatch( string:vers, pattern:"^([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)" ) ) {
-      set_kb_item( name:"Foxit/Reader/Win/InstallLocations", value:tolower( location ) );
-      set_kb_item( name:"Foxit/Reader/Win/Ver", value:version[1] );
+      set_kb_item( name:"foxit/reader/win/install_locations", value:tolower( location ) );
+      set_kb_item( name:"foxit/reader/win/ver", value:version[1] );
 
       # Foxit Reader is only installed in the 32bit version
       cpe = "cpe:/a:foxitsoftware:reader:";

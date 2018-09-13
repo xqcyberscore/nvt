@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxit_phantompdf_mult_vuln_nov16.nasl 4650 2016-11-30 13:18:14Z antu123 $
+# $Id: gb_foxit_phantompdf_mult_vuln_nov16.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Foxit PhantomPDF Multiple Vulnerabilities Nov16
 #
@@ -29,51 +29,55 @@ CPE = "cpe:/a:foxitsoftware:phantompdf";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.809304");
-  script_version("$Revision: 4650 $");
+  script_version("$Revision: 11356 $");
   script_cve_id("CVE-2016-8878", "CVE-2016-8879", "CVE-2016-8877", "CVE-2016-8876",
                 "CVE-2016-8875");
-  script_bugtraq_id(93608); 
+  script_bugtraq_id(93608);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2016-11-30 14:18:14 +0100 (Wed, 30 Nov 2016) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-11-03 14:36:41 +0530 (Thu, 03 Nov 2016)");
   script_name("Foxit PhantomPDF Multiple Vulnerabilities Nov16");
 
-  script_tag(name: "summary" , value:"The host is installed with Foxit PhantomPDF
+  script_tag(name:"summary", value:"The host is installed with Foxit PhantomPDF
   and is prone to multiple vulnerabilities.");
 
-  script_tag(name: "vuldetect" , value:"Get the installed version with the help
-  of detect NVT and check the version is vulnerable or not.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"Multiple flaws are due to,
+  script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - The heap buffer overflow and heap corruption vulnerabilities.
-  - An Use-After-Free vulnerability.
-  - An Out-of-Bounds Read or Out-of-Bounds Write vulnerability.
-  - A Null Pointer Deference vulnerability.
-  - An Integer Overflow vulnerability."); 
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  - An Use-After-Free vulnerability.
+
+  - An Out-of-Bounds Read or Out-of-Bounds Write vulnerability.
+
+  - A Null Pointer Deference vulnerability.
+
+  - An Integer Overflow vulnerability.");
+
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to leak sensitive information, execute remote code and also to cause a
   denial of service condition(application crash).
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"Foxit PhantomPDF version prior to 8.1.");
+  script_tag(name:"affected", value:"Foxit PhantomPDF version prior to 8.1.");
 
-  script_tag(name: "solution" , value:"Upgrade to Foxit PhantomPDF version
+  script_tag(name:"solution", value:"Upgrade to Foxit PhantomPDF version
   8.1 or later, For updates refer to http://www.foxitsoftware.com");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
   script_tag(name:"qod_type", value:"registry");
 
-  script_xref(name : "URL" , value:"https://www.foxitsoftware.com/support/security-bulletins.php");
+  script_xref(name:"URL", value:"https://www.foxitsoftware.com/support/security-bulletins.php");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("General");
   script_dependencies("gb_foxit_phantom_reader_detect.nasl");
-  script_mandatory_keys("Foxit/PhantomPDF/Ver");
+  script_mandatory_keys("foxit/phantompdf/ver");
   exit(0);
 }
 
@@ -81,15 +85,10 @@ if(description)
 include("host_details.inc");
 include("version_func.inc");
 
-## Variable Initialization
-foxitVer = "";
-
-## Get version
 if(!foxitVer = get_app_version(cpe:CPE)){
   exit(0);
 }
 
-## Grep for vulnerable version
 if(version_is_less(version:foxitVer, test_version:"8.1"))
 {
   report = report_fixed_ver(installed_version:foxitVer, fixed_version:"8.1");

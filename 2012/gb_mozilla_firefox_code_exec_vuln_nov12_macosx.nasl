@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_code_exec_vuln_nov12_macosx.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_mozilla_firefox_code_exec_vuln_nov12_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Mozilla Firefox Code Execution Vulnerabilities - November12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803062");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-4210");
   script_bugtraq_id(56646);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 15:52:10 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla Firefox Code Execution Vulnerabilities - November12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51358");
@@ -46,8 +46,7 @@ if(description)
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to gain privileges or execute
-  arbitrary code in the context of the browser.
-  Impact Level: System/Application");
+  arbitrary code in the context of the browser.");
   script_tag(name:"affected", value:"Mozilla Firefox version before 17.0 on Mac OS X");
   script_tag(name:"insight", value:"An error within Style Inspector when parsing style sheets can be exploited
   to execute HTML and CSS code in chrome privileged context.");

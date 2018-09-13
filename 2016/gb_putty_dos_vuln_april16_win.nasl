@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_dos_vuln_april16_win.nasl 10142 2018-06-08 13:18:36Z tpassfeld $
+# $Id: gb_putty_dos_vuln_april16_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # PuTTY Denial Of Service Vulnerability April16 (Windows)
 #
@@ -29,45 +29,45 @@ CPE = "cpe:/a:putty:putty";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.807915");
-  script_version("$Revision: 10142 $");
+  script_version("$Revision: 11356 $");
   script_cve_id("CVE-2016-2563");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:18:36 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2016-04-21 10:16:59 +0530 (Thu, 21 Apr 2016)");
   script_tag(name:"qod_type", value:"registry");
   script_name("PuTTY Denial Of Service Vulnerability April16 (Windows)");
 
-  script_tag(name: "summary" , value:"The host is installed with PuTTY and is
+  script_tag(name:"summary", value:"The host is installed with PuTTY and is
   prone to denial of service vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Checks if a vulnerable version is present on the target host.");
+  script_tag(name:"vuldetect", value:"Checks if a vulnerable version is present on the target host.");
 
-  script_tag(name: "insight" , value:"The flaw is due to SCP command-line utility
+  script_tag(name:"insight", value:"The flaw is due to SCP command-line utility
   (pscp) is missing a bounds-check for a stack buffer when processing the
   SCP-SINK file-size response to a SCP download request.");
 
-  script_tag(name: "impact" , value:"Successful exploitation will allow remote
+  script_tag(name:"impact", value:"Successful exploitation will allow remote
   servers to conduct denial of service attack.
 
   Impact Level: System/Application");
 
-  script_tag(name: "affected" , value:"PuTTY version 0.59 through 0.66 on
+  script_tag(name:"affected", value:"PuTTY version 0.59 through 0.66 on
   Windows.");
 
-  script_tag(name: "solution" , value:"Upgrade to PuTTY version 0.67 or later,
+  script_tag(name:"solution", value:"Upgrade to PuTTY version 0.67 or later,
   For updates refer to http://www.chiark.greenend.org.uk/~sgtatham/putty");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "https://github.com/tintinweb/pub/tree/master/pocs/cve-2016-2563");
-  script_xref(name : "URL" , value : "http://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/vuln-pscp-sink-sscanf.html");
+  script_xref(name:"URL", value:"https://github.com/tintinweb/pub/tree/master/pocs/cve-2016-2563");
+  script_xref(name:"URL", value:"http://www.chiark.greenend.org.uk/~sgtatham/putty/wishlist/vuln-pscp-sink-sscanf.html");
 
   script_copyright("Copyright (C) 2016 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("gb_putty_portable_detect.nasl");
-  script_mandatory_keys("PuTTY/Version");
+  script_mandatory_keys("putty/version");
   exit(0);
 }
 

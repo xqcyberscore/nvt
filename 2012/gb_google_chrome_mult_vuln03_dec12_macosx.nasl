@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln03_dec12_macosx.nasl 11052 2018-08-20 10:24:34Z asteins $
+# $Id: gb_google_chrome_mult_vuln03_dec12_macosx.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities-03 Dec2012 (Mac OS X)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803129");
-  script_version("$Revision: 11052 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-5139", "CVE-2012-5140", "CVE-2012-5141", "CVE-2012-5142",
                 "CVE-2012-5143", "CVE-2012-5144");
   script_bugtraq_id(56903);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 12:24:34 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-14 13:40:56 +0530 (Fri, 14 Dec 2012)");
   script_name("Google Chrome Multiple Vulnerabilities-03 Dec2012 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51549/");
@@ -46,12 +46,13 @@ if(description)
   script_require_keys("GoogleChrome/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
   restrictions, execute arbitrary code in the context of the browser or
-  cause a denial of service.
-  Impact Level: System/Application");
+  cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 23.0.1271.97 on Mac OS X");
   script_tag(name:"insight", value:"- An use-after-free error exists in visibility events and in URL loader.
+
   - Error exists within the instantiation of the Chromoting client plug-in,
     history navigation and AAC decoding.
+
   - An integer overflow error exists within handling of PPAPI image buffers.");
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 23.0.1271.97 or later,
   For updates refer to http://www.google.com/chrome");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ezhometech_ezserver_long_request_bof_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_ezhometech_ezserver_long_request_bof_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Ezhometech Ezserver Long 'GET' Request Stack Overflow Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802438");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(54056);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-20 17:01:48 +0530 (Wed, 20 Jun 2012)");
   script_name("Ezhometech Ezserver Long 'GET' Request Stack Overflow Vulnerability");
   script_category(ACT_DENIAL);
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/113851/ezhometechezserver-overflow.txt");
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause the
-  application to crash, creating a denial of service condition.
-
-  Impact Level: System/Application");
+  application to crash, creating a denial of service condition.");
   script_tag(name:"affected", value:"Ezhometech EzServer version 6.4 and prior");
   script_tag(name:"insight", value:"Buffer overflow condition exist in URL handling, sending long
   GET request to the server on port 8000 will cause server process to exit.");

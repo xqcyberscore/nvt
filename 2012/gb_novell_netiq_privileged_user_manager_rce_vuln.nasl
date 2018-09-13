@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_netiq_privileged_user_manager_rce_vuln.nasl 11058 2018-08-20 14:18:06Z asteins $
+# $Id: gb_novell_netiq_privileged_user_manager_rce_vuln.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Novell NetIQ Privileged User Manager Remote Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802043");
-  script_version("$Revision: 11058 $");
+  script_version("$Revision: 11357 $");
   script_bugtraq_id(56535, 56539);
   script_cve_id("CVE-2012-5930", "CVE-2012-5931", "CVE-2012-5932");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 16:18:06 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-21 18:46:53 +0530 (Wed, 21 Nov 2012)");
   script_name("Novell NetIQ Privileged User Manager Remote Code Execution Vulnerability");
 
@@ -52,8 +52,7 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute perl code and
-  change administrative credentials.
-  Impact Level: System/Application");
+  change administrative credentials.");
   script_tag(name:"affected", value:"Novell NetIQ Privileged User Manager 2.3.0 and 2.3.1");
   script_tag(name:"insight", value:"The flaws are due to an error in the 'ldapagnt' and 'auth' module due to not
   restricting access to certain methods, which can be exploited to execute

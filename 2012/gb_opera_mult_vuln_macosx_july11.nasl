@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_macosx_july11.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_opera_mult_vuln_macosx_july11.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Opera Browser Multiple Vulnerabilities July-11 (Mac OS X)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802753");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2011-1337", "CVE-2011-2609", "CVE-2011-2610", "CVE-2011-2611",
                 "CVE-2011-2612", "CVE-2011-2613", "CVE-2011-2614", "CVE-2011-2615",
                 "CVE-2011-2616", "CVE-2011-2617", "CVE-2011-2618", "CVE-2011-2619",
@@ -36,7 +36,7 @@ if(description)
   script_bugtraq_id(48501, 48500, 48556);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-19 10:01:43 +0530 (Thu, 19 Apr 2012)");
   script_name("Opera Browser Multiple Vulnerabilities July-11 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/45060");
@@ -49,8 +49,7 @@ if(description)
   script_dependencies("gb_opera_detect_macosx.nasl");
   script_require_keys("Opera/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
-  and cause a denial of service.
-  Impact Level: System/Application");
+  and cause a denial of service.");
   script_tag(name:"affected", value:"Opera Web Browser version prior 11.50 on Mac OS X");
   script_tag(name:"insight", value:"For information about vulnerability refer the references.");
   script_tag(name:"solution", value:"Upgrade to Opera Web Browser version 11.50 or later,

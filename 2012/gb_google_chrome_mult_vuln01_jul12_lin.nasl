@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln01_jul12_lin.nasl 11322 2018-09-11 10:15:07Z asteins $
+# $Id: gb_google_chrome_mult_vuln01_jul12_lin.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities(01) - July 12 (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802918");
-  script_version("$Revision: 11322 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-2842", "CVE-2012-2843", "CVE-2012-2844");
   script_bugtraq_id(54386);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-24 12:01:56 +0530 (Tue, 24 Jul 2012)");
   script_name("Google Chrome Multiple Vulnerabilities(01) - July 12 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49906");
@@ -46,8 +46,7 @@ if(description)
   script_require_keys("Google-Chrome/Linux/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to bypass certain security
   restrictions, execute arbitrary code in the context of the browser or
-  cause a denial of service.
-  Impact Level: System/Application");
+  cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 20.0.1132.57 on Linux");
   script_tag(name:"insight", value:"- A use-after-free error exists within counter handling and within layout
     height tracking.

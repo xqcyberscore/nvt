@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-026.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: secpod_ms12-026.nasl 11355 2018-09-12 10:32:04Z asteins $
 #
 # MS Forefront Unified Access Gateway Information Disclosure Vulnerability (2663860)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903018");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11355 $");
   script_cve_id("CVE-2012-0146", "CVE-2012-0147");
   script_bugtraq_id(52909, 52903);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-12 16:00:48 +0530 (Thu, 12 Apr 2012)");
   script_name("MS Forefront Unified Access Gateway Information Disclosure Vulnerability (2663860)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48787");
@@ -54,7 +54,9 @@ if(description)
   script_tag(name:"affected", value:"Microsoft Forefront Unified Access Gateway 2010 Service Pack 1
   Microsoft Forefront Unified Access Gateway 2010 Service Pack 1 Update 1");
   script_tag(name:"insight", value:"The flaws are due to an error,
+
   - In UAG allows redirecting users to an untrusted site.
+
   - Within the default website configuration allows access to certain content
     from the external network.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and

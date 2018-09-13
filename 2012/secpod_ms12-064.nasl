@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-064.nasl 10590 2018-07-24 11:54:34Z cfischer $
+# $Id: secpod_ms12-064.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Microsoft Office Word Remote Code Execution Vulnerabilities (2742319)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902926");
-  script_version("$Revision: 10590 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0182", "CVE-2012-2528");
   script_bugtraq_id(55780, 55781);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-24 13:54:34 +0200 (Tue, 24 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-10 08:46:36 +0530 (Wed, 10 Oct 2012)");
   script_name("Microsoft Office Word Remote Code Execution Vulnerabilities (2742319)");
   script_category(ACT_GATHER_INFO);
@@ -54,9 +54,7 @@ if(description)
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms12-064");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code by
-  tricking a user into opening a specially crafted word and RTF files.
-
-  Impact Level: System/Application");
+  tricking a user into opening a specially crafted word and RTF files.");
 
   script_tag(name:"affected", value:"Microsoft Word Viewer
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_putty_dos_vuln_win.nasl 10142 2018-06-08 13:18:36Z tpassfeld $
+# $Id: secpod_putty_dos_vuln_win.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
 #
 # Putty Denial of Service Vulnerability
 #
@@ -27,38 +27,38 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902780");
-  script_version("$Revision: 10142 $");
+  script_version("$Revision: 11356 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
   script_tag(name:"creation_date", value:"2011-12-26 18:52:49 +0530 (Mon, 26 Dec 2011)");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 15:18:36 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
   script_name("Putty Denial of Service Vulnerability");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18270/");
-  script_xref(name : "URL" , value : "http://packetstorm.linuxsecurity.com/1112-exploits/putty060-dos.txt");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18270/");
+  script_xref(name:"URL", value:"http://packetstorm.linuxsecurity.com/1112-exploits/putty060-dos.txt");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2011 SecPod");
   script_family("Denial of Service");
   script_dependencies("gb_putty_portable_detect.nasl");
-  script_mandatory_keys("PuTTY/Version");
-  script_tag(name : "impact" , value : "Successful exploitation will allow attackers to cause denial of
+  script_mandatory_keys("putty/version");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of
 service.
 
 Impact Level: Application/System");
-  script_tag(name : "affected" , value : "Putty version 0.60");
-  script_tag(name : "insight" , value : "The flaw is caused to unspecified error in the application.");
-  script_tag(name : "solution" , value : "No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore.
+  script_tag(name:"affected", value:"Putty version 0.60");
+  script_tag(name:"insight", value:"The flaw is caused to unspecified error in the application.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability. Likely none will be provided anymore.
 		  General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is installed with Putty and is prone to denial of
+  script_tag(name:"summary", value:"This host is installed with Putty and is prone to denial of
 service vulnerability.");
-  script_tag(name :"qod_type", value :"registry");
-  script_tag(name :"solution_type", value :"WillNotFix");
+  script_tag(name:"qod_type", value:"registry");
+  script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);
 }
 
 include("version_func.inc");
 
-puttyVer = get_kb_item("PuTTY/Version");
+puttyVer = get_kb_item("putty/version");
 if(!puttyVer){
   exit(0);
 }

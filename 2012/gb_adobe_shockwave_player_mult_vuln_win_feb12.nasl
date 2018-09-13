@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_shockwave_player_mult_vuln_win_feb12.nasl 11058 2018-08-20 14:18:06Z asteins $
+# $Id: gb_adobe_shockwave_player_mult_vuln_win_feb12.nasl 11357 2018-09-12 10:57:05Z asteins $
 #
 # Adobe Shockwave Player Multiple Vulnerabilities - Feb 2012 (Windows)
 #
@@ -32,14 +32,14 @@ CPE = "cpe:/a:adobe:shockwave_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802398");
-  script_version("$Revision: 11058 $");
+  script_version("$Revision: 11357 $");
   script_cve_id("CVE-2012-0757", "CVE-2012-0759", "CVE-2012-0760", "CVE-2012-0761",
                 "CVE-2012-0762", "CVE-2012-0763", "CVE-2012-0764", "CVE-2012-0766",
                 "CVE-2012-0758", "CVE-2012-0771");
   script_bugtraq_id(51999, 52006, 52000, 52001, 52002, 52003, 52004, 52005, 52007);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 16:18:06 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:57:05 +0200 (Wed, 12 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-17 12:55:43 +0530 (Fri, 17 Feb 2012)");
   script_name("Adobe Shockwave Player Multiple Vulnerabilities - Feb 2012 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47932/");
@@ -55,8 +55,7 @@ if(description)
   script_mandatory_keys("Adobe/ShockwavePlayer/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of service or
   execute arbitrary code by tricking a user into visiting a specially crafted
-  web page.
-  Impact Level: System/Application");
+  web page.");
   script_tag(name:"affected", value:"Adobe Shockwave Player Versions 11.6.3.633 and prior on Windows.");
   script_tag(name:"insight", value:"The flaws are due to memory corruptions errors in Shockwave 3D Asset
   component when processing malformed file.");
