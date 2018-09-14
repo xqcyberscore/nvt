@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-048.nasl 11057 2018-08-20 13:59:30Z asteins $
+# $Id: secpod_ms12-048.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft Windows Shell Remote Code Execution Vulnerability (2691442)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902845");
-  script_version("$Revision: 11057 $");
+  script_version("$Revision: 11372 $");
   script_bugtraq_id(54307);
   script_cve_id("CVE-2012-0175");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:59:30 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-11 09:09:09 +0530 (Wed, 11 Jul 2012)");
   script_name("Microsoft Windows Shell Remote Code Execution Vulnerability (2691442)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49873");
@@ -47,8 +47,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute arbitrary shell
-  commands with user level privileges.
-  Impact Level: System");
+  commands with user level privileges.");
   script_tag(name:"affected", value:"Microsoft Windows XP x32 Edition Service Pack 3 and prior
   Microsoft Windows XP x64 Edition Service Pack 2 and prior
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior

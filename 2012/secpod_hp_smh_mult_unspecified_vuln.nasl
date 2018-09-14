@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_hp_smh_mult_unspecified_vuln.nasl 11144 2018-08-28 11:37:19Z asteins $
+# $Id: secpod_hp_smh_mult_unspecified_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # HP System Management Homepage Multiple Unspecified Vulnerabilities
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903020");
-  script_version("$Revision: 11144 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-1993", "CVE-2012-0135");
   script_bugtraq_id(53121);
   script_tag(name:"cvss_base", value:"3.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 13:37:19 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-25 13:28:29 +0530 (Wed, 25 Apr 2012)");
   script_name("HP System Management Homepage Multiple Unspecified Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -57,9 +57,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running HP System Management Homepage (SMH) and is
   prone to multiple unspecified vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to to gain sensitive information
-  or cause denial of service condition.
-
-  Impact Level: Application");
+  or cause denial of service condition.");
   script_tag(name:"affected", value:"HP System Management Homepage (SMH) version prior to 7.0");
 
   script_tag(name:"solution_type", value:"VendorFix");

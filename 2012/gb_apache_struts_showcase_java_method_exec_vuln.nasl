@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_struts_showcase_java_method_exec_vuln.nasl 9305 2018-04-04 14:20:54Z cfischer $
+# $Id: gb_apache_struts_showcase_java_method_exec_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Apache Struts2 Showcase Arbitrary Java Method Execution vulnerability
 #
@@ -29,40 +29,38 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802425");
-  script_version("$Revision: 9305 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-0838");
   script_bugtraq_id(49728);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-04 16:20:54 +0200 (Wed, 04 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-13 14:59:53 +0530 (Tue, 13 Mar 2012)");
   script_tag(name:"qod_type", value:"remote_vul");
   script_name("Apache Struts2 Showcase Arbitrary Java Method Execution vulnerability");
 
-  script_tag(name: "summary" , value:"This host is running Apache Struts Showcase
+  script_tag(name:"summary", value:"This host is running Apache Struts Showcase
   and is prone to java method execution vulnerability.");
 
-  script_tag(name: "vuldetect" , value:"Send a crafted HTTP GET request and
+  script_tag(name:"vuldetect", value:"Send a crafted HTTP GET request and
   check whether it is able execute java methods or not.");
 
-  script_tag(name: "insight" , value:"The flaw is due to an improper conversion
+  script_tag(name:"insight", value:"The flaw is due to an improper conversion
   in OGNL expression if a non string property is contained in action.");
 
-  script_tag(name: "impact" , value:"Successful exploitation could allow an attacker to execute arbitrary java
+  script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute arbitrary java
   method. Further that results to disclose environment variables or cause a
-  denial of service or an arbitrary OS command can be executed.
+  denial of service or an arbitrary OS command can be executed.");
 
-  Impact Level: Application");
-
-  script_tag(name: "affected" , value:"Apache Struts2 (Showcase) version 2.x to 2.2.3");
-  script_tag(name: "solution" , value:"Upgrade to Apache Struts2  2.2.3.1 or later,
+  script_tag(name:"affected", value:"Apache Struts2 (Showcase) version 2.x to 2.2.3");
+  script_tag(name:"solution", value:"Upgrade to Apache Struts2  2.2.3.1 or later,
   For updates refer to http://struts.apache.org/download.cgi");
 
   script_tag(name:"solution_type", value:"VendorFix");
 
-  script_xref(name : "URL" , value : "http://jvn.jp/en/jp/JVN79099262/index.html");
-  script_xref(name : "URL" , value : "https://issues.apache.org/jira/browse/WW-3668");
-  script_xref(name : "URL" , value : "http://jvndb.jvn.jp/en/contents/2012/JVNDB-2012-000012.html");
+  script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN79099262/index.html");
+  script_xref(name:"URL", value:"https://issues.apache.org/jira/browse/WW-3668");
+  script_xref(name:"URL", value:"http://jvndb.jvn.jp/en/contents/2012/JVNDB-2012-000012.html");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");

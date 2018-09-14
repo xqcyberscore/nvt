@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_presto_pagemanager_mult_vuln.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: gb_presto_pagemanager_mult_vuln.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Presto! PageManager Multiple Vulnerabilities
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802620");
   script_bugtraq_id(52503);
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11372 $");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-15 15:15:15 +0530 (Thu, 15 Mar 2012)");
   script_name("Presto! PageManager Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to download
   arbitrary files, execute arbitrary code in the context of the application or
-  cause denial-of-service conditions.
-
-  Impact Level: Application/System");
+  cause denial-of-service conditions.");
   script_tag(name:"affected", value:"Presto! PageManager version 9.01 and prior");
   script_tag(name:"insight", value:"- A boundary error in the Network Group Service when processing certain
    network requests can be exploited to cause a heap-based buffer overflow.

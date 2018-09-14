@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_support_plus_mult_fields_xss_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_manageengine_support_plus_mult_fields_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Zoho ManageEngine Support Center Plus Multiple Fields XSS Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802839");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(53019);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-24 13:18:35 +0530 (Tue, 24 Apr 2012)");
   script_name("Zoho ManageEngine Support Center Plus Multiple Fields XSS Vulnerabilities");
   script_xref(name:"URL", value:"http://1337day.com/exploits/18057");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTML
   and script code, which will be executed in a user's browser session in the
-  context of an affected site.
-  Impact Level: Application");
+  context of an affected site.");
   script_tag(name:"affected", value:"ManageEngine Support Center Plus 7.9 Upgrade Pack 7903 and prior");
   script_tag(name:"insight", value:"The flaws are due to inputs passed to the 'Name' and 'E-mail'
   parameters via 'sd/Request.sd' script is not properly sanitised before

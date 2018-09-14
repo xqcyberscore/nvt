@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-073.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: secpod_ms12-073.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Microsoft Windows IIS FTP Service Information Disclosure Vulnerability (2761226)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902694");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-2531", "CVE-2012-2532");
   script_bugtraq_id(56440);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-14 10:33:22 +0530 (Wed, 14 Nov 2012)");
   script_name("Microsoft Windows IIS FTP Service Information Disclosure Vulnerability (2761226)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51235");
@@ -47,16 +47,21 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to gain access to sensitive
-  information that may aid in further attacks.
-  Impact Level: Application");
+  information that may aid in further attacks.");
   script_tag(name:"affected", value:"Microsoft FTP Service 7.0 for IIS 7.0
+
   - On Microsoft Windows Vista/2008 server Service Pack 2 and prior
   Microsoft FTP Service 7.5 for IIS 7.5
+
   - On Microsoft Windows Vista/2008 server Service Pack 2 and prior
+
   - On Microsoft Windows 7 Service Pack 1 and prior
+
   - On Microsoft Windows Server 2008 R2 Service Pack 1 and prior");
   script_tag(name:"insight", value:"The flaws are due to
+
   - IIS improperly manages the permissions of a log file.
+
   - An error within the IIS FTP service when negotiating encrypted
     communications channels.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and

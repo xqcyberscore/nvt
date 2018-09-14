@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_foxypress_mult_vuln.nasl 10265 2018-06-20 07:34:45Z cfischer $
+# $Id: gb_wordpress_foxypress_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WordPress FoxyPress Plugin Multiple Vulnerabilities
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803042");
-  script_version("$Revision: 10265 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-20 09:34:45 +0200 (Wed, 20 Jun 2018) $");
+  script_version("$Revision: 11374 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 18:49:49 +0530 (Fri, 02 Nov 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -63,9 +63,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote
   attackers to execute arbitrary web script or HTML in a user's browser session in
   the context of an affected site, manipulate SQL queries by injecting arbitrary SQL
-  code and to redirect users to arbitrary web sites and conduct phishing attacks.
-
-  Impact Level: Application");
+  code and to redirect users to arbitrary web sites and conduct phishing attacks.");
 
   script_tag(name:"affected", value:"WordPress FoxyPress Plugin Version 0.4.2.5
   and prior.");

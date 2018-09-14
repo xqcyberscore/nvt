@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sockso_registration_persistent_xss_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_sockso_registration_persistent_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Sockso Registration Persistent Cross Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802853");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-4267");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-14 13:06:50 +0530 (Mon, 14 May 2012)");
   script_name("Sockso Registration Persistent Cross Site Scripting Vulnerability");
 
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
   arbitrary HTML and script code, which will be executed in a user's browser
-  session in the context of an affected site.
-
-  Impact Level: Application");
+  session in the context of an affected site.");
   script_tag(name:"affected", value:"Sockso version 1.51 and prior");
   script_tag(name:"insight", value:"The flaw is due to improper validation of user supplied input
   via the 'name' parameter to user or register.");

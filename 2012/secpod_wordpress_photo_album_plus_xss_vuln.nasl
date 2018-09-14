@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wordpress_photo_album_plus_xss_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: secpod_wordpress_photo_album_plus_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WordPress WP Photo Album Plus Plugin 'Search Photos' XSS Vulnerability
 #
@@ -29,8 +29,8 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902698");
-  script_version("$Revision: 10941 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_version("$Revision: 11374 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-31 14:00:10 +0530 (Mon, 31 Dec 2012)");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
@@ -47,9 +47,7 @@ if(description)
   script_mandatory_keys("wordpress/installed");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to insert arbitrary
 HTML and script code, which will be executed in a user's browser session in the
-context of an affected site when the malicious data is being viewed.
-
-Impact Level: Application");
+context of an affected site when the malicious data is being viewed.");
   script_tag(name:"affected", value:"WordPress WP Photo Album Plus Plugin version 4.8.11 and prior");
   script_tag(name:"insight", value:"Input passed via the 'wppa-searchstring' parameter to index.php
 (when page_id is set to the Search Photos page) is not properly

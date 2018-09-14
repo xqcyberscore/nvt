@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-050.nasl 11322 2018-09-11 10:15:07Z asteins $
+# $Id: secpod_ms12-050.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Microsoft SharePoint Multiple Privilege Elevation Vulnerabilities (2695502)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902847");
-  script_version("$Revision: 11322 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(53842, 54312, 54313, 54314, 54315, 54316);
   script_cve_id("CVE-2012-1858", "CVE-2012-1859", "CVE-2012-1860", "CVE-2012-1861",
                 "CVE-2012-1862", "CVE-2012-1863");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-11 11:11:11 +0530 (Wed, 11 Jul 2012)");
   script_name("Microsoft SharePoint Multiple Privilege Elevation Vulnerabilities (2695502)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49875");
@@ -49,8 +49,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to bypass certain security
-  restrictions and conduct cross-site scripting and spoofing attacks.
-  Impact Level: Application");
+  restrictions and conduct cross-site scripting and spoofing attacks.");
   script_tag(name:"affected", value:"Microsoft InfoPath 2010
   Microsoft Groove Server 2010
   Microsoft Office Web Apps 2010

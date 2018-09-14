@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_web_experience_factory_xss_vuln.nasl 11266 2018-09-06 10:59:26Z cfischer $
+# $Id: gb_ibm_web_experience_factory_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # IBM Web Experience Factory Multiple Cross Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802563");
-  script_version("$Revision: 11266 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(51246);
   script_cve_id("CVE-2011-5048");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-19 18:01:09 +0530 (Thu, 19 Jan 2012)");
   script_name("IBM Web Experience Factory Multiple Cross Site Scripting Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51246/info");
@@ -53,8 +53,7 @@ if(description)
   to multiple cross site scripting vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
   HTML and script code in a user's browser session in context of an affected
-  site.
-  Impact Level: Application");
+  site.");
   script_tag(name:"affected", value:"IBM Web Experience Factory version 7.0 and 7.0.1");
 
   script_tag(name:"solution_type", value:"VendorFix");

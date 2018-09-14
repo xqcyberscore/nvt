@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_sec_bypass_vuln_oct12_macosx.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_mozilla_prdts_sec_bypass_vuln_oct12_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Mozilla Firefox Security Bypass Vulnerabilities - Oct 12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802992");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-4192", "CVE-2012-4193");
   script_bugtraq_id(55889);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 17:11:30 +0530 (Mon, 15 Oct 2012)");
   script_name("Mozilla Firefox Security Bypass Vulnerabilities - Oct 12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50856");
@@ -44,8 +44,7 @@ if(description)
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will let attackers to bypass the Same Origin Policy
-  and read the properties of a Location object via a crafted web site.
-  Impact Level: Application");
+  and read the properties of a Location object via a crafted web site.");
   script_tag(name:"affected", value:"Mozilla Firefox versions before 16.0.1 on Mac OS X");
   script_tag(name:"insight", value:"Security wrappers are unwrapped without doing a security check in
   defaultValue(). This can allow for improper access to the Location object.");

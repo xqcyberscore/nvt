@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mailenable_smtp_helo_cmd_dos.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_mailenable_smtp_helo_cmd_dos.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # MailEnable SMTP HELO Command Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802914");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2006-3277");
   script_bugtraq_id(18630);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-12 17:17:25 +0530 (Thu, 12 Jul 2012)");
   script_name("MailEnable SMTP HELO Command Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.mailenable.com/hotfix/default.asp");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to crash the service
-  by sending HELO command with specially crafted arguments.
-
-  Impact Level: Application");
+  by sending HELO command with specially crafted arguments.");
   script_tag(name:"affected", value:"MailEnable Standard version 1.92 and prior
   MailEnable Enterprise version 2.0 and prior
   MailEnable Professional version 2.0 and prior");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_macosx.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: gb_wireshark_mult_dos_vuln_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802763");
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-1596", "CVE-2012-1595", "CVE-2012-1593");
   script_bugtraq_id(52736, 52737, 52735);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-24 15:17:23 +0530 (Tue, 24 Apr 2012)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities (Mac OS X)");
 
@@ -43,8 +43,7 @@ if(description)
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_require_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
-  service.
-  Impact Level: Application");
+  service.");
   script_tag(name:"affected", value:"Wireshark versions 1.4.x before 1.4.12 and 1.6.x before 1.6.6 on Mac OS X");
   script_tag(name:"insight", value:"The flaws are due to
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-001.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: secpod_ms12-001.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft Windows Kernel Security Feature Bypass Vulnerability (2644615)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902783");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11372 $");
   script_bugtraq_id(51296);
   script_cve_id("CVE-2012-0001");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
   script_tag(name:"creation_date", value:"2012-01-11 10:01:06 +0530 (Wed, 11 Jan 2012)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_name("Microsoft Windows Kernel Security Feature Bypass Vulnerability (2644615)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47356/");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2644615");
@@ -48,9 +48,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code by
-  leveraging memory corruption vulnerabilities in Windows applications.
-
-  Impact Level: System");
+  leveraging memory corruption vulnerabilities in Windows applications.");
   script_tag(name:"affected", value:"Microsoft Windows 7 Service Pack 1 and prior.
 
   Microsoft Windows 2003 Service Pack 2 and prior.

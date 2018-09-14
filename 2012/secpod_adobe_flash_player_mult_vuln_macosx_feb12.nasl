@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_adobe_flash_player_mult_vuln_macosx_feb12.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: secpod_adobe_flash_player_mult_vuln_macosx_feb12.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Adobe Flash Player Multiple Vulnerabilities (Mac OS X) - Feb12
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802805");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-0752", "CVE-2012-0753", "CVE-2012-0754", "CVE-2012-0757",
                 "CVE-2012-0756", "CVE-2012-0767");
   script_bugtraq_id(52032, 52033, 52034, 51999, 52036, 52040);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-22 14:54:18 +0530 (Wed, 22 Feb 2012)");
   script_name("Adobe Flash Player Multiple Vulnerabilities (Mac OS X) - Feb12");
 
@@ -46,15 +46,20 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
   code in the context of the affected application or cause a denial of
   service condition.
-  Impact Level: Application.");
+  .");
   script_tag(name:"affected", value:"Adobe Flash Player version before 10.3.183.15
   Adobe Flash Player version 11.x through 11.1.102.55 on Mac OS X");
   script_tag(name:"insight", value:"The flaws are due to,
+
   - A memory corruption error in ActiveX control
+
   - A type confusion memory corruption error
+
   - An unspecified error related to MP4 parsing
+
   - Many unspecified erros which allows to bypass certain security
     restrictions
+
   - Improper validation of user supplied input which allows
     attackers to execute arbitrary HTML and script code in a user's browser
     session");

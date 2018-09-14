@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_iframe_admin_pages_plugin_xss_vuln.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_wordpress_iframe_admin_pages_plugin_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WordPress iFrame Admin Pages Plugin 'url' Parameter XSS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802855");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(53522);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-16 15:26:57 +0530 (Wed, 16 May 2012)");
   script_name("WordPress iFrame Admin Pages Plugin 'url' Parameter XSS Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53522");
@@ -49,9 +49,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
 arbitrary HTML and script code, which will be executed in a user's browser
-session in the context of an affected site.
-
-Impact Level: Application");
+session in the context of an affected site.");
   script_tag(name:"affected", value:"WordPress iFrame Admin Pages Plugin version 0.1 and prior");
   script_tag(name:"insight", value:"The flaw is due to an improper validation of user supplied input
 to the 'url' parameter in '/wp-content/plugins/iframe-admin-pages/main_page.php',

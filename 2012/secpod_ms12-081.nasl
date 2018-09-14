@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-081.nasl 11055 2018-08-20 12:23:58Z asteins $
+# $Id: secpod_ms12-081.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft Windows File Handling Component Remote Code Execution Vulnerability (2758857)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901304");
-  script_version("$Revision: 11055 $");
+  script_version("$Revision: 11372 $");
   script_cve_id("CVE-2012-4774");
   script_bugtraq_id(56443);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 14:23:58 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-12 09:40:29 +0530 (Wed, 12 Dec 2012)");
   script_name("Microsoft Windows File Handling Component Remote Code Execution Vulnerability (2758857)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51493/");
@@ -47,8 +47,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attacker to gain the same user rights as
-  the current user by execute arbitrary code with system-level privileges.
-  Impact Level: System");
+  the current user by execute arbitrary code with system-level privileges.");
   script_tag(name:"affected", value:"Microsoft Windows XP x32 Edition Service Pack 3 and prior
   Microsoft Windows XP x64 Edition Service Pack 2 and prior
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior

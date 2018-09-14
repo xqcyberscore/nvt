@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_typo3_back_path_lfi_vuln.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: secpod_typo3_back_path_lfi_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # TYPO3 'BACK_PATH' Parameter Local File Include Vulnerability
 #
@@ -29,19 +29,17 @@ CPE = "cpe:/a:typo3:typo3";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902795");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-4614");
   script_bugtraq_id(51090);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-22 13:46:49 +0530 (Wed, 22 Feb 2012)");
   script_name("TYPO3 'BACK_PATH' Parameter Local File Include Vulnerability");
 
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to obtain arbitrary local
-files in the context of an affected site.
-
-Impact Level: Application");
+files in the context of an affected site.");
   script_tag(name:"vuldetect", value:"Send a Crafted HTTP GET request and check whether it is able to get sensitive
 information.");
   script_tag(name:"insight", value:"The flaw is due to an input passed to the 'BACK_PATH' parameter in

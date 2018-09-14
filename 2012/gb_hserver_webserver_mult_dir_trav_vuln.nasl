@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hserver_webserver_mult_dir_trav_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_hserver_webserver_mult_dir_trav_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # HServer Multiple Webserver Directory Traversal Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802410");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-5100");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-06 13:10:29 +0530 (Fri, 06 Jan 2012)");
   script_name("HServer Webserver Multiple Directory Traversal Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/521119");
@@ -46,9 +46,7 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain sensitive
-information that could aid in further attacks.
-
-Impact Level: Application");
+information that could aid in further attacks.");
   script_tag(name:"affected", value:"HServer webserver version 0.1.1");
   script_tag(name:"insight", value:"The flaws are due to improper validation of URI containing
 '..\..\' sequences, which allows attackers to read arbitrary files via

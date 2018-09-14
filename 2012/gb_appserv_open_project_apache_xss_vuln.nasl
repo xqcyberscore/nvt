@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_appserv_open_project_apache_xss_vuln.nasl 11049 2018-08-20 08:53:50Z asteins $
+# $Id: gb_appserv_open_project_apache_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # AppServ Open Project 'appservlang' Cross-site Scripting Vulnerability
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:appserv_open_project:appserv";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802429");
-  script_version("$Revision: 11049 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 10:53:50 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-16 13:48:58 +0530 (Mon, 16 Apr 2012)");
   script_name("AppServ Open Project 'appservlang' Cross-site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -56,9 +56,7 @@ if(description)
   site scripting vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
   arbitrary HTML and script code in a user's browser session in the context of
-  an affected application.
-
-  Impact Level: Application");
+  an affected application.");
   script_tag(name:"affected", value:"AppServ Open Project Version 2.5.10 and prior");
 
   script_tag(name:"solution_type", value:"WillNotFix");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_foxmail_detect.nasl 11290 2018-09-07 13:11:08Z jschulte $
+# $Id: gb_foxmail_detect.nasl 11376 2018-09-13 12:51:39Z cfischer $
 #
 # FoxMail Version Detection
 #
@@ -23,23 +23,26 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
+
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.800219");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_version("$Revision: 11290 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 15:11:08 +0200 (Fri, 07 Sep 2018) $");
+  script_version("$Revision: 11376 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:51:39 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-01-08 14:06:04 +0100 (Thu, 08 Jan 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_name("FoxMail Version Detection");
   script_category(ACT_GATHER_INFO);
-  script_tag(name:"qod_type", value:"registry");
   script_copyright("Copyright (C) 2009 Greenbone Networks GmbH");
   script_family("Product detection");
   script_dependencies("smb_reg_service_pack.nasl", "gb_wmi_access.nasl");
   script_mandatory_keys("SMB/WindowsVersion", "WMI/access_successful");
   script_require_ports(139, 445);
+
   script_tag(name:"summary", value:"This script finds the installed FoxMail Version and saves in KB.");
+
+  script_tag(name:"qod_type", value:"registry");
   exit(0);
 }
 
@@ -51,8 +54,9 @@ include("host_details.inc");
 include("http_func.inc");
 include("secpod_smb_func.inc");
 include("wmi_file.inc");
+include("misc_func.inc");
 
-foreach keypart( make_list_unique ( "Foxmail_is1", "Foxmail", registry_enum_keys( key: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\" ),
+foreach keypart( make_list_unique( "Foxmail_is1", "Foxmail", registry_enum_keys( key: "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\" ),
   registry_enum_keys( key: "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\" ) ) ) {
 
   key = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\" + keypart;
@@ -85,14 +89,15 @@ foreach keypart( make_list_unique ( "Foxmail_is1", "Foxmail", registry_enum_keys
 
       handle = wmi_connect( host: host, username: usrname, password: passwd );
       if( handle ) {
-        versList = wmi_file_fileversion( handle: handle, filePath: escaped_file_path );
-        versList = split( versList, keep: FALSE );
-        foreach vers( versList ) {
-
-          if( vers == "Version" ) continue;
-          version = vers;
-          set_kb_item( name:"Foxmail/Win/Ver", value:version );
-          break;
+        versList = wmi_file_fileversion( handle: handle, filePath: escaped_file_path, includeHeader:FALSE );
+        if( versList && is_array( versList ) ) {
+          foreach vers( keys( versList ) ) {
+            if( versList[vers] && version = eregmatch( string:versList[vers], pattern:"([0-9.]+)" ) ) {
+              version = vers;
+              set_kb_item( name:"Foxmail/Win/Ver", value:version );
+              break;
+            }
+          }
         }
         wmi_close( wmi_handle: handle );
       }

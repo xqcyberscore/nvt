@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_moniwiki_login_xss_vuln.nasl 11322 2018-09-11 10:15:07Z asteins $
+# $Id: secpod_moniwiki_login_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # MoniWiki 'login_id' Cross-Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902794");
-  script_version("$Revision: 11322 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 17:36:32 +0530 (Tue, 21 Feb 2012)");
   script_name("MoniWiki 'login_id' Cross-Site Scripting Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
-  HTML and script code in a user's browser session in context of an affected site.
-
-  Impact Level: Application");
+  HTML and script code in a user's browser session in context of an affected site.");
   script_tag(name:"affected", value:"MoniWiki version 1.1.5 and prior.");
   script_tag(name:"insight", value:"The flaw is due to an input passed to the 'login_id' POST
   parameter in 'wiki.php' (when 'action' is set to 'userform') is not properly

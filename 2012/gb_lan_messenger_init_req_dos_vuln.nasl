@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_lan_messenger_init_req_dos_vuln.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: gb_lan_messenger_init_req_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # LAN Messenger Malformed Initiation Request Remote Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802627");
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(53333);
   script_cve_id("CVE-2012-3845");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-03 12:12:12 +0530 (Thu, 03 May 2012)");
   script_name("LAN Messenger Malformed Initiation Request Remote Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -48,9 +48,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.vulnerability-lab.com/get_content.php?id=537");
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause the
-  application to crash, creating a denial of service condition.
-
-  Impact Level: Application");
+  application to crash, creating a denial of service condition.");
   script_tag(name:"affected", value:"LAN Messenger versions 1.2.28 and prior");
   script_tag(name:"insight", value:"The flaw is triggered when processing a malformed initiation
   request and can be exploited to cause a denial of service via a specially crafted

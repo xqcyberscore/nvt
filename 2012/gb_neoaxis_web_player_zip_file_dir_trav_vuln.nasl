@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_neoaxis_web_player_zip_file_dir_trav_vuln.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_neoaxis_web_player_zip_file_dir_trav_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # NeoAxis Web Player Zip File Directory Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802601");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(51666);
   script_cve_id("CVE-2012-0907");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-01 14:14:14 +0530 (Wed, 01 Feb 2012)");
   script_name("NeoAxis Web Player Zip File Directory Traversal Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51666");
@@ -47,9 +47,7 @@ if(description)
   script_require_ports(139, 445);
   script_mandatory_keys("SMB/WindowsVersion");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to obtain sensitive
-information that could aid in further attacks.
-
-Impact Level: Application");
+information that could aid in further attacks.");
   script_tag(name:"affected", value:"NeoAxis web player version 1.4 and prior");
   script_tag(name:"insight", value:"The flaw is caused due by improper validation of the files
 extracted from neoaxis_web_application_win32.zip file, which allows attackers

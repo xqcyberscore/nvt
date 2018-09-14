@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libre_office_doc_file_dos_vuln_win.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_libre_office_doc_file_dos_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # LibreOffice 'DOC' File Denial of Service Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802557");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-2713");
   script_bugtraq_id(49969);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-10 16:22:59 +0530 (Tue, 10 Jan 2012)");
   script_name("LibreOffice 'DOC' File Denial of Service Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2011/Oct/21");
@@ -54,7 +54,7 @@ if(description)
   service vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
   on the target system or cause denial of service.
-  Impact Level: Application.");
+  .");
   script_tag(name:"affected", value:"LibreOffice version 3.3.0 and 3.4.0 through 3.4.2");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

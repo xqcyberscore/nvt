@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_dos_vuln_june12_macosx.nasl 8671 2018-02-05 16:38:48Z teissa $
+# $Id: gb_opera_mult_dos_vuln_june12_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Opera Multiple Denial of Service Vulnerabilities - June12 (Mac OS X)
 #
@@ -24,51 +24,50 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 
-tag_impact = "Successful exploitation will let the attacker crash the browser leading to
-  denial of service.
-  Impact Level: Application";
-tag_affected = "Opera version prior to 12.00 Beta on Mac OS X";
-tag_insight = "- A denial of service via crafted characters in domain names.
-  - A denial of service (application crash) via crafted WebGL content.
-  - A denial of service (memory consumption or application hang) via an
-    IFRAME element that uses the src='#' syntax to embed a parent document.
-  - A denial of service (application hang) via JavaScript code that changes
-    a form before submission.
-  - A denial of service (application hang) via an absolutely positioned
-    wrap=off TEXTAREA element located next to an 'overflow: auto' block
-    element.
-  - A denial of service (application crash) via a web page that contains
-    invalid character encodings.
-  - A denial of service (application crash) via a crafted web page that is
-    not properly handled during a reload.";
-tag_solution = "Upgrade to Opera version 12.00 Beta or later,
-  For updates refer to http://www.opera.com/";
-tag_summary = "The host is installed with Opera and is prone to multiple
-  denial of service vulnerabilities.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802650");
-  script_version("$Revision: 8671 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-3562", "CVE-2012-3563", "CVE-2012-3564", "CVE-2012-3565",
                 "CVE-2012-3566", "CVE-2012-3567", "CVE-2012-3568");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-05 17:38:48 +0100 (Mon, 05 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 15:15:15 +0530 (Thu, 21 Jun 2012)");
   script_name("Opera Multiple Denial of Service Vulnerabilities - June12 (Mac OS X)");
-  script_xref(name : "URL" , value : "http://www.opera.com/docs/changelogs/windows/1200b/");
+  script_xref(name:"URL", value:"http://www.opera.com/docs/changelogs/windows/1200b/");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("Denial of Service");
   script_dependencies("gb_opera_detect_macosx.nasl");
   script_require_keys("Opera/MacOSX/Version");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will let the attacker crash the browser leading to
+  denial of service.");
+  script_tag(name:"affected", value:"Opera version prior to 12.00 Beta on Mac OS X");
+  script_tag(name:"insight", value:"- A denial of service via crafted characters in domain names.
+
+  - A denial of service (application crash) via crafted WebGL content.
+
+  - A denial of service (memory consumption or application hang) via an
+    IFRAME element that uses the src='#' syntax to embed a parent document.
+
+  - A denial of service (application hang) via JavaScript code that changes
+    a form before submission.
+
+  - A denial of service (application hang) via an absolutely positioned
+    wrap=off TEXTAREA element located next to an 'overflow: auto' block
+    element.
+
+  - A denial of service (application crash) via a web page that contains
+    invalid character encodings.
+
+  - A denial of service (application crash) via a crafted web page that is
+    not properly handled during a reload.");
+  script_tag(name:"solution", value:"Upgrade to Opera version 12.00 Beta or later,
+  For updates refer to http://www.opera.com/");
+  script_tag(name:"summary", value:"The host is installed with Opera and is prone to multiple
+  denial of service vulnerabilities.");
   script_tag(name:"qod_type", value:"package");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -78,13 +77,11 @@ include("version_func.inc");
 
 operaVer = "";
 
-## Get Opera version from KB
 operaVer = get_kb_item("Opera/MacOSX/Version");
 if(!operaVer){
   exit(0);
 }
 
-## Check for opera versions 11.65 and prior
 if(version_is_less_equal(version:operaVer, test_version:"11.65")){
-  security_message(0);
+  security_message( port: 0, data: "The target host was found to be vulnerable" );
 }

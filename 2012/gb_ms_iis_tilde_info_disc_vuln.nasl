@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_iis_tilde_info_disc_vuln.nasl 11141 2018-08-28 10:01:13Z asteins $
+# $Id: gb_ms_iis_tilde_info_disc_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Microsoft IIS Tilde Character Information Disclosure Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802887");
-  script_version("$Revision: 11141 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(54251);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 12:01:13 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-18 10:29:25 +0530 (Wed, 18 Jul 2012)");
   script_name("Microsoft IIS Tilde Character Information Disclosure Vulnerability");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/19525");
@@ -49,9 +49,7 @@ if(description)
   script_mandatory_keys("IIS/installed");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain
-  sensitive information that could aid in further attacks.
-
-  Impact Level: Application");
+  sensitive information that could aid in further attacks.");
   script_tag(name:"affected", value:"Microsoft Internet Information Services versions 7.5 and prior");
   script_tag(name:"insight", value:"Microsoft IIS fails to validate a specially crafted GET request
   containing a '~' tilde character, which allows to disclose all short-names of

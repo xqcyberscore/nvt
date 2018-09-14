@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tversity_dir_trav_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_tversity_dir_trav_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # TVersity Directory Traversal Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802619");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-15 12:12:12 +0530 (Thu, 15 Mar 2012)");
   script_name("TVersity Directory Traversal Vulnerability");
 
@@ -46,9 +46,7 @@ if(description)
   script_mandatory_keys("TVersity_Media_Server/banner");
 
   script_tag(name:"impact", value:"Successful exploitation may allow an attacker to obtain sensitive
-  information, which can lead to launching further attacks.
-
-  Impact Level: Application");
+  information, which can lead to launching further attacks.");
   script_tag(name:"affected", value:"TVersity version 1.9.7 and prior");
   script_tag(name:"insight", value:"The flaw is due to an input validation error in the TVersity
   media server when processing web requests can be exploited to disclose

@@ -1,5 +1,5 @@
 # Detailed license filelist for OpenVAS Network Vulnerability Tests
-# Automatically created on:  Thu, 13 Sep 2018 09:02:56 +0200
+# Automatically created on:  Fri, 14 Sep 2018 11:09:56 +0200
 # Please see file COPYING
 #
 2008/aardvark_422_remote_file_include.nasl: GPLv2
@@ -39476,6 +39476,7 @@
 2018/debian/deb_dla_1501.nasl: GPLv2+
 2018/debian/deb_dla_1502.nasl: GPLv2+
 2018/debian/deb_dla_1503.nasl: GPLv2+
+2018/debian/deb_dla_1504.nasl: GPLv2+
 2018/debian/deb_dla_547.nasl: GPLv2+
 2018/debian/deb_dla_613.nasl: GPLv2+
 2018/debian/deb_dla_693.nasl: GPLv2+
@@ -40849,6 +40850,7 @@
 2018/infoblox/gb_infoblox_netmri_rxss_vuln.nasl: GPLv2+
 2018/infoblox/gb_infoblox_netmri_shell_escape_priv_esc.nasl: GPLv2+
 2018/intelbras/gb_ncloud300_router_auth_bypass_vuln.nasl: GPLv2+
+2018/intel/gb_intel_amt_intel-sa-00141.nasl: GPLv2+
 2018/intel/gb_intel_amt_mult_bof_n_mem_corr_vuln.nasl: GPLv2+
 2018/invisionpower/gb_invision_sqli_vuln.nasl: GPLv2+
 2018/invoiceplane/gb_invoiceplane_xss_vuln.nasl: GPLv2+
@@ -43679,6 +43681,7 @@ gb_sap_diag_service_detect.nasl: GPLv2+
 gb_sap_management_console_detect.nasl: GPLv2+
 gb_sap_maxdb_detect.nasl: GPLv2+
 gb_sap_msg_service_detect.nasl: GPLv2+
+gb_sap_netweaver_as_java_detect.nasl: GPLv2+
 gb_sap_netweaver_detect.nasl: GPLv2+
 gb_sap_rfc_detect.nasl: GPLv2+
 gb_sap_router_detect.nasl: GPLv2+
@@ -59278,6 +59281,7 @@ gsf/2018/ca/gb_ca_priviliged_access_manager_rce_vuln1.nasl: GPLv2+
 gsf/2018/ca/gb_ca_priviliged_access_manager_rce_vuln.nasl: GPLv2+
 gsf/2018/ca/gb_ca_priviliged_access_manager_xss_vuln.nasl: GPLv2+
 gsf/2018/ca/gb_uim_mult_vuln.nasl: GPLv2+
+gsf/2018/circontrol/gb_circarlife_scada_mult_vuln.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_acs_cisco-sa-20180307-acs2.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_acs_cisco-sa-20180502-acs1.nasl: GPLv2+
 gsf/2018/cisco/gb_cisco_acs_cisco-sa-20180824-linux-ip-fragment.nasl: GPLv2+
@@ -60226,6 +60230,7 @@ gsf/2018/rockwellautomation/gb_rockwell_micrologix_1400_mult_vuln.nasl: GPLv2+
 gsf/2018/rockwellautomation/gb_rockwell_micrologix_buf_overflow_vuln.nasl: GPLv2+
 gsf/2018/sap/gb_sap_mgmt_console_syslog_discl_vuln.nasl: GPLv2+
 gsf/2018/sap/gb_sap_msg_server_acl_vuln.nasl: GPLv2+
+gsf/2018/sap/gb_sap_netweaver_as_java_xss_vuln_sep18.nasl: GPLv2+
 gsf/2018/sap/gb_sap_netweaver_auth_bypass_vuln.nasl: GPLv2+
 gsf/2018/sap/gb_sap_netweaver_code_inj_vuln.nasl: GPLv2+
 gsf/2018/sap/gb_sap_netweaver_dir_trav_vuln.nasl: GPLv2+
@@ -60316,6 +60321,7 @@ gsf/2018/zohocorp/gb_manageengine_appli_manager_sql_inj_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_appli_manager_xss_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manage_engine_desktop_central_access_ctrl_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_desktop_central_info_discl_vuln.nasl: GPLv2+
+gsf/2018/zohocorp/gb_manageengine_desktop_central_priv_esc_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manage_engine_eventlog_analyzer_xss_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_exchange_reporter_rce_vuln.nasl: GPLv2+
 gsf/2018/zohocorp/gb_manageengine_firewall_analyzer_mult_vuln1.nasl: GPLv2+
@@ -61822,6 +61828,7 @@ Policy/Microsoft/WindowsGeneral/RemovableStorageAccess/win_disks_deny_read_acces
 Policy/Microsoft/WindowsGeneral/RemovableStorageAccess/win_disks_deny_write_access.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/RemovableStorageAccess/win_wpd_deny_read_access.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/RemovableStorageAccess/win_wpd_deny_write_access.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SCM/win_lsa_protection.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/SecurityOptions/win_administrator_account_status.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/SecurityOptions/win_guest_account_status.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/SystemCryptography/win_sc_strong_key_protect.nasl: GPLv2+
@@ -61830,6 +61837,7 @@ Policy/Microsoft/WindowsGeneral/SystemObjects/win_so_default_perm_internal.nasl:
 Policy/Microsoft/WindowsGeneral/SystemServices/win_bt_handsfree_service.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/SystemServices/win_bt_support_service.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/SystemServices/win_computer_browser.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/SystemServices/win_encrypted_file_system.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/SystemServices/win_error_reporting_service.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/SystemServices/win_event_collector.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/SystemServices/win_ftp_service.nasl: GPLv2+
@@ -61875,6 +61883,7 @@ Policy/Microsoft/WindowsGeneral/System/win_deny_sbp2_thunderbolt_driver.nasl: GP
 Policy/Microsoft/WindowsGeneral/System/win_deny_sbp2_thunderbolt.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_domain_pin_logon.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_download_print_driver_http.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_enable_virtualization_based_security.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_enumerate_connected_users.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_enumerate_local_users.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_error_reporting.nasl: GPLv2+
@@ -61910,6 +61919,10 @@ Policy/Microsoft/WindowsGeneral/System/win_standby_states_plugged.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_unauth_rpc_client.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_untrusted_font_blocking.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/System/win_user_input_methods_signin.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_vbs_credential_guard.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_vbs_protection_code_integrity.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_vbs_require_uefi.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/System/win_vbs_security_level.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_admin_approval_mode.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_all_admins_approval_mode.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/UserAccountControl/win_uac_apps_install_prompt.nasl: GPLv2+
@@ -61986,7 +61999,9 @@ Policy/Microsoft/WindowsGeneral/WindowsComponents/win_os_restrict_encryption.nas
 Policy/Microsoft/WindowsGeneral/WindowsComponents/win_os_software_enc_failover.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/WindowsComponents/win_passwd_fixed_drives.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/WindowsComponents/win_password_reveal.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/WindowsComponents/win_powsh_execution_policy.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/WindowsComponents/win_powsh_script_block_log.nasl: GPLv2+
+Policy/Microsoft/WindowsGeneral/WindowsComponents/win_powsh_script_execution.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/WindowsComponents/win_powsh_transcription.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/WindowsComponents/win_prevent_join_homegroup.nasl: GPLv2+
 Policy/Microsoft/WindowsGeneral/WindowsComponents/win_rdhost_client_encr_level.nasl: GPLv2+

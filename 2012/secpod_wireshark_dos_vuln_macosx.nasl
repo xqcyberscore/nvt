@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_wireshark_dos_vuln_macosx.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: secpod_wireshark_dos_vuln_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Wireshark Denial of Service Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903024");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-0538");
   script_bugtraq_id(46167);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-25 17:03:00 +0530 (Wed, 25 Apr 2012)");
   script_name("Wireshark Denial of Service Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/65182");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_require_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to cause a denial of
-  service, execution of arbitrary code.
-  Impact Level: Application");
+  service, execution of arbitrary code.");
   script_tag(name:"affected", value:"Wireshark version 1.5.0
   Wireshark version 1.2.0 through 1.2.14
   Wireshark version 1.4.0 through 1.4.3");

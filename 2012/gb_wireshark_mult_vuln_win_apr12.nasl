@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln_win_apr12.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_wireshark_mult_vuln_win_apr12.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Wireshark Multiple Vulnerabilities - April 12 (Windows)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802761");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-0068", "CVE-2012-0067", "CVE-2012-0066", "CVE-2012-0043",
                 "CVE-2012-0042", "CVE-2012-0041");
   script_bugtraq_id(51710, 51368);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-23 18:33:55 +0530 (Mon, 23 Apr 2012)");
   script_name("Wireshark Multiple Vulnerabilities - April 12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47494/");
@@ -47,9 +47,7 @@ if(description)
   script_dependencies("gb_wireshark_detect_win.nasl");
   script_require_keys("Wireshark/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary code
-  or cause a denial of service.
-
-  Impact Level: Application");
+  or cause a denial of service.");
   script_tag(name:"affected", value:"Wireshark versions 1.4.x before 1.4.11 and 1.6.x before 1.6.5 on Windows");
   script_tag(name:"insight", value:"The flaws are due to
 

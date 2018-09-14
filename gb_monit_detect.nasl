@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_monit_detect.nasl 11310 2018-09-11 04:42:07Z ckuersteiner $
+# $Id: gb_monit_detect.nasl 11367 2018-09-13 07:22:06Z ckuersteiner $
 #
 # Monit Detection
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.141467");
-  script_version("$Revision: 11310 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 06:42:07 +0200 (Tue, 11 Sep 2018) $");
+  script_version("$Revision: 11367 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 09:22:06 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-11 10:50:41 +0700 (Tue, 11 Sep 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -58,7 +58,6 @@ The script sends a connection request to the server and attempts to detect Monit
 include("cpe.inc");
 include("host_details.inc");
 include("http_func.inc");
-
 
 port = get_http_port(default: 8080);
 

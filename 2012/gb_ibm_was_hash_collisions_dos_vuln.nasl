@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_hash_collisions_dos_vuln.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_ibm_was_hash_collisions_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # IBM WebSphere Application Server Hash Collisions DOS Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802418");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-0193");
   script_bugtraq_id(51441);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 14:06:41 +0530 (Mon, 23 Jan 2012)");
   script_name("IBM WebSphere Application Server Hash Collisions DOS Vulnerability");
   script_xref(name:"URL", value:"http://www-01.ibm.com/support/docview.wss?uid=swg24031821");
@@ -47,8 +47,7 @@ if(description)
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_require_ports("Services/www", 80);
   script_tag(name:"impact", value:"Successful exploitation will let attackers to cause a denial of service
-  (CPU consumption) by sending many crafted parameters.
-  Impact Level: Application");
+  (CPU consumption) by sending many crafted parameters.");
   script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS) 6.0 to 6.0.2.43
   IBM WebSphere Application Server (WAS) 6.1 before 6.1.0.43
   IBM WebSphere Application Server (WAS) 7.0 before 7.0.0.23

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-018.nasl 11148 2018-08-28 14:25:49Z asteins $
+# $Id: secpod_ms12-018.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Windows Kernel-Mode Drivers Privilege Elevation Vulnerability (2641653)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902907");
-  script_version("$Revision: 11148 $");
+  script_version("$Revision: 11372 $");
   script_cve_id("CVE-2012-0157");
   script_bugtraq_id(52317);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-14 09:00:53 +0530 (Wed, 14 Mar 2012)");
   script_name("Windows Kernel-Mode Drivers Privilege Elevation Vulnerability (2641653)");
 
@@ -44,8 +44,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow local attackers to gain escalated
-  privileges.
-  Impact Level: System");
+  privileges.");
   script_tag(name:"affected", value:"Microsoft Windows 7 Service Pack 1 and prior
   Microsoft Windows XP Service Pack 3 and prior
   Microsoft Windows 2003 Service Pack 2 and prior

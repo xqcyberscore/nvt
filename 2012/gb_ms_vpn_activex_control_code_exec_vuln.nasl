@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_vpn_activex_control_code_exec_vuln.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_ms_vpn_activex_control_code_exec_vuln.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft VPN ActiveX Control Remote Code Execution Vulnerability (2695962)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802774");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11372 $");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-10 11:55:58 +0530 (Thu, 10 May 2012)");
   script_name("Microsoft VPN ActiveX Control Remote Code Execution Vulnerability (2695962)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2695962");
@@ -45,8 +45,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation will let the attacker execute arbitrary codes on the
-  affected machine.
-  Impact Level: System");
+  affected machine.");
   script_tag(name:"affected", value:"Microsoft Windows 7 Service Pack 1 and prior
 
   Microsoft Windows XP Service Pack 3 and prior

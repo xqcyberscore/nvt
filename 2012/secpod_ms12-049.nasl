@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-049.nasl 11135 2018-08-27 13:39:29Z asteins $
+# $Id: secpod_ms12-049.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft Windows TLS Protocol Information Disclosure Vulnerability (2655992)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902846");
-  script_version("$Revision: 11135 $");
+  script_version("$Revision: 11372 $");
   script_bugtraq_id(54304);
   script_cve_id("CVE-2012-1870");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 15:39:29 +0200 (Mon, 27 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-11 10:10:10 +0530 (Wed, 11 Jul 2012)");
   script_name("Microsoft Windows TLS Protocol Information Disclosure Vulnerability (2655992)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49874");
@@ -48,8 +48,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to gain access to sensitive
-  information that may aid in further attacks.
-  Impact Level: System");
+  information that may aid in further attacks.");
   script_tag(name:"affected", value:"Microsoft Windows XP x32 Edition Service Pack 3 and prior
   Microsoft Windows XP x64 Edition Service Pack 2 and prior
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior

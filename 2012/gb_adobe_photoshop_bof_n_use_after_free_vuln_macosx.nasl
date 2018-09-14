@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_photoshop_bof_n_use_after_free_vuln_macosx.nasl 11135 2018-08-27 13:39:29Z asteins $
+# $Id: gb_adobe_photoshop_bof_n_use_after_free_vuln_macosx.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Adobe Photoshop BOF and Use After Free Vulnerabilities (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802786");
-  script_version("$Revision: 11135 $");
+  script_version("$Revision: 11372 $");
   script_cve_id("CVE-2012-2027", "CVE-2012-2028", "CVE-2012-2052", "CVE-2012-0275");
   script_bugtraq_id(53421, 52634, 53464, 55372);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 15:39:29 +0200 (Mon, 27 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-16 12:11:54 +0530 (Wed, 16 May 2012)");
   script_name("Adobe Photoshop BOF and Use After Free Vulnerabilities (Mac OS X)");
 
@@ -46,9 +46,7 @@ if(description)
   script_dependencies("gb_adobe_photoshop_detect_macosx.nasl");
   script_mandatory_keys("Adobe/Photoshop/MacOSX/Version");
 
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code.
-
-  Impact Level: Application/System");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary code.");
   script_tag(name:"affected", value:"Adobe Photoshop version prior to CS6 on Mac OS X");
   script_tag(name:"insight", value:"The flaws are due to
 

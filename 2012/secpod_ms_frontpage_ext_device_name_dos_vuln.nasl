@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_frontpage_ext_device_name_dos_vuln.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: secpod_ms_frontpage_ext_device_name_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Microsoft FrontPage Server Extensions MS-DOS Device Name DoS Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902839");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(1608);
   script_cve_id("CVE-2000-0709");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-24 17:17:17 +0530 (Thu, 24 May 2012)");
   script_name("Microsoft FrontPage Server Extensions MS-DOS Device Name DoS Vulnerability");
   script_category(ACT_DENIAL);
@@ -49,9 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2000-08/0288.html");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause denial of service
-  conditions.
-
-  Impact Level: Application");
+  conditions.");
   script_tag(name:"affected", value:"Microsoft FrontPage 2000 Server Extensions 1.1");
   script_tag(name:"insight", value:"The flaw is due to an error in the 'shtml.exe' component, which
   allows remote attackers to cause a denial of service in some components

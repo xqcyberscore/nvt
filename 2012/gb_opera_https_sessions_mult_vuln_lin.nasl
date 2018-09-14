@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_https_sessions_mult_vuln_lin.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_opera_https_sessions_mult_vuln_lin.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Opera 'HTTPS-Session' Multiple Vulnerabilities (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802737");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2008-7297");
   script_bugtraq_id(49134);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-09 16:56:54 +0530 (Mon, 09 Apr 2012)");
   script_name("Opera 'HTTPS-Session' Multiple Vulnerabilities (Linux)");
   script_xref(name:"URL", value:"http://scarybeastsecurity.blogspot.com/2008/11/cookie-forcing.html");
@@ -46,9 +46,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to overwrite or
 delete arbitrary cookies via a Set-Cookie header in an HTTP response, which
 results into cross site scripting, cross site request forgery and denial of
-service attacks.
-
-Impact Level: Application");
+service attacks.");
   script_tag(name:"affected", value:"Opera version 11.50 and prior on Linux");
   script_tag(name:"insight", value:"Multiple flaws are due to not properly restricting modifications
 to cookies established in HTTPS sessions.");

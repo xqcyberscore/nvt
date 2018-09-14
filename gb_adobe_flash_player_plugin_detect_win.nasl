@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_flash_player_plugin_detect_win.nasl 10232 2018-06-18 05:55:14Z cfischer $
+# $Id: gb_adobe_flash_player_plugin_detect_win.nasl 11376 2018-09-13 12:51:39Z cfischer $
 #
 # Adobe Flash Player Plugin Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107320");
-  script_version("$Revision: 10232 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-18 07:55:14 +0200 (Mon, 18 Jun 2018) $");
+  script_version("$Revision: 11376 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:51:39 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-24 11:23:58 +0200 (Tue, 24 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -72,15 +72,14 @@ if( domain ) usrname = domain + '\\' + usrname;
 handle = wmi_connect( host:host, username:usrname, password:passwd );
 if( ! handle ) exit( 0 );
 
-query = "SELECT Name from CIM_DataFile Where NOT PathName LIKE '%c:\\windows\\installer%' and FileName LIKE 'NPSWF%' and Extension = 'dll'";
+query = "SELECT Name FROM CIM_DataFile WHERE NOT PathName LIKE '%c:\\windows\\installer%' AND FileName LIKE 'NPSWF%' AND Extension = 'dll'";
 fileList = wmi_query( wmi_handle:handle, query:query );
-if( ! fileList ) {
+if( "NTSTATUS" >< fileList || ! fileList ) {
   wmi_close( wmi_handle:handle );
   exit( 0 );
 }
 
-# From the other flash detection NVTs to avoid a doubled detection of
-# a registry-based installation.
+# From the other flash detection NVTs to avoid a doubled detection of a registry-based installation.
 detectedList = get_kb_list( "AdobeFlashPlayer/Win/InstallLocations" );
 
 fileList = split( fileList, keep:FALSE );
@@ -99,15 +98,12 @@ foreach filePath( fileList ) {
   # the query above returns single backslash in the path...
   filePath = ereg_replace( pattern:"\\", replace:"\\", string:filePath );
 
-  versList = wmi_file_fileversion( handle:handle, filePath:filePath );
-  versList = split( versList, keep:FALSE );
-
-  foreach vers( versList ) {
-
-    if( vers == "Version" ) continue; # Just ignore the header of the list...
+  versList = wmi_file_fileversion( handle:handle, filePath:filePath, includeHeader:FALSE );
+  if( ! versList || ! is_array( versList ) ) continue;
+  foreach vers( keys( versList ) ) {
 
     # Version of the .dll contains something like 29.0.0.140 or 30.0.0.113
-    if( vers && version = eregmatch( string:vers, pattern:"^([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)" ) ) {
+    if( versList[vers] && version = eregmatch( string:versList[vers], pattern:"^([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)" ) ) {
 
       set_kb_item( name:"AdobeFlashPlayer/Win/InstallLocations", value:tolower( location ) );
       set_kb_item( name:"AdobeFlashPlayer/Win/Installed", value:TRUE );
@@ -125,7 +121,7 @@ foreach filePath( fileList ) {
         base = "cpe:/a:adobe:flash_player:";
         app = "Adobe Flash Player Plugin 32bit Portable";
       }
-      register_and_report_cpe( app:app, ver:version[1], concluded:vers, base:base, expr:"^([0-9.]+)", insloc:location );
+      register_and_report_cpe( app:app, ver:version[1], concluded:versList[vers], base:base, expr:"^([0-9.]+)", insloc:location );
     }
   }
 }

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openfiler_mult_vuln.nasl 11148 2018-08-28 14:25:49Z asteins $
+# $Id: gb_openfiler_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Openfiler Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802967");
-  script_version("$Revision: 11148 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(55500);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-25 17:31:13 +0530 (Tue, 25 Sep 2012)");
   script_name("Openfiler Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/42507");
@@ -48,18 +48,19 @@ if(description)
   script_require_ports("Services/www", 446);
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
   HTML and script code, arbitrary commands in a user's browser session in context
-  of an affected site and gain sensitive information.
-
-  Impact Level: Application");
+  of an affected site and gain sensitive information.");
   script_tag(name:"affected", value:"Openfiler versions 2.3, 2.99.1, 2.99.2");
   script_tag(name:"insight", value:"- 'usercookie' and 'passcookie' cookies contain the username and
   password, respectively, in plain text and these cookies are not protected with
   the 'HttpOnly' flag.
+
   - Input passed to the 'device' parameter in system.html and 'targetName'
     parameter in volumes_iscsi_targets.html is not properly sanitised before
     being returned to the user.
+
   - Access not being restricted to uptime.html and phpinfo.html can be
     exploited to disclose PHP configuration details.
+
   - Input passed to the 'device' parameter in
     /opt/openfiler/var/www/htdocs/admin/system.html is not properly
     satinitised, which allows 'openfiler' user to execute arbitrary commands

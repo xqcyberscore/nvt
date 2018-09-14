@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_Apache_ScriptAlias.nasl 10628 2018-07-25 15:52:40Z cfischer $
+# $Id: GSHB_WMI_Apache_ScriptAlias.nasl 11369 2018-09-13 11:30:29Z cfischer $
 #
 # List Files in Apache Script Alias Directories over WMI (win)
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96023");
-  script_version("$Revision: 10628 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:52:40 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 11369 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 13:30:29 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -163,12 +163,34 @@ if ("FALSE" >!< CGIDIRROOTSUM)
       if(c == 0)
       {
         CGIFILELIST = wmi_file_filelist(handle:handle, dirPath:CGIDIRCHECK);
-        CGIFILES = CGIFILES + CGIFILELIST + '\n\n';
+        if(CGIFILELIST)
+        {
+          foreach CGIFILE( CGIFILELIST )
+          {
+            CGIFILES += CGIFILE + '\n';
+          }
+          CGIFILES += '\n';
+        }
+        else
+        {
+          CGIFILES += '\n\n';
+        }
       }
       else if(CGIDIRZERO >!< CGIDIRCHECK)
       {
         CGIFILELIST = wmi_file_filelist(handle:handle, dirPath:CGIDIRCHECK);
-        CGIFILES = CGIFILES + CGIFILELIST + '\n\n';
+        if(CGIFILELIST)
+        {
+          foreach CGIFILE( CGIFILELIST )
+          {
+            CGIFILES += CGIFILE + '\n';
+          }
+          CGIFILES += '\n';
+        }
+        else
+        {
+          CGIFILES += '\n\n';
+        }
       }
     }
   }

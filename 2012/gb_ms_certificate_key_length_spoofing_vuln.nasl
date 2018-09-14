@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_certificate_key_length_spoofing_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_ms_certificate_key_length_spoofing_vuln.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft Windows Minimum Certificate Key Length Spoofing Vulnerability (2661254)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803007");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11372 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-23 16:14:43 +0530 (Thu, 23 Aug 2012)");
   script_name("Microsoft Windows Minimum Certificate Key Length Spoofing Vulnerability (2661254)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2661254");
@@ -47,8 +47,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to spoof content, perform
-  phishing attacks or perform man-in-the-middle attacks.
-  Impact Level: System");
+  phishing attacks or perform man-in-the-middle attacks.");
   script_tag(name:"affected", value:"Microsoft Windows XP x32 Edition Service Pack 3 and prior
   Microsoft Windows XP x64 Edition Service Pack 2 and prior
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_winmount_driver_ioctl_handling_dos_vuln.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_winmount_driver_ioctl_handling_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WinMount 'WMDrive.sys' Driver IOCTL Handling Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802372");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-5032");
   script_bugtraq_id(51034);
   script_tag(name:"cvss_base", value:"4.9");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-06 11:24:26 +0530 (Fri, 06 Jan 2012)");
   script_name("WinMount 'WMDrive.sys' Driver IOCTL Handling Denial of Service Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/46872/");
@@ -46,9 +46,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause the
-application to crash.
-
-Impact Level: Application");
+application to crash.");
   script_tag(name:"affected", value:"WinMount version 3.5.1018 and prior.");
   script_tag(name:"insight", value:"The flaw is due to a null pointer dereference error in
 WMDrive.sys, when processing a crafted '0x87342000 IOCTL' in the WMDriver

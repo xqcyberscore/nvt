@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_web_form_hash_collision_dos_vuln_win.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_web_form_hash_collision_dos_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # PHP Web Form Hash Collision Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802408");
-  script_version("$Revision: 10458 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-4885", "CVE-2012-0788", "CVE-2012-0789");
   script_bugtraq_id(51193, 51952, 52043);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-03 16:47:40 +0530 (Tue, 03 Jan 2012)");
   script_name("PHP Web Form Hash Collision Denial of Service Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -44,9 +44,7 @@ if(description)
   script_mandatory_keys("php/installed", "Host/runs_windows");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial
-  of service via a specially crafted form sent in a HTTP POST request.
-
-  Impact Level: Application");
+  of service via a specially crafted form sent in a HTTP POST request.");
 
   script_tag(name:"affected", value:"PHP Version 5.3.8 and prior.");
 

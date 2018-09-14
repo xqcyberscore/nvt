@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avg_antivirus_remote_code_exec_vuln.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: gb_avg_antivirus_remote_code_exec_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # AVG Anti-Virus 'hcp://' Protocol Handler Remote Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802976");
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2010-3498");
   script_bugtraq_id(44189);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-01 18:51:18 +0530 (Mon, 01 Oct 2012)");
   script_name("AVG Anti-Virus 'hcp://' Protocol Handler Remote Code Execution Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
   script_dependencies("secpod_avg_detect_win.nasl");
   script_mandatory_keys("AVG/AV/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow the attackers to bypass virus
-scanning and allows an attacker to drop and execute known malicious files.
-
-Impact Level: Application");
+scanning and allows an attacker to drop and execute known malicious files.");
   script_tag(name:"affected", value:"AVG Anti-Virus versions 8.0, 8.0.156 and 8.0.323");
   script_tag(name:"insight", value:"The flaw is due to an error in application when interacting
 with the hcp:// URLs by the Microsoft Help and Support Center.");

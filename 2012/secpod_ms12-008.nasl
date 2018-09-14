@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-008.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: secpod_ms12-008.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2660465)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902810");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11372 $");
   script_cve_id("CVE-2012-0154", "CVE-2011-5046");
   script_bugtraq_id(51122, 51920);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 09:09:09 +0530 (Wed, 15 Feb 2012)");
   script_name("Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2660465)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47237");
@@ -49,9 +49,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial of
-  service and possibly execute arbitrary code with kernel-level privileges.
-
-  Impact Level: System");
+  service and possibly execute arbitrary code with kernel-level privileges.");
   script_tag(name:"affected", value:"Microsoft Windows 7 Service Pack 1 and prior.
 
   Microsoft Windows XP Service Pack 3 and prior.

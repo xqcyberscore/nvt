@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_networker_nsrexecd_dos_vuln.nasl 11321 2018-09-11 10:05:53Z cfischer $
+# $Id: gb_emc_networker_nsrexecd_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # EMC NetWorker 'nsrexecd' RPC Packet Denial of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802831");
-  script_version("$Revision: 11321 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(52506);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:05:53 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-09 12:23:36 +0530 (Mon, 09 Apr 2012)");
   script_name("EMC NetWorker 'nsrexecd' RPC Packet Denial of Service Vulnerability");
   script_xref(name:"URL", value:"http://aluigi.org/poc/nsrexecd_1.dat");
@@ -47,9 +47,7 @@ if(description)
   script_require_ports("Services/emc_networker", 7938);
   script_require_keys("emc_networker/port");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of
-service condition.
-
-Impact Level: Application");
+service condition.");
   script_tag(name:"affected", value:"EMC NetWorker version 7.6 SP3 and prior");
   script_tag(name:"insight", value:"The flaw is due to an error in the NetWorker Remote Exec Service
 (nsrexecd.exe), which fails to compute hash value when processing malformed

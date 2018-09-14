@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_rabbit_wiki_title_param_xss_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_rabbit_wiki_title_param_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # RabbitWiki 'title' Parameter Cross Site Scripting Vulnerability
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802608");
   script_bugtraq_id(51971);
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-13 15:15:15 +0530 (Mon, 13 Feb 2012)");
   script_name("RabbitWiki 'title' Parameter Cross Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/51971");
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
   arbitrary HTML and script code, which will be executed in a user's browser
-  session in the context of an affected site.
-
-  Impact Level: Application");
+  session in the context of an affected site.");
   script_tag(name:"affected", value:"RabbitWiki");
   script_tag(name:"insight", value:"The flaw is due to an improper validation of user-supplied
   input to the 'title' parameter in 'index.php', which allows attackers to

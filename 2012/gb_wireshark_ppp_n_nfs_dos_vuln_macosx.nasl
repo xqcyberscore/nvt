@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_ppp_n_nfs_dos_vuln_macosx.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_wireshark_ppp_n_nfs_dos_vuln_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Wireshark PPP And NFS Dissector Denial of Service Vulnerabilities (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802899");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-4048", "CVE-2012-4049");
   script_bugtraq_id(54649);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-27 10:00:50 +0530 (Fri, 27 Jul 2012)");
   script_name("Wireshark PPP And NFS Dissector Denial of Service Vulnerabilities (Mac OS X)");
 
@@ -43,8 +43,7 @@ if(description)
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_require_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
-  service.
-  Impact Level: Application");
+  service.");
   script_tag(name:"affected", value:"Wireshark versions 1.4.x before 1.4.14,
   1.6.x before 1.6.9 and 1.8.x before 1.8.1 on Mac OS X");
   script_tag(name:"insight", value:"Erros within the PPP and 'epan/dissectors/packet-nfs.c' in the NFS

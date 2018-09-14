@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_omnistar_dms_mult_vuln.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: gb_omnistar_dms_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Omnistar Document Manager Software Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802467");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-11 13:29:47 +0530 (Thu, 11 Oct 2012)");
   script_name("Omnistar Document Manager Software Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2012/Oct/65");
@@ -45,8 +45,10 @@ if(description)
   script_tag(name:"insight", value:"- Multiple sql bugs are located in index.php file with the bound
   vulnerable report_id, delete_id, add_id, return_to, interface, page and sort_order
   parameter requests.
+
   - The LFI bug is located in the index module with the bound vulnerable 'area'
   parameter request.
+
   - Multiple non stored XSS bugs are located in the interface exception-handling
   module of the application with the client side  bound vulnerable interface,
   act, name and alert_msg parameter requests.");
@@ -58,9 +60,7 @@ General solution options are to upgrade to a newer release, disable respective f
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to compromise
   dbms via sql injection or information disclosure via local system file include
   and hijack administrator/moderator/customer sessions via persistent malicious
-  script code inject on application side
-
-  Impact Level: Application");
+  script code inject on application side");
   script_tag(name:"affected", value:"Omnistar Document Manager Version 8.0 and prior");
 
   script_tag(name:"qod_type", value:"remote_app");

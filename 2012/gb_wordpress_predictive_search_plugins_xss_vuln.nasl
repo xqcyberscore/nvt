@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_predictive_search_plugins_xss_vuln.nasl 10257 2018-06-19 14:04:53Z cfischer $
+# $Id: gb_wordpress_predictive_search_plugins_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WordPress WP e-Commerce And WooCommerce Predictive Search Plugin 'rs' XSS Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803072");
-  script_version("$Revision: 10257 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(56702, 56703);
   script_tag(name:"last_modification", value:"$Date: 2017-04-14 11:02:12 +0200 (Fr, 14 Apr 2017)$");
   script_tag(name:"creation_date", value:"2012-12-10 13:35:37 +0530 (Mon, 10 Dec 2012)");
@@ -52,9 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to insert arbitrary HTML and
   script code, which will be executed in a user's browser session in the
-  context of an affected site when the malicious data is being viewed.
-
-  Impact Level: Application");
+  context of an affected site when the malicious data is being viewed.");
 
   script_tag(name:"affected", value:"WordPress WooCommerce Predictive Search Plugin version 1.0.5 and prior
 

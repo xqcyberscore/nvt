@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_media_player_classic_webserver_mult_vuln.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_media_player_classic_webserver_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Media Player Classic (MPC) Webserver Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802494");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-16 16:43:52 +0530 (Fri, 16 Nov 2012)");
   script_name("Media Player Classic (MPC) Webserver Multiple Vulnerabilities");
 
@@ -46,9 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
   arbitrary HTML and script code, which will be executed in a user's browser
-  session in the context of an affected site and cause denial of service.
-
-  Impact Level: Application");
+  session in the context of an affected site and cause denial of service.");
   script_tag(name:"affected", value:"MPC (Media Player Classic) version 1.6.4");
   script_tag(name:"insight", value:"Multiple flaws are due to improper validation of user-supplied
   input via the 'path' parameter to browser.html and buffer overflow occurs when

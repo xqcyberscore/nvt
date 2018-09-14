@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-047.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: secpod_ms12-047.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2718523)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903033");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11372 $");
   script_cve_id("CVE-2012-1890", "CVE-2012-1893");
   script_bugtraq_id(54285, 54302);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-11 10:20:48 +0530 (Wed, 11 Jul 2012)");
   script_name("Microsoft Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2718523)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49200/");
@@ -47,8 +47,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  code with kernel-mode privileges.
-  Impact Level: System");
+  code with kernel-mode privileges.");
   script_tag(name:"affected", value:"Microsoft Windows XP x32 Edition Service Pack 3 and prior
   Microsoft Windows XP x64 Edition Service Pack 2 and prior
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior

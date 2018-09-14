@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB-12.nasl 10623 2018-07-25 15:14:01Z cfischer $
+# $Id: GSHB-12.nasl 11379 2018-09-13 13:48:15Z cfischer $
 #
 # IT-Grundschutz, 12. Ergänzungslieferung
 #
@@ -112,8 +112,8 @@ depend = make_list("M4_001", "M4_002", "M4_003", "M4_004", "M4_005", "M4_007",
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94000");
-  script_version("$Revision: 10623 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 17:14:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 11379 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 15:48:15 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2011-12-09 15:38:53 +0100 (Fri, 09 Dec 2011)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -125,10 +125,11 @@ if(description)
   script_copyright("Copyright (c) 2011 Greenbone Networks GmbH");
   script_family("Compliance");
   script_mandatory_keys("Compliance/Launch/GSHB-12");
-  script_add_preference(name:"Berichtformat", type:"radio", value:"Text;Tabellarisch;Text und Tabellarisch");
+  #  script_add_preference(name:"Berichtformat", type:"radio", value:"Text;Tabellarisch;Text und Tabellarisch");
   script_require_keys("GSHB-12/silence");
   script_dependencies("compliance_tests.nasl");
-  foreach d (depend) script_dependencies("GSHB/EL12/GSHB_" + d + ".nasl");
+  #foreach d (depend)  script_dependencies("GSHB/EL12/GSHB_" + d + ".nasl");
+
   script_tag(name:"summary", value:"Zusammenfassung von Tests gemäß IT-Grundschutz
 (in 12. Ergänzungslieferung).
 
@@ -141,7 +142,9 @@ IT-Grundschutz des Bundesamts für Sicherheit
 in der Informationstechnik (BSI) auf den
 Zielsystemen soweit die Maßnahmen auf automatisierte
 Weise abgeprüft werden können.");
+
   script_tag(name:"deprecated", value:TRUE);
+
   exit(0);
 }
 

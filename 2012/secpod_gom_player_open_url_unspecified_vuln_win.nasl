@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_gom_player_open_url_unspecified_vuln_win.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: secpod_gom_player_open_url_unspecified_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # GOM Media Player 'Open URL' Feature Unspecified Vulnerability (Windows)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903003");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-1774");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-21 17:12:10 +0530 (Wed, 21 Mar 2012)");
   script_name("GOM Media Player 'Open URL' Feature Unspecified Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://www.security-database.com/cvss.php?alert=CVE-2012-1774");
@@ -43,8 +43,7 @@ if(description)
   script_family("General");
   script_dependencies("secpod_gom_player_detect_win.nasl");
   script_require_keys("GOM/Player/Ver/Win");
-  script_tag(name:"impact", value:"It has unknown impact and attack vectors.
-  Impact Level: Application");
+  script_tag(name:"impact", value:"It has unknown impact and attack vectors.");
   script_tag(name:"affected", value:"GOM Media Player version prior to 2.1.39.5101 on Windows");
   script_tag(name:"insight", value:"The flaw is due to an unspecified error in the Open URL feature.");
   script_tag(name:"solution", value:"Upgrade to GOM Media Player 2.1.39.5101 or later,

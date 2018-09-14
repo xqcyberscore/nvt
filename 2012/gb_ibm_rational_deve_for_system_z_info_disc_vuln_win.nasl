@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_rational_deve_for_system_z_info_disc_vuln_win.nasl 11084 2018-08-22 17:10:42Z cfischer $
+# $Id: gb_ibm_rational_deve_for_system_z_info_disc_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # IBM Rational Developer for System z Information Disclosure Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802687");
-  script_version("$Revision: 11084 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-4862");
   script_bugtraq_id(56725);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 19:10:42 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-21 19:17:26 +0530 (Fri, 21 Dec 2012)");
   script_name("IBM Rational Developer for System z Information Disclosure Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51401/");
@@ -46,8 +46,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
   script_tag(name:"impact", value:"Successful exploitation could allow local users to obtain sensitive information
-  via unspecified vectors.
-  Impact Level: Application");
+  via unspecified vectors.");
   script_tag(name:"affected", value:"IBM Rational Developer for System z version 7.1 through 8.5.1 on Windows");
   script_tag(name:"insight", value:"The flaw is due to error in the application, which does not properly store the
   SSL certificate password.");

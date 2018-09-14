@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_director_cimlistener_dir_trav_vuln.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: gb_ibm_director_cimlistener_dir_trav_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # IBM Director CIM Server CIMListener Directory Traversal Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802684");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2009-0880");
   script_bugtraq_id(34065);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-11 20:37:46 +0530 (Tue, 11 Dec 2012)");
   script_name("IBM Director CIM Server CIMListener Directory Traversal Vulnerability (Windows)");
 
@@ -46,8 +46,7 @@ if(description)
   script_mandatory_keys("Host/runs_windows");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to traverse the file
-  system and specify any library on the system.
-  Impact Level: Application");
+  system and specify any library on the system.");
   script_tag(name:"affected", value:"IBM Director version 5.20.3 Service Update 1 and prior");
   script_tag(name:"insight", value:"The flaw is due to error in IBM Director CIM Server, which allow remote
   attackers to load and execute arbitrary local DLL code via a .. (dot dot)

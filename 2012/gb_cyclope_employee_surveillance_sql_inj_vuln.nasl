@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cyclope_employee_surveillance_sql_inj_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_cyclope_employee_surveillance_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Cyclope Employee Surveillance Solution SQL Injection Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803006");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-14 10:50:03 +0530 (Tue, 14 Aug 2012)");
   script_name("Cyclope Employee Surveillance Solution SQL Injection Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50200");
@@ -45,9 +45,7 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL
-  queries by injecting arbitrary SQL code.
-
-  Impact Level: Application");
+  queries by injecting arbitrary SQL code.");
   script_tag(name:"affected", value:"Cyclope Employee Surveillance Solution version 6.0.8.5 and
   prior");
   script_tag(name:"insight", value:"Input passed to 'username' and 'password' parameter in '/index.php'

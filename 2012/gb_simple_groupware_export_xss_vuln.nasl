@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simple_groupware_export_xss_vuln.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_simple_groupware_export_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # SimpleGroupware 'export' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802589");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-1028");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-09 17:20:45 +0530 (Thu, 09 Feb 2012)");
   script_name("SimpleGroupware 'export' Parameter Cross Site Scripting Vulnerability");
 
@@ -45,8 +45,7 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-  script code in a user's browser session in context of an affected site.
-  Impact Level: Application");
+  script code in a user's browser session in context of an affected site.");
   script_tag(name:"affected", value:"SimpleGroupware 0.742 and prior.");
   script_tag(name:"insight", value:"The flaw is due to an input passed via 'export' parameter to 'bin/index.php'
   is not properly sanitised before being returned to the user.");

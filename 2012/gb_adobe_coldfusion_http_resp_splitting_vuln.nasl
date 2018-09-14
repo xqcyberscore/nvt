@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_coldfusion_http_resp_splitting_vuln.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_adobe_coldfusion_http_resp_splitting_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Adobe ColdFusion HTTP Response Splitting Vulnerability
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:adobe:coldfusion";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802660");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(53941);
   script_cve_id("CVE-2012-2041");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-23 14:14:14 +0530 (Mon, 23 Jul 2012)");
   script_name("Adobe ColdFusion HTTP Response Splitting Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49517");
@@ -48,8 +48,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to influence or misrepresent how
   web content is served, cached, or interpreted. This could aid in various
-  attacks that try to entice client users into a false sense of trust.
-  Impact Level: Application");
+  attacks that try to entice client users into a false sense of trust.");
   script_tag(name:"affected", value:"Adobe ColdFusion versions 8.0 through 9.0.1");
   script_tag(name:"insight", value:"This flaw exists because the application does not validate an unspecified
   HTTP header before returning it to the user. This can be exploited to insert

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_phux_download_manager_sql_inj_vuln.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: gb_phux_download_manager_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # phux Download Manager 'file' Parameter SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802586");
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-0980");
   script_bugtraq_id(51725);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-07 12:53:59 +0530 (Tue, 07 Feb 2012)");
   script_name("phux Download Manager 'file' Parameter SQL Injection Vulnerability");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18432/");
@@ -46,9 +46,7 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will let attackers to cause SQL injection
-  attack and gain sensitive information.
-
-  Impact Level: Application");
+  attack and gain sensitive information.");
   script_tag(name:"affected", value:"phux Download Manager version 0.1 and prior.");
   script_tag(name:"insight", value:"The flaw is due to an improper validation of user-supplied
   input via the 'file' parameter to download.php, which allows attacker to

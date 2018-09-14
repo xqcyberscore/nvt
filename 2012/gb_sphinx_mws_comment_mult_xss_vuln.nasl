@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sphinx_mws_comment_mult_xss_vuln.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_sphinx_mws_comment_mult_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Sphinx Mobile Web Server 'comment' Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802390");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-1005");
   script_bugtraq_id(51820);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-02 14:49:35 +0530 (Thu, 02 Feb 2012)");
   script_name("Sphinx Mobile Web Server 'comment' Multiple Cross-Site Scripting Vulnerabilities");
 
@@ -51,9 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
   arbitrary HTML and script code, which will be executed in a user's browser
-  session in the context of an affected site.
-
-  Impact Level: Application");
+  session in the context of an affected site.");
   script_tag(name:"affected", value:"Sphinx Mobile Web Server U3 3.1.2.47 and prior.");
   script_tag(name:"insight", value:"The flaws are due to an improper validation of user-supplied input
   via the 'comment' parameter to '/Blog/MyFirstBlog.txt' and

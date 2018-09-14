@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_null_httpd_server_content_length_bof_vuln.nasl 11148 2018-08-28 14:25:49Z asteins $
+# $Id: gb_null_httpd_server_content_length_bof_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Null HTTPd Server Content-Length HTTP Header Buffer overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802923");
-  script_version("$Revision: 11148 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2002-1496");
   script_bugtraq_id(5774);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-27 11:36:16 +0530 (Fri, 27 Jul 2012)");
   script_name("Null HTTPd Server Content-Length HTTP Header Buffer overflow Vulnerability");
 
@@ -47,9 +47,7 @@ if(description)
   script_mandatory_keys("Null_httpd/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary code on
-  the target system or cause the web server to crash.
-
-  Impact Level: Application");
+  the target system or cause the web server to crash.");
   script_tag(name:"affected", value:"Null HTTPd Server version 0.5.0 or prior");
   script_tag(name:"insight", value:"Improper way of handling of negative 'Content-Length' values in HTTP header
   field, leads to a buffer overflow. By sending an HTTP request with a negative

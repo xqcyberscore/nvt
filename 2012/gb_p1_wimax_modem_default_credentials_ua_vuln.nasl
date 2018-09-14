@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_p1_wimax_modem_default_credentials_ua_vuln.nasl 11144 2018-08-28 11:37:19Z asteins $
+# $Id: gb_p1_wimax_modem_default_credentials_ua_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # P1 WiMAX Modem Default Credentials Unauthorized Access Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802476");
-  script_version("$Revision: 11144 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 13:37:19 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-15 15:53:36 +0530 (Mon, 15 Oct 2012)");
   script_name("P1 WiMAX Modem Default Credentials Unauthorized Access Vulnerability");
   script_xref(name:"URL", value:"http://pastebin.com/pkuNfSJF");
@@ -54,9 +54,7 @@ features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host has P1 WiMAX Modem and is prone default credentials
 unauthorized access vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to login
-with default credentials and gain access to modem.
-
-Impact Level: Application");
+with default credentials and gain access to modem.");
   script_tag(name:"affected", value:"P1 WiMAX Modem");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_clickjacking_vuln_macosx.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_mozilla_prdts_clickjacking_vuln_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Mozilla Products Certificate Page Clickjacking Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802894");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-1964");
   script_bugtraq_id(54581);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-23 18:40:44 +0530 (Mon, 23 Jul 2012)");
   script_name("Mozilla Products Certificate Page Clickjacking Vulnerability (Mac OS X)");
 
@@ -47,8 +47,7 @@ if(description)
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to gain sensitive information
-  or bypass certain security restrictions.
-  Impact Level: Application");
+  or bypass certain security restrictions.");
   script_tag(name:"affected", value:"SeaMonkey version before 2.10
   Thunderbird version 5.0 through 12.0
   Mozilla Firefox version 4.x through 12.0

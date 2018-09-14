@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_solarwinds_orion_storage_manager_mult_vuln.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: secpod_solarwinds_orion_storage_manager_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # SolarWinds Orion Data Storage Manager SQL Injection and XSS Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902902");
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-24 11:53:50 +0530 (Tue, 24 Jan 2012)");
   script_name("SolarWinds Orion Data Storage Manager SQL Injection and XSS Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/521328");
@@ -62,9 +62,7 @@ is prone SQL injection and cross site scripting vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to steal
 cookie-based authentication credentials, compromise the application,
 access or modify data, or exploit latent vulnerabilities in the
-underlying database.
-
-Impact Level: Application");
+underlying database.");
   script_tag(name:"affected", value:"SolarWinds Storage Manager Server version 5.1.2 and prior.");
   script_tag(name:"solution_type", value:"WillNotFix");
   exit(0);

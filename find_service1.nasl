@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: find_service1.nasl 11040 2018-08-17 13:31:04Z cfischer $
+# $Id: find_service1.nasl 11382 2018-09-14 08:36:05Z cfischer $
 #
 # Service Detection with 'GET' Request
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.17975");
-  script_version("$Revision: 11040 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 15:31:04 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-14 10:36:05 +0200 (Fri, 14 Sep 2018) $");
   script_tag(name:"creation_date", value:"2005-11-03 14:08:04 +0100 (Thu, 03 Nov 2005)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -869,6 +869,51 @@ if( port == 5441 &&
   exit( 0 );
 }
 
+# OMAPI https://en.wikipedia.org/wiki/OMAPI
+# 0x00:  00 00 00 64 00 00 00 18                            ...d....
+if( rhexstr == "0000006400000018" ) {
+  register_service( port:port, proto:"omapi", message:"A service supporting the Object Management Application Programming Interface (OMAPI) protocol seems to be running on this port." );
+  log_message( port:port, data:"A service supporting the Object Management Application Programming Interface (OMAPI) protocol seems to be running on this port." );
+  exit( 0 );
+}
+
+# Comvault Complete Backup & Recovery v11 sp 9-12
+# https://www.commvault.com/complete-backup
+# 0x00:  00 00 10 03 09 00 01 03 09 00 00 00 00 00 FF E8    ................
+# 0x10:  00 00 00 0C 00 01 00 04 00 00 00 02 00 00 00 00    ................
+# 0x20:  00 00 00 02   
+if( rhexstr == "0000100309000103090000000000ffe80000000c00010004000000020000000000000002" ) {
+  register_service( port:port, proto:"comvault-complete-backup", message:"A Comvault Complete Backup & Recovery service seems to be running on this port." );
+  log_message( port:port, data:"A Comvault Complete Backup & Recovery service seems to be running on this port." );
+  exit( 0 );
+}
+
+# Digi AnywhereUSB/14
+# https://www.digi.com/products/usb-and-serial-connectivity/usb-over-ip-hubs/anywhereusb
+# 0x00:  FF 14 50 6F 72 74 20 69 73 20 6F 75 74 20 6F 66    ..Port is out of
+# 0x10:  20 72 61 6E 67 65 00 FF 14 50 6F 72 74 20 69 73     range...Port is
+# 0x20:  20 6F 75 74 20 6F 66 20 72 61 6E 67 65 00 FF 14     out of range...
+# 0x30:  50 6F 72 74 20 69 73 20 6F 75 74 20 6F 66 20 72    Port is out of r
+# 0x40:  61 6E 67 65 00 FF 14 50 6F 72 74 20 69 73 20 6F    ange...Port is o
+# 0x50:  75 74 20 6F 66 20 72 61 6E 67 65 00 FF 14 50 6F    ut of range...Po
+# 0x60:  72 74 20 69 73 20 6F 75 74 20 6F 66 20 72 61 6E    rt is out of ran
+# 0x70:  67 65 00                                           ge.      
+if( rhexstr == "ff14506f7274206973206f7574206f662072616e676500ff14506f7274206973206f7574206f662072616e676500ff14506f7274206973206f7574206f662072616e676500ff14506f7274206973206f7574206f662072616e676500ff14506f7274206973206f7574206f662072616e676500" ) {
+  register_service( port:port, proto:"digi-usb", message:"A Digi AnywhereUSB/14 service seems to be running on this port." );
+  log_message( port:port, data:"A Digi AnywhereUSB/14 service seems to be running on this port." );
+  exit( 0 );
+}
+
+# mariadb - galera cluster port on e.g. 4567/tcp
+# 0x00:  24 00 00 02 43 9D 3A 7F 00 01 10 00 B3 B7 1E CD    $...C.:.........
+# 0x10:  A6 E7 11 E8 B9 33 E6 E4 2B A3 C7 AF 29 9F 98 AD    .....3..+...)...
+# 0x20:  A8 3B 11 E8 A6 2B 7F 47 06 68 BC B7                .;...+.G.h..   
+if( rhexstr == "24000002439d3a7f00011000b3b71ecda6e711e8b933e6e42ba3c7af299f98ada83b11e8a62b7f470668bcb7 " ) {
+  register_service( port:port, proto:"digi-usb", message:"A MariaDB galera cluster service seems to be running on this port." );
+  log_message( port:port, data:"A MariaDB galera cluster service seems to be running on this port." );
+  exit( 0 );
+}
+
 # Some spontaneous banners are coming slowly, so they are wrongly registered as answers to GET
 if( r =~ '^(\\|/dev/[a-z0-9/-]+\\|[^|]*\\|[^|]*\\|[^|]\\|)+$' ) {
   report_service( port:port, svc:"hddtemp" );
@@ -880,6 +925,7 @@ if( r =~ '^(\\|/dev/[a-z0-9/-]+\\|[^|]*\\|[^|]*\\|[^|]\\|)+$' ) {
 # or 0x00:  15 03 01                                           ...
 # See also "Alert Protocol format" in http://blog.fourthbit.com/2014/12/23/traffic-analysis-of-an-ssl-slash-tls-session/
 if( rhexstr =~ "^15030[0-3]00020[1-2]..$" ||
+    rhexstr =~ "^1500000732$" || # nb: e.g. Novell Zenworks prebootserver on 998/tcp
     rhexstr =~ "^150301$" ) {
   register_service( port:port, proto:"ssl", message:"A service responding with an unknown SSL/TLS alert seems to be running on this port." );
   log_message( port:port, data:"A service responding with an unknown SSL/TLS alert seems to be running on this port." );

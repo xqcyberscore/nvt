@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_java_prdts_detect_portable_win.nasl 11015 2018-08-17 06:31:19Z cfischer $
+# $Id: gb_java_prdts_detect_portable_win.nasl 11377 2018-09-13 13:24:27Z cfischer $
 #
 # Java Portable Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107318");
-  script_version("$Revision: 11015 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-17 08:31:19 +0200 (Fri, 17 Aug 2018) $");
+  script_version("$Revision: 11377 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 15:24:27 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 17:33:28 +0200 (Wed, 25 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -72,87 +72,76 @@ if( domain ) usrname = domain + '\\' + usrname;
 handle = wmi_connect( host:host, username:usrname, password:passwd );
 if( ! handle ) exit( 0 );
 
-fileList = wmi_file_file_search( handle:handle, fileName:"java", fileExtn:"exe" );
+fileList = wmi_file_file_search( handle:handle, fileName:"java", fileExtn:"exe", includeHeader:FALSE );
 if( ! fileList ) {
   wmi_close( wmi_handle:handle );
   exit( 0 );
 }
 
-# From gb_java_prdts_detect_win.nasl to avoid a doubled detection of
-# a registry-based installation.
+# From gb_java_prdts_detect_win.nasl to avoid a doubled detection of a registry-based installation.
 detectedList = get_kb_list( "Java/Win/InstallLocations" );
-fileList = split( fileList, keep:FALSE );
 
 foreach filePath( fileList ) {
-
-  if( filePath == "Name" ) continue; # Just ignore the header of the list...
 
   # wmi_file_file_search returns the .exe filename so we're stripping it away
   # to keep the install location registration the same way like in gb_java_prdts_detect_win.nasl
   location = filePath - "\java.exe";
-
   if( detectedList && in_array( search:tolower( location ), array:detectedList ) ) continue; # We already have detected this installation...
 
   # nb: wmi_file_fileversion needs doubled backslash in the path but
   # wmi_file_file_search returns single backslash in the path...
   filePath = ereg_replace( pattern:"\\", replace:"\\", string:filePath );
 
-  versList = wmi_file_fileversion( handle:handle, filePath:filePath );
+  versList = wmi_file_fileversion( handle:handle, filePath:filePath, includeHeader:FALSE );
+  if( ! versList || ! is_array( versList ) ) continue;
+  foreach vers( keys( versList ) ) {
 
-  versList = split( versList, keep:FALSE );
+    # Version of the java.exe file is something like 8.0.1710.11
+    # so we need to catch only the first three parts of the version.
+    if( versList[vers] && version = eregmatch( string:versList[vers], pattern:"^([0-9]+\.[0-9]+\.[0-9]{1,3})" ) ) {
 
-  foreach vers( versList ) {
+      set_kb_item( name:"Java/Win/InstallLocations", value:tolower( location ) );
 
-      if( vers == "Version" ) continue; # Just ignore the header of the list...
-      # Version of the java.exe file is something like 8.0.1710.11
-      # so we need to catch only the first three parts of the version.
-      if( vers && version = eregmatch( string:vers, pattern:"^([0-9]+\.[0-9]+\.[0-9]{1,3})" ) ) {
-        set_kb_item( name:"Java/Win/InstallLocations", value:tolower( location ) );
       # For correct determination of the product we need to add "1." as leading number to the detected version number
-      vers = "1." +version[1];
+      vers = "1." + version[1];
 
-      set_kb_item(name:"Sun/Java/JRE/Win/Ver", value:vers);
-      set_kb_item(name:"Sun/Java/JDK_or_JRE/Win/installed", value:TRUE);
-      set_kb_item(name:"Sun/Java/JDK_or_JRE/Win_or_Linux/installed", value:TRUE);
+      set_kb_item( name:"Sun/Java/JRE/Win/Ver", value:vers );
+      set_kb_item( name:"Sun/Java/JDK_or_JRE/Win/installed", value:TRUE );
+      set_kb_item( name:"Sun/Java/JDK_or_JRE/Win_or_Linux/installed", value:TRUE );
 
       # The portableapps.com installer is putting the 32bit version in CommonFiles\Java and the 64bit into CommonFiles\Java64.
       # This is the only way to differ between 32bit and 64bit as we can't differ between 32 and 64bit based on the file information.
       if( "java64" >< location ) {
 
-        set_kb_item(name:"Sun/Java64/JRE64/Win/Ver", value:vers);
+        set_kb_item( name:"Sun/Java64/JRE64/Win/Ver", value:vers );
 
-          if(version_is_less(version:vers, test_version:"1.4.2.38") ||
-          version_in_range(version:vers, test_version:"1.5", test_version2:"1.5.0.33") ||
-          version_in_range(version:vers, test_version:"1.6", test_version2:"1.6.0.18")){
-
+        if( version_is_less( version:vers, test_version:"1.4.2.38" ) ||
+            version_in_range( version:vers, test_version:"1.5", test_version2:"1.5.0.33" ) ||
+            version_in_range( version:vers, test_version:"1.6", test_version2:"1.6.0.18" ) ){
+          # nb: Before Oracles acquisition of Sun
           java_name = "Sun Java JRE 64-bit";
-          ## (Before Oracles acquisition of Sun)
           cpe = "cpe:/a:sun:jre:x64:";
-        }else{
-
-           java_name = "Oracle Java JRE 64-bit";
-           ## (After Oracles acquisition of Sun)
-           cpe = "cpe:/a:oracle:jre:x64:";
-         }
-
-      } else {
-        if(version_is_less(version:vers, test_version:"1.4.2.38") ||
-          version_in_range(version:vers, test_version:"1.5", test_version2:"1.5.0.33") ||
-          version_in_range(version:vers, test_version:"1.6", test_version2:"1.6.0.18")){
-
-          java_name = "Sun Java JRE 32-bit";
-          ## (Before Oracles acquisition of Sun)
-          cpe = "cpe:/a:sun:jre:";
-        }else{
-
-           java_name = "Oracle Java JRE 32-bit";
-           ## (After Oracles acquisition of Sun)
-           cpe = "cpe:/a:oracle:jre:";
-         }
+        } else {
+          # nb: After Oracles acquisition of Sun
+          java_name = "Oracle Java JRE 64-bit";
+          cpe = "cpe:/a:oracle:jre:x64:";
         }
-        register_and_report_cpe( app:java_name +" Portable", ver:vers, concluded:vers, base:cpe, expr:"^([:a-z0-9._]+)", insloc:location );
+      } else {
+        if( version_is_less( version:vers, test_version:"1.4.2.38" ) ||
+            version_in_range( version:vers, test_version:"1.5", test_version2:"1.5.0.33" ) ||
+            version_in_range( version:vers, test_version:"1.6", test_version2:"1.6.0.18" ) ) {
+          # nb: Before Oracles acquisition of Sun
+          java_name = "Sun Java JRE 32-bit";
+          cpe = "cpe:/a:sun:jre:";
+        } else {
+          # nb: After Oracles acquisition of Sun
+          java_name = "Oracle Java JRE 32-bit";
+          cpe = "cpe:/a:oracle:jre:";
+        }
       }
-   }
+      register_and_report_cpe( app:java_name + " Portable", ver:vers, concluded:versList[vers], base:cpe, expr:"^([:a-z0-9._]+)", insloc:location );
+    }
+  }
 }
 
 wmi_close( wmi_handle:handle );

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_browsercrm_mult_sql_n_xss_vuln.nasl 11322 2018-09-11 10:15:07Z asteins $
+# $Id: secpod_browsercrm_mult_sql_n_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # BrowserCRM Multiple SQL Injection and XSS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902691");
-  script_version("$Revision: 11322 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-5213", "CVE-2011-5214");
   script_bugtraq_id(51060);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-30 12:15:54 +0530 (Tue, 30 Oct 2012)");
   script_name("BrowserCRM Multiple SQL Injection and XSS Vulnerabilities");
 
@@ -66,9 +66,7 @@ General solution options are to upgrade to a newer release, disable respective f
   injection and cross site scripting vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute
   arbitrary web script or HTML in a user's browser session in the context of an
-  affected site and manipulate SQL queries by injecting arbitrary SQL code.
-
-  Impact Level: Application");
+  affected site and manipulate SQL queries by injecting arbitrary SQL code.");
   script_tag(name:"affected", value:"BrowserCRM version 5.100.1 and prior");
 
   script_tag(name:"solution_type", value:"WillNotFix");

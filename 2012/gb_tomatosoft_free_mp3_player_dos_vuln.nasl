@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tomatosoft_free_mp3_player_dos_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_tomatosoft_free_mp3_player_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # TomatoSoft Free Mp3 Player '.mp3' File Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802370");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-5043");
   script_bugtraq_id(51123);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-05 12:20:03 +0530 (Thu, 05 Jan 2012)");
   script_name("TomatoSoft Free Mp3 Player '.mp3' File Denial of Service Vulnerability");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/71870");
@@ -46,9 +46,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause the
-application to crash.
-
-Impact Level: Application");
+application to crash.");
   script_tag(name:"affected", value:"TomatoSoft Free Mp3 Player 1.0");
   script_tag(name:"insight", value:"The flaw is due to an error when parsing a crafted '.mp3' file
 containing an overly long argument.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_pdo_sql_parser_re_file_pdo_ext_dos_vuln_win.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_pdo_sql_parser_re_file_pdo_ext_dos_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # PHP pdo_sql_parser.re 'PDO' extension DoS vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802670");
-  script_version("$Revision: 10458 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-3450");
   script_bugtraq_id(54777);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-27 17:03:25 +0530 (Mon, 27 Aug 2012)");
   script_name("PHP pdo_sql_parser.re 'PDO' extension DoS vulnerability (Windows)");
 
@@ -50,9 +50,7 @@ if(description)
   script_mandatory_keys("php/installed", "Host/runs_windows");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial of
-  service condition.
-
-  Impact Level: Application");
+  service condition.");
 
   script_tag(name:"affected", value:"PHP version before 5.3.14 and 5.4.x before 5.4.4 on Windows");
 

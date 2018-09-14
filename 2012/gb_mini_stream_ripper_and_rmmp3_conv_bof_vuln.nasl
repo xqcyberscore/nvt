@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mini_stream_ripper_and_rmmp3_conv_bof_vuln.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_mini_stream_ripper_and_rmmp3_conv_bof_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Mini-Stream Ripper And RM-MP3 Converter '.pls' File Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802368");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2009-5109", "CVE-2010-5081");
   script_bugtraq_id(41332, 34514);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-03 10:37:57 +0530 (Tue, 03 Jan 2012)");
   script_name("Mini-Stream Ripper And RM-MP3 Converter '.pls' File Buffer Overflow Vulnerability");
   script_xref(name:"URL", value:"http://sebug.net/vuldb/ssvid-18793");
@@ -50,9 +50,7 @@ if(description)
   script_dependencies("secpod_mini_stream_prdts_detect.nasl");
   script_mandatory_keys("MiniStream/Products/Installed");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execution of
-arbitrary code.
-
-Impact Level: Application");
+arbitrary code.");
   script_tag(name:"affected", value:"Ripper version 3.0.1.1 and prior
 RM-MP3 Converter version 3.1.2.1");
   script_tag(name:"insight", value:"The flaw is due to an error when processing '.pls' files, which

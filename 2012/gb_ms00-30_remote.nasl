@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms00-30_remote.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_ms00-30_remote.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Microsoft IIS Malformed File Extension Denial of Service Vulnerability
 #
@@ -29,13 +29,13 @@ CPE = "cpe:/a:microsoft:iis";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802439");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(1190);
   script_cve_id("CVE-2000-0408");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
   script_tag(name:"creation_date", value:"2012-07-03 16:55:41 +0530 (Tue, 03 Jul 2012)");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_name("Microsoft IIS Malformed File Extension Denial of Service Vulnerability");
   script_xref(name:"URL", value:"http://www.ussrback.com/labs40.html");
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms00-030");
@@ -48,9 +48,7 @@ if(description)
   script_dependencies("secpod_ms_iis_detect.nasl");
   script_require_ports("Services/www", 80);
   script_require_keys("IIS/installed");
-  script_tag(name:"impact", value:"Successful exploitation could slow the servers response or stop it altogether.
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation could slow the servers response or stop it altogether.");
   script_tag(name:"affected", value:"Microsoft Internet Information Server 4.0/5.0");
   script_tag(name:"insight", value:"The flaw is due to error in IIS, If a malicious user request a file
   from a web server via an URL containing specially malformed file extension

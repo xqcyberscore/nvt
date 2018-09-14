@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_emc_dpa_dos_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_emc_dpa_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # EMC Data Protection Advisor NULL Pointer Dereference Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802827");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-0406", "CVE-2012-0407");
   script_bugtraq_id(52833, 53164);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-04 14:58:28 +0530 (Wed, 04 Apr 2012)");
   script_name("EMC Data Protection Advisor NULL Pointer Dereference Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -49,9 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/522408/30/0/threaded");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial of
-  service condition.
-
-  Impact Level: Application");
+  service condition.");
   script_tag(name:"affected", value:"EMC Data Protection Advisor version 5.8.1 Build 5991 and prior");
   script_tag(name:"insight", value:"The flaw is due to an NULL pointer dereference error in the DPA
   Controller and Listener service when processing certain authentication

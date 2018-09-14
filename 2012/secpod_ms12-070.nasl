@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-070.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: secpod_ms12-070.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Microsoft SQL Server Report Manager Cross Site Scripting Vulnerability (2754849)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902689");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-2552");
   script_bugtraq_id(55783);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-10 09:46:39 +0530 (Wed, 10 Oct 2012)");
   script_name("Microsoft SQL Server Report Manager Cross Site Scripting Vulnerability (2754849)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50901");
@@ -48,8 +48,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to gain sensitive
-  information or execute arbitrary code in the context of the current user.
-  Impact Level: Application");
+  information or execute arbitrary code in the context of the current user.");
   script_tag(name:"affected", value:"Microsoft SQL Server 2012
   Microsoft SQL Server 2005 Service Pack 4 and prior
   Microsoft SQL Server 2008 Service Pack 2 and prior

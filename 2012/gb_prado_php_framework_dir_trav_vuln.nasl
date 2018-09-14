@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_prado_php_framework_dir_trav_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
+# $Id: gb_prado_php_framework_dir_trav_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # PRADO PHP Framework 'sr' Parameter Multiple Directory Traversal Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803116");
-  script_version("$Revision: 11188 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(56677);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-27 15:16:12 +0530 (Tue, 27 Nov 2012)");
   script_name("PRADO PHP Framework 'sr' Parameter Multiple Directory Traversal Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -47,9 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.zeroscience.mk/en/vulnerabilities/ZSL-2012-5113.php");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to perform
-  directory traversal attacks and read arbitrary files on the affected application.
-
-  Impact Level: Application");
+  directory traversal attacks and read arbitrary files on the affected application.");
 
   script_tag(name:"affected", value:"PRADO PHP Framework version 3.2.0 (r3169)");
 

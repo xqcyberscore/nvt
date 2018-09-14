@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_avaya_winpmd_mult_bof_vuln.nasl 11195 2018-09-03 12:47:26Z cfischer $
+# $Id: gb_avaya_winpmd_mult_bof_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Avaya WinPDM Multiple Buffer Overflow Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802469");
-  script_version("$Revision: 11195 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(47947);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 14:47:26 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-12 12:33:59 +0530 (Fri, 12 Oct 2012)");
   script_name("Avaya WinPDM Multiple Buffer Overflow Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/44062/");
@@ -47,9 +47,7 @@ if(description)
   script_require_udp_ports(3217);
   script_dependencies("find_service.nasl");
   script_tag(name:"impact", value:"Successful exploitation will allow unauthenticated attackers to cause the
-  application to crash.
-
-  Impact Level: Application");
+  application to crash.");
   script_tag(name:"affected", value:"Avaya WinPDM version 3.8.2 and prior");
   script_tag(name:"insight", value:"Multiple flaws are due to a boundary error in,
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_whois_plugin_xss_vuln.nasl 10257 2018-06-19 14:04:53Z cfischer $
+# $Id: gb_wordpress_whois_plugin_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WordPress WHOIS Plugin 'domain' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802553");
-  script_version("$Revision: 10257 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(51244);
   script_cve_id("CVE-2011-5194");
   script_tag(name:"cvss_base", value:"4.3");
@@ -50,9 +50,7 @@ if(description)
   script_xref(name:"URL", value:"http://plugins.trac.wordpress.org/changeset/482954/wordpress-whois-search");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary web
-  script or HTML in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  script or HTML in a user's browser session in the context of an affected site.");
 
   script_tag(name:"affected", value:"WordPress WHOIS Plugin version prior to 1.4.2.3");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_libpng_plugin_dos_vuln_win.nasl 11057 2018-08-20 13:59:30Z asteins $
+# $Id: gb_vlc_media_player_libpng_plugin_dos_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # VLC Media Player 'libpng_plugin' Denial of Service Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:videolan:vlc_media_player";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802488");
-  script_version("$Revision: 11057 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-5470");
   script_bugtraq_id(55850);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:59:30 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 14:31:32 +0530 (Fri, 02 Nov 2012)");
   script_name("VLC Media Player 'libpng_plugin' Denial of Service Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/21889/");
@@ -47,8 +47,7 @@ if(description)
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
   script_mandatory_keys("VLCPlayer/Win/Installed");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to crash the affected
-  application and denying service to legitimate users.
-  Impact Level: Application");
+  application and denying service to legitimate users.");
   script_tag(name:"affected", value:"VLC media player version 2.0.3 and prior on Windows");
   script_tag(name:"insight", value:"The flaw is due to an error in 'libpng_plugin' when handling a crafted PNG
   file. Which can be exploited to cause a crash.");

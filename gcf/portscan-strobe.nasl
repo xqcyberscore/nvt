@@ -1,12 +1,12 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: portscan-strobe.nasl 9624 2018-04-26 09:24:50Z cfischer $
+# $Id: portscan-strobe.nasl 11379 2018-09-13 13:48:15Z cfischer $
 #
-# NASL wrapper around strobe portscanner 
+# NASL wrapper around strobe portscanner
 #
 # Author:
 # Vlatko Kosturjak <kost@linux.hr>
-# 
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2
 # (or any later version), as published by the Free Software Foundation.
@@ -21,15 +21,15 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
 ###############################################################################
 #
-# TODO: 
+# TODO:
 # - report back banners grabbed
-# 
+#
 
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.80009");
-  script_version("$Revision: 9624 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-26 11:24:50 +0200 (Thu, 26 Apr 2018) $");
+  script_version("$Revision: 11379 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 15:48:15 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2008-10-26 10:11:20 +0100 (Sun, 26 Oct 2008)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -40,10 +40,10 @@ if(description)
   script_dependencies("toolcheck.nasl", "ping_host.nasl");
   script_mandatory_keys("Tools/Present/strobe");
 
-  script_add_preference(name:"Strobe timeout", type:"entry", value: "");
-  script_add_preference(name:"Strobe number of sockets in parallel", type:"entry", value: "");
-  script_add_preference(name:"Strobe local port to bind outgoing requests", type:"entry", value: "");
-  script_add_preference(name:"Disable usage of getpeername", type:"checkbox", value: "no");
+  #  script_add_preference(name:"Strobe timeout", type:"entry", value: "");
+  #  script_add_preference(name:"Strobe number of sockets in parallel", type:"entry", value: "");
+  #  script_add_preference(name:"Strobe local port to bind outgoing requests", type:"entry", value: "");
+  #  script_add_preference(name:"Disable usage of getpeername", type:"checkbox", value: "no");
 
   script_tag(name:"summary", value:"This plugin runs strobe to find open ports.
   Strobe is a small TCP port scanner.
@@ -61,14 +61,14 @@ exit(66);
 
 ip = get_host_ip();
 esc_ip = ""; l = strlen(ip);
-for (i = 0; i < l; i ++) 
+for (i = 0; i < l; i ++)
   if (ip[i] == '.')
     esc_ip = strcat(esc_ip, "\.");
   else
     esc_ip = strcat(esc_ip, ip[i]);
 
 prange = get_preference("port_range");
-if (! prange) prange = "1-65535"; 
+if (! prange) prange = "1-65535";
 
 portrangelist=split(prange,sep:",",keep:FALSE);
 
@@ -113,18 +113,18 @@ for (i=0; i<size; i++) {
 		}
 		portrangelist[i]=beg[0] + "-" + beg[1];
 	}
-	
+
 	for (j=i;j<size; j++) {
 		prs = split (portrangelist[j],sep:"-",keep:FALSE);
 		prsnext = split (portrangelist[j+1],sep:"-",keep:FALSE);
 		if (isnull(prs[1]) && isnull(prsnext[1])) {
-			if (prsnext[0] == (int(prs[0])+1)) {	
+			if (prsnext[0] == (int(prs[0])+1)) {
 				beg[1]=prsnext[0];
 				i++;
 			} else {
 				break;
 			}
-		} 
+		}
 		if (isnull(prs[1]) && (!isnull(prsnext[1]))) {
 			if (prsnext[0] == int(prs[0]+1)) {
 				beg[1]=prsnext[1];
@@ -132,7 +132,7 @@ for (i=0; i<size; i++) {
 			} else {
 				break;
 			}
-		} 
+		}
 		if ((!isnull(prs[1])) && isnull(prsnext[1])) {
 			if (prsnext[0] == int(prs[1]+1)) {
 				beg[1]=prsnext[0];
@@ -140,7 +140,7 @@ for (i=0; i<size; i++) {
 			} else {
 				break;
 			}
-		} 
+		}
 		if ((!isnull(prs[1])) && (!isnull(prsnext[1]))) {
 			if (prsnext[0] == int(prs[1]+1)) {
 				beg[1]=prsnext[1];

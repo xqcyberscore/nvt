@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_zigbee_zcl_dissector_dos_vuln_macosx.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_wireshark_zigbee_zcl_dissector_dos_vuln_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Wireshark ZigBee ZCL Dissector Denial of Service Vulnerability (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802846");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2010-4301");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-04 18:39:35 +0530 (Fri, 04 May 2012)");
   script_name("Wireshark ZigBee ZCL Dissector Denial of Service Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/42290");
@@ -43,8 +43,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_require_keys("Wireshark/MacOSX/Version");
-  script_tag(name:"impact", value:"Successful exploitation will allow attackers to crash the application.
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow attackers to crash the application.");
   script_tag(name:"affected", value:"Wireshark version 1.4.0 to 1.4.1");
   script_tag(name:"insight", value:"The flaw is due to an error in 'epan/dissectors/packet-zbee-zcl.c' in
   the ZigBee ZCL dissector, which allows remote attackers to cause a denial of

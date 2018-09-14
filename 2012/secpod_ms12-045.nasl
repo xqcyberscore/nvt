@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-045.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: secpod_ms12-045.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft Windows Data Access Components Remote Code Execution Vulnerability (2698365)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902687");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11372 $");
   script_cve_id("CVE-2012-1891");
   script_bugtraq_id(54308);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-11 10:42:59 +0530 (Wed, 11 Jul 2012)");
   script_name("Microsoft Windows Data Access Components Remote Code Execution Vulnerability (2698365)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49743");
@@ -48,9 +48,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to gain sensitive
-  information or execute arbitrary code in the context of the current user.
-
-  Impact Level: System");
+  information or execute arbitrary code in the context of the current user.");
   script_tag(name:"affected", value:"Microsoft Windows XP x32 Edition Service Pack 3 and prior
 
   Microsoft Windows XP x64 Edition Service Pack 2 and prior

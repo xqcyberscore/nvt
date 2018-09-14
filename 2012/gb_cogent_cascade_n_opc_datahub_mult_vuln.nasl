@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cogent_cascade_n_opc_datahub_mult_vuln.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_cogent_cascade_n_opc_datahub_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Cogent OPC DataHub and Cascade DataHub XSS and CRLF Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802565");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-0310", "CVE-2012-0309");
   script_bugtraq_id(51375);
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-20 18:01:09 +0530 (Fri, 20 Jan 2012)");
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:P");
@@ -58,7 +58,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
   HTML and script code in a user's browser session in context of an affected
   site.
-  Impact Level: Application.");
+  .");
   script_tag(name:"affected", value:"OPC DataHub version 6.4.20 and prior
   Cascade DataHub version 6.4.20 and prior");
   script_tag(name:"solution_type", value:"VendorFix");

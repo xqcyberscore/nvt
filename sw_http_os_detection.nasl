@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: sw_http_os_detection.nasl 11046 2018-08-19 19:51:19Z cfischer $
+# $Id: sw_http_os_detection.nasl 11382 2018-09-14 08:36:05Z cfischer $
 #
 # HTTP OS Identification
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.111067");
-  script_version("$Revision: 11046 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-19 21:51:19 +0200 (Sun, 19 Aug 2018) $");
+  script_version("$Revision: 11382 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-14 10:36:05 +0200 (Fri, 14 Sep 2018) $");
   script_tag(name:"creation_date", value:"2015-12-10 16:00:00 +0100 (Thu, 10 Dec 2015)");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_tag(name:"cvss_base", value:"0.0");
@@ -114,8 +114,11 @@ function check_http_banner( port, banner ) {
         banner == "Server: Java/0.0" || # Cross-platform, running on e.g. VIBNODE devices
         banner == "Server: NessusWWW" || # Nessus could be running on Windows, Linux/Unix or MacOS
         banner == "Server: Embedded Web Server" ||
+        banner == "Server: EZproxy" || # runs on Linux or Windows
+        banner == "Server: com.novell.zenworks.httpserver" || # Cross-platform
         "erver: BBC " >< banner || # OV Communication Broker runs on various different OS variants
         "Server: PanWeb Server/" >< banner || # Already covered by gb_palo_alto_webgui_detect.nasl
+        egrep( pattern:"^Server: com.novell.zenworks.httpserver/[0-9.]+$", string:banner ) || # Cross-platform, e.g. Server: com.novell.zenworks.httpserver/1.0
         egrep( pattern:"^Server: DHost/[0-9.]+ HttpStk/[0-9.]+$", string:banner ) || # DHost/9.0 HttpStk/1.0 from Novell / NetIQ eDirectory, runs on various OS variants
         egrep( pattern:"^Server: Tomcat/[0-9.]+$", string:banner ) || # Quite outdated Tomcat, e.g. Server: Tomcat/2.1
         egrep( pattern:"^Server: Themis [0-9.]+$", string:banner ) || # Currently unknown
@@ -742,6 +745,31 @@ function check_http_banner( port, banner ) {
         register_unknown_os_banner( banner:banner, banner_type_name:banner_type, banner_type_short:"http_banner", port:port );
       }
       return;
+    }
+
+    # PowerDNS webserver is only running on Unix-like OS variants
+    # https://doc.powerdns.com/md/authoritative/settings/#webserver
+    # https://doc.powerdns.com/md/httpapi/README/
+    # e.g. Server: PowerDNS/4.0.3
+    if( "Server: PowerDNS" >< banner ) {
+      register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      if( egrep( pattern:"^Server: PowerDNS/([0-9.]+)$", string:banner ) ) {
+        # nb: Only return if there are no additional info within the banner so
+        # that we're reporting an unknown OS later in other cases...
+        return;
+      }
+    }
+
+    # Tinyproxy is only running on Unix-like OS variants
+    # https://tinyproxy.github.io/
+    # e.g. Server: tinyproxy/1.8.4
+    if( "Server: tinyproxy" >< banner ) {
+      register_and_report_os( os:"Linux/Unix", cpe:"cpe:/o:linux:kernel", banner_type:banner_type, port:port, banner:banner, desc:SCRIPT_DESC, runs_key:"unixoide" );
+      if( egrep( pattern:"^Server: tinyproxy/([0-9.]+)$", string:banner ) ) {
+        # nb: Only return if there are no additional info within the banner so
+        # that we're reporting an unknown OS later in other cases...
+        return;
+      }
     }
 
     # nb: Keep at the bottom to catch all the more detailed patterns above...

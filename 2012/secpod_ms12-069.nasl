@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-069.nasl 11141 2018-08-28 10:01:13Z asteins $
+# $Id: secpod_ms12-069.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft Windows Kerberos Denial of Service Vulnerability (2743555)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901301");
-  script_version("$Revision: 11141 $");
+  script_version("$Revision: 11372 $");
   script_cve_id("CVE-2012-2551");
   script_bugtraq_id(55778);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 12:01:13 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-10 09:58:54 +0530 (Wed, 10 Oct 2012)");
   script_name("Microsoft Windows Kerberos Denial of Service Vulnerability (2743555)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50867/");
@@ -47,8 +47,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow authenticated attackers to cause a denial
-  of service condition on the affected system.
-  Impact Level: System");
+  of service condition on the affected system.");
   script_tag(name:"affected", value:"Microsoft Windows 7 Service Pack 1 and prior
   Microsoft Windows 2008 R2 Service Pack 1 and prior");
   script_tag(name:"insight", value:"The flaw is present due to an error in Kerberos implementation which fails to

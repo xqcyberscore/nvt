@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_media_service_handshake_seq_dos_vuln.nasl 11141 2018-08-28 10:01:13Z asteins $
+# $Id: gb_ms_win_media_service_handshake_seq_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Microsoft Windows Media Service Handshake Sequence DoS Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802888");
-  script_version("$Revision: 11141 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2000-0211");
   script_bugtraq_id(1000);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 12:01:13 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-30 13:22:23 +0530 (Mon, 30 Jul 2012)");
   script_name("Microsoft Windows Media Service Handshake Sequence DoS Vulnerability");
   script_category(ACT_DENIAL);
@@ -49,9 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms00-013");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause denial of
-  service conditions.
-
-  Impact Level: Application");
+  service conditions.");
   script_tag(name:"affected", value:"Microsoft Windows 2000
   Microsoft Windows NT 4.0
   Windows Media Services 4.0 and 4.1");

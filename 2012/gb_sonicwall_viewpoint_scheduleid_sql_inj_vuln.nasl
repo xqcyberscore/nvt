@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sonicwall_viewpoint_scheduleid_sql_inj_vuln.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_sonicwall_viewpoint_scheduleid_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # SonicWall Viewpoint 'scheduleID' Parameter SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803033");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-5169");
   script_bugtraq_id(49906);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-25 15:47:29 +0530 (Tue, 25 Sep 2012)");
   script_name("SonicWall Viewpoint 'scheduleID' Parameter SQL Injection Vulnerability");
 
@@ -44,8 +44,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_tag(name:"impact", value:"Successful exploitation will let attackers to manipulate SQL queries by
-  injecting arbitrary SQL code.
-  Impact Level: Application");
+  injecting arbitrary SQL code.");
   script_tag(name:"affected", value:"SonicWALL Viewpoint 6.0 SP2 and prior versions");
   script_tag(name:"insight", value:"Input passed to 'scheduleID' parameter in
   'sgms/reports/scheduledreports/configure/scheduleProps.jsp' page is not

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_entrps_resrce_plan_sql_inj_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_entrps_resrce_plan_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # ERP (Enterprise Resource Planning) System SQL Injection Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803137");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-31 13:34:48 +0530 (Mon, 31 Dec 2012)");
   script_name("ERP (Enterprise Resource Planning) System SQL Injection Vulnerability");
   script_xref(name:"URL", value:"http://packetstormsecurity.com/files/119157/erp-sql.txt");
@@ -44,9 +44,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to compromise
   the application, access or modify data or exploit vulnerabilities in the
-  underlying database.
-
-  Impact Level: Application");
+  underlying database.");
   script_tag(name:"affected", value:"ERP Enterprise Resource Planning");
   script_tag(name:"insight", value:"Improper validation of user-supplied input passed via the 'title'
   parameter to '/Portal/WUC/daily.ashx', which allows attacker to  manipulate SQL

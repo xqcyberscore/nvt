@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms11-020_remote.nasl 10421 2018-07-05 12:17:22Z cfischer $
+# $Id: secpod_ms11-020_remote.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft SMB Transaction Parsing Remote Code Execution Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902660");
-  script_version("$Revision: 10421 $");
+  script_version("$Revision: 11372 $");
   script_cve_id("CVE-2011-0661");
   script_bugtraq_id(47198);
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 14:17:22 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-06 11:57:33 +0530 (Tue, 06 Mar 2012)");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
@@ -49,9 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms11-020");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  code on the system.
-
-  Impact Level: System");
+  code on the system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 7 SP1 and prior
 

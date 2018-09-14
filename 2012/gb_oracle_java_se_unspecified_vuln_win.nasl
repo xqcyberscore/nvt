@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_unspecified_vuln_win.nasl 10144 2018-06-08 14:06:26Z asteins $
+# $Id: gb_oracle_java_se_unspecified_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Oracle Java SE Java Runtime Environment Unspecified Vulnerability - (Windows)
 #
@@ -27,30 +27,29 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802950");
-  script_version("$Revision: 10144 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-1726");
   script_bugtraq_id(53948);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-08 16:06:26 +0200 (Fri, 08 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-22 19:06:04 +0530 (Wed, 22 Aug 2012)");
   script_name("Oracle Java SE Java Runtime Environment Unspecified Vulnerability - (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/48589");
-  script_xref(name : "URL" , value : "http://www.oracle.com/technetwork/topics/security/javacpufeb2012-366318.html");
-  script_xref(name : "URL" , value : "http://www.metasploit.com/modules/exploit/multi/browser/java_atomicreferencearray");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/48589");
+  script_xref(name:"URL", value:"http://www.oracle.com/technetwork/topics/security/javacpufeb2012-366318.html");
+  script_xref(name:"URL", value:"http://www.metasploit.com/modules/exploit/multi/browser/java_atomicreferencearray");
 
   script_category(ACT_GATHER_INFO);
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_family("General");
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_require_keys("Sun/Java/JRE/Win/Ver");
-  script_tag(name : "impact" , value : "Successful exploitation allows remote attackers to gain sensitive information.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Oracle Java SE versions 7 Update 4 and earlier");
-  script_tag(name : "insight" , value : "Unspecified errors related to Libraries component.");
-  script_tag(name : "solution" , value : "Apply the patch from below link
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to gain sensitive information.");
+  script_tag(name:"affected", value:"Oracle Java SE versions 7 Update 4 and earlier");
+  script_tag(name:"insight", value:"Unspecified errors related to Libraries component.");
+  script_tag(name:"solution", value:"Apply the patch from below link
   http://www.oracle.com/technetwork/topics/security/javacpufeb2012-366318.html");
-  script_tag(name : "summary" , value : "This host is installed with Oracle Java SE and is prone to
+  script_tag(name:"summary", value:"This host is installed with Oracle Java SE and is prone to
   unspecified vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");

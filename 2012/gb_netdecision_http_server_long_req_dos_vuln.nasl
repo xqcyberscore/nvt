@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netdecision_http_server_long_req_dos_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_netdecision_http_server_long_req_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # NetDecision HTTP Server Long HTTP Request Remote Denial of Service Vulnerability
 #
@@ -28,11 +28,11 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802617");
   script_bugtraq_id(52208);
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-1465");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-08 15:19:34 +0530 (Thu, 08 Mar 2012)");
   script_name("NetDecision HTTP Server Long HTTP Request Remote Denial of Service Vulnerability");
 
@@ -51,9 +51,7 @@ if(description)
   script_mandatory_keys("NetDecision-HTTP-Server/banner");
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause the application
-  to crash, creating a denial-of-service condition.
-
-  Impact Level: Application");
+  to crash, creating a denial-of-service condition.");
   script_tag(name:"affected", value:"Netmechanica NetDecision 4.5.1");
   script_tag(name:"insight", value:"The flaw is due to a boundary error in the HTTP server when handling
   web requests can be exploited to cause a stack-based buffer overflow via an

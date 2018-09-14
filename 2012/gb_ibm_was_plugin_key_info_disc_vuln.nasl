@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_plugin_key_info_disc_vuln.nasl 11141 2018-08-28 10:01:13Z asteins $
+# $Id: gb_ibm_was_plugin_key_info_disc_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # IBM WebSphere Application Server 'plugin-key.kdb' Information Disclosure Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802851");
-  script_version("$Revision: 11141 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-2162");
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 12:01:13 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-11 17:31:58 +0530 (Fri, 11 May 2012)");
   script_name("IBM WebSphere Application Server 'plugin-key.kdb' Information Disclosure Vulnerability");
 
@@ -47,8 +47,7 @@ if(description)
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_require_ports("Services/www", 80);
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to gain sensitive
-  information.
-  Impact Level: Application");
+  information.");
   script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS) 8.0 and prior");
   script_tag(name:"insight", value:"The flaw is due to an error in the Plug-in, which uses unencrypted
   HTTP communication after expiration of the plugin-key.kdb password. Which

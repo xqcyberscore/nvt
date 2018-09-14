@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_asp_dotnet_sec_bypass_vuln_july18.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_asp_dotnet_sec_bypass_vuln_july18.nasl 11370 2018-09-13 11:32:51Z asteins $
 #
 # Microsoft ASP.NET Core Security Feature Bypass Vulnerability July18
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813674");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 11370 $");
   script_cve_id("CVE-2018-8171");
   script_bugtraq_id(104659);
   script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 13:32:51 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-13 15:50:36 +0530 (Fri, 13 Jul 2018)");
   script_name("Microsoft ASP.NET Core Security Feature Bypass Vulnerability July18");
 

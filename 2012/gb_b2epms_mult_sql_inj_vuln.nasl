@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_b2epms_mult_sql_inj_vuln.nasl 11055 2018-08-20 12:23:58Z asteins $
+# $Id: gb_b2epms_mult_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # b2ePMS Multiple SQL Injection Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802861");
-  script_version("$Revision: 11055 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(53690);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 14:23:58 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-01 13:07:29 +0530 (Fri, 01 Jun 2012)");
   script_name("b2ePMS Multiple SQL Injection Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53690");
@@ -47,9 +47,7 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will let attackers to cause SQL injection
-  attack and gain sensitive information.
-
-  Impact Level: Application");
+  attack and gain sensitive information.");
   script_tag(name:"affected", value:"b2ePMS version 1.0");
   script_tag(name:"insight", value:"Multiple flaws are due to input passed via phone_number,
   msg_caller, phone_msg, msg_options, msg_recipients and signed parameters to

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_xbl_bind_mem_crptn_vuln_macosx.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: gb_mozilla_prdts_xbl_bind_mem_crptn_vuln_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Mozilla Products XBL Binding Memory Corruption Vulnerability - (MAC OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802593");
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-0452");
   script_bugtraq_id(51975);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-14 15:40:12 +0530 (Tue, 14 Feb 2012)");
   script_name("Mozilla Products XBL Binding Memory Corruption Vulnerability - (MAC OS X)");
 
@@ -47,8 +47,7 @@ if(description)
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed");
   script_tag(name:"impact", value:"Successful exploitation will let attackers to execute arbitrary code in the
   context of the user running the affected application. Failed exploit attempts
-  will likely result in denial-of-service conditions.
-  Impact Level: Application");
+  will likely result in denial-of-service conditions.");
   script_tag(name:"affected", value:"SeaMonkey version prior to 2.7.1,
   Thunderbird version 10.x prior to 10.0.1 and
   Mozilla Firefox version 10.x prior to 10.0.1 on MAC OS X");

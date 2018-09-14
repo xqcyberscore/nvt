@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_partial_http_req_dos_vuln_win.nasl 9657 2018-04-27 10:38:29Z cfischer $
+# $Id: gb_apache_tomcat_partial_http_req_dos_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Apache Tomcat Partial HTTP Requests DoS Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802682");
-  script_version("$Revision: 9657 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-5568");
   script_bugtraq_id(56686);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-27 12:38:29 +0200 (Fri, 27 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-05 12:17:34 +0530 (Wed, 05 Dec 2012)");
   script_name("Apache Tomcat Partial HTTP Requests DoS Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -51,9 +51,7 @@ if(description)
   script_xref(name:"URL", value:"http://tomcat.10.n6.nabble.com/How-does-Tomcat-handle-a-slow-HTTP-DoS-tc2147779.html");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause
-  a denial of service conditions.
-
-  Impact Level: Application");
+  a denial of service conditions.");
   script_tag(name:"affected", value:"Apache Tomcat version 7.0.x");
   script_tag(name:"insight", value:"The flaw is caused by configuring an appropriate timeout using
   the connectionTimeout property for the relevant Connector(s) defined in

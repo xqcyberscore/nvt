@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_ansi_map_dos_vuln_macosx.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_wireshark_ansi_map_dos_vuln_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Wireshark ANSI A MAP Files Denial of Service Vulnerability (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802766");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-2698");
   script_bugtraq_id(49071);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-02 16:03:18 +0530 (Wed, 02 May 2012)");
   script_name("Wireshark ANSI A MAP Files Denial of Service Vulnerability (Mac OS X)");
 
@@ -43,8 +43,7 @@ if(description)
   script_family("Denial of Service");
   script_require_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation allows attackers to crash an affected application,
-  denying service to legitimate users.
-  Impact Level: Application");
+  denying service to legitimate users.");
   script_tag(name:"affected", value:"Wireshark version 1.6.0
   Wireshark version 1.4.x to 1.4.7 on Mac OS X");
   script_tag(name:"insight", value:"The flaw is caused to an infinite loop was found in the way ANSI A interface

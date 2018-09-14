@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apache_struts_showcase_code_exec_vuln.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: secpod_apache_struts_showcase_code_exec_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Apache Struts2 Showcase Skill Name Remote Code Execution Vulnerability
 #
@@ -28,11 +28,11 @@ CPE = "cpe:/a:apache:struts";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902924");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(55165);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-31 11:47:31 +0530 (Fri, 31 Aug 2012)");
   script_tag(name:"qod_type", value:"exploit");
   script_name("Apache Struts2 Showcase Skill Name Remote Code Execution Vulnerability");
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute
   arbitrary java method. Further that results to disclose environment variables
-  or cause a denial of service or an arbitrary OS command can be executed.
-
-  Impact Level: Application");
+  or cause a denial of service or an arbitrary OS command can be executed.");
 
   script_tag(name:"affected", value:"Apache Struts2 (Showcase) version 2.3.4.1 and prior");
 

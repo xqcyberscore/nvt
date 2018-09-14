@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_http_session_info_disc_vuln_macosx.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_google_chrome_http_session_info_disc_vuln_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Google Chrome 'HTTP session' Information Disclosure Vulnerability (MAC OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802702");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-3022");
   script_bugtraq_id(52031);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 15:33:27 +0530 (Tue, 21 Feb 2012)");
   script_name("Google Chrome 'HTTP session' Information Disclosure Vulnerability (MAC OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48016/");
@@ -43,8 +43,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_macosx.nasl");
   script_mandatory_keys("GoogleChrome/MacOSX/Version");
-  script_tag(name:"impact", value:"Successful exploitation could allow attackers to gain sensitive information.
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to gain sensitive information.");
   script_tag(name:"affected", value:"Google Chrome version prior to 17.0.963.56 and 19.x before 19.0.1036.7 on MAC OS X");
   script_tag(name:"insight", value:"The flaw is due to 'translate/translate_manager.cc', which uses
   HTTP session to exchange data for translation, which allows remote attackers

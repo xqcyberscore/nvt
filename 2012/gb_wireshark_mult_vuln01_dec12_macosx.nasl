@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_vuln01_dec12_macosx.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_wireshark_mult_vuln01_dec12_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Wireshark Multiple Vulnerabilities-01 Dec 2012 (Mac OS X)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803134");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-4296", "CVE-2012-4293", "CVE-2012-4292", "CVE-2012-4291",
                 "CVE-2012-4290", "CVE-2012-4289", "CVE-2012-4288", "CVE-2012-4285");
   script_bugtraq_id(55035);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-28 14:53:05 +0530 (Fri, 28 Dec 2012)");
   script_name("Wireshark Multiple Vulnerabilities-01 Dec 2012 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50276/");
@@ -50,18 +50,22 @@ if(description)
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_require_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to denial of service or
-  to consume excessive CPU resources.
-  Impact Level: Application");
+  to consume excessive CPU resources.");
   script_tag(name:"affected", value:"Wireshark 1.4.x before 1.4.15, 1.6.x before 1.6.10 and
   1.8.x before 1.8.2 on Mac OS X");
   script_tag(name:"insight", value:"The flaws are due to
+
   - A division by zero error within the DCP ETSI dissector, an error within
     the STUN dissector and EtherCAT Mailbox dissector can be exploited to
     cause a crash.
+
   - An error within the RTPS2 dissector can be exploited to cause a buffer
     overflow.
+
   - An error within the STUN dissector can be exploited to cause a crash.
+
   - An error within the CIP dissector can be exploited to exhaust memory.
+
   - An error within the CTDB dissector, AFP dissector and XTP dissector can be
     exploited to trigger an infinite loop and consume excessive CPU resources.");
   script_tag(name:"solution", value:"Upgrade to the Wireshark version 1.4.15, 1.6.10 or 1.8.2 or later,

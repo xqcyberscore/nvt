@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ssl_cookie_secure_flag_info_disc_vuln.nasl 5543 2017-03-10 16:19:37Z cfi $
+# $Id: secpod_ssl_cookie_secure_flag_info_disc_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # SSL/TLS: Missing `secure` Cookie Attribute
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902661");
-  script_version("$Revision: 5543 $");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-10 17:19:37 +0100 (Fri, 10 Mar 2017) $");
+  script_version("$Revision: 11374 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-01 17:10:53 +0530 (Thu, 01 Mar 2012)");
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:N");
@@ -51,9 +51,7 @@ if(description)
 
   script_tag(name:"insight", value:"The flaw is due to cookie is not using 'secure' attribute, which
   allows cookie to be passed to the server by the client over non-secure channels (http) and allows attacker
-  to conduct session hijacking attacks.
-
-  Impact Level: Application");
+  to conduct session hijacking attacks.");
 
   script_tag(name:"affected", value:"Server with SSL/TLS.");
 

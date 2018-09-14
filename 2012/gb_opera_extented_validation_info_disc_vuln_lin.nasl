@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_extented_validation_info_disc_vuln_lin.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: gb_opera_extented_validation_info_disc_vuln_lin.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Opera Extended Validation Information Disclosure Vulnerabilities (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802830");
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-3388", "CVE-2011-3389");
   script_bugtraq_id(49388);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-06 12:13:30 +0530 (Fri, 06 Apr 2012)");
   script_name("Opera Extended Validation Information Disclosure Vulnerabilities (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/45791");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("secpod_opera_detection_linux_900037.nasl");
   script_require_keys("Opera/Linux/Version");
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to steal sensitive security
-  information.
-  Impact Level: Application");
+  information.");
   script_tag(name:"affected", value:"Opera version before 11.51 on Linux");
   script_tag(name:"insight", value:"Multiple flaws are due to an error when loading content from trusted
   sources in an unspecified sequence that causes the address field and page

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_macosx_su11-005.nasl 8649 2018-02-03 12:16:43Z teissa $
+# $Id: gb_macosx_su11-005.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Mac OS X Certificate Trust Policy Information Disclosure Vulnerability (2011-005)
 #
@@ -25,7 +25,7 @@
 ###############################################################################
 
 tag_impact = "Successful exploitation could allow attackers to gain sensitive information.
-  Impact Level: System";
+  ";
 tag_affected = "Certificate Trust Policy";
 tag_insight = "The fraudulent certificates were issued by multiple certificate authorities
   operated by DigiNotar.";
@@ -37,10 +37,10 @@ tag_summary = "This host is missing an important security update according to
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802798");
-  script_version("$Revision: 8649 $");
+  script_version("$Revision: 11372 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-02-03 13:16:43 +0100 (Sat, 03 Feb 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-26 18:25:17 +0530 (Tue, 26 Jun 2012)");
   script_name("Mac OS X Certificate Trust Policy Information Disclosure Vulnerability (2011-005)");
   script_xref(name : "URL" , value : "http://support.apple.com/kb/HT4920");

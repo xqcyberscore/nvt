@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_novell_sentinel_log_mangr_sec_bypass_vuln.nasl 11058 2018-08-20 14:18:06Z asteins $
+# $Id: gb_novell_sentinel_log_mangr_sec_bypass_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Novell Sentinel Log Manager Retention Policy Security Bypass Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803110");
-  script_version("$Revision: 11058 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(55767);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 16:18:06 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-23 15:27:29 +0530 (Fri, 23 Nov 2012)");
   script_name("Novell Sentinel Log Manager Retention Policy Security Bypass Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50797/");
@@ -44,8 +44,7 @@ if(description)
   script_require_ports("Services/www", 8443);
   script_dependencies("find_service.nasl", "http_version.nasl");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass certain security
-  restrictions.
-  Impact Level: Application");
+  restrictions.");
   script_tag(name:"affected", value:"Novell Sentinel Log Manager version 1.2.0.2 and prior");
   script_tag(name:"insight", value:"The flaw is due to an error when saving a retention policy and can be
   exploited by a report administrator (read only role) to create new

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_mult_vuln_jan12.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_ibm_was_mult_vuln_jan12.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # IBM WebSphere Application Server (WAS) Multiple Vulnerabilities - (Jan2012)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802412");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-5066", "CVE-2011-5065", "CVE-2011-1377");
   script_bugtraq_id(51560, 51559, 50310);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-18 17:27:41 +0530 (Wed, 18 Jan 2012)");
   script_name("IBM WebSphere Application Server (WAS) Multiple Vulnerabilities - (Jan2012)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/46469");
@@ -49,8 +49,7 @@ if(description)
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_require_ports("Services/www", 80);
   script_tag(name:"impact", value:"Successful exploitation will let attackers to conduct cross-site scripting
-  attacks or to obtain sensitive information and cause a denial of service.
-  Impact Level: Application");
+  attacks or to obtain sensitive information and cause a denial of service.");
   script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS) version 6.1 before 6.1.0.41");
   script_tag(name:"insight", value:"The flaws are due to
 

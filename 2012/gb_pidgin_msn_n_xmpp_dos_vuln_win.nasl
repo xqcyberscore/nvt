@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pidgin_msn_n_xmpp_dos_vuln_win.nasl 11322 2018-09-11 10:15:07Z asteins $
+# $Id: gb_pidgin_msn_n_xmpp_dos_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Pidgin MSN and XMPP Denial of Service Vulnerabilities (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802906");
-  script_version("$Revision: 11322 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-2318", "CVE-2012-2214");
   script_bugtraq_id(53400, 53706);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-04 16:00:59 +0530 (Wed, 04 Jul 2012)");
   script_name("Pidgin MSN and XMPP Denial of Service Vulnerabilities (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49036/");
@@ -46,8 +46,7 @@ if(description)
   script_dependencies("secpod_pidgin_detect_win.nasl");
   script_require_keys("Pidgin/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to crash the affected
-  application.
-  Impact Level: Application");
+  application.");
   script_tag(name:"affected", value:"Pidgin version prior 2.10.4 on Windows");
   script_tag(name:"insight", value:"- An error in 'msn_message_parse_payload()' function handling messages with
     certain characters or character encodings can be exploited to cause a

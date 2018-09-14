@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_iis_internal_ip_addr_disc_vuln.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: secpod_ms_iis_internal_ip_addr_disc_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Microsoft IIS IP Address/Internal Network Name Disclosure Vulnerability
 #
@@ -27,9 +27,9 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902796");
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(3159);
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-23 15:45:49 +0530 (Thu, 23 Feb 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to gain internal IP
   address or internal network name, which could assist in further attacks
-  against the target host.
-
-  Impact Level: Application");
+  against the target host.");
   script_tag(name:"insight", value:"The flaw is due to an error while processing 'GET' request. When
   MS IIS receives a GET request without a host header, the Web server will
   reveal the IP address of the server in the content-location field or the

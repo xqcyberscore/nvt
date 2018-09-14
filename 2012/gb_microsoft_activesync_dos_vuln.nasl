@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_microsoft_activesync_dos_vuln.nasl 11084 2018-08-22 17:10:42Z cfischer $
+# $Id: gb_microsoft_activesync_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Microsoft ActiveSync Null Pointer Dereference Denial Of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802462");
-  script_version("$Revision: 11084 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(7150);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-22 19:10:42 +0200 (Wed, 22 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-27 14:28:19 +0530 (Thu, 27 Sep 2012)");
   script_name("Microsoft ActiveSync Null Pointer Dereference Denial Of Service Vulnerability");
   script_category(ACT_DENIAL);
@@ -46,9 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/315901");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause denial
-  of service condition.
-
-  Impact Level: Application");
+  of service condition.");
   script_tag(name:"affected", value:"Microsoft ActiveSync version 3.5");
   script_tag(name:"insight", value:"The flaw is due to NULL pointer is dereferenced in a call to the
   function 'WideCharToMultiByte()' while it is trying to process an entry

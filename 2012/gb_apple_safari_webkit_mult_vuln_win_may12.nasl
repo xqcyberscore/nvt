@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webkit_mult_vuln_win_may12.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_apple_safari_webkit_mult_vuln_win_may12.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Apple Safari Webkit Multiple Vulnerabilities - May 12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802796");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-3046", "CVE-2011-3056", "CVE-2012-0672", "CVE-2012-0676");
   script_bugtraq_id(52369, 53407, 53404, 53446);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-18 19:02:04 +0530 (Fri, 18 May 2012)");
   script_name("Apple Safari Webkit Multiple Vulnerabilities - May 12 (Windows)");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5282");
@@ -48,9 +48,7 @@ if(description)
   script_require_keys("AppleSafari/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to conduct cross site
   scripting attacks, bypass certain security restrictions, and compromise
-  a user's system.
-
-  Impact Level: Application");
+  a user's system.");
   script_tag(name:"affected", value:"Apple Safari versions prior to 5.1.7 on Windows");
   script_tag(name:"insight", value:"The flaws are due to
 

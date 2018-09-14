@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_war_ftp_format_string_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_war_ftp_format_string_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # War FTP Daemon 'USER' and 'PASS' Remote Format String Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802452");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(55338);
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-04 10:51:01 +0530 (Tue, 04 Sep 2012)");
   script_name("War FTP Daemon 'USER' and 'PASS' Remote Format String Vulnerability");
   script_category(ACT_DENIAL);
@@ -46,9 +46,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/116122/warftp-format.txt");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause a denial of
-  service.
-
-  Impact Level: Application");
+  service.");
   script_tag(name:"affected", value:"War FTP Daemon 1.82 RC 11");
   script_tag(name:"insight", value:"The flaw is due to a format string error when the username and
   password are received in a ftp request. This can be exploited to crash the

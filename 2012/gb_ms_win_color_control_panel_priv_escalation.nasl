@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_color_control_panel_priv_escalation.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_ms_win_color_control_panel_priv_escalation.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft Windows Color Control Panel Privilege Escalation Vulnerability
 #
@@ -28,13 +28,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802383");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11372 $");
   script_tag(name:"deprecated", value:TRUE);
   script_cve_id("CVE-2010-5082");
   script_bugtraq_id(44157);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-19 16:17:52 +0530 (Thu, 19 Jan 2012)");
   script_name("Microsoft Windows Color Control Panel Privilege Escalation Vulnerability");
 
@@ -51,9 +51,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful attempt could allow local attackers to bypass security
-restrictions and gain the privileges.
-
-Impact Level: System");
+restrictions and gain the privileges.");
   script_tag(name:"affected", value:"Microsoft Windows Server 2008 SP2");
   script_tag(name:"insight", value:"The flaw is due to an error in the Color Control Panel, which
 allows attackers to gain privileges via a Trojan horse sti.dll file in the

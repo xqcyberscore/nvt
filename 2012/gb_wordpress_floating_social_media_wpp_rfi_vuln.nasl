@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_floating_social_media_wpp_rfi_vuln.nasl 10257 2018-06-19 14:04:53Z cfischer $
+# $Id: gb_wordpress_floating_social_media_wpp_rfi_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WordPress Floating Social Media Links Plugin 'wpp' RFI Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803078");
-  script_version("$Revision: 10257 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(56913);
   script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Do, 26 Okt 2017)$");
   script_tag(name:"creation_date", value:"2012-12-18 12:54:08 +0530 (Tue, 18 Dec 2012)");
@@ -47,9 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://wordpress.org/extend/plugins/floating-social-media-links/changelog/");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform directory traversal
-  attacks and read arbitrary files on the affected application.
-
-  Impact Level: Application");
+  attacks and read arbitrary files on the affected application.");
 
   script_tag(name:"affected", value:"WordPress Floating Social Media Links Plugin version 1.4.2 and prior");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_drda_req_dos_vuln.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: gb_ibm_db2_drda_req_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # IBM DB2 Distributed Relational Database Architecture Request DoS Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802729");
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-0710");
   script_bugtraq_id(52326);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-03 10:37:46 +0530 (Tue, 03 Apr 2012)");
   script_name("IBM DB2 Distributed Relational Database Architecture Request DoS Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48279/");
@@ -49,7 +49,7 @@ if(description)
   script_require_keys("IBM-DB2/Remote/ver");
   script_tag(name:"impact", value:"Successful exploitation allows remote users to cause denial
   of service.
-  Impact Level: Application.");
+  .");
   script_tag(name:"affected", value:"IBM DB2 version 9.1 before FP11,
   IBM DB2 version 9.5 before FP9,
   IBM DB2 version 9.7 before FP5 and

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_notepadpp_detect_portable_win.nasl 10891 2018-08-10 12:51:28Z cfischer $
+# $Id: gb_notepadpp_detect_portable_win.nasl 11376 2018-09-13 12:51:39Z cfischer $
 #
 # Notepad++ Portable Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107319");
-  script_version("$Revision: 10891 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:51:28 +0200 (Fri, 10 Aug 2018) $");
+  script_version("$Revision: 11376 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:51:39 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-23 09:33:28 +0200 (Mon, 23 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -72,44 +72,39 @@ if( domain ) usrname = domain + '\\' + usrname;
 handle = wmi_connect( host:host, username:usrname, password:passwd );
 if( ! handle ) exit( 0 );
 
-fileList = wmi_file_file_search( handle:handle, fileName:"notepad++", fileExtn:"exe" );
+fileList = wmi_file_file_search( handle:handle, fileName:"notepad++", fileExtn:"exe", includeHeader:FALSE );
 if( ! fileList ) {
   wmi_close( wmi_handle:handle );
   exit( 0 );
 }
-# From gb_notepadpp_detect_win.nasl to avoid a doubled detection of
-# a registry-based installation.
+# From gb_notepadpp_detect_win.nasl to avoid a doubled detection of a registry-based installation.
 detectedList = get_kb_list( "Notepad++/Win/InstallLocations" );
-fileList = split( fileList, keep:FALSE );
+
 foreach filePath( fileList ) {
 
-# From gb_notepadpp_detect_win.nasl to avoid a doubled detection of
-if( filePath == "Name" ) continue; # Just ignore the header of the list...
-# wmi_file_file_search returns the .exe filename so we're stripping it away
-# to keep the install location registration the same way like in gb_thunderbird_detect_win.nasl
-location = filePath - "\notepad++.exe";
-if( detectedList && in_array( search:tolower( location ), array:detectedList ) ) continue; # We already have detected this installation...
+  # wmi_file_file_search returns the .exe filename so we're stripping it away
+  # to keep the install location registration the same way like in gb_thunderbird_detect_win.nasl
+  location = filePath - "\notepad++.exe";
+  if( detectedList && in_array( search:tolower( location ), array:detectedList ) ) continue; # We already have detected this installation...
 
-# From gb_notepadpp_detect_win.nasl to avoid a doubled detection of
-# nb: wmi_file_fileversion needs doubled backslash in the path but
-# wmi_file_file_search returns single backslash in the path...
-filePath = ereg_replace( pattern:"\\", replace:"\\", string:filePath );
+  # nb: wmi_file_fileversion needs doubled backslash in the path but
+  # wmi_file_file_search returns single backslash in the path...
+  filePath = ereg_replace( pattern:"\\", replace:"\\", string:filePath );
 
-versList = wmi_file_fileversion( handle:handle, filePath:filePath );
-versList = split( versList, keep:FALSE );
-foreach vers( versList ) {
-# From gb_notepadpp_detect_win.nasl to avoid a doubled detection of
-  if( vers == "Version" ) continue; # Just ignore the header of the list...
-  # Version of the Notepad++.exe file is something like notepad++7.5.6.0
-  # so we need to catch only the first three parts of the version.
-  if( vers && version = eregmatch( string:vers, pattern:"([0-9]+\.[0-9]+\.[0-9]+\.[0-9])$" ) ) {
+  versList = wmi_file_fileversion( handle:handle, filePath:filePath, includeHeader:FALSE );
+  if( ! versList || ! is_array( versList ) ) continue;
+  foreach vers( keys( versList ) ) {
 
-    set_kb_item( name:"Notepad++/Win/InstallLocations", value:tolower( location ) );
-    set_kb_item( name:"Notepad++/Win/Ver", value:version[1] );
-    cpe = "cpe:/a:don_ho:notepad++:";
-    register_and_report_cpe( app:"Notepad++ Portable", ver:version[1], concluded:vers, base:cpe, expr:"^([0-9.]+)", insloc:location );
+    # Version of the Notepad++.exe file is something like notepad++7.5.6.0
+    # so we need to catch only the first three parts of the version.
+    if( versList[vers] && version = eregmatch( string:versList[vers], pattern:"([0-9]+\.[0-9]+\.[0-9]+\.[0-9])$" ) ) {
+
+      set_kb_item( name:"Notepad++/Win/InstallLocations", value:tolower( location ) );
+      set_kb_item( name:"Notepad++/Win/Ver", value:version[1] );
+      cpe = "cpe:/a:don_ho:notepad++:";
+      register_and_report_cpe( app:"Notepad++ Portable", ver:version[1], concluded:versList[vers], base:cpe, expr:"^([0-9.]+)", insloc:location );
+    }
   }
- }
 }
 
 wmi_close( wmi_handle:handle );

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mybb_member_uid_sql_inj_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_mybb_member_uid_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # MyBB 'member.php' SQL Injection Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = 'cpe:/a:mybb:mybb';
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802636");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(53814);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-08 12:12:12 +0530 (Fri, 08 Jun 2012)");
   script_name("MyBB 'member.php' SQL Injection Vulnerability");
 
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to compromise
   the application, access or modify data or exploit vulnerabilities in the
-  underlying database.
-
-  Impact Level: Application");
+  underlying database.");
   script_tag(name:"affected", value:"MyBB version 1.6.8");
   script_tag(name:"insight", value:"The application fails to sufficiently sanitize user supplied input
   to the 'uid' parameter in 'member.php' before using it in an SQL query, which

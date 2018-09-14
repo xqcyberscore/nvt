@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_sql_psm_stored_proc_debug_bof_vuln_win.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_ibm_db2_sql_psm_stored_proc_debug_bof_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # IBM DB2 SQL/PSM Stored Procedure Debugging Buffer Overflow Vulnerability (Windows)
 #
@@ -28,12 +28,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803106");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-4826");
   script_bugtraq_id(56133);
   script_tag(name:"cvss_base", value:"8.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-25 11:58:30 +0530 (Thu, 25 Oct 2012)");
   script_name("IBM DB2 SQL/PSM Stored Procedure Debugging Buffer Overflow Vulnerability (Windows)");
 
@@ -49,8 +49,7 @@ if(description)
   script_family("Databases");
   script_dependencies("gb_ibm_db2_remote_detect.nasl", "os_detection.nasl");
   script_mandatory_keys("IBM-DB2/Remote/ver", "IBM-DB2/installed", "Host/runs_windows");
-  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary code.
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute arbitrary code.");
   script_tag(name:"affected", value:"IBM DB2 versions 9.1, 9.5, 9.7 before FP7 and 10.1 on Windows");
   script_tag(name:"insight", value:"The Stored Procedure (SP) infrastructure fails to properly sanitize
   user-supplied input when debugging stored procedures, which will result

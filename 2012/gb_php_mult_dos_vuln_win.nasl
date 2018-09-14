@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_mult_dos_vuln_win.nasl 10458 2018-07-09 06:47:36Z cfischer $
+# $Id: gb_php_mult_dos_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # PHP Multiple Denial of Service Vulnerabilities (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:php:php";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802566");
-  script_version("$Revision: 10458 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-4153", "CVE-2012-0781");
   script_bugtraq_id(51417);
-  script_tag(name:"last_modification", value:"$Date: 2018-07-09 08:47:36 +0200 (Mon, 09 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 11:30:34 +0530 (Mon, 23 Jan 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -50,9 +50,7 @@ if(description)
   script_mandatory_keys("php/installed", "Host/runs_windows");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause
-  denial of service conditions.
-
-  Impact Level: Application");
+  denial of service conditions.");
 
   script_tag(name:"affected", value:"PHP Version 5.3.8 on Windows.");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tomatocart_dir_traversal_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
+# $Id: secpod_tomatocart_dir_traversal_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # TomatoCart 'json.php' Directory Traversal Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901302");
-  script_version("$Revision: 11188 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-5907");
   script_bugtraq_id(52766);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-28 10:32:05 +0530 (Wed, 28 Nov 2012)");
   script_name("TomatoCart 'json.php' Directory Traversal Vulnerability");
   script_category(ACT_ATTACK);
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform
   directory traversal attacks and read arbitrary files on the affected application
-  and execute arbitrary script code.
-
-  Impact Level: Application");
+  and execute arbitrary script code.");
 
   script_tag(name:"affected", value:"TomatoCart version 1.2.0 Alpha 2 and prior");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_sec_mangr_plus_mult_vuln.nasl 11355 2018-09-12 10:32:04Z asteins $
+# $Id: gb_manageengine_sec_mangr_plus_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Zoho ManageEngine Security Manager Plus Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802483");
-  script_version("$Revision: 11355 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-22 13:33:50 +0530 (Mon, 22 Oct 2012)");
   script_name("Zoho ManageEngine Security Manager Plus Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/22092/");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to perform
 directory traversal attacks, read/download the arbitrary files and to manipulate
-SQL queries by injecting arbitrary SQL code.
-
-Impact Level: Application");
+SQL queries by injecting arbitrary SQL code.");
   script_tag(name:"affected", value:"ManageEngine Security Manager Plus version 5.5 build 5505
 and prior");
   script_tag(name:"insight", value:"Multiple flaws are due to,

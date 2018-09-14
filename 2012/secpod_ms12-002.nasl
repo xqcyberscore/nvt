@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-002.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: secpod_ms12-002.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft Windows Object Packager Remote Code Execution Vulnerability (2603381)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902784");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11372 $");
   script_bugtraq_id(51297);
   script_cve_id("CVE-2012-0009");
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-11 10:54:36 +0530 (Wed, 11 Jan 2012)");
   script_name("Microsoft Windows Object Packager Remote Code Execution Vulnerability (2603381)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/45189/");
@@ -48,8 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code with
   the privileges of the user running the affected application. Failed exploit
-  attempts will result in a denial-of-service condition.
-  Impact Level: System");
+  attempts will result in a denial-of-service condition.");
   script_tag(name:"affected", value:"Windows Windows XP Service Pack 3 and prior.
   Microsoft Windows 2003 Service Pack 2 and prior.");
   script_tag(name:"insight", value:"The flaw is due to the way that Windows registers and uses Windows

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_multiple_vuln02_nov12_win.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_oracle_mysql_multiple_vuln02_nov12_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Oracle MySQL Server Multiple Vulnerabilities-02 Nov12 (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mysql:mysql";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803112");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-3180", "CVE-2012-3177", "CVE-2012-3160");
   script_bugtraq_id(56003, 56005, 56027);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 17:27:23 +0530 (Mon, 26 Nov 2012)");
   script_name("Oracle MySQL Server Multiple Vulnerabilities-02 Nov12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51008/");
@@ -51,9 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to disclose potentially
   sensitive information, manipulate certain data and cause a DoS
-  (Denial of Service).
-
-  Impact Level: Application");
+  (Denial of Service).");
   script_tag(name:"affected", value:"Oracle MySQL version 5.1.x to 5.1.65 and
   Oracle MySQL version 5.5.x to 5.5.27 on Windows");
   script_tag(name:"insight", value:"The flaws are due to multiple unspecified errors in MySQL server component

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netoffice_dwins_mult_sql_injection_vuln.nasl 11052 2018-08-20 10:24:34Z asteins $
+# $Id: gb_netoffice_dwins_mult_sql_injection_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # netOffice Dwins Multiple SQL Injection Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802493");
-  script_version("$Revision: 11052 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 12:24:34 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-15 16:26:54 +0530 (Thu, 15 Nov 2012)");
   script_name("netOffice Dwins Multiple SQL Injection Vulnerabilities");
 
@@ -58,9 +58,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running netOffice Dwins and is prone to multiple
   sql injection vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow the attackers to manipulate
-  SQL queries by injecting arbitrary SQL code.
-
-  Impact Level: Application");
+  SQL queries by injecting arbitrary SQL code.");
   script_tag(name:"affected", value:"netOffice Dwins version 1.4p3 and prior");
 
   script_tag(name:"solution_type", value:"WillNotFix");

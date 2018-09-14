@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_andromeda_streaming_mp3_server_xss_vuln.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_andromeda_streaming_mp3_server_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Andromeda Streaming MP3 Server Cross Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802777");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-14 13:55:03 +0530 (Mon, 14 May 2012)");
   script_name("Andromeda Streaming MP3 Server Cross Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/18359");
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
   arbitrary HTML and script code, which will be executed in a user's browser
-  session in the context of an affected site.
-
-  Impact Level: Application");
+  session in the context of an affected site.");
   script_tag(name:"affected", value:"Andromeda Streaming MP3 Server version 1.9.3.6 PHP (2012) and
   prior");
   script_tag(name:"insight", value:"The flaw is due to an improper validation of user supplied

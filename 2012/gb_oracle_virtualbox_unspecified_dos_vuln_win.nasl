@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_virtualbox_unspecified_dos_vuln_win.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_oracle_virtualbox_unspecified_dos_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Oracle VM VirtualBox Unspecified Denial of Service Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803103");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-3221");
   script_bugtraq_id(56045);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-19 15:10:56 +0530 (Fri, 19 Oct 2012)");
   script_name("Oracle VM VirtualBox Unspecified Denial of Service Vulnerability (Windows)");
 
@@ -44,8 +44,7 @@ if(description)
   script_family("Denial of Service");
   script_dependencies("secpod_sun_virtualbox_detect_win.nasl");
   script_require_keys("Oracle/VirtualBox/Win/Ver");
-  script_tag(name:"impact", value:"Successful exploitation allow local users to cause a Denial of Service.
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation allow local users to cause a Denial of Service.");
   script_tag(name:"affected", value:"Oracle VM VirtualBox version 3.2, 4.0 and 4.1 on Windows");
   script_tag(name:"summary", value:"This host is installed with Oracle VM VirtualBox and is prone to
   denial of service vulnerability.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_win_kernel_win32k_sys_mem_corruption_vuln.nasl 11057 2018-08-20 13:59:30Z asteins $
+# $Id: gb_ms_win_kernel_win32k_sys_mem_corruption_vuln.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft Windows Kernel 'win32k.sys' Memory Corruption Vulnerability
 #
@@ -29,8 +29,8 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802379");
   script_tag(name:"creation_date", value:"2012-01-13 16:00:36 +0100 (Fri, 13 Jan 2012)");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 15:59:30 +0200 (Mon, 20 Aug 2018) $");
-  script_version("$Revision: 11057 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
+  script_version("$Revision: 11372 $");
   script_tag(name:"deprecated", value:TRUE);
   script_cve_id("CVE-2011-5046");
   script_bugtraq_id(51122);
@@ -49,9 +49,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
-code on the system with kernel-level privileges.
-
-Impact Level: System");
+code on the system with kernel-level privileges.");
   script_tag(name:"affected", value:"Microsoft Windows 7 Professional 64-bit");
   script_tag(name:"insight", value:"The flaw is due to an error in win32k.sys, when handling a
 specially crafted web page containing an IFRAME with an overly large 'height'

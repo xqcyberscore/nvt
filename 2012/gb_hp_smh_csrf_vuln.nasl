@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_hp_smh_csrf_vuln.nasl 11052 2018-08-20 10:24:34Z asteins $
+# $Id: gb_hp_smh_csrf_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # HP System Management Homepage Cross-site Request Forgery Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:hp:system_management_homepage";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802758");
-  script_version("$Revision: 11052 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-3846");
   script_bugtraq_id(52974);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 12:24:34 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-23 13:36:33 +0530 (Mon, 23 Apr 2012)");
   script_name("HP System Management Homepage Cross-site Request Forgery Vulnerability");
   script_category(ACT_GATHER_INFO);
@@ -55,9 +55,7 @@ if(description)
   prone to cross-site request forgery vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to create an arbitrary
   user with administrative privileges, if a logged-in administrative user visits
-  a malicious web site.
-
-  Impact Level: Application");
+  a malicious web site.");
   script_tag(name:"affected", value:"HP System Management Homepage (SMH) version 6.2.2.7");
 
   script_tag(name:"solution_type", value:"VendorFix");

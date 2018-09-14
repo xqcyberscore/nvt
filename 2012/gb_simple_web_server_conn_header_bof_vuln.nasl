@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_simple_web_server_conn_header_bof_vuln.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_simple_web_server_conn_header_bof_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Simple Web Server Connection Header Buffer Overflow Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802916");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(54605);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-23 16:50:34 +0530 (Mon, 23 Jul 2012)");
   script_name("Simple Web Server Connection Header Buffer Overflow Vulnerability");
 
@@ -57,9 +57,7 @@ if(description)
   script_tag(name:"summary", value:"This host is running Simple Web Server and is prone to buffer
   overflow vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to execute
-  arbitrary code on the target system or cause a denial of service condition.
-
-  Impact Level: Application");
+  arbitrary code on the target system or cause a denial of service condition.");
   script_tag(name:"affected", value:"Simple Web Server version 2.2 rc2");
 
   script_tag(name:"solution_type", value:"WillNotFix");

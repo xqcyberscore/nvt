@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_powershell_sec_bypass_vuln_july18_win.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_ms_powershell_sec_bypass_vuln_july18_win.nasl 11370 2018-09-13 11:32:51Z asteins $
 #
 # Microsoft PowerShell Core Security Feature Bypass Vulnerability July18 (Windows)
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:microsoft:powershell";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813697");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 11370 $");
   script_cve_id("CVE-2018-8356");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"2.1");
+  script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:P/A:N");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 13:32:51 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-20 11:03:48 +0530 (Fri, 20 Jul 2018)");
   script_name("Microsoft PowerShell Core Security Feature Bypass Vulnerability July18 (Windows)");
 

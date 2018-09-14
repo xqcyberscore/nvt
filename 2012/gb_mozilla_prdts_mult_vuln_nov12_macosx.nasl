@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_nov12_macosx.nasl 11052 2018-08-20 10:24:34Z asteins $
+# $Id: gb_mozilla_prdts_mult_vuln_nov12_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Mozilla Firefox Multiple Vulnerabilities - November12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803041");
-  script_version("$Revision: 11052 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-4194", "CVE-2012-4195", "CVE-2012-4196");
   script_bugtraq_id(56301, 56302, 56306);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 12:24:34 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-02 16:08:12 +0530 (Fri, 02 Nov 2012)");
   script_name("Mozilla Firefox  Multiple Vulnerabilities - November12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51144");
@@ -44,13 +44,15 @@ if(description)
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to inject scripts and bypass
-  certain security restrictions.
-  Impact Level: Application");
+  certain security restrictions.");
   script_tag(name:"affected", value:"Mozilla Firefox version before 16.0.2 on Mac OS X");
   script_tag(name:"insight", value:"Multiple errors
+
   - When handling the 'window.location' object.
+
   - Within CheckURL() function of the 'window.location' object, which can be
     forced to return the wrong calling document and principal.
+
   - Within handling of 'Location' object can be exploited to bypass security
     wrapper protection.");
   script_tag(name:"solution", value:"Upgrade to Mozilla Firefox version 16.0.2 or later,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-083.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: secpod_ms12-083.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft Windows IP-HTTPS Component Security Feature Bypass Vulnerability (2765809)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901305");
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11372 $");
   script_cve_id("CVE-2012-2549");
   script_bugtraq_id(56840);
   script_tag(name:"cvss_base", value:"5.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-12 09:40:29 +0530 (Wed, 12 Dec 2012)");
   script_name("Microsoft Windows IP-HTTPS Component Security Feature Bypass Vulnerability (2765809)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51500/");
@@ -46,8 +46,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attacker to bypass certain security
-  restrictions.
-  Impact Level: System");
+  restrictions.");
   script_tag(name:"affected", value:"Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior");
   script_tag(name:"insight", value:"The flaw is due to error in the IP-HTTPS component, which fails to validate
   the certificates. This can lead to a revoked certificate being considered as

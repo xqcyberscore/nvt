@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_php_built_in_web_srv_dos_vuln.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: secpod_php_built_in_web_srv_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # PHP Built-in WebServer 'Content-Length' Denial of Service Vulnerability
 #
@@ -28,10 +28,10 @@ if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902822");
   script_bugtraq_id(52704);
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-26 15:15:15 +0530 (Mon, 26 Mar 2012)");
   script_name("PHP Built-in WebServer 'Content-Length' Denial of Service Vulnerability");
   script_xref(name:"URL", value:"https://bugs.php.net/bug.php?id=61461");
@@ -56,7 +56,7 @@ if(description)
   of service vulnerability.");
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause the application
   to crash, creating a denial-of-service condition.
-  Impact Level: Application
+
 
   NOTE: This NVT reports, if similar vulnerability present in different
   web-server.");

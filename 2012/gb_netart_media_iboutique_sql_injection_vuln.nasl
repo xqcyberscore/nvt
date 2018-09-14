@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_netart_media_iboutique_sql_injection_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_netart_media_iboutique_sql_injection_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # NetArt Media iBoutique 'key' Parameter SQL Injection Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802442");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-4039");
   script_bugtraq_id(54616);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-23 12:13:54 +0530 (Mon, 23 Jul 2012)");
   script_name("NetArt Media iBoutique 'key' Parameter SQL Injection Vulnerability");
 
@@ -55,9 +55,7 @@ Likely none will be provided anymore.
 General solution options are to upgrade to a newer release, disable respective features, remove the product or replace the product by another one.");
   script_tag(name:"summary", value:"This host is running NetArt Media iBoutique and is prone to
   SQL injection vulnerability.");
-  script_tag(name:"impact", value:"Successful exploitation will allow attacker to conduct SQL injection.
-
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to conduct SQL injection.");
   script_tag(name:"affected", value:"NetArt Media iBoutique version 4.0");
 
   script_tag(name:"solution_type", value:"WillNotFix");

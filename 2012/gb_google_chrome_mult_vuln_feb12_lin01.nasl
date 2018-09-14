@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_mult_vuln_feb12_lin01.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: gb_google_chrome_mult_vuln_feb12_lin01.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities - February 12 (Linux 01)
 #
@@ -27,14 +27,14 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802598");
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-3026", "CVE-2011-3015", "CVE-2011-3027", "CVE-2011-3025",
                 "CVE-2011-3024", "CVE-2011-3023", "CVE-2011-3021", "CVE-2011-3020",
                 "CVE-2011-3019", "CVE-2011-3016", "CVE-2011-3017", "CVE-2011-3018");
   script_bugtraq_id(52049, 52031);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 14:58:55 +0530 (Tue, 21 Feb 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - February 12 (Linux 01)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48016/");
@@ -46,8 +46,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_mandatory_keys("Google-Chrome/Linux/Ver");
-  script_tag(name:"impact", value:"Successful exploitation could allow attackers to cause a denial of service.
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 17.0.963.56 on Linux");
   script_tag(name:"insight", value:"The flaws are due to
 

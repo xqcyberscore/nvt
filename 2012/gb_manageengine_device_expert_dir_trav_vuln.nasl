@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_device_expert_dir_trav_vuln.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_manageengine_device_expert_dir_trav_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Zoho ManageEngine Device Expert Directory Traversal Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802720");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(52559);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-20 15:57:28 +0530 (Tue, 20 Mar 2012)");
   script_name("Zoho ManageEngine Device Expert Directory Traversal Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48456/");
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to perform
   directory traversal attacks and read arbitrary files on the affected
-  application.
-
-  Impact Level: Application");
+  application.");
   script_tag(name:"affected", value:"ManageEngine DeviceExpert version 5.6");
   script_tag(name:"insight", value:"The flaw is due to an input validation error in 'FileName'
   parameter to 'scheduleresult.de', which allows attackers to read arbitrary

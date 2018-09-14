@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_pbboard_page_param_lfi_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_pbboard_page_param_lfi_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # PBBoard 'page' Parameter Local File Inclusion Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802631");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(53710);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-01 10:53:55 +0530 (Fri, 01 Jun 2012)");
   script_name("PBBoard 'page' Parameter Local File Inclusion Vulnerability");
   script_xref(name:"URL", value:"http://www.securityfocus.com/bid/53710");
@@ -48,9 +48,7 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will allow an attacker to view files and
-  execute local scripts in the context of the webserver process.
-
-  Impact Level: Application");
+  execute local scripts in the context of the webserver process.");
   script_tag(name:"affected", value:"PBBoard version 2.1.4");
   script_tag(name:"insight", value:"The flaw is due to an improper validation of user-supplied
   input to the 'page' parameter in 'admin.php', which allows attackers to read

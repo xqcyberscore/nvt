@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_spider_calendar_plugin_mult_sql_inj_vuln.nasl 10257 2018-06-19 14:04:53Z cfischer $
+# $Id: gb_wordpress_spider_calendar_plugin_mult_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WordPress Spider Calendar Plugin Multiple SQL Injection Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803101");
-  script_version("$Revision: 10257 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(55779);
   script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Di, 25 Apr 2017)$");
   script_tag(name:"creation_date", value:"2012-10-18 19:07:20 +0530 (Thu, 18 Oct 2012)");
@@ -49,9 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/117078/WordPress-Spider-1.0.1-SQL-Injection-XSS.html");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to manipulate SQL queries by
-  injecting arbitrary SQL code and gain sensitive information.
-
-  Impact Level: Application");
+  injecting arbitrary SQL code and gain sensitive information.");
 
   script_tag(name:"affected", value:"WordPress Spider Calendar Plugin version 1.0.1");
 

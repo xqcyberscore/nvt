@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_google_chrome_http_session_info_disc_vuln_win.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_google_chrome_http_session_info_disc_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Google Chrome 'HTTP session' Information Disclosure Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802700");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-3022");
   script_bugtraq_id(52031);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-21 15:33:27 +0530 (Tue, 21 Feb 2012)");
   script_name("Google Chrome 'HTTP session' Information Disclosure Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48016/");
@@ -43,8 +43,7 @@ if(description)
   script_family("General");
   script_dependencies("gb_google_chrome_detect_portable_win.nasl");
   script_require_keys("GoogleChrome/Win/Ver");
-  script_tag(name:"impact", value:"Successful exploitation could allow attackers to gain sensitive information.
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to gain sensitive information.");
   script_tag(name:"affected", value:"Google Chrome version prior to 17.0.963.56 and 19.x before 19.0.1036.7 on Windows");
   script_tag(name:"insight", value:"The flaw is due to 'translate/translate_manager.cc', which uses
   HTTP session to exchange data for translation, which allows remote attackers

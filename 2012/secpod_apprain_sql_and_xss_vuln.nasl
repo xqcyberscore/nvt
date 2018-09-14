@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_apprain_sql_and_xss_vuln.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: secpod_apprain_sql_and_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # appRain CMF SQL Injection And Cross Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902690");
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-5228", "CVE-2011-5229");
   script_bugtraq_id(51105);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-29 16:47:00 +0530 (Mon, 29 Oct 2012)");
   script_name("appRain CMF SQL Injection And Cross Site Scripting Vulnerabilities");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/71880");
@@ -60,9 +60,7 @@ General solution options are to upgrade to a newer release, disable respective f
   and cross site scripting vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow the attackers to execute
   arbitrary web script or HTML in a user's browser session in the context of
-  an affected site and manipulate SQL queries by injecting arbitrary SQL code.
-
-  Impact Level: Application");
+  an affected site and manipulate SQL queries by injecting arbitrary SQL code.");
   script_tag(name:"affected", value:"appRain CMF version 0.1.5 and prior");
 
   script_tag(name:"solution_type", value:"WillNotFix");

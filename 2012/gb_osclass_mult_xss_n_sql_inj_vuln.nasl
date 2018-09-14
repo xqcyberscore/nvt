@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_osclass_mult_xss_n_sql_inj_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_osclass_mult_xss_n_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # OSClass Multiple XSS and SQL Injection Vulnerabilities
 #
@@ -28,12 +28,12 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802970");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(51662);
   script_cve_id("CVE-2012-0973", "CVE-2012-0974", "CVE-2012-5162", "CVE-2012-5163");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-27 10:53:49 +0530 (Thu, 27 Sep 2012)");
   script_name("OSClass Multiple XSS and SQL Injection Vulnerabilities");
 
@@ -52,17 +52,19 @@ if (description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary web
   script or HTML in a user's browser session in the context of an affected
-  site and manipulate SQL queries by injecting arbitrary SQL code.
-  Impact Level: Application");
+  site and manipulate SQL queries by injecting arbitrary SQL code.");
   script_tag(name:"affected", value:"OSClass version prior to 2.3.5");
   script_tag(name:"insight", value:"- Input passed via the 'sCategory' GET parameter to /index.php is not
     properly sanitised before being used in SQL query.
+
   - Input passed via the 'sCity', 'sPattern', 'sPriceMax', 'sPriceMin' GET
     parameters to /index.php is not properly sanitised before being returned
     to the user.
+
   - Input passed via the 'id' GET parameter in edit_category_post and
     enable_category action is not properly sanitised before being used in
     SQL query.
+
   - Input passed via the 'id' GET parameter in enable_category action to
     index.php is not properly sanitised before being returned to the user.");
   script_tag(name:"solution", value:"Upgrade to OSClass version 2.3.5 or later

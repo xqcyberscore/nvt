@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_google_chrome_navigation_entry_mult_vuln_lin.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: secpod_google_chrome_navigation_entry_mult_vuln_lin.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Google Chrome Multiple Vulnerabilities - Jan12 (Linux)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902904");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(51641);
   script_cve_id("CVE-2011-3924", "CVE-2011-3925", "CVE-2011-3926", "CVE-2011-3927",
                 "CVE-2011-3928");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-25 13:11:21 +0530 (Wed, 25 Jan 2012)");
   script_name("Google Chrome Multiple Vulnerabilities - Jan12 (Linux)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47694/");
@@ -48,15 +48,18 @@ if(description)
   script_dependencies("gb_google_chrome_detect_lin.nasl");
   script_require_keys("Google-Chrome/Linux/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code or
-  cause a denial of service.
-  Impact Level: Application");
+  cause a denial of service.");
   script_tag(name:"affected", value:"Google Chrome version prior to 16.0.912.77 on Linux");
   script_tag(name:"insight", value:"Multiple flaws are due to an,
+
   - Use-after-free error and it is related to DOM selections and DOM handling.
+
   - Use-after-free error in the Safe Browsing feature and it is related to
     a navigation entry and an interstitial page.
+
   - Heap-based buffer overflow in the tree builder, allows remote attackers
     to cause a denial of service.
+
   - Error in Skia, does not perform all required initialization of values.");
   script_tag(name:"solution", value:"Upgrade to the Google Chrome 16.0.912.77 or later,
   For updates refer to http://www.google.com/chrome");

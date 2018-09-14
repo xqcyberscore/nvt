@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_manageengine_support_center_plus_mult_vuln.nasl 11058 2018-08-20 14:18:06Z asteins $
+# $Id: gb_manageengine_support_center_plus_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Zoho ManageEngine Support Center Plus Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802477");
-  script_version("$Revision: 11058 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 16:18:06 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-18 10:24:32 +0530 (Thu, 18 Oct 2012)");
   script_name("Zoho ManageEngine Support Center Plus Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/22040/");
@@ -46,19 +46,17 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to upload
 malicious code (backdoors/shells) or insert arbitrary HTML and script code,
 which will be executed in a user's browser session in the context of an
-affected site.
-
-Impact Level: Application");
+affected site.");
   script_tag(name:"affected", value:"ManageEngine Support Center Plus 7.9 Upgrade Pack 7908 and prior");
   script_tag(name:"insight", value:"Multiple flaws are due to,
 
-- An improper checking of image extension when uploading the files. This will
+  - An improper checking of image extension when uploading the files. This will
   lead to uploading web site files which could be used for malicious actions.
 
-- An input passed to the 'fromCustomer' parameter via 'HomePage.do' script is
+  - An input passed to the 'fromCustomer' parameter via 'HomePage.do' script is
   not properly sanitised before being returned to the user.
 
-- An input passed to multiple parameters via 'WorkOrder.do' script is not
+  - An input passed to multiple parameters via 'WorkOrder.do' script is not
   properly sanitised before being returned to the user.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year
 since the disclosure of this vulnerability. Likely none will be provided anymore.

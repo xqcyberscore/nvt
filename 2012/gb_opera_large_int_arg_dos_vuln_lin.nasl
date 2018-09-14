@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_large_int_arg_dos_vuln_lin.nasl 11322 2018-09-11 10:15:07Z asteins $
+# $Id: gb_opera_large_int_arg_dos_vuln_lin.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Opera Large Integer Argument Denial of Service Vulnerability (Linux)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802829");
-  script_version("$Revision: 11322 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-1003");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-06 11:53:30 +0530 (Fri, 06 Apr 2012)");
   script_name("Opera Large Integer Argument Denial of Service Vulnerability (Linux)");
   script_xref(name:"URL", value:"http://en.securitylab.ru/nvd/419678.php");
@@ -44,9 +44,7 @@ if(description)
   script_dependencies("secpod_opera_detection_linux_900037.nasl");
   script_require_keys("Opera/Linux/Version");
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause a
-denial of service via a large integer argument.
-
-Impact Level: Application");
+denial of service via a large integer argument.");
   script_tag(name:"affected", value:"Opera version 11.60 and prior on Linux");
   script_tag(name:"insight", value:"The flaw is due to an improper handling of argument sent to the
 functions Int32Array, Float32Array, Float64Array, Uint32Array, Int16Array

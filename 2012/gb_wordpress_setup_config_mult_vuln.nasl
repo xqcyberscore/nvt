@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_setup_config_mult_vuln.nasl 10257 2018-06-19 14:04:53Z cfischer $
+# $Id: gb_wordpress_setup_config_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WordPress 'setup-config.php' Multiple Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802298");
-  script_version("$Revision: 10257 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-4898", "CVE-2011-4899", "CVE-2012-0782");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,9 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://wordpress.org/support/topic/wordpress-331-code-execution-cross-site-scripting");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to conduct PHP code
-  execution and cross-site scripting attacks.
-
-  Impact Level: Application");
+  execution and cross-site scripting attacks.");
 
   script_tag(name:"affected", value:"Wordpress versions 3.3.1 and prior");
 

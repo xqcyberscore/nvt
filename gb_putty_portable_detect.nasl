@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_putty_portable_detect.nasl 11356 2018-09-12 10:46:43Z tpassfeld $
+# $Id: gb_putty_portable_detect.nasl 11376 2018-09-13 12:51:39Z cfischer $
 #
 # PuTTY Portable Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114006");
-  script_version("$Revision: 11356 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:46:43 +0200 (Wed, 12 Sep 2018) $");
+  script_version("$Revision: 11376 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:51:39 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-25 18:16:21 +0200 (Wed, 25 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -73,20 +73,16 @@ handle = wmi_connect( host:host, username:usrname, password:passwd );
 if( ! handle ) exit( 0 );
 
 
-fileList = wmi_file_file_search( handle:handle, fileName:"putty", fileExtn:"exe" );
+fileList = wmi_file_file_search( handle:handle, fileName:"putty", fileExtn:"exe", includeHeader:FALSE );
 if( ! fileList ) {
   wmi_close( wmi_handle:handle );
   exit( 0 );
 }
 
-# From secpod_putty_version.nasl to avoid a doubled detection of
-# a registry-based installation.
+# From secpod_putty_version.nasl to avoid a doubled detection of a registry-based installation.
 detectedList = get_kb_list( "putty/win/install_locations" );
 
-fileList = split( fileList, keep:FALSE );
 foreach filePath( fileList ) {
-
-  if( filePath == "Name" ) continue; # Just ignore the header of the list...
 
   # wmi_file_file_search returns the .exe filename so we're stripping it away
   # to keep the install location registration the same way like in secpod_putty_version.nasl
@@ -97,25 +93,23 @@ foreach filePath( fileList ) {
   # wmi_file_file_search returns single backslash in the path...
   filePath = ereg_replace( pattern:"\\", replace:"\\", string:filePath );
 
-  versList = wmi_file_fileversion( handle:handle, filePath:filePath );
-  versList = split( versList, keep:FALSE );
-  foreach vers( versList ) {
-
-    if( vers == "Version" ) continue; # Just ignore the header of the list...
+  versList = wmi_file_fileversion( handle:handle, filePath:filePath, includeHeader:FALSE );
+  if( ! versList || ! is_array( versList ) ) continue;
+  foreach vers( keys( versList ) ) {
 
     # Version of the putty.exe file is something like 0.70
     # so we need to catch the first two parts of the version.
-    if( vers && version = eregmatch( string:vers, pattern:"^([0-9]+\.[0-9]+)" ) ) {
+    if( versList[vers] && version = eregmatch( string:versList[vers], pattern:"^([0-9]+\.[0-9]+)" ) ) {
+
       set_kb_item( name:"putty/win/install_locations", value:tolower( location ) );
       set_kb_item( name:"putty/win/ver", value:version[1] );
 
       # PuTTY Portable is the 32bit version by default.
       cpe = "cpe:/a:putty:putty:";
-      register_and_report_cpe( app:"PuTTY Portable", ver:version[1], concluded:vers, base:cpe, expr:"^([0-9.]+)", insloc:location );
+      register_and_report_cpe( app:"PuTTY Portable", ver:version[1], concluded:versList[vers], base:cpe, expr:"^([0-9.]+)", insloc:location );
     }
   }
 }
 
 wmi_close( wmi_handle:handle );
-
 exit( 0 );

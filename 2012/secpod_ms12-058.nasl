@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-058.nasl 10639 2018-07-26 13:36:15Z cfischer $
+# $Id: secpod_ms12-058.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # MS Exchange Server WebReady Document Viewing Remote Code Execution Vulnerabilities (2740358)
 #
@@ -27,7 +27,7 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903038");
-  script_version("$Revision: 10639 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-1766", "CVE-2012-1767", "CVE-2012-1768", "CVE-2012-1769",
                 "CVE-2012-1770", "CVE-2012-1771", "CVE-2012-1772", "CVE-2012-1773",
                 "CVE-2012-3106", "CVE-2012-3107", "CVE-2012-3108", "CVE-2012-3109",
@@ -36,7 +36,7 @@ if(description)
                     54546, 54504, 54550, 54554, 54506);
   script_tag(name:"cvss_base", value:"2.1");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-26 15:36:15 +0200 (Thu, 26 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-15 15:41:59 +0530 (Wed, 15 Aug 2012)");
   script_name("MS Exchange Server WebReady Document Viewing Remote Code Execution Vulnerabilities (2740358)");
   script_category(ACT_GATHER_INFO);
@@ -52,9 +52,7 @@ if(description)
   script_xref(name:"URL", value:"http://technet.microsoft.com/en-us/security/bulletin/ms12-058");
 
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to run arbitrary code as
-  LocalService on the affected Exchange server.
-
-  Impact Level: Application");
+  LocalService on the affected Exchange server.");
 
   script_tag(name:"affected", value:"Microsoft Exchange Server 2007 Service Pack 3
 

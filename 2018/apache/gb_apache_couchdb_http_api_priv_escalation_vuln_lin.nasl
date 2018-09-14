@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_couchdb_http_api_priv_escalation_vuln_lin.nasl 10887 2018-08-10 12:05:12Z santu $
+# $Id: gb_apache_couchdb_http_api_priv_escalation_vuln_lin.nasl 11370 2018-09-13 11:32:51Z asteins $
 #
 # Apache CouchDB 'HTTP API' Privilege Escalation Vulnerability (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:couchdb";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813907");
-  script_version("$Revision: 10887 $");
+  script_version("$Revision: 11370 $");
   script_cve_id("CVE-2018-8007");
   script_bugtraq_id(104741);
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 14:05:12 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"9.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:S/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 13:32:51 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-09 15:19:22 +0530 (Thu, 09 Aug 2018)");
   script_name("Apache CouchDB 'HTTP API' Privilege Escalation Vulnerability (Linux)");
 

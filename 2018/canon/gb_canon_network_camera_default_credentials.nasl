@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_canon_network_camera_default_credentials.nasl 11358 2018-09-12 11:45:21Z tpassfeld $
+# $Id: gb_canon_network_camera_default_credentials.nasl 11380 2018-09-13 14:11:14Z cfischer $
 #
 # Canon Network Camera Default Credentials
 #
@@ -28,10 +28,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.114032");
-  script_version("$Revision: 11358 $");
+  script_version("$Revision: 11380 $");
   script_tag(name:"cvss_base", value:"9.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 13:45:21 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 16:11:14 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-09-12 13:07:54 +0200 (Wed, 12 Sep 2018)");
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2018 Greenbone Networks GmbH");
@@ -43,17 +43,17 @@ if(description)
 
   script_xref(name:"URL", value:"https://ipvm.com/reports/ip-cameras-default-passwords-directory");
 
-  script_tag(name:"summary", value:"The remote Basler IP Camera is prone to
+  script_tag(name:"summary", value:"The remote Canon Network Camera is prone to
   a default account authentication bypass vulnerability.");
 
   script_tag(name:"impact", value:"This issue may be exploited by a remote attacker to gain access
   to sensitive information or modify system configuration.");
 
-  script_tag(name:"insight", value:"The installation of Basler IP Camera is lacking a proper
+  script_tag(name:"insight", value:"The installation of Canon Network Camera is lacking a proper
   password configuration, which makes critical information and actions accessible for people with knowledge
   of the default credentials.");
 
-  script_tag(name:"vuldetect", value:"Checks if a successful login to Basler IP Camera is possible.");
+  script_tag(name:"vuldetect", value:"Checks if a successful login to Canon Network Camera is possible.");
 
   script_tag(name:"solution", value:"Change the passwords for user and admin access.");
 
@@ -87,7 +87,6 @@ foreach cred(keys(creds)) {
     VULN = TRUE;
     report += '\nusername: "' + cred + '", password: "' + creds[cred] + '"';
   }
-
 }
 
 if(VULN) {

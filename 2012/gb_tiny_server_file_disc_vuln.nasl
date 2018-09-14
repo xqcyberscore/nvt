@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_tiny_server_file_disc_vuln.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: gb_tiny_server_file_disc_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Tiny Server Arbitrary File Disclosure Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802721");
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-21 10:53:33 +0530 (Wed, 21 Mar 2012)");
   script_name("Tiny Server Arbitrary File Disclosure Vulnerability");
 
@@ -45,9 +45,7 @@ if(description)
   script_mandatory_keys("TinyServer/banner");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform
-  directory traversal attacks and read arbitrary files on the affected application.
-
-  Impact Level: Application");
+  directory traversal attacks and read arbitrary files on the affected application.");
   script_tag(name:"affected", value:"Tiny Server version 1.1.5");
   script_tag(name:"insight", value:"The flaw is due to an input validation error in application,
   which allows attackers to read arbitrary files via a ../(dot dot) sequences.");

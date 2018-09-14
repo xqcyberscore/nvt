@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_loganalyzer_highlight_xss_vuln.nasl 5814 2017-03-31 09:13:55Z cfi $
+# $Id: gb_loganalyzer_highlight_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Adiscon LogAnalyzer 'highlight' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,19 +27,19 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802645");
-  script_version("$Revision: 5814 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-3790");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2017-03-31 11:13:55 +0200 (Fri, 31 Mar 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-21 11:11:11 +0530 (Thu, 21 Jun 2012)");
   script_name("Adiscon LogAnalyzer 'highlight' Parameter Cross Site Scripting Vulnerability");
 
-  script_xref(name : "URL" , value : "http://secpod.org/blog/?p=504");
-  script_xref(name : "URL" , value : "http://secpod.org/advisories/SecPod_LogAnalyzer_XSS_Vuln.txt");
-  script_xref(name : "URL" , value : "http://loganalyzer.adiscon.com/downloads/loganalyzer-3-4-4-v3-stable");
-  script_xref(name : "URL" , value : "http://loganalyzer.adiscon.com/downloads/loganalyzer-v3-5-5-v3-beta");
-  script_xref(name : "URL" , value : "http://loganalyzer.adiscon.com/security-advisories/loganalyzer-cross-site-scripting-vulnerability-in-highlight-parameter");
+  script_xref(name:"URL", value:"http://secpod.org/blog/?p=504");
+  script_xref(name:"URL", value:"http://secpod.org/advisories/SecPod_LogAnalyzer_XSS_Vuln.txt");
+  script_xref(name:"URL", value:"http://loganalyzer.adiscon.com/downloads/loganalyzer-3-4-4-v3-stable");
+  script_xref(name:"URL", value:"http://loganalyzer.adiscon.com/downloads/loganalyzer-v3-5-5-v3-beta");
+  script_xref(name:"URL", value:"http://loganalyzer.adiscon.com/security-advisories/loganalyzer-cross-site-scripting-vulnerability-in-highlight-parameter");
 
   script_category(ACT_ATTACK);
   script_copyright("This script is Copyright (C) 2012 Greenbone Networks GmbH");
@@ -48,18 +48,17 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to insert arbitrary HTML
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTML
   and script code, which will be executed in a user's browser session in the
-  context of an affected site.
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "Adiscon LogAnalyzer versions before 3.4.4 and 3.5.x before 3.5.5");
-  script_tag(name : "insight" , value : "Input passed via the 'highlight' parameter in index.php is not properly
+  context of an affected site.");
+  script_tag(name:"affected", value:"Adiscon LogAnalyzer versions before 3.4.4 and 3.5.x before 3.5.5");
+  script_tag(name:"insight", value:"Input passed via the 'highlight' parameter in index.php is not properly
   verified before it is returned to the user. This can be exploited to execute
   arbitrary HTML and script code in a user's browser session in the context of
   a vulnerable site.");
-  script_tag(name : "solution" , value : "Upgrade to Adiscon LogAnalyzer version 3.4.4 or 3.5.5 or later,
+  script_tag(name:"solution", value:"Upgrade to Adiscon LogAnalyzer version 3.4.4 or 3.5.5 or later,
   For updates refer to http://loganalyzer.adiscon.com/");
-  script_tag(name : "summary" , value : "This host is running Adiscon LogAnalyzer and is prone to cross site
+  script_tag(name:"summary", value:"This host is running Adiscon LogAnalyzer and is prone to cross site
   scripting vulnerability.");
 
   script_tag(name:"solution_type", value:"VendorFix");
@@ -69,11 +68,6 @@ if(description)
 
 include("http_func.inc");
 include("http_keepalive.inc");
-
-## Variable Initialization
-dir = "";
-url = "";
-port = 0;
 
 port = get_http_port(default:80);
 
@@ -90,10 +84,8 @@ foreach dir (make_list_unique("/loganalyzer", "/log", cgi_dirs(port:port)))
 
   if( res =~ "HTTP/1.. 200" && ">Adiscon LogAnalyzer<" >< res ) {
 
-    ## Construct attack request
     url += '/?search=Search&highlight="<script>alert(document.cookie)</script>';
 
-    ## Try XSS and check the response to confirm vulnerability
     if(http_vuln_check( port: port, url: url, check_header: TRUE,
                         pattern: "<script>alert\(document\.cookie\)</script>",
                         extra_check: ">Adiscon LogAnalyzer<"))

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_mysql_old_auth_user_enum_vuln.nasl 6788 2017-07-21 19:16:52Z cfischer $
+# $Id: gb_oracle_mysql_old_auth_user_enum_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # MySQL/MariaDB Authentication Error Message User Enumeration Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802046");
-  script_version("$Revision: 6788 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(56766);
   script_cve_id("CVE-2012-5615");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-21 21:16:52 +0200 (Fri, 21 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-07 16:13:41 +0530 (Fri, 07 Dec 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
@@ -50,9 +50,7 @@ if(description)
   script_xref(name:"URL", value:"http://www.openwall.com/lists/oss-security/2012/12/02/4");
 
   script_tag(name:"impact", value:"Successful exploitation allows attackers to obtain valid
-  usernames, which may aid them in brute-force password cracking or other attacks.
-
-  Impact Level: Application");
+  usernames, which may aid them in brute-force password cracking or other attacks.");
 
   script_tag(name:"affected", value:"MySQL version 5.5.19 and possibly other versions
   MariaDB 5.5.28a, 5.3.11, 5.2.13, 5.1.66 and possibly other versions");

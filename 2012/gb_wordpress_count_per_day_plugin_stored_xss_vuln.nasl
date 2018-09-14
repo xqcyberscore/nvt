@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_count_per_day_plugin_stored_xss_vuln.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_wordpress_count_per_day_plugin_stored_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WordPress Count per Day Plugin 'note' Parameter Persistent XSS Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803009");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(55231);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-28 12:46:18 +0530 (Tue, 28 Aug 2012)");
   script_name("WordPress Count per Day Plugin 'note' Parameter Persistent XSS Vulnerability");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/20862/");
@@ -48,9 +48,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
 arbitrary HTML and script code, which will be executed in a user's browser
-session in the context of an affected site.
-
-Impact Level: Application");
+session in the context of an affected site.");
   script_tag(name:"affected", value:"WordPress Count per Day Plugin version 3.2.3 and prior");
   script_tag(name:"insight", value:"The input passed via 'note' parameter to
 '/wp-content/plugins/count-per-day/notes.php' script is not properly

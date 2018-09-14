@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_adobe_reader_int_overflow_vuln_lin_jan12.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: gb_adobe_reader_int_overflow_vuln_lin_jan12.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Adobe Reader Integer Overflow Vulnerability - Jan 12 (Linux)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:adobe:acrobat_reader";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802421");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-4374");
   script_bugtraq_id(51557);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-23 15:55:01 +0530 (Mon, 23 Jan 2012)");
   script_name("Adobe Reader Integer Overflow Vulnerability - Jan 12 (Linux)");
 
@@ -45,9 +45,7 @@ vulnerability.");
   script_tag(name:"insight", value:"The flaw is due to an integer overflow error, which allow the attackers to
 execute arbitrary code via unspecified vectors.");
   script_tag(name:"impact", value:"Successful exploitation will allow the attackers to execute arbitrary code
-via unspecified vectors.
-
-Impact Level: Application");
+via unspecified vectors.");
   script_tag(name:"affected", value:"Adobe Reader version 9.x before 9.4.6 on Linux.");
   script_tag(name:"solution", value:"Upgrade Adobe Reader to 9.4.6 or later,
 For updates refer to http://www.adobe.com/");

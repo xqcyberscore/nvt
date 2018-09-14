@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_sec_bypass_vuln_may12_macosx.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: gb_mozilla_prdts_sec_bypass_vuln_may12_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Mozilla Products Security Bypass Vulnerability - May12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802843");
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-0475");
   script_bugtraq_id(53230);
   script_tag(name:"cvss_base", value:"2.6");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-02 12:29:17 +0530 (Wed, 02 May 2012)");
   script_name("Mozilla Products Security Bypass Vulnerability - May12 (Mac OS X)");
 
@@ -47,8 +47,7 @@ if(description)
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject scripts or bypass
-  certain security restrictions.
-  Impact Level: Application");
+  certain security restrictions.");
   script_tag(name:"affected", value:"SeaMonkey version before 2.9
   Thunderbird version 5.0 through 11.0
   Mozilla Firefox version 4.x through 11.0");

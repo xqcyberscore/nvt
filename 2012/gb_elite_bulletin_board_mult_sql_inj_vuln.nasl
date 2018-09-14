@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_elite_bulletin_board_mult_sql_inj_vuln.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_elite_bulletin_board_mult_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Elite Bulletin Board Multiple SQL Injection Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803132");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-5874");
   script_bugtraq_id(57000);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-27 15:24:00 +0530 (Thu, 27 Dec 2012)");
   script_name("Elite Bulletin Board Multiple SQL Injection Vulnerabilities");
 
@@ -51,8 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to compromise the
   application, access or modify data or exploit vulnerabilities in the
-  underlying database.
-  Impact Level: Application");
+  underlying database.");
   script_tag(name:"affected", value:"Elite Bulletin Board version 2.1.21 and prior");
   script_tag(name:"insight", value:"Input appended to the URL after multiple scripts is not properly sanitised
   within the 'update_whosonline_reg()' and 'update_whosonline_guest()'

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_remote_desktop_info_disc_vuln.nasl 11283 2018-09-07 09:28:09Z cfischer $
+# $Id: gb_apple_remote_desktop_info_disc_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Apple Remote Desktop Information Disclosure Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802964");
-  script_version("$Revision: 11283 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-0681");
   script_bugtraq_id(55100);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-07 11:28:09 +0200 (Fri, 07 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-25 18:02:57 +0530 (Tue, 25 Sep 2012)");
   script_name("Apple Remote Desktop Information Disclosure Vulnerability");
   script_xref(name:"URL", value:"http://support.apple.com/kb/HT5462");
@@ -47,7 +47,7 @@ if(description)
   script_dependencies("gather-package-list.nasl");
   script_mandatory_keys("ssh/login/osx_name", "ssh/login/osx_version");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to gain sensitive information.
-  Impact Level: Application");
+  ");
   script_tag(name:"affected", value:"Apple Remote Desktop version 3.5.2");
   script_tag(name:"insight", value:"The flaw is due to an error in application, when connecting to a
   third-party VNC server with 'Encrypt all network data' set, data is not

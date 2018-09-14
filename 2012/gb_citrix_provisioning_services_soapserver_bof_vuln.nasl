@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_citrix_provisioning_services_soapserver_bof_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_citrix_provisioning_services_soapserver_bof_vuln.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Citrix Provisioning Services SoapServer Buffer Overflow Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803000");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11372 $");
   script_cve_id("CVE-2012-4068");
   script_bugtraq_id(53330);
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-02 18:48:06 +0530 (Thu, 02 Aug 2012)");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -48,8 +48,7 @@ if(description)
   script_require_ports(139, 445);
   script_require_keys("Citrix/Provisioning/Services/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  code on the target system.
-  Impact Level: Application/System");
+  code on the target system.");
   script_tag(name:"affected", value:"Citrix Provisioning Services version 5.6 and prior, 6.0 and 6.1");
   script_tag(name:"insight", value:"The SoapServer service improperly calculates a buffer index pointer value
   for a date and time string, which references a location outside the fixed

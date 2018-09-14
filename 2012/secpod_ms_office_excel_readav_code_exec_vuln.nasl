@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_office_excel_readav_code_exec_vuln.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: secpod_ms_office_excel_readav_code_exec_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Microsoft Office Excel ReadAV Arbitrary Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902692");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-5672");
   script_bugtraq_id(56309);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-08 14:28:19 +0530 (Thu, 08 Nov 2012)");
   script_name("Microsoft Office Excel ReadAV Arbitrary Code Execution Vulnerability");
   script_xref(name:"URL", value:"http://seclists.org/bugtraq/2012/Oct/63");
@@ -44,9 +44,7 @@ if(description)
   script_dependencies("secpod_office_products_version_900032.nasl");
   script_mandatory_keys("MS/Office/Prdts/Installed");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
-code or or cause denial of service condition via a crafted XLS file.
-
-Impact Level: Application");
+code or or cause denial of service condition via a crafted XLS file.");
   script_tag(name:"affected", value:"Microsoft Excel Viewer 2007 Service Pack 3 and prior
 Microsoft Office 2007 Service Pack 2 and Service Pack 3");
   script_tag(name:"insight", value:"An error exists in the Microsoft Office Excel Viewer and Excel

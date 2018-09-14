@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_jamwiki_num_param_xss_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_jamwiki_num_param_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # JamWiki 'num' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802621");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(52829);
   script_cve_id("CVE-2012-1983");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-02 11:11:11 +0530 (Mon, 02 Apr 2012)");
   script_name("JamWiki 'num' Parameter Cross Site Scripting Vulnerability");
 
@@ -52,8 +52,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTML
   and script code, which will be executed in a user's browser session in the
-  context of an affected site.
-  Impact Level: Application");
+  context of an affected site.");
   script_tag(name:"affected", value:"JAMWiki versions prior to 1.1.6");
   script_tag(name:"insight", value:"The flaw is due to an improper validation of user-supplied input to
   the 'num' parameter in Special:AllPages, which allows attackers to execute

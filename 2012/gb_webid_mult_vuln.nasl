@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_webid_mult_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
+# $Id: gb_webid_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WeBid Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803053");
-  script_version("$Revision: 11188 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(56588);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-20 12:03:19 +0530 (Tue, 20 Nov 2012)");
   script_name("WeBid Multiple Vulnerabilities");
   script_category(ACT_ATTACK);
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform
   directory traversal attacks and read arbitrary files on the affected
-  application and execute arbitrary script code
-
-  Impact Level: Application");
+  application and execute arbitrary script code");
 
   script_tag(name:"affected", value:"WeBid version 1.0.5 and prior");
 

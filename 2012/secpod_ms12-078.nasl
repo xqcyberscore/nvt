@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-078.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: secpod_ms12-078.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2783534)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902936");
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11372 $");
   script_cve_id("CVE-2012-2556", "CVE-2012-4786");
   script_bugtraq_id(56842, 56841);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-12 09:08:07 +0530 (Wed, 12 Dec 2012)");
   script_name("Microsoft Windows Kernel-Mode Drivers Remote Code Execution Vulnerabilities (2783534)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51459/");
@@ -48,8 +48,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to execute arbitrary
-  code with kernel-mode privileges.
-  Impact Level: System");
+  code with kernel-mode privileges.");
   script_tag(name:"affected", value:"Microsoft Windows XP x32 Edition Service Pack 3 and prior
   Microsoft Windows XP x64 Edition Service Pack 2 and prior
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior

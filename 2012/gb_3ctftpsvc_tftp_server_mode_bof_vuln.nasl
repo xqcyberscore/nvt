@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_3ctftpsvc_tftp_server_mode_bof_vuln.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_3ctftpsvc_tftp_server_mode_bof_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # 3CTftpSvc TFTP Server Long Mode Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802658");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2006-6183");
   script_bugtraq_id(21301, 21322);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-10 15:15:15 +0530 (Tue, 10 Jul 2012)");
   script_name("3CTftpSvc TFTP Server Long Mode Buffer Overflow Vulnerability");
 
@@ -49,9 +49,7 @@ if(description)
   script_require_udp_ports("Services/udp/tftp", 69);
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause the
-  application to crash, denying further service to legitimate users.
-
-  Impact Level: Application");
+  application to crash, denying further service to legitimate users.");
   script_tag(name:"affected", value:"3Com 3CTFTPSvc TFTP Server version 2.0.1");
   script_tag(name:"insight", value:"The flaw is due to a boundary error during the processing of
   TFTP Read/Write request packet types. This can be exploited to cause a stack

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_sharebar_plugin_mult_vuln.nasl 10257 2018-06-19 14:04:53Z cfischer $
+# $Id: gb_wordpress_sharebar_plugin_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WordPress Sharebar Plugin SQL Injection And XSS Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802858");
-  script_version("$Revision: 10257 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(53201);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause SQL
   Injection attack and gain sensitive information or insert arbitrary HTML and script code, which
-  will be executed in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  will be executed in a user's browser session in the context of an affected site.");
 
   script_tag(name:"affected", value:"WordPress Sharebar version 1.2.3 and prior");
 

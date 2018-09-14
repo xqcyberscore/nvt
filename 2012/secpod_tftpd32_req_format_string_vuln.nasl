@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_tftpd32_req_format_string_vuln.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: secpod_tftpd32_req_format_string_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # TFTPD32 Request Error Message Format String Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902835");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2006-0328");
   script_bugtraq_id(16333);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-23 14:14:14 +0530 (Wed, 23 May 2012)");
   script_name("TFTPD32 Request Error Message Format String Vulnerability");
 
@@ -48,8 +48,7 @@ if(description)
   script_dependencies("tftpd_detect.nasl");
   script_require_udp_ports("Services/udp/tftp", 69);
 
-  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause a denial of service.
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will allow attacker to cause a denial of service.");
   script_tag(name:"affected", value:"Tftpd32 version 2.81");
   script_tag(name:"insight", value:"The flaw is due to a format string error when the filename received in
   a TFTP request is used to construct an error message. This can be exploited

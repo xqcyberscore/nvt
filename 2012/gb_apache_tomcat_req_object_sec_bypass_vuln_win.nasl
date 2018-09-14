@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_tomcat_req_object_sec_bypass_vuln_win.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_apache_tomcat_req_object_sec_bypass_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Apache Tomcat Request Object Security Bypass Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:apache:tomcat";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802385");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-3375");
   script_bugtraq_id(51442);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-20 13:19:54 +0530 (Fri, 20 Jan 2012)");
   script_name("Apache Tomcat Request Object Security Bypass Vulnerability (Windows)");
   script_category(ACT_GATHER_INFO);
@@ -53,7 +53,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation could allows remote attackers to bypass intended
   access restrictions or gain sensitive information.
 
-  Impact Level: Application.");
+  .");
   script_tag(name:"affected", value:"Apache Tomcat 6.0.30 to 6.0.33 and 7.0.0 to 7.0.21 on Windows.");
   script_tag(name:"insight", value:"The flaw is due to improper recycling of the request object before
   processing the next request when logging certain actions, allowing attackers

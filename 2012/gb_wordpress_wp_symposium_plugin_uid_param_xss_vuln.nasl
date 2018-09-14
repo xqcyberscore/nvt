@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_wp_symposium_plugin_uid_param_xss_vuln.nasl 10257 2018-06-19 14:04:53Z cfischer $
+# $Id: gb_wordpress_wp_symposium_plugin_uid_param_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WordPress WP Symposium Plugin 'uid' Parameter Cross-Site Scripting Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802288");
-  script_version("$Revision: 10257 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(51017);
   script_cve_id("CVE-2011-3841");
   script_tag(name:"cvss_base", value:"4.3");
@@ -51,9 +51,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTML
   and script code, which will be executed in a user's browser session in the
-  context of an affected site.
-
-  Impact Level: Application");
+  context of an affected site.");
 
   script_tag(name:"affected", value:"WordPress WP Symposium Plugin version 11.11.26");
 

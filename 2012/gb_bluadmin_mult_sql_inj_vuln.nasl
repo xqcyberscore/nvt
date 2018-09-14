@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_bluadmin_mult_sql_inj_vuln.nasl 11135 2018-08-27 13:39:29Z asteins $
+# $Id: gb_bluadmin_mult_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Bluadmin Multiple SQL Injection Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802868");
-  script_version("$Revision: 11135 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 15:39:29 +0200 (Mon, 27 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-18 16:14:31 +0530 (Mon, 18 Jun 2012)");
   script_name("Bluadmin Multiple SQL Injection Vulnerabilities");
   script_xref(name:"URL", value:"http://1337day.com/exploits/18644");
@@ -44,9 +44,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_exclude_keys("Settings/disable_cgi_scanning");
   script_tag(name:"impact", value:"Successful exploitation will let attackers to cause SQL injection
-  attack and gain sensitive information.
-
-  Impact Level: Application");
+  attack and gain sensitive information.");
   script_tag(name:"affected", value:"Bluadmin");
   script_tag(name:"insight", value:"The input passed via 'ver' parameter to 'get_imagesf.php' and
   'get_flash_info.php' is not properly sanitised before being used in SQL

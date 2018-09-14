@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_kb_publisher_mult_vuln.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_kb_publisher_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # KBPublisher Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802434");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-11 14:44:53 +0530 (Mon, 11 Jun 2012)");
   script_name("KBPublisher Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://1337day.com/exploits/18467");
@@ -46,14 +46,14 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to steal cookie
   based authentication credentials, compromise the application, access or modify
-  data or exploit latent vulnerabilities in the underlying database.
-
-  Impact Level: Application");
+  data or exploit latent vulnerabilities in the underlying database.");
   script_tag(name:"affected", value:"KBPublisher version 4.0");
   script_tag(name:"insight", value:"- Input passed via the 'Type' parameter to 'browser.html' is not
   properly sanitised before being returned to the user.
+
   - Input passed via the 'id' parameter to 'admin/index.php' is not properly
   sanitised before being used in SQL queries.
+
   - Input passed via the 'sid' parameter to 'index.php' is not properly
   sanitised before being used .");
   script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure of this vulnerability.

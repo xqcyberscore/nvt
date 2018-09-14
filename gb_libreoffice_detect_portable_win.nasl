@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_libreoffice_detect_portable_win.nasl 10093 2018-06-06 09:54:29Z mmartin $
+# $Id: gb_libreoffice_detect_portable_win.nasl 11376 2018-09-13 12:51:39Z cfischer $
 #
 # Libreoffice Portable Version Detection (Windows)
 #
@@ -28,8 +28,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.107316");
-  script_version("$Revision: 10093 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-06 11:54:29 +0200 (Wed, 06 Jun 2018) $");
+  script_version("$Revision: 11376 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:51:39 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-04-23 10:18:42 +0200 (Mon, 23 Apr 2018)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -72,49 +72,43 @@ if( domain ) usrname = domain + '\\' + usrname;
 handle = wmi_connect( host:host, username:usrname, password:passwd );
 if( ! handle ) exit( 0 );
 
-fileList = wmi_file_file_search( handle:handle, fileName:"soffice", fileExtn:"exe" );
+fileList = wmi_file_file_search( handle:handle, fileName:"soffice", fileExtn:"exe", includeHeader:FALSE );
 if( ! fileList ) {
   wmi_close( wmi_handle:handle );
   exit( 0 );
 }
 
-# From secpod_libre_office_detect_win.nasl to avoid a doubled detection of
-# a registry-based installation.
+# From secpod_libre_office_detect_win.nasl to avoid a doubled detection of a registry-based installation.
 detectedList = get_kb_list( "LibreOffice/Win/InstallLocations" );
 
-fileList = split( fileList, keep:FALSE );
 foreach filePath( fileList ) {
-
-  if( filePath == "Name" ) continue; # Just ignore the header of the list...
 
   # wmi_file_file_search returns the .exe filename so we're stripping it away
   # to keep the install location registration the same way like in secpod_libre_office_detect_win.nasl
   location = filePath - "\program\soffice.exe";
   if( detectedList && in_array( search:tolower( location ), array:detectedList ) ) continue; # We already have detected this installation...
+
   # nb: wmi_file_fileversion needs doubled backslash in the path but
   # wmi_file_file_search returns single backslash in the path...
   filePath = ereg_replace( pattern:"\\", replace:"\\", string:filePath );
 
-  versList = wmi_file_fileversion( handle:handle, filePath:filePath );
-  versList = split( versList, keep:FALSE );
-  foreach vers( versList ) {
-
-    if( vers == "Version" ) continue; # Just ignore the header of the list...
+  versList = wmi_file_fileversion( handle:handle, filePath:filePath, includeHeader:FALSE );
+  if( ! versList || ! is_array( versList ) ) continue;
+  foreach vers( keys( versList ) ) {
 
     # Version of the soffice.exe file is something like 5.4.7.2 or 6.0.4
     # so we need to catch only the first three parts of the version.
-    if( vers && version = eregmatch( string:vers, pattern:"^([0-9]+\.[0-9]+\.[0-9]+)" ) ) {
+    if( versList[vers] && version = eregmatch( string:versList[vers], pattern:"^([0-9]+\.[0-9]+\.[0-9]+)" ) ) {
 
       set_kb_item( name:"LibreOffice/Win/InstallLocations", value:tolower( location ) );
       set_kb_item( name:"LibreOffice/Win/Ver", value:version[1] );
 
       # nb: LibreOffice is only installed in the 32bit version
       cpe = "cpe:/a:libreoffice:libreoffice:";
-      register_and_report_cpe( app:"Libreoffice Portable", ver:version[1], concluded:vers, base:cpe, expr:"^([0-9.]+)", insloc:location );
+      register_and_report_cpe( app:"Libreoffice Portable", ver:version[1], concluded:versList[vers], base:cpe, expr:"^([0-9.]+)", insloc:location );
     }
   }
 }
 
 wmi_close( wmi_handle:handle );
-
 exit( 0 );

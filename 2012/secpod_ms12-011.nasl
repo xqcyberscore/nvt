@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-011.nasl 11266 2018-09-06 10:59:26Z cfischer $
+# $Id: secpod_ms12-011.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Microsoft SharePoint Privilege Elevation Vulnerabilities (2663841)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902919");
-  script_version("$Revision: 11266 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-0017", "CVE-2012-0144", "CVE-2012-0145");
   script_bugtraq_id(51928, 51934, 51937);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-28 15:51:26 +0530 (Thu, 28 Jun 2012)");
   script_name("Microsoft SharePoint Privilege Elevation Vulnerabilities (2663841)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48029/");
@@ -49,8 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary script
   code in the browser of an unsuspecting user in the context of the affected
-  site.
-  Impact Level: Application");
+  site.");
   script_tag(name:"affected", value:"Microsoft SharePoint Server 2010 Service Pack 1 and prior
   Microsoft SharePoint Foundation 2010 Service Pack 1 and prior");
   script_tag(name:"insight", value:"Input passed to 'inplview.aspx', 'themeweb.aspx' and 'skey' parameter in

@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_omnistar_mailer_mult_sql_inj_vuln.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: gb_omnistar_mailer_mult_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Omnistar Mailer Software Multiple SQL Injection Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802464");
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-04 10:42:09 +0530 (Thu, 04 Oct 2012)");
   script_name("Omnistar Mailer Software Multiple SQL Injection Vulnerabilities");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/21716/");
@@ -52,9 +52,7 @@ General solution options are to upgrade to a newer release, disable respective f
   script_tag(name:"summary", value:"This host is running Omnistar Mailer Softwar and is prone multiple
   SQL injection vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to view, add,
-  modify or delete information in the back-end database and compromise the application.
-
-  Impact Level: Application");
+  modify or delete information in the back-end database and compromise the application.");
   script_tag(name:"affected", value:"Omnistar Mailer Version 7.2 and prior");
 
   script_tag(name:"solution_type", value:"WillNotFix");

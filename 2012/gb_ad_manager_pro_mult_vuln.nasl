@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ad_manager_pro_mult_vuln.nasl 11148 2018-08-28 14:25:49Z asteins $
+# $Id: gb_ad_manager_pro_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Ad Manager Pro Multiple SQL Injection And XSS Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803019");
-  script_version("$Revision: 11148 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-30 17:10:10 +0530 (Thu, 30 Aug 2012)");
   script_name("Ad Manager Pro Multiple SQL Injection And XSS Vulnerabilities");
 
@@ -48,6 +48,7 @@ if(description)
 
   script_tag(name:"insight", value:"- Input passed via the 'X-Forwarded-For' HTTP header field is not
     properly sanitised before being used in SQL queries.
+
   - Inputs passed via 'username', 'password' 'image_control' and 'email'
     parameters to 'advertiser.php' and 'publisher.php' is not properly
     sanitised before being returned to the user.");
@@ -57,8 +58,7 @@ if(description)
   injection and cross site scripting vulnerabilities.");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to to manipulate SQL
   queries by injecting arbitrary SQL code or execute arbitrary HTML and
-  script code in a user's browser session in context of affected website.
-  Impact Level: Application");
+  script code in a user's browser session in context of affected website.");
   script_tag(name:"affected", value:"Ad Manager Pro");
 
   script_tag(name:"solution_type", value:"VendorFix");

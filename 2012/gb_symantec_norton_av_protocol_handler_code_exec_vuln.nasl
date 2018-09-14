@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_symantec_norton_av_protocol_handler_code_exec_vuln.nasl 10900 2018-08-10 13:54:28Z cfischer $
+# $Id: gb_symantec_norton_av_protocol_handler_code_exec_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Symantec Norton AntiVirus Protocol Handler (HCP) Code Execution Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803035");
-  script_version("$Revision: 10900 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2010-3497");
   script_bugtraq_id(44188);
   script_tag(name:"cvss_base", value:"6.4");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 15:54:28 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-03 11:40:26 +0530 (Wed, 03 Oct 2012)");
   script_name("Symantec Norton AntiVirus Protocol Handler (HCP) Code Execution Vulnerability");
   script_xref(name:"URL", value:"http://www.n00bz.net/antivirus-cve");
@@ -47,9 +47,7 @@ if(description)
   script_mandatory_keys("Symantec/Norton-AV/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow the attackers to bypass the
 protection of AntiVirus technology and allows an attacker to drop and execute
-known malicious files.
-
-Impact Level: Application");
+known malicious files.");
   script_tag(name:"insight", value:"Symantec Norton AntiVirus fails to process 'hcp://' URLs by the
 Microsoft Help and Support Center, which allows attackers to execute malicious
 code via a protocol handler (hcp).");

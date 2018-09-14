@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_novell_zenworks_asset_mangment_info_disc_vuln.nasl 11135 2018-08-27 13:39:29Z asteins $
+# $Id: secpod_novell_zenworks_asset_mangment_info_disc_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Novell ZENWorks Asset Management Information Disclosure Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902928");
-  script_version("$Revision: 11135 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-4933");
   script_bugtraq_id(55933);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 15:39:29 +0200 (Mon, 27 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-26 12:25:31 +0530 (Fri, 26 Oct 2012)");
   script_name("Novell ZENWorks Asset Management Information Disclosure Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50967/");
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to obtain
   sensitive information via a crafted rtrlet/rtr request for the
-  HandleMaintenanceCalls function.
-
-  Impact Level: Application");
+  HandleMaintenanceCalls function.");
   script_tag(name:"affected", value:"Novell ZENworks Asset Management version 7.5");
   script_tag(name:"insight", value:"The 'GetFile_Password()' and 'GetConfigInfo_Password()' method
   within the rtrlet component contains hard coded credentials and can be

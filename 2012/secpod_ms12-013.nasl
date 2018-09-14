@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-013.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: secpod_ms12-013.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # MS Windows C Run-Time Library Remote Code Execution Vulnerability (2654428)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902653");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11372 $");
   script_cve_id("CVE-2012-0150");
   script_bugtraq_id(51913);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-15 12:27:37 +0530 (Wed, 15 Feb 2012)");
   script_name("MS Windows C Run-Time Library Remote Code Execution Vulnerability (2654428)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47949/");
@@ -47,9 +47,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  code as the logged-on user.
-
-  Impact Level: System");
+  code as the logged-on user.");
   script_tag(name:"affected", value:"Microsoft Windows 7 Service Pack 1 and prior.
 
   Microsoft Windows Vista Service Pack 2 and prior.

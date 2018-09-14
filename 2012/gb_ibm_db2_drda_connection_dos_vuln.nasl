@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_db2_drda_connection_dos_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_ibm_db2_drda_connection_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # IBM DB2 Chaining Functionality DRDA Module DoS Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:ibm:db2";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802456");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-2180");
   script_bugtraq_id(53873);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-06 16:20:17 +0530 (Thu, 06 Sep 2012)");
   script_name("IBM DB2 Chaining Functionality DRDA Module DoS Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49437/");
@@ -50,9 +50,7 @@ if(description)
   script_mandatory_keys("IBM-DB2/Remote/ver", "IBM-DB2/installed");
 
   script_tag(name:"impact", value:"Successful exploitation allows remote users to cause denial
-  of service.
-
-  Impact Level: Application");
+  of service.");
   script_tag(name:"affected", value:"IBM DB2 version 9.7 before FP6
 
   IBM DB2 version 9.8 before FP5");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_twiki_organization_xss_vuln.nasl 11055 2018-08-20 12:23:58Z asteins $
+# $Id: gb_twiki_organization_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # TWiki 'organization' Cross-Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:twiki:twiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802391");
-  script_version("$Revision: 11055 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(51731);
   script_cve_id("CVE-2012-0979");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 14:23:58 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-20 12:04:55 +0530 (Tue, 20 Mar 2012)");
   script_name("TWiki 'organization' Cross-Site Scripting Vulnerability");
   script_category(ACT_ATTACK);
@@ -46,9 +46,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
   arbitrary HTML and script code, which will be executed in a user's browser
-  session in the context of an affected site.
-
-  Impact Level: Application");
+  session in the context of an affected site.");
   script_tag(name:"affected", value:"TWiki version 5.1.1 and prior");
   script_tag(name:"insight", value:"The flaw is due to an improper validation of user-supplied input
   to the 'organization' field when registering or editing a user, which allows attackers to execute

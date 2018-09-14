@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_openvas_scanner_prev_escl_vuln.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_openvas_scanner_prev_escl_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # OpenVAS Scanner Symlink Attack Local Privilege Escalation Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.801979");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-3351");
   script_bugtraq_id(49460);
   script_tag(name:"cvss_base", value:"5.1");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:H/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-10 17:29:46 +0530 (Tue, 10 Jan 2012)");
   script_name("OpenVAS Scanner Symlink Attack Local Privilege Escalation Vulnerability");
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2011/q3/432");
@@ -51,7 +51,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation allows local user on a client or server system can
   gain access to the administrator or root account thus taking full control
   of the system.
-  Impact Level: Application.");
+  .");
   script_tag(name:"affected", value:"OpenVAS Project OpenVAS Scanner 3.2.4");
   script_tag(name:"solution", value:"Upgrade to OpenVAS Scanner 4 or later,
   For updates refer to http://www.openvas.org/software.html");

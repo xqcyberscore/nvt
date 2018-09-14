@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_firefox_mult_vuln_nov12_win.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: gb_mozilla_firefox_mult_vuln_nov12_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Mozilla Firefox Multiple Vulnerabilities - November12 (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803059");
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-4203", "CVE-2012-5837");
   script_bugtraq_id(56623, 56645);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-26 13:47:00 +0530 (Mon, 26 Nov 2012)");
   script_name("Mozilla Firefox Multiple Vulnerabilities - November12 (Windows)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/51358/");
@@ -47,8 +47,7 @@ if(description)
   script_dependencies("gb_firefox_detect_portable_win.nasl");
   script_mandatory_keys("Firefox/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to inject script or execute
-  arbitrary programs in the context of the browser.
-  Impact Level: Application");
+  arbitrary programs in the context of the browser.");
   script_tag(name:"affected", value:"Mozilla Firefox version before 17.0 on Windows");
   script_tag(name:"insight", value:"- An error within the 'Web Developer Toolbar' allows script to be executed
     in chrome privileged context.

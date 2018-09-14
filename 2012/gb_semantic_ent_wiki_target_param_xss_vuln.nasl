@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_semantic_ent_wiki_target_param_xss_vuln.nasl 11322 2018-09-11 10:15:07Z asteins $
+# $Id: gb_semantic_ent_wiki_target_param_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Semantic Enterprise Wiki Halo Extension 'target' XSS Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802709");
-  script_version("$Revision: 11322 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-1212");
   script_bugtraq_id(51980);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-16 16:34:28 +0530 (Fri, 16 Mar 2012)");
   script_name("Semantic Enterprise Wiki Halo Extension 'target' XSS Vulnerability");
 
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
   web script or HTML in a user's browser session in the context of an affected
-  site.
-
-  Impact Level: Application");
+  site.");
   script_tag(name:"affected", value:"Semantic Enterprise Wiki (SMW+) 1.6.0_2 and earlier");
   script_tag(name:"insight", value:"The flaw is due to an input passed via the 'target' parameter
   to 'index.php/Special:FormEdit' is not properly sanitised in the

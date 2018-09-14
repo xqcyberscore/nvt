@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_epson_event_manager_dos_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: secpod_epson_event_manager_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Epson EventManager 'x-protocol-version' Denial of Service Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902824");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(52511);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-28 15:15:15 +0530 (Wed, 28 Mar 2012)");
   script_name("Epson EventManager 'x-protocol-version' Denial of Service Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/48382");
@@ -46,9 +46,7 @@ if(description)
   script_require_ports("Services/www", 2968);
   script_dependencies("find_service.nasl", "httpver.nasl");
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause the
-application to crash, creating a denial of service condition.
-
-Impact Level: Application");
+application to crash, creating a denial of service condition.");
   script_tag(name:"affected", value:"Epson EventManager 2.50 and prior");
   script_tag(name:"insight", value:"The flaw is caused  due to an error in the Net Scan Monitor
 component when handling HTTP requests. This can be exploited to cause a crash

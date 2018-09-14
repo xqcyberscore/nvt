@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-082.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: secpod_ms12-082.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft Windows DirectPlay Remote Code Execution Vulnerability (2770660)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901212");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11372 $");
   script_cve_id("CVE-2012-1537");
   script_bugtraq_id(56839);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-12 09:44:20 +0530 (Wed, 12 Dec 2012)");
   script_name("Microsoft Windows DirectPlay Remote Code Execution Vulnerability (2770660)");
   script_category(ACT_GATHER_INFO);
@@ -43,8 +43,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  code by tricking a user into opening a malicious office document.
-  Impact Level: System");
+  code by tricking a user into opening a malicious office document.");
   script_tag(name:"affected", value:"Microsoft Windows XP x32 Edition Service Pack 3 and prior
   Microsoft Windows XP x64 Edition Service Pack 2 and prior
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior

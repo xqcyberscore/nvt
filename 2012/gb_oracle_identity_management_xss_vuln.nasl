@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_identity_management_xss_vuln.nasl 11167 2018-08-30 12:04:11Z asteins $
+# $Id: gb_oracle_identity_management_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Oracle Identity Management 'username' Cross Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802465");
-  script_version("$Revision: 11167 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 14:04:11 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-05 15:31:43 +0530 (Fri, 05 Oct 2012)");
   script_name("Oracle Identity Management 'username' Cross Site Scripting Vulnerability");
 
@@ -48,9 +48,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
   arbitrary HTML and script code, which will be executed in a user's browser
-  session in the context of an affected site.
-
-  Impact Level: Application");
+  session in the context of an affected site.");
   script_tag(name:"affected", value:"Oracle Identity Management 10g httpd version 10.1.2.2.0");
   script_tag(name:"insight", value:"The flaw is due to improper validation of user-supplied input
   passed to 'username' parameter via POST method through

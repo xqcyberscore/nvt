@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_firefly_mediaserver_mult_dos_vuln.nasl 11301 2018-09-10 11:24:56Z asteins $
+# $Id: gb_firefly_mediaserver_mult_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Firefly MediaServer HTTP Header Multiple DoS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803080");
-  script_version("$Revision: 11301 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-5875");
   script_bugtraq_id(56999);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-10 13:24:56 +0200 (Mon, 10 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-20 15:49:00 +0530 (Thu, 20 Dec 2012)");
   script_name("Firefly MediaServer HTTP Header Multiple DoS Vulnerabilities");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/80743");
@@ -49,9 +49,7 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to cause the server
-to crash, denying service to legitimate users.
-
-Impact Level: Application");
+to crash, denying service to legitimate users.");
   script_tag(name:"affected", value:"Firefly MediaServer version 1.0.0.1359 and prior");
   script_tag(name:"insight", value:"The flaw is due to multiple NULL pointer dereference errors
 within the 'firefly.exe' when processing requests with malformed 'CONNECTION',

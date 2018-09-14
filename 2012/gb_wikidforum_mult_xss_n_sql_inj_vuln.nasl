@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wikidforum_mult_xss_n_sql_inj_vuln.nasl 11266 2018-09-06 10:59:26Z cfischer $
+# $Id: gb_wikidforum_mult_xss_n_sql_inj_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Wikidforum Multiple XSS and SQL Injection Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802710");
-  script_version("$Revision: 11266 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-6520", "CVE-2012-2099");
   script_bugtraq_id(52425);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-16 13:30:44 +0530 (Fri, 16 Mar 2012)");
   script_name("Wikidforum Multiple XSS and SQL Injection Vulnerabilities");
   script_xref(name:"URL", value:"http://seclists.org/oss-sec/2012/q2/75");
@@ -53,9 +53,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
   web script or HTML in a user's browser session in the context of an affected
-  site and manipulate SQL queries by injecting arbitrary SQL code.
-
-  Impact Level: Application");
+  site and manipulate SQL queries by injecting arbitrary SQL code.");
   script_tag(name:"affected", value:"Wikidforum version 2.10");
   script_tag(name:"insight", value:"The flaws are due to input validation errors in the 'search'
   field and 'Author', 'select_sort' and 'opt_search_select' parameters in

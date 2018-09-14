@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-061.nasl 11052 2018-08-20 10:24:34Z asteins $
+# $Id: secpod_ms12-061.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # MS Visual Studio Team Foundation Server Privilege Elevation Vulnerability (2719584)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.903040");
-  script_version("$Revision: 11052 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(55409);
   script_cve_id("CVE-2012-1892");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 12:24:34 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-12 11:38:17 +0530 (Wed, 12 Sep 2012)");
   script_name("MS Visual Studio Team Foundation Server Privilege Elevation Vulnerability (2719584)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/50463/");
@@ -46,8 +46,7 @@ if(description)
   script_require_ports(139, 445);
 
   script_tag(name:"impact", value:"Successful exploitation could allow an attacker to execute arbitrary HTML and
-  script code in a user's browser session in context of an affected site.
-  Impact Level: Application");
+  script code in a user's browser session in context of an affected site.");
   script_tag(name:"affected", value:"Microsoft Visual Studio Team Foundation Server 2010 Service Pack 1");
   script_tag(name:"insight", value:"The application does not validate certain unspecified input before returning
   it to the user. This may allow a user to create a specially crafted request

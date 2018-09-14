@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_rokbok_plugin_mult_vuln.nasl 10257 2018-06-19 14:04:53Z cfischer $
+# $Id: gb_wordpress_rokbok_plugin_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WordPress Rokbox Plugin Multiple Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803079");
-  script_version("$Revision: 10257 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"last_modification", value:"$Date: 2017-04-18 11:02:14 +0200 (Di, 18 Apr 2017)$");
   script_tag(name:"creation_date", value:"2012-12-18 14:38:17 +0530 (Tue, 18 Dec 2012)");
   script_tag(name:"cvss_base", value:"7.5");
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary HTML and
   script code in a user's browser session in context of an affected site and
-  to gain sensitive information like installation path location.
-
-  Impact Level: Application");
+  to gain sensitive information like installation path location.");
 
   script_tag(name:"affected", value:"WordPress Rokbox Plugin versions using TimThumb 1.16 and JW Player 4.4.198");
 

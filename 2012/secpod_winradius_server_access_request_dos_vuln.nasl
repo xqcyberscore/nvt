@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_winradius_server_access_request_dos_vuln.nasl 5888 2017-04-07 09:01:53Z teissa $
+# $Id: secpod_winradius_server_access_request_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WinRadius Server Access Request Packet Parsing Denial of Service Vulnerability
 #
@@ -27,20 +27,20 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902918");
-  script_version("$Revision: 5888 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-3816");
   script_bugtraq_id(53702);
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-07 11:01:53 +0200 (Fri, 07 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-29 15:19:56 +0530 (Fri, 29 Jun 2012)");
   script_name("WinRadius Server Access Request Packet Parsing Denial of Service Vulnerability");
 
-  script_xref(name : "URL" , value : "http://1337day.com/exploits/18385");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/49299");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/75890");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/113078/winradius-dos.txt");
-  script_xref(name : "URL" , value : "http://archives.neohapsis.com/archives/bugtraq/2012-05/0135.html");
+  script_xref(name:"URL", value:"http://1337day.com/exploits/18385");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/49299");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/75890");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/113078/winradius-dos.txt");
+  script_xref(name:"URL", value:"http://archives.neohapsis.com/archives/bugtraq/2012-05/0135.html");
 
   script_category(ACT_DENIAL);
   script_copyright("Copyright (C) 2012 SecPod");
@@ -48,18 +48,15 @@ if(description)
   script_dependencies("radius_detect.nasl");
   script_require_udp_ports("Services/udp/radius", 1812);
 
-  script_tag(name : "impact" , value : "Successful exploitation will allow remote attackers to cause a
-  denial of service.
-
-  Impact Level: Application");
-  script_tag(name : "affected" , value : "WinRadius Server version 2009");
-  script_tag(name : "insight" , value : "The flaw is due to an error when parsing Access-Request packets
+  script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a
+  denial of service.");
+  script_tag(name:"affected", value:"WinRadius Server version 2009");
+  script_tag(name:"insight", value:"The flaw is due to an error when parsing Access-Request packets
   and can be exploited to crash the server via specially crafted requests with a long password field.");
-  script_tag(name : "solution" , value : "No solution or patch was made available for at least one year
-  since disclosure of this vulnerability. Likely none will be provided anymore.
-  General solution options are to upgrade to a newer release, disable respective
-  features, remove the product or replace the product by another one.");
-  script_tag(name : "summary" , value : "The host is running WinRadius Server and is prone to denial of
+  script_tag(name:"solution", value:"No known solution was made available for at least one year since the disclosure
+  of this vulnerability. Likely none will be provided anymore. General solution options are to upgrade to a newer
+  release, disable respective features, remove the product or replace the product by another one.");
+  script_tag(name:"summary", value:"The host is running WinRadius Server and is prone to denial of
   service vulnerability.");
 
   script_tag(name:"solution_type", value:"WillNotFix");
@@ -68,10 +65,6 @@ if(description)
 
   exit(0);
 }
-
-##
-## The script code starts here
-##
 
 include("network_func.inc");
 
@@ -84,7 +77,6 @@ if(!port){
   exit(0);
 }
 
-## Check UDP port status as get_udp_port_state() not working properly
 if(!check_udp_port_status(dport:port)){
   exit(0);
 }

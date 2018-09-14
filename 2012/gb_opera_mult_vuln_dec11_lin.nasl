@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_mult_vuln_dec11_lin.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_opera_mult_vuln_dec11_lin.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Opera Multiple Vulnerabilities - December11 (Linux)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802834");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-4681", "CVE-2011-4682", "CVE-2011-4683", "CVE-2011-4684",
                 "CVE-2011-4685", "CVE-2011-4686", "CVE-2011-4687");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-09 16:54:45 +0530 (Mon, 09 Apr 2012)");
   script_name("Opera Multiple Vulnerabilities - December11 (Linux)");
   script_xref(name:"URL", value:"http://www.opera.com/support/kb/view/1003/");
@@ -46,15 +46,18 @@ if(description)
   script_require_keys("Opera/Linux/Version");
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to execute arbitrary code in
   the context of the browser, inject scripts, bypass certain security
-  restrictions, or cause a denial of service condition.
-  Impact Level: Application");
+  restrictions, or cause a denial of service condition.");
   script_tag(name:"affected", value:"Opera version before 11.60 on Linux");
   script_tag(name:"insight", value:"Multiple flwas are due to,
+
   - Improper handling of the number of .(dot) characters that conventionally
     exist in domain names of different top-level domains.
+
   - Implementation errors in the 'JavaScript' engine, 'Web Workers' and 'in'
     operator.
+
   - An error when handling certificate revocation related to 'corner cases'.
+
   - An error in Dragonfly in opera.");
   script_tag(name:"solution", value:"Upgrade to the Opera version 11.60 or later,
   For updates refer to http://www.opera.com/download/");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_M4_288.nasl 10612 2018-07-25 12:26:01Z cfischer $
+# $Id: GSHB_M4_288.nasl 11379 2018-09-13 13:48:15Z cfischer $
 #
 # IT-Grundschutz, 10. EL, Maﬂnahme 4.288
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.94288");
-  script_version("$Revision: 10612 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-25 14:26:01 +0200 (Wed, 25 Jul 2018) $");
+  script_version("$Revision: 11379 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 15:48:15 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2010-06-04 14:04:07 +0200 (Fri, 04 Jun 2010)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
   script_name("IT-Grundschutz M4.288: Sichere Administration von VoIP-Endger‰ten");
-  script_add_preference(name:"Pruefung ausfuehren. Sie sollte allerdings nur gegen 1 System mit installiertem SLAD-Snort Plugin laufen.", type:"checkbox", value:"no");
+  #  script_add_preference(name:"Pruefung ausfuehren. Sie sollte allerdings nur gegen 1 System mit installiertem SLAD-Snort Plugin laufen.", type:"checkbox", value:"no");
   script_xref(name:"URL", value:"http://www.bsi.bund.de/DE/Themen/ITGrundschutz/ITGrundschutzKataloge/Inhalt/_content/m/m04/m04288.html");
   script_category(ACT_GATHER_INFO);
   script_tag(name:"qod_type", value:"general_note");

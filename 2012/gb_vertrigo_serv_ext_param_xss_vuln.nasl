@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vertrigo_serv_ext_param_xss_vuln.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_vertrigo_serv_ext_param_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # VertrigoServ 'ext' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802556");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-5102");
   script_bugtraq_id(51293);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-09 12:11:55 +0530 (Mon, 09 Jan 2012)");
   script_name("VertrigoServ 'ext' Parameter Cross Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47469/");
@@ -50,9 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
 web script or HTML in a user's browser session in the context of an affected
-site.
-
-Impact Level: Application");
+site.");
   script_tag(name:"affected", value:"VertrigoServ version 2.25");
   script_tag(name:"insight", value:"The flaw is caused by an input validation error in the 'ext'
 parameter in 'extensions.php' when processing user-supplied data.");

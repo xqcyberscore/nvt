@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_qqplayer_mov_file_bof_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_qqplayer_mov_file_bof_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # QQPlayer MOV File Processing Buffer Overflow Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802367");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-5006");
   script_bugtraq_id(50739);
   script_tag(name:"cvss_base", value:"9.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-02 12:43:57 +0530 (Mon, 02 Jan 2012)");
   script_name("QQPlayer MOV File Processing Buffer Overflow Vulnerability");
   script_xref(name:"URL", value:"http://1337day.com/exploits/16899");
@@ -48,9 +48,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
   script_require_ports(139, 445);
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execution of
-arbitrary code.
-
-Impact Level: Application");
+arbitrary code.");
   script_tag(name:"affected", value:"QQPlayer version 3.2.845 and prior.");
   script_tag(name:"insight", value:"The flaw is due to a boundary error when processing MOV files,
 Which can be exploited to cause a stack based buffer overflow by sending

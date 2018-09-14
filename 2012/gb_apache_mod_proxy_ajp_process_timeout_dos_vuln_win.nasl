@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apache_mod_proxy_ajp_process_timeout_dos_vuln_win.nasl 11141 2018-08-28 10:01:13Z asteins $
+# $Id: gb_apache_mod_proxy_ajp_process_timeout_dos_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Apache HTTP Server mod_proxy_ajp Process Timeout DoS Vulnerability (Windows)
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:apache:http_server";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802683");
-  script_version("$Revision: 11141 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-4557");
   script_bugtraq_id(56753);
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 12:01:13 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-06 18:00:42 +0530 (Thu, 06 Dec 2012)");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
@@ -45,8 +45,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_mandatory_keys("apache/installed", "Host/runs_windows");
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to cause a denial of
-  service condition via an expensive request.
-  Impact Level: Application");
+  service condition via an expensive request.");
   script_tag(name:"affected", value:"Apache HTTP Server version 2.2.12 through 2.2.21");
   script_tag(name:"insight", value:"The flaw is due to an error in the mod_proxy_ajp module, which places a worker
   node into an error state upon detection of a long request-processing time.");

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_xwiki_enterprise_mult_xss_vuln.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_xwiki_enterprise_mult_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # XWiki Enterprise Multiple Cross-Site Scripting Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802397");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(51867);
   script_cve_id("CVE-2012-1019");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-09 11:12:00 +0530 (Fri, 09 Mar 2012)");
   script_name("XWiki Enterprise Multiple Cross-Site Scripting Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/47885");
@@ -49,19 +49,17 @@ if(description)
   script_mandatory_keys("xwiki/installed");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
 arbitrary HTML and script code, which will be executed in a user's browser
-session in the context of an affected site.
-
-Impact Level: Application");
+session in the context of an affected site.");
   script_tag(name:"affected", value:"XWiki version 3.4 and prior");
   script_tag(name:"insight", value:"The flaws are due to an improper validation of user-supplied
 input via
 
-- the 'XWiki.XWikiComments_comment' parameter to
+  - the 'XWiki.XWikiComments_comment' parameter to
   'xwiki/bin/commentadd/Main/WebHome' when posting a comment.
 
-- the 'XWiki.XWikiUsers_0_company' parameter when editing a user's profile
+  - the 'XWiki.XWikiUsers_0_company' parameter when editing a user's profile
 
-- the 'projectVersion' parameter to
+  - the 'projectVersion' parameter to
   'xwiki/bin/view/DownloadCode/DownloadFeedback' when downloading a file.
 
   Which allows attackers to execute arbitrary HTML and script code in a

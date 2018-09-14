@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_backwpup_plugin_mult_dir_traversal_vuln.nasl 10257 2018-06-19 14:04:53Z cfischer $
+# $Id: gb_wordpress_backwpup_plugin_mult_dir_traversal_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WordPress BackWPup Plugin Multiple Directory Traversal Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802979");
-  script_version("$Revision: 10257 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-5208");
   script_tag(name:"last_modification", value:"$Date: 2017-10-26 12:41:56 +0200 (Do, 26 Okt 2017)$");
   script_tag(name:"creation_date", value:"2012-10-09 14:50:11 +0530 (Tue, 09 Oct 2012)");
@@ -47,9 +47,7 @@ if(description)
   script_xref(name:"URL", value:"http://seclists.org/fulldisclosure/2011/Feb/663");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform directory traversal
-  attacks and read arbitrary files on the affected application.
-
-  Impact Level: Application");
+  attacks and read arbitrary files on the affected application.");
 
   script_tag(name:"affected", value:"WordPress BackWPup Plugin Version prior to 1.4.1");
 

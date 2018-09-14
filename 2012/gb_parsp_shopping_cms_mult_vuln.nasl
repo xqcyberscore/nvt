@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_parsp_shopping_cms_mult_vuln.nasl 11003 2018-08-16 11:08:00Z asteins $
+# $Id: gb_parsp_shopping_cms_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Parsp Shopping CMS Multiple Vulnerabilities
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802575");
-  script_version("$Revision: 11003 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-16 13:08:00 +0200 (Thu, 16 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-01 15:28:20 +0530 (Wed, 01 Feb 2012)");
   script_name("Parsp Shopping CMS Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://1337day.com/exploits/17418");
@@ -48,16 +48,14 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute arbitrary
   web script or HTML in a user's browser session in the context of an affected
-  site and gain th sensitive information related to PHP.
-
-  Impact Level: Application");
+  site and gain th sensitive information related to PHP.");
   script_tag(name:"affected", value:"Parsp Shopping CMS version V5 and prior.");
   script_tag(name:"insight", value:"The flaws are due to an,
 
-   - Input passed to the 'advanced_search_in_category' parameter in 'index.php'
+  - Input passed to the 'advanced_search_in_category' parameter in 'index.php'
    is not properly sanitised before being returned to the user.
 
-   - Error in 'phpinfo.php' script, this can be exploited to gain knowledge
+  - Error in 'phpinfo.php' script, this can be exploited to gain knowledge
    of sensitive information by requesting the file directly.");
   script_tag(name:"solution", value:"No known solution was made available for at least one year
   since the disclosure of this vulnerability. Likely none will be provided anymore.

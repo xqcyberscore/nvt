@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_joomla_simple_file_upload_code_exec_vuln.nasl 10285 2018-06-21 12:22:45Z cfischer $
+# $Id: gb_joomla_simple_file_upload_code_exec_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Joomla Simple File Upload Module Remote Code Execution Vulnerability
 #
@@ -29,11 +29,11 @@ CPE = "cpe:/a:joomla:joomla";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802560");
-  script_version("$Revision: 10285 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(51214);
   script_tag(name:"cvss_base", value:"6.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-06-21 14:22:45 +0200 (Thu, 21 Jun 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-06 20:03:12 +0530 (Fri, 06 Jan 2012)");
   script_name("Joomla Simple File Upload Module Remote Code Execution Vulnerability");
   script_category(ACT_ATTACK);
@@ -49,7 +49,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to upload PHP scripts
   and execute arbitrary commands on a web server.
 
-  Impact Level: Application.");
+  .");
 
   script_tag(name:"affected", value:"Joomla Simple File Upload Module version 1.3.5");
 

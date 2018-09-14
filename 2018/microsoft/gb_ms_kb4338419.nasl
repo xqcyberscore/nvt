@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_kb4338419.nasl 10918 2018-08-10 17:32:46Z cfischer $
+# $Id: gb_ms_kb4338419.nasl 11370 2018-09-13 11:32:51Z asteins $
 #
 # Microsoft .NET Framework Multiple Vulnerabilities (KB4338419)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813490");
-  script_version("$Revision: 10918 $");
+  script_version("$Revision: 11370 $");
   script_cve_id("CVE-2018-8356", "CVE-2018-8284", "CVE-2018-8202", "CVE-2018-8260");
-  script_tag(name:"cvss_base", value:"5.0");
-  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-10 19:32:46 +0200 (Fri, 10 Aug 2018) $");
+  script_tag(name:"cvss_base", value:"9.3");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 13:32:51 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-07-11 12:06:24 +0530 (Wed, 11 Jul 2018)");
   script_name("Microsoft .NET Framework Multiple Vulnerabilities (KB4338419)");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ibm_was_ivt_xss_vuln.nasl 11072 2018-08-21 14:38:15Z asteins $
+# $Id: gb_ibm_was_ivt_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # IBM WebSphere Application Server IVT Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802413");
-  script_version("$Revision: 11072 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-1362");
   script_bugtraq_id(46736);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 16:38:15 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-18 18:06:52 +0530 (Wed, 18 Jan 2012)");
   script_name("IBM WebSphere Application Server IVT Cross Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/69731");
@@ -47,8 +47,7 @@ if(description)
   script_dependencies("gb_ibm_websphere_detect.nasl");
   script_require_ports("Services/www", 80);
   script_tag(name:"impact", value:"Successful exploitation will let attackers to conduct cross-site scripting
-  attacks.
-  Impact Level: Application");
+  attacks.");
   script_tag(name:"affected", value:"IBM WebSphere Application Server (WAS) version 6.1 before 6.1.0.41
   IBM WebSphere Application Server (WAS) version 7.0 before 7.0.0.19");
   script_tag(name:"insight", value:"The flaw is due to an error in Installation Verification Test (IVT)

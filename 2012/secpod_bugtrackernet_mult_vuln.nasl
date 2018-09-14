@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_bugtrackernet_mult_vuln.nasl 5912 2017-04-10 09:01:51Z teissa $
+# $Id: secpod_bugtrackernet_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # BugTracker.NET Multiple Security Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:ifdefined:bugtracker.net";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.901303");
-  script_version("$Revision: 5912 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2017-04-10 11:01:51 +0200 (Mon, 10 Apr 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-29 15:57:44 +0530 (Thu, 29 Nov 2012)");
   script_name("BugTracker.NET Multiple Security Vulnerabilities");
 
@@ -52,29 +52,43 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to gain sensitive information
   by performing SQL injection, XSS, file disclosure and HTTP response
   splitting attacks on the affected application and execute arbitrary script
-  code.
-  Impact Level: Application");
+  code.");
   script_tag(name:"affected", value:"BugTracker.NET version 3.5.8 and prior");
   script_tag(name:"insight", value:"The flaws are due to improper validation of user supplied input.
   SQL injection:
-    - 'row_id.Value', 'sql' parameter in dbutil.cs
+
+  - 'row_id.Value', 'sql' parameter in dbutil.cs
   File Disclosure:
-    - 'path' parameters in view_web_config.aspx
-    - 'which_file', 'file_name', 'path' parameters in edit_custom_html.aspx
-    - 'filename', 'path' parameters in download_file.aspx
+
+  - 'path' parameters in view_web_config.aspx
+
+  - 'which_file', 'file_name', 'path' parameters in edit_custom_html.aspx
+
+  - 'filename', 'path' parameters in download_file.aspx
   Cross Site Scripting:
-    - 'tags' parameter in bug_list.cs
-    - 'path', 'blame_text' parameter in svn_blame.aspx
-    - 'commit1', 'unified_diff_text', 'error' parameters in git_diff.aspx
-    - 'Request', 'path' parameters in view_web_config.aspx
-    - 'filename', 'path' parameters in download_file.aspx
-    - 'path', 'raw_text' parameters in svn_blame.aspx
-    - 'msg' parameter in default.aspx
-    - 'revision', 'rev' parameters in hg_blame.asp
-    - 'qs', 'url' parameters in util.cs
+
+  - 'tags' parameter in bug_list.cs
+
+  - 'path', 'blame_text' parameter in svn_blame.aspx
+
+  - 'commit1', 'unified_diff_text', 'error' parameters in git_diff.aspx
+
+  - 'Request', 'path' parameters in view_web_config.aspx
+
+  - 'filename', 'path' parameters in download_file.aspx
+
+  - 'path', 'raw_text' parameters in svn_blame.aspx
+
+  - 'msg' parameter in default.aspx
+
+  - 'revision', 'rev' parameters in hg_blame.asp
+
+  - 'qs', 'url' parameters in util.cs
   HTTP Response Splitting:
-    - 'url' parameter in util.cs
-    - 'bg_id' parameter in delete_subscriber.aspx");
+
+  - 'url' parameter in util.cs
+
+  - 'bg_id' parameter in delete_subscriber.aspx");
   script_tag(name:"solution", value:"Upgrade to BugTracker.NET 3.8.9
   For updates refer to http://ifdefined.com/bugtrackernet.html");
   script_tag(name:"summary", value:"This host is installed with BugTracker.NET and is prone to SQL injection or
@@ -96,11 +110,9 @@ if( ! dir = get_app_location( cpe:CPE, port:port ) ) exit( 0 );
 
 if( dir == "/" ) dir = "";
 
-## Construct XSS
 xss = "<script>alert%28'document.cookie'%29</script>";
 url = dir + "/default.aspx?msg=" + xss;
 
-## Confirm exploit worked properly or not
 if( http_vuln_check( port:port, url:url, check_header:TRUE,
                      pattern:"<script>alert\('document.cookie'\)</script>" ) ) {
   report = report_vuln_url( port:port, url:url );

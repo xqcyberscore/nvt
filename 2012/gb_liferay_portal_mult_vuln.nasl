@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_liferay_portal_mult_vuln.nasl 11355 2018-09-12 10:32:04Z asteins $
+# $Id: gb_liferay_portal_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Liferay Portal Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802630");
-  script_version("$Revision: 11355 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(53546);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-12 12:32:04 +0200 (Wed, 12 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-21 12:12:12 +0530 (Mon, 21 May 2012)");
   script_name("Liferay Portal Multiple Vulnerabilities");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49205");
@@ -50,9 +50,7 @@ if(description)
 arbitrary script code in the browser of an unsuspecting user in the context of
 the affected site, steal cookie based authentication credentials, disclose or
 modify sensitive information, perform unauthorized actions in the context
-of a user's session.
-
-Impact Level: Application");
+of a user's session.");
   script_tag(name:"affected", value:"Liferay Portal version 6.1.10 and prior");
   script_tag(name:"insight", value:"Multiple flaws are due to
 

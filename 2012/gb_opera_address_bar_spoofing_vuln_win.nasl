@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_address_bar_spoofing_vuln_win.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_opera_address_bar_spoofing_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Opera Address Bar Spoofing Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802450");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(55345);
   script_cve_id("CVE-2012-4010");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-03 16:35:41 +0530 (Mon, 03 Sep 2012)");
   script_name("Opera Address Bar Spoofing Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://jvn.jp/en/jp/JVN69880570/index.html");
@@ -45,8 +45,7 @@ if(description)
   script_dependencies("gb_opera_detect_portable_win.nasl");
   script_require_keys("Opera/Win/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to conduct phishing
-  attacks.
-  Impact Level: Application");
+  attacks.");
   script_tag(name:"affected", value:"Opera version prior to 11.60 on Windows");
   script_tag(name:"insight", value:"The flaw is caused due an error in address bar, where certain characters
   displayed in the address bar can be spoofed due to the difficulty in

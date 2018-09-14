@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-041.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: secpod_ms12-041.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2709162)
 #
@@ -27,13 +27,13 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902917");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11372 $");
   script_cve_id("CVE-2012-1864", "CVE-2012-1865", "CVE-2012-1866", "CVE-2012-1867",
                 "CVE-2012-1868");
   script_bugtraq_id(53815, 53816, 53817, 53819, 53820);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-06-13 10:45:30 +0530 (Wed, 13 Jun 2012)");
   script_name("Windows Kernel-Mode Drivers Privilege Elevation Vulnerabilities (2709162)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49436/");
@@ -48,8 +48,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow remote attackers to execute arbitrary
-  code with kernel-mode privileges
-  Impact Level: System");
+  code with kernel-mode privileges");
   script_tag(name:"affected", value:"Microsoft Windows XP x32 Edition Service Pack 3 and prior
   Microsoft Windows XP x64 Edition Service Pack 2 and prior
   Microsoft Windows 7 x32/x64 Edition Service Pack 1 and prior
@@ -58,10 +57,13 @@ if(description)
   Microsoft Windows Server 2008 R2 x64 Edition Service Pack 1 and prior
   Microsoft Windows Server 2008 x32/x64 Edition Service Pack 2 and prior");
   script_tag(name:"insight", value:"Multiple flaws are due to,
+
   - An error in win32k.sys within the string atom class name and lipboard
     format atom name handling and can be exploited to execute arbitrary code.
+
   - An integer overflow error when handling the reference counter for font
     resources when loading TrueType fonts.
+
   - A race condition error in win32k.sys when handling particular thread
     creation attempts and can be exploited to execute arbitrary code.");
   script_tag(name:"solution", value:"Run Windows Update and update the listed hotfixes or download and

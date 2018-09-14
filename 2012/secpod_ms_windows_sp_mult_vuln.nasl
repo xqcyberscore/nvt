@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms_windows_sp_mult_vuln.nasl 6694 2017-07-12 10:30:06Z cfischer $
+# $Id: secpod_ms_windows_sp_mult_vuln.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft Windows Service Pack Missing Multiple Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902909");
-  script_version("$Revision: 6694 $");
+  script_version("$Revision: 11372 $");
   script_cve_id("CVE-1999-0662");
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2017-07-12 12:30:06 +0200 (Wed, 12 Jul 2017) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-03-27 12:06:13 +0530 (Tue, 27 Mar 2012)");
   script_name("Microsoft Windows Service Pack Missing Multiple Vulnerabilities");
   script_category(ACT_GATHER_INFO);
@@ -53,9 +53,7 @@ if(description)
   service pack not installed or is outdated or obsolete.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote
-  attackers to compromise a vulnerable system.
-
-  Impact Level: System");
+  attackers to compromise a vulnerable system.");
 
   script_tag(name:"affected", value:"Microsoft Windows 7 x32/x64 Editions SP0,
 

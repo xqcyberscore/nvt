@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_linux_kernel_igmp_dos_vuln.nasl 10411 2018-07-05 10:15:10Z cfischer $
+# $Id: gb_linux_kernel_igmp_dos_vuln.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Linux Kernel IGMP Remote Denial Of Service Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802295");
-  script_version("$Revision: 10411 $");
+  script_version("$Revision: 11372 $");
   script_bugtraq_id(51343);
   script_cve_id("CVE-2012-0207");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-07-05 12:15:10 +0200 (Thu, 05 Jul 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-19 14:14:14 +0530 (Thu, 19 Jan 2012)");
   script_name("Linux Kernel IGMP Remote Denial Of Service Vulnerability");
   script_category(ACT_KILL_HOST);
@@ -49,9 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commitdiff;h=a8c1f65c79cbbb2f7da782d4c9d15639a9b94b27");
 
   script_tag(name:"impact", value:"Successful exploitation may allow remote attackers to cause a kernel crash,
-  denying service to legitimate users.
-
-  Impact Level: System");
+  denying service to legitimate users.");
 
   script_tag(name:"affected", value:"Linux Kernels above or equal to 2.6.36");
 

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-006.nasl 11144 2018-08-28 11:37:19Z asteins $
+# $Id: secpod_ms12-006.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft Windows SSL/TLS Information Disclosure Vulnerability (2643584)
 #
@@ -26,12 +26,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902900");
-  script_version("$Revision: 11144 $");
+  script_version("$Revision: 11372 $");
   script_cve_id("CVE-2011-3389");
   script_bugtraq_id(49778);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 13:37:19 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-11 09:47:46 +0530 (Wed, 11 Jan 2012)");
   script_name("Microsoft Windows SSL/TLS Information Disclosure Vulnerability (2643584)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2585542");
@@ -47,8 +47,7 @@ if(description)
   script_tag(name:"impact", value:"Successful exploitation of this issue may allow attackers to perform limited
   man-in-the-middle attacks to inject data into the beginning of the
   application protocol stream to execute HTTP transactions, bypass
-  authentication.
-  Impact Level: Windows");
+  authentication.");
   script_tag(name:"affected", value:"Microsoft Windows 7 Service Pack 1 and prior.
   Microsoft Windows XP Service Pack 3 and prior.
   Microsoft Windows 2K3 Service Pack 2 and prior.

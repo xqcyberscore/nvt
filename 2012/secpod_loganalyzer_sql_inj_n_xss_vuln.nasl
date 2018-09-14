@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_loganalyzer_sql_inj_n_xss_vuln.nasl 11052 2018-08-20 10:24:34Z asteins $
+# $Id: secpod_loganalyzer_sql_inj_n_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Adiscon LogAnalyzer Multiple SQL Injection and XSS Vulnerabilities
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902840");
-  script_version("$Revision: 11052 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(53664);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-20 12:24:34 +0200 (Mon, 20 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-28 15:15:15 +0530 (Mon, 28 May 2012)");
   script_name("Adiscon LogAnalyzer Multiple SQL Injection and XSS Vulnerabilities");
 
@@ -49,13 +49,14 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to steal cookie based
   authentication credentials, compromise the application, access or modify
-  data or  exploit latent vulnerabilities in the underlying database.
-  Impact Level: Application");
+  data or  exploit latent vulnerabilities in the underlying database.");
   script_tag(name:"affected", value:"Adiscon LogAnalyzer version 3.4.2 and prior");
   script_tag(name:"insight", value:"Multiple flaws are due to
+
   - Input passed via the 'filter' parameter to index.php, the 'id' parameter to
     admin/reports.php and admin/searches.php is not properly sanitised before
     being returned to the user.
+
   - Input passed via the 'Columns[]' parameter to admin/views.php is not
     properly sanitised before being used in SQL queries.");
   script_tag(name:"solution", value:"Upgrade to Adiscon LogAnalyzer version 3.4.3 or later,

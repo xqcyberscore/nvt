@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_show_page_dos_vuln_macosx.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_opera_show_page_dos_vuln_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Opera Lenovo 'Show Page' Denial Of Service Vulnerability - (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803004");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-4146");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-08-08 12:50:33 +0530 (Wed, 08 Aug 2012)");
   script_name("Opera Multiple Vulnerabilities - August12 (Mac OS X)");
   script_xref(name:"URL", value:"http://www.opera.com/docs/changelogs/mac/1201/");
@@ -43,8 +43,7 @@ if(description)
   script_dependencies("gb_opera_detect_macosx.nasl");
   script_require_keys("Opera/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will let the attacker crash the browser leading to
-  denial of service condition.
-  Impact Level: Application");
+  denial of service condition.");
   script_tag(name:"affected", value:"Opera version prior to 12.01 on Mac OS X");
   script_tag(name:"insight", value:"An error caused via a crafted web site on Lenovos 'Shop now' page.");
   script_tag(name:"solution", value:"Upgrade to Opera version 12.01 or later,

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_cartpress_plugin_xss_vuln.nasl 10257 2018-06-19 14:04:53Z cfischer $
+# $Id: gb_wordpress_cartpress_plugin_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WordPress CartPress Plugin 'tcp_post_ids' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802554");
-  script_version("$Revision: 10257 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
   script_tag(name:"last_modification", value:"$Date: 2017-04-17 11:02:19 +0200 (Mo, 17 Apr 2017)$");
@@ -45,9 +45,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/108272/wpcartpress-xss.txt");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to execute
-  arbitrary web script or HTML in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  arbitrary web script or HTML in a user's browser session in the context of an affected site.");
 
   script_tag(name:"affected", value:"WordPress CartPress Plugin version 1.1.6 and prior.");
 

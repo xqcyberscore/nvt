@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_ipv6_literal_syntax_info_disc_vuln_win.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: gb_mozilla_prdts_ipv6_literal_syntax_info_disc_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Mozilla Products IPv6 Literal Syntax Cross Domain Information Disclosure Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802579");
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-3670");
   script_bugtraq_id(51786);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-03 17:51:59 +0530 (Fri, 03 Feb 2012)");
   script_name("Mozilla Products IPv6 Literal Syntax Cross Domain Information Disclosure Vulnerability (Windows)");
 
@@ -47,8 +47,7 @@ if(description)
                       "gb_seamonkey_detect_win.nasl",
                       "gb_thunderbird_detect_portable_win.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Installed");
-  script_tag(name:"impact", value:"Successful exploitation will let attackers to get sensitive information.
-  Impact Level: Application");
+  script_tag(name:"impact", value:"Successful exploitation will let attackers to get sensitive information.");
   script_tag(name:"affected", value:"SeaMonkey version before 2.4
   Thunderbird version before 3.1.18 and 5.0 through 6.0
   Mozilla Firefox version before 3.6.26 and 4.x through 6.0");

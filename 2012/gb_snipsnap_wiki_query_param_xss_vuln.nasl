@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_snipsnap_wiki_query_param_xss_vuln.nasl 11327 2018-09-11 11:35:07Z asteins $
+# $Id: gb_snipsnap_wiki_query_param_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # SnipSnap Wiki 'query' Parameter Cross Site Scripting Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802606");
-  script_version("$Revision: 11327 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 13:35:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-09 12:12:12 +0530 (Thu, 09 Feb 2012)");
   script_name("SnipSnap Wiki 'query' Parameter Cross Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/109543/snipsnap-xss.txt");
@@ -45,9 +45,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
   arbitrary HTML and script code, which will be executed in a user's browser
-  session in the context of an affected site.
-
-  Impact Level: Application");
+  session in the context of an affected site.");
   script_tag(name:"affected", value:"SnipSnap version 1.0b3 and prior.");
   script_tag(name:"insight", value:"The flaw is due to an improper validation of user-supplied input
   to the 'query' parameter in 'snipsnap-search', which allows attackers to execute

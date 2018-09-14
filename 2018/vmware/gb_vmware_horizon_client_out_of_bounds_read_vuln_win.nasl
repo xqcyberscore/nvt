@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vmware_horizon_client_out_of_bounds_read_vuln_win.nasl 10945 2018-08-14 06:57:51Z santu $
+# $Id: gb_vmware_horizon_client_out_of_bounds_read_vuln_win.nasl 11381 2018-09-13 14:55:03Z emoss $
 #
 # VMware Horizon Client Out-of-bounds Read Vulnerability (Windows)
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:vmware:horizon_view_client";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.813822");
-  script_version("$Revision: 10945 $");
+  script_version("$Revision: 11381 $");
   script_cve_id("CVE-2018-6970");
   script_bugtraq_id(105031);
   script_tag(name:"cvss_base", value:"6.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:S/C:C/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 08:57:51 +0200 (Tue, 14 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 16:55:03 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2018-08-10 10:11:02 +0530 (Fri, 10 Aug 2018)");
   script_name("VMware Horizon Client Out-of-bounds Read Vulnerability (Windows)");
 
@@ -48,9 +48,7 @@ if(description)
   error in the Message Framework library.");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attackers
-  to obtain sensitive information that may lead to further attacks.
-
-  Impact Level: Application");
+  to obtain sensitive information that may lead to further attacks.");
 
   script_tag(name:"affected", value:"VMware Horizon Client prior to 4.8.1");
 

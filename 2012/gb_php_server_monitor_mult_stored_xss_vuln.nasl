@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_php_server_monitor_mult_stored_xss_vuln.nasl 11160 2018-08-29 12:43:22Z asteins $
+# $Id: gb_php_server_monitor_mult_stored_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # PHP Server Monitor Multiple Stored Cross-Site Scripting Vulnerabilities
 #
@@ -29,10 +29,10 @@ CPE = "cpe:/a:phpserver:monitor";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803109");
-  script_version("$Revision: 11160 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 14:43:22 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-22 12:51:18 +0530 (Thu, 22 Nov 2012)");
   script_bugtraq_id(56622);
   script_name("PHP Server Monitor Multiple Stored Cross-Site Scripting Vulnerabilities");
@@ -44,9 +44,7 @@ if(description)
   script_require_ports("Services/www", 80);
 
   script_tag(name:"impact", value:"Successful exploitation will allow the attacker to execute
-  arbitrary code in the context of an application.
-
-  Impact Level: Application");
+  arbitrary code in the context of an application.");
   script_tag(name:"affected", value:"PHP Server Monitor version 2.1.0 and prior");
   script_tag(name:"insight", value:"The flaws are due improper validation of user-supplied input
   passed via the 'label' and 'name' parameter to 'index.php', that allows

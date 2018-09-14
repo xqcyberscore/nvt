@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_sqlitemanager_mult_xss_vuln.nasl 11148 2018-08-28 14:25:49Z asteins $
+# $Id: gb_sqlitemanager_mult_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # SQLiteManager 'dbsel' And 'nsextt' Parameters Multiple XSS Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802373");
-  script_version("$Revision: 11148 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-5105");
   script_bugtraq_id(51294);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-28 16:25:49 +0200 (Tue, 28 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-01-06 13:17:25 +0530 (Fri, 06 Jan 2012)");
   script_name("SQLiteManager 'dbsel' And 'nsextt' Parameters Multiple XSS Vulnerabilities");
   script_xref(name:"URL", value:"http://www.securityfocus.com/archive/1/521126");
@@ -46,9 +46,7 @@ if(description)
   script_require_ports("Services/www", 80);
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert
 arbitrary HTML and script code, which will be executed in a user's browser
-session in the context of an affected site.
-
-Impact Level: Application");
+session in the context of an affected site.");
   script_tag(name:"affected", value:"SQLiteManager version 1.2.4 and prior.");
   script_tag(name:"insight", value:"The flaws are due to improper validation of user-supplied input
 via the 'dbsel' or 'nsextt' parameters to index.php or main.php script, which

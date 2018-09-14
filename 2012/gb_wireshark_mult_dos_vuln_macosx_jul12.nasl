@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wireshark_mult_dos_vuln_macosx_jul12.nasl 11325 2018-09-11 10:59:54Z asteins $
+# $Id: gb_wireshark_mult_dos_vuln_macosx_jul12.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Wireshark Multiple Denial of Service Vulnerabilities - July 12 (Mac OS X)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802908");
-  script_version("$Revision: 11325 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-2392", "CVE-2012-2393", "CVE-2012-3825", "CVE-2012-3826");
   script_bugtraq_id(53651, 53652);
   script_tag(name:"cvss_base", value:"3.3");
   script_tag(name:"cvss_base_vector", value:"AV:A/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:59:54 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-05 14:35:27 +0530 (Thu, 05 Jul 2012)");
   script_name("Wireshark Multiple Denial of Service Vulnerabilities - July 12 (Mac OS X)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49226/");
@@ -46,8 +46,7 @@ if(description)
   script_dependencies("gb_wireshark_detect_macosx.nasl");
   script_require_keys("Wireshark/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a denial of
-  service.
-  Impact Level: Application");
+  service.");
   script_tag(name:"affected", value:"Wireshark versions 1.4.x before 1.4.13 and 1.6.x before 1.6.8 on Mac OS X");
   script_tag(name:"insight", value:"- Errors in the ANSI MAP, ASF, BACapp, Bluetooth HCI, IEEE 802.11,
     IEEE 802.3, LTP, and R3 dissectors can be exploited to cause infinite loops

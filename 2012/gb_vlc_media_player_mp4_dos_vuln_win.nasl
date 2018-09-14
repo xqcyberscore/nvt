@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_vlc_media_player_mp4_dos_vuln_win.nasl 9352 2018-04-06 07:13:02Z cfischer $
+# $Id: gb_vlc_media_player_mp4_dos_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # VLC Media Player 'MP4' Denial of Service Vulnerability (Windows)
 #
@@ -26,48 +26,36 @@
 
 CPE = "cpe:/a:videolan:vlc_media_player";
 
-tag_impact = "Successful exploitation could allow attackers to crash the affected
-application, denying service to legitimate users.
-
-Impact Level: Application";
-
-tag_affected = "VLC media player version 2.0.1 on Windows";
-
-tag_insight = "A division by zero error exists when handling MP4 files, which
-can be exploited to cause a crash.";
-
-tag_solution = "Update to version 2.0.2 or later,
-For updates refer to http://www.videolan.org/vlc";
-
-tag_summary = "This host is installed with VLC Media Player and is prone to
-denial of service vulnerability.";
-
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802920");
-  script_version("$Revision: 9352 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-2396");
   script_bugtraq_id(53535, 53169);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-06 09:13:02 +0200 (Fri, 06 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-25 13:06:00 +0530 (Wed, 25 Jul 2012)");
   script_name("VLC Media Player 'MP4' Denial of Service Vulnerability (Windows)");
-  script_xref(name : "URL" , value : "http://secunia.com/advisories/49159");
-  script_xref(name : "URL" , value : "http://xforce.iss.net/xforce/xfdb/75038");
-  script_xref(name : "URL" , value : "http://www.exploit-db.com/exploits/18757");
-  script_xref(name : "URL" , value : "http://packetstormsecurity.org/files/111991/VLC-2.0.1-Division-By-Zero.html");
+  script_xref(name:"URL", value:"http://secunia.com/advisories/49159");
+  script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/75038");
+  script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/18757");
+  script_xref(name:"URL", value:"http://packetstormsecurity.org/files/111991/VLC-2.0.1-Division-By-Zero.html");
 
   script_copyright("Copyright (c) 2012 Greenbone Networks GmbH");
   script_category(ACT_GATHER_INFO);
   script_family("Denial of Service");
   script_dependencies("secpod_vlc_media_player_detect_win.nasl");
   script_mandatory_keys("VLCPlayer/Win/Installed");
-  script_tag(name : "impact" , value : tag_impact);
-  script_tag(name : "affected" , value : tag_affected);
-  script_tag(name : "insight" , value : tag_insight);
-  script_tag(name : "solution" , value : tag_solution);
-  script_tag(name : "summary" , value : tag_summary);
+  script_tag(name:"impact", value:"Successful exploitation could allow attackers to crash the affected
+application, denying service to legitimate users.");
+  script_tag(name:"affected", value:"VLC media player version 2.0.1 on Windows");
+  script_tag(name:"insight", value:"A division by zero error exists when handling MP4 files, which
+can be exploited to cause a crash.");
+  script_tag(name:"solution", value:"Update to version 2.0.2 or later,
+For updates refer to http://www.videolan.org/vlc");
+  script_tag(name:"summary", value:"This host is installed with VLC Media Player and is prone to
+denial of service vulnerability.");
   script_tag(name:"qod_type", value:"registry");
   script_tag(name:"solution_type", value:"VendorFix");
   exit(0);
@@ -80,7 +68,6 @@ infos = get_app_version_and_location( cpe:CPE, exit_no_version:TRUE );
 vers = infos['version'];
 path = infos['location'];
 
-## Check for VLC Media Player Version is 2.0.1
 if( version_is_equal( version:vers, test_version:"2.0.1" ) ) {
   report = report_fixed_ver( installed_version:vers, fixed_version:"2.0.2", install_path:path );
   security_message( port:0, data:report );

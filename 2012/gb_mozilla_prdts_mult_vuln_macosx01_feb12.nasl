@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mozilla_prdts_mult_vuln_macosx01_feb12.nasl 11066 2018-08-21 10:57:20Z asteins $
+# $Id: gb_mozilla_prdts_mult_vuln_macosx01_feb12.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Mozilla Products Multiple Unspecified Vulnerabilities - Feb12 (MAC OS X 01)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802585");
-  script_version("$Revision: 11066 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-0443", "CVE-2012-0445", "CVE-2012-0446", "CVE-2012-0447");
   script_bugtraq_id(51756, 51765, 51752, 51757);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-21 12:57:20 +0200 (Tue, 21 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-02-06 14:03:00 +0530 (Mon, 06 Feb 2012)");
   script_name("Mozilla Products Multiple Unspecified Vulnerabilities - Feb12 (MAC OS X 01)");
 
@@ -47,15 +47,17 @@ if(description)
   script_dependencies("gb_mozilla_prdts_detect_macosx.nasl");
   script_mandatory_keys("Mozilla/Firefox_or_Seamonkey_or_Thunderbird/Mac/Installed");
   script_tag(name:"impact", value:"Successful exploitation will let attackers to cause a denial of service or
-  possibly execute arbitrary code.
-  Impact Level: Application");
+  possibly execute arbitrary code.");
   script_tag(name:"affected", value:"SeaMonkey version before 2.7
   Thunderbird version 5.0 through 9.0
   Mozilla Firefox version 4.x through 9.0");
   script_tag(name:"insight", value:"The flaws are due to
+
   - Multiple unspecified vulnerabilities in browser engine
+
   - An error in frame scripts bypass XPConnect security checks when calling
     untrusted objects.
+
   - Not properly initializing data for image/vnd.microsoft.icon images, which
     allows remote attackers to obtain potentially sensitive information by
     reading a PNG image that was created through conversion from an ICO image.");

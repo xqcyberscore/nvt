@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: secpod_ms12-032.nasl 11322 2018-09-11 10:15:07Z asteins $
+# $Id: secpod_ms12-032.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Microsoft Windows TCP/IP Privilege Elevation Vulnerabilities (2688338)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.902676");
-  script_version("$Revision: 11322 $");
+  script_version("$Revision: 11372 $");
   script_cve_id("CVE-2012-0174", "CVE-2012-0179");
   script_bugtraq_id(53352, 53349);
   script_tag(name:"cvss_base", value:"7.2");
   script_tag(name:"cvss_base_vector", value:"AV:L/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-11 12:15:07 +0200 (Tue, 11 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-05-09 09:08:42 +0530 (Wed, 09 May 2012)");
   script_name("Microsoft Windows TCP/IP Privilege Elevation Vulnerabilities (2688338)");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49114");
@@ -47,8 +47,7 @@ if(description)
   script_mandatory_keys("SMB/WindowsVersion");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to bypass certain security
-  restrictions and gain escalated privileges.
-  Impact Level: System");
+  restrictions and gain escalated privileges.");
   script_tag(name:"affected", value:"Microsoft Windows 7 Service Pack 1 and prior
   Microsoft Windows Server 2008 R2 Service Pack 1
   Microsoft Windows Vista Service Pack 2 and prior

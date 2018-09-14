@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_oracle_java_se_hash_collision_dos_vuln_win.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_oracle_java_se_hash_collision_dos_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Oracle Java SE Hash Collision DoS Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802681");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-2739");
   script_bugtraq_id(51236);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-12-04 15:27:32 +0530 (Tue, 04 Dec 2012)");
   script_name("Oracle Java SE Hash Collision DoS Vulnerability (Windows)");
   script_xref(name:"URL", value:"http://www.kb.cert.org/vuls/id/903934");
@@ -48,8 +48,7 @@ if(description)
   script_dependencies("gb_java_prdts_detect_portable_win.nasl");
   script_require_keys("Sun/Java/JRE/Win/Ver");
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to cause a denial of service
-  condition via crafted input to an application that maintains a hash table.
-  Impact Level: Application");
+  condition via crafted input to an application that maintains a hash table.");
   script_tag(name:"affected", value:"Oracle Java SE 7 to 7 Update 5");
   script_tag(name:"insight", value:"The flaw is due to computes hash values without restricting the ability to
   trigger hash collisions predictably.");

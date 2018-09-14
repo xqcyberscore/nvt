@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_amazon_associate_plugin_xss_vuln.nasl 10257 2018-06-19 14:04:53Z cfischer $
+# $Id: gb_wordpress_amazon_associate_plugin_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WordPress Amazon Associate Plugin 'callback' Parameter XSS Vulnerability
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.803048");
-  script_version("$Revision: 10257 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"last_modification", value:"$Date: 2017-04-25 14:51:04 +0200 (Di, 25 Apr 2017)$");
   script_tag(name:"creation_date", value:"2012-11-16 11:16:37 +0530 (Fri, 16 Nov 2012)");
   script_tag(name:"cvss_base", value:"4.3");
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to insert arbitrary
   HTML and script code, which will be executed in a user's browser session in the
-  context of an affected site when the malicious data is being viewed.
-
-  Impact Level: Application");
+  context of an affected site when the malicious data is being viewed.");
 
   script_tag(name:"affected", value:"WordPress Amazon Associate Plugin version 2.0 and prior");
 

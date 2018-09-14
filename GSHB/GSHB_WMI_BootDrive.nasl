@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: GSHB_WMI_BootDrive.nasl 10949 2018-08-14 09:36:21Z emoss $
+# $Id: GSHB_WMI_BootDrive.nasl 11369 2018-09-13 11:30:29Z cfischer $
 #
 # WMI Drives Test
 #
@@ -27,8 +27,8 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.96012");
-  script_version("$Revision: 10949 $");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-14 11:36:21 +0200 (Tue, 14 Aug 2018) $");
+  script_version("$Revision: 11369 $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 13:30:29 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2009-10-23 12:32:24 +0200 (Fri, 23 Oct 2009)");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
@@ -91,10 +91,12 @@ WMIFDD = wmi_query(wmi_handle:handle, query:query1);
 WMICD = wmi_query(wmi_handle:handle, query:query2);
 WMIUSB = wmi_query(wmi_handle:handle, query:query3);
 WMIFS = wmi_query(wmi_handle:handle, query:query4);
-if (OSVER < 6){
-    BOOTINI = wmi_file_is_file_writeable(handle:handle, filePath:"c:\\boot.ini");
-}else BOOTINI = "No boot.ini";
-
+if (OSVER < 6) {
+  BOOTINI = wmi_file_is_file_writeable(handle:handle, filePath:"c:\\boot.ini", includeHeader:FALSE);
+  if(BOOTINI) BOOTINI = BOOTINI["c:\boot.ini"];
+} else {
+  BOOTINI = "No boot.ini";
+}
 
 if(!WMIFDD) WMIFDD = "None";
 if(!WMICD) WMICD = "None";
@@ -111,4 +113,3 @@ set_kb_item(name:"WMI/BOOTINI", value:BOOTINI);
 wmi_close(wmi_handle:handle);
 
 exit(0);
-

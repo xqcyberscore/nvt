@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wellintech_kingview_mult_vuln.nasl 9325 2018-04-05 09:43:08Z cfischer $
+# $Id: gb_wellintech_kingview_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WellinTech KingView Multiple Vulnerabilities
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802911");
-  script_version("$Revision: 9325 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-1830", "CVE-2012-1831", "CVE-2012-1832", "CVE-2012-2560");
   script_bugtraq_id(54280);
   script_tag(name:"cvss_base", value:"10.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-04-05 11:43:08 +0200 (Thu, 05 Apr 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-10 17:26:36 +0530 (Tue, 10 Jul 2012)");
   script_name("WellinTech KingView Multiple Vulnerabilities");
   script_category(ACT_DENIAL);
@@ -49,9 +49,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation allows remote attackers to gain sensitive information
   via directory traversal attacks or cause the application to crash, creating a
-  denial of service condition.
-
-  Impact Level: Application");
+  denial of service condition.");
 
   script_tag(name:"affected", value:"WellinTech KingView version 6.53");
 

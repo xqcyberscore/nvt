@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_opera_src_iframe_dos_vuln_macosx.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_opera_src_iframe_dos_vuln_macosx.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Opera Browser 'SRC' Denial of Service Vulnerability (Mac OS X)
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802757");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2011-2641");
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:P");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-04-19 11:40:12 +0530 (Thu, 19 Apr 2012)");
   script_name("Opera Browser 'SRC' Denial of Service Vulnerability (Mac OS X)");
   script_xref(name:"URL", value:"http://www.exploit-db.com/exploits/17396/");
@@ -42,9 +42,7 @@ if(description)
   script_dependencies("gb_opera_detect_macosx.nasl");
   script_require_keys("Opera/MacOSX/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause a
-denial of service.
-
-Impact Level: Application");
+denial of service.");
   script_tag(name:"affected", value:"Opera Web Browser version 11.11 on Mac OS X.");
   script_tag(name:"insight", value:"The flaw is due to setting the FACE attribute of a FONT element
 within an IFRAME element after changing the SRC attribute of this IFRAME element

@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_wordpress_comment_rating_plugin_mult_vuln.nasl 10257 2018-06-19 14:04:53Z cfischer $
+# $Id: gb_wordpress_comment_rating_plugin_mult_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # WordPress Comment Rating Plugin Multiple Vulnerabilities
 #
@@ -29,7 +29,7 @@ CPE = "cpe:/a:wordpress:wordpress";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802289");
-  script_version("$Revision: 10257 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(51241);
   script_tag(name:"cvss_base", value:"7.5");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:P/A:P");
@@ -49,9 +49,7 @@ if(description)
   script_xref(name:"URL", value:"http://packetstormsecurity.org/files/108314/wpcommentrating-sqlxss.txt");
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to insert arbitrary
-  HTML and script code or cause SQL Injection attack to gain sensitive information.
-
-  Impact Level: Application");
+  HTML and script code or cause SQL Injection attack to gain sensitive information.");
 
   script_tag(name:"affected", value:"WordPress Comment Rating plugin version 2.9.20");
 

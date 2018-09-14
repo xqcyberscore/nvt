@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_arbor_networks_peakflow_sp_xss_vuln.nasl 11159 2018-08-29 10:26:39Z asteins $
+# $Id: gb_arbor_networks_peakflow_sp_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Arbor Networks Peakflow SP 'index/' Cross Site Scripting Vulnerability
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802958");
-  script_version("$Revision: 11159 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-4685");
   script_bugtraq_id(52881);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-29 12:26:39 +0200 (Wed, 29 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-11 11:47:18 +0530 (Tue, 11 Sep 2012)");
   script_name("Arbor Networks Peakflow SP 'index/' Cross Site Scripting Vulnerability");
 
@@ -50,8 +50,7 @@ if(description)
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to insert arbitrary HTML
   and script code, which will be executed in a user's browser session in the
-  context of an affected site.
-  Impact Level: Application");
+  context of an affected site.");
   script_tag(name:"affected", value:"Arbor Networks Peakflow SP 5.1.1 before patch 6, 5.5 before patch 4,
   and 5.6.0 before patch 1");
   script_tag(name:"insight", value:"Input appended to the URL after 'index/' in the login interface is not

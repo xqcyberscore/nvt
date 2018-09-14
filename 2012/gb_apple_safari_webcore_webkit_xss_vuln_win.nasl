@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_apple_safari_webcore_webkit_xss_vuln_win.nasl 10941 2018-08-13 14:33:26Z asteins $
+# $Id: gb_apple_safari_webcore_webkit_xss_vuln_win.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Apple Safari Webcore Webkit 'XSSAuditor.cpp' XSS Vulnerability (Windows)
 #
@@ -27,12 +27,12 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802499");
-  script_version("$Revision: 10941 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-5851");
   script_bugtraq_id(56570);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-13 16:33:26 +0200 (Mon, 13 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-11-21 15:41:09 +0530 (Wed, 21 Nov 2012)");
   script_name("Apple Safari Webcore Webkit 'XSSAuditor.cpp' XSS Vulnerability (Windows)");
   script_xref(name:"URL", value:"https://bugs.webkit.org/show_bug.cgi?id=92692");
@@ -44,9 +44,7 @@ if(description)
   script_dependencies("secpod_apple_safari_detect_win_900003.nasl");
   script_require_keys("AppleSafari/Version");
   script_tag(name:"impact", value:"Successful exploitation will allow attackers to bypass a cross-
-site scripting (XSS) protection mechanism via a crafted string.
-
-Impact Level: Application");
+site scripting (XSS) protection mechanism via a crafted string.");
   script_tag(name:"affected", value:"Apple Safari version 5.1.7 on Windows");
   script_tag(name:"insight", value:"The flaw is due to 'html/parser/XSSAuditor.cpp' in WebCore in
 WebKit does not consider all possible output contexts of reflected data.");

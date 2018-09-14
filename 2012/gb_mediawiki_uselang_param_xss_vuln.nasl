@@ -1,6 +1,6 @@
 ##############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_mediawiki_uselang_param_xss_vuln.nasl 11266 2018-09-06 10:59:26Z cfischer $
+# $Id: gb_mediawiki_uselang_param_xss_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # MediaWiki 'uselang' Parameter Cross Site Scripting Vulnerability
 #
@@ -29,12 +29,12 @@ CPE = "cpe:/a:mediawiki:mediawiki";
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802910");
-  script_version("$Revision: 11266 $");
+  script_version("$Revision: 11374 $");
   script_cve_id("CVE-2012-2698");
   script_bugtraq_id(53998);
   script_tag(name:"cvss_base", value:"4.3");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:M/Au:N/C:N/I:P/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-06 12:59:26 +0200 (Thu, 06 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-07-09 13:41:49 +0530 (Mon, 09 Jul 2012)");
   script_name("MediaWiki 'uselang' Parameter Cross Site Scripting Vulnerability");
   script_xref(name:"URL", value:"http://secunia.com/advisories/49484");
@@ -52,9 +52,7 @@ if(description)
   script_require_ports("Services/www", 80);
 
   script_tag(name:"impact", value:"Successful exploitation will allow attacker to execute arbitrary HTML and
-  script code in a user's browser session in the context of an affected site.
-
-  Impact Level: Application");
+  script code in a user's browser session in the context of an affected site.");
   script_tag(name:"affected", value:"MediaWiki versions prior to 1.17.5, 1.8.x before 1.18.4 and 1.19.x before 1.19.1");
   script_tag(name:"insight", value:"Input passed via the 'uselang' parameter to 'index.php/Main_page' is not
   properly sanitised in the 'outputPage()' function, before being returned

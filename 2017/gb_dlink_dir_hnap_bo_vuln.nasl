@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_dlink_dir_hnap_bo_vuln.nasl 5293 2017-02-14 10:12:42Z ckuerste $
+# $Id: gb_dlink_dir_hnap_bo_vuln.nasl 11370 2018-09-13 11:32:51Z asteins $
 #
 # D-Link DIR Routers HNAP Buffer Overflow Vulnerability
 #
@@ -28,11 +28,11 @@
 if (description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.106587");
-  script_version("$Revision: 5293 $");
-  script_tag(name: "last_modification", value: "$Date: 2017-02-14 11:12:42 +0100 (Tue, 14 Feb 2017) $");
+  script_version("$Revision: 11370 $");
+  script_tag(name: "last_modification", value: "$Date: 2018-09-13 13:32:51 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name: "creation_date", value: "2017-02-14 13:49:17 +0700 (Tue, 14 Feb 2017)");
-  script_tag(name: "cvss_base", value: "9.3");
-  script_tag(name: "cvss_base_vector", value: "AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_tag(name:"cvss_base", value:"10.0");
+  script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:C/I:C/A:C");
 
   script_cve_id("CVE-2016-6563");
 

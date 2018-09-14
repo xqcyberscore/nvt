@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_ms_digital_cretificate_timestamp_issue.nasl 11135 2018-08-27 13:39:29Z asteins $
+# $Id: gb_ms_digital_cretificate_timestamp_issue.nasl 11372 2018-09-13 12:12:50Z asteins $
 #
 # Compatibility Issues Affecting Signed Microsoft Binaries (2749655)
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802468");
-  script_version("$Revision: 11135 $");
+  script_version("$Revision: 11372 $");
   script_tag(name:"cvss_base", value:"0.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-27 15:39:29 +0200 (Mon, 27 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:12:50 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-11 17:15:51 +0530 (Thu, 11 Oct 2012)");
   script_name("Compatibility Issues Affecting Signed Microsoft Binaries (2749655)");
   script_xref(name:"URL", value:"http://support.microsoft.com/kb/2749655");
@@ -47,9 +47,7 @@ if(description)
 
   script_tag(name:"impact", value:"This could cause compatibility issues between affected binaries and
   Microsoft Windows and This issue could adversely impact the ability to properly
-  install and uninstall affected Microsoft components and security updates.
-
-  Impact Level: System");
+  install and uninstall affected Microsoft components and security updates.");
   script_tag(name:"affected", value:"Microsoft Windows XP x32 Edition Service Pack 3 and prior
 
   Microsoft Windows XP x64 Edition Service Pack 2 and prior

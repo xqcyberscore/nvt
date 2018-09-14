@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_safenet_spi_sk_server_long_req_dos_vuln.nasl 11169 2018-08-30 14:20:05Z asteins $
+# $Id: gb_safenet_spi_sk_server_long_req_dos_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # SafeNet Sentinel Protection Installer Long Request DoS Vulnerability
 #
@@ -27,10 +27,10 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802460");
-  script_version("$Revision: 11169 $");
+  script_version("$Revision: 11374 $");
   script_tag(name:"cvss_base", value:"7.8");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:N/I:N/A:C");
-  script_tag(name:"last_modification", value:"$Date: 2018-08-30 16:20:05 +0200 (Thu, 30 Aug 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-09-25 09:53:12 +0530 (Tue, 25 Sep 2012)");
   script_name("SafeNet Sentinel Protection Installer Long Request DoS Vulnerability");
 
@@ -48,9 +48,7 @@ if(description)
   script_mandatory_keys("SentinelKeysServer/banner");
 
   script_tag(name:"impact", value:"Successful exploitation will allow remote attackers to cause the
-  application to crash, creating a denial-of-service condition.
-
-  Impact Level: Application");
+  application to crash, creating a denial-of-service condition.");
   script_tag(name:"affected", value:"Sentinel Protection Installer version 7.6.5 (sntlkeyssrvr.exe v1.3.1.3)");
   script_tag(name:"insight", value:"The flaw is due to a boundary error in Sentinel Keys Server within
   the 'sntlkeyssrvr.exe' when handling long requests, can be exploited to cause a

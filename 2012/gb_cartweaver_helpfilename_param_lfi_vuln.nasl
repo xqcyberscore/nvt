@@ -1,6 +1,6 @@
 ###############################################################################
 # OpenVAS Vulnerability Test
-# $Id: gb_cartweaver_helpfilename_param_lfi_vuln.nasl 11188 2018-09-03 11:04:26Z cfischer $
+# $Id: gb_cartweaver_helpfilename_param_lfi_vuln.nasl 11374 2018-09-13 12:45:05Z asteins $
 #
 # Cartweaver 'helpFileName' Parameter Local File Include Vulnerability
 #
@@ -27,11 +27,11 @@
 if(description)
 {
   script_oid("1.3.6.1.4.1.25623.1.0.802997");
-  script_version("$Revision: 11188 $");
+  script_version("$Revision: 11374 $");
   script_bugtraq_id(55917);
   script_tag(name:"cvss_base", value:"5.0");
   script_tag(name:"cvss_base_vector", value:"AV:N/AC:L/Au:N/C:P/I:N/A:N");
-  script_tag(name:"last_modification", value:"$Date: 2018-09-03 13:04:26 +0200 (Mon, 03 Sep 2018) $");
+  script_tag(name:"last_modification", value:"$Date: 2018-09-13 14:45:05 +0200 (Thu, 13 Sep 2018) $");
   script_tag(name:"creation_date", value:"2012-10-16 17:35:45 +0530 (Tue, 16 Oct 2012)");
   script_name("Cartweaver 'helpFileName' Parameter Local File Include Vulnerability");
   script_xref(name:"URL", value:"http://xforce.iss.net/xforce/xfdb/79227");
@@ -44,9 +44,7 @@ if(description)
   script_exclude_keys("Settings/disable_cgi_scanning");
 
   script_tag(name:"impact", value:"Successful exploitation could allow attackers to perform directory
-  traversal attacks and read arbitrary files on the affected application.
-
-  Impact Level: Application");
+  traversal attacks and read arbitrary files on the affected application.");
 
   script_tag(name:"affected", value:"Cartweaver version 3.0");
 
